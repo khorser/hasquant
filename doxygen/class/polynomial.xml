@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_polynomial" kind="class" prot="public">
     <compoundname>QuantLib::Polynomial</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp</includes>
+    <includes local="no">/experimental/inflation/polynomial2Dspline.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_polynomial_1a6f774b30f13db7f9af19e3b9b01fcf32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -40,11 +40,11 @@
           <type>const M &amp;</type>
           <declname>z</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="98" bodyend="102"/>
+        <location file="/experimental/inflation/polynomial2Dspline.hpp" line="100" bodyfile="/experimental/inflation/polynomial2Dspline.hpp" bodystart="98" bodyend="102"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>polynomial2D-spline-interpolation factory </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="95" bodyend="103"/>
+    <location file="/experimental/inflation/polynomial2Dspline.hpp" line="95" bodyfile="/experimental/inflation/polynomial2Dspline.hpp" bodystart="95" bodyend="103"/>
   </compounddef>
 </doxygen>

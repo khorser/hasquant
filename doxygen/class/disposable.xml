@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_disposable" kind="class" prot="public">
     <compoundname>QuantLib::Disposable</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp</includes>
+    <includes local="no">/utilities/disposable.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -20,7 +20,7 @@
           <type>T &amp;</type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" bodystart="75" bodyend="77"/>
+        <location file="/utilities/disposable.hpp" line="66" bodyfile="/utilities/disposable.hpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_disposable_1a4e34b6d01a65daf06beaa13b266c1459" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -31,7 +31,7 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" bodystart="80" bodyend="82"/>
+        <location file="/utilities/disposable.hpp" line="67" bodyfile="/utilities/disposable.hpp" bodystart="80" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_disposable_1a62e578457d50f2dfccc17ba03ebd94de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
@@ -42,7 +42,7 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" bodystart="85" bodyend="88"/>
+        <location file="/utilities/disposable.hpp" line="68" bodyfile="/utilities/disposable.hpp" bodystart="85" bodyend="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,6 +60,6 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>temp;</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" bodystart="64" bodyend="69"/>
+    <location file="/utilities/disposable.hpp" line="64" bodyfile="/utilities/disposable.hpp" bodystart="64" bodyend="69"/>
   </compounddef>
 </doxygen>

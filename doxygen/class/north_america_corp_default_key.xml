@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_north_america_corp_default_key" kind="class" prot="public">
     <compoundname>QuantLib::NorthAmericaCorpDefaultKey</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp</includes>
+    <includes local="no">/experimental/credit/defaultprobabilitykey.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_north_america_corp_default_key_1a4f6d41460045256b84628f1d4ea956b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -32,11 +32,11 @@
           <declname>resType</declname>
           <defval>Restructuring::CR</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="80"/>
+        <location file="/experimental/credit/defaultprobabilitykey.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>ISDA standard default contractual key for corporate US debt. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="71" bodyend="81"/>
+    <location file="/experimental/credit/defaultprobabilitykey.hpp" line="71" bodyfile="/experimental/credit/defaultprobabilitykey.hpp" bodystart="71" bodyend="81"/>
   </compounddef>
 </doxygen>

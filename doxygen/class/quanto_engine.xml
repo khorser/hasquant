@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_quanto_engine" kind="class" prot="public">
     <compoundname>QuantLib::QuantoEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp</includes>
+    <includes local="no">/pricingengines/quanto/quantoengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Instr</type>
@@ -33,7 +33,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>correlation</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="69" bodyend="81"/>
+        <location file="/pricingengines/quanto/quantoengine.hpp" line="56" bodyfile="/pricingengines/quanto/quantoengine.hpp" bodystart="69" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -41,7 +41,7 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="84" bodyend="173"/>
+        <location file="/pricingengines/quanto/quantoengine.hpp" line="57" bodyfile="/pricingengines/quanto/quantoengine.hpp" bodystart="84" bodyend="173"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -50,6 +50,6 @@
 <para><xrefsect id="caveats_1_caveats000099"><xreftitle>Warning</xreftitle><xrefdescription><para>for the time being, this engine will only work with simple Black-Scholes processes (i.e., no Merton.)</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000108"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned value is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned greeks is tested by reproducing numerical derivatives. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="48" bodyend="63"/>
+    <location file="/pricingengines/quanto/quantoengine.hpp" line="50" bodyfile="/pricingengines/quanto/quantoengine.hpp" bodystart="48" bodyend="63"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_striked_type_payoff" kind="class" prot="public">
     <compoundname>QuantLib::StrikedTypePayoff</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp</includes>
+    <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_striked_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -11,7 +11,7 @@
         <argsstring>() const </argsstring>
         <name>description</name>
         <reimplements refid="class_quant_lib_1_1_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="93"/>
+        <location file="/instruments/payoffs.hpp" line="93"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -20,11 +20,11 @@
         <definition>Real strike</definition>
         <argsstring>() const </argsstring>
         <name>strike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="95" bodyend="95"/>
+        <location file="/instruments/payoffs.hpp" line="95" bodyfile="/instruments/payoffs.hpp" bodystart="95" bodyend="95"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Intermediate class for payoffs based on a fixed strike. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="87" bodyend="101"/>
+    <location file="/instruments/payoffs.hpp" line="89" bodyfile="/instruments/payoffs.hpp" bodystart="87" bodyend="101"/>
   </compounddef>
 </doxygen>

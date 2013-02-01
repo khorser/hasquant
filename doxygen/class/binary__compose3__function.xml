@@ -19,21 +19,21 @@
         <definition>typedef G::argument_type first_argument_type</definition>
         <argsstring></argsstring>
         <name>first_argument_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="137" bodyend="-1"/>
+        <location file="/math/functional.hpp" line="137" bodyfile="/math/functional.hpp" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1binary__compose3__function_1a2942438be31cb1463380b9d8d8999402" prot="public" static="no">
         <type>H::argument_type</type>
         <definition>typedef H::argument_type second_argument_type</definition>
         <argsstring></argsstring>
         <name>second_argument_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="138" bodyend="-1"/>
+        <location file="/math/functional.hpp" line="138" bodyfile="/math/functional.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1binary__compose3__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
         <type>F::result_type</type>
         <definition>typedef F::result_type result_type</definition>
         <argsstring></argsstring>
         <name>result_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="139" bodyend="-1"/>
+        <location file="/math/functional.hpp" line="139" bodyfile="/math/functional.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -54,7 +54,7 @@
           <type>const H &amp;</type>
           <declname>h</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="141" bodyend="142"/>
+        <location file="/math/functional.hpp" line="142" bodyfile="/math/functional.hpp" bodystart="141" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1binary__compose3__function_1a5fcf156dc7dabb974e3c9837d010bebe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>result_type</type>
@@ -69,9 +69,9 @@
           <type>const second_argument_type &amp;</type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="144" bodyend="147"/>
+        <location file="/math/functional.hpp" line="145" bodyfile="/math/functional.hpp" bodystart="144" bodyend="147"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="132" bodyend="153"/>
+    <location file="/math/functional.hpp" line="135" bodyfile="/math/functional.hpp" bodystart="132" bodyend="153"/>
   </compounddef>
 </doxygen>

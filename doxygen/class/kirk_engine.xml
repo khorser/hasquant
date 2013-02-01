@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_kirk_engine" kind="class" prot="public">
     <compoundname>QuantLib::KirkEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp</includes>
+    <includes local="no">/pricingengines/basket/kirkengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_kirk_engine_1a62a4b370f5680744ea910ac2cf036b66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>correlation</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" line="48"/>
+        <location file="/pricingengines/basket/kirkengine.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kirk_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -29,13 +29,13 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" line="49"/>
+        <location file="/pricingengines/basket/kirkengine.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for spread option on two futures. </para>    </briefdescription>
     <detaileddescription>
 <para>This class implements formulae from &quot;Correlation in the Energy Markets&quot;, E. Kirk Managing Energy Price Risk. London: Risk Publications and Enron, pp. 71-78</para><para><xrefsect id="test_1_test000096"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" bodystart="43" bodyend="54"/>
+    <location file="/pricingengines/basket/kirkengine.hpp" line="43" bodyfile="/pricingengines/basket/kirkengine.hpp" bodystart="43" bodyend="54"/>
   </compounddef>
 </doxygen>

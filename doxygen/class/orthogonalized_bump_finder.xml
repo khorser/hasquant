@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_orthogonalized_bump_finder" kind="class" prot="public">
     <compoundname>QuantLib::OrthogonalizedBumpFinder</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp</includes>
+    <includes local="no">/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_orthogonalized_bump_finder_1ac13090c0556142212a8c53c8edb00940" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,7 +29,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tolerance</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="96"/>
+        <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_orthogonalized_bump_finder_1ae48b40df0717c7224c09a1f8e3db83a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -40,11 +40,11 @@
           <type>std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &gt; &amp;</type>
           <declname>theBumps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="98"/>
+        <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="98"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>Pass in a market model, a list of instruments, and possible bumps.</para><para>Get out pseudo-root bumps that shift each implied vol by one percent, and leave the other instruments fixed.</para><para>If the contribution of an instrument is too correlated with other instruments used, discard it. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="89" bodyend="108"/>
+    <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="90" bodyfile="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="89" bodyend="108"/>
   </compounddef>
 </doxygen>

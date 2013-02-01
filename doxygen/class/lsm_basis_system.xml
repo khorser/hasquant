@@ -26,7 +26,7 @@
         <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a3ce92b4b6d937a9894e671024c848e80" prot="public">
           <name>Chebyshev2nd</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" bodystart="39" bodyend="40"/>
+        <location file="/methods/montecarlo/lsmbasissystem.hpp" line="39" bodyfile="/methods/montecarlo/lsmbasissystem.hpp" bodystart="39" bodyend="40"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -43,7 +43,7 @@
           <type>PolynomType</type>
           <declname>polyType</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="43"/>
+        <location file="/methods/montecarlo/lsmbasissystem.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lsm_basis_system_1ac02a57fb6a6848fa94d470723b442943" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &gt;</type>
@@ -62,9 +62,9 @@
           <type>PolynomType</type>
           <declname>polyType</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="46"/>
+        <location file="/methods/montecarlo/lsmbasissystem.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" bodystart="37" bodyend="47"/>
+    <location file="/methods/montecarlo/lsmbasissystem.hpp" line="37" bodyfile="/methods/montecarlo/lsmbasissystem.hpp" bodystart="37" bodyend="47"/>
   </compounddef>
 </doxygen>

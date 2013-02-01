@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FittedBondDiscountCurve::FittingMethod</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp</includes>
+    <includes local="no">/termstructures/yield/fittedbonddiscountcurve.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a61fc6646c33df418f0cd8afd94d4c131" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~FittingMethod</definition>
         <argsstring>()</argsstring>
         <name>~FittingMethod</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="202" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="202" bodyend="202"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="202" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="202" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -18,7 +18,7 @@
         <name>size</name>
         <briefdescription>
 <para>total number of coefficients to fit/solve for </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="204"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a6d8cb9a904d7c3d52208120af8369e07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
@@ -27,7 +27,7 @@
         <name>solution</name>
         <briefdescription>
 <para>output array of results of optimization problem </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="206" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="292" bodyend="294"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="206" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="292" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a5c1949bd3782a0492d484ce714eeee0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
@@ -36,7 +36,7 @@
         <name>numberOfIterations</name>
         <briefdescription>
 <para>final number of iterations used in the optimization problem </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="208" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="283" bodyend="285"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="208" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="283" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a18ca97750fc43204cacfab5c3b0f8a9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -45,7 +45,7 @@
         <name>minimumCostValue</name>
         <briefdescription>
 <para>final value of cost function after optimization </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="210" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="288" bodyend="290"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="210" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="288" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref> &gt;</type>
@@ -54,13 +54,13 @@
         <name>clone</name>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="212"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="212"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base fitting method used to construct a fitted bond discount curve. </para>    </briefdescription>
     <detaileddescription>
 <para>This base class provides the specific methodology/strategy used to construct a <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve" kindref="compound">FittedBondDiscountCurve</ref>. Derived classes need only define the virtual function <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1ad0fd1b5e219977a0da00786e9077ca0a" kindref="member">discountFunction()</ref> based on the particular fitting method to be implemented, as well as <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6" kindref="member">size()</ref>, the number of variables to be solved for/optimized. The generic fitting methodology implemented here can be termed nonlinear, in contrast to (typically faster, computationally) linear fitting method.</para><para><xrefsect id="todo_1_todo000066"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>derive the special-case class LinearFittingMethods from <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref>. A linear fitting to a set of basis functions <formula id="390">$ b_i(t) $</formula> is any fitting of the form <formula id="391">\[ d(t) = \sum_{i=0} c_i b_i(t) \]</formula> i.e., linear in the unknown coefficients <formula id="55">$ c_i $</formula>. Such a fitting can be reduced to a linear algebra problem <formula id="392">$ Ax = b $</formula>, and for large numbers of bonds, would typically be much faster computationally than the generic non-linear fitting method.</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000137"><xreftitle>Warning</xreftitle><xrefdescription><para>some parameters to the <ref refid="class_quant_lib_1_1_simplex" kindref="compound">Simplex</ref> optimization method may need to be tweaked internally to the class, depending on the fitting method used, in order to get proper/reasonable/faster convergence. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="197" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="197" bodyend="248"/>
+    <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="197" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="197" bodyend="248"/>
   </compounddef>
 </doxygen>

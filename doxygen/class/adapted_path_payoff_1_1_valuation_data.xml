@@ -8,14 +8,14 @@
         <definition>Size numberOfTimes</definition>
         <argsstring>() const </argsstring>
         <name>numberOfTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="36"/>
+        <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a0a804d35ee0bc871bf757c4db1ca905a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfAssets</definition>
         <argsstring>() const </argsstring>
         <name>numberOfAssets</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="37"/>
+        <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ae3650f31c99da4860d1aba3056cc3e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -30,7 +30,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>asset</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="39"/>
+        <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a73eeecaf6052dadb5fc2447aff7b2d90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
@@ -41,7 +41,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>time</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="41"/>
+        <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ac0c2a2fde164119aa0db6a59c3039999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -56,7 +56,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="43"/>
+        <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a4747e7f3d78af594cb1590bd7d32581e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -75,9 +75,9 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>state</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="47"/>
+        <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="47"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="34" bodyend="67"/>
+    <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="34" bodyfile="/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="34" bodyend="67"/>
   </compounddef>
 </doxygen>

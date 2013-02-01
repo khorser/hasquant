@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_d_o" kind="class" prot="public">
     <compoundname>QuantLib::CDO</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp</includes>
+    <includes local="no">/experimental/credit/cdo.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1abf537615f823c0c8b1201e35af0abbc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -167,49 +167,49 @@
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="134"/>
+        <location file="/experimental/credit/cdo.hpp" line="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a29092d9d6550ef55d3acdaadc5672b49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring>()</argsstring>
         <name>nominal</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="136" bodyend="136"/>
+        <location file="/experimental/credit/cdo.hpp" line="136" bodyfile="/experimental/credit/cdo.hpp" bodystart="136" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1ab1e1ba3b401ff50b64f835425a53259f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real lgd</definition>
         <argsstring>()</argsstring>
         <name>lgd</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="137" bodyend="137"/>
+        <location file="/experimental/credit/cdo.hpp" line="137" bodyfile="/experimental/credit/cdo.hpp" bodystart="137" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a9f640384e88e9a3f579443135bc90d84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real attachment</definition>
         <argsstring>()</argsstring>
         <name>attachment</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="138" bodyend="138"/>
+        <location file="/experimental/credit/cdo.hpp" line="138" bodyfile="/experimental/credit/cdo.hpp" bodystart="138" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a4700a808d9f4ab060d54fbe7ffc15f6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real detachment</definition>
         <argsstring>()</argsstring>
         <name>detachment</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="139" bodyend="139"/>
+        <location file="/experimental/credit/cdo.hpp" line="139" bodyfile="/experimental/credit/cdo.hpp" bodystart="139" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a90837b8aa099984148ccd2c6f2f483bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; nominals</definition>
         <argsstring>()</argsstring>
         <name>nominals</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="140" bodyend="140"/>
+        <location file="/experimental/credit/cdo.hpp" line="140" bodyfile="/experimental/credit/cdo.hpp" bodystart="140" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a9a4c32403766cd16ca4e3a5479f075bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>()</argsstring>
         <name>size</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="141" bodyend="141"/>
+        <location file="/experimental/credit/cdo.hpp" line="141" bodyfile="/experimental/credit/cdo.hpp" bodystart="141" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -219,35 +219,35 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="143"/>
+        <location file="/experimental/credit/cdo.hpp" line="143"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairPremium</definition>
         <argsstring>() const </argsstring>
         <name>fairPremium</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="144"/>
+        <location file="/experimental/credit/cdo.hpp" line="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a8729d80e43b77566cbdf0cfe0b9b93dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate premiumValue</definition>
         <argsstring>() const </argsstring>
         <name>premiumValue</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="145"/>
+        <location file="/experimental/credit/cdo.hpp" line="145"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1abb77e8f956fe2e7458681bef8f73f9d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate protectionValue</definition>
         <argsstring>() const </argsstring>
         <name>protectionValue</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="146"/>
+        <location file="/experimental/credit/cdo.hpp" line="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1afca3e3cf414a77cea53374f408cf8e0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size error</definition>
         <argsstring>() const </argsstring>
         <name>error</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="147"/>
+        <location file="/experimental/credit/cdo.hpp" line="147"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -268,6 +268,6 @@
   The pricing algorithm allows for varying notional amounts and
   default termstructures of the underlyings.
 </verbatim></para><para><xrefsect id="todo_1_todo000006"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Investigate and fix cases <formula id="86">$ E_{i+1} &lt; E_i. $</formula> </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="98" bodyend="183"/>
+    <location file="/experimental/credit/cdo.hpp" line="98" bodyfile="/experimental/credit/cdo.hpp" bodystart="98" bodyend="183"/>
   </compounddef>
 </doxygen>

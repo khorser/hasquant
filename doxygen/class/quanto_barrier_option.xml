@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_quanto_barrier_option" kind="class" prot="public">
     <compoundname>QuantLib::QuantoBarrierOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp</includes>
+    <includes local="no">/instruments/quantobarrieroption.hpp</includes>
       <sectiondef kind="user-defined">
       <header>greeks</header>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_barrier_option_1a16e8429b2ebe705c6f981a7728158131" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -10,21 +10,21 @@
         <definition>Real qvega</definition>
         <argsstring>() const </argsstring>
         <name>qvega</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" line="47"/>
+        <location file="/instruments/quantobarrieroption.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_barrier_option_1a5b5e28f6a223305ec770c593eb8ba609" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real qrho</definition>
         <argsstring>() const </argsstring>
         <name>qrho</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" line="48"/>
+        <location file="/instruments/quantobarrieroption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_barrier_option_1ad8c7fcabc3c58c835d409bda7853f4e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real qlambda</definition>
         <argsstring>() const </argsstring>
         <name>qlambda</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" line="49"/>
+        <location file="/instruments/quantobarrieroption.hpp" line="49"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -33,14 +33,14 @@
         <definition>typedef BarrierOption::arguments arguments</definition>
         <argsstring></argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" bodystart="36" bodyend="-1"/>
+        <location file="/instruments/quantobarrieroption.hpp" line="36" bodyfile="/instruments/quantobarrieroption.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_quanto_barrier_option_1ad09ebede1ba1fd1175eef929ac6b7abf" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_quanto_option_results" kindref="compound">QuantoOptionResults</ref>&lt; BarrierOption::results &gt;</type>
         <definition>typedef QuantoOptionResults&lt;BarrierOption::results&gt; results</definition>
         <argsstring></argsstring>
         <name>results</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" bodystart="37" bodyend="-1"/>
+        <location file="/instruments/quantobarrieroption.hpp" line="37" bodyfile="/instruments/quantobarrieroption.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -69,7 +69,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" line="44"/>
+        <location file="/instruments/quantobarrieroption.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_barrier_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -83,11 +83,11 @@
         </param>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" line="51"/>
+        <location file="/instruments/quantobarrieroption.hpp" line="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Quanto version of a barrier option. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantobarrieroption.hpp" bodystart="34" bodyend="56"/>
+    <location file="/instruments/quantobarrieroption.hpp" line="34" bodyfile="/instruments/quantobarrieroption.hpp" bodystart="34" bodyend="56"/>
   </compounddef>
 </doxygen>

@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_multi_asset_option_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::MultiAssetOption::results</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp</includes>
+    <includes local="no">/instruments/multiassetoption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_multi_asset_option_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" bodystart="67" bodyend="70"/>
+        <location file="/instruments/multiassetoption.hpp" line="67" bodyfile="/instruments/multiassetoption.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from multi-asset option calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" bodystart="64" bodyend="71"/>
+    <location file="/instruments/multiassetoption.hpp" line="65" bodyfile="/instruments/multiassetoption.hpp" bodystart="64" bodyend="71"/>
   </compounddef>
 </doxygen>

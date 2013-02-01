@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_composite_constraint" kind="class" prot="public">
     <compoundname>QuantLib::CompositeConstraint</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
+    <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_composite_constraint_1a17d744afd044219f08e343ca1f2333e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,11 +17,11 @@
           <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>c2</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="124" bodyend="126"/>
+        <location file="/math/optimization/constraint.hpp" line="126" bodyfile="/math/optimization/constraint.hpp" bodystart="124" bodyend="126"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constraint enforcing both given sub-constraints </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="110" bodyend="127"/>
+    <location file="/math/optimization/constraint.hpp" line="110" bodyfile="/math/optimization/constraint.hpp" bodystart="110" bodyend="127"/>
   </compounddef>
 </doxygen>

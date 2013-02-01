@@ -32,7 +32,7 @@
 <para>Black-Scholes-Merton differential operator. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="test_1_test000074"><xreftitle>Tests</xreftitle><xrefdescription><para>coefficients are tested against constant BSM operator </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/bsmtermoperator.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/bsmtermoperator.hpp" bodystart="39" bodyend="-1"/>
+        <location file="/methods/finitedifferences/bsmtermoperator.hpp" line="39" bodyfile="/methods/finitedifferences/bsmtermoperator.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__findiff_1gab2342f59174f2223a9889acf4a86496a" prot="public" static="no">
         <type>PdeOperator&lt; PdeShortRate &gt;</type>
@@ -41,7 +41,7 @@
         <name>OneFactorOperator</name>
         <briefdescription>
 <para>Interest-rate single factor model differential operator. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/onefactoroperator.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/onefactoroperator.hpp" bodystart="36" bodyend="-1"/>
+        <location file="/methods/finitedifferences/onefactoroperator.hpp" line="36" bodyfile="/methods/finitedifferences/onefactoroperator.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>

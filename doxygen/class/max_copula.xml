@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_max_copula" kind="class" prot="public">
     <compoundname>QuantLib::MaxCopula</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/copulas/maxcopula.hpp</includes>
+    <includes local="no">/math/copulas/maxcopula.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_max_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -17,11 +17,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/maxcopula.hpp" line="35"/>
+        <location file="/math/copulas/maxcopula.hpp" line="35"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>max copula </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/maxcopula.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/maxcopula.hpp" bodystart="33" bodyend="36"/>
+    <location file="/math/copulas/maxcopula.hpp" line="33" bodyfile="/math/copulas/maxcopula.hpp" bodystart="33" bodyend="36"/>
   </compounddef>
 </doxygen>

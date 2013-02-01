@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_c_t_e_u" kind="class" prot="public">
     <compoundname>QuantLib::CCTEU</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp</includes>
+    <includes local="no">/instruments/bonds/btp.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Bond interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_c_c_t_e_u_1ae8885ec61dd18583e5ac542fb5498fe4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -20,7 +20,7 @@
 <para>accrued amount at a given date </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="193" bodyend="196"/>
+        <location file="/instruments/bonds/btp.hpp" line="54" bodyfile="/instruments/bonds/btp.hpp" bodystart="193" bodyend="196"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -52,11 +52,11 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="49"/>
+        <location file="/instruments/bonds/btp.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>Italian <ref refid="class_quant_lib_1_1_c_c_t_e_u" kindref="compound">CCTEU</ref> (Certificato di credito del tesoro) <ref refid="class_quant_lib_1_1_euribor6_m" kindref="compound">Euribor6M</ref> indexed floating rate bond </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="42" bodyend="56"/>
+    <location file="/instruments/bonds/btp.hpp" line="42" bodyfile="/instruments/bonds/btp.hpp" bodystart="42" bodyend="56"/>
   </compounddef>
 </doxygen>

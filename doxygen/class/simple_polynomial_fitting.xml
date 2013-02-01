@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_simple_polynomial_fitting" kind="class" prot="public">
     <compoundname>QuantLib::SimplePolynomialFitting</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
+    <includes local="no">/termstructures/yield/nonlinearfittingmethods.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_simple_polynomial_fitting_1ac77ed0c3330de2413cf47cfb60c6f5a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -18,7 +18,7 @@
           <declname>constrainAtZero</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="151"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="151"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_simple_polynomial_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
@@ -28,11 +28,11 @@
         <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="152"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="152"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Simple polynomial fitting method. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="147" bodyend="157"/>
+    <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="148" bodyfile="/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="147" bodyend="157"/>
   </compounddef>
 </doxygen>

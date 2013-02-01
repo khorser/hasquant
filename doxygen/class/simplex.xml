@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_simplex" kind="class" prot="public">
     <compoundname>QuantLib::Simplex</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp</includes>
+    <includes local="no">/math/optimization/simplex.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_simplex_1ae15567fc9f817266ba4916db54df9013" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -15,7 +15,7 @@
         </param>
         <detaileddescription>
 <para>Constructor taking as input the characteristic length </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="42" bodyend="42"/>
+        <location file="/math/optimization/simplex.hpp" line="42" bodyfile="/math/optimization/simplex.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_simplex_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>EndCriteria::Type</type>
@@ -33,11 +33,11 @@
         </param>
         <briefdescription>
 <para>minimize the optimization problem P </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="44"/>
+        <location file="/math/optimization/simplex.hpp" line="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Multi-dimensional simplex class. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="39" bodyend="52"/>
+    <location file="/math/optimization/simplex.hpp" line="39" bodyfile="/math/optimization/simplex.hpp" bodystart="39" bodyend="52"/>
   </compounddef>
 </doxygen>

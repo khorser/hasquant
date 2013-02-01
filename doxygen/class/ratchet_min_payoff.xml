@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_ratchet_min_payoff" kind="class" prot="public">
     <compoundname>QuantLib::RatchetMinPayoff</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp</includes>
+    <includes local="no">/instruments/stickyratchet.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_ratchet_min_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplements>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" bodystart="128" bodyend="128"/>
+        <location file="/instruments/stickyratchet.hpp" line="128" bodyfile="/instruments/stickyratchet.hpp" bodystart="128" bodyend="128"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -58,11 +58,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>accrualFactor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" bodystart="117" bodyend="125"/>
+        <location file="/instruments/stickyratchet.hpp" line="125" bodyfile="/instruments/stickyratchet.hpp" bodystart="117" bodyend="125"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>RatchetMin payoff (double option) </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" bodystart="115" bodyend="130"/>
+    <location file="/instruments/stickyratchet.hpp" line="115" bodyfile="/instruments/stickyratchet.hpp" bodystart="115" bodyend="130"/>
   </compounddef>
 </doxygen>

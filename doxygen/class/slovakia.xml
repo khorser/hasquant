@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_slovakia" kind="class" prot="public">
     <compoundname>QuantLib::Slovakia</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/slovakia.hpp</includes>
+    <includes local="no">/time/calendars/slovakia.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_slovakia_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -11,7 +11,7 @@
           <briefdescription>
 <para>Bratislava stock exchange. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/slovakia.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/slovakia.hpp" bodystart="64" bodyend="65"/>
+        <location file="/time/calendars/slovakia.hpp" line="64" bodyfile="/time/calendars/slovakia.hpp" bodystart="64" bodyend="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_slovakia_1abe41cfffd960e29a5d8b07be00aeda42aa7e58d3c9d678c72355b431a45b8a659" kindref="member">BSSE</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/slovakia.hpp" line="66"/>
+        <location file="/time/calendars/slovakia.hpp" line="66"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -68,6 +68,6 @@
 <para>St. Stephen, December 26th </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/slovakia.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/slovakia.hpp" bodystart="56" bodyend="67"/>
+    <location file="/time/calendars/slovakia.hpp" line="56" bodyfile="/time/calendars/slovakia.hpp" bodystart="56" bodyend="67"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_thirty360" kind="class" prot="public">
     <compoundname>QuantLib::Thirty360</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp</includes>
+    <includes local="no">/time/daycounters/thirty360.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578" prot="public" static="no">
         <name>Convention</name>
@@ -21,7 +21,7 @@
         <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a38200c77a50e3b8a545863777de3bb57" prot="public">
           <name>Italian</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="56" bodyend="58"/>
+        <location file="/time/daycounters/thirty360.hpp" line="56" bodyfile="/time/daycounters/thirty360.hpp" bodystart="56" bodyend="58"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -35,13 +35,13 @@
           <declname>c</declname>
           <defval>Thirty360::BondBasis</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="95" bodyend="96"/>
+        <location file="/time/daycounters/thirty360.hpp" line="96" bodyfile="/time/daycounters/thirty360.hpp" bodystart="95" bodyend="96"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>30/360 day count convention </para>    </briefdescription>
     <detaileddescription>
 <para>The 30/360 day count can be calculated according to US, European, or Italian conventions.</para><para>US (NASD) convention: if the starting date is the 31st of a month, it becomes equal to the 30th of the same month. If the ending date is the 31st of a month and the starting date is earlier than the 30th of a month, the ending date becomes equal to the 1st of the next month, otherwise the ending date becomes equal to the 30th of the same month. Also known as &quot;30/360&quot;, &quot;360/360&quot;, or &quot;Bond Basis&quot;</para><para>European convention: starting dates or ending dates that occur on the 31st of a month become equal to the 30th of the same month. Also known as &quot;30E/360&quot;, or &quot;Eurobond Basis&quot;</para><para>Italian convention: starting dates or ending dates that occur on February and are grater than 27 become equal to 30 for computational sake. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="54" bodyend="97"/>
+    <location file="/time/daycounters/thirty360.hpp" line="54" bodyfile="/time/daycounters/thirty360.hpp" bodystart="54" bodyend="97"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_european_engine" kind="class" prot="public">
     <compoundname>QuantLib::FDEuropeanEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/fdeuropeanengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -36,13 +36,13 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="46" bodyend="53"/>
+        <location file="/pricingengines/vanilla/fdeuropeanengine.hpp" line="51" bodyfile="/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="46" bodyend="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for European options using finite-differences. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000126"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against analytic results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="43" bodyend="57"/>
+    <location file="/pricingengines/vanilla/fdeuropeanengine.hpp" line="44" bodyfile="/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="43" bodyend="57"/>
   </compounddef>
 </doxygen>

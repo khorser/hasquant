@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_italy" kind="class" prot="public">
     <compoundname>QuantLib::Italy</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/italy.hpp</includes>
+    <includes local="no">/time/calendars/italy.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_italy_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -18,7 +18,7 @@
         </enumvalue>
         <briefdescription>
 <para>Italian calendars. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/italy.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/italy.hpp" bodystart="84" bodyend="86"/>
+        <location file="/time/calendars/italy.hpp" line="84" bodyfile="/time/calendars/italy.hpp" bodystart="84" bodyend="86"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
           <declname>market</declname>
           <defval><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/italy.hpp" line="87"/>
+        <location file="/time/calendars/italy.hpp" line="87"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -91,6 +91,6 @@
 <para>New Year&apos;s Eve, December 31st </para></listitem>
 </itemizedlist>
 </para><para><xrefsect id="test_1_test000148"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned results is tested against a list of known holidays. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/italy.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/italy.hpp" bodystart="70" bodyend="88"/>
+    <location file="/time/calendars/italy.hpp" line="70" bodyfile="/time/calendars/italy.hpp" bodystart="70" bodyend="88"/>
   </compounddef>
 </doxygen>

@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_r_f_currency" kind="class" prot="public">
     <compoundname>QuantLib::FRFCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_f_r_f_currency_1a697b68e54e2c08c0868edde5689aa3dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FRFCurrency</definition>
         <argsstring>()</argsstring>
         <name>FRFCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="571" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="571" bodyend="579"/>
+        <location file="/currencies/europe.hpp" line="571" bodyfile="/currencies/europe.hpp" bodystart="571" bodyend="579"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>French franc. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code was FRF; the numeric code was 250. It was divided in 100 centimes.</para><para>Obsoleted by the Euro since 1999. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="569" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="569" bodyend="580"/>
+    <location file="/currencies/europe.hpp" line="569" bodyfile="/currencies/europe.hpp" bodystart="569" bodyend="580"/>
   </compounddef>
 </doxygen>

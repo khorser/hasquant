@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_k_r_w_currency" kind="class" prot="public">
     <compoundname>QuantLib::KRWCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp</includes>
+    <includes local="no">/currencies/asia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_k_r_w_currency_1ac757345533932d6226a4f0c684991dcd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>KRWCurrency</definition>
         <argsstring>()</argsstring>
         <name>KRWCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="186" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="186" bodyend="193"/>
+        <location file="/currencies/asia.hpp" line="186" bodyfile="/currencies/asia.hpp" bodystart="186" bodyend="193"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>South-Korean won. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is KRW; the numeric code is 410. It is divided in 100 chon. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="184" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="184" bodyend="194"/>
+    <location file="/currencies/asia.hpp" line="184" bodyfile="/currencies/asia.hpp" bodystart="184" bodyend="194"/>
   </compounddef>
 </doxygen>

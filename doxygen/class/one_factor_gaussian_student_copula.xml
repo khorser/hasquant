@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_factor_gaussian_student_copula" kind="class" prot="public">
     <compoundname>QuantLib::OneFactorGaussianStudentCopula</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp</includes>
+    <includes local="no">/experimental/credit/onefactorstudentcopula.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a0ac2371595391c41cfa9cf447fcbcd95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -27,7 +27,7 @@
           <declname>integrationSteps</declname>
           <defval>200</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="113"/>
+        <location file="/experimental/credit/onefactorstudentcopula.hpp" line="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a87748e5305096b30afeeaa93ce59137c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -43,7 +43,7 @@
 <para>Density function of M. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="134" bodyend="136"/>
+        <location file="/experimental/credit/onefactorstudentcopula.hpp" line="115" bodyfile="/experimental/credit/onefactorstudentcopula.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a7f12eff80e70545a68af09aaab9a5bfa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -59,7 +59,7 @@
 <para>Cumulative distribution of Z. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="138" bodyend="140"/>
+        <location file="/experimental/credit/onefactorstudentcopula.hpp" line="116" bodyfile="/experimental/credit/onefactorstudentcopula.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -74,6 +74,6 @@
   copula approach requires zero mean and unit variance
   distributions, \form#128 is scaled by \form#131@_fakenl
 </verbatim></para><para><xrefsect id="todo_1_todo000009"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Improve performance/accuracy of the calculation of inverse cumulative Y. Tabulate and store it for selected correlations? </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="108" bodyend="132"/>
+    <location file="/experimental/credit/onefactorstudentcopula.hpp" line="108" bodyfile="/experimental/credit/onefactorstudentcopula.hpp" bodystart="108" bodyend="132"/>
   </compounddef>
 </doxygen>

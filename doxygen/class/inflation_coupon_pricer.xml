@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_inflation_coupon_pricer" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::InflationCouponPricer</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp</includes>
+    <includes local="no">/cashflows/inflationcouponpricer.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -10,14 +10,14 @@
         <definition>virtual Real swapletPrice</definition>
         <argsstring>() const =0</argsstring>
         <name>swapletPrice</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="59"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate swapletRate</definition>
         <argsstring>() const =0</argsstring>
         <name>swapletRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="60"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -28,7 +28,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="61"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -39,7 +39,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="62"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -50,7 +50,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="63"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a214779867426164db11377dadc63d672" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -61,7 +61,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="64"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a660765139f15a8cff2492d12b6232095" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -71,7 +71,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_inflation_coupon" kindref="compound">InflationCoupon</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="65"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -82,7 +82,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="70" bodyend="70"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="70" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -91,13 +91,13 @@
         <definition>virtual ~InflationCouponPricer</definition>
         <argsstring>()</argsstring>
         <name>~InflationCouponPricer</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="56" bodyend="56"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="56" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base inflation-coupon pricer. </para>    </briefdescription>
     <detaileddescription>
 <para>The main reason we can&apos;t use <ref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> as the base is that it takes a <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> which takes an <ref refid="class_quant_lib_1_1_interest_rate_index" kindref="compound">InterestRateIndex</ref> and we need an inflation index (these are lagged).</para><para>The basic inflation-specific thing that the pricer has to do is deal with different lags in the index and the option e.g. the option could look 3 months back and the index 2.</para><para>We add the requirement that pricers do inverseCap/Floor-lets. These are cap/floor-lets as usually defined, i.e. pay out if underlying is above/below a strike. The non-inverse (usual) versions are from a coupon point of view (a capped coupon has a maximum at the strike).</para><para>We add the inverse prices so that conventional caps can be priced simply. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="53" bodyend="75"/>
+    <location file="/cashflows/inflationcouponpricer.hpp" line="54" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="53" bodyend="75"/>
   </compounddef>
 </doxygen>

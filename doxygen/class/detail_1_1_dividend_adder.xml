@@ -12,7 +12,7 @@
           <type>const <ref refid="class_quant_lib_1_1_dividend" kindref="compound">Dividend</ref> *</type>
           <declname>d</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="202" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="202" bodyend="204"/>
+        <location file="/pricingengines/vanilla/fddividendengine.hpp" line="202" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="202" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_dividend_adder_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -23,9 +23,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="205" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="205" bodyend="207"/>
+        <location file="/pricingengines/vanilla/fddividendengine.hpp" line="205" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="205" bodyend="207"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="198" bodyend="208"/>
+    <location file="/pricingengines/vanilla/fddividendengine.hpp" line="198" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="198" bodyend="208"/>
   </compounddef>
 </doxygen>

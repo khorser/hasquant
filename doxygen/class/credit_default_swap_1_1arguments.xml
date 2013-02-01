@@ -8,70 +8,70 @@
         <definition>Protection::Side side</definition>
         <argsstring></argsstring>
         <name>side</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="252" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="252" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="252" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a120e19fab4c30279f6f0428ea7c27a04" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real notional</definition>
         <argsstring></argsstring>
         <name>notional</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="253" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="253" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="253" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a4e2f97acaaa3f335e064dec8c620c705" prot="public" static="no" mutable="no">
         <type>boost::optional&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
         <definition>boost::optional&lt;Rate&gt; upfront</definition>
         <argsstring></argsstring>
         <name>upfront</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="254" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="254" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="254" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1ae05176c7b5728214ae2e69543c588fc3" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate spread</definition>
         <argsstring></argsstring>
         <name>spread</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="255" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="255" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="255" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1adffba73d0dcc9a873d443fd164ebeeee" prot="public" static="no" mutable="no">
         <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
         <definition>Leg leg</definition>
         <argsstring></argsstring>
         <name>leg</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="256" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="256" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="256" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="256" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a9ea03369e1b929157342f92dce97b3c9" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;CashFlow&gt; upfrontPayment</definition>
         <argsstring></argsstring>
         <name>upfrontPayment</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="257" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="257" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="257" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="257" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a551e820a8ced6416917f142a51e8ec54" prot="public" static="no" mutable="no">
         <type>bool</type>
         <definition>bool settlesAccrual</definition>
         <argsstring></argsstring>
         <name>settlesAccrual</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="258" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="258" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="258" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="258" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a311f71376f55902ec2d0e6dbef3afb8d" prot="public" static="no" mutable="no">
         <type>bool</type>
         <definition>bool paysAtDefaultTime</definition>
         <argsstring></argsstring>
         <name>paysAtDefaultTime</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="259" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="259" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="259" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="259" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a18413ecec9c466dda682cf41bf487c06" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Claim&gt; claim</definition>
         <argsstring></argsstring>
         <name>claim</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="260" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="260" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="260" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="260" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1ab649d1beb7709df7e6d3927dc0c9b509" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date protectionStart</definition>
         <argsstring></argsstring>
         <name>protectionStart</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="261" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="261" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="261" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="261" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -80,16 +80,16 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="251"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="251"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="262"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="262"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="249" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="248" bodyend="263"/>
+    <location file="/instruments/creditdefaultswap.hpp" line="249" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="248" bodyend="263"/>
   </compounddef>
 </doxygen>

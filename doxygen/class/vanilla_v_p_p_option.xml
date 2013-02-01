@@ -45,14 +45,14 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swing_exercise" kindref="compound">SwingExercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="41"/>
+        <location file="/experimental/finitedifferences/vanillavppoption.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_v_p_p_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="43"/>
+        <location file="/experimental/finitedifferences/vanillavppoption.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_v_p_p_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -62,9 +62,9 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="44"/>
+        <location file="/experimental/finitedifferences/vanillavppoption.hpp" line="44"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="33" bodyend="52"/>
+    <location file="/experimental/finitedifferences/vanillavppoption.hpp" line="33" bodyfile="/experimental/finitedifferences/vanillavppoption.hpp" bodystart="33" bodyend="52"/>
   </compounddef>
 </doxygen>

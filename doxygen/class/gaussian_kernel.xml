@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gaussian_kernel" kind="class" prot="public">
     <compoundname>QuantLib::GaussianKernel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp</includes>
+    <includes local="no">/math/kernelfunctions.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a589c757d080f04958842516b5ec50746" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>sigma</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="46" bodyend="50"/>
+        <location file="/math/kernelfunctions.hpp" line="47" bodyfile="/math/kernelfunctions.hpp" bodystart="46" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -29,7 +29,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="52" bodyend="54"/>
+        <location file="/math/kernelfunctions.hpp" line="52" bodyfile="/math/kernelfunctions.hpp" bodystart="52" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -40,7 +40,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="56" bodyend="58"/>
+        <location file="/math/kernelfunctions.hpp" line="56" bodyfile="/math/kernelfunctions.hpp" bodystart="56" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -51,11 +51,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="60" bodyend="62"/>
+        <location file="/math/kernelfunctions.hpp" line="60" bodyfile="/math/kernelfunctions.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gaussian kernel function. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="44" bodyend="68"/>
+    <location file="/math/kernelfunctions.hpp" line="44" bodyfile="/math/kernelfunctions.hpp" bodystart="44" bodyend="68"/>
   </compounddef>
 </doxygen>

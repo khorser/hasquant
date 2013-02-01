@@ -8,9 +8,9 @@
         <definition>TokyoKilolitreUnitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>TokyoKilolitreUnitOfMeasure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="91" bodyend="96"/>
+        <location file="/experimental/commodities/petroleumunitsofmeasure.hpp" line="91" bodyfile="/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="91" bodyend="96"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="89" bodyend="97"/>
+    <location file="/experimental/commodities/petroleumunitsofmeasure.hpp" line="89" bodyfile="/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="89" bodyend="97"/>
   </compounddef>
 </doxygen>

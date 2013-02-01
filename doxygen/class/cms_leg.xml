@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cms_leg" kind="class" prot="public">
     <compoundname>QuantLib::CmsLeg</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp</includes>
+    <includes local="no">/cashflows/cmscoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1aaf5f9cb5b8241992068ae7e170ea65d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
           <declname>swapIndex</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="72"/>
+        <location file="/cashflows/cmscoupon.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a46ef331960f415e4ba02cb37ba651654" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -28,7 +28,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>notional</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="73"/>
+        <location file="/cashflows/cmscoupon.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1ad627b8e63b49764d5fc69515b88c15d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -39,7 +39,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>notionals</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="74"/>
+        <location file="/cashflows/cmscoupon.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a3172b8ad22f13e5330cba2062ba8a8a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -49,7 +49,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="75"/>
+        <location file="/cashflows/cmscoupon.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a757d59efeea02d65fc498270b4dc3b7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -59,7 +59,7 @@
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="76"/>
+        <location file="/cashflows/cmscoupon.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1addf818d7dbac265d5042fb6819d20b98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -70,7 +70,7 @@
           <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
           <declname>fixingDays</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="77"/>
+        <location file="/cashflows/cmscoupon.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a98080b5154bef69d794cd744724a893d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -81,7 +81,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt; &amp;</type>
           <declname>fixingDays</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="78"/>
+        <location file="/cashflows/cmscoupon.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a14a87c76d7d4a3a8fa6894b4f06eb508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -92,7 +92,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>gearing</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="79"/>
+        <location file="/cashflows/cmscoupon.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a262cad32e381f08a8e5ce55ec50982f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -103,7 +103,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>gearings</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="80"/>
+        <location file="/cashflows/cmscoupon.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a8bda82464ac85a841d2018018b85d1df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -114,7 +114,7 @@
           <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
           <declname>spread</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="81"/>
+        <location file="/cashflows/cmscoupon.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a315ebfdf60c38098824fee4589947543" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -125,7 +125,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="82"/>
+        <location file="/cashflows/cmscoupon.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a892216795adb9e8b250f66cdd0354e82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -136,7 +136,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>cap</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="83"/>
+        <location file="/cashflows/cmscoupon.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1af929afa20a7827f60454916c8af282ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -147,7 +147,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>caps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="84"/>
+        <location file="/cashflows/cmscoupon.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1ae76ef4114bba9ea1c3f7b70a868ece6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -158,7 +158,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>floor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="85"/>
+        <location file="/cashflows/cmscoupon.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a34e22413af535c7b0109aef602bab5e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -169,7 +169,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>floors</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="86"/>
+        <location file="/cashflows/cmscoupon.hpp" line="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1aca27db8c91b060dc26e7277047db55f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -181,7 +181,7 @@
           <declname>flag</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="87"/>
+        <location file="/cashflows/cmscoupon.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1a53a34cf4b3b21829708b7d540812f1c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cms_leg" kindref="compound">CmsLeg</ref> &amp;</type>
@@ -193,18 +193,18 @@
           <declname>flag</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="88"/>
+        <location file="/cashflows/cmscoupon.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>operator Leg</definition>
         <argsstring>() const </argsstring>
         <name>operator Leg</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="89"/>
+        <location file="/cashflows/cmscoupon.hpp" line="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>helper class building a sequence of capped/floored cms-rate coupons </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" bodystart="69" bodyend="101"/>
+    <location file="/cashflows/cmscoupon.hpp" line="69" bodyfile="/cashflows/cmscoupon.hpp" bodystart="69" bodyend="101"/>
   </compounddef>
 </doxygen>

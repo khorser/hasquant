@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_garman_klass_abstract" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::GarmanKlassAbstract</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp</includes>
+    <includes local="no">/models/volatility/garmanklass.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_abstract_1ad5920315fa0f5007e061d9c4c06a0b2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="47" bodyend="48"/>
+        <location file="/models/volatility/garmanklass.hpp" line="48" bodyfile="/models/volatility/garmanklass.hpp" bodystart="47" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
@@ -24,7 +24,7 @@
           <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="50" bodyend="60"/>
+        <location file="/models/volatility/garmanklass.hpp" line="50" bodyfile="/models/volatility/garmanklass.hpp" bodystart="50" bodyend="60"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -32,6 +32,6 @@
     <detaileddescription>
 <para>This class implements a concrete volatility model based on high low formulas using the method of Garman and Klass in their paper &quot;On the Estimation of the Security Price from
        Historical Data&quot; at <ulink url="http://www.fea.com/resources/pdf/a_estimation_of_security_price.pdf">http://www.fea.com/resources/pdf/a_estimation_of_security_price.pdf</ulink></para><para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="41" bodyend="61"/>
+    <location file="/models/volatility/garmanklass.hpp" line="42" bodyfile="/models/volatility/garmanklass.hpp" bodystart="41" bodyend="61"/>
   </compounddef>
 </doxygen>

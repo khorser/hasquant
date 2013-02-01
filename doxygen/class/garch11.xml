@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_garch11" kind="class" prot="public">
     <compoundname>QuantLib::Garch11</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp</includes>
+    <includes local="no">/models/volatility/garch.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_garch11_1a5f96f517b814e7fa452aa77234f95d3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>vl</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" bodystart="39" bodyend="40"/>
+        <location file="/models/volatility/garch.hpp" line="40" bodyfile="/models/volatility/garch.hpp" bodystart="39" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_garch11_1a62c9ab7102b3c64bdbc952d4e1807929" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -32,7 +32,7 @@
           <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>qs</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" bodystart="41" bodyend="43"/>
+        <location file="/models/volatility/garch.hpp" line="41" bodyfile="/models/volatility/garch.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_garch11_1a32fdfa0e49d602f4f56814ee4fcb0bd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
@@ -43,7 +43,7 @@
           <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="45"/>
+        <location file="/models/volatility/garch.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_garch11_1a2639692cf9c864c3ea4a5e05a70ec6aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
@@ -63,7 +63,7 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="49"/>
+        <location file="/models/volatility/garch.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_garch11_1a7e3c6f9b2879fae5094226692b4b26d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -74,13 +74,13 @@
           <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="51"/>
+        <location file="/models/volatility/garch.hpp" line="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>GARCH volatility model. </para>    </briefdescription>
     <detaileddescription>
 <para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" bodystart="35" bodyend="55"/>
+    <location file="/models/volatility/garch.hpp" line="35" bodyfile="/models/volatility/garch.hpp" bodystart="35" bodyend="55"/>
   </compounddef>
 </doxygen>

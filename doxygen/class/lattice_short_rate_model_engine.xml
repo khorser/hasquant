@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lattice_short_rate_model_engine" kind="class" prot="public">
     <compoundname>QuantLib::LatticeShortRateModelEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp</includes>
+    <includes local="no">/pricingengines/latticeshortratemodelengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -29,7 +29,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>timeSteps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" bodystart="58" bodyend="66"/>
+        <location file="/pricingengines/latticeshortratemodelengine.hpp" line="43" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="58" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_short_rate_model_engine_1aaa4869e006043fd23877d570331730ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -44,7 +44,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>timeSteps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" bodystart="69" bodyend="77"/>
+        <location file="/pricingengines/latticeshortratemodelengine.hpp" line="46" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="69" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_short_rate_model_engine_1acbc8f3ff77b5c912ed7558b6eb8c23b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -59,7 +59,7 @@
           <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>timeGrid</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" bodystart="80" bodyend="86"/>
+        <location file="/pricingengines/latticeshortratemodelengine.hpp" line="49" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="80" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_short_rate_model_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -67,13 +67,13 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" bodystart="89" bodyend="94"/>
+        <location file="/pricingengines/latticeshortratemodelengine.hpp" line="50" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="89" bodyend="94"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Engine for a short-rate model specialized on a lattice. </para>    </briefdescription>
     <detaileddescription>
 <para>Derived engines only need to implement the <computeroutput>calculate()</computeroutput> method </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/latticeshortratemodelengine.hpp" bodystart="38" bodyend="55"/>
+    <location file="/pricingengines/latticeshortratemodelengine.hpp" line="39" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="38" bodyend="55"/>
   </compounddef>
 </doxygen>

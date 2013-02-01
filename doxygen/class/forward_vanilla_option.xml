@@ -2,21 +2,21 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_vanilla_option" kind="class" prot="public">
     <compoundname>QuantLib::ForwardVanillaOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp</includes>
+    <includes local="no">/instruments/forwardvanillaoption.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_forward_vanilla_option_1aa921b26418fb0d2cd2b73a34aef8ae14" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_forward_option_arguments" kindref="compound">ForwardOptionArguments</ref>&lt; <ref refid="class_quant_lib_1_1_option_1_1arguments" kindref="compound">OneAssetOption::arguments</ref> &gt;</type>
         <definition>typedef ForwardOptionArguments&lt;OneAssetOption::arguments&gt; arguments</definition>
         <argsstring></argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="50" bodyend="-1"/>
+        <location file="/instruments/forwardvanillaoption.hpp" line="50" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_forward_vanilla_option_1a2d3bc9f3bc17aa9ecb42314b5932aa74" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_one_asset_option_1_1results" kindref="compound">OneAssetOption::results</ref></type>
         <definition>typedef OneAssetOption::results results</definition>
         <argsstring></argsstring>
         <name>results</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="51" bodyend="-1"/>
+        <location file="/instruments/forwardvanillaoption.hpp" line="51" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -41,7 +41,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="55"/>
+        <location file="/instruments/forwardvanillaoption.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_vanilla_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -54,7 +54,7 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="56"/>
+        <location file="/instruments/forwardvanillaoption.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -68,11 +68,11 @@
         </param>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="57"/>
+        <location file="/instruments/forwardvanillaoption.hpp" line="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Forward version of a vanilla option </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="48" bodyend="62"/>
+    <location file="/instruments/forwardvanillaoption.hpp" line="48" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="48" bodyend="62"/>
   </compounddef>
 </doxygen>

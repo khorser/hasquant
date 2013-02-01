@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_a_r_s_currency" kind="class" prot="public">
     <compoundname>QuantLib::ARSCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp</includes>
+    <includes local="no">/currencies/america.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_a_r_s_currency_1a9b92913e7902ebda6a0c48f868d5e881" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ARSCurrency</definition>
         <argsstring>()</argsstring>
         <name>ARSCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="42" bodyend="49"/>
+        <location file="/currencies/america.hpp" line="42" bodyfile="/currencies/america.hpp" bodystart="42" bodyend="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Argentinian peso. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is ARS; the numeric code is 32. It is divided in 100 centavos. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="40" bodyend="50"/>
+    <location file="/currencies/america.hpp" line="40" bodyfile="/currencies/america.hpp" bodystart="40" bodyend="50"/>
   </compounddef>
 </doxygen>

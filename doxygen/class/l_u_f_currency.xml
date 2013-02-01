@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_l_u_f_currency" kind="class" prot="public">
     <compoundname>QuantLib::LUFCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_l_u_f_currency_1ac0f8a1138b2b8d57ceb00fd2b8214fd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>LUFCurrency</definition>
         <argsstring>()</argsstring>
         <name>LUFCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="655" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="655" bodyend="663"/>
+        <location file="/currencies/europe.hpp" line="655" bodyfile="/currencies/europe.hpp" bodystart="655" bodyend="663"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Luxembourg franc. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code was LUF; the numeric code was 442. It was divided in 100 centimes.</para><para>Obsoleted by the Euro since 1999. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="653" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="653" bodyend="664"/>
+    <location file="/currencies/europe.hpp" line="653" bodyfile="/currencies/europe.hpp" bodystart="653" bodyend="664"/>
   </compounddef>
 </doxygen>

@@ -26,7 +26,7 @@
           <declname>accuracy</declname>
           <defval>1e-8</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="56"/>
+        <location file="/math/distributions/chisquaredistribution.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -37,9 +37,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="57"/>
+        <location file="/math/distributions/chisquaredistribution.hpp" line="57"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" bodystart="51" bodyend="64"/>
+    <location file="/math/distributions/chisquaredistribution.hpp" line="52" bodyfile="/math/distributions/chisquaredistribution.hpp" bodystart="51" bodyend="64"/>
   </compounddef>
 </doxygen>

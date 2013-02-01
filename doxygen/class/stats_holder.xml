@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_stats_holder" kind="class" prot="public">
     <compoundname>QuantLib::StatsHolder</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp</includes>
+    <includes local="no">/math/statistics/gaussianstatistics.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_stats_holder_1a64a1ba313ad4c1fd58bf5887c366df5a" prot="public" static="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>typedef Real value_type</definition>
         <argsstring></argsstring>
         <name>value_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" bodystart="116" bodyend="-1"/>
+        <location file="/math/statistics/gaussianstatistics.hpp" line="116" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -26,32 +26,32 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>standardDeviation</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" bodystart="117" bodyend="119"/>
+        <location file="/math/statistics/gaussianstatistics.hpp" line="119" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="117" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stats_holder_1a4326ad970569773a96659561239688a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>~StatsHolder</definition>
         <argsstring>()</argsstring>
         <name>~StatsHolder</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" bodystart="120" bodyend="120"/>
+        <location file="/math/statistics/gaussianstatistics.hpp" line="120" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="120" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stats_holder_1a962ffe5a3593be370d5c883365c060f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real mean</definition>
         <argsstring>() const </argsstring>
         <name>mean</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" bodystart="121" bodyend="121"/>
+        <location file="/math/statistics/gaussianstatistics.hpp" line="121" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="121" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stats_holder_1af728e0bfb80c48d44424d590cbfda34e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real standardDeviation</definition>
         <argsstring>() const </argsstring>
         <name>standardDeviation</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" bodystart="122" bodyend="122"/>
+        <location file="/math/statistics/gaussianstatistics.hpp" line="122" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="122" bodyend="122"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Helper class for precomputed distributions. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" bodystart="114" bodyend="125"/>
+    <location file="/math/statistics/gaussianstatistics.hpp" line="114" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="114" bodyend="125"/>
   </compounddef>
 </doxygen>

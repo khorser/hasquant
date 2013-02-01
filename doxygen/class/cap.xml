@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cap" kind="class" prot="public">
     <compoundname>QuantLib::Cap</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp</includes>
+    <includes local="no">/instruments/capfloor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cap_1a1758c9243e8ffe62b0491ba27420268b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,11 +17,11 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>exerciseRates</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="104" bodyend="107"/>
+        <location file="/instruments/capfloor.hpp" line="107" bodyfile="/instruments/capfloor.hpp" bodystart="104" bodyend="107"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Concrete cap class. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="102" bodyend="108"/>
+    <location file="/instruments/capfloor.hpp" line="102" bodyfile="/instruments/capfloor.hpp" bodystart="102" bodyend="108"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree" kind="class" prot="public">
     <compoundname>QuantLib::TwoFactorModel::ShortRateTree</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp</includes>
+    <includes local="no">/models/shortrate/twofactormodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree_1a860511eeaaac9869f739edd9cf1df4d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -23,7 +23,7 @@
         </param>
         <briefdescription>
 <para>Plain tree build-up from short-rate dynamics. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="114"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree_1a02737f54768601c8214adcff0fe9145f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
@@ -38,11 +38,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="116" bodyend="126"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="116" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="116" bodyend="126"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Recombining two-dimensional tree discretizing the state variable. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="108" bodyend="129"/>
+    <location file="/models/shortrate/twofactormodel.hpp" line="109" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="108" bodyend="129"/>
   </compounddef>
 </doxygen>

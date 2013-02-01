@@ -20,7 +20,7 @@
           <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
           <declname>discount</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="217" bodyend="224"/>
+        <location file="/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="84" bodyfile="/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="217" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_european_g_j_r_g_a_r_c_h_path_pricer_1ad417fc96cc2be719a7adfc60ca77d4bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -31,9 +31,9 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>Multipath</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="226" bodyend="233"/>
+        <location file="/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="85" bodyfile="/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="226" bodyend="233"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="80" bodyend="89"/>
+    <location file="/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="80" bodyfile="/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="80" bodyend="89"/>
   </compounddef>
 </doxygen>

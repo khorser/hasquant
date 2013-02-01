@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_variance_gamma_engine" kind="class" prot="public">
     <compoundname>QuantLib::VarianceGammaEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp</includes>
+    <includes local="no">/experimental/variancegamma/analyticvariancegammaengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_engine_1aec41fc8d5057dccde9163e13c8dd4407" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -12,20 +12,20 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_variance_gamma_process" kindref="compound">VarianceGammaProcess</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp" line="41"/>
+        <location file="/experimental/variancegamma/analyticvariancegammaengine.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp" line="42"/>
+        <location file="/experimental/variancegamma/analyticvariancegammaengine.hpp" line="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Variance Gamma Pricing engine for European vanilla options using integral approach. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000010"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp" bodystart="38" bodyend="45"/>
+    <location file="/experimental/variancegamma/analyticvariancegammaengine.hpp" line="38" bodyfile="/experimental/variancegamma/analyticvariancegammaengine.hpp" bodystart="38" bodyend="45"/>
   </compounddef>
 </doxygen>

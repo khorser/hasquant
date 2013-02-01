@@ -8,7 +8,7 @@
         <definition>typedef Real StateType</definition>
         <argsstring></argsstring>
         <name>StateType</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="42" bodyend="-1"/>
+        <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="42" bodyfile="/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -21,9 +21,9 @@
           <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="43" bodyend="45"/>
+        <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="43" bodyfile="/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="43" bodyend="45"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="40" bodyend="46"/>
+    <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="40" bodyfile="/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="40" bodyend="46"/>
   </compounddef>
 </doxygen>

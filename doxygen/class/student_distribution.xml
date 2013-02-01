@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_student_distribution" kind="class" prot="public">
     <compoundname>QuantLib::StudentDistribution</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp</includes>
+    <includes local="no">/math/distributions/studenttdistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_student_distribution_1a72fd4ee923827897f994b08cd4b1e57c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
           <declname>n</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="44" bodyend="46"/>
+        <location file="/math/distributions/studenttdistribution.hpp" line="44" bodyfile="/math/distributions/studenttdistribution.hpp" bodystart="44" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_student_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -24,13 +24,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="47"/>
+        <location file="/math/distributions/studenttdistribution.hpp" line="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Student t-distribution. </para>    </briefdescription>
     <detaileddescription>
 <para>Probability density function for <formula id="181">$ n $</formula> degrees of freedom (see mathworld.wolfram.com or wikipedia.org): <formula id="185">\[ f(x) = \frac {\Gamma\left(\frac{n+1}{2}\right)} {\sqrt{n\pi} \, \Gamma\left(\frac{n}{2}\right)}\: \frac {1} {\left(1+\frac{x^2}{n}\right)^{(n+1)/2}} \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="42" bodyend="50"/>
+    <location file="/math/distributions/studenttdistribution.hpp" line="42" bodyfile="/math/distributions/studenttdistribution.hpp" bodystart="42" bodyend="50"/>
   </compounddef>
 </doxygen>

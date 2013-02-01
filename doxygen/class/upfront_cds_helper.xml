@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_upfront_cds_helper" kind="class" prot="public">
     <compoundname>QuantLib::UpfrontCdsHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
+    <includes local="no">/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a631b5125f1e204255ad5f6580d0264e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -71,7 +71,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>the upfront must be quoted in fractional units. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="154"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="154"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a5e1aa11b8fec503c3e4fa26c5b2117a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -140,7 +140,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>the upfront must be quoted in fractional units. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="170"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -148,7 +148,7 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="171"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a5b508edbd7d439284c55178fd681adb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -156,11 +156,11 @@
         <argsstring>()</argsstring>
         <name>initializeDates</name>
         <reimplements refid="class_quant_lib_1_1_cds_helper_1a5b508edbd7d439284c55178fd681adb0">initializeDates</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="172"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="172"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Upfront-quoted CDS hazard rate bootstrap helper. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="138" bodyend="178"/>
+    <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="138" bodyfile="/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="138" bodyend="178"/>
   </compounddef>
 </doxygen>

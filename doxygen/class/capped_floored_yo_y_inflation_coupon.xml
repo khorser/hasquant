@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon" kind="class" prot="public">
     <compoundname>QuantLib::CappedFlooredYoYInflationCoupon</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp</includes>
+    <includes local="no">/cashflows/capflooredinflationcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>augmented Coupon interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>swap(let) rate </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="99"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a3769052f73e0705a1af285e974fae169" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -22,7 +22,7 @@
         <name>cap</name>
         <briefdescription>
 <para>cap </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="101"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a2982a6603a5536c983895d191b358d70" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -31,7 +31,7 @@
         <name>floor</name>
         <briefdescription>
 <para>floor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="103"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a1f3d0a8bc74dac1782660657055382c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -40,7 +40,7 @@
         <name>effectiveCap</name>
         <briefdescription>
 <para>effective cap of fixing </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="105"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a367019171b0d6cd2d82334d19650367a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -49,7 +49,7 @@
         <name>effectiveFloor</name>
         <briefdescription>
 <para>effective floor of fixing </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="107"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="107"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -60,7 +60,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="112"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="112"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -75,7 +75,7 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="117"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="117"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -98,7 +98,7 @@
           <declname>floor</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="72"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1ac190319df6222fba5c7088e610ba817a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -167,21 +167,21 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" bodystart="75" bodyend="94"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="92" bodyfile="/cashflows/capflooredinflationcoupon.hpp" bodystart="75" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1aa9a0e113b3dc93361f1c9f0b199191c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isCapped</definition>
         <argsstring>() const </argsstring>
         <name>isCapped</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" bodystart="120" bodyend="120"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="120" bodyfile="/cashflows/capflooredinflationcoupon.hpp" bodystart="120" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a2a2a88688014a4840818ae383d1c282c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isFloored</definition>
         <argsstring>() const </argsstring>
         <name>isFloored</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" bodystart="121" bodyend="121"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="121" bodyfile="/cashflows/capflooredinflationcoupon.hpp" bodystart="121" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1af2b4cec8f0cac8b96a39273aeec915cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -191,7 +191,7 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer" kindref="compound">YoYInflationCouponPricer</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="123"/>
+        <location file="/cashflows/capflooredinflationcoupon.hpp" line="123"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -208,6 +208,6 @@
   They can be decomposed in the following manner.  Decomposition
   of a capped floating rate coupon when paysWithin = true:
 </verbatim> <formula id="51">\[ R = \min(a L + b, C) = (a L + b) + \min(C - b - \xi |a| L, 0) \]</formula> where <formula id="52">$ \xi = sgn(a) $</formula>. Then: <formula id="53">\[ R = (a L + b) + |a| \min(\frac{C - b}{|a|} - \xi L, 0) \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" bodystart="66" bodyend="133"/>
+    <location file="/cashflows/capflooredinflationcoupon.hpp" line="66" bodyfile="/cashflows/capflooredinflationcoupon.hpp" bodystart="66" bodyend="133"/>
   </compounddef>
 </doxygen>

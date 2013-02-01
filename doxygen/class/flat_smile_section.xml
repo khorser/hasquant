@@ -9,21 +9,21 @@
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="57" bodyend="59"/>
+        <location file="/termstructures/volatility/flatsmilesection.hpp" line="46" bodyfile="/termstructures/volatility/flatsmilesection.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="61" bodyend="63"/>
+        <location file="/termstructures/volatility/flatsmilesection.hpp" line="47" bodyfile="/termstructures/volatility/flatsmilesection.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real atmLevel</definition>
         <argsstring>() const </argsstring>
         <name>atmLevel</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="65" bodyend="67"/>
+        <location file="/termstructures/volatility/flatsmilesection.hpp" line="48" bodyfile="/termstructures/volatility/flatsmilesection.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -54,7 +54,7 @@
           <declname>atmLevel</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="39"/>
+        <location file="/termstructures/volatility/flatsmilesection.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1aed359b90458a66d44a64820b1ada1c25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -78,9 +78,9 @@
           <declname>atmLevel</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="43"/>
+        <location file="/termstructures/volatility/flatsmilesection.hpp" line="43"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="33" bodyend="55"/>
+    <location file="/termstructures/volatility/flatsmilesection.hpp" line="33" bodyfile="/termstructures/volatility/flatsmilesection.hpp" bodystart="33" bodyend="55"/>
   </compounddef>
 </doxygen>

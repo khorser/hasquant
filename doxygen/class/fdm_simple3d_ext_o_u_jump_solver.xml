@@ -25,7 +25,7 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="41" bodyend="49"/>
+        <location file="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="47" bodyfile="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple3d_ext_o_u_jump_solver_1ab771f4f835e1bafb70f1f833e949c2e5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -44,9 +44,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>z</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="51" bodyend="54"/>
+        <location file="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="51" bodyfile="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="39" bodyend="74"/>
+    <location file="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="39" bodyfile="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="39" bodyend="74"/>
   </compounddef>
 </doxygen>

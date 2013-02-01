@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_kluge_ext_o_u_process" kind="class" prot="public">
     <compoundname>QuantLib::KlugeExtOUProcess</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp</includes>
+    <includes local="no">/experimental/processes/klugeextouprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a55a7c3aeeb705e00c56215f1b2f2cf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt; &amp;</type>
           <declname>extOU</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="61"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -31,7 +31,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="63"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -41,7 +41,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
         <briefdescription>
 <para>returns the number of independent factors of the process </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="64"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -51,7 +51,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="66"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -69,7 +69,7 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="67"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -87,7 +87,7 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="68"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -113,32 +113,32 @@
         </param>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="70"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a5b46d5d1ec1c35c79571ef7bcce751e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;ExtOUWithJumpsProcess&gt; getKlugeProcess</definition>
         <argsstring>() const </argsstring>
         <name>getKlugeProcess</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="72"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a743af801f2f1cc3473411af76799f256" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; getExtOUProcess</definition>
         <argsstring>() const </argsstring>
         <name>getExtOUProcess</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="74"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="76"/>
+        <location file="/experimental/processes/klugeextouprocess.hpp" line="76"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>This class describes a correlated Kluge - extended Ornstein-Uhlenbeck process governed by <formula id="133">\[ \begin{array}{rcl} P_t &amp;=&amp; \exp(p_t + X_t + Y_t) \\ dX_t &amp;=&amp; -\alpha X_tdt + \sigma_x dW_t^x \\ dY_t &amp;=&amp; -\beta Y_{t-}dt + J_tdN_t \\ \omega(J) &amp;=&amp; \eta e^{-\eta J} \\ G_t &amp;=&amp; \exp(g_t + U_t) \\ dU_t &amp;=&amp; -\kappa U_tdt + \sigma_udW_t^u \\ \rho &amp;=&amp; \mathrm{corr} (dW_t^x, dW_t^u) \end{array} \]</formula></para><para>References: B. Hambly, S. Howison, T. Kluge, Modelling spikes and pricing swing options in electricity markets, <ulink url="http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf">http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf</ulink> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" bodystart="56" bodyend="82"/>
+    <location file="/experimental/processes/klugeextouprocess.hpp" line="56" bodyfile="/experimental/processes/klugeextouprocess.hpp" bodystart="56" bodyend="82"/>
   </compounddef>
 </doxygen>

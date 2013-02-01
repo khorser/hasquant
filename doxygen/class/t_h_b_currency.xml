@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_t_h_b_currency" kind="class" prot="public">
     <compoundname>QuantLib::THBCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp</includes>
+    <includes local="no">/currencies/asia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_t_h_b_currency_1ab15fbe9faec645c6379a75c515c3f038" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>THBCurrency</definition>
         <argsstring>()</argsstring>
         <name>THBCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="294" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="294" bodyend="301"/>
+        <location file="/currencies/asia.hpp" line="294" bodyfile="/currencies/asia.hpp" bodystart="294" bodyend="301"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Thai baht. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is THB; the numeric code is 764. It is divided in 100 stang. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="292" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="292" bodyend="302"/>
+    <location file="/currencies/asia.hpp" line="292" bodyfile="/currencies/asia.hpp" bodystart="292" bodyend="302"/>
   </compounddef>
 </doxygen>

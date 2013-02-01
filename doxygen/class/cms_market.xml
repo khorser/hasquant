@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cms_market" kind="class" prot="public">
     <compoundname>QuantLib::CmsMarket</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp</includes>
+    <includes local="no">/termstructures/volatility/swaption/cmsmarket.hpp</includes>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -11,7 +11,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="53" bodyend="53"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="53" bodyfile="/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -44,7 +44,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountingTS</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="50"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1ab7b98266617e9e11d3e99e165fe9978e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -59,35 +59,35 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>meanReversion</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="57"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1adf1466388fd71f68aefe316d9e01f51f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Period&gt;&amp; swapTenors</definition>
         <argsstring>() const </argsstring>
         <name>swapTenors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="59" bodyend="59"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="59" bodyfile="/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1a15adbf5981a8ff0090362440bf072022" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; impliedCmsSpreads</definition>
         <argsstring>()</argsstring>
         <name>impliedCmsSpreads</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="60" bodyend="60"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="60" bodyfile="/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1acdfd004ea776f36e5b17b1e4f8c5c3e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; spreadErrors</definition>
         <argsstring>()</argsstring>
         <name>spreadErrors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="61" bodyend="61"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="61" bodyfile="/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1a75afedb1d8ac13a96c01da419ce7215d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
         <definition>Matrix browse</definition>
         <argsstring>() const </argsstring>
         <name>browse</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="62"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1a35b539577eb37aedc775a0ede8344404" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -98,7 +98,7 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>weights</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="65"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1a319b04e94080612bf35604dd912bb673" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -109,7 +109,7 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>weights</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="66"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1ae2722911ca9e8c3b8f54f22d49db2dd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -120,7 +120,7 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>weights</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="67"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1aa92e7b6511287b481070207a69299b7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -131,7 +131,7 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>weights</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="68"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1a189b98a59a9ebcd052bfea71a1a0eba1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -142,7 +142,7 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>weights</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="69"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_1a532de711ecb4a2410414fbd80b869b68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -153,11 +153,11 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>weights</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="70"/>
+        <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>set of CMS quotes </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="42" bodyend="115"/>
+    <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="42" bodyfile="/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="42" bodyend="115"/>
   </compounddef>
 </doxygen>

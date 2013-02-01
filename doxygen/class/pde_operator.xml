@@ -31,9 +31,9 @@
           <declname>residualTime</declname>
           <defval>0.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="99" bodyend="107"/>
+        <location file="/methods/finitedifferences/pde.hpp" line="102" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="99" bodyend="107"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="96" bodyend="108"/>
+    <location file="/methods/finitedifferences/pde.hpp" line="96" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="96" bodyend="108"/>
   </compounddef>
 </doxygen>

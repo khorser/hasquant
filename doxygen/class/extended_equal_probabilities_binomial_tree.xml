@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ExtendedEqualProbabilitiesBinomialTree</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp</includes>
+    <includes local="no">/experimental/lattices/extendedbinomialtree.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -28,14 +28,14 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="77" bodyend="81"/>
+        <location file="/experimental/lattices/extendedbinomialtree.hpp" line="81" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="77" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree_1aa8d6fdd8152e58e8221e45787df944e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~ExtendedEqualProbabilitiesBinomialTree</definition>
         <argsstring>()</argsstring>
         <name>~ExtendedEqualProbabilitiesBinomialTree</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="82" bodyend="82"/>
+        <location file="/experimental/lattices/extendedbinomialtree.hpp" line="82" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -50,7 +50,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="84" bodyend="89"/>
+        <location file="/experimental/lattices/extendedbinomialtree.hpp" line="84" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="84" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree_1a8bc8de40659e05e8da8823d40dabe123" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -66,11 +66,11 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="91" bodyend="91"/>
+        <location file="/experimental/lattices/extendedbinomialtree.hpp" line="91" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="91" bodyend="91"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for equal probabilities binomial tree. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="74" bodyend="96"/>
+    <location file="/experimental/lattices/extendedbinomialtree.hpp" line="75" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="74" bodyend="96"/>
   </compounddef>
 </doxygen>

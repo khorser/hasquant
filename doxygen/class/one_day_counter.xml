@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_day_counter" kind="class" prot="public">
     <compoundname>QuantLib::OneDayCounter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp</includes>
+    <includes local="no">/time/daycounters/one.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_day_counter_1a86338d70de9e125be568af41f152ae43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>OneDayCounter</definition>
         <argsstring>()</argsstring>
         <name>OneDayCounter</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" bodystart="50" bodyend="52"/>
+        <location file="/time/daycounters/one.hpp" line="52" bodyfile="/time/daycounters/one.hpp" bodystart="50" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>1/1 day count convention </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" bodystart="33" bodyend="53"/>
+    <location file="/time/daycounters/one.hpp" line="33" bodyfile="/time/daycounters/one.hpp" bodystart="33" bodyend="53"/>
   </compounddef>
 </doxygen>

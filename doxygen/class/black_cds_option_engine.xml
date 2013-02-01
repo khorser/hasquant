@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_cds_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackCdsOptionEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp</includes>
+    <includes local="no">/experimental/credit/blackcdsoptionengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_cds_option_engine_1ac69cb4664730c940b47a28b1612cbb13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -24,7 +24,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>vol</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" line="41"/>
+        <location file="/experimental/credit/blackcdsoptionengine.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_cds_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -32,27 +32,27 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" line="42"/>
+        <location file="/experimental/credit/blackcdsoptionengine.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_cds_option_engine_1aa6d8cf746064bbf8580d58fc2650d977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; termStructure</definition>
         <argsstring>()</argsstring>
         <name>termStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" line="43"/>
+        <location file="/experimental/credit/blackcdsoptionengine.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_cds_option_engine_1a8bd498c93a6fcadc6561cd35232022c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
         <definition>Handle&lt;Quote&gt; volatility</definition>
         <argsstring>()</argsstring>
         <name>volatility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" line="44"/>
+        <location file="/experimental/credit/blackcdsoptionengine.hpp" line="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black-formula CDS-option engine. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000012"><xreftitle>Warning</xreftitle><xrefdescription><para>The engine assumes that the exercise date equals the start date of the passed CDS. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" bodystart="36" bodyend="50"/>
+    <location file="/experimental/credit/blackcdsoptionengine.hpp" line="36" bodyfile="/experimental/credit/blackcdsoptionengine.hpp" bodystart="36" bodyend="50"/>
   </compounddef>
 </doxygen>

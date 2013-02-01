@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fixed_rate_coupon" kind="class" prot="public">
     <compoundname>QuantLib::FixedRateCoupon</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp</includes>
+    <includes local="no">/cashflows/fixedratecoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_coupon_1ab60dc3c4376d192f7bb625e46dc233dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -44,7 +44,7 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="49"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_coupon_1a6bb4eba95b70ed784647ced08b5e7440" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -81,7 +81,7 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="56"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="56"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -97,7 +97,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="60"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="60"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -110,14 +110,14 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>accrued rate </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="64" bodyend="64"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="64" bodyfile="/cashflows/fixedratecoupon.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_coupon_1a5634e3d28452e24584f5db12be063f6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref></type>
         <definition>InterestRate interestRate</definition>
         <argsstring>() const </argsstring>
         <name>interestRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="65" bodyend="65"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="65" bodyfile="/cashflows/fixedratecoupon.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
@@ -127,7 +127,7 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a9d30a3965ddf6100738ec4624c56d847">dayCounter</reimplements>
         <briefdescription>
 <para>day counter for accrual calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="66" bodyend="66"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="66" bodyfile="/cashflows/fixedratecoupon.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -140,7 +140,7 @@
         </param>
         <briefdescription>
 <para>accrued amount at the given date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="67"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -155,11 +155,11 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="108" bodyend="115"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="71" bodyfile="/cashflows/fixedratecoupon.hpp" bodystart="108" bodyend="115"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Coupon paying a fixed interest rate </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="38" bodyend="75"/>
+    <location file="/cashflows/fixedratecoupon.hpp" line="38" bodyfile="/cashflows/fixedratecoupon.hpp" bodystart="38" bodyend="75"/>
   </compounddef>
 </doxygen>

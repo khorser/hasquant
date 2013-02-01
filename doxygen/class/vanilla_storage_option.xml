@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vanilla_storage_option" kind="class" prot="public">
     <compoundname>QuantLib::VanillaStorageOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp</includes>
+    <includes local="no">/instruments/vanillastorageoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments" prot="public">QuantLib::VanillaStorageOption::arguments</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_storage_option_1a4082442772cb2df54c98993cae338371" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -26,7 +26,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>changeRate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="38" bodyend="43"/>
+        <location file="/instruments/vanillastorageoption.hpp" line="43" bodyfile="/instruments/vanillastorageoption.hpp" bodystart="38" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_storage_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -36,7 +36,7 @@
         <reimplements refid="class_quant_lib_1_1_one_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="95" bodyend="97"/>
+        <location file="/instruments/vanillastorageoption.hpp" line="45" bodyfile="/instruments/vanillastorageoption.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_storage_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -49,11 +49,11 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="80" bodyend="93"/>
+        <location file="/instruments/vanillastorageoption.hpp" line="46" bodyfile="/instruments/vanillastorageoption.hpp" bodystart="80" bodyend="93"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base option class </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="35" bodyend="52"/>
+    <location file="/instruments/vanillastorageoption.hpp" line="35" bodyfile="/instruments/vanillastorageoption.hpp" bodystart="35" bodyend="52"/>
   </compounddef>
 </doxygen>

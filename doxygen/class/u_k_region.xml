@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_u_k_region" kind="class" prot="public">
     <compoundname>QuantLib::UKRegion</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp</includes>
+    <includes local="no">/indexes/region.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_u_k_region_1a99e73229207e6e560d2b1f1d954e8abc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>UKRegion</definition>
         <argsstring>()</argsstring>
         <name>UKRegion</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="83"/>
+        <location file="/indexes/region.hpp" line="83"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>United Kingdom as geographical/economic region. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="81" bodyend="84"/>
+    <location file="/indexes/region.hpp" line="81" bodyfile="/indexes/region.hpp" bodystart="81" bodyend="84"/>
   </compounddef>
 </doxygen>

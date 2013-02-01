@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface" kind="class" prot="public">
     <compoundname>QuantLib::KInterpolatedYoYOptionletVolatilitySurface</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp</includes>
+    <includes local="no">/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Interpolator1D</type>
@@ -16,63 +16,63 @@
         <definition>boost::shared_ptr&lt;YoYCapFloorTermPriceSurface&gt; capFloorPrices_</definition>
         <argsstring></argsstring>
         <name>capFloorPrices_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="75" bodyend="-1"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="75" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1a85cb2594a1dc6d4c0e1b3584a181a505" prot="protected" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationCapFloorEngine&gt; yoyInflationCouponPricer_</definition>
         <argsstring></argsstring>
         <name>yoyInflationCouponPricer_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="76" bodyend="-1"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="76" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1aa39bff1f872ef0a58252653e12bc0a7d" prot="protected" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_stripper" kindref="compound">YoYOptionletStripper</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;YoYOptionletStripper&gt; yoyOptionletStripper_</definition>
         <argsstring></argsstring>
         <name>yoyOptionletStripper_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="77" bodyend="-1"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="77" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1acf766850a3968192c97aa055444fe539" prot="protected" static="no" mutable="yes">
         <type>Interpolator1D</type>
         <definition>Interpolator1D factory1D_</definition>
         <argsstring></argsstring>
         <name>factory1D_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="79" bodyend="-1"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="79" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1ac5a975550c524843220400b7ca58552a" prot="protected" static="no" mutable="yes">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real slope_</definition>
         <argsstring></argsstring>
         <name>slope_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="80" bodyend="-1"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="80" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1a7fa45981e795525db9c9e6aa74e618a0" prot="protected" static="no" mutable="yes">
         <type>bool</type>
         <definition>bool lastDateisSet_</definition>
         <argsstring></argsstring>
         <name>lastDateisSet_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="81" bodyend="-1"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="81" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1ad5595af95ab2f283a501bd3f99873032" prot="protected" static="no" mutable="yes">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date lastDate_</definition>
         <argsstring></argsstring>
         <name>lastDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="82" bodyend="-1"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="82" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1a9869bf35b50080de20948dc0cdb65f8e" prot="protected" static="no" mutable="yes">
         <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
         <definition>Interpolation tempKinterpolation_</definition>
         <argsstring></argsstring>
         <name>tempKinterpolation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="83" bodyend="-1"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="83" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1aa97eae5debe04e11f58bc691e82481b6" prot="protected" static="no" mutable="yes">
         <type>std::pair&lt; std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &gt;</type>
         <definition>std::pair&lt;std::vector&lt;Rate&gt;, std::vector&lt;Volatility&gt; &gt; slice_</definition>
         <argsstring></argsstring>
         <name>slice_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="84" bodyend="-1"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="84" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1af963ffb51b4d2d1e77189f8a3c2a5111" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -120,7 +120,7 @@
           <declname>interpolator</declname>
           <defval>Interpolator1D()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="92" bodyend="110"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="60" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="92" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -130,7 +130,7 @@
         <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="123" bodyend="125"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="62" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -140,7 +140,7 @@
         <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="130" bodyend="132"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="63" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -150,7 +150,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="115" bodyend="118"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="64" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="115" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1aed99cfee1edf3bbc3b19a9fe1a0c060a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &gt;</type>
@@ -161,7 +161,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="168" bodyend="174"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="66" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="168" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1a93108310dcc3274d6ac4e58164dd4749" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -176,7 +176,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="148" bodyend="162"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="70" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="148" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1ae1dad241c14ce021b1b9e0ff138a5e85" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -194,20 +194,20 @@
         </param>
         <detaileddescription>
 <para>Implements the actual volatility surface calculation in derived classes e.g. bilinear interpolation. N.B. does not derive the surface. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="179" bodyend="186"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="72" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="179" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="137" bodyend="143"/>
+        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="73" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="137" bodyend="143"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>K-interpolated YoY optionlet volatility. </para>    </briefdescription>
     <detaileddescription>
 <para>The stripper provides curves in the T direction along each K. We don&apos;t know whether this is interpolating or fitting in the T direction. Our K direction interpolations are not model fitting.</para><para>An alternative design would be a FittedYoYOptionletVolatilitySurface taking a model, e.g. <ref refid="class_quant_lib_1_1_s_a_b_r" kindref="compound">SABR</ref> in the interest rate world. This could use the same stripping in the T direction along each K.</para><para><xrefsect id="bug_1_bug000002"><xreftitle>Bug</xreftitle><xrefdescription><para>Tests currently fail. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="45" bodyend="85"/>
+    <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="46" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="45" bodyend="85"/>
   </compounddef>
 </doxygen>

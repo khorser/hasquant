@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_clone" kind="class" prot="public">
     <compoundname>QuantLib::Clone</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp</includes>
+    <includes local="no">/utilities/clone.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -16,7 +16,7 @@
         <definition>Clone</definition>
         <argsstring>()</argsstring>
         <name>Clone</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="64" bodyend="64"/>
+        <location file="/utilities/clone.hpp" line="42" bodyfile="/utilities/clone.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clone_1a937b512607b92e0ab015eb65fa8b49d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -27,7 +27,7 @@
           <type>std::auto_ptr&lt; T &gt;</type>
           <defname>p</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="67" bodyend="68"/>
+        <location file="/utilities/clone.hpp" line="43" bodyfile="/utilities/clone.hpp" bodystart="67" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clone_1a0ddc31d12feb36b9c3ac1d6dfd3bd19d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -38,7 +38,7 @@
           <type>const T &amp;</type>
           <defname>t</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="71" bodyend="72"/>
+        <location file="/utilities/clone.hpp" line="44" bodyfile="/utilities/clone.hpp" bodystart="71" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clone_1afccfc263e7e8dd7f26ed3918e2b4d068" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -49,7 +49,7 @@
           <type>const <ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
           <defname>t</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="75" bodyend="76"/>
+        <location file="/utilities/clone.hpp" line="45" bodyfile="/utilities/clone.hpp" bodystart="75" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clone_1aa52d913278b3efe66aff563e3c1991ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
@@ -60,7 +60,7 @@
           <type>const T &amp;</type>
           <defname>t</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="79" bodyend="82"/>
+        <location file="/utilities/clone.hpp" line="46" bodyfile="/utilities/clone.hpp" bodystart="79" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clone_1a98891d60973e7848cf3514e94714a885" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
@@ -71,28 +71,28 @@
           <type>const <ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
           <defname>t</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="85" bodyend="88"/>
+        <location file="/utilities/clone.hpp" line="47" bodyfile="/utilities/clone.hpp" bodystart="85" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clone_1a3f4157326fbf85a6d56e27c66dff080e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>T &amp;</type>
         <definition>T &amp; operator*</definition>
         <argsstring>() const </argsstring>
         <name>operator*</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="91" bodyend="94"/>
+        <location file="/utilities/clone.hpp" line="48" bodyfile="/utilities/clone.hpp" bodystart="91" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clone_1a01a2431b4e56f4c9bddd7094e87d2d79" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>T *</type>
         <definition>T * operator-&gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator-&gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="97" bodyend="99"/>
+        <location file="/utilities/clone.hpp" line="49" bodyfile="/utilities/clone.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clone_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="102" bodyend="104"/>
+        <location file="/utilities/clone.hpp" line="50" bodyfile="/utilities/clone.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clone_1ad85601f645a37c4da47bca198519d83c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -103,7 +103,7 @@
           <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="107" bodyend="109"/>
+        <location file="/utilities/clone.hpp" line="51" bodyfile="/utilities/clone.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
@@ -123,13 +123,13 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="112" bodyend="114"/>
+        <location file="/utilities/clone.hpp" line="58" bodyfile="/utilities/clone.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>cloning proxy to an underlying object </para>    </briefdescription>
     <detaileddescription>
 <para>When copied, this class will make a clone of its underlying object (which must provide a <computeroutput>clone()</computeroutput> method returning a std::auto_ptr to a newly-allocated instance.) </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/clone.hpp" bodystart="40" bodyend="54"/>
+    <location file="/utilities/clone.hpp" line="40" bodyfile="/utilities/clone.hpp" bodystart="40" bodyend="54"/>
   </compounddef>
 </doxygen>

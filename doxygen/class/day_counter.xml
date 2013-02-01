@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_day_counter" kind="class" prot="public">
     <compoundname>QuantLib::DayCounter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp</includes>
+    <includes local="no">/time/daycounter.hpp</includes>
       <sectiondef kind="user-defined">
       <header>DayCounter interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -12,7 +12,7 @@
         <name>empty</name>
         <briefdescription>
 <para>Returns whether or not the day counter is initialized. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="111" bodyend="113"/>
+        <location file="/time/daycounter.hpp" line="74" bodyfile="/time/daycounter.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -23,7 +23,7 @@
 <para>Returns the name of the day counter. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000145"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between day counters. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="115" bodyend="118"/>
+        <location file="/time/daycounter.hpp" line="80" bodyfile="/time/daycounter.hpp" bodystart="115" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
@@ -40,7 +40,7 @@
         </param>
         <briefdescription>
 <para>Returns the number of days between two dates. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="120" bodyend="124"/>
+        <location file="/time/daycounter.hpp" line="83" bodyfile="/time/daycounter.hpp" bodystart="120" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -67,7 +67,7 @@
         </param>
         <briefdescription>
 <para>Returns the period between two dates as a fraction of year. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="126" bodyend="130"/>
+        <location file="/time/daycounter.hpp" line="87" bodyfile="/time/daycounter.hpp" bodystart="126" bodyend="130"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -78,7 +78,7 @@
         <name>DayCounter</name>
         <detaileddescription>
 <para>The default constructor returns a day counter with a null implementation, which is therefore unusable except as a placeholder. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="70" bodyend="70"/>
+        <location file="/time/daycounter.hpp" line="70" bodyfile="/time/daycounter.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
@@ -95,7 +95,7 @@
         </param>
         <detaileddescription>
 <para>Returns <computeroutput>true</computeroutput> iff the two day counters belong to the same derived class. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="133" bodyend="136"/>
+        <location file="/time/daycounter.hpp" line="98" bodyfile="/time/daycounter.hpp" bodystart="133" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a0f7511e2a309e1588a2f300def9b495c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -108,7 +108,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="138" bodyend="140"/>
+        <location file="/time/daycounter.hpp" line="102" bodyfile="/time/daycounter.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a68dd78dd1968d9b0c1d0702a6f3be500" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -121,13 +121,13 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="142" bodyend="144"/>
+        <location file="/time/daycounter.hpp" line="106" bodyfile="/time/daycounter.hpp" bodystart="142" bodyend="144"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>day counter class </para>    </briefdescription>
     <detaileddescription>
 <para>This class provides methods for determining the length of a time period according to given market convention, both as a number of days and as a year fraction.</para><para>The Bridge pattern is used to provide the base behavior of the day counter. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="43" bodyend="89"/>
+    <location file="/time/daycounter.hpp" line="43" bodyfile="/time/daycounter.hpp" bodystart="43" bodyend="89"/>
   </compounddef>
 </doxygen>

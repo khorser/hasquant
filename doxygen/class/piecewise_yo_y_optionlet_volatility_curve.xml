@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseYoYOptionletVolatilityCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp</includes>
+    <includes local="no">/experimental/inflation/piecewiseyoyoptionletvolatility.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Interpolator</type>
@@ -26,7 +26,7 @@
         <argsstring>() const </argsstring>
         <name>baseDate</name>
         <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a89ce98e9bb2a22127b03621ee6149660">baseDate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="175" bodyend="178"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="145" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="175" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -36,7 +36,7 @@
         <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a8f99356f853de778d6eb053615c1bdbf">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="181" bodyend="184"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="146" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="181" bodyend="184"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -47,7 +47,7 @@
         <argsstring>() const </argsstring>
         <name>times</name>
         <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a37dd8ccc18cbc518783287bdc47b4088">times</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="188" bodyend="191"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="150" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="188" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
@@ -55,7 +55,7 @@
         <argsstring>() const </argsstring>
         <name>dates</name>
         <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a89257bfeb91871645a70c5370fd7cbc5">dates</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="195" bodyend="198"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="151" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="195" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -63,7 +63,7 @@
         <argsstring>() const </argsstring>
         <name>data</name>
         <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1abe2ca418f8f3bcc37a8bcbe60533b40b">data</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="202" bodyend="205"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="152" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="202" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
@@ -71,7 +71,7 @@
         <argsstring>() const </argsstring>
         <name>nodes</name>
         <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1abcff9b6eca640af28de7247fac16c00e">nodes</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="209" bodyend="212"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="153" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="209" bodyend="212"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -82,7 +82,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="221" bodyend="224"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="157" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="221" bodyend="224"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -91,14 +91,14 @@
         <definition>typedef Traits traits_type</definition>
         <argsstring></argsstring>
         <name>traits_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="117" bodyend="-1"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="117" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
         <type>Interpolator</type>
         <definition>typedef Interpolator interpolator_type</definition>
         <argsstring></argsstring>
         <name>interpolator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="118" bodyend="-1"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="118" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="118" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -161,13 +161,13 @@
           <declname>interpolator</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="120" bodyend="141"/>
+        <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="139" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="120" bodyend="141"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Piecewise year-on-year inflation volatility term structure. </para>    </briefdescription>
     <detaileddescription>
 <para>We use a flat smile for bootstrapping at constant K. Happily most of the work has already been done in the bootstrapping classes. We only need to add special attention for the start where there is usually no data, only assumptions. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="107" bodyend="169"/>
+    <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="109" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="107" bodyend="169"/>
   </compounddef>
 </doxygen>

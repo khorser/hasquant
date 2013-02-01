@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mersenne_twister_uniform_rng" kind="class" prot="public">
     <compoundname>QuantLib::MersenneTwisterUniformRng</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp</includes>
+    <includes local="no">/math/randomnumbers/mt19937uniformrng.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="46" bodyend="-1"/>
+        <location file="/math/randomnumbers/mt19937uniformrng.hpp" line="46" bodyfile="/math/randomnumbers/mt19937uniformrng.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
         </param>
         <detaileddescription>
 <para>if the given seed is 0, a random seed will be chosen based on clock() </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="49"/>
+        <location file="/math/randomnumbers/mt19937uniformrng.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a46caedf21e71280f2aec10497d054cfc" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -36,7 +36,7 @@
           <type>const std::vector&lt; unsigned long &gt; &amp;</type>
           <declname>seeds</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="51"/>
+        <location file="/math/randomnumbers/mt19937uniformrng.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
@@ -45,7 +45,7 @@
         <name>next</name>
         <detaileddescription>
 <para>returns a sample with weight 1.0 containing a random number in the (0.0, 1.0) interval </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="54" bodyend="54"/>
+        <location file="/math/randomnumbers/mt19937uniformrng.hpp" line="54" bodyfile="/math/randomnumbers/mt19937uniformrng.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a7a373094f55dbe4015ab0ccfe21c01de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -54,7 +54,7 @@
         <name>nextReal</name>
         <briefdescription>
 <para>return a random number in the (0.0, 1.0)-interval </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="56" bodyend="58"/>
+        <location file="/math/randomnumbers/mt19937uniformrng.hpp" line="56" bodyfile="/math/randomnumbers/mt19937uniformrng.hpp" bodystart="56" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1ae929c4400225267d39ac32d4bd99caf1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned long</type>
@@ -63,7 +63,7 @@
         <name>nextInt32</name>
         <briefdescription>
 <para>return a random integer in the [0,0xffffffff]-interval </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="60" bodyend="72"/>
+        <location file="/math/randomnumbers/mt19937uniformrng.hpp" line="60" bodyfile="/math/randomnumbers/mt19937uniformrng.hpp" bodystart="60" bodyend="72"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -71,6 +71,6 @@
     <detaileddescription>
 <para>Mersenne Twister random number generator of period 2**19937-1 <verbatim>   For more details see http://www.math.keio.ac.jp/matumoto/emt.html
 </verbatim></para><para><xrefsect id="test_1_test000054"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="41" bodyend="79"/>
+    <location file="/math/randomnumbers/mt19937uniformrng.hpp" line="41" bodyfile="/math/randomnumbers/mt19937uniformrng.hpp" bodystart="41" bodyend="79"/>
   </compounddef>
 </doxygen>

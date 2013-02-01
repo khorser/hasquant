@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_energy_future" kind="class" prot="public">
     <compoundname>QuantLib::EnergyFuture</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp</includes>
+    <includes local="no">/experimental/commodities/energyfuture.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_energy_future_1a3dd5517747f9768288025782dac41b15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -33,7 +33,7 @@
           <type>const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;</type>
           <declname>secondaryCosts</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" line="40"/>
+        <location file="/experimental/commodities/energyfuture.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_future_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -43,7 +43,7 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" line="41"/>
+        <location file="/experimental/commodities/energyfuture.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_future_1a83ca7dd25d2c6f6fef9e0af158976dda" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref></type>
@@ -51,25 +51,25 @@
         <argsstring>() const </argsstring>
         <name>quantity</name>
         <reimplements refid="class_quant_lib_1_1_energy_commodity_1a27b04a25745e81c4a2717c927bff3b78">quantity</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" bodystart="43" bodyend="43"/>
+        <location file="/experimental/commodities/energyfuture.hpp" line="43" bodyfile="/experimental/commodities/energyfuture.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_future_1a47f8287b4ee8147f4729ca22511c8789" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const CommodityUnitCost &amp;</type>
         <definition>const CommodityUnitCost&amp; tradePrice</definition>
         <argsstring>() const </argsstring>
         <name>tradePrice</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" bodystart="44" bodyend="44"/>
+        <location file="/experimental/commodities/energyfuture.hpp" line="44" bodyfile="/experimental/commodities/energyfuture.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_future_1aa523d074331c75a4b4554457a73e1a32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_commodity_index" kindref="compound">CommodityIndex</ref> &gt;</type>
         <definition>const boost::shared_ptr&lt;CommodityIndex&gt; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" bodystart="45" bodyend="45"/>
+        <location file="/experimental/commodities/energyfuture.hpp" line="45" bodyfile="/experimental/commodities/energyfuture.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Energy future. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyfuture.hpp" bodystart="34" bodyend="52"/>
+    <location file="/experimental/commodities/energyfuture.hpp" line="34" bodyfile="/experimental/commodities/energyfuture.hpp" bodystart="34" bodyend="52"/>
   </compounddef>
 </doxygen>

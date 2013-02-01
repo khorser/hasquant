@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_seed_generator" kind="class" prot="public">
     <compoundname>QuantLib::SeedGenerator</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp</includes>
+    <includes local="no">/math/randomnumbers/seedgenerator.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_seed_generator_1a957d5ec5d69c9644228fe2eca5cd08e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned long</type>
         <definition>unsigned long get</definition>
         <argsstring>()</argsstring>
         <name>get</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="41"/>
+        <location file="/math/randomnumbers/seedgenerator.hpp" line="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Random seed generator. </para>    </briefdescription>
     <detaileddescription>
 <para>Random number generator used for automatic generation of initialization seeds.</para><para><xrefsect id="test_1_test000058"><xreftitle>Tests</xreftitle><xrefdescription><para>correct initialization of the single instance is tested. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" bodystart="38" bodyend="46"/>
+    <location file="/math/randomnumbers/seedgenerator.hpp" line="38" bodyfile="/math/randomnumbers/seedgenerator.hpp" bodystart="38" bodyend="46"/>
   </compounddef>
 </doxygen>

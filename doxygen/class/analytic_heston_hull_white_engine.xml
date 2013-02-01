@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_heston_hull_white_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticHestonHullWhiteEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/analytichestonhullwhiteengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_hull_white_engine_1a9b18a1700c3a0da0247e508f00f28dac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -22,7 +22,7 @@
           <declname>integrationOrder</declname>
           <defval>144</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="71"/>
+        <location file="/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_hull_white_engine_1aa7900b340886e5e832928eed0f7fb576" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -45,7 +45,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>maxEvaluations</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="76"/>
+        <location file="/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_hull_white_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -53,7 +53,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="79"/>
+        <location file="/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_hull_white_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -61,7 +61,7 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="80"/>
+        <location file="/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -75,6 +75,6 @@
   Processes with Stochastic Volatility: Applications of Fourier
   Transform (&lt;http://math.ut.ee/~spartak/papers/stochjumpvols.pdf&gt;)
 </verbatim></para><para><xrefsect id="test_1_test000117"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature, testing against <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref>&apos;s analytic Heston and Black-Scholes-Merton Hull-White engine </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" bodystart="65" bodyend="92"/>
+    <location file="/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="65" bodyfile="/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" bodystart="65" bodyend="92"/>
   </compounddef>
 </doxygen>

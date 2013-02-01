@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gaussian_l_h_p_c_d_o_engine" kind="class" prot="public">
     <compoundname>QuantLib::GaussianLHPCDOEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
+    <includes local="no">/experimental/credit/syntheticcdoengines.hpp</includes>
     <templateparamlist>
       <param>
         <type>class CDOEngine</type>
@@ -18,11 +18,11 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt; &amp;</type>
           <declname>copula</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="230" bodyend="233"/>
+        <location file="/experimental/credit/syntheticcdoengines.hpp" line="231" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="230" bodyend="233"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine with analytical expected tranche loss for a large homogeneous pool with Gaussian one-factor copula. See for example &quot;The Normal Inverse Gaussian Distribution for Synthetic CDO pricing.&quot;, Anna Kalemanova, Bernd Schmid, Ralf Werner, Journal of Derivatives, Vol. 14, No. 3, (Spring 2007), pp. 80-93. <ulink url="http://www.defaultrisk.com/pp_crdrv_91.htm">http://www.defaultrisk.com/pp_crdrv_91.htm</ulink> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="228" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="228" bodyend="273"/>
+    <location file="/experimental/credit/syntheticcdoengines.hpp" line="228" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="228" bodyend="273"/>
   </compounddef>
 </doxygen>

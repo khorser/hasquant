@@ -16,7 +16,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>startTimes</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="34"/>
+        <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -32,7 +32,7 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="37"/>
+        <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1ae4a8be640d1ad9269e3e4ff61ad54a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -51,9 +51,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="38"/>
+        <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="38"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="31" bodyend="45"/>
+    <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="31" bodyfile="/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="31" bodyend="45"/>
   </compounddef>
 </doxygen>

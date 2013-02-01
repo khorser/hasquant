@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1detail_1_1long__weekday__holder" kind="struct" prot="public">
+    <compoundname>QuantLib::detail::long_weekday_holder</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1long__weekday__holder_1af240a9239243cf2927e2a9693e89b6bc" prot="public" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+        <definition>Weekday d</definition>
+        <argsstring></argsstring>
+        <name>d</name>
+        <location file="/time/weekday.hpp" line="64" bodyfile="/time/weekday.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1long__weekday__holder_1aaf18f4cd9624d102003d79b69d0e7207" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>long_weekday_holder</definition>
+        <argsstring>(Weekday d)</argsstring>
+        <name>long_weekday_holder</name>
+        <param>
+          <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+          <declname>d</declname>
+        </param>
+        <location file="/time/weekday.hpp" line="63" bodyfile="/time/weekday.hpp" bodystart="63" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <location file="/time/weekday.hpp" line="62" bodyfile="/time/weekday.hpp" bodystart="62" bodyend="65"/>
+  </compounddef>
+</doxygen>

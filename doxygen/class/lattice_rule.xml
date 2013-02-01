@@ -17,7 +17,7 @@
         <enumvalue id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da77a6b11f9898c052926f1d49765861e8" prot="public">
           <name>D</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" bodystart="39" bodyend="39"/>
+        <location file="/math/randomnumbers/latticerules.hpp" line="39" bodyfile="/math/randomnumbers/latticerules.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -38,9 +38,9 @@
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
           <declname>N</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" line="41"/>
+        <location file="/math/randomnumbers/latticerules.hpp" line="41"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" bodystart="35" bodyend="44"/>
+    <location file="/math/randomnumbers/latticerules.hpp" line="36" bodyfile="/math/randomnumbers/latticerules.hpp" bodystart="35" bodyend="44"/>
   </compounddef>
 </doxygen>

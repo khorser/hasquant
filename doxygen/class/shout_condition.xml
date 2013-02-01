@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_shout_condition" kind="class" prot="public">
     <compoundname>QuantLib::ShoutCondition</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp</includes>
+    <includes local="no">/methods/finitedifferences/shoutcondition.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1a9060b1f6d7cc29b738bd1bbcfab3072e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -25,7 +25,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>rate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="61" bodyend="65"/>
+        <location file="/methods/finitedifferences/shoutcondition.hpp" line="45" bodyfile="/methods/finitedifferences/shoutcondition.hpp" bodystart="61" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1af44ff54137a0ed35a85c8118cf85be80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -44,7 +44,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>rate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="67" bodyend="70"/>
+        <location file="/methods/finitedifferences/shoutcondition.hpp" line="48" bodyfile="/methods/finitedifferences/shoutcondition.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -59,13 +59,13 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="72" bodyend="75"/>
+        <location file="/methods/finitedifferences/shoutcondition.hpp" line="50" bodyfile="/methods/finitedifferences/shoutcondition.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Shout option condition. </para>    </briefdescription>
     <detaileddescription>
 <para>A shout option is an option where the holder has the right to lock in a minimum value for the payoff at one (shout) time during the option&apos;s life. The minimum value is the option&apos;s intrinsic value at the shout time. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="40" bodyend="59"/>
+    <location file="/methods/finitedifferences/shoutcondition.hpp" line="40" bodyfile="/methods/finitedifferences/shoutcondition.hpp" bodystart="40" bodyend="59"/>
   </compounddef>
 </doxygen>

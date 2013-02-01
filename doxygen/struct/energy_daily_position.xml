@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1_energy_daily_position" kind="struct" prot="public">
+    <compoundname>QuantLib::EnergyDailyPosition</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1_energy_daily_position_1a1dc6df4f5eac6300e1bb1f8dce3a10fd" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date date</definition>
+        <argsstring></argsstring>
+        <name>date</name>
+        <location file="/experimental/commodities/energycommodity.hpp" line="38" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_energy_daily_position_1a8414b0947299a998e663f4ba212c9167" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real quantityAmount</definition>
+        <argsstring></argsstring>
+        <name>quantityAmount</name>
+        <location file="/experimental/commodities/energycommodity.hpp" line="39" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_energy_daily_position_1a222a2c5439b9e478023423ac7e6714e1" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real payLegPrice</definition>
+        <argsstring></argsstring>
+        <name>payLegPrice</name>
+        <location file="/experimental/commodities/energycommodity.hpp" line="40" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_energy_daily_position_1ad3978cb4fc4585ed8acf75b8632883b3" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real receiveLegPrice</definition>
+        <argsstring></argsstring>
+        <name>receiveLegPrice</name>
+        <location file="/experimental/commodities/energycommodity.hpp" line="41" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_energy_daily_position_1a76f152842d07b2077aa244ff12257279" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real riskDelta</definition>
+        <argsstring></argsstring>
+        <name>riskDelta</name>
+        <location file="/experimental/commodities/energycommodity.hpp" line="42" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_energy_daily_position_1a3b058015cdaf8e674b0489ef90e8592b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool unrealized</definition>
+        <argsstring></argsstring>
+        <name>unrealized</name>
+        <location file="/experimental/commodities/energycommodity.hpp" line="43" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_quant_lib_1_1_energy_daily_position_1a73b03c8aed2dd1b82143faaff0c71790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EnergyDailyPosition</definition>
+        <argsstring>()</argsstring>
+        <name>EnergyDailyPosition</name>
+        <location file="/experimental/commodities/energycommodity.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_energy_daily_position_1a6f5316d2594a921ba2751496721376a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EnergyDailyPosition</definition>
+        <argsstring>(const Date &amp;date, Real payLegPrice, Real receiveLegPrice, bool unrealized)</argsstring>
+        <name>EnergyDailyPosition</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>payLegPrice</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>receiveLegPrice</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>unrealized</declname>
+        </param>
+        <location file="/experimental/commodities/energycommodity.hpp" line="49"/>
+      </memberdef>
+      </sectiondef>
+    <location file="/experimental/commodities/energycommodity.hpp" line="37" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="37" bodyend="50"/>
+  </compounddef>
+</doxygen>

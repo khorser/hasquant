@@ -8,7 +8,7 @@
         <definition>virtual ~BrownianGeneratorFactory</definition>
         <argsstring>()</argsstring>
         <name>~BrownianGeneratorFactory</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" bodystart="44" bodyend="44"/>
+        <location file="/models/marketmodels/browniangenerator.hpp" line="44" bodyfile="/models/marketmodels/browniangenerator.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_generator_factory_1a475996ed05d83e9509d7691ae903c251" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>boost::shared_ptr&lt; BrownianGenerator &gt;</type>
@@ -23,9 +23,9 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="47"/>
+        <location file="/models/marketmodels/browniangenerator.hpp" line="47"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" bodystart="42" bodyend="48"/>
+    <location file="/models/marketmodels/browniangenerator.hpp" line="42" bodyfile="/models/marketmodels/browniangenerator.hpp" bodystart="42" bodyend="48"/>
   </compounddef>
 </doxygen>

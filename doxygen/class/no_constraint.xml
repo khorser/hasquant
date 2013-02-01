@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_no_constraint" kind="class" prot="public">
     <compoundname>QuantLib::NoConstraint</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
+    <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_no_constraint_1a0710638b6c7cbb4f1e6cc83a5d129114" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>NoConstraint</definition>
         <argsstring>()</argsstring>
         <name>NoConstraint</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="62" bodyend="64"/>
+        <location file="/math/optimization/constraint.hpp" line="64" bodyfile="/math/optimization/constraint.hpp" bodystart="62" bodyend="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>No constraint. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="53" bodyend="65"/>
+    <location file="/math/optimization/constraint.hpp" line="53" bodyfile="/math/optimization/constraint.hpp" bodystart="53" bodyend="65"/>
   </compounddef>
 </doxygen>

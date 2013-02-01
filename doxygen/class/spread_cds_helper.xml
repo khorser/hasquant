@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_spread_cds_helper" kind="class" prot="public">
     <compoundname>QuantLib::SpreadCdsHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
+    <includes local="no">/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_spread_cds_helper_1a9ed3b58cf9a47f929097246e5d251e82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -59,7 +59,7 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="118"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spread_cds_helper_1ae916f44275ce56de80a36c911e62bb0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -116,7 +116,7 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="131"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spread_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -124,11 +124,11 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="132"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="132"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Spread-quoted CDS hazard rate bootstrap helper. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="105" bodyend="135"/>
+    <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="105" bodyfile="/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="105" bodyend="135"/>
   </compounddef>
 </doxygen>

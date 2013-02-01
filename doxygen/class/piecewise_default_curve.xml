@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_piecewise_default_curve" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseDefaultCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp</includes>
+    <includes local="no">/termstructures/credit/piecewisedefaultcurve.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Traits</type>
@@ -56,7 +56,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="64" bodyend="76"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="74" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="64" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1af9197b8671844a2e853c84372c9f23dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -84,7 +84,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="77" bodyend="88"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="86" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="77" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a8362a0a7d6e1086edfa05d5c1f341f56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -107,7 +107,7 @@
           <type>const Interpolator &amp;</type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="89" bodyend="99"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="97" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="89" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1aa6f78e9689f729dcfb0b926c570d9e40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -150,7 +150,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="100" bodyend="113"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="111" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="100" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a1e33eab94376aaba73208040750687ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -182,7 +182,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="114" bodyend="126"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="124" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="114" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a8f330e931eed76bab8d012839e5b421c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -209,7 +209,7 @@
           <type>const Interpolator &amp;</type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="127" bodyend="138"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="136" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="127" bodyend="138"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -219,7 +219,7 @@
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="181" bodyend="184"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="142" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="181" bodyend="184"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -229,28 +229,28 @@
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="188" bodyend="191"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="146" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="188" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="195" bodyend="198"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="147" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="195" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="202" bodyend="205"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="148" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="202" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="209" bodyend="212"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="149" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="209" bodyend="212"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -261,7 +261,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="215" bodyend="218"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="153" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="215" bodyend="218"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -270,20 +270,20 @@
         <definition>typedef Traits traits_type</definition>
         <argsstring></argsstring>
         <name>traits_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="60" bodyend="-1"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="60" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_default_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
         <type>Interpolator</type>
         <definition>typedef Interpolator interpolator_type</definition>
         <argsstring></argsstring>
         <name>interpolator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="61" bodyend="-1"/>
+        <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="61" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Piecewise default-probability term structure. </para>    </briefdescription>
     <detaileddescription>
 <para>This term structure is bootstrapped on a number of credit instruments which are passed as a vector of handles to DefaultProbabilityHelper instances. Their maturities mark the boundaries of the interpolated segments.</para><para>Each segment is determined sequentially starting from the earliest period to the latest and is chosen so that the instrument whose maturity marks the end of such segment is correctly repriced on the curve.</para><para><xrefsect id="caveats_1_caveats000111"><xreftitle>Warning</xreftitle><xrefdescription><para>The bootstrapping algorithm will raise an exception if any two instruments have the same maturity date. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="53" bodyend="175"/>
+    <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="55" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="53" bodyend="175"/>
   </compounddef>
 </doxygen>

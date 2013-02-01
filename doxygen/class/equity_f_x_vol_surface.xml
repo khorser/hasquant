@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_equity_f_x_vol_surface" kind="class" prot="public">
     <compoundname>QuantLib::EquityFXVolSurface</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp</includes>
+    <includes local="no">/experimental/volatility/equityfxvolsurface.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
@@ -27,7 +27,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000024"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="56"/>
+        <location file="/experimental/volatility/equityfxvolsurface.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1adddc35bc937ffb39283d27dac309e919" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -48,7 +48,7 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000025"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="64"/>
+        <location file="/experimental/volatility/equityfxvolsurface.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1ac71f86181f4acbeb5513896b5d2bdf16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -76,7 +76,7 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="69"/>
+        <location file="/experimental/volatility/equityfxvolsurface.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1a8bbdc64d3440bb12c2514155cc9b80d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -102,7 +102,7 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="74"/>
+        <location file="/experimental/volatility/equityfxvolsurface.hpp" line="74"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -127,7 +127,7 @@
         </param>
         <briefdescription>
 <para>forward (at-the-money) volatility </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="81"/>
+        <location file="/experimental/volatility/equityfxvolsurface.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1a9979dee8d8445bcab0c152467d6031af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -149,7 +149,7 @@
         </param>
         <briefdescription>
 <para>forward (at-the-money) volatility </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="85"/>
+        <location file="/experimental/volatility/equityfxvolsurface.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1ab79b3c7117aed3a54934a3a7dbef3a2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -171,7 +171,7 @@
         </param>
         <briefdescription>
 <para>forward (at-the-money) variance </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="89"/>
+        <location file="/experimental/volatility/equityfxvolsurface.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1a31c485c60a1fa59b1172e31a34ea570a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -193,7 +193,7 @@
         </param>
         <briefdescription>
 <para>forward (at-the-money) variance </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="93"/>
+        <location file="/experimental/volatility/equityfxvolsurface.hpp" line="93"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -207,13 +207,13 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="97"/>
+        <location file="/experimental/volatility/equityfxvolsurface.hpp" line="97"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Equity/FX volatility (smile) surface. </para>    </briefdescription>
     <detaileddescription>
 <para>This abstract class defines the interface of concrete Equity/FX volatility (smile) surfaces which will be derived from this one.</para><para>Volatilities are assumed to be expressed on an annual basis.</para><para>It&apos;s only in absence of smile that the concept of (at-the-money) forward volatility makes sense. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" bodystart="42" bodyend="99"/>
+    <location file="/experimental/volatility/equityfxvolsurface.hpp" line="42" bodyfile="/experimental/volatility/equityfxvolsurface.hpp" bodystart="42" bodyend="99"/>
   </compounddef>
 </doxygen>

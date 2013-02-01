@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_additive_e_q_p_binomial_tree" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedAdditiveEQPBinomialTree</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp</includes>
+    <includes local="no">/experimental/lattices/extendedbinomialtree.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_additive_e_q_p_binomial_tree_1ac700e730eb7ad71bfd174515c65008ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -24,11 +24,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="173"/>
+        <location file="/experimental/lattices/extendedbinomialtree.hpp" line="173"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Additive equal probabilities binomial tree. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="165" bodyend="177"/>
+    <location file="/experimental/lattices/extendedbinomialtree.hpp" line="167" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="165" bodyend="177"/>
   </compounddef>
 </doxygen>

@@ -13,7 +13,7 @@
           <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
           <declname>key</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="70"/>
+        <location file="/experimental/credit/issuer.hpp" line="70"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -42,7 +42,7 @@
         </param>
         <briefdescription>
 <para>If a default event with the required seniority and. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="84"/>
+        <location file="/experimental/credit/issuer.hpp" line="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -51,7 +51,7 @@
         <definition>typedef std::pair&lt;DefaultProbKey, Handle&lt;DefaultProbabilityTermStructure&gt; &gt; key_curve_pair</definition>
         <argsstring></argsstring>
         <name>key_curve_pair</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="44" bodyend="-1"/>
+        <location file="/experimental/credit/issuer.hpp" line="44" bodyfile="/experimental/credit/issuer.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -72,7 +72,7 @@
         </param>
         <detaileddescription>
 <para>The first argument represents the probability of an issuer of having any of its bonds with the given seniority, currency incurring in that particular event. The second argument represents the history of past events. Theres no check on wether the event list makes sense, events can occur several times and several of them can take place on the same date.</para><para>To do: add settlement event access </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="57"/>
+        <location file="/experimental/credit/issuer.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_issuer_1a1df735b27e4f4f1eae5efe0e89408c98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -100,7 +100,7 @@
           <declname>events</declname>
           <defval>DefaultEventSet()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="65"/>
+        <location file="/experimental/credit/issuer.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_issuer_1a19bd6b49217422b9d86b12fefd9d288f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_event" kindref="compound">DefaultEvent</ref> &gt; &gt;</type>
@@ -123,9 +123,9 @@
           <type>bool</type>
           <declname>includeRefDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="92"/>
+        <location file="/experimental/credit/issuer.hpp" line="92"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="40" bodyend="102"/>
+    <location file="/experimental/credit/issuer.hpp" line="40" bodyfile="/experimental/credit/issuer.hpp" bodystart="40" bodyend="102"/>
   </compounddef>
 </doxygen>

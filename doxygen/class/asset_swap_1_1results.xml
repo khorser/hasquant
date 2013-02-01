@@ -2,28 +2,28 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_asset_swap_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::AssetSwap::results</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp</includes>
+    <includes local="no">/instruments/assetswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1results_1aaae65d8ddf791f2593ac9d1d395f1d3a" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread fairSpread</definition>
         <argsstring></argsstring>
         <name>fairSpread</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="124" bodyend="-1"/>
+        <location file="/instruments/assetswap.hpp" line="124" bodyfile="/instruments/assetswap.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1results_1ab9a80dfada63b2ab4323f319b82e643e" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fairCleanPrice</definition>
         <argsstring></argsstring>
         <name>fairCleanPrice</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="125" bodyend="-1"/>
+        <location file="/instruments/assetswap.hpp" line="125" bodyfile="/instruments/assetswap.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1results_1a08f9248ae9c7c061c3fbb926ab5c6125" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fairNonParRepayment</definition>
         <argsstring></argsstring>
         <name>fairNonParRepayment</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="125" bodyend="-1"/>
+        <location file="/instruments/assetswap.hpp" line="125" bodyfile="/instruments/assetswap.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,11 +32,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="126"/>
+        <location file="/instruments/assetswap.hpp" line="126"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from simple swap calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="122" bodyend="127"/>
+    <location file="/instruments/assetswap.hpp" line="122" bodyfile="/instruments/assetswap.hpp" bodystart="122" bodyend="127"/>
   </compounddef>
 </doxygen>

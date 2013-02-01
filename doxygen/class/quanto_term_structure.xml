@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_quanto_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::QuantoTermStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp</includes>
+    <includes local="no">/termstructures/yield/quantotermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>YieldTermStructure interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="97" bodyend="99"/>
+        <location file="/termstructures/yield/quantotermstructure.hpp" line="54" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="101" bodyend="103"/>
+        <location file="/termstructures/yield/quantotermstructure.hpp" line="55" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="101" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
@@ -33,7 +33,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="105" bodyend="107"/>
+        <location file="/termstructures/yield/quantotermstructure.hpp" line="56" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="105" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
@@ -43,7 +43,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="109" bodyend="111"/>
+        <location file="/termstructures/yield/quantotermstructure.hpp" line="57" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="109" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -53,7 +53,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="113" bodyend="120"/>
+        <location file="/termstructures/yield/quantotermstructure.hpp" line="58" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="113" bodyend="120"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -94,7 +94,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>underlyingExchRateCorrelation</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="74" bodyend="95"/>
+        <location file="/termstructures/yield/quantotermstructure.hpp" line="51" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="74" bodyend="95"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -102,6 +102,6 @@
     <detaileddescription>
 <para>Quanto term structure for modelling quanto effect in option pricing.</para><para><simplesect kind="note"><para>This term structure will remain linked to the original structures, i.e., any changes in the latters will be reflected in this structure as well. </para></simplesect>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="41" bodyend="69"/>
+    <location file="/termstructures/yield/quantotermstructure.hpp" line="41" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="41" bodyend="69"/>
   </compounddef>
 </doxygen>

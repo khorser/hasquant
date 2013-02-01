@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_commodity_pricing_helper" kind="class" prot="public">
     <compoundname>QuantLib::CommodityPricingHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp</includes>
+    <includes local="no">/experimental/commodities/commoditypricinghelpers.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_pricing_helper_1af861a5d223ce4e1e56ee136edf4762e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CommodityPricingHelper</definition>
         <argsstring>()</argsstring>
         <name>CommodityPricingHelper</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" line="38"/>
+        <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="38"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -30,7 +30,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>evaluationDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" bodystart="79" bodyend="94"/>
+        <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="42" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="79" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_pricing_helper_1a2045c4b9d40cefb75dfb00bf37c96161" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -49,7 +49,7 @@
           <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>toUnitOfMeasure</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" bodystart="65" bodyend="77"/>
+        <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="47" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="65" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_pricing_helper_1ac28d20f70729cdee721c0e56544deb1e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -76,7 +76,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>evaluationDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" bodystart="96" bodyend="114"/>
+        <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="53" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="96" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_pricing_helper_1a4ad06b02380a4dc32ff35de5599d3c41" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -111,11 +111,11 @@
           <type>PricingPeriods &amp;</type>
           <declname>pricingPeriods</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" line="61"/>
+        <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>commodity index helper </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" bodystart="36" bodyend="62"/>
+    <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="36" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="36" bodyend="62"/>
   </compounddef>
 </doxygen>

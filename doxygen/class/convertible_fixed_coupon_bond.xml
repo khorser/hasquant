@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_convertible_fixed_coupon_bond" kind="class" prot="public">
     <compoundname>QuantLib::ConvertibleFixedCouponBond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp</includes>
+    <includes local="no">/experimental/convertiblebonds/convertiblebond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_convertible_fixed_coupon_bond_1a16291a67f8c6bfffe0a97f3e8b7c8bdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -54,13 +54,13 @@
           <declname>redemption</declname>
           <defval>100</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="122"/>
+        <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="122"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>convertible fixed-coupon bond </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000010"><xreftitle>Warning</xreftitle><xrefdescription><para>Most methods inherited from <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> (such as yield or the yield-based dirtyPrice and cleanPrice) refer to the underlying plain-vanilla bond and do not take convertibility and callability into account. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="109" bodyend="123"/>
+    <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="109" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="109" bodyend="123"/>
   </compounddef>
 </doxygen>

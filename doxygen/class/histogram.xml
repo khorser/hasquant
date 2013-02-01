@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_histogram" kind="class" prot="public">
     <compoundname>QuantLib::Histogram</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp</includes>
+    <includes local="no">/math/statistics/histogram.hpp</includes>
       <sectiondef kind="user-defined">
       <header>constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_histogram_1af51c4df08524a7d196bd62f31e4bc50f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <definition>Histogram</definition>
         <argsstring>()</argsstring>
         <name>Histogram</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="44" bodyend="45"/>
+        <location file="/math/statistics/histogram.hpp" line="45" bodyfile="/math/statistics/histogram.hpp" bodystart="44" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_histogram_1af063d6ae60bbc0f1dc23141faf837dfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -34,7 +34,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>breaks</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="48" bodyend="52"/>
+        <location file="/math/statistics/histogram.hpp" line="50" bodyfile="/math/statistics/histogram.hpp" bodystart="48" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a209d7787d8f50bd1c8adf7612be8dbaf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -58,7 +58,7 @@
           <type>Algorithm</type>
           <declname>algorithm</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="55" bodyend="59"/>
+        <location file="/math/statistics/histogram.hpp" line="57" bodyfile="/math/statistics/histogram.hpp" bodystart="55" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a8d8c1526af99504d0b87a320504f9e06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -89,7 +89,7 @@
           <type>U</type>
           <declname>breaks_end</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="62" bodyend="68"/>
+        <location file="/math/statistics/histogram.hpp" line="65" bodyfile="/math/statistics/histogram.hpp" bodystart="62" bodyend="68"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -99,28 +99,28 @@
         <definition>Size bins</definition>
         <argsstring>() const </argsstring>
         <name>bins</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="73"/>
+        <location file="/math/statistics/histogram.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a76063bc3f4d54bbabe5ffac5b43845a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; breaks</definition>
         <argsstring>() const </argsstring>
         <name>breaks</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="74"/>
+        <location file="/math/statistics/histogram.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a7e4af7419144ae5528fa318b30752a42" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Algorithm</type>
         <definition>Algorithm algorithm</definition>
         <argsstring>() const </argsstring>
         <name>algorithm</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="75"/>
+        <location file="/math/statistics/histogram.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_histogram_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="76"/>
+        <location file="/math/statistics/histogram.hpp" line="76"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -134,7 +134,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="81"/>
+        <location file="/math/statistics/histogram.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a7bb6aa81b5de0ababfb432c3cb346b5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -145,7 +145,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="82"/>
+        <location file="/math/statistics/histogram.hpp" line="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -163,13 +163,13 @@
         <enumvalue id="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691a8f50e622a8b9ff156308dbda611daad2" prot="public">
           <name>Scott</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="40" bodyend="40"/>
+        <location file="/math/statistics/histogram.hpp" line="40" bodyfile="/math/statistics/histogram.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_histogram" kindref="compound">Histogram</ref> class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class computes the histogram of a given data set. The caller can specify the number of bins, the breaks, or the algorithm for determining these quantities in computing the histogram. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="38" bodyend="93"/>
+    <location file="/math/statistics/histogram.hpp" line="38" bodyfile="/math/statistics/histogram.hpp" bodystart="38" bodyend="93"/>
   </compounddef>
 </doxygen>

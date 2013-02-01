@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_frank_copula_rng" kind="class" prot="public">
     <compoundname>QuantLib::FrankCopulaRng</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp</includes>
+    <includes local="no">/experimental/math/frankcopularng.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -16,14 +16,14 @@
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" bodystart="38" bodyend="-1"/>
+        <location file="/experimental/math/frankcopularng.hpp" line="38" bodyfile="/experimental/math/frankcopularng.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_frank_copula_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
         <type>RNG</type>
         <definition>typedef RNG urng_type</definition>
         <argsstring></argsstring>
         <name>urng_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" bodystart="39" bodyend="-1"/>
+        <location file="/experimental/math/frankcopularng.hpp" line="39" bodyfile="/experimental/math/frankcopularng.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -40,18 +40,18 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>theta</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" bodystart="48" bodyend="52"/>
+        <location file="/experimental/math/frankcopularng.hpp" line="40" bodyfile="/experimental/math/frankcopularng.hpp" bodystart="48" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_frank_copula_rng_1ad590806283f6baf45a2b643d86e2d9c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
         <definition>FrankCopulaRng&lt; RNG &gt;::sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" bodystart="56" bodyend="65"/>
+        <location file="/experimental/math/frankcopularng.hpp" line="41" bodyfile="/experimental/math/frankcopularng.hpp" bodystart="56" bodyend="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Frank copula random-number generator. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" bodystart="36" bodyend="45"/>
+    <location file="/experimental/math/frankcopularng.hpp" line="36" bodyfile="/experimental/math/frankcopularng.hpp" bodystart="36" bodyend="45"/>
   </compounddef>
 </doxygen>

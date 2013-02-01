@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1_position" kind="struct" prot="public">
+    <compoundname>QuantLib::Position</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_quant_lib_1_1_position_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="struct_quant_lib_1_1_position_1a1d1cfd8ffb84e947f82999c682b666a7afbe5087b942deaaa3202c7ca87dbc327" prot="public">
+          <name>Long</name>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_position_1a1d1cfd8ffb84e947f82999c682b666a7af5a4874501b800b316e5817874430c98" prot="public">
+          <name>Short</name>
+        </enumvalue>
+        <location file="/position.hpp" line="33" bodyfile="/position.hpp" bodystart="33" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="related">
+      <memberdef kind="function" id="struct_quant_lib_1_1_position_1aea636746ca886a585d34e10004cc9b43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;, Position::Type)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <param>
+          <type>Position::Type</type>
+        </param>
+        <location file="/position.hpp" line="38"/>
+      </memberdef>
+      </sectiondef>
+    <location file="/position.hpp" line="32" bodyfile="/position.hpp" bodystart="32" bodyend="34"/>
+  </compounddef>
+</doxygen>

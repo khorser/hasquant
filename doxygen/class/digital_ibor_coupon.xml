@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_digital_ibor_coupon" kind="class" prot="public">
     <compoundname>QuantLib::DigitalIborCoupon</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp</includes>
+    <includes local="no">/cashflows/digitaliborcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -14,7 +14,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="53"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -72,11 +72,11 @@
           <declname>replication</declname>
           <defval>boost::shared_ptr&lt; DigitalReplication &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="49"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Ibor rate coupon with digital digital call/put option. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" bodystart="36" bodyend="55"/>
+    <location file="/cashflows/digitaliborcoupon.hpp" line="36" bodyfile="/cashflows/digitaliborcoupon.hpp" bodystart="36" bodyend="55"/>
   </compounddef>
 </doxygen>

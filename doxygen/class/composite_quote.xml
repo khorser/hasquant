@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_composite_quote" kind="class" prot="public">
     <compoundname>QuantLib::CompositeQuote</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp</includes>
+    <includes local="no">/quotes/compositequote.hpp</includes>
     <templateparamlist>
       <param>
         <type>class BinaryFunction</type>
@@ -15,14 +15,14 @@
         <definition>Real value1</definition>
         <argsstring>() const </argsstring>
         <name>value1</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="47" bodyend="47"/>
+        <location file="/quotes/compositequote.hpp" line="47" bodyfile="/quotes/compositequote.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1a2398c24daa949e532f309fa4b199fda9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value2</definition>
         <argsstring>() const </argsstring>
         <name>value2</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="48" bodyend="48"/>
+        <location file="/quotes/compositequote.hpp" line="48" bodyfile="/quotes/compositequote.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -35,7 +35,7 @@
         <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="78" bodyend="81"/>
+        <location file="/quotes/compositequote.hpp" line="52" bodyfile="/quotes/compositequote.hpp" bodystart="78" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -45,7 +45,7 @@
         <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
 <para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="84" bodyend="87"/>
+        <location file="/quotes/compositequote.hpp" line="53" bodyfile="/quotes/compositequote.hpp" bodystart="84" bodyend="87"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -56,7 +56,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="90" bodyend="92"/>
+        <location file="/quotes/compositequote.hpp" line="57" bodyfile="/quotes/compositequote.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -77,13 +77,13 @@
           <type>const BinaryFunction &amp;</type>
           <declname>f</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="68" bodyend="75"/>
+        <location file="/quotes/compositequote.hpp" line="44" bodyfile="/quotes/compositequote.hpp" bodystart="68" bodyend="75"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>market element whose value depends on two other market element </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000138"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against numerical calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="39" bodyend="62"/>
+    <location file="/quotes/compositequote.hpp" line="39" bodyfile="/quotes/compositequote.hpp" bodystart="39" bodyend="62"/>
   </compounddef>
 </doxygen>

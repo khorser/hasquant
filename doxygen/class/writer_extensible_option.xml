@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_writer_extensible_option" kind="class" prot="public">
     <compoundname>QuantLib::WriterExtensibleOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp</includes>
+    <includes local="no">/experimental/exoticoptions/writerextensibleoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_writer_extensible_option_1_1arguments" prot="public">QuantLib::WriterExtensibleOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_writer_extensible_option_1_1engine" prot="public">QuantLib::WriterExtensibleOption::engine</innerclass>
       <sectiondef kind="public-func">
@@ -58,21 +58,21 @@
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="48"/>
+        <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1a31bd0c2f80effdcd73eb4b9ca49d3cd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff2</definition>
         <argsstring>()</argsstring>
         <name>payoff2</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="50" bodyend="50"/>
+        <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="50" bodyfile="/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1ab273912ca6b9f3daa22ec362aff6c659" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise2</definition>
         <argsstring>()</argsstring>
         <name>exercise2</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="51" bodyend="51"/>
+        <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="51" bodyfile="/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -82,7 +82,7 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="53"/>
+        <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -95,11 +95,11 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="54"/>
+        <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Writer-extensible option. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="34" bodyend="58"/>
+    <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="34" bodyfile="/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="34" bodyend="58"/>
   </compounddef>
 </doxygen>

@@ -9,7 +9,7 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="62"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="62"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -19,7 +19,7 @@
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="66"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="66"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -52,7 +52,7 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="41"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1a6de4fcf336b673a3f19c9e9cdf12620d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +83,7 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="47"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1af8c0bdd0fa7a2e7878f0cc3c897b74b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -114,44 +114,44 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="53"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1afb21564e63d8019bd939c8e878edb466" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; optionTenors</definition>
         <argsstring>() const </argsstring>
         <name>optionTenors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="92" bodyend="94"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="54" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="92" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1aefdc1e5e098b1b44b002aa1cca7760f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; optionDates</definition>
         <argsstring>() const </argsstring>
         <name>optionDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="97" bodyend="99"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="55" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1ac5ef24fc83d3fdf7ede195f4a57f5b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; optionTimes</definition>
         <argsstring>() const </argsstring>
         <name>optionTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="102" bodyend="104"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="56" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1a78ff20ada3366ab46220b2c79526e7f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; swapTenors</definition>
         <argsstring>() const </argsstring>
         <name>swapTenors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="107" bodyend="109"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="57" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1a0e8d00b76f5279595958604f6e234bd4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; swapLengths</definition>
         <argsstring>() const </argsstring>
         <name>swapLengths</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="112" bodyend="114"/>
+        <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="58" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="33" bodyend="87"/>
+    <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="34" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="33" bodyend="87"/>
   </compounddef>
 </doxygen>

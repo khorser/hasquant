@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cap_floor_term_vol_surface" kind="class" prot="public">
     <compoundname>QuantLib::CapFloorTermVolSurface</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp</includes>
+    <includes local="no">/termstructures/volatility/capfloor/capfloortermvolsurface.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_surface_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="124" bodyend="127"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="78" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="124" bodyend="127"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -26,7 +26,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="129" bodyend="131"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="82" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="129" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_surface_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -36,7 +36,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="133" bodyend="135"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="83" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="133" bodyend="135"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -47,7 +47,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="87"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -57,7 +57,7 @@
         <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
         <detaileddescription>
 <para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="88"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="88"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -67,28 +67,28 @@
         <definition>const std::vector&lt; Period &gt; &amp; optionTenors</definition>
         <argsstring>() const </argsstring>
         <name>optionTenors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="145" bodyend="147"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="92" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="145" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_surface_1aefdc1e5e098b1b44b002aa1cca7760f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; optionDates</definition>
         <argsstring>() const </argsstring>
         <name>optionDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="150" bodyend="154"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="93" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="150" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_surface_1ac5ef24fc83d3fdf7ede195f4a57f5b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; optionTimes</definition>
         <argsstring>() const </argsstring>
         <name>optionTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="157" bodyend="161"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="94" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="157" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_surface_1a6a332d89d50f22b6e6f5e461813f818d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; strikes</definition>
         <argsstring>() const </argsstring>
         <name>strikes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="163" bodyend="165"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="95" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="163" bodyend="165"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -127,7 +127,7 @@
         </param>
         <briefdescription>
 <para>floating reference date, floating market data </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="51"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_surface_1ae9fffb782c8ff938b8c1246ae63d7b11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -164,7 +164,7 @@
         </param>
         <briefdescription>
 <para>fixed reference date, floating market data </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="59"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_surface_1a1461d681d21e238eb21ee8a601a8a2d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -202,7 +202,7 @@
         </param>
         <briefdescription>
 <para>fixed reference date, fixed market data </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="67"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_surface_1a2b1a5cdb8166816ad9cb69746051942d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -240,13 +240,13 @@
         </param>
         <briefdescription>
 <para>floating reference date, fixed market data </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="75"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="75"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Cap/floor smile volatility surface. </para>    </briefdescription>
     <detaileddescription>
 <para>This class provides the volatility for a given cap/floor interpolating a volatility surface whose elements are the market term volatilities of a set of caps/floors with given length and given strike. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="41" bodyend="120"/>
+    <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="42" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="41" bodyend="120"/>
   </compounddef>
 </doxygen>

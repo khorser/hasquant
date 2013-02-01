@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_switzerland" kind="class" prot="public">
     <compoundname>QuantLib::Switzerland</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/switzerland.hpp</includes>
+    <includes local="no">/time/calendars/switzerland.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_switzerland_1a27f87c77f7e8364ab5fe764575a70175" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Switzerland</definition>
         <argsstring>()</argsstring>
         <name>Switzerland</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/switzerland.hpp" line="58"/>
+        <location file="/time/calendars/switzerland.hpp" line="58"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -42,6 +42,6 @@
 <para>St. Stephen&apos;s Day, December 26th </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/switzerland.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/switzerland.hpp" bodystart="50" bodyend="59"/>
+    <location file="/time/calendars/switzerland.hpp" line="50" bodyfile="/time/calendars/switzerland.hpp" bodystart="50" bodyend="59"/>
   </compounddef>
 </doxygen>

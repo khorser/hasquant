@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_euribor_swap_ifr_fix" kind="class" prot="public">
     <compoundname>QuantLib::EuriborSwapIfrFix</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/swap/euriborswap.hpp</includes>
+    <includes local="no">/indexes/swap/euriborswap.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_euribor_swap_ifr_fix_1aed2bc0d1fa423532a269f8ffc2617ff2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -18,7 +18,7 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/euriborswap.hpp" line="82"/>
+        <location file="/indexes/swap/euriborswap.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_euribor_swap_ifr_fix_1a689e8a643c83b426740f417030cf654f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -37,13 +37,13 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discounting</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/euriborswap.hpp" line="85"/>
+        <location file="/indexes/swap/euriborswap.hpp" line="85"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>EuriborSwapIfrFix index base class </para>    </briefdescription>
     <detaileddescription>
 <para>Euribor Swap indexes published by IFR Markets and distributed by Reuters page TGM42281 and by Telerate. Annual 30/360 vs 6M <ref refid="class_quant_lib_1_1_euribor" kindref="compound">Euribor</ref>, 1Y vs 3M <ref refid="class_quant_lib_1_1_euribor" kindref="compound">Euribor</ref>. For more info see <ulink url="http://www.ifrmarkets.com">http://www.ifrmarkets.com</ulink>. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/euriborswap.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/euriborswap.hpp" bodystart="78" bodyend="86"/>
+    <location file="/indexes/swap/euriborswap.hpp" line="78" bodyfile="/indexes/swap/euriborswap.hpp" bodystart="78" bodyend="86"/>
   </compounddef>
 </doxygen>

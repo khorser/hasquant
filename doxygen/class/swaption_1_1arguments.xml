@@ -2,21 +2,21 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swaption_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::Swaption::arguments</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp</includes>
+    <includes local="no">/instruments/swaption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_1_1arguments_1a3326e02320aa0daaf1c3433efd26ea37" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;VanillaSwap&gt; swap</definition>
         <argsstring></argsstring>
         <name>swap</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="107" bodyend="-1"/>
+        <location file="/instruments/swaption.hpp" line="107" bodyfile="/instruments/swaption.hpp" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_1_1arguments_1adbc9e8d5ea5da78fba7924bc32cfb25c" prot="public" static="no" mutable="no">
         <type>Settlement::Type</type>
         <definition>Settlement::Type settlementType</definition>
         <argsstring></argsstring>
         <name>settlementType</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="108" bodyend="-1"/>
+        <location file="/instruments/swaption.hpp" line="108" bodyfile="/instruments/swaption.hpp" bodystart="108" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,18 +25,18 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="106" bodyend="106"/>
+        <location file="/instruments/swaption.hpp" line="106" bodyfile="/instruments/swaption.hpp" bodystart="106" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="109"/>
+        <location file="/instruments/swaption.hpp" line="109"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for swaption calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="103" bodyend="110"/>
+    <location file="/instruments/swaption.hpp" line="104" bodyfile="/instruments/swaption.hpp" bodystart="103" bodyend="110"/>
   </compounddef>
 </doxygen>

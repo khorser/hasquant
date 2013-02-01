@@ -20,7 +20,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>sabrParameters</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" line="37"/>
+        <location file="/termstructures/volatility/sabrsmilesection.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_smile_section_1aaba12fd7c49dd8e6821f18483ee4fac0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -44,30 +44,30 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" line="41"/>
+        <location file="/termstructures/volatility/sabrsmilesection.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" bodystart="42" bodyend="42"/>
+        <location file="/termstructures/volatility/sabrsmilesection.hpp" line="42" bodyfile="/termstructures/volatility/sabrsmilesection.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" bodystart="43" bodyend="43"/>
+        <location file="/termstructures/volatility/sabrsmilesection.hpp" line="43" bodyfile="/termstructures/volatility/sabrsmilesection.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real atmLevel</definition>
         <argsstring>() const </argsstring>
         <name>atmLevel</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" bodystart="44" bodyend="44"/>
+        <location file="/termstructures/volatility/sabrsmilesection.hpp" line="44" bodyfile="/termstructures/volatility/sabrsmilesection.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrsmilesection.hpp" bodystart="33" bodyend="50"/>
+    <location file="/termstructures/volatility/sabrsmilesection.hpp" line="33" bodyfile="/termstructures/volatility/sabrsmilesection.hpp" bodystart="33" bodyend="50"/>
   </compounddef>
 </doxygen>

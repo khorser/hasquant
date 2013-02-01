@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_saudi_arabia" kind="class" prot="public">
     <compoundname>QuantLib::SaudiArabia</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/saudiarabia.hpp</includes>
+    <includes local="no">/time/calendars/saudiarabia.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_saudi_arabia_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -11,7 +11,7 @@
           <briefdescription>
 <para>Tadawul financial market. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/saudiarabia.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/saudiarabia.hpp" bodystart="59" bodyend="60"/>
+        <location file="/time/calendars/saudiarabia.hpp" line="59" bodyfile="/time/calendars/saudiarabia.hpp" bodystart="59" bodyend="60"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_saudi_arabia_1abe41cfffd960e29a5d8b07be00aeda42a60d5521edb0a769f62727b9b12645382" kindref="member">Tadawul</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/saudiarabia.hpp" line="61"/>
+        <location file="/time/calendars/saudiarabia.hpp" line="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -46,6 +46,6 @@
 <para>Eid Al-Fitr </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/saudiarabia.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/saudiarabia.hpp" bodystart="50" bodyend="62"/>
+    <location file="/time/calendars/saudiarabia.hpp" line="50" bodyfile="/time/calendars/saudiarabia.hpp" bodystart="50" bodyend="62"/>
   </compounddef>
 </doxygen>

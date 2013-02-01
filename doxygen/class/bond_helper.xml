@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bond_helper" kind="class" prot="public">
     <compoundname>QuantLib::BondHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp</includes>
+    <includes local="no">/termstructures/yield/bondhelpers.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -11,7 +11,7 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="50"/>
+        <location file="/termstructures/yield/bondhelpers.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21,7 +21,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="51"/>
+        <location file="/termstructures/yield/bondhelpers.hpp" line="51"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -31,7 +31,7 @@
         <definition>boost::shared_ptr&lt; Bond &gt; bond</definition>
         <argsstring>() const </argsstring>
         <name>bond</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" bodystart="92" bodyend="94"/>
+        <location file="/termstructures/yield/bondhelpers.hpp" line="55" bodyfile="/termstructures/yield/bondhelpers.hpp" bodystart="92" bodyend="94"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -45,7 +45,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="59"/>
+        <location file="/termstructures/yield/bondhelpers.hpp" line="59"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -64,13 +64,13 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000135"><xreftitle>Warning</xreftitle><xrefdescription><para>Setting a pricing engine to the passed bond from external code will cause the bootstrap to fail or to give wrong results. It is advised to discard the bond after creating the helper, so that the helper has sole ownership of it. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="47"/>
+        <location file="/termstructures/yield/bondhelpers.hpp" line="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>fixed-coupon bond helper </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000134"><xreftitle>Warning</xreftitle><xrefdescription><para>This class assumes that the reference date does not change between calls of setTermStructure(). </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" bodystart="38" bodyend="64"/>
+    <location file="/termstructures/yield/bondhelpers.hpp" line="38" bodyfile="/termstructures/yield/bondhelpers.hpp" bodystart="38" bodyend="64"/>
   </compounddef>
 </doxygen>

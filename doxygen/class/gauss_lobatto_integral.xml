@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_lobatto_integral" kind="class" prot="public">
     <compoundname>QuantLib::GaussLobattoIntegral</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp</includes>
+    <includes local="no">/math/integrals/gausslobattointegral.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_lobatto_integral_1a22e1010dd30105e19d6f6b777128f45a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -27,13 +27,13 @@
           <declname>useConvergenceEstimate</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" line="56"/>
+        <location file="/math/integrals/gausslobattointegral.hpp" line="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Integral of a one-dimensional function. </para>    </briefdescription>
     <detaileddescription>
 <para>Given a target accuracy <formula id="203">$ \epsilon $</formula>, the integral of a function <formula id="37">$ f $</formula> between <formula id="47">$ a $</formula> and <formula id="48">$ b $</formula> is calculated by means of the Gauss-Lobatto formula</para><para>References: This algorithm is a C++ implementation of the algorithm outlined in</para><para>W. Gander and W. Gautschi, Adaptive Quadrature - Revisited. BIT, 40(1):84-101, March 2000. CS technical report: ftp.inf.ethz.ch/pub/publications/tech-reports/3xx/306.ps.gz</para><para>The original MATLAB version can be downloaded here <ulink url="http://www.inf.ethz.ch/personal/gander/adaptlob.m">http://www.inf.ethz.ch/personal/gander/adaptlob.m</ulink> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" bodystart="51" bodyend="71"/>
+    <location file="/math/integrals/gausslobattointegral.hpp" line="51" bodyfile="/math/integrals/gausslobattointegral.hpp" bodystart="51" bodyend="71"/>
   </compounddef>
 </doxygen>

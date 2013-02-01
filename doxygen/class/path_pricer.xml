@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_path_pricer" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PathPricer</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathpricer.hpp</includes>
+    <includes local="no">/methods/montecarlo/pathpricer.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -22,7 +22,7 @@
         <definition>virtual ~PathPricer</definition>
         <argsstring>()</argsstring>
         <name>~PathPricer</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathpricer.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathpricer.hpp" bodystart="42" bodyend="42"/>
+        <location file="/methods/montecarlo/pathpricer.hpp" line="42" bodyfile="/methods/montecarlo/pathpricer.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_pricer_1a8d202422e04c42b1c33fe366569a4ef5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>ValueType</type>
@@ -33,13 +33,13 @@
           <type>const PathType &amp;</type>
           <declname>path</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathpricer.hpp" line="43"/>
+        <location file="/methods/montecarlo/pathpricer.hpp" line="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for path pricers </para>    </briefdescription>
     <detaileddescription>
 <para>Returns the value of an option on a given path. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathpricer.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathpricer.hpp" bodystart="40" bodyend="44"/>
+    <location file="/methods/montecarlo/pathpricer.hpp" line="40" bodyfile="/methods/montecarlo/pathpricer.hpp" bodystart="40" bodyend="44"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_flat_hazard_rate" kind="class" prot="public">
     <compoundname>QuantLib::FlatHazardRate</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp</includes>
+    <includes local="no">/termstructures/credit/flathazardrate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a431de07f0370cdeda26185ef1f1822d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -21,7 +21,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="41"/>
+        <location file="/termstructures/credit/flathazardrate.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a7497e7909612438d08247986fe9b2310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -39,7 +39,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="44"/>
+        <location file="/termstructures/credit/flathazardrate.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a0ad1848fe7d61e048e54112565af0eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -61,7 +61,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="48"/>
+        <location file="/termstructures/credit/flathazardrate.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1aee7f38961be4bffcb20b26bb301df183" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +83,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="52"/>
+        <location file="/termstructures/credit/flathazardrate.hpp" line="52"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -96,11 +96,11 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="56" bodyend="56"/>
+        <location file="/termstructures/credit/flathazardrate.hpp" line="56" bodyfile="/termstructures/credit/flathazardrate.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Flat hazard-rate curve. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="35" bodyend="70"/>
+    <location file="/termstructures/credit/flathazardrate.hpp" line="35" bodyfile="/termstructures/credit/flathazardrate.hpp" bodystart="35" bodyend="70"/>
   </compounddef>
 </doxygen>

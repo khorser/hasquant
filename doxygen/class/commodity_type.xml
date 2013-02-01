@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_commodity_type" kind="class" prot="public">
     <compoundname>QuantLib::CommodityType</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp</includes>
+    <includes local="no">/experimental/commodities/commoditytype.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -12,7 +12,7 @@
         <name>code</name>
         <briefdescription>
 <para>commodity code, e.g, &quot;HO&quot; </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="95" bodyend="97"/>
+        <location file="/experimental/commodities/commoditytype.hpp" line="49" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -21,7 +21,7 @@
         <name>name</name>
         <briefdescription>
 <para>name, e.g, &quot;Heating Oil&quot; </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="99" bodyend="101"/>
+        <location file="/experimental/commodities/commoditytype.hpp" line="51" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -33,7 +33,7 @@
         <name>empty</name>
         <briefdescription>
 <para>is this a usable instance? </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="103" bodyend="105"/>
+        <location file="/experimental/commodities/commoditytype.hpp" line="57" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="103" bodyend="105"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,7 +46,7 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para>Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="44" bodyend="44"/>
+        <location file="/experimental/commodities/commoditytype.hpp" line="44" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a8b6363fe49172948d3e690db183123de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -61,7 +61,7 @@
           <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="45"/>
+        <location file="/experimental/commodities/commoditytype.hpp" line="45"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
@@ -76,7 +76,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="107" bodyend="109"/>
+        <location file="/experimental/commodities/commoditytype.hpp" line="77" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a77a9b9f71c1ed95bd31d2ad73dcc3202" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -89,7 +89,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="111" bodyend="113"/>
+        <location file="/experimental/commodities/commoditytype.hpp" line="81" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1ae9b4ce5917c9d8624983d67323e0b081" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -102,11 +102,11 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="85"/>
+        <location file="/experimental/commodities/commoditytype.hpp" line="85"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>commodity type </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="36" bodyend="73"/>
+    <location file="/experimental/commodities/commoditytype.hpp" line="36" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="36" bodyend="73"/>
   </compounddef>
 </doxygen>

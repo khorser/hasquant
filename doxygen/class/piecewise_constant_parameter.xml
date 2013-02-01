@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_piecewise_constant_parameter" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseConstantParameter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp</includes>
+    <includes local="no">/models/parameter.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_parameter_1abaab926b36c99cda27f439d3cbd55149" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,13 +18,13 @@
           <declname>constraint</declname>
           <defval><ref refid="class_quant_lib_1_1_no_constraint" kindref="compound">NoConstraint</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="142" bodyend="149"/>
+        <location file="/models/parameter.hpp" line="149" bodyfile="/models/parameter.hpp" bodystart="142" bodyend="149"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Piecewise-constant parameter. </para>    </briefdescription>
     <detaileddescription>
 <para><formula id="288">$ a(t) = a_i if t_{i-1} \geq t &lt; t_i $</formula>. This kind of parameter is usually used to enhance the fitting of a model </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="123" bodyend="150"/>
+    <location file="/models/parameter.hpp" line="123" bodyfile="/models/parameter.hpp" bodystart="123" bodyend="150"/>
   </compounddef>
 </doxygen>

@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_o_p_currency" kind="class" prot="public">
     <compoundname>QuantLib::COPCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp</includes>
+    <includes local="no">/currencies/america.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_c_o_p_currency_1ad9613b64c10fbae55fdbb19522f785d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>COPCurrency</definition>
         <argsstring>()</argsstring>
         <name>COPCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="114" bodyend="121"/>
+        <location file="/currencies/america.hpp" line="114" bodyfile="/currencies/america.hpp" bodystart="114" bodyend="121"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Colombian peso. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is COP; the numeric code is 170. It is divided in 100 centavos. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="112" bodyend="122"/>
+    <location file="/currencies/america.hpp" line="112" bodyfile="/currencies/america.hpp" bodystart="112" bodyend="122"/>
   </compounddef>
 </doxygen>

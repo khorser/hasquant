@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_e_u_r_currency" kind="class" prot="public">
     <compoundname>QuantLib::EURCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_e_u_r_currency_1a58840ab9f9b4832af0bffcc053171ae0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>EURCurrency</definition>
         <argsstring>()</argsstring>
         <name>EURCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="168" bodyend="175"/>
+        <location file="/currencies/europe.hpp" line="168" bodyfile="/currencies/europe.hpp" bodystart="168" bodyend="175"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>European Euro. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is EUR; the numeric code is 978. It is divided into 100 cents. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="166" bodyend="176"/>
+    <location file="/currencies/europe.hpp" line="166" bodyfile="/currencies/europe.hpp" bodystart="166" bodyend="176"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_f_g_s" kind="class" prot="public">
     <compoundname>QuantLib::BFGS</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp</includes>
+    <includes local="no">/math/optimization/bfgs.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_b_f_g_s_1ad16a72492104729c191a62e0ab7546a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -14,7 +14,7 @@
           <declname>lineSearch</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" bodystart="41" bodyend="43"/>
+        <location file="/math/optimization/bfgs.hpp" line="43" bodyfile="/math/optimization/bfgs.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -22,6 +22,6 @@
     <detaileddescription>
 <para>See <ulink url="http://en.wikipedia.org/wiki/BFGS_method">http://en.wikipedia.org/wiki/BFGS_method</ulink>. <verbatim>   Adapted from Numerical Recipes in C, 2nd edition.
    User has to provide line-search method and optimization end criteria.</verbatim> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" bodystart="39" bodyend="53"/>
+    <location file="/math/optimization/bfgs.hpp" line="39" bodyfile="/math/optimization/bfgs.hpp" bodystart="39" bodyend="53"/>
   </compounddef>
 </doxygen>

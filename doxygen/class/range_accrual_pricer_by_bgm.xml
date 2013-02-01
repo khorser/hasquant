@@ -9,7 +9,7 @@
         <definition>virtual Real swapletPrice</definition>
         <argsstring>() const </argsstring>
         <name>swapletPrice</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="136"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="136"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -38,9 +38,9 @@
           <type>bool</type>
           <declname>byCallSpread</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="133"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="133"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="125" bodyend="198"/>
+    <location file="/cashflows/rangeaccrual.hpp" line="125" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="125" bodyend="198"/>
   </compounddef>
 </doxygen>

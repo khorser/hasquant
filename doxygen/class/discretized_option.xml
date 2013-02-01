@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_option" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp</includes>
+    <includes local="no">/discretizedasset.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_option_1abacbceb782d539eeeb836afe7ee01171" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>exerciseTimes</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="162" bodyend="167"/>
+        <location file="/discretizedasset.hpp" line="167" bodyfile="/discretizedasset.hpp" bodystart="162" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_option_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -35,7 +35,7 @@
         </param>
         <detaileddescription>
 <para>This method should initialize the asset values to an <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> of the given size and with values depending on the particular asset. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="221" bodyend="227"/>
+        <location file="/discretizedasset.hpp" line="168" bodyfile="/discretizedasset.hpp" bodystart="221" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_option_1abf1a1554b3879da28736befc32b88312" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
@@ -46,13 +46,13 @@
         <detaileddescription>
 <para>This method returns the times at which the numerical method should stop while rolling back the asset. Typical examples include payment times, exercise times and such.</para><para><simplesect kind="note"><para>The returned values are not guaranteed to be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="169" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="229" bodyend="238"/>
+        <location file="/discretizedasset.hpp" line="169" bodyfile="/discretizedasset.hpp" bodystart="229" bodyend="238"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Discretized option on a given asset. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000005"><xreftitle>Warning</xreftitle><xrefdescription><para>it is advised that derived classes take care of creating and initializing themselves an instance of the underlying. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="160" bodyend="176"/>
+    <location file="/discretizedasset.hpp" line="160" bodyfile="/discretizedasset.hpp" bodystart="160" bodyend="176"/>
   </compounddef>
 </doxygen>

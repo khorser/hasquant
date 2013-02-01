@@ -12,9 +12,9 @@
           <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_interpolation2_d" kindref="compound">Interpolation2D</ref> &gt;</type>
           <declname>decoratedInterpolation</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="34" bodyend="37"/>
+        <location file="/math/interpolations/flatextrapolation2d.hpp" line="34" bodyfile="/math/interpolations/flatextrapolation2d.hpp" bodystart="34" bodyend="37"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="32" bodyend="104"/>
+    <location file="/math/interpolations/flatextrapolation2d.hpp" line="32" bodyfile="/math/interpolations/flatextrapolation2d.hpp" bodystart="32" bodyend="104"/>
   </compounddef>
 </doxygen>

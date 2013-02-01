@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process" kind="class" prot="public">
     <compoundname>QuantLib::GeneralizedOrnsteinUhlenbeckProcess</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp</includes>
+    <includes local="no">/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess1D interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
         <briefdescription>
 <para>returns the initial value of the state variable </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="52"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -31,7 +31,7 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="54"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -49,7 +49,7 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="55"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1a81842299056bb82662dce099fca6bcba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -71,7 +71,7 @@
         </param>
         <detaileddescription>
 <para>returns the expectation <formula id="362">$ E(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="57"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1aa78ac261543c5f8c3b2e065f4a57c526" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -93,7 +93,7 @@
         </param>
         <detaileddescription>
 <para>returns the standard deviation <formula id="363">$ S(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="58"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1aec618e405b3e8c104f58b6616d3d482f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -115,7 +115,7 @@
         </param>
         <detaileddescription>
 <para>returns the variance <formula id="364">$ V(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="59"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="59"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -142,7 +142,7 @@
           <declname>level</declname>
           <defval>0.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="49"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1a30d456b8dbd1b869db550e8d3bff4aa9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -153,7 +153,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="62"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1afb8221f6e690c9c330e2c142393b1d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -164,20 +164,20 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="63"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1a8fe47ac970c2acb1327f005d3c0a189a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real level</definition>
         <argsstring>() const </argsstring>
         <name>level</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="64"/>
+        <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Piecewise linear Ornstein-Uhlenbeck process class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class describes the Ornstein-Uhlenbeck process governed by <formula id="141">\[ dx = a (level - x_t) dt + \sigma dW_t \]</formula></para><para><verbatim>   where the coefficients a and sigma are piecewise linear.</verbatim> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" bodystart="43" bodyend="70"/>
+    <location file="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="43" bodyfile="/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" bodystart="43" bodyend="70"/>
   </compounddef>
 </doxygen>

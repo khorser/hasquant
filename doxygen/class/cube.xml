@@ -17,9 +17,9 @@
           <type>const T &amp;</type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="59" bodyend="59"/>
+        <location file="/math/functional.hpp" line="59" bodyfile="/math/functional.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="57" bodyend="60"/>
+    <location file="/math/functional.hpp" line="57" bodyfile="/math/functional.hpp" bodystart="57" bodyend="60"/>
   </compounddef>
 </doxygen>

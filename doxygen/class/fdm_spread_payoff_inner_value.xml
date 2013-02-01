@@ -20,7 +20,7 @@
           <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;</type>
           <declname>calc2</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="34" bodyend="40"/>
+        <location file="/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="40" bodyfile="/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="34" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a7d500837cad064e46b8c0a84800e9925" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -35,7 +35,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="42" bodyend="48"/>
+        <location file="/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="42" bodyfile="/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="42" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a369767242f339b7f78a289bc54307120" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -50,9 +50,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="49" bodyend="51"/>
+        <location file="/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="49" bodyfile="/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="49" bodyend="51"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="32" bodyend="57"/>
+    <location file="/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="32" bodyfile="/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="32" bodyend="57"/>
   </compounddef>
 </doxygen>

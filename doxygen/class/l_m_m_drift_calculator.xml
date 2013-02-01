@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_l_m_m_drift_calculator" kind="class" prot="public">
     <compoundname>QuantLib::LMMDriftCalculator</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp</includes>
+    <includes local="no">/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1a5f59294bf671397ce92ff088c2c00295" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,7 +29,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>alive</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="46"/>
+        <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1ad7fea652507b0766c40cbd68d7ad379e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -46,7 +46,7 @@
         </param>
         <briefdescription>
 <para>Computes the drifts. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="49"/>
+        <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1aeba77f1f3594f94b7bf1c91b31216b53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -61,7 +61,7 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>drifts</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="51"/>
+        <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1a8d6ead3d89b1e73881a6bc881ff55556" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -78,7 +78,7 @@
         </param>
         <detaileddescription>
 <para>Computes the drifts without factor reduction as in eqs. 2, 4 of ref. [1] (uses the covariance matrix directly). </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="56"/>
+        <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1ae3c239a9149912778a14c1fc56305727" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -93,7 +93,7 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>drifts</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="58"/>
+        <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1a41a04a342572a27ae6438d1e2d327d7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -110,7 +110,7 @@
         </param>
         <detaileddescription>
 <para>Computes the drifts with factor reduction as in eq. 7 of ref. [1] (uses pseudo square root of the covariance matrix). </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="63"/>
+        <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1ab74cccc3449d4d7b62d0daa81cd25dce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -125,13 +125,13 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>drifts</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="65"/>
+        <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Drift computation for log-normal Libor market models. </para>    </briefdescription>
     <detaileddescription>
 <para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" bodystart="40" bodyend="78"/>
+    <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="40" bodyfile="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" bodystart="40" bodyend="78"/>
   </compounddef>
 </doxygen>

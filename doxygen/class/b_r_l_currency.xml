@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_r_l_currency" kind="class" prot="public">
     <compoundname>QuantLib::BRLCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp</includes>
+    <includes local="no">/currencies/america.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_b_r_l_currency_1a689ef7bf4aba182d7b4b4c7820ab76c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BRLCurrency</definition>
         <argsstring>()</argsstring>
         <name>BRLCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="60" bodyend="67"/>
+        <location file="/currencies/america.hpp" line="60" bodyfile="/currencies/america.hpp" bodystart="60" bodyend="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Brazilian real. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is BRL; the numeric code is 986. It is divided in 100 centavos. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="58" bodyend="68"/>
+    <location file="/currencies/america.hpp" line="58" bodyfile="/currencies/america.hpp" bodystart="58" bodyend="68"/>
   </compounddef>
 </doxygen>

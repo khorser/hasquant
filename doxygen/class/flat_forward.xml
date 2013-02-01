@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_flat_forward" kind="class" prot="public">
     <compoundname>QuantLib::FlatForward</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp</includes>
+    <includes local="no">/termstructures/yield/flatforward.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1acebbf918e5cc4852d88c40b94cea1ca7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -32,7 +32,7 @@
           <declname>frequency</declname>
           <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="45"/>
+        <location file="/termstructures/yield/flatforward.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1a6004273c729a56389cd3db7780ce3cbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -61,7 +61,7 @@
           <declname>frequency</declname>
           <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="50"/>
+        <location file="/termstructures/yield/flatforward.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1a42000d1ce0e9e54047615e1f38c8644d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -94,7 +94,7 @@
           <declname>frequency</declname>
           <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="56"/>
+        <location file="/termstructures/yield/flatforward.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1a62dd9e4772f5a8a0b4964d9b1782b9df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -127,7 +127,7 @@
           <declname>frequency</declname>
           <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="62"/>
+        <location file="/termstructures/yield/flatforward.hpp" line="62"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -140,7 +140,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="71" bodyend="71"/>
+        <location file="/termstructures/yield/flatforward.hpp" line="71" bodyfile="/termstructures/yield/flatforward.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -151,7 +151,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="97" bodyend="100"/>
+        <location file="/termstructures/yield/flatforward.hpp" line="76" bodyfile="/termstructures/yield/flatforward.hpp" bodystart="97" bodyend="100"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -160,18 +160,18 @@
         <definition>Compounding compounding</definition>
         <argsstring>() const </argsstring>
         <name>compounding</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="66" bodyend="66"/>
+        <location file="/termstructures/yield/flatforward.hpp" line="66" bodyfile="/termstructures/yield/flatforward.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1a402b415c588fd029f489b30d42076cf4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
         <definition>Frequency compoundingFrequency</definition>
         <argsstring>() const </argsstring>
         <name>compoundingFrequency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="67" bodyend="67"/>
+        <location file="/termstructures/yield/flatforward.hpp" line="67" bodyfile="/termstructures/yield/flatforward.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Flat interest-rate curve. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="36" bodyend="93"/>
+    <location file="/termstructures/yield/flatforward.hpp" line="37" bodyfile="/termstructures/yield/flatforward.hpp" bodystart="36" bodyend="93"/>
   </compounddef>
 </doxygen>

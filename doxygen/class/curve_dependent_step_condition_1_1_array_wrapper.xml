@@ -12,7 +12,7 @@
           <type>const array_type &amp;</type>
           <declname>a</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="82" bodyend="83"/>
+        <location file="/methods/finitedifferences/stepcondition.hpp" line="83" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="82" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper_1a4e9946556302a943da9cb097af581af1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -26,9 +26,9 @@
           <type>int</type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="85" bodyend="87"/>
+        <location file="/methods/finitedifferences/stepcondition.hpp" line="85" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="85" bodyend="87"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="78" bodyend="88"/>
+    <location file="/methods/finitedifferences/stepcondition.hpp" line="78" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="78" bodyend="88"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_hong_kong" kind="class" prot="public">
     <compoundname>QuantLib::HongKong</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp</includes>
+    <includes local="no">/time/calendars/hongkong.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_hong_kong_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -11,7 +11,7 @@
           <briefdescription>
 <para>Hong Kong stock exchange. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp" bodystart="71" bodyend="72"/>
+        <location file="/time/calendars/hongkong.hpp" line="71" bodyfile="/time/calendars/hongkong.hpp" bodystart="71" bodyend="72"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_hong_kong_1abe41cfffd960e29a5d8b07be00aeda42a06e529684fda4e065fb1e2cb432ca864" kindref="member">HKEx</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp" line="73"/>
+        <location file="/time/calendars/hongkong.hpp" line="73"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -70,6 +70,6 @@
 <para>Chung Yeung Festival </para></listitem>
 </itemizedlist>
 </para><para>Data from <ulink url="http://www.hkex.com.hk">http://www.hkex.com.hk</ulink> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp" bodystart="63" bodyend="74"/>
+    <location file="/time/calendars/hongkong.hpp" line="63" bodyfile="/time/calendars/hongkong.hpp" bodystart="63" bodyend="74"/>
   </compounddef>
 </doxygen>

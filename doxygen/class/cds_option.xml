@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cds_option" kind="class" prot="public">
     <compoundname>QuantLib::CdsOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp</includes>
+    <includes local="no">/experimental/credit/cdsoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_cds_option_1_1arguments" prot="public">QuantLib::CdsOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_cds_option_1_1engine" prot="public">QuantLib::CdsOption::engine</innerclass>
     <innerclass refid="class_quant_lib_1_1_cds_option_1_1results" prot="public">QuantLib::CdsOption::results</innerclass>
@@ -16,7 +16,7 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="54"/>
+        <location file="/experimental/credit/cdsoption.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -29,7 +29,7 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="55"/>
+        <location file="/experimental/credit/cdsoption.hpp" line="55"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -39,7 +39,7 @@
         <definition>const boost::shared_ptr&lt;CreditDefaultSwap&gt;&amp; underlyingSwap</definition>
         <argsstring>() const </argsstring>
         <name>underlyingSwap</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="59" bodyend="61"/>
+        <location file="/experimental/credit/cdsoption.hpp" line="59" bodyfile="/experimental/credit/cdsoption.hpp" bodystart="59" bodyend="61"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -49,14 +49,14 @@
         <definition>Rate atmRate</definition>
         <argsstring>() const </argsstring>
         <name>atmRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="65"/>
+        <location file="/experimental/credit/cdsoption.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1ab5554b5e7c7e5608a4a952efbee8deff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real riskyAnnuity</definition>
         <argsstring>() const </argsstring>
         <name>riskyAnnuity</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="66"/>
+        <location file="/experimental/credit/cdsoption.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1a5cabbc4f244ab101262fabc120ed06c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -98,7 +98,7 @@
           <declname>maxVol</declname>
           <defval>4.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="75"/>
+        <location file="/experimental/credit/cdsoption.hpp" line="75"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -120,13 +120,13 @@
           <declname>knocksOut</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="50"/>
+        <location file="/experimental/credit/cdsoption.hpp" line="50"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>CDS option. </para>    </briefdescription>
     <detaileddescription>
 <para>The side of the swaption is set by choosing the side of the CDS. A receiver CDS option is a right to buy an underlying CDS selling protection and receiving a coupon. A payer CDS option is a right to buy an underlying CDS buying protection and paying coupon. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="43" bodyend="85"/>
+    <location file="/experimental/credit/cdsoption.hpp" line="43" bodyfile="/experimental/credit/cdsoption.hpp" bodystart="43" bodyend="85"/>
   </compounddef>
 </doxygen>

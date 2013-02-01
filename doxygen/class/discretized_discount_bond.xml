@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_discount_bond" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedDiscountBond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp</includes>
+    <includes local="no">/discretizedasset.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_discount_bond_1aadbc611b20969caef2722f3b32121f25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>DiscretizedDiscountBond</definition>
         <argsstring>()</argsstring>
         <name>DiscretizedDiscountBond</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="145" bodyend="145"/>
+        <location file="/discretizedasset.hpp" line="145" bodyfile="/discretizedasset.hpp" bodystart="145" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_discount_bond_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -23,7 +23,7 @@
         </param>
         <detaileddescription>
 <para>This method should initialize the asset values to an <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> of the given size and with values depending on the particular asset. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="146" bodyend="148"/>
+        <location file="/discretizedasset.hpp" line="146" bodyfile="/discretizedasset.hpp" bodystart="146" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_discount_bond_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
@@ -34,11 +34,11 @@
         <detaileddescription>
 <para>This method returns the times at which the numerical method should stop while rolling back the asset. Typical examples include payment times, exercise times and such.</para><para><simplesect kind="note"><para>The returned values are not guaranteed to be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="149" bodyend="151"/>
+        <location file="/discretizedasset.hpp" line="149" bodyfile="/discretizedasset.hpp" bodystart="149" bodyend="151"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Useful discretized discount bond asset. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="143" bodyend="152"/>
+    <location file="/discretizedasset.hpp" line="143" bodyfile="/discretizedasset.hpp" bodystart="143" bodyend="152"/>
   </compounddef>
 </doxygen>

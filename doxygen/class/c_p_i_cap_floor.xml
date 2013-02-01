@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_p_i_cap_floor" kind="class" prot="public">
     <compoundname>QuantLib::CPICapFloor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp</includes>
+    <includes local="no">/instruments/cpicapfloor.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments" prot="public">QuantLib::CPICapFloor::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1engine" prot="public">QuantLib::CPICapFloor::engine</innerclass>
     <innerclass refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1results" prot="public">QuantLib::CPICapFloor::results</innerclass>
@@ -13,14 +13,14 @@
         <definition>Option::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="83" bodyend="83"/>
+        <location file="/instruments/cpicapfloor.hpp" line="83" bodyfile="/instruments/cpicapfloor.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="84" bodyend="84"/>
+        <location file="/instruments/cpicapfloor.hpp" line="84" bodyfile="/instruments/cpicapfloor.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a4fc51b15e0ddcd286e54d1d5d0f18984" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -29,35 +29,35 @@
         <name>strike</name>
         <briefdescription>
 <para><formula id="144">$ K $</formula> in the above formula. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="86" bodyend="86"/>
+        <location file="/instruments/cpicapfloor.hpp" line="86" bodyfile="/instruments/cpicapfloor.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a8672d26ae625ac44319bf3ad4ced846e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="87"/>
+        <location file="/instruments/cpicapfloor.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a2915ae916f733e8452c0320c8fd3f977" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date payDate</definition>
         <argsstring>() const </argsstring>
         <name>payDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="88"/>
+        <location file="/instruments/cpicapfloor.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1aca3f0afb8c42c2854ff124d0074b6363" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
         <definition>Handle&lt;ZeroInflationIndex&gt; inflationIndex</definition>
         <argsstring>() const </argsstring>
         <name>inflationIndex</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="89" bodyend="89"/>
+        <location file="/instruments/cpicapfloor.hpp" line="89" bodyfile="/instruments/cpicapfloor.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="90" bodyend="90"/>
+        <location file="/instruments/cpicapfloor.hpp" line="90" bodyfile="/instruments/cpicapfloor.hpp" bodystart="90" bodyend="90"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -70,7 +70,7 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="95"/>
+        <location file="/instruments/cpicapfloor.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -83,7 +83,7 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="96"/>
+        <location file="/instruments/cpicapfloor.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a0f63e39daa12d877d8156360b8f920af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -97,7 +97,7 @@
         </param>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="97"/>
+        <location file="/instruments/cpicapfloor.hpp" line="97"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -159,13 +159,13 @@
           <declname>observationInterpolation</declname>
           <defval>CPI::AsIndex</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="79"/>
+        <location file="/instruments/cpicapfloor.hpp" line="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>CPI cap or floor. </para>    </briefdescription>
     <detaileddescription>
 <para>Quoted as a fixed strike rate <formula id="144">$ K $</formula>. <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref>: <formula id="145">\[ P_n(0,T) \max(y (N [(1+K)^{T}-1] - N \left[ \frac{I(T)}{I(0)} -1 \right]), 0) \]</formula> where <formula id="45">$ T $</formula> is the maturity time, <formula id="146">$ P_n(0,t) $</formula> is the nominal discount factor at time <formula id="147">$ t $</formula>, <formula id="32">$ N $</formula> is the notional, and <formula id="148">$ I(t) $</formula> is the inflation index value at time <formula id="147">$ t $</formula>.</para><para>Inflation is generally available on every day, including holidays and weekends. Hence there is a variable to state whether the observe/fix dates for inflation are adjusted or not. The default is not to adjust.</para><para>N.B. a cpi cap or floor is an option, not a cap or floor on a coupon. Thus this is very similar to a ZCIIS and has a single flow, this is as usual for cpi because it is cumulative up to option maturity from base date.</para><para>We do not inherit from <ref refid="class_quant_lib_1_1_option" kindref="compound">Option</ref>, although this would be reasonable, because we do not have that degree of generality. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="62" bodyend="114"/>
+    <location file="/instruments/cpicapfloor.hpp" line="62" bodyfile="/instruments/cpicapfloor.hpp" bodystart="62" bodyend="114"/>
   </compounddef>
 </doxygen>

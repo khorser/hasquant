@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g2" kind="class" prot="public">
     <compoundname>QuantLib::G2</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp</includes>
+    <includes local="no">/models/shortrate/twofactormodels/g2.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_g2_1_1_dynamics" prot="public">QuantLib::G2::Dynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_g2_1_1_fitting_parameter" prot="public">QuantLib::G2::FittingParameter</innerclass>
       <sectiondef kind="public-func">
@@ -40,7 +40,7 @@
           <declname>rho</declname>
           <defval>-0.75</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="62"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
@@ -50,7 +50,7 @@
         <reimplements refid="class_quant_lib_1_1_two_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
         <briefdescription>
 <para>Returns the short-rate dynamics. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="64"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1a6e6da6d0ea51cae74b4ec8903bf09f18" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -70,7 +70,7 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
           <declname>factors</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="66" bodyend="72"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="68" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="66" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1a892bc207d2b8c0119a2ac775a2909e81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -89,7 +89,7 @@
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="74"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -113,7 +113,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>bondMaturity</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="79"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1a753509dd7d4a657ab5fe37de3a12d063" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -136,7 +136,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>intervals</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="84"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1ae85d814b067b54d8e1ea803a90a6db32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
@@ -150,13 +150,13 @@
         </param>
         <briefdescription>
 <para>Implied discount curve. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="86" bodyend="88"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="86" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Two-additive-factor gaussian model class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class implements a two-additive-factor model defined by <formula id="315">\[ dr_t = \varphi(t) + x_t + y_t \]</formula> where <formula id="295">$ x_t $</formula> and <formula id="297">$ y_t $</formula> are defined by <formula id="316">\[ dx_t = -a x_t dt + \sigma dW^1_t, x_0 = 0 \]</formula> <formula id="317">\[ dy_t = -b y_t dt + \sigma dW^2_t, y_0 = 0 \]</formula> and <formula id="318">$ dW^1_t dW^2_t = \rho dt $</formula>.</para><para><xrefsect id="bug_1_bug000010"><xreftitle>Bug</xreftitle><xrefdescription><para>This class was not tested enough to guarantee its functionality.</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="53" bodyend="120"/>
+    <location file="/models/shortrate/twofactormodels/g2.hpp" line="55" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="53" bodyend="120"/>
   </compounddef>
 </doxygen>

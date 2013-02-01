@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tabulated_gauss_legendre" kind="class" prot="public">
     <compoundname>QuantLib::TabulatedGaussLegendre</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp</includes>
+    <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a2720b47fd53c707f8cf669dea4d28861" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -14,7 +14,7 @@
           <declname>n</declname>
           <defval>20</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="205" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="205" bodyend="205"/>
+        <location file="/math/integrals/gaussianquadratures.hpp" line="205" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="205" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tabulated_gauss_legendre_1afd92625955969b8a4a77603f3ad45c6a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -30,7 +30,7 @@
           <type>const F &amp;</type>
           <declname>f</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="207" bodyend="229"/>
+        <location file="/math/integrals/gaussianquadratures.hpp" line="207" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="207" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a64fd5c4d322e0d8d4160fa59b79628b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -40,18 +40,18 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="231"/>
+        <location file="/math/integrals/gaussianquadratures.hpp" line="231"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size order</definition>
         <argsstring>() const </argsstring>
         <name>order</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="232" bodyend="232"/>
+        <location file="/math/integrals/gaussianquadratures.hpp" line="232" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="232" bodyend="232"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>tabulated Gauss-Legendre quadratures </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="203" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="203" bodyend="256"/>
+    <location file="/math/integrals/gaussianquadratures.hpp" line="203" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="203" bodyend="256"/>
   </compounddef>
 </doxygen>

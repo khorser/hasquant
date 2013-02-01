@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_calibrated_model" kind="class" prot="public">
     <compoundname>QuantLib::CalibratedModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
+    <includes local="no">/models/model.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint" prot="public">QuantLib::CalibratedModel::PrivateConstraint</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nArguments</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="81"/>
+        <location file="/models/model.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -22,7 +22,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="83" bodyend="86"/>
+        <location file="/models/model.hpp" line="83" bodyfile="/models/model.hpp" bodystart="83" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1a4660051913f0c11b1f10fbe3320d894f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -54,7 +54,7 @@
 <para>Calibrate to a set of market instruments (caps/swaptions) </para>        </briefdescription>
         <detaileddescription>
 <para>An additional constraint can be passed which must be satisfied in addition to the constraints of the model. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="97"/>
+        <location file="/models/model.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1ab56059971ed8cca14f10cad597049e48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -68,14 +68,14 @@
         <param>
           <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_calibration_helper" kindref="compound">CalibrationHelper</ref> &gt; &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="100"/>
+        <location file="/models/model.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1a8222cafc2215551be69895aaa8f12bed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; Constraint &gt; &amp; constraint</definition>
         <argsstring>() const </argsstring>
         <name>constraint</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="135" bodyend="137"/>
+        <location file="/models/model.hpp" line="102" bodyfile="/models/model.hpp" bodystart="135" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>EndCriteria::Type</type>
@@ -84,7 +84,7 @@
         <name>endCriteria</name>
         <briefdescription>
 <para>returns end criteria result </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="104"/>
+        <location file="/models/model.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1abf0665e7524410c40a874b86db642511" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -93,7 +93,7 @@
         <name>params</name>
         <briefdescription>
 <para>Returns array of arguments on which calibration is done. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="106"/>
+        <location file="/models/model.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -104,11 +104,11 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="108"/>
+        <location file="/models/model.hpp" line="108"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Calibrated model class. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="79" bodyend="122"/>
+    <location file="/models/model.hpp" line="79" bodyfile="/models/model.hpp" bodystart="79" bodyend="122"/>
   </compounddef>
 </doxygen>

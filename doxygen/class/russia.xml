@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_russia" kind="class" prot="public">
     <compoundname>QuantLib::Russia</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/russia.hpp</includes>
+    <includes local="no">/time/calendars/russia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_russia_1a7ddb9e368dbf68f53fb6869bfd970424" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Russia</definition>
         <argsstring>()</argsstring>
         <name>Russia</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/russia.hpp" line="57"/>
+        <location file="/time/calendars/russia.hpp" line="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -36,6 +36,6 @@
 <para>Unity Day, November 4th (possibly moved to Monday) </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/russia.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/russia.hpp" bodystart="49" bodyend="58"/>
+    <location file="/time/calendars/russia.hpp" line="49" bodyfile="/time/calendars/russia.hpp" bodystart="49" bodyend="58"/>
   </compounddef>
 </doxygen>

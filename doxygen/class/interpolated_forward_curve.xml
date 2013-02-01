@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_forward_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedForwardCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp</includes>
+    <includes local="no">/termstructures/yield/forwardcurve.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Interpolator</type>
@@ -18,7 +18,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" bodystart="113" bodyend="115"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="65" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="113" bodyend="115"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -28,35 +28,35 @@
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" bodystart="119" bodyend="121"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="69" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" bodystart="125" bodyend="127"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="70" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="125" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" bodystart="131" bodyend="133"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="71" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="131" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a5c239d4bdc99dae223cb2de026ea3925" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; forwards</definition>
         <argsstring>() const </argsstring>
         <name>forwards</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" bodystart="137" bodyend="139"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="72" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="137" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" bodystart="143" bodyend="148"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="73" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="143" bodyend="148"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -72,7 +72,7 @@
         </param>
         <briefdescription>
 <para>instantaneous forward-rate calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="96"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a7b3637b3975a6b4b75b71f31793d4687" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -85,7 +85,7 @@
         </param>
         <detaileddescription>
 <para>Returns the zero yield rate for the given date calculating it from the instantaneous forward rate <formula id="302">$ f(t) $</formula> as <formula id="394">\[ z(t) = \int_0^t f(\tau) d\tau \]</formula></para><para><xrefsect id="caveats_1_caveats000138"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses an highly inefficient and possibly wildly inaccurate numerical integration. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="97"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="97"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -126,7 +126,7 @@
           <declname>interpolator</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="51"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1ae1b2116ada24fea74bff49878ef55f5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -153,7 +153,7 @@
           <type>const Interpolator &amp;</type>
           <declname>interpolator</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="57"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a94703f7a4c0cf2ba66a2fa206de931c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -176,11 +176,11 @@
           <type>const Interpolator &amp;</type>
           <declname>interpolator</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="62"/>
+        <location file="/termstructures/yield/forwardcurve.hpp" line="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> based on interpolation of forward rates. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" bodystart="39" bodyend="102"/>
+    <location file="/termstructures/yield/forwardcurve.hpp" line="40" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="39" bodyend="102"/>
   </compounddef>
 </doxygen>

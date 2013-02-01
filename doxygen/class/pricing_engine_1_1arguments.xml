@@ -8,16 +8,16 @@
         <definition>virtual ~arguments</definition>
         <argsstring>()</argsstring>
         <name>~arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="47" bodyend="47"/>
+        <location file="/pricingengine.hpp" line="47" bodyfile="/pricingengine.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1_1arguments_1a7e898751dcaf587c084beddf07066ac5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void validate</definition>
         <argsstring>() const =0</argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="48"/>
+        <location file="/pricingengine.hpp" line="48"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="45" bodyend="49"/>
+    <location file="/pricingengine.hpp" line="45" bodyfile="/pricingengine.hpp" bodystart="45" bodyend="49"/>
   </compounddef>
 </doxygen>

@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_norway" kind="class" prot="public">
     <compoundname>QuantLib::Norway</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/norway.hpp</includes>
+    <includes local="no">/time/calendars/norway.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_norway_1ab3aa7e1d59ec3caf30e5e5a161a269f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Norway</definition>
         <argsstring>()</argsstring>
         <name>Norway</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/norway.hpp" line="58"/>
+        <location file="/time/calendars/norway.hpp" line="58"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -42,6 +42,6 @@
 <para>Boxing Day, December 26th </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/norway.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/norway.hpp" bodystart="50" bodyend="59"/>
+    <location file="/time/calendars/norway.hpp" line="50" bodyfile="/time/calendars/norway.hpp" bodystart="50" bodyend="59"/>
   </compounddef>
 </doxygen>

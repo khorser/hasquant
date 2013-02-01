@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::TridiagonalOperator::TimeSetter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp</includes>
+    <includes local="no">/methods/finitedifferences/tridiagonaloperator.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter_1aa236e8ce6b8e6f851241a22293c34987" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~TimeSetter</definition>
         <argsstring>()</argsstring>
         <name>~TimeSetter</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="114" bodyend="114"/>
+        <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="114" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="114" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter_1afe6b35c7276438094855ba4bf9f6290b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -24,11 +24,11 @@
           <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <declname>L</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="116"/>
+        <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="116"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>encapsulation of time-setting logic </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="112" bodyend="117"/>
+    <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="112" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="112" bodyend="117"/>
   </compounddef>
 </doxygen>

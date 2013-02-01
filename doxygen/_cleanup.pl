@@ -87,4 +87,5 @@ for $f (glob("*.xml"))
 # :silent! argdo g/^\s*<\(derivedcompoundref\|reimplementedby\|basecompoundref\)/delete
 # :silent! argdo g/^\s*<innerclass refid=.* prot="protected">/delete
 # :silent! argdo g/^\s*<innerclass refid=.* prot="private">/delete
+# :silent! argdo %s!C:/Develop/QuantLib-1.2.1/ql!!g
 # :silent! xa

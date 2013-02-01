@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swaption_volatility_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::SwaptionVolatilityStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp</includes>
+    <includes local="no">/termstructures/volatility/swaption/swaptionvolstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
@@ -26,7 +26,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000130"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="53"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a4ae32fc9ee5910b3da98ce36c581a121" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -44,7 +44,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000131"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="60"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a93f2c97ee14dd4339867869e2ad3649f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -70,7 +70,7 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="65"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1afe47b4b3a44530c5c1da6bba3c01945b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -95,7 +95,7 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="70"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="70"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -124,7 +124,7 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option tenor and swap tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="198" bodyend="204"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="79" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="198" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a365198aa837e06b6354629434b19998f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -150,7 +150,7 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option date and swap tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="282" bodyend="290"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="84" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="282" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1abd2e2bad948127822dcdf3355bb24273" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -176,7 +176,7 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option time and swap tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="305" bodyend="314"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="89" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="305" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1af51af70559b4ff4973a97db846db9157" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -202,7 +202,7 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option tenor and swap length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="207" bodyend="213"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="94" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="207" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1ae08aa46a34407f64eb703fa3b60e1782" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -228,7 +228,7 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option date and swap length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="293" bodyend="302"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="99" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="293" bodyend="302"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1ad049a4be6f59b66ae64d7791b2738356" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -254,7 +254,7 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option time and swap length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="317" bodyend="325"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="104" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="317" bodyend="325"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a1d5ae88a7d7997481d7d965ae0599150" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -280,7 +280,7 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option tenor and swap tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="216" bodyend="222"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="110" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="216" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a911ff222333ddba63245db6f70c76a27" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -306,7 +306,7 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option date and swap tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="243" bodyend="250"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="115" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="243" bodyend="250"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1af3e041f58bf6afb39d078ba37d336989" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -332,7 +332,7 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option time and swap tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="253" bodyend="259"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="120" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="253" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1add21b028806cb2a4580bcf154dca7c9d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -358,7 +358,7 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option tenor and swap length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="225" bodyend="231"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="125" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="225" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1ab32dd4c4f56ada69235be3576c73d1ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -384,7 +384,7 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option date and swap length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="262" bodyend="269"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="130" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="262" bodyend="269"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a3ad9c753b18ab6db2ac73ce47dba66b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -410,7 +410,7 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option time and swap length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="272" bodyend="278"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="135" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="272" bodyend="278"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a0b427df5b16da607d7e50bfcb16b1236" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -432,7 +432,7 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option tenor and swap tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="234" bodyend="239"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="140" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="234" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a5562148e5f55d62fe6ae78d4c9b5aab6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -454,7 +454,7 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option date and swap tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="328" bodyend="334"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="144" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="328" bodyend="334"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1afafd5aec2b3b9a2fc8ca66a090aafc61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -476,7 +476,7 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option time and swap tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="148"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a332310ec815095e0dfb4025746ca580b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -498,7 +498,7 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option tenor and swap length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="152"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="152"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1aa589646106d7d71a88a5cbab03ca2928" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -520,7 +520,7 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option date and swap length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="156"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="156"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a20bcf094b437c62622b41cb54bcdaa7b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -542,7 +542,7 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option time and swap length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="337" bodyend="343"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="160" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="337" bodyend="343"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -554,7 +554,7 @@
         <name>maxSwapTenor</name>
         <briefdescription>
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="165"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="165"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a38b52da2964337ebb4d219b5dc5c2a3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -563,7 +563,7 @@
         <name>maxSwapLength</name>
         <briefdescription>
 <para>the largest swapLength for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="363" bodyend="365"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="167" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="363" bodyend="365"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -572,7 +572,7 @@
         <definition>virtual ~SwaptionVolatilityStructure</definition>
         <argsstring>()</argsstring>
         <name>~SwaptionVolatilityStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="72" bodyend="72"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="72" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1a5694433bc688de616d1bc9481729c44a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -585,7 +585,7 @@
         </param>
         <briefdescription>
 <para>implements the conversion between swap tenor and swap (time) length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="170"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_structure_1afdde903c91d35c1f7991f416d7616ff8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -602,13 +602,13 @@
         </param>
         <briefdescription>
 <para>implements the conversion between swap dates and swap (time) length </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="173"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="173"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Swaption-volatility structure </para>    </briefdescription>
     <detaileddescription>
 <para>This abstract class defines the interface of concrete swaption volatility structures which will be derived from this one. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="39" bodyend="191"/>
+    <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="39" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="39" bodyend="191"/>
   </compounddef>
 </doxygen>

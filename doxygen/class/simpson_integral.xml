@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_simpson_integral" kind="class" prot="public">
     <compoundname>QuantLib::SimpsonIntegral</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/simpsonintegral.hpp</includes>
+    <includes local="no">/math/integrals/simpsonintegral.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_simpson_integral_1a0fc90f4cf7b13eda7b657cf829bbdba2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,13 +17,13 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>maxIterations</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/simpsonintegral.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/simpsonintegral.hpp" bodystart="38" bodyend="40"/>
+        <location file="/math/integrals/simpsonintegral.hpp" line="40" bodyfile="/math/integrals/simpsonintegral.hpp" bodystart="38" bodyend="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Integral of a one-dimensional function. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000040"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the result is tested by checking it against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/simpsonintegral.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/simpsonintegral.hpp" bodystart="36" bodyend="67"/>
+    <location file="/math/integrals/simpsonintegral.hpp" line="36" bodyfile="/math/integrals/simpsonintegral.hpp" bodystart="36" bodyend="67"/>
   </compounddef>
 </doxygen>

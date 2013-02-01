@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_least_square_function" kind="class" prot="public">
     <compoundname>QuantLib::LeastSquareFunction</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp</includes>
+    <includes local="no">/math/optimization/leastsquare.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1a91ae7b7c34f4f00ae7272c5e5cbf8ead" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -15,7 +15,7 @@
         </param>
         <briefdescription>
 <para>Default constructor. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="63" bodyend="63"/>
+        <location file="/math/optimization/leastsquare.hpp" line="63" bodyfile="/math/optimization/leastsquare.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1a4c9195cf76ac701b3e3e667d568dec6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -24,7 +24,7 @@
         <name>~LeastSquareFunction</name>
         <briefdescription>
 <para>Destructor. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="65" bodyend="65"/>
+        <location file="/math/optimization/leastsquare.hpp" line="65" bodyfile="/math/optimization/leastsquare.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1aa96b19df61cc4e727372ce7f9abb60c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -38,7 +38,7 @@
         </param>
         <briefdescription>
 <para>compute value of the least square function </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="68"/>
+        <location file="/math/optimization/leastsquare.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1aefd0ff60f2c43e34293b14ff785035d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -52,7 +52,7 @@
         </param>
         <briefdescription>
 <para>method to overload to compute the cost function values in x </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="69"/>
+        <location file="/math/optimization/leastsquare.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1a5606a9f56d4bf8a1b09386234ac220a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -70,7 +70,7 @@
         </param>
         <briefdescription>
 <para>compute vector of derivatives of the least square function </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="71"/>
+        <location file="/math/optimization/leastsquare.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1a35a37dbf4155454c382e433e5183ba2f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -88,13 +88,13 @@
         </param>
         <briefdescription>
 <para>compute value and gradient of the least square function </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="74"/>
+        <location file="/math/optimization/leastsquare.hpp" line="74"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Cost function for least-square problems. </para>    </briefdescription>
     <detaileddescription>
 <para>Implements a cost function using the interface provided by the <ref refid="class_quant_lib_1_1_least_square_problem" kindref="compound">LeastSquareProblem</ref> class. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="60" bodyend="78"/>
+    <location file="/math/optimization/leastsquare.hpp" line="60" bodyfile="/math/optimization/leastsquare.hpp" bodystart="60" bodyend="78"/>
   </compounddef>
 </doxygen>

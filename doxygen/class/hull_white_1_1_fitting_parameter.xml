@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_hull_white_1_1_fitting_parameter" kind="class" prot="public">
     <compoundname>QuantLib::HullWhite::FittingParameter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp</includes>
+    <includes local="no">/models/shortrate/onefactormodels/hullwhite.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1af59da06e5e79cccc108014607dccfc53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -21,13 +21,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>sigma</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="144" bodyend="147"/>
+        <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="147" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="144" bodyend="147"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Analytical term-structure fitting parameter <formula id="294">$ \varphi(t) $</formula>. </para>    </briefdescription>
     <detaileddescription>
 <para><formula id="294">$ \varphi(t) $</formula> is analytically defined by <formula id="306">\[ \varphi(t) = f(t) + \frac{1}{2}[\frac{\sigma(1-e^{-at})}{a}]^2, \]</formula> where <formula id="302">$ f(t) $</formula> is the instantaneous forward rate at <formula id="147">$ t $</formula>. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="122" bodyend="148"/>
+    <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="123" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="122" bodyend="148"/>
   </compounddef>
 </doxygen>

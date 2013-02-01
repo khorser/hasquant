@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cap_helper" kind="class" prot="public">
     <compoundname>QuantLib::CapHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp</includes>
+    <includes local="no">/models/shortrate/calibrationhelpers/caphelper.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cap_helper_1ad609e5c96b766cbcd4b63c6ad1f14bcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -42,7 +42,7 @@
           <declname>errorType</declname>
           <defval>CalibrationHelper::RelativePriceError</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="49"/>
+        <location file="/models/shortrate/calibrationhelpers/caphelper.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_helper_1af4e5312442df0cb0ab6cccc66fb7bf6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -54,7 +54,7 @@
           <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>times</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="50"/>
+        <location file="/models/shortrate/calibrationhelpers/caphelper.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -64,7 +64,7 @@
         <reimplements refid="class_quant_lib_1_1_calibration_helper_1a573ec85444166decbaa5888155b9fa39">modelValue</reimplements>
         <briefdescription>
 <para>returns the price of the instrument according to the model </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="51"/>
+        <location file="/models/shortrate/calibrationhelpers/caphelper.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_helper_1a722ad9621557c52aa1b7e1e6f7308424" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -78,13 +78,13 @@
         </param>
         <briefdescription>
 <para>Black price given a volatility. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="52"/>
+        <location file="/models/shortrate/calibrationhelpers/caphelper.hpp" line="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>calibration helper for ATM cap </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="bug_1_bug000005"><xreftitle>Bug</xreftitle><xrefdescription><para>This helper does not register with the passed IBOR index and with the evaluation date. Furthermore, the ATM strike rate is not recalculated when any of its observables change. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" bodystart="38" bodyend="55"/>
+    <location file="/models/shortrate/calibrationhelpers/caphelper.hpp" line="38" bodyfile="/models/shortrate/calibrationhelpers/caphelper.hpp" bodystart="38" bodyend="55"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_log_cubic_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::LogCubicInterpolation</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/loginterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_log_cubic_interpolation_1a8fddd246edfd7fdfd081dc4f3a67fbbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -56,11 +56,11 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="109" bodyend="124"/>
+        <location file="/math/interpolations/loginterpolation.hpp" line="116" bodyfile="/math/interpolations/loginterpolation.hpp" bodystart="109" bodyend="124"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>log-cubic interpolation between discrete points </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="105" bodyend="125"/>
+    <location file="/math/interpolations/loginterpolation.hpp" line="105" bodyfile="/math/interpolations/loginterpolation.hpp" bodystart="105" bodyend="125"/>
   </compounddef>
 </doxygen>

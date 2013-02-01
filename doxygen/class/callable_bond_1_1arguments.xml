@@ -8,14 +8,14 @@
         <definition>std::vector&lt;Date&gt; couponDates</definition>
         <argsstring></argsstring>
         <name>couponDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="117" bodyend="-1"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="117" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a52aaf336ba6c7b103e373fa37508a241" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; couponAmounts</definition>
         <argsstring></argsstring>
         <name>couponAmounts</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="118" bodyend="-1"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="118" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a340776950e7a04325cff7db8034c8851" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -24,35 +24,35 @@
         <name>redemption</name>
         <briefdescription>
 <para>redemption = face amount * redemption / 100. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="120" bodyend="-1"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="120" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a601dc4dc38e988014e1cc9b0ef14b166" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date redemptionDate</definition>
         <argsstring></argsstring>
         <name>redemptionDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="121" bodyend="-1"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="121" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a7d81ea56ac0fc41d1d2a49a2b1dc8bb8" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter paymentDayCounter</definition>
         <argsstring></argsstring>
         <name>paymentDayCounter</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="122" bodyend="-1"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="122" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a3beeffbb3df839c46c9c8b2f696e286f" prot="public" static="no" mutable="no">
         <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
         <definition>Frequency frequency</definition>
         <argsstring></argsstring>
         <name>frequency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="123" bodyend="-1"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="123" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1ae74ad1423fb273a8ad769b29dbb395bd" prot="public" static="no" mutable="no">
         <type>CallabilitySchedule</type>
         <definition>CallabilitySchedule putCallSchedule</definition>
         <argsstring></argsstring>
         <name>putCallSchedule</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="124" bodyend="-1"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="124" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1ae21eb9aefd3d60d22918bea9f4909d3a" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
@@ -61,14 +61,14 @@
         <name>callabilityPrices</name>
         <briefdescription>
 <para>bond full/dirty/cash prices </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="126" bodyend="-1"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="126" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a186dc4e965a69de41c93b527271bbb08" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; callabilityDates</definition>
         <argsstring></argsstring>
         <name>callabilityDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="127" bodyend="-1"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="127" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -77,16 +77,16 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="116" bodyend="116"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="116" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="116" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="128"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="128"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="114" bodyend="129"/>
+    <location file="/experimental/callablebonds/callablebond.hpp" line="114" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="114" bodyend="129"/>
   </compounddef>
 </doxygen>

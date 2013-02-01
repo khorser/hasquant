@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_h_f_libor" kind="class" prot="public">
     <compoundname>QuantLib::CHFLibor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/chflibor.hpp</includes>
+    <includes local="no">/indexes/ibor/chflibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_c_h_f_libor_1abf3fce89259a6f3a6cb7774288189e7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,7 +18,7 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/chflibor.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/chflibor.hpp" bodystart="45" bodyend="52"/>
+        <location file="/indexes/ibor/chflibor.hpp" line="52" bodyfile="/indexes/ibor/chflibor.hpp" bodystart="45" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -26,6 +26,6 @@
     <detaileddescription>
 <para>Swiss Franc LIBOR fixed by BBA. <verbatim>   See &lt;http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1414&gt;.
 </verbatim></para><para><xrefsect id="caveats_1_caveats000034"><xreftitle>Warning</xreftitle><xrefdescription><para>This is the rate fixed in London by BBA. Use ZIBOR if you&apos;re interested in the Zurich fixing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/chflibor.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/chflibor.hpp" bodystart="43" bodyend="53"/>
+    <location file="/indexes/ibor/chflibor.hpp" line="43" bodyfile="/indexes/ibor/chflibor.hpp" bodystart="43" bodyend="53"/>
   </compounddef>
 </doxygen>

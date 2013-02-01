@@ -9,7 +9,7 @@
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="57"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="57"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -23,7 +23,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" bodystart="61" bodyend="61"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="61" bodyfile="/termstructures/volatility/swaption/swaptionvolcube2.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube2_1ad755da1a3ef6e55fff3e0777ab075948" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -38,7 +38,7 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="64"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube2_1a04f2608add446a8af9cfe54291488e82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -53,7 +53,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>swapLength</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="67"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -96,9 +96,9 @@
         </param>
         <detaileddescription>
 <para>The swaption vol cube is made up of ordered swaption vol surface layers, each layer referring to a swap index of a given length (in years), all indexes belonging to the same family. In order to identify the family (and its market conventions) an index of whatever length from that family must be passed in as swapIndexBase.</para><para>Often for short swap length the swap index family is different, e.g. the EUR case: swap vs 6M <ref refid="class_quant_lib_1_1_euribor" kindref="compound">Euribor</ref> is used for length&gt;1Y, while swap vs 3M <ref refid="class_quant_lib_1_1_euribor" kindref="compound">Euribor</ref> is used for the 1Y length. The shortSwapIndexBase is used to identify this second family. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="54"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="54"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" bodystart="32" bodyend="72"/>
+    <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="32" bodyfile="/termstructures/volatility/swaption/swaptionvolcube2.hpp" bodystart="32" bodyend="72"/>
   </compounddef>
 </doxygen>

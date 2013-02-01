@@ -8,21 +8,21 @@
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" bodystart="64" bodyend="-1"/>
+        <location file="/experimental/exoticoptions/pagodaoption.hpp" line="64" bodyfile="/experimental/exoticoptions/pagodaoption.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pagoda_option_1_1arguments_1a8bd2adbc296761a89bdd67dba30d466a" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real roof</definition>
         <argsstring></argsstring>
         <name>roof</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" bodystart="65" bodyend="-1"/>
+        <location file="/experimental/exoticoptions/pagodaoption.hpp" line="65" bodyfile="/experimental/exoticoptions/pagodaoption.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pagoda_option_1_1arguments_1a1a83cf926af6168b44c7a8b7e2b8f297" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fraction</definition>
         <argsstring></argsstring>
         <name>fraction</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" bodystart="65" bodyend="-1"/>
+        <location file="/experimental/exoticoptions/pagodaoption.hpp" line="65" bodyfile="/experimental/exoticoptions/pagodaoption.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,16 +31,16 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" line="62"/>
+        <location file="/experimental/exoticoptions/pagodaoption.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pagoda_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" line="63"/>
+        <location file="/experimental/exoticoptions/pagodaoption.hpp" line="63"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" bodystart="60" bodyend="66"/>
+    <location file="/experimental/exoticoptions/pagodaoption.hpp" line="60" bodyfile="/experimental/exoticoptions/pagodaoption.hpp" bodystart="60" bodyend="66"/>
   </compounddef>
 </doxygen>

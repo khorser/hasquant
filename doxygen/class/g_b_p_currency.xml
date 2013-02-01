@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_b_p_currency" kind="class" prot="public">
     <compoundname>QuantLib::GBPCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_b_p_currency_1a9c671e7ce42ee00ac7ca5ca7b7f0fe5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GBPCurrency</definition>
         <argsstring>()</argsstring>
         <name>GBPCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="186" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="186" bodyend="193"/>
+        <location file="/currencies/europe.hpp" line="186" bodyfile="/currencies/europe.hpp" bodystart="186" bodyend="193"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>British pound sterling. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is GBP; the numeric code is 826. It is divided into 100 pence. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="184" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="184" bodyend="194"/>
+    <location file="/currencies/europe.hpp" line="184" bodyfile="/currencies/europe.hpp" bodystart="184" bodyend="194"/>
   </compounddef>
 </doxygen>

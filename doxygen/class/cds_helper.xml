@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cds_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CdsHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
+    <includes local="no">/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cds_helper_1aadb08e58343efaf93254f2fc5b84b6a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -59,7 +59,7 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="67"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_helper_1ac70664feda1ab9d9cf8af821a8e521fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -116,7 +116,7 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="79"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_helper_1a845ffeb1161341447a075435a0718e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -126,7 +126,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> *</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="80"/>
+        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
@@ -160,6 +160,6 @@
 </parameteritem>
 </parameterlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="54" bodyend="102"/>
+    <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="54" bodyfile="/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="54" bodyend="102"/>
   </compounddef>
 </doxygen>

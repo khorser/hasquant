@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swap_index" kind="class" prot="public">
     <compoundname>QuantLib::SwapIndex</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp</includes>
+    <includes local="no">/indexes/swapindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>InterestRateIndex interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -15,7 +15,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="63"/>
+        <location file="/indexes/swapindex.hpp" line="63"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -25,42 +25,42 @@
         <definition>Period fixedLegTenor</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegTenor</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" bodystart="67" bodyend="67"/>
+        <location file="/indexes/swapindex.hpp" line="67" bodyfile="/indexes/swapindex.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a5f701a7f5081b78395cb2b116568df02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention fixedLegConvention</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegConvention</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" bodystart="128" bodyend="130"/>
+        <location file="/indexes/swapindex.hpp" line="68" bodyfile="/indexes/swapindex.hpp" bodystart="128" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a39c9489a774110f2c9109243222f287e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex</definition>
         <argsstring>() const </argsstring>
         <name>iborIndex</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" bodystart="69" bodyend="69"/>
+        <location file="/indexes/swapindex.hpp" line="69" bodyfile="/indexes/swapindex.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a602aff2af572fe9b816a379dae8fb4ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; forwardingTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>forwardingTermStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="70"/>
+        <location file="/indexes/swapindex.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a7f25888de58002b814b55c194461958d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; discountingTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>discountingTermStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="71"/>
+        <location file="/indexes/swapindex.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1acf2e42f9336ae9075e37b7655fb2b18e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool exogenousDiscount</definition>
         <argsstring>() const </argsstring>
         <name>exogenousDiscount</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" bodystart="132" bodyend="134"/>
+        <location file="/indexes/swapindex.hpp" line="72" bodyfile="/indexes/swapindex.hpp" bodystart="132" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1afccaabbaca855e9e0b6a82e88eb59551" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
@@ -73,7 +73,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000043"><xreftitle>Warning</xreftitle><xrefdescription><para>Relinking the term structure underlying the index will not have effect on the returned swap. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="77"/>
+        <location file="/indexes/swapindex.hpp" line="77"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -89,7 +89,7 @@
         </param>
         <briefdescription>
 <para>returns a copy of itself linked to a different forwarding curve </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="83"/>
+        <location file="/indexes/swapindex.hpp" line="83"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -134,7 +134,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="50"/>
+        <location file="/indexes/swapindex.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a00ecd319fd0c7b9daff73ca5b59fa0f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -181,11 +181,11 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountingTermStructure</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="60"/>
+        <location file="/indexes/swapindex.hpp" line="60"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for swap-rate indexes </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" bodystart="40" bodyend="97"/>
+    <location file="/indexes/swapindex.hpp" line="40" bodyfile="/indexes/swapindex.hpp" bodystart="40" bodyend="97"/>
   </compounddef>
 </doxygen>

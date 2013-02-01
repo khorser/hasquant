@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gumbel_copula" kind="class" prot="public">
     <compoundname>QuantLib::GumbelCopula</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/copulas/gumbelcopula.hpp</includes>
+    <includes local="no">/math/copulas/gumbelcopula.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gumbel_copula_1aa6fc9c2c0ec3fa6304ee4f2f84bce970" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>theta</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gumbelcopula.hpp" line="35"/>
+        <location file="/math/copulas/gumbelcopula.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gumbel_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -28,11 +28,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gumbelcopula.hpp" line="36"/>
+        <location file="/math/copulas/gumbelcopula.hpp" line="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gumbel copula. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gumbelcopula.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gumbelcopula.hpp" bodystart="33" bodyend="39"/>
+    <location file="/math/copulas/gumbelcopula.hpp" line="33" bodyfile="/math/copulas/gumbelcopula.hpp" bodystart="33" bodyend="39"/>
   </compounddef>
 </doxygen>

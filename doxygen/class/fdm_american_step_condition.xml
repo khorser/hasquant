@@ -16,7 +16,7 @@
           <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;</type>
           <declname>calculator</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="39"/>
+        <location file="/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_american_step_condition_1a5e3888b0f84d1bcf190acc696bb364d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -30,9 +30,9 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="42"/>
+        <location file="/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="42"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" bodystart="35" bodyend="47"/>
+    <location file="/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="35" bodyfile="/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" bodystart="35" bodyend="47"/>
   </compounddef>
 </doxygen>

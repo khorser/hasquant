@@ -8,28 +8,28 @@
         <definition>virtual ~PiecewiseConstantCorrelation</definition>
         <argsstring>()</argsstring>
         <name>~PiecewiseConstantCorrelation</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" bodystart="34" bodyend="34"/>
+        <location file="/models/marketmodels/piecewiseconstantcorrelation.hpp" line="34" bodyfile="/models/marketmodels/piecewiseconstantcorrelation.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_correlation_1a05c63460ae2cc20c30541b797418b15f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Time&gt;&amp; times</definition>
         <argsstring>() const =0</argsstring>
         <name>times</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" line="35"/>
+        <location file="/models/marketmodels/piecewiseconstantcorrelation.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_correlation_1acd4ae9bccce0ae4579e3c97df63654e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Time&gt;&amp; rateTimes</definition>
         <argsstring>() const =0</argsstring>
         <name>rateTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" line="36"/>
+        <location file="/models/marketmodels/piecewiseconstantcorrelation.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_correlation_1ab327bb2b2562291f7fe1b4052b86683f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Matrix&gt;&amp; correlations</definition>
         <argsstring>() const =0</argsstring>
         <name>correlations</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" line="37"/>
+        <location file="/models/marketmodels/piecewiseconstantcorrelation.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_correlation_1ae08bef1d9e2af46227740be2eed7bd98" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
@@ -40,16 +40,16 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" bodystart="43" bodyend="50"/>
+        <location file="/models/marketmodels/piecewiseconstantcorrelation.hpp" line="38" bodyfile="/models/marketmodels/piecewiseconstantcorrelation.hpp" bodystart="43" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_correlation_1ae0b5ee9b6e485b66f6cb44a08904136d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>virtual Size numberOfRates</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfRates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" line="39"/>
+        <location file="/models/marketmodels/piecewiseconstantcorrelation.hpp" line="39"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" bodystart="32" bodyend="40"/>
+    <location file="/models/marketmodels/piecewiseconstantcorrelation.hpp" line="32" bodyfile="/models/marketmodels/piecewiseconstantcorrelation.hpp" bodystart="32" bodyend="40"/>
   </compounddef>
 </doxygen>

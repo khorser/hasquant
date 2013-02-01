@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_chebyshev_integration" kind="class" prot="public">
     <compoundname>QuantLib::GaussChebyshevIntegration</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp</includes>
+    <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_chebyshev_integration_1ae642ad58699537542292864787a4179d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,13 +13,13 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>n</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="164" bodyend="165"/>
+        <location file="/math/integrals/gaussianquadratures.hpp" line="165" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="164" bodyend="165"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gauss-Chebyshev integration. </para>    </briefdescription>
     <detaileddescription>
 <para>This class performs a 1-dimensional Gauss-Chebyshev integration. <formula id="196">\[ \int_{-1}^{1} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="200">\[ w(x)=(1-x^2)^{-1/2} \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="162" bodyend="166"/>
+    <location file="/math/integrals/gaussianquadratures.hpp" line="162" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="162" bodyend="166"/>
   </compounddef>
 </doxygen>

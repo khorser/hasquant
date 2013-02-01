@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_generalized_hull_white" kind="class" prot="public">
     <compoundname>QuantLib::GeneralizedHullWhite</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp</includes>
+    <includes local="no">/experimental/shortrate/generalizedhullwhite.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics" prot="public">QuantLib::GeneralizedHullWhite::Dynamics</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a9f14269c1d0f281c46c29faa702fc73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -22,7 +22,7 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>volstructure</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="54"/>
+        <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1aa56711fc82e513c4861c27ef105e479d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -49,7 +49,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>vol</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="61"/>
+        <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
@@ -59,7 +59,7 @@
         <reimplements refid="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="63" bodyend="65"/>
+        <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="63" bodyfile="/experimental/shortrate/generalizedhullwhite.hpp" bodystart="63" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
@@ -71,13 +71,13 @@
           <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="67"/>
+        <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Generalized Hull-White model class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class implements the standard Black-Karasinski model defined by <formula id="138">\[ d f(r_t) = (\theta(t) - \alpha f(r_t))dt + \sigma dW_t, \]</formula> where <formula id="139">$ alpha $</formula> and <formula id="140">$ sigma $</formula> are piecewise linear functions. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="42" bodyend="86"/>
+    <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="43" bodyfile="/experimental/shortrate/generalizedhullwhite.hpp" bodystart="42" bodyend="86"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cubic_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::CubicInterpolation</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/cubicinterpolation.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" prot="public" static="no">
         <name>DerivativeApprox</name>
@@ -46,7 +46,7 @@
           <briefdescription>
 <para>Kruger approximation (local, monotonic, non-linear) </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="102" bodyend="129"/>
+        <location file="/math/interpolations/cubicinterpolation.hpp" line="102" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="102" bodyend="129"/>
       </memberdef>
       <memberdef kind="enum" id="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" prot="public" static="no">
         <name>BoundaryCondition</name>
@@ -75,7 +75,7 @@
           <detaileddescription>
 <para>Match end-slope to the slope of the cubic that matches the first four data at the respective end </para>          </detaileddescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="130" bodyend="147"/>
+        <location file="/math/interpolations/cubicinterpolation.hpp" line="130" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="130" bodyend="147"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -131,42 +131,42 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="150" bodyend="170"/>
+        <location file="/math/interpolations/cubicinterpolation.hpp" line="158" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="150" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1a294c76c9e77213bbb3da550152033826" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; primitiveConstants</definition>
         <argsstring>() const </argsstring>
         <name>primitiveConstants</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="171" bodyend="173"/>
+        <location file="/math/interpolations/cubicinterpolation.hpp" line="171" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="171" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1a4119d6ba4d3f11be628a129a7a2bfe6f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; aCoefficients</definition>
         <argsstring>() const </argsstring>
         <name>aCoefficients</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="174" bodyend="174"/>
+        <location file="/math/interpolations/cubicinterpolation.hpp" line="174" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="174" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1aaca6dd10570ae2dbc6e5ea6ab8a7e9bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; bCoefficients</definition>
         <argsstring>() const </argsstring>
         <name>bCoefficients</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="175" bodyend="175"/>
+        <location file="/math/interpolations/cubicinterpolation.hpp" line="175" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="175" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1a7746999062e0736bd067da1e60548069" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; cCoefficients</definition>
         <argsstring>() const </argsstring>
         <name>cCoefficients</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="176" bodyend="176"/>
+        <location file="/math/interpolations/cubicinterpolation.hpp" line="176" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="176" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1a7f8698aec8c4a956e68c3a9d6b19f23a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; bool &gt; &amp;</type>
         <definition>const std::vector&lt;bool&gt;&amp; monotonicityAdjustments</definition>
         <argsstring>() const </argsstring>
         <name>monotonicityAdjustments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="177" bodyend="179"/>
+        <location file="/math/interpolations/cubicinterpolation.hpp" line="177" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="177" bodyend="179"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -174,6 +174,6 @@
     <detaileddescription>
 <para><ref refid="class_quant_lib_1_1_cubic" kindref="compound">Cubic</ref> interpolation is fully defined when the ${f_i}$ function values at points ${x_i}$ are supplemented with ${f^&apos;_i}$ function derivative values.</para><para>Different type of first derivative approximations are implemented, both local and non-local. Local schemes (Fourth-order, Parabolic, Modified Parabolic, Fritsch-Butland, Akima, Kruger) use only $f$ values near $x_i$ to calculate each $f^&apos;_i$. Non-local schemes (Spline with different boundary conditions) use all ${f_i}$ values and obtain ${f^&apos;_i}$ by solving a linear system of equations. Local schemes produce $C^1$ interpolants, while the spline schemes generate $C^2$ interpolants.</para><para>Hyman&apos;s monotonicity constraint filter is also implemented: it can be applied to all schemes to ensure that in the regions of local monotoniticity of the input (three successive increasing or decreasing values) the interpolating cubic remains monotonic. If the interpolating cubic is already monotonic, the Hyman filter leaves it unchanged preserving all its original features.</para><para>In the case of $C^2$ interpolants the Hyman filter ensures local monotonicity at the expense of the second derivative of the interpolant which will no longer be continuous in the points where the filter has been applied.</para><para>While some non-linear schemes (Modified Parabolic, Fritsch-Butland, Kruger) are guaranteed to be locally monotonic in their original approximation, all other schemes must be filtered according to the Hyman criteria at the expense of their linearity.</para><para>See R. L. Dougherty, A. Edelman, and J. M. Hyman, &quot;Nonnegativity-, Monotonicity-, or Convexity-Preserving CubicSpline and
        Quintic Hermite Interpolation&quot; Mathematics Of Computation, v. 52, n. 186, April 1989, pp. 471-494.</para><para><xrefsect id="todo_1_todo000033"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>implement missing schemes (FourthOrder and ModifiedParabolic) and missing boundary conditions (Periodic and Lagrange).</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000042"><xreftitle>Tests</xreftitle><xrefdescription><para>to be adapted from old ones.</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="100" bodyend="182"/>
+    <location file="/math/interpolations/cubicinterpolation.hpp" line="100" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="100" bodyend="182"/>
   </compounddef>
 </doxygen>

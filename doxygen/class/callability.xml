@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_callability" kind="class" prot="public">
     <compoundname>QuantLib::Callability</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp</includes>
+    <includes local="no">/instruments/callabilityschedule.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_callability_1_1_price" prot="public">QuantLib::Callability::Price</innerclass>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
@@ -14,7 +14,7 @@
         <reimplements refid="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
         <briefdescription>
 <para>returns the date at which the event occurs </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="66" bodyend="66"/>
+        <location file="/instruments/callabilityschedule.hpp" line="66" bodyfile="/instruments/callabilityschedule.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -29,7 +29,7 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="78" bodyend="84"/>
+        <location file="/instruments/callabilityschedule.hpp" line="70" bodyfile="/instruments/callabilityschedule.hpp" bodystart="78" bodyend="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -43,7 +43,7 @@
         </enumvalue>
         <briefdescription>
 <para>type of the callability </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="55" bodyend="55"/>
+        <location file="/instruments/callabilityschedule.hpp" line="55" bodyfile="/instruments/callabilityschedule.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -64,25 +64,25 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="57" bodyend="58"/>
+        <location file="/instruments/callabilityschedule.hpp" line="58" bodyfile="/instruments/callabilityschedule.hpp" bodystart="57" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callability_1a45e2518616fcb5eda062598143213af1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
         <definition>const Price&amp; price</definition>
         <argsstring>() const </argsstring>
         <name>price</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="59" bodyend="62"/>
+        <location file="/instruments/callabilityschedule.hpp" line="59" bodyfile="/instruments/callabilityschedule.hpp" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callability_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="63" bodyend="63"/>
+        <location file="/instruments/callabilityschedule.hpp" line="63" bodyfile="/instruments/callabilityschedule.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>instrument callability </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="37" bodyend="76"/>
+    <location file="/instruments/callabilityschedule.hpp" line="37" bodyfile="/instruments/callabilityschedule.hpp" bodystart="37" bodyend="76"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_default_probability_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::DefaultProbabilityTermStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp</includes>
+    <includes local="no">/termstructures/defaulttermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
@@ -26,7 +26,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="56"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1a44fb296352770addfc78f4b862c18143" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -57,7 +57,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="62"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1ad874923d57650e4a31691c5a35fa5aca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -87,7 +87,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="68"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="68"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -107,7 +107,7 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="178" bodyend="182"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="79" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="178" bodyend="182"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1a564dec16c937941fb22a3f10e5cc6a94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref></type>
@@ -125,7 +125,7 @@
         </param>
         <detaileddescription>
 <para>The same day-counting rule used by the term structure should be used for calculating the passed time t. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="84"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -145,7 +145,7 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="185" bodyend="189"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="95" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="185" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1aca67e9cf1e6f5220abbb72a1c5a6fed6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref></type>
@@ -163,7 +163,7 @@
         </param>
         <detaileddescription>
 <para>The same day-counting rule used by the term structure should be used for calculating the passed time t. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="192" bodyend="196"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="100" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="192" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1a58faf49747512845a293b1d4dd44dbbf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref></type>
@@ -183,7 +183,7 @@
         </param>
         <briefdescription>
 <para>probability of default between two given dates </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="104"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1a3b2c279a4628ed919c5fa5a22ca2f3d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref></type>
@@ -203,7 +203,7 @@
         </param>
         <briefdescription>
 <para>probability of default between two given times </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="108"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="108"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -223,7 +223,7 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="199" bodyend="203"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="119" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="199" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1ade380748bd5d88bcdd0672077924c995" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -239,7 +239,7 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="206" bodyend="211"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="121" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="206" bodyend="211"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -259,7 +259,7 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="214" bodyend="217"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="136" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="214" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1a9527c9b893be59578a27a69550ad9679" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -275,7 +275,7 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="220" bodyend="224"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="138" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="220" bodyend="224"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -285,14 +285,14 @@
         <definition>const std::vector&lt; Date &gt; &amp; jumpDates</definition>
         <argsstring>() const </argsstring>
         <name>jumpDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="228" bodyend="230"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="143" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="228" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1a1abac1502627ed10d3a628b2b5e3f8e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; jumpTimes</definition>
         <argsstring>() const </argsstring>
         <name>jumpTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="234" bodyend="236"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="144" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="234" bodyend="236"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -303,7 +303,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="238" bodyend="242"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="149" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="238" bodyend="242"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -319,7 +319,7 @@
         </param>
         <briefdescription>
 <para>survival probability calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="160"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="160"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1a6fa52b63cbf5503d39b7ce7cb66b741e" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -331,13 +331,13 @@
         </param>
         <briefdescription>
 <para>default density calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="162"/>
+        <location file="/termstructures/defaulttermstructure.hpp" line="162"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Default probability term structure. </para>    </briefdescription>
     <detaileddescription>
 <para>This abstract class defines the interface of concrete credit structures which will be derived from this one. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="46" bodyend="173"/>
+    <location file="/termstructures/defaulttermstructure.hpp" line="46" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="46" bodyend="173"/>
   </compounddef>
 </doxygen>

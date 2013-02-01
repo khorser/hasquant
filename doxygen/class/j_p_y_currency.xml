@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_j_p_y_currency" kind="class" prot="public">
     <compoundname>QuantLib::JPYCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp</includes>
+    <includes local="no">/currencies/asia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_j_p_y_currency_1ad99a11bfa2673b5a48a0624aef5ef787" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>JPYCurrency</definition>
         <argsstring>()</argsstring>
         <name>JPYCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="168" bodyend="175"/>
+        <location file="/currencies/asia.hpp" line="168" bodyfile="/currencies/asia.hpp" bodystart="168" bodyend="175"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Japanese yen. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is JPY; the numeric code is 392. It is divided into 100 sen. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="166" bodyend="176"/>
+    <location file="/currencies/asia.hpp" line="166" bodyfile="/currencies/asia.hpp" bodystart="166" bodyend="176"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pathwise_vegas_accounting_engine" kind="class" prot="public">
     <compoundname>QuantLib::PathwiseVegasAccountingEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp</includes>
+    <includes local="no">/models/marketmodels/pathwiseaccountingengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_pathwise_vegas_accounting_engine_1a33704ec8b9d5b146d8d086b2d23d9d11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,7 +29,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>initialNumeraireValue</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="120"/>
+        <location file="/models/marketmodels/pathwiseaccountingengine.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pathwise_vegas_accounting_engine_1a0958e29608202ff7ab0e3d8a79418e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -48,11 +48,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>numberOfPaths</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="124"/>
+        <location file="/models/marketmodels/pathwiseaccountingengine.hpp" line="124"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Engine collecting cash flows along a market-model simulation for doing pathwise computation of Deltas and vegas. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="113" bodyend="176"/>
+    <location file="/models/marketmodels/pathwiseaccountingengine.hpp" line="114" bodyfile="/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="113" bodyend="176"/>
   </compounddef>
 </doxygen>

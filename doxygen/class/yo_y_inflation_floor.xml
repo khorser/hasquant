@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_inflation_floor" kind="class" prot="public">
     <compoundname>QuantLib::YoYInflationFloor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp</includes>
+    <includes local="no">/instruments/inflationcapfloor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_floor_1a09a8525ad01969eba8b98e1843c9794a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,11 +17,11 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>exerciseRates</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="116" bodyend="119"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="119" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="116" bodyend="119"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Concrete YoY Inflation floor class. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="114" bodyend="120"/>
+    <location file="/instruments/inflationcapfloor.hpp" line="114" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="114" bodyend="120"/>
   </compounddef>
 </doxygen>

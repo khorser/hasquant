@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_continuous_fixed_lookback_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticContinuousFixedLookbackEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfixedlookback.hpp</includes>
+    <includes local="no">/pricingengines/lookback/analyticcontinuousfixedlookback.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_fixed_lookback_engine_1aa7e95119db1edc491f24e2bb0b8d580c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfixedlookback.hpp" line="46"/>
+        <location file="/pricingengines/lookback/analyticcontinuousfixedlookback.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_fixed_lookback_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -21,13 +21,13 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfixedlookback.hpp" line="47"/>
+        <location file="/pricingengines/lookback/analyticcontinuousfixedlookback.hpp" line="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for European continuous fixed-strike lookback. </para>    </briefdescription>
     <detaileddescription>
 <para>Formula from &quot;Option Pricing Formulas&quot;, E.G. Haug, McGraw-Hill, 1998, p.63-64</para><para><xrefsect id="test_1_test000105"><xreftitle>Tests</xreftitle><xrefdescription><para>returned values are verified against results from literature </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfixedlookback.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfixedlookback.hpp" bodystart="42" bodyend="65"/>
+    <location file="/pricingengines/lookback/analyticcontinuousfixedlookback.hpp" line="43" bodyfile="/pricingengines/lookback/analyticcontinuousfixedlookback.hpp" bodystart="42" bodyend="65"/>
   </compounddef>
 </doxygen>

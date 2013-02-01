@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_south_korea" kind="class" prot="public">
     <compoundname>QuantLib::SouthKorea</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp</includes>
+    <includes local="no">/time/calendars/southkorea.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_south_korea_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -16,7 +16,7 @@
           <briefdescription>
 <para>Korea exchange. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" bodystart="88" bodyend="90"/>
+        <location file="/time/calendars/southkorea.hpp" line="88" bodyfile="/time/calendars/southkorea.hpp" bodystart="88" bodyend="90"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -30,7 +30,7 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_south_korea_1abe41cfffd960e29a5d8b07be00aeda42a27eb21ee5297bb50ae0947b93b24d449" kindref="member">KRX</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" line="91"/>
+        <location file="/time/calendars/southkorea.hpp" line="91"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -85,6 +85,6 @@
 <para>Year-end closing </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" bodystart="74" bodyend="92"/>
+    <location file="/time/calendars/southkorea.hpp" line="74" bodyfile="/time/calendars/southkorea.hpp" bodystart="74" bodyend="92"/>
   </compounddef>
 </doxygen>

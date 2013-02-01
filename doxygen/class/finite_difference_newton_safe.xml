@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_finite_difference_newton_safe" kind="class" prot="public">
     <compoundname>QuantLib::FiniteDifferenceNewtonSafe</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/finitedifferencenewtonsafe.hpp</includes>
+    <includes local="no">/math/solvers1d/finitedifferencenewtonsafe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_newton_safe_1a89c27acbd6897ade1c40e93c8b380558" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -22,13 +22,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>xAccuracy</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/finitedifferencenewtonsafe.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/finitedifferencenewtonsafe.hpp" bodystart="39" bodyend="93"/>
+        <location file="/math/solvers1d/finitedifferencenewtonsafe.hpp" line="40" bodyfile="/math/solvers1d/finitedifferencenewtonsafe.hpp" bodystart="39" bodyend="93"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>safe Newton 1-D solver with finite difference derivatives </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000064"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/finitedifferencenewtonsafe.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/finitedifferencenewtonsafe.hpp" bodystart="36" bodyend="94"/>
+    <location file="/math/solvers1d/finitedifferencenewtonsafe.hpp" line="36" bodyfile="/math/solvers1d/finitedifferencenewtonsafe.hpp" bodystart="36" bodyend="94"/>
   </compounddef>
 </doxygen>

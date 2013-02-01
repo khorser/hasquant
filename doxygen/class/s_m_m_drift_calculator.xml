@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_s_m_m_drift_calculator" kind="class" prot="public">
     <compoundname>QuantLib::SMMDriftCalculator</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp</includes>
+    <includes local="no">/models/marketmodels/driftcomputation/smmdriftcalculator.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a265ebf5d92694fa86dd205528fdb7a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,7 +29,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>alive</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="46"/>
+        <location file="/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a86224e0e76eb431600252d64427536c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -46,13 +46,13 @@
         </param>
         <briefdescription>
 <para>Computes the drifts. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="49"/>
+        <location file="/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Drift computation for coterminal swap market models. </para>    </briefdescription>
     <detaileddescription>
 <para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, Lorenzo Liesch, <emphasis>Effective Implementation Of Generic Market Models</emphasis>. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="40" bodyend="62"/>
+    <location file="/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="40" bodyfile="/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="40" bodyend="62"/>
   </compounddef>
 </doxygen>

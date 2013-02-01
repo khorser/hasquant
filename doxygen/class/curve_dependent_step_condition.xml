@@ -20,9 +20,9 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="47" bodyend="52"/>
+        <location file="/methods/finitedifferences/stepcondition.hpp" line="47" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="47" bodyend="52"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="44" bodyend="103"/>
+    <location file="/methods/finitedifferences/stepcondition.hpp" line="45" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="44" bodyend="103"/>
   </compounddef>
 </doxygen>

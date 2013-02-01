@@ -26,9 +26,9 @@
           <type>const std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, ArgumentType &gt; &gt; &amp;</type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="124" bodyend="129"/>
+        <location file="/math/linearleastsquaresregression.hpp" line="128" bodyfile="/math/linearleastsquaresregression.hpp" bodystart="124" bodyend="129"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="122" bodyend="130"/>
+    <location file="/math/linearleastsquaresregression.hpp" line="122" bodyfile="/math/linearleastsquaresregression.hpp" bodystart="122" bodyend="130"/>
   </compounddef>
 </doxygen>

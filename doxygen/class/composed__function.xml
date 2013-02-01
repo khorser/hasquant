@@ -16,14 +16,14 @@
         <definition>typedef G::argument_type argument_type</definition>
         <argsstring></argsstring>
         <name>argument_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="115" bodyend="-1"/>
+        <location file="/math/functional.hpp" line="115" bodyfile="/math/functional.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1composed__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
         <type>F::result_type</type>
         <definition>typedef F::result_type result_type</definition>
         <argsstring></argsstring>
         <name>result_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="116" bodyend="-1"/>
+        <location file="/math/functional.hpp" line="116" bodyfile="/math/functional.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -40,7 +40,7 @@
           <type>const G &amp;</type>
           <declname>g</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="117" bodyend="117"/>
+        <location file="/math/functional.hpp" line="117" bodyfile="/math/functional.hpp" bodystart="117" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1composed__function_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>result_type</type>
@@ -51,9 +51,9 @@
           <type>const argument_type &amp;</type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="118" bodyend="120"/>
+        <location file="/math/functional.hpp" line="118" bodyfile="/math/functional.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="113" bodyend="124"/>
+    <location file="/math/functional.hpp" line="113" bodyfile="/math/functional.hpp" bodystart="113" bodyend="124"/>
   </compounddef>
 </doxygen>

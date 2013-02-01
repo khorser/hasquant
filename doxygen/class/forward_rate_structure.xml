@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_rate_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ForwardRateStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp</includes>
+    <includes local="no">/termstructures/yield/forwardstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
@@ -26,7 +26,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp" line="54"/>
+        <location file="/termstructures/yield/forwardstructure.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_structure_1a7b11cbb8289a2f4e8a60881933db71cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -57,7 +57,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp" line="60"/>
+        <location file="/termstructures/yield/forwardstructure.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_structure_1af53b3b6ab246c5407d66ca67298883bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -87,7 +87,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp" line="66"/>
+        <location file="/termstructures/yield/forwardstructure.hpp" line="66"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -103,7 +103,7 @@
         </param>
         <briefdescription>
 <para>instantaneous forward-rate calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp" line="78"/>
+        <location file="/termstructures/yield/forwardstructure.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_structure_1a5da0d2e596148e3aa538b6e47a8ecf63" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -115,7 +115,7 @@
         </param>
         <detaileddescription>
 <para>Returns the zero yield rate for the given date calculating it from the instantaneous forward rate <formula id="302">$ f(t) $</formula> as <formula id="394">\[ z(t) = \int_0^t f(\tau) d\tau \]</formula></para><para><xrefsect id="caveats_1_caveats000138"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses an highly inefficient and possibly wildly inaccurate numerical integration. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp" line="90"/>
+        <location file="/termstructures/yield/forwardstructure.hpp" line="90"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -132,13 +132,13 @@
         </param>
         <detaileddescription>
 <para>Returns the discount factor for the given date calculating it from the zero rate as <formula id="395">$ d(t) = \exp \left( -z(t) t \right) $</formula> </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp" bodystart="105" bodyend="111"/>
+        <location file="/termstructures/yield/forwardstructure.hpp" line="98" bodyfile="/termstructures/yield/forwardstructure.hpp" bodystart="105" bodyend="111"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Forward-rate term structure </para>    </briefdescription>
     <detaileddescription>
 <para>This abstract class acts as an adapter to <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> allowing the programmer to implement only the <computeroutput>forwardImpl(Time)</computeroutput> method in derived classes.</para><para>Zero yields and discounts are calculated from forwards.</para><para><ref refid="class_quant_lib_1_1_forward" kindref="compound">Forward</ref> rates are assumed to be annual continuous compounding. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp" bodystart="44" bodyend="100"/>
+    <location file="/termstructures/yield/forwardstructure.hpp" line="44" bodyfile="/termstructures/yield/forwardstructure.hpp" bodystart="44" bodyend="100"/>
   </compounddef>
 </doxygen>

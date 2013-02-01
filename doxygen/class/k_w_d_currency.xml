@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_k_w_d_currency" kind="class" prot="public">
     <compoundname>QuantLib::KWDCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp</includes>
+    <includes local="no">/currencies/asia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_k_w_d_currency_1a03a1a92d7f9de9f262de43a1e31f3cac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>KWDCurrency</definition>
         <argsstring>()</argsstring>
         <name>KWDCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="204" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="204" bodyend="211"/>
+        <location file="/currencies/asia.hpp" line="204" bodyfile="/currencies/asia.hpp" bodystart="204" bodyend="211"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Kuwaiti dinar. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is KWD; the numeric code is 414. It is divided in 1000 fils. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="202" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="202" bodyend="212"/>
+    <location file="/currencies/asia.hpp" line="202" bodyfile="/currencies/asia.hpp" bodystart="202" bodyend="212"/>
   </compounddef>
 </doxygen>

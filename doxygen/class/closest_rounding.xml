@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_closest_rounding" kind="class" prot="public">
     <compoundname>QuantLib::ClosestRounding</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp</includes>
+    <includes local="no">/math/rounding.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_closest_rounding_1ae5b327360784109176346c565a6a71b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,11 +18,11 @@
           <declname>digit</declname>
           <defval>5</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="109" bodyend="111"/>
+        <location file="/math/rounding.hpp" line="111" bodyfile="/math/rounding.hpp" bodystart="109" bodyend="111"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Closest rounding. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="107" bodyend="112"/>
+    <location file="/math/rounding.hpp" line="107" bodyfile="/math/rounding.hpp" bodystart="107" bodyend="112"/>
   </compounddef>
 </doxygen>

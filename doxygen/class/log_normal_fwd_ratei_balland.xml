@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_log_normal_fwd_ratei_balland" kind="class" prot="public">
     <compoundname>QuantLib::LogNormalFwdRateiBalland</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp</includes>
+    <includes local="no">/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp</includes>
       <sectiondef kind="user-defined">
       <header>MarketModel interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a70e220bffe590588fae688df4700ca84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -11,7 +11,7 @@
         <argsstring>() const </argsstring>
         <name>numeraires</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1adb4ceea26c9274fc282a70be25a6b619">numeraires</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="42"/>
+        <location file="/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a4dc8779ddad08edbbfddd716df9d5bd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -19,7 +19,7 @@
         <argsstring>()</argsstring>
         <name>startNewPath</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1ad1c69e6aa71f890350ca8abcb15b0763">startNewPath</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="43"/>
+        <location file="/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a280269ace6d9053b78eeb52702cef9d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -27,7 +27,7 @@
         <argsstring>()</argsstring>
         <name>advanceStep</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1a6aee9def9c9ccdc14907fb93fb96631c">advanceStep</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="44"/>
+        <location file="/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a3c05dea1b785c4581cfc8488127805b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -35,7 +35,7 @@
         <argsstring>() const </argsstring>
         <name>currentStep</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1ac01af761e87531c158e375b36520bdcf">currentStep</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="45"/>
+        <location file="/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a521e8787acede5b2ee0a6c797cb31da5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
@@ -43,7 +43,7 @@
         <argsstring>() const </argsstring>
         <name>currentState</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1ac7e44f09b21966a9dab1e65674346ecd">currentState</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="46"/>
+        <location file="/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1ad2a4cd43598d0be484849363691856cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -54,7 +54,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="47"/>
+        <location file="/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="47"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -78,11 +78,11 @@
           <declname>initialStep</declname>
           <defval>0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="39"/>
+        <location file="/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="39"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Iterative Predictor-Corrector. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" bodystart="34" bodyend="70"/>
+    <location file="/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" line="34" bodyfile="/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp" bodystart="34" bodyend="70"/>
   </compounddef>
 </doxygen>

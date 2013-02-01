@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_early_exercise" kind="class" prot="public">
     <compoundname>QuantLib::EarlyExercise</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exercise.hpp</includes>
+    <includes local="no">/exercise.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_1acc512078299c8007a14deb5c7f94db10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,20 +18,20 @@
           <declname>payoffAtExpiry</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="58" bodyend="60"/>
+        <location file="/exercise.hpp" line="60" bodyfile="/exercise.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_1afc233529c1530b5a9409277a3e75242f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool payoffAtExpiry</definition>
         <argsstring>() const </argsstring>
         <name>payoffAtExpiry</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="61" bodyend="61"/>
+        <location file="/exercise.hpp" line="61" bodyfile="/exercise.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Early-exercise base class. </para>    </briefdescription>
     <detaileddescription>
 <para>The payoff can be at exercise (the default) or at expiry </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="56" bodyend="64"/>
+    <location file="/exercise.hpp" line="56" bodyfile="/exercise.hpp" bodystart="56" bodyend="64"/>
   </compounddef>
 </doxygen>

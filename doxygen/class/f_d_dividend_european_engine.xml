@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_dividend_european_engine" kind="class" prot="public">
     <compoundname>QuantLib::FDDividendEuropeanEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/fddividendeuropeanengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -36,7 +36,7 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="48" bodyend="52"/>
+        <location file="/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="52" bodyfile="/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="48" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,6 +45,6 @@
 <para><xrefsect id="test_1_test000125"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned greeks is tested by reproducing numerical derivatives.</para></listitem><listitem><para>the invariance of the results upon addition of null dividends is tested. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="42" bodyend="53"/>
+    <location file="/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="44" bodyfile="/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="42" bodyend="53"/>
   </compounddef>
 </doxygen>

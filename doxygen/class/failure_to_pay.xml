@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_failure_to_pay" kind="class" prot="public">
     <compoundname>QuantLib::FailureToPay</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp</includes>
+    <includes local="no">/experimental/credit/defaulttype.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_failure_to_pay_1ac32b1d3e732b5fc5ff63084f62dfa956" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,25 +18,25 @@
           <declname>amount</declname>
           <defval>1.e+6</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="170" bodyend="173"/>
+        <location file="/experimental/credit/defaulttype.hpp" line="173" bodyfile="/experimental/credit/defaulttype.hpp" bodystart="170" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_failure_to_pay_1a6ebf37e5e2c58c4a200947df2e4f434f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real amountRequired</definition>
         <argsstring>() const </argsstring>
         <name>amountRequired</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="175" bodyend="175"/>
+        <location file="/experimental/credit/defaulttype.hpp" line="175" bodyfile="/experimental/credit/defaulttype.hpp" bodystart="175" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_failure_to_pay_1ac3c8744f8689e0dd6cc63fc1a72734cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
         <definition>const Period&amp; gracePeriod</definition>
         <argsstring>() const </argsstring>
         <name>gracePeriod</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="176" bodyend="176"/>
+        <location file="/experimental/credit/defaulttype.hpp" line="176" bodyfile="/experimental/credit/defaulttype.hpp" bodystart="176" bodyend="176"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Failure to Pay atomic event type. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="165" bodyend="183"/>
+    <location file="/experimental/credit/defaulttype.hpp" line="165" bodyfile="/experimental/credit/defaulttype.hpp" bodystart="165" bodyend="183"/>
   </compounddef>
 </doxygen>

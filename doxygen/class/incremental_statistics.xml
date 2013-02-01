@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_incremental_statistics" kind="class" prot="public">
     <compoundname>QuantLib::IncrementalStatistics</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp</includes>
+    <includes local="no">/math/statistics/incrementalstatistics.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1afb02dc74860bcd8ad0982324d50c82e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -12,7 +12,7 @@
         <name>samples</name>
         <briefdescription>
 <para>number of samples collected </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="47"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1adadbb304259580be7add0941c9540bd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -21,7 +21,7 @@
         <name>weightSum</name>
         <briefdescription>
 <para>sum of data weights </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="50"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1a962ffe5a3593be370d5c883365c060f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -30,7 +30,7 @@
         <name>mean</name>
         <detaileddescription>
 <para>returns the mean, defined as <formula id="253">\[ \langle x \rangle = \frac{\sum w_i x_i}{\sum w_i}. \]</formula> </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="55"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1a4b8b05b2a9af92dad9cc304c2925a4eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -39,7 +39,7 @@
         <name>variance</name>
         <detaileddescription>
 <para>returns the variance, defined as <formula id="264">\[ \frac{N}{N-1} \left\langle \left( x-\langle x \rangle \right)^2 \right\rangle. \]</formula> </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="61"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1af728e0bfb80c48d44424d590cbfda34e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -48,7 +48,7 @@
         <name>standardDeviation</name>
         <detaileddescription>
 <para>returns the standard deviation <formula id="4">$ \sigma $</formula>, defined as the square root of the variance. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="66"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -57,7 +57,7 @@
         <name>errorEstimate</name>
         <detaileddescription>
 <para>returns the error estimate <formula id="203">$ \epsilon $</formula>, defined as the square root of the ratio of the variance to the number of samples. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="72"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1a27cb1a211374553eadd4a0e09d60cf0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -66,7 +66,7 @@
         <name>skewness</name>
         <detaileddescription>
 <para>returns the skewness, defined as <formula id="256">\[ \frac{N^2}{(N-1)(N-2)} \frac{\left\langle \left( x-\langle x \rangle \right)^3 \right\rangle}{\sigma^3}. \]</formula> The above evaluates to 0 for a Gaussian distribution. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="79"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1a8a4ed1d1339aae2ccc6bd69c8f026f10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -75,7 +75,7 @@
         <name>kurtosis</name>
         <detaileddescription>
 <para>returns the excess kurtosis, defined as <formula id="257">\[ \frac{N^2(N+1)}{(N-1)(N-2)(N-3)} \frac{\left\langle \left(x-\langle x \rangle \right)^4 \right\rangle}{\sigma^4} - \frac{3(N-1)^2}{(N-2)(N-3)}. \]</formula> The above evaluates to 0 for a Gaussian distribution. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="87"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1ac98e9ad7b67758707ccda2475bb90019" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -84,7 +84,7 @@
         <name>min</name>
         <detaileddescription>
 <para>returns the minimum sample value </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="90"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1ad849b4ad24b7c5b71e7ec46a65d53e8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -93,7 +93,7 @@
         <name>max</name>
         <detaileddescription>
 <para>returns the maximum sample value </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="93"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1a96208da819b87577a64a939239038fee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -102,7 +102,7 @@
         <name>downsideVariance</name>
         <detaileddescription>
 <para>returns the downside variance, defined as <formula id="248">\[ \frac{N}{N-1} \times \frac{ \sum_{i=1}^{N} \theta \times x_i^{2}}{ \sum_{i=1}^{N} w_i} \]</formula>, where <formula id="249">$ \theta $</formula> = 0 if x &gt; 0 and <formula id="249">$ \theta $</formula> =1 if x &lt;0 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="101"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1a0d6c0d73e07b78236d6b36bf17603783" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -111,7 +111,7 @@
         <name>downsideDeviation</name>
         <detaileddescription>
 <para>returns the downside deviation, defined as the square root of the downside variance. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="106"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="106"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -135,7 +135,7 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>weight must be positive or null </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="114"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1a536b63938a662f0138ab4f1e87669eef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -157,7 +157,7 @@
         </param>
         <briefdescription>
 <para>adds a sequence of data to the set, with default weight </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" bodystart="117" bodyend="120"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="117" bodyfile="/math/statistics/incrementalstatistics.hpp" bodystart="117" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1acd78fc587eb7cf80dd145cb3adda5ae8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -189,7 +189,7 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>weights must be positive or null </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" bodystart="124" bodyend="128"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="125" bodyfile="/math/statistics/incrementalstatistics.hpp" bodystart="124" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_incremental_statistics_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -198,7 +198,7 @@
         <name>reset</name>
         <briefdescription>
 <para>resets the data to a null set </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="130"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="130"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -207,7 +207,7 @@
         <definition>typedef Real value_type</definition>
         <argsstring></argsstring>
         <name>value_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" bodystart="42" bodyend="-1"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="42" bodyfile="/math/statistics/incrementalstatistics.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -216,13 +216,13 @@
         <definition>IncrementalStatistics</definition>
         <argsstring>()</argsstring>
         <name>IncrementalStatistics</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="43"/>
+        <location file="/math/statistics/incrementalstatistics.hpp" line="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Statistics tool based on incremental accumulation. </para>    </briefdescription>
     <detaileddescription>
 <para>It can accumulate a set of data and return statistics (e.g: mean, variance, skewness, kurtosis, error estimation, etc.)</para><para><xrefsect id="caveats_1_caveats000075"><xreftitle>Warning</xreftitle><xrefdescription><para>high moments are numerically unstable for high average/standardDeviation ratios. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/incrementalstatistics.hpp" bodystart="40" bodyend="138"/>
+    <location file="/math/statistics/incrementalstatistics.hpp" line="40" bodyfile="/math/statistics/incrementalstatistics.hpp" bodystart="40" bodyend="138"/>
   </compounddef>
 </doxygen>

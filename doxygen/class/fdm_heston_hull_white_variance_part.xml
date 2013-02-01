@@ -24,16 +24,16 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>theta</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="62"/>
+        <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_variance_part_1a1ff6f42e241f24f5515c9c01ebb7b2c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const TripleBandLinearOp &amp;</type>
         <definition>const TripleBandLinearOp&amp; getMap</definition>
         <argsstring>() const </argsstring>
         <name>getMap</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="64"/>
+        <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="64"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="58" bodyend="68"/>
+    <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="58" bodyfile="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="58" bodyend="68"/>
   </compounddef>
 </doxygen>

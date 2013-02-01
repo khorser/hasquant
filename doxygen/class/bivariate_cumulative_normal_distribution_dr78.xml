@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78" kind="class" prot="public">
     <compoundname>QuantLib::BivariateCumulativeNormalDistributionDr78</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp</includes>
+    <includes local="no">/math/distributions/bivariatenormaldistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1aaff529b42b7caa21b0ea339811b52bdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="61"/>
+        <location file="/math/distributions/bivariatenormaldistribution.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1a5cd84d61c9a61614c49dacf063bca822" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -28,7 +28,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>b</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="63"/>
+        <location file="/math/distributions/bivariatenormaldistribution.hpp" line="63"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -37,6 +37,6 @@
 <para>Drezner (1978) algorithm, six decimal places accuracy. <verbatim>   For this implementation see
   &quot;Option pricing formulas&quot;, E.G. Haug, McGraw-Hill 1998
 </verbatim></para><para><xrefsect id="todo_1_todo000030"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>check accuracy of this algorithm and compare with: 1) Drezner, Z, (1978), Computation of the bivariate normal integral, Mathematics of Computation 32, pp. 277-279. 2) Drezner, Z. and Wesolowsky, G. O. (1990) `On the Computation of the Bivariate Normal Integral&apos;, Journal of Statistical Computation and Simulation 35, pp. 101-107. 3) Drezner, Z (1992) Computation of the Multivariate Normal Integral, ACM Transactions on Mathematics Software 18, pp. 450-460. 4) Drezner, Z (1994) Computation of the Trivariate Normal Integral, Mathematics of Computation 62, pp. 289-294. 5) Genz, A. (1992) `Numerical Computation of the Multivariate Normal Probabilities&apos;, J. Comput. Graph. Stat. 1, pp. 141-150.</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000028"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="59" bodyend="67"/>
+    <location file="/math/distributions/bivariatenormaldistribution.hpp" line="59" bodyfile="/math/distributions/bivariatenormaldistribution.hpp" bodystart="59" bodyend="67"/>
   </compounddef>
 </doxygen>

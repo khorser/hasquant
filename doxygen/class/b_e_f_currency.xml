@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_e_f_currency" kind="class" prot="public">
     <compoundname>QuantLib::BEFCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_b_e_f_currency_1a1edfebe6ddec3a96eba3683cef2da040" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BEFCurrency</definition>
         <argsstring>()</argsstring>
         <name>BEFCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="487" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="487" bodyend="495"/>
+        <location file="/currencies/europe.hpp" line="487" bodyfile="/currencies/europe.hpp" bodystart="487" bodyend="495"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Belgian franc. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code was BEF; the numeric code was 56. It had no subdivisions.</para><para>Obsoleted by the Euro since 1999. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="485" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="485" bodyend="496"/>
+    <location file="/currencies/europe.hpp" line="485" bodyfile="/currencies/europe.hpp" bodystart="485" bodyend="496"/>
   </compounddef>
 </doxygen>

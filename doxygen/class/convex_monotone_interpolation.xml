@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_convex_monotone_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::ConvexMonotoneInterpolation</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/convexmonotoneinterpolation.hpp</includes>
     <templateparamlist>
       <param>
         <type>class I1</type>
@@ -51,7 +51,7 @@
           <declname>preExistingHelpers</declname>
           <defval>helper_map()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="760" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="755" bodyend="771"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="760" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="755" bodyend="771"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_interpolation_1acd198c9e05035dbcc984bad80de3440b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -62,20 +62,20 @@
           <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref> &amp;</type>
           <declname>interp</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="774" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="773" bodyend="774"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="774" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="773" bodyend="774"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_interpolation_1a3564e6366dd012b3ea99a597e814c3d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::map&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, boost::shared_ptr&lt; detail::SectionHelper &gt; &gt;</type>
         <definition>std::map&lt;Real, boost::shared_ptr&lt;detail::SectionHelper&gt; &gt; getExistingHelpers</definition>
         <argsstring>()</argsstring>
         <name>getExistingHelpers</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="777" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="777" bodyend="782"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="777" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="777" bodyend="782"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Convex monotone yield-curve interpolation method. </para>    </briefdescription>
     <detaileddescription>
 <para>Enhances implementation of the convex monotone method described in &quot;Interpolation Methods for Curve Construction&quot; by Hagan &amp; West AMF Vol 13, No2 2006.</para><para>A setting of monotonicity = 1 and quadraticity = 0 will reproduce the basic Hagan/West method. However, this can produce excessive gradients which can mean P&amp;L swings for some curves. Setting monotonicity &lt; 1 and/or quadraticity &gt; 0 produces smoother curves. Extra enhancement to avoid negative values (if required) is in place. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="751" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="751" bodyend="783"/>
+    <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="751" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="751" bodyend="783"/>
   </compounddef>
 </doxygen>

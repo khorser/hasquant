@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_null" kind="class" prot="public">
     <compoundname>QuantLib::Null</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp</includes>
+    <includes local="no">/utilities/null.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Type</type>
@@ -14,18 +14,18 @@
         <definition>Null</definition>
         <argsstring>()</argsstring>
         <name>Null</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" bodystart="66" bodyend="66"/>
+        <location file="/utilities/null.hpp" line="66" bodyfile="/utilities/null.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_null_1ae5857c1c44e69902576181d342c6b0cd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>operator T</definition>
         <argsstring>() const </argsstring>
         <name>operator T</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" bodystart="67" bodyend="70"/>
+        <location file="/utilities/null.hpp" line="67" bodyfile="/utilities/null.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>template class providing a null value for a given type. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" bodystart="36" bodyend="-1"/>
+    <location file="/utilities/null.hpp" line="36" bodyfile="/utilities/null.hpp" bodystart="36" bodyend="-1"/>
   </compounddef>
 </doxygen>

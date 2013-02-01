@@ -49,7 +49,7 @@
           <declname>cPoint</declname>
           <defval>(std::pair&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;(<ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;(), <ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()))</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmblackscholesmesher.hpp" line="48"/>
+        <location file="/methods/finitedifferences/meshers/fdmblackscholesmesher.hpp" line="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -74,9 +74,9 @@
           <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
           <declname>vol</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmblackscholesmesher.hpp" line="54"/>
+        <location file="/methods/finitedifferences/meshers/fdmblackscholesmesher.hpp" line="54"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmblackscholesmesher.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmblackscholesmesher.hpp" bodystart="37" bodyend="55"/>
+    <location file="/methods/finitedifferences/meshers/fdmblackscholesmesher.hpp" line="37" bodyfile="/methods/finitedifferences/meshers/fdmblackscholesmesher.hpp" bodystart="37" bodyend="55"/>
   </compounddef>
 </doxygen>

@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_t_l_currency" kind="class" prot="public">
     <compoundname>QuantLib::MTLCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_m_t_l_currency_1a23ba7003379881d86291a09891d6a42e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MTLCurrency</definition>
         <argsstring>()</argsstring>
         <name>MTLCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="276" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="276" bodyend="283"/>
+        <location file="/currencies/europe.hpp" line="276" bodyfile="/currencies/europe.hpp" bodystart="276" bodyend="283"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Maltese lira. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is MTL; the numeric code is 470. It is divided in 100 cents. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="274" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="274" bodyend="284"/>
+    <location file="/currencies/europe.hpp" line="274" bodyfile="/currencies/europe.hpp" bodystart="274" bodyend="284"/>
   </compounddef>
 </doxygen>

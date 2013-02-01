@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_actual_actual" kind="class" prot="public">
     <compoundname>QuantLib::ActualActual</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp</includes>
+    <includes local="no">/time/daycounters/actualactual.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578" prot="public" static="no">
         <name>Convention</name>
@@ -27,7 +27,7 @@
         <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ace4bbf6b266e46026b96604c29c2f39b" prot="public">
           <name>Euro</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="51" bodyend="53"/>
+        <location file="/time/daycounters/actualactual.hpp" line="51" bodyfile="/time/daycounters/actualactual.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -41,7 +41,7 @@
           <declname>c</declname>
           <defval>ActualActual::ISDA</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="88" bodyend="89"/>
+        <location file="/time/daycounters/actualactual.hpp" line="89" bodyfile="/time/daycounters/actualactual.hpp" bodystart="88" bodyend="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -56,6 +56,6 @@
    For more details, refer to
    http://www.isda.org/publications/pdf/Day-Count-Fracation1999.pdf
 </verbatim></para><para><xrefsect id="test_1_test000154"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the results is checked against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="49" bodyend="90"/>
+    <location file="/time/daycounters/actualactual.hpp" line="49" bodyfile="/time/daycounters/actualactual.hpp" bodystart="49" bodyend="90"/>
   </compounddef>
 </doxygen>

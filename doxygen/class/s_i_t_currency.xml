@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_s_i_t_currency" kind="class" prot="public">
     <compoundname>QuantLib::SITCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_s_i_t_currency_1ab54849b9907daacf39ed5ae0b151f1b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SITCurrency</definition>
         <argsstring>()</argsstring>
         <name>SITCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="387" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="387" bodyend="394"/>
+        <location file="/currencies/europe.hpp" line="387" bodyfile="/currencies/europe.hpp" bodystart="387" bodyend="394"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Slovenian tolar. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is SIT; the numeric code is 705. It is divided in 100 stotinov. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="385" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="385" bodyend="395"/>
+    <location file="/currencies/europe.hpp" line="385" bodyfile="/currencies/europe.hpp" bodystart="385" bodyend="395"/>
   </compounddef>
 </doxygen>

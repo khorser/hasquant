@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_local_constant_vol" kind="class" prot="public">
     <compoundname>QuantLib::LocalConstantVol</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp</includes>
+    <includes local="no">/termstructures/volatility/equityfx/localconstantvol.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_local_constant_vol_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="57" bodyend="57"/>
+        <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="57" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_constant_vol_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="58" bodyend="58"/>
+        <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="58" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -36,7 +36,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="62" bodyend="62"/>
+        <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="62" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_constant_vol_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -46,7 +46,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="63" bodyend="63"/>
+        <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="63" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -61,7 +61,7 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="109" bodyend="116"/>
+        <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="67" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="109" bodyend="116"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -82,7 +82,7 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="77" bodyend="82"/>
+        <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="43" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="77" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_constant_vol_1a3c58bd6f33023f66b82cdf19119a2b42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -101,7 +101,7 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="84" bodyend="90"/>
+        <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="46" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="84" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_constant_vol_1af846defb44d49e4ee0866a077ec0dd19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -124,7 +124,7 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="92" bodyend="98"/>
+        <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="50" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="92" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_constant_vol_1ae37ab8ae4a6f8193304c4fec40eb474b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -147,13 +147,13 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="100" bodyend="107"/>
+        <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="54" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="100" bodyend="107"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constant local volatility, no time-strike dependence. </para>    </briefdescription>
     <detaileddescription>
 <para>This class implements the LocalVolatilityTermStructure interface for a constant local volatility (no time/asset dependence). Local volatility and Black volatility are the same when volatility is at most time dependent, so this class is basically a proxy for <ref refid="class_quant_lib_1_1_black_volatility_term_structure" kindref="compound">BlackVolatilityTermStructure</ref>. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="39" bodyend="73"/>
+    <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="39" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="39" bodyend="73"/>
   </compounddef>
 </doxygen>

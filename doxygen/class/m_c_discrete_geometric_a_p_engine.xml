@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_c_discrete_geometric_a_p_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCDiscreteGeometricAPEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp</includes>
+    <includes local="no">/pricingengines/asian/mc_discr_geom_av_price.hpp</includes>
     <templateparamlist>
       <param>
         <type>class RNG</type>
@@ -19,21 +19,21 @@
         <definition>typedef MCDiscreteAveragingAsianEngine&lt;RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="48" bodyend="-1"/>
+        <location file="/pricingengines/asian/mc_discr_geom_av_price.hpp" line="48" bodyfile="/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_discrete_geometric_a_p_engine_1a2cc9b340383469ff7487304d28de7519" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::path_pricer_type</type>
         <definition>typedef MCDiscreteAveragingAsianEngine&lt;RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="51" bodyend="-1"/>
+        <location file="/pricingengines/asian/mc_discr_geom_av_price.hpp" line="51" bodyfile="/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_discrete_geometric_a_p_engine_1a94d203ec01c1e71f8e7660f3173a646e" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::stats_type</type>
         <definition>typedef MCDiscreteAveragingAsianEngine&lt;RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="53" bodyend="-1"/>
+        <location file="/pricingengines/asian/mc_discr_geom_av_price.hpp" line="53" bodyfile="/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -70,13 +70,13 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="88" bodyend="103"/>
+        <location file="/pricingengines/asian/mc_discr_geom_av_price.hpp" line="62" bodyfile="/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="88" bodyend="103"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Monte Carlo pricing engine for discrete geometric average price Asian. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000090"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="43" bodyend="65"/>
+    <location file="/pricingengines/asian/mc_discr_geom_av_price.hpp" line="44" bodyfile="/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="43" bodyend="65"/>
   </compounddef>
 </doxygen>

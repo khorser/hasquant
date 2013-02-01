@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_affine_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::AffineModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
+    <includes local="no">/models/model.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_affine_model_1ad70c7f05240b55443c045ba1d209f829" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
@@ -15,7 +15,7 @@
         </param>
         <briefdescription>
 <para>Implied discount curve. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="46"/>
+        <location file="/models/model.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_affine_model_1ae8cca5ae4349ab3bfc3085e131fba3a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -34,7 +34,7 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
           <declname>factors</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="50"/>
+        <location file="/models/model.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_affine_model_1a75cd313ff0f7511ba974aa86d3caadf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -57,13 +57,13 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>bondMaturity</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="55"/>
+        <location file="/models/model.hpp" line="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Affine model class. </para>    </briefdescription>
     <detaileddescription>
 <para>Base class for analytically tractable models. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="43" bodyend="56"/>
+    <location file="/models/model.hpp" line="43" bodyfile="/models/model.hpp" bodystart="43" bodyend="56"/>
   </compounddef>
 </doxygen>

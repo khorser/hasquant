@@ -22,7 +22,7 @@
           <declname>directionIntegers</declname>
           <defval>SobolRsg::Jaeckel</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="85"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_brownian_generator_factory_1aaa3301555416894e03fd0274388fcdb6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; BrownianGenerator &gt;</type>
@@ -37,9 +37,9 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="87"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="87"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" bodystart="79" bodyend="92"/>
+    <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="79" bodyfile="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" bodystart="79" bodyend="92"/>
   </compounddef>
 </doxygen>

@@ -28,7 +28,7 @@
           <type>const <ref refid="class_quant_lib_1_1_random_sequence_generator" kindref="compound">PseudoRandom::ursg_type</ref> &amp;</type>
           <declname>sequenceGen</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="119"/>
+        <location file="/pricingengines/vanilla/mcdigitalengine.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -39,9 +39,9 @@
           <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="120"/>
+        <location file="/pricingengines/vanilla/mcdigitalengine.hpp" line="120"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="112" bodyend="127"/>
+    <location file="/pricingengines/vanilla/mcdigitalengine.hpp" line="112" bodyfile="/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="112" bodyend="127"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_stripped_optionlet_adapter" kind="class" prot="public">
     <compoundname>QuantLib::StrippedOptionletAdapter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp</includes>
+    <includes local="no">/termstructures/volatility/optionlet/strippedoptionletadapter.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_adapter_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="46"/>
+        <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="46"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -26,7 +26,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="50"/>
+        <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_adapter_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -36,7 +36,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="51"/>
+        <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="51"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -47,7 +47,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="73" bodyend="76"/>
+        <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="55" bodyfile="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="73" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_adapter_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -57,7 +57,7 @@
         <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
         <detaileddescription>
 <para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="56"/>
+        <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="56"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -74,7 +74,7 @@
         </param>
         <briefdescription>
 <para>implements the actual smile calculation in derived classes </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="63"/>
+        <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_adapter_1ae1dad241c14ce021b1b9e0ff138a5e85" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -92,7 +92,7 @@
         </param>
         <briefdescription>
 <para>implements the actual volatility calculation in derived classes </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="65"/>
+        <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -104,11 +104,11 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stripped_optionlet_base" kindref="compound">StrippedOptionletBase</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="42"/>
+        <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="42"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>Adapter class for turning a <ref refid="class_quant_lib_1_1_stripped_optionlet_base" kindref="compound">StrippedOptionletBase</ref> object into an <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref>. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="38" bodyend="71"/>
+    <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="39" bodyfile="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="38" bodyend="71"/>
   </compounddef>
 </doxygen>

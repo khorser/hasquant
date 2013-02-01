@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_spline" kind="class" prot="public">
     <compoundname>QuantLib::BSpline</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp</includes>
+    <includes local="no">/math/bspline.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_b_spline_1a98d1f469c2fccf68567d10f6919a28f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>knots</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="62"/>
+        <location file="/math/bspline.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_spline_1af4b5a32b1cb2ea56aea90bf5db3122b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -36,7 +36,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="64"/>
+        <location file="/math/bspline.hpp" line="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,6 +45,6 @@
 <para>Follows treatment and notation from: <verbatim>   Weisstein, Eric W. &quot;B-Spline.&quot; From MathWorld--A Wolfram Web
    Resource.  &lt;http://mathworld.wolfram.com/B-Spline.html&gt;
 </verbatim></para><para><formula id="170">$ (p+1) $</formula>-th order B-spline (or p degree polynomial) basis functions <formula id="171">$ N_{i,p}(x), i = 0,1,2 \ldots n $</formula>, with <formula id="172">$ n+1 $</formula> control points, or equivalently, an associated knot vector of size <formula id="173">$ p+n+2 $</formula> defined at the increasingly sorted points <formula id="174">$ (x_0, x_1 \ldots x_{n+p+1}) $</formula>. A linear B-spline has <formula id="175">$ p=1 $</formula>, quadratic B-spline has <formula id="176">$ p=2 $</formula>, a cubic B-spline has <formula id="177">$ p=3 $</formula>, etc.</para><para>The B-spline basis functions are defined recursively as follows:</para><para><formula id="178">\[ \begin{array}{rcl} N_{i,0}(x) &amp;=&amp; 1 \textrm{\ if\ } x_{i} \leq x &lt; x_{i+1} \\ &amp;=&amp; 0 \textrm{\ otherwise} \\ N_{i,p}(x) &amp;=&amp; N_{i,p-1}(x) \frac{(x - x_{i})}{ (x_{i+p-1} - x_{i})} + N_{i+1,p-1}(x) \frac{(x_{i+p} - x)}{(x_{i+p} - x_{i+1})} \end{array} \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" bodystart="58" bodyend="74"/>
+    <location file="/math/bspline.hpp" line="58" bodyfile="/math/bspline.hpp" bodystart="58" bodyend="74"/>
   </compounddef>
 </doxygen>

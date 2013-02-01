@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_e_e_k_currency" kind="class" prot="public">
     <compoundname>QuantLib::EEKCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_e_e_k_currency_1a9b815a3f043c6c1e533571c9614ed8c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>EEKCurrency</definition>
         <argsstring>()</argsstring>
         <name>EEKCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="150" bodyend="157"/>
+        <location file="/currencies/europe.hpp" line="150" bodyfile="/currencies/europe.hpp" bodystart="150" bodyend="157"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Estonian kroon. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is EEK; the numeric code is 233. It is divided in 100 senti. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="148" bodyend="158"/>
+    <location file="/currencies/europe.hpp" line="148" bodyfile="/currencies/europe.hpp" bodystart="148" bodyend="158"/>
   </compounddef>
 </doxygen>

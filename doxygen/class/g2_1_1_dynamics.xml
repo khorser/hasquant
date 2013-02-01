@@ -32,7 +32,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="124" bodyend="135"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="135" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="124" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1_1_dynamics_1a5214cecca17100330a48b406d11aa1d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -51,9 +51,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="136" bodyend="140"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="138" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="136" bodyend="140"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="122" bodyend="143"/>
+    <location file="/models/shortrate/twofactormodels/g2.hpp" line="122" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="122" bodyend="143"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_india" kind="class" prot="public">
     <compoundname>QuantLib::India</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/india.hpp</includes>
+    <includes local="no">/time/calendars/india.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_india_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -11,7 +11,7 @@
           <briefdescription>
 <para>National <ref refid="class_quant_lib_1_1_stock" kindref="compound">Stock</ref> Exchange. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/india.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/india.hpp" bodystart="77" bodyend="78"/>
+        <location file="/time/calendars/india.hpp" line="77" bodyfile="/time/calendars/india.hpp" bodystart="77" bodyend="78"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_india_1abe41cfffd960e29a5d8b07be00aeda42a936d3117a6170ef59dd01b4593c271e5" kindref="member">NSE</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/india.hpp" line="79"/>
+        <location file="/time/calendars/india.hpp" line="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -82,6 +82,6 @@
 <para>Guru Nanak Jayanti </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/india.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/india.hpp" bodystart="67" bodyend="80"/>
+    <location file="/time/calendars/india.hpp" line="67" bodyfile="/time/calendars/india.hpp" bodystart="67" bodyend="80"/>
   </compounddef>
 </doxygen>

@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_path_multi_asset_option_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::PathMultiAssetOption::results</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp</includes>
+    <includes local="no">/experimental/mcbasket/pathmultiassetoption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="74" bodyend="76"/>
+        <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="74" bodyfile="/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from multi-asset option calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="72" bodyend="77"/>
+    <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="72" bodyfile="/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="72" bodyend="77"/>
   </compounddef>
 </doxygen>

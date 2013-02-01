@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_callable_zero_coupon_bond_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackCallableZeroCouponBondEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp</includes>
+    <includes local="no">/experimental/callablebonds/blackcallablebondengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_callable_zero_coupon_bond_engine_1a55881b3e2474109300dc051e4486e7aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -19,7 +19,7 @@
         </param>
         <briefdescription>
 <para>volatility is the quoted fwd yield volatility, not price vol </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="79" bodyend="82"/>
+        <location file="/experimental/callablebonds/blackcallablebondengine.hpp" line="82" bodyfile="/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="79" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_callable_zero_coupon_bond_engine_1a4396aa52215d00e91f1a8642b26ca246" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -36,13 +36,13 @@
         </param>
         <briefdescription>
 <para>volatility is the quoted fwd yield volatility, not price vol </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="85" bodyend="88"/>
+        <location file="/experimental/callablebonds/blackcallablebondengine.hpp" line="88" bodyfile="/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="85" bodyend="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black-formula callable zero coupon bond engine. </para>    </briefdescription>
     <detaileddescription>
 <para>Callable zero coupon bond, where the embedded (European) option price is assumed to obey the Black formula. Follows &quot;European bond option&quot; treatment in Hull, Fourth Edition, Chapter 20.</para><para><xrefsect id="caveats_1_caveats000007"><xreftitle>Warning</xreftitle><xrefdescription><para>This class has yet to be tested.</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="75" bodyend="89"/>
+    <location file="/experimental/callablebonds/blackcallablebondengine.hpp" line="76" bodyfile="/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="75" bodyend="89"/>
   </compounddef>
 </doxygen>

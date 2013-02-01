@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_floating_rate_coupon_pricer" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FloatingRateCouponPricer</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp</includes>
+    <includes local="no">/cashflows/couponpricer.hpp</includes>
       <sectiondef kind="user-defined">
       <header>required interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -10,14 +10,14 @@
         <definition>virtual Real swapletPrice</definition>
         <argsstring>() const =0</argsstring>
         <name>swapletPrice</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="47"/>
+        <location file="/cashflows/couponpricer.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate swapletRate</definition>
         <argsstring>() const =0</argsstring>
         <name>swapletRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="48"/>
+        <location file="/cashflows/couponpricer.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -28,7 +28,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="49"/>
+        <location file="/cashflows/couponpricer.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -39,7 +39,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="50"/>
+        <location file="/cashflows/couponpricer.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -50,7 +50,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="51"/>
+        <location file="/cashflows/couponpricer.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_pricer_1a214779867426164db11377dadc63d672" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -61,7 +61,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="52"/>
+        <location file="/cashflows/couponpricer.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_pricer_1a67e3aa825e7a48e9ee9d33e36b1cfdbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -72,7 +72,7 @@
           <type>const <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &amp;</type>
           <declname>coupon</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="53"/>
+        <location file="/cashflows/couponpricer.hpp" line="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -83,7 +83,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="57" bodyend="57"/>
+        <location file="/cashflows/couponpricer.hpp" line="57" bodyfile="/cashflows/couponpricer.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -92,11 +92,11 @@
         <definition>virtual ~FloatingRateCouponPricer</definition>
         <argsstring>()</argsstring>
         <name>~FloatingRateCouponPricer</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="44" bodyend="44"/>
+        <location file="/cashflows/couponpricer.hpp" line="44" bodyfile="/cashflows/couponpricer.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>generic pricer for floating-rate coupons </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="41" bodyend="59"/>
+    <location file="/cashflows/couponpricer.hpp" line="42" bodyfile="/cashflows/couponpricer.hpp" bodystart="41" bodyend="59"/>
   </compounddef>
 </doxygen>

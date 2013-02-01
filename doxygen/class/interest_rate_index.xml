@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interest_rate_index" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::InterestRateIndex</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp</includes>
+    <includes local="no">/indexes/interestrateindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -15,7 +15,7 @@
 <para>Returns the name of the index. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000031"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between indexes. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="99" bodyend="101"/>
+        <location file="/indexes/interestrateindex.hpp" line="50" bodyfile="/indexes/interestrateindex.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1abd47d61ed23fb73440b0c02534236330" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
@@ -25,7 +25,7 @@
         <reimplements refid="class_quant_lib_1_1_index_1a017c78ebe125418dde1aacb7c610265a">fixingCalendar</reimplements>
         <briefdescription>
 <para>returns the calendar defining valid fixing dates </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="103" bodyend="105"/>
+        <location file="/indexes/interestrateindex.hpp" line="51" bodyfile="/indexes/interestrateindex.hpp" bodystart="103" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1aa279f27f1bb152aa71ff980f0bae2727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -39,7 +39,7 @@
         </param>
         <briefdescription>
 <para>returns TRUE if the fixing date is a valid one </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="107" bodyend="109"/>
+        <location file="/indexes/interestrateindex.hpp" line="52" bodyfile="/indexes/interestrateindex.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a1c776ca10de744b29a4d051102003eb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -60,7 +60,7 @@
 <para>returns the fixing at the given date </para>        </briefdescription>
         <detaileddescription>
 <para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="54"/>
+        <location file="/indexes/interestrateindex.hpp" line="54"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -71,7 +71,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="111" bodyend="113"/>
+        <location file="/indexes/interestrateindex.hpp" line="58" bodyfile="/indexes/interestrateindex.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -81,21 +81,21 @@
         <definition>std::string familyName</definition>
         <argsstring>() const </argsstring>
         <name>familyName</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="62" bodyend="62"/>
+        <location file="/indexes/interestrateindex.hpp" line="62" bodyfile="/indexes/interestrateindex.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1aa71982300427118fd251ac6bb7fa89da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
         <definition>Period tenor</definition>
         <argsstring>() const </argsstring>
         <name>tenor</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="63" bodyend="63"/>
+        <location file="/indexes/interestrateindex.hpp" line="63" bodyfile="/indexes/interestrateindex.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>Natural fixingDays</definition>
         <argsstring>() const </argsstring>
         <name>fixingDays</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="64" bodyend="64"/>
+        <location file="/indexes/interestrateindex.hpp" line="64" bodyfile="/indexes/interestrateindex.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1ae9bc5cf19c2ae0701adf3cccbfb7f514" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -106,21 +106,21 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="115" bodyend="119"/>
+        <location file="/indexes/interestrateindex.hpp" line="65" bodyfile="/indexes/interestrateindex.hpp" bodystart="115" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="66" bodyend="66"/>
+        <location file="/indexes/interestrateindex.hpp" line="66" bodyfile="/indexes/interestrateindex.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="67" bodyend="67"/>
+        <location file="/indexes/interestrateindex.hpp" line="67" bodyfile="/indexes/interestrateindex.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -135,7 +135,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="121" bodyend="125"/>
+        <location file="/indexes/interestrateindex.hpp" line="76" bodyfile="/indexes/interestrateindex.hpp" bodystart="121" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a272504b2735ffa618889e575d93212a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -146,7 +146,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="77"/>
+        <location file="/indexes/interestrateindex.hpp" line="77"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -162,7 +162,7 @@
         </param>
         <briefdescription>
 <para>It can be overridden to implement particular conventions. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="82"/>
+        <location file="/indexes/interestrateindex.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a8c8876b15f54345f4c91f930498ad4bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -173,7 +173,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="127" bodyend="131"/>
+        <location file="/indexes/interestrateindex.hpp" line="83" bodyfile="/indexes/interestrateindex.hpp" bodystart="127" bodyend="131"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -206,13 +206,13 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="47"/>
+        <location file="/indexes/interestrateindex.hpp" line="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for interest rate indexes </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000019"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add methods returning <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="39" bodyend="94"/>
+    <location file="/indexes/interestrateindex.hpp" line="40" bodyfile="/indexes/interestrateindex.hpp" bodystart="39" bodyend="94"/>
   </compounddef>
 </doxygen>

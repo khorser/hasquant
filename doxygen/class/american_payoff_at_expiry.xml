@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_american_payoff_at_expiry" kind="class" prot="public">
     <compoundname>QuantLib::AmericanPayoffAtExpiry</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffatexpiry.hpp</includes>
+    <includes local="no">/pricingengines/americanpayoffatexpiry.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_american_payoff_at_expiry_1aaaa5720a044a2da44d000c6f3d5178b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,20 +29,20 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffatexpiry.hpp" line="40"/>
+        <location file="/pricingengines/americanpayoffatexpiry.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_american_payoff_at_expiry_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffatexpiry.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffatexpiry.hpp" bodystart="65" bodyend="67"/>
+        <location file="/pricingengines/americanpayoffatexpiry.hpp" line="41" bodyfile="/pricingengines/americanpayoffatexpiry.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Analytic formula for American exercise payoff at-expiry options. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000049"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>calculate greeks </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffatexpiry.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffatexpiry.hpp" bodystart="33" bodyend="60"/>
+    <location file="/pricingengines/americanpayoffatexpiry.hpp" line="33" bodyfile="/pricingengines/americanpayoffatexpiry.hpp" bodystart="33" bodyend="60"/>
   </compounddef>
 </doxygen>

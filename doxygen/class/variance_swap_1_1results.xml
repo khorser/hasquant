@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_variance_swap_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::VarianceSwap::results</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp</includes>
+    <includes local="no">/instruments/varianceswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_swap_1_1results_1a0dbb7d4efbc792edb4ef8e546e1aa861" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real variance</definition>
         <argsstring></argsstring>
         <name>variance</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="96" bodyend="-1"/>
+        <location file="/instruments/varianceswap.hpp" line="96" bodyfile="/instruments/varianceswap.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -18,11 +18,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="97" bodyend="100"/>
+        <location file="/instruments/varianceswap.hpp" line="97" bodyfile="/instruments/varianceswap.hpp" bodystart="97" bodyend="100"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from variance-swap calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="94" bodyend="101"/>
+    <location file="/instruments/varianceswap.hpp" line="94" bodyfile="/instruments/varianceswap.hpp" bodystart="94" bodyend="101"/>
   </compounddef>
 </doxygen>

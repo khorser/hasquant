@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_overnight_leg" kind="class" prot="public">
     <compoundname>QuantLib::OvernightLeg</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp</includes>
+    <includes local="no">/cashflows/overnightindexedcoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1ac0d49f26da87765dee44878b6a608ced" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <type>const boost::shared_ptr&lt; OvernightIndex &gt; &amp;</type>
           <declname>overnightIndex</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="81"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1a954d7062f691b09137f603313072fb67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
@@ -28,7 +28,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>notional</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="82"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1ad20f30781169e7d8be80850e1b15f56c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
@@ -39,7 +39,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>notionals</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="83"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1a4b0d6efb1a95c449ed5994e5fdcf7c15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
@@ -49,7 +49,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="84"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1a971303426f9ee1359c70606da4f9532d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
@@ -59,7 +59,7 @@
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="85"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1aa4fa5769c78113252005d88f2c24495a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
@@ -70,7 +70,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>gearing</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="86"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1a74380acd3a06b9a885c98d01a074ccbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
@@ -81,7 +81,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>gearings</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="87"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1a03805897879fa9730f9474c2303a4256" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
@@ -92,7 +92,7 @@
           <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
           <declname>spread</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="88"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1ae368fa53eff56c115cb862a5bae1c7bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
@@ -103,18 +103,18 @@
           <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="89"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>operator Leg</definition>
         <argsstring>() const </argsstring>
         <name>operator Leg</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="90"/>
+        <location file="/cashflows/overnightindexedcoupon.hpp" line="90"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>helper class building a sequence of overnight coupons </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="78" bodyend="99"/>
+    <location file="/cashflows/overnightindexedcoupon.hpp" line="78" bodyfile="/cashflows/overnightindexedcoupon.hpp" bodystart="78" bodyend="99"/>
   </compounddef>
 </doxygen>

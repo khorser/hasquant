@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_u_s_d_currency" kind="class" prot="public">
     <compoundname>QuantLib::USDCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp</includes>
+    <includes local="no">/currencies/america.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_u_s_d_currency_1a9474e611ec9e567546d98152f87ef279" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>USDCurrency</definition>
         <argsstring>()</argsstring>
         <name>USDCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="228" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="228" bodyend="235"/>
+        <location file="/currencies/america.hpp" line="228" bodyfile="/currencies/america.hpp" bodystart="228" bodyend="235"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>U.S. dollar. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is USD; the numeric code is 840. It is divided in 100 cents. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="226" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="226" bodyend="236"/>
+    <location file="/currencies/america.hpp" line="226" bodyfile="/currencies/america.hpp" bodystart="226" bodyend="236"/>
   </compounddef>
 </doxygen>

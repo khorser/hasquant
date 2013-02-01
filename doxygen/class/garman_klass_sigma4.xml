@@ -12,9 +12,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="147" bodyend="148"/>
+        <location file="/models/volatility/garmanklass.hpp" line="148" bodyfile="/models/volatility/garmanklass.hpp" bodystart="147" bodyend="148"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="144" bodyend="158"/>
+    <location file="/models/volatility/garmanklass.hpp" line="145" bodyfile="/models/volatility/garmanklass.hpp" bodystart="144" bodyend="158"/>
   </compounddef>
 </doxygen>

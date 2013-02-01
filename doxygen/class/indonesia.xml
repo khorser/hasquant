@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_indonesia" kind="class" prot="public">
     <compoundname>QuantLib::Indonesia</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/indonesia.hpp</includes>
+    <includes local="no">/time/calendars/indonesia.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_indonesia_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -21,7 +21,7 @@
           <briefdescription>
 <para><ref refid="class_quant_lib_1_1_indonesia" kindref="compound">Indonesia</ref> stock exchange. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/indonesia.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/indonesia.hpp" bodystart="70" bodyend="73"/>
+        <location file="/time/calendars/indonesia.hpp" line="70" bodyfile="/time/calendars/indonesia.hpp" bodystart="70" bodyend="73"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -35,7 +35,7 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_indonesia_1abe41cfffd960e29a5d8b07be00aeda42a66be860650da4b438a498218e252c6e3" kindref="member">IDX</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/indonesia.hpp" line="74"/>
+        <location file="/time/calendars/indonesia.hpp" line="74"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -84,6 +84,6 @@
 <para>Other national leaves </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/indonesia.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/indonesia.hpp" bodystart="62" bodyend="75"/>
+    <location file="/time/calendars/indonesia.hpp" line="62" bodyfile="/time/calendars/indonesia.hpp" bodystart="62" bodyend="75"/>
   </compounddef>
 </doxygen>

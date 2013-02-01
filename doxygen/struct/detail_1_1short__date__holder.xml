@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1detail_1_1short__date__holder" kind="struct" prot="public">
+    <compoundname>QuantLib::detail::short_date_holder</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1short__date__holder_1a85641069b0d4478ab8a7356c3bf32ea3" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date d</definition>
+        <argsstring></argsstring>
+        <name>d</name>
+        <location file="/time/date.hpp" line="207" bodyfile="/time/date.hpp" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1short__date__holder_1af6727cc2dbeacb9fcf0306051b0a9237" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>short_date_holder</definition>
+        <argsstring>(const Date d)</argsstring>
+        <name>short_date_holder</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>d</declname>
+        </param>
+        <location file="/time/date.hpp" line="206" bodyfile="/time/date.hpp" bodystart="206" bodyend="206"/>
+      </memberdef>
+      </sectiondef>
+    <location file="/time/date.hpp" line="205" bodyfile="/time/date.hpp" bodystart="205" bodyend="208"/>
+  </compounddef>
+</doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_libor" kind="class" prot="public">
     <compoundname>QuantLib::Libor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp</includes>
+    <includes local="no">/indexes/ibor/libor.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Date calculations</header>
       <description><para>see <ulink url="http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1412">http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1412</ulink> </para></description>
@@ -16,7 +16,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" line="53"/>
+        <location file="/indexes/ibor/libor.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_libor_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -28,7 +28,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" line="54"/>
+        <location file="/indexes/ibor/libor.hpp" line="54"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -45,7 +45,7 @@
         </param>
         <briefdescription>
 <para>returns a copy of itself linked to a different forwarding curve </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" line="59"/>
+        <location file="/indexes/ibor/libor.hpp" line="59"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -83,13 +83,13 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" line="47"/>
+        <location file="/indexes/ibor/libor.hpp" line="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for all BBA LIBOR indexes but the EUR, O/N, and S/N ones </para>    </briefdescription>
     <detaileddescription>
 <para>LIBOR fixed by BBA. <verbatim>   See &lt;http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1414&gt;.</verbatim> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" bodystart="38" bodyend="64"/>
+    <location file="/indexes/ibor/libor.hpp" line="38" bodyfile="/indexes/ibor/libor.hpp" bodystart="38" bodyend="64"/>
   </compounddef>
 </doxygen>

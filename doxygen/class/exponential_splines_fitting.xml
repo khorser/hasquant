@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_exponential_splines_fitting" kind="class" prot="public">
     <compoundname>QuantLib::ExponentialSplinesFitting</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
+    <includes local="no">/termstructures/yield/nonlinearfittingmethods.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_exponential_splines_fitting_1a5e01cc092388459a70f09ade7b21d17b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -14,7 +14,7 @@
           <declname>constrainAtZero</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="48"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exponential_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
@@ -24,7 +24,7 @@
         <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="49"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -32,6 +32,6 @@
     <detaileddescription>
 <para>Fits a discount function to the exponential form <formula id="396">\[ d(t) = \sum_{i=1}^9 c_i \exp^{-kappa i t} \]</formula> where the constants <formula id="55">$ c_i $</formula> and <formula id="397">$ \kappa $</formula> are to be determined. See:Li, B., E. DeWetering, G. Lucas, R. Brenner and A. Shapiro (2001): &quot;Merrill Lynch Exponential Spline
        Model.&quot; Merrill Lynch Working Paper</para><para><xrefsect id="caveats_1_caveats000139"><xreftitle>Warning</xreftitle><xrefdescription><para>convergence may be slow </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="45" bodyend="53"/>
+    <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="46" bodyfile="/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="45" bodyend="53"/>
   </compounddef>
 </doxygen>

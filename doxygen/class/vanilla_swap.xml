@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vanilla_swap" kind="class" prot="public">
     <compoundname>QuantLib::VanillaSwap</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp</includes>
+    <includes local="no">/instruments/vanillaswap.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_vanilla_swap_1_1arguments" prot="public">QuantLib::VanillaSwap::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_vanilla_swap_1_1engine" prot="public">QuantLib::VanillaSwap::engine</innerclass>
     <innerclass refid="class_quant_lib_1_1_vanilla_swap_1_1results" prot="public">QuantLib::VanillaSwap::results</innerclass>
@@ -13,84 +13,84 @@
         <definition>VanillaSwap::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="169" bodyend="171"/>
+        <location file="/instruments/vanillaswap.hpp" line="85" bodyfile="/instruments/vanillaswap.hpp" bodystart="169" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="173" bodyend="175"/>
+        <location file="/instruments/vanillaswap.hpp" line="86" bodyfile="/instruments/vanillaswap.hpp" bodystart="173" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1ae9b9f2b40445d5d7802a80596445d4c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
         <definition>const Schedule &amp; fixedSchedule</definition>
         <argsstring>() const </argsstring>
         <name>fixedSchedule</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="177" bodyend="179"/>
+        <location file="/instruments/vanillaswap.hpp" line="88" bodyfile="/instruments/vanillaswap.hpp" bodystart="177" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="181" bodyend="183"/>
+        <location file="/instruments/vanillaswap.hpp" line="89" bodyfile="/instruments/vanillaswap.hpp" bodystart="181" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a95363e8aed06af280c2f0cf7e424fed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         <definition>const DayCounter &amp; fixedDayCount</definition>
         <argsstring>() const </argsstring>
         <name>fixedDayCount</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="185" bodyend="187"/>
+        <location file="/instruments/vanillaswap.hpp" line="90" bodyfile="/instruments/vanillaswap.hpp" bodystart="185" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1af6d95bff16cf7a3a6852034da40b0727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
         <definition>const Schedule &amp; floatingSchedule</definition>
         <argsstring>() const </argsstring>
         <name>floatingSchedule</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="189" bodyend="191"/>
+        <location file="/instruments/vanillaswap.hpp" line="92" bodyfile="/instruments/vanillaswap.hpp" bodystart="189" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a7a93aecaf1b5a5d6ed72e4ea42462fff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; IborIndex &gt; &amp; iborIndex</definition>
         <argsstring>() const </argsstring>
         <name>iborIndex</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="193" bodyend="195"/>
+        <location file="/instruments/vanillaswap.hpp" line="93" bodyfile="/instruments/vanillaswap.hpp" bodystart="193" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="197" bodyend="199"/>
+        <location file="/instruments/vanillaswap.hpp" line="94" bodyfile="/instruments/vanillaswap.hpp" bodystart="197" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a434df7c78cab85094cc4981baf759418" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         <definition>const DayCounter &amp; floatingDayCount</definition>
         <argsstring>() const </argsstring>
         <name>floatingDayCount</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="201" bodyend="203"/>
+        <location file="/instruments/vanillaswap.hpp" line="95" bodyfile="/instruments/vanillaswap.hpp" bodystart="201" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a25fc6ab972c95c862ead0bbf851ea311" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention paymentConvention</definition>
         <argsstring>() const </argsstring>
         <name>paymentConvention</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="205" bodyend="207"/>
+        <location file="/instruments/vanillaswap.hpp" line="97" bodyfile="/instruments/vanillaswap.hpp" bodystart="205" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1ab54f53e0705d63a28ffcec9dc1b2e15b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg &amp; fixedLeg</definition>
         <argsstring>() const </argsstring>
         <name>fixedLeg</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="209" bodyend="211"/>
+        <location file="/instruments/vanillaswap.hpp" line="99" bodyfile="/instruments/vanillaswap.hpp" bodystart="209" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1abc167b6a043551df75c2cd5d3ff2e42c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg &amp; floatingLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatingLeg</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="213" bodyend="215"/>
+        <location file="/instruments/vanillaswap.hpp" line="100" bodyfile="/instruments/vanillaswap.hpp" bodystart="213" bodyend="215"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -100,42 +100,42 @@
         <definition>Real fixedLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegBPS</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="105"/>
+        <location file="/instruments/vanillaswap.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a36e1152928660bd46ffdcdfde8a70e6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="106"/>
+        <location file="/instruments/vanillaswap.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1afa34bca9b2bcc12ddaab588613043014" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="107"/>
+        <location file="/instruments/vanillaswap.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a6428d70950807f5c37f18a52fa79d756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real floatingLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegBPS</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="109"/>
+        <location file="/instruments/vanillaswap.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a3490947f87ceb8a495841d24e03b440e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real floatingLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegNPV</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="110"/>
+        <location file="/instruments/vanillaswap.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a9fed7d028c05630c089b2ae653dd94a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="111"/>
+        <location file="/instruments/vanillaswap.hpp" line="111"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -149,7 +149,7 @@
           <name>Payer</name>
           <initializer>= 1</initializer>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="67" bodyend="67"/>
+        <location file="/instruments/vanillaswap.hpp" line="67" bodyfile="/instruments/vanillaswap.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -199,7 +199,7 @@
           <declname>paymentConvention</declname>
           <defval>boost::none</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="82"/>
+        <location file="/instruments/vanillaswap.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -212,7 +212,7 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="114"/>
+        <location file="/instruments/vanillaswap.hpp" line="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -226,7 +226,7 @@
         </param>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="115"/>
+        <location file="/instruments/vanillaswap.hpp" line="115"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -237,6 +237,6 @@
 </verbatim></para><para><xrefsect id="caveats_1_caveats000062"><xreftitle>Warning</xreftitle><xrefdescription><para>if <computeroutput>Settings::includeReferenceDateCashFlows()</computeroutput> is set to <computeroutput>true</computeroutput>, payments occurring at the settlement date of the swap might be included in the NPV and therefore affect the fair-rate and fair-spread calculation. This might not be what you want.</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000022"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned value is tested by checking that the price of a swap paying the fair fixed rate is null.</para></listitem><listitem><para>the correctness of the returned value is tested by checking that the price of a swap receiving the fair floating-rate spread is null.</para></listitem><listitem><para>the correctness of the returned value is tested by checking that the price of a swap decreases with the paid fixed rate.</para></listitem><listitem><para>the correctness of the returned value is tested by checking that the price of a swap increases with the received floating-rate spread.</para></listitem><listitem><para>the correctness of the returned value is tested by checking it against a known good value. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="65" bodyend="131"/>
+    <location file="/instruments/vanillaswap.hpp" line="65" bodyfile="/instruments/vanillaswap.hpp" bodystart="65" bodyend="131"/>
   </compounddef>
 </doxygen>

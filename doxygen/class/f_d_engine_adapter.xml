@@ -39,9 +39,9 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="93" bodyend="99"/>
+        <location file="/pricingengines/vanilla/fdvanillaengine.hpp" line="97" bodyfile="/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="93" bodyend="99"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="91" bodyend="105"/>
+    <location file="/pricingengines/vanilla/fdvanillaengine.hpp" line="91" bodyfile="/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="91" bodyend="105"/>
   </compounddef>
 </doxygen>

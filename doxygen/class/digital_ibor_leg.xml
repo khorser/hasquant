@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_digital_ibor_leg" kind="class" prot="public">
     <compoundname>QuantLib::DigitalIborLeg</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp</includes>
+    <includes local="no">/cashflows/digitaliborcoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a98bc954e8bd6e9a82d46c4edf0305561" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="62"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1ad1b498a044448d4b13b0ab4f28a8c95f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -28,7 +28,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>notional</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="63"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a6d9ebeaf70cd31691cec7e09ccba0cc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -39,7 +39,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>notionals</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="64"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a44e924827da7e7cbac9e5d19cfcfa90f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -49,7 +49,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="65"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a937501bf6814fe2f114773ffc8dab212" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -59,7 +59,7 @@
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="66"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1aaf8573966dda67e7c2b7e39f1e1d63c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -70,7 +70,7 @@
           <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
           <declname>fixingDays</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="67"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a5d83efb766fcd6e8cbbbb1f85d08796c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -81,7 +81,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt; &amp;</type>
           <declname>fixingDays</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="68"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a85175d72b02b8076cb924c3768a18c55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -92,7 +92,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>gearing</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="69"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a979afc4a1b1edd961714c3a446319815" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -103,7 +103,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>gearings</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="70"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1ac55cdd2f3cbbc0645153f3991bf44f89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -114,7 +114,7 @@
           <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
           <declname>spread</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="71"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1aa78b01675c93d9fc2f1779918bbe5b41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -125,7 +125,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="72"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a2000c3bc195480e8da551347d2ca6ad2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -137,7 +137,7 @@
           <declname>flag</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="73"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1afb89292cc02e9c2a99ef9853c9d6645b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -148,7 +148,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="74"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1aea6a15ee00f78917d2c254e32022f153" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -159,7 +159,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="75"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a3f682c7bf4dcca6f142dbe3a43be88b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -169,7 +169,7 @@
         <param>
           <type>Position::Type</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="76"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a5a38481519b48c5d9347047365d7e403" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -181,7 +181,7 @@
           <declname>flag</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="77"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1ad5ce9a3f70bcdc0207f82c2ffa9e2ee9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -192,7 +192,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>payoff</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="78"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1ab245ce7c0dc68a636395a01b5ceba062" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -203,7 +203,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>payoffs</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="79"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1afb4a597f287ededb77118d5e7447bfc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -214,7 +214,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="80"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a7fd554f9e2ec437959ed106669b916be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -225,7 +225,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="81"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a02fc100807d506fcf9f1f112a04a3ad3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -235,7 +235,7 @@
         <param>
           <type>Position::Type</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="82"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a4c73c97f7ebfae111f4f176be8268892" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -247,7 +247,7 @@
           <declname>flag</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="83"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a394fe2136468b1554f6643bec9fa0f2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -258,7 +258,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>payoff</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="84"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a0e785fc4c5901685160ad8d45e030ebd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -269,7 +269,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>payoffs</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="85"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1a4817d94d464c33b02a603038ad04de4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_digital_ibor_leg" kindref="compound">DigitalIborLeg</ref> &amp;</type>
@@ -281,18 +281,18 @@
           <declname>replication</declname>
           <defval>boost::shared_ptr&lt; DigitalReplication &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="88"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>operator Leg</definition>
         <argsstring>() const </argsstring>
         <name>operator Leg</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="89"/>
+        <location file="/cashflows/digitaliborcoupon.hpp" line="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>helper class building a sequence of digital ibor-rate coupons </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" bodystart="59" bodyend="107"/>
+    <location file="/cashflows/digitaliborcoupon.hpp" line="59" bodyfile="/cashflows/digitaliborcoupon.hpp" bodystart="59" bodyend="107"/>
   </compounddef>
 </doxygen>

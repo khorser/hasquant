@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_european_option" kind="class" prot="public">
     <compoundname>QuantLib::EuropeanOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/europeanoption.hpp</includes>
+    <includes local="no">/instruments/europeanoption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_european_option_1a0ddf8465d04b039cd8878ec037c50448" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -15,11 +15,11 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/europeanoption.hpp" line="36"/>
+        <location file="/instruments/europeanoption.hpp" line="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>European option on a single asset. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/europeanoption.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/europeanoption.hpp" bodystart="33" bodyend="37"/>
+    <location file="/instruments/europeanoption.hpp" line="33" bodyfile="/instruments/europeanoption.hpp" bodystart="33" bodyend="37"/>
   </compounddef>
 </doxygen>

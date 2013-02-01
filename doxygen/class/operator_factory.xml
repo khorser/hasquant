@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_operator_factory" kind="class" prot="public">
     <compoundname>QuantLib::OperatorFactory</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatorfactory.hpp</includes>
+    <includes local="no">/methods/finitedifferences/operatorfactory.hpp</includes>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_operator_factory_1a7c2180e4cde4bd0f4e1df30309e7d0b7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref></type>
@@ -25,7 +25,7 @@
           <type>bool</type>
           <declname>timeDependent</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatorfactory.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatorfactory.hpp" bodystart="42" bodyend="51"/>
+        <location file="/methods/finitedifferences/operatorfactory.hpp" line="46" bodyfile="/methods/finitedifferences/operatorfactory.hpp" bodystart="42" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_operator_factory_1ac47308c3e6d7c57eaa87b9309afe68b2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref></type>
@@ -40,13 +40,13 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>grid</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatorfactory.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatorfactory.hpp" bodystart="52" bodyend="56"/>
+        <location file="/methods/finitedifferences/operatorfactory.hpp" line="54" bodyfile="/methods/finitedifferences/operatorfactory.hpp" bodystart="52" bodyend="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black-Scholes-Merton differential operator. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000077"><xreftitle>Tests</xreftitle><xrefdescription><para>coefficients are tested against constant BSM operator </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatorfactory.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatorfactory.hpp" bodystart="40" bodyend="57"/>
+    <location file="/methods/finitedifferences/operatorfactory.hpp" line="40" bodyfile="/methods/finitedifferences/operatorfactory.hpp" bodystart="40" bodyend="57"/>
   </compounddef>
 </doxygen>

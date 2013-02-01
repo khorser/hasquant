@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_u_s_d_libor_o_n" kind="class" prot="public">
     <compoundname>QuantLib::USDLiborON</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/usdlibor.hpp</includes>
+    <includes local="no">/indexes/ibor/usdlibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_u_s_d_libor_o_n_1a0a44344053fcb934930d26cab56e7172" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -14,11 +14,11 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/usdlibor.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/usdlibor.hpp" bodystart="67" bodyend="69"/>
+        <location file="/indexes/ibor/usdlibor.hpp" line="69" bodyfile="/indexes/ibor/usdlibor.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Overnight USD Libor index. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/usdlibor.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/usdlibor.hpp" bodystart="65" bodyend="70"/>
+    <location file="/indexes/ibor/usdlibor.hpp" line="65" bodyfile="/indexes/ibor/usdlibor.hpp" bodystart="65" bodyend="70"/>
   </compounddef>
 </doxygen>

@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_australia_region" kind="class" prot="public">
     <compoundname>QuantLib::AustraliaRegion</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp</includes>
+    <includes local="no">/indexes/region.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_australia_region_1a5164df254cdb35d59bd92318cd7dce9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AustraliaRegion</definition>
         <argsstring>()</argsstring>
         <name>AustraliaRegion</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="65"/>
+        <location file="/indexes/region.hpp" line="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_australia" kindref="compound">Australia</ref> as geographical/economic region. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="63" bodyend="66"/>
+    <location file="/indexes/region.hpp" line="63" bodyfile="/indexes/region.hpp" bodystart="63" bodyend="66"/>
   </compounddef>
 </doxygen>

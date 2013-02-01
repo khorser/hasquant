@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fitted_bond_discount_curve" kind="class" prot="public">
     <compoundname>QuantLib::FittedBondDiscountCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp</includes>
+    <includes local="no">/termstructures/yield/fittedbonddiscountcurve.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" prot="public">QuantLib::FittedBondDiscountCurve::FittingMethod</innerclass>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -53,7 +53,7 @@
         </param>
         <briefdescription>
 <para>reference date based on current evaluation date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="101"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1a1dfde98737878966234551bde76b25f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -98,7 +98,7 @@
         </param>
         <briefdescription>
 <para>curve reference date fixed for life of curve </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="111"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1aeabd551719625bf3e1f847ecc310a4f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -147,7 +147,7 @@
         </param>
         <briefdescription>
 <para>reference date based on current evaluation date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="123"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1ae4fcbf98e2016fb2bbf16035769bb797" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -192,7 +192,7 @@
         </param>
         <briefdescription>
 <para>curve reference date fixed for life of curve </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="133"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="133"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -204,7 +204,7 @@
         <name>numberOfBonds</name>
         <briefdescription>
 <para>total number of bonds used to fit the yield curve </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="252" bodyend="254"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="140" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="252" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -214,7 +214,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="256" bodyend="259"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="142" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="256" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1a1e16dc4d9f84a6e0fabb5b03151ddad5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref> &amp;</type>
@@ -223,7 +223,7 @@
         <name>fitResults</name>
         <briefdescription>
 <para>class holding the results of the fit </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="262" bodyend="265"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="144" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="262" bodyend="265"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -234,7 +234,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="267" bodyend="270"/>
+        <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="149" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="267" bodyend="270"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -242,6 +242,6 @@
     <detaileddescription>
 <para>This class fits a discount function <formula id="389">$ d(t) $</formula> over a set of bonds, using a user defined fitting method. The discount function is fit in such a way so that all cashflows of all input bonds, when discounted using <formula id="389">$ d(t) $</formula>, will reproduce the set of input bond prices in an optimized sense. Minimized price errors are weighted by the inverse of their respective bond duration.</para><para>The <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve" kindref="compound">FittedBondDiscountCurve</ref> class acts as a generic wrapper, while its inner class <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref> provides the implementation details. Developers thus need only derive new fitting methods from the latter.</para><para><bold> Example: </bold> <ref refid="_fitted_bond_curve_8cpp-example" kindref="compound">compares various bond discount curve fitting methodologies </ref></para><para><xrefsect id="caveats_1_caveats000136"><xreftitle>Warning</xreftitle><xrefdescription><para>The method can be slow if there are many bonds to fit. Speed also depends on the particular choice of fitting method chosen and its convergence properties under optimization. See also todo list for BondDiscountCurveFittingMethod.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000063"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>refactor the bond helper class so that it is pure virtual and returns a generic bond or its cash flows. Derived classes would include helpers for fixed-rate and zero-coupon bonds. In this way, both bonds and bills can be used to fit a discount curve using the exact same machinery. At present, only fixed-coupon bonds are supported. An even better way to move forward might be to get rate helpers to return cashflows, in which case this class could be used to fit any set of cash flows, not just bonds.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000064"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add more fitting diagnostics: smoothness, standard deviation, student-t test, etc. Generic smoothness method may be useful for smoothing splines fitting. See Fisher, M., D. Nychka and D. Zervos: &quot;Fitting the term
              structure of interest rates with smoothing splines.&quot; Board of Governors of the Federal Reserve System, Federal Resere Board Working Paper, 95-1.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000065"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add extrapolation routines</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="83" bodyend="167"/>
+    <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="84" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="83" bodyend="167"/>
   </compounddef>
 </doxygen>

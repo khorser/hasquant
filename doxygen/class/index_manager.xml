@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_index_manager" kind="class" prot="public">
     <compoundname>QuantLib::IndexManager</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp</includes>
+    <includes local="no">/indexes/indexmanager.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a5bc396af9eb1d49d50c4b0bd6e03c03b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -15,7 +15,7 @@
         </param>
         <briefdescription>
 <para>returns whether historical fixings were stored for the index </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="42"/>
+        <location file="/indexes/indexmanager.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1aaebb8c5c9e8fd14aa534659ab9defff3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -28,7 +28,7 @@
         </param>
         <briefdescription>
 <para>returns the (possibly empty) history of the index fixings </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="44"/>
+        <location file="/indexes/indexmanager.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a9ec05a3736796561dedbc52be053940b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -44,7 +44,7 @@
         </param>
         <briefdescription>
 <para>stores the historical fixings of the index </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="46"/>
+        <location file="/indexes/indexmanager.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a996c0c436b3d99f1ccf6449bd588f608" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_observable" kindref="compound">Observable</ref> &gt;</type>
@@ -57,7 +57,7 @@
         </param>
         <briefdescription>
 <para>observer notifying of changes in the index fixings </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="48"/>
+        <location file="/indexes/indexmanager.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a43ed480ac14a9943843719bdf928c64d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -66,7 +66,7 @@
         <name>histories</name>
         <briefdescription>
 <para>returns all names of the indexes for which fixings were stored </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="50"/>
+        <location file="/indexes/indexmanager.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1aefc1fd999512aefe154064e77d3c5a18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -79,7 +79,7 @@
         </param>
         <briefdescription>
 <para>clears the historical fixings of the index </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="52"/>
+        <location file="/indexes/indexmanager.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a86d5defd0569fa7fe6c33f358a50a7e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -88,7 +88,7 @@
         <name>clearHistories</name>
         <briefdescription>
 <para>clears all stored fixings </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="54"/>
+        <location file="/indexes/indexmanager.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -96,6 +96,6 @@
     <detaileddescription>
 <para><simplesect kind="note"><para>index names are case insensitive </para></simplesect>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="36" bodyend="59"/>
+    <location file="/indexes/indexmanager.hpp" line="36" bodyfile="/indexes/indexmanager.hpp" bodystart="36" bodyend="59"/>
   </compounddef>
 </doxygen>

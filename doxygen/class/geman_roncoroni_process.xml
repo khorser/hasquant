@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_geman_roncoroni_process" kind="class" prot="public">
     <compoundname>QuantLib::GemanRoncoroniProcess</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp</includes>
+    <includes local="no">/experimental/processes/gemanroncoroniprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1aaaf3ff8402082006065f57ea573d7d82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -77,7 +77,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>psi</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="55"/>
+        <location file="/experimental/processes/gemanroncoroniprocess.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -87,7 +87,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
         <briefdescription>
 <para>returns the initial value of the state variable </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="57"/>
+        <location file="/experimental/processes/gemanroncoroniprocess.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -105,7 +105,7 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="58"/>
+        <location file="/experimental/processes/gemanroncoroniprocess.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -123,7 +123,7 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="59"/>
+        <location file="/experimental/processes/gemanroncoroniprocess.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1aa78ac261543c5f8c3b2e065f4a57c526" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -145,7 +145,7 @@
         </param>
         <detaileddescription>
 <para>returns the standard deviation <formula id="363">$ S(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="60"/>
+        <location file="/experimental/processes/gemanroncoroniprocess.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1a28916b3498be74dceb699ad1499a46c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -171,7 +171,7 @@
         </param>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="365">\[ E(x_0,t_0,\Delta t) + S(x_0,t_0,\Delta t) \cdot \Delta w \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="61"/>
+        <location file="/experimental/processes/gemanroncoroniprocess.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1ae4bfa4741c355bb19967d4181aa423c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -198,13 +198,13 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>du</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="63"/>
+        <location file="/experimental/processes/gemanroncoroniprocess.hpp" line="63"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Geman-Roncoroni process class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class describes the Geman-Roncoroni process governed by <formula id="137">\[ \begin{array}{rcl} dE(t) &amp;=&amp; \left[ \frac{\partial}{\partial t} \mu(t) +\theta_1 \left(\mu(t)-E(t^-)\right)\right]dt +\sigma dW(t) + h(E(t^-))dJ(t) \\ \mu(t)&amp;=&amp; \alpha + \beta t +\gamma \cos(\epsilon+2\pi t) +\delta \cos(\zeta + 4\pi t) \end{array} \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="46" bodyend="74"/>
+    <location file="/experimental/processes/gemanroncoroniprocess.hpp" line="46" bodyfile="/experimental/processes/gemanroncoroniprocess.hpp" bodystart="46" bodyend="74"/>
   </compounddef>
 </doxygen>

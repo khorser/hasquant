@@ -16,7 +16,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>qTS</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="42"/>
+        <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_equity_part_1a09ba34a55e4c4831735758c26f40172c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -31,16 +31,16 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t2</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="44"/>
+        <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_equity_part_1a1ff6f42e241f24f5515c9c01ebb7b2c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const TripleBandLinearOp &amp;</type>
         <definition>const TripleBandLinearOp&amp; getMap</definition>
         <argsstring>() const </argsstring>
         <name>getMap</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="45"/>
+        <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="45"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="38" bodyend="56"/>
+    <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="38" bodyfile="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="38" bodyend="56"/>
   </compounddef>
 </doxygen>

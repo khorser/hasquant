@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bates_engine" kind="class" prot="public">
     <compoundname>QuantLib::BatesEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/batesengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bates_engine_1a612699f44f77c40d5705fa99c68934d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -18,7 +18,7 @@
           <declname>integrationOrder</declname>
           <defval>144</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="109"/>
+        <location file="/pricingengines/vanilla/batesengine.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_engine_1a853de5b5181bc1c9ca97e2c89574db02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -37,7 +37,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>maxEvaluations</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="111"/>
+        <location file="/pricingengines/vanilla/batesengine.hpp" line="111"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -64,6 +64,6 @@
   Processes with Stochastic Volatility: Applications of Fourier
   Transform (&lt;http://math.ut.ee/~spartak/papers/stochjumpvols.pdf&gt;)
 </verbatim></para><para><xrefsect id="test_1_test000119"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature, testing against <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref>&apos;s jump diffusion engine and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" bodystart="106" bodyend="115"/>
+    <location file="/pricingengines/vanilla/batesengine.hpp" line="106" bodyfile="/pricingengines/vanilla/batesengine.hpp" bodystart="106" bodyend="115"/>
   </compounddef>
 </doxygen>

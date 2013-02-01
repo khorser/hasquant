@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_asset_option_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::OneAssetOption::results</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp</includes>
+    <includes local="no">/instruments/oneassetoption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" bodystart="72" bodyend="76"/>
+        <location file="/instruments/oneassetoption.hpp" line="72" bodyfile="/instruments/oneassetoption.hpp" bodystart="72" bodyend="76"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from single-asset option calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" bodystart="68" bodyend="77"/>
+    <location file="/instruments/oneassetoption.hpp" line="70" bodyfile="/instruments/oneassetoption.hpp" bodystart="68" bodyend="77"/>
   </compounddef>
 </doxygen>

@@ -2,35 +2,35 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_variance_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::VarianceOption::arguments</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp</includes>
+    <includes local="no">/experimental/varianceoption/varianceoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="73" bodyend="-1"/>
+        <location file="/experimental/varianceoption/varianceoption.hpp" line="73" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_option_1_1arguments_1a120e19fab4c30279f6f0428ea7c27a04" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real notional</definition>
         <argsstring></argsstring>
         <name>notional</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="74" bodyend="-1"/>
+        <location file="/experimental/varianceoption/varianceoption.hpp" line="74" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_option_1_1arguments_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date startDate</definition>
         <argsstring></argsstring>
         <name>startDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="75" bodyend="-1"/>
+        <location file="/experimental/varianceoption/varianceoption.hpp" line="75" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_option_1_1arguments_1ad5d32c50036fcd18c7ac2e251914c0d4" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date maturityDate</definition>
         <argsstring></argsstring>
         <name>maturityDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="76" bodyend="-1"/>
+        <location file="/experimental/varianceoption/varianceoption.hpp" line="76" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -39,18 +39,18 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="71" bodyend="71"/>
+        <location file="/experimental/varianceoption/varianceoption.hpp" line="71" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="72"/>
+        <location file="/experimental/varianceoption/varianceoption.hpp" line="72"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for forward fair-variance calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="69" bodyend="77"/>
+    <location file="/experimental/varianceoption/varianceoption.hpp" line="69" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="69" bodyend="77"/>
   </compounddef>
 </doxygen>

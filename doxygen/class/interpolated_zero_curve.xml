@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_zero_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedZeroCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp</includes>
+    <includes local="no">/termstructures/yield/zerocurve.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Interpolator</type>
@@ -18,7 +18,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" bodystart="112" bodyend="114"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="66" bodyfile="/termstructures/yield/zerocurve.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -28,35 +28,35 @@
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" bodystart="117" bodyend="119"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="70" bodyfile="/termstructures/yield/zerocurve.hpp" bodystart="117" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" bodystart="122" bodyend="124"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="71" bodyfile="/termstructures/yield/zerocurve.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" bodystart="128" bodyend="130"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="72" bodyfile="/termstructures/yield/zerocurve.hpp" bodystart="128" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_curve_1a5779d2e1a9c539118942bbbd710e161e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; zeroRates</definition>
         <argsstring>() const </argsstring>
         <name>zeroRates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" bodystart="134" bodyend="136"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="73" bodyfile="/termstructures/yield/zerocurve.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" bodystart="140" bodyend="145"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="74" bodyfile="/termstructures/yield/zerocurve.hpp" bodystart="140" bodyend="145"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -72,7 +72,7 @@
         </param>
         <briefdescription>
 <para>zero-yield calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="97"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="97"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -113,7 +113,7 @@
           <declname>interpolator</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="52"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_curve_1abee505c3611c0a7d53d53c24a9c6a391" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -140,7 +140,7 @@
           <type>const Interpolator &amp;</type>
           <declname>interpolator</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="58"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_curve_1a9957e3d09e6425224fd8a671293ea3f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -163,11 +163,11 @@
           <type>const Interpolator &amp;</type>
           <declname>interpolator</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="63"/>
+        <location file="/termstructures/yield/zerocurve.hpp" line="63"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> based on interpolation of zero rates. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" bodystart="40" bodyend="102"/>
+    <location file="/termstructures/yield/zerocurve.hpp" line="41" bodyfile="/termstructures/yield/zerocurve.hpp" bodystart="40" bodyend="102"/>
   </compounddef>
 </doxygen>

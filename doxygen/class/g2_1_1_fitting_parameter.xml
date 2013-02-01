@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g2_1_1_fitting_parameter" kind="class" prot="public">
     <compoundname>QuantLib::G2::FittingParameter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp</includes>
+    <includes local="no">/models/shortrate/twofactormodels/g2.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1_1_fitting_parameter_1a879c8351d2feb055d671090550ab2a9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -33,13 +33,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="184" bodyend="192"/>
+        <location file="/models/shortrate/twofactormodels/g2.hpp" line="192" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="184" bodyend="192"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Analytical term-structure fitting parameter <formula id="294">$ \varphi(t) $</formula>. </para>    </briefdescription>
     <detaileddescription>
 <para><formula id="294">$ \varphi(t) $</formula> is analytically defined by <formula id="319">\[ \varphi(t) = f(t) + \frac{1}{2}(\frac{\sigma(1-e^{-at})}{a})^2 + \frac{1}{2}(\frac{\eta(1-e^{-bt})}{b})^2 + \rho\frac{\sigma(1-e^{-at})}{a}\frac{\eta(1-e^{-bt})}{b}, \]</formula> where <formula id="302">$ f(t) $</formula> is the instantaneous forward rate at <formula id="147">$ t $</formula>. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="155" bodyend="193"/>
+    <location file="/models/shortrate/twofactormodels/g2.hpp" line="155" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="155" bodyend="193"/>
   </compounddef>
 </doxygen>

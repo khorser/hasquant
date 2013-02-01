@@ -29,7 +29,7 @@
           <type>helper_iterator</type>
           <declname>rateHelpersEnd</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="47" bodyend="54"/>
+        <location file="/termstructures/localbootstrap.hpp" line="52" bodyfile="/termstructures/localbootstrap.hpp" bodystart="47" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -40,7 +40,7 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="251" bodyend="270"/>
+        <location file="/termstructures/localbootstrap.hpp" line="56" bodyfile="/termstructures/localbootstrap.hpp" bodystart="251" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1a973ee01e4df8286373f5a0d3e947fc3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -51,9 +51,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="273" bodyend="294"/>
+        <location file="/termstructures/localbootstrap.hpp" line="57" bodyfile="/termstructures/localbootstrap.hpp" bodystart="273" bodyend="294"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="40" bodyend="65"/>
+    <location file="/termstructures/localbootstrap.hpp" line="40" bodyfile="/termstructures/localbootstrap.hpp" bodystart="40" bodyend="65"/>
   </compounddef>
 </doxygen>

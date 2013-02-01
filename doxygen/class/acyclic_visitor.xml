@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_acyclic_visitor" kind="class" prot="public">
     <compoundname>QuantLib::AcyclicVisitor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp</includes>
+    <includes local="no">/patterns/visitor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_acyclic_visitor_1ad5d3ee45c3c556131083dd7b54f3e21c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~AcyclicVisitor</definition>
         <argsstring>()</argsstring>
         <name>~AcyclicVisitor</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" bodystart="35" bodyend="35"/>
+        <location file="/patterns/visitor.hpp" line="35" bodyfile="/patterns/visitor.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>degenerate base class for the Acyclic Visitor pattern </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" bodystart="33" bodyend="36"/>
+    <location file="/patterns/visitor.hpp" line="33" bodyfile="/patterns/visitor.hpp" bodystart="33" bodyend="36"/>
   </compounddef>
 </doxygen>

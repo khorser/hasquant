@@ -17,7 +17,7 @@
           <type>const T &amp;</type>
           <declname>eps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="83" bodyend="83"/>
+        <location file="/math/functional.hpp" line="83" bodyfile="/math/functional.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1equal__within_1ab4d9bad9ac6c628cadf62cbea4eec9e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -32,9 +32,9 @@
           <type>const T</type>
           <declname>b</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="84" bodyend="86"/>
+        <location file="/math/functional.hpp" line="84" bodyfile="/math/functional.hpp" bodystart="84" bodyend="86"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="81" bodyend="89"/>
+    <location file="/math/functional.hpp" line="81" bodyfile="/math/functional.hpp" bodystart="81" bodyend="89"/>
   </compounddef>
 </doxygen>

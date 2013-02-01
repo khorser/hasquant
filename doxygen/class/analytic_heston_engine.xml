@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_heston_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticHestonEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/analytichestonengine.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_analytic_heston_engine_1_1_integration" prot="public">QuantLib::AnalyticHestonEngine::Integration</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627" prot="public" static="no">
@@ -13,7 +13,7 @@
         <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627afa729cb74e490fa3872a683e39698f94" prot="public">
           <name>BranchCorrection</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="84" bodyend="84"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="84" bodyfile="/pricingengines/vanilla/analytichestonengine.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>maxEvaluations</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="92"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a48782c024537cf3863e6bd8b4ffdddc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -50,7 +50,7 @@
           <declname>integrationOrder</declname>
           <defval>144</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="97"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1aeda55fecff4d9f96c2e1969ecf6720a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -69,7 +69,7 @@
           <type>const Integration &amp;</type>
           <declname>itg</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="102"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -77,14 +77,14 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="105"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfEvaluations</definition>
         <argsstring>() const </argsstring>
         <name>numberOfEvaluations</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="106"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="106"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -157,7 +157,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &amp;</type>
           <declname>evaluations</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="119"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="119"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -177,6 +177,6 @@
    J. Gatheral, The Volatility Surface: A Practitioner&apos;s Guide,
    Wiley Finance
 </verbatim></para><para><xrefsect id="test_1_test000116"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="78" bodyend="137"/>
+    <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="81" bodyfile="/pricingengines/vanilla/analytichestonengine.hpp" bodystart="78" bodyend="137"/>
   </compounddef>
 </doxygen>

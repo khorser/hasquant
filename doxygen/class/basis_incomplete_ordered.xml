@@ -12,7 +12,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>euclideanDimension</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="31"/>
+        <location file="/math/matrixutilities/basisincompleteordered.hpp" line="31"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1addee3cfc1b7ea80b0cb58b23d33b61cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -25,30 +25,30 @@
         </param>
         <briefdescription>
 <para>return value indicates if the vector was linearly independent </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="33"/>
+        <location file="/math/matrixutilities/basisincompleteordered.hpp" line="33"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1aba2dcad8887ff6338e9c2f9f57fa6656" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size basisSize</definition>
         <argsstring>() const </argsstring>
         <name>basisSize</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="34"/>
+        <location file="/math/matrixutilities/basisincompleteordered.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1ad0f6a0b30c3632f8935f0bd718960e95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size euclideanDimension</definition>
         <argsstring>() const </argsstring>
         <name>euclideanDimension</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="35"/>
+        <location file="/math/matrixutilities/basisincompleteordered.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1a9805cc5c059fc8b5fb8088db6cd02c84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
         <definition>Matrix getBasisAsRowsInMatrix</definition>
         <argsstring>() const </argsstring>
         <name>getBasisAsRowsInMatrix</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="36"/>
+        <location file="/math/matrixutilities/basisincompleteordered.hpp" line="36"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="29" bodyend="41"/>
+    <location file="/math/matrixutilities/basisincompleteordered.hpp" line="29" bodyfile="/math/matrixutilities/basisincompleteordered.hpp" bodystart="29" bodyend="41"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1detail_1_1_data" kind="struct" prot="public">
+    <compoundname>QuantLib::detail::Data</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class X</type>
+      </param>
+      <param>
+        <type>class Y</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1_data_1ac8645d87d67ba49d59f316cc30901d1d" prot="public" static="no" mutable="no">
+        <type>X</type>
+        <definition>X first</definition>
+        <argsstring></argsstring>
+        <name>first</name>
+        <location file="/math/interpolations/multicubicspline.hpp" line="98" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1_data_1a2bcf66e10478bfdf9fb2514fe62d06c3" prot="public" static="no" mutable="no">
+        <type>Y</type>
+        <definition>Y second</definition>
+        <argsstring></argsstring>
+        <name>second</name>
+        <location file="/math/interpolations/multicubicspline.hpp" line="99" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_1a51d806137473e32bc8e082f8beb3133a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data</definition>
+        <argsstring>()</argsstring>
+        <name>Data</name>
+        <location file="/math/interpolations/multicubicspline.hpp" line="89" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="88" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_1ad82d1c69dd7b887e9a5c19f1b588ab8e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data</definition>
+        <argsstring>(const SplineGrid::const_iterator &amp;i)</argsstring>
+        <name>Data</name>
+        <param>
+          <type>const SplineGrid::const_iterator &amp;</type>
+          <declname>i</declname>
+        </param>
+        <location file="/math/interpolations/multicubicspline.hpp" line="91" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="90" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_1ab6e5e8c6d57239626e7e7dcb76ff6d24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data</definition>
+        <argsstring>(const SplineGrid &amp;v)</argsstring>
+        <name>Data</name>
+        <param>
+          <type>const SplineGrid &amp;</type>
+          <declname>v</declname>
+        </param>
+        <location file="/math/interpolations/multicubicspline.hpp" line="93" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="92" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_1a89a9da8303a5494a74379ef08936c620" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void swap</definition>
+        <argsstring>(Data&lt; X, Y &gt; &amp;d)</argsstring>
+        <name>swap</name>
+        <param>
+          <type>Data&lt; X, Y &gt; &amp;</type>
+          <declname>d</declname>
+        </param>
+        <location file="/math/interpolations/multicubicspline.hpp" line="94" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="94" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <location file="/math/interpolations/multicubicspline.hpp" line="87" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="87" bodyend="100"/>
+  </compounddef>
+</doxygen>

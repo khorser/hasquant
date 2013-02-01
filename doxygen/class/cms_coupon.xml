@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cms_coupon" kind="class" prot="public">
     <compoundname>QuantLib::CmsCoupon</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp</includes>
+    <includes local="no">/cashflows/cmscoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_coupon_1adf75f03c7438c62ee6059893c906cfc0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <definition>const boost::shared_ptr&lt;SwapIndex&gt;&amp; swapIndex</definition>
         <argsstring>() const </argsstring>
         <name>swapIndex</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" bodystart="55" bodyend="57"/>
+        <location file="/cashflows/cmscoupon.hpp" line="55" bodyfile="/cashflows/cmscoupon.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -24,7 +24,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="61"/>
+        <location file="/cashflows/cmscoupon.hpp" line="61"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -87,13 +87,13 @@
           <declname>isInArrears</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="52"/>
+        <location file="/cashflows/cmscoupon.hpp" line="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>CMS coupon class. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000001"><xreftitle>Warning</xreftitle><xrefdescription><para>This class does not perform any date adjustment, i.e., the start and end date passed upon construction should be already rolled to a business day. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" bodystart="39" bodyend="65"/>
+    <location file="/cashflows/cmscoupon.hpp" line="39" bodyfile="/cashflows/cmscoupon.hpp" bodystart="39" bodyend="65"/>
   </compounddef>
 </doxygen>

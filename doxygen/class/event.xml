@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_event" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Event</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/event.hpp</includes>
+    <includes local="no">/event.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -12,7 +12,7 @@
         <name>date</name>
         <briefdescription>
 <para>returns the date at which the event occurs </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="45"/>
+        <location file="/event.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -33,7 +33,7 @@
 <para>returns true if an event has already occurred before a date </para>        </briefdescription>
         <detaileddescription>
 <para>If includeRefDate is true, then an event has not occurred if its date is the same as the refDate, i.e. this method returns false if the event date is the same as the refDate. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="54"/>
+        <location file="/event.hpp" line="54"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -46,7 +46,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="59"/>
+        <location file="/event.hpp" line="59"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -55,13 +55,13 @@
         <definition>virtual ~Event</definition>
         <argsstring>()</argsstring>
         <name>~Event</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/event.hpp" bodystart="41" bodyend="41"/>
+        <location file="/event.hpp" line="41" bodyfile="/event.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for event. </para>    </briefdescription>
     <detaileddescription>
 <para>This class acts as a base class for the actual event implementations. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/event.hpp" bodystart="39" bodyend="61"/>
+    <location file="/event.hpp" line="39" bodyfile="/event.hpp" bodystart="39" bodyend="61"/>
   </compounddef>
 </doxygen>

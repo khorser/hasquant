@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_euribor" kind="class" prot="public">
     <compoundname>QuantLib::Euribor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp</includes>
+    <includes local="no">/indexes/ibor/euribor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_euribor_1af30eba86f2ecf86b7f07994dd2b955f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -18,13 +18,13 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp" line="46"/>
+        <location file="/indexes/ibor/euribor.hpp" line="46"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Euribor index </para>    </briefdescription>
     <detaileddescription>
 <para><ref refid="class_quant_lib_1_1_euribor" kindref="compound">Euribor</ref> rate fixed by the <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref>.</para><para><xrefsect id="caveats_1_caveats000035"><xreftitle>Warning</xreftitle><xrefdescription><para>This is the rate fixed by the <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref>. Use EurLibor if you&apos;re interested in the London fixing by BBA. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp" bodystart="42" bodyend="47"/>
+    <location file="/indexes/ibor/euribor.hpp" line="42" bodyfile="/indexes/ibor/euribor.hpp" bodystart="42" bodyend="47"/>
   </compounddef>
 </doxygen>

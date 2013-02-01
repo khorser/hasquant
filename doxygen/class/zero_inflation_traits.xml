@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_zero_inflation_traits" kind="class" prot="public">
     <compoundname>QuantLib::ZeroInflationTraits</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp</includes>
+    <includes local="no">/termstructures/inflation/inflationtraits.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_zero_inflation_traits_1a7d484b9078df4e28c4808c2817cf7b5e" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_bootstrap_helper" kindref="compound">BootstrapHelper</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;</type>
         <definition>typedef BootstrapHelper&lt;ZeroInflationTermStructure&gt; helper</definition>
         <argsstring></argsstring>
         <name>helper</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="43" bodyend="-1"/>
+        <location file="/termstructures/inflation/inflationtraits.hpp" line="43" bodyfile="/termstructures/inflation/inflationtraits.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -22,7 +22,7 @@
           <type>const <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> *</type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="46" bodyend="53"/>
+        <location file="/termstructures/inflation/inflationtraits.hpp" line="46" bodyfile="/termstructures/inflation/inflationtraits.hpp" bodystart="46" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_traits_1abe0607de46b1262e2ea2b636e20d33b1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -33,7 +33,7 @@
           <type>const <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> *</type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="55" bodyend="57"/>
+        <location file="/termstructures/inflation/inflationtraits.hpp" line="55" bodyfile="/termstructures/inflation/inflationtraits.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_traits_1a7294c4c8176cb7457257f7e7aba42bf7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -60,7 +60,7 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="61" bodyend="74"/>
+        <location file="/termstructures/inflation/inflationtraits.hpp" line="65" bodyfile="/termstructures/inflation/inflationtraits.hpp" bodystart="61" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_traits_1a87906e2142d8588a4a165d7cdc0e3e2d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -87,7 +87,7 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="78" bodyend="88"/>
+        <location file="/termstructures/inflation/inflationtraits.hpp" line="82" bodyfile="/termstructures/inflation/inflationtraits.hpp" bodystart="78" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_traits_1a8f11fc9dca635edbbb7424d10f695e92" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -114,7 +114,7 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="90" bodyend="102"/>
+        <location file="/termstructures/inflation/inflationtraits.hpp" line="94" bodyfile="/termstructures/inflation/inflationtraits.hpp" bodystart="90" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_traits_1aa877ec13ccf528fc5e3dabb78f7545ef" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -133,18 +133,18 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="105" bodyend="109"/>
+        <location file="/termstructures/inflation/inflationtraits.hpp" line="107" bodyfile="/termstructures/inflation/inflationtraits.hpp" bodystart="105" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_traits_1a94f6bccfa587a673afc9e72fb5a3a1ca" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>static Size maxIterations</definition>
         <argsstring>()</argsstring>
         <name>maxIterations</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="112" bodyend="112"/>
+        <location file="/termstructures/inflation/inflationtraits.hpp" line="112" bodyfile="/termstructures/inflation/inflationtraits.hpp" bodystart="112" bodyend="112"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Bootstrap traits to use for <ref refid="class_quant_lib_1_1_piecewise_zero_inflation_curve" kindref="compound">PiecewiseZeroInflationCurve</ref>. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="41" bodyend="113"/>
+    <location file="/termstructures/inflation/inflationtraits.hpp" line="41" bodyfile="/termstructures/inflation/inflationtraits.hpp" bodystart="41" bodyend="113"/>
   </compounddef>
 </doxygen>

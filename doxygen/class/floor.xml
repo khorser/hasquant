@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_floor" kind="class" prot="public">
     <compoundname>QuantLib::Floor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp</includes>
+    <includes local="no">/instruments/capfloor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_floor_1a1c70031b7de93214f1b2c064344f0019" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,11 +17,11 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>exerciseRates</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="114" bodyend="117"/>
+        <location file="/instruments/capfloor.hpp" line="117" bodyfile="/instruments/capfloor.hpp" bodystart="114" bodyend="117"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Concrete floor class. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="112" bodyend="118"/>
+    <location file="/instruments/capfloor.hpp" line="112" bodyfile="/instruments/capfloor.hpp" bodystart="112" bodyend="118"/>
   </compounddef>
 </doxygen>

@@ -8,28 +8,28 @@
         <definition>Real value</definition>
         <argsstring></argsstring>
         <name>value</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" bodystart="120" bodyend="-1"/>
+        <location file="/instrument.hpp" line="120" bodyfile="/instrument.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_instrument_1_1results_1aa6c217ecbc13c7107f5586f8f09cb3d2" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real errorEstimate</definition>
         <argsstring></argsstring>
         <name>errorEstimate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" bodystart="121" bodyend="-1"/>
+        <location file="/instrument.hpp" line="121" bodyfile="/instrument.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_instrument_1_1results_1a644ac254d3177ed6b4ddc84a7fddd45c" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date valuationDate</definition>
         <argsstring></argsstring>
         <name>valuationDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" bodystart="122" bodyend="-1"/>
+        <location file="/instrument.hpp" line="122" bodyfile="/instrument.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_instrument_1_1results_1a2d36dd8b8b6c0a3685c5a580e8ae6fe6" prot="public" static="no" mutable="no">
         <type>std::map&lt; std::string, boost::any &gt;</type>
         <definition>std::map&lt;std::string,boost::any&gt; additionalResults</definition>
         <argsstring></argsstring>
         <name>additionalResults</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" bodystart="123" bodyend="-1"/>
+        <location file="/instrument.hpp" line="123" bodyfile="/instrument.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -38,9 +38,9 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" bodystart="115" bodyend="119"/>
+        <location file="/instrument.hpp" line="115" bodyfile="/instrument.hpp" bodystart="115" bodyend="119"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" bodystart="113" bodyend="124"/>
+    <location file="/instrument.hpp" line="113" bodyfile="/instrument.hpp" bodystart="113" bodyend="124"/>
   </compounddef>
 </doxygen>

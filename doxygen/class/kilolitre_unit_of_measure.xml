@@ -8,9 +8,9 @@
         <definition>KilolitreUnitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>KilolitreUnitOfMeasure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="81" bodyend="86"/>
+        <location file="/experimental/commodities/petroleumunitsofmeasure.hpp" line="81" bodyfile="/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="81" bodyend="86"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="79" bodyend="87"/>
+    <location file="/experimental/commodities/petroleumunitsofmeasure.hpp" line="79" bodyfile="/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="79" bodyend="87"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_convertible_bond" kind="class" prot="public">
     <compoundname>QuantLib::ConvertibleBond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp</includes>
+    <includes local="no">/experimental/convertiblebonds/convertiblebond.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_convertible_bond_1_1option" prot="public">QuantLib::ConvertibleBond::option</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_convertible_bond_1af8aff8c2536e96ebc06e5ac2f794cbbc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -10,32 +10,32 @@
         <definition>Real conversionRatio</definition>
         <argsstring>() const </argsstring>
         <name>conversionRatio</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="58" bodyend="58"/>
+        <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="58" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convertible_bond_1a81d8b1178b98409e8ff408025b2f484f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DividendSchedule &amp;</type>
         <definition>const DividendSchedule&amp; dividends</definition>
         <argsstring>() const </argsstring>
         <name>dividends</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="59" bodyend="59"/>
+        <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="59" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convertible_bond_1a0a3ec3cbe7dc35593049776f91a87e95" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const CallabilitySchedule &amp;</type>
         <definition>const CallabilitySchedule&amp; callability</definition>
         <argsstring>() const </argsstring>
         <name>callability</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="60" bodyend="60"/>
+        <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="60" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convertible_bond_1abb5f659097e6accb13e6b5693baec5e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
         <definition>const Handle&lt;Quote&gt;&amp; creditSpread</definition>
         <argsstring>() const </argsstring>
         <name>creditSpread</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="61" bodyend="61"/>
+        <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="61" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for convertible bonds </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="55" bodyend="78"/>
+    <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="55" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="55" bodyend="78"/>
   </compounddef>
 </doxygen>

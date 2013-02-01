@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lm_const_wrapper_volatility_model" kind="class" prot="public">
     <compoundname>QuantLib::LmConstWrapperVolatilityModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp</includes>
+    <includes local="no">/legacy/libormarketmodels/lmconstwrappervolmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a6014ca30f372740ff06659eb19292e74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lm_volatility_model" kindref="compound">LmVolatilityModel</ref> &gt; &amp;</type>
           <declname>volaModel</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="34" bodyend="38"/>
+        <location file="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="37" bodyfile="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="34" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -30,7 +30,7 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="40" bodyend="43"/>
+        <location file="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="41" bodyfile="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="40" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a91c06b3f5c1a0426b7a871e1cd103799" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -50,7 +50,7 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="44" bodyend="47"/>
+        <location file="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="45" bodyfile="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1ae9a2e2fd9e07eb49cab6280a76781a5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -75,11 +75,11 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="48" bodyend="51"/>
+        <location file="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="49" bodyfile="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="48" bodyend="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>caplet const volatility model </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="32" bodyend="58"/>
+    <location file="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="32" bodyfile="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="32" bodyend="58"/>
   </compounddef>
 </doxygen>

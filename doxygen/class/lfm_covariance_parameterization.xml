@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lfm_covariance_parameterization" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::LfmCovarianceParameterization</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp</includes>
+    <includes local="no">/legacy/libormarketmodels/lfmcovarparam.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_parameterization_1a28186f7bbcc9ede01363ab8bf7a70d44" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,28 +17,28 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>factors</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="41" bodyend="42"/>
+        <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="42" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="41" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_parameterization_1a82f0f4f3a7a9282db41a093a0399d127" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~LfmCovarianceParameterization</definition>
         <argsstring>()</argsstring>
         <name>~LfmCovarianceParameterization</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="43" bodyend="43"/>
+        <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="43" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_parameterization_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="45" bodyend="45"/>
+        <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="45" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_parameterization_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size factors</definition>
         <argsstring>() const </argsstring>
         <name>factors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="46" bodyend="46"/>
+        <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="46" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_parameterization_1aa158a54d0b3cc781418e3b64e18fcdcb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -54,7 +54,7 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" line="49"/>
+        <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_parameterization_1ad2d125d636a3618f4fc60050baf7c3fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -70,7 +70,7 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" line="51"/>
+        <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_parameterization_1a9e0d819083f581d34120c40617baf7a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -86,13 +86,13 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" line="53"/>
+        <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Libor market model parameterization </para>    </briefdescription>
     <detaileddescription>
 <para>Brigo, Damiano, Mercurio, Fabio, Morini, Massimo, 2003, Different Covariance Parameterizations of the <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model and Joint Caps/Swaptions Calibration (<ulink url="http://www.exoticderivatives.com/Files/Papers/brigomercuriomorini.pdf">http://www.exoticderivatives.com/Files/Papers/brigomercuriomorini.pdf</ulink>) </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="39" bodyend="61"/>
+    <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="39" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="39" bodyend="61"/>
   </compounddef>
 </doxygen>

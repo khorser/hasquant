@@ -19,7 +19,7 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/discretizedswaption.hpp" line="37"/>
+        <location file="/pricingengines/swaption/discretizedswaption.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_swaption_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -30,9 +30,9 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>size</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/discretizedswaption.hpp" line="38"/>
+        <location file="/pricingengines/swaption/discretizedswaption.hpp" line="38"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/discretizedswaption.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/discretizedswaption.hpp" bodystart="33" bodyend="42"/>
+    <location file="/pricingengines/swaption/discretizedswaption.hpp" line="33" bodyfile="/pricingengines/swaption/discretizedswaption.hpp" bodystart="33" bodyend="42"/>
   </compounddef>
 </doxygen>

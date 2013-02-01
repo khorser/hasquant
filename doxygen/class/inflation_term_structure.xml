@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_inflation_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::InflationTermStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp</includes>
+    <includes local="no">/termstructures/inflationtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a9214065f19ed6aed687d659f3178e846" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -40,7 +40,7 @@
           <declname>seasonality</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="45"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1ada228b83be6416e909efa642ab4018fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -86,7 +86,7 @@
           <declname>seasonality</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="54"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a4d0581c97230aa967c13cdcc34e26285" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -131,7 +131,7 @@
           <declname>seasonality</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="63"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="63"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -143,35 +143,35 @@
         <name>observationLag</name>
         <detaileddescription>
 <para>The TS observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="269" bodyend="271"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="71" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="269" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="273" bodyend="275"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="72" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="273" bodyend="275"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1aae3d0e9ffbf211a4d81973d0b822cfac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>bool indexIsInterpolated</definition>
         <argsstring>() const </argsstring>
         <name>indexIsInterpolated</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="277" bodyend="279"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="73" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="277" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a0c4124ee5502dfbab1f138f498e41199" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate baseRate</definition>
         <argsstring>() const </argsstring>
         <name>baseRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="281" bodyend="283"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="74" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="281" bodyend="283"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1af684fb79502d793c8bd59583a423646b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt; YieldTermStructure &gt; nominalTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>nominalTermStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="286" bodyend="288"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="75" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="286" bodyend="288"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1afec07013d98138f010a327210da23b50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -182,7 +182,7 @@
 <para>minimum (base) date </para>        </briefdescription>
         <detaileddescription>
 <para>Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking). </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="87"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="87"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -200,25 +200,25 @@
 <para>Functions to set and get seasonality. </para>        </briefdescription>
         <detaileddescription>
 <para>Calling setSeasonality with no arguments means unsetting as the default is used to choose unsetting. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="95"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a4e1beb088ded9eb0a21435aa127d6e6b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; Seasonality &gt; seasonality</definition>
         <argsstring>() const </argsstring>
         <name>seasonality</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="290" bodyend="292"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="96" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="290" bodyend="292"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a7d2a2133961184adf82eee3508bc2db4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool hasSeasonality</definition>
         <argsstring>() const </argsstring>
         <name>hasSeasonality</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="294" bodyend="296"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="97" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="294" bodyend="296"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Interface for inflation term structures. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="35" bodyend="124"/>
+    <location file="/termstructures/inflationtermstructure.hpp" line="35" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="35" bodyend="124"/>
   </compounddef>
 </doxygen>

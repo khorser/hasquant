@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_p_i_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::CPICouponPricer</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp</includes>
+    <includes local="no">/cashflows/cpicouponpricer.hpp</includes>
       <sectiondef kind="user-defined">
       <header>InflationCouponPricer interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_pricer_1a3416b3c7e57041a332be8b73b8ba53a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -11,7 +11,7 @@
         <argsstring>() const </argsstring>
         <name>swapletPrice</name>
         <reimplements refid="class_quant_lib_1_1_inflation_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328">swapletPrice</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="54"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -19,7 +19,7 @@
         <argsstring>() const </argsstring>
         <name>swapletRate</name>
         <reimplements refid="class_quant_lib_1_1_inflation_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb">swapletRate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="55"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -31,7 +31,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="56"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -43,7 +43,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="57"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -55,7 +55,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="58"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -67,7 +67,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="59"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_pricer_1a45e3444b97c506c9c7e4134f52c95bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -78,7 +78,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_inflation_coupon" kindref="compound">InflationCoupon</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="60"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="60"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -92,14 +92,14 @@
           <declname>capletVol</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_c_p_i_volatility_surface" kindref="compound">CPIVolatilitySurface</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="42"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_pricer_1a0747162a07c88a75798812eb21b48d92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_c_p_i_volatility_surface" kindref="compound">CPIVolatilitySurface</ref> &gt;</type>
         <definition>virtual Handle&lt;CPIVolatilitySurface&gt; capletVolatility</definition>
         <argsstring>() const </argsstring>
         <name>capletVolatility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" bodystart="44" bodyend="46"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="44" bodyfile="/cashflows/cpicouponpricer.hpp" bodystart="44" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_pricer_1a700e835135bea86145ecbceabbf0b7b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -110,7 +110,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_c_p_i_volatility_surface" kindref="compound">CPIVolatilitySurface</ref> &gt; &amp;</type>
           <declname>capletVol</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="49"/>
+        <location file="/cashflows/cpicouponpricer.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -118,6 +118,6 @@
     <detaileddescription>
 <para><simplesect kind="note"><para>this pricer can already do swaplets but to get volatility-dependent coupons you need to implement the descendents. </para></simplesect>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp" bodystart="39" bodyend="82"/>
+    <location file="/cashflows/cpicouponpricer.hpp" line="39" bodyfile="/cashflows/cpicouponpricer.hpp" bodystart="39" bodyend="82"/>
   </compounddef>
 </doxygen>

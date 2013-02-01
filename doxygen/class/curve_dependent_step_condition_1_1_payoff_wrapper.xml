@@ -12,7 +12,7 @@
           <type>const <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> *</type>
           <declname>p</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="94" bodyend="95"/>
+        <location file="/methods/finitedifferences/stepcondition.hpp" line="95" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="94" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper_1a6df65165daae2c9a1f576c67a04d2e67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -27,7 +27,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="96" bodyend="97"/>
+        <location file="/methods/finitedifferences/stepcondition.hpp" line="97" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="96" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper_1a57eaae34f0c310c58466ec7d82f0504f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -42,9 +42,9 @@
           <type>int</type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="98" bodyend="101"/>
+        <location file="/methods/finitedifferences/stepcondition.hpp" line="99" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="98" bodyend="101"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="90" bodyend="102"/>
+    <location file="/methods/finitedifferences/stepcondition.hpp" line="90" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="90" bodyend="102"/>
   </compounddef>
 </doxygen>

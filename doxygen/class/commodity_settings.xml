@@ -2,25 +2,25 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_commodity_settings" kind="class" prot="public">
     <compoundname>QuantLib::CommoditySettings</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp</includes>
+    <includes local="no">/experimental/commodities/commoditysettings.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_settings_1ab5f787ad2b8ed122b99ff06a08333d7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
         <definition>Currency&amp; currency</definition>
         <argsstring>()</argsstring>
         <name>currency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="40"/>
+        <location file="/experimental/commodities/commoditysettings.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_settings_1adf4b5f459e5fd38f36759f17d4d0cd68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
         <definition>UnitOfMeasure&amp; unitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>unitOfMeasure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="41"/>
+        <location file="/experimental/commodities/commoditysettings.hpp" line="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>global repository for run-time library settings </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="34" bodyend="45"/>
+    <location file="/experimental/commodities/commoditysettings.hpp" line="34" bodyfile="/experimental/commodities/commoditysettings.hpp" bodystart="34" bodyend="45"/>
   </compounddef>
 </doxygen>

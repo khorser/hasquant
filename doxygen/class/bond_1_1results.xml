@@ -8,7 +8,7 @@
         <definition>Real settlementValue</definition>
         <argsstring></argsstring>
         <name>settlementValue</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="281" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="281" bodyend="-1"/>
+        <location file="/instruments/bond.hpp" line="281" bodyfile="/instruments/bond.hpp" bodystart="281" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -17,9 +17,9 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="282" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="282" bodyend="285"/>
+        <location file="/instruments/bond.hpp" line="282" bodyfile="/instruments/bond.hpp" bodystart="282" bodyend="285"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="279" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="279" bodyend="286"/>
+    <location file="/instruments/bond.hpp" line="279" bodyfile="/instruments/bond.hpp" bodystart="279" bodyend="286"/>
   </compounddef>
 </doxygen>

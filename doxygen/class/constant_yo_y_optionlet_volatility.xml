@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_constant_yo_y_optionlet_volatility" kind="class" prot="public">
     <compoundname>QuantLib::ConstantYoYOptionletVolatility</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp</includes>
+    <includes local="no">/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructor</header>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a2228c9cb3fe486f6f547f2114b3519c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -53,7 +53,7 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="155"/>
+        <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="155"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -66,7 +66,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="161" bodyend="161"/>
+        <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="161" bodyfile="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="161" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a325a26f342dc0d36ac376c98e79f7565" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -76,7 +76,7 @@
         <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="163" bodyend="163"/>
+        <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="163" bodyfile="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="163" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a890665a296b4f9991d4d01ac63e35873" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -86,7 +86,7 @@
         <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="165" bodyend="165"/>
+        <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="165" bodyfile="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="165" bodyend="165"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -95,11 +95,11 @@
         <definition>virtual ~ConstantYoYOptionletVolatility</definition>
         <argsstring>()</argsstring>
         <name>~ConstantYoYOptionletVolatility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="157" bodyend="157"/>
+        <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="157" bodyfile="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="157" bodyend="157"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constant surface, no K or T dependence. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="140" bodyend="174"/>
+    <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="141" bodyfile="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="140" bodyend="174"/>
   </compounddef>
 </doxygen>

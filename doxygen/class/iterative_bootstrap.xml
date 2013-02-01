@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_iterative_bootstrap" kind="class" prot="public">
     <compoundname>QuantLib::IterativeBootstrap</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp</includes>
+    <includes local="no">/termstructures/iterativebootstrap.hpp</includes>
     <templateparamlist>
       <param>
         <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
@@ -14,7 +14,7 @@
         <definition>IterativeBootstrap</definition>
         <argsstring>()</argsstring>
         <name>IterativeBootstrap</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="63" bodyend="64"/>
+        <location file="/termstructures/iterativebootstrap.hpp" line="44" bodyfile="/termstructures/iterativebootstrap.hpp" bodystart="63" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_iterative_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -25,18 +25,18 @@
           <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
           <declname>ts</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="67" bodyend="76"/>
+        <location file="/termstructures/iterativebootstrap.hpp" line="45" bodyfile="/termstructures/iterativebootstrap.hpp" bodystart="67" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_iterative_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="131" bodyend="232"/>
+        <location file="/termstructures/iterativebootstrap.hpp" line="46" bodyfile="/termstructures/iterativebootstrap.hpp" bodystart="131" bodyend="232"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Universal piecewise-term-structure boostrapper. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="40" bodyend="57"/>
+    <location file="/termstructures/iterativebootstrap.hpp" line="40" bodyfile="/termstructures/iterativebootstrap.hpp" bodystart="40" bodyend="57"/>
   </compounddef>
 </doxygen>

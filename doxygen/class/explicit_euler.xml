@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_explicit_euler" kind="class" prot="public">
     <compoundname>QuantLib::ExplicitEuler</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp</includes>
+    <includes local="no">/methods/finitedifferences/expliciteuler.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Operator</type>
@@ -14,42 +14,42 @@
         <definition>typedef OperatorTraits&lt;Operator&gt; traits</definition>
         <argsstring></argsstring>
         <name>traits</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" bodystart="69" bodyend="-1"/>
+        <location file="/methods/finitedifferences/expliciteuler.hpp" line="69" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
         <type>traits::operator_type</type>
         <definition>typedef traits::operator_type operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" bodystart="70" bodyend="-1"/>
+        <location file="/methods/finitedifferences/expliciteuler.hpp" line="70" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
         <type>traits::array_type</type>
         <definition>typedef traits::array_type array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" bodystart="71" bodyend="-1"/>
+        <location file="/methods/finitedifferences/expliciteuler.hpp" line="71" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1a5ef2ff2e57a5eb84f1e124859bac8d74" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">traits::bc_type</ref></type>
         <definition>typedef traits::bc_type bc_type</definition>
         <argsstring></argsstring>
         <name>bc_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" bodystart="72" bodyend="-1"/>
+        <location file="/methods/finitedifferences/expliciteuler.hpp" line="72" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
         <type>traits::bc_set</type>
         <definition>typedef traits::bc_set bc_set</definition>
         <argsstring></argsstring>
         <name>bc_set</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" bodystart="73" bodyend="-1"/>
+        <location file="/methods/finitedifferences/expliciteuler.hpp" line="73" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_step_condition" kindref="compound">traits::condition_type</ref></type>
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" bodystart="74" bodyend="-1"/>
+        <location file="/methods/finitedifferences/expliciteuler.hpp" line="74" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -66,7 +66,7 @@
           <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">bc_type</ref> &gt; &gt; &amp;</type>
           <declname>bcs</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" bodystart="76" bodyend="78"/>
+        <location file="/methods/finitedifferences/expliciteuler.hpp" line="78" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -96,6 +96,6 @@
 <codeline><highlight class="normal">Operator<sp/>operator*(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member" tooltip="real number">Real</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Operator&amp;);</highlight></codeline>
 <codeline><highlight class="normal">Operator<sp/>operator-(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Operator&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Operator&amp;);</highlight></codeline>
 </programlisting></para><para><xrefsect id="todo_1_todo000045"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add Richardson extrapolation</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" bodystart="66" bodyend="79"/>
+    <location file="/methods/finitedifferences/expliciteuler.hpp" line="66" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="66" bodyend="79"/>
   </compounddef>
 </doxygen>

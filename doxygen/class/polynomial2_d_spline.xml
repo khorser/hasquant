@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_polynomial2_d_spline" kind="class" prot="public">
     <compoundname>QuantLib::Polynomial2DSpline</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp</includes>
+    <includes local="no">/experimental/inflation/polynomial2Dspline.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_polynomial2_d_spline_1a1d20f9729f794d29adcdfef74ba2fd65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -43,11 +43,11 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> and <formula id="13">$ y $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="85" bodyend="91"/>
+        <location file="/experimental/inflation/polynomial2Dspline.hpp" line="87" bodyfile="/experimental/inflation/polynomial2Dspline.hpp" bodystart="85" bodyend="91"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>polynomial2D-spline interpolation between discrete points </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="81" bodyend="92"/>
+    <location file="/experimental/inflation/polynomial2Dspline.hpp" line="81" bodyfile="/experimental/inflation/polynomial2Dspline.hpp" bodystart="81" bodyend="92"/>
   </compounddef>
 </doxygen>

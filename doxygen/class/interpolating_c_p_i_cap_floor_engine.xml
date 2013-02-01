@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatingCPICapFloorEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp</includes>
+    <includes local="no">/experimental/inflation/cpicapfloorengines.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a242990321b88c5ebe1002057f8301bd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -12,7 +12,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface" kindref="compound">CPICapFloorTermPriceSurface</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="44"/>
+        <location file="/experimental/inflation/cpicapfloorengines.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1acf2f383eca3842fb5af46cbf59e9c2d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -20,25 +20,25 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="46"/>
+        <location file="/experimental/inflation/cpicapfloorengines.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a31de2d5748acd4ff3dbdc511202b505b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
         <definition>virtual std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" bodystart="47" bodyend="47"/>
+        <location file="/experimental/inflation/cpicapfloorengines.hpp" line="47" bodyfile="/experimental/inflation/cpicapfloorengines.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a1a3030dcbcf6db7748b562616f2b06b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~InterpolatingCPICapFloorEngine</definition>
         <argsstring>()</argsstring>
         <name>~InterpolatingCPICapFloorEngine</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" bodystart="49" bodyend="49"/>
+        <location file="/experimental/inflation/cpicapfloorengines.hpp" line="49" bodyfile="/experimental/inflation/cpicapfloorengines.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>This engine only adds timing functionality (e.g. different lag) w.r.t. an existing interpolated price surface. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" bodystart="42" bodyend="53"/>
+    <location file="/experimental/inflation/cpicapfloorengines.hpp" line="42" bodyfile="/experimental/inflation/cpicapfloorengines.hpp" bodystart="42" bodyend="53"/>
   </compounddef>
 </doxygen>

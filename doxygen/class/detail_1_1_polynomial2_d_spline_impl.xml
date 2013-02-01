@@ -39,14 +39,14 @@
           <type>const M &amp;</type>
           <declname>zData</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="40" bodyend="46"/>
+        <location file="/experimental/inflation/polynomial2Dspline.hpp" line="44" bodyfile="/experimental/inflation/polynomial2Dspline.hpp" bodystart="40" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_polynomial2_d_spline_impl_1afe1d8348c24e6589bc7c0b3f689316a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>()</argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="47" bodyend="56"/>
+        <location file="/experimental/inflation/polynomial2Dspline.hpp" line="47" bodyfile="/experimental/inflation/polynomial2Dspline.hpp" bodystart="47" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_polynomial2_d_spline_impl_1abea3518f04c55492b47c8a8d1a04ca12" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -61,9 +61,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="57" bodyend="73"/>
+        <location file="/experimental/inflation/polynomial2Dspline.hpp" line="58" bodyfile="/experimental/inflation/polynomial2Dspline.hpp" bodystart="57" bodyend="73"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="37" bodyend="76"/>
+    <location file="/experimental/inflation/polynomial2Dspline.hpp" line="38" bodyfile="/experimental/inflation/polynomial2Dspline.hpp" bodystart="37" bodyend="76"/>
   </compounddef>
 </doxygen>

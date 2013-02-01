@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_term_structure_consistent_model" kind="class" prot="public">
     <compoundname>QuantLib::TermStructureConsistentModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
+    <includes local="no">/models/model.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_consistent_model_1abc88328a9ce3013c5c8689ee87a0205c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,20 +13,20 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="67" bodyend="69"/>
+        <location file="/models/model.hpp" line="69" bodyfile="/models/model.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_consistent_model_1aba911fdc1eafb640ce92861b77b04252" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; termStructure</definition>
         <argsstring>() const </argsstring>
         <name>termStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="70" bodyend="72"/>
+        <location file="/models/model.hpp" line="70" bodyfile="/models/model.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Term-structure consistent model class. </para>    </briefdescription>
     <detaileddescription>
 <para>This is a base class for models that can reprice exactly any discount bond. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="65" bodyend="75"/>
+    <location file="/models/model.hpp" line="65" bodyfile="/models/model.hpp" bodystart="65" bodyend="75"/>
   </compounddef>
 </doxygen>

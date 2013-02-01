@@ -8,16 +8,16 @@
         <definition>std::vector&lt;Size&gt; numberOfData</definition>
         <argsstring>() const </argsstring>
         <name>numberOfData</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" bodystart="33" bodyend="35"/>
+        <location file="/models/marketmodels/callability/marketmodelparametricexercise.hpp" line="33" bodyfile="/models/marketmodels/callability/marketmodelparametricexercise.hpp" bodystart="33" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_parametric_exercise_1aa55e9d06cf62fcc3cbd3514ecdeffa51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::auto_ptr&lt; MarketModelParametricExercise &gt;</type>
         <definition>virtual std::auto_ptr&lt;MarketModelParametricExercise&gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" line="36"/>
+        <location file="/models/marketmodels/callability/marketmodelparametricexercise.hpp" line="36"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" bodystart="30" bodyend="37"/>
+    <location file="/models/marketmodels/callability/marketmodelparametricexercise.hpp" line="31" bodyfile="/models/marketmodels/callability/marketmodelparametricexercise.hpp" bodystart="30" bodyend="37"/>
   </compounddef>
 </doxygen>

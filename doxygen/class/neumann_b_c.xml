@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_neumann_b_c" kind="class" prot="public">
     <compoundname>QuantLib::NeumannBC</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp</includes>
+    <includes local="no">/methods/finitedifferences/boundarycondition.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1ab5169b5dce51d0c2c45b08c860acc9c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <type><ref refid="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00" kindref="member">Side</ref></type>
           <declname>side</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="78"/>
+        <location file="/methods/finitedifferences/boundarycondition.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1ab906412b49c195a549d177f62342ef0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -30,7 +30,7 @@
         </param>
         <detaileddescription>
 <para>This method modifies an operator <formula id="46">$ L $</formula> before it is applied to an array <formula id="271">$ u $</formula> so that <formula id="272">$ v = Lu $</formula> will satisfy the given condition. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="80"/>
+        <location file="/methods/finitedifferences/boundarycondition.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1a518faf0242362b370a0b7686ed73f88c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -43,7 +43,7 @@
         </param>
         <detaileddescription>
 <para>This method modifies an array <formula id="271">$ u $</formula> so that it satisfies the given condition. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="81"/>
+        <location file="/methods/finitedifferences/boundarycondition.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1a64b4db3a4c8c7be8a29a179de646e929" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -60,7 +60,7 @@
         </param>
         <detaileddescription>
 <para>This method modifies an operator <formula id="46">$ L $</formula> before the linear system <formula id="273">$ Lu&apos; = u $</formula> is solved so that <formula id="274">$ u&apos; $</formula> will satisfy the given condition. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="82"/>
+        <location file="/methods/finitedifferences/boundarycondition.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1a7468ddf74a36a677b124dfcf09015a22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -73,7 +73,7 @@
         </param>
         <detaileddescription>
 <para>This method modifies an array <formula id="271">$ u $</formula> so that it satisfies the given condition. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="83"/>
+        <location file="/methods/finitedifferences/boundarycondition.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1a6e60101b2af13783da6aa3d7cee67acb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -87,13 +87,13 @@
         </param>
         <detaileddescription>
 <para>This method sets the current time for time-dependent boundary conditions. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" bodystart="84" bodyend="84"/>
+        <location file="/methods/finitedifferences/boundarycondition.hpp" line="84" bodyfile="/methods/finitedifferences/boundarycondition.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Neumann boundary condition (i.e., constant derivative) </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000076"><xreftitle>Warning</xreftitle><xrefdescription><para>The value passed must not be the value of the derivative. Instead, it must be comprehensive of the grid step between the first two points<ndash/>i.e., it must be the difference between f[0] and f[1]. </para></xrefdescription></xrefsect><xrefsect id="todo_1_todo000042"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>generalize to time-dependent conditions.</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" bodystart="76" bodyend="88"/>
+    <location file="/methods/finitedifferences/boundarycondition.hpp" line="76" bodyfile="/methods/finitedifferences/boundarycondition.hpp" bodystart="76" bodyend="88"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_china" kind="class" prot="public">
     <compoundname>QuantLib::China</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/china.hpp</includes>
+    <includes local="no">/time/calendars/china.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_china_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -11,7 +11,7 @@
           <briefdescription>
 <para>Shanghai stock exchange. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/china.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/china.hpp" bodystart="65" bodyend="66"/>
+        <location file="/time/calendars/china.hpp" line="65" bodyfile="/time/calendars/china.hpp" bodystart="65" bodyend="66"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_china_1abe41cfffd960e29a5d8b07be00aeda42a403b03371fd04961f31f99b254cf8e57" kindref="member">SSE</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/china.hpp" line="67"/>
+        <location file="/time/calendars/china.hpp" line="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -54,6 +54,6 @@
 <para>Mid-Autumn Festival </para></listitem>
 </itemizedlist>
 </para><para>Data from <ulink url="http://www.sse.com.cn/sseportal/en/home/home.shtml">http://www.sse.com.cn/sseportal/en/home/home.shtml</ulink> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/china.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/china.hpp" bodystart="56" bodyend="68"/>
+    <location file="/time/calendars/china.hpp" line="56" bodyfile="/time/calendars/china.hpp" bodystart="56" bodyend="68"/>
   </compounddef>
 </doxygen>

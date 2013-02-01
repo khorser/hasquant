@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_factor_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OneFactorModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp</includes>
+    <includes local="no">/models/shortrate/onefactormodel.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" prot="public">QuantLib::OneFactorModel::ShortRateDynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree" prot="public">QuantLib::OneFactorModel::ShortRateTree</innerclass>
       <sectiondef kind="public-func">
@@ -15,14 +15,14 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nArguments</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="39"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1aa58d01bd47bbd015e07402677e91d39e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~OneFactorModel</definition>
         <argsstring>()</argsstring>
         <name>~OneFactorModel</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="40" bodyend="40"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="40" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
@@ -31,7 +31,7 @@
         <name>dynamics</name>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="46"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
@@ -45,11 +45,11 @@
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="49"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Single-factor short-rate model abstract class. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="37" bodyend="50"/>
+    <location file="/models/shortrate/onefactormodel.hpp" line="37" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="37" bodyend="50"/>
   </compounddef>
 </doxygen>

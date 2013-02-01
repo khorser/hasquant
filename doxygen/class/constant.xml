@@ -24,7 +24,7 @@
           <type>const U &amp;</type>
           <declname>u</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="38" bodyend="38"/>
+        <location file="/math/functional.hpp" line="38" bodyfile="/math/functional.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1constant_1a5ac8cc87cf7e0b144057e95ef382fe2f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>U</type>
@@ -34,9 +34,9 @@
         <param>
           <type>const T &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="39" bodyend="39"/>
+        <location file="/math/functional.hpp" line="39" bodyfile="/math/functional.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="36" bodyend="42"/>
+    <location file="/math/functional.hpp" line="36" bodyfile="/math/functional.hpp" bodystart="36" bodyend="42"/>
   </compounddef>
 </doxygen>

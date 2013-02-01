@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tsiveriotis_fernandes_lattice" kind="class" prot="public">
     <compoundname>QuantLib::TsiveriotisFernandesLattice</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp</includes>
+    <includes local="no">/experimental/convertiblebonds/tflattice.hpp</includes>
     <templateparamlist>
       <param>
         <type>class T</type>
@@ -42,18 +42,18 @@
           <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
           <declname>divYield</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp" bodystart="67" bodyend="81"/>
+        <location file="/experimental/convertiblebonds/tflattice.hpp" line="44" bodyfile="/experimental/convertiblebonds/tflattice.hpp" bodystart="67" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tsiveriotis_fernandes_lattice_1a452e35225de039d92c9ada0e7265add2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread creditSpread</definition>
         <argsstring>() const </argsstring>
         <name>creditSpread</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp" bodystart="46" bodyend="46"/>
+        <location file="/experimental/convertiblebonds/tflattice.hpp" line="46" bodyfile="/experimental/convertiblebonds/tflattice.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Binomial lattice approximating the Tsiveriotis-Fernandes model. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp" bodystart="36" bodyend="61"/>
+    <location file="/experimental/convertiblebonds/tflattice.hpp" line="36" bodyfile="/experimental/convertiblebonds/tflattice.hpp" bodystart="36" bodyend="61"/>
   </compounddef>
 </doxygen>

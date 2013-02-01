@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tree_lattice2_d" kind="class" prot="public">
     <compoundname>QuantLib::TreeLattice2D</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp</includes>
+    <includes local="no">/methods/lattices/lattice2d.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -34,7 +34,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>correlation</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" bodystart="71" bodyend="100"/>
+        <location file="/methods/lattices/lattice2d.hpp" line="45" bodyfile="/methods/lattices/lattice2d.hpp" bodystart="71" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice2_d_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -45,7 +45,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" bodystart="63" bodyend="65"/>
+        <location file="/methods/lattices/lattice2d.hpp" line="47" bodyfile="/methods/lattices/lattice2d.hpp" bodystart="63" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice2_d_1a48f57733a612b5288a9fbd89d9b71072" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -64,7 +64,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>branch</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" bodystart="104" bodyend="116"/>
+        <location file="/methods/lattices/lattice2d.hpp" line="48" bodyfile="/methods/lattices/lattice2d.hpp" bodystart="104" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice2_d_1aca88ad07031bcbdd6c191208c49f1042" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -83,13 +83,13 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>branch</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" bodystart="119" bodyend="132"/>
+        <location file="/methods/lattices/lattice2d.hpp" line="49" bodyfile="/methods/lattices/lattice2d.hpp" bodystart="119" bodyend="132"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Two-dimensional tree-based lattice. </para>    </briefdescription>
     <detaileddescription>
 <para>This lattice is based on two trinomial trees and primarily used for the <ref refid="class_quant_lib_1_1_g2" kindref="compound">G2</ref> short-rate model. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" bodystart="41" bodyend="57"/>
+    <location file="/methods/lattices/lattice2d.hpp" line="41" bodyfile="/methods/lattices/lattice2d.hpp" bodystart="41" bodyend="57"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_zero_inflation_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedZeroInflationCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp</includes>
+    <includes local="no">/termstructures/inflation/interpolatedzeroinflationcurve.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Interpolator</type>
@@ -20,7 +20,7 @@
 <para>minimum (base) date </para>        </briefdescription>
         <detaileddescription>
 <para>Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking). </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="184" bodyend="187"/>
+        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="57" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="184" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -30,7 +30,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="190" bodyend="198"/>
+        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="58" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="190" bodyend="198"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -40,35 +40,35 @@
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="214" bodyend="216"/>
+        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="63" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="214" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="208" bodyend="210"/>
+        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="64" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="208" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="226" bodyend="228"/>
+        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="65" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="226" bodyend="228"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a35b228cdc9b475616865d3d093877ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; rates</definition>
         <argsstring>() const </argsstring>
         <name>rates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="220" bodyend="222"/>
+        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="66" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1ae36e55af23c117164f4329ad5daa9adf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Rate &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="232" bodyend="237"/>
+        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="67" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="232" bodyend="237"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -85,7 +85,7 @@
         </param>
         <briefdescription>
 <para>to be defined in derived classes </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="202" bodyend="204"/>
+        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="73" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="202" bodyend="204"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -135,11 +135,11 @@
           <declname>interpolator</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="101" bodyend="163"/>
+        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="53" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="101" bodyend="163"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Inflation term structure based on the interpolation of zero rates. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="39" bodyend="91"/>
+    <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="41" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="39" bodyend="91"/>
   </compounddef>
 </doxygen>

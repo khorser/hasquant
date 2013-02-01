@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_dividend_shout_engine" kind="class" prot="public">
     <compoundname>QuantLib::FDDividendShoutEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/fddividendshoutengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -36,11 +36,11 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" bodystart="44" bodyend="48"/>
+        <location file="/pricingengines/vanilla/fddividendshoutengine.hpp" line="48" bodyfile="/pricingengines/vanilla/fddividendshoutengine.hpp" bodystart="44" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Finite-differences shout engine with dividends. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" bodystart="38" bodyend="49"/>
+    <location file="/pricingengines/vanilla/fddividendshoutengine.hpp" line="40" bodyfile="/pricingengines/vanilla/fddividendshoutengine.hpp" bodystart="38" bodyend="49"/>
   </compounddef>
 </doxygen>

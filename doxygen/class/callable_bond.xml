@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_callable_bond" kind="class" prot="public">
     <compoundname>QuantLib::CallableBond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp</includes>
+    <includes local="no">/experimental/callablebonds/callablebond.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_callable_bond_1_1arguments" prot="public">QuantLib::CallableBond::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_callable_bond_1_1engine" prot="public">QuantLib::CallableBond::engine</innerclass>
     <innerclass refid="class_quant_lib_1_1_callable_bond_1_1results" prot="public">QuantLib::CallableBond::results</innerclass>
@@ -15,7 +15,7 @@
         <name>callability</name>
         <briefdescription>
 <para>return the bond&apos;s put/call schedule </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="60" bodyend="62"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="60" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -53,7 +53,7 @@
 <para>returns the Black implied forward yield volatility </para>        </briefdescription>
         <detaileddescription>
 <para>the forward yield volatility, see Hull, Fourth Edition, Chapter 20, pg 536). Relevant only to European put/call schedules </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="77"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="77"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -68,13 +68,13 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="79" bodyend="79"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="79" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="79" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Callable bond base class. </para>    </briefdescription>
     <detaileddescription>
 <para>Base callable bond class for fixed and zero coupon bonds. Defines commonalities between fixed and zero coupon callable bonds. At present, only European and Bermudan put/call schedules supported (no American optionality), as defined by the <ref refid="class_quant_lib_1_1_callability" kindref="compound">Callability</ref> class.</para><para><xrefsect id="todo_1_todo000005"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>models/shortrate/calibrationHelpers </para><para>OAS/OAD </para><para>floating rate callable bonds ?</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="52" bodyend="112"/>
+    <location file="/experimental/callablebonds/callablebond.hpp" line="52" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="52" bodyend="112"/>
   </compounddef>
 </doxygen>

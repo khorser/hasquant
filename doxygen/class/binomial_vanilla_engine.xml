@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_binomial_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::BinomialVanillaEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/binomialengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/binomialengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>class T</type>
@@ -22,7 +22,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>timeSteps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/binomialengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/binomialengine.hpp" bodystart="56" bodyend="64"/>
+        <location file="/pricingengines/vanilla/binomialengine.hpp" line="59" bodyfile="/pricingengines/vanilla/binomialengine.hpp" bodystart="56" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_binomial_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -30,13 +30,13 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/binomialengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/binomialengine.hpp" bodystart="75" bodyend="162"/>
+        <location file="/pricingengines/vanilla/binomialengine.hpp" line="65" bodyfile="/pricingengines/vanilla/binomialengine.hpp" bodystart="75" bodyend="162"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for vanilla options using binomial trees. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000120"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking it against analytic results.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000055"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para><ref refid="class_quant_lib_1_1_greeks" kindref="compound">Greeks</ref> are not overly accurate. They could be improved by building a tree so that it has three points at the current time. The value would be fetched from the middle one, while the two side points would be used for estimating partial derivatives. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/binomialengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/binomialengine.hpp" bodystart="54" bodyend="69"/>
+    <location file="/pricingengines/vanilla/binomialengine.hpp" line="54" bodyfile="/pricingengines/vanilla/binomialengine.hpp" bodystart="54" bodyend="69"/>
   </compounddef>
 </doxygen>

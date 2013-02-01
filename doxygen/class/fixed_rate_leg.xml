@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fixed_rate_leg" kind="class" prot="public">
     <compoundname>QuantLib::FixedRateLeg</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp</includes>
+    <includes local="no">/cashflows/fixedratecoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a5821e3c67abc98a6277bec59af44d845" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="82"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a21e2f9d9028e6e2d1f5d3d4425fc28cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
@@ -23,7 +23,7 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="83"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a8a014355056a0b53ccc2f9908513361c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
@@ -33,7 +33,7 @@
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="84"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1ad2040c280f6237c267870a34638ef286" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
@@ -57,7 +57,7 @@
           <declname>freq</declname>
           <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="88"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a265711e3c4c71f9780f06857ab2e27a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
@@ -81,7 +81,7 @@
           <declname>freq</declname>
           <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="92"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a206b1b3fd1058dd57d062f0411b6c14a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
@@ -91,7 +91,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="93"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1ade4ee2e24246a804a5f4b18aaf16ebe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
@@ -101,7 +101,7 @@
         <param>
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="94"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a6bedf5c0cb87d1091426ed25e0c99501" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
@@ -111,7 +111,7 @@
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="95"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1abaa315a09cba365842643e6cc8c7a7be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
@@ -121,7 +121,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="96"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1ab3dc6f3c5e33c4eee7b142e21f75d2bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
@@ -131,18 +131,18 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="97"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>operator Leg</definition>
         <argsstring>() const </argsstring>
         <name>operator Leg</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="98"/>
+        <location file="/cashflows/fixedratecoupon.hpp" line="98"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>helper class building a sequence of fixed rate coupons </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="80" bodyend="106"/>
+    <location file="/cashflows/fixedratecoupon.hpp" line="80" bodyfile="/cashflows/fixedratecoupon.hpp" bodystart="80" bodyend="106"/>
   </compounddef>
 </doxygen>

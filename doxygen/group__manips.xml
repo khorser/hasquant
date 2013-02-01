@@ -14,7 +14,7 @@
         </param>
         <briefdescription>
 <para>output dates in short format (mm/dd/yyyy) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="229"/>
+        <location file="/time/date.hpp" line="229"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1gad2cba1797c1cf63c02d899696b343ee8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::long_date_holder</type>
@@ -26,7 +26,7 @@
         </param>
         <briefdescription>
 <para>output dates in long format (Month ddth, yyyy) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="233"/>
+        <location file="/time/date.hpp" line="233"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1ga0921b3ae46195feff93b2a4388e05d63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::iso_date_holder</type>
@@ -38,7 +38,7 @@
         </param>
         <briefdescription>
 <para>output dates in ISO format (yyyy-mm-dd) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="237"/>
+        <location file="/time/date.hpp" line="237"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1ga21b63d20c9f70f1d56fe664a5d10932e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::long_period_holder</type>
@@ -50,7 +50,7 @@
         </param>
         <briefdescription>
 <para>output periods in long format (e.g. &quot;2 weeks&quot;) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" line="129"/>
+        <location file="/time/period.hpp" line="129"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1gafd478859146a0e3cdb97a51a4f7839a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::short_period_holder</type>
@@ -62,7 +62,7 @@
         </param>
         <briefdescription>
 <para>output periods in short format (e.g. &quot;2w&quot;) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" line="133"/>
+        <location file="/time/period.hpp" line="133"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1gad167f4e6391385217e46dfa4827884bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::long_weekday_holder</type>
@@ -74,7 +74,7 @@
         </param>
         <briefdescription>
 <para>output weekdays in long format </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" line="87"/>
+        <location file="/time/weekday.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1ga5be437350e5e56a699ba0f53bf25b2ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::short_weekday_holder</type>
@@ -86,7 +86,7 @@
         </param>
         <briefdescription>
 <para>output weekdays in short format (three letters) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" line="91"/>
+        <location file="/time/weekday.hpp" line="91"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1ga951de1277920bcbcfb757a4f5a254d03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::shortest_weekday_holder</type>
@@ -98,7 +98,7 @@
         </param>
         <briefdescription>
 <para>output weekdays in shortest format (two letters) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" line="95"/>
+        <location file="/time/weekday.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1gac91349d91f3790552df452bd62d8fc31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -116,7 +116,7 @@
         </param>
         <briefdescription>
 <para>check for nulls before output </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="112" bodyend="114"/>
+        <location file="/utilities/dataformatters.hpp" line="83" bodyfile="/utilities/dataformatters.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1gace46b8e41fd72ee71b9ca53cafd0277f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>detail::ordinal_holder</type>
@@ -129,7 +129,7 @@
         </param>
         <briefdescription>
 <para>outputs naturals as 1st, 2nd, 3rd... </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="116" bodyend="118"/>
+        <location file="/utilities/dataformatters.hpp" line="86" bodyfile="/utilities/dataformatters.hpp" bodystart="116" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1gaca0660ba96410aa9a44bb0e94dc04fee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -147,7 +147,7 @@
         </param>
         <briefdescription>
 <para>output integers as powers of two </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="121" bodyend="123"/>
+        <location file="/utilities/dataformatters.hpp" line="90" bodyfile="/utilities/dataformatters.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1gae524bfb28ff5254a99ba5a4e778aee29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>detail::percent_holder</type>
@@ -160,7 +160,7 @@
         </param>
         <briefdescription>
 <para>output reals as percentages </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="125" bodyend="127"/>
+        <location file="/utilities/dataformatters.hpp" line="93" bodyfile="/utilities/dataformatters.hpp" bodystart="125" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1gac63ea3dad10259db3764c7d15a61cde5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>detail::percent_holder</type>
@@ -173,7 +173,7 @@
         </param>
         <briefdescription>
 <para>output rates and spreads as percentages </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="129" bodyend="131"/>
+        <location file="/utilities/dataformatters.hpp" line="96" bodyfile="/utilities/dataformatters.hpp" bodystart="129" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1gac402ef7c87f63f7c603ee87210b5750c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>detail::percent_holder</type>
@@ -186,7 +186,7 @@
         </param>
         <briefdescription>
 <para>output volatilities as percentages </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="133" bodyend="135"/>
+        <location file="/utilities/dataformatters.hpp" line="99" bodyfile="/utilities/dataformatters.hpp" bodystart="133" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="group__manips_1ga67154d9daf023f1af53b528a4123ae95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -204,7 +204,7 @@
         </param>
         <briefdescription>
 <para>output STL-compliant containers as space-separated sequences </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="139" bodyend="142"/>
+        <location file="/utilities/dataformatters.hpp" line="104" bodyfile="/utilities/dataformatters.hpp" bodystart="139" bodyend="142"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>

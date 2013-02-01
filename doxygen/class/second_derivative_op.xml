@@ -16,9 +16,9 @@
           <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
           <declname>mesher</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/secondderivativeop.hpp" line="36"/>
+        <location file="/methods/finitedifferences/operators/secondderivativeop.hpp" line="36"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/secondderivativeop.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/secondderivativeop.hpp" bodystart="33" bodyend="37"/>
+    <location file="/methods/finitedifferences/operators/secondderivativeop.hpp" line="33" bodyfile="/methods/finitedifferences/operators/secondderivativeop.hpp" bodystart="33" bodyend="37"/>
   </compounddef>
 </doxygen>

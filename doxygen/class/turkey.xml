@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_turkey" kind="class" prot="public">
     <compoundname>QuantLib::Turkey</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/turkey.hpp</includes>
+    <includes local="no">/time/calendars/turkey.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_turkey_1abc4accb33645e919da15a818582e740f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Turkey</definition>
         <argsstring>()</argsstring>
         <name>Turkey</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/turkey.hpp" line="57"/>
+        <location file="/time/calendars/turkey.hpp" line="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -34,6 +34,6 @@
 <para>Local Holidays (Kurban, Ramadan; 2004 to 2010 only)  </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/turkey.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/turkey.hpp" bodystart="48" bodyend="58"/>
+    <location file="/time/calendars/turkey.hpp" line="48" bodyfile="/time/calendars/turkey.hpp" bodystart="48" bodyend="58"/>
   </compounddef>
 </doxygen>

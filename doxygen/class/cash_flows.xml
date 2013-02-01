@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cash_flows" kind="class" prot="public">
     <compoundname>QuantLib::CashFlows</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp</includes>
+    <includes local="no">/cashflows/cashflows.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Date functions</header>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a3393c4e4a7533490b540d49466594f24" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
           <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
           <declname>leg</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="48"/>
+        <location file="/cashflows/cashflows.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a356f8aea0022acb2e628dfce5cf47e14" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -25,7 +25,7 @@
           <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
           <declname>leg</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="49"/>
+        <location file="/cashflows/cashflows.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1aba88d0e60cebe7088f340357e48dd88d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -45,7 +45,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="52"/>
+        <location file="/cashflows/cashflows.hpp" line="52"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -70,7 +70,7 @@
         </param>
         <briefdescription>
 <para>the last cashflow paying before or at the given date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="61"/>
+        <location file="/cashflows/cashflows.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a812cc01c85ff1bc09e4edb798a92ae5b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Leg::const_iterator</type>
@@ -92,7 +92,7 @@
         </param>
         <briefdescription>
 <para>the first cashflow paying after the given date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="66"/>
+        <location file="/cashflows/cashflows.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ae97cfc1d7c084bc7ff0660b082722352" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -112,7 +112,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="70"/>
+        <location file="/cashflows/cashflows.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a835348c16d1009ffe4e50e50929fc0dd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -132,7 +132,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="74"/>
+        <location file="/cashflows/cashflows.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a97719a1d5eb607d221bebe79efbb1671" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -152,7 +152,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="78"/>
+        <location file="/cashflows/cashflows.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a49d7390ee1e3377d916ea425735b3873" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -172,7 +172,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="82"/>
+        <location file="/cashflows/cashflows.hpp" line="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -195,7 +195,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="90"/>
+        <location file="/cashflows/cashflows.hpp" line="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1aef37790de2210df61dbe752914e61762" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -215,7 +215,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="94"/>
+        <location file="/cashflows/cashflows.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a709490e6c0ffead2b28bdbeb8c0ec0a0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -235,7 +235,7 @@
           <declname>settlDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="99"/>
+        <location file="/cashflows/cashflows.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a327c021eb612eda92e4bf006c5d106be" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -255,7 +255,7 @@
           <declname>settlDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="103"/>
+        <location file="/cashflows/cashflows.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1add502f32c2b28eaef015581725c16362" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -275,7 +275,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="107"/>
+        <location file="/cashflows/cashflows.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a1a2f3b3519e1df56006aaf605de8db4d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -295,7 +295,7 @@
           <declname>settlDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="111"/>
+        <location file="/cashflows/cashflows.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a7ae9cbcf2cfb504c8941a6ddc7275c16" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -315,7 +315,7 @@
           <declname>settlDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="115"/>
+        <location file="/cashflows/cashflows.hpp" line="115"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1af769ffc5d74836d41dbf61afc5fd48d4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -335,7 +335,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="119"/>
+        <location file="/cashflows/cashflows.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1aeff3590f9dcd736c6813415fecb3264e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
@@ -355,7 +355,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="123"/>
+        <location file="/cashflows/cashflows.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a4fa213c8cf4de8362071823155d2698b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -375,7 +375,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="127"/>
+        <location file="/cashflows/cashflows.hpp" line="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ac5e20d3c2a37e64e2d191e9a7718d690" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
@@ -395,7 +395,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="131"/>
+        <location file="/cashflows/cashflows.hpp" line="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ad847f5760463d3f239ac388287f1b13f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -415,7 +415,7 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="135"/>
+        <location file="/cashflows/cashflows.hpp" line="135"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -451,7 +451,7 @@
 <para>NPV of the cash flows. </para>        </briefdescription>
         <detaileddescription>
 <para>The NPV is the sum of the cash flows, each discounted according to the given term structure. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="148"/>
+        <location file="/cashflows/cashflows.hpp" line="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a9b11008b6df9721a340a1844e96c1385" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -484,7 +484,7 @@
 <para>Basis-point sensitivity of the cash flows. </para>        </briefdescription>
         <detaileddescription>
 <para>The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given term structure. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="159"/>
+        <location file="/cashflows/cashflows.hpp" line="159"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a8ba8a6673783d6c60a6869f9a40432fd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -523,7 +523,7 @@
 <para>NPV and BPS of the cash flows. </para>        </briefdescription>
         <detaileddescription>
 <para>The NPV and BPS of the cash flows calculated together for performance reason </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="172"/>
+        <location file="/cashflows/cashflows.hpp" line="172"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ae3aa49c05366fc3a840988b8d44e8a94" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -561,7 +561,7 @@
 <para>At-the-money rate of the cash flows. </para>        </briefdescription>
         <detaileddescription>
 <para>The result is the fixed rate for which a fixed rate cash flow vector, equivalent to the input vector, has the required NPV according to the given term structure. If the required NPV is not given, the input cash flow vector&apos;s NPV is used instead. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="185"/>
+        <location file="/cashflows/cashflows.hpp" line="185"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -597,7 +597,7 @@
 <para>NPV of the cash flows. </para>        </briefdescription>
         <detaileddescription>
 <para>The IRR is the interest rate at which the NPV of the cash flows equals the dirty price.</para><para>The NPV is the sum of the cash flows, each discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="203"/>
+        <location file="/cashflows/cashflows.hpp" line="203"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a58ac4a7022b3f7803e3262df1291eed1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -638,7 +638,7 @@
           <declname>npvDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="211"/>
+        <location file="/cashflows/cashflows.hpp" line="211"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1af9cc5fe1103f97e4471922c6069307d1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -671,7 +671,7 @@
 <para>Basis-point sensitivity of the cash flows. </para>        </briefdescription>
         <detaileddescription>
 <para>The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="224"/>
+        <location file="/cashflows/cashflows.hpp" line="224"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1af60dbf95c35352d257f55588716cb12a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -712,7 +712,7 @@
           <declname>npvDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="232"/>
+        <location file="/cashflows/cashflows.hpp" line="232"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a5fcebd9dacabca6a125a48a97dd3c0b3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -772,7 +772,7 @@
 <para>Implied internal rate of return. </para>        </briefdescription>
         <detaileddescription>
 <para>The function verifies the theoretical existance of an IRR and numerically establishes the IRR to the desired precision. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="248"/>
+        <location file="/cashflows/cashflows.hpp" line="248"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a64640dcb0a9d2c0bd9d914e03450b6e0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -809,7 +809,7 @@
 <para>Cash-flow duration. </para>        </briefdescription>
         <detaileddescription>
 <para>The simple duration of a string of cash flows is defined as <formula id="54">\[ D_{\mathrm{simple}} = \frac{\sum t_i c_i B(t_i)}{\sum c_i B(t_i)} \]</formula> where <formula id="55">$ c_i $</formula> is the amount of the <formula id="56">$ i $</formula>-th cash flow, <formula id="57">$ t_i $</formula> is its payment time, and <formula id="58">$ B(t_i) $</formula> is the corresponding discount according to the passed yield.</para><para>The modified duration is defined as <formula id="59">\[ D_{\mathrm{modified}} = -\frac{1}{P} \frac{\partial P}{\partial y} \]</formula> where <formula id="41">$ P $</formula> is the present value of the cash flows according to the given IRR <formula id="13">$ y $</formula>.</para><para>The Macaulay duration is defined for a compounded IRR as <formula id="60">\[ D_{\mathrm{Macaulay}} = \left( 1 + \frac{y}{N} \right) D_{\mathrm{modified}} \]</formula> where <formula id="13">$ y $</formula> is the IRR and <formula id="32">$ N $</formula> is the number of cash flows per year. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="279"/>
+        <location file="/cashflows/cashflows.hpp" line="279"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1af70bbcf5337066d9cd6848020bf8b7e7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -854,7 +854,7 @@
           <declname>npvDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="288"/>
+        <location file="/cashflows/cashflows.hpp" line="288"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a72621ac467ab4e7a3c53ab6b8f5d4d71" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -887,7 +887,7 @@
 <para>Cash-flow convexity. </para>        </briefdescription>
         <detaileddescription>
 <para>The convexity of a string of cash flows is defined as <formula id="61">\[ C = \frac{1}{P} \frac{\partial^2 P}{\partial y^2} \]</formula> where <formula id="41">$ P $</formula> is the present value of the cash flows according to the given IRR <formula id="13">$ y $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="302"/>
+        <location file="/cashflows/cashflows.hpp" line="302"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a1a41eee8556d9ae0771a47ce1eef65a9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -928,7 +928,7 @@
           <declname>npvDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="310"/>
+        <location file="/cashflows/cashflows.hpp" line="310"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a954517447441b8adc1e91a510fc687da" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -961,7 +961,7 @@
 <para>Basis-point value. </para>        </briefdescription>
         <detaileddescription>
 <para>Obtained by setting dy = 0.0001 in the 2nd-order Taylor series expansion. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="320"/>
+        <location file="/cashflows/cashflows.hpp" line="320"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a62e34cfbad021c887ca517d30f76a266" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -1002,7 +1002,7 @@
           <declname>npvDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="328"/>
+        <location file="/cashflows/cashflows.hpp" line="328"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a24ff333a91ccb3fcc3928f921d2bc4c3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -1035,7 +1035,7 @@
 <para>Yield value of a basis point. </para>        </briefdescription>
         <detaileddescription>
 <para>The yield value of a one basis point change in price is the derivative of the yield with respect to the price multiplied by 0.01 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="339"/>
+        <location file="/cashflows/cashflows.hpp" line="339"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a9fe83b29ebedc44cb8ca72935df11a2e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -1076,7 +1076,7 @@
           <declname>npvDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="347"/>
+        <location file="/cashflows/cashflows.hpp" line="347"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -1128,7 +1128,7 @@
 <para>NPV of the cash flows. </para>        </briefdescription>
         <detaileddescription>
 <para>For details on z-spread refer to: &quot;Credit Spreads Explained&quot;, Lehman Brothers European Fixed Income Research - March 2004, D. O&apos;Kane</para><para>The NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="370"/>
+        <location file="/cashflows/cashflows.hpp" line="370"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a1a2af0e4ab0d785e046b89e8a9b2ca97" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
@@ -1189,7 +1189,7 @@
         </param>
         <briefdescription>
 <para>implied Z-spread. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="383"/>
+        <location file="/cashflows/cashflows.hpp" line="383"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1afb5712af994c2bb3890466253ff2da4e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
@@ -1251,13 +1251,13 @@
         </param>
         <briefdescription>
 <para>deprecated implied Z-spread. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="396" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" bodystart="385" bodyend="400"/>
+        <location file="/cashflows/cashflows.hpp" line="396" bodyfile="/cashflows/cashflows.hpp" bodystart="385" bodyend="400"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>cashflow-analysis functions </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000001"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add tests </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" bodystart="41" bodyend="403"/>
+    <location file="/cashflows/cashflows.hpp" line="41" bodyfile="/cashflows/cashflows.hpp" bodystart="41" bodyend="403"/>
   </compounddef>
 </doxygen>

@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_r_d_currency" kind="class" prot="public">
     <compoundname>QuantLib::GRDCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_r_d_currency_1aea61dfb0256b5d6c82e0c8630108258f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GRDCurrency</definition>
         <argsstring>()</argsstring>
         <name>GRDCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="592" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="592" bodyend="600"/>
+        <location file="/currencies/europe.hpp" line="592" bodyfile="/currencies/europe.hpp" bodystart="592" bodyend="600"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Greek drachma. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code was GRD; the numeric code was 300. It was divided in 100 lepta.</para><para>Obsoleted by the Euro since 2001. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="590" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="590" bodyend="601"/>
+    <location file="/currencies/europe.hpp" line="590" bodyfile="/currencies/europe.hpp" bodystart="590" bodyend="601"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_american_payoff_at_hit" kind="class" prot="public">
     <compoundname>QuantLib::AmericanPayoffAtHit</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp</includes>
+    <includes local="no">/pricingengines/americanpayoffathit.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_american_payoff_at_hit_1a5620e13a1cbf69c0d2a85c75d6781065" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,28 +29,28 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" line="40"/>
+        <location file="/pricingengines/americanpayoffathit.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_american_payoff_at_hit_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" bodystart="66" bodyend="68"/>
+        <location file="/pricingengines/americanpayoffathit.hpp" line="41" bodyfile="/pricingengines/americanpayoffathit.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_american_payoff_at_hit_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" line="42"/>
+        <location file="/pricingengines/americanpayoffathit.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_american_payoff_at_hit_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gamma</definition>
         <argsstring>() const </argsstring>
         <name>gamma</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" line="43"/>
+        <location file="/pricingengines/americanpayoffathit.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_american_payoff_at_hit_1affcfd1c0fd1c6bef1bb21fd2a336bff5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -61,13 +61,13 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>maturity</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" line="44"/>
+        <location file="/pricingengines/americanpayoffathit.hpp" line="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Analytic formula for American exercise payoff at-hit options. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000050"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>calculate greeks </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" bodystart="33" bodyend="61"/>
+    <location file="/pricingengines/americanpayoffathit.hpp" line="33" bodyfile="/pricingengines/americanpayoffathit.hpp" bodystart="33" bodyend="61"/>
   </compounddef>
 </doxygen>

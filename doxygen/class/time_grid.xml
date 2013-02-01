@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_time_grid" kind="class" prot="public">
     <compoundname>QuantLib::TimeGrid</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp</includes>
+    <includes local="no">/timegrid.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1ae0640f1cc45cab42c4dcb56237123a18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <definition>TimeGrid</definition>
         <argsstring>()</argsstring>
         <name>TimeGrid</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="44" bodyend="44"/>
+        <location file="/timegrid.hpp" line="44" bodyfile="/timegrid.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1a5283e1e556c13bf0998a74edbe8fd3c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -27,7 +27,7 @@
         </param>
         <briefdescription>
 <para>Regularly spaced time-grid. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="46"/>
+        <location file="/timegrid.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1a2191bc528680c801cb7a150b9a3ba3d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -51,7 +51,7 @@
 <para>Time grid with mandatory time points. </para>        </briefdescription>
         <detaileddescription>
 <para>Mandatory points are guaranteed to belong to the grid. No additional points are added. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="52" bodyend="74"/>
+        <location file="/timegrid.hpp" line="53" bodyfile="/timegrid.hpp" bodystart="52" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1a53c316a9745ce6a633ebbb09f2ce8ea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -79,7 +79,7 @@
 <para>Time grid with mandatory time points. </para>        </briefdescription>
         <detaileddescription>
 <para>Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="82" bodyend="133"/>
+        <location file="/timegrid.hpp" line="83" bodyfile="/timegrid.hpp" bodystart="82" bodyend="133"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -95,7 +95,7 @@
         </param>
         <briefdescription>
 <para>returns the index i such that grid[i] = t </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="138"/>
+        <location file="/timegrid.hpp" line="138"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1a5a60444b80bb7a1d3734ee79422ee396" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -108,7 +108,7 @@
         </param>
         <briefdescription>
 <para>returns the index i such that grid[i] is closest to t </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="140"/>
+        <location file="/timegrid.hpp" line="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1af91c3447448db0d4079999605b339d44" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -121,14 +121,14 @@
         </param>
         <briefdescription>
 <para>returns the time on the grid closest to the given t </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="142" bodyend="144"/>
+        <location file="/timegrid.hpp" line="142" bodyfile="/timegrid.hpp" bodystart="142" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1ac6ef9fb94702478c6e0e8573d1220e78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; mandatoryTimes</definition>
         <argsstring>() const </argsstring>
         <name>mandatoryTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="145" bodyend="147"/>
+        <location file="/timegrid.hpp" line="145" bodyfile="/timegrid.hpp" bodystart="145" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1ac66ca8c21371cb1d3ec2be1024d24e46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -139,7 +139,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="148" bodyend="148"/>
+        <location file="/timegrid.hpp" line="148" bodyfile="/timegrid.hpp" bodystart="148" bodyend="148"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -149,14 +149,14 @@
         <definition>typedef std::vector&lt;Time&gt;::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="152" bodyend="-1"/>
+        <location file="/timegrid.hpp" line="152" bodyfile="/timegrid.hpp" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_grid_1a33a951e006aff3625c156397cad65672" prot="public" static="no">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;::const_reverse_iterator</type>
         <definition>typedef std::vector&lt;Time&gt;::const_reverse_iterator const_reverse_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="154" bodyend="-1"/>
+        <location file="/timegrid.hpp" line="154" bodyfile="/timegrid.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1ae0a3b3aaac87396ddb204d784f4b84cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -167,7 +167,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="156" bodyend="156"/>
+        <location file="/timegrid.hpp" line="156" bodyfile="/timegrid.hpp" bodystart="156" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1aa4d3cd421e9f1c91305810e102bc4995" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -178,69 +178,69 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="157" bodyend="157"/>
+        <location file="/timegrid.hpp" line="157" bodyfile="/timegrid.hpp" bodystart="157" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="158" bodyend="158"/>
+        <location file="/timegrid.hpp" line="158" bodyfile="/timegrid.hpp" bodystart="158" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="159" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="159" bodyend="159"/>
+        <location file="/timegrid.hpp" line="159" bodyfile="/timegrid.hpp" bodystart="159" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1aa4b02d4f1a8500fb07a551069060709f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>const_iterator begin</definition>
         <argsstring>() const </argsstring>
         <name>begin</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="160" bodyend="160"/>
+        <location file="/timegrid.hpp" line="160" bodyfile="/timegrid.hpp" bodystart="160" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1a350132543d80a1c1e5be844e6d2878ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>const_iterator end</definition>
         <argsstring>() const </argsstring>
         <name>end</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="161" bodyend="161"/>
+        <location file="/timegrid.hpp" line="161" bodyfile="/timegrid.hpp" bodystart="161" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1a04886aa70c34d66738e78bf70c675e66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_iterator</type>
         <definition>const_reverse_iterator rbegin</definition>
         <argsstring>() const </argsstring>
         <name>rbegin</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="162" bodyend="162"/>
+        <location file="/timegrid.hpp" line="162" bodyfile="/timegrid.hpp" bodystart="162" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1ab3c414470d5cea2986cfab7a90146cb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_iterator</type>
         <definition>const_reverse_iterator rend</definition>
         <argsstring>() const </argsstring>
         <name>rend</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="163" bodyend="163"/>
+        <location file="/timegrid.hpp" line="163" bodyfile="/timegrid.hpp" bodystart="163" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1a1fadbd48b1c0f232cc0dc0183642a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time front</definition>
         <argsstring>() const </argsstring>
         <name>front</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="164" bodyend="164"/>
+        <location file="/timegrid.hpp" line="164" bodyfile="/timegrid.hpp" bodystart="164" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_grid_1a881f8a7c6ad4ed301617230cf4039c7b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time back</definition>
         <argsstring>() const </argsstring>
         <name>back</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="165" bodyend="165"/>
+        <location file="/timegrid.hpp" line="165" bodyfile="/timegrid.hpp" bodystart="165" bodyend="165"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>time grid class </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000069"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>what was the rationale for limiting the grid to positive times? Investigate and see whether we can use it for negative ones as well. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="40" bodyend="171"/>
+    <location file="/timegrid.hpp" line="40" bodyfile="/timegrid.hpp" bodystart="40" bodyend="171"/>
   </compounddef>
 </doxygen>

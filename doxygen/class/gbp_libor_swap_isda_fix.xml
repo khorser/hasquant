@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gbp_libor_swap_isda_fix" kind="class" prot="public">
     <compoundname>QuantLib::GbpLiborSwapIsdaFix</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/swap/gbpliborswap.hpp</includes>
+    <includes local="no">/indexes/swap/gbpliborswap.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gbp_libor_swap_isda_fix_1a83a5e1b52e509b51e860aeb5d3adcf6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -18,7 +18,7 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/gbpliborswap.hpp" line="45"/>
+        <location file="/indexes/swap/gbpliborswap.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gbp_libor_swap_isda_fix_1a90a72776303342580ba6a533d77ae02b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -37,13 +37,13 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discounting</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/gbpliborswap.hpp" line="48"/>
+        <location file="/indexes/swap/gbpliborswap.hpp" line="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>GbpLiborSwapIsdaFix index base class </para>    </briefdescription>
     <detaileddescription>
 <para>GBP Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 11am London. Semiannual Actual/365F vs 6M <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref>, 1Y Annual vs 3M <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref>. Reuters page ISDAFIX4 or GBPSFIX=.</para><para>Further info can be found at <ulink url="http://www.isda.org/fix/isdafix.html">http://www.isda.org/fix/isdafix.html</ulink> or Reuters page ISDAFIX. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/gbpliborswap.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/gbpliborswap.hpp" bodystart="41" bodyend="49"/>
+    <location file="/indexes/swap/gbpliborswap.hpp" line="41" bodyfile="/indexes/swap/gbpliborswap.hpp" bodystart="41" bodyend="49"/>
   </compounddef>
 </doxygen>

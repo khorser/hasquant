@@ -31,9 +31,9 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="249" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="243" bodyend="249"/>
+        <location file="/math/interpolations/cubicinterpolation.hpp" line="249" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="243" bodyend="249"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="239" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="239" bodyend="250"/>
+    <location file="/math/interpolations/cubicinterpolation.hpp" line="239" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="239" bodyend="250"/>
   </compounddef>
 </doxygen>

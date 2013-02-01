@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_zero_inflation_index" kind="class" prot="public">
     <compoundname>QuantLib::ZeroInflationIndex</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp</includes>
+    <includes local="no">/indexes/inflationindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a1c776ca10de744b29a4d051102003eb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -22,7 +22,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000041"><xreftitle>Warning</xreftitle><xrefdescription><para>the forecastTodaysFixing parameter (required by the <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> interface) is currently ignored. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="156"/>
+        <location file="/indexes/inflationindex.hpp" line="156"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -32,7 +32,7 @@
         <definition>Handle&lt; ZeroInflationTermStructure &gt; zeroInflationTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>zeroInflationTermStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="249" bodyend="251"/>
+        <location file="/indexes/inflationindex.hpp" line="160" bodyfile="/indexes/inflationindex.hpp" bodystart="249" bodyend="251"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a07e5121e8d142b09d0810142e07d6107" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
@@ -43,7 +43,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="162"/>
+        <location file="/indexes/inflationindex.hpp" line="162"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -87,11 +87,11 @@
         </param>
         <briefdescription>
 <para>Always use the evaluation date as the reference date. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="148"/>
+        <location file="/indexes/inflationindex.hpp" line="148"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for zero inflation indices. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="137" bodyend="168"/>
+    <location file="/indexes/inflationindex.hpp" line="137" bodyfile="/indexes/inflationindex.hpp" bodystart="137" bodyend="168"/>
   </compounddef>
 </doxygen>

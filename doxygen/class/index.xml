@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_index" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Index</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/index.hpp</includes>
+    <includes local="no">/index.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_index_1ae31939bafb7379752a737547ff7711b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Index</definition>
         <argsstring>()</argsstring>
         <name>~Index</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="46" bodyend="46"/>
+        <location file="/index.hpp" line="46" bodyfile="/index.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -20,7 +20,7 @@
 <para>Returns the name of the index. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000031"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between indexes. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="52"/>
+        <location file="/index.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a017c78ebe125418dde1aacb7c610265a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
@@ -29,7 +29,7 @@
         <name>fixingCalendar</name>
         <briefdescription>
 <para>returns the calendar defining valid fixing dates </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="54"/>
+        <location file="/index.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1abaaf5b4d83d8e96c321a71b3eec62a78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -42,7 +42,7 @@
         </param>
         <briefdescription>
 <para>returns TRUE if the fixing date is a valid one </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="56"/>
+        <location file="/index.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a3fe8532d0a96ae0ba25ac781e150aa37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -62,7 +62,7 @@
 <para>returns the fixing at the given date </para>        </briefdescription>
         <detaileddescription>
 <para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="62"/>
+        <location file="/index.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -71,7 +71,7 @@
         <name>timeSeries</name>
         <briefdescription>
 <para>returns the fixing <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="64" bodyend="66"/>
+        <location file="/index.hpp" line="64" bodyfile="/index.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a7a90b939ae6213878841b3a7d08776bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -95,7 +95,7 @@
 <para>stores the historical fixing at the given date </para>        </briefdescription>
         <detaileddescription>
 <para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="73"/>
+        <location file="/index.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a7508199daa86b2f60ad153454b944558" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -115,7 +115,7 @@
 <para>stores historical fixings from a <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
         <detaileddescription>
 <para>the dates in the <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="79"/>
+        <location file="/index.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1ac5a81c6efaef1986836098611234389a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -151,7 +151,7 @@
 <para>stores historical fixings at the given dates </para>        </briefdescription>
         <detaileddescription>
 <para>the dates passed as arguments must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="85" bodyend="127"/>
+        <location file="/index.hpp" line="87" bodyfile="/index.hpp" bodystart="85" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a45034f65c461ffc15eb4679b02dde6c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -160,7 +160,7 @@
         <name>clearFixings</name>
         <briefdescription>
 <para>clears all stored historical fixings </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="129"/>
+        <location file="/index.hpp" line="129"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -168,6 +168,6 @@
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000030"><xreftitle>Warning</xreftitle><xrefdescription><para>this class performs no check that the provided/requested fixings are for dates in the past, i.e. for dates less than or equal to the evaluation date. It is up to the client code to take care of possible inconsistencies due to &quot;seeing in the
                 future&quot; </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="44" bodyend="130"/>
+    <location file="/index.hpp" line="44" bodyfile="/index.hpp" bodystart="44" bodyend="130"/>
   </compounddef>
 </doxygen>

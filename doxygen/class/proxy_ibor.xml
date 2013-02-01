@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_proxy_ibor" kind="class" prot="public">
     <compoundname>QuantLib::ProxyIbor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp</includes>
+    <includes local="no">/experimental/coupons/proxyibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_proxy_ibor_1a493e75bdacba76f6b2ec7969ba322ec1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -53,11 +53,11 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>spread</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" line="44"/>
+        <location file="/experimental/coupons/proxyibor.hpp" line="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> calculated as proxy of some other <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref>. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" bodystart="32" bodyend="52"/>
+    <location file="/experimental/coupons/proxyibor.hpp" line="32" bodyfile="/experimental/coupons/proxyibor.hpp" bodystart="32" bodyend="52"/>
   </compounddef>
 </doxygen>

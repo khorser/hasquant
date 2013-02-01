@@ -16,7 +16,7 @@
           <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
           <declname>discount</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mchimalayaengine.hpp" line="117"/>
+        <location file="/experimental/exoticoptions/mchimalayaengine.hpp" line="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_himalaya_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -27,9 +27,9 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>multiPath</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mchimalayaengine.hpp" line="118"/>
+        <location file="/experimental/exoticoptions/mchimalayaengine.hpp" line="118"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mchimalayaengine.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mchimalayaengine.hpp" bodystart="114" bodyend="122"/>
+    <location file="/experimental/exoticoptions/mchimalayaengine.hpp" line="114" bodyfile="/experimental/exoticoptions/mchimalayaengine.hpp" bodystart="114" bodyend="122"/>
   </compounddef>
 </doxygen>

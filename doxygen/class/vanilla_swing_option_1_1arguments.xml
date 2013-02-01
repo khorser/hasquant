@@ -8,28 +8,28 @@
         <definition>Size minExerciseRights</definition>
         <argsstring></argsstring>
         <name>minExerciseRights</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="77" bodyend="-1"/>
+        <location file="/instruments/vanillaswingoption.hpp" line="77" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1ad4769ff6bc7e2519550a7d2e9931ebda" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size maxExerciseRights</definition>
         <argsstring></argsstring>
         <name>maxExerciseRights</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="77" bodyend="-1"/>
+        <location file="/instruments/vanillaswingoption.hpp" line="77" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1a1172f6d21c290340779ee088d2530cd1" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;StrikedTypePayoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="78" bodyend="-1"/>
+        <location file="/instruments/vanillaswingoption.hpp" line="78" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1a1204ab2ec997bab927b19ae6d87921b0" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swing_exercise" kindref="compound">SwingExercise</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;SwingExercise&gt; exercise</definition>
         <argsstring></argsstring>
         <name>exercise</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="79" bodyend="-1"/>
+        <location file="/instruments/vanillaswingoption.hpp" line="79" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -38,16 +38,16 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="74" bodyend="74"/>
+        <location file="/instruments/vanillaswingoption.hpp" line="74" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="75"/>
+        <location file="/instruments/vanillaswingoption.hpp" line="75"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="71" bodyend="80"/>
+    <location file="/instruments/vanillaswingoption.hpp" line="72" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="71" bodyend="80"/>
   </compounddef>
 </doxygen>

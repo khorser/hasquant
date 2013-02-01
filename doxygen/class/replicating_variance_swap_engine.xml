@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_replicating_variance_swap_engine" kind="class" prot="public">
     <compoundname>QuantLib::ReplicatingVarianceSwapEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp</includes>
+    <includes local="no">/pricingengines/forward/replicatingvarianceswapengine.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_replicating_variance_swap_engine_1ae4c21c3b5d3bff2b0fd3ff7d115b85d0" prot="public" static="no">
         <type>std::vector&lt; std::pair&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt;, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>typedef std::vector&lt;std::pair&lt; boost::shared_ptr&lt;StrikedTypePayoff&gt;, Real&gt; &gt; weights_type</definition>
         <argsstring></argsstring>
         <name>weights_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="46" bodyend="-1"/>
+        <location file="/pricingengines/forward/replicatingvarianceswapengine.hpp" line="46" bodyfile="/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +37,7 @@
           <declname>putStrikes</declname>
           <defval>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="75" bodyend="91"/>
+        <location file="/pricingengines/forward/replicatingvarianceswapengine.hpp" line="52" bodyfile="/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="75" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -45,13 +45,13 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="185" bodyend="209"/>
+        <location file="/pricingengines/forward/replicatingvarianceswapengine.hpp" line="53" bodyfile="/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="185" bodyend="209"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Variance-swap pricing engine using replicating cost,. </para>    </briefdescription>
     <detaileddescription>
 <para>as described in Demeterfi, Derman, Kamal &amp; Zou, &quot;A Guide to Volatility and Variance Swaps&quot;, 1999</para><para><xrefsect id="test_1_test000104"><xreftitle>Tests</xreftitle><xrefdescription><para>returned variances verified against results from literature </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="43" bodyend="70"/>
+    <location file="/pricingengines/forward/replicatingvarianceswapengine.hpp" line="43" bodyfile="/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="43" bodyend="70"/>
   </compounddef>
 </doxygen>

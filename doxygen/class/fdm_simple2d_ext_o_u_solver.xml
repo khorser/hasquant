@@ -25,7 +25,7 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="41" bodyend="49"/>
+        <location file="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="47" bodyfile="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1a54a3d3adf137f4c0b938cea30a8c2022" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -40,9 +40,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="51" bodyend="54"/>
+        <location file="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="51" bodyfile="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="39" bodyend="74"/>
+    <location file="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="39" bodyfile="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="39" bodyend="74"/>
   </compounddef>
 </doxygen>

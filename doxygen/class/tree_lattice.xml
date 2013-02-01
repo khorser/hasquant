@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tree_lattice" kind="class" prot="public">
     <compoundname>QuantLib::TreeLattice</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp</includes>
+    <includes local="no">/methods/lattices/lattice.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -27,7 +27,7 @@
         </param>
         <briefdescription>
 <para>initialize an asset at the given time. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" bodystart="127" bodyend="131"/>
+        <location file="/methods/lattices/lattice.hpp" line="70" bodyfile="/methods/lattices/lattice.hpp" bodystart="127" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice_1a47fadd8835bd6040e705f4a46c46ad86" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -44,7 +44,7 @@
         </param>
         <detaileddescription>
 <para>Roll back an asset until the given time, performing any needed adjustment. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" bodystart="134" bodyend="137"/>
+        <location file="/methods/lattices/lattice.hpp" line="71" bodyfile="/methods/lattices/lattice.hpp" bodystart="134" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice_1a90141038ed4cf080568664474ee02524" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -64,7 +64,7 @@
 </programlisting> with the two statements: <programlisting><codeline><highlight class="normal">method-&gt;partialRollback(asset,t);</highlight></codeline>
 <codeline><highlight class="normal">asset-&gt;preAdjustValues();</highlight></codeline>
 </programlisting> </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" bodystart="140" bodyend="164"/>
+        <location file="/methods/lattices/lattice.hpp" line="72" bodyfile="/methods/lattices/lattice.hpp" bodystart="140" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice_1a6e58935b14ee8a45352a848a2e03dc51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -78,7 +78,7 @@
         </param>
         <briefdescription>
 <para>Computes the present value of an asset using Arrow-Debrew prices. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" bodystart="121" bodyend="124"/>
+        <location file="/methods/lattices/lattice.hpp" line="74" bodyfile="/methods/lattices/lattice.hpp" bodystart="121" bodyend="124"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -95,7 +95,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>n</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" bodystart="60" bodyend="66"/>
+        <location file="/methods/lattices/lattice.hpp" line="62" bodyfile="/methods/lattices/lattice.hpp" bodystart="60" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice_1a6d32cc75a7f9816adfd48389fbc79aa3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
@@ -106,7 +106,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" bodystart="114" bodyend="118"/>
+        <location file="/methods/lattices/lattice.hpp" line="77" bodyfile="/methods/lattices/lattice.hpp" bodystart="114" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice_1a4ed1f3825ab5baec5aa09fcf7f7b4000" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -125,7 +125,7 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>newValues</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" bodystart="167" bodyend="178"/>
+        <location file="/methods/lattices/lattice.hpp" line="81" bodyfile="/methods/lattices/lattice.hpp" bodystart="167" bodyend="178"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -140,6 +140,6 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Array&amp;<sp/>values,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Array&amp;<sp/>newValues)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp" bodystart="57" bodyend="92"/>
+    <location file="/methods/lattices/lattice.hpp" line="58" bodyfile="/methods/lattices/lattice.hpp" bodystart="57" bodyend="92"/>
   </compounddef>
 </doxygen>

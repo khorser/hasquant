@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_risky_asset_swap_option" kind="class" prot="public">
     <compoundname>QuantLib::RiskyAssetSwapOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp</includes>
+    <includes local="no">/experimental/credit/riskyassetswapoption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_option_1af4042bbdb0c2af36e3a8c07f90070c1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,11 +29,11 @@
           <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
           <declname>spreadVolatility</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="39"/>
+        <location file="/experimental/credit/riskyassetswapoption.hpp" line="39"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Option on risky asset swap </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" bodystart="33" bodyend="49"/>
+    <location file="/experimental/credit/riskyassetswapoption.hpp" line="33" bodyfile="/experimental/credit/riskyassetswapoption.hpp" bodystart="33" bodyend="49"/>
   </compounddef>
 </doxygen>

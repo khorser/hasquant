@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_p_e_h_currency" kind="class" prot="public">
     <compoundname>QuantLib::PEHCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp</includes>
+    <includes local="no">/currencies/america.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_p_e_h_currency_1a1df73ede854309eb6247156970871e09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PEHCurrency</definition>
         <argsstring>()</argsstring>
         <name>PEHCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="192" bodyend="199"/>
+        <location file="/currencies/america.hpp" line="192" bodyfile="/currencies/america.hpp" bodystart="192" bodyend="199"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Peruvian sol. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code was PEH. A numeric code is not available; as per ISO 3166-1, we assign 999 as a user-defined code. It was divided in 100 centavos.</para><para>Obsoleted by the inti since February 1985. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="190" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="190" bodyend="200"/>
+    <location file="/currencies/america.hpp" line="190" bodyfile="/currencies/america.hpp" bodystart="190" bodyend="200"/>
   </compounddef>
 </doxygen>

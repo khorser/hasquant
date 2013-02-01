@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_a_u_c_p_i" kind="class" prot="public">
     <compoundname>QuantLib::AUCPI</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/aucpi.hpp</includes>
+    <includes local="no">/indexes/inflation/aucpi.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_a_u_c_p_i_1ae67a1689e8851b888367657c97646ee3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -26,11 +26,11 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/aucpi.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/aucpi.hpp" bodystart="35" bodyend="47"/>
+        <location file="/indexes/inflation/aucpi.hpp" line="47" bodyfile="/indexes/inflation/aucpi.hpp" bodystart="35" bodyend="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>AU CPI index (either quarterly or annual) </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/aucpi.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/aucpi.hpp" bodystart="33" bodyend="48"/>
+    <location file="/indexes/inflation/aucpi.hpp" line="33" bodyfile="/indexes/inflation/aucpi.hpp" bodystart="33" bodyend="48"/>
   </compounddef>
 </doxygen>

@@ -14,9 +14,9 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="43" bodyend="43"/>
+        <location file="/math/domain.hpp" line="43" bodyfile="/math/domain.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="41" bodyend="44"/>
+    <location file="/math/domain.hpp" line="41" bodyfile="/math/domain.hpp" bodystart="41" bodyend="44"/>
   </compounddef>
 </doxygen>

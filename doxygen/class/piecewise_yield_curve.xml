@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_piecewise_yield_curve" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseYieldCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp</includes>
+    <includes local="no">/termstructures/yield/piecewiseyieldcurve.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Traits</type>
@@ -61,7 +61,7 @@
           <declname>bootstrap</declname>
           <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="70" bodyend="85"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="83" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="70" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a1aea2e4071d832165b349e3c2995d51c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -94,7 +94,7 @@
           <declname>bootstrap</declname>
           <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="86" bodyend="99"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="97" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="86" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1ae90b3c44242a55102aa39365f79f7241" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -122,7 +122,7 @@
           <declname>bootstrap</declname>
           <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="100" bodyend="112"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="110" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="100" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1af0d184352744040ac7781af9b6dcadf7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -170,7 +170,7 @@
           <declname>bootstrap</declname>
           <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="113" bodyend="128"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="126" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="113" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1ae7e19a0e521d5b812e36e3680456e303" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -207,7 +207,7 @@
           <declname>bootstrap</declname>
           <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="129" bodyend="143"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="141" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="129" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a312702b74eca72da685aee04f8cd40c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -239,7 +239,7 @@
           <declname>bootstrap</declname>
           <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="144" bodyend="157"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="155" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="144" bodyend="157"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -249,7 +249,7 @@
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="199" bodyend="202"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="161" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="199" bodyend="202"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -259,28 +259,28 @@
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="205" bodyend="208"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="165" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="205" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="211" bodyend="214"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="166" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="211" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="217" bodyend="220"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="167" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="217" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="224" bodyend="227"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="168" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="224" bodyend="227"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -291,7 +291,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="230" bodyend="241"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="172" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="230" bodyend="241"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -300,14 +300,14 @@
         <definition>typedef Traits traits_type</definition>
         <argsstring></argsstring>
         <name>traits_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="66" bodyend="-1"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="66" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yield_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
         <type>Interpolator</type>
         <definition>typedef Interpolator interpolator_type</definition>
         <argsstring></argsstring>
         <name>interpolator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="67" bodyend="-1"/>
+        <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="67" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -316,6 +316,6 @@
 <para>This term structure is bootstrapped on a number of interest rate instruments which are passed as a vector of handles to RateHelper instances. Their maturities mark the boundaries of the interpolated segments.</para><para>Each segment is determined sequentially starting from the earliest period to the latest and is chosen so that the instrument whose maturity marks the end of such segment is correctly repriced on the curve.</para><para><xrefsect id="caveats_1_caveats000141"><xreftitle>Warning</xreftitle><xrefdescription><para>The bootstrapping algorithm will raise an exception if any two instruments have the same maturity date.</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000142"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned values is tested by checking them against the original inputs.</para></listitem><listitem><para>the observability of the term structure is tested. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="59" bodyend="193"/>
+    <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="61" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="59" bodyend="193"/>
   </compounddef>
 </doxygen>

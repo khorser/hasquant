@@ -25,9 +25,9 @@
           <declname>cPoints</declname>
           <defval>(std::pair&lt; double, double &gt;(<ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;(), <ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()))</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/concentrating1dmesher.hpp" line="38"/>
+        <location file="/methods/finitedifferences/meshers/concentrating1dmesher.hpp" line="38"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/concentrating1dmesher.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/concentrating1dmesher.hpp" bodystart="33" bodyend="39"/>
+    <location file="/methods/finitedifferences/meshers/concentrating1dmesher.hpp" line="33" bodyfile="/methods/finitedifferences/meshers/concentrating1dmesher.hpp" bodystart="33" bodyend="39"/>
   </compounddef>
 </doxygen>

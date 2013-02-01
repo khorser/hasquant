@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_hazard_rate_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::HazardRateStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp</includes>
+    <includes local="no">/termstructures/credit/hazardratestructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
@@ -26,7 +26,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp" line="58"/>
+        <location file="/termstructures/credit/hazardratestructure.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hazard_rate_structure_1add911afdb453b876956e1b50c38155ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -57,7 +57,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp" line="64"/>
+        <location file="/termstructures/credit/hazardratestructure.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hazard_rate_structure_1a7f10554b257e7721ec11501c3d0c2ba7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -87,7 +87,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp" line="70"/>
+        <location file="/termstructures/credit/hazardratestructure.hpp" line="70"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -103,7 +103,7 @@
         </param>
         <briefdescription>
 <para>hazard rate calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp" line="82"/>
+        <location file="/termstructures/credit/hazardratestructure.hpp" line="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -119,7 +119,7 @@
         </param>
         <detaileddescription>
 <para>survival probability calculation implemented in terms of the hazard rate <formula id="369">$ h(t) $</formula> as <formula id="370">\[ S(t) = \exp\left( - \int_0^t h(\tau) d\tau \right). \]</formula></para><para><xrefsect id="caveats_1_caveats000110"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses numerical integration, which might be inefficient and inaccurate. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp" line="98"/>
+        <location file="/termstructures/credit/hazardratestructure.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hazard_rate_structure_1aacf490703e42933ebc53ef281a4a38fb" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -133,13 +133,13 @@
         </param>
         <briefdescription>
 <para>default density calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp" bodystart="106" bodyend="108"/>
+        <location file="/termstructures/credit/hazardratestructure.hpp" line="100" bodyfile="/termstructures/credit/hazardratestructure.hpp" bodystart="106" bodyend="108"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Hazard-rate term structure. </para>    </briefdescription>
     <detaileddescription>
 <para>This abstract class acts as an adapter to <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> allowing the programmer to implement only the <computeroutput>hazardRateImpl(Time)</computeroutput> method in derived classes.</para><para>Survival/default probabilities and default densities are calculated from hazard rates.</para><para>Hazard rates are defined with annual frequency and continuous compounding. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/hazardratestructure.hpp" bodystart="48" bodyend="102"/>
+    <location file="/termstructures/credit/hazardratestructure.hpp" line="48" bodyfile="/termstructures/credit/hazardratestructure.hpp" bodystart="48" bodyend="102"/>
   </compounddef>
 </doxygen>

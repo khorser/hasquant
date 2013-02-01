@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lecuyer_uniform_rng" kind="class" prot="public">
     <compoundname>QuantLib::LecuyerUniformRng</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp</includes>
+    <includes local="no">/math/randomnumbers/lecuyeruniformrng.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_lecuyer_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="42" bodyend="-1"/>
+        <location file="/math/randomnumbers/lecuyeruniformrng.hpp" line="42" bodyfile="/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
         </param>
         <detaileddescription>
 <para>if the given seed is 0, a random seed will be chosen based on clock() </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="45"/>
+        <location file="/math/randomnumbers/lecuyeruniformrng.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lecuyer_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
@@ -34,13 +34,13 @@
         <name>next</name>
         <detaileddescription>
 <para>returns a sample with weight 1.0 containing a random number uniformly chosen from (0.0,1.0) </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="48"/>
+        <location file="/math/randomnumbers/lecuyeruniformrng.hpp" line="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Uniform random number generator. </para>    </briefdescription>
     <detaileddescription>
 <para>Random number generator of L&apos;Ecuyer with added Bays-Durham shuffle (know as ran2 in Numerical recipes)</para><para>For more details see Section 7.1 of Numerical Recipes in C, 2nd Edition, Cambridge University Press (available at <ulink url="http://www.nr.com/">http://www.nr.com/</ulink>) </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="40" bodyend="64"/>
+    <location file="/math/randomnumbers/lecuyeruniformrng.hpp" line="40" bodyfile="/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="40" bodyend="64"/>
   </compounddef>
 </doxygen>

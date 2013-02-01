@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_t_r_y_currency" kind="class" prot="public">
     <compoundname>QuantLib::TRYCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_t_r_y_currency_1a0185b9ceb1cef8c12c93aa0fad5d4d9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TRYCurrency</definition>
         <argsstring>()</argsstring>
         <name>TRYCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="443" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="443" bodyend="450"/>
+        <location file="/currencies/europe.hpp" line="443" bodyfile="/currencies/europe.hpp" bodystart="443" bodyend="450"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>New Turkish lira. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is TRY; the numeric code is 949. It is divided in 100 new kurus. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="441" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="441" bodyend="451"/>
+    <location file="/currencies/europe.hpp" line="441" bodyfile="/currencies/europe.hpp" bodystart="441" bodyend="451"/>
   </compounddef>
 </doxygen>

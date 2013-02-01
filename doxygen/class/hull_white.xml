@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_hull_white" kind="class" prot="public">
     <compoundname>QuantLib::HullWhite</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp</includes>
+    <includes local="no">/models/shortrate/onefactormodels/hullwhite.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_hull_white_1_1_dynamics" prot="public">QuantLib::HullWhite::Dynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter" prot="public">QuantLib::HullWhite::FittingParameter</innerclass>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
           <declname>sigma</declname>
           <defval>0.01</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="51"/>
+        <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
@@ -39,7 +39,7 @@
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="53"/>
+        <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
@@ -49,7 +49,7 @@
         <reimplements refid="class_quant_lib_1_1_vasicek_1ab819304423e7791547c3089322a190be">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="154" bodyend="157"/>
+        <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="55" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="154" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -73,7 +73,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>bondMaturity</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="60"/>
+        <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="60"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -105,13 +105,13 @@
         <detaileddescription>
 <para>Futures convexity bias (i.e., the difference between futures implied rate and forward rate) calculated as in G. Kirikos, D. Novak, &quot;Convexity Conundrums&quot;, Risk Magazine, March 1997.</para><para><simplesect kind="note"><para>t and T should be expressed in yearfraction using deposit day counter, F_quoted is futures&apos; market price. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="74"/>
+        <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="74"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Single-factor Hull-White (extended Vasicek) model class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class implements the standard single-factor Hull-White model defined by <formula id="304">\[ dr_t = (\theta(t) - \alpha r_t)dt + \sigma dW_t \]</formula> where <formula id="3">$ \alpha $</formula> and <formula id="4">$ \sigma $</formula> are constants.</para><para><xrefsect id="test_1_test000084"><xreftitle>Tests</xreftitle><xrefdescription><para>calibration results are tested against cached values</para></xrefdescription></xrefsect></para><para><xrefsect id="bug_1_bug000009"><xreftitle>Bug</xreftitle><xrefdescription><para>When the term structure is relinked, the r0 parameter of the underlying <ref refid="class_quant_lib_1_1_vasicek" kindref="compound">Vasicek</ref> model is not updated.</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="48" bodyend="85"/>
+    <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="48" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="48" bodyend="85"/>
   </compounddef>
 </doxygen>

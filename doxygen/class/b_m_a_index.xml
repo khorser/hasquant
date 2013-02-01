@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_m_a_index" kind="class" prot="public">
     <compoundname>QuantLib::BMAIndex</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp</includes>
+    <includes local="no">/indexes/bmaindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_index_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
         <detaileddescription>
 <para>BMA is fixed weekly on Wednesdays. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" bodystart="48" bodyend="48"/>
+        <location file="/indexes/bmaindex.hpp" line="48" bodyfile="/indexes/bmaindex.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1aa279f27f1bb152aa71ff980f0bae2727" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -27,7 +27,7 @@
         </param>
         <briefdescription>
 <para>returns TRUE if the fixing date is a valid one </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="49"/>
+        <location file="/indexes/bmaindex.hpp" line="49"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -37,7 +37,7 @@
         <definition>Handle&lt;YieldTermStructure&gt; forwardingTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>forwardingTermStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="53"/>
+        <location file="/indexes/bmaindex.hpp" line="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -52,7 +52,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="57"/>
+        <location file="/indexes/bmaindex.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1afc12c1eac0967ca3d9cfcb0cf282109b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref></type>
@@ -69,7 +69,7 @@
         </param>
         <detaileddescription>
 <para>This method returns a schedule of fixing dates between start and end. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="62"/>
+        <location file="/indexes/bmaindex.hpp" line="62"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -83,13 +83,13 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="43"/>
+        <location file="/indexes/bmaindex.hpp" line="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> Market Association index. </para>    </briefdescription>
     <detaileddescription>
 <para>The BMA index is the short-term tax-exempt reference index of the <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> Market Association. It has tenor one week, is fixed weekly on Wednesdays and is applied with a one-day&apos;s fixing gap from Thursdays on for one week. It is the tax-exempt correspondent of the 1M USD-Libor. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" bodystart="40" bodyend="67"/>
+    <location file="/indexes/bmaindex.hpp" line="40" bodyfile="/indexes/bmaindex.hpp" bodystart="40" bodyend="67"/>
   </compounddef>
 </doxygen>

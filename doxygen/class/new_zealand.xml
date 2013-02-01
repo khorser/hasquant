@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_new_zealand" kind="class" prot="public">
     <compoundname>QuantLib::NewZealand</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/newzealand.hpp</includes>
+    <includes local="no">/time/calendars/newzealand.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_new_zealand_1aa234220757dc2457e0bf61b1bc0de3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>NewZealand</definition>
         <argsstring>()</argsstring>
         <name>NewZealand</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/newzealand.hpp" line="64"/>
+        <location file="/time/calendars/newzealand.hpp" line="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,6 +45,6 @@
 </itemizedlist>
 <simplesect kind="note"><para>The holiday rules for New Zealand were documented by David Gilbert for IDB (<ulink url="http://www.jrefinery.com/ibd/">http://www.jrefinery.com/ibd/</ulink>) </para></simplesect>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/newzealand.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/newzealand.hpp" bodystart="56" bodyend="65"/>
+    <location file="/time/calendars/newzealand.hpp" line="56" bodyfile="/time/calendars/newzealand.hpp" bodystart="56" bodyend="65"/>
   </compounddef>
 </doxygen>

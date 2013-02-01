@@ -8,49 +8,49 @@
         <definition>Rate fairSpread</definition>
         <argsstring></argsstring>
         <name>fairSpread</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="267" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="267" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="267" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="267" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1results_1aafba406012deed5cdb501b5511564eed" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairUpfront</definition>
         <argsstring></argsstring>
         <name>fairUpfront</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="268" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="268" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="268" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="268" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1results_1a13fc9d55c48963abbb4cab404b646255" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real couponLegBPS</definition>
         <argsstring></argsstring>
         <name>couponLegBPS</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="269" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="269" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="269" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="269" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1results_1ae2226938b86830202126426edc4c687b" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real couponLegNPV</definition>
         <argsstring></argsstring>
         <name>couponLegNPV</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="270" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="270" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="270" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="270" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1results_1a5784039d41b8566d2b9ef684753f0ff8" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real defaultLegNPV</definition>
         <argsstring></argsstring>
         <name>defaultLegNPV</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="271" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="271" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="271" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="271" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1results_1a2ae2bf51414a6e29eb60c2102af285db" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real upfrontBPS</definition>
         <argsstring></argsstring>
         <name>upfrontBPS</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="272" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="272" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="272" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="272" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1results_1ad52c5f9f617126661d48d9939ccd742b" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real upfrontNPV</definition>
         <argsstring></argsstring>
         <name>upfrontNPV</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="273" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="273" bodyend="-1"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="273" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="273" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -59,9 +59,9 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="274"/>
+        <location file="/instruments/creditdefaultswap.hpp" line="274"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="265" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="265" bodyend="275"/>
+    <location file="/instruments/creditdefaultswap.hpp" line="265" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="265" bodyend="275"/>
   </compounddef>
 </doxygen>

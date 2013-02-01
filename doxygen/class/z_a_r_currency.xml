@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_z_a_r_currency" kind="class" prot="public">
     <compoundname>QuantLib::ZARCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/africa.hpp</includes>
+    <includes local="no">/currencies/africa.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_z_a_r_currency_1ac0040e7de3a8fb02f7ff32ad7608aab2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ZARCurrency</definition>
         <argsstring>()</argsstring>
         <name>ZARCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/africa.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/africa.hpp" bodystart="42" bodyend="49"/>
+        <location file="/currencies/africa.hpp" line="42" bodyfile="/currencies/africa.hpp" bodystart="42" bodyend="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>South-African rand. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is ZAR; the numeric code is 710. It is divided into 100 cents. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/africa.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/africa.hpp" bodystart="40" bodyend="50"/>
+    <location file="/currencies/africa.hpp" line="40" bodyfile="/currencies/africa.hpp" bodystart="40" bodyend="50"/>
   </compounddef>
 </doxygen>

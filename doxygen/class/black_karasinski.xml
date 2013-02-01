@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_karasinski" kind="class" prot="public">
     <compoundname>QuantLib::BlackKarasinski</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp</includes>
+    <includes local="no">/models/shortrate/onefactormodels/blackkarasinski.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics" prot="public">QuantLib::BlackKarasinski::Dynamics</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1aadfac54b64d637fadf35d1c3cb7b7fc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -24,7 +24,7 @@
           <declname>sigma</declname>
           <defval>0.1</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="45"/>
+        <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
@@ -34,7 +34,7 @@
         <reimplements refid="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="47" bodyend="49"/>
+        <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="47" bodyfile="/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="47" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
@@ -48,13 +48,13 @@
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="51"/>
+        <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Standard Black-Karasinski model class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class implements the standard Black-Karasinski model defined by <formula id="292">\[ d\ln r_t = (\theta(t) - \alpha \ln r_t)dt + \sigma dW_t, \]</formula> where <formula id="139">$ alpha $</formula> and <formula id="140">$ sigma $</formula> are constants. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="41" bodyend="62"/>
+    <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="42" bodyfile="/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="41" bodyend="62"/>
   </compounddef>
 </doxygen>

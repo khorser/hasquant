@@ -20,7 +20,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>xPrev</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="139" bodyend="141"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="141" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a183a38ca3e73199aae47a6d24274e2fb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -30,7 +30,7 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="143" bodyend="145"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="143" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="143" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -41,16 +41,16 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="146" bodyend="148"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="146" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="146" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fNext</definition>
         <argsstring>() const </argsstring>
         <name>fNext</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="149" bodyend="151"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="149" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="149" bodyend="151"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="137" bodyend="156"/>
+    <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="137" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="137" bodyend="156"/>
   </compounddef>
 </doxygen>

@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_g_l_currency" kind="class" prot="public">
     <compoundname>QuantLib::BGLCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_b_g_l_currency_1af54b3900c637f91048634758726a5b7d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BGLCurrency</definition>
         <argsstring>()</argsstring>
         <name>BGLCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="42" bodyend="49"/>
+        <location file="/currencies/europe.hpp" line="42" bodyfile="/currencies/europe.hpp" bodystart="42" bodyend="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Bulgarian lev. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is BGL; the numeric code is 100. It is divided in 100 stotinki. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="40" bodyend="50"/>
+    <location file="/currencies/europe.hpp" line="40" bodyfile="/currencies/europe.hpp" bodystart="40" bodyend="50"/>
   </compounddef>
 </doxygen>

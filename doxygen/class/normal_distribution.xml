@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_normal_distribution" kind="class" prot="public">
     <compoundname>QuantLib::NormalDistribution</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp</includes>
+    <includes local="no">/math/distributions/normaldistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_normal_distribution_1a212896c50065ce0cacb7062a3427398c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -19,7 +19,7 @@
           <declname>sigma</declname>
           <defval>1.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="231" bodyend="242"/>
+        <location file="/math/distributions/normaldistribution.hpp" line="47" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="231" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_normal_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -30,7 +30,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="244" bodyend="250"/>
+        <location file="/math/distributions/normaldistribution.hpp" line="49" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="244" bodyend="250"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_normal_distribution_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -41,13 +41,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="252" bodyend="254"/>
+        <location file="/math/distributions/normaldistribution.hpp" line="50" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="252" bodyend="254"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Normal distribution function. </para>    </briefdescription>
     <detaileddescription>
 <para>Given x, it returns its probability in a Gaussian normal distribution. It provides the first derivative too.</para><para><xrefsect id="test_1_test000031"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against numerical calculations. Cross-checks are also performed against the <ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref> and <ref refid="class_quant_lib_1_1_inverse_cumulative_normal" kindref="compound">InverseCumulativeNormal</ref> classes. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="44" bodyend="54"/>
+    <location file="/math/distributions/normaldistribution.hpp" line="44" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="44" bodyend="54"/>
   </compounddef>
 </doxygen>

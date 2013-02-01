@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_y_r_currency" kind="class" prot="public">
     <compoundname>QuantLib::BYRCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_b_y_r_currency_1a783eb663d737af7e9eadbaede8ec2b0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BYRCurrency</definition>
         <argsstring>()</argsstring>
         <name>BYRCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="60" bodyend="67"/>
+        <location file="/currencies/europe.hpp" line="60" bodyfile="/currencies/europe.hpp" bodystart="60" bodyend="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Belarussian ruble. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is BYR; the numeric code is 974. It has no subdivisions. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="58" bodyend="68"/>
+    <location file="/currencies/europe.hpp" line="58" bodyfile="/currencies/europe.hpp" bodystart="58" bodyend="68"/>
   </compounddef>
 </doxygen>

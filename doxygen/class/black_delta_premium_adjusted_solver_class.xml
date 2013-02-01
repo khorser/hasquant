@@ -36,7 +36,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>delta</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="94"/>
+        <location file="/experimental/fx/blackdeltacalculator.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1af4d58202ba9cbaf8e86ff10bd1c88cc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -47,9 +47,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="96"/>
+        <location file="/experimental/fx/blackdeltacalculator.hpp" line="96"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="85" bodyend="101"/>
+    <location file="/experimental/fx/blackdeltacalculator.hpp" line="85" bodyfile="/experimental/fx/blackdeltacalculator.hpp" bodystart="85" bodyend="101"/>
   </compounddef>
 </doxygen>

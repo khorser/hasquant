@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_loss_dist_binomial" kind="class" prot="public">
     <compoundname>QuantLib::LossDistBinomial</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp</includes>
+    <includes local="no">/experimental/credit/lossdistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_binomial_1adaabde22ac4fab69f20deb0a1cdfc763" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>maximum</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="103" bodyend="104"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="104" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="103" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_binomial_1a47d1b07d9bdfdc18021be18ba34b891d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Distribution</type>
@@ -36,7 +36,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>probability</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="105"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_binomial_1a0c71a619a048f010109b9d01231394d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Distribution</type>
@@ -52,7 +52,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>probabilities</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="107"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_binomial_1a01ac704c1d58d3c0b62457aebf7097c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -60,7 +60,7 @@
         <argsstring>() const </argsstring>
         <name>buckets</name>
         <reimplements refid="class_quant_lib_1_1_loss_dist_1ab143530071a3af08da7f3df1640d33e5">buckets</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="108" bodyend="108"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="108" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="108" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_binomial_1ad7e73faa199a16d3c9dc6a7a7295c295" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -68,41 +68,41 @@
         <argsstring>() const </argsstring>
         <name>maximum</name>
         <reimplements refid="class_quant_lib_1_1_loss_dist_1a6adb04174b3fd47dcf4a4d6a401d563e">maximum</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="109" bodyend="109"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="109" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_binomial_1ae4b79402c64e9204eba66fbfcfa96172" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real volume</definition>
         <argsstring>() const </argsstring>
         <name>volume</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="110" bodyend="110"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="110" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="110" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_binomial_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="111" bodyend="111"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="111" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="111" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_binomial_1a0b3e8728cbc57b2d94c2d8ec7e5fd682" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; probability</definition>
         <argsstring>() const </argsstring>
         <name>probability</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="112" bodyend="112"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="112" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="112" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_binomial_1a268bff8021c785b7195ce608f0f9df24" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; excessProbability</definition>
         <argsstring>() const </argsstring>
         <name>excessProbability</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="113" bodyend="113"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="113" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="113" bodyend="113"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Binomial loss distribution. </para>    </briefdescription>
     <detaileddescription>
 <para>Binomial loss distribution </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="101" bodyend="121"/>
+    <location file="/experimental/credit/lossdistribution.hpp" line="101" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="101" bodyend="121"/>
   </compounddef>
 </doxygen>

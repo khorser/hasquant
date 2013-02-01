@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_actual365_fixed" kind="class" prot="public">
     <compoundname>QuantLib::Actual365Fixed</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual365fixed.hpp</includes>
+    <includes local="no">/time/daycounters/actual365fixed.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_actual365_fixed_1a2f70a12a500d16b29da54ae1138a511a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Actual365Fixed</definition>
         <argsstring>()</argsstring>
         <name>Actual365Fixed</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual365fixed.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual365fixed.hpp" bodystart="57" bodyend="59"/>
+        <location file="/time/daycounters/actual365fixed.hpp" line="59" bodyfile="/time/daycounters/actual365fixed.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Actual/365 (Fixed) day count convention. </para>    </briefdescription>
     <detaileddescription>
 <para>&quot;Actual/365 (Fixed)&quot; day count convention, also know as &quot;Act/365 (Fixed)&quot;, &quot;A/365 (Fixed)&quot;, or &quot;A/365F&quot;.</para><para><xrefsect id="caveats_1_caveats000146"><xreftitle>Warning</xreftitle><xrefdescription><para>According to ISDA, &quot;Actual/365&quot; (without &quot;Fixed&quot;) is an alias for &quot;Actual/Actual (ISDA)&quot; (see <ref refid="class_quant_lib_1_1_actual_actual" kindref="compound">ActualActual</ref>.) If Actual/365 is not explicitly specified as fixed in an instrument specification, you might want to double-check its meaning.</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual365fixed.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual365fixed.hpp" bodystart="44" bodyend="60"/>
+    <location file="/time/daycounters/actual365fixed.hpp" line="44" bodyfile="/time/daycounters/actual365fixed.hpp" bodystart="44" bodyend="60"/>
   </compounddef>
 </doxygen>

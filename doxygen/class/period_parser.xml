@@ -12,9 +12,9 @@
           <type>const std::string &amp;</type>
           <declname>str</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="43"/>
+        <location file="/utilities/dataparsers.hpp" line="43"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" bodystart="41" bodyend="46"/>
+    <location file="/utilities/dataparsers.hpp" line="41" bodyfile="/utilities/dataparsers.hpp" bodystart="41" bodyend="46"/>
   </compounddef>
 </doxygen>

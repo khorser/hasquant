@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bermudan_exercise" kind="class" prot="public">
     <compoundname>QuantLib::BermudanExercise</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exercise.hpp</includes>
+    <includes local="no">/exercise.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_exercise_1a23a2f17d9bae84c1423ab5c423b17205" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -18,13 +18,13 @@
           <declname>payoffAtExpiry</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="89"/>
+        <location file="/exercise.hpp" line="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Bermudan exercise. </para>    </briefdescription>
     <detaileddescription>
 <para>A Bermudan option can only be exercised at a set of fixed dates. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="86" bodyend="90"/>
+    <location file="/exercise.hpp" line="86" bodyfile="/exercise.hpp" bodystart="86" bodyend="90"/>
   </compounddef>
 </doxygen>

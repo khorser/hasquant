@@ -8,28 +8,28 @@
         <definition>virtual ~MarketModelNodeDataProvider</definition>
         <argsstring>()</argsstring>
         <name>~MarketModelNodeDataProvider</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" bodystart="35" bodyend="35"/>
+        <location file="/models/marketmodels/callability/nodedataprovider.hpp" line="35" bodyfile="/models/marketmodels/callability/nodedataprovider.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_node_data_provider_1aaf50b073c0431c39c47f9efe491dcb89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>virtual Size numberOfExercises</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfExercises</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" line="36"/>
+        <location file="/models/marketmodels/callability/nodedataprovider.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_node_data_provider_1a2e6652bd1558278bd75a8c34c9015b46" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
         <definition>virtual std::vector&lt;Size&gt; numberOfData</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfData</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" line="38"/>
+        <location file="/models/marketmodels/callability/nodedataprovider.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_node_data_provider_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
         <definition>virtual const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const =0</argsstring>
         <name>evolution</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" line="40"/>
+        <location file="/models/marketmodels/callability/nodedataprovider.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_node_data_provider_1afd20cc76c83b8c0275df7603761c6dce" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -39,21 +39,21 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" line="41"/>
+        <location file="/models/marketmodels/callability/nodedataprovider.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_node_data_provider_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void reset</definition>
         <argsstring>()=0</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" line="42"/>
+        <location file="/models/marketmodels/callability/nodedataprovider.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_node_data_provider_1a40f3fe604a09125d6707b7d2128339fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::valarray&lt; bool &gt;</type>
         <definition>virtual std::valarray&lt;bool&gt; isExerciseTime</definition>
         <argsstring>() const =0</argsstring>
         <name>isExerciseTime</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" line="44"/>
+        <location file="/models/marketmodels/callability/nodedataprovider.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_node_data_provider_1a200e3c18dd442cb53120f1e732f80cc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -67,9 +67,9 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>results</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" line="46"/>
+        <location file="/models/marketmodels/callability/nodedataprovider.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nodedataprovider.hpp" bodystart="33" bodyend="47"/>
+    <location file="/models/marketmodels/callability/nodedataprovider.hpp" line="33" bodyfile="/models/marketmodels/callability/nodedataprovider.hpp" bodystart="33" bodyend="47"/>
   </compounddef>
 </doxygen>

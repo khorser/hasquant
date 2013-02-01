@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mid_point_c_d_o_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::MidPointCDOEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
+    <includes local="no">/experimental/credit/syntheticcdoengines.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_mid_point_c_d_o_engine_1aafdc66830f19c8a053838846f9b3b9c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MidPointCDOEngine</definition>
         <argsstring>()</argsstring>
         <name>MidPointCDOEngine</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="84" bodyend="84"/>
+        <location file="/experimental/credit/syntheticcdoengines.hpp" line="84" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mid_point_c_d_o_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -17,11 +17,11 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="85"/>
+        <location file="/experimental/credit/syntheticcdoengines.hpp" line="85"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> base engine taking schedule steps. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="82" bodyend="88"/>
+    <location file="/experimental/credit/syntheticcdoengines.hpp" line="82" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="82" bodyend="88"/>
   </compounddef>
 </doxygen>

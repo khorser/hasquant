@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_i_q_d_currency" kind="class" prot="public">
     <compoundname>QuantLib::IQDCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp</includes>
+    <includes local="no">/currencies/asia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_i_q_d_currency_1a9506403a4352603873f9ebc5c4544bb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>IQDCurrency</definition>
         <argsstring>()</argsstring>
         <name>IQDCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="132" bodyend="139"/>
+        <location file="/currencies/asia.hpp" line="132" bodyfile="/currencies/asia.hpp" bodystart="132" bodyend="139"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Iraqi dinar. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is IQD; the numeric code is 368. It is divided in 1000 fils. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="130" bodyend="140"/>
+    <location file="/currencies/asia.hpp" line="130" bodyfile="/currencies/asia.hpp" bodystart="130" bodyend="140"/>
   </compounddef>
 </doxygen>

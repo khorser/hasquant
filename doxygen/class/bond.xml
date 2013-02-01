@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bond" kind="class" prot="public">
     <compoundname>QuantLib::Bond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp</includes>
+    <includes local="no">/instruments/bond.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_bond_1_1arguments" prot="public">QuantLib::Bond::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_bond_1_1engine" prot="public">QuantLib::Bond::engine</innerclass>
     <innerclass refid="class_quant_lib_1_1_bond_1_1results" prot="public">QuantLib::Bond::results</innerclass>
@@ -16,7 +16,7 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="89"/>
+        <location file="/instruments/bond.hpp" line="89"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -26,21 +26,21 @@
         <definition>Natural settlementDays</definition>
         <argsstring>() const </argsstring>
         <name>settlementDays</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="294" bodyend="296"/>
+        <location file="/instruments/bond.hpp" line="93" bodyfile="/instruments/bond.hpp" bodystart="294" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
         <definition>const Calendar &amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="298" bodyend="300"/>
+        <location file="/instruments/bond.hpp" line="94" bodyfile="/instruments/bond.hpp" bodystart="298" bodyend="300"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1ad4cc45eba4756d4e00d60ffd28a277b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; notionals</definition>
         <argsstring>() const </argsstring>
         <name>notionals</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="302" bodyend="304"/>
+        <location file="/instruments/bond.hpp" line="96" bodyfile="/instruments/bond.hpp" bodystart="302" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a1dfb27049b5e0c7850975621d12105db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -52,7 +52,7 @@
           <declname>d</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="97"/>
+        <location file="/instruments/bond.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1aaf0153df517e7b8049cccb6011a5d815" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
@@ -62,7 +62,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>returns all the cashflows, including the redemptions. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="306" bodyend="308"/>
+        <location file="/instruments/bond.hpp" line="100" bodyfile="/instruments/bond.hpp" bodystart="306" bodyend="308"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a1f321d4d99f8979d8932ee3b33b0b966" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
@@ -71,7 +71,7 @@
         <name>redemptions</name>
         <detaileddescription>
 <para>returns just the redemption flows (not interest payments) </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="310" bodyend="312"/>
+        <location file="/instruments/bond.hpp" line="102" bodyfile="/instruments/bond.hpp" bodystart="310" bodyend="312"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a58d0698e89061e76114760d78d588350" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt; &amp;</type>
@@ -80,28 +80,28 @@
         <name>redemption</name>
         <detaileddescription>
 <para>returns the redemption, if only one is defined </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="104"/>
+        <location file="/instruments/bond.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="106"/>
+        <location file="/instruments/bond.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="107"/>
+        <location file="/instruments/bond.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a063fda38934b8aa155e6a9ed6c4aa53e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date issueDate</definition>
         <argsstring>() const </argsstring>
         <name>issueDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="314" bodyend="316"/>
+        <location file="/instruments/bond.hpp" line="108" bodyfile="/instruments/bond.hpp" bodystart="314" bodyend="316"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1afc08e66663c123c863e8810937603b94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -113,7 +113,7 @@
           <declname>d</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="110"/>
+        <location file="/instruments/bond.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1ab8181f6a75922ecb19246c234fdc482f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -125,7 +125,7 @@
           <declname>d</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="111"/>
+        <location file="/instruments/bond.hpp" line="111"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -139,7 +139,7 @@
 <para>theoretical clean price </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used for calculation.</para><para><xrefsect id="caveats_1_caveats000050"><xreftitle>Warning</xreftitle><xrefdescription><para>the theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="127"/>
+        <location file="/instruments/bond.hpp" line="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a6ae3fd1559be17f6c97829a8f36a4368" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -150,7 +150,7 @@
 <para>theoretical dirty price </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used for calculation.</para><para><xrefsect id="caveats_1_caveats000051"><xreftitle>Warning</xreftitle><xrefdescription><para>the theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="139"/>
+        <location file="/instruments/bond.hpp" line="139"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a9d3fba47faf6b3e589699cb8ad1f6de8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -161,7 +161,7 @@
 <para>theoretical settlement value </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement date is used for calculation. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="143"/>
+        <location file="/instruments/bond.hpp" line="143"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1aed7a3c2fc11ecfb3dec1af5fe1c4b40d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -194,7 +194,7 @@
 <para>theoretical bond yield </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement and theoretical price are used for calculation. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="153"/>
+        <location file="/instruments/bond.hpp" line="153"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1ae18639bbb94d3dd790b74707f10392c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -226,7 +226,7 @@
 <para>clean price given a yield and settlement date </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="161"/>
+        <location file="/instruments/bond.hpp" line="161"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1ad5ad3a9f9b5c0c35aa0db47cf1f9c747" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -258,7 +258,7 @@
 <para>dirty price given a yield and settlement date </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="169"/>
+        <location file="/instruments/bond.hpp" line="169"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a820288d1ee037a93fdd6e705c17f4b11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -273,7 +273,7 @@
 <para>settlement value as a function of the clean price </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement date is used for calculation. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="173"/>
+        <location file="/instruments/bond.hpp" line="173"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a4bcfe6740fcdc3c9f07fe93d02ad2ce2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -315,7 +315,7 @@
 <para>yield given a (clean) price and settlement date </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="183"/>
+        <location file="/instruments/bond.hpp" line="183"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a0fc8bd8e30a2481352f942bbbd8666dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -331,7 +331,7 @@
 <para>accrued amount at a given date </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="187"/>
+        <location file="/instruments/bond.hpp" line="187"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -362,7 +362,7 @@
 <para>constructor for amortizing or non-amortizing bonds. </para>        </briefdescription>
         <detaileddescription>
 <para>Redemptions and maturity are calculated from the coupon data, if available. Therefore, redemptions must not be included in the passed cash flows. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="69"/>
+        <location file="/instruments/bond.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1ae88c1a2337e0a6109f987cb8edbbe73c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -399,7 +399,7 @@
 <para>old constructor for non amortizing bonds. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000049"><xreftitle>Warning</xreftitle><xrefdescription><para>The last passed cash flow must be the bond redemption. No other cash flow can have a date later than the redemption date. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="81"/>
+        <location file="/instruments/bond.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a3c4509856962f0a2bb6170ea1405c248" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -413,7 +413,7 @@
         </param>
         <detaileddescription>
 <para>Expected next coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the already-fixed not-yet-paid one.</para><para>The current bond settlement is used if no date is given. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="197"/>
+        <location file="/instruments/bond.hpp" line="197"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a7dbcbfda5d3bd569b0aafebdd62cade0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -429,7 +429,7 @@
 <para>Previous coupon already paid at a given date. </para>        </briefdescription>
         <detaileddescription>
 <para>Expected previous coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the last paid one.</para><para>The current bond settlement is used if no date is given. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="207"/>
+        <location file="/instruments/bond.hpp" line="207"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1aded8e920cf8eb8f5b615ca1407edd00a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -441,7 +441,7 @@
           <declname>d</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="209"/>
+        <location file="/instruments/bond.hpp" line="209"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bond_1a295f040a2200b3a4d2c41ecfb1058578" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -453,7 +453,7 @@
           <declname>d</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="210"/>
+        <location file="/instruments/bond.hpp" line="210"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -462,6 +462,6 @@
 <para>Derived classes must fill the uninitialized data members.</para><para><xrefsect id="caveats_1_caveats000048"><xreftitle>Warning</xreftitle><xrefdescription><para>Most methods assume that the cash flows are stored sorted by date, the redemption(s) being after any cash flow at the same date. In particular, if there&apos;s one single redemption, it must be the last cash flow,</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000014"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>price/yield calculations are cross-checked for consistency.</para></listitem><listitem><para>price/yield calculations are checked against known good values. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="59" bodyend="269"/>
+    <location file="/instruments/bond.hpp" line="59" bodyfile="/instruments/bond.hpp" bodystart="59" bodyend="269"/>
   </compounddef>
 </doxygen>

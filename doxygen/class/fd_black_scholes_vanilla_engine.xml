@@ -41,16 +41,16 @@
           <declname>illegalLocalVolOverwrite</declname>
           <defval>-<ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="55"/>
+        <location file="/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="57"/>
+        <location file="/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="57"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="45" bodyend="65"/>
+    <location file="/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="47" bodyfile="/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="45" bodyend="65"/>
   </compounddef>
 </doxygen>

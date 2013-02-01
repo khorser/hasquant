@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_problem" kind="class" prot="public">
     <compoundname>QuantLib::Problem</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp</includes>
+    <includes local="no">/math/optimization/problem.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1a4ca51162378bd037e929d7b5fc093a95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -24,7 +24,7 @@
         </param>
         <briefdescription>
 <para>default constructor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="45" bodyend="49"/>
+        <location file="/math/optimization/problem.hpp" line="49" bodyfile="/math/optimization/problem.hpp" bodystart="45" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -33,7 +33,7 @@
         <name>reset</name>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000071"><xreftitle>Warning</xreftitle><xrefdescription><para>it does not reset the current minumum to any initial value </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="139" bodyend="142"/>
+        <location file="/math/optimization/problem.hpp" line="53" bodyfile="/math/optimization/problem.hpp" bodystart="139" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1ab5a7fc79ae2c7a09f08d7ab169a52dc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -46,7 +46,7 @@
         </param>
         <briefdescription>
 <para>call cost function computation and increment evaluation counter </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="116" bodyend="119"/>
+        <location file="/math/optimization/problem.hpp" line="56" bodyfile="/math/optimization/problem.hpp" bodystart="116" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1abc8c323a0850669748ab4342f3294ae9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -59,7 +59,7 @@
         </param>
         <briefdescription>
 <para>call cost values computation and increment evaluation counter </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="121" bodyend="124"/>
+        <location file="/math/optimization/problem.hpp" line="59" bodyfile="/math/optimization/problem.hpp" bodystart="121" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1ade662b750c56006317b08b8aa6b38ac8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -76,7 +76,7 @@
         </param>
         <briefdescription>
 <para>call cost function gradient computation and increment </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="126" bodyend="130"/>
+        <location file="/math/optimization/problem.hpp" line="64" bodyfile="/math/optimization/problem.hpp" bodystart="126" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1ae1f5aed11663d0d3aac5a2b1ff111763" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -93,7 +93,7 @@
         </param>
         <briefdescription>
 <para>call cost function computation and it gradient </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="132" bodyend="137"/>
+        <location file="/math/optimization/problem.hpp" line="68" bodyfile="/math/optimization/problem.hpp" bodystart="132" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1a587d1ba7605c5e283b0e48a138b36b47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
@@ -102,7 +102,7 @@
         <name>constraint</name>
         <briefdescription>
 <para><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref>. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="71" bodyend="71"/>
+        <location file="/math/optimization/problem.hpp" line="71" bodyfile="/math/optimization/problem.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1ae7eb58c3620c8d99559a7a5739772e7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_cost_function" kindref="compound">CostFunction</ref> &amp;</type>
@@ -111,7 +111,7 @@
         <name>costFunction</name>
         <briefdescription>
 <para>Cost function. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="74" bodyend="74"/>
+        <location file="/math/optimization/problem.hpp" line="74" bodyfile="/math/optimization/problem.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1add2cc5dffd3ac08701ec18a03a41d151" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -122,7 +122,7 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>currentValue</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="76" bodyend="78"/>
+        <location file="/math/optimization/problem.hpp" line="76" bodyfile="/math/optimization/problem.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1a664394f06abfdf2668dffa35c5d2fc08" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
@@ -131,7 +131,7 @@
         <name>currentValue</name>
         <briefdescription>
 <para>current value of the local minimum </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="81" bodyend="81"/>
+        <location file="/math/optimization/problem.hpp" line="81" bodyfile="/math/optimization/problem.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1ac5276af7ef5302961018ebc9734223f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -142,7 +142,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>functionValue</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="83" bodyend="85"/>
+        <location file="/math/optimization/problem.hpp" line="83" bodyfile="/math/optimization/problem.hpp" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1a507050a322afee6459b66f62c82a6672" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -151,7 +151,7 @@
         <name>functionValue</name>
         <briefdescription>
 <para>value of cost function </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="88" bodyend="88"/>
+        <location file="/math/optimization/problem.hpp" line="88" bodyfile="/math/optimization/problem.hpp" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1a816d4b1c93a6838c0d409abc326a2236" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -162,7 +162,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>squaredNorm</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="90" bodyend="92"/>
+        <location file="/math/optimization/problem.hpp" line="90" bodyfile="/math/optimization/problem.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1a3eb1f139d3924e741c5bb18c1525c5af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -171,7 +171,7 @@
         <name>gradientNormValue</name>
         <briefdescription>
 <para>value of cost function gradient norm </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="94" bodyend="94"/>
+        <location file="/math/optimization/problem.hpp" line="94" bodyfile="/math/optimization/problem.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1a9ce4fbf7f4d0fa879601ef3dada784cc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
@@ -180,7 +180,7 @@
         <name>functionEvaluation</name>
         <briefdescription>
 <para>number of evaluation of cost function </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="97" bodyend="97"/>
+        <location file="/math/optimization/problem.hpp" line="97" bodyfile="/math/optimization/problem.hpp" bodystart="97" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_problem_1a899e30587abf2892515ee1ca642decb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
@@ -189,13 +189,13 @@
         <name>gradientEvaluation</name>
         <briefdescription>
 <para>number of evaluation of cost function gradient </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="100" bodyend="100"/>
+        <location file="/math/optimization/problem.hpp" line="100" bodyfile="/math/optimization/problem.hpp" bodystart="100" bodyend="100"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constrained optimization problem. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000070"><xreftitle>Warning</xreftitle><xrefdescription><para>The passed <ref refid="class_quant_lib_1_1_cost_function" kindref="compound">CostFunction</ref> and <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> instances are stored by reference. The user of this class must make sure that they are not destroyed before the <ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> instance. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="42" bodyend="113"/>
+    <location file="/math/optimization/problem.hpp" line="42" bodyfile="/math/optimization/problem.hpp" bodystart="42" bodyend="113"/>
   </compounddef>
 </doxygen>

@@ -26,7 +26,7 @@
           <type>T</type>
           <declname>process</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="84" bodyend="85"/>
+        <location file="/methods/finitedifferences/pde.hpp" line="85" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="84" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generic_time_setter_1aa7ef6044ec2ce2d17c8d79b5fa64518f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -41,9 +41,9 @@
           <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <declname>L</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="86" bodyend="89"/>
+        <location file="/methods/finitedifferences/pde.hpp" line="87" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="86" bodyend="89"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="81" bodyend="93"/>
+    <location file="/methods/finitedifferences/pde.hpp" line="81" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="81" bodyend="93"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_european_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticEuropeanEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticeuropeanengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/analyticeuropeanengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_european_engine_1a9a978eef476f02e38f9f5d9454ab8dd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -12,14 +12,14 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticeuropeanengine.hpp" line="64"/>
+        <location file="/pricingengines/vanilla/analyticeuropeanengine.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_european_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticeuropeanengine.hpp" line="65"/>
+        <location file="/pricingengines/vanilla/analyticeuropeanengine.hpp" line="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,6 +28,6 @@
 <para><xrefsect id="test_1_test000114"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned value is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned greeks is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned greeks is tested by reproducing numerical derivatives.</para></listitem><listitem><para>the correctness of the returned implied volatility is tested by using it for reproducing the target value.</para></listitem><listitem><para>the implied-volatility calculation is tested by checking that it does not modify the option.</para></listitem><listitem><para>the correctness of the returned value in case of cash-or-nothing digital payoff is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned value in case of asset-or-nothing digital payoff is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned value in case of gap digital payoff is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned greeks in case of cash-or-nothing digital payoff is tested by reproducing numerical derivatives. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticeuropeanengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticeuropeanengine.hpp" bodystart="61" bodyend="68"/>
+    <location file="/pricingengines/vanilla/analyticeuropeanengine.hpp" line="61" bodyfile="/pricingengines/vanilla/analyticeuropeanengine.hpp" bodystart="61" bodyend="68"/>
   </compounddef>
 </doxygen>

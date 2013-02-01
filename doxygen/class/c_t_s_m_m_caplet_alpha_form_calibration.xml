@@ -53,14 +53,14 @@
           <declname>parametricForm</declname>
           <defval>boost::shared_ptr&lt; AlphaForm &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="46"/>
+        <location file="/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1a77482c815b981037462d4b1c5adb9107" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; alpha</definition>
         <argsstring>() const </argsstring>
         <name>alpha</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="88" bodyend="91"/>
+        <location file="/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="48" bodyfile="/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="88" bodyend="91"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -141,9 +141,9 @@
           <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <declname>swapCovariancePseudoRoots</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="74"/>
+        <location file="/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="74"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="30" bodyend="85"/>
+    <location file="/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="30" bodyfile="/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="30" bodyend="85"/>
   </compounddef>
 </doxygen>

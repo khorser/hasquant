@@ -12,9 +12,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" bodystart="41" bodyend="41"/>
+        <location file="/math/curve.hpp" line="41" bodyfile="/math/curve.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" bodystart="39" bodyend="42"/>
+    <location file="/math/curve.hpp" line="39" bodyfile="/math/curve.hpp" bodystart="39" bodyend="42"/>
   </compounddef>
 </doxygen>

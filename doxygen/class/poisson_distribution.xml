@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_poisson_distribution" kind="class" prot="public">
     <compoundname>QuantLib::PoissonDistribution</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp</includes>
+    <includes local="no">/math/distributions/poissondistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_poisson_distribution_1abb0591db83690c6437c7337462ebfea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>mu</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="90" bodyend="97"/>
+        <location file="/math/distributions/poissondistribution.hpp" line="42" bodyfile="/math/distributions/poissondistribution.hpp" bodystart="90" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_poisson_distribution_1a860deba0e182257980641badf4554fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -24,13 +24,13 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>k</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="99" bodyend="106"/>
+        <location file="/math/distributions/poissondistribution.hpp" line="44" bodyfile="/math/distributions/poissondistribution.hpp" bodystart="99" bodyend="106"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Poisson distribution function. </para>    </briefdescription>
     <detaileddescription>
 <para>Given an integer <formula id="184">$ k $</formula>, it returns its probability in a Poisson distribution.</para><para><xrefsect id="test_1_test000032"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="40" bodyend="47"/>
+    <location file="/math/distributions/poissondistribution.hpp" line="40" bodyfile="/math/distributions/poissondistribution.hpp" bodystart="40" bodyend="47"/>
   </compounddef>
 </doxygen>

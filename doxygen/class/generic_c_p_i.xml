@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_generic_c_p_i" kind="class" prot="public">
     <compoundname>QuantLib::GenericCPI</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp</includes>
+    <includes local="no">/experimental/inflation/genericindexes.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_generic_c_p_i_1a128b56a6f44cb160ef3c0f085718a99a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -34,11 +34,11 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="45" bodyend="59"/>
+        <location file="/experimental/inflation/genericindexes.hpp" line="59" bodyfile="/experimental/inflation/genericindexes.hpp" bodystart="45" bodyend="59"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Generic CPI index. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="43" bodyend="60"/>
+    <location file="/experimental/inflation/genericindexes.hpp" line="43" bodyfile="/experimental/inflation/genericindexes.hpp" bodystart="43" bodyend="60"/>
   </compounddef>
 </doxygen>

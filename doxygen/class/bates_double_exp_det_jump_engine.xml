@@ -17,7 +17,7 @@
           <declname>integrationOrder</declname>
           <defval>144</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="148"/>
+        <location file="/pricingengines/vanilla/batesengine.hpp" line="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_det_jump_engine_1a394ddc89bd3ba9a2e4b29b7ae38d98d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -36,9 +36,9 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>maxEvaluations</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="151"/>
+        <location file="/pricingengines/vanilla/batesengine.hpp" line="151"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" bodystart="144" bodyend="155"/>
+    <location file="/pricingengines/vanilla/batesengine.hpp" line="144" bodyfile="/pricingengines/vanilla/batesengine.hpp" bodystart="144" bodyend="155"/>
   </compounddef>
 </doxygen>

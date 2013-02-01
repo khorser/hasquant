@@ -11,7 +11,7 @@
         <name>isExpired</name>
         <detaileddescription>
 <para>A FRA expires/settles on the valueDate </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="89"/>
+        <location file="/instruments/forwardrateagreement.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a49ecc3acffc7ff1c2aacdc1007e6905f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -20,7 +20,7 @@
         <name>settlementDate</name>
         <detaileddescription>
 <para>This returns evaluationDate + settlementDays (not FRA valueDate). </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="93"/>
+        <location file="/instruments/forwardrateagreement.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a1560226b41dc061de57d00f0b0e0b7eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -33,7 +33,7 @@
         </param>
         <detaileddescription>
 <para>Income is zero for a FRA </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="96"/>
+        <location file="/instruments/forwardrateagreement.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a51d635d520ea883db82bac7f4e684b75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -44,7 +44,7 @@
 <para>Spot value (NPV) of the underlying loan. </para>        </briefdescription>
         <detaileddescription>
 <para>This has always a positive value (asset), even if short the FRA </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="99"/>
+        <location file="/instruments/forwardrateagreement.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1abbe3314a442cd9731e16d18156a1fd80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref></type>
@@ -53,7 +53,7 @@
         <name>forwardRate</name>
         <briefdescription>
 <para>Returns the relevant forward rate associated with the FRA term. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="101"/>
+        <location file="/instruments/forwardrateagreement.hpp" line="101"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -91,9 +91,9 @@
           <declname>discountCurve</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="85"/>
+        <location file="/instruments/forwardrateagreement.hpp" line="85"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" bodystart="76" bodyend="113"/>
+    <location file="/instruments/forwardrateagreement.hpp" line="76" bodyfile="/instruments/forwardrateagreement.hpp" bodystart="76" bodyend="113"/>
   </compounddef>
 </doxygen>

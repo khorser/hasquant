@@ -18,23 +18,23 @@
           <declname>includeSettlementDateFlows</declname>
           <defval>boost::none</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/discountingbondengine.hpp" line="39"/>
+        <location file="/pricingengines/bond/discountingbondengine.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discounting_bond_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/discountingbondengine.hpp" line="40"/>
+        <location file="/pricingengines/bond/discountingbondengine.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discounting_bond_engine_1a80fd74539bdffcb8be719e5b8929feb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; discountCurve</definition>
         <argsstring>() const </argsstring>
         <name>discountCurve</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/discountingbondengine.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/discountingbondengine.hpp" bodystart="41" bodyend="43"/>
+        <location file="/pricingengines/bond/discountingbondengine.hpp" line="41" bodyfile="/pricingengines/bond/discountingbondengine.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/discountingbondengine.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/discountingbondengine.hpp" bodystart="34" bodyend="47"/>
+    <location file="/pricingengines/bond/discountingbondengine.hpp" line="34" bodyfile="/pricingengines/bond/discountingbondengine.hpp" bodystart="34" bodyend="47"/>
   </compounddef>
 </doxygen>

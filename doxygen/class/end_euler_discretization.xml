@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_end_euler_discretization" kind="class" prot="public">
     <compoundname>QuantLib::EndEulerDiscretization</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp</includes>
+    <includes local="no">/processes/endeulerdiscretization.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a4ccb2b71c5b53c2450145b60e512e60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -27,7 +27,7 @@
         </param>
         <detaileddescription>
 <para>Returns an approximation of the drift defined as <formula id="332">$ \mu(t_0 + \Delta t, \mathbf{x}_0) \Delta t $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="42"/>
+        <location file="/processes/endeulerdiscretization.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1aace3fe63ebb3a6ce20936fa350225fc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -52,7 +52,7 @@
         </param>
         <detaileddescription>
 <para>Returns an approximation of the drift defined as <formula id="333">$ \mu(t_0 + \Delta t, x_0) \Delta t $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="47"/>
+        <location file="/processes/endeulerdiscretization.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a27957fdcfeb5f78298809f5f68a00049" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -77,7 +77,7 @@
         </param>
         <detaileddescription>
 <para>Returns an approximation of the diffusion defined as <formula id="334">$ \sigma(t_0 + \Delta t, \mathbf{x}_0) \sqrt{\Delta t} $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="53"/>
+        <location file="/processes/endeulerdiscretization.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a2fe5ea3e1cb704f46b5feb48d6392f52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -102,7 +102,7 @@
         </param>
         <detaileddescription>
 <para>Returns an approximation of the diffusion defined as <formula id="335">$ \sigma(t_0 + \Delta t, x_0) \sqrt{\Delta t} $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="58"/>
+        <location file="/processes/endeulerdiscretization.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a12f8c34783b3d11ade94edb16ec555e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -127,7 +127,7 @@
         </param>
         <detaileddescription>
 <para>Returns an approximation of the covariance defined as <formula id="336">$ \sigma(t_0 + \Delta t, \mathbf{x}_0)^2 \Delta t $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="64"/>
+        <location file="/processes/endeulerdiscretization.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a0fb3806021f712a2284bad6a4b87b63f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -152,11 +152,11 @@
         </param>
         <detaileddescription>
 <para>Returns an approximation of the variance defined as <formula id="337">$ \sigma(t_0 + \Delta t, x_0)^2 \Delta t $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="69"/>
+        <location file="/processes/endeulerdiscretization.hpp" line="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Euler end-point discretization for stochastic processes. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" bodystart="33" bodyend="70"/>
+    <location file="/processes/endeulerdiscretization.hpp" line="35" bodyfile="/processes/endeulerdiscretization.hpp" bodystart="33" bodyend="70"/>
   </compounddef>
 </doxygen>

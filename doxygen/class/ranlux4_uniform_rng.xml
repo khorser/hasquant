@@ -8,7 +8,7 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="62" bodyend="-1"/>
+        <location file="/math/randomnumbers/ranluxuniformrng.hpp" line="62" bodyfile="/math/randomnumbers/ranluxuniformrng.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -22,16 +22,16 @@
           <declname>seed</declname>
           <defval>19780503u</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="64" bodyend="65"/>
+        <location file="/math/randomnumbers/ranluxuniformrng.hpp" line="65" bodyfile="/math/randomnumbers/ranluxuniformrng.hpp" bodystart="64" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ranlux4_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
         <definition>sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="67" bodyend="69"/>
+        <location file="/math/randomnumbers/ranluxuniformrng.hpp" line="67" bodyfile="/math/randomnumbers/ranluxuniformrng.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="60" bodyend="73"/>
+    <location file="/math/randomnumbers/ranluxuniformrng.hpp" line="60" bodyfile="/math/randomnumbers/ranluxuniformrng.hpp" bodystart="60" bodyend="73"/>
   </compounddef>
 </doxygen>

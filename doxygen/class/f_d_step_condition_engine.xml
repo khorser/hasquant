@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_step_condition_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FDStepConditionEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/fdstepconditionengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -34,11 +34,11 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="41" bodyend="46"/>
+        <location file="/pricingengines/vanilla/fdstepconditionengine.hpp" line="46" bodyfile="/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="41" bodyend="46"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Finite-differences pricing engine for American-style vanilla options. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="39" bodyend="55"/>
+    <location file="/pricingengines/vanilla/fdstepconditionengine.hpp" line="39" bodyfile="/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="39" bodyend="55"/>
   </compounddef>
 </doxygen>

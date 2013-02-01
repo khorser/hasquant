@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_measure_process1_d" kind="class" prot="public">
     <compoundname>QuantLib::ForwardMeasureProcess1D</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp</includes>
+    <includes local="no">/processes/forwardmeasureprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_forward_measure_process1_d_1a3a96bffd94ced6cc152372a566e0149b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -12,20 +12,20 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="56"/>
+        <location file="/processes/forwardmeasureprocess.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_measure_process1_d_1afe41668f5b5ae4637406e1a9e19ea204" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time getForwardMeasureTime</definition>
         <argsstring>() const </argsstring>
         <name>getForwardMeasureTime</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="57"/>
+        <location file="/processes/forwardmeasureprocess.hpp" line="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>forward-measure 1-D stochastic process </para>    </briefdescription>
     <detaileddescription>
 <para>1-D stochastic process whose dynamics are expressed in the forward measure. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" bodystart="54" bodyend="63"/>
+    <location file="/processes/forwardmeasureprocess.hpp" line="54" bodyfile="/processes/forwardmeasureprocess.hpp" bodystart="54" bodyend="63"/>
   </compounddef>
 </doxygen>

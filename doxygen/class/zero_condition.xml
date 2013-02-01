@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_zero_condition" kind="class" prot="public">
     <compoundname>QuantLib::ZeroCondition</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp</includes>
+    <includes local="no">/methods/finitedifferences/zerocondition.hpp</includes>
     <templateparamlist>
       <param>
         <type>class array_type</type>
@@ -22,13 +22,13 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" bodystart="37" bodyend="41"/>
+        <location file="/methods/finitedifferences/zerocondition.hpp" line="37" bodyfile="/methods/finitedifferences/zerocondition.hpp" bodystart="37" bodyend="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Zero exercise condition. </para>    </briefdescription>
     <detaileddescription>
 <para>Used in CEV models </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" bodystart="35" bodyend="42"/>
+    <location file="/methods/finitedifferences/zerocondition.hpp" line="35" bodyfile="/methods/finitedifferences/zerocondition.hpp" bodystart="35" bodyend="42"/>
   </compounddef>
 </doxygen>

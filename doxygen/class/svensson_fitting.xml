@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_svensson_fitting" kind="class" prot="public">
     <compoundname>QuantLib::SvenssonFitting</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
+    <includes local="no">/termstructures/yield/nonlinearfittingmethods.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_svensson_fitting_1a1a4c9ac2a84c4f7437f2878a362e989e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SvenssonFitting</definition>
         <argsstring>()</argsstring>
         <name>SvenssonFitting</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="92"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_svensson_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
@@ -19,13 +19,13 @@
         <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="93"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="93"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Svensson Fitting method. </para>    </briefdescription>
     <detaileddescription>
 <para>Fits a discount function to the form <formula id="398">$ d(t) = \exp^{-r t}, $</formula> where the zero rate <formula id="399">$r$</formula> is defined as <formula id="401">\[ r \equiv c_0 + (c_0 + c_1)(\frac {1 - exp^{-\kappa t}}{\kappa t}) - c_2exp^{ - \kappa t} + c_3{(\frac{1 - exp^{-\kappa_1 t}}{\kappa_1 t} -exp^{-\kappa_1 t})}. \]</formula> See: Svensson, L. (1994). Estimating and interpreting forward interest rates: <ref refid="class_quant_lib_1_1_sweden" kindref="compound">Sweden</ref> 1992-4. Discussion paper, Centre for Economic Policy Research(1051). </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="89" bodyend="97"/>
+    <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="90" bodyfile="/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="89" bodyend="97"/>
   </compounddef>
 </doxygen>

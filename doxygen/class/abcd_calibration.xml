@@ -8,63 +8,63 @@
         <definition>bool aIsFixed_</definition>
         <argsstring></argsstring>
         <name>aIsFixed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="130" bodyend="-1"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="130" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1abe733e9de0a51e041dc5fe77b1e3f0f5" prot="public" static="no" mutable="no">
         <type>bool</type>
         <definition>bool bIsFixed_</definition>
         <argsstring></argsstring>
         <name>bIsFixed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="130" bodyend="-1"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="130" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1a1b50a123059cec04054b5c84e3f7bc5b" prot="public" static="no" mutable="no">
         <type>bool</type>
         <definition>bool cIsFixed_</definition>
         <argsstring></argsstring>
         <name>cIsFixed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="130" bodyend="-1"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="130" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1a4f810a79ce0c97c08c80ebaa0d137056" prot="public" static="no" mutable="no">
         <type>bool</type>
         <definition>bool dIsFixed_</definition>
         <argsstring></argsstring>
         <name>dIsFixed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="130" bodyend="-1"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="130" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1a114bd3f70557109ba551776610bb2dc1" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real a_</definition>
         <argsstring></argsstring>
         <name>a_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1a0d5754808d36bc0b9f0326d84a42efb8" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real b_</definition>
         <argsstring></argsstring>
         <name>b_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1a04b890f917032156f955c80d329dbd80" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real c_</definition>
         <argsstring></argsstring>
         <name>c_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1a260091718af93fbcb88cdd51b7d6aa00" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real d_</definition>
         <argsstring></argsstring>
         <name>d_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1ab6f86a6c4eb502d68c63e01209e7a1a1" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; ParametersTransformation &gt;</type>
         <definition>boost::shared_ptr&lt;ParametersTransformation&gt; transformation_</definition>
         <argsstring></argsstring>
         <name>transformation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="132" bodyend="-1"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="132" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -73,7 +73,7 @@
         <definition>AbcdCalibration</definition>
         <argsstring>()</argsstring>
         <name>AbcdCalibration</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="96" bodyend="96"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="96" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1ac84e2355213d6b71fd57d8a4e6d0ebb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -143,7 +143,7 @@
           <declname>method</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="112"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1a3f065d2c0d38ca1bf702ad704202fa71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
@@ -160,14 +160,14 @@
         </param>
         <briefdescription>
 <para>adjustment factors needed to match Black vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="116"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1a4993c97a669fa259c6574a18d547c117" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void compute</definition>
         <argsstring>()</argsstring>
         <name>compute</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="117"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -178,65 +178,65 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="119"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1a2edb8d9dd3300af249756cdae6e90d6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real error</definition>
         <argsstring>() const </argsstring>
         <name>error</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="120"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1ac4d9decda86622fb96bacef77cfc4424" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxError</definition>
         <argsstring>() const </argsstring>
         <name>maxError</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="121"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1af99ae99329f6559b7e297a02195de859" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; errors</definition>
         <argsstring>() const </argsstring>
         <name>errors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="122"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="122"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1ad1df8a2c9fb6a94b00ab1e6670be4ce5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>EndCriteria::Type</type>
         <definition>EndCriteria::Type endCriteria</definition>
         <argsstring>() const </argsstring>
         <name>endCriteria</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="123"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="125"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1ad1cf85afbb81add225d9d591923cae35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real b</definition>
         <argsstring>() const </argsstring>
         <name>b</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="126"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1acd8075f42c1494dfe8ba083550bc3ad4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real c</definition>
         <argsstring>() const </argsstring>
         <name>c</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="127"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1a8743fd2d2de27e48775635a148f15159" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real d</definition>
         <argsstring>() const </argsstring>
         <name>d</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="128"/>
+        <location file="/termstructures/volatility/abcdcalibration.hpp" line="128"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="39" bodyend="144"/>
+    <location file="/termstructures/volatility/abcdcalibration.hpp" line="39" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="39" bodyend="144"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cubic_b_splines_fitting" kind="class" prot="public">
     <compoundname>QuantLib::CubicBSplinesFitting</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
+    <includes local="no">/termstructures/yield/nonlinearfittingmethods.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a980eea5e9fe83b0f615979eb72e3d723" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -18,7 +18,7 @@
           <declname>constrainAtZero</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="123"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a7cf67a421608459910a700bac59ae3ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -35,7 +35,7 @@
         </param>
         <briefdescription>
 <para>cubic B-spline basis functions </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="125"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
@@ -45,7 +45,7 @@
         <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="126"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="126"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -57,6 +57,6 @@
   Journal of Finance, XXX811-30
 </verbatim></para><para><xrefsect id="caveats_1_caveats000140"><xreftitle>Warning</xreftitle><xrefdescription><para>"The results are extremely sensitive to the number and location of the knot points, and there is no optimal way of selecting them.&quot; James, J. and
                  N. Webber, &quot;Interest Rate Modelling" John Wiley, 2000, pp. 440. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="119" bodyend="134"/>
+    <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="120" bodyfile="/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="119" bodyend="134"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cms_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::CmsCouponPricer</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp</includes>
+    <includes local="no">/cashflows/couponpricer.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cms_coupon_pricer_1a020c99088bd1bc23f839031d9841d2da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -14,14 +14,14 @@
           <declname>v</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="117" bodyend="119"/>
+        <location file="/cashflows/couponpricer.hpp" line="119" bodyfile="/cashflows/couponpricer.hpp" bodystart="117" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_coupon_pricer_1abba72df9d5d3b68df94ed0993bdaf7ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
         <definition>Handle&lt;SwaptionVolatilityStructure&gt; swaptionVolatility</definition>
         <argsstring>() const </argsstring>
         <name>swaptionVolatility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="121" bodyend="123"/>
+        <location file="/cashflows/couponpricer.hpp" line="121" bodyfile="/cashflows/couponpricer.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_coupon_pricer_1acc82e5245021859b6ba363e4a12df3df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -33,11 +33,11 @@
           <declname>v</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="124" bodyend="131"/>
+        <location file="/cashflows/couponpricer.hpp" line="126" bodyfile="/cashflows/couponpricer.hpp" bodystart="124" bodyend="131"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base pricer for vanilla CMS coupons </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="115" bodyend="134"/>
+    <location file="/cashflows/couponpricer.hpp" line="115" bodyfile="/cashflows/couponpricer.hpp" bodystart="115" bodyend="134"/>
   </compounddef>
 </doxygen>

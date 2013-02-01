@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_conjugate_gradient" kind="class" prot="public">
     <compoundname>QuantLib::ConjugateGradient</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/conjugategradient.hpp</includes>
+    <includes local="no">/math/optimization/conjugategradient.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_conjugate_gradient_1a611b1406837535a9ac3fea2ed17ef2e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -14,13 +14,13 @@
           <declname>lineSearch</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/conjugategradient.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/conjugategradient.hpp" bodystart="44" bodyend="46"/>
+        <location file="/math/optimization/conjugategradient.hpp" line="46" bodyfile="/math/optimization/conjugategradient.hpp" bodystart="44" bodyend="46"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Multi-dimensional Conjugate Gradient class. </para>    </briefdescription>
     <detaileddescription>
 <para>Fletcher-Reeves-Polak-Ribiere algorithm adapted from Numerical Recipes in C, 2nd edition.</para><para>User has to provide line-search method and optimization end criteria. Search direction <formula id="225">$ d_i = - f&apos;(x_i) + c_i*d_{i-1} $</formula> where <formula id="226">$ c_i = ||f&apos;(x_i)||^2/||f&apos;(x_{i-1})||^2 $</formula> and <formula id="227">$ d_1 = - f&apos;(x_1) $</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/conjugategradient.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/conjugategradient.hpp" bodystart="42" bodyend="54"/>
+    <location file="/math/optimization/conjugategradient.hpp" line="42" bodyfile="/math/optimization/conjugategradient.hpp" bodystart="42" bodyend="54"/>
   </compounddef>
 </doxygen>

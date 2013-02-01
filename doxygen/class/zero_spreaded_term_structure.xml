@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_zero_spreaded_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::ZeroSpreadedTermStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp</includes>
+    <includes local="no">/termstructures/yield/zerospreadedtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>YieldTermStructure interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_spreaded_term_structure_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="92" bodyend="94"/>
+        <location file="/termstructures/yield/zerospreadedtermstructure.hpp" line="55" bodyfile="/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="92" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_spreaded_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="96" bodyend="98"/>
+        <location file="/termstructures/yield/zerospreadedtermstructure.hpp" line="56" bodyfile="/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="96" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_spreaded_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
@@ -33,7 +33,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="100" bodyend="102"/>
+        <location file="/termstructures/yield/zerospreadedtermstructure.hpp" line="57" bodyfile="/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="100" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_spreaded_term_structure_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
@@ -43,7 +43,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="104" bodyend="106"/>
+        <location file="/termstructures/yield/zerospreadedtermstructure.hpp" line="58" bodyfile="/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="104" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_spreaded_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -53,7 +53,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="108" bodyend="110"/>
+        <location file="/termstructures/yield/zerospreadedtermstructure.hpp" line="59" bodyfile="/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="108" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_spreaded_term_structure_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -63,7 +63,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
         <briefdescription>
 <para>the latest time for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="112" bodyend="114"/>
+        <location file="/termstructures/yield/zerospreadedtermstructure.hpp" line="60" bodyfile="/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -95,7 +95,7 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="76" bodyend="90"/>
+        <location file="/termstructures/yield/zerospreadedtermstructure.hpp" line="52" bodyfile="/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="76" bodyend="90"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -105,6 +105,6 @@
 <xrefsect id="test_1_test000143"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned values is tested by checking them against numerical calculations.</para></listitem><listitem><para>observability against changes in the underlying term structure and in the added spread is checked. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="46" bodyend="74"/>
+    <location file="/termstructures/yield/zerospreadedtermstructure.hpp" line="46" bodyfile="/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="46" bodyend="74"/>
   </compounddef>
 </doxygen>

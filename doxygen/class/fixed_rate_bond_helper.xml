@@ -9,7 +9,7 @@
         <definition>boost::shared_ptr&lt; FixedRateBond &gt; fixedRateBond</definition>
         <argsstring>() const </argsstring>
         <name>fixedRateBond</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" bodystart="97" bodyend="99"/>
+        <location file="/termstructures/yield/bondhelpers.hpp" line="79" bodyfile="/termstructures/yield/bondhelpers.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -22,7 +22,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="83"/>
+        <location file="/termstructures/yield/bondhelpers.hpp" line="83"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -70,9 +70,9 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="76"/>
+        <location file="/termstructures/yield/bondhelpers.hpp" line="76"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" bodystart="66" bodyend="87"/>
+    <location file="/termstructures/yield/bondhelpers.hpp" line="66" bodyfile="/termstructures/yield/bondhelpers.hpp" bodystart="66" bodyend="87"/>
   </compounddef>
 </doxygen>

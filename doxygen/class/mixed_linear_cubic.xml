@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mixed_linear_cubic" kind="class" prot="public">
     <compoundname>QuantLib::MixedLinearCubic</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/mixedinterpolation.hpp</includes>
       <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_mixed_linear_cubic_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
         <type>const bool</type>
@@ -10,7 +10,7 @@
         <argsstring></argsstring>
         <name>global</name>
         <initializer>= true</initializer>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="142" bodyend="-1"/>
+        <location file="/math/interpolations/mixedinterpolation.hpp" line="142" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_mixed_linear_cubic_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
         <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -18,7 +18,7 @@
         <argsstring></argsstring>
         <name>requiredPoints</name>
         <initializer>= 3</initializer>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="143" bodyend="-1"/>
+        <location file="/math/interpolations/mixedinterpolation.hpp" line="143" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -60,7 +60,7 @@
           <declname>rightConditionValue</declname>
           <defval>0.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="120" bodyend="131"/>
+        <location file="/math/interpolations/mixedinterpolation.hpp" line="131" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="120" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mixed_linear_cubic_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -87,11 +87,11 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="133" bodyend="140"/>
+        <location file="/math/interpolations/mixedinterpolation.hpp" line="134" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="133" bodyend="140"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>mixed linear/cubic interpolation factory and traits </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="118" bodyend="150"/>
+    <location file="/math/interpolations/mixedinterpolation.hpp" line="118" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="118" bodyend="150"/>
   </compounddef>
 </doxygen>

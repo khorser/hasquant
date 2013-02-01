@@ -35,9 +35,9 @@
           <declname>mandatoryPoint</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmsimpleprocess1dmesher.hpp" line="41"/>
+        <location file="/methods/finitedifferences/meshers/fdmsimpleprocess1dmesher.hpp" line="41"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmsimpleprocess1dmesher.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmsimpleprocess1dmesher.hpp" bodystart="35" bodyend="42"/>
+    <location file="/methods/finitedifferences/meshers/fdmsimpleprocess1dmesher.hpp" line="35" bodyfile="/methods/finitedifferences/meshers/fdmsimpleprocess1dmesher.hpp" bodystart="35" bodyend="42"/>
   </compounddef>
 </doxygen>

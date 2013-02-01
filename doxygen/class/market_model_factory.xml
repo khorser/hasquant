@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_market_model_factory" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::MarketModelFactory</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp</includes>
+    <includes local="no">/models/marketmodels/marketmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_factory_1a3fa54b54445fc2742a15bea0d4c2435f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~MarketModelFactory</definition>
         <argsstring>()</argsstring>
         <name>~MarketModelFactory</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="59" bodyend="59"/>
+        <location file="/models/marketmodels/marketmodel.hpp" line="59" bodyfile="/models/marketmodels/marketmodel.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_factory_1a20dc781ed3be433dc386daf56859e6b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt;</type>
@@ -23,11 +23,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>numberOfFactors</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="62"/>
+        <location file="/models/marketmodels/marketmodel.hpp" line="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for market-model factories </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="57" bodyend="63"/>
+    <location file="/models/marketmodels/marketmodel.hpp" line="57" bodyfile="/models/marketmodels/marketmodel.hpp" bodystart="57" bodyend="63"/>
   </compounddef>
 </doxygen>

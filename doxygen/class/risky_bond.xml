@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_risky_bond" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::RiskyBond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp</includes>
+    <includes local="no">/experimental/credit/riskybond.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="72"/>
+        <location file="/experimental/credit/riskybond.hpp" line="72"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,28 +42,28 @@
           <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
           <declname>yieldTS</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="45" bodyend="54"/>
+        <location file="/experimental/credit/riskybond.hpp" line="51" bodyfile="/experimental/credit/riskybond.hpp" bodystart="45" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a72dcd8b14572643dfc5086152ba9fa22" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~RiskyBond</definition>
         <argsstring>()</argsstring>
         <name>~RiskyBond</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="55" bodyend="55"/>
+        <location file="/experimental/credit/riskybond.hpp" line="55" bodyfile="/experimental/credit/riskybond.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a65472f32ffe45cf2966fe454256b53d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
         <definition>virtual std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; cashflows</definition>
         <argsstring>() const =0</argsstring>
         <name>cashflows</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="56"/>
+        <location file="/experimental/credit/riskybond.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a5984fd1d8915bf44d28eb9df0eefa84f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
         <definition>std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; expectedCashflows</definition>
         <argsstring>()</argsstring>
         <name>expectedCashflows</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="57"/>
+        <location file="/experimental/credit/riskybond.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a5c5584164976b30f71fd4d47866a6a7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -75,88 +75,88 @@
           <declname>date</declname>
           <defval><ref refid="class_quant_lib_1_1_date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="58"/>
+        <location file="/experimental/credit/riskybond.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a4fd16e05df63a0060efd55ab4d2396bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>virtual Date effectiveDate</definition>
         <argsstring>() const =0</argsstring>
         <name>effectiveDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="59"/>
+        <location file="/experimental/credit/riskybond.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a580b196687c62f4d8576f11ef8987477" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>virtual Date maturityDate</definition>
         <argsstring>() const =0</argsstring>
         <name>maturityDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="60"/>
+        <location file="/experimental/credit/riskybond.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a4587be7cee2cbaec53a7773806961f95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
         <definition>virtual std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; interestFlows</definition>
         <argsstring>() const =0</argsstring>
         <name>interestFlows</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="61"/>
+        <location file="/experimental/credit/riskybond.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a0f39350cd04b9af24095c5345c33e103" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
         <definition>virtual std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; notionalFlows</definition>
         <argsstring>() const =0</argsstring>
         <name>notionalFlows</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="62"/>
+        <location file="/experimental/credit/riskybond.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a85d6833ce9d7b23841364e286f1ca08d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real riskfreeNPV</definition>
         <argsstring>() const </argsstring>
         <name>riskfreeNPV</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="63"/>
+        <location file="/experimental/credit/riskybond.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1ad017b0af4b1c00e985e4cd1aaff9fc59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real totalFutureFlows</definition>
         <argsstring>() const </argsstring>
         <name>totalFutureFlows</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="64"/>
+        <location file="/experimental/credit/riskybond.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="85" bodyend="87"/>
+        <location file="/experimental/credit/riskybond.hpp" line="65" bodyfile="/experimental/credit/riskybond.hpp" bodystart="85" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1adaa394f96f4c89f9ff54a2a14b17de32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
         <definition>Currency ccy</definition>
         <argsstring>() const </argsstring>
         <name>ccy</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="89" bodyend="91"/>
+        <location file="/experimental/credit/riskybond.hpp" line="66" bodyfile="/experimental/credit/riskybond.hpp" bodystart="89" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a11b5d30fbf6753a713128718f695ae91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt; YieldTermStructure &gt; yieldTS</definition>
         <argsstring>() const </argsstring>
         <name>yieldTS</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="93" bodyend="95"/>
+        <location file="/experimental/credit/riskybond.hpp" line="67" bodyfile="/experimental/credit/riskybond.hpp" bodystart="93" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1ae843fa880b8cbf8da9c70c076e67a1d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
         <definition>Handle&lt; DefaultProbabilityTermStructure &gt; defaultTS</definition>
         <argsstring>() const </argsstring>
         <name>defaultTS</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="98" bodyend="100"/>
+        <location file="/experimental/credit/riskybond.hpp" line="68" bodyfile="/experimental/credit/riskybond.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1ad653c525e655dafe793f00ad3babf964" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real recoveryRate</definition>
         <argsstring>() const </argsstring>
         <name>recoveryRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="102" bodyend="104"/>
+        <location file="/experimental/credit/riskybond.hpp" line="69" bodyfile="/experimental/credit/riskybond.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>Base class for default risky bonds </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="43" bodyend="83"/>
+    <location file="/experimental/credit/riskybond.hpp" line="43" bodyfile="/experimental/credit/riskybond.hpp" bodystart="43" bodyend="83"/>
   </compounddef>
 </doxygen>

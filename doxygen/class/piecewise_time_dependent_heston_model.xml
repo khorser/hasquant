@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_piecewise_time_dependent_heston_model" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseTimeDependentHestonModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp</includes>
+    <includes local="no">/models/equity/piecewisetimedependenthestonmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1a51af1b4e0d1b37952eab732e7b690a0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -45,7 +45,7 @@
           <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>timeGrid</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="55"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1a0ee6c03f0d68bbbd8bb4e988312fc9a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -56,7 +56,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="58" bodyend="58"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="58" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1a437f480c0f45ca8076b5a74e6642a2ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -67,7 +67,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="60" bodyend="60"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="60" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1af55b8485350f45784539408174aa508a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -78,7 +78,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="62" bodyend="62"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="62" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1ad84f33ce638b8fc7b86421a15ce05edf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -89,42 +89,42 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="64" bodyend="64"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="64" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1a30fd40988a93faccca807dd016f8c5e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real v0</definition>
         <argsstring>() const </argsstring>
         <name>v0</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="66" bodyend="66"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="66" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1a67692879821e11afc2695472d9dba61c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real s0</definition>
         <argsstring>() const </argsstring>
         <name>s0</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="68" bodyend="68"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="68" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
         <definition>const TimeGrid&amp; timeGrid</definition>
         <argsstring>() const </argsstring>
         <name>timeGrid</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="71"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1ad410a408dd37b79578b370b5219dbf80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; dividendYield</definition>
         <argsstring>() const </argsstring>
         <name>dividendYield</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="72"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_time_dependent_heston_model_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; riskFreeRate</definition>
         <argsstring>() const </argsstring>
         <name>riskFreeRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="73"/>
+        <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="73"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -137,6 +137,6 @@
    A. Elices, Models with time-dependent parameters using 
    transform methods: application to Heston’s model,
    http://arxiv.org/pdf/0708.2020</verbatim> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="44" bodyend="80"/>
+    <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="44" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="44" bodyend="80"/>
   </compounddef>
 </doxygen>

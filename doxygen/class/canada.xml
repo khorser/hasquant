@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_canada" kind="class" prot="public">
     <compoundname>QuantLib::Canada</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/canada.hpp</includes>
+    <includes local="no">/time/calendars/canada.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_canada_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -16,7 +16,7 @@
           <briefdescription>
 <para>Toronto stock exchange calendar. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/canada.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/canada.hpp" bodystart="85" bodyend="87"/>
+        <location file="/time/calendars/canada.hpp" line="85" bodyfile="/time/calendars/canada.hpp" bodystart="85" bodyend="87"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -30,7 +30,7 @@
           <declname>market</declname>
           <defval><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/canada.hpp" line="88"/>
+        <location file="/time/calendars/canada.hpp" line="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -91,6 +91,6 @@
 <para>Boxing Day, December 26th (possibly moved to Monday or Tuesday) </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/canada.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/canada.hpp" bodystart="72" bodyend="89"/>
+    <location file="/time/calendars/canada.hpp" line="72" bodyfile="/time/calendars/canada.hpp" bodystart="72" bodyend="89"/>
   </compounddef>
 </doxygen>

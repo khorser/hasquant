@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_zero_coupon_inflation_swap_helper" kind="class" prot="public">
     <compoundname>QuantLib::ZeroCouponInflationSwapHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationhelpers.hpp</includes>
+    <includes local="no">/termstructures/inflation/inflationhelpers.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_helper_1a4e70e51e74933ab62b4ba54fa33c73e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -37,7 +37,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
           <declname>zii</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationhelpers.hpp" line="46"/>
+        <location file="/termstructures/inflation/inflationhelpers.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_helper_1a70ad3f5015feaac40fbe9ccb8cc04ee4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -52,7 +52,7 @@
 <para>sets the term structure to be used for pricing </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000108"><xreftitle>Warning</xreftitle><xrefdescription><para>Being a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to <bold>this</bold>, i.e., the term structure itself. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationhelpers.hpp" line="48"/>
+        <location file="/termstructures/inflation/inflationhelpers.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -60,11 +60,11 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationhelpers.hpp" line="49"/>
+        <location file="/termstructures/inflation/inflationhelpers.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Zero-coupon inflation-swap bootstrap helper. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationhelpers.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationhelpers.hpp" bodystart="36" bodyend="58"/>
+    <location file="/termstructures/inflation/inflationhelpers.hpp" line="37" bodyfile="/termstructures/inflation/inflationhelpers.hpp" bodystart="36" bodyend="58"/>
   </compounddef>
 </doxygen>

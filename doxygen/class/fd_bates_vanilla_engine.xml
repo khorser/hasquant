@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fd_bates_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdBatesVanillaEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/fdbatesvanillaengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fd_bates_vanilla_engine_1a89b17a2f0599a9c0e3e3fbe5631ac3b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -38,7 +38,7 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="48"/>
+        <location file="/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_bates_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -46,11 +46,11 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="51"/>
+        <location file="/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Partial Integro FiniteDifferences Bates Vanilla <ref refid="class_quant_lib_1_1_option" kindref="compound">Option</ref> engine. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" bodystart="39" bodyend="56"/>
+    <location file="/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="42" bodyfile="/pricingengines/vanilla/fdbatesvanillaengine.hpp" bodystart="39" bodyend="56"/>
   </compounddef>
 </doxygen>

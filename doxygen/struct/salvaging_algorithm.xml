@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1_salvaging_algorithm" kind="struct" prot="public">
+    <compoundname>QuantLib::SalvagingAlgorithm</compoundname>
+    <includes local="no">/math/matrixutilities/pseudosqrt.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7ac9d3e887722f2bc482bcca9d41c512af" prot="public">
+          <name>None</name>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7af2e65f0848a7d6c4d5056284da2bb9a5" prot="public">
+          <name>Spectral</name>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7a64774f5807b917f4c4259bc4f652d92e" prot="public">
+          <name>Hypersphere</name>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7af4e61a4d8deccf62472a49e4fc152c79" prot="public">
+          <name>LowerDiagonal</name>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7a54f7c6cb990bf6fc143cc2d797a961c3" prot="public">
+          <name>Higham</name>
+        </enumvalue>
+        <location file="/math/matrixutilities/pseudosqrt.hpp" line="33" bodyfile="/math/matrixutilities/pseudosqrt.hpp" bodystart="33" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>algorithm used for matricial pseudo square root </para>    </briefdescription>
+    <location file="/math/matrixutilities/pseudosqrt.hpp" line="32" bodyfile="/math/matrixutilities/pseudosqrt.hpp" bodystart="32" bodyend="34"/>
+  </compounddef>
+</doxygen>

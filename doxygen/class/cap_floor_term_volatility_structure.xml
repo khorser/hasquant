@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cap_floor_term_volatility_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CapFloorTermVolatilityStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp</includes>
+    <includes local="no">/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
@@ -26,7 +26,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000116"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="50"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a78c3b4b9eed5cd633319bba3e4d8d303" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -44,7 +44,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000117"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="57"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a5995d58d27d3a346d3373f3df4a4681f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -70,7 +70,7 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="62"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a76c9c7be73b01bfe368d629468950ea7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -95,7 +95,7 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="67"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -120,7 +120,7 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given cap/floor length and strike rate </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="93" bodyend="98"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="75" bodyfile="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="93" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a4152aa0bedc71194ddd908caffdb6631" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -140,7 +140,7 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="101" bodyend="107"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="78" bodyfile="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="101" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a8c3285fcf4b32b98557cd4270e77bdae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -162,7 +162,7 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given end time and strike rate </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="110" bodyend="116"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="82" bodyfile="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="110" bodyend="116"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -171,13 +171,13 @@
         <definition>virtual ~CapFloorTermVolatilityStructure</definition>
         <argsstring>()</argsstring>
         <name>~CapFloorTermVolatilityStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="69" bodyend="69"/>
+        <location file="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="69" bodyfile="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Cap/floor term-volatility structure. </para>    </briefdescription>
     <detaileddescription>
 <para>This class is purely abstract and defines the interface of concrete structures which will be derived from this one. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="36" bodyend="88"/>
+    <location file="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="36" bodyfile="/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="36" bodyend="88"/>
   </compounddef>
 </doxygen>

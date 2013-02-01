@@ -14,7 +14,7 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="242" bodyend="244"/>
+        <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="180" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="242" bodyend="244"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -23,7 +23,7 @@
         <name>performCalculations</name>
         <detaileddescription>
 <para>set up the interpolations for capPrice_ and floorPrice_ since we know ATM, and we have single flows, we can use put/call parity to extend the surfaces across all strikes </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="253" bodyend="335"/>
+        <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="181" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="253" bodyend="335"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -44,7 +44,7 @@
 <para>remember that the strikes use the quoting convention </para>        </briefdescription>
         <detaileddescription>
 <para>remember that the strike uses the quoting convention </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="193" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="340" bodyend="344"/>
+        <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="193" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="340" bodyend="344"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface_1a117624639548aa99f4972d0724304976" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -61,7 +61,7 @@
         </param>
         <briefdescription>
 <para>remember that the strike uses the quoting convention </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="194" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="349" bodyend="352"/>
+        <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="194" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="349" bodyend="352"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface_1af4014079a3db1bb4029f72f83c2fdb77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -78,7 +78,7 @@
         </param>
         <briefdescription>
 <para>remember that the strike uses the quoting convention </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="195" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="357" bodyend="360"/>
+        <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="195" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="357" bodyend="360"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -144,9 +144,9 @@
           <declname>interpolator2d</declname>
           <defval>Interpolator2D()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="176"/>
+        <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="176"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="160" bodyend="206"/>
+    <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="161" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="160" bodyend="206"/>
   </compounddef>
 </doxygen>

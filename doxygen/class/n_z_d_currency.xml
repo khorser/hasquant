@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_n_z_d_currency" kind="class" prot="public">
     <compoundname>QuantLib::NZDCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/oceania.hpp</includes>
+    <includes local="no">/currencies/oceania.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_n_z_d_currency_1a22a8ed31535384a44ed7f6ffa50b9119" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>NZDCurrency</definition>
         <argsstring>()</argsstring>
         <name>NZDCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/oceania.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/oceania.hpp" bodystart="60" bodyend="67"/>
+        <location file="/currencies/oceania.hpp" line="60" bodyfile="/currencies/oceania.hpp" bodystart="60" bodyend="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>New Zealand dollar. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is NZD; the numeric code is 554. It is divided in 100 cents. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/oceania.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/oceania.hpp" bodystart="58" bodyend="68"/>
+    <location file="/currencies/oceania.hpp" line="58" bodyfile="/currencies/oceania.hpp" bodystart="58" bodyend="68"/>
   </compounddef>
 </doxygen>

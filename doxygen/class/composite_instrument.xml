@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_composite_instrument" kind="class" prot="public">
     <compoundname>QuantLib::CompositeInstrument</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp</includes>
+    <includes local="no">/instruments/compositeinstrument.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_instrument_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="62"/>
+        <location file="/instruments/compositeinstrument.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplements>
         <detaileddescription>
 <para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="64"/>
+        <location file="/instruments/compositeinstrument.hpp" line="64"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -43,7 +43,7 @@
         </param>
         <briefdescription>
 <para>adds an instrument to the composite </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="56"/>
+        <location file="/instruments/compositeinstrument.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_instrument_1af781618b4ac4bee06da95a7c8b2ee662" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -61,13 +61,13 @@
         </param>
         <briefdescription>
 <para>shorts an instrument from the composite </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="59"/>
+        <location file="/instruments/compositeinstrument.hpp" line="59"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Composite instrument </para>    </briefdescription>
     <detaileddescription>
 <para>This instrument is an aggregate of other instruments. Its NPV is the sum of the NPVs of its components, each possibly multiplied by a given factor.</para><para><bold>Example: </bold> <ref refid="_replication_8cpp-example" kindref="compound">static replication of a down-and-out barrier option </ref></para><para><xrefsect id="caveats_1_caveats000052"><xreftitle>Warning</xreftitle><xrefdescription><para>Methods that drive the calculation directly (such as <ref refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" kindref="member">recalculate()</ref>, <ref refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" kindref="member">freeze()</ref> and others) might not work correctly.</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="49" bodyend="68"/>
+    <location file="/instruments/compositeinstrument.hpp" line="49" bodyfile="/instruments/compositeinstrument.hpp" bodystart="49" bodyend="68"/>
   </compounddef>
 </doxygen>

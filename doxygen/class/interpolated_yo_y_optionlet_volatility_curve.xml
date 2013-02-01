@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedYoYOptionletVolatilityCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp</includes>
+    <includes local="no">/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -70,7 +70,7 @@
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
         <detaileddescription>
 <para>The dates are those of the volatility ... there is no lag on the dates <bold>but</bold> they are relative to a start date earlier than the reference date as always for inflation. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="125" bodyend="161"/>
+        <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="60" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="125" bodyend="161"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -83,7 +83,7 @@
         <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="68" bodyend="68"/>
+        <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="68" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a890665a296b4f9991d4d01ac63e35873" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -93,7 +93,7 @@
         <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="70" bodyend="70"/>
+        <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="70" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a8f99356f853de778d6eb053615c1bdbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -103,7 +103,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="71" bodyend="75"/>
+        <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="71" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="71" bodyend="75"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -113,28 +113,28 @@
         <definition>virtual const std::vector&lt;Time&gt;&amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="80" bodyend="80"/>
+        <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="80" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a89257bfeb91871645a70c5370fd7cbc5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Date&gt;&amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="81" bodyend="81"/>
+        <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="81" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1abe2ca418f8f3bcc37a8bcbe60533b40b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Real&gt;&amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="82" bodyend="82"/>
+        <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="82" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1abcff9b6eca640af28de7247fac16c00e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>virtual std::vector&lt;std::pair&lt;Date, Real&gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="83" bodyend="83"/>
+        <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="83" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -143,13 +143,13 @@
         <definition>virtual ~InterpolatedYoYOptionletVolatilityCurve</definition>
         <argsstring>()</argsstring>
         <name>~InterpolatedYoYOptionletVolatilityCurve</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="63" bodyend="63"/>
+        <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="63" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Interpolated flat smile surface. </para>    </briefdescription>
     <detaileddescription>
 <para>Interpolated in T direction and constant in K direction. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="38" bodyend="119"/>
+    <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="39" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="38" bodyend="119"/>
   </compounddef>
 </doxygen>

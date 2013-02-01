@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_heston_process" kind="class" prot="public">
     <compoundname>QuantLib::HestonProcess</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp</includes>
+    <includes local="no">/processes/hestonprocess.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_heston_process_1a36f45ac51e3e98d35c68ca85b7573e87" prot="public" static="no">
         <name>Discretization</name>
@@ -24,7 +24,7 @@
         <enumvalue id="class_quant_lib_1_1_heston_process_1a36f45ac51e3e98d35c68ca85b7573e87aab8c3dbed9a95bac45e1deb12806fa6b" prot="public">
           <name>QuadraticExponentialMartingale</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" bodystart="48" bodyend="53"/>
+        <location file="/processes/hestonprocess.hpp" line="48" bodyfile="/processes/hestonprocess.hpp" bodystart="48" bodyend="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -70,7 +70,7 @@
           <declname>d</declname>
           <defval>QuadraticExponentialMartingale</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="60"/>
+        <location file="/processes/hestonprocess.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -80,7 +80,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="62"/>
+        <location file="/processes/hestonprocess.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -90,7 +90,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="63"/>
+        <location file="/processes/hestonprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -108,7 +108,7 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="64"/>
+        <location file="/processes/hestonprocess.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -126,7 +126,7 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="65"/>
+        <location file="/processes/hestonprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a87d025fa8e0daa4e048320c7ac266bb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -144,7 +144,7 @@
         </param>
         <detaileddescription>
 <para>applies a change to the asset value. By default, it returns <formula id="359">$ \mathrm{x} + \Delta \mathrm{x} $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="66"/>
+        <location file="/processes/hestonprocess.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -170,63 +170,63 @@
         </param>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="68"/>
+        <location file="/processes/hestonprocess.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a30fd40988a93faccca807dd016f8c5e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real v0</definition>
         <argsstring>() const </argsstring>
         <name>v0</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" bodystart="70" bodyend="70"/>
+        <location file="/processes/hestonprocess.hpp" line="70" bodyfile="/processes/hestonprocess.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" bodystart="71" bodyend="71"/>
+        <location file="/processes/hestonprocess.hpp" line="71" bodyfile="/processes/hestonprocess.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a925b952838ecbba1d743cab564c69dc9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real kappa</definition>
         <argsstring>() const </argsstring>
         <name>kappa</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" bodystart="72" bodyend="72"/>
+        <location file="/processes/hestonprocess.hpp" line="72" bodyfile="/processes/hestonprocess.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real theta</definition>
         <argsstring>() const </argsstring>
         <name>theta</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" bodystart="73" bodyend="73"/>
+        <location file="/processes/hestonprocess.hpp" line="73" bodyfile="/processes/hestonprocess.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" bodystart="74" bodyend="74"/>
+        <location file="/processes/hestonprocess.hpp" line="74" bodyfile="/processes/hestonprocess.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a5454c7c9728f2ccef70ac7c9cc0fccee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
         <definition>const Handle&lt;Quote&gt;&amp; s0</definition>
         <argsstring>() const </argsstring>
         <name>s0</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="76"/>
+        <location file="/processes/hestonprocess.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1ad410a408dd37b79578b370b5219dbf80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; dividendYield</definition>
         <argsstring>() const </argsstring>
         <name>dividendYield</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="77"/>
+        <location file="/processes/hestonprocess.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; riskFreeRate</definition>
         <argsstring>() const </argsstring>
         <name>riskFreeRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="78"/>
+        <location file="/processes/hestonprocess.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_process_1af8a1d4ca4369b3009d08291f1c2d7744" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -240,13 +240,13 @@
         <detaileddescription>
 <para>returns the time value corresponding to the given date in the reference system of the stochastic process.</para><para><simplesect kind="note"><para>As a number of processes might not need this functionality, a default implementation is given which raises an exception. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="80"/>
+        <location file="/processes/hestonprocess.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Square-root stochastic-volatility Heston process. </para>    </briefdescription>
     <detaileddescription>
 <para>This class describes the square root stochastic volatility process governed by <formula id="346">\[ \begin{array}{rcl} dS(t, S) &amp;=&amp; \mu S dt + \sqrt{v} S dW_1 \\ dv(t, S) &amp;=&amp; \kappa (\theta - v) dt + \sigma \sqrt{v} dW_2 \\ dW_1 dW_2 &amp;=&amp; \rho dt \end{array} \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp" bodystart="46" bodyend="86"/>
+    <location file="/processes/hestonprocess.hpp" line="46" bodyfile="/processes/hestonprocess.hpp" bodystart="46" bodyend="86"/>
   </compounddef>
 </doxygen>

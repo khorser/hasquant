@@ -16,7 +16,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="324" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="321" bodyend="324"/>
+        <location file="/pricingengines/forward/mcvarianceswapengine.hpp" line="324" bodyfile="/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="321" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_integrand_1a9736183e84f061ad08b6d595e2c293bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -27,9 +27,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="325" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="325" bodyend="329"/>
+        <location file="/pricingengines/forward/mcvarianceswapengine.hpp" line="325" bodyfile="/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="325" bodyend="329"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="319" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="319" bodyend="333"/>
+    <location file="/pricingengines/forward/mcvarianceswapengine.hpp" line="319" bodyfile="/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="319" bodyend="333"/>
   </compounddef>
 </doxygen>

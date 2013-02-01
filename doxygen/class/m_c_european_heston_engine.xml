@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_c_european_heston_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCEuropeanHestonEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/mceuropeanhestonengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>class RNG</type>
@@ -19,7 +19,7 @@
         <definition>typedef MCVanillaEngine&lt;MultiVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="44" bodyend="-1"/>
+        <location file="/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="44" bodyfile="/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -60,13 +60,13 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="96" bodyend="104"/>
+        <location file="/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="52" bodyfile="/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="96" bodyend="104"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Monte Carlo Heston-model engine for European options. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000136"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="40" bodyend="55"/>
+    <location file="/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="41" bodyfile="/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="40" bodyend="55"/>
   </compounddef>
 </doxygen>

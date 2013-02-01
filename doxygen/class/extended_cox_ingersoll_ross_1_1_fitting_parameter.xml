@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedCoxIngersollRoss::FittingParameter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
+    <includes local="no">/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1a01424d1435a10b1c9b02f887528d4e66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -29,13 +29,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x0</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="138" bodyend="142"/>
+        <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="142" bodyfile="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="138" bodyend="142"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Analytical term-structure fitting parameter <formula id="294">$ \varphi(t) $</formula>. </para>    </briefdescription>
     <detaileddescription>
 <para><formula id="294">$ \varphi(t) $</formula> is analytically defined by <formula id="301">\[ \varphi(t) = f(t) - \frac{2k\theta(e^{th}-1)}{2h+(k+h)(e^{th}-1)} - \frac{4 x_0 h^2 e^{th}}{(2h+(k+h)(e^{th}-1))^1}, \]</formula> where <formula id="302">$ f(t) $</formula> is the instantaneous forward rate at <formula id="147">$ t $</formula> and <formula id="303">$ h = \sqrt{k^2 + 2\sigma^2} $</formula>. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="112" bodyend="143"/>
+    <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="113" bodyfile="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="112" bodyend="143"/>
   </compounddef>
 </doxygen>

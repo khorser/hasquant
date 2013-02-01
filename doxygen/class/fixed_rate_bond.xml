@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fixed_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::FixedRateBond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp</includes>
+    <includes local="no">/instruments/bonds/fixedratebond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1ae6647c978d8f8da1dc38593db4a2efb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -51,7 +51,7 @@
         </param>
         <briefdescription>
 <para>simple annual compounding coupon rates </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="57"/>
+        <location file="/instruments/bonds/fixedratebond.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1aa5969561a3a16fdd3894e96dc4ab5f47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -132,7 +132,7 @@
         </param>
         <detaileddescription>
 <para>simple annual compounding coupon rates with internal schedule calculation </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="75"/>
+        <location file="/instruments/bonds/fixedratebond.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1ae2dbb843321a550af383fb2d6bdd87f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -177,27 +177,27 @@
         </param>
         <briefdescription>
 <para>generic compounding and frequency <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> coupons </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="84"/>
+        <location file="/instruments/bonds/fixedratebond.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" bodystart="85" bodyend="85"/>
+        <location file="/instruments/bonds/fixedratebond.hpp" line="85" bodyfile="/instruments/bonds/fixedratebond.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" bodystart="86" bodyend="86"/>
+        <location file="/instruments/bonds/fixedratebond.hpp" line="86" bodyfile="/instruments/bonds/fixedratebond.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>fixed-rate bond </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000016"><xreftitle>Tests</xreftitle><xrefdescription><para>calculations are tested by checking results against cached values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" bodystart="46" bodyend="90"/>
+    <location file="/instruments/bonds/fixedratebond.hpp" line="46" bodyfile="/instruments/bonds/fixedratebond.hpp" bodystart="46" bodyend="90"/>
   </compounddef>
 </doxygen>

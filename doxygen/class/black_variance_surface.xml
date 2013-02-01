@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_variance_surface" kind="class" prot="public">
     <compoundname>QuantLib::BlackVarianceSurface</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp</includes>
+    <includes local="no">/termstructures/volatility/equityfx/blackvariancesurface.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_surface_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="63" bodyend="63"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="63" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_surface_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="64" bodyend="66"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="64" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -36,7 +36,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="70" bodyend="72"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="70" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_surface_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -46,7 +46,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="73" bodyend="75"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="73" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="73" bodyend="75"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -66,7 +66,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="80" bodyend="86"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="80" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="80" bodyend="86"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -81,7 +81,7 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="107" bodyend="114"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="90" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="107" bodyend="114"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -93,7 +93,7 @@
         <enumvalue id="class_quant_lib_1_1_black_variance_surface_1a8e2df513f6590afb6c85a22a458745c5a083d32b4e15cef6c1dd5c76052ce3b4d" prot="public">
           <name>InterpolatorDefaultExtrapolation</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="49" bodyend="50"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="49" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="49" bodyend="50"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -136,13 +136,13 @@
           <declname>upperExtrapolation</declname>
           <defval>InterpolatorDefaultExtrapolation</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="60"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="60"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black volatility surface modelled as variance surface. </para>    </briefdescription>
     <detaileddescription>
 <para>This class calculates time/strike dependent Black volatilities using as input a matrix of Black volatilities observed in the market.</para><para>The calculation is performed interpolating on the variance surface. <ref refid="class_quant_lib_1_1_bilinear" kindref="compound">Bilinear</ref> interpolation is used as default; this can be changed by the setInterpolation() method.</para><para><xrefsect id="todo_1_todo000062"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>check time extrapolation</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="47" bodyend="102"/>
+    <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="47" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="47" bodyend="102"/>
   </compounddef>
 </doxygen>

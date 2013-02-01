@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_d_t_currency" kind="class" prot="public">
     <compoundname>QuantLib::BDTCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp</includes>
+    <includes local="no">/currencies/asia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_b_d_t_currency_1a59b64f6d94d1555b4da3cda3a2847257" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BDTCurrency</definition>
         <argsstring>()</argsstring>
         <name>BDTCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="42" bodyend="49"/>
+        <location file="/currencies/asia.hpp" line="42" bodyfile="/currencies/asia.hpp" bodystart="42" bodyend="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Bangladesh taka. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is BDT; the numeric code is 50. It is divided in 100 paisa. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="40" bodyend="50"/>
+    <location file="/currencies/asia.hpp" line="40" bodyfile="/currencies/asia.hpp" bodystart="40" bodyend="50"/>
   </compounddef>
 </doxygen>

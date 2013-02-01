@@ -9,42 +9,42 @@
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="78" bodyend="80"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="41" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="82" bodyend="84"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="42" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time maxTime</definition>
         <argsstring>() const </argsstring>
         <name>maxTime</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="86" bodyend="88"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="43" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="90" bodyend="92"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="44" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="94" bodyend="96"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="45" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>Natural settlementDays</definition>
         <argsstring>() const </argsstring>
         <name>settlementDays</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="98" bodyend="100"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="46" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -54,14 +54,14 @@
         <definition>Rate minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="102" bodyend="104"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="50" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="106" bodyend="108"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="51" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="106" bodyend="108"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -71,7 +71,7 @@
         <definition>const Period &amp; maxSwapTenor</definition>
         <argsstring>() const </argsstring>
         <name>maxSwapTenor</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="110" bodyend="112"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="55" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="110" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ad755da1a3ef6e55fff3e0777ab075948" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -86,7 +86,7 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="62"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a04f2608add446a8af9cfe54291488e82" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -101,7 +101,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>swapLength</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="65"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ad7c337ad2742139f606cdf738f4405b5" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -120,7 +120,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="68"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a8a847d5d307f3f57ade6263012526c31" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -139,7 +139,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="71"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="71"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -155,9 +155,9 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>spread</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="37"/>
+        <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="37"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="34" bodyend="76"/>
+    <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="34" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="34" bodyend="76"/>
   </compounddef>
 </doxygen>

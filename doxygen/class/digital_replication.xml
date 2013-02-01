@@ -18,23 +18,23 @@
           <declname>gap</declname>
           <defval>1e-4</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="47"/>
+        <location file="/cashflows/replication.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_replication_1a93fe2704df3e3ae39e5e991b9370399f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Replication::Type</type>
         <definition>Replication::Type replicationType</definition>
         <argsstring>() const </argsstring>
         <name>replicationType</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="48" bodyend="48"/>
+        <location file="/cashflows/replication.hpp" line="48" bodyfile="/cashflows/replication.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_replication_1a763599594f2a726834f274e8b224a6e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gap</definition>
         <argsstring>() const </argsstring>
         <name>gap</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="49" bodyend="49"/>
+        <location file="/cashflows/replication.hpp" line="49" bodyfile="/cashflows/replication.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="44" bodyend="53"/>
+    <location file="/cashflows/replication.hpp" line="44" bodyfile="/cashflows/replication.hpp" bodystart="44" bodyend="53"/>
   </compounddef>
 </doxygen>

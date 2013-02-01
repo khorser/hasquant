@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_face_value_accrual_claim" kind="class" prot="public">
     <compoundname>QuantLib::FaceValueAccrualClaim</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp</includes>
+    <includes local="no">/instruments/claim.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_face_value_accrual_claim_1aeaac23c75b9e2c27a07555344018171f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &gt; &amp;</type>
           <declname>referenceSecurity</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" line="54"/>
+        <location file="/instruments/claim.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_face_value_accrual_claim_1acf1dfd8d88311d4ea2f5630de7b995e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -33,11 +33,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>recoveryRate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" line="57"/>
+        <location file="/instruments/claim.hpp" line="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> on the notional of a reference security, including accrual. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" bodystart="51" bodyend="60"/>
+    <location file="/instruments/claim.hpp" line="51" bodyfile="/instruments/claim.hpp" bodystart="51" bodyend="60"/>
   </compounddef>
 </doxygen>

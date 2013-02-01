@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_rng" kind="class" prot="public">
     <compoundname>QuantLib::FarlieGumbelMorgensternCopulaRng</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp</includes>
+    <includes local="no">/experimental/math/farliegumbelmorgensterncopularng.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -16,14 +16,14 @@
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="38" bodyend="-1"/>
+        <location file="/experimental/math/farliegumbelmorgensterncopularng.hpp" line="38" bodyfile="/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
         <type>RNG</type>
         <definition>typedef RNG urng_type</definition>
         <argsstring></argsstring>
         <name>urng_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="39" bodyend="-1"/>
+        <location file="/experimental/math/farliegumbelmorgensterncopularng.hpp" line="39" bodyfile="/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -40,18 +40,18 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>theta</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="49" bodyend="54"/>
+        <location file="/experimental/math/farliegumbelmorgensterncopularng.hpp" line="41" bodyfile="/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="49" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_rng_1a889661f8909e4c999ff8ce0f20d88ca1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
         <definition>FarlieGumbelMorgensternCopulaRng&lt; RNG &gt;::sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="58" bodyend="69"/>
+        <location file="/experimental/math/farliegumbelmorgensterncopularng.hpp" line="42" bodyfile="/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="58" bodyend="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Farlie-Gumbel-Morgenstern copula random-number generator. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="36" bodyend="46"/>
+    <location file="/experimental/math/farliegumbelmorgensterncopularng.hpp" line="36" bodyfile="/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="36" bodyend="46"/>
   </compounddef>
 </doxygen>

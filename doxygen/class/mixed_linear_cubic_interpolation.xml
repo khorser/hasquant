@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mixed_linear_cubic_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::MixedLinearCubicInterpolation</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/mixedinterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_mixed_linear_cubic_interpolation_1a2ee3257a82ef7279bbf7c00b6856d189" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -60,11 +60,11 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="97" bodyend="113"/>
+        <location file="/math/interpolations/mixedinterpolation.hpp" line="104" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="97" bodyend="113"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>mixed linear/cubic interpolation between discrete points </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="93" bodyend="115"/>
+    <location file="/math/interpolations/mixedinterpolation.hpp" line="93" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="93" bodyend="115"/>
   </compounddef>
 </doxygen>

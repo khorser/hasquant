@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2" kind="class" prot="public">
     <compoundname>QuantLib::MonteCarloCDOEngine2</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
+    <includes local="no">/experimental/credit/syntheticcdoengines.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a47ab7a2d9d91819b5520a4c2c328d7d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="158" bodyend="160"/>
+        <location file="/experimental/credit/syntheticcdoengines.hpp" line="160" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="158" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -25,11 +25,11 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="161"/>
+        <location file="/experimental/credit/syntheticcdoengines.hpp" line="161"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine, Monte Carlo for the sample payoff. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="156" bodyend="168"/>
+    <location file="/experimental/credit/syntheticcdoengines.hpp" line="156" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="156" bodyend="168"/>
   </compounddef>
 </doxygen>

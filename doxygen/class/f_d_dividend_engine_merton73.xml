@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_dividend_engine_merton73" kind="class" prot="public">
     <compoundname>QuantLib::FDDividendEngineMerton73</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/fddividendengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -36,7 +36,7 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="87" bodyend="93"/>
+        <location file="/pricingengines/vanilla/fddividendengine.hpp" line="93" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="87" bodyend="93"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -44,6 +44,6 @@
     <detaileddescription>
 <para>The Merton-73 engine is the classic engine described in most derivatives texts. However, Haug, Haug, and Lewis in &quot;Back to
        Basics: a new approach to the discrete dividend problem&quot; argues that this scheme underprices call options. This is set as the default engine, because it is consistent with the analytic version. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="85" bodyend="97"/>
+    <location file="/pricingengines/vanilla/fddividendengine.hpp" line="85" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="85" bodyend="97"/>
   </compounddef>
 </doxygen>

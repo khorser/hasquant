@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cds_option_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::CdsOption::results</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp</includes>
+    <includes local="no">/experimental/credit/cdsoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_cds_option_1_1results_1a95b6d16bfc7a94cf6b78453c952c900b" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real riskyAnnuity</definition>
         <argsstring></argsstring>
         <name>riskyAnnuity</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="102" bodyend="-1"/>
+        <location file="/experimental/credit/cdsoption.hpp" line="102" bodyfile="/experimental/credit/cdsoption.hpp" bodystart="102" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -18,11 +18,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="103"/>
+        <location file="/experimental/credit/cdsoption.hpp" line="103"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from CDS-option calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="100" bodyend="104"/>
+    <location file="/experimental/credit/cdsoption.hpp" line="100" bodyfile="/experimental/credit/cdsoption.hpp" bodystart="100" bodyend="104"/>
   </compounddef>
 </doxygen>

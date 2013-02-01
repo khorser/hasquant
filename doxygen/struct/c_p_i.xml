@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1_c_p_i" kind="struct" prot="public">
+    <compoundname>QuantLib::CPI</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1ea" prot="public" static="no">
+        <name>InterpolationType</name>
+        <enumvalue id="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1eaa001e44004d8d85d1a98f7a1fb01ea79c" prot="public">
+          <name>AsIndex</name>
+          <briefdescription>
+<para>same interpolation as index </para>          </briefdescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1eaa5a9e3347876551cd38b961213ff1ccde" prot="public">
+          <name>Flat</name>
+          <briefdescription>
+<para>flat from previous fixing </para>          </briefdescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1eaa1a1f3bc55fefa098d9034cc46e2e7a2b" prot="public">
+          <name>Linear</name>
+          <briefdescription>
+<para>linearly between bracketing fixings </para>          </briefdescription>
+        </enumvalue>
+        <briefdescription>
+<para>when you observe an index, how do you interpolate between fixings? </para>        </briefdescription>
+        <location file="/cashflows/cpicoupon.hpp" line="36" bodyfile="/cashflows/cpicoupon.hpp" bodystart="36" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+    <location file="/cashflows/cpicoupon.hpp" line="34" bodyfile="/cashflows/cpicoupon.hpp" bodystart="34" bodyend="41"/>
+  </compounddef>
+</doxygen>

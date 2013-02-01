@@ -29,7 +29,7 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="43"/>
+        <location file="/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a54a3d3adf137f4c0b938cea30a8c2022" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -44,7 +44,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="45"/>
+        <location file="/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a7ce5036c20066e383d5b68d770a3b847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -59,7 +59,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="46"/>
+        <location file="/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a99be84b965124dcc17d0cd76ea3eb1f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -74,7 +74,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="48"/>
+        <location file="/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1ae0248ca4f96e3b5ed6e8549b3cf61c3e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -89,7 +89,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="49"/>
+        <location file="/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1aee806b1df681e74ca40ecb1f600f7c4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -104,7 +104,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="50"/>
+        <location file="/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a08fa6ab510f052260df20590bf837a8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -119,9 +119,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="51"/>
+        <location file="/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="51"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" bodystart="36" bodyend="64"/>
+    <location file="/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="36" bodyfile="/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" bodystart="36" bodyend="64"/>
   </compounddef>
 </doxygen>

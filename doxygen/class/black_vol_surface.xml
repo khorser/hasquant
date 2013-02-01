@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_vol_surface" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BlackVolSurface</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp</includes>
+    <includes local="no">/experimental/volatility/blackvolsurface.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
@@ -27,7 +27,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000022"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="56"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1aa38e554a3ddfabe77ad448430e6304fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -48,7 +48,7 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000023"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="64"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a36d6c83a231ba52c91b94b2351dadbba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -76,7 +76,7 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="69"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a623d0f595d50ad0994d9970b329c4b07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -102,7 +102,7 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="74"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="74"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -122,7 +122,7 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option tenor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" bodystart="115" bodyend="118"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="80" bodyfile="/experimental/volatility/blackvolsurface.hpp" bodystart="115" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a484e8f48a2fe92a9aaac3e1dc670d3fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -139,7 +139,7 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" bodystart="121" bodyend="124"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="83" bodyfile="/experimental/volatility/blackvolsurface.hpp" bodystart="121" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a3fda1b45776741cd9b66565d3c9ca1b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
@@ -156,7 +156,7 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option time </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" bodystart="127" bodyend="131"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="86" bodyfile="/experimental/volatility/blackvolsurface.hpp" bodystart="127" bodyend="131"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -170,7 +170,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="90"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="90"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -187,7 +187,7 @@
         </param>
         <briefdescription>
 <para>spot at-the-money variance calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="96"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a19afdb51423c925cb7f5ce598b2369ec" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -201,7 +201,7 @@
         </param>
         <briefdescription>
 <para>spot at-the-money volatility calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="98"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="98"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -215,13 +215,13 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="108"/>
+        <location file="/experimental/volatility/blackvolsurface.hpp" line="108"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black volatility (smile) surface. </para>    </briefdescription>
     <detaileddescription>
 <para>This abstract class defines the interface of concrete Black volatility (smile) surface which will be derived from this one.</para><para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackvolsurface.hpp" bodystart="42" bodyend="110"/>
+    <location file="/experimental/volatility/blackvolsurface.hpp" line="42" bodyfile="/experimental/volatility/blackvolsurface.hpp" bodystart="42" bodyend="110"/>
   </compounddef>
 </doxygen>

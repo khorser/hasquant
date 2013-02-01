@@ -44,7 +44,7 @@
           <type>Option::Type</type>
           <declname>optionType</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="281"/>
+        <location file="/cashflows/conundrumpricer.hpp" line="281"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_conundrum_integrand_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -55,9 +55,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="282"/>
+        <location file="/cashflows/conundrumpricer.hpp" line="282"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="269" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="269" bodyend="299"/>
+    <location file="/cashflows/conundrumpricer.hpp" line="269" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="269" bodyend="299"/>
   </compounddef>
 </doxygen>

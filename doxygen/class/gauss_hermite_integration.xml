@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_hermite_integration" kind="class" prot="public">
     <compoundname>QuantLib::GaussHermiteIntegration</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp</includes>
+    <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_hermite_integration_1a41809a1dde79b9e76202139c03b5062c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,13 +18,13 @@
           <declname>mu</declname>
           <defval>0.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="100" bodyend="101"/>
+        <location file="/math/integrals/gaussianquadratures.hpp" line="101" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="100" bodyend="101"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>generalized Gauss-Hermite integration </para>    </briefdescription>
     <detaileddescription>
 <para>This class performs a 1-dimensional Gauss-Hermite integration. <formula id="193">\[ \int_{-\inf}^{\inf} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="194">\[ w(x;\mu)=|x|^{2\mu} \exp{-x*x} \]</formula> and <formula id="195">\[ \mu &gt; -0.5 \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="98" bodyend="102"/>
+    <location file="/math/integrals/gaussianquadratures.hpp" line="98" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="98" bodyend="102"/>
   </compounddef>
 </doxygen>

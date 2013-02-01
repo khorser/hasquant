@@ -20,9 +20,9 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
           <declname>capletVolatility</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" bodystart="35" bodyend="44"/>
+        <location file="/experimental/coupons/quantocouponpricer.hpp" line="41" bodyfile="/experimental/coupons/quantocouponpricer.hpp" bodystart="35" bodyend="44"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" bodystart="33" bodyend="52"/>
+    <location file="/experimental/coupons/quantocouponpricer.hpp" line="33" bodyfile="/experimental/coupons/quantocouponpricer.hpp" bodystart="33" bodyend="52"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::LongstaffSchwartzMultiPathPricer</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp</includes>
+    <includes local="no">/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1aca0fe661d96748ce87b97822e680c25b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -27,7 +27,7 @@
         <param>
           <type>LsmBasisSystem::PolynomType</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="55"/>
+        <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -39,14 +39,14 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>multiPath</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="57"/>
+        <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a8946c11a6ad8cd19bc92048019269157" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void calibrate</definition>
         <argsstring>()</argsstring>
         <name>calibrate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="58"/>
+        <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="58"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -56,6 +56,6 @@
    by Simulation: A Simple Least-Squares Approach, The Review of
    Financial Studies, Volume 14, No. 1, 113-147
 </verbatim></para><para><xrefsect id="test_1_test000008"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="46" bodyend="86"/>
+    <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="46" bodyfile="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="46" bodyend="86"/>
   </compounddef>
 </doxygen>

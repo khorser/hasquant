@@ -24,16 +24,16 @@
           <declname>includeSettlementDateFlows</declname>
           <defval>boost::none</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="39"/>
+        <location file="/pricingengines/credit/midpointcdsengine.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mid_point_cds_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="40"/>
+        <location file="/pricingengines/credit/midpointcdsengine.hpp" line="40"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="33" bodyend="46"/>
+    <location file="/pricingengines/credit/midpointcdsengine.hpp" line="33" bodyfile="/pricingengines/credit/midpointcdsengine.hpp" bodystart="33" bodyend="46"/>
   </compounddef>
 </doxygen>

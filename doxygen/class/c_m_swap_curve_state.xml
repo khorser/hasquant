@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_m_swap_curve_state" kind="class" prot="public">
     <compoundname>QuantLib::CMSwapCurveState</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp</includes>
+    <includes local="no">/models/marketmodels/curvestates/cmswapcurvestate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1ac5a9935f783978bf73d136b8432879b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -19,7 +19,7 @@
           <declname>firstValidIndex</declname>
           <defval>0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="38"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="38"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -38,7 +38,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>j</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="43"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1aac1391a5c503e87b171babebba6d4a60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -50,7 +50,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="44"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1abec96ff6545d6cd3be5d3eaef0dbd0a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -62,7 +62,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="46"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1aea7368686f038e0fdbc9341faf4003a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -78,7 +78,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="48"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1aee06bd7c4e552385a9f4e9720b5e6b01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -94,7 +94,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>spanningForwards</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="51"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1ae62cf5e5050a7c480b620a7ec2d104d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -114,7 +114,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>spanningForwards</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="54"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1a5cc6fb17a2d2d3c52a5cb79ff094d184" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
@@ -122,7 +122,7 @@
         <argsstring>() const </argsstring>
         <name>forwardRates</name>
         <reimplements refid="class_quant_lib_1_1_curve_state_1a943f9270e4109d9730df315863246349">forwardRates</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="55"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1abe78d2bc9f2687c5e31baa486ad2ace5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
@@ -130,7 +130,7 @@
         <argsstring>() const </argsstring>
         <name>coterminalSwapRates</name>
         <reimplements refid="class_quant_lib_1_1_curve_state_1af917754216210a5e5ffca04bff64bebd">coterminalSwapRates</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="56"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1a2c2d3c56715486e94144c87531f19fcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
@@ -142,7 +142,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>spanningForwards</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="57"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_m_swap_curve_state_1a8c46c0cde27036afcca8fe94bf19101d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &gt;</type>
@@ -150,7 +150,7 @@
         <argsstring>() const </argsstring>
         <name>clone</name>
         <reimplements refid="class_quant_lib_1_1_curve_state_1ac4251f8df2d9997d128346d29af2080a">clone</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" bodystart="58" bodyend="60"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="58" bodyfile="/models/marketmodels/curvestates/cmswapcurvestate.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -167,11 +167,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>spanningForwards</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="33"/>
+        <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="33"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Curve state for constant-maturity-swap market models </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/cmswapcurvestate.hpp" bodystart="30" bodyend="75"/>
+    <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="30" bodyfile="/models/marketmodels/curvestates/cmswapcurvestate.hpp" bodystart="30" bodyend="75"/>
   </compounddef>
 </doxygen>

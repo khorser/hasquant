@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_inflation_index" kind="class" prot="public">
     <compoundname>QuantLib::YoYInflationIndex</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp</includes>
+    <includes local="no">/indexes/inflationindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_index_1a1c776ca10de744b29a4d051102003eb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -22,7 +22,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000042"><xreftitle>Warning</xreftitle><xrefdescription><para>the forecastTodaysFixing parameter (required by the <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> interface) is currently ignored. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="193"/>
+        <location file="/indexes/inflationindex.hpp" line="193"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -32,14 +32,14 @@
         <definition>bool ratio</definition>
         <argsstring>() const </argsstring>
         <name>ratio</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="253" bodyend="255"/>
+        <location file="/indexes/inflationindex.hpp" line="198" bodyfile="/indexes/inflationindex.hpp" bodystart="253" bodyend="255"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_index_1a9c3c66040e9a444f6331bc4a40590e51" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;</type>
         <definition>Handle&lt; YoYInflationTermStructure &gt; yoyInflationTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>yoyInflationTermStructure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="199" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="258" bodyend="260"/>
+        <location file="/indexes/inflationindex.hpp" line="199" bodyfile="/indexes/inflationindex.hpp" bodystart="258" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_index_1adf7343dbc0a657bd0b93e258c9f5c0f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
@@ -50,7 +50,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="202"/>
+        <location file="/indexes/inflationindex.hpp" line="202"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -96,13 +96,13 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="186"/>
+        <location file="/indexes/inflationindex.hpp" line="186"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for year-on-year inflation indices. </para>    </briefdescription>
     <detaileddescription>
 <para>These may be genuine indices published on, say, Bloomberg, or &quot;fake&quot; indices that are defined as the ratio of an index at different time points. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="175" bodyend="208"/>
+    <location file="/indexes/inflationindex.hpp" line="175" bodyfile="/indexes/inflationindex.hpp" bodystart="175" bodyend="208"/>
   </compounddef>
 </doxygen>

@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_nelson_siegel_fitting" kind="class" prot="public">
     <compoundname>QuantLib::NelsonSiegelFitting</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
+    <includes local="no">/termstructures/yield/nonlinearfittingmethods.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_nelson_siegel_fitting_1a6e61366712a43ae31f6cea6118f98bf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>NelsonSiegelFitting</definition>
         <argsstring>()</argsstring>
         <name>NelsonSiegelFitting</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="69"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nelson_siegel_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
@@ -19,7 +19,7 @@
         <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="70"/>
+        <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -27,6 +27,6 @@
     <detaileddescription>
 <para>Fits a discount function to the form <formula id="398">$ d(t) = \exp^{-r t}, $</formula> where the zero rate <formula id="399">$r$</formula> is defined as <formula id="400">\[ r \equiv c_0 + (c_0 + c_1)*(1 - exp^{-\kappa*t}/(\kappa t) - c_2 exp^{ - \kappa t}. \]</formula> See: Nelson, C. and A. Siegel (1985): &quot;Parsimonious modeling of yield
        curves for US Treasury bills.&quot; NBER Working Paper Series, no 1594. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="66" bodyend="74"/>
+    <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="67" bodyfile="/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="66" bodyend="74"/>
   </compounddef>
 </doxygen>

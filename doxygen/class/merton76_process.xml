@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_merton76_process" kind="class" prot="public">
     <compoundname>QuantLib::Merton76Process</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp</includes>
+    <includes local="no">/processes/merton76process.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess1D interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
         <briefdescription>
 <para>returns the initial value of the state variable </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="50"/>
+        <location file="/processes/merton76process.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a1ff4edad5a08359f18edf7f72a492317" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -31,7 +31,7 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="51" bodyend="52"/>
+        <location file="/processes/merton76process.hpp" line="51" bodyfile="/processes/merton76process.hpp" bodystart="51" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a73959c8b969d8981d5d670b367d51aed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -49,7 +49,7 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="53" bodyend="54"/>
+        <location file="/processes/merton76process.hpp" line="53" bodyfile="/processes/merton76process.hpp" bodystart="53" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a556c2d99ae77d13156c6371c4faaf960" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -67,7 +67,7 @@
         </param>
         <detaileddescription>
 <para>applies a change to the asset value. By default, it returns <formula id="366">$ x + \Delta x $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="55" bodyend="57"/>
+        <location file="/processes/merton76process.hpp" line="55" bodyfile="/processes/merton76process.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -77,49 +77,49 @@
         <definition>const Handle&lt;Quote&gt;&amp; stateVariable</definition>
         <argsstring>() const </argsstring>
         <name>stateVariable</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="62"/>
+        <location file="/processes/merton76process.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1ad410a408dd37b79578b370b5219dbf80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; dividendYield</definition>
         <argsstring>() const </argsstring>
         <name>dividendYield</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="63"/>
+        <location file="/processes/merton76process.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; riskFreeRate</definition>
         <argsstring>() const </argsstring>
         <name>riskFreeRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="64"/>
+        <location file="/processes/merton76process.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a966c6dd76f94ceda5c3a344a8f3e3a8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;BlackVolTermStructure&gt;&amp; blackVolatility</definition>
         <argsstring>() const </argsstring>
         <name>blackVolatility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="65"/>
+        <location file="/processes/merton76process.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a6f3890daa1679223c074f4b7adb0a598" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
         <definition>const Handle&lt;Quote&gt;&amp; jumpIntensity</definition>
         <argsstring>() const </argsstring>
         <name>jumpIntensity</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="66"/>
+        <location file="/processes/merton76process.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a56392a3f0897039bbaefecba5b4a641f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
         <definition>const Handle&lt;Quote&gt;&amp; logMeanJump</definition>
         <argsstring>() const </argsstring>
         <name>logMeanJump</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="67"/>
+        <location file="/processes/merton76process.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a98eebd6ea2b4b5024c513787041cc016" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
         <definition>const Handle&lt;Quote&gt;&amp; logJumpVolatility</definition>
         <argsstring>() const </argsstring>
         <name>logJumpVolatility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="68"/>
+        <location file="/processes/merton76process.hpp" line="68"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -161,7 +161,7 @@
           <declname>d</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="class_quant_lib_1_1_euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="47"/>
+        <location file="/processes/merton76process.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1af8a1d4ca4369b3009d08291f1c2d7744" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -175,11 +175,11 @@
         <detaileddescription>
 <para>returns the time value corresponding to the given date in the reference system of the stochastic process.</para><para><simplesect kind="note"><para>As a number of processes might not need this functionality, a default implementation is given which raises an exception. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="59"/>
+        <location file="/processes/merton76process.hpp" line="59"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Merton-76 jump-diffusion process. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="36" bodyend="73"/>
+    <location file="/processes/merton76process.hpp" line="36" bodyfile="/processes/merton76process.hpp" bodystart="36" bodyend="73"/>
   </compounddef>
 </doxygen>

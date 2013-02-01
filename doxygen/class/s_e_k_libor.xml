@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_s_e_k_libor" kind="class" prot="public">
     <compoundname>QuantLib::SEKLibor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/seklibor.hpp</includes>
+    <includes local="no">/indexes/ibor/seklibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_s_e_k_libor_1a7f9373c94c15521597b94c2a1c339d4a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,13 +18,13 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/seklibor.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/seklibor.hpp" bodystart="43" bodyend="50"/>
+        <location file="/indexes/ibor/seklibor.hpp" line="50" bodyfile="/indexes/ibor/seklibor.hpp" bodystart="43" bodyend="50"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>SEK LIBOR rate </para>    </briefdescription>
     <detaileddescription>
 <para><ref refid="class_quant_lib_1_1_sweden" kindref="compound">Sweden</ref> Krone LIBOR fixed by BBA. <verbatim>   See &lt;http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1414&gt;.</verbatim> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/seklibor.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/seklibor.hpp" bodystart="41" bodyend="51"/>
+    <location file="/indexes/ibor/seklibor.hpp" line="41" bodyfile="/indexes/ibor/seklibor.hpp" bodystart="41" bodyend="51"/>
   </compounddef>
 </doxygen>

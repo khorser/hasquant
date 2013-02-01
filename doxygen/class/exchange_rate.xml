@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_exchange_rate" kind="class" prot="public">
     <compoundname>QuantLib::ExchangeRate</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp</includes>
+    <includes local="no">/exchangerate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a75f5670fadd474821dc84525928ba632" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <definition>ExchangeRate</definition>
         <argsstring>()</argsstring>
         <name>ExchangeRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="86" bodyend="87"/>
+        <location file="/exchangerate.hpp" line="46" bodyfile="/exchangerate.hpp" bodystart="86" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1abd72efd56b917e8e5da9fe0a7304d7c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -31,7 +31,7 @@
         </param>
         <detaileddescription>
 <para>the rate <formula id="65">$ r $</formula> is given with the convention that a unit of the source is worth <formula id="65">$ r $</formula> units of the target. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="89" bodyend="92"/>
+        <location file="/exchangerate.hpp" line="52" bodyfile="/exchangerate.hpp" bodystart="89" bodyend="92"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -43,7 +43,7 @@
         <name>source</name>
         <briefdescription>
 <para>the source currency. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="94" bodyend="96"/>
+        <location file="/exchangerate.hpp" line="58" bodyfile="/exchangerate.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a07f53542a8bfb912e7a153d9bf63b7f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
@@ -52,7 +52,7 @@
         <name>target</name>
         <briefdescription>
 <para>the target currency. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="98" bodyend="100"/>
+        <location file="/exchangerate.hpp" line="60" bodyfile="/exchangerate.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a2b176c012741d73289ff358b0f990cc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
@@ -61,7 +61,7 @@
         <name>type</name>
         <briefdescription>
 <para>the type </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="102" bodyend="104"/>
+        <location file="/exchangerate.hpp" line="62" bodyfile="/exchangerate.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a09c7854c186e979c6bd755668a03c3d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
@@ -70,7 +70,7 @@
         <name>rate</name>
         <briefdescription>
 <para>the exchange rate (when available) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="106" bodyend="108"/>
+        <location file="/exchangerate.hpp" line="64" bodyfile="/exchangerate.hpp" bodystart="106" bodyend="108"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -86,7 +86,7 @@
         </param>
         <briefdescription>
 <para>apply the exchange rate to a cash amount </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="70"/>
+        <location file="/exchangerate.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1ae2478925351c7de1d7c107cb4d025872" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref></type>
@@ -103,7 +103,7 @@
         </param>
         <briefdescription>
 <para>chain two exchange rates </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="73"/>
+        <location file="/exchangerate.hpp" line="73"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -119,13 +119,13 @@
           <detaileddescription>
 <para>derived from exchange rates between other currencies </para>          </detaileddescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="40" bodyend="43"/>
+        <location file="/exchangerate.hpp" line="40" bodyfile="/exchangerate.hpp" bodystart="40" bodyend="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>exchange rate between two currencies </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000003"><xreftitle>Tests</xreftitle><xrefdescription><para>application of direct and derived exchange rate is tested against calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="38" bodyend="81"/>
+    <location file="/exchangerate.hpp" line="38" bodyfile="/exchangerate.hpp" bodystart="38" bodyend="81"/>
   </compounddef>
 </doxygen>

@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_knuth_uniform_rng" kind="class" prot="public">
     <compoundname>QuantLib::KnuthUniformRng</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp</includes>
+    <includes local="no">/math/randomnumbers/knuthuniformrng.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_knuth_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="46" bodyend="-1"/>
+        <location file="/math/randomnumbers/knuthuniformrng.hpp" line="46" bodyfile="/math/randomnumbers/knuthuniformrng.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
         </param>
         <detaileddescription>
 <para>if the given seed is 0, a random seed will be chosen based on clock() </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="49"/>
+        <location file="/math/randomnumbers/knuthuniformrng.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1a54d52bd9fcbf209b55759eaee7c151bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
@@ -34,7 +34,7 @@
         <name>next</name>
         <detaileddescription>
 <para>returns a sample with weight 1.0 containing a random number uniformly chosen from (0.0,1.0) </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="68" bodyend="73"/>
+        <location file="/math/randomnumbers/knuthuniformrng.hpp" line="52" bodyfile="/math/randomnumbers/knuthuniformrng.hpp" bodystart="68" bodyend="73"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -42,6 +42,6 @@
     <detaileddescription>
 <para>Random number generator by Knuth. For more details see Knuth, Seminumerical Algorithms, 3rd edition, Section 3.6. <simplesect kind="note"><para>This is <bold>not</bold> Knuth&apos;s original implementation which is available at <ulink url="http://www-cs-faculty.stanford.edu/~knuth/programs.html,">http://www-cs-faculty.stanford.edu/~knuth/programs.html,</ulink> but rather a slightly modified version wrapped in a C++ class. Such modifications did not affect the code but only the data structures used, which were converted to their standard C++ equivalents. </para></simplesect>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="44" bodyend="63"/>
+    <location file="/math/randomnumbers/knuthuniformrng.hpp" line="44" bodyfile="/math/randomnumbers/knuthuniformrng.hpp" bodystart="44" bodyend="63"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_prime_numbers" kind="class" prot="public">
     <compoundname>QuantLib::PrimeNumbers</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp</includes>
+    <includes local="no">/math/primenumbers.hpp</includes>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_prime_numbers_1a118ca53a54e9ba31771da1f1909aa4b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
@@ -15,13 +15,13 @@
         </param>
         <briefdescription>
 <para>Get and store one after another. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="48"/>
+        <location file="/math/primenumbers.hpp" line="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Prime numbers calculator. </para>    </briefdescription>
     <detaileddescription>
 <para>Taken from &quot;Monte Carlo Methods in Finance&quot;, by Peter Jäckel </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" bodystart="45" bodyend="53"/>
+    <location file="/math/primenumbers.hpp" line="45" bodyfile="/math/primenumbers.hpp" bodystart="45" bodyend="53"/>
   </compounddef>
 </doxygen>

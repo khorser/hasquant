@@ -8,16 +8,16 @@
         <definition>SavedSettings</definition>
         <argsstring>()</argsstring>
         <name>SavedSettings</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="129"/>
+        <location file="/settings.hpp" line="129"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_saved_settings_1a100f3cf9b650378eaf80ffa9f87255c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>~SavedSettings</definition>
         <argsstring>()</argsstring>
         <name>~SavedSettings</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="130"/>
+        <location file="/settings.hpp" line="130"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="127" bodyend="136"/>
+    <location file="/settings.hpp" line="127" bodyfile="/settings.hpp" bodystart="127" bodyend="136"/>
   </compounddef>
 </doxygen>

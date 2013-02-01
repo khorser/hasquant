@@ -8,7 +8,7 @@
         <definition>Date date</definition>
         <argsstring>() const </argsstring>
         <name>date</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="71"/>
+        <location file="/experimental/credit/defaultevent.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a95749f00f4c7ae289280c2412829deeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -21,7 +21,7 @@
         </param>
         <detaileddescription>
 <para>Returns the recovery rate of a default event which has already settled. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="75"/>
+        <location file="/experimental/credit/defaultevent.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -31,9 +31,9 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="76"/>
+        <location file="/experimental/credit/defaultevent.hpp" line="76"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="51" bodyend="81"/>
+    <location file="/experimental/credit/defaultevent.hpp" line="51" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="51" bodyend="81"/>
   </compounddef>
 </doxygen>

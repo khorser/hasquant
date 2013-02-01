@@ -8,35 +8,35 @@
         <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
         <argsstring></argsstring>
         <name>rTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="48" bodyend="-1"/>
+        <location file="/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="48" bodyfile="/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_quanto_helper_1a3e447c34bf2789d4f80f935539493061" prot="public" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; fTS_</definition>
         <argsstring></argsstring>
         <name>fTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="48" bodyend="-1"/>
+        <location file="/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="48" bodyfile="/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_quanto_helper_1a0ea2f6f9ca3639178d597a1eac2ac684" prot="public" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt;</type>
         <definition>const boost::shared_ptr&lt;BlackVolTermStructure&gt; fxVolTS_</definition>
         <argsstring></argsstring>
         <name>fxVolTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="49" bodyend="-1"/>
+        <location file="/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="49" bodyfile="/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_quanto_helper_1a9f74484ee20e8dde82b21d1ab2d49196" prot="public" static="no" mutable="no">
         <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>const Real equityFxCorrelation_</definition>
         <argsstring></argsstring>
         <name>equityFxCorrelation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="50" bodyend="-1"/>
+        <location file="/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="50" bodyfile="/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_quanto_helper_1a9071995fef9172bbaa53e67bd712daf8" prot="public" static="no" mutable="no">
         <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>const Real exchRateATMlevel_</definition>
         <argsstring></argsstring>
         <name>exchRateATMlevel_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="51" bodyend="-1"/>
+        <location file="/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="51" bodyfile="/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,7 +65,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>exchRateATMlevel</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="42"/>
+        <location file="/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_quanto_helper_1af4a47ab7ebd09880d49a94869a658a51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -84,7 +84,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t2</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="44"/>
+        <location file="/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_quanto_helper_1a9b089ad9d8b9b38e627f25a0304fb6d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -103,9 +103,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t2</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="46"/>
+        <location file="/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="36" bodyend="52"/>
+    <location file="/methods/finitedifferences/utilities/fdmquantohelper.hpp" line="36" bodyfile="/methods/finitedifferences/utilities/fdmquantohelper.hpp" bodystart="36" bodyend="52"/>
   </compounddef>
 </doxygen>

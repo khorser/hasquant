@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_convex_monotone" kind="class" prot="public">
     <compoundname>QuantLib::ConvexMonotone</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/convexmonotoneinterpolation.hpp</includes>
       <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_convex_monotone_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
         <type>const bool</type>
@@ -10,7 +10,7 @@
         <argsstring></argsstring>
         <name>global</name>
         <initializer>= true</initializer>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="789" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="789" bodyend="-1"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="789" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="789" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convex_monotone_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
         <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -18,7 +18,7 @@
         <argsstring></argsstring>
         <name>requiredPoints</name>
         <initializer>= 2</initializer>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="790" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="790" bodyend="-1"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="790" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="790" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convex_monotone_1a6f3802aa1f714ae6c652cbb1101b054f" prot="public" static="yes" mutable="no">
         <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -26,7 +26,7 @@
         <argsstring></argsstring>
         <name>dataSizeAdjustment</name>
         <initializer>= 1</initializer>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="791" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="791" bodyend="-1"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="791" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="791" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -50,7 +50,7 @@
           <declname>forcePositive</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="797" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="793" bodyend="797"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="797" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="793" bodyend="797"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -77,7 +77,7 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="801" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="800" bodyend="807"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="801" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="800" bodyend="807"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_1a52a2871f12d817e1bb0568dba512c07f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -116,11 +116,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>finalSize</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="813" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="810" bodyend="852"/>
+        <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="813" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="810" bodyend="852"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Convex-monotone interpolation factory and traits. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="787" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="787" bodyend="856"/>
+    <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="787" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="787" bodyend="856"/>
   </compounddef>
 </doxygen>

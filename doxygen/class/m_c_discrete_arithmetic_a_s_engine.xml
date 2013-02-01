@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_c_discrete_arithmetic_a_s_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCDiscreteArithmeticASEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp</includes>
+    <includes local="no">/pricingengines/asian/mc_discr_arith_av_strike.hpp</includes>
     <templateparamlist>
       <param>
         <type>class RNG</type>
@@ -19,21 +19,21 @@
         <definition>typedef MCDiscreteAveragingAsianEngine&lt;RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="40" bodyend="-1"/>
+        <location file="/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="40" bodyfile="/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_discrete_arithmetic_a_s_engine_1a2cc9b340383469ff7487304d28de7519" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::path_pricer_type</type>
         <definition>typedef MCDiscreteAveragingAsianEngine&lt;RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="42" bodyend="-1"/>
+        <location file="/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="42" bodyfile="/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_discrete_arithmetic_a_s_engine_1a94d203ec01c1e71f8e7660f3173a646e" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::stats_type</type>
         <definition>typedef MCDiscreteAveragingAsianEngine&lt;RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="44" bodyend="-1"/>
+        <location file="/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="44" bodyfile="/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -70,11 +70,11 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="79" bodyend="94"/>
+        <location file="/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="53" bodyfile="/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="79" bodyend="94"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Monte Carlo pricing engine for discrete arithmetic average-strike Asian. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="35" bodyend="56"/>
+    <location file="/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="36" bodyfile="/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="35" bodyend="56"/>
   </compounddef>
 </doxygen>

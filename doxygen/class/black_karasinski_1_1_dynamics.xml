@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_karasinski_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::BlackKarasinski::Dynamics</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp</includes>
+    <includes local="no">/models/shortrate/onefactormodels/blackkarasinski.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a1c2cb05637115bc5bdb52fb348bc7704" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>sigma</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="77" bodyend="80"/>
+        <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="80" bodyfile="/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="77" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -39,7 +39,7 @@
         </param>
         <briefdescription>
 <para>Compute state variable from short rate. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="82" bodyend="84"/>
+        <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="82" bodyfile="/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -57,13 +57,13 @@
         </param>
         <briefdescription>
 <para>Compute short rate from state variable. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="86" bodyend="88"/>
+        <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="86" bodyfile="/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Short-rate dynamics in the Black-Karasinski model. </para>    </briefdescription>
     <detaileddescription>
 <para>The short-rate is here <formula id="293">\[ r_t = e^{\varphi(t) + x_t} \]</formula> where <formula id="294">$ \varphi(t) $</formula> is the deterministic time-dependent parameter (which can not be determined analytically) used for term-structure fitting and <formula id="295">$ x_t $</formula> is the state variable following an Ornstein-Uhlenbeck process. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="74" bodyend="91"/>
+    <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="75" bodyfile="/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="74" bodyend="91"/>
   </compounddef>
 </doxygen>

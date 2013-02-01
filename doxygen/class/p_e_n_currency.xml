@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_p_e_n_currency" kind="class" prot="public">
     <compoundname>QuantLib::PENCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp</includes>
+    <includes local="no">/currencies/america.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_p_e_n_currency_1ab3bff84bd2bba6943356d74813f692ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PENCurrency</definition>
         <argsstring>()</argsstring>
         <name>PENCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="150" bodyend="157"/>
+        <location file="/currencies/america.hpp" line="150" bodyfile="/currencies/america.hpp" bodystart="150" bodyend="157"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Peruvian nuevo sol. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is PEN; the numeric code is 604. It is divided in 100 centimos. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="148" bodyend="158"/>
+    <location file="/currencies/america.hpp" line="148" bodyfile="/currencies/america.hpp" bodystart="148" bodyend="158"/>
   </compounddef>
 </doxygen>

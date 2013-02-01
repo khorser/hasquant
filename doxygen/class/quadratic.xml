@@ -20,21 +20,21 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>c</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="35"/>
+        <location file="/math/quadratic.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1quadratic_1abe8fb0a2a1c5b293379f0c0274317b71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real turningPoint</definition>
         <argsstring>() const </argsstring>
         <name>turningPoint</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="36"/>
+        <location file="/math/quadratic.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1quadratic_1a28c1d3143fea68b3d5df76203fd2e902" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real valueAtTurningPoint</definition>
         <argsstring>() const </argsstring>
         <name>valueAtTurningPoint</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="37"/>
+        <location file="/math/quadratic.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1quadratic_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -45,14 +45,14 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="38"/>
+        <location file="/math/quadratic.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1quadratic_1a4a45db715b7fd36de755b688828de9d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real discriminant</definition>
         <argsstring>() const </argsstring>
         <name>discriminant</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="39"/>
+        <location file="/math/quadratic.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1quadratic_1a61760fc2bbfccfdf3ed1a00a52086913" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -67,9 +67,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="41"/>
+        <location file="/math/quadratic.hpp" line="41"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" bodystart="32" bodyend="45"/>
+    <location file="/math/quadratic.hpp" line="33" bodyfile="/math/quadratic.hpp" bodystart="32" bodyend="45"/>
   </compounddef>
 </doxygen>

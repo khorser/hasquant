@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4" kind="struct" prot="public">
+    <compoundname>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1a100388a436e3d2c5736c7a7e351009e3" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; first</definition>
+        <argsstring></argsstring>
+        <name>first</name>
+        <location file="/math/interpolations/multicubicspline.hpp" line="116" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1af13611d5a975d042a1a8a4912d411015" prot="public" static="no" mutable="no">
+        <type>EmptyArg</type>
+        <definition>EmptyArg second</definition>
+        <argsstring></argsstring>
+        <name>second</name>
+        <location file="/math/interpolations/multicubicspline.hpp" line="117" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1a51d806137473e32bc8e082f8beb3133a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data</definition>
+        <argsstring>()</argsstring>
+        <name>Data</name>
+        <location file="/math/interpolations/multicubicspline.hpp" line="104" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="103" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1ad82d1c69dd7b887e9a5c19f1b588ab8e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data</definition>
+        <argsstring>(const SplineGrid::const_iterator &amp;i)</argsstring>
+        <name>Data</name>
+        <param>
+          <type>const SplineGrid::const_iterator &amp;</type>
+          <declname>i</declname>
+        </param>
+        <location file="/math/interpolations/multicubicspline.hpp" line="106" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="105" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1ab6e5e8c6d57239626e7e7dcb76ff6d24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data</definition>
+        <argsstring>(const SplineGrid &amp;v)</argsstring>
+        <name>Data</name>
+        <param>
+          <type>const SplineGrid &amp;</type>
+          <declname>v</declname>
+        </param>
+        <location file="/math/interpolations/multicubicspline.hpp" line="108" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="107" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1a0a14377a14f739b0ea4f2d84efec419e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data</definition>
+        <argsstring>(const std::vector&lt; Real &gt; &amp;v)</argsstring>
+        <name>Data</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <location file="/math/interpolations/multicubicspline.hpp" line="110" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="109" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1ae467fef7a023aaa0714c07d22506ad42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void swap</definition>
+        <argsstring>(Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt; &amp;d)</argsstring>
+        <name>swap</name>
+        <param>
+          <type>Data&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;, EmptyArg &gt; &amp;</type>
+          <declname>d</declname>
+        </param>
+        <location file="/math/interpolations/multicubicspline.hpp" line="111" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1aef3cb5dd84a28dad7bfae21cc3542574" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator[]</definition>
+        <argsstring>(Size n) const </argsstring>
+        <name>operator[]</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>n</declname>
+        </param>
+        <location file="/math/interpolations/multicubicspline.hpp" line="114" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1acc625e48a9453662b5a742ce32b2c7ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+        <definition>Real&amp; operator[]</definition>
+        <argsstring>(Size n)</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>n</declname>
+        </param>
+        <location file="/math/interpolations/multicubicspline.hpp" line="115" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="115" bodyend="115"/>
+      </memberdef>
+      </sectiondef>
+    <location file="/math/interpolations/multicubicspline.hpp" line="102" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="102" bodyend="118"/>
+  </compounddef>
+</doxygen>

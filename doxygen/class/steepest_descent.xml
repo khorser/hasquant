@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_steepest_descent" kind="class" prot="public">
     <compoundname>QuantLib::SteepestDescent</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/steepestdescent.hpp</includes>
+    <includes local="no">/math/optimization/steepestdescent.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_steepest_descent_1a0fb9d9ddd466839e076ca8f55b1a1b94" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -14,13 +14,13 @@
           <declname>lineSearch</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/steepestdescent.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/steepestdescent.hpp" bodystart="39" bodyend="41"/>
+        <location file="/math/optimization/steepestdescent.hpp" line="41" bodyfile="/math/optimization/steepestdescent.hpp" bodystart="39" bodyend="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Multi-dimensional steepest-descent class. </para>    </briefdescription>
     <detaileddescription>
 <para>User has to provide line-search method and optimization end criteria <verbatim>   search direction \form#237</verbatim> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/steepestdescent.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/steepestdescent.hpp" bodystart="37" bodyend="49"/>
+    <location file="/math/optimization/steepestdescent.hpp" line="37" bodyfile="/math/optimization/steepestdescent.hpp" bodystart="37" bodyend="49"/>
   </compounddef>
 </doxygen>

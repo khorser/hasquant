@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bates_model" kind="class" prot="public">
     <compoundname>QuantLib::BatesModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp</includes>
+    <includes local="no">/models/equity/batesmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bates_model_1ab6a20ee72b6e6b32bd3bbbbf2b110308" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,34 +13,34 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bates_process" kindref="compound">BatesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="45"/>
+        <location file="/models/equity/batesmodel.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_model_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="47" bodyend="47"/>
+        <location file="/models/equity/batesmodel.hpp" line="47" bodyfile="/models/equity/batesmodel.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_model_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="48" bodyend="48"/>
+        <location file="/models/equity/batesmodel.hpp" line="48" bodyfile="/models/equity/batesmodel.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_model_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real lambda</definition>
         <argsstring>() const </argsstring>
         <name>lambda</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="49" bodyend="49"/>
+        <location file="/models/equity/batesmodel.hpp" line="49" bodyfile="/models/equity/batesmodel.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Bates stochastic-volatility model. </para>    </briefdescription>
     <detaileddescription>
 <para>extended versions of Heston model for the stochastic volatility of an asset including jumps.</para><para>References: A. Sepp, Pricing European-Style Options under Jump Diffusion Processes with Stochastic Volatility: Applications of Fourier Transform (<ulink url="http://math.ut.ee/~spartak/papers/stochjumpvols.pdf">http://math.ut.ee/~spartak/papers/stochjumpvols.pdf</ulink>)</para><para><xrefsect id="test_1_test000081"><xreftitle>Tests</xreftitle><xrefdescription><para>calibration is tested against known values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="43" bodyend="53"/>
+    <location file="/models/equity/batesmodel.hpp" line="43" bodyfile="/models/equity/batesmodel.hpp" bodystart="43" bodyend="53"/>
   </compounddef>
 </doxygen>

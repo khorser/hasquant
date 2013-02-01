@@ -1,0 +1,864 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1_bond_functions" kind="struct" prot="public">
+    <compoundname>QuantLib::BondFunctions</compoundname>
+    <includes local="no">/pricingengines/bond/bondfunctions.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Date inspectors</header>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a420e2998a4a3ecea4851a91730afc43a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date startDate</definition>
+        <argsstring>(const Bond &amp;bond)</argsstring>
+        <name>startDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a2d8dab916bcf79ae6132b0560e85c475" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date maturityDate</definition>
+        <argsstring>(const Bond &amp;bond)</argsstring>
+        <name>maturityDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1aa8fd83e1f2eeda781b50c64402a3bb48" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool isTradable</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>isTradable</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>CashFlow inspectors</header>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a97e579217018b05d1d41a700c1503533" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Leg::const_reverse_iterator</type>
+        <definition>static Leg::const_reverse_iterator previousCashFlow</definition>
+        <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
+        <name>previousCashFlow</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>refDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a2895331baa91857bd5e5927222873310" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Leg::const_iterator</type>
+        <definition>static Leg::const_iterator nextCashFlow</definition>
+        <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
+        <name>nextCashFlow</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>refDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a5be084b5cc758f43a2689b3265441d37" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date previousCashFlowDate</definition>
+        <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
+        <name>previousCashFlowDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>refDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="69"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a2db8c3629e923ab1dbc374db1ae0baa1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date nextCashFlowDate</definition>
+        <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
+        <name>nextCashFlowDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>refDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a87896ea9adb64b99fd69ba81b4ab6c5d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real previousCashFlowAmount</definition>
+        <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
+        <name>previousCashFlowAmount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>refDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="73"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a84595077e07f3ac0c46e01c540cb7bb5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real nextCashFlowAmount</definition>
+        <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
+        <name>nextCashFlowAmount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>refDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="75"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Coupon inspectors</header>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a3419fd99f85d010beb61530631266731" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>static Rate previousCouponRate</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>previousCouponRate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="81"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a0dddebe2dde236dcd6f922aacdbe4a91" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>static Rate nextCouponRate</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>nextCouponRate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="83"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a59a92a6db209be147345a9ee692b0293" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date accrualStartDate</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>accrualStartDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="85"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1aa55ec09c514f10274a1dba5b82dcf92f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date accrualEndDate</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>accrualEndDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="87"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a9ea38d8b3ca1d41d386f793692504997" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date referencePeriodStart</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>referencePeriodStart</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="89"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ad80e49f26dcf493ea92cc1d5f1544aef" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date referencePeriodEnd</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>referencePeriodEnd</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="91"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ab270aa07186519e2484998ca3f44e236" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>static Time accrualPeriod</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>accrualPeriod</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="93"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a331193754a0b1f0adeeeabf435f69113" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <definition>static BigInteger accrualDays</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>accrualDays</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="95"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a8c91230959a00cfef282014f2e4ccf4c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>static Time accruedPeriod</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>accruedPeriod</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="97"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a18f810eec082dab6613e0d314822e114" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <definition>static BigInteger accruedDays</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>accruedDays</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="99"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a13980378a267634b8653bff6f1107068" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real accruedAmount</definition>
+        <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
+        <name>accruedAmount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="101"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>YieldTermStructure functions</header>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a312584b5561d4195d9d303f36f8ff112" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real cleanPrice</definition>
+        <argsstring>(const Bond &amp;bond, const YieldTermStructure &amp;discountCurve, Date settlementDate=Date())</argsstring>
+        <name>cleanPrice</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="108"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ac68cda2c2458f8b69cfa6fca2b1773ee" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real bps</definition>
+        <argsstring>(const Bond &amp;bond, const YieldTermStructure &amp;discountCurve, Date settlementDate=Date())</argsstring>
+        <name>bps</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="111"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a5c73987074f0b19106b99a15323a242d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>static Rate atmRate</definition>
+        <argsstring>(const Bond &amp;bond, const YieldTermStructure &amp;discountCurve, Date settlementDate=Date(), Real cleanPrice=Null&lt; Real &gt;())</argsstring>
+        <name>atmRate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>cleanPrice</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="115"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Yield (a.k.a. Internal Rate of Return, i.e. IRR) functions</header>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ae72f08287b616e362263c6e885c7edbb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real cleanPrice</definition>
+        <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
+        <name>cleanPrice</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="122"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ad541e767c07c9acb712a3fd036046609" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real cleanPrice</definition>
+        <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
+        <name>cleanPrice</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="128"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1aada2e8fc2aa2268cb4d9be49dca113b7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real bps</definition>
+        <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
+        <name>bps</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="131"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1af75112e58ce3e4d584e98ad08a9cb4fd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real bps</definition>
+        <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
+        <name>bps</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="137"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a7586eb670f9c6593816ac56a842c33ba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>static Rate yield</definition>
+        <argsstring>(const Bond &amp;bond, Real cleanPrice, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date(), Real accuracy=1.0e-10, Size maxIterations=100, Rate guess=0.05)</argsstring>
+        <name>yield</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>cleanPrice</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1.0e-10</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxIterations</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>guess</declname>
+          <defval>0.05</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="146"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1aa08110bee1ad217cf07d88b5ca525a5d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>static Time duration</definition>
+        <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Duration::Type type=Duration::Modified, Date settlementDate=Date())</argsstring>
+        <name>duration</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>Duration::Type</type>
+          <declname>type</declname>
+          <defval>Duration::Modified</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="150"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a759f1d35b136a7edae2bb8e17d84c58f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>static Time duration</definition>
+        <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Duration::Type type=Duration::Modified, Date settlementDate=Date())</argsstring>
+        <name>duration</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>Duration::Type</type>
+          <declname>type</declname>
+          <defval>Duration::Modified</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="157"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ad394820c22d967a3a97a734e1386e989" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real convexity</definition>
+        <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
+        <name>convexity</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="160"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ab3cb571a101f89b46d05515fd4990a41" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real convexity</definition>
+        <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
+        <name>convexity</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="166"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a459861a9569599f4cc27167f0f8c3cef" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real basisPointValue</definition>
+        <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
+        <name>basisPointValue</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="169"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1af2f55c70337d4c93a5a6cbe262be0c94" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real basisPointValue</definition>
+        <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
+        <name>basisPointValue</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="175"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ac89d7a397ebf318e3db1908276af9478" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real yieldValueBasisPoint</definition>
+        <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
+        <name>yieldValueBasisPoint</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="178"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a00e708b10c9cf504733f04135698f485" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real yieldValueBasisPoint</definition>
+        <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
+        <name>yieldValueBasisPoint</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="184"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Z-spread functions</header>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a725beac891a4a6c1400fc439575f0d05" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real cleanPrice</definition>
+        <argsstring>(const Bond &amp;bond, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;discount, Spread zSpread, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
+        <name>cleanPrice</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <declname>zSpread</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="195"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a972943b86726e6ae40becf565b0fc08a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>static Spread zSpread</definition>
+        <argsstring>(const Bond &amp;bond, Real cleanPrice, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date(), Real accuracy=1.0e-10, Size maxIterations=100, Rate guess=0.0)</argsstring>
+        <name>zSpread</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
+          <declname>bond</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>cleanPrice</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1.0e-10</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxIterations</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>guess</declname>
+          <defval>0.0</defval>
+        </param>
+        <location file="/pricingengines/bond/bondfunctions.hpp" line="205"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> adapters of <ref refid="class_quant_lib_1_1_cash_flows" kindref="compound">CashFlows</ref> functions. </para>    </briefdescription>
+    <detaileddescription>
+<para>See <ref refid="class_quant_lib_1_1_cash_flows" kindref="compound">CashFlows</ref> for functions&apos; documentation. <verbatim>   These adapters calls into CashFlows functions passing as input the
+   Bond cashflows, the dirty price (i.e. npv) calculated from clean
+   price, the bond settlement date (unless another date is given), zero
+   ex-dividend days, and excluding any cashflow on the settlement date.
+   Prices are always clean, as per market convention.</verbatim> </para>    </detaileddescription>
+    <location file="/pricingengines/bond/bondfunctions.hpp" line="52" bodyfile="/pricingengines/bond/bondfunctions.hpp" bodystart="52" bodyend="208"/>
+  </compounddef>
+</doxygen>

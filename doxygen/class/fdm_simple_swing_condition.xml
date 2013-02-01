@@ -24,7 +24,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>swingDirection</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="39"/>
+        <location file="/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple_swing_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -39,9 +39,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="41"/>
+        <location file="/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="41"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" bodystart="33" bodyend="48"/>
+    <location file="/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="33" bodyfile="/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" bodystart="33" bodyend="48"/>
   </compounddef>
 </doxygen>

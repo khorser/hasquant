@@ -12,7 +12,7 @@
           <type>boost::shared_ptr&lt; AlphaForm &gt;</type>
           <declname>parametricform</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="31"/>
+        <location file="/models/marketmodels/models/alphafinder.hpp" line="31"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1aa3db6f08205aef4ed57648df26d1b476" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -83,7 +83,7 @@
           <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>ratetwovols</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="48"/>
+        <location file="/models/marketmodels/models/alphafinder.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1a81960a8ba8173e3c03d53c98aa770c4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -154,9 +154,9 @@
           <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>ratetwovols</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="66"/>
+        <location file="/models/marketmodels/models/alphafinder.hpp" line="66"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="29" bodyend="92"/>
+    <location file="/models/marketmodels/models/alphafinder.hpp" line="29" bodyfile="/models/marketmodels/models/alphafinder.hpp" bodystart="29" bodyend="92"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_solver1_d" kind="class" prot="public">
     <compoundname>QuantLib::Solver1D</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp</includes>
+    <includes local="no">/math/solver1d.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -40,7 +40,7 @@
         </param>
         <detaileddescription>
 <para>This method returns the zero of the function <formula id="37">$ f $</formula>, determined with the given accuracy <formula id="203">$ \epsilon $</formula>; depending on the particular solver, this might mean that the returned <formula id="134">$ x $</formula> is such that <formula id="239">$ |f(x)| &lt; \epsilon $</formula>, or that <formula id="240">$ |x-\xi| &lt; \epsilon $</formula> where <formula id="241">$ \xi $</formula> is the real zero.</para><para>This method contains a bracketing routine to which an initial guess must be supplied as well as a step used to scan the range of the possible bracketing values. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="85" bodyend="148"/>
+        <location file="/math/solver1d.hpp" line="88" bodyfile="/math/solver1d.hpp" bodystart="85" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1aab70cb324f07b6f8922d2bf0f3838cc8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -74,7 +74,7 @@
         </param>
         <detaileddescription>
 <para>This method returns the zero of the function <formula id="37">$ f $</formula>, determined with the given accuracy <formula id="203">$ \epsilon $</formula>; depending on the particular solver, this might mean that the returned <formula id="134">$ x $</formula> is such that <formula id="239">$ |f(x)| &lt; \epsilon $</formula>, or that <formula id="240">$ |x-\xi| &lt; \epsilon $</formula> where <formula id="241">$ \xi $</formula> is the real zero.</para><para>An initial guess must be supplied, as well as two values <formula id="242">$ x_\mathrm{min} $</formula> and <formula id="243">$ x_\mathrm{max} $</formula> which must bracket the zero (i.e., either <formula id="244">$ f(x_\mathrm{min}) \leq 0 \leq f(x_\mathrm{max}) $</formula>, or <formula id="245">$ f(x_\mathrm{max}) \leq 0 \leq f(x_\mathrm{min}) $</formula> must be true). </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="164" bodyend="212"/>
+        <location file="/math/solver1d.hpp" line="168" bodyfile="/math/solver1d.hpp" bodystart="164" bodyend="212"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1a5cd4ab37661635dfaf1b58f547f4223f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -87,7 +87,7 @@
         </param>
         <detaileddescription>
 <para>This method sets the maximum number of function evaluations for the bracketing routine. An error is thrown if a bracket is not found after this number of evaluations. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="219" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="239" bodyend="241"/>
+        <location file="/math/solver1d.hpp" line="219" bodyfile="/math/solver1d.hpp" bodystart="239" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1a6a9af21bb68e575c5616e2902a4788af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -100,7 +100,7 @@
         </param>
         <briefdescription>
 <para>sets the lower bound for the function domain </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="221" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="244" bodyend="247"/>
+        <location file="/math/solver1d.hpp" line="221" bodyfile="/math/solver1d.hpp" bodystart="244" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1a96c5f418c69b6d88109d2ad8097694f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -113,7 +113,7 @@
         </param>
         <briefdescription>
 <para>sets the upper bound for the function domain </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="223" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="250" bodyend="253"/>
+        <location file="/math/solver1d.hpp" line="223" bodyfile="/math/solver1d.hpp" bodystart="250" bodyend="253"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -122,7 +122,7 @@
         <definition>Solver1D</definition>
         <argsstring>()</argsstring>
         <name>Solver1D</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="68" bodyend="70"/>
+        <location file="/math/solver1d.hpp" line="70" bodyfile="/math/solver1d.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -142,6 +142,6 @@
 </para><para><xrefsect id="todo_1_todo000039"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>clean up the interface so that it is clear whether the accuracy is specified for <formula id="134">$ x $</formula> or <formula id="230">$ f(x) $</formula>.</para></listitem><listitem><para>add target value (now the target value is 0.0) </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="66" bodyend="233"/>
+    <location file="/math/solver1d.hpp" line="66" bodyfile="/math/solver1d.hpp" bodystart="66" bodyend="233"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_boundary_constraint" kind="class" prot="public">
     <compoundname>QuantLib::BoundaryConstraint</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
+    <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_boundary_constraint_1a4fed5101cc304d63bf230b3cef44fe2e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,11 +17,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>high</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="104" bodyend="106"/>
+        <location file="/math/optimization/constraint.hpp" line="106" bodyfile="/math/optimization/constraint.hpp" bodystart="104" bodyend="106"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constraint imposing all arguments to be in [low,high] </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="87" bodyend="107"/>
+    <location file="/math/optimization/constraint.hpp" line="87" bodyfile="/math/optimization/constraint.hpp" bodystart="87" bodyend="107"/>
   </compounddef>
 </doxygen>

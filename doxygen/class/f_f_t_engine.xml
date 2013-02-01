@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_f_t_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FFTEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp</includes>
+    <includes local="no">/experimental/variancegamma/fftengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1aa0711fbc7eaf022530829206e3e8be5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,21 +17,21 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>logStrikeSpacing</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="51"/>
+        <location file="/experimental/variancegamma/fftengine.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="52"/>
+        <location file="/experimental/variancegamma/fftengine.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="53"/>
+        <location file="/experimental/variancegamma/fftengine.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1afd32d8654dad09cba7b323c7c9d6cbb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -42,20 +42,20 @@
           <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_instrument" kindref="compound">Instrument</ref> &gt; &gt; &amp;</type>
           <declname>optionList</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="55"/>
+        <location file="/experimental/variancegamma/fftengine.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1a957725ec1d11493d09636c2a11701d87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_f_f_t_engine" kindref="compound">FFTEngine</ref> &gt;</type>
         <definition>virtual std::auto_ptr&lt;FFTEngine&gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="56"/>
+        <location file="/experimental/variancegamma/fftengine.hpp" line="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for FFT pricing engines for European vanilla options. </para>    </briefdescription>
     <detaileddescription>
 <para>The FFT engine calculates the values of all options with the same expiry at the same time. For that reason it is very inefficient to price options individually. When using this engine you should collect all the options you wish to price in a list and call the engine&apos;s precalculate method before calling the NPV method of the option.</para><para>References: Carr, P. and D. B. Madan (1998), &quot;Option Valuation using the fast Fourier transform,&quot; Journal of Computational Finance, 2, 61-73. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" bodystart="47" bodyend="73"/>
+    <location file="/experimental/variancegamma/fftengine.hpp" line="48" bodyfile="/experimental/variancegamma/fftengine.hpp" bodystart="47" bodyend="73"/>
   </compounddef>
 </doxygen>

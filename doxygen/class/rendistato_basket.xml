@@ -9,42 +9,42 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="100" bodyend="100"/>
+        <location file="/instruments/bonds/btp.hpp" line="100" bodyfile="/instruments/bonds/btp.hpp" bodystart="100" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1a6a8b20951583ba00b93b21f116ef6122" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> &gt; &gt; &amp;</type>
         <definition>const std::vector&lt; boost::shared_ptr&lt; BTP &gt; &gt; &amp; btps</definition>
         <argsstring>() const </argsstring>
         <name>btps</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="204" bodyend="206"/>
+        <location file="/instruments/bonds/btp.hpp" line="101" bodyfile="/instruments/bonds/btp.hpp" bodystart="204" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1ad21e8f5ed789ee96327386bca6eb08ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
         <definition>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp; cleanPriceQuotes</definition>
         <argsstring>() const </argsstring>
         <name>cleanPriceQuotes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="209" bodyend="211"/>
+        <location file="/instruments/bonds/btp.hpp" line="102" bodyfile="/instruments/bonds/btp.hpp" bodystart="209" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1a8605d6bcc154514448692b0eb305668f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; outstandings</definition>
         <argsstring>() const </argsstring>
         <name>outstandings</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="103" bodyend="103"/>
+        <location file="/instruments/bonds/btp.hpp" line="103" bodyfile="/instruments/bonds/btp.hpp" bodystart="103" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1af188ed1bb2d72ec34e3c15041d54c1b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; weights</definition>
         <argsstring>() const </argsstring>
         <name>weights</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="104" bodyend="104"/>
+        <location file="/instruments/bonds/btp.hpp" line="104" bodyfile="/instruments/bonds/btp.hpp" bodystart="104" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1a22d90e90edebfef547c4fcba1a76296c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real outstanding</definition>
         <argsstring>() const </argsstring>
         <name>outstanding</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="105" bodyend="105"/>
+        <location file="/instruments/bonds/btp.hpp" line="105" bodyfile="/instruments/bonds/btp.hpp" bodystart="105" bodyend="105"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -54,7 +54,7 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="109" bodyend="109"/>
+        <location file="/instruments/bonds/btp.hpp" line="109" bodyfile="/instruments/bonds/btp.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -75,9 +75,9 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>cleanPriceQuotes</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="97"/>
+        <location file="/instruments/bonds/btp.hpp" line="97"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="92" bodyend="118"/>
+    <location file="/instruments/bonds/btp.hpp" line="93" bodyfile="/instruments/bonds/btp.hpp" bodystart="92" bodyend="118"/>
   </compounddef>
 </doxygen>

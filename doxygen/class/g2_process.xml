@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g2_process" kind="class" prot="public">
     <compoundname>QuantLib::G2Process</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp</includes>
+    <includes local="no">/processes/g2process.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="39"/>
+        <location file="/processes/g2process.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="40"/>
+        <location file="/processes/g2process.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -41,7 +41,7 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="41"/>
+        <location file="/processes/g2process.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -59,7 +59,7 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="42"/>
+        <location file="/processes/g2process.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1a30a103c583af9320f08337052d38c622" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -81,7 +81,7 @@
         </param>
         <detaileddescription>
 <para>returns the expectation <formula id="353">$ E(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="43"/>
+        <location file="/processes/g2process.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1ab55b8ade4729f4509ad40bbaab050a0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -103,7 +103,7 @@
         </param>
         <detaileddescription>
 <para>returns the standard deviation <formula id="355">$ S(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="45"/>
+        <location file="/processes/g2process.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1aa35146549bd167f407791342e89927e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -125,7 +125,7 @@
         </param>
         <detaileddescription>
 <para>returns the covariance <formula id="356">$ V(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="46"/>
+        <location file="/processes/g2process.hpp" line="46"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -154,60 +154,60 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="36"/>
+        <location file="/processes/g2process.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real x0</definition>
         <argsstring>() const </argsstring>
         <name>x0</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="48"/>
+        <location file="/processes/g2process.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1aad5163cf3878b74d968344e8118142e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real y0</definition>
         <argsstring>() const </argsstring>
         <name>y0</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="49"/>
+        <location file="/processes/g2process.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="50"/>
+        <location file="/processes/g2process.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="51"/>
+        <location file="/processes/g2process.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1ad1cf85afbb81add225d9d591923cae35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real b</definition>
         <argsstring>() const </argsstring>
         <name>b</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="52"/>
+        <location file="/processes/g2process.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1a83e2f6eb6af4d95118d576ddfa2804bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real eta</definition>
         <argsstring>() const </argsstring>
         <name>eta</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="53"/>
+        <location file="/processes/g2process.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_process_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="54"/>
+        <location file="/processes/g2process.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>G2 stochastic process </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" bodystart="34" bodyend="59"/>
+    <location file="/processes/g2process.hpp" line="34" bodyfile="/processes/g2process.hpp" bodystart="34" bodyend="59"/>
   </compounddef>
 </doxygen>

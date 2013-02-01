@@ -12,16 +12,16 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/event.hpp" bodystart="70" bodyend="70"/>
+        <location file="/event.hpp" line="70" bodyfile="/event.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1simple__event_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date date</definition>
         <argsstring>() const </argsstring>
         <name>date</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/event.hpp" bodystart="71" bodyend="71"/>
+        <location file="/event.hpp" line="71" bodyfile="/event.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/event.hpp" bodystart="68" bodyend="74"/>
+    <location file="/event.hpp" line="68" bodyfile="/event.hpp" bodystart="68" bodyend="74"/>
   </compounddef>
 </doxygen>

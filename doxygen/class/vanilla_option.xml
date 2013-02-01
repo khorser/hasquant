@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vanilla_option" kind="class" prot="public">
     <compoundname>QuantLib::VanillaOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp</includes>
+    <includes local="no">/instruments/vanillaoption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_option_1ab547123a460c3153e3b668bb0d424073" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -15,7 +15,7 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp" line="40"/>
+        <location file="/instruments/vanillaoption.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_option_1a95c0837ce9c4bcc4cb9b9ff975f3bfe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -52,11 +52,11 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000060"><xreftitle>Warning</xreftitle><xrefdescription><para>currently, this method returns the Black-Scholes implied volatility using analytic formulas for European options and a finite-difference method for American and Bermudan options. It will give unconsistent results if the pricing was performed with any other methods (such as jump-diffusion models.)</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000061"><xreftitle>Warning</xreftitle><xrefdescription><para>options with a gamma that changes sign (e.g., binary options) have values that are <bold>not</bold> monotonic in the volatility. In these cases, the calculation can fail and the result (if any) is almost meaningless. Another possible source of failure is to have a target value that is not attainable with any volatility, e.g., a target value lower than the intrinsic value in the case of American options. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp" line="66"/>
+        <location file="/instruments/vanillaoption.hpp" line="66"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Vanilla option (no discrete dividends, no barriers) on a single asset. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp" bodystart="37" bodyend="67"/>
+    <location file="/instruments/vanillaoption.hpp" line="37" bodyfile="/instruments/vanillaoption.hpp" bodystart="37" bodyend="67"/>
   </compounddef>
 </doxygen>

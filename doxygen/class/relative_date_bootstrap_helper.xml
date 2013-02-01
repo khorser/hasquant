@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_relative_date_bootstrap_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::RelativeDateBootstrapHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp</includes>
+    <includes local="no">/termstructures/bootstraphelper.hpp</includes>
     <templateparamlist>
       <param>
         <type>class TS</type>
@@ -16,7 +16,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="108" bodyend="114"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="108" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="108" bodyend="114"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -29,7 +29,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>quote</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="166" bodyend="171"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="104" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="166" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_relative_date_bootstrap_helper_1a9c40799ff28c28591de0a7e6db4387da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -40,13 +40,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>quote</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="174" bodyend="178"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="105" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="174" bodyend="178"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Bootstrap helper with date schedule relative to global evaluation date. </para>    </briefdescription>
     <detaileddescription>
 <para>Derived classes must takes care of rebuilding the date schedule when the global evaluation date changes </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="102" bodyend="119"/>
+    <location file="/termstructures/bootstraphelper.hpp" line="102" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="102" bodyend="119"/>
   </compounddef>
 </doxygen>

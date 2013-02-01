@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_constraint_1_1_impl" kind="class" prot="protected" abstract="yes">
     <compoundname>QuantLib::Constraint::Impl</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
+    <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Impl</definition>
         <argsstring>()</argsstring>
         <name>~Impl</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="37" bodyend="37"/>
+        <location file="/math/optimization/constraint.hpp" line="37" bodyfile="/math/optimization/constraint.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constraint_1_1_impl_1a8efc263c16ea9e44152789acc3b87166" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -22,11 +22,11 @@
         </param>
         <briefdescription>
 <para>Tests if params satisfy the constraint. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="39"/>
+        <location file="/math/optimization/constraint.hpp" line="39"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for constraint implementations. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="35" bodyend="40"/>
+    <location file="/math/optimization/constraint.hpp" line="35" bodyfile="/math/optimization/constraint.hpp" bodystart="35" bodyend="40"/>
   </compounddef>
 </doxygen>

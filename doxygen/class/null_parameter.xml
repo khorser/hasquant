@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_null_parameter" kind="class" prot="public">
     <compoundname>QuantLib::NullParameter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp</includes>
+    <includes local="no">/models/parameter.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_null_parameter_1a36792a6f68f66afdeb5cceabeaa5a74e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>NullParameter</definition>
         <argsstring>()</argsstring>
         <name>NullParameter</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="110" bodyend="115"/>
+        <location file="/models/parameter.hpp" line="115" bodyfile="/models/parameter.hpp" bodystart="110" bodyend="115"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Parameter which is always zero <formula id="287">$ a(t) = 0 $</formula> </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="101" bodyend="116"/>
+    <location file="/models/parameter.hpp" line="101" bodyfile="/models/parameter.hpp" bodystart="101" bodyend="116"/>
   </compounddef>
 </doxygen>

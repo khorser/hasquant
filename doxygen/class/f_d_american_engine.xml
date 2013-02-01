@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_american_engine" kind="class" prot="public">
     <compoundname>QuantLib::FDAmericanEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdamericanengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/fdamericanengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -36,7 +36,7 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdamericanengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdamericanengine.hpp" bodystart="53" bodyend="57"/>
+        <location file="/pricingengines/vanilla/fdamericanengine.hpp" line="57" bodyfile="/pricingengines/vanilla/fdamericanengine.hpp" bodystart="53" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,6 +45,6 @@
 <para><xrefsect id="test_1_test000122"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned value is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned greeks is tested by reproducing numerical derivatives. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdamericanengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdamericanengine.hpp" bodystart="45" bodyend="58"/>
+    <location file="/pricingengines/vanilla/fdamericanengine.hpp" line="48" bodyfile="/pricingengines/vanilla/fdamericanengine.hpp" bodystart="45" bodyend="58"/>
   </compounddef>
 </doxygen>

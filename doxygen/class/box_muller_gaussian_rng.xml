@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_box_muller_gaussian_rng" kind="class" prot="public">
     <compoundname>QuantLib::BoxMullerGaussianRng</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp</includes>
+    <includes local="no">/math/randomnumbers/boxmullergaussianrng.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -16,14 +16,14 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="46" bodyend="-1"/>
+        <location file="/math/randomnumbers/boxmullergaussianrng.hpp" line="46" bodyfile="/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_box_muller_gaussian_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
         <type>RNG</type>
         <definition>typedef RNG urng_type</definition>
         <argsstring></argsstring>
         <name>urng_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="47" bodyend="-1"/>
+        <location file="/math/randomnumbers/boxmullergaussianrng.hpp" line="47" bodyfile="/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
           <type>const RNG &amp;</type>
           <declname>uniformGenerator</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="60" bodyend="63"/>
+        <location file="/math/randomnumbers/boxmullergaussianrng.hpp" line="48" bodyfile="/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="60" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_box_muller_gaussian_rng_1a4a64ccd36c2dcd7e844dcd3ae37698bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
@@ -45,7 +45,7 @@
         <name>next</name>
         <briefdescription>
 <para>returns a sample from a Gaussian distribution </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="67" bodyend="91"/>
+        <location file="/math/randomnumbers/boxmullergaussianrng.hpp" line="50" bodyfile="/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="67" bodyend="91"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -53,6 +53,6 @@
     <detaileddescription>
 <para>It uses the well-known Box-Muller transformation to return a normal distributed Gaussian deviate with average 0.0 and standard deviation of 1.0, from a uniform deviate in (0,1) supplied by RNG.</para><para>Class RNG must implement the following interface: <programlisting><codeline><highlight class="normal">RNG::sample_type<sp/>RNG::next()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="44" bodyend="57"/>
+    <location file="/math/randomnumbers/boxmullergaussianrng.hpp" line="44" bodyfile="/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="44" bodyend="57"/>
   </compounddef>
 </doxygen>

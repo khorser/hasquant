@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Forward</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp</includes>
+    <includes local="no">/instruments/forward.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_1aae01825686b9e247bae78fc311f43439" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -10,28 +10,28 @@
         <definition>virtual Date settlementDate</definition>
         <argsstring>() const </argsstring>
         <name>settlementDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="70"/>
+        <location file="/instruments/forward.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
         <definition>const Calendar &amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="169" bodyend="171"/>
+        <location file="/instruments/forward.hpp" line="71" bodyfile="/instruments/forward.hpp" bodystart="169" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const </argsstring>
         <name>businessDayConvention</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="173" bodyend="175"/>
+        <location file="/instruments/forward.hpp" line="72" bodyfile="/instruments/forward.hpp" bodystart="173" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_1a1725ea0bf0762b6642c802532d8c546f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         <definition>const DayCounter &amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="177" bodyend="179"/>
+        <location file="/instruments/forward.hpp" line="73" bodyfile="/instruments/forward.hpp" bodystart="177" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_1a48989c032fd479610770da640ac0cdfd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
@@ -40,7 +40,7 @@
         <name>discountCurve</name>
         <briefdescription>
 <para>term structure relevant to the contract (e.g. repo curve) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="181" bodyend="183"/>
+        <location file="/instruments/forward.hpp" line="75" bodyfile="/instruments/forward.hpp" bodystart="181" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_1a132db8214320701ae378e309dea4d463" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
@@ -49,7 +49,7 @@
         <name>incomeDiscountCurve</name>
         <briefdescription>
 <para>term structure that discounts the underlying&apos;s income cash flows </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="185" bodyend="187"/>
+        <location file="/instruments/forward.hpp" line="77" bodyfile="/instruments/forward.hpp" bodystart="185" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -59,7 +59,7 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument is still tradable. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="79"/>
+        <location file="/instruments/forward.hpp" line="79"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -74,7 +74,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>if this is a bond forward price, is must be a dirty forward price. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="94"/>
+        <location file="/instruments/forward.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_1a4c43d8ef9bdc2c5ba053471a9e3612d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref></type>
@@ -103,7 +103,7 @@
         </param>
         <detaileddescription>
 <para>Simple yield calculation based on underlying spot and forward values, taking into account underlying income. When <formula id="156">$ t&gt;0 $</formula>, call with: underlyingSpotValue=spotValue(t), forwardValue=strikePrice, to get current yield. For a repo, if <formula id="157">$ t=0 $</formula>, impliedYield should reproduce the spot repo rate. For FRA&apos;s, this should reproduce the relevant zero rate at the FRA&apos;s maturityDate_; </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="109"/>
+        <location file="/instruments/forward.hpp" line="109"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -114,7 +114,7 @@
         <name>spotValue</name>
         <briefdescription>
 <para>returns spot value/price of an underlying financial instrument </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="83"/>
+        <location file="/instruments/forward.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_1a789981beda42e02c2698dee83d077a1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -127,13 +127,13 @@
         </param>
         <briefdescription>
 <para>NPV of income/dividends/storage-costs etc. of underlying instrument. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="86"/>
+        <location file="/instruments/forward.hpp" line="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Abstract base forward class. </para>    </briefdescription>
     <detaileddescription>
 <para>Derived classes must implement the virtual functions <ref refid="class_quant_lib_1_1_forward_1a0304e7ed8b1277b01dd0a094102ddbce" kindref="member">spotValue()</ref> (NPV or spot price) and <ref refid="class_quant_lib_1_1_forward_1a789981beda42e02c2698dee83d077a1d" kindref="member">spotIncome()</ref> associated with the specific relevant underlying (e.g. bond, stock, commodity, loan/deposit). These functions must be used to set the protected member variables underlyingSpotValue_ and underlyingIncome_ within <ref refid="class_quant_lib_1_1_forward_1a02b90bbfee3ee29627939544fb59ec93" kindref="member">performCalculations()</ref> in the derived class before the base-class implementation is called.</para><para><ref refid="class_quant_lib_1_1_forward_1a789981beda42e02c2698dee83d077a1d" kindref="member">spotIncome()</ref> refers generically to the present value of coupons, dividends or storage costs.</para><para>discountCurve_ is the curve used to discount forward contract cash flows back to the evaluation day, as well as to obtain forward values for spot values/prices.</para><para>incomeDiscountCurve_, which for generality is not automatically set to the discountCurve_, is the curve used to discount future income/dividends/storage-costs etc back to the evaluation date.</para><para><xrefsect id="todo_1_todo000025"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Add preconditions and tests</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000057"><xreftitle>Warning</xreftitle><xrefdescription><para>This class still needs to be rigorously tested</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="66" bodyend="142"/>
+    <location file="/instruments/forward.hpp" line="66" bodyfile="/instruments/forward.hpp" bodystart="66" bodyend="142"/>
   </compounddef>
 </doxygen>

@@ -2,84 +2,84 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cap_floor_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::CapFloor::arguments</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp</includes>
+    <includes local="no">/instruments/capfloor.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a777d02d4ccfda23d0f118af594569f33" prot="public" static="no" mutable="no">
         <type>CapFloor::Type</type>
         <definition>CapFloor::Type type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="135" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="135" bodyfile="/instruments/capfloor.hpp" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a27cae0532e21df9fdf326d2ea687af69" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; startDates</definition>
         <argsstring></argsstring>
         <name>startDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="136" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="136" bodyfile="/instruments/capfloor.hpp" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="137" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="137" bodyfile="/instruments/capfloor.hpp" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a8be7e00abf2e5251c392c915576e4595" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; endDates</definition>
         <argsstring></argsstring>
         <name>endDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="138" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="138" bodyfile="/instruments/capfloor.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a18f074832f71957702f05c4743817e70" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>std::vector&lt;Time&gt; accrualTimes</definition>
         <argsstring></argsstring>
         <name>accrualTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="139" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="139" bodyfile="/instruments/capfloor.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a8e6a8068859e154b7c5da3451cd00bd3" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
         <definition>std::vector&lt;Rate&gt; capRates</definition>
         <argsstring></argsstring>
         <name>capRates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="140" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="140" bodyfile="/instruments/capfloor.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a6ac1e143f1e813a2237ed89b6b680457" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
         <definition>std::vector&lt;Rate&gt; floorRates</definition>
         <argsstring></argsstring>
         <name>floorRates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="141" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="141" bodyfile="/instruments/capfloor.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a1c5eed4e3a3d3cc76909740990a11cfd" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
         <definition>std::vector&lt;Rate&gt; forwards</definition>
         <argsstring></argsstring>
         <name>forwards</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="142" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="142" bodyfile="/instruments/capfloor.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a47e4ab04fe0cf2981d7ab91749721d77" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; gearings</definition>
         <argsstring></argsstring>
         <name>gearings</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="143" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="143" bodyfile="/instruments/capfloor.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1ab6353abcd945e236ec654a046b5112db" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; spreads</definition>
         <argsstring></argsstring>
         <name>spreads</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="144" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="144" bodyfile="/instruments/capfloor.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a8b1238d4599db1503ca1b3a799a948a2" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; nominals</definition>
         <argsstring></argsstring>
         <name>nominals</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="145" bodyend="-1"/>
+        <location file="/instruments/capfloor.hpp" line="145" bodyfile="/instruments/capfloor.hpp" bodystart="145" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -88,18 +88,18 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="134" bodyend="134"/>
+        <location file="/instruments/capfloor.hpp" line="134" bodyfile="/instruments/capfloor.hpp" bodystart="134" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="146"/>
+        <location file="/instruments/capfloor.hpp" line="146"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for cap/floor calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="132" bodyend="147"/>
+    <location file="/instruments/capfloor.hpp" line="132" bodyfile="/instruments/capfloor.hpp" bodystart="132" bodyend="147"/>
   </compounddef>
 </doxygen>

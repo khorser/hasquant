@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_t_r_l_currency" kind="class" prot="public">
     <compoundname>QuantLib::TRLCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_t_r_l_currency_1a530f1990d0ef937e0af91c7fafefefa4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TRLCurrency</definition>
         <argsstring>()</argsstring>
         <name>TRLCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="425" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="425" bodyend="432"/>
+        <location file="/currencies/europe.hpp" line="425" bodyfile="/currencies/europe.hpp" bodystart="425" bodyend="432"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Turkish lira. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code was TRL; the numeric code was 792. It was divided in 100 kurus.</para><para>Obsoleted by the new Turkish lira since 2005. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="423" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="423" bodyend="433"/>
+    <location file="/currencies/europe.hpp" line="423" bodyfile="/currencies/europe.hpp" bodystart="423" bodyend="433"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_levenberg_marquardt" kind="class" prot="public">
     <compoundname>QuantLib::LevenbergMarquardt</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp</includes>
+    <includes local="no">/math/optimization/levenbergmarquardt.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a25b3a603b8afafa6e17f5951e504eadf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -24,7 +24,7 @@
           <declname>gtol</declname>
           <defval>1.0e-8</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="40"/>
+        <location file="/math/optimization/levenbergmarquardt.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>EndCriteria::Type</type>
@@ -42,14 +42,14 @@
         </param>
         <briefdescription>
 <para>minimize the optimization problem P </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="43"/>
+        <location file="/math/optimization/levenbergmarquardt.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a30cf1478e47879465dc409bf772d341c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>virtual Integer getInfo</definition>
         <argsstring>() const </argsstring>
         <name>getInfo</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="45"/>
+        <location file="/math/optimization/levenbergmarquardt.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1af5b3cbcb77cf6a5577918d83e848e415" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -76,13 +76,13 @@
           <type>int *</type>
           <declname>iflag</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="50"/>
+        <location file="/math/optimization/levenbergmarquardt.hpp" line="50"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Levenberg-Marquardt optimization method. </para>    </briefdescription>
     <detaileddescription>
 <para>This implementation is based on MINPACK (<ulink url="http://www.netlib.org/minpack">http://www.netlib.org/minpack</ulink>, <ulink url="http://www.netlib.org/cephes/linalg.tgz">http://www.netlib.org/cephes/linalg.tgz</ulink>) </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="36" bodyend="56"/>
+    <location file="/math/optimization/levenbergmarquardt.hpp" line="36" bodyfile="/math/optimization/levenbergmarquardt.hpp" bodystart="36" bodyend="56"/>
   </compounddef>
 </doxygen>

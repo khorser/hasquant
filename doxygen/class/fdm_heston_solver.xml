@@ -26,7 +26,7 @@
           <declname>quantoHelper</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="47"/>
+        <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_solver_1ab8fd00284ad45098410cd5ee6459b63e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -41,7 +41,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="49"/>
+        <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_solver_1abf33919cc846b46bdcbdf6c872faab27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -56,7 +56,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="50"/>
+        <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_solver_1a107a23125d03c64ff74f7e256b763f2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -71,7 +71,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="57"/>
+        <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_solver_1a7c66cb8dce1133961b76fd3fc999de60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -86,7 +86,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="58"/>
+        <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_solver_1a0bbffe2d51dd37414c2de019636a2f83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -101,7 +101,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="60"/>
+        <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_solver_1a0517d7f1f43bb1f253938d40427ea99a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -116,9 +116,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="61"/>
+        <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="61"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" bodystart="40" bodyend="73"/>
+    <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="40" bodyfile="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" bodystart="40" bodyend="73"/>
   </compounddef>
 </doxygen>

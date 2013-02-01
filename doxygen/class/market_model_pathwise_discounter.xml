@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_market_model_pathwise_discounter" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelPathwiseDiscounter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp</includes>
+    <includes local="no">/models/marketmodels/pathwisediscounter.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a86d15ad123e36cbab665cd838c71efec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="46"/>
+        <location file="/models/marketmodels/pathwisediscounter.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a8c038aa3804b532c86d8847a003caea7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -40,11 +40,11 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>factors</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="50"/>
+        <location file="/models/marketmodels/pathwisediscounter.hpp" line="50"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>this class returns the number of units of the discretely compounding money market account that 1 unit of cash at the payment can buy using the LIBOR rates from current step.</para><para>It also returns the derivative of this number with respect to each of the rates.</para><para>Discounting is purely based on the simulation LIBOR rates, to get a discounting back to zero you need to multiply by the discount factor of t_0. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="43" bodyend="58"/>
+    <location file="/models/marketmodels/pathwisediscounter.hpp" line="43" bodyfile="/models/marketmodels/pathwisediscounter.hpp" bodystart="43" bodyend="58"/>
   </compounddef>
 </doxygen>

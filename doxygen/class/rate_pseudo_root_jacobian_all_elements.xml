@@ -28,7 +28,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
           <declname>displacements</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="124"/>
+        <location file="/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_all_elements_1a9bc80d450f847e13421f7f427de8604b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -55,9 +55,9 @@
           <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <declname>B</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="130"/>
+        <location file="/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="130"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="117" bodyend="148"/>
+    <location file="/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="118" bodyfile="/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="117" bodyend="148"/>
   </compounddef>
 </doxygen>

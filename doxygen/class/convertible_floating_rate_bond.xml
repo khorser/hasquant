@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_convertible_floating_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::ConvertibleFloatingRateBond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp</includes>
+    <includes local="no">/experimental/convertiblebonds/convertiblebond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_convertible_floating_rate_bond_1a84d6fdab9baa559a4cae1430b7cce1b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -62,13 +62,13 @@
           <declname>redemption</declname>
           <defval>100</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="147"/>
+        <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="147"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>convertible floating-rate bond </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000011"><xreftitle>Warning</xreftitle><xrefdescription><para>Most methods inherited from <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> (such as yield or the yield-based dirtyPrice and cleanPrice) refer to the underlying plain-vanilla bond and do not take convertibility and callability into account. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="132" bodyend="148"/>
+    <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="132" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="132" bodyend="148"/>
   </compounddef>
 </doxygen>

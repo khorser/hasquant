@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_inverse_cumulative_normal" kind="class" prot="public">
     <compoundname>QuantLib::InverseCumulativeNormal</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp</includes>
+    <includes local="no">/math/distributions/normaldistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_normal_1a41592546fa9c0a2cab53cce8254959ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -19,7 +19,7 @@
           <declname>sigma</declname>
           <defval>1.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="270" bodyend="277"/>
+        <location file="/math/distributions/normaldistribution.hpp" line="105" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="270" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_normal_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -30,7 +30,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="107" bodyend="109"/>
+        <location file="/math/distributions/normaldistribution.hpp" line="107" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -43,13 +43,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="115" bodyend="138"/>
+        <location file="/math/distributions/normaldistribution.hpp" line="115" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="115" bodyend="138"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Inverse cumulative normal distribution function. </para>    </briefdescription>
     <detaileddescription>
 <para>Given x between zero and one as the integral value of a gaussian normal distribution this class provides the value y such that formula here ...</para><para>It use Acklam&apos;s approximation: by Peter J. Acklam, University of Oslo, Statistics Division. URL: <ulink url="http://home.online.no/~pjacklam/notes/invnorm/index.html">http://home.online.no/~pjacklam/notes/invnorm/index.html</ulink></para><para>This class can also be used to generate a gaussian normal distribution from a uniform distribution. This is especially useful when a gaussian normal distribution is generated from a low discrepancy uniform distribution: in this case the traditional Box-Muller approach and its variants would not preserve the sequence&apos;s low-discrepancy. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="101" bodyend="175"/>
+    <location file="/math/distributions/normaldistribution.hpp" line="102" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="101" bodyend="175"/>
   </compounddef>
 </doxygen>

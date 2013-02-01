@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_kirk_spread_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::KirkSpreadOptionEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp</includes>
+    <includes local="no">/experimental/exoticoptions/kirkspreadoptionengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_kirk_spread_option_engine_1adeca2f6bb78ecce837f7eed05668ba2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>correlation</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="38"/>
+        <location file="/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kirk_spread_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -29,11 +29,11 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="39"/>
+        <location file="/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="39"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Kirk approximation for European spread option on futures. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" bodystart="33" bodyend="44"/>
+    <location file="/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="33" bodyfile="/experimental/exoticoptions/kirkspreadoptionengine.hpp" bodystart="33" bodyend="44"/>
   </compounddef>
 </doxygen>

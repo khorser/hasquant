@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_jarrow_rudd" kind="class" prot="public">
     <compoundname>QuantLib::JarrowRudd</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp</includes>
+    <includes local="no">/methods/lattices/binomialtree.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_jarrow_rudd_1ac8aba06b7180debd1b06cb0b13576bba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -24,11 +24,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="113"/>
+        <location file="/methods/lattices/binomialtree.hpp" line="113"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Jarrow-Rudd (multiplicative) equal probabilities binomial tree. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="108" bodyend="114"/>
+    <location file="/methods/lattices/binomialtree.hpp" line="108" bodyfile="/methods/lattices/binomialtree.hpp" bodystart="108" bodyend="114"/>
   </compounddef>
 </doxygen>

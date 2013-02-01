@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gamma_function" kind="class" prot="public">
     <compoundname>QuantLib::GammaFunction</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp</includes>
+    <includes local="no">/math/distributions/gammadistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gamma_function_1aa7a02154cf24b10b3f3c4801a6d0cd03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -13,7 +13,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="59"/>
+        <location file="/math/distributions/gammadistribution.hpp" line="59"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -23,6 +23,6 @@
   &quot;Numerical Recipes in C&quot;, 2nd edition,
   Press, Teukolsky, Vetterling, Flannery, chapter 6
 </verbatim></para><para><xrefsect id="test_1_test000030"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="57" bodyend="62"/>
+    <location file="/math/distributions/gammadistribution.hpp" line="57" bodyfile="/math/distributions/gammadistribution.hpp" bodystart="57" bodyend="62"/>
   </compounddef>
 </doxygen>

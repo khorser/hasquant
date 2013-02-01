@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_e_u_r_libor" kind="class" prot="public">
     <compoundname>QuantLib::EURLibor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp</includes>
+    <includes local="no">/indexes/ibor/eurlibor.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Date calculations</header>
       <description><para>see <ulink url="http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1412">http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1412</ulink> </para></description>
@@ -16,7 +16,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="52"/>
+        <location file="/indexes/ibor/eurlibor.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_e_u_r_libor_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -28,7 +28,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="53"/>
+        <location file="/indexes/ibor/eurlibor.hpp" line="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,7 +46,7 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="46"/>
+        <location file="/indexes/ibor/eurlibor.hpp" line="46"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -54,6 +54,6 @@
     <detaileddescription>
 <para>Euro LIBOR fixed by BBA. <verbatim>   See &lt;http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1414&gt;.
 </verbatim></para><para><xrefsect id="caveats_1_caveats000036"><xreftitle>Warning</xreftitle><xrefdescription><para>This is the rate fixed in London by BBA. Use <ref refid="class_quant_lib_1_1_euribor" kindref="compound">Euribor</ref> if you&apos;re interested in the fixing by the <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref>. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" bodystart="42" bodyend="57"/>
+    <location file="/indexes/ibor/eurlibor.hpp" line="42" bodyfile="/indexes/ibor/eurlibor.hpp" bodystart="42" bodyend="57"/>
   </compounddef>
 </doxygen>

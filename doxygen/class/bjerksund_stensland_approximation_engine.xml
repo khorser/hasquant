@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bjerksund_stensland_approximation_engine" kind="class" prot="public">
     <compoundname>QuantLib::BjerksundStenslandApproximationEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/bjerksundstenslandengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/bjerksundstenslandengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bjerksund_stensland_approximation_engine_1ad7beb01099c5ca4ca4c749bca0ebf508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -12,20 +12,20 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/bjerksundstenslandengine.hpp" line="43"/>
+        <location file="/pricingengines/vanilla/bjerksundstenslandengine.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bjerksund_stensland_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/bjerksundstenslandengine.hpp" line="44"/>
+        <location file="/pricingengines/vanilla/bjerksundstenslandengine.hpp" line="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Bjerksund and Stensland pricing engine for American options (1993) </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000121"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/bjerksundstenslandengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/bjerksundstenslandengine.hpp" bodystart="39" bodyend="47"/>
+    <location file="/pricingengines/vanilla/bjerksundstenslandengine.hpp" line="40" bodyfile="/pricingengines/vanilla/bjerksundstenslandengine.hpp" bodystart="39" bodyend="47"/>
   </compounddef>
 </doxygen>

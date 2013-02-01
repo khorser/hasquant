@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_american_exercise" kind="class" prot="public">
     <compoundname>QuantLib::AmericanExercise</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exercise.hpp</includes>
+    <includes local="no">/exercise.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_american_exercise_1af814e77af9d3a57850d9e503f07bf482" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -22,7 +22,7 @@
           <declname>payoffAtExpiry</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="78"/>
+        <location file="/exercise.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_american_exercise_1a569291b600f9d4a48f9c0978fe01d76f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -38,13 +38,13 @@
           <declname>payoffAtExpiry</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="80"/>
+        <location file="/exercise.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>American exercise. </para>    </briefdescription>
     <detaileddescription>
 <para>An American option can be exercised at any time between two predefined dates; the first date might be omitted, in which case the option can be exercised at any time before the expiry.</para><para><xrefsect id="todo_1_todo000003"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>check that everywhere the American condition is applied from earliestDate and not earlier </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="74" bodyend="81"/>
+    <location file="/exercise.hpp" line="74" bodyfile="/exercise.hpp" bodystart="74" bodyend="81"/>
   </compounddef>
 </doxygen>

@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_t_w_d_currency" kind="class" prot="public">
     <compoundname>QuantLib::TWDCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp</includes>
+    <includes local="no">/currencies/asia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_t_w_d_currency_1a82a08dcdb1c2b2dcf31b297e1320a11c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TWDCurrency</definition>
         <argsstring>()</argsstring>
         <name>TWDCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="312" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="312" bodyend="319"/>
+        <location file="/currencies/asia.hpp" line="312" bodyfile="/currencies/asia.hpp" bodystart="312" bodyend="319"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Taiwan dollar </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is TWD; the numeric code is 901. It is divided in 100 cents. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="310" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="310" bodyend="320"/>
+    <location file="/currencies/asia.hpp" line="310" bodyfile="/currencies/asia.hpp" bodystart="310" bodyend="320"/>
   </compounddef>
 </doxygen>

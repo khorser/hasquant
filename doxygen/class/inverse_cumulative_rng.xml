@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_inverse_cumulative_rng" kind="class" prot="public">
     <compoundname>QuantLib::InverseCumulativeRng</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp</includes>
+    <includes local="no">/math/randomnumbers/inversecumulativerng.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -21,14 +21,14 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="56" bodyend="-1"/>
+        <location file="/math/randomnumbers/inversecumulativerng.hpp" line="56" bodyfile="/math/randomnumbers/inversecumulativerng.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_inverse_cumulative_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
         <type>RNG</type>
         <definition>typedef RNG urng_type</definition>
         <argsstring></argsstring>
         <name>urng_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="57" bodyend="-1"/>
+        <location file="/math/randomnumbers/inversecumulativerng.hpp" line="57" bodyfile="/math/randomnumbers/inversecumulativerng.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -41,7 +41,7 @@
           <type>const RNG &amp;</type>
           <declname>uniformGenerator</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="67" bodyend="68"/>
+        <location file="/math/randomnumbers/inversecumulativerng.hpp" line="58" bodyfile="/math/randomnumbers/inversecumulativerng.hpp" bodystart="67" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_rng_1a9a9a593ede5bb876841ba3bd87f5b8f9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
@@ -50,7 +50,7 @@
         <name>next</name>
         <briefdescription>
 <para>returns a sample from a Gaussian distribution </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="72" bodyend="75"/>
+        <location file="/math/randomnumbers/inversecumulativerng.hpp" line="60" bodyfile="/math/randomnumbers/inversecumulativerng.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,6 +60,6 @@
 </programlisting></para><para>The inverse cumulative distribution is supplied by IC.</para><para>Class IC must implement the following interface: <programlisting><codeline><highlight class="normal">IC::IC();</highlight></codeline>
 <codeline><highlight class="normal"><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member" tooltip="real number">Real</ref><sp/>IC::operator()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="54" bodyend="64"/>
+    <location file="/math/randomnumbers/inversecumulativerng.hpp" line="54" bodyfile="/math/randomnumbers/inversecumulativerng.hpp" bodystart="54" bodyend="64"/>
   </compounddef>
 </doxygen>

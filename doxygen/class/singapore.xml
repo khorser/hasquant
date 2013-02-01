@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_singapore" kind="class" prot="public">
     <compoundname>QuantLib::Singapore</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/singapore.hpp</includes>
+    <includes local="no">/time/calendars/singapore.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_singapore_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -11,7 +11,7 @@
           <briefdescription>
 <para><ref refid="class_quant_lib_1_1_singapore" kindref="compound">Singapore</ref> exchange. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/singapore.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/singapore.hpp" bodystart="66" bodyend="67"/>
+        <location file="/time/calendars/singapore.hpp" line="66" bodyfile="/time/calendars/singapore.hpp" bodystart="66" bodyend="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_singapore_1abe41cfffd960e29a5d8b07be00aeda42a57ad7a3f1c5edfdcb8ead8238d45978f" kindref="member">SGX</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/singapore.hpp" line="68"/>
+        <location file="/time/calendars/singapore.hpp" line="68"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -62,6 +62,6 @@
 <para>Hari Raya Puasa </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/singapore.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/singapore.hpp" bodystart="58" bodyend="69"/>
+    <location file="/time/calendars/singapore.hpp" line="58" bodyfile="/time/calendars/singapore.hpp" bodystart="58" bodyend="69"/>
   </compounddef>
 </doxygen>

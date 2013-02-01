@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_newton_safe" kind="class" prot="public">
     <compoundname>QuantLib::NewtonSafe</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/newtonsafe.hpp</includes>
+    <includes local="no">/math/solvers1d/newtonsafe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_newton_safe_1a89c27acbd6897ade1c40e93c8b380558" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -22,7 +22,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>xAccuracy</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/newtonsafe.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/newtonsafe.hpp" bodystart="41" bodyend="104"/>
+        <location file="/math/solvers1d/newtonsafe.hpp" line="42" bodyfile="/math/solvers1d/newtonsafe.hpp" bodystart="41" bodyend="104"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -30,6 +30,6 @@
     <detaileddescription>
 <para><simplesect kind="note"><para>This solver requires that the passed function object implement a method <computeroutput>Real derivative(Real)</computeroutput>.</para></simplesect>
 <xrefsect id="test_1_test000066"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/newtonsafe.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/newtonsafe.hpp" bodystart="38" bodyend="105"/>
+    <location file="/math/solvers1d/newtonsafe.hpp" line="38" bodyfile="/math/solvers1d/newtonsafe.hpp" bodystart="38" bodyend="105"/>
   </compounddef>
 </doxygen>

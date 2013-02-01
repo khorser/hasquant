@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tree_vanilla_swap_engine" kind="class" prot="public">
     <compoundname>QuantLib::TreeVanillaSwapEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/treeswapengine.hpp</includes>
+    <includes local="no">/pricingengines/swap/treeswapengine.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para><simplesect kind="note"><para>the term structure is only needed when the short-rate model cannot provide one itself. </para></simplesect>
@@ -24,7 +24,7 @@
           <declname>termStructure</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/treeswapengine.hpp" line="48"/>
+        <location file="/pricingengines/swap/treeswapengine.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_vanilla_swap_engine_1ab9ba5bb2544a99be4207983bad278ddc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -43,7 +43,7 @@
           <declname>termStructure</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/treeswapengine.hpp" line="52"/>
+        <location file="/pricingengines/swap/treeswapengine.hpp" line="52"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -53,13 +53,13 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/treeswapengine.hpp" line="54"/>
+        <location file="/pricingengines/swap/treeswapengine.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Numerical lattice engine for simple swaps. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000109"><xreftitle>Tests</xreftitle><xrefdescription><para>calculations are checked against known good results </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/treeswapengine.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/treeswapengine.hpp" bodystart="36" bodyend="57"/>
+    <location file="/pricingengines/swap/treeswapengine.hpp" line="38" bodyfile="/pricingengines/swap/treeswapengine.hpp" bodystart="36" bodyend="57"/>
   </compounddef>
 </doxygen>

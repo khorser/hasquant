@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cliquet_option" kind="class" prot="public">
     <compoundname>QuantLib::CliquetOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp</includes>
+    <includes local="no">/instruments/cliquetoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_cliquet_option_1_1arguments" prot="public">QuantLib::CliquetOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_cliquet_option_1_1engine" prot="public">QuantLib::CliquetOption::engine</innerclass>
       <sectiondef kind="public-func">
@@ -22,7 +22,7 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>resetDates</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp" line="54"/>
+        <location file="/instruments/cliquetoption.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cliquet_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -35,7 +35,7 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp" line="55"/>
+        <location file="/instruments/cliquetoption.hpp" line="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -44,6 +44,6 @@
 <para>A cliquet option, also known as Ratchet option, is a series of forward-starting (a.k.a. deferred strike) options where the strike for each forward start option is set equal to a fixed percentage of the spot price at the beginning of each period.</para><para><xrefsect id="todo_1_todo000021"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>add local/global caps/floors</para></listitem><listitem><para>add accrued coupon and last fixing</para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp" bodystart="48" bodyend="58"/>
+    <location file="/instruments/cliquetoption.hpp" line="48" bodyfile="/instruments/cliquetoption.hpp" bodystart="48" bodyend="58"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_c_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCVanillaEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/mcvanillaengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -33,11 +33,11 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="40" bodyend="48"/>
+        <location file="/pricingengines/vanilla/mcvanillaengine.hpp" line="40" bodyfile="/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="40" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for vanilla options using Monte Carlo simulation. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="37" bodyend="89"/>
+    <location file="/pricingengines/vanilla/mcvanillaengine.hpp" line="38" bodyfile="/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="37" bodyend="89"/>
   </compounddef>
 </doxygen>

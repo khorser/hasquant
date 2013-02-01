@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mexico" kind="class" prot="public">
     <compoundname>QuantLib::Mexico</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp</includes>
+    <includes local="no">/time/calendars/mexico.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_mexico_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -11,7 +11,7 @@
           <briefdescription>
 <para>Mexican stock exchange. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" bodystart="58" bodyend="59"/>
+        <location file="/time/calendars/mexico.hpp" line="58" bodyfile="/time/calendars/mexico.hpp" bodystart="58" bodyend="59"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,7 +25,7 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_mexico_1abe41cfffd960e29a5d8b07be00aeda42a4a4d729cff7171673eab4864cf8f91b3" kindref="member">BMV</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" line="60"/>
+        <location file="/time/calendars/mexico.hpp" line="60"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -56,6 +56,6 @@
 <para>Christmas, December 25th </para></listitem>
 </itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" bodystart="50" bodyend="61"/>
+    <location file="/time/calendars/mexico.hpp" line="50" bodyfile="/time/calendars/mexico.hpp" bodystart="50" bodyend="61"/>
   </compounddef>
 </doxygen>

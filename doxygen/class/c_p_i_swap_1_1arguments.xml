@@ -2,21 +2,21 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_p_i_swap_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::CPISwap::arguments</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp</includes>
+    <includes local="no">/instruments/cpiswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1_1arguments_1ab6f4e6d3fde00ce906e46494f60dfe7a" prot="public" static="no" mutable="no">
         <type>Type</type>
         <definition>Type type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="172" bodyend="-1"/>
+        <location file="/instruments/cpiswap.hpp" line="172" bodyfile="/instruments/cpiswap.hpp" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring></argsstring>
         <name>nominal</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="173" bodyend="-1"/>
+        <location file="/instruments/cpiswap.hpp" line="173" bodyfile="/instruments/cpiswap.hpp" bodystart="173" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,18 +25,18 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="170" bodyend="171"/>
+        <location file="/instruments/cpiswap.hpp" line="171" bodyfile="/instruments/cpiswap.hpp" bodystart="170" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="175"/>
+        <location file="/instruments/cpiswap.hpp" line="175"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for swap calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="168" bodyend="176"/>
+    <location file="/instruments/cpiswap.hpp" line="168" bodyfile="/instruments/cpiswap.hpp" bodystart="168" bodyend="176"/>
   </compounddef>
 </doxygen>

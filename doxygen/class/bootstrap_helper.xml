@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bootstrap_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BootstrapHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp</includes>
+    <includes local="no">/termstructures/bootstraphelper.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -17,21 +17,21 @@
         <definition>const Handle&lt;Quote&gt;&amp; quote</definition>
         <argsstring>() const </argsstring>
         <name>quote</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="56" bodyend="56"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="56" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real impliedQuote</definition>
         <argsstring>() const =0</argsstring>
         <name>impliedQuote</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="57"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real quoteError</definition>
         <argsstring>() const </argsstring>
         <name>quoteError</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="58" bodyend="58"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="58" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -46,7 +46,7 @@
 <para>sets the term structure to be used for pricing </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000108"><xreftitle>Warning</xreftitle><xrefdescription><para>Being a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to <bold>this</bold>, i.e., the term structure itself. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="135" bodyend="138"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="69" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -57,7 +57,7 @@
 <para>earliest relevant date </para>        </briefdescription>
         <detaileddescription>
 <para>The earliest date at which data are needed by the helper in order to provide a quote. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="141" bodyend="143"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="74" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="141" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -68,7 +68,7 @@
 <para>latest relevant date </para>        </briefdescription>
         <detaileddescription>
 <para>The latest date at which data are needed by the helper in order to provide a quote. It does not necessarily equal the maturity of the underlying instrument. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="146" bodyend="148"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="81" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="146" bodyend="148"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -79,7 +79,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="151" bodyend="153"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="85" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="151" bodyend="153"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -93,7 +93,7 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="156" bodyend="163"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="89" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="156" bodyend="163"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -106,7 +106,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>quote</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="124" bodyend="127"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="51" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="124" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a7e2d8f3f54ffbebf7627f11beb8b0dd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -117,20 +117,20 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>quote</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="130" bodyend="132"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="52" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a3f2d9da8dfb625c0534c6c6e9480db6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~BootstrapHelper</definition>
         <argsstring>()</argsstring>
         <name>~BootstrapHelper</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="53" bodyend="53"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="53" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base helper class for bootstrapping. </para>    </briefdescription>
     <detaileddescription>
 <para>This class provides an abstraction for the instruments used to bootstrap a term structure.</para><para>It is advised that a bootstrap helper for an instrument contains an instance of the actual instrument class to ensure consistancy between the algorithms used during bootstrapping and later instrument pricing. This is not yet fully enforced in the available bootstrap helpers. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="49" bodyend="95"/>
+    <location file="/termstructures/bootstraphelper.hpp" line="49" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="49" bodyend="95"/>
   </compounddef>
 </doxygen>

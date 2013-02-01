@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp</includes>
+    <includes local="no">/cashflows/inflationcouponpricer.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1aaf117f45aba9582f1937b3b5ad3eb8f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -14,18 +14,18 @@
           <declname>capletVol</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="147" bodyend="150"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="150" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="147" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1acfc8acdaa2629202e579ae7c9c6ea74d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~UnitDisplacedBlackYoYInflationCouponPricer</definition>
         <argsstring>()</argsstring>
         <name>~UnitDisplacedBlackYoYInflationCouponPricer</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="151" bodyend="151"/>
+        <location file="/cashflows/inflationcouponpricer.hpp" line="151" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="151" bodyend="151"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Unit-Displaced-Black-formula pricer for capped/floored yoy inflation coupons. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="144" bodyend="155"/>
+    <location file="/cashflows/inflationcouponpricer.hpp" line="145" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="144" bodyend="155"/>
   </compounddef>
 </doxygen>

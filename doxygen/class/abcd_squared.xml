@@ -32,7 +32,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>S</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="121"/>
+        <location file="/termstructures/volatility/abcd.hpp" line="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_squared_1a9736183e84f061ad08b6d595e2c293bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -43,9 +43,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="122"/>
+        <location file="/termstructures/volatility/abcd.hpp" line="122"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" bodystart="118" bodyend="127"/>
+    <location file="/termstructures/volatility/abcd.hpp" line="118" bodyfile="/termstructures/volatility/abcd.hpp" bodystart="118" bodyend="127"/>
   </compounddef>
 </doxygen>

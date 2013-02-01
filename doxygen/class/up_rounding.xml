@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_up_rounding" kind="class" prot="public">
     <compoundname>QuantLib::UpRounding</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp</includes>
+    <includes local="no">/math/rounding.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_up_rounding_1a18150de2e5f572059548ca6f566b1e89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,11 +18,11 @@
           <declname>digit</declname>
           <defval>5</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="93" bodyend="95"/>
+        <location file="/math/rounding.hpp" line="95" bodyfile="/math/rounding.hpp" bodystart="93" bodyend="95"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Up-rounding. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="91" bodyend="96"/>
+    <location file="/math/rounding.hpp" line="91" bodyfile="/math/rounding.hpp" bodystart="91" bodyend="96"/>
   </compounddef>
 </doxygen>

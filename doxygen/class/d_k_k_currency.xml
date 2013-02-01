@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_d_k_k_currency" kind="class" prot="public">
     <compoundname>QuantLib::DKKCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_d_k_k_currency_1a2b95dd3505bbdd9ebbdeb4353601a9d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>DKKCurrency</definition>
         <argsstring>()</argsstring>
         <name>DKKCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="132" bodyend="139"/>
+        <location file="/currencies/europe.hpp" line="132" bodyfile="/currencies/europe.hpp" bodystart="132" bodyend="139"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Danish krone. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is DKK; the numeric code is 208. It is divided in 100 øre. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="130" bodyend="140"/>
+    <location file="/currencies/europe.hpp" line="130" bodyfile="/currencies/europe.hpp" bodystart="130" bodyend="140"/>
   </compounddef>
 </doxygen>

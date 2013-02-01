@@ -8,7 +8,7 @@
         <definition>virtual ~BrownianGenerator</definition>
         <argsstring>()</argsstring>
         <name>~BrownianGenerator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" bodystart="33" bodyend="33"/>
+        <location file="/models/marketmodels/browniangenerator.hpp" line="33" bodyfile="/models/marketmodels/browniangenerator.hpp" bodystart="33" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_generator_1aec19e8e69b57772a3636d2e83d268d27" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -18,30 +18,30 @@
         <param>
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="35"/>
+        <location file="/models/marketmodels/browniangenerator.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_generator_1a1b34c2bf79cf305c195e2a46152abbd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real nextPath</definition>
         <argsstring>()=0</argsstring>
         <name>nextPath</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="36"/>
+        <location file="/models/marketmodels/browniangenerator.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_generator_1a23e12972a841e8410cafc8a15056196e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>virtual Size numberOfFactors</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfFactors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="38"/>
+        <location file="/models/marketmodels/browniangenerator.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_generator_1abe6f647dd9a9c3dc968ac76116801348" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>virtual Size numberOfSteps</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfSteps</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="39"/>
+        <location file="/models/marketmodels/browniangenerator.hpp" line="39"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" bodystart="30" bodyend="40"/>
+    <location file="/models/marketmodels/browniangenerator.hpp" line="30" bodyfile="/models/marketmodels/browniangenerator.hpp" bodystart="30" bodyend="40"/>
   </compounddef>
 </doxygen>

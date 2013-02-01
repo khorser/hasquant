@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_d_plus_d_minus" kind="class" prot="public">
     <compoundname>QuantLib::DPlusDMinus</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dplusdminus.hpp</includes>
+    <includes local="no">/methods/finitedifferences/dplusdminus.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_d_plus_d_minus_1a968eb39c2764ad72529b82d9e5443bef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,13 +17,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>h</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dplusdminus.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dplusdminus.hpp" bodystart="51" bodyend="56"/>
+        <location file="/methods/finitedifferences/dplusdminus.hpp" line="45" bodyfile="/methods/finitedifferences/dplusdminus.hpp" bodystart="51" bodyend="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><formula id="279">$ D_{+}D_{-} $</formula> matricial representation </para>    </briefdescription>
     <detaileddescription>
 <para>The differential operator <formula id="279">$ D_{+}D_{-} $</formula> discretizes the second derivative with the second-order formula <formula id="280">\[ \frac{\partial^2 u_{i}}{\partial x^2} \approx \frac{u_{i+1}-2u_{i}+u_{i-1}}{h^2} = D_{+}D_{-} u_{i} \]</formula></para><para><xrefsect id="test_1_test000075"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against numerical calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dplusdminus.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dplusdminus.hpp" bodystart="43" bodyend="46"/>
+    <location file="/methods/finitedifferences/dplusdminus.hpp" line="43" bodyfile="/methods/finitedifferences/dplusdminus.hpp" bodystart="43" bodyend="46"/>
   </compounddef>
 </doxygen>

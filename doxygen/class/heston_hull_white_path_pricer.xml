@@ -20,7 +20,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" kindref="compound">HybridHestonHullWhiteProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="100"/>
+        <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_hull_white_path_pricer_1a2ecf590215498be156b97e02b2bc327c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -31,9 +31,9 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="102"/>
+        <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="102"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="95" bodyend="108"/>
+    <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="95" bodyfile="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="95" bodyend="108"/>
   </compounddef>
 </doxygen>

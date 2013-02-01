@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_dated_o_i_s_rate_helper" kind="class" prot="public">
     <compoundname>QuantLib::DatedOISRateHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp</includes>
+    <includes local="no">/termstructures/yield/oisratehelper.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -11,7 +11,7 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="83"/>
+        <location file="/termstructures/yield/oisratehelper.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -21,7 +21,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="84"/>
+        <location file="/termstructures/yield/oisratehelper.hpp" line="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -35,7 +35,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="88"/>
+        <location file="/termstructures/yield/oisratehelper.hpp" line="88"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,11 +65,11 @@
           <declname>discountingCurve</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="80"/>
+        <location file="/termstructures/yield/oisratehelper.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Rate helper for bootstrapping over Overnight Indexed <ref refid="class_quant_lib_1_1_swap" kindref="compound">Swap</ref> rates. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" bodystart="71" bodyend="96"/>
+    <location file="/termstructures/yield/oisratehelper.hpp" line="71" bodyfile="/termstructures/yield/oisratehelper.hpp" bodystart="71" bodyend="96"/>
   </compounddef>
 </doxygen>

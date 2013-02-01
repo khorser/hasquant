@@ -30,16 +30,16 @@
           <declname>epsilon</declname>
           <defval>0.0001</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" line="39"/>
+        <location file="/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_variance_mesher_1a3b8012e0b8766ef049647138d75c9e75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real volaEstimate</definition>
         <argsstring>() const </argsstring>
         <name>volaEstimate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" bodystart="41" bodyend="41"/>
+        <location file="/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" line="41" bodyfile="/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" bodystart="34" bodyend="45"/>
+    <location file="/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" line="34" bodyfile="/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" bodystart="34" bodyend="45"/>
   </compounddef>
 </doxygen>

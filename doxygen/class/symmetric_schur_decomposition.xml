@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_symmetric_schur_decomposition" kind="class" prot="public">
     <compoundname>QuantLib::SymmetricSchurDecomposition</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp</includes>
+    <includes local="no">/math/matrixutilities/symmetricschurdecomposition.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_symmetric_schur_decomposition_1a43ff4c0e9abb6877c224127f7b70e8e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -16,27 +16,27 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>s must be symmetric </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="53"/>
+        <location file="/math/matrixutilities/symmetricschurdecomposition.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_symmetric_schur_decomposition_1aeb9833fe31a4739b5075f2a4cbd5dddd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
         <definition>const Array&amp; eigenvalues</definition>
         <argsstring>() const </argsstring>
         <name>eigenvalues</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="54" bodyend="54"/>
+        <location file="/math/matrixutilities/symmetricschurdecomposition.hpp" line="54" bodyfile="/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_symmetric_schur_decomposition_1a41aa0134fde9e36a14c3a0938903e4b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; eigenvectors</definition>
         <argsstring>() const </argsstring>
         <name>eigenvectors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="55" bodyend="55"/>
+        <location file="/math/matrixutilities/symmetricschurdecomposition.hpp" line="55" bodyfile="/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>symmetric threshold Jacobi algorithm. </para>    </briefdescription>
     <detaileddescription>
 <para>Given a real symmetric matrix S, the Schur decomposition finds the eigenvalues and eigenvectors of S. If D is the diagonal matrix formed by the eigenvalues and U the unitarian matrix of the eigenvectors we can write the Schur decomposition as <formula id="214">\[ S = U \cdot D \cdot U^T \, ,\]</formula> where <formula id="215">$ \cdot $</formula> is the standard matrix product and <formula id="216">$ ^T $</formula> is the transpose operator. This class implements the Schur decomposition using the symmetric threshold Jacobi algorithm. For details on the different Jacobi transfomations see &quot;Matrix computation,&quot; second edition, by Golub and Van Loan, The Johns Hopkins University Press</para><para><xrefsect id="test_1_test000048"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking their properties. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="50" bodyend="61"/>
+    <location file="/math/matrixutilities/symmetricschurdecomposition.hpp" line="50" bodyfile="/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="50" bodyend="61"/>
   </compounddef>
 </doxygen>

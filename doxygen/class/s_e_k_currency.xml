@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_s_e_k_currency" kind="class" prot="public">
     <compoundname>QuantLib::SEKCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_s_e_k_currency_1aeea87e9d72c77d6b1be23c81303a2687" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SEKCurrency</definition>
         <argsstring>()</argsstring>
         <name>SEKCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="369" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="369" bodyend="376"/>
+        <location file="/currencies/europe.hpp" line="369" bodyfile="/currencies/europe.hpp" bodystart="369" bodyend="376"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Swedish krona. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is SEK; the numeric code is 752. It is divided in 100 öre. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="367" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="367" bodyend="377"/>
+    <location file="/currencies/europe.hpp" line="367" bodyfile="/currencies/europe.hpp" bodystart="367" bodyend="377"/>
   </compounddef>
 </doxygen>

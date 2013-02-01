@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_step_condition_set" kind="class" prot="public">
     <compoundname>QuantLib::StepConditionSet</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp</includes>
+    <includes local="no">/methods/finitedifferences/parallelevolver.hpp</includes>
     <templateparamlist>
       <param>
         <type>typename array_type</type>
@@ -22,7 +22,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="50" bodyend="54"/>
+        <location file="/methods/finitedifferences/parallelevolver.hpp" line="50" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="50" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_step_condition_set_1ac13210b14b9539554521f49ccc7248da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -33,11 +33,11 @@
           <type>const itemType &amp;</type>
           <declname>a</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="55" bodyend="57"/>
+        <location file="/methods/finitedifferences/parallelevolver.hpp" line="55" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Parallel evolver for multiple arrays. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="46" bodyend="58"/>
+    <location file="/methods/finitedifferences/parallelevolver.hpp" line="46" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="46" bodyend="58"/>
   </compounddef>
 </doxygen>

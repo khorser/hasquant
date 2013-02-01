@@ -8,9 +8,9 @@
         <definition>FellerConstraint</definition>
         <argsstring>()</argsstring>
         <name>FellerConstraint</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="79" bodyend="81"/>
+        <location file="/models/equity/hestonmodel.hpp" line="81" bodyfile="/models/equity/hestonmodel.hpp" bodystart="79" bodyend="81"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="66" bodyend="82"/>
+    <location file="/models/equity/hestonmodel.hpp" line="66" bodyfile="/models/equity/hestonmodel.hpp" bodystart="66" bodyend="82"/>
   </compounddef>
 </doxygen>

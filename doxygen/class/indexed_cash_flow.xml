@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_indexed_cash_flow" kind="class" prot="public">
     <compoundname>QuantLib::IndexedCashFlow</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp</includes>
+    <includes local="no">/cashflows/indexedcashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -14,7 +14,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="59" bodyend="59"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="59" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -30,7 +30,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="68"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="68"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -45,7 +45,7 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="88" bodyend="95"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="72" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="88" bodyend="95"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -56,7 +56,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="76" bodyend="76"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="76" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -90,48 +90,48 @@
           <declname>growthOnly</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="46" bodyend="56"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="54" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="46" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a6094d632a1b1613bef8c06c318be2069" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real notional</definition>
         <argsstring>() const </argsstring>
         <name>notional</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="61" bodyend="61"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="61" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>virtual Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="62" bodyend="62"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="62" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>virtual Date fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="63" bodyend="63"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="63" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a0fa8bc0607c4e33977636c583cf6d1f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;Index&gt; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="64" bodyend="64"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="64" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a18f08572e22caceb5550f518da51dd65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>virtual bool growthOnly</definition>
         <argsstring>() const </argsstring>
         <name>growthOnly</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="65" bodyend="65"/>
+        <location file="/cashflows/indexedcashflow.hpp" line="65" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Cash flow dependent on an index ratio. </para>    </briefdescription>
     <detaileddescription>
 <para>This cash flow is not a coupon, i.e., there&apos;s no accrual. The amount is either i(T)/i(0) or i(T)/i(0) - 1, depending on the growthOnly parameter.</para><para>We expect this to be used inside an instrument that does all the date adjustment etc., so this takes just dates and does not change them. growthOnly = false means i(T)/i(0), which is a bond-type setting. growthOnly = true means i(T)/i(0) - 1, which is a swap-type setting. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="43" bodyend="83"/>
+    <location file="/cashflows/indexedcashflow.hpp" line="44" bodyfile="/cashflows/indexedcashflow.hpp" bodystart="43" bodyend="83"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_exercise" kind="class" prot="public">
     <compoundname>QuantLib::Exercise</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exercise.hpp</includes>
+    <includes local="no">/exercise.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
@@ -15,7 +15,7 @@
         <enumvalue id="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7a44fbacd0de93fa25f6ca3b44e0c426c2" prot="public">
           <name>European</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="37" bodyend="39"/>
+        <location file="/exercise.hpp" line="37" bodyfile="/exercise.hpp" bodystart="37" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -28,21 +28,21 @@
           <type>Type</type>
           <declname>type</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="41" bodyend="41"/>
+        <location file="/exercise.hpp" line="41" bodyfile="/exercise.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1a319eac5256bf348c4cbfcddbec689b09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Exercise</definition>
         <argsstring>()</argsstring>
         <name>~Exercise</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="42" bodyend="42"/>
+        <location file="/exercise.hpp" line="42" bodyfile="/exercise.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Type</type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="44" bodyend="44"/>
+        <location file="/exercise.hpp" line="44" bodyfile="/exercise.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1a688725346fb170983161428872458ff5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -53,7 +53,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="45" bodyend="45"/>
+        <location file="/exercise.hpp" line="45" bodyfile="/exercise.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1a6a149d4beeac42703f37f63defbff974" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
@@ -62,18 +62,18 @@
         <name>dates</name>
         <briefdescription>
 <para>Returns all exercise dates. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="47" bodyend="47"/>
+        <location file="/exercise.hpp" line="47" bodyfile="/exercise.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1a82fb26af3e6b94b1bad6e21f0d6a56ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date lastDate</definition>
         <argsstring>() const </argsstring>
         <name>lastDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="48" bodyend="48"/>
+        <location file="/exercise.hpp" line="48" bodyfile="/exercise.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base exercise class. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="35" bodyend="52"/>
+    <location file="/exercise.hpp" line="35" bodyfile="/exercise.hpp" bodystart="35" bodyend="52"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_convergence_statistics" kind="class" prot="public">
     <compoundname>QuantLib::ConvergenceStatistics</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp</includes>
+    <includes local="no">/math/statistics/convergencestatistics.hpp</includes>
     <templateparamlist>
       <param>
         <type>class T</type>
@@ -18,14 +18,14 @@
         <definition>typedef T::value_type value_type</definition>
         <argsstring></argsstring>
         <name>value_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="60" bodyend="-1"/>
+        <location file="/math/statistics/convergencestatistics.hpp" line="60" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_convergence_statistics_1a1c8168a0d88468e6516d4641ef378a60" prot="public" static="no">
         <type>std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, value_type &gt; &gt;</type>
         <definition>typedef std::vector&lt;std::pair&lt;Size,value_type&gt; &gt; table_type</definition>
         <argsstring></argsstring>
         <name>table_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="61" bodyend="-1"/>
+        <location file="/math/statistics/convergencestatistics.hpp" line="61" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -43,7 +43,7 @@
           <declname>rule</declname>
           <defval>U()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="90" bodyend="94"/>
+        <location file="/math/statistics/convergencestatistics.hpp" line="63" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="90" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1afc2f09312916217fea1ec35a927a3edc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -55,7 +55,7 @@
           <declname>rule</declname>
           <defval>U()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="97" bodyend="100"/>
+        <location file="/math/statistics/convergencestatistics.hpp" line="64" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="97" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1a0fd2224497ce267aa05d4fe5915aa11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -71,7 +71,7 @@
           <declname>weight</declname>
           <defval>1.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="65"/>
+        <location file="/math/statistics/convergencestatistics.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1a536b63938a662f0138ab4f1e87669eef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -91,7 +91,7 @@
           <type>DataIterator</type>
           <declname>end</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="67" bodyend="70"/>
+        <location file="/math/statistics/convergencestatistics.hpp" line="67" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1acd78fc587eb7cf80dd145cb3adda5ae8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -118,21 +118,21 @@
           <type>WeightIterator</type>
           <declname>wbegin</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="72" bodyend="76"/>
+        <location file="/math/statistics/convergencestatistics.hpp" line="73" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="72" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="116" bodyend="120"/>
+        <location file="/math/statistics/convergencestatistics.hpp" line="77" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="116" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1a2c9c98dfbddea40f5d6add9c239632e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, value_type &gt; &gt; &amp;</type>
         <definition>const ConvergenceStatistics&lt; T, U &gt;::table_type &amp; convergenceTable</definition>
         <argsstring>() const </argsstring>
         <name>convergenceTable</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="124" bodyend="126"/>
+        <location file="/math/statistics/convergencestatistics.hpp" line="79" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="124" bodyend="126"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -141,6 +141,6 @@
 <para>This class decorates another statistics class adding a convergence table calculation. The table tracks the convergence of the mean.</para><para>It is possible to specify the number of samples at which the mean should be stored by mean of the second template parameter; the default is to store <formula id="246">$ 2^{n-1} $</formula> samples at the <formula id="181">$ n $</formula>-th step. Any passed class must implement the following interface: <programlisting><codeline><highlight class="normal"><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member" tooltip="size of a container">Size</ref><sp/>initialSamples()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal"><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member" tooltip="size of a container">Size</ref><sp/>nextSamples(<ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member" tooltip="size of a container">Size</ref><sp/>currentSamples)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting> as well as a copy constructor.</para><para><xrefsect id="test_1_test000069"><xreftitle>Tests</xreftitle><xrefdescription><para>results are tested against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="58" bodyend="84"/>
+    <location file="/math/statistics/convergencestatistics.hpp" line="58" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="58" bodyend="84"/>
   </compounddef>
 </doxygen>

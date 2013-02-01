@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_simple_chooser_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::SimpleChooserOption::arguments</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp</includes>
+    <includes local="no">/experimental/exoticoptions/simplechooseroption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_simple_chooser_option_1_1arguments_1a6e45a884968308c9560f663b4a1be847" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date choosingDate</definition>
         <argsstring></argsstring>
         <name>choosingDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" bodystart="55" bodyend="-1"/>
+        <location file="/experimental/exoticoptions/simplechooseroption.hpp" line="55" bodyfile="/experimental/exoticoptions/simplechooseroption.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -18,18 +18,18 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" bodystart="53" bodyend="53"/>
+        <location file="/experimental/exoticoptions/simplechooseroption.hpp" line="53" bodyfile="/experimental/exoticoptions/simplechooseroption.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_simple_chooser_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" line="54"/>
+        <location file="/experimental/exoticoptions/simplechooseroption.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Extra arguments for single chooser option. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" bodystart="50" bodyend="56"/>
+    <location file="/experimental/exoticoptions/simplechooseroption.hpp" line="51" bodyfile="/experimental/exoticoptions/simplechooseroption.hpp" bodystart="50" bodyend="56"/>
   </compounddef>
 </doxygen>

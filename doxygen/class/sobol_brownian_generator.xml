@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_sobol_brownian_generator" kind="class" prot="public">
     <compoundname>QuantLib::SobolBrownianGenerator</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp</includes>
+    <includes local="no">/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_sobol_brownian_generator_1a0248f65bd948236b9f656ce6c5d65355" prot="public" static="no">
         <name>Ordering</name>
@@ -21,7 +21,7 @@
           <detaileddescription>
 <para>A diagonal schema will be used to assign the variates with the best quality to the most important factors and the largest steps. </para>          </detaileddescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" bodystart="39" bodyend="48"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="39" bodyfile="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" bodystart="39" bodyend="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -52,14 +52,14 @@
           <declname>directionIntegers</declname>
           <defval>SobolRsg::Jaeckel</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="55"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_brownian_generator_1a924332975ee95db8a63daf02e10d3bdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nextPath</definition>
         <argsstring>()</argsstring>
         <name>nextPath</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="57"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_brownian_generator_1a5a8ee20027256cd968b0561e1bb071c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -69,28 +69,28 @@
         <param>
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="58"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_brownian_generator_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfFactors</definition>
         <argsstring>() const </argsstring>
         <name>numberOfFactors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="60"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_brownian_generator_1aed640b8d340edab41683b6aadd89665b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfSteps</definition>
         <argsstring>() const </argsstring>
         <name>numberOfSteps</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="61"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_brownian_generator_1aa78e0abd73a8e3a70ed10bdd5f8828c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &gt; &amp;</type>
         <definition>const std::vector&lt;std::vector&lt;Size&gt; &gt;&amp; orderedIndices</definition>
         <argsstring>() const </argsstring>
         <name>orderedIndices</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="64"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_brownian_generator_1a07778a8e18549b87a04708a03ff8106e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
@@ -101,13 +101,13 @@
           <type>const std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &amp;</type>
           <declname>variates</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="66"/>
+        <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="66"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Sobol Brownian generator for market-model simulations. </para>    </briefdescription>
     <detaileddescription>
 <para>Incremental Brownian generator using a Sobol generator, inverse-cumulative Gaussian method, and Brownian bridging. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" bodystart="37" bodyend="77"/>
+    <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="37" bodyfile="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" bodystart="37" bodyend="77"/>
   </compounddef>
 </doxygen>

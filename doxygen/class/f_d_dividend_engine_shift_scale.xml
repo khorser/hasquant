@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_dividend_engine_shift_scale" kind="class" prot="public">
     <compoundname>QuantLib::FDDividendEngineShiftScale</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/fddividendengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -36,13 +36,13 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="111" bodyend="117"/>
+        <location file="/pricingengines/vanilla/fddividendengine.hpp" line="117" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="111" bodyend="117"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Finite-differences engine for dividend options using shifted dividends. </para>    </briefdescription>
     <detaileddescription>
 <para>This engine uses the same algorithm that was used in versions 0.3.11 and earlier. It produces results that are different from the Merton-73 engine.</para><para><xrefsect id="todo_1_todo000057"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Review literature to see whether this is described</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="109" bodyend="121"/>
+    <location file="/pricingengines/vanilla/fddividendengine.hpp" line="109" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="109" bodyend="121"/>
   </compounddef>
 </doxygen>

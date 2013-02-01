@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bates_process" kind="class" prot="public">
     <compoundname>QuantLib::BatesProcess</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp</includes>
+    <includes local="no">/processes/batesprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1aa53ab896db19eca97e8e53bb62b3d29e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -58,7 +58,7 @@
           <declname>d</declname>
           <defval>HestonProcess::FullTruncation</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="58"/>
+        <location file="/processes/batesprocess.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -68,7 +68,7 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
         <briefdescription>
 <para>returns the number of independent factors of the process </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="60"/>
+        <location file="/processes/batesprocess.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -86,7 +86,7 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="61"/>
+        <location file="/processes/batesprocess.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -112,34 +112,34 @@
         </param>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="63"/>
+        <location file="/processes/batesprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real lambda</definition>
         <argsstring>() const </argsstring>
         <name>lambda</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="65"/>
+        <location file="/processes/batesprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="66"/>
+        <location file="/processes/batesprocess.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="67"/>
+        <location file="/processes/batesprocess.hpp" line="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Square-root stochastic-volatility Bates process. </para>    </briefdescription>
     <detaileddescription>
 <para>This class describes the square root stochastic volatility process incl jumps governed by <formula id="327">\[ \begin{array}{rcl} dS(t, S) &amp;=&amp; (r-d-\lambda m) S dt +\sqrt{v} S dW_1 + (e^J - 1) S dN \\ dv(t, S) &amp;=&amp; \kappa (\theta - v) dt + \sigma \sqrt{v} dW_2 \\ dW_1 dW_2 &amp;=&amp; \rho dt \\ \omega(J) &amp;=&amp; \frac{1}{\sqrt{2\pi \delta^2}} \exp\left[-\frac{(J-\nu)^2}{2\delta^2}\right] \end{array} \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="49" bodyend="71"/>
+    <location file="/processes/batesprocess.hpp" line="49" bodyfile="/processes/batesprocess.hpp" bodystart="49" bodyend="71"/>
   </compounddef>
 </doxygen>

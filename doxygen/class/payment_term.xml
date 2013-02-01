@@ -11,35 +11,35 @@
         <name>name</name>
         <briefdescription>
 <para>name, e.g, &quot;Pricing end + 5 days&quot; </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="91" bodyend="93"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="44" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="91" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a185923cbbe3930934c65be45ad6e9540" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>EventType</type>
         <definition>PaymentTerm::EventType eventType</definition>
         <argsstring>() const </argsstring>
         <name>eventType</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="95" bodyend="97"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="45" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a373bf0ccb7c58a5013f566809db15ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer offsetDays</definition>
         <argsstring>() const </argsstring>
         <name>offsetDays</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="99" bodyend="101"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="46" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1ab3ba2ffdff08fce88df18a7b90502423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
         <definition>const Calendar&amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="47"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="107" bodyend="109"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="49" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -51,7 +51,7 @@
         <enumvalue id="class_quant_lib_1_1_payment_term_1a2628ea8d12e8b2563c32f05dc7fff6faa276311ceb012f92d59769096553a2e31" prot="public">
           <name>PricingDate</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="34" bodyend="34"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="34" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -60,7 +60,7 @@
         <definition>PaymentTerm</definition>
         <argsstring>()</argsstring>
         <name>PaymentTerm</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="89" bodyend="89"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="36" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1abae5f1ff8a6259bd67929553d96a9adf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +83,7 @@
           <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="40"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a79661a4eb9c43c53b4b0849fdc9de7a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -94,7 +94,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="103" bodyend="105"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="51" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="103" bodyend="105"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
@@ -109,7 +109,7 @@
         <param>
           <type>const PaymentTerm &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="111" bodyend="113"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="71" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a3a14cda29f7ea6b3b761303a887cf119" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -122,7 +122,7 @@
         <param>
           <type>const PaymentTerm &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="115" bodyend="117"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="75" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="115" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a9f6412633af57189ba935181fe3b4065" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -135,9 +135,9 @@
         <param>
           <type>const PaymentTerm &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="79"/>
+        <location file="/experimental/commodities/paymentterm.hpp" line="79"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="32" bodyend="67"/>
+    <location file="/experimental/commodities/paymentterm.hpp" line="32" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="32" bodyend="67"/>
   </compounddef>
 </doxygen>

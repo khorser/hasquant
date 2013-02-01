@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_sphere_cylinder_optimizer" kind="class" prot="public">
     <compoundname>QuantLib::SphereCylinderOptimizer</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp</includes>
+    <includes local="no">/math/optimization/spherecylinder.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1ab418732e2b63785866f16eeb4b522276" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -38,14 +38,14 @@
           <declname>zweight</declname>
           <defval>1.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="48"/>
+        <location file="/math/optimization/spherecylinder.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a160f8b811bc08b1ecbd4cd75e23d66d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isIntersectionNonEmpty</definition>
         <argsstring>() const </argsstring>
         <name>isIntersectionNonEmpty</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="49"/>
+        <location file="/math/optimization/spherecylinder.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a8b8ec5617c0a4397e24553320e08f9f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -72,7 +72,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
           <declname>y3</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="54"/>
+        <location file="/math/optimization/spherecylinder.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1ae1eda24db01e95018b8bba94b9a54e27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -91,7 +91,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
           <declname>y3</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="58"/>
+        <location file="/math/optimization/spherecylinder.hpp" line="58"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
@@ -100,6 +100,6 @@
 <listitem><para>vertical cylinder centred at (alpha,0) radius s</para></listitem><listitem><para>Z some point in R3</para></listitem><listitem><para>find point on intersection that is closest to Z</para></listitem></itemizedlist>
 </para><para>the intersection may be empty! </para></listitem></itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="40" bodyend="66"/>
+    <location file="/math/optimization/spherecylinder.hpp" line="40" bodyfile="/math/optimization/spherecylinder.hpp" bodystart="40" bodyend="66"/>
   </compounddef>
 </doxygen>

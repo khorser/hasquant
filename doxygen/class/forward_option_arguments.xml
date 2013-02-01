@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_option_arguments" kind="class" prot="public">
     <compoundname>QuantLib::ForwardOptionArguments</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp</includes>
+    <includes local="no">/instruments/forwardvanillaoption.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -16,14 +16,14 @@
         <definition>Real moneyness</definition>
         <argsstring></argsstring>
         <name>moneyness</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="42" bodyend="-1"/>
+        <location file="/instruments/forwardvanillaoption.hpp" line="42" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_forward_option_arguments_1acce77eb25acc2dd928c6728a14602ad3" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date resetDate</definition>
         <argsstring></argsstring>
         <name>resetDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="43" bodyend="-1"/>
+        <location file="/instruments/forwardvanillaoption.hpp" line="43" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,18 +32,18 @@
         <definition>ForwardOptionArguments</definition>
         <argsstring>()</argsstring>
         <name>ForwardOptionArguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="39" bodyend="40"/>
+        <location file="/instruments/forwardvanillaoption.hpp" line="40" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="39" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_option_arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="68" bodyend="79"/>
+        <location file="/instruments/forwardvanillaoption.hpp" line="41" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="68" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for forward (strike-resetting) option calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="37" bodyend="44"/>
+    <location file="/instruments/forwardvanillaoption.hpp" line="37" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="37" bodyend="44"/>
   </compounddef>
 </doxygen>

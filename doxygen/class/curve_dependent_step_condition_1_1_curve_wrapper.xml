@@ -8,7 +8,7 @@
         <definition>virtual ~CurveWrapper</definition>
         <argsstring>()</argsstring>
         <name>~CurveWrapper</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="73" bodyend="73"/>
+        <location file="/methods/finitedifferences/stepcondition.hpp" line="73" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper_1a8ee3b79a9eb3fde4cc5be5a48667c97b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -23,9 +23,9 @@
           <type>int</type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="75"/>
+        <location file="/methods/finitedifferences/stepcondition.hpp" line="75"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="71" bodyend="76"/>
+    <location file="/methods/finitedifferences/stepcondition.hpp" line="71" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="71" bodyend="76"/>
   </compounddef>
 </doxygen>

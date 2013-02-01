@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cumulative_poisson_distribution" kind="class" prot="public">
     <compoundname>QuantLib::CumulativePoissonDistribution</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp</includes>
+    <includes local="no">/math/distributions/poissondistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cumulative_poisson_distribution_1afef08c1785dc638a5639d03f29628180" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>mu</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="64" bodyend="64"/>
+        <location file="/math/distributions/poissondistribution.hpp" line="64" bodyfile="/math/distributions/poissondistribution.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cumulative_poisson_distribution_1a860deba0e182257980641badf4554fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -24,13 +24,13 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>k</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="65" bodyend="67"/>
+        <location file="/math/distributions/poissondistribution.hpp" line="65" bodyfile="/math/distributions/poissondistribution.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Cumulative Poisson distribution function. </para>    </briefdescription>
     <detaileddescription>
 <para>This function provides an approximation of the integral of the Poisson distribution.</para><para>For this implementation see &quot;Numerical Recipes in C&quot;, 2nd edition, Press, Teukolsky, Vetterling, Flannery, chapter 6</para><para><xrefsect id="test_1_test000033"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="61" bodyend="70"/>
+    <location file="/math/distributions/poissondistribution.hpp" line="62" bodyfile="/math/distributions/poissondistribution.hpp" bodystart="61" bodyend="70"/>
   </compounddef>
 </doxygen>

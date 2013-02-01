@@ -18,21 +18,21 @@
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="40" bodyend="-1"/>
+        <location file="/experimental/exoticoptions/mceverestengine.hpp" line="40" bodyfile="/experimental/exoticoptions/mceverestengine.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_everest_engine_1a6a9d35263b41b36b002797dde605d942" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="struct_quant_lib_1_1_multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;::path_pricer_type</type>
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="42" bodyend="-1"/>
+        <location file="/experimental/exoticoptions/mceverestengine.hpp" line="42" bodyfile="/experimental/exoticoptions/mceverestengine.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_everest_engine_1a931267be1997474da010eacc9e911b29" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="struct_quant_lib_1_1_multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;::stats_type</type>
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="44" bodyend="-1"/>
+        <location file="/experimental/exoticoptions/mceverestengine.hpp" line="44" bodyfile="/experimental/exoticoptions/mceverestengine.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -77,16 +77,16 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="140" bodyend="169"/>
+        <location file="/experimental/exoticoptions/mceverestengine.hpp" line="53" bodyfile="/experimental/exoticoptions/mceverestengine.hpp" bodystart="140" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_m_c_everest_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="54" bodyend="69"/>
+        <location file="/experimental/exoticoptions/mceverestengine.hpp" line="54" bodyfile="/experimental/exoticoptions/mceverestengine.hpp" bodystart="54" bodyend="69"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="36" bodyend="96"/>
+    <location file="/experimental/exoticoptions/mceverestengine.hpp" line="37" bodyfile="/experimental/exoticoptions/mceverestengine.hpp" bodystart="36" bodyend="96"/>
   </compounddef>
 </doxygen>

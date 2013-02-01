@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_simple_local_estimator" kind="class" prot="public">
     <compoundname>QuantLib::SimpleLocalEstimator</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp</includes>
+    <includes local="no">/models/volatility/simplelocalestimator.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_simple_local_estimator_1a7f45f02ee06c173a5926ac70f23f3d3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" bodystart="40" bodyend="41"/>
+        <location file="/models/volatility/simplelocalestimator.hpp" line="41" bodyfile="/models/volatility/simplelocalestimator.hpp" bodystart="40" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_simple_local_estimator_1a2ff585a7a780ab4d7275a408e86b4642" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
@@ -24,13 +24,13 @@
           <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" bodystart="43" bodyend="55"/>
+        <location file="/models/volatility/simplelocalestimator.hpp" line="43" bodyfile="/models/volatility/simplelocalestimator.hpp" bodystart="43" bodyend="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Local-estimator volatility model. </para>    </briefdescription>
     <detaileddescription>
 <para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" bodystart="35" bodyend="56"/>
+    <location file="/models/volatility/simplelocalestimator.hpp" line="36" bodyfile="/models/volatility/simplelocalestimator.hpp" bodystart="35" bodyend="56"/>
   </compounddef>
 </doxygen>

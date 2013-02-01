@@ -8,21 +8,21 @@
         <definition>typedef base_data data</definition>
         <argsstring></argsstring>
         <name>data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="235" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="235" bodyend="-1"/>
+        <location file="/math/interpolations/multicubicspline.hpp" line="235" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="235" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1base__cubic__spline_1a3b807ce7052068570437321cbe598705" prot="public" static="no">
         <type>base_data_table</type>
         <definition>typedef base_data_table data_table</definition>
         <argsstring></argsstring>
         <name>data_table</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="236" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="236" bodyend="-1"/>
+        <location file="/math/interpolations/multicubicspline.hpp" line="236" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="236" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1base__cubic__spline_1ad2eb9da029f604acb1ef1477859265f2" prot="public" static="no">
         <type>base_output_data</type>
         <definition>typedef base_output_data output_data</definition>
         <argsstring></argsstring>
         <name>output_data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="237" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="237" bodyend="-1"/>
+        <location file="/math/interpolations/multicubicspline.hpp" line="237" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="237" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,9 +51,9 @@
           <type>output_data &amp;</type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="240" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="238" bodyend="257"/>
+        <location file="/math/interpolations/multicubicspline.hpp" line="240" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="238" bodyend="257"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="233" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="233" bodyend="258"/>
+    <location file="/math/interpolations/multicubicspline.hpp" line="233" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="233" bodyend="258"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_trigeorgis" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedTrigeorgis</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp</includes>
+    <includes local="no">/experimental/lattices/extendedbinomialtree.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_trigeorgis_1a19e5d0060fa947df9856a8a298123afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -24,11 +24,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="188"/>
+        <location file="/experimental/lattices/extendedbinomialtree.hpp" line="188"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Trigeorgis (additive equal jumps) binomial tree </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="182" bodyend="192"/>
+    <location file="/experimental/lattices/extendedbinomialtree.hpp" line="183" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="182" bodyend="192"/>
   </compounddef>
 </doxygen>

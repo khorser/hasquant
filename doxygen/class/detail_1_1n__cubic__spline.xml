@@ -13,21 +13,21 @@
         <definition>typedef Data&lt;base_data, typename X::data&gt; data</definition>
         <argsstring></argsstring>
         <name>data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="263" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="263" bodyend="-1"/>
+        <location file="/math/interpolations/multicubicspline.hpp" line="263" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="263" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1a406c9d62f5e5f3152713996ba9fc87aa" prot="public" static="no">
         <type>DataTable&lt; typename X::data_table &gt;</type>
         <definition>typedef DataTable&lt;typename X::data_table&gt; data_table</definition>
         <argsstring></argsstring>
         <name>data_table</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="264" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="264" bodyend="-1"/>
+        <location file="/math/interpolations/multicubicspline.hpp" line="264" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="264" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1acfc455c96d779248db3eff8e5da03ab2" prot="public" static="no">
         <type>Point&lt; base_output_data, typename X::output_data &gt;</type>
         <definition>typedef Point&lt;base_output_data, typename X::output_data&gt; output_data</definition>
         <argsstring></argsstring>
         <name>output_data</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="265" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="265" bodyend="-1"/>
+        <location file="/math/interpolations/multicubicspline.hpp" line="265" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="265" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -56,16 +56,16 @@
           <type>output_data &amp;</type>
           <declname>v</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="268" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="266" bodyend="271"/>
+        <location file="/math/interpolations/multicubicspline.hpp" line="268" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="266" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1a236ae487a46d1dbfab700dbd6eb4a642" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>~n_cubic_spline</definition>
         <argsstring>()</argsstring>
         <name>~n_cubic_spline</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="272" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="272" bodyend="272"/>
+        <location file="/math/interpolations/multicubicspline.hpp" line="272" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="272" bodyend="272"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="261" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="261" bodyend="278"/>
+    <location file="/math/interpolations/multicubicspline.hpp" line="261" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="261" bodyend="278"/>
   </compounddef>
 </doxygen>

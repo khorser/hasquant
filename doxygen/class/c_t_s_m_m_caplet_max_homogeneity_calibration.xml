@@ -37,7 +37,7 @@
           <declname>caplet0Swaption1Priority</declname>
           <defval>1.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="39"/>
+        <location file="/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -98,9 +98,9 @@
           <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <declname>swapCovariancePseudoRoots</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="57"/>
+        <location file="/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="57"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" bodystart="28" bodyend="67"/>
+    <location file="/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="28" bodyfile="/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" bodystart="28" bodyend="67"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_binomial_tree" kind="class" prot="public">
     <compoundname>QuantLib::BinomialTree</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp</includes>
+    <includes local="no">/methods/lattices/binomialtree.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -17,7 +17,7 @@
           <name>branches</name>
           <initializer>= 2</initializer>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="41" bodyend="41"/>
+        <location file="/methods/lattices/binomialtree.hpp" line="41" bodyfile="/methods/lattices/binomialtree.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -38,7 +38,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="42" bodyend="49"/>
+        <location file="/methods/lattices/binomialtree.hpp" line="45" bodyfile="/methods/lattices/binomialtree.hpp" bodystart="42" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_binomial_tree_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -49,7 +49,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="50" bodyend="52"/>
+        <location file="/methods/lattices/binomialtree.hpp" line="50" bodyfile="/methods/lattices/binomialtree.hpp" bodystart="50" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_binomial_tree_1aab3e236871d755fdfdd7c3dd22c52f9c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -67,11 +67,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>branch</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="53" bodyend="55"/>
+        <location file="/methods/lattices/binomialtree.hpp" line="53" bodyfile="/methods/lattices/binomialtree.hpp" bodystart="53" bodyend="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Binomial tree base class. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="39" bodyend="59"/>
+    <location file="/methods/lattices/binomialtree.hpp" line="39" bodyfile="/methods/lattices/binomialtree.hpp" bodystart="39" bodyend="59"/>
   </compounddef>
 </doxygen>

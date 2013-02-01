@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_gegenbauer_integration" kind="class" prot="public">
     <compoundname>QuantLib::GaussGegenbauerIntegration</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp</includes>
+    <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_gegenbauer_integration_1ae6929ed5e1a0d9d3faccabffab3abd73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -17,13 +17,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>lambda</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="196" bodyend="198"/>
+        <location file="/math/integrals/gaussianquadratures.hpp" line="198" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="196" bodyend="198"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gauss-Gegenbauer integration. </para>    </briefdescription>
     <detaileddescription>
 <para>This class performs a 1-dimensional Gauss-Gegenbauer integration. <formula id="196">\[ \int_{-1}^{1} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="202">\[ w(x)=(1-x^2)^{\lambda-1/2} \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="194" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="194" bodyend="199"/>
+    <location file="/math/integrals/gaussianquadratures.hpp" line="194" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="194" bodyend="199"/>
   </compounddef>
 </doxygen>

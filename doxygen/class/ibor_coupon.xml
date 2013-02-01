@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_ibor_coupon" kind="class" prot="public">
     <compoundname>QuantLib::IborCoupon</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp</includes>
+    <includes local="no">/cashflows/iborcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_1a105d8ebeeed70e1a0dd781ff7c1a5f5d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <definition>const boost::shared_ptr&lt;IborIndex&gt;&amp; iborIndex</definition>
         <argsstring>() const </argsstring>
         <name>iborIndex</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="53" bodyend="55"/>
+        <location file="/cashflows/iborcoupon.hpp" line="53" bodyfile="/cashflows/iborcoupon.hpp" bodystart="53" bodyend="55"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a">indexFixing</reimplements>
         <briefdescription>
 <para>Implemented in order to manage the case of par coupon. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="60"/>
+        <location file="/cashflows/iborcoupon.hpp" line="60"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -37,7 +37,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="64"/>
+        <location file="/cashflows/iborcoupon.hpp" line="64"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -100,11 +100,11 @@
           <declname>isInArrears</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="50"/>
+        <location file="/cashflows/iborcoupon.hpp" line="50"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Coupon paying a Libor-type index </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="37" bodyend="70"/>
+    <location file="/cashflows/iborcoupon.hpp" line="37" bodyfile="/cashflows/iborcoupon.hpp" bodystart="37" bodyend="70"/>
   </compounddef>
 </doxygen>

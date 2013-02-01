@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_overnight_indexed_swap_index" kind="class" prot="public">
     <compoundname>QuantLib::OvernightIndexedSwapIndex</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp</includes>
+    <includes local="no">/indexes/swapindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_index_1ac2658cae9d72d328e8348656b07d8840" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <definition>boost::shared_ptr&lt; OvernightIndex &gt; overnightIndex</definition>
         <argsstring>() const </argsstring>
         <name>overnightIndex</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" bodystart="137" bodyend="139"/>
+        <location file="/indexes/swapindex.hpp" line="111" bodyfile="/indexes/swapindex.hpp" bodystart="137" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_index_1a3c9a90446e2ee0b8cafbf57b9f4c671b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_overnight_indexed_swap" kindref="compound">OvernightIndexedSwap</ref> &gt;</type>
@@ -23,7 +23,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000044"><xreftitle>Warning</xreftitle><xrefdescription><para>Relinking the term structure underlying the index will not have effect on the returned swap. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="116"/>
+        <location file="/indexes/swapindex.hpp" line="116"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -52,11 +52,11 @@
           <type>const boost::shared_ptr&lt; OvernightIndex &gt; &amp;</type>
           <declname>overnightIndex</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="108"/>
+        <location file="/indexes/swapindex.hpp" line="108"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for overnight indexed swap indexes </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp" bodystart="101" bodyend="124"/>
+    <location file="/indexes/swapindex.hpp" line="101" bodyfile="/indexes/swapindex.hpp" bodystart="101" bodyend="124"/>
   </compounddef>
 </doxygen>

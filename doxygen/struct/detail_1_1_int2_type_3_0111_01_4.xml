@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1detail_1_1_int2_type_3_0111_01_4" kind="struct" prot="public">
+    <compoundname>QuantLib::detail::Int2Type&lt; 11 &gt;</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_quant_lib_1_1detail_1_1_int2_type_3_0111_01_4_1a6027a31e90a824a2b5806541ea9e5fdb" prot="public" static="no">
+        <type>cubic_splint_11</type>
+        <definition>typedef cubic_splint_11 c_splint</definition>
+        <argsstring></argsstring>
+        <name>c_splint</name>
+        <location file="/math/interpolations/multicubicspline.hpp" line="423" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="423" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_quant_lib_1_1detail_1_1_int2_type_3_0111_01_4_1a085d87a6698894f243c0ef0f73fca655" prot="public" static="no">
+        <type>cubic_spline_11</type>
+        <definition>typedef cubic_spline_11 c_spline</definition>
+        <argsstring></argsstring>
+        <name>c_spline</name>
+        <location file="/math/interpolations/multicubicspline.hpp" line="424" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="424" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <location file="/math/interpolations/multicubicspline.hpp" line="422" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="422" bodyend="425"/>
+  </compounddef>
+</doxygen>

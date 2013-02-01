@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_asset_or_nothing_payoff" kind="class" prot="public">
     <compoundname>QuantLib::AssetOrNothingPayoff</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp</includes>
+    <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_or_nothing_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_payoff_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="144" bodyend="144"/>
+        <location file="/instruments/payoffs.hpp" line="144" bodyfile="/instruments/payoffs.hpp" bodystart="144" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_or_nothing_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -25,7 +25,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>price</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="145"/>
+        <location file="/instruments/payoffs.hpp" line="145"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_or_nothing_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -36,7 +36,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="146"/>
+        <location file="/instruments/payoffs.hpp" line="146"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -53,13 +53,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="139" bodyend="141"/>
+        <location file="/instruments/payoffs.hpp" line="141" bodyfile="/instruments/payoffs.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Binary asset-or-nothing payoff. </para>    </briefdescription>
     <detaileddescription>
 <para>Definitions of Binary path-independent payoffs used below, can be found in M. Rubinstein, E. Reiner:&quot;Unscrambling The Binary Code&quot;, Risk, Vol.4 no.9,1991. (see: <ulink url="http://www.in-the-money.com/artandpap/Binary%20Options.doc">http://www.in-the-money.com/artandpap/Binary%20Options.doc</ulink>) </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="137" bodyend="148"/>
+    <location file="/instruments/payoffs.hpp" line="137" bodyfile="/instruments/payoffs.hpp" bodystart="137" bodyend="148"/>
   </compounddef>
 </doxygen>

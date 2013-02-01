@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_probability_of_n_events" kind="class" prot="public">
     <compoundname>QuantLib::ProbabilityOfNEvents</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp</includes>
+    <includes local="no">/experimental/credit/lossdistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_probability_of_n_events_1acbe61cbc5b4a8baf52db846a17c2e13f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type>int</type>
           <declname>n</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="73" bodyend="73"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="73" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_probability_of_n_events_1a37fe88774b14e114ac45e780a796f682" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -24,11 +24,11 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
           <declname>p</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="74"/>
+        <location file="/experimental/credit/lossdistribution.hpp" line="74"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Probability of N events. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="71" bodyend="77"/>
+    <location file="/experimental/credit/lossdistribution.hpp" line="71" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="71" bodyend="77"/>
   </compounddef>
 </doxygen>

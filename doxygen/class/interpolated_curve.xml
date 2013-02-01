@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp</includes>
+    <includes local="no">/termstructures/interpolatedcurve.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Interpolator</type>
@@ -28,7 +28,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="42" bodyend="45"/>
+        <location file="/termstructures/interpolatedcurve.hpp" line="45" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="42" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1af65ba2657e570befd6d47b554d41be2c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -44,7 +44,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="47" bodyend="49"/>
+        <location file="/termstructures/interpolatedcurve.hpp" line="49" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="47" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a3fce8f7f7406e558c914ada1f040b2d9" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -60,7 +60,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="51" bodyend="53"/>
+        <location file="/termstructures/interpolatedcurve.hpp" line="53" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a1f1a36b149b457570e7fe01bc5b6370f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -72,7 +72,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="55" bodyend="56"/>
+        <location file="/termstructures/interpolatedcurve.hpp" line="56" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="55" bodyend="56"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -86,7 +86,7 @@
           <type>const <ref refid="class_quant_lib_1_1_interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
           <declname>c</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="61" bodyend="64"/>
+        <location file="/termstructures/interpolatedcurve.hpp" line="62" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="61" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a05f5195d566a3ab81f70a8e67001934c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
@@ -97,13 +97,13 @@
           <type>const <ref refid="class_quant_lib_1_1_interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
           <declname>c</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="66" bodyend="72"/>
+        <location file="/termstructures/interpolatedcurve.hpp" line="66" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="66" bodyend="72"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Helper class to build interpolated term structures. </para>    </briefdescription>
     <detaileddescription>
 <para>Interpolated term structures can use proected or private inheritance from this class to obtain the relevant data members and implement correct copy behavior. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="38" bodyend="85"/>
+    <location file="/termstructures/interpolatedcurve.hpp" line="38" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="38" bodyend="85"/>
   </compounddef>
 </doxygen>

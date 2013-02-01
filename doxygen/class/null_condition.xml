@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_null_condition" kind="class" prot="public">
     <compoundname>QuantLib::NullCondition</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp</includes>
+    <includes local="no">/methods/finitedifferences/stepcondition.hpp</includes>
     <templateparamlist>
       <param>
         <type>class array_type</type>
@@ -21,11 +21,11 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="111" bodyend="111"/>
+        <location file="/methods/finitedifferences/stepcondition.hpp" line="111" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="111" bodyend="111"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>null step condition </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="109" bodyend="112"/>
+    <location file="/methods/finitedifferences/stepcondition.hpp" line="109" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="109" bodyend="112"/>
   </compounddef>
 </doxygen>

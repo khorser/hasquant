@@ -35,9 +35,9 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="63" bodyend="67"/>
+        <location file="/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="67" bodyfile="/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="63" bodyend="67"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="57" bodyend="68"/>
+    <location file="/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="59" bodyfile="/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="57" bodyend="68"/>
   </compounddef>
 </doxygen>

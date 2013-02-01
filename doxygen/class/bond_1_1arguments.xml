@@ -8,21 +8,21 @@
         <definition>Date settlementDate</definition>
         <argsstring></argsstring>
         <name>settlementDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="273" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="273" bodyend="-1"/>
+        <location file="/instruments/bond.hpp" line="273" bodyfile="/instruments/bond.hpp" bodystart="273" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bond_1_1arguments_1a89cfb42d35b2f88416faf2c2b0737b29" prot="public" static="no" mutable="no">
         <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
         <definition>Leg cashflows</definition>
         <argsstring></argsstring>
         <name>cashflows</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="274" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="274" bodyend="-1"/>
+        <location file="/instruments/bond.hpp" line="274" bodyfile="/instruments/bond.hpp" bodystart="274" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bond_1_1arguments_1a78752433f4fe4a459158fefc086335e5" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar calendar</definition>
         <argsstring></argsstring>
         <name>calendar</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="275" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="275" bodyend="-1"/>
+        <location file="/instruments/bond.hpp" line="275" bodyfile="/instruments/bond.hpp" bodystart="275" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,9 +31,9 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="276"/>
+        <location file="/instruments/bond.hpp" line="276"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="271" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="271" bodyend="277"/>
+    <location file="/instruments/bond.hpp" line="271" bodyfile="/instruments/bond.hpp" bodystart="271" bodyend="277"/>
   </compounddef>
 </doxygen>

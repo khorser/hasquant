@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_inflation_coupon" kind="class" prot="public">
     <compoundname>QuantLib::YoYInflationCoupon</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp</includes>
+    <includes local="no">/cashflows/yoyinflationcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_1a0f952b048e0a0ccbf2f0d6ffa3aa1832" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -12,7 +12,7 @@
         <name>gearing</name>
         <briefdescription>
 <para>index gearing, i.e. multiplicative coefficient for the index </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="54" bodyend="54"/>
+        <location file="/cashflows/yoyinflationcoupon.hpp" line="54" bodyfile="/cashflows/yoyinflationcoupon.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
@@ -21,21 +21,21 @@
         <name>spread</name>
         <briefdescription>
 <para>spread paid over the fixing of the underlying index </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="56" bodyend="56"/>
+        <location file="/cashflows/yoyinflationcoupon.hpp" line="56" bodyfile="/cashflows/yoyinflationcoupon.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate adjustedFixing</definition>
         <argsstring>() const </argsstring>
         <name>adjustedFixing</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="82" bodyend="84"/>
+        <location file="/cashflows/yoyinflationcoupon.hpp" line="58" bodyfile="/cashflows/yoyinflationcoupon.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_1ada943da84e02289058804b4a0c292f32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp; yoyIndex</definition>
         <argsstring>() const </argsstring>
         <name>yoyIndex</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="78" bodyend="80"/>
+        <location file="/cashflows/yoyinflationcoupon.hpp" line="60" bodyfile="/cashflows/yoyinflationcoupon.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -49,7 +49,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="65"/>
+        <location file="/cashflows/yoyinflationcoupon.hpp" line="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -110,11 +110,11 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="49"/>
+        <location file="/cashflows/yoyinflationcoupon.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Coupon paying a YoY-inflation type index </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="35" bodyend="75"/>
+    <location file="/cashflows/yoyinflationcoupon.hpp" line="35" bodyfile="/cashflows/yoyinflationcoupon.hpp" bodystart="35" bodyend="75"/>
   </compounddef>
 </doxygen>

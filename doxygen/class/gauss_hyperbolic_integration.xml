@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_hyperbolic_integration" kind="class" prot="public">
     <compoundname>QuantLib::GaussHyperbolicIntegration</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp</includes>
+    <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_hyperbolic_integration_1a136a2b6b92136bea7ddaef3b3e440eb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,13 +13,13 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>n</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="132" bodyend="133"/>
+        <location file="/math/integrals/gaussianquadratures.hpp" line="133" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="132" bodyend="133"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gauss-Hyperbolic integration. </para>    </briefdescription>
     <detaileddescription>
 <para>This class performs a 1-dimensional Gauss-Hyperbolic integration. <formula id="193">\[ \int_{-\inf}^{\inf} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="198">\[ w(x)=1/cosh(x) \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="130" bodyend="134"/>
+    <location file="/math/integrals/gaussianquadratures.hpp" line="130" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="130" bodyend="134"/>
   </compounddef>
 </doxygen>

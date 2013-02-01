@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_dividend_engine_base" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FDDividendEngineBase</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/fddividendengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -36,13 +36,13 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="41" bodyend="47"/>
+        <location file="/pricingengines/vanilla/fddividendengine.hpp" line="47" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="41" bodyend="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Abstract base class for dividend engines. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000056"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>The dividend class really needs to be made more sophisticated to distinguish between fixed dividends and fractional dividends </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="39" bodyend="70"/>
+    <location file="/pricingengines/vanilla/fddividendengine.hpp" line="39" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="39" bodyend="70"/>
   </compounddef>
 </doxygen>

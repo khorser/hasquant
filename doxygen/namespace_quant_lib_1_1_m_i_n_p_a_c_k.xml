@@ -8,7 +8,7 @@
         <definition>typedef boost::function&lt;void (int, int, double*, double*, int*)&gt; LmdifCostFunction</definition>
         <argsstring></argsstring>
         <name>LmdifCostFunction</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" bodystart="37" bodyend="-1"/>
+        <location file="/math/optimization/lmdif.hpp" line="37" bodyfile="/math/optimization/lmdif.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -113,7 +113,7 @@
           <type>const LmdifCostFunction &amp;</type>
           <declname>fcn</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="45"/>
+        <location file="/math/optimization/lmdif.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="namespace_quant_lib_1_1_m_i_n_p_a_c_k_1af88696e86938b1fe73f58912e1e70542" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -156,7 +156,7 @@
           <type>double *</type>
           <declname>wa</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="49"/>
+        <location file="/math/optimization/lmdif.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="namespace_quant_lib_1_1_m_i_n_p_a_c_k_1a1dba8c6b62011018e89803b7bbdbc8eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -201,9 +201,9 @@
           <type>double *</type>
           <declname>wa</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="51"/>
+        <location file="/math/optimization/lmdif.hpp" line="51"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="32"/>
+    <location file="/math/optimization/lmdif.hpp" line="32"/>
   </compounddef>
 </doxygen>

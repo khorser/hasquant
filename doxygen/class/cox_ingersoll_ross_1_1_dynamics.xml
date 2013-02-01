@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::CoxIngersollRoss::Dynamics</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
+    <includes local="no">/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1aff354dfa3257a4f6886a4d3abfd3ed6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -25,7 +25,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x0</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="111" bodyend="116"/>
+        <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="116" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="111" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -43,7 +43,7 @@
         </param>
         <briefdescription>
 <para>Compute state variable from short rate. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="118" bodyend="120"/>
+        <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="118" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -61,13 +61,13 @@
         </param>
         <briefdescription>
 <para>Compute short rate from state variable. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="121" bodyend="123"/>
+        <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="121" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Dynamics of the short-rate under the Cox-Ingersoll-Ross model </para>    </briefdescription>
     <detaileddescription>
 <para>The state variable <formula id="297">$ y_t $</formula> will here be the square-root of the short-rate. It satisfies the following stochastic equation <formula id="298">\[ dy_t=\left[ (\frac{k\theta }{2}+\frac{\sigma ^2}{8})\frac{1}{y_t}- \frac{k}{2}y_t \right] d_t+ \frac{\sigma }{2}dW_{t} \]</formula>. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="108" bodyend="124"/>
+    <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="109" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="108" bodyend="124"/>
   </compounddef>
 </doxygen>

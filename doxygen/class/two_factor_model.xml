@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_two_factor_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::TwoFactorModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp</includes>
+    <includes local="no">/models/shortrate/twofactormodel.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" prot="public">QuantLib::TwoFactorModel::ShortRateDynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree" prot="public">QuantLib::TwoFactorModel::ShortRateTree</innerclass>
       <sectiondef kind="public-func">
@@ -15,7 +15,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nParams</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="38"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
@@ -24,7 +24,7 @@
         <name>dynamics</name>
         <briefdescription>
 <para>Returns the short-rate dynamics. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="44"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
@@ -38,11 +38,11 @@
         </param>
         <briefdescription>
 <para>Returns a two-dimensional trinomial tree. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="47"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Abstract base-class for two-factor models. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="36" bodyend="49"/>
+    <location file="/models/shortrate/twofactormodel.hpp" line="36" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="36" bodyend="49"/>
   </compounddef>
 </doxygen>

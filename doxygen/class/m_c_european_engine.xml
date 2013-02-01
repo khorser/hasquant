@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_c_european_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCEuropeanEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/mceuropeanengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>class RNG</type>
@@ -19,21 +19,21 @@
         <definition>typedef MCVanillaEngine&lt;SingleVariate,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="47" bodyend="-1"/>
+        <location file="/pricingengines/vanilla/mceuropeanengine.hpp" line="47" bodyfile="/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_european_engine_1af24f9f2c0de053e45d36f3d549af4d5b" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_m_c_vanilla_engine" kindref="compound">MCVanillaEngine</ref>&lt; <ref refid="struct_quant_lib_1_1_single_variate" kindref="compound">SingleVariate</ref>, RNG, S &gt;::<ref refid="class_quant_lib_1_1_path_pricer" kindref="compound">path_pricer_type</ref></type>
         <definition>typedef MCVanillaEngine&lt;SingleVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="50" bodyend="-1"/>
+        <location file="/pricingengines/vanilla/mceuropeanengine.hpp" line="50" bodyfile="/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_european_engine_1ada2759e0be1476c26ab996d38fbeae01" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_m_c_vanilla_engine" kindref="compound">MCVanillaEngine</ref>&lt; <ref refid="struct_quant_lib_1_1_single_variate" kindref="compound">SingleVariate</ref>, RNG, S &gt;::stats_type</type>
         <definition>typedef MCVanillaEngine&lt;SingleVariate,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="52" bodyend="-1"/>
+        <location file="/pricingengines/vanilla/mceuropeanengine.hpp" line="52" bodyfile="/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -78,13 +78,13 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="110" bodyend="129"/>
+        <location file="/pricingengines/vanilla/mceuropeanengine.hpp" line="63" bodyfile="/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="110" bodyend="129"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>European option pricing engine using Monte Carlo simulation. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000134"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against analytic results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="43" bodyend="66"/>
+    <location file="/pricingengines/vanilla/mceuropeanengine.hpp" line="43" bodyfile="/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="43" bodyend="66"/>
   </compounddef>
 </doxygen>

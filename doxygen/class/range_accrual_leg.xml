@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_range_accrual_leg" kind="class" prot="public">
     <compoundname>QuantLib::RangeAccrualLeg</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp</includes>
+    <includes local="no">/cashflows/rangeaccrual.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1aae549cc64b5f157483f020c6fbbae722" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="205"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="205"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a8ba4a89f6ae58e61fd5eff7cfa53a51d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -28,7 +28,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>notional</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="206"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="206"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a3e6206528f084351b623867b48a7cd1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -39,7 +39,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>notionals</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="207"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="207"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a57856929adb0ca89276afc2ca11c90b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -49,7 +49,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="208"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="208"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a5d91a3ac7b5795f2072232f9e3207620" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -59,7 +59,7 @@
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="209"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="209"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1af8aeca17cf564baeacd3d62cf4326f9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -70,7 +70,7 @@
           <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
           <declname>fixingDays</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="210"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="210"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a1c7d3fcb9aa7628404b40f3ed2a5e11a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -81,7 +81,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt; &amp;</type>
           <declname>fixingDays</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="211"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="211"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1aa82973f34823d38c35cb060ee2c9b531" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -92,7 +92,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>gearing</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="212"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="212"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1ab62831139af630d58def44d38ed97fa2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -103,7 +103,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>gearings</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="213"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="213"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1af790d5d765bc8c6a6433749b9bb88183" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -114,7 +114,7 @@
           <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
           <declname>spread</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="214"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="214"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a5e87af83bf739c7618c4de9a3e6fb049" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -125,7 +125,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="215"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="215"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a3b50cb89a40e24c9364bc552ea3de063" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -136,7 +136,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>trigger</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="216"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="216"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a0a6124ce6520c910ee0afc980bea3e28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -147,7 +147,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>triggers</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="217"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="217"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a58050af3f9d3d09329eb0c85c0bd1ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -158,7 +158,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>trigger</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="218"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="218"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a0183f30ae0d441b86ff67518125f6e9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -169,7 +169,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>triggers</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="219"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="219"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a44d5beb92399a99ebf855ba80e9a4ee1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -179,7 +179,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="220"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="220"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a88117c18b3b46e44588d7c5426d79ba2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
@@ -189,18 +189,18 @@
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="221"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="221"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>operator Leg</definition>
         <argsstring>() const </argsstring>
         <name>operator Leg</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="222"/>
+        <location file="/cashflows/rangeaccrual.hpp" line="222"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>helper class building a sequence of range-accrual floating-rate coupons </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="202" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="202" bodyend="235"/>
+    <location file="/cashflows/rangeaccrual.hpp" line="202" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="202" bodyend="235"/>
   </compounddef>
 </doxygen>

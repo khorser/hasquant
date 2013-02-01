@@ -21,9 +21,9 @@
           <type>const boost::shared_ptr&lt; Helper &gt; &amp;</type>
           <declname>h2</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="187" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="185" bodyend="189"/>
+        <location file="/termstructures/bootstraphelper.hpp" line="187" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="185" bodyend="189"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="182" bodyend="190"/>
+    <location file="/termstructures/bootstraphelper.hpp" line="182" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="182" bodyend="190"/>
   </compounddef>
 </doxygen>

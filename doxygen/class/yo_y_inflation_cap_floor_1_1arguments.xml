@@ -2,91 +2,91 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::YoYInflationCapFloor::arguments</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp</includes>
+    <includes local="no">/instruments/inflationcapfloor.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a169e4dad5de53640e67ba44ca365d56d" prot="public" static="no" mutable="no">
         <type>YoYInflationCapFloor::Type</type>
         <definition>YoYInflationCapFloor::Type type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="139" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="139" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a6f38aff78ebb5686b25675758aac68b9" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; index</definition>
         <argsstring></argsstring>
         <name>index</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="140" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="140" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a70e540d91380c6a734f04886ff863e8e" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
         <definition>Period observationLag</definition>
         <argsstring></argsstring>
         <name>observationLag</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="141" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="141" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a27cae0532e21df9fdf326d2ea687af69" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; startDates</definition>
         <argsstring></argsstring>
         <name>startDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="142" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="142" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="143" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="143" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1aa4dc0c83efb410283274547583cc67ec" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; payDates</definition>
         <argsstring></argsstring>
         <name>payDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="144" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="144" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a18f074832f71957702f05c4743817e70" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>std::vector&lt;Time&gt; accrualTimes</definition>
         <argsstring></argsstring>
         <name>accrualTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="145" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="145" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a8e6a8068859e154b7c5da3451cd00bd3" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
         <definition>std::vector&lt;Rate&gt; capRates</definition>
         <argsstring></argsstring>
         <name>capRates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="146" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="146" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a6ac1e143f1e813a2237ed89b6b680457" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
         <definition>std::vector&lt;Rate&gt; floorRates</definition>
         <argsstring></argsstring>
         <name>floorRates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="147" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="147" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a47e4ab04fe0cf2981d7ab91749721d77" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; gearings</definition>
         <argsstring></argsstring>
         <name>gearings</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="148" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="148" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1ab6353abcd945e236ec654a046b5112db" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; spreads</definition>
         <argsstring></argsstring>
         <name>spreads</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="149" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="149" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a8b1238d4599db1503ca1b3a799a948a2" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; nominals</definition>
         <argsstring></argsstring>
         <name>nominals</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="150" bodyend="-1"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="150" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -95,18 +95,18 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="138" bodyend="138"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="138" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="138" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="151"/>
+        <location file="/instruments/inflationcapfloor.hpp" line="151"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for YoY Inflation cap/floor calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="135" bodyend="152"/>
+    <location file="/instruments/inflationcapfloor.hpp" line="136" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="135" bodyend="152"/>
   </compounddef>
 </doxygen>

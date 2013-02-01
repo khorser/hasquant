@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_daily_tenor_j_p_y_libor" kind="class" prot="public">
     <compoundname>QuantLib::DailyTenorJPYLibor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/jpylibor.hpp</includes>
+    <includes local="no">/indexes/ibor/jpylibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_daily_tenor_j_p_y_libor_1abb31a2db6909f0ec7655b0643c066b8c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,11 +18,11 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/jpylibor.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/jpylibor.hpp" bodystart="59" bodyend="65"/>
+        <location file="/indexes/ibor/jpylibor.hpp" line="65" bodyfile="/indexes/ibor/jpylibor.hpp" bodystart="59" bodyend="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for the one day deposit BBA JPY LIBOR indexes </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/jpylibor.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/jpylibor.hpp" bodystart="57" bodyend="66"/>
+    <location file="/indexes/ibor/jpylibor.hpp" line="57" bodyfile="/indexes/ibor/jpylibor.hpp" bodystart="57" bodyend="66"/>
   </compounddef>
 </doxygen>

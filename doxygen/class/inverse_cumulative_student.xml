@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_inverse_cumulative_student" kind="class" prot="public">
     <compoundname>QuantLib::InverseCumulativeStudent</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp</includes>
+    <includes local="no">/math/distributions/studenttdistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_student_1a4f10e6a2b86412632d0b563b756b9bb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -23,7 +23,7 @@
           <declname>maxIterations</declname>
           <defval>50</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="83" bodyend="87"/>
+        <location file="/math/distributions/studenttdistribution.hpp" line="87" bodyfile="/math/distributions/studenttdistribution.hpp" bodystart="83" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_student_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -34,13 +34,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="88"/>
+        <location file="/math/distributions/studenttdistribution.hpp" line="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Inverse cumulative Student t-distribution. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000031"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Find/implement an efficient algorithm for evaluating the cumulative Student t-distribution, replacing the <ref refid="class_quant_lib_1_1_newton" kindref="compound">Newton</ref> iteration </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="80" bodyend="94"/>
+    <location file="/math/distributions/studenttdistribution.hpp" line="81" bodyfile="/math/distributions/studenttdistribution.hpp" bodystart="80" bodyend="94"/>
   </compounddef>
 </doxygen>

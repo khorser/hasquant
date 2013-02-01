@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_scholes_process" kind="class" prot="public">
     <compoundname>QuantLib::BlackScholesProcess</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp</includes>
+    <includes local="no">/processes/blackscholesprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_process_1adc07da438d6f11c7cce3d5d99566a9b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -26,13 +26,13 @@
           <declname>d</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="class_quant_lib_1_1_euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="107"/>
+        <location file="/processes/blackscholesprocess.hpp" line="107"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black-Scholes (1973) stochastic process. </para>    </briefdescription>
     <detaileddescription>
 <para>This class describes the stochastic process for a stock given by <formula id="329">\[ dS(t, S) = (r(t) - \frac{\sigma(t, S)^2}{2}) dt + \sigma dW_t. \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" bodystart="100" bodyend="108"/>
+    <location file="/processes/blackscholesprocess.hpp" line="100" bodyfile="/processes/blackscholesprocess.hpp" bodystart="100" bodyend="108"/>
   </compounddef>
 </doxygen>

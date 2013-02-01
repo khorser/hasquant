@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_euribor9_m" kind="class" prot="public">
     <compoundname>QuantLib::Euribor9M</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp</includes>
+    <includes local="no">/indexes/ibor/euribor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_euribor9_m_1a6218a7a528d6f79a318ec67e92ff7647" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -14,11 +14,11 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp" bodystart="152" bodyend="154"/>
+        <location file="/indexes/ibor/euribor.hpp" line="154" bodyfile="/indexes/ibor/euribor.hpp" bodystart="152" bodyend="154"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>9-months Euribor index </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp" bodystart="150" bodyend="155"/>
+    <location file="/indexes/ibor/euribor.hpp" line="150" bodyfile="/indexes/ibor/euribor.hpp" bodystart="150" bodyend="155"/>
   </compounddef>
 </doxygen>

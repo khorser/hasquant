@@ -8,9 +8,9 @@
         <definition>LotUnitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>LotUnitOfMeasure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="142" bodyend="146"/>
+        <location file="/experimental/commodities/unitofmeasure.hpp" line="142" bodyfile="/experimental/commodities/unitofmeasure.hpp" bodystart="142" bodyend="146"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="140" bodyend="147"/>
+    <location file="/experimental/commodities/unitofmeasure.hpp" line="140" bodyfile="/experimental/commodities/unitofmeasure.hpp" bodystart="140" bodyend="147"/>
   </compounddef>
 </doxygen>

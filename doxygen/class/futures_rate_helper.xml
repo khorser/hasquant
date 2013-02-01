@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_futures_rate_helper" kind="class" prot="public">
     <compoundname>QuantLib::FuturesRateHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp</includes>
+    <includes local="no">/termstructures/yield/ratehelpers.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -11,7 +11,7 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="84"/>
+        <location file="/termstructures/yield/ratehelpers.hpp" line="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -21,7 +21,7 @@
         <definition>Real convexityAdjustment</definition>
         <argsstring>() const </argsstring>
         <name>convexityAdjustment</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="88"/>
+        <location file="/termstructures/yield/ratehelpers.hpp" line="88"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -35,7 +35,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="92"/>
+        <location file="/termstructures/yield/ratehelpers.hpp" line="92"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -77,7 +77,7 @@
           <declname>convexityAdjustment</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="55"/>
+        <location file="/termstructures/yield/ratehelpers.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a2781d775af2d85d4bf3a18edfad17b7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -117,7 +117,7 @@
           <declname>convexityAdjustment</declname>
           <defval>0.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="63"/>
+        <location file="/termstructures/yield/ratehelpers.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a6a92c1c42e0caf366a6a28e06feacbc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -145,7 +145,7 @@
           <declname>convexityAdjustment</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="68"/>
+        <location file="/termstructures/yield/ratehelpers.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a3c5531480661d184d5be5601856b496f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -173,7 +173,7 @@
           <declname>convexityAdjustment</declname>
           <defval>0.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="73"/>
+        <location file="/termstructures/yield/ratehelpers.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a3ab1e5812cb4e4073ba5496e3e9a8217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -197,7 +197,7 @@
           <declname>convexityAdjustment</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="77"/>
+        <location file="/termstructures/yield/ratehelpers.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a22f486b9caa33944136b676a520072ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -221,11 +221,11 @@
           <declname>convexityAdjustment</declname>
           <defval>0.0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="81"/>
+        <location file="/termstructures/yield/ratehelpers.hpp" line="81"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Rate helper for bootstrapping over <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> futures prices. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="46" bodyend="97"/>
+    <location file="/termstructures/yield/ratehelpers.hpp" line="46" bodyfile="/termstructures/yield/ratehelpers.hpp" bodystart="46" bodyend="97"/>
   </compounddef>
 </doxygen>

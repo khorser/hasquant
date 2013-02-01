@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_cox_ingersoll_ross" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedCoxIngersollRoss</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
+    <includes local="no">/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics" prot="public">QuantLib::ExtendedCoxIngersollRoss::Dynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter" prot="public">QuantLib::ExtendedCoxIngersollRoss::FittingParameter</innerclass>
       <sectiondef kind="public-func">
@@ -35,7 +35,7 @@
           <declname>x0</declname>
           <defval>0.05</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="51"/>
+        <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
@@ -49,7 +49,7 @@
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="53"/>
+        <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
@@ -59,7 +59,7 @@
         <reimplements refid="class_quant_lib_1_1_cox_ingersoll_ross_1a625405160d212c8860ac39c19c9e91cd">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="148" bodyend="151"/>
+        <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="55" bodyfile="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="148" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -83,13 +83,13 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>bondMaturity</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="60"/>
+        <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="60"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Extended Cox-Ingersoll-Ross model class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class implements the extended Cox-Ingersoll-Ross model defined by <formula id="299">\[ dr_t = (\theta(t) - \alpha r_t)dt + \sqrt{r_t}\sigma dW_t . \]</formula></para><para><xrefsect id="bug_1_bug000008"><xreftitle>Bug</xreftitle><xrefdescription><para>this class was not tested enough to guarantee its functionality.</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="43" bodyend="71"/>
+    <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="44" bodyfile="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="43" bodyend="71"/>
   </compounddef>
 </doxygen>

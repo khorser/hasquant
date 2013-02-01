@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_variance_curve" kind="class" prot="public">
     <compoundname>QuantLib::BlackVarianceCurve</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp</includes>
+    <includes local="no">/termstructures/volatility/equityfx/blackvariancecurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="56" bodyend="56"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="56" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="91" bodyend="93"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="57" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="91" bodyend="93"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -36,7 +36,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="95" bodyend="97"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="61" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -46,7 +46,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="99" bodyend="101"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="62" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -66,7 +66,7 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="67" bodyend="72"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="67" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="67" bodyend="72"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -81,7 +81,7 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="103" bodyend="110"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="76" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="103" bodyend="110"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -111,13 +111,13 @@
           <declname>forceMonotoneVariance</declname>
           <defval>true</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="53"/>
+        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black volatility curve modelled as variance curve. </para>    </briefdescription>
     <detaileddescription>
 <para>This class calculates time-dependent Black volatilities using as input a vector of (ATM) Black volatilities observed in the market.</para><para>The calculation is performed interpolating on the variance curve. <ref refid="class_quant_lib_1_1_linear" kindref="compound">Linear</ref> interpolation is used as default; this can be changed by the setInterpolation() method.</para><para>For strike dependence, see <ref refid="class_quant_lib_1_1_black_variance_surface" kindref="compound">BlackVarianceSurface</ref>.</para><para><xrefsect id="todo_1_todo000061"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>check time extrapolation</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="47" bodyend="86"/>
+    <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="47" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="47" bodyend="86"/>
   </compounddef>
 </doxygen>

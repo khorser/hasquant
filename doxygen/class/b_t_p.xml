@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_t_p" kind="class" prot="public">
     <compoundname>QuantLib::BTP</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp</includes>
+    <includes local="no">/instruments/bonds/btp.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Bond interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_b_t_p_1ae8885ec61dd18583e5ac542fb5498fe4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -20,7 +20,7 @@
 <para>accrued amount at a given date </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="198" bodyend="201"/>
+        <location file="/instruments/bonds/btp.hpp" line="80" bodyfile="/instruments/bonds/btp.hpp" bodystart="198" bodyend="201"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="67"/>
+        <location file="/instruments/bonds/btp.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_t_p_1aed15b2ba17315cba44cad24d16540192" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -78,7 +78,7 @@
         </param>
         <detaileddescription>
 <para>constructor needed for legacy non-par redemption BTPs. As of today the only remaining one is IT123456789012 that will redeem 99.999 on xx-may-2037 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="75"/>
+        <location file="/instruments/bonds/btp.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_t_p_1a88a4605ce00014426d599efc7c3ff68a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -108,11 +108,11 @@
 <para><ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> yield given a (clean) price and settlement date. </para>        </briefdescription>
         <detaileddescription>
 <para>The default <ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> conventions are used: Actual/Actual (ISMA), Compounded, Annual. The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="89"/>
+        <location file="/instruments/bonds/btp.hpp" line="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Italian <ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> (Buono Poliennali del Tesoro) fixed rate bond. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="62" bodyend="90"/>
+    <location file="/instruments/bonds/btp.hpp" line="62" bodyfile="/instruments/bonds/btp.hpp" bodystart="62" bodyend="90"/>
   </compounddef>
 </doxygen>

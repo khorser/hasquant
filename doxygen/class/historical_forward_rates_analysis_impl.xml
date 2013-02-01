@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_historical_forward_rates_analysis_impl" kind="class" prot="public">
     <compoundname>QuantLib::HistoricalForwardRatesAnalysisImpl</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp</includes>
+    <includes local="no">/models/marketmodels/historicalforwardratesanalysis.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Traits</type>
@@ -61,53 +61,53 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>yieldCurveAccuracy</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="220" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="274" bodyend="296"/>
+        <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="220" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="274" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a56e93c08e7fa2c67b4f47e7f53c26958" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>HistoricalForwardRatesAnalysisImpl</definition>
         <argsstring>()</argsstring>
         <name>HistoricalForwardRatesAnalysisImpl</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="221" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="221" bodyend="221"/>
+        <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="221" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="221" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1ac7b7b4a056f59698e84a724c5c372652" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; skippedDates</definition>
         <argsstring>() const </argsstring>
         <name>skippedDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="222" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="247" bodyend="249"/>
+        <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="222" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="247" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a8f9c13a4ee54fd3910843fe0b3e2360a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
         <definition>const std::vector&lt; std::string &gt; &amp; skippedDatesErrorMessage</definition>
         <argsstring>() const </argsstring>
         <name>skippedDatesErrorMessage</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="223" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="253" bodyend="255"/>
+        <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="223" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="253" bodyend="255"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1ad46d635a7ebc761eda88970a53784b74" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; failedDates</definition>
         <argsstring>() const </argsstring>
         <name>failedDates</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="224" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="259" bodyend="261"/>
+        <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="224" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="259" bodyend="261"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a9f4e4ee632f2e5ec6f5ffa1d2f0a68d5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
         <definition>const std::vector&lt; std::string &gt; &amp; failedDatesErrorMessage</definition>
         <argsstring>() const </argsstring>
         <name>failedDatesErrorMessage</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="225" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="265" bodyend="267"/>
+        <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="225" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="265" bodyend="267"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a49882046d19998fab2d46847152208f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; fixingPeriods</definition>
         <argsstring>() const </argsstring>
         <name>fixingPeriods</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="226" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="241" bodyend="243"/>
+        <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="226" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="241" bodyend="243"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Historical correlation class </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="207" bodyend="236"/>
+    <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="207" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="207" bodyend="236"/>
   </compounddef>
 </doxygen>

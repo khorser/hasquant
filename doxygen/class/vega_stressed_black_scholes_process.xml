@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vega_stressed_black_scholes_process" kind="class" prot="public">
     <compoundname>QuantLib::VegaStressedBlackScholesProcess</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp</includes>
+    <includes local="no">/experimental/processes/vegastressedblackscholesprocess.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess1D interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -21,7 +21,7 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="49"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="49"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -31,7 +31,7 @@
         <definition>Real getLowerTimeBorderForStressTest</definition>
         <argsstring>() const </argsstring>
         <name>getLowerTimeBorderForStressTest</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="54"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1a55d34bb18801c605a747d997d6b711be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -42,14 +42,14 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>LTB</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="56"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1ae3ba833a75fc09cc4318d74ee6ffd530" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real getUpperTimeBorderForStressTest</definition>
         <argsstring>() const </argsstring>
         <name>getUpperTimeBorderForStressTest</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="58"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1a69045c95c78d578e1c80512a6ea820b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -60,14 +60,14 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>UTB</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="60"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1a84da2033ce377a7ceb88fc7aa18c8d76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real getLowerAssetBorderForStressTest</definition>
         <argsstring>() const </argsstring>
         <name>getLowerAssetBorderForStressTest</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="62"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1a7f43f2e139739642a804bf390a294b4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -78,14 +78,14 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>LAB</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="64"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1afa24202673c2f75819462e9777807c66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real getUpperAssetBorderForStressTest</definition>
         <argsstring>() const </argsstring>
         <name>getUpperAssetBorderForStressTest</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="66"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1a32594bc4d45a433ffcff8a5e2176fa5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -96,14 +96,14 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>UBA</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="68"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1aee9801e06dc96915253eb1633a5b383a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real getStressLevel</definition>
         <argsstring>() const </argsstring>
         <name>getStressLevel</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="70"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_stressed_black_scholes_process_1a785b85d9f05531d002657718dbb8cd06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -114,7 +114,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>SL</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="72"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="72"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -169,11 +169,11 @@
           <declname>d</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="class_quant_lib_1_1_euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="46"/>
+        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="46"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black-Scholes process which supports local vega stress tests. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/vegastressedblackscholesprocess.hpp" bodystart="32" bodyend="80"/>
+    <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="33" bodyfile="/experimental/processes/vegastressedblackscholesprocess.hpp" bodystart="32" bodyend="80"/>
   </compounddef>
 </doxygen>

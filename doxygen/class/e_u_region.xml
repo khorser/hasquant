@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_e_u_region" kind="class" prot="public">
     <compoundname>QuantLib::EURegion</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp</includes>
+    <includes local="no">/indexes/region.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_e_u_region_1a54cb357ef7442aeabe3652a4eba85b22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>EURegion</definition>
         <argsstring>()</argsstring>
         <name>EURegion</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="71"/>
+        <location file="/indexes/region.hpp" line="71"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>European Union as geographical/economic region. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="69" bodyend="72"/>
+    <location file="/indexes/region.hpp" line="69" bodyfile="/indexes/region.hpp" bodystart="69" bodyend="72"/>
   </compounddef>
 </doxygen>

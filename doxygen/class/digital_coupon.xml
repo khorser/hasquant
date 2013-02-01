@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_digital_coupon" kind="class" prot="public">
     <compoundname>QuantLib::DigitalCoupon</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp</includes>
+    <includes local="no">/cashflows/digitalcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a6048038f1c6804ba2dc7bc2b3404cf83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -61,7 +61,7 @@
         </param>
         <briefdescription>
 <para>general constructor </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="93"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="93"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -74,7 +74,7 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>accrued rate </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="98"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -84,7 +84,7 @@
         <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplements>
         <briefdescription>
 <para>convexity adjustment </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="99"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="99"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -94,70 +94,70 @@
         <definition>Rate callStrike</definition>
         <argsstring>() const </argsstring>
         <name>callStrike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="104"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1ab42db3671367ec99c6e0099ed1be6f0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate putStrike</definition>
         <argsstring>() const </argsstring>
         <name>putStrike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="105"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a13fb727eb4d28c9caf4d4f787ef02718" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate callDigitalPayoff</definition>
         <argsstring>() const </argsstring>
         <name>callDigitalPayoff</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="106"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a98ec6b9db0a40653c9d5c36b272948bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate putDigitalPayoff</definition>
         <argsstring>() const </argsstring>
         <name>putDigitalPayoff</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="107"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a8744c654cd818c3e5a7b8a919229832f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool hasPut</definition>
         <argsstring>() const </argsstring>
         <name>hasPut</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="108" bodyend="108"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="108" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="108" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a89386edb14c735d40c878ae6a68d5484" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool hasCall</definition>
         <argsstring>() const </argsstring>
         <name>hasCall</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="109" bodyend="109"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="109" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a8f1c4b46fc4b720e7378e4cb1bee6c0b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool hasCollar</definition>
         <argsstring>() const </argsstring>
         <name>hasCollar</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="110" bodyend="110"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="110" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="110" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1aa152a190acf785f398d8c5a0b82de02c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isLongPut</definition>
         <argsstring>() const </argsstring>
         <name>isLongPut</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="111" bodyend="111"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="111" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="111" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1afcfdb4e0823b4971d94ac7bf8a84ee70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isLongCall</definition>
         <argsstring>() const </argsstring>
         <name>isLongCall</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="112" bodyend="112"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="112" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="112" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a1db4a23ccbe6bf105c49a94b464649ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; underlying</definition>
         <argsstring>() const </argsstring>
         <name>underlying</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="113" bodyend="113"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="113" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="113" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a722313ee7ee8f9e8d1642e5cd4ce60ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -166,7 +166,7 @@
         <name>callOptionRate</name>
         <detaileddescription>
 <para>Returns the call option rate (multiplied by: nominal*accrualperiod*discount is the NPV of the option) </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="117"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a1d04cfdd9d0c187adb76ac5f129b164d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -175,7 +175,7 @@
         <name>putOptionRate</name>
         <detaileddescription>
 <para>Returns the put option rate (multiplied by: nominal*accrualperiod*discount is the NPV of the option) </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="121"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="121"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -186,7 +186,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="125"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="125"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -200,7 +200,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="129"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="129"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1aca00c886d58d76f563e8be07f153956c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -211,7 +211,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
           <declname>pricer</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="131" bodyend="140"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="132" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="131" bodyend="140"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -221,7 +221,7 @@
         <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; underlying_</definition>
         <argsstring></argsstring>
         <name>underlying_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="146" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="146" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a7f5c314683cbb54c47b16866eab8fb1d" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -230,7 +230,7 @@
         <name>callStrike_</name>
         <briefdescription>
 <para>strike rate for the the call option </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="148" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="148" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1ab6787bf490f0f234ee2c81d16b12347d" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -239,7 +239,7 @@
         <name>putStrike_</name>
         <briefdescription>
 <para>strike rate for the the put option </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="150" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="150" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1aa33caba2dc88968d771e3a79070bd7a2" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -248,7 +248,7 @@
         <name>callCsi_</name>
         <briefdescription>
 <para>multiplicative factor of call payoff </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="152" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="152" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1aee3bd60ba173d0b1023bea0209a16f14" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -257,7 +257,7 @@
         <name>putCsi_</name>
         <briefdescription>
 <para>multiplicative factor of put payoff </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="154" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="154" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a67f817c1b667ee61371f64684662bd7d" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -266,7 +266,7 @@
         <name>isCallATMIncluded_</name>
         <briefdescription>
 <para>inclusion flag og the call payoff if the call option ends at-the-money </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="156" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="156" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a73c3824ad5f51c965365c5b37c3894e1" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -275,7 +275,7 @@
         <name>isPutATMIncluded_</name>
         <briefdescription>
 <para>inclusion flag og the put payoff if the put option ends at-the-money </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="158" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="158" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a814712da06f54990b8a79b2de0d55010" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -284,7 +284,7 @@
         <name>isCallCashOrNothing_</name>
         <briefdescription>
 <para>digital call option type: if true, cash-or-nothing, if false asset-or-nothing </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="160" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="160" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="160" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a512cba5740e82c1b51c95811d371b4a9" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -293,7 +293,7 @@
         <name>isPutCashOrNothing_</name>
         <briefdescription>
 <para>digital put option type: if true, cash-or-nothing, if false asset-or-nothing </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="162" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="162" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1ac75c26537453ce63f05003b32d308c90" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -302,7 +302,7 @@
         <name>callDigitalPayoff_</name>
         <briefdescription>
 <para>digital call option payoff rate, if any </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="164" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="164" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="164" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a3da18fe716416715c8c43eafeb6de048" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -311,7 +311,7 @@
         <name>putDigitalPayoff_</name>
         <briefdescription>
 <para>digital put option payoff rate, if any </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="166" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="166" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a0e1fb31b709b06dd507860d67089f0b1" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -320,14 +320,14 @@
         <name>callLeftEps_</name>
         <briefdescription>
 <para>the left and right gaps applied in payoff replication for call </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="168" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="168" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a7b3cbbff69d1f8f7233205dc0b62349b" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real callRightEps_</definition>
         <argsstring></argsstring>
         <name>callRightEps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="168" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="168" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1acb4e266831e0a75b7bc719ca9665cb28" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -336,28 +336,28 @@
         <name>putLeftEps_</name>
         <briefdescription>
 <para>the left and right gaps applied in payoff replication for puf </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="170" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="170" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1ad0b7aeaf2e9a1d51917b95669dd917f6" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real putRightEps_</definition>
         <argsstring></argsstring>
         <name>putRightEps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="170" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="170" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a609a054082b446fcc12c43b17c1566d3" prot="protected" static="no" mutable="no">
         <type>bool</type>
         <definition>bool hasPutStrike_</definition>
         <argsstring></argsstring>
         <name>hasPutStrike_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="172" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="172" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a934d869cdebc40353a5b3f9d32c58ea1" prot="protected" static="no" mutable="no">
         <type>bool</type>
         <definition>bool hasCallStrike_</definition>
         <argsstring></argsstring>
         <name>hasCallStrike_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="172" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="172" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1aab6cebbb5dcd43e84bd6d3b5f0c489a1" prot="protected" static="no" mutable="no">
         <type>Replication::Type</type>
@@ -366,7 +366,7 @@
         <name>replicationType_</name>
         <briefdescription>
 <para>Type of replication. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="174" bodyend="-1"/>
+        <location file="/cashflows/digitalcoupon.hpp" line="174" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="174" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -377,6 +377,6 @@
 </para><para><xrefsect id="test_1_test000001"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned value in case of Asset-or-nothing embedded option is tested by pricing the digital option with Cox-Rubinstein formula.</para></listitem><listitem><para>the correctness of the returned value in case of deep-in-the-money Asset-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value in case of deep-out-of-the-money Asset-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value in case of Cash-or-nothing embedded option is tested by pricing the digital option with Reiner-Rubinstein formula.</para></listitem><listitem><para>the correctness of the returned value in case of deep-in-the-money Cash-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value in case of deep-out-of-the-money Cash-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value is tested checking the correctness of the call-put parity relation.</para></listitem><listitem><para>the correctness of the returned value is tested by the relationship between prices in case of different replication types. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="78" bodyend="181"/>
+    <location file="/cashflows/digitalcoupon.hpp" line="78" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="78" bodyend="181"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_flat_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::ForwardFlatInterpolation</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/forwardflatinterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_forward_flat_interpolation_1a79504c62b2abc9f0e6dc21389b38e08f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -32,11 +32,11 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="79" bodyend="85"/>
+        <location file="/math/interpolations/forwardflatinterpolation.hpp" line="80" bodyfile="/math/interpolations/forwardflatinterpolation.hpp" bodystart="79" bodyend="85"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Forward-flat interpolation between discrete points. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="75" bodyend="86"/>
+    <location file="/math/interpolations/forwardflatinterpolation.hpp" line="75" bodyfile="/math/interpolations/forwardflatinterpolation.hpp" bodystart="75" bodyend="86"/>
   </compounddef>
 </doxygen>

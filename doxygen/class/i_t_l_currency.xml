@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_i_t_l_currency" kind="class" prot="public">
     <compoundname>QuantLib::ITLCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_i_t_l_currency_1ab1d3f96024da6a8f20241cda6d98e9ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ITLCurrency</definition>
         <argsstring>()</argsstring>
         <name>ITLCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="634" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="634" bodyend="642"/>
+        <location file="/currencies/europe.hpp" line="634" bodyfile="/currencies/europe.hpp" bodystart="634" bodyend="642"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Italian lira. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code was ITL; the numeric code was 380. It had no subdivisions.</para><para>Obsoleted by the Euro since 1999. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="632" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="632" bodyend="643"/>
+    <location file="/currencies/europe.hpp" line="632" bodyfile="/currencies/europe.hpp" bodystart="632" bodyend="643"/>
   </compounddef>
 </doxygen>

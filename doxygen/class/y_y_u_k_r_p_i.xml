@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_y_y_u_k_r_p_i" kind="class" prot="public">
     <compoundname>QuantLib::YYUKRPI</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/ukrpi.hpp</includes>
+    <includes local="no">/indexes/inflation/ukrpi.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_y_y_u_k_r_p_i_1a403c445f333ebdbd0753843ba05ef8c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -18,11 +18,11 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/ukrpi.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/ukrpi.hpp" bodystart="52" bodyend="63"/>
+        <location file="/indexes/inflation/ukrpi.hpp" line="63" bodyfile="/indexes/inflation/ukrpi.hpp" bodystart="52" bodyend="63"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Genuine year-on-year UK RPI (i.e. not a ratio of UK RPI) </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/ukrpi.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/ukrpi.hpp" bodystart="50" bodyend="64"/>
+    <location file="/indexes/inflation/ukrpi.hpp" line="50" bodyfile="/indexes/inflation/ukrpi.hpp" bodystart="50" bodyend="64"/>
   </compounddef>
 </doxygen>

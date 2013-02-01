@@ -44,7 +44,7 @@
           <type>bool</type>
           <declname>useFullApprox</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="41"/>
+        <location file="/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="41"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -97,9 +97,9 @@
           <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <declname>swapCovariancePseudoRoots</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="61"/>
+        <location file="/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="61"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="28" bodyend="69"/>
+    <location file="/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="28" bodyfile="/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="28" bodyend="69"/>
   </compounddef>
 </doxygen>

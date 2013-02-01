@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_dividend_barrier_option" kind="class" prot="public">
     <compoundname>QuantLib::DividendBarrierOption</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp</includes>
+    <includes local="no">/instruments/dividendbarrieroption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_dividend_barrier_option_1_1arguments" prot="public">QuantLib::DividendBarrierOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_dividend_barrier_option_1_1engine" prot="public">QuantLib::DividendBarrierOption::engine</innerclass>
       <sectiondef kind="public-func">
@@ -39,11 +39,11 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>dividends</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" line="48"/>
+        <location file="/instruments/dividendbarrieroption.hpp" line="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Single-asset barrier option with discrete dividends. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" bodystart="37" bodyend="53"/>
+    <location file="/instruments/dividendbarrieroption.hpp" line="37" bodyfile="/instruments/dividendbarrieroption.hpp" bodystart="37" bodyend="53"/>
   </compounddef>
 </doxygen>

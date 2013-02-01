@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_t_a_r_g_e_t" kind="class" prot="public">
     <compoundname>QuantLib::TARGET</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/target.hpp</includes>
+    <includes local="no">/time/calendars/target.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_t_a_r_g_e_t_1a091e4208120834557fca01faa7708e37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>TARGET</definition>
         <argsstring>()</argsstring>
         <name>TARGET</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/target.hpp" line="58"/>
+        <location file="/time/calendars/target.hpp" line="58"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -36,6 +36,6 @@
 <para>December 31st (1998, 1999, and 2001) </para></listitem>
 </itemizedlist>
 </para><para><xrefsect id="test_1_test000150"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned results is tested against a list of known holidays. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/target.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/target.hpp" bodystart="50" bodyend="59"/>
+    <location file="/time/calendars/target.hpp" line="50" bodyfile="/time/calendars/target.hpp" bodystart="50" bodyend="59"/>
   </compounddef>
 </doxygen>

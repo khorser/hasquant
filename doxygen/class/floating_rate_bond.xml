@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_floating_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::FloatingRateBond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/floatingratebond.hpp</includes>
+    <includes local="no">/instruments/bonds/floatingratebond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_bond_1a50e7318255db90edb37d005ba9864be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -74,7 +74,7 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/floatingratebond.hpp" line="62"/>
+        <location file="/instruments/bonds/floatingratebond.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_bond_1ad6359baf95606fc168fe07e87912b603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -178,13 +178,13 @@
           <declname>endOfMonth</declname>
           <defval>false</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/floatingratebond.hpp" line="85"/>
+        <location file="/instruments/bonds/floatingratebond.hpp" line="85"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>floating-rate bond (possibly capped and/or floored) </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000017"><xreftitle>Tests</xreftitle><xrefdescription><para>calculations are tested by checking results against cached values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/floatingratebond.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/floatingratebond.hpp" bodystart="42" bodyend="86"/>
+    <location file="/instruments/bonds/floatingratebond.hpp" line="42" bodyfile="/instruments/bonds/floatingratebond.hpp" bodystart="42" bodyend="86"/>
   </compounddef>
 </doxygen>

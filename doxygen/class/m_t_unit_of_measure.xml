@@ -8,9 +8,9 @@
         <definition>MTUnitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>MTUnitOfMeasure</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="42" bodyend="46"/>
+        <location file="/experimental/commodities/petroleumunitsofmeasure.hpp" line="42" bodyfile="/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="42" bodyend="46"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="40" bodyend="47"/>
+    <location file="/experimental/commodities/petroleumunitsofmeasure.hpp" line="40" bodyfile="/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="40" bodyend="47"/>
   </compounddef>
 </doxygen>

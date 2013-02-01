@@ -27,16 +27,16 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Douglas()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdsimplebsswingengine.hpp" line="44"/>
+        <location file="/pricingengines/vanilla/fdsimplebsswingengine.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_b_s_swing_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdsimplebsswingengine.hpp" line="46"/>
+        <location file="/pricingengines/vanilla/fdsimplebsswingengine.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdsimplebsswingengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdsimplebsswingengine.hpp" bodystart="37" bodyend="52"/>
+    <location file="/pricingengines/vanilla/fdsimplebsswingengine.hpp" line="39" bodyfile="/pricingengines/vanilla/fdsimplebsswingengine.hpp" bodystart="37" bodyend="52"/>
   </compounddef>
 </doxygen>

@@ -35,9 +35,9 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="211" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="206" bodyend="211"/>
+        <location file="/math/interpolations/mixedinterpolation.hpp" line="211" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="206" bodyend="211"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="202" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="202" bodyend="212"/>
+    <location file="/math/interpolations/mixedinterpolation.hpp" line="202" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="202" bodyend="212"/>
   </compounddef>
 </doxygen>

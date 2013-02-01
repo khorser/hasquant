@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bernstein_polynomial" kind="class" prot="public">
     <compoundname>QuantLib::BernsteinPolynomial</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/bernsteinpolynomial.hpp</includes>
+    <includes local="no">/math/bernsteinpolynomial.hpp</includes>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bernstein_polynomial_1a3711a2d3540e80eff0b2ceae5e3969c7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -21,7 +21,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/bernsteinpolynomial.hpp" line="47"/>
+        <location file="/math/bernsteinpolynomial.hpp" line="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -32,6 +32,6 @@
    &lt;http://mathworld.wolfram.com/BernsteinPolynomial.html&gt;
    The Bernstein polynomials \form#168 are defined as
 </verbatim></para><para><formula id="169">\[ B_{i,n}(x) \equiv \left( \begin{array}{c} n \\ i \end{array} \right) x^i (1-x)^{n-i} \]</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/bernsteinpolynomial.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/bernsteinpolynomial.hpp" bodystart="45" bodyend="48"/>
+    <location file="/math/bernsteinpolynomial.hpp" line="45" bodyfile="/math/bernsteinpolynomial.hpp" bodystart="45" bodyend="48"/>
   </compounddef>
 </doxygen>

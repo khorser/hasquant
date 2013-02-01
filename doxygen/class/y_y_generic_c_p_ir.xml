@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_y_y_generic_c_p_ir" kind="class" prot="public">
     <compoundname>QuantLib::YYGenericCPIr</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp</includes>
+    <includes local="no">/experimental/inflation/genericindexes.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_y_y_generic_c_p_ir_1aa91e279875a311a751bd7a4d61f47332" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -34,11 +34,11 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="87" bodyend="102"/>
+        <location file="/experimental/inflation/genericindexes.hpp" line="102" bodyfile="/experimental/inflation/genericindexes.hpp" bodystart="87" bodyend="102"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Fake year-on-year <ref refid="class_quant_lib_1_1_generic_c_p_i" kindref="compound">GenericCPI</ref> (i.e. a ratio) </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="85" bodyend="103"/>
+    <location file="/experimental/inflation/genericindexes.hpp" line="85" bodyfile="/experimental/inflation/genericindexes.hpp" bodystart="85" bodyend="103"/>
   </compounddef>
 </doxygen>

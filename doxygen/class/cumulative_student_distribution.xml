@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cumulative_student_distribution" kind="class" prot="public">
     <compoundname>QuantLib::CumulativeStudentDistribution</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp</includes>
+    <includes local="no">/math/distributions/studenttdistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cumulative_student_distribution_1a59de0ba1fb3af5faf23be775ded4efa4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
           <declname>n</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="67" bodyend="69"/>
+        <location file="/math/distributions/studenttdistribution.hpp" line="67" bodyfile="/math/distributions/studenttdistribution.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cumulative_student_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -24,13 +24,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="70"/>
+        <location file="/math/distributions/studenttdistribution.hpp" line="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Cumulative Student t-distribution. </para>    </briefdescription>
     <detaileddescription>
 <para>Cumulative distribution function for <formula id="181">$ n $</formula> degrees of freedom (see mathworld.wolfram.com): <formula id="186">\[ F(x) = \int_{-\infty}^x\,f(y)\,dy = \frac{1}{2}\, +\,\frac{1}{2}\,sgn(x)\, \left[ I\left(1,\frac{n}{2},\frac{1}{2}\right) - I\left(\frac{n}{n+y^2}, \frac{n}{2},\frac{1}{2}\right)\right] \]</formula> where <formula id="187">$ I(z; a, b) $</formula> is the regularized incomplete beta function. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="64" bodyend="73"/>
+    <location file="/math/distributions/studenttdistribution.hpp" line="65" bodyfile="/math/distributions/studenttdistribution.hpp" bodystart="64" bodyend="73"/>
   </compounddef>
 </doxygen>

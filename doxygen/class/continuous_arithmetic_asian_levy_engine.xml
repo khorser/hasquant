@@ -20,16 +20,16 @@
           <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
           <declname>startDate</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/continuousarithmeticasianlevyengine.hpp" line="38"/>
+        <location file="/experimental/exoticoptions/continuousarithmeticasianlevyengine.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_continuous_arithmetic_asian_levy_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/continuousarithmeticasianlevyengine.hpp" line="39"/>
+        <location file="/experimental/exoticoptions/continuousarithmeticasianlevyengine.hpp" line="39"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/continuousarithmeticasianlevyengine.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/continuousarithmeticasianlevyengine.hpp" bodystart="32" bodyend="44"/>
+    <location file="/experimental/exoticoptions/continuousarithmeticasianlevyengine.hpp" line="33" bodyfile="/experimental/exoticoptions/continuousarithmeticasianlevyengine.hpp" bodystart="32" bodyend="44"/>
   </compounddef>
 </doxygen>

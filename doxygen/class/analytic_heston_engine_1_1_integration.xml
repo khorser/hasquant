@@ -13,7 +13,7 @@
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="143"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="143"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a919cd5dc105817482d7e1387fdad2141" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Integration</type>
@@ -25,7 +25,7 @@
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="144"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a101de8fae8cfeb555ac950cf58569553" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Integration</type>
@@ -37,7 +37,7 @@
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="145"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="145"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1aaff420c28eb1f4aa629a9f7b7dbe1824" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Integration</type>
@@ -49,7 +49,7 @@
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="146"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a437471a9fb4fe0644171f446f4b8425a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Integration</type>
@@ -69,7 +69,7 @@
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="153"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="153"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1adb1a188996aeebde340aecfb357325c2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Integration</type>
@@ -85,7 +85,7 @@
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="157"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1affb9eb15dbc197869ed0f78992f2ea3c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Integration</type>
@@ -101,7 +101,7 @@
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="159"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="159"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a49bd039894f93b72f3fb859d4f5d39e8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Integration</type>
@@ -117,7 +117,7 @@
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="161"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="161"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -134,23 +134,23 @@
           <type>const boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>f</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="164"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="164"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfEvaluations</definition>
         <argsstring>() const </argsstring>
         <name>numberOfEvaluations</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="166"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="166"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a0bda9f5019b52fab1eb72adaa590322e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isAdaptiveIntegration</definition>
         <argsstring>() const </argsstring>
         <name>isAdaptiveIntegration</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="167"/>
+        <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="167"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="140" bodyend="184"/>
+    <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="140" bodyfile="/pricingengines/vanilla/analytichestonengine.hpp" bodystart="140" bodyend="184"/>
   </compounddef>
 </doxygen>

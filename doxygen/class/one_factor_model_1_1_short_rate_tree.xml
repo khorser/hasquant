@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree" kind="class" prot="public">
     <compoundname>QuantLib::OneFactorModel::ShortRateTree</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp</includes>
+    <includes local="no">/models/shortrate/onefactormodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1a7aa0e3ed054c4bf1689294f806458463" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -23,7 +23,7 @@
         </param>
         <briefdescription>
 <para>Plain tree build-up from short-rate dynamics. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="81"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1ab7ce56bbc3074fe6793e42b808c2bdaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -48,7 +48,7 @@
         </param>
         <briefdescription>
 <para><ref refid="class_quant_lib_1_1_tree" kindref="compound">Tree</ref> build-up + numerical fitting to term-structure. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="87"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -59,7 +59,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="89" bodyend="91"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="89" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="89" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1a02737f54768601c8214adcff0fe9145f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
@@ -74,7 +74,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="92" bodyend="96"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="92" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="92" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -89,7 +89,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="97" bodyend="99"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="97" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1a48f57733a612b5288a9fbd89d9b71072" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -108,7 +108,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>branch</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="100" bodyend="102"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="100" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="100" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1aca88ad07031bcbdd6c191208c49f1042" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -127,11 +127,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>branch</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="103" bodyend="105"/>
+        <location file="/models/shortrate/onefactormodel.hpp" line="103" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="103" bodyend="105"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Recombining trinomial tree discretizing the state variable. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="75" bodyend="110"/>
+    <location file="/models/shortrate/onefactormodel.hpp" line="76" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="75" bodyend="110"/>
   </compounddef>
 </doxygen>

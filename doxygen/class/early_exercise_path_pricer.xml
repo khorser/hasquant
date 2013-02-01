@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_early_exercise_path_pricer" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::EarlyExercisePathPricer</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp</includes>
+    <includes local="no">/methods/montecarlo/earlyexercisepathpricer.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -28,7 +28,7 @@
         <definition>typedef EarlyExerciseTraits&lt;PathType&gt;::StateType StateType</definition>
         <argsstring></argsstring>
         <name>StateType</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="66" bodyend="-1"/>
+        <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="66" bodyfile="/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +37,7 @@
         <definition>virtual ~EarlyExercisePathPricer</definition>
         <argsstring>()</argsstring>
         <name>~EarlyExercisePathPricer</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="68" bodyend="68"/>
+        <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="68" bodyfile="/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_path_pricer_1a89ca8ea340a039f3c3afebf38c77a723" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>ValueType</type>
@@ -52,7 +52,7 @@
           <type>TimeType</type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="70"/>
+        <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_path_pricer_1a62de965db0bd3d8e840074c25404fa0b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>StateType</type>
@@ -67,20 +67,20 @@
           <type>TimeType</type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="73"/>
+        <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_path_pricer_1a12c18a2b05f3a447c06ea637b3754fd1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; boost::function1&lt; ValueType, StateType &gt; &gt;</type>
         <definition>virtual std::vector&lt;boost::function1&lt;ValueType, StateType&gt; &gt; basisSystem</definition>
         <argsstring>() const =0</argsstring>
         <name>basisSystem</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="75"/>
+        <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="75"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for early exercise path pricers </para>    </briefdescription>
     <detaileddescription>
 <para>Returns the value of an option on a given path and given time. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="64" bodyend="76"/>
+    <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="64" bodyfile="/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="64" bodyend="76"/>
   </compounddef>
 </doxygen>

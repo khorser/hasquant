@@ -8,7 +8,7 @@
         <definition>typedef FdmExtOUJumpModelInnerValue::Shape Shape</definition>
         <argsstring></argsstring>
         <name>Shape</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="43" bodyend="-1"/>
+        <location file="/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="43" bodyfile="/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -50,16 +50,16 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="50"/>
+        <location file="/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="52"/>
+        <location file="/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="52"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="39" bodyend="60"/>
+    <location file="/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="41" bodyfile="/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="39" bodyend="60"/>
   </compounddef>
 </doxygen>

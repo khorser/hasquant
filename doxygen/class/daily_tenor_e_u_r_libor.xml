@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_daily_tenor_e_u_r_libor" kind="class" prot="public">
     <compoundname>QuantLib::DailyTenorEURLibor</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp</includes>
+    <includes local="no">/indexes/ibor/eurlibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_daily_tenor_e_u_r_libor_1a99d2ccd6b0436ae5781f1211df16dcb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -18,13 +18,13 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="72"/>
+        <location file="/indexes/ibor/eurlibor.hpp" line="72"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for the one day deposit BBA EUR LIBOR indexes </para>    </briefdescription>
     <detaileddescription>
 <para>Euro O/N LIBOR fixed by BBA. It can be also used for T/N and S/N indexes, even if such indexes do not have BBA fixing.</para><para>See <ulink url="http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1414">http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1414</ulink>.</para><para><xrefsect id="caveats_1_caveats000037"><xreftitle>Warning</xreftitle><xrefdescription><para>This is the rate fixed in London by BBA. Use <ref refid="class_quant_lib_1_1_eonia" kindref="compound">Eonia</ref> if you&apos;re interested in the fixing by the <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref>. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" bodystart="68" bodyend="73"/>
+    <location file="/indexes/ibor/eurlibor.hpp" line="68" bodyfile="/indexes/ibor/eurlibor.hpp" bodystart="68" bodyend="73"/>
   </compounddef>
 </doxygen>

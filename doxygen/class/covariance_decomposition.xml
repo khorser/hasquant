@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_covariance_decomposition" kind="class" prot="public">
     <compoundname>QuantLib::CovarianceDecomposition</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp</includes>
+    <includes local="no">/math/matrixutilities/getcovariance.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_covariance_decomposition_1a91fc136055dc917754c5238edb5bc138" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>covarianceMatrix must be symmetric </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="100"/>
+        <location file="/math/matrixutilities/getcovariance.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_covariance_decomposition_1acc058c47207cbd07511c380d0c4e4eb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
@@ -30,7 +30,7 @@
         <name>variances</name>
         <detaileddescription>
 <para>returns the variances <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="102" bodyend="102"/>
+        <location file="/math/matrixutilities/getcovariance.hpp" line="102" bodyfile="/math/matrixutilities/getcovariance.hpp" bodystart="102" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_covariance_decomposition_1ac552baaa07f4c0775024d08fd5dd55a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
@@ -39,7 +39,7 @@
         <name>standardDeviations</name>
         <detaileddescription>
 <para>returns the standard deviations <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="104" bodyend="104"/>
+        <location file="/math/matrixutilities/getcovariance.hpp" line="104" bodyfile="/math/matrixutilities/getcovariance.hpp" bodystart="104" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_covariance_decomposition_1ae5ed4f9cce250d01778cf8d213fa8309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
@@ -48,7 +48,7 @@
         <name>correlationMatrix</name>
         <detaileddescription>
 <para>returns the correlation matrix </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="106" bodyend="106"/>
+        <location file="/math/matrixutilities/getcovariance.hpp" line="106" bodyfile="/math/matrixutilities/getcovariance.hpp" bodystart="106" bodyend="106"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -56,6 +56,6 @@
     <detaileddescription>
 <para>Extracts the correlation matrix and the vector of variances out of the input covariance matrix.</para><para>Note that only the lower symmetric part of the covariance matrix is used.</para><para><simplesect kind="pre"><para>The covariance matrix must be symmetric.</para></simplesect>
 <xrefsect id="test_1_test000045"><xreftitle>Tests</xreftitle><xrefdescription><para>cross checked with getCovariance </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="95" bodyend="110"/>
+    <location file="/math/matrixutilities/getcovariance.hpp" line="95" bodyfile="/math/matrixutilities/getcovariance.hpp" bodystart="95" bodyend="110"/>
   </compounddef>
 </doxygen>

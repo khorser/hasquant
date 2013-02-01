@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_volatility_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::VolatilityTermStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp</includes>
+    <includes local="no">/termstructures/voltermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
@@ -26,7 +26,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000132"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="50"/>
+        <location file="/termstructures/voltermstructure.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a6dde14edb40ab23fb1ea553c516d56f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -44,7 +44,7 @@
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000133"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="57"/>
+        <location file="/termstructures/voltermstructure.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a313b93ad25131868d6ecba5dd642741d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -70,7 +70,7 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="62"/>
+        <location file="/termstructures/voltermstructure.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a82bd61e80d4c1bf9e22b55917fe18cd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -96,7 +96,7 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="67"/>
+        <location file="/termstructures/voltermstructure.hpp" line="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -107,7 +107,7 @@
         <name>businessDayConvention</name>
         <briefdescription>
 <para>the business day convention used in tenor to date conversion </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" bodystart="88" bodyend="90"/>
+        <location file="/termstructures/voltermstructure.hpp" line="70" bodyfile="/termstructures/voltermstructure.hpp" bodystart="88" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1af59f60f1e0a7875cd8c4e97c3e50f8fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -120,7 +120,7 @@
         </param>
         <briefdescription>
 <para>period/date conversion </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" bodystart="93" bodyend="98"/>
+        <location file="/termstructures/voltermstructure.hpp" line="72" bodyfile="/termstructures/voltermstructure.hpp" bodystart="93" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -129,7 +129,7 @@
         <name>minStrike</name>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="74"/>
+        <location file="/termstructures/voltermstructure.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -138,13 +138,13 @@
         <name>maxStrike</name>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="76"/>
+        <location file="/termstructures/voltermstructure.hpp" line="76"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Volatility term structure. </para>    </briefdescription>
     <detaileddescription>
 <para>This abstract class defines the interface of concrete volatility structures which will be derived from this one. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" bodystart="36" bodyend="83"/>
+    <location file="/termstructures/voltermstructure.hpp" line="36" bodyfile="/termstructures/voltermstructure.hpp" bodystart="36" bodyend="83"/>
   </compounddef>
 </doxygen>

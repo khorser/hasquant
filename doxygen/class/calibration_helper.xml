@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_calibration_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CalibrationHelper</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp</includes>
+    <includes local="no">/models/calibrationhelper.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033" prot="public" static="no">
         <name>CalibrationErrorType</name>
@@ -15,7 +15,7 @@
         <enumvalue id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033aaf711a9a55e986cdd866fc61bd1d65b6" prot="public">
           <name>ImpliedVolError</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="38" bodyend="39"/>
+        <location file="/models/calibrationhelper.hpp" line="38" bodyfile="/models/calibrationhelper.hpp" bodystart="38" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -37,7 +37,7 @@
           <declname>calibrationErrorType</declname>
           <defval>RelativePriceError</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="41" bodyend="49"/>
+        <location file="/models/calibrationhelper.hpp" line="46" bodyfile="/models/calibrationhelper.hpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -45,7 +45,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="50" bodyend="53"/>
+        <location file="/models/calibrationhelper.hpp" line="50" bodyfile="/models/calibrationhelper.hpp" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1aa1d5a2a3e1205bdc482f59182282c426" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -54,7 +54,7 @@
         <name>marketValue</name>
         <briefdescription>
 <para>returns the actual price of the instrument (from volatility) </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="56" bodyend="56"/>
+        <location file="/models/calibrationhelper.hpp" line="56" bodyfile="/models/calibrationhelper.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a573ec85444166decbaa5888155b9fa39" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -63,7 +63,7 @@
         <name>modelValue</name>
         <briefdescription>
 <para>returns the price of the instrument according to the model </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="59"/>
+        <location file="/models/calibrationhelper.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1ac9e6e106b8ad56b7bf89a48b8a004857" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -72,7 +72,7 @@
         <name>calibrationError</name>
         <briefdescription>
 <para>returns the error resulting from the model valuation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="62"/>
+        <location file="/models/calibrationhelper.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a06c670b250bcd21e9787ebc007093545" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -83,7 +83,7 @@
           <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>times</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="64"/>
+        <location file="/models/calibrationhelper.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a83cd0c8293969d49634c639a632141f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
@@ -112,7 +112,7 @@
         </param>
         <briefdescription>
 <para>Black volatility implied by the model. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="71"/>
+        <location file="/models/calibrationhelper.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1ae916246904fe19039c315903020642ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -125,7 +125,7 @@
         </param>
         <briefdescription>
 <para>Black price given a volatility. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="74"/>
+        <location file="/models/calibrationhelper.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a5ef2cc90f16cf902829ac616f7b5278c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -136,11 +136,11 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
           <declname>engine</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="76" bodyend="78"/>
+        <location file="/models/calibrationhelper.hpp" line="76" bodyfile="/models/calibrationhelper.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>liquid market instrument used during calibration </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="36" bodyend="89"/>
+    <location file="/models/calibrationhelper.hpp" line="36" bodyfile="/models/calibrationhelper.hpp" bodystart="36" bodyend="89"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::TwoFactorModel::ShortRateDynamics</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp</includes>
+    <includes local="no">/models/shortrate/twofactormodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a355ae86a43fc31ac1a073994cd003cd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -21,14 +21,14 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>correlation</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="74" bodyend="79"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="79" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="74" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~ShortRateDynamics</definition>
         <argsstring>()</argsstring>
         <name>~ShortRateDynamics</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="80" bodyend="80"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="80" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a35ee4be4dfe9ba11ae065e504d243b27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -47,7 +47,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="82"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a8172c305c4c368a1edd673b4ca62f371" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
@@ -56,7 +56,7 @@
         <name>xProcess</name>
         <briefdescription>
 <para>Risk-neutral dynamics of the first state variable x. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="85" bodyend="87"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="85" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="85" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1aa16b95136209eb87d8450dcba1d7cc3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
@@ -65,7 +65,7 @@
         <name>yProcess</name>
         <briefdescription>
 <para>Risk-neutral dynamics of the second state variable y. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="90" bodyend="92"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="90" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1ac63b6b972e9461ed9c0de2899f6fdc45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -74,7 +74,7 @@
         <name>correlation</name>
         <briefdescription>
 <para>Correlation <formula id="314">$ \rho $</formula> between the two brownian motions. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="95" bodyend="97"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="95" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1afd0ad032a77834548769cc5f19c3c75f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &gt;</type>
@@ -83,13 +83,13 @@
         <name>process</name>
         <briefdescription>
 <para>Joint process of the two variables. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="100"/>
+        <location file="/models/shortrate/twofactormodel.hpp" line="100"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Class describing the dynamics of the two state variables. </para>    </briefdescription>
     <detaileddescription>
 <para>We assume here that the short-rate is a function of two state variables x and y. <formula id="308">\[ r_t = f(t, x_t, y_t) \]</formula> of two state variables <formula id="295">$ x_t $</formula> and <formula id="297">$ y_t $</formula>. These stochastic processes satisfy <formula id="309">\[ x_t = \mu_x(t, x_t)dt + \sigma_x(t, x_t) dW_t^x \]</formula> and <formula id="310">\[ y_t = \mu_y(t,y_t)dt + \sigma_y(t, y_t) dW_t^y \]</formula> where <formula id="311">$ W^x $</formula> and <formula id="312">$ W^y $</formula> are two brownian motions satisfying <formula id="313">\[ dW^x_t dW^y_t = \rho dt \]</formula>. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="72" bodyend="105"/>
+    <location file="/models/shortrate/twofactormodel.hpp" line="72" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="72" bodyend="105"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_amortizing_payment" kind="class" prot="public">
     <compoundname>QuantLib::AmortizingPayment</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp</includes>
+    <includes local="no">/cashflows/simplecashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
       <memberdef kind="function" id="class_quant_lib_1_1_amortizing_payment_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -15,7 +15,7 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="107" bodyend="114"/>
+        <location file="/cashflows/simplecashflow.hpp" line="82" bodyfile="/cashflows/simplecashflow.hpp" bodystart="107" bodyend="114"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,13 +32,13 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="77" bodyend="79"/>
+        <location file="/cashflows/simplecashflow.hpp" line="79" bodyfile="/cashflows/simplecashflow.hpp" bodystart="77" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Amortizing payment. </para>    </briefdescription>
     <detaileddescription>
 <para>This class specializes <ref refid="class_quant_lib_1_1_simple_cash_flow" kindref="compound">SimpleCashFlow</ref> so that visitors can perform more detailed cash-flow analysis. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="75" bodyend="84"/>
+    <location file="/cashflows/simplecashflow.hpp" line="75" bodyfile="/cashflows/simplecashflow.hpp" bodystart="75" bodyend="84"/>
   </compounddef>
 </doxygen>

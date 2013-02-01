@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_armijo_line_search" kind="class" prot="public">
     <compoundname>QuantLib::ArmijoLineSearch</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp</includes>
+    <includes local="no">/math/optimization/armijo.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_armijo_line_search_1aa9b7b48a8c23873cce8850ca4c91b983" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -26,7 +26,7 @@
         </param>
         <briefdescription>
 <para>Default constructor. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="51" bodyend="54"/>
+        <location file="/math/optimization/armijo.hpp" line="54" bodyfile="/math/optimization/armijo.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_armijo_line_search_1a5d35ecca8f9fb5e845371eb48e90d3f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -51,7 +51,7 @@
         </param>
         <briefdescription>
 <para>Perform line search. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="60"/>
+        <location file="/math/optimization/armijo.hpp" line="60"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,6 +60,6 @@
 <para>Let <formula id="3">$ \alpha $</formula> and <formula id="220">$ \beta $</formula> be 2 scalars in <formula id="221">$ [0,1] $</formula>. Let <formula id="134">$ x $</formula> be the current value of the unknown, <formula id="222">$ d $</formula> the search direction and <formula id="147">$ t $</formula> the step. Let <formula id="37">$ f $</formula> be the function to minimize. The line search stops when <formula id="147">$ t $</formula> verifies <formula id="223">\[ f(x + t \cdot d) - f(x) \leq -\alpha t f&apos;(x+t \cdot d) \]</formula> and <formula id="224">\[ f(x+\frac{t}{\beta} \cdot d) - f(x) &gt; -\frac{\alpha}{\beta} t f&apos;(x+t \cdot d) \]</formula> <verbatim>  (see Polak, Algorithms and consistent approximations, Optimization,
   volume 124 of Applied Mathematical Sciences, Springer-Verlag, NY,
   1997)</verbatim> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="48" bodyend="63"/>
+    <location file="/math/optimization/armijo.hpp" line="48" bodyfile="/math/optimization/armijo.hpp" bodystart="48" bodyend="63"/>
   </compounddef>
 </doxygen>

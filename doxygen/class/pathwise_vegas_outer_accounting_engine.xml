@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine" kind="class" prot="public">
     <compoundname>QuantLib::PathwiseVegasOuterAccountingEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp</includes>
+    <includes local="no">/models/marketmodels/pathwiseaccountingengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a12c4a2acbe18cba9b4f61c64aef0dc8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,7 +29,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>initialNumeraireValue</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="199"/>
+        <location file="/models/marketmodels/pathwiseaccountingengine.hpp" line="199"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a0958e29608202ff7ab0e3d8a79418e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -50,7 +50,7 @@
         </param>
         <briefdescription>
 <para>Use to get vegas with respect to VegaBumps. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="204"/>
+        <location file="/models/marketmodels/pathwiseaccountingengine.hpp" line="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a37e0777069c895c824596c30c7f2337e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -71,11 +71,11 @@
         </param>
         <briefdescription>
 <para>Use to get vegas with respect to pseudo-root-elements. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="209"/>
+        <location file="/models/marketmodels/pathwiseaccountingengine.hpp" line="209"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Engine collecting cash flows along a market-model simulation for doing pathwise computation of Deltas and vegas. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="193" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="192" bodyend="273"/>
+    <location file="/models/marketmodels/pathwiseaccountingengine.hpp" line="193" bodyfile="/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="192" bodyend="273"/>
   </compounddef>
 </doxygen>

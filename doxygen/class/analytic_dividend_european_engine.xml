@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_dividend_european_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticDividendEuropeanEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/analyticdividendeuropeanengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_dividend_european_engine_1a68244f5f104be29dbb5ebbede3e8dc27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -12,7 +12,7 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp" line="42"/>
+        <location file="/pricingengines/vanilla/analyticdividendeuropeanengine.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_dividend_european_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -20,13 +20,13 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp" line="43"/>
+        <location file="/pricingengines/vanilla/analyticdividendeuropeanengine.hpp" line="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Analytic pricing engine for European options with discrete dividends. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000113"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned greeks is tested by reproducing numerical derivatives. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp" bodystart="38" bodyend="46"/>
+    <location file="/pricingengines/vanilla/analyticdividendeuropeanengine.hpp" line="39" bodyfile="/pricingengines/vanilla/analyticdividendeuropeanengine.hpp" bodystart="38" bodyend="46"/>
   </compounddef>
 </doxygen>

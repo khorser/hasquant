@@ -33,7 +33,7 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="43" bodyend="55"/>
+        <location file="/experimental/finitedifferences/fdmklugeextousolver.hpp" line="51" bodyfile="/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="43" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1a8fcae2fd9f5d31f416d09e94d2768d2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -44,9 +44,9 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="57" bodyend="60"/>
+        <location file="/experimental/finitedifferences/fdmklugeextousolver.hpp" line="57" bodyfile="/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="57" bodyend="60"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="41" bodyend="81"/>
+    <location file="/experimental/finitedifferences/fdmklugeextousolver.hpp" line="41" bodyfile="/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="41" bodyend="81"/>
   </compounddef>
 </doxygen>

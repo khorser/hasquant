@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_joint_calendar" kind="class" prot="public">
     <compoundname>QuantLib::JointCalendar</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp</includes>
+    <includes local="no">/time/calendars/jointcalendar.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1ac82ed9afb1ad7d58128551f627178cce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -19,7 +19,7 @@
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
           <defval><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bcaace2716211f162ba977b383f360af683e" kindref="member">JoinHolidays</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="74"/>
+        <location file="/time/calendars/jointcalendar.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1aa8995c3ac583faf1f3a6865c73a85930" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -39,7 +39,7 @@
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
           <defval><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bcaace2716211f162ba977b383f360af683e" kindref="member">JoinHolidays</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="77"/>
+        <location file="/time/calendars/jointcalendar.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1a098c5af8ada898daa86aea31734ffad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -62,13 +62,13 @@
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
           <defval><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bcaace2716211f162ba977b383f360af683e" kindref="member">JoinHolidays</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="80"/>
+        <location file="/time/calendars/jointcalendar.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Joint calendar. </para>    </briefdescription>
     <detaileddescription>
 <para>Depending on the chosen rule, this calendar has a set of business days given by either the union or the intersection of the sets of business days of the given calendars.</para><para><xrefsect id="test_1_test000149"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned results is tested by reproducing the calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" bodystart="54" bodyend="81"/>
+    <location file="/time/calendars/jointcalendar.hpp" line="54" bodyfile="/time/calendars/jointcalendar.hpp" bodystart="54" bodyend="81"/>
   </compounddef>
 </doxygen>

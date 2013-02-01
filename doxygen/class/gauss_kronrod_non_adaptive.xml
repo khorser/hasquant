@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_kronrod_non_adaptive" kind="class" prot="public">
     <compoundname>QuantLib::GaussKronrodNonAdaptive</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp</includes>
+    <includes local="no">/math/integrals/kronrodintegral.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_non_adaptive_1ab4d774d801573bf249162d60d261a410" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>relativeAccuracy</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="56"/>
+        <location file="/math/integrals/kronrodintegral.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_non_adaptive_1a7a841c963a1d6079b1608dcaf1649eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -31,20 +31,20 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="57"/>
+        <location file="/math/integrals/kronrodintegral.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_non_adaptive_1a6a0fc2014460e4c03cbed6223dfebbbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real relativeAccuracy</definition>
         <argsstring>() const </argsstring>
         <name>relativeAccuracy</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="58"/>
+        <location file="/math/integrals/kronrodintegral.hpp" line="58"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Integral of a 1-dimensional function using the Gauss-Kronrod methods. </para>    </briefdescription>
     <detaileddescription>
 <para>This class provide a non-adaptive integration procedure which uses fixed Gauss-Kronrod abscissae to sample the integrand at a maximum of 87 points. It is provided for fast integration of smooth functions.</para><para>This function applies the Gauss-Kronrod 10-point, 21-point, 43-point and 87-point integration rules in succession until an estimate of the integral of f over (a, b) is achieved within the desired absolute and relative error limits, epsabs and epsrel. The function returns the final approximation, result, an estimate of the absolute error, abserr and the number of function evaluations used, neval. The Gauss-Kronrod rules are designed in such a way that each rule uses all the results of its predecessors, in order to minimize the total number of function evaluations. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" bodystart="52" bodyend="65"/>
+    <location file="/math/integrals/kronrodintegral.hpp" line="52" bodyfile="/math/integrals/kronrodintegral.hpp" bodystart="52" bodyend="65"/>
   </compounddef>
 </doxygen>

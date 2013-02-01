@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_i_n_r_currency" kind="class" prot="public">
     <compoundname>QuantLib::INRCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp</includes>
+    <includes local="no">/currencies/asia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_i_n_r_currency_1a005edd96311cbbdde8365be23b2262b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>INRCurrency</definition>
         <argsstring>()</argsstring>
         <name>INRCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="114" bodyend="121"/>
+        <location file="/currencies/asia.hpp" line="114" bodyfile="/currencies/asia.hpp" bodystart="114" bodyend="121"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Indian rupee. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is INR; the numeric code is 356. It is divided in 100 paise. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="112" bodyend="122"/>
+    <location file="/currencies/asia.hpp" line="112" bodyfile="/currencies/asia.hpp" bodystart="112" bodyend="122"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_recursive_cdo_engine" kind="class" prot="public">
     <compoundname>QuantLib::RecursiveCdoEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp</includes>
+    <includes local="no">/experimental/credit/recursivecdoengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -37,7 +37,7 @@
         </param>
         <briefdescription>
 <para>Single correlation construction. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="51" bodyend="58"/>
+        <location file="/experimental/credit/recursivecdoengine.hpp" line="56" bodyfile="/experimental/credit/recursivecdoengine.hpp" bodystart="51" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1ab3a6fadcd72020218969124dadf94b05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -64,14 +64,14 @@
         </param>
         <briefdescription>
 <para>Correlation name to name single factor construction. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="61" bodyend="72"/>
+        <location file="/experimental/credit/recursivecdoengine.hpp" line="68" bodyfile="/experimental/credit/recursivecdoengine.hpp" bodystart="61" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="130" bodyend="133"/>
+        <location file="/experimental/credit/recursivecdoengine.hpp" line="86" bodyfile="/experimental/credit/recursivecdoengine.hpp" bodystart="130" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1a1de75d730452a11df096c7a0bad398fa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -82,11 +82,11 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="103" bodyend="111"/>
+        <location file="/experimental/credit/recursivecdoengine.hpp" line="103" bodyfile="/experimental/credit/recursivecdoengine.hpp" bodystart="103" bodyend="111"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>Recursive STCDO pricing for a heterogeneous pool of names. The pool names are heterogeneous in their default probabilities, notionals and recovery rates. Correlations are pairwise. The recursive pricing algorithm used here is described in Andersen, Sidenius and Basu; &quot;All your hedges in one basket&quot;, Risk, November 2003, pages 67-72</para><para>Notice that using copulas other than Gaussian it is only an approximation (see remark on p.68). </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="45" bodyend="126"/>
+    <location file="/experimental/credit/recursivecdoengine.hpp" line="45" bodyfile="/experimental/credit/recursivecdoengine.hpp" bodystart="45" bodyend="126"/>
   </compounddef>
 </doxygen>

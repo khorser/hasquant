@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swaption_volatility_cube" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionVolatilityCube</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp</includes>
+    <includes local="no">/termstructures/volatility/swaption/swaptionvolcube.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="52" bodyend="52"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="52" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="53" bodyend="53"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="53" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -33,7 +33,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
         <briefdescription>
 <para>the latest time for which the curve can return values </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="54" bodyend="54"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="54" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a4a72314adf5959d9427df0fad16a1d3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
@@ -43,7 +43,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="55" bodyend="55"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="55" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
@@ -53,7 +53,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="56" bodyend="56"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="56" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
@@ -63,7 +63,7 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="57" bodyend="57"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="57" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -76,7 +76,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="60" bodyend="60"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="60" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -86,7 +86,7 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="61" bodyend="61"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="61" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -99,7 +99,7 @@
         <reimplements refid="class_quant_lib_1_1_swaption_volatility_structure_1a95eb3bcb1f89026d83f78dd535d803a0">maxSwapTenor</reimplements>
         <briefdescription>
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="65" bodyend="65"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="65" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -117,7 +117,7 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="70"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a12e6621b980964b337ceb6d306654759" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -132,7 +132,7 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="71" bodyend="75"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="72" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="71" bodyend="75"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -173,13 +173,13 @@
           <type>bool</type>
           <declname>vegaWeightedSmileFit</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="49"/>
+        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>swaption-volatility cube </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000129"><xreftitle>Warning</xreftitle><xrefdescription><para>this class is not finalized and its interface might change in subsequent releases. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="39" bodyend="93"/>
+    <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="39" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="39" bodyend="93"/>
   </compounddef>
 </doxygen>

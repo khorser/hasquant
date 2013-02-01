@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_homogeneous_pool_c_d_o_engine" kind="class" prot="public">
     <compoundname>QuantLib::HomogeneousPoolCDOEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
+    <includes local="no">/experimental/credit/syntheticcdoengines.hpp</includes>
     <templateparamlist>
       <param>
         <type>class CDOEngine</type>
@@ -22,11 +22,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nBuckets</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="175" bodyend="179"/>
+        <location file="/experimental/credit/syntheticcdoengines.hpp" line="177" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="175" bodyend="179"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine, loss distribution convolution for finite homogeneous pool. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="173" bodyend="192"/>
+    <location file="/experimental/credit/syntheticcdoengines.hpp" line="173" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="173" bodyend="192"/>
   </compounddef>
 </doxygen>

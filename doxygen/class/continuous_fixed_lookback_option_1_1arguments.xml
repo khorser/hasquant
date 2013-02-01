@@ -2,14 +2,14 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_continuous_fixed_lookback_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::ContinuousFixedLookbackOption::arguments</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp</includes>
+    <includes local="no">/instruments/lookbackoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_continuous_fixed_lookback_option_1_1arguments_1a7d7892274fd67168a5eeddb4bd161587" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real minmax</definition>
         <argsstring></argsstring>
         <name>minmax</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" bodystart="77" bodyend="-1"/>
+        <location file="/instruments/lookbackoption.hpp" line="77" bodyfile="/instruments/lookbackoption.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -18,11 +18,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="78"/>
+        <location file="/instruments/lookbackoption.hpp" line="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for continuous fixed lookback option calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" bodystart="74" bodyend="79"/>
+    <location file="/instruments/lookbackoption.hpp" line="75" bodyfile="/instruments/lookbackoption.hpp" bodystart="74" bodyend="79"/>
   </compounddef>
 </doxygen>

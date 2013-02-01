@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lfm_hull_white_parameterization" kind="class" prot="public">
     <compoundname>QuantLib::LfmHullWhiteParameterization</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp</includes>
+    <includes local="no">/legacy/libormarketmodels/lfmhullwhiteparam.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a0a9d92c9beb820af6e0e6379490d2ce9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -27,7 +27,7 @@
           <declname>factors</declname>
           <defval>1</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="46"/>
+        <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a98f01d842b650489da3c57e779f73c93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -44,7 +44,7 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="49"/>
+        <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a0278d24739a9bfc281246d6172530b49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -61,7 +61,7 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="51"/>
+        <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1abadf15cf4c8136891d2e91d8f36a0baf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
@@ -78,13 +78,13 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="53"/>
+        <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Libor market model parameterization based on Hull White paper </para>    </briefdescription>
     <detaileddescription>
 <para>Hull, John, White, Alan, 1999, <ref refid="class_quant_lib_1_1_forward" kindref="compound">Forward</ref> Rate Volatilities, <ref refid="class_quant_lib_1_1_swap" kindref="compound">Swap</ref> Rate Volatilities and the Implementation of the <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model (<ulink url="http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf">http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf</ulink>)</para><para><xrefsect id="test_1_test000024"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness is tested by Monte-Carlo reproduction of caplet &amp; ratchet npvs and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" bodystart="41" bodyend="60"/>
+    <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="41" bodyfile="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" bodystart="41" bodyend="60"/>
   </compounddef>
 </doxygen>

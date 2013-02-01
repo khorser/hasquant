@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_swap_quote" kind="class" prot="public">
     <compoundname>QuantLib::ForwardSwapQuote</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp</includes>
+    <includes local="no">/quotes/forwardswapquote.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Quote interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp" line="43"/>
+        <location file="/quotes/forwardswapquote.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
 <para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp" line="44"/>
+        <location file="/quotes/forwardswapquote.hpp" line="44"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -34,7 +34,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp" line="48"/>
+        <location file="/quotes/forwardswapquote.hpp" line="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -55,32 +55,32 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>fwdStart</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp" line="40"/>
+        <location file="/quotes/forwardswapquote.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1a564ae9e6cc9c76d2d63daaf7395b7d6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; valueDate</definition>
         <argsstring>() const </argsstring>
         <name>valueDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp" line="50"/>
+        <location file="/quotes/forwardswapquote.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1a31cb634ae3717b7740c373fd6c34f1d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp" line="51"/>
+        <location file="/quotes/forwardswapquote.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1aee260a08ccb6428c19b51ac1042641df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp" line="52"/>
+        <location file="/quotes/forwardswapquote.hpp" line="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> for a forward starting swap. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardswapquote.hpp" bodystart="35" bodyend="65"/>
+    <location file="/quotes/forwardswapquote.hpp" line="36" bodyfile="/quotes/forwardswapquote.hpp" bodystart="35" bodyend="65"/>
   </compounddef>
 </doxygen>

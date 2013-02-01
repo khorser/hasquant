@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_projected_cost_function" kind="class" prot="public">
     <compoundname>QuantLib::ProjectedCostFunction</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp</includes>
+    <includes local="no">/math/optimization/projectedcostfunction.hpp</includes>
       <sectiondef kind="user-defined">
       <header>CostFunction interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1a1333520b710a945f475fc3c7382d1462" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -17,7 +17,7 @@
         </param>
         <briefdescription>
 <para>method to overload to compute the cost function value in x </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="45"/>
+        <location file="/math/optimization/projectedcostfunction.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1acff7246a26608378638550ab57075273" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -31,7 +31,7 @@
         </param>
         <briefdescription>
 <para>method to overload to compute the cost function values in x </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="47"/>
+        <location file="/math/optimization/projectedcostfunction.hpp" line="47"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -52,7 +52,7 @@
           <type>const std::vector&lt; bool &gt; &amp;</type>
           <declname>parametersFreedoms</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="41"/>
+        <location file="/math/optimization/projectedcostfunction.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1a53236e8f6234e3ee642043cd1229ea83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -65,7 +65,7 @@
         </param>
         <briefdescription>
 <para>returns the subset of free parameters corresponding </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="52"/>
+        <location file="/math/optimization/projectedcostfunction.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1a345a5a5e4b2957ac72edb57ec2f43728" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
@@ -78,13 +78,13 @@
         </param>
         <briefdescription>
 <para>returns whole set of parameters corresponding to the set </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="57"/>
+        <location file="/math/optimization/projectedcostfunction.hpp" line="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Parameterized cost function. </para>    </briefdescription>
     <detaileddescription>
 <para>This class creates a proxy cost function which can depend on any arbitrary subset of parameters (the other being fixed) </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="37" bodyend="66"/>
+    <location file="/math/optimization/projectedcostfunction.hpp" line="37" bodyfile="/math/optimization/projectedcostfunction.hpp" bodystart="37" bodyend="66"/>
   </compounddef>
 </doxygen>

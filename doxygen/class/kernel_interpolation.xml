@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_kernel_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::KernelInterpolation</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/kernelinterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_kernel_interpolation_1a801a5deeae32baec8cfb66708c0729b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -39,13 +39,13 @@
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para><simplesectsep/><para>kernel needs a Real operator()(Real x) implementation </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation.hpp" bodystart="158" bodyend="165"/>
+        <location file="/math/interpolations/kernelinterpolation.hpp" line="160" bodyfile="/math/interpolations/kernelinterpolation.hpp" bodystart="158" bodyend="165"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Kernel interpolation between discrete points. </para>    </briefdescription>
     <detaileddescription>
 <para>Implementation of the kernel interpolation approach, which can be found in &quot;Foreign Exchange Risk&quot; by Hakala, Wystup page 256.</para><para>The kernel in the implementation is kept general, although a Gaussian is considered in the cited text. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation.hpp" bodystart="152" bodyend="166"/>
+    <location file="/math/interpolations/kernelinterpolation.hpp" line="152" bodyfile="/math/interpolations/kernelinterpolation.hpp" bodystart="152" bodyend="166"/>
   </compounddef>
 </doxygen>

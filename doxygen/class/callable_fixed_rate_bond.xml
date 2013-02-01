@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_callable_fixed_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::CallableFixedRateBond</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp</includes>
+    <includes local="no">/experimental/callablebonds/callablebond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_callable_fixed_rate_bond_1ad5ef8d0800f4a070f1102d5c56de55be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -49,7 +49,7 @@
           <declname>putCallSchedule</declname>
           <defval>CallabilitySchedule()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="164"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="164"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_fixed_rate_bond_1af6f2357affd0584e0db188a557bdef03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -62,7 +62,7 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="166"/>
+        <location file="/experimental/callablebonds/callablebond.hpp" line="166"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -71,6 +71,6 @@
 <para>Callable fixed rate bond class.</para><para><verbatim>   &lt;b&gt; Example: &lt;/b&gt;
    \link CallableBonds.cpp
    \endlink</verbatim> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="152" bodyend="177"/>
+    <location file="/experimental/callablebonds/callablebond.hpp" line="152" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="152" bodyend="177"/>
   </compounddef>
 </doxygen>

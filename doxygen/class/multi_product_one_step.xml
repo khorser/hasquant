@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_multi_product_one_step" kind="class" prot="public">
     <compoundname>QuantLib::MultiProductOneStep</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multiproductonestep.hpp</includes>
+    <includes local="no">/models/marketmodels/products/multiproductonestep.hpp</includes>
       <sectiondef kind="user-defined">
       <header>MarketModelMultiProduct interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_product_one_step_1afa0882cb7e47518f285e2bc573d954a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -11,7 +11,7 @@
         <argsstring>() const </argsstring>
         <name>evolution</name>
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a68dfe7446a0e67a069cc65607e33fba7">evolution</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multiproductonestep.hpp" line="39"/>
+        <location file="/models/marketmodels/products/multiproductonestep.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_product_one_step_1aaf801d7941a97da6022733449a2a0e24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
@@ -19,7 +19,7 @@
         <argsstring>() const </argsstring>
         <name>suggestedNumeraires</name>
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a1554834bb65e58fefbf96280a405e85d">suggestedNumeraires</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multiproductonestep.hpp" line="40"/>
+        <location file="/models/marketmodels/products/multiproductonestep.hpp" line="40"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,13 +32,13 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multiproductonestep.hpp" line="36"/>
+        <location file="/models/marketmodels/products/multiproductonestep.hpp" line="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Single-step market-model product. </para>    </briefdescription>
     <detaileddescription>
 <para>This is the abstract base class that encapsulates the notion of a <ref refid="class_quant_lib_1_1_market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> which can be evaluated in one step (aka Rebonato&apos;s very long jump). </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multiproductonestep.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multiproductonestep.hpp" bodystart="34" bodyend="45"/>
+    <location file="/models/marketmodels/products/multiproductonestep.hpp" line="34" bodyfile="/models/marketmodels/products/multiproductonestep.hpp" bodystart="34" bodyend="45"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_s_a_b_r" kind="class" prot="public">
     <compoundname>QuantLib::SABR</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/sabrinterpolation.hpp</includes>
       <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_s_a_b_r_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
         <type>const bool</type>
@@ -10,7 +10,7 @@
         <argsstring></argsstring>
         <name>global</name>
         <initializer>= true</initializer>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="422" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="422" bodyend="-1"/>
+        <location file="/math/interpolations/sabrinterpolation.hpp" line="422" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="422" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -74,7 +74,7 @@
           <declname>optMethod</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="410" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="395" bodyend="410"/>
+        <location file="/math/interpolations/sabrinterpolation.hpp" line="410" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="395" bodyend="410"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -101,11 +101,11 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="413" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="412" bodyend="421"/>
+        <location file="/math/interpolations/sabrinterpolation.hpp" line="413" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="412" bodyend="421"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>SABR interpolation factory and traits </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="393" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="393" bodyend="431"/>
+    <location file="/math/interpolations/sabrinterpolation.hpp" line="393" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="393" bodyend="431"/>
   </compounddef>
 </doxygen>

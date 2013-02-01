@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_argentina" kind="class" prot="public">
     <compoundname>QuantLib::Argentina</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp</includes>
+    <includes local="no">/time/calendars/argentina.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_argentina_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -11,7 +11,7 @@
           <briefdescription>
 <para>Buenos Aires stock exchange calendar. </para>          </briefdescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp" bodystart="63" bodyend="64"/>
+        <location file="/time/calendars/argentina.hpp" line="63" bodyfile="/time/calendars/argentina.hpp" bodystart="63" bodyend="64"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,43 +25,14 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_argentina_1abe41cfffd960e29a5d8b07be00aeda42a2ad9b9ebcb271f008e9595be4016188b" kindref="member">Merval</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp" line="65"/>
+        <location file="/time/calendars/argentina.hpp" line="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Argentinian calendars. </para>    </briefdescription>
     <detaileddescription>
-<para>Holidays for the Buenos Aires stock exchange (data from <ulink url="http://www.merval.sba.com.ar/">http://www.merval.sba.com.ar/</ulink>): <itemizedlist>
-<listitem>
-<para>Saturdays </para></listitem>
-<listitem>
-<para>Sundays </para></listitem>
-<listitem>
-<para>New Year&apos;s Day, January 1st </para></listitem>
-<listitem>
-<para>Holy Thursday </para></listitem>
-<listitem>
-<para>Good Friday </para></listitem>
-<listitem>
-<para>Labour Day, May 1st </para></listitem>
-<listitem>
-<para>May Revolution, May 25th </para></listitem>
-<listitem>
-<para>Death of General Manuel Belgrano, third Monday of June </para></listitem>
-<listitem>
-<para>Independence Day, July 9th </para></listitem>
-<listitem>
-<para>Death of General José de San Martín, third Monday of August </para></listitem>
-<listitem>
-<para>Columbus Day, October 12th (moved to preceding Monday if on Tuesday or Wednesday and to following if on Thursday or Friday) </para></listitem>
-<listitem>
-<para>Immaculate Conception, December 8th </para></listitem>
-<listitem>
-<para>Christmas Eve, December 24th </para></listitem>
-<listitem>
-<para>New Year&apos;s Eve, December 31th </para></listitem>
-</itemizedlist>
+<para>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp" bodystart="55" bodyend="66"/>
+    <location file="/time/calendars/argentina.hpp" line="55" bodyfile="/time/calendars/argentina.hpp" bodystart="55" bodyend="66"/>
   </compounddef>
 </doxygen>

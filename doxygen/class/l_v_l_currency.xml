@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_l_v_l_currency" kind="class" prot="public">
     <compoundname>QuantLib::LVLCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_l_v_l_currency_1a678495e6877e2ecc68bccc9077a2f955" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>LVLCurrency</definition>
         <argsstring>()</argsstring>
         <name>LVLCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="258" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="258" bodyend="265"/>
+        <location file="/currencies/europe.hpp" line="258" bodyfile="/currencies/europe.hpp" bodystart="258" bodyend="265"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Latvian lat. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is LVL; the numeric code is 428. It is divided in 100 santims. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="256" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="256" bodyend="266"/>
+    <location file="/currencies/europe.hpp" line="256" bodyfile="/currencies/europe.hpp" bodystart="256" bodyend="266"/>
   </compounddef>
 </doxygen>

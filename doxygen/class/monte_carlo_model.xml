@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_monte_carlo_model" kind="class" prot="public">
     <compoundname>QuantLib::MonteCarloModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp</includes>
+    <includes local="no">/methods/montecarlo/montecarlomodel.hpp</includes>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
@@ -27,49 +27,49 @@
         <definition>typedef MC&lt;RNG&gt; mc_traits</definition>
         <argsstring></argsstring>
         <name>mc_traits</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="53" bodyend="-1"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="53" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1a3b06460378c6160a0308efbecfc7a63f" prot="public" static="no">
         <type>RNG</type>
         <definition>typedef RNG rng_traits</definition>
         <argsstring></argsstring>
         <name>rng_traits</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="54" bodyend="-1"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="54" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1aab11530354ed62b0a419f90803f7a647" prot="public" static="no">
         <type>MC&lt; RNG &gt;::path_generator_type</type>
         <definition>typedef MC&lt;RNG&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="55" bodyend="-1"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="55" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1a37efbc67c5d5bcba2ad1e5a6bc382563" prot="public" static="no">
         <type>MC&lt; RNG &gt;::path_pricer_type</type>
         <definition>typedef MC&lt;RNG&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="56" bodyend="-1"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="56" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1a204507d73ca2954ec4c0b27373d2c40c" prot="public" static="no">
         <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">path_generator_type::sample_type</ref></type>
         <definition>typedef path_generator_type::sample_type sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="57" bodyend="-1"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="57" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1ad8e5fd95c87e9d6a3657dc6083452142" prot="public" static="no">
         <type>path_pricer_type::result_type</type>
         <definition>typedef path_pricer_type::result_type result_type</definition>
         <argsstring></argsstring>
         <name>result_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="58" bodyend="-1"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="58" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1ac9e2bc84dc5b8fed59e079e42208e74c" prot="public" static="no">
         <type>S</type>
         <definition>typedef S stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="59" bodyend="-1"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="59" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -109,7 +109,7 @@
           <declname>cvPathGenerator</declname>
           <defval>boost::shared_ptr&lt; path_generator_type &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="61" bodyend="80"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="75" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="61" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_model_1a77cd545c02ed7037a3e8d582ca1069c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -120,7 +120,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="96" bodyend="129"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="81" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="96" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_model_1a4e28dddeca06f8b74c814ace5b4fac58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const stats_type &amp;</type>
@@ -130,13 +130,13 @@
         <param>
           <type>void</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="133" bodyend="135"/>
+        <location file="/methods/montecarlo/montecarlomodel.hpp" line="82" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="133" bodyend="135"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>General-purpose Monte Carlo model for path samples. </para>    </briefdescription>
     <detaileddescription>
 <para>The template arguments of this class correspond to available policies for the particular model to be instantiated<mdash/>i.e., whether it is single- or multi-asset, or whether it should use pseudo-random or low-discrepancy numbers for path generation. Such decisions are grouped in trait classes so as to be orthogonal<mdash/>see <ref refid="mctraits_8hpp" kindref="compound">mctraits.hpp</ref> for examples.</para><para>The constructor accepts two safe references, i.e. two smart pointers, one to a path generator and the other to a path pricer. In case of control variate technique the user should provide the additional control option, namely the option path pricer and the option value. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="51" bodyend="92"/>
+    <location file="/methods/montecarlo/montecarlomodel.hpp" line="51" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="51" bodyend="92"/>
   </compounddef>
 </doxygen>

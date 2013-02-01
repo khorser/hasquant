@@ -31,16 +31,16 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Douglas()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="48"/>
+        <location file="/pricingengines/asian/fdblackscholesasianengine.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="50"/>
+        <location file="/pricingengines/asian/fdblackscholesasianengine.hpp" line="50"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="40" bodyend="56"/>
+    <location file="/pricingengines/asian/fdblackscholesasianengine.hpp" line="42" bodyfile="/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="40" bodyend="56"/>
   </compounddef>
 </doxygen>

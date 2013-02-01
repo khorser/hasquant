@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_term_structure_fitting_parameter" kind="class" prot="public">
     <compoundname>QuantLib::TermStructureFittingParameter</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp</includes>
+    <includes local="no">/models/parameter.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl" prot="public">QuantLib::TermStructureFittingParameter::NumericalImpl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_fitting_parameter_1ae2eb7bf302a9eedb8c5d2302e3e24db6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,7 +14,7 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_parameter_1_1_impl" kindref="compound">Parameter::Impl</ref> &gt; &amp;</type>
           <declname>impl</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="189" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="187" bodyend="189"/>
+        <location file="/models/parameter.hpp" line="189" bodyfile="/models/parameter.hpp" bodystart="187" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_fitting_parameter_1a35657d170b9c194d5cdd82cdf3bf91a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -25,11 +25,11 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>term</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="191" bodyend="196"/>
+        <location file="/models/parameter.hpp" line="196" bodyfile="/models/parameter.hpp" bodystart="191" bodyend="196"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Deterministic time-dependent parameter used for yield-curve fitting. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="153" bodyend="197"/>
+    <location file="/models/parameter.hpp" line="153" bodyfile="/models/parameter.hpp" bodystart="153" bodyend="197"/>
   </compounddef>
 </doxygen>

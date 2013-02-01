@@ -29,9 +29,9 @@
           <type>std::vector&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &amp;</type>
           <declname>states</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="73"/>
+        <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="73"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="31" bodyend="85"/>
+    <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="31" bodyfile="/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="31" bodyend="85"/>
   </compounddef>
 </doxygen>

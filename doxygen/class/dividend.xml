@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_dividend" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Dividend</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp</includes>
+    <includes local="no">/cashflows/dividend.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_dividend_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -14,7 +14,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="42" bodyend="42"/>
+        <location file="/cashflows/dividend.hpp" line="42" bodyfile="/cashflows/dividend.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -30,7 +30,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="46"/>
+        <location file="/cashflows/dividend.hpp" line="46"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -44,7 +44,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="51"/>
+        <location file="/cashflows/dividend.hpp" line="51"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -57,7 +57,7 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="38" bodyend="39"/>
+        <location file="/cashflows/dividend.hpp" line="39" bodyfile="/cashflows/dividend.hpp" bodystart="38" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_dividend_1a4851910d5646519c98bb6ee48bab8648" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -68,13 +68,13 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>underlying</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="48"/>
+        <location file="/cashflows/dividend.hpp" line="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Predetermined cash flow. </para>    </briefdescription>
     <detaileddescription>
 <para>This cash flow pays a predetermined amount at a given date. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="36" bodyend="55"/>
+    <location file="/cashflows/dividend.hpp" line="36" bodyfile="/cashflows/dividend.hpp" bodystart="36" bodyend="55"/>
   </compounddef>
 </doxygen>

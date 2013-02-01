@@ -8,9 +8,9 @@
         <definition>Real swapletPrice</definition>
         <argsstring>() const </argsstring>
         <name>swapletPrice</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="129"/>
+        <location file="/experimental/coupons/subperiodcoupons.hpp" line="129"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="127" bodyend="130"/>
+    <location file="/experimental/coupons/subperiodcoupons.hpp" line="127" bodyfile="/experimental/coupons/subperiodcoupons.hpp" bodystart="127" bodyend="130"/>
   </compounddef>
 </doxygen>

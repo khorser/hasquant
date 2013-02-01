@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_synthetic_c_d_o" kind="class" prot="public">
     <compoundname>QuantLib::SyntheticCDO</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp</includes>
+    <includes local="no">/experimental/credit/syntheticcdo.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments" prot="public">QuantLib::SyntheticCDO::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine" prot="public">QuantLib::SyntheticCDO::engine</innerclass>
     <innerclass refid="class_quant_lib_1_1_synthetic_c_d_o_1_1results" prot="public">QuantLib::SyntheticCDO::results</innerclass>
@@ -44,14 +44,14 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yieldTS</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="113"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1aea4975364ce04215976c4cecddba7261" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_basket" kindref="compound">Basket</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Basket&gt; basket</definition>
         <argsstring>() const </argsstring>
         <name>basket</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="115" bodyend="115"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="115" bodyfile="/experimental/credit/syntheticcdo.hpp" bodystart="115" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -61,49 +61,49 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="117"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairPremium</definition>
         <argsstring>() const </argsstring>
         <name>fairPremium</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="118"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a9f9a340d55784f63ccfff9cf1979bd54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairUpfrontPremium</definition>
         <argsstring>() const </argsstring>
         <name>fairUpfrontPremium</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="119"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a8729d80e43b77566cbdf0cfe0b9b93dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate premiumValue</definition>
         <argsstring>() const </argsstring>
         <name>premiumValue</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="120"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1abb77e8f956fe2e7458681bef8f73f9d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate protectionValue</definition>
         <argsstring>() const </argsstring>
         <name>protectionValue</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="121"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a2f0a1cec9683f9dee08ad2ea12eda7aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real premiumLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>premiumLegNPV</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="122"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="122"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a28658c93a5819086e55488a2a2e0e463" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real protectionLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>protectionLegNPV</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="123"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1afb6649efb47dd3d59ef63002f3d27002" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -112,7 +112,7 @@
         <name>remainingNotional</name>
         <detaileddescription>
 <para>Total outstanding tranche notional, not wiped out </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="127"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a73193d76dd420560c91dbefc6874dd93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
@@ -121,14 +121,14 @@
         <name>expectedTrancheLoss</name>
         <detaileddescription>
 <para>Expected tranche loss for all payment dates </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="131"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1afca3e3cf414a77cea53374f408cf8e0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size error</definition>
         <argsstring>() const </argsstring>
         <name>error</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="132"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -141,7 +141,7 @@
         </param>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="134"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -155,7 +155,7 @@
         </param>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="135"/>
+        <location file="/experimental/credit/syntheticcdo.hpp" line="135"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -169,6 +169,6 @@
 <listitem><para>The protection value is then calculated as <formula id="77">\[ V_1 \:=\: \sum_{i=1}^N (E_i - E_{i-1}) \cdot d_i \]</formula> where <formula id="78">$ d_i$</formula> is the discount factor at time/date <formula id="57">$ t_i $</formula></para></listitem></itemizedlist>
 </para><para>The premium is paid on the protected notional amount, initially <formula id="79">$ D_2 - D_1. $</formula> This notional amount is reduced by the expected protection payments <formula id="80">$ E_i $</formula> at times <formula id="81">$ t_i, $</formula> so that the premium value is calculated as</para><para><formula id="82">\[ V_2 = m \, \cdot \sum_{i=1}^N \,(D_2 - D_1 - E_i) \cdot \Delta_{i-1,i}\,d_i \]</formula></para><para>where <formula id="39">$ m $</formula> is the premium rate, <formula id="83">$ \Delta_{i-1, i}$</formula> is the day count fraction between date/time <formula id="84">$ t_{i-1}$</formula> and <formula id="85">$ t_i.$</formula></para><para>The construction of the portfolio loss distribution <formula id="80">$ E_i $</formula> is based on the probability bucketing algorithm described in</para><para><bold> John Hull and Alan White, &quot;Valuation of a CDO and nth to default CDS
 without Monte Carlo simulation&quot;, Journal of Derivatives 12, 2, 2004 </bold></para><para>The pricing algorithm allows for varying notional amounts and default termstructures of the underlyings.</para><para><xrefsect id="todo_1_todo000011"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Investigate and fix cases <formula id="86">$ E_{i+1} &lt; E_i. $</formula> </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="100" bodyend="156"/>
+    <location file="/experimental/credit/syntheticcdo.hpp" line="100" bodyfile="/experimental/credit/syntheticcdo.hpp" bodystart="100" bodyend="156"/>
   </compounddef>
 </doxygen>

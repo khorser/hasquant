@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolation_1_1template_impl" kind="class" prot="public">
     <compoundname>QuantLib::Interpolation::templateImpl</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp</includes>
+    <includes local="no">/math/interpolation.hpp</includes>
     <templateparamlist>
       <param>
         <type>class I1</type>
@@ -29,7 +29,7 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" bodystart="67" bodyend="72"/>
+        <location file="/math/interpolation.hpp" line="68" bodyfile="/math/interpolation.hpp" bodystart="67" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1template_impl_1ae464439f613889645330b4fefbf66ab2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -37,7 +37,7 @@
         <argsstring>() const </argsstring>
         <name>xMin</name>
         <reimplements refid="class_quant_lib_1_1_interpolation_1_1_impl_1a55a9dc8ca1fcece87abe8e4a8e075cbc">xMin</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" bodystart="73" bodyend="75"/>
+        <location file="/math/interpolation.hpp" line="73" bodyfile="/math/interpolation.hpp" bodystart="73" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1template_impl_1ac5bfc70b2ea8397a47c13cbfe397345b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -45,7 +45,7 @@
         <argsstring>() const </argsstring>
         <name>xMax</name>
         <reimplements refid="class_quant_lib_1_1_interpolation_1_1_impl_1a7d1806bb5aaf76faa0458141176cee59">xMax</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" bodystart="76" bodyend="78"/>
+        <location file="/math/interpolation.hpp" line="76" bodyfile="/math/interpolation.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1template_impl_1abd3804c44239a53b3697f463c999550b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
@@ -53,7 +53,7 @@
         <argsstring>() const </argsstring>
         <name>xValues</name>
         <reimplements refid="class_quant_lib_1_1_interpolation_1_1_impl_1a7d9e92e02c01de190de9ebb26a88d039">xValues</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" bodystart="79" bodyend="81"/>
+        <location file="/math/interpolation.hpp" line="79" bodyfile="/math/interpolation.hpp" bodystart="79" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1template_impl_1a3a528ec1ab50863605d4aec3a44f8caa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
@@ -61,7 +61,7 @@
         <argsstring>() const </argsstring>
         <name>yValues</name>
         <reimplements refid="class_quant_lib_1_1_interpolation_1_1_impl_1ac27e584d07fa9748bf3e4142faee2e63">yValues</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" bodystart="82" bodyend="84"/>
+        <location file="/math/interpolation.hpp" line="82" bodyfile="/math/interpolation.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1template_impl_1a065ac2d8b15048bb846f8fddc789c46b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -73,11 +73,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" bodystart="85" bodyend="92"/>
+        <location file="/math/interpolation.hpp" line="85" bodyfile="/math/interpolation.hpp" bodystart="85" bodyend="92"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>basic template implementation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" bodystart="65" bodyend="108"/>
+    <location file="/math/interpolation.hpp" line="65" bodyfile="/math/interpolation.hpp" bodystart="65" bodyend="108"/>
   </compounddef>
 </doxygen>

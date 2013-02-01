@@ -8,16 +8,16 @@
         <definition>Null</definition>
         <argsstring>()</argsstring>
         <name>Null</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="112" bodyend="112"/>
+        <location file="/prices.hpp" line="112" bodyfile="/prices.hpp" bodystart="112" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_null_3_01_interval_price_01_4_1a06d1259c9dc4f8799616e2afdd7ecbc8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>operator IntervalPrice</definition>
         <argsstring>() const </argsstring>
         <name>operator IntervalPrice</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="113" bodyend="113"/>
+        <location file="/prices.hpp" line="113" bodyfile="/prices.hpp" bodystart="113" bodyend="113"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="109" bodyend="114"/>
+    <location file="/prices.hpp" line="110" bodyfile="/prices.hpp" bodystart="109" bodyend="114"/>
   </compounddef>
 </doxygen>

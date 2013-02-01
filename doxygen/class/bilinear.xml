@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bilinear" kind="class" prot="public">
     <compoundname>QuantLib::Bilinear</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp</includes>
+    <includes local="no">/math/interpolations/bilinearinterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bilinear_1a6f774b30f13db7f9af19e3b9b01fcf32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -40,11 +40,11 @@
           <type>const M &amp;</type>
           <declname>z</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" bodystart="86" bodyend="90"/>
+        <location file="/math/interpolations/bilinearinterpolation.hpp" line="88" bodyfile="/math/interpolations/bilinearinterpolation.hpp" bodystart="86" bodyend="90"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>bilinear-interpolation factory </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" bodystart="83" bodyend="91"/>
+    <location file="/math/interpolations/bilinearinterpolation.hpp" line="83" bodyfile="/math/interpolations/bilinearinterpolation.hpp" bodystart="83" bodyend="91"/>
   </compounddef>
 </doxygen>

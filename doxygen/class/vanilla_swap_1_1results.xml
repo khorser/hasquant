@@ -2,21 +2,21 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vanilla_swap_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::VanillaSwap::results</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp</includes>
+    <includes local="no">/instruments/vanillaswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1results_1ad4b780187770e012156cf76a4c1cb1e1" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairRate</definition>
         <argsstring></argsstring>
         <name>fairRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="158" bodyend="-1"/>
+        <location file="/instruments/vanillaswap.hpp" line="158" bodyfile="/instruments/vanillaswap.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1results_1aaae65d8ddf791f2593ac9d1d395f1d3a" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread fairSpread</definition>
         <argsstring></argsstring>
         <name>fairSpread</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="159" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="159" bodyend="-1"/>
+        <location file="/instruments/vanillaswap.hpp" line="159" bodyfile="/instruments/vanillaswap.hpp" bodystart="159" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,11 +25,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="160"/>
+        <location file="/instruments/vanillaswap.hpp" line="160"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from simple swap calculation </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="156" bodyend="161"/>
+    <location file="/instruments/vanillaswap.hpp" line="156" bodyfile="/instruments/vanillaswap.hpp" bodystart="156" bodyend="161"/>
   </compounddef>
 </doxygen>

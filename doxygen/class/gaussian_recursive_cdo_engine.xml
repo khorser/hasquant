@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gaussian_recursive_cdo_engine" kind="class" prot="public">
     <compoundname>QuantLib::GaussianRecursiveCdoEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp</includes>
+    <includes local="no">/experimental/credit/recursivecdoengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>class CDOEngine</type>
@@ -40,11 +40,11 @@
         </param>
         <briefdescription>
 <para>quote constructor. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="319" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="311" bodyend="322"/>
+        <location file="/experimental/credit/recursivecdoengine.hpp" line="319" bodyfile="/experimental/credit/recursivecdoengine.hpp" bodystart="311" bodyend="322"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Specialization for Gaussian copula, the integration still remains. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="308" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="307" bodyend="323"/>
+    <location file="/experimental/credit/recursivecdoengine.hpp" line="308" bodyfile="/experimental/credit/recursivecdoengine.hpp" bodystart="307" bodyend="323"/>
   </compounddef>
 </doxygen>

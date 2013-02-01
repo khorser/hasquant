@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1step__iterator" kind="class" prot="public">
     <compoundname>QuantLib::step_iterator</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp</includes>
+    <includes local="no">/utilities/steppingiterator.hpp</includes>
     <templateparamlist>
       <param>
         <type>class Iterator</type>
@@ -14,7 +14,7 @@
         <definition>step_iterator</definition>
         <argsstring>()</argsstring>
         <name>step_iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="46" bodyend="46"/>
+        <location file="/utilities/steppingiterator.hpp" line="46" bodyfile="/utilities/steppingiterator.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1step__iterator_1ad6865502e9db99c049546d38c526c2a7" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -29,7 +29,7 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>step</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="47" bodyend="48"/>
+        <location file="/utilities/steppingiterator.hpp" line="48" bodyfile="/utilities/steppingiterator.hpp" bodystart="47" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1step__iterator_1a3d71920cff46866a8cb0ce4abd2040dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -49,28 +49,28 @@
           <type>typename boost::enable_if_convertible&lt; OtherIterator, Iterator &gt;::type *</type>
           <defval>0</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="50" bodyend="53"/>
+        <location file="/utilities/steppingiterator.hpp" line="53" bodyfile="/utilities/steppingiterator.hpp" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1step__iterator_1a58d1ae9413b93d3ede0e31a5ee67aa9f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size step</definition>
         <argsstring>() const </argsstring>
         <name>step</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="55" bodyend="55"/>
+        <location file="/utilities/steppingiterator.hpp" line="55" bodyfile="/utilities/steppingiterator.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1step__iterator_1aeb2624c7a86b765725fd80cd426e147d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void increment</definition>
         <argsstring>()</argsstring>
         <name>increment</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="57" bodyend="59"/>
+        <location file="/utilities/steppingiterator.hpp" line="57" bodyfile="/utilities/steppingiterator.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1step__iterator_1af998f1201f6ff5160003144e5818b8ba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void decrement</definition>
         <argsstring>()</argsstring>
         <name>decrement</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="60" bodyend="62"/>
+        <location file="/utilities/steppingiterator.hpp" line="60" bodyfile="/utilities/steppingiterator.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1step__iterator_1a1d2f600398caeeeef15fe7a2f2fec928" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -81,7 +81,7 @@
           <type>typename super_t::difference_type</type>
           <declname>n</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="63" bodyend="65"/>
+        <location file="/utilities/steppingiterator.hpp" line="63" bodyfile="/utilities/steppingiterator.hpp" bodystart="63" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1step__iterator_1a710f62c0eeded5e13c19559da6c2977d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>super_t::difference_type</type>
@@ -92,7 +92,7 @@
           <type>const <ref refid="class_quant_lib_1_1step__iterator" kindref="compound">step_iterator</ref> &amp;</type>
           <declname>i</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="67" bodyend="69"/>
+        <location file="/utilities/steppingiterator.hpp" line="67" bodyfile="/utilities/steppingiterator.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
@@ -116,13 +116,13 @@
         </param>
         <briefdescription>
 <para>helper function to create step iterators </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="75" bodyend="77"/>
+        <location file="/utilities/steppingiterator.hpp" line="75" bodyfile="/utilities/steppingiterator.hpp" bodystart="75" bodyend="77"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Iterator advancing in constant steps. </para>    </briefdescription>
     <detaileddescription>
 <para>This iterator advances an underlying random-access iterator in steps of <formula id="181">$ n $</formula> positions, where <formula id="181">$ n $</formula> is a positive integer given upon construction. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="38" bodyend="70"/>
+    <location file="/utilities/steppingiterator.hpp" line="39" bodyfile="/utilities/steppingiterator.hpp" bodystart="38" bodyend="70"/>
   </compounddef>
 </doxygen>

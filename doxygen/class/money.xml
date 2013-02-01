@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_money" kind="class" prot="public">
     <compoundname>QuantLib::Money</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/money.hpp</includes>
+    <includes local="no">/money.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1ad42da4051bd5057c7005febc348f0e63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <definition>Money</definition>
         <argsstring>()</argsstring>
         <name>Money</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="135" bodyend="136"/>
+        <location file="/money.hpp" line="40" bodyfile="/money.hpp" bodystart="135" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1ab253ce5621aba9d70aa0b6122c930e0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -25,7 +25,7 @@
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
           <declname>value</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="138" bodyend="139"/>
+        <location file="/money.hpp" line="41" bodyfile="/money.hpp" bodystart="138" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1ae4cc8448b08dd3e729e0ce0208d92c5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -40,7 +40,7 @@
           <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>currency</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="141" bodyend="142"/>
+        <location file="/money.hpp" line="42" bodyfile="/money.hpp" bodystart="141" bodyend="142"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -50,21 +50,21 @@
         <definition>const Currency &amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="144" bodyend="146"/>
+        <location file="/money.hpp" line="46" bodyfile="/money.hpp" bodystart="144" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a036a84462f8e441d97e3a13088ac2961" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
         <definition>Decimal value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="148" bodyend="150"/>
+        <location file="/money.hpp" line="47" bodyfile="/money.hpp" bodystart="148" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1ab64abc57c1e05a27f679aca2f86ebb05" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
         <definition>Money rounded</definition>
         <argsstring>() const </argsstring>
         <name>rounded</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="152" bodyend="154"/>
+        <location file="/money.hpp" line="48" bodyfile="/money.hpp" bodystart="152" bodyend="154"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -75,14 +75,14 @@
         <definition>Money operator+</definition>
         <argsstring>() const </argsstring>
         <name>operator+</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="156" bodyend="158"/>
+        <location file="/money.hpp" line="56" bodyfile="/money.hpp" bodystart="156" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1aa2189964ca1f13e92a69a9f31c1bd169" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
         <definition>Money operator-</definition>
         <argsstring>() const </argsstring>
         <name>operator-</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="160" bodyend="162"/>
+        <location file="/money.hpp" line="57" bodyfile="/money.hpp" bodystart="160" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a0e3fec38ee32ca690a0c9f601783417c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
@@ -92,7 +92,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="58"/>
+        <location file="/money.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1ab38f99b9868982e3ca0b51a25f23fb3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
@@ -102,7 +102,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="59"/>
+        <location file="/money.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a3c9b2690f1b8248331fb66fecf4e6bef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
@@ -113,7 +113,7 @@
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
           <defname>x</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="164" bodyend="167"/>
+        <location file="/money.hpp" line="60" bodyfile="/money.hpp" bodystart="164" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1ac9dd98528eebd18e42868b0297f3fcd1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
@@ -124,7 +124,7 @@
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
           <defname>x</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="169" bodyend="172"/>
+        <location file="/money.hpp" line="61" bodyfile="/money.hpp" bodystart="169" bodyend="172"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -147,24 +147,22 @@
           <detaileddescription>
 <para>return the result in the currency of the first operand </para>          </detaileddescription>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="69" bodyend="77"/>
+        <location file="/money.hpp" line="69" bodyfile="/money.hpp" bodystart="69" bodyend="77"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_money_1adf033835af8d96a070082ca9ee78ce30" prot="public" static="yes" mutable="no">
         <type><ref refid="class_quant_lib_1_1_money_1ac32291f3a839fe01ad0708ab8c53d107" kindref="member">ConversionType</ref></type>
         <definition>ConversionType conversionType</definition>
         <argsstring></argsstring>
         <name>conversionType</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="78" bodyend="-1"/>
+        <location file="/money.hpp" line="78" bodyfile="/money.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_money_1a5a5c56ec648313fa5ddadf7a4fb0d025" prot="public" static="yes" mutable="no">
         <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
         <definition>Currency baseCurrency</definition>
         <argsstring></argsstring>
         <name>baseCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="79" bodyend="-1"/>
+        <location file="/money.hpp" line="79" bodyfile="/money.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-type">
       </sectiondef>
       <sectiondef kind="related">
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a1f495f020f64c7b177b9e1bc0f99139c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -178,7 +176,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="175" bodyend="179"/>
+        <location file="/money.hpp" line="90" bodyfile="/money.hpp" bodystart="175" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a4a130afeac5bc99d0a00e6005dd2fce0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
@@ -191,7 +189,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="181" bodyend="185"/>
+        <location file="/money.hpp" line="92" bodyfile="/money.hpp" bodystart="181" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a20f80bc20add19d64b899d4a21718fb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
@@ -204,7 +202,7 @@
         <param>
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="187" bodyend="191"/>
+        <location file="/money.hpp" line="94" bodyfile="/money.hpp" bodystart="187" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a5db337044220e3f8028bb303fc9d4f80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
@@ -217,7 +215,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="193" bodyend="195"/>
+        <location file="/money.hpp" line="96" bodyfile="/money.hpp" bodystart="193" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a91bb0ba24a70226c3a6dd585ffb15537" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
@@ -230,7 +228,7 @@
         <param>
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="197" bodyend="201"/>
+        <location file="/money.hpp" line="98" bodyfile="/money.hpp" bodystart="197" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a31eae46b487ee5e972e0e598351edfa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
@@ -243,7 +241,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="100"/>
+        <location file="/money.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a2f2e363600f64a5a2447cd706a4718fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -256,7 +254,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="103"/>
+        <location file="/money.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a3097af686d116996f32c88433b488f51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -269,7 +267,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="203" bodyend="205"/>
+        <location file="/money.hpp" line="105" bodyfile="/money.hpp" bodystart="203" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a1dac0cd307438b7659c9af74bb50b4ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -282,7 +280,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="107"/>
+        <location file="/money.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a567e24d5625a08c9c0685a51df245cce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -295,7 +293,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="109"/>
+        <location file="/money.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1afcb0842cc75edc7a10019e72709a249e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -308,7 +306,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="207" bodyend="209"/>
+        <location file="/money.hpp" line="111" bodyfile="/money.hpp" bodystart="207" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1af8258e94ec653301a5d6e7b68c85c24f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -321,7 +319,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="211" bodyend="213"/>
+        <location file="/money.hpp" line="113" bodyfile="/money.hpp" bodystart="211" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a2a41991b16dc3c024a6e10d61a1ba47f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -339,7 +337,7 @@
           <declname>n</declname>
           <defval>42</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="116"/>
+        <location file="/money.hpp" line="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1ac5af9d7a914bb1d00f3beb1076228755" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -357,7 +355,7 @@
           <declname>n</declname>
           <defval>42</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="118"/>
+        <location file="/money.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1aab8bfd679e42b4d3393e3580188018aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
@@ -370,7 +368,7 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="215" bodyend="217"/>
+        <location file="/money.hpp" line="123" bodyfile="/money.hpp" bodystart="215" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a2827c6a704bb2f426e5c49a826949304" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
@@ -383,7 +381,7 @@
         <param>
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="219" bodyend="221"/>
+        <location file="/money.hpp" line="125" bodyfile="/money.hpp" bodystart="219" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a867d4d15a525b67992fceb19eaf832b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -396,13 +394,13 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="130"/>
+        <location file="/money.hpp" line="130"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>amount of cash </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000085"><xreftitle>Tests</xreftitle><xrefdescription><para>money arithmetic is tested with and without currency conversions. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="36" bodyend="84"/>
+    <location file="/money.hpp" line="36" bodyfile="/money.hpp" bodystart="36" bodyend="84"/>
   </compounddef>
 </doxygen>

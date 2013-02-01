@@ -16,9 +16,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>marketOpenFraction</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="136" bodyend="139"/>
+        <location file="/models/volatility/garmanklass.hpp" line="139" bodyfile="/models/volatility/garmanklass.hpp" bodystart="136" bodyend="139"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="133" bodyend="140"/>
+    <location file="/models/volatility/garmanklass.hpp" line="134" bodyfile="/models/volatility/garmanklass.hpp" bodystart="133" bodyend="140"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_end_criteria" kind="class" prot="public">
     <compoundname>QuantLib::EndCriteria</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp</includes>
+    <includes local="no">/math/optimization/endcriteria.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_end_criteria_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
@@ -27,7 +27,7 @@
         <enumvalue id="class_quant_lib_1_1_end_criteria_1a1d1cfd8ffb84e947f82999c682b666a7a4e81c184ac3ad48a389cd4454c4a05bb" prot="public">
           <name>Unknown</name>
         </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" bodystart="42" bodyend="48"/>
+        <location file="/math/optimization/endcriteria.hpp" line="42" bodyfile="/math/optimization/endcriteria.hpp" bodystart="42" bodyend="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -58,42 +58,42 @@
         </param>
         <briefdescription>
 <para>Initialization constructor. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="55"/>
+        <location file="/math/optimization/endcriteria.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1a350ba3943ab52237af0572bfec0c7e1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size maxIterations</definition>
         <argsstring>() const </argsstring>
         <name>maxIterations</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="58"/>
+        <location file="/math/optimization/endcriteria.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1a39da2d34b60ac403f28d2aee901ffe15" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size maxStationaryStateIterations</definition>
         <argsstring>() const </argsstring>
         <name>maxStationaryStateIterations</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="59"/>
+        <location file="/math/optimization/endcriteria.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1a50d86ccd22ee0e59debd91809b5b5438" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real rootEpsilon</definition>
         <argsstring>() const </argsstring>
         <name>rootEpsilon</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="60"/>
+        <location file="/math/optimization/endcriteria.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1a4cab663f05ff1bde282bc5d589bcd089" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real functionEpsilon</definition>
         <argsstring>() const </argsstring>
         <name>functionEpsilon</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="61"/>
+        <location file="/math/optimization/endcriteria.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1a1302f2b35f0b2c1a1f8ae3540deda59b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gradientNormEpsilon</definition>
         <argsstring>() const </argsstring>
         <name>gradientNormEpsilon</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="62"/>
+        <location file="/math/optimization/endcriteria.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1aad4cb211447a39b28d049522540de735" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -134,7 +134,7 @@
         </param>
         <detaileddescription>
 <para>Test if the number of iterations is not too big and if a minimum point is not reached </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="73"/>
+        <location file="/math/optimization/endcriteria.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1afad2418b01e26ad22b9f84752dedb682" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -151,7 +151,7 @@
         </param>
         <detaileddescription>
 <para>Test if the number of iteration is below MaxIterations </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="77"/>
+        <location file="/math/optimization/endcriteria.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1a36fab9aed87f96ed84ff801e48d97946" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -176,7 +176,7 @@
         </param>
         <detaileddescription>
 <para>Test if the root variation is below rootEpsilon </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="82"/>
+        <location file="/math/optimization/endcriteria.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1ab95471b888205f8024e188a29738c860" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -201,7 +201,7 @@
         </param>
         <detaileddescription>
 <para>Test if the function variation is below functionEpsilon </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="87"/>
+        <location file="/math/optimization/endcriteria.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1aba629952b890bc39c20ca2cb9174fb53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -222,7 +222,7 @@
         </param>
         <detaileddescription>
 <para>Test if the function value is below functionEpsilon </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="91"/>
+        <location file="/math/optimization/endcriteria.hpp" line="91"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_end_criteria_1a0c0ea6acc4dfb53126f5f433234fd921" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -239,7 +239,7 @@
         </param>
         <detaileddescription>
 <para>Test if the gradient norm variation is below gradientNormEpsilon</para><para>Test if the gradient norm value is below gradientNormEpsilon </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="98"/>
+        <location file="/math/optimization/endcriteria.hpp" line="98"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -250,6 +250,6 @@
 <listitem><para>x (independent variable) stationary point</para></listitem><listitem><para>y=f(x) (dependent variable) stationary point</para></listitem><listitem><para>stationary gradient </para></listitem></itemizedlist>
 </para></listitem></itemizedlist>
 </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/endcriteria.hpp" bodystart="40" bodyend="108"/>
+    <location file="/math/optimization/endcriteria.hpp" line="40" bodyfile="/math/optimization/endcriteria.hpp" bodystart="40" bodyend="108"/>
   </compounddef>
 </doxygen>

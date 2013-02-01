@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_jump_diffusion_engine" kind="class" prot="public">
     <compoundname>QuantLib::JumpDiffusionEngine</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp</includes>
+    <includes local="no">/pricingengines/vanilla/jumpdiffusionengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_jump_diffusion_engine_1a96b5e2bd278cb79f245271f3a2a810bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -22,14 +22,14 @@
           <declname>maxIterations</declname>
           <defval>100</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="46"/>
+        <location file="/pricingengines/vanilla/jumpdiffusionengine.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_jump_diffusion_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="47"/>
+        <location file="/pricingengines/vanilla/jumpdiffusionengine.hpp" line="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -38,6 +38,6 @@
 <para><xrefsect id="test_1_test000130"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned value is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned greeks is tested by reproducing numerical derivatives. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="42" bodyend="52"/>
+    <location file="/pricingengines/vanilla/jumpdiffusionengine.hpp" line="42" bodyfile="/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="42" bodyend="52"/>
   </compounddef>
 </doxygen>

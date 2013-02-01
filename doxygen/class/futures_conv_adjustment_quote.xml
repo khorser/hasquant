@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_futures_conv_adjustment_quote" kind="class" prot="public">
     <compoundname>QuantLib::FuturesConvAdjustmentQuote</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp</includes>
+    <includes local="no">/quotes/futuresconvadjustmentquote.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Quote interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="51"/>
+        <location file="/quotes/futuresconvadjustmentquote.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -23,7 +23,7 @@
         <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
 <para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="52"/>
+        <location file="/quotes/futuresconvadjustmentquote.hpp" line="52"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -33,28 +33,28 @@
         <definition>Real futuresValue</definition>
         <argsstring>() const </argsstring>
         <name>futuresValue</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="57" bodyend="57"/>
+        <location file="/quotes/futuresconvadjustmentquote.hpp" line="57" bodyfile="/quotes/futuresconvadjustmentquote.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a9421e902ef410ac829bb244e14b4f81b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real volatility</definition>
         <argsstring>() const </argsstring>
         <name>volatility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="58" bodyend="58"/>
+        <location file="/quotes/futuresconvadjustmentquote.hpp" line="58" bodyfile="/quotes/futuresconvadjustmentquote.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a7c89093abfeb25762659fbc97a854ec3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real meanReversion</definition>
         <argsstring>() const </argsstring>
         <name>meanReversion</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="59" bodyend="59"/>
+        <location file="/quotes/futuresconvadjustmentquote.hpp" line="59" bodyfile="/quotes/futuresconvadjustmentquote.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1aa93c5c7968992525a9492f57af367a66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date immDate</definition>
         <argsstring>() const </argsstring>
         <name>immDate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="60" bodyend="60"/>
+        <location file="/quotes/futuresconvadjustmentquote.hpp" line="60" bodyfile="/quotes/futuresconvadjustmentquote.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -83,7 +83,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="43"/>
+        <location file="/quotes/futuresconvadjustmentquote.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a4be7fddd8a0e04ca7303628884b95dd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -110,7 +110,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="48"/>
+        <location file="/quotes/futuresconvadjustmentquote.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -118,11 +118,11 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="72" bodyend="74"/>
+        <location file="/quotes/futuresconvadjustmentquote.hpp" line="54" bodyfile="/quotes/futuresconvadjustmentquote.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>quote for the futures-convexity adjustment of an index </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="36" bodyend="68"/>
+    <location file="/quotes/futuresconvadjustmentquote.hpp" line="37" bodyfile="/quotes/futuresconvadjustmentquote.hpp" bodystart="36" bodyend="68"/>
   </compounddef>
 </doxygen>

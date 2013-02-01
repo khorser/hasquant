@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_super_share_payoff" kind="class" prot="public">
     <compoundname>QuantLib::SuperSharePayoff</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp</includes>
+    <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_super_share_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -13,7 +13,7 @@
         <reimplements refid="class_quant_lib_1_1_payoff_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="245" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="245" bodyend="245"/>
+        <location file="/instruments/payoffs.hpp" line="245" bodyfile="/instruments/payoffs.hpp" bodystart="245" bodyend="245"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_super_share_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -21,7 +21,7 @@
         <argsstring>() const </argsstring>
         <name>description</name>
         <reimplements refid="class_quant_lib_1_1_striked_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="246"/>
+        <location file="/instruments/payoffs.hpp" line="246"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_super_share_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -33,7 +33,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>price</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="247"/>
+        <location file="/instruments/payoffs.hpp" line="247"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_super_share_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -44,7 +44,7 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="248"/>
+        <location file="/instruments/payoffs.hpp" line="248"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,32 +65,32 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>cashPayoff</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="238" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="233" bodyend="241"/>
+        <location file="/instruments/payoffs.hpp" line="238" bodyfile="/instruments/payoffs.hpp" bodystart="233" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_super_share_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real strike</definition>
         <argsstring>() const </argsstring>
         <name>strike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="250" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="250" bodyend="250"/>
+        <location file="/instruments/payoffs.hpp" line="250" bodyfile="/instruments/payoffs.hpp" bodystart="250" bodyend="250"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_super_share_payoff_1a64eedb2ee7b46110f6c2b5e6d3ed025e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real secondStrike</definition>
         <argsstring>() const </argsstring>
         <name>secondStrike</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="251" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="251" bodyend="251"/>
+        <location file="/instruments/payoffs.hpp" line="251" bodyfile="/instruments/payoffs.hpp" bodystart="251" bodyend="251"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_super_share_payoff_1a45c7a9c6c8feb5df9bd796da3c3da7a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real cashPayoff</definition>
         <argsstring>() const </argsstring>
         <name>cashPayoff</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="252" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="252" bodyend="252"/>
+        <location file="/instruments/payoffs.hpp" line="252" bodyfile="/instruments/payoffs.hpp" bodystart="252" bodyend="252"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Binary supershare payoff. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="231" bodyend="257"/>
+    <location file="/instruments/payoffs.hpp" line="231" bodyfile="/instruments/payoffs.hpp" bodystart="231" bodyend="257"/>
   </compounddef>
 </doxygen>

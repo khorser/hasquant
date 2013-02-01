@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_payoff" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Payoff</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/payoff.hpp</includes>
+    <includes local="no">/payoff.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_payoff_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -12,14 +12,14 @@
         <name>name</name>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" line="45"/>
+        <location file="/payoff.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payoff_1a77d7003fa5d2e29669371413d5662141" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string description</definition>
         <argsstring>() const =0</argsstring>
         <name>description</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" line="46"/>
+        <location file="/payoff.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payoff_1a6d8b8d4f6c9e7904c5de2786903518b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -30,7 +30,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>price</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" line="47"/>
+        <location file="/payoff.hpp" line="47"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -44,7 +44,7 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" bodystart="58" bodyend="64"/>
+        <location file="/payoff.hpp" line="51" bodyfile="/payoff.hpp" bodystart="58" bodyend="64"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -53,11 +53,11 @@
         <definition>virtual ~Payoff</definition>
         <argsstring>()</argsstring>
         <name>~Payoff</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" bodystart="38" bodyend="38"/>
+        <location file="/payoff.hpp" line="38" bodyfile="/payoff.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Abstract base class for option payoffs. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" bodystart="36" bodyend="53"/>
+    <location file="/payoff.hpp" line="36" bodyfile="/payoff.hpp" bodystart="36" bodyend="53"/>
   </compounddef>
 </doxygen>

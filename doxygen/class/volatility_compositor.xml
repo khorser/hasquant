@@ -8,7 +8,7 @@
         <definition>virtual ~VolatilityCompositor</definition>
         <argsstring>()</argsstring>
         <name>~VolatilityCompositor</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="43" bodyend="43"/>
+        <location file="/volatilitymodel.hpp" line="43" bodyfile="/volatilitymodel.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_compositor_1ae4670ccf94cd30655af28ebe54299721" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
@@ -19,7 +19,7 @@
           <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>volatilitySeries</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="45"/>
+        <location file="/volatilitymodel.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_compositor_1ae400d3120e1f60ad4a0f959778efff61" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -30,9 +30,9 @@
           <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>volatilitySeries</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="46"/>
+        <location file="/volatilitymodel.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="41" bodyend="47"/>
+    <location file="/volatilitymodel.hpp" line="41" bodyfile="/volatilitymodel.hpp" bodystart="41" bodyend="47"/>
   </compounddef>
 </doxygen>

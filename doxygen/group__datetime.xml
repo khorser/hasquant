@@ -45,7 +45,7 @@
 <para>Business Day conventions. </para>        </briefdescription>
         <detaileddescription>
 <para>These conventions specify the algorithm used to adjust a date in case it is not a valid business day. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/businessdayconvention.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/businessdayconvention.hpp" bodystart="40" bodyend="58"/>
+        <location file="/time/businessdayconvention.hpp" line="40" bodyfile="/time/businessdayconvention.hpp" bodystart="40" bodyend="58"/>
       </memberdef>
       <memberdef kind="enum" id="group__datetime_1gae34b763987dcf60c6c619d327b8c9dbb" prot="public" static="no">
         <name>Month</name>
@@ -143,7 +143,7 @@
         </enumvalue>
         <briefdescription>
 <para>Month names. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="45" bodyend="68"/>
+        <location file="/time/date.hpp" line="45" bodyfile="/time/date.hpp" bodystart="45" bodyend="68"/>
       </memberdef>
       <memberdef kind="enum" id="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" prot="public" static="no">
         <name>Frequency</name>
@@ -227,7 +227,7 @@
         </enumvalue>
         <briefdescription>
 <para>Frequency of events. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/frequency.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/frequency.hpp" bodystart="37" bodyend="50"/>
+        <location file="/time/frequency.hpp" line="37" bodyfile="/time/frequency.hpp" bodystart="37" bodyend="50"/>
       </memberdef>
       <memberdef kind="enum" id="group__datetime_1gadd9fe45e09605eee3e4a39c8a5c4476d" prot="public" static="no">
         <name>TimeUnit</name>
@@ -245,7 +245,7 @@
         </enumvalue>
         <briefdescription>
 <para>Units used to describe time periods. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/timeunit.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/timeunit.hpp" bodystart="37" bodyend="41"/>
+        <location file="/time/timeunit.hpp" line="37" bodyfile="/time/timeunit.hpp" bodystart="37" bodyend="41"/>
       </memberdef>
       <memberdef kind="enum" id="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" prot="public" static="no">
         <name>Weekday</name>
@@ -307,7 +307,7 @@
         </enumvalue>
         <detaileddescription>
 <para>Day&apos;s serial number MOD 7; WEEKDAY Excel function is the same except for Sunday = 7. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" bodystart="41" bodyend="55"/>
+        <location file="/time/weekday.hpp" line="41" bodyfile="/time/weekday.hpp" bodystart="41" bodyend="55"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -318,7 +318,7 @@
         <name>Day</name>
         <briefdescription>
 <para>Day number. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="41" bodyend="-1"/>
+        <location file="/time/date.hpp" line="41" bodyfile="/time/date.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__datetime_1ga84dee895910074cbc7d936c86c1abf3d" prot="public" static="no">
         <type>Integer</type>
@@ -327,7 +327,7 @@
         <name>Year</name>
         <briefdescription>
 <para>Year number. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="75" bodyend="-1"/>
+        <location file="/time/date.hpp" line="75" bodyfile="/time/date.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>

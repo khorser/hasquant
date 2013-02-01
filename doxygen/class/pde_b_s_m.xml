@@ -8,14 +8,14 @@
         <definition>typedef boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; argument_type</definition>
         <argsstring></argsstring>
         <name>argument_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="35" bodyend="-1"/>
+        <location file="/methods/finitedifferences/pdebsm.hpp" line="35" bodyfile="/methods/finitedifferences/pdebsm.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_pde_b_s_m_1abd43b82aee080b5c9f1d27e60bcf83f2" prot="public" static="no">
         <type>LogGrid</type>
         <definition>typedef LogGrid grid_type</definition>
         <argsstring></argsstring>
         <name>grid_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="36" bodyend="-1"/>
+        <location file="/methods/finitedifferences/pdebsm.hpp" line="36" bodyfile="/methods/finitedifferences/pdebsm.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -28,7 +28,7 @@
           <type>const argument_type &amp;</type>
           <declname>process</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="37" bodyend="37"/>
+        <location file="/methods/finitedifferences/pdebsm.hpp" line="37" bodyfile="/methods/finitedifferences/pdebsm.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pde_b_s_m_1a6145a397fc88de2c481b429487a98164" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -43,7 +43,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="38" bodyend="40"/>
+        <location file="/methods/finitedifferences/pdebsm.hpp" line="38" bodyfile="/methods/finitedifferences/pdebsm.hpp" bodystart="38" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pde_b_s_m_1a4b76688eb89f51544dfe1f2f23d556a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -58,7 +58,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="41" bodyend="43"/>
+        <location file="/methods/finitedifferences/pdebsm.hpp" line="41" bodyfile="/methods/finitedifferences/pdebsm.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pde_b_s_m_1a25c3f75b188136c4b1c845ee57fa999d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -72,9 +72,9 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="44" bodyend="48"/>
+        <location file="/methods/finitedifferences/pdebsm.hpp" line="44" bodyfile="/methods/finitedifferences/pdebsm.hpp" bodystart="44" bodyend="48"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="32" bodyend="51"/>
+    <location file="/methods/finitedifferences/pdebsm.hpp" line="32" bodyfile="/methods/finitedifferences/pdebsm.hpp" bodystart="32" bodyend="51"/>
   </compounddef>
 </doxygen>

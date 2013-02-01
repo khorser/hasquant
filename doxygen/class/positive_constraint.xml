@@ -2,18 +2,18 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_positive_constraint" kind="class" prot="public">
     <compoundname>QuantLib::PositiveConstraint</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
+    <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_positive_constraint_1a6933ae2fa43a9797a0be9b81d3f67227" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PositiveConstraint</definition>
         <argsstring>()</argsstring>
         <name>PositiveConstraint</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="81" bodyend="83"/>
+        <location file="/math/optimization/constraint.hpp" line="83" bodyfile="/math/optimization/constraint.hpp" bodystart="81" bodyend="83"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constraint imposing positivity to all arguments </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="68" bodyend="84"/>
+    <location file="/math/optimization/constraint.hpp" line="68" bodyfile="/math/optimization/constraint.hpp" bodystart="68" bodyend="84"/>
   </compounddef>
 </doxygen>

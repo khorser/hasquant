@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_factor_gaussian_copula" kind="class" prot="public">
     <compoundname>QuantLib::OneFactorGaussianCopula</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp</includes>
+    <includes local="no">/experimental/credit/onefactorgaussiancopula.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1ac697b3db3dc86d5b69db61a44191af4f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -23,7 +23,7 @@
           <declname>integrationSteps</declname>
           <defval>50</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="42" bodyend="46"/>
+        <location file="/experimental/credit/onefactorgaussiancopula.hpp" line="44" bodyfile="/experimental/credit/onefactorgaussiancopula.hpp" bodystart="42" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a87748e5305096b30afeeaa93ce59137c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -39,7 +39,7 @@
 <para>Density function of M. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="64" bodyend="66"/>
+        <location file="/experimental/credit/onefactorgaussiancopula.hpp" line="47" bodyfile="/experimental/credit/onefactorgaussiancopula.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a7f12eff80e70545a68af09aaab9a5bfa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -55,7 +55,7 @@
 <para>Cumulative distribution of Z. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="68" bodyend="70"/>
+        <location file="/experimental/credit/onefactorgaussiancopula.hpp" line="48" bodyfile="/experimental/credit/onefactorgaussiancopula.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a712150bf4c40b6443a311f2569117760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -69,7 +69,7 @@
         </param>
         <detaileddescription>
 <para>overrides the base class implementation based on table data </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="72" bodyend="74"/>
+        <location file="/experimental/credit/onefactorgaussiancopula.hpp" line="50" bodyfile="/experimental/credit/onefactorgaussiancopula.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a6d7feb2a05b8754fe0a79ff0f26b704e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -80,7 +80,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="51"/>
+        <location file="/experimental/credit/onefactorgaussiancopula.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a309f9b6f2c8476ddc7d4d750a0f7d75c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -94,13 +94,13 @@
         </param>
         <detaileddescription>
 <para>overrides the base class implementation based on table data </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="76" bodyend="78"/>
+        <location file="/experimental/credit/onefactorgaussiancopula.hpp" line="53" bodyfile="/experimental/credit/onefactorgaussiancopula.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>One-factor Gaussian Copula. </para>    </briefdescription>
     <detaileddescription>
 <para>The copula model <formula id="88">\[ Y_i = a_i\,M+\sqrt{1-a_i^2}\:Z_i \]</formula> is specified here by setting the desnity function for all variables, <formula id="118">$ M, Z,$</formula> and also <formula id="103">$ Y $</formula> to the standard normal distribution <formula id="119">$ \phi(x) = \exp(-x^2/2) / \sqrt{2\pi}. $</formula> </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="40" bodyend="62"/>
+    <location file="/experimental/credit/onefactorgaussiancopula.hpp" line="40" bodyfile="/experimental/credit/onefactorgaussiancopula.hpp" bodystart="40" bodyend="62"/>
   </compounddef>
 </doxygen>

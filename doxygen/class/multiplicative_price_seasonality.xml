@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_multiplicative_price_seasonality" kind="class" prot="public">
     <compoundname>QuantLib::MultiplicativePriceSeasonality</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp</includes>
+    <includes local="no">/termstructures/inflation/seasonality.hpp</includes>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1aaa0bf273dd9cf60bac755433885fc754" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
@@ -11,21 +11,21 @@
         <name>seasonalityBaseDate</name>
         <briefdescription>
 <para>inspectors </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="139"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="139"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1a2d031749634662c6fd7dd3679f26a487" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
         <definition>virtual Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="140"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1a06da5d6dfbf66d7de02a1ba5a9086aef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
         <definition>virtual std::vector&lt;Rate&gt; seasonalityFactors</definition>
         <argsstring>() const </argsstring>
         <name>seasonalityFactors</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="141"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="141"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1a0b491ad373c3dfc69328b778da1db888" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -38,7 +38,7 @@
         </param>
         <briefdescription>
 <para>The factor returned is NOT normalized relative to ANYTHING. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="143"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="143"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -61,7 +61,7 @@
           <type>const <ref refid="class_quant_lib_1_1_inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
           <declname>iTS</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="149"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="149"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1a88825843d6b6a77114265771bed9c0b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -81,7 +81,7 @@
           <type>const <ref refid="class_quant_lib_1_1_inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
           <declname>iTS</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="151"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="151"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1ad3811d44e8830cd435b032e3d28a31f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -95,7 +95,7 @@
         </param>
         <detaileddescription>
 <para>It is possible for multi-year seasonalities to be inconsistent with the inflation term structure they are given to. This method enables testing - but programmers are not required to implement it. E.g. for price seasonality the corrections at whole years after the inflation curve base date should be the same or else there can be an inconsistency with quoted instruments. Alternatively, the seasonality can be set <emphasis>before</emphasis> the inflation curve is bootstrapped. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="152"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="152"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -104,7 +104,7 @@
         <definition>MultiplicativePriceSeasonality</definition>
         <argsstring>()</argsstring>
         <name>MultiplicativePriceSeasonality</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="129"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="129"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1ac3f700621464820570e9ec9056063580" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -123,7 +123,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
           <declname>seasonalityFactors</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="132"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1a6be258f4053db2976aff2501eccdbdde" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -142,14 +142,14 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
           <declname>seasonalityFactors</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="135"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="135"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1a4b4e0a5a27ef7c1fcc907dc4ce7f37a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~MultiplicativePriceSeasonality</definition>
         <argsstring>()</argsstring>
         <name>~MultiplicativePriceSeasonality</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" bodystart="156" bodyend="156"/>
+        <location file="/termstructures/inflation/seasonality.hpp" line="156" bodyfile="/termstructures/inflation/seasonality.hpp" bodystart="156" bodyend="156"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -157,6 +157,6 @@
     <detaileddescription>
 <para>Stationary multiplicative seasonality in CPI/RPI/HICP (i.e. in price) implies that zero inflation swap rates are affected, but that year-on-year inflation swap rates show no effect. Of course, if the seasonality in CPI/RPI/HICP is non-stationary then both swap rates will be affected.</para><para>Factors must be in multiples of the minimum required for one year, e.g. 12 for monthly, and these factors are reused for as long as is required, i.e. they wrap around. So, for example, if 24 factors are given this repeats every two years. True stationary seasonality can be obtained by giving the same number of factors as the frequency dictates e.g. 12 for monthly seasonality.</para><para><xrefsect id="caveats_1_caveats000113"><xreftitle>Warning</xreftitle><xrefdescription><para>Multi-year seasonality (i.e. non-stationary) is fragile: the user <bold>must</bold> ensure that corrections at whole years before and after the inflation term structure base date are the same. Otherwise there can be an inconsistency with quoted rates. This is enforced if the frequency is lower than daily. This is not enforced for daily seasonality because this will always be inconsistent due to weekends, holidays, leap years, etc. If you use multi-year daily seasonality it is up to you to check.</para></xrefdescription></xrefsect></para><para><simplesect kind="note"><para>Factors are normalized relative to their appropriate reference dates. For zero inflation this is the inflation curve true base date: since you have a fixing for that date the seasonality factor must be one. For YoY inflation the reference is always one year earlier.</para></simplesect>
 <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> is treated as piecewise constant, hence it works correctly with uninterpolated indices if the seasonality correction factor frequency is the same as the index frequency (or less). </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" bodystart="118" bodyend="162"/>
+    <location file="/termstructures/inflation/seasonality.hpp" line="118" bodyfile="/termstructures/inflation/seasonality.hpp" bodystart="118" bodyend="162"/>
   </compounddef>
 </doxygen>

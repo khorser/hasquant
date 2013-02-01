@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_united_states" kind="class" prot="public">
     <compoundname>QuantLib::UnitedStates</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp</includes>
+    <includes local="no">/time/calendars/unitedstates.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
@@ -28,7 +28,7 @@
         </enumvalue>
         <briefdescription>
 <para>US calendars. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" bodystart="147" bodyend="151"/>
+        <location file="/time/calendars/unitedstates.hpp" line="147" bodyfile="/time/calendars/unitedstates.hpp" bodystart="147" bodyend="151"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,7 +42,7 @@
           <declname>market</declname>
           <defval><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref></defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" line="152"/>
+        <location file="/time/calendars/unitedstates.hpp" line="152"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -149,6 +149,6 @@
 <para>Christmas, December 25th (moved to Monday if Sunday) </para></listitem>
 </itemizedlist>
 </para><para><xrefsect id="test_1_test000152"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned results is tested against a list of known holidays. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" bodystart="121" bodyend="153"/>
+    <location file="/time/calendars/unitedstates.hpp" line="121" bodyfile="/time/calendars/unitedstates.hpp" bodystart="121" bodyend="153"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_nth_to_default" kind="class" prot="public">
     <compoundname>QuantLib::NthToDefault</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp</includes>
+    <includes local="no">/experimental/credit/nthtodefault.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a4337e6f7c077f1cf068894f35fa76a74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -62,7 +62,7 @@
           <declname>claim</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="85"/>
+        <location file="/experimental/credit/nthtodefault.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -72,56 +72,56 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="87"/>
+        <location file="/experimental/credit/nthtodefault.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairPremium</definition>
         <argsstring>() const </argsstring>
         <name>fairPremium</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="89"/>
+        <location file="/experimental/credit/nthtodefault.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a31d3d825697988d20419edfd4483d8fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate premium</definition>
         <argsstring>() const </argsstring>
         <name>premium</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="92" bodyend="92"/>
+        <location file="/experimental/credit/nthtodefault.hpp" line="92" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="93" bodyend="93"/>
+        <location file="/experimental/credit/nthtodefault.hpp" line="93" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="93" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="94" bodyend="94"/>
+        <location file="/experimental/credit/nthtodefault.hpp" line="94" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1acc92405f554372b2ac8be49b9c052908" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Protection::Side</type>
         <definition>Protection::Side side</definition>
         <argsstring>() const </argsstring>
         <name>side</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="95" bodyend="95"/>
+        <location file="/experimental/credit/nthtodefault.hpp" line="95" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="95" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a392c795adb43821ad813f80cfaa88823" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size rank</definition>
         <argsstring>() const </argsstring>
         <name>rank</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="96" bodyend="96"/>
+        <location file="/experimental/credit/nthtodefault.hpp" line="96" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1abf42f0c06e4fc9d3a800e752ffdb0f1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size basketSize</definition>
         <argsstring>() const </argsstring>
         <name>basketSize</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="97" bodyend="97"/>
+        <location file="/experimental/credit/nthtodefault.hpp" line="97" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="97" bodyend="97"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -129,6 +129,6 @@
     <detaileddescription>
 <para>A NTD instrument exchanges protection against the nth default in a basket of underlying credits for premium payments based on the protected notional amount.</para><para>The pricing is analogous to the pricing of a CDS instrument which represents protection against default of a single underlying credit. The only difference is the calculation of the probability of default. In the CDS case, it is the probabilty of single name default; in the NTD case the probability of at least N defaults in the portfolio of underlying credits.</para><para>This probability is computed using the algorithm in John Hull and Alan White, &quot;Valuation of a CDO and nth to
        default CDS without Monte Carlo simulation&quot;, Journal of Derivatives 12, 2, 2004.</para><para>The algorithm allows for varying probability of default across the basket. Otherwise, for identical probabilities of default, the probability of n defaults is given by the binomial distribution.</para><para>Default correlation is modeled using a one-factor Gaussian copula approach.</para><para>The class is tested against data in Hull-White (see reference above.) </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="69" bodyend="123"/>
+    <location file="/experimental/credit/nthtodefault.hpp" line="69" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="69" bodyend="123"/>
   </compounddef>
 </doxygen>

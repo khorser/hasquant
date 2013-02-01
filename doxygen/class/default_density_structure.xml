@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_default_density_structure" kind="class" prot="public">
     <compoundname>QuantLib::DefaultDensityStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp</includes>
+    <includes local="no">/termstructures/credit/defaultdensitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
@@ -26,7 +26,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" line="53"/>
+        <location file="/termstructures/credit/defaultdensitystructure.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_density_structure_1abe07ca542ab37a1281091e5d16b6c8f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -57,7 +57,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" line="59"/>
+        <location file="/termstructures/credit/defaultdensitystructure.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_density_structure_1a31a3d32ba91cad674c0fe45f04af31dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -87,7 +87,7 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" line="65"/>
+        <location file="/termstructures/credit/defaultdensitystructure.hpp" line="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -105,13 +105,13 @@
 <para>survival probability calculation </para>        </briefdescription>
         <detaileddescription>
 <para>implemented in terms of the default density <formula id="367">$ p(t) $</formula> as <formula id="368">\[ S(t) = 1 - \int_0^t p(\tau) d\tau. \]</formula></para><para><xrefsect id="caveats_1_caveats000109"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses numerical integration, which might be inefficient and inaccurate. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" line="81"/>
+        <location file="/termstructures/credit/defaultdensitystructure.hpp" line="81"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Default-density term structure. </para>    </briefdescription>
     <detaileddescription>
 <para>This abstract class acts as an adapter to <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> allowing the programmer to implement only the <computeroutput>defaultDensityImpl(Time)</computeroutput> method in derived classes.</para><para>Survival/default probabilities and hazard rates are calculated from default densities. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" bodystart="43" bodyend="83"/>
+    <location file="/termstructures/credit/defaultdensitystructure.hpp" line="43" bodyfile="/termstructures/credit/defaultdensitystructure.hpp" bodystart="43" bodyend="83"/>
   </compounddef>
 </doxygen>

@@ -2,20 +2,20 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_e_s_p_currency" kind="class" prot="public">
     <compoundname>QuantLib::ESPCurrency</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+    <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_e_s_p_currency_1a52a5551fa54de717ed567bec05424e3d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ESPCurrency</definition>
         <argsstring>()</argsstring>
         <name>ESPCurrency</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="529" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="529" bodyend="537"/>
+        <location file="/currencies/europe.hpp" line="529" bodyfile="/currencies/europe.hpp" bodystart="529" bodyend="537"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Spanish peseta. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code was ESP; the numeric code was 724. It was divided in 100 centimos.</para><para>Obsoleted by the Euro since 1999. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="527" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="527" bodyend="538"/>
+    <location file="/currencies/europe.hpp" line="527" bodyfile="/currencies/europe.hpp" bodystart="527" bodyend="538"/>
   </compounddef>
 </doxygen>

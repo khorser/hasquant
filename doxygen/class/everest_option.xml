@@ -22,14 +22,14 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="38"/>
+        <location file="/experimental/exoticoptions/everestoption.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_everest_option_1ad37076d5ec6a1c45a01c3d6a3fc91489" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate yield</definition>
         <argsstring>() const </argsstring>
         <name>yield</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="39"/>
+        <location file="/experimental/exoticoptions/everestoption.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_everest_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -39,7 +39,7 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="41"/>
+        <location file="/experimental/exoticoptions/everestoption.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_everest_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -49,9 +49,9 @@
         <param>
           <type>const PricingEngine::results *</type>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="42"/>
+        <location file="/experimental/exoticoptions/everestoption.hpp" line="42"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="31" bodyend="47"/>
+    <location file="/experimental/exoticoptions/everestoption.hpp" line="31" bodyfile="/experimental/exoticoptions/everestoption.hpp" bodystart="31" bodyend="47"/>
   </compounddef>
 </doxygen>

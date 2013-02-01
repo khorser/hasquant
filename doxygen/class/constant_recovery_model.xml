@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_constant_recovery_model" kind="class" prot="public">
     <compoundname>QuantLib::ConstantRecoveryModel</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp</includes>
+    <includes local="no">/experimental/credit/recoveryratemodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_constant_recovery_model_1a7333ed7b0aa9754ceebcba7e0e965a7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_recovery_rate_quote" kindref="compound">RecoveryRateQuote</ref> &gt; &amp;</type>
           <declname>quote</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="64"/>
+        <location file="/experimental/credit/recoveryratemodel.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_recovery_model_1af6b18d97031a6ee3ce612e4a403c3e4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,7 +29,7 @@
           <declname>sen</declname>
           <defval>NoSeniority</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="66"/>
+        <location file="/experimental/credit/recoveryratemodel.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_recovery_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -37,7 +37,7 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="67" bodyend="67"/>
+        <location file="/experimental/credit/recoveryratemodel.hpp" line="67" bodyfile="/experimental/credit/recoveryratemodel.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_recovery_model_1afe953f4160ca21765a8aadb329bab537" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -50,11 +50,11 @@
         </param>
         <detaileddescription>
 <para>Returns true if the model will return recovery rates for the requested seniority. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="68" bodyend="68"/>
+        <location file="/experimental/credit/recoveryratemodel.hpp" line="68" bodyfile="/experimental/credit/recoveryratemodel.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>Simple Recovery Rate model returning the constant value of the quote independently of the date and the seniority. </para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="61" bodyend="81"/>
+    <location file="/experimental/credit/recoveryratemodel.hpp" line="62" bodyfile="/experimental/credit/recoveryratemodel.hpp" bodystart="61" bodyend="81"/>
   </compounddef>
 </doxygen>

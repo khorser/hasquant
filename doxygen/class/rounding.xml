@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_rounding" kind="class" prot="public">
     <compoundname>QuantLib::Rounding</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp</includes>
+    <includes local="no">/math/rounding.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1a242cddb670f123b7cf2ec6b244514c8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -10,21 +10,21 @@
         <definition>Integer precision</definition>
         <argsstring>() const </argsstring>
         <name>precision</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="80" bodyend="80"/>
+        <location file="/math/rounding.hpp" line="80" bodyfile="/math/rounding.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="81" bodyend="81"/>
+        <location file="/math/rounding.hpp" line="81" bodyfile="/math/rounding.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1abdd70a56bfd67e3da02c16706ea1898d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer roundingDigit</definition>
         <argsstring>() const </argsstring>
         <name>roundingDigit</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="82" bodyend="82"/>
+        <location file="/math/rounding.hpp" line="82" bodyfile="/math/rounding.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
@@ -64,7 +64,7 @@
 <para>rounding methods </para>        </briefdescription>
         <detaileddescription>
 <para>The rounding methods follow the OMG specification available at <ulink url="ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdf">ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdf</ulink></para><para><xrefsect id="caveats_1_caveats000074"><xreftitle>Warning</xreftitle><xrefdescription><para>the names of the <ref refid="class_quant_lib_1_1_floor" kindref="compound">Floor</ref> and Ceiling methods might be misleading. Check the provided reference. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="44" bodyend="65"/>
+        <location file="/math/rounding.hpp" line="44" bodyfile="/math/rounding.hpp" bodystart="44" bodyend="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -77,7 +77,7 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para>Instances built through this constructor don&apos;t perform any rounding. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="70" bodyend="71"/>
+        <location file="/math/rounding.hpp" line="71" bodyfile="/math/rounding.hpp" bodystart="70" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1a2a79742b3f2854a95befbd58cf917341" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -98,7 +98,7 @@
           <declname>digit</declname>
           <defval>5</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="72" bodyend="75"/>
+        <location file="/math/rounding.hpp" line="75" bodyfile="/math/rounding.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1a9835436c4cf8e92f0f7d8a3ed4643983" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
@@ -111,13 +111,13 @@
         </param>
         <briefdescription>
 <para>perform rounding </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="77"/>
+        <location file="/math/rounding.hpp" line="77"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>basic rounding class </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000060"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="35" bodyend="87"/>
+    <location file="/math/rounding.hpp" line="35" bodyfile="/math/rounding.hpp" bodystart="35" bodyend="87"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_zero_inflation_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ZeroInflationTermStructure</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp</includes>
+    <includes local="no">/termstructures/inflationtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_term_structure_1a7e7f610e575a1cf38a9d46174b88240c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -39,7 +39,7 @@
           <declname>seasonality</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="140"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_term_structure_1ab11cecca2168515630d5e94316b2b27f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +83,7 @@
           <declname>seasonality</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="150"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="150"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_term_structure_1ab152a19b23475d030b8067bd16667fca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -127,7 +127,7 @@
           <declname>seasonality</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="160"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="160"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -161,7 +161,7 @@
         <detaileddescription>
 <para>Essentially the fair rate for a zero-coupon inflation swap (by definition), i.e. the zero term structure uses yearly compounding, which is assumed for ZCIIS instrument quotes.</para><para><simplesect kind="note"><para>by default you get the same as lag and interpolation as the term structure. If you want to get predictions of RPI/CPI/etc then use an index. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="177"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="177"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_term_structure_1a8f53e7de10a1fd168a5cafe1f5b924bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -181,11 +181,11 @@
 <para>zero-coupon inflation rate. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000114"><xreftitle>Warning</xreftitle><xrefdescription><para>Since inflation is highly linked to dates (lags, interpolation, months for seasonality, etc) this method cannot account for all effects. If you call it, You&apos;ll have to manage lag, seasonality etc. yourself. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="186"/>
+        <location file="/termstructures/inflationtermstructure.hpp" line="186"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Interface for zero inflation term structures. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="130" bodyend="191"/>
+    <location file="/termstructures/inflationtermstructure.hpp" line="130" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="130" bodyend="191"/>
   </compounddef>
 </doxygen>

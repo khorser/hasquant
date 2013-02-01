@@ -18,7 +18,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>forwardMeasureTime</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="41"/>
+        <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -29,9 +29,9 @@
           <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="42"/>
+        <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="42"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="37" bodyend="49"/>
+    <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="37" bodyfile="/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="37" bodyend="49"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_gegenbauer_polynomial" kind="class" prot="public">
     <compoundname>QuantLib::GaussGegenbauerPolynomial</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
+    <includes local="no">/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_gegenbauer_polynomial_1af5550f63ca8dd01261076550bf5c4af5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,11 +13,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>lambda</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="126"/>
+        <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="126"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gauss-Gegenbauer polynomial. </para>    </briefdescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="124" bodyend="127"/>
+    <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="124" bodyfile="/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="124" bodyend="127"/>
   </compounddef>
 </doxygen>

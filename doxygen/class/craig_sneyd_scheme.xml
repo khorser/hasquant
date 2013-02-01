@@ -8,35 +8,35 @@
         <definition>typedef OperatorTraits&lt;FdmLinearOp&gt; traits</definition>
         <argsstring></argsstring>
         <name>traits</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="38" bodyend="-1"/>
+        <location file="/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="38" bodyfile="/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_craig_sneyd_scheme_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
         <type>traits::operator_type</type>
         <definition>typedef traits::operator_type operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="39" bodyend="-1"/>
+        <location file="/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="39" bodyfile="/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_craig_sneyd_scheme_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
         <type>traits::array_type</type>
         <definition>typedef traits::array_type array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="40" bodyend="-1"/>
+        <location file="/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="40" bodyfile="/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_craig_sneyd_scheme_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
         <type>traits::bc_set</type>
         <definition>typedef traits::bc_set bc_set</definition>
         <argsstring></argsstring>
         <name>bc_set</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="41" bodyend="-1"/>
+        <location file="/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="41" bodyfile="/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_craig_sneyd_scheme_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_step_condition" kindref="compound">traits::condition_type</ref></type>
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="42" bodyend="-1"/>
+        <location file="/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="42" bodyfile="/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -62,7 +62,7 @@
           <declname>bc_set</declname>
           <defval>std::vector&lt; boost::shared_ptr&lt; FdmDirichletBoundary &gt; &gt;()</defval>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="48"/>
+        <location file="/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_craig_sneyd_scheme_1ae31015dcf2ddc4f248be2533b0bbbd95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -77,7 +77,7 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="50"/>
+        <location file="/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_craig_sneyd_scheme_1a7c6bf7e1e335626aa6f4e7a46f361b50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -88,9 +88,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="51"/>
+        <location file="/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="51"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="35" bodyend="59"/>
+    <location file="/methods/finitedifferences/schemes/craigsneydscheme.hpp" line="35" bodyfile="/methods/finitedifferences/schemes/craigsneydscheme.hpp" bodystart="35" bodyend="59"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_exchange_rate_manager" kind="class" prot="public">
     <compoundname>QuantLib::ExchangeRateManager</compoundname>
-    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp</includes>
+    <includes local="no">/currencies/exchangeratemanager.hpp</includes>
     <innerclass refid="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry" prot="public">QuantLib::ExchangeRateManager::Entry</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_manager_1a06d8b6a35265988b53450aeab76d5745" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -28,7 +28,7 @@
         <detaileddescription>
 <para>The given rate is valid between the given dates.</para><para><simplesect kind="note"><para>If two rates are given between the same currencies and with overlapping date ranges, the latest one added takes precedence during lookup. </para></simplesect>
 </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="54"/>
+        <location file="/currencies/exchangeratemanager.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_manager_1a093a0fb71cc0f5e543d1e5a29f265da2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref></type>
@@ -55,7 +55,7 @@
         </param>
         <detaileddescription>
 <para>Lookup the exchange rate between two currencies at a given date. If the given type is Direct, only direct exchange rates will be returned if available; if Derived, direct rates are still preferred but derived rates are allowed.</para><para><xrefsect id="caveats_1_caveats000004"><xreftitle>Warning</xreftitle><xrefdescription><para>if two or more exchange-rate chains are possible which allow to specify a requested rate, it is unspecified which one is returned. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="68"/>
+        <location file="/currencies/exchangeratemanager.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_manager_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -64,13 +64,13 @@
         <name>clear</name>
         <briefdescription>
 <para>remove the added exchange rates </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="70"/>
+        <location file="/currencies/exchangeratemanager.hpp" line="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>exchange-rate repository </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000002"><xreftitle>Tests</xreftitle><xrefdescription><para>lookup of direct, triangulated, and derived exchange rates is tested. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="40" bodyend="97"/>
+    <location file="/currencies/exchangeratemanager.hpp" line="40" bodyfile="/currencies/exchangeratemanager.hpp" bodystart="40" bodyend="97"/>
   </compounddef>
 </doxygen>

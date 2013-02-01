@@ -28,7 +28,7 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="110"/>
+        <location file="/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_implied_spot_helper_1aec77a0c65f487ce16c737d656d42cbb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -39,9 +39,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>spot</declname>
         </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="111"/>
+        <location file="/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="111"/>
       </memberdef>
       </sectiondef>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="104" bodyend="118"/>
+    <location file="/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="104" bodyfile="/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="104" bodyend="118"/>
   </compounddef>
 </doxygen>
