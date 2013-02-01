@@ -39,7 +39,7 @@
         <location file="/math/randomnumbers/sobolrsg.hpp" line="109" bodyfile="/math/randomnumbers/sobolrsg.hpp" bodystart="109" bodyend="112"/>
       </memberdef>
       <memberdef kind="typedef" id="sobol_rsg_1af3b59a3dd56521693efc68c221a2bf38" prot="public" static="no">
-        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>Sample&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -92,14 +92,14 @@
         <location file="/math/randomnumbers/sobolrsg.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="sobol_rsg_1a24eb8d9ace7d89bd65c3767bdc1edf57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="sample" kindref="compound">SobolRsg::sample_type</ref> &amp;</type>
+        <type>const SobolRsg::sample_type &amp;</type>
         <definition>const SobolRsg::sample_type&amp; nextSequence</definition>
         <argsstring>() const </argsstring>
         <name>nextSequence</name>
         <location file="/math/randomnumbers/sobolrsg.hpp" line="120" bodyfile="/math/randomnumbers/sobolrsg.hpp" bodystart="120" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="sobol_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="sample" kindref="compound">sample_type</ref> &amp;</type>
+        <type>const sample_type &amp;</type>
         <definition>const sample_type&amp; lastSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastSequence</name>
@@ -116,12 +116,12 @@
     <briefdescription>
 <para>Sobol low-discrepancy sequence generator. </para>    </briefdescription>
     <detaileddescription>
-<para>A Gray code counter and bitwise operations are used for very fast sequence generation.</para><para>The implementation relies on primitive polynomials modulo two from the book &quot;Monte Carlo Methods in Finance&quot; by Peter Jäckel.</para><para>21 200 primitive polynomials modulo two are provided in <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref>. Jäckel has calculated 8 129 334 polynomials: if you need that many dimensions you can replace the primitivepolynomials.c file included in <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref> with the one provided in the CD of the &quot;Monte Carlo
+<para>A Gray code counter and bitwise operations are used for very fast sequence generation.</para><para>The implementation relies on primitive polynomials modulo two from the book &quot;Monte Carlo Methods in Finance&quot; by Peter Jäckel.</para><para>21 200 primitive polynomials modulo two are provided in QuantLib. Jäckel has calculated 8 129 334 polynomials: if you need that many dimensions you can replace the primitivepolynomials.c file included in QuantLib with the one provided in the CD of the &quot;Monte Carlo
        Methods in Finance&quot; book.</para><para>The choice of initialization numbers (also know as free direction integers) is crucial for the homogeneity properties of the sequence. Sobol defines two homogeneity properties: Property A and Property A&apos;.</para><para>The unit initialization numbers suggested in &quot;Numerical
        Recipes in C&quot;, 2nd edition, by Press, Teukolsky, Vetterling, and Flannery (section 7.7) fail the test for Property A even for low dimensions.</para><para>Bratley and Fox published coefficients of the free direction integers up to dimension 40, crediting unpublished work of Sobol&apos; and Levitan. See Bratley, P., Fox, B.L. (1988) &quot;Algorithm 659: Implementing Sobol&apos;s quasirandom sequence
        generator,&quot; ACM Transactions on Mathematical Software 14:88-100. These values satisfy Property A for d&lt;=20 and d = 23, 31, 33, 34, 37; Property A&apos; holds for d&lt;=6.</para><para>Jäckel provides in his book (section 8.3) initialization numbers up to dimension 32. Coefficients for d&lt;=8 are the same as in Bradley-Fox, so Property A&apos; holds for d&lt;=6 but Property A holds for d&lt;=32.</para><para>The implementation of Lemieux, Cieslak, and Luttmer includes coefficients of the free direction integers up to dimension<orderedlist>
 <listitem><para>Coefficients for d&lt;=40 are the same as in Bradley-Fox. For dimension 40&lt;d&lt;=360 the coefficients have been calculated as optimal values based on the &quot;resolution&quot; criterion. See &quot;RandQMC user&apos;s guide - A package for
-       randomized quasi-Monte Carlo methods in C,&quot; by C. Lemieux, M. Cieslak, and K. Luttmer, version January 13 2004, and references cited there (<ulink url="http://www.math.ucalgary.ca/~lemieux/randqmc.html">http://www.math.ucalgary.ca/~lemieux/randqmc.html</ulink>). The values up to d&lt;=360 has been provided to the <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref> team by Christiane Lemieux, private communication, September 2004.</para></listitem></orderedlist>
+       randomized quasi-Monte Carlo methods in C,&quot; by C. Lemieux, M. Cieslak, and K. Luttmer, version January 13 2004, and references cited there (<ulink url="http://www.math.ucalgary.ca/~lemieux/randqmc.html">http://www.math.ucalgary.ca/~lemieux/randqmc.html</ulink>). The values up to d&lt;=360 has been provided to the QuantLib team by Christiane Lemieux, private communication, September 2004.</para></listitem></orderedlist>
 </para><para>For more info on Sobol&apos; sequences see also &quot;Monte Carlo
        Methods in Financial Engineering,&quot; by P. Glasserman, 2004, Springer, section 5.2.3</para><para>The Joe<ndash/>Kuo numbers and the Kuo numbers are due to Stephen Joe and Frances Kuo.</para><para>S. Joe and F. Y. Kuo, Constructing Sobol sequences with better two-dimensional projections, preprint Nov 22 2007</para><para>See <ulink url="http://web.maths.unsw.edu.au/~fkuo/sobol/">http://web.maths.unsw.edu.au/~fkuo/sobol/</ulink> for more information.</para><para>Note that the Kuo numbers were generated to work with a different ordering of primitive polynomials for the first 40 or so dimensions which is why we have the Alternative Primitive Polynomials.</para><para><xrefsect id="test_1_test000059"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned values is tested by reproducing known good values.</para></listitem><listitem><para>the correctness of the returned values is tested by checking their discrepancy against known good values. </para></listitem></itemizedlist>

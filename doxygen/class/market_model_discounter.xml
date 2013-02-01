@@ -24,7 +24,7 @@
         <argsstring>(const CurveState &amp;, Size numeraire) const </argsstring>
         <name>numeraireBonds</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

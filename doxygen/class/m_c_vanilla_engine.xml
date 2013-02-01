@@ -24,7 +24,7 @@
         <type>class</type>
         <declname>Inst</declname>
         <defname>Inst</defname>
-        <defval><ref refid="vanilla_option" kindref="compound">VanillaOption</ref></defval>
+        <defval>VanillaOption</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">

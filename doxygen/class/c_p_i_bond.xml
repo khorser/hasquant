@@ -26,11 +26,11 @@
           <declname>baseCPI</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;</type>
           <declname>cpiIndex</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
           <declname>observationInterpolation</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
           <declname>coupons</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>accrualDayCounter</declname>
         </param>
         <param>
@@ -55,9 +55,9 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368a013e092c359f6031cc0563fd413ce707" kindref="member">ModifiedFollowing</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/instruments/bonds/cpibond.hpp" line="56"/>
       </memberdef>
@@ -69,7 +69,7 @@
         <location file="/instruments/bonds/cpibond.hpp" line="58" bodyfile="/instruments/bonds/cpibond.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_bond_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
@@ -90,14 +90,14 @@
         <location file="/instruments/bonds/cpibond.hpp" line="61" bodyfile="/instruments/bonds/cpibond.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_bond_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
         <location file="/instruments/bonds/cpibond.hpp" line="62" bodyfile="/instruments/bonds/cpibond.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_bond_1a458886847c0705af65f1be8ba883a51c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;ZeroInflationIndex&gt;&amp; cpiIndex</definition>
         <argsstring>() const </argsstring>
         <name>cpiIndex</name>

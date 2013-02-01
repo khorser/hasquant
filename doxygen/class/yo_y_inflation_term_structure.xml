@@ -11,7 +11,7 @@
         <argsstring>(const DayCounter &amp;dayCounter, Rate baseYoYRate, const Period &amp;lag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yieldTS, const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
         <name>YoYInflationTermStructure</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -19,7 +19,7 @@
           <declname>baseYoYRate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
@@ -31,13 +31,13 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yieldTS</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Seasonality &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; Seasonality &gt;()</defval>
         </param>
         <location file="/termstructures/inflationtermstructure.hpp" line="205"/>
       </memberdef>
@@ -47,15 +47,15 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar, const DayCounter &amp;dayCounter, Rate baseYoYRate, const Period &amp;lag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yieldTS, const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
         <name>YoYInflationTermStructure</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -63,7 +63,7 @@
           <declname>baseYoYRate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
@@ -75,13 +75,13 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yieldTS</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Seasonality &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; Seasonality &gt;()</defval>
         </param>
         <location file="/termstructures/inflationtermstructure.hpp" line="215"/>
       </memberdef>
@@ -95,11 +95,11 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -107,7 +107,7 @@
           <declname>baseYoYRate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
@@ -119,13 +119,13 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yieldTS</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Seasonality &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; Seasonality &gt;()</defval>
         </param>
         <location file="/termstructures/inflationtermstructure.hpp" line="225"/>
       </memberdef>
@@ -138,13 +138,13 @@
         <argsstring>(const Date &amp;d, const Period &amp;instObsLag=Period(-1, Days), bool forceLinearInterpolation=false, bool extrapolate=false) const </argsstring>
         <name>yoyRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>instObsLag</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval>Period(-1, Days)</defval>
         </param>
         <param>
           <type>bool</type>

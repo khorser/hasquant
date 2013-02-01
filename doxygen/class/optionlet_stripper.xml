@@ -8,14 +8,14 @@
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="optionlet_stripper_1ae202892d94f34cdd9e988035e85ce7e8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Period &gt; &amp;</type>
         <definition>const std::vector&lt;Period&gt;&amp; optionletFixingTenors</definition>
         <argsstring>() const </argsstring>
         <name>optionletFixingTenors</name>
         <location file="/termstructures/volatility/optionlet/optionletstripper.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper_1a805f2578b0a6fda83dfe3bfa5f64a4ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; optionletPaymentDates</definition>
         <argsstring>() const </argsstring>
         <name>optionletPaymentDates</name>
@@ -29,14 +29,14 @@
         <location file="/termstructures/volatility/optionlet/optionletstripper.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper_1ad502687af32ea28b4c73205ac4e4ede6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="cap_floor_term_vol_surface" kindref="compound">CapFloorTermVolSurface</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; CapFloorTermVolSurface &gt;</type>
         <definition>boost::shared_ptr&lt;CapFloorTermVolSurface&gt; termVolSurface</definition>
         <argsstring>() const </argsstring>
         <name>termVolSurface</name>
         <location file="/termstructures/volatility/optionlet/optionletstripper.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper_1a39c9489a774110f2c9109243222f287e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; IborIndex &gt;</type>
         <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex</definition>
         <argsstring>() const </argsstring>
         <name>iborIndex</name>
@@ -44,7 +44,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para><ref refid="stripped_optionlet_base" kindref="compound">StrippedOptionletBase</ref> specialization. It&apos;s up to derived classes to implement <ref refid="lazy_object_1a572dbe926524786c64db01e31dba7ab8" kindref="member">LazyObject::performCalculations</ref> </para>    </detaileddescription>
+<para>StrippedOptionletBase specialization. It&apos;s up to derived classes to implement <ref refid="lazy_object_1a572dbe926524786c64db01e31dba7ab8" kindref="member">LazyObject::performCalculations</ref> </para>    </detaileddescription>
     <location file="/termstructures/volatility/optionlet/optionletstripper.hpp" line="38" bodyfile="/termstructures/volatility/optionlet/optionletstripper.hpp" bodystart="38" bodyend="83"/>
   </compounddef>
 </doxygen>

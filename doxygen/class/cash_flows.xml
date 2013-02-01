@@ -6,7 +6,7 @@
       <sectiondef kind="user-defined">
       <header>Date functions</header>
       <memberdef kind="function" id="cash_flows_1a3393c4e4a7533490b540d49466594f24" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date startDate</definition>
         <argsstring>(const Leg &amp;leg)</argsstring>
         <name>startDate</name>
@@ -17,7 +17,7 @@
         <location file="/cashflows/cashflows.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="cash_flows_1a356f8aea0022acb2e628dfce5cf47e14" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date maturityDate</definition>
         <argsstring>(const Leg &amp;leg)</argsstring>
         <name>maturityDate</name>
@@ -41,9 +41,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="52"/>
       </memberdef>
@@ -64,9 +64,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>the last cashflow paying before or at the given date </para>        </briefdescription>
@@ -86,16 +86,16 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>the first cashflow paying after the given date </para>        </briefdescription>
         <location file="/cashflows/cashflows.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="cash_flows_1ae97cfc1d7c084bc7ff0660b082722352" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date previousCashFlowDate</definition>
         <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
         <name>previousCashFlowDate</name>
@@ -108,14 +108,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="cash_flows_1a835348c16d1009ffe4e50e50929fc0dd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date nextCashFlowDate</definition>
         <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
         <name>nextCashFlowDate</name>
@@ -128,9 +128,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="74"/>
       </memberdef>
@@ -148,9 +148,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="78"/>
       </memberdef>
@@ -168,9 +168,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="82"/>
       </memberdef>
@@ -191,9 +191,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="90"/>
       </memberdef>
@@ -211,9 +211,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="94"/>
       </memberdef>
@@ -231,14 +231,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="cash_flows_1a327c021eb612eda92e4bf006c5d106be" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date accrualStartDate</definition>
         <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlDate=Date())</argsstring>
         <name>accrualStartDate</name>
@@ -251,14 +251,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="cash_flows_1add502f32c2b28eaef015581725c16362" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date accrualEndDate</definition>
         <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
         <name>accrualEndDate</name>
@@ -271,14 +271,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="cash_flows_1a1a2f3b3519e1df56006aaf605de8db4d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date referencePeriodStart</definition>
         <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlDate=Date())</argsstring>
         <name>referencePeriodStart</name>
@@ -291,14 +291,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="cash_flows_1a7ae9cbcf2cfb504c8941a6ddc7275c16" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date referencePeriodEnd</definition>
         <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlDate=Date())</argsstring>
         <name>referencePeriodEnd</name>
@@ -311,9 +311,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="115"/>
       </memberdef>
@@ -331,9 +331,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="119"/>
       </memberdef>
@@ -351,9 +351,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="123"/>
       </memberdef>
@@ -371,9 +371,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="127"/>
       </memberdef>
@@ -391,9 +391,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="131"/>
       </memberdef>
@@ -411,9 +411,9 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="135"/>
       </memberdef>
@@ -430,7 +430,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const YieldTermStructure &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -438,14 +438,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>NPV of the cash flows. </para>        </briefdescription>
@@ -463,7 +463,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const YieldTermStructure &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -471,14 +471,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>Basis-point sensitivity of the cash flows. </para>        </briefdescription>
@@ -496,7 +496,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const YieldTermStructure &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -504,11 +504,11 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
         </param>
         <param>
@@ -535,7 +535,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const YieldTermStructure &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -543,19 +543,19 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>npv</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <briefdescription>
 <para>At-the-money rate of the cash flows. </para>        </briefdescription>
@@ -576,7 +576,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
@@ -584,14 +584,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>NPV of the cash flows. </para>        </briefdescription>
@@ -613,7 +613,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -629,14 +629,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="211"/>
       </memberdef>
@@ -650,7 +650,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
@@ -658,14 +658,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>Basis-point sensitivity of the cash flows. </para>        </briefdescription>
@@ -687,7 +687,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -703,14 +703,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="232"/>
       </memberdef>
@@ -728,7 +728,7 @@
           <declname>npv</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -744,14 +744,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -784,7 +784,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
@@ -796,14 +796,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>Cash-flow duration. </para>        </briefdescription>
@@ -825,7 +825,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -845,14 +845,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="288"/>
       </memberdef>
@@ -866,7 +866,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
@@ -874,14 +874,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>Cash-flow convexity. </para>        </briefdescription>
@@ -903,7 +903,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -919,14 +919,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="310"/>
       </memberdef>
@@ -940,7 +940,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
@@ -948,14 +948,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>Basis-point value. </para>        </briefdescription>
@@ -977,7 +977,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -993,14 +993,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="328"/>
       </memberdef>
@@ -1014,7 +1014,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
@@ -1022,14 +1022,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>Yield value of a basis point. </para>        </briefdescription>
@@ -1051,7 +1051,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -1067,14 +1067,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cashflows.hpp" line="347"/>
       </memberdef>
@@ -1091,7 +1091,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discount</declname>
         </param>
         <param>
@@ -1099,7 +1099,7 @@
           <declname>zSpread</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -1115,14 +1115,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>NPV of the cash flows. </para>        </briefdescription>
@@ -1144,10 +1144,10 @@
           <declname>npv</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -1163,14 +1163,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -1201,7 +1201,7 @@
           <declname>leg</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -1209,7 +1209,7 @@
           <declname>npv</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -1225,14 +1225,14 @@
           <declname>includeSettlementDateFlows</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

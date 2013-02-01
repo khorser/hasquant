@@ -22,39 +22,39 @@
           <declname>stats</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>step</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;</type>
           <declname>fwdIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>initialGap</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>horizon</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; IborIndex &gt; &gt; &amp;</type>
           <declname>iborIndexes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; SwapIndex &gt; &gt; &amp;</type>
           <declname>swapIndexes</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>yieldCurveDayCounter</declname>
         </param>
         <param>
@@ -71,7 +71,7 @@
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="221" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="221" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="historical_forward_rates_analysis_impl_1ac7b7b4a056f59698e84a724c5c372652" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; skippedDates</definition>
         <argsstring>() const </argsstring>
         <name>skippedDates</name>
@@ -85,7 +85,7 @@
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="223" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="253" bodyend="255"/>
       </memberdef>
       <memberdef kind="function" id="historical_forward_rates_analysis_impl_1ad46d635a7ebc761eda88970a53784b74" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; failedDates</definition>
         <argsstring>() const </argsstring>
         <name>failedDates</name>
@@ -99,7 +99,7 @@
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="225" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="265" bodyend="267"/>
       </memberdef>
       <memberdef kind="function" id="historical_forward_rates_analysis_impl_1a49882046d19998fab2d46847152208f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Period &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; fixingPeriods</definition>
         <argsstring>() const </argsstring>
         <name>fixingPeriods</name>

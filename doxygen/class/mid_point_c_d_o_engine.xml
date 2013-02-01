@@ -13,7 +13,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="c_d_o" kindref="compound">CDO</ref> base engine taking schedule steps. </para>    </briefdescription>
+<para>CDO base engine taking schedule steps. </para>    </briefdescription>
     <location file="/experimental/credit/syntheticcdoengines.hpp" line="82" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="82" bodyend="88"/>
   </compounddef>
 </doxygen>

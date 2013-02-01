@@ -5,7 +5,7 @@
     <includes local="no">/pricingengines/forward/replicatingvarianceswapengine.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="replicating_variance_swap_engine_1ae4c21c3b5d3bff2b0fd3ff7d115b85d0" prot="public" static="no">
-        <type>std::vector&lt; std::pair&lt; boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt;, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; boost::shared_ptr&lt; StrikedTypePayoff &gt;, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>typedef std::vector&lt;std::pair&lt; boost::shared_ptr&lt;StrikedTypePayoff&gt;, Real&gt; &gt; weights_type</definition>
         <argsstring></argsstring>
         <name>weights_type</name>
@@ -19,7 +19,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Real dk=5.0, const std::vector&lt; Real &gt; &amp;callStrikes=std::vector&lt; Real &gt;(), const std::vector&lt; Real &gt; &amp;putStrikes=std::vector&lt; Real &gt;())</argsstring>
         <name>ReplicatingVarianceSwapEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

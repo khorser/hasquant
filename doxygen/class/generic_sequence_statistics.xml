@@ -21,21 +21,21 @@
       <sectiondef kind="user-defined">
       <header>covariance and correlation</header>
       <memberdef kind="function" id="generic_sequence_statistics_1a2419a649deea843b01804a626b3009f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>Disposable&lt; Matrix &gt; covariance</definition>
         <argsstring>() const </argsstring>
         <name>covariance</name>
         <briefdescription>
-<para>returns the covariance <ref refid="matrix" kindref="compound">Matrix</ref> </para>        </briefdescription>
+<para>returns the covariance Matrix </para>        </briefdescription>
         <location file="/math/statistics/sequencestatistics.hpp" line="64" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="248" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1af0006e861bd46e8e780a705ed17fd4c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>Disposable&lt; Matrix &gt; correlation</definition>
         <argsstring>() const </argsstring>
         <name>correlation</name>
         <briefdescription>
-<para>returns the correlation <ref refid="matrix" kindref="compound">Matrix</ref> </para>        </briefdescription>
+<para>returns the correlation Matrix </para>        </briefdescription>
         <location file="/math/statistics/sequencestatistics.hpp" line="66" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="270" bodyend="296"/>
       </memberdef>
       </sectiondef>

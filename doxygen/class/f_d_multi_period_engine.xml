@@ -7,7 +7,7 @@
         <type>template&lt; class &gt; class</type>
         <declname>Scheme</declname>
         <defname>Scheme</defname>
-        <defval><ref refid="crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
+        <defval>CrankNicolson</defval>
       </param>
     </templateparamlist>
     <location file="/pricingengines/vanilla/fdmultiperiodengine.hpp" line="37" bodyfile="/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="37" bodyend="85"/>

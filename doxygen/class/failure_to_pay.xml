@@ -10,7 +10,7 @@
         <argsstring>(const Period &amp;grace, Real amount=1.e+6)</argsstring>
         <name>FailureToPay</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>grace</declname>
         </param>
         <param>
@@ -28,7 +28,7 @@
         <location file="/experimental/credit/defaulttype.hpp" line="175" bodyfile="/experimental/credit/defaulttype.hpp" bodystart="175" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="failure_to_pay_1ac3c8744f8689e0dd6cc63fc1a72734cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+        <type>const Period &amp;</type>
         <definition>const Period&amp; gracePeriod</definition>
         <argsstring>() const </argsstring>
         <name>gracePeriod</name>

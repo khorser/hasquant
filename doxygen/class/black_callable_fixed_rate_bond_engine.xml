@@ -10,11 +10,11 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;fwdYieldVol, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve)</argsstring>
         <name>BlackCallableFixedRateBondEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>fwdYieldVol</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <briefdescription>
@@ -27,11 +27,11 @@
         <argsstring>(const Handle&lt; CallableBondVolatilityStructure &gt; &amp;yieldVolStructure, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve)</argsstring>
         <name>BlackCallableFixedRateBondEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="callable_bond_volatility_structure" kindref="compound">CallableBondVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; CallableBondVolatilityStructure &gt; &amp;</type>
           <declname>yieldVolStructure</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <briefdescription>

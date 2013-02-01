@@ -12,14 +12,14 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="variance_option_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/experimental/varianceoption/varianceoption.hpp" line="54" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="91" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="variance_option_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
@@ -33,7 +33,7 @@
         <location file="/experimental/varianceoption/varianceoption.hpp" line="56" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="variance_option_1a4487eeb30731c49f34adc51f011ee981" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Payoff &gt;</type>
         <definition>boost::shared_ptr&lt; Payoff &gt; payoff</definition>
         <argsstring>() const </argsstring>
         <name>payoff</name>
@@ -47,7 +47,7 @@
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, Real notional, const Date &amp;startDate, const Date &amp;maturityDate)</argsstring>
         <name>VarianceOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Payoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
@@ -55,11 +55,11 @@
           <declname>notional</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <location file="/experimental/varianceoption/varianceoption.hpp" line="47"/>

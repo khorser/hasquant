@@ -34,7 +34,7 @@
         <argsstring>(const Period &amp;d, Rate k) const </argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -51,7 +51,7 @@
         <argsstring>(const Period &amp;d, Rate k) const </argsstring>
         <name>capPrice</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -66,7 +66,7 @@
         <argsstring>(const Period &amp;d, Rate k) const </argsstring>
         <name>floorPrice</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -81,7 +81,7 @@
         <argsstring>(const Date &amp;d, Rate k) const =0</argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -96,7 +96,7 @@
         <argsstring>(const Date &amp;d, Rate k) const =0</argsstring>
         <name>capPrice</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -111,7 +111,7 @@
         <argsstring>(const Date &amp;d, Rate k) const =0</argsstring>
         <name>floorPrice</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -136,11 +136,11 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -148,15 +148,15 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const Handle&lt; ZeroInflationIndex &gt; &amp;</type>
           <declname>zii</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yts</declname>
         </param>
         <param>
@@ -168,21 +168,21 @@
           <declname>fStrikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>cfMaturities</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>cPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>fPrice</declname>
         </param>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1aa8f85a13387f4bd9882d9246c8184de3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
+        <type>Handle&lt; ZeroInflationIndex &gt;</type>
         <definition>Handle&lt;ZeroInflationIndex&gt; zeroInflationIndex</definition>
         <argsstring>() const </argsstring>
         <name>zeroInflationIndex</name>
@@ -212,21 +212,21 @@
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="117" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="117" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a111b99f9d70e1cfb1bcc9c538603fca5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt;</type>
+        <type>std::vector&lt; Period &gt;</type>
         <definition>virtual std::vector&lt;Period&gt; maturities</definition>
         <argsstring>() const </argsstring>
         <name>maturities</name>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="118" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="118" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1ad7a5f17f95e1110b6496474fe6b7a53a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>virtual const Matrix&amp; capPrices</definition>
         <argsstring>() const </argsstring>
         <name>capPrices</name>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="120" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="120" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1ac94ed3cf05780d7b9ff02e3dae871131" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>virtual const Matrix&amp; floorPrices</definition>
         <argsstring>() const </argsstring>
         <name>floorPrices</name>
@@ -247,19 +247,19 @@
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="124" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="124" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1ac20d3a319fe01f0a90d2786cb0aaf50d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date minDate</definition>
         <argsstring>() const </argsstring>
         <name>minDate</name>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="125" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="125" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1af122932d1bbc419bad4cc59bbc5e55a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date cpiOptionDateFromTenor</definition>
         <argsstring>(const Period &amp;p) const </argsstring>
         <name>cpiOptionDateFromTenor</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>p</declname>
         </param>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="130"/>
@@ -268,7 +268,7 @@
     <briefdescription>
 <para>Provides cpi cap/floor prices by interpolation and put/call parity (not cap/floor/swap* parity). </para>    </briefdescription>
     <detaileddescription>
-<para>The inflation index MUST contain a <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> as this is used to create ATM. Unlike YoY price surfaces we assume that 1) an ATM <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> is available and 2) that it is safe to use it. This is supported by the fact that no stripping is required for CPI cap/floors as they only give one flow.</para><para>cpi cap/floors have a single (one) flow (unlike nominal caps) because they observe cumulative inflation up to their maturity. Options are on CPI(T)/CPI(0) but strikes are quoted for yearly average inflation, so require transformation via (1+quote)^T to obtain actual strikes. These are consistent with ZCIIS quoting conventions.</para><para>The observationLag is that for the referenced instrument prices. Strikes are as-quoted not as-used. </para>    </detaileddescription>
+<para>The inflation index MUST contain a ZeroInflationTermStructure as this is used to create ATM. Unlike YoY price surfaces we assume that 1) an ATM ZeroInflationTermStructure is available and 2) that it is safe to use it. This is supported by the fact that no stripping is required for CPI cap/floors as they only give one flow.</para><para>cpi cap/floors have a single (one) flow (unlike nominal caps) because they observe cumulative inflation up to their maturity. Options are on CPI(T)/CPI(0) but strikes are quoted for yearly average inflation, so require transformation via (1+quote)^T to obtain actual strikes. These are consistent with ZCIIS quoting conventions.</para><para>The observationLag is that for the referenced instrument prices. Strikes are as-quoted not as-used. </para>    </detaileddescription>
     <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="68" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="68" bodyend="155"/>
   </compounddef>
 </doxygen>

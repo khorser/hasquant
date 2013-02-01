@@ -4,7 +4,7 @@
     <compoundname>QuantLib::PenaltyFunction</compoundname>
     <templateparamlist>
       <param>
-        <type>class <ref refid="curve" kindref="compound">Curve</ref></type>
+        <type>class Curve</type>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
@@ -14,7 +14,7 @@
         <argsstring>(Curve *curve, Size initialIndex, helper_iterator rateHelpersStart, helper_iterator rateHelpersEnd)</argsstring>
         <name>PenaltyFunction</name>
         <param>
-          <type><ref refid="curve" kindref="compound">Curve</ref> *</type>
+          <type>Curve *</type>
           <declname>curve</declname>
         </param>
         <param>
@@ -37,18 +37,18 @@
         <argsstring>(const Array &amp;x) const </argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/termstructures/localbootstrap.hpp" line="56" bodyfile="/termstructures/localbootstrap.hpp" bodystart="251" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="penalty_function_1a973ee01e4df8286373f5a0d3e947fc3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt; Array &gt; values</definition>
         <argsstring>(const Array &amp;x) const </argsstring>
         <name>values</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/termstructures/localbootstrap.hpp" line="57" bodyfile="/termstructures/localbootstrap.hpp" bodystart="273" bodyend="294"/>

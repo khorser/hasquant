@@ -14,7 +14,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -22,11 +22,11 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>fixingCalendar</declname>
         </param>
         <param>
@@ -38,26 +38,26 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>gearing</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <location file="/experimental/coupons/proxyibor.hpp" line="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="ibor_index" kindref="compound">IborIndex</ref> calculated as proxy of some other <ref refid="ibor_index" kindref="compound">IborIndex</ref>. </para>    </briefdescription>
+<para>IborIndex calculated as proxy of some other IborIndex. </para>    </briefdescription>
     <location file="/experimental/coupons/proxyibor.hpp" line="32" bodyfile="/experimental/coupons/proxyibor.hpp" bodystart="32" bodyend="52"/>
   </compounddef>
 </doxygen>

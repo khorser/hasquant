@@ -33,7 +33,7 @@
         <argsstring>(const Date &amp;d, Volatility vol, const DayCounter &amp;dc, const Date &amp;referenceDate=Date(), Real atmLevel=Null&lt; Rate &gt;())</argsstring>
         <name>FlatSmileSection</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -41,18 +41,18 @@
           <declname>vol</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>atmLevel</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/volatility/flatsmilesection.hpp" line="39"/>
       </memberdef>
@@ -70,13 +70,13 @@
           <declname>vol</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>atmLevel</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/volatility/flatsmilesection.hpp" line="43"/>
       </memberdef>

@@ -10,7 +10,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Volatility vol, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>BlackCapFloorEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -18,9 +18,9 @@
           <declname>vol</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <location file="/pricingengines/capfloor/blackcapfloorengine.hpp" line="42"/>
       </memberdef>
@@ -30,17 +30,17 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const Handle&lt; Quote &gt; &amp;vol, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>BlackCapFloorEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <location file="/pricingengines/capfloor/blackcapfloorengine.hpp" line="45"/>
       </memberdef>
@@ -50,24 +50,24 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const Handle&lt; OptionletVolatilityStructure &gt; &amp;vol)</argsstring>
         <name>BlackCapFloorEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; OptionletVolatilityStructure &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <location file="/pricingengines/capfloor/blackcapfloorengine.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="black_cap_floor_engine_1aa6d8cf746064bbf8580d58fc2650d977" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YieldTermStructure &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; termStructure</definition>
         <argsstring>()</argsstring>
         <name>termStructure</name>
         <location file="/pricingengines/capfloor/blackcapfloorengine.hpp" line="49" bodyfile="/pricingengines/capfloor/blackcapfloorengine.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="black_cap_floor_engine_1a698565c572484702e3de037f903e329f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;</type>
+        <type>Handle&lt; OptionletVolatilityStructure &gt;</type>
         <definition>Handle&lt;OptionletVolatilityStructure&gt; volatility</definition>
         <argsstring>()</argsstring>
         <name>volatility</name>

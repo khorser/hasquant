@@ -10,9 +10,9 @@
         <argsstring>(const Handle&lt; OptionletVolatilityStructure &gt; &amp;v=Handle&lt; OptionletVolatilityStructure &gt;())</argsstring>
         <name>BlackIborCouponPricer</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; OptionletVolatilityStructure &gt; &amp;</type>
           <declname>v</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; OptionletVolatilityStructure &gt;()</defval>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="88" bodyfile="/cashflows/couponpricer.hpp" bodystart="86" bodyend="88"/>
       </memberdef>

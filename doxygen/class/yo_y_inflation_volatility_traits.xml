@@ -5,7 +5,7 @@
     <includes local="no">/experimental/inflation/piecewiseyoyoptionletvolatility.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="yo_y_inflation_volatility_traits_1af6dd552e8da51da502d6ac15297497fd" prot="public" static="no">
-        <type><ref refid="bootstrap_helper" kindref="compound">BootstrapHelper</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;</type>
+        <type>BootstrapHelper&lt; YoYOptionletVolatilitySurface &gt;</type>
         <definition>typedef BootstrapHelper&lt;YoYOptionletVolatilitySurface&gt; helper</definition>
         <argsstring></argsstring>
         <name>helper</name>
@@ -14,12 +14,12 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="yo_y_inflation_volatility_traits_1a9d9b04d84ff17b4f24e39c77be490a59" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date initialDate</definition>
         <argsstring>(const YoYOptionletVolatilitySurface *s)</argsstring>
         <name>initialDate</name>
         <param>
-          <type>const <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> *</type>
+          <type>const YoYOptionletVolatilitySurface *</type>
           <declname>s</declname>
         </param>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="40" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="40" bodyend="42"/>
@@ -30,7 +30,7 @@
         <argsstring>(const YoYOptionletVolatilitySurface *s)</argsstring>
         <name>initialValue</name>
         <param>
-          <type>const <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> *</type>
+          <type>const YoYOptionletVolatilitySurface *</type>
           <declname>s</declname>
         </param>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="44" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="44" bodyend="50"/>

@@ -9,7 +9,7 @@
         <argsstring>(const CurveState &amp;cs, Size startIndex, Size endIndex, Size numeraireIndex)</argsstring>
         <name>annuity</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -34,7 +34,7 @@
         <argsstring>(const CurveState &amp;cs, Size startIndex, Size endIndex, Size forwardIndex)</argsstring>
         <name>swapDerivative</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -54,12 +54,12 @@
         <location file="/models/marketmodels/swapforwardmappings.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="swap_forward_mappings_1ac52d83cc4d9c5a1a0551bb546d79cfc4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>static Disposable&lt;Matrix&gt; coterminalSwapForwardJacobian</definition>
         <argsstring>(const CurveState &amp;cs)</argsstring>
         <name>coterminalSwapForwardJacobian</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <detaileddescription>
@@ -67,12 +67,12 @@
         <location file="/models/marketmodels/swapforwardmappings.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="swap_forward_mappings_1a847fa61ca5255b5b073c3389e6212f74" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>static Disposable&lt;Matrix&gt; coterminalSwapZedMatrix</definition>
         <argsstring>(const CurveState &amp;cs, const Spread displacement)</argsstring>
         <name>coterminalSwapZedMatrix</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -84,12 +84,12 @@
         <location file="/models/marketmodels/swapforwardmappings.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="swap_forward_mappings_1ab2535fdf165dae0bc5b40cedaa3b4baa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>static Disposable&lt;Matrix&gt; coinitialSwapForwardJacobian</definition>
         <argsstring>(const CurveState &amp;cs)</argsstring>
         <name>coinitialSwapForwardJacobian</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <detaileddescription>
@@ -97,12 +97,12 @@
         <location file="/models/marketmodels/swapforwardmappings.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="swap_forward_mappings_1aba40ea0c703b159921cce8c1312bd854" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>static Disposable&lt;Matrix&gt; coinitialSwapZedMatrix</definition>
         <argsstring>(const CurveState &amp;cs, const Spread displacement)</argsstring>
         <name>coinitialSwapZedMatrix</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -114,12 +114,12 @@
         <location file="/models/marketmodels/swapforwardmappings.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="swap_forward_mappings_1a1c7da6df009ef66bc1f5dce4485f13d8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>static Disposable&lt;Matrix&gt; cmSwapForwardJacobian</definition>
         <argsstring>(const CurveState &amp;cs, const Size spanningForwards)</argsstring>
         <name>cmSwapForwardJacobian</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -131,12 +131,12 @@
         <location file="/models/marketmodels/swapforwardmappings.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="swap_forward_mappings_1a4d62b4cfbe182923a867b97597168947" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>static Disposable&lt;Matrix&gt; cmSwapZedMatrix</definition>
         <argsstring>(const CurveState &amp;cs, const Size spanningForwards, const Spread displacement)</argsstring>
         <name>cmSwapZedMatrix</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -157,7 +157,7 @@
         <argsstring>(const MarketModel &amp;volStructure, Size startIndex, Size endIndex)</argsstring>
         <name>swaptionImpliedVolatility</name>
         <param>
-          <type>const <ref refid="market_model" kindref="compound">MarketModel</ref> &amp;</type>
+          <type>const MarketModel &amp;</type>
           <declname>volStructure</declname>
         </param>
         <param>

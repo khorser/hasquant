@@ -21,7 +21,7 @@
           <declname>standardDeviation</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; PlainVanillaPayoff &gt;</type>
           <declname>payoff</declname>
         </param>
         <param>

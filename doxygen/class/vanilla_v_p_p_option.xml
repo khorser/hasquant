@@ -42,7 +42,7 @@
           <declname>initialState</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="swing_exercise" kindref="compound">SwingExercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SwingExercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <location file="/experimental/finitedifferences/vanillavppoption.hpp" line="41"/>

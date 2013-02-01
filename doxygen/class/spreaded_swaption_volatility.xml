@@ -5,14 +5,14 @@
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="spreaded_swaption_volatility_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
+        <type>DayCounter</type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
         <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="41" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_swaption_volatility_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
@@ -26,14 +26,14 @@
         <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="43" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_swaption_volatility_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date &amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
         <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="44" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_swaption_volatility_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
+        <type>Calendar</type>
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
@@ -67,29 +67,29 @@
       <sectiondef kind="user-defined">
       <header>SwaptionVolatilityStructure interface</header>
       <memberdef kind="function" id="spreaded_swaption_volatility_1aab612f40ee132a09e19f67c16e502cdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+        <type>const Period &amp;</type>
         <definition>const Period &amp; maxSwapTenor</definition>
         <argsstring>() const </argsstring>
         <name>maxSwapTenor</name>
         <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="55" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="110" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_swaption_volatility_1ad755da1a3ef6e55fff3e0777ab075948" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor) const </argsstring>
         <name>smileSectionImpl</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_swaption_volatility_1a04f2608add446a8af9cfe54291488e82" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(Time optionTime, Time swapLength) const </argsstring>
         <name>smileSectionImpl</name>
@@ -109,11 +109,11 @@
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor, Rate strike) const </argsstring>
         <name>volatilityImpl</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -149,10 +149,10 @@
         <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;, const Handle&lt; Quote &gt; &amp;spread)</argsstring>
         <name>SpreadedSwaptionVolatility</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; SwaptionVolatilityStructure &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="37"/>

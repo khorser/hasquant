@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process, Real logStrikeSpacing)</argsstring>
         <name>FFTEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -39,13 +39,13 @@
         <argsstring>(const std::vector&lt; boost::shared_ptr&lt; Instrument &gt; &gt; &amp;optionList)</argsstring>
         <name>precalculate</name>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="instrument" kindref="compound">Instrument</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; Instrument &gt; &gt; &amp;</type>
           <declname>optionList</declname>
         </param>
         <location file="/experimental/variancegamma/fftengine.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="f_f_t_engine_1a957725ec1d11493d09636c2a11701d87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::auto_ptr&lt; <ref refid="f_f_t_engine" kindref="compound">FFTEngine</ref> &gt;</type>
+        <type>std::auto_ptr&lt; FFTEngine &gt;</type>
         <definition>virtual std::auto_ptr&lt;FFTEngine&gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>

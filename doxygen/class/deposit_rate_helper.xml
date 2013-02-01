@@ -11,7 +11,7 @@
         <argsstring>(YieldTermStructure *)</argsstring>
         <name>setTermStructure</name>
         <param>
-          <type><ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
+          <type>YieldTermStructure *</type>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="124"/>
       </memberdef>
@@ -26,11 +26,11 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;rate, const Period &amp;tenor, Natural fixingDays, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter)</argsstring>
         <name>DepositRateHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -50,7 +50,7 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="109"/>
@@ -65,7 +65,7 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -73,7 +73,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -85,7 +85,7 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="116"/>
@@ -96,11 +96,11 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;rate, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex)</argsstring>
         <name>DepositRateHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="118"/>
@@ -115,7 +115,7 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="120"/>

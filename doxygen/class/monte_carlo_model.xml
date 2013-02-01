@@ -51,7 +51,7 @@
         <location file="/methods/montecarlo/montecarlomodel.hpp" line="56" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="monte_carlo_model_1a204507d73ca2954ec4c0b27373d2c40c" prot="public" static="no">
-        <type><ref refid="sample" kindref="compound">path_generator_type::sample_type</ref></type>
+        <type>path_generator_type::sample_type</type>
         <definition>typedef path_generator_type::sample_type sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -136,7 +136,7 @@
     <briefdescription>
 <para>General-purpose Monte Carlo model for path samples. </para>    </briefdescription>
     <detaileddescription>
-<para>The template arguments of this class correspond to available policies for the particular model to be instantiated<mdash/>i.e., whether it is single- or multi-asset, or whether it should use pseudo-random or low-discrepancy numbers for path generation. Such decisions are grouped in trait classes so as to be orthogonal<mdash/>see <ref refid="mctraits_8hpp" kindref="compound">mctraits.hpp</ref> for examples.</para><para>The constructor accepts two safe references, i.e. two smart pointers, one to a path generator and the other to a path pricer. In case of control variate technique the user should provide the additional control option, namely the option path pricer and the option value. </para>    </detaileddescription>
+<para>The template arguments of this class correspond to available policies for the particular model to be instantiated<mdash/>i.e., whether it is single- or multi-asset, or whether it should use pseudo-random or low-discrepancy numbers for path generation. Such decisions are grouped in trait classes so as to be orthogonal<mdash/>see mctraits.hpp for examples.</para><para>The constructor accepts two safe references, i.e. two smart pointers, one to a path generator and the other to a path pricer. In case of control variate technique the user should provide the additional control option, namely the option path pricer and the option value. </para>    </detaileddescription>
     <location file="/methods/montecarlo/montecarlomodel.hpp" line="51" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="51" bodyend="92"/>
   </compounddef>
 </doxygen>

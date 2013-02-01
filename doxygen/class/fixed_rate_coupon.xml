@@ -11,7 +11,7 @@
         <argsstring>(const Date &amp;paymentDate, Real nominal, Rate rate, const DayCounter &amp;dayCounter, const Date &amp;accrualStartDate, const Date &amp;accrualEndDate, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date())</argsstring>
         <name>FixedRateCoupon</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -23,26 +23,26 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>accrualStartDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>accrualEndDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="49"/>
       </memberdef>
@@ -52,7 +52,7 @@
         <argsstring>(const Date &amp;paymentDate, Real nominal, const InterestRate &amp;interestRate, const Date &amp;accrualStartDate, const Date &amp;accrualEndDate, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date())</argsstring>
         <name>FixedRateCoupon</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -60,26 +60,26 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>interestRate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>accrualStartDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>accrualEndDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="56"/>
       </memberdef>
@@ -90,7 +90,7 @@
       <sectiondef kind="user-defined">
       <header>Coupon interface</header>
       <memberdef kind="function" id="fixed_rate_coupon_1a5634e3d28452e24584f5db12be063f6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="interest_rate" kindref="compound">InterestRate</ref></type>
+        <type>InterestRate</type>
         <definition>InterestRate interestRate</definition>
         <argsstring>() const </argsstring>
         <name>interestRate</name>

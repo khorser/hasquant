@@ -9,7 +9,7 @@
         <argsstring>(boost::shared_ptr&lt; MarketModel &gt; inputModel, Size startIndex, Size endIndex)</argsstring>
         <name>SwaptionPseudoDerivative</name>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; MarketModel &gt;</type>
           <declname>inputModel</declname>
         </param>
         <param>
@@ -23,7 +23,7 @@
         <location file="/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="swaption_pseudo_derivative_1a061575e2908a30f5f646b4f4297db0bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; varianceDerivative</definition>
         <argsstring>(Size i) const </argsstring>
         <name>varianceDerivative</name>
@@ -34,7 +34,7 @@
         <location file="/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="swaption_pseudo_derivative_1a6f48fc2301b8f7e4a4e0c28e7d55407a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; volatilityDerivative</definition>
         <argsstring>(Size i) const </argsstring>
         <name>volatilityDerivative</name>

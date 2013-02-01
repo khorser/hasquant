@@ -18,7 +18,7 @@
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; Shape &gt; &amp;shape=boost::shared_ptr&lt; Shape &gt;(), Size direction=0)</argsstring>
         <name>FdmExpExtOUInnerValueCalculator</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Payoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>

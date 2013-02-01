@@ -5,26 +5,26 @@
     <includes local="no">/termstructures/yield/forwardstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <description><para>See the TermStructure documentation for issues regarding constructors. </para></description>
       <memberdef kind="function" id="forward_rate_structure_1ab9b14b3deb94129175d20e45821f61fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ForwardRateStructure</definition>
         <argsstring>(const DayCounter &amp;dayCounter=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>ForwardRateStructure</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/yield/forwardstructure.hpp" line="54"/>
       </memberdef>
@@ -34,28 +34,28 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;cal=Calendar(), const DayCounter &amp;dayCounter=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>ForwardRateStructure</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
-          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval>Calendar()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/yield/forwardstructure.hpp" line="60"/>
       </memberdef>
@@ -69,23 +69,23 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/yield/forwardstructure.hpp" line="66"/>
       </memberdef>
@@ -124,7 +124,7 @@
     <briefdescription>
 <para>Forward-rate term structure </para>    </briefdescription>
     <detaileddescription>
-<para>This abstract class acts as an adapter to <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> allowing the programmer to implement only the <computeroutput>forwardImpl(Time)</computeroutput> method in derived classes.</para><para>Zero yields and discounts are calculated from forwards.</para><para><ref refid="forward" kindref="compound">Forward</ref> rates are assumed to be annual continuous compounding. </para>    </detaileddescription>
+<para>This abstract class acts as an adapter to YieldTermStructure allowing the programmer to implement only the <computeroutput>forwardImpl(Time)</computeroutput> method in derived classes.</para><para>Zero yields and discounts are calculated from forwards.</para><para>Forward rates are assumed to be annual continuous compounding. </para>    </detaileddescription>
     <location file="/termstructures/yield/forwardstructure.hpp" line="44" bodyfile="/termstructures/yield/forwardstructure.hpp" bodystart="44" bodyend="100"/>
   </compounddef>
 </doxygen>

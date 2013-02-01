@@ -9,11 +9,11 @@
         <argsstring>(const boost::shared_ptr&lt; ExtOUWithJumpsProcess &gt; &amp;p, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, Size tGrid=50, Size xGrid=200, Size yGrid=50, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdExtOUJumpVanillaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ExtOUWithJumpsProcess &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
           <declname>rTS</declname>
         </param>
         <param>

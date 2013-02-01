@@ -11,7 +11,7 @@
         <argsstring>(const boost::shared_ptr&lt; Parameter::Impl &gt; &amp;impl)</argsstring>
         <name>TermStructureFittingParameter</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="parameter_1_1_impl" kindref="compound">Parameter::Impl</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Parameter::Impl &gt; &amp;</type>
           <declname>impl</declname>
         </param>
         <location file="/models/parameter.hpp" line="189" bodyfile="/models/parameter.hpp" bodystart="187" bodyend="189"/>
@@ -22,7 +22,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;term)</argsstring>
         <name>TermStructureFittingParameter</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>term</declname>
         </param>
         <location file="/models/parameter.hpp" line="196" bodyfile="/models/parameter.hpp" bodystart="191" bodyend="196"/>

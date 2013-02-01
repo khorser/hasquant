@@ -19,7 +19,7 @@
         <argsstring>(const Date &amp;referenceDate, Volatility volatility, const DayCounter &amp;dayCounter)</argsstring>
         <name>LocalConstantVol</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -27,7 +27,7 @@
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="43" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="77" bodyend="82"/>
@@ -38,15 +38,15 @@
         <argsstring>(const Date &amp;referenceDate, const Handle&lt; Quote &gt; &amp;volatility, const DayCounter &amp;dayCounter)</argsstring>
         <name>LocalConstantVol</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="46" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="84" bodyend="90"/>
@@ -61,7 +61,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <defname>calendar</defname>
         </param>
         <param>
@@ -69,7 +69,7 @@
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="50" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="92" bodyend="98"/>
@@ -84,15 +84,15 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <defname>calendar</defname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="54" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="100" bodyend="107"/>
@@ -101,7 +101,7 @@
     <briefdescription>
 <para>Constant local volatility, no time-strike dependence. </para>    </briefdescription>
     <detaileddescription>
-<para>This class implements the LocalVolatilityTermStructure interface for a constant local volatility (no time/asset dependence). Local volatility and Black volatility are the same when volatility is at most time dependent, so this class is basically a proxy for <ref refid="black_volatility_term_structure" kindref="compound">BlackVolatilityTermStructure</ref>. </para>    </detaileddescription>
+<para>This class implements the LocalVolatilityTermStructure interface for a constant local volatility (no time/asset dependence). Local volatility and Black volatility are the same when volatility is at most time dependent, so this class is basically a proxy for BlackVolatilityTermStructure. </para>    </detaileddescription>
     <location file="/termstructures/volatility/equityfx/localconstantvol.hpp" line="39" bodyfile="/termstructures/volatility/equityfx/localconstantvol.hpp" bodystart="39" bodyend="73"/>
   </compounddef>
 </doxygen>

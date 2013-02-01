@@ -18,19 +18,19 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>fixedSchedule</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>floatSchedule</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedDayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>floatDayCounter</declname>
         </param>
         <param>
@@ -42,17 +42,17 @@
           <declname>recoveryRate_</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yieldTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;</type>
           <declname>defaultTS</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>coupon</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <location file="/experimental/credit/riskyassetswap.hpp" line="48"/>
       </memberdef>

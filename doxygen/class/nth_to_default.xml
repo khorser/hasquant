@@ -14,7 +14,7 @@
           <declname>n</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; DefaultProbabilityTermStructure &gt; &gt; &amp;</type>
           <declname>probabilities</declname>
         </param>
         <param>
@@ -22,7 +22,7 @@
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt; &amp;</type>
+          <type>const Handle&lt; OneFactorCopula &gt; &amp;</type>
           <declname>copula</declname>
         </param>
         <param>
@@ -34,7 +34,7 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>premiumSchedule</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
           <declname>premiumRate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -50,17 +50,17 @@
           <declname>settlePremiumAccrual</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yieldTS</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>integrationStepSize</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; Claim &gt;</type>
           <declname>claim</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; Claim &gt;()</defval>
         </param>
         <location file="/experimental/credit/nthtodefault.hpp" line="85"/>
       </memberdef>
@@ -86,7 +86,7 @@
         <location file="/experimental/credit/nthtodefault.hpp" line="93" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="93" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="nth_to_default_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
+        <type>DayCounter</type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>

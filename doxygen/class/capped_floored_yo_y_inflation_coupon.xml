@@ -55,18 +55,18 @@
         <argsstring>(const boost::shared_ptr&lt; YoYInflationCoupon &gt; &amp;underlying, Rate cap=Null&lt; Rate &gt;(), Rate floor=Null&lt; Rate &gt;())</argsstring>
         <name>CappedFlooredYoYInflationCoupon</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_coupon" kindref="compound">YoYInflationCoupon</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationCoupon &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>cap</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>floor</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="72"/>
       </memberdef>
@@ -76,7 +76,7 @@
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;index, const Period &amp;observationLag, const DayCounter &amp;dayCounter, Real gearing=1.0, Spread spread=0.0, const Rate cap=Null&lt; Rate &gt;(), const Rate floor=Null&lt; Rate &gt;(), const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date())</argsstring>
         <name>CappedFlooredYoYInflationCoupon</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -84,11 +84,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -96,15 +96,15 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -120,22 +120,22 @@
         <param>
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>cap</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>floor</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="92" bodyfile="/cashflows/capflooredinflationcoupon.hpp" bodystart="75" bodyend="94"/>
       </memberdef>
@@ -159,7 +159,7 @@
         <argsstring>(const boost::shared_ptr&lt; YoYInflationCouponPricer &gt; &amp;)</argsstring>
         <name>setPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_coupon_pricer" kindref="compound">YoYInflationCouponPricer</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationCouponPricer &gt; &amp;</type>
         </param>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="123"/>
       </memberdef>

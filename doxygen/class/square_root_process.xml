@@ -30,9 +30,9 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; discretization &gt; &amp;</type>
           <declname>d</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
+          <defval>boost::shared_ptr&lt; discretization &gt;(new EulerDiscretization)</defval>
         </param>
         <location file="/processes/squarerootprocess.hpp" line="47"/>
       </memberdef>

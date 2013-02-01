@@ -9,7 +9,7 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="default_density_1_1curve_1ab95db33b409abd5e18ca57f63769a613" prot="public" static="no">
-        <type><ref refid="interpolated_default_density_curve" kindref="compound">InterpolatedDefaultDensityCurve</ref>&lt; Interpolator &gt;</type>
+        <type>InterpolatedDefaultDensityCurve&lt; Interpolator &gt;</type>
         <definition>typedef InterpolatedDefaultDensityCurve&lt;Interpolator&gt; type</definition>
         <argsstring></argsstring>
         <name>type</name>

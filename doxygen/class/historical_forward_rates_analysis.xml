@@ -11,7 +11,7 @@
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="197" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="197" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="historical_forward_rates_analysis_1a86e8507c98d8c11ca6f0eacc2a057717" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Date&gt;&amp; skippedDates</definition>
         <argsstring>() const =0</argsstring>
         <name>skippedDates</name>
@@ -25,7 +25,7 @@
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="199"/>
       </memberdef>
       <memberdef kind="function" id="historical_forward_rates_analysis_1aa4eb422c5fe9da2b42e8212141e288cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Date&gt;&amp; failedDates</definition>
         <argsstring>() const =0</argsstring>
         <name>failedDates</name>
@@ -39,7 +39,7 @@
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="201"/>
       </memberdef>
       <memberdef kind="function" id="historical_forward_rates_analysis_1a19c60e1c510918a6944301bdddf6c90f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Period &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Period&gt;&amp; fixingPeriods</definition>
         <argsstring>() const =0</argsstring>
         <name>fixingPeriods</name>

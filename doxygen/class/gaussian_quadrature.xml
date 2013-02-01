@@ -14,7 +14,7 @@
           <declname>n</declname>
         </param>
         <param>
-          <type>const <ref refid="gaussian_orthogonal_polynomial" kindref="compound">GaussianOrthogonalPolynomial</ref> &amp;</type>
+          <type>const GaussianOrthogonalPolynomial &amp;</type>
           <declname>p</declname>
         </param>
         <location file="/math/integrals/gaussianquadratures.hpp" line="50"/>
@@ -43,14 +43,14 @@
         <location file="/math/integrals/gaussianquadratures.hpp" line="61" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="gaussian_quadrature_1a06b451105824df2649badde39fc7e7fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; weights</definition>
         <argsstring>()</argsstring>
         <name>weights</name>
         <location file="/math/integrals/gaussianquadratures.hpp" line="62" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="gaussian_quadrature_1a7300ae12f41806f24442c35070669f10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; x</definition>
         <argsstring>()</argsstring>
         <name>x</name>

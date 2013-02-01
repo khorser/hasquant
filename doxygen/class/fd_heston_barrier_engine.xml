@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Size tGrid=100, Size xGrid=100, Size vGrid=50, Size dampingSteps=0, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdHestonBarrierEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Finite-Differences Heston <ref refid="barrier" kindref="compound">Barrier</ref> <ref refid="option" kindref="compound">Option</ref> engine. </para>    </briefdescription>
+<para>Finite-Differences Heston Barrier Option engine. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000093"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/pricingengines/barrier/fdhestonbarrierengine.hpp" line="50" bodyfile="/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="47" bodyend="64"/>

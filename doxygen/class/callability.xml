@@ -31,7 +31,7 @@
         <argsstring>(const Price &amp;price, Type type, const Date &amp;date)</argsstring>
         <name>Callability</name>
         <param>
-          <type>const <ref refid="callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
+          <type>const Price &amp;</type>
           <declname>price</declname>
         </param>
         <param>
@@ -39,13 +39,13 @@
           <declname>type</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/instruments/callabilityschedule.hpp" line="58" bodyfile="/instruments/callabilityschedule.hpp" bodystart="57" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="callability_1a45e2518616fcb5eda062598143213af1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
+        <type>const Price &amp;</type>
         <definition>const Price&amp; price</definition>
         <argsstring>() const </argsstring>
         <name>price</name>

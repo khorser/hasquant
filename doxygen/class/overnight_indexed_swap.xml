@@ -41,7 +41,7 @@
         <location file="/instruments/overnightindexedswap.hpp" line="65" bodyfile="/instruments/overnightindexedswap.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="overnight_indexed_swap_1a683c95096eea61b1a1ed14d32288150d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter&amp; fixedDayCount</definition>
         <argsstring>()</argsstring>
         <name>fixedDayCount</name>
@@ -150,7 +150,7 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -158,7 +158,7 @@
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedDC</declname>
         </param>
         <param>
@@ -186,7 +186,7 @@
           <declname>nominals</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -194,7 +194,7 @@
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedDC</declname>
         </param>
         <param>

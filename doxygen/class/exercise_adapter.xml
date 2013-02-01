@@ -19,7 +19,7 @@
         <location file="/models/marketmodels/products/multistep/exerciseadapter.hpp" line="37" bodyfile="/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="exercise_adapter_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <type>const EvolutionDescription &amp;</type>
         <definition>const EvolutionDescription &amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
@@ -45,7 +45,7 @@
         <argsstring>(const CurveState &amp;, std::vector&lt; Size &gt; &amp;, std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;)</argsstring>
         <name>nextTimeStep</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
         </param>
         <param>
           <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
@@ -56,7 +56,7 @@
         <location file="/models/marketmodels/products/multistep/exerciseadapter.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="exercise_adapter_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::auto_ptr&lt; <ref refid="market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &gt;</type>
+        <type>std::auto_ptr&lt; MarketModelMultiProduct &gt;</type>
         <definition>std::auto_ptr&lt;MarketModelMultiProduct&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
@@ -80,7 +80,7 @@
         <argsstring>(const Clone&lt; MarketModelExerciseValue &gt; &amp;exercise, Size numberOfProducts=1)</argsstring>
         <name>ExerciseAdapter</name>
         <param>
-          <type>const <ref refid="clone" kindref="compound">Clone</ref>&lt; MarketModelExerciseValue &gt; &amp;</type>
+          <type>const Clone&lt; MarketModelExerciseValue &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>

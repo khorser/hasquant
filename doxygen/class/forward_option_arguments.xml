@@ -19,7 +19,7 @@
         <location file="/instruments/forwardvanillaoption.hpp" line="42" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="forward_option_arguments_1acce77eb25acc2dd928c6728a14602ad3" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date resetDate</definition>
         <argsstring></argsstring>
         <name>resetDate</name>

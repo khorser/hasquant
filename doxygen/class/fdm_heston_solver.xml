@@ -9,7 +9,7 @@
         <argsstring>(const Handle&lt; HestonProcess &gt; &amp;process, const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer(), const Handle&lt; FdmQuantoHelper &gt; &amp;quantoHelper=Handle&lt; FdmQuantoHelper &gt;())</argsstring>
         <name>FdmHestonSolver</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const Handle&lt; HestonProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -22,9 +22,9 @@
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt; &amp;</type>
+          <type>const Handle&lt; FdmQuantoHelper &gt; &amp;</type>
           <declname>quantoHelper</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt;()</defval>
+          <defval>Handle&lt; FdmQuantoHelper &gt;()</defval>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="47"/>
       </memberdef>

@@ -10,16 +10,16 @@
         <argsstring>(const boost::shared_ptr&lt; PathPayoff &gt; &amp;, const std::vector&lt; Size &gt; &amp;, const std::vector&lt; Handle&lt; YieldTermStructure &gt; &gt; &amp;, const Array &amp;, Size, LsmBasisSystem::PolynomType)</argsstring>
         <name>LongstaffSchwartzMultiPathPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="path_payoff" kindref="compound">PathPayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; PathPayoff &gt; &amp;</type>
         </param>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; YieldTermStructure &gt; &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

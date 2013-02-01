@@ -10,7 +10,7 @@
         <argsstring>(const Matrix &amp;covarianceMatrix, Real tolerance=1.0e-12)</argsstring>
         <name>CovarianceDecomposition</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>covarianceMatrix</declname>
         </param>
         <param>
@@ -24,25 +24,25 @@
         <location file="/math/matrixutilities/getcovariance.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="covariance_decomposition_1acc058c47207cbd07511c380d0c4e4eb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; variances</definition>
         <argsstring>() const </argsstring>
         <name>variances</name>
         <detaileddescription>
-<para>returns the variances <ref refid="array" kindref="compound">Array</ref> </para>        </detaileddescription>
+<para>returns the variances Array </para>        </detaileddescription>
         <location file="/math/matrixutilities/getcovariance.hpp" line="102" bodyfile="/math/matrixutilities/getcovariance.hpp" bodystart="102" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="covariance_decomposition_1ac552baaa07f4c0775024d08fd5dd55a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; standardDeviations</definition>
         <argsstring>() const </argsstring>
         <name>standardDeviations</name>
         <detaileddescription>
-<para>returns the standard deviations <ref refid="array" kindref="compound">Array</ref> </para>        </detaileddescription>
+<para>returns the standard deviations Array </para>        </detaileddescription>
         <location file="/math/matrixutilities/getcovariance.hpp" line="104" bodyfile="/math/matrixutilities/getcovariance.hpp" bodystart="104" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="covariance_decomposition_1ae5ed4f9cce250d01778cf8d213fa8309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; correlationMatrix</definition>
         <argsstring>() const </argsstring>
         <name>correlationMatrix</name>

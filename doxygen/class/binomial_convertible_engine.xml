@@ -15,7 +15,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps)</argsstring>
         <name>BinomialConvertibleEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

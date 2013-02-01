@@ -24,15 +24,15 @@
         <argsstring>(const TimeGrid &amp;times, const boost::shared_ptr&lt; EarlyExercisePathPricer&lt; PathType &gt; &gt; &amp;, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;termStructure)</argsstring>
         <name>LongstaffSchwartzPathPricer</name>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>times</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="early_exercise_path_pricer" kindref="compound">EarlyExercisePathPricer</ref>&lt; PathType &gt; &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; EarlyExercisePathPricer&lt; PathType &gt; &gt; &amp;</type>
           <defname>pathPricer</defname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <location file="/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="57" bodyfile="/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="75" bodyend="90"/>

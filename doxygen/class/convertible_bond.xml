@@ -27,7 +27,7 @@
         <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="60" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="convertible_bond_1abb5f659097e6accb13e6b5693baec5e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+        <type>const Handle&lt; Quote &gt; &amp;</type>
         <definition>const Handle&lt;Quote&gt;&amp; creditSpread</definition>
         <argsstring>() const </argsstring>
         <name>creditSpread</name>

@@ -13,16 +13,16 @@
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;, Size timeSteps, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>TreeSwaptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ShortRateModel &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>timeSteps</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/pricingengines/swaption/treeswaptionengine.hpp" line="56"/>
       </memberdef>
@@ -32,16 +32,16 @@
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;, const TimeGrid &amp;timeGrid, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>TreeSwaptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ShortRateModel &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/pricingengines/swaption/treeswaptionengine.hpp" line="60"/>
       </memberdef>
@@ -51,16 +51,16 @@
         <argsstring>(const Handle&lt; ShortRateModel &gt; &amp;, Size timeSteps, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>TreeSwaptionEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const Handle&lt; ShortRateModel &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>timeSteps</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/pricingengines/swaption/treeswaptionengine.hpp" line="64"/>
       </memberdef>

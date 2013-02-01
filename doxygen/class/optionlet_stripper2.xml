@@ -13,11 +13,11 @@
         <argsstring>(const boost::shared_ptr&lt; OptionletStripper1 &gt; &amp;optionletStripper1, const Handle&lt; CapFloorTermVolCurve &gt; &amp;atmCapFloorTermVolCurve)</argsstring>
         <name>OptionletStripper2</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="optionlet_stripper1" kindref="compound">OptionletStripper1</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; OptionletStripper1 &gt; &amp;</type>
           <declname>optionletStripper1</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="cap_floor_term_vol_curve" kindref="compound">CapFloorTermVolCurve</ref> &gt; &amp;</type>
+          <type>const Handle&lt; CapFloorTermVolCurve &gt; &amp;</type>
           <declname>atmCapFloorTermVolCurve</declname>
         </param>
         <location file="/termstructures/volatility/optionlet/optionletstripper2.hpp" line="47"/>
@@ -45,7 +45,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>Helper class to extend an <ref refid="optionlet_stripper1" kindref="compound">OptionletStripper1</ref> object stripping additional optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) At-The-Money term volatilities of a <ref refid="cap_floor_term_vol_curve" kindref="compound">CapFloorTermVolCurve</ref>. </para>    </detaileddescription>
+<para>Helper class to extend an OptionletStripper1 object stripping additional optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) At-The-Money term volatilities of a CapFloorTermVolCurve. </para>    </detaileddescription>
     <location file="/termstructures/volatility/optionlet/optionletstripper2.hpp" line="42" bodyfile="/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="42" bodyend="83"/>
   </compounddef>
 </doxygen>

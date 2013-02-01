@@ -19,7 +19,7 @@
         <location file="/models/marketmodels/models/fwdperiodadapter.hpp" line="41" bodyfile="/models/marketmodels/models/fwdperiodadapter.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="fwd_period_adapter_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <type>const EvolutionDescription &amp;</type>
         <definition>const EvolutionDescription &amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
@@ -47,7 +47,7 @@
         <location file="/models/marketmodels/models/fwdperiodadapter.hpp" line="45" bodyfile="/models/marketmodels/models/fwdperiodadapter.hpp" bodystart="84" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="fwd_period_adapter_1a4ae7300f2e5a07c864d4652df785b9ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix &amp; pseudoRoot</definition>
         <argsstring>(Size i) const </argsstring>
         <name>pseudoRoot</name>
@@ -65,7 +65,7 @@
         <argsstring>(const boost::shared_ptr&lt; MarketModel &gt; &amp;largeModel, Size period, Size offset, const std::vector&lt; Spread &gt; &amp;newDisplacements_)</argsstring>
         <name>FwdPeriodAdapter</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModel &gt; &amp;</type>
           <declname>largeModel</declname>
         </param>
         <param>

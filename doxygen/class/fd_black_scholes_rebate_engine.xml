@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size tGrid=100, Size xGrid=100, Size dampingSteps=0, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Douglas(), bool localVol=false, Real illegalLocalVolOverwrite=-Null&lt; Real &gt;())</argsstring>
         <name>FdBlackScholesRebateEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -41,7 +41,7 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>illegalLocalVolOverwrite</declname>
-          <defval>-<ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>-Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <location file="/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="50"/>
       </memberdef>

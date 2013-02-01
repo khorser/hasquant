@@ -13,12 +13,12 @@
         <location file="/indexes/swapindex.hpp" line="111" bodyfile="/indexes/swapindex.hpp" bodystart="137" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="overnight_indexed_swap_index_1a3c9a90446e2ee0b8cafbf57b9f4c671b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="overnight_indexed_swap" kindref="compound">OvernightIndexedSwap</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; OvernightIndexedSwap &gt;</type>
         <definition>boost::shared_ptr&lt;OvernightIndexedSwap&gt; underlyingSwap</definition>
         <argsstring>(const Date &amp;fixingDate) const </argsstring>
         <name>underlyingSwap</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <detaileddescription>
@@ -37,7 +37,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -45,7 +45,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type><ref refid="currency" kindref="compound">Currency</ref></type>
+          <type>Currency</type>
           <declname>currency</declname>
         </param>
         <param>

@@ -11,7 +11,7 @@
         <argsstring>(YieldTermStructure *)</argsstring>
         <name>setTermStructure</name>
         <param>
-          <type><ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
+          <type>YieldTermStructure *</type>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="251"/>
       </memberdef>
@@ -26,14 +26,14 @@
         <location file="/termstructures/yield/ratehelpers.hpp" line="255" bodyfile="/termstructures/yield/ratehelpers.hpp" bodystart="320" bodyend="322"/>
       </memberdef>
       <memberdef kind="function" id="swap_rate_helper_1a62105f0ff1a8282281c052209b2014a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; VanillaSwap &gt;</type>
         <definition>boost::shared_ptr&lt; VanillaSwap &gt; swap</definition>
         <argsstring>() const </argsstring>
         <name>swap</name>
         <location file="/termstructures/yield/ratehelpers.hpp" line="256" bodyfile="/termstructures/yield/ratehelpers.hpp" bodystart="324" bodyend="326"/>
       </memberdef>
       <memberdef kind="function" id="swap_rate_helper_1a0d070b30d31e7aa87e1f4d67f4ee289d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+        <type>const Period &amp;</type>
         <definition>const Period &amp; forwardStart</definition>
         <argsstring>() const </argsstring>
         <name>forwardStart</name>
@@ -50,27 +50,27 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;rate, const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndex, const Handle&lt; Quote &gt; &amp;spread=Handle&lt; Quote &gt;(), const Period &amp;fwdStart=0 *Days, const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>SwapRateHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SwapIndex &gt; &amp;</type>
           <declname>swapIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval>Handle&lt; Quote &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>fwdStart</declname>
           <defval>0 *Days</defval>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountingCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="212"/>
       </memberdef>
@@ -80,15 +80,15 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;rate, const Period &amp;tenor, const Calendar &amp;calendar, Frequency fixedFrequency, BusinessDayConvention fixedConvention, const DayCounter &amp;fixedDayCount, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, const Handle&lt; Quote &gt; &amp;spread=Handle&lt; Quote &gt;(), const Period &amp;fwdStart=0 *Days, const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>SwapRateHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -100,27 +100,27 @@
           <declname>fixedConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedDayCount</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval>Handle&lt; Quote &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>fwdStart</declname>
           <defval>0 *Days</defval>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountingCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="226"/>
       </memberdef>
@@ -134,11 +134,11 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -150,27 +150,27 @@
           <declname>fixedConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedDayCount</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval>Handle&lt; Quote &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>fwdStart</declname>
           <defval>0 *Days</defval>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountingCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="240"/>
       </memberdef>
@@ -184,23 +184,23 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SwapIndex &gt; &amp;</type>
           <declname>swapIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval>Handle&lt; Quote &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>fwdStart</declname>
           <defval>0 *Days</defval>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountingCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="247"/>
       </memberdef>
@@ -208,7 +208,7 @@
     <briefdescription>
 <para>Rate helper for bootstrapping over swap rates. </para>    </briefdescription>
     <detaileddescription>
-<para><xrefsect id="todo_1_todo000067"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>use input <ref refid="swap_index" kindref="compound">SwapIndex</ref> to create the swap </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para><xrefsect id="todo_1_todo000067"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>use input SwapIndex to create the swap </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/termstructures/yield/ratehelpers.hpp" line="204" bodyfile="/termstructures/yield/ratehelpers.hpp" bodystart="204" bodyend="277"/>
   </compounddef>
 </doxygen>

@@ -13,11 +13,11 @@
         <argsstring>(const boost::shared_ptr&lt; Index &gt; &amp;index, const Date &amp;fixingDate)</argsstring>
         <name>ForwardValueQuote</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="index" kindref="compound">Index</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Index &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <location file="/quotes/forwardvaluequote.hpp" line="38"/>

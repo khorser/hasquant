@@ -69,7 +69,7 @@
         <argsstring>(const FloatingRateCoupon &amp;coupon)=0</argsstring>
         <name>initialize</name>
         <param>
-          <type>const <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &amp;</type>
+          <type>const FloatingRateCoupon &amp;</type>
           <declname>coupon</declname>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="53"/>

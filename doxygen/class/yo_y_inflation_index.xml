@@ -16,19 +16,19 @@
         <location file="/indexes/inflationindex.hpp" line="198" bodyfile="/indexes/inflationindex.hpp" bodystart="253" bodyend="255"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_index_1a9c3c66040e9a444f6331bc4a40590e51" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YoYInflationTermStructure &gt;</type>
         <definition>Handle&lt; YoYInflationTermStructure &gt; yoyInflationTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>yoyInflationTermStructure</name>
         <location file="/indexes/inflationindex.hpp" line="199" bodyfile="/indexes/inflationindex.hpp" bodystart="258" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_index_1adf7343dbc0a657bd0b93e258c9f5c0f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYInflationIndex &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; clone</definition>
         <argsstring>(const Handle&lt; YoYInflationTermStructure &gt; &amp;h) const </argsstring>
         <name>clone</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYInflationTermStructure &gt; &amp;</type>
           <declname>h</declname>
         </param>
         <location file="/indexes/inflationindex.hpp" line="202"/>
@@ -45,7 +45,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="region" kindref="compound">Region</ref> &amp;</type>
+          <type>const Region &amp;</type>
           <declname>region</declname>
         </param>
         <param>
@@ -65,17 +65,17 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>availabilityLag</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYInflationTermStructure &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YoYInflationTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/inflationindex.hpp" line="186"/>
       </memberdef>

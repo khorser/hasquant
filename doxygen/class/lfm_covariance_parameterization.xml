@@ -41,7 +41,7 @@
         <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="46" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="lfm_covariance_parameterization_1aa158a54d0b3cc781418e3b64e18fcdcb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>virtual Disposable&lt;Matrix&gt; diffusion</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const =0</argsstring>
         <name>diffusion</name>
@@ -50,14 +50,14 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="lfm_covariance_parameterization_1ad2d125d636a3618f4fc60050baf7c3fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>virtual Disposable&lt;Matrix&gt; covariance</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>covariance</name>
@@ -66,14 +66,14 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="lfm_covariance_parameterization_1a9e0d819083f581d34120c40617baf7a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>virtual Disposable&lt;Matrix&gt; integratedCovariance</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>integratedCovariance</name>
@@ -82,9 +82,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="53"/>
       </memberdef>
@@ -92,7 +92,7 @@
     <briefdescription>
 <para>Libor market model parameterization </para>    </briefdescription>
     <detaileddescription>
-<para>Brigo, Damiano, Mercurio, Fabio, Morini, Massimo, 2003, Different Covariance Parameterizations of the <ref refid="libor" kindref="compound">Libor</ref> Market Model and Joint Caps/Swaptions Calibration (<ulink url="http://www.exoticderivatives.com/Files/Papers/brigomercuriomorini.pdf">http://www.exoticderivatives.com/Files/Papers/brigomercuriomorini.pdf</ulink>) </para>    </detaileddescription>
+<para>Brigo, Damiano, Mercurio, Fabio, Morini, Massimo, 2003, Different Covariance Parameterizations of the Libor Market Model and Joint Caps/Swaptions Calibration (<ulink url="http://www.exoticderivatives.com/Files/Papers/brigomercuriomorini.pdf">http://www.exoticderivatives.com/Files/Papers/brigomercuriomorini.pdf</ulink>) </para>    </detaileddescription>
     <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="39" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="39" bodyend="61"/>
   </compounddef>
 </doxygen>

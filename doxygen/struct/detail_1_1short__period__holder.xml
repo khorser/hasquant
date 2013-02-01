@@ -4,7 +4,7 @@
     <compoundname>QuantLib::detail::short_period_holder</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="detail_1_1short__period__holder_1a72dd363a04cf664c3558274bfaaff4ea" prot="public" static="no" mutable="no">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period p</definition>
         <argsstring></argsstring>
         <name>p</name>
@@ -18,7 +18,7 @@
         <argsstring>(Period p)</argsstring>
         <name>short_period_holder</name>
         <param>
-          <type><ref refid="period" kindref="compound">Period</ref></type>
+          <type>Period</type>
           <declname>p</declname>
         </param>
         <location file="/time/period.hpp" line="118" bodyfile="/time/period.hpp" bodystart="118" bodyend="118"/>

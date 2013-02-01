@@ -4,21 +4,21 @@
     <compoundname>QuantLib::UnitOfMeasureConversion::Data</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="unit_of_measure_conversion_1_1_data_1a22d7e78737b17b88d12e19ffc7484133" prot="public" static="no" mutable="no">
-        <type><ref refid="commodity_type" kindref="compound">CommodityType</ref></type>
+        <type>CommodityType</type>
         <definition>CommodityType commodityType</definition>
         <argsstring></argsstring>
         <name>commodityType</name>
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="86" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="unit_of_measure_conversion_1_1_data_1a66c4616a029db5ed59bff533aa1a8a8c" prot="public" static="no" mutable="no">
-        <type><ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
+        <type>UnitOfMeasure</type>
         <definition>UnitOfMeasure source</definition>
         <argsstring></argsstring>
         <name>source</name>
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="87" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="unit_of_measure_conversion_1_1_data_1a2ee40be10d97e428321d01988a33d969" prot="public" static="no" mutable="no">
-        <type><ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
+        <type>UnitOfMeasure</type>
         <definition>UnitOfMeasure target</definition>
         <argsstring></argsstring>
         <name>target</name>
@@ -60,15 +60,15 @@
         <argsstring>(const CommodityType &amp;commodityType, const UnitOfMeasure &amp;source, const UnitOfMeasure &amp;target, Real conversionFactor, Type type)</argsstring>
         <name>Data</name>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
           <declname>source</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
           <declname>target</declname>
         </param>
         <param>

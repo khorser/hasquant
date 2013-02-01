@@ -38,7 +38,7 @@
     <briefdescription>
 <para>market-model pathwise caplet </para>    </briefdescription>
     <detaileddescription>
-<para>implementation of path wise methodology for caplets, essentially a test class since we have better ways of computing <ref refid="greeks" kindref="compound">Greeks</ref> of caplets</para><para>used in MarketModelTest::testPathwiseVegas and MarketModelTest::testPathwiseGreeks </para>    </detaileddescription>
+<para>implementation of path wise methodology for caplets, essentially a test class since we have better ways of computing Greeks of caplets</para><para>used in MarketModelTest::testPathwiseVegas and MarketModelTest::testPathwiseGreeks </para>    </detaileddescription>
     <location file="/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="45" bodyfile="/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="44" bodyend="89"/>
   </compounddef>
 </doxygen>

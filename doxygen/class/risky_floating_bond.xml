@@ -14,7 +14,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="currency" kindref="compound">Currency</ref></type>
+          <type>Currency</type>
           <declname>ccy</declname>
         </param>
         <param>
@@ -22,15 +22,15 @@
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
+          <type>Handle&lt; DefaultProbabilityTermStructure &gt;</type>
           <declname>defaultTS</declname>
         </param>
         <param>
-          <type><ref refid="schedule" kindref="compound">Schedule</ref></type>
+          <type>Schedule</type>
           <declname>schedule</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; IborIndex &gt;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
           <declname>notionals</declname>
         </param>
         <param>
-          <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+          <type>Handle&lt; YieldTermStructure &gt;</type>
           <declname>yieldTS</declname>
         </param>
         <location file="/experimental/credit/riskybond.hpp" line="153"/>

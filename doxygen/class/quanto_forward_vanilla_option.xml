@@ -29,14 +29,14 @@
       </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="quanto_forward_vanilla_option_1a7b0a3b0bb5dec528a94027a37109c2cc" prot="public" static="no">
-        <type><ref refid="forward_option_arguments" kindref="compound">ForwardVanillaOption::arguments</ref></type>
+        <type>ForwardVanillaOption::arguments</type>
         <definition>typedef ForwardVanillaOption::arguments arguments</definition>
         <argsstring></argsstring>
         <name>arguments</name>
         <location file="/instruments/quantoforwardvanillaoption.hpp" line="37" bodyfile="/instruments/quantoforwardvanillaoption.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="quanto_forward_vanilla_option_1aef113636fbb774ceb5c437cf955c5bff" prot="public" static="no">
-        <type><ref refid="quanto_option_results" kindref="compound">QuantoOptionResults</ref>&lt; <ref refid="one_asset_option_1_1results" kindref="compound">ForwardVanillaOption::results</ref> &gt;</type>
+        <type>QuantoOptionResults&lt; ForwardVanillaOption::results &gt;</type>
         <definition>typedef QuantoOptionResults&lt;ForwardVanillaOption::results&gt; results</definition>
         <argsstring></argsstring>
         <name>results</name>
@@ -54,14 +54,14 @@
           <declname>moneyness</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>resetDate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
         </param>
         <location file="/instruments/quantoforwardvanillaoption.hpp" line="42"/>
       </memberdef>

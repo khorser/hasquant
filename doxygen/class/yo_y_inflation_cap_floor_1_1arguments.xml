@@ -12,35 +12,35 @@
         <location file="/instruments/inflationcapfloor.hpp" line="139" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="yo_y_inflation_cap_floor_1_1arguments_1a6f38aff78ebb5686b25675758aac68b9" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYInflationIndex &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; index</definition>
         <argsstring></argsstring>
         <name>index</name>
         <location file="/instruments/inflationcapfloor.hpp" line="140" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="yo_y_inflation_cap_floor_1_1arguments_1a70e540d91380c6a734f04886ff863e8e" prot="public" static="no" mutable="no">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period observationLag</definition>
         <argsstring></argsstring>
         <name>observationLag</name>
         <location file="/instruments/inflationcapfloor.hpp" line="141" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="yo_y_inflation_cap_floor_1_1arguments_1a27cae0532e21df9fdf326d2ea687af69" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; startDates</definition>
         <argsstring></argsstring>
         <name>startDates</name>
         <location file="/instruments/inflationcapfloor.hpp" line="142" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="yo_y_inflation_cap_floor_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>
         <location file="/instruments/inflationcapfloor.hpp" line="143" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="yo_y_inflation_cap_floor_1_1arguments_1aa4dc0c83efb410283274547583cc67ec" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; payDates</definition>
         <argsstring></argsstring>
         <name>payDates</name>

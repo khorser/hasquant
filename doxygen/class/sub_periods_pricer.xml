@@ -60,7 +60,7 @@
         <argsstring>(const FloatingRateCoupon &amp;coupon)</argsstring>
         <name>initialize</name>
         <param>
-          <type>const <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &amp;</type>
+          <type>const FloatingRateCoupon &amp;</type>
           <declname>coupon</declname>
         </param>
         <location file="/experimental/coupons/subperiodcoupons.hpp" line="105"/>

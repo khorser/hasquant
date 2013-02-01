@@ -17,7 +17,7 @@
         <argsstring>(const Date &amp;defaultDate, Real notional, Real recoveryRate) const =0</argsstring>
         <name>amount</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>defaultDate</declname>
         </param>
         <param>
@@ -32,7 +32,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="claim" kindref="compound">Claim</ref> associated to a default event. </para>    </briefdescription>
+<para>Claim associated to a default event. </para>    </briefdescription>
     <location file="/instruments/claim.hpp" line="32" bodyfile="/instruments/claim.hpp" bodystart="32" bodyend="39"/>
   </compounddef>
 </doxygen>

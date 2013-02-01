@@ -10,15 +10,15 @@
         <argsstring>(const boost::shared_ptr&lt; TrinomialTree &gt; &amp;tree1, const boost::shared_ptr&lt; TrinomialTree &gt; &amp;tree2, const boost::shared_ptr&lt; ShortRateDynamics &gt; &amp;dynamics)</argsstring>
         <name>ShortRateTree</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="trinomial_tree" kindref="compound">TrinomialTree</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; TrinomialTree &gt; &amp;</type>
           <declname>tree1</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="trinomial_tree" kindref="compound">TrinomialTree</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; TrinomialTree &gt; &amp;</type>
           <declname>tree2</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ShortRateDynamics &gt; &amp;</type>
           <declname>dynamics</declname>
         </param>
         <briefdescription>

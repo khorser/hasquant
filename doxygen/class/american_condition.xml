@@ -25,7 +25,7 @@
         <argsstring>(const Array &amp;intrinsicValues)</argsstring>
         <name>AmericanCondition</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>intrinsicValues</declname>
         </param>
         <location file="/methods/finitedifferences/americancondition.hpp" line="43" bodyfile="/methods/finitedifferences/americancondition.hpp" bodystart="42" bodyend="43"/>

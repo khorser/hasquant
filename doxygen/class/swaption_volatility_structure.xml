@@ -5,14 +5,14 @@
     <includes local="no">/termstructures/volatility/swaption/swaptionvolstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <description><para>See the TermStructure documentation for issues regarding constructors. </para></description>
       <memberdef kind="function" id="swaption_volatility_structure_1ac6fd129ebf717507b17923db697987d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwaptionVolatilityStructure</definition>
         <argsstring>(const Calendar &amp;calendar, BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>SwaptionVolatilityStructure</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -20,9 +20,9 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000130"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
@@ -38,9 +38,9 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000131"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
@@ -52,11 +52,11 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar, BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>SwaptionVolatilityStructure</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -64,9 +64,9 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
@@ -82,16 +82,16 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
@@ -106,11 +106,11 @@
         <argsstring>(const Period &amp;optionTenor, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -132,11 +132,11 @@
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -162,7 +162,7 @@
           <declname>optionTime</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -184,7 +184,7 @@
         <argsstring>(const Period &amp;optionTenor, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
@@ -210,7 +210,7 @@
         <argsstring>(const Date &amp;optionDate, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
@@ -262,11 +262,11 @@
         <argsstring>(const Period &amp;optionTenor, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -288,11 +288,11 @@
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -318,7 +318,7 @@
           <declname>optionTime</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -340,7 +340,7 @@
         <argsstring>(const Period &amp;optionTenor, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
@@ -366,7 +366,7 @@
         <argsstring>(const Date &amp;optionDate, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
@@ -413,16 +413,16 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="135" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="272" bodyend="278"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a0b427df5b16da607d7e50bfcb16b1236" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(const Period &amp;optionTenor, const Period &amp;swapTenor, bool extr=false) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -435,16 +435,16 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="140" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="234" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a5562148e5f55d62fe6ae78d4c9b5aab6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor, bool extr=false) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -457,7 +457,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="144" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="328" bodyend="334"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1afafd5aec2b3b9a2fc8ca66a090aafc61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSection</definition>
         <argsstring>(Time optionTime, const Period &amp;swapTenor, bool extr=false) const </argsstring>
         <name>smileSection</name>
@@ -466,7 +466,7 @@
           <declname>optionTime</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
@@ -479,12 +479,12 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="148"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a332310ec815095e0dfb4025746ca580b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSection</definition>
         <argsstring>(const Period &amp;optionTenor, Time swapLength, bool extr=false) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
@@ -501,12 +501,12 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="152"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1aa589646106d7d71a88a5cbab03ca2928" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSection</definition>
         <argsstring>(const Date &amp;optionDate, Time swapLength, bool extr=false) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
@@ -523,7 +523,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="156"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a20bcf094b437c62622b41cb54bcdaa7b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(Time optionTime, Time swapLength, bool extr=false) const </argsstring>
         <name>smileSection</name>
@@ -548,7 +548,7 @@
       <sectiondef kind="user-defined">
       <header>Limits</header>
       <memberdef kind="function" id="swaption_volatility_structure_1a95eb3bcb1f89026d83f78dd535d803a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+        <type>const Period &amp;</type>
         <definition>virtual const Period&amp; maxSwapTenor</definition>
         <argsstring>() const =0</argsstring>
         <name>maxSwapTenor</name>
@@ -580,7 +580,7 @@
         <argsstring>(const Period &amp;swapTenor) const </argsstring>
         <name>swapLength</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <briefdescription>
@@ -593,11 +593,11 @@
         <argsstring>(const Date &amp;start, const Date &amp;end) const </argsstring>
         <name>swapLength</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>start</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>end</declname>
         </param>
         <briefdescription>

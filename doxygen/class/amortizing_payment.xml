@@ -17,7 +17,7 @@
           <declname>amount</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/cashflows/simplecashflow.hpp" line="79" bodyfile="/cashflows/simplecashflow.hpp" bodystart="77" bodyend="79"/>
@@ -26,7 +26,7 @@
     <briefdescription>
 <para>Amortizing payment. </para>    </briefdescription>
     <detaileddescription>
-<para>This class specializes <ref refid="simple_cash_flow" kindref="compound">SimpleCashFlow</ref> so that visitors can perform more detailed cash-flow analysis. </para>    </detaileddescription>
+<para>This class specializes SimpleCashFlow so that visitors can perform more detailed cash-flow analysis. </para>    </detaileddescription>
     <location file="/cashflows/simplecashflow.hpp" line="75" bodyfile="/cashflows/simplecashflow.hpp" bodystart="75" bodyend="84"/>
   </compounddef>
 </doxygen>

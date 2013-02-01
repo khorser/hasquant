@@ -26,14 +26,14 @@
         <location file="/instruments/varianceswap.hpp" line="87" bodyfile="/instruments/varianceswap.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="variance_swap_1_1arguments_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date startDate</definition>
         <argsstring></argsstring>
         <name>startDate</name>
         <location file="/instruments/varianceswap.hpp" line="88" bodyfile="/instruments/varianceswap.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="variance_swap_1_1arguments_1ad5d32c50036fcd18c7ac2e251914c0d4" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maturityDate</definition>
         <argsstring></argsstring>
         <name>maturityDate</name>

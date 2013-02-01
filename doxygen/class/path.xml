@@ -133,7 +133,7 @@
         <location file="/methods/montecarlo/path.hpp" line="61" bodyfile="/methods/montecarlo/path.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="path_1a6726e8faccac2e47434227100ca52e60" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+        <type>const TimeGrid &amp;</type>
         <definition>const TimeGrid &amp; timeGrid</definition>
         <argsstring>() const </argsstring>
         <name>timeGrid</name>
@@ -194,13 +194,13 @@
         <argsstring>(const TimeGrid &amp;timeGrid, const Array &amp;values=Array())</argsstring>
         <name>Path</name>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>values</declname>
-          <defval><ref refid="array" kindref="compound">Array</ref>()</defval>
+          <defval>Array()</defval>
         </param>
         <location file="/methods/montecarlo/path.hpp" line="42" bodyfile="/methods/montecarlo/path.hpp" bodystart="82" bodyend="88"/>
       </memberdef>

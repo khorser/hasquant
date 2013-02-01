@@ -14,7 +14,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -22,7 +22,7 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -36,9 +36,9 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/instruments/bonds/zerocouponbond.hpp" line="46"/>
       </memberdef>

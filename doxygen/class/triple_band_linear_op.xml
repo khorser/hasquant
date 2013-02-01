@@ -35,7 +35,7 @@
         <argsstring>(const Disposable&lt; TripleBandLinearOp &gt; &amp;m)</argsstring>
         <name>TripleBandLinearOp</name>
         <param>
-          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; TripleBandLinearOp &gt; &amp;</type>
+          <type>const Disposable&lt; TripleBandLinearOp &gt; &amp;</type>
           <declname>m</declname>
         </param>
         <location file="/methods/finitedifferences/operators/triplebandlinearop.hpp" line="46"/>
@@ -57,29 +57,29 @@
         <argsstring>(const Disposable&lt; TripleBandLinearOp &gt; &amp;m)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; TripleBandLinearOp &gt; &amp;</type>
+          <type>const Disposable&lt; TripleBandLinearOp &gt; &amp;</type>
           <declname>m</declname>
         </param>
         <location file="/methods/finitedifferences/operators/triplebandlinearop.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="triple_band_linear_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; apply</definition>
         <argsstring>(const Array &amp;r) const </argsstring>
         <name>apply</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/triplebandlinearop.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="triple_band_linear_op_1ab600bd5bcc452143dc9a119770105596" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; solve_splitting</definition>
         <argsstring>(const Array &amp;r, Real a, Real b=1.0) const </argsstring>
         <name>solve_splitting</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <param>
@@ -94,18 +94,18 @@
         <location file="/methods/finitedifferences/operators/triplebandlinearop.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="triple_band_linear_op_1a5c2399c01dda1dc7a7a644bf952be9d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; TripleBandLinearOp &gt;</type>
+        <type>Disposable&lt; TripleBandLinearOp &gt;</type>
         <definition>Disposable&lt;TripleBandLinearOp&gt; mult</definition>
         <argsstring>(const Array &amp;u) const </argsstring>
         <name>mult</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>u</declname>
         </param>
         <location file="/methods/finitedifferences/operators/triplebandlinearop.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="triple_band_linear_op_1aceb2c2e48cf546c87dd85b17cc6b1a87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; TripleBandLinearOp &gt;</type>
+        <type>Disposable&lt; TripleBandLinearOp &gt;</type>
         <definition>Disposable&lt;TripleBandLinearOp&gt; add</definition>
         <argsstring>(const TripleBandLinearOp &amp;m) const </argsstring>
         <name>add</name>
@@ -116,12 +116,12 @@
         <location file="/methods/finitedifferences/operators/triplebandlinearop.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="triple_band_linear_op_1a2d8a9665e40e497d6002f382ec9654fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; TripleBandLinearOp &gt;</type>
+        <type>Disposable&lt; TripleBandLinearOp &gt;</type>
         <definition>Disposable&lt;TripleBandLinearOp&gt; add</definition>
         <argsstring>(const Array &amp;u) const </argsstring>
         <name>add</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>u</declname>
         </param>
         <location file="/methods/finitedifferences/operators/triplebandlinearop.hpp" line="56"/>
@@ -132,7 +132,7 @@
         <argsstring>(const Array &amp;a, const TripleBandLinearOp &amp;x, const TripleBandLinearOp &amp;y, const Array &amp;b)</argsstring>
         <name>axpyb</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>a</declname>
         </param>
         <param>
@@ -144,7 +144,7 @@
           <declname>y</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>b</declname>
         </param>
         <location file="/methods/finitedifferences/operators/triplebandlinearop.hpp" line="60"/>

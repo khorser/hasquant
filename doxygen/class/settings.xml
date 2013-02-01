@@ -79,7 +79,7 @@
         <argsstring>()</argsstring>
         <name>includeTodaysCashFlows</name>
         <detaileddescription>
-<para>If set, this flag specifies whether or not <ref refid="cash_flows" kindref="compound">CashFlows</ref> occurring on today&apos;s date should enter the NPV. When the NPV date (i.e., the date at which the cash flows are discounted) equals today&apos;s date, this flag overrides the behavior chosen for includeReferenceDate. It cannot be overridden locally when calling the <ref refid="cash_flow_1a124a26b60637ae9384e543ed3f483064" kindref="member">CashFlow::hasOccurred</ref> method. </para>        </detaileddescription>
+<para>If set, this flag specifies whether or not CashFlows occurring on today&apos;s date should enter the NPV. When the NPV date (i.e., the date at which the cash flows are discounted) equals today&apos;s date, this flag overrides the behavior chosen for includeReferenceDate. It cannot be overridden locally when calling the <ref refid="cash_flow_1a124a26b60637ae9384e543ed3f483064" kindref="member">CashFlow::hasOccurred</ref> method. </para>        </detaileddescription>
         <location file="/settings.hpp" line="113" bodyfile="/settings.hpp" bodystart="169" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="settings_1a1dbed895b6b7fa9c7c61a6618d55feac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

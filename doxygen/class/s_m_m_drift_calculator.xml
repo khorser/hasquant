@@ -10,7 +10,7 @@
         <argsstring>(const Matrix &amp;pseudo, const std::vector&lt; Spread &gt; &amp;displacements, const std::vector&lt; Time &gt; &amp;taus, Size numeraire, Size alive)</argsstring>
         <name>SMMDriftCalculator</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>pseudo</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
         <argsstring>(const CoterminalSwapCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>compute</name>
         <param>
-          <type>const <ref refid="coterminal_swap_curve_state" kindref="compound">CoterminalSwapCurveState</ref> &amp;</type>
+          <type>const CoterminalSwapCurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>

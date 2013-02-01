@@ -26,14 +26,14 @@
         <location file="/instruments/varianceswap.hpp" line="58" bodyfile="/instruments/varianceswap.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="variance_swap_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/instruments/varianceswap.hpp" line="59" bodyfile="/instruments/varianceswap.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="variance_swap_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
@@ -73,11 +73,11 @@
           <declname>notional</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <location file="/instruments/varianceswap.hpp" line="49"/>

@@ -26,15 +26,15 @@
         <argsstring>(const Array &amp;x, Array &amp;target, Array &amp;fct2fit)=0</argsstring>
         <name>targetAndValue</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>target</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>fct2fit</declname>
         </param>
         <briefdescription>
@@ -47,19 +47,19 @@
         <argsstring>(const Array &amp;x, Matrix &amp;grad_fct2fit, Array &amp;target, Array &amp;fct2fit)=0</argsstring>
         <name>targetValueAndGradient</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>Matrix &amp;</type>
           <declname>grad_fct2fit</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>target</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>fct2fit</declname>
         </param>
         <detaileddescription>

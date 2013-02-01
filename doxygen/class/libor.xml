@@ -21,7 +21,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -29,21 +29,21 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>financialCenterCalendar</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/ibor/libor.hpp" line="47"/>
       </memberdef>

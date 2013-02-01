@@ -6,23 +6,23 @@
       <sectiondef kind="user-defined">
       <header>Date inspectors</header>
       <memberdef kind="function" id="bond_functions_1a420e2998a4a3ecea4851a91730afc43a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date startDate</definition>
         <argsstring>(const Bond &amp;bond)</argsstring>
         <name>startDate</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="bond_functions_1a2d8dab916bcf79ae6132b0560e85c475" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date maturityDate</definition>
         <argsstring>(const Bond &amp;bond)</argsstring>
         <name>maturityDate</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="56"/>
@@ -33,13 +33,13 @@
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>isTradable</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="58"/>
       </memberdef>
@@ -52,13 +52,13 @@
         <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
         <name>previousCashFlow</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>refDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="65"/>
       </memberdef>
@@ -68,45 +68,45 @@
         <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
         <name>nextCashFlow</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>refDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="bond_functions_1a5be084b5cc758f43a2689b3265441d37" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date previousCashFlowDate</definition>
         <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
         <name>previousCashFlowDate</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>refDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="bond_functions_1a2db8c3629e923ab1dbc374db1ae0baa1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date nextCashFlowDate</definition>
         <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
         <name>nextCashFlowDate</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>refDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="71"/>
       </memberdef>
@@ -116,13 +116,13 @@
         <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
         <name>previousCashFlowAmount</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>refDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="73"/>
       </memberdef>
@@ -132,13 +132,13 @@
         <argsstring>(const Bond &amp;bond, Date refDate=Date())</argsstring>
         <name>nextCashFlowAmount</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>refDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="75"/>
       </memberdef>
@@ -151,13 +151,13 @@
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>previousCouponRate</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="81"/>
       </memberdef>
@@ -167,77 +167,77 @@
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>nextCouponRate</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="bond_functions_1a59a92a6db209be147345a9ee692b0293" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date accrualStartDate</definition>
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>accrualStartDate</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="bond_functions_1aa55ec09c514f10274a1dba5b82dcf92f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date accrualEndDate</definition>
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>accrualEndDate</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="bond_functions_1a9ea38d8b3ca1d41d386f793692504997" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date referencePeriodStart</definition>
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>referencePeriodStart</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="bond_functions_1ad80e49f26dcf493ea92cc1d5f1544aef" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date referencePeriodEnd</definition>
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>referencePeriodEnd</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="91"/>
       </memberdef>
@@ -247,13 +247,13 @@
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>accrualPeriod</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="93"/>
       </memberdef>
@@ -263,13 +263,13 @@
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>accrualDays</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="95"/>
       </memberdef>
@@ -279,13 +279,13 @@
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>accruedPeriod</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="97"/>
       </memberdef>
@@ -295,13 +295,13 @@
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>accruedDays</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="99"/>
       </memberdef>
@@ -311,13 +311,13 @@
         <argsstring>(const Bond &amp;bond, Date settlementDate=Date())</argsstring>
         <name>accruedAmount</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="101"/>
       </memberdef>
@@ -330,17 +330,17 @@
         <argsstring>(const Bond &amp;bond, const YieldTermStructure &amp;discountCurve, Date settlementDate=Date())</argsstring>
         <name>cleanPrice</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const YieldTermStructure &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="108"/>
       </memberdef>
@@ -350,17 +350,17 @@
         <argsstring>(const Bond &amp;bond, const YieldTermStructure &amp;discountCurve, Date settlementDate=Date())</argsstring>
         <name>bps</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const YieldTermStructure &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="111"/>
       </memberdef>
@@ -370,22 +370,22 @@
         <argsstring>(const Bond &amp;bond, const YieldTermStructure &amp;discountCurve, Date settlementDate=Date(), Real cleanPrice=Null&lt; Real &gt;())</argsstring>
         <name>atmRate</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const YieldTermStructure &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>cleanPrice</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="115"/>
       </memberdef>
@@ -398,17 +398,17 @@
         <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
         <name>cleanPrice</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="122"/>
       </memberdef>
@@ -418,7 +418,7 @@
         <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
         <name>cleanPrice</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -426,7 +426,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -438,9 +438,9 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="128"/>
       </memberdef>
@@ -450,17 +450,17 @@
         <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
         <name>bps</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="131"/>
       </memberdef>
@@ -470,7 +470,7 @@
         <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
         <name>bps</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -478,7 +478,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -490,9 +490,9 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="137"/>
       </memberdef>
@@ -502,7 +502,7 @@
         <argsstring>(const Bond &amp;bond, Real cleanPrice, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date(), Real accuracy=1.0e-10, Size maxIterations=100, Rate guess=0.05)</argsstring>
         <name>yield</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -510,7 +510,7 @@
           <declname>cleanPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -522,9 +522,9 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -549,11 +549,11 @@
         <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Duration::Type type=Duration::Modified, Date settlementDate=Date())</argsstring>
         <name>duration</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
@@ -562,9 +562,9 @@
           <defval>Duration::Modified</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="150"/>
       </memberdef>
@@ -574,7 +574,7 @@
         <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Duration::Type type=Duration::Modified, Date settlementDate=Date())</argsstring>
         <name>duration</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -582,7 +582,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -599,9 +599,9 @@
           <defval>Duration::Modified</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="157"/>
       </memberdef>
@@ -611,17 +611,17 @@
         <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
         <name>convexity</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="160"/>
       </memberdef>
@@ -631,7 +631,7 @@
         <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
         <name>convexity</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -639,7 +639,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -651,9 +651,9 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="166"/>
       </memberdef>
@@ -663,17 +663,17 @@
         <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
         <name>basisPointValue</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="169"/>
       </memberdef>
@@ -683,7 +683,7 @@
         <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
         <name>basisPointValue</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -691,7 +691,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -703,9 +703,9 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="175"/>
       </memberdef>
@@ -715,17 +715,17 @@
         <argsstring>(const Bond &amp;bond, const InterestRate &amp;yield, Date settlementDate=Date())</argsstring>
         <name>yieldValueBasisPoint</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
           <declname>yield</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="178"/>
       </memberdef>
@@ -735,7 +735,7 @@
         <argsstring>(const Bond &amp;bond, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
         <name>yieldValueBasisPoint</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -743,7 +743,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -755,9 +755,9 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="184"/>
       </memberdef>
@@ -770,11 +770,11 @@
         <argsstring>(const Bond &amp;bond, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;discount, Spread zSpread, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date())</argsstring>
         <name>cleanPrice</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discount</declname>
         </param>
         <param>
@@ -782,7 +782,7 @@
           <declname>zSpread</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -794,9 +794,9 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/bond/bondfunctions.hpp" line="195"/>
       </memberdef>
@@ -806,7 +806,7 @@
         <argsstring>(const Bond &amp;bond, Real cleanPrice, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Date settlementDate=Date(), Real accuracy=1.0e-10, Size maxIterations=100, Rate guess=0.0)</argsstring>
         <name>zSpread</name>
         <param>
-          <type>const <ref refid="bond" kindref="compound">Bond</ref> &amp;</type>
+          <type>const Bond &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -814,10 +814,10 @@
           <declname>cleanPrice</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -829,9 +829,9 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -852,9 +852,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="bond" kindref="compound">Bond</ref> adapters of <ref refid="cash_flows" kindref="compound">CashFlows</ref> functions. </para>    </briefdescription>
+<para>Bond adapters of CashFlows functions. </para>    </briefdescription>
     <detaileddescription>
-<para>See <ref refid="cash_flows" kindref="compound">CashFlows</ref> for functions&apos; documentation. <verbatim>   These adapters calls into CashFlows functions passing as input the
+<para>See CashFlows for functions&apos; documentation. <verbatim>   These adapters calls into CashFlows functions passing as input the
    Bond cashflows, the dirty price (i.e. npv) calculated from clean
    price, the bond settlement date (unless another date is given), zero
    ex-dividend days, and excluding any cashflow on the settlement date.

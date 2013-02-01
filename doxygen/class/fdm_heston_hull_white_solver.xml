@@ -9,11 +9,11 @@
         <argsstring>(const Handle&lt; HestonProcess &gt; &amp;hestonProcess, const Handle&lt; HullWhiteProcess &gt; &amp;hwProcess, Rate corrEquityShortRate, const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdmHestonHullWhiteSolver</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const Handle&lt; HestonProcess &gt; &amp;</type>
           <declname>hestonProcess</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="hull_white_process" kindref="compound">HullWhiteProcess</ref> &gt; &amp;</type>
+          <type>const Handle&lt; HullWhiteProcess &gt; &amp;</type>
           <declname>hwProcess</declname>
         </param>
         <param>

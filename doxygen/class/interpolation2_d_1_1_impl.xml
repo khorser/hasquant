@@ -83,7 +83,7 @@
         <location file="/math/interpolations/interpolation2d.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="interpolation2_d_1_1_impl_1a2ffa5169a058d900c4503c6b59c315ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>virtual const Matrix&amp; zData</definition>
         <argsstring>() const =0</argsstring>
         <name>zData</name>

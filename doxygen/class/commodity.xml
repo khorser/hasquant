@@ -58,7 +58,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="commodity" kindref="compound">Commodity</ref> base class. </para>    </briefdescription>
+<para>Commodity base class. </para>    </briefdescription>
     <location file="/experimental/commodities/commodity.hpp" line="63" bodyfile="/experimental/commodities/commodity.hpp" bodystart="63" bodyend="76"/>
   </compounddef>
 </doxygen>

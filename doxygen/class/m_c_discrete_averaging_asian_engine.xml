@@ -19,21 +19,21 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="m_c_discrete_averaging_asian_engine_1a0e4570ee9c204c900236c2894b387272" prot="public" static="no">
-        <type><ref refid="mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="single_variate" kindref="compound">SingleVariate</ref>, RNG, S &gt;::path_generator_type</type>
+        <type>McSimulation&lt; SingleVariate, RNG, S &gt;::path_generator_type</type>
         <definition>typedef McSimulation&lt;SingleVariate,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
         <location file="/pricingengines/asian/mcdiscreteasianengine.hpp" line="47" bodyfile="/pricingengines/asian/mcdiscreteasianengine.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="m_c_discrete_averaging_asian_engine_1ac66a3645a3daa15dae3801668ccdd6f3" prot="public" static="no">
-        <type><ref refid="mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="single_variate" kindref="compound">SingleVariate</ref>, RNG, S &gt;::path_pricer_type</type>
+        <type>McSimulation&lt; SingleVariate, RNG, S &gt;::path_pricer_type</type>
         <definition>typedef McSimulation&lt;SingleVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
         <location file="/pricingengines/asian/mcdiscreteasianengine.hpp" line="49" bodyfile="/pricingengines/asian/mcdiscreteasianengine.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="m_c_discrete_averaging_asian_engine_1a6488ee71b6b0a73fd160f892bba6cdbf" prot="public" static="no">
-        <type><ref refid="mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="single_variate" kindref="compound">SingleVariate</ref>, RNG, S &gt;::stats_type</type>
+        <type>McSimulation&lt; SingleVariate, RNG, S &gt;::stats_type</type>
         <definition>typedef McSimulation&lt;SingleVariate,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
@@ -47,7 +47,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, bool brownianBridge, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed)</argsstring>
         <name>MCDiscreteAveragingAsianEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

@@ -4,21 +4,21 @@
     <compoundname>QuantLib::ExchangeRateManager::Entry</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="exchange_rate_manager_1_1_entry_1aee5f2dc297f8395d027f3dfba22f3948" prot="public" static="no" mutable="no">
-        <type><ref refid="exchange_rate" kindref="compound">ExchangeRate</ref></type>
+        <type>ExchangeRate</type>
         <definition>ExchangeRate rate</definition>
         <argsstring></argsstring>
         <name>rate</name>
         <location file="/currencies/exchangeratemanager.hpp" line="77" bodyfile="/currencies/exchangeratemanager.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="exchange_rate_manager_1_1_entry_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date startDate</definition>
         <argsstring></argsstring>
         <name>startDate</name>
         <location file="/currencies/exchangeratemanager.hpp" line="78" bodyfile="/currencies/exchangeratemanager.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="exchange_rate_manager_1_1_entry_1ac342ae2125b437a76ece3ac962e0d9a3" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date endDate</definition>
         <argsstring></argsstring>
         <name>endDate</name>
@@ -39,15 +39,15 @@
         <argsstring>(const ExchangeRate &amp;rate, const Date &amp;start, const Date &amp;end)</argsstring>
         <name>Entry</name>
         <param>
-          <type>const <ref refid="exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
+          <type>const ExchangeRate &amp;</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>start</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>end</declname>
         </param>
         <location file="/currencies/exchangeratemanager.hpp" line="76" bodyfile="/currencies/exchangeratemanager.hpp" bodystart="74" bodyend="76"/>

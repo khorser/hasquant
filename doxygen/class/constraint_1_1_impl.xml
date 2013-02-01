@@ -17,7 +17,7 @@
         <argsstring>(const Array &amp;params) const =0</argsstring>
         <name>test</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>params</declname>
         </param>
         <briefdescription>

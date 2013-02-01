@@ -33,7 +33,7 @@
         <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="adapted_path_payoff_1_1_valuation_data_1a73eeecaf6052dadb5fc2447aff7b2d90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; getYieldTermStructure</definition>
         <argsstring>(Size time)</argsstring>
         <name>getYieldTermStructure</name>
@@ -72,7 +72,7 @@
           <declname>exercise</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>state</declname>
         </param>
         <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="47"/>

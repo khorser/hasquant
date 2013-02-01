@@ -12,7 +12,7 @@
         <location file="/models/parameter.hpp" line="48" bodyfile="/models/parameter.hpp" bodystart="47" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="parameter_1a7645d99ee1cc5e6d763836b5b335e95d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; params</definition>
         <argsstring>() const </argsstring>
         <name>params</name>
@@ -39,7 +39,7 @@
         <argsstring>(const Array &amp;params) const </argsstring>
         <name>testParams</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>params</declname>
         </param>
         <location file="/models/parameter.hpp" line="51" bodyfile="/models/parameter.hpp" bodystart="51" bodyend="53"/>
@@ -63,7 +63,7 @@
         <location file="/models/parameter.hpp" line="55" bodyfile="/models/parameter.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="parameter_1a44d746dc59d36b77c5afc6238f995541" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="parameter_1_1_impl" kindref="compound">Impl</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; Impl &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;Impl&gt;&amp; implementation</definition>
         <argsstring>() const </argsstring>
         <name>implementation</name>

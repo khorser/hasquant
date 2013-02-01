@@ -4,7 +4,7 @@
     <compoundname>QuantLib::EarlyExerciseTraits&lt; MultiPath &gt;</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="early_exercise_traits_3_01_multi_path_01_4_1ae32593f3d7c3d67df2399b593bc1df6d" prot="public" static="no">
-        <type><ref refid="array" kindref="compound">Array</ref></type>
+        <type>Array</type>
         <definition>typedef Array StateType</definition>
         <argsstring></argsstring>
         <name>StateType</name>
@@ -18,7 +18,7 @@
         <argsstring>(const MultiPath &amp;path)</argsstring>
         <name>pathLength</name>
         <param>
-          <type>const <ref refid="multi_path" kindref="compound">MultiPath</ref> &amp;</type>
+          <type>const MultiPath &amp;</type>
           <declname>path</declname>
         </param>
         <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="52" bodyfile="/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="52" bodyend="54"/>

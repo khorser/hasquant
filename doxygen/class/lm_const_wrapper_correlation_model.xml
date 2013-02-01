@@ -9,7 +9,7 @@
         <argsstring>(const boost::shared_ptr&lt; LmCorrelationModel &gt; &amp;corrModel)</argsstring>
         <name>LmConstWrapperCorrelationModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="lm_correlation_model" kindref="compound">LmCorrelationModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LmCorrelationModel &gt; &amp;</type>
           <declname>corrModel</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="36" bodyfile="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="33" bodyend="37"/>
@@ -22,7 +22,7 @@
         <location file="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="39" bodyfile="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="39" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="lm_const_wrapper_correlation_model_1aece7d943db6a6ba2e6be587b331f2f2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>Disposable&lt;Matrix&gt; correlation</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>correlation</name>
@@ -31,14 +31,14 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="44" bodyfile="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="lm_const_wrapper_correlation_model_1a89b49dba17253f9cec1d56fb4eab5c77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>Disposable&lt;Matrix&gt; pseudoSqrt</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>pseudoSqrt</name>
@@ -47,9 +47,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="48" bodyfile="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="47" bodyend="50"/>
       </memberdef>
@@ -71,9 +71,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="52" bodyfile="/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="51" bodyend="54"/>
       </memberdef>

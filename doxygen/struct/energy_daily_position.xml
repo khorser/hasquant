@@ -4,7 +4,7 @@
     <compoundname>QuantLib::EnergyDailyPosition</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="energy_daily_position_1a1dc6df4f5eac6300e1bb1f8dce3a10fd" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date date</definition>
         <argsstring></argsstring>
         <name>date</name>
@@ -60,7 +60,7 @@
         <argsstring>(const Date &amp;date, Real payLegPrice, Real receiveLegPrice, bool unrealized)</argsstring>
         <name>EnergyDailyPosition</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <param>

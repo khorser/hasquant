@@ -10,11 +10,11 @@
         <argsstring>(const Constraint &amp;c1, const Constraint &amp;c2)</argsstring>
         <name>CompositeConstraint</name>
         <param>
-          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const Constraint &amp;</type>
           <declname>c1</declname>
         </param>
         <param>
-          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const Constraint &amp;</type>
           <declname>c2</declname>
         </param>
         <location file="/math/optimization/constraint.hpp" line="126" bodyfile="/math/optimization/constraint.hpp" bodystart="124" bodyend="126"/>

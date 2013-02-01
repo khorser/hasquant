@@ -30,7 +30,7 @@
         <param>
           <type><ref refid="italy_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
           <declname>market</declname>
-          <defval><ref refid="settlement" kindref="compound">Settlement</ref></defval>
+          <defval>Settlement</defval>
         </param>
         <location file="/time/calendars/italy.hpp" line="87"/>
       </memberdef>

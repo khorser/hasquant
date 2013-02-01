@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; VarianceGammaProcess &gt; &amp;)</argsstring>
         <name>VarianceGammaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="variance_gamma_process" kindref="compound">VarianceGammaProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; VarianceGammaProcess &gt; &amp;</type>
         </param>
         <location file="/experimental/variancegamma/analyticvariancegammaengine.hpp" line="41"/>
       </memberdef>

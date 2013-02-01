@@ -11,7 +11,7 @@
         <argsstring>(const boost::shared_ptr&lt; HestonProcess &gt; &amp;process)</argsstring>
         <name>HestonModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/models/equity/hestonmodel.hpp" line="44"/>
@@ -52,7 +52,7 @@
         <location file="/models/equity/hestonmodel.hpp" line="55" bodyfile="/models/equity/hestonmodel.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="heston_model_1a57e932938bc12589eb93ad22a7402d2e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; HestonProcess &gt;</type>
         <definition>boost::shared_ptr&lt;HestonProcess&gt; process</definition>
         <argsstring>() const </argsstring>
         <name>process</name>

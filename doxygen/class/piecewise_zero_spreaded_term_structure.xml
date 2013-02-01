@@ -13,15 +13,15 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;spreads, const std::vector&lt; Date &gt; &amp;dates, Compounding comp=Continuous, Frequency freq=NoFrequency, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>PiecewiseZeroSpreadedTermStructure</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <defname>h</defname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -35,9 +35,9 @@
           <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaad7764a2ea2518891555bd395faffb4da" kindref="member">NoFrequency</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <location file="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="53" bodyfile="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="82" bodyend="98"/>
       </memberdef>

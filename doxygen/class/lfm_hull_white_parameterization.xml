@@ -10,17 +10,17 @@
         <argsstring>(const boost::shared_ptr&lt; LiborForwardModelProcess &gt; &amp;process, const boost::shared_ptr&lt; OptionletVolatilityStructure &gt; &amp;capletVol, const Matrix &amp;correlation=Matrix(), Size factors=1)</argsstring>
         <name>LfmHullWhiteParameterization</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="libor_forward_model_process" kindref="compound">LiborForwardModelProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LiborForwardModelProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; OptionletVolatilityStructure &gt; &amp;</type>
           <declname>capletVol</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>correlation</declname>
-          <defval><ref refid="matrix" kindref="compound">Matrix</ref>()</defval>
+          <defval>Matrix()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -33,7 +33,7 @@
     <briefdescription>
 <para>Libor market model parameterization based on Hull White paper </para>    </briefdescription>
     <detaileddescription>
-<para>Hull, John, White, Alan, 1999, <ref refid="forward" kindref="compound">Forward</ref> Rate Volatilities, <ref refid="swap" kindref="compound">Swap</ref> Rate Volatilities and the Implementation of the <ref refid="libor" kindref="compound">Libor</ref> Market Model (<ulink url="http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf">http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf</ulink>)</para><para><xrefsect id="test_1_test000024"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness is tested by Monte-Carlo reproduction of caplet &amp; ratchet npvs and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>Hull, John, White, Alan, 1999, Forward Rate Volatilities, Swap Rate Volatilities and the Implementation of the Libor Market Model (<ulink url="http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf">http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf</ulink>)</para><para><xrefsect id="test_1_test000024"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness is tested by Monte-Carlo reproduction of caplet &amp; ratchet npvs and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="41" bodyfile="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" bodystart="41" bodyend="60"/>
   </compounddef>
 </doxygen>

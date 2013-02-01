@@ -22,17 +22,17 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>ccy</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; ZeroInflationTermStructure &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; ZeroInflationTermStructure &gt;()</defval>
         </param>
         <location file="/experimental/inflation/genericindexes.hpp" line="59" bodyfile="/experimental/inflation/genericindexes.hpp" bodystart="45" bodyend="59"/>
       </memberdef>

@@ -9,14 +9,14 @@
         <argsstring>(const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, boost::optional&lt; bool &gt; includeSettlementDateFlows=boost::none)</argsstring>
         <name>MidPointCdsEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>

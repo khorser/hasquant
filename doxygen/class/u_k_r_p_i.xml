@@ -14,15 +14,15 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; ZeroInflationTermStructure &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; ZeroInflationTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/inflation/ukrpi.hpp" line="45" bodyfile="/indexes/inflation/ukrpi.hpp" bodystart="35" bodyend="45"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>UK Retail Price Inflation <ref refid="index" kindref="compound">Index</ref>. </para>    </briefdescription>
+<para>UK Retail Price Inflation Index. </para>    </briefdescription>
     <location file="/indexes/inflation/ukrpi.hpp" line="33" bodyfile="/indexes/inflation/ukrpi.hpp" bodystart="33" bodyend="46"/>
   </compounddef>
 </doxygen>

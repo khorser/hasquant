@@ -7,7 +7,7 @@
         <type>template&lt; class &gt; class</type>
         <declname>Scheme</declname>
         <defname>Scheme</defname>
-        <defval><ref refid="crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
+        <defval>CrankNicolson</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
@@ -17,7 +17,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps=100, Size gridPoints=100, bool timeDependent=false)</argsstring>
         <name>FDDividendEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

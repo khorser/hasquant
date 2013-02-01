@@ -27,7 +27,7 @@
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="stripped_optionlet_base_1a02eba3514ab528c2d8fc602c1bb3a0cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Date&gt;&amp; optionletFixingDates</definition>
         <argsstring>() const =0</argsstring>
         <name>optionletFixingDates</name>
@@ -55,14 +55,14 @@
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="stripped_optionlet_base_1a9d30a3965ddf6100738ec4624c56d847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
+        <type>DayCounter</type>
         <definition>virtual DayCounter dayCounter</definition>
         <argsstring>() const =0</argsstring>
         <name>dayCounter</name>
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="stripped_optionlet_base_1a0e53a35a8d9100d44b025a74c9849514" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
+        <type>Calendar</type>
         <definition>virtual Calendar calendar</definition>
         <argsstring>() const =0</argsstring>
         <name>calendar</name>

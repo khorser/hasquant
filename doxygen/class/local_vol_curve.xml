@@ -19,7 +19,7 @@
         <argsstring>(const Handle&lt; BlackVarianceCurve &gt; &amp;curve)</argsstring>
         <name>LocalVolCurve</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_variance_curve" kindref="compound">BlackVarianceCurve</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVarianceCurve &gt; &amp;</type>
           <declname>curve</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/localvolcurve.hpp" line="38" bodyfile="/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="35" bodyend="40"/>

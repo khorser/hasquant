@@ -10,15 +10,15 @@
         <argsstring>(const boost::shared_ptr&lt; LogNormalFwdRateEuler &gt; &amp;evolver, const Clone&lt; MarketModelPathwiseMultiProduct &gt; &amp;product, const boost::shared_ptr&lt; MarketModel &gt; &amp;pseudoRootStructure, Real initialNumeraireValue)</argsstring>
         <name>PathwiseAccountingEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="log_normal_fwd_rate_euler" kindref="compound">LogNormalFwdRateEuler</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LogNormalFwdRateEuler &gt; &amp;</type>
           <declname>evolver</declname>
         </param>
         <param>
-          <type>const <ref refid="clone" kindref="compound">Clone</ref>&lt; <ref refid="market_model_pathwise_multi_product" kindref="compound">MarketModelPathwiseMultiProduct</ref> &gt; &amp;</type>
+          <type>const Clone&lt; MarketModelPathwiseMultiProduct &gt; &amp;</type>
           <declname>product</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModel &gt; &amp;</type>
           <declname>pseudoRootStructure</declname>
         </param>
         <param>
@@ -33,7 +33,7 @@
         <argsstring>(SequenceStatisticsInc &amp;stats, Size numberOfPaths)</argsstring>
         <name>multiplePathValues</name>
         <param>
-          <type><ref refid="generic_sequence_statistics" kindref="compound">SequenceStatisticsInc</ref> &amp;</type>
+          <type>SequenceStatisticsInc &amp;</type>
           <declname>stats</declname>
         </param>
         <param>

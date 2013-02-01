@@ -15,7 +15,7 @@
         <argsstring>(const Handle&lt; OneFactorCopula &gt; copula, Size nBuckets)</argsstring>
         <name>HomogeneousPoolCDOEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
+          <type>const Handle&lt; OneFactorCopula &gt;</type>
           <declname>copula</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="c_d_o" kindref="compound">CDO</ref> engine, loss distribution convolution for finite homogeneous pool. </para>    </briefdescription>
+<para>CDO engine, loss distribution convolution for finite homogeneous pool. </para>    </briefdescription>
     <location file="/experimental/credit/syntheticcdoengines.hpp" line="173" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="173" bodyend="192"/>
   </compounddef>
 </doxygen>

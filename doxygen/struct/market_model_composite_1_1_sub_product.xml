@@ -4,7 +4,7 @@
     <compoundname>QuantLib::MarketModelComposite::SubProduct</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="market_model_composite_1_1_sub_product_1ab0d10ecbe275fbb2af32502d1a78a04f" prot="public" static="no" mutable="no">
-        <type><ref refid="clone" kindref="compound">Clone</ref>&lt; <ref refid="market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &gt;</type>
+        <type>Clone&lt; MarketModelMultiProduct &gt;</type>
         <definition>Clone&lt;MarketModelMultiProduct&gt; product</definition>
         <argsstring></argsstring>
         <name>product</name>

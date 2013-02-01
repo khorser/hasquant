@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; PiecewiseTimeDependentHestonModel &gt; &amp;model, Real relTolerance, Size maxEvaluations)</argsstring>
         <name>AnalyticPTDHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="piecewise_time_dependent_heston_model" kindref="compound">PiecewiseTimeDependentHestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; PiecewiseTimeDependentHestonModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -29,7 +29,7 @@
         <argsstring>(const boost::shared_ptr&lt; PiecewiseTimeDependentHestonModel &gt; &amp;model, Size integrationOrder=144)</argsstring>
         <name>AnalyticPTDHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="piecewise_time_dependent_heston_model" kindref="compound">PiecewiseTimeDependentHestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; PiecewiseTimeDependentHestonModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>

@@ -6,7 +6,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="overnight_indexed_coupon_1a3ac803b91c3e929f54f9094ce1719bad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; fixingDates</definition>
         <argsstring>() const </argsstring>
         <name>fixingDates</name>
@@ -33,7 +33,7 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="overnight_indexed_coupon_1a400cf30b238cb25c1338c90cac6fd9b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; valueDates</definition>
         <argsstring>() const </argsstring>
         <name>valueDates</name>
@@ -55,7 +55,7 @@
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex, Real gearing=1.0, Spread spread=0.0, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date(), const DayCounter &amp;dayCounter=DayCounter())</argsstring>
         <name>OvernightIndexedCoupon</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -63,11 +63,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -85,19 +85,19 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="48"/>
       </memberdef>

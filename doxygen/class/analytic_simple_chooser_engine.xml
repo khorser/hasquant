@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
         <name>AnalyticSimpleChooserEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/experimental/exoticoptions/analyticsimplechooserengine.hpp" line="39"/>
@@ -19,7 +19,7 @@
     <briefdescription>
 <para>Pricing engine for European Simple Chooser option. </para>    </briefdescription>
     <detaileddescription>
-<para>This class implements a Simple Chooser <ref refid="option" kindref="compound">Option</ref> option, with European exercise. </para>    </detaileddescription>
+<para>This class implements a Simple Chooser Option option, with European exercise. </para>    </detaileddescription>
     <location file="/experimental/exoticoptions/analyticsimplechooserengine.hpp" line="36" bodyfile="/experimental/exoticoptions/analyticsimplechooserengine.hpp" bodystart="36" bodyend="43"/>
   </compounddef>
 </doxygen>

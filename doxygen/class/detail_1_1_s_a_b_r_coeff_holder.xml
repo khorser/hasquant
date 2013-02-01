@@ -9,7 +9,7 @@
         <argsstring></argsstring>
         <name>t_</name>
         <detaileddescription>
-<para><ref refid="option" kindref="compound">Option</ref> expiry </para>        </detaileddescription>
+<para>Option expiry </para>        </detaileddescription>
         <location file="/math/interpolations/sabrinterpolation.hpp" line="89" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="detail_1_1_s_a_b_r_coeff_holder_1a11bb2e42f766fea06e9209a55f29e1d9" prot="public" static="no" mutable="no">

@@ -9,10 +9,10 @@
         <argsstring>(const CapFloor::arguments &amp;, const boost::shared_ptr&lt; HullWhite &gt; &amp;, Time forwardMeasureTime)</argsstring>
         <name>HullWhiteCapFloorPricer</name>
         <param>
-          <type>const <ref refid="cap_floor_1_1arguments" kindref="compound">CapFloor::arguments</ref> &amp;</type>
+          <type>const CapFloor::arguments &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="hull_white" kindref="compound">HullWhite</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HullWhite &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -26,7 +26,7 @@
         <argsstring>(const Path &amp;path) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+          <type>const Path &amp;</type>
           <declname>path</declname>
         </param>
         <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="42"/>

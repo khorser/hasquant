@@ -16,12 +16,12 @@
         <location file="/models/volatility/garmanklass.hpp" line="48" bodyfile="/models/volatility/garmanklass.hpp" bodystart="47" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <type>TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
         <definition>TimeSeries&lt;Volatility&gt; calculate</definition>
         <argsstring>(const TimeSeries&lt; IntervalPrice &gt; &amp;quoteSeries)</argsstring>
         <name>calculate</name>
         <param>
-          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; IntervalPrice &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
         <location file="/models/volatility/garmanklass.hpp" line="50" bodyfile="/models/volatility/garmanklass.hpp" bodystart="50" bodyend="60"/>

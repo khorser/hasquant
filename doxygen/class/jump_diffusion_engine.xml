@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; Merton76Process &gt; &amp;, Real relativeAccuracy_=1e-4, Size maxIterations=100)</argsstring>
         <name>JumpDiffusionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="merton76_process" kindref="compound">Merton76Process</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Merton76Process &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

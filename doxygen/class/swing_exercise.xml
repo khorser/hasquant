@@ -10,7 +10,7 @@
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Size &gt; &amp;seconds=std::vector&lt; Size &gt;())</argsstring>
         <name>SwingExercise</name>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -26,11 +26,11 @@
         <argsstring>(const Date &amp;from, const Date &amp;to, Size stepSizeSecs)</argsstring>
         <name>SwingExercise</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>from</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>to</declname>
         </param>
         <param>
@@ -52,11 +52,11 @@
         <argsstring>(const DayCounter &amp;dc, const Date &amp;refDate) const </argsstring>
         <name>exerciseTimes</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refDate</declname>
         </param>
         <location file="/instruments/vanillaswingoption.hpp" line="46"/>

@@ -33,7 +33,7 @@
     <briefdescription>
 <para>Binary supershare and superfund payoffs. </para>    </briefdescription>
     <detaileddescription>
-<para>Binary superfund payoff</para><para>Superfund sometimes also called &quot;supershare&quot;, which can lead to ambiguity; within <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref> the terms supershare and superfund are used consistently according to the definitions in Bloomberg OVX function&apos;s help pages.</para><para>This payoff is equivalent to being (1/lowerstrike) a) long (short) an AssetOrNothing Call (Put) at the lower strike and b) short (long) an AssetOrNothing Call (Put) at the higher strike </para>    </detaileddescription>
+<para>Binary superfund payoff</para><para>Superfund sometimes also called &quot;supershare&quot;, which can lead to ambiguity; within QuantLib the terms supershare and superfund are used consistently according to the definitions in Bloomberg OVX function&apos;s help pages.</para><para>This payoff is equivalent to being (1/lowerstrike) a) long (short) an AssetOrNothing Call (Put) at the lower strike and b) short (long) an AssetOrNothing Call (Put) at the higher strike </para>    </detaileddescription>
     <location file="/instruments/payoffs.hpp" line="206" bodyfile="/instruments/payoffs.hpp" bodystart="206" bodyend="228"/>
   </compounddef>
 </doxygen>

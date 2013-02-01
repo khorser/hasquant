@@ -19,11 +19,11 @@
         <argsstring>(const Handle&lt; BlackVolTermStructure &gt; &amp;origTS, const Date &amp;referenceDate)</argsstring>
         <name>ImpliedVolTermStructure</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVolTermStructure &gt; &amp;</type>
           <declname>origTS</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" line="45" bodyfile="/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" bodystart="69" bodyend="74"/>

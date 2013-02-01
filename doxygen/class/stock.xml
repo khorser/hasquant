@@ -10,7 +10,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;quote)</argsstring>
         <name>Stock</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>quote</declname>
         </param>
         <location file="/instruments/stock.hpp" line="36"/>

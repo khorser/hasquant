@@ -53,7 +53,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>Pathwise product inverse floater for doing <ref refid="greeks" kindref="compound">Greeks</ref> Tested in MarketModels::testInverseFloater() </para>    </detaileddescription>
+<para>Pathwise product inverse floater for doing Greeks Tested in MarketModels::testInverseFloater() </para>    </detaileddescription>
     <location file="/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="43" bodyfile="/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="42" bodyend="94"/>
   </compounddef>
 </doxygen>

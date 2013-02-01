@@ -5,7 +5,7 @@
     <includes local="no">/experimental/varianceoption/varianceoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="variance_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Payoff &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
@@ -19,14 +19,14 @@
         <location file="/experimental/varianceoption/varianceoption.hpp" line="74" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="variance_option_1_1arguments_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date startDate</definition>
         <argsstring></argsstring>
         <name>startDate</name>
         <location file="/experimental/varianceoption/varianceoption.hpp" line="75" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="variance_option_1_1arguments_1ad5d32c50036fcd18c7ac2e251914c0d4" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maturityDate</definition>
         <argsstring></argsstring>
         <name>maturityDate</name>

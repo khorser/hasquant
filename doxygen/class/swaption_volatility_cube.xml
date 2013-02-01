@@ -20,11 +20,11 @@
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor) const </argsstring>
         <name>atmStrike</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="70"/>
@@ -35,11 +35,11 @@
         <argsstring>(const Period &amp;optionTenor, const Period &amp;swapTenor) const </argsstring>
         <name>atmStrike</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="72" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="71" bodyend="75"/>
@@ -52,15 +52,15 @@
         <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;atmVolStructure, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, const std::vector&lt; Spread &gt; &amp;strikeSpreads, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;volSpreads, const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndexBase, const boost::shared_ptr&lt; SwapIndex &gt; &amp;shortSwapIndexBase, bool vegaWeightedSmileFit)</argsstring>
         <name>SwaptionVolatilityCube</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; SwaptionVolatilityStructure &gt; &amp;</type>
           <declname>atmVolStructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
@@ -68,15 +68,15 @@
           <declname>strikeSpreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;</type>
           <declname>volSpreads</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SwapIndex &gt; &amp;</type>
           <declname>swapIndexBase</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SwapIndex &gt; &amp;</type>
           <declname>shortSwapIndexBase</declname>
         </param>
         <param>

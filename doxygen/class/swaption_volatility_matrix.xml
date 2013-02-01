@@ -23,11 +23,11 @@
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor) const </argsstring>
         <name>locate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <briefdescription>
@@ -59,7 +59,7 @@
         <argsstring>(const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;vols, const DayCounter &amp;dayCounter)</argsstring>
         <name>SwaptionVolatilityMatrix</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -67,19 +67,19 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;</type>
           <declname>vols</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <briefdescription>
@@ -92,11 +92,11 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;vols, const DayCounter &amp;dayCounter)</argsstring>
         <name>SwaptionVolatilityMatrix</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -104,19 +104,19 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;</type>
           <declname>vols</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <briefdescription>
@@ -129,7 +129,7 @@
         <argsstring>(const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, const Matrix &amp;volatilities, const DayCounter &amp;dayCounter)</argsstring>
         <name>SwaptionVolatilityMatrix</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -137,19 +137,19 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>volatilities</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <briefdescription>
@@ -162,11 +162,11 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, const Matrix &amp;volatilities, const DayCounter &amp;dayCounter)</argsstring>
         <name>SwaptionVolatilityMatrix</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -174,19 +174,19 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>volatilities</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <briefdescription>
@@ -199,23 +199,23 @@
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; Date &gt; &amp;optionDates, const std::vector&lt; Period &gt; &amp;swapTenors, const Matrix &amp;volatilities, const DayCounter &amp;dayCounter)</argsstring>
         <name>SwaptionVolatilityMatrix</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>optionDates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>volatilities</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" line="93"/>

@@ -12,19 +12,19 @@
         <location file="/stochasticprocess.hpp" line="47" bodyfile="/stochasticprocess.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="stochastic_process_1_1discretization_1a34bda8631ccdcbafb2dc5da0fc4d05ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; drift</definition>
         <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const =0</argsstring>
         <name>drift</name>
         <param>
-          <type>const <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+          <type>const StochasticProcess &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -34,19 +34,19 @@
         <location file="/stochasticprocess.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="stochastic_process_1_1discretization_1a2ba0ace71b0d2f7b758d1685e59e7c40" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>virtual Disposable&lt;Matrix&gt; diffusion</definition>
         <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const =0</argsstring>
         <name>diffusion</name>
         <param>
-          <type>const <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+          <type>const StochasticProcess &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -56,19 +56,19 @@
         <location file="/stochasticprocess.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="stochastic_process_1_1discretization_1a8c5e010d99024e4340bf7f694f3abcb5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>virtual Disposable&lt;Matrix&gt; covariance</definition>
         <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const =0</argsstring>
         <name>covariance</name>
         <param>
-          <type>const <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+          <type>const StochasticProcess &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>

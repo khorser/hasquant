@@ -20,7 +20,7 @@
         <location file="/models/marketmodels/multiproduct.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="market_model_multi_product_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <type>const EvolutionDescription &amp;</type>
         <definition>virtual const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const =0</argsstring>
         <name>evolution</name>
@@ -62,7 +62,7 @@
         <argsstring>(const CurveState &amp;currentState, std::vector&lt; Size &gt; &amp;numberCashFlowsThisStep, std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;cashFlowsGenerated)=0</argsstring>
         <name>nextTimeStep</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>currentState</declname>
         </param>
         <param>
@@ -78,7 +78,7 @@
         <location file="/models/marketmodels/multiproduct.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="market_model_multi_product_1a20a5dca0cfe5503409e87a1e1ea80ebb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::auto_ptr&lt; <ref refid="market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &gt;</type>
+        <type>std::auto_ptr&lt; MarketModelMultiProduct &gt;</type>
         <definition>virtual std::auto_ptr&lt;MarketModelMultiProduct&gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>

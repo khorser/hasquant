@@ -9,7 +9,7 @@
         <argsstring>(const Matrix &amp;pseudoRoot, Size aliveIndex, Size numeraire, const std::vector&lt; Time &gt; &amp;taus, const std::vector&lt; Matrix &gt; &amp;pseudoBumps, const std::vector&lt; Spread &gt; &amp;displacements)</argsstring>
         <name>RatePseudoRootJacobian</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>pseudoRoot</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <declname>taus</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Matrix &gt; &amp;</type>
           <declname>pseudoBumps</declname>
         </param>
         <param>
@@ -56,7 +56,7 @@
           <declname>gaussians</declname>
         </param>
         <param>
-          <type><ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>Matrix &amp;</type>
           <declname>B</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="94"/>

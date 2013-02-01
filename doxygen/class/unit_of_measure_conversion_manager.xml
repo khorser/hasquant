@@ -10,14 +10,14 @@
         <argsstring>(const CommodityType &amp;commodityType, const UnitOfMeasure &amp;, const UnitOfMeasure &amp;, UnitOfMeasureConversion::Type type=UnitOfMeasureConversion::Derived) const </argsstring>
         <name>lookup</name>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
         </param>
         <param>
           <type>UnitOfMeasureConversion::Type</type>

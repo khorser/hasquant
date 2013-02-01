@@ -18,7 +18,7 @@
           <declname>notionals</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
           <declname>coupons</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>accrualDayCounter</declname>
         </param>
         <param>
@@ -35,9 +35,9 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/experimental/amortizingbonds/amortizingfixedratebond.hpp" line="44"/>
       </memberdef>
@@ -51,7 +51,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -59,11 +59,11 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>bondTenor</declname>
         </param>
         <param>
@@ -75,7 +75,7 @@
           <declname>coupon</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>accrualDayCounter</declname>
         </param>
         <param>
@@ -84,9 +84,9 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <detaileddescription>
 <para>Automatically generates a set of equal coupons, with an amortizing bond. The coupons are equal and the accrual daycount is only used for quoting/settlement purposes - not for calculating the coupons. </para>        </detaileddescription>
@@ -100,7 +100,7 @@
         <location file="/experimental/amortizingbonds/amortizingfixedratebond.hpp" line="61" bodyfile="/experimental/amortizingbonds/amortizingfixedratebond.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="amortizing_fixed_rate_bond_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>

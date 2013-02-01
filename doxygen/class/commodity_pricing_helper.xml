@@ -19,15 +19,15 @@
         <argsstring>(const Currency &amp;fromCurrency, const Currency &amp;toCurrency, const Date &amp;evaluationDate)</argsstring>
         <name>calculateFxConversionFactor</name>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>fromCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>toCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>evaluationDate</declname>
         </param>
         <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="42" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="79" bodyend="94"/>
@@ -38,15 +38,15 @@
         <argsstring>(const CommodityType &amp;commodityType, const UnitOfMeasure &amp;fromUnitOfMeasure, const UnitOfMeasure &amp;toUnitOfMeasure)</argsstring>
         <name>calculateUomConversionFactor</name>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
           <declname>fromUnitOfMeasure</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
           <declname>toUnitOfMeasure</declname>
         </param>
         <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="47" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="65" bodyend="77"/>
@@ -57,7 +57,7 @@
         <argsstring>(const CommodityType &amp;commodityType, const CommodityUnitCost &amp;unitCost, const Currency &amp;baseCurrency, const UnitOfMeasure &amp;baseUnitOfMeasure, const Date &amp;evaluationDate)</argsstring>
         <name>calculateUnitCost</name>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
@@ -65,15 +65,15 @@
           <declname>unitCost</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>baseCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
           <declname>baseUnitOfMeasure</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>evaluationDate</declname>
         </param>
         <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="53" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="96" bodyend="114"/>
@@ -84,15 +84,15 @@
         <argsstring>(Date startDate, Date endDate, const Quantity &amp;quantity, EnergyCommodity::DeliverySchedule deliverySchedule, EnergyCommodity::QuantityPeriodicity qtyPeriodicity, const PaymentTerm &amp;paymentTerm, PricingPeriods &amp;pricingPeriods)</argsstring>
         <name>createPricingPeriods</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="quantity" kindref="compound">Quantity</ref> &amp;</type>
+          <type>const Quantity &amp;</type>
           <declname>quantity</declname>
         </param>
         <param>

@@ -10,11 +10,11 @@
         <argsstring>(const Price &amp;price, const Date &amp;date, Real trigger)</argsstring>
         <name>SoftCallability</name>
         <param>
-          <type>const <ref refid="callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
+          <type>const Price &amp;</type>
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <param>

@@ -14,7 +14,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="interpolated_yo_y_inflation_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
@@ -42,7 +42,7 @@
         <location file="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" line="70" bodyfile="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" bodystart="207" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_yo_y_inflation_curve_1ae36e55af23c117164f4329ad5daa9adf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Rate &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -59,19 +59,19 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar, const DayCounter &amp;dayCounter, const Period &amp;lag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yTS, const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Rate &gt; &amp;rates, const Interpolator &amp;interpolator=Interpolator())</argsstring>
         <name>InterpolatedYoYInflationCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
@@ -83,11 +83,11 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yTS</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>

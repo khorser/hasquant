@@ -5,7 +5,7 @@
     <includes local="no">/math/randomnumbers/knuthuniformrng.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="knuth_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
-        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>Sample&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -28,7 +28,7 @@
         <location file="/math/randomnumbers/knuthuniformrng.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="knuth_uniform_rng_1a54d52bd9fcbf209b55759eaee7c151bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="sample" kindref="compound">sample_type</ref></type>
+        <type>sample_type</type>
         <definition>KnuthUniformRng::sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>

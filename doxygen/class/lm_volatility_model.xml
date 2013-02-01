@@ -34,7 +34,7 @@
         <location file="/legacy/libormarketmodels/lmvolmodel.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="lm_volatility_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
+        <type>std::vector&lt; Parameter &gt; &amp;</type>
         <definition>std::vector&lt;Parameter&gt;&amp; params</definition>
         <argsstring>()</argsstring>
         <name>params</name>
@@ -46,13 +46,13 @@
         <argsstring>(const std::vector&lt; Parameter &gt; &amp;arguments)</argsstring>
         <name>setParams</name>
         <param>
-          <type>const std::vector&lt; <ref refid="parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Parameter &gt; &amp;</type>
           <declname>arguments</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmvolmodel.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="lm_volatility_model_1abc5c862454998819a6b89ab41895528d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; volatility</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const =0</argsstring>
         <name>volatility</name>
@@ -61,9 +61,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmvolmodel.hpp" line="44"/>
       </memberdef>
@@ -81,9 +81,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmvolmodel.hpp" line="46"/>
       </memberdef>
@@ -105,9 +105,9 @@
           <declname>u</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmvolmodel.hpp" line="48"/>
       </memberdef>

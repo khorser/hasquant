@@ -10,15 +10,15 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>Eonia</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/ibor/eonia.hpp" line="35"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Eonia (Euro Overnight <ref refid="index" kindref="compound">Index</ref> <ref refid="average" kindref="compound">Average</ref>) rate fixed by the <ref refid="e_c_b" kindref="compound">ECB</ref>. </para>    </briefdescription>
+<para>Eonia (Euro Overnight Index Average) rate fixed by the ECB. </para>    </briefdescription>
     <location file="/indexes/ibor/eonia.hpp" line="32" bodyfile="/indexes/ibor/eonia.hpp" bodystart="32" bodyend="36"/>
   </compounddef>
 </doxygen>

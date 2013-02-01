@@ -10,7 +10,7 @@
         <argsstring>(Constraint &amp;c, Real accuracy=1e-4, Size maxiter=100)</argsstring>
         <name>NonLinearLeastSquare</name>
         <param>
-          <type><ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>Constraint &amp;</type>
           <declname>c</declname>
         </param>
         <param>
@@ -33,7 +33,7 @@
         <argsstring>(Constraint &amp;c, Real accuracy, Size maxiter, boost::shared_ptr&lt; OptimizationMethod &gt; om)</argsstring>
         <name>NonLinearLeastSquare</name>
         <param>
-          <type><ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>Constraint &amp;</type>
           <declname>c</declname>
         </param>
         <param>
@@ -45,7 +45,7 @@
           <declname>maxiter</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; OptimizationMethod &gt;</type>
           <declname>om</declname>
         </param>
         <briefdescription>
@@ -62,12 +62,12 @@
         <location file="/math/optimization/leastsquare.hpp" line="109" bodyfile="/math/optimization/leastsquare.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="non_linear_least_square_1a067968a223168798fa3f64b6051f4354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>Array &amp;</type>
         <definition>Array&amp; perform</definition>
         <argsstring>(LeastSquareProblem &amp;lsProblem)</argsstring>
         <name>perform</name>
         <param>
-          <type><ref refid="least_square_problem" kindref="compound">LeastSquareProblem</ref> &amp;</type>
+          <type>LeastSquareProblem &amp;</type>
           <declname>lsProblem</declname>
         </param>
         <briefdescription>
@@ -80,13 +80,13 @@
         <argsstring>(const Array &amp;initialValue)</argsstring>
         <name>setInitialValue</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>initialValue</declname>
         </param>
         <location file="/math/optimization/leastsquare.hpp" line="114" bodyfile="/math/optimization/leastsquare.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="non_linear_least_square_1a1cbd190434a8924319877d9a566a7362" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>Array &amp;</type>
         <definition>Array&amp; results</definition>
         <argsstring>()</argsstring>
         <name>results</name>

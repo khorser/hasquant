@@ -13,11 +13,11 @@
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Volatility &gt; &amp;capletVolCurve, const DayCounter &amp;dayCounter)</argsstring>
         <name>CapletVarianceCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -25,14 +25,14 @@
           <declname>capletVolCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="41" bodyfile="/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="57" bodyend="63"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para><xrefsect id="deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>use the <ref refid="stripped_optionlet_adapter" kindref="compound">StrippedOptionletAdapter</ref> of a <ref refid="stripped_optionlet" kindref="compound">StrippedOptionlet</ref> instance </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para><xrefsect id="deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>use the StrippedOptionletAdapter of a StrippedOptionlet instance </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="36" bodyfile="/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="36" bodyend="55"/>
   </compounddef>
 </doxygen>

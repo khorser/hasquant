@@ -9,7 +9,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;p, Size tGrid=50, Size xGrid=100, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Douglas())</argsstring>
         <name>FdSimpleBSSwingEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <param>

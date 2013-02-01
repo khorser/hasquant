@@ -63,7 +63,7 @@
         <argsstring>(const Array &amp;)</argsstring>
         <name>Array</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/array.hpp" line="63" bodyfile="/math/array.hpp" bodystart="222" bodyend="228"/>
@@ -74,7 +74,7 @@
         <argsstring>(const Disposable&lt; Array &gt; &amp;)</argsstring>
         <name>Array</name>
         <param>
-          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt; &amp;</type>
+          <type>const Disposable&lt; Array &gt; &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/array.hpp" line="64" bodyfile="/math/array.hpp" bodystart="230" bodyend="233"/>
@@ -102,23 +102,23 @@
         <location file="/math/array.hpp" line="67" bodyfile="/math/array.hpp" bodystart="273" bodyend="278"/>
       </memberdef>
       <memberdef kind="function" id="array_1a2d4e739b16bc654f126ac537aaefa61f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>Array &amp;</type>
         <definition>Array &amp; operator=</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/array.hpp" line="69" bodyfile="/math/array.hpp" bodystart="280" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="array_1a13e26651c7a26d73e442b126a74569ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>Array &amp;</type>
         <definition>Array &amp; operator=</definition>
         <argsstring>(const Disposable&lt; Array &gt; &amp;)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt; &amp;</type>
+          <type>const Disposable&lt; Array &gt; &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/array.hpp" line="70" bodyfile="/math/array.hpp" bodystart="295" bodyend="298"/>
@@ -129,7 +129,7 @@
         <argsstring>(const Array &amp;) const </argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <defname>to</defname>
         </param>
         <location file="/math/array.hpp" line="71" bodyfile="/math/array.hpp" bodystart="287" bodyend="289"/>
@@ -140,7 +140,7 @@
         <argsstring>(const Array &amp;) const </argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <defname>to</defname>
         </param>
         <location file="/math/array.hpp" line="72" bodyfile="/math/array.hpp" bodystart="291" bodyend="293"/>
@@ -155,18 +155,18 @@
 </verbatim></para><para><simplesect kind="pre"><para>all arrays involved in an algebraic expression must have the same size. </para></simplesect>
 </para></description>
       <memberdef kind="function" id="array_1a8091afec68ddbbfa98cec1d4fa2e1ccf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array &amp; operator+=</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>operator+=</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/math/array.hpp" line="86" bodyfile="/math/array.hpp" bodystart="300" bodyend="307"/>
       </memberdef>
       <memberdef kind="function" id="array_1aaf8170f73062b0a3832e77a41aefc4c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array &amp; operator+=</definition>
         <argsstring>(Real)</argsstring>
         <name>operator+=</name>
@@ -177,18 +177,18 @@
         <location file="/math/array.hpp" line="87" bodyfile="/math/array.hpp" bodystart="310" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="array_1a72af77851512699e33fc47cdb99c3da5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array &amp; operator-=</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>operator-=</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/math/array.hpp" line="88" bodyfile="/math/array.hpp" bodystart="316" bodyend="323"/>
       </memberdef>
       <memberdef kind="function" id="array_1adaf3aac7bd9b8779b7329efbc2531c31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array &amp; operator-=</definition>
         <argsstring>(Real)</argsstring>
         <name>operator-=</name>
@@ -199,18 +199,18 @@
         <location file="/math/array.hpp" line="89" bodyfile="/math/array.hpp" bodystart="325" bodyend="329"/>
       </memberdef>
       <memberdef kind="function" id="array_1a05ef6ee15af6898cb248f4ea6fdcccfb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array &amp; operator*=</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>operator*=</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/math/array.hpp" line="90" bodyfile="/math/array.hpp" bodystart="331" bodyend="338"/>
       </memberdef>
       <memberdef kind="function" id="array_1aae5fb5462d34ef1fefb3fc385b9931ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array &amp; operator*=</definition>
         <argsstring>(Real)</argsstring>
         <name>operator*=</name>
@@ -221,18 +221,18 @@
         <location file="/math/array.hpp" line="91" bodyfile="/math/array.hpp" bodystart="340" bodyend="344"/>
       </memberdef>
       <memberdef kind="function" id="array_1a7287f3aed815dbfef5125bc52869e6f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array &amp; operator/=</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>operator/=</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/math/array.hpp" line="92" bodyfile="/math/array.hpp" bodystart="346" bodyend="353"/>
       </memberdef>
       <memberdef kind="function" id="array_1ac591f7aac915dfb4d89451130dc84aa7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array &amp; operator/=</definition>
         <argsstring>(Real)</argsstring>
         <name>operator/=</name>
@@ -410,7 +410,7 @@
         <argsstring>(Array &amp;)</argsstring>
         <name>swap</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/array.hpp" line="134" bodyfile="/math/array.hpp" bodystart="461" bodyend="465"/>
@@ -467,55 +467,55 @@
         <argsstring>(const Array &amp;, const Array &amp;)</argsstring>
         <name>DotProduct</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="153" bodyfile="/math/array.hpp" bodystart="469" bodyend="474"/>
       </memberdef>
       <memberdef kind="function" id="array_1ad9bf315bb5fba95a59da9b8b61ac7dff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator+</definition>
         <argsstring>(const Array &amp;v)</argsstring>
         <name>operator+</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>v</declname>
         </param>
         <location file="/math/array.hpp" line="157" bodyfile="/math/array.hpp" bodystart="480" bodyend="483"/>
       </memberdef>
       <memberdef kind="function" id="array_1a5a67dd797ca127f270a0b1ba360c742a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator-</definition>
         <argsstring>(const Array &amp;v)</argsstring>
         <name>operator-</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>v</declname>
         </param>
         <location file="/math/array.hpp" line="159" bodyfile="/math/array.hpp" bodystart="485" bodyend="490"/>
       </memberdef>
       <memberdef kind="function" id="array_1a30c1e39a01d6dfb9db7bf25cebb47e1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator+</definition>
         <argsstring>(const Array &amp;, const Array &amp;)</argsstring>
         <name>operator+</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="163" bodyfile="/math/array.hpp" bodystart="495" bodyend="504"/>
       </memberdef>
       <memberdef kind="function" id="array_1a8e01dc4e8382a19b1a90c9cfe89d2b98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator+</definition>
         <argsstring>(const Array &amp;, Real)</argsstring>
         <name>operator+</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -523,7 +523,7 @@
         <location file="/math/array.hpp" line="165" bodyfile="/math/array.hpp" bodystart="506" bodyend="511"/>
       </memberdef>
       <memberdef kind="function" id="array_1a245b6e750516fcf6c1f6bae1b24f632a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator+</definition>
         <argsstring>(Real, const Array &amp;)</argsstring>
         <name>operator+</name>
@@ -531,30 +531,30 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="167" bodyfile="/math/array.hpp" bodystart="513" bodyend="518"/>
       </memberdef>
       <memberdef kind="function" id="array_1af6e98edad414b9d05669d257630423ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator-</definition>
         <argsstring>(const Array &amp;, const Array &amp;)</argsstring>
         <name>operator-</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="169" bodyfile="/math/array.hpp" bodystart="520" bodyend="529"/>
       </memberdef>
       <memberdef kind="function" id="array_1a71c902695ac63bd6c9a194dc11d260ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator-</definition>
         <argsstring>(const Array &amp;, Real)</argsstring>
         <name>operator-</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -562,7 +562,7 @@
         <location file="/math/array.hpp" line="171" bodyfile="/math/array.hpp" bodystart="531" bodyend="536"/>
       </memberdef>
       <memberdef kind="function" id="array_1a35829dd99a357b442b9abafa143f2451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator-</definition>
         <argsstring>(Real, const Array &amp;)</argsstring>
         <name>operator-</name>
@@ -570,30 +570,30 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="173" bodyfile="/math/array.hpp" bodystart="538" bodyend="543"/>
       </memberdef>
       <memberdef kind="function" id="array_1a7471dbc64e9e43b39397358f842e8def" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator*</definition>
         <argsstring>(const Array &amp;, const Array &amp;)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="175" bodyfile="/math/array.hpp" bodystart="545" bodyend="554"/>
       </memberdef>
       <memberdef kind="function" id="array_1aa8a6804ef4a5a90b9795d48621727b3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator*</definition>
         <argsstring>(const Array &amp;, Real)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -601,7 +601,7 @@
         <location file="/math/array.hpp" line="177" bodyfile="/math/array.hpp" bodystart="556" bodyend="561"/>
       </memberdef>
       <memberdef kind="function" id="array_1a19c4c5ee57fdc605a125ddeab1702817" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator*</definition>
         <argsstring>(Real, const Array &amp;)</argsstring>
         <name>operator*</name>
@@ -609,30 +609,30 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="179" bodyfile="/math/array.hpp" bodystart="563" bodyend="568"/>
       </memberdef>
       <memberdef kind="function" id="array_1ac07ccaa7a4cd53d0bf4d97e86eca0fb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator/</definition>
         <argsstring>(const Array &amp;, const Array &amp;)</argsstring>
         <name>operator/</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="181" bodyfile="/math/array.hpp" bodystart="570" bodyend="579"/>
       </memberdef>
       <memberdef kind="function" id="array_1a56d75fbea7bbda5bf22addcc1a047d61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator/</definition>
         <argsstring>(const Array &amp;, Real)</argsstring>
         <name>operator/</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -640,7 +640,7 @@
         <location file="/math/array.hpp" line="183" bodyfile="/math/array.hpp" bodystart="581" bodyend="586"/>
       </memberdef>
       <memberdef kind="function" id="array_1a84a24ae5b33c2dadf35332c3080fc2ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator/</definition>
         <argsstring>(Real, const Array &amp;)</argsstring>
         <name>operator/</name>
@@ -648,47 +648,47 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="185" bodyfile="/math/array.hpp" bodystart="588" bodyend="593"/>
       </memberdef>
       <memberdef kind="function" id="array_1af068e01ed25503b22e69cb0f6b9d3402" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; Abs</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>Abs</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="189" bodyfile="/math/array.hpp" bodystart="597" bodyend="602"/>
       </memberdef>
       <memberdef kind="function" id="array_1a9b5fa34ccfc6f716a2c99dc37f6fe658" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; Sqrt</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>Sqrt</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="191" bodyfile="/math/array.hpp" bodystart="604" bodyend="609"/>
       </memberdef>
       <memberdef kind="function" id="array_1aadcafff3b7730a7ad435b2451bf3855e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; Log</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>Log</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="193" bodyfile="/math/array.hpp" bodystart="611" bodyend="616"/>
       </memberdef>
       <memberdef kind="function" id="array_1a5a906cfbfbafc7d3203c69168cf0eaa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>const Disposable&lt; Array &gt;</type>
         <definition>const Disposable&lt; Array &gt; Exp</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>Exp</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="195" bodyfile="/math/array.hpp" bodystart="618" bodyend="623"/>
       </memberdef>
@@ -698,10 +698,10 @@
         <argsstring>(Array &amp;, Array &amp;)</argsstring>
         <name>swap</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="199" bodyfile="/math/array.hpp" bodystart="625" bodyend="627"/>
       </memberdef>
@@ -714,7 +714,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/array.hpp" line="203" bodyfile="/math/array.hpp" bodystart="629" bodyend="639"/>
       </memberdef>

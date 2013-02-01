@@ -41,7 +41,7 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type>AcyclicVisitor &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/payoff.hpp" line="51" bodyfile="/payoff.hpp" bodystart="58" bodyend="64"/>

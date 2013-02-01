@@ -9,16 +9,16 @@
         <argsstring>(const VanillaOption::arguments &amp;, const StochasticProcess &amp;process, const TimeGrid &amp;grid=TimeGrid())</argsstring>
         <name>DiscretizedVanillaOption</name>
         <param>
-          <type>const <ref refid="option_1_1arguments" kindref="compound">VanillaOption::arguments</ref> &amp;</type>
+          <type>const VanillaOption::arguments &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+          <type>const StochasticProcess &amp;</type>
           <declname>process</declname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>grid</declname>
-          <defval><ref refid="time_grid" kindref="compound">TimeGrid</ref>()</defval>
+          <defval>TimeGrid()</defval>
         </param>
         <location file="/pricingengines/vanilla/discretizedvanillaoption.hpp" line="38"/>
       </memberdef>

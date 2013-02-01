@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, Real forward, Real stdDev, Real discount=1.0)</argsstring>
         <name>BlackCalculator</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>

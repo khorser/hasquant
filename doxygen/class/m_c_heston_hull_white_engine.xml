@@ -14,7 +14,7 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="m_c_heston_hull_white_engine_1a37116ca08bca75796598af372e6bd37a" prot="public" static="no">
-        <type><ref refid="m_c_vanilla_engine" kindref="compound">MCVanillaEngine</ref>&lt; <ref refid="multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;</type>
+        <type>MCVanillaEngine&lt; MultiVariate, RNG, S &gt;</type>
         <definition>typedef MCVanillaEngine&lt;MultiVariate, RNG,S&gt; base_type</definition>
         <argsstring></argsstring>
         <name>base_type</name>
@@ -56,7 +56,7 @@
         <argsstring>(const boost::shared_ptr&lt; HybridHestonHullWhiteProcess &gt; &amp;process, Size timeSteps, Size timeStepsPerYear, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed)</argsstring>
         <name>MCHestonHullWhiteEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="hybrid_heston_hull_white_process" kindref="compound">HybridHestonHullWhiteProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HybridHestonHullWhiteProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

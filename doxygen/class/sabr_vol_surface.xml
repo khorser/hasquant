@@ -32,13 +32,13 @@
         <argsstring>(const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;, const Handle&lt; BlackAtmVolCurve &gt; &amp;, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Spread &gt; &amp;atmRateSpreads, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;volSpreads)</argsstring>
         <name>SabrVolSurface</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_atm_vol_curve" kindref="compound">BlackAtmVolCurve</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackAtmVolCurve &gt; &amp;</type>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
@@ -46,13 +46,13 @@
           <declname>atmRateSpreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;</type>
           <declname>volSpreads</declname>
         </param>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="sabr_vol_surface_1aa7730d9126678d4837ee600ee25a33a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_atm_vol_curve" kindref="compound">BlackAtmVolCurve</ref> &gt; &amp;</type>
+        <type>const Handle&lt; BlackAtmVolCurve &gt; &amp;</type>
         <definition>const Handle&lt; BlackAtmVolCurve &gt; &amp; atmCurve</definition>
         <argsstring>() const </argsstring>
         <name>atmCurve</name>
@@ -64,7 +64,7 @@
         <argsstring>(const Period &amp;) const </argsstring>
         <name>volatilitySpreads</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <defname>p</defname>
         </param>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="68" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="144" bodyend="146"/>
@@ -75,13 +75,13 @@
         <argsstring>(const Date &amp;) const </argsstring>
         <name>volatilitySpreads</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="s_a_b_r" kindref="compound">SABR</ref> volatility (smile) surface. </para>    </briefdescription>
+<para>SABR volatility (smile) surface. </para>    </briefdescription>
     <detaileddescription>
 <para>blah blah </para>    </detaileddescription>
     <location file="/experimental/volatility/sabrvolsurface.hpp" line="39" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="39" bodyend="103"/>

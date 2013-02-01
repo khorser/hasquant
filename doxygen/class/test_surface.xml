@@ -19,7 +19,7 @@
         <location file="/math/surface.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="test_surface_1af23c215e27dbfa079829dd91616ee4c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="domain" kindref="compound">Domain</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Domain &gt;</type>
         <definition>boost::shared_ptr&lt;Domain&gt; domain</definition>
         <argsstring>() const </argsstring>
         <name>domain</name>

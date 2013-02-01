@@ -11,15 +11,15 @@
         <argsstring>(const ExchangeRate &amp;, const Date &amp;startDate=Date::minDate(), const Date &amp;endDate=Date::maxDate())</argsstring>
         <name>add</name>
         <param>
-          <type>const <ref refid="exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
+          <type>const ExchangeRate &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
           <defval><ref refid="date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
           <defval><ref refid="date_1ab16674c4f64b17d89302cf0805f1fdbd" kindref="member">Date::maxDate</ref>()</defval>
         </param>
@@ -31,22 +31,22 @@
         <location file="/currencies/exchangeratemanager.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="exchange_rate_manager_1a093a0fb71cc0f5e543d1e5a29f265da2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="exchange_rate" kindref="compound">ExchangeRate</ref></type>
+        <type>ExchangeRate</type>
         <definition>ExchangeRate lookup</definition>
         <argsstring>(const Currency &amp;source, const Currency &amp;target, Date date=Date(), ExchangeRate::Type type=ExchangeRate::Derived) const </argsstring>
         <name>lookup</name>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>source</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>target</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>date</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">ExchangeRate::Type</ref></type>

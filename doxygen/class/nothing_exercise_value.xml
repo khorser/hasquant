@@ -13,7 +13,7 @@
           <declname>rateTimes</declname>
         </param>
         <detaileddescription>
-<para><xrefsect id="todo_1_todo000047"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>use <ref refid="payoff" kindref="compound">Payoff</ref> </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="todo_1_todo000047"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>use Payoff </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/models/marketmodels/callability/nothingexercisevalue.hpp" line="31"/>
       </memberdef>
       <memberdef kind="function" id="nothing_exercise_value_1a5065f03e9f9e90f1a6ca2a593ab037b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -24,7 +24,7 @@
         <location file="/models/marketmodels/callability/nothingexercisevalue.hpp" line="32"/>
       </memberdef>
       <memberdef kind="function" id="nothing_exercise_value_1afa0882cb7e47518f285e2bc573d954a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <type>const EvolutionDescription &amp;</type>
         <definition>const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
@@ -43,7 +43,7 @@
         <argsstring>(const CurveState &amp;)</argsstring>
         <name>nextStep</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
         </param>
         <location file="/models/marketmodels/callability/nothingexercisevalue.hpp" line="36"/>
       </memberdef>
@@ -67,7 +67,7 @@
         <argsstring>(const CurveState &amp;) const </argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
         </param>
         <location file="/models/marketmodels/callability/nothingexercisevalue.hpp" line="40"/>
       </memberdef>

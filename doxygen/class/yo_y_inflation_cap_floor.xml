@@ -39,28 +39,28 @@
         <location file="/instruments/inflationcapfloor.hpp" line="77" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_cap_floor_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/instruments/inflationcapfloor.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_cap_floor_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
         <location file="/instruments/inflationcapfloor.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_cap_floor_1af302a474b752b49a164197fa6734fdb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_coupon" kindref="compound">YoYInflationCoupon</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYInflationCoupon &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationCoupon&gt; lastYoYInflationCoupon</definition>
         <argsstring>() const </argsstring>
         <name>lastYoYInflationCoupon</name>
         <location file="/instruments/inflationcapfloor.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_cap_floor_1a7439097a62f15a167a271a6e828d2d77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor" kindref="compound">YoYInflationCapFloor</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYInflationCapFloor &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationCapFloor&gt; optionlet</definition>
         <argsstring>(const Size n) const </argsstring>
         <name>optionlet</name>
@@ -137,7 +137,7 @@
         <argsstring>(const YieldTermStructure &amp;discountCurve) const </argsstring>
         <name>atmRate</name>
         <param>
-          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const YieldTermStructure &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <location file="/instruments/inflationcapfloor.hpp" line="85"/>
@@ -152,7 +152,7 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYInflationTermStructure &gt; &amp;</type>
           <declname>yoyCurve</declname>
         </param>
         <param>

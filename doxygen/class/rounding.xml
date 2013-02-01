@@ -63,7 +63,7 @@
         <briefdescription>
 <para>rounding methods </para>        </briefdescription>
         <detaileddescription>
-<para>The rounding methods follow the OMG specification available at <ulink url="ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdf">ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdf</ulink></para><para><xrefsect id="caveats_1_caveats000074"><xreftitle>Warning</xreftitle><xrefdescription><para>the names of the <ref refid="floor" kindref="compound">Floor</ref> and Ceiling methods might be misleading. Check the provided reference. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para>The rounding methods follow the OMG specification available at <ulink url="ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdf">ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdf</ulink></para><para><xrefsect id="caveats_1_caveats000074"><xreftitle>Warning</xreftitle><xrefdescription><para>the names of the Floor and Ceiling methods might be misleading. Check the provided reference. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/math/rounding.hpp" line="44" bodyfile="/math/rounding.hpp" bodystart="44" bodyend="65"/>
       </memberdef>
       </sectiondef>

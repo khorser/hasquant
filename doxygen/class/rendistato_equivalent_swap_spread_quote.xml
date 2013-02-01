@@ -17,7 +17,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>RendistatoCalculator equivalent swap spread <ref refid="quote" kindref="compound">Quote</ref> adapter. </para>    </briefdescription>
+<para>RendistatoCalculator equivalent swap spread Quote adapter. </para>    </briefdescription>
     <location file="/instruments/bonds/btp.hpp" line="181" bodyfile="/instruments/bonds/btp.hpp" bodystart="181" bodyend="189"/>
   </compounddef>
 </doxygen>

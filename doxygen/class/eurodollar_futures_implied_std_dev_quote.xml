@@ -13,15 +13,15 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;forward, const Handle&lt; Quote &gt; &amp;callPrice, const Handle&lt; Quote &gt; &amp;putPrice, Real strike, Real guess=.15, Real accuracy=1.0e-6, Natural maxIter=100)</argsstring>
         <name>EurodollarFuturesImpliedStdDevQuote</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>forward</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>callPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>putPrice</declname>
         </param>
         <param>

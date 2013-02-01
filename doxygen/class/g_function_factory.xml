@@ -46,7 +46,7 @@
         <argsstring>(const CmsCoupon &amp;coupon)</argsstring>
         <name>newGFunctionExactYield</name>
         <param>
-          <type>const <ref refid="cms_coupon" kindref="compound">CmsCoupon</ref> &amp;</type>
+          <type>const CmsCoupon &amp;</type>
           <declname>coupon</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="83"/>
@@ -57,11 +57,11 @@
         <argsstring>(const CmsCoupon &amp;coupon, const Handle&lt; Quote &gt; &amp;meanReversion)</argsstring>
         <name>newGFunctionWithShifts</name>
         <param>
-          <type>const <ref refid="cms_coupon" kindref="compound">CmsCoupon</ref> &amp;</type>
+          <type>const CmsCoupon &amp;</type>
           <declname>coupon</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="86"/>

@@ -10,35 +10,35 @@
         <argsstring>(const Period &amp;maturity, const Period &amp;length, const Handle&lt; Quote &gt; &amp;volatility, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const Period &amp;fixedLegTenor, const DayCounter &amp;fixedLegDayCounter, const DayCounter &amp;floatingLegDayCounter, const Handle&lt; YieldTermStructure &gt; &amp;termStructure, CalibrationHelper::CalibrationErrorType errorType=CalibrationHelper::RelativePriceError)</argsstring>
         <name>SwaptionHelper</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>length</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>fixedLegTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedLegDayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>floatingLegDayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>

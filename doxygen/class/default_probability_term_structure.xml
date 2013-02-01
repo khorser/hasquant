@@ -5,26 +5,26 @@
     <includes local="no">/termstructures/defaulttermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <description><para>See the TermStructure documentation for issues regarding constructors. </para></description>
       <memberdef kind="function" id="default_probability_term_structure_1a61f6e82b826a2c15edbeec08161281ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DefaultProbabilityTermStructure</definition>
         <argsstring>(const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>DefaultProbabilityTermStructure</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/defaulttermstructure.hpp" line="56"/>
       </memberdef>
@@ -34,28 +34,28 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;cal=Calendar(), const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>DefaultProbabilityTermStructure</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
-          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval>Calendar()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/defaulttermstructure.hpp" line="62"/>
       </memberdef>
@@ -69,23 +69,23 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/defaulttermstructure.hpp" line="68"/>
       </memberdef>
@@ -99,7 +99,7 @@
         <argsstring>(const Date &amp;d, bool extrapolate=false) const </argsstring>
         <name>survivalProbability</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -137,7 +137,7 @@
         <argsstring>(const Date &amp;d, bool extrapolate=false) const </argsstring>
         <name>defaultProbability</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -171,10 +171,10 @@
         <argsstring>(const Date &amp;, const Date &amp;, bool extrapolate=false) const </argsstring>
         <name>defaultProbability</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
           <type>bool</type>
@@ -215,7 +215,7 @@
         <argsstring>(const Date &amp;d, bool extrapolate=false) const </argsstring>
         <name>defaultDensity</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -251,7 +251,7 @@
         <argsstring>(const Date &amp;d, bool extrapolate=false) const </argsstring>
         <name>hazardRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -281,7 +281,7 @@
       <sectiondef kind="user-defined">
       <header>Jump inspectors</header>
       <memberdef kind="function" id="default_probability_term_structure_1a664edcb72ff4033ddc5d423bb22adb42" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; jumpDates</definition>
         <argsstring>() const </argsstring>
         <name>jumpDates</name>

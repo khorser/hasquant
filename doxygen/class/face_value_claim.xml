@@ -6,7 +6,7 @@
       <sectiondef kind="public-func">
       </sectiondef>
     <briefdescription>
-<para><ref refid="claim" kindref="compound">Claim</ref> on a notional. </para>    </briefdescription>
+<para>Claim on a notional. </para>    </briefdescription>
     <location file="/instruments/claim.hpp" line="43" bodyfile="/instruments/claim.hpp" bodystart="43" bodyend="48"/>
   </compounddef>
 </doxygen>

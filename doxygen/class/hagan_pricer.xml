@@ -17,7 +17,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;meanReversion)</argsstring>
         <name>setMeanReversion</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="210" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="210" bodyend="215"/>

@@ -14,11 +14,11 @@
           <declname>payer</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="risky_asset_swap" kindref="compound">RiskyAssetSwap</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; RiskyAssetSwap &gt; &amp;</type>
           <declname>asw</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>expiry</declname>
         </param>
         <param>

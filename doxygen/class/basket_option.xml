@@ -14,13 +14,13 @@
           <type>const boost::shared_ptr&lt; BasketPayoff &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
         </param>
         <location file="/instruments/basketoption.hpp" line="107"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="basket" kindref="compound">Basket</ref> option on a number of assets. </para>    </briefdescription>
+<para>Basket option on a number of assets. </para>    </briefdescription>
     <location file="/instruments/basketoption.hpp" line="103" bodyfile="/instruments/basketoption.hpp" bodystart="103" bodyend="108"/>
   </compounddef>
 </doxygen>

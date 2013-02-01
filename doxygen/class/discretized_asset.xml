@@ -20,21 +20,21 @@
         <location file="/discretizedasset.hpp" line="45" bodyfile="/discretizedasset.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="discretized_asset_1a48c7f1d36a56d07e9e3e80d431cbd83f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; values</definition>
         <argsstring>() const </argsstring>
         <name>values</name>
         <location file="/discretizedasset.hpp" line="47" bodyfile="/discretizedasset.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="discretized_asset_1aa3153146194de0ef429000ccd8c7eb25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>Array &amp;</type>
         <definition>Array&amp; values</definition>
         <argsstring>()</argsstring>
         <name>values</name>
         <location file="/discretizedasset.hpp" line="48" bodyfile="/discretizedasset.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="discretized_asset_1ac84cebad0f78a2f5a5e9228b900bfab5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; Lattice &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;Lattice&gt;&amp; method</definition>
         <argsstring>() const </argsstring>
         <name>method</name>
@@ -43,14 +43,14 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>High-level interface</header>
-      <description><para>Users of discretized assets should use these methods in order to initialize, evolve and take the present value of the assets. They call the corresponding methods in the <ref refid="lattice" kindref="compound">Lattice</ref> interface, to which we refer for documentation. </para></description>
+      <description><para>Users of discretized assets should use these methods in order to initialize, evolve and take the present value of the assets. They call the corresponding methods in the Lattice interface, to which we refer for documentation. </para></description>
       <memberdef kind="function" id="discretized_asset_1a6cef7fe12b71383095431da763298442" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void initialize</definition>
         <argsstring>(const boost::shared_ptr&lt; Lattice &gt; &amp;, Time t)</argsstring>
         <name>initialize</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Lattice &gt; &amp;</type>
           <defname>method</defname>
         </param>
         <param>
@@ -91,7 +91,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Low-level interface</header>
-      <description><para>These methods (that developers should override when deriving from <ref refid="discretized_asset" kindref="compound">DiscretizedAsset</ref>) are to be used by numerical methods and not directly by users, with the exception of <ref refid="discretized_asset_1a3fd0b540d11b207a4dffcac657330b3d" kindref="member">adjustValues()</ref>, <ref refid="discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" kindref="member">preAdjustValues()</ref> and <ref refid="discretized_asset_1a5c6657e78e9d0771e7df6761853e2042" kindref="member">postAdjustValues()</ref> that can be used together with partialRollback(). </para></description>
+      <description><para>These methods (that developers should override when deriving from DiscretizedAsset) are to be used by numerical methods and not directly by users, with the exception of <ref refid="discretized_asset_1a3fd0b540d11b207a4dffcac657330b3d" kindref="member">adjustValues()</ref>, <ref refid="discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" kindref="member">preAdjustValues()</ref> and <ref refid="discretized_asset_1a5c6657e78e9d0771e7df6761853e2042" kindref="member">postAdjustValues()</ref> that can be used together with partialRollback(). </para></description>
       <memberdef kind="function" id="discretized_asset_1a95238187618927d950bb01e363f772dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void reset</definition>
@@ -102,7 +102,7 @@
           <declname>size</declname>
         </param>
         <detaileddescription>
-<para>This method should initialize the asset values to an <ref refid="array" kindref="compound">Array</ref> of the given size and with values depending on the particular asset. </para>        </detaileddescription>
+<para>This method should initialize the asset values to an Array of the given size and with values depending on the particular asset. </para>        </detaileddescription>
         <location file="/discretizedasset.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

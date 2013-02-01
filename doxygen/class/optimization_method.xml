@@ -17,11 +17,11 @@
         <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)=0</argsstring>
         <name>minimize</name>
         <param>
-          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
+          <type>Problem &amp;</type>
           <declname>P</declname>
         </param>
         <param>
-          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const EndCriteria &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <briefdescription>

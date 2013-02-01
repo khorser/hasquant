@@ -17,15 +17,15 @@
         <argsstring>(const CommodityType &amp;commodityType, const UnitOfMeasure &amp;source, const UnitOfMeasure &amp;target, Real conversionFactor)</argsstring>
         <name>UnitOfMeasureConversion</name>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
           <declname>source</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
           <declname>target</declname>
         </param>
         <param>
@@ -40,7 +40,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="unit_of_measure_conversion_1af4b46201b6accf81619e8aaded44a41a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        <type>const UnitOfMeasure &amp;</type>
         <definition>const UnitOfMeasure &amp; source</definition>
         <argsstring>() const </argsstring>
         <name>source</name>
@@ -49,7 +49,7 @@
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="57" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="unit_of_measure_conversion_1a1facf4ce5263c51fb04d511d7603fc8a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        <type>const UnitOfMeasure &amp;</type>
         <definition>const UnitOfMeasure &amp; target</definition>
         <argsstring>() const </argsstring>
         <name>target</name>
@@ -58,7 +58,7 @@
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="59" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="unit_of_measure_conversion_1a37755c700c75d5810577a5dfbd10446a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+        <type>const CommodityType &amp;</type>
         <definition>const CommodityType &amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
@@ -95,12 +95,12 @@
       <sectiondef kind="user-defined">
       <header>Utility methods</header>
       <memberdef kind="function" id="unit_of_measure_conversion_1a044f1f3c3e89e8da3ff37797449925b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="quantity" kindref="compound">Quantity</ref></type>
+        <type>Quantity</type>
         <definition>Quantity convert</definition>
         <argsstring>(const Quantity &amp;quantity) const </argsstring>
         <name>convert</name>
         <param>
-          <type>const <ref refid="quantity" kindref="compound">Quantity</ref> &amp;</type>
+          <type>const Quantity &amp;</type>
           <declname>quantity</declname>
         </param>
         <briefdescription>

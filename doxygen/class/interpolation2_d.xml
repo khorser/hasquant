@@ -120,7 +120,7 @@
         <location file="/math/interpolations/interpolation2d.hpp" line="180" bodyfile="/math/interpolations/interpolation2d.hpp" bodystart="180" bodyend="182"/>
       </memberdef>
       <memberdef kind="function" id="interpolation2_d_1ada4fe51c1f2712b9652a097a6613a8a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; zData</definition>
         <argsstring>() const </argsstring>
         <name>zData</name>

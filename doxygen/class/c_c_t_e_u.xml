@@ -13,7 +13,7 @@
         <argsstring>(const Date &amp;maturityDate, Spread spread, const Handle&lt; YieldTermStructure &gt; &amp;fwdCurve=Handle&lt; YieldTermStructure &gt;(), const Date &amp;startDate=Date(), const Date &amp;issueDate=Date())</argsstring>
         <name>CCTEU</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -21,25 +21,25 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>fwdCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/instruments/bonds/btp.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>Italian <ref refid="c_c_t_e_u" kindref="compound">CCTEU</ref> (Certificato di credito del tesoro) <ref refid="euribor6_m" kindref="compound">Euribor6M</ref> indexed floating rate bond </para>    </detaileddescription>
+<para>Italian CCTEU (Certificato di credito del tesoro) Euribor6M indexed floating rate bond </para>    </detaileddescription>
     <location file="/instruments/bonds/btp.hpp" line="42" bodyfile="/instruments/bonds/btp.hpp" bodystart="42" bodyend="56"/>
   </compounddef>
 </doxygen>

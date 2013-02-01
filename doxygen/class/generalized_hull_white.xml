@@ -11,15 +11,15 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;yieldtermStructure, const std::vector&lt; Date &gt; &amp;speedstructure, const std::vector&lt; Date &gt; &amp;volstructure)</argsstring>
         <name>GeneralizedHullWhite</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yieldtermStructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>speedstructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>volstructure</declname>
         </param>
         <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="54"/>
@@ -30,15 +30,15 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;yieldtermStructure, const std::vector&lt; Date &gt; &amp;speedstructure, const std::vector&lt; Date &gt; &amp;volstructure, const std::vector&lt; Real &gt; &amp;speed, const std::vector&lt; Real &gt; &amp;vol)</argsstring>
         <name>GeneralizedHullWhite</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yieldtermStructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>speedstructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>volstructure</declname>
         </param>
         <param>

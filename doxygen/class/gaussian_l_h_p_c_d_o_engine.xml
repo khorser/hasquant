@@ -15,14 +15,14 @@
         <argsstring>(const Handle&lt; OneFactorCopula &gt; &amp;copula)</argsstring>
         <name>GaussianLHPCDOEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt; &amp;</type>
+          <type>const Handle&lt; OneFactorCopula &gt; &amp;</type>
           <declname>copula</declname>
         </param>
         <location file="/experimental/credit/syntheticcdoengines.hpp" line="231" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="230" bodyend="233"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para><ref refid="c_d_o" kindref="compound">CDO</ref> engine with analytical expected tranche loss for a large homogeneous pool with Gaussian one-factor copula. See for example &quot;The Normal Inverse Gaussian Distribution for Synthetic CDO pricing.&quot;, Anna Kalemanova, Bernd Schmid, Ralf Werner, Journal of Derivatives, Vol. 14, No. 3, (Spring 2007), pp. 80-93. <ulink url="http://www.defaultrisk.com/pp_crdrv_91.htm">http://www.defaultrisk.com/pp_crdrv_91.htm</ulink> </para>    </detaileddescription>
+<para>CDO engine with analytical expected tranche loss for a large homogeneous pool with Gaussian one-factor copula. See for example &quot;The Normal Inverse Gaussian Distribution for Synthetic CDO pricing.&quot;, Anna Kalemanova, Bernd Schmid, Ralf Werner, Journal of Derivatives, Vol. 14, No. 3, (Spring 2007), pp. 80-93. <ulink url="http://www.defaultrisk.com/pp_crdrv_91.htm">http://www.defaultrisk.com/pp_crdrv_91.htm</ulink> </para>    </detaileddescription>
     <location file="/experimental/credit/syntheticcdoengines.hpp" line="228" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="228" bodyend="273"/>
   </compounddef>
 </doxygen>

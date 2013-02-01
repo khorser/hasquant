@@ -12,9 +12,9 @@
         <argsstring>(const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>TermStructure</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <briefdescription>
 <para>default constructor </para>        </briefdescription>
@@ -28,18 +28,18 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar=Calendar(), const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>TermStructure</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
-          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval>Calendar()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
@@ -55,12 +55,12 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
@@ -70,7 +70,7 @@
       <sectiondef kind="user-defined">
       <header>Dates and Time</header>
       <memberdef kind="function" id="term_structure_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
+        <type>DayCounter</type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
@@ -84,7 +84,7 @@
         <argsstring>(const Date &amp;date) const </argsstring>
         <name>timeFromReference</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <briefdescription>
@@ -92,7 +92,7 @@
         <location file="/termstructure.hpp" line="83" bodyfile="/termstructure.hpp" bodystart="140" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date maxDate</definition>
         <argsstring>() const =0</argsstring>
         <name>maxDate</name>
@@ -110,7 +110,7 @@
         <location file="/termstructure.hpp" line="87" bodyfile="/termstructure.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>virtual const Date&amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
@@ -119,7 +119,7 @@
         <location file="/termstructure.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
+        <type>Calendar</type>
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>

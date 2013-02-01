@@ -5,14 +5,14 @@
     <includes local="no">/experimental/mcbasket/pathmultiassetoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="path_multi_asset_option_1_1arguments_1a48e8d7b985dd28de0fc21c1da11d890e" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="path_payoff" kindref="compound">PathPayoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; PathPayoff &gt;</type>
         <definition>boost::shared_ptr&lt;PathPayoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="67" bodyfile="/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="path_multi_asset_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>

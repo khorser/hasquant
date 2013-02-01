@@ -13,13 +13,13 @@
         <argsstring>(const boost::shared_ptr&lt; MarketModel &gt; &amp;, const BrownianGeneratorFactory &amp;, const boost::shared_ptr&lt; MarketModelVolProcess &gt; &amp;volProcess, Size firstVolatilityFactor, Size volatilityFactorStep, const std::vector&lt; Size &gt; &amp;numeraires, Size initialStep=0)</argsstring>
         <name>SVDDFwdRatePc</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModel &gt; &amp;</type>
         </param>
         <param>
           <type>const BrownianGeneratorFactory &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model_vol_process" kindref="compound">MarketModelVolProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModelVolProcess &gt; &amp;</type>
           <declname>volProcess</declname>
         </param>
         <param>

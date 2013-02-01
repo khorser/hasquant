@@ -13,11 +13,11 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;, const Date &amp;referenceDate)</argsstring>
         <name>ImpliedTermStructure</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <defname>h</defname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <location file="/termstructures/yield/impliedtermstructure.hpp" line="50" bodyfile="/termstructures/yield/impliedtermstructure.hpp" bodystart="67" bodyend="72"/>

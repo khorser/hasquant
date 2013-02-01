@@ -19,19 +19,19 @@
         <argsstring>(const Handle&lt; BlackVolTermStructure &gt; &amp;blackTS, const Handle&lt; YieldTermStructure &gt; &amp;riskFreeTS, const Handle&lt; YieldTermStructure &gt; &amp;dividendTS, const Handle&lt; Quote &gt; &amp;underlying)</argsstring>
         <name>LocalVolSurface</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVolTermStructure &gt; &amp;</type>
           <declname>blackTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>riskFreeTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>dividendTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/localvolsurface.hpp" line="50"/>
@@ -42,15 +42,15 @@
         <argsstring>(const Handle&lt; BlackVolTermStructure &gt; &amp;blackTS, const Handle&lt; YieldTermStructure &gt; &amp;riskFreeTS, const Handle&lt; YieldTermStructure &gt; &amp;dividendTS, Real underlying)</argsstring>
         <name>LocalVolSurface</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVolTermStructure &gt; &amp;</type>
           <declname>blackTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>riskFreeTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>dividendTS</declname>
         </param>
         <param>

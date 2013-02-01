@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; GJRGARCHModel &gt; &amp;model)</argsstring>
         <name>AnalyticGJRGARCHEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="g_j_r_g_a_r_c_h_model" kindref="compound">GJRGARCHModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GJRGARCHModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <location file="/pricingengines/vanilla/analyticgjrgarchengine.hpp" line="56"/>

@@ -10,7 +10,7 @@
         <argsstring>(const Currency &amp;currency, Seniority sen, Period graceFailureToPay=Period(30, Days), Real amountFailure=1.e6, Restructuring::Type resType=Restructuring::CR)</argsstring>
         <name>NorthAmericaCorpDefaultKey</name>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
@@ -18,9 +18,9 @@
           <declname>sen</declname>
         </param>
         <param>
-          <type><ref refid="period" kindref="compound">Period</ref></type>
+          <type>Period</type>
           <declname>graceFailureToPay</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(30, Days)</defval>
+          <defval>Period(30, Days)</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

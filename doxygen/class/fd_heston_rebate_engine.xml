@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Size tGrid=100, Size xGrid=100, Size vGrid=50, Size dampingSteps=0, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdHestonRebateEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Finite-Differences Heston <ref refid="barrier" kindref="compound">Barrier</ref> <ref refid="option" kindref="compound">Option</ref> rebate helper engine. </para>    </briefdescription>
+<para>Finite-Differences Heston Barrier Option rebate helper engine. </para>    </briefdescription>
     <location file="/pricingengines/barrier/fdhestonrebateengine.hpp" line="45" bodyfile="/pricingengines/barrier/fdhestonrebateengine.hpp" bodystart="42" bodyend="59"/>
   </compounddef>
 </doxygen>

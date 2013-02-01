@@ -23,7 +23,7 @@
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Real relTolerance, Size maxEvaluations)</argsstring>
         <name>AnalyticHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Size integrationOrder=144)</argsstring>
         <name>AnalyticHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -58,7 +58,7 @@
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, ComplexLogFormula cpxLog, const Integration &amp;itg)</argsstring>
         <name>AnalyticHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -126,7 +126,7 @@
           <declname>rho</declname>
         </param>
         <param>
-          <type>const <ref refid="type_payoff" kindref="compound">TypePayoff</ref> &amp;</type>
+          <type>const TypePayoff &amp;</type>
           <declname>type</declname>
         </param>
         <param>
@@ -138,7 +138,7 @@
           <declname>cpxLog</declname>
         </param>
         <param>
-          <type>const <ref refid="analytic_heston_engine" kindref="compound">AnalyticHestonEngine</ref> *const</type>
+          <type>const AnalyticHestonEngine *const</type>
           <declname>enginePtr</declname>
         </param>
         <param>
@@ -155,7 +155,7 @@
     <briefdescription>
 <para>analytic Heston-model engine based on Fourier transform </para>    </briefdescription>
     <detaileddescription>
-<para>Integration detail: Two algebraically equivalent formulations of the complex logarithm of the Heston model exist. Gatherals [2005] (also Duffie, Pan and <ref refid="singleton" kindref="compound">Singleton</ref> [2000], and Schoutens, Simons and Tistaert[2004]) version does not cause discoutinuities whereas the original version (e.g. Heston [1993]) needs some sort of &quot;branch correction&quot; to work properly. Gatheral&apos;s version does also work with adaptive integration routines and should be preferred over the original Heston version.</para><para>References: <verbatim>   Heston, Steven L., 1993. A Closed-Form Solution for Options
+<para>Integration detail: Two algebraically equivalent formulations of the complex logarithm of the Heston model exist. Gatherals [2005] (also Duffie, Pan and Singleton [2000], and Schoutens, Simons and Tistaert[2004]) version does not cause discoutinuities whereas the original version (e.g. Heston [1993]) needs some sort of &quot;branch correction&quot; to work properly. Gatheral&apos;s version does also work with adaptive integration routines and should be preferred over the original Heston version.</para><para>References: <verbatim>   Heston, Steven L., 1993. A Closed-Form Solution for Options
    with Stochastic Volatility with Applications to Bond and
    Currency Options.  The review of Financial Studies, Volume 6,
    Issue 2, 327-343.

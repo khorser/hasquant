@@ -57,7 +57,7 @@
           <declname>delta</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <param>
@@ -76,7 +76,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;vol, DeltaType deltaType, Time maturity, AtmType atmType)</argsstring>
         <name>DeltaVolQuote</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <param>

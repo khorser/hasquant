@@ -10,13 +10,13 @@
         <argsstring>(const Schedule &amp;schedule)</argsstring>
         <name>FixedRateLeg</name>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_leg_1a21e2f9d9028e6e2d1f5d3d4425fc28cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <type>FixedRateLeg &amp;</type>
         <definition>FixedRateLeg&amp; withNotionals</definition>
         <argsstring>(Real)</argsstring>
         <name>withNotionals</name>
@@ -26,7 +26,7 @@
         <location file="/cashflows/fixedratecoupon.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_leg_1a8a014355056a0b53ccc2f9908513361c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <type>FixedRateLeg &amp;</type>
         <definition>FixedRateLeg&amp; withNotionals</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;)</argsstring>
         <name>withNotionals</name>
@@ -36,7 +36,7 @@
         <location file="/cashflows/fixedratecoupon.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_leg_1ad2040c280f6237c267870a34638ef286" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <type>FixedRateLeg &amp;</type>
         <definition>FixedRateLeg&amp; withCouponRates</definition>
         <argsstring>(Rate, const DayCounter &amp;paymentDayCounter, Compounding comp=Simple, Frequency freq=Annual)</argsstring>
         <name>withCouponRates</name>
@@ -44,7 +44,7 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>paymentDayCounter</declname>
         </param>
         <param>
@@ -60,7 +60,7 @@
         <location file="/cashflows/fixedratecoupon.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_leg_1a265711e3c4c71f9780f06857ab2e27a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <type>FixedRateLeg &amp;</type>
         <definition>FixedRateLeg&amp; withCouponRates</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;, const DayCounter &amp;paymentDayCounter, Compounding comp=Simple, Frequency freq=Annual)</argsstring>
         <name>withCouponRates</name>
@@ -68,7 +68,7 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>paymentDayCounter</declname>
         </param>
         <param>
@@ -84,27 +84,27 @@
         <location file="/cashflows/fixedratecoupon.hpp" line="92"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_leg_1a206b1b3fd1058dd57d062f0411b6c14a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <type>FixedRateLeg &amp;</type>
         <definition>FixedRateLeg&amp; withCouponRates</definition>
         <argsstring>(const InterestRate &amp;)</argsstring>
         <name>withCouponRates</name>
         <param>
-          <type>const <ref refid="interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <type>const InterestRate &amp;</type>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_leg_1ade4ee2e24246a804a5f4b18aaf16ebe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <type>FixedRateLeg &amp;</type>
         <definition>FixedRateLeg&amp; withCouponRates</definition>
         <argsstring>(const std::vector&lt; InterestRate &gt; &amp;)</argsstring>
         <name>withCouponRates</name>
         <param>
-          <type>const std::vector&lt; <ref refid="interest_rate" kindref="compound">InterestRate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; InterestRate &gt; &amp;</type>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_leg_1a6bedf5c0cb87d1091426ed25e0c99501" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <type>FixedRateLeg &amp;</type>
         <definition>FixedRateLeg&amp; withPaymentAdjustment</definition>
         <argsstring>(BusinessDayConvention)</argsstring>
         <name>withPaymentAdjustment</name>
@@ -114,22 +114,22 @@
         <location file="/cashflows/fixedratecoupon.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_leg_1abaa315a09cba365842643e6cc8c7a7be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <type>FixedRateLeg &amp;</type>
         <definition>FixedRateLeg&amp; withFirstPeriodDayCounter</definition>
         <argsstring>(const DayCounter &amp;)</argsstring>
         <name>withFirstPeriodDayCounter</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_leg_1ab3dc6f3c5e33c4eee7b142e21f75d2bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <type>FixedRateLeg &amp;</type>
         <definition>FixedRateLeg&amp; withPaymentCalendar</definition>
         <argsstring>(const Calendar &amp;)</argsstring>
         <name>withPaymentCalendar</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="97"/>
       </memberdef>

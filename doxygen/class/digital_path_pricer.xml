@@ -9,23 +9,23 @@
         <argsstring>(const boost::shared_ptr&lt; CashOrNothingPayoff &gt; &amp;payoff, const boost::shared_ptr&lt; AmericanExercise &gt; &amp;exercise, const Handle&lt; YieldTermStructure &gt; &amp;discountTS, const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;diffProcess, const PseudoRandom::ursg_type &amp;sequenceGen)</argsstring>
         <name>DigitalPathPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="cash_or_nothing_payoff" kindref="compound">CashOrNothingPayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CashOrNothingPayoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="american_exercise" kindref="compound">AmericanExercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; AmericanExercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountTS</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
           <declname>diffProcess</declname>
         </param>
         <param>
-          <type>const <ref refid="random_sequence_generator" kindref="compound">PseudoRandom::ursg_type</ref> &amp;</type>
+          <type>const PseudoRandom::ursg_type &amp;</type>
           <declname>sequenceGen</declname>
         </param>
         <location file="/pricingengines/vanilla/mcdigitalengine.hpp" line="119"/>
@@ -36,7 +36,7 @@
         <argsstring>(const Path &amp;path) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+          <type>const Path &amp;</type>
           <declname>path</declname>
         </param>
         <location file="/pricingengines/vanilla/mcdigitalengine.hpp" line="120"/>

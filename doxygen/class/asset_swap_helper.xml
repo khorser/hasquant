@@ -9,11 +9,11 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;spread, const Period &amp;tenor, Natural settlementDays, const Calendar &amp;calendar, const Period &amp;fixedPeriod, BusinessDayConvention fixedConvention, const DayCounter &amp;fixedDayCount, const Period &amp;floatPeriod, BusinessDayConvention floatConvention, const DayCounter &amp;floatDayCount, Real recoveryRate, const RelinkableHandle&lt; YieldTermStructure &gt; &amp;yieldTS, const Period &amp;integrationStepSize=Period())</argsstring>
         <name>AssetSwapHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -21,11 +21,11 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>fixedPeriod</declname>
         </param>
         <param>
@@ -33,11 +33,11 @@
           <declname>fixedConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>floatPeriod</declname>
         </param>
         <param>
@@ -45,7 +45,7 @@
           <declname>floatConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>floatDayCount</declname>
         </param>
         <param>
@@ -53,13 +53,13 @@
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type>const <ref refid="relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const RelinkableHandle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yieldTS</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>integrationStepSize</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>()</defval>
+          <defval>Period()</defval>
         </param>
         <location file="/experimental/credit/riskyassetswap.hpp" line="103"/>
       </memberdef>
@@ -76,7 +76,7 @@
         <argsstring>(DefaultProbabilityTermStructure *)</argsstring>
         <name>setTermStructure</name>
         <param>
-          <type><ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> *</type>
+          <type>DefaultProbabilityTermStructure *</type>
         </param>
         <location file="/experimental/credit/riskyassetswap.hpp" line="105"/>
       </memberdef>

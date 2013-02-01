@@ -134,14 +134,14 @@
           <defval>false</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; EndCriteria &gt; &amp;</type>
           <declname>endCriteria</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; EndCriteria &gt;()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;</type>
           <declname>method</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; OptimizationMethod &gt;()</defval>
         </param>
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="112"/>
       </memberdef>
@@ -195,7 +195,7 @@
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="121"/>
       </memberdef>
       <memberdef kind="function" id="abcd_calibration_1af99ae99329f6559b7e297a02195de859" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; errors</definition>
         <argsstring>() const </argsstring>
         <name>errors</name>

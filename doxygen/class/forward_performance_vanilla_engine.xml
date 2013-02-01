@@ -15,7 +15,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;)</argsstring>
         <name>ForwardPerformanceVanillaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <defname>process</defname>
         </param>
         <location file="/pricingengines/forward/forwardperformanceengine.hpp" line="46" bodyfile="/pricingengines/forward/forwardperformanceengine.hpp" bodystart="56" bodyend="58"/>

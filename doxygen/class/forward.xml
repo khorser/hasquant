@@ -6,14 +6,14 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="forward_1aae01825686b9e247bae78fc311f43439" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date settlementDate</definition>
         <argsstring>() const </argsstring>
         <name>settlementDate</name>
         <location file="/instruments/forward.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="forward_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+        <type>const Calendar &amp;</type>
         <definition>const Calendar &amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
@@ -27,14 +27,14 @@
         <location file="/instruments/forward.hpp" line="72" bodyfile="/instruments/forward.hpp" bodystart="173" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="forward_1a1725ea0bf0762b6642c802532d8c546f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter &amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
         <location file="/instruments/forward.hpp" line="73" bodyfile="/instruments/forward.hpp" bodystart="177" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="forward_1a48989c032fd479610770da640ac0cdfd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YieldTermStructure &gt;</type>
         <definition>Handle&lt; YieldTermStructure &gt; discountCurve</definition>
         <argsstring>() const </argsstring>
         <name>discountCurve</name>
@@ -43,7 +43,7 @@
         <location file="/instruments/forward.hpp" line="75" bodyfile="/instruments/forward.hpp" bodystart="181" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="forward_1a132db8214320701ae378e309dea4d463" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YieldTermStructure &gt;</type>
         <definition>Handle&lt; YieldTermStructure &gt; incomeDiscountCurve</definition>
         <argsstring>() const </argsstring>
         <name>incomeDiscountCurve</name>
@@ -67,7 +67,7 @@
         <location file="/instruments/forward.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="forward_1a4c43d8ef9bdc2c5ba053471a9e3612d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="interest_rate" kindref="compound">InterestRate</ref></type>
+        <type>InterestRate</type>
         <definition>InterestRate impliedYield</definition>
         <argsstring>(Real underlyingSpotValue, Real forwardValue, Date settlementDate, Compounding compoundingConvention, DayCounter dayCounter)</argsstring>
         <name>impliedYield</name>
@@ -80,7 +80,7 @@
           <declname>forwardValue</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
         </param>
         <param>
@@ -88,7 +88,7 @@
           <declname>compoundingConvention</declname>
         </param>
         <param>
-          <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
+          <type>DayCounter</type>
           <declname>dayCounter</declname>
         </param>
         <detaileddescription>
@@ -112,7 +112,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve) const =0</argsstring>
         <name>spotIncome</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>incomeDiscountCurve</declname>
         </param>
         <briefdescription>

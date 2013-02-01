@@ -21,7 +21,7 @@
         <location file="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="54" bodyfile="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="96" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_survival_probability_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
@@ -42,7 +42,7 @@
         <location file="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="57" bodyfile="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_survival_probability_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -59,7 +59,7 @@
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Probability &gt; &amp;probabilities, const DayCounter &amp;dayCounter, const Calendar &amp;calendar=Calendar(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;(), const Interpolator &amp;interpolator=Interpolator())</argsstring>
         <name>InterpolatedSurvivalProbabilityCurve</name>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -67,23 +67,23 @@
           <declname>probabilities</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
-          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval>Calendar()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <param>
           <type>const Interpolator &amp;</type>
@@ -94,7 +94,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> based on interpolation of survival probabilities. </para>    </briefdescription>
+<para>DefaultProbabilityTermStructure based on interpolation of survival probabilities. </para>    </briefdescription>
     <location file="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="38" bodyfile="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="36" bodyend="85"/>
   </compounddef>
 </doxygen>

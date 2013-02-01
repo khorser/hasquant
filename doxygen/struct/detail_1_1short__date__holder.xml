@@ -4,7 +4,7 @@
     <compoundname>QuantLib::detail::short_date_holder</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="detail_1_1short__date__holder_1a85641069b0d4478ab8a7356c3bf32ea3" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date d</definition>
         <argsstring></argsstring>
         <name>d</name>
@@ -18,7 +18,7 @@
         <argsstring>(const Date d)</argsstring>
         <name>short_date_holder</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref></type>
+          <type>const Date</type>
           <declname>d</declname>
         </param>
         <location file="/time/date.hpp" line="206" bodyfile="/time/date.hpp" bodystart="206" bodyend="206"/>

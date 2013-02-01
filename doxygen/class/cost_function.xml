@@ -17,7 +17,7 @@
         <argsstring>(const Array &amp;x) const =0</argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -25,12 +25,12 @@
         <location file="/math/optimization/costfunction.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="cost_function_1a81d6a6e85cd18eea72bb0b7d6c6fd8ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; values</definition>
         <argsstring>(const Array &amp;x) const =0</argsstring>
         <name>values</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -43,11 +43,11 @@
         <argsstring>(Array &amp;grad, const Array &amp;x) const </argsstring>
         <name>gradient</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>grad</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -60,11 +60,11 @@
         <argsstring>(Array &amp;grad, const Array &amp;x) const </argsstring>
         <name>valueAndGradient</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>grad</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>

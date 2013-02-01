@@ -9,7 +9,7 @@
         <argsstring>(boost::shared_ptr&lt; Interpolation2D &gt; decoratedInterpolation)</argsstring>
         <name>FlatExtrapolator2DImpl</name>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="interpolation2_d" kindref="compound">Interpolation2D</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; Interpolation2D &gt;</type>
           <declname>decoratedInterpolation</declname>
         </param>
         <location file="/math/interpolations/flatextrapolation2d.hpp" line="42" bodyfile="/math/interpolations/flatextrapolation2d.hpp" bodystart="41" bodyend="44"/>
@@ -79,7 +79,7 @@
         <location file="/math/interpolations/flatextrapolation2d.hpp" line="66" bodyfile="/math/interpolations/flatextrapolation2d.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1ada4fe51c1f2712b9652a097a6613a8a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; zData</definition>
         <argsstring>() const </argsstring>
         <name>zData</name>

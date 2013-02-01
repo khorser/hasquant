@@ -46,7 +46,7 @@
         <location file="/methods/montecarlo/lsmbasissystem.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="lsm_basis_system_1ac02a57fb6a6848fa94d470723b442943" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="array" kindref="compound">Array</ref> &gt; &gt;</type>
+        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, Array &gt; &gt;</type>
         <definition>static std::vector&lt;boost::function1&lt;Real, Array&gt; &gt; multiPathBasisSystem</definition>
         <argsstring>(Size dim, Size order, PolynomType polyType)</argsstring>
         <name>multiPathBasisSystem</name>

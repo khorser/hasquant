@@ -9,7 +9,7 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="zero_yield_1_1curve_1ae662799c2059cf6ea98ece48723bba4a" prot="public" static="no">
-        <type><ref refid="interpolated_zero_curve" kindref="compound">InterpolatedZeroCurve</ref>&lt; Interpolator &gt;</type>
+        <type>InterpolatedZeroCurve&lt; Interpolator &gt;</type>
         <definition>typedef InterpolatedZeroCurve&lt;Interpolator&gt; type</definition>
         <argsstring></argsstring>
         <name>type</name>

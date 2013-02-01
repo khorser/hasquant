@@ -62,7 +62,7 @@
         <location file="/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="48" bodyfile="/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="uniform_grid_mesher_1ab2fc59ff4ab60aa3c6e6f37c4171b005" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; locations</definition>
         <argsstring>(Size direction) const </argsstring>
         <name>locations</name>

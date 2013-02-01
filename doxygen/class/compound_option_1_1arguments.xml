@@ -4,7 +4,7 @@
     <compoundname>QuantLib::CompoundOption::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="compound_option_1_1arguments_1a0788b2146ee7869e378798503f7990f1" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="one_asset_option" kindref="compound">OneAssetOption</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; OneAssetOption &gt;</type>
         <definition>boost::shared_ptr&lt;OneAssetOption&gt; motherOption</definition>
         <argsstring></argsstring>
         <name>motherOption</name>

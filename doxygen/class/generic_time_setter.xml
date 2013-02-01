@@ -19,7 +19,7 @@
         <argsstring>(const Array &amp;grid, T process)</argsstring>
         <name>GenericTimeSetter</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>grid</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
+          <type>TridiagonalOperator &amp;</type>
           <declname>L</declname>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="87" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="86" bodyend="89"/>

@@ -9,7 +9,7 @@
         <argsstring>(const Handle&lt; BatesProcess &gt; &amp;process, const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer(), Size integroIntegrationOrder=12, const Handle&lt; FdmQuantoHelper &gt; &amp;quantoHelper=Handle&lt; FdmQuantoHelper &gt;())</argsstring>
         <name>FdmBatesSolver</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="bates_process" kindref="compound">BatesProcess</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BatesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -27,9 +27,9 @@
           <defval>12</defval>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt; &amp;</type>
+          <type>const Handle&lt; FdmQuantoHelper &gt; &amp;</type>
           <declname>quantoHelper</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt;()</defval>
+          <defval>Handle&lt; FdmQuantoHelper &gt;()</defval>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="45"/>
       </memberdef>

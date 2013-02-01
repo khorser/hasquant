@@ -16,7 +16,7 @@
             <type>class M</type>
           </param>
         </templateparamlist>
-        <type><ref refid="interpolation2_d" kindref="compound">Interpolation2D</ref></type>
+        <type>Interpolation2D</type>
         <definition>Interpolation2D interpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, const I2 &amp;yEnd, const M &amp;z) const </argsstring>
         <name>interpolate</name>

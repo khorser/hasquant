@@ -16,7 +16,7 @@
           <declname>payBondCoupon</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="bond" kindref="compound">Bond</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Bond &gt; &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -24,7 +24,7 @@
           <declname>bondCleanPrice</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
@@ -32,14 +32,14 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>floatSchedule</declname>
-          <defval><ref refid="schedule" kindref="compound">Schedule</ref>()</defval>
+          <defval>Schedule()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>floatingDayCount</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
           <type>bool</type>
@@ -58,7 +58,7 @@
           <declname>parAssetSwap</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="bond" kindref="compound">Bond</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Bond &gt; &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -74,7 +74,7 @@
           <declname>gearing</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
@@ -83,14 +83,14 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>floatingDayCount</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>dealMaturity</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type>bool</type>
@@ -163,7 +163,7 @@
         <location file="/instruments/assetswap.hpp" line="85" bodyfile="/instruments/assetswap.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1a75b223367085dcbd9f0febd1c1ea512b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="bond" kindref="compound">Bond</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; Bond &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;Bond&gt;&amp; bond</definition>
         <argsstring>() const </argsstring>
         <name>bond</name>

@@ -13,16 +13,16 @@
         <argsstring>(const boost::shared_ptr&lt; CapFloorTermVolSurface &gt; &amp;, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, Rate switchStrikes=Null&lt; Rate &gt;(), Real accuracy=1.0e-6, Natural maxIter=100)</argsstring>
         <name>OptionletStripper1</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="cap_floor_term_vol_surface" kindref="compound">CapFloorTermVolSurface</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CapFloorTermVolSurface &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>switchStrikes</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -37,21 +37,21 @@
         <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper1_1a3f590eca85355aa1a98827c343c9ff72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; capFloorPrices</definition>
         <argsstring>() const </argsstring>
         <name>capFloorPrices</name>
         <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper1_1a6b86390f9bcc7e31227f4844560f0912" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; capFloorVolatilities</definition>
         <argsstring>() const </argsstring>
         <name>capFloorVolatilities</name>
         <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper1_1a2f59de205665d90bc0556666dde3a4d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; optionletPrices</definition>
         <argsstring>() const </argsstring>
         <name>optionletPrices</name>
@@ -66,7 +66,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>Helper class to strip optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) term volatilities of a <ref refid="cap_floor_term_vol_surface" kindref="compound">CapFloorTermVolSurface</ref>. </para>    </detaileddescription>
+<para>Helper class to strip optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) term volatilities of a CapFloorTermVolSurface. </para>    </detaileddescription>
     <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="43" bodyfile="/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="43" bodyend="72"/>
   </compounddef>
 </doxygen>

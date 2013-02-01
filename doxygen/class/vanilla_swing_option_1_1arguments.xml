@@ -18,14 +18,14 @@
         <location file="/instruments/vanillaswingoption.hpp" line="77" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swing_option_1_1arguments_1a1172f6d21c290340779ee088d2530cd1" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; StrikedTypePayoff &gt;</type>
         <definition>boost::shared_ptr&lt;StrikedTypePayoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
         <location file="/instruments/vanillaswingoption.hpp" line="78" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swing_option_1_1arguments_1a1204ab2ec997bab927b19ae6d87921b0" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="swing_exercise" kindref="compound">SwingExercise</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SwingExercise &gt;</type>
         <definition>boost::shared_ptr&lt;SwingExercise&gt; exercise</definition>
         <argsstring></argsstring>
         <name>exercise</name>

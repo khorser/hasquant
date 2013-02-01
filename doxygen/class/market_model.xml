@@ -26,7 +26,7 @@
         <location file="/models/marketmodels/marketmodel.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="market_model_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <type>const EvolutionDescription &amp;</type>
         <definition>virtual const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const =0</argsstring>
         <name>evolution</name>
@@ -54,7 +54,7 @@
         <location file="/models/marketmodels/marketmodel.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="market_model_1a6fba75f39ffbed5d1523150428b94d2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>virtual const Matrix&amp; pseudoRoot</definition>
         <argsstring>(Size i) const =0</argsstring>
         <name>pseudoRoot</name>
@@ -65,7 +65,7 @@
         <location file="/models/marketmodels/marketmodel.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="market_model_1a2534d6cfef652a9c7eff1da6a0b2a0c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>virtual const Matrix&amp; covariance</definition>
         <argsstring>(Size i) const </argsstring>
         <name>covariance</name>
@@ -76,7 +76,7 @@
         <location file="/models/marketmodels/marketmodel.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="market_model_1af790cfbb62e4ea9f90c6406b6943f8f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>virtual const Matrix&amp; totalCovariance</definition>
         <argsstring>(Size endIndex) const </argsstring>
         <name>totalCovariance</name>

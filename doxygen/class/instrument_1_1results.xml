@@ -18,7 +18,7 @@
         <location file="/instrument.hpp" line="121" bodyfile="/instrument.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="instrument_1_1results_1a644ac254d3177ed6b4ddc84a7fddd45c" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date valuationDate</definition>
         <argsstring></argsstring>
         <name>valuationDate</name>

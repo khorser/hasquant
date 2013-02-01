@@ -9,15 +9,15 @@
         <argsstring>(const Calendar &amp;calendar, const Currency &amp;payCurrency, const Currency &amp;receiveCurrency, const PricingPeriods &amp;pricingPeriods, const CommodityType &amp;commodityType, const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;secondaryCosts)</argsstring>
         <name>EnergySwap</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>payCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>receiveCurrency</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <declname>pricingPeriods</declname>
         </param>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
@@ -42,21 +42,21 @@
         <location file="/experimental/commodities/energyswap.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="energy_swap_1ab3ba2ffdff08fce88df18a7b90502423" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+        <type>const Calendar &amp;</type>
         <definition>const Calendar&amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
         <location file="/experimental/commodities/energyswap.hpp" line="44" bodyfile="/experimental/commodities/energyswap.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="energy_swap_1af959291e4c35bb7a553101d736a72359" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>const Currency &amp;</type>
         <definition>const Currency&amp; payCurrency</definition>
         <argsstring>() const </argsstring>
         <name>payCurrency</name>
         <location file="/experimental/commodities/energyswap.hpp" line="45" bodyfile="/experimental/commodities/energyswap.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="energy_swap_1a77a6f3f389661b64bee75eb52b4c7fe7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>const Currency &amp;</type>
         <definition>const Currency&amp; receiveCurrency</definition>
         <argsstring>() const </argsstring>
         <name>receiveCurrency</name>
@@ -84,14 +84,14 @@
         <location file="/experimental/commodities/energyswap.hpp" line="51" bodyfile="/experimental/commodities/energyswap.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="energy_swap_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+        <type>const CommodityType &amp;</type>
         <definition>const CommodityType&amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
         <location file="/experimental/commodities/energyswap.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="energy_swap_1a83ca7dd25d2c6f6fef9e0af158976dda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="quantity" kindref="compound">Quantity</ref></type>
+        <type>Quantity</type>
         <definition>Quantity quantity</definition>
         <argsstring>() const </argsstring>
         <name>quantity</name>

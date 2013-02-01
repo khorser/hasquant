@@ -14,24 +14,24 @@
           <declname>rho</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ExtOUWithJumpsProcess &gt; &amp;</type>
           <declname>kluge</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ExtendedOrnsteinUhlenbeckProcess &gt; &amp;</type>
           <declname>extOU</declname>
         </param>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="kluge_ext_o_u_process_1a5b46d5d1ec1c35c79571ef7bcce751e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; ExtOUWithJumpsProcess &gt;</type>
         <definition>boost::shared_ptr&lt;ExtOUWithJumpsProcess&gt; getKlugeProcess</definition>
         <argsstring>() const </argsstring>
         <name>getKlugeProcess</name>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="kluge_ext_o_u_process_1a743af801f2f1cc3473411af76799f256" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; ExtendedOrnsteinUhlenbeckProcess &gt;</type>
         <definition>boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; getExtOUProcess</definition>
         <argsstring>() const </argsstring>
         <name>getExtOUProcess</name>

@@ -10,31 +10,31 @@
         <argsstring>(const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;termStructure, const Handle&lt; Quote &gt; &amp;vol)</argsstring>
         <name>BlackCdsOptionEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <location file="/experimental/credit/blackcdsoptionengine.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="black_cds_option_engine_1aa6d8cf746064bbf8580d58fc2650d977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YieldTermStructure &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; termStructure</definition>
         <argsstring>()</argsstring>
         <name>termStructure</name>
         <location file="/experimental/credit/blackcdsoptionengine.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="black_cds_option_engine_1a8bd498c93a6fcadc6561cd35232022c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;</type>
+        <type>Handle&lt; Quote &gt;</type>
         <definition>Handle&lt;Quote&gt; volatility</definition>
         <argsstring>()</argsstring>
         <name>volatility</name>

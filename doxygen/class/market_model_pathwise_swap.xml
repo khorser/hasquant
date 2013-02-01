@@ -37,7 +37,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para><ref refid="swap" kindref="compound">Swap</ref> for doing <ref refid="greeks" kindref="compound">Greeks</ref>. Fairly useless when used directly, but if we want to look a breakable swap it becomes useful. </para>    </detaileddescription>
+<para>Swap for doing Greeks. Fairly useless when used directly, but if we want to look a breakable swap it becomes useful. </para>    </detaileddescription>
     <location file="/models/marketmodels/products/pathwise/pathwiseproductswap.hpp" line="42" bodyfile="/models/marketmodels/products/pathwise/pathwiseproductswap.hpp" bodystart="41" bodyend="87"/>
   </compounddef>
 </doxygen>

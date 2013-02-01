@@ -10,15 +10,15 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;riskFreeRate, const Handle&lt; YieldTermStructure &gt; &amp;dividendYield, const Handle&lt; Quote &gt; &amp;s0, Real v0, const Parameter &amp;theta, const Parameter &amp;kappa, const Parameter &amp;sigma, const Parameter &amp;rho, const TimeGrid &amp;timeGrid)</argsstring>
         <name>PiecewiseTimeDependentHestonModel</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>riskFreeRate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>dividendYield</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>s0</declname>
         </param>
         <param>
@@ -26,23 +26,23 @@
           <declname>v0</declname>
         </param>
         <param>
-          <type>const <ref refid="parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <type>const Parameter &amp;</type>
           <declname>theta</declname>
         </param>
         <param>
-          <type>const <ref refid="parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <type>const Parameter &amp;</type>
           <declname>kappa</declname>
         </param>
         <param>
-          <type>const <ref refid="parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <type>const Parameter &amp;</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type>const <ref refid="parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <type>const Parameter &amp;</type>
           <declname>rho</declname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="55"/>
@@ -106,21 +106,21 @@
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="68" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+        <type>const TimeGrid &amp;</type>
         <definition>const TimeGrid&amp; timeGrid</definition>
         <argsstring>() const </argsstring>
         <name>timeGrid</name>
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1ad410a408dd37b79578b370b5219dbf80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; dividendYield</definition>
         <argsstring>() const </argsstring>
         <name>dividendYield</name>
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; riskFreeRate</definition>
         <argsstring>() const </argsstring>
         <name>riskFreeRate</name>

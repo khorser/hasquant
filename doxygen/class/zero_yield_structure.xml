@@ -5,26 +5,26 @@
     <includes local="no">/termstructures/yield/zeroyieldstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <description><para>See the TermStructure documentation for issues regarding constructors. </para></description>
       <memberdef kind="function" id="zero_yield_structure_1a879bd44d37864155c62c4d561baadc8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ZeroYieldStructure</definition>
         <argsstring>(const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>ZeroYieldStructure</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/yield/zeroyieldstructure.hpp" line="54"/>
       </memberdef>
@@ -34,28 +34,28 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar=Calendar(), const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>ZeroYieldStructure</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
-          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval>Calendar()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/yield/zeroyieldstructure.hpp" line="60"/>
       </memberdef>
@@ -69,23 +69,23 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/yield/zeroyieldstructure.hpp" line="66"/>
       </memberdef>
@@ -112,7 +112,7 @@
     <briefdescription>
 <para>Zero-yield term structure. </para>    </briefdescription>
     <detaileddescription>
-<para>This abstract class acts as an adapter to <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> allowing the programmer to implement only the <computeroutput>zeroYieldImpl(Time)</computeroutput> method in derived classes.</para><para><ref refid="discount" kindref="compound">Discount</ref> and forward are calculated from zero yields.</para><para>Zero rates are assumed to be annual continuous compounding. </para>    </detaileddescription>
+<para>This abstract class acts as an adapter to YieldTermStructure allowing the programmer to implement only the <computeroutput>zeroYieldImpl(Time)</computeroutput> method in derived classes.</para><para>Discount and forward are calculated from zero yields.</para><para>Zero rates are assumed to be annual continuous compounding. </para>    </detaileddescription>
     <location file="/termstructures/yield/zeroyieldstructure.hpp" line="44" bodyfile="/termstructures/yield/zeroyieldstructure.hpp" bodystart="44" bodyend="88"/>
   </compounddef>
 </doxygen>

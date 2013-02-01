@@ -9,13 +9,13 @@
         <argsstring>(const std::vector&lt; boost::shared_ptr&lt; StochasticProcess &gt; &gt; &amp;l, Size factors=Null&lt; Size &gt;())</argsstring>
         <name>JointStochasticProcess</name>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; StochasticProcess &gt; &gt; &amp;</type>
           <declname>l</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>factors</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="38"/>
       </memberdef>
@@ -34,14 +34,14 @@
         <location file="/processes/jointstochasticprocess.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; initialValues</definition>
         <argsstring>() const </argsstring>
         <name>initialValues</name>
         <location file="/processes/jointstochasticprocess.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; drift</definition>
         <argsstring>(Time t, const Array &amp;x) const </argsstring>
         <name>drift</name>
@@ -50,13 +50,13 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1a30a103c583af9320f08337052d38c622" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; expectation</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>expectation</name>
@@ -65,7 +65,7 @@
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -75,7 +75,7 @@
         <location file="/processes/jointstochasticprocess.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>Disposable&lt;Matrix&gt; diffusion</definition>
         <argsstring>(Time t, const Array &amp;x) const </argsstring>
         <name>diffusion</name>
@@ -84,13 +84,13 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1aa35146549bd167f407791342e89927e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>Disposable&lt;Matrix&gt; covariance</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>covariance</name>
@@ -99,7 +99,7 @@
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -109,7 +109,7 @@
         <location file="/processes/jointstochasticprocess.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1ab55b8ade4729f4509ad40bbaab050a0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>Disposable&lt;Matrix&gt; stdDeviation</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>stdDeviation</name>
@@ -118,7 +118,7 @@
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -128,22 +128,22 @@
         <location file="/processes/jointstochasticprocess.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1a87d025fa8e0daa4e048320c7ac266bb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; apply</definition>
         <argsstring>(const Array &amp;x0, const Array &amp;dx) const </argsstring>
         <name>apply</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>dx</declname>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; evolve</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt, const Array &amp;dw) const </argsstring>
         <name>evolve</name>
@@ -152,7 +152,7 @@
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -160,7 +160,7 @@
           <declname>dt</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>dw</declname>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="54"/>
@@ -175,7 +175,7 @@
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -183,13 +183,13 @@
           <declname>dt</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>dw</declname>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1ab5f887b196ae4e77af2ef2f875b46b79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; postEvolve</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt, const Array &amp;dw, const Array &amp;y0) const =0</argsstring>
         <name>postEvolve</name>
@@ -198,7 +198,7 @@
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -206,11 +206,11 @@
           <declname>dt</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>dw</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>y0</declname>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="60"/>
@@ -225,7 +225,7 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="62"/>
@@ -238,7 +238,7 @@
         <location file="/processes/jointstochasticprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1a5669afa101f7e3d2f10d8e21d36ebd92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>virtual Disposable&lt;Matrix&gt; crossModelCorrelation</definition>
         <argsstring>(Time t0, const Array &amp;x0) const =0</argsstring>
         <name>crossModelCorrelation</name>
@@ -247,13 +247,13 @@
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="joint_stochastic_process_1adfd3c50fd8254a227325875bd0524352" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &gt; &amp;</type>
+        <type>const std::vector&lt; boost::shared_ptr&lt; StochasticProcess &gt; &gt; &amp;</type>
         <definition>const std::vector&lt;boost::shared_ptr&lt;StochasticProcess&gt; &gt;&amp; constituents</definition>
         <argsstring>() const </argsstring>
         <name>constituents</name>
@@ -272,7 +272,7 @@
         <argsstring>(const Date &amp;date) const </argsstring>
         <name>time</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/processes/jointstochasticprocess.hpp" line="71"/>

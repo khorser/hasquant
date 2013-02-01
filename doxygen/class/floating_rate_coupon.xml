@@ -14,7 +14,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve) const </argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountingCurve</declname>
         </param>
         <location file="/cashflows/floatingratecoupon.hpp" line="67"/>
@@ -23,7 +23,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="floating_rate_coupon_1a3abd7ea3a1e190b4a16ba6cdb32aa6b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
@@ -41,7 +41,7 @@
         <location file="/cashflows/floatingratecoupon.hpp" line="77" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
@@ -117,7 +117,7 @@
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;index, Real gearing=1.0, Spread spread=0.0, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date(), const DayCounter &amp;dayCounter=DayCounter(), bool isInArrears=false)</argsstring>
         <name>FloatingRateCoupon</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -125,11 +125,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -137,7 +137,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -151,19 +151,19 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
           <type>bool</type>
@@ -178,12 +178,12 @@
         <argsstring>(const boost::shared_ptr&lt; FloatingRateCouponPricer &gt; &amp;)</argsstring>
         <name>setPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; FloatingRateCouponPricer &gt; &amp;</type>
         </param>
         <location file="/cashflows/floatingratecoupon.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="floating_rate_coupon_1aafc293967ad3568fd5b8a6f38016898c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; FloatingRateCouponPricer &gt;</type>
         <definition>boost::shared_ptr&lt; FloatingRateCouponPricer &gt; pricer</definition>
         <argsstring>() const </argsstring>
         <name>pricer</name>

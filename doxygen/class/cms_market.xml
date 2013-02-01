@@ -13,27 +13,27 @@
         <argsstring>(const std::vector&lt; Period &gt; &amp;swapLengths, const std::vector&lt; boost::shared_ptr&lt; SwapIndex &gt; &gt; &amp;swapIndexes, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;bidAskSpreads, const std::vector&lt; boost::shared_ptr&lt; HaganPricer &gt; &gt; &amp;pricers, const Handle&lt; YieldTermStructure &gt; &amp;discountingTS)</argsstring>
         <name>CmsMarket</name>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>swapLengths</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; SwapIndex &gt; &gt; &amp;</type>
           <declname>swapIndexes</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;</type>
           <declname>bidAskSpreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="hagan_pricer" kindref="compound">HaganPricer</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; HaganPricer &gt; &gt; &amp;</type>
           <declname>pricers</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountingTS</declname>
         </param>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="50"/>
@@ -44,7 +44,7 @@
         <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;volStructure, Real meanReversion)</argsstring>
         <name>reprice</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; SwaptionVolatilityStructure &gt; &amp;</type>
           <declname>volStructure</declname>
         </param>
         <param>
@@ -54,28 +54,28 @@
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1adf1466388fd71f68aefe316d9e01f51f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Period &gt; &amp;</type>
         <definition>const std::vector&lt;Period&gt;&amp; swapTenors</definition>
         <argsstring>() const </argsstring>
         <name>swapTenors</name>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="59" bodyfile="/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1a15adbf5981a8ff0090362440bf072022" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; impliedCmsSpreads</definition>
         <argsstring>()</argsstring>
         <name>impliedCmsSpreads</name>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="60" bodyfile="/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1acdfd004ea776f36e5b17b1e4f8c5c3e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; spreadErrors</definition>
         <argsstring>()</argsstring>
         <name>spreadErrors</name>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="61" bodyfile="/termstructures/volatility/swaption/cmsmarket.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1a75afedb1d8ac13a96c01da419ce7215d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
+        <type>Matrix</type>
         <definition>Matrix browse</definition>
         <argsstring>() const </argsstring>
         <name>browse</name>
@@ -87,7 +87,7 @@
         <argsstring>(const Matrix &amp;weights)</argsstring>
         <name>weightedSpreadError</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>weights</declname>
         </param>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="65"/>
@@ -98,7 +98,7 @@
         <argsstring>(const Matrix &amp;weights)</argsstring>
         <name>weightedSpotNpvError</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>weights</declname>
         </param>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="66"/>
@@ -109,40 +109,40 @@
         <argsstring>(const Matrix &amp;weights)</argsstring>
         <name>weightedFwdNpvError</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>weights</declname>
         </param>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1aa92e7b6511287b481070207a69299b7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; weightedSpreadErrors</definition>
         <argsstring>(const Matrix &amp;weights)</argsstring>
         <name>weightedSpreadErrors</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>weights</declname>
         </param>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1a189b98a59a9ebcd052bfea71a1a0eba1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; weightedSpotNpvErrors</definition>
         <argsstring>(const Matrix &amp;weights)</argsstring>
         <name>weightedSpotNpvErrors</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>weights</declname>
         </param>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1a532de711ecb4a2410414fbd80b869b68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; weightedFwdNpvErrors</definition>
         <argsstring>(const Matrix &amp;weights)</argsstring>
         <name>weightedFwdNpvErrors</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>weights</declname>
         </param>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="70"/>

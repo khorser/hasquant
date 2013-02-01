@@ -11,15 +11,15 @@
         <argsstring>(const Date &amp;creditEventDate, const DefaultType &amp;atomicEvType, const Currency &amp;curr, Seniority bondsSen, const Date &amp;settleDate=Null&lt; Date &gt;(), const std::map&lt; Seniority, Real &gt; &amp;recoveryRates=rate_map())</argsstring>
         <name>DefaultEvent</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>creditEventDate</declname>
         </param>
         <param>
-          <type>const <ref refid="default_type" kindref="compound">DefaultType</ref> &amp;</type>
+          <type>const DefaultType &amp;</type>
           <declname>atomicEvType</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>curr</declname>
         </param>
         <param>
@@ -27,9 +27,9 @@
           <declname>bondsSen</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>settleDate</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>Null&lt; Date &gt;()</defval>
         </param>
         <param>
           <type>const std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -46,15 +46,15 @@
         <argsstring>(const Date &amp;creditEventDate, const DefaultType &amp;atomicEvType, const Currency &amp;curr, Seniority bondsSen, const Date &amp;settleDate=Null&lt; Date &gt;(), Real recoveryRate=0.4)</argsstring>
         <name>DefaultEvent</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>creditEventDate</declname>
         </param>
         <param>
-          <type>const <ref refid="default_type" kindref="compound">DefaultType</ref> &amp;</type>
+          <type>const DefaultType &amp;</type>
           <declname>atomicEvType</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>curr</declname>
         </param>
         <param>
@@ -62,9 +62,9 @@
           <declname>bondsSen</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>settleDate</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>Null&lt; Date &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -104,14 +104,14 @@
         <location file="/experimental/credit/defaultevent.hpp" line="119" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="default_event_1a2c28bc2ecab4fcb305aecac24e805fcb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="default_type" kindref="compound">DefaultType</ref> &amp;</type>
+        <type>const DefaultType &amp;</type>
         <definition>const DefaultType&amp; defaultType</definition>
         <argsstring>() const </argsstring>
         <name>defaultType</name>
         <location file="/experimental/credit/defaultevent.hpp" line="122" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="default_event_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>const Currency &amp;</type>
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
@@ -147,7 +147,7 @@
         <argsstring>(const boost::shared_ptr&lt; DefaultType &gt; &amp;contractEvType) const </argsstring>
         <name>matchesEventType</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="default_type" kindref="compound">DefaultType</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; DefaultType &gt; &amp;</type>
           <declname>contractEvType</declname>
         </param>
         <detaileddescription>
@@ -160,7 +160,7 @@
         <argsstring>(const DefaultProbKey &amp;contractKey) const </argsstring>
         <name>matchesDefaultKey</name>
         <param>
-          <type>const <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <type>const DefaultProbKey &amp;</type>
           <declname>contractKey</declname>
         </param>
         <detaileddescription>

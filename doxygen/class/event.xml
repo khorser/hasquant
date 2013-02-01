@@ -6,7 +6,7 @@
       <sectiondef kind="user-defined">
       <header>Event interface</header>
       <memberdef kind="function" id="event_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date date</definition>
         <argsstring>() const =0</argsstring>
         <name>date</name>
@@ -20,9 +20,9 @@
         <argsstring>(const Date &amp;refDate=Date(), boost::optional&lt; bool &gt; includeRefDate=boost::none) const </argsstring>
         <name>hasOccurred</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type>boost::optional&lt; bool &gt;</type>
@@ -44,7 +44,7 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type>AcyclicVisitor &amp;</type>
         </param>
         <location file="/event.hpp" line="59"/>
       </memberdef>

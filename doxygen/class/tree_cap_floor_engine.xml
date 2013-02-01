@@ -13,7 +13,7 @@
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, Size timeSteps, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>TreeCapFloorEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ShortRateModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -21,9 +21,9 @@
           <declname>timeSteps</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/pricingengines/capfloor/treecapfloorengine.hpp" line="46"/>
       </memberdef>
@@ -33,17 +33,17 @@
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, const TimeGrid &amp;timeGrid, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>TreeCapFloorEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ShortRateModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/pricingengines/capfloor/treecapfloorengine.hpp" line="50"/>
       </memberdef>

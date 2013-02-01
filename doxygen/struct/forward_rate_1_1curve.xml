@@ -9,7 +9,7 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="forward_rate_1_1curve_1a4af2543231103c7abf95f970c9aa103c" prot="public" static="no">
-        <type><ref refid="interpolated_forward_curve" kindref="compound">InterpolatedForwardCurve</ref>&lt; Interpolator &gt;</type>
+        <type>InterpolatedForwardCurve&lt; Interpolator &gt;</type>
         <definition>typedef InterpolatedForwardCurve&lt;Interpolator&gt; type</definition>
         <argsstring></argsstring>
         <name>type</name>

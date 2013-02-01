@@ -22,15 +22,15 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYInflationTermStructure &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YoYInflationTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/inflation/aucpi.hpp" line="86" bodyfile="/indexes/inflation/aucpi.hpp" bodystart="73" bodyend="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Fake year-on-year <ref refid="a_u_c_p_i" kindref="compound">AUCPI</ref> (i.e. a ratio) </para>    </briefdescription>
+<para>Fake year-on-year AUCPI (i.e. a ratio) </para>    </briefdescription>
     <location file="/indexes/inflation/aucpi.hpp" line="71" bodyfile="/indexes/inflation/aucpi.hpp" bodystart="71" bodyend="87"/>
   </compounddef>
 </doxygen>

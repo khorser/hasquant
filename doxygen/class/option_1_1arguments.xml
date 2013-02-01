@@ -5,14 +5,14 @@
     <includes local="no">/option.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Payoff &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
         <location file="/option.hpp" line="64" bodyfile="/option.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Exercise &gt;</type>
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise</definition>
         <argsstring></argsstring>
         <name>exercise</name>

@@ -27,7 +27,7 @@
         <location file="/math/randomnumbers/rngtraits.hpp" line="84" bodyfile="/math/randomnumbers/rngtraits.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="generic_low_discrepancy_1a171ed387822763dc8c95e3f638cc8de0" prot="public" static="no">
-        <type><ref refid="inverse_cumulative_rsg" kindref="compound">InverseCumulativeRsg</ref>&lt; ursg_type, IC &gt;</type>
+        <type>InverseCumulativeRsg&lt; ursg_type, IC &gt;</type>
         <definition>typedef InverseCumulativeRsg&lt;ursg_type,IC&gt; rsg_type</definition>
         <argsstring></argsstring>
         <name>rsg_type</name>
@@ -45,7 +45,7 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="generic_low_discrepancy_1a151fdf6c3c4b229d6e1f7f56f0590f2b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="inverse_cumulative_rsg" kindref="compound">rsg_type</ref></type>
+        <type>rsg_type</type>
         <definition>static rsg_type make_sequence_generator</definition>
         <argsstring>(Size dimension, BigNatural seed)</argsstring>
         <name>make_sequence_generator</name>

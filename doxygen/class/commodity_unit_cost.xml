@@ -16,24 +16,24 @@
         <argsstring>(const Money &amp;amount, const UnitOfMeasure &amp;unitOfMeasure)</argsstring>
         <name>CommodityUnitCost</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
           <declname>amount</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
           <declname>unitOfMeasure</declname>
         </param>
         <location file="/experimental/commodities/commodityunitcost.hpp" line="37" bodyfile="/experimental/commodities/commodityunitcost.hpp" bodystart="35" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="commodity_unit_cost_1ac5c99f8389e4128d193cce78549e69d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+        <type>const Money &amp;</type>
         <definition>const Money&amp; amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
         <location file="/experimental/commodities/commodityunitcost.hpp" line="39" bodyfile="/experimental/commodities/commodityunitcost.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="commodity_unit_cost_1a059df9f98e417bdd1764bc0ec6ecbcd5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        <type>const UnitOfMeasure &amp;</type>
         <definition>const UnitOfMeasure&amp; unitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>unitOfMeasure</name>

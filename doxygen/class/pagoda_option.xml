@@ -12,7 +12,7 @@
         <argsstring>(const std::vector&lt; Date &gt; &amp;fixingDates, Real roof, Real fraction)</argsstring>
         <name>PagodaOption</name>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>fixingDates</declname>
         </param>
         <param>

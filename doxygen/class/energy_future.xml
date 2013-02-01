@@ -14,7 +14,7 @@
           <declname>buySell</declname>
         </param>
         <param>
-          <type>const <ref refid="quantity" kindref="compound">Quantity</ref> &amp;</type>
+          <type>const Quantity &amp;</type>
           <declname>quantity</declname>
         </param>
         <param>
@@ -22,11 +22,11 @@
           <declname>tradePrice</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CommodityIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
@@ -43,7 +43,7 @@
         <location file="/experimental/commodities/energyfuture.hpp" line="44" bodyfile="/experimental/commodities/energyfuture.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="energy_future_1aa523d074331c75a4b4554457a73e1a32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="commodity_index" kindref="compound">CommodityIndex</ref> &gt;</type>
+        <type>const boost::shared_ptr&lt; CommodityIndex &gt;</type>
         <definition>const boost::shared_ptr&lt;CommodityIndex&gt; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>

@@ -10,11 +10,11 @@
         <argsstring>(const boost::shared_ptr&lt; LiborForwardModel &gt; &amp;model, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve)</argsstring>
         <name>LfmSwaptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="libor_forward_model" kindref="compound">LiborForwardModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LiborForwardModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <location file="/legacy/libormarketmodels/lfmswaptionengine.hpp" line="40"/>

@@ -10,13 +10,13 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure)</argsstring>
         <name>TermStructureConsistentModel</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <location file="/models/model.hpp" line="69" bodyfile="/models/model.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="term_structure_consistent_model_1aba911fdc1eafb640ce92861b77b04252" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; termStructure</definition>
         <argsstring>() const </argsstring>
         <name>termStructure</name>

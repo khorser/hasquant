@@ -285,7 +285,7 @@
     <briefdescription>
 <para>Statistics tool. </para>    </briefdescription>
     <detaileddescription>
-<para>This class accumulates a set of data and returns their statistics (e.g: mean, variance, skewness, kurtosis, error estimation, percentile, etc.) based on the empirical distribution (no gaussian assumption)</para><para>It doesn&apos;t suffer the numerical instability problem of <ref refid="incremental_statistics" kindref="compound">IncrementalStatistics</ref>. The downside is that it stores all samples, thus increasing the memory requirements. </para>    </detaileddescription>
+<para>This class accumulates a set of data and returns their statistics (e.g: mean, variance, skewness, kurtosis, error estimation, percentile, etc.) based on the empirical distribution (no gaussian assumption)</para><para>It doesn&apos;t suffer the numerical instability problem of IncrementalStatistics. The downside is that it stores all samples, thus increasing the memory requirements. </para>    </detaileddescription>
     <location file="/math/statistics/generalstatistics.hpp" line="45" bodyfile="/math/statistics/generalstatistics.hpp" bodystart="45" bodyend="183"/>
   </compounddef>
 </doxygen>

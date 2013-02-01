@@ -19,7 +19,7 @@
         <location file="/instruments/bond.hpp" line="93" bodyfile="/instruments/bond.hpp" bodystart="294" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+        <type>const Calendar &amp;</type>
         <definition>const Calendar &amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
@@ -38,9 +38,9 @@
         <argsstring>(Date d=Date()) const </argsstring>
         <name>notional</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/instruments/bond.hpp" line="97"/>
       </memberdef>
@@ -64,7 +64,7 @@
         <location file="/instruments/bond.hpp" line="102" bodyfile="/instruments/bond.hpp" bodystart="310" bodyend="312"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a58d0698e89061e76114760d78d588350" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="cash_flow" kindref="compound">CashFlow</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; CashFlow &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;CashFlow&gt;&amp; redemption</definition>
         <argsstring>() const </argsstring>
         <name>redemption</name>
@@ -73,21 +73,21 @@
         <location file="/instruments/bond.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/instruments/bond.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
         <location file="/instruments/bond.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a063fda38934b8aa155e6a9ed6c4aa53e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date issueDate</definition>
         <argsstring>() const </argsstring>
         <name>issueDate</name>
@@ -99,21 +99,21 @@
         <argsstring>(Date d=Date()) const </argsstring>
         <name>isTradable</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/instruments/bond.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="bond_1ab8181f6a75922ecb19246c234fdc482f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date settlementDate</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>settlementDate</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/instruments/bond.hpp" line="111"/>
       </memberdef>
@@ -159,7 +159,7 @@
         <argsstring>(const DayCounter &amp;dc, Compounding comp, Frequency freq, Real accuracy=1.0e-8, Size maxEvaluations=100) const </argsstring>
         <name>yield</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
@@ -196,7 +196,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
@@ -208,9 +208,9 @@
           <declname>freq</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>clean price given a yield and settlement date </para>        </briefdescription>
@@ -228,7 +228,7 @@
           <declname>yield</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
@@ -240,9 +240,9 @@
           <declname>freq</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>dirty price given a yield and settlement date </para>        </briefdescription>
@@ -275,7 +275,7 @@
           <declname>cleanPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
@@ -287,9 +287,9 @@
           <declname>freq</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -313,9 +313,9 @@
         <argsstring>(Date d=Date()) const </argsstring>
         <name>accruedAmount</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>accrued amount at a given date </para>        </briefdescription>
@@ -335,13 +335,13 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
@@ -364,7 +364,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -372,13 +372,13 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
@@ -397,9 +397,9 @@
         <argsstring>(Date d=Date()) const </argsstring>
         <name>nextCouponRate</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <detaileddescription>
 <para>Expected next coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the already-fixed not-yet-paid one.</para><para>The current bond settlement is used if no date is given. </para>        </detaileddescription>
@@ -411,9 +411,9 @@
         <argsstring>(Date d=Date()) const </argsstring>
         <name>previousCouponRate</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>Previous coupon already paid at a given date. </para>        </briefdescription>
@@ -422,26 +422,26 @@
         <location file="/instruments/bond.hpp" line="207"/>
       </memberdef>
       <memberdef kind="function" id="bond_1aded8e920cf8eb8f5b615ca1407edd00a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date nextCashFlowDate</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>nextCashFlowDate</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/instruments/bond.hpp" line="209"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a295f040a2200b3a4d2c41ecfb1058578" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date previousCashFlowDate</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>previousCashFlowDate</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/instruments/bond.hpp" line="210"/>
       </memberdef>

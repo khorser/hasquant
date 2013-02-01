@@ -13,11 +13,11 @@
           <declname>mesher</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonProcess &gt; &amp;</type>
           <declname>hestonProcess</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="hull_white_process" kindref="compound">HullWhiteProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HullWhiteProcess &gt; &amp;</type>
           <declname>hwProcess</declname>
         </param>
         <param>
@@ -49,29 +49,29 @@
         <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_hull_white_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; apply</definition>
         <argsstring>(const Array &amp;r) const </argsstring>
         <name>apply</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_hull_white_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; apply_mixed</definition>
         <argsstring>(const Array &amp;r) const </argsstring>
         <name>apply_mixed</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_hull_white_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; apply_direction</definition>
         <argsstring>(Size direction, const Array &amp;r) const </argsstring>
         <name>apply_direction</name>
@@ -80,13 +80,13 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_hull_white_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; solve_splitting</definition>
         <argsstring>(Size direction, const Array &amp;r, Real s) const </argsstring>
         <name>solve_splitting</name>
@@ -95,7 +95,7 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <param>
@@ -105,12 +105,12 @@
         <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_hull_white_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; preconditioner</definition>
         <argsstring>(const Array &amp;r, Real s) const </argsstring>
         <name>preconditioner</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <param>

@@ -11,11 +11,11 @@
         <argsstring>(const Date &amp;valueDate, const Date &amp;maturityDate, Position::Type type, Real strike, Natural settlementDays, const DayCounter &amp;dayCounter, const Calendar &amp;calendar, BusinessDayConvention businessDayConvention, const boost::shared_ptr&lt; FixedRateBond &gt; &amp;fixedCouponBond, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve=Handle&lt; YieldTermStructure &gt;(), const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>FixedRateBondForward</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>valueDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -31,11 +31,11 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -43,18 +43,18 @@
           <declname>businessDayConvention</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="fixed_rate_bond" kindref="compound">FixedRateBond</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; FixedRateBond &gt; &amp;</type>
           <declname>fixedCouponBond</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>incomeDiscountCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <detaileddescription>
 <para>If strike is given in the constructor, can calculate the NPV of the contract via <ref refid="instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" kindref="member">NPV()</ref>.</para><para>If strike/forward price is desired, it can be obtained via <ref refid="fixed_rate_bond_forward_1a72f9af6894914f64f567f95a5b819046" kindref="member">forwardPrice()</ref>. In this case, the strike variable in the constructor is irrelevant and will be ignored. </para>        </detaileddescription>
@@ -88,7 +88,7 @@
 <para><orderedlist>
 <listitem><para>valueDate refers to the settlement date of the bond forward contract. maturityDate is the delivery (or repurchase) date for the underlying bond (not the bond&apos;s maturity date).</para><para><orderedlist>
 <listitem><para>Relevant formulas used in the calculations ( <formula id="149">$P$</formula> refers to a price):</para><para>a. <formula id="150">$ P_{CleanFwd}(t) = P_{DirtyFwd}(t) - AI(t=deliveryDate) $</formula> where <formula id="151">$ AI $</formula> refers to the accrued interest on the underlying bond.</para><para>b. <formula id="152">$ P_{DirtyFwd}(t) = \frac{P_{DirtySpot}(t) - SpotIncome(t)} {discountCurve-&gt;discount(t=deliveryDate)} $</formula></para><para>c. <formula id="153">$ SpotIncome(t) = \sum_i \left( CF_i \times incomeDiscountCurve-&gt;discount(t_i) \right) $</formula> where <formula id="154">$ CF_i $</formula> represents the ith bond cash flow (coupon payment) associated with the underlying bond falling between the settlementDate and the deliveryDate. (Note the two different discount curves used in b. and c.)</para></listitem></orderedlist>
-</para><para><bold>Example: </bold> <ref refid="_repo_8cpp-example" kindref="compound">valuation of a repo on a fixed-rate bond </ref></para></listitem></orderedlist>
+</para><para><bold>Example: </bold> valuation of a repo on a fixed-rate bond </para></listitem></orderedlist>
 </para><para><xrefsect id="todo_1_todo000022"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Add preconditions and tests</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000023"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Create switch- if coupon goes to seller is toggled on, don&apos;t consider income in the <formula id="155">$ P_{DirtyFwd}(t) $</formula> calculation.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000024"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Verify this works when the underlying is paper (in which case ignore all AI.)</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000056"><xreftitle>Warning</xreftitle><xrefdescription><para>This class still needs to be rigorously tested</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/instruments/fixedratebondforward.hpp" line="73" bodyfile="/instruments/fixedratebondforward.hpp" bodystart="73" bodyend="125"/>
   </compounddef>

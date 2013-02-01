@@ -5,7 +5,7 @@
     <includes local="no">/math/randomnumbers/haltonrsg.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="halton_rsg_1af3b59a3dd56521693efc68c221a2bf38" prot="public" static="no">
-        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>Sample&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -40,14 +40,14 @@
         <location file="/math/randomnumbers/haltonrsg.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="halton_rsg_1a15b541124ea01ca45ea29f675c261246" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="sample" kindref="compound">sample_type</ref> &amp;</type>
+        <type>const sample_type &amp;</type>
         <definition>const sample_type&amp; nextSequence</definition>
         <argsstring>() const </argsstring>
         <name>nextSequence</name>
         <location file="/math/randomnumbers/haltonrsg.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="halton_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="sample" kindref="compound">sample_type</ref> &amp;</type>
+        <type>const sample_type &amp;</type>
         <definition>const sample_type&amp; lastSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastSequence</name>

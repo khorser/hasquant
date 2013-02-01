@@ -9,9 +9,9 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve=Handle&lt; YieldTermStructure &gt;(), boost::optional&lt; bool &gt; includeSettlementDateFlows=boost::none)</argsstring>
         <name>DiscountingBondEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <param>
           <type>boost::optional&lt; bool &gt;</type>
@@ -28,7 +28,7 @@
         <location file="/pricingengines/bond/discountingbondengine.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="discounting_bond_engine_1a80fd74539bdffcb8be719e5b8929feb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YieldTermStructure &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; discountCurve</definition>
         <argsstring>() const </argsstring>
         <name>discountCurve</name>

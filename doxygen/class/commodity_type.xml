@@ -71,10 +71,10 @@
         <argsstring>(const CommodityType &amp;, const CommodityType &amp;)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
         </param>
         <location file="/experimental/commodities/commoditytype.hpp" line="77" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
@@ -84,10 +84,10 @@
         <argsstring>(const CommodityType &amp;, const CommodityType &amp;)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
         </param>
         <location file="/experimental/commodities/commoditytype.hpp" line="81" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
@@ -100,7 +100,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
         </param>
         <location file="/experimental/commodities/commoditytype.hpp" line="85"/>
       </memberdef>

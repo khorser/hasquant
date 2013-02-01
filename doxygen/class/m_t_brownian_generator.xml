@@ -59,7 +59,7 @@
     <briefdescription>
 <para>Mersenne-twister Brownian generator for market-model simulations. </para>    </briefdescription>
     <detaileddescription>
-<para>Incremental Brownian generator using a Mersenne-twister uniform generator and inverse-cumulative Gaussian method.</para><para><simplesect kind="note"><para>At this time, generation of the underlying uniform sequence is eager, while its transformation into Gaussian variates is lazy. Further optimization might be possible by using the Mersenne twister directly instead of a <ref refid="random_sequence_generator" kindref="compound">RandomSequenceGenerator</ref>; however, it is not clear how much of a difference this would make when compared to the inverse-cumulative Gaussian calculation. </para></simplesect>
+<para>Incremental Brownian generator using a Mersenne-twister uniform generator and inverse-cumulative Gaussian method.</para><para><simplesect kind="note"><para>At this time, generation of the underlying uniform sequence is eager, while its transformation into Gaussian variates is lazy. Further optimization might be possible by using the Mersenne twister directly instead of a RandomSequenceGenerator; however, it is not clear how much of a difference this would make when compared to the inverse-cumulative Gaussian calculation. </para></simplesect>
 </para>    </detaileddescription>
     <location file="/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="43" bodyfile="/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" bodystart="43" bodyend="59"/>
   </compounddef>

@@ -10,7 +10,7 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type>AcyclicVisitor &amp;</type>
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="79"/>
       </memberdef>
@@ -22,7 +22,7 @@
         <argsstring>(const Date &amp;paymentDate, Real nominal, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const DayCounter &amp;dayCounter, Real gearing, Rate spread, const Date &amp;refPeriodStart, const Date &amp;refPeriodEnd, const boost::shared_ptr&lt; Schedule &gt; &amp;observationsSchedule, Real lowerTrigger, Real upperTrigger)</argsstring>
         <name>RangeAccrualFloatersCoupon</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -30,15 +30,15 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -58,15 +58,15 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="schedule" kindref="compound">Schedule</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Schedule &gt; &amp;</type>
           <declname>observationsSchedule</declname>
         </param>
         <param>
@@ -115,7 +115,7 @@
         <location file="/cashflows/rangeaccrual.hpp" line="64" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1aab7f8a1d4a314a985fa69de5ba722967" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; observationDates</definition>
         <argsstring>() const </argsstring>
         <name>observationDates</name>
@@ -129,7 +129,7 @@
         <location file="/cashflows/rangeaccrual.hpp" line="68" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1af30fb3b35833e1ec2afc875b7c400740" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="schedule" kindref="compound">Schedule</ref> &gt;</type>
+        <type>const boost::shared_ptr&lt; Schedule &gt;</type>
         <definition>const boost::shared_ptr&lt;Schedule&gt; observationsSchedule</definition>
         <argsstring>() const </argsstring>
         <name>observationsSchedule</name>
@@ -141,7 +141,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve) const </argsstring>
         <name>priceWithoutOptionality</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="76"/>

@@ -64,7 +64,7 @@
         <argsstring>(Array &amp;a, Time t) const </argsstring>
         <name>applyTo</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>a</declname>
         </param>
         <param>

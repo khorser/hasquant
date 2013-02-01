@@ -23,28 +23,28 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="mc_simulation_1a4e86ff468be75be1d9ec907a1af3818f" prot="public" static="no">
-        <type><ref refid="monte_carlo_model" kindref="compound">MonteCarloModel</ref>&lt; MC, RNG, S &gt;::<ref refid="multi_path_generator" kindref="compound">path_generator_type</ref></type>
+        <type>MonteCarloModel&lt; MC, RNG, S &gt;::path_generator_type</type>
         <definition>typedef MonteCarloModel&lt;MC,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
         <location file="/pricingengines/mcsimulation.hpp" line="46" bodyfile="/pricingengines/mcsimulation.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="mc_simulation_1ae4588b42428cb979b0fad7369aef51a6" prot="public" static="no">
-        <type><ref refid="monte_carlo_model" kindref="compound">MonteCarloModel</ref>&lt; MC, RNG, S &gt;::<ref refid="path_pricer" kindref="compound">path_pricer_type</ref></type>
+        <type>MonteCarloModel&lt; MC, RNG, S &gt;::path_pricer_type</type>
         <definition>typedef MonteCarloModel&lt;MC,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
         <location file="/pricingengines/mcsimulation.hpp" line="48" bodyfile="/pricingengines/mcsimulation.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="mc_simulation_1a38a0f2b84a876f1da1a5805922d8bb7b" prot="public" static="no">
-        <type><ref refid="monte_carlo_model" kindref="compound">MonteCarloModel</ref>&lt; MC, RNG, S &gt;::stats_type</type>
+        <type>MonteCarloModel&lt; MC, RNG, S &gt;::stats_type</type>
         <definition>typedef MonteCarloModel&lt;MC,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
         <location file="/pricingengines/mcsimulation.hpp" line="50" bodyfile="/pricingengines/mcsimulation.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="mc_simulation_1a94aa31e474a79b56b5921e9b5e59090d" prot="public" static="no">
-        <type><ref refid="monte_carlo_model" kindref="compound">MonteCarloModel</ref>&lt; MC, RNG, S &gt;::result_type</type>
+        <type>MonteCarloModel&lt; MC, RNG, S &gt;::result_type</type>
         <definition>typedef MonteCarloModel&lt;MC,RNG,S&gt;::result_type result_type</definition>
         <argsstring></argsstring>
         <name>result_type</name>
@@ -141,7 +141,7 @@
     <briefdescription>
 <para>base class for Monte Carlo engines </para>    </briefdescription>
     <detaileddescription>
-<para>Eventually this class might offer greeks methods. Deriving a class from <ref refid="mc_simulation" kindref="compound">McSimulation</ref> gives an easy way to write a Monte Carlo engine.</para><para>See McVanillaEngine as an example. </para>    </detaileddescription>
+<para>Eventually this class might offer greeks methods. Deriving a class from McSimulation gives an easy way to write a Monte Carlo engine.</para><para>See McVanillaEngine as an example. </para>    </detaileddescription>
     <location file="/pricingengines/mcsimulation.hpp" line="43" bodyfile="/pricingengines/mcsimulation.hpp" bodystart="43" bodyend="100"/>
   </compounddef>
 </doxygen>

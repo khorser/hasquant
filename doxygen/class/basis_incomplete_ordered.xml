@@ -20,7 +20,7 @@
         <argsstring>(const Array &amp;newVector)</argsstring>
         <name>addVector</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>newVector</declname>
         </param>
         <briefdescription>
@@ -42,7 +42,7 @@
         <location file="/math/matrixutilities/basisincompleteordered.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="basis_incomplete_ordered_1a9805cc5c059fc8b5fb8088db6cd02c84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
+        <type>Matrix</type>
         <definition>Matrix getBasisAsRowsInMatrix</definition>
         <argsstring>() const </argsstring>
         <name>getBasisAsRowsInMatrix</name>

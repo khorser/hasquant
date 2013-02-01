@@ -13,7 +13,7 @@
         <argsstring>(const EvolutionDescription &amp;evolution, const std::vector&lt; Time &gt; &amp;paymentTimes, const Matrix &amp;amounts, Size numberOfProducts)</argsstring>
         <name>MarketModelCashRebate</name>
         <param>
-          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const EvolutionDescription &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>
@@ -21,7 +21,7 @@
           <declname>paymentTimes</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>amounts</declname>
         </param>
         <param>

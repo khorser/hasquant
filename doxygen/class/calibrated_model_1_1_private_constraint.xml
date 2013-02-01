@@ -9,7 +9,7 @@
         <argsstring>(const std::vector&lt; Parameter &gt; &amp;arguments)</argsstring>
         <name>PrivateConstraint</name>
         <param>
-          <type>const std::vector&lt; <ref refid="parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Parameter &gt; &amp;</type>
           <declname>arguments</declname>
         </param>
         <location file="/models/model.hpp" line="163" bodyfile="/models/model.hpp" bodystart="161" bodyend="163"/>

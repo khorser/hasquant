@@ -5,7 +5,7 @@
     <includes local="no">/termstructures/inflation/seasonality.hpp</includes>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="multiplicative_price_seasonality_1aaa0bf273dd9cf60bac755433885fc754" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date seasonalityBaseDate</definition>
         <argsstring>() const </argsstring>
         <name>seasonalityBaseDate</name>
@@ -33,7 +33,7 @@
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>seasonalityFactor</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <briefdescription>
@@ -58,7 +58,7 @@
         <argsstring>(const Date &amp;seasonalityBaseDate, const Frequency frequency, const std::vector&lt; Rate &gt; seasonalityFactors)</argsstring>
         <name>MultiplicativePriceSeasonality</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>seasonalityBaseDate</declname>
         </param>
         <param>
@@ -77,7 +77,7 @@
         <argsstring>(const Date &amp;seasonalityBaseDate, const Frequency frequency, const std::vector&lt; Rate &gt; seasonalityFactors)</argsstring>
         <name>set</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>seasonalityBaseDate</declname>
         </param>
         <param>
@@ -102,7 +102,7 @@
 <para>Multiplicative seasonality in the price index (CPI/RPI/HICP/etc). </para>    </briefdescription>
     <detaileddescription>
 <para>Stationary multiplicative seasonality in CPI/RPI/HICP (i.e. in price) implies that zero inflation swap rates are affected, but that year-on-year inflation swap rates show no effect. Of course, if the seasonality in CPI/RPI/HICP is non-stationary then both swap rates will be affected.</para><para>Factors must be in multiples of the minimum required for one year, e.g. 12 for monthly, and these factors are reused for as long as is required, i.e. they wrap around. So, for example, if 24 factors are given this repeats every two years. True stationary seasonality can be obtained by giving the same number of factors as the frequency dictates e.g. 12 for monthly seasonality.</para><para><xrefsect id="caveats_1_caveats000113"><xreftitle>Warning</xreftitle><xrefdescription><para>Multi-year seasonality (i.e. non-stationary) is fragile: the user <bold>must</bold> ensure that corrections at whole years before and after the inflation term structure base date are the same. Otherwise there can be an inconsistency with quoted rates. This is enforced if the frequency is lower than daily. This is not enforced for daily seasonality because this will always be inconsistent due to weekends, holidays, leap years, etc. If you use multi-year daily seasonality it is up to you to check.</para></xrefdescription></xrefsect></para><para><simplesect kind="note"><para>Factors are normalized relative to their appropriate reference dates. For zero inflation this is the inflation curve true base date: since you have a fixing for that date the seasonality factor must be one. For YoY inflation the reference is always one year earlier.</para></simplesect>
-<ref refid="seasonality" kindref="compound">Seasonality</ref> is treated as piecewise constant, hence it works correctly with uninterpolated indices if the seasonality correction factor frequency is the same as the index frequency (or less). </para>    </detaileddescription>
+Seasonality is treated as piecewise constant, hence it works correctly with uninterpolated indices if the seasonality correction factor frequency is the same as the index frequency (or less). </para>    </detaileddescription>
     <location file="/termstructures/inflation/seasonality.hpp" line="118" bodyfile="/termstructures/inflation/seasonality.hpp" bodystart="118" bodyend="162"/>
   </compounddef>
 </doxygen>

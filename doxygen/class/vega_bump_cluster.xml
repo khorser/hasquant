@@ -51,7 +51,7 @@
         <argsstring>(const boost::shared_ptr&lt; MarketModel &gt; &amp;volStructure) const </argsstring>
         <name>isCompatible</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModel &gt; &amp;</type>
           <declname>volStructure</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="48"/>

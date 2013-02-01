@@ -49,7 +49,7 @@
         <argsstring>(const CurveState &amp;currentState) const </argsstring>
         <name>exercise</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>currentState</declname>
         </param>
         <location file="/models/marketmodels/callability/swapratetrigger.hpp" line="37"/>
@@ -60,13 +60,13 @@
         <argsstring>(const CurveState &amp;currentState)</argsstring>
         <name>nextStep</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>currentState</declname>
         </param>
         <location file="/models/marketmodels/callability/swapratetrigger.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="swap_rate_trigger_1acd9318273e52073d486e779f628ca372" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::auto_ptr&lt; ExerciseStrategy&lt; <ref refid="curve_state" kindref="compound">CurveState</ref> &gt; &gt;</type>
+        <type>std::auto_ptr&lt; ExerciseStrategy&lt; CurveState &gt; &gt;</type>
         <definition>std::auto_ptr&lt;ExerciseStrategy&lt;CurveState&gt; &gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>

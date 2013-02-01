@@ -14,7 +14,7 @@
         <type>template&lt; class &gt; class</type>
         <declname>Bootstrap</declname>
         <defname>Bootstrap</defname>
-        <defval><ref refid="iterative_bootstrap" kindref="compound">IterativeBootstrap</ref></defval>
+        <defval>IterativeBootstrap</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
@@ -25,7 +25,7 @@
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;(), Real accuracy=1.0e-12, const Interpolator &amp;i=Interpolator(), const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
         <name>PiecewiseYieldCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -33,18 +33,18 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -57,9 +57,9 @@
           <defval>Interpolator()</defval>
         </param>
         <param>
-          <type>const Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <type>const Bootstrap&lt; this_curve &gt; &amp;</type>
           <declname>bootstrap</declname>
-          <defval>Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+          <defval>Bootstrap&lt; this_curve &gt;()</defval>
         </param>
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="83" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="70" bodyend="85"/>
       </memberdef>
@@ -69,7 +69,7 @@
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, Real accuracy, const Interpolator &amp;i=Interpolator(), const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
         <name>PiecewiseYieldCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -77,7 +77,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -90,9 +90,9 @@
           <defval>Interpolator()</defval>
         </param>
         <param>
-          <type>const Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <type>const Bootstrap&lt; this_curve &gt; &amp;</type>
           <declname>bootstrap</declname>
-          <defval>Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+          <defval>Bootstrap&lt; this_curve &gt;()</defval>
         </param>
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="97" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="86" bodyend="99"/>
       </memberdef>
@@ -102,7 +102,7 @@
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const Interpolator &amp;i, const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
         <name>PiecewiseYieldCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -110,7 +110,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -118,9 +118,9 @@
           <declname>i</declname>
         </param>
         <param>
-          <type>const Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <type>const Bootstrap&lt; this_curve &gt; &amp;</type>
           <declname>bootstrap</declname>
-          <defval>Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+          <defval>Bootstrap&lt; this_curve &gt;()</defval>
         </param>
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="110" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="100" bodyend="112"/>
       </memberdef>
@@ -134,7 +134,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -142,18 +142,18 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -166,9 +166,9 @@
           <defval>Interpolator()</defval>
         </param>
         <param>
-          <type>const Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <type>const Bootstrap&lt; this_curve &gt; &amp;</type>
           <declname>bootstrap</declname>
-          <defval>Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+          <defval>Bootstrap&lt; this_curve &gt;()</defval>
         </param>
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="126" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="113" bodyend="128"/>
       </memberdef>
@@ -182,7 +182,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -190,7 +190,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -203,9 +203,9 @@
           <defval>Interpolator()</defval>
         </param>
         <param>
-          <type>const Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <type>const Bootstrap&lt; this_curve &gt; &amp;</type>
           <declname>bootstrap</declname>
-          <defval>Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+          <defval>Bootstrap&lt; this_curve &gt;()</defval>
         </param>
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="141" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="129" bodyend="143"/>
       </memberdef>
@@ -219,7 +219,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -227,7 +227,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -235,9 +235,9 @@
           <declname>i</declname>
         </param>
         <param>
-          <type>const Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <type>const Bootstrap&lt; this_curve &gt; &amp;</type>
           <declname>bootstrap</declname>
-          <defval>Bootstrap&lt; <ref refid="piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+          <defval>Bootstrap&lt; this_curve &gt;()</defval>
         </param>
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="155" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="144" bodyend="157"/>
       </memberdef>
@@ -245,7 +245,7 @@
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="piecewise_yield_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
@@ -262,7 +262,7 @@
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="165" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="205" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_yield_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
@@ -276,7 +276,7 @@
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="167" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="217" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_yield_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>

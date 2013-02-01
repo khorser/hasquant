@@ -28,7 +28,7 @@
         <argsstring>(const Date &amp;d, Rate forward, const std::vector&lt; Real &gt; &amp;sabrParameters, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>SabrSmileSection</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -40,9 +40,9 @@
           <declname>sabrParameters</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <location file="/termstructures/volatility/sabrsmilesection.hpp" line="41"/>
       </memberdef>

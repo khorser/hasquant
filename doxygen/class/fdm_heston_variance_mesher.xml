@@ -13,7 +13,7 @@
           <declname>size</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

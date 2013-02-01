@@ -11,14 +11,14 @@
       <sectiondef kind="user-defined">
       <header>inspectors</header>
       <memberdef kind="function" id="path_generator_1a6049f022cf66ebb26cfe96caa59aff87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="sample" kindref="compound">sample_type</ref> &amp;</type>
+        <type>const sample_type &amp;</type>
         <definition>const PathGenerator&lt; GSG &gt;::sample_type &amp; next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
         <location file="/methods/montecarlo/pathgenerator.hpp" line="59" bodyfile="/methods/montecarlo/pathgenerator.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="path_generator_1abacc895c68c2f082c8cd5d9fc2d2a5f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="sample" kindref="compound">sample_type</ref> &amp;</type>
+        <type>const sample_type &amp;</type>
         <definition>const PathGenerator&lt; GSG &gt;::sample_type &amp; antithetic</definition>
         <argsstring>() const </argsstring>
         <name>antithetic</name>
@@ -32,7 +32,7 @@
         <location file="/methods/montecarlo/pathgenerator.hpp" line="61" bodyfile="/methods/montecarlo/pathgenerator.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="path_generator_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+        <type>const TimeGrid &amp;</type>
         <definition>const TimeGrid&amp; timeGrid</definition>
         <argsstring>() const </argsstring>
         <name>timeGrid</name>
@@ -41,7 +41,7 @@
       </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="path_generator_1ae160475137a6c68f508c0dbd97aae237" prot="public" static="no">
-        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; <ref refid="path" kindref="compound">Path</ref> &gt;</type>
+        <type>Sample&lt; Path &gt;</type>
         <definition>typedef Sample&lt;Path&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -55,7 +55,7 @@
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess &gt; &amp;, Time length, Size timeSteps, const GSG &amp;generator, bool brownianBridge)</argsstring>
         <name>PathGenerator</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess &gt; &amp;</type>
           <defname>process</defname>
         </param>
         <param>
@@ -82,11 +82,11 @@
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess &gt; &amp;, const TimeGrid &amp;timeGrid, const GSG &amp;generator, bool brownianBridge)</argsstring>
         <name>PathGenerator</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess &gt; &amp;</type>
           <defname>process</defname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>

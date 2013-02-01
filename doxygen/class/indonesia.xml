@@ -19,7 +19,7 @@
         <enumvalue id="indonesia_1abe41cfffd960e29a5d8b07be00aeda42a66be860650da4b438a498218e252c6e3" prot="public">
           <name>IDX</name>
           <briefdescription>
-<para><ref refid="indonesia" kindref="compound">Indonesia</ref> stock exchange. </para>          </briefdescription>
+<para>Indonesia stock exchange. </para>          </briefdescription>
         </enumvalue>
         <location file="/time/calendars/indonesia.hpp" line="70" bodyfile="/time/calendars/indonesia.hpp" bodystart="70" bodyend="73"/>
       </memberdef>
@@ -41,7 +41,7 @@
     <briefdescription>
 <para>Indonesian calendars </para>    </briefdescription>
     <detaileddescription>
-<para>Holidays for the <ref refid="indonesia" kindref="compound">Indonesia</ref> stock exchange (data from <ulink url="http://www.idx.co.id/">http://www.idx.co.id/</ulink>): <itemizedlist>
+<para>Holidays for the Indonesia stock exchange (data from <ulink url="http://www.idx.co.id/">http://www.idx.co.id/</ulink>): <itemizedlist>
 <listitem>
 <para>Saturdays </para></listitem>
 <listitem>

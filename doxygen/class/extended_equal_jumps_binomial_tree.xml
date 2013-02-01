@@ -17,7 +17,7 @@
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process, Time end, Size steps)</argsstring>
         <name>ExtendedEqualJumpsBinomialTree</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

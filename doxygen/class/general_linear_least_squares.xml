@@ -77,21 +77,21 @@
         <location file="/math/generallinearleastsquares.hpp" line="57" bodyfile="/math/generallinearleastsquares.hpp" bodystart="96" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="general_linear_least_squares_1a850ee065655ad4c6801782bcea67c2b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; coefficients</definition>
         <argsstring>() const </argsstring>
         <name>coefficients</name>
         <location file="/math/generallinearleastsquares.hpp" line="59" bodyfile="/math/generallinearleastsquares.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="general_linear_least_squares_1af32f46c4d02d5fcd2a8f84629c975073" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; residuals</definition>
         <argsstring>() const </argsstring>
         <name>residuals</name>
         <location file="/math/generallinearleastsquares.hpp" line="60" bodyfile="/math/generallinearleastsquares.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="general_linear_least_squares_1a0aab363c45329f8469d3909b3dc39074" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; standardErrors</definition>
         <argsstring>() const </argsstring>
         <name>standardErrors</name>
@@ -100,7 +100,7 @@
         <location file="/math/generallinearleastsquares.hpp" line="63" bodyfile="/math/generallinearleastsquares.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="general_linear_least_squares_1a0787f8e1f87d04dceb6b20b946e0a7f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; error</definition>
         <argsstring>() const </argsstring>
         <name>error</name>
@@ -109,7 +109,7 @@
         <location file="/math/generallinearleastsquares.hpp" line="65" bodyfile="/math/generallinearleastsquares.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="general_linear_least_squares_1a203fe3243a3de44e98f050f96c7eb9cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>

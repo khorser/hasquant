@@ -13,7 +13,7 @@
           <declname>mesher</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
           <declname>qTS</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="42"/>

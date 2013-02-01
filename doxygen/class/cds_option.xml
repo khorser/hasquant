@@ -12,7 +12,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="cds_option_1a37a0ce9ec1e1962e9cd5845be2657bd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="credit_default_swap" kindref="compound">CreditDefaultSwap</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; CreditDefaultSwap &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;CreditDefaultSwap&gt;&amp; underlyingSwap</definition>
         <argsstring>() const </argsstring>
         <name>underlyingSwap</name>
@@ -45,11 +45,11 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -85,11 +85,11 @@
         <argsstring>(const boost::shared_ptr&lt; CreditDefaultSwap &gt; &amp;swap, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, bool knocksOut=true)</argsstring>
         <name>CdsOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="credit_default_swap" kindref="compound">CreditDefaultSwap</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CreditDefaultSwap &gt; &amp;</type>
           <declname>swap</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>

@@ -14,11 +14,11 @@
           <declname>pool</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; DefaultProbKey &gt; &amp;</type>
           <declname>defaultKeys</declname>
         </param>
         <param>
-          <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
+          <type>Handle&lt; OneFactorCopula &gt;</type>
           <declname>copula</declname>
         </param>
         <param>

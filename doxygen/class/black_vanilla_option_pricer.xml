@@ -13,15 +13,15 @@
           <declname>forwardValue</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>expiryDate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SwaptionVolatilityStructure &gt; &amp;</type>
           <declname>volatilityStructure</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="50"/>

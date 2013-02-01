@@ -9,15 +9,15 @@
         <argsstring>(const Handle&lt; BlackVolTermStructure &gt; &amp;fxRateBlackVolatility, const Handle&lt; Quote &gt; &amp;underlyingFxCorrelation, const Handle&lt; OptionletVolatilityStructure &gt; &amp;capletVolatility)</argsstring>
         <name>BlackIborQuantoCouponPricer</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVolTermStructure &gt; &amp;</type>
           <declname>fxRateBlackVolatility</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>underlyingFxCorrelation</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; OptionletVolatilityStructure &gt; &amp;</type>
           <declname>capletVolatility</declname>
         </param>
         <location file="/experimental/coupons/quantocouponpricer.hpp" line="41" bodyfile="/experimental/coupons/quantocouponpricer.hpp" bodystart="35" bodyend="44"/>

@@ -12,7 +12,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real theta=0.1, Real k=0.1, Real sigma=0.1, Real x0=0.05)</argsstring>
         <name>ExtendedCoxIngersollRoss</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>

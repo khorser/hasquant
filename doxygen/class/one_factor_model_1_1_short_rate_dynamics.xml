@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process)</argsstring>
         <name>ShortRateDynamics</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/models/shortrate/onefactormodel.hpp" line="57" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="55" bodyend="57"/>
@@ -57,7 +57,7 @@
         <location file="/models/shortrate/onefactormodel.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;StochasticProcess1D&gt;&amp; process</definition>
         <argsstring>()</argsstring>
         <name>process</name>

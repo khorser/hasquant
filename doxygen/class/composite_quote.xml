@@ -38,11 +38,11 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;element1, const Handle&lt; Quote &gt; &amp;element2, const BinaryFunction &amp;f)</argsstring>
         <name>CompositeQuote</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>element1</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>element2</declname>
         </param>
         <param>

@@ -23,7 +23,7 @@
         <location file="/instruments/vanillaswap.hpp" line="86" bodyfile="/instruments/vanillaswap.hpp" bodystart="173" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1ae9b9f2b40445d5d7802a80596445d4c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+        <type>const Schedule &amp;</type>
         <definition>const Schedule &amp; fixedSchedule</definition>
         <argsstring>() const </argsstring>
         <name>fixedSchedule</name>
@@ -37,21 +37,21 @@
         <location file="/instruments/vanillaswap.hpp" line="89" bodyfile="/instruments/vanillaswap.hpp" bodystart="181" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a95363e8aed06af280c2f0cf7e424fed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter &amp; fixedDayCount</definition>
         <argsstring>() const </argsstring>
         <name>fixedDayCount</name>
         <location file="/instruments/vanillaswap.hpp" line="90" bodyfile="/instruments/vanillaswap.hpp" bodystart="185" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1af6d95bff16cf7a3a6852034da40b0727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+        <type>const Schedule &amp;</type>
         <definition>const Schedule &amp; floatingSchedule</definition>
         <argsstring>() const </argsstring>
         <name>floatingSchedule</name>
         <location file="/instruments/vanillaswap.hpp" line="92" bodyfile="/instruments/vanillaswap.hpp" bodystart="189" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a7a93aecaf1b5a5d6ed72e4ea42462fff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; IborIndex &gt; &amp; iborIndex</definition>
         <argsstring>() const </argsstring>
         <name>iborIndex</name>
@@ -65,7 +65,7 @@
         <location file="/instruments/vanillaswap.hpp" line="94" bodyfile="/instruments/vanillaswap.hpp" bodystart="197" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a434df7c78cab85094cc4981baf759418" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter &amp; floatingDayCount</definition>
         <argsstring>() const </argsstring>
         <name>floatingDayCount</name>
@@ -167,7 +167,7 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>fixedSchedule</declname>
         </param>
         <param>
@@ -175,15 +175,15 @@
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>floatSchedule</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
@@ -191,7 +191,7 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>floatingDayCount</declname>
         </param>
         <param>

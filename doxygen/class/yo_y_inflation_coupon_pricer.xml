@@ -13,14 +13,14 @@
         <argsstring>(const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;capletVol=Handle&lt; YoYOptionletVolatilitySurface &gt;())</argsstring>
         <name>YoYInflationCouponPricer</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;</type>
           <declname>capletVol</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;()</defval>
+          <defval>Handle&lt; YoYOptionletVolatilitySurface &gt;()</defval>
         </param>
         <location file="/cashflows/inflationcouponpricer.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_coupon_pricer_1a8913a18449d60f7f821d45bffee446a2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;</type>
+        <type>Handle&lt; YoYOptionletVolatilitySurface &gt;</type>
         <definition>virtual Handle&lt;YoYOptionletVolatilitySurface&gt; capletVolatility</definition>
         <argsstring>() const </argsstring>
         <name>capletVolatility</name>
@@ -32,7 +32,7 @@
         <argsstring>(const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;capletVol)</argsstring>
         <name>setCapletVolatility</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;</type>
           <declname>capletVol</declname>
         </param>
         <location file="/cashflows/inflationcouponpricer.hpp" line="92"/>

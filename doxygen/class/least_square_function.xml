@@ -10,7 +10,7 @@
         <argsstring>(LeastSquareProblem &amp;lsp)</argsstring>
         <name>LeastSquareFunction</name>
         <param>
-          <type><ref refid="least_square_problem" kindref="compound">LeastSquareProblem</ref> &amp;</type>
+          <type>LeastSquareProblem &amp;</type>
           <declname>lsp</declname>
         </param>
         <briefdescription>
@@ -30,7 +30,7 @@
     <briefdescription>
 <para>Cost function for least-square problems. </para>    </briefdescription>
     <detaileddescription>
-<para>Implements a cost function using the interface provided by the <ref refid="least_square_problem" kindref="compound">LeastSquareProblem</ref> class. </para>    </detaileddescription>
+<para>Implements a cost function using the interface provided by the LeastSquareProblem class. </para>    </detaileddescription>
     <location file="/math/optimization/leastsquare.hpp" line="60" bodyfile="/math/optimization/leastsquare.hpp" bodystart="60" bodyend="78"/>
   </compounddef>
 </doxygen>

@@ -10,9 +10,9 @@
         <argsstring>(const boost::shared_ptr&lt; LineSearch &gt; &amp;lineSearch=boost::shared_ptr&lt; LineSearch &gt;())</argsstring>
         <name>BFGS</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="line_search" kindref="compound">LineSearch</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LineSearch &gt; &amp;</type>
           <declname>lineSearch</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; LineSearch &gt;()</defval>
         </param>
         <location file="/math/optimization/bfgs.hpp" line="43" bodyfile="/math/optimization/bfgs.hpp" bodystart="41" bodyend="43"/>
       </memberdef>

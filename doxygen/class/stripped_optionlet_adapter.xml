@@ -22,13 +22,13 @@
         <argsstring>(const boost::shared_ptr&lt; StrippedOptionletBase &gt; &amp;)</argsstring>
         <name>StrippedOptionletAdapter</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stripped_optionlet_base" kindref="compound">StrippedOptionletBase</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StrippedOptionletBase &gt; &amp;</type>
         </param>
         <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="42"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>Adapter class for turning a <ref refid="stripped_optionlet_base" kindref="compound">StrippedOptionletBase</ref> object into an <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref>. </para>    </detaileddescription>
+<para>Adapter class for turning a StrippedOptionletBase object into an OptionletVolatilityStructure. </para>    </detaileddescription>
     <location file="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="39" bodyfile="/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="38" bodyend="71"/>
   </compounddef>
 </doxygen>

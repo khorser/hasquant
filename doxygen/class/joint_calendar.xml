@@ -10,10 +10,10 @@
         <argsstring>(const Calendar &amp;, const Calendar &amp;, JointCalendarRule=JoinHolidays)</argsstring>
         <name>JointCalendar</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
@@ -27,13 +27,13 @@
         <argsstring>(const Calendar &amp;, const Calendar &amp;, const Calendar &amp;, JointCalendarRule=JoinHolidays)</argsstring>
         <name>JointCalendar</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
@@ -47,16 +47,16 @@
         <argsstring>(const Calendar &amp;, const Calendar &amp;, const Calendar &amp;, const Calendar &amp;, JointCalendarRule=JoinHolidays)</argsstring>
         <name>JointCalendar</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>

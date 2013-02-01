@@ -14,7 +14,7 @@
           <declname>pool</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; DefaultProbKey &gt; &amp;</type>
           <declname>defaultKeys</declname>
         </param>
         <location file="/experimental/credit/randomdefaultmodel.hpp" line="41" bodyfile="/experimental/credit/randomdefaultmodel.hpp" bodystart="39" bodyend="45"/>

@@ -10,7 +10,7 @@
         <argsstring>(Period stepSize=3 *Months)</argsstring>
         <name>IntegralCDOEngine</name>
         <param>
-          <type><ref refid="period" kindref="compound">Period</ref></type>
+          <type>Period</type>
           <declname>stepSize</declname>
           <defval>3 *Months</defval>
         </param>
@@ -18,7 +18,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="c_d_o" kindref="compound">CDO</ref> base engine taking (possibly) small time steps. </para>    </briefdescription>
+<para>CDO base engine taking (possibly) small time steps. </para>    </briefdescription>
     <location file="/experimental/credit/syntheticcdoengines.hpp" line="92" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="92" bodyend="100"/>
   </compounddef>
 </doxygen>

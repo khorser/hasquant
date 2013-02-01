@@ -25,11 +25,11 @@
         <argsstring>(const Matrix &amp;LIBORRates, const Matrix &amp;Discounts, Size currentStep, std::vector&lt; Real &gt; &amp;factors) const </argsstring>
         <name>getFactors</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>LIBORRates</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>Discounts</declname>
         </param>
         <param>

@@ -51,7 +51,7 @@
         <argsstring>(const Disposable&lt; FdmLinearOpIterator &gt; &amp;from)</argsstring>
         <name>FdmLinearOpIterator</name>
         <param>
-          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; FdmLinearOpIterator &gt; &amp;</type>
+          <type>const Disposable&lt; FdmLinearOpIterator &gt; &amp;</type>
           <declname>from</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="52" bodyfile="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="52" bodyend="54"/>

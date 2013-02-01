@@ -65,11 +65,11 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="transformed_grid" kindref="compound">TransformedGrid</ref> &amp;</type>
+          <type>const TransformedGrid &amp;</type>
           <declname>tg</declname>
         </param>
         <param>
-          <type><ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
+          <type>TridiagonalOperator &amp;</type>
           <declname>L</declname>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="40" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="38" bodyend="52"/>

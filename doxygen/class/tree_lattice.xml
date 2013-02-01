@@ -20,7 +20,7 @@
         <argsstring>(const TimeGrid &amp;timeGrid, Size n)</argsstring>
         <name>TreeLattice</name>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>
@@ -30,7 +30,7 @@
         <location file="/methods/lattices/lattice.hpp" line="62" bodyfile="/methods/lattices/lattice.hpp" bodystart="60" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="tree_lattice_1a6d32cc75a7f9816adfd48389fbc79aa3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array &amp; statePrices</definition>
         <argsstring>(Size i) const </argsstring>
         <name>statePrices</name>
@@ -50,11 +50,11 @@
           <declname>i</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>values</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>newValues</declname>
         </param>
         <location file="/methods/lattices/lattice.hpp" line="81" bodyfile="/methods/lattices/lattice.hpp" bodystart="167" bodyend="178"/>

@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; HestonProcess &gt; &amp;)</argsstring>
         <name>IntegralHestonVarianceOptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonProcess &gt; &amp;</type>
         </param>
         <location file="/experimental/varianceoption/integralhestonvarianceoptionengine.hpp" line="41"/>
       </memberdef>

@@ -10,15 +10,15 @@
         <argsstring>(const boost::shared_ptr&lt; TrinomialTree &gt; &amp;tree, const boost::shared_ptr&lt; ShortRateDynamics &gt; &amp;dynamics, const TimeGrid &amp;timeGrid)</argsstring>
         <name>ShortRateTree</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="trinomial_tree" kindref="compound">TrinomialTree</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; TrinomialTree &gt; &amp;</type>
           <declname>tree</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ShortRateDynamics &gt; &amp;</type>
           <declname>dynamics</declname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <briefdescription>
@@ -31,11 +31,11 @@
         <argsstring>(const boost::shared_ptr&lt; TrinomialTree &gt; &amp;tree, const boost::shared_ptr&lt; ShortRateDynamics &gt; &amp;dynamics, const boost::shared_ptr&lt; TermStructureFittingParameter::NumericalImpl &gt; &amp;phi, const TimeGrid &amp;timeGrid)</argsstring>
         <name>ShortRateTree</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="trinomial_tree" kindref="compound">TrinomialTree</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; TrinomialTree &gt; &amp;</type>
           <declname>tree</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ShortRateDynamics &gt; &amp;</type>
           <declname>dynamics</declname>
         </param>
         <param>
@@ -43,11 +43,11 @@
           <declname>phi</declname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <briefdescription>
-<para><ref refid="tree" kindref="compound">Tree</ref> build-up + numerical fitting to term-structure. </para>        </briefdescription>
+<para>Tree build-up + numerical fitting to term-structure. </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodel.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_model_1_1_short_rate_tree_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

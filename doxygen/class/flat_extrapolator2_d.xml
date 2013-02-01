@@ -9,7 +9,7 @@
         <argsstring>(boost::shared_ptr&lt; Interpolation2D &gt; decoratedInterpolation)</argsstring>
         <name>FlatExtrapolator2D</name>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="interpolation2_d" kindref="compound">Interpolation2D</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; Interpolation2D &gt;</type>
           <declname>decoratedInterpolation</declname>
         </param>
         <location file="/math/interpolations/flatextrapolation2d.hpp" line="34" bodyfile="/math/interpolations/flatextrapolation2d.hpp" bodystart="34" bodyend="37"/>

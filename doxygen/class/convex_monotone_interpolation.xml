@@ -59,7 +59,7 @@
         <argsstring>(Interpolation &amp;interp)</argsstring>
         <name>ConvexMonotoneInterpolation</name>
         <param>
-          <type><ref refid="interpolation" kindref="compound">Interpolation</ref> &amp;</type>
+          <type>Interpolation &amp;</type>
           <declname>interp</declname>
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="774" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="773" bodyend="774"/>

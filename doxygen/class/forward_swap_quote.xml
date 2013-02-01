@@ -16,35 +16,35 @@
         <argsstring>(const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndex, const Handle&lt; Quote &gt; &amp;spread, const Period &amp;fwdStart)</argsstring>
         <name>ForwardSwapQuote</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SwapIndex &gt; &amp;</type>
           <declname>swapIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>fwdStart</declname>
         </param>
         <location file="/quotes/forwardswapquote.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="forward_swap_quote_1a564ae9e6cc9c76d2d63daaf7395b7d6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date&amp; valueDate</definition>
         <argsstring>() const </argsstring>
         <name>valueDate</name>
         <location file="/quotes/forwardswapquote.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="forward_swap_quote_1a31cb634ae3717b7740c373fd6c34f1d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date&amp; startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/quotes/forwardswapquote.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="forward_swap_quote_1aee260a08ccb6428c19b51ac1042641df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date&amp; fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
@@ -52,7 +52,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="quote" kindref="compound">Quote</ref> for a forward starting swap. </para>    </briefdescription>
+<para>Quote for a forward starting swap. </para>    </briefdescription>
     <location file="/quotes/forwardswapquote.hpp" line="36" bodyfile="/quotes/forwardswapquote.hpp" bodystart="35" bodyend="65"/>
   </compounddef>
 </doxygen>

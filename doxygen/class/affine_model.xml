@@ -31,7 +31,7 @@
           <declname>maturity</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref></type>
+          <type>Array</type>
           <declname>factors</declname>
         </param>
         <location file="/models/model.hpp" line="50"/>

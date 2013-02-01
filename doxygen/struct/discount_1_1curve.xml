@@ -9,7 +9,7 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="discount_1_1curve_1a695d9e096fa12af510d3241e594da989" prot="public" static="no">
-        <type><ref refid="interpolated_discount_curve" kindref="compound">InterpolatedDiscountCurve</ref>&lt; Interpolator &gt;</type>
+        <type>InterpolatedDiscountCurve&lt; Interpolator &gt;</type>
         <definition>typedef InterpolatedDiscountCurve&lt;Interpolator&gt; type</definition>
         <argsstring></argsstring>
         <name>type</name>

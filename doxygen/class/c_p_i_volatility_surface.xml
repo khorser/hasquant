@@ -11,7 +11,7 @@
         <argsstring>(const Date &amp;maturityDate, Rate strike, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -19,9 +19,9 @@
           <declname>strike</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>obsLag</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval>Period(-1, Days)</defval>
         </param>
         <param>
           <type>bool</type>
@@ -40,7 +40,7 @@
         <argsstring>(const Period &amp;optionTenor, Rate strike, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
@@ -48,9 +48,9 @@
           <declname>strike</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>obsLag</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval>Period(-1, Days)</defval>
         </param>
         <param>
           <type>bool</type>
@@ -67,7 +67,7 @@
         <argsstring>(const Date &amp;exerciseDate, Rate strike, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=false) const </argsstring>
         <name>totalVariance</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>exerciseDate</declname>
         </param>
         <param>
@@ -75,9 +75,9 @@
           <declname>strike</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>obsLag</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval>Period(-1, Days)</defval>
         </param>
         <param>
           <type>bool</type>
@@ -94,7 +94,7 @@
         <argsstring>(const Period &amp;optionTenor, Rate strike, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=false) const </argsstring>
         <name>totalVariance</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
@@ -102,9 +102,9 @@
           <declname>strike</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>obsLag</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval>Period(-1, Days)</defval>
         </param>
         <param>
           <type>bool</type>
@@ -119,7 +119,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="c_p_i_volatility_surface_1abafd7188fd2256052647de8003c83484" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>virtual Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
@@ -142,7 +142,7 @@
         <location file="/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="99" bodyfile="/termstructures/volatility/inflation/cpivolatilitystructure.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_volatility_surface_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
@@ -154,13 +154,13 @@
         <argsstring>(const Date &amp;date, const Period &amp;obsLag=Period(-1, Days)) const </argsstring>
         <name>timeFromBase</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>obsLag</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval>Period(-1, Days)</defval>
         </param>
         <briefdescription>
 <para>base date will be in the past because of observation lag </para>        </briefdescription>
@@ -188,18 +188,18 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>

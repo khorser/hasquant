@@ -9,11 +9,11 @@
         <argsstring>(const Path &amp;path, const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
         <name>Integrand</name>
         <param>
-          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+          <type>const Path &amp;</type>
           <declname>path</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/pricingengines/forward/mcvarianceswapengine.hpp" line="324" bodyfile="/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="321" bodyend="324"/>

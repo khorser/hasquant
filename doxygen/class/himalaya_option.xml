@@ -13,7 +13,7 @@
         <argsstring>(const std::vector&lt; Date &gt; &amp;fixingDates, Real strike)</argsstring>
         <name>HimalayaOption</name>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>fixingDates</declname>
         </param>
         <param>

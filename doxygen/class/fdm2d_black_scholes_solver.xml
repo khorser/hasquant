@@ -9,11 +9,11 @@
         <argsstring>(const Handle&lt; GeneralizedBlackScholesProcess &gt; &amp;p1, const Handle&lt; GeneralizedBlackScholesProcess &gt; &amp;p2, const Real correlation, const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>Fdm2dBlackScholesSolver</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const Handle&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>p1</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const Handle&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>p2</declname>
         </param>
         <param>

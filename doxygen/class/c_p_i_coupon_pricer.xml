@@ -13,14 +13,14 @@
         <argsstring>(const Handle&lt; CPIVolatilitySurface &gt; &amp;capletVol=Handle&lt; CPIVolatilitySurface &gt;())</argsstring>
         <name>CPICouponPricer</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="c_p_i_volatility_surface" kindref="compound">CPIVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const Handle&lt; CPIVolatilitySurface &gt; &amp;</type>
           <declname>capletVol</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="c_p_i_volatility_surface" kindref="compound">CPIVolatilitySurface</ref> &gt;()</defval>
+          <defval>Handle&lt; CPIVolatilitySurface &gt;()</defval>
         </param>
         <location file="/cashflows/cpicouponpricer.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_coupon_pricer_1a0747162a07c88a75798812eb21b48d92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="c_p_i_volatility_surface" kindref="compound">CPIVolatilitySurface</ref> &gt;</type>
+        <type>Handle&lt; CPIVolatilitySurface &gt;</type>
         <definition>virtual Handle&lt;CPIVolatilitySurface&gt; capletVolatility</definition>
         <argsstring>() const </argsstring>
         <name>capletVolatility</name>
@@ -32,7 +32,7 @@
         <argsstring>(const Handle&lt; CPIVolatilitySurface &gt; &amp;capletVol)</argsstring>
         <name>setCapletVolatility</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="c_p_i_volatility_surface" kindref="compound">CPIVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const Handle&lt; CPIVolatilitySurface &gt; &amp;</type>
           <declname>capletVol</declname>
         </param>
         <location file="/cashflows/cpicouponpricer.hpp" line="49"/>

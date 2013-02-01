@@ -13,11 +13,11 @@
           <declname>exerciseTime</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Payoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="hybrid_heston_hull_white_process" kindref="compound">HybridHestonHullWhiteProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HybridHestonHullWhiteProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="100"/>
@@ -28,7 +28,7 @@
         <argsstring>(const MultiPath &amp;path) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="multi_path" kindref="compound">MultiPath</ref> &amp;</type>
+          <type>const MultiPath &amp;</type>
           <declname>path</declname>
         </param>
         <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="102"/>

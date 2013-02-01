@@ -49,7 +49,7 @@
         <location file="/models/marketmodels/correlations/expcorrelations.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="exponential_forward_correlation_1af728002c216f1dbca020531bae19a0f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Matrix &gt; &amp;</type>
         <definition>const std::vector&lt;Matrix&gt;&amp; correlations</definition>
         <argsstring>() const </argsstring>
         <name>correlations</name>

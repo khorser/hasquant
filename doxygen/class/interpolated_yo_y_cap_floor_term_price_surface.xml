@@ -12,7 +12,7 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a8f99356f853de778d6eb053615c1bdbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
@@ -21,7 +21,7 @@
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="168" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="168" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
@@ -38,14 +38,14 @@
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="176" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="176" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1ac977401fe72609c0fadd05093a4d33a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::pair&lt; std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
+        <type>std::pair&lt; std::vector&lt; Date &gt;, std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
         <definition>virtual std::pair&lt;std::vector&lt;Date&gt;, std::vector&lt;Rate&gt; &gt; atmYoYSwapDateRates</definition>
         <argsstring>() const </argsstring>
         <name>atmYoYSwapDateRates</name>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="178" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="178" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1aa190eb1cb9b0a3927a42ac74533d88f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYInflationTermStructure &gt;</type>
         <definition>virtual boost::shared_ptr&lt;YoYInflationTermStructure&gt; YoYTS</definition>
         <argsstring>() const </argsstring>
         <name>YoYTS</name>
@@ -57,7 +57,7 @@
         <argsstring>(const Date &amp;d, const Rate k) const </argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -72,7 +72,7 @@
         <argsstring>(const Date &amp;d, const Rate k) const </argsstring>
         <name>floorPrice</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -87,7 +87,7 @@
         <argsstring>(const Date &amp;d, const Rate k) const </argsstring>
         <name>capPrice</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -102,7 +102,7 @@
         <argsstring>(const Date &amp;d, bool extrapolate=true) const </argsstring>
         <name>atmYoYSwapRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -118,13 +118,13 @@
         <argsstring>(const Date &amp;d, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=true) const </argsstring>
         <name>atmYoYRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>obsLag</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval>Period(-1, Days)</defval>
         </param>
         <param>
           <type>bool</type>
@@ -162,11 +162,11 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>yyLag</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;</type>
           <declname>yii</declname>
         </param>
         <param>
@@ -174,15 +174,15 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -198,15 +198,15 @@
           <declname>fStrikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>cfMaturities</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>cPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>fPrice</declname>
         </param>
         <param>

@@ -21,7 +21,7 @@
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
+          <type>TridiagonalOperator &amp;</type>
           <declname>L</declname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="116"/>

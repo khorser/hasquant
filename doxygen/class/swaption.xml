@@ -25,7 +25,7 @@
         <location file="/instruments/swaption.hpp" line="81" bodyfile="/instruments/swaption.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="swaption_1ae5390ef3790f7cb05b6c2d7fd1cbd389" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="vanilla_swap" kindref="compound">VanillaSwap</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; VanillaSwap &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;VanillaSwap&gt;&amp; underlyingSwap</definition>
         <argsstring>() const </argsstring>
         <name>underlyingSwap</name>
@@ -39,11 +39,11 @@
         <argsstring>(const boost::shared_ptr&lt; VanillaSwap &gt; &amp;swap, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, Settlement::Type delivery=Settlement::Physical)</argsstring>
         <name>Swaption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="vanilla_swap" kindref="compound">VanillaSwap</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; VanillaSwap &gt; &amp;</type>
           <declname>swap</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>
@@ -63,7 +63,7 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -99,7 +99,7 @@
 <para>Swaption class </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000021"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
-<listitem><para>the correctness of the returned value is tested by checking that the price of a payer (resp. receiver) swaption decreases (resp. increases) with the strike.</para></listitem><listitem><para>the correctness of the returned value is tested by checking that the price of a payer (resp. receiver) swaption increases (resp. decreases) with the spread.</para></listitem><listitem><para>the correctness of the returned value is tested by checking it against that of a swaption on a swap with no spread and a correspondingly adjusted fixed rate.</para></listitem><listitem><para>the correctness of the returned value is tested by checking it against a known good value.</para></listitem><listitem><para>the correctness of the returned value of cash settled swaptions is tested by checking the modified annuity against a value calculated without using the <ref refid="swaption" kindref="compound">Swaption</ref> class.</para></listitem></itemizedlist>
+<listitem><para>the correctness of the returned value is tested by checking that the price of a payer (resp. receiver) swaption decreases (resp. increases) with the strike.</para></listitem><listitem><para>the correctness of the returned value is tested by checking that the price of a payer (resp. receiver) swaption increases (resp. decreases) with the spread.</para></listitem><listitem><para>the correctness of the returned value is tested by checking it against that of a swaption on a swap with no spread and a correspondingly adjusted fixed rate.</para></listitem><listitem><para>the correctness of the returned value is tested by checking it against a known good value.</para></listitem><listitem><para>the correctness of the returned value of cash settled swaptions is tested by checking the modified annuity against a value calculated without using the Swaption class.</para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000029"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add greeks and explicit exercise lag </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/instruments/swaption.hpp" line="66" bodyfile="/instruments/swaption.hpp" bodystart="66" bodyend="100"/>
   </compounddef>

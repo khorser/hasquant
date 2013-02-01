@@ -37,7 +37,7 @@
         <location file="/methods/finitedifferences/parallelevolver.hpp" line="78" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="parallel_evolver_traits_1a45df0d8169ed3e36b292a57d8b1dd06f" prot="public" static="no">
-        <type><ref refid="step_condition_set" kindref="compound">StepConditionSet</ref>&lt; typename traits::array_type &gt;</type>
+        <type>StepConditionSet&lt; typename traits::array_type &gt;</type>
         <definition>typedef StepConditionSet&lt;typename traits::array_type&gt; condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>

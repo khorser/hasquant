@@ -61,7 +61,7 @@
             <type>class I2</type>
           </param>
         </templateparamlist>
-        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
+        <type>Interpolation</type>
         <definition>Interpolation interpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin) const </argsstring>
         <name>interpolate</name>
@@ -88,7 +88,7 @@
             <type>class I2</type>
           </param>
         </templateparamlist>
-        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
+        <type>Interpolation</type>
         <definition>Interpolation localInterpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, Size localisation, Interpolation &amp;prevInterpolation, Size finalSize) const </argsstring>
         <name>localInterpolate</name>
@@ -109,7 +109,7 @@
           <declname>localisation</declname>
         </param>
         <param>
-          <type><ref refid="interpolation" kindref="compound">Interpolation</ref> &amp;</type>
+          <type>Interpolation &amp;</type>
           <declname>prevInterpolation</declname>
         </param>
         <param>

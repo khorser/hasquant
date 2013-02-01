@@ -9,7 +9,7 @@
         <enumvalue id="taiwan_1abe41cfffd960e29a5d8b07be00aeda42ab8e0eb69f1ae75207887641754e1a6cf" prot="public">
           <name>TSEC</name>
           <briefdescription>
-<para><ref refid="taiwan" kindref="compound">Taiwan</ref> stock exchange. </para>          </briefdescription>
+<para>Taiwan stock exchange. </para>          </briefdescription>
         </enumvalue>
         <location file="/time/calendars/taiwan.hpp" line="64" bodyfile="/time/calendars/taiwan.hpp" bodystart="64" bodyend="65"/>
       </memberdef>
@@ -31,7 +31,7 @@
     <briefdescription>
 <para>Taiwanese calendars. </para>    </briefdescription>
     <detaileddescription>
-<para>Holidays for the <ref refid="taiwan" kindref="compound">Taiwan</ref> stock exchange (data from <ulink url="http://www.tse.com.tw/en/trading/trading_days.php">http://www.tse.com.tw/en/trading/trading_days.php</ulink>): <itemizedlist>
+<para>Holidays for the Taiwan stock exchange (data from <ulink url="http://www.tse.com.tw/en/trading/trading_days.php">http://www.tse.com.tw/en/trading/trading_days.php</ulink>): <itemizedlist>
 <listitem>
 <para>Saturdays </para></listitem>
 <listitem>

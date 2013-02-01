@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; BatesProcess &gt; &amp;process)</argsstring>
         <name>BatesModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="bates_process" kindref="compound">BatesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BatesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/models/equity/batesmodel.hpp" line="45"/>

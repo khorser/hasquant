@@ -25,14 +25,14 @@
         <location file="/instruments/vanillastorageoption.hpp" line="75" bodyfile="/instruments/vanillastorageoption.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_storage_option_1_1arguments_1a836af412aa7d7c7465c2f3650774173d" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="null_payoff" kindref="compound">NullPayoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; NullPayoff &gt;</type>
         <definition>boost::shared_ptr&lt;NullPayoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
         <location file="/instruments/vanillastorageoption.hpp" line="76" bodyfile="/instruments/vanillastorageoption.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_storage_option_1_1arguments_1aaa4d302145955765f8141768c7d194f9" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="bermudan_exercise" kindref="compound">BermudanExercise</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; BermudanExercise &gt;</type>
         <definition>boost::shared_ptr&lt;BermudanExercise&gt; exercise</definition>
         <argsstring></argsstring>
         <name>exercise</name>

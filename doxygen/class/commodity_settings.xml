@@ -5,14 +5,14 @@
     <includes local="no">/experimental/commodities/commoditysettings.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="commodity_settings_1ab5f787ad2b8ed122b99ff06a08333d7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>Currency &amp;</type>
         <definition>Currency&amp; currency</definition>
         <argsstring>()</argsstring>
         <name>currency</name>
         <location file="/experimental/commodities/commoditysettings.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="commodity_settings_1adf4b5f459e5fd38f36759f17d4d0cd68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        <type>UnitOfMeasure &amp;</type>
         <definition>UnitOfMeasure&amp; unitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>unitOfMeasure</name>

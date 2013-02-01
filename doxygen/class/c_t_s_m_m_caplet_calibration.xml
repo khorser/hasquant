@@ -16,7 +16,7 @@
         <argsstring>(const EvolutionDescription &amp;evolution, const boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt; &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;mktCapletVols, const boost::shared_ptr&lt; CurveState &gt; &amp;cs, Spread displacement)</argsstring>
         <name>CTSMMCapletCalibration</name>
         <param>
-          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const EvolutionDescription &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>
@@ -32,7 +32,7 @@
           <declname>mktCapletVols</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CurveState &gt; &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -113,14 +113,14 @@
         <location file="/models/marketmodels/models/ctsmmcapletcalibration.hpp" line="62" bodyfile="/models/marketmodels/models/ctsmmcapletcalibration.hpp" bodystart="164" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="c_t_s_m_m_caplet_calibration_1a7b8b438889bf94cdbd029fcc8bea7a35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Matrix &gt; &amp;</type>
         <definition>const std::vector&lt; Matrix &gt; &amp; swapPseudoRoots</definition>
         <argsstring>() const </argsstring>
         <name>swapPseudoRoots</name>
         <location file="/models/marketmodels/models/ctsmmcapletcalibration.hpp" line="64" bodyfile="/models/marketmodels/models/ctsmmcapletcalibration.hpp" bodystart="170" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="c_t_s_m_m_caplet_calibration_1a0e951d99e728600541318b483549cbab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix &amp; swapPseudoRoot</definition>
         <argsstring>(Size i) const </argsstring>
         <name>swapPseudoRoot</name>
@@ -181,7 +181,7 @@
         <location file="/models/marketmodels/models/ctsmmcapletcalibration.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="c_t_s_m_m_caplet_calibration_1a11cc5e4f624a9d4634e25cb1c167d555" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; CurveState &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; CurveState &gt; &amp; curveState</definition>
         <argsstring>() const </argsstring>
         <name>curveState</name>
@@ -202,7 +202,7 @@
         <argsstring>(const EvolutionDescription &amp;evolution, const PiecewiseConstantCorrelation &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;mktCapletVols, const CurveState &amp;cs)</argsstring>
         <name>performChecks</name>
         <param>
-          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const EvolutionDescription &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>
@@ -218,7 +218,7 @@
           <declname>mktCapletVols</declname>
         </param>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <location file="/models/marketmodels/models/ctsmmcapletcalibration.hpp" line="82"/>

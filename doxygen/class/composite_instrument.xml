@@ -13,7 +13,7 @@
         <argsstring>(const boost::shared_ptr&lt; Instrument &gt; &amp;instrument, Real multiplier=1.0)</argsstring>
         <name>add</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="instrument" kindref="compound">Instrument</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Instrument &gt; &amp;</type>
           <declname>instrument</declname>
         </param>
         <param>
@@ -31,7 +31,7 @@
         <argsstring>(const boost::shared_ptr&lt; Instrument &gt; &amp;instrument, Real multiplier=1.0)</argsstring>
         <name>subtract</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="instrument" kindref="compound">Instrument</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Instrument &gt; &amp;</type>
           <declname>instrument</declname>
         </param>
         <param>
@@ -47,7 +47,7 @@
     <briefdescription>
 <para>Composite instrument </para>    </briefdescription>
     <detaileddescription>
-<para>This instrument is an aggregate of other instruments. Its NPV is the sum of the NPVs of its components, each possibly multiplied by a given factor.</para><para><bold>Example: </bold> <ref refid="_replication_8cpp-example" kindref="compound">static replication of a down-and-out barrier option </ref></para><para><xrefsect id="caveats_1_caveats000052"><xreftitle>Warning</xreftitle><xrefdescription><para>Methods that drive the calculation directly (such as <ref refid="lazy_object_1a467a786be42a2165aa15a26709674547" kindref="member">recalculate()</ref>, <ref refid="lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" kindref="member">freeze()</ref> and others) might not work correctly.</para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>This instrument is an aggregate of other instruments. Its NPV is the sum of the NPVs of its components, each possibly multiplied by a given factor.</para><para><bold>Example: </bold> static replication of a down-and-out barrier option </para><para><xrefsect id="caveats_1_caveats000052"><xreftitle>Warning</xreftitle><xrefdescription><para>Methods that drive the calculation directly (such as <ref refid="lazy_object_1a467a786be42a2165aa15a26709674547" kindref="member">recalculate()</ref>, <ref refid="lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" kindref="member">freeze()</ref> and others) might not work correctly.</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/instruments/compositeinstrument.hpp" line="49" bodyfile="/instruments/compositeinstrument.hpp" bodystart="49" bodyend="68"/>
   </compounddef>
 </doxygen>

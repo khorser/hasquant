@@ -11,13 +11,13 @@
         <argsstring>(const boost::shared_ptr&lt; FloatingRateCoupon &gt; &amp;underlying, Rate callStrike=Null&lt; Rate &gt;(), Position::Type callPosition=Position::Long, bool isCallITMIncluded=false, Rate callDigitalPayoff=Null&lt; Rate &gt;(), Rate putStrike=Null&lt; Rate &gt;(), Position::Type putPosition=Position::Long, bool isPutITMIncluded=false, Rate putDigitalPayoff=Null&lt; Rate &gt;(), const boost::shared_ptr&lt; DigitalReplication &gt; &amp;replication=boost::shared_ptr&lt; DigitalReplication &gt;())</argsstring>
         <name>DigitalCoupon</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; FloatingRateCoupon &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>callStrike</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -32,12 +32,12 @@
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>callDigitalPayoff</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>putStrike</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -52,7 +52,7 @@
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>putDigitalPayoff</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>const boost::shared_ptr&lt; DigitalReplication &gt; &amp;</type>
@@ -133,7 +133,7 @@
         <location file="/cashflows/digitalcoupon.hpp" line="112" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="112" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="digital_coupon_1a1db4a23ccbe6bf105c49a94b464649ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; FloatingRateCoupon &gt;</type>
         <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; underlying</definition>
         <argsstring>() const </argsstring>
         <name>underlying</name>
@@ -169,7 +169,7 @@
         <argsstring>(const boost::shared_ptr&lt; FloatingRateCouponPricer &gt; &amp;pricer)</argsstring>
         <name>setPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; FloatingRateCouponPricer &gt; &amp;</type>
           <declname>pricer</declname>
         </param>
         <location file="/cashflows/digitalcoupon.hpp" line="132" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="131" bodyend="140"/>
@@ -178,7 +178,7 @@
       <sectiondef kind="user-defined">
       <header>Data members</header>
       <memberdef kind="variable" id="digital_coupon_1a8f7dfb713dc9e9d2850445f1db36784d" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; FloatingRateCoupon &gt;</type>
         <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; underlying_</definition>
         <argsstring></argsstring>
         <name>underlying_</name>
@@ -334,7 +334,7 @@
 <para>Digital-payoff coupon. </para>    </briefdescription>
     <detaileddescription>
 <para>Implementation of a floating-rate coupon with digital call/put option. Payoffs:<itemizedlist>
-<listitem><para><ref refid="coupon" kindref="compound">Coupon</ref> with cash-or-nothing Digital Call rate + csi * payoffRate * Heaviside(rate-strike)</para></listitem><listitem><para><ref refid="coupon" kindref="compound">Coupon</ref> with cash-or-nothing Digital Put rate + csi * payoffRate * Heaviside(strike-rate) where csi=+1 or csi=-1.</para></listitem><listitem><para><ref refid="coupon" kindref="compound">Coupon</ref> with asset-or-nothing Digital Call rate + csi * rate * Heaviside(rate-strike)</para></listitem><listitem><para><ref refid="coupon" kindref="compound">Coupon</ref> with asset-or-nothing Digital Put rate + csi * rate * Heaviside(strike-rate) where csi=+1 or csi=-1. The evaluation of the coupon is made using the call/put spread replication method.</para></listitem></itemizedlist>
+<listitem><para>Coupon with cash-or-nothing Digital Call rate + csi * payoffRate * Heaviside(rate-strike)</para></listitem><listitem><para>Coupon with cash-or-nothing Digital Put rate + csi * payoffRate * Heaviside(strike-rate) where csi=+1 or csi=-1.</para></listitem><listitem><para>Coupon with asset-or-nothing Digital Call rate + csi * rate * Heaviside(rate-strike)</para></listitem><listitem><para>Coupon with asset-or-nothing Digital Put rate + csi * rate * Heaviside(strike-rate) where csi=+1 or csi=-1. The evaluation of the coupon is made using the call/put spread replication method.</para></listitem></itemizedlist>
 </para><para><xrefsect id="test_1_test000001"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the returned value in case of Asset-or-nothing embedded option is tested by pricing the digital option with Cox-Rubinstein formula.</para></listitem><listitem><para>the correctness of the returned value in case of deep-in-the-money Asset-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value in case of deep-out-of-the-money Asset-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value in case of Cash-or-nothing embedded option is tested by pricing the digital option with Reiner-Rubinstein formula.</para></listitem><listitem><para>the correctness of the returned value in case of deep-in-the-money Cash-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value in case of deep-out-of-the-money Cash-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value is tested checking the correctness of the call-put parity relation.</para></listitem><listitem><para>the correctness of the returned value is tested by the relationship between prices in case of different replication types. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>

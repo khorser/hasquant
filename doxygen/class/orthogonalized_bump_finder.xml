@@ -10,7 +10,7 @@
         <argsstring>(const VegaBumpCollection &amp;bumps, const std::vector&lt; VolatilityBumpInstrumentJacobian::Swaption &gt; &amp;swaptions, const std::vector&lt; VolatilityBumpInstrumentJacobian::Cap &gt; &amp;caps, Real multiplierCutOff, Real tolerance)</argsstring>
         <name>OrthogonalizedBumpFinder</name>
         <param>
-          <type>const <ref refid="vega_bump_collection" kindref="compound">VegaBumpCollection</ref> &amp;</type>
+          <type>const VegaBumpCollection &amp;</type>
           <declname>bumps</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
         <argsstring>(std::vector&lt; std::vector&lt; Matrix &gt; &gt; &amp;theBumps) const </argsstring>
         <name>GetVegaBumps</name>
         <param>
-          <type>std::vector&lt; std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &gt; &amp;</type>
+          <type>std::vector&lt; std::vector&lt; Matrix &gt; &gt; &amp;</type>
           <declname>theBumps</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="98"/>

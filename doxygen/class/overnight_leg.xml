@@ -10,7 +10,7 @@
         <argsstring>(const Schedule &amp;schedule, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex)</argsstring>
         <name>OvernightLeg</name>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -20,7 +20,7 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="overnight_leg_1a954d7062f691b09137f603313072fb67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
+        <type>OvernightLeg &amp;</type>
         <definition>OvernightLeg&amp; withNotionals</definition>
         <argsstring>(Real notional)</argsstring>
         <name>withNotionals</name>
@@ -31,7 +31,7 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="overnight_leg_1ad20f30781169e7d8be80850e1b15f56c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
+        <type>OvernightLeg &amp;</type>
         <definition>OvernightLeg&amp; withNotionals</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;notionals)</argsstring>
         <name>withNotionals</name>
@@ -42,17 +42,17 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="overnight_leg_1a4b0d6efb1a95c449ed5994e5fdcf7c15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
+        <type>OvernightLeg &amp;</type>
         <definition>OvernightLeg&amp; withPaymentDayCounter</definition>
         <argsstring>(const DayCounter &amp;)</argsstring>
         <name>withPaymentDayCounter</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="overnight_leg_1a971303426f9ee1359c70606da4f9532d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
+        <type>OvernightLeg &amp;</type>
         <definition>OvernightLeg&amp; withPaymentAdjustment</definition>
         <argsstring>(BusinessDayConvention)</argsstring>
         <name>withPaymentAdjustment</name>
@@ -62,7 +62,7 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="overnight_leg_1aa4fa5769c78113252005d88f2c24495a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
+        <type>OvernightLeg &amp;</type>
         <definition>OvernightLeg&amp; withGearings</definition>
         <argsstring>(Real gearing)</argsstring>
         <name>withGearings</name>
@@ -73,7 +73,7 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="86"/>
       </memberdef>
       <memberdef kind="function" id="overnight_leg_1a74380acd3a06b9a885c98d01a074ccbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
+        <type>OvernightLeg &amp;</type>
         <definition>OvernightLeg&amp; withGearings</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;gearings)</argsstring>
         <name>withGearings</name>
@@ -84,7 +84,7 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="overnight_leg_1a03805897879fa9730f9474c2303a4256" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
+        <type>OvernightLeg &amp;</type>
         <definition>OvernightLeg&amp; withSpreads</definition>
         <argsstring>(Spread spread)</argsstring>
         <name>withSpreads</name>
@@ -95,7 +95,7 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="overnight_leg_1ae368fa53eff56c115cb862a5bae1c7bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="overnight_leg" kindref="compound">OvernightLeg</ref> &amp;</type>
+        <type>OvernightLeg &amp;</type>
         <definition>OvernightLeg&amp; withSpreads</definition>
         <argsstring>(const std::vector&lt; Spread &gt; &amp;spreads)</argsstring>
         <name>withSpreads</name>

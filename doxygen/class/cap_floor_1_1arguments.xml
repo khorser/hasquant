@@ -12,21 +12,21 @@
         <location file="/instruments/capfloor.hpp" line="135" bodyfile="/instruments/capfloor.hpp" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1a27cae0532e21df9fdf326d2ea687af69" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; startDates</definition>
         <argsstring></argsstring>
         <name>startDates</name>
         <location file="/instruments/capfloor.hpp" line="136" bodyfile="/instruments/capfloor.hpp" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>
         <location file="/instruments/capfloor.hpp" line="137" bodyfile="/instruments/capfloor.hpp" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1a8be7e00abf2e5251c392c915576e4595" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; endDates</definition>
         <argsstring></argsstring>
         <name>endDates</name>

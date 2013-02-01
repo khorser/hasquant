@@ -59,27 +59,27 @@
         <location file="/time/period.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="period_1a9828487974fb5befd359451a88c4a29c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref> &amp;</type>
+        <type>Period &amp;</type>
         <definition>Period&amp; operator+=</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>operator+=</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="period_1a9ce1050a6b6eb2e1963a77af54595b92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref> &amp;</type>
+        <type>Period &amp;</type>
         <definition>Period&amp; operator-=</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>operator-=</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="period_1ac85d3ca81816b69f1643c1bc6b1f2c73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref> &amp;</type>
+        <type>Period &amp;</type>
         <definition>Period&amp; operator/=</definition>
         <argsstring>(Integer)</argsstring>
         <name>operator/=</name>
@@ -103,7 +103,7 @@
         <argsstring>(const Period &amp;)</argsstring>
         <name>years</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="64"/>
       </memberdef>
@@ -113,7 +113,7 @@
         <argsstring>(const Period &amp;)</argsstring>
         <name>months</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="66"/>
       </memberdef>
@@ -123,7 +123,7 @@
         <argsstring>(const Period &amp;)</argsstring>
         <name>weeks</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="68"/>
       </memberdef>
@@ -133,7 +133,7 @@
         <argsstring>(const Period &amp;)</argsstring>
         <name>days</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="70"/>
       </memberdef>
@@ -143,7 +143,7 @@
             <type>typename T</type>
           </param>
         </templateparamlist>
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period operator*</definition>
         <argsstring>(T n, TimeUnit units)</argsstring>
         <name>operator*</name>
@@ -163,7 +163,7 @@
             <type>typename T</type>
           </param>
         </templateparamlist>
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period operator*</definition>
         <argsstring>(TimeUnit units, T n)</argsstring>
         <name>operator*</name>
@@ -178,17 +178,17 @@
         <location file="/time/period.hpp" line="75" bodyfile="/time/period.hpp" bodystart="145" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="period_1a5fd528466f1b41de52d892efff387880" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period operator-</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>operator-</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="78" bodyfile="/time/period.hpp" bodystart="149" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="period_1a180303cf15f77ffa79f9b538d9d53585" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period operator*</definition>
         <argsstring>(Integer n, const Period &amp;)</argsstring>
         <name>operator*</name>
@@ -197,17 +197,17 @@
           <declname>n</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="81" bodyfile="/time/period.hpp" bodystart="153" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="period_1adea95d933011d667b70490b0ecbf4642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period operator*</definition>
         <argsstring>(const Period &amp;, Integer n)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
@@ -216,12 +216,12 @@
         <location file="/time/period.hpp" line="83" bodyfile="/time/period.hpp" bodystart="157" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="period_1a0d21ac755a75c581ad757b81ed775841" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period operator/</definition>
         <argsstring>(const Period &amp;, Integer n)</argsstring>
         <name>operator/</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
@@ -230,28 +230,28 @@
         <location file="/time/period.hpp" line="86"/>
       </memberdef>
       <memberdef kind="function" id="period_1a90976f7bfed01855ca09c29295fe6f75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period operator+</definition>
         <argsstring>(const Period &amp;, const Period &amp;)</argsstring>
         <name>operator+</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="period_1ad2cf128e5a3ad32209f6ba15af554d07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period operator-</definition>
         <argsstring>(const Period &amp;, const Period &amp;)</argsstring>
         <name>operator-</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="91"/>
       </memberdef>
@@ -261,10 +261,10 @@
         <argsstring>(const Period &amp;, const Period &amp;)</argsstring>
         <name>operator&lt;</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="94"/>
       </memberdef>
@@ -274,10 +274,10 @@
         <argsstring>(const Period &amp;, const Period &amp;)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="96" bodyfile="/time/period.hpp" bodystart="161" bodyend="163"/>
       </memberdef>
@@ -287,10 +287,10 @@
         <argsstring>(const Period &amp;, const Period &amp;)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="98" bodyfile="/time/period.hpp" bodystart="165" bodyend="167"/>
       </memberdef>
@@ -300,10 +300,10 @@
         <argsstring>(const Period &amp;, const Period &amp;)</argsstring>
         <name>operator&gt;</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="100" bodyfile="/time/period.hpp" bodystart="169" bodyend="171"/>
       </memberdef>
@@ -313,10 +313,10 @@
         <argsstring>(const Period &amp;, const Period &amp;)</argsstring>
         <name>operator&lt;=</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="102" bodyfile="/time/period.hpp" bodystart="173" bodyend="175"/>
       </memberdef>
@@ -326,10 +326,10 @@
         <argsstring>(const Period &amp;, const Period &amp;)</argsstring>
         <name>operator&gt;=</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="104" bodyfile="/time/period.hpp" bodystart="177" bodyend="179"/>
       </memberdef>
@@ -342,13 +342,13 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <location file="/time/period.hpp" line="107"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>This class provides a <ref refid="period" kindref="compound">Period</ref> (length + TimeUnit) class and implements a limited algebra.</para><para><xrefsect id="test_1_test000156"><xreftitle>Tests</xreftitle><xrefdescription><para>self-consistency of algebra is checked. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>This class provides a Period (length + TimeUnit) class and implements a limited algebra.</para><para><xrefsect id="test_1_test000156"><xreftitle>Tests</xreftitle><xrefdescription><para>self-consistency of algebra is checked. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/time/period.hpp" line="44" bodyfile="/time/period.hpp" bodystart="44" bodyend="61"/>
   </compounddef>
 </doxygen>

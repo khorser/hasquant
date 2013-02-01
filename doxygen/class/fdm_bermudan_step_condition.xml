@@ -9,15 +9,15 @@
         <argsstring>(const std::vector&lt; Date &gt; &amp;exerciseDates, const Date &amp;referenceDate, const DayCounter &amp;dayCounter, const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;calculator)</argsstring>
         <name>FdmBermudanStepCondition</name>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>exerciseDates</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -36,7 +36,7 @@
         <argsstring>(Array &amp;a, Time t) const </argsstring>
         <name>applyTo</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>a</declname>
         </param>
         <param>

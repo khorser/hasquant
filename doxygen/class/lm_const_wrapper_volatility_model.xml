@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; LmVolatilityModel &gt; &amp;volaModel)</argsstring>
         <name>LmConstWrapperVolatilityModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="lm_volatility_model" kindref="compound">LmVolatilityModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LmVolatilityModel &gt; &amp;</type>
           <declname>volaModel</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="37" bodyfile="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="34" bodyend="38"/>
@@ -29,9 +29,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="45" bodyfile="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="44" bodyend="47"/>
       </memberdef>

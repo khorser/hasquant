@@ -30,7 +30,7 @@
         <location file="/quotes/futuresconvadjustmentquote.hpp" line="59" bodyfile="/quotes/futuresconvadjustmentquote.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="futures_conv_adjustment_quote_1aa93c5c7968992525a9492f57af367a66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date immDate</definition>
         <argsstring>() const </argsstring>
         <name>immDate</name>
@@ -44,23 +44,23 @@
         <argsstring>(const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const Date &amp;futuresDate, const Handle&lt; Quote &gt; &amp;futuresQuote, const Handle&lt; Quote &gt; &amp;volatility, const Handle&lt; Quote &gt; &amp;meanReversion)</argsstring>
         <name>FuturesConvAdjustmentQuote</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>futuresDate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>futuresQuote</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
         <location file="/quotes/futuresconvadjustmentquote.hpp" line="43"/>
@@ -71,7 +71,7 @@
         <argsstring>(const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const std::string &amp;immCode, const Handle&lt; Quote &gt; &amp;futuresQuote, const Handle&lt; Quote &gt; &amp;volatility, const Handle&lt; Quote &gt; &amp;meanReversion)</argsstring>
         <name>FuturesConvAdjustmentQuote</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -79,15 +79,15 @@
           <declname>immCode</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>futuresQuote</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
         <location file="/quotes/futuresconvadjustmentquote.hpp" line="48"/>

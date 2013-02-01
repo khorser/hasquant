@@ -25,14 +25,14 @@
         <location file="/models/marketmodels/piecewiseconstantcorrelation.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_constant_correlation_1ab327bb2b2562291f7fe1b4052b86683f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Matrix &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Matrix&gt;&amp; correlations</definition>
         <argsstring>() const =0</argsstring>
         <name>correlations</name>
         <location file="/models/marketmodels/piecewiseconstantcorrelation.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_constant_correlation_1ae08bef1d9e2af46227740be2eed7bd98" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix &amp; correlation</definition>
         <argsstring>(Size i) const </argsstring>
         <name>correlation</name>

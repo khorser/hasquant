@@ -10,7 +10,7 @@
         <argsstring>(const Array &amp;grid)</argsstring>
         <name>TransformedGrid</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>grid</declname>
         </param>
         <location file="/math/transformedgrid.hpp" line="42" bodyfile="/math/transformedgrid.hpp" bodystart="39" bodyend="48"/>
@@ -26,7 +26,7 @@
         <argsstring>(const Array &amp;grid, T func)</argsstring>
         <name>TransformedGrid</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>grid</declname>
         </param>
         <param>
@@ -36,35 +36,35 @@
         <location file="/math/transformedgrid.hpp" line="53" bodyfile="/math/transformedgrid.hpp" bodystart="50" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="transformed_grid_1a4cbd77ed1c746ea552adcac3904183e5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; gridArray</definition>
         <argsstring>() const </argsstring>
         <name>gridArray</name>
         <location file="/math/transformedgrid.hpp" line="64" bodyfile="/math/transformedgrid.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="transformed_grid_1a35ee316e8ba9d310da256d231e73206a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; transformedGridArray</definition>
         <argsstring>() const </argsstring>
         <name>transformedGridArray</name>
         <location file="/math/transformedgrid.hpp" line="65" bodyfile="/math/transformedgrid.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="transformed_grid_1ad37ef3486c3243b1fbc64f3ea94e279c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; dxmArray</definition>
         <argsstring>() const </argsstring>
         <name>dxmArray</name>
         <location file="/math/transformedgrid.hpp" line="66" bodyfile="/math/transformedgrid.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="transformed_grid_1a084b84fde047bdb650ef9b5a4a858a6f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; dxpArray</definition>
         <argsstring>() const </argsstring>
         <name>dxpArray</name>
         <location file="/math/transformedgrid.hpp" line="67" bodyfile="/math/transformedgrid.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="transformed_grid_1a0698254851435078ed50e193625f8e9d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; dxArray</definition>
         <argsstring>() const </argsstring>
         <name>dxArray</name>

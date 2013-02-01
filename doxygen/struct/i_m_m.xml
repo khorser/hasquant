@@ -64,7 +64,7 @@
         <argsstring>(const Date &amp;d, bool mainCycle=true)</argsstring>
         <name>isIMMdate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -73,7 +73,7 @@
           <defval>true</defval>
         </param>
         <briefdescription>
-<para>returns whether or not the given date is an <ref refid="i_m_m" kindref="compound">IMM</ref> date </para>        </briefdescription>
+<para>returns whether or not the given date is an IMM date </para>        </briefdescription>
         <location file="/time/imm.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="i_m_m_1ab6d053800ac6c4ad18679ff5110ab246" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -91,7 +91,7 @@
           <defval>true</defval>
         </param>
         <briefdescription>
-<para>returns whether or not the given string is an <ref refid="i_m_m" kindref="compound">IMM</ref> code </para>        </briefdescription>
+<para>returns whether or not the given string is an IMM code </para>        </briefdescription>
         <location file="/time/imm.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="i_m_m_1a90d63902ee5320a0154faa1b142fabcc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -100,15 +100,15 @@
         <argsstring>(const Date &amp;immDate)</argsstring>
         <name>code</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>immDate</declname>
         </param>
         <detaileddescription>
-<para>returns the <ref refid="i_m_m" kindref="compound">IMM</ref> code for the given date (e.g. H3 for March 20th, 2013).</para><para><xrefsect id="caveats_1_caveats000150"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input date is not an <ref refid="i_m_m" kindref="compound">IMM</ref> date </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para>returns the IMM code for the given date (e.g. H3 for March 20th, 2013).</para><para><xrefsect id="caveats_1_caveats000150"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input date is not an IMM date </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/time/imm.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="i_m_m_1a6aa71cceab1d7bb39412a8902ff70dbd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date date</definition>
         <argsstring>(const std::string &amp;immCode, const Date &amp;referenceDate=Date())</argsstring>
         <name>date</name>
@@ -117,23 +117,23 @@
           <declname>immCode</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <detaileddescription>
-<para>returns the <ref refid="i_m_m" kindref="compound">IMM</ref> date for the given <ref refid="i_m_m" kindref="compound">IMM</ref> code (e.g. March 20th, 2013 for H3).</para><para><xrefsect id="caveats_1_caveats000151"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input string is not an <ref refid="i_m_m" kindref="compound">IMM</ref> code </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para>returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3).</para><para><xrefsect id="caveats_1_caveats000151"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input string is not an IMM code </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/time/imm.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="i_m_m_1aad3aaf173e23fe9679595fbfafb41414" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date nextDate</definition>
         <argsstring>(const Date &amp;d=Date(), bool mainCycle=true)</argsstring>
         <name>nextDate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type>bool</type>
@@ -141,13 +141,13 @@
           <defval>true</defval>
         </param>
         <briefdescription>
-<para>next <ref refid="i_m_m" kindref="compound">IMM</ref> date following the given date </para>        </briefdescription>
+<para>next IMM date following the given date </para>        </briefdescription>
         <detaileddescription>
-<para>returns the 1st delivery date for next contract listed in the International <ref refid="money" kindref="compound">Money</ref> Market section of the Chicago Mercantile Exchange. </para>        </detaileddescription>
+<para>returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange. </para>        </detaileddescription>
         <location file="/time/imm.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="i_m_m_1a0793cb693a65b78ad1b36a78dc28e1b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date nextDate</definition>
         <argsstring>(const std::string &amp;immCode, bool mainCycle=true, const Date &amp;referenceDate=Date())</argsstring>
         <name>nextDate</name>
@@ -161,14 +161,14 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
-<para>next <ref refid="i_m_m" kindref="compound">IMM</ref> date following the given <ref refid="i_m_m" kindref="compound">IMM</ref> code </para>        </briefdescription>
+<para>next IMM date following the given IMM code </para>        </briefdescription>
         <detaileddescription>
-<para>returns the 1st delivery date for next contract listed in the International <ref refid="money" kindref="compound">Money</ref> Market section of the Chicago Mercantile Exchange. </para>        </detaileddescription>
+<para>returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange. </para>        </detaileddescription>
         <location file="/time/imm.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="i_m_m_1a46da657ca945bd17e5ff04efbb45699c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -177,9 +177,9 @@
         <argsstring>(const Date &amp;d=Date(), bool mainCycle=true)</argsstring>
         <name>nextCode</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type>bool</type>
@@ -187,9 +187,9 @@
           <defval>true</defval>
         </param>
         <briefdescription>
-<para>next <ref refid="i_m_m" kindref="compound">IMM</ref> code following the given date </para>        </briefdescription>
+<para>next IMM code following the given date </para>        </briefdescription>
         <detaileddescription>
-<para>returns the <ref refid="i_m_m" kindref="compound">IMM</ref> code for next contract listed in the International <ref refid="money" kindref="compound">Money</ref> Market section of the Chicago Mercantile Exchange. </para>        </detaileddescription>
+<para>returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange. </para>        </detaileddescription>
         <location file="/time/imm.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="i_m_m_1a7896e75ae60945b480e6ef2582b836d6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -207,14 +207,14 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
-<para>next <ref refid="i_m_m" kindref="compound">IMM</ref> code following the given code </para>        </briefdescription>
+<para>next IMM code following the given code </para>        </briefdescription>
         <detaileddescription>
-<para>returns the <ref refid="i_m_m" kindref="compound">IMM</ref> code for next contract listed in the International <ref refid="money" kindref="compound">Money</ref> Market section of the Chicago Mercantile Exchange. </para>        </detaileddescription>
+<para>returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange. </para>        </detaileddescription>
         <location file="/time/imm.hpp" line="98"/>
       </memberdef>
       </sectiondef>

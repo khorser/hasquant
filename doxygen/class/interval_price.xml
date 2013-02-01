@@ -87,12 +87,12 @@
       <sectiondef kind="user-defined">
       <header>Helper functions</header>
       <memberdef kind="function" id="interval_price_1aa65c06d1f48a093f170765f5cb0d5d1a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="interval_price" kindref="compound">IntervalPrice</ref> &gt;</type>
+        <type>TimeSeries&lt; IntervalPrice &gt;</type>
         <definition>static TimeSeries&lt;IntervalPrice&gt; makeSeries</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;d, const std::vector&lt; Real &gt; &amp;open, const std::vector&lt; Real &gt; &amp;close, const std::vector&lt; Real &gt; &amp;high, const std::vector&lt; Real &gt; &amp;low)</argsstring>
         <name>makeSeries</name>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -119,7 +119,7 @@
         <argsstring>(const TimeSeries&lt; IntervalPrice &gt; &amp;, IntervalPrice::Type)</argsstring>
         <name>extractValues</name>
         <param>
-          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; IntervalPrice &gt; &amp;</type>
         </param>
         <param>
           <type>IntervalPrice::Type</type>
@@ -127,12 +127,12 @@
         <location file="/prices.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="interval_price_1aa2975db12f512e672d6f5180295464e1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>static TimeSeries&lt;Real&gt; extractComponent</definition>
         <argsstring>(const TimeSeries&lt; IntervalPrice &gt; &amp;, enum IntervalPrice::Type)</argsstring>
         <name>extractComponent</name>
         <param>
-          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; IntervalPrice &gt; &amp;</type>
         </param>
         <param>
           <type>enum IntervalPrice::Type</type>

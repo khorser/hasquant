@@ -28,7 +28,7 @@
         <argsstring>(const MultiPath &amp;multiPath) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="multi_path" kindref="compound">MultiPath</ref> &amp;</type>
+          <type>const MultiPath &amp;</type>
           <declname>multiPath</declname>
         </param>
         <location file="/experimental/exoticoptions/mcpagodaengine.hpp" line="117"/>

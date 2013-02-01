@@ -4,7 +4,7 @@
     <compoundname>QuantLib::SyntheticCDO::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="synthetic_c_d_o_1_1arguments_1a0d68fd6434b749c23eea28b12007b58a" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="basket" kindref="compound">Basket</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Basket &gt;</type>
         <definition>boost::shared_ptr&lt;Basket&gt; basket</definition>
         <argsstring></argsstring>
         <name>basket</name>
@@ -18,7 +18,7 @@
         <location file="/experimental/credit/syntheticcdo.hpp" line="166" bodyfile="/experimental/credit/syntheticcdo.hpp" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="synthetic_c_d_o_1_1arguments_1abcc78c7bb6b0af62152d52d5f11d620e" prot="public" static="no" mutable="no">
-        <type><ref refid="schedule" kindref="compound">Schedule</ref></type>
+        <type>Schedule</type>
         <definition>Schedule schedule</definition>
         <argsstring></argsstring>
         <name>schedule</name>
@@ -39,7 +39,7 @@
         <location file="/experimental/credit/syntheticcdo.hpp" line="169" bodyfile="/experimental/credit/syntheticcdo.hpp" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="synthetic_c_d_o_1_1arguments_1a51b76afe33f9f1374698265867954ac8" prot="public" static="no" mutable="no">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
+        <type>DayCounter</type>
         <definition>DayCounter dayCounter</definition>
         <argsstring></argsstring>
         <name>dayCounter</name>
@@ -53,7 +53,7 @@
         <location file="/experimental/credit/syntheticcdo.hpp" line="171" bodyfile="/experimental/credit/syntheticcdo.hpp" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="synthetic_c_d_o_1_1arguments_1a976857a811f2d9fb19d781b796097d1b" prot="public" static="no" mutable="no">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YieldTermStructure &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; yieldTS</definition>
         <argsstring></argsstring>
         <name>yieldTS</name>

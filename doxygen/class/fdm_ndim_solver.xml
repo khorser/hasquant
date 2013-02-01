@@ -11,7 +11,7 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="fdm_ndim_solver_1a3e5ea47905d0d844f0669cc99601d97a" prot="public" static="no">
-        <type><ref refid="multi_cubic_spline" kindref="compound">MultiCubicSpline</ref>&lt; N &gt;::data_table</type>
+        <type>MultiCubicSpline&lt; N &gt;::data_table</type>
         <definition>typedef MultiCubicSpline&lt;N&gt;::data_table data_table</definition>
         <argsstring></argsstring>
         <name>data_table</name>

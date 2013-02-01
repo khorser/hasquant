@@ -10,7 +10,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real theta, Real k, Real sigma, Real x0)</argsstring>
         <name>FittingParameter</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>

@@ -28,14 +28,14 @@
         <location file="/methods/montecarlo/mctraits.hpp" line="51" bodyfile="/methods/montecarlo/mctraits.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="multi_variate_1a16e486fdf1e30631811426f90dbf5d69" prot="public" static="no">
-        <type><ref refid="multi_path" kindref="compound">MultiPath</ref></type>
+        <type>MultiPath</type>
         <definition>typedef MultiPath path_type</definition>
         <argsstring></argsstring>
         <name>path_type</name>
         <location file="/methods/montecarlo/mctraits.hpp" line="52" bodyfile="/methods/montecarlo/mctraits.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="multi_variate_1af0d94abd55c1f5d59f118fb07b43de07" prot="public" static="no">
-        <type><ref refid="path_pricer" kindref="compound">PathPricer</ref>&lt; <ref refid="multi_path" kindref="compound">path_type</ref> &gt;</type>
+        <type>PathPricer&lt; path_type &gt;</type>
         <definition>typedef PathPricer&lt;path_type&gt; path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
@@ -49,7 +49,7 @@
         <location file="/methods/montecarlo/mctraits.hpp" line="54" bodyfile="/methods/montecarlo/mctraits.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="multi_variate_1ae6f580a75647b72817eb460f42452d10" prot="public" static="no">
-        <type><ref refid="multi_path_generator" kindref="compound">MultiPathGenerator</ref>&lt; rsg_type &gt;</type>
+        <type>MultiPathGenerator&lt; rsg_type &gt;</type>
         <definition>typedef MultiPathGenerator&lt;rsg_type&gt; path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>

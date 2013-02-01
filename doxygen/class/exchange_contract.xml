@@ -20,15 +20,15 @@
           <declname>code</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>expirationDate</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>underlyingStartDate</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>underlyingEndDate</declname>
         </param>
         <location file="/experimental/commodities/exchangecontract.hpp" line="38" bodyfile="/experimental/commodities/exchangecontract.hpp" bodystart="53" bodyend="59"/>
@@ -41,21 +41,21 @@
         <location file="/experimental/commodities/exchangecontract.hpp" line="40" bodyfile="/experimental/commodities/exchangecontract.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="exchange_contract_1ac739e63239160e19b2966f2b4e6633ae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date &amp; expirationDate</definition>
         <argsstring>() const </argsstring>
         <name>expirationDate</name>
         <location file="/experimental/commodities/exchangecontract.hpp" line="41" bodyfile="/experimental/commodities/exchangecontract.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="exchange_contract_1a67bfc88e4dabb491decb148a640f8096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date &amp; underlyingStartDate</definition>
         <argsstring>() const </argsstring>
         <name>underlyingStartDate</name>
         <location file="/experimental/commodities/exchangecontract.hpp" line="42" bodyfile="/experimental/commodities/exchangecontract.hpp" bodystart="69" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="exchange_contract_1a13d5cf7d79bb8518be7001833044b0c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date &amp; underlyingEndDate</definition>
         <argsstring>() const </argsstring>
         <name>underlyingEndDate</name>

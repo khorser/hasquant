@@ -11,23 +11,23 @@
         <location file="/math/optimization/costfunction.hpp" line="69" bodyfile="/math/optimization/costfunction.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="parameters_transformation_1a44803e157c0ce565961dfad848ab39da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref></type>
+        <type>Array</type>
         <definition>virtual Array direct</definition>
         <argsstring>(const Array &amp;x) const =0</argsstring>
         <name>direct</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/math/optimization/costfunction.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="parameters_transformation_1a587ae542f0b4f06f6619235e5d43ef53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref></type>
+        <type>Array</type>
         <definition>virtual Array inverse</definition>
         <argsstring>(const Array &amp;x) const =0</argsstring>
         <name>inverse</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/math/optimization/costfunction.hpp" line="71"/>

@@ -13,19 +13,19 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;underlyingDividendTS, const Handle&lt; YieldTermStructure &gt; &amp;riskFreeTS, const Handle&lt; YieldTermStructure &gt; &amp;foreignRiskFreeTS, const Handle&lt; BlackVolTermStructure &gt; &amp;underlyingBlackVolTS, Real strike, const Handle&lt; BlackVolTermStructure &gt; &amp;exchRateBlackVolTS, Real exchRateATMlevel, Real underlyingExchRateCorrelation)</argsstring>
         <name>QuantoTermStructure</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>underlyingDividendTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>riskFreeTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>foreignRiskFreeTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVolTermStructure &gt; &amp;</type>
           <declname>underlyingBlackVolTS</declname>
         </param>
         <param>
@@ -33,7 +33,7 @@
           <declname>strike</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVolTermStructure &gt; &amp;</type>
           <declname>exchRateBlackVolTS</declname>
         </param>
         <param>

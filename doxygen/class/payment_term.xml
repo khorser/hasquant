@@ -28,7 +28,7 @@
         <location file="/experimental/commodities/paymentterm.hpp" line="46" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="payment_term_1ab3ba2ffdff08fce88df18a7b90502423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+        <type>const Calendar &amp;</type>
         <definition>const Calendar&amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
@@ -80,18 +80,18 @@
           <declname>offsetDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <location file="/experimental/commodities/paymentterm.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="payment_term_1a79661a4eb9c43c53b4b0849fdc9de7a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date getPaymentDate</definition>
         <argsstring>(const Date &amp;date) const </argsstring>
         <name>getPaymentDate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/experimental/commodities/paymentterm.hpp" line="51" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="103" bodyend="105"/>

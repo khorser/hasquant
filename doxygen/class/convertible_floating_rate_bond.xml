@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, Real conversionRatio, const DividendSchedule &amp;dividends, const CallabilitySchedule &amp;callability, const Handle&lt; Quote &gt; &amp;creditSpread, const Date &amp;issueDate, Natural settlementDays, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, Natural fixingDays, const std::vector&lt; Spread &gt; &amp;spreads, const DayCounter &amp;dayCounter, const Schedule &amp;schedule, Real redemption=100)</argsstring>
         <name>ConvertibleFloatingRateBond</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>
@@ -26,11 +26,11 @@
           <declname>callability</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>creditSpread</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -50,11 +50,11 @@
           <declname>spreads</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -68,7 +68,7 @@
     <briefdescription>
 <para>convertible floating-rate bond </para>    </briefdescription>
     <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000011"><xreftitle>Warning</xreftitle><xrefdescription><para>Most methods inherited from <ref refid="bond" kindref="compound">Bond</ref> (such as yield or the yield-based dirtyPrice and cleanPrice) refer to the underlying plain-vanilla bond and do not take convertibility and callability into account. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000011"><xreftitle>Warning</xreftitle><xrefdescription><para>Most methods inherited from Bond (such as yield or the yield-based dirtyPrice and cleanPrice) refer to the underlying plain-vanilla bond and do not take convertibility and callability into account. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="132" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="132" bodyend="148"/>
   </compounddef>
 </doxygen>

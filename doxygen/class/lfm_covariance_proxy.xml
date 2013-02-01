@@ -10,24 +10,24 @@
         <argsstring>(const boost::shared_ptr&lt; LmVolatilityModel &gt; &amp;volaModel, const boost::shared_ptr&lt; LmCorrelationModel &gt; &amp;corrModel)</argsstring>
         <name>LfmCovarianceProxy</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="lm_volatility_model" kindref="compound">LmVolatilityModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LmVolatilityModel &gt; &amp;</type>
           <declname>volaModel</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="lm_correlation_model" kindref="compound">LmCorrelationModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LmCorrelationModel &gt; &amp;</type>
           <declname>corrModel</declname>
         </param>
         <location file="/legacy/libormarketmodels/lfmcovarproxy.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="lfm_covariance_proxy_1a1f7f38dadbb7a8042d1d2c06b7f0b157" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="lm_volatility_model" kindref="compound">LmVolatilityModel</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; LmVolatilityModel &gt;</type>
         <definition>boost::shared_ptr&lt;LmVolatilityModel&gt; volatilityModel</definition>
         <argsstring>() const </argsstring>
         <name>volatilityModel</name>
         <location file="/legacy/libormarketmodels/lfmcovarproxy.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="lfm_covariance_proxy_1a343bf1ee77c83db6c572146fd728666d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="lm_correlation_model" kindref="compound">LmCorrelationModel</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; LmCorrelationModel &gt;</type>
         <definition>boost::shared_ptr&lt;LmCorrelationModel&gt; correlationModel</definition>
         <argsstring>() const </argsstring>
         <name>correlationModel</name>
@@ -51,9 +51,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lfmcovarproxy.hpp" line="49"/>
       </memberdef>

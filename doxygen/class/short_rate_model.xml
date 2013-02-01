@@ -16,12 +16,12 @@
         <location file="/models/model.hpp" line="128"/>
       </memberdef>
       <memberdef kind="function" id="short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Lattice &gt;</type>
         <definition>virtual boost::shared_ptr&lt;Lattice&gt; tree</definition>
         <argsstring>(const TimeGrid &amp;) const =0</argsstring>
         <name>tree</name>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
         </param>
         <location file="/models/model.hpp" line="129"/>
       </memberdef>

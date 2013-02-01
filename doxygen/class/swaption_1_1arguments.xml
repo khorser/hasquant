@@ -5,7 +5,7 @@
     <includes local="no">/instruments/swaption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="swaption_1_1arguments_1a3326e02320aa0daaf1c3433efd26ea37" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; VanillaSwap &gt;</type>
         <definition>boost::shared_ptr&lt;VanillaSwap&gt; swap</definition>
         <argsstring></argsstring>
         <name>swap</name>

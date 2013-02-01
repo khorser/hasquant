@@ -25,14 +25,14 @@
         <location file="/experimental/commodities/unitofmeasure.hpp" line="78" bodyfile="/experimental/commodities/unitofmeasure.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="unit_of_measure_1_1_data_1a66c3f31b4ac25bc2c3b0d9843aa515ed" prot="public" static="no" mutable="no">
-        <type><ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
+        <type>UnitOfMeasure</type>
         <definition>UnitOfMeasure triangulationUnitOfMeasure</definition>
         <argsstring></argsstring>
         <name>triangulationUnitOfMeasure</name>
         <location file="/experimental/commodities/unitofmeasure.hpp" line="79" bodyfile="/experimental/commodities/unitofmeasure.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="unit_of_measure_1_1_data_1ad7abf16b90345ce924d7a556a5ee904b" prot="public" static="no" mutable="no">
-        <type><ref refid="rounding" kindref="compound">Rounding</ref></type>
+        <type>Rounding</type>
         <definition>Rounding rounding</definition>
         <argsstring></argsstring>
         <name>rounding</name>
@@ -58,14 +58,14 @@
           <declname>unitType</declname>
         </param>
         <param>
-          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const UnitOfMeasure &amp;</type>
           <declname>triangulationUnitOfMeasure</declname>
-          <defval><ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref>()</defval>
+          <defval>UnitOfMeasure()</defval>
         </param>
         <param>
-          <type>const <ref refid="rounding" kindref="compound">Rounding</ref> &amp;</type>
+          <type>const Rounding &amp;</type>
           <declname>rounding</declname>
-          <defval><ref refid="rounding" kindref="compound">Rounding</ref>(0)</defval>
+          <defval>Rounding(0)</defval>
         </param>
         <location file="/experimental/commodities/unitofmeasure.hpp" line="86"/>
       </memberdef>

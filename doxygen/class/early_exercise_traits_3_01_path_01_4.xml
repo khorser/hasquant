@@ -18,7 +18,7 @@
         <argsstring>(const Path &amp;path)</argsstring>
         <name>pathLength</name>
         <param>
-          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+          <type>const Path &amp;</type>
           <declname>path</declname>
         </param>
         <location file="/methods/montecarlo/earlyexercisepathpricer.hpp" line="43" bodyfile="/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="43" bodyend="45"/>

@@ -25,7 +25,7 @@
         <location file="/experimental/commodities/paymentterm.hpp" line="59" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="payment_term_1_1_data_1a78752433f4fe4a459158fefc086335e5" prot="public" static="no" mutable="no">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
+        <type>Calendar</type>
         <definition>Calendar calendar</definition>
         <argsstring></argsstring>
         <name>calendar</name>
@@ -51,7 +51,7 @@
           <declname>offsetDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <location file="/experimental/commodities/paymentterm.hpp" line="63" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="82" bodyend="87"/>

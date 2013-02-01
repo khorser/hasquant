@@ -65,14 +65,14 @@
           <defval>false</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt;</type>
+          <type>const boost::shared_ptr&lt; EndCriteria &gt;</type>
           <declname>endCriteria</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; EndCriteria &gt;()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;</type>
+          <type>const boost::shared_ptr&lt; OptimizationMethod &gt;</type>
           <declname>optMethod</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; OptimizationMethod &gt;()</defval>
         </param>
         <location file="/math/interpolations/sabrinterpolation.hpp" line="410" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="395" bodyend="410"/>
       </memberdef>
@@ -85,7 +85,7 @@
             <type>class I2</type>
           </param>
         </templateparamlist>
-        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
+        <type>Interpolation</type>
         <definition>Interpolation interpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin) const </argsstring>
         <name>interpolate</name>

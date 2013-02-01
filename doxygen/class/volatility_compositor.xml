@@ -11,12 +11,12 @@
         <location file="/volatilitymodel.hpp" line="43" bodyfile="/volatilitymodel.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="volatility_compositor_1ae4670ccf94cd30655af28ebe54299721" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <type>TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
         <definition>virtual TimeSeries&lt;Volatility&gt; calculate</definition>
         <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;volatilitySeries)=0</argsstring>
         <name>calculate</name>
         <param>
-          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>volatilitySeries</declname>
         </param>
         <location file="/volatilitymodel.hpp" line="45"/>
@@ -27,7 +27,7 @@
         <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;volatilitySeries)=0</argsstring>
         <name>calibrate</name>
         <param>
-          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>volatilitySeries</declname>
         </param>
         <location file="/volatilitymodel.hpp" line="46"/>

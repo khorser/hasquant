@@ -33,7 +33,7 @@
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>isBusinessDay</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <detaileddescription>
@@ -46,7 +46,7 @@
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>isHoliday</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <detaileddescription>
@@ -72,7 +72,7 @@
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>isEndOfMonth</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <detaileddescription>
@@ -80,12 +80,12 @@
         <location file="/time/calendar.hpp" line="101" bodyfile="/time/calendar.hpp" bodystart="202" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="calendar_1a19b6ae524d9688302a3d133d9a8eaf67" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date endOfMonth</definition>
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>endOfMonth</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <briefdescription>
@@ -98,7 +98,7 @@
         <argsstring>(const Date &amp;)</argsstring>
         <name>addHoliday</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <detaileddescription>
 <para>Adds a date to the set of holidays for the given calendar. </para>        </detaileddescription>
@@ -110,19 +110,19 @@
         <argsstring>(const Date &amp;)</argsstring>
         <name>removeHoliday</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <detaileddescription>
 <para>Removes a date from the set of holidays for the given calendar. </para>        </detaileddescription>
         <location file="/time/calendar.hpp" line="108"/>
       </memberdef>
       <memberdef kind="function" id="calendar_1aee7c18511c7ee1bcda6124f43a37aa28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date adjust</definition>
         <argsstring>(const Date &amp;, BusinessDayConvention convention=Following) const </argsstring>
         <name>adjust</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
@@ -134,12 +134,12 @@
         <location file="/time/calendar.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="calendar_1ac47bb82bf7b147cfacf373991c2905ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date advance</definition>
         <argsstring>(const Date &amp;, Integer n, TimeUnit unit, BusinessDayConvention convention=Following, bool endOfMonth=false) const </argsstring>
         <name>advance</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
@@ -165,16 +165,16 @@
         <location file="/time/calendar.hpp" line="129"/>
       </memberdef>
       <memberdef kind="function" id="calendar_1aff3da5f18d09db3745c371b8679bd5ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date advance</definition>
         <argsstring>(const Date &amp;date, const Period &amp;period, BusinessDayConvention convention=Following, bool endOfMonth=false) const </argsstring>
         <name>advance</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>period</declname>
         </param>
         <param>
@@ -198,11 +198,11 @@
         <argsstring>(const Date &amp;from, const Date &amp;to, bool includeFirst=true, bool includeLast=false) const </argsstring>
         <name>businessDaysBetween</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>from</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>to</declname>
         </param>
         <param>
@@ -220,20 +220,20 @@
         <location file="/time/calendar.hpp" line="144"/>
       </memberdef>
       <memberdef kind="function" id="calendar_1a0b6fcbea4559480b4dc3df0abbf64766" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>static std::vector&lt;Date&gt; holidayList</definition>
         <argsstring>(const Calendar &amp;calendar, const Date &amp;from, const Date &amp;to, bool includeWeekEnds=false)</argsstring>
         <name>holidayList</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>from</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>to</declname>
         </param>
         <param>
@@ -264,10 +264,10 @@
         <argsstring>(const Calendar &amp;, const Calendar &amp;)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <detaileddescription>
 <para>Returns <computeroutput>true</computeroutput> iff the two calendars belong to the same derived class. </para>        </detaileddescription>
@@ -279,10 +279,10 @@
         <argsstring>(const Calendar &amp;, const Calendar &amp;)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <location file="/time/calendar.hpp" line="178" bodyfile="/time/calendar.hpp" bodystart="223" bodyend="225"/>
       </memberdef>
@@ -295,7 +295,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
         </param>
         <location file="/time/calendar.hpp" line="181" bodyfile="/time/calendar.hpp" bodystart="227" bodyend="229"/>
       </memberdef>

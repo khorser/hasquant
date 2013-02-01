@@ -30,7 +30,7 @@
           <declname>targetValue</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -61,7 +61,7 @@
     <briefdescription>
 <para>Callable bond base class. </para>    </briefdescription>
     <detaileddescription>
-<para>Base callable bond class for fixed and zero coupon bonds. Defines commonalities between fixed and zero coupon callable bonds. At present, only European and Bermudan put/call schedules supported (no American optionality), as defined by the <ref refid="callability" kindref="compound">Callability</ref> class.</para><para><xrefsect id="todo_1_todo000005"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>models/shortrate/calibrationHelpers </para><para>OAS/OAD </para><para>floating rate callable bonds ?</para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>Base callable bond class for fixed and zero coupon bonds. Defines commonalities between fixed and zero coupon callable bonds. At present, only European and Bermudan put/call schedules supported (no American optionality), as defined by the Callability class.</para><para><xrefsect id="todo_1_todo000005"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>models/shortrate/calibrationHelpers </para><para>OAS/OAD </para><para>floating rate callable bonds ?</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/experimental/callablebonds/callablebond.hpp" line="52" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="52" bodyend="112"/>
   </compounddef>
 </doxygen>

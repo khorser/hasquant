@@ -17,7 +17,7 @@
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const =0</argsstring>
         <name>drift</name>
         <param>
-          <type>const <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
+          <type>const StochasticProcess1D &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -39,7 +39,7 @@
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const =0</argsstring>
         <name>diffusion</name>
         <param>
-          <type>const <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
+          <type>const StochasticProcess1D &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -61,7 +61,7 @@
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const =0</argsstring>
         <name>variance</name>
         <param>
-          <type>const <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
+          <type>const StochasticProcess1D &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>

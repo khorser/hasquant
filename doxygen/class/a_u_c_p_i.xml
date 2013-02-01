@@ -22,9 +22,9 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; ZeroInflationTermStructure &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; ZeroInflationTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/inflation/aucpi.hpp" line="47" bodyfile="/indexes/inflation/aucpi.hpp" bodystart="35" bodyend="47"/>
       </memberdef>

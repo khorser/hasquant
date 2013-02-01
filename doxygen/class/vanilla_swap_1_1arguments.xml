@@ -19,14 +19,14 @@
         <location file="/instruments/vanillaswap.hpp" line="140" bodyfile="/instruments/vanillaswap.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1ac087ed31c7c86f346a554482c05e01bd" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; fixedResetDates</definition>
         <argsstring></argsstring>
         <name>fixedResetDates</name>
         <location file="/instruments/vanillaswap.hpp" line="142" bodyfile="/instruments/vanillaswap.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1a9ae1b87c848fe690cc0fb8aae7a1ad53" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; fixedPayDates</definition>
         <argsstring></argsstring>
         <name>fixedPayDates</name>
@@ -40,21 +40,21 @@
         <location file="/instruments/vanillaswap.hpp" line="144" bodyfile="/instruments/vanillaswap.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1a0c1a8eb80d3c37a524935c7519d008e0" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; floatingResetDates</definition>
         <argsstring></argsstring>
         <name>floatingResetDates</name>
         <location file="/instruments/vanillaswap.hpp" line="145" bodyfile="/instruments/vanillaswap.hpp" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1a732fd5612eea5324a0246b31f7119141" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; floatingFixingDates</definition>
         <argsstring></argsstring>
         <name>floatingFixingDates</name>
         <location file="/instruments/vanillaswap.hpp" line="146" bodyfile="/instruments/vanillaswap.hpp" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1affddd738e0a1ca4074d4742686ce7e7c" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; floatingPayDates</definition>
         <argsstring></argsstring>
         <name>floatingPayDates</name>

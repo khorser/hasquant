@@ -9,7 +9,7 @@
         <argsstring>(const Array &amp;volatilities, const std::vector&lt; Time &gt; &amp;startTimes)</argsstring>
         <name>LmFixedVolatilityModel</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>volatilities</declname>
         </param>
         <param>
@@ -19,7 +19,7 @@
         <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="lm_fixed_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; volatility</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>volatility</name>
@@ -28,9 +28,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="37"/>
       </memberdef>
@@ -48,7 +48,7 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="38"/>

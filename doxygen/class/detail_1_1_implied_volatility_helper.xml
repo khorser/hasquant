@@ -10,15 +10,15 @@
         <argsstring>(const Instrument &amp;instrument, const PricingEngine &amp;engine, SimpleQuote &amp;volQuote, Real targetValue, Real accuracy, Natural maxEvaluations, Volatility minVol, Volatility maxVol)</argsstring>
         <name>calculate</name>
         <param>
-          <type>const <ref refid="instrument" kindref="compound">Instrument</ref> &amp;</type>
+          <type>const Instrument &amp;</type>
           <declname>instrument</declname>
         </param>
         <param>
-          <type>const <ref refid="pricing_engine" kindref="compound">PricingEngine</ref> &amp;</type>
+          <type>const PricingEngine &amp;</type>
           <declname>engine</declname>
         </param>
         <param>
-          <type><ref refid="simple_quote" kindref="compound">SimpleQuote</ref> &amp;</type>
+          <type>SimpleQuote &amp;</type>
           <declname>volQuote</declname>
         </param>
         <param>
@@ -44,15 +44,15 @@
         <location file="/instruments/impliedvolatility.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_implied_volatility_helper_1a03965c0a2cb10a60abd316127ee76c9c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt;</type>
         <definition>static boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; clone</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;, const boost::shared_ptr&lt; SimpleQuote &gt; &amp;)</argsstring>
         <name>clone</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="simple_quote" kindref="compound">SimpleQuote</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SimpleQuote &gt; &amp;</type>
         </param>
         <detaileddescription>
 <para>The returned process is equal to the passed one, except for the volatility which is flat and whose value is driven by the passed quote. </para>        </detaileddescription>
@@ -62,7 +62,7 @@
     <briefdescription>
 <para>helper class for one-asset implied-volatility calculation </para>    </briefdescription>
     <detaileddescription>
-<para>The passed engine must be linked to the passed quote (see, e.g., <ref refid="vanilla_option" kindref="compound">VanillaOption</ref> to see how this can be achieved.)</para><para><simplesect kind="note"><para>this function is meant for developers of option classes so that they can implement an impliedVolatility() method. </para></simplesect>
+<para>The passed engine must be linked to the passed quote (see, e.g., VanillaOption to see how this can be achieved.)</para><para><simplesect kind="note"><para>this function is meant for developers of option classes so that they can implement an impliedVolatility() method. </para></simplesect>
 </para>    </detaileddescription>
     <location file="/instruments/impliedvolatility.hpp" line="43" bodyfile="/instruments/impliedvolatility.hpp" bodystart="43" bodyend="62"/>
   </compounddef>

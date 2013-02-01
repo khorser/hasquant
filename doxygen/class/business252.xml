@@ -10,9 +10,9 @@
         <argsstring>(Calendar c=Brazil())</argsstring>
         <name>Business252</name>
         <param>
-          <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
+          <type>Calendar</type>
           <declname>c</declname>
-          <defval><ref refid="brazil" kindref="compound">Brazil</ref>()</defval>
+          <defval>Brazil()</defval>
         </param>
         <location file="/time/daycounters/business252.hpp" line="54" bodyfile="/time/daycounters/business252.hpp" bodystart="52" bodyend="54"/>
       </memberdef>

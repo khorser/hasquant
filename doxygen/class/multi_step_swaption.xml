@@ -25,7 +25,7 @@
           <declname>endIndex</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;</type>
         </param>
         <location file="/models/marketmodels/products/multistep/multistepswaption.hpp" line="41"/>
       </memberdef>

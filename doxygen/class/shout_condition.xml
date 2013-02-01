@@ -33,7 +33,7 @@
         <argsstring>(const Array &amp;intrinsicValues, Time resTime, Rate rate)</argsstring>
         <name>ShoutCondition</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>intrinsicValues</declname>
         </param>
         <param>
@@ -52,7 +52,7 @@
         <argsstring>(Array &amp;a, Time t) const </argsstring>
         <name>applyTo</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>a</declname>
         </param>
         <param>

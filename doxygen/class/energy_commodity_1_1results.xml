@@ -11,14 +11,14 @@
         <location file="/experimental/commodities/energycommodity.hpp" line="127" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="energy_commodity_1_1results_1a2abe4a46fc0038ef6a824d8109ca1741" prot="public" static="no" mutable="no">
-        <type><ref refid="currency" kindref="compound">Currency</ref></type>
+        <type>Currency</type>
         <definition>Currency currency</definition>
         <argsstring></argsstring>
         <name>currency</name>
         <location file="/experimental/commodities/energycommodity.hpp" line="128" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="energy_commodity_1_1results_1a8381a2b60fb912bab67a5218ba3ad058" prot="public" static="no" mutable="no">
-        <type><ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
+        <type>UnitOfMeasure</type>
         <definition>UnitOfMeasure unitOfMeasure</definition>
         <argsstring></argsstring>
         <name>unitOfMeasure</name>

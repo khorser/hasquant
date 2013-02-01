@@ -39,11 +39,11 @@
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Volatility &gt; &amp;blackVolCurve, const DayCounter &amp;dayCounter, bool forceMonotoneVariance=true)</argsstring>
         <name>BlackVarianceCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -51,7 +51,7 @@
           <declname>blackVolCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -65,7 +65,7 @@
     <briefdescription>
 <para>Black volatility curve modelled as variance curve. </para>    </briefdescription>
     <detaileddescription>
-<para>This class calculates time-dependent Black volatilities using as input a vector of (ATM) Black volatilities observed in the market.</para><para>The calculation is performed interpolating on the variance curve. <ref refid="linear" kindref="compound">Linear</ref> interpolation is used as default; this can be changed by the setInterpolation() method.</para><para>For strike dependence, see <ref refid="black_variance_surface" kindref="compound">BlackVarianceSurface</ref>.</para><para><xrefsect id="todo_1_todo000061"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>check time extrapolation</para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>This class calculates time-dependent Black volatilities using as input a vector of (ATM) Black volatilities observed in the market.</para><para>The calculation is performed interpolating on the variance curve. Linear interpolation is used as default; this can be changed by the setInterpolation() method.</para><para>For strike dependence, see BlackVarianceSurface.</para><para><xrefsect id="todo_1_todo000061"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>check time extrapolation</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="47" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="47" bodyend="86"/>
   </compounddef>
 </doxygen>

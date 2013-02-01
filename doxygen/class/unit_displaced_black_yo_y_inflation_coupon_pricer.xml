@@ -10,9 +10,9 @@
         <argsstring>(const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;capletVol=Handle&lt; YoYOptionletVolatilitySurface &gt;())</argsstring>
         <name>UnitDisplacedBlackYoYInflationCouponPricer</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;</type>
           <declname>capletVol</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;()</defval>
+          <defval>Handle&lt; YoYOptionletVolatilitySurface &gt;()</defval>
         </param>
         <location file="/cashflows/inflationcouponpricer.hpp" line="150" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="147" bodyend="150"/>
       </memberdef>

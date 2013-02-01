@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; G2 &gt; &amp;model, Real range, Size intervals)</argsstring>
         <name>G2SwaptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="g2" kindref="compound">G2</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; G2 &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>

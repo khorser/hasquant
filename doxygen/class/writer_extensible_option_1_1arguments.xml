@@ -5,14 +5,14 @@
     <includes local="no">/experimental/exoticoptions/writerextensibleoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="writer_extensible_option_1_1arguments_1a3b1bb5e134ef03e851478bc00138e06e" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Payoff &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff2</definition>
         <argsstring></argsstring>
         <name>payoff2</name>
         <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="65" bodyfile="/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="writer_extensible_option_1_1arguments_1a35a9a6c885b78c1f68bb55b96f176f06" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Exercise &gt;</type>
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise2</definition>
         <argsstring></argsstring>
         <name>exercise2</name>

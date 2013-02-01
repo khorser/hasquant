@@ -51,15 +51,15 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;cal, const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Real &gt; &amp;strikes, const Matrix &amp;blackVolMatrix, const DayCounter &amp;dayCounter, Extrapolation lowerExtrapolation=InterpolatorDefaultExtrapolation, Extrapolation upperExtrapolation=InterpolatorDefaultExtrapolation)</argsstring>
         <name>BlackVarianceSurface</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -67,11 +67,11 @@
           <declname>strikes</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>blackVolMatrix</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -90,7 +90,7 @@
     <briefdescription>
 <para>Black volatility surface modelled as variance surface. </para>    </briefdescription>
     <detaileddescription>
-<para>This class calculates time/strike dependent Black volatilities using as input a matrix of Black volatilities observed in the market.</para><para>The calculation is performed interpolating on the variance surface. <ref refid="bilinear" kindref="compound">Bilinear</ref> interpolation is used as default; this can be changed by the setInterpolation() method.</para><para><xrefsect id="todo_1_todo000062"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>check time extrapolation</para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>This class calculates time/strike dependent Black volatilities using as input a matrix of Black volatilities observed in the market.</para><para>The calculation is performed interpolating on the variance surface. Bilinear interpolation is used as default; this can be changed by the setInterpolation() method.</para><para><xrefsect id="todo_1_todo000062"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>check time extrapolation</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="47" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="47" bodyend="102"/>
   </compounddef>
 </doxygen>

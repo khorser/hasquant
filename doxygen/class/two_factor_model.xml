@@ -18,7 +18,7 @@
         <location file="/models/shortrate/twofactormodel.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="two_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; ShortRateDynamics &gt;</type>
         <definition>virtual boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
         <argsstring>() const =0</argsstring>
         <name>dynamics</name>

@@ -27,23 +27,23 @@
         <argsstring>(const Matrix &amp;path, const std::vector&lt; Handle&lt; YieldTermStructure &gt; &gt; &amp;forwardTermStructures, Array &amp;payments, Array &amp;exercises, std::vector&lt; Array &gt; &amp;states) const =0</argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>path</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; YieldTermStructure &gt; &gt; &amp;</type>
           <declname>forwardTermStructures</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>payments</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>exercises</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="array" kindref="compound">Array</ref> &gt; &amp;</type>
+          <type>std::vector&lt; Array &gt; &amp;</type>
           <declname>states</declname>
         </param>
         <location file="/experimental/mcbasket/pathpayoff.hpp" line="65"/>
@@ -64,7 +64,7 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type>AcyclicVisitor &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/experimental/mcbasket/pathpayoff.hpp" line="77" bodyfile="/experimental/mcbasket/pathpayoff.hpp" bodystart="84" bodyend="90"/>

@@ -26,7 +26,7 @@
         <argsstring>() const =0</argsstring>
         <name>isValid</name>
         <briefdescription>
-<para>returns true if the <ref refid="quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+<para>returns true if the Quote holds a valid value </para>        </briefdescription>
         <location file="/quote.hpp" line="43"/>
       </memberdef>
       </sectiondef>

@@ -11,11 +11,11 @@
         <argsstring>(const ConvertibleBond *bond, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, Real conversionRatio, const DividendSchedule &amp;dividends, const CallabilitySchedule &amp;callability, const Handle&lt; Quote &gt; &amp;creditSpread, const Leg &amp;cashflows, const DayCounter &amp;dayCounter, const Schedule &amp;schedule, const Date &amp;issueDate, Natural settlementDays, Real redemption)</argsstring>
         <name>option</name>
         <param>
-          <type>const <ref refid="convertible_bond" kindref="compound">ConvertibleBond</ref> *</type>
+          <type>const ConvertibleBond *</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>
@@ -31,7 +31,7 @@
           <declname>callability</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>creditSpread</declname>
         </param>
         <param>
@@ -39,15 +39,15 @@
           <declname>cashflows</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
         </param>
         <param>

@@ -9,9 +9,9 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve=Handle&lt; YieldTermStructure &gt;(), boost::optional&lt; bool &gt; includeSettlementDateFlows=boost::none, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
         <name>DiscountingSwapEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <param>
           <type>boost::optional&lt; bool &gt;</type>
@@ -19,14 +19,14 @@
           <defval>boost::none</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>npvDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/pricingengines/swap/discountingswapengine.hpp" line="41"/>
       </memberdef>
@@ -38,7 +38,7 @@
         <location file="/pricingengines/swap/discountingswapengine.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="discounting_swap_engine_1a80fd74539bdffcb8be719e5b8929feb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YieldTermStructure &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; discountCurve</definition>
         <argsstring>() const </argsstring>
         <name>discountCurve</name>

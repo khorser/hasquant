@@ -19,21 +19,21 @@
       </sectiondef>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="cms_market_calibration_1ae6c07cece4630db760e4bbc0647c63ac" prot="public" static="no" mutable="no">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
+        <type>Handle&lt; SwaptionVolatilityStructure &gt;</type>
         <definition>Handle&lt;SwaptionVolatilityStructure&gt; volCube_</definition>
         <argsstring></argsstring>
         <name>volCube_</name>
         <location file="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="48" bodyfile="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cms_market_calibration_1a5e7ea92125f7fda2ca96edc302e76400" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="cms_market" kindref="compound">CmsMarket</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; CmsMarket &gt;</type>
         <definition>boost::shared_ptr&lt;CmsMarket&gt; cmsMarket_</definition>
         <argsstring></argsstring>
         <name>cmsMarket_</name>
         <location file="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="49" bodyfile="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cms_market_calibration_1af8323012b2f97622fa66f3d3bed6c888" prot="public" static="no" mutable="no">
-        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
+        <type>Matrix</type>
         <definition>Matrix weights_</definition>
         <argsstring></argsstring>
         <name>weights_</name>
@@ -47,21 +47,21 @@
         <location file="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="51" bodyfile="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cms_market_calibration_1a101e0a9a7ba9aa267ad96710aac90f1e" prot="public" static="no" mutable="no">
-        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
+        <type>Matrix</type>
         <definition>Matrix sparseSabrParameters_</definition>
         <argsstring></argsstring>
         <name>sparseSabrParameters_</name>
         <location file="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="52" bodyfile="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cms_market_calibration_1a34c0622a6f08c2652bb57d8acbe31ef7" prot="public" static="no" mutable="no">
-        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
+        <type>Matrix</type>
         <definition>Matrix denseSabrParameters_</definition>
         <argsstring></argsstring>
         <name>denseSabrParameters_</name>
         <location file="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="52" bodyfile="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cms_market_calibration_1a75a0b2d8b83bf0f5e5a99cc4f374620f" prot="public" static="no" mutable="no">
-        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
+        <type>Matrix</type>
         <definition>Matrix browseCmsMarket_</definition>
         <argsstring></argsstring>
         <name>browseCmsMarket_</name>
@@ -75,15 +75,15 @@
         <argsstring>(Handle&lt; SwaptionVolatilityStructure &gt; &amp;volCube, boost::shared_ptr&lt; CmsMarket &gt; &amp;cmsMarket, const Matrix &amp;weights, CalibrationType calibrationType)</argsstring>
         <name>CmsMarketCalibration</name>
         <param>
-          <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>Handle&lt; SwaptionVolatilityStructure &gt; &amp;</type>
           <declname>volCube</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="cms_market" kindref="compound">CmsMarket</ref> &gt; &amp;</type>
+          <type>boost::shared_ptr&lt; CmsMarket &gt; &amp;</type>
           <declname>cmsMarket</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>weights</declname>
         </param>
         <param>
@@ -93,20 +93,20 @@
         <location file="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_calibration_1a961a3a68ba647656143fec380e36a300" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref></type>
+        <type>Array</type>
         <definition>Array compute</definition>
         <argsstring>(const boost::shared_ptr&lt; EndCriteria &gt; &amp;endCriteria, const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;method, const Array &amp;guess, bool isMeanReversionFixed)</argsstring>
         <name>compute</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; EndCriteria &gt; &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;</type>
           <declname>method</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>guess</declname>
         </param>
         <param>

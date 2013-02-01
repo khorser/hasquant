@@ -25,24 +25,24 @@
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise)</argsstring>
         <name>Option</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Payoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <location file="/option.hpp" line="43" bodyfile="/option.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="option_1ad20055b3037f613d7246b9b637768154" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Payoff &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
         <argsstring>()</argsstring>
         <name>payoff</name>
         <location file="/option.hpp" line="45" bodyfile="/option.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="option_1a451a2ea87e8074ea8fba41a3a8281b79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Exercise &gt;</type>
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise</definition>
         <argsstring>()</argsstring>
         <name>exercise</name>

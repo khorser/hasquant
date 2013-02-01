@@ -12,21 +12,21 @@
       <header>Constructor</header>
       <description><para>calculate the reference date based on the global evaluation date </para></description>
       <memberdef kind="variable" id="k_interpolated_yo_y_optionlet_volatility_surface_1a310aae3ddddb429ba4f56f5491fab707" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt;</type>
         <definition>boost::shared_ptr&lt;YoYCapFloorTermPriceSurface&gt; capFloorPrices_</definition>
         <argsstring></argsstring>
         <name>capFloorPrices_</name>
         <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="75" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="k_interpolated_yo_y_optionlet_volatility_surface_1a85cb2594a1dc6d4c0e1b3584a181a505" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationCapFloorEngine&gt; yoyInflationCouponPricer_</definition>
         <argsstring></argsstring>
         <name>yoyInflationCouponPricer_</name>
         <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="76" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="k_interpolated_yo_y_optionlet_volatility_surface_1aa39bff1f872ef0a58252653e12bc0a7d" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_optionlet_stripper" kindref="compound">YoYOptionletStripper</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYOptionletStripper &gt;</type>
         <definition>boost::shared_ptr&lt;YoYOptionletStripper&gt; yoyOptionletStripper_</definition>
         <argsstring></argsstring>
         <name>yoyOptionletStripper_</name>
@@ -54,14 +54,14 @@
         <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="81" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="k_interpolated_yo_y_optionlet_volatility_surface_1ad5595af95ab2f283a501bd3f99873032" prot="protected" static="no" mutable="yes">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date lastDate_</definition>
         <argsstring></argsstring>
         <name>lastDate_</name>
         <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="82" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="k_interpolated_yo_y_optionlet_volatility_surface_1a9869bf35b50080de20948dc0cdb65f8e" prot="protected" static="no" mutable="yes">
-        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
+        <type>Interpolation</type>
         <definition>Interpolation tempKinterpolation_</definition>
         <argsstring></argsstring>
         <name>tempKinterpolation_</name>
@@ -84,7 +84,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <defname>cal</defname>
         </param>
         <param>
@@ -92,23 +92,23 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;</type>
           <declname>capFloorPrices</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;</type>
           <declname>pricer</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_optionlet_stripper" kindref="compound">YoYOptionletStripper</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYOptionletStripper &gt; &amp;</type>
           <declname>yoyOptionletStripper</declname>
         </param>
         <param>
@@ -128,7 +128,7 @@
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>Dslice</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="66" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="168" bodyend="174"/>
@@ -139,7 +139,7 @@
         <argsstring>(const Date &amp;d, Rate strike) const </argsstring>
         <name>volatilityImpl</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -159,7 +159,7 @@
     <briefdescription>
 <para>K-interpolated YoY optionlet volatility. </para>    </briefdescription>
     <detaileddescription>
-<para>The stripper provides curves in the T direction along each K. We don&apos;t know whether this is interpolating or fitting in the T direction. Our K direction interpolations are not model fitting.</para><para>An alternative design would be a FittedYoYOptionletVolatilitySurface taking a model, e.g. <ref refid="s_a_b_r" kindref="compound">SABR</ref> in the interest rate world. This could use the same stripping in the T direction along each K.</para><para><xrefsect id="bug_1_bug000002"><xreftitle>Bug</xreftitle><xrefdescription><para>Tests currently fail. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>The stripper provides curves in the T direction along each K. We don&apos;t know whether this is interpolating or fitting in the T direction. Our K direction interpolations are not model fitting.</para><para>An alternative design would be a FittedYoYOptionletVolatilitySurface taking a model, e.g. SABR in the interest rate world. This could use the same stripping in the T direction along each K.</para><para><xrefsect id="bug_1_bug000002"><xreftitle>Bug</xreftitle><xrefdescription><para>Tests currently fail. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="46" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="45" bodyend="85"/>
   </compounddef>
 </doxygen>

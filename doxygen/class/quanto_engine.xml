@@ -18,19 +18,19 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;, const Handle&lt; YieldTermStructure &gt; &amp;foreignRiskFreeRate, const Handle&lt; BlackVolTermStructure &gt; &amp;exchangeRateVolatility, const Handle&lt; Quote &gt; &amp;correlation)</argsstring>
         <name>QuantoEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <defname>process</defname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>foreignRiskFreeRate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVolTermStructure &gt; &amp;</type>
           <declname>exchangeRateVolatility</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>correlation</declname>
         </param>
         <location file="/pricingengines/quanto/quantoengine.hpp" line="56" bodyfile="/pricingengines/quanto/quantoengine.hpp" bodystart="69" bodyend="81"/>

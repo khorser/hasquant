@@ -33,7 +33,7 @@
         <location file="/methods/finitedifferences/schemes/modifiedcraigsneydscheme.hpp" line="46" bodyfile="/methods/finitedifferences/schemes/modifiedcraigsneydscheme.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="modified_craig_sneyd_scheme_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
-        <type><ref refid="step_condition" kindref="compound">traits::condition_type</ref></type>
+        <type>traits::condition_type</type>
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>

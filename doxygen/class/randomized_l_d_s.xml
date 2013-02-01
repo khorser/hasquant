@@ -9,12 +9,12 @@
       </param>
       <param>
         <type>class PRS</type>
-        <defval><ref refid="random_sequence_generator" kindref="compound">RandomSequenceGenerator</ref>&lt;<ref refid="mersenne_twister_uniform_rng" kindref="compound">MersenneTwisterUniformRng</ref>&gt;</defval>
+        <defval>RandomSequenceGenerator&lt;MersenneTwisterUniformRng&gt;</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="randomized_l_d_s_1af3b59a3dd56521693efc68c221a2bf38" prot="public" static="no">
-        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>Sample&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -70,7 +70,7 @@
         <location file="/math/randomnumbers/randomizedlds.hpp" line="66" bodyfile="/math/randomnumbers/randomizedlds.hpp" bodystart="112" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="randomized_l_d_s_1a2ea25ac8138d4099afda3642057335ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="sample" kindref="compound">sample_type</ref> &amp;</type>
+        <type>const sample_type &amp;</type>
         <definition>const RandomizedLDS&lt; LDS, PRS &gt;::sample_type &amp; nextSequence</definition>
         <argsstring>() const </argsstring>
         <name>nextSequence</name>
@@ -79,7 +79,7 @@
         <location file="/math/randomnumbers/randomizedlds.hpp" line="68" bodyfile="/math/randomnumbers/randomizedlds.hpp" bodystart="124" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="randomized_l_d_s_1a8d216498c4107b3bca19b47a929407fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="sample" kindref="compound">sample_type</ref> &amp;</type>
+        <type>const sample_type &amp;</type>
         <definition>const sample_type&amp; lastSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastSequence</name>

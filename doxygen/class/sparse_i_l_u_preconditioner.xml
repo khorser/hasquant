@@ -35,12 +35,12 @@
         <location file="/math/matrixutilities/sparseilupreconditioner.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="sparse_i_l_u_preconditioner_1a007bd13ea8abb54cde5bd401295a9276" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; apply</definition>
         <argsstring>(const Array &amp;b) const </argsstring>
         <name>apply</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>b</declname>
         </param>
         <location file="/math/matrixutilities/sparseilupreconditioner.hpp" line="60"/>

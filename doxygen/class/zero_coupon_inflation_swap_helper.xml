@@ -10,19 +10,19 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;quote, const Period &amp;swapObsLag, const Date &amp;maturity, const Calendar &amp;calendar, BusinessDayConvention paymentConvention, const DayCounter &amp;dayCounter, const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;zii)</argsstring>
         <name>ZeroCouponInflationSwapHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>quote</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>swapObsLag</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -30,11 +30,11 @@
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;</type>
           <declname>zii</declname>
         </param>
         <location file="/termstructures/inflation/inflationhelpers.hpp" line="46"/>

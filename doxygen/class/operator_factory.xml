@@ -5,16 +5,16 @@
     <includes local="no">/methods/finitedifferences/operatorfactory.hpp</includes>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="operator_factory_1a7c2180e4cde4bd0f4e1df30309e7d0b7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref></type>
+        <type>TridiagonalOperator</type>
         <definition>static TridiagonalOperator getOperator</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, const Array &amp;grid, Time residualTime, bool timeDependent)</argsstring>
         <name>getOperator</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>grid</declname>
         </param>
         <param>
@@ -28,16 +28,16 @@
         <location file="/methods/finitedifferences/operatorfactory.hpp" line="46" bodyfile="/methods/finitedifferences/operatorfactory.hpp" bodystart="42" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="operator_factory_1ac47308c3e6d7c57eaa87b9309afe68b2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref></type>
+        <type>TridiagonalOperator</type>
         <definition>static TridiagonalOperator getOperator</definition>
         <argsstring>(const boost::shared_ptr&lt; OneFactorModel::ShortRateDynamics &gt; &amp;process, const Array &amp;grid)</argsstring>
         <name>getOperator</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">OneFactorModel::ShortRateDynamics</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; OneFactorModel::ShortRateDynamics &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>grid</declname>
         </param>
         <location file="/methods/finitedifferences/operatorfactory.hpp" line="54" bodyfile="/methods/finitedifferences/operatorfactory.hpp" bodystart="52" bodyend="56"/>

@@ -9,15 +9,15 @@
         <argsstring>(const CapFloor::arguments &amp;args, const Date &amp;referenceDate, const DayCounter &amp;dayCounter)</argsstring>
         <name>DiscretizedCapFloor</name>
         <param>
-          <type>const <ref refid="cap_floor_1_1arguments" kindref="compound">CapFloor::arguments</ref> &amp;</type>
+          <type>const CapFloor::arguments &amp;</type>
           <declname>args</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/pricingengines/capfloor/discretizedcapfloor.hpp" line="37"/>

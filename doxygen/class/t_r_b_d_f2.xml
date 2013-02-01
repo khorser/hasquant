@@ -38,7 +38,7 @@
         <location file="/methods/finitedifferences/trbdf2.hpp" line="79" bodyfile="/methods/finitedifferences/trbdf2.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="t_r_b_d_f2_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
-        <type><ref refid="step_condition" kindref="compound">traits::condition_type</ref></type>
+        <type>traits::condition_type</type>
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>

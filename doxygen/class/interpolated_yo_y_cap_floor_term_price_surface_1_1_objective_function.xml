@@ -13,11 +13,11 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="interpolation2_d" kindref="compound">Interpolation2D</ref> &amp;</type>
+          <type>const Interpolation2D &amp;</type>
           <defname>a</defname>
         </param>
         <param>
-          <type>const <ref refid="interpolation2_d" kindref="compound">Interpolation2D</ref> &amp;</type>
+          <type>const Interpolation2D &amp;</type>
           <defname>b</defname>
         </param>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="211" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="289" bodyend="294"/>

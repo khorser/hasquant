@@ -9,18 +9,18 @@
         <argsstring>(const boost::shared_ptr&lt; MarketModelFactory &gt; &amp;forwardFactory)</argsstring>
         <name>FwdToCotSwapAdapterFactory</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model_factory" kindref="compound">MarketModelFactory</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModelFactory &gt; &amp;</type>
           <declname>forwardFactory</declname>
         </param>
         <location file="/models/marketmodels/models/fwdtocotswapadapter.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="fwd_to_cot_swap_adapter_factory_1acf20dc18634c1e53c82ecf40a807a70b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; MarketModel &gt;</type>
         <definition>boost::shared_ptr&lt;MarketModel&gt; create</definition>
         <argsstring>(const EvolutionDescription &amp;, Size numberOfFactors) const </argsstring>
         <name>create</name>
         <param>
-          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const EvolutionDescription &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

@@ -16,19 +16,19 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="bond_helper" kindref="compound">BondHelper</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; BondHelper &gt; &gt; &amp;</type>
           <declname>bonds</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref> &amp;</type>
+          <type>const FittingMethod &amp;</type>
           <declname>fittingMethod</declname>
         </param>
         <param>
@@ -42,9 +42,9 @@
           <defval>10000</defval>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>guess</declname>
-          <defval><ref refid="array" kindref="compound">Array</ref>()</defval>
+          <defval>Array()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -61,19 +61,19 @@
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; BondHelper &gt; &gt; &amp;bonds, const DayCounter &amp;dayCounter, const FittingMethod &amp;fittingMethod, Real accuracy=1.0e-10, Size maxEvaluations=10000, const Array &amp;guess=Array(), Real simplexLambda=1.0)</argsstring>
         <name>FittedBondDiscountCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="bond_helper" kindref="compound">BondHelper</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; BondHelper &gt; &gt; &amp;</type>
           <declname>bonds</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref> &amp;</type>
+          <type>const FittingMethod &amp;</type>
           <declname>fittingMethod</declname>
         </param>
         <param>
@@ -87,9 +87,9 @@
           <defval>10000</defval>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>guess</declname>
-          <defval><ref refid="array" kindref="compound">Array</ref>()</defval>
+          <defval>Array()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -110,7 +110,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -118,11 +118,11 @@
           <declname>bonds</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref> &amp;</type>
+          <type>const FittingMethod &amp;</type>
           <declname>fittingMethod</declname>
         </param>
         <param>
@@ -136,9 +136,9 @@
           <defval>10000</defval>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>guess</declname>
-          <defval><ref refid="array" kindref="compound">Array</ref>()</defval>
+          <defval>Array()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -155,7 +155,7 @@
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; FixedRateBondHelper &gt; &gt; &amp;bonds, const DayCounter &amp;dayCounter, const FittingMethod &amp;fittingMethod, Real accuracy=1.0e-10, Size maxEvaluations=10000, const Array &amp;guess=Array(), Real simplexLambda=1.0)</argsstring>
         <name>FittedBondDiscountCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -163,11 +163,11 @@
           <declname>bonds</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref> &amp;</type>
+          <type>const FittingMethod &amp;</type>
           <declname>fittingMethod</declname>
         </param>
         <param>
@@ -181,9 +181,9 @@
           <defval>10000</defval>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>guess</declname>
-          <defval><ref refid="array" kindref="compound">Array</ref>()</defval>
+          <defval>Array()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -207,7 +207,7 @@
         <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="140" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="252" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="fitted_bond_discount_curve_1a1e16dc4d9f84a6e0fabb5b03151ddad5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref> &amp;</type>
+        <type>const FittingMethod &amp;</type>
         <definition>const FittedBondDiscountCurve::FittingMethod &amp; fitResults</definition>
         <argsstring>() const </argsstring>
         <name>fitResults</name>
@@ -220,9 +220,9 @@
       <header>Observer interface</header>
       </sectiondef>
     <briefdescription>
-<para><ref refid="discount" kindref="compound">Discount</ref> curve fitted to a set of fixed-coupon bonds. </para>    </briefdescription>
+<para>Discount curve fitted to a set of fixed-coupon bonds. </para>    </briefdescription>
     <detaileddescription>
-<para>This class fits a discount function <formula id="389">$ d(t) $</formula> over a set of bonds, using a user defined fitting method. The discount function is fit in such a way so that all cashflows of all input bonds, when discounted using <formula id="389">$ d(t) $</formula>, will reproduce the set of input bond prices in an optimized sense. Minimized price errors are weighted by the inverse of their respective bond duration.</para><para>The <ref refid="fitted_bond_discount_curve" kindref="compound">FittedBondDiscountCurve</ref> class acts as a generic wrapper, while its inner class <ref refid="fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittingMethod</ref> provides the implementation details. Developers thus need only derive new fitting methods from the latter.</para><para><bold> Example: </bold> <ref refid="_fitted_bond_curve_8cpp-example" kindref="compound">compares various bond discount curve fitting methodologies </ref></para><para><xrefsect id="caveats_1_caveats000136"><xreftitle>Warning</xreftitle><xrefdescription><para>The method can be slow if there are many bonds to fit. Speed also depends on the particular choice of fitting method chosen and its convergence properties under optimization. See also todo list for BondDiscountCurveFittingMethod.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000063"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>refactor the bond helper class so that it is pure virtual and returns a generic bond or its cash flows. Derived classes would include helpers for fixed-rate and zero-coupon bonds. In this way, both bonds and bills can be used to fit a discount curve using the exact same machinery. At present, only fixed-coupon bonds are supported. An even better way to move forward might be to get rate helpers to return cashflows, in which case this class could be used to fit any set of cash flows, not just bonds.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000064"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add more fitting diagnostics: smoothness, standard deviation, student-t test, etc. Generic smoothness method may be useful for smoothing splines fitting. See Fisher, M., D. Nychka and D. Zervos: &quot;Fitting the term
+<para>This class fits a discount function <formula id="389">$ d(t) $</formula> over a set of bonds, using a user defined fitting method. The discount function is fit in such a way so that all cashflows of all input bonds, when discounted using <formula id="389">$ d(t) $</formula>, will reproduce the set of input bond prices in an optimized sense. Minimized price errors are weighted by the inverse of their respective bond duration.</para><para>The FittedBondDiscountCurve class acts as a generic wrapper, while its inner class FittingMethod provides the implementation details. Developers thus need only derive new fitting methods from the latter.</para><para><bold> Example: </bold> compares various bond discount curve fitting methodologies </para><para><xrefsect id="caveats_1_caveats000136"><xreftitle>Warning</xreftitle><xrefdescription><para>The method can be slow if there are many bonds to fit. Speed also depends on the particular choice of fitting method chosen and its convergence properties under optimization. See also todo list for BondDiscountCurveFittingMethod.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000063"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>refactor the bond helper class so that it is pure virtual and returns a generic bond or its cash flows. Derived classes would include helpers for fixed-rate and zero-coupon bonds. In this way, both bonds and bills can be used to fit a discount curve using the exact same machinery. At present, only fixed-coupon bonds are supported. An even better way to move forward might be to get rate helpers to return cashflows, in which case this class could be used to fit any set of cash flows, not just bonds.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000064"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add more fitting diagnostics: smoothness, standard deviation, student-t test, etc. Generic smoothness method may be useful for smoothing splines fitting. See Fisher, M., D. Nychka and D. Zervos: &quot;Fitting the term
              structure of interest rates with smoothing splines.&quot; Board of Governors of the Federal Reserve System, Federal Resere Board Working Paper, 95-1.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000065"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add extrapolation routines</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="84" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="83" bodyend="167"/>
   </compounddef>

@@ -12,13 +12,13 @@
           <type>const ConvertibleBond::option::arguments &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>grid</declname>
-          <defval><ref refid="time_grid" kindref="compound">TimeGrid</ref>()</defval>
+          <defval>TimeGrid()</defval>
         </param>
         <location file="/experimental/convertiblebonds/discretizedconvertible.hpp" line="39"/>
       </memberdef>
@@ -34,42 +34,42 @@
         <location file="/experimental/convertiblebonds/discretizedconvertible.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="discretized_convertible_1a14f39404e6fa9b884cf80eea4cc75634" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; conversionProbability</definition>
         <argsstring>() const </argsstring>
         <name>conversionProbability</name>
         <location file="/experimental/convertiblebonds/discretizedconvertible.hpp" line="43" bodyfile="/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="43" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="discretized_convertible_1a9aae598a6b884e6949e9202f842783ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>Array &amp;</type>
         <definition>Array&amp; conversionProbability</definition>
         <argsstring>()</argsstring>
         <name>conversionProbability</name>
         <location file="/experimental/convertiblebonds/discretizedconvertible.hpp" line="46" bodyfile="/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="discretized_convertible_1adf8c8d646503e2369f980c260e4edcc0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; spreadAdjustedRate</definition>
         <argsstring>() const </argsstring>
         <name>spreadAdjustedRate</name>
         <location file="/experimental/convertiblebonds/discretizedconvertible.hpp" line="48" bodyfile="/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="discretized_convertible_1a0dce37e2dec572857711b230d1fbd9be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>Array &amp;</type>
         <definition>Array&amp; spreadAdjustedRate</definition>
         <argsstring>()</argsstring>
         <name>spreadAdjustedRate</name>
         <location file="/experimental/convertiblebonds/discretizedconvertible.hpp" line="49" bodyfile="/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="discretized_convertible_1abbe522c96fbf11de524dd97efeadfb83" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; dividendValues</definition>
         <argsstring>() const </argsstring>
         <name>dividendValues</name>
         <location file="/experimental/convertiblebonds/discretizedconvertible.hpp" line="51" bodyfile="/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="discretized_convertible_1a27c62a84e546e02b88a7a6180da6df8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>Array &amp;</type>
         <definition>Array&amp; dividendValues</definition>
         <argsstring>()</argsstring>
         <name>dividendValues</name>

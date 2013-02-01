@@ -9,9 +9,9 @@
         <argsstring>(const boost::shared_ptr&lt; LineSearch &gt; &amp;lSearch=boost::shared_ptr&lt; LineSearch &gt;())</argsstring>
         <name>LineSearchBasedMethod</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="line_search" kindref="compound">LineSearch</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LineSearch &gt; &amp;</type>
           <declname>lSearch</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; LineSearch &gt;()</defval>
         </param>
         <location file="/math/optimization/linesearchbasedmethod.hpp" line="39"/>
       </memberdef>
@@ -28,11 +28,11 @@
         <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)</argsstring>
         <name>minimize</name>
         <param>
-          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
+          <type>Problem &amp;</type>
           <declname>P</declname>
         </param>
         <param>
-          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const EndCriteria &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <location file="/math/optimization/linesearchbasedmethod.hpp" line="43"/>

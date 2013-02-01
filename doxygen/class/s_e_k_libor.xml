@@ -10,13 +10,13 @@
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>SEKLibor</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/ibor/seklibor.hpp" line="50" bodyfile="/indexes/ibor/seklibor.hpp" bodystart="43" bodyend="50"/>
       </memberdef>
@@ -24,7 +24,7 @@
     <briefdescription>
 <para>SEK LIBOR rate </para>    </briefdescription>
     <detaileddescription>
-<para><ref refid="sweden" kindref="compound">Sweden</ref> Krone LIBOR fixed by BBA. <verbatim>   See &lt;http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1414&gt;.</verbatim> </para>    </detaileddescription>
+<para>Sweden Krone LIBOR fixed by BBA. <verbatim>   See &lt;http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1414&gt;.</verbatim> </para>    </detaileddescription>
     <location file="/indexes/ibor/seklibor.hpp" line="41" bodyfile="/indexes/ibor/seklibor.hpp" bodystart="41" bodyend="51"/>
   </compounddef>
 </doxygen>

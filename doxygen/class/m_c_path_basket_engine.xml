@@ -15,21 +15,21 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="m_c_path_basket_engine_1a97d0a464c09dfbac519dd3c4ed297523" prot="public" static="no">
-        <type><ref refid="mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;::path_generator_type</type>
+        <type>McSimulation&lt; MultiVariate, RNG, S &gt;::path_generator_type</type>
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
         <location file="/experimental/mcbasket/mcpathbasketengine.hpp" line="44" bodyfile="/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="m_c_path_basket_engine_1a6a9d35263b41b36b002797dde605d942" prot="public" static="no">
-        <type><ref refid="mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;::path_pricer_type</type>
+        <type>McSimulation&lt; MultiVariate, RNG, S &gt;::path_pricer_type</type>
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
         <location file="/experimental/mcbasket/mcpathbasketengine.hpp" line="46" bodyfile="/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="m_c_path_basket_engine_1a931267be1997474da010eacc9e911b29" prot="public" static="no">
-        <type><ref refid="mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;::stats_type</type>
+        <type>McSimulation&lt; MultiVariate, RNG, S &gt;::stats_type</type>
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
@@ -43,7 +43,7 @@
         <argsstring>(const boost::shared_ptr&lt; StochasticProcessArray &gt; &amp;, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed)</argsstring>
         <name>MCPathBasketEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process_array" kindref="compound">StochasticProcessArray</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcessArray &gt; &amp;</type>
           <defname>process</defname>
         </param>
         <param>

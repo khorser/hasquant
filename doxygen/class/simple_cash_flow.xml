@@ -23,7 +23,7 @@
           <declname>amount</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/cashflows/simplecashflow.hpp" line="37"/>

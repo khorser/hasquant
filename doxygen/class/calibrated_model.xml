@@ -22,20 +22,20 @@
         <argsstring>(const std::vector&lt; boost::shared_ptr&lt; CalibrationHelper &gt; &gt; &amp;, OptimizationMethod &amp;method, const EndCriteria &amp;endCriteria, const Constraint &amp;constraint=Constraint(), const std::vector&lt; Real &gt; &amp;weights=std::vector&lt; Real &gt;())</argsstring>
         <name>calibrate</name>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="calibration_helper" kindref="compound">CalibrationHelper</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; CalibrationHelper &gt; &gt; &amp;</type>
         </param>
         <param>
-          <type><ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &amp;</type>
+          <type>OptimizationMethod &amp;</type>
           <declname>method</declname>
         </param>
         <param>
-          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const EndCriteria &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <param>
-          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const Constraint &amp;</type>
           <declname>constraint</declname>
-          <defval><ref refid="constraint" kindref="compound">Constraint</ref>()</defval>
+          <defval>Constraint()</defval>
         </param>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -54,16 +54,16 @@
         <argsstring>(const Array &amp;params, const std::vector&lt; boost::shared_ptr&lt; CalibrationHelper &gt; &gt; &amp;)</argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>params</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="calibration_helper" kindref="compound">CalibrationHelper</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; CalibrationHelper &gt; &gt; &amp;</type>
         </param>
         <location file="/models/model.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="calibrated_model_1a8222cafc2215551be69895aaa8f12bed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="constraint" kindref="compound">Constraint</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; Constraint &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; Constraint &gt; &amp; constraint</definition>
         <argsstring>() const </argsstring>
         <name>constraint</name>
@@ -79,7 +79,7 @@
         <location file="/models/model.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="calibrated_model_1abf0665e7524410c40a874b86db642511" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; params</definition>
         <argsstring>() const </argsstring>
         <name>params</name>
@@ -93,7 +93,7 @@
         <argsstring>(const Array &amp;params)</argsstring>
         <name>setParams</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>params</declname>
         </param>
         <location file="/models/model.hpp" line="108"/>

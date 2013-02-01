@@ -9,7 +9,7 @@
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, Size polynomOrder, LsmBasisSystem::PolynomType polynomType)</argsstring>
         <name>AmericanPathPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Payoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
@@ -28,7 +28,7 @@
         <argsstring>(const Path &amp;path, Size t) const </argsstring>
         <name>state</name>
         <param>
-          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+          <type>const Path &amp;</type>
           <declname>path</declname>
         </param>
         <param>
@@ -43,7 +43,7 @@
         <argsstring>(const Path &amp;path, Size t) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+          <type>const Path &amp;</type>
           <declname>path</declname>
         </param>
         <param>

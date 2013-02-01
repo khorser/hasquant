@@ -5,7 +5,7 @@
     <includes local="no">/termstructures/iterativebootstrap.hpp</includes>
     <templateparamlist>
       <param>
-        <type>class <ref refid="curve" kindref="compound">Curve</ref></type>
+        <type>class Curve</type>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
@@ -22,7 +22,7 @@
         <argsstring>(Curve *ts)</argsstring>
         <name>setup</name>
         <param>
-          <type><ref refid="curve" kindref="compound">Curve</ref> *</type>
+          <type>Curve *</type>
           <declname>ts</declname>
         </param>
         <location file="/termstructures/iterativebootstrap.hpp" line="45" bodyfile="/termstructures/iterativebootstrap.hpp" bodystart="67" bodyend="76"/>

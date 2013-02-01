@@ -40,7 +40,7 @@
     <briefdescription>
 <para>Inverse cumulative Student t-distribution. </para>    </briefdescription>
     <detaileddescription>
-<para><xrefsect id="todo_1_todo000031"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Find/implement an efficient algorithm for evaluating the cumulative Student t-distribution, replacing the <ref refid="newton" kindref="compound">Newton</ref> iteration </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para><xrefsect id="todo_1_todo000031"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Find/implement an efficient algorithm for evaluating the cumulative Student t-distribution, replacing the Newton iteration </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/math/distributions/studenttdistribution.hpp" line="81" bodyfile="/math/distributions/studenttdistribution.hpp" bodystart="80" bodyend="94"/>
   </compounddef>
 </doxygen>

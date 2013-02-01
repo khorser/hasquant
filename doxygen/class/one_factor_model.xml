@@ -25,7 +25,7 @@
         <location file="/models/shortrate/onefactormodel.hpp" line="40" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; ShortRateDynamics &gt;</type>
         <definition>virtual boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
         <argsstring>() const =0</argsstring>
         <name>dynamics</name>

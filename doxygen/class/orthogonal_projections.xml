@@ -10,7 +10,7 @@
         <argsstring>(const Matrix &amp;originalVectors, Real multiplierCutOff, Real tolerance)</argsstring>
         <name>OrthogonalProjections</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>originalVectors</declname>
         </param>
         <param>

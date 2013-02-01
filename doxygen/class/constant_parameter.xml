@@ -10,7 +10,7 @@
         <argsstring>(const Constraint &amp;constraint)</argsstring>
         <name>ConstantParameter</name>
         <param>
-          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const Constraint &amp;</type>
           <declname>constraint</declname>
         </param>
         <location file="/models/parameter.hpp" line="85" bodyfile="/models/parameter.hpp" bodystart="80" bodyend="85"/>
@@ -25,7 +25,7 @@
           <declname>value</declname>
         </param>
         <param>
-          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const Constraint &amp;</type>
           <declname>constraint</declname>
         </param>
         <location file="/models/parameter.hpp" line="92" bodyfile="/models/parameter.hpp" bodystart="87" bodyend="96"/>

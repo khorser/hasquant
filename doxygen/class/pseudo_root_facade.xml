@@ -19,7 +19,7 @@
         <location file="/models/marketmodels/models/pseudorootfacade.hpp" line="45" bodyfile="/models/marketmodels/models/pseudorootfacade.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="pseudo_root_facade_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <type>const EvolutionDescription &amp;</type>
         <definition>const EvolutionDescription &amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
@@ -47,7 +47,7 @@
         <location file="/models/marketmodels/models/pseudorootfacade.hpp" line="49" bodyfile="/models/marketmodels/models/pseudorootfacade.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="pseudo_root_facade_1a4ae7300f2e5a07c864d4652df785b9ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix &amp; pseudoRoot</definition>
         <argsstring>(Size i) const </argsstring>
         <name>pseudoRoot</name>
@@ -76,7 +76,7 @@
         <argsstring>(const std::vector&lt; Matrix &gt; &amp;covariancePseudoRoots, const std::vector&lt; Rate &gt; &amp;rateTimes, const std::vector&lt; Rate &gt; &amp;initialRates, const std::vector&lt; Spread &gt; &amp;displacements)</argsstring>
         <name>PseudoRootFacade</name>
         <param>
-          <type>const std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Matrix &gt; &amp;</type>
           <declname>covariancePseudoRoots</declname>
         </param>
         <param>

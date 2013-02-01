@@ -10,7 +10,7 @@
         <argsstring>(const Date &amp;date)</argsstring>
         <name>EuropeanExercise</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/exercise.hpp" line="97"/>

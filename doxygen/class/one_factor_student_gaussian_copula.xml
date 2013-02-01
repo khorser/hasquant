@@ -10,7 +10,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;correlation, int nm, Real maximum=10, Size integrationSteps=200)</argsstring>
         <name>OneFactorStudentGaussianCopula</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>correlation</declname>
         </param>
         <param>

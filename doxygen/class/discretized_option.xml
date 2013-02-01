@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; DiscretizedAsset &gt; &amp;underlying, Exercise::Type exerciseType, const std::vector&lt; Time &gt; &amp;exerciseTimes)</argsstring>
         <name>DiscretizedOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="discretized_asset" kindref="compound">DiscretizedAsset</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; DiscretizedAsset &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
         <param>

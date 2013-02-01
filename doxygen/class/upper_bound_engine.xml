@@ -10,15 +10,15 @@
         <argsstring>(const boost::shared_ptr&lt; MarketModelEvolver &gt; &amp;evolver, const std::vector&lt; boost::shared_ptr&lt; MarketModelEvolver &gt; &gt; &amp;innerEvolvers, const MarketModelMultiProduct &amp;underlying, const MarketModelExerciseValue &amp;rebate, const MarketModelMultiProduct &amp;hedge, const MarketModelExerciseValue &amp;hedgeRebate, const ExerciseStrategy&lt; CurveState &gt; &amp;hedgeStrategy, Real initialNumeraireValue)</argsstring>
         <name>UpperBoundEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModelEvolver &gt; &amp;</type>
           <declname>evolver</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; MarketModelEvolver &gt; &gt; &amp;</type>
           <declname>innerEvolvers</declname>
         </param>
         <param>
-          <type>const <ref refid="market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &amp;</type>
+          <type>const MarketModelMultiProduct &amp;</type>
           <declname>underlying</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
           <declname>rebate</declname>
         </param>
         <param>
-          <type>const <ref refid="market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &amp;</type>
+          <type>const MarketModelMultiProduct &amp;</type>
           <declname>hedge</declname>
         </param>
         <param>
@@ -34,7 +34,7 @@
           <declname>hedgeRebate</declname>
         </param>
         <param>
-          <type>const ExerciseStrategy&lt; <ref refid="curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
+          <type>const ExerciseStrategy&lt; CurveState &gt; &amp;</type>
           <declname>hedgeStrategy</declname>
         </param>
         <param>

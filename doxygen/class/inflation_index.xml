@@ -19,7 +19,7 @@
         <location file="/indexes/inflationindex.hpp" line="100" bodyfile="/indexes/inflationindex.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="inflation_index_1a304741bfa4f39cb526cb58694ba21b72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="region" kindref="compound">Region</ref></type>
+        <type>Region</type>
         <definition>Region region</definition>
         <argsstring>() const </argsstring>
         <name>region</name>
@@ -49,7 +49,7 @@
         <location file="/indexes/inflationindex.hpp" line="110" bodyfile="/indexes/inflationindex.hpp" bodystart="236" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="inflation_index_1a1a96e907a4fa3ef48090f8febb6ef80e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period availabilityLag</definition>
         <argsstring>() const </argsstring>
         <name>availabilityLag</name>
@@ -58,7 +58,7 @@
         <location file="/indexes/inflationindex.hpp" line="118" bodyfile="/indexes/inflationindex.hpp" bodystart="240" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="inflation_index_1af41171847c0cf98154d62bb7f71f3070" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="currency" kindref="compound">Currency</ref></type>
+        <type>Currency</type>
         <definition>Currency currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
@@ -76,7 +76,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="region" kindref="compound">Region</ref> &amp;</type>
+          <type>const Region &amp;</type>
           <declname>region</declname>
         </param>
         <param>
@@ -92,11 +92,11 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>availabilitiyLag</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>currency</declname>
         </param>
         <detaileddescription>

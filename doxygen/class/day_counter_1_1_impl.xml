@@ -24,11 +24,11 @@
         <argsstring>(const Date &amp;d1, const Date &amp;d2) const </argsstring>
         <name>dayCount</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d1</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d2</declname>
         </param>
         <briefdescription>
@@ -41,19 +41,19 @@
         <argsstring>(const Date &amp;d1, const Date &amp;d2, const Date &amp;refPeriodStart, const Date &amp;refPeriodEnd) const =0</argsstring>
         <name>yearFraction</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d1</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d2</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
         </param>
         <location file="/time/daycounter.hpp" line="58"/>

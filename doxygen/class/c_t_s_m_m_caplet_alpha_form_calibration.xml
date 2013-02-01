@@ -9,7 +9,7 @@
         <argsstring>(const EvolutionDescription &amp;evolution, const boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt; &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;capletVols, const boost::shared_ptr&lt; CurveState &gt; &amp;cs, Spread displacement, const std::vector&lt; Real &gt; &amp;alphaInitial, const std::vector&lt; Real &gt; &amp;alphaMax, const std::vector&lt; Real &gt; &amp;alphaMin, bool maximizeHomogeneity, boost::shared_ptr&lt; AlphaForm &gt; parametricForm=boost::shared_ptr&lt; AlphaForm &gt;())</argsstring>
         <name>CTSMMCapletAlphaFormCalibration</name>
         <param>
-          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const EvolutionDescription &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <declname>capletVols</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CurveState &gt; &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -70,7 +70,7 @@
         <argsstring>(const EvolutionDescription &amp;evolution, const PiecewiseConstantCorrelation &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;capletVols, const CurveState &amp;cs, const Spread displacement, const std::vector&lt; Real &gt; &amp;alphaInitial, const std::vector&lt; Real &gt; &amp;alphaMax, const std::vector&lt; Real &gt; &amp;alphaMin, bool maximizeHomogeneity, boost::shared_ptr&lt; AlphaForm &gt; parametricForm, const Size numberOfFactors, Integer steps, Real toleranceForAlphaSolving, std::vector&lt; Real &gt; &amp;alpha, std::vector&lt; Real &gt; &amp;a, std::vector&lt; Real &gt; &amp;b, std::vector&lt; Matrix &gt; &amp;swapCovariancePseudoRoots)</argsstring>
         <name>capletAlphaFormCalibration</name>
         <param>
-          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const EvolutionDescription &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>
@@ -86,7 +86,7 @@
           <declname>capletVols</declname>
         </param>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -138,7 +138,7 @@
           <declname>b</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <type>std::vector&lt; Matrix &gt; &amp;</type>
           <declname>swapCovariancePseudoRoots</declname>
         </param>
         <location file="/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="74"/>

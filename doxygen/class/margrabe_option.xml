@@ -21,7 +21,7 @@
           <declname>Q2</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
         </param>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="44"/>
       </memberdef>

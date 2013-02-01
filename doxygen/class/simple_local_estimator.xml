@@ -16,12 +16,12 @@
         <location file="/models/volatility/simplelocalestimator.hpp" line="41" bodyfile="/models/volatility/simplelocalestimator.hpp" bodystart="40" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="simple_local_estimator_1a2ff585a7a780ab4d7275a408e86b4642" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <type>TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
         <definition>TimeSeries&lt;Volatility&gt; calculate</definition>
         <argsstring>(const TimeSeries&lt; Real &gt; &amp;quoteSeries)</argsstring>
         <name>calculate</name>
         <param>
-          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
         <location file="/models/volatility/simplelocalestimator.hpp" line="43" bodyfile="/models/volatility/simplelocalestimator.hpp" bodystart="43" bodyend="55"/>

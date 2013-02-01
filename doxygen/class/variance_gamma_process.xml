@@ -10,15 +10,15 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;s0, const Handle&lt; YieldTermStructure &gt; &amp;dividendYield, const Handle&lt; YieldTermStructure &gt; &amp;riskFreeRate, Real sigma, Real nu, Real theta)</argsstring>
         <name>VarianceGammaProcess</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>s0</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>dividendYield</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>riskFreeRate</declname>
         </param>
         <param>
@@ -57,21 +57,21 @@
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="64" bodyfile="/experimental/variancegamma/variancegammaprocess.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="variance_gamma_process_1a5454c7c9728f2ccef70ac7c9cc0fccee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+        <type>const Handle&lt; Quote &gt; &amp;</type>
         <definition>const Handle&lt;Quote&gt;&amp; s0</definition>
         <argsstring>() const </argsstring>
         <name>s0</name>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="variance_gamma_process_1ad410a408dd37b79578b370b5219dbf80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; dividendYield</definition>
         <argsstring>() const </argsstring>
         <name>dividendYield</name>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="variance_gamma_process_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; riskFreeRate</definition>
         <argsstring>() const </argsstring>
         <name>riskFreeRate</name>

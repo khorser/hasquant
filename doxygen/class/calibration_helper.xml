@@ -25,11 +25,11 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;volatility, const Handle&lt; YieldTermStructure &gt; &amp;termStructure, CalibrationErrorType calibrationErrorType=RelativePriceError)</argsstring>
         <name>CalibrationHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
@@ -125,7 +125,7 @@
         <argsstring>(const boost::shared_ptr&lt; PricingEngine &gt; &amp;engine)</argsstring>
         <name>setPricingEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; PricingEngine &gt; &amp;</type>
           <declname>engine</declname>
         </param>
         <location file="/models/calibrationhelper.hpp" line="76" bodyfile="/models/calibrationhelper.hpp" bodystart="76" bodyend="78"/>

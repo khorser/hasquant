@@ -14,10 +14,10 @@
           <declname>equityShortRateCorrelation</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="hull_white" kindref="compound">HullWhite</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HullWhite &gt; &amp;</type>
         </param>
         <location file="/pricingengines/vanilla/analyticbsmhullwhiteengine.hpp" line="53"/>
       </memberdef>

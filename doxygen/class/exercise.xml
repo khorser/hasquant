@@ -45,7 +45,7 @@
         <location file="/exercise.hpp" line="44" bodyfile="/exercise.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="exercise_1a688725346fb170983161428872458ff5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date date</definition>
         <argsstring>(Size index) const </argsstring>
         <name>date</name>
@@ -56,7 +56,7 @@
         <location file="/exercise.hpp" line="45" bodyfile="/exercise.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="exercise_1a6a149d4beeac42703f37f63defbff974" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
@@ -65,7 +65,7 @@
         <location file="/exercise.hpp" line="47" bodyfile="/exercise.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="exercise_1a82fb26af3e6b94b1bad6e21f0d6a56ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date lastDate</definition>
         <argsstring>() const </argsstring>
         <name>lastDate</name>

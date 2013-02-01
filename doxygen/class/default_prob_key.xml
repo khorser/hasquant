@@ -17,11 +17,11 @@
         <argsstring>(const std::vector&lt; boost::shared_ptr&lt; DefaultType &gt; &gt; &amp;eventTypes, const Currency cur, Seniority sen)</argsstring>
         <name>DefaultProbKey</name>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="default_type" kindref="compound">DefaultType</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; DefaultType &gt; &gt; &amp;</type>
           <declname>eventTypes</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref></type>
+          <type>const Currency</type>
           <declname>cur</declname>
         </param>
         <param>
@@ -31,7 +31,7 @@
         <location file="/experimental/credit/defaultprobabilitykey.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="default_prob_key_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>const Currency &amp;</type>
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
@@ -45,7 +45,7 @@
         <location file="/experimental/credit/defaultprobabilitykey.hpp" line="58" bodyfile="/experimental/credit/defaultprobabilitykey.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="default_prob_key_1ada1c87ba549de5a9ad051cf3da483370" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="default_type" kindref="compound">DefaultType</ref> &gt; &gt; &amp;</type>
+        <type>const std::vector&lt; boost::shared_ptr&lt; DefaultType &gt; &gt; &amp;</type>
         <definition>const std::vector&lt;boost::shared_ptr&lt;DefaultType&gt; &gt;&amp; eventTypes</definition>
         <argsstring>() const </argsstring>
         <name>eventTypes</name>

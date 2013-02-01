@@ -4,7 +4,7 @@
     <compoundname>QuantLib::PagodaOption::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="pagoda_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>

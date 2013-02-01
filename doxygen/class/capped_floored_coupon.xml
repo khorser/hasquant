@@ -12,7 +12,7 @@
       <sectiondef kind="user-defined">
       <header>Visitability</header>
       <memberdef kind="variable" id="capped_floored_coupon_1a8f7dfb713dc9e9d2850445f1db36784d" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; FloatingRateCoupon &gt;</type>
         <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; underlying_</definition>
         <argsstring></argsstring>
         <name>underlying_</name>
@@ -66,7 +66,7 @@
         <argsstring>(const boost::shared_ptr&lt; FloatingRateCouponPricer &gt; &amp;pricer)</argsstring>
         <name>setPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; FloatingRateCouponPricer &gt; &amp;</type>
           <declname>pricer</declname>
         </param>
         <location file="/cashflows/capflooredcoupon.hpp" line="89"/>
@@ -79,18 +79,18 @@
         <argsstring>(const boost::shared_ptr&lt; FloatingRateCoupon &gt; &amp;underlying, Rate cap=Null&lt; Rate &gt;(), Rate floor=Null&lt; Rate &gt;())</argsstring>
         <name>CappedFlooredCoupon</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; FloatingRateCoupon &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>cap</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>floor</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <location file="/cashflows/capflooredcoupon.hpp" line="62"/>
       </memberdef>

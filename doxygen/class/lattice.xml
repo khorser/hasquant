@@ -6,7 +6,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="lattice_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+        <type>const TimeGrid &amp;</type>
         <definition>const TimeGrid&amp; timeGrid</definition>
         <argsstring>() const </argsstring>
         <name>timeGrid</name>
@@ -15,14 +15,14 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Numerical method interface</header>
-      <description><para>These methods are to be used by discretized assets and must be overridden by developers implementing numerical methods. Users are advised to use the corresponding methods of <ref refid="discretized_asset" kindref="compound">DiscretizedAsset</ref> instead. </para></description>
+      <description><para>These methods are to be used by discretized assets and must be overridden by developers implementing numerical methods. Users are advised to use the corresponding methods of DiscretizedAsset instead. </para></description>
       <memberdef kind="function" id="lattice_1a8f3082121a4d10bf0c4e141212935378" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void initialize</definition>
         <argsstring>(DiscretizedAsset &amp;, Time time) const =0</argsstring>
         <name>initialize</name>
         <param>
-          <type><ref refid="discretized_asset" kindref="compound">DiscretizedAsset</ref> &amp;</type>
+          <type>DiscretizedAsset &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -38,7 +38,7 @@
         <argsstring>(DiscretizedAsset &amp;, Time to) const =0</argsstring>
         <name>rollback</name>
         <param>
-          <type><ref refid="discretized_asset" kindref="compound">DiscretizedAsset</ref> &amp;</type>
+          <type>DiscretizedAsset &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -54,7 +54,7 @@
         <argsstring>(DiscretizedAsset &amp;, Time to) const =0</argsstring>
         <name>partialRollback</name>
         <param>
-          <type><ref refid="discretized_asset" kindref="compound">DiscretizedAsset</ref> &amp;</type>
+          <type>DiscretizedAsset &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -73,7 +73,7 @@
         <argsstring>(DiscretizedAsset &amp;) const =0</argsstring>
         <name>presentValue</name>
         <param>
-          <type><ref refid="discretized_asset" kindref="compound">DiscretizedAsset</ref> &amp;</type>
+          <type>DiscretizedAsset &amp;</type>
         </param>
         <briefdescription>
 <para>computes the present value of an asset. </para>        </briefdescription>
@@ -87,7 +87,7 @@
         <argsstring>(const TimeGrid &amp;timeGrid)</argsstring>
         <name>Lattice</name>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <location file="/numericalmethod.hpp" line="38" bodyfile="/numericalmethod.hpp" bodystart="38" bodyend="38"/>
@@ -100,7 +100,7 @@
         <location file="/numericalmethod.hpp" line="39" bodyfile="/numericalmethod.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="lattice_1a85dadec35b0b9775e93b8c0d826447ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; grid</definition>
         <argsstring>(Time) const =0</argsstring>
         <name>grid</name>

@@ -20,11 +20,11 @@
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process, const TimeGrid &amp;timeGrid, bool isPositive=false)</argsstring>
         <name>TrinomialTree</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
         <location file="/methods/lattices/trinomialtree.hpp" line="48" bodyfile="/methods/lattices/trinomialtree.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="trinomial_tree_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+        <type>const TimeGrid &amp;</type>
         <definition>const TimeGrid&amp; timeGrid</definition>
         <argsstring>() const </argsstring>
         <name>timeGrid</name>

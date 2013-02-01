@@ -10,21 +10,21 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;x0, const Handle&lt; YieldTermStructure &gt; &amp;riskFreeTS, const Handle&lt; BlackVolTermStructure &gt; &amp;blackVolTS, const boost::shared_ptr&lt; discretization &gt; &amp;d=boost::shared_ptr&lt; discretization &gt;(new EulerDiscretization))</argsstring>
         <name>BlackProcess</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>riskFreeTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVolTermStructure &gt; &amp;</type>
           <declname>blackVolTS</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; discretization &gt; &amp;</type>
           <declname>d</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
+          <defval>boost::shared_ptr&lt; discretization &gt;(new EulerDiscretization)</defval>
         </param>
         <location file="/processes/blackscholesprocess.hpp" line="147"/>
       </memberdef>

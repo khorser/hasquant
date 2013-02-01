@@ -12,7 +12,7 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="frank_copula_rng_1af3b59a3dd56521693efc68c221a2bf38" prot="public" static="no">
-        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>Sample&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -43,7 +43,7 @@
         <location file="/experimental/math/frankcopularng.hpp" line="40" bodyfile="/experimental/math/frankcopularng.hpp" bodystart="48" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="frank_copula_rng_1ad590806283f6baf45a2b643d86e2d9c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="sample" kindref="compound">sample_type</ref></type>
+        <type>sample_type</type>
         <definition>FrankCopulaRng&lt; RNG &gt;::sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>

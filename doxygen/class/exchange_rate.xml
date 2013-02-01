@@ -18,11 +18,11 @@
         <argsstring>(const Currency &amp;source, const Currency &amp;target, Decimal rate)</argsstring>
         <name>ExchangeRate</name>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>source</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>target</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="exchange_rate_1a96501aee76f43095161955da20b424c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>const Currency &amp;</type>
         <definition>const Currency &amp; source</definition>
         <argsstring>() const </argsstring>
         <name>source</name>
@@ -46,7 +46,7 @@
         <location file="/exchangerate.hpp" line="58" bodyfile="/exchangerate.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="exchange_rate_1a07f53542a8bfb912e7a153d9bf63b7f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>const Currency &amp;</type>
         <definition>const Currency &amp; target</definition>
         <argsstring>() const </argsstring>
         <name>target</name>
@@ -76,12 +76,12 @@
       <sectiondef kind="user-defined">
       <header>Utility methods</header>
       <memberdef kind="function" id="exchange_rate_1a9f301db956165c24ea3e237fd1e8ee13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money exchange</definition>
         <argsstring>(const Money &amp;amount) const </argsstring>
         <name>exchange</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
           <declname>amount</declname>
         </param>
         <briefdescription>
@@ -89,16 +89,16 @@
         <location file="/exchangerate.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="exchange_rate_1ae2478925351c7de1d7c107cb4d025872" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="exchange_rate" kindref="compound">ExchangeRate</ref></type>
+        <type>ExchangeRate</type>
         <definition>static ExchangeRate chain</definition>
         <argsstring>(const ExchangeRate &amp;r1, const ExchangeRate &amp;r2)</argsstring>
         <name>chain</name>
         <param>
-          <type>const <ref refid="exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
+          <type>const ExchangeRate &amp;</type>
           <declname>r1</declname>
         </param>
         <param>
-          <type>const <ref refid="exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
+          <type>const ExchangeRate &amp;</type>
           <declname>r2</declname>
         </param>
         <briefdescription>

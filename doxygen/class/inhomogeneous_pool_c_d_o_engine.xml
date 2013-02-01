@@ -15,7 +15,7 @@
         <argsstring>(const Handle&lt; OneFactorCopula &gt; copula, Size nBuckets)</argsstring>
         <name>InhomogeneousPoolCDOEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
+          <type>const Handle&lt; OneFactorCopula &gt;</type>
           <declname>copula</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="c_d_o" kindref="compound">CDO</ref> engine, loss disctribution bucketing for finite inhomogeneous pool. </para>    </briefdescription>
+<para>CDO engine, loss disctribution bucketing for finite inhomogeneous pool. </para>    </briefdescription>
     <location file="/experimental/credit/syntheticcdoengines.hpp" line="197" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="197" bodyend="216"/>
   </compounddef>
 </doxygen>

@@ -18,7 +18,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;quote)</argsstring>
         <name>RelativeDateBootstrapHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>quote</declname>
         </param>
         <location file="/termstructures/bootstraphelper.hpp" line="104" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="166" bodyend="171"/>

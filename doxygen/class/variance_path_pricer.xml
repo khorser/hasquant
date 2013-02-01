@@ -9,7 +9,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
         <name>VariancePathPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/pricingengines/forward/mcvarianceswapengine.hpp" line="158" bodyfile="/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="156" bodyend="158"/>
@@ -20,7 +20,7 @@
         <argsstring>(const Path &amp;path) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+          <type>const Path &amp;</type>
           <declname>path</declname>
         </param>
         <location file="/pricingengines/forward/mcvarianceswapengine.hpp" line="159" bodyfile="/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="338" bodyend="346"/>

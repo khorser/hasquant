@@ -10,7 +10,7 @@
         <argsstring>(const Parameter &amp;fitting, const boost::function&lt; Real(Time)&gt; &amp;alpha, const boost::function&lt; Real(Time)&gt; &amp;sigma)</argsstring>
         <name>Dynamics</name>
         <param>
-          <type>const <ref refid="parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <type>const Parameter &amp;</type>
           <declname>fitting</declname>
         </param>
         <param>

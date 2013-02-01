@@ -10,7 +10,7 @@
         <argsstring>(const Parameter &amp;phi, Real theta, Real k, Real sigma, Real x0)</argsstring>
         <name>Dynamics</name>
         <param>
-          <type>const <ref refid="parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <type>const Parameter &amp;</type>
           <declname>phi</declname>
         </param>
         <param>

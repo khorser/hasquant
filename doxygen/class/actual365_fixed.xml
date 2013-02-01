@@ -15,7 +15,7 @@
     <briefdescription>
 <para>Actual/365 (Fixed) day count convention. </para>    </briefdescription>
     <detaileddescription>
-<para>&quot;Actual/365 (Fixed)&quot; day count convention, also know as &quot;Act/365 (Fixed)&quot;, &quot;A/365 (Fixed)&quot;, or &quot;A/365F&quot;.</para><para><xrefsect id="caveats_1_caveats000146"><xreftitle>Warning</xreftitle><xrefdescription><para>According to ISDA, &quot;Actual/365&quot; (without &quot;Fixed&quot;) is an alias for &quot;Actual/Actual (ISDA)&quot; (see <ref refid="actual_actual" kindref="compound">ActualActual</ref>.) If Actual/365 is not explicitly specified as fixed in an instrument specification, you might want to double-check its meaning.</para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>&quot;Actual/365 (Fixed)&quot; day count convention, also know as &quot;Act/365 (Fixed)&quot;, &quot;A/365 (Fixed)&quot;, or &quot;A/365F&quot;.</para><para><xrefsect id="caveats_1_caveats000146"><xreftitle>Warning</xreftitle><xrefdescription><para>According to ISDA, &quot;Actual/365&quot; (without &quot;Fixed&quot;) is an alias for &quot;Actual/Actual (ISDA)&quot; (see ActualActual.) If Actual/365 is not explicitly specified as fixed in an instrument specification, you might want to double-check its meaning.</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/time/daycounters/actual365fixed.hpp" line="44" bodyfile="/time/daycounters/actual365fixed.hpp" bodystart="44" bodyend="60"/>
   </compounddef>
 </doxygen>

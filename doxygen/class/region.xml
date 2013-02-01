@@ -28,10 +28,10 @@
         <argsstring>(const Region &amp;, const Region &amp;)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="region" kindref="compound">Region</ref> &amp;</type>
+          <type>const Region &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="region" kindref="compound">Region</ref> &amp;</type>
+          <type>const Region &amp;</type>
         </param>
         <location file="/indexes/region.hpp" line="55" bodyfile="/indexes/region.hpp" bodystart="104" bodyend="106"/>
       </memberdef>
@@ -41,16 +41,16 @@
         <argsstring>(const Region &amp;, const Region &amp;)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="region" kindref="compound">Region</ref> &amp;</type>
+          <type>const Region &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="region" kindref="compound">Region</ref> &amp;</type>
+          <type>const Region &amp;</type>
         </param>
         <location file="/indexes/region.hpp" line="58" bodyfile="/indexes/region.hpp" bodystart="108" bodyend="110"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="region" kindref="compound">Region</ref> class, used for inflation applicability. </para>    </briefdescription>
+<para>Region class, used for inflation applicability. </para>    </briefdescription>
     <location file="/indexes/region.hpp" line="34" bodyfile="/indexes/region.hpp" bodystart="34" bodyend="45"/>
   </compounddef>
 </doxygen>

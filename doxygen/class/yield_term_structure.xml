@@ -5,26 +5,26 @@
     <includes local="no">/termstructures/yieldtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <description><para>See the TermStructure documentation for issues regarding constructors. </para></description>
       <memberdef kind="function" id="yield_term_structure_1a382402dea502a41c343931625ccb5b69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>YieldTermStructure</definition>
         <argsstring>(const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>YieldTermStructure</name>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/yieldtermstructure.hpp" line="53"/>
       </memberdef>
@@ -34,28 +34,28 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;cal=Calendar(), const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>YieldTermStructure</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
-          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval>Calendar()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/yieldtermstructure.hpp" line="58"/>
       </memberdef>
@@ -69,23 +69,23 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; Handle&lt; Quote &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <location file="/termstructures/yieldtermstructure.hpp" line="63"/>
       </memberdef>
@@ -99,7 +99,7 @@
         <argsstring>(const Date &amp;d, bool extrapolate=false) const </argsstring>
         <name>discount</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -132,16 +132,16 @@
       <header>Zero-yield rates</header>
       <description><para>These methods return the implied zero-yield rate for a given date or time. In the former case, the time is calculated as a fraction of year from the reference date. </para></description>
       <memberdef kind="function" id="yield_term_structure_1a12972ab974483ed401a4d9590b75535f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="interest_rate" kindref="compound">InterestRate</ref></type>
+        <type>InterestRate</type>
         <definition>InterestRate zeroRate</definition>
         <argsstring>(const Date &amp;d, const DayCounter &amp;resultDayCounter, Compounding comp, Frequency freq=Annual, bool extrapolate=false) const </argsstring>
         <name>zeroRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>resultDayCounter</declname>
         </param>
         <param>
@@ -163,7 +163,7 @@
         <location file="/termstructures/yieldtermstructure.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="yield_term_structure_1a082588804109bda287be685bf25951ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="interest_rate" kindref="compound">InterestRate</ref></type>
+        <type>InterestRate</type>
         <definition>InterestRate zeroRate</definition>
         <argsstring>(Time t, Compounding comp, Frequency freq=Annual, bool extrapolate=false) const </argsstring>
         <name>zeroRate</name>
@@ -194,20 +194,20 @@
       <header>Forward rates</header>
       <description><para>These methods returns the forward interest rate between two dates or times. In the former case, times are calculated as fractions of year from the reference date.</para><para>If both dates (times) are equal the instantaneous forward rate is returned. </para></description>
       <memberdef kind="function" id="yield_term_structure_1a7a4a0acc869b6696002755cfe9848000" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="interest_rate" kindref="compound">InterestRate</ref></type>
+        <type>InterestRate</type>
         <definition>InterestRate forwardRate</definition>
         <argsstring>(const Date &amp;d1, const Date &amp;d2, const DayCounter &amp;resultDayCounter, Compounding comp, Frequency freq=Annual, bool extrapolate=false) const </argsstring>
         <name>forwardRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d1</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d2</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>resultDayCounter</declname>
         </param>
         <param>
@@ -229,20 +229,20 @@
         <location file="/termstructures/yieldtermstructure.hpp" line="126"/>
       </memberdef>
       <memberdef kind="function" id="yield_term_structure_1a7bb62afcfd21cdc31aa6f38a01f1f6be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="interest_rate" kindref="compound">InterestRate</ref></type>
+        <type>InterestRate</type>
         <definition>InterestRate forwardRate</definition>
         <argsstring>(const Date &amp;d, const Period &amp;p, const DayCounter &amp;resultDayCounter, Compounding comp, Frequency freq=Annual, bool extrapolate=false) const </argsstring>
         <name>forwardRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>p</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>resultDayCounter</declname>
         </param>
         <param>
@@ -264,7 +264,7 @@
         <location file="/termstructures/yieldtermstructure.hpp" line="136" bodyfile="/termstructures/yieldtermstructure.hpp" bodystart="191" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="yield_term_structure_1a8b99c32181c270e69d3c5b985f4a95aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="interest_rate" kindref="compound">InterestRate</ref></type>
+        <type>InterestRate</type>
         <definition>InterestRate forwardRate</definition>
         <argsstring>(Time t1, Time t2, Compounding comp, Frequency freq=Annual, bool extrapolate=false) const </argsstring>
         <name>forwardRate</name>
@@ -298,7 +298,7 @@
       <sectiondef kind="user-defined">
       <header>Jump inspectors</header>
       <memberdef kind="function" id="yield_term_structure_1a664edcb72ff4033ddc5d423bb22adb42" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; jumpDates</definition>
         <argsstring>() const </argsstring>
         <name>jumpDates</name>

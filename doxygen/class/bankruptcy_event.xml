@@ -9,11 +9,11 @@
         <argsstring>(const Date &amp;creditEventDate, const Currency &amp;curr, Seniority bondsSen, const Date &amp;settleDate, const std::map&lt; Seniority, Real &gt; &amp;recoveryRates)</argsstring>
         <name>BankruptcyEvent</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>creditEventDate</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>curr</declname>
         </param>
         <param>
@@ -21,7 +21,7 @@
           <declname>bondsSen</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>settleDate</declname>
         </param>
         <param>
@@ -36,11 +36,11 @@
         <argsstring>(const Date &amp;creditEventDate, const Currency &amp;curr, Seniority bondsSen, const Date &amp;settleDate, Real recoveryRates)</argsstring>
         <name>BankruptcyEvent</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>creditEventDate</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>curr</declname>
         </param>
         <param>
@@ -48,7 +48,7 @@
           <declname>bondsSen</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>settleDate</declname>
         </param>
         <param>
@@ -63,7 +63,7 @@
         <argsstring>(const boost::shared_ptr&lt; DefaultType &gt; &amp;) const </argsstring>
         <name>matchesEventType</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="default_type" kindref="compound">DefaultType</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; DefaultType &gt; &amp;</type>
         </param>
         <briefdescription>
 <para>This is a stronger than all event and will trigger all of them. </para>        </briefdescription>

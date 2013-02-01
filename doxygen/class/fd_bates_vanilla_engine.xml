@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; BatesModel &gt; &amp;model, Size tGrid=100, Size xGrid=100, Size vGrid=50, Size dampingSteps=0, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdBatesVanillaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="bates_model" kindref="compound">BatesModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BatesModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Partial Integro FiniteDifferences Bates Vanilla <ref refid="option" kindref="compound">Option</ref> engine. </para>    </briefdescription>
+<para>Partial Integro FiniteDifferences Bates Vanilla Option engine. </para>    </briefdescription>
     <location file="/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="42" bodyfile="/pricingengines/vanilla/fdbatesvanillaengine.hpp" bodystart="39" bodyend="56"/>
   </compounddef>
 </doxygen>

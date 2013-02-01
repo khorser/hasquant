@@ -15,7 +15,7 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -27,18 +27,18 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yTS</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Seasonality &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; Seasonality &gt;()</defval>
         </param>
         <location file="/termstructures/inflationtermstructure.hpp" line="45"/>
       </memberdef>
@@ -48,7 +48,7 @@
         <argsstring>(const Date &amp;referenceDate, Rate baseRate, const Period &amp;observationLag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yTS, const Calendar &amp;calendar=Calendar(), const DayCounter &amp;dayCounter=DayCounter(), const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
         <name>InflationTermStructure</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -56,7 +56,7 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -68,23 +68,23 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yTS</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
-          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval>Calendar()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Seasonality &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; Seasonality &gt;()</defval>
         </param>
         <location file="/termstructures/inflationtermstructure.hpp" line="54"/>
       </memberdef>
@@ -98,7 +98,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -106,7 +106,7 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -118,18 +118,18 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>yTS</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Seasonality &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; Seasonality &gt;()</defval>
         </param>
         <location file="/termstructures/inflationtermstructure.hpp" line="63"/>
       </memberdef>
@@ -137,7 +137,7 @@
       <sectiondef kind="user-defined">
       <header>Inflation interface</header>
       <memberdef kind="function" id="inflation_term_structure_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
@@ -167,14 +167,14 @@
         <location file="/termstructures/inflationtermstructure.hpp" line="74" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="281" bodyend="283"/>
       </memberdef>
       <memberdef kind="function" id="inflation_term_structure_1af684fb79502d793c8bd59583a423646b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YieldTermStructure &gt;</type>
         <definition>Handle&lt; YieldTermStructure &gt; nominalTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>nominalTermStructure</name>
         <location file="/termstructures/inflationtermstructure.hpp" line="75" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="286" bodyend="288"/>
       </memberdef>
       <memberdef kind="function" id="inflation_term_structure_1afec07013d98138f010a327210da23b50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date baseDate</definition>
         <argsstring>() const =0</argsstring>
         <name>baseDate</name>
@@ -192,9 +192,9 @@
         <argsstring>(const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
         <name>setSeasonality</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Seasonality &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; Seasonality &gt;()</defval>
         </param>
         <briefdescription>
 <para>Functions to set and get seasonality. </para>        </briefdescription>
@@ -203,7 +203,7 @@
         <location file="/termstructures/inflationtermstructure.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="inflation_term_structure_1a4e1beb088ded9eb0a21435aa127d6e6b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Seasonality &gt;</type>
         <definition>boost::shared_ptr&lt; Seasonality &gt; seasonality</definition>
         <argsstring>() const </argsstring>
         <name>seasonality</name>

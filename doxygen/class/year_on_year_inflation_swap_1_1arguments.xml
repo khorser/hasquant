@@ -19,14 +19,14 @@
         <location file="/instruments/yearonyearinflationswap.hpp" line="129" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="year_on_year_inflation_swap_1_1arguments_1ac087ed31c7c86f346a554482c05e01bd" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; fixedResetDates</definition>
         <argsstring></argsstring>
         <name>fixedResetDates</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="131" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="year_on_year_inflation_swap_1_1arguments_1a9ae1b87c848fe690cc0fb8aae7a1ad53" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; fixedPayDates</definition>
         <argsstring></argsstring>
         <name>fixedPayDates</name>
@@ -40,21 +40,21 @@
         <location file="/instruments/yearonyearinflationswap.hpp" line="133" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="year_on_year_inflation_swap_1_1arguments_1a9a0682525eee8ae61ac4a975e7ec188e" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; yoyResetDates</definition>
         <argsstring></argsstring>
         <name>yoyResetDates</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="134" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="year_on_year_inflation_swap_1_1arguments_1a84adae0121dbfd026e730072752bd368" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; yoyFixingDates</definition>
         <argsstring></argsstring>
         <name>yoyFixingDates</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="135" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="year_on_year_inflation_swap_1_1arguments_1a2aeb5824c9beecb215605587d94044b4" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; yoyPayDates</definition>
         <argsstring></argsstring>
         <name>yoyPayDates</name>

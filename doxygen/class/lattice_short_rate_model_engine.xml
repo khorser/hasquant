@@ -22,7 +22,7 @@
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, Size timeSteps)</argsstring>
         <name>LatticeShortRateModelEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ShortRateModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
         <argsstring>(const Handle&lt; ShortRateModel &gt; &amp;model, Size timeSteps)</argsstring>
         <name>LatticeShortRateModelEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const Handle&lt; ShortRateModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -52,11 +52,11 @@
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, const TimeGrid &amp;timeGrid)</argsstring>
         <name>LatticeShortRateModelEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ShortRateModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <location file="/pricingengines/latticeshortratemodelengine.hpp" line="49" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="80" bodyend="86"/>

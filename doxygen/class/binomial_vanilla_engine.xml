@@ -15,7 +15,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps)</argsstring>
         <name>BinomialVanillaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -28,7 +28,7 @@
     <briefdescription>
 <para>Pricing engine for vanilla options using binomial trees. </para>    </briefdescription>
     <detaileddescription>
-<para><xrefsect id="test_1_test000120"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking it against analytic results.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000055"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para><ref refid="greeks" kindref="compound">Greeks</ref> are not overly accurate. They could be improved by building a tree so that it has three points at the current time. The value would be fetched from the middle one, while the two side points would be used for estimating partial derivatives. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para><xrefsect id="test_1_test000120"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking it against analytic results.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000055"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Greeks are not overly accurate. They could be improved by building a tree so that it has three points at the current time. The value would be fetched from the middle one, while the two side points would be used for estimating partial derivatives. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/pricingengines/vanilla/binomialengine.hpp" line="54" bodyfile="/pricingengines/vanilla/binomialengine.hpp" bodystart="54" bodyend="69"/>
   </compounddef>
 </doxygen>

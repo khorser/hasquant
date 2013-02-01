@@ -11,7 +11,7 @@
         <argsstring>(const boost::shared_ptr&lt; BermudanExercise &gt; &amp;ex, Real capacity, Real load, Real changeRate)</argsstring>
         <name>VanillaStorageOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="bermudan_exercise" kindref="compound">BermudanExercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BermudanExercise &gt; &amp;</type>
           <declname>ex</declname>
         </param>
         <param>

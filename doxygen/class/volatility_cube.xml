@@ -9,36 +9,36 @@
         <argsstring>(const std::vector&lt; Handle&lt; InterestRateVolSurface &gt; &gt; &amp;, const std::vector&lt; Handle&lt; AbcdAtmVolCurve &gt; &gt; &amp;)</argsstring>
         <name>VolatilityCube</name>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="interest_rate_vol_surface" kindref="compound">InterestRateVolSurface</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; InterestRateVolSurface &gt; &gt; &amp;</type>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="abcd_atm_vol_curve" kindref="compound">AbcdAtmVolCurve</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; AbcdAtmVolCurve &gt; &gt; &amp;</type>
         </param>
         <location file="/experimental/volatility/volcube.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="volatility_cube_1a2329e8b141cc4e4a5619fa0eeb7adf95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+        <type>const Period &amp;</type>
         <definition>const Period&amp; minIndexTenor</definition>
         <argsstring>() const </argsstring>
         <name>minIndexTenor</name>
         <location file="/experimental/volatility/volcube.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="volatility_cube_1a676d9c5de79914715b7b92f274d659e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+        <type>const Period &amp;</type>
         <definition>const Period&amp; maxIndexTenor</definition>
         <argsstring>() const </argsstring>
         <name>maxIndexTenor</name>
         <location file="/experimental/volatility/volcube.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="volatility_cube_1a99f391f568838917d9c56254e3100f74" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="interest_rate_vol_surface" kindref="compound">InterestRateVolSurface</ref> &gt; &gt; &amp;</type>
+        <type>const std::vector&lt; Handle&lt; InterestRateVolSurface &gt; &gt; &amp;</type>
         <definition>const std::vector&lt; Handle&lt; InterestRateVolSurface &gt; &gt; &amp; surfaces</definition>
         <argsstring>() const </argsstring>
         <name>surfaces</name>
         <location file="/experimental/volatility/volcube.hpp" line="44" bodyfile="/experimental/volatility/volcube.hpp" bodystart="54" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="volatility_cube_1a14ae4fdbe17db4dad087de2066aa8b73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="abcd_atm_vol_curve" kindref="compound">AbcdAtmVolCurve</ref> &gt; &gt; &amp;</type>
+        <type>const std::vector&lt; Handle&lt; AbcdAtmVolCurve &gt; &gt; &amp;</type>
         <definition>const std::vector&lt; Handle&lt; AbcdAtmVolCurve &gt; &gt; &amp; curves</definition>
         <argsstring>() const </argsstring>
         <name>curves</name>

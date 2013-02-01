@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;)</argsstring>
         <name>BaroneAdesiWhaleyApproximationEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
         </param>
         <location file="/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="43"/>
       </memberdef>
@@ -29,7 +29,7 @@
         <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, DiscountFactor riskFreeDiscount, DiscountFactor dividendDiscount, Real variance, Real tolerance=1e-6)</argsstring>
         <name>criticalPrice</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>

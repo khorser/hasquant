@@ -25,11 +25,11 @@
         <argsstring>(const boost::shared_ptr&lt; KlugeExtOUProcess &gt; &amp;klugeOUProcess, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, Size tGrid=25, Size xGrid=50, Size yGrid=10, Size uGrid=25, const boost::shared_ptr&lt; GasShape &gt; &amp;gasShape=boost::shared_ptr&lt; GasShape &gt;(), const boost::shared_ptr&lt; PowerShape &gt; &amp;powerShape=boost::shared_ptr&lt; PowerShape &gt;(), const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdKlugeExtOUSpreadEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="kluge_ext_o_u_process" kindref="compound">KlugeExtOUProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; KlugeExtOUProcess &gt; &amp;</type>
           <declname>klugeOUProcess</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
           <declname>rTS</declname>
         </param>
         <param>

@@ -12,14 +12,14 @@
         <location file="/experimental/math/zigguratrng.hpp" line="70" bodyfile="/experimental/math/zigguratrng.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="typedef" id="ziggurat_1a999b90124f308be1e4dc441d337ad046" prot="public" static="no">
-        <type><ref refid="ziggurat_rng" kindref="compound">ZigguratRng</ref></type>
+        <type>ZigguratRng</type>
         <definition>typedef ZigguratRng rng_type</definition>
         <argsstring></argsstring>
         <name>rng_type</name>
         <location file="/experimental/math/zigguratrng.hpp" line="67" bodyfile="/experimental/math/zigguratrng.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="ziggurat_1acd4cba61f7a52c8551bebe4d5686d6f9" prot="public" static="no">
-        <type><ref refid="random_sequence_generator" kindref="compound">RandomSequenceGenerator</ref>&lt; <ref refid="ziggurat_rng" kindref="compound">rng_type</ref> &gt;</type>
+        <type>RandomSequenceGenerator&lt; rng_type &gt;</type>
         <definition>typedef RandomSequenceGenerator&lt;rng_type&gt; rsg_type</definition>
         <argsstring></argsstring>
         <name>rsg_type</name>
@@ -28,7 +28,7 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="ziggurat_1a151fdf6c3c4b229d6e1f7f56f0590f2b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="random_sequence_generator" kindref="compound">rsg_type</ref></type>
+        <type>rsg_type</type>
         <definition>static rsg_type make_sequence_generator</definition>
         <argsstring>(Size dimension, BigNatural seed)</argsstring>
         <name>make_sequence_generator</name>

@@ -41,7 +41,7 @@
     <briefdescription>
 <para>Vasicek model class </para>    </briefdescription>
     <detaileddescription>
-<para>This class implements the <ref refid="vasicek" kindref="compound">Vasicek</ref> model defined by <formula id="307">\[ dr_t = a(b - r_t)dt + \sigma dW_t , \]</formula> where <formula id="47">$ a $</formula>, <formula id="48">$ b $</formula> and <formula id="4">$ \sigma $</formula> are constants; a risk premium <formula id="29">$ \lambda $</formula> can also be specified. </para>    </detaileddescription>
+<para>This class implements the Vasicek model defined by <formula id="307">\[ dr_t = a(b - r_t)dt + \sigma dW_t , \]</formula> where <formula id="47">$ a $</formula>, <formula id="48">$ b $</formula> and <formula id="4">$ \sigma $</formula> are constants; a risk premium <formula id="29">$ \lambda $</formula> can also be specified. </para>    </detaileddescription>
     <location file="/models/shortrate/onefactormodels/vasicek.hpp" line="42" bodyfile="/models/shortrate/onefactormodels/vasicek.hpp" bodystart="42" bodyend="71"/>
   </compounddef>
 </doxygen>

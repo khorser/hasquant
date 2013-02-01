@@ -10,7 +10,7 @@
         <argsstring>(const MarketModelPathwiseMultiProduct &amp;innerProduct_)</argsstring>
         <name>MultiProductPathwiseWrapper</name>
         <param>
-          <type>const <ref refid="market_model_pathwise_multi_product" kindref="compound">MarketModelPathwiseMultiProduct</ref> &amp;</type>
+          <type>const MarketModelPathwiseMultiProduct &amp;</type>
           <declname>innerProduct_</declname>
         </param>
         <location file="/models/marketmodels/products/multistep/multisteppathwisewrapper.hpp" line="42"/>

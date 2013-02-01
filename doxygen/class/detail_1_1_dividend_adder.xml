@@ -9,7 +9,7 @@
         <argsstring>(const Dividend *d)</argsstring>
         <name>DividendAdder</name>
         <param>
-          <type>const <ref refid="dividend" kindref="compound">Dividend</ref> *</type>
+          <type>const Dividend *</type>
           <declname>d</declname>
         </param>
         <location file="/pricingengines/vanilla/fddividendengine.hpp" line="202" bodyfile="/pricingengines/vanilla/fddividendengine.hpp" bodystart="202" bodyend="204"/>

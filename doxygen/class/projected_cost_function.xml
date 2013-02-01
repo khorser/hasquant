@@ -13,11 +13,11 @@
         <argsstring>(const CostFunction &amp;costFunction, const Array &amp;parametersValues, const std::vector&lt; bool &gt; &amp;parametersFreedoms)</argsstring>
         <name>ProjectedCostFunction</name>
         <param>
-          <type>const <ref refid="cost_function" kindref="compound">CostFunction</ref> &amp;</type>
+          <type>const CostFunction &amp;</type>
           <declname>costFunction</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>parametersValues</declname>
         </param>
         <param>
@@ -27,12 +27,12 @@
         <location file="/math/optimization/projectedcostfunction.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="projected_cost_function_1a53236e8f6234e3ee642043cd1229ea83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; project</definition>
         <argsstring>(const Array &amp;parameters) const </argsstring>
         <name>project</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>parameters</declname>
         </param>
         <briefdescription>
@@ -40,12 +40,12 @@
         <location file="/math/optimization/projectedcostfunction.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="projected_cost_function_1a345a5a5e4b2957ac72edb57ec2f43728" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; include</definition>
         <argsstring>(const Array &amp;projectedParameters) const </argsstring>
         <name>include</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>projectedParameters</declname>
         </param>
         <briefdescription>

@@ -15,7 +15,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;correlQuote, Size nbuckets=1, Size quadOrder=12, Real maxval=5., Size steps=50)</argsstring>
         <name>GaussianRecursiveCdoEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>correlQuote</declname>
         </param>
         <param>

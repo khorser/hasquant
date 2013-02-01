@@ -5,7 +5,7 @@
       <sectiondef kind="user-defined">
       <header>additional inspectors</header>
       <memberdef kind="function" id="fixed_rate_bond_helper_1ab68f3ea5d56505dbf17e2210d9cbc00d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="fixed_rate_bond" kindref="compound">FixedRateBond</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; FixedRateBond &gt;</type>
         <definition>boost::shared_ptr&lt; FixedRateBond &gt; fixedRateBond</definition>
         <argsstring>() const </argsstring>
         <name>fixedRateBond</name>
@@ -20,7 +20,7 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type>AcyclicVisitor &amp;</type>
         </param>
         <location file="/termstructures/yield/bondhelpers.hpp" line="83"/>
       </memberdef>
@@ -32,7 +32,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;cleanPrice, Natural settlementDays, Real faceAmount, const Schedule &amp;schedule, const std::vector&lt; Rate &gt; &amp;coupons, const DayCounter &amp;dayCounter, BusinessDayConvention paymentConv=Following, Real redemption=100.0, const Date &amp;issueDate=Date())</argsstring>
         <name>FixedRateBondHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>cleanPrice</declname>
         </param>
         <param>
@@ -44,7 +44,7 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -52,7 +52,7 @@
           <declname>coupons</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -66,9 +66,9 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/termstructures/yield/bondhelpers.hpp" line="76"/>
       </memberdef>

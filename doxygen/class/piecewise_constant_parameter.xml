@@ -14,9 +14,9 @@
           <declname>times</declname>
         </param>
         <param>
-          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const Constraint &amp;</type>
           <declname>constraint</declname>
-          <defval><ref refid="no_constraint" kindref="compound">NoConstraint</ref>()</defval>
+          <defval>NoConstraint()</defval>
         </param>
         <location file="/models/parameter.hpp" line="149" bodyfile="/models/parameter.hpp" bodystart="142" bodyend="149"/>
       </memberdef>

@@ -9,11 +9,11 @@
         <argsstring>(const boost::shared_ptr&lt; MarketModelEvolver &gt; &amp;evolver, const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; ConstrainedEvolver &gt; &gt; &gt; &amp;constrainedEvolvers, const std::vector&lt; std::vector&lt; std::vector&lt; Real &gt; &gt; &gt; &amp;diffWeights, const std::vector&lt; Size &gt; &amp;startIndexOfConstraint, const std::vector&lt; Size &gt; &amp;endIndexOfConstraint, const Clone&lt; MarketModelMultiProduct &gt; &amp;product, double initialNumeraireValue)</argsstring>
         <name>ProxyGreekEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModelEvolver &gt; &amp;</type>
           <declname>evolver</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; <ref refid="constrained_evolver" kindref="compound">ConstrainedEvolver</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; ConstrainedEvolver &gt; &gt; &gt; &amp;</type>
           <declname>constrainedEvolvers</declname>
         </param>
         <param>
@@ -29,7 +29,7 @@
           <declname>endIndexOfConstraint</declname>
         </param>
         <param>
-          <type>const <ref refid="clone" kindref="compound">Clone</ref>&lt; <ref refid="market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &gt; &amp;</type>
+          <type>const Clone&lt; MarketModelMultiProduct &gt; &amp;</type>
           <declname>product</declname>
         </param>
         <param>
@@ -44,11 +44,11 @@
         <argsstring>(SequenceStatisticsInc &amp;stats, std::vector&lt; std::vector&lt; SequenceStatisticsInc &gt; &gt; &amp;modifiedStats, Size numberOfPaths)</argsstring>
         <name>multiplePathValues</name>
         <param>
-          <type><ref refid="generic_sequence_statistics" kindref="compound">SequenceStatisticsInc</ref> &amp;</type>
+          <type>SequenceStatisticsInc &amp;</type>
           <declname>stats</declname>
         </param>
         <param>
-          <type>std::vector&lt; std::vector&lt; <ref refid="generic_sequence_statistics" kindref="compound">SequenceStatisticsInc</ref> &gt; &gt; &amp;</type>
+          <type>std::vector&lt; std::vector&lt; SequenceStatisticsInc &gt; &gt; &amp;</type>
           <declname>modifiedStats</declname>
         </param>
         <param>

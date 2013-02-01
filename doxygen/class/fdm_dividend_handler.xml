@@ -17,11 +17,11 @@
           <declname>mesher</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -36,7 +36,7 @@
         <argsstring>(Array &amp;a, Time t) const </argsstring>
         <name>applyTo</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>a</declname>
         </param>
         <param>
@@ -53,7 +53,7 @@
         <location file="/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="fdm_dividend_handler_1a437e8f80fe90518c362999111be8ed63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; dividendDates</definition>
         <argsstring>() const </argsstring>
         <name>dividendDates</name>

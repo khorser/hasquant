@@ -67,7 +67,7 @@
         <location file="/methods/finitedifferences/meshers/fdmmesher.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="fdm_mesher_1a0be368cb77d0f5ef59dcef81a427cc4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; locations</definition>
         <argsstring>(Size direction) const =0</argsstring>
         <name>locations</name>

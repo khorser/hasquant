@@ -10,23 +10,23 @@
         <argsstring>(const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;, const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;vol)</argsstring>
         <name>YoYInflationCapFloorEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <location file="/pricingengines/inflation/inflationcapfloorengines.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_cap_floor_engine_1a8bb01ccc7877fe002fed45904efb5ec5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYInflationIndex &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
         <location file="/pricingengines/inflation/inflationcapfloorengines.hpp" line="50" bodyfile="/pricingengines/inflation/inflationcapfloorengines.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_cap_floor_engine_1ae3cf89dfb539bcd920d51376df6b8a00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;</type>
+        <type>Handle&lt; YoYOptionletVolatilitySurface &gt;</type>
         <definition>Handle&lt;YoYOptionletVolatilitySurface&gt; volatility</definition>
         <argsstring>() const </argsstring>
         <name>volatility</name>
@@ -38,7 +38,7 @@
         <argsstring>(const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;vol)</argsstring>
         <name>setVolatility</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <location file="/pricingengines/inflation/inflationcapfloorengines.hpp" line="53"/>

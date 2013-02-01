@@ -10,18 +10,18 @@
         <argsstring>(const Date &amp;d, const DayCounter &amp;dc=DayCounter(), const Date &amp;referenceDate=Date())</argsstring>
         <name>SmileSection</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/termstructures/volatility/smilesection.hpp" line="40"/>
       </memberdef>
@@ -35,9 +35,9 @@
           <declname>exerciseTime</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <location file="/termstructures/volatility/smilesection.hpp" line="42"/>
       </memberdef>
@@ -99,14 +99,14 @@
         <location file="/termstructures/volatility/smilesection.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="smile_section_1aeaddbbb43f8f76d935da4a376ea1ec7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date&amp; exerciseDate</definition>
         <argsstring>() const </argsstring>
         <name>exerciseDate</name>
         <location file="/termstructures/volatility/smilesection.hpp" line="53" bodyfile="/termstructures/volatility/smilesection.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="smile_section_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date &amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
@@ -120,7 +120,7 @@
         <location file="/termstructures/volatility/smilesection.hpp" line="55" bodyfile="/termstructures/volatility/smilesection.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="smile_section_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>

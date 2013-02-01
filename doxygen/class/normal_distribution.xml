@@ -47,7 +47,7 @@
     <briefdescription>
 <para>Normal distribution function. </para>    </briefdescription>
     <detaileddescription>
-<para>Given x, it returns its probability in a Gaussian normal distribution. It provides the first derivative too.</para><para><xrefsect id="test_1_test000031"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against numerical calculations. Cross-checks are also performed against the <ref refid="cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref> and <ref refid="inverse_cumulative_normal" kindref="compound">InverseCumulativeNormal</ref> classes. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>Given x, it returns its probability in a Gaussian normal distribution. It provides the first derivative too.</para><para><xrefsect id="test_1_test000031"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against numerical calculations. Cross-checks are also performed against the CumulativeNormalDistribution and InverseCumulativeNormal classes. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/math/distributions/normaldistribution.hpp" line="44" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="44" bodyend="54"/>
   </compounddef>
 </doxygen>

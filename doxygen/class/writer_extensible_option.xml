@@ -12,19 +12,19 @@
         <argsstring>(const boost::shared_ptr&lt; PlainVanillaPayoff &gt; &amp;payoff1, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise1, const boost::shared_ptr&lt; PlainVanillaPayoff &gt; &amp;payoff2, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise2)</argsstring>
         <name>WriterExtensibleOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; PlainVanillaPayoff &gt; &amp;</type>
           <declname>payoff1</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise1</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; PlainVanillaPayoff &gt; &amp;</type>
           <declname>payoff2</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise2</declname>
         </param>
         <detaileddescription>
@@ -61,14 +61,14 @@
         <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="writer_extensible_option_1a31bd0c2f80effdcd73eb4b9ca49d3cd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Payoff &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff2</definition>
         <argsstring>()</argsstring>
         <name>payoff2</name>
         <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="50" bodyfile="/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="writer_extensible_option_1ab273912ca6b9f3daa22ec362aff6c659" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Exercise &gt;</type>
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise2</definition>
         <argsstring>()</argsstring>
         <name>exercise2</name>

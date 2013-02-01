@@ -17,7 +17,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -25,11 +25,11 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>optionletDates</declname>
         </param>
         <param>
@@ -37,17 +37,17 @@
           <declname>strikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <location file="/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="46"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>Helper class to wrap in a <ref refid="stripped_optionlet_base" kindref="compound">StrippedOptionletBase</ref> object a matrix of exogenously calculated optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities). </para>    </detaileddescription>
+<para>Helper class to wrap in a StrippedOptionletBase object a matrix of exogenously calculated optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities). </para>    </detaileddescription>
     <location file="/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="37" bodyfile="/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="37" bodyend="83"/>
   </compounddef>
 </doxygen>

@@ -14,7 +14,7 @@
         <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78ae204c9c3e62b1e9a6b60e40cd05256c5" prot="public">
           <name>Forward</name>
           <detaileddescription>
-<para><ref refid="forward" kindref="compound">Forward</ref> from effective date to termination date. </para>          </detaileddescription>
+<para>Forward from effective date to termination date. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78ab9f6920de535f04ccfe34d670fa2c8a8" prot="public">
           <name>Zero</name>
@@ -34,7 +34,7 @@
         <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78ad694d6ae582abfc8e99ea7e6e6c3f8d5" prot="public">
           <name>TwentiethIMM</name>
           <detaileddescription>
-<para>All dates but the effective date are taken to be the twentieth of an <ref refid="i_m_m" kindref="compound">IMM</ref> month (used for CDS schedules.) The termination date is also modified. </para>          </detaileddescription>
+<para>All dates but the effective date are taken to be the twentieth of an IMM month (used for CDS schedules.) The termination date is also modified. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78a634c5fa704fceaa797cf0c089af2b6c9" prot="public">
           <name>OldCDS</name>
@@ -67,7 +67,7 @@
     <briefdescription>
 <para>Date-generation rule. </para>    </briefdescription>
     <detaileddescription>
-<para>These conventions specify the rule used to generate dates in a <ref refid="schedule" kindref="compound">Schedule</ref>. </para>    </detaileddescription>
+<para>These conventions specify the rule used to generate dates in a Schedule. </para>    </detaileddescription>
     <location file="/time/dategenerationrule.hpp" line="39" bodyfile="/time/dategenerationrule.hpp" bodystart="39" bodyend="65"/>
   </compounddef>
 </doxygen>

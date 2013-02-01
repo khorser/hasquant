@@ -4,7 +4,7 @@
     <compoundname>QuantLib::BiCGstab</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="bi_c_gstab_1a2e4847834a0cb8ba6c4ed3993a5bc652" prot="public" static="no">
-        <type>boost::function1&lt; <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;, const <ref refid="array" kindref="compound">Array</ref> &amp; &gt;</type>
+        <type>boost::function1&lt; Disposable&lt; Array &gt;, const Array &amp; &gt;</type>
         <definition>typedef boost::function1&lt;Disposable&lt;Array&gt; , const Array&amp; &gt; MatrixMult</definition>
         <argsstring></argsstring>
         <name>MatrixMult</name>
@@ -42,13 +42,13 @@
         <argsstring>(const Array &amp;b, const Array &amp;x0=Array()) const </argsstring>
         <name>solve</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>b</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x0</declname>
-          <defval><ref refid="array" kindref="compound">Array</ref>()</defval>
+          <defval>Array()</defval>
         </param>
         <location file="/math/matrixutilities/bicgstab.hpp" line="46"/>
       </memberdef>

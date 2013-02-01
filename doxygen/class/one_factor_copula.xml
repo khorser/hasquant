@@ -10,7 +10,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;correlation, Real maximum=5.0, Size integrationSteps=50, Real minimum=-5.0)</argsstring>
         <name>OneFactorCopula</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>correlation</declname>
         </param>
         <param>
@@ -208,7 +208,7 @@
           <declname>tolerance</declname>
         </param>
         <detaileddescription>
-<para>Check moments (unit norm, zero mean and unit variance) of the distributions of M, Z, and Y by numerically integrating the respective density. <ref refid="parameter" kindref="compound">Parameter</ref> tolerance is the maximum tolerable absolute error. </para>        </detaileddescription>
+<para>Check moments (unit norm, zero mean and unit variance) of the distributions of M, Z, and Y by numerically integrating the respective density. Parameter tolerance is the maximum tolerable absolute error. </para>        </detaileddescription>
         <location file="/experimental/credit/onefactorcopula.hpp" line="237"/>
       </memberdef>
       </sectiondef>

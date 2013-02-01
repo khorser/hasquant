@@ -19,7 +19,7 @@
         <location file="/models/marketmodels/models/flatvol.hpp" line="51" bodyfile="/models/marketmodels/models/flatvol.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="flat_vol_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <type>const EvolutionDescription &amp;</type>
         <definition>const EvolutionDescription &amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
@@ -47,7 +47,7 @@
         <location file="/models/marketmodels/models/flatvol.hpp" line="55" bodyfile="/models/marketmodels/models/flatvol.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="flat_vol_1a4ae7300f2e5a07c864d4652df785b9ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix &amp; pseudoRoot</definition>
         <argsstring>(Size i) const </argsstring>
         <name>pseudoRoot</name>
@@ -73,7 +73,7 @@
           <declname>corr</declname>
         </param>
         <param>
-          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const EvolutionDescription &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>

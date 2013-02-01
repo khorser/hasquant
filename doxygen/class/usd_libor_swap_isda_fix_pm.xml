@@ -10,13 +10,13 @@
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>UsdLiborSwapIsdaFixPm</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/swap/usdliborswap.hpp" line="63"/>
       </memberdef>
@@ -26,15 +26,15 @@
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;forwarding, const Handle&lt; YieldTermStructure &gt; &amp;discounting)</argsstring>
         <name>UsdLiborSwapIsdaFixPm</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>forwarding</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discounting</declname>
         </param>
         <location file="/indexes/swap/usdliborswap.hpp" line="66"/>
@@ -43,7 +43,7 @@
     <briefdescription>
 <para>UsdLiborSwapIsdaFixPm index base class </para>    </briefdescription>
     <detaileddescription>
-<para>USD Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 3pm New York. Semiannual 30/360 vs 3M <ref refid="libor" kindref="compound">Libor</ref>. Reuters page ISDAFIX1 or USDSFIXP=.</para><para>Further info can be found at <ulink url="http://www.isda.org/fix/isdafix.html">http://www.isda.org/fix/isdafix.html</ulink> or Reuters page ISDAFIX. </para>    </detaileddescription>
+<para>USD Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 3pm New York. Semiannual 30/360 vs 3M Libor. Reuters page ISDAFIX1 or USDSFIXP=.</para><para>Further info can be found at <ulink url="http://www.isda.org/fix/isdafix.html">http://www.isda.org/fix/isdafix.html</ulink> or Reuters page ISDAFIX. </para>    </detaileddescription>
     <location file="/indexes/swap/usdliborswap.hpp" line="59" bodyfile="/indexes/swap/usdliborswap.hpp" bodystart="59" bodyend="67"/>
   </compounddef>
 </doxygen>

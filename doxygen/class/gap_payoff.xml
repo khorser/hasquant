@@ -37,7 +37,7 @@
     <briefdescription>
 <para>Binary gap payoff. </para>    </briefdescription>
     <detaileddescription>
-<para>This payoff is equivalent to being a) long a <ref refid="plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> at the first strike (same Call/Put type) and b) short a <ref refid="cash_or_nothing_payoff" kindref="compound">CashOrNothingPayoff</ref> at the first strike (same Call/Put type) with cash payoff equal to the difference between the second and the first strike. <xrefsect id="caveats_1_caveats000059"><xreftitle>Warning</xreftitle><xrefdescription><para>this payoff can be negative depending on the strikes </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>This payoff is equivalent to being a) long a PlainVanillaPayoff at the first strike (same Call/Put type) and b) short a CashOrNothingPayoff at the first strike (same Call/Put type) with cash payoff equal to the difference between the second and the first strike. <xrefsect id="caveats_1_caveats000059"><xreftitle>Warning</xreftitle><xrefdescription><para>this payoff can be negative depending on the strikes </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/instruments/payoffs.hpp" line="177" bodyfile="/instruments/payoffs.hpp" bodystart="177" bodyend="193"/>
   </compounddef>
 </doxygen>

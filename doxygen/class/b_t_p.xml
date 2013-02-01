@@ -13,7 +13,7 @@
         <argsstring>(const Date &amp;maturityDate, Rate fixedRate, const Date &amp;startDate=Date(), const Date &amp;issueDate=Date())</argsstring>
         <name>BTP</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -21,14 +21,14 @@
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/instruments/bonds/btp.hpp" line="67"/>
       </memberdef>
@@ -38,7 +38,7 @@
         <argsstring>(const Date &amp;maturityDate, Rate fixedRate, Real redemption, const Date &amp;startDate=Date(), const Date &amp;issueDate=Date())</argsstring>
         <name>BTP</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -50,14 +50,14 @@
           <declname>redemption</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <detaileddescription>
 <para>constructor needed for legacy non-par redemption BTPs. As of today the only remaining one is IT123456789012 that will redeem 99.999 on xx-may-2037 </para>        </detaileddescription>
@@ -73,9 +73,9 @@
           <declname>cleanPrice</declname>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>settlementDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -88,14 +88,14 @@
           <defval>100</defval>
         </param>
         <briefdescription>
-<para><ref refid="b_t_p" kindref="compound">BTP</ref> yield given a (clean) price and settlement date. </para>        </briefdescription>
+<para>BTP yield given a (clean) price and settlement date. </para>        </briefdescription>
         <detaileddescription>
-<para>The default <ref refid="b_t_p" kindref="compound">BTP</ref> conventions are used: Actual/Actual (ISMA), Compounded, Annual. The default bond settlement is used if no date is given. </para>        </detaileddescription>
+<para>The default BTP conventions are used: Actual/Actual (ISMA), Compounded, Annual. The default bond settlement is used if no date is given. </para>        </detaileddescription>
         <location file="/instruments/bonds/btp.hpp" line="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Italian <ref refid="b_t_p" kindref="compound">BTP</ref> (Buono Poliennali del Tesoro) fixed rate bond. </para>    </briefdescription>
+<para>Italian BTP (Buono Poliennali del Tesoro) fixed rate bond. </para>    </briefdescription>
     <location file="/instruments/bonds/btp.hpp" line="62" bodyfile="/instruments/bonds/btp.hpp" bodystart="62" bodyend="90"/>
   </compounddef>
 </doxygen>

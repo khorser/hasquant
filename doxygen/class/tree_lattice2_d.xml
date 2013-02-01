@@ -13,7 +13,7 @@
         <type>class</type>
         <declname>T</declname>
         <defname>T</defname>
-        <defval><ref refid="trinomial_tree" kindref="compound">TrinomialTree</ref></defval>
+        <defval>TrinomialTree</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
@@ -89,7 +89,7 @@
     <briefdescription>
 <para>Two-dimensional tree-based lattice. </para>    </briefdescription>
     <detaileddescription>
-<para>This lattice is based on two trinomial trees and primarily used for the <ref refid="g2" kindref="compound">G2</ref> short-rate model. </para>    </detaileddescription>
+<para>This lattice is based on two trinomial trees and primarily used for the G2 short-rate model. </para>    </detaileddescription>
     <location file="/methods/lattices/lattice2d.hpp" line="41" bodyfile="/methods/lattices/lattice2d.hpp" bodystart="41" bodyend="57"/>
   </compounddef>
 </doxygen>

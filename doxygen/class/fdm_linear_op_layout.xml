@@ -107,7 +107,7 @@
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="fdm_linear_op_layout_1ad77e0111e798ba5148d9ad5a23fbed04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; FdmLinearOpIterator &gt;</type>
+        <type>Disposable&lt; FdmLinearOpIterator &gt;</type>
         <definition>Disposable&lt;FdmLinearOpIterator&gt; iter_neighbourhood</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iterator, Size i, Integer offset) const </argsstring>
         <name>iter_neighbourhood</name>

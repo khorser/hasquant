@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; GJRGARCHProcess &gt; &amp;process)</argsstring>
         <name>GJRGARCHModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="g_j_r_g_a_r_c_h_process" kindref="compound">GJRGARCHProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GJRGARCHProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/models/equity/gjrgarchmodel.hpp" line="44"/>
@@ -58,7 +58,7 @@
         <location file="/models/equity/gjrgarchmodel.hpp" line="58" bodyfile="/models/equity/gjrgarchmodel.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="g_j_r_g_a_r_c_h_model_1aa5cfe6ae7d714e407526d37d660f121f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="g_j_r_g_a_r_c_h_process" kindref="compound">GJRGARCHProcess</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; GJRGARCHProcess &gt;</type>
         <definition>boost::shared_ptr&lt;GJRGARCHProcess&gt; process</definition>
         <argsstring>() const </argsstring>
         <name>process</name>

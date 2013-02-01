@@ -35,21 +35,21 @@
         <location file="/pricingengines/mclongstaffschwartzengine.hpp" line="48" bodyfile="/pricingengines/mclongstaffschwartzengine.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="m_c_longstaff_schwartz_engine_1a9e8c6745d46fec52af674b05ce5b75d7" prot="public" static="no">
-        <type><ref refid="mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::stats_type</type>
+        <type>McSimulation&lt; MC, RNG, S &gt;::stats_type</type>
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
         <location file="/pricingengines/mclongstaffschwartzengine.hpp" line="50" bodyfile="/pricingengines/mclongstaffschwartzengine.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="m_c_longstaff_schwartz_engine_1a7922dd7fea2c004ef3dc817d274cfe84" prot="public" static="no">
-        <type><ref refid="mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::<ref refid="path_pricer" kindref="compound">path_pricer_type</ref></type>
+        <type>McSimulation&lt; MC, RNG, S &gt;::path_pricer_type</type>
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
         <location file="/pricingengines/mclongstaffschwartzengine.hpp" line="52" bodyfile="/pricingengines/mclongstaffschwartzengine.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="m_c_longstaff_schwartz_engine_1a2e301ff1e9761ffd43e2e8a626d5ae90" prot="public" static="no">
-        <type><ref refid="mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::<ref refid="multi_path_generator" kindref="compound">path_generator_type</ref></type>
+        <type>McSimulation&lt; MC, RNG, S &gt;::path_generator_type</type>
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
@@ -63,7 +63,7 @@
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess &gt; &amp;process, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, Size nCalibrationSamples=Null&lt; Size &gt;())</argsstring>
         <name>MCLongstaffSchwartzEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -105,7 +105,7 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nCalibrationSamples</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
         </param>
         <location file="/pricingengines/mclongstaffschwartzengine.hpp" line="67" bodyfile="/pricingengines/mclongstaffschwartzengine.hpp" bodystart="96" bodyend="132"/>
       </memberdef>

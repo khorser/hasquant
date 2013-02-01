@@ -21,7 +21,7 @@
           <declname>K</declname>
         </param>
         <param>
-          <type><ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
@@ -29,15 +29,15 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; YoYInflationIndex &gt;</type>
           <declname>anIndex</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;</type>
           <defname>surf</defname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <param>

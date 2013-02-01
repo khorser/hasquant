@@ -13,7 +13,7 @@
           <declname>mesher</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="bates_process" kindref="compound">BatesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BatesProcess &gt; &amp;</type>
           <declname>batesProcess</declname>
         </param>
         <param>
@@ -54,29 +54,29 @@
         <location file="/methods/finitedifferences/operators/fdmbatesop.hpp" line="47" bodyfile="/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="fdm_bates_op_1a50314cb6db457773ca27e5ea5eace856" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt; Array &gt; apply</definition>
         <argsstring>(const Array &amp;r) const </argsstring>
         <name>apply</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmbatesop.hpp" line="49" bodyfile="/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="fdm_bates_op_1ada3267d5f3b1894d58f5ec2d14735dc7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt; Array &gt; apply_mixed</definition>
         <argsstring>(const Array &amp;r) const </argsstring>
         <name>apply_mixed</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmbatesop.hpp" line="50" bodyfile="/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="fdm_bates_op_1a6b98ac1340fd59c48251d84ef1924ed4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt; Array &gt; apply_direction</definition>
         <argsstring>(Size direction, const Array &amp;r) const </argsstring>
         <name>apply_direction</name>
@@ -85,13 +85,13 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmbatesop.hpp" line="53" bodyfile="/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="103" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="fdm_bates_op_1a397d717ec03741ed8ea1d06e829edf21" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt; Array &gt; solve_splitting</definition>
         <argsstring>(Size direction, const Array &amp;r, Real s) const </argsstring>
         <name>solve_splitting</name>
@@ -100,7 +100,7 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <param>
@@ -110,12 +110,12 @@
         <location file="/methods/finitedifferences/operators/fdmbatesop.hpp" line="55" bodyfile="/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="108" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="fdm_bates_op_1afd3dd67724cebd8466b46c0ac5605f1e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt; Array &gt; preconditioner</definition>
         <argsstring>(const Array &amp;r, Real s) const </argsstring>
         <name>preconditioner</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <param>

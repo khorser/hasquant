@@ -58,7 +58,7 @@
         <argsstring>(const Date &amp;onDate) const </argsstring>
         <name>indexObservation</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>onDate</declname>
         </param>
         <briefdescription>
@@ -66,7 +66,7 @@
         <location file="/cashflows/cpicoupon.hpp" line="100" bodyfile="/cashflows/cpicoupon.hpp" bodystart="244" bodyend="246"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_coupon_1a7d55ac3f4ee40d96136b8aab08ea81bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; ZeroInflationIndex &gt;</type>
         <definition>boost::shared_ptr&lt; ZeroInflationIndex &gt; cpiIndex</definition>
         <argsstring>() const </argsstring>
         <name>cpiIndex</name>
@@ -89,7 +89,7 @@
           <declname>baseCPI</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -97,11 +97,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -109,11 +109,11 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -121,7 +121,7 @@
           <declname>observationInterpolation</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -134,14 +134,14 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="78"/>
       </memberdef>

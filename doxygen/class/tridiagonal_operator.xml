@@ -7,12 +7,12 @@
       <sectiondef kind="user-defined">
       <header>Operator interface</header>
       <memberdef kind="function" id="tridiagonal_operator_1a112ec8c0a82c5ba78b0203b093687f47" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; applyTo</definition>
         <argsstring>(const Array &amp;v) const </argsstring>
         <name>applyTo</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>v</declname>
         </param>
         <briefdescription>
@@ -20,12 +20,12 @@
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="tridiagonal_operator_1a73742343dfce6f478b7a7d11d07aa63e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; solveFor</definition>
         <argsstring>(const Array &amp;rhs) const </argsstring>
         <name>solveFor</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -38,24 +38,24 @@
         <argsstring>(const Array &amp;rhs, Array &amp;result) const </argsstring>
         <name>solveFor</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>rhs</declname>
         </param>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>result</declname>
         </param>
         <detaileddescription>
-<para>solve linear system for a given right-hand side without result <ref refid="array" kindref="compound">Array</ref> allocation. The rhs and result parameters can be the same <ref refid="array" kindref="compound">Array</ref>, in which case rhs will be changed </para>        </detaileddescription>
+<para>solve linear system for a given right-hand side without result Array allocation. The rhs and result parameters can be the same Array, in which case rhs will be changed </para>        </detaileddescription>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="tridiagonal_operator_1a23e7cd3f97a88ebf7495659fbb9c7612" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; SOR</definition>
         <argsstring>(const Array &amp;rhs, Real tol) const </argsstring>
         <name>SOR</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>rhs</declname>
         </param>
         <param>
@@ -67,7 +67,7 @@
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="tridiagonal_operator_1af7d138b877b39e9af280942629d871c5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &gt;</type>
+        <type>Disposable&lt; TridiagonalOperator &gt;</type>
         <definition>static Disposable&lt;TridiagonalOperator&gt; identity</definition>
         <argsstring>(Size size)</argsstring>
         <name>identity</name>
@@ -97,21 +97,21 @@
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="94" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="tridiagonal_operator_1aa9ffb885f8454676f62eec587622cc95" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; lowerDiagonal</definition>
         <argsstring>() const </argsstring>
         <name>lowerDiagonal</name>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="95" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="95" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="tridiagonal_operator_1a7750fe82fcf1c7eccd9ebda149e2ff16" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; diagonal</definition>
         <argsstring>() const </argsstring>
         <name>diagonal</name>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="96" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="tridiagonal_operator_1aef1be2122e6b404d52ac60819893a55d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; upperDiagonal</definition>
         <argsstring>() const </argsstring>
         <name>upperDiagonal</name>
@@ -212,7 +212,7 @@
         <argsstring>(TridiagonalOperator &amp;)</argsstring>
         <name>swap</name>
         <param>
-          <type><ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
+          <type>TridiagonalOperator &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="109" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="175" bodyend="183"/>
@@ -220,7 +220,7 @@
       </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="tridiagonal_operator_1a683f6e911f21420fe0ff4609055a8c41" prot="public" static="no">
-        <type><ref refid="array" kindref="compound">Array</ref></type>
+        <type>Array</type>
         <definition>typedef Array array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
@@ -246,15 +246,15 @@
         <argsstring>(const Array &amp;low, const Array &amp;mid, const Array &amp;high)</argsstring>
         <name>TridiagonalOperator</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>low</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>mid</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>high</declname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="70"/>
@@ -265,17 +265,17 @@
         <argsstring>(const Disposable&lt; TridiagonalOperator &gt; &amp;)</argsstring>
         <name>TridiagonalOperator</name>
         <param>
-          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &gt; &amp;</type>
+          <type>const Disposable&lt; TridiagonalOperator &gt; &amp;</type>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="tridiagonal_operator_1a8f66389fe4aab7671101792bec064118" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
+        <type>TridiagonalOperator &amp;</type>
         <definition>TridiagonalOperator &amp; operator=</definition>
         <argsstring>(const Disposable&lt; TridiagonalOperator &gt; &amp;)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &gt; &amp;</type>
+          <type>const Disposable&lt; TridiagonalOperator &gt; &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="72" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="131" bodyend="135"/>

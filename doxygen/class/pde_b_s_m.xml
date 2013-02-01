@@ -4,7 +4,7 @@
     <compoundname>QuantLib::PdeBSM</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="pde_b_s_m_1a48516a64919875b824270547d4632609" prot="public" static="no">
-        <type>boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt;</type>
         <definition>typedef boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; argument_type</definition>
         <argsstring></argsstring>
         <name>argument_type</name>

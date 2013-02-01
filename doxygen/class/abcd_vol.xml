@@ -37,7 +37,7 @@
           <declname>corr</declname>
         </param>
         <param>
-          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const EvolutionDescription &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>

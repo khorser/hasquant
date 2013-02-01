@@ -10,11 +10,11 @@
         <argsstring>(const Period &amp;maturity, const Calendar &amp;calendar, const Real s0, const Real strikePrice, const Handle&lt; Quote &gt; &amp;volatility, const Handle&lt; YieldTermStructure &gt; &amp;riskFreeRate, const Handle&lt; YieldTermStructure &gt; &amp;dividendYield, CalibrationHelper::CalibrationErrorType errorType=CalibrationHelper::RelativePriceError)</argsstring>
         <name>HestonModelHelper</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -26,15 +26,15 @@
           <declname>strikePrice</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>riskFreeRate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>dividendYield</declname>
         </param>
         <param>

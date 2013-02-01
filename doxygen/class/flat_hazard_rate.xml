@@ -11,15 +11,15 @@
         <argsstring>(const Date &amp;referenceDate, const Handle&lt; Quote &gt; &amp;hazardRate, const DayCounter &amp;)</argsstring>
         <name>FlatHazardRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>hazardRate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
         </param>
         <location file="/termstructures/credit/flathazardrate.hpp" line="41"/>
       </memberdef>
@@ -29,7 +29,7 @@
         <argsstring>(const Date &amp;referenceDate, Rate hazardRate, const DayCounter &amp;)</argsstring>
         <name>FlatHazardRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
           <declname>hazardRate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
         </param>
         <location file="/termstructures/credit/flathazardrate.hpp" line="44"/>
       </memberdef>
@@ -51,15 +51,15 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>hazardRate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
         </param>
         <location file="/termstructures/credit/flathazardrate.hpp" line="48"/>
       </memberdef>
@@ -73,7 +73,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -81,7 +81,7 @@
           <declname>hazardRate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
         </param>
         <location file="/termstructures/credit/flathazardrate.hpp" line="52"/>
       </memberdef>

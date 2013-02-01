@@ -4,21 +4,21 @@
     <compoundname>QuantLib::LongstaffSchwartzMultiPathPricer::PathInfo</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="longstaff_schwartz_multi_path_pricer_1_1_path_info_1a19e4275ddb59a69fa691bdd912122df4" prot="public" static="no" mutable="no">
-        <type><ref refid="array" kindref="compound">Array</ref></type>
+        <type>Array</type>
         <definition>Array payments</definition>
         <argsstring></argsstring>
         <name>payments</name>
         <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="66" bodyfile="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="longstaff_schwartz_multi_path_pricer_1_1_path_info_1af6dec7a5214f9f009a6779c5682d92f8" prot="public" static="no" mutable="no">
-        <type><ref refid="array" kindref="compound">Array</ref></type>
+        <type>Array</type>
         <definition>Array exercises</definition>
         <argsstring></argsstring>
         <name>exercises</name>
         <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="67" bodyfile="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="longstaff_schwartz_multi_path_pricer_1_1_path_info_1a8d34e40db8a15b8c99d915130265e7b7" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>std::vector&lt; Array &gt;</type>
         <definition>std::vector&lt;Array&gt; states</definition>
         <argsstring></argsstring>
         <name>states</name>

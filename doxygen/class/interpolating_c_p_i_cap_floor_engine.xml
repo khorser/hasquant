@@ -10,7 +10,7 @@
         <argsstring>(const Handle&lt; CPICapFloorTermPriceSurface &gt; &amp;)</argsstring>
         <name>InterpolatingCPICapFloorEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="c_p_i_cap_floor_term_price_surface" kindref="compound">CPICapFloorTermPriceSurface</ref> &gt; &amp;</type>
+          <type>const Handle&lt; CPICapFloorTermPriceSurface &gt; &amp;</type>
         </param>
         <location file="/experimental/inflation/cpicapfloorengines.hpp" line="44"/>
       </memberdef>

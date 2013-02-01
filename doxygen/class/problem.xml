@@ -10,17 +10,17 @@
         <argsstring>(CostFunction &amp;costFunction, Constraint &amp;constraint, const Array &amp;initialValue=Array())</argsstring>
         <name>Problem</name>
         <param>
-          <type><ref refid="cost_function" kindref="compound">CostFunction</ref> &amp;</type>
+          <type>CostFunction &amp;</type>
           <declname>costFunction</declname>
         </param>
         <param>
-          <type><ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>Constraint &amp;</type>
           <declname>constraint</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>initialValue</declname>
-          <defval><ref refid="array" kindref="compound">Array</ref>()</defval>
+          <defval>Array()</defval>
         </param>
         <briefdescription>
 <para>default constructor </para>        </briefdescription>
@@ -41,7 +41,7 @@
         <argsstring>(const Array &amp;x)</argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -49,12 +49,12 @@
         <location file="/math/optimization/problem.hpp" line="56" bodyfile="/math/optimization/problem.hpp" bodystart="116" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="problem_1abc8c323a0850669748ab4342f3294ae9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt; Array &gt; values</definition>
         <argsstring>(const Array &amp;x)</argsstring>
         <name>values</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -67,11 +67,11 @@
         <argsstring>(Array &amp;grad_f, const Array &amp;x)</argsstring>
         <name>gradient</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>grad_f</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -84,11 +84,11 @@
         <argsstring>(Array &amp;grad_f, const Array &amp;x)</argsstring>
         <name>valueAndGradient</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>grad_f</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -96,16 +96,16 @@
         <location file="/math/optimization/problem.hpp" line="68" bodyfile="/math/optimization/problem.hpp" bodystart="132" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="problem_1a587d1ba7605c5e283b0e48a138b36b47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+        <type>Constraint &amp;</type>
         <definition>Constraint&amp; constraint</definition>
         <argsstring>() const </argsstring>
         <name>constraint</name>
         <briefdescription>
-<para><ref refid="constraint" kindref="compound">Constraint</ref>. </para>        </briefdescription>
+<para>Constraint. </para>        </briefdescription>
         <location file="/math/optimization/problem.hpp" line="71" bodyfile="/math/optimization/problem.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="problem_1ae7eb58c3620c8d99559a7a5739772e7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="cost_function" kindref="compound">CostFunction</ref> &amp;</type>
+        <type>CostFunction &amp;</type>
         <definition>CostFunction&amp; costFunction</definition>
         <argsstring>() const </argsstring>
         <name>costFunction</name>
@@ -119,13 +119,13 @@
         <argsstring>(const Array &amp;currentValue)</argsstring>
         <name>setCurrentValue</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>currentValue</declname>
         </param>
         <location file="/math/optimization/problem.hpp" line="76" bodyfile="/math/optimization/problem.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="problem_1a664394f06abfdf2668dffa35c5d2fc08" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; currentValue</definition>
         <argsstring>() const </argsstring>
         <name>currentValue</name>
@@ -195,7 +195,7 @@
     <briefdescription>
 <para>Constrained optimization problem. </para>    </briefdescription>
     <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000070"><xreftitle>Warning</xreftitle><xrefdescription><para>The passed <ref refid="cost_function" kindref="compound">CostFunction</ref> and <ref refid="constraint" kindref="compound">Constraint</ref> instances are stored by reference. The user of this class must make sure that they are not destroyed before the <ref refid="problem" kindref="compound">Problem</ref> instance. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000070"><xreftitle>Warning</xreftitle><xrefdescription><para>The passed CostFunction and Constraint instances are stored by reference. The user of this class must make sure that they are not destroyed before the Problem instance. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/math/optimization/problem.hpp" line="42" bodyfile="/math/optimization/problem.hpp" bodystart="42" bodyend="113"/>
   </compounddef>
 </doxygen>

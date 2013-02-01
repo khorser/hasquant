@@ -9,7 +9,7 @@
         <argsstring>(const Payoff *p)</argsstring>
         <name>PayoffWrapper</name>
         <param>
-          <type>const <ref refid="payoff" kindref="compound">Payoff</ref> *</type>
+          <type>const Payoff *</type>
           <declname>p</declname>
         </param>
         <location file="/methods/finitedifferences/stepcondition.hpp" line="95" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="94" bodyend="95"/>

@@ -9,13 +9,13 @@
         <argsstring>(const Array &amp;grid)</argsstring>
         <name>LogGrid</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>grid</declname>
         </param>
         <location file="/math/transformedgrid.hpp" line="88" bodyfile="/math/transformedgrid.hpp" bodystart="87" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="log_grid_1aacc02bc50b7bda60a40ea2dd42b9e6d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; logGridArray</definition>
         <argsstring>() const </argsstring>
         <name>logGridArray</name>

@@ -144,7 +144,7 @@
           <declname>target</declname>
         </param>
         <briefdescription>
-<para>gaussian-assumption <ref refid="average" kindref="compound">Average</ref> Shortfall (averaged shortfallness) </para>        </briefdescription>
+<para>gaussian-assumption Average Shortfall (averaged shortfallness) </para>        </briefdescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="105" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="229" bodyend="236"/>
       </memberdef>
       </sectiondef>

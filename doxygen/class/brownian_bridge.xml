@@ -112,11 +112,11 @@
         <argsstring>(const TimeGrid &amp;timeGrid)</argsstring>
         <name>BrownianBridge</name>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <detaileddescription>
-<para>The step times are copied from the <ref refid="time_grid" kindref="compound">TimeGrid</ref> object</para><para><parameterlist kind="param"><parameteritem>
+<para>The step times are copied from the TimeGrid object</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>timeGrid</parametername>
 </parameternamelist>

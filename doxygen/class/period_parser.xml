@@ -4,7 +4,7 @@
     <compoundname>QuantLib::PeriodParser</compoundname>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="period_parser_1a677ff2d2cd222bbaeb5128969fadbb64" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>static Period parse</definition>
         <argsstring>(const std::string &amp;str)</argsstring>
         <name>parse</name>

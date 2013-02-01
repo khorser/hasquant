@@ -10,13 +10,13 @@
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>Euribor365</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/ibor/euribor.hpp" line="58"/>
       </memberdef>
@@ -24,7 +24,7 @@
     <briefdescription>
 <para>Actual/365 Euribor index. </para>    </briefdescription>
     <detaileddescription>
-<para><ref refid="euribor" kindref="compound">Euribor</ref> rate adjusted for the mismatch between the actual/360 convention used for <ref refid="euribor" kindref="compound">Euribor</ref> and the actual/365 convention previously used by a few pre-EUR currencies. </para>    </detaileddescription>
+<para>Euribor rate adjusted for the mismatch between the actual/360 convention used for Euribor and the actual/365 convention previously used by a few pre-EUR currencies. </para>    </detaileddescription>
     <location file="/indexes/ibor/euribor.hpp" line="54" bodyfile="/indexes/ibor/euribor.hpp" bodystart="54" bodyend="59"/>
   </compounddef>
 </doxygen>

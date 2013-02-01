@@ -5,7 +5,7 @@
     <includes local="no">/experimental/credit/cdsoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="cds_option_1_1arguments_1ae610b4d1f2d89bbd26e02cef63066191" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="credit_default_swap" kindref="compound">CreditDefaultSwap</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; CreditDefaultSwap &gt;</type>
         <definition>boost::shared_ptr&lt;CreditDefaultSwap&gt; swap</definition>
         <argsstring></argsstring>
         <name>swap</name>

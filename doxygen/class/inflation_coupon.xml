@@ -14,7 +14,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve) const </argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountingCurve</declname>
         </param>
         <location file="/cashflows/inflationcoupon.hpp" line="67"/>
@@ -23,7 +23,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="inflation_coupon_1ab678aceb88e36713929969ea64794ad1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="inflation_index" kindref="compound">InflationIndex</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; InflationIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;InflationIndex&gt;&amp; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
@@ -32,7 +32,7 @@
         <location file="/cashflows/inflationcoupon.hpp" line="76" bodyfile="/cashflows/inflationcoupon.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="inflation_coupon_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
@@ -50,7 +50,7 @@
         <location file="/cashflows/inflationcoupon.hpp" line="80" bodyfile="/cashflows/inflationcoupon.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="inflation_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
@@ -81,7 +81,7 @@
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const boost::shared_ptr&lt; InflationIndex &gt; &amp;index, const Period &amp;observationLag, const DayCounter &amp;dayCounter, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date())</argsstring>
         <name>InflationCoupon</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -89,11 +89,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -101,26 +101,26 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="inflation_index" kindref="compound">InflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; InflationIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/cashflows/inflationcoupon.hpp" line="58"/>
       </memberdef>
@@ -130,12 +130,12 @@
         <argsstring>(const boost::shared_ptr&lt; InflationCouponPricer &gt; &amp;)</argsstring>
         <name>setPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="inflation_coupon_pricer" kindref="compound">InflationCouponPricer</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; InflationCouponPricer &gt; &amp;</type>
         </param>
         <location file="/cashflows/inflationcoupon.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="inflation_coupon_1a41faf0510c702617500fa3b2cfef4dda" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="inflation_coupon_pricer" kindref="compound">InflationCouponPricer</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; InflationCouponPricer &gt;</type>
         <definition>boost::shared_ptr&lt; InflationCouponPricer &gt; pricer</definition>
         <argsstring>() const </argsstring>
         <name>pricer</name>

@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps, Size gridPoints, bool timeDependent=false)</argsstring>
         <name>FDVanillaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -36,7 +36,7 @@
         <location file="/pricingengines/vanilla/fdvanillaengine.hpp" line="55" bodyfile="/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="f_d_vanilla_engine_1a16c466291f64905ece2498448e304db1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; grid</definition>
         <argsstring>() const </argsstring>
         <name>grid</name>

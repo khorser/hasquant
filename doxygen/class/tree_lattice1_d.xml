@@ -17,7 +17,7 @@
         <argsstring>(const TimeGrid &amp;timeGrid, Size n)</argsstring>
         <name>TreeLattice1D</name>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>

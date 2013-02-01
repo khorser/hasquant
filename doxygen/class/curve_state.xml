@@ -153,7 +153,7 @@
         <location file="/models/marketmodels/curvestate.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="curve_state_1ac4251f8df2d9997d128346d29af2080a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::auto_ptr&lt; <ref refid="curve_state" kindref="compound">CurveState</ref> &gt;</type>
+        <type>std::auto_ptr&lt; CurveState &gt;</type>
         <definition>virtual std::auto_ptr&lt;CurveState&gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>

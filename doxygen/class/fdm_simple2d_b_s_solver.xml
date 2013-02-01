@@ -9,7 +9,7 @@
         <argsstring>(const Handle&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Real strike, const FdmSolverDesc &amp;desc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Douglas())</argsstring>
         <name>FdmSimple2dBSSolver</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const Handle&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

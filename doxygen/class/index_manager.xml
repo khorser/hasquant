@@ -18,7 +18,7 @@
         <location file="/indexes/indexmanager.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="index_manager_1aaebb8c5c9e8fd14aa534659ab9defff3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const TimeSeries&lt;Real&gt;&amp; getHistory</definition>
         <argsstring>(const std::string &amp;name) const </argsstring>
         <name>getHistory</name>
@@ -40,14 +40,14 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         </param>
         <briefdescription>
 <para>stores the historical fixings of the index </para>        </briefdescription>
         <location file="/indexes/indexmanager.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="index_manager_1a996c0c436b3d99f1ccf6449bd588f608" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="observable" kindref="compound">Observable</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; Observable &gt;</type>
         <definition>boost::shared_ptr&lt;Observable&gt; notifier</definition>
         <argsstring>(const std::string &amp;name) const </argsstring>
         <name>notifier</name>

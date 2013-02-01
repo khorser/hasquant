@@ -5,7 +5,7 @@
     <includes local="no">/experimental/exoticoptions/simplechooseroption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="simple_chooser_option_1_1arguments_1a6e45a884968308c9560f663b4a1be847" prot="public" static="no" mutable="no">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date choosingDate</definition>
         <argsstring></argsstring>
         <name>choosingDate</name>

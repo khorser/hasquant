@@ -10,7 +10,7 @@
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, bool payoffAtExpiry=false)</argsstring>
         <name>BermudanExercise</name>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>

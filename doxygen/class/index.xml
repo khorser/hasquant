@@ -23,7 +23,7 @@
         <location file="/index.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="index_1a017c78ebe125418dde1aacb7c610265a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
+        <type>Calendar</type>
         <definition>virtual Calendar fixingCalendar</definition>
         <argsstring>() const =0</argsstring>
         <name>fixingCalendar</name>
@@ -37,7 +37,7 @@
         <argsstring>(const Date &amp;fixingDate) const =0</argsstring>
         <name>isValidFixingDate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <briefdescription>
@@ -50,7 +50,7 @@
         <argsstring>(const Date &amp;fixingDate, bool forecastTodaysFixing=false) const =0</argsstring>
         <name>fixing</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <param>
@@ -65,12 +65,12 @@
         <location file="/index.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const TimeSeries&lt;Real&gt;&amp; timeSeries</definition>
         <argsstring>() const </argsstring>
         <name>timeSeries</name>
         <briefdescription>
-<para>returns the fixing <ref refid="time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
+<para>returns the fixing TimeSeries </para>        </briefdescription>
         <location file="/index.hpp" line="64" bodyfile="/index.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="index_1a7a90b939ae6213878841b3a7d08776bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -79,7 +79,7 @@
         <argsstring>(const Date &amp;fixingDate, Real fixing, bool forceOverwrite=false)</argsstring>
         <name>addFixing</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <param>
@@ -103,7 +103,7 @@
         <argsstring>(const TimeSeries&lt; Real &gt; &amp;t, bool forceOverwrite=false)</argsstring>
         <name>addFixings</name>
         <param>
-          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>t</declname>
         </param>
         <param>
@@ -112,9 +112,9 @@
           <defval>false</defval>
         </param>
         <briefdescription>
-<para>stores historical fixings from a <ref refid="time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
+<para>stores historical fixings from a TimeSeries </para>        </briefdescription>
         <detaileddescription>
-<para>the dates in the <ref refid="time_series" kindref="compound">TimeSeries</ref> must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
+<para>the dates in the TimeSeries must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
         <location file="/index.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="index_1ac5a81c6efaef1986836098611234389a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

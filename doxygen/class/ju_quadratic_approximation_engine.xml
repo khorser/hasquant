@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;)</argsstring>
         <name>JuQuadraticApproximationEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
         </param>
         <location file="/pricingengines/vanilla/juquadraticengine.hpp" line="56"/>
       </memberdef>
@@ -25,7 +25,7 @@
     <briefdescription>
 <para>Pricing engine for American options with Ju quadratic approximation. </para>    </briefdescription>
     <detaileddescription>
-<para>Reference: An Approximate Formula for Pricing American Options, Journal of Derivatives Winter 1999, Ju, N.</para><para><xrefsect id="caveats_1_caveats000104"><xreftitle>Warning</xreftitle><xrefdescription><para>Barone-Adesi-Whaley critical commodity price calculation is used, it has not been modified to see whether the method of Ju is faster. Ju does not say how he solves the equation for the critical stock price, e.g. <ref refid="newton" kindref="compound">Newton</ref> method. He just gives the solution. The method of BAW gives answers to the same accuracy as in Ju (1999).</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000131"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>Reference: An Approximate Formula for Pricing American Options, Journal of Derivatives Winter 1999, Ju, N.</para><para><xrefsect id="caveats_1_caveats000104"><xreftitle>Warning</xreftitle><xrefdescription><para>Barone-Adesi-Whaley critical commodity price calculation is used, it has not been modified to see whether the method of Ju is faster. Ju does not say how he solves the equation for the critical stock price, e.g. Newton method. He just gives the solution. The method of BAW gives answers to the same accuracy as in Ju (1999).</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000131"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/pricingengines/vanilla/juquadraticengine.hpp" line="53" bodyfile="/pricingengines/vanilla/juquadraticengine.hpp" bodystart="52" bodyend="60"/>
   </compounddef>
 </doxygen>

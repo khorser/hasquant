@@ -5,7 +5,7 @@
     <includes local="no">/termstructures/localbootstrap.hpp</includes>
     <templateparamlist>
       <param>
-        <type>class <ref refid="curve" kindref="compound">Curve</ref></type>
+        <type>class Curve</type>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
         <argsstring>(Curve *ts)</argsstring>
         <name>setup</name>
         <param>
-          <type><ref refid="curve" kindref="compound">Curve</ref> *</type>
+          <type>Curve *</type>
           <declname>ts</declname>
         </param>
         <location file="/termstructures/localbootstrap.hpp" line="92" bodyfile="/termstructures/localbootstrap.hpp" bodystart="114" bodyend="130"/>
@@ -48,7 +48,7 @@
     <briefdescription>
 <para>Localised-term-structure bootstrapper for most curve types. </para>    </briefdescription>
     <detaileddescription>
-<para>This algorithm enables a localised fitting for non-local interpolation methods.</para><para>As in the similar class (<ref refid="iterative_bootstrap" kindref="compound">IterativeBootstrap</ref>) the input term structure is solved on a number of market instruments which are passed as a vector of handles to <ref refid="bootstrap_helper" kindref="compound">BootstrapHelper</ref> instances. Their maturities mark the boundaries of the interpolated segments.</para><para>Unlike the <ref refid="iterative_bootstrap" kindref="compound">IterativeBootstrap</ref> class, the solution for each interpolated segment is derived using a local approximation. This restricts the risk profile s.t. the risk is localised. Therefore, we obtain a local IR risk profile whilst using a smoother interpolation method. Particularly good for the convex-monotone spline method. </para>    </detaileddescription>
+<para>This algorithm enables a localised fitting for non-local interpolation methods.</para><para>As in the similar class (IterativeBootstrap) the input term structure is solved on a number of market instruments which are passed as a vector of handles to BootstrapHelper instances. Their maturities mark the boundaries of the interpolated segments.</para><para>Unlike the IterativeBootstrap class, the solution for each interpolated segment is derived using a local approximation. This restricts the risk profile s.t. the risk is localised. Therefore, we obtain a local IR risk profile whilst using a smoother interpolation method. Particularly good for the convex-monotone spline method. </para>    </detaileddescription>
     <location file="/termstructures/localbootstrap.hpp" line="86" bodyfile="/termstructures/localbootstrap.hpp" bodystart="86" bodyend="100"/>
   </compounddef>
 </doxygen>

@@ -13,7 +13,7 @@
         <argsstring>(const boost::shared_ptr&lt; MarketModel &gt; &amp;, const BrownianGeneratorFactory &amp;, const std::vector&lt; Size &gt; &amp;numeraires, Size initialStep=0)</argsstring>
         <name>LogNormalFwdRateBalland</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModel &gt; &amp;</type>
         </param>
         <param>
           <type>const BrownianGeneratorFactory &amp;</type>

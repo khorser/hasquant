@@ -26,11 +26,11 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;price, const Date &amp;immDate, Natural lengthInMonths, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter, const Handle&lt; Quote &gt; &amp;convexityAdjustment=Handle&lt; Quote &gt;())</argsstring>
         <name>FuturesRateHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>immDate</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
           <declname>lengthInMonths</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -50,13 +50,13 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>convexityAdjustment</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval>Handle&lt; Quote &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="55"/>
       </memberdef>
@@ -70,7 +70,7 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>immDate</declname>
         </param>
         <param>
@@ -78,7 +78,7 @@
           <declname>lengthInMonths</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -90,7 +90,7 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -106,25 +106,25 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;price, const Date &amp;immStartDate, const Date &amp;endDate, const DayCounter &amp;dayCounter, const Handle&lt; Quote &gt; &amp;convexityAdjustment=Handle&lt; Quote &gt;())</argsstring>
         <name>FuturesRateHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>immStartDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>convexityAdjustment</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval>Handle&lt; Quote &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="68"/>
       </memberdef>
@@ -138,15 +138,15 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>immStartDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -162,21 +162,21 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;price, const Date &amp;immDate, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, const Handle&lt; Quote &gt; &amp;convexityAdjustment=Handle&lt; Quote &gt;())</argsstring>
         <name>FuturesRateHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>immDate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>convexityAdjustment</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval>Handle&lt; Quote &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="77"/>
       </memberdef>
@@ -190,11 +190,11 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>immDate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
@@ -206,7 +206,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Rate helper for bootstrapping over <ref refid="ibor_index" kindref="compound">IborIndex</ref> futures prices. </para>    </briefdescription>
+<para>Rate helper for bootstrapping over IborIndex futures prices. </para>    </briefdescription>
     <location file="/termstructures/yield/ratehelpers.hpp" line="46" bodyfile="/termstructures/yield/ratehelpers.hpp" bodystart="46" bodyend="97"/>
   </compounddef>
 </doxygen>

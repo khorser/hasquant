@@ -6,7 +6,7 @@
       <sectiondef kind="user-defined">
       <header>FloatingRateCoupon interface</header>
       <memberdef kind="function" id="average_b_m_a_coupon_1a7f00f23080f829019ba5a986a64f79ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring>() const </argsstring>
         <name>fixingDates</name>
@@ -34,7 +34,7 @@
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, const boost::shared_ptr&lt; BMAIndex &gt; &amp;index, Real gearing=1.0, Spread spread=0.0, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date(), const DayCounter &amp;dayCounter=DayCounter())</argsstring>
         <name>AverageBMACoupon</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -42,15 +42,15 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="b_m_a_index" kindref="compound">BMAIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BMAIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -64,25 +64,25 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval>DayCounter()</defval>
         </param>
         <location file="/cashflows/averagebmacoupon.hpp" line="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="average" kindref="compound">Average</ref> BMA coupon. </para>    </briefdescription>
+<para>Average BMA coupon. </para>    </briefdescription>
     <detaileddescription>
 <para>Coupon paying a BMA index, where the coupon rate is a weighted average of relevant fixings.</para><para>The weighted average is computed based on the actual calendar days for which a given fixing is valid and contributing to the given interest period.</para><para>Before weights are computed, the fixing schedule is adjusted for the index&apos;s fixing day gap. See <ref refid="floating_rate_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" kindref="member">rate()</ref> method for details. </para>    </detaileddescription>
     <location file="/cashflows/averagebmacoupon.hpp" line="44" bodyfile="/cashflows/averagebmacoupon.hpp" bodystart="44" bodyend="79"/>

@@ -22,15 +22,15 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar, const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Real &gt; &amp;strikes, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;volatilities, const DayCounter &amp;dayCounter, Extrapolation lowerExtrapolation=InterpolatorDefaultExtrapolation, Extrapolation upperExtrapolation=InterpolatorDefaultExtrapolation)</argsstring>
         <name>ExtendedBlackVarianceSurface</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -38,11 +38,11 @@
           <declname>strikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>volatilities</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -78,7 +78,7 @@
     <briefdescription>
 <para>Black volatility surface modelled as variance surface. </para>    </briefdescription>
     <detaileddescription>
-<para>This class is similar to <ref refid="black_variance_surface" kindref="compound">BlackVarianceSurface</ref>, but extends it to use quotes for the input volatilities. </para>    </detaileddescription>
+<para>This class is similar to BlackVarianceSurface, but extends it to use quotes for the input volatilities. </para>    </detaileddescription>
     <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="39" bodyfile="/experimental/volatility/extendedblackvariancesurface.hpp" bodystart="39" bodyend="80"/>
   </compounddef>
 </doxygen>

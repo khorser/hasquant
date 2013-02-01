@@ -9,7 +9,7 @@
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;p)</argsstring>
         <name>MinBasketPayoff</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Payoff &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="57" bodyfile="/instruments/basketoption.hpp" bodystart="56" bodyend="57"/>
@@ -20,7 +20,7 @@
         <argsstring>(const Array &amp;a) const </argsstring>
         <name>accumulate</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>a</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="58" bodyfile="/instruments/basketoption.hpp" bodystart="58" bodyend="60"/>

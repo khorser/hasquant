@@ -46,14 +46,14 @@
         <location file="/currency.hpp" line="82" bodyfile="/currency.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="currency_1_1_data_1ad7abf16b90345ce924d7a556a5ee904b" prot="public" static="no" mutable="no">
-        <type><ref refid="rounding" kindref="compound">Rounding</ref></type>
+        <type>Rounding</type>
         <definition>Rounding rounding</definition>
         <argsstring></argsstring>
         <name>rounding</name>
         <location file="/currency.hpp" line="83" bodyfile="/currency.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="currency_1_1_data_1afa009cdefa581b4eb76555c7b28d20ef" prot="public" static="no" mutable="no">
-        <type><ref refid="currency" kindref="compound">Currency</ref></type>
+        <type>Currency</type>
         <definition>Currency triangulated</definition>
         <argsstring></argsstring>
         <name>triangulated</name>
@@ -98,7 +98,7 @@
           <declname>fractionsPerUnit</declname>
         </param>
         <param>
-          <type>const <ref refid="rounding" kindref="compound">Rounding</ref> &amp;</type>
+          <type>const Rounding &amp;</type>
           <declname>rounding</declname>
         </param>
         <param>
@@ -106,9 +106,9 @@
           <declname>formatString</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>triangulationCurrency</declname>
-          <defval><ref refid="currency" kindref="compound">Currency</ref>()</defval>
+          <defval>Currency()</defval>
         </param>
         <location file="/currency.hpp" line="95"/>
       </memberdef>

@@ -28,7 +28,7 @@
         <param>
           <type><ref refid="canada_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
           <declname>market</declname>
-          <defval><ref refid="settlement" kindref="compound">Settlement</ref></defval>
+          <defval>Settlement</defval>
         </param>
         <location file="/time/calendars/canada.hpp" line="88"/>
       </memberdef>
@@ -50,7 +50,7 @@
 <listitem>
 <para>Victoria Day, the Monday on or preceding May 24th </para></listitem>
 <listitem>
-<para><ref refid="canada" kindref="compound">Canada</ref> Day, July 1st (possibly moved to Monday) </para></listitem>
+<para>Canada Day, July 1st (possibly moved to Monday) </para></listitem>
 <listitem>
 <para>Provincial Holiday, first Monday of August </para></listitem>
 <listitem>
@@ -78,7 +78,7 @@
 <listitem>
 <para>Victoria Day, the Monday on or preceding May 24th </para></listitem>
 <listitem>
-<para><ref refid="canada" kindref="compound">Canada</ref> Day, July 1st (possibly moved to Monday) </para></listitem>
+<para>Canada Day, July 1st (possibly moved to Monday) </para></listitem>
 <listitem>
 <para>Provincial Holiday, first Monday of August </para></listitem>
 <listitem>

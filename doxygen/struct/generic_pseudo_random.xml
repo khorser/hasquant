@@ -27,21 +27,21 @@
         <location file="/math/randomnumbers/rngtraits.hpp" line="45" bodyfile="/math/randomnumbers/rngtraits.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="generic_pseudo_random_1a08c9676c6d5c428bded535a24877c8d5" prot="public" static="no">
-        <type><ref refid="inverse_cumulative_rng" kindref="compound">InverseCumulativeRng</ref>&lt; urng_type, IC &gt;</type>
+        <type>InverseCumulativeRng&lt; urng_type, IC &gt;</type>
         <definition>typedef InverseCumulativeRng&lt;urng_type,IC&gt; rng_type</definition>
         <argsstring></argsstring>
         <name>rng_type</name>
         <location file="/math/randomnumbers/rngtraits.hpp" line="46" bodyfile="/math/randomnumbers/rngtraits.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="generic_pseudo_random_1a9ec0daac1a5df690cfb0e14bcef2c36e" prot="public" static="no">
-        <type><ref refid="random_sequence_generator" kindref="compound">RandomSequenceGenerator</ref>&lt; urng_type &gt;</type>
+        <type>RandomSequenceGenerator&lt; urng_type &gt;</type>
         <definition>typedef RandomSequenceGenerator&lt;urng_type&gt; ursg_type</definition>
         <argsstring></argsstring>
         <name>ursg_type</name>
         <location file="/math/randomnumbers/rngtraits.hpp" line="47" bodyfile="/math/randomnumbers/rngtraits.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="generic_pseudo_random_1a171ed387822763dc8c95e3f638cc8de0" prot="public" static="no">
-        <type><ref refid="inverse_cumulative_rsg" kindref="compound">InverseCumulativeRsg</ref>&lt; <ref refid="random_sequence_generator" kindref="compound">ursg_type</ref>, IC &gt;</type>
+        <type>InverseCumulativeRsg&lt; ursg_type, IC &gt;</type>
         <definition>typedef InverseCumulativeRsg&lt;ursg_type,IC&gt; rsg_type</definition>
         <argsstring></argsstring>
         <name>rsg_type</name>
@@ -59,7 +59,7 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="generic_pseudo_random_1a151fdf6c3c4b229d6e1f7f56f0590f2b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="inverse_cumulative_rsg" kindref="compound">rsg_type</ref></type>
+        <type>rsg_type</type>
         <definition>static rsg_type make_sequence_generator</definition>
         <argsstring>(Size dimension, BigNatural seed)</argsstring>
         <name>make_sequence_generator</name>

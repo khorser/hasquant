@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
         <name>AnalyticCompoundOptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="48"/>
@@ -19,7 +19,7 @@
     <briefdescription>
 <para>Pricing engine for compound options using analytical formulae. </para>    </briefdescription>
     <detaileddescription>
-<para>The formulas are taken from &quot;Foreign Exchange Risk&quot;, Uwe Wystup, Risk 2002, where closed form <ref refid="greeks" kindref="compound">Greeks</ref> are available. (not available in Haug 2007). Value: Page 84, <ref refid="greeks" kindref="compound">Greeks</ref>: Pages 94-95.</para><para><xrefsect id="test_1_test000005"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>The formulas are taken from &quot;Foreign Exchange Risk&quot;, Uwe Wystup, Risk 2002, where closed form Greeks are available. (not available in Haug 2007). Value: Page 84, Greeks: Pages 94-95.</para><para><xrefsect id="test_1_test000005"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="45" bodyfile="/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="45" bodyend="100"/>
   </compounddef>
 </doxygen>

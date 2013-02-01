@@ -12,15 +12,15 @@
         <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, const std::vector&lt; Date &gt; &amp;dividendDates, const std::vector&lt; Real &gt; &amp;dividends)</argsstring>
         <name>DividendVanillaOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>dividendDates</declname>
         </param>
         <param>
@@ -39,7 +39,7 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -63,7 +63,7 @@
           <defval>4.0</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000055"><xreftitle>Warning</xreftitle><xrefdescription><para>see <ref refid="vanilla_option" kindref="compound">VanillaOption</ref> for notes on implied-volatility calculation. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000055"><xreftitle>Warning</xreftitle><xrefdescription><para>see VanillaOption for notes on implied-volatility calculation. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/instruments/dividendvanillaoption.hpp" line="55"/>
       </memberdef>
       </sectiondef>

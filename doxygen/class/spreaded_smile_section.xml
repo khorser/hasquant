@@ -26,7 +26,7 @@
         <location file="/termstructures/volatility/spreadedsmilesection.hpp" line="42" bodyfile="/termstructures/volatility/spreadedsmilesection.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_smile_section_1aa3f1474389737c0b802f27e03656abb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date &amp; exerciseDate</definition>
         <argsstring>() const </argsstring>
         <name>exerciseDate</name>
@@ -40,7 +40,7 @@
         <location file="/termstructures/volatility/spreadedsmilesection.hpp" line="44" bodyfile="/termstructures/volatility/spreadedsmilesection.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_smile_section_1a1725ea0bf0762b6642c802532d8c546f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter &amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
@@ -64,10 +64,10 @@
         <argsstring>(const boost::shared_ptr&lt; SmileSection &gt; &amp;, const Handle&lt; Quote &gt; &amp;spread)</argsstring>
         <name>SpreadedSmileSection</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SmileSection &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <location file="/termstructures/volatility/spreadedsmilesection.hpp" line="37"/>

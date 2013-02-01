@@ -38,7 +38,7 @@
         <argsstring>(const CurveState &amp;currentState, std::vector&lt; Size &gt; &amp;numberCashFlowsThisStep, std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;cashFlowsGenerated)</argsstring>
         <name>nextTimeStep</name>
         <param>
-          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const CurveState &amp;</type>
           <declname>currentState</declname>
         </param>
         <param>
@@ -52,7 +52,7 @@
         <location file="/models/marketmodels/products/onestep/onestepcoterminalswaps.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="one_step_coterminal_swaps_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::auto_ptr&lt; <ref refid="market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &gt;</type>
+        <type>std::auto_ptr&lt; MarketModelMultiProduct &gt;</type>
         <definition>std::auto_ptr&lt;MarketModelMultiProduct&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>

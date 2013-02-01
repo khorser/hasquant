@@ -13,7 +13,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="australia" kindref="compound">Australia</ref> as geographical/economic region. </para>    </briefdescription>
+<para>Australia as geographical/economic region. </para>    </briefdescription>
     <location file="/indexes/region.hpp" line="63" bodyfile="/indexes/region.hpp" bodystart="63" bodyend="66"/>
   </compounddef>
 </doxygen>

@@ -99,7 +99,7 @@
       <sectiondef kind="user-defined">
       <header>date algebra</header>
       <memberdef kind="function" id="date_1ab6f7f85b59c091e173b7bb63fd499e3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>Date &amp;</type>
         <definition>Date&amp; operator+=</definition>
         <argsstring>(BigInteger days)</argsstring>
         <name>operator+=</name>
@@ -112,19 +112,19 @@
         <location file="/time/date.hpp" line="114"/>
       </memberdef>
       <memberdef kind="function" id="date_1a07d81fcf62cbe8eb96e3643555931b46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>Date &amp;</type>
         <definition>Date&amp; operator+=</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>operator+=</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <briefdescription>
 <para>increments date by the given period </para>        </briefdescription>
         <location file="/time/date.hpp" line="116"/>
       </memberdef>
       <memberdef kind="function" id="date_1ae766493ec3fd4018080f00af808dfbe0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>Date &amp;</type>
         <definition>Date&amp; operator-=</definition>
         <argsstring>(BigInteger days)</argsstring>
         <name>operator-=</name>
@@ -137,19 +137,19 @@
         <location file="/time/date.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="date_1a0b5789977f91e47ef9ea2ec8a921215a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>Date &amp;</type>
         <definition>Date&amp; operator-=</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>operator-=</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
         </param>
         <briefdescription>
 <para>decrements date by the given period </para>        </briefdescription>
         <location file="/time/date.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="date_1ae6a991aa97305857a8f1f3ce86e56a8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>Date &amp;</type>
         <definition>Date&amp; operator++</definition>
         <argsstring>()</argsstring>
         <name>operator++</name>
@@ -158,7 +158,7 @@
         <location file="/time/date.hpp" line="122"/>
       </memberdef>
       <memberdef kind="function" id="date_1a6541a6651456d8bc1622a24291841647" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date operator++</definition>
         <argsstring>(int)</argsstring>
         <name>operator++</name>
@@ -170,7 +170,7 @@
         <location file="/time/date.hpp" line="124"/>
       </memberdef>
       <memberdef kind="function" id="date_1ad96f835929dff451238fe944b8855797" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>Date &amp;</type>
         <definition>Date&amp; operator--</definition>
         <argsstring>()</argsstring>
         <name>operator--</name>
@@ -179,7 +179,7 @@
         <location file="/time/date.hpp" line="126"/>
       </memberdef>
       <memberdef kind="function" id="date_1a382393929522ea82108942354ca727f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date operator--</definition>
         <argsstring>(int)</argsstring>
         <name>operator--</name>
@@ -191,7 +191,7 @@
         <location file="/time/date.hpp" line="128"/>
       </memberdef>
       <memberdef kind="function" id="date_1a6de85b04ffcb972a60918bb63cb571e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date operator+</definition>
         <argsstring>(BigInteger days) const </argsstring>
         <name>operator+</name>
@@ -204,12 +204,12 @@
         <location file="/time/date.hpp" line="130" bodyfile="/time/date.hpp" bodystart="270" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="date_1aa51ddbd8d8f33c4abde8bd8603fc8fed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date operator+</definition>
         <argsstring>(const Period &amp;) const </argsstring>
         <name>operator+</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <defname>p</defname>
         </param>
         <briefdescription>
@@ -217,7 +217,7 @@
         <location file="/time/date.hpp" line="132" bodyfile="/time/date.hpp" bodystart="278" bodyend="280"/>
       </memberdef>
       <memberdef kind="function" id="date_1a83028e338e164409c00c44b170b1ad94" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date operator-</definition>
         <argsstring>(BigInteger days) const </argsstring>
         <name>operator-</name>
@@ -230,12 +230,12 @@
         <location file="/time/date.hpp" line="134" bodyfile="/time/date.hpp" bodystart="274" bodyend="276"/>
       </memberdef>
       <memberdef kind="function" id="date_1a9f749d07ec5fbb465a2b618a159c513d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date operator-</definition>
         <argsstring>(const Period &amp;) const </argsstring>
         <name>operator-</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <defname>p</defname>
         </param>
         <briefdescription>
@@ -246,7 +246,7 @@
       <sectiondef kind="user-defined">
       <header>static methods</header>
       <memberdef kind="function" id="date_1aa3b3414c408337e640d21c0936602c66" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date todaysDate</definition>
         <argsstring>()</argsstring>
         <name>todaysDate</name>
@@ -255,7 +255,7 @@
         <location file="/time/date.hpp" line="142"/>
       </memberdef>
       <memberdef kind="function" id="date_1a23625bfa1e742192c8983792debcf7c1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date minDate</definition>
         <argsstring>()</argsstring>
         <name>minDate</name>
@@ -264,7 +264,7 @@
         <location file="/time/date.hpp" line="144"/>
       </memberdef>
       <memberdef kind="function" id="date_1ab16674c4f64b17d89302cf0805f1fdbd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date maxDate</definition>
         <argsstring>()</argsstring>
         <name>maxDate</name>
@@ -286,12 +286,12 @@
         <location file="/time/date.hpp" line="148"/>
       </memberdef>
       <memberdef kind="function" id="date_1a7c1704dd4c31093571b353b270e160cd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date endOfMonth</definition>
         <argsstring>(const Date &amp;d)</argsstring>
         <name>endOfMonth</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <briefdescription>
@@ -304,7 +304,7 @@
         <argsstring>(const Date &amp;d)</argsstring>
         <name>isEndOfMonth</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <briefdescription>
@@ -312,12 +312,12 @@
         <location file="/time/date.hpp" line="152" bodyfile="/time/date.hpp" bodystart="292" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="date_1a9caf3cd25686bb9e2eefc53a9eadcafb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date nextWeekday</definition>
         <argsstring>(const Date &amp;d, Weekday w)</argsstring>
         <name>nextWeekday</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -331,7 +331,7 @@
         <location file="/time/date.hpp" line="160"/>
       </memberdef>
       <memberdef kind="function" id="date_1ac3b059c7dcdc19487c1f95542218c888" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date nthWeekday</definition>
         <argsstring>(Size n, Weekday w, Month m, Year y)</argsstring>
         <name>nthWeekday</name>
@@ -365,10 +365,10 @@
         <argsstring>(const Date &amp;, const Date &amp;)</argsstring>
         <name>operator-</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <briefdescription>
 <para>Difference in days between dates. </para>        </briefdescription>
@@ -380,10 +380,10 @@
         <argsstring>(const Date &amp;, const Date &amp;)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <location file="/time/date.hpp" line="189" bodyfile="/time/date.hpp" bodystart="300" bodyend="302"/>
       </memberdef>
@@ -393,10 +393,10 @@
         <argsstring>(const Date &amp;, const Date &amp;)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <location file="/time/date.hpp" line="191" bodyfile="/time/date.hpp" bodystart="304" bodyend="306"/>
       </memberdef>
@@ -406,10 +406,10 @@
         <argsstring>(const Date &amp;, const Date &amp;)</argsstring>
         <name>operator&lt;</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <location file="/time/date.hpp" line="193" bodyfile="/time/date.hpp" bodystart="308" bodyend="310"/>
       </memberdef>
@@ -419,10 +419,10 @@
         <argsstring>(const Date &amp;, const Date &amp;)</argsstring>
         <name>operator&lt;=</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <location file="/time/date.hpp" line="195" bodyfile="/time/date.hpp" bodystart="312" bodyend="314"/>
       </memberdef>
@@ -432,10 +432,10 @@
         <argsstring>(const Date &amp;, const Date &amp;)</argsstring>
         <name>operator&gt;</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <location file="/time/date.hpp" line="197" bodyfile="/time/date.hpp" bodystart="316" bodyend="318"/>
       </memberdef>
@@ -445,10 +445,10 @@
         <argsstring>(const Date &amp;, const Date &amp;)</argsstring>
         <name>operator&gt;=</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <location file="/time/date.hpp" line="199" bodyfile="/time/date.hpp" bodystart="320" bodyend="322"/>
       </memberdef>
@@ -461,7 +461,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <location file="/time/date.hpp" line="201"/>
       </memberdef>

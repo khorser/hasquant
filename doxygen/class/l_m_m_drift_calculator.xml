@@ -10,7 +10,7 @@
         <argsstring>(const Matrix &amp;pseudo, const std::vector&lt; Spread &gt; &amp;displacements, const std::vector&lt; Time &gt; &amp;taus, Size numeraire, Size alive)</argsstring>
         <name>LMMDriftCalculator</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>pseudo</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
         <argsstring>(const LMMCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>compute</name>
         <param>
-          <type>const <ref refid="l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
+          <type>const LMMCurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -69,7 +69,7 @@
         <argsstring>(const LMMCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>computePlain</name>
         <param>
-          <type>const <ref refid="l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
+          <type>const LMMCurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -101,7 +101,7 @@
         <argsstring>(const LMMCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>computeReduced</name>
         <param>
-          <type>const <ref refid="l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
+          <type>const LMMCurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -131,7 +131,7 @@
     <briefdescription>
 <para>Drift computation for log-normal Libor market models. </para>    </briefdescription>
     <detaileddescription>
-<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
+<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor Libor Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
     <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="40" bodyfile="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" bodystart="40" bodyend="78"/>
   </compounddef>
 </doxygen>

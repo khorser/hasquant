@@ -10,19 +10,19 @@
         <argsstring>(const boost::shared_ptr&lt; LogNormalFwdRateEuler &gt; &amp;evolver, const Clone&lt; MarketModelPathwiseMultiProduct &gt; &amp;product, const boost::shared_ptr&lt; MarketModel &gt; &amp;pseudoRootStructure, const std::vector&lt; std::vector&lt; Matrix &gt; &gt; &amp;VegaBumps, Real initialNumeraireValue)</argsstring>
         <name>PathwiseVegasAccountingEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="log_normal_fwd_rate_euler" kindref="compound">LogNormalFwdRateEuler</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LogNormalFwdRateEuler &gt; &amp;</type>
           <declname>evolver</declname>
         </param>
         <param>
-          <type>const <ref refid="clone" kindref="compound">Clone</ref>&lt; <ref refid="market_model_pathwise_multi_product" kindref="compound">MarketModelPathwiseMultiProduct</ref> &gt; &amp;</type>
+          <type>const Clone&lt; MarketModelPathwiseMultiProduct &gt; &amp;</type>
           <declname>product</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModel &gt; &amp;</type>
           <declname>pseudoRootStructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; Matrix &gt; &gt; &amp;</type>
           <declname>VegaBumps</declname>
         </param>
         <param>

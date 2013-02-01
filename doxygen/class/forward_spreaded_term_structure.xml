@@ -16,11 +16,11 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;, const Handle&lt; Quote &gt; &amp;spread)</argsstring>
         <name>ForwardSpreadedTermStructure</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <defname>h</defname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <location file="/termstructures/yield/forwardspreadedtermstructure.hpp" line="49" bodyfile="/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="71" bodyend="77"/>

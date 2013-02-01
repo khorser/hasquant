@@ -12,14 +12,14 @@
         <location file="/instruments/bonds/btp.hpp" line="100" bodyfile="/instruments/bonds/btp.hpp" bodystart="100" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="rendistato_basket_1a6a8b20951583ba00b93b21f116ef6122" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="b_t_p" kindref="compound">BTP</ref> &gt; &gt; &amp;</type>
+        <type>const std::vector&lt; boost::shared_ptr&lt; BTP &gt; &gt; &amp;</type>
         <definition>const std::vector&lt; boost::shared_ptr&lt; BTP &gt; &gt; &amp; btps</definition>
         <argsstring>() const </argsstring>
         <name>btps</name>
         <location file="/instruments/bonds/btp.hpp" line="101" bodyfile="/instruments/bonds/btp.hpp" bodystart="204" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="rendistato_basket_1ad21e8f5ed789ee96327386bca6eb08ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+        <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
         <definition>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp; cleanPriceQuotes</definition>
         <argsstring>() const </argsstring>
         <name>cleanPriceQuotes</name>
@@ -64,7 +64,7 @@
         <argsstring>(const std::vector&lt; boost::shared_ptr&lt; BTP &gt; &gt; &amp;btps, const std::vector&lt; Real &gt; &amp;outstandings, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;cleanPriceQuotes)</argsstring>
         <name>RendistatoBasket</name>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="b_t_p" kindref="compound">BTP</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; BTP &gt; &gt; &amp;</type>
           <declname>btps</declname>
         </param>
         <param>
@@ -72,7 +72,7 @@
           <declname>outstandings</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>cleanPriceQuotes</declname>
         </param>
         <location file="/instruments/bonds/btp.hpp" line="97"/>

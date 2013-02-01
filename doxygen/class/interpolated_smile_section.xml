@@ -22,11 +22,11 @@
           <declname>strikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>stdDevHandles</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>atmLevel</declname>
         </param>
         <param>
@@ -35,9 +35,9 @@
           <defval>Interpolator()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <location file="/termstructures/volatility/interpolatedsmilesection.hpp" line="46" bodyfile="/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="89" bodyend="108"/>
       </memberdef>
@@ -68,9 +68,9 @@
           <defval>Interpolator()</defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <location file="/termstructures/volatility/interpolatedsmilesection.hpp" line="53" bodyfile="/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="111" bodyend="133"/>
       </memberdef>
@@ -80,7 +80,7 @@
         <argsstring>(const Date &amp;d, const std::vector&lt; Rate &gt; &amp;strikes, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;stdDevHandles, const Handle&lt; Quote &gt; &amp;atmLevel, const DayCounter &amp;dc=Actual365Fixed(), const Interpolator &amp;interpolator=Interpolator(), const Date &amp;referenceDate=Date())</argsstring>
         <name>InterpolatedSmileSection</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -88,17 +88,17 @@
           <declname>strikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>stdDevHandles</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>atmLevel</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <param>
           <type>const Interpolator &amp;</type>
@@ -106,9 +106,9 @@
           <defval>Interpolator()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/termstructures/volatility/interpolatedsmilesection.hpp" line="62" bodyfile="/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="136" bodyend="155"/>
       </memberdef>
@@ -118,7 +118,7 @@
         <argsstring>(const Date &amp;d, const std::vector&lt; Rate &gt; &amp;strikes, const std::vector&lt; Real &gt; &amp;stdDevs, Real atmLevel, const DayCounter &amp;dc=Actual365Fixed(), const Interpolator &amp;interpolator=Interpolator(), const Date &amp;referenceDate=Date())</argsstring>
         <name>InterpolatedSmileSection</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -134,9 +134,9 @@
           <declname>atmLevel</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <param>
           <type>const Interpolator &amp;</type>
@@ -144,9 +144,9 @@
           <defval>Interpolator()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <location file="/termstructures/volatility/interpolatedsmilesection.hpp" line="70" bodyfile="/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="158" bodyend="181"/>
       </memberdef>

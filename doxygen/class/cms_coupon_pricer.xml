@@ -10,14 +10,14 @@
         <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;v=Handle&lt; SwaptionVolatilityStructure &gt;())</argsstring>
         <name>CmsCouponPricer</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; SwaptionVolatilityStructure &gt; &amp;</type>
           <declname>v</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; SwaptionVolatilityStructure &gt;()</defval>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="119" bodyfile="/cashflows/couponpricer.hpp" bodystart="117" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="cms_coupon_pricer_1abba72df9d5d3b68df94ed0993bdaf7ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
+        <type>Handle&lt; SwaptionVolatilityStructure &gt;</type>
         <definition>Handle&lt;SwaptionVolatilityStructure&gt; swaptionVolatility</definition>
         <argsstring>() const </argsstring>
         <name>swaptionVolatility</name>
@@ -29,9 +29,9 @@
         <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;v=Handle&lt; SwaptionVolatilityStructure &gt;())</argsstring>
         <name>setSwaptionVolatility</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; SwaptionVolatilityStructure &gt; &amp;</type>
           <declname>v</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; SwaptionVolatilityStructure &gt;()</defval>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="126" bodyfile="/cashflows/couponpricer.hpp" bodystart="124" bodyend="131"/>
       </memberdef>

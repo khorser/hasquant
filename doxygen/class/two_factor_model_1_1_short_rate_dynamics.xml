@@ -10,11 +10,11 @@
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;xProcess, const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;yProcess, Real correlation)</argsstring>
         <name>ShortRateDynamics</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
           <declname>xProcess</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
           <declname>yProcess</declname>
         </param>
         <param>
@@ -50,7 +50,7 @@
         <location file="/models/shortrate/twofactormodel.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="two_factor_model_1_1_short_rate_dynamics_1a8172c305c4c368a1edd673b4ca62f371" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;StochasticProcess1D&gt;&amp; xProcess</definition>
         <argsstring>() const </argsstring>
         <name>xProcess</name>
@@ -59,7 +59,7 @@
         <location file="/models/shortrate/twofactormodel.hpp" line="85" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="85" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="two_factor_model_1_1_short_rate_dynamics_1aa16b95136209eb87d8450dcba1d7cc3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;StochasticProcess1D&gt;&amp; yProcess</definition>
         <argsstring>() const </argsstring>
         <name>yProcess</name>
@@ -77,7 +77,7 @@
         <location file="/models/shortrate/twofactormodel.hpp" line="95" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="two_factor_model_1_1_short_rate_dynamics_1afd0ad032a77834548769cc5f19c3c75f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; StochasticProcess &gt;</type>
         <definition>boost::shared_ptr&lt;StochasticProcess&gt; process</definition>
         <argsstring>() const </argsstring>
         <name>process</name>

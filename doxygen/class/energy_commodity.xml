@@ -84,7 +84,7 @@
         <argsstring>(const CommodityType &amp;commodityType, const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;secondaryCosts)</argsstring>
         <name>EnergyCommodity</name>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
@@ -94,14 +94,14 @@
         <location file="/experimental/commodities/energycommodity.hpp" line="91"/>
       </memberdef>
       <memberdef kind="function" id="energy_commodity_1a27b04a25745e81c4a2717c927bff3b78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="quantity" kindref="compound">Quantity</ref></type>
+        <type>Quantity</type>
         <definition>virtual Quantity quantity</definition>
         <argsstring>() const =0</argsstring>
         <name>quantity</name>
         <location file="/experimental/commodities/energycommodity.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="energy_commodity_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+        <type>const CommodityType &amp;</type>
         <definition>const CommodityType&amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>

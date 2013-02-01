@@ -27,9 +27,9 @@
         <argsstring>(const Handle&lt; ModelType &gt; &amp;model=Handle&lt; ModelType &gt;())</argsstring>
         <name>GenericModelEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; ModelType &gt; &amp;</type>
+          <type>const Handle&lt; ModelType &gt; &amp;</type>
           <declname>model</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; ModelType &gt;()</defval>
+          <defval>Handle&lt; ModelType &gt;()</defval>
         </param>
         <location file="/pricingengines/genericmodelengine.hpp" line="42" bodyfile="/pricingengines/genericmodelengine.hpp" bodystart="41" bodyend="44"/>
       </memberdef>

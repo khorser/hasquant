@@ -5,7 +5,7 @@
     <includes local="no">/math/randomnumbers/mt19937uniformrng.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="mersenne_twister_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
-        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>Sample&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -39,7 +39,7 @@
         <location file="/math/randomnumbers/mt19937uniformrng.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="mersenne_twister_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="sample" kindref="compound">sample_type</ref></type>
+        <type>sample_type</type>
         <definition>sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>

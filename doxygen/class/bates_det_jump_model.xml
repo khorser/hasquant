@@ -9,7 +9,7 @@
         <argsstring>(const boost::shared_ptr&lt; BatesProcess &gt; &amp;process, Real kappaLambda=1.0, Real thetaLambda=0.1)</argsstring>
         <name>BatesDetJumpModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="bates_process" kindref="compound">BatesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BatesProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

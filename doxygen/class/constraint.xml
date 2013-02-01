@@ -17,7 +17,7 @@
         <argsstring>(const Array &amp;p) const </argsstring>
         <name>test</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>p</declname>
         </param>
         <location file="/math/optimization/constraint.hpp" line="44" bodyfile="/math/optimization/constraint.hpp" bodystart="44" bodyend="44"/>
@@ -28,11 +28,11 @@
         <argsstring>(Array &amp;p, const Array &amp;direction, Real beta)</argsstring>
         <name>update</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>p</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>direction</declname>
         </param>
         <param>
@@ -47,9 +47,9 @@
         <argsstring>(const boost::shared_ptr&lt; Impl &gt; &amp;impl=boost::shared_ptr&lt; Impl &gt;())</argsstring>
         <name>Constraint</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="constraint_1_1_impl" kindref="compound">Impl</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Impl &gt; &amp;</type>
           <declname>impl</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="constraint_1_1_impl" kindref="compound">Impl</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; Impl &gt;()</defval>
         </param>
         <location file="/math/optimization/constraint.hpp" line="49"/>
       </memberdef>

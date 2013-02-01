@@ -47,7 +47,7 @@
         <location file="/instruments/cliquetoption.hpp" line="72" bodyfile="/instruments/cliquetoption.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cliquet_option_1_1arguments_1a4f0fb32169b81312009a4da2a85aac5d" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>std::vector&lt;Date&gt; resetDates</definition>
         <argsstring></argsstring>
         <name>resetDates</name>

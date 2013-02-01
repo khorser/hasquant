@@ -22,7 +22,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;correl, Size nbuckets=1, Size quadOrder=20)</argsstring>
         <name>RecursiveCdoEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>correl</declname>
         </param>
         <param>
@@ -45,11 +45,11 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;correl, const Matrix &amp;correlMtrx, Size nbuckets=1, Size quadOrder=20)</argsstring>
         <name>RecursiveCdoEngine</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>correl</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>correlMtrx</declname>
         </param>
         <param>
@@ -79,7 +79,7 @@
         <argsstring>(const Date &amp;date) const </argsstring>
         <name>expectedTrancheLoss</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/experimental/credit/recursivecdoengine.hpp" line="103" bodyfile="/experimental/credit/recursivecdoengine.hpp" bodystart="103" bodyend="111"/>

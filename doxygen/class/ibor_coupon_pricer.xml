@@ -10,14 +10,14 @@
         <argsstring>(const Handle&lt; OptionletVolatilityStructure &gt; &amp;v=Handle&lt; OptionletVolatilityStructure &gt;())</argsstring>
         <name>IborCouponPricer</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; OptionletVolatilityStructure &gt; &amp;</type>
           <declname>v</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; OptionletVolatilityStructure &gt;()</defval>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="66" bodyfile="/cashflows/couponpricer.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="ibor_coupon_pricer_1adfef2cab50b0c3b85151beaabf9309b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;</type>
+        <type>Handle&lt; OptionletVolatilityStructure &gt;</type>
         <definition>Handle&lt;OptionletVolatilityStructure&gt; capletVolatility</definition>
         <argsstring>() const </argsstring>
         <name>capletVolatility</name>
@@ -29,9 +29,9 @@
         <argsstring>(const Handle&lt; OptionletVolatilityStructure &gt; &amp;v=Handle&lt; OptionletVolatilityStructure &gt;())</argsstring>
         <name>setCapletVolatility</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; OptionletVolatilityStructure &gt; &amp;</type>
           <declname>v</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; OptionletVolatilityStructure &gt;()</defval>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="73" bodyfile="/cashflows/couponpricer.hpp" bodystart="71" bodyend="78"/>
       </memberdef>

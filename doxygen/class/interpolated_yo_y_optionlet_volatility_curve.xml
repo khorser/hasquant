@@ -22,7 +22,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <defname>cal</defname>
         </param>
         <param>
@@ -30,11 +30,11 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Date &gt; &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -86,7 +86,7 @@
         <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="80" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_yo_y_optionlet_volatility_curve_1a89257bfeb91871645a70c5370fd7cbc5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Date&gt;&amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
@@ -100,7 +100,7 @@
         <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="82" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_yo_y_optionlet_volatility_curve_1abcff9b6eca640af28de7247fac16c00e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>virtual std::vector&lt;std::pair&lt;Date, Real&gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>

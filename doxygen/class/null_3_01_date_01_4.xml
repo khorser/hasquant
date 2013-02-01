@@ -20,7 +20,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>specialization of <ref refid="null" kindref="compound">Null</ref> template for the <ref refid="date" kindref="compound">Date</ref> class </para>    </briefdescription>
+<para>specialization of Null template for the Date class </para>    </briefdescription>
     <location file="/time/date.hpp" line="244" bodyfile="/time/date.hpp" bodystart="244" bodyend="248"/>
   </compounddef>
 </doxygen>

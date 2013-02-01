@@ -10,7 +10,7 @@
         <argsstring>(const Matrix &amp;pseudo, const std::vector&lt; Spread &gt; &amp;displacements, const std::vector&lt; Time &gt; &amp;taus, Size numeraire, Size alive, Size spanningFwds)</argsstring>
         <name>CMSMMDriftCalculator</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>pseudo</declname>
         </param>
         <param>
@@ -41,7 +41,7 @@
         <argsstring>(const CMSwapCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>compute</name>
         <param>
-          <type>const <ref refid="c_m_swap_curve_state" kindref="compound">CMSwapCurveState</ref> &amp;</type>
+          <type>const CMSwapCurveState &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -56,7 +56,7 @@
     <briefdescription>
 <para>Drift computation for CMS market models. </para>    </briefdescription>
     <detaileddescription>
-<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
+<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor Libor Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
     <location file="/models/marketmodels/driftcomputation/cmsmmdriftcalculator.hpp" line="42" bodyfile="/models/marketmodels/driftcomputation/cmsmmdriftcalculator.hpp" bodystart="42" bodyend="68"/>
   </compounddef>
 </doxygen>

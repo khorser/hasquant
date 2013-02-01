@@ -29,7 +29,7 @@
         <argsstring>(const Date &amp;d, const Rate k) const =0</argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -44,7 +44,7 @@
         <argsstring>(const Date &amp;d, const Rate k) const =0</argsstring>
         <name>capPrice</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -59,7 +59,7 @@
         <argsstring>(const Date &amp;d, const Rate k) const =0</argsstring>
         <name>floorPrice</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -74,7 +74,7 @@
         <argsstring>(const Date &amp;d, bool extrapolate=true) const =0</argsstring>
         <name>atmYoYSwapRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -90,13 +90,13 @@
         <argsstring>(const Date &amp;d, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=true) const =0</argsstring>
         <name>atmYoYRate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>obsLag</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval>Period(-1, Days)</defval>
         </param>
         <param>
           <type>bool</type>
@@ -111,7 +111,7 @@
         <argsstring>(const Period &amp;d, const Rate k) const </argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -126,7 +126,7 @@
         <argsstring>(const Period &amp;d, const Rate k) const </argsstring>
         <name>capPrice</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -141,7 +141,7 @@
         <argsstring>(const Period &amp;d, const Rate k) const </argsstring>
         <name>floorPrice</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -156,7 +156,7 @@
         <argsstring>(const Period &amp;d, bool extrapolate=true) const </argsstring>
         <name>atmYoYSwapRate</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -172,13 +172,13 @@
         <argsstring>(const Period &amp;d, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=true) const </argsstring>
         <name>atmYoYRate</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>obsLag</declname>
-          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval>Period(-1, Days)</defval>
         </param>
         <param>
           <type>bool</type>
@@ -209,7 +209,7 @@
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="105" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="105" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_cap_floor_term_price_surface_1a111b99f9d70e1cfb1bcc9c538603fca5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt;</type>
+        <type>std::vector&lt; Period &gt;</type>
         <definition>virtual std::vector&lt;Period&gt; maturities</definition>
         <argsstring>() const </argsstring>
         <name>maturities</name>
@@ -230,14 +230,14 @@
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="108" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="108" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_cap_floor_term_price_surface_1abb9aea62a11dd6518a0917629cee8a77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date minMaturity</definition>
         <argsstring>() const </argsstring>
         <name>minMaturity</name>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="109" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_cap_floor_term_price_surface_1a4d69d735cba1249dbca85bbb32cf1cb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date maxMaturity</definition>
         <argsstring>() const </argsstring>
         <name>maxMaturity</name>
@@ -255,11 +255,11 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>yyLag</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;</type>
           <declname>yii</declname>
         </param>
         <param>
@@ -267,15 +267,15 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -291,15 +291,15 @@
           <declname>fStrikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>cfMaturities</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>cPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>fPrice</declname>
         </param>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="55"/>
@@ -316,14 +316,14 @@
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_cap_floor_term_price_surface_1aa4ceb2dffd1afea0039aefc5fea3a969" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::pair&lt; std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
+        <type>std::pair&lt; std::vector&lt; Date &gt;, std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
         <definition>virtual std::pair&lt;std::vector&lt;Date&gt;, std::vector&lt;Rate&gt; &gt; atmYoYSwapDateRates</definition>
         <argsstring>() const =0</argsstring>
         <name>atmYoYSwapDateRates</name>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_cap_floor_term_price_surface_1a3946879dbf926c969577ab4f3262979b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYInflationTermStructure &gt;</type>
         <definition>virtual boost::shared_ptr&lt;YoYInflationTermStructure&gt; YoYTS</definition>
         <argsstring>() const =0</argsstring>
         <name>YoYTS</name>
@@ -332,7 +332,7 @@
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_cap_floor_term_price_surface_1ad94033818bd70fcd47a5446733c778a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; YoYInflationIndex &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; yoyIndex</definition>
         <argsstring>() const </argsstring>
         <name>yoyIndex</name>
@@ -341,19 +341,19 @@
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="73" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_cap_floor_term_price_surface_1abe1e2c5babe12eb5b56bb7f2f8c92eba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date yoyOptionDateFromTenor</definition>
         <argsstring>(const Period &amp;p) const </argsstring>
         <name>yoyOptionDateFromTenor</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>p</declname>
         </param>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="113"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Abstract base class, inheriting from <ref refid="inflation_term_structure" kindref="compound">InflationTermStructure</ref>. </para>    </briefdescription>
+<para>Abstract base class, inheriting from InflationTermStructure. </para>    </briefdescription>
     <detaileddescription>
 <para>Since this can create a yoy term structure it does take a YoY index.</para><para><xrefsect id="todo_1_todo000013"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>deal with index interpolation. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="41" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="41" bodyend="142"/>

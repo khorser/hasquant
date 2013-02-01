@@ -9,7 +9,7 @@
         <enumvalue id="singapore_1abe41cfffd960e29a5d8b07be00aeda42a57ad7a3f1c5edfdcb8ead8238d45978f" prot="public">
           <name>SGX</name>
           <briefdescription>
-<para><ref refid="singapore" kindref="compound">Singapore</ref> exchange. </para>          </briefdescription>
+<para>Singapore exchange. </para>          </briefdescription>
         </enumvalue>
         <location file="/time/calendars/singapore.hpp" line="66" bodyfile="/time/calendars/singapore.hpp" bodystart="66" bodyend="67"/>
       </memberdef>
@@ -31,7 +31,7 @@
     <briefdescription>
 <para>Singapore calendars </para>    </briefdescription>
     <detaileddescription>
-<para>Holidays for the <ref refid="singapore" kindref="compound">Singapore</ref> exchange (data from <ulink url="http://www.simex.com.sg">http://www.simex.com.sg</ulink>): <itemizedlist>
+<para>Holidays for the Singapore exchange (data from <ulink url="http://www.simex.com.sg">http://www.simex.com.sg</ulink>): <itemizedlist>
 <listitem>
 <para>Saturdays </para></listitem>
 <listitem>

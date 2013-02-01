@@ -25,7 +25,7 @@
         <location file="/instrument.hpp" line="54" bodyfile="/instrument.hpp" bodystart="192" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="instrument_1a99aff03ddebfd886dc56c828b37d0ce8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date &amp; valuationDate</definition>
         <argsstring>() const </argsstring>
         <name>valuationDate</name>
@@ -78,7 +78,7 @@
         <argsstring>(const boost::shared_ptr&lt; PricingEngine &gt; &amp;)</argsstring>
         <name>setPricingEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; PricingEngine &gt; &amp;</type>
           <defname>e</defname>
         </param>
         <briefdescription>
@@ -118,7 +118,7 @@
         <location file="/instrument.hpp" line="106" bodyfile="/instrument.hpp" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" static="no" mutable="yes">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date valuationDate_</definition>
         <argsstring></argsstring>
         <name>valuationDate_</name>

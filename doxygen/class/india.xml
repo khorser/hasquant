@@ -9,7 +9,7 @@
         <enumvalue id="india_1abe41cfffd960e29a5d8b07be00aeda42a936d3117a6170ef59dd01b4593c271e5" prot="public">
           <name>NSE</name>
           <briefdescription>
-<para>National <ref refid="stock" kindref="compound">Stock</ref> Exchange. </para>          </briefdescription>
+<para>National Stock Exchange. </para>          </briefdescription>
         </enumvalue>
         <location file="/time/calendars/india.hpp" line="77" bodyfile="/time/calendars/india.hpp" bodystart="77" bodyend="78"/>
       </memberdef>
@@ -31,7 +31,7 @@
     <briefdescription>
 <para>Indian calendars. </para>    </briefdescription>
     <detaileddescription>
-<para>Holidays for the National <ref refid="stock" kindref="compound">Stock</ref> Exchange (data from <ulink url="http://www.nse-india.com/">http://www.nse-india.com/</ulink>): <itemizedlist>
+<para>Holidays for the National Stock Exchange (data from <ulink url="http://www.nse-india.com/">http://www.nse-india.com/</ulink>): <itemizedlist>
 <listitem>
 <para>Saturdays </para></listitem>
 <listitem>

@@ -10,7 +10,7 @@
         <argsstring>(const Handle&lt; RecoveryRateQuote &gt; &amp;quote)</argsstring>
         <name>ConstantRecoveryModel</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="recovery_rate_quote" kindref="compound">RecoveryRateQuote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; RecoveryRateQuote &gt; &amp;</type>
           <declname>quote</declname>
         </param>
         <location file="/experimental/credit/recoveryratemodel.hpp" line="64"/>

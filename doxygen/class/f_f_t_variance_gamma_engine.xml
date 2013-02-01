@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; VarianceGammaProcess &gt; &amp;process, Real logStrikeSpacing=0.001)</argsstring>
         <name>FFTVarianceGammaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="variance_gamma_process" kindref="compound">VarianceGammaProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; VarianceGammaProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

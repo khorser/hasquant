@@ -13,11 +13,11 @@
         <argsstring>(const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;originalCurve, const Handle&lt; Quote &gt; &amp;spread)</argsstring>
         <name>FactorSpreadedHazardRateCurve</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;</type>
           <declname>originalCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <location file="/experimental/credit/factorspreadedhazardratecurve.hpp" line="43" bodyfile="/experimental/credit/factorspreadedhazardratecurve.hpp" bodystart="62" bodyend="68"/>

@@ -49,7 +49,7 @@
     <briefdescription>
 <para>Atomic (single contractual event) default events. </para>    </briefdescription>
     <detaileddescription>
-<para>Default types defined as enum to allow easy aggregation of types. Theres an event algebra logic by default provided by <ref refid="default_type" kindref="compound">DefaultType</ref>. If your new type requires more sofisticated test you need to derive from it as in <ref refid="failure_to_pay" kindref="compound">FailureToPay</ref> </para>    </detaileddescription>
+<para>Default types defined as enum to allow easy aggregation of types. Theres an event algebra logic by default provided by DefaultType. If your new type requires more sofisticated test you need to derive from it as in FailureToPay </para>    </detaileddescription>
     <location file="/experimental/credit/defaulttype.hpp" line="60" bodyfile="/experimental/credit/defaulttype.hpp" bodystart="60" bodyend="77"/>
   </compounddef>
 </doxygen>

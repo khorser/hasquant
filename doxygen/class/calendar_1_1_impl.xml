@@ -5,14 +5,14 @@
     <includes local="no">/time/calendar.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="calendar_1_1_impl_1a19a911026af3cf77a94df8fabbec2544" prot="public" static="no" mutable="no">
-        <type>std::set&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::set&lt; Date &gt;</type>
         <definition>std::set&lt;Date&gt; addedHolidays</definition>
         <argsstring></argsstring>
         <name>addedHolidays</name>
         <location file="/time/calendar.hpp" line="67" bodyfile="/time/calendar.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" static="no" mutable="no">
-        <type>std::set&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::set&lt; Date &gt;</type>
         <definition>std::set&lt;Date&gt; removedHolidays</definition>
         <argsstring></argsstring>
         <name>removedHolidays</name>
@@ -40,7 +40,7 @@
         <argsstring>(const Date &amp;) const =0</argsstring>
         <name>isBusinessDay</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
         </param>
         <location file="/time/calendar.hpp" line="65"/>
       </memberdef>

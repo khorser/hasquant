@@ -38,11 +38,11 @@
         <argsstring>(const Array &amp;diag, const Array &amp;sub, EigenVectorCalculation calc=WithEigenVector, ShiftStrategy strategy=CloseEigenValue)</argsstring>
         <name>TqrEigenDecomposition</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>diag</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>sub</declname>
         </param>
         <param>
@@ -58,14 +58,14 @@
         <location file="/math/matrixutilities/tqreigendecomposition.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="tqr_eigen_decomposition_1aeb9833fe31a4739b5075f2a4cbd5dddd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; eigenvalues</definition>
         <argsstring>() const </argsstring>
         <name>eigenvalues</name>
         <location file="/math/matrixutilities/tqreigendecomposition.hpp" line="59" bodyfile="/math/matrixutilities/tqreigendecomposition.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="tqr_eigen_decomposition_1a41aa0134fde9e36a14c3a0938903e4b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <type>const Matrix &amp;</type>
         <definition>const Matrix&amp; eigenvectors</definition>
         <argsstring>() const </argsstring>
         <name>eigenvectors</name>

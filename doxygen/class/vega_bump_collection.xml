@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; MarketModel &gt; &amp;volStructure, bool allowFactorwiseBumping=true)</argsstring>
         <name>VegaBumpCollection</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModel &gt; &amp;</type>
           <declname>volStructure</declname>
         </param>
         <param>
@@ -30,7 +30,7 @@
           <declname>allBumps</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; MarketModel &gt; &amp;</type>
           <declname>volStructure</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="106"/>
@@ -43,7 +43,7 @@
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="108"/>
       </memberdef>
       <memberdef kind="function" id="vega_bump_collection_1af630bf4038f58f37c8dc2aaca33043c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; MarketModel &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;MarketModel&gt;&amp; associatedModel</definition>
         <argsstring>() const </argsstring>
         <name>associatedModel</name>

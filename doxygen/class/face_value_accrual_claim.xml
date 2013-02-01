@@ -10,14 +10,14 @@
         <argsstring>(const boost::shared_ptr&lt; Bond &gt; &amp;referenceSecurity)</argsstring>
         <name>FaceValueAccrualClaim</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="bond" kindref="compound">Bond</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Bond &gt; &amp;</type>
           <declname>referenceSecurity</declname>
         </param>
         <location file="/instruments/claim.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="claim" kindref="compound">Claim</ref> on the notional of a reference security, including accrual. </para>    </briefdescription>
+<para>Claim on the notional of a reference security, including accrual. </para>    </briefdescription>
     <location file="/instruments/claim.hpp" line="51" bodyfile="/instruments/claim.hpp" bodystart="51" bodyend="60"/>
   </compounddef>
 </doxygen>

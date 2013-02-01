@@ -9,7 +9,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="b_m_a_index_1a602aff2af572fe9b816a379dae8fb4ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <type>Handle&lt; YieldTermStructure &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; forwardingTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>forwardingTermStructure</name>
@@ -19,16 +19,16 @@
       <sectiondef kind="user-defined">
       <header>Date calculations</header>
       <memberdef kind="function" id="b_m_a_index_1afc12c1eac0967ca3d9cfcb0cf282109b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="schedule" kindref="compound">Schedule</ref></type>
+        <type>Schedule</type>
         <definition>Schedule fixingSchedule</definition>
         <argsstring>(const Date &amp;start, const Date &amp;end)</argsstring>
         <name>fixingSchedule</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>start</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>end</declname>
         </param>
         <detaileddescription>
@@ -43,17 +43,17 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>BMAIndex</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/bmaindex.hpp" line="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="bond" kindref="compound">Bond</ref> Market Association index. </para>    </briefdescription>
+<para>Bond Market Association index. </para>    </briefdescription>
     <detaileddescription>
-<para>The BMA index is the short-term tax-exempt reference index of the <ref refid="bond" kindref="compound">Bond</ref> Market Association. It has tenor one week, is fixed weekly on Wednesdays and is applied with a one-day&apos;s fixing gap from Thursdays on for one week. It is the tax-exempt correspondent of the 1M USD-Libor. </para>    </detaileddescription>
+<para>The BMA index is the short-term tax-exempt reference index of the Bond Market Association. It has tenor one week, is fixed weekly on Wednesdays and is applied with a one-day&apos;s fixing gap from Thursdays on for one week. It is the tax-exempt correspondent of the 1M USD-Libor. </para>    </detaileddescription>
     <location file="/indexes/bmaindex.hpp" line="40" bodyfile="/indexes/bmaindex.hpp" bodystart="40" bodyend="67"/>
   </compounddef>
 </doxygen>

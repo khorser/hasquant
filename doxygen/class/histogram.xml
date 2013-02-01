@@ -167,7 +167,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="histogram" kindref="compound">Histogram</ref> class. </para>    </briefdescription>
+<para>Histogram class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class computes the histogram of a given data set. The caller can specify the number of bins, the breaks, or the algorithm for determining these quantities in computing the histogram. </para>    </detaileddescription>
     <location file="/math/statistics/histogram.hpp" line="38" bodyfile="/math/statistics/histogram.hpp" bodystart="38" bodyend="93"/>

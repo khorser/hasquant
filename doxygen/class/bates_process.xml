@@ -10,15 +10,15 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;riskFreeRate, const Handle&lt; YieldTermStructure &gt; &amp;dividendYield, const Handle&lt; Quote &gt; &amp;s0, Real v0, Real kappa, Real theta, Real sigma, Real rho, Real lambda, Real nu, Real delta, HestonProcess::Discretization d=HestonProcess::FullTruncation)</argsstring>
         <name>BatesProcess</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>riskFreeRate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>dividendYield</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>s0</declname>
         </param>
         <param>

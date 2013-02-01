@@ -22,7 +22,7 @@
     <briefdescription>
 <para>Multiple-step market-model product. </para>    </briefdescription>
     <detaileddescription>
-<para>This is the abstract base class that encapsulates the notion of a <ref refid="market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> which can be evaluated in a more than one step (aka Rebonato&apos;s long jump). </para>    </detaileddescription>
+<para>This is the abstract base class that encapsulates the notion of a MarketModelMultiProduct which can be evaluated in a more than one step (aka Rebonato&apos;s long jump). </para>    </detaileddescription>
     <location file="/models/marketmodels/products/multiproductmultistep.hpp" line="34" bodyfile="/models/marketmodels/products/multiproductmultistep.hpp" bodystart="34" bodyend="45"/>
   </compounddef>
 </doxygen>

@@ -38,7 +38,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;h, Real a, Real sigma)</argsstring>
         <name>HullWhiteProcess</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>h</declname>
         </param>
         <param>

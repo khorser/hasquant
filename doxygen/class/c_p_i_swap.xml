@@ -43,11 +43,11 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>floatDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>floatSchedule</declname>
         </param>
         <param>
@@ -59,7 +59,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>floatIndex</declname>
         </param>
         <param>
@@ -71,11 +71,11 @@
           <declname>baseCPI</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>fixedSchedule</declname>
         </param>
         <param>
@@ -83,11 +83,11 @@
           <declname>fixedRoll</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;</type>
           <declname>fixedIndex</declname>
         </param>
         <param>
@@ -98,7 +98,7 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>inflationNominal</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <location file="/instruments/cpiswap.hpp" line="93"/>
       </memberdef>
@@ -159,14 +159,14 @@
         <location file="/instruments/cpiswap.hpp" line="109" bodyfile="/instruments/cpiswap.hpp" bodystart="198" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a9ace77b155fec783a7f1e2f27cef14b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter &amp; floatDayCount</definition>
         <argsstring>() const </argsstring>
         <name>floatDayCount</name>
         <location file="/instruments/cpiswap.hpp" line="110" bodyfile="/instruments/cpiswap.hpp" bodystart="199" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a8105c4a20b2b9e022001c33e9f933341" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+        <type>const Schedule &amp;</type>
         <definition>const Schedule &amp; floatSchedule</definition>
         <argsstring>() const </argsstring>
         <name>floatSchedule</name>
@@ -187,7 +187,7 @@
         <location file="/instruments/cpiswap.hpp" line="113" bodyfile="/instruments/cpiswap.hpp" bodystart="202" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a94ae66b439f89cd551508d38e4775e23" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; IborIndex &gt; &amp; floatIndex</definition>
         <argsstring>() const </argsstring>
         <name>floatIndex</name>
@@ -208,14 +208,14 @@
         <location file="/instruments/cpiswap.hpp" line="118" bodyfile="/instruments/cpiswap.hpp" bodystart="207" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a95363e8aed06af280c2f0cf7e424fed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter &amp; fixedDayCount</definition>
         <argsstring>() const </argsstring>
         <name>fixedDayCount</name>
         <location file="/instruments/cpiswap.hpp" line="119" bodyfile="/instruments/cpiswap.hpp" bodystart="208" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1ae9b9f2b40445d5d7802a80596445d4c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+        <type>const Schedule &amp;</type>
         <definition>const Schedule &amp; fixedSchedule</definition>
         <argsstring>() const </argsstring>
         <name>fixedSchedule</name>
@@ -229,14 +229,14 @@
         <location file="/instruments/cpiswap.hpp" line="121" bodyfile="/instruments/cpiswap.hpp" bodystart="210" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
         <location file="/instruments/cpiswap.hpp" line="122" bodyfile="/instruments/cpiswap.hpp" bodystart="211" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a5c24e955816d960f087a5d88805d981d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp; fixedIndex</definition>
         <argsstring>() const </argsstring>
         <name>fixedIndex</name>

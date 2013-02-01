@@ -27,7 +27,7 @@
         <location file="/math/optimization/linesearch.hpp" line="44" bodyfile="/math/optimization/linesearch.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="line_search_1a73029249454596185357bd919ecc66e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; lastX</definition>
         <argsstring>()</argsstring>
         <name>lastX</name>
@@ -45,7 +45,7 @@
         <location file="/math/optimization/linesearch.hpp" line="49" bodyfile="/math/optimization/linesearch.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="line_search_1a0a99d489f61c963d573fb9eb2a404c1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; lastGradient</definition>
         <argsstring>()</argsstring>
         <name>lastGradient</name>
@@ -75,7 +75,7 @@
         <argsstring>(Problem &amp;P, EndCriteria::Type &amp;ecType, const EndCriteria &amp;, const Real t_ini)=0</argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
+          <type>Problem &amp;</type>
           <declname>P</declname>
         </param>
         <param>
@@ -83,7 +83,7 @@
           <declname>ecType</declname>
         </param>
         <param>
-          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const EndCriteria &amp;</type>
         </param>
         <param>
           <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -99,11 +99,11 @@
         <argsstring>(Array &amp;params, const Array &amp;direction, Real beta, const Constraint &amp;constraint)</argsstring>
         <name>update</name>
         <param>
-          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>Array &amp;</type>
           <declname>params</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>direction</declname>
         </param>
         <param>
@@ -111,13 +111,13 @@
           <declname>beta</declname>
         </param>
         <param>
-          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const Constraint &amp;</type>
           <declname>constraint</declname>
         </param>
         <location file="/math/optimization/linesearch.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="line_search_1ab43e31a0f04f11a616b9a1b08dbac7c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>const Array &amp;</type>
         <definition>const Array&amp; searchDirection</definition>
         <argsstring>() const </argsstring>
         <name>searchDirection</name>
@@ -126,7 +126,7 @@
         <location file="/math/optimization/linesearch.hpp" line="68" bodyfile="/math/optimization/linesearch.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="line_search_1a8925a1dc9b83be8f1181b1c638804a1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
+        <type>Array &amp;</type>
         <definition>Array&amp; searchDirection</definition>
         <argsstring>()</argsstring>
         <name>searchDirection</name>

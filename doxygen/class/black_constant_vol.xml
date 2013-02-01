@@ -19,11 +19,11 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;, Volatility volatility, const DayCounter &amp;dayCounter)</argsstring>
         <name>BlackConstantVol</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <defname>cal</defname>
         </param>
         <param>
@@ -31,7 +31,7 @@
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/blackconstantvol.hpp" line="44" bodyfile="/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="79" bodyend="84"/>
@@ -42,19 +42,19 @@
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;, const Handle&lt; Quote &gt; &amp;volatility, const DayCounter &amp;dayCounter)</argsstring>
         <name>BlackConstantVol</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <defname>cal</defname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/blackconstantvol.hpp" line="48" bodyfile="/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="86" bodyend="93"/>
@@ -69,7 +69,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <defname>cal</defname>
         </param>
         <param>
@@ -77,7 +77,7 @@
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/blackconstantvol.hpp" line="52" bodyfile="/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="95" bodyend="100"/>
@@ -92,15 +92,15 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <defname>cal</defname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/equityfx/blackconstantvol.hpp" line="56" bodyfile="/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="102" bodyend="109"/>
@@ -109,7 +109,7 @@
     <briefdescription>
 <para>Constant Black volatility, no time-strike dependence. </para>    </briefdescription>
     <detaileddescription>
-<para>This class implements the <ref refid="black_volatility_term_structure" kindref="compound">BlackVolatilityTermStructure</ref> interface for a constant Black volatility (no time/strike dependence). </para>    </detaileddescription>
+<para>This class implements the BlackVolatilityTermStructure interface for a constant Black volatility (no time/strike dependence). </para>    </detaileddescription>
     <location file="/termstructures/volatility/equityfx/blackconstantvol.hpp" line="39" bodyfile="/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="39" bodyend="74"/>
   </compounddef>
 </doxygen>

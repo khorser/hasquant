@@ -19,7 +19,7 @@
         <argsstring>(const Date &amp;date)</argsstring>
         <name>Dividend</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/cashflows/dividend.hpp" line="39" bodyfile="/cashflows/dividend.hpp" bodystart="38" bodyend="39"/>

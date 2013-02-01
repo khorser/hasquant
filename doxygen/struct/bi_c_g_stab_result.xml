@@ -18,7 +18,7 @@
         <location file="/math/matrixutilities/bicgstab.hpp" line="35" bodyfile="/math/matrixutilities/bicgstab.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="bi_c_g_stab_result_1a877142897d25b48b1ab91cde586ab339" prot="public" static="no" mutable="no">
-        <type><ref refid="array" kindref="compound">Array</ref></type>
+        <type>Array</type>
         <definition>Array x</definition>
         <argsstring></argsstring>
         <name>x</name>

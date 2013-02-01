@@ -42,7 +42,7 @@
         <argsstring>(const step_iterator&lt; OtherIterator &gt; &amp;i, typename boost::enable_if_convertible&lt; OtherIterator, Iterator &gt;::type *=0)</argsstring>
         <name>step_iterator</name>
         <param>
-          <type>const <ref refid="step__iterator" kindref="compound">step_iterator</ref>&lt; OtherIterator &gt; &amp;</type>
+          <type>const step_iterator&lt; OtherIterator &gt; &amp;</type>
           <declname>i</declname>
         </param>
         <param>
@@ -89,7 +89,7 @@
         <argsstring>(const step_iterator &amp;i) const </argsstring>
         <name>distance_to</name>
         <param>
-          <type>const <ref refid="step__iterator" kindref="compound">step_iterator</ref> &amp;</type>
+          <type>const step_iterator &amp;</type>
           <declname>i</declname>
         </param>
         <location file="/utilities/steppingiterator.hpp" line="67" bodyfile="/utilities/steppingiterator.hpp" bodystart="67" bodyend="69"/>
@@ -102,7 +102,7 @@
             <type>class Iterator</type>
           </param>
         </templateparamlist>
-        <type><ref refid="step__iterator" kindref="compound">step_iterator</ref>&lt; Iterator &gt;</type>
+        <type>step_iterator&lt; Iterator &gt;</type>
         <definition>step_iterator&lt; Iterator &gt; make_step_iterator</definition>
         <argsstring>(Iterator it, Size step)</argsstring>
         <name>make_step_iterator</name>

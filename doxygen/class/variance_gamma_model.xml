@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; VarianceGammaProcess &gt; &amp;process)</argsstring>
         <name>VarianceGammaModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="variance_gamma_process" kindref="compound">VarianceGammaProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; VarianceGammaProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/experimental/variancegamma/variancegammamodel.hpp" line="43"/>
@@ -37,7 +37,7 @@
         <location file="/experimental/variancegamma/variancegammamodel.hpp" line="50" bodyfile="/experimental/variancegamma/variancegammamodel.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="variance_gamma_model_1ad3133515422aa6fbc4fb7babd1de296a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="variance_gamma_process" kindref="compound">VarianceGammaProcess</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; VarianceGammaProcess &gt;</type>
         <definition>boost::shared_ptr&lt;VarianceGammaProcess&gt; process</definition>
         <argsstring>() const </argsstring>
         <name>process</name>

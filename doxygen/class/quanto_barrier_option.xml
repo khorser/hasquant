@@ -29,14 +29,14 @@
       </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="quanto_barrier_option_1a8d488e34389fc1365095852ab08a0588" prot="public" static="no">
-        <type><ref refid="barrier_option_1_1arguments" kindref="compound">BarrierOption::arguments</ref></type>
+        <type>BarrierOption::arguments</type>
         <definition>typedef BarrierOption::arguments arguments</definition>
         <argsstring></argsstring>
         <name>arguments</name>
         <location file="/instruments/quantobarrieroption.hpp" line="36" bodyfile="/instruments/quantobarrieroption.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="quanto_barrier_option_1ad09ebede1ba1fd1175eef929ac6b7abf" prot="public" static="no">
-        <type><ref refid="quanto_option_results" kindref="compound">QuantoOptionResults</ref>&lt; BarrierOption::results &gt;</type>
+        <type>QuantoOptionResults&lt; BarrierOption::results &gt;</type>
         <definition>typedef QuantoOptionResults&lt;BarrierOption::results&gt; results</definition>
         <argsstring></argsstring>
         <name>results</name>
@@ -62,11 +62,11 @@
           <declname>rebate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <location file="/instruments/quantobarrieroption.hpp" line="44"/>

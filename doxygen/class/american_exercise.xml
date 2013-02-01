@@ -10,11 +10,11 @@
         <argsstring>(const Date &amp;earliestDate, const Date &amp;latestDate, bool payoffAtExpiry=false)</argsstring>
         <name>AmericanExercise</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>earliestDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>latestDate</declname>
         </param>
         <param>
@@ -30,7 +30,7 @@
         <argsstring>(const Date &amp;latestDate, bool payoffAtExpiry=false)</argsstring>
         <name>AmericanExercise</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>latestDate</declname>
         </param>
         <param>

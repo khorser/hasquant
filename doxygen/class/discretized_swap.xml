@@ -9,14 +9,14 @@
         <argsstring>(const VanillaSwap::arguments &amp;, const Date &amp;referenceDate, const DayCounter &amp;dayCounter)</argsstring>
         <name>DiscretizedSwap</name>
         <param>
-          <type>const <ref refid="vanilla_swap_1_1arguments" kindref="compound">VanillaSwap::arguments</ref> &amp;</type>
+          <type>const VanillaSwap::arguments &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/pricingengines/swap/discretizedswap.hpp" line="37"/>

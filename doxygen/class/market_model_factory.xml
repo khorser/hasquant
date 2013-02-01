@@ -12,12 +12,12 @@
         <location file="/models/marketmodels/marketmodel.hpp" line="59" bodyfile="/models/marketmodels/marketmodel.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="market_model_factory_1a20dc781ed3be433dc386daf56859e6b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; MarketModel &gt;</type>
         <definition>virtual boost::shared_ptr&lt;MarketModel&gt; create</definition>
         <argsstring>(const EvolutionDescription &amp;, Size numberOfFactors) const =0</argsstring>
         <name>create</name>
         <param>
-          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const EvolutionDescription &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

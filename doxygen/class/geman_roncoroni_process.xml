@@ -101,7 +101,7 @@
           <declname>dw</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>du</declname>
         </param>
         <location file="/experimental/processes/gemanroncoroniprocess.hpp" line="63"/>

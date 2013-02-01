@@ -14,7 +14,7 @@
         <location file="/instruments/forwardrateagreement.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="forward_rate_agreement_1a49ecc3acffc7ff1c2aacdc1007e6905f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date settlementDate</definition>
         <argsstring>() const </argsstring>
         <name>settlementDate</name>
@@ -28,7 +28,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve) const </argsstring>
         <name>spotIncome</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>incomeDiscountCurve</declname>
         </param>
         <detaileddescription>
@@ -47,7 +47,7 @@
         <location file="/instruments/forwardrateagreement.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="forward_rate_agreement_1abbe3314a442cd9731e16d18156a1fd80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="interest_rate" kindref="compound">InterestRate</ref></type>
+        <type>InterestRate</type>
         <definition>InterestRate forwardRate</definition>
         <argsstring>() const </argsstring>
         <name>forwardRate</name>
@@ -63,11 +63,11 @@
         <argsstring>(const Date &amp;valueDate, const Date &amp;maturityDate, Position::Type type, Rate strikeForwardRate, Real notionalAmount, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>ForwardRateAgreement</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>valueDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -83,13 +83,13 @@
           <declname>notionalAmount</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/instruments/forwardrateagreement.hpp" line="85"/>
       </memberdef>

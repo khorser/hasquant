@@ -41,7 +41,7 @@
         <location file="/legacy/libormarketmodels/lmcorrmodel.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="lm_correlation_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
+        <type>std::vector&lt; Parameter &gt; &amp;</type>
         <definition>std::vector&lt;Parameter&gt;&amp; params</definition>
         <argsstring>()</argsstring>
         <name>params</name>
@@ -53,13 +53,13 @@
         <argsstring>(const std::vector&lt; Parameter &gt; &amp;arguments)</argsstring>
         <name>setParams</name>
         <param>
-          <type>const std::vector&lt; <ref refid="parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Parameter &gt; &amp;</type>
           <declname>arguments</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmcorrmodel.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="lm_correlation_model_1a6ffd4397b3f271a1f2983b7bd9c8663f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>virtual Disposable&lt;Matrix&gt; correlation</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const =0</argsstring>
         <name>correlation</name>
@@ -68,14 +68,14 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmcorrmodel.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="lm_correlation_model_1a76b6af06f81c4bb4a3a3ca10f98ffc1f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>Disposable&lt; Matrix &gt;</type>
         <definition>virtual Disposable&lt;Matrix&gt; pseudoSqrt</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>pseudoSqrt</name>
@@ -84,9 +84,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmcorrmodel.hpp" line="49"/>
       </memberdef>
@@ -108,9 +108,9 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval>Null&lt; Array &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmcorrmodel.hpp" line="51"/>
       </memberdef>

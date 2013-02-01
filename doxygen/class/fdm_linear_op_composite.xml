@@ -28,18 +28,18 @@
         <location file="/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="fdm_linear_op_composite_1a6ae97c408d016fb12af247af56ee67a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; apply_mixed</definition>
         <argsstring>(const Array &amp;r) const =0</argsstring>
         <name>apply_mixed</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="fdm_linear_op_composite_1a4085e54ce764c545f5bb73a11320e37d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; apply_direction</definition>
         <argsstring>(Size direction, const Array &amp;r) const =0</argsstring>
         <name>apply_direction</name>
@@ -48,13 +48,13 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="fdm_linear_op_composite_1a9ee9fc2e0f66a9c268e944675c279587" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; solve_splitting</definition>
         <argsstring>(Size direction, const Array &amp;r, Real s) const =0</argsstring>
         <name>solve_splitting</name>
@@ -63,7 +63,7 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <param>
@@ -73,12 +73,12 @@
         <location file="/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="fdm_linear_op_composite_1ad8b12f8ec6911c0c0dba38ff9baacfea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; preconditioner</definition>
         <argsstring>(const Array &amp;r, Real s) const =0</argsstring>
         <name>preconditioner</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>r</declname>
         </param>
         <param>

@@ -9,14 +9,14 @@
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
       <memberdef kind="function" id="path_multi_asset_option_1a3762cf1ede25044eb5380658e479a49f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="path_payoff" kindref="compound">PathPayoff</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; PathPayoff &gt;</type>
         <definition>virtual boost::shared_ptr&lt;PathPayoff&gt; pathPayoff</definition>
         <argsstring>() const =0</argsstring>
         <name>pathPayoff</name>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="path_multi_asset_option_1a1aa73071c45512677295c1e059e47060" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>virtual std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring>() const =0</argsstring>
         <name>fixingDates</name>
@@ -30,9 +30,9 @@
         <argsstring>(const boost::shared_ptr&lt; PricingEngine &gt; &amp;engine=boost::shared_ptr&lt; PricingEngine &gt;())</argsstring>
         <name>PathMultiAssetOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; PricingEngine &gt; &amp;</type>
           <declname>engine</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="pricing_engine" kindref="compound">PricingEngine</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; PricingEngine &gt;()</defval>
         </param>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="38"/>
       </memberdef>

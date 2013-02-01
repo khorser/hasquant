@@ -15,14 +15,14 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="m_c_hull_white_cap_floor_engine_1a930da5a9e4d53caa2103161fd7a65ea8" prot="public" static="no">
-        <type><ref refid="multi_path_generator" kindref="compound">simulation::path_generator_type</ref></type>
+        <type>simulation::path_generator_type</type>
         <definition>typedef simulation::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
         <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="68" bodyfile="/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="m_c_hull_white_cap_floor_engine_1ad640b37266d58777e03c16173e00e51a" prot="public" static="no">
-        <type><ref refid="path_pricer" kindref="compound">simulation::path_pricer_type</ref></type>
+        <type>simulation::path_pricer_type</type>
         <definition>typedef simulation::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
@@ -43,7 +43,7 @@
         <argsstring>(const boost::shared_ptr&lt; HullWhite &gt; &amp;model, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed)</argsstring>
         <name>MCHullWhiteCapFloorEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="hull_white" kindref="compound">HullWhite</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HullWhite &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>

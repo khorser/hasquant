@@ -19,7 +19,7 @@
         <location file="/indexes/interestrateindex.hpp" line="62" bodyfile="/indexes/interestrateindex.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_index_1aa71982300427118fd251ac6bb7fa89da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>Period tenor</definition>
         <argsstring>() const </argsstring>
         <name>tenor</name>
@@ -33,25 +33,25 @@
         <location file="/indexes/interestrateindex.hpp" line="64" bodyfile="/indexes/interestrateindex.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_index_1ae9bc5cf19c2ae0701adf3cccbfb7f514" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date fixingDate</definition>
         <argsstring>(const Date &amp;valueDate) const </argsstring>
         <name>fixingDate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>valueDate</declname>
         </param>
         <location file="/indexes/interestrateindex.hpp" line="65" bodyfile="/indexes/interestrateindex.hpp" bodystart="115" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_index_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>const Currency &amp;</type>
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
         <location file="/indexes/interestrateindex.hpp" line="66" bodyfile="/indexes/interestrateindex.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_index_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
@@ -62,23 +62,23 @@
       <header>Date calculations</header>
       <description><para>These method can be overridden to implement particular conventions (e.g. EurLibor) </para></description>
       <memberdef kind="function" id="interest_rate_index_1a01fafdb3585a34706678b12af90b1cf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date valueDate</definition>
         <argsstring>(const Date &amp;fixingDate) const </argsstring>
         <name>valueDate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <location file="/indexes/interestrateindex.hpp" line="76" bodyfile="/indexes/interestrateindex.hpp" bodystart="121" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_index_1a272504b2735ffa618889e575d93212a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>virtual Date maturityDate</definition>
         <argsstring>(const Date &amp;valueDate) const =0</argsstring>
         <name>maturityDate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>valueDate</declname>
         </param>
         <location file="/indexes/interestrateindex.hpp" line="77"/>
@@ -92,7 +92,7 @@
         <argsstring>(const Date &amp;fixingDate) const =0</argsstring>
         <name>forecastFixing</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <briefdescription>
@@ -105,7 +105,7 @@
         <argsstring>(const Date &amp;fixingDate) const </argsstring>
         <name>pastFixing</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <location file="/indexes/interestrateindex.hpp" line="83" bodyfile="/indexes/interestrateindex.hpp" bodystart="127" bodyend="131"/>
@@ -122,7 +122,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -130,15 +130,15 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>fixingCalendar</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/indexes/interestrateindex.hpp" line="47"/>
@@ -147,7 +147,7 @@
     <briefdescription>
 <para>base class for interest rate indexes </para>    </briefdescription>
     <detaileddescription>
-<para><xrefsect id="todo_1_todo000019"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add methods returning <ref refid="interest_rate" kindref="compound">InterestRate</ref> </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para><xrefsect id="todo_1_todo000019"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add methods returning InterestRate </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/indexes/interestrateindex.hpp" line="40" bodyfile="/indexes/interestrateindex.hpp" bodystart="39" bodyend="94"/>
   </compounddef>
 </doxygen>

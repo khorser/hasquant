@@ -17,7 +17,7 @@
           <declname>amount</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/cashflows/dividend.hpp" line="62" bodyfile="/cashflows/dividend.hpp" bodystart="61" bodyend="62"/>

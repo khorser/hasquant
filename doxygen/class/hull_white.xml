@@ -12,7 +12,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real a=0.1, Real sigma=0.01)</argsstring>
         <name>HullWhite</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
@@ -63,7 +63,7 @@
     <briefdescription>
 <para>Single-factor Hull-White (extended Vasicek) model class. </para>    </briefdescription>
     <detaileddescription>
-<para>This class implements the standard single-factor Hull-White model defined by <formula id="304">\[ dr_t = (\theta(t) - \alpha r_t)dt + \sigma dW_t \]</formula> where <formula id="3">$ \alpha $</formula> and <formula id="4">$ \sigma $</formula> are constants.</para><para><xrefsect id="test_1_test000084"><xreftitle>Tests</xreftitle><xrefdescription><para>calibration results are tested against cached values</para></xrefdescription></xrefsect></para><para><xrefsect id="bug_1_bug000009"><xreftitle>Bug</xreftitle><xrefdescription><para>When the term structure is relinked, the r0 parameter of the underlying <ref refid="vasicek" kindref="compound">Vasicek</ref> model is not updated.</para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>This class implements the standard single-factor Hull-White model defined by <formula id="304">\[ dr_t = (\theta(t) - \alpha r_t)dt + \sigma dW_t \]</formula> where <formula id="3">$ \alpha $</formula> and <formula id="4">$ \sigma $</formula> are constants.</para><para><xrefsect id="test_1_test000084"><xreftitle>Tests</xreftitle><xrefdescription><para>calibration results are tested against cached values</para></xrefdescription></xrefsect></para><para><xrefsect id="bug_1_bug000009"><xreftitle>Bug</xreftitle><xrefdescription><para>When the term structure is relinked, the r0 parameter of the underlying Vasicek model is not updated.</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="48" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="48" bodyend="85"/>
   </compounddef>
 </doxygen>

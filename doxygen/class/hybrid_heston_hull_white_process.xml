@@ -22,11 +22,11 @@
         <argsstring>(const boost::shared_ptr&lt; HestonProcess &gt; &amp;hestonProcess, const boost::shared_ptr&lt; HullWhiteForwardProcess &gt; &amp;hullWhiteProcess, Real corrEquityShortRate, Discretization discretization=BSMHullWhite)</argsstring>
         <name>HybridHestonHullWhiteProcess</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonProcess &gt; &amp;</type>
           <declname>hestonProcess</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="hull_white_forward_process" kindref="compound">HullWhiteForwardProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HullWhiteForwardProcess &gt; &amp;</type>
           <declname>hullWhiteProcess</declname>
         </param>
         <param>
@@ -50,20 +50,20 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/processes/hybridhestonhullwhiteprocess.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="hybrid_heston_hull_white_process_1a79c54f4ee4f3d279d46422f2ca93316b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; HestonProcess &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;HestonProcess&gt;&amp; hestonProcess</definition>
         <argsstring>() const </argsstring>
         <name>hestonProcess</name>
         <location file="/processes/hybridhestonhullwhiteprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="hybrid_heston_hull_white_process_1aa575da859280ed57cfbfc7a9c284e264" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="hull_white_forward_process" kindref="compound">HullWhiteForwardProcess</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; HullWhiteForwardProcess &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;HullWhiteForwardProcess&gt;&amp; hullWhiteProcess</definition>
         <argsstring>() const </argsstring>
         <name>hullWhiteProcess</name>

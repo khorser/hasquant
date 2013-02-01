@@ -10,11 +10,11 @@
         <argsstring>(const boost::shared_ptr&lt; BlackProcess &gt; &amp;process1, const boost::shared_ptr&lt; BlackProcess &gt; &amp;process2, Real correlation)</argsstring>
         <name>KirkEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BlackProcess &gt; &amp;</type>
           <declname>process1</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BlackProcess &gt; &amp;</type>
           <declname>process2</declname>
         </param>
         <param>

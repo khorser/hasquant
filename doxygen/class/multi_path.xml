@@ -23,7 +23,7 @@
       <sectiondef kind="user-defined">
       <header>read/write access to components</header>
       <memberdef kind="function" id="multi_path_1aaa8b698c8de3097faef375d76c50d50d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+        <type>const Path &amp;</type>
         <definition>const Path&amp; operator[]</definition>
         <argsstring>(Size j) const </argsstring>
         <name>operator[]</name>
@@ -34,7 +34,7 @@
         <location file="/methods/montecarlo/multipath.hpp" line="51" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="multi_path_1a8d08b1b4eca7df4b5194d05dda62d69a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+        <type>const Path &amp;</type>
         <definition>const Path&amp; at</definition>
         <argsstring>(Size j) const </argsstring>
         <name>at</name>
@@ -45,7 +45,7 @@
         <location file="/methods/montecarlo/multipath.hpp" line="52" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="multi_path_1a794e83596e13fc0cff8a60d4f96a9792" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="path" kindref="compound">Path</ref> &amp;</type>
+        <type>Path &amp;</type>
         <definition>Path&amp; operator[]</definition>
         <argsstring>(Size j)</argsstring>
         <name>operator[]</name>
@@ -56,7 +56,7 @@
         <location file="/methods/montecarlo/multipath.hpp" line="53" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="multi_path_1a1072d695def4d818ee48244b5e87a7b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="path" kindref="compound">Path</ref> &amp;</type>
+        <type>Path &amp;</type>
         <definition>Path&amp; at</definition>
         <argsstring>(Size j)</argsstring>
         <name>at</name>
@@ -85,7 +85,7 @@
           <declname>nAsset</declname>
         </param>
         <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const TimeGrid &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <location file="/methods/montecarlo/multipath.hpp" line="42" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="63" bodyend="66"/>
@@ -96,7 +96,7 @@
         <argsstring>(const std::vector&lt; Path &gt; &amp;multiPath)</argsstring>
         <name>MultiPath</name>
         <param>
-          <type>const std::vector&lt; <ref refid="path" kindref="compound">Path</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Path &gt; &amp;</type>
           <declname>multiPath</declname>
         </param>
         <location file="/methods/montecarlo/multipath.hpp" line="43" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="68" bodyend="69"/>
@@ -105,7 +105,7 @@
     <briefdescription>
 <para>Correlated multiple asset paths. </para>    </briefdescription>
     <detaileddescription>
-<para><ref refid="multi_path" kindref="compound">MultiPath</ref> contains the list of paths for each asset, i.e., multipath[j] is the path followed by the j-th asset. </para>    </detaileddescription>
+<para>MultiPath contains the list of paths for each asset, i.e., multipath[j] is the path followed by the j-th asset. </para>    </detaileddescription>
     <location file="/methods/montecarlo/multipath.hpp" line="38" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="38" bodyend="58"/>
   </compounddef>
 </doxygen>

@@ -10,17 +10,17 @@
         <argsstring>(const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;, const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;, const Real slope) const =0</argsstring>
         <name>initialize</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;</type>
         </param>
         <param>
           <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>slope</declname>
         </param>
         <briefdescription>
-<para><ref refid="yo_y_optionlet_stripper" kindref="compound">YoYOptionletStripper</ref> interface. </para>        </briefdescription>
+<para>YoYOptionletStripper interface. </para>        </briefdescription>
         <location file="/experimental/inflation/yoyoptionletstripper.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_optionlet_stripper_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -50,7 +50,7 @@
         <argsstring>(const Date &amp;d) const =0</argsstring>
         <name>slice</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <location file="/experimental/inflation/yoyoptionletstripper.hpp" line="51"/>

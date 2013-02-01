@@ -14,13 +14,13 @@
           <declname>size</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_process_1addc654f28fcfd5b1ed9f59d0314cff0f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; IborIndex &gt;</type>
         <definition>boost::shared_ptr&lt;IborIndex&gt; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
@@ -44,13 +44,13 @@
         <argsstring>(const boost::shared_ptr&lt; LfmCovarianceParameterization &gt; &amp;param)</argsstring>
         <name>setCovarParam</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="lfm_covariance_parameterization" kindref="compound">LfmCovarianceParameterization</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; LfmCovarianceParameterization &gt; &amp;</type>
           <declname>param</declname>
         </param>
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_process_1ad19640becdc59e51ff00cb7334cc85e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="lfm_covariance_parameterization" kindref="compound">LfmCovarianceParameterization</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; LfmCovarianceParameterization &gt;</type>
         <definition>boost::shared_ptr&lt;LfmCovarianceParameterization&gt; covarParam</definition>
         <argsstring>() const </argsstring>
         <name>covarParam</name>
@@ -75,7 +75,7 @@
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_process_1a3ac803b91c3e929f54f9094ce1719bad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; fixingDates</definition>
         <argsstring>() const </argsstring>
         <name>fixingDates</name>
@@ -110,7 +110,7 @@
     <briefdescription>
 <para>libor-forward-model process </para>    </briefdescription>
     <detaileddescription>
-<para>stochastic process of a libor forward model using the rolling forward measure incl. predictor-corrector step</para><para>References:</para><para>Glasserman, Paul, 2004, Monte Carlo Methods in Financial Engineering, Springer, Section 3.7</para><para>Antoon Pelsser, 2000, Efficient Methods for Valuing Interest Rate Derivatives, Springer, 8</para><para>Hull, John, White, Alan, 1999, <ref refid="forward" kindref="compound">Forward</ref> Rate Volatilities, <ref refid="swap" kindref="compound">Swap</ref> Rate Volatilities and the Implementation of the <ref refid="libor" kindref="compound">Libor</ref> Market Model (<ulink url="http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf">http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf</ulink>)</para><para><xrefsect id="test_1_test000025"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness is tested by Monte-Carlo reproduction of caplet &amp; ratchet NPVs and comparison with Black pricing.</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000068"><xreftitle>Warning</xreftitle><xrefdescription><para>this class does not work correctly with Visual C++ 6.</para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>stochastic process of a libor forward model using the rolling forward measure incl. predictor-corrector step</para><para>References:</para><para>Glasserman, Paul, 2004, Monte Carlo Methods in Financial Engineering, Springer, Section 3.7</para><para>Antoon Pelsser, 2000, Efficient Methods for Valuing Interest Rate Derivatives, Springer, 8</para><para>Hull, John, White, Alan, 1999, Forward Rate Volatilities, Swap Rate Volatilities and the Implementation of the Libor Market Model (<ulink url="http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf">http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf</ulink>)</para><para><xrefsect id="test_1_test000025"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness is tested by Monte-Carlo reproduction of caplet &amp; ratchet NPVs and comparison with Black pricing.</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000068"><xreftitle>Warning</xreftitle><xrefdescription><para>this class does not work correctly with Visual C++ 6.</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="58" bodyfile="/legacy/libormarketmodels/lfmprocess.hpp" bodystart="58" bodyend="110"/>
   </compounddef>
 </doxygen>

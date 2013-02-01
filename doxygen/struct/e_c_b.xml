@@ -5,7 +5,7 @@
     <includes local="no">/time/ecb.hpp</includes>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="e_c_b_1a47fa792d800abb74f278cc8a69de7d45" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::set&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::set&lt; Date &gt; &amp;</type>
         <definition>static const std::set&lt;Date&gt;&amp; knownDates</definition>
         <argsstring>()</argsstring>
         <name>knownDates</name>
@@ -17,7 +17,7 @@
         <argsstring>(const Date &amp;d)</argsstring>
         <name>addDate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <location file="/time/ecb.hpp" line="37"/>
@@ -28,13 +28,13 @@
         <argsstring>(const Date &amp;d)</argsstring>
         <name>removeDate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <location file="/time/ecb.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="e_c_b_1a9ce0f6340602ee9fc2f87db0369bd950" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date date</definition>
         <argsstring>(Month m, Year y)</argsstring>
         <name>date</name>
@@ -51,7 +51,7 @@
         <location file="/time/ecb.hpp" line="42" bodyfile="/time/ecb.hpp" bodystart="41" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="e_c_b_1a723827e2a30022eb84b073335de1eebe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date date</definition>
         <argsstring>(const std::string &amp;ecbCode, const Date &amp;referenceDate=Date())</argsstring>
         <name>date</name>
@@ -60,12 +60,12 @@
           <declname>ecbCode</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <detaileddescription>
-<para>returns the <ref refid="e_c_b" kindref="compound">ECB</ref> date for the given <ref refid="e_c_b" kindref="compound">ECB</ref> code (e.g. March xxth, 2013 for MAR10).</para><para><xrefsect id="caveats_1_caveats000148"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input string is not an <ref refid="e_c_b" kindref="compound">ECB</ref> code </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para>returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).</para><para><xrefsect id="caveats_1_caveats000148"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input string is not an ECB code </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/time/ecb.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="e_c_b_1a46fa6730251ce58e9881cd0ba426eeba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -74,29 +74,29 @@
         <argsstring>(const Date &amp;ecbDate)</argsstring>
         <name>code</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>ecbDate</declname>
         </param>
         <detaileddescription>
-<para>returns the <ref refid="e_c_b" kindref="compound">ECB</ref> code for the given date (e.g. MAR10 for March xxth, 2010).</para><para><xrefsect id="caveats_1_caveats000149"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input date is not an <ref refid="e_c_b" kindref="compound">ECB</ref> date </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para>returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).</para><para><xrefsect id="caveats_1_caveats000149"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input date is not an ECB date </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/time/ecb.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="e_c_b_1a625191a43ec4dd12278fe5e35475d5a7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date nextDate</definition>
         <argsstring>(const Date &amp;d=Date())</argsstring>
         <name>nextDate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>next maintenance period start date following the given date </para>        </briefdescription>
         <location file="/time/ecb.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="e_c_b_1af23b14f39742593ecceefaf2a34f4a80" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date nextDate</definition>
         <argsstring>(const std::string &amp;ecbCode, const Date &amp;referenceDate=Date())</argsstring>
         <name>nextDate</name>
@@ -105,30 +105,30 @@
           <declname>ecbCode</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
-<para>next maintenance period start date following the given <ref refid="e_c_b" kindref="compound">ECB</ref> code </para>        </briefdescription>
+<para>next maintenance period start date following the given ECB code </para>        </briefdescription>
         <location file="/time/ecb.hpp" line="66" bodyfile="/time/ecb.hpp" bodystart="65" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="e_c_b_1a66b5865e5bceb55c8a7975fdc8134272" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>static std::vector&lt;Date&gt; nextDates</definition>
         <argsstring>(const Date &amp;d=Date())</argsstring>
         <name>nextDates</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>next maintenance period start dates following the given date </para>        </briefdescription>
         <location file="/time/ecb.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="e_c_b_1ac87a8fee5c153c124df60e26f8cfe84d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
+        <type>std::vector&lt; Date &gt;</type>
         <definition>static std::vector&lt;Date&gt; nextDates</definition>
         <argsstring>(const std::string &amp;ecbCode, const Date &amp;referenceDate=Date())</argsstring>
         <name>nextDates</name>
@@ -137,9 +137,9 @@
           <declname>ecbCode</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
 <para>next maintenance period start dates following the given code </para>        </briefdescription>
@@ -151,7 +151,7 @@
         <argsstring>(const Date &amp;d)</argsstring>
         <name>isECBdate</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <detaileddescription>
@@ -168,7 +168,7 @@
           <declname>in</declname>
         </param>
         <briefdescription>
-<para>returns whether or not the given string is an <ref refid="e_c_b" kindref="compound">ECB</ref> code </para>        </briefdescription>
+<para>returns whether or not the given string is an ECB code </para>        </briefdescription>
         <location file="/time/ecb.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="e_c_b_1a46b27b0fd32c51e20c2ad1f824b2e54d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -177,12 +177,12 @@
         <argsstring>(const Date &amp;d=Date())</argsstring>
         <name>nextCode</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <briefdescription>
-<para>next <ref refid="e_c_b" kindref="compound">ECB</ref> code following the given date </para>        </briefdescription>
+<para>next ECB code following the given date </para>        </briefdescription>
         <location file="/time/ecb.hpp" line="90" bodyfile="/time/ecb.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="e_c_b_1a4ee5fce11ae0c8f7b1b676b1dcc732b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -195,7 +195,7 @@
           <declname>ecbCode</declname>
         </param>
         <briefdescription>
-<para>next <ref refid="e_c_b" kindref="compound">ECB</ref> code following the given code </para>        </briefdescription>
+<para>next ECB code following the given code </para>        </briefdescription>
         <location file="/time/ecb.hpp" line="95"/>
       </memberdef>
       </sectiondef>

@@ -75,14 +75,14 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; EndCriteria &gt; &amp;</type>
           <declname>endCriteria</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; EndCriteria &gt;()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;</type>
           <declname>optMethod</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; OptimizationMethod &gt;()</defval>
         </param>
         <location file="/math/interpolations/sabrinterpolation.hpp" line="361" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="344" bodyend="375"/>
       </memberdef>

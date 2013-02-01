@@ -39,28 +39,28 @@
         <location file="/instruments/capfloor.hpp" line="76" bodyfile="/instruments/capfloor.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/instruments/capfloor.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
         <location file="/instruments/capfloor.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_1abead3b30d656cfccd533e2a5d2d171c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; FloatingRateCoupon &gt;</type>
         <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; lastFloatingRateCoupon</definition>
         <argsstring>() const </argsstring>
         <name>lastFloatingRateCoupon</name>
         <location file="/instruments/capfloor.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_1ac6e4a72af12ff0d90d441b87182bd0f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="cap_floor" kindref="compound">CapFloor</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; CapFloor &gt;</type>
         <definition>boost::shared_ptr&lt;CapFloor&gt; optionlet</definition>
         <argsstring>(const Size n) const </argsstring>
         <name>optionlet</name>
@@ -69,7 +69,7 @@
           <declname>n</declname>
         </param>
         <briefdescription>
-<para>Returns the n-th optionlet as a new <ref refid="cap_floor" kindref="compound">CapFloor</ref> with only one cash flow. </para>        </briefdescription>
+<para>Returns the n-th optionlet as a new CapFloor with only one cash flow. </para>        </briefdescription>
         <location file="/instruments/capfloor.hpp" line="82"/>
       </memberdef>
       </sectiondef>
@@ -137,7 +137,7 @@
         <argsstring>(const YieldTermStructure &amp;discountCurve) const </argsstring>
         <name>atmRate</name>
         <param>
-          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const YieldTermStructure &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <location file="/instruments/capfloor.hpp" line="84"/>
@@ -152,7 +152,7 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>disc</declname>
         </param>
         <param>

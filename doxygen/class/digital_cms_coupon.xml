@@ -13,13 +13,13 @@
         <argsstring>(const boost::shared_ptr&lt; CmsCoupon &gt; &amp;underlying, Rate callStrike=Null&lt; Rate &gt;(), Position::Type callPosition=Position::Long, bool isCallATMIncluded=false, Rate callDigitalPayoff=Null&lt; Rate &gt;(), Rate putStrike=Null&lt; Rate &gt;(), Position::Type putPosition=Position::Long, bool isPutATMIncluded=false, Rate putDigitalPayoff=Null&lt; Rate &gt;(), const boost::shared_ptr&lt; DigitalReplication &gt; &amp;replication=boost::shared_ptr&lt; DigitalReplication &gt;())</argsstring>
         <name>DigitalCmsCoupon</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="cms_coupon" kindref="compound">CmsCoupon</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CmsCoupon &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>callStrike</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -34,12 +34,12 @@
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>callDigitalPayoff</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>putStrike</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -54,7 +54,7 @@
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>putDigitalPayoff</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>const boost::shared_ptr&lt; DigitalReplication &gt; &amp;</type>

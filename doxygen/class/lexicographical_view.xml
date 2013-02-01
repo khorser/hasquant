@@ -156,7 +156,7 @@
         <location file="/math/lexicographicalview.hpp" line="46" bodyfile="/math/lexicographicalview.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="lexicographical_view_1a33c972ce3c11af890f66ca3fa79e4692" prot="public" static="no">
-        <type><ref refid="step__iterator" kindref="compound">step_iterator</ref>&lt; RandomAccessIterator &gt;</type>
+        <type>step_iterator&lt; RandomAccessIterator &gt;</type>
         <definition>typedef step_iterator&lt;RandomAccessIterator&gt; y_iterator</definition>
         <argsstring></argsstring>
         <name>y_iterator</name>

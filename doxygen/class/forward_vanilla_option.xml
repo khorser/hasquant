@@ -5,14 +5,14 @@
     <includes local="no">/instruments/forwardvanillaoption.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="forward_vanilla_option_1aa921b26418fb0d2cd2b73a34aef8ae14" prot="public" static="no">
-        <type><ref refid="forward_option_arguments" kindref="compound">ForwardOptionArguments</ref>&lt; <ref refid="option_1_1arguments" kindref="compound">OneAssetOption::arguments</ref> &gt;</type>
+        <type>ForwardOptionArguments&lt; OneAssetOption::arguments &gt;</type>
         <definition>typedef ForwardOptionArguments&lt;OneAssetOption::arguments&gt; arguments</definition>
         <argsstring></argsstring>
         <name>arguments</name>
         <location file="/instruments/forwardvanillaoption.hpp" line="50" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="forward_vanilla_option_1a2d3bc9f3bc17aa9ecb42314b5932aa74" prot="public" static="no">
-        <type><ref refid="one_asset_option_1_1results" kindref="compound">OneAssetOption::results</ref></type>
+        <type>OneAssetOption::results</type>
         <definition>typedef OneAssetOption::results results</definition>
         <argsstring></argsstring>
         <name>results</name>
@@ -30,15 +30,15 @@
           <declname>moneyness</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>resetDate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Exercise &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <location file="/instruments/forwardvanillaoption.hpp" line="55"/>

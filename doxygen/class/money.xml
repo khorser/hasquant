@@ -18,7 +18,7 @@
         <argsstring>(const Currency &amp;currency, Decimal value)</argsstring>
         <name>Money</name>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
           <declname>value</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>currency</declname>
         </param>
         <location file="/money.hpp" line="42" bodyfile="/money.hpp" bodystart="141" bodyend="142"/>
@@ -46,7 +46,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="money_1ae1a84781300fdb3e7b7f3b719fda0610" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>const Currency &amp;</type>
         <definition>const Currency &amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
@@ -60,7 +60,7 @@
         <location file="/money.hpp" line="47" bodyfile="/money.hpp" bodystart="148" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="money_1ab64abc57c1e05a27f679aca2f86ebb05" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money rounded</definition>
         <argsstring>() const </argsstring>
         <name>rounded</name>
@@ -71,41 +71,41 @@
       <header>Money arithmetics</header>
       <description><para>See below for non-member functions and for settings which determine the behavior of the operators. </para></description>
       <memberdef kind="function" id="money_1ab9091b078e346746ed4e67a9fa25f0ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money operator+</definition>
         <argsstring>() const </argsstring>
         <name>operator+</name>
         <location file="/money.hpp" line="56" bodyfile="/money.hpp" bodystart="156" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="money_1aa2189964ca1f13e92a69a9f31c1bd169" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money operator-</definition>
         <argsstring>() const </argsstring>
         <name>operator-</name>
         <location file="/money.hpp" line="57" bodyfile="/money.hpp" bodystart="160" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="money_1a0e3fec38ee32ca690a0c9f601783417c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref> &amp;</type>
+        <type>Money &amp;</type>
         <definition>Money&amp; operator+=</definition>
         <argsstring>(const Money &amp;)</argsstring>
         <name>operator+=</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="money_1ab38f99b9868982e3ca0b51a25f23fb3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref> &amp;</type>
+        <type>Money &amp;</type>
         <definition>Money&amp; operator-=</definition>
         <argsstring>(const Money &amp;)</argsstring>
         <name>operator-=</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="money_1a3c9b2690f1b8248331fb66fecf4e6bef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref> &amp;</type>
+        <type>Money &amp;</type>
         <definition>Money &amp; operator*=</definition>
         <argsstring>(Decimal)</argsstring>
         <name>operator*=</name>
@@ -116,7 +116,7 @@
         <location file="/money.hpp" line="60" bodyfile="/money.hpp" bodystart="164" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="money_1ac9dd98528eebd18e42868b0297f3fcd1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref> &amp;</type>
+        <type>Money &amp;</type>
         <definition>Money &amp; operator/=</definition>
         <argsstring>(Decimal)</argsstring>
         <name>operator/=</name>
@@ -157,7 +157,7 @@
         <location file="/money.hpp" line="78" bodyfile="/money.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="money_1a5a5c56ec648313fa5ddadf7a4fb0d025" prot="public" static="yes" mutable="no">
-        <type><ref refid="currency" kindref="compound">Currency</ref></type>
+        <type>Currency</type>
         <definition>Currency baseCurrency</definition>
         <argsstring></argsstring>
         <name>baseCurrency</name>
@@ -166,38 +166,38 @@
       </sectiondef>
       <sectiondef kind="related">
       <memberdef kind="function" id="money_1a1f495f020f64c7b177b9e1bc0f99139c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money operator+</definition>
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator+</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="90" bodyfile="/money.hpp" bodystart="175" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="money_1a4a130afeac5bc99d0a00e6005dd2fce0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money operator-</definition>
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator-</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="92" bodyfile="/money.hpp" bodystart="181" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="money_1a20f80bc20add19d64b899d4a21718fb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money operator*</definition>
         <argsstring>(const Money &amp;, Decimal)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
@@ -205,7 +205,7 @@
         <location file="/money.hpp" line="94" bodyfile="/money.hpp" bodystart="187" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="money_1a5db337044220e3f8028bb303fc9d4f80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money operator*</definition>
         <argsstring>(Decimal, const Money &amp;)</argsstring>
         <name>operator*</name>
@@ -213,17 +213,17 @@
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="96" bodyfile="/money.hpp" bodystart="193" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="money_1a91bb0ba24a70226c3a6dd585ffb15537" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money operator/</definition>
         <argsstring>(const Money &amp;, Decimal)</argsstring>
         <name>operator/</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
@@ -236,10 +236,10 @@
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator/</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="100"/>
       </memberdef>
@@ -249,10 +249,10 @@
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="103"/>
       </memberdef>
@@ -262,10 +262,10 @@
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="105" bodyfile="/money.hpp" bodystart="203" bodyend="205"/>
       </memberdef>
@@ -275,10 +275,10 @@
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator&lt;</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="107"/>
       </memberdef>
@@ -288,10 +288,10 @@
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator&lt;=</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="109"/>
       </memberdef>
@@ -301,10 +301,10 @@
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator&gt;</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="111" bodyfile="/money.hpp" bodystart="207" bodyend="209"/>
       </memberdef>
@@ -314,10 +314,10 @@
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator&gt;=</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="113" bodyfile="/money.hpp" bodystart="211" bodyend="213"/>
       </memberdef>
@@ -327,10 +327,10 @@
         <argsstring>(const Money &amp;, const Money &amp;, Size n=42)</argsstring>
         <name>close</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -345,10 +345,10 @@
         <argsstring>(const Money &amp;, const Money &amp;, Size n=42)</argsstring>
         <name>close_enough</name>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -358,7 +358,7 @@
         <location file="/money.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="money_1aab8bfd679e42b4d3393e3580188018aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money operator*</definition>
         <argsstring>(Decimal, const Currency &amp;)</argsstring>
         <name>operator*</name>
@@ -366,17 +366,17 @@
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
         </param>
         <location file="/money.hpp" line="123" bodyfile="/money.hpp" bodystart="215" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="money_1a2827c6a704bb2f426e5c49a826949304" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="money" kindref="compound">Money</ref></type>
+        <type>Money</type>
         <definition>Money operator*</definition>
         <argsstring>(const Currency &amp;, Decimal)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
@@ -392,7 +392,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
+          <type>const Money &amp;</type>
         </param>
         <location file="/money.hpp" line="130"/>
       </memberdef>

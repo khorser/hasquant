@@ -34,7 +34,7 @@
         <argsstring>(const Path &amp;path) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
+          <type>const Path &amp;</type>
           <declname>path</declname>
         </param>
         <location file="/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="65"/>

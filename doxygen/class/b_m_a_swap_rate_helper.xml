@@ -11,7 +11,7 @@
         <argsstring>(YieldTermStructure *)</argsstring>
         <name>setTermStructure</name>
         <param>
-          <type><ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
+          <type>YieldTermStructure *</type>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="296"/>
       </memberdef>
@@ -26,11 +26,11 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;liborFraction, const Period &amp;tenor, Natural settlementDays, const Calendar &amp;calendar, const Period &amp;bmaPeriod, BusinessDayConvention bmaConvention, const DayCounter &amp;bmaDayCount, const boost::shared_ptr&lt; BMAIndex &gt; &amp;bmaIndex, const boost::shared_ptr&lt; IborIndex &gt; &amp;index)</argsstring>
         <name>BMASwapRateHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>liborFraction</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -38,11 +38,11 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>bmaPeriod</declname>
         </param>
         <param>
@@ -50,15 +50,15 @@
           <declname>bmaConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>bmaDayCount</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="b_m_a_index" kindref="compound">BMAIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BMAIndex &gt; &amp;</type>
           <declname>bmaIndex</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="292"/>

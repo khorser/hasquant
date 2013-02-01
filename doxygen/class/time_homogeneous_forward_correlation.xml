@@ -9,7 +9,7 @@
         <argsstring>(const Matrix &amp;fwdCorrelation, const std::vector&lt; Time &gt; &amp;rateTimes)</argsstring>
         <name>TimeHomogeneousForwardCorrelation</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>fwdCorrelation</declname>
         </param>
         <param>
@@ -33,7 +33,7 @@
         <location file="/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="time_homogeneous_forward_correlation_1af728002c216f1dbca020531bae19a0f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Matrix &gt; &amp;</type>
         <definition>const std::vector&lt;Matrix&gt;&amp; correlations</definition>
         <argsstring>() const </argsstring>
         <name>correlations</name>
@@ -49,12 +49,12 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="time_homogeneous_forward_correlation_1a8e3b9f1a8a687f9db320a0a7e7c0cce6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>std::vector&lt; Matrix &gt;</type>
         <definition>static std::vector&lt;Matrix&gt; evolvedMatrices</definition>
         <argsstring>(const Matrix &amp;fwdCorrelation)</argsstring>
         <name>evolvedMatrices</name>
         <param>
-          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const Matrix &amp;</type>
           <declname>fwdCorrelation</declname>
         </param>
         <location file="/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="40"/>

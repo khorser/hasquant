@@ -124,7 +124,7 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>liborSchedule</declname>
         </param>
         <param>
@@ -136,30 +136,30 @@
           <declname>liborSpread</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; IborIndex &gt; &amp;</type>
           <declname>liborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>liborDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>bmaSchedule</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="b_m_a_index" kindref="compound">BMAIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; BMAIndex &gt; &amp;</type>
           <declname>bmaIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>bmaDayCount</declname>
         </param>
         <location file="/instruments/bmaswap.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>swap paying <ref refid="libor" kindref="compound">Libor</ref> against BMA coupons </para>    </briefdescription>
+<para>swap paying Libor against BMA coupons </para>    </briefdescription>
     <location file="/instruments/bmaswap.hpp" line="35" bodyfile="/instruments/bmaswap.hpp" bodystart="35" bodyend="78"/>
   </compounddef>
 </doxygen>

@@ -23,11 +23,11 @@
           <declname>correlation</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SmileSection &gt; &amp;</type>
           <declname>smilesOnExpiry</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SmileSection &gt; &amp;</type>
           <declname>smilesOnPayment</declname>
         </param>
         <param>

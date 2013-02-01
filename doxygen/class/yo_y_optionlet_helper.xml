@@ -10,7 +10,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;price, Real notional, YoYInflationCapFloor::Type capFloorType, Period &amp;lag, const DayCounter &amp;yoyDayCounter, const Calendar &amp;paymentCalendar, Natural fixingDays, const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;index, Rate strike, Size n, const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;pricer)</argsstring>
         <name>YoYOptionletHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>price</declname>
         </param>
         <param>
@@ -22,15 +22,15 @@
           <declname>capFloorType</declname>
         </param>
         <param>
-          <type><ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>yoyDayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>paymentCalendar</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -50,7 +50,7 @@
           <declname>n</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;</type>
           <declname>pricer</declname>
         </param>
         <location file="/experimental/inflation/yoyoptionlethelpers.hpp" line="49"/>

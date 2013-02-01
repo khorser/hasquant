@@ -10,11 +10,11 @@
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;hestonModel, const boost::shared_ptr&lt; HullWhite &gt; &amp;hullWhiteModel, Size integrationOrder=144)</argsstring>
         <name>AnalyticHestonHullWhiteEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonModel &gt; &amp;</type>
           <declname>hestonModel</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="hull_white" kindref="compound">HullWhite</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HullWhite &gt; &amp;</type>
           <declname>hullWhiteModel</declname>
         </param>
         <param>
@@ -30,11 +30,11 @@
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, const boost::shared_ptr&lt; HullWhite &gt; &amp;hullWhiteModel, Real relTolerance, Size maxEvaluations)</argsstring>
         <name>AnalyticHestonHullWhiteEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonModel &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="hull_white" kindref="compound">HullWhite</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HullWhite &gt; &amp;</type>
           <declname>hullWhiteModel</declname>
         </param>
         <param>
@@ -58,7 +58,7 @@
   A. Sepp, Pricing European-Style Options under Jump Diffusion
   Processes with Stochastic Volatility: Applications of Fourier
   Transform (&lt;http://math.ut.ee/~spartak/papers/stochjumpvols.pdf&gt;)
-</verbatim></para><para><xrefsect id="test_1_test000117"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature, testing against <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref>&apos;s analytic Heston and Black-Scholes-Merton Hull-White engine </para></xrefdescription></xrefsect></para>    </detaileddescription>
+</verbatim></para><para><xrefsect id="test_1_test000117"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature, testing against QuantLib&apos;s analytic Heston and Black-Scholes-Merton Hull-White engine </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="65" bodyfile="/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" bodystart="65" bodyend="92"/>
   </compounddef>
 </doxygen>

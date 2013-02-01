@@ -9,7 +9,7 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="survival_probability_1_1curve_1a1a015213030d29664b2491e633344f89" prot="public" static="no">
-        <type><ref refid="interpolated_survival_probability_curve" kindref="compound">InterpolatedSurvivalProbabilityCurve</ref>&lt; Interpolator &gt;</type>
+        <type>InterpolatedSurvivalProbabilityCurve&lt; Interpolator &gt;</type>
         <definition>typedef InterpolatedSurvivalProbabilityCurve&lt;Interpolator&gt; type</definition>
         <argsstring></argsstring>
         <name>type</name>

@@ -19,7 +19,7 @@
         <argsstring>(const Array &amp;grid, T process, Time residualTime=0.0)</argsstring>
         <name>PdeOperator</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>grid</declname>
         </param>
         <param>

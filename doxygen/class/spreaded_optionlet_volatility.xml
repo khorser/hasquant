@@ -29,14 +29,14 @@
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="spreaded_optionlet_volatility_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
+        <type>DayCounter</type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
         <location file="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" line="47" bodyfile="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_optionlet_volatility_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
@@ -50,14 +50,14 @@
         <location file="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" line="49" bodyfile="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_optionlet_volatility_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date &amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
         <location file="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" line="50" bodyfile="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" bodystart="80" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_optionlet_volatility_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
+        <type>Calendar</type>
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
@@ -74,18 +74,18 @@
       <sectiondef kind="user-defined">
       <header>OptionletVolatilityStructure interface</header>
       <memberdef kind="function" id="spreaded_optionlet_volatility_1a0f6adb992ee1324a8ad4ed8e7e18fcad" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>smileSectionImpl</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <location file="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_optionlet_volatility_1a82925441546c3de5ff5daaf393a293b6" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(Time optionT) const </argsstring>
         <name>smileSectionImpl</name>
@@ -118,10 +118,10 @@
         <argsstring>(const Handle&lt; OptionletVolatilityStructure &gt; &amp;, const Handle&lt; Quote &gt; &amp;spread)</argsstring>
         <name>SpreadedOptionletVolatility</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; OptionletVolatilityStructure &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <location file="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" line="37"/>

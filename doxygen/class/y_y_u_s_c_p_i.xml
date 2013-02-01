@@ -14,9 +14,9 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYInflationTermStructure &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YoYInflationTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/inflation/uscpi.hpp" line="63" bodyfile="/indexes/inflation/uscpi.hpp" bodystart="52" bodyend="63"/>
       </memberdef>

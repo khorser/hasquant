@@ -42,7 +42,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="restructuring" kindref="compound">Restructuring</ref> type. </para>    </briefdescription>
+<para>Restructuring type. </para>    </briefdescription>
     <location file="/experimental/credit/defaulttype.hpp" line="84" bodyfile="/experimental/credit/defaulttype.hpp" bodystart="84" bodyend="97"/>
   </compounddef>
 </doxygen>

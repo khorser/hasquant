@@ -11,11 +11,11 @@
         <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, const boost::shared_ptr&lt; SwingExercise &gt; &amp;ex, Size minExerciseRights, Size maxExerciseRights)</argsstring>
         <name>VanillaSwingOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="swing_exercise" kindref="compound">SwingExercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SwingExercise &gt; &amp;</type>
           <declname>ex</declname>
         </param>
         <param>

@@ -10,19 +10,19 @@
         <argsstring>(const Calendar &amp;calendar, const boost::shared_ptr&lt; CommodityIndex &gt; &amp;spreadIndex, const boost::shared_ptr&lt; CommodityIndex &gt; &amp;payIndex, const boost::shared_ptr&lt; CommodityIndex &gt; &amp;receiveIndex, bool spreadToPayLeg, const Currency &amp;payCurrency, const Currency &amp;receiveCurrency, const PricingPeriods &amp;pricingPeriods, const CommodityUnitCost &amp;basis, const CommodityType &amp;commodityType, const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;secondaryCosts, const Handle&lt; YieldTermStructure &gt; &amp;payLegTermStructure, const Handle&lt; YieldTermStructure &gt; &amp;receiveLegTermStructure, const Handle&lt; YieldTermStructure &gt; &amp;discountTermStructure)</argsstring>
         <name>EnergyBasisSwap</name>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CommodityIndex &gt; &amp;</type>
           <declname>spreadIndex</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CommodityIndex &gt; &amp;</type>
           <declname>payIndex</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; CommodityIndex &gt; &amp;</type>
           <declname>receiveIndex</declname>
         </param>
         <param>
@@ -30,11 +30,11 @@
           <declname>spreadToPayLeg</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>payCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>receiveCurrency</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
           <declname>basis</declname>
         </param>
         <param>
-          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const CommodityType &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
@@ -54,28 +54,28 @@
           <declname>secondaryCosts</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>payLegTermStructure</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>receiveLegTermStructure</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountTermStructure</declname>
         </param>
         <location file="/experimental/commodities/energybasisswap.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="energy_basis_swap_1ad21e756c2457580a89328c7a198141a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; CommodityIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;CommodityIndex&gt;&amp; payIndex</definition>
         <argsstring>() const </argsstring>
         <name>payIndex</name>
         <location file="/experimental/commodities/energybasisswap.hpp" line="52" bodyfile="/experimental/commodities/energybasisswap.hpp" bodystart="52" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="energy_basis_swap_1abdddeb225f5e97b39c54bf7434d2941c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; CommodityIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;CommodityIndex&gt;&amp; receiveIndex</definition>
         <argsstring>() const </argsstring>
         <name>receiveIndex</name>

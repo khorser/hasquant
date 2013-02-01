@@ -64,7 +64,7 @@
       <sectiondef kind="user-defined">
       <header>Equivalent Swap proxy</header>
       <memberdef kind="function" id="rendistato_calculator_1a5a5e4144899d2675e9e3fecee91334bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
+        <type>boost::shared_ptr&lt; VanillaSwap &gt;</type>
         <definition>boost::shared_ptr&lt; VanillaSwap &gt; equivalentSwap</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwap</name>
@@ -127,11 +127,11 @@
           <declname>basket</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="euribor" kindref="compound">Euribor</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Euribor &gt; &amp;</type>
           <declname>euriborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <location file="/instruments/bonds/btp.hpp" line="124"/>

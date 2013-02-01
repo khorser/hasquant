@@ -10,13 +10,13 @@
         <argsstring>(const Date &amp;defaultDate, const DefaultProbKey &amp;defaultKey=DefaultProbKey()) const </argsstring>
         <name>recoveryValue</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>defaultDate</declname>
         </param>
         <param>
-          <type>const <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <type>const DefaultProbKey &amp;</type>
           <declname>defaultKey</declname>
-          <defval><ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref>()</defval>
+          <defval>DefaultProbKey()</defval>
         </param>
         <detaileddescription>
 <para>returns the expected recovery rate at a future time conditional on some default event type and seniority. </para>        </detaileddescription>

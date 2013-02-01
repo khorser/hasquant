@@ -35,7 +35,7 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>fixedSchedule</declname>
         </param>
         <param>
@@ -43,19 +43,19 @@
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>fixedDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>yoySchedule</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;</type>
           <declname>yoyIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -63,11 +63,11 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>yoyDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>paymentCalendar</declname>
         </param>
         <param>
@@ -120,7 +120,7 @@
         <location file="/instruments/yearonyearinflationswap.hpp" line="80" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="162" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1ae9b9f2b40445d5d7802a80596445d4c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+        <type>const Schedule &amp;</type>
         <definition>const Schedule &amp; fixedSchedule</definition>
         <argsstring>() const </argsstring>
         <name>fixedSchedule</name>
@@ -134,28 +134,28 @@
         <location file="/instruments/yearonyearinflationswap.hpp" line="83" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="170" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a95363e8aed06af280c2f0cf7e424fed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter &amp; fixedDayCount</definition>
         <argsstring>() const </argsstring>
         <name>fixedDayCount</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="84" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="174" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a0410814ddfd66c4dad22bfb74c415cff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+        <type>const Schedule &amp;</type>
         <definition>const Schedule &amp; yoySchedule</definition>
         <argsstring>() const </argsstring>
         <name>yoySchedule</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="86" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="178" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a0e648f3db8b742d5fb33210b8b97e307" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp; yoyInflationIndex</definition>
         <argsstring>() const </argsstring>
         <name>yoyInflationIndex</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="87" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="182" bodyend="184"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1abafd7188fd2256052647de8003c83484" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="period" kindref="compound">Period</ref></type>
+        <type>Period</type>
         <definition>virtual Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
@@ -169,14 +169,14 @@
         <location file="/instruments/yearonyearinflationswap.hpp" line="89" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="186" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a8089cbbb11ee0f007855745703c28f81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <type>const DayCounter &amp;</type>
         <definition>const DayCounter &amp; yoyDayCount</definition>
         <argsstring>() const </argsstring>
         <name>yoyDayCount</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="90" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="190" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a1de93eab2dca02a8ca2fa9afb3f37628" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
+        <type>Calendar</type>
         <definition>virtual Calendar paymentCalendar</definition>
         <argsstring>() const </argsstring>
         <name>paymentCalendar</name>
@@ -214,7 +214,7 @@
     <briefdescription>
 <para>Year-on-year inflation-indexed swap. </para>    </briefdescription>
     <detaileddescription>
-<para>Quoted as a fixed rate <formula id="144">$ K $</formula>. At start: <formula id="158">\[ \sum_{i=1}^{M} P_n(0,t_i) N K = \sum_{i=1}^{M} P_n(0,t_i) N \left[ \frac{I(t_i)}{I(t_i-1)} - 1 \right] \]</formula> where <formula id="159">$ t_M $</formula> is the maturity time, <formula id="146">$ P_n(0,t) $</formula> is the nominal discount factor at time <formula id="147">$ t $</formula>, <formula id="32">$ N $</formula> is the notional, and <formula id="148">$ I(t) $</formula> is the inflation index value at time <formula id="147">$ t $</formula>.</para><para><simplesect kind="note"><para>These instruments have now been changed to follow typical <ref refid="vanilla_swap" kindref="compound">VanillaSwap</ref> type design conventions w.r.t. Schedules etc. </para></simplesect>
+<para>Quoted as a fixed rate <formula id="144">$ K $</formula>. At start: <formula id="158">\[ \sum_{i=1}^{M} P_n(0,t_i) N K = \sum_{i=1}^{M} P_n(0,t_i) N \left[ \frac{I(t_i)}{I(t_i-1)} - 1 \right] \]</formula> where <formula id="159">$ t_M $</formula> is the maturity time, <formula id="146">$ P_n(0,t) $</formula> is the nominal discount factor at time <formula id="147">$ t $</formula>, <formula id="32">$ N $</formula> is the notional, and <formula id="148">$ I(t) $</formula> is the inflation index value at time <formula id="147">$ t $</formula>.</para><para><simplesect kind="note"><para>These instruments have now been changed to follow typical VanillaSwap type design conventions w.r.t. Schedules etc. </para></simplesect>
 </para>    </detaileddescription>
     <location file="/instruments/yearonyearinflationswap.hpp" line="51" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="51" bodyend="120"/>
   </compounddef>

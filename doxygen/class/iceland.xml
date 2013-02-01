@@ -9,7 +9,7 @@
         <enumvalue id="iceland_1abe41cfffd960e29a5d8b07be00aeda42ab99c13187300a8891f4d715ef19f388c" prot="public">
           <name>ICEX</name>
           <briefdescription>
-<para><ref refid="iceland" kindref="compound">Iceland</ref> stock exchange. </para>          </briefdescription>
+<para>Iceland stock exchange. </para>          </briefdescription>
         </enumvalue>
         <location file="/time/calendars/iceland.hpp" line="61" bodyfile="/time/calendars/iceland.hpp" bodystart="61" bodyend="62"/>
       </memberdef>
@@ -31,7 +31,7 @@
     <briefdescription>
 <para>Icelandic calendars. </para>    </briefdescription>
     <detaileddescription>
-<para>Holidays for the <ref refid="iceland" kindref="compound">Iceland</ref> stock exchange (data from <ulink url="http://www.icex.is/is/calendar?languageID=1">http://www.icex.is/is/calendar?languageID=1</ulink>): <itemizedlist>
+<para>Holidays for the Iceland stock exchange (data from <ulink url="http://www.icex.is/is/calendar?languageID=1">http://www.icex.is/is/calendar?languageID=1</ulink>): <itemizedlist>
 <listitem>
 <para>Saturdays </para></listitem>
 <listitem>

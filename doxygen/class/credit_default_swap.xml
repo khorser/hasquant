@@ -26,7 +26,7 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -34,7 +34,7 @@
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -48,13 +48,13 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>protectionStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt; &amp;</type>
-          <defval>boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt;()</defval>
+          <type>const boost::shared_ptr&lt; Claim &gt; &amp;</type>
+          <defval>boost::shared_ptr&lt; Claim &gt;()</defval>
         </param>
         <briefdescription>
 <para>CDS quoted as running-spread only. </para>        </briefdescription>
@@ -85,7 +85,7 @@
 <parametername>schedule</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="coupon" kindref="compound">Coupon</ref> schedule. </para></parameterdescription>
+<para>Coupon schedule. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -148,7 +148,7 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const Schedule &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -156,7 +156,7 @@
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -170,18 +170,18 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>protectionStart</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>upfrontDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
+          <defval>Date()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt; &amp;</type>
-          <defval>boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt;()</defval>
+          <type>const boost::shared_ptr&lt; Claim &gt; &amp;</type>
+          <defval>boost::shared_ptr&lt; Claim &gt;()</defval>
         </param>
         <briefdescription>
 <para>CDS quoted as upfront and running spread. </para>        </briefdescription>
@@ -219,7 +219,7 @@
 <parametername>schedule</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="coupon" kindref="compound">Coupon</ref> schedule. </para></parameterdescription>
+<para>Coupon schedule. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -261,7 +261,7 @@
 <parametername>upfrontDate</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="settlement" kindref="compound">Settlement</ref> date for the upfront payment. </para></parameterdescription>
+<para>Settlement date for the upfront payment. </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
@@ -323,7 +323,7 @@
         <location file="/instruments/creditdefaultswap.hpp" line="137"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1a061ac789f04857311e0ac77349c5470d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date&amp; protectionStartDate</definition>
         <argsstring>() const </argsstring>
         <name>protectionStartDate</name>
@@ -332,7 +332,7 @@
         <location file="/instruments/creditdefaultswap.hpp" line="139"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1a771353eb0b622464172d74dd95225aae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+        <type>const Date &amp;</type>
         <definition>const Date&amp; protectionEndDate</definition>
         <argsstring>() const </argsstring>
         <name>protectionEndDate</name>
@@ -409,11 +409,11 @@
           <declname>targetNPV</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -430,7 +430,7 @@
 <para>Implied hazard rate calculation. </para>        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably:<itemizedlist>
-<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
+<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard IMM dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
 </para></simplesect>
 </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="187"/>
@@ -445,11 +445,11 @@
           <declname>conventionalRecovery</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <briefdescription>
@@ -457,7 +457,7 @@
         <detaileddescription>
 <para>Under a standard ISDA model and a set of standardised instrument characteristics, it is the running only quoted spread that will make a CDS contract have an NPV of 0 when quoted for that running only spread. Refer to: &quot;ISDA
            Standard CDS converter specification.&quot; May 2009.</para><para>The conventional recovery rate to apply in the calculation is as specified by ISDA, not necessarily equal to the market-quoted one. It is typically 0.4 for SeniorSec and 0.2 for subordinate.</para><para><simplesect kind="note"><para>The conversion employs a flat hazard rate. As a result, you will not recover the market quotes.</para><simplesectsep/><para>This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably:<itemizedlist>
-<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
+<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard IMM dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
 </para></simplesect>
 </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="222"/>

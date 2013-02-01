@@ -46,13 +46,13 @@
         <argsstring>(const Clone&lt; T &gt; &amp;)</argsstring>
         <name>Clone</name>
         <param>
-          <type>const <ref refid="clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
+          <type>const Clone&lt; T &gt; &amp;</type>
           <defname>t</defname>
         </param>
         <location file="/utilities/clone.hpp" line="45" bodyfile="/utilities/clone.hpp" bodystart="75" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="clone_1aa52d913278b3efe66aff563e3c1991ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
+        <type>Clone&lt; T &gt; &amp;</type>
         <definition>Clone&lt; T &gt; &amp; operator=</definition>
         <argsstring>(const T &amp;)</argsstring>
         <name>operator=</name>
@@ -63,12 +63,12 @@
         <location file="/utilities/clone.hpp" line="46" bodyfile="/utilities/clone.hpp" bodystart="79" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="clone_1a98891d60973e7848cf3514e94714a885" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
+        <type>Clone&lt; T &gt; &amp;</type>
         <definition>Clone&lt; T &gt; &amp; operator=</definition>
         <argsstring>(const Clone&lt; T &gt; &amp;)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
+          <type>const Clone&lt; T &gt; &amp;</type>
           <defname>t</defname>
         </param>
         <location file="/utilities/clone.hpp" line="47" bodyfile="/utilities/clone.hpp" bodystart="85" bodyend="88"/>
@@ -100,7 +100,7 @@
         <argsstring>(Clone&lt; T &gt; &amp;t)</argsstring>
         <name>swap</name>
         <param>
-          <type><ref refid="clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
+          <type>Clone&lt; T &gt; &amp;</type>
           <declname>t</declname>
         </param>
         <location file="/utilities/clone.hpp" line="51" bodyfile="/utilities/clone.hpp" bodystart="107" bodyend="109"/>
@@ -118,10 +118,10 @@
         <argsstring>(Clone&lt; T &gt; &amp;, Clone&lt; T &gt; &amp;)</argsstring>
         <name>swap</name>
         <param>
-          <type><ref refid="clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
+          <type>Clone&lt; T &gt; &amp;</type>
         </param>
         <param>
-          <type><ref refid="clone" kindref="compound">Clone</ref>&lt; T &gt; &amp;</type>
+          <type>Clone&lt; T &gt; &amp;</type>
         </param>
         <location file="/utilities/clone.hpp" line="58" bodyfile="/utilities/clone.hpp" bodystart="112" bodyend="114"/>
       </memberdef>

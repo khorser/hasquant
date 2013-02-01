@@ -9,7 +9,7 @@
         <argsstring>(const boost::shared_ptr&lt; HestonProcess &gt; &amp;process, Real lambda=0.1, Real nuUp=0.1, Real nuDown=0.1, Real p=0.5, Real kappaLambda=1.0, Real thetaLambda=0.1)</argsstring>
         <name>BatesDoubleExpDetJumpModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; HestonProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

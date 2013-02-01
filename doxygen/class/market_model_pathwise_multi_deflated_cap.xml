@@ -40,7 +40,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para><ref refid="market_model_pathwise_multi_deflated_cap" kindref="compound">MarketModelPathwiseMultiDeflatedCap</ref> to price several caps and get their derivatives simultaneously. Mainly useful for testing pathwise market vegas code. </para>    </detaileddescription>
+<para>MarketModelPathwiseMultiDeflatedCap to price several caps and get their derivatives simultaneously. Mainly useful for testing pathwise market vegas code. </para>    </detaileddescription>
     <location file="/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="149" bodyfile="/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="148" bodyend="198"/>
   </compounddef>
 </doxygen>

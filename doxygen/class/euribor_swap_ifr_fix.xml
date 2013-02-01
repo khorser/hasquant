@@ -10,13 +10,13 @@
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>EuriborSwapIfrFix</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/indexes/swap/euriborswap.hpp" line="82"/>
       </memberdef>
@@ -26,15 +26,15 @@
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;forwarding, const Handle&lt; YieldTermStructure &gt; &amp;discounting)</argsstring>
         <name>EuriborSwapIfrFix</name>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>forwarding</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discounting</declname>
         </param>
         <location file="/indexes/swap/euriborswap.hpp" line="85"/>
@@ -43,7 +43,7 @@
     <briefdescription>
 <para>EuriborSwapIfrFix index base class </para>    </briefdescription>
     <detaileddescription>
-<para>Euribor Swap indexes published by IFR Markets and distributed by Reuters page TGM42281 and by Telerate. Annual 30/360 vs 6M <ref refid="euribor" kindref="compound">Euribor</ref>, 1Y vs 3M <ref refid="euribor" kindref="compound">Euribor</ref>. For more info see <ulink url="http://www.ifrmarkets.com">http://www.ifrmarkets.com</ulink>. </para>    </detaileddescription>
+<para>Euribor Swap indexes published by IFR Markets and distributed by Reuters page TGM42281 and by Telerate. Annual 30/360 vs 6M Euribor, 1Y vs 3M Euribor. For more info see <ulink url="http://www.ifrmarkets.com">http://www.ifrmarkets.com</ulink>. </para>    </detaileddescription>
     <location file="/indexes/swap/euriborswap.hpp" line="78" bodyfile="/indexes/swap/euriborswap.hpp" bodystart="78" bodyend="86"/>
   </compounddef>
 </doxygen>

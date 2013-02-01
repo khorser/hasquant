@@ -10,10 +10,10 @@
         <argsstring>(const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;, const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;)</argsstring>
         <name>YoYInflationUnitDisplacedBlackCapFloorEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;</type>
         </param>
         <location file="/pricingengines/inflation/inflationcapfloorengines.hpp" line="91"/>
       </memberdef>

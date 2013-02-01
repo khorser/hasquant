@@ -31,7 +31,7 @@
         <location file="/methods/finitedifferences/expliciteuler.hpp" line="71" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="explicit_euler_1a5ef2ff2e57a5eb84f1e124859bac8d74" prot="public" static="no">
-        <type><ref refid="boundary_condition" kindref="compound">traits::bc_type</ref></type>
+        <type>traits::bc_type</type>
         <definition>typedef traits::bc_type bc_type</definition>
         <argsstring></argsstring>
         <name>bc_type</name>
@@ -45,7 +45,7 @@
         <location file="/methods/finitedifferences/expliciteuler.hpp" line="73" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="explicit_euler_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
-        <type><ref refid="step_condition" kindref="compound">traits::condition_type</ref></type>
+        <type>traits::condition_type</type>
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>
@@ -63,7 +63,7 @@
           <declname>L</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="boundary_condition" kindref="compound">bc_type</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; bc_type &gt; &gt; &amp;</type>
           <declname>bcs</declname>
         </param>
         <location file="/methods/finitedifferences/expliciteuler.hpp" line="78" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="76" bodyend="78"/>
@@ -72,7 +72,7 @@
     <briefdescription>
 <para>Forward Euler scheme for finite difference methods </para>    </briefdescription>
     <detaileddescription>
-<para>See sect. <ref refid="group__findiff" kindref="compound">Finite-differences framework</ref> for details on the method. <verbatim>   In this implementation, the passed operator must be derived
+<para>See sect. Finite-differences framework for details on the method. <verbatim>   In this implementation, the passed operator must be derived
    from either TimeConstantOperator or TimeDependentOperator.
    Also, it must implement at least the following interface:
 </verbatim></para><para><programlisting><codeline><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>...<sp/>array_type;</highlight></codeline>

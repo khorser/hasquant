@@ -19,7 +19,7 @@
         <location file="/utilities/dataparsers.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="date_parser_1abc3be97ef097b3aa573b0d296a8ae0aa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date parse</definition>
         <argsstring>(const std::string &amp;str, const std::string &amp;fmt)</argsstring>
         <name>parse</name>
@@ -34,7 +34,7 @@
         <location file="/utilities/dataparsers.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="date_parser_1ad402c113ffa7026c47b1332f04bbf6d6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>static Date parseISO</definition>
         <argsstring>(const std::string &amp;str)</argsstring>
         <name>parseISO</name>

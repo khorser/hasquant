@@ -26,7 +26,7 @@
           <declname>variance</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <location file="/pricingengines/americanpayoffatexpiry.hpp" line="40"/>

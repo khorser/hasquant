@@ -10,7 +10,7 @@
         <argsstring>(boost::shared_ptr&lt; RandomDefaultModel &gt; rdm, Size samples)</argsstring>
         <name>MonteCarloCDOEngine2</name>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="random_default_model" kindref="compound">RandomDefaultModel</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; RandomDefaultModel &gt;</type>
           <declname>rdm</declname>
         </param>
         <param>
@@ -21,7 +21,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="c_d_o" kindref="compound">CDO</ref> engine, Monte Carlo for the sample payoff. </para>    </briefdescription>
+<para>CDO engine, Monte Carlo for the sample payoff. </para>    </briefdescription>
     <location file="/experimental/credit/syntheticcdoengines.hpp" line="156" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="156" bodyend="168"/>
   </compounddef>
 </doxygen>

@@ -9,11 +9,11 @@
         <argsstring>(const Handle&lt; ExtOUWithJumpsProcess &gt; &amp;process, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdmSimple3dExtOUJumpSolver</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt; &amp;</type>
+          <type>const Handle&lt; ExtOUWithJumpsProcess &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;</type>
           <declname>rTS</declname>
         </param>
         <param>

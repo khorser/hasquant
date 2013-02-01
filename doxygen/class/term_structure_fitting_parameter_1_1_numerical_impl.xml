@@ -9,7 +9,7 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure)</argsstring>
         <name>NumericalImpl</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <location file="/models/parameter.hpp" line="158" bodyfile="/models/parameter.hpp" bodystart="157" bodyend="158"/>
@@ -53,7 +53,7 @@
         <argsstring>(const Array &amp;, Time t) const </argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -62,7 +62,7 @@
         <location file="/models/parameter.hpp" line="171" bodyfile="/models/parameter.hpp" bodystart="171" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="term_structure_fitting_parameter_1_1_numerical_impl_1aba911fdc1eafb640ce92861b77b04252" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; termStructure</definition>
         <argsstring>() const </argsstring>
         <name>termStructure</name>

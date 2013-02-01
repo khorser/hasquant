@@ -13,7 +13,7 @@
       <sectiondef kind="user-defined">
       <header>BootstrapHelper interface</header>
       <memberdef kind="function" id="bootstrap_helper_1ac5a35226b59767c5acae1382d10f72de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+        <type>const Handle&lt; Quote &gt; &amp;</type>
         <definition>const Handle&lt;Quote&gt;&amp; quote</definition>
         <argsstring>() const </argsstring>
         <name>quote</name>
@@ -49,7 +49,7 @@
         <location file="/termstructures/bootstraphelper.hpp" line="69" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date earliestDate</definition>
         <argsstring>() const </argsstring>
         <name>earliestDate</name>
@@ -60,7 +60,7 @@
         <location file="/termstructures/bootstraphelper.hpp" line="74" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="141" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
+        <type>Date</type>
         <definition>Date latestDate</definition>
         <argsstring>() const </argsstring>
         <name>latestDate</name>
@@ -82,7 +82,7 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type>AcyclicVisitor &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/termstructures/bootstraphelper.hpp" line="89" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="156" bodyend="163"/>
@@ -95,7 +95,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;quote)</argsstring>
         <name>BootstrapHelper</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>quote</declname>
         </param>
         <location file="/termstructures/bootstraphelper.hpp" line="51" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="124" bodyend="127"/>

@@ -11,11 +11,11 @@
         <type>template&lt; class &gt; class</type>
         <declname>Bootstrap</declname>
         <defname>Bootstrap</defname>
-        <defval><ref refid="iterative_bootstrap" kindref="compound">IterativeBootstrap</ref></defval>
+        <defval>IterativeBootstrap</defval>
       </param>
       <param>
         <type>class Traits</type>
-        <defval><ref refid="yo_y_inflation_volatility_traits" kindref="compound">YoYInflationVolatilityTraits</ref></defval>
+        <defval>YoYInflationVolatilityTraits</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
@@ -54,7 +54,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -62,11 +62,11 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>

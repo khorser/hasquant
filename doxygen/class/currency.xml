@@ -61,7 +61,7 @@
         <location file="/currency.hpp" line="57" bodyfile="/currency.hpp" bodystart="135" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="currency_1a6a799b7b95e09cfb0d07488185108da1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="rounding" kindref="compound">Rounding</ref> &amp;</type>
+        <type>const Rounding &amp;</type>
         <definition>const Rounding &amp; rounding</definition>
         <argsstring>() const </argsstring>
         <name>rounding</name>
@@ -93,7 +93,7 @@
         <location file="/currency.hpp" line="69" bodyfile="/currency.hpp" bodystart="147" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="currency_1aaf2f23f525420d1db162d9f9ee49502c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+        <type>const Currency &amp;</type>
         <definition>const Currency &amp; triangulationCurrency</definition>
         <argsstring>() const </argsstring>
         <name>triangulationCurrency</name>
@@ -122,10 +122,10 @@
         <argsstring>(const Currency &amp;, const Currency &amp;)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
         </param>
         <location file="/currency.hpp" line="100" bodyfile="/currency.hpp" bodystart="155" bodyend="157"/>
       </memberdef>
@@ -135,10 +135,10 @@
         <argsstring>(const Currency &amp;, const Currency &amp;)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
         </param>
         <location file="/currency.hpp" line="104" bodyfile="/currency.hpp" bodystart="159" bodyend="161"/>
       </memberdef>
@@ -151,7 +151,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
         </param>
         <location file="/currency.hpp" line="108"/>
       </memberdef>

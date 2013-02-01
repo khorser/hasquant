@@ -15,21 +15,21 @@
       <sectiondef kind="user-defined">
       <header>some inspectors</header>
       <memberdef kind="function" id="abcd_atm_vol_curve_1afb21564e63d8019bd939c8e878edb466" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Period &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; optionTenors</definition>
         <argsstring>() const </argsstring>
         <name>optionTenors</name>
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="78" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="144" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1a19cb22a0602237e261e07981a4d7d97d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Period &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; optionTenorsInInterpolation</definition>
         <argsstring>() const </argsstring>
         <name>optionTenorsInInterpolation</name>
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="79" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="148" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1aefdc1e5e098b1b44b002aa1cca7760f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; optionDates</definition>
         <argsstring>() const </argsstring>
         <name>optionDates</name>
@@ -60,15 +60,15 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>volsHandles</declname>
         </param>
         <param>
@@ -82,9 +82,9 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <briefdescription>
 <para>floating reference date, floating market data </para>        </briefdescription>

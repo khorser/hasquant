@@ -15,14 +15,14 @@
       <sectiondef kind="user-defined">
       <header>some inspectors</header>
       <memberdef kind="function" id="cap_floor_term_vol_curve_1afb21564e63d8019bd939c8e878edb466" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Period &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; optionTenors</definition>
         <argsstring>() const </argsstring>
         <name>optionTenors</name>
         <location file="/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="92" bodyfile="/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="141" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_term_vol_curve_1aefdc1e5e098b1b44b002aa1cca7760f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Date &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; optionDates</definition>
         <argsstring>() const </argsstring>
         <name>optionDates</name>
@@ -47,7 +47,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -55,17 +55,17 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>vols</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <briefdescription>
 <para>floating reference date, floating market data </para>        </briefdescription>
@@ -77,11 +77,11 @@
         <argsstring>(const Date &amp;settlementDate, const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;vols, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>CapFloorTermVolCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>settlementDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -89,17 +89,17 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;</type>
           <declname>vols</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <briefdescription>
 <para>fixed reference date, floating market data </para>        </briefdescription>
@@ -111,11 +111,11 @@
         <argsstring>(const Date &amp;settlementDate, const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Volatility &gt; &amp;vols, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>CapFloorTermVolCurve</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>settlementDate</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -123,7 +123,7 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
@@ -131,9 +131,9 @@
           <declname>vols</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <briefdescription>
 <para>fixed reference date, fixed market data </para>        </briefdescription>
@@ -149,7 +149,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const Calendar &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -157,7 +157,7 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Period &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
@@ -165,9 +165,9 @@
           <declname>vols</declname>
         </param>
         <param>
-          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const DayCounter &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval>Actual365Fixed()</defval>
         </param>
         <briefdescription>
 <para>floating reference date, fixed market data </para>        </briefdescription>

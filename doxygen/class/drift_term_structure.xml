@@ -13,15 +13,15 @@
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;riskFreeTS, const Handle&lt; YieldTermStructure &gt; &amp;dividendTS, const Handle&lt; BlackVolTermStructure &gt; &amp;blackVolTS)</argsstring>
         <name>DriftTermStructure</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>riskFreeTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>dividendTS</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; BlackVolTermStructure &gt; &amp;</type>
           <declname>blackVolTS</declname>
         </param>
         <location file="/termstructures/yield/drifttermstructure.hpp" line="45" bodyfile="/termstructures/yield/drifttermstructure.hpp" bodystart="66" bodyend="77"/>

@@ -22,23 +22,23 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
+          <type>const Period &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
-          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const Currency &amp;</type>
           <declname>ccy</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YoYInflationTermStructure &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YoYInflationTermStructure &gt;()</defval>
         </param>
         <location file="/experimental/inflation/genericindexes.hpp" line="102" bodyfile="/experimental/inflation/genericindexes.hpp" bodystart="87" bodyend="102"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Fake year-on-year <ref refid="generic_c_p_i" kindref="compound">GenericCPI</ref> (i.e. a ratio) </para>    </briefdescription>
+<para>Fake year-on-year GenericCPI (i.e. a ratio) </para>    </briefdescription>
     <location file="/experimental/inflation/genericindexes.hpp" line="85" bodyfile="/experimental/inflation/genericindexes.hpp" bodystart="85" bodyend="103"/>
   </compounddef>
 </doxygen>

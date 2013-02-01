@@ -34,7 +34,7 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/cashflows/dividend.hpp" line="77" bodyfile="/cashflows/dividend.hpp" bodystart="76" bodyend="77"/>
@@ -53,7 +53,7 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/cashflows/dividend.hpp" line="80" bodyfile="/cashflows/dividend.hpp" bodystart="79" bodyend="80"/>

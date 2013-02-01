@@ -73,11 +73,11 @@
           <declname>vegaWeighted</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; EndCriteria &gt; &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;</type>
           <declname>optMethod</declname>
         </param>
         <location file="/math/interpolations/sabrinterpolation.hpp" line="124" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="105" bodyend="136"/>
@@ -138,12 +138,12 @@
         <location file="/math/interpolations/sabrinterpolation.hpp" line="231" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="231" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_s_a_b_r_interpolation_impl_1a03df75a74f115f2863b7b1db164d4bab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
+        <type>Disposable&lt; Array &gt;</type>
         <definition>Disposable&lt;Array&gt; interpolationErrors</definition>
         <argsstring>(const Array &amp;) const </argsstring>
         <name>interpolationErrors</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
         </param>
         <location file="/math/interpolations/sabrinterpolation.hpp" line="243" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="243" bodyend="253"/>
       </memberdef>

@@ -11,7 +11,7 @@
         <argsstring>(YieldTermStructure *)</argsstring>
         <name>setTermStructure</name>
         <param>
-          <type><ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
+          <type>YieldTermStructure *</type>
         </param>
         <location file="/termstructures/yield/oisratehelper.hpp" line="84"/>
       </memberdef>
@@ -26,15 +26,15 @@
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate, const Handle&lt; Quote &gt; &amp;fixedRate, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex, const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>DatedOISRateHelper</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>fixedRate</declname>
         </param>
         <param>
@@ -42,15 +42,15 @@
           <declname>overnightIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const Handle&lt; YieldTermStructure &gt; &amp;</type>
           <declname>discountingCurve</declname>
-          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <location file="/termstructures/yield/oisratehelper.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Rate helper for bootstrapping over Overnight Indexed <ref refid="swap" kindref="compound">Swap</ref> rates. </para>    </briefdescription>
+<para>Rate helper for bootstrapping over Overnight Indexed Swap rates. </para>    </briefdescription>
     <location file="/termstructures/yield/oisratehelper.hpp" line="71" bodyfile="/termstructures/yield/oisratehelper.hpp" bodystart="71" bodyend="96"/>
   </compounddef>
 </doxygen>

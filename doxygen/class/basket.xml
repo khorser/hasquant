@@ -29,11 +29,11 @@
           <declname>pool</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; DefaultProbKey &gt; &amp;</type>
           <declname>defaultKeys</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="recovery_rate_model" kindref="compound">RecoveryRateModel</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; RecoveryRateModel &gt; &gt; &amp;</type>
           <declname>rrModels</declname>
         </param>
         <param>
@@ -84,14 +84,14 @@
         <location file="/experimental/credit/basket.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a259631e3ae320781de336b4345ed3ba5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; DefaultProbKey &gt; &amp;</type>
         <definition>const std::vector&lt;DefaultProbKey&gt;&amp; defaultKeys</definition>
         <argsstring>() const </argsstring>
         <name>defaultKeys</name>
         <location file="/experimental/credit/basket.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a18a6de68dafc5b3af6c14aed55d4d216" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="recovery_rate_model" kindref="compound">RecoveryRateModel</ref> &gt; &gt; &amp;</type>
+        <type>const std::vector&lt; boost::shared_ptr&lt; RecoveryRateModel &gt; &gt; &amp;</type>
         <definition>const std::vector&lt;boost::shared_ptr&lt;RecoveryRateModel&gt; &gt;&amp; recoveryModels</definition>
         <argsstring>() const </argsstring>
         <name>recoveryModels</name>
@@ -182,7 +182,7 @@
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>probabilities</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>d</declname>
         </param>
         <detaileddescription>
@@ -195,11 +195,11 @@
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>cumulatedLoss</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <detaileddescription>
@@ -212,11 +212,11 @@
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingNotional</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <detaileddescription>
@@ -229,11 +229,11 @@
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingNotionals</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <detaileddescription>
@@ -246,11 +246,11 @@
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingNames</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <detaileddescription>
@@ -258,31 +258,31 @@
         <location file="/experimental/credit/basket.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="basket_1aadd09422700558cc843f77577725f48a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &gt;</type>
+        <type>std::vector&lt; DefaultProbKey &gt;</type>
         <definition>std::vector&lt;DefaultProbKey&gt; remainingDefaultKeys</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingDefaultKeys</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <location file="/experimental/credit/basket.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a30d39a91e3bf6a0bec028230f6cb7477" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="recovery_rate_model" kindref="compound">RecoveryRateModel</ref> &gt; &gt;</type>
+        <type>std::vector&lt; boost::shared_ptr&lt; RecoveryRateModel &gt; &gt;</type>
         <definition>std::vector&lt;boost::shared_ptr&lt;RecoveryRateModel&gt; &gt; remainingRecModels</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingRecModels</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <location file="/experimental/credit/basket.hpp" line="126"/>
@@ -293,11 +293,11 @@
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingAttachmentRatio</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <detaileddescription>
@@ -310,11 +310,11 @@
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingAttachmentAmount</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <location file="/experimental/credit/basket.hpp" line="137"/>
@@ -325,11 +325,11 @@
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingDetachmentRatio</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <detaileddescription>
@@ -342,11 +342,11 @@
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingDetachmentAmount</name>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
+          <type>const Date &amp;</type>
           <declname>endDate</declname>
         </param>
         <location file="/experimental/credit/basket.hpp" line="148"/>
@@ -371,7 +371,7 @@
         <argsstring>(Date endDate) const </argsstring>
         <name>scenarioTrancheLoss</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>endDate</declname>
         </param>
         <briefdescription>
@@ -393,12 +393,12 @@
         <argsstring>(Date startDate=Date::minDate(), Date endDate=Date::maxDate()) const </argsstring>
         <name>scenarioIncrementalTrancheLosses</name>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>startDate</declname>
           <defval><ref refid="date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
         </param>
         <param>
-          <type><ref refid="date" kindref="compound">Date</ref></type>
+          <type>Date</type>
           <declname>endDate</declname>
           <defval><ref refid="date_1ab16674c4f64b17d89302cf0805f1fdbd" kindref="member">Date::maxDate</ref>()</defval>
         </param>
@@ -408,7 +408,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>Credit <ref refid="basket" kindref="compound">Basket</ref>. <verbatim>   A basket is a collection of credit names, represented by a
+<para>Credit Basket. <verbatim>   A basket is a collection of credit names, represented by a
    unique identifier (a text string), associated notional
    amounts, a pool and tranche information. The pool is a map of
    &quot;names&quot; to issuers.  The Basket structure is motivated by CDO

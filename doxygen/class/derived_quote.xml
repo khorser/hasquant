@@ -21,7 +21,7 @@
         <argsstring>(const Handle&lt; Quote &gt; &amp;element, const UnaryFunction &amp;f)</argsstring>
         <name>DerivedQuote</name>
         <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const Handle&lt; Quote &gt; &amp;</type>
           <declname>element</declname>
         </param>
         <param>

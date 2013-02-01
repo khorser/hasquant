@@ -90,4 +90,5 @@ for $f (glob("*.xml"))
 # :silent! argdo %s!C:/Develop/QuantLib-1.2.1/ql!!g
 # :silent! argdo %s!class_quant_lib_1_1_\?!!g
 # :silent! argdo %s!struct_quant_lib_1_1_\?!!g
+# :silent! argdo %s!<ref refid="[^"]\+" kindref="compound">\([^<]\+\)</ref>!\1!g
 # :silent! xa

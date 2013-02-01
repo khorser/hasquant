@@ -9,11 +9,11 @@
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;p, const Array &amp;a)</argsstring>
         <name>AverageBasketPayoff</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Payoff &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>a</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="76" bodyfile="/instruments/basketoption.hpp" bodystart="74" bodyend="76"/>
@@ -24,7 +24,7 @@
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;p, Size n)</argsstring>
         <name>AverageBasketPayoff</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; Payoff &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <param>
@@ -39,7 +39,7 @@
         <argsstring>(const Array &amp;a) const </argsstring>
         <name>accumulate</name>
         <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
+          <type>const Array &amp;</type>
           <declname>a</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="80" bodyfile="/instruments/basketoption.hpp" bodystart="80" bodyend="84"/>
