@@ -90,22 +90,6 @@
         <location file="/termstructures/yield/zeroyieldstructure.hpp" line="66"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Calculations</header>
-      <description><para>This method must be implemented in derived classes to perform the actual calculations. When it is called, range check has already been performed; therefore, it must assume that extrapolation is required. </para></description>
-      <memberdef kind="function" id="zero_yield_structure_1a841c9841f67d21b682578d206fc915ec" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>virtual Rate zeroYieldImpl</definition>
-        <argsstring>(Time) const =0</argsstring>
-        <name>zeroYieldImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>zero-yield calculation </para>        </briefdescription>
-        <location file="/termstructures/yield/zeroyieldstructure.hpp" line="78"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Zero-yield term structure. </para>    </briefdescription>
     <detaileddescription>

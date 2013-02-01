@@ -295,34 +295,6 @@
         <location file="/termstructures/defaulttermstructure.hpp" line="144" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="234" bodyend="236"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Calculations</header>
-      <description><para>These methods must be implemented in derived classes to perform the actual calculations. When they are called, range check has already been performed; therefore, they must assume that extrapolation is required. </para></description>
-      <memberdef kind="function" id="default_probability_term_structure_1a344fea84748c884236cd26be3f3b1dd5" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref></type>
-        <definition>virtual Probability survivalProbabilityImpl</definition>
-        <argsstring>(Time) const =0</argsstring>
-        <name>survivalProbabilityImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>survival probability calculation </para>        </briefdescription>
-        <location file="/termstructures/defaulttermstructure.hpp" line="160"/>
-      </memberdef>
-      <memberdef kind="function" id="default_probability_term_structure_1a6fa52b63cbf5503d39b7ce7cb66b741e" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real defaultDensityImpl</definition>
-        <argsstring>(Time) const =0</argsstring>
-        <name>defaultDensityImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>default density calculation </para>        </briefdescription>
-        <location file="/termstructures/defaulttermstructure.hpp" line="162"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Default probability term structure. </para>    </briefdescription>
     <detaileddescription>

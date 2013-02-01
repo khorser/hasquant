@@ -90,22 +90,6 @@
         <location file="/termstructures/credit/hazardratestructure.hpp" line="70"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Calculations</header>
-      <description><para>This method must be implemented in derived classes to perform the actual calculations. When it is called, range check has already been performed; therefore, it must assume that extrapolation is required. </para></description>
-      <memberdef kind="function" id="hazard_rate_structure_1a0186c4f02893fb518ec1eac362e77e35" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real hazardRateImpl</definition>
-        <argsstring>(Time) const =0</argsstring>
-        <name>hazardRateImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>hazard rate calculation </para>        </briefdescription>
-        <location file="/termstructures/credit/hazardratestructure.hpp" line="82"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Hazard-rate term structure. </para>    </briefdescription>
     <detaileddescription>

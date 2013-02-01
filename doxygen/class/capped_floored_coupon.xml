@@ -5,41 +5,6 @@
     <includes local="no">/cashflows/capflooredcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="variable" id="capped_floored_coupon_1a8f7dfb713dc9e9d2850445f1db36784d" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; FloatingRateCoupon &gt;</type>
-        <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; underlying_</definition>
-        <argsstring></argsstring>
-        <name>underlying_</name>
-        <location file="/cashflows/capflooredcoupon.hpp" line="93" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="93" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="capped_floored_coupon_1ad9a123dd1d1858dbc8fe3ecf8ff99ab9" prot="protected" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool isCapped_</definition>
-        <argsstring></argsstring>
-        <name>isCapped_</name>
-        <location file="/cashflows/capflooredcoupon.hpp" line="94" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="capped_floored_coupon_1afc2aa543381158122b2f65ce1f12bd11" prot="protected" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool isFloored_</definition>
-        <argsstring></argsstring>
-        <name>isFloored_</name>
-        <location file="/cashflows/capflooredcoupon.hpp" line="94" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="capped_floored_coupon_1a88a22c2f44ff79c880a136bd11c8e862" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate cap_</definition>
-        <argsstring></argsstring>
-        <name>cap_</name>
-        <location file="/cashflows/capflooredcoupon.hpp" line="95" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="95" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="capped_floored_coupon_1ac94856cfd3073eb172529de9c37cae86" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate floor_</definition>
-        <argsstring></argsstring>
-        <name>floor_</name>
-        <location file="/cashflows/capflooredcoupon.hpp" line="95" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="95" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="function" id="capped_floored_coupon_1aa9a0e113b3dc93361f1c9f0b199191c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isCapped</definition>

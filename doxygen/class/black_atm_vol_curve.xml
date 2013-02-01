@@ -229,36 +229,6 @@
         <location file="/experimental/volatility/blackatmvolcurve.hpp" line="98"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Calculations</header>
-      <description><para>These methods must be implemented in derived classes to perform the actual volatility calculations. When they are called, range check has already been performed; therefore, they must assume that extrapolation is required. </para></description>
-      <memberdef kind="function" id="black_atm_vol_curve_1a3f60fbe8f11376ac813a5f751d33161c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real atmVarianceImpl</definition>
-        <argsstring>(Time t) const =0</argsstring>
-        <name>atmVarianceImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <briefdescription>
-<para>spot at-the-money variance calculation </para>        </briefdescription>
-        <location file="/experimental/volatility/blackatmvolcurve.hpp" line="110"/>
-      </memberdef>
-      <memberdef kind="function" id="black_atm_vol_curve_1a3e805d2195b83e2011386f39514d6100" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>virtual Volatility atmVolImpl</definition>
-        <argsstring>(Time t) const =0</argsstring>
-        <name>atmVolImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <briefdescription>
-<para>spot at-the-money volatility calculation </para>        </briefdescription>
-        <location file="/experimental/volatility/blackatmvolcurve.hpp" line="112"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="black_atm_vol_curve_1a925518cec21ed7df88b85bfa905854fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

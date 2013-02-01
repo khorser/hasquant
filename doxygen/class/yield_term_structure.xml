@@ -312,22 +312,6 @@
         <location file="/termstructures/yieldtermstructure.hpp" line="152" bodyfile="/termstructures/yieldtermstructure.hpp" bodystart="204" bodyend="206"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Calculations</header>
-      <description><para>This method must be implemented in derived classes to perform the actual calculations. When it is called, range check has already been performed; therefore, it must assume that extrapolation is required. </para></description>
-      <memberdef kind="function" id="yield_term_structure_1afe73bf9ae8077e99d6edde6ea309e991" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>virtual DiscountFactor discountImpl</definition>
-        <argsstring>(Time) const =0</argsstring>
-        <name>discountImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>discount factor calculation </para>        </briefdescription>
-        <location file="/termstructures/yieldtermstructure.hpp" line="169"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Interest-rate term structure. </para>    </briefdescription>
     <detaileddescription>

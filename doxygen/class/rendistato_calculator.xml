@@ -106,16 +106,6 @@
         <location file="/instruments/bonds/btp.hpp" line="145" bodyfile="/instruments/bonds/btp.hpp" bodystart="279" bodyend="281"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>LazyObject interface</header>
-      <memberdef kind="function" id="rendistato_calculator_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <location file="/instruments/bonds/btp.hpp" line="150"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="rendistato_calculator_1a3f8a2214e54f096e18dd4cbd4688ad30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,16 +3,6 @@
   <compounddef id="sabr_vol_surface" kind="class" prot="public">
     <compoundname>QuantLib::SabrVolSurface</compoundname>
     <includes local="no">/experimental/volatility/sabrvolsurface.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>LazyObject interface</header>
-      <memberdef kind="function" id="sabr_vol_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <location file="/experimental/volatility/sabrvolsurface.hpp" line="82"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="sabr_vol_surface_1a50c79da67f8bc7df135c5925123cd11b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

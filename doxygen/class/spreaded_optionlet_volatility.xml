@@ -71,46 +71,6 @@
         <location file="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" line="52" bodyfile="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" bodystart="88" bodyend="90"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>OptionletVolatilityStructure interface</header>
-      <memberdef kind="function" id="spreaded_optionlet_volatility_1a0f6adb992ee1324a8ad4ed8e7e18fcad" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
-        <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
-        <argsstring>(const Date &amp;d) const </argsstring>
-        <name>smileSectionImpl</name>
-        <param>
-          <type>const Date &amp;</type>
-          <declname>d</declname>
-        </param>
-        <location file="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" line="58"/>
-      </memberdef>
-      <memberdef kind="function" id="spreaded_optionlet_volatility_1a82925441546c3de5ff5daaf393a293b6" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
-        <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
-        <argsstring>(Time optionT) const </argsstring>
-        <name>smileSectionImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>optionT</declname>
-        </param>
-        <location file="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" line="59"/>
-      </memberdef>
-      <memberdef kind="function" id="spreaded_optionlet_volatility_1a2cf02dccd89ba841a178dd0a563389f4" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>Volatility volatilityImpl</definition>
-        <argsstring>(Time optionTime, Rate strike) const </argsstring>
-        <name>volatilityImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>optionTime</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-          <declname>strike</declname>
-        </param>
-        <location file="/termstructures/volatility/optionlet/spreadedoptionletvol.hpp" line="61"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="spreaded_optionlet_volatility_1a407e566c1e73721c3022570e80ce4ebd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

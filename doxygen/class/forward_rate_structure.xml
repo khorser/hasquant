@@ -90,34 +90,6 @@
         <location file="/termstructures/yield/forwardstructure.hpp" line="66"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Calculations</header>
-      <description><para>These methods must be implemented in derived classes to perform the actual calculations. When they are called, range check has already been performed; therefore, they must assume that extrapolation is required. </para></description>
-      <memberdef kind="function" id="forward_rate_structure_1aba98e032168bf53ec33f971ff872fa40" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>virtual Rate forwardImpl</definition>
-        <argsstring>(Time) const =0</argsstring>
-        <name>forwardImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>instantaneous forward-rate calculation </para>        </briefdescription>
-        <location file="/termstructures/yield/forwardstructure.hpp" line="78"/>
-      </memberdef>
-      <memberdef kind="function" id="forward_rate_structure_1a5da0d2e596148e3aa538b6e47a8ecf63" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>virtual Rate zeroYieldImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>zeroYieldImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <detaileddescription>
-<para>Returns the zero yield rate for the given date calculating it from the instantaneous forward rate <formula id="302">$ f(t) $</formula> as <formula id="394">\[ z(t) = \int_0^t f(\tau) d\tau \]</formula></para><para><xrefsect id="caveats_1_caveats000138"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses an highly inefficient and possibly wildly inaccurate numerical integration. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/termstructures/yield/forwardstructure.hpp" line="90"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Forward-rate term structure </para>    </briefdescription>
     <detaileddescription>

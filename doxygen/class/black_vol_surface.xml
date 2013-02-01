@@ -159,20 +159,6 @@
         <location file="/experimental/volatility/blackvolsurface.hpp" line="86" bodyfile="/experimental/volatility/blackvolsurface.hpp" bodystart="127" bodyend="131"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Calculations</header>
-      <description><para>This method must be implemented in derived classes to perform the actual volatility calculations. When it is called, time check has already been performed; therefore, it must assume that time-extrapolation is allowed. </para></description>
-      <memberdef kind="function" id="black_vol_surface_1a0234ac85220b034978d6c07c34a4c29c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; SmileSection &gt;</type>
-        <definition>virtual boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
-        <argsstring>(Time) const =0</argsstring>
-        <name>smileSectionImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <location file="/experimental/volatility/blackvolsurface.hpp" line="108"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Black volatility (smile) surface. </para>    </briefdescription>
     <detaileddescription>

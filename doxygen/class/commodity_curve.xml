@@ -20,83 +20,6 @@
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="87"/>
       </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1a4d739cc5d335052eb9f5b2ca559b81d1" prot="protected" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string name_</definition>
-        <argsstring></argsstring>
-        <name>name_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="91" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1a792de4e88e29e3df5d753c1590d47d8c" prot="protected" static="no" mutable="no">
-        <type>CommodityType</type>
-        <definition>CommodityType commodityType_</definition>
-        <argsstring></argsstring>
-        <name>commodityType_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="92" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="92" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="protected" static="no" mutable="no">
-        <type>UnitOfMeasure</type>
-        <definition>UnitOfMeasure unitOfMeasure_</definition>
-        <argsstring></argsstring>
-        <name>unitOfMeasure_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="93" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="93" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1a9b8209f252ea1344d7fa6de58bc1102a" prot="protected" static="no" mutable="no">
-        <type>Currency</type>
-        <definition>Currency currency_</definition>
-        <argsstring></argsstring>
-        <name>currency_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="94" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1a361b6eadf2fb8b49e1a53073e0f8f11d" prot="protected" static="no" mutable="yes">
-        <type>std::vector&lt; Date &gt;</type>
-        <definition>std::vector&lt;Date&gt; dates_</definition>
-        <argsstring></argsstring>
-        <name>dates_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="95" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="95" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="protected" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; times_</definition>
-        <argsstring></argsstring>
-        <name>times_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="96" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="96" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1af9c626db41e269447653dcc7cc126d35" prot="protected" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; data_</definition>
-        <argsstring></argsstring>
-        <name>data_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="97" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1a6633ee38a9d12ce3e342081d39e98fd0" prot="protected" static="no" mutable="yes">
-        <type>Interpolation</type>
-        <definition>Interpolation interpolation_</definition>
-        <argsstring></argsstring>
-        <name>interpolation_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="98" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="98" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1a79b0a8135f77fb012eb795d1c52cca5e" prot="protected" static="no" mutable="no">
-        <type>ForwardFlat</type>
-        <definition>ForwardFlat interpolator_</definition>
-        <argsstring></argsstring>
-        <name>interpolator_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="99" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="99" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1ab78d07f1db0c1382060b89e0c553af67" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; CommodityCurve &gt;</type>
-        <definition>boost::shared_ptr&lt;CommodityCurve&gt; basisOfCurve_</definition>
-        <argsstring></argsstring>
-        <name>basisOfCurve_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="100" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="100" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="commodity_curve_1a1c628be27a380ddef7f07934b8a641cf" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real basisOfCurveUomConversionFactor_</definition>
-        <argsstring></argsstring>
-        <name>basisOfCurveUomConversionFactor_</name>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="101" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="101" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="function" id="commodity_curve_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
         <definition>const std::string &amp; name</definition>
@@ -237,28 +160,6 @@
         <argsstring>() const </argsstring>
         <name>basisOfCurve</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="84" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="138" bodyend="140"/>
-      </memberdef>
-      <memberdef kind="function" id="commodity_curve_1a7e503a2d78c89272768d5dd782f1493b" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real basisOfPriceImpl</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>basisOfPriceImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="89" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="193" bodyend="207"/>
-      </memberdef>
-      <memberdef kind="function" id="commodity_curve_1aa7ee95a45f01c5aeb3e86470bac77dd8" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real priceImpl</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>priceImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="103" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="209" bodyend="211"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">

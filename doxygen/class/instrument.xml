@@ -88,50 +88,6 @@
         <location file="/instrument.hpp" line="73" bodyfile="/instrument.hpp" bodystart="133" bodyend="142"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Calculations</header>
-      <memberdef kind="function" id="instrument_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void setupExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>setupExpired</name>
-        <detaileddescription>
-<para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <location file="/instrument.hpp" line="92" bodyfile="/instrument.hpp" bodystart="157" bodyend="161"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Results</header>
-      <description><para>The value of this attribute and any other that derived classes might declare must be set during calculation. </para></description>
-      <memberdef kind="variable" id="instrument_1abb995b099094913d099029f2fd3936b8" prot="protected" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real NPV_</definition>
-        <argsstring></argsstring>
-        <name>NPV_</name>
-        <location file="/instrument.hpp" line="106" bodyfile="/instrument.hpp" bodystart="106" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="instrument_1a1e9067e3af34538ab0ff6d744ff712ca" prot="protected" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real errorEstimate_</definition>
-        <argsstring></argsstring>
-        <name>errorEstimate_</name>
-        <location file="/instrument.hpp" line="106" bodyfile="/instrument.hpp" bodystart="106" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" static="no" mutable="yes">
-        <type>Date</type>
-        <definition>Date valuationDate_</definition>
-        <argsstring></argsstring>
-        <name>valuationDate_</name>
-        <location file="/instrument.hpp" line="107" bodyfile="/instrument.hpp" bodystart="107" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="instrument_1a943dca9fb2114bd8a5fa4d5802ac6bba" prot="protected" static="no" mutable="yes">
-        <type>std::map&lt; std::string, boost::any &gt;</type>
-        <definition>std::map&lt;std::string,boost::any&gt; additionalResults_</definition>
-        <argsstring></argsstring>
-        <name>additionalResults_</name>
-        <location file="/instrument.hpp" line="108" bodyfile="/instrument.hpp" bodystart="108" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="instrument_1af24aea89eec21b1caba7216b01bcb018" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
