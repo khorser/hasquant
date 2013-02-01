@@ -3,9 +3,6 @@
   <compounddef id="s_v_d_d_fwd_rate_pc" kind="class" prot="public">
     <compoundname>QuantLib::SVDDFwdRatePc</compoundname>
     <includes local="no">/models/marketmodels/evolvers/svddfwdratepc.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModel interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="s_v_d_d_fwd_rate_pc_1acfa32e8cc630d5c85b40535c16d7b1c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

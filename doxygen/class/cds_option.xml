@@ -7,9 +7,6 @@
     <innerclass refid="cds_option_1_1engine" prot="public">QuantLib::CdsOption::engine</innerclass>
     <innerclass refid="cds_option_1_1results" prot="public">QuantLib::CdsOption::results</innerclass>
       <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="cds_option_1a37a0ce9ec1e1962e9cd5845be2657bd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; CreditDefaultSwap &gt; &amp;</type>

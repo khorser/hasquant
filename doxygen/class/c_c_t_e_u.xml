@@ -3,9 +3,6 @@
   <compounddef id="c_c_t_e_u" kind="class" prot="public">
     <compoundname>QuantLib::CCTEU</compoundname>
     <includes local="no">/instruments/bonds/btp.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Bond interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_c_t_e_u_1afc07e81624e343114b80f985ba96cb5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

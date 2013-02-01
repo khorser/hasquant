@@ -8,8 +8,6 @@
         <type>class Interpolator1D</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="user-defined">
-      </sectiondef>
     <detaileddescription>
 <para>The interpolated version interpolates along each K (as opposed to fitting a model, say).</para><para><xrefsect id="bug_1_bug000001"><xreftitle>Bug</xreftitle><xrefdescription><para>Tests currently fail. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="44" bodyfile="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="44" bodyend="98"/>

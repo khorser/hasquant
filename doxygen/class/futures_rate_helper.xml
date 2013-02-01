@@ -4,9 +4,6 @@
     <compoundname>QuantLib::FuturesRateHelper</compoundname>
     <includes local="no">/termstructures/yield/ratehelpers.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>RateHelper interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>FuturesRateHelper inspectors</header>
       <memberdef kind="function" id="futures_rate_helper_1afcf6adb1180a55c010c9e3ec3ce691bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -15,9 +12,6 @@
         <name>convexityAdjustment</name>
         <location file="/termstructures/yield/ratehelpers.hpp" line="88"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="futures_rate_helper_1af8f8fc7fd687e1f205089964f22cfc2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

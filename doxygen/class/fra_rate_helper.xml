@@ -16,9 +16,6 @@
         <location file="/termstructures/yield/ratehelpers.hpp" line="188"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fra_rate_helper_1a66221e6086a9b142f49030b77f7c2ca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

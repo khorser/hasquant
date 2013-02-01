@@ -4,9 +4,6 @@
     <compoundname>QuantLib::VegaStressedBlackScholesProcess</compoundname>
     <includes local="no">/experimental/processes/vegastressedblackscholesprocess.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>StochasticProcess1D interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>interface for vega stress test</header>
       <memberdef kind="function" id="vega_stressed_black_scholes_process_1ac62cee7b777da1b349730f16d1873c4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

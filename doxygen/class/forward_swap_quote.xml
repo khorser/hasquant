@@ -3,12 +3,6 @@
   <compounddef id="forward_swap_quote" kind="class" prot="public">
     <compoundname>QuantLib::ForwardSwapQuote</compoundname>
     <includes local="no">/quotes/forwardswapquote.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Quote interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="forward_swap_quote_1a2554b9dd0051ff3515a9960c1dcac0f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

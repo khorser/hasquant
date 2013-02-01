@@ -3,9 +3,6 @@
   <compounddef id="optionlet_stripper" kind="class" prot="public">
     <compoundname>QuantLib::OptionletStripper</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/optionletstripper.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>StrippedOptionletBase interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="optionlet_stripper_1ae202892d94f34cdd9e988035e85ce7e8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; Period &gt; &amp;</type>

@@ -3,9 +3,6 @@
   <compounddef id="optionlet_stripper1" kind="class" prot="public">
     <compoundname>QuantLib::OptionletStripper1</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/optionletstripper1.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>LazyObject interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="optionlet_stripper1_1a50c685dc3d05c91348434bed9dadaa6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

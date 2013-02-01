@@ -75,9 +75,6 @@
         <location file="/cashflows/couponpricer.hpp" line="53"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="floating_rate_coupon_pricer_1ac65d2910ffc9a596d3cf548aef90d06a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

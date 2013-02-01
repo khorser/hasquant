@@ -4,18 +4,6 @@
     <compoundname>QuantLib::SabrVolSurface</compoundname>
     <includes local="no">/experimental/volatility/sabrvolsurface.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>BlackVolSurface interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
       <memberdef kind="function" id="sabr_vol_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

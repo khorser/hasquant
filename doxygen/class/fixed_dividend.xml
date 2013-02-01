@@ -3,9 +3,6 @@
   <compounddef id="fixed_dividend" kind="class" prot="public">
     <compoundname>QuantLib::FixedDividend</compoundname>
     <includes local="no">/cashflows/dividend.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Dividend interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fixed_dividend_1a66e30a0489235def3691267c084bd982" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

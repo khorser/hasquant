@@ -4,12 +4,6 @@
     <compoundname>QuantLib::CappedFlooredCoupon</compoundname>
     <includes local="no">/cashflows/capflooredcoupon.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>Coupon interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Visitability</header>
       <memberdef kind="variable" id="capped_floored_coupon_1a8f7dfb713dc9e9d2850445f1db36784d" prot="protected" static="no" mutable="no">
         <type>boost::shared_ptr&lt; FloatingRateCoupon &gt;</type>

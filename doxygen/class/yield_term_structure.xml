@@ -313,9 +313,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Calculations</header>
       <description><para>This method must be implemented in derived classes to perform the actual calculations. When it is called, range check has already been performed; therefore, it must assume that extrapolation is required. </para></description>
       <memberdef kind="function" id="yield_term_structure_1afe73bf9ae8077e99d6edde6ea309e991" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">

@@ -3,9 +3,6 @@
   <compounddef id="g2_forward_process" kind="class" prot="public">
     <compoundname>QuantLib::G2ForwardProcess</compoundname>
     <includes local="no">/processes/g2process.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>StochasticProcess interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="g2_forward_process_1aff3b1a8d266d0fe23fb9720e4b1c4617" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

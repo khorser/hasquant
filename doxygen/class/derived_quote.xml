@@ -8,12 +8,6 @@
         <type>class UnaryFunction</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="user-defined">
-      <header>Quote interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="derived_quote_1aa20eb7655926a809d96c85943c38979a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

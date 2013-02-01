@@ -3,9 +3,6 @@
   <compounddef id="striked_type_payoff" kind="class" prot="public">
     <compoundname>QuantLib::StrikedTypePayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Payoff interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="striked_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

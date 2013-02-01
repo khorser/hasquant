@@ -38,9 +38,6 @@
         <location file="/models/marketmodels/curvestates/lmmcurvestate.hpp" line="58"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Inspectors</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="l_m_m_curve_state_1aa16287775199c7833a917a13056d6ba3" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>

@@ -13,9 +13,6 @@
         <location file="/cashflows/cmscoupon.hpp" line="55" bodyfile="/cashflows/cmscoupon.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="cms_coupon_1a81123c8a4bea54faba972b9a1f2142cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

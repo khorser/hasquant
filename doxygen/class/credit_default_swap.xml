@@ -269,9 +269,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="credit_default_swap_1acc92405f554372b2ac8be49b9c052908" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Protection::Side</type>

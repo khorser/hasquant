@@ -3,18 +3,6 @@
   <compounddef id="indexed_cash_flow" kind="class" prot="public">
     <compoundname>QuantLib::IndexedCashFlow</compoundname>
     <includes local="no">/cashflows/indexedcashflow.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Event interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>CashFlow interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="indexed_cash_flow_1a26470d10d6c897a714ed1ae0ded3e446" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

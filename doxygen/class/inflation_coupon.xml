@@ -4,9 +4,6 @@
     <compoundname>QuantLib::InflationCoupon</compoundname>
     <includes local="no">/cashflows/inflationcoupon.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>CashFlow interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Coupon interface</header>
       <memberdef kind="function" id="inflation_coupon_1ad88cf27f1c994a91f4f2ba821bbb6f8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -67,12 +64,6 @@
 <para>fixing of the underlying index, as observed by the coupon </para>        </briefdescription>
         <location file="/cashflows/inflationcoupon.hpp" line="84"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="inflation_coupon_1a237d09dd3182350cb4f51cfad13f0372" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

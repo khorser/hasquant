@@ -4,9 +4,6 @@
     <compoundname>QuantLib::MarketModelComposite</compoundname>
     <includes local="no">/models/marketmodels/products/compositeproduct.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>MarketModelMultiProduct interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Composite facilities</header>
       <memberdef kind="function" id="market_model_composite_1ad54deb7b69bb7f1f927eef29a76e2d2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

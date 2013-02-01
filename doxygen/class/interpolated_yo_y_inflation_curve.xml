@@ -9,9 +9,6 @@
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
-      <header>InflationTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="interpolated_yo_y_inflation_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; Date &gt; &amp;</type>
@@ -48,9 +45,6 @@
         <name>nodes</name>
         <location file="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" line="71" bodyfile="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" bodystart="219" bodyend="224"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>YoYInflationTermStructure interface</header>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interpolated_yo_y_inflation_curve_1a592ad4ba19ab6b5011c57b099082d04b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

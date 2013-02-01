@@ -4,12 +4,6 @@
     <compoundname>QuantLib::BlackVarianceSurface</compoundname>
     <includes local="no">/termstructures/volatility/equityfx/blackvariancesurface.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Modifiers</header>
       <memberdef kind="function" id="black_variance_surface_1a9ef2833161e7150c5b0fbfbfc91b6791" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -28,9 +22,6 @@
         </param>
         <location file="/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="80" bodyfile="/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="80" bodyend="86"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
       </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="black_variance_surface_1a8e2df513f6590afb6c85a22a458745c5" prot="public" static="no">

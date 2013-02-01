@@ -86,9 +86,6 @@
         <location file="/termstructures/credit/flathazardrate.hpp" line="52"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
     <briefdescription>
 <para>Flat hazard-rate curve. </para>    </briefdescription>
     <location file="/termstructures/credit/flathazardrate.hpp" line="35" bodyfile="/termstructures/credit/flathazardrate.hpp" bodystart="35" bodyend="70"/>

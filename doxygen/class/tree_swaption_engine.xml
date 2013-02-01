@@ -65,8 +65,6 @@
         <location file="/pricingengines/swaption/treeswaptionengine.hpp" line="64"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>Numerical lattice engine for swaptions. </para>    </briefdescription>
     <detaileddescription>

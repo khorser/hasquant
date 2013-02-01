@@ -3,8 +3,6 @@
   <compounddef id="face_value_claim" kind="class" prot="public">
     <compoundname>QuantLib::FaceValueClaim</compoundname>
     <includes local="no">/instruments/claim.hpp</includes>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>Claim on a notional. </para>    </briefdescription>
     <location file="/instruments/claim.hpp" line="43" bodyfile="/instruments/claim.hpp" bodystart="43" bodyend="48"/>

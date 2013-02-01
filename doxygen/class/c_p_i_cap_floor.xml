@@ -60,9 +60,6 @@
         <location file="/instruments/cpicapfloor.hpp" line="90" bodyfile="/instruments/cpicapfloor.hpp" bodystart="90" bodyend="90"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_p_i_cap_floor_1adc5fca7874ca8a0235557aa105b96267" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

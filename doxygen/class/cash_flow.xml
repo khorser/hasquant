@@ -4,9 +4,6 @@
     <compoundname>QuantLib::CashFlow</compoundname>
     <includes local="no">/cashflow.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>Event interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>CashFlow interface</header>
       <memberdef kind="function" id="cash_flow_1a9b47a18fd731fee50de8227ea00f85ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -20,9 +17,6 @@
 </para>        </detaileddescription>
         <location file="/cashflow.hpp" line="60"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">

@@ -4,9 +4,6 @@
     <compoundname>QuantLib::Coupon</compoundname>
     <includes local="no">/cashflows/coupon.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>Event interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="coupon_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -123,9 +120,6 @@
 <para>accrued amount at the given date </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="78"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="coupon_1a8059cf8902fe54a39631ef3c0775d05e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

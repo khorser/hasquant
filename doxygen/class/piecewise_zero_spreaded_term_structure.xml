@@ -3,9 +3,6 @@
   <compounddef id="piecewise_zero_spreaded_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseZeroSpreadedTermStructure</compoundname>
     <includes local="no">/termstructures/yield/piecewisezerospreadedtermstructure.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>YieldTermStructure interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="piecewise_zero_spreaded_term_structure_1a08ce7c74ee74b1205a2f53da9fae1f9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

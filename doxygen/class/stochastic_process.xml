@@ -189,9 +189,6 @@
         <location file="/stochasticprocess.hpp" line="142"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

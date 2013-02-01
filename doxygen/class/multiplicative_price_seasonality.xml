@@ -41,9 +41,6 @@
         <location file="/termstructures/inflation/seasonality.hpp" line="143"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Seasonality interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="multiplicative_price_seasonality_1a44c1ae642d4a92fa718e6cbebff53a66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -75,9 +75,6 @@
         <location file="/cashflows/cpicoupon.hpp" line="102" bodyfile="/cashflows/cpicoupon.hpp" bodystart="248" bodyend="250"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_p_i_coupon_1a2912608d42f1189af67009e7840a3bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

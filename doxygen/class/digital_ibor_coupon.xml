@@ -3,9 +3,6 @@
   <compounddef id="digital_ibor_coupon" kind="class" prot="public">
     <compoundname>QuantLib::DigitalIborCoupon</compoundname>
     <includes local="no">/cashflows/digitaliborcoupon.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="digital_ibor_coupon_1ac042717d999581a57f2c05266c996dbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

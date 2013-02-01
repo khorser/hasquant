@@ -85,9 +85,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>CashFlow interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Coupon interface</header>
       <memberdef kind="function" id="fixed_rate_coupon_1a5634e3d28452e24584f5db12be063f6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>InterestRate</type>
@@ -96,9 +93,6 @@
         <name>interestRate</name>
         <location file="/cashflows/fixedratecoupon.hpp" line="65" bodyfile="/cashflows/fixedratecoupon.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
       </sectiondef>
     <briefdescription>
 <para>Coupon paying a fixed interest rate </para>    </briefdescription>

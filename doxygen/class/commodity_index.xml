@@ -14,9 +14,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="commodity_index_1a37755c700c75d5810577a5dfbd10446a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const CommodityType &amp;</type>

@@ -3,9 +3,6 @@
   <compounddef id="null_payoff" kind="class" prot="public">
     <compoundname>QuantLib::NullPayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Payoff interface</header>
-      </sectiondef>
     <briefdescription>
 <para>Dummy payoff class. </para>    </briefdescription>
     <location file="/instruments/payoffs.hpp" line="36" bodyfile="/instruments/payoffs.hpp" bodystart="36" bodyend="45"/>

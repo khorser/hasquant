@@ -38,9 +38,6 @@
         <location file="/cashflows/yoyinflationcoupon.hpp" line="60" bodyfile="/cashflows/yoyinflationcoupon.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="yo_y_inflation_coupon_1a6004193f7ab45787be505bf6fddafe26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

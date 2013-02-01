@@ -26,9 +26,6 @@
         <location file="/termstructures/yield/bondhelpers.hpp" line="55" bodyfile="/termstructures/yield/bondhelpers.hpp" bodystart="92" bodyend="94"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="bond_helper_1af4868f10939da98e59cac5ed15f5d922" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

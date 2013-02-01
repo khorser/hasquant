@@ -10,9 +10,6 @@
         <defname>Impl</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="user-defined">
-      <header>Lattice interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="tree_lattice_1af64044578078d5872bb088b0a6892a6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

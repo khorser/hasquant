@@ -3,9 +3,6 @@
   <compounddef id="quanto_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::QuantoTermStructure</compoundname>
     <includes local="no">/termstructures/yield/quantotermstructure.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>YieldTermStructure interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="quanto_term_structure_1a8a492ca4a04a52b27abb13989ea942ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

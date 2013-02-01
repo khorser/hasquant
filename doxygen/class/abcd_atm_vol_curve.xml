@@ -4,15 +4,6 @@
     <compoundname>QuantLib::AbcdAtmVolCurve</compoundname>
     <includes local="no">/experimental/volatility/abcdatmvolcurve.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>LazyObject interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>some inspectors</header>
       <memberdef kind="function" id="abcd_atm_vol_curve_1afb21564e63d8019bd939c8e878edb466" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; Period &gt; &amp;</type>
@@ -42,12 +33,6 @@
         <name>optionTimes</name>
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="81" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="158" bodyend="160"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>BlackAtmVolCurve interface</header>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="abcd_atm_vol_curve_1a7d58da65efdf301fc2baecf2379f2f82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

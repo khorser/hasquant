@@ -3,9 +3,6 @@
   <compounddef id="multi_product_composite" kind="class" prot="public">
     <compoundname>QuantLib::MultiProductComposite</compoundname>
     <includes local="no">/models/marketmodels/products/multiproductcomposite.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModelMultiProduct interface</header>
-      </sectiondef>
     <briefdescription>
 <para>Composition of one or more market-model products. </para>    </briefdescription>
     <detaileddescription>

@@ -3,9 +3,6 @@
   <compounddef id="log_normal_fwd_ratei_balland" kind="class" prot="public">
     <compoundname>QuantLib::LogNormalFwdRateiBalland</compoundname>
     <includes local="no">/models/marketmodels/evolvers/lognormalfwdrateiballand.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModel interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="log_normal_fwd_ratei_balland_1a0b9a7ba6367299d2913fa477d1991992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

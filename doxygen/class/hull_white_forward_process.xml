@@ -3,9 +3,6 @@
   <compounddef id="hull_white_forward_process" kind="class" prot="public">
     <compoundname>QuantLib::HullWhiteForwardProcess</compoundname>
     <includes local="no">/processes/hullwhiteprocess.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>StochasticProcess1D interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="hull_white_forward_process_1a292686a7efcf2d88f2fa3f47a518adf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -122,9 +122,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Results</header>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1a36e1152928660bd46ffdcdfde8a70e6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

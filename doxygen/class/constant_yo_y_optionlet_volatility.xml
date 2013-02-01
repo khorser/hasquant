@@ -56,9 +56,6 @@
         <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="155"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Limits</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="constant_yo_y_optionlet_volatility_1a5bc76f64f8a3f16fe97a67e17f5cc5fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

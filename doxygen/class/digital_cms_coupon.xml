@@ -3,9 +3,6 @@
   <compounddef id="digital_cms_coupon" kind="class" prot="public">
     <compoundname>QuantLib::DigitalCmsCoupon</compoundname>
     <includes local="no">/cashflows/digitalcmscoupon.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="digital_cms_coupon_1a599a52c89048aec18b0f0ff10a984606" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

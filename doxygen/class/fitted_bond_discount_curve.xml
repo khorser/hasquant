@@ -216,9 +216,6 @@
         <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="144" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="262" bodyend="265"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
     <briefdescription>
 <para>Discount curve fitted to a set of fixed-coupon bonds. </para>    </briefdescription>
     <detaileddescription>

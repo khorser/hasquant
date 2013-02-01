@@ -3,9 +3,6 @@
   <compounddef id="caplet_variance_curve" kind="class" prot="public">
     <compoundname>QuantLib::CapletVarianceCurve</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/capletvariancecurve.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="caplet_variance_curve_1ab8237fa09c27ca6fa7edc11f1264fefa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

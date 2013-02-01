@@ -3,9 +3,6 @@
   <compounddef id="type_payoff" kind="class" prot="public">
     <compoundname>QuantLib::TypePayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Payoff interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="type_payoff_1aeb3010f80a6d93ea7ecfd86d7563d458" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Option::Type</type>

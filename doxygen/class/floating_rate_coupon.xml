@@ -4,9 +4,6 @@
     <compoundname>QuantLib::FloatingRateCoupon</compoundname>
     <includes local="no">/cashflows/floatingratecoupon.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>CashFlow interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Coupon interface</header>
       <memberdef kind="function" id="floating_rate_coupon_1ad88cf27f1c994a91f4f2ba821bbb6f8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -103,12 +100,6 @@
 <para>whether or not the coupon fixes in arrears </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="91" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="91" bodyend="91"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="floating_rate_coupon_1ab89801171c9400f3164ba182e21192d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

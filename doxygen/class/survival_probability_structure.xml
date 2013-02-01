@@ -90,9 +90,6 @@
         <location file="/termstructures/credit/survivalprobabilitystructure.hpp" line="65"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>DefaultProbabilityTermStructure implementation</header>
-      </sectiondef>
     <briefdescription>
 <para>Hazard-rate term structure. </para>    </briefdescription>
     <detaileddescription>

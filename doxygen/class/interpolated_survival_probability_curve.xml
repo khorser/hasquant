@@ -9,9 +9,6 @@
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>other inspectors</header>
       <memberdef kind="function" id="interpolated_survival_probability_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
@@ -48,9 +45,6 @@
         <name>nodes</name>
         <location file="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="58" bodyfile="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="120" bodyend="125"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>DefaultProbabilityTermStructure implementation</header>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interpolated_survival_probability_curve_1a7410a4d7f86d0d8705a5a30b2817efd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -3,9 +3,6 @@
   <compounddef id="risky_bond" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::RiskyBond</compoundname>
     <includes local="no">/experimental/credit/riskybond.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="risky_bond_1a1392fb8c078ecf62236ec2558c44f3a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

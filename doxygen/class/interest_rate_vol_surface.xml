@@ -130,9 +130,6 @@
         <location file="/experimental/volatility/interestratevolsurface.hpp" line="80"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interest_rate_vol_surface_1a3abd7ea3a1e190b4a16ba6cdb32aa6b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;</type>

@@ -3,15 +3,6 @@
   <compounddef id="implied_vol_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::ImpliedVolTermStructure</compoundname>
     <includes local="no">/termstructures/volatility/equityfx/impliedvoltermstructure.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="implied_vol_term_structure_1a02a9b8aeaad6b9883a33b67849fd0461" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -15,8 +15,6 @@
         <defname>ResultsType</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>template base class for option pricing engines </para>    </briefdescription>
     <detaileddescription>

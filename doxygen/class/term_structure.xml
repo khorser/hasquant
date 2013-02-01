@@ -137,9 +137,6 @@
         <location file="/termstructure.hpp" line="93" bodyfile="/termstructure.hpp" bodystart="134" bodyend="138"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="term_structure_1a7cd56b3d79445a9c5e72fbc0ddd4d201" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

@@ -4,9 +4,6 @@
     <compoundname>QuantLib::SimpleQuote</compoundname>
     <includes local="no">/quotes/simplequote.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>Quote interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Modifiers</header>
       <memberdef kind="function" id="simple_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

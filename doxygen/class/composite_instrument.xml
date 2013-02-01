@@ -3,9 +3,6 @@
   <compounddef id="composite_instrument" kind="class" prot="public">
     <compoundname>QuantLib::CompositeInstrument</compoundname>
     <includes local="no">/instruments/compositeinstrument.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="composite_instrument_1a6c2e5140cb8d3d49eb526feba0d0fda0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

@@ -3,9 +3,6 @@
   <compounddef id="asset_or_nothing_payoff" kind="class" prot="public">
     <compoundname>QuantLib::AssetOrNothingPayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Payoff interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="asset_or_nothing_payoff_1a8b7f859bb23b79f1a18c9bdd8f58c08e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -13,12 +13,6 @@
         <location file="/cashflows/iborcoupon.hpp" line="53" bodyfile="/cashflows/iborcoupon.hpp" bodystart="53" bodyend="55"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>FloatingRateCoupon interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="ibor_coupon_1ad9fd1dfc20c84512dd35c327d5880f99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

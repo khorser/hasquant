@@ -56,8 +56,6 @@
         <location file="/experimental/callablebonds/callablebond.hpp" line="77"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>Callable bond base class. </para>    </briefdescription>
     <detaileddescription>

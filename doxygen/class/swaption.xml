@@ -6,9 +6,6 @@
     <innerclass refid="swaption_1_1arguments" prot="public">QuantLib::Swaption::arguments</innerclass>
     <innerclass refid="swaption_1_1engine" prot="public">QuantLib::Swaption::engine</innerclass>
       <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="swaption_1abed8ca991653367ff67724dbd2f48b44" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Settlement::Type</type>

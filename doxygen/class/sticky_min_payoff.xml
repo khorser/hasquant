@@ -3,9 +3,6 @@
   <compounddef id="sticky_min_payoff" kind="class" prot="public">
     <compoundname>QuantLib::StickyMinPayoff</compoundname>
     <includes local="no">/instruments/stickyratchet.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Payoff interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="sticky_min_payoff_1afb8b5c927451eeef679e6a243a3aac47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

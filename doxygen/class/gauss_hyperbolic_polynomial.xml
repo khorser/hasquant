@@ -3,8 +3,6 @@
   <compounddef id="gauss_hyperbolic_polynomial" kind="class" prot="public">
     <compoundname>QuantLib::GaussHyperbolicPolynomial</compoundname>
     <includes local="no">/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>Gauss hyperbolic polynomial. </para>    </briefdescription>
     <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="130" bodyfile="/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="130" bodyend="136"/>

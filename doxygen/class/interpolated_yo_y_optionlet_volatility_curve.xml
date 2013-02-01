@@ -74,9 +74,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>Limits</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Bootstrap interface</header>
       <memberdef kind="function" id="interpolated_yo_y_optionlet_volatility_curve_1a37dd8ccc18cbc518783287bdc47b4088" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>

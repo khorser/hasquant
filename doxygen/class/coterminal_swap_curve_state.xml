@@ -22,9 +22,6 @@
         <location file="/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="58"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Inspectors</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="coterminal_swap_curve_state_1a2970d6c5b819e43d5c28c4ba5cb9bd3e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>

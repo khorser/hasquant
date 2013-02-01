@@ -4,9 +4,6 @@
     <compoundname>QuantLib::ZeroInflationIndex</compoundname>
     <includes local="no">/indexes/inflationindex.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>Index interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Other methods</header>
       <memberdef kind="function" id="zero_inflation_index_1a6e111b7f22a3b4a568736631d743a296" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Handle&lt; ZeroInflationTermStructure &gt;</type>

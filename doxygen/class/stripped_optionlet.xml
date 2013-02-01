@@ -3,9 +3,6 @@
   <compounddef id="stripped_optionlet" kind="class" prot="public">
     <compoundname>QuantLib::StrippedOptionlet</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/strippedoptionlet.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>StrippedOptionletBase interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="stripped_optionlet_1ab76f0f8d72582b1a692703bc3a70e4d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

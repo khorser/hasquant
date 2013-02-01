@@ -3,9 +3,6 @@
   <compounddef id="spreaded_hazard_rate_curve" kind="class" prot="public">
     <compoundname>QuantLib::SpreadedHazardRateCurve</compoundname>
     <includes local="no">/experimental/credit/spreadedhazardratecurve.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>DefaultProbabilityTermStructure interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="spreaded_hazard_rate_curve_1abaccc805c8145f7e1d6c1fd282d36794" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

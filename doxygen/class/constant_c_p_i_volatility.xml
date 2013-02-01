@@ -46,9 +46,6 @@
         <location file="/termstructures/volatility/inflation/constantcpivolatility.hpp" line="44"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Limits</header>
-      </sectiondef>
     <briefdescription>
 <para>Constant surface, no K or T dependence. </para>    </briefdescription>
     <location file="/termstructures/volatility/inflation/constantcpivolatility.hpp" line="32" bodyfile="/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="32" bodyend="59"/>

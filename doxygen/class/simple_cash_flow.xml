@@ -3,15 +3,6 @@
   <compounddef id="simple_cash_flow" kind="class" prot="public">
     <compoundname>QuantLib::SimpleCashFlow</compoundname>
     <includes local="no">/cashflows/simplecashflow.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Event interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>CashFlow interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="simple_cash_flow_1a0bd25764268be43d0c23bfbe8aba2b0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

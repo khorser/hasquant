@@ -25,12 +25,6 @@
         <location file="/quotes/compositequote.hpp" line="48" bodyfile="/quotes/compositequote.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Quote interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="composite_quote_1a2628d28a842eb4da85ddbdcb576553f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

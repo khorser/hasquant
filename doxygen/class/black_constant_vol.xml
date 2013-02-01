@@ -3,15 +3,6 @@
   <compounddef id="black_constant_vol" kind="class" prot="public">
     <compoundname>QuantLib::BlackConstantVol</compoundname>
     <includes local="no">/termstructures/volatility/equityfx/blackconstantvol.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="black_constant_vol_1a715f0ebaf60ac7805652ec9979aaa294" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

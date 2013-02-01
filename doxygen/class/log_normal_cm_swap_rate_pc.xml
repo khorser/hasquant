@@ -3,9 +3,6 @@
   <compounddef id="log_normal_cm_swap_rate_pc" kind="class" prot="public">
     <compoundname>QuantLib::LogNormalCmSwapRatePc</compoundname>
     <includes local="no">/models/marketmodels/evolvers/lognormalcmswapratepc.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModel interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="log_normal_cm_swap_rate_pc_1a3f294478adbd99bd8a675cf5e37c0a51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,9 +3,6 @@
   <compounddef id="redemption" kind="class" prot="public">
     <compoundname>QuantLib::Redemption</compoundname>
     <includes local="no">/cashflows/simplecashflow.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="redemption_1a0078f8809cfc51f35eafd6c47cb56ba7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

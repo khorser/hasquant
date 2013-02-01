@@ -118,9 +118,6 @@
         <location file="/termstructures/yield/forwardstructure.hpp" line="90"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>YieldTermStructure implementation</header>
-      </sectiondef>
     <briefdescription>
 <para>Forward-rate term structure </para>    </briefdescription>
     <detaileddescription>

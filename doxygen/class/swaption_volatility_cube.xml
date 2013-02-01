@@ -4,15 +4,6 @@
     <compoundname>QuantLib::SwaptionVolatilityCube</compoundname>
     <includes local="no">/termstructures/volatility/swaption/swaptionvolcube.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>SwaptionVolatilityStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Other inspectors</header>
       <memberdef kind="function" id="swaption_volatility_cube_1a5d78247782146d4b70292706933b6235" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>

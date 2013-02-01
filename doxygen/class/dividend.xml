@@ -3,15 +3,6 @@
   <compounddef id="dividend" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Dividend</compoundname>
     <includes local="no">/cashflows/dividend.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Event interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>CashFlow interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="dividend_1a3ce04351ecc7f83eab8f3bfaaa99f3d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

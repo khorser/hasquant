@@ -196,9 +196,6 @@
         <location file="/experimental/volatility/equityfxvolsurface.hpp" line="93"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
     <briefdescription>
 <para>Equity/FX volatility (smile) surface. </para>    </briefdescription>
     <detaileddescription>

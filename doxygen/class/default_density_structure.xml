@@ -90,9 +90,6 @@
         <location file="/termstructures/credit/defaultdensitystructure.hpp" line="65"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>DefaultProbabilityTermStructure implementation</header>
-      </sectiondef>
     <briefdescription>
 <para>Default-density term structure. </para>    </briefdescription>
     <detaileddescription>

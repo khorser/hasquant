@@ -3,9 +3,6 @@
   <compounddef id="gap_payoff" kind="class" prot="public">
     <compoundname>QuantLib::GapPayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Payoff interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="gap_payoff_1a61e617f8776a667df0f92aa7913641ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

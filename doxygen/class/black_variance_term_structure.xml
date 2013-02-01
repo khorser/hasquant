@@ -105,9 +105,6 @@
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="229"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
     <briefdescription>
 <para>Black variance term structure. </para>    </briefdescription>
     <detaileddescription>

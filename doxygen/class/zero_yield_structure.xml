@@ -106,9 +106,6 @@
         <location file="/termstructures/yield/zeroyieldstructure.hpp" line="78"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>YieldTermStructure implementation</header>
-      </sectiondef>
     <briefdescription>
 <para>Zero-yield term structure. </para>    </briefdescription>
     <detaileddescription>

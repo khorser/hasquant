@@ -4,12 +4,6 @@
     <compoundname>QuantLib::Callability</compoundname>
     <includes local="no">/instruments/callabilityschedule.hpp</includes>
     <innerclass refid="callability_1_1_price" prot="public">QuantLib::Callability::Price</innerclass>
-      <sectiondef kind="user-defined">
-      <header>Event interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="callability_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>

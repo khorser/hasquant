@@ -3,15 +3,6 @@
   <compounddef id="local_constant_vol" kind="class" prot="public">
     <compoundname>QuantLib::LocalConstantVol</compoundname>
     <includes local="no">/termstructures/volatility/equityfx/localconstantvol.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="local_constant_vol_1a4f2cfb2a870382131824030c7af6da96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

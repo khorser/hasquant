@@ -22,9 +22,6 @@
         <location file="/models/marketmodels/curvestates/cmswapcurvestate.hpp" line="38"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Inspectors</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_m_swap_curve_state_1a9c6e7dc04ff47c26e1918aa50f9bd257" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>

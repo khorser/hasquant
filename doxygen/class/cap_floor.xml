@@ -6,9 +6,6 @@
     <innerclass refid="cap_floor_1_1arguments" prot="public">QuantLib::CapFloor::arguments</innerclass>
     <innerclass refid="cap_floor_1_1engine" prot="public">QuantLib::CapFloor::engine</innerclass>
       <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="cap_floor_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Type</type>

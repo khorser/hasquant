@@ -4,12 +4,6 @@
     <compoundname>QuantLib::BlackVarianceCurve</compoundname>
     <includes local="no">/termstructures/volatility/equityfx/blackvariancecurve.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Modifiers</header>
       <memberdef kind="function" id="black_variance_curve_1a9ef2833161e7150c5b0fbfbfc91b6791" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -28,9 +22,6 @@
         </param>
         <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="67" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="67" bodyend="72"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="black_variance_curve_1a37ac548367be1e742bffbbd41518d6e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

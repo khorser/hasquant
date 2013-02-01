@@ -3,9 +3,6 @@
   <compounddef id="single_product_composite" kind="class" prot="public">
     <compoundname>QuantLib::SingleProductComposite</compoundname>
     <includes local="no">/models/marketmodels/products/singleproductcomposite.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModelMultiProduct interface</header>
-      </sectiondef>
     <briefdescription>
 <para>Composition of one or more market-model products. </para>    </briefdescription>
     <detaileddescription>

@@ -283,9 +283,6 @@
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="168" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="224" bodyend="227"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="piecewise_yield_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>

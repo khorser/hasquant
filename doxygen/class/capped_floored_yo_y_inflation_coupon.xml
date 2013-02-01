@@ -42,12 +42,6 @@
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="107"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a459fb28417955e6c5e7357d06660827b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

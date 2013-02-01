@@ -160,12 +160,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>BlackAtmVolCurve interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Calculations</header>
       <description><para>This method must be implemented in derived classes to perform the actual volatility calculations. When it is called, time check has already been performed; therefore, it must assume that time-extrapolation is allowed. </para></description>
       <memberdef kind="function" id="black_vol_surface_1a0234ac85220b034978d6c07c34a4c29c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">

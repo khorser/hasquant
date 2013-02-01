@@ -3,9 +3,6 @@
   <compounddef id="c_p_i_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::CPICouponPricer</compoundname>
     <includes local="no">/cashflows/cpicouponpricer.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>InflationCouponPricer interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_p_i_coupon_pricer_1ae35cee8a377804417e3e7a99960444eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

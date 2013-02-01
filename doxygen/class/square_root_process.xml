@@ -3,9 +3,6 @@
   <compounddef id="square_root_process" kind="class" prot="public">
     <compoundname>QuantLib::SquareRootProcess</compoundname>
     <includes local="no">/processes/squarerootprocess.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>StochasticProcess interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="square_root_process_1a113c35a8d8c932b2a20ca2e1fe3fa68f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

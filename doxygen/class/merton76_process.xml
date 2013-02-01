@@ -4,9 +4,6 @@
     <compoundname>QuantLib::Merton76Process</compoundname>
     <includes local="no">/processes/merton76process.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>StochasticProcess1D interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="merton76_process_1a3fdbbd388a2432e1d8d9e94136acfdb8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Handle&lt; Quote &gt; &amp;</type>

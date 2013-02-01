@@ -18,15 +18,6 @@
         <defval>YoYInflationVolatilityTraits</defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="user-defined">
-      <header>Inflation interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Inspectors</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="piecewise_yo_y_optionlet_volatility_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>

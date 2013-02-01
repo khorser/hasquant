@@ -3,9 +3,6 @@
   <compounddef id="zero_spreaded_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::ZeroSpreadedTermStructure</compoundname>
     <includes local="no">/termstructures/yield/zerospreadedtermstructure.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>YieldTermStructure interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="zero_spreaded_term_structure_1a627395c2115caf6b3835a36a49983100" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

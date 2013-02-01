@@ -3,9 +3,6 @@
   <compounddef id="ornstein_uhlenbeck_process" kind="class" prot="public">
     <compoundname>QuantLib::OrnsteinUhlenbeckProcess</compoundname>
     <includes local="no">/processes/ornsteinuhlenbeckprocess.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>StochasticProcess interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="ornstein_uhlenbeck_process_1a6a45086f57b05b580f652b091a4d0113" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

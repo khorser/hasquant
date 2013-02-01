@@ -296,9 +296,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Calculations</header>
       <description><para>These methods must be implemented in derived classes to perform the actual calculations. When they are called, range check has already been performed; therefore, they must assume that extrapolation is required. </para></description>
       <memberdef kind="function" id="default_probability_term_structure_1a344fea84748c884236cd26be3f3b1dd5" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">

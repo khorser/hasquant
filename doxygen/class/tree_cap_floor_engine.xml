@@ -48,8 +48,6 @@
         <location file="/pricingengines/capfloor/treecapfloorengine.hpp" line="50"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>Numerical lattice engine for cap/floors. </para>    </briefdescription>
     <location file="/pricingengines/capfloor/treecapfloorengine.hpp" line="36" bodyfile="/pricingengines/capfloor/treecapfloorengine.hpp" bodystart="34" bodyend="55"/>

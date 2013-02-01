@@ -4,15 +4,6 @@
     <compoundname>QuantLib::CapFloorTermVolCurve</compoundname>
     <includes local="no">/termstructures/volatility/capfloor/capfloortermvolcurve.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>LazyObject interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>some inspectors</header>
       <memberdef kind="function" id="cap_floor_term_vol_curve_1afb21564e63d8019bd939c8e878edb466" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; Period &gt; &amp;</type>

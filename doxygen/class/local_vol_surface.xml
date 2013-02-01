@@ -3,15 +3,6 @@
   <compounddef id="local_vol_surface" kind="class" prot="public">
     <compoundname>QuantLib::LocalVolSurface</compoundname>
     <includes local="no">/termstructures/volatility/equityfx/localvolsurface.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="local_vol_surface_1aa4e518df5098f413a08bafa0343911e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

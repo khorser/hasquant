@@ -3,9 +3,6 @@
   <compounddef id="multi_step_swaption" kind="class" prot="public">
     <compoundname>QuantLib::MultiStepSwaption</compoundname>
     <includes local="no">/models/marketmodels/products/multistep/multistepswaption.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModelMultiProduct interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="multi_step_swaption_1a131b04bc6bbccff6b87398c22c9c5ef6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

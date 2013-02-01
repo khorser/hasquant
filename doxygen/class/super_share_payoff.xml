@@ -3,9 +3,6 @@
   <compounddef id="super_share_payoff" kind="class" prot="public">
     <compoundname>QuantLib::SuperSharePayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>Payoff interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="super_share_payoff_1a37fb4de4f7c9d0366ee6e75f02da08ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -24,9 +24,6 @@
         <location file="/cashflows/averagebmacoupon.hpp" line="67"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Visitability</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="average_b_m_a_coupon_1a145541adfeb389ba98f14de59d789f3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

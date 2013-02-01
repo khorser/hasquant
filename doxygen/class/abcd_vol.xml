@@ -3,9 +3,6 @@
   <compounddef id="abcd_vol" kind="class" prot="public">
     <compoundname>QuantLib::AbcdVol</compoundname>
     <includes local="no">/models/marketmodels/models/abcdvol.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModel interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="abcd_vol_1ab0103a5e0bc5a0d367a1b6f6bcca7c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

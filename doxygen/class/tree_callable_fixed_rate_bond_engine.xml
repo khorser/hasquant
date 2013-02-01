@@ -46,8 +46,6 @@
         <location file="/experimental/callablebonds/treecallablebondengine.hpp" line="52"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>Numerical lattice engine for callable fixed rate bonds. </para>    </briefdescription>
     <location file="/experimental/callablebonds/treecallablebondengine.hpp" line="36" bodyfile="/experimental/callablebonds/treecallablebondengine.hpp" bodystart="34" bodyend="57"/>

@@ -3,9 +3,6 @@
   <compounddef id="drift_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::DriftTermStructure</compoundname>
     <includes local="no">/termstructures/yield/drifttermstructure.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>YieldTermStructure interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="drift_term_structure_1aca7066efd7405e90d29ce5a67840005d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

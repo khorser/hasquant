@@ -3,8 +3,6 @@
   <compounddef id="euler_discretization" kind="class" prot="public">
     <compoundname>QuantLib::EulerDiscretization</compoundname>
     <includes local="no">/processes/eulerdiscretization.hpp</includes>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>Euler discretization for stochastic processes. </para>    </briefdescription>
     <location file="/processes/eulerdiscretization.hpp" line="35" bodyfile="/processes/eulerdiscretization.hpp" bodystart="33" bodyend="70"/>

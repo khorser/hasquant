@@ -6,9 +6,6 @@
     <innerclass refid="one_asset_option_1_1engine" prot="public">QuantLib::OneAssetOption::engine</innerclass>
     <innerclass refid="one_asset_option_1_1results" prot="public">QuantLib::OneAssetOption::results</innerclass>
       <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>greeks</header>
       <memberdef kind="function" id="one_asset_option_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

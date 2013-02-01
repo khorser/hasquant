@@ -7,9 +7,6 @@
     <innerclass refid="bond_1_1engine" prot="public">QuantLib::Bond::engine</innerclass>
     <innerclass refid="bond_1_1results" prot="public">QuantLib::Bond::results</innerclass>
       <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="bond_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>

@@ -8,8 +8,6 @@
         <type>class array_type</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>Zero exercise condition. </para>    </briefdescription>
     <detaileddescription>

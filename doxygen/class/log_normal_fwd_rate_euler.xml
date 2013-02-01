@@ -3,9 +3,6 @@
   <compounddef id="log_normal_fwd_rate_euler" kind="class" prot="public">
     <compoundname>QuantLib::LogNormalFwdRateEuler</compoundname>
     <includes local="no">/models/marketmodels/evolvers/lognormalfwdrateeuler.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModel interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="log_normal_fwd_rate_euler_1aacfc408700cdb75f818065dcf857b3a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -75,9 +75,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>Inflation interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
@@ -107,9 +104,6 @@
         <name>nodes</name>
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="83" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="143" bodyend="146"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
       </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="piecewise_yo_y_inflation_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">

@@ -7,9 +7,6 @@
     <innerclass refid="variance_option_1_1engine" prot="public">QuantLib::VarianceOption::engine</innerclass>
     <innerclass refid="variance_option_1_1results" prot="public">QuantLib::VarianceOption::results</innerclass>
       <sectiondef kind="user-defined">
-      <header>Instrument interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="variance_option_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Date</type>

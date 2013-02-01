@@ -3,9 +3,6 @@
   <compounddef id="normal_fwd_rate_pc" kind="class" prot="public">
     <compoundname>QuantLib::NormalFwdRatePc</compoundname>
     <includes local="no">/models/marketmodels/evolvers/normalfwdratepc.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModel interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="normal_fwd_rate_pc_1adcb8f3b0e4a326577ffa7d34f4c50f1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

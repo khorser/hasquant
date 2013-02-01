@@ -4,9 +4,6 @@
     <compoundname>QuantLib::SwapIndex</compoundname>
     <includes local="no">/indexes/swapindex.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>InterestRateIndex interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="swap_index_1a55d0d8b63c13eae3e81de1ab0c832d0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Period</type>

@@ -209,9 +209,6 @@
         <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="100"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Limits</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="yo_y_optionlet_volatility_surface_1a856d0e8b9c3e30ebb9e8ca6ecde17986" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>

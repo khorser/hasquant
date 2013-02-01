@@ -3,9 +3,6 @@
   <compounddef id="multi_product_multi_step" kind="class" prot="public">
     <compoundname>QuantLib::MultiProductMultiStep</compoundname>
     <includes local="no">/models/marketmodels/products/multiproductmultistep.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModelMultiProduct interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="multi_product_multi_step_1a8646c435d8d2ae90f0b7fbb459701486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

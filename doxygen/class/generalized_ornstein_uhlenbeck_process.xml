@@ -3,9 +3,6 @@
   <compounddef id="generalized_ornstein_uhlenbeck_process" kind="class" prot="public">
     <compoundname>QuantLib::GeneralizedOrnsteinUhlenbeckProcess</compoundname>
     <includes local="no">/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>StochasticProcess1D interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="generalized_ornstein_uhlenbeck_process_1ad6421a8bf3cf2b7caf96275ca4b3fb7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

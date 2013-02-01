@@ -3,12 +3,6 @@
   <compounddef id="constant_optionlet_volatility" kind="class" prot="public">
     <compoundname>QuantLib::ConstantOptionletVolatility</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/constantoptionletvol.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>VolatilityTermStructure interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="constant_optionlet_volatility_1a67313d8f577245f98e5d9ad63a122d99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

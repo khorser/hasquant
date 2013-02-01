@@ -3,9 +3,6 @@
   <compounddef id="implied_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::ImpliedTermStructure</compoundname>
     <includes local="no">/termstructures/yield/impliedtermstructure.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>YieldTermStructure interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="implied_term_structure_1a7dcfdfac9796267ba70661c9ad5c85e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

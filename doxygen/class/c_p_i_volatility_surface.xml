@@ -174,9 +174,6 @@
         <location file="/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="107" bodyfile="/termstructures/volatility/inflation/cpivolatilitystructure.hpp" bodystart="107" bodyend="111"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Limits</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_p_i_volatility_surface_1a76b997c5ad2e60a90edcd4bdcbd62b76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

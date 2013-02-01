@@ -3,12 +3,6 @@
   <compounddef id="forward_spreaded_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::ForwardSpreadedTermStructure</compoundname>
     <includes local="no">/termstructures/yield/forwardspreadedtermstructure.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>TermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>ForwardRateStructure implementation</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="forward_spreaded_term_structure_1af0fc8e2b047bebd3a8a7ffecb98042b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

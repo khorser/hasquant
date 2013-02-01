@@ -8,8 +8,6 @@
         <type>class array_type</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="public-func">
-      </sectiondef>
     <briefdescription>
 <para>null step condition </para>    </briefdescription>
     <location file="/methods/finitedifferences/stepcondition.hpp" line="109" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="109" bodyend="112"/>

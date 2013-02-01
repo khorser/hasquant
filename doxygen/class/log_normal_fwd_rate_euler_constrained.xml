@@ -3,12 +3,6 @@
   <compounddef id="log_normal_fwd_rate_euler_constrained" kind="class" prot="public">
     <compoundname>QuantLib::LogNormalFwdRateEulerConstrained</compoundname>
     <includes local="no">/models/marketmodels/evolvers/lognormalfwdrateeulerconstrained.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModelConstrained interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>MarketModel interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="log_normal_fwd_rate_euler_constrained_1a419bb6bd5d727958541ec3a460fe0de2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

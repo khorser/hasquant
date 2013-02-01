@@ -3,9 +3,6 @@
   <compounddef id="market_model_cash_rebate" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelCashRebate</compoundname>
     <includes local="no">/models/marketmodels/products/multistep/cashrebate.hpp</includes>
-      <sectiondef kind="user-defined">
-      <header>MarketModelMultiProduct interface</header>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="market_model_cash_rebate_1af0f1b73af9c493d6d147a12455818d18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

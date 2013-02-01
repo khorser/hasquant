@@ -253,9 +253,6 @@
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="149" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="209" bodyend="212"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="piecewise_default_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>

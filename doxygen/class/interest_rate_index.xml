@@ -4,12 +4,6 @@
     <compoundname>QuantLib::InterestRateIndex</compoundname>
     <includes local="no">/indexes/interestrateindex.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>Index interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>Observer interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="interest_rate_index_1a270dc2fcae13173748f2f3edddd92727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>

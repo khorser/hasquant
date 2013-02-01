@@ -4,9 +4,6 @@
     <compoundname>QuantLib::CPICapFloorTermPriceSurface</compoundname>
     <includes local="no">/experimental/inflation/cpicapfloortermpricesurface.hpp</includes>
       <sectiondef kind="user-defined">
-      <header>InflationTermStructure interface</header>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
