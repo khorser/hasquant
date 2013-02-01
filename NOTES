@@ -1,6 +1,6 @@
 Rethink exceptions strategy
 
-Think of high-level combinators from abstract data types like
+Think of high-level combinators from data types like
 
 class Instrument
 data Bond = Bond ... | FixedRateBond ... | FloatingRateBond ...
@@ -16,11 +16,14 @@ Actual instantiation of QuantLib object will happen only on pricing.
 This allows for easy building of mutators as simply returning a new copy with
 updated data
 
-keep objects together to avoid gc-ing of objects for which we still have references
+?keep objects together to avoid gc-ing of objects for which we still have references
+or will Handles help us?
 
 try and make objects as much immutable as possible by not exposing mutators
 (except maybe Calendars that should keep the ability to be changed if the user wants
 to introduce adjustments)
 as result that Handle/RelinkableHandle machinery isn't going to be much of help
-and might even harm (?)
-I'm thinking of implementing functional reactive programming paradigm if needed
+
+If needed, we could use FRP to model the propagation of changes in market data
+
+Introduce money data type parameterized by currency
