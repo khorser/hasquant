@@ -1,46 +1,46 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cliquet_option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::CliquetOption::arguments</compoundname>
+    <compoundname>CliquetOption::arguments</compoundname>
     <includes local="no">/instruments/cliquetoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="cliquet_option_1_1arguments_1aa7b9eddf33a7bfa7ecefab2c1488acbf" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real accruedCoupon</definition>
         <argsstring></argsstring>
         <name>accruedCoupon</name>
         <location file="/instruments/cliquetoption.hpp" line="71" bodyfile="/instruments/cliquetoption.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cliquet_option_1_1arguments_1af1754d4228d84e86c64261772eaf52fd" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real lastFixing</definition>
         <argsstring></argsstring>
         <name>lastFixing</name>
         <location file="/instruments/cliquetoption.hpp" line="71" bodyfile="/instruments/cliquetoption.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cliquet_option_1_1arguments_1a5d794b2be19cf40217c8ee0a5af6b091" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real localCap</definition>
         <argsstring></argsstring>
         <name>localCap</name>
         <location file="/instruments/cliquetoption.hpp" line="72" bodyfile="/instruments/cliquetoption.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cliquet_option_1_1arguments_1add9b6b434f5e40253dd540516caa9733" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real localFloor</definition>
         <argsstring></argsstring>
         <name>localFloor</name>
         <location file="/instruments/cliquetoption.hpp" line="72" bodyfile="/instruments/cliquetoption.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cliquet_option_1_1arguments_1a4d7912a70cf786ab127da6bbe04a3300" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real globalCap</definition>
         <argsstring></argsstring>
         <name>globalCap</name>
         <location file="/instruments/cliquetoption.hpp" line="72" bodyfile="/instruments/cliquetoption.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cliquet_option_1_1arguments_1ae6e5380c5587d1390014d3ec4f621283" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real globalFloor</definition>
         <argsstring></argsstring>
         <name>globalFloor</name>

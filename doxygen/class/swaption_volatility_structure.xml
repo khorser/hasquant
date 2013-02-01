@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="swaption_volatility_structure" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::SwaptionVolatilityStructure</compoundname>
+    <compoundname>SwaptionVolatilityStructure</compoundname>
     <includes local="no">/termstructures/volatility/swaption/swaptionvolstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -16,7 +16,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000130"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000130"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a4ae32fc9ee5910b3da98ce36c581a121" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -34,7 +34,7 @@
         <argsstring>(BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>SwaptionVolatilityStructure</name>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -43,7 +43,7 @@
           <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000131"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000131"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a93f2c97ee14dd4339867869e2ad3649f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -60,7 +60,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -78,14 +78,14 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;, BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>SwaptionVolatilityStructure</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
           <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -101,7 +101,7 @@
       <sectiondef kind="user-defined">
       <header>Volatility, variance and smile</header>
       <memberdef kind="function" id="swaption_volatility_structure_1a1b60b73d75a953a5af8c24a1232268e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Period &amp;optionTenor, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
@@ -114,7 +114,7 @@
           <declname>swapTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -127,7 +127,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="79" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="198" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a365198aa837e06b6354629434b19998f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
@@ -140,7 +140,7 @@
           <declname>swapTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -153,12 +153,12 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="84" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="282" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1abd2e2bad948127822dcdf3355bb24273" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(Time optionTime, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>optionTime</declname>
         </param>
         <param>
@@ -166,7 +166,7 @@
           <declname>swapTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -179,7 +179,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="89" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="305" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1af51af70559b4ff4973a97db846db9157" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Period &amp;optionTenor, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
@@ -188,11 +188,11 @@
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -205,7 +205,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="94" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="207" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1ae08aa46a34407f64eb703fa3b60e1782" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Date &amp;optionDate, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
@@ -214,11 +214,11 @@
           <declname>optionDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -231,20 +231,20 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="99" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="293" bodyend="302"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1ad049a4be6f59b66ae64d7791b2738356" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(Time optionTime, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>optionTime</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -257,7 +257,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="104" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="317" bodyend="325"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a1d5ae88a7d7997481d7d965ae0599150" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackVariance</definition>
         <argsstring>(const Period &amp;optionTenor, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
@@ -270,7 +270,7 @@
           <declname>swapTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -283,7 +283,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="110" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="216" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a911ff222333ddba63245db6f70c76a27" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackVariance</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
@@ -296,7 +296,7 @@
           <declname>swapTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -309,12 +309,12 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="115" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="243" bodyend="250"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1af3e041f58bf6afb39d078ba37d336989" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackVariance</definition>
         <argsstring>(Time optionTime, const Period &amp;swapTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>optionTime</declname>
         </param>
         <param>
@@ -322,7 +322,7 @@
           <declname>swapTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -335,7 +335,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="120" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="253" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1add21b028806cb2a4580bcf154dca7c9d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackVariance</definition>
         <argsstring>(const Period &amp;optionTenor, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
@@ -344,11 +344,11 @@
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -361,7 +361,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="125" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="225" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1ab32dd4c4f56ada69235be3576c73d1ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackVariance</definition>
         <argsstring>(const Date &amp;optionDate, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
@@ -370,11 +370,11 @@
           <declname>optionDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -387,20 +387,20 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="130" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="262" bodyend="269"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a3ad9c753b18ab6db2ac73ce47dba66b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackVariance</definition>
         <argsstring>(Time optionTime, Time swapLength, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>optionTime</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -462,7 +462,7 @@
         <argsstring>(Time optionTime, const Period &amp;swapTenor, bool extr=false) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>optionTime</declname>
         </param>
         <param>
@@ -488,7 +488,7 @@
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <param>
@@ -510,7 +510,7 @@
           <declname>optionDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <param>
@@ -528,11 +528,11 @@
         <argsstring>(Time optionTime, Time swapLength, bool extr=false) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>optionTime</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <param>
@@ -557,7 +557,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="165"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a38b52da2964337ebb4d219b5dc5c2a3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time maxSwapLength</definition>
         <argsstring>() const </argsstring>
         <name>maxSwapLength</name>
@@ -575,7 +575,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="72" bodyfile="/termstructures/volatility/swaption/swaptionvolstructure.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1a5694433bc688de616d1bc9481729c44a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time swapLength</definition>
         <argsstring>(const Period &amp;swapTenor) const </argsstring>
         <name>swapLength</name>
@@ -588,7 +588,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="170"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_structure_1afdde903c91d35c1f7991f416d7616ff8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time swapLength</definition>
         <argsstring>(const Date &amp;start, const Date &amp;end) const </argsstring>
         <name>swapLength</name>

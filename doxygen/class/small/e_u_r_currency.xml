@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="e_u_r_currency" kind="class" prot="public">
-    <compoundname>QuantLib::EURCurrency</compoundname>
+    <compoundname>EURCurrency</compoundname>
     <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="e_u_r_currency_1a58840ab9f9b4832af0bffcc053171ae0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

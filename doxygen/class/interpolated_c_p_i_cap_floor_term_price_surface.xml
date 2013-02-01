@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="interpolated_c_p_i_cap_floor_term_price_surface" kind="class" prot="public">
-    <compoundname>QuantLib::InterpolatedCPICapFloorTermPriceSurface</compoundname>
+    <compoundname>InterpolatedCPICapFloorTermPriceSurface</compoundname>
     <templateparamlist>
       <param>
         <type>class Interpolator2D</type>
@@ -28,7 +28,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="interpolated_c_p_i_cap_floor_term_price_surface_1a12c5d8f7c68e37719d86258fe8747527" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real price</definition>
         <argsstring>(const Date &amp;d, Rate k) const </argsstring>
         <name>price</name>
@@ -37,7 +37,7 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>k</declname>
         </param>
         <briefdescription>
@@ -47,7 +47,7 @@
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="193" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="340" bodyend="344"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_c_p_i_cap_floor_term_price_surface_1a117624639548aa99f4972d0724304976" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real capPrice</definition>
         <argsstring>(const Date &amp;d, Rate k) const </argsstring>
         <name>capPrice</name>
@@ -56,7 +56,7 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>k</declname>
         </param>
         <briefdescription>
@@ -64,7 +64,7 @@
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="194" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="349" bodyend="352"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_c_p_i_cap_floor_term_price_surface_1af4014079a3db1bb4029f72f83c2fdb77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real floorPrice</definition>
         <argsstring>(const Date &amp;d, Rate k) const </argsstring>
         <name>floorPrice</name>
@@ -73,7 +73,7 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>k</declname>
         </param>
         <briefdescription>
@@ -88,11 +88,11 @@
         <argsstring>(Real nominal, Rate startRate, const Period &amp;observationLag, const Calendar &amp;cal, const BusinessDayConvention &amp;bdc, const DayCounter &amp;dc, const Handle&lt; ZeroInflationIndex &gt; &amp;zii, const Handle&lt; YieldTermStructure &gt; &amp;yts, const std::vector&lt; Rate &gt; &amp;cStrikes, const std::vector&lt; Rate &gt; &amp;fStrikes, const std::vector&lt; Period &gt; &amp;cfMaturities, const Matrix &amp;cPrice, const Matrix &amp;fPrice, const Interpolator2D &amp;interpolator2d=Interpolator2D())</argsstring>
         <name>InterpolatedCPICapFloorTermPriceSurface</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>startRate</declname>
         </param>
         <param>
@@ -104,7 +104,7 @@
           <declname>cal</declname>
         </param>
         <param>
-          <type>const <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &amp;</type>
+          <type>const BusinessDayConvention &amp;</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -120,11 +120,11 @@
           <declname>yts</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>cStrikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>fStrikes</declname>
         </param>
         <param>

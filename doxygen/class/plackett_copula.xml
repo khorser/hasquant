@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="plackett_copula" kind="class" prot="public">
-    <compoundname>QuantLib::PlackettCopula</compoundname>
+    <compoundname>PlackettCopula</compoundname>
     <includes local="no">/math/copulas/plackettcopula.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="plackett_copula_1aa3db4c5675ce3fbf8a96393de3c6a7f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,22 +10,22 @@
         <argsstring>(Real theta)</argsstring>
         <name>PlackettCopula</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>theta</declname>
         </param>
         <location file="/math/copulas/plackettcopula.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="plackett_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(Real x, Real y) const </argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/copulas/plackettcopula.hpp" line="37"/>

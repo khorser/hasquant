@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bicubic" kind="class" prot="public">
-    <compoundname>QuantLib::Bicubic</compoundname>
+    <compoundname>Bicubic</compoundname>
     <includes local="no">/math/interpolations/bicubicsplineinterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="bicubic_1a6f774b30f13db7f9af19e3b9b01fcf32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

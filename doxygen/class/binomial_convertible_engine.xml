@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="binomial_convertible_engine" kind="class" prot="public">
-    <compoundname>QuantLib::BinomialConvertibleEngine</compoundname>
+    <compoundname>BinomialConvertibleEngine</compoundname>
     <includes local="no">/experimental/convertiblebonds/binomialconvertibleengine.hpp</includes>
     <templateparamlist>
       <param>
@@ -19,7 +19,7 @@
           <declname>process</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>timeSteps</declname>
         </param>
         <location file="/experimental/convertiblebonds/binomialconvertibleengine.hpp" line="50" bodyfile="/experimental/convertiblebonds/binomialconvertibleengine.hpp" bodystart="47" bodyend="55"/>

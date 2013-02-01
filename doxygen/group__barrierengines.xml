@@ -3,12 +3,12 @@
   <compounddef id="group__barrierengines" kind="group">
     <compoundname>barrierengines</compoundname>
     <title>Barrier option engines</title>
-    <innerclass refid="class_quant_lib_1_1_perturbative_barrier_option_engine" prot="public">QuantLib::PerturbativeBarrierOptionEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_analytic_barrier_engine" prot="public">QuantLib::AnalyticBarrierEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_fd_black_scholes_barrier_engine" prot="public">QuantLib::FdBlackScholesBarrierEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_fd_black_scholes_rebate_engine" prot="public">QuantLib::FdBlackScholesRebateEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_fd_heston_barrier_engine" prot="public">QuantLib::FdHestonBarrierEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_fd_heston_rebate_engine" prot="public">QuantLib::FdHestonRebateEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_m_c_barrier_engine" prot="public">QuantLib::MCBarrierEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_perturbative_barrier_option_engine" prot="public">PerturbativeBarrierOptionEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_analytic_barrier_engine" prot="public">AnalyticBarrierEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd_black_scholes_barrier_engine" prot="public">FdBlackScholesBarrierEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd_black_scholes_rebate_engine" prot="public">FdBlackScholesRebateEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd_heston_barrier_engine" prot="public">FdHestonBarrierEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd_heston_rebate_engine" prot="public">FdHestonRebateEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_barrier_engine" prot="public">MCBarrierEngine</innerclass>
   </compounddef>
 </doxygen>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_heston_equity_part" kind="class" prot="public">
-    <compoundname>QuantLib::FdmHestonEquityPart</compoundname>
+    <compoundname>FdmHestonEquityPart</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_heston_equity_part_1a6e53550c068868a5ac8325c3fec5ac58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -32,11 +32,11 @@
         <argsstring>(Time t1, Time t2)</argsstring>
         <name>setTime</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t2</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmhestonop.hpp" line="46"/>

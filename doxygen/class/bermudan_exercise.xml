@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bermudan_exercise" kind="class" prot="public">
-    <compoundname>QuantLib::BermudanExercise</compoundname>
+    <compoundname>BermudanExercise</compoundname>
     <includes local="no">/exercise.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="bermudan_exercise_1a23a2f17d9bae84c1423ab5c423b17205" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

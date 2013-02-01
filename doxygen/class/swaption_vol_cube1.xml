@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="swaption_vol_cube1" kind="class" prot="public">
-    <compoundname>QuantLib::SwaptionVolCube1</compoundname>
+    <compoundname>SwaptionVolCube1</compoundname>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
       <memberdef kind="function" id="swaption_vol_cube1_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -20,11 +20,11 @@
         <argsstring>(Time optionTime, Time swapLength) const </argsstring>
         <name>smileSectionImpl</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>optionTime</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="114"/>
@@ -38,7 +38,7 @@
         <argsstring>(Size i) const </argsstring>
         <name>marketVolCube</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="118" bodyfile="/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="118" bodyend="120"/>
@@ -91,7 +91,7 @@
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>strikeSpreads</declname>
         </param>
         <param>
@@ -128,9 +128,9 @@
           <defval>boost::shared_ptr&lt; EndCriteria &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>maxErrorTolerance</declname>
-          <defval>Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>Null&lt; Real &gt;()</defval>
         </param>
         <param>
           <type>const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;</type>
@@ -164,7 +164,7 @@
         <argsstring>(Real beta, const Period &amp;swapTenor)</argsstring>
         <name>recalibration</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>beta</declname>
         </param>
         <param>

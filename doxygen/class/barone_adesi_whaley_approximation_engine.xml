@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="barone_adesi_whaley_approximation_engine" kind="class" prot="public">
-    <compoundname>QuantLib::BaroneAdesiWhaleyApproximationEngine</compoundname>
+    <compoundname>BaroneAdesiWhaleyApproximationEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/baroneadesiwhaleyengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="barone_adesi_whaley_approximation_engine_1af2bac5403ba35d337fa1ec9fdfc77b42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -24,7 +24,7 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="barone_adesi_whaley_approximation_engine_1a83d913a20019f285a302512dfd934bb0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>static Real criticalPrice</definition>
         <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, DiscountFactor riskFreeDiscount, DiscountFactor dividendDiscount, Real variance, Real tolerance=1e-6)</argsstring>
         <name>criticalPrice</name>
@@ -33,19 +33,19 @@
           <declname>payoff</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <type>DiscountFactor</type>
           <declname>riskFreeDiscount</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <type>DiscountFactor</type>
           <declname>dividendDiscount</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>variance</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>tolerance</declname>
           <defval>1e-6</defval>
         </param>

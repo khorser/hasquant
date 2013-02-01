@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="akima_cubic_interpolation" kind="class" prot="public">
-    <compoundname>QuantLib::AkimaCubicInterpolation</compoundname>
+    <compoundname>AkimaCubicInterpolation</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="akima_cubic_interpolation_1acff6b74343ec48c2b6918a3a1fd61633" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

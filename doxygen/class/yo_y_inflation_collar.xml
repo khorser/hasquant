@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yo_y_inflation_collar" kind="class" prot="public">
-    <compoundname>QuantLib::YoYInflationCollar</compoundname>
+    <compoundname>YoYInflationCollar</compoundname>
     <includes local="no">/instruments/inflationcapfloor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="yo_y_inflation_collar_1a134e9c10f9e748594d3d79bf666ceb1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,15 +10,15 @@
         <argsstring>(const Leg &amp;yoyLeg, const std::vector&lt; Rate &gt; &amp;capRates, const std::vector&lt; Rate &gt; &amp;floorRates)</argsstring>
         <name>YoYInflationCollar</name>
         <param>
-          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <type>const Leg &amp;</type>
           <declname>yoyLeg</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>capRates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>floorRates</declname>
         </param>
         <location file="/instruments/inflationcapfloor.hpp" line="130" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="126" bodyend="130"/>

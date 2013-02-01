@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="non_linear_least_square" kind="class" prot="public">
-    <compoundname>QuantLib::NonLinearLeastSquare</compoundname>
+    <compoundname>NonLinearLeastSquare</compoundname>
     <includes local="no">/math/optimization/leastsquare.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="non_linear_least_square_1a97ef06e4c5f0246dc4628a5e4d397444" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,12 +14,12 @@
           <declname>c</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1e-4</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxiter</declname>
           <defval>100</defval>
         </param>
@@ -37,11 +37,11 @@
           <declname>c</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxiter</declname>
         </param>
         <param>
@@ -95,7 +95,7 @@
         <location file="/math/optimization/leastsquare.hpp" line="119" bodyfile="/math/optimization/leastsquare.hpp" bodystart="119" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="non_linear_least_square_1a3f311cedd53bc1947d0cbf7846bf2778" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real residualNorm</definition>
         <argsstring>()</argsstring>
         <name>residualNorm</name>
@@ -104,7 +104,7 @@
         <location file="/math/optimization/leastsquare.hpp" line="122" bodyfile="/math/optimization/leastsquare.hpp" bodystart="122" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="non_linear_least_square_1a424fb70e9f6bd717d1ebaeef27266237" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real lastValue</definition>
         <argsstring>()</argsstring>
         <name>lastValue</name>
@@ -113,7 +113,7 @@
         <location file="/math/optimization/leastsquare.hpp" line="125" bodyfile="/math/optimization/leastsquare.hpp" bodystart="125" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="non_linear_least_square_1ac91e0c85dd8c6275c6fb8da8de811dcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer exitFlag</definition>
         <argsstring>()</argsstring>
         <name>exitFlag</name>
@@ -122,7 +122,7 @@
         <location file="/math/optimization/leastsquare.hpp" line="128" bodyfile="/math/optimization/leastsquare.hpp" bodystart="128" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="non_linear_least_square_1a39cd20d97f356086d2c033b0bad60caf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer iterationsNumber</definition>
         <argsstring>()</argsstring>
         <name>iterationsNumber</name>

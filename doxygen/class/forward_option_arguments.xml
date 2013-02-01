@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="forward_option_arguments" kind="class" prot="public">
-    <compoundname>QuantLib::ForwardOptionArguments</compoundname>
+    <compoundname>ForwardOptionArguments</compoundname>
     <includes local="no">/instruments/forwardvanillaoption.hpp</includes>
     <templateparamlist>
       <param>
@@ -12,7 +12,7 @@
     </templateparamlist>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="forward_option_arguments_1a6032d77a6dece5bc46d14d76e329f7eb" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real moneyness</definition>
         <argsstring></argsstring>
         <name>moneyness</name>

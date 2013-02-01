@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1_data_table" kind="struct" prot="public">
-    <compoundname>QuantLib::detail::DataTable</compoundname>
+    <compoundname>detail::DataTable</compoundname>
     <templateparamlist>
       <param>
         <type>class X</type>
@@ -23,7 +23,7 @@
         <argsstring>(const std::vector&lt; Size &gt;::const_iterator &amp;i)</argsstring>
         <name>DataTable</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;::const_iterator &amp;</type>
+          <type>const std::vector&lt; Size &gt;::const_iterator &amp;</type>
           <declname>i</declname>
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="47" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="47" bodyend="50"/>
@@ -56,7 +56,7 @@
         <location file="/math/interpolations/multicubicspline.hpp" line="55" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_data_table_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
@@ -68,7 +68,7 @@
         <argsstring>(Size n) const </argsstring>
         <name>operator[]</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="62" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="62" bodyend="62"/>
@@ -79,7 +79,7 @@
         <argsstring>(Size n)</argsstring>
         <name>operator[]</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="63" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="63" bodyend="63"/>

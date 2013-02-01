@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="log_cubic_interpolation" kind="class" prot="public">
-    <compoundname>QuantLib::LogCubicInterpolation</compoundname>
+    <compoundname>LogCubicInterpolation</compoundname>
     <includes local="no">/math/interpolations/loginterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="log_cubic_interpolation_1a8fddd246edfd7fdfd081dc4f3a67fbbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -30,7 +30,7 @@
           <declname>yBegin</declname>
         </param>
         <param>
-          <type><ref refid="cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" kindref="member">CubicInterpolation::DerivativeApprox</ref></type>
+          <type>CubicInterpolation::DerivativeApprox</type>
           <declname>da</declname>
         </param>
         <param>
@@ -38,19 +38,19 @@
           <declname>monotonic</declname>
         </param>
         <param>
-          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type>CubicInterpolation::BoundaryCondition</type>
           <declname>leftC</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>leftConditionValue</declname>
         </param>
         <param>
-          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type>CubicInterpolation::BoundaryCondition</type>
           <declname>rightC</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rightConditionValue</declname>
         </param>
         <detaileddescription>

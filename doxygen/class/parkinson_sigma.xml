@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="parkinson_sigma" kind="class" prot="public">
-    <compoundname>QuantLib::ParkinsonSigma</compoundname>
+    <compoundname>ParkinsonSigma</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="parkinson_sigma_1a08eabbc03a9101e6beeeb0a5fb73081f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -9,7 +9,7 @@
         <argsstring>(Real y)</argsstring>
         <name>ParkinsonSigma</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/models/volatility/garmanklass.hpp" line="123" bodyfile="/models/volatility/garmanklass.hpp" bodystart="122" bodyend="123"/>

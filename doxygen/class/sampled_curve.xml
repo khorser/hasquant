@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="sampled_curve" kind="class" prot="public">
-    <compoundname>QuantLib::SampledCurve</compoundname>
+    <compoundname>SampledCurve</compoundname>
     <includes local="no">/math/sampledcurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>inspectors</header>
@@ -34,51 +34,51 @@
         <location file="/math/sampledcurve.hpp" line="46" bodyfile="/math/sampledcurve.hpp" bodystart="179" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="sampled_curve_1ab1170f0b03996acbcd156d1cc7166eef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gridValue</definition>
         <argsstring>(Size i) const </argsstring>
         <name>gridValue</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="47" bodyfile="/math/sampledcurve.hpp" bodystart="183" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="sampled_curve_1add903f848b9c8d2774faa6b889df17bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+        <type>Real &amp;</type>
         <definition>Real &amp; gridValue</definition>
         <argsstring>(Size i)</argsstring>
         <name>gridValue</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="48" bodyfile="/math/sampledcurve.hpp" bodystart="187" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="sampled_curve_1a72ae2e219d43e0a6d8c0e16dec878bad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>(Size i) const </argsstring>
         <name>value</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="49" bodyfile="/math/sampledcurve.hpp" bodystart="191" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="sampled_curve_1a0fddf660c31f55b9332f76c1c9c1c63c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+        <type>Real &amp;</type>
         <definition>Real &amp; value</definition>
         <argsstring>(Size i)</argsstring>
         <name>value</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="50" bodyfile="/math/sampledcurve.hpp" bodystart="195" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="sampled_curve_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
@@ -136,7 +136,7 @@
       <sectiondef kind="user-defined">
       <header>calculations</header>
       <memberdef kind="function" id="sampled_curve_1a0896401cdaf8f83ed681dbdbfa899de5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAtCenter</definition>
         <argsstring>() const </argsstring>
         <name>valueAtCenter</name>
@@ -145,7 +145,7 @@
         <location file="/math/sampledcurve.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="sampled_curve_1a08ebad730457427955f35413acddf0a4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real firstDerivativeAtCenter</definition>
         <argsstring>() const </argsstring>
         <name>firstDerivativeAtCenter</name>
@@ -154,7 +154,7 @@
         <location file="/math/sampledcurve.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="sampled_curve_1a9a3cbb8bccf5dd436d46d5c6104ed220" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real secondDerivativeAtCenter</definition>
         <argsstring>() const </argsstring>
         <name>secondDerivativeAtCenter</name>
@@ -182,11 +182,11 @@
         <argsstring>(Real min, Real max)</argsstring>
         <name>setLogGrid</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>min</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>max</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="87" bodyfile="/math/sampledcurve.hpp" bodystart="87" bodyend="89"/>
@@ -197,11 +197,11 @@
         <argsstring>(Real min, Real max)</argsstring>
         <name>regridLogGrid</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>min</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>max</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="90" bodyfile="/math/sampledcurve.hpp" bodystart="90" bodyend="93"/>
@@ -212,7 +212,7 @@
         <argsstring>(Real s)</argsstring>
         <name>shiftGrid</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="94" bodyfile="/math/sampledcurve.hpp" bodystart="94" bodyend="96"/>
@@ -223,7 +223,7 @@
         <argsstring>(Real s)</argsstring>
         <name>scaleGrid</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="97" bodyfile="/math/sampledcurve.hpp" bodystart="97" bodyend="99"/>
@@ -299,7 +299,7 @@
         <argsstring>(Size gridSize=0)</argsstring>
         <name>SampledCurve</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>gridSize</declname>
           <defval>0</defval>
         </param>

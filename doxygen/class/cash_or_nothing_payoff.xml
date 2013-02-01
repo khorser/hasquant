@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cash_or_nothing_payoff" kind="class" prot="public">
-    <compoundname>QuantLib::CashOrNothingPayoff</compoundname>
+    <compoundname>CashOrNothingPayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="cash_or_nothing_payoff_1afeb67fb6a0f48a80a84975ff4007bacd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,17 +14,17 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>cashPayoff</declname>
         </param>
         <location file="/instruments/payoffs.hpp" line="156" bodyfile="/instruments/payoffs.hpp" bodystart="153" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="cash_or_nothing_payoff_1a45c7a9c6c8feb5df9bd796da3c3da7a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cashPayoff</definition>
         <argsstring>() const </argsstring>
         <name>cashPayoff</name>

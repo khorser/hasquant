@@ -3,11 +3,11 @@
   <compounddef id="group__basketengines" kind="group">
     <compoundname>basketengines</compoundname>
     <title>Basket option engines</title>
-    <innerclass refid="class_quant_lib_1_1_m_c_american_path_engine" prot="public">QuantLib::MCAmericanPathEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine" prot="public">QuantLib::Fd2dBlackScholesVanillaEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_kirk_engine" prot="public">QuantLib::KirkEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_m_c_american_basket_engine" prot="public">QuantLib::MCAmericanBasketEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_m_c_european_basket_engine" prot="public">QuantLib::MCEuropeanBasketEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_stulz_engine" prot="public">QuantLib::StulzEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_american_path_engine" prot="public">MCAmericanPathEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine" prot="public">Fd2dBlackScholesVanillaEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_kirk_engine" prot="public">KirkEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_american_basket_engine" prot="public">MCAmericanBasketEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_european_basket_engine" prot="public">MCEuropeanBasketEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_stulz_engine" prot="public">StulzEngine</innerclass>
   </compounddef>
 </doxygen>

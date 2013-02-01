@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="margrabe_option" kind="class" prot="public">
-    <compoundname>QuantLib::MargrabeOption</compoundname>
+    <compoundname>MargrabeOption</compoundname>
     <includes local="no">/experimental/exoticoptions/margrabeoption.hpp</includes>
-    <innerclass refid="margrabe_option_1_1arguments" prot="public">QuantLib::MargrabeOption::arguments</innerclass>
-    <innerclass refid="margrabe_option_1_1engine" prot="public">QuantLib::MargrabeOption::engine</innerclass>
-    <innerclass refid="margrabe_option_1_1results" prot="public">QuantLib::MargrabeOption::results</innerclass>
+    <innerclass refid="margrabe_option_1_1arguments" prot="public">MargrabeOption::arguments</innerclass>
+    <innerclass refid="margrabe_option_1_1engine" prot="public">MargrabeOption::engine</innerclass>
+    <innerclass refid="margrabe_option_1_1results" prot="public">MargrabeOption::results</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="margrabe_option_1a86f02ea29338a3fc8dcb9a6128e6a1f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,11 +13,11 @@
         <argsstring>(Integer Q1, Integer Q2, const boost::shared_ptr&lt; Exercise &gt; &amp;)</argsstring>
         <name>MargrabeOption</name>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>Q1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>Q2</declname>
         </param>
         <param>
@@ -26,28 +26,28 @@
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="margrabe_option_1a80047a0f4c6aa402065a92d49a30909e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real delta1</definition>
         <argsstring>() const </argsstring>
         <name>delta1</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="margrabe_option_1a5d5e115b72bfe6f0934eac38ae511a97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real delta2</definition>
         <argsstring>() const </argsstring>
         <name>delta2</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="margrabe_option_1a5e3b5ce99d39f637fef69ac70d191c11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gamma1</definition>
         <argsstring>() const </argsstring>
         <name>gamma1</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="margrabe_option_1a4e1c296e0cc1a8c434730a1e7d548ae5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gamma2</definition>
         <argsstring>() const </argsstring>
         <name>gamma2</name>

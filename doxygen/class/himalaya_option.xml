@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="himalaya_option" kind="class" prot="public">
-    <compoundname>QuantLib::HimalayaOption</compoundname>
+    <compoundname>HimalayaOption</compoundname>
     <includes local="no">/experimental/exoticoptions/himalayaoption.hpp</includes>
-    <innerclass refid="himalaya_option_1_1arguments" prot="public">QuantLib::HimalayaOption::arguments</innerclass>
-    <innerclass refid="himalaya_option_1_1engine" prot="public">QuantLib::HimalayaOption::engine</innerclass>
-    <innerclass refid="himalaya_option_1_1results" prot="public">QuantLib::HimalayaOption::results</innerclass>
+    <innerclass refid="himalaya_option_1_1arguments" prot="public">HimalayaOption::arguments</innerclass>
+    <innerclass refid="himalaya_option_1_1engine" prot="public">HimalayaOption::engine</innerclass>
+    <innerclass refid="himalaya_option_1_1results" prot="public">HimalayaOption::results</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="himalaya_option_1aefc187700978b123e9f1def749a02541" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <declname>fixingDates</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <location file="/experimental/exoticoptions/himalayaoption.hpp" line="50"/>

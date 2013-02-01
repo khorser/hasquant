@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="swaption_volatility_cube" kind="class" prot="public">
-    <compoundname>QuantLib::SwaptionVolatilityCube</compoundname>
+    <compoundname>SwaptionVolatilityCube</compoundname>
     <includes local="no">/termstructures/volatility/swaption/swaptionvolcube.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Other inspectors</header>
       <memberdef kind="function" id="swaption_volatility_cube_1a5d78247782146d4b70292706933b6235" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate atmStrike</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor) const </argsstring>
         <name>atmStrike</name>
@@ -21,7 +21,7 @@
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="swaption_volatility_cube_1a12e6621b980964b337ceb6d306654759" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate atmStrike</definition>
         <argsstring>(const Period &amp;optionTenor, const Period &amp;swapTenor) const </argsstring>
         <name>atmStrike</name>
@@ -55,7 +55,7 @@
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>strikeSpreads</declname>
         </param>
         <param>

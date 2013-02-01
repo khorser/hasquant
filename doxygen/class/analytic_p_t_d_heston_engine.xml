@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="analytic_p_t_d_heston_engine" kind="class" prot="public">
-    <compoundname>QuantLib::AnalyticPTDHestonEngine</compoundname>
+    <compoundname>AnalyticPTDHestonEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/analyticptdhestonengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="analytic_p_t_d_heston_engine_1abc142be262ed116e6fc4935c01b1dfed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,11 +14,11 @@
           <declname>model</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>relTolerance</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
         </param>
         <location file="/pricingengines/vanilla/analyticptdhestonengine.hpp" line="64"/>
@@ -33,7 +33,7 @@
           <declname>model</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>integrationOrder</declname>
           <defval>144</defval>
         </param>

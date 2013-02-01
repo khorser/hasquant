@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_simple2d_b_s_solver" kind="class" prot="public">
-    <compoundname>QuantLib::FdmSimple2dBSSolver</compoundname>
+    <compoundname>FdmSimple2dBSSolver</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_simple2d_b_s_solver_1a6b497b216edcc245dfdf5fd190f80043" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <declname>process</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -28,69 +28,69 @@
         <location file="/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="fdm_simple2d_b_s_solver_1a08091184a8b4325348b2062c1433d009" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAt</definition>
         <argsstring>(Real s, Real a) const </argsstring>
         <name>valueAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="fdm_simple2d_b_s_solver_1a467dde03a1dcd0c527322f4ccc783d81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real deltaAt</definition>
         <argsstring>(Real s, Real a, Real eps) const </argsstring>
         <name>deltaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eps</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="fdm_simple2d_b_s_solver_1a1b18cc499c595c38f5b8861e0f998bd6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gammaAt</definition>
         <argsstring>(Real s, Real a, Real eps) const </argsstring>
         <name>gammaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eps</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="fdm_simple2d_b_s_solver_1a81d315312a390829ed78190f9a8b31ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real thetaAt</definition>
         <argsstring>(Real s, Real a) const </argsstring>
         <name>thetaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="49"/>

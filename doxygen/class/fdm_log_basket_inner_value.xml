@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_log_basket_inner_value" kind="class" prot="public">
-    <compoundname>QuantLib::FdmLogBasketInnerValue</compoundname>
+    <compoundname>FdmLogBasketInnerValue</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_log_basket_inner_value_1a4c85797c635768ba7c6d9628df6acf27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -19,7 +19,7 @@
         <location file="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="fdm_log_basket_inner_value_1af4289de69a24fdda61b56f5049bbc585" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real innerValue</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iter, Time)</argsstring>
         <name>innerValue</name>
@@ -28,12 +28,12 @@
           <declname>iter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <location file="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="fdm_log_basket_inner_value_1a7206bb7a6d96928abd9e64238636a05a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real avgInnerValue</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iter, Time)</argsstring>
         <name>avgInnerValue</name>
@@ -42,7 +42,7 @@
           <declname>iter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <location file="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="74"/>
       </memberdef>

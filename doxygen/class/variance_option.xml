@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="variance_option" kind="class" prot="public">
-    <compoundname>QuantLib::VarianceOption</compoundname>
+    <compoundname>VarianceOption</compoundname>
     <includes local="no">/experimental/varianceoption/varianceoption.hpp</includes>
-    <innerclass refid="variance_option_1_1arguments" prot="public">QuantLib::VarianceOption::arguments</innerclass>
-    <innerclass refid="variance_option_1_1engine" prot="public">QuantLib::VarianceOption::engine</innerclass>
-    <innerclass refid="variance_option_1_1results" prot="public">QuantLib::VarianceOption::results</innerclass>
+    <innerclass refid="variance_option_1_1arguments" prot="public">VarianceOption::arguments</innerclass>
+    <innerclass refid="variance_option_1_1engine" prot="public">VarianceOption::engine</innerclass>
+    <innerclass refid="variance_option_1_1results" prot="public">VarianceOption::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="variance_option_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,7 +23,7 @@
         <location file="/experimental/varianceoption/varianceoption.hpp" line="55" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="variance_option_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real notional</definition>
         <argsstring>() const </argsstring>
         <name>notional</name>
@@ -48,7 +48,7 @@
           <declname>payoff</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notional</declname>
         </param>
         <param>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="tabulated_gauss_legendre" kind="class" prot="public">
-    <compoundname>QuantLib::TabulatedGaussLegendre</compoundname>
+    <compoundname>TabulatedGaussLegendre</compoundname>
     <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="tabulated_gauss_legendre_1a2720b47fd53c707f8cf669dea4d28861" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Size n=20)</argsstring>
         <name>TabulatedGaussLegendre</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
           <defval>20</defval>
         </param>
@@ -22,7 +22,7 @@
             <type>class F</type>
           </param>
         </templateparamlist>
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(const F &amp;f) const </argsstring>
         <name>operator()</name>
@@ -38,12 +38,12 @@
         <argsstring>(Size)</argsstring>
         <name>order</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
         </param>
         <location file="/math/integrals/gaussianquadratures.hpp" line="231"/>
       </memberdef>
       <memberdef kind="function" id="tabulated_gauss_legendre_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size order</definition>
         <argsstring>() const </argsstring>
         <name>order</name>

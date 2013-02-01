@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1_floating_point_null_3_01true_01_4" kind="struct" prot="public">
-    <compoundname>QuantLib::detail::FloatingPointNull&lt; true &gt;</compoundname>
+    <compoundname>detail::FloatingPointNull&lt; true &gt;</compoundname>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="detail_1_1_floating_point_null_3_01true_01_4_1af66defe51472a9cc55a359a79ed27490" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>float</type>

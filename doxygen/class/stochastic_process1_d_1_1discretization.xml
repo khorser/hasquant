@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="stochastic_process1_d_1_1discretization" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::StochasticProcess1D::discretization</compoundname>
+    <compoundname>StochasticProcess1D::discretization</compoundname>
     <includes local="no">/stochasticprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="stochastic_process1_d_1_1discretization_1a84827bd6839c5bbd73ad9d9bd9dbd6b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -12,7 +12,7 @@
         <location file="/stochasticprocess.hpp" line="167" bodyfile="/stochasticprocess.hpp" bodystart="167" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="stochastic_process1_d_1_1discretization_1afe744d667f97faf96e673cbde379b597" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real drift</definition>
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const =0</argsstring>
         <name>drift</name>
@@ -20,21 +20,21 @@
           <type>const StochasticProcess1D &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <location file="/stochasticprocess.hpp" line="169"/>
       </memberdef>
       <memberdef kind="function" id="stochastic_process1_d_1_1discretization_1a2b3c25680a5820b79568dcd4b9a81b65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real diffusion</definition>
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const =0</argsstring>
         <name>diffusion</name>
@@ -42,21 +42,21 @@
           <type>const StochasticProcess1D &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <location file="/stochasticprocess.hpp" line="171"/>
       </memberdef>
       <memberdef kind="function" id="stochastic_process1_d_1_1discretization_1a45a2880c7e449f4fa332d25b1f9bbfcb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real variance</definition>
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const =0</argsstring>
         <name>variance</name>
@@ -64,15 +64,15 @@
           <type>const StochasticProcess1D &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <location file="/stochasticprocess.hpp" line="173"/>

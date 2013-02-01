@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="abcd_atm_vol_curve" kind="class" prot="public">
-    <compoundname>QuantLib::AbcdAtmVolCurve</compoundname>
+    <compoundname>AbcdAtmVolCurve</compoundname>
     <includes local="no">/experimental/volatility/abcdatmvolcurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>some inspectors</header>
@@ -27,7 +27,7 @@
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="80" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="153" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1ac5ef24fc83d3fdf7ede195f4a57f5b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; optionTimes</definition>
         <argsstring>() const </argsstring>
         <name>optionTimes</name>
@@ -41,7 +41,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;cal, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;volsHandles, const std::vector&lt; bool &gt; inclusionInInterpolationFlag=std::vector&lt; bool &gt;(1, true), BusinessDayConvention bdc=Following, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>AbcdAtmVolCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -62,9 +62,9 @@
           <defval>std::vector&lt; bool &gt;(1, true)</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -76,7 +76,7 @@
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1a4292bdf23aa895695b810442862e0405" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; k</definition>
         <argsstring>() const </argsstring>
         <name>k</name>
@@ -85,12 +85,12 @@
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="52" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="163" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1a399a07135541aa8c6e38b4f0546e042c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real k</definition>
         <argsstring>(Time t) const </argsstring>
         <name>k</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <briefdescription>
@@ -98,42 +98,42 @@
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="54" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="168" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="55" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="172" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1ad1cf85afbb81add225d9d591923cae35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real b</definition>
         <argsstring>() const </argsstring>
         <name>b</name>
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="56" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="176" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1acd8075f42c1494dfe8ba083550bc3ad4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real c</definition>
         <argsstring>() const </argsstring>
         <name>c</name>
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="57" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="180" bodyend="182"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1a8743fd2d2de27e48775635a148f15159" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real d</definition>
         <argsstring>() const </argsstring>
         <name>d</name>
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="58" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="184" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1a575cfa031ce051c0f292518d6b0194e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real rmsError</definition>
         <argsstring>() const </argsstring>
         <name>rmsError</name>
         <location file="/experimental/volatility/abcdatmvolcurve.hpp" line="59" bodyfile="/experimental/volatility/abcdatmvolcurve.hpp" bodystart="188" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="abcd_atm_vol_curve_1ac4d9decda86622fb96bacef77cfc4424" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real maxError</definition>
         <argsstring>() const </argsstring>
         <name>maxError</name>

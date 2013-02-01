@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="year_on_year_inflation_swap" kind="class" prot="public">
-    <compoundname>QuantLib::YearOnYearInflationSwap</compoundname>
+    <compoundname>YearOnYearInflationSwap</compoundname>
     <includes local="no">/instruments/yearonyearinflationswap.hpp</includes>
-    <innerclass refid="year_on_year_inflation_swap_1_1arguments" prot="public">QuantLib::YearOnYearInflationSwap::arguments</innerclass>
-    <innerclass refid="year_on_year_inflation_swap_1_1engine" prot="public">QuantLib::YearOnYearInflationSwap::engine</innerclass>
-    <innerclass refid="year_on_year_inflation_swap_1_1results" prot="public">QuantLib::YearOnYearInflationSwap::results</innerclass>
+    <innerclass refid="year_on_year_inflation_swap_1_1arguments" prot="public">YearOnYearInflationSwap::arguments</innerclass>
+    <innerclass refid="year_on_year_inflation_swap_1_1engine" prot="public">YearOnYearInflationSwap::engine</innerclass>
+    <innerclass refid="year_on_year_inflation_swap_1_1results" prot="public">YearOnYearInflationSwap::results</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="year_on_year_inflation_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
@@ -31,7 +31,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -39,7 +39,7 @@
           <declname>fixedSchedule</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>fixedRate</declname>
         </param>
         <param>
@@ -59,7 +59,7 @@
           <declname>observationLag</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
         </param>
         <param>
@@ -71,35 +71,35 @@
           <declname>paymentCalendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>paymentConvention</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368a013e092c359f6031cc0563fd413ce707" kindref="member">ModifiedFollowing</ref></defval>
+          <defval>ModifiedFollowing</defval>
         </param>
         <location file="/instruments/yearonyearinflationswap.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1acae4e2138e8dbe8c12a605ea79086d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a5d5b9c2299952391c66f5b080295e747" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1aa16d7fc11560d22af5ac2e91a42874bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real yoyLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>yoyLegNPV</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a8519db12d1035aea8bc0b73b531fa1d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>virtual Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
@@ -113,7 +113,7 @@
         <location file="/instruments/yearonyearinflationswap.hpp" line="79" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="158" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
@@ -127,7 +127,7 @@
         <location file="/instruments/yearonyearinflationswap.hpp" line="82" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="166" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
@@ -162,7 +162,7 @@
         <location file="/instruments/yearonyearinflationswap.hpp" line="88" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
@@ -183,21 +183,21 @@
         <location file="/instruments/yearonyearinflationswap.hpp" line="92" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a25fc6ab972c95c862ead0bbf851ea311" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention paymentConvention</definition>
         <argsstring>() const </argsstring>
         <name>paymentConvention</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="93" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="194" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1ab54f53e0705d63a28ffcec9dc1b2e15b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg &amp; fixedLeg</definition>
         <argsstring>() const </argsstring>
         <name>fixedLeg</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="95" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="198" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a27193895de9cb245ec1e2176bbea4ef2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg &amp; yoyLeg</definition>
         <argsstring>() const </argsstring>
         <name>yoyLeg</name>

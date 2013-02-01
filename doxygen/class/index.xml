@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="index" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Index</compoundname>
+    <compoundname>Index</compoundname>
     <includes local="no">/index.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="index_1ae31939bafb7379752a737547ff7711b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -45,7 +45,7 @@
         <location file="/index.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="index_1a3fe8532d0a96ae0ba25ac781e150aa37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real fixing</definition>
         <argsstring>(const Date &amp;fixingDate, bool forecastTodaysFixing=false) const =0</argsstring>
         <name>fixing</name>
@@ -65,7 +65,7 @@
         <location file="/index.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const TimeSeries&lt; Real &gt; &amp;</type>
         <definition>const TimeSeries&lt;Real&gt;&amp; timeSeries</definition>
         <argsstring>() const </argsstring>
         <name>timeSeries</name>
@@ -83,7 +83,7 @@
           <declname>fixingDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>fixing</declname>
         </param>
         <param>
@@ -103,7 +103,7 @@
         <argsstring>(const TimeSeries&lt; Real &gt; &amp;t, bool forceOverwrite=false)</argsstring>
         <name>addFixings</name>
         <param>
-          <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; Real &gt; &amp;</type>
           <declname>t</declname>
         </param>
         <param>

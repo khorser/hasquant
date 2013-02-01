@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bates_process" kind="class" prot="public">
-    <compoundname>QuantLib::BatesProcess</compoundname>
+    <compoundname>BatesProcess</compoundname>
     <includes local="no">/processes/batesprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="bates_process_1aa53ab896db19eca97e8e53bb62b3d29e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -22,35 +22,35 @@
           <declname>s0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>kappa</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>theta</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rho</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>lambda</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nu</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>delta</declname>
         </param>
         <param>
@@ -61,21 +61,21 @@
         <location file="/processes/batesprocess.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="bates_process_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real lambda</definition>
         <argsstring>() const </argsstring>
         <name>lambda</name>
         <location file="/processes/batesprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="bates_process_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
         <location file="/processes/batesprocess.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="bates_process_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>

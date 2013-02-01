@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="basket_payoff" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::BasketPayoff</compoundname>
+    <compoundname>BasketPayoff</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="basket_payoff_1a808f35be919559506cae91c3a021f87c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -36,18 +36,18 @@
         <location file="/instruments/basketoption.hpp" line="43" bodyfile="/instruments/basketoption.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="basket_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(Real price) const </argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>price</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="44" bodyfile="/instruments/basketoption.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="basket_payoff_1acdddb691e7a91527a509d3d51951834c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real operator()</definition>
         <argsstring>(const Array &amp;a) const </argsstring>
         <name>operator()</name>
@@ -58,7 +58,7 @@
         <location file="/instruments/basketoption.hpp" line="45" bodyfile="/instruments/basketoption.hpp" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="basket_payoff_1ae04dcd96c5a2ea87a6d09a4f7b77c7f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real accumulate</definition>
         <argsstring>(const Array &amp;a) const =0</argsstring>
         <name>accumulate</name>

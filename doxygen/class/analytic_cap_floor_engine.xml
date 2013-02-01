@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="analytic_cap_floor_engine" kind="class" prot="public">
-    <compoundname>QuantLib::AnalyticCapFloorEngine</compoundname>
+    <compoundname>AnalyticCapFloorEngine</compoundname>
     <includes local="no">/pricingengines/capfloor/analyticcapfloorengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="analytic_cap_floor_engine_1a73c3763b5ee77387404bb4441f39af55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

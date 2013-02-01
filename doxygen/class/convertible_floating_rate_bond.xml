@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="convertible_floating_rate_bond" kind="class" prot="public">
-    <compoundname>QuantLib::ConvertibleFloatingRateBond</compoundname>
+    <compoundname>ConvertibleFloatingRateBond</compoundname>
     <includes local="no">/experimental/convertiblebonds/convertiblebond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="convertible_floating_rate_bond_1a84d6fdab9baa559a4cae1430b7cce1b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>exercise</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>conversionRatio</declname>
         </param>
         <param>
@@ -34,7 +34,7 @@
           <declname>issueDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -42,11 +42,11 @@
           <declname>index</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
         <param>
@@ -58,7 +58,7 @@
           <declname>schedule</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>redemption</declname>
           <defval>100</defval>
         </param>

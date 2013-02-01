@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="currency_1_1_data" kind="struct" prot="public">
-    <compoundname>QuantLib::Currency::Data</compoundname>
+    <compoundname>Currency::Data</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="currency_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -18,7 +18,7 @@
         <location file="/currency.hpp" line="79" bodyfile="/currency.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="currency_1_1_data_1a65e8398eacd4ac202862763b4874c3b7" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer numeric</definition>
         <argsstring></argsstring>
         <name>numeric</name>
@@ -39,7 +39,7 @@
         <location file="/currency.hpp" line="81" bodyfile="/currency.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="currency_1_1_data_1a09a1ae4e1cdce4027d2694a726dd116b" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer fractionsPerUnit</definition>
         <argsstring></argsstring>
         <name>fractionsPerUnit</name>
@@ -82,7 +82,7 @@
           <declname>code</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>numericCode</declname>
         </param>
         <param>
@@ -94,7 +94,7 @@
           <declname>fractionSymbol</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>fractionsPerUnit</declname>
         </param>
         <param>

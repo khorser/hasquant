@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="lattice_rule" kind="class" prot="public">
-    <compoundname>QuantLib::LatticeRule</compoundname>
+    <compoundname>LatticeRule</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2d" prot="public" static="no">
         <name>type</name>
@@ -31,11 +31,11 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>std::vector&lt; Real &gt; &amp;</type>
           <declname>Z</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>N</declname>
         </param>
         <location file="/math/randomnumbers/latticerules.hpp" line="41"/>

@@ -1,48 +1,48 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="numeric_hagan_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::NumericHaganPricer</compoundname>
+    <compoundname>NumericHaganPricer</compoundname>
     <includes local="no">/cashflows/conundrumpricer.hpp</includes>
-    <innerclass refid="numeric_hagan_pricer_1_1_conundrum_integrand" prot="public">QuantLib::NumericHaganPricer::ConundrumIntegrand</innerclass>
-    <innerclass refid="numeric_hagan_pricer_1_1_function" prot="public">QuantLib::NumericHaganPricer::Function</innerclass>
+    <innerclass refid="numeric_hagan_pricer_1_1_conundrum_integrand" prot="public">NumericHaganPricer::ConundrumIntegrand</innerclass>
+    <innerclass refid="numeric_hagan_pricer_1_1_function" prot="public">NumericHaganPricer::Function</innerclass>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="numeric_hagan_pricer_1aa32a3be9afd8f79a45acd1063377d917" prot="public" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real upperLimit_</definition>
         <argsstring></argsstring>
         <name>upperLimit_</name>
         <location file="/cashflows/conundrumpricer.hpp" line="310" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="310" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="numeric_hagan_pricer_1a808d0ab93d60bfded8ddb45bc0a1cd50" prot="public" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real stdDeviationsForUpperLimit_</definition>
         <argsstring></argsstring>
         <name>stdDeviationsForUpperLimit_</name>
         <location file="/cashflows/conundrumpricer.hpp" line="310" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="310" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="numeric_hagan_pricer_1ac92827d1cac93a19c18258d02973424a" prot="public" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>const Real</type>
         <definition>const Real lowerLimit_</definition>
         <argsstring></argsstring>
         <name>lowerLimit_</name>
         <location file="/cashflows/conundrumpricer.hpp" line="311" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="311" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="numeric_hagan_pricer_1a37ae41cfed12da87b77ce23f0e9af6ff" prot="public" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>const Real</type>
         <definition>const Real requiredStdDeviations_</definition>
         <argsstring></argsstring>
         <name>requiredStdDeviations_</name>
         <location file="/cashflows/conundrumpricer.hpp" line="311" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="311" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="numeric_hagan_pricer_1a7e30a9e36ce4c5904526457fcf06469c" prot="public" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>const Real</type>
         <definition>const Real precision_</definition>
         <argsstring></argsstring>
         <name>precision_</name>
         <location file="/cashflows/conundrumpricer.hpp" line="311" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="311" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="numeric_hagan_pricer_1a7c27dbd39bfd877bf5503171cf4f7ed9" prot="public" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>const Real</type>
         <definition>const Real refiningIntegrationTolerance_</definition>
         <argsstring></argsstring>
         <name>refiningIntegrationTolerance_</name>
@@ -68,47 +68,47 @@
           <declname>meanReversion</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>lowerLimit</declname>
           <defval>0.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>upperLimit</declname>
           <defval>1.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>precision</declname>
           <defval>1.0e-6</defval>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="257"/>
       </memberdef>
       <memberdef kind="function" id="numeric_hagan_pricer_1a7cdd1d241a5b11493d53da7ff3d2b25e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real upperLimit</definition>
         <argsstring>()</argsstring>
         <name>upperLimit</name>
         <location file="/cashflows/conundrumpricer.hpp" line="259" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="259" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="numeric_hagan_pricer_1a945986e5f0f5dd049f4d3dbf69fca66e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real stdDeviations</definition>
         <argsstring>()</argsstring>
         <name>stdDeviations</name>
         <location file="/cashflows/conundrumpricer.hpp" line="260" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="260" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="numeric_hagan_pricer_1ac754cefccdf0321db0259e35de724f3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real integrate</definition>
         <argsstring>(Real a, Real b, const ConundrumIntegrand &amp;Integrand) const </argsstring>
         <name>integrate</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
@@ -118,23 +118,23 @@
         <location file="/cashflows/conundrumpricer.hpp" line="303"/>
       </memberdef>
       <memberdef kind="function" id="numeric_hagan_pricer_1a5ab54a87e9967e0e79c53a507e55e7b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real resetUpperLimit</definition>
         <argsstring>(Real stdDeviationsForUpperLimit) const </argsstring>
         <name>resetUpperLimit</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>stdDeviationsForUpperLimit</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="307"/>
       </memberdef>
       <memberdef kind="function" id="numeric_hagan_pricer_1ac3e806e30ff60cf075d0a16d1d58aefa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real refineIntegration</definition>
         <argsstring>(Real integralValue, const ConundrumIntegrand &amp;integrand) const </argsstring>
         <name>refineIntegration</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>integralValue</declname>
         </param>
         <param>

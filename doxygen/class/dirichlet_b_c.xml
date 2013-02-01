@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="dirichlet_b_c" kind="class" prot="public">
-    <compoundname>QuantLib::DirichletBC</compoundname>
+    <compoundname>DirichletBC</compoundname>
     <includes local="no">/methods/finitedifferences/boundarycondition.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="dirichlet_b_c_1a19ed68ccaf486a93eb99923d75523a29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Real value, Side side)</argsstring>
         <name>DirichletBC</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
         </param>
         <param>
-          <type><ref refid="boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00" kindref="member">Side</ref></type>
+          <type>Side</type>
           <declname>side</declname>
         </param>
         <location file="/methods/finitedifferences/boundarycondition.hpp" line="97"/>

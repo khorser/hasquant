@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1_implied_volatility_helper" kind="class" prot="public">
-    <compoundname>QuantLib::detail::ImpliedVolatilityHelper</compoundname>
+    <compoundname>detail::ImpliedVolatilityHelper</compoundname>
     <includes local="no">/instruments/impliedvolatility.hpp</includes>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="detail_1_1_implied_volatility_helper_1a2327c6efb97633b4594621f3e31c0567" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>static Volatility calculate</definition>
         <argsstring>(const Instrument &amp;instrument, const PricingEngine &amp;engine, SimpleQuote &amp;volQuote, Real targetValue, Real accuracy, Natural maxEvaluations, Volatility minVol, Volatility maxVol)</argsstring>
         <name>calculate</name>
@@ -22,23 +22,23 @@
           <declname>volQuote</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>targetValue</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>maxEvaluations</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>minVol</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>maxVol</declname>
         </param>
         <location file="/instruments/impliedvolatility.hpp" line="52"/>

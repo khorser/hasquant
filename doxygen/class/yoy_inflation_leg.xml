@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yoy_inflation_leg" kind="class" prot="public">
-    <compoundname>QuantLib::yoyInflationLeg</compoundname>
+    <compoundname>yoyInflationLeg</compoundname>
     <includes local="no">/cashflows/yoyinflationcoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="yoy_inflation_leg_1a5d7dd9ac512856220767b206043f26ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -33,7 +33,7 @@
         <argsstring>(Real notional)</argsstring>
         <name>withNotionals</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notional</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="96"/>
@@ -44,7 +44,7 @@
         <argsstring>(const std::vector&lt; Real &gt; &amp;notionals)</argsstring>
         <name>withNotionals</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>notionals</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="97"/>
@@ -65,7 +65,7 @@
         <argsstring>(BusinessDayConvention)</argsstring>
         <name>withPaymentAdjustment</name>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="99"/>
       </memberdef>
@@ -75,7 +75,7 @@
         <argsstring>(Natural fixingDays)</argsstring>
         <name>withFixingDays</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="100"/>
@@ -86,7 +86,7 @@
         <argsstring>(const std::vector&lt; Natural &gt; &amp;fixingDays)</argsstring>
         <name>withFixingDays</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Natural &gt; &amp;</type>
           <declname>fixingDays</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="101"/>
@@ -97,7 +97,7 @@
         <argsstring>(Real gearing)</argsstring>
         <name>withGearings</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="102"/>
@@ -108,7 +108,7 @@
         <argsstring>(const std::vector&lt; Real &gt; &amp;gearings)</argsstring>
         <name>withGearings</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>gearings</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="103"/>
@@ -119,7 +119,7 @@
         <argsstring>(Spread spread)</argsstring>
         <name>withSpreads</name>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="104"/>
@@ -130,7 +130,7 @@
         <argsstring>(const std::vector&lt; Spread &gt; &amp;spreads)</argsstring>
         <name>withSpreads</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="105"/>
@@ -141,7 +141,7 @@
         <argsstring>(Rate cap)</argsstring>
         <name>withCaps</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>cap</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="106"/>
@@ -152,7 +152,7 @@
         <argsstring>(const std::vector&lt; Rate &gt; &amp;caps)</argsstring>
         <name>withCaps</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>caps</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="107"/>
@@ -163,7 +163,7 @@
         <argsstring>(Rate floor)</argsstring>
         <name>withFloors</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>floor</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="108"/>
@@ -174,7 +174,7 @@
         <argsstring>(const std::vector&lt; Rate &gt; &amp;floors)</argsstring>
         <name>withFloors</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>floors</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="109"/>

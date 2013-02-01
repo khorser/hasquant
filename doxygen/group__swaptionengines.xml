@@ -3,10 +3,10 @@
   <compounddef id="group__swaptionengines" kind="group">
     <compoundname>swaptionengines</compoundname>
     <title>Swaption engines</title>
-    <innerclass refid="class_quant_lib_1_1_lfm_swaption_engine" prot="public">QuantLib::LfmSwaptionEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_black_swaption_engine" prot="public">QuantLib::BlackSwaptionEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_g2_swaption_engine" prot="public">QuantLib::G2SwaptionEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_jamshidian_swaption_engine" prot="public">QuantLib::JamshidianSwaptionEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_tree_swaption_engine" prot="public">QuantLib::TreeSwaptionEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_lfm_swaption_engine" prot="public">LfmSwaptionEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_black_swaption_engine" prot="public">BlackSwaptionEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_g2_swaption_engine" prot="public">G2SwaptionEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_jamshidian_swaption_engine" prot="public">JamshidianSwaptionEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tree_swaption_engine" prot="public">TreeSwaptionEngine</innerclass>
   </compounddef>
 </doxygen>

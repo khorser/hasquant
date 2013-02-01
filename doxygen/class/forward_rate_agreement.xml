@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="forward_rate_agreement" kind="class" prot="public">
-    <compoundname>QuantLib::ForwardRateAgreement</compoundname>
+    <compoundname>ForwardRateAgreement</compoundname>
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <memberdef kind="function" id="forward_rate_agreement_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -23,7 +23,7 @@
         <location file="/instruments/forwardrateagreement.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="forward_rate_agreement_1a1560226b41dc061de57d00f0b0e0b7eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real spotIncome</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve) const </argsstring>
         <name>spotIncome</name>
@@ -36,7 +36,7 @@
         <location file="/instruments/forwardrateagreement.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="forward_rate_agreement_1a51d635d520ea883db82bac7f4e684b75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real spotValue</definition>
         <argsstring>() const </argsstring>
         <name>spotValue</name>
@@ -75,11 +75,11 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strikeForwardRate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notionalAmount</declname>
         </param>
         <param>

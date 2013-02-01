@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="random_default_model" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::RandomDefaultModel</compoundname>
+    <compoundname>RandomDefaultModel</compoundname>
     <includes local="no">/experimental/credit/randomdefaultmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="random_default_model_1a71ba42c4a5efb507deda9781b6e62c19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -32,9 +32,9 @@
         <argsstring>(Real tmax=QL_MAX_REAL)=0</argsstring>
         <name>nextSequence</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>tmax</declname>
-          <defval><ref refid="group__limit_macros_1ga31675a375a563ed7a1bba05c664489af" kindref="member">QL_MAX_REAL</ref></defval>
+          <defval>QL_MAX_REAL</defval>
         </param>
         <detaileddescription>
 <para>Generate a sequence of random default times, one for each name in the pool, and store the result in the Pool using method setTime(name). tmax denotes the maximum relevant time- default times &gt; tmax are not computed but set to tmax + 1 instead to save coputation time. </para>        </detaileddescription>

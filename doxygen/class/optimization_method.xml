@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="optimization_method" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::OptimizationMethod</compoundname>
+    <compoundname>OptimizationMethod</compoundname>
     <includes local="no">/math/optimization/method.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">

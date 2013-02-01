@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="rectangular_domain" kind="class" prot="public">
-    <compoundname>QuantLib::RectangularDomain</compoundname>
+    <compoundname>RectangularDomain</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="rectangular_domain_1acf2ae9a59519990901e0bb37f9e50ca5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -9,19 +9,19 @@
         <argsstring>(Real x1, Real y1, Real x2, Real y2)</argsstring>
         <name>RectangularDomain</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x2</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y2</declname>
         </param>
         <location file="/math/domain.hpp" line="62" bodyfile="/math/domain.hpp" bodystart="61" bodyend="62"/>
@@ -32,38 +32,38 @@
         <argsstring>(Real x, Real y) const </argsstring>
         <name>includes</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/domain.hpp" line="63" bodyfile="/math/domain.hpp" bodystart="63" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="rectangular_domain_1ad6a4c9b3852034116b39f6a8fbb3e7e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real xLowerBound</definition>
         <argsstring>() const </argsstring>
         <name>xLowerBound</name>
         <location file="/math/domain.hpp" line="67" bodyfile="/math/domain.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="rectangular_domain_1af3f83a419a092a49f8b9f950690eae49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real yLowerBound</definition>
         <argsstring>() const </argsstring>
         <name>yLowerBound</name>
         <location file="/math/domain.hpp" line="68" bodyfile="/math/domain.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="rectangular_domain_1af8f8eac4d08f24233e7c489ac6a1100e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real xUpperBound</definition>
         <argsstring>() const </argsstring>
         <name>xUpperBound</name>
         <location file="/math/domain.hpp" line="69" bodyfile="/math/domain.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="rectangular_domain_1a06519b8aac8c0425b9f5c20277db5c29" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real yUpperBound</definition>
         <argsstring>() const </argsstring>
         <name>yUpperBound</name>

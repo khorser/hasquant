@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="barrier_option" kind="class" prot="public">
-    <compoundname>QuantLib::BarrierOption</compoundname>
+    <compoundname>BarrierOption</compoundname>
     <includes local="no">/instruments/barrieroption.hpp</includes>
-    <innerclass refid="barrier_option_1_1arguments" prot="public">QuantLib::BarrierOption::arguments</innerclass>
-    <innerclass refid="barrier_option_1_1engine" prot="public">QuantLib::BarrierOption::engine</innerclass>
+    <innerclass refid="barrier_option_1_1arguments" prot="public">BarrierOption::arguments</innerclass>
+    <innerclass refid="barrier_option_1_1engine" prot="public">BarrierOption::engine</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="barrier_option_1a294feb53bf4fbbc46ee9f9428b49dc33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -16,11 +16,11 @@
           <declname>barrierType</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>barrier</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rebate</declname>
         </param>
         <param>
@@ -34,12 +34,12 @@
         <location file="/instruments/barrieroption.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="barrier_option_1a95c0837ce9c4bcc4cb9b9ff975f3bfe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility impliedVolatility</definition>
         <argsstring>(Real price, const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Real accuracy=1.0e-4, Size maxEvaluations=100, Volatility minVol=1.0e-7, Volatility maxVol=4.0) const </argsstring>
         <name>impliedVolatility</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>price</declname>
         </param>
         <param>
@@ -47,22 +47,22 @@
           <declname>process</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-4</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>100</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>minVol</declname>
           <defval>1.0e-7</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>maxVol</declname>
           <defval>4.0</defval>
         </param>

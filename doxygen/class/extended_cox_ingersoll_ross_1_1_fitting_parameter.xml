@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="extended_cox_ingersoll_ross_1_1_fitting_parameter" kind="class" prot="public">
-    <compoundname>QuantLib::ExtendedCoxIngersollRoss::FittingParameter</compoundname>
+    <compoundname>ExtendedCoxIngersollRoss::FittingParameter</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="extended_cox_ingersoll_ross_1_1_fitting_parameter_1a01424d1435a10b1c9b02f887528d4e66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,19 +14,19 @@
           <declname>termStructure</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>theta</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>k</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x0</declname>
         </param>
         <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="142" bodyfile="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="138" bodyend="142"/>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="boundary_condition" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::BoundaryCondition</compoundname>
+    <compoundname>BoundaryCondition</compoundname>
     <includes local="no">/methods/finitedifferences/boundarycondition.hpp</includes>
     <templateparamlist>
       <param>
@@ -107,7 +107,7 @@
         <argsstring>(Time t)=0</argsstring>
         <name>setTime</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <detaileddescription>

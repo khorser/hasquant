@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="quanto_barrier_option" kind="class" prot="public">
-    <compoundname>QuantLib::QuantoBarrierOption</compoundname>
+    <compoundname>QuantoBarrierOption</compoundname>
     <includes local="no">/instruments/quantobarrieroption.hpp</includes>
       <sectiondef kind="user-defined">
       <header>greeks</header>
       <memberdef kind="function" id="quanto_barrier_option_1a16e8429b2ebe705c6f981a7728158131" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real qvega</definition>
         <argsstring>() const </argsstring>
         <name>qvega</name>
         <location file="/instruments/quantobarrieroption.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="quanto_barrier_option_1a5b5e28f6a223305ec770c593eb8ba609" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real qrho</definition>
         <argsstring>() const </argsstring>
         <name>qrho</name>
         <location file="/instruments/quantobarrieroption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="quanto_barrier_option_1ad8c7fcabc3c58c835d409bda7853f4e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real qlambda</definition>
         <argsstring>() const </argsstring>
         <name>qlambda</name>
@@ -54,11 +54,11 @@
           <declname>barrierType</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>barrier</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rebate</declname>
         </param>
         <param>

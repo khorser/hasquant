@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yo_y_optionlet_volatility_surface" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::YoYOptionletVolatilitySurface</compoundname>
+    <compoundname>YoYOptionletVolatilitySurface</compoundname>
     <includes local="no">/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructor</header>
@@ -12,14 +12,14 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;, BusinessDayConvention bdc, const DayCounter &amp;dc, const Period &amp;observationLag, Frequency frequency, bool indexIsInterpolated)</argsstring>
         <name>YoYOptionletVolatilitySurface</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
           <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -31,7 +31,7 @@
           <declname>observationLag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -51,7 +51,7 @@
       <sectiondef kind="user-defined">
       <header>Volatility (only)</header>
       <memberdef kind="function" id="yo_y_optionlet_volatility_surface_1ad5ea6397784b7f1ea64af308fe46c215" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Date &amp;maturityDate, Rate strike, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=false) const </argsstring>
         <name>volatility</name>
@@ -60,7 +60,7 @@
           <declname>maturityDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -78,7 +78,7 @@
         <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_optionlet_volatility_surface_1a8bec322449324878a9b8c3d56eee84ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Period &amp;optionTenor, Rate strike, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=false) const </argsstring>
         <name>volatility</name>
@@ -87,7 +87,7 @@
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -105,7 +105,7 @@
         <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_optionlet_volatility_surface_1ab3fc5836b8ffe33d09eca494369576a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>virtual Volatility totalVariance</definition>
         <argsstring>(const Date &amp;exerciseDate, Rate strike, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=false) const </argsstring>
         <name>totalVariance</name>
@@ -114,7 +114,7 @@
           <declname>exerciseDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -134,7 +134,7 @@
         <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_optionlet_volatility_surface_1ac18bd55fdc43f49b20dd1ba29250bb92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>virtual Volatility totalVariance</definition>
         <argsstring>(const Period &amp;optionTenor, Rate strike, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=false) const </argsstring>
         <name>totalVariance</name>
@@ -143,7 +143,7 @@
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -170,7 +170,7 @@
         <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="94" bodyfile="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_optionlet_volatility_surface_1a2d031749634662c6fd7dd3679f26a487" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>virtual Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
@@ -191,7 +191,7 @@
         <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_optionlet_volatility_surface_1a108bd0a09df4aa94c9bb9254632040b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>virtual Time timeFromBase</definition>
         <argsstring>(const Date &amp;date, const Period &amp;obsLag=Period(-1, Days)) const </argsstring>
         <name>timeFromBase</name>
@@ -211,7 +211,7 @@
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="yo_y_optionlet_volatility_surface_1a856d0e8b9c3e30ebb9e8ca6ecde17986" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>virtual Volatility baseLevel</definition>
         <argsstring>() const </argsstring>
         <name>baseLevel</name>

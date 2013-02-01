@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="region" kind="class" prot="public">
-    <compoundname>QuantLib::Region</compoundname>
+    <compoundname>Region</compoundname>
     <includes local="no">/indexes/region.hpp</includes>
-    <innerclass refid="region_1_1_data" prot="public">QuantLib::Region::Data</innerclass>
+    <innerclass refid="region_1_1_data" prot="public">Region::Data</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="region_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

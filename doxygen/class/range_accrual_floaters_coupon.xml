@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="range_accrual_floaters_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::RangeAccrualFloatersCoupon</compoundname>
+    <compoundname>RangeAccrualFloatersCoupon</compoundname>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -26,7 +26,7 @@
           <declname>paymentDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
           <declname>endDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -50,11 +50,11 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>spread</declname>
         </param>
         <param>
@@ -70,45 +70,45 @@
           <declname>observationsSchedule</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>lowerTrigger</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>upperTrigger</declname>
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1a1ece2eac4481e2a1685705aac57766d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real startTime</definition>
         <argsstring>() const </argsstring>
         <name>startTime</name>
         <location file="/cashflows/rangeaccrual.hpp" line="60" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1aed22d9abaf095bbffd906e613e827369" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real endTime</definition>
         <argsstring>() const </argsstring>
         <name>endTime</name>
         <location file="/cashflows/rangeaccrual.hpp" line="61" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1a37ee03719abee959b788d4a4e2564817" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real lowerTrigger</definition>
         <argsstring>() const </argsstring>
         <name>lowerTrigger</name>
         <location file="/cashflows/rangeaccrual.hpp" line="62" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1ae00db6447b4fb51cba4f1d870d4f625d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real upperTrigger</definition>
         <argsstring>() const </argsstring>
         <name>upperTrigger</name>
         <location file="/cashflows/rangeaccrual.hpp" line="63" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1aab14e153aeace329bebb8e245602c6f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size observationsNo</definition>
         <argsstring>() const </argsstring>
         <name>observationsNo</name>
@@ -122,7 +122,7 @@
         <location file="/cashflows/rangeaccrual.hpp" line="65" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1a4d76cb4fdc8ec3a1a5842b044e5a1165" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; observationTimes</definition>
         <argsstring>() const </argsstring>
         <name>observationTimes</name>
@@ -136,7 +136,7 @@
         <location file="/cashflows/rangeaccrual.hpp" line="71" bodyfile="/cashflows/rangeaccrual.hpp" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="range_accrual_floaters_coupon_1aa8863d2b94859595390ec23a923f378c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real priceWithoutOptionality</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve) const </argsstring>
         <name>priceWithoutOptionality</name>

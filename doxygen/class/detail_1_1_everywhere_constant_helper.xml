@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1_everywhere_constant_helper" kind="class" prot="public">
-    <compoundname>QuantLib::detail::EverywhereConstantHelper</compoundname>
+    <compoundname>detail::EverywhereConstantHelper</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="detail_1_1_everywhere_constant_helper_1af451d01880fa199372a6b8d8b5042893" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -9,42 +9,42 @@
         <argsstring>(Real value, Real prevPrimitive, Real xPrev)</argsstring>
         <name>EverywhereConstantHelper</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>prevPrimitive</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xPrev</declname>
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="141" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_everywhere_constant_helper_1a183a38ca3e73199aae47a6d24274e2fb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>(Real) const </argsstring>
         <name>value</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="143" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="143" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_everywhere_constant_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real primitive</definition>
         <argsstring>(Real x) const </argsstring>
         <name>primitive</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="146" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="146" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_everywhere_constant_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fNext</definition>
         <argsstring>() const </argsstring>
         <name>fNext</name>

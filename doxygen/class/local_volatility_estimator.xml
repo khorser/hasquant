@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="local_volatility_estimator" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::LocalVolatilityEstimator</compoundname>
+    <compoundname>LocalVolatilityEstimator</compoundname>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -18,7 +18,7 @@
         <location file="/volatilitymodel.hpp" line="36" bodyfile="/volatilitymodel.hpp" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <type>TimeSeries&lt; Volatility &gt;</type>
         <definition>virtual TimeSeries&lt;Volatility&gt; calculate</definition>
         <argsstring>(const TimeSeries&lt; T &gt; &amp;quoteSeries)=0</argsstring>
         <name>calculate</name>

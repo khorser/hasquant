@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cms_market" kind="class" prot="public">
-    <compoundname>QuantLib::CmsMarket</compoundname>
+    <compoundname>CmsMarket</compoundname>
     <includes local="no">/termstructures/volatility/swaption/cmsmarket.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="cms_market_1aaf805ef8d8ea2358849696c31b8b04ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -45,7 +45,7 @@
           <declname>volStructure</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>meanReversion</declname>
         </param>
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="57"/>
@@ -79,7 +79,7 @@
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1a35b539577eb37aedc775a0ede8344404" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real weightedSpreadError</definition>
         <argsstring>(const Matrix &amp;weights)</argsstring>
         <name>weightedSpreadError</name>
@@ -90,7 +90,7 @@
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1a319b04e94080612bf35604dd912bb673" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real weightedSpotNpvError</definition>
         <argsstring>(const Matrix &amp;weights)</argsstring>
         <name>weightedSpotNpvError</name>
@@ -101,7 +101,7 @@
         <location file="/termstructures/volatility/swaption/cmsmarket.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_1ae2722911ca9e8c3b8f54f22d49db2dd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real weightedFwdNpvError</definition>
         <argsstring>(const Matrix &amp;weights)</argsstring>
         <name>weightedFwdNpvError</name>

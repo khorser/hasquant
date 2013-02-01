@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="commodity_cash_flow" kind="class" prot="public">
-    <compoundname>QuantLib::CommodityCashFlow</compoundname>
+    <compoundname>CommodityCashFlow</compoundname>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
       <memberdef kind="function" id="commodity_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -15,7 +15,7 @@
       <sectiondef kind="user-defined">
       <header>CashFlow interface</header>
       <memberdef kind="function" id="commodity_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
@@ -62,11 +62,11 @@
           <declname>undiscountedPaymentAmount</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>discountFactor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>paymentDiscountFactor</declname>
         </param>
         <param>
@@ -111,14 +111,14 @@
         <location file="/experimental/commodities/commoditycashflow.hpp" line="67" bodyfile="/experimental/commodities/commoditycashflow.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="commodity_cash_flow_1acecc6b85124ee43e451d5ade7febad2a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real discountFactor</definition>
         <argsstring>() const </argsstring>
         <name>discountFactor</name>
         <location file="/experimental/commodities/commoditycashflow.hpp" line="70" bodyfile="/experimental/commodities/commoditycashflow.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="commodity_cash_flow_1a618f954645d8081b34c2bd86f97cee57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real paymentDiscountFactor</definition>
         <argsstring>() const </argsstring>
         <name>paymentDiscountFactor</name>

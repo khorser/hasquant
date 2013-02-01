@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="energy_commodity_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::EnergyCommodity::arguments</compoundname>
+    <compoundname>EnergyCommodity::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="energy_commodity_1_1arguments_1a2abe4a46fc0038ef6a824d8109ca1741" prot="public" static="no" mutable="no">
         <type>Currency</type>

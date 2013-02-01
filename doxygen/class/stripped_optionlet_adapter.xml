@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="stripped_optionlet_adapter" kind="class" prot="public">
-    <compoundname>QuantLib::StrippedOptionletAdapter</compoundname>
+    <compoundname>StrippedOptionletAdapter</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/strippedoptionletadapter.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="stripped_optionlet_adapter_1a42f2affb2df109795aa4101130a58454" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

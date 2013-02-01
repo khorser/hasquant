@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="brownian_generator_factory" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::BrownianGeneratorFactory</compoundname>
+    <compoundname>BrownianGeneratorFactory</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="brownian_generator_factory_1aedba358504a27dd3886c8aff89eaf078" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -16,11 +16,11 @@
         <argsstring>(Size factors, Size steps) const =0</argsstring>
         <name>create</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>factors</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>steps</declname>
         </param>
         <location file="/models/marketmodels/browniangenerator.hpp" line="47"/>

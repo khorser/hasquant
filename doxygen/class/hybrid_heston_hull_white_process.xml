@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="hybrid_heston_hull_white_process" kind="class" prot="public">
-    <compoundname>QuantLib::HybridHestonHullWhiteProcess</compoundname>
+    <compoundname>HybridHestonHullWhiteProcess</compoundname>
     <includes local="no">/processes/hybridhestonhullwhiteprocess.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="hybrid_heston_hull_white_process_1a36f45ac51e3e98d35c68ca85b7573e87" prot="public" static="no">
@@ -30,7 +30,7 @@
           <declname>hullWhiteProcess</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>corrEquityShortRate</declname>
         </param>
         <param>
@@ -41,12 +41,12 @@
         <location file="/processes/hybridhestonhullwhiteprocess.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="hybrid_heston_hull_white_process_1a4565aca1dd76a65766425e5fb55dbcd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <type>DiscountFactor</type>
         <definition>DiscountFactor numeraire</definition>
         <argsstring>(Time t, const Array &amp;x) const </argsstring>
         <name>numeraire</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
@@ -70,7 +70,7 @@
         <location file="/processes/hybridhestonhullwhiteprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="hybrid_heston_hull_white_process_1a83e2f6eb6af4d95118d576ddfa2804bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real eta</definition>
         <argsstring>() const </argsstring>
         <name>eta</name>

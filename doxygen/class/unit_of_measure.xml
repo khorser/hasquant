@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="unit_of_measure" kind="class" prot="public">
-    <compoundname>QuantLib::UnitOfMeasure</compoundname>
+    <compoundname>UnitOfMeasure</compoundname>
     <includes local="no">/experimental/commodities/unitofmeasure.hpp</includes>
-    <innerclass refid="unit_of_measure_1_1_data" prot="public">QuantLib::UnitOfMeasure::Data</innerclass>
+    <innerclass refid="unit_of_measure_1_1_data" prot="public">UnitOfMeasure::Data</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="unit_of_measure_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

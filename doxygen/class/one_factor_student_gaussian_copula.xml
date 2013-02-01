@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="one_factor_student_gaussian_copula" kind="class" prot="public">
-    <compoundname>QuantLib::OneFactorStudentGaussianCopula</compoundname>
+    <compoundname>OneFactorStudentGaussianCopula</compoundname>
     <includes local="no">/experimental/credit/onefactorstudentcopula.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="one_factor_student_gaussian_copula_1a0b11756518970632ed88390e9ff1f615" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -18,12 +18,12 @@
           <declname>nm</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>maximum</declname>
           <defval>10</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>integrationSteps</declname>
           <defval>200</defval>
         </param>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="region_1_1_data" kind="struct" prot="public">
-    <compoundname>QuantLib::Region::Data</compoundname>
+    <compoundname>Region::Data</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="region_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" static="no" mutable="no">
         <type>std::string</type>

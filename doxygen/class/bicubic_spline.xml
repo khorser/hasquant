@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bicubic_spline" kind="class" prot="public">
-    <compoundname>QuantLib::BicubicSpline</compoundname>
+    <compoundname>BicubicSpline</compoundname>
     <includes local="no">/math/interpolations/bicubicsplineinterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="bicubic_spline_1ae24a981dc07335aa95c6ac705e64b198" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -46,76 +46,76 @@
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="164" bodyfile="/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="162" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="bicubic_spline_1a35279b56a8a434738b5210e5abe66376" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real derivativeX</definition>
         <argsstring>(Real x, Real y) const </argsstring>
         <name>derivativeX</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="170" bodyfile="/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="170" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="bicubic_spline_1a9bb70b34a017142d208a3439a59238cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real derivativeY</definition>
         <argsstring>(Real x, Real y) const </argsstring>
         <name>derivativeY</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="174" bodyfile="/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="174" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="bicubic_spline_1a23a1235d8e8f0ee2fe7f2bbf7ceb2f78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real secondDerivativeX</definition>
         <argsstring>(Real x, Real y) const </argsstring>
         <name>secondDerivativeX</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="178" bodyfile="/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="178" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="bicubic_spline_1ab6aae1be2b04ee5d4eadd9d90dacd8b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real secondDerivativeY</definition>
         <argsstring>(Real x, Real y) const </argsstring>
         <name>secondDerivativeY</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="182" bodyfile="/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="182" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="bicubic_spline_1a96c8f7599965301834826364d48349fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real derivativeXY</definition>
         <argsstring>(Real x, Real y) const </argsstring>
         <name>derivativeXY</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="187" bodyfile="/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="187" bodyend="190"/>

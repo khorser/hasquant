@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="max_basket_payoff" kind="class" prot="public">
-    <compoundname>QuantLib::MaxBasketPayoff</compoundname>
+    <compoundname>MaxBasketPayoff</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="max_basket_payoff_1a29f60a08a31fdab7003c73790f896d27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -15,7 +15,7 @@
         <location file="/instruments/basketoption.hpp" line="66" bodyfile="/instruments/basketoption.hpp" bodystart="65" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="max_basket_payoff_1a8af5614e309a5b2a685b9c4ac364dc46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real accumulate</definition>
         <argsstring>(const Array &amp;a) const </argsstring>
         <name>accumulate</name>

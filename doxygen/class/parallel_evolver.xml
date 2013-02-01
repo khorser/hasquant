@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="parallel_evolver" kind="class" prot="public">
-    <compoundname>QuantLib::ParallelEvolver</compoundname>
+    <compoundname>ParallelEvolver</compoundname>
     <templateparamlist>
       <param>
         <type>class Evolver</type>
@@ -63,7 +63,7 @@
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/methods/finitedifferences/parallelevolver.hpp" line="100" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="99" bodyend="104"/>
@@ -74,7 +74,7 @@
         <argsstring>(Time dt)</argsstring>
         <name>setStep</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <location file="/methods/finitedifferences/parallelevolver.hpp" line="105" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="105" bodyend="109"/>

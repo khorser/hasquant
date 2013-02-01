@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="american_payoff_at_expiry" kind="class" prot="public">
-    <compoundname>QuantLib::AmericanPayoffAtExpiry</compoundname>
+    <compoundname>AmericanPayoffAtExpiry</compoundname>
     <includes local="no">/pricingengines/americanpayoffatexpiry.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="american_payoff_at_expiry_1aaaa5720a044a2da44d000c6f3d5178b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,19 +10,19 @@
         <argsstring>(Real spot, DiscountFactor discount, DiscountFactor dividendDiscount, Real variance, const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff)</argsstring>
         <name>AmericanPayoffAtExpiry</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>spot</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <type>DiscountFactor</type>
           <declname>discount</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <type>DiscountFactor</type>
           <declname>dividendDiscount</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>variance</declname>
         </param>
         <param>
@@ -32,7 +32,7 @@
         <location file="/pricingengines/americanpayoffatexpiry.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="american_payoff_at_expiry_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>

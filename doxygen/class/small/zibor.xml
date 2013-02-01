@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="zibor" kind="class" prot="public">
-    <compoundname>QuantLib::Zibor</compoundname>
+    <compoundname>Zibor</compoundname>
     <includes local="no">/indexes/ibor/zibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="zibor_1a043661dc4177aeb7b66c3e4e0ec84864" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

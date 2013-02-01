@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fritsch_butland_cubic" kind="class" prot="public">
-    <compoundname>QuantLib::FritschButlandCubic</compoundname>
+    <compoundname>FritschButlandCubic</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fritsch_butland_cubic_1a8432a9fc0e33b9387afab2d69f555e9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

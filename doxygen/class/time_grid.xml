@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="time_grid" kind="class" prot="public">
-    <compoundname>QuantLib::TimeGrid</compoundname>
+    <compoundname>TimeGrid</compoundname>
     <includes local="no">/timegrid.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -18,11 +18,11 @@
         <argsstring>(Time end, Size steps)</argsstring>
         <name>TimeGrid</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>end</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>steps</declname>
         </param>
         <briefdescription>
@@ -72,7 +72,7 @@
           <declname>end</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>steps</declname>
         </param>
         <briefdescription>
@@ -85,12 +85,12 @@
       <sectiondef kind="user-defined">
       <header>Time grid interface</header>
       <memberdef kind="function" id="time_grid_1a6bd298263e48ea6d251ff1a26dd8d8c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size index</definition>
         <argsstring>(Time t) const </argsstring>
         <name>index</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <briefdescription>
@@ -98,12 +98,12 @@
         <location file="/timegrid.hpp" line="138"/>
       </memberdef>
       <memberdef kind="function" id="time_grid_1a5a60444b80bb7a1d3734ee79422ee396" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size closestIndex</definition>
         <argsstring>(Time t) const </argsstring>
         <name>closestIndex</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <briefdescription>
@@ -111,12 +111,12 @@
         <location file="/timegrid.hpp" line="140"/>
       </memberdef>
       <memberdef kind="function" id="time_grid_1af91c3447448db0d4079999605b339d44" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time closestTime</definition>
         <argsstring>(Time t) const </argsstring>
         <name>closestTime</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <briefdescription>
@@ -124,19 +124,19 @@
         <location file="/timegrid.hpp" line="142" bodyfile="/timegrid.hpp" bodystart="142" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="time_grid_1ac6ef9fb94702478c6e0e8573d1220e78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; mandatoryTimes</definition>
         <argsstring>() const </argsstring>
         <name>mandatoryTimes</name>
         <location file="/timegrid.hpp" line="145" bodyfile="/timegrid.hpp" bodystart="145" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="time_grid_1ac66ca8c21371cb1d3ec2be1024d24e46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time dt</definition>
         <argsstring>(Size i) const </argsstring>
         <name>dt</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/timegrid.hpp" line="148" bodyfile="/timegrid.hpp" bodystart="148" bodyend="148"/>
@@ -145,43 +145,43 @@
       <sectiondef kind="user-defined">
       <header>sequence interface</header>
       <memberdef kind="typedef" id="time_grid_1afcfad2d03bbca304a497bd327827a3ae" prot="public" static="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;::const_iterator</type>
+        <type>std::vector&lt; Time &gt;::const_iterator</type>
         <definition>typedef std::vector&lt;Time&gt;::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
         <location file="/timegrid.hpp" line="152" bodyfile="/timegrid.hpp" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="time_grid_1a33a951e006aff3625c156397cad65672" prot="public" static="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;::const_reverse_iterator</type>
+        <type>std::vector&lt; Time &gt;::const_reverse_iterator</type>
         <definition>typedef std::vector&lt;Time&gt;::const_reverse_iterator const_reverse_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_iterator</name>
         <location file="/timegrid.hpp" line="154" bodyfile="/timegrid.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="time_grid_1ae0a3b3aaac87396ddb204d784f4b84cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time operator[]</definition>
         <argsstring>(Size i) const </argsstring>
         <name>operator[]</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/timegrid.hpp" line="156" bodyfile="/timegrid.hpp" bodystart="156" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="time_grid_1aa4d3cd421e9f1c91305810e102bc4995" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time at</definition>
         <argsstring>(Size i) const </argsstring>
         <name>at</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/timegrid.hpp" line="157" bodyfile="/timegrid.hpp" bodystart="157" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="time_grid_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
@@ -223,14 +223,14 @@
         <location file="/timegrid.hpp" line="163" bodyfile="/timegrid.hpp" bodystart="163" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="time_grid_1a1fadbd48b1c0f232cc0dc0183642a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time front</definition>
         <argsstring>() const </argsstring>
         <name>front</name>
         <location file="/timegrid.hpp" line="164" bodyfile="/timegrid.hpp" bodystart="164" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="time_grid_1a881f8a7c6ad4ed301617230cf4039c7b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time back</definition>
         <argsstring>() const </argsstring>
         <name>back</name>

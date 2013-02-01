@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="energy_vanilla_swap" kind="class" prot="public">
-    <compoundname>QuantLib::EnergyVanillaSwap</compoundname>
+    <compoundname>EnergyVanillaSwap</compoundname>
     <includes local="no">/experimental/commodities/energyvanillaswap.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="energy_vanilla_swap_1ac2f6e41346330b70d61d8675ff442abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -64,7 +64,7 @@
         <location file="/experimental/commodities/energyvanillaswap.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="energy_vanilla_swap_1acf62c1e22a09f8f6ae515de3e07bef53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer payReceive</definition>
         <argsstring>() const </argsstring>
         <name>payReceive</name>

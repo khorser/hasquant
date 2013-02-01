@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="time_basket" kind="class" prot="public">
-    <compoundname>QuantLib::TimeBasket</compoundname>
+    <compoundname>TimeBasket</compoundname>
     <includes local="no">/cashflows/timebasket.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Map interface</header>
@@ -106,7 +106,7 @@
           <declname>dates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>values</declname>
         </param>
         <location file="/cashflows/timebasket.hpp" line="42"/>

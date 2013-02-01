@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_swap" kind="class" prot="public">
-    <compoundname>QuantLib::CPISwap</compoundname>
+    <compoundname>CPISwap</compoundname>
     <includes local="no">/instruments/cpiswap.hpp</includes>
-    <innerclass refid="c_p_i_swap_1_1arguments" prot="public">QuantLib::CPISwap::arguments</innerclass>
-    <innerclass refid="c_p_i_swap_1_1engine" prot="public">QuantLib::CPISwap::engine</innerclass>
-    <innerclass refid="c_p_i_swap_1_1results" prot="public">QuantLib::CPISwap::results</innerclass>
+    <innerclass refid="c_p_i_swap_1_1arguments" prot="public">CPISwap::arguments</innerclass>
+    <innerclass refid="c_p_i_swap_1_1engine" prot="public">CPISwap::engine</innerclass>
+    <innerclass refid="c_p_i_swap_1_1results" prot="public">CPISwap::results</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="c_p_i_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
@@ -31,7 +31,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -39,7 +39,7 @@
           <declname>subtractInflationNominal</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
         </param>
         <param>
@@ -51,11 +51,11 @@
           <declname>floatSchedule</declname>
         </param>
         <param>
-          <type>const <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &amp;</type>
+          <type>const BusinessDayConvention &amp;</type>
           <declname>floatRoll</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -63,11 +63,11 @@
           <declname>floatIndex</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>baseCPI</declname>
         </param>
         <param>
@@ -79,7 +79,7 @@
           <declname>fixedSchedule</declname>
         </param>
         <param>
-          <type>const <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &amp;</type>
+          <type>const BusinessDayConvention &amp;</type>
           <declname>fixedRoll</declname>
         </param>
         <param>
@@ -96,35 +96,35 @@
           <defval>CPI::AsIndex</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>inflationNominal</declname>
-          <defval>Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>Null&lt; Real &gt;()</defval>
         </param>
         <location file="/instruments/cpiswap.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1ac83078708d7f39ee5937d2c0d4d99434" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real floatLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>floatLegNPV</name>
         <location file="/instruments/cpiswap.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a8519db12d1035aea8bc0b73b531fa1d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>virtual Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
         <location file="/instruments/cpiswap.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1acae4e2138e8dbe8c12a605ea79086d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
         <location file="/instruments/cpiswap.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a5d5b9c2299952391c66f5b080295e747" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
@@ -138,7 +138,7 @@
         <location file="/instruments/cpiswap.hpp" line="104" bodyfile="/instruments/cpiswap.hpp" bodystart="193" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
@@ -152,7 +152,7 @@
         <location file="/instruments/cpiswap.hpp" line="106" bodyfile="/instruments/cpiswap.hpp" bodystart="195" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
@@ -173,14 +173,14 @@
         <location file="/instruments/cpiswap.hpp" line="111" bodyfile="/instruments/cpiswap.hpp" bodystart="200" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a489855877bac655a8a40a1ccf0e12ee6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &amp;</type>
+        <type>const BusinessDayConvention &amp;</type>
         <definition>const BusinessDayConvention &amp; floatPaymentRoll</definition>
         <argsstring>() const </argsstring>
         <name>floatPaymentRoll</name>
         <location file="/instruments/cpiswap.hpp" line="112" bodyfile="/instruments/cpiswap.hpp" bodystart="201" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <type>Natural</type>
         <definition>Natural fixingDays</definition>
         <argsstring>() const </argsstring>
         <name>fixingDays</name>
@@ -194,14 +194,14 @@
         <location file="/instruments/cpiswap.hpp" line="114" bodyfile="/instruments/cpiswap.hpp" bodystart="203" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
         <location file="/instruments/cpiswap.hpp" line="117" bodyfile="/instruments/cpiswap.hpp" bodystart="206" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1ae3688411e63b836688fe6d77f87549be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real baseCPI</definition>
         <argsstring>() const </argsstring>
         <name>baseCPI</name>
@@ -222,7 +222,7 @@
         <location file="/instruments/cpiswap.hpp" line="120" bodyfile="/instruments/cpiswap.hpp" bodystart="209" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a417e96d4a1906168e11cf64d73190df0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &amp;</type>
+        <type>const BusinessDayConvention &amp;</type>
         <definition>const BusinessDayConvention &amp; fixedPaymentRoll</definition>
         <argsstring>() const </argsstring>
         <name>fixedPaymentRoll</name>
@@ -250,21 +250,21 @@
         <location file="/instruments/cpiswap.hpp" line="124" bodyfile="/instruments/cpiswap.hpp" bodystart="213" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a6ec2404f611183ccedff6a9e227eedc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real inflationNominal</definition>
         <argsstring>() const </argsstring>
         <name>inflationNominal</name>
         <location file="/instruments/cpiswap.hpp" line="125" bodyfile="/instruments/cpiswap.hpp" bodystart="214" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a80d571527c5ae24798704b5e3bbf0f30" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg &amp; cpiLeg</definition>
         <argsstring>() const </argsstring>
         <name>cpiLeg</name>
         <location file="/instruments/cpiswap.hpp" line="128" bodyfile="/instruments/cpiswap.hpp" bodystart="216" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_swap_1a5a62986f612f359daf7619f30c31c9c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg &amp; floatLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatLeg</name>

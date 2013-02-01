@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="analytic_continuous_floating_lookback_engine" kind="class" prot="public">
-    <compoundname>QuantLib::AnalyticContinuousFloatingLookbackEngine</compoundname>
+    <compoundname>AnalyticContinuousFloatingLookbackEngine</compoundname>
     <includes local="no">/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="analytic_continuous_floating_lookback_engine_1a498d7812b12d4c2d7977f145df3be3ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

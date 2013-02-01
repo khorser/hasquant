@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_step_condition_composite" kind="class" prot="public">
-    <compoundname>QuantLib::FdmStepConditionComposite</compoundname>
+    <compoundname>FdmStepConditionComposite</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="fdm_step_condition_composite_1a6bc126e9ab7843921a5b5d2b5018adcf" prot="public" static="no">
         <type>std::list&lt; boost::shared_ptr&lt; StepCondition&lt; Array &gt; &gt; &gt;</type>
@@ -18,7 +18,7 @@
         <argsstring>(const std::list&lt; std::vector&lt; Time &gt; &gt; &amp;stoppingTimes, const Conditions &amp;conditions)</argsstring>
         <name>FdmStepConditionComposite</name>
         <param>
-          <type>const std::list&lt; std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &gt; &amp;</type>
+          <type>const std::list&lt; std::vector&lt; Time &gt; &gt; &amp;</type>
           <declname>stoppingTimes</declname>
         </param>
         <param>
@@ -37,13 +37,13 @@
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="fdm_step_condition_composite_1ae273746d46d552b36e079755fa097178" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; stoppingTimes</definition>
         <argsstring>() const </argsstring>
         <name>stoppingTimes</name>

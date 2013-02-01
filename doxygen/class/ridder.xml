@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="ridder" kind="class" prot="public">
-    <compoundname>QuantLib::Ridder</compoundname>
+    <compoundname>Ridder</compoundname>
     <includes local="no">/math/solvers1d/ridder.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="ridder_1acad44ea7101a52c586b4a6cb0d5d8f65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
             <type>class F</type>
           </param>
         </templateparamlist>
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real solveImpl</definition>
         <argsstring>(const F &amp;f, Real xAcc) const </argsstring>
         <name>solveImpl</name>
@@ -19,7 +19,7 @@
           <declname>f</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xAcc</declname>
         </param>
         <location file="/math/solvers1d/ridder.hpp" line="39" bodyfile="/math/solvers1d/ridder.hpp" bodystart="38" bodyend="99"/>

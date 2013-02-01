@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_t_s_m_m_caplet_max_homogeneity_calibration" kind="class" prot="public">
-    <compoundname>QuantLib::CTSMMCapletMaxHomogeneityCalibration</compoundname>
+    <compoundname>CTSMMCapletMaxHomogeneityCalibration</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_t_s_m_m_caplet_max_homogeneity_calibration_1aa400dd36c121e98d640c687caa1c63ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -21,7 +21,7 @@
           <declname>displacedSwapVariances</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Volatility &gt; &amp;</type>
           <declname>capletVols</declname>
         </param>
         <param>
@@ -29,11 +29,11 @@
           <declname>cs</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>displacement</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>caplet0Swaption1Priority</declname>
           <defval>1.0</defval>
         </param>
@@ -42,7 +42,7 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="c_t_s_m_m_caplet_max_homogeneity_calibration_1aba9aa91bfbbc3221482caa0c9fdfba20" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <type>Natural</type>
         <definition>static Natural capletMaxHomogeneityCalibration</definition>
         <argsstring>(const EvolutionDescription &amp;evolution, const PiecewiseConstantCorrelation &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;capletVols, const CurveState &amp;cs, const Spread displacement, Real caplet0Swaption1Priority, Size numberOfFactors, Size maxIterations, Real tolerance, Real &amp;deformationSize, Real &amp;totalSwaptionError, std::vector&lt; Matrix &gt; &amp;swapCovariancePseudoRoots)</argsstring>
         <name>capletMaxHomogeneityCalibration</name>
@@ -59,7 +59,7 @@
           <declname>displacedSwapVariances</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Volatility &gt; &amp;</type>
           <declname>capletVols</declname>
         </param>
         <param>
@@ -67,31 +67,31 @@
           <declname>cs</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>const Spread</type>
           <declname>displacement</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>caplet0Swaption1Priority</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>numberOfFactors</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxIterations</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>tolerance</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <type>Real &amp;</type>
           <declname>deformationSize</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <type>Real &amp;</type>
           <declname>totalSwaptionError</declname>
         </param>
         <param>

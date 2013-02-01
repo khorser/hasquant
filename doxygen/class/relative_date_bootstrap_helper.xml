@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="relative_date_bootstrap_helper" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::RelativeDateBootstrapHelper</compoundname>
+    <compoundname>RelativeDateBootstrapHelper</compoundname>
     <includes local="no">/termstructures/bootstraphelper.hpp</includes>
     <templateparamlist>
       <param>
@@ -26,7 +26,7 @@
         <argsstring>(Real quote)</argsstring>
         <name>RelativeDateBootstrapHelper</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>quote</declname>
         </param>
         <location file="/termstructures/bootstraphelper.hpp" line="105" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="174" bodyend="178"/>

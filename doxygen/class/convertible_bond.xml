@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="convertible_bond" kind="class" prot="public">
-    <compoundname>QuantLib::ConvertibleBond</compoundname>
+    <compoundname>ConvertibleBond</compoundname>
     <includes local="no">/experimental/convertiblebonds/convertiblebond.hpp</includes>
-    <innerclass refid="convertible_bond_1_1option" prot="public">QuantLib::ConvertibleBond::option</innerclass>
+    <innerclass refid="convertible_bond_1_1option" prot="public">ConvertibleBond::option</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="convertible_bond_1af8aff8c2536e96ebc06e5ac2f794cbbc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real conversionRatio</definition>
         <argsstring>() const </argsstring>
         <name>conversionRatio</name>

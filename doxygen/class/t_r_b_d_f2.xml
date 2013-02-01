@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="t_r_b_d_f2" kind="class" prot="public">
-    <compoundname>QuantLib::TRBDF2</compoundname>
+    <compoundname>TRBDF2</compoundname>
     <includes local="no">/methods/finitedifferences/trbdf2.hpp</includes>
     <templateparamlist>
       <param>
@@ -71,7 +71,7 @@
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/methods/finitedifferences/trbdf2.hpp" line="87" bodyfile="/methods/finitedifferences/trbdf2.hpp" bodystart="110" bodyend="168"/>
@@ -82,7 +82,7 @@
         <argsstring>(Time dt)</argsstring>
         <name>setStep</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <location file="/methods/finitedifferences/trbdf2.hpp" line="88" bodyfile="/methods/finitedifferences/trbdf2.hpp" bodystart="88" bodyend="96"/>

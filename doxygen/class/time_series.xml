@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="time_series" kind="class" prot="public">
-    <compoundname>QuantLib::TimeSeries</compoundname>
+    <compoundname>TimeSeries</compoundname>
     <includes local="no">/timeseries.hpp</includes>
-    <innerclass refid="time_series_1_1reverse" prot="public">QuantLib::TimeSeries::reverse</innerclass>
-    <innerclass refid="time_series_1_1reverse_3_01container_00_01std_1_1bidirectional__iterator__tag_01_4" prot="public">QuantLib::TimeSeries::reverse&lt; container, std::bidirectional_iterator_tag &gt;</innerclass>
+    <innerclass refid="time_series_1_1reverse" prot="public">TimeSeries::reverse</innerclass>
+    <innerclass refid="time_series_1_1reverse_3_01container_00_01std_1_1bidirectional__iterator__tag_01_4" prot="public">TimeSeries::reverse&lt; container, std::bidirectional_iterator_tag &gt;</innerclass>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -39,7 +39,7 @@
         <location file="/timeseries.hpp" line="86" bodyfile="/timeseries.hpp" bodystart="250" bodyend="253"/>
       </memberdef>
       <memberdef kind="function" id="time_series_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>

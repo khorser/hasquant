@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="pde_constant_coeff" kind="class" prot="public">
-    <compoundname>QuantLib::PdeConstantCoeff</compoundname>
+    <compoundname>PdeConstantCoeff</compoundname>
     <templateparamlist>
       <param>
         <type>class PdeClass</type>
@@ -18,51 +18,51 @@
           <declname>process</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="59" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="58" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="pde_constant_coeff_1a979954f5b4ca36f20a9f41967d0b44b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real diffusion</definition>
         <argsstring>(Time, Real) const </argsstring>
         <name>diffusion</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="65" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="pde_constant_coeff_1a4f72f8cbba294d0c157961fed6ada588" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real drift</definition>
         <argsstring>(Time, Real) const </argsstring>
         <name>drift</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="68" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="pde_constant_coeff_1a5847d1f8241bf2bdb33807ee6cf3b48c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real discount</definition>
         <argsstring>(Time, Real) const </argsstring>
         <name>discount</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="71" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="71" bodyend="73"/>
       </memberdef>

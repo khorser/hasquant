@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="one_factor_model" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::OneFactorModel</compoundname>
+    <compoundname>OneFactorModel</compoundname>
     <includes local="no">/models/shortrate/onefactormodel.hpp</includes>
-    <innerclass refid="one_factor_model_1_1_short_rate_dynamics" prot="public">QuantLib::OneFactorModel::ShortRateDynamics</innerclass>
-    <innerclass refid="one_factor_model_1_1_short_rate_tree" prot="public">QuantLib::OneFactorModel::ShortRateTree</innerclass>
+    <innerclass refid="one_factor_model_1_1_short_rate_dynamics" prot="public">OneFactorModel::ShortRateDynamics</innerclass>
+    <innerclass refid="one_factor_model_1_1_short_rate_tree" prot="public">OneFactorModel::ShortRateTree</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="one_factor_model_1a9063908949ff755f1a8ac0562b05d6a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -12,7 +12,7 @@
         <argsstring>(Size nArguments)</argsstring>
         <name>OneFactorModel</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>nArguments</declname>
         </param>
         <location file="/models/shortrate/onefactormodel.hpp" line="39"/>

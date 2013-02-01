@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_swap_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::CPISwap::arguments</compoundname>
+    <compoundname>CPISwap::arguments</compoundname>
     <includes local="no">/instruments/cpiswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="c_p_i_swap_1_1arguments_1ab6f4e6d3fde00ce906e46494f60dfe7a" prot="public" static="no" mutable="no">
@@ -12,7 +12,7 @@
         <location file="/instruments/cpiswap.hpp" line="172" bodyfile="/instruments/cpiswap.hpp" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="c_p_i_swap_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring></argsstring>
         <name>nominal</name>

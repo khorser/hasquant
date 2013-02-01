@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="ziggurat_rng" kind="class" prot="public">
-    <compoundname>QuantLib::ZigguratRng</compoundname>
+    <compoundname>ZigguratRng</compoundname>
     <includes local="no">/experimental/math/zigguratrng.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="ziggurat_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
-        <type>Sample&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>Sample&lt; Real &gt;</type>
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>

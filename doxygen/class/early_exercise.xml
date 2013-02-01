@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="early_exercise" kind="class" prot="public">
-    <compoundname>QuantLib::EarlyExercise</compoundname>
+    <compoundname>EarlyExercise</compoundname>
     <includes local="no">/exercise.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="early_exercise_1acc512078299c8007a14deb5c7f94db10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

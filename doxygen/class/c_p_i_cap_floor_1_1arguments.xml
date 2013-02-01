@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_cap_floor_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::CPICapFloor::arguments</compoundname>
+    <compoundname>CPICapFloor::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1af0e108519286f3c7f1b8bcd11d6cfb68" prot="public" static="no" mutable="no">
         <type>Option::Type</type>
@@ -11,7 +11,7 @@
         <location file="/instruments/cpicapfloor.hpp" line="119" bodyfile="/instruments/cpicapfloor.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring></argsstring>
         <name>nominal</name>
@@ -39,7 +39,7 @@
         <location file="/instruments/cpicapfloor.hpp" line="121" bodyfile="/instruments/cpicapfloor.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a7147aec61f1b39b7940bbfd1cd859f47" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real baseCPI</definition>
         <argsstring></argsstring>
         <name>baseCPI</name>
@@ -67,21 +67,21 @@
         <location file="/instruments/cpicapfloor.hpp" line="124" bodyfile="/instruments/cpicapfloor.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1ada67439b509ef6c29b3ea133750d0253" prot="public" static="no" mutable="no">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention fixConvention</definition>
         <argsstring></argsstring>
         <name>fixConvention</name>
         <location file="/instruments/cpicapfloor.hpp" line="125" bodyfile="/instruments/cpicapfloor.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1ac5be8de9a77f16aae5dcedd748b64c2c" prot="public" static="no" mutable="no">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention payConvention</definition>
         <argsstring></argsstring>
         <name>payConvention</name>
         <location file="/instruments/cpicapfloor.hpp" line="125" bodyfile="/instruments/cpicapfloor.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a9a4a33b294edec6ebb0de2820c5f8408" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate strike</definition>
         <argsstring></argsstring>
         <name>strike</name>

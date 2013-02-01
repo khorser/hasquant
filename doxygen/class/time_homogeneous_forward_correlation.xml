@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="time_homogeneous_forward_correlation" kind="class" prot="public">
-    <compoundname>QuantLib::TimeHomogeneousForwardCorrelation</compoundname>
+    <compoundname>TimeHomogeneousForwardCorrelation</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="time_homogeneous_forward_correlation_1a2f98d65f92cd56767dd6ffe898c67e88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,20 +13,20 @@
           <declname>fwdCorrelation</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
         <location file="/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="time_homogeneous_forward_correlation_1a1caecd902d2960755b349a552a9b92f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
         <location file="/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="time_homogeneous_forward_correlation_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; rateTimes</definition>
         <argsstring>() const </argsstring>
         <name>rateTimes</name>
@@ -40,7 +40,7 @@
         <location file="/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="time_homogeneous_forward_correlation_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size numberOfRates</definition>
         <argsstring>() const </argsstring>
         <name>numberOfRates</name>

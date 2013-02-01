@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="lattice" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Lattice</compoundname>
+    <compoundname>Lattice</compoundname>
     <includes local="no">/numericalmethod.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -25,7 +25,7 @@
           <type>DiscretizedAsset &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>time</declname>
         </param>
         <briefdescription>
@@ -41,7 +41,7 @@
           <type>DiscretizedAsset &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>to</declname>
         </param>
         <detaileddescription>
@@ -57,7 +57,7 @@
           <type>DiscretizedAsset &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>to</declname>
         </param>
         <detaileddescription>
@@ -68,7 +68,7 @@
         <location file="/numericalmethod.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="lattice_1a0fe7a4c02a090391b474654cf43ddb56" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real presentValue</definition>
         <argsstring>(DiscretizedAsset &amp;) const =0</argsstring>
         <name>presentValue</name>
@@ -105,7 +105,7 @@
         <argsstring>(Time) const =0</argsstring>
         <name>grid</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <location file="/numericalmethod.hpp" line="92"/>
       </memberdef>

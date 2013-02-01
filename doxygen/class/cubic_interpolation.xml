@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cubic_interpolation" kind="class" prot="public">
-    <compoundname>QuantLib::CubicInterpolation</compoundname>
+    <compoundname>CubicInterpolation</compoundname>
     <includes local="no">/math/interpolations/cubicinterpolation.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" prot="public" static="no">
@@ -105,7 +105,7 @@
           <declname>yBegin</declname>
         </param>
         <param>
-          <type><ref refid="cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" kindref="member">CubicInterpolation::DerivativeApprox</ref></type>
+          <type>CubicInterpolation::DerivativeApprox</type>
           <declname>da</declname>
         </param>
         <param>
@@ -113,19 +113,19 @@
           <declname>monotonic</declname>
         </param>
         <param>
-          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type>CubicInterpolation::BoundaryCondition</type>
           <declname>leftCond</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>leftConditionValue</declname>
         </param>
         <param>
-          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type>CubicInterpolation::BoundaryCondition</type>
           <declname>rightCond</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rightConditionValue</declname>
         </param>
         <detaileddescription>
@@ -134,28 +134,28 @@
         <location file="/math/interpolations/cubicinterpolation.hpp" line="158" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="150" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="cubic_interpolation_1a294c76c9e77213bbb3da550152033826" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; primitiveConstants</definition>
         <argsstring>() const </argsstring>
         <name>primitiveConstants</name>
         <location file="/math/interpolations/cubicinterpolation.hpp" line="171" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="171" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="cubic_interpolation_1a4119d6ba4d3f11be628a129a7a2bfe6f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; aCoefficients</definition>
         <argsstring>() const </argsstring>
         <name>aCoefficients</name>
         <location file="/math/interpolations/cubicinterpolation.hpp" line="174" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="174" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="cubic_interpolation_1aaca6dd10570ae2dbc6e5ea6ab8a7e9bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; bCoefficients</definition>
         <argsstring>() const </argsstring>
         <name>bCoefficients</name>
         <location file="/math/interpolations/cubicinterpolation.hpp" line="175" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="175" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="cubic_interpolation_1a7746999062e0736bd067da1e60548069" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; cCoefficients</definition>
         <argsstring>() const </argsstring>
         <name>cCoefficients</name>

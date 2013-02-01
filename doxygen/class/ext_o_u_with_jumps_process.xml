@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="ext_o_u_with_jumps_process" kind="class" prot="public">
-    <compoundname>QuantLib::ExtOUWithJumpsProcess</compoundname>
+    <compoundname>ExtOUWithJumpsProcess</compoundname>
     <includes local="no">/experimental/processes/extouwithjumpsprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="ext_o_u_with_jumps_process_1a9ee1094a02d912b9ebef54df29b7363d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,19 +14,19 @@
           <declname>process</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>Y0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>beta</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>jumpIntensity</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eta</declname>
         </param>
         <location file="/experimental/processes/extouwithjumpsprocess.hpp" line="63"/>
@@ -39,21 +39,21 @@
         <location file="/experimental/processes/extouwithjumpsprocess.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="ext_o_u_with_jumps_process_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real beta</definition>
         <argsstring>() const </argsstring>
         <name>beta</name>
         <location file="/experimental/processes/extouwithjumpsprocess.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="ext_o_u_with_jumps_process_1a83e2f6eb6af4d95118d576ddfa2804bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real eta</definition>
         <argsstring>() const </argsstring>
         <name>eta</name>
         <location file="/experimental/processes/extouwithjumpsprocess.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="ext_o_u_with_jumps_process_1a451382fba1026b4d0b6279db11b088c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real jumpIntensity</definition>
         <argsstring>() const </argsstring>
         <name>jumpIntensity</name>

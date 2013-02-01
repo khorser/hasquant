@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="lm_ext_linear_exponential_vol_model" kind="class" prot="public">
-    <compoundname>QuantLib::LmExtLinearExponentialVolModel</compoundname>
+    <compoundname>LmExtLinearExponentialVolModel</compoundname>
     <includes local="no">/legacy/libormarketmodels/lmextlinexpvolmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="lm_ext_linear_exponential_vol_model_1aa3611aea8d9f8925adebe9bfbbac4a46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,23 +10,23 @@
         <argsstring>(const std::vector&lt; Time &gt; &amp;fixingTimes, Real a, Real b, Real c, Real d)</argsstring>
         <name>LmExtLinearExponentialVolModel</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>fixingTimes</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>c</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>d</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmextlinexpvolmodel.hpp" line="50"/>

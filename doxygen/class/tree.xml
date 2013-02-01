@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="tree" kind="class" prot="public">
-    <compoundname>QuantLib::Tree</compoundname>
+    <compoundname>Tree</compoundname>
     <includes local="no">/methods/lattices/tree.hpp</includes>
     <templateparamlist>
       <param>
@@ -17,13 +17,13 @@
         <argsstring>(Size columns)</argsstring>
         <name>Tree</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>columns</declname>
         </param>
         <location file="/methods/lattices/tree.hpp" line="53" bodyfile="/methods/lattices/tree.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="tree_1ad3e5b8b119f5898b3d12d2dbcdf89100" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size columns</definition>
         <argsstring>() const </argsstring>
         <name>columns</name>

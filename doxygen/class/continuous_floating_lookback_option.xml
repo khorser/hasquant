@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="continuous_floating_lookback_option" kind="class" prot="public">
-    <compoundname>QuantLib::ContinuousFloatingLookbackOption</compoundname>
+    <compoundname>ContinuousFloatingLookbackOption</compoundname>
     <includes local="no">/instruments/lookbackoption.hpp</includes>
-    <innerclass refid="continuous_floating_lookback_option_1_1arguments" prot="public">QuantLib::ContinuousFloatingLookbackOption::arguments</innerclass>
-    <innerclass refid="continuous_floating_lookback_option_1_1engine" prot="public">QuantLib::ContinuousFloatingLookbackOption::engine</innerclass>
+    <innerclass refid="continuous_floating_lookback_option_1_1arguments" prot="public">ContinuousFloatingLookbackOption::arguments</innerclass>
+    <innerclass refid="continuous_floating_lookback_option_1_1engine" prot="public">ContinuousFloatingLookbackOption::engine</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="continuous_floating_lookback_option_1a18071c931832c5f8c3a8757296da3fe4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -12,7 +12,7 @@
         <argsstring>(Real currentMinmax, const boost::shared_ptr&lt; TypePayoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise)</argsstring>
         <name>ContinuousFloatingLookbackOption</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>currentMinmax</declname>
         </param>
         <param>

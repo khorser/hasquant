@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="stochastic_process_1_1discretization" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::StochasticProcess::discretization</compoundname>
+    <compoundname>StochasticProcess::discretization</compoundname>
     <includes local="no">/stochasticprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="stochastic_process_1_1discretization_1a84827bd6839c5bbd73ad9d9bd9dbd6b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -20,7 +20,7 @@
           <type>const StochasticProcess &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
@@ -28,7 +28,7 @@
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <location file="/stochasticprocess.hpp" line="50"/>
@@ -42,7 +42,7 @@
           <type>const StochasticProcess &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
@@ -50,7 +50,7 @@
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <location file="/stochasticprocess.hpp" line="54"/>
@@ -64,7 +64,7 @@
           <type>const StochasticProcess &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
@@ -72,7 +72,7 @@
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <location file="/stochasticprocess.hpp" line="58"/>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="shout_condition" kind="class" prot="public">
-    <compoundname>QuantLib::ShoutCondition</compoundname>
+    <compoundname>ShoutCondition</compoundname>
     <includes local="no">/methods/finitedifferences/shoutcondition.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="shout_condition_1a9060b1f6d7cc29b738bd1bbcfab3072e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,15 +14,15 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>resTime</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rate</declname>
         </param>
         <location file="/methods/finitedifferences/shoutcondition.hpp" line="45" bodyfile="/methods/finitedifferences/shoutcondition.hpp" bodystart="61" bodyend="65"/>
@@ -37,11 +37,11 @@
           <declname>intrinsicValues</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>resTime</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rate</declname>
         </param>
         <location file="/methods/finitedifferences/shoutcondition.hpp" line="48" bodyfile="/methods/finitedifferences/shoutcondition.hpp" bodystart="67" bodyend="70"/>
@@ -56,7 +56,7 @@
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/methods/finitedifferences/shoutcondition.hpp" line="50" bodyfile="/methods/finitedifferences/shoutcondition.hpp" bodystart="72" bodyend="75"/>

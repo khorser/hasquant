@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="stochastic_process" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::StochasticProcess</compoundname>
+    <compoundname>StochasticProcess</compoundname>
     <includes local="no">/stochasticprocess.hpp</includes>
-    <innerclass refid="stochastic_process_1_1discretization" prot="public">QuantLib::StochasticProcess::discretization</innerclass>
+    <innerclass refid="stochastic_process_1_1discretization" prot="public">StochasticProcess::discretization</innerclass>
       <sectiondef kind="user-defined">
       <header>Stochastic process interface</header>
       <memberdef kind="function" id="stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size size</definition>
         <argsstring>() const =0</argsstring>
         <name>size</name>
@@ -16,7 +16,7 @@
         <location file="/stochasticprocess.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size factors</definition>
         <argsstring>() const </argsstring>
         <name>factors</name>
@@ -39,7 +39,7 @@
         <argsstring>(Time t, const Array &amp;x) const =0</argsstring>
         <name>drift</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
@@ -56,7 +56,7 @@
         <argsstring>(Time t, const Array &amp;x) const =0</argsstring>
         <name>diffusion</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
@@ -73,7 +73,7 @@
         <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>expectation</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
@@ -81,7 +81,7 @@
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <detaileddescription>
@@ -94,7 +94,7 @@
         <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>stdDeviation</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
@@ -102,7 +102,7 @@
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <detaileddescription>
@@ -115,7 +115,7 @@
         <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>covariance</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
@@ -123,7 +123,7 @@
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <detaileddescription>
@@ -136,7 +136,7 @@
         <argsstring>(Time t0, const Array &amp;x0, Time dt, const Array &amp;dw) const </argsstring>
         <name>evolve</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t0</declname>
         </param>
         <param>
@@ -144,7 +144,7 @@
           <declname>x0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <param>
@@ -176,7 +176,7 @@
       <sectiondef kind="user-defined">
       <header>utilities</header>
       <memberdef kind="function" id="stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>virtual Time time</definition>
         <argsstring>(const Date &amp;) const </argsstring>
         <name>time</name>

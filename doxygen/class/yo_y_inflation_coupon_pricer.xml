@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yo_y_inflation_coupon_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::YoYInflationCouponPricer</compoundname>
+    <compoundname>YoYInflationCouponPricer</compoundname>
     <includes local="no">/cashflows/inflationcouponpricer.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="yo_y_inflation_coupon_pricer_1a38a1e769775eb4f9ee5e8466341d5603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

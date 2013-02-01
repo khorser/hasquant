@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="interest_rate_vol_surface" kind="class" prot="public">
-    <compoundname>QuantLib::InterestRateVolSurface</compoundname>
+    <compoundname>InterestRateVolSurface</compoundname>
     <includes local="no">/experimental/volatility/interestratevolsurface.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -19,9 +19,9 @@
           <declname>cal</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -29,7 +29,7 @@
           <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000026"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000026"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/experimental/volatility/interestratevolsurface.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_vol_surface_1a7f954b457571433df27468af92b2d99e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -41,9 +41,9 @@
           <type>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -51,7 +51,7 @@
           <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000027"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000027"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/experimental/volatility/interestratevolsurface.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_vol_surface_1a6618dc335c612c9bd2f08040338a06c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -72,9 +72,9 @@
           <defval>Calendar()</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -94,16 +94,16 @@
           <type>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
           <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>

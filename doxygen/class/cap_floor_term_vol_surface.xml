@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cap_floor_term_vol_surface" kind="class" prot="public">
-    <compoundname>QuantLib::CapFloorTermVolSurface</compoundname>
+    <compoundname>CapFloorTermVolSurface</compoundname>
     <includes local="no">/termstructures/volatility/capfloor/capfloortermvolsurface.hpp</includes>
       <sectiondef kind="user-defined">
       <header>some inspectors</header>
@@ -20,14 +20,14 @@
         <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="93" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="150" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_term_vol_surface_1ac5ef24fc83d3fdf7ede195f4a57f5b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; optionTimes</definition>
         <argsstring>() const </argsstring>
         <name>optionTimes</name>
         <location file="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" line="94" bodyfile="/termstructures/volatility/capfloor/capfloortermvolsurface.hpp" bodystart="157" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_term_vol_surface_1a6a332d89d50f22b6e6f5e461813f818d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Rate &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; strikes</definition>
         <argsstring>() const </argsstring>
         <name>strikes</name>
@@ -41,7 +41,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Rate &gt; &amp;strikes, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>CapFloorTermVolSurface</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -49,7 +49,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -57,7 +57,7 @@
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>
@@ -86,7 +86,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -94,7 +94,7 @@
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>
@@ -123,7 +123,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -131,7 +131,7 @@
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>
@@ -153,7 +153,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Rate &gt; &amp;strikes, const Matrix &amp;volatilities, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>CapFloorTermVolSurface</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -161,7 +161,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -169,7 +169,7 @@
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>

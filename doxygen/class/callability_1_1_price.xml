@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="callability_1_1_price" kind="class" prot="public">
-    <compoundname>QuantLib::Callability::Price</compoundname>
+    <compoundname>Callability::Price</compoundname>
     <includes local="no">/instruments/callabilityschedule.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
@@ -29,7 +29,7 @@
         <argsstring>(Real amount, Type type)</argsstring>
         <name>Price</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>amount</declname>
         </param>
         <param>
@@ -39,7 +39,7 @@
         <location file="/instruments/callabilityschedule.hpp" line="44" bodyfile="/instruments/callabilityschedule.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="callability_1_1_price_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>

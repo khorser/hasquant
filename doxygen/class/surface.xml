@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="surface" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Surface</compoundname>
+    <compoundname>Surface</compoundname>
     <includes local="no">/math/surface.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="surface_1af034c5477c1ca16034f9c847379b7a07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real operator()</definition>
         <argsstring>(Real x, Real y) const =0</argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/surface.hpp" line="38"/>

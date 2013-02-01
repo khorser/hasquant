@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="basket" kind="class" prot="public">
-    <compoundname>QuantLib::Basket</compoundname>
+    <compoundname>Basket</compoundname>
     <includes local="no">/experimental/credit/basket.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="basket_1a23dbe55228444e1fdde6e2b693fee99e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -21,7 +21,7 @@
           <declname>names</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>notionals</declname>
         </param>
         <param>
@@ -37,19 +37,19 @@
           <declname>rrModels</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>attachmentRatio</declname>
           <defval>0.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>detachmentRatio</declname>
           <defval>1.0</defval>
         </param>
         <location file="/experimental/credit/basket.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
@@ -63,14 +63,14 @@
         <location file="/experimental/credit/basket.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="basket_1ad7ef279ce0caf915ed64893d6eac6514" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; notionals</definition>
         <argsstring>() const </argsstring>
         <name>notionals</name>
         <location file="/experimental/credit/basket.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a97d3cd5d334da092fc761c75282410c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real notional</definition>
         <argsstring>()</argsstring>
         <name>notional</name>
@@ -98,7 +98,7 @@
         <location file="/experimental/credit/basket.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a17b7eb804694a2d7bf15358c552f6fa2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; LGDs</definition>
         <argsstring>() const </argsstring>
         <name>LGDs</name>
@@ -107,14 +107,14 @@
         <location file="/experimental/credit/basket.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="basket_1ab1e1ba3b401ff50b64f835425a53259f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real lgd</definition>
         <argsstring>()</argsstring>
         <name>lgd</name>
         <location file="/experimental/credit/basket.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="basket_1ae2c349ef2d7c683cfdb5de15304f5381" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real attachmentRatio</definition>
         <argsstring>() const </argsstring>
         <name>attachmentRatio</name>
@@ -123,7 +123,7 @@
         <location file="/experimental/credit/basket.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a85441410da08738d337072dddaee4099" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real detachmentRatio</definition>
         <argsstring>() const </argsstring>
         <name>detachmentRatio</name>
@@ -132,7 +132,7 @@
         <location file="/experimental/credit/basket.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a2ce2c4ae7660f1ebe254836867496515" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real basketNotional</definition>
         <argsstring>() const </argsstring>
         <name>basketNotional</name>
@@ -141,7 +141,7 @@
         <location file="/experimental/credit/basket.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="basket_1ae843bd7cc367d5094d6011bd427099ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real basketLGD</definition>
         <argsstring>() const </argsstring>
         <name>basketLGD</name>
@@ -150,7 +150,7 @@
         <location file="/experimental/credit/basket.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="basket_1aa1c794e2cb9882a64af1b81010f5135a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real trancheNotional</definition>
         <argsstring>() const </argsstring>
         <name>trancheNotional</name>
@@ -159,25 +159,25 @@
         <location file="/experimental/credit/basket.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a1e783ddb91eec4ad894e98b683469251" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real attachmentAmount</definition>
         <argsstring>() const </argsstring>
         <name>attachmentAmount</name>
         <briefdescription>
-<para>Attachment amount = <ref refid="basket_1ae2c349ef2d7c683cfdb5de15304f5381" kindref="member">attachmentRatio()</ref> * <ref refid="basket_1a2ce2c4ae7660f1ebe254836867496515" kindref="member">basketNotional()</ref> </para>        </briefdescription>
+<para>Attachment amount = attachmentRatio() * basketNotional() </para>        </briefdescription>
         <location file="/experimental/credit/basket.hpp" line="91"/>
       </memberdef>
       <memberdef kind="function" id="basket_1abbbd21799e7062a9315458e632b0cfc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real detachmentAmount</definition>
         <argsstring>() const </argsstring>
         <name>detachmentAmount</name>
         <briefdescription>
-<para>Detachment amount = <ref refid="basket_1a85441410da08738d337072dddaee4099" kindref="member">detachmentRatio()</ref> * <ref refid="basket_1a2ce2c4ae7660f1ebe254836867496515" kindref="member">basketNotional()</ref> </para>        </briefdescription>
+<para>Detachment amount = detachmentRatio() * basketNotional() </para>        </briefdescription>
         <location file="/experimental/credit/basket.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a949402598db9d9607901a5f2e5fd4f35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; probabilities</definition>
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>probabilities</name>
@@ -190,7 +190,7 @@
         <location file="/experimental/credit/basket.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a921364ca8a7cb5624d663562a1eeb8a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cumulatedLoss</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>cumulatedLoss</name>
@@ -207,7 +207,7 @@
         <location file="/experimental/credit/basket.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="basket_1af17463f541838ff0d64f6dccef86d5ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real remainingNotional</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingNotional</name>
@@ -224,7 +224,7 @@
         <location file="/experimental/credit/basket.hpp" line="108"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a86fa812c30549a1c947780d73ef1396c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; remainingNotionals</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingNotionals</name>
@@ -288,7 +288,7 @@
         <location file="/experimental/credit/basket.hpp" line="126"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a361f603b4f14069e6663065fd2a037f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real remainingAttachmentRatio</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingAttachmentRatio</name>
@@ -301,11 +301,11 @@
           <declname>endDate</declname>
         </param>
         <detaileddescription>
-<para>The remaining attachment amount is RAA = max (0, attachmentAmount - <ref refid="basket_1a921364ca8a7cb5624d663562a1eeb8a3" kindref="member">cumulatedLoss()</ref>)</para><para>The remaining attachment ratio is then RAR = RAA / <ref refid="basket_1af17463f541838ff0d64f6dccef86d5ad" kindref="member">remainingNotional()</ref> </para>        </detaileddescription>
+<para>The remaining attachment amount is RAA = max (0, attachmentAmount - cumulatedLoss())</para><para>The remaining attachment ratio is then RAR = RAA / remainingNotional() </para>        </detaileddescription>
         <location file="/experimental/credit/basket.hpp" line="135"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a50bf1497b0ee2e46019d49c080e12cc6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real remainingAttachmentAmount</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingAttachmentAmount</name>
@@ -320,7 +320,7 @@
         <location file="/experimental/credit/basket.hpp" line="137"/>
       </memberdef>
       <memberdef kind="function" id="basket_1a5d41936d9e859f32a6c7e175bcd3cea9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real remainingDetachmentRatio</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingDetachmentRatio</name>
@@ -333,11 +333,11 @@
           <declname>endDate</declname>
         </param>
         <detaileddescription>
-<para>The remaining detachment amount is RDA = max (0, detachmentAmount - <ref refid="basket_1a921364ca8a7cb5624d663562a1eeb8a3" kindref="member">cumulatedLoss()</ref>)</para><para>The remaining detachment ratio is then RDR = RDA / <ref refid="basket_1af17463f541838ff0d64f6dccef86d5ad" kindref="member">remainingNotional()</ref> </para>        </detaileddescription>
+<para>The remaining detachment amount is RDA = max (0, detachmentAmount - cumulatedLoss())</para><para>The remaining detachment ratio is then RDR = RDA / remainingNotional() </para>        </detaileddescription>
         <location file="/experimental/credit/basket.hpp" line="146"/>
       </memberdef>
       <memberdef kind="function" id="basket_1aaddc0493aae56b7b97b7524107d3a587" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real remainingDetachmentAmount</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate) const </argsstring>
         <name>remainingDetachmentAmount</name>
@@ -366,7 +366,7 @@
         <location file="/experimental/credit/basket.hpp" line="156"/>
       </memberdef>
       <memberdef kind="function" id="basket_1acaf4731df0cbd131390a0669f8882788" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real scenarioTrancheLoss</definition>
         <argsstring>(Date endDate) const </argsstring>
         <name>scenarioTrancheLoss</name>
@@ -395,12 +395,12 @@
         <param>
           <type>Date</type>
           <declname>startDate</declname>
-          <defval><ref refid="date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
+          <defval>Date::minDate()</defval>
         </param>
         <param>
           <type>Date</type>
           <declname>endDate</declname>
-          <defval><ref refid="date_1ab16674c4f64b17d89302cf0805f1fdbd" kindref="member">Date::maxDate</ref>()</defval>
+          <defval>Date::maxDate()</defval>
         </param>
         <briefdescription>
 <para>Vector of incremental tranche losses under the current scenario. </para>        </briefdescription>

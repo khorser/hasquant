@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="volatility_term_structure" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::VolatilityTermStructure</compoundname>
+    <compoundname>VolatilityTermStructure</compoundname>
     <includes local="no">/termstructures/voltermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -16,7 +16,7 @@
           <declname>cal</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000132"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000132"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/voltermstructure.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="volatility_term_structure_1a6dde14edb40ab23fb1ea553c516d56f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -34,7 +34,7 @@
         <argsstring>(BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>VolatilityTermStructure</name>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -43,7 +43,7 @@
           <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000133"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000133"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/voltermstructure.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="volatility_term_structure_1a313b93ad25131868d6ecba5dd642741d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -60,7 +60,7 @@
           <declname>cal</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -78,7 +78,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>VolatilityTermStructure</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -86,7 +86,7 @@
           <declname>cal</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -101,7 +101,7 @@
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="volatility_term_structure_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const </argsstring>
         <name>businessDayConvention</name>
@@ -123,7 +123,7 @@
         <location file="/termstructures/voltermstructure.hpp" line="72" bodyfile="/termstructures/voltermstructure.hpp" bodystart="93" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>minStrike</name>
@@ -132,7 +132,7 @@
         <location file="/termstructures/voltermstructure.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>maxStrike</name>

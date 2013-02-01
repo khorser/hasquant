@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cap_floor_term_vol_curve" kind="class" prot="public">
-    <compoundname>QuantLib::CapFloorTermVolCurve</compoundname>
+    <compoundname>CapFloorTermVolCurve</compoundname>
     <includes local="no">/termstructures/volatility/capfloor/capfloortermvolcurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>some inspectors</header>
@@ -20,7 +20,7 @@
         <location file="/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="93" bodyfile="/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="146" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_term_vol_curve_1ac5ef24fc83d3fdf7ede195f4a57f5b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; optionTimes</definition>
         <argsstring>() const </argsstring>
         <name>optionTimes</name>
@@ -34,7 +34,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;vols, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>CapFloorTermVolCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -76,7 +76,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -110,7 +110,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -118,7 +118,7 @@
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Volatility &gt; &amp;</type>
           <declname>vols</declname>
         </param>
         <param>
@@ -136,7 +136,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, BusinessDayConvention bdc, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Volatility &gt; &amp;vols, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>CapFloorTermVolCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -144,7 +144,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -152,7 +152,7 @@
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Volatility &gt; &amp;</type>
           <declname>vols</declname>
         </param>
         <param>

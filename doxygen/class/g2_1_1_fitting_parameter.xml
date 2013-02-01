@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="g2_1_1_fitting_parameter" kind="class" prot="public">
-    <compoundname>QuantLib::G2::FittingParameter</compoundname>
+    <compoundname>G2::FittingParameter</compoundname>
     <includes local="no">/models/shortrate/twofactormodels/g2.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="g2_1_1_fitting_parameter_1a879c8351d2feb055d671090550ab2a9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,23 +14,23 @@
           <declname>termStructure</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eta</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rho</declname>
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="192" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="184" bodyend="192"/>

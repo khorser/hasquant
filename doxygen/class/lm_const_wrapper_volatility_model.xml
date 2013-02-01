@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="lm_const_wrapper_volatility_model" kind="class" prot="public">
-    <compoundname>QuantLib::LmConstWrapperVolatilityModel</compoundname>
+    <compoundname>LmConstWrapperVolatilityModel</compoundname>
     <includes local="no">/legacy/libormarketmodels/lmconstwrappervolmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="lm_const_wrapper_volatility_model_1a6014ca30f372740ff06659eb19292e74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -16,16 +16,16 @@
         <location file="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="37" bodyfile="/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="34" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="lm_const_wrapper_volatility_model_1a91c06b3f5c1a0426b7a871e1cd103799" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(Size i, Time t, const Array &amp;x=Null&lt; Array &gt;())</argsstring>
         <name>volatility</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="heston_process" kind="class" prot="public">
-    <compoundname>QuantLib::HestonProcess</compoundname>
+    <compoundname>HestonProcess</compoundname>
     <includes local="no">/processes/hestonprocess.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="heston_process_1a36f45ac51e3e98d35c68ca85b7573e87" prot="public" static="no">
@@ -46,23 +46,23 @@
           <declname>s0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>kappa</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>theta</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rho</declname>
         </param>
         <param>
@@ -73,35 +73,35 @@
         <location file="/processes/hestonprocess.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="heston_process_1a30fd40988a93faccca807dd016f8c5e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real v0</definition>
         <argsstring>() const </argsstring>
         <name>v0</name>
         <location file="/processes/hestonprocess.hpp" line="70" bodyfile="/processes/hestonprocess.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="heston_process_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
         <location file="/processes/hestonprocess.hpp" line="71" bodyfile="/processes/hestonprocess.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="heston_process_1a925b952838ecbba1d743cab564c69dc9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real kappa</definition>
         <argsstring>() const </argsstring>
         <name>kappa</name>
         <location file="/processes/hestonprocess.hpp" line="72" bodyfile="/processes/hestonprocess.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="heston_process_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real theta</definition>
         <argsstring>() const </argsstring>
         <name>theta</name>
         <location file="/processes/hestonprocess.hpp" line="73" bodyfile="/processes/hestonprocess.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="heston_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>

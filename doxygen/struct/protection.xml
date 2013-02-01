@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="protection" kind="struct" prot="public">
-    <compoundname>QuantLib::Protection</compoundname>
+    <compoundname>Protection</compoundname>
     <includes local="no">/default.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="protection_1a8c0137d7160ad71b6ed265c53c99ed00" prot="public" static="no">

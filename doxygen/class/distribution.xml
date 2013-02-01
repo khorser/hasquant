@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="distribution" kind="class" prot="public">
-    <compoundname>QuantLib::Distribution</compoundname>
+    <compoundname>Distribution</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="distribution_1a9c7947ad1d202a98f76341b8b81b64f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,11 +13,11 @@
           <declname>nBuckets</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xmin</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xmax</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="40"/>
@@ -35,7 +35,7 @@
         <argsstring>(Real value)</argsstring>
         <name>add</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="43"/>
@@ -50,7 +50,7 @@
           <declname>bucket</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="44"/>
@@ -65,7 +65,7 @@
           <declname>bucket</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="45"/>
@@ -78,169 +78,169 @@
         <location file="/experimental/credit/distribution.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/experimental/credit/distribution.hpp" line="48" bodyfile="/experimental/credit/distribution.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a9767c3368d909fa4808154888039d303" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real x</definition>
         <argsstring>(Size k)</argsstring>
         <name>x</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="49" bodyfile="/experimental/credit/distribution.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1ad5f0a3ed2a9e197cd9f52a79bea4bd3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>std::vector&lt; Real &gt; &amp;</type>
         <definition>std::vector&lt;Real&gt;&amp; x</definition>
         <argsstring>()</argsstring>
         <name>x</name>
         <location file="/experimental/credit/distribution.hpp" line="50" bodyfile="/experimental/credit/distribution.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a28040c7c6c6eb0308e009db2fe8da501" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real dx</definition>
         <argsstring>(Size k)</argsstring>
         <name>dx</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="51" bodyfile="/experimental/credit/distribution.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a596f92c473957228b1f9a858cf24740e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>std::vector&lt; Real &gt; &amp;</type>
         <definition>std::vector&lt;Real&gt;&amp; dx</definition>
         <argsstring>()</argsstring>
         <name>dx</name>
         <location file="/experimental/credit/distribution.hpp" line="52" bodyfile="/experimental/credit/distribution.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1ad0376574654f71c420ff995da814076f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real dx</definition>
         <argsstring>(Real x)</argsstring>
         <name>dx</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a5b6e140a751abc4ecf26029fe449dc13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real density</definition>
         <argsstring>(Size k)</argsstring>
         <name>density</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="55" bodyfile="/experimental/credit/distribution.hpp" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a0592aa888c132e0f1dc49b1de21cb84d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cumulative</definition>
         <argsstring>(Size k)</argsstring>
         <name>cumulative</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="59" bodyfile="/experimental/credit/distribution.hpp" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a5fe27432421977a8fc63d81c6c7b6de0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real excess</definition>
         <argsstring>(Size k)</argsstring>
         <name>excess</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="63" bodyfile="/experimental/credit/distribution.hpp" bodystart="63" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1aa417d2a314b7c5e49fc719513d1a47ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cumulativeExcess</definition>
         <argsstring>(Size k)</argsstring>
         <name>cumulativeExcess</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="67" bodyfile="/experimental/credit/distribution.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1ab32a13d6f1b280b69c0385faaf9d1e97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real average</definition>
         <argsstring>(Size k)</argsstring>
         <name>average</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="71" bodyfile="/experimental/credit/distribution.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a8a70402157f35d0454e13badfb207b59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real confidenceLevel</definition>
         <argsstring>(Real quantil)</argsstring>
         <name>confidenceLevel</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>quantil</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a63e7c55b99cf2ad663454ed08bd0051e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cumulativeDensity</definition>
         <argsstring>(Real x)</argsstring>
         <name>cumulativeDensity</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1a86293df508fd9aca424cf12eaefd6d2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cumulativeExcessProbability</definition>
         <argsstring>(Real a, Real b)</argsstring>
         <name>cumulativeExcessProbability</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1aae04a7d4811a84de1b765c12da82b574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real expectedValue</definition>
         <argsstring>()</argsstring>
         <name>expectedValue</name>
         <location file="/experimental/credit/distribution.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="distribution_1aa995fbb949e9bebc3b965179ca5a4dbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real trancheExpectedValue</definition>
         <argsstring>(Real a, Real d)</argsstring>
         <name>trancheExpectedValue</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>d</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="77"/>
@@ -251,7 +251,7 @@
             <type>class F</type>
           </param>
         </templateparamlist>
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real expectedValue</definition>
         <argsstring>(F &amp;f)</argsstring>
         <name>expectedValue</name>
@@ -267,11 +267,11 @@
         <argsstring>(Real attachmentPoint, Real detachmentPoint)</argsstring>
         <name>tranche</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>attachmentPoint</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>detachmentPoint</declname>
         </param>
         <detaileddescription>
@@ -284,7 +284,7 @@
         <argsstring>(Real x)</argsstring>
         <name>locate</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/experimental/credit/distribution.hpp" line="103"/>

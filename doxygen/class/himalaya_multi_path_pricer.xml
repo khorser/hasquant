@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="himalaya_multi_path_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::HimalayaMultiPathPricer</compoundname>
+    <compoundname>HimalayaMultiPathPricer</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="himalaya_multi_path_pricer_1a1780eda6da0b1555382674048ce1f03c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,13 +13,13 @@
           <declname>payoff</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <type>DiscountFactor</type>
           <declname>discount</declname>
         </param>
         <location file="/experimental/exoticoptions/mchimalayaengine.hpp" line="117"/>
       </memberdef>
       <memberdef kind="function" id="himalaya_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(const MultiPath &amp;multiPath) const </argsstring>
         <name>operator()</name>

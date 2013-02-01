@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="sabr_vol_surface" kind="class" prot="public">
-    <compoundname>QuantLib::SabrVolSurface</compoundname>
+    <compoundname>SabrVolSurface</compoundname>
     <includes local="no">/experimental/volatility/sabrvolsurface.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="sabr_vol_surface_1a50c79da67f8bc7df135c5925123cd11b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -20,7 +20,7 @@
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>atmRateSpreads</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="63" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="sabr_vol_surface_1aa98becc004689259db6b16fe04d0c3b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <type>std::vector&lt; Volatility &gt;</type>
         <definition>std::vector&lt; Volatility &gt; volatilitySpreads</definition>
         <argsstring>(const Period &amp;) const </argsstring>
         <name>volatilitySpreads</name>
@@ -48,7 +48,7 @@
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="68" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="144" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="sabr_vol_surface_1a0f371eeae9f8f89ce8177920b3abaa5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <type>std::vector&lt; Volatility &gt;</type>
         <definition>std::vector&lt;Volatility&gt; volatilitySpreads</definition>
         <argsstring>(const Date &amp;) const </argsstring>
         <name>volatilitySpreads</name>

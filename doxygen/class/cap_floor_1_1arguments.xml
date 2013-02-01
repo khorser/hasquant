@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cap_floor_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::CapFloor::arguments</compoundname>
+    <compoundname>CapFloor::arguments</compoundname>
     <includes local="no">/instruments/capfloor.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="cap_floor_1_1arguments_1a777d02d4ccfda23d0f118af594569f33" prot="public" static="no" mutable="no">
@@ -33,49 +33,49 @@
         <location file="/instruments/capfloor.hpp" line="138" bodyfile="/instruments/capfloor.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1a18f074832f71957702f05c4743817e70" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <type>std::vector&lt; Time &gt;</type>
         <definition>std::vector&lt;Time&gt; accrualTimes</definition>
         <argsstring></argsstring>
         <name>accrualTimes</name>
         <location file="/instruments/capfloor.hpp" line="139" bodyfile="/instruments/capfloor.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1a8e6a8068859e154b7c5da3451cd00bd3" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>std::vector&lt; Rate &gt;</type>
         <definition>std::vector&lt;Rate&gt; capRates</definition>
         <argsstring></argsstring>
         <name>capRates</name>
         <location file="/instruments/capfloor.hpp" line="140" bodyfile="/instruments/capfloor.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1a6ac1e143f1e813a2237ed89b6b680457" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>std::vector&lt; Rate &gt;</type>
         <definition>std::vector&lt;Rate&gt; floorRates</definition>
         <argsstring></argsstring>
         <name>floorRates</name>
         <location file="/instruments/capfloor.hpp" line="141" bodyfile="/instruments/capfloor.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1a1c5eed4e3a3d3cc76909740990a11cfd" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>std::vector&lt; Rate &gt;</type>
         <definition>std::vector&lt;Rate&gt; forwards</definition>
         <argsstring></argsstring>
         <name>forwards</name>
         <location file="/instruments/capfloor.hpp" line="142" bodyfile="/instruments/capfloor.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1a47e4ab04fe0cf2981d7ab91749721d77" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; gearings</definition>
         <argsstring></argsstring>
         <name>gearings</name>
         <location file="/instruments/capfloor.hpp" line="143" bodyfile="/instruments/capfloor.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1ab6353abcd945e236ec654a046b5112db" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; spreads</definition>
         <argsstring></argsstring>
         <name>spreads</name>
         <location file="/instruments/capfloor.hpp" line="144" bodyfile="/instruments/capfloor.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="cap_floor_1_1arguments_1a8b1238d4599db1503ca1b3a799a948a2" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; nominals</definition>
         <argsstring></argsstring>
         <name>nominals</name>

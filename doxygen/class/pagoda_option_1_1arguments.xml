@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="pagoda_option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::PagodaOption::arguments</compoundname>
+    <compoundname>PagodaOption::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="pagoda_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
         <type>std::vector&lt; Date &gt;</type>
@@ -11,14 +11,14 @@
         <location file="/experimental/exoticoptions/pagodaoption.hpp" line="64" bodyfile="/experimental/exoticoptions/pagodaoption.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="pagoda_option_1_1arguments_1a8bd2adbc296761a89bdd67dba30d466a" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real roof</definition>
         <argsstring></argsstring>
         <name>roof</name>
         <location file="/experimental/exoticoptions/pagodaoption.hpp" line="65" bodyfile="/experimental/exoticoptions/pagodaoption.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="pagoda_option_1_1arguments_1a1a83cf926af6168b44c7a8b7e2b8f297" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fraction</definition>
         <argsstring></argsstring>
         <name>fraction</name>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1percent__holder" kind="struct" prot="public">
-    <compoundname>QuantLib::detail::percent_holder</compoundname>
+    <compoundname>detail::percent_holder</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="detail_1_1percent__holder_1abd5746c9a8c4bf217e5294c6c702559b" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring></argsstring>
         <name>value</name>
@@ -18,7 +18,7 @@
         <argsstring>(Real value)</argsstring>
         <name>percent_holder</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
         </param>
         <location file="/utilities/dataformatters.hpp" line="56" bodyfile="/utilities/dataformatters.hpp" bodystart="56" bodyend="56"/>

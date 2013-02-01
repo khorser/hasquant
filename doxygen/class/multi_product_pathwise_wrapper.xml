@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="multi_product_pathwise_wrapper" kind="class" prot="public">
-    <compoundname>QuantLib::MultiProductPathwiseWrapper</compoundname>
+    <compoundname>MultiProductPathwiseWrapper</compoundname>
     <includes local="no">/models/marketmodels/products/multistep/multisteppathwisewrapper.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="multi_product_pathwise_wrapper_1a3943bd9fb0e20a9adf88c1e8013a65ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

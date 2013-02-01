@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="generic_gaussian_statistics" kind="class" prot="public">
-    <compoundname>QuantLib::GenericGaussianStatistics</compoundname>
+    <compoundname>GenericGaussianStatistics</compoundname>
     <includes local="no">/math/statistics/gaussianstatistics.hpp</includes>
     <templateparamlist>
       <param>
@@ -11,7 +11,7 @@
       <sectiondef kind="user-defined">
       <header>Gaussian risk measures</header>
       <memberdef kind="function" id="generic_gaussian_statistics_1af3cbbc20c55a893d61eb65aef528ff06" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianDownsideVariance</definition>
         <argsstring>() const </argsstring>
         <name>gaussianDownsideVariance</name>
@@ -20,7 +20,7 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="53" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="53" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="generic_gaussian_statistics_1a2be50d3e88601f790cf85128decdde3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianDownsideDeviation</definition>
         <argsstring>() const </argsstring>
         <name>gaussianDownsideDeviation</name>
@@ -29,12 +29,12 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="60" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="generic_gaussian_statistics_1aa4b3556e8967cf8f3da9e998b7c9c8f9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianRegret</definition>
         <argsstring>(Real target) const </argsstring>
         <name>gaussianRegret</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>target</declname>
         </param>
         <detaileddescription>
@@ -42,12 +42,12 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="69" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="132" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="generic_gaussian_statistics_1ac43553dfb9cb5f223bfd64e7b8e072b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianPercentile</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>gaussianPercentile</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <detaileddescription>
@@ -56,12 +56,12 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="76" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="148" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="generic_gaussian_statistics_1ab00ed695ce6547ce34fb0e88288b7a58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianTopPercentile</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>gaussianTopPercentile</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <detaileddescription>
@@ -70,12 +70,12 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="77" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="163" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="generic_gaussian_statistics_1a6ecbb1924516db89455dcd67b0755fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianPotentialUpside</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>gaussianPotentialUpside</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <briefdescription>
@@ -86,12 +86,12 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="80" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="171" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="generic_gaussian_statistics_1a4d77f5f2ac9ea852e79f46f0001f1c2e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianValueAtRisk</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>gaussianValueAtRisk</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <briefdescription>
@@ -102,12 +102,12 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="83" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="185" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="generic_gaussian_statistics_1a2276577eda78bd4a09353a3d917d3071" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianExpectedShortfall</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>gaussianExpectedShortfall</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <briefdescription>
@@ -122,12 +122,12 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="99" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="201" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="generic_gaussian_statistics_1ada88dfccfdbf634b983c47a081784753" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianShortfall</definition>
         <argsstring>(Real target) const </argsstring>
         <name>gaussianShortfall</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>target</declname>
         </param>
         <briefdescription>
@@ -135,12 +135,12 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="102" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="220" bodyend="225"/>
       </memberdef>
       <memberdef kind="function" id="generic_gaussian_statistics_1acabfa0f881208aff4a8d0490637c05dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gaussianAverageShortfall</definition>
         <argsstring>(Real target) const </argsstring>
         <name>gaussianAverageShortfall</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>target</declname>
         </param>
         <briefdescription>

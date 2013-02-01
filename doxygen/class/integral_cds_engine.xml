@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="integral_cds_engine" kind="class" prot="public">
-    <compoundname>QuantLib::IntegralCdsEngine</compoundname>
+    <compoundname>IntegralCdsEngine</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="integral_cds_engine_1ab30f7acaf3c332994ef8542ceb029564" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -16,7 +16,7 @@
           <type>const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
         </param>
         <param>

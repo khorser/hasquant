@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="vanilla_swap" kind="class" prot="public">
-    <compoundname>QuantLib::VanillaSwap</compoundname>
+    <compoundname>VanillaSwap</compoundname>
     <includes local="no">/instruments/vanillaswap.hpp</includes>
-    <innerclass refid="vanilla_swap_1_1arguments" prot="public">QuantLib::VanillaSwap::arguments</innerclass>
-    <innerclass refid="vanilla_swap_1_1engine" prot="public">QuantLib::VanillaSwap::engine</innerclass>
-    <innerclass refid="vanilla_swap_1_1results" prot="public">QuantLib::VanillaSwap::results</innerclass>
+    <innerclass refid="vanilla_swap_1_1arguments" prot="public">VanillaSwap::arguments</innerclass>
+    <innerclass refid="vanilla_swap_1_1engine" prot="public">VanillaSwap::engine</innerclass>
+    <innerclass refid="vanilla_swap_1_1results" prot="public">VanillaSwap::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="vanilla_swap_1ac43c125cbe618e28e22e6d9328456bbb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -16,7 +16,7 @@
         <location file="/instruments/vanillaswap.hpp" line="85" bodyfile="/instruments/vanillaswap.hpp" bodystart="169" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
@@ -30,7 +30,7 @@
         <location file="/instruments/vanillaswap.hpp" line="88" bodyfile="/instruments/vanillaswap.hpp" bodystart="177" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
@@ -58,7 +58,7 @@
         <location file="/instruments/vanillaswap.hpp" line="93" bodyfile="/instruments/vanillaswap.hpp" bodystart="193" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
@@ -72,21 +72,21 @@
         <location file="/instruments/vanillaswap.hpp" line="95" bodyfile="/instruments/vanillaswap.hpp" bodystart="201" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a25fc6ab972c95c862ead0bbf851ea311" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention paymentConvention</definition>
         <argsstring>() const </argsstring>
         <name>paymentConvention</name>
         <location file="/instruments/vanillaswap.hpp" line="97" bodyfile="/instruments/vanillaswap.hpp" bodystart="205" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1ab54f53e0705d63a28ffcec9dc1b2e15b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg &amp; fixedLeg</definition>
         <argsstring>() const </argsstring>
         <name>fixedLeg</name>
         <location file="/instruments/vanillaswap.hpp" line="99" bodyfile="/instruments/vanillaswap.hpp" bodystart="209" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1abc167b6a043551df75c2cd5d3ff2e42c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg &amp; floatingLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatingLeg</name>
@@ -96,42 +96,42 @@
       <sectiondef kind="user-defined">
       <header>Results</header>
       <memberdef kind="function" id="vanilla_swap_1a8299475d045050eb89682c7fa25ca208" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fixedLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegBPS</name>
         <location file="/instruments/vanillaswap.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a36e1152928660bd46ffdcdfde8a70e6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
         <location file="/instruments/vanillaswap.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1afa34bca9b2bcc12ddaab588613043014" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
         <location file="/instruments/vanillaswap.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a6428d70950807f5c37f18a52fa79d756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real floatingLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegBPS</name>
         <location file="/instruments/vanillaswap.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a3490947f87ceb8a495841d24e03b440e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real floatingLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegNPV</name>
         <location file="/instruments/vanillaswap.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="vanilla_swap_1a9fed7d028c05630c089b2ae653dd94a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
@@ -163,7 +163,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -171,7 +171,7 @@
           <declname>fixedSchedule</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>fixedRate</declname>
         </param>
         <param>
@@ -187,7 +187,7 @@
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
         </param>
         <param>
@@ -195,7 +195,7 @@
           <declname>floatingDayCount</declname>
         </param>
         <param>
-          <type>boost::optional&lt; <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &gt;</type>
+          <type>boost::optional&lt; BusinessDayConvention &gt;</type>
           <declname>paymentConvention</declname>
           <defval>boost::none</defval>
         </param>

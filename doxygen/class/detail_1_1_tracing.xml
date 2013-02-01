@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1_tracing" kind="class" prot="public">
-    <compoundname>QuantLib::detail::Tracing</compoundname>
+    <compoundname>detail::Tracing</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="detail_1_1_tracing_1a486f22824bd83c5308a0d70ffac6f758" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -43,7 +43,7 @@
         <location file="/utilities/tracing.hpp" line="80" bodyfile="/utilities/tracing.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_tracing_1a0d2912955de777acfcd951216a40f795" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer depth</definition>
         <argsstring>() const </argsstring>
         <name>depth</name>

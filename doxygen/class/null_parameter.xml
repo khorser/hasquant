@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="null_parameter" kind="class" prot="public">
-    <compoundname>QuantLib::NullParameter</compoundname>
+    <compoundname>NullParameter</compoundname>
     <includes local="no">/models/parameter.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="null_parameter_1a36792a6f68f66afdeb5cceabeaa5a74e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="piecewise_yo_y_inflation_curve" kind="class" prot="public">
-    <compoundname>QuantLib::PiecewiseYoYInflationCurve</compoundname>
+    <compoundname>PiecewiseYoYInflationCurve</compoundname>
     <includes local="no">/termstructures/inflation/piecewiseyoyinflationcurve.hpp</includes>
     <templateparamlist>
       <param>
@@ -42,7 +42,7 @@
           <declname>lag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -50,7 +50,7 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>baseYoYRate</declname>
         </param>
         <param>
@@ -62,7 +62,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-12</defval>
         </param>
@@ -77,7 +77,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
@@ -91,14 +91,14 @@
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="81" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="130" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="82" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="136" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, Real &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>

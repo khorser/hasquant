@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="iterative_bootstrap" kind="class" prot="public">
-    <compoundname>QuantLib::IterativeBootstrap</compoundname>
+    <compoundname>IterativeBootstrap</compoundname>
     <includes local="no">/termstructures/iterativebootstrap.hpp</includes>
     <templateparamlist>
       <param>

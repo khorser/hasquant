@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="gauss_chebyshev2nd_integration" kind="class" prot="public">
-    <compoundname>QuantLib::GaussChebyshev2ndIntegration</compoundname>
+    <compoundname>GaussChebyshev2ndIntegration</compoundname>
     <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="gauss_chebyshev2nd_integration_1af481dfa2392d1f8db89d68483f806374" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Size n)</argsstring>
         <name>GaussChebyshev2ndIntegration</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
         </param>
         <location file="/math/integrals/gaussianquadratures.hpp" line="181" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="180" bodyend="181"/>

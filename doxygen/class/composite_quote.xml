@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="composite_quote" kind="class" prot="public">
-    <compoundname>QuantLib::CompositeQuote</compoundname>
+    <compoundname>CompositeQuote</compoundname>
     <includes local="no">/quotes/compositequote.hpp</includes>
     <templateparamlist>
       <param>
@@ -11,14 +11,14 @@
       <sectiondef kind="user-defined">
       <header>inspectors</header>
       <memberdef kind="function" id="composite_quote_1afb829bc5e5c096af536f0c5d49074186" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value1</definition>
         <argsstring>() const </argsstring>
         <name>value1</name>
         <location file="/quotes/compositequote.hpp" line="47" bodyfile="/quotes/compositequote.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="composite_quote_1a2398c24daa949e532f309fa4b199fda9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value2</definition>
         <argsstring>() const </argsstring>
         <name>value2</name>

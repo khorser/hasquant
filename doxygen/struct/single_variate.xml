@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="single_variate" kind="struct" prot="public">
-    <compoundname>QuantLib::SingleVariate</compoundname>
+    <compoundname>SingleVariate</compoundname>
     <includes local="no">/methods/montecarlo/mctraits.hpp</includes>
     <templateparamlist>
       <param>
         <type>class RNG</type>
-        <defval><ref refid="namespace_quant_lib_1af791c06b3da1d5f4b90a19f3f423e75e" kindref="member">PseudoRandom</ref></defval>
+        <defval>PseudoRandom</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">

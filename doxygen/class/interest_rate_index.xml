@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="interest_rate_index" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::InterestRateIndex</compoundname>
+    <compoundname>InterestRateIndex</compoundname>
     <includes local="no">/indexes/interestrateindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -20,7 +20,7 @@
         <location file="/indexes/interestrateindex.hpp" line="63" bodyfile="/indexes/interestrateindex.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_index_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <type>Natural</type>
         <definition>Natural fixingDays</definition>
         <argsstring>() const </argsstring>
         <name>fixingDays</name>
@@ -81,7 +81,7 @@
       <sectiondef kind="user-defined">
       <header>Fixing calculations</header>
       <memberdef kind="function" id="interest_rate_index_1a068334de0e963b4134d832cf035b3e03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate forecastFixing</definition>
         <argsstring>(const Date &amp;fixingDate) const =0</argsstring>
         <name>forecastFixing</name>
@@ -94,7 +94,7 @@
         <location file="/indexes/interestrateindex.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_index_1a8c8876b15f54345f4c91f930498ad4bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate pastFixing</definition>
         <argsstring>(const Date &amp;fixingDate) const </argsstring>
         <name>pastFixing</name>
@@ -120,7 +120,7 @@
           <declname>tenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>

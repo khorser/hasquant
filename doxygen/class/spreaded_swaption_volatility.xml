@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="spreaded_swaption_volatility" kind="class" prot="public">
-    <compoundname>QuantLib::SpreadedSwaptionVolatility</compoundname>
+    <compoundname>SpreadedSwaptionVolatility</compoundname>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
       <memberdef kind="function" id="spreaded_swaption_volatility_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -19,7 +19,7 @@
         <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="42" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_swaption_volatility_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time maxTime</definition>
         <argsstring>() const </argsstring>
         <name>maxTime</name>
@@ -40,7 +40,7 @@
         <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="45" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_swaption_volatility_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <type>Natural</type>
         <definition>Natural settlementDays</definition>
         <argsstring>() const </argsstring>
         <name>settlementDays</name>
@@ -50,14 +50,14 @@
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
       <memberdef kind="function" id="spreaded_swaption_volatility_1a92f7194103698b0abf537479db1bab49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
         <location file="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="50" bodyfile="/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_swaption_volatility_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>

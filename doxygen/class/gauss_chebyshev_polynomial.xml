@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="gauss_chebyshev_polynomial" kind="class" prot="public">
-    <compoundname>QuantLib::GaussChebyshevPolynomial</compoundname>
+    <compoundname>GaussChebyshevPolynomial</compoundname>
     <includes local="no">/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="gauss_chebyshev_polynomial_1a34e56f26bdc316b4ea45138ccb9ddf4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

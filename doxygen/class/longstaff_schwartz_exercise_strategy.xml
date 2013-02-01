@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="longstaff_schwartz_exercise_strategy" kind="class" prot="public">
-    <compoundname>QuantLib::LongstaffSchwartzExerciseStrategy</compoundname>
+    <compoundname>LongstaffSchwartzExerciseStrategy</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="longstaff_schwartz_exercise_strategy_1a79655842b885656d451a59cf5cccb9db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,7 +13,7 @@
           <declname>basisSystem</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; Real &gt; &gt; &amp;</type>
           <declname>basisCoefficients</declname>
         </param>
         <param>
@@ -21,7 +21,7 @@
           <declname>evolution</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Size &gt; &amp;</type>
           <declname>numeraires</declname>
         </param>
         <param>
@@ -35,14 +35,14 @@
         <location file="/models/marketmodels/callability/lsstrategy.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="longstaff_schwartz_exercise_strategy_1aa8dcb0de162131db7bd1609d221445ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <type>std::vector&lt; Time &gt;</type>
         <definition>std::vector&lt;Time&gt; exerciseTimes</definition>
         <argsstring>() const </argsstring>
         <name>exerciseTimes</name>
         <location file="/models/marketmodels/callability/lsstrategy.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="longstaff_schwartz_exercise_strategy_1ab721c6778f9fcc704d178a60cdd7c32f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <type>std::vector&lt; Time &gt;</type>
         <definition>std::vector&lt;Time&gt; relevantTimes</definition>
         <argsstring>() const </argsstring>
         <name>relevantTimes</name>

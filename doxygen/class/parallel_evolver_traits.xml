@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="parallel_evolver_traits" kind="class" prot="public">
-    <compoundname>QuantLib::ParallelEvolverTraits</compoundname>
+    <compoundname>ParallelEvolverTraits</compoundname>
     <templateparamlist>
       <param>
         <type>typename traits</type>

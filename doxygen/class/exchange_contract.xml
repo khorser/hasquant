@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="exchange_contract" kind="class" prot="public">
-    <compoundname>QuantLib::ExchangeContract</compoundname>
+    <compoundname>ExchangeContract</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="exchange_contract_1a03ace8c902bb8ec876fd808d8ae710ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

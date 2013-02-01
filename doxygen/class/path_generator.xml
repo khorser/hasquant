@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="path_generator" kind="class" prot="public">
-    <compoundname>QuantLib::PathGenerator</compoundname>
+    <compoundname>PathGenerator</compoundname>
     <includes local="no">/methods/montecarlo/pathgenerator.hpp</includes>
     <templateparamlist>
       <param>
@@ -25,7 +25,7 @@
         <location file="/methods/montecarlo/pathgenerator.hpp" line="60" bodyfile="/methods/montecarlo/pathgenerator.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="path_generator_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
@@ -59,11 +59,11 @@
           <defname>process</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>length</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>timeSteps</declname>
         </param>
         <param>

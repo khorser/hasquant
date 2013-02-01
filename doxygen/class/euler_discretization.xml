@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="euler_discretization" kind="class" prot="public">
-    <compoundname>QuantLib::EulerDiscretization</compoundname>
+    <compoundname>EulerDiscretization</compoundname>
     <includes local="no">/processes/eulerdiscretization.hpp</includes>
     <briefdescription>
 <para>Euler discretization for stochastic processes. </para>    </briefdescription>

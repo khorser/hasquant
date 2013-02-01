@@ -3,10 +3,10 @@
   <compounddef id="group__forwardengines" kind="group">
     <compoundname>forwardengines</compoundname>
     <title>Forward option engines</title>
-    <innerclass refid="class_quant_lib_1_1_integral_heston_variance_option_engine" prot="public">QuantLib::IntegralHestonVarianceOptionEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_forward_vanilla_engine" prot="public">QuantLib::ForwardVanillaEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_forward_performance_vanilla_engine" prot="public">QuantLib::ForwardPerformanceVanillaEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_m_c_variance_swap_engine" prot="public">QuantLib::MCVarianceSwapEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_replicating_variance_swap_engine" prot="public">QuantLib::ReplicatingVarianceSwapEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_integral_heston_variance_option_engine" prot="public">IntegralHestonVarianceOptionEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward_vanilla_engine" prot="public">ForwardVanillaEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward_performance_vanilla_engine" prot="public">ForwardPerformanceVanillaEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_variance_swap_engine" prot="public">MCVarianceSwapEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_replicating_variance_swap_engine" prot="public">ReplicatingVarianceSwapEngine</innerclass>
   </compounddef>
 </doxygen>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="piecewise_constant_variance" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::PiecewiseConstantVariance</compoundname>
+    <compoundname>PiecewiseConstantVariance</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="piecewise_constant_variance_1a22503e6f07e55d69923990e0e04f69df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -11,66 +11,66 @@
         <location file="/models/marketmodels/models/piecewiseconstantvariance.hpp" line="35" bodyfile="/models/marketmodels/models/piecewiseconstantvariance.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_constant_variance_1a6c587ac472de0f60115142785ec16b20" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Real&gt;&amp; variances</definition>
         <argsstring>() const =0</argsstring>
         <name>variances</name>
         <location file="/models/marketmodels/models/piecewiseconstantvariance.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_constant_variance_1ae471076c554be51097fe2a1531f6da05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Volatility &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Volatility&gt;&amp; volatilities</definition>
         <argsstring>() const =0</argsstring>
         <name>volatilities</name>
         <location file="/models/marketmodels/models/piecewiseconstantvariance.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_constant_variance_1acd4ae9bccce0ae4579e3c97df63654e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Time&gt;&amp; rateTimes</definition>
         <argsstring>() const =0</argsstring>
         <name>rateTimes</name>
         <location file="/models/marketmodels/models/piecewiseconstantvariance.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_constant_variance_1a56fbd184988a6e363d9238dec4044361" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real variance</definition>
         <argsstring>(Size i) const </argsstring>
         <name>variance</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/models/marketmodels/models/piecewiseconstantvariance.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_constant_variance_1a5b256026fd5b2517137c2bf68886410e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(Size i) const </argsstring>
         <name>volatility</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/models/marketmodels/models/piecewiseconstantvariance.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_constant_variance_1a42970b6f13f76c5b40bafa7a102c47da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real totalVariance</definition>
         <argsstring>(Size i) const </argsstring>
         <name>totalVariance</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/models/marketmodels/models/piecewiseconstantvariance.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_constant_variance_1a945196031994b5a588947cffdd9d8416" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility totalVolatility</definition>
         <argsstring>(Size i) const </argsstring>
         <name>totalVolatility</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/models/marketmodels/models/piecewiseconstantvariance.hpp" line="44"/>

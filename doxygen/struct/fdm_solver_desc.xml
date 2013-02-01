@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_solver_desc" kind="struct" prot="public">
-    <compoundname>QuantLib::FdmSolverDesc</compoundname>
+    <compoundname>FdmSolverDesc</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="fdm_solver_desc_1ad85eeecbf370c66542608e95bac87677" prot="public" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
@@ -32,21 +32,21 @@
         <location file="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="39" bodyfile="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="fdm_solver_desc_1a86b4fad6e76ae4e0eeb45fbe1663c1f9" prot="public" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>const Time</type>
         <definition>const Time maturity</definition>
         <argsstring></argsstring>
         <name>maturity</name>
         <location file="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="40" bodyfile="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="fdm_solver_desc_1a0ea1d367e7a89798f7ae4e7cac0fe8a4" prot="public" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>const Size</type>
         <definition>const Size timeSteps</definition>
         <argsstring></argsstring>
         <name>timeSteps</name>
         <location file="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="41" bodyfile="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="fdm_solver_desc_1a5fa0c652f147a64d0ace95737800d6db" prot="public" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>const Size</type>
         <definition>const Size dampingSteps</definition>
         <argsstring></argsstring>
         <name>dampingSteps</name>

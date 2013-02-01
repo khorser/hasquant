@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="quadratic" kind="class" prot="public">
-    <compoundname>QuantLib::quadratic</compoundname>
+    <compoundname>quadratic</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="quadratic_1aa085e099335ba0b1090969bc150ad349" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -9,46 +9,46 @@
         <argsstring>(Real a, Real b, Real c)</argsstring>
         <name>quadratic</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>c</declname>
         </param>
         <location file="/math/quadratic.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="quadratic_1abe8fb0a2a1c5b293379f0c0274317b71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real turningPoint</definition>
         <argsstring>() const </argsstring>
         <name>turningPoint</name>
         <location file="/math/quadratic.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="quadratic_1a28c1d3143fea68b3d5df76203fd2e902" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAtTurningPoint</definition>
         <argsstring>() const </argsstring>
         <name>valueAtTurningPoint</name>
         <location file="/math/quadratic.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="quadratic_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(Real x) const </argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/math/quadratic.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="quadratic_1a4a45db715b7fd36de755b688828de9d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real discriminant</definition>
         <argsstring>() const </argsstring>
         <name>discriminant</name>
@@ -60,11 +60,11 @@
         <argsstring>(Real &amp;x, Real &amp;y) const </argsstring>
         <name>roots</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <type>Real &amp;</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <type>Real &amp;</type>
           <declname>y</declname>
         </param>
         <location file="/math/quadratic.hpp" line="41"/>

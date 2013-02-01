@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="energy_future" kind="class" prot="public">
-    <compoundname>QuantLib::EnergyFuture</compoundname>
+    <compoundname>EnergyFuture</compoundname>
     <includes local="no">/experimental/commodities/energyfuture.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="energy_future_1a3dd5517747f9768288025782dac41b15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Integer buySell, const Quantity &amp;quantity, const CommodityUnitCost &amp;tradePrice, const boost::shared_ptr&lt; CommodityIndex &gt; &amp;index, const CommodityType &amp;commodityType, const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;secondaryCosts)</argsstring>
         <name>EnergyFuture</name>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>buySell</declname>
         </param>
         <param>

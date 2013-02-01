@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="boundary_condition_set" kind="class" prot="public">
-    <compoundname>QuantLib::BoundaryConditionSet</compoundname>
+    <compoundname>BoundaryConditionSet</compoundname>
     <templateparamlist>
       <param>
         <type>typename bc_set</type>
@@ -25,7 +25,7 @@
         <argsstring>(Size i) const </argsstring>
         <name>operator[]</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/methods/finitedifferences/parallelevolver.hpp" line="67" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="67" bodyend="69"/>

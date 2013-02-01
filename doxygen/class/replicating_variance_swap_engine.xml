@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="replicating_variance_swap_engine" kind="class" prot="public">
-    <compoundname>QuantLib::ReplicatingVarianceSwapEngine</compoundname>
+    <compoundname>ReplicatingVarianceSwapEngine</compoundname>
     <includes local="no">/pricingengines/forward/replicatingvarianceswapengine.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="replicating_variance_swap_engine_1ae4c21c3b5d3bff2b0fd3ff7d115b85d0" prot="public" static="no">
-        <type>std::vector&lt; std::pair&lt; boost::shared_ptr&lt; StrikedTypePayoff &gt;, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; boost::shared_ptr&lt; StrikedTypePayoff &gt;, Real &gt; &gt;</type>
         <definition>typedef std::vector&lt;std::pair&lt; boost::shared_ptr&lt;StrikedTypePayoff&gt;, Real&gt; &gt; weights_type</definition>
         <argsstring></argsstring>
         <name>weights_type</name>
@@ -23,19 +23,19 @@
           <declname>process</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>dk</declname>
           <defval>5.0</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>callStrikes</declname>
-          <defval>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>std::vector&lt; Real &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>putStrikes</declname>
-          <defval>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>std::vector&lt; Real &gt;()</defval>
         </param>
         <location file="/pricingengines/forward/replicatingvarianceswapengine.hpp" line="52" bodyfile="/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="75" bodyend="91"/>
       </memberdef>

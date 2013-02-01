@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="settings" kind="class" prot="public">
-    <compoundname>QuantLib::Settings</compoundname>
+    <compoundname>Settings</compoundname>
     <includes local="no">/settings.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="settings_1a95055e9410ed0465a5f30d3ffc90c1d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -31,7 +31,7 @@
         <argsstring>()</argsstring>
         <name>anchorEvaluationDate</name>
         <detaileddescription>
-<para>Call this to prevent the evaluation date to change at midnight (and, incidentally, to gain quite a bit of performance.) If no evaluation date was previously set, it is equivalent to setting the evaluation date to <ref refid="date_1aa3b3414c408337e640d21c0936602c66" kindref="member">Date::todaysDate()</ref>; if an evaluation date other than Date() was already set, it has no effect. </para>        </detaileddescription>
+<para>Call this to prevent the evaluation date to change at midnight (and, incidentally, to gain quite a bit of performance.) If no evaluation date was previously set, it is equivalent to setting the evaluation date to Date::todaysDate(); if an evaluation date other than Date() was already set, it has no effect. </para>        </detaileddescription>
         <location file="/settings.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="settings_1a3d83ddb191bf74ffee552d9dd9fc2d3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -40,7 +40,7 @@
         <argsstring>()</argsstring>
         <name>resetEvaluationDate</name>
         <detaileddescription>
-<para>Call this to reset the evaluation date to <ref refid="date_1aa3b3414c408337e640d21c0936602c66" kindref="member">Date::todaysDate()</ref> and allow it to change at midnight. It is equivalent to setting the evaluation date to Date(). This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read. </para>        </detaileddescription>
+<para>Call this to reset the evaluation date to Date::todaysDate() and allow it to change at midnight. It is equivalent to setting the evaluation date to Date(). This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read. </para>        </detaileddescription>
         <location file="/settings.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="settings_1a42985b53935a1455fae87abac7897abe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -49,7 +49,7 @@
         <argsstring>()</argsstring>
         <name>includeReferenceDateEvents</name>
         <detaileddescription>
-<para>This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the <ref refid="event_1aca737dd96c9485ce9613e5fb187c46eb" kindref="member">Event::hasOccurred</ref> method. </para>        </detaileddescription>
+<para>This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the Event::hasOccurred method. </para>        </detaileddescription>
         <location file="/settings.hpp" line="95" bodyfile="/settings.hpp" bodystart="161" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="settings_1a661c3f098e93123cf66b0435b1a5e0c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -79,7 +79,7 @@
         <argsstring>()</argsstring>
         <name>includeTodaysCashFlows</name>
         <detaileddescription>
-<para>If set, this flag specifies whether or not CashFlows occurring on today&apos;s date should enter the NPV. When the NPV date (i.e., the date at which the cash flows are discounted) equals today&apos;s date, this flag overrides the behavior chosen for includeReferenceDate. It cannot be overridden locally when calling the <ref refid="cash_flow_1a124a26b60637ae9384e543ed3f483064" kindref="member">CashFlow::hasOccurred</ref> method. </para>        </detaileddescription>
+<para>If set, this flag specifies whether or not CashFlows occurring on today&apos;s date should enter the NPV. When the NPV date (i.e., the date at which the cash flows are discounted) equals today&apos;s date, this flag overrides the behavior chosen for includeReferenceDate. It cannot be overridden locally when calling the CashFlow::hasOccurred method. </para>        </detaileddescription>
         <location file="/settings.hpp" line="113" bodyfile="/settings.hpp" bodystart="169" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="settings_1a1dbed895b6b7fa9c7c61a6618d55feac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

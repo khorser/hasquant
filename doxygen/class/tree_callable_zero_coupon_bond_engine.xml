@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="tree_callable_zero_coupon_bond_engine" kind="class" prot="public">
-    <compoundname>QuantLib::TreeCallableZeroCouponBondEngine</compoundname>
+    <compoundname>TreeCallableZeroCouponBondEngine</compoundname>
     <includes local="no">/experimental/callablebonds/treecallablebondengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="tree_callable_zero_coupon_bond_engine_1a6556191fffdab7edfba81a08e2af489c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>model</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>const Size</type>
           <declname>timeSteps</declname>
         </param>
         <param>

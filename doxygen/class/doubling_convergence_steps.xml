@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="doubling_convergence_steps" kind="class" prot="public">
-    <compoundname>QuantLib::DoublingConvergenceSteps</compoundname>
+    <compoundname>DoublingConvergenceSteps</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="doubling_convergence_steps_1a15799b509c68b53e020146a6a42c713c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size initialSamples</definition>
         <argsstring>() const </argsstring>
         <name>initialSamples</name>
         <location file="/math/statistics/convergencestatistics.hpp" line="35" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="doubling_convergence_steps_1a667e1a2c13a65ad09095b8cf7b800848" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size nextSamples</definition>
         <argsstring>(Size current)</argsstring>
         <name>nextSamples</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>current</declname>
         </param>
         <location file="/math/statistics/convergencestatistics.hpp" line="36" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="36" bodyend="36"/>

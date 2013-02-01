@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_heston_solver" kind="class" prot="public">
-    <compoundname>QuantLib::FdmHestonSolver</compoundname>
+    <compoundname>FdmHestonSolver</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_heston_solver_1a07b4359d5af34b9baa5e826e53305d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -29,91 +29,91 @@
         <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_solver_1ab8fd00284ad45098410cd5ee6459b63e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>
         <name>valueAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_solver_1abf33919cc846b46bdcbdf6c872faab27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real thetaAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>
         <name>thetaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_solver_1a107a23125d03c64ff74f7e256b763f2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real deltaAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>
         <name>deltaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_solver_1a7c66cb8dce1133961b76fd3fc999de60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gammaAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>
         <name>gammaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_solver_1a0bbffe2d51dd37414c2de019636a2f83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real meanVarianceDeltaAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>
         <name>meanVarianceDeltaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_solver_1a0517d7f1f43bb1f253938d40427ea99a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real meanVarianceGammaAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>
         <name>meanVarianceGammaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="61"/>

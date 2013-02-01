@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yield_term_structure" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::YieldTermStructure</compoundname>
+    <compoundname>YieldTermStructure</compoundname>
     <includes local="no">/termstructures/yieldtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -65,7 +65,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;cal, const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>YieldTermStructure</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -94,7 +94,7 @@
       <header>Discount factors</header>
       <description><para>These methods return the discount factor from a given date or time to the reference date. In the latter case, the time is calculated as a fraction of year from the reference date. </para></description>
       <memberdef kind="function" id="yield_term_structure_1a114a7a1fa24de59962ffbd6ff2160dea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <type>DiscountFactor</type>
         <definition>DiscountFactor discount</definition>
         <argsstring>(const Date &amp;d, bool extrapolate=false) const </argsstring>
         <name>discount</name>
@@ -110,12 +110,12 @@
         <location file="/termstructures/yieldtermstructure.hpp" line="74" bodyfile="/termstructures/yieldtermstructure.hpp" bodystart="185" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="yield_term_structure_1aa69e0b193a072e2c3a5d2d65cda69e08" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <type>DiscountFactor</type>
         <definition>DiscountFactor discount</definition>
         <argsstring>(Time t, bool extrapolate=false) const </argsstring>
         <name>discount</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
@@ -145,13 +145,13 @@
           <declname>resultDayCounter</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <param>
           <type>bool</type>
@@ -168,17 +168,17 @@
         <argsstring>(Time t, Compounding comp, Frequency freq=Annual, bool extrapolate=false) const </argsstring>
         <name>zeroRate</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <param>
           <type>bool</type>
@@ -211,13 +211,13 @@
           <declname>resultDayCounter</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <param>
           <type>bool</type>
@@ -246,13 +246,13 @@
           <declname>resultDayCounter</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <param>
           <type>bool</type>
@@ -269,21 +269,21 @@
         <argsstring>(Time t1, Time t2, Compounding comp, Frequency freq=Annual, bool extrapolate=false) const </argsstring>
         <name>forwardRate</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t2</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <param>
           <type>bool</type>
@@ -305,7 +305,7 @@
         <location file="/termstructures/yieldtermstructure.hpp" line="151" bodyfile="/termstructures/yieldtermstructure.hpp" bodystart="200" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="yield_term_structure_1a1abac1502627ed10d3a628b2b5e3f8e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; jumpTimes</definition>
         <argsstring>() const </argsstring>
         <name>jumpTimes</name>

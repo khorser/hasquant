@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="probability_of_n_events" kind="class" prot="public">
-    <compoundname>QuantLib::ProbabilityOfNEvents</compoundname>
+    <compoundname>ProbabilityOfNEvents</compoundname>
     <includes local="no">/experimental/credit/lossdistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="probability_of_n_events_1acbe61cbc5b4a8baf52db846a17c2e13f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -16,12 +16,12 @@
         <location file="/experimental/credit/lossdistribution.hpp" line="73" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="probability_of_n_events_1a37fe88774b14e114ac45e780a796f682" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(std::vector&lt; Real &gt; p) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+          <type>std::vector&lt; Real &gt;</type>
           <declname>p</declname>
         </param>
         <location file="/experimental/credit/lossdistribution.hpp" line="74"/>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="market_model_pathwise_inverse_floater" kind="class" prot="public">
-    <compoundname>QuantLib::MarketModelPathwiseInverseFloater</compoundname>
+    <compoundname>MarketModelPathwiseInverseFloater</compoundname>
     <includes local="no">/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="market_model_pathwise_inverse_floater_1ab780670b50d3d6218b423095121bd887" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,31 +10,31 @@
         <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes, const std::vector&lt; Real &gt; &amp;fixedAccruals, const std::vector&lt; Real &gt; &amp;floatingAccruals, const std::vector&lt; Real &gt; &amp;fixedStrikes, const std::vector&lt; Real &gt; &amp;fixedMultipliers, const std::vector&lt; Real &gt; &amp;floatingSpreads, const std::vector&lt; Time &gt; &amp;paymentTimes, bool payer=true)</argsstring>
         <name>MarketModelPathwiseInverseFloater</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>fixedAccruals</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>floatingAccruals</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>fixedStrikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>fixedMultipliers</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>floatingSpreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>paymentTimes</declname>
         </param>
         <param>

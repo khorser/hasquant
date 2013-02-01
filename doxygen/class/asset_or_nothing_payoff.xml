@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="asset_or_nothing_payoff" kind="class" prot="public">
-    <compoundname>QuantLib::AssetOrNothingPayoff</compoundname>
+    <compoundname>AssetOrNothingPayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="asset_or_nothing_payoff_1a8b7f859bb23b79f1a18c9bdd8f58c08e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <location file="/instruments/payoffs.hpp" line="141" bodyfile="/instruments/payoffs.hpp" bodystart="139" bodyend="141"/>

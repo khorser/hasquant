@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cms_market_calibration" kind="class" prot="public">
-    <compoundname>QuantLib::CmsMarketCalibration</compoundname>
+    <compoundname>CmsMarketCalibration</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="cms_market_calibration_1a18340f2f2342933b54b1dc8e6c0ed797" prot="public" static="no">
         <name>CalibrationType</name>
@@ -116,7 +116,7 @@
         <location file="/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="cms_market_calibration_1ad1a8bc3665894e92bebfbf54ecbb7930" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real error</definition>
         <argsstring>()</argsstring>
         <name>error</name>

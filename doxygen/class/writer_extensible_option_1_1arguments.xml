@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="writer_extensible_option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::WriterExtensibleOption::arguments</compoundname>
+    <compoundname>WriterExtensibleOption::arguments</compoundname>
     <includes local="no">/experimental/exoticoptions/writerextensibleoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="writer_extensible_option_1_1arguments_1a3b1bb5e134ef03e851478bc00138e06e" prot="public" static="no" mutable="no">

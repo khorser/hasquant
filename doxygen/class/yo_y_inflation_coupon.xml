@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yo_y_inflation_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::YoYInflationCoupon</compoundname>
+    <compoundname>YoYInflationCoupon</compoundname>
     <includes local="no">/cashflows/yoyinflationcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="yo_y_inflation_coupon_1a0f952b048e0a0ccbf2f0d6ffa3aa1832" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gearing</definition>
         <argsstring>() const </argsstring>
         <name>gearing</name>
@@ -15,7 +15,7 @@
         <location file="/cashflows/yoyinflationcoupon.hpp" line="54" bodyfile="/cashflows/yoyinflationcoupon.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_coupon_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
@@ -24,7 +24,7 @@
         <location file="/cashflows/yoyinflationcoupon.hpp" line="56" bodyfile="/cashflows/yoyinflationcoupon.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate adjustedFixing</definition>
         <argsstring>() const </argsstring>
         <name>adjustedFixing</name>
@@ -49,7 +49,7 @@
           <declname>paymentDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -61,7 +61,7 @@
           <declname>endDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -77,12 +77,12 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing</declname>
           <defval>1.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
           <defval>0.0</defval>
         </param>

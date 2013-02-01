@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="down_rounding" kind="class" prot="public">
-    <compoundname>QuantLib::DownRounding</compoundname>
+    <compoundname>DownRounding</compoundname>
     <includes local="no">/math/rounding.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="down_rounding_1aa56003adc66d959845b389481378e9ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Integer precision, Integer digit=5)</argsstring>
         <name>DownRounding</name>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>precision</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>digit</declname>
           <defval>5</defval>
         </param>

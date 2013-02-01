@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="interest_rate" kind="class" prot="public">
-    <compoundname>QuantLib::InterestRate</compoundname>
+    <compoundname>InterestRate</compoundname>
     <includes local="no">/interestrate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>constructors</header>
@@ -20,7 +20,7 @@
         <argsstring>(Rate r, const DayCounter &amp;dc, Compounding comp, Frequency freq)</argsstring>
         <name>InterestRate</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>r</declname>
         </param>
         <param>
@@ -28,11 +28,11 @@
           <declname>dc</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
         </param>
         <briefdescription>
@@ -53,7 +53,7 @@
       <sectiondef kind="user-defined">
       <header>inspectors</header>
       <memberdef kind="function" id="interest_rate_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate rate</definition>
         <argsstring>() const </argsstring>
         <name>rate</name>
@@ -67,14 +67,14 @@
         <location file="/interestrate.hpp" line="59" bodyfile="/interestrate.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_1a6968bd096b10d7259e742fa324abade3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+        <type>Compounding</type>
         <definition>Compounding compounding</definition>
         <argsstring>() const </argsstring>
         <name>compounding</name>
         <location file="/interestrate.hpp" line="60" bodyfile="/interestrate.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
@@ -84,12 +84,12 @@
       <sectiondef kind="user-defined">
       <header>discount/compound factor calculations</header>
       <memberdef kind="function" id="interest_rate_1a009346f1741a384db90b95e6f02b7a36" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <type>DiscountFactor</type>
         <definition>DiscountFactor discountFactor</definition>
         <argsstring>(Time t) const </argsstring>
         <name>discountFactor</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <briefdescription>
@@ -99,7 +99,7 @@
         <location file="/interestrate.hpp" line="72" bodyfile="/interestrate.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_1a155da734e9f9d00dbc775644f176adff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <type>DiscountFactor</type>
         <definition>DiscountFactor discountFactor</definition>
         <argsstring>(const Date &amp;d1, const Date &amp;d2, const Date &amp;refStart=Date(), const Date &amp;refEnd=Date()) const </argsstring>
         <name>discountFactor</name>
@@ -126,12 +126,12 @@
         <location file="/interestrate.hpp" line="80" bodyfile="/interestrate.hpp" bodystart="77" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_1aac316c9ade1203219bfab37e91726386" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real compoundFactor</definition>
         <argsstring>(Time t) const </argsstring>
         <name>compoundFactor</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <briefdescription>
@@ -141,7 +141,7 @@
         <location file="/interestrate.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="interest_rate_1ac86ed2ab8a602bfc623d65af6b85f2ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real compoundFactor</definition>
         <argsstring>(const Date &amp;d1, const Date &amp;d2, const Date &amp;refStart=Date(), const Date &amp;refEnd=Date()) const </argsstring>
         <name>compoundFactor</name>
@@ -178,7 +178,7 @@
         <argsstring>(Real compound, const DayCounter &amp;resultDC, Compounding comp, Frequency freq, Time t)</argsstring>
         <name>impliedRate</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>compound</declname>
         </param>
         <param>
@@ -186,15 +186,15 @@
           <declname>resultDC</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <briefdescription>
@@ -209,7 +209,7 @@
         <argsstring>(Real compound, const DayCounter &amp;resultDC, Compounding comp, Frequency freq, const Date &amp;d1, const Date &amp;d2, const Date &amp;refStart=Date(), const Date &amp;refEnd=Date())</argsstring>
         <name>impliedRate</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>compound</declname>
         </param>
         <param>
@@ -217,11 +217,11 @@
           <declname>resultDC</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
         </param>
         <param>
@@ -257,15 +257,15 @@
         <argsstring>(Compounding comp, Frequency freq, Time t) const </argsstring>
         <name>equivalentRate</name>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <briefdescription>
@@ -284,11 +284,11 @@
           <declname>resultDC</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
         </param>
         <param>

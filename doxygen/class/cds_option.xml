@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cds_option" kind="class" prot="public">
-    <compoundname>QuantLib::CdsOption</compoundname>
+    <compoundname>CdsOption</compoundname>
     <includes local="no">/experimental/credit/cdsoption.hpp</includes>
-    <innerclass refid="cds_option_1_1arguments" prot="public">QuantLib::CdsOption::arguments</innerclass>
-    <innerclass refid="cds_option_1_1engine" prot="public">QuantLib::CdsOption::engine</innerclass>
-    <innerclass refid="cds_option_1_1results" prot="public">QuantLib::CdsOption::results</innerclass>
+    <innerclass refid="cds_option_1_1arguments" prot="public">CdsOption::arguments</innerclass>
+    <innerclass refid="cds_option_1_1engine" prot="public">CdsOption::engine</innerclass>
+    <innerclass refid="cds_option_1_1results" prot="public">CdsOption::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="cds_option_1a37a0ce9ec1e1962e9cd5845be2657bd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -19,26 +19,26 @@
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <memberdef kind="function" id="cds_option_1aba1526ce2bda378e4ef2465f8e447763" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate atmRate</definition>
         <argsstring>() const </argsstring>
         <name>atmRate</name>
         <location file="/experimental/credit/cdsoption.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="cds_option_1ab5554b5e7c7e5608a4a952efbee8deff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real riskyAnnuity</definition>
         <argsstring>() const </argsstring>
         <name>riskyAnnuity</name>
         <location file="/experimental/credit/cdsoption.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="cds_option_1a5cabbc4f244ab101262fabc120ed06c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility impliedVolatility</definition>
         <argsstring>(Real price, const Handle&lt; YieldTermStructure &gt; &amp;termStructure, const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;, Real recoveryRate, Real accuracy=1.e-4, Size maxEvaluations=100, Volatility minVol=1.0e-7, Volatility maxVol=4.0) const </argsstring>
         <name>impliedVolatility</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>price</declname>
         </param>
         <param>
@@ -49,26 +49,26 @@
           <type>const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.e-4</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>100</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>minVol</declname>
           <defval>1.0e-7</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>maxVol</declname>
           <defval>4.0</defval>
         </param>

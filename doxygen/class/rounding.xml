@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="rounding" kind="class" prot="public">
-    <compoundname>QuantLib::Rounding</compoundname>
+    <compoundname>Rounding</compoundname>
     <includes local="no">/math/rounding.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="rounding_1a242cddb670f123b7cf2ec6b244514c8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer precision</definition>
         <argsstring>() const </argsstring>
         <name>precision</name>
         <location file="/math/rounding.hpp" line="80" bodyfile="/math/rounding.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="rounding_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="rounding_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+        <type>Type</type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
         <location file="/math/rounding.hpp" line="81" bodyfile="/math/rounding.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="rounding_1abdd70a56bfd67e3da02c16706ea1898d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer roundingDigit</definition>
         <argsstring>() const </argsstring>
         <name>roundingDigit</name>
@@ -85,28 +85,28 @@
         <argsstring>(Integer precision, Type type=Closest, Integer digit=5)</argsstring>
         <name>Rounding</name>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>precision</declname>
         </param>
         <param>
-          <type><ref refid="rounding_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+          <type>Type</type>
           <declname>type</declname>
-          <defval><ref refid="rounding_1a1d1cfd8ffb84e947f82999c682b666a7a32c94a47509871edf49d5c3936689d30" kindref="member">Closest</ref></defval>
+          <defval>Closest</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>digit</declname>
           <defval>5</defval>
         </param>
         <location file="/math/rounding.hpp" line="75" bodyfile="/math/rounding.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="rounding_1a9835436c4cf8e92f0f7d8a3ed4643983" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+        <type>Decimal</type>
         <definition>Decimal operator()</definition>
         <argsstring>(Decimal value) const </argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
           <declname>value</declname>
         </param>
         <briefdescription>

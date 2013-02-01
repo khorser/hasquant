@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="step__iterator" kind="class" prot="public">
-    <compoundname>QuantLib::step_iterator</compoundname>
+    <compoundname>step_iterator</compoundname>
     <includes local="no">/utilities/steppingiterator.hpp</includes>
     <templateparamlist>
       <param>
@@ -26,7 +26,7 @@
           <declname>base</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>step</declname>
         </param>
         <location file="/utilities/steppingiterator.hpp" line="48" bodyfile="/utilities/steppingiterator.hpp" bodystart="47" bodyend="48"/>
@@ -52,7 +52,7 @@
         <location file="/utilities/steppingiterator.hpp" line="53" bodyfile="/utilities/steppingiterator.hpp" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="step__iterator_1a58d1ae9413b93d3ede0e31a5ee67aa9f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size step</definition>
         <argsstring>() const </argsstring>
         <name>step</name>
@@ -111,7 +111,7 @@
           <declname>it</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>step</declname>
         </param>
         <briefdescription>

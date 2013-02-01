@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="failure_to_pay" kind="class" prot="public">
-    <compoundname>QuantLib::FailureToPay</compoundname>
+    <compoundname>FailureToPay</compoundname>
     <includes local="no">/experimental/credit/defaulttype.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="failure_to_pay_1ac32b1d3e732b5fc5ff63084f62dfa956" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,14 +14,14 @@
           <declname>grace</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>amount</declname>
           <defval>1.e+6</defval>
         </param>
         <location file="/experimental/credit/defaulttype.hpp" line="173" bodyfile="/experimental/credit/defaulttype.hpp" bodystart="170" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="failure_to_pay_1a6ebf37e5e2c58c4a200947df2e4f434f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real amountRequired</definition>
         <argsstring>() const </argsstring>
         <name>amountRequired</name>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="swaption" kind="class" prot="public">
-    <compoundname>QuantLib::Swaption</compoundname>
+    <compoundname>Swaption</compoundname>
     <includes local="no">/instruments/swaption.hpp</includes>
-    <innerclass refid="swaption_1_1arguments" prot="public">QuantLib::Swaption::arguments</innerclass>
-    <innerclass refid="swaption_1_1engine" prot="public">QuantLib::Swaption::engine</innerclass>
+    <innerclass refid="swaption_1_1arguments" prot="public">Swaption::arguments</innerclass>
+    <innerclass refid="swaption_1_1engine" prot="public">Swaption::engine</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="swaption_1abed8ca991653367ff67724dbd2f48b44" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -51,12 +51,12 @@
         <location file="/instruments/swaption.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="swaption_1a12c73741c1de5bc4661bffb85aa8a258" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility impliedVolatility</definition>
         <argsstring>(Real price, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Volatility guess, Real accuracy=1.0e-4, Natural maxEvaluations=100, Volatility minVol=1.0e-7, Volatility maxVol=4.0) const </argsstring>
         <name>impliedVolatility</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>price</declname>
         </param>
         <param>
@@ -64,26 +64,26 @@
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>guess</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-4</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>maxEvaluations</declname>
           <defval>100</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>minVol</declname>
           <defval>1.0e-7</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>maxVol</declname>
           <defval>4.0</defval>
         </param>

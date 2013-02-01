@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="linear_least_squares_regression" kind="class" prot="public">
-    <compoundname>QuantLib::LinearLeastSquaresRegression</compoundname>
+    <compoundname>LinearLeastSquaresRegression</compoundname>
     <templateparamlist>
       <param>
         <type>class ArgumentType</type>
-        <defval><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></defval>
+        <defval>Real</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
@@ -19,11 +19,11 @@
           <declname>x</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>y</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, ArgumentType &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::function1&lt; Real, ArgumentType &gt; &gt; &amp;</type>
           <declname>v</declname>
         </param>
         <location file="/math/linearleastsquaresregression.hpp" line="128" bodyfile="/math/linearleastsquaresregression.hpp" bodystart="124" bodyend="129"/>

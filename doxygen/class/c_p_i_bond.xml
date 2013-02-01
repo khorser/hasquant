@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_bond" kind="class" prot="public">
-    <compoundname>QuantLib::CPIBond</compoundname>
+    <compoundname>CPIBond</compoundname>
     <includes local="no">/instruments/bonds/cpibond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_p_i_bond_1a971a48a78fc9727bc1fc59e7db761b01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Natural settlementDays, Real faceAmount, bool growthOnly, Real baseCPI, const Period &amp;observationLag, const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;cpiIndex, CPI::InterpolationType observationInterpolation, const Schedule &amp;schedule, const std::vector&lt; Rate &gt; &amp;coupons, const DayCounter &amp;accrualDayCounter, BusinessDayConvention paymentConvention=ModifiedFollowing, const Date &amp;issueDate=Date())</argsstring>
         <name>CPIBond</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>faceAmount</declname>
         </param>
         <param>
@@ -22,7 +22,7 @@
           <declname>growthOnly</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>baseCPI</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
           <declname>schedule</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>coupons</declname>
         </param>
         <param>
@@ -50,9 +50,9 @@
           <declname>accrualDayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>paymentConvention</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368a013e092c359f6031cc0563fd413ce707" kindref="member">ModifiedFollowing</ref></defval>
+          <defval>ModifiedFollowing</defval>
         </param>
         <param>
           <type>const Date &amp;</type>
@@ -62,7 +62,7 @@
         <location file="/instruments/bonds/cpibond.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_bond_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
@@ -83,7 +83,7 @@
         <location file="/instruments/bonds/cpibond.hpp" line="60" bodyfile="/instruments/bonds/cpibond.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_bond_1ae3688411e63b836688fe6d77f87549be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real baseCPI</definition>
         <argsstring>() const </argsstring>
         <name>baseCPI</name>

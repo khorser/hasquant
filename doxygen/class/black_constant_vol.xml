@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="black_constant_vol" kind="class" prot="public">
-    <compoundname>QuantLib::BlackConstantVol</compoundname>
+    <compoundname>BlackConstantVol</compoundname>
     <includes local="no">/termstructures/volatility/equityfx/blackconstantvol.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="black_constant_vol_1a715f0ebaf60ac7805652ec9979aaa294" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -18,7 +18,7 @@
           <defname>cal</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>volatility</declname>
         </param>
         <param>
@@ -56,7 +56,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;, Volatility volatility, const DayCounter &amp;dayCounter)</argsstring>
         <name>BlackConstantVol</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -64,7 +64,7 @@
           <defname>cal</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>volatility</declname>
         </param>
         <param>
@@ -79,7 +79,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;, const Handle&lt; Quote &gt; &amp;volatility, const DayCounter &amp;dayCounter)</argsstring>
         <name>BlackConstantVol</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>

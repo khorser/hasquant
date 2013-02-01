@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="one_day_counter" kind="class" prot="public">
-    <compoundname>QuantLib::OneDayCounter</compoundname>
+    <compoundname>OneDayCounter</compoundname>
     <includes local="no">/time/daycounters/one.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="one_day_counter_1a86338d70de9e125be568af41f152ae43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_linear_op" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::FdmLinearOp</compoundname>
+    <compoundname>FdmLinearOp</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" static="no">
         <type>Array</type>

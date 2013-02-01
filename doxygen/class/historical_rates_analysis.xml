@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="historical_rates_analysis" kind="class" prot="public">
-    <compoundname>QuantLib::HistoricalRatesAnalysis</compoundname>
+    <compoundname>HistoricalRatesAnalysis</compoundname>
     <includes local="no">/models/marketmodels/historicalratesanalysis.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="historical_rates_analysis_1ac5e6f58be53bfb468327d133d809e146" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(const boost::shared_ptr&lt; SequenceStatistics &gt; &amp;stats, const Date &amp;startDate, const Date &amp;endDate, const Period &amp;step, const std::vector&lt; boost::shared_ptr&lt; InterestRateIndex &gt; &gt; &amp;indexes)</argsstring>
         <name>HistoricalRatesAnalysis</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="namespace_quant_lib_1a3e0db17aa18a4d3e837a3a93e8bb6ad5" kindref="member">SequenceStatistics</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; SequenceStatistics &gt; &amp;</type>
           <declname>stats</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
         <location file="/models/marketmodels/historicalratesanalysis.hpp" line="54" bodyfile="/models/marketmodels/historicalratesanalysis.hpp" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="historical_rates_analysis_1a8390771933723c415674a10f1b91648e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="namespace_quant_lib_1a3e0db17aa18a4d3e837a3a93e8bb6ad5" kindref="member">SequenceStatistics</ref> &gt; &amp;</type>
+        <type>const boost::shared_ptr&lt; SequenceStatistics &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; SequenceStatistics &gt; &amp; stats</definition>
         <argsstring>() const </argsstring>
         <name>stats</name>

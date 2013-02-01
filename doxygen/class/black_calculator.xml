@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="black_calculator" kind="class" prot="public">
-    <compoundname>QuantLib::BlackCalculator</compoundname>
+    <compoundname>BlackCalculator</compoundname>
     <includes local="no">/pricingengines/blackcalculator.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="black_calculator_1a2e919a306924f31d9f6f89645d0d69b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,15 +14,15 @@
           <declname>payoff</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>forward</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>stdDev</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>discount</declname>
           <defval>1.0</defval>
         </param>
@@ -38,19 +38,19 @@
           <declname>optionType</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>forward</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>stdDev</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>discount</declname>
           <defval>1.0</defval>
         </param>
@@ -64,14 +64,14 @@
         <location file="/pricingengines/blackcalculator.hpp" line="51" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
         <location file="/pricingengines/blackcalculator.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1a46dff13c5db3dc12f768cdf4d4cc5b8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real deltaForward</definition>
         <argsstring>() const </argsstring>
         <name>deltaForward</name>
@@ -80,12 +80,12 @@
         <location file="/pricingengines/blackcalculator.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1abd77e62b63781915cc05be90c29ade86" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real delta</definition>
         <argsstring>(Real spot) const </argsstring>
         <name>delta</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>spot</declname>
         </param>
         <detaileddescription>
@@ -93,7 +93,7 @@
         <location file="/pricingengines/blackcalculator.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1ae21b5d8931ed83b6ce0f8f80039f4789" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real elasticityForward</definition>
         <argsstring>() const </argsstring>
         <name>elasticityForward</name>
@@ -102,12 +102,12 @@
         <location file="/pricingengines/blackcalculator.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1ad1038ed391cff8fa11082293e2dd524c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real elasticity</definition>
         <argsstring>(Real spot) const </argsstring>
         <name>elasticity</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>spot</declname>
         </param>
         <detaileddescription>
@@ -115,7 +115,7 @@
         <location file="/pricingengines/blackcalculator.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1ad11bcb2919c3355037ad2f3c9dadb26f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gammaForward</definition>
         <argsstring>() const </argsstring>
         <name>gammaForward</name>
@@ -124,12 +124,12 @@
         <location file="/pricingengines/blackcalculator.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1a50f95bfa73f23492b64d7de4b3274f71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real gamma</definition>
         <argsstring>(Real spot) const </argsstring>
         <name>gamma</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>spot</declname>
         </param>
         <detaileddescription>
@@ -137,16 +137,16 @@
         <location file="/pricingengines/blackcalculator.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1aaa4eafefa825f26cb526e13cdec63e1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real theta</definition>
         <argsstring>(Real spot, Time maturity) const </argsstring>
         <name>theta</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>spot</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <detaileddescription>
@@ -154,16 +154,16 @@
         <location file="/pricingengines/blackcalculator.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1a100e24c42cc4cd95b51242a6adf782ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real thetaPerDay</definition>
         <argsstring>(Real spot, Time maturity) const </argsstring>
         <name>thetaPerDay</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>spot</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <detaileddescription>
@@ -171,12 +171,12 @@
         <location file="/pricingengines/blackcalculator.hpp" line="80" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="118" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1a0c37734c53fa52703c6f0d22677b05ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real vega</definition>
         <argsstring>(Time maturity) const </argsstring>
         <name>vega</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <detaileddescription>
@@ -184,12 +184,12 @@
         <location file="/pricingengines/blackcalculator.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1affcfd1c0fd1c6bef1bb21fd2a336bff5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real rho</definition>
         <argsstring>(Time maturity) const </argsstring>
         <name>rho</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <detaileddescription>
@@ -197,12 +197,12 @@
         <location file="/pricingengines/blackcalculator.hpp" line="86"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1ab880a4d01e68c373077c2c6cf68af259" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real dividendRho</definition>
         <argsstring>(Time maturity) const </argsstring>
         <name>dividendRho</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <detaileddescription>
@@ -210,7 +210,7 @@
         <location file="/pricingengines/blackcalculator.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1aee3252e0cf020c5878f35dae85bd1107" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real itmCashProbability</definition>
         <argsstring>() const </argsstring>
         <name>itmCashProbability</name>
@@ -219,7 +219,7 @@
         <location file="/pricingengines/blackcalculator.hpp" line="95" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1abb479ae11d5c444f5ef42ac09dc14765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real itmAssetProbability</definition>
         <argsstring>() const </argsstring>
         <name>itmAssetProbability</name>
@@ -228,7 +228,7 @@
         <location file="/pricingengines/blackcalculator.hpp" line="101" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1acfc72cb510f6de42cc315f39a34da0a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real strikeSensitivity</definition>
         <argsstring>() const </argsstring>
         <name>strikeSensitivity</name>
@@ -237,14 +237,14 @@
         <location file="/pricingengines/blackcalculator.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real alpha</definition>
         <argsstring>() const </argsstring>
         <name>alpha</name>
         <location file="/pricingengines/blackcalculator.hpp" line="106" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="131" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="black_calculator_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real beta</definition>
         <argsstring>() const </argsstring>
         <name>beta</name>

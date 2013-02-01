@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_simple3d_ext_o_u_jump_solver" kind="class" prot="public">
-    <compoundname>QuantLib::FdmSimple3dExtOUJumpSolver</compoundname>
+    <compoundname>FdmSimple3dExtOUJumpSolver</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_simple3d_ext_o_u_jump_solver_1ad91971f9bfd3a732e6ea534f3e75fb5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -28,20 +28,20 @@
         <location file="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="47" bodyfile="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="fdm_simple3d_ext_o_u_jump_solver_1ab771f4f835e1bafb70f1f833e949c2e5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAt</definition>
         <argsstring>(Real x, Real y, Real z) const </argsstring>
         <name>valueAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>z</declname>
         </param>
         <location file="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="51" bodyfile="/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="51" bodyend="54"/>

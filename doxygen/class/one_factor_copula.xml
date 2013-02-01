@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="one_factor_copula" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::OneFactorCopula</compoundname>
+    <compoundname>OneFactorCopula</compoundname>
     <includes local="no">/experimental/credit/onefactorcopula.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="one_factor_copula_1af4fe1d014da6e427fc150e9b79864621" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,29 +14,29 @@
           <declname>correlation</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>maximum</declname>
           <defval>5.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>integrationSteps</declname>
           <defval>50</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>minimum</declname>
           <defval>-5.0</defval>
         </param>
         <location file="/experimental/credit/onefactorcopula.hpp" line="107" bodyfile="/experimental/credit/onefactorcopula.hpp" bodystart="103" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_copula_1a150d8a5373b942a7411cad42857ac0c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real density</definition>
         <argsstring>(Real m) const =0</argsstring>
         <name>density</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>m</declname>
         </param>
         <briefdescription>
@@ -46,12 +46,12 @@
         <location file="/experimental/credit/onefactorcopula.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_copula_1a4d78de201751058a580a4104b569252f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real cumulativeZ</definition>
         <argsstring>(Real z) const =0</argsstring>
         <name>cumulativeZ</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -61,12 +61,12 @@
         <location file="/experimental/credit/onefactorcopula.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_copula_1aa5a31f6c22dc65de5eefc911e33d230e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real cumulativeY</definition>
         <argsstring>(Real y) const </argsstring>
         <name>cumulativeY</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -76,12 +76,12 @@
         <location file="/experimental/credit/onefactorcopula.hpp" line="130"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_copula_1a37961e30f2d8786a4e4e6d1ef65516ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real inverseCumulativeY</definition>
         <argsstring>(Real p) const </argsstring>
         <name>inverseCumulativeY</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>p</declname>
         </param>
         <briefdescription>
@@ -91,7 +91,7 @@
         <location file="/experimental/credit/onefactorcopula.hpp" line="137"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_copula_1ac63b6b972e9461ed9c0de2899f6fdc45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real correlation</definition>
         <argsstring>() const </argsstring>
         <name>correlation</name>
@@ -100,16 +100,16 @@
         <location file="/experimental/credit/onefactorcopula.hpp" line="140" bodyfile="/experimental/credit/onefactorcopula.hpp" bodystart="261" bodyend="263"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_copula_1a2f12fdc46df584c77c692449afb0f70f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real conditionalProbability</definition>
         <argsstring>(Real prob, Real m) const </argsstring>
         <name>conditionalProbability</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>prob</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>m</declname>
         </param>
         <briefdescription>
@@ -119,16 +119,16 @@
         <location file="/experimental/credit/onefactorcopula.hpp" line="148"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_copula_1a43021a316d68b67fe3baacd8b41060ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; conditionalProbability</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;prob, Real m) const </argsstring>
         <name>conditionalProbability</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>prob</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>m</declname>
         </param>
         <briefdescription>
@@ -138,12 +138,12 @@
         <location file="/experimental/credit/onefactorcopula.hpp" line="157"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_copula_1a3466ad62259b66bd721d275d6f37b3b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real integral</definition>
         <argsstring>(Real p) const </argsstring>
         <name>integral</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>p</declname>
         </param>
         <detaileddescription>
@@ -156,7 +156,7 @@
             <type>class F</type>
           </param>
         </templateparamlist>
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real integral</definition>
         <argsstring>(const F &amp;f, std::vector&lt; Real &gt; &amp;probabilities) const </argsstring>
         <name>integral</name>
@@ -165,7 +165,7 @@
           <declname>f</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>std::vector&lt; Real &gt; &amp;</type>
           <declname>probabilities</declname>
         </param>
         <detaileddescription>
@@ -187,11 +187,11 @@
           <declname>f</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>nominals</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>probabilities</declname>
         </param>
         <detaileddescription>
@@ -204,7 +204,7 @@
         <argsstring>(Real tolerance) const </argsstring>
         <name>checkMoments</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>tolerance</declname>
         </param>
         <detaileddescription>

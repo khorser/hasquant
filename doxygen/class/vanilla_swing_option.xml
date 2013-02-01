@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="vanilla_swing_option" kind="class" prot="public">
-    <compoundname>QuantLib::VanillaSwingOption</compoundname>
+    <compoundname>VanillaSwingOption</compoundname>
     <includes local="no">/instruments/vanillaswingoption.hpp</includes>
-    <innerclass refid="vanilla_swing_option_1_1arguments" prot="public">QuantLib::VanillaSwingOption::arguments</innerclass>
+    <innerclass refid="vanilla_swing_option_1_1arguments" prot="public">VanillaSwingOption::arguments</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="vanilla_swing_option_1a80949fe63cd72b900da964c4f3edfb65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -19,11 +19,11 @@
           <declname>ex</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>minExerciseRights</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxExerciseRights</declname>
         </param>
         <location file="/instruments/vanillaswingoption.hpp" line="62" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="57" bodyend="62"/>

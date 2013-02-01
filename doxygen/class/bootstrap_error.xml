@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bootstrap_error" kind="class" prot="public">
-    <compoundname>QuantLib::BootstrapError</compoundname>
+    <compoundname>BootstrapError</compoundname>
     <includes local="no">/termstructures/bootstraperror.hpp</includes>
     <templateparamlist>
       <param>
@@ -23,18 +23,18 @@
           <declname>instrument</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>segment</declname>
         </param>
         <location file="/termstructures/bootstraperror.hpp" line="42" bodyfile="/termstructures/bootstraperror.hpp" bodystart="57" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="bootstrap_error_1a4ddfce779ee421565fab731da6be3f0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(Rate guess) const </argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>guess</declname>
         </param>
         <location file="/termstructures/bootstraperror.hpp" line="43"/>

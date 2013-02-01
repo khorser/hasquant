@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="path_multi_asset_option" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::PathMultiAssetOption</compoundname>
+    <compoundname>PathMultiAssetOption</compoundname>
     <includes local="no">/experimental/mcbasket/pathmultiassetoption.hpp</includes>
-    <innerclass refid="path_multi_asset_option_1_1arguments" prot="public">QuantLib::PathMultiAssetOption::arguments</innerclass>
-    <innerclass refid="path_multi_asset_option_1_1engine" prot="public">QuantLib::PathMultiAssetOption::engine</innerclass>
-    <innerclass refid="path_multi_asset_option_1_1results" prot="public">QuantLib::PathMultiAssetOption::results</innerclass>
+    <innerclass refid="path_multi_asset_option_1_1arguments" prot="public">PathMultiAssetOption::arguments</innerclass>
+    <innerclass refid="path_multi_asset_option_1_1engine" prot="public">PathMultiAssetOption::engine</innerclass>
+    <innerclass refid="path_multi_asset_option_1_1results" prot="public">PathMultiAssetOption::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
       <memberdef kind="function" id="path_multi_asset_option_1a3762cf1ede25044eb5380658e479a49f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">

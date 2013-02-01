@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="floor" kind="class" prot="public">
-    <compoundname>QuantLib::Floor</compoundname>
+    <compoundname>Floor</compoundname>
     <includes local="no">/instruments/capfloor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="floor_1a1c70031b7de93214f1b2c064344f0019" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(const Leg &amp;floatingLeg, const std::vector&lt; Rate &gt; &amp;exerciseRates)</argsstring>
         <name>Floor</name>
         <param>
-          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <type>const Leg &amp;</type>
           <declname>floatingLeg</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>exerciseRates</declname>
         </param>
         <location file="/instruments/capfloor.hpp" line="117" bodyfile="/instruments/capfloor.hpp" bodystart="114" bodyend="117"/>

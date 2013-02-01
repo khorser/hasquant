@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="gauss_hermite_integration" kind="class" prot="public">
-    <compoundname>QuantLib::GaussHermiteIntegration</compoundname>
+    <compoundname>GaussHermiteIntegration</compoundname>
     <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="gauss_hermite_integration_1a41809a1dde79b9e76202139c03b5062c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Size n, Real mu=0.0)</argsstring>
         <name>GaussHermiteIntegration</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>mu</declname>
           <defval>0.0</defval>
         </param>

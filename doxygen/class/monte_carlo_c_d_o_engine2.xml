@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="monte_carlo_c_d_o_engine2" kind="class" prot="public">
-    <compoundname>QuantLib::MonteCarloCDOEngine2</compoundname>
+    <compoundname>MonteCarloCDOEngine2</compoundname>
     <includes local="no">/experimental/credit/syntheticcdoengines.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="monte_carlo_c_d_o_engine2_1a47ab7a2d9d91819b5520a4c2c328d7d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>rdm</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>samples</declname>
         </param>
         <location file="/experimental/credit/syntheticcdoengines.hpp" line="160" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="158" bodyend="160"/>

@@ -90,10 +90,12 @@ for $f (glob("*.xml"))
 # :silent! argdo %s!class_quant_lib_1_1_\?!!g
 # :silent! argdo %s!struct_quant_lib_1_1_\?!!g
 # :silent! argdo %s!<ref refid="[^"]\+" kindref="compound">\([^<]\+\)</ref>!\1!g
-#:silent! argdo %s/^\s*<sectiondef.*\n\s*<header.*\n\s*<description.*\n\s*<\/sectiondef>//
-#:silent! argdo %s/^\s*<sectiondef.*\n.*\/sectiondef>//
-#:silent! argdo %s/^\s*<sectiondef.*\n\/sectiondef>//
-#:silent! argdo %s/^\s*<sectiondef.*\n\s*<header.*\n.*\/sectiondef>//
+# :silent! argdo %s/^\s*<sectiondef.*\n\s*<header.*\n\s*<description.*\n\s*<\/sectiondef>//
+# :silent! argdo %s/^\s*<sectiondef.*\n.*\/sectiondef>//
+# :silent! argdo %s/^\s*<sectiondef.*\n\/sectiondef>//
+# :silent! argdo %s/^\s*<sectiondef.*\n\s*<header.*\n.*\/sectiondef>//
+# :silent! argdo %s/<ref refid="[^"]\+" kindref="member">\([^<]\+\)<\/ref>/\1/g
+# :silent! argdo %s/QuantLib:://g
 # :g/^\s*<sectiondef.*\n\s*<header.*\n.*\/sectiondef>/e
 # :silent! argdo g/^$/delete
 # :silent! xa

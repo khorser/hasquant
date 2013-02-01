@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="everest_option_1_1results" kind="class" prot="public">
-    <compoundname>QuantLib::EverestOption::results</compoundname>
+    <compoundname>EverestOption::results</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="everest_option_1_1results_1a1ebcbdafd2b86df77bc263ae8ba8c329" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate yield</definition>
         <argsstring></argsstring>
         <name>yield</name>

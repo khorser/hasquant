@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="forward" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Forward</compoundname>
+    <compoundname>Forward</compoundname>
     <includes local="no">/instruments/forward.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -20,7 +20,7 @@
         <location file="/instruments/forward.hpp" line="71" bodyfile="/instruments/forward.hpp" bodystart="169" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="forward_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const </argsstring>
         <name>businessDayConvention</name>
@@ -55,7 +55,7 @@
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <memberdef kind="function" id="forward_1a3b910af2aa00c99e596ec6a0f1e8e0dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real forwardValue</definition>
         <argsstring>() const </argsstring>
         <name>forwardValue</name>
@@ -72,11 +72,11 @@
         <argsstring>(Real underlyingSpotValue, Real forwardValue, Date settlementDate, Compounding compoundingConvention, DayCounter dayCounter)</argsstring>
         <name>impliedYield</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>underlyingSpotValue</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>forwardValue</declname>
         </param>
         <param>
@@ -84,7 +84,7 @@
           <declname>settlementDate</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>compoundingConvention</declname>
         </param>
         <param>
@@ -98,7 +98,7 @@
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="forward_1a0304e7ed8b1277b01dd0a094102ddbce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real spotValue</definition>
         <argsstring>() const =0</argsstring>
         <name>spotValue</name>
@@ -107,7 +107,7 @@
         <location file="/instruments/forward.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="forward_1a789981beda42e02c2698dee83d077a1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real spotIncome</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve) const =0</argsstring>
         <name>spotIncome</name>
@@ -123,7 +123,7 @@
     <briefdescription>
 <para>Abstract base forward class. </para>    </briefdescription>
     <detaileddescription>
-<para>Derived classes must implement the virtual functions <ref refid="forward_1a0304e7ed8b1277b01dd0a094102ddbce" kindref="member">spotValue()</ref> (NPV or spot price) and <ref refid="forward_1a789981beda42e02c2698dee83d077a1d" kindref="member">spotIncome()</ref> associated with the specific relevant underlying (e.g. bond, stock, commodity, loan/deposit). These functions must be used to set the protected member variables underlyingSpotValue_ and underlyingIncome_ within <ref refid="forward_1a02b90bbfee3ee29627939544fb59ec93" kindref="member">performCalculations()</ref> in the derived class before the base-class implementation is called.</para><para><ref refid="forward_1a789981beda42e02c2698dee83d077a1d" kindref="member">spotIncome()</ref> refers generically to the present value of coupons, dividends or storage costs.</para><para>discountCurve_ is the curve used to discount forward contract cash flows back to the evaluation day, as well as to obtain forward values for spot values/prices.</para><para>incomeDiscountCurve_, which for generality is not automatically set to the discountCurve_, is the curve used to discount future income/dividends/storage-costs etc back to the evaluation date.</para><para><xrefsect id="todo_1_todo000025"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Add preconditions and tests</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000057"><xreftitle>Warning</xreftitle><xrefdescription><para>This class still needs to be rigorously tested</para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>Derived classes must implement the virtual functions spotValue() (NPV or spot price) and spotIncome() associated with the specific relevant underlying (e.g. bond, stock, commodity, loan/deposit). These functions must be used to set the protected member variables underlyingSpotValue_ and underlyingIncome_ within performCalculations() in the derived class before the base-class implementation is called.</para><para>spotIncome() refers generically to the present value of coupons, dividends or storage costs.</para><para>discountCurve_ is the curve used to discount forward contract cash flows back to the evaluation day, as well as to obtain forward values for spot values/prices.</para><para>incomeDiscountCurve_, which for generality is not automatically set to the discountCurve_, is the curve used to discount future income/dividends/storage-costs etc back to the evaluation date.</para><para><xrefsect id="todo_1_todo000025"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Add preconditions and tests</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000057"><xreftitle>Warning</xreftitle><xrefdescription><para>This class still needs to be rigorously tested</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/instruments/forward.hpp" line="66" bodyfile="/instruments/forward.hpp" bodystart="66" bodyend="142"/>
   </compounddef>
 </doxygen>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="manipulate_distribution" kind="class" prot="public">
-    <compoundname>QuantLib::ManipulateDistribution</compoundname>
+    <compoundname>ManipulateDistribution</compoundname>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="manipulate_distribution_1a0cde0aed242e3ce242178a592d37d406" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Distribution</type>

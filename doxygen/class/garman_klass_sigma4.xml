@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="garman_klass_sigma4" kind="class" prot="public">
-    <compoundname>QuantLib::GarmanKlassSigma4</compoundname>
+    <compoundname>GarmanKlassSigma4</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="garman_klass_sigma4_1a4c9e7c761121eded0006f515a96be566" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -9,7 +9,7 @@
         <argsstring>(Real y)</argsstring>
         <name>GarmanKlassSigma4</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/models/volatility/garmanklass.hpp" line="148" bodyfile="/models/volatility/garmanklass.hpp" bodystart="147" bodyend="148"/>

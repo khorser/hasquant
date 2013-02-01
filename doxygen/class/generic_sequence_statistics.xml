@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="generic_sequence_statistics" kind="class" prot="public">
-    <compoundname>QuantLib::GenericSequenceStatistics</compoundname>
+    <compoundname>GenericSequenceStatistics</compoundname>
     <includes local="no">/math/statistics/sequencestatistics.hpp</includes>
     <templateparamlist>
       <param>
@@ -11,7 +11,7 @@
       <sectiondef kind="user-defined">
       <header>inspectors</header>
       <memberdef kind="function" id="generic_sequence_statistics_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
@@ -42,14 +42,14 @@
       <sectiondef kind="user-defined">
       <header>1-D inspectors lifted from underlying statistics class</header>
       <memberdef kind="function" id="generic_sequence_statistics_1afb02dc74860bcd8ad0982324d50c82e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size samples</definition>
         <argsstring>() const </argsstring>
         <name>samples</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="70" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="166" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1adadbb304259580be7add0941c9540bd9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real weightSum</definition>
         <argsstring>() const </argsstring>
         <name>weightSum</name>
@@ -59,228 +59,228 @@
       <sectiondef kind="user-defined">
       <header>N-D inspectors lifted from underlying statistics class</header>
       <memberdef kind="function" id="generic_sequence_statistics_1acccc2e99a25f8b4e2688e840dab3326d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; mean</definition>
         <argsstring>() const </argsstring>
         <name>mean</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="76" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="187" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a7410d338da8f3c635cc37f03da72cd76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; variance</definition>
         <argsstring>() const </argsstring>
         <name>variance</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="77" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="188" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a8a5eb61b9b2db4239e03d575d1d18153" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; standardDeviation</definition>
         <argsstring>() const </argsstring>
         <name>standardDeviation</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="78" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="189" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1afe95f5456e7f097c20d273ed0c7368a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; downsideVariance</definition>
         <argsstring>() const </argsstring>
         <name>downsideVariance</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="79" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="190" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1aa407c16fa7f7b5e1dce0239a1e1f9b11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; downsideDeviation</definition>
         <argsstring>() const </argsstring>
         <name>downsideDeviation</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="80" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="191" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1adacf8b47e63f62a3f8644f4085399950" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; semiVariance</definition>
         <argsstring>() const </argsstring>
         <name>semiVariance</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="81" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="192" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a8f778a87e1f684b7028968a2229ef6d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; semiDeviation</definition>
         <argsstring>() const </argsstring>
         <name>semiDeviation</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="82" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="193" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1ac0dfceea0de7224a591a1734f860bb40" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; errorEstimate</definition>
         <argsstring>() const </argsstring>
         <name>errorEstimate</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="83" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="194" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1ad23542ce302e21b2ea5d6d5e05ecf201" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; skewness</definition>
         <argsstring>() const </argsstring>
         <name>skewness</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="84" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="195" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a767667eaea3cbc3b35666db167f209b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; kurtosis</definition>
         <argsstring>() const </argsstring>
         <name>kurtosis</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="85" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="196" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1ac67e03faa849950e469165311c357c73" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; min</definition>
         <argsstring>() const </argsstring>
         <name>min</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="86" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="197" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a3ecd48053793363b4b7032c1a1a61222" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; max</definition>
         <argsstring>() const </argsstring>
         <name>max</name>
         <location file="/math/statistics/sequencestatistics.hpp" line="87" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="198" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a531454d8413732a05e685bcf1cdc5974" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; gaussianPercentile</definition>
         <argsstring>(Real y) const </argsstring>
         <name>gaussianPercentile</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="90" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="212" bodyend="212"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1ad4aae5fd842cd76dcc21ac60ca81e495" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; percentile</definition>
         <argsstring>(Real y) const </argsstring>
         <name>percentile</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="91" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="219" bodyend="219"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1aa8d4eb1ce1319ce83f7b4b4ce8fc58e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; gaussianPotentialUpside</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>gaussianPotentialUpside</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="93" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="213" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1ab74510815db3c9b3f5895ab883cc13d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; potentialUpside</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>potentialUpside</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="94" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="220" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1ae5df0de2660027432d85a0f6d65ddc39" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; gaussianValueAtRisk</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>gaussianValueAtRisk</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="96" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="214" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1ad5aea367f2b20182be171a30cd7aaf3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; valueAtRisk</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>valueAtRisk</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="97" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="221" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a281f204c440d50cfdd499562b05e0e7f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; gaussianExpectedShortfall</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>gaussianExpectedShortfall</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="99" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="215" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a9dce88984fe2418e9f2d47fc50996194" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; expectedShortfall</definition>
         <argsstring>(Real percentile) const </argsstring>
         <name>expectedShortfall</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>percentile</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="100" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="222" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a17d2abbab64d9514dba9a21d71c914d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; regret</definition>
         <argsstring>(Real target) const </argsstring>
         <name>regret</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>target</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="102" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="223" bodyend="223"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a9359b0d4904d74a521b73927679ac98c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; gaussianShortfall</definition>
         <argsstring>(Real target) const </argsstring>
         <name>gaussianShortfall</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>target</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="104" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="216" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1a9e5daee08ad4ef07a3cfc69efda097f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; shortfall</definition>
         <argsstring>(Real target) const </argsstring>
         <name>shortfall</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>target</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="105" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="224" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1ac82b1d32c521abdcdf2df5ca2e31fa52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; gaussianAverageShortfall</definition>
         <argsstring>(Real target) const </argsstring>
         <name>gaussianAverageShortfall</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>target</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="107" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="217" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="generic_sequence_statistics_1abfe0667817541e44f9f42f8479d0f89d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt; Real &gt; averageShortfall</definition>
         <argsstring>(Real target) const </argsstring>
         <name>averageShortfall</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>target</declname>
         </param>
         <location file="/math/statistics/sequencestatistics.hpp" line="108" bodyfile="/math/statistics/sequencestatistics.hpp" bodystart="225" bodyend="225"/>
@@ -294,7 +294,7 @@
         <argsstring>(Size dimension=0)</argsstring>
         <name>reset</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>dimension</declname>
           <defval>0</defval>
         </param>
@@ -315,7 +315,7 @@
           <declname>sample</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>weight</declname>
           <defval>1.0</defval>
         </param>
@@ -340,7 +340,7 @@
           <declname>end</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>weight</declname>
           <defval>1.0</defval>
         </param>
@@ -370,7 +370,7 @@
         <argsstring>(Size dimension=0)</argsstring>
         <name>GenericSequenceStatistics</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>dimension</declname>
           <defval>0</defval>
         </param>

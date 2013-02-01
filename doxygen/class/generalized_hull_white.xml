@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="generalized_hull_white" kind="class" prot="public">
-    <compoundname>QuantLib::GeneralizedHullWhite</compoundname>
+    <compoundname>GeneralizedHullWhite</compoundname>
     <includes local="no">/experimental/shortrate/generalizedhullwhite.hpp</includes>
-    <innerclass refid="generalized_hull_white_1_1_dynamics" prot="public">QuantLib::GeneralizedHullWhite::Dynamics</innerclass>
+    <innerclass refid="generalized_hull_white_1_1_dynamics" prot="public">GeneralizedHullWhite::Dynamics</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="generalized_hull_white_1a9f14269c1d0f281c46c29faa702fc73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -42,11 +42,11 @@
           <declname>volstructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>speed</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="61"/>

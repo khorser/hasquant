@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="money" kind="class" prot="public">
-    <compoundname>QuantLib::Money</compoundname>
+    <compoundname>Money</compoundname>
     <includes local="no">/money.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -22,7 +22,7 @@
           <declname>currency</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
           <declname>value</declname>
         </param>
         <location file="/money.hpp" line="41" bodyfile="/money.hpp" bodystart="138" bodyend="139"/>
@@ -33,7 +33,7 @@
         <argsstring>(Decimal value, const Currency &amp;currency)</argsstring>
         <name>Money</name>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
           <declname>value</declname>
         </param>
         <param>
@@ -53,7 +53,7 @@
         <location file="/money.hpp" line="46" bodyfile="/money.hpp" bodystart="144" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="money_1a036a84462f8e441d97e3a13088ac2961" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+        <type>Decimal</type>
         <definition>Decimal value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
@@ -110,7 +110,7 @@
         <argsstring>(Decimal)</argsstring>
         <name>operator*=</name>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
           <defname>x</defname>
         </param>
         <location file="/money.hpp" line="60" bodyfile="/money.hpp" bodystart="164" bodyend="167"/>
@@ -121,7 +121,7 @@
         <argsstring>(Decimal)</argsstring>
         <name>operator/=</name>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
           <defname>x</defname>
         </param>
         <location file="/money.hpp" line="61" bodyfile="/money.hpp" bodystart="169" bodyend="172"/>
@@ -150,7 +150,7 @@
         <location file="/money.hpp" line="69" bodyfile="/money.hpp" bodystart="69" bodyend="77"/>
       </memberdef>
       <memberdef kind="variable" id="money_1adf033835af8d96a070082ca9ee78ce30" prot="public" static="yes" mutable="no">
-        <type><ref refid="money_1ac32291f3a839fe01ad0708ab8c53d107" kindref="member">ConversionType</ref></type>
+        <type>ConversionType</type>
         <definition>ConversionType conversionType</definition>
         <argsstring></argsstring>
         <name>conversionType</name>
@@ -200,7 +200,7 @@
           <type>const Money &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
         </param>
         <location file="/money.hpp" line="94" bodyfile="/money.hpp" bodystart="187" bodyend="191"/>
       </memberdef>
@@ -210,7 +210,7 @@
         <argsstring>(Decimal, const Money &amp;)</argsstring>
         <name>operator*</name>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
         </param>
         <param>
           <type>const Money &amp;</type>
@@ -226,12 +226,12 @@
           <type>const Money &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
         </param>
         <location file="/money.hpp" line="98" bodyfile="/money.hpp" bodystart="197" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="money_1a31eae46b487ee5e972e0e598351edfa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+        <type>Decimal</type>
         <definition>Decimal operator/</definition>
         <argsstring>(const Money &amp;, const Money &amp;)</argsstring>
         <name>operator/</name>
@@ -333,7 +333,7 @@
           <type>const Money &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
           <defval>42</defval>
         </param>
@@ -351,7 +351,7 @@
           <type>const Money &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
           <defval>42</defval>
         </param>
@@ -363,7 +363,7 @@
         <argsstring>(Decimal, const Currency &amp;)</argsstring>
         <name>operator*</name>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
         </param>
         <param>
           <type>const Currency &amp;</type>
@@ -379,7 +379,7 @@
           <type>const Currency &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
         </param>
         <location file="/money.hpp" line="125" bodyfile="/money.hpp" bodystart="219" bodyend="221"/>
       </memberdef>

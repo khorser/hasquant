@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="everywhere" kind="class" prot="public">
-    <compoundname>QuantLib::everywhere</compoundname>
+    <compoundname>everywhere</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="everywhere_1a4f23eaa7f619d56b7a9afad8c0d654c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

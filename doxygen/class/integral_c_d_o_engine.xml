@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="integral_c_d_o_engine" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::IntegralCDOEngine</compoundname>
+    <compoundname>IntegralCDOEngine</compoundname>
     <includes local="no">/experimental/credit/syntheticcdoengines.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="integral_c_d_o_engine_1a41b09cc2999cd3f252aef0eb002fb31c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

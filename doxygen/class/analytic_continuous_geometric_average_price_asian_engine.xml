@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="analytic_continuous_geometric_average_price_asian_engine" kind="class" prot="public">
-    <compoundname>QuantLib::AnalyticContinuousGeometricAveragePriceAsianEngine</compoundname>
+    <compoundname>AnalyticContinuousGeometricAveragePriceAsianEngine</compoundname>
     <includes local="no">/pricingengines/asian/analytic_cont_geom_av_price.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="analytic_continuous_geometric_average_price_asian_engine_1a198853da17d775d32fe7c415dc31f642" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

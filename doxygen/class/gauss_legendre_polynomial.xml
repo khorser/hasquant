@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="gauss_legendre_polynomial" kind="class" prot="public">
-    <compoundname>QuantLib::GaussLegendrePolynomial</compoundname>
+    <compoundname>GaussLegendrePolynomial</compoundname>
     <includes local="no">/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="gauss_legendre_polynomial_1ab0e7ee6003cbf536ea0c7b3c9860c0fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

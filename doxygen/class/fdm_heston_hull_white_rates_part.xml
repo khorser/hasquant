@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_heston_hull_white_rates_part" kind="class" prot="public">
-    <compoundname>QuantLib::FdmHestonHullWhiteRatesPart</compoundname>
+    <compoundname>FdmHestonHullWhiteRatesPart</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_heston_hull_white_rates_part_1a32f97d4edac11157fe5bc9fe2361d65c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -24,11 +24,11 @@
         <argsstring>(Time t1, Time t2)</argsstring>
         <name>setTime</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t2</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="76"/>

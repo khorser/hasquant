@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="exponential_splines_fitting" kind="class" prot="public">
-    <compoundname>QuantLib::ExponentialSplinesFitting</compoundname>
+    <compoundname>ExponentialSplinesFitting</compoundname>
     <includes local="no">/termstructures/yield/nonlinearfittingmethods.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="exponential_splines_fitting_1a5e01cc092388459a70f09ade7b21d17b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

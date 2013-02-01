@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="quantity" kind="class" prot="public">
-    <compoundname>QuantLib::Quantity</compoundname>
+    <compoundname>Quantity</compoundname>
     <includes local="no">/experimental/commodities/quantity.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -26,7 +26,7 @@
           <declname>unitOfMeasure</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>amount</declname>
         </param>
         <location file="/experimental/commodities/quantity.hpp" line="40" bodyfile="/experimental/commodities/quantity.hpp" bodystart="128" bodyend="132"/>
@@ -49,7 +49,7 @@
         <location file="/experimental/commodities/quantity.hpp" line="45" bodyfile="/experimental/commodities/quantity.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="quantity_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
@@ -106,7 +106,7 @@
         <argsstring>(Real)</argsstring>
         <name>operator*=</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>x</defname>
         </param>
         <location file="/experimental/commodities/quantity.hpp" line="59" bodyfile="/experimental/commodities/quantity.hpp" bodystart="160" bodyend="163"/>
@@ -117,7 +117,7 @@
         <argsstring>(Real)</argsstring>
         <name>operator/=</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>x</defname>
         </param>
         <location file="/experimental/commodities/quantity.hpp" line="60" bodyfile="/experimental/commodities/quantity.hpp" bodystart="165" bodyend="168"/>
@@ -146,7 +146,7 @@
         <location file="/experimental/commodities/quantity.hpp" line="68" bodyfile="/experimental/commodities/quantity.hpp" bodystart="68" bodyend="76"/>
       </memberdef>
       <memberdef kind="variable" id="quantity_1adf033835af8d96a070082ca9ee78ce30" prot="public" static="yes" mutable="no">
-        <type><ref refid="quantity_1ac32291f3a839fe01ad0708ab8c53d107" kindref="member">ConversionType</ref></type>
+        <type>ConversionType</type>
         <definition>ConversionType conversionType</definition>
         <argsstring></argsstring>
         <name>conversionType</name>
@@ -196,7 +196,7 @@
           <type>const Quantity &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <location file="/experimental/commodities/quantity.hpp" line="96" bodyfile="/experimental/commodities/quantity.hpp" bodystart="183" bodyend="187"/>
       </memberdef>
@@ -206,7 +206,7 @@
         <argsstring>(Real, const Quantity &amp;)</argsstring>
         <name>operator*</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <param>
           <type>const Quantity &amp;</type>
@@ -222,12 +222,12 @@
           <type>const Quantity &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <location file="/experimental/commodities/quantity.hpp" line="100" bodyfile="/experimental/commodities/quantity.hpp" bodystart="193" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="quantity_1a3491221669a3f36e3c5ea9f18fdeeef9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator/</definition>
         <argsstring>(const Quantity &amp;, const Quantity &amp;)</argsstring>
         <name>operator/</name>
@@ -329,7 +329,7 @@
           <type>const Quantity &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
           <defval>42</defval>
         </param>
@@ -347,7 +347,7 @@
           <type>const Quantity &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
           <defval>42</defval>
         </param>

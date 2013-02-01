@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="dated_o_i_s_rate_helper" kind="class" prot="public">
-    <compoundname>QuantLib::DatedOISRateHelper</compoundname>
+    <compoundname>DatedOISRateHelper</compoundname>
     <includes local="no">/termstructures/yield/oisratehelper.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>

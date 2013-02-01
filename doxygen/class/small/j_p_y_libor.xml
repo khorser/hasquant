@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="j_p_y_libor" kind="class" prot="public">
-    <compoundname>QuantLib::JPYLibor</compoundname>
+    <compoundname>JPYLibor</compoundname>
     <includes local="no">/indexes/ibor/jpylibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="j_p_y_libor_1adedbcd2cbb37cf80014b2fa93da7bc0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

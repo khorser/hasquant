@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="digital_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::DigitalCoupon</compoundname>
+    <compoundname>DigitalCoupon</compoundname>
     <includes local="no">/cashflows/digitalcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -15,9 +15,9 @@
           <declname>underlying</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>callStrike</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -30,14 +30,14 @@
           <defval>false</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>callDigitalPayoff</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>putStrike</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -50,9 +50,9 @@
           <defval>false</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>putDigitalPayoff</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
           <type>const boost::shared_ptr&lt; DigitalReplication &gt; &amp;</type>
@@ -67,28 +67,28 @@
       <sectiondef kind="user-defined">
       <header>Digital inspectors</header>
       <memberdef kind="function" id="digital_coupon_1a7ca129239e82cd87ca9b6f08da17f4c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate callStrike</definition>
         <argsstring>() const </argsstring>
         <name>callStrike</name>
         <location file="/cashflows/digitalcoupon.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="digital_coupon_1ab42db3671367ec99c6e0099ed1be6f0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate putStrike</definition>
         <argsstring>() const </argsstring>
         <name>putStrike</name>
         <location file="/cashflows/digitalcoupon.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="digital_coupon_1a13fb727eb4d28c9caf4d4f787ef02718" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate callDigitalPayoff</definition>
         <argsstring>() const </argsstring>
         <name>callDigitalPayoff</name>
         <location file="/cashflows/digitalcoupon.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="digital_coupon_1a98ec6b9db0a40653c9d5c36b272948bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate putDigitalPayoff</definition>
         <argsstring>() const </argsstring>
         <name>putDigitalPayoff</name>
@@ -137,7 +137,7 @@
         <location file="/cashflows/digitalcoupon.hpp" line="113" bodyfile="/cashflows/digitalcoupon.hpp" bodystart="113" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="digital_coupon_1a722313ee7ee8f9e8d1642e5cd4ce60ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate callOptionRate</definition>
         <argsstring>() const </argsstring>
         <name>callOptionRate</name>
@@ -146,7 +146,7 @@
         <location file="/cashflows/digitalcoupon.hpp" line="117"/>
       </memberdef>
       <memberdef kind="function" id="digital_coupon_1a1d04cfdd9d0c187adb76ac5f129b164d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate putOptionRate</definition>
         <argsstring>() const </argsstring>
         <name>putOptionRate</name>

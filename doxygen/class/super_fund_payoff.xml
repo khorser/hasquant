@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="super_fund_payoff" kind="class" prot="public">
-    <compoundname>QuantLib::SuperFundPayoff</compoundname>
+    <compoundname>SuperFundPayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="super_fund_payoff_1ade1dffd2bbafb10a7f164e1a9787455c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,17 +10,17 @@
         <argsstring>(Real strike, Real secondStrike)</argsstring>
         <name>SuperFundPayoff</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>secondStrike</declname>
         </param>
         <location file="/instruments/payoffs.hpp" line="211" bodyfile="/instruments/payoffs.hpp" bodystart="208" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="super_fund_payoff_1a64eedb2ee7b46110f6c2b5e6d3ed025e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real secondStrike</definition>
         <argsstring>() const </argsstring>
         <name>secondStrike</name>

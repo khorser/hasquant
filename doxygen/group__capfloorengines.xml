@@ -3,9 +3,9 @@
   <compounddef id="group__capfloorengines" kind="group">
     <compoundname>capfloorengines</compoundname>
     <title>Cap/floor engines</title>
-    <innerclass refid="class_quant_lib_1_1_analytic_cap_floor_engine" prot="public">QuantLib::AnalyticCapFloorEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_black_cap_floor_engine" prot="public">QuantLib::BlackCapFloorEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine" prot="public">QuantLib::MCHullWhiteCapFloorEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_tree_cap_floor_engine" prot="public">QuantLib::TreeCapFloorEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_analytic_cap_floor_engine" prot="public">AnalyticCapFloorEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_black_cap_floor_engine" prot="public">BlackCapFloorEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine" prot="public">MCHullWhiteCapFloorEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tree_cap_floor_engine" prot="public">TreeCapFloorEngine</innerclass>
   </compounddef>
 </doxygen>

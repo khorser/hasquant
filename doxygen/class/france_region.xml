@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="france_region" kind="class" prot="public">
-    <compoundname>QuantLib::FranceRegion</compoundname>
+    <compoundname>FranceRegion</compoundname>
     <includes local="no">/indexes/region.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="france_region_1a156998eee6144b222d95ecc8aba62344" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

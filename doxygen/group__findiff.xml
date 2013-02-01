@@ -3,25 +3,25 @@
   <compounddef id="group__findiff" kind="group">
     <compoundname>findiff</compoundname>
     <title>Finite-differences framework</title>
-    <innerclass refid="class_quant_lib_1_1_boundary_condition" prot="public">QuantLib::BoundaryCondition</innerclass>
-    <innerclass refid="class_quant_lib_1_1_neumann_b_c" prot="public">QuantLib::NeumannBC</innerclass>
-    <innerclass refid="class_quant_lib_1_1_dirichlet_b_c" prot="public">QuantLib::DirichletBC</innerclass>
-    <innerclass refid="class_quant_lib_1_1_b_s_m_operator" prot="public">QuantLib::BSMOperator</innerclass>
-    <innerclass refid="class_quant_lib_1_1_crank_nicolson" prot="public">QuantLib::CrankNicolson</innerclass>
-    <innerclass refid="class_quant_lib_1_1_d_minus" prot="public">QuantLib::DMinus</innerclass>
-    <innerclass refid="class_quant_lib_1_1_d_plus" prot="public">QuantLib::DPlus</innerclass>
-    <innerclass refid="class_quant_lib_1_1_d_plus_d_minus" prot="public">QuantLib::DPlusDMinus</innerclass>
-    <innerclass refid="class_quant_lib_1_1_d_zero" prot="public">QuantLib::DZero</innerclass>
-    <innerclass refid="class_quant_lib_1_1_explicit_euler" prot="public">QuantLib::ExplicitEuler</innerclass>
-    <innerclass refid="class_quant_lib_1_1_finite_difference_model" prot="public">QuantLib::FiniteDifferenceModel</innerclass>
-    <innerclass refid="class_quant_lib_1_1_implicit_euler" prot="public">QuantLib::ImplicitEuler</innerclass>
-    <innerclass refid="class_quant_lib_1_1_mixed_scheme" prot="public">QuantLib::MixedScheme</innerclass>
-    <innerclass refid="class_quant_lib_1_1_operator_factory" prot="public">QuantLib::OperatorFactory</innerclass>
-    <innerclass refid="class_quant_lib_1_1_step_condition_set" prot="public">QuantLib::StepConditionSet</innerclass>
-    <innerclass refid="class_quant_lib_1_1_step_condition" prot="public">QuantLib::StepCondition</innerclass>
-    <innerclass refid="class_quant_lib_1_1_null_condition" prot="public">QuantLib::NullCondition</innerclass>
-    <innerclass refid="class_quant_lib_1_1_t_r_b_d_f2" prot="public">QuantLib::TRBDF2</innerclass>
-    <innerclass refid="class_quant_lib_1_1_tridiagonal_operator" prot="public">QuantLib::TridiagonalOperator</innerclass>
+    <innerclass refid="class_quant_lib_1_1_boundary_condition" prot="public">BoundaryCondition</innerclass>
+    <innerclass refid="class_quant_lib_1_1_neumann_b_c" prot="public">NeumannBC</innerclass>
+    <innerclass refid="class_quant_lib_1_1_dirichlet_b_c" prot="public">DirichletBC</innerclass>
+    <innerclass refid="class_quant_lib_1_1_b_s_m_operator" prot="public">BSMOperator</innerclass>
+    <innerclass refid="class_quant_lib_1_1_crank_nicolson" prot="public">CrankNicolson</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_minus" prot="public">DMinus</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_plus" prot="public">DPlus</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_plus_d_minus" prot="public">DPlusDMinus</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_zero" prot="public">DZero</innerclass>
+    <innerclass refid="class_quant_lib_1_1_explicit_euler" prot="public">ExplicitEuler</innerclass>
+    <innerclass refid="class_quant_lib_1_1_finite_difference_model" prot="public">FiniteDifferenceModel</innerclass>
+    <innerclass refid="class_quant_lib_1_1_implicit_euler" prot="public">ImplicitEuler</innerclass>
+    <innerclass refid="class_quant_lib_1_1_mixed_scheme" prot="public">MixedScheme</innerclass>
+    <innerclass refid="class_quant_lib_1_1_operator_factory" prot="public">OperatorFactory</innerclass>
+    <innerclass refid="class_quant_lib_1_1_step_condition_set" prot="public">StepConditionSet</innerclass>
+    <innerclass refid="class_quant_lib_1_1_step_condition" prot="public">StepCondition</innerclass>
+    <innerclass refid="class_quant_lib_1_1_null_condition" prot="public">NullCondition</innerclass>
+    <innerclass refid="class_quant_lib_1_1_t_r_b_d_f2" prot="public">TRBDF2</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tridiagonal_operator" prot="public">TridiagonalOperator</innerclass>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="group__findiff_1ga99062cef45cec7825cfdf7b0f8e1344c" prot="public" static="no">
         <type>PdeOperator&lt; PdeBSM &gt;</type>

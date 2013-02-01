@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="commodity_curve" kind="class" prot="public">
-    <compoundname>QuantLib::CommodityCurve</compoundname>
+    <compoundname>CommodityCurve</compoundname>
     <includes local="no">/experimental/commodities/commoditycurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -49,7 +49,7 @@
         <location file="/experimental/commodities/commoditycurve.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="commodity_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
@@ -63,14 +63,14 @@
         <location file="/experimental/commodities/commoditycurve.hpp" line="65" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="125" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="commodity_curve_1a4a433ec559cce7fdc4b775b14b17833e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; prices</definition>
         <argsstring>() const </argsstring>
         <name>prices</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="66" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="129" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="commodity_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, Real &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -89,7 +89,7 @@
         <argsstring>(std::map&lt; Date, Real &gt; &amp;prices)</argsstring>
         <name>setPrices</name>
         <param>
-          <type>std::map&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>std::map&lt; Date, Real &gt; &amp;</type>
           <declname>prices</declname>
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="70"/>
@@ -106,7 +106,7 @@
         <location file="/experimental/commodities/commoditycurve.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="commodity_curve_1a72f0cd7b8225db8500bbae340ccb70ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real price</definition>
         <argsstring>(const Date &amp;d, const boost::shared_ptr&lt; ExchangeContracts &gt; &amp;exchangeContracts, Integer nearbyOffset) const </argsstring>
         <name>price</name>
@@ -119,13 +119,13 @@
           <declname>exchangeContracts</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>nearbyOffset</declname>
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="77" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="155" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="commodity_curve_1aa4feb09f9e5e39059703bef454a07503" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real basisOfPrice</definition>
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>basisOfPrice</name>
@@ -149,7 +149,7 @@
           <declname>exchangeContracts</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>nearbyOffset</declname>
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="82" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="174" bodyend="191"/>
@@ -193,7 +193,7 @@
           <declname>dates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>prices</declname>
         </param>
         <param>

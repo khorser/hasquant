@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fra_rate_helper" kind="class" prot="public">
-    <compoundname>QuantLib::FraRateHelper</compoundname>
+    <compoundname>FraRateHelper</compoundname>
     <includes local="no">/termstructures/yield/ratehelpers.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
@@ -27,15 +27,15 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>monthsToStart</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>monthsToEnd</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -43,7 +43,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>convention</declname>
         </param>
         <param>
@@ -62,19 +62,19 @@
         <argsstring>(Rate rate, Natural monthsToStart, Natural monthsToEnd, Natural fixingDays, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter)</argsstring>
         <name>FraRateHelper</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>monthsToStart</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>monthsToEnd</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -82,7 +82,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>convention</declname>
         </param>
         <param>
@@ -105,7 +105,7 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>monthsToStart</declname>
         </param>
         <param>
@@ -120,11 +120,11 @@
         <argsstring>(Rate rate, Natural monthsToStart, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex)</argsstring>
         <name>FraRateHelper</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>monthsToStart</declname>
         </param>
         <param>
@@ -147,11 +147,11 @@
           <declname>periodToStart</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>lengthInMonths</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -159,7 +159,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>convention</declname>
         </param>
         <param>
@@ -178,7 +178,7 @@
         <argsstring>(Rate rate, Period periodToStart, Natural lengthInMonths, Natural fixingDays, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter)</argsstring>
         <name>FraRateHelper</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rate</declname>
         </param>
         <param>
@@ -186,11 +186,11 @@
           <declname>periodToStart</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>lengthInMonths</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -198,7 +198,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>convention</declname>
         </param>
         <param>
@@ -236,7 +236,7 @@
         <argsstring>(Rate rate, Period periodToStart, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex)</argsstring>
         <name>FraRateHelper</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rate</declname>
         </param>
         <param>

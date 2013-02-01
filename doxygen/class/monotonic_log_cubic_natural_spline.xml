@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="monotonic_log_cubic_natural_spline" kind="class" prot="public">
-    <compoundname>QuantLib::MonotonicLogCubicNaturalSpline</compoundname>
+    <compoundname>MonotonicLogCubicNaturalSpline</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="monotonic_log_cubic_natural_spline_1abd242ebc21c39fa1a7a7deec8e8704e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

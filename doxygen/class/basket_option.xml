@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="basket_option" kind="class" prot="public">
-    <compoundname>QuantLib::BasketOption</compoundname>
+    <compoundname>BasketOption</compoundname>
     <includes local="no">/instruments/basketoption.hpp</includes>
-    <innerclass refid="basket_option_1_1engine" prot="public">QuantLib::BasketOption::engine</innerclass>
+    <innerclass refid="basket_option_1_1engine" prot="public">BasketOption::engine</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="basket_option_1ae8816f8672de29c4d03b3f1334f300e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

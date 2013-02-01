@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="market_model_pathwise_swap" kind="class" prot="public">
-    <compoundname>QuantLib::MarketModelPathwiseSwap</compoundname>
+    <compoundname>MarketModelPathwiseSwap</compoundname>
     <includes local="no">/models/marketmodels/products/pathwise/pathwiseproductswap.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="market_model_pathwise_swap_1af64ea702617fb98ef9385d22893d33b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,19 +10,19 @@
         <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes, const std::vector&lt; Time &gt; &amp;accruals, const std::vector&lt; Rate &gt; &amp;strikes, Real multiplier=1.0)</argsstring>
         <name>MarketModelPathwiseSwap</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>accruals</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>multiplier</declname>
           <defval>1.0</defval>
         </param>

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::CPICoupon</compoundname>
+    <compoundname>CPICoupon</compoundname>
     <includes local="no">/cashflows/cpicoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="c_p_i_coupon_1a73f485121a325bf2585dc27479916da8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
@@ -15,7 +15,7 @@
         <location file="/cashflows/cpicoupon.hpp" line="83" bodyfile="/cashflows/cpicoupon.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_coupon_1a9180ec724c28efa1fac9bfe986bde5e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Real spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
@@ -24,7 +24,7 @@
         <location file="/cashflows/cpicoupon.hpp" line="85" bodyfile="/cashflows/cpicoupon.hpp" bodystart="224" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate adjustedFixing</definition>
         <argsstring>() const </argsstring>
         <name>adjustedFixing</name>
@@ -33,7 +33,7 @@
         <location file="/cashflows/cpicoupon.hpp" line="88" bodyfile="/cashflows/cpicoupon.hpp" bodystart="228" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_coupon_1a7076f32553ee48e0680b92904cf7cecd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate baseCPI</definition>
         <argsstring>() const </argsstring>
         <name>baseCPI</name>
@@ -53,7 +53,7 @@
         <location file="/cashflows/cpicoupon.hpp" line="98" bodyfile="/cashflows/cpicoupon.hpp" bodystart="240" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_coupon_1a5da913aeed0edf77297364893db12269" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate indexObservation</definition>
         <argsstring>(const Date &amp;onDate) const </argsstring>
         <name>indexObservation</name>
@@ -82,7 +82,7 @@
         <argsstring>(Real baseCPI, const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;index, const Period &amp;observationLag, CPI::InterpolationType observationInterpolation, const DayCounter &amp;dayCounter, Real fixedRate, Spread spread=0.0, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date())</argsstring>
         <name>CPICoupon</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>baseCPI</declname>
         </param>
         <param>
@@ -90,7 +90,7 @@
           <declname>paymentDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -102,7 +102,7 @@
           <declname>endDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -122,11 +122,11 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
           <defval>0.0</defval>
         </param>

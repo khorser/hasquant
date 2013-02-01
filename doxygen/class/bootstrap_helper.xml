@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bootstrap_helper" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::BootstrapHelper</compoundname>
+    <compoundname>BootstrapHelper</compoundname>
     <includes local="no">/termstructures/bootstraphelper.hpp</includes>
     <templateparamlist>
       <param>
@@ -20,14 +20,14 @@
         <location file="/termstructures/bootstraphelper.hpp" line="56" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real impliedQuote</definition>
         <argsstring>() const =0</argsstring>
         <name>impliedQuote</name>
         <location file="/termstructures/bootstraphelper.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real quoteError</definition>
         <argsstring>() const </argsstring>
         <name>quoteError</name>
@@ -103,7 +103,7 @@
         <argsstring>(Real quote)</argsstring>
         <name>BootstrapHelper</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>quote</declname>
         </param>
         <location file="/termstructures/bootstraphelper.hpp" line="52" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="130" bodyend="132"/>

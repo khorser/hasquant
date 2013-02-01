@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="flat_vol_factory" kind="class" prot="public">
-    <compoundname>QuantLib::FlatVolFactory</compoundname>
+    <compoundname>FlatVolFactory</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="flat_vol_factory_1a093886b811d5fa9f94a291aabebf53cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -9,19 +9,19 @@
         <argsstring>(Real longTermCorrelation, Real beta, const std::vector&lt; Time &gt; &amp;times, const std::vector&lt; Volatility &gt; &amp;vols, const Handle&lt; YieldTermStructure &gt; &amp;yieldCurve, Spread displacement)</argsstring>
         <name>FlatVolFactory</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>longTermCorrelation</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>beta</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>times</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Volatility &gt; &amp;</type>
           <declname>vols</declname>
         </param>
         <param>
@@ -29,7 +29,7 @@
           <declname>yieldCurve</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>displacement</declname>
         </param>
         <location file="/models/marketmodels/models/flatvol.hpp" line="80"/>
@@ -43,7 +43,7 @@
           <type>const EvolutionDescription &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>numberOfFactors</declname>
         </param>
         <location file="/models/marketmodels/models/flatvol.hpp" line="82"/>

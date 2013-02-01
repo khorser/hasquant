@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="exercise_strategy" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::ExerciseStrategy</compoundname>
+    <compoundname>ExerciseStrategy</compoundname>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -18,14 +18,14 @@
         <location file="/methods/montecarlo/exercisestrategy.hpp" line="33" bodyfile="/methods/montecarlo/exercisestrategy.hpp" bodystart="33" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="exercise_strategy_1af117f62bb721ee93fb0da745f4018258" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <type>std::vector&lt; Time &gt;</type>
         <definition>virtual std::vector&lt;Time&gt; exerciseTimes</definition>
         <argsstring>() const =0</argsstring>
         <name>exerciseTimes</name>
         <location file="/methods/montecarlo/exercisestrategy.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="exercise_strategy_1aac73cc2b0828ec5d0db4a0ced4ca2066" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <type>std::vector&lt; Time &gt;</type>
         <definition>virtual std::vector&lt;Time&gt; relevantTimes</definition>
         <argsstring>() const =0</argsstring>
         <name>relevantTimes</name>

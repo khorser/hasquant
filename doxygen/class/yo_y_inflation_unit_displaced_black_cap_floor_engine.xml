@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yo_y_inflation_unit_displaced_black_cap_floor_engine" kind="class" prot="public">
-    <compoundname>QuantLib::YoYInflationUnitDisplacedBlackCapFloorEngine</compoundname>
+    <compoundname>YoYInflationUnitDisplacedBlackCapFloorEngine</compoundname>
     <includes local="no">/pricingengines/inflation/inflationcapfloorengines.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="yo_y_inflation_unit_displaced_black_cap_floor_engine_1ae2e2477eb0bbbeae003558a487dce7cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

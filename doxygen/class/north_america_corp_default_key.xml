@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="north_america_corp_default_key" kind="class" prot="public">
-    <compoundname>QuantLib::NorthAmericaCorpDefaultKey</compoundname>
+    <compoundname>NorthAmericaCorpDefaultKey</compoundname>
     <includes local="no">/experimental/credit/defaultprobabilitykey.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="north_america_corp_default_key_1a4f6d41460045256b84628f1d4ea956b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>currency</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <type>Seniority</type>
           <declname>sen</declname>
         </param>
         <param>
@@ -23,7 +23,7 @@
           <defval>Period(30, Days)</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>amountFailure</declname>
           <defval>1.e6</defval>
         </param>

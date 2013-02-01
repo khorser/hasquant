@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bankruptcy_event" kind="class" prot="public">
-    <compoundname>QuantLib::BankruptcyEvent</compoundname>
+    <compoundname>BankruptcyEvent</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="bankruptcy_event_1a524279fd2b161e7686b1665ff5441b49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <declname>curr</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <type>Seniority</type>
           <declname>bondsSen</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <declname>settleDate</declname>
         </param>
         <param>
-          <type>const std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::map&lt; Seniority, Real &gt; &amp;</type>
           <declname>recoveryRates</declname>
         </param>
         <location file="/experimental/credit/defaultevent.hpp" line="231"/>
@@ -44,7 +44,7 @@
           <declname>curr</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <type>Seniority</type>
           <declname>bondsSen</declname>
         </param>
         <param>
@@ -52,7 +52,7 @@
           <declname>settleDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRates</declname>
         </param>
         <location file="/experimental/credit/defaultevent.hpp" line="238"/>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="longstaff_schwartz_path_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::LongstaffSchwartzPathPricer</compoundname>
+    <compoundname>LongstaffSchwartzPathPricer</compoundname>
     <includes local="no">/methods/montecarlo/longstaffschwartzpathpricer.hpp</includes>
     <templateparamlist>
       <param>

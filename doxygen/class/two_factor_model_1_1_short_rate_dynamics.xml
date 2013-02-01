@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="two_factor_model_1_1_short_rate_dynamics" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::TwoFactorModel::ShortRateDynamics</compoundname>
+    <compoundname>TwoFactorModel::ShortRateDynamics</compoundname>
     <includes local="no">/models/shortrate/twofactormodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="two_factor_model_1_1_short_rate_dynamics_1a355ae86a43fc31ac1a073994cd003cd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -18,7 +18,7 @@
           <declname>yProcess</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>correlation</declname>
         </param>
         <location file="/models/shortrate/twofactormodel.hpp" line="79" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="74" bodyend="79"/>
@@ -31,20 +31,20 @@
         <location file="/models/shortrate/twofactormodel.hpp" line="80" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="two_factor_model_1_1_short_rate_dynamics_1a35ee4be4dfe9ba11ae065e504d243b27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate shortRate</definition>
         <argsstring>(Time t, Real x, Real y) const =0</argsstring>
         <name>shortRate</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/models/shortrate/twofactormodel.hpp" line="82"/>
@@ -68,7 +68,7 @@
         <location file="/models/shortrate/twofactormodel.hpp" line="90" bodyfile="/models/shortrate/twofactormodel.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="two_factor_model_1_1_short_rate_dynamics_1ac63b6b972e9461ed9c0de2899f6fdc45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real correlation</definition>
         <argsstring>() const </argsstring>
         <name>correlation</name>

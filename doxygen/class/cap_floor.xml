@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cap_floor" kind="class" prot="public">
-    <compoundname>QuantLib::CapFloor</compoundname>
+    <compoundname>CapFloor</compoundname>
     <includes local="no">/instruments/capfloor.hpp</includes>
-    <innerclass refid="cap_floor_1_1arguments" prot="public">QuantLib::CapFloor::arguments</innerclass>
-    <innerclass refid="cap_floor_1_1engine" prot="public">QuantLib::CapFloor::engine</innerclass>
+    <innerclass refid="cap_floor_1_1arguments" prot="public">CapFloor::arguments</innerclass>
+    <innerclass refid="cap_floor_1_1engine" prot="public">CapFloor::engine</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="cap_floor_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -15,21 +15,21 @@
         <location file="/instruments/capfloor.hpp" line="73" bodyfile="/instruments/capfloor.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_1a7d67016c4c1751cd680e0e5ad6a3c276" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Rate &gt; &amp;</type>
         <definition>const std::vector&lt;Rate&gt;&amp; capRates</definition>
         <argsstring>() const </argsstring>
         <name>capRates</name>
         <location file="/instruments/capfloor.hpp" line="74" bodyfile="/instruments/capfloor.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_1a45cc04b41d9b6bcd32ed1cdb654a24e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Rate &gt; &amp;</type>
         <definition>const std::vector&lt;Rate&gt;&amp; floorRates</definition>
         <argsstring>() const </argsstring>
         <name>floorRates</name>
         <location file="/instruments/capfloor.hpp" line="75" bodyfile="/instruments/capfloor.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_1ab770ccb862fe2799b9f9aeff11c9aeb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg&amp; floatingLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatingLeg</name>
@@ -62,7 +62,7 @@
         <argsstring>(const Size n) const </argsstring>
         <name>optionlet</name>
         <param>
-          <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>const Size</type>
           <declname>n</declname>
         </param>
         <briefdescription>
@@ -96,15 +96,15 @@
           <declname>type</declname>
         </param>
         <param>
-          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <type>const Leg &amp;</type>
           <declname>floatingLeg</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>capRates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>floorRates</declname>
         </param>
         <location file="/instruments/capfloor.hpp" line="62"/>
@@ -119,17 +119,17 @@
           <declname>type</declname>
         </param>
         <param>
-          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <type>const Leg &amp;</type>
           <declname>floatingLeg</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <location file="/instruments/capfloor.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_1ab22cef59ebd5cc4069092b8faa08aa0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate atmRate</definition>
         <argsstring>(const YieldTermStructure &amp;discountCurve) const </argsstring>
         <name>atmRate</name>
@@ -140,12 +140,12 @@
         <location file="/instruments/capfloor.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="cap_floor_1aa297fb33a109811a2c2f0c3b18a132c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility impliedVolatility</definition>
         <argsstring>(Real price, const Handle&lt; YieldTermStructure &gt; &amp;disc, Volatility guess, Real accuracy=1.0e-4, Natural maxEvaluations=100, Volatility minVol=1.0e-7, Volatility maxVol=4.0) const </argsstring>
         <name>impliedVolatility</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>price</declname>
         </param>
         <param>
@@ -153,26 +153,26 @@
           <declname>disc</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>guess</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-4</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>maxEvaluations</declname>
           <defval>100</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>minVol</declname>
           <defval>1.0e-7</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>maxVol</declname>
           <defval>4.0</defval>
         </param>

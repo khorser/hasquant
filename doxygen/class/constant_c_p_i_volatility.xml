@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="constant_c_p_i_volatility" kind="class" prot="public">
-    <compoundname>QuantLib::ConstantCPIVolatility</compoundname>
+    <compoundname>ConstantCPIVolatility</compoundname>
     <includes local="no">/termstructures/volatility/inflation/constantcpivolatility.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructor</header>
@@ -11,18 +11,18 @@
         <argsstring>(const Volatility v, Natural settlementDays, const Calendar &amp;, BusinessDayConvention bdc, const DayCounter &amp;dc, const Period &amp;observationLag, Frequency frequency, bool indexIsInterpolated)</argsstring>
         <name>ConstantCPIVolatility</name>
         <param>
-          <type>const <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>const Volatility</type>
           <declname>v</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
           <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -34,7 +34,7 @@
           <declname>observationLag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="hull_white_forward_process" kind="class" prot="public">
-    <compoundname>QuantLib::HullWhiteForwardProcess</compoundname>
+    <compoundname>HullWhiteForwardProcess</compoundname>
     <includes local="no">/processes/hullwhiteprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="hull_white_forward_process_1a292686a7efcf2d88f2fa3f47a518adf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,70 +14,70 @@
           <declname>h</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <location file="/processes/hullwhiteprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="hull_white_forward_process_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
         <location file="/processes/hullwhiteprocess.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="hull_white_forward_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
         <location file="/processes/hullwhiteprocess.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="hull_white_forward_process_1a65387ea280e5a966d21a2a97988acee2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real alpha</definition>
         <argsstring>(Time t) const </argsstring>
         <name>alpha</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/processes/hullwhiteprocess.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="hull_white_forward_process_1abbd0955abb6212e7d7b3a740f4e9df5e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real M_T</definition>
         <argsstring>(Real s, Real t, Real T) const </argsstring>
         <name>M_T</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>T</declname>
         </param>
         <location file="/processes/hullwhiteprocess.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="hull_white_forward_process_1a18613e934dfda1a1db8f8f4d8b00eaae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real B</definition>
         <argsstring>(Time t, Time T) const </argsstring>
         <name>B</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>T</declname>
         </param>
         <location file="/processes/hullwhiteprocess.hpp" line="80"/>

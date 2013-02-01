@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_simple2d_ext_o_u_solver" kind="class" prot="public">
-    <compoundname>QuantLib::FdmSimple2dExtOUSolver</compoundname>
+    <compoundname>FdmSimple2dExtOUSolver</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_simple2d_ext_o_u_solver_1a8fbbf4fed2b46aa8af5c798f9daf222e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -28,16 +28,16 @@
         <location file="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="47" bodyfile="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="fdm_simple2d_ext_o_u_solver_1a54a3d3adf137f4c0b938cea30a8c2022" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAt</definition>
         <argsstring>(Real x, Real y) const </argsstring>
         <name>valueAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="51" bodyfile="/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="51" bodyend="54"/>

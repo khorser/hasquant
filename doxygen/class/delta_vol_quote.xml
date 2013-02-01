@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="delta_vol_quote" kind="class" prot="public">
-    <compoundname>QuantLib::DeltaVolQuote</compoundname>
+    <compoundname>DeltaVolQuote</compoundname>
     <includes local="no">/experimental/fx/deltavolquote.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="delta_vol_quote_1a9cde3d8bd9763c57c80c78c0fd9f19c8" prot="public" static="no">
@@ -53,7 +53,7 @@
         <argsstring>(Real delta, const Handle&lt; Quote &gt; &amp;vol, Time maturity, DeltaType deltaType)</argsstring>
         <name>DeltaVolQuote</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>delta</declname>
         </param>
         <param>
@@ -61,7 +61,7 @@
           <declname>vol</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>
@@ -84,7 +84,7 @@
           <declname>deltaType</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>
@@ -94,14 +94,14 @@
         <location file="/experimental/fx/deltavolquote.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="delta_vol_quote_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
         <location file="/experimental/fx/deltavolquote.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="delta_vol_quote_1a031873b070bc7219052b0fcc0cf0a5c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time maturity</definition>
         <argsstring>() const </argsstring>
         <name>maturity</name>

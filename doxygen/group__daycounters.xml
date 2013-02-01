@@ -3,14 +3,14 @@
   <compounddef id="group__daycounters" kind="group">
     <compoundname>daycounters</compoundname>
     <title>Day counters</title>
-    <innerclass refid="class_quant_lib_1_1_actual360" prot="public">QuantLib::Actual360</innerclass>
-    <innerclass refid="class_quant_lib_1_1_actual365_fixed" prot="public">QuantLib::Actual365Fixed</innerclass>
-    <innerclass refid="class_quant_lib_1_1_actual_actual" prot="public">QuantLib::ActualActual</innerclass>
-    <innerclass refid="class_quant_lib_1_1_business252" prot="public">QuantLib::Business252</innerclass>
-    <innerclass refid="class_quant_lib_1_1_one_day_counter" prot="public">QuantLib::OneDayCounter</innerclass>
-    <innerclass refid="class_quant_lib_1_1_simple_day_counter" prot="public">QuantLib::SimpleDayCounter</innerclass>
-    <innerclass refid="class_quant_lib_1_1_thirty360" prot="public">QuantLib::Thirty360</innerclass>
+    <innerclass refid="class_quant_lib_1_1_actual360" prot="public">Actual360</innerclass>
+    <innerclass refid="class_quant_lib_1_1_actual365_fixed" prot="public">Actual365Fixed</innerclass>
+    <innerclass refid="class_quant_lib_1_1_actual_actual" prot="public">ActualActual</innerclass>
+    <innerclass refid="class_quant_lib_1_1_business252" prot="public">Business252</innerclass>
+    <innerclass refid="class_quant_lib_1_1_one_day_counter" prot="public">OneDayCounter</innerclass>
+    <innerclass refid="class_quant_lib_1_1_simple_day_counter" prot="public">SimpleDayCounter</innerclass>
+    <innerclass refid="class_quant_lib_1_1_thirty360" prot="public">Thirty360</innerclass>
     <detaileddescription>
-<para>The class <computeroutput><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">QuantLib::DayCounter</ref></computeroutput> provides more advanced means of measuring the distance between two dates according to a given market convention, both as number of days of fraction of year. A number of such conventions is contained in the <computeroutput>ql/DayCounters</computeroutput> directory. </para>    </detaileddescription>
+<para>The class <computeroutput><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></computeroutput> provides more advanced means of measuring the distance between two dates according to a given market convention, both as number of days of fraction of year. A number of such conventions is contained in the <computeroutput>ql/DayCounters</computeroutput> directory. </para>    </detaileddescription>
   </compounddef>
 </doxygen>

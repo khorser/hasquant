@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="analytic_heston_engine_1_1_integration" kind="class" prot="public">
-    <compoundname>QuantLib::AnalyticHestonEngine::Integration</compoundname>
+    <compoundname>AnalyticHestonEngine::Integration</compoundname>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="analytic_heston_engine_1_1_integration_1ae59d059eb44a1751ae56d08efde5eb81" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Integration</type>
@@ -9,7 +9,7 @@
         <argsstring>(Size integrationOrder=128)</argsstring>
         <name>gaussLaguerre</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
@@ -21,7 +21,7 @@
         <argsstring>(Size integrationOrder=128)</argsstring>
         <name>gaussLegendre</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
@@ -33,7 +33,7 @@
         <argsstring>(Size integrationOrder=128)</argsstring>
         <name>gaussChebyshev</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
@@ -45,7 +45,7 @@
         <argsstring>(Size integrationOrder=128)</argsstring>
         <name>gaussChebyshev2nd</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
@@ -57,15 +57,15 @@
         <argsstring>(Real relTolerance, Real absTolerance, Size maxEvaluations=1000)</argsstring>
         <name>gaussLobatto</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>relTolerance</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>absTolerance</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
@@ -77,11 +77,11 @@
         <argsstring>(Real absTolerance, Size maxEvaluations=1000)</argsstring>
         <name>gaussKronrod</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>absTolerance</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
@@ -93,11 +93,11 @@
         <argsstring>(Real absTolerance, Size maxEvaluations=1000)</argsstring>
         <name>simpson</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>absTolerance</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
@@ -109,11 +109,11 @@
         <argsstring>(Real absTolerance, Size maxEvaluations=1000)</argsstring>
         <name>trapezoid</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>absTolerance</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
@@ -122,22 +122,22 @@
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="analytic_heston_engine_1_1_integration_1af03c914b7ffa2667ab55687f0a36096e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real calculate</definition>
         <argsstring>(Real c_inf, const boost::function1&lt; Real, Real &gt; &amp;f) const </argsstring>
         <name>calculate</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>c_inf</declname>
         </param>
         <param>
-          <type>const boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const boost::function1&lt; Real, Real &gt; &amp;</type>
           <declname>f</declname>
         </param>
         <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="164"/>
       </memberdef>
       <memberdef kind="function" id="analytic_heston_engine_1_1_integration_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size numberOfEvaluations</definition>
         <argsstring>() const </argsstring>
         <name>numberOfEvaluations</name>

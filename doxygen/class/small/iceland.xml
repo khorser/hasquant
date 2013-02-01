@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="iceland" kind="class" prot="public">
-    <compoundname>QuantLib::Iceland</compoundname>
+    <compoundname>Iceland</compoundname>
     <includes local="no">/time/calendars/iceland.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="iceland_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
@@ -21,9 +21,9 @@
         <argsstring>(Market m=ICEX)</argsstring>
         <name>Iceland</name>
         <param>
-          <type><ref refid="iceland_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <type>Market</type>
           <declname>m</declname>
-          <defval><ref refid="iceland_1abe41cfffd960e29a5d8b07be00aeda42ab99c13187300a8891f4d715ef19f388c" kindref="member">ICEX</ref></defval>
+          <defval>ICEX</defval>
         </param>
         <location file="/time/calendars/iceland.hpp" line="63"/>
       </memberdef>

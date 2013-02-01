@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="m_c_american_basket_engine" kind="class" prot="public">
-    <compoundname>QuantLib::MCAmericanBasketEngine</compoundname>
+    <compoundname>MCAmericanBasketEngine</compoundname>
     <includes local="no">/pricingengines/basket/mcamericanbasketengine.hpp</includes>
     <templateparamlist>
       <param>
         <type>class RNG</type>
-        <defval><ref refid="namespace_quant_lib_1af791c06b3da1d5f4b90a19f3f423e75e" kindref="member">PseudoRandom</ref></defval>
+        <defval>PseudoRandom</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
@@ -20,11 +20,11 @@
           <defname>processes</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>timeSteps</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>timeStepsPerYear</declname>
         </param>
         <param>
@@ -36,25 +36,25 @@
           <declname>antitheticVariate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>requiredSamples</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>requiredTolerance</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxSamples</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+          <type>BigNatural</type>
           <declname>seed</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>nCalibrationSamples</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
+          <defval>Null&lt; Size &gt;()</defval>
         </param>
         <location file="/pricingengines/basket/mcamericanbasketengine.hpp" line="60" bodyfile="/pricingengines/basket/mcamericanbasketengine.hpp" bodystart="119" bodyend="141"/>
       </memberdef>

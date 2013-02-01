@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="garman_klass_sigma3" kind="class" prot="public">
-    <compoundname>QuantLib::GarmanKlassSigma3</compoundname>
+    <compoundname>GarmanKlassSigma3</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="garman_klass_sigma3_1ad8c7b6077b7a858319475bb36d6d0638" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -9,11 +9,11 @@
         <argsstring>(Real y, Real marketOpenFraction)</argsstring>
         <name>GarmanKlassSigma3</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>marketOpenFraction</declname>
         </param>
         <location file="/models/volatility/garmanklass.hpp" line="139" bodyfile="/models/volatility/garmanklass.hpp" bodystart="136" bodyend="139"/>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="gauss_hyperbolic_integration" kind="class" prot="public">
-    <compoundname>QuantLib::GaussHyperbolicIntegration</compoundname>
+    <compoundname>GaussHyperbolicIntegration</compoundname>
     <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="gauss_hyperbolic_integration_1a136a2b6b92136bea7ddaef3b3e440eb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Size n)</argsstring>
         <name>GaussHyperbolicIntegration</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
         </param>
         <location file="/math/integrals/gaussianquadratures.hpp" line="133" bodyfile="/math/integrals/gaussianquadratures.hpp" bodystart="132" bodyend="133"/>

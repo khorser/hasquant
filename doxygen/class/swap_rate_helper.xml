@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="swap_rate_helper" kind="class" prot="public">
-    <compoundname>QuantLib::SwapRateHelper</compoundname>
+    <compoundname>SwapRateHelper</compoundname>
     <includes local="no">/termstructures/yield/ratehelpers.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
@@ -19,7 +19,7 @@
       <sectiondef kind="user-defined">
       <header>SwapRateHelper inspectors</header>
       <memberdef kind="function" id="swap_rate_helper_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
@@ -89,11 +89,11 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>fixedFrequency</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>fixedConvention</declname>
         </param>
         <param>
@@ -127,7 +127,7 @@
         <argsstring>(Rate rate, const Period &amp;tenor, const Calendar &amp;calendar, Frequency fixedFrequency, BusinessDayConvention fixedConvention, const DayCounter &amp;fixedDayCount, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, const Handle&lt; Quote &gt; &amp;spread=Handle&lt; Quote &gt;(), const Period &amp;fwdStart=0 *Days, const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>SwapRateHelper</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rate</declname>
         </param>
         <param>
@@ -139,11 +139,11 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>fixedFrequency</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>fixedConvention</declname>
         </param>
         <param>
@@ -177,7 +177,7 @@
         <argsstring>(Rate rate, const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndex, const Handle&lt; Quote &gt; &amp;spread=Handle&lt; Quote &gt;(), const Period &amp;fwdStart=0 *Days, const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>SwapRateHelper</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rate</declname>
         </param>
         <param>

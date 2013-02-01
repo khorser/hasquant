@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="seasonality" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Seasonality</compoundname>
+    <compoundname>Seasonality</compoundname>
     <includes local="no">/termstructures/inflation/seasonality.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Seasonality interface</header>
       <memberdef kind="function" id="seasonality_1af4103a7879130a7286d87ce550213553" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate correctZeroRate</definition>
         <argsstring>(const Date &amp;d, const Rate r, const InflationTermStructure &amp;iTS) const =0</argsstring>
         <name>correctZeroRate</name>
@@ -15,7 +15,7 @@
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>const Rate</type>
           <declname>r</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
         <location file="/termstructures/inflation/seasonality.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="seasonality_1ac93d68f5fa5eaa0d5bde685923877e13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate correctYoYRate</definition>
         <argsstring>(const Date &amp;d, const Rate r, const InflationTermStructure &amp;iTS) const =0</argsstring>
         <name>correctYoYRate</name>
@@ -34,7 +34,7 @@
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>const Rate</type>
           <declname>r</declname>
         </param>
         <param>

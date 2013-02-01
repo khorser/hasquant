@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="coupon" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Coupon</compoundname>
+    <compoundname>Coupon</compoundname>
     <includes local="no">/cashflows/coupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="coupon_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
@@ -49,7 +49,7 @@
         <location file="/cashflows/coupon.hpp" line="64" bodyfile="/cashflows/coupon.hpp" bodystart="109" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="coupon_1a57133f8ae29ed44c208e6f828e1942cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time accrualPeriod</definition>
         <argsstring>() const </argsstring>
         <name>accrualPeriod</name>
@@ -58,7 +58,7 @@
         <location file="/cashflows/coupon.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="coupon_1a8009fe8a9cbf19c6ec7ff89fee12d309" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <type>BigInteger</type>
         <definition>BigInteger accrualDays</definition>
         <argsstring>() const </argsstring>
         <name>accrualDays</name>
@@ -67,7 +67,7 @@
         <location file="/cashflows/coupon.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="coupon_1a120f8a9f50fd915f019580dad4789819" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate rate</definition>
         <argsstring>() const =0</argsstring>
         <name>rate</name>
@@ -85,7 +85,7 @@
         <location file="/cashflows/coupon.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="coupon_1a1277046a4095e0e02509c40779ff9465" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time accruedPeriod</definition>
         <argsstring>(const Date &amp;) const </argsstring>
         <name>accruedPeriod</name>
@@ -97,7 +97,7 @@
         <location file="/cashflows/coupon.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="coupon_1acdb0640a6de7b44529d41e4fe1c37cd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <type>BigInteger</type>
         <definition>BigInteger accruedDays</definition>
         <argsstring>(const Date &amp;) const </argsstring>
         <name>accruedDays</name>
@@ -109,7 +109,7 @@
         <location file="/cashflows/coupon.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="coupon_1ad6b1c6e4a74184e4a2079858a75d3fcf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real accruedAmount</definition>
         <argsstring>(const Date &amp;) const =0</argsstring>
         <name>accruedAmount</name>
@@ -132,7 +132,7 @@
           <declname>paymentDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>

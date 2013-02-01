@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="zero_coupon_bond" kind="class" prot="public">
-    <compoundname>QuantLib::ZeroCouponBond</compoundname>
+    <compoundname>ZeroCouponBond</compoundname>
     <includes local="no">/instruments/bonds/zerocouponbond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="zero_coupon_bond_1ae285da9b726c82741bc75ea4b379c42c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, Real faceAmount, const Date &amp;maturityDate, BusinessDayConvention paymentConvention=Following, Real redemption=100.0, const Date &amp;issueDate=Date())</argsstring>
         <name>ZeroCouponBond</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -18,7 +18,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>faceAmount</declname>
         </param>
         <param>
@@ -26,12 +26,12 @@
           <declname>maturityDate</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>paymentConvention</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>redemption</declname>
           <defval>100.0</defval>
         </param>

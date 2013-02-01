@@ -1,61 +1,61 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="brownian_bridge" kind="class" prot="public">
-    <compoundname>QuantLib::BrownianBridge</compoundname>
+    <compoundname>BrownianBridge</compoundname>
     <includes local="no">/methods/montecarlo/brownianbridge.hpp</includes>
       <sectiondef kind="user-defined">
       <header>inspectors</header>
       <memberdef kind="function" id="brownian_bridge_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/methods/montecarlo/brownianbridge.hpp" line="79" bodyfile="/methods/montecarlo/brownianbridge.hpp" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="brownian_bridge_1a1caecd902d2960755b349a552a9b92f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
         <location file="/methods/montecarlo/brownianbridge.hpp" line="80" bodyfile="/methods/montecarlo/brownianbridge.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="brownian_bridge_1acc334fdc4c74e84a410b2022b06dcef0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Size &gt; &amp;</type>
         <definition>const std::vector&lt;Size&gt;&amp; bridgeIndex</definition>
         <argsstring>() const </argsstring>
         <name>bridgeIndex</name>
         <location file="/methods/montecarlo/brownianbridge.hpp" line="81" bodyfile="/methods/montecarlo/brownianbridge.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="brownian_bridge_1a2adda291c848191a796ea80d38b94254" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Size &gt; &amp;</type>
         <definition>const std::vector&lt;Size&gt;&amp; leftIndex</definition>
         <argsstring>() const </argsstring>
         <name>leftIndex</name>
         <location file="/methods/montecarlo/brownianbridge.hpp" line="82" bodyfile="/methods/montecarlo/brownianbridge.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="brownian_bridge_1af70d531bbebf23527e17b6f90783cb7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Size &gt; &amp;</type>
         <definition>const std::vector&lt;Size&gt;&amp; rightIndex</definition>
         <argsstring>() const </argsstring>
         <name>rightIndex</name>
         <location file="/methods/montecarlo/brownianbridge.hpp" line="83" bodyfile="/methods/montecarlo/brownianbridge.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="brownian_bridge_1a760321c6a2e07dcb679a43eb94b081af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; leftWeight</definition>
         <argsstring>() const </argsstring>
         <name>leftWeight</name>
         <location file="/methods/montecarlo/brownianbridge.hpp" line="84" bodyfile="/methods/montecarlo/brownianbridge.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="brownian_bridge_1af618b502e4b1bd0b9f3d99d224ac0520" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; rightWeight</definition>
         <argsstring>() const </argsstring>
         <name>rightWeight</name>
         <location file="/methods/montecarlo/brownianbridge.hpp" line="85" bodyfile="/methods/montecarlo/brownianbridge.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="brownian_bridge_1a6f4d0c5e8845b51c55ae7e309b513160" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; stdDeviation</definition>
         <argsstring>() const </argsstring>
         <name>stdDeviation</name>
@@ -69,7 +69,7 @@
         <argsstring>(Size steps)</argsstring>
         <name>BrownianBridge</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>steps</declname>
         </param>
         <detaileddescription>
@@ -90,7 +90,7 @@
         <argsstring>(const std::vector&lt; Time &gt; &amp;times)</argsstring>
         <name>BrownianBridge</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>times</declname>
         </param>
         <detaileddescription>

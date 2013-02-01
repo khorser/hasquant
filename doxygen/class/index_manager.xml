@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="index_manager" kind="class" prot="public">
-    <compoundname>QuantLib::IndexManager</compoundname>
+    <compoundname>IndexManager</compoundname>
     <includes local="no">/indexes/indexmanager.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="index_manager_1a5bc396af9eb1d49d50c4b0bd6e03c03b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -18,7 +18,7 @@
         <location file="/indexes/indexmanager.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="index_manager_1aaebb8c5c9e8fd14aa534659ab9defff3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const TimeSeries&lt; Real &gt; &amp;</type>
         <definition>const TimeSeries&lt;Real&gt;&amp; getHistory</definition>
         <argsstring>(const std::string &amp;name) const </argsstring>
         <name>getHistory</name>
@@ -40,7 +40,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; Real &gt; &amp;</type>
         </param>
         <briefdescription>
 <para>stores the historical fixings of the index </para>        </briefdescription>

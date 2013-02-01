@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="z_a_r_currency" kind="class" prot="public">
-    <compoundname>QuantLib::ZARCurrency</compoundname>
+    <compoundname>ZARCurrency</compoundname>
     <includes local="no">/currencies/africa.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="z_a_r_currency_1ac0040e7de3a8fb02f7ff32ad7608aab2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

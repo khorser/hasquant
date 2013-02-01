@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="risky_asset_swap" kind="class" prot="public">
-    <compoundname>QuantLib::RiskyAssetSwap</compoundname>
+    <compoundname>RiskyAssetSwap</compoundname>
     <includes local="no">/experimental/credit/riskyassetswap.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="risky_asset_swap_1ac066cd223415b4eb1404ef3ebae4c48c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>fixedPayer</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -34,11 +34,11 @@
           <declname>floatDayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>spread</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>recoveryRate_</declname>
         </param>
         <param>
@@ -50,35 +50,35 @@
           <declname>defaultTS</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>coupon</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <location file="/experimental/credit/riskyassetswap.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="risky_asset_swap_1a690110bc1c3e867572c4562b820eeb54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fairSpread</definition>
         <argsstring>()</argsstring>
         <name>fairSpread</name>
         <location file="/experimental/credit/riskyassetswap.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="risky_asset_swap_1ae209978160234ba3f315e9b2dfcc31f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real floatAnnuity</definition>
         <argsstring>() const </argsstring>
         <name>floatAnnuity</name>
         <location file="/experimental/credit/riskyassetswap.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="risky_asset_swap_1a29092d9d6550ef55d3acdaadc5672b49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>()</argsstring>
         <name>nominal</name>
         <location file="/experimental/credit/riskyassetswap.hpp" line="54" bodyfile="/experimental/credit/riskyassetswap.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="risky_asset_swap_1a3bebb1119372969057deae025356f773" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate spread</definition>
         <argsstring>()</argsstring>
         <name>spread</name>

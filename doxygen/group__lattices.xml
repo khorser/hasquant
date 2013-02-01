@@ -3,45 +3,45 @@
   <compounddef id="group__lattices" kind="group">
     <compoundname>lattices</compoundname>
     <title>Lattice methods</title>
-    <innerclass refid="class_quant_lib_1_1_tsiveriotis_fernandes_lattice" prot="public">QuantLib::TsiveriotisFernandesLattice</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_binomial_tree" prot="public">QuantLib::ExtendedBinomialTree</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree" prot="public">QuantLib::ExtendedEqualProbabilitiesBinomialTree</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_equal_jumps_binomial_tree" prot="public">QuantLib::ExtendedEqualJumpsBinomialTree</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_jarrow_rudd" prot="public">QuantLib::ExtendedJarrowRudd</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_cox_ross_rubinstein" prot="public">QuantLib::ExtendedCoxRossRubinstein</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_additive_e_q_p_binomial_tree" prot="public">QuantLib::ExtendedAdditiveEQPBinomialTree</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_trigeorgis" prot="public">QuantLib::ExtendedTrigeorgis</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_tian" prot="public">QuantLib::ExtendedTian</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_leisen_reimer" prot="public">QuantLib::ExtendedLeisenReimer</innerclass>
-    <innerclass refid="class_quant_lib_1_1_binomial_tree" prot="public">QuantLib::BinomialTree</innerclass>
-    <innerclass refid="class_quant_lib_1_1_equal_probabilities_binomial_tree" prot="public">QuantLib::EqualProbabilitiesBinomialTree</innerclass>
-    <innerclass refid="class_quant_lib_1_1_equal_jumps_binomial_tree" prot="public">QuantLib::EqualJumpsBinomialTree</innerclass>
-    <innerclass refid="class_quant_lib_1_1_jarrow_rudd" prot="public">QuantLib::JarrowRudd</innerclass>
-    <innerclass refid="class_quant_lib_1_1_cox_ross_rubinstein" prot="public">QuantLib::CoxRossRubinstein</innerclass>
-    <innerclass refid="class_quant_lib_1_1_additive_e_q_p_binomial_tree" prot="public">QuantLib::AdditiveEQPBinomialTree</innerclass>
-    <innerclass refid="class_quant_lib_1_1_trigeorgis" prot="public">QuantLib::Trigeorgis</innerclass>
-    <innerclass refid="class_quant_lib_1_1_tian" prot="public">QuantLib::Tian</innerclass>
-    <innerclass refid="class_quant_lib_1_1_leisen_reimer" prot="public">QuantLib::LeisenReimer</innerclass>
-    <innerclass refid="class_quant_lib_1_1_black_scholes_lattice" prot="public">QuantLib::BlackScholesLattice</innerclass>
-    <innerclass refid="class_quant_lib_1_1_tree_lattice" prot="public">QuantLib::TreeLattice</innerclass>
-    <innerclass refid="class_quant_lib_1_1_tree_lattice1_d" prot="public">QuantLib::TreeLattice1D</innerclass>
-    <innerclass refid="class_quant_lib_1_1_tree_lattice2_d" prot="public">QuantLib::TreeLattice2D</innerclass>
-    <innerclass refid="class_quant_lib_1_1_tree" prot="public">QuantLib::Tree</innerclass>
-    <innerclass refid="class_quant_lib_1_1_trinomial_tree" prot="public">QuantLib::TrinomialTree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tsiveriotis_fernandes_lattice" prot="public">TsiveriotisFernandesLattice</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_binomial_tree" prot="public">ExtendedBinomialTree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree" prot="public">ExtendedEqualProbabilitiesBinomialTree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_equal_jumps_binomial_tree" prot="public">ExtendedEqualJumpsBinomialTree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_jarrow_rudd" prot="public">ExtendedJarrowRudd</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_cox_ross_rubinstein" prot="public">ExtendedCoxRossRubinstein</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_additive_e_q_p_binomial_tree" prot="public">ExtendedAdditiveEQPBinomialTree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_trigeorgis" prot="public">ExtendedTrigeorgis</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_tian" prot="public">ExtendedTian</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_leisen_reimer" prot="public">ExtendedLeisenReimer</innerclass>
+    <innerclass refid="class_quant_lib_1_1_binomial_tree" prot="public">BinomialTree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_equal_probabilities_binomial_tree" prot="public">EqualProbabilitiesBinomialTree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_equal_jumps_binomial_tree" prot="public">EqualJumpsBinomialTree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_jarrow_rudd" prot="public">JarrowRudd</innerclass>
+    <innerclass refid="class_quant_lib_1_1_cox_ross_rubinstein" prot="public">CoxRossRubinstein</innerclass>
+    <innerclass refid="class_quant_lib_1_1_additive_e_q_p_binomial_tree" prot="public">AdditiveEQPBinomialTree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_trigeorgis" prot="public">Trigeorgis</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tian" prot="public">Tian</innerclass>
+    <innerclass refid="class_quant_lib_1_1_leisen_reimer" prot="public">LeisenReimer</innerclass>
+    <innerclass refid="class_quant_lib_1_1_black_scholes_lattice" prot="public">BlackScholesLattice</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tree_lattice" prot="public">TreeLattice</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tree_lattice1_d" prot="public">TreeLattice1D</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tree_lattice2_d" prot="public">TreeLattice2D</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tree" prot="public">Tree</innerclass>
+    <innerclass refid="class_quant_lib_1_1_trinomial_tree" prot="public">TrinomialTree</innerclass>
     <detaileddescription>
-<para>The framework (corresponding to the ql/Lattices directory) contains basic building blocks for pricing instruments using lattice methods (trees). A lattice, i.e. an instance of the abstract class <ref refid="class_quant_lib_1_1_lattice" kindref="compound">QuantLib::Lattice</ref>, relies on one or several trees (each one approximating a diffusion process) to price an instance of the DiscretizedAsset class. Trees are instances of classes derived from <ref refid="class_quant_lib_1_1_tree" kindref="compound">QuantLib::Tree</ref>, classes which define the branching between nodes and transition probabilities.</para><sect1 id="group__lattices_1binomial">
+<para>The framework (corresponding to the ql/Lattices directory) contains basic building blocks for pricing instruments using lattice methods (trees). A lattice, i.e. an instance of the abstract class <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref>, relies on one or several trees (each one approximating a diffusion process) to price an instance of the DiscretizedAsset class. Trees are instances of classes derived from <ref refid="class_quant_lib_1_1_tree" kindref="compound">Tree</ref>, classes which define the branching between nodes and transition probabilities.</para><sect1 id="group__lattices_1binomial">
 <title>Binomial trees</title>
 <para>The binomial method is the simplest numerical method that can be used to price path-independent derivatives. It is usually the preferred lattice method under the Black-Scholes-Merton model. As an example, let&apos;s see the framework implemented in the <ref refid="bsmlattice_8hpp" kindref="compound">bsmlattice.hpp</ref> file. It is a method based on a binomial tree, with constant short-rate (discounting). There are several approaches to build the underlying binomial tree, like Jarrow-Rudd or Cox-Ross-Rubinstein.</para></sect1>
 <sect1 id="group__lattices_1trinomial">
 <title>Trinomial trees</title>
-<para>When the underlying stochastic process has a mean-reverting pattern, it is usually better to use a trinomial tree instead of a binomial tree. An example is implemented in the <ref refid="class_quant_lib_1_1_trinomial_tree" kindref="compound">QuantLib::TrinomialTree</ref> class, which is constructed using a diffusion process and a time-grid. The goal is to build a recombining trinomial tree that will discretize, at a finite set of times, the possible evolutions of a random variable <formula id="13">$ y $</formula> satisfying <formula id="14">\[ dy_t = \mu(t, y_t) dt + \sigma(t, y_t) dW_t. \]</formula> At each node, there is a probability <formula id="15">$ p_u, p_m $</formula> and <formula id="16">$ p_d $</formula> to go through respectively the upper, the middle and the lower branch. These probabilities must satisfy <formula id="17">\[ p_{u}y_{i+1,k+1}+p_{m}y_{i+1,k}+p_{d}y_{i+1,k-1}=E_{i,j} \]</formula> and <formula id="18">\[ p_u y_{i+1,k+1}^2 + p_m y_{i+1,k}^2 + p_d y_{i+1,k-1}^2 = V^2_{i,j}+E_{i,j}^2, \]</formula> where k (the index of the node at the end of the middle branch) is the index of the node which is the nearest to the expected future value, <formula id="19">$ E_{i,j}=\mathbf{E}\left( y(t_{i+1})|y(t_{i})=y_{i,j}\right) $</formula> and <formula id="20">$ V_{i,j}^{2}=\mathbf{Var}\{y(t_{i+1})|y(t_{i})=y_{i,j}\} $</formula>. If we suppose that the variance is only dependant on time <formula id="21">$ V_{i,j}=V_{i} $</formula> and set <formula id="22">$ y_{i+1} $</formula> to <formula id="23">$ V_{i}\sqrt{3} $</formula>, we find that <formula id="24">\[ p_{u} = \frac{1}{6}+\frac{(E_{i,j}-y_{i+1,k})^{2}}{6V_{i}^{2}} + \frac{E_{i,j}-y_{i+1,k}}{2\sqrt{3}V_{i}}, \]</formula> <formula id="25">\[ p_{m} = \frac{2}{3}-\frac{(E_{i,j}-y_{i+1,k})^{2}}{3V_{i}^{2}}, \]</formula> <formula id="26">\[ p_{d} = \frac{1}{6}+\frac{(E_{i,j}-y_{i+1,k})^{2}}{6V_{i}^{2}} - \frac{E_{i,j}-y_{i+1,k}}{2\sqrt{3}V_{i}}. \]</formula></para></sect1>
+<para>When the underlying stochastic process has a mean-reverting pattern, it is usually better to use a trinomial tree instead of a binomial tree. An example is implemented in the <ref refid="class_quant_lib_1_1_trinomial_tree" kindref="compound">TrinomialTree</ref> class, which is constructed using a diffusion process and a time-grid. The goal is to build a recombining trinomial tree that will discretize, at a finite set of times, the possible evolutions of a random variable <formula id="13">$ y $</formula> satisfying <formula id="14">\[ dy_t = \mu(t, y_t) dt + \sigma(t, y_t) dW_t. \]</formula> At each node, there is a probability <formula id="15">$ p_u, p_m $</formula> and <formula id="16">$ p_d $</formula> to go through respectively the upper, the middle and the lower branch. These probabilities must satisfy <formula id="17">\[ p_{u}y_{i+1,k+1}+p_{m}y_{i+1,k}+p_{d}y_{i+1,k-1}=E_{i,j} \]</formula> and <formula id="18">\[ p_u y_{i+1,k+1}^2 + p_m y_{i+1,k}^2 + p_d y_{i+1,k-1}^2 = V^2_{i,j}+E_{i,j}^2, \]</formula> where k (the index of the node at the end of the middle branch) is the index of the node which is the nearest to the expected future value, <formula id="19">$ E_{i,j}=\mathbf{E}\left( y(t_{i+1})|y(t_{i})=y_{i,j}\right) $</formula> and <formula id="20">$ V_{i,j}^{2}=\mathbf{Var}\{y(t_{i+1})|y(t_{i})=y_{i,j}\} $</formula>. If we suppose that the variance is only dependant on time <formula id="21">$ V_{i,j}=V_{i} $</formula> and set <formula id="22">$ y_{i+1} $</formula> to <formula id="23">$ V_{i}\sqrt{3} $</formula>, we find that <formula id="24">\[ p_{u} = \frac{1}{6}+\frac{(E_{i,j}-y_{i+1,k})^{2}}{6V_{i}^{2}} + \frac{E_{i,j}-y_{i+1,k}}{2\sqrt{3}V_{i}}, \]</formula> <formula id="25">\[ p_{m} = \frac{2}{3}-\frac{(E_{i,j}-y_{i+1,k})^{2}}{3V_{i}^{2}}, \]</formula> <formula id="26">\[ p_{d} = \frac{1}{6}+\frac{(E_{i,j}-y_{i+1,k})^{2}}{6V_{i}^{2}} - \frac{E_{i,j}-y_{i+1,k}}{2\sqrt{3}V_{i}}. \]</formula></para></sect1>
 <sect1 id="group__lattices_1bidimensional">
 <title>Bidimensional lattices</title>
 <para>To come...</para></sect1>
 <sect1 id="group__lattices_1discretizedasset">
-<title>The QuantLib::DiscretizedAsset class</title>
-<para>This class is a representation of the price of a derivative at a specific time. It is roughly an array of values, each value being associated to a state of the underlying stochastic variables. For the moment, it is only used when working with trees, but it should be quite easy to make a use of it in finite-differences methods. The two main points, when deriving classes from <ref refid="class_quant_lib_1_1_discretized_asset" kindref="compound">QuantLib::DiscretizedAsset</ref>, are:<orderedlist>
-<listitem><para>Define the initialisation procedure (e.g. terminal payoff for european stock options).</para></listitem><listitem><para>Define the method adjusting values, when necessary, at each time steps (e.g. apply the step condition for american or bermudan options). Some examples are found in QuantLib::DiscretizedSwap and QuantLib::DiscretizedSwaption. </para></listitem></orderedlist>
+<title>The DiscretizedAsset class</title>
+<para>This class is a representation of the price of a derivative at a specific time. It is roughly an array of values, each value being associated to a state of the underlying stochastic variables. For the moment, it is only used when working with trees, but it should be quite easy to make a use of it in finite-differences methods. The two main points, when deriving classes from <ref refid="class_quant_lib_1_1_discretized_asset" kindref="compound">DiscretizedAsset</ref>, are:<orderedlist>
+<listitem><para>Define the initialisation procedure (e.g. terminal payoff for european stock options).</para></listitem><listitem><para>Define the method adjusting values, when necessary, at each time steps (e.g. apply the step condition for american or bermudan options). Some examples are found in DiscretizedSwap and DiscretizedSwaption. </para></listitem></orderedlist>
 </para></sect1>
     </detaileddescription>
   </compounddef>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="hull_white" kind="class" prot="public">
-    <compoundname>QuantLib::HullWhite</compoundname>
+    <compoundname>HullWhite</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/hullwhite.hpp</includes>
-    <innerclass refid="hull_white_1_1_dynamics" prot="public">QuantLib::HullWhite::Dynamics</innerclass>
-    <innerclass refid="hull_white_1_1_fitting_parameter" prot="public">QuantLib::HullWhite::FittingParameter</innerclass>
+    <innerclass refid="hull_white_1_1_dynamics" prot="public">HullWhite::Dynamics</innerclass>
+    <innerclass refid="hull_white_1_1_fitting_parameter" prot="public">HullWhite::FittingParameter</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="hull_white_1a5a576c1761c7ea4da9bb03a78b7ad5d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -16,12 +16,12 @@
           <declname>termStructure</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
           <defval>0.1</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
           <defval>0.01</defval>
         </param>
@@ -30,28 +30,28 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="hull_white_1af554e020436a6a21568f1149d61e2f54" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>static Rate convexityBias</definition>
         <argsstring>(Real futurePrice, Time t, Time T, Real sigma, Real a)</argsstring>
         <name>convexityBias</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>futurePrice</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>T</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <detaileddescription>

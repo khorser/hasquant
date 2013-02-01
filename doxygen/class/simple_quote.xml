@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="simple_quote" kind="class" prot="public">
-    <compoundname>QuantLib::SimpleQuote</compoundname>
+    <compoundname>SimpleQuote</compoundname>
     <includes local="no">/quotes/simplequote.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
       <memberdef kind="function" id="simple_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real setValue</definition>
         <argsstring>(Real value=Null&lt; Real &gt;())</argsstring>
         <name>setValue</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
-          <defval>Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>Null&lt; Real &gt;()</defval>
         </param>
         <briefdescription>
 <para>returns the difference between the new value and the old value </para>        </briefdescription>
@@ -34,9 +34,9 @@
         <argsstring>(Real value=Null&lt; Real &gt;())</argsstring>
         <name>SimpleQuote</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
-          <defval>Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>Null&lt; Real &gt;()</defval>
         </param>
         <location file="/quotes/simplequote.hpp" line="35" bodyfile="/quotes/simplequote.hpp" bodystart="53" bodyend="54"/>
       </memberdef>

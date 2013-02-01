@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="callability" kind="class" prot="public">
-    <compoundname>QuantLib::Callability</compoundname>
+    <compoundname>Callability</compoundname>
     <includes local="no">/instruments/callabilityschedule.hpp</includes>
-    <innerclass refid="callability_1_1_price" prot="public">QuantLib::Callability::Price</innerclass>
+    <innerclass refid="callability_1_1_price" prot="public">Callability::Price</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="callability_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
@@ -29,7 +29,7 @@
           <declname>price</declname>
         </param>
         <param>
-          <type><ref refid="callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+          <type>Type</type>
           <declname>type</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
         <location file="/instruments/callabilityschedule.hpp" line="59" bodyfile="/instruments/callabilityschedule.hpp" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="callability_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+        <type>Type</type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>

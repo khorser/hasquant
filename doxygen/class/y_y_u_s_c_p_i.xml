@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="y_y_u_s_c_p_i" kind="class" prot="public">
-    <compoundname>QuantLib::YYUSCPI</compoundname>
+    <compoundname>YYUSCPI</compoundname>
     <includes local="no">/indexes/inflation/uscpi.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="y_y_u_s_c_p_i_1a41cb189e88bf8969eb46826738f0a015" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

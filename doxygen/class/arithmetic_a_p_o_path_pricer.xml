@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="arithmetic_a_p_o_path_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::ArithmeticAPOPathPricer</compoundname>
+    <compoundname>ArithmeticAPOPathPricer</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="arithmetic_a_p_o_path_pricer_1a53cd559239c7826bb9472907e6fb03b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,27 +13,27 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <type>DiscountFactor</type>
           <declname>discount</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>runningSum</declname>
           <defval>0.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>pastFixings</declname>
           <defval>0</defval>
         </param>
         <location file="/pricingengines/asian/mc_discr_arith_av_price.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="arithmetic_a_p_o_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(const Path &amp;path) const </argsstring>
         <name>operator()</name>

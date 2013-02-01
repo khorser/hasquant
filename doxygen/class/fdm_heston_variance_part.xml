@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_heston_variance_part" kind="class" prot="public">
-    <compoundname>QuantLib::FdmHestonVariancePart</compoundname>
+    <compoundname>FdmHestonVariancePart</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_heston_variance_part_1a3d63b96f77468b46f08070f78d58e6b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,15 +17,15 @@
           <declname>rTS</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>kappa</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>theta</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmhestonop.hpp" line="65"/>
@@ -36,11 +36,11 @@
         <argsstring>(Time t1, Time t2)</argsstring>
         <name>setTime</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t2</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmhestonop.hpp" line="67"/>

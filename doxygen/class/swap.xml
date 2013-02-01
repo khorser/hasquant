@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="swap" kind="class" prot="public">
-    <compoundname>QuantLib::Swap</compoundname>
+    <compoundname>Swap</compoundname>
     <includes local="no">/instruments/swap.hpp</includes>
-    <innerclass refid="swap_1_1arguments" prot="public">QuantLib::Swap::arguments</innerclass>
-    <innerclass refid="swap_1_1engine" prot="public">QuantLib::Swap::engine</innerclass>
-    <innerclass refid="swap_1_1results" prot="public">QuantLib::Swap::results</innerclass>
+    <innerclass refid="swap_1_1arguments" prot="public">Swap::arguments</innerclass>
+    <innerclass refid="swap_1_1engine" prot="public">Swap::engine</innerclass>
+    <innerclass refid="swap_1_1results" prot="public">Swap::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="swap_1aa7e28d70b1366663707f7554205b887b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,11 +14,11 @@
         <argsstring>(const Leg &amp;firstLeg, const Leg &amp;secondLeg)</argsstring>
         <name>Swap</name>
         <param>
-          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <type>const Leg &amp;</type>
           <declname>firstLeg</declname>
         </param>
         <param>
-          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <type>const Leg &amp;</type>
           <declname>secondLeg</declname>
         </param>
         <detaileddescription>
@@ -31,7 +31,7 @@
         <argsstring>(const std::vector&lt; Leg &gt; &amp;legs, const std::vector&lt; bool &gt; &amp;payer)</argsstring>
         <name>Swap</name>
         <param>
-          <type>const std::vector&lt; <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Leg &gt; &amp;</type>
           <declname>legs</declname>
         </param>
         <param>
@@ -60,63 +60,63 @@
         <location file="/instruments/swap.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="swap_1ae068828364b9e2254681f983d68dcb6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real legBPS</definition>
         <argsstring>(Size j) const </argsstring>
         <name>legBPS</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>j</declname>
         </param>
         <location file="/instruments/swap.hpp" line="66" bodyfile="/instruments/swap.hpp" bodystart="66" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="swap_1a269631e31a13dd1e7d6e78bc52397cef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real legNPV</definition>
         <argsstring>(Size j) const </argsstring>
         <name>legNPV</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>j</declname>
         </param>
         <location file="/instruments/swap.hpp" line="71" bodyfile="/instruments/swap.hpp" bodystart="71" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="swap_1addfecdb10b9c77cc3b2de423cbe7a5bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <type>DiscountFactor</type>
         <definition>DiscountFactor startDiscounts</definition>
         <argsstring>(Size j) const </argsstring>
         <name>startDiscounts</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>j</declname>
         </param>
         <location file="/instruments/swap.hpp" line="76" bodyfile="/instruments/swap.hpp" bodystart="76" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="swap_1ac50265fc5de978e94b014cfbea2f1668" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <type>DiscountFactor</type>
         <definition>DiscountFactor endDiscounts</definition>
         <argsstring>(Size j) const </argsstring>
         <name>endDiscounts</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>j</declname>
         </param>
         <location file="/instruments/swap.hpp" line="81" bodyfile="/instruments/swap.hpp" bodystart="81" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="swap_1aade227fdc14701bf0bfde19b1c9ae2bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <type>DiscountFactor</type>
         <definition>DiscountFactor npvDateDiscount</definition>
         <argsstring>() const </argsstring>
         <name>npvDateDiscount</name>
         <location file="/instruments/swap.hpp" line="86" bodyfile="/instruments/swap.hpp" bodystart="86" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="swap_1a59d4f1ae9886a4955a88789f6da538ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg&amp; leg</definition>
         <argsstring>(Size j) const </argsstring>
         <name>leg</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>j</declname>
         </param>
         <location file="/instruments/swap.hpp" line="90" bodyfile="/instruments/swap.hpp" bodystart="90" bodyend="93"/>

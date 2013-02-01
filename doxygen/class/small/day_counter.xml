@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="day_counter" kind="class" prot="public">
-    <compoundname>QuantLib::DayCounter</compoundname>
+    <compoundname>DayCounter</compoundname>
     <includes local="no">/time/daycounter.hpp</includes>
       <sectiondef kind="user-defined">
       <header>DayCounter interface</header>
@@ -26,7 +26,7 @@
         <location file="/time/daycounter.hpp" line="80" bodyfile="/time/daycounter.hpp" bodystart="115" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <type>BigInteger</type>
         <definition>BigInteger dayCount</definition>
         <argsstring>(const Date &amp;, const Date &amp;) const </argsstring>
         <name>dayCount</name>
@@ -43,7 +43,7 @@
         <location file="/time/daycounter.hpp" line="83" bodyfile="/time/daycounter.hpp" bodystart="120" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time yearFraction</definition>
         <argsstring>(const Date &amp;, const Date &amp;, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date()) const </argsstring>
         <name>yearFraction</name>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="pde_second_order_parabolic" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::PdeSecondOrderParabolic</compoundname>
+    <compoundname>PdeSecondOrderParabolic</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="pde_second_order_parabolic_1ae6eca838d7ef0c4d2a8bde288098e81d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -11,46 +11,46 @@
         <location file="/methods/finitedifferences/pde.hpp" line="34" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="pde_second_order_parabolic_1afaf479da3baa52185b369071b1689d89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real diffusion</definition>
         <argsstring>(Time t, Real x) const =0</argsstring>
         <name>diffusion</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="pde_second_order_parabolic_1a6bded8896a46fad4d189950552432cd3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real drift</definition>
         <argsstring>(Time t, Real x) const =0</argsstring>
         <name>drift</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="pde_second_order_parabolic_1a168ed175a79c15ab470648076394d63a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real discount</definition>
         <argsstring>(Time t, Real x) const =0</argsstring>
         <name>discount</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="37"/>
@@ -61,7 +61,7 @@
         <argsstring>(Time t, const TransformedGrid &amp;tg, TridiagonalOperator &amp;L) const </argsstring>
         <name>generateOperator</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="sample" kind="struct" prot="public">
-    <compoundname>QuantLib::Sample</compoundname>
+    <compoundname>Sample</compoundname>
     <includes local="no">/methods/montecarlo/sample.hpp</includes>
     <templateparamlist>
       <param>
@@ -28,7 +28,7 @@
         <location file="/methods/montecarlo/sample.hpp" line="39" bodyfile="/methods/montecarlo/sample.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="sample_1a4ddbf238c21d1f8db5aa4efe1aabe9aa" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real weight</definition>
         <argsstring></argsstring>
         <name>weight</name>
@@ -46,7 +46,7 @@
           <declname>value</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>weight</declname>
         </param>
         <location file="/methods/montecarlo/sample.hpp" line="38" bodyfile="/methods/montecarlo/sample.hpp" bodystart="37" bodyend="38"/>

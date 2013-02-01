@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="e_c_b" kind="struct" prot="public">
-    <compoundname>QuantLib::ECB</compoundname>
+    <compoundname>ECB</compoundname>
     <includes local="no">/time/ecb.hpp</includes>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="e_c_b_1a47fa792d800abb74f278cc8a69de7d45" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -39,11 +39,11 @@
         <argsstring>(Month m, Year y)</argsstring>
         <name>date</name>
         <param>
-          <type><ref refid="group__datetime_1gae34b763987dcf60c6c619d327b8c9dbb" kindref="member">Month</ref></type>
+          <type>Month</type>
           <declname>m</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga84dee895910074cbc7d936c86c1abf3d" kindref="member">Year</ref></type>
+          <type>Year</type>
           <declname>y</declname>
         </param>
         <briefdescription>

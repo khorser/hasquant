@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="pagoda_option" kind="class" prot="public">
-    <compoundname>QuantLib::PagodaOption</compoundname>
+    <compoundname>PagodaOption</compoundname>
     <includes local="no">/experimental/exoticoptions/pagodaoption.hpp</includes>
-    <innerclass refid="pagoda_option_1_1arguments" prot="public">QuantLib::PagodaOption::arguments</innerclass>
-    <innerclass refid="pagoda_option_1_1engine" prot="public">QuantLib::PagodaOption::engine</innerclass>
+    <innerclass refid="pagoda_option_1_1arguments" prot="public">PagodaOption::arguments</innerclass>
+    <innerclass refid="pagoda_option_1_1engine" prot="public">PagodaOption::engine</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="pagoda_option_1aa24208806aa5411bceaa9c73d090f47b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -16,11 +16,11 @@
           <declname>fixingDates</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>roof</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>fraction</declname>
         </param>
         <location file="/experimental/exoticoptions/pagodaoption.hpp" line="50"/>

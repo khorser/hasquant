@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="abcd_vol" kind="class" prot="public">
-    <compoundname>QuantLib::AbcdVol</compoundname>
+    <compoundname>AbcdVol</compoundname>
     <includes local="no">/models/marketmodels/models/abcdvol.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="abcd_vol_1ab0103a5e0bc5a0d367a1b6f6bcca7c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,23 +10,23 @@
         <argsstring>(Real a, Real b, Real c, Real d, const std::vector&lt; Real &gt; &amp;ks, const boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt; &amp;corr, const EvolutionDescription &amp;evolution, const Size numberOfFactors, const std::vector&lt; Rate &gt; &amp;initialRates, const std::vector&lt; Spread &gt; &amp;displacements)</argsstring>
         <name>AbcdVol</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>c</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>d</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>ks</declname>
         </param>
         <param>
@@ -38,15 +38,15 @@
           <declname>evolution</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>const Size</type>
           <declname>numberOfFactors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>initialRates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>displacements</declname>
         </param>
         <location file="/models/marketmodels/models/abcdvol.hpp" line="48"/>

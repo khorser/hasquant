@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="asset_swap_1_1results" kind="class" prot="public">
-    <compoundname>QuantLib::AssetSwap::results</compoundname>
+    <compoundname>AssetSwap::results</compoundname>
     <includes local="no">/instruments/assetswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="asset_swap_1_1results_1aaae65d8ddf791f2593ac9d1d395f1d3a" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread fairSpread</definition>
         <argsstring></argsstring>
         <name>fairSpread</name>
         <location file="/instruments/assetswap.hpp" line="124" bodyfile="/instruments/assetswap.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="asset_swap_1_1results_1ab9a80dfada63b2ab4323f319b82e643e" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fairCleanPrice</definition>
         <argsstring></argsstring>
         <name>fairCleanPrice</name>
         <location file="/instruments/assetswap.hpp" line="125" bodyfile="/instruments/assetswap.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="asset_swap_1_1results_1a08f9248ae9c7c061c3fbb926ab5c6125" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fairNonParRepayment</definition>
         <argsstring></argsstring>
         <name>fairNonParRepayment</name>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="tridiagonal_operator_1_1_time_setter" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::TridiagonalOperator::TimeSetter</compoundname>
+    <compoundname>TridiagonalOperator::TimeSetter</compoundname>
     <includes local="no">/methods/finitedifferences/tridiagonaloperator.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="tridiagonal_operator_1_1_time_setter_1aa236e8ce6b8e6f851241a22293c34987" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -17,7 +17,7 @@
         <argsstring>(Time t, TridiagonalOperator &amp;L) const =0</argsstring>
         <name>setTime</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>

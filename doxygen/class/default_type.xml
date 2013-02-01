@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="default_type" kind="class" prot="public">
-    <compoundname>QuantLib::DefaultType</compoundname>
+    <compoundname>DefaultType</compoundname>
     <includes local="no">/experimental/credit/defaulttype.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="default_type_1a95b78a625cfd28cf0c11168a8b197bbf" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">

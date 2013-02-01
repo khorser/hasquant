@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="forward_type_payoff" kind="class" prot="public">
-    <compoundname>QuantLib::ForwardTypePayoff</compoundname>
+    <compoundname>ForwardTypePayoff</compoundname>
     <includes local="no">/instruments/forward.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="forward_type_payoff_1ada3df9ea663fc2de8153d88f1d396d88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <location file="/instruments/forward.hpp" line="149" bodyfile="/instruments/forward.hpp" bodystart="148" bodyend="151"/>
@@ -27,7 +27,7 @@
         <location file="/instruments/forward.hpp" line="152" bodyfile="/instruments/forward.hpp" bodystart="152" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="forward_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real strike</definition>
         <argsstring>() const </argsstring>
         <name>strike</name>

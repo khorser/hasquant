@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="ju_quadratic_approximation_engine" kind="class" prot="public">
-    <compoundname>QuantLib::JuQuadraticApproximationEngine</compoundname>
+    <compoundname>JuQuadraticApproximationEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/juquadraticengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="ju_quadratic_approximation_engine_1a140983fad68b7dcbbf122222f9ffaba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

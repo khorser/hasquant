@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="black_swaption_engine" kind="class" prot="public">
-    <compoundname>QuantLib::BlackSwaptionEngine</compoundname>
+    <compoundname>BlackSwaptionEngine</compoundname>
     <includes local="no">/pricingengines/swaption/blackswaptionengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="black_swaption_engine_1abd24ff35a976366d04e4cdcb3e489b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>vol</declname>
         </param>
         <param>

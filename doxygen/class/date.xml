@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="date" kind="class" prot="public">
-    <compoundname>QuantLib::Date</compoundname>
+    <compoundname>Date</compoundname>
     <includes local="no">/time/date.hpp</includes>
       <sectiondef kind="user-defined">
       <header>constructors</header>
@@ -20,7 +20,7 @@
         <argsstring>(BigInteger serialNumber)</argsstring>
         <name>Date</name>
         <param>
-          <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+          <type>BigInteger</type>
           <declname>serialNumber</declname>
         </param>
         <briefdescription>
@@ -33,15 +33,15 @@
         <argsstring>(Day d, Month m, Year y)</argsstring>
         <name>Date</name>
         <param>
-          <type><ref refid="group__datetime_1ga91214837fb837828e91ce17de9eaa43c" kindref="member">Day</ref></type>
+          <type>Day</type>
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gae34b763987dcf60c6c619d327b8c9dbb" kindref="member">Month</ref></type>
+          <type>Month</type>
           <declname>m</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga84dee895910074cbc7d936c86c1abf3d" kindref="member">Year</ref></type>
+          <type>Year</type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -52,21 +52,21 @@
       <sectiondef kind="user-defined">
       <header>inspectors</header>
       <memberdef kind="function" id="date_1abaa5325a9945802025849f2ce19f216a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+        <type>Weekday</type>
         <definition>Weekday weekday</definition>
         <argsstring>() const </argsstring>
         <name>weekday</name>
         <location file="/time/date.hpp" line="102" bodyfile="/time/date.hpp" bodystart="253" bodyend="256"/>
       </memberdef>
       <memberdef kind="function" id="date_1a1abc2fd6d46857840592b215117cd332" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1ga91214837fb837828e91ce17de9eaa43c" kindref="member">Day</ref></type>
+        <type>Day</type>
         <definition>Day dayOfMonth</definition>
         <argsstring>() const </argsstring>
         <name>dayOfMonth</name>
         <location file="/time/date.hpp" line="103" bodyfile="/time/date.hpp" bodystart="258" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="date_1a763db58d72c7d2cb79f910d073157b38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1ga91214837fb837828e91ce17de9eaa43c" kindref="member">Day</ref></type>
+        <type>Day</type>
         <definition>Day dayOfYear</definition>
         <argsstring>() const </argsstring>
         <name>dayOfYear</name>
@@ -75,21 +75,21 @@
         <location file="/time/date.hpp" line="105" bodyfile="/time/date.hpp" bodystart="262" bodyend="264"/>
       </memberdef>
       <memberdef kind="function" id="date_1aaf6068a327702eb87fab7c893d63c3cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__datetime_1gae34b763987dcf60c6c619d327b8c9dbb" kindref="member">Month</ref></type>
+        <type>Month</type>
         <definition>Month month</definition>
         <argsstring>() const </argsstring>
         <name>month</name>
         <location file="/time/date.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="date_1a6b547238a0bb413fe80f74b6ce04bb69" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__datetime_1ga84dee895910074cbc7d936c86c1abf3d" kindref="member">Year</ref></type>
+        <type>Year</type>
         <definition>Year year</definition>
         <argsstring>() const </argsstring>
         <name>year</name>
         <location file="/time/date.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="date_1a412eb3ac472f875e0017df004a9d0ee2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <type>BigInteger</type>
         <definition>BigInteger serialNumber</definition>
         <argsstring>() const </argsstring>
         <name>serialNumber</name>
@@ -104,7 +104,7 @@
         <argsstring>(BigInteger days)</argsstring>
         <name>operator+=</name>
         <param>
-          <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+          <type>BigInteger</type>
           <declname>days</declname>
         </param>
         <briefdescription>
@@ -129,7 +129,7 @@
         <argsstring>(BigInteger days)</argsstring>
         <name>operator-=</name>
         <param>
-          <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+          <type>BigInteger</type>
           <declname>days</declname>
         </param>
         <briefdescription>
@@ -196,7 +196,7 @@
         <argsstring>(BigInteger days) const </argsstring>
         <name>operator+</name>
         <param>
-          <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+          <type>BigInteger</type>
           <declname>days</declname>
         </param>
         <briefdescription>
@@ -222,7 +222,7 @@
         <argsstring>(BigInteger days) const </argsstring>
         <name>operator-</name>
         <param>
-          <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+          <type>BigInteger</type>
           <declname>days</declname>
         </param>
         <briefdescription>
@@ -278,7 +278,7 @@
         <argsstring>(Year y)</argsstring>
         <name>isLeap</name>
         <param>
-          <type><ref refid="group__datetime_1ga84dee895910074cbc7d936c86c1abf3d" kindref="member">Year</ref></type>
+          <type>Year</type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -321,7 +321,7 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+          <type>Weekday</type>
           <declname>w</declname>
         </param>
         <briefdescription>
@@ -336,19 +336,19 @@
         <argsstring>(Size n, Weekday w, Month m, Year y)</argsstring>
         <name>nthWeekday</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+          <type>Weekday</type>
           <declname>w</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gae34b763987dcf60c6c619d327b8c9dbb" kindref="member">Month</ref></type>
+          <type>Month</type>
           <declname>m</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga84dee895910074cbc7d936c86c1abf3d" kindref="member">Year</ref></type>
+          <type>Year</type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -360,7 +360,7 @@
       </sectiondef>
       <sectiondef kind="related">
       <memberdef kind="function" id="date_1ad4b6fb4702e8fd7dcdcf0ff7ab0ab60d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <type>BigInteger</type>
         <definition>BigInteger operator-</definition>
         <argsstring>(const Date &amp;, const Date &amp;)</argsstring>
         <name>operator-</name>

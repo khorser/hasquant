@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="market_model_cash_rebate" kind="class" prot="public">
-    <compoundname>QuantLib::MarketModelCashRebate</compoundname>
+    <compoundname>MarketModelCashRebate</compoundname>
     <includes local="no">/models/marketmodels/products/multistep/cashrebate.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="market_model_cash_rebate_1af0f1b73af9c493d6d147a12455818d18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>evolution</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>paymentTimes</declname>
         </param>
         <param>
@@ -22,7 +22,7 @@
           <declname>amounts</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>numberOfProducts</declname>
         </param>
         <location file="/models/marketmodels/products/multistep/cashrebate.hpp" line="42"/>

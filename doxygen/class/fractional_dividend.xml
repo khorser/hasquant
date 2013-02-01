@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fractional_dividend" kind="class" prot="public">
-    <compoundname>QuantLib::FractionalDividend</compoundname>
+    <compoundname>FractionalDividend</compoundname>
     <includes local="no">/cashflows/dividend.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="fractional_dividend_1a6e0be46b8606ad399eecc52ada97ea90" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real rate</definition>
         <argsstring>() const </argsstring>
         <name>rate</name>
         <location file="/cashflows/dividend.hpp" line="93" bodyfile="/cashflows/dividend.hpp" bodystart="93" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="fractional_dividend_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
@@ -27,7 +27,7 @@
         <argsstring>(Real rate, const Date &amp;date)</argsstring>
         <name>FractionalDividend</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rate</declname>
         </param>
         <param>
@@ -42,11 +42,11 @@
         <argsstring>(Real rate, Real nominal, const Date &amp;date)</argsstring>
         <name>FractionalDividend</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>

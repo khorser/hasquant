@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="commodity_index" kind="class" prot="public">
-    <compoundname>QuantLib::CommodityIndex</compoundname>
+    <compoundname>CommodityIndex</compoundname>
     <includes local="no">/experimental/commodities/commodityindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
@@ -51,14 +51,14 @@
         <location file="/experimental/commodities/commodityindex.hpp" line="62" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="commodity_index_1a49ef143f1d484eafaa99baa3c7ea9b09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real lotQuantity</definition>
         <argsstring>() const </argsstring>
         <name>lotQuantity</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="63" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="commodity_index_1ac495fd9bc1177fa5ff37da1dd4382f13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real price</definition>
         <argsstring>(const Date &amp;date)</argsstring>
         <name>price</name>
@@ -69,7 +69,7 @@
         <location file="/experimental/commodities/commodityindex.hpp" line="65" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="147" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="commodity_index_1ada34e3301903ed5c0e42cc0dc0bdf770" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real forwardPrice</definition>
         <argsstring>(const Date &amp;date) const </argsstring>
         <name>forwardPrice</name>
@@ -114,7 +114,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>lotQuantity</declname>
         </param>
         <param>
@@ -141,7 +141,7 @@
           <declname>quoteDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>quote</declname>
         </param>
         <location file="/experimental/commodities/commodityindex.hpp" line="69" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="185" bodyend="193"/>
@@ -152,7 +152,7 @@
         <argsstring>(const std::map&lt; Date, Real &gt; &amp;quotes)</argsstring>
         <name>addQuotes</name>
         <param>
-          <type>const std::map&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::map&lt; Date, Real &gt; &amp;</type>
           <declname>quotes</declname>
         </param>
         <location file="/experimental/commodities/commodityindex.hpp" line="71" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="71" bodyend="79"/>
@@ -192,7 +192,7 @@
         <location file="/experimental/commodities/commodityindex.hpp" line="85" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="179" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="commodity_index_1a45a42a373bc45cab8cb46d7d4f079b38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const TimeSeries&lt; Real &gt; &amp;</type>
         <definition>const TimeSeries&lt; Real &gt; &amp; quotes</definition>
         <argsstring>() const </argsstring>
         <name>quotes</name>

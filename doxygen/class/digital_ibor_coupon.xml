@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="digital_ibor_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::DigitalIborCoupon</compoundname>
+    <compoundname>DigitalIborCoupon</compoundname>
     <includes local="no">/cashflows/digitaliborcoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="digital_ibor_coupon_1ac042717d999581a57f2c05266c996dbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,9 +14,9 @@
           <declname>underlying</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>callStrike</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -29,14 +29,14 @@
           <defval>false</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>callDigitalPayoff</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>putStrike</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -49,9 +49,9 @@
           <defval>false</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>putDigitalPayoff</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
           <type>const boost::shared_ptr&lt; DigitalReplication &gt; &amp;</type>

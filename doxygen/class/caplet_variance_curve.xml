@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="caplet_variance_curve" kind="class" prot="public">
-    <compoundname>QuantLib::CapletVarianceCurve</compoundname>
+    <compoundname>CapletVarianceCurve</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/capletvariancecurve.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="caplet_variance_curve_1ab8237fa09c27ca6fa7edc11f1264fefa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -18,7 +18,7 @@
           <declname>dates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Volatility &gt; &amp;</type>
           <declname>capletVolCurve</declname>
         </param>
         <param>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="extended_black_scholes_merton_process" kind="class" prot="public">
-    <compoundname>QuantLib::ExtendedBlackScholesMertonProcess</compoundname>
+    <compoundname>ExtendedBlackScholesMertonProcess</compoundname>
     <includes local="no">/experimental/processes/extendedblackscholesprocess.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="extended_black_scholes_merton_process_1a36f45ac51e3e98d35c68ca85b7573e87" prot="public" static="no">

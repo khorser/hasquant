@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="black_atm_vol_curve" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::BlackAtmVolCurve</compoundname>
+    <compoundname>BlackAtmVolCurve</compoundname>
     <includes local="no">/experimental/volatility/blackatmvolcurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -16,9 +16,9 @@
           <declname>cal</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -26,7 +26,7 @@
           <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000020"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000020"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/experimental/volatility/blackatmvolcurve.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="black_atm_vol_curve_1ae6f7aa60ece6266f81c578c61e900c9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -35,9 +35,9 @@
         <argsstring>(BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>BlackAtmVolCurve</name>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -47,7 +47,7 @@
         <briefdescription>
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000021"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000021"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/experimental/volatility/blackatmvolcurve.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="black_atm_vol_curve_1ac4c042801bd99136f21685ae1e23dca7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -65,9 +65,9 @@
           <defval>Calendar()</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -84,16 +84,16 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;, BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>BlackAtmVolCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
           <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -108,7 +108,7 @@
       <sectiondef kind="user-defined">
       <header>Black at-the-money spot volatility</header>
       <memberdef kind="function" id="black_atm_vol_curve_1ad1cee2b8599f6b7fd230617cf8649889" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility atmVol</definition>
         <argsstring>(const Period &amp;optionTenor, bool extrapolate=false) const </argsstring>
         <name>atmVol</name>
@@ -126,7 +126,7 @@
         <location file="/experimental/volatility/blackatmvolcurve.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="black_atm_vol_curve_1a1b04f877216db68be0905c586074c70d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility atmVol</definition>
         <argsstring>(const Date &amp;maturity, bool extrapolate=false) const </argsstring>
         <name>atmVol</name>
@@ -144,12 +144,12 @@
         <location file="/experimental/volatility/blackatmvolcurve.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="black_atm_vol_curve_1af6f663b5e030187f2f72e1cc8b51386f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility atmVol</definition>
         <argsstring>(Time maturity, bool extrapolate=false) const </argsstring>
         <name>atmVol</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>
@@ -162,7 +162,7 @@
         <location file="/experimental/volatility/blackatmvolcurve.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="black_atm_vol_curve_1af6574446d68d15970f3365291532afc1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real atmVariance</definition>
         <argsstring>(const Period &amp;optionTenor, bool extrapolate=false) const </argsstring>
         <name>atmVariance</name>
@@ -180,7 +180,7 @@
         <location file="/experimental/volatility/blackatmvolcurve.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="black_atm_vol_curve_1a534bc78916bb2787dfa8ee256a863189" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real atmVariance</definition>
         <argsstring>(const Date &amp;maturity, bool extrapolate=false) const </argsstring>
         <name>atmVariance</name>
@@ -198,12 +198,12 @@
         <location file="/experimental/volatility/blackatmvolcurve.hpp" line="91"/>
       </memberdef>
       <memberdef kind="function" id="black_atm_vol_curve_1a06268996a49c215e3f79b8d935c0ca10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real atmVariance</definition>
         <argsstring>(Time maturity, bool extrapolate=false) const </argsstring>
         <name>atmVariance</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>

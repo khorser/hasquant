@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fitted_bond_discount_curve" kind="class" prot="public">
-    <compoundname>QuantLib::FittedBondDiscountCurve</compoundname>
+    <compoundname>FittedBondDiscountCurve</compoundname>
     <includes local="no">/termstructures/yield/fittedbonddiscountcurve.hpp</includes>
-    <innerclass refid="fitted_bond_discount_curve_1_1_fitting_method" prot="public">QuantLib::FittedBondDiscountCurve::FittingMethod</innerclass>
+    <innerclass refid="fitted_bond_discount_curve_1_1_fitting_method" prot="public">FittedBondDiscountCurve::FittingMethod</innerclass>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="fitted_bond_discount_curve_1a77e7c5aa487e5a9174a5fbaa93976e1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -12,7 +12,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; BondHelper &gt; &gt; &amp;bonds, const DayCounter &amp;dayCounter, const FittingMethod &amp;fittingMethod, Real accuracy=1.0e-10, Size maxEvaluations=10000, const Array &amp;guess=Array(), Real simplexLambda=1.0)</argsstring>
         <name>FittedBondDiscountCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -32,12 +32,12 @@
           <declname>fittingMethod</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-10</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>10000</defval>
         </param>
@@ -47,7 +47,7 @@
           <defval>Array()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>simplexLambda</declname>
           <defval>1.0</defval>
         </param>
@@ -77,12 +77,12 @@
           <declname>fittingMethod</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-10</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>10000</defval>
         </param>
@@ -92,7 +92,7 @@
           <defval>Array()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>simplexLambda</declname>
           <defval>1.0</defval>
         </param>
@@ -106,7 +106,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; FixedRateBondHelper &gt; &gt; &amp;bonds, const DayCounter &amp;dayCounter, const FittingMethod &amp;fittingMethod, Real accuracy=1.0e-10, Size maxEvaluations=10000, const Array &amp;guess=Array(), Real simplexLambda=1.0)</argsstring>
         <name>FittedBondDiscountCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -126,12 +126,12 @@
           <declname>fittingMethod</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-10</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>10000</defval>
         </param>
@@ -141,7 +141,7 @@
           <defval>Array()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>simplexLambda</declname>
           <defval>1.0</defval>
         </param>
@@ -171,12 +171,12 @@
           <declname>fittingMethod</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-10</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>10000</defval>
         </param>
@@ -186,7 +186,7 @@
           <defval>Array()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>simplexLambda</declname>
           <defval>1.0</defval>
         </param>
@@ -198,7 +198,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="fitted_bond_discount_curve_1a7cf0bcef35de1b57ad0f7ef11970fc52" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size numberOfBonds</definition>
         <argsstring>() const </argsstring>
         <name>numberOfBonds</name>

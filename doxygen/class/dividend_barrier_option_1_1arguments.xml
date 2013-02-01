@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="dividend_barrier_option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::DividendBarrierOption::arguments</compoundname>
+    <compoundname>DividendBarrierOption::arguments</compoundname>
     <includes local="no">/instruments/dividendbarrieroption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="dividend_barrier_option_1_1arguments_1a24a711202268cb2ea76e9bb2d30b25a8" prot="public" static="no" mutable="no">

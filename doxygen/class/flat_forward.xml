@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="flat_forward" kind="class" prot="public">
-    <compoundname>QuantLib::FlatForward</compoundname>
+    <compoundname>FlatForward</compoundname>
     <includes local="no">/termstructures/yield/flatforward.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -23,14 +23,14 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>compounding</declname>
-          <defval><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73a6cb140948cbeedb9f7182dd4027e5e37" kindref="member">Continuous</ref></defval>
+          <defval>Continuous</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <location file="/termstructures/yield/flatforward.hpp" line="45"/>
       </memberdef>
@@ -44,7 +44,7 @@
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>forward</declname>
         </param>
         <param>
@@ -52,14 +52,14 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>compounding</declname>
-          <defval><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73a6cb140948cbeedb9f7182dd4027e5e37" kindref="member">Continuous</ref></defval>
+          <defval>Continuous</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <location file="/termstructures/yield/flatforward.hpp" line="50"/>
       </memberdef>
@@ -69,7 +69,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const Handle&lt; Quote &gt; &amp;forward, const DayCounter &amp;dayCounter, Compounding compounding=Continuous, Frequency frequency=Annual)</argsstring>
         <name>FlatForward</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -85,14 +85,14 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>compounding</declname>
-          <defval><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73a6cb140948cbeedb9f7182dd4027e5e37" kindref="member">Continuous</ref></defval>
+          <defval>Continuous</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <location file="/termstructures/yield/flatforward.hpp" line="56"/>
       </memberdef>
@@ -102,7 +102,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, Rate forward, const DayCounter &amp;dayCounter, Compounding compounding=Continuous, Frequency frequency=Annual)</argsstring>
         <name>FlatForward</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -110,7 +110,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>forward</declname>
         </param>
         <param>
@@ -118,28 +118,28 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>compounding</declname>
-          <defval><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73a6cb140948cbeedb9f7182dd4027e5e37" kindref="member">Continuous</ref></defval>
+          <defval>Continuous</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <location file="/termstructures/yield/flatforward.hpp" line="62"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="flat_forward_1a6968bd096b10d7259e742fa324abade3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+        <type>Compounding</type>
         <definition>Compounding compounding</definition>
         <argsstring>() const </argsstring>
         <name>compounding</name>
         <location file="/termstructures/yield/flatforward.hpp" line="66" bodyfile="/termstructures/yield/flatforward.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="flat_forward_1a402b415c588fd029f489b30d42076cf4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>Frequency compoundingFrequency</definition>
         <argsstring>() const </argsstring>
         <name>compoundingFrequency</name>

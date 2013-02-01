@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="period" kind="class" prot="public">
-    <compoundname>QuantLib::Period</compoundname>
+    <compoundname>Period</compoundname>
     <includes local="no">/time/period.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="period_1ae8d0cd55e4166146e5ebee66c5a0838c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -17,11 +17,11 @@
         <argsstring>(Integer n, TimeUnit units)</argsstring>
         <name>Period</name>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>n</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gadd9fe45e09605eee3e4a39c8a5c4476d" kindref="member">TimeUnit</ref></type>
+          <type>TimeUnit</type>
           <declname>units</declname>
         </param>
         <location file="/time/period.hpp" line="49" bodyfile="/time/period.hpp" bodystart="48" bodyend="49"/>
@@ -32,27 +32,27 @@
         <argsstring>(Frequency f)</argsstring>
         <name>Period</name>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>f</declname>
         </param>
         <location file="/time/period.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="period_1a6f3e347103a4b81c251e87334fe595ae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer length</definition>
         <argsstring>() const </argsstring>
         <name>length</name>
         <location file="/time/period.hpp" line="51" bodyfile="/time/period.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="period_1a53c1c52f86bbf030eceb226aed7ed255" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1gadd9fe45e09605eee3e4a39c8a5c4476d" kindref="member">TimeUnit</ref></type>
+        <type>TimeUnit</type>
         <definition>TimeUnit units</definition>
         <argsstring>() const </argsstring>
         <name>units</name>
         <location file="/time/period.hpp" line="52" bodyfile="/time/period.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="period_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
@@ -84,7 +84,7 @@
         <argsstring>(Integer)</argsstring>
         <name>operator/=</name>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
         </param>
         <location file="/time/period.hpp" line="56"/>
       </memberdef>
@@ -98,7 +98,7 @@
       </sectiondef>
       <sectiondef kind="related">
       <memberdef kind="function" id="period_1a06a4ee62bb93be97b4753ab5fa263f78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real years</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>years</name>
@@ -108,7 +108,7 @@
         <location file="/time/period.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="period_1a92a562ccbc1e5c902fd4bd4576bb12aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real months</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>months</name>
@@ -118,7 +118,7 @@
         <location file="/time/period.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="period_1a81fdea029a8d7c598c96d298889d4b5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real weeks</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>weeks</name>
@@ -128,7 +128,7 @@
         <location file="/time/period.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="period_1a4fe4dabf0407c1c808b1ca5a6f2b8c79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real days</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>days</name>
@@ -152,7 +152,7 @@
           <declname>n</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gadd9fe45e09605eee3e4a39c8a5c4476d" kindref="member">TimeUnit</ref></type>
+          <type>TimeUnit</type>
           <declname>units</declname>
         </param>
         <location file="/time/period.hpp" line="73" bodyfile="/time/period.hpp" bodystart="140" bodyend="142"/>
@@ -168,7 +168,7 @@
         <argsstring>(TimeUnit units, T n)</argsstring>
         <name>operator*</name>
         <param>
-          <type><ref refid="group__datetime_1gadd9fe45e09605eee3e4a39c8a5c4476d" kindref="member">TimeUnit</ref></type>
+          <type>TimeUnit</type>
           <declname>units</declname>
         </param>
         <param>
@@ -193,7 +193,7 @@
         <argsstring>(Integer n, const Period &amp;)</argsstring>
         <name>operator*</name>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>n</declname>
         </param>
         <param>
@@ -210,7 +210,7 @@
           <type>const Period &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>n</declname>
         </param>
         <location file="/time/period.hpp" line="83" bodyfile="/time/period.hpp" bodystart="157" bodyend="159"/>
@@ -224,7 +224,7 @@
           <type>const Period &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>n</declname>
         </param>
         <location file="/time/period.hpp" line="86"/>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="b_m_a_swap_rate_helper" kind="class" prot="public">
-    <compoundname>QuantLib::BMASwapRateHelper</compoundname>
+    <compoundname>BMASwapRateHelper</compoundname>
     <includes local="no">/termstructures/yield/ratehelpers.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
@@ -31,7 +31,7 @@
           <declname>tenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -43,7 +43,7 @@
           <declname>bmaPeriod</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bmaConvention</declname>
         </param>
         <param>

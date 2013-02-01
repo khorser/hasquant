@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="sticky_payoff" kind="class" prot="public">
-    <compoundname>QuantLib::StickyPayoff</compoundname>
+    <compoundname>StickyPayoff</compoundname>
     <includes local="no">/instruments/stickyratchet.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="sticky_payoff_1aed264b32d65ab611af85d82017ce38d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,27 +10,27 @@
         <argsstring>(Real gearing1, Real gearing2, Real spread1, Real spread2, Real initialValue, Real accrualFactor)</argsstring>
         <name>StickyPayoff</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing2</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>spread1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>spread2</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>initialValue</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accrualFactor</declname>
         </param>
         <location file="/instruments/stickyratchet.hpp" line="89" bodyfile="/instruments/stickyratchet.hpp" bodystart="82" bodyend="89"/>

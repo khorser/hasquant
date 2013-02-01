@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="generic_c_p_i" kind="class" prot="public">
-    <compoundname>QuantLib::GenericCPI</compoundname>
+    <compoundname>GenericCPI</compoundname>
     <includes local="no">/experimental/inflation/genericindexes.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="generic_c_p_i_1a128b56a6f44cb160ef3c0f085718a99a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Frequency frequency, bool revised, bool interpolated, const Period &amp;lag, const Currency &amp;ccy, const Handle&lt; ZeroInflationTermStructure &gt; &amp;ts=Handle&lt; ZeroInflationTermStructure &gt;())</argsstring>
         <name>GenericCPI</name>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>

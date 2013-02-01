@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="libor_forward_model_process" kind="class" prot="public">
-    <compoundname>QuantLib::LiborForwardModelProcess</compoundname>
+    <compoundname>LiborForwardModelProcess</compoundname>
     <includes local="no">/legacy/libormarketmodels/lfmprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="libor_forward_model_process_1ac9fab8518f6c26a8b6ca3af01be2d19b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Size size, const boost::shared_ptr&lt; IborIndex &gt; &amp;index)</argsstring>
         <name>LiborForwardModelProcess</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>size</declname>
         </param>
         <param>
@@ -27,12 +27,12 @@
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_process_1af92caf4749478ba72dd159dbd82d871f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
+        <type>Leg</type>
         <definition>Leg cashFlows</definition>
         <argsstring>(Real amount=1.0) const </argsstring>
         <name>cashFlows</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>amount</declname>
           <defval>1.0</defval>
         </param>
@@ -57,18 +57,18 @@
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_process_1a50e781d78a77b91b09d63af7be8370e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size nextIndexReset</definition>
         <argsstring>(Time t) const </argsstring>
         <name>nextIndexReset</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="86"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_process_1ac65ca9ae19fc3937dfc431a79645393f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; fixingTimes</definition>
         <argsstring>() const </argsstring>
         <name>fixingTimes</name>
@@ -82,26 +82,26 @@
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_process_1a73154ce9a8976450bb2f20d9b034334f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; accrualStartTimes</definition>
         <argsstring>() const </argsstring>
         <name>accrualStartTimes</name>
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_process_1ae172c09e644b2c85addaa7d78ec314a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; accrualEndTimes</definition>
         <argsstring>() const </argsstring>
         <name>accrualEndTimes</name>
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="90"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_process_1a9ef5f82ed37b419330d61c2f658f58d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
+        <type>std::vector&lt; DiscountFactor &gt;</type>
         <definition>std::vector&lt;DiscountFactor&gt; discountBond</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;rates) const </argsstring>
         <name>discountBond</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>rates</declname>
         </param>
         <location file="/legacy/libormarketmodels/lfmprocess.hpp" line="93"/>

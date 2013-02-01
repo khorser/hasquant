@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="smile_section" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::SmileSection</compoundname>
+    <compoundname>SmileSection</compoundname>
     <includes local="no">/termstructures/volatility/smilesection.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="smile_section_1af20784bdbcd6f66d1ed30f5dd728c5ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -31,7 +31,7 @@
         <argsstring>(Time exerciseTime, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>SmileSection</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>exerciseTime</declname>
         </param>
         <param>
@@ -56,43 +56,43 @@
         <location file="/termstructures/volatility/smilesection.hpp" line="45" bodyfile="/termstructures/volatility/smilesection.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="smile_section_1a1a0b4386bde01c8cc2678dc87489fcd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real minStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>minStrike</name>
         <location file="/termstructures/volatility/smilesection.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="smile_section_1aede5e93dcaf5b7de1d5ffd4a773cd803" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real maxStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>maxStrike</name>
         <location file="/termstructures/volatility/smilesection.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="smile_section_1a2cd4ee35012e118552e330c1af05fb2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real variance</definition>
         <argsstring>(Rate strike) const </argsstring>
         <name>variance</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <location file="/termstructures/volatility/smilesection.hpp" line="50" bodyfile="/termstructures/volatility/smilesection.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="smile_section_1a98ff7d335a6b6b02e54e67e66c86f20b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatility</definition>
         <argsstring>(Rate strike) const </argsstring>
         <name>volatility</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <location file="/termstructures/volatility/smilesection.hpp" line="51" bodyfile="/termstructures/volatility/smilesection.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="smile_section_1aad514c538e95aed60e1506fcc2e9d69b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real atmLevel</definition>
         <argsstring>() const =0</argsstring>
         <name>atmLevel</name>
@@ -113,7 +113,7 @@
         <location file="/termstructures/volatility/smilesection.hpp" line="54" bodyfile="/termstructures/volatility/smilesection.hpp" bodystart="80" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="smile_section_1a0dd89caf6d5f685c479d266d32cc7146" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time exerciseTime</definition>
         <argsstring>() const </argsstring>
         <name>exerciseTime</name>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="volatility_interpolation_specifier" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::VolatilityInterpolationSpecifier</compoundname>
+    <compoundname>VolatilityInterpolationSpecifier</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="volatility_interpolation_specifier_1aa62d5eb7b21dcca2b0a4d3a037687ec8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -23,7 +23,7 @@
         <argsstring>(const std::vector&lt; Real &gt; &amp;scales)=0</argsstring>
         <name>setScalingFactors</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>scales</declname>
         </param>
         <location file="/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="44"/>
@@ -34,7 +34,7 @@
         <argsstring>(Real vol)=0</argsstring>
         <name>setLastCapletVol</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>vol</declname>
         </param>
         <location file="/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="45"/>
@@ -54,28 +54,28 @@
         <location file="/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="volatility_interpolation_specifier_1ae725886f037f7f8867498283b4ecbadb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size getPeriod</definition>
         <argsstring>() const =0</argsstring>
         <name>getPeriod</name>
         <location file="/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="volatility_interpolation_specifier_1ad9800e5048c7f90efb6e81ccf6ea3ab6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size getOffset</definition>
         <argsstring>() const =0</argsstring>
         <name>getOffset</name>
         <location file="/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="volatility_interpolation_specifier_1a9aefa4466580cc1ca01b37a0b86354da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size getNoBigRates</definition>
         <argsstring>() const =0</argsstring>
         <name>getNoBigRates</name>
         <location file="/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="volatility_interpolation_specifier_1ac8a3fada1d4eb4970f135ea0d67b9d7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size getNoSmallRates</definition>
         <argsstring>() const =0</argsstring>
         <name>getNoSmallRates</name>

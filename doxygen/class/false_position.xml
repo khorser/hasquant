@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="false_position" kind="class" prot="public">
-    <compoundname>QuantLib::FalsePosition</compoundname>
+    <compoundname>FalsePosition</compoundname>
     <includes local="no">/math/solvers1d/falseposition.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="false_position_1a89c27acbd6897ade1c40e93c8b380558" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
             <type>class F</type>
           </param>
         </templateparamlist>
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real solveImpl</definition>
         <argsstring>(const F &amp;f, Real xAccuracy) const </argsstring>
         <name>solveImpl</name>
@@ -19,7 +19,7 @@
           <declname>f</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xAccuracy</declname>
         </param>
         <location file="/math/solvers1d/falseposition.hpp" line="39" bodyfile="/math/solvers1d/falseposition.hpp" bodystart="38" bodyend="83"/>

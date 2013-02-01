@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="year_on_year_inflation_swap_1_1results" kind="class" prot="public">
-    <compoundname>QuantLib::YearOnYearInflationSwap::results</compoundname>
+    <compoundname>YearOnYearInflationSwap::results</compoundname>
     <includes local="no">/instruments/yearonyearinflationswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="year_on_year_inflation_swap_1_1results_1ad4b780187770e012156cf76a4c1cb1e1" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fairRate</definition>
         <argsstring></argsstring>
         <name>fairRate</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="147" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="year_on_year_inflation_swap_1_1results_1aaae65d8ddf791f2593ac9d1d395f1d3a" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread fairSpread</definition>
         <argsstring></argsstring>
         <name>fairSpread</name>

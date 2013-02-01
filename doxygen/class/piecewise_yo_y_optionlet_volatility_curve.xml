@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="piecewise_yo_y_optionlet_volatility_curve" kind="class" prot="public">
-    <compoundname>QuantLib::PiecewiseYoYOptionletVolatilityCurve</compoundname>
+    <compoundname>PiecewiseYoYOptionletVolatilityCurve</compoundname>
     <includes local="no">/experimental/inflation/piecewiseyoyoptionletvolatility.hpp</includes>
     <templateparamlist>
       <param>
@@ -41,7 +41,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc, const Period &amp;lag, Frequency frequency, bool indexIsInterpolated, Rate minStrike, Rate maxStrike, Volatility baseYoYVolatility, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, Real accuracy=1.0e-12, const Interpolator &amp;interpolator=Interpolator())</argsstring>
         <name>PiecewiseYoYOptionletVolatilityCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -49,7 +49,7 @@
           <declname>cal</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -61,7 +61,7 @@
           <declname>lag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -69,15 +69,15 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>minStrike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>maxStrike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>baseYoYVolatility</declname>
         </param>
         <param>
@@ -85,7 +85,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-12</defval>
         </param>

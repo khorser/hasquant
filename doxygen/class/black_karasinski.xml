@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="black_karasinski" kind="class" prot="public">
-    <compoundname>QuantLib::BlackKarasinski</compoundname>
+    <compoundname>BlackKarasinski</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/blackkarasinski.hpp</includes>
-    <innerclass refid="black_karasinski_1_1_dynamics" prot="public">QuantLib::BlackKarasinski::Dynamics</innerclass>
+    <innerclass refid="black_karasinski_1_1_dynamics" prot="public">BlackKarasinski::Dynamics</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="black_karasinski_1aadfac54b64d637fadf35d1c3cb7b7fc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -15,12 +15,12 @@
           <declname>termStructure</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
           <defval>0.1</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
           <defval>0.1</defval>
         </param>

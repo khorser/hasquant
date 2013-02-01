@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="call_specified_multi_product" kind="class" prot="public">
-    <compoundname>QuantLib::CallSpecifiedMultiProduct</compoundname>
+    <compoundname>CallSpecifiedMultiProduct</compoundname>
       <sectiondef kind="user-defined">
       <header>MarketModelMultiProduct interface</header>
       <memberdef kind="function" id="call_specified_multi_product_1aaf801d7941a97da6022733449a2a0e24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <type>std::vector&lt; Size &gt;</type>
         <definition>std::vector&lt;Size&gt; suggestedNumeraires</definition>
         <argsstring>() const </argsstring>
         <name>suggestedNumeraires</name>
@@ -19,21 +19,21 @@
         <location file="/models/marketmodels/products/multistep/callspecifiedmultiproduct.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="call_specified_multi_product_1a56865e26489f9b92ffd7aa1adf6cbc09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <type>std::vector&lt; Time &gt;</type>
         <definition>std::vector&lt;Time&gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
         <location file="/models/marketmodels/products/multistep/callspecifiedmultiproduct.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="call_specified_multi_product_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size numberOfProducts</definition>
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
         <location file="/models/marketmodels/products/multistep/callspecifiedmultiproduct.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="call_specified_multi_product_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size maxNumberOfCashFlowsPerProductPerStep</definition>
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
@@ -56,7 +56,7 @@
           <declname>currentState</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <type>std::vector&lt; Size &gt; &amp;</type>
           <declname>numberCashFlowsThisStep</declname>
         </param>
         <param>

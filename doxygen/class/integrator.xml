@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="integrator" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Integrator</compoundname>
+    <compoundname>Integrator</compoundname>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
       <memberdef kind="function" id="integrator_1ae715a1a7471aa54a69ade6e67652c6c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Real)</argsstring>
         <name>setAbsoluteAccuracy</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <location file="/math/integrals/integral.hpp" line="42"/>
       </memberdef>
@@ -20,7 +20,7 @@
         <argsstring>(Size)</argsstring>
         <name>setMaxEvaluations</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
         </param>
         <location file="/math/integrals/integral.hpp" line="43"/>
       </memberdef>
@@ -28,14 +28,14 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="integrator_1a30349681fee19d861a0a89c9f4bf941d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real absoluteAccuracy</definition>
         <argsstring>() const </argsstring>
         <name>absoluteAccuracy</name>
         <location file="/math/integrals/integral.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="integrator_1a842b062d85cd314bb96925ed3b67afac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size maxEvaluations</definition>
         <argsstring>() const </argsstring>
         <name>maxEvaluations</name>
@@ -49,11 +49,11 @@
         <argsstring>(Real absoluteAccuracy, Size maxEvaluations)</argsstring>
         <name>Integrator</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>absoluteAccuracy</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
         </param>
         <location file="/math/integrals/integral.hpp" line="33"/>
@@ -66,33 +66,33 @@
         <location file="/math/integrals/integral.hpp" line="34" bodyfile="/math/integrals/integral.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="integrator_1a60134ce215fe001ccfd67332646dd805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(const boost::function&lt; Real(Real)&gt; &amp;f, Real a, Real b) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>)&gt; &amp;</type>
+          <type>const boost::function&lt; Real(Real)&gt; &amp;</type>
           <declname>f</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <location file="/math/integrals/integral.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="integrator_1ab118832eb331364a73b4bb0a6baa4629" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real absoluteError</definition>
         <argsstring>() const </argsstring>
         <name>absoluteError</name>
         <location file="/math/integrals/integral.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="integrator_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size numberOfEvaluations</definition>
         <argsstring>() const </argsstring>
         <name>numberOfEvaluations</name>

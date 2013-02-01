@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="variance_option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::VarianceOption::arguments</compoundname>
+    <compoundname>VarianceOption::arguments</compoundname>
     <includes local="no">/experimental/varianceoption/varianceoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="variance_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" static="no" mutable="no">
@@ -12,7 +12,7 @@
         <location file="/experimental/varianceoption/varianceoption.hpp" line="73" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="variance_option_1_1arguments_1a120e19fab4c30279f6f0428ea7c27a04" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real notional</definition>
         <argsstring></argsstring>
         <name>notional</name>

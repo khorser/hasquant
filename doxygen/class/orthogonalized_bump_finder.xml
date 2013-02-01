@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="orthogonalized_bump_finder" kind="class" prot="public">
-    <compoundname>QuantLib::OrthogonalizedBumpFinder</compoundname>
+    <compoundname>OrthogonalizedBumpFinder</compoundname>
     <includes local="no">/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="orthogonalized_bump_finder_1ac13090c0556142212a8c53c8edb00940" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -22,11 +22,11 @@
           <declname>caps</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>multiplierCutOff</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>tolerance</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="96"/>

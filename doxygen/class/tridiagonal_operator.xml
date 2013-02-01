@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="tridiagonal_operator" kind="class" prot="public">
-    <compoundname>QuantLib::TridiagonalOperator</compoundname>
+    <compoundname>TridiagonalOperator</compoundname>
     <includes local="no">/methods/finitedifferences/tridiagonaloperator.hpp</includes>
-    <innerclass refid="tridiagonal_operator_1_1_time_setter" prot="public">QuantLib::TridiagonalOperator::TimeSetter</innerclass>
+    <innerclass refid="tridiagonal_operator_1_1_time_setter" prot="public">TridiagonalOperator::TimeSetter</innerclass>
       <sectiondef kind="user-defined">
       <header>Operator interface</header>
       <memberdef kind="function" id="tridiagonal_operator_1a112ec8c0a82c5ba78b0203b093687f47" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -59,7 +59,7 @@
           <declname>rhs</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>tol</declname>
         </param>
         <briefdescription>
@@ -72,7 +72,7 @@
         <argsstring>(Size size)</argsstring>
         <name>identity</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>size</declname>
         </param>
         <briefdescription>
@@ -83,7 +83,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="tridiagonal_operator_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
@@ -126,11 +126,11 @@
         <argsstring>(Real, Real)</argsstring>
         <name>setFirstRow</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valB</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valC</defname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="101" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="137" bodyend="141"/>
@@ -141,19 +141,19 @@
         <argsstring>(Size, Real, Real, Real)</argsstring>
         <name>setMidRow</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <defname>i</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valA</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valB</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valC</defname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="102" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="143" bodyend="152"/>
@@ -164,15 +164,15 @@
         <argsstring>(Real, Real, Real)</argsstring>
         <name>setMidRows</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valA</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valB</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valC</defname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="103" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="154" bodyend="162"/>
@@ -183,11 +183,11 @@
         <argsstring>(Real, Real)</argsstring>
         <name>setLastRow</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valA</defname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defname>valB</defname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="104" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="164" bodyend="168"/>
@@ -198,7 +198,7 @@
         <argsstring>(Time t)</argsstring>
         <name>setTime</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="105" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="170" bodyend="173"/>
@@ -234,7 +234,7 @@
         <argsstring>(Size size=0)</argsstring>
         <name>TridiagonalOperator</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>size</declname>
           <defval>0</defval>
         </param>

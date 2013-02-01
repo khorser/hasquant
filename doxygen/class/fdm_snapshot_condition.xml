@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_snapshot_condition" kind="class" prot="public">
-    <compoundname>QuantLib::FdmSnapshotCondition</compoundname>
+    <compoundname>FdmSnapshotCondition</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_snapshot_condition_1ab0d2d23e05d15e613a386d5bc64190c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -9,7 +9,7 @@
         <argsstring>(Time t)</argsstring>
         <name>FdmSnapshotCondition</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="35"/>
@@ -24,13 +24,13 @@
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="fdm_snapshot_condition_1a8dc33007ac597d89370bd88ee8a88293" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time getTime</definition>
         <argsstring>() const </argsstring>
         <name>getTime</name>

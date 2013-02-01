@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="forward_vanilla_option" kind="class" prot="public">
-    <compoundname>QuantLib::ForwardVanillaOption</compoundname>
+    <compoundname>ForwardVanillaOption</compoundname>
     <includes local="no">/instruments/forwardvanillaoption.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="forward_vanilla_option_1aa921b26418fb0d2cd2b73a34aef8ae14" prot="public" static="no">
@@ -26,7 +26,7 @@
         <argsstring>(Real moneyness, const Date &amp;resetDate, const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise)</argsstring>
         <name>ForwardVanillaOption</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>moneyness</declname>
         </param>
         <param>

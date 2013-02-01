@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="variance_swap" kind="class" prot="public">
-    <compoundname>QuantLib::VarianceSwap</compoundname>
+    <compoundname>VarianceSwap</compoundname>
     <includes local="no">/instruments/varianceswap.hpp</includes>
-    <innerclass refid="variance_swap_1_1arguments" prot="public">QuantLib::VarianceSwap::arguments</innerclass>
-    <innerclass refid="variance_swap_1_1engine" prot="public">QuantLib::VarianceSwap::engine</innerclass>
-    <innerclass refid="variance_swap_1_1results" prot="public">QuantLib::VarianceSwap::results</innerclass>
+    <innerclass refid="variance_swap_1_1arguments" prot="public">VarianceSwap::arguments</innerclass>
+    <innerclass refid="variance_swap_1_1engine" prot="public">VarianceSwap::engine</innerclass>
+    <innerclass refid="variance_swap_1_1results" prot="public">VarianceSwap::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Additional interface</header>
       <memberdef kind="function" id="variance_swap_1ad7c02470d5002728533aa20843a1bd78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real strike</definition>
         <argsstring>() const </argsstring>
         <name>strike</name>
@@ -37,14 +37,14 @@
         <location file="/instruments/varianceswap.hpp" line="60" bodyfile="/instruments/varianceswap.hpp" bodystart="115" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="variance_swap_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real notional</definition>
         <argsstring>() const </argsstring>
         <name>notional</name>
         <location file="/instruments/varianceswap.hpp" line="61" bodyfile="/instruments/varianceswap.hpp" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="variance_swap_1a4b8b05b2a9af92dad9cc304c2925a4eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real variance</definition>
         <argsstring>() const </argsstring>
         <name>variance</name>
@@ -62,11 +62,11 @@
           <declname>position</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notional</declname>
         </param>
         <param>

@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="multi_path" kind="class" prot="public">
-    <compoundname>QuantLib::MultiPath</compoundname>
+    <compoundname>MultiPath</compoundname>
     <includes local="no">/methods/montecarlo/multipath.hpp</includes>
       <sectiondef kind="user-defined">
       <header>inspectors</header>
       <memberdef kind="function" id="multi_path_1ad65e78a811f17a9c504e6995782caa64" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size assetNumber</definition>
         <argsstring>() const </argsstring>
         <name>assetNumber</name>
         <location file="/methods/montecarlo/multipath.hpp" line="46" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="multi_path_1a4e8b292569a9184ecdffc719a39d67d5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size pathSize</definition>
         <argsstring>() const </argsstring>
         <name>pathSize</name>
@@ -28,7 +28,7 @@
         <argsstring>(Size j) const </argsstring>
         <name>operator[]</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>j</declname>
         </param>
         <location file="/methods/montecarlo/multipath.hpp" line="51" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="51" bodyend="51"/>
@@ -39,7 +39,7 @@
         <argsstring>(Size j) const </argsstring>
         <name>at</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>j</declname>
         </param>
         <location file="/methods/montecarlo/multipath.hpp" line="52" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="52" bodyend="52"/>
@@ -50,7 +50,7 @@
         <argsstring>(Size j)</argsstring>
         <name>operator[]</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>j</declname>
         </param>
         <location file="/methods/montecarlo/multipath.hpp" line="53" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="53" bodyend="53"/>
@@ -61,7 +61,7 @@
         <argsstring>(Size j)</argsstring>
         <name>at</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>j</declname>
         </param>
         <location file="/methods/montecarlo/multipath.hpp" line="54" bodyfile="/methods/montecarlo/multipath.hpp" bodystart="54" bodyend="54"/>
@@ -81,7 +81,7 @@
         <argsstring>(Size nAsset, const TimeGrid &amp;timeGrid)</argsstring>
         <name>MultiPath</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>nAsset</declname>
         </param>
         <param>

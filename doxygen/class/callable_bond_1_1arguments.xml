@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="callable_bond_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::CallableBond::arguments</compoundname>
+    <compoundname>CallableBond::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="callable_bond_1_1arguments_1ac1d9de7bc3b1057703ce26ca7a0f9e06" prot="public" static="no" mutable="no">
         <type>std::vector&lt; Date &gt;</type>
@@ -11,14 +11,14 @@
         <location file="/experimental/callablebonds/callablebond.hpp" line="117" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="callable_bond_1_1arguments_1a52aaf336ba6c7b103e373fa37508a241" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; couponAmounts</definition>
         <argsstring></argsstring>
         <name>couponAmounts</name>
         <location file="/experimental/callablebonds/callablebond.hpp" line="118" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="callable_bond_1_1arguments_1a340776950e7a04325cff7db8034c8851" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real redemption</definition>
         <argsstring></argsstring>
         <name>redemption</name>
@@ -41,7 +41,7 @@
         <location file="/experimental/callablebonds/callablebond.hpp" line="122" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="callable_bond_1_1arguments_1a3beeffbb3df839c46c9c8b2f696e286f" prot="public" static="no" mutable="no">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>Frequency frequency</definition>
         <argsstring></argsstring>
         <name>frequency</name>
@@ -55,7 +55,7 @@
         <location file="/experimental/callablebonds/callablebond.hpp" line="124" bodyfile="/experimental/callablebonds/callablebond.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="callable_bond_1_1arguments_1ae21eb9aefd3d60d22918bea9f4909d3a" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; callabilityPrices</definition>
         <argsstring></argsstring>
         <name>callabilityPrices</name>

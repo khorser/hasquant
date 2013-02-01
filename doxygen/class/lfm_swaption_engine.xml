@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="lfm_swaption_engine" kind="class" prot="public">
-    <compoundname>QuantLib::LfmSwaptionEngine</compoundname>
+    <compoundname>LfmSwaptionEngine</compoundname>
     <includes local="no">/legacy/libormarketmodels/lfmswaptionengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="lfm_swaption_engine_1af462bfcfe13f6ad80f331abba14a54cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

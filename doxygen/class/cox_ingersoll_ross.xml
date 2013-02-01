@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cox_ingersoll_ross" kind="class" prot="public">
-    <compoundname>QuantLib::CoxIngersollRoss</compoundname>
+    <compoundname>CoxIngersollRoss</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
-    <innerclass refid="cox_ingersoll_ross_1_1_dynamics" prot="public">QuantLib::CoxIngersollRoss::Dynamics</innerclass>
-    <innerclass refid="cox_ingersoll_ross_1_1_helper_process" prot="public">QuantLib::CoxIngersollRoss::HelperProcess</innerclass>
+    <innerclass refid="cox_ingersoll_ross_1_1_dynamics" prot="public">CoxIngersollRoss::Dynamics</innerclass>
+    <innerclass refid="cox_ingersoll_ross_1_1_helper_process" prot="public">CoxIngersollRoss::HelperProcess</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="cox_ingersoll_ross_1a86cde1731e3090e18ffb1b0a4e7f7552" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -12,22 +12,22 @@
         <argsstring>(Rate r0=0.05, Real theta=0.1, Real k=0.1, Real sigma=0.1)</argsstring>
         <name>CoxIngersollRoss</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>r0</declname>
           <defval>0.05</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>theta</declname>
           <defval>0.1</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>k</declname>
           <defval>0.1</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
           <defval>0.1</defval>
         </param>

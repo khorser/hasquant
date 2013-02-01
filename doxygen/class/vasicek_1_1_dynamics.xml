@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="vasicek_1_1_dynamics" kind="class" prot="public">
-    <compoundname>QuantLib::Vasicek::Dynamics</compoundname>
+    <compoundname>Vasicek::Dynamics</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/vasicek.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="vasicek_1_1_dynamics_1a5dce670364e0706a1573c3a758856d90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,19 +10,19 @@
         <argsstring>(Real a, Real b, Real sigma, Real r0)</argsstring>
         <name>Dynamics</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>r0</declname>
         </param>
         <location file="/models/shortrate/onefactormodels/vasicek.hpp" line="85" bodyfile="/models/shortrate/onefactormodels/vasicek.hpp" bodystart="79" bodyend="85"/>

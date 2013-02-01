@@ -1,49 +1,49 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="multi_asset_option" kind="class" prot="public">
-    <compoundname>QuantLib::MultiAssetOption</compoundname>
+    <compoundname>MultiAssetOption</compoundname>
     <includes local="no">/instruments/multiassetoption.hpp</includes>
-    <innerclass refid="multi_asset_option_1_1engine" prot="public">QuantLib::MultiAssetOption::engine</innerclass>
-    <innerclass refid="multi_asset_option_1_1results" prot="public">QuantLib::MultiAssetOption::results</innerclass>
+    <innerclass refid="multi_asset_option_1_1engine" prot="public">MultiAssetOption::engine</innerclass>
+    <innerclass refid="multi_asset_option_1_1results" prot="public">MultiAssetOption::results</innerclass>
       <sectiondef kind="user-defined">
       <header>greeks</header>
       <memberdef kind="function" id="multi_asset_option_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
         <location file="/instruments/multiassetoption.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="multi_asset_option_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gamma</definition>
         <argsstring>() const </argsstring>
         <name>gamma</name>
         <location file="/instruments/multiassetoption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="multi_asset_option_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real theta</definition>
         <argsstring>() const </argsstring>
         <name>theta</name>
         <location file="/instruments/multiassetoption.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="multi_asset_option_1a7b972bc3d0a5ecbecb82c91b76d6e3ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real vega</definition>
         <argsstring>() const </argsstring>
         <name>vega</name>
         <location file="/instruments/multiassetoption.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="multi_asset_option_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
         <location file="/instruments/multiassetoption.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="multi_asset_option_1a3275ba91d38e97f6cec10e3ade7f5f81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real dividendRho</definition>
         <argsstring>() const </argsstring>
         <name>dividendRho</name>

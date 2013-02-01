@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="swaption_vol_cube2" kind="class" prot="public">
-    <compoundname>QuantLib::SwaptionVolCube2</compoundname>
+    <compoundname>SwaptionVolCube2</compoundname>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
       <memberdef kind="function" id="swaption_vol_cube2_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -20,7 +20,7 @@
         <argsstring>(Size i) const </argsstring>
         <name>volSpreads</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="61" bodyfile="/termstructures/volatility/swaption/swaptionvolcube2.hpp" bodystart="61" bodyend="61"/>
@@ -46,11 +46,11 @@
         <argsstring>(Time optionTime, Time swapLength) const </argsstring>
         <name>smileSectionImpl</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>optionTime</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>swapLength</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="67"/>
@@ -75,7 +75,7 @@
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>strikeSpreads</declname>
         </param>
         <param>

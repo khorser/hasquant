@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bachelier_yo_y_inflation_coupon_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::BachelierYoYInflationCouponPricer</compoundname>
+    <compoundname>BachelierYoYInflationCouponPricer</compoundname>
     <includes local="no">/cashflows/inflationcouponpricer.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="bachelier_yo_y_inflation_coupon_pricer_1a897fcdcef0841501239b9fdcfcf13ea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

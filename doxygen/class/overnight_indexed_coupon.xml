@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="overnight_indexed_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::OvernightIndexedCoupon</compoundname>
+    <compoundname>OvernightIndexedCoupon</compoundname>
     <includes local="no">/cashflows/overnightindexedcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -15,7 +15,7 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="52" bodyfile="/cashflows/overnightindexedcoupon.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="overnight_indexed_coupon_1ac6474d91c55944f4922255494b9561e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; dt</definition>
         <argsstring>() const </argsstring>
         <name>dt</name>
@@ -24,7 +24,7 @@
         <location file="/cashflows/overnightindexedcoupon.hpp" line="54" bodyfile="/cashflows/overnightindexedcoupon.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="overnight_indexed_coupon_1a077b9a68b3d014b3e2f83fb64e1932ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Rate &gt; &amp;</type>
         <definition>const std::vector&lt;Rate&gt;&amp; indexFixings</definition>
         <argsstring>() const </argsstring>
         <name>indexFixings</name>
@@ -53,7 +53,7 @@
           <declname>paymentDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -69,12 +69,12 @@
           <declname>overnightIndex</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing</declname>
           <defval>1.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
           <defval>0.0</defval>
         </param>

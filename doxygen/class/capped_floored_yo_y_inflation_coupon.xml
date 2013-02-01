@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="capped_floored_yo_y_inflation_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::CappedFlooredYoYInflationCoupon</compoundname>
+    <compoundname>CappedFlooredYoYInflationCoupon</compoundname>
     <includes local="no">/cashflows/capflooredinflationcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>augmented Coupon interface</header>
       <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a3769052f73e0705a1af285e974fae169" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate cap</definition>
         <argsstring>() const </argsstring>
         <name>cap</name>
@@ -15,7 +15,7 @@
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a2982a6603a5536c983895d191b358d70" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate floor</definition>
         <argsstring>() const </argsstring>
         <name>floor</name>
@@ -24,7 +24,7 @@
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a1f3d0a8bc74dac1782660657055382c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate effectiveCap</definition>
         <argsstring>() const </argsstring>
         <name>effectiveCap</name>
@@ -33,7 +33,7 @@
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a367019171b0d6cd2d82334d19650367a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate effectiveFloor</definition>
         <argsstring>() const </argsstring>
         <name>effectiveFloor</name>
@@ -53,14 +53,14 @@
           <declname>underlying</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>cap</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>floor</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="72"/>
       </memberdef>
@@ -74,7 +74,7 @@
           <declname>paymentDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -86,7 +86,7 @@
           <declname>endDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -102,24 +102,24 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing</declname>
           <defval>1.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>const Rate</type>
           <declname>cap</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>const Rate</type>
           <declname>floor</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
           <type>const Date &amp;</type>

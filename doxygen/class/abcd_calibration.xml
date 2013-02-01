@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="abcd_calibration" kind="class" prot="public">
-    <compoundname>QuantLib::AbcdCalibration</compoundname>
+    <compoundname>AbcdCalibration</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="abcd_calibration_1aac8b5e7a1b993cf1c286ec0d75784cb8" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -32,28 +32,28 @@
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="130" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="abcd_calibration_1a114bd3f70557109ba551776610bb2dc1" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real a_</definition>
         <argsstring></argsstring>
         <name>a_</name>
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="abcd_calibration_1a0d5754808d36bc0b9f0326d84a42efb8" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real b_</definition>
         <argsstring></argsstring>
         <name>b_</name>
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="abcd_calibration_1a04b890f917032156f955c80d329dbd80" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real c_</definition>
         <argsstring></argsstring>
         <name>c_</name>
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="131" bodyfile="/termstructures/volatility/abcdcalibration.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="abcd_calibration_1a260091718af93fbcb88cdd51b7d6aa00" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real d_</definition>
         <argsstring></argsstring>
         <name>d_</name>
@@ -81,30 +81,30 @@
         <argsstring>(const std::vector&lt; Real &gt; &amp;t, const std::vector&lt; Real &gt; &amp;blackVols, Real aGuess=-0.06, Real bGuess=0.17, Real cGuess=0.54, Real dGuess=0.17, bool aIsFixed=false, bool bIsFixed=false, bool cIsFixed=false, bool dIsFixed=false, bool vegaWeighted=false, const boost::shared_ptr&lt; EndCriteria &gt; &amp;endCriteria=boost::shared_ptr&lt; EndCriteria &gt;(), const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;method=boost::shared_ptr&lt; OptimizationMethod &gt;())</argsstring>
         <name>AbcdCalibration</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>t</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>blackVols</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>aGuess</declname>
           <defval>-0.06</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>bGuess</declname>
           <defval>0.17</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>cGuess</declname>
           <defval>0.54</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>dGuess</declname>
           <defval>0.17</defval>
         </param>
@@ -146,16 +146,16 @@
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="112"/>
       </memberdef>
       <memberdef kind="function" id="abcd_calibration_1a3f065d2c0d38ca1bf702ad704202fa71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; k</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;t, const std::vector&lt; Real &gt; &amp;blackVols) const </argsstring>
         <name>k</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>t</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>blackVols</declname>
         </param>
         <briefdescription>
@@ -170,25 +170,25 @@
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="117"/>
       </memberdef>
       <memberdef kind="function" id="abcd_calibration_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>(Real x) const </argsstring>
         <name>value</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="abcd_calibration_1a2edb8d9dd3300af249756cdae6e90d6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real error</definition>
         <argsstring>() const </argsstring>
         <name>error</name>
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="abcd_calibration_1ac4d9decda86622fb96bacef77cfc4424" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real maxError</definition>
         <argsstring>() const </argsstring>
         <name>maxError</name>
@@ -209,28 +209,28 @@
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="abcd_calibration_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="125"/>
       </memberdef>
       <memberdef kind="function" id="abcd_calibration_1ad1cf85afbb81add225d9d591923cae35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real b</definition>
         <argsstring>() const </argsstring>
         <name>b</name>
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="126"/>
       </memberdef>
       <memberdef kind="function" id="abcd_calibration_1acd8075f42c1494dfe8ba083550bc3ad4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real c</definition>
         <argsstring>() const </argsstring>
         <name>c</name>
         <location file="/termstructures/volatility/abcdcalibration.hpp" line="127"/>
       </memberdef>
       <memberdef kind="function" id="abcd_calibration_1a8743fd2d2de27e48775635a148f15159" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real d</definition>
         <argsstring>() const </argsstring>
         <name>d</name>

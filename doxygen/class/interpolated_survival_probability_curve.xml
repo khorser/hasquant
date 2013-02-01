@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="interpolated_survival_probability_curve" kind="class" prot="public">
-    <compoundname>QuantLib::InterpolatedSurvivalProbabilityCurve</compoundname>
+    <compoundname>InterpolatedSurvivalProbabilityCurve</compoundname>
     <includes local="no">/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp</includes>
     <templateparamlist>
       <param>
@@ -11,7 +11,7 @@
       <sectiondef kind="user-defined">
       <header>other inspectors</header>
       <memberdef kind="function" id="interpolated_survival_probability_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
@@ -25,21 +25,21 @@
         <location file="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="55" bodyfile="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_survival_probability_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="56" bodyfile="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="108" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_survival_probability_curve_1a3ed854b99e0169195496d1b7d6400726" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Probability &gt; &amp;</type>
         <definition>const std::vector&lt; Probability &gt; &amp; survivalProbabilities</definition>
         <argsstring>() const </argsstring>
         <name>survivalProbabilities</name>
         <location file="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="57" bodyfile="/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_survival_probability_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, Real &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -57,7 +57,7 @@
           <declname>dates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Probability &gt; &amp;</type>
           <declname>probabilities</declname>
         </param>
         <param>

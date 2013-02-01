@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="issuer" kind="class" prot="public">
-    <compoundname>QuantLib::Issuer</compoundname>
+    <compoundname>Issuer</compoundname>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="issuer_1a1b1952a0d8fa17fcb9b0504fd0bb83ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -88,7 +88,7 @@
           <declname>currencies</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Seniority &gt; &amp;</type>
           <declname>seniorities</declname>
         </param>
         <param>

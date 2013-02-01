@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="instrument" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Instrument</compoundname>
+    <compoundname>Instrument</compoundname>
     <includes local="no">/instrument.hpp</includes>
-    <innerclass refid="instrument_1_1results" prot="public">QuantLib::Instrument::results</innerclass>
+    <innerclass refid="instrument_1_1results" prot="public">Instrument::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real NPV</definition>
         <argsstring>() const </argsstring>
         <name>NPV</name>
@@ -16,7 +16,7 @@
         <location file="/instrument.hpp" line="52" bodyfile="/instrument.hpp" bodystart="186" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="instrument_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real errorEstimate</definition>
         <argsstring>() const </argsstring>
         <name>errorEstimate</name>

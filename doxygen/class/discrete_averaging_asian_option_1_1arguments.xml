@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="discrete_averaging_asian_option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::DiscreteAveragingAsianOption::arguments</compoundname>
+    <compoundname>DiscreteAveragingAsianOption::arguments</compoundname>
     <includes local="no">/instruments/asianoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="discrete_averaging_asian_option_1_1arguments_1a956f95e66c116ce6eec88b6f7c3dd0fd" prot="public" static="no" mutable="no">
@@ -12,14 +12,14 @@
         <location file="/instruments/asianoption.hpp" line="83" bodyfile="/instruments/asianoption.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="discrete_averaging_asian_option_1_1arguments_1a25f99153630ae11f24e0a2c321545d0b" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real runningAccumulator</definition>
         <argsstring></argsstring>
         <name>runningAccumulator</name>
         <location file="/instruments/asianoption.hpp" line="84" bodyfile="/instruments/asianoption.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="discrete_averaging_asian_option_1_1arguments_1acd6dc39629e5a260cd762de12e442068" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size pastFixings</definition>
         <argsstring></argsstring>
         <name>pastFixings</name>

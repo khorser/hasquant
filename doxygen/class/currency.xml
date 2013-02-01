@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="currency" kind="class" prot="public">
-    <compoundname>QuantLib::Currency</compoundname>
+    <compoundname>Currency</compoundname>
     <includes local="no">/currency.hpp</includes>
-    <innerclass refid="currency_1_1_data" prot="public">QuantLib::Currency::Data</innerclass>
+    <innerclass refid="currency_1_1_data" prot="public">Currency::Data</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="currency_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -25,7 +25,7 @@
         <location file="/currency.hpp" line="49" bodyfile="/currency.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="currency_1a7aa6bec74a2e4f450511a17972c06d6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer numericCode</definition>
         <argsstring>() const </argsstring>
         <name>numericCode</name>
@@ -52,7 +52,7 @@
         <location file="/currency.hpp" line="55" bodyfile="/currency.hpp" bodystart="131" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="currency_1ac3f006fc110023306a10a2d55acea9a3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer fractionsPerUnit</definition>
         <argsstring>() const </argsstring>
         <name>fractionsPerUnit</name>

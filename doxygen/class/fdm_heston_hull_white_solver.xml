@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_heston_hull_white_solver" kind="class" prot="public">
-    <compoundname>QuantLib::FdmHestonHullWhiteSolver</compoundname>
+    <compoundname>FdmHestonHullWhiteSolver</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_heston_hull_white_solver_1aec024470fddcb8934fbebab592dede76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <declname>hwProcess</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>corrEquityShortRate</declname>
         </param>
         <param>
@@ -32,85 +32,85 @@
         <location file="/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_hull_white_solver_1a8ca899964d252f44a19848b2df44f189" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAt</definition>
         <argsstring>(Real s, Real v, Rate r) const </argsstring>
         <name>valueAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_hull_white_solver_1a3960366c3417f23b49058fc176e70142" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real thetaAt</definition>
         <argsstring>(Real s, Real v, Rate r) const </argsstring>
         <name>thetaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_hull_white_solver_1a1ef1d27ef40702ffe91d44cd5b4bc6cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real deltaAt</definition>
         <argsstring>(Real s, Real v, Rate r, Real eps) const </argsstring>
         <name>deltaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>r</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eps</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="fdm_heston_hull_white_solver_1a7fb8adf61bb5c8b278aa1792fabdb514" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gammaAt</definition>
         <argsstring>(Real s, Real v, Rate r, Real eps) const </argsstring>
         <name>gammaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>r</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eps</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="57"/>

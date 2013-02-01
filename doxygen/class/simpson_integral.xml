@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="simpson_integral" kind="class" prot="public">
-    <compoundname>QuantLib::SimpsonIntegral</compoundname>
+    <compoundname>SimpsonIntegral</compoundname>
     <includes local="no">/math/integrals/simpsonintegral.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="simpson_integral_1a0fc90f4cf7b13eda7b657cf829bbdba2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Real accuracy, Size maxIterations)</argsstring>
         <name>SimpsonIntegral</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxIterations</declname>
         </param>
         <location file="/math/integrals/simpsonintegral.hpp" line="40" bodyfile="/math/integrals/simpsonintegral.hpp" bodystart="38" bodyend="40"/>

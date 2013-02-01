@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="curve" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Curve</compoundname>
+    <compoundname>Curve</compoundname>
     <includes local="no">/math/curve.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="curve_1ac18558a7f7b08085261782f72b65ce26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -12,12 +12,12 @@
         <location file="/math/curve.hpp" line="35" bodyfile="/math/curve.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="curve_1a7709f6c0612c6668e25d555787a5688b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real operator()</definition>
         <argsstring>(Real x) const =0</argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/math/curve.hpp" line="36"/>

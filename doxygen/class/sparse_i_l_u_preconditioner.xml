@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="sparse_i_l_u_preconditioner" kind="class" prot="public">
-    <compoundname>QuantLib::SparseILUPreconditioner</compoundname>
+    <compoundname>SparseILUPreconditioner</compoundname>
     <includes local="no">/math/matrixutilities/sparseilupreconditioner.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="sparse_i_l_u_preconditioner_1ab71f858c2989a2cf82bc858f0d82d6ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,25 +10,25 @@
         <argsstring>(const boost::numeric::ublas::compressed_matrix&lt; Real &gt; &amp;A, Integer lfil=1)</argsstring>
         <name>SparseILUPreconditioner</name>
         <param>
-          <type>const boost::numeric::ublas::compressed_matrix&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const boost::numeric::ublas::compressed_matrix&lt; Real &gt; &amp;</type>
           <declname>A</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>lfil</declname>
           <defval>1</defval>
         </param>
         <location file="/math/matrixutilities/sparseilupreconditioner.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="sparse_i_l_u_preconditioner_1a288c280afa370a83193ca14029ce371c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const boost::numeric::ublas::compressed_matrix&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const boost::numeric::ublas::compressed_matrix&lt; Real &gt; &amp;</type>
         <definition>const boost::numeric::ublas::compressed_matrix&lt;Real&gt;&amp; L</definition>
         <argsstring>() const </argsstring>
         <name>L</name>
         <location file="/math/matrixutilities/sparseilupreconditioner.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="sparse_i_l_u_preconditioner_1acc38f92d1ef4e594c63b2a24241f2659" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const boost::numeric::ublas::compressed_matrix&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const boost::numeric::ublas::compressed_matrix&lt; Real &gt; &amp;</type>
         <definition>const boost::numeric::ublas::compressed_matrix&lt;Real&gt;&amp; U</definition>
         <argsstring>() const </argsstring>
         <name>U</name>

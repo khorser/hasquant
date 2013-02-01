@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="lm_exponential_correlation_model" kind="class" prot="public">
-    <compoundname>QuantLib::LmExponentialCorrelationModel</compoundname>
+    <compoundname>LmExponentialCorrelationModel</compoundname>
     <includes local="no">/legacy/libormarketmodels/lmexpcorrmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="lm_exponential_correlation_model_1acbabab2b213a446829faa8200314cd5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Size size, Real rho)</argsstring>
         <name>LmExponentialCorrelationModel</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>size</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rho</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="47"/>

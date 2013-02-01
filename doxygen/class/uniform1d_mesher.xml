@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="uniform1d_mesher" kind="class" prot="public">
-    <compoundname>QuantLib::Uniform1dMesher</compoundname>
+    <compoundname>Uniform1dMesher</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="uniform1d_mesher_1a595ae2bcbb371f124ae53bcb5e4a3795" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -9,15 +9,15 @@
         <argsstring>(Real start, Real end, Size size)</argsstring>
         <name>Uniform1dMesher</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>start</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>end</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>size</declname>
         </param>
         <location file="/methods/finitedifferences/meshers/uniform1dmesher.hpp" line="38" bodyfile="/methods/finitedifferences/meshers/uniform1dmesher.hpp" bodystart="37" bodyend="50"/>

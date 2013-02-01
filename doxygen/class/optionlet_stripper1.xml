@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="optionlet_stripper1" kind="class" prot="public">
-    <compoundname>QuantLib::OptionletStripper1</compoundname>
+    <compoundname>OptionletStripper1</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/optionletstripper1.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="optionlet_stripper1_1a50c685dc3d05c91348434bed9dadaa6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -17,17 +17,17 @@
           <declname>index</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>switchStrikes</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-6</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>maxIter</declname>
           <defval>100</defval>
         </param>
@@ -55,7 +55,7 @@
         <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper1_1ae7071988d2b785277b38d596f7627f84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate switchStrike</definition>
         <argsstring>() const </argsstring>
         <name>switchStrike</name>

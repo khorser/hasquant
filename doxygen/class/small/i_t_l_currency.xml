@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="i_t_l_currency" kind="class" prot="public">
-    <compoundname>QuantLib::ITLCurrency</compoundname>
+    <compoundname>ITLCurrency</compoundname>
     <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="i_t_l_currency_1ab1d3f96024da6a8f20241cda6d98e9ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

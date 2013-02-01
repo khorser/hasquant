@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="asset_swap" kind="class" prot="public">
-    <compoundname>QuantLib::AssetSwap</compoundname>
+    <compoundname>AssetSwap</compoundname>
     <includes local="no">/instruments/assetswap.hpp</includes>
-    <innerclass refid="asset_swap_1_1arguments" prot="public">QuantLib::AssetSwap::arguments</innerclass>
-    <innerclass refid="asset_swap_1_1results" prot="public">QuantLib::AssetSwap::results</innerclass>
+    <innerclass refid="asset_swap_1_1arguments" prot="public">AssetSwap::arguments</innerclass>
+    <innerclass refid="asset_swap_1_1results" prot="public">AssetSwap::results</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="asset_swap_1afe29f6a0d065614964b50e3396e94212" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -20,7 +20,7 @@
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>bondCleanPrice</declname>
         </param>
         <param>
@@ -28,7 +28,7 @@
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
         </param>
         <param>
@@ -62,15 +62,15 @@
           <declname>bond</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>bondCleanPrice</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nonParRepayment</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing</declname>
         </param>
         <param>
@@ -78,7 +78,7 @@
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
           <defval>0.0</defval>
         </param>
@@ -100,35 +100,35 @@
         <location file="/instruments/assetswap.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1a9fed7d028c05630c089b2ae653dd94a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
         <location file="/instruments/assetswap.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1a6428d70950807f5c37f18a52fa79d756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real floatingLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegBPS</name>
         <location file="/instruments/assetswap.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1a3490947f87ceb8a495841d24e03b440e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real floatingLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegNPV</name>
         <location file="/instruments/assetswap.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1aefe5a490e12fa6ddf266f1e16cbc8ad7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fairCleanPrice</definition>
         <argsstring>() const </argsstring>
         <name>fairCleanPrice</name>
         <location file="/instruments/assetswap.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1a49ccac4332a4c5e7faee1f2a0f7fb5c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fairNonParRepayment</definition>
         <argsstring>() const </argsstring>
         <name>fairNonParRepayment</name>
@@ -142,21 +142,21 @@
         <location file="/instruments/assetswap.hpp" line="82" bodyfile="/instruments/assetswap.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
         <location file="/instruments/assetswap.hpp" line="83" bodyfile="/instruments/assetswap.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1aab241a7a0ea7c566883009fe26b009a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cleanPrice</definition>
         <argsstring>() const </argsstring>
         <name>cleanPrice</name>
         <location file="/instruments/assetswap.hpp" line="84" bodyfile="/instruments/assetswap.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1ab1ec3851ca926a8a4c5fbc9303ffbbc8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nonParRepayment</definition>
         <argsstring>() const </argsstring>
         <name>nonParRepayment</name>
@@ -177,14 +177,14 @@
         <location file="/instruments/assetswap.hpp" line="87" bodyfile="/instruments/assetswap.hpp" bodystart="87" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1a29ef1828744bbb15999052b71c8c5454" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg&amp; bondLeg</definition>
         <argsstring>() const </argsstring>
         <name>bondLeg</name>
         <location file="/instruments/assetswap.hpp" line="88" bodyfile="/instruments/assetswap.hpp" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_1ab770ccb862fe2799b9f9aeff11c9aeb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg&amp; floatingLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatingLeg</name>

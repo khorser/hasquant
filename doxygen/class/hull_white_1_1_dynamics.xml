@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="hull_white_1_1_dynamics" kind="class" prot="public">
-    <compoundname>QuantLib::HullWhite::Dynamics</compoundname>
+    <compoundname>HullWhite::Dynamics</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/hullwhite.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="hull_white_1_1_dynamics_1a007a2e1b524bd7656fd5528934b497f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,11 +14,11 @@
           <declname>fitting</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="103" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="98" bodyend="103"/>

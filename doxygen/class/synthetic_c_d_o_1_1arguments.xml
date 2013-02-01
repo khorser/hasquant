@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="synthetic_c_d_o_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::SyntheticCDO::arguments</compoundname>
+    <compoundname>SyntheticCDO::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="synthetic_c_d_o_1_1arguments_1a0d68fd6434b749c23eea28b12007b58a" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; Basket &gt;</type>
@@ -25,14 +25,14 @@
         <location file="/experimental/credit/syntheticcdo.hpp" line="167" bodyfile="/experimental/credit/syntheticcdo.hpp" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="synthetic_c_d_o_1_1arguments_1abfc5afffe4070eb898c1db01caa33761" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate upfrontRate</definition>
         <argsstring></argsstring>
         <name>upfrontRate</name>
         <location file="/experimental/credit/syntheticcdo.hpp" line="168" bodyfile="/experimental/credit/syntheticcdo.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="synthetic_c_d_o_1_1arguments_1a4c23a2ea0416a2c14c7bc9655c027de9" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate runningRate</definition>
         <argsstring></argsstring>
         <name>runningRate</name>
@@ -46,7 +46,7 @@
         <location file="/experimental/credit/syntheticcdo.hpp" line="170" bodyfile="/experimental/credit/syntheticcdo.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="synthetic_c_d_o_1_1arguments_1af283a59bba1cd0b219a03e626632aa61" prot="public" static="no" mutable="no">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention paymentConvention</definition>
         <argsstring></argsstring>
         <name>paymentConvention</name>

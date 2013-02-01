@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="one_factor_affine_model" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::OneFactorAffineModel</compoundname>
+    <compoundname>OneFactorAffineModel</compoundname>
     <includes local="no">/models/shortrate/onefactormodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="one_factor_affine_model_1a7ba76488a8dafa032560538843a5737f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,26 +10,26 @@
         <argsstring>(Size nArguments)</argsstring>
         <name>OneFactorAffineModel</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>nArguments</declname>
         </param>
         <location file="/models/shortrate/onefactormodel.hpp" line="126" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="125" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_affine_model_1aa260e038c388bc1476369ebfcd750ca2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real discountBond</definition>
         <argsstring>(Time now, Time maturity, Rate rate) const </argsstring>
         <name>discountBond</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>now</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rate</declname>
         </param>
         <location file="/models/shortrate/onefactormodel.hpp" line="134" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="134" bodyend="136"/>

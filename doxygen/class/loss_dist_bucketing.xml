@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="loss_dist_bucketing" kind="class" prot="public">
-    <compoundname>QuantLib::LossDistBucketing</compoundname>
+    <compoundname>LossDistBucketing</compoundname>
     <includes local="no">/experimental/credit/lossdistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="loss_dist_bucketing_1ac84336ba94974568e944853ca269808b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,15 +10,15 @@
         <argsstring>(Size nBuckets, Real maximum, Real epsilon=1e-6)</argsstring>
         <name>LossDistBucketing</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>nBuckets</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>maximum</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>epsilon</declname>
           <defval>1e-6</defval>
         </param>

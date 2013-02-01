@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fixed_rate_bond_forward" kind="class" prot="public">
-    <compoundname>QuantLib::FixedRateBondForward</compoundname>
+    <compoundname>FixedRateBondForward</compoundname>
     <includes local="no">/instruments/fixedratebondforward.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -23,11 +23,11 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -39,7 +39,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>businessDayConvention</declname>
         </param>
         <param>
@@ -57,14 +57,14 @@
           <defval>Handle&lt; YieldTermStructure &gt;()</defval>
         </param>
         <detaileddescription>
-<para>If strike is given in the constructor, can calculate the NPV of the contract via <ref refid="instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" kindref="member">NPV()</ref>.</para><para>If strike/forward price is desired, it can be obtained via <ref refid="fixed_rate_bond_forward_1a72f9af6894914f64f567f95a5b819046" kindref="member">forwardPrice()</ref>. In this case, the strike variable in the constructor is irrelevant and will be ignored. </para>        </detaileddescription>
+<para>If strike is given in the constructor, can calculate the NPV of the contract via NPV().</para><para>If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored. </para>        </detaileddescription>
         <location file="/instruments/fixedratebondforward.hpp" line="97"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <memberdef kind="function" id="fixed_rate_bond_forward_1a72f9af6894914f64f567f95a5b819046" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real forwardPrice</definition>
         <argsstring>() const </argsstring>
         <name>forwardPrice</name>
@@ -73,7 +73,7 @@
         <location file="/instruments/fixedratebondforward.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="fixed_rate_bond_forward_1af5e54f0290cc4f8832293ca9f9cf996f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cleanForwardPrice</definition>
         <argsstring>() const </argsstring>
         <name>cleanForwardPrice</name>

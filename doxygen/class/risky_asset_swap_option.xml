@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="risky_asset_swap_option" kind="class" prot="public">
-    <compoundname>QuantLib::RiskyAssetSwapOption</compoundname>
+    <compoundname>RiskyAssetSwapOption</compoundname>
     <includes local="no">/experimental/credit/riskyassetswapoption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="risky_asset_swap_option_1af4042bbdb0c2af36e3a8c07f90070c1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -22,11 +22,11 @@
           <declname>expiry</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>marketSpread</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>spreadVolatility</declname>
         </param>
         <location file="/experimental/credit/riskyassetswapoption.hpp" line="39"/>

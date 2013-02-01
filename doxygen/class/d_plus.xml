@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="d_plus" kind="class" prot="public">
-    <compoundname>QuantLib::DPlus</compoundname>
+    <compoundname>DPlus</compoundname>
     <includes local="no">/methods/finitedifferences/dplus.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="d_plus_1ae7d949ee7e843bd1f4a7c6a18dd493c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Size gridPoints, Real h)</argsstring>
         <name>DPlus</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>gridPoints</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>h</declname>
         </param>
         <location file="/methods/finitedifferences/dplus.hpp" line="42" bodyfile="/methods/finitedifferences/dplus.hpp" bodystart="48" bodyend="53"/>

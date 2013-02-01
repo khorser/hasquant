@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_leg" kind="class" prot="public">
-    <compoundname>QuantLib::CPILeg</compoundname>
+    <compoundname>CPILeg</compoundname>
     <includes local="no">/cashflows/cpicoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_p_i_leg_1afdebf2b09461c674e4840411fb00ee94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -18,7 +18,7 @@
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>baseCPI</declname>
         </param>
         <param>
@@ -33,7 +33,7 @@
         <argsstring>(Real notional)</argsstring>
         <name>withNotionals</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notional</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="183"/>
@@ -44,7 +44,7 @@
         <argsstring>(const std::vector&lt; Real &gt; &amp;notionals)</argsstring>
         <name>withNotionals</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>notionals</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="184"/>
@@ -55,7 +55,7 @@
         <argsstring>(Real fixedRate)</argsstring>
         <name>withFixedRates</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>fixedRate</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="185"/>
@@ -66,7 +66,7 @@
         <argsstring>(const std::vector&lt; Real &gt; &amp;fixedRates)</argsstring>
         <name>withFixedRates</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>fixedRates</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="186"/>
@@ -87,7 +87,7 @@
         <argsstring>(BusinessDayConvention)</argsstring>
         <name>withPaymentAdjustment</name>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="188"/>
       </memberdef>
@@ -97,7 +97,7 @@
         <argsstring>(Natural fixingDays)</argsstring>
         <name>withFixingDays</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="189"/>
@@ -108,7 +108,7 @@
         <argsstring>(const std::vector&lt; Natural &gt; &amp;fixingDays)</argsstring>
         <name>withFixingDays</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Natural &gt; &amp;</type>
           <declname>fixingDays</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="190"/>
@@ -139,7 +139,7 @@
         <argsstring>(Spread spread)</argsstring>
         <name>withSpreads</name>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="193"/>
@@ -150,7 +150,7 @@
         <argsstring>(const std::vector&lt; Spread &gt; &amp;spreads)</argsstring>
         <name>withSpreads</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="194"/>
@@ -161,7 +161,7 @@
         <argsstring>(Rate cap)</argsstring>
         <name>withCaps</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>cap</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="195"/>
@@ -172,7 +172,7 @@
         <argsstring>(const std::vector&lt; Rate &gt; &amp;caps)</argsstring>
         <name>withCaps</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>caps</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="196"/>
@@ -183,7 +183,7 @@
         <argsstring>(Rate floor)</argsstring>
         <name>withFloors</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>floor</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="197"/>
@@ -194,7 +194,7 @@
         <argsstring>(const std::vector&lt; Rate &gt; &amp;floors)</argsstring>
         <name>withFloors</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>floors</declname>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="198"/>

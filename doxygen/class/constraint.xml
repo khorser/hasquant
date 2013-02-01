@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="constraint" kind="class" prot="public">
-    <compoundname>QuantLib::Constraint</compoundname>
+    <compoundname>Constraint</compoundname>
     <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,7 +23,7 @@
         <location file="/math/optimization/constraint.hpp" line="44" bodyfile="/math/optimization/constraint.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="constraint_1a414636115d40f3f109075e174fc674eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real update</definition>
         <argsstring>(Array &amp;p, const Array &amp;direction, Real beta)</argsstring>
         <name>update</name>
@@ -36,7 +36,7 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>beta</declname>
         </param>
         <location file="/math/optimization/constraint.hpp" line="47"/>

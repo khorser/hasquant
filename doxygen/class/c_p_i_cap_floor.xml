@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_cap_floor" kind="class" prot="public">
-    <compoundname>QuantLib::CPICapFloor</compoundname>
+    <compoundname>CPICapFloor</compoundname>
     <includes local="no">/instruments/cpicapfloor.hpp</includes>
-    <innerclass refid="c_p_i_cap_floor_1_1arguments" prot="public">QuantLib::CPICapFloor::arguments</innerclass>
-    <innerclass refid="c_p_i_cap_floor_1_1engine" prot="public">QuantLib::CPICapFloor::engine</innerclass>
-    <innerclass refid="c_p_i_cap_floor_1_1results" prot="public">QuantLib::CPICapFloor::results</innerclass>
+    <innerclass refid="c_p_i_cap_floor_1_1arguments" prot="public">CPICapFloor::arguments</innerclass>
+    <innerclass refid="c_p_i_cap_floor_1_1engine" prot="public">CPICapFloor::engine</innerclass>
+    <innerclass refid="c_p_i_cap_floor_1_1results" prot="public">CPICapFloor::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="c_p_i_cap_floor_1a3171d89ee01d523d48ebf3097a88fd1e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -16,14 +16,14 @@
         <location file="/instruments/cpicapfloor.hpp" line="83" bodyfile="/instruments/cpicapfloor.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
         <location file="/instruments/cpicapfloor.hpp" line="84" bodyfile="/instruments/cpicapfloor.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_1a4fc51b15e0ddcd286e54d1d5d0f18984" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate strike</definition>
         <argsstring>() const </argsstring>
         <name>strike</name>
@@ -71,7 +71,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -79,7 +79,7 @@
           <declname>startDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>baseCPI</declname>
         </param>
         <param>
@@ -91,7 +91,7 @@
           <declname>fixCalendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>fixConvention</declname>
         </param>
         <param>
@@ -99,11 +99,11 @@
           <declname>payCalendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>payConvention</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <param>

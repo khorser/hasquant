@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="b_spline" kind="class" prot="public">
-    <compoundname>QuantLib::BSpline</compoundname>
+    <compoundname>BSpline</compoundname>
     <includes local="no">/math/bspline.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="b_spline_1a98d1f469c2fccf68567d10f6919a28f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,30 +10,30 @@
         <argsstring>(Natural p, Natural n, const std::vector&lt; Real &gt; &amp;knots)</argsstring>
         <name>BSpline</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>p</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>n</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>knots</declname>
         </param>
         <location file="/math/bspline.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="b_spline_1af4b5a32b1cb2ea56aea90bf5db3122b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(Natural i, Real x) const </argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>i</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/math/bspline.hpp" line="64"/>

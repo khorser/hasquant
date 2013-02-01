@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="flat_hazard_rate" kind="class" prot="public">
-    <compoundname>QuantLib::FlatHazardRate</compoundname>
+    <compoundname>FlatHazardRate</compoundname>
     <includes local="no">/termstructures/credit/flathazardrate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -33,7 +33,7 @@
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>hazardRate</declname>
         </param>
         <param>
@@ -47,7 +47,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const Handle&lt; Quote &gt; &amp;hazardRate, const DayCounter &amp;)</argsstring>
         <name>FlatHazardRate</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -69,7 +69,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, Rate hazardRate, const DayCounter &amp;)</argsstring>
         <name>FlatHazardRate</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -77,7 +77,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>hazardRate</declname>
         </param>
         <param>

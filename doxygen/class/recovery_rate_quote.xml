@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="recovery_rate_quote" kind="class" prot="public">
-    <compoundname>QuantLib::RecoveryRateQuote</compoundname>
+    <compoundname>RecoveryRateQuote</compoundname>
     <includes local="no">/experimental/credit/recoveryratequote.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Quote interface</header>
       <memberdef kind="function" id="recovery_rate_quote_1a5b8c9356cc847f334f6eca69399f9dd9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+        <type>Seniority</type>
         <definition>Seniority seniority</definition>
         <argsstring>() const </argsstring>
         <name>seniority</name>
@@ -16,14 +16,14 @@
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
       <memberdef kind="function" id="recovery_rate_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real setValue</definition>
         <argsstring>(Real value=Null&lt; Real &gt;())</argsstring>
         <name>setValue</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
-          <defval>Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>Null&lt; Real &gt;()</defval>
         </param>
         <briefdescription>
 <para>returns the difference between the new value and the old value </para>        </briefdescription>
@@ -39,12 +39,12 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="recovery_rate_quote_1a85334d693e480baeec58c5dea98231c2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>static Real conventionalRecovery</definition>
         <argsstring>(Seniority sen)</argsstring>
         <name>conventionalRecovery</name>
         <param>
-          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <type>Seniority</type>
           <declname>sen</declname>
         </param>
         <detaileddescription>
@@ -54,12 +54,12 @@
       <memberdef kind="function" id="recovery_rate_quote_1a7f7e703e9c401045b58eac7c150f678c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+            <type>Size</type>
             <declname>N</declname>
             <defname>N</defname>
           </param>
         </templateparamlist>
-        <type>const std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>const std::map&lt; Seniority, Real &gt;</type>
         <definition>static const std::map&lt;Seniority, Real&gt; makeIsdaMap</definition>
         <argsstring>(const Real(&amp;(arrayIsdaRR))[N])</argsstring>
         <name>makeIsdaMap</name>
@@ -80,12 +80,12 @@
         <argsstring>(Real value=Null&lt; Real &gt;(), Seniority seniority=NoSeniority)</argsstring>
         <name>RecoveryRateQuote</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
-          <defval>Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>Null&lt; Real &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <type>Seniority</type>
           <declname>seniority</declname>
           <defval>NoSeniority</defval>
         </param>
@@ -94,12 +94,12 @@
       <memberdef kind="function" id="recovery_rate_quote_1a1feed34db4078925b2fba8634fbad261" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+            <type>Size</type>
             <declname>N</declname>
             <defname>N</defname>
           </param>
         </templateparamlist>
-        <type>const std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>const std::map&lt; Seniority, Real &gt;</type>
         <definition>const std::map&lt;Seniority, Real&gt; makeIsdaMap</definition>
         <argsstring>(const Real(&amp;(arrayIsdaRR))[N])</argsstring>
         <name>makeIsdaMap</name>

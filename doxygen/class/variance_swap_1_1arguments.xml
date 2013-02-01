@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="variance_swap_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::VarianceSwap::arguments</compoundname>
+    <compoundname>VarianceSwap::arguments</compoundname>
     <includes local="no">/instruments/varianceswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="variance_swap_1_1arguments_1a27a2ef90f4771c24e8bea14a52db4260" prot="public" static="no" mutable="no">
@@ -12,14 +12,14 @@
         <location file="/instruments/varianceswap.hpp" line="85" bodyfile="/instruments/varianceswap.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="variance_swap_1_1arguments_1a882480a23151c878062d7d03add8c8d8" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real strike</definition>
         <argsstring></argsstring>
         <name>strike</name>
         <location file="/instruments/varianceswap.hpp" line="86" bodyfile="/instruments/varianceswap.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="variance_swap_1_1arguments_1a120e19fab4c30279f6f0428ea7c27a04" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real notional</definition>
         <argsstring></argsstring>
         <name>notional</name>

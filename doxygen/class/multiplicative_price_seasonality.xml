@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="multiplicative_price_seasonality" kind="class" prot="public">
-    <compoundname>QuantLib::MultiplicativePriceSeasonality</compoundname>
+    <compoundname>MultiplicativePriceSeasonality</compoundname>
     <includes local="no">/termstructures/inflation/seasonality.hpp</includes>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="multiplicative_price_seasonality_1aaa0bf273dd9cf60bac755433885fc754" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -14,21 +14,21 @@
         <location file="/termstructures/inflation/seasonality.hpp" line="139"/>
       </memberdef>
       <memberdef kind="function" id="multiplicative_price_seasonality_1a2d031749634662c6fd7dd3679f26a487" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>virtual Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
         <location file="/termstructures/inflation/seasonality.hpp" line="140"/>
       </memberdef>
       <memberdef kind="function" id="multiplicative_price_seasonality_1a06da5d6dfbf66d7de02a1ba5a9086aef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>std::vector&lt; Rate &gt;</type>
         <definition>virtual std::vector&lt;Rate&gt; seasonalityFactors</definition>
         <argsstring>() const </argsstring>
         <name>seasonalityFactors</name>
         <location file="/termstructures/inflation/seasonality.hpp" line="141"/>
       </memberdef>
       <memberdef kind="function" id="multiplicative_price_seasonality_1a0b491ad373c3dfc69328b778da1db888" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate seasonalityFactor</definition>
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>seasonalityFactor</name>
@@ -59,11 +59,11 @@
           <declname>seasonalityBaseDate</declname>
         </param>
         <param>
-          <type>const <ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>const Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+          <type>const std::vector&lt; Rate &gt;</type>
           <declname>seasonalityFactors</declname>
         </param>
         <location file="/termstructures/inflation/seasonality.hpp" line="132"/>
@@ -78,11 +78,11 @@
           <declname>seasonalityBaseDate</declname>
         </param>
         <param>
-          <type>const <ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>const Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+          <type>const std::vector&lt; Rate &gt;</type>
           <declname>seasonalityFactors</declname>
         </param>
         <location file="/termstructures/inflation/seasonality.hpp" line="135"/>

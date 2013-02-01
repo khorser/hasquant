@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="binomial_distribution" kind="class" prot="public">
-    <compoundname>QuantLib::BinomialDistribution</compoundname>
+    <compoundname>BinomialDistribution</compoundname>
     <includes local="no">/math/distributions/binomialdistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="binomial_distribution_1a57cbbf81702f9ae88052a82796767503" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,22 +10,22 @@
         <argsstring>(Real p, BigNatural n)</argsstring>
         <name>BinomialDistribution</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>p</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+          <type>BigNatural</type>
           <declname>n</declname>
         </param>
         <location file="/math/distributions/binomialdistribution.hpp" line="53" bodyfile="/math/distributions/binomialdistribution.hpp" bodystart="84" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="binomial_distribution_1a860deba0e182257980641badf4554fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(BigNatural k) const </argsstring>
         <name>operator()</name>
         <param>
-          <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+          <type>BigNatural</type>
           <declname>k</declname>
         </param>
         <location file="/math/distributions/binomialdistribution.hpp" line="55" bodyfile="/math/distributions/binomialdistribution.hpp" bodystart="112" bodyend="125"/>

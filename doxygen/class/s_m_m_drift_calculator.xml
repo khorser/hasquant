@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="s_m_m_drift_calculator" kind="class" prot="public">
-    <compoundname>QuantLib::SMMDriftCalculator</compoundname>
+    <compoundname>SMMDriftCalculator</compoundname>
     <includes local="no">/models/marketmodels/driftcomputation/smmdriftcalculator.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="s_m_m_drift_calculator_1a265ebf5d92694fa86dd205528fdb7a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,19 +14,19 @@
           <declname>pseudo</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>displacements</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>taus</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>numeraire</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>alive</declname>
         </param>
         <location file="/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="46"/>
@@ -41,7 +41,7 @@
           <declname>cs</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>std::vector&lt; Real &gt; &amp;</type>
           <declname>drifts</declname>
         </param>
         <briefdescription>

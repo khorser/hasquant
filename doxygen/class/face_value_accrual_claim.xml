@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="face_value_accrual_claim" kind="class" prot="public">
-    <compoundname>QuantLib::FaceValueAccrualClaim</compoundname>
+    <compoundname>FaceValueAccrualClaim</compoundname>
     <includes local="no">/instruments/claim.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="face_value_accrual_claim_1aeaac23c75b9e2c27a07555344018171f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bond" kind="class" prot="public">
-    <compoundname>QuantLib::Bond</compoundname>
+    <compoundname>Bond</compoundname>
     <includes local="no">/instruments/bond.hpp</includes>
-    <innerclass refid="bond_1_1arguments" prot="public">QuantLib::Bond::arguments</innerclass>
-    <innerclass refid="bond_1_1engine" prot="public">QuantLib::Bond::engine</innerclass>
-    <innerclass refid="bond_1_1results" prot="public">QuantLib::Bond::results</innerclass>
+    <innerclass refid="bond_1_1arguments" prot="public">Bond::arguments</innerclass>
+    <innerclass refid="bond_1_1engine" prot="public">Bond::engine</innerclass>
+    <innerclass refid="bond_1_1results" prot="public">Bond::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="bond_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <type>Natural</type>
         <definition>Natural settlementDays</definition>
         <argsstring>() const </argsstring>
         <name>settlementDays</name>
@@ -23,14 +23,14 @@
         <location file="/instruments/bond.hpp" line="94" bodyfile="/instruments/bond.hpp" bodystart="298" bodyend="300"/>
       </memberdef>
       <memberdef kind="function" id="bond_1ad4cc45eba4756d4e00d60ffd28a277b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; notionals</definition>
         <argsstring>() const </argsstring>
         <name>notionals</name>
         <location file="/instruments/bond.hpp" line="96" bodyfile="/instruments/bond.hpp" bodystart="302" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a1dfb27049b5e0c7850975621d12105db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real notional</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>notional</name>
@@ -42,7 +42,7 @@
         <location file="/instruments/bond.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="bond_1aaf0153df517e7b8049cccb6011a5d815" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg &amp; cashflows</definition>
         <argsstring>() const </argsstring>
         <name>cashflows</name>
@@ -52,7 +52,7 @@
         <location file="/instruments/bond.hpp" line="100" bodyfile="/instruments/bond.hpp" bodystart="306" bodyend="308"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a1f321d4d99f8979d8932ee3b33b0b966" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg &amp; redemptions</definition>
         <argsstring>() const </argsstring>
         <name>redemptions</name>
@@ -118,7 +118,7 @@
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <memberdef kind="function" id="bond_1aab241a7a0ea7c566883009fe26b009a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cleanPrice</definition>
         <argsstring>() const </argsstring>
         <name>cleanPrice</name>
@@ -129,7 +129,7 @@
         <location file="/instruments/bond.hpp" line="127"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a6ae3fd1559be17f6c97829a8f36a4368" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real dirtyPrice</definition>
         <argsstring>() const </argsstring>
         <name>dirtyPrice</name>
@@ -140,7 +140,7 @@
         <location file="/instruments/bond.hpp" line="139"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a9d3fba47faf6b3e589699cb8ad1f6de8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real settlementValue</definition>
         <argsstring>() const </argsstring>
         <name>settlementValue</name>
@@ -151,7 +151,7 @@
         <location file="/instruments/bond.hpp" line="143"/>
       </memberdef>
       <memberdef kind="function" id="bond_1aed7a3c2fc11ecfb3dec1af5fe1c4b40d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate yield</definition>
         <argsstring>(const DayCounter &amp;dc, Compounding comp, Frequency freq, Real accuracy=1.0e-8, Size maxEvaluations=100) const </argsstring>
         <name>yield</name>
@@ -160,20 +160,20 @@
           <declname>dc</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-8</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>100</defval>
         </param>
@@ -184,12 +184,12 @@
         <location file="/instruments/bond.hpp" line="153"/>
       </memberdef>
       <memberdef kind="function" id="bond_1ae18639bbb94d3dd790b74707f10392c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cleanPrice</definition>
         <argsstring>(Rate yield, const DayCounter &amp;dc, Compounding comp, Frequency freq, Date settlementDate=Date()) const </argsstring>
         <name>cleanPrice</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>yield</declname>
         </param>
         <param>
@@ -197,11 +197,11 @@
           <declname>dc</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
         </param>
         <param>
@@ -216,12 +216,12 @@
         <location file="/instruments/bond.hpp" line="161"/>
       </memberdef>
       <memberdef kind="function" id="bond_1ad5ad3a9f9b5c0c35aa0db47cf1f9c747" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real dirtyPrice</definition>
         <argsstring>(Rate yield, const DayCounter &amp;dc, Compounding comp, Frequency freq, Date settlementDate=Date()) const </argsstring>
         <name>dirtyPrice</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>yield</declname>
         </param>
         <param>
@@ -229,11 +229,11 @@
           <declname>dc</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
         </param>
         <param>
@@ -248,12 +248,12 @@
         <location file="/instruments/bond.hpp" line="169"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a820288d1ee037a93fdd6e705c17f4b11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real settlementValue</definition>
         <argsstring>(Real cleanPrice) const </argsstring>
         <name>settlementValue</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>cleanPrice</declname>
         </param>
         <briefdescription>
@@ -263,12 +263,12 @@
         <location file="/instruments/bond.hpp" line="173"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a4bcfe6740fcdc3c9f07fe93d02ad2ce2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate yield</definition>
         <argsstring>(Real cleanPrice, const DayCounter &amp;dc, Compounding comp, Frequency freq, Date settlementDate=Date(), Real accuracy=1.0e-8, Size maxEvaluations=100) const </argsstring>
         <name>yield</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>cleanPrice</declname>
         </param>
         <param>
@@ -276,11 +276,11 @@
           <declname>dc</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
         </param>
         <param>
@@ -289,12 +289,12 @@
           <defval>Date()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-8</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
           <defval>100</defval>
         </param>
@@ -305,7 +305,7 @@
         <location file="/instruments/bond.hpp" line="183"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a0fc8bd8e30a2481352f942bbbd8666dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real accruedAmount</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>accruedAmount</name>
@@ -328,7 +328,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const Date &amp;issueDate=Date(), const Leg &amp;coupons=Leg())</argsstring>
         <name>Bond</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -341,9 +341,9 @@
           <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <type>const Leg &amp;</type>
           <declname>coupons</declname>
-          <defval><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref>()</defval>
+          <defval>Leg()</defval>
         </param>
         <briefdescription>
 <para>constructor for amortizing or non-amortizing bonds. </para>        </briefdescription>
@@ -357,7 +357,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, Real faceAmount, const Date &amp;maturityDate, const Date &amp;issueDate=Date(), const Leg &amp;cashflows=Leg())</argsstring>
         <name>Bond</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -365,7 +365,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>faceAmount</declname>
         </param>
         <param>
@@ -378,9 +378,9 @@
           <defval>Date()</defval>
         </param>
         <param>
-          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <type>const Leg &amp;</type>
           <declname>cashflows</declname>
-          <defval><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref>()</defval>
+          <defval>Leg()</defval>
         </param>
         <briefdescription>
 <para>old constructor for non amortizing bonds. </para>        </briefdescription>
@@ -389,7 +389,7 @@
         <location file="/instruments/bond.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a3c4509856962f0a2bb6170ea1405c248" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate nextCouponRate</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>nextCouponRate</name>
@@ -403,7 +403,7 @@
         <location file="/instruments/bond.hpp" line="197"/>
       </memberdef>
       <memberdef kind="function" id="bond_1a7dbcbfda5d3bd569b0aafebdd62cade0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate previousCouponRate</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>previousCouponRate</name>

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="affine_model" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::AffineModel</compoundname>
+    <compoundname>AffineModel</compoundname>
     <includes local="no">/models/model.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="affine_model_1ad70c7f05240b55443c045ba1d209f829" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <type>DiscountFactor</type>
         <definition>virtual DiscountFactor discount</definition>
         <argsstring>(Time t) const =0</argsstring>
         <name>discount</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <briefdescription>
@@ -18,16 +18,16 @@
         <location file="/models/model.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="affine_model_1ae8cca5ae4349ab3bfc3085e131fba3a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real discountBond</definition>
         <argsstring>(Time now, Time maturity, Array factors) const =0</argsstring>
         <name>discountBond</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>now</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
         <location file="/models/model.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="affine_model_1a75cd313ff0f7511ba974aa86d3caadf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real discountBondOption</definition>
         <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const =0</argsstring>
         <name>discountBondOption</name>
@@ -46,15 +46,15 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>bondMaturity</declname>
         </param>
         <location file="/models/model.hpp" line="55"/>

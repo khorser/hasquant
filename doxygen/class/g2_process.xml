@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="g2_process" kind="class" prot="public">
-    <compoundname>QuantLib::G2Process</compoundname>
+    <compoundname>G2Process</compoundname>
     <includes local="no">/processes/g2process.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="g2_process_1a5bf43a2137655f3972af8286892a53a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,71 +10,71 @@
         <argsstring>(Real a, Real sigma, Real b, Real eta, Real rho)</argsstring>
         <name>G2Process</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eta</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rho</declname>
         </param>
         <location file="/processes/g2process.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="g2_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real x0</definition>
         <argsstring>() const </argsstring>
         <name>x0</name>
         <location file="/processes/g2process.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="g2_process_1aad5163cf3878b74d968344e8118142e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real y0</definition>
         <argsstring>() const </argsstring>
         <name>y0</name>
         <location file="/processes/g2process.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="g2_process_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
         <location file="/processes/g2process.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="g2_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
         <location file="/processes/g2process.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="g2_process_1ad1cf85afbb81add225d9d591923cae35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real b</definition>
         <argsstring>() const </argsstring>
         <name>b</name>
         <location file="/processes/g2process.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="g2_process_1a83e2f6eb6af4d95118d576ddfa2804bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real eta</definition>
         <argsstring>() const </argsstring>
         <name>eta</name>
         <location file="/processes/g2process.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="g2_process_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>

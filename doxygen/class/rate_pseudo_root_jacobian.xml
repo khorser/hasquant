@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="rate_pseudo_root_jacobian" kind="class" prot="public">
-    <compoundname>QuantLib::RatePseudoRootJacobian</compoundname>
+    <compoundname>RatePseudoRootJacobian</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="rate_pseudo_root_jacobian_1a3262470bf2aa428c035a63c3af003135" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -13,15 +13,15 @@
           <declname>pseudoRoot</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>aliveIndex</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>numeraire</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>taus</declname>
         </param>
         <param>
@@ -29,7 +29,7 @@
           <declname>pseudoBumps</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>displacements</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="88"/>
@@ -40,19 +40,19 @@
         <argsstring>(const std::vector&lt; Rate &gt; &amp;oldRates, const std::vector&lt; Real &gt; &amp;oneStepDFs, const std::vector&lt; Rate &gt; &amp;newRates, const std::vector&lt; Real &gt; &amp;gaussians, Matrix &amp;B)</argsstring>
         <name>getBumps</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>oldRates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>oneStepDFs</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>newRates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>gaussians</declname>
         </param>
         <param>

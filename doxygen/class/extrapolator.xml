@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="extrapolator" kind="class" prot="public">
-    <compoundname>QuantLib::Extrapolator</compoundname>
+    <compoundname>Extrapolator</compoundname>
     <includes local="no">/math/interpolations/extrapolation.hpp</includes>
       <sectiondef kind="user-defined">
       <header>modifiers</header>

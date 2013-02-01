@@ -3,7 +3,7 @@
   <compounddef id="group__cliquetengines" kind="group">
     <compoundname>cliquetengines</compoundname>
     <title>Cliquet option engines</title>
-    <innerclass refid="class_quant_lib_1_1_analytic_cliquet_engine" prot="public">QuantLib::AnalyticCliquetEngine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_analytic_performance_engine" prot="public">QuantLib::AnalyticPerformanceEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_analytic_cliquet_engine" prot="public">AnalyticCliquetEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_analytic_performance_engine" prot="public">AnalyticPerformanceEngine</innerclass>
   </compounddef>
 </doxygen>

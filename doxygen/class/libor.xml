@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="libor" kind="class" prot="public">
-    <compoundname>QuantLib::Libor</compoundname>
+    <compoundname>Libor</compoundname>
     <includes local="no">/indexes/ibor/libor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="libor_1a31d1278ed064aaf773b5e8dfc4fd5c64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -18,7 +18,7 @@
           <declname>tenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>

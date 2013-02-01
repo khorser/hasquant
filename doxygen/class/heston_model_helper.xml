@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="heston_model_helper" kind="class" prot="public">
-    <compoundname>QuantLib::HestonModelHelper</compoundname>
+    <compoundname>HestonModelHelper</compoundname>
     <includes local="no">/models/equity/hestonmodelhelper.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="heston_model_helper_1ab1df92f492a78501874b8580fdbeb697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -18,11 +18,11 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>s0</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>strikePrice</declname>
         </param>
         <param>
@@ -45,7 +45,7 @@
         <location file="/models/equity/hestonmodelhelper.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="heston_model_helper_1a031873b070bc7219052b0fcc0cf0a5c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time maturity</definition>
         <argsstring>() const </argsstring>
         <name>maturity</name>

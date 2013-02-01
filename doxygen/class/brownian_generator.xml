@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="brownian_generator" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::BrownianGenerator</compoundname>
+    <compoundname>BrownianGenerator</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="brownian_generator_1a447c523c246b53547f6723d481620f92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
@@ -11,31 +11,31 @@
         <location file="/models/marketmodels/browniangenerator.hpp" line="33" bodyfile="/models/marketmodels/browniangenerator.hpp" bodystart="33" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="brownian_generator_1aec19e8e69b57772a3636d2e83d268d27" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real nextStep</definition>
         <argsstring>(std::vector&lt; Real &gt; &amp;)=0</argsstring>
         <name>nextStep</name>
         <param>
-          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>std::vector&lt; Real &gt; &amp;</type>
         </param>
         <location file="/models/marketmodels/browniangenerator.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="brownian_generator_1a1b34c2bf79cf305c195e2a46152abbd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real nextPath</definition>
         <argsstring>()=0</argsstring>
         <name>nextPath</name>
         <location file="/models/marketmodels/browniangenerator.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="brownian_generator_1a23e12972a841e8410cafc8a15056196e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size numberOfFactors</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfFactors</name>
         <location file="/models/marketmodels/browniangenerator.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="brownian_generator_1abe6f647dd9a9c3dc968ac76116801348" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size numberOfSteps</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfSteps</name>

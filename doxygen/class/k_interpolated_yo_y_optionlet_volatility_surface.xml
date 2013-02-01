@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="k_interpolated_yo_y_optionlet_volatility_surface" kind="class" prot="public">
-    <compoundname>QuantLib::KInterpolatedYoYOptionletVolatilitySurface</compoundname>
+    <compoundname>KInterpolatedYoYOptionletVolatilitySurface</compoundname>
     <includes local="no">/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp</includes>
     <templateparamlist>
       <param>
@@ -17,7 +17,7 @@
         <argsstring>(const Natural settlementDays, const Calendar &amp;, const BusinessDayConvention bdc, const DayCounter &amp;dc, const Period &amp;lag, const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;capFloorPrices, const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;pricer, const boost::shared_ptr&lt; YoYOptionletStripper &gt; &amp;yoyOptionletStripper, const Real slope, const Interpolator1D &amp;interpolator=Interpolator1D())</argsstring>
         <name>KInterpolatedYoYOptionletVolatilitySurface</name>
         <param>
-          <type>const <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>const Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <defname>cal</defname>
         </param>
         <param>
-          <type>const <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>const BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -49,7 +49,7 @@
           <declname>yoyOptionletStripper</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>slope</declname>
         </param>
         <param>
@@ -60,7 +60,7 @@
         <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="60" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="92" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="k_interpolated_yo_y_optionlet_volatility_surface_1aed99cfee1edf3bbc3b19a9fe1a0c060a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::pair&lt; std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &gt;</type>
+        <type>std::pair&lt; std::vector&lt; Rate &gt;, std::vector&lt; Volatility &gt; &gt;</type>
         <definition>std::pair&lt; std::vector&lt; Rate &gt;, std::vector&lt; Volatility &gt; &gt; Dslice</definition>
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>Dslice</name>

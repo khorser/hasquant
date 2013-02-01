@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="credit_default_swap_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::CreditDefaultSwap::arguments</compoundname>
+    <compoundname>CreditDefaultSwap::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="credit_default_swap_1_1arguments_1a07c2d0e57c7e50acbacdfa1703016dd9" prot="public" static="no" mutable="no">
         <type>Protection::Side</type>
@@ -11,28 +11,28 @@
         <location file="/instruments/creditdefaultswap.hpp" line="252" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="credit_default_swap_1_1arguments_1a120e19fab4c30279f6f0428ea7c27a04" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real notional</definition>
         <argsstring></argsstring>
         <name>notional</name>
         <location file="/instruments/creditdefaultswap.hpp" line="253" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="credit_default_swap_1_1arguments_1a4e2f97acaaa3f335e064dec8c620c705" prot="public" static="no" mutable="no">
-        <type>boost::optional&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>boost::optional&lt; Rate &gt;</type>
         <definition>boost::optional&lt;Rate&gt; upfront</definition>
         <argsstring></argsstring>
         <name>upfront</name>
         <location file="/instruments/creditdefaultswap.hpp" line="254" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="credit_default_swap_1_1arguments_1ae05176c7b5728214ae2e69543c588fc3" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate spread</definition>
         <argsstring></argsstring>
         <name>spread</name>
         <location file="/instruments/creditdefaultswap.hpp" line="255" bodyfile="/instruments/creditdefaultswap.hpp" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="credit_default_swap_1_1arguments_1adffba73d0dcc9a873d443fd164ebeeee" prot="public" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
+        <type>Leg</type>
         <definition>Leg leg</definition>
         <argsstring></argsstring>
         <name>leg</name>

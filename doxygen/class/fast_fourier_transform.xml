@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fast_fourier_transform" kind="class" prot="public">
-    <compoundname>QuantLib::FastFourierTransform</compoundname>
+    <compoundname>FastFourierTransform</compoundname>
     <includes local="no">/experimental/math/fastfouriertransform.hpp</includes>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="fast_fourier_transform_1a52f3db7d80c4e276e8aad3336e5e5040" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">

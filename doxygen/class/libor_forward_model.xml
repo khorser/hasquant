@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="libor_forward_model" kind="class" prot="public">
-    <compoundname>QuantLib::LiborForwardModel</compoundname>
+    <compoundname>LiborForwardModel</compoundname>
     <includes local="no">/legacy/libormarketmodels/liborforwardmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="libor_forward_model_1aa6b4ca3d94c5fb230cad0b17de1af907" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -24,16 +24,16 @@
         <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="libor_forward_model_1a42a0944ff9657f6e09b675236c3d988c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate S_0</definition>
         <argsstring>(Size alpha, Size beta) const </argsstring>
         <name>S_0</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>alpha</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>beta</declname>
         </param>
         <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="58"/>

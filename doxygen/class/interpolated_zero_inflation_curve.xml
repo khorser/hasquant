@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="interpolated_zero_inflation_curve" kind="class" prot="public">
-    <compoundname>QuantLib::InterpolatedZeroInflationCurve</compoundname>
+    <compoundname>InterpolatedZeroInflationCurve</compoundname>
     <includes local="no">/termstructures/inflation/interpolatedzeroinflationcurve.hpp</includes>
     <templateparamlist>
       <param>
@@ -18,28 +18,28 @@
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="63" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="214" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_zero_inflation_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="64" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="208" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_zero_inflation_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="65" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="226" bodyend="228"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_zero_inflation_curve_1a35b228cdc9b475616865d3d093877ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Rate &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; rates</definition>
         <argsstring>() const </argsstring>
         <name>rates</name>
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="66" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_zero_inflation_curve_1ae36e55af23c117164f4329ad5daa9adf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, Rate &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Rate &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -69,7 +69,7 @@
           <declname>lag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -85,7 +85,7 @@
           <declname>dates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>rates</declname>
         </param>
         <param>

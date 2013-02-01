@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="problem" kind="class" prot="public">
-    <compoundname>QuantLib::Problem</compoundname>
+    <compoundname>Problem</compoundname>
     <includes local="no">/math/optimization/problem.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="problem_1a4ca51162378bd037e929d7b5fc093a95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -36,7 +36,7 @@
         <location file="/math/optimization/problem.hpp" line="53" bodyfile="/math/optimization/problem.hpp" bodystart="139" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="problem_1ab5a7fc79ae2c7a09f08d7ab169a52dc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>(const Array &amp;x)</argsstring>
         <name>value</name>
@@ -79,7 +79,7 @@
         <location file="/math/optimization/problem.hpp" line="64" bodyfile="/math/optimization/problem.hpp" bodystart="126" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="problem_1ae1f5aed11663d0d3aac5a2b1ff111763" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAndGradient</definition>
         <argsstring>(Array &amp;grad_f, const Array &amp;x)</argsstring>
         <name>valueAndGradient</name>
@@ -139,13 +139,13 @@
         <argsstring>(Real functionValue)</argsstring>
         <name>setFunctionValue</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>functionValue</declname>
         </param>
         <location file="/math/optimization/problem.hpp" line="83" bodyfile="/math/optimization/problem.hpp" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="problem_1a507050a322afee6459b66f62c82a6672" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real functionValue</definition>
         <argsstring>() const </argsstring>
         <name>functionValue</name>
@@ -159,13 +159,13 @@
         <argsstring>(Real squaredNorm)</argsstring>
         <name>setGradientNormValue</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>squaredNorm</declname>
         </param>
         <location file="/math/optimization/problem.hpp" line="90" bodyfile="/math/optimization/problem.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="problem_1a3eb1f139d3924e741c5bb18c1525c5af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gradientNormValue</definition>
         <argsstring>() const </argsstring>
         <name>gradientNormValue</name>
@@ -174,7 +174,7 @@
         <location file="/math/optimization/problem.hpp" line="94" bodyfile="/math/optimization/problem.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="problem_1a9ce4fbf7f4d0fa879601ef3dada784cc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer functionEvaluation</definition>
         <argsstring>() const </argsstring>
         <name>functionEvaluation</name>
@@ -183,7 +183,7 @@
         <location file="/math/optimization/problem.hpp" line="97" bodyfile="/math/optimization/problem.hpp" bodystart="97" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="problem_1a899e30587abf2892515ee1ca642decb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer gradientEvaluation</definition>
         <argsstring>() const </argsstring>
         <name>gradientEvaluation</name>

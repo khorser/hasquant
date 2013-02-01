@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="spreaded_smile_section" kind="class" prot="public">
-    <compoundname>QuantLib::SpreadedSmileSection</compoundname>
+    <compoundname>SpreadedSmileSection</compoundname>
       <sectiondef kind="user-defined">
       <header>SmileSection interface</header>
       <memberdef kind="function" id="spreaded_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
         <location file="/termstructures/volatility/spreadedsmilesection.hpp" line="40" bodyfile="/termstructures/volatility/spreadedsmilesection.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
         <location file="/termstructures/volatility/spreadedsmilesection.hpp" line="41" bodyfile="/termstructures/volatility/spreadedsmilesection.hpp" bodystart="62" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real atmLevel</definition>
         <argsstring>() const </argsstring>
         <name>atmLevel</name>
@@ -33,7 +33,7 @@
         <location file="/termstructures/volatility/spreadedsmilesection.hpp" line="43" bodyfile="/termstructures/volatility/spreadedsmilesection.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="spreaded_smile_section_1a0dd89caf6d5f685c479d266d32cc7146" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <type>Time</type>
         <definition>Time exerciseTime</definition>
         <argsstring>() const </argsstring>
         <name>exerciseTime</name>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cds_option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::CdsOption::arguments</compoundname>
+    <compoundname>CdsOption::arguments</compoundname>
     <includes local="no">/experimental/credit/cdsoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="cds_option_1_1arguments_1ae610b4d1f2d89bbd26e02cef63066191" prot="public" static="no" mutable="no">

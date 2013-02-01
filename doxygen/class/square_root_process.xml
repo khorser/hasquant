@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="square_root_process" kind="class" prot="public">
-    <compoundname>QuantLib::SquareRootProcess</compoundname>
+    <compoundname>SquareRootProcess</compoundname>
     <includes local="no">/processes/squarerootprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="square_root_process_1a113c35a8d8c932b2a20ca2e1fe3fa68f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,19 +10,19 @@
         <argsstring>(Real b, Real a, Volatility sigma, Real x0=0.0, const boost::shared_ptr&lt; discretization &gt; &amp;d=boost::shared_ptr&lt; discretization &gt;(new EulerDiscretization))</argsstring>
         <name>SquareRootProcess</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x0</declname>
           <defval>0.0</defval>
         </param>

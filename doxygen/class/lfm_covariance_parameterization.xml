@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="lfm_covariance_parameterization" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::LfmCovarianceParameterization</compoundname>
+    <compoundname>LfmCovarianceParameterization</compoundname>
     <includes local="no">/legacy/libormarketmodels/lfmcovarparam.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="lfm_covariance_parameterization_1a28186f7bbcc9ede01363ab8bf7a70d44" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Size size, Size factors)</argsstring>
         <name>LfmCovarianceParameterization</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>size</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>factors</declname>
         </param>
         <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="42" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="41" bodyend="42"/>
@@ -27,14 +27,14 @@
         <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="43" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="lfm_covariance_parameterization_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/legacy/libormarketmodels/lfmcovarparam.hpp" line="45" bodyfile="/legacy/libormarketmodels/lfmcovarparam.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="lfm_covariance_parameterization_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size factors</definition>
         <argsstring>() const </argsstring>
         <name>factors</name>
@@ -46,7 +46,7 @@
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const =0</argsstring>
         <name>diffusion</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
@@ -62,7 +62,7 @@
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>covariance</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
@@ -78,7 +78,7 @@
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>integratedCovariance</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>

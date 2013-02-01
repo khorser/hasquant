@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="inflation_term_structure" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::InflationTermStructure</compoundname>
+    <compoundname>InflationTermStructure</compoundname>
     <includes local="no">/termstructures/inflationtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -11,7 +11,7 @@
         <argsstring>(Rate baseRate, const Period &amp;observationLag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yTS, const DayCounter &amp;dayCounter=DayCounter(), const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
         <name>InflationTermStructure</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>baseRate</declname>
         </param>
         <param>
@@ -19,7 +19,7 @@
           <declname>observationLag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -52,7 +52,7 @@
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>baseRate</declname>
         </param>
         <param>
@@ -60,7 +60,7 @@
           <declname>observationLag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -94,7 +94,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, Rate baseRate, const Period &amp;observationLag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yTS, const DayCounter &amp;dayCounter=DayCounter(), const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
         <name>InflationTermStructure</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -102,7 +102,7 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>baseRate</declname>
         </param>
         <param>
@@ -110,7 +110,7 @@
           <declname>observationLag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -146,7 +146,7 @@
         <location file="/termstructures/inflationtermstructure.hpp" line="71" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="269" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="inflation_term_structure_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
@@ -160,7 +160,7 @@
         <location file="/termstructures/inflationtermstructure.hpp" line="73" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="277" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="inflation_term_structure_1a0c4124ee5502dfbab1f138f498e41199" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate baseRate</definition>
         <argsstring>() const </argsstring>
         <name>baseRate</name>

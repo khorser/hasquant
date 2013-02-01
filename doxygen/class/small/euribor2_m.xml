@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="euribor2_m" kind="class" prot="public">
-    <compoundname>QuantLib::Euribor2M</compoundname>
+    <compoundname>Euribor2M</compoundname>
     <includes local="no">/indexes/ibor/euribor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="euribor2_m_1aa18d9114ca0023abba1ceb20da3aa182" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

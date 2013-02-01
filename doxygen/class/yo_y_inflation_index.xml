@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yo_y_inflation_index" kind="class" prot="public">
-    <compoundname>QuantLib::YoYInflationIndex</compoundname>
+    <compoundname>YoYInflationIndex</compoundname>
     <includes local="no">/indexes/inflationindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Other methods</header>
@@ -58,7 +58,7 @@
           <declname>ratio</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>

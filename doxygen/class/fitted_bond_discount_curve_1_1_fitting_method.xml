@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fitted_bond_discount_curve_1_1_fitting_method" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::FittedBondDiscountCurve::FittingMethod</compoundname>
+    <compoundname>FittedBondDiscountCurve::FittingMethod</compoundname>
     <includes local="no">/termstructures/yield/fittedbonddiscountcurve.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fitted_bond_discount_curve_1_1_fitting_method_1a61fc6646c33df418f0cd8afd94d4c131" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -12,7 +12,7 @@
         <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="202" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="202" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size size</definition>
         <argsstring>() const =0</argsstring>
         <name>size</name>
@@ -30,7 +30,7 @@
         <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="206" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="292" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="fitted_bond_discount_curve_1_1_fitting_method_1a5c1949bd3782a0492d484ce714eeee0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer numberOfIterations</definition>
         <argsstring>() const </argsstring>
         <name>numberOfIterations</name>
@@ -39,7 +39,7 @@
         <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="208" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="283" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="fitted_bond_discount_curve_1_1_fitting_method_1a18ca97750fc43204cacfab5c3b0f8a9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real minimumCostValue</definition>
         <argsstring>() const </argsstring>
         <name>minimumCostValue</name>
@@ -60,7 +60,7 @@
     <briefdescription>
 <para>Base fitting method used to construct a fitted bond discount curve. </para>    </briefdescription>
     <detaileddescription>
-<para>This base class provides the specific methodology/strategy used to construct a FittedBondDiscountCurve. Derived classes need only define the virtual function <ref refid="fitted_bond_discount_curve_1_1_fitting_method_1ad0fd1b5e219977a0da00786e9077ca0a" kindref="member">discountFunction()</ref> based on the particular fitting method to be implemented, as well as <ref refid="fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6" kindref="member">size()</ref>, the number of variables to be solved for/optimized. The generic fitting methodology implemented here can be termed nonlinear, in contrast to (typically faster, computationally) linear fitting method.</para><para><xrefsect id="todo_1_todo000066"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>derive the special-case class LinearFittingMethods from FittingMethod. A linear fitting to a set of basis functions <formula id="390">$ b_i(t) $</formula> is any fitting of the form <formula id="391">\[ d(t) = \sum_{i=0} c_i b_i(t) \]</formula> i.e., linear in the unknown coefficients <formula id="55">$ c_i $</formula>. Such a fitting can be reduced to a linear algebra problem <formula id="392">$ Ax = b $</formula>, and for large numbers of bonds, would typically be much faster computationally than the generic non-linear fitting method.</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000137"><xreftitle>Warning</xreftitle><xrefdescription><para>some parameters to the Simplex optimization method may need to be tweaked internally to the class, depending on the fitting method used, in order to get proper/reasonable/faster convergence. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>This base class provides the specific methodology/strategy used to construct a FittedBondDiscountCurve. Derived classes need only define the virtual function discountFunction() based on the particular fitting method to be implemented, as well as size(), the number of variables to be solved for/optimized. The generic fitting methodology implemented here can be termed nonlinear, in contrast to (typically faster, computationally) linear fitting method.</para><para><xrefsect id="todo_1_todo000066"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>derive the special-case class LinearFittingMethods from FittingMethod. A linear fitting to a set of basis functions <formula id="390">$ b_i(t) $</formula> is any fitting of the form <formula id="391">\[ d(t) = \sum_{i=0} c_i b_i(t) \]</formula> i.e., linear in the unknown coefficients <formula id="55">$ c_i $</formula>. Such a fitting can be reduced to a linear algebra problem <formula id="392">$ Ax = b $</formula>, and for large numbers of bonds, would typically be much faster computationally than the generic non-linear fitting method.</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000137"><xreftitle>Warning</xreftitle><xrefdescription><para>some parameters to the Simplex optimization method may need to be tweaked internally to the class, depending on the fitting method used, in order to get proper/reasonable/faster convergence. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/termstructures/yield/fittedbonddiscountcurve.hpp" line="197" bodyfile="/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="197" bodyend="248"/>
   </compounddef>
 </doxygen>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="position" kind="struct" prot="public">
-    <compoundname>QuantLib::Position</compoundname>
+    <compoundname>Position</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="position_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>

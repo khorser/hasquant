@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="vanilla_swap_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::VanillaSwap::arguments</compoundname>
+    <compoundname>VanillaSwap::arguments</compoundname>
     <includes local="no">/instruments/vanillaswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1ab6f4e6d3fde00ce906e46494f60dfe7a" prot="public" static="no" mutable="no">
@@ -12,7 +12,7 @@
         <location file="/instruments/vanillaswap.hpp" line="139" bodyfile="/instruments/vanillaswap.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring></argsstring>
         <name>nominal</name>
@@ -33,7 +33,7 @@
         <location file="/instruments/vanillaswap.hpp" line="143" bodyfile="/instruments/vanillaswap.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1af1b3c69bb089af944f809949cc9b5f34" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <type>std::vector&lt; Time &gt;</type>
         <definition>std::vector&lt;Time&gt; floatingAccrualTimes</definition>
         <argsstring></argsstring>
         <name>floatingAccrualTimes</name>
@@ -61,21 +61,21 @@
         <location file="/instruments/vanillaswap.hpp" line="147" bodyfile="/instruments/vanillaswap.hpp" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1af3b796aad3df6d60ab2749eb66836af6" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; fixedCoupons</definition>
         <argsstring></argsstring>
         <name>fixedCoupons</name>
         <location file="/instruments/vanillaswap.hpp" line="149" bodyfile="/instruments/vanillaswap.hpp" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1a217747684dc5dfb5f77382787c63182e" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt;</type>
+        <type>std::vector&lt; Spread &gt;</type>
         <definition>std::vector&lt;Spread&gt; floatingSpreads</definition>
         <argsstring></argsstring>
         <name>floatingSpreads</name>
         <location file="/instruments/vanillaswap.hpp" line="150" bodyfile="/instruments/vanillaswap.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swap_1_1arguments_1ae2f96326e1598927863981facf1f31e5" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; floatingCoupons</definition>
         <argsstring></argsstring>
         <name>floatingCoupons</name>

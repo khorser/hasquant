@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="lm_linear_exponential_volatility_model" kind="class" prot="public">
-    <compoundname>QuantLib::LmLinearExponentialVolatilityModel</compoundname>
+    <compoundname>LmLinearExponentialVolatilityModel</compoundname>
     <includes local="no">/legacy/libormarketmodels/lmlinexpvolmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="lm_linear_exponential_volatility_model_1a8f5b4b645bd11c8f5a6e25f0d34fe6ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,23 +10,23 @@
         <argsstring>(const std::vector&lt; Time &gt; &amp;fixingTimes, Real a, Real b, Real c, Real d)</argsstring>
         <name>LmLinearExponentialVolatilityModel</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>fixingTimes</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>c</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>d</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="50"/>

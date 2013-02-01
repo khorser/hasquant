@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="credit_default_swap" kind="class" prot="public">
-    <compoundname>QuantLib::CreditDefaultSwap</compoundname>
+    <compoundname>CreditDefaultSwap</compoundname>
     <includes local="no">/instruments/creditdefaultswap.hpp</includes>
-    <innerclass refid="credit_default_swap_1_1arguments" prot="public">QuantLib::CreditDefaultSwap::arguments</innerclass>
-    <innerclass refid="credit_default_swap_1_1engine" prot="public">QuantLib::CreditDefaultSwap::engine</innerclass>
-    <innerclass refid="credit_default_swap_1_1results" prot="public">QuantLib::CreditDefaultSwap::results</innerclass>
+    <innerclass refid="credit_default_swap_1_1arguments" prot="public">CreditDefaultSwap::arguments</innerclass>
+    <innerclass refid="credit_default_swap_1_1engine" prot="public">CreditDefaultSwap::engine</innerclass>
+    <innerclass refid="credit_default_swap_1_1results" prot="public">CreditDefaultSwap::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="credit_default_swap_1acc79277d9b859d2db515a4006e39ab41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -18,11 +18,11 @@
           <declname>side</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notional</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>spread</declname>
         </param>
         <param>
@@ -30,7 +30,7 @@
           <declname>schedule</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>paymentConvention</declname>
         </param>
         <param>
@@ -136,15 +136,15 @@
           <declname>side</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notional</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>upfront</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>spread</declname>
         </param>
         <param>
@@ -152,7 +152,7 @@
           <declname>schedule</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>paymentConvention</declname>
         </param>
         <param>
@@ -278,21 +278,21 @@
         <location file="/instruments/creditdefaultswap.hpp" line="131"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real notional</definition>
         <argsstring>() const </argsstring>
         <name>notional</name>
         <location file="/instruments/creditdefaultswap.hpp" line="132"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1a63b91855ec1848afb6dca91b5b53a3b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate runningSpread</definition>
         <argsstring>() const </argsstring>
         <name>runningSpread</name>
         <location file="/instruments/creditdefaultswap.hpp" line="133"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1a5a44ea6a59c7913843c89ea5acf6fc72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::optional&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>boost::optional&lt; Rate &gt;</type>
         <definition>boost::optional&lt;Rate&gt; upfront</definition>
         <argsstring>() const </argsstring>
         <name>upfront</name>
@@ -313,7 +313,7 @@
         <location file="/instruments/creditdefaultswap.hpp" line="136"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1a7570cd83c9c52257a28a15125b553207" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg&amp; coupons</definition>
         <argsstring>() const </argsstring>
         <name>coupons</name>
@@ -341,7 +341,7 @@
       <sectiondef kind="user-defined">
       <header>Results</header>
       <memberdef kind="function" id="credit_default_swap_1af902c4c5d6a281bfc0e46820bb8f8126" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fairUpfront</definition>
         <argsstring>() const </argsstring>
         <name>fairUpfront</name>
@@ -350,7 +350,7 @@
         <location file="/instruments/creditdefaultswap.hpp" line="149"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1ad5fc81080d467478294f70a2982808d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
@@ -360,7 +360,7 @@
         <location file="/instruments/creditdefaultswap.hpp" line="156"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1a3479180b25f065f25ae8e60bdf858488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real couponLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>couponLegBPS</name>
@@ -369,40 +369,40 @@
         <location file="/instruments/creditdefaultswap.hpp" line="160"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1abad29773115638e00029dcf11e635ed4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real upfrontBPS</definition>
         <argsstring>() const </argsstring>
         <name>upfrontBPS</name>
         <location file="/instruments/creditdefaultswap.hpp" line="161"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1aff1e2188d21b77de2dcf0d7760517876" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real couponLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>couponLegNPV</name>
         <location file="/instruments/creditdefaultswap.hpp" line="162"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1a765fd58f395da55f01c62d5af5ba1c01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real defaultLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>defaultLegNPV</name>
         <location file="/instruments/creditdefaultswap.hpp" line="163"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1aad9137d80be70b001150a4bd3231f6d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real upfrontNPV</definition>
         <argsstring>() const </argsstring>
         <name>upfrontNPV</name>
         <location file="/instruments/creditdefaultswap.hpp" line="164"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1a191f03cc383196d7f37049a45ca2c488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate impliedHazardRate</definition>
         <argsstring>(Real targetNPV, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const DayCounter &amp;dayCounter, Real recoveryRate=0.4, Real accuracy=1.0e-6) const </argsstring>
         <name>impliedHazardRate</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>targetNPV</declname>
         </param>
         <param>
@@ -414,12 +414,12 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
           <defval>0.4</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-6</defval>
         </param>
@@ -433,12 +433,12 @@
         <location file="/instruments/creditdefaultswap.hpp" line="187"/>
       </memberdef>
       <memberdef kind="function" id="credit_default_swap_1aae9e3995e52f04f34657c731af050db3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate conventionalSpread</definition>
         <argsstring>(Real conventionalRecovery, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const DayCounter &amp;dayCounter) const </argsstring>
         <name>conventionalSpread</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>conventionalRecovery</declname>
         </param>
         <param>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="hong_kong" kind="class" prot="public">
-    <compoundname>QuantLib::HongKong</compoundname>
+    <compoundname>HongKong</compoundname>
     <includes local="no">/time/calendars/hongkong.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="hong_kong_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
@@ -21,9 +21,9 @@
         <argsstring>(Market m=HKEx)</argsstring>
         <name>HongKong</name>
         <param>
-          <type><ref refid="hong_kong_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <type>Market</type>
           <declname>m</declname>
-          <defval><ref refid="hong_kong_1abe41cfffd960e29a5d8b07be00aeda42a06e529684fda4e065fb1e2cb432ca864" kindref="member">HKEx</ref></defval>
+          <defval>HKEx</defval>
         </param>
         <location file="/time/calendars/hongkong.hpp" line="73"/>
       </memberdef>

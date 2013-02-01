@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="solver1_d" kind="class" prot="public">
-    <compoundname>QuantLib::Solver1D</compoundname>
+    <compoundname>Solver1D</compoundname>
     <includes local="no">/math/solver1d.hpp</includes>
     <templateparamlist>
       <param>
@@ -18,7 +18,7 @@
             <type>class F</type>
           </param>
         </templateparamlist>
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real solve</definition>
         <argsstring>(const F &amp;f, Real accuracy, Real guess, Real step) const </argsstring>
         <name>solve</name>
@@ -27,15 +27,15 @@
           <declname>f</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>guess</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>step</declname>
         </param>
         <detaileddescription>
@@ -48,7 +48,7 @@
             <type>class F</type>
           </param>
         </templateparamlist>
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real solve</definition>
         <argsstring>(const F &amp;f, Real accuracy, Real guess, Real xMin, Real xMax) const </argsstring>
         <name>solve</name>
@@ -57,19 +57,19 @@
           <declname>f</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>guess</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xMin</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xMax</declname>
         </param>
         <detaileddescription>
@@ -82,7 +82,7 @@
         <argsstring>(Size evaluations)</argsstring>
         <name>setMaxEvaluations</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>evaluations</declname>
         </param>
         <detaileddescription>
@@ -95,7 +95,7 @@
         <argsstring>(Real lowerBound)</argsstring>
         <name>setLowerBound</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>lowerBound</declname>
         </param>
         <briefdescription>
@@ -108,7 +108,7 @@
         <argsstring>(Real upperBound)</argsstring>
         <name>setUpperBound</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>upperBound</declname>
         </param>
         <briefdescription>

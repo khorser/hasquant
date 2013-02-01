@@ -3,6 +3,6 @@
   <compounddef id="group__quantoengines" kind="group">
     <compoundname>quantoengines</compoundname>
     <title>Quanto option engines</title>
-    <innerclass refid="class_quant_lib_1_1_quanto_engine" prot="public">QuantLib::QuantoEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_quanto_engine" prot="public">QuantoEngine</innerclass>
   </compounddef>
 </doxygen>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="overnight_leg" kind="class" prot="public">
-    <compoundname>QuantLib::OvernightLeg</compoundname>
+    <compoundname>OvernightLeg</compoundname>
     <includes local="no">/cashflows/overnightindexedcoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="overnight_leg_1ac0d49f26da87765dee44878b6a608ced" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -25,7 +25,7 @@
         <argsstring>(Real notional)</argsstring>
         <name>withNotionals</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notional</declname>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="82"/>
@@ -36,7 +36,7 @@
         <argsstring>(const std::vector&lt; Real &gt; &amp;notionals)</argsstring>
         <name>withNotionals</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>notionals</declname>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="83"/>
@@ -57,7 +57,7 @@
         <argsstring>(BusinessDayConvention)</argsstring>
         <name>withPaymentAdjustment</name>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="85"/>
       </memberdef>
@@ -67,7 +67,7 @@
         <argsstring>(Real gearing)</argsstring>
         <name>withGearings</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing</declname>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="86"/>
@@ -78,7 +78,7 @@
         <argsstring>(const std::vector&lt; Real &gt; &amp;gearings)</argsstring>
         <name>withGearings</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>gearings</declname>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="87"/>
@@ -89,7 +89,7 @@
         <argsstring>(Spread spread)</argsstring>
         <name>withSpreads</name>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="88"/>
@@ -100,7 +100,7 @@
         <argsstring>(const std::vector&lt; Spread &gt; &amp;spreads)</argsstring>
         <name>withSpreads</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Spread &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="89"/>

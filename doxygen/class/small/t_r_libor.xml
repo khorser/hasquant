@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="t_r_libor" kind="class" prot="public">
-    <compoundname>QuantLib::TRLibor</compoundname>
+    <compoundname>TRLibor</compoundname>
     <includes local="no">/indexes/ibor/trlibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="t_r_libor_1a61fed28fd50776143264abbcd747a1cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

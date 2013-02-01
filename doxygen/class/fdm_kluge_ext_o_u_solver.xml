@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_kluge_ext_o_u_solver" kind="class" prot="public">
-    <compoundname>QuantLib::FdmKlugeExtOUSolver</compoundname>
+    <compoundname>FdmKlugeExtOUSolver</compoundname>
     <templateparamlist>
       <param>
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <declname>N</declname>
         <defname>N</defname>
         <defval>3</defval>
@@ -36,12 +36,12 @@
         <location file="/experimental/finitedifferences/fdmklugeextousolver.hpp" line="51" bodyfile="/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="43" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="fdm_kluge_ext_o_u_solver_1a8fcae2fd9f5d31f416d09e94d2768d2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAt</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;x) const </argsstring>
         <name>valueAt</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/experimental/finitedifferences/fdmklugeextousolver.hpp" line="57" bodyfile="/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="57" bodyend="60"/>

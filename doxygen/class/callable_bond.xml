@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="callable_bond" kind="class" prot="public">
-    <compoundname>QuantLib::CallableBond</compoundname>
+    <compoundname>CallableBond</compoundname>
     <includes local="no">/experimental/callablebonds/callablebond.hpp</includes>
-    <innerclass refid="callable_bond_1_1arguments" prot="public">QuantLib::CallableBond::arguments</innerclass>
-    <innerclass refid="callable_bond_1_1engine" prot="public">QuantLib::CallableBond::engine</innerclass>
-    <innerclass refid="callable_bond_1_1results" prot="public">QuantLib::CallableBond::results</innerclass>
+    <innerclass refid="callable_bond_1_1arguments" prot="public">CallableBond::arguments</innerclass>
+    <innerclass refid="callable_bond_1_1engine" prot="public">CallableBond::engine</innerclass>
+    <innerclass refid="callable_bond_1_1results" prot="public">CallableBond::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="callable_bond_1a0a3ec3cbe7dc35593049776f91a87e95" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -21,12 +21,12 @@
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <memberdef kind="function" id="callable_bond_1adf862ef9600f7281d63d2d71b9d6a009" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility impliedVolatility</definition>
         <argsstring>(Real targetValue, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Real accuracy, Size maxEvaluations, Volatility minVol, Volatility maxVol) const </argsstring>
         <name>impliedVolatility</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>targetValue</declname>
         </param>
         <param>
@@ -34,19 +34,19 @@
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxEvaluations</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>minVol</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>maxVol</declname>
         </param>
         <briefdescription>

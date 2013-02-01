@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="zero_coupon_inflation_swap_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::ZeroCouponInflationSwap::arguments</compoundname>
+    <compoundname>ZeroCouponInflationSwap::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="zero_coupon_inflation_swap_1_1arguments_1aa48bfc409a678f29aa8dcc0d727fce46" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fixedRate</definition>
         <argsstring></argsstring>
         <name>fixedRate</name>

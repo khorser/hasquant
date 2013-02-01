@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="jamshidian_swaption_engine" kind="class" prot="public">
-    <compoundname>QuantLib::JamshidianSwaptionEngine</compoundname>
+    <compoundname>JamshidianSwaptionEngine</compoundname>
     <includes local="no">/pricingengines/swaption/jamshidianswaptionengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="jamshidian_swaption_engine_1a7d7af11a3b699b7c95584b713eb0d95e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

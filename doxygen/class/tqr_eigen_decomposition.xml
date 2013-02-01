@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="tqr_eigen_decomposition" kind="class" prot="public">
-    <compoundname>QuantLib::TqrEigenDecomposition</compoundname>
+    <compoundname>TqrEigenDecomposition</compoundname>
     <includes local="no">/math/matrixutilities/tqreigendecomposition.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="tqr_eigen_decomposition_1a6bfdb3af44355f01054f8c49a3b549ad" prot="public" static="no">
@@ -72,7 +72,7 @@
         <location file="/math/matrixutilities/tqreigendecomposition.hpp" line="60" bodyfile="/math/matrixutilities/tqreigendecomposition.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="tqr_eigen_decomposition_1a62e40545c017ca57d94675198005e7ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size iterations</definition>
         <argsstring>() const </argsstring>
         <name>iterations</name>

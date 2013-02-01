@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="analytic_g_j_r_g_a_r_c_h_engine" kind="class" prot="public">
-    <compoundname>QuantLib::AnalyticGJRGARCHEngine</compoundname>
+    <compoundname>AnalyticGJRGARCHEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/analyticgjrgarchengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="analytic_g_j_r_g_a_r_c_h_engine_1a4d406368fed07718943188476e75252d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

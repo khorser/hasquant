@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="vasicek" kind="class" prot="public">
-    <compoundname>QuantLib::Vasicek</compoundname>
+    <compoundname>Vasicek</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/vasicek.hpp</includes>
-    <innerclass refid="vasicek_1_1_dynamics" prot="public">QuantLib::Vasicek::Dynamics</innerclass>
+    <innerclass refid="vasicek_1_1_dynamics" prot="public">Vasicek::Dynamics</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="vasicek_1ad3ace61536533987a5945b8f640b56ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -11,27 +11,27 @@
         <argsstring>(Rate r0=0.05, Real a=0.1, Real b=0.05, Real sigma=0.01, Real lambda=0.0)</argsstring>
         <name>Vasicek</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>r0</declname>
           <defval>0.05</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
           <defval>0.1</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
           <defval>0.05</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
           <defval>0.01</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>lambda</declname>
           <defval>0.0</defval>
         </param>

@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_cap_floor_term_price_surface" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::CPICapFloorTermPriceSurface</compoundname>
+    <compoundname>CPICapFloorTermPriceSurface</compoundname>
     <includes local="no">/experimental/inflation/cpicapfloortermpricesurface.hpp</includes>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
         <briefdescription>
 <para>inspectors </para>        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>you don&apos;t know if <ref refid="c_p_i_cap_floor_term_price_surface_1a2e986030f606857ab21de088507b12dd" kindref="member">price()</ref> is a cap or a floor without checking the ZeroInflation ATM level. </para></simplesect>
+<para><simplesect kind="note"><para>you don&apos;t know if price() is a cap or a floor without checking the ZeroInflation ATM level. </para></simplesect>
 </para>        </detaileddescription>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="99" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="372" bodyend="374"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const </argsstring>
         <name>businessDayConvention</name>
@@ -26,7 +26,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a2e986030f606857ab21de088507b12dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real price</definition>
         <argsstring>(const Period &amp;d, Rate k) const </argsstring>
         <name>price</name>
@@ -35,7 +35,7 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>k</declname>
         </param>
         <detaileddescription>
@@ -43,7 +43,7 @@
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1af5f906ac2721469a4af0dde470e8bb54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real capPrice</definition>
         <argsstring>(const Period &amp;d, Rate k) const </argsstring>
         <name>capPrice</name>
@@ -52,13 +52,13 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="108"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a33817643431dd2229d6ae3a56298c149" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real floorPrice</definition>
         <argsstring>(const Period &amp;d, Rate k) const </argsstring>
         <name>floorPrice</name>
@@ -67,13 +67,13 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a0ead5d6d35977c4e7a864fcbd872cea9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real price</definition>
         <argsstring>(const Date &amp;d, Rate k) const =0</argsstring>
         <name>price</name>
@@ -82,13 +82,13 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a5c6404c0e4506cde98496072cae6a9e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real capPrice</definition>
         <argsstring>(const Date &amp;d, Rate k) const =0</argsstring>
         <name>capPrice</name>
@@ -97,13 +97,13 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1ac96073052feae5947b674ba774e940c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real floorPrice</definition>
         <argsstring>(const Date &amp;d, Rate k) const =0</argsstring>
         <name>floorPrice</name>
@@ -112,7 +112,7 @@
           <declname>d</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>k</declname>
         </param>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="112"/>
@@ -125,11 +125,11 @@
         <argsstring>(Real nominal, Real baseRate, const Period &amp;observationLag, const Calendar &amp;cal, const BusinessDayConvention &amp;bdc, const DayCounter &amp;dc, const Handle&lt; ZeroInflationIndex &gt; &amp;zii, const Handle&lt; YieldTermStructure &gt; &amp;yts, const std::vector&lt; Rate &gt; &amp;cStrikes, const std::vector&lt; Rate &gt; &amp;fStrikes, const std::vector&lt; Period &gt; &amp;cfMaturities, const Matrix &amp;cPrice, const Matrix &amp;fPrice)</argsstring>
         <name>CPICapFloorTermPriceSurface</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>baseRate</declname>
         </param>
         <param>
@@ -141,7 +141,7 @@
           <declname>cal</declname>
         </param>
         <param>
-          <type>const <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &amp;</type>
+          <type>const BusinessDayConvention &amp;</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -157,11 +157,11 @@
           <declname>yts</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>cStrikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>fStrikes</declname>
         </param>
         <param>
@@ -188,21 +188,21 @@
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="91" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="91" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a1b89821fd50ae8ad7335bb45f0f7ecf4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>std::vector&lt; Rate &gt;</type>
         <definition>virtual std::vector&lt;Rate&gt; strikes</definition>
         <argsstring>() const </argsstring>
         <name>strikes</name>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="115" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="115" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a8eecc5b9075172047970adbe20dbd7d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>std::vector&lt; Rate &gt;</type>
         <definition>virtual std::vector&lt;Rate&gt; capStrikes</definition>
         <argsstring>() const </argsstring>
         <name>capStrikes</name>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="116" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="116" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1ac4646f67e6fdfb4083ede53dee441d31" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>std::vector&lt; Rate &gt;</type>
         <definition>virtual std::vector&lt;Rate&gt; floorStrikes</definition>
         <argsstring>() const </argsstring>
         <name>floorStrikes</name>
@@ -230,14 +230,14 @@
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="121" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="121" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a5e7f4a8423be791d84c2f637f5f36309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="123" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="123" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cap_floor_term_price_surface_1a665e35ebe818f3866d6a3946ed399432" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>

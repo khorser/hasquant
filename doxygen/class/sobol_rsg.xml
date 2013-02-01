@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="sobol_rsg" kind="class" prot="public">
-    <compoundname>QuantLib::SobolRsg</compoundname>
+    <compoundname>SobolRsg</compoundname>
     <includes local="no">/math/randomnumbers/sobolrsg.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90d" prot="public" static="no">
@@ -39,7 +39,7 @@
         <location file="/math/randomnumbers/sobolrsg.hpp" line="109" bodyfile="/math/randomnumbers/sobolrsg.hpp" bodystart="109" bodyend="112"/>
       </memberdef>
       <memberdef kind="typedef" id="sobol_rsg_1af3b59a3dd56521693efc68c221a2bf38" prot="public" static="no">
-        <type>Sample&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>Sample&lt; std::vector&lt; Real &gt; &gt;</type>
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -53,7 +53,7 @@
         <argsstring>(Size dimensionality, unsigned long seed=0, DirectionIntegers directionIntegers=Jaeckel)</argsstring>
         <name>SobolRsg</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>dimensionality</declname>
         </param>
         <param>
@@ -106,7 +106,7 @@
         <location file="/math/randomnumbers/sobolrsg.hpp" line="127" bodyfile="/math/randomnumbers/sobolrsg.hpp" bodystart="127" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="sobol_rsg_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size dimension</definition>
         <argsstring>() const </argsstring>
         <name>dimension</name>

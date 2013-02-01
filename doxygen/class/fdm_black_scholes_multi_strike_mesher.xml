@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_black_scholes_multi_strike_mesher" kind="class" prot="public">
-    <compoundname>QuantLib::FdmBlackScholesMultiStrikeMesher</compoundname>
+    <compoundname>FdmBlackScholesMultiStrikeMesher</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_black_scholes_multi_strike_mesher_1a297310661c147dd95aa59c4b903bd887" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -9,7 +9,7 @@
         <argsstring>(Size size, const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Time maturity, const std::vector&lt; Real &gt; &amp;strikes, Real eps=0.0001, Real scaleFactor=1.5, const std::pair&lt; Real, Real &gt; &amp;cPoint=(std::pair&lt; Real, Real &gt;(Null&lt; Real &gt;(), Null&lt; Real &gt;())))</argsstring>
         <name>FdmBlackScholesMultiStrikeMesher</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>size</declname>
         </param>
         <param>
@@ -17,27 +17,27 @@
           <declname>process</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eps</declname>
           <defval>0.0001</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>scaleFactor</declname>
           <defval>1.5</defval>
         </param>
         <param>
-          <type>const std::pair&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::pair&lt; Real, Real &gt; &amp;</type>
           <declname>cPoint</declname>
-          <defval>(std::pair&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;(Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;(), Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()))</defval>
+          <defval>(std::pair&lt; Real, Real &gt;(Null&lt; Real &gt;(), Null&lt; Real &gt;()))</defval>
         </param>
         <location file="/methods/finitedifferences/meshers/fdmblackscholesmultistrikemesher.hpp" line="46"/>
       </memberdef>
@@ -61,7 +61,7 @@
           <declname>qTS</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>vol</declname>
         </param>
         <location file="/methods/finitedifferences/meshers/fdmblackscholesmultistrikemesher.hpp" line="52"/>

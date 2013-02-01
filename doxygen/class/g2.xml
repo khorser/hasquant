@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="g2" kind="class" prot="public">
-    <compoundname>QuantLib::G2</compoundname>
+    <compoundname>G2</compoundname>
     <includes local="no">/models/shortrate/twofactormodels/g2.hpp</includes>
-    <innerclass refid="g2_1_1_dynamics" prot="public">QuantLib::G2::Dynamics</innerclass>
-    <innerclass refid="g2_1_1_fitting_parameter" prot="public">QuantLib::G2::FittingParameter</innerclass>
+    <innerclass refid="g2_1_1_dynamics" prot="public">G2::Dynamics</innerclass>
+    <innerclass refid="g2_1_1_fitting_parameter" prot="public">G2::FittingParameter</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="g2_1a1b9ab301f7d3d660be61f73e3a384704" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -16,53 +16,53 @@
           <declname>termStructure</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
           <defval>0.1</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
           <defval>0.01</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
           <defval>0.1</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eta</declname>
           <defval>0.01</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rho</declname>
           <defval>-0.75</defval>
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="g2_1a892bc207d2b8c0119a2ac775a2909e81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real discountBond</definition>
         <argsstring>(Time, Time, Rate, Rate) const </argsstring>
         <name>discountBond</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="g2_1a753509dd7d4a657ab5fe37de3a12d063" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real swaption</definition>
         <argsstring>(const Swaption::arguments &amp;arguments, Rate fixedRate, Real range, Size intervals) const </argsstring>
         <name>swaption</name>
@@ -71,15 +71,15 @@
           <declname>arguments</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>range</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>intervals</declname>
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="84"/>

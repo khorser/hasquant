@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="optionlet_stripper" kind="class" prot="public">
-    <compoundname>QuantLib::OptionletStripper</compoundname>
+    <compoundname>OptionletStripper</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/optionletstripper.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="optionlet_stripper_1ae202892d94f34cdd9e988035e85ce7e8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -19,7 +19,7 @@
         <location file="/termstructures/volatility/optionlet/optionletstripper.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper_1a29c1279cbcb231f1f7ebb9114e9594f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; optionletAccrualPeriods</definition>
         <argsstring>() const </argsstring>
         <name>optionletAccrualPeriods</name>
@@ -41,7 +41,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>StrippedOptionletBase specialization. It&apos;s up to derived classes to implement <ref refid="lazy_object_1a572dbe926524786c64db01e31dba7ab8" kindref="member">LazyObject::performCalculations</ref> </para>    </detaileddescription>
+<para>StrippedOptionletBase specialization. It&apos;s up to derived classes to implement LazyObject::performCalculations </para>    </detaileddescription>
     <location file="/termstructures/volatility/optionlet/optionletstripper.hpp" line="38" bodyfile="/termstructures/volatility/optionlet/optionletstripper.hpp" bodystart="38" bodyend="83"/>
   </compounddef>
 </doxygen>

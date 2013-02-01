@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="continuous_averaging_asian_option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::ContinuousAveragingAsianOption::arguments</compoundname>
+    <compoundname>ContinuousAveragingAsianOption::arguments</compoundname>
     <includes local="no">/instruments/asianoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="continuous_averaging_asian_option_1_1arguments_1a956f95e66c116ce6eec88b6f7c3dd0fd" prot="public" static="no" mutable="no">

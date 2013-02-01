@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="farlie_gumbel_morgenstern_copula_rng" kind="class" prot="public">
-    <compoundname>QuantLib::FarlieGumbelMorgensternCopulaRng</compoundname>
+    <compoundname>FarlieGumbelMorgensternCopulaRng</compoundname>
     <includes local="no">/experimental/math/farliegumbelmorgensterncopularng.hpp</includes>
     <templateparamlist>
       <param>
@@ -12,7 +12,7 @@
     </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="farlie_gumbel_morgenstern_copula_rng_1af3b59a3dd56521693efc68c221a2bf38" prot="public" static="no">
-        <type>Sample&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>Sample&lt; std::vector&lt; Real &gt; &gt;</type>
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -37,7 +37,7 @@
           <declname>uniformGenerator</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>theta</declname>
         </param>
         <location file="/experimental/math/farliegumbelmorgensterncopularng.hpp" line="41" bodyfile="/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="49" bodyend="54"/>

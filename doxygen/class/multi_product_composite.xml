@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="multi_product_composite" kind="class" prot="public">
-    <compoundname>QuantLib::MultiProductComposite</compoundname>
+    <compoundname>MultiProductComposite</compoundname>
     <includes local="no">/models/marketmodels/products/multiproductcomposite.hpp</includes>
     <briefdescription>
 <para>Composition of one or more market-model products. </para>    </briefdescription>

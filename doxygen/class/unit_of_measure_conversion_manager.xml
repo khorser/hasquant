@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="unit_of_measure_conversion_manager" kind="class" prot="public">
-    <compoundname>QuantLib::UnitOfMeasureConversionManager</compoundname>
+    <compoundname>UnitOfMeasureConversionManager</compoundname>
     <includes local="no">/experimental/commodities/unitofmeasureconversionmanager.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="unit_of_measure_conversion_manager_1aecec91204ea136d1fd797c0eb4629084" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">

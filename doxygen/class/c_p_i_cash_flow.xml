@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_cash_flow" kind="class" prot="public">
-    <compoundname>QuantLib::CPICashFlow</compoundname>
+    <compoundname>CPICashFlow</compoundname>
     <includes local="no">/cashflows/cpicoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_p_i_cash_flow_1a5d51a9777b4b4f18d4007f25091d25f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CPICashFlow</definition>
-        <argsstring>(Real notional, const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;index, const Date &amp;baseDate, Real baseFixing, const Date &amp;fixingDate, const Date &amp;paymentDate, bool growthOnly=false, CPI::InterpolationType interpolation=CPI::AsIndex, const Frequency &amp;frequency=QuantLib::NoFrequency)</argsstring>
+        <argsstring>(Real notional, const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;index, const Date &amp;baseDate, Real baseFixing, const Date &amp;fixingDate, const Date &amp;paymentDate, bool growthOnly=false, CPI::InterpolationType interpolation=CPI::AsIndex, const Frequency &amp;frequency=NoFrequency)</argsstring>
         <name>CPICashFlow</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notional</declname>
         </param>
         <param>
@@ -22,7 +22,7 @@
           <declname>baseDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>baseFixing</declname>
         </param>
         <param>
@@ -44,14 +44,14 @@
           <defval>CPI::AsIndex</defval>
         </param>
         <param>
-          <type>const <ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref> &amp;</type>
+          <type>const Frequency &amp;</type>
           <declname>frequency</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaad7764a2ea2518891555bd395faffb4da" kindref="member">QuantLib::NoFrequency</ref></defval>
+          <defval>NoFrequency</defval>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="139" bodyfile="/cashflows/cpicoupon.hpp" bodystart="127" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cash_flow_1a3734ff74e8dac1f6d7c475d16bb6e305" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real baseFixing</definition>
         <argsstring>() const </argsstring>
         <name>baseFixing</name>
@@ -71,7 +71,7 @@
         <location file="/cashflows/cpicoupon.hpp" line="155" bodyfile="/cashflows/cpicoupon.hpp" bodystart="155" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="c_p_i_cash_flow_1a2d031749634662c6fd7dd3679f26a487" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>virtual Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>

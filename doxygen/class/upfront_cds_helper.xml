@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="upfront_cds_helper" kind="class" prot="public">
-    <compoundname>QuantLib::UpfrontCdsHelper</compoundname>
+    <compoundname>UpfrontCdsHelper</compoundname>
     <includes local="no">/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="upfront_cds_helper_1a631b5125f1e204255ad5f6580d0264e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>upfront</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>runningSpread</declname>
         </param>
         <param>
@@ -22,7 +22,7 @@
           <declname>tenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -30,15 +30,15 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type>DateGeneration::Rule</type>
           <declname>rule</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
         </param>
         <param>
@@ -54,7 +54,7 @@
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>upfrontSettlementDays</declname>
           <defval>0</defval>
         </param>
@@ -79,11 +79,11 @@
         <argsstring>(Rate upfront, Rate runningSpread, const Period &amp;tenor, Integer settlementDays, const Calendar &amp;calendar, Frequency frequency, BusinessDayConvention paymentConvention, DateGeneration::Rule rule, const DayCounter &amp;dayCounter, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Natural upfrontSettlementDays=0, bool settlesAccrual=true, bool paysAtDefaultTime=true)</argsstring>
         <name>UpfrontCdsHelper</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>upfront</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>runningSpread</declname>
         </param>
         <param>
@@ -91,7 +91,7 @@
           <declname>tenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -99,15 +99,15 @@
           <declname>calendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type>DateGeneration::Rule</type>
           <declname>rule</declname>
         </param>
         <param>
@@ -115,7 +115,7 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
         </param>
         <param>
@@ -123,7 +123,7 @@
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>upfrontSettlementDays</declname>
           <defval>0</defval>
         </param>

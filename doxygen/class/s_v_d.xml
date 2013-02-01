@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="s_v_d" kind="class" prot="public">
-    <compoundname>QuantLib::SVD</compoundname>
+    <compoundname>SVD</compoundname>
     <includes local="no">/math/matrixutilities/svd.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="s_v_d_1ac8125892f6de59a7ab472af6383e5fb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -43,21 +43,21 @@
         <location file="/math/matrixutilities/svd.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="s_v_d_1a09ad511dc0d670a7dd43065f34ed8e59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real norm2</definition>
         <argsstring>() const </argsstring>
         <name>norm2</name>
         <location file="/math/matrixutilities/svd.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="s_v_d_1a0ccf4b713fe583627979ee6fbe46c140" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real cond</definition>
         <argsstring>() const </argsstring>
         <name>cond</name>
         <location file="/math/matrixutilities/svd.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="s_v_d_1a392c795adb43821ad813f80cfaa88823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size rank</definition>
         <argsstring>() const </argsstring>
         <name>rank</name>

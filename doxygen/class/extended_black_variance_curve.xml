@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="extended_black_variance_curve" kind="class" prot="public">
-    <compoundname>QuantLib::ExtendedBlackVarianceCurve</compoundname>
+    <compoundname>ExtendedBlackVarianceCurve</compoundname>
     <includes local="no">/experimental/volatility/extendedblackvariancecurve.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="extended_black_variance_curve_1a7d9ea4c4459fca848fad48d1e3df5500" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="o_i_s_rate_helper" kind="class" prot="public">
-    <compoundname>QuantLib::OISRateHelper</compoundname>
+    <compoundname>OISRateHelper</compoundname>
     <includes local="no">/termstructures/yield/oisratehelper.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
@@ -33,7 +33,7 @@
         <argsstring>(Natural settlementDays, const Period &amp;tenor, const Handle&lt; Quote &gt; &amp;fixedRate, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex, const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>OISRateHelper</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>

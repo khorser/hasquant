@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="market_model_factory" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::MarketModelFactory</compoundname>
+    <compoundname>MarketModelFactory</compoundname>
     <includes local="no">/models/marketmodels/marketmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="market_model_factory_1a3fa54b54445fc2742a15bea0d4c2435f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -20,7 +20,7 @@
           <type>const EvolutionDescription &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>numberOfFactors</declname>
         </param>
         <location file="/models/marketmodels/marketmodel.hpp" line="62"/>

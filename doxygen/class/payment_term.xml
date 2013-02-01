@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="payment_term" kind="class" prot="public">
-    <compoundname>QuantLib::PaymentTerm</compoundname>
+    <compoundname>PaymentTerm</compoundname>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="payment_term_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -21,7 +21,7 @@
         <location file="/experimental/commodities/paymentterm.hpp" line="45" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="payment_term_1a373bf0ccb7c58a5013f566809db15ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer offsetDays</definition>
         <argsstring>() const </argsstring>
         <name>offsetDays</name>
@@ -76,7 +76,7 @@
           <declname>eventType</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>offsetDays</declname>
         </param>
         <param>

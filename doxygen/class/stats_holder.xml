@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="stats_holder" kind="class" prot="public">
-    <compoundname>QuantLib::StatsHolder</compoundname>
+    <compoundname>StatsHolder</compoundname>
     <includes local="no">/math/statistics/gaussianstatistics.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="stats_holder_1a64a1ba313ad4c1fd58bf5887c366df5a" prot="public" static="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>typedef Real value_type</definition>
         <argsstring></argsstring>
         <name>value_type</name>
@@ -19,11 +19,11 @@
         <argsstring>(Real mean, Real standardDeviation)</argsstring>
         <name>StatsHolder</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>mean</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>standardDeviation</declname>
         </param>
         <location file="/math/statistics/gaussianstatistics.hpp" line="119" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="117" bodyend="119"/>
@@ -36,14 +36,14 @@
         <location file="/math/statistics/gaussianstatistics.hpp" line="120" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="120" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="stats_holder_1a962ffe5a3593be370d5c883365c060f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real mean</definition>
         <argsstring>() const </argsstring>
         <name>mean</name>
         <location file="/math/statistics/gaussianstatistics.hpp" line="121" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="121" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="stats_holder_1af728e0bfb80c48d44424d590cbfda34e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real standardDeviation</definition>
         <argsstring>() const </argsstring>
         <name>standardDeviation</name>

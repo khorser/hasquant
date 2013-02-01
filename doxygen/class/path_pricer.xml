@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="path_pricer" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::PathPricer</compoundname>
+    <compoundname>PathPricer</compoundname>
     <includes local="no">/methods/montecarlo/pathpricer.hpp</includes>
     <templateparamlist>
       <param>
@@ -13,7 +13,7 @@
         <type>class</type>
         <declname>ValueType</declname>
         <defname>ValueType</defname>
-        <defval><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></defval>
+        <defval>Real</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">

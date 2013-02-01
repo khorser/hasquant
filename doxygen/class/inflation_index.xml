@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="inflation_index" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::InflationIndex</compoundname>
+    <compoundname>InflationIndex</compoundname>
     <includes local="no">/indexes/inflationindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -36,7 +36,7 @@
         <location file="/indexes/inflationindex.hpp" line="109" bodyfile="/indexes/inflationindex.hpp" bodystart="232" bodyend="234"/>
       </memberdef>
       <memberdef kind="function" id="inflation_index_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <type>Frequency</type>
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
@@ -82,7 +82,7 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>

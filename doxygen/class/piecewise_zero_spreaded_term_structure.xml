@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="piecewise_zero_spreaded_term_structure" kind="class" prot="public">
-    <compoundname>QuantLib::PiecewiseZeroSpreadedTermStructure</compoundname>
+    <compoundname>PiecewiseZeroSpreadedTermStructure</compoundname>
     <includes local="no">/termstructures/yield/piecewisezerospreadedtermstructure.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="piecewise_zero_spreaded_term_structure_1a08ce7c74ee74b1205a2f53da9fae1f9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -22,14 +22,14 @@
           <declname>dates</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
-          <defval><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73a6cb140948cbeedb9f7182dd4027e5e37" kindref="member">Continuous</ref></defval>
+          <defval>Continuous</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaad7764a2ea2518891555bd395faffb4da" kindref="member">NoFrequency</ref></defval>
+          <defval>NoFrequency</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>

@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="vanilla_swing_option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::VanillaSwingOption::arguments</compoundname>
+    <compoundname>VanillaSwingOption::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="vanilla_swing_option_1_1arguments_1a18b9520d9656ddb560d8840a36516d56" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size minExerciseRights</definition>
         <argsstring></argsstring>
         <name>minExerciseRights</name>
         <location file="/instruments/vanillaswingoption.hpp" line="77" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="vanilla_swing_option_1_1arguments_1ad4769ff6bc7e2519550a7d2e9931ebda" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size maxExerciseRights</definition>
         <argsstring></argsstring>
         <name>maxExerciseRights</name>

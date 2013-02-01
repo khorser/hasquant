@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="penalty_function" kind="class" prot="public">
-    <compoundname>QuantLib::PenaltyFunction</compoundname>
+    <compoundname>PenaltyFunction</compoundname>
     <templateparamlist>
       <param>
         <type>class Curve</type>
@@ -18,7 +18,7 @@
           <declname>curve</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>initialIndex</declname>
         </param>
         <param>
@@ -32,7 +32,7 @@
         <location file="/termstructures/localbootstrap.hpp" line="52" bodyfile="/termstructures/localbootstrap.hpp" bodystart="47" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="penalty_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>(const Array &amp;x) const </argsstring>
         <name>value</name>

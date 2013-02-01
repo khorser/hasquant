@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="average_b_m_a_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::AverageBMACoupon</compoundname>
+    <compoundname>AverageBMACoupon</compoundname>
     <includes local="no">/cashflows/averagebmacoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>FloatingRateCoupon interface</header>
@@ -15,7 +15,7 @@
         <location file="/cashflows/averagebmacoupon.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="average_b_m_a_coupon_1a39b677b1780af304cd199b748fb139b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>std::vector&lt; Rate &gt;</type>
         <definition>std::vector&lt;Rate&gt; indexFixings</definition>
         <argsstring>() const </argsstring>
         <name>indexFixings</name>
@@ -35,7 +35,7 @@
           <declname>paymentDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -51,12 +51,12 @@
           <declname>index</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing</declname>
           <defval>1.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <type>Spread</type>
           <declname>spread</declname>
           <defval>0.0</defval>
         </param>
@@ -81,7 +81,7 @@
     <briefdescription>
 <para>Average BMA coupon. </para>    </briefdescription>
     <detaileddescription>
-<para>Coupon paying a BMA index, where the coupon rate is a weighted average of relevant fixings.</para><para>The weighted average is computed based on the actual calendar days for which a given fixing is valid and contributing to the given interest period.</para><para>Before weights are computed, the fixing schedule is adjusted for the index&apos;s fixing day gap. See <ref refid="floating_rate_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" kindref="member">rate()</ref> method for details. </para>    </detaileddescription>
+<para>Coupon paying a BMA index, where the coupon rate is a weighted average of relevant fixings.</para><para>The weighted average is computed based on the actual calendar days for which a given fixing is valid and contributing to the given interest period.</para><para>Before weights are computed, the fixing schedule is adjusted for the index&apos;s fixing day gap. See rate() method for details. </para>    </detaileddescription>
     <location file="/cashflows/averagebmacoupon.hpp" line="44" bodyfile="/cashflows/averagebmacoupon.hpp" bodystart="44" bodyend="79"/>
   </compounddef>
 </doxygen>

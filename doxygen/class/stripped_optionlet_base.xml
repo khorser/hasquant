@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="stripped_optionlet_base" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::StrippedOptionletBase</compoundname>
+    <compoundname>StrippedOptionletBase</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/strippedoptionletbase.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="stripped_optionlet_base_1a0dc3a6972f74c3ffc1c39e3d49d48a29" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Rate &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Rate&gt;&amp; optionletStrikes</definition>
         <argsstring>(Size i) const =0</argsstring>
         <name>optionletStrikes</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="stripped_optionlet_base_1a1801f1f75695fa6dc762f21cdc20fed9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Volatility &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Volatility&gt;&amp; optionletVolatilities</definition>
         <argsstring>(Size i) const =0</argsstring>
         <name>optionletVolatilities</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="45"/>
@@ -34,21 +34,21 @@
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="stripped_optionlet_base_1a5ae17207c76a228540345bf692610fe4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Time&gt;&amp; optionletFixingTimes</definition>
         <argsstring>() const =0</argsstring>
         <name>optionletFixingTimes</name>
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="stripped_optionlet_base_1ab9ee9c433409e117f42840760bf7cbc7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size optionletMaturities</definition>
         <argsstring>() const =0</argsstring>
         <name>optionletMaturities</name>
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="stripped_optionlet_base_1a6b7fd205a7788cec25c3cb777e179879" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Rate &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Rate&gt;&amp; atmOptionletRates</definition>
         <argsstring>() const =0</argsstring>
         <name>atmOptionletRates</name>
@@ -69,14 +69,14 @@
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="stripped_optionlet_base_1a594bf036db27de3a4370261d4f39df8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <type>Natural</type>
         <definition>virtual Natural settlementDays</definition>
         <argsstring>() const =0</argsstring>
         <name>settlementDays</name>
         <location file="/termstructures/volatility/optionlet/strippedoptionletbase.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="stripped_optionlet_base_1a257ddb61f3acc39b21a8668fbec2841c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>virtual BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const =0</argsstring>
         <name>businessDayConvention</name>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="commodity_settings" kind="class" prot="public">
-    <compoundname>QuantLib::CommoditySettings</compoundname>
+    <compoundname>CommoditySettings</compoundname>
     <includes local="no">/experimental/commodities/commoditysettings.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="commodity_settings_1ab5f787ad2b8ed122b99ff06a08333d7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

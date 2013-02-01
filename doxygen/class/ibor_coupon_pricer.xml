@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="ibor_coupon_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::IborCouponPricer</compoundname>
+    <compoundname>IborCouponPricer</compoundname>
     <includes local="no">/cashflows/couponpricer.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="ibor_coupon_pricer_1ab8cc31db512e6184c6e636cb48f528dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="lsm_basis_system" kind="class" prot="public">
-    <compoundname>QuantLib::LsmBasisSystem</compoundname>
+    <compoundname>LsmBasisSystem</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="lsm_basis_system_1aeb6a6c942f7565469985fce372446976" prot="public" static="no">
         <name>PolynomType</name>
@@ -31,12 +31,12 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="lsm_basis_system_1aa571df7488a8b45d1442b5b4f5c546c7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; boost::function1&lt; Real, Real &gt; &gt;</type>
         <definition>static std::vector&lt;boost::function1&lt;Real, Real&gt; &gt; pathBasisSystem</definition>
         <argsstring>(Size order, PolynomType polyType)</argsstring>
         <name>pathBasisSystem</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>order</declname>
         </param>
         <param>
@@ -46,16 +46,16 @@
         <location file="/methods/montecarlo/lsmbasissystem.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="lsm_basis_system_1ac02a57fb6a6848fa94d470723b442943" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, Array &gt; &gt;</type>
+        <type>std::vector&lt; boost::function1&lt; Real, Array &gt; &gt;</type>
         <definition>static std::vector&lt;boost::function1&lt;Real, Array&gt; &gt; multiPathBasisSystem</definition>
         <argsstring>(Size dim, Size order, PolynomType polyType)</argsstring>
         <name>multiPathBasisSystem</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>dim</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>order</declname>
         </param>
         <param>

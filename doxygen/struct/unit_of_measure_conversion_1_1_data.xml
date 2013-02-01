@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="unit_of_measure_conversion_1_1_data" kind="struct" prot="protected">
-    <compoundname>QuantLib::UnitOfMeasureConversion::Data</compoundname>
+    <compoundname>UnitOfMeasureConversion::Data</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="unit_of_measure_conversion_1_1_data_1a22d7e78737b17b88d12e19ffc7484133" prot="public" static="no" mutable="no">
         <type>CommodityType</type>
@@ -25,7 +25,7 @@
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="87" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="unit_of_measure_conversion_1_1_data_1acbaac6b0f096083c973ed8834116081f" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real conversionFactor</definition>
         <argsstring></argsstring>
         <name>conversionFactor</name>
@@ -72,7 +72,7 @@
           <declname>target</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>conversionFactor</declname>
         </param>
         <param>

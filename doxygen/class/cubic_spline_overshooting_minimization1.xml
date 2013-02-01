@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cubic_spline_overshooting_minimization1" kind="class" prot="public">
-    <compoundname>QuantLib::CubicSplineOvershootingMinimization1</compoundname>
+    <compoundname>CubicSplineOvershootingMinimization1</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="cubic_spline_overshooting_minimization1_1a2287d6f360c1ac0bb80dddaa765d4916" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

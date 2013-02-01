@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bespoke_calendar" kind="class" prot="public">
-    <compoundname>QuantLib::BespokeCalendar</compoundname>
+    <compoundname>BespokeCalendar</compoundname>
     <includes local="no">/time/calendars/bespokecalendar.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="bespoke_calendar_1a7f3c5b5278c667900534fb0e63f13c97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -24,7 +24,7 @@
         <argsstring>(Weekday)</argsstring>
         <name>addWeekend</name>
         <param>
-          <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+          <type>Weekday</type>
         </param>
         <briefdescription>
 <para>marks the passed day as part of the weekend </para>        </briefdescription>

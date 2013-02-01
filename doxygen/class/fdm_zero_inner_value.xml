@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_zero_inner_value" kind="class" prot="public">
-    <compoundname>QuantLib::FdmZeroInnerValue</compoundname>
+    <compoundname>FdmZeroInnerValue</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_zero_inner_value_1a3763df815f0fe4f4f7119e0210e04e7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real innerValue</definition>
         <argsstring>(const FdmLinearOpIterator &amp;, Time)</argsstring>
         <name>innerValue</name>
@@ -12,12 +12,12 @@
           <type>const FdmLinearOpIterator &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <location file="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="83" bodyfile="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="fdm_zero_inner_value_1ace64998c5d06f06e9b4d7dc754901d28" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real avgInnerValue</definition>
         <argsstring>(const FdmLinearOpIterator &amp;, Time)</argsstring>
         <name>avgInnerValue</name>
@@ -25,7 +25,7 @@
           <type>const FdmLinearOpIterator &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
         </param>
         <location file="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="84" bodyfile="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="84" bodyend="84"/>
       </memberdef>

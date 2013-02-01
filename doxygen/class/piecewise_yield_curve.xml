@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="piecewise_yield_curve" kind="class" prot="public">
-    <compoundname>QuantLib::PiecewiseYieldCurve</compoundname>
+    <compoundname>PiecewiseYieldCurve</compoundname>
     <includes local="no">/termstructures/yield/piecewiseyieldcurve.hpp</includes>
     <templateparamlist>
       <param>
@@ -47,7 +47,7 @@
           <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-12</defval>
         </param>
@@ -81,7 +81,7 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
         </param>
         <param>
@@ -130,7 +130,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;(), Real accuracy=1.0e-12, const Interpolator &amp;i=Interpolator(), const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
         <name>PiecewiseYieldCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -156,7 +156,7 @@
           <defval>std::vector&lt; Date &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
           <defval>1.0e-12</defval>
         </param>
@@ -178,7 +178,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, Real accuracy, const Interpolator &amp;i=Interpolator(), const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
         <name>PiecewiseYieldCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -194,7 +194,7 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>accuracy</declname>
         </param>
         <param>
@@ -215,7 +215,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const Interpolator &amp;i, const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
         <name>PiecewiseYieldCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -255,7 +255,7 @@
       <sectiondef kind="user-defined">
       <header>base_curve interface</header>
       <memberdef kind="function" id="piecewise_yield_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
@@ -269,14 +269,14 @@
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="166" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="211" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_yield_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/termstructures/yield/piecewiseyieldcurve.hpp" line="167" bodyfile="/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="217" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_yield_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, Real &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>

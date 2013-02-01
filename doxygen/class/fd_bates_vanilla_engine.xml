@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fd_bates_vanilla_engine" kind="class" prot="public">
-    <compoundname>QuantLib::FdBatesVanillaEngine</compoundname>
+    <compoundname>FdBatesVanillaEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/fdbatesvanillaengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fd_bates_vanilla_engine_1a89b17a2f0599a9c0e3e3fbe5631ac3b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,22 +14,22 @@
           <declname>model</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>tGrid</declname>
           <defval>100</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>xGrid</declname>
           <defval>100</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>vGrid</declname>
           <defval>50</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>dampingSteps</declname>
           <defval>0</defval>
         </param>

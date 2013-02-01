@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_linear_op_iterator" kind="class" prot="public">
-    <compoundname>QuantLib::FdmLinearOpIterator</compoundname>
+    <compoundname>FdmLinearOpIterator</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_linear_op_iterator_1a357838f389ad3277a672bbe66223b39d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -9,7 +9,7 @@
         <argsstring>(Size index=0)</argsstring>
         <name>FdmLinearOpIterator</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>index</declname>
           <defval>0</defval>
         </param>
@@ -21,7 +21,7 @@
         <argsstring>(const std::vector&lt; Size &gt; &amp;dim)</argsstring>
         <name>FdmLinearOpIterator</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Size &gt; &amp;</type>
           <declname>dim</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="44" bodyfile="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="41" bodyend="44"/>
@@ -32,15 +32,15 @@
         <argsstring>(const std::vector&lt; Size &gt; &amp;dim, const std::vector&lt; Size &gt; &amp;coordinates, Size index)</argsstring>
         <name>FdmLinearOpIterator</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Size &gt; &amp;</type>
           <declname>dim</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Size &gt; &amp;</type>
           <declname>coordinates</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>index</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="50" bodyfile="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="46" bodyend="50"/>
@@ -75,14 +75,14 @@
         <location file="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="68" bodyfile="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="fdm_linear_op_iterator_1adae470bcef9c655cb38b0a328681fc3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
         <location file="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="72" bodyfile="/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="fdm_linear_op_iterator_1a85425f7a1bf38c1d70ca6186438e9586" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Size &gt; &amp;</type>
         <definition>const std::vector&lt;Size&gt;&amp; coordinates</definition>
         <argsstring>() const </argsstring>
         <name>coordinates</name>

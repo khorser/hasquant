@@ -3,12 +3,12 @@
   <compounddef id="group__patterns" kind="group">
     <compoundname>patterns</compoundname>
     <title>Design patterns</title>
-    <innerclass refid="class_quant_lib_1_1_composite" prot="public">QuantLib::Composite</innerclass>
-    <innerclass refid="class_quant_lib_1_1_curiously_recurring_template" prot="public">QuantLib::CuriouslyRecurringTemplate</innerclass>
-    <innerclass refid="class_quant_lib_1_1_lazy_object" prot="public">QuantLib::LazyObject</innerclass>
-    <innerclass refid="class_quant_lib_1_1_observable" prot="public">QuantLib::Observable</innerclass>
-    <innerclass refid="class_quant_lib_1_1_observer" prot="public">QuantLib::Observer</innerclass>
-    <innerclass refid="class_quant_lib_1_1_singleton" prot="public">QuantLib::Singleton</innerclass>
-    <innerclass refid="class_quant_lib_1_1_acyclic_visitor" prot="public">QuantLib::AcyclicVisitor</innerclass>
+    <innerclass refid="class_quant_lib_1_1_composite" prot="public">Composite</innerclass>
+    <innerclass refid="class_quant_lib_1_1_curiously_recurring_template" prot="public">CuriouslyRecurringTemplate</innerclass>
+    <innerclass refid="class_quant_lib_1_1_lazy_object" prot="public">LazyObject</innerclass>
+    <innerclass refid="class_quant_lib_1_1_observable" prot="public">Observable</innerclass>
+    <innerclass refid="class_quant_lib_1_1_observer" prot="public">Observer</innerclass>
+    <innerclass refid="class_quant_lib_1_1_singleton" prot="public">Singleton</innerclass>
+    <innerclass refid="class_quant_lib_1_1_acyclic_visitor" prot="public">AcyclicVisitor</innerclass>
   </compounddef>
 </doxygen>

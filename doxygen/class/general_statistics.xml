@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="general_statistics" kind="class" prot="public">
-    <compoundname>QuantLib::GeneralStatistics</compoundname>
+    <compoundname>GeneralStatistics</compoundname>
     <includes local="no">/math/statistics/generalstatistics.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="general_statistics_1afb02dc74860bcd8ad0982324d50c82e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size samples</definition>
         <argsstring>() const </argsstring>
         <name>samples</name>
@@ -15,7 +15,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="52" bodyfile="/math/statistics/generalstatistics.hpp" bodystart="192" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1a629a0510086a52a9a80da6f1bf8cb987" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; std::pair&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &amp;</type>
+        <type>const std::vector&lt; std::pair&lt; Real, Real &gt; &gt; &amp;</type>
         <definition>const std::vector&lt; std::pair&lt; Real, Real &gt; &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
@@ -24,7 +24,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="55" bodyfile="/math/statistics/generalstatistics.hpp" bodystart="197" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1adadbb304259580be7add0941c9540bd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real weightSum</definition>
         <argsstring>() const </argsstring>
         <name>weightSum</name>
@@ -33,7 +33,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1a962ffe5a3593be370d5c883365c060f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real mean</definition>
         <argsstring>() const </argsstring>
         <name>mean</name>
@@ -42,7 +42,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1a4b8b05b2a9af92dad9cc304c2925a4eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real variance</definition>
         <argsstring>() const </argsstring>
         <name>variance</name>
@@ -51,7 +51,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1af728e0bfb80c48d44424d590cbfda34e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real standardDeviation</definition>
         <argsstring>() const </argsstring>
         <name>standardDeviation</name>
@@ -60,7 +60,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="74" bodyfile="/math/statistics/generalstatistics.hpp" bodystart="201" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real errorEstimate</definition>
         <argsstring>() const </argsstring>
         <name>errorEstimate</name>
@@ -69,7 +69,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="79" bodyfile="/math/statistics/generalstatistics.hpp" bodystart="205" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1a27cb1a211374553eadd4a0e09d60cf0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real skewness</definition>
         <argsstring>() const </argsstring>
         <name>skewness</name>
@@ -78,7 +78,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="86"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1a8a4ed1d1339aae2ccc6bd69c8f026f10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real kurtosis</definition>
         <argsstring>() const </argsstring>
         <name>kurtosis</name>
@@ -87,7 +87,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1ac98e9ad7b67758707ccda2475bb90019" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real min</definition>
         <argsstring>() const </argsstring>
         <name>min</name>
@@ -96,7 +96,7 @@
         <location file="/math/statistics/generalstatistics.hpp" line="97" bodyfile="/math/statistics/generalstatistics.hpp" bodystart="209" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1ad849b4ad24b7c5b71e7ec46a65d53e8e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real max</definition>
         <argsstring>() const </argsstring>
         <name>max</name>
@@ -113,7 +113,7 @@
             <type>class Predicate</type>
           </param>
         </templateparamlist>
-        <type>std::pair&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <type>std::pair&lt; Real, Size &gt;</type>
         <definition>std::pair&lt;Real,Size&gt; expectationValue</definition>
         <argsstring>(const Func &amp;f, const Predicate &amp;inRange) const </argsstring>
         <name>expectationValue</name>
@@ -130,12 +130,12 @@
         <location file="/math/statistics/generalstatistics.hpp" line="116" bodyfile="/math/statistics/generalstatistics.hpp" bodystart="115" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1ad85e1d17aa1273cc6b198d9109ef5c41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real percentile</definition>
         <argsstring>(Real y) const </argsstring>
         <name>percentile</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <detaileddescription>
@@ -144,12 +144,12 @@
         <location file="/math/statistics/generalstatistics.hpp" line="141"/>
       </memberdef>
       <memberdef kind="function" id="general_statistics_1a41d2156c2a2c3580b5ba66056b504a06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real topPercentile</definition>
         <argsstring>(Real y) const </argsstring>
         <name>topPercentile</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <detaileddescription>
@@ -166,11 +166,11 @@
         <argsstring>(Real value, Real weight=1.0)</argsstring>
         <name>add</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>weight</declname>
           <defval>1.0</defval>
         </param>
@@ -247,7 +247,7 @@
         <argsstring>(Size n) const </argsstring>
         <name>reserve</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
         </param>
         <briefdescription>
@@ -266,7 +266,7 @@
       </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="general_statistics_1a64a1ba313ad4c1fd58bf5887c366df5a" prot="public" static="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>typedef Real value_type</definition>
         <argsstring></argsstring>
         <name>value_type</name>

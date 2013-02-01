@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="piecewise_time_dependent_heston_model" kind="class" prot="public">
-    <compoundname>QuantLib::PiecewiseTimeDependentHestonModel</compoundname>
+    <compoundname>PiecewiseTimeDependentHestonModel</compoundname>
     <includes local="no">/models/equity/piecewisetimedependenthestonmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1a51af1b4e0d1b37952eab732e7b690a0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -22,7 +22,7 @@
           <declname>s0</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>v0</declname>
         </param>
         <param>
@@ -48,58 +48,58 @@
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1a0ee6c03f0d68bbbd8bb4e988312fc9a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real theta</definition>
         <argsstring>(Time t) const </argsstring>
         <name>theta</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="58" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1a437f480c0f45ca8076b5a74e6642a2ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real kappa</definition>
         <argsstring>(Time t) const </argsstring>
         <name>kappa</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="60" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1af55b8485350f45784539408174aa508a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real sigma</definition>
         <argsstring>(Time t) const </argsstring>
         <name>sigma</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="62" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1ad84f33ce638b8fc7b86421a15ce05edf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real rho</definition>
         <argsstring>(Time t) const </argsstring>
         <name>rho</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="64" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1a30fd40988a93faccca807dd016f8c5e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real v0</definition>
         <argsstring>() const </argsstring>
         <name>v0</name>
         <location file="/models/equity/piecewisetimedependenthestonmodel.hpp" line="66" bodyfile="/models/equity/piecewisetimedependenthestonmodel.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="piecewise_time_dependent_heston_model_1a67692879821e11afc2695472d9dba61c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real s0</definition>
         <argsstring>() const </argsstring>
         <name>s0</name>

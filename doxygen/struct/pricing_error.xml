@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="pricing_error" kind="struct" prot="public">
-    <compoundname>QuantLib::PricingError</compoundname>
+    <compoundname>PricingError</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="pricing_error_1a221b779e6bb7b8d40677d7642bfefac5" prot="public" static="no">
         <name>Level</name>

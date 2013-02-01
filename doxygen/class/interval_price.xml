@@ -1,40 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="interval_price" kind="class" prot="public">
-    <compoundname>QuantLib::IntervalPrice</compoundname>
+    <compoundname>IntervalPrice</compoundname>
     <includes local="no">/prices.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="interval_price_1a856a693a06d5afacb06355639a1abce5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real open</definition>
         <argsstring>() const </argsstring>
         <name>open</name>
         <location file="/prices.hpp" line="75" bodyfile="/prices.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="interval_price_1a760e68e04a1de187b12f14ed431d5b7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real close</definition>
         <argsstring>() const </argsstring>
         <name>close</name>
         <location file="/prices.hpp" line="76" bodyfile="/prices.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="interval_price_1ae4747a97e5319952aad4d2fdcbd922fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real high</definition>
         <argsstring>() const </argsstring>
         <name>high</name>
         <location file="/prices.hpp" line="77" bodyfile="/prices.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="interval_price_1a3885ecba4d75226d09b5da5b50219e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real low</definition>
         <argsstring>() const </argsstring>
         <name>low</name>
         <location file="/prices.hpp" line="78" bodyfile="/prices.hpp" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="interval_price_1acee7d35150d5eb317f1297520ab7ff03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>(IntervalPrice::Type) const </argsstring>
         <name>value</name>
@@ -52,7 +52,7 @@
         <argsstring>(Real value, IntervalPrice::Type)</argsstring>
         <name>setValue</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>value</declname>
         </param>
         <param>
@@ -66,19 +66,19 @@
         <argsstring>(Real open, Real close, Real high, Real low)</argsstring>
         <name>setValues</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>open</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>close</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>high</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>low</declname>
         </param>
         <location file="/prices.hpp" line="85"/>
@@ -96,25 +96,25 @@
           <declname>d</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>open</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>close</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>high</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>low</declname>
         </param>
         <location file="/prices.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="interval_price_1a5dd7dfe99440e13129f9b91c84ba1f75" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>static std::vector&lt;Real&gt; extractValues</definition>
         <argsstring>(const TimeSeries&lt; IntervalPrice &gt; &amp;, IntervalPrice::Type)</argsstring>
         <name>extractValues</name>
@@ -127,7 +127,7 @@
         <location file="/prices.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="interval_price_1aa2975db12f512e672d6f5180295464e1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>TimeSeries&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>TimeSeries&lt; Real &gt;</type>
         <definition>static TimeSeries&lt;Real&gt; extractComponent</definition>
         <argsstring>(const TimeSeries&lt; IntervalPrice &gt; &amp;, enum IntervalPrice::Type)</argsstring>
         <name>extractComponent</name>
@@ -172,19 +172,19 @@
         <argsstring>(Real open, Real close, Real high, Real low)</argsstring>
         <name>IntervalPrice</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>open</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>close</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>high</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>low</declname>
         </param>
         <location file="/prices.hpp" line="71"/>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="g2_swaption_engine" kind="class" prot="public">
-    <compoundname>QuantLib::G2SwaptionEngine</compoundname>
+    <compoundname>G2SwaptionEngine</compoundname>
     <includes local="no">/pricingengines/swaption/g2swaptionengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="g2_swaption_engine_1a9a21159dd8f78f1728aff7aca6aec513" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -14,11 +14,11 @@
           <declname>model</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>range</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>intervals</declname>
         </param>
         <location file="/pricingengines/swaption/g2swaptionengine.hpp" line="49" bodyfile="/pricingengines/swaption/g2swaptionengine.hpp" bodystart="45" bodyend="49"/>

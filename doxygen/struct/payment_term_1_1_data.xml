@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="payment_term_1_1_data" kind="struct" prot="protected">
-    <compoundname>QuantLib::PaymentTerm::Data</compoundname>
+    <compoundname>PaymentTerm::Data</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="payment_term_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -18,7 +18,7 @@
         <location file="/experimental/commodities/paymentterm.hpp" line="58" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="payment_term_1_1_data_1ad574a26f94e97270ded97bff02bdaf14" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>Integer offsetDays</definition>
         <argsstring></argsstring>
         <name>offsetDays</name>
@@ -47,7 +47,7 @@
           <declname>eventType</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>offsetDays</declname>
         </param>
         <param>

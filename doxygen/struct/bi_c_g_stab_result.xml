@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bi_c_g_stab_result" kind="struct" prot="public">
-    <compoundname>QuantLib::BiCGStabResult</compoundname>
+    <compoundname>BiCGStabResult</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="bi_c_g_stab_result_1a060bce7b59766d77d03e4e16aff2f312" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size iterations</definition>
         <argsstring></argsstring>
         <name>iterations</name>
         <location file="/math/matrixutilities/bicgstab.hpp" line="34" bodyfile="/math/matrixutilities/bicgstab.hpp" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="bi_c_g_stab_result_1ae00ecbfbe7c0f2b69c514b9e70fe8c04" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real error</definition>
         <argsstring></argsstring>
         <name>error</name>

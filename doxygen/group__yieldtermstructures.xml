@@ -3,19 +3,19 @@
   <compounddef id="group__yieldtermstructures" kind="group">
     <compoundname>yieldtermstructures</compoundname>
     <title>Term structures</title>
-    <innerclass refid="class_quant_lib_1_1_interpolated_discount_curve" prot="public">QuantLib::InterpolatedDiscountCurve</innerclass>
-    <innerclass refid="class_quant_lib_1_1_fitted_bond_discount_curve" prot="public">QuantLib::FittedBondDiscountCurve</innerclass>
-    <innerclass refid="class_quant_lib_1_1_flat_forward" prot="public">QuantLib::FlatForward</innerclass>
-    <innerclass refid="class_quant_lib_1_1_interpolated_forward_curve" prot="public">QuantLib::InterpolatedForwardCurve</innerclass>
-    <innerclass refid="class_quant_lib_1_1_forward_spreaded_term_structure" prot="public">QuantLib::ForwardSpreadedTermStructure</innerclass>
-    <innerclass refid="class_quant_lib_1_1_forward_rate_structure" prot="public">QuantLib::ForwardRateStructure</innerclass>
-    <innerclass refid="class_quant_lib_1_1_implied_term_structure" prot="public">QuantLib::ImpliedTermStructure</innerclass>
-    <innerclass refid="class_quant_lib_1_1_piecewise_yield_curve" prot="public">QuantLib::PiecewiseYieldCurve</innerclass>
-    <innerclass refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure" prot="public">QuantLib::PiecewiseZeroSpreadedTermStructure</innerclass>
-    <innerclass refid="class_quant_lib_1_1_interpolated_zero_curve" prot="public">QuantLib::InterpolatedZeroCurve</innerclass>
-    <innerclass refid="class_quant_lib_1_1_zero_spreaded_term_structure" prot="public">QuantLib::ZeroSpreadedTermStructure</innerclass>
-    <innerclass refid="class_quant_lib_1_1_zero_yield_structure" prot="public">QuantLib::ZeroYieldStructure</innerclass>
-    <innerclass refid="class_quant_lib_1_1_yield_term_structure" prot="public">QuantLib::YieldTermStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_interpolated_discount_curve" prot="public">InterpolatedDiscountCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fitted_bond_discount_curve" prot="public">FittedBondDiscountCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_flat_forward" prot="public">FlatForward</innerclass>
+    <innerclass refid="class_quant_lib_1_1_interpolated_forward_curve" prot="public">InterpolatedForwardCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward_spreaded_term_structure" prot="public">ForwardSpreadedTermStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward_rate_structure" prot="public">ForwardRateStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_implied_term_structure" prot="public">ImpliedTermStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_piecewise_yield_curve" prot="public">PiecewiseYieldCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure" prot="public">PiecewiseZeroSpreadedTermStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_interpolated_zero_curve" prot="public">InterpolatedZeroCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_zero_spreaded_term_structure" prot="public">ZeroSpreadedTermStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_zero_yield_structure" prot="public">ZeroYieldStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_yield_term_structure" prot="public">YieldTermStructure</innerclass>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="group__yieldtermstructures_1ga4e538c822f698ad1c21bbe52deb30d29" prot="public" static="no">
         <type>InterpolatedDiscountCurve&lt; LogLinear &gt;</type>
@@ -48,6 +48,6 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>The abstract class <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">QuantLib::YieldTermStructure</ref> provides the common interface to concrete yield-rate term structure models. Among others, methods are declared which return instantaneous forward rate, discount factor, and zero rate at a given date. Adapter classes are provided which already implement part of the required methods, thus allowing the programmer to define only the non-redundant part. </para>    </detaileddescription>
+<para>The abstract class <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> provides the common interface to concrete yield-rate term structure models. Among others, methods are declared which return instantaneous forward rate, discount factor, and zero rate at a given date. Adapter classes are provided which already implement part of the required methods, thus allowing the programmer to define only the non-redundant part. </para>    </detaileddescription>
   </compounddef>
 </doxygen>

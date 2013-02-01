@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cox_ingersoll_ross_1_1_dynamics" kind="class" prot="public">
-    <compoundname>QuantLib::CoxIngersollRoss::Dynamics</compoundname>
+    <compoundname>CoxIngersollRoss::Dynamics</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="cox_ingersoll_ross_1_1_dynamics_1aff354dfa3257a4f6886a4d3abfd3ed6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,19 +10,19 @@
         <argsstring>(Real theta, Real k, Real sigma, Real x0)</argsstring>
         <name>Dynamics</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>theta</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>k</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x0</declname>
         </param>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="116" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="111" bodyend="116"/>

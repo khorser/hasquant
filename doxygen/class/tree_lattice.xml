@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="tree_lattice" kind="class" prot="public">
-    <compoundname>QuantLib::TreeLattice</compoundname>
+    <compoundname>TreeLattice</compoundname>
     <includes local="no">/methods/lattices/lattice.hpp</includes>
     <templateparamlist>
       <param>
@@ -21,7 +21,7 @@
           <declname>timeGrid</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
         </param>
         <location file="/methods/lattices/lattice.hpp" line="62" bodyfile="/methods/lattices/lattice.hpp" bodystart="60" bodyend="66"/>
@@ -32,7 +32,7 @@
         <argsstring>(Size i) const </argsstring>
         <name>statePrices</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/methods/lattices/lattice.hpp" line="77" bodyfile="/methods/lattices/lattice.hpp" bodystart="114" bodyend="118"/>
@@ -43,7 +43,7 @@
         <argsstring>(Size i, const Array &amp;values, Array &amp;newValues) const </argsstring>
         <name>stepback</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <param>

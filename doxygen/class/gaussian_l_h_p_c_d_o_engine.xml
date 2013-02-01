@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="gaussian_l_h_p_c_d_o_engine" kind="class" prot="public">
-    <compoundname>QuantLib::GaussianLHPCDOEngine</compoundname>
+    <compoundname>GaussianLHPCDOEngine</compoundname>
     <includes local="no">/experimental/credit/syntheticcdoengines.hpp</includes>
     <templateparamlist>
       <param>

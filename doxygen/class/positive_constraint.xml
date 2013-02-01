@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="positive_constraint" kind="class" prot="public">
-    <compoundname>QuantLib::PositiveConstraint</compoundname>
+    <compoundname>PositiveConstraint</compoundname>
     <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="positive_constraint_1a6933ae2fa43a9797a0be9b81d3f67227" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

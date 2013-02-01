@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="interpolated_yo_y_optionlet_volatility_curve" kind="class" prot="public">
-    <compoundname>QuantLib::InterpolatedYoYOptionletVolatilityCurve</compoundname>
+    <compoundname>InterpolatedYoYOptionletVolatilityCurve</compoundname>
     <includes local="no">/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp</includes>
     <templateparamlist>
       <param>
@@ -18,7 +18,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;, BusinessDayConvention bdc, const DayCounter &amp;dc, const Period &amp;lag, Frequency frequency, bool indexIsInterpolated, const std::vector&lt; Date &gt; &amp;d, const std::vector&lt; Volatility &gt; &amp;v, Rate minStrike, Rate maxStrike, const Interpolator1D &amp;interpolator=Interpolator1D())</argsstring>
         <name>InterpolatedYoYOptionletVolatilityCurve</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
           <defname>cal</defname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
           <declname>lag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -50,15 +50,15 @@
           <declname>d</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Volatility &gt; &amp;</type>
           <declname>v</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>minStrike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>maxStrike</declname>
         </param>
         <param>
@@ -76,7 +76,7 @@
       <sectiondef kind="user-defined">
       <header>Bootstrap interface</header>
       <memberdef kind="function" id="interpolated_yo_y_optionlet_volatility_curve_1a37dd8ccc18cbc518783287bdc47b4088" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Time &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Time&gt;&amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
@@ -90,14 +90,14 @@
         <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="81" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_yo_y_optionlet_volatility_curve_1abe2ca418f8f3bcc37a8bcbe60533b40b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Real&gt;&amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="82" bodyfile="/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_yo_y_optionlet_volatility_curve_1abcff9b6eca640af28de7247fac16c00e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::vector&lt; std::pair&lt; Date, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Date, Real &gt; &gt;</type>
         <definition>virtual std::vector&lt;std::pair&lt;Date, Real&gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>

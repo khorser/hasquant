@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="conjugate_gradient" kind="class" prot="public">
-    <compoundname>QuantLib::ConjugateGradient</compoundname>
+    <compoundname>ConjugateGradient</compoundname>
     <includes local="no">/math/optimization/conjugategradient.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="conjugate_gradient_1a611b1406837535a9ac3fea2ed17ef2e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

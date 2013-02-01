@@ -1,64 +1,64 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="floating_rate_coupon_pricer" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::FloatingRateCouponPricer</compoundname>
+    <compoundname>FloatingRateCouponPricer</compoundname>
     <includes local="no">/cashflows/couponpricer.hpp</includes>
       <sectiondef kind="user-defined">
       <header>required interface</header>
       <memberdef kind="function" id="floating_rate_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real swapletPrice</definition>
         <argsstring>() const =0</argsstring>
         <name>swapletPrice</name>
         <location file="/cashflows/couponpricer.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="floating_rate_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate swapletRate</definition>
         <argsstring>() const =0</argsstring>
         <name>swapletRate</name>
         <location file="/cashflows/couponpricer.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="floating_rate_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real capletPrice</definition>
         <argsstring>(Rate effectiveCap) const =0</argsstring>
         <name>capletPrice</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>effectiveCap</declname>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="floating_rate_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate capletRate</definition>
         <argsstring>(Rate effectiveCap) const =0</argsstring>
         <name>capletRate</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>effectiveCap</declname>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="floating_rate_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real floorletPrice</definition>
         <argsstring>(Rate effectiveFloor) const =0</argsstring>
         <name>floorletPrice</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>effectiveFloor</declname>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="floating_rate_coupon_pricer_1a214779867426164db11377dadc63d672" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate floorletRate</definition>
         <argsstring>(Rate effectiveFloor) const =0</argsstring>
         <name>floorletRate</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>effectiveFloor</declname>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="52"/>

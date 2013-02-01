@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fixed_rate_leg" kind="class" prot="public">
-    <compoundname>QuantLib::FixedRateLeg</compoundname>
+    <compoundname>FixedRateLeg</compoundname>
     <includes local="no">/cashflows/fixedratecoupon.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fixed_rate_leg_1a5821e3c67abc98a6277bec59af44d845" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -21,7 +21,7 @@
         <argsstring>(Real)</argsstring>
         <name>withNotionals</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="83"/>
       </memberdef>
@@ -31,7 +31,7 @@
         <argsstring>(const std::vector&lt; Real &gt; &amp;)</argsstring>
         <name>withNotionals</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="84"/>
       </memberdef>
@@ -41,21 +41,21 @@
         <argsstring>(Rate, const DayCounter &amp;paymentDayCounter, Compounding comp=Simple, Frequency freq=Annual)</argsstring>
         <name>withCouponRates</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
           <declname>paymentDayCounter</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
-          <defval><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73aebfbf7dc5cde0772efb1aa49712bd76b" kindref="member">Simple</ref></defval>
+          <defval>Simple</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="88"/>
       </memberdef>
@@ -65,21 +65,21 @@
         <argsstring>(const std::vector&lt; Rate &gt; &amp;, const DayCounter &amp;paymentDayCounter, Compounding comp=Simple, Frequency freq=Annual)</argsstring>
         <name>withCouponRates</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
           <declname>paymentDayCounter</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <type>Compounding</type>
           <declname>comp</declname>
-          <defval><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73aebfbf7dc5cde0772efb1aa49712bd76b" kindref="member">Simple</ref></defval>
+          <defval>Simple</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>freq</declname>
-          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+          <defval>Annual</defval>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="92"/>
       </memberdef>
@@ -109,7 +109,7 @@
         <argsstring>(BusinessDayConvention)</argsstring>
         <name>withPaymentAdjustment</name>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
         </param>
         <location file="/cashflows/fixedratecoupon.hpp" line="95"/>
       </memberdef>

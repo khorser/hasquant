@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yo_y_inflation_term_structure" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::YoYInflationTermStructure</compoundname>
+    <compoundname>YoYInflationTermStructure</compoundname>
     <includes local="no">/termstructures/inflationtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -15,7 +15,7 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>baseYoYRate</declname>
         </param>
         <param>
@@ -23,7 +23,7 @@
           <declname>lag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -59,7 +59,7 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>baseYoYRate</declname>
         </param>
         <param>
@@ -67,7 +67,7 @@
           <declname>lag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -91,7 +91,7 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const DayCounter &amp;dayCounter, Rate baseYoYRate, const Period &amp;lag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yieldTS, const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
         <name>YoYInflationTermStructure</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -103,7 +103,7 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>baseYoYRate</declname>
         </param>
         <param>
@@ -111,7 +111,7 @@
           <declname>lag</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>frequency</declname>
         </param>
         <param>
@@ -133,7 +133,7 @@
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="yo_y_inflation_term_structure_1afaf714772526373b6cac0d3cdec4a81c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate yoyRate</definition>
         <argsstring>(const Date &amp;d, const Period &amp;instObsLag=Period(-1, Days), bool forceLinearInterpolation=false, bool extrapolate=false) const </argsstring>
         <name>yoyRate</name>
@@ -164,12 +164,12 @@
         <location file="/termstructures/inflationtermstructure.hpp" line="238"/>
       </memberdef>
       <memberdef kind="function" id="yo_y_inflation_term_structure_1a07b935dbbeb9135c753694f56eb1fa36" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate yoyRate</definition>
         <argsstring>(Time t, bool extrapolate=false) const </argsstring>
         <name>yoyRate</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>

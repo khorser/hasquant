@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="variance_gamma_model" kind="class" prot="public">
-    <compoundname>QuantLib::VarianceGammaModel</compoundname>
+    <compoundname>VarianceGammaModel</compoundname>
     <includes local="no">/experimental/variancegamma/variancegammamodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="variance_gamma_model_1a91960bc4315b6d52af31c8c47d4328d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -16,21 +16,21 @@
         <location file="/experimental/variancegamma/variancegammamodel.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="variance_gamma_model_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
         <location file="/experimental/variancegamma/variancegammamodel.hpp" line="46" bodyfile="/experimental/variancegamma/variancegammamodel.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="variance_gamma_model_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
         <location file="/experimental/variancegamma/variancegammamodel.hpp" line="48" bodyfile="/experimental/variancegamma/variancegammamodel.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="variance_gamma_model_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real theta</definition>
         <argsstring>() const </argsstring>
         <name>theta</name>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="trigeorgis" kind="class" prot="public">
-    <compoundname>QuantLib::Trigeorgis</compoundname>
+    <compoundname>Trigeorgis</compoundname>
     <includes local="no">/methods/lattices/binomialtree.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="trigeorgis_1a05be2f33a3933bb0735f8b4a729cbaba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -13,15 +13,15 @@
           <type>const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>end</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>steps</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <location file="/methods/lattices/binomialtree.hpp" line="149"/>

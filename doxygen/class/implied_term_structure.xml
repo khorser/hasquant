@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="implied_term_structure" kind="class" prot="public">
-    <compoundname>QuantLib::ImpliedTermStructure</compoundname>
+    <compoundname>ImpliedTermStructure</compoundname>
     <includes local="no">/termstructures/yield/impliedtermstructure.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="implied_term_structure_1a7dcfdfac9796267ba70661c9ad5c85e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

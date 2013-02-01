@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="date_generation" kind="struct" prot="public">
-    <compoundname>QuantLib::DateGeneration</compoundname>
+    <compoundname>DateGeneration</compoundname>
     <includes local="no">/time/dategenerationrule.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="date_generation_1a11fcd51ef86118f65e603c1474377a78" prot="public" static="no">
@@ -59,7 +59,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type>DateGeneration::Rule</type>
         </param>
         <location file="/time/dategenerationrule.hpp" line="69"/>
       </memberdef>

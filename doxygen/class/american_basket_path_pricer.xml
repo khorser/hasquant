@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="american_basket_path_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::AmericanBasketPathPricer</compoundname>
+    <compoundname>AmericanBasketPathPricer</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="american_basket_path_pricer_1a126aa36cc7c20060c3b91022dee3102e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -9,7 +9,7 @@
         <argsstring>(Size assetNumber, const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, Size polynomOrder=2, LsmBasisSystem::PolynomType polynomType=LsmBasisSystem::Monomial)</argsstring>
         <name>AmericanBasketPathPricer</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>assetNumber</declname>
         </param>
         <param>
@@ -17,7 +17,7 @@
           <declname>payoff</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>polynomOrder</declname>
           <defval>2</defval>
         </param>
@@ -38,13 +38,13 @@
           <declname>path</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>t</declname>
         </param>
         <location file="/pricingengines/basket/mcamericanbasketengine.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="american_basket_path_pricer_1a9741aeb3c0e26119a689d89552fb0e91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(const MultiPath &amp;path, Size t) const </argsstring>
         <name>operator()</name>
@@ -53,13 +53,13 @@
           <declname>path</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>t</declname>
         </param>
         <location file="/pricingengines/basket/mcamericanbasketengine.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="american_basket_path_pricer_1aae6298ed1ee2c1d736a201b3c27c36bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, Array &gt; &gt;</type>
+        <type>std::vector&lt; boost::function1&lt; Real, Array &gt; &gt;</type>
         <definition>std::vector&lt;boost::function1&lt;Real, Array&gt; &gt; basisSystem</definition>
         <argsstring>() const </argsstring>
         <name>basisSystem</name>

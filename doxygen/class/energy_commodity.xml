@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="energy_commodity" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::EnergyCommodity</compoundname>
+    <compoundname>EnergyCommodity</compoundname>
     <includes local="no">/experimental/commodities/energycommodity.hpp</includes>
-    <innerclass refid="energy_commodity_1_1arguments" prot="public">QuantLib::EnergyCommodity::arguments</innerclass>
-    <innerclass refid="energy_commodity_1_1engine" prot="public">QuantLib::EnergyCommodity::engine</innerclass>
-    <innerclass refid="energy_commodity_1_1results" prot="public">QuantLib::EnergyCommodity::results</innerclass>
+    <innerclass refid="energy_commodity_1_1arguments" prot="public">EnergyCommodity::arguments</innerclass>
+    <innerclass refid="energy_commodity_1_1engine" prot="public">EnergyCommodity::engine</innerclass>
+    <innerclass refid="energy_commodity_1_1results" prot="public">EnergyCommodity::results</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9a" prot="public" static="no">
         <name>DeliverySchedule</name>

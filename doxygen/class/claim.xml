@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="claim" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::Claim</compoundname>
+    <compoundname>Claim</compoundname>
     <includes local="no">/instruments/claim.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="claim_1ad2e9bee49eababe4baebe19b32d7e6ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -12,7 +12,7 @@
         <location file="/instruments/claim.hpp" line="34" bodyfile="/instruments/claim.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="claim_1a72b7cb2651ac4d2b9143c54c49090d37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real amount</definition>
         <argsstring>(const Date &amp;defaultDate, Real notional, Real recoveryRate) const =0</argsstring>
         <name>amount</name>
@@ -21,11 +21,11 @@
           <declname>defaultDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>notional</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
         </param>
         <location file="/instruments/claim.hpp" line="37"/>

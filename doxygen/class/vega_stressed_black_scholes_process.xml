@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="vega_stressed_black_scholes_process" kind="class" prot="public">
-    <compoundname>QuantLib::VegaStressedBlackScholesProcess</compoundname>
+    <compoundname>VegaStressedBlackScholesProcess</compoundname>
     <includes local="no">/experimental/processes/vegastressedblackscholesprocess.hpp</includes>
       <sectiondef kind="user-defined">
       <header>interface for vega stress test</header>
       <memberdef kind="function" id="vega_stressed_black_scholes_process_1ac62cee7b777da1b349730f16d1873c4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real getLowerTimeBorderForStressTest</definition>
         <argsstring>() const </argsstring>
         <name>getLowerTimeBorderForStressTest</name>
@@ -18,13 +18,13 @@
         <argsstring>(Time LTB)</argsstring>
         <name>setLowerTimeBorderForStressTest</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>LTB</declname>
         </param>
         <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="vega_stressed_black_scholes_process_1ae3ba833a75fc09cc4318d74ee6ffd530" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real getUpperTimeBorderForStressTest</definition>
         <argsstring>() const </argsstring>
         <name>getUpperTimeBorderForStressTest</name>
@@ -36,13 +36,13 @@
         <argsstring>(Time UTB)</argsstring>
         <name>setUpperTimeBorderForStressTest</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>UTB</declname>
         </param>
         <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="vega_stressed_black_scholes_process_1a84da2033ce377a7ceb88fc7aa18c8d76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real getLowerAssetBorderForStressTest</definition>
         <argsstring>() const </argsstring>
         <name>getLowerAssetBorderForStressTest</name>
@@ -54,13 +54,13 @@
         <argsstring>(Real LAB)</argsstring>
         <name>setLowerAssetBorderForStressTest</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>LAB</declname>
         </param>
         <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="vega_stressed_black_scholes_process_1afa24202673c2f75819462e9777807c66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real getUpperAssetBorderForStressTest</definition>
         <argsstring>() const </argsstring>
         <name>getUpperAssetBorderForStressTest</name>
@@ -72,13 +72,13 @@
         <argsstring>(Real UBA)</argsstring>
         <name>setUpperAssetBorderForStressTest</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>UBA</declname>
         </param>
         <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="vega_stressed_black_scholes_process_1aee9801e06dc96915253eb1633a5b383a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real getStressLevel</definition>
         <argsstring>() const </argsstring>
         <name>getStressLevel</name>
@@ -90,7 +90,7 @@
         <argsstring>(Real SL)</argsstring>
         <name>setStressLevel</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>SL</declname>
         </param>
         <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="72"/>
@@ -119,27 +119,27 @@
           <declname>blackVolTS</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>lowerTimeBorderForStressTest</declname>
           <defval>0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>upperTimeBorderForStressTest</declname>
           <defval>1000000</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>lowerAssetBorderForStressTest</declname>
           <defval>0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>upperAssetBorderForStressTest</declname>
           <defval>1000000</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>stressLevel</declname>
           <defval>0</defval>
         </param>

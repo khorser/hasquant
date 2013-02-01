@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="nth_to_default" kind="class" prot="public">
-    <compoundname>QuantLib::NthToDefault</compoundname>
+    <compoundname>NthToDefault</compoundname>
     <includes local="no">/experimental/credit/nthtodefault.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="nth_to_default_1a4337e6f7c077f1cf068894f35fa76a74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Size n, const std::vector&lt; Handle&lt; DefaultProbabilityTermStructure &gt; &gt; &amp;probabilities, Real recoveryRate, const Handle&lt; OneFactorCopula &gt; &amp;copula, Protection::Side side, Real nominal, const Schedule &amp;premiumSchedule, Rate premiumRate, const DayCounter &amp;dayCounter, bool settlePremiumAccrual, const Handle&lt; YieldTermStructure &gt; &amp;yieldTS, const Period &amp;integrationStepSize, boost::shared_ptr&lt; Claim &gt; claim=boost::shared_ptr&lt; Claim &gt;())</argsstring>
         <name>NthToDefault</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>n</declname>
         </param>
         <param>
@@ -18,7 +18,7 @@
           <declname>probabilities</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
         </param>
         <param>
@@ -30,7 +30,7 @@
           <declname>side</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
           <declname>premiumSchedule</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>premiumRate</declname>
         </param>
         <param>
@@ -65,21 +65,21 @@
         <location file="/experimental/credit/nthtodefault.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="nth_to_default_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fairPremium</definition>
         <argsstring>() const </argsstring>
         <name>fairPremium</name>
         <location file="/experimental/credit/nthtodefault.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="nth_to_default_1a31d3d825697988d20419edfd4483d8fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate premium</definition>
         <argsstring>() const </argsstring>
         <name>premium</name>
         <location file="/experimental/credit/nthtodefault.hpp" line="92" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="nth_to_default_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
@@ -100,14 +100,14 @@
         <location file="/experimental/credit/nthtodefault.hpp" line="95" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="95" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="nth_to_default_1a392c795adb43821ad813f80cfaa88823" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size rank</definition>
         <argsstring>() const </argsstring>
         <name>rank</name>
         <location file="/experimental/credit/nthtodefault.hpp" line="96" bodyfile="/experimental/credit/nthtodefault.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="nth_to_default_1abf42f0c06e4fc9d3a800e752ffdb0f1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size basketSize</definition>
         <argsstring>() const </argsstring>
         <name>basketSize</name>

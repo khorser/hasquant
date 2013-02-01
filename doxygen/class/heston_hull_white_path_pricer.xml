@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="heston_hull_white_path_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::HestonHullWhitePathPricer</compoundname>
+    <compoundname>HestonHullWhitePathPricer</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="heston_hull_white_path_pricer_1aa54db1f87b00e439a66fee4c3f9e3be2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -9,7 +9,7 @@
         <argsstring>(Time exerciseTime, const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, const boost::shared_ptr&lt; HybridHestonHullWhiteProcess &gt; &amp;process)</argsstring>
         <name>HestonHullWhitePathPricer</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>exerciseTime</declname>
         </param>
         <param>
@@ -23,7 +23,7 @@
         <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="heston_hull_white_path_pricer_1a2ecf590215498be156b97e02b2bc327c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(const MultiPath &amp;path) const </argsstring>
         <name>operator()</name>

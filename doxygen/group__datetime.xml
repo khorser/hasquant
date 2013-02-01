@@ -3,14 +3,14 @@
   <compounddef id="group__datetime" kind="group">
     <compoundname>datetime</compoundname>
     <title>Date and time calculations</title>
-    <innerclass refid="class_quant_lib_1_1_date_interval" prot="public">QuantLib::DateInterval</innerclass>
-    <innerclass refid="class_quant_lib_1_1_pricing_period" prot="public">QuantLib::PricingPeriod</innerclass>
-    <innerclass refid="class_quant_lib_1_1_calendar" prot="public">QuantLib::Calendar</innerclass>
-    <innerclass refid="class_quant_lib_1_1_date" prot="public">QuantLib::Date</innerclass>
-    <innerclass refid="struct_quant_lib_1_1_date_generation" prot="public">QuantLib::DateGeneration</innerclass>
-    <innerclass refid="class_quant_lib_1_1_day_counter" prot="public">QuantLib::DayCounter</innerclass>
-    <innerclass refid="class_quant_lib_1_1_period" prot="public">QuantLib::Period</innerclass>
-    <innerclass refid="class_quant_lib_1_1_schedule" prot="public">QuantLib::Schedule</innerclass>
+    <innerclass refid="class_quant_lib_1_1_date_interval" prot="public">DateInterval</innerclass>
+    <innerclass refid="class_quant_lib_1_1_pricing_period" prot="public">PricingPeriod</innerclass>
+    <innerclass refid="class_quant_lib_1_1_calendar" prot="public">Calendar</innerclass>
+    <innerclass refid="class_quant_lib_1_1_date" prot="public">Date</innerclass>
+    <innerclass refid="struct_quant_lib_1_1_date_generation" prot="public">DateGeneration</innerclass>
+    <innerclass refid="class_quant_lib_1_1_day_counter" prot="public">DayCounter</innerclass>
+    <innerclass refid="class_quant_lib_1_1_period" prot="public">Period</innerclass>
+    <innerclass refid="class_quant_lib_1_1_schedule" prot="public">Schedule</innerclass>
     <innergroup refid="group__calendars">Calendars</innergroup>
     <innergroup refid="group__daycounters">Day counters</innergroup>
       <sectiondef kind="enum">
@@ -331,7 +331,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>The concrete class <computeroutput><ref refid="class_quant_lib_1_1_date" kindref="compound">QuantLib::Date</ref></computeroutput> implements the concept of date. Its functionalities include:</para><para><itemizedlist>
+<para>The concrete class <computeroutput><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></computeroutput> implements the concept of date. Its functionalities include:</para><para><itemizedlist>
 <listitem><para>providing basic information such as weekday, day of the month, day of the year, month, and year;</para></listitem></itemizedlist>
 </para><para><itemizedlist>
 <listitem><para>comparing two dates to determine whether they are equal, or which one is the earlier or later, or the difference between them expressed in days;</para></listitem></itemizedlist>

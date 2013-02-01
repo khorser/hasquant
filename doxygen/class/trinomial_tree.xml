@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="trinomial_tree" kind="class" prot="public">
-    <compoundname>QuantLib::TrinomialTree</compoundname>
+    <compoundname>TrinomialTree</compoundname>
     <includes local="no">/methods/lattices/trinomialtree.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="trinomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0" prot="public" static="no">
@@ -35,12 +35,12 @@
         <location file="/methods/lattices/trinomialtree.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="trinomial_tree_1aa4bb94c633d219d75bb5b590fe6b23b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real dx</definition>
         <argsstring>(Size i) const </argsstring>
         <name>dx</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/methods/lattices/trinomialtree.hpp" line="48" bodyfile="/methods/lattices/trinomialtree.hpp" bodystart="48" bodyend="48"/>
@@ -53,65 +53,65 @@
         <location file="/methods/lattices/trinomialtree.hpp" line="49" bodyfile="/methods/lattices/trinomialtree.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="trinomial_tree_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size size</definition>
         <argsstring>(Size i) const </argsstring>
         <name>size</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/methods/lattices/trinomialtree.hpp" line="51" bodyfile="/methods/lattices/trinomialtree.hpp" bodystart="84" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="trinomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real underlying</definition>
         <argsstring>(Size i, Size index) const </argsstring>
         <name>underlying</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>index</declname>
         </param>
         <location file="/methods/lattices/trinomialtree.hpp" line="52" bodyfile="/methods/lattices/trinomialtree.hpp" bodystart="88" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="trinomial_tree_1a48f57733a612b5288a9fbd89d9b71072" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size descendant</definition>
         <argsstring>(Size i, Size index, Size branch) const </argsstring>
         <name>descendant</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>index</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>branch</declname>
         </param>
         <location file="/methods/lattices/trinomialtree.hpp" line="53" bodyfile="/methods/lattices/trinomialtree.hpp" bodystart="96" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="trinomial_tree_1aca88ad07031bcbdd6c191208c49f1042" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real probability</definition>
         <argsstring>(Size i, Size index, Size branch) const </argsstring>
         <name>probability</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>index</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>branch</declname>
         </param>
         <location file="/methods/lattices/trinomialtree.hpp" line="54" bodyfile="/methods/lattices/trinomialtree.hpp" bodystart="101" bodyend="103"/>

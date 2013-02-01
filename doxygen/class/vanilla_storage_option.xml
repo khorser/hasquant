@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="vanilla_storage_option" kind="class" prot="public">
-    <compoundname>QuantLib::VanillaStorageOption</compoundname>
+    <compoundname>VanillaStorageOption</compoundname>
     <includes local="no">/instruments/vanillastorageoption.hpp</includes>
-    <innerclass refid="vanilla_storage_option_1_1arguments" prot="public">QuantLib::VanillaStorageOption::arguments</innerclass>
+    <innerclass refid="vanilla_storage_option_1_1arguments" prot="public">VanillaStorageOption::arguments</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="vanilla_storage_option_1a4082442772cb2df54c98993cae338371" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -15,15 +15,15 @@
           <declname>ex</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>capacity</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>load</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>changeRate</declname>
         </param>
         <location file="/instruments/vanillastorageoption.hpp" line="43" bodyfile="/instruments/vanillastorageoption.hpp" bodystart="38" bodyend="43"/>

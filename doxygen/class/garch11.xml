@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="garch11" kind="class" prot="public">
-    <compoundname>QuantLib::Garch11</compoundname>
+    <compoundname>Garch11</compoundname>
     <includes local="no">/models/volatility/garch.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="garch11_1a5f96f517b814e7fa452aa77234f95d3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,15 +10,15 @@
         <argsstring>(Real a, Real b, Real vl)</argsstring>
         <name>Garch11</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>b</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>vl</declname>
         </param>
         <location file="/models/volatility/garch.hpp" line="40" bodyfile="/models/volatility/garch.hpp" bodystart="39" bodyend="40"/>
@@ -29,39 +29,39 @@
         <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;qs)</argsstring>
         <name>Garch11</name>
         <param>
-          <type>const TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; Volatility &gt; &amp;</type>
           <declname>qs</declname>
         </param>
         <location file="/models/volatility/garch.hpp" line="41" bodyfile="/models/volatility/garch.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="garch11_1a32fdfa0e49d602f4f56814ee4fcb0bd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <type>TimeSeries&lt; Volatility &gt;</type>
         <definition>TimeSeries&lt;Volatility&gt; calculate</definition>
         <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;quoteSeries)</argsstring>
         <name>calculate</name>
         <param>
-          <type>const TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; Volatility &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
         <location file="/models/volatility/garch.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="garch11_1a2639692cf9c864c3ea4a5e05a70ec6aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <type>TimeSeries&lt; Volatility &gt;</type>
         <definition>TimeSeries&lt;Volatility&gt; calculate</definition>
         <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;quoteSeries, Real, Real, Real)</argsstring>
         <name>calculate</name>
         <param>
-          <type>const TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; Volatility &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
         </param>
         <location file="/models/volatility/garch.hpp" line="49"/>
       </memberdef>
@@ -71,7 +71,7 @@
         <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;quoteSeries)</argsstring>
         <name>calibrate</name>
         <param>
-          <type>const TimeSeries&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <type>const TimeSeries&lt; Volatility &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
         <location file="/models/volatility/garch.hpp" line="51"/>

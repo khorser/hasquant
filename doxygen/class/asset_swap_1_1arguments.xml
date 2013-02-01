@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="asset_swap_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::AssetSwap::arguments</compoundname>
+    <compoundname>AssetSwap::arguments</compoundname>
     <includes local="no">/instruments/assetswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="asset_swap_1_1arguments_1ac087ed31c7c86f346a554482c05e01bd" prot="public" static="no" mutable="no">
@@ -19,14 +19,14 @@
         <location file="/instruments/assetswap.hpp" line="111" bodyfile="/instruments/assetswap.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="asset_swap_1_1arguments_1af3b796aad3df6d60ab2749eb66836af6" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; fixedCoupons</definition>
         <argsstring></argsstring>
         <name>fixedCoupons</name>
         <location file="/instruments/assetswap.hpp" line="112" bodyfile="/instruments/assetswap.hpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="asset_swap_1_1arguments_1af1b3c69bb089af944f809949cc9b5f34" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <type>std::vector&lt; Time &gt;</type>
         <definition>std::vector&lt;Time&gt; floatingAccrualTimes</definition>
         <argsstring></argsstring>
         <name>floatingAccrualTimes</name>
@@ -54,7 +54,7 @@
         <location file="/instruments/assetswap.hpp" line="116" bodyfile="/instruments/assetswap.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="asset_swap_1_1arguments_1a217747684dc5dfb5f77382787c63182e" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt;</type>
+        <type>std::vector&lt; Spread &gt;</type>
         <definition>std::vector&lt;Spread&gt; floatingSpreads</definition>
         <argsstring></argsstring>
         <name>floatingSpreads</name>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="zero_coupon_inflation_swap" kind="class" prot="public">
-    <compoundname>QuantLib::ZeroCouponInflationSwap</compoundname>
+    <compoundname>ZeroCouponInflationSwap</compoundname>
     <includes local="no">/instruments/zerocouponinflationswap.hpp</includes>
-    <innerclass refid="zero_coupon_inflation_swap_1_1arguments" prot="public">QuantLib::ZeroCouponInflationSwap::arguments</innerclass>
-    <innerclass refid="zero_coupon_inflation_swap_1_1engine" prot="public">QuantLib::ZeroCouponInflationSwap::engine</innerclass>
+    <innerclass refid="zero_coupon_inflation_swap_1_1arguments" prot="public">ZeroCouponInflationSwap::arguments</innerclass>
+    <innerclass refid="zero_coupon_inflation_swap_1_1engine" prot="public">ZeroCouponInflationSwap::engine</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -17,7 +17,7 @@
         <location file="/instruments/zerocouponinflationswap.hpp" line="88" bodyfile="/instruments/zerocouponinflationswap.hpp" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
@@ -45,7 +45,7 @@
         <location file="/instruments/zerocouponinflationswap.hpp" line="92" bodyfile="/instruments/zerocouponinflationswap.hpp" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1ac7cdb251791e6e4d12853badaa58da45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention fixedConvention</definition>
         <argsstring>() const </argsstring>
         <name>fixedConvention</name>
@@ -59,7 +59,7 @@
         <location file="/instruments/zerocouponinflationswap.hpp" line="96" bodyfile="/instruments/zerocouponinflationswap.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
@@ -96,14 +96,14 @@
         <location file="/instruments/zerocouponinflationswap.hpp" line="104" bodyfile="/instruments/zerocouponinflationswap.hpp" bodystart="104" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1a1ec9f557d6611208720dd1e39b7c750f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <type>BusinessDayConvention</type>
         <definition>BusinessDayConvention inflationConvention</definition>
         <argsstring>() const </argsstring>
         <name>inflationConvention</name>
         <location file="/instruments/zerocouponinflationswap.hpp" line="105" bodyfile="/instruments/zerocouponinflationswap.hpp" bodystart="105" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1a720acf11b744a6529b383940d01117a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg&amp; fixedLeg</definition>
         <argsstring>() const </argsstring>
         <name>fixedLeg</name>
@@ -112,7 +112,7 @@
         <location file="/instruments/zerocouponinflationswap.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1ab0f29d5c3f917ed7a34615719dcd24c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <type>const Leg &amp;</type>
         <definition>const Leg&amp; inflationLeg</definition>
         <argsstring>() const </argsstring>
         <name>inflationLeg</name>
@@ -124,21 +124,21 @@
       <sectiondef kind="user-defined">
       <header>Results</header>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1a36e1152928660bd46ffdcdfde8a70e6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
         <location file="/instruments/zerocouponinflationswap.hpp" line="122"/>
       </memberdef>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1ac075884f1de71118f4d84b558bf35d30" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real inflationLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>inflationLegNPV</name>
         <location file="/instruments/zerocouponinflationswap.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="zero_coupon_inflation_swap_1a66129d40442a389121feb6e330d54f79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
@@ -170,7 +170,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -186,7 +186,7 @@
           <declname>fixCalendar</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>fixConvention</declname>
         </param>
         <param>
@@ -194,7 +194,7 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>fixedRate</declname>
         </param>
         <param>
@@ -216,9 +216,9 @@
           <defval>Calendar()</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>infConvention</declname>
-          <defval><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref>()</defval>
+          <defval>BusinessDayConvention()</defval>
         </param>
         <location file="/instruments/zerocouponinflationswap.hpp" line="83"/>
       </memberdef>

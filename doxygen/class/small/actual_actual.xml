@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="actual_actual" kind="class" prot="public">
-    <compoundname>QuantLib::ActualActual</compoundname>
+    <compoundname>ActualActual</compoundname>
     <includes local="no">/time/daycounters/actualactual.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="actual_actual_1a63f911c95b83cbc4ac0d194f99c67578" prot="public" static="no">

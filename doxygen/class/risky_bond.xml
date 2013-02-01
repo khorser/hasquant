@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="risky_bond" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::RiskyBond</compoundname>
+    <compoundname>RiskyBond</compoundname>
     <includes local="no">/experimental/credit/riskybond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="risky_bond_1a1392fb8c078ecf62236ec2558c44f3a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -18,7 +18,7 @@
           <declname>ccy</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
         </param>
         <param>
@@ -53,14 +53,14 @@
         <location file="/experimental/credit/riskybond.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="risky_bond_1a5c5584164976b30f71fd4d47866a6a7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real notional</definition>
         <argsstring>(Date date=Date::minDate()) const =0</argsstring>
         <name>notional</name>
         <param>
           <type>Date</type>
           <declname>date</declname>
-          <defval><ref refid="date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
+          <defval>Date::minDate()</defval>
         </param>
         <location file="/experimental/credit/riskybond.hpp" line="58"/>
       </memberdef>
@@ -93,14 +93,14 @@
         <location file="/experimental/credit/riskybond.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="risky_bond_1a85d6833ce9d7b23841364e286f1ca08d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real riskfreeNPV</definition>
         <argsstring>() const </argsstring>
         <name>riskfreeNPV</name>
         <location file="/experimental/credit/riskybond.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="risky_bond_1ad017b0af4b1c00e985e4cd1aaff9fc59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real totalFutureFlows</definition>
         <argsstring>() const </argsstring>
         <name>totalFutureFlows</name>
@@ -135,7 +135,7 @@
         <location file="/experimental/credit/riskybond.hpp" line="68" bodyfile="/experimental/credit/riskybond.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="risky_bond_1ad653c525e655dafe793f00ad3babf964" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real recoveryRate</definition>
         <argsstring>() const </argsstring>
         <name>recoveryRate</name>

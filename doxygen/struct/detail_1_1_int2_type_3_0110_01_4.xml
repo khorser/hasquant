@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1_int2_type_3_0110_01_4" kind="struct" prot="public">
-    <compoundname>QuantLib::detail::Int2Type&lt; 10 &gt;</compoundname>
+    <compoundname>detail::Int2Type&lt; 10 &gt;</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="detail_1_1_int2_type_3_0110_01_4_1aa082c8fc6a9bcf122e9595c738242bab" prot="public" static="no">
         <type>cubic_spline_10</type>

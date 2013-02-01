@@ -3,36 +3,36 @@
   <compounddef id="group__processes" kind="group">
     <compoundname>processes</compoundname>
     <title>Stochastic processes</title>
-    <innerclass refid="class_quant_lib_1_1_extended_black_scholes_merton_process" prot="public">QuantLib::ExtendedBlackScholesMertonProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" prot="public">QuantLib::ExtendedOrnsteinUhlenbeckProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" prot="public">QuantLib::ExtOUWithJumpsProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_geman_roncoroni_process" prot="public">QuantLib::GemanRoncoroniProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process" prot="public">QuantLib::GeneralizedOrnsteinUhlenbeckProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_variance_gamma_process" prot="public">QuantLib::VarianceGammaProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_libor_forward_model_process" prot="public">QuantLib::LiborForwardModelProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_bates_process" prot="public">QuantLib::BatesProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_generalized_black_scholes_process" prot="public">QuantLib::GeneralizedBlackScholesProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_black_scholes_process" prot="public">QuantLib::BlackScholesProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_black_scholes_merton_process" prot="public">QuantLib::BlackScholesMertonProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_black_process" prot="public">QuantLib::BlackProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_garman_kohlagen_process" prot="public">QuantLib::GarmanKohlagenProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_end_euler_discretization" prot="public">QuantLib::EndEulerDiscretization</innerclass>
-    <innerclass refid="class_quant_lib_1_1_euler_discretization" prot="public">QuantLib::EulerDiscretization</innerclass>
-    <innerclass refid="class_quant_lib_1_1_forward_measure_process" prot="public">QuantLib::ForwardMeasureProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_forward_measure_process1_d" prot="public">QuantLib::ForwardMeasureProcess1D</innerclass>
-    <innerclass refid="class_quant_lib_1_1_g2_process" prot="public">QuantLib::G2Process</innerclass>
-    <innerclass refid="class_quant_lib_1_1_g2_forward_process" prot="public">QuantLib::G2ForwardProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_geometric_brownian_motion_process" prot="public">QuantLib::GeometricBrownianMotionProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process" prot="public">QuantLib::GJRGARCHProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_heston_process" prot="public">QuantLib::HestonProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_hull_white_process" prot="public">QuantLib::HullWhiteProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_hull_white_forward_process" prot="public">QuantLib::HullWhiteForwardProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" prot="public">QuantLib::HybridHestonHullWhiteProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_merton76_process" prot="public">QuantLib::Merton76Process</innerclass>
-    <innerclass refid="class_quant_lib_1_1_ornstein_uhlenbeck_process" prot="public">QuantLib::OrnsteinUhlenbeckProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_square_root_process" prot="public">QuantLib::SquareRootProcess</innerclass>
-    <innerclass refid="class_quant_lib_1_1_stochastic_process_array" prot="public">QuantLib::StochasticProcessArray</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_black_scholes_merton_process" prot="public">ExtendedBlackScholesMertonProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" prot="public">ExtendedOrnsteinUhlenbeckProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" prot="public">ExtOUWithJumpsProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_geman_roncoroni_process" prot="public">GemanRoncoroniProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process" prot="public">GeneralizedOrnsteinUhlenbeckProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_variance_gamma_process" prot="public">VarianceGammaProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_libor_forward_model_process" prot="public">LiborForwardModelProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_bates_process" prot="public">BatesProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_generalized_black_scholes_process" prot="public">GeneralizedBlackScholesProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_black_scholes_process" prot="public">BlackScholesProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_black_scholes_merton_process" prot="public">BlackScholesMertonProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_black_process" prot="public">BlackProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_garman_kohlagen_process" prot="public">GarmanKohlagenProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_end_euler_discretization" prot="public">EndEulerDiscretization</innerclass>
+    <innerclass refid="class_quant_lib_1_1_euler_discretization" prot="public">EulerDiscretization</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward_measure_process" prot="public">ForwardMeasureProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward_measure_process1_d" prot="public">ForwardMeasureProcess1D</innerclass>
+    <innerclass refid="class_quant_lib_1_1_g2_process" prot="public">G2Process</innerclass>
+    <innerclass refid="class_quant_lib_1_1_g2_forward_process" prot="public">G2ForwardProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_geometric_brownian_motion_process" prot="public">GeometricBrownianMotionProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process" prot="public">GJRGARCHProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_heston_process" prot="public">HestonProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_hull_white_process" prot="public">HullWhiteProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_hull_white_forward_process" prot="public">HullWhiteForwardProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" prot="public">HybridHestonHullWhiteProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_merton76_process" prot="public">Merton76Process</innerclass>
+    <innerclass refid="class_quant_lib_1_1_ornstein_uhlenbeck_process" prot="public">OrnsteinUhlenbeckProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_square_root_process" prot="public">SquareRootProcess</innerclass>
+    <innerclass refid="class_quant_lib_1_1_stochastic_process_array" prot="public">StochasticProcessArray</innerclass>
     <detaileddescription>
-<para>The classes <computeroutput><ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">QuantLib::StochasticProcess</ref></computeroutput> and <computeroutput><ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">QuantLib::StochasticProcess1D</ref></computeroutput> provide the interface for a generic stochastic process. A number of specific processes is contained in the <computeroutput>ql/Processes</computeroutput> directory. </para>    </detaileddescription>
+<para>The classes <computeroutput><ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref></computeroutput> and <computeroutput><ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref></computeroutput> provide the interface for a generic stochastic process. A number of specific processes is contained in the <computeroutput>ql/Processes</computeroutput> directory. </para>    </detaileddescription>
   </compounddef>
 </doxygen>

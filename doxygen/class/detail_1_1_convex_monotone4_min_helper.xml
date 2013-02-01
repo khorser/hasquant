@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1_convex_monotone4_min_helper" kind="class" prot="public">
-    <compoundname>QuantLib::detail::ConvexMonotone4MinHelper</compoundname>
+    <compoundname>detail::ConvexMonotone4MinHelper</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="detail_1_1_convex_monotone4_min_helper_1af908808f8c1763f7c0dcb9637cc447d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -9,53 +9,53 @@
         <argsstring>(Real xPrev, Real xNext, Real gPrev, Real gNext, Real fAverage, Real eta4, Real prevPrimitive)</argsstring>
         <name>ConvexMonotone4MinHelper</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xPrev</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xNext</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gPrev</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gNext</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>fAverage</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>eta4</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>prevPrimitive</declname>
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="279" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="273" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_convex_monotone4_min_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>(Real x) const </argsstring>
         <name>value</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="298" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="298" bodyend="312"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_convex_monotone4_min_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real primitive</definition>
         <argsstring>(Real x) const </argsstring>
         <name>primitive</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="314" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="314" bodyend="332"/>

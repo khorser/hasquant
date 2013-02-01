@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="commodity_pricing_helper" kind="class" prot="public">
-    <compoundname>QuantLib::CommodityPricingHelper</compoundname>
+    <compoundname>CommodityPricingHelper</compoundname>
     <includes local="no">/experimental/commodities/commoditypricinghelpers.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="commodity_pricing_helper_1af861a5d223ce4e1e56ee136edf4762e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="commodity_pricing_helper_1ad61668c14d55c85c52b018d0eb8d4079" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real calculateFxConversionFactor</definition>
         <argsstring>(const Currency &amp;fromCurrency, const Currency &amp;toCurrency, const Date &amp;evaluationDate)</argsstring>
         <name>calculateFxConversionFactor</name>
@@ -33,7 +33,7 @@
         <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="42" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="79" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="commodity_pricing_helper_1a2045c4b9d40cefb75dfb00bf37c96161" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real calculateUomConversionFactor</definition>
         <argsstring>(const CommodityType &amp;commodityType, const UnitOfMeasure &amp;fromUnitOfMeasure, const UnitOfMeasure &amp;toUnitOfMeasure)</argsstring>
         <name>calculateUomConversionFactor</name>
@@ -52,7 +52,7 @@
         <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="47" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="65" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="commodity_pricing_helper_1ac28d20f70729cdee721c0e56544deb1e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real calculateUnitCost</definition>
         <argsstring>(const CommodityType &amp;commodityType, const CommodityUnitCost &amp;unitCost, const Currency &amp;baseCurrency, const UnitOfMeasure &amp;baseUnitOfMeasure, const Date &amp;evaluationDate)</argsstring>
         <name>calculateUnitCost</name>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="amortizing_payment" kind="class" prot="public">
-    <compoundname>QuantLib::AmortizingPayment</compoundname>
+    <compoundname>AmortizingPayment</compoundname>
     <includes local="no">/cashflows/simplecashflow.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="amortizing_payment_1a8e8dd8e42fc9cca00cc277c6cb0298d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Real amount, const Date &amp;date)</argsstring>
         <name>AmortizingPayment</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>amount</declname>
         </param>
         <param>

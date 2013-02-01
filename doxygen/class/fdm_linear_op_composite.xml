@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_linear_op_composite" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::FdmLinearOpComposite</compoundname>
+    <compoundname>FdmLinearOpComposite</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fdm_linear_op_composite_1a154fc82502dc7257b459b1f13e2bc6b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>virtual Size size</definition>
         <argsstring>() const =0</argsstring>
         <name>size</name>
@@ -16,11 +16,11 @@
         <argsstring>(Time t1, Time t2)=0</argsstring>
         <name>setTime</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t2</declname>
         </param>
         <briefdescription>
@@ -44,7 +44,7 @@
         <argsstring>(Size direction, const Array &amp;r) const =0</argsstring>
         <name>apply_direction</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>direction</declname>
         </param>
         <param>
@@ -59,7 +59,7 @@
         <argsstring>(Size direction, const Array &amp;r, Real s) const =0</argsstring>
         <name>solve_splitting</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>direction</declname>
         </param>
         <param>
@@ -67,7 +67,7 @@
           <declname>r</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="45"/>
@@ -82,7 +82,7 @@
           <declname>r</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="47"/>

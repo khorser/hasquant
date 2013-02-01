@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="line_search" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::LineSearch</compoundname>
+    <compoundname>LineSearch</compoundname>
     <includes local="no">/math/optimization/linesearch.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="line_search_1abf6329e7e510004f936417b572cd3feb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Real=0.0)</argsstring>
         <name>LineSearch</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <defval>0.0</defval>
         </param>
         <briefdescription>
@@ -36,7 +36,7 @@
         <location file="/math/optimization/linesearch.hpp" line="47" bodyfile="/math/optimization/linesearch.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="line_search_1af69b05a05ba75aa93dad2aa580f192d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real lastFunctionValue</definition>
         <argsstring>()</argsstring>
         <name>lastFunctionValue</name>
@@ -54,7 +54,7 @@
         <location file="/math/optimization/linesearch.hpp" line="51" bodyfile="/math/optimization/linesearch.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="line_search_1a54f1c9dd805235c94fb4145a860411d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real lastGradientNorm2</definition>
         <argsstring>()</argsstring>
         <name>lastGradientNorm2</name>
@@ -70,7 +70,7 @@
         <location file="/math/optimization/linesearch.hpp" line="55" bodyfile="/math/optimization/linesearch.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="line_search_1a97d8cb294aaa9a7bc88678370e80f31e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real operator()</definition>
         <argsstring>(Problem &amp;P, EndCriteria::Type &amp;ecType, const EndCriteria &amp;, const Real t_ini)=0</argsstring>
         <name>operator()</name>
@@ -86,7 +86,7 @@
           <type>const EndCriteria &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>t_ini</declname>
         </param>
         <briefdescription>
@@ -94,7 +94,7 @@
         <location file="/math/optimization/linesearch.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="line_search_1a5014094d4595b63fad08d361f70bea98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real update</definition>
         <argsstring>(Array &amp;params, const Array &amp;direction, Real beta, const Constraint &amp;constraint)</argsstring>
         <name>update</name>
@@ -107,7 +107,7 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>beta</declname>
         </param>
         <param>

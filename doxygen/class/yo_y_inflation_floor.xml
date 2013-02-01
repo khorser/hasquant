@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="yo_y_inflation_floor" kind="class" prot="public">
-    <compoundname>QuantLib::YoYInflationFloor</compoundname>
+    <compoundname>YoYInflationFloor</compoundname>
     <includes local="no">/instruments/inflationcapfloor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="yo_y_inflation_floor_1a09a8525ad01969eba8b98e1843c9794a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(const Leg &amp;yoyLeg, const std::vector&lt; Rate &gt; &amp;exerciseRates)</argsstring>
         <name>YoYInflationFloor</name>
         <param>
-          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <type>const Leg &amp;</type>
           <declname>yoyLeg</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>exerciseRates</declname>
         </param>
         <location file="/instruments/inflationcapfloor.hpp" line="119" bodyfile="/instruments/inflationcapfloor.hpp" bodystart="116" bodyend="119"/>

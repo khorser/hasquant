@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_black_scholes_solver" kind="class" prot="public">
-    <compoundname>QuantLib::FdmBlackScholesSolver</compoundname>
+    <compoundname>FdmBlackScholesSolver</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="fdm_black_scholes_solver_1a062ac6697ede4ec0ad571e1557c8dd59" prot="public" static="no">
         <type>std::vector&lt; boost::shared_ptr&lt; FdmDirichletBoundary &gt; &gt;</type>
@@ -22,7 +22,7 @@
           <declname>process</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -40,52 +40,52 @@
           <defval>false</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>illegalLocalVolOverwrite</declname>
-          <defval>-Null&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>-Null&lt; Real &gt;()</defval>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="fdm_black_scholes_solver_1ac135bb3ca4f704218ebcc70c1dffeef3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real valueAt</definition>
         <argsstring>(Real s) const </argsstring>
         <name>valueAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="fdm_black_scholes_solver_1a8b0fc7774c2f2b044382fec8eb106395" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real deltaAt</definition>
         <argsstring>(Real s) const </argsstring>
         <name>deltaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="fdm_black_scholes_solver_1aad84cbb24ad994902f176e28a82c899e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gammaAt</definition>
         <argsstring>(Real s) const </argsstring>
         <name>gammaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="fdm_black_scholes_solver_1a7e97a9498f2ad1d643305f505d933a1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real thetaAt</definition>
         <argsstring>(Real s) const </argsstring>
         <name>thetaAt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>s</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="55"/>

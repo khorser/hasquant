@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="convertible_bond_1_1option_1_1arguments" kind="class" prot="public">
-    <compoundname>QuantLib::ConvertibleBond::option::arguments</compoundname>
+    <compoundname>ConvertibleBond::option::arguments</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="convertible_bond_1_1option_1_1arguments_1a622b37ef6d3405018df2cc51486385c1" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real conversionRatio</definition>
         <argsstring></argsstring>
         <name>conversionRatio</name>
@@ -39,21 +39,21 @@
         <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="195" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="195" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="convertible_bond_1_1option_1_1arguments_1acd5424754e3f8c0f78ff950954b23e7b" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Callability::Type</ref> &gt;</type>
+        <type>std::vector&lt; Callability::Type &gt;</type>
         <definition>std::vector&lt;Callability::Type&gt; callabilityTypes</definition>
         <argsstring></argsstring>
         <name>callabilityTypes</name>
         <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="196" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="196" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="convertible_bond_1_1option_1_1arguments_1ae21eb9aefd3d60d22918bea9f4909d3a" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; callabilityPrices</definition>
         <argsstring></argsstring>
         <name>callabilityPrices</name>
         <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="197" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="convertible_bond_1_1option_1_1arguments_1a96ee5b280321bdb70d4fa75ace56f896" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; callabilityTriggers</definition>
         <argsstring></argsstring>
         <name>callabilityTriggers</name>
@@ -67,7 +67,7 @@
         <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="199" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="199" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="convertible_bond_1_1option_1_1arguments_1a52aaf336ba6c7b103e373fa37508a241" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; couponAmounts</definition>
         <argsstring></argsstring>
         <name>couponAmounts</name>
@@ -88,14 +88,14 @@
         <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="202" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="202" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="convertible_bond_1_1option_1_1arguments_1a93f9d5dd85d395e9ae1ab204d53ba89f" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <type>Natural</type>
         <definition>Natural settlementDays</definition>
         <argsstring></argsstring>
         <name>settlementDays</name>
         <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="204" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="204" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="convertible_bond_1_1option_1_1arguments_1a340776950e7a04325cff7db8034c8851" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real redemption</definition>
         <argsstring></argsstring>
         <name>redemption</name>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="ornstein_uhlenbeck_process" kind="class" prot="public">
-    <compoundname>QuantLib::OrnsteinUhlenbeckProcess</compoundname>
+    <compoundname>OrnsteinUhlenbeckProcess</compoundname>
     <includes local="no">/processes/ornsteinuhlenbeckprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="ornstein_uhlenbeck_process_1a6a45086f57b05b580f652b091a4d0113" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,41 +10,41 @@
         <argsstring>(Real speed, Volatility vol, Real x0=0.0, Real level=0.0)</argsstring>
         <name>OrnsteinUhlenbeckProcess</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>speed</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>vol</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x0</declname>
           <defval>0.0</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>level</declname>
           <defval>0.0</defval>
         </param>
         <location file="/processes/ornsteinuhlenbeckprocess.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="ornstein_uhlenbeck_process_1aab3a2b9fbc4df8e42dcf97c953347719" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real speed</definition>
         <argsstring>() const </argsstring>
         <name>speed</name>
         <location file="/processes/ornsteinuhlenbeckprocess.hpp" line="61" bodyfile="/processes/ornsteinuhlenbeckprocess.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="ornstein_uhlenbeck_process_1a9421e902ef410ac829bb244e14b4f81b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real volatility</definition>
         <argsstring>() const </argsstring>
         <name>volatility</name>
         <location file="/processes/ornsteinuhlenbeckprocess.hpp" line="62" bodyfile="/processes/ornsteinuhlenbeckprocess.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="ornstein_uhlenbeck_process_1a8fe47ac970c2acb1327f005d3c0a189a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real level</definition>
         <argsstring>() const </argsstring>
         <name>level</name>

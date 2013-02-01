@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="pricing_engine_1_1arguments" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::PricingEngine::arguments</compoundname>
+    <compoundname>PricingEngine::arguments</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

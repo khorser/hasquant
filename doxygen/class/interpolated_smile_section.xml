@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="interpolated_smile_section" kind="class" prot="public">
-    <compoundname>QuantLib::InterpolatedSmileSection</compoundname>
+    <compoundname>InterpolatedSmileSection</compoundname>
     <templateparamlist>
       <param>
         <type>class Interpolator</type>
@@ -14,11 +14,11 @@
         <argsstring>(Time expiryTime, const std::vector&lt; Rate &gt; &amp;strikes, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;stdDevHandles, const Handle&lt; Quote &gt; &amp;atmLevel, const Interpolator &amp;interpolator=Interpolator(), const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>InterpolatedSmileSection</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>expiryTime</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>
@@ -47,19 +47,19 @@
         <argsstring>(Time expiryTime, const std::vector&lt; Rate &gt; &amp;strikes, const std::vector&lt; Real &gt; &amp;stdDevs, Real atmLevel, const Interpolator &amp;interpolator=Interpolator(), const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>InterpolatedSmileSection</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>expiryTime</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>stdDevs</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>atmLevel</declname>
         </param>
         <param>
@@ -84,7 +84,7 @@
           <declname>d</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>
@@ -122,15 +122,15 @@
           <declname>d</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>stdDevs</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>atmLevel</declname>
         </param>
         <param>
@@ -158,43 +158,43 @@
         <location file="/termstructures/volatility/interpolatedsmilesection.hpp" line="71" bodyfile="/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="184" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real varianceImpl</definition>
         <argsstring>(Rate strike) const </argsstring>
         <name>varianceImpl</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <location file="/termstructures/volatility/interpolatedsmilesection.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_smile_section_1af871b9faf83959bd9e9a5e3f96fabc45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility volatilityImpl</definition>
         <argsstring>(Rate strike) const </argsstring>
         <name>volatilityImpl</name>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>strike</declname>
         </param>
         <location file="/termstructures/volatility/interpolatedsmilesection.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
         <location file="/termstructures/volatility/interpolatedsmilesection.hpp" line="74" bodyfile="/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
         <location file="/termstructures/volatility/interpolatedsmilesection.hpp" line="75" bodyfile="/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="interpolated_smile_section_1ad8f0f9c721168150e102eba19df26273" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real atmLevel</definition>
         <argsstring>() const </argsstring>
         <name>atmLevel</name>

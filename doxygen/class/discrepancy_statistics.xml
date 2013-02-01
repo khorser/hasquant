@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="discrepancy_statistics" kind="class" prot="public">
-    <compoundname>QuantLib::DiscrepancyStatistics</compoundname>
+    <compoundname>DiscrepancyStatistics</compoundname>
     <includes local="no">/math/statistics/discrepancystatistics.hpp</includes>
       <sectiondef kind="user-defined">
       <header>1-dimensional inspectors</header>
       <memberdef kind="function" id="discrepancy_statistics_1a122ecc93c99621dc327be1f4dec2849a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real discrepancy</definition>
         <argsstring>() const </argsstring>
         <name>discrepancy</name>
@@ -29,7 +29,7 @@
         <argsstring>(Size dimension)</argsstring>
         <name>DiscrepancyStatistics</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>dimension</declname>
         </param>
         <location file="/math/statistics/discrepancystatistics.hpp" line="39" bodyfile="/math/statistics/discrepancystatistics.hpp" bodystart="103" bodyend="106"/>
@@ -49,7 +49,7 @@
           <declname>sample</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>weight</declname>
           <defval>1.0</defval>
         </param>
@@ -74,7 +74,7 @@
           <declname>end</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>weight</declname>
           <defval>1.0</defval>
         </param>
@@ -86,7 +86,7 @@
         <argsstring>(Size dimension=0)</argsstring>
         <name>reset</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>dimension</declname>
           <defval>0</defval>
         </param>

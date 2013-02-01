@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="coterminal_swap_curve_state" kind="class" prot="public">
-    <compoundname>QuantLib::CoterminalSwapCurveState</compoundname>
+    <compoundname>CoterminalSwapCurveState</compoundname>
     <includes local="no">/models/marketmodels/curvestates/coterminalswapcurvestate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
@@ -11,11 +11,11 @@
         <argsstring>(const std::vector&lt; Rate &gt; &amp;swapRates, Size firstValidIndex=0)</argsstring>
         <name>setOnCoterminalSwapRates</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Rate &gt; &amp;</type>
           <declname>swapRates</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>firstValidIndex</declname>
           <defval>0</defval>
         </param>
@@ -29,7 +29,7 @@
         <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes)</argsstring>
         <name>CoterminalSwapCurveState</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
         <location file="/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="54"/>

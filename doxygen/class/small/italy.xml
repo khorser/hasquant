@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="italy" kind="class" prot="public">
-    <compoundname>QuantLib::Italy</compoundname>
+    <compoundname>Italy</compoundname>
     <includes local="no">/time/calendars/italy.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="italy_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
@@ -28,7 +28,7 @@
         <argsstring>(Market market=Settlement)</argsstring>
         <name>Italy</name>
         <param>
-          <type><ref refid="italy_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <type>Market</type>
           <declname>market</declname>
           <defval>Settlement</defval>
         </param>

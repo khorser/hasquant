@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="f_f_t_engine" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::FFTEngine</compoundname>
+    <compoundname>FFTEngine</compoundname>
     <includes local="no">/experimental/variancegamma/fftengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="f_f_t_engine_1aa0711fbc7eaf022530829206e3e8be5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -14,7 +14,7 @@
           <declname>process</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>logStrikeSpacing</declname>
         </param>
         <location file="/experimental/variancegamma/fftengine.hpp" line="51"/>

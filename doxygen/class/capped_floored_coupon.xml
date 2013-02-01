@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="capped_floored_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::CappedFlooredCoupon</compoundname>
+    <compoundname>CappedFlooredCoupon</compoundname>
     <includes local="no">/cashflows/capflooredcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
@@ -42,19 +42,19 @@
           <declname>underlying</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>cap</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>floor</declname>
-          <defval>Null&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval>Null&lt; Rate &gt;()</defval>
         </param>
         <location file="/cashflows/capflooredcoupon.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="capped_floored_coupon_1a3769052f73e0705a1af285e974fae169" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate cap</definition>
         <argsstring>() const </argsstring>
         <name>cap</name>
@@ -63,7 +63,7 @@
         <location file="/cashflows/capflooredcoupon.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="capped_floored_coupon_1a2982a6603a5536c983895d191b358d70" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate floor</definition>
         <argsstring>() const </argsstring>
         <name>floor</name>
@@ -72,7 +72,7 @@
         <location file="/cashflows/capflooredcoupon.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="capped_floored_coupon_1a1f3d0a8bc74dac1782660657055382c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate effectiveCap</definition>
         <argsstring>() const </argsstring>
         <name>effectiveCap</name>
@@ -81,7 +81,7 @@
         <location file="/cashflows/capflooredcoupon.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="capped_floored_coupon_1a367019171b0d6cd2d82334d19650367a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>Rate effectiveFloor</definition>
         <argsstring>() const </argsstring>
         <name>effectiveFloor</name>

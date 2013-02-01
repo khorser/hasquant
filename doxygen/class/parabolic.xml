@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="parabolic" kind="class" prot="public">
-    <compoundname>QuantLib::Parabolic</compoundname>
+    <compoundname>Parabolic</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="parabolic_1a5968ed87cb4180b1573c81099af9f1c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="black_vol_term_structure" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::BlackVolTermStructure</compoundname>
+    <compoundname>BlackVolTermStructure</compoundname>
     <includes local="no">/termstructures/volatility/equityfx/blackvoltermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -16,9 +16,9 @@
           <declname>cal</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -26,7 +26,7 @@
           <defval>DayCounter()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000118"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000118"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="black_vol_term_structure_1a42ae80b78fc243101c7134e47ade1e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -35,9 +35,9 @@
         <argsstring>(BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>BlackVolTermStructure</name>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -47,7 +47,7 @@
         <briefdescription>
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000119"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000119"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="black_vol_term_structure_1a7cd5abc402b09875a5794f1700078439" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -65,9 +65,9 @@
           <defval>Calendar()</defval>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -84,16 +84,16 @@
         <argsstring>(Natural settlementDays, const Calendar &amp;, BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>BlackVolTermStructure</name>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
           <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>bdc</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>const DayCounter &amp;</type>
@@ -108,7 +108,7 @@
       <sectiondef kind="user-defined">
       <header>Black Volatility</header>
       <memberdef kind="function" id="black_vol_term_structure_1a877a9cfe6c66ebb041f5f45445b1f964" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility blackVol</definition>
         <argsstring>(const Date &amp;maturity, Real strike, bool extrapolate=false) const </argsstring>
         <name>blackVol</name>
@@ -117,7 +117,7 @@
           <declname>maturity</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -130,16 +130,16 @@
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="80" bodyfile="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" bodystart="247" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="black_vol_term_structure_1ad333e6368f943b214f8bd89aadc2870a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility blackVol</definition>
         <argsstring>(Time maturity, Real strike, bool extrapolate=false) const </argsstring>
         <name>blackVol</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -152,7 +152,7 @@
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="84" bodyfile="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" bodystart="256" bodyend="262"/>
       </memberdef>
       <memberdef kind="function" id="black_vol_term_structure_1a71236c422aa029f294d3ffd9f8fe224d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackVariance</definition>
         <argsstring>(const Date &amp;maturity, Real strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
@@ -161,7 +161,7 @@
           <declname>maturity</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -174,16 +174,16 @@
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="88" bodyfile="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" bodystart="264" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="black_vol_term_structure_1a8bd17bff9748bf898e27defb4e2b572a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackVariance</definition>
         <argsstring>(Time maturity, Real strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -196,7 +196,7 @@
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="92" bodyfile="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" bodystart="273" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="black_vol_term_structure_1a527dc394ecc7189b236caa91c9bf7659" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility blackForwardVol</definition>
         <argsstring>(const Date &amp;date1, const Date &amp;date2, Real strike, bool extrapolate=false) const </argsstring>
         <name>blackForwardVol</name>
@@ -209,7 +209,7 @@
           <declname>date2</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -222,20 +222,20 @@
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="black_vol_term_structure_1a79d4c30c7b2dc4ea4a0ecd8e1b2fba2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <type>Volatility</type>
         <definition>Volatility blackForwardVol</definition>
         <argsstring>(Time time1, Time time2, Real strike, bool extrapolate=false) const </argsstring>
         <name>blackForwardVol</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>time1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>time2</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -248,7 +248,7 @@
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="black_vol_term_structure_1a12c5024b13b2af38cc08894dff1cd5a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackForwardVariance</definition>
         <argsstring>(const Date &amp;date1, const Date &amp;date2, Real strike, bool extrapolate=false) const </argsstring>
         <name>blackForwardVariance</name>
@@ -261,7 +261,7 @@
           <declname>date2</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
@@ -274,20 +274,20 @@
         <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="black_vol_term_structure_1a08e2e56c355ca48b478fbfa2193694bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real blackForwardVariance</definition>
         <argsstring>(Time time1, Time time2, Real strike, bool extrapolate=false) const </argsstring>
         <name>blackForwardVariance</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>time1</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>time2</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>

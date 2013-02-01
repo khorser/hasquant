@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="default_event" kind="class" prot="public">
-    <compoundname>QuantLib::DefaultEvent</compoundname>
+    <compoundname>DefaultEvent</compoundname>
     <includes local="no">/experimental/credit/defaultevent.hpp</includes>
-    <innerclass refid="default_event_1_1_default_settlement" prot="public">QuantLib::DefaultEvent::DefaultSettlement</innerclass>
+    <innerclass refid="default_event_1_1_default_settlement" prot="public">DefaultEvent::DefaultSettlement</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="default_event_1a538254ee240ed75fde17e25d55c65c1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -23,7 +23,7 @@
           <declname>curr</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <type>Seniority</type>
           <declname>bondsSen</declname>
         </param>
         <param>
@@ -32,7 +32,7 @@
           <defval>Null&lt; Date &gt;()</defval>
         </param>
         <param>
-          <type>const std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::map&lt; Seniority, Real &gt; &amp;</type>
           <declname>recoveryRates</declname>
           <defval>rate_map()</defval>
         </param>
@@ -58,7 +58,7 @@
           <declname>curr</declname>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <type>Seniority</type>
           <declname>bondsSen</declname>
         </param>
         <param>
@@ -67,7 +67,7 @@
           <defval>Null&lt; Date &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
           <defval>0.4</defval>
         </param>
@@ -120,7 +120,7 @@
         <location file="/experimental/credit/defaultevent.hpp" line="126" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="default_event_1a147fb3038f22fa7a4712735336e744e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+        <type>Seniority</type>
         <definition>Seniority eventSeniority</definition>
         <argsstring>() const </argsstring>
         <name>eventSeniority</name>
@@ -129,12 +129,12 @@
         <location file="/experimental/credit/defaultevent.hpp" line="130" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="default_event_1a3e74393b4a53bec2a028d1c24600951c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real recoveryRate</definition>
         <argsstring>(Seniority seniority) const </argsstring>
         <name>recoveryRate</name>
         <param>
-          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <type>Seniority</type>
           <declname>seniority</declname>
         </param>
         <detaileddescription>

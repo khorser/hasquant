@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="eur_libor_swap_ifr_fix" kind="class" prot="public">
-    <compoundname>QuantLib::EurLiborSwapIfrFix</compoundname>
+    <compoundname>EurLiborSwapIfrFix</compoundname>
     <includes local="no">/indexes/swap/eurliborswap.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="eur_libor_swap_ifr_fix_1abd57d7a00495ad9297ec3fa3c931a5cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

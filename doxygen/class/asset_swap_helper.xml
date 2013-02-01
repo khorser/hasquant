@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="asset_swap_helper" kind="class" prot="public">
-    <compoundname>QuantLib::AssetSwapHelper</compoundname>
+    <compoundname>AssetSwapHelper</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="asset_swap_helper_1a57f70b6981a20fc936aeb38d1499b000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,7 +17,7 @@
           <declname>tenor</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>settlementDays</declname>
         </param>
         <param>
@@ -29,7 +29,7 @@
           <declname>fixedPeriod</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>fixedConvention</declname>
         </param>
         <param>
@@ -41,7 +41,7 @@
           <declname>floatPeriod</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>floatConvention</declname>
         </param>
         <param>
@@ -49,7 +49,7 @@
           <declname>floatDayCount</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>recoveryRate</declname>
         </param>
         <param>
@@ -64,7 +64,7 @@
         <location file="/experimental/credit/riskyassetswap.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="asset_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real impliedQuote</definition>
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>

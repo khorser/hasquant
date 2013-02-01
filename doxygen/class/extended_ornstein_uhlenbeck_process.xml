@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="extended_ornstein_uhlenbeck_process" kind="class" prot="public">
-    <compoundname>QuantLib::ExtendedOrnsteinUhlenbeckProcess</compoundname>
+    <compoundname>ExtendedOrnsteinUhlenbeckProcess</compoundname>
     <includes local="no">/experimental/processes/extendedornsteinuhlenbeckprocess.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess interface</header>
       <memberdef kind="function" id="extended_ornstein_uhlenbeck_process_1aab3a2b9fbc4df8e42dcf97c953347719" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real speed</definition>
         <argsstring>() const </argsstring>
         <name>speed</name>
         <location file="/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="extended_ornstein_uhlenbeck_process_1a9421e902ef410ac829bb244e14b4f81b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real volatility</definition>
         <argsstring>() const </argsstring>
         <name>volatility</name>
@@ -42,19 +42,19 @@
         <argsstring>(Real speed, Volatility sigma, Real x0, const boost::function&lt; Real(Real)&gt; &amp;b, Discretization discretization=MidPoint, Real intEps=1e-4)</argsstring>
         <name>ExtendedOrnsteinUhlenbeckProcess</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>speed</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <type>Volatility</type>
           <declname>sigma</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x0</declname>
         </param>
         <param>
-          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>)&gt; &amp;</type>
+          <type>const boost::function&lt; Real(Real)&gt; &amp;</type>
           <declname>b</declname>
         </param>
         <param>
@@ -63,7 +63,7 @@
           <defval>MidPoint</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>intEps</declname>
           <defval>1e-4</defval>
         </param>

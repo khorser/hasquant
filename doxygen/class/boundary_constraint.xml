@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="boundary_constraint" kind="class" prot="public">
-    <compoundname>QuantLib::BoundaryConstraint</compoundname>
+    <compoundname>BoundaryConstraint</compoundname>
     <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="boundary_constraint_1a4fed5101cc304d63bf230b3cef44fe2e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Real low, Real high)</argsstring>
         <name>BoundaryConstraint</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>low</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>high</declname>
         </param>
         <location file="/math/optimization/constraint.hpp" line="106" bodyfile="/math/optimization/constraint.hpp" bodystart="104" bodyend="106"/>

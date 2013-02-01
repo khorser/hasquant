@@ -1,79 +1,79 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1_bicubic_spline_derivatives" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::detail::BicubicSplineDerivatives</compoundname>
+    <compoundname>detail::BicubicSplineDerivatives</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="detail_1_1_bicubic_spline_derivatives_1a08792cb09924e13486839fa681d7b5a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real derivativeX</definition>
         <argsstring>(Real x, Real y) const =0</argsstring>
         <name>derivativeX</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_bicubic_spline_derivatives_1ae4658865fc158dea0ad12516c6395f36" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real derivativeY</definition>
         <argsstring>(Real x, Real y) const =0</argsstring>
         <name>derivativeY</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_bicubic_spline_derivatives_1a1c0f0ef5212904e492e33fd6fdb14091" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real derivativeXY</definition>
         <argsstring>(Real x, Real y) const =0</argsstring>
         <name>derivativeXY</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_bicubic_spline_derivatives_1a4d5b478514e460bddc9e5edfd78e4897" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real secondDerivativeX</definition>
         <argsstring>(Real x, Real y) const =0</argsstring>
         <name>secondDerivativeX</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="detail_1_1_bicubic_spline_derivatives_1a50fe931ede57f0d5a3ec09900ecc84ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real secondDerivativeY</definition>
         <argsstring>(Real x, Real y) const =0</argsstring>
         <name>secondDerivativeY</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>y</declname>
         </param>
         <location file="/math/interpolations/bicubicsplineinterpolation.hpp" line="41"/>

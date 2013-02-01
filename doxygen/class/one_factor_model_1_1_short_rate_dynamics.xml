@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="one_factor_model_1_1_short_rate_dynamics" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::OneFactorModel::ShortRateDynamics</compoundname>
+    <compoundname>OneFactorModel::ShortRateDynamics</compoundname>
     <includes local="no">/models/shortrate/onefactormodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -23,16 +23,16 @@
         <location file="/models/shortrate/onefactormodel.hpp" line="58" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real variable</definition>
         <argsstring>(Time t, Rate r) const =0</argsstring>
         <name>variable</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>r</declname>
         </param>
         <briefdescription>
@@ -40,16 +40,16 @@
         <location file="/models/shortrate/onefactormodel.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <type>Rate</type>
         <definition>virtual Rate shortRate</definition>
         <argsstring>(Time t, Real variable) const =0</argsstring>
         <name>shortRate</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>variable</declname>
         </param>
         <briefdescription>

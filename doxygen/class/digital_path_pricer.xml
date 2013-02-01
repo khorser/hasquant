@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="digital_path_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::DigitalPathPricer</compoundname>
+    <compoundname>DigitalPathPricer</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="digital_path_pricer_1a44a8dc80b3e08d8c711dff736368f163" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -31,7 +31,7 @@
         <location file="/pricingengines/vanilla/mcdigitalengine.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="digital_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(const Path &amp;path) const </argsstring>
         <name>operator()</name>

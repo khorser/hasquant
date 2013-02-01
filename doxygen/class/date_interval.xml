@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="date_interval" kind="class" prot="public">
-    <compoundname>QuantLib::DateInterval</compoundname>
+    <compoundname>DateInterval</compoundname>
     <includes local="no">/experimental/commodities/dateinterval.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="date_interval_1a1072dc506a9f6bf6ba7b89745e7719cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

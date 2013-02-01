@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="exchange_rate" kind="class" prot="public">
-    <compoundname>QuantLib::ExchangeRate</compoundname>
+    <compoundname>ExchangeRate</compoundname>
     <includes local="no">/exchangerate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -26,7 +26,7 @@
           <declname>target</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <type>Decimal</type>
           <declname>rate</declname>
         </param>
         <detaileddescription>
@@ -55,7 +55,7 @@
         <location file="/exchangerate.hpp" line="60" bodyfile="/exchangerate.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="exchange_rate_1a2b176c012741d73289ff358b0f990cc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+        <type>Type</type>
         <definition>ExchangeRate::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
@@ -64,7 +64,7 @@
         <location file="/exchangerate.hpp" line="62" bodyfile="/exchangerate.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="exchange_rate_1a09c7854c186e979c6bd755668a03c3d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+        <type>Decimal</type>
         <definition>Decimal rate</definition>
         <argsstring>() const </argsstring>
         <name>rate</name>

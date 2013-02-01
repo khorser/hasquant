@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="c_p_i_coupon_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::CPICouponPricer</compoundname>
+    <compoundname>CPICouponPricer</compoundname>
     <includes local="no">/cashflows/cpicouponpricer.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_p_i_coupon_pricer_1ae35cee8a377804417e3e7a99960444eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

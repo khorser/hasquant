@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="exchange_rate_manager_1_1_entry" kind="struct" prot="public">
-    <compoundname>QuantLib::ExchangeRateManager::Entry</compoundname>
+    <compoundname>ExchangeRateManager::Entry</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="exchange_rate_manager_1_1_entry_1aee5f2dc297f8395d027f3dfba22f3948" prot="public" static="no" mutable="no">
         <type>ExchangeRate</type>

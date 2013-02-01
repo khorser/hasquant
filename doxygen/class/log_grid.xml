@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="log_grid" kind="class" prot="public">
-    <compoundname>QuantLib::LogGrid</compoundname>
+    <compoundname>LogGrid</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="log_grid_1a0116edebcaff2340cc44f84e9a02ef73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -22,12 +22,12 @@
         <location file="/math/transformedgrid.hpp" line="89" bodyfile="/math/transformedgrid.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="log_grid_1a71def449146236ffea420f78fef4f1af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real logGrid</definition>
         <argsstring>(Size i) const </argsstring>
         <name>logGrid</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>i</declname>
         </param>
         <location file="/math/transformedgrid.hpp" line="90" bodyfile="/math/transformedgrid.hpp" bodystart="90" bodyend="90"/>

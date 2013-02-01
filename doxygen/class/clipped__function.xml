@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="clipped__function" kind="class" prot="public">
-    <compoundname>QuantLib::clipped_function</compoundname>
+    <compoundname>clipped_function</compoundname>
     <templateparamlist>
       <param>
         <type>class F</type>

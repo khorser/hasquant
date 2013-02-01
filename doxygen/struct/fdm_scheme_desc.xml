@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fdm_scheme_desc" kind="struct" prot="public">
-    <compoundname>QuantLib::FdmSchemeDesc</compoundname>
+    <compoundname>FdmSchemeDesc</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179" prot="public" static="no">
         <name>FdmSchemeType</name>
@@ -35,14 +35,14 @@
         <location file="/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="42" bodyfile="/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="fdm_scheme_desc_1a10f468e7786f066e29f562fcae039a87" prot="public" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>const Real</type>
         <definition>const Real theta</definition>
         <argsstring></argsstring>
         <name>theta</name>
         <location file="/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="43" bodyfile="/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="fdm_scheme_desc_1a6040775a62badb3287320f921e52aac0" prot="public" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>const Real</type>
         <definition>const Real mu</definition>
         <argsstring></argsstring>
         <name>mu</name>
@@ -60,11 +60,11 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>theta</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>mu</declname>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="40"/>

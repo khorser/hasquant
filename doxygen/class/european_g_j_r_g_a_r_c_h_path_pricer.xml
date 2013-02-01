@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="european_g_j_r_g_a_r_c_h_path_pricer" kind="class" prot="public">
-    <compoundname>QuantLib::EuropeanGJRGARCHPathPricer</compoundname>
+    <compoundname>EuropeanGJRGARCHPathPricer</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="european_g_j_r_g_a_r_c_h_path_pricer_1a28f97f523ce51dc22d0338ea15dc67d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -13,17 +13,17 @@
           <declname>type</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>strike</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <type>DiscountFactor</type>
           <declname>discount</declname>
         </param>
         <location file="/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="84" bodyfile="/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="217" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="european_g_j_r_g_a_r_c_h_path_pricer_1ad417fc96cc2be719a7adfc60ca77d4bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real operator()</definition>
         <argsstring>(const MultiPath &amp;Multipath) const </argsstring>
         <name>operator()</name>

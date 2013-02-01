@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="convergence_statistics" kind="class" prot="public">
-    <compoundname>QuantLib::ConvergenceStatistics</compoundname>
+    <compoundname>ConvergenceStatistics</compoundname>
     <includes local="no">/math/statistics/convergencestatistics.hpp</includes>
     <templateparamlist>
       <param>
@@ -21,7 +21,7 @@
         <location file="/math/statistics/convergencestatistics.hpp" line="60" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="convergence_statistics_1a1c8168a0d88468e6516d4641ef378a60" prot="public" static="no">
-        <type>std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, value_type &gt; &gt;</type>
+        <type>std::vector&lt; std::pair&lt; Size, value_type &gt; &gt;</type>
         <definition>typedef std::vector&lt;std::pair&lt;Size,value_type&gt; &gt; table_type</definition>
         <argsstring></argsstring>
         <name>table_type</name>
@@ -67,7 +67,7 @@
           <declname>value</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>weight</declname>
           <defval>1.0</defval>
         </param>
@@ -128,7 +128,7 @@
         <location file="/math/statistics/convergencestatistics.hpp" line="77" bodyfile="/math/statistics/convergencestatistics.hpp" bodystart="116" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="convergence_statistics_1a2c9c98dfbddea40f5d6add9c239632e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, value_type &gt; &gt; &amp;</type>
+        <type>const std::vector&lt; std::pair&lt; Size, value_type &gt; &gt; &amp;</type>
         <definition>const ConvergenceStatistics&lt; T, U &gt;::table_type &amp; convergenceTable</definition>
         <argsstring>() const </argsstring>
         <name>convergenceTable</name>

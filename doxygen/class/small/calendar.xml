@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="calendar" kind="class" prot="public">
-    <compoundname>QuantLib::Calendar</compoundname>
+    <compoundname>Calendar</compoundname>
     <includes local="no">/time/calendar.hpp</includes>
-    <innerclass refid="calendar_1_1_orthodox_impl" prot="public">QuantLib::Calendar::OrthodoxImpl</innerclass>
-    <innerclass refid="calendar_1_1_western_impl" prot="public">QuantLib::Calendar::WesternImpl</innerclass>
+    <innerclass refid="calendar_1_1_orthodox_impl" prot="public">Calendar::OrthodoxImpl</innerclass>
+    <innerclass refid="calendar_1_1_western_impl" prot="public">Calendar::WesternImpl</innerclass>
       <sectiondef kind="user-defined">
       <header>Calendar interface</header>
       <memberdef kind="function" id="calendar_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -59,7 +59,7 @@
         <argsstring>(Weekday w) const </argsstring>
         <name>isWeekend</name>
         <param>
-          <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+          <type>Weekday</type>
           <declname>w</declname>
         </param>
         <detaileddescription>
@@ -125,9 +125,9 @@
           <type>const Date &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>convention</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <detaileddescription>
 <para>Adjusts a non-business day to the appropriate near business day with respect to the given convention. </para>        </detaileddescription>
@@ -142,17 +142,17 @@
           <type>const Date &amp;</type>
         </param>
         <param>
-          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <type>Integer</type>
           <declname>n</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gadd9fe45e09605eee3e4a39c8a5c4476d" kindref="member">TimeUnit</ref></type>
+          <type>TimeUnit</type>
           <declname>unit</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>convention</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>bool</type>
@@ -178,9 +178,9 @@
           <declname>period</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <type>BusinessDayConvention</type>
           <declname>convention</declname>
-          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+          <defval>Following</defval>
         </param>
         <param>
           <type>bool</type>
@@ -193,7 +193,7 @@
         <location file="/time/calendar.hpp" line="137"/>
       </memberdef>
       <memberdef kind="function" id="calendar_1a19727b525ba0493943d84e29459b65a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <type>BigInteger</type>
         <definition>BigInteger businessDaysBetween</definition>
         <argsstring>(const Date &amp;from, const Date &amp;to, bool includeFirst=true, bool includeLast=false) const </argsstring>
         <name>businessDaysBetween</name>

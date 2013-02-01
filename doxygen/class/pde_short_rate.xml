@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="pde_short_rate" kind="class" prot="public">
-    <compoundname>QuantLib::PdeShortRate</compoundname>
+    <compoundname>PdeShortRate</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="pde_short_rate_1aae035d1991b41ee61215e34da5f41785" prot="public" static="no">
         <type>boost::shared_ptr&lt; OneFactorModel::ShortRateDynamics &gt;</type>
@@ -31,46 +31,46 @@
         <location file="/methods/finitedifferences/pdeshortrate.hpp" line="38" bodyfile="/methods/finitedifferences/pdeshortrate.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="pde_short_rate_1a6145a397fc88de2c481b429487a98164" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real diffusion</definition>
         <argsstring>(Time t, Real x) const </argsstring>
         <name>diffusion</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/methods/finitedifferences/pdeshortrate.hpp" line="39" bodyfile="/methods/finitedifferences/pdeshortrate.hpp" bodystart="39" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="pde_short_rate_1a4b76688eb89f51544dfe1f2f23d556a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real drift</definition>
         <argsstring>(Time t, Real x) const </argsstring>
         <name>drift</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/methods/finitedifferences/pdeshortrate.hpp" line="42" bodyfile="/methods/finitedifferences/pdeshortrate.hpp" bodystart="42" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="pde_short_rate_1a6152d29f7ddf8b23f0afa5144d8f54c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real discount</definition>
         <argsstring>(Time t, Real x) const </argsstring>
         <name>discount</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>x</declname>
         </param>
         <location file="/methods/finitedifferences/pdeshortrate.hpp" line="45" bodyfile="/methods/finitedifferences/pdeshortrate.hpp" bodystart="45" bodyend="47"/>

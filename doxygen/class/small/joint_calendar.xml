@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="joint_calendar" kind="class" prot="public">
-    <compoundname>QuantLib::JointCalendar</compoundname>
+    <compoundname>JointCalendar</compoundname>
     <includes local="no">/time/calendars/jointcalendar.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="joint_calendar_1ac82ed9afb1ad7d58128551f627178cce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -16,8 +16,8 @@
           <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
-          <defval><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bcaace2716211f162ba977b383f360af683e" kindref="member">JoinHolidays</ref></defval>
+          <type>JointCalendarRule</type>
+          <defval>JoinHolidays</defval>
         </param>
         <location file="/time/calendars/jointcalendar.hpp" line="74"/>
       </memberdef>
@@ -36,8 +36,8 @@
           <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
-          <defval><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bcaace2716211f162ba977b383f360af683e" kindref="member">JoinHolidays</ref></defval>
+          <type>JointCalendarRule</type>
+          <defval>JoinHolidays</defval>
         </param>
         <location file="/time/calendars/jointcalendar.hpp" line="77"/>
       </memberdef>
@@ -59,8 +59,8 @@
           <type>const Calendar &amp;</type>
         </param>
         <param>
-          <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
-          <defval><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bcaace2716211f162ba977b383f360af683e" kindref="member">JoinHolidays</ref></defval>
+          <type>JointCalendarRule</type>
+          <defval>JoinHolidays</defval>
         </param>
         <location file="/time/calendars/jointcalendar.hpp" line="80"/>
       </memberdef>

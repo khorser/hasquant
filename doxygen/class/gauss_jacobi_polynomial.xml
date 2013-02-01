@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="gauss_jacobi_polynomial" kind="class" prot="public">
-    <compoundname>QuantLib::GaussJacobiPolynomial</compoundname>
+    <compoundname>GaussJacobiPolynomial</compoundname>
     <includes local="no">/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="gauss_jacobi_polynomial_1ad4abd86f4ba42794324572b6f921b5ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,11 +10,11 @@
         <argsstring>(Real alpha, Real beta)</argsstring>
         <name>GaussJacobiPolynomial</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>alpha</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>beta</declname>
         </param>
         <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="93"/>

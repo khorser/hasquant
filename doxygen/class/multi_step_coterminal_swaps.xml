@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="multi_step_coterminal_swaps" kind="class" prot="public">
-    <compoundname>QuantLib::MultiStepCoterminalSwaps</compoundname>
+    <compoundname>MultiStepCoterminalSwaps</compoundname>
       <sectiondef kind="user-defined">
       <header>MarketModelMultiProduct interface</header>
       <memberdef kind="function" id="multi_step_coterminal_swaps_1a6f8b552187132cf1314374dbdd1d8515" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <type>std::vector&lt; Time &gt;</type>
         <definition>std::vector&lt; Time &gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
         <location file="/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="37" bodyfile="/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="59" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="multi_step_coterminal_swaps_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size numberOfProducts</definition>
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
         <location file="/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="38" bodyfile="/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="63" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="multi_step_coterminal_swaps_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size maxNumberOfCashFlowsPerProductPerStep</definition>
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
@@ -42,7 +42,7 @@
           <declname>currentState</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <type>std::vector&lt; Size &gt; &amp;</type>
           <declname>numberCashFlowsThisStep</declname>
         </param>
         <param>
@@ -66,19 +66,19 @@
         <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes, const std::vector&lt; Real &gt; &amp;fixedAccruals, const std::vector&lt; Real &gt; &amp;floatingAccruals, const std::vector&lt; Time &gt; &amp;paymentTimes, double fixedRate)</argsstring>
         <name>MultiStepCoterminalSwaps</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>fixedAccruals</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>floatingAccruals</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>paymentTimes</declname>
         </param>
         <param>

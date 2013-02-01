@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="optionlet_stripper2" kind="class" prot="public">
-    <compoundname>QuantLib::OptionletStripper2</compoundname>
+    <compoundname>OptionletStripper2</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/optionletstripper2.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="optionlet_stripper2_1a66a507e7be07efad7c13ef1caa92a9c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -20,21 +20,21 @@
         <location file="/termstructures/volatility/optionlet/optionletstripper2.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper2_1a001790f551d32100e8098a76d12e5cd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <type>std::vector&lt; Rate &gt;</type>
         <definition>std::vector&lt;Rate&gt; atmCapFloorStrikes</definition>
         <argsstring>() const </argsstring>
         <name>atmCapFloorStrikes</name>
         <location file="/termstructures/volatility/optionlet/optionletstripper2.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper2_1aaebdf5a0002fce7fd614b57066562684" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <type>std::vector&lt; Real &gt;</type>
         <definition>std::vector&lt;Real&gt; atmCapFloorPrices</definition>
         <argsstring>() const </argsstring>
         <name>atmCapFloorPrices</name>
         <location file="/termstructures/volatility/optionlet/optionletstripper2.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="optionlet_stripper2_1ad6befe85f9d38ab74922bc50f8a9370c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <type>std::vector&lt; Volatility &gt;</type>
         <definition>std::vector&lt;Volatility&gt; spreadsVol</definition>
         <argsstring>() const </argsstring>
         <name>spreadsVol</name>

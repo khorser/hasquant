@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="fixed_dividend" kind="class" prot="public">
-    <compoundname>QuantLib::FixedDividend</compoundname>
+    <compoundname>FixedDividend</compoundname>
     <includes local="no">/cashflows/dividend.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="fixed_dividend_1a66e30a0489235def3691267c084bd982" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -10,7 +10,7 @@
         <argsstring>(Real amount, const Date &amp;date)</argsstring>
         <name>FixedDividend</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>amount</declname>
         </param>
         <param>

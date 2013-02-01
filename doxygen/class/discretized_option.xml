@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="discretized_option" kind="class" prot="public">
-    <compoundname>QuantLib::DiscretizedOption</compoundname>
+    <compoundname>DiscretizedOption</compoundname>
     <includes local="no">/discretizedasset.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="discretized_option_1abacbceb782d539eeeb836afe7ee01171" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -18,7 +18,7 @@
           <declname>exerciseType</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>exerciseTimes</declname>
         </param>
         <location file="/discretizedasset.hpp" line="167" bodyfile="/discretizedasset.hpp" bodystart="162" bodyend="167"/>

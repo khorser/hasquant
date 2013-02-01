@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="proxy_greek_engine" kind="class" prot="public">
-    <compoundname>QuantLib::ProxyGreekEngine</compoundname>
+    <compoundname>ProxyGreekEngine</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="proxy_greek_engine_1a6908870d62b0e39eeb5187dd9044dfef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -17,15 +17,15 @@
           <declname>constrainedEvolvers</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; std::vector&lt; Real &gt; &gt; &gt; &amp;</type>
           <declname>diffWeights</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Size &gt; &amp;</type>
           <declname>startIndexOfConstraint</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Size &gt; &amp;</type>
           <declname>endIndexOfConstraint</declname>
         </param>
         <param>
@@ -52,7 +52,7 @@
           <declname>modifiedStats</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>numberOfPaths</declname>
         </param>
         <location file="/models/marketmodels/proxygreekengine.hpp" line="52"/>
@@ -63,11 +63,11 @@
         <argsstring>(std::vector&lt; Real &gt; &amp;values, std::vector&lt; std::vector&lt; std::vector&lt; Real &gt; &gt; &gt; &amp;modifiedValues)</argsstring>
         <name>singlePathValues</name>
         <param>
-          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>std::vector&lt; Real &gt; &amp;</type>
           <declname>values</declname>
         </param>
         <param>
-          <type>std::vector&lt; std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &gt; &amp;</type>
+          <type>std::vector&lt; std::vector&lt; std::vector&lt; Real &gt; &gt; &gt; &amp;</type>
           <declname>modifiedValues</declname>
         </param>
         <location file="/models/marketmodels/proxygreekengine.hpp" line="55"/>

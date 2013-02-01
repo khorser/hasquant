@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="levenberg_marquardt" kind="class" prot="public">
-    <compoundname>QuantLib::LevenbergMarquardt</compoundname>
+    <compoundname>LevenbergMarquardt</compoundname>
     <includes local="no">/math/optimization/levenbergmarquardt.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="levenberg_marquardt_1a25b3a603b8afafa6e17f5951e504eadf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,24 +10,24 @@
         <argsstring>(Real epsfcn=1.0e-8, Real xtol=1.0e-8, Real gtol=1.0e-8)</argsstring>
         <name>LevenbergMarquardt</name>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>epsfcn</declname>
           <defval>1.0e-8</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>xtol</declname>
           <defval>1.0e-8</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gtol</declname>
           <defval>1.0e-8</defval>
         </param>
         <location file="/math/optimization/levenbergmarquardt.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="levenberg_marquardt_1a30cf1478e47879465dc409bf772d341c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <type>Integer</type>
         <definition>virtual Integer getInfo</definition>
         <argsstring>() const </argsstring>
         <name>getInfo</name>

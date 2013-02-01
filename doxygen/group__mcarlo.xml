@@ -3,17 +3,17 @@
   <compounddef id="group__mcarlo" kind="group">
     <compoundname>mcarlo</compoundname>
     <title>Monte Carlo framework</title>
-    <innerclass refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer" prot="public">QuantLib::LongstaffSchwartzMultiPathPricer</innerclass>
-    <innerclass refid="class_quant_lib_1_1_brownian_bridge" prot="public">QuantLib::BrownianBridge</innerclass>
-    <innerclass refid="class_quant_lib_1_1_early_exercise_path_pricer" prot="public">QuantLib::EarlyExercisePathPricer</innerclass>
-    <innerclass refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer" prot="public">QuantLib::LongstaffSchwartzPathPricer</innerclass>
-    <innerclass refid="class_quant_lib_1_1_monte_carlo_model" prot="public">QuantLib::MonteCarloModel</innerclass>
-    <innerclass refid="class_quant_lib_1_1_multi_path" prot="public">QuantLib::MultiPath</innerclass>
-    <innerclass refid="class_quant_lib_1_1_multi_path_generator" prot="public">QuantLib::MultiPathGenerator</innerclass>
-    <innerclass refid="class_quant_lib_1_1_path" prot="public">QuantLib::Path</innerclass>
-    <innerclass refid="class_quant_lib_1_1_path_generator" prot="public">QuantLib::PathGenerator</innerclass>
-    <innerclass refid="class_quant_lib_1_1_path_pricer" prot="public">QuantLib::PathPricer</innerclass>
-    <innerclass refid="struct_quant_lib_1_1_sample" prot="public">QuantLib::Sample</innerclass>
+    <innerclass refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer" prot="public">LongstaffSchwartzMultiPathPricer</innerclass>
+    <innerclass refid="class_quant_lib_1_1_brownian_bridge" prot="public">BrownianBridge</innerclass>
+    <innerclass refid="class_quant_lib_1_1_early_exercise_path_pricer" prot="public">EarlyExercisePathPricer</innerclass>
+    <innerclass refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer" prot="public">LongstaffSchwartzPathPricer</innerclass>
+    <innerclass refid="class_quant_lib_1_1_monte_carlo_model" prot="public">MonteCarloModel</innerclass>
+    <innerclass refid="class_quant_lib_1_1_multi_path" prot="public">MultiPath</innerclass>
+    <innerclass refid="class_quant_lib_1_1_multi_path_generator" prot="public">MultiPathGenerator</innerclass>
+    <innerclass refid="class_quant_lib_1_1_path" prot="public">Path</innerclass>
+    <innerclass refid="class_quant_lib_1_1_path_generator" prot="public">PathGenerator</innerclass>
+    <innerclass refid="class_quant_lib_1_1_path_pricer" prot="public">PathPricer</innerclass>
+    <innerclass refid="struct_quant_lib_1_1_sample" prot="public">Sample</innerclass>
     <detaileddescription>
 <para>This framework (corresponding to the ql/MonteCarlo directory) contains basic building blocks for Monte Carlo simulations. </para>    </detaileddescription>
   </compounddef>

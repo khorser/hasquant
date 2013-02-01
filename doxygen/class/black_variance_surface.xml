@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="black_variance_surface" kind="class" prot="public">
-    <compoundname>QuantLib::BlackVarianceSurface</compoundname>
+    <compoundname>BlackVarianceSurface</compoundname>
     <includes local="no">/termstructures/volatility/equityfx/blackvariancesurface.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
@@ -54,7 +54,7 @@
           <declname>dates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
         <param>

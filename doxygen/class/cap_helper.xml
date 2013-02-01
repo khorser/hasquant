@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="cap_helper" kind="class" prot="public">
-    <compoundname>QuantLib::CapHelper</compoundname>
+    <compoundname>CapHelper</compoundname>
     <includes local="no">/models/shortrate/calibrationhelpers/caphelper.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="cap_helper_1ad609e5c96b766cbcd4b63c6ad1f14bcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -22,7 +22,7 @@
           <declname>index</declname>
         </param>
         <param>
-          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <type>Frequency</type>
           <declname>fixedLegFrequency</declname>
         </param>
         <param>

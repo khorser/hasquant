@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="factor_spreaded_hazard_rate_curve" kind="class" prot="public">
-    <compoundname>QuantLib::FactorSpreadedHazardRateCurve</compoundname>
+    <compoundname>FactorSpreadedHazardRateCurve</compoundname>
     <includes local="no">/experimental/credit/factorspreadedhazardratecurve.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="factor_spreaded_hazard_rate_curve_1a7b41a5f6f3180d38d2eef8a2aa966a9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

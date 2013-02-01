@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="calibrated_model" kind="class" prot="public">
-    <compoundname>QuantLib::CalibratedModel</compoundname>
+    <compoundname>CalibratedModel</compoundname>
     <includes local="no">/models/model.hpp</includes>
-    <innerclass refid="calibrated_model_1_1_private_constraint" prot="public">QuantLib::CalibratedModel::PrivateConstraint</innerclass>
+    <innerclass refid="calibrated_model_1_1_private_constraint" prot="public">CalibratedModel::PrivateConstraint</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -11,7 +11,7 @@
         <argsstring>(Size nArguments)</argsstring>
         <name>CalibratedModel</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>nArguments</declname>
         </param>
         <location file="/models/model.hpp" line="81"/>
@@ -38,9 +38,9 @@
           <defval>Constraint()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Real &gt; &amp;</type>
           <declname>weights</declname>
-          <defval>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>std::vector&lt; Real &gt;()</defval>
         </param>
         <briefdescription>
 <para>Calibrate to a set of market instruments (caps/swaptions) </para>        </briefdescription>
@@ -49,7 +49,7 @@
         <location file="/models/model.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="calibrated_model_1ab56059971ed8cca14f10cad597049e48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real value</definition>
         <argsstring>(const Array &amp;params, const std::vector&lt; boost::shared_ptr&lt; CalibrationHelper &gt; &gt; &amp;)</argsstring>
         <name>value</name>

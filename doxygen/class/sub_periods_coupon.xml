@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="sub_periods_coupon" kind="class" prot="public">
-    <compoundname>QuantLib::SubPeriodsCoupon</compoundname>
+    <compoundname>SubPeriodsCoupon</compoundname>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
       <memberdef kind="function" id="sub_periods_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -26,7 +26,7 @@
           <declname>paymentDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>nominal</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
           <declname>endDate</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <type>Natural</type>
           <declname>fixingDays</declname>
         </param>
         <param>
@@ -50,15 +50,15 @@
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gearing</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>couponSpread</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <type>Rate</type>
           <declname>rateSpread</declname>
         </param>
         <param>
@@ -72,28 +72,28 @@
         <location file="/experimental/coupons/subperiodcoupons.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="sub_periods_coupon_1a62d2fe10d6779129ceb6038dd6476b7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <type>Spread</type>
         <definition>Spread rateSpread</definition>
         <argsstring>() const </argsstring>
         <name>rateSpread</name>
         <location file="/experimental/coupons/subperiodcoupons.hpp" line="63" bodyfile="/experimental/coupons/subperiodcoupons.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="sub_periods_coupon_1a1ece2eac4481e2a1685705aac57766d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real startTime</definition>
         <argsstring>() const </argsstring>
         <name>startTime</name>
         <location file="/experimental/coupons/subperiodcoupons.hpp" line="65" bodyfile="/experimental/coupons/subperiodcoupons.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="sub_periods_coupon_1aed22d9abaf095bbffd906e613e827369" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real endTime</definition>
         <argsstring>() const </argsstring>
         <name>endTime</name>
         <location file="/experimental/coupons/subperiodcoupons.hpp" line="66" bodyfile="/experimental/coupons/subperiodcoupons.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="sub_periods_coupon_1a748ed5a242e0609b324b6e7c8e30f332" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size observations</definition>
         <argsstring>() const </argsstring>
         <name>observations</name>
@@ -107,7 +107,7 @@
         <location file="/experimental/coupons/subperiodcoupons.hpp" line="68" bodyfile="/experimental/coupons/subperiodcoupons.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="sub_periods_coupon_1a4d76cb4fdc8ec3a1a5842b044e5a1165" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <type>const std::vector&lt; Real &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; observationTimes</definition>
         <argsstring>() const </argsstring>
         <name>observationTimes</name>
@@ -121,7 +121,7 @@
         <location file="/experimental/coupons/subperiodcoupons.hpp" line="75" bodyfile="/experimental/coupons/subperiodcoupons.hpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="sub_periods_coupon_1aa8863d2b94859595390ec23a923f378c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real priceWithoutOptionality</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve) const </argsstring>
         <name>priceWithoutOptionality</name>

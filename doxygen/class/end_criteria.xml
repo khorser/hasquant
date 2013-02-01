@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="end_criteria" kind="class" prot="public">
-    <compoundname>QuantLib::EndCriteria</compoundname>
+    <compoundname>EndCriteria</compoundname>
     <includes local="no">/math/optimization/endcriteria.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="end_criteria_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
@@ -37,23 +37,23 @@
         <argsstring>(Size maxIterations, Size maxStationaryStateIterations, Real rootEpsilon, Real functionEpsilon, Real gradientNormEpsilon)</argsstring>
         <name>EndCriteria</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxIterations</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>maxStationaryStateIterations</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>rootEpsilon</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>functionEpsilon</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>gradientNormEpsilon</declname>
         </param>
         <briefdescription>
@@ -61,35 +61,35 @@
         <location file="/math/optimization/endcriteria.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="end_criteria_1a350ba3943ab52237af0572bfec0c7e1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size maxIterations</definition>
         <argsstring>() const </argsstring>
         <name>maxIterations</name>
         <location file="/math/optimization/endcriteria.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="end_criteria_1a39da2d34b60ac403f28d2aee901ffe15" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <type>Size</type>
         <definition>Size maxStationaryStateIterations</definition>
         <argsstring>() const </argsstring>
         <name>maxStationaryStateIterations</name>
         <location file="/math/optimization/endcriteria.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="end_criteria_1a50d86ccd22ee0e59debd91809b5b5438" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real rootEpsilon</definition>
         <argsstring>() const </argsstring>
         <name>rootEpsilon</name>
         <location file="/math/optimization/endcriteria.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="end_criteria_1a4cab663f05ff1bde282bc5d589bcd089" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real functionEpsilon</definition>
         <argsstring>() const </argsstring>
         <name>functionEpsilon</name>
         <location file="/math/optimization/endcriteria.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="end_criteria_1a1302f2b35f0b2c1a1f8ae3540deda59b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real gradientNormEpsilon</definition>
         <argsstring>() const </argsstring>
         <name>gradientNormEpsilon</name>
@@ -101,11 +101,11 @@
         <argsstring>(const Size iteration, Size &amp;statState, const bool positiveOptimization, const Real fold, const Real normgold, const Real fnew, const Real normgnew, EndCriteria::Type &amp;ecType) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>const Size</type>
           <declname>iteration</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &amp;</type>
+          <type>Size &amp;</type>
           <declname>statState</declname>
         </param>
         <param>
@@ -113,19 +113,19 @@
           <declname>positiveOptimization</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>fold</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>normgold</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>fnew</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>normgnew</declname>
         </param>
         <param>
@@ -142,7 +142,7 @@
         <argsstring>(const Size iteration, EndCriteria::Type &amp;ecType) const </argsstring>
         <name>checkMaxIterations</name>
         <param>
-          <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>const Size</type>
           <declname>iteration</declname>
         </param>
         <param>
@@ -159,15 +159,15 @@
         <argsstring>(const Real xOld, const Real xNew, Size &amp;statStateIterations, EndCriteria::Type &amp;ecType) const </argsstring>
         <name>checkStationaryPoint</name>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>xOld</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>xNew</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &amp;</type>
+          <type>Size &amp;</type>
           <declname>statStateIterations</declname>
         </param>
         <param>
@@ -184,15 +184,15 @@
         <argsstring>(const Real fxOld, const Real fxNew, Size &amp;statStateIterations, EndCriteria::Type &amp;ecType) const </argsstring>
         <name>checkStationaryFunctionValue</name>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>fxOld</declname>
         </param>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>fxNew</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &amp;</type>
+          <type>Size &amp;</type>
           <declname>statStateIterations</declname>
         </param>
         <param>
@@ -209,7 +209,7 @@
         <argsstring>(const Real f, const bool positiveOptimization, EndCriteria::Type &amp;ecType) const </argsstring>
         <name>checkStationaryFunctionAccuracy</name>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>f</declname>
         </param>
         <param>
@@ -230,7 +230,7 @@
         <argsstring>(const Real gNorm, EndCriteria::Type &amp;ecType) const </argsstring>
         <name>checkZeroGradientNorm</name>
         <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>const Real</type>
           <declname>gNorm</declname>
         </param>
         <param>

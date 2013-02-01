@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="multi_step_swaption" kind="class" prot="public">
-    <compoundname>QuantLib::MultiStepSwaption</compoundname>
+    <compoundname>MultiStepSwaption</compoundname>
     <includes local="no">/models/marketmodels/products/multistep/multistepswaption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="multi_step_swaption_1a131b04bc6bbccff6b87398c22c9c5ef6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -10,15 +10,15 @@
         <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes, Size startIndex, Size endIndex, boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;)</argsstring>
         <name>MultiStepSwaption</name>
         <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; Time &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>startIndex</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>endIndex</declname>
         </param>
         <param>

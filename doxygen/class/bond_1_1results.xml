@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bond_1_1results" kind="class" prot="public">
-    <compoundname>QuantLib::Bond::results</compoundname>
+    <compoundname>Bond::results</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="bond_1_1results_1a4a64183e121ca4476b6d40fd9c853b60" prot="public" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>Real settlementValue</definition>
         <argsstring></argsstring>
         <name>settlementValue</name>

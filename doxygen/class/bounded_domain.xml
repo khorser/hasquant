@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="bounded_domain" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::BoundedDomain</compoundname>
+    <compoundname>BoundedDomain</compoundname>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="bounded_domain_1adb28eda0cefba7aa918d8d79d8b629b8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real xLowerBound</definition>
         <argsstring>() const =0</argsstring>
         <name>xLowerBound</name>
         <location file="/math/domain.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="bounded_domain_1a6cf0a3e00a76ac9a42b32838e2d4f891" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real xUpperBound</definition>
         <argsstring>() const =0</argsstring>
         <name>xUpperBound</name>
         <location file="/math/domain.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="bounded_domain_1aa20edb398aaffb32c0325847f0e4069b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real yLowerBound</definition>
         <argsstring>() const =0</argsstring>
         <name>yLowerBound</name>
         <location file="/math/domain.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="bounded_domain_1ad337b7812f786063477d81a593a6c416" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <type>Real</type>
         <definition>virtual Real yUpperBound</definition>
         <argsstring>() const =0</argsstring>
         <name>yUpperBound</name>

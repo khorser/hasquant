@@ -6,7 +6,7 @@
       <sectiondef kind="func">
       <memberdef kind="function" id="group__manips_1gab9e306f9ec0855319cbb452f6a7b3627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::short_date_holder</type>
-        <definition>detail::short_date_holder QuantLib::io::short_date</definition>
+        <definition>detail::short_date_holder io::short_date</definition>
         <argsstring>(const Date &amp;)</argsstring>
         <name>short_date</name>
         <param>
@@ -18,7 +18,7 @@
       </memberdef>
       <memberdef kind="function" id="group__manips_1gad2cba1797c1cf63c02d899696b343ee8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::long_date_holder</type>
-        <definition>detail::long_date_holder QuantLib::io::long_date</definition>
+        <definition>detail::long_date_holder io::long_date</definition>
         <argsstring>(const Date &amp;)</argsstring>
         <name>long_date</name>
         <param>
@@ -30,7 +30,7 @@
       </memberdef>
       <memberdef kind="function" id="group__manips_1ga0921b3ae46195feff93b2a4388e05d63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::iso_date_holder</type>
-        <definition>detail::iso_date_holder QuantLib::io::iso_date</definition>
+        <definition>detail::iso_date_holder io::iso_date</definition>
         <argsstring>(const Date &amp;)</argsstring>
         <name>iso_date</name>
         <param>
@@ -42,7 +42,7 @@
       </memberdef>
       <memberdef kind="function" id="group__manips_1ga21b63d20c9f70f1d56fe664a5d10932e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::long_period_holder</type>
-        <definition>detail::long_period_holder QuantLib::io::long_period</definition>
+        <definition>detail::long_period_holder io::long_period</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>long_period</name>
         <param>
@@ -54,7 +54,7 @@
       </memberdef>
       <memberdef kind="function" id="group__manips_1gafd478859146a0e3cdb97a51a4f7839a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::short_period_holder</type>
-        <definition>detail::short_period_holder QuantLib::io::short_period</definition>
+        <definition>detail::short_period_holder io::short_period</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>short_period</name>
         <param>
@@ -66,7 +66,7 @@
       </memberdef>
       <memberdef kind="function" id="group__manips_1gad167f4e6391385217e46dfa4827884bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::long_weekday_holder</type>
-        <definition>detail::long_weekday_holder QuantLib::io::long_weekday</definition>
+        <definition>detail::long_weekday_holder io::long_weekday</definition>
         <argsstring>(Weekday)</argsstring>
         <name>long_weekday</name>
         <param>
@@ -78,7 +78,7 @@
       </memberdef>
       <memberdef kind="function" id="group__manips_1ga5be437350e5e56a699ba0f53bf25b2ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::short_weekday_holder</type>
-        <definition>detail::short_weekday_holder QuantLib::io::short_weekday</definition>
+        <definition>detail::short_weekday_holder io::short_weekday</definition>
         <argsstring>(Weekday)</argsstring>
         <name>short_weekday</name>
         <param>
@@ -90,7 +90,7 @@
       </memberdef>
       <memberdef kind="function" id="group__manips_1ga951de1277920bcbcfb757a4f5a254d03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>detail::shortest_weekday_holder</type>
-        <definition>detail::shortest_weekday_holder QuantLib::io::shortest_weekday</definition>
+        <definition>detail::shortest_weekday_holder io::shortest_weekday</definition>
         <argsstring>(Weekday)</argsstring>
         <name>shortest_weekday</name>
         <param>

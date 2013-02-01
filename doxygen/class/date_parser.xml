@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="date_parser" kind="class" prot="public">
-    <compoundname>QuantLib::DateParser</compoundname>
+    <compoundname>DateParser</compoundname>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="date_parser_1a14f77ba5943bc79a7191c885621c8ab9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>

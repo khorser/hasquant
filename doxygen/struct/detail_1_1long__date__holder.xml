@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="detail_1_1long__date__holder" kind="struct" prot="public">
-    <compoundname>QuantLib::detail::long_date_holder</compoundname>
+    <compoundname>detail::long_date_holder</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="detail_1_1long__date__holder_1a85641069b0d4478ab8a7356c3bf32ea3" prot="public" static="no" mutable="no">
         <type>Date</type>

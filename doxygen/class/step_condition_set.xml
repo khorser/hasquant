@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="step_condition_set" kind="class" prot="public">
-    <compoundname>QuantLib::StepConditionSet</compoundname>
+    <compoundname>StepConditionSet</compoundname>
     <includes local="no">/methods/finitedifferences/parallelevolver.hpp</includes>
     <templateparamlist>
       <param>
@@ -19,7 +19,7 @@
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/methods/finitedifferences/parallelevolver.hpp" line="50" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="50" bodyend="54"/>

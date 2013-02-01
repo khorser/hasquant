@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="null_3_01_date_01_4" kind="class" prot="public">
-    <compoundname>QuantLib::Null&lt; Date &gt;</compoundname>
+    <compoundname>Null&lt; Date &gt;</compoundname>
     <includes local="no">/time/date.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="null_3_01_date_01_4_1a10b15a39fff7b4b5e889dc502186253c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

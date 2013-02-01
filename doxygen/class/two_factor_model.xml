@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="two_factor_model" kind="class" prot="public" abstract="yes">
-    <compoundname>QuantLib::TwoFactorModel</compoundname>
+    <compoundname>TwoFactorModel</compoundname>
     <includes local="no">/models/shortrate/twofactormodel.hpp</includes>
-    <innerclass refid="two_factor_model_1_1_short_rate_dynamics" prot="public">QuantLib::TwoFactorModel::ShortRateDynamics</innerclass>
-    <innerclass refid="two_factor_model_1_1_short_rate_tree" prot="public">QuantLib::TwoFactorModel::ShortRateTree</innerclass>
+    <innerclass refid="two_factor_model_1_1_short_rate_dynamics" prot="public">TwoFactorModel::ShortRateDynamics</innerclass>
+    <innerclass refid="two_factor_model_1_1_short_rate_tree" prot="public">TwoFactorModel::ShortRateTree</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="two_factor_model_1ab21a4909440df05943ed8035a3cb8ec9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -12,7 +12,7 @@
         <argsstring>(Size nParams)</argsstring>
         <name>TwoFactorModel</name>
         <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <type>Size</type>
           <declname>nParams</declname>
         </param>
         <location file="/models/shortrate/twofactormodel.hpp" line="38"/>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="implicit_euler_scheme" kind="class" prot="public">
-    <compoundname>QuantLib::ImplicitEulerScheme</compoundname>
+    <compoundname>ImplicitEulerScheme</compoundname>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="implicit_euler_scheme_1ad66caa3a712f1851c280155e836560f1" prot="public" static="no">
         <type>OperatorTraits&lt; FdmLinearOp &gt;</type>
@@ -55,7 +55,7 @@
           <defval>std::vector&lt; boost::shared_ptr&lt; FdmDirichletBoundary &gt; &gt;()</defval>
         </param>
         <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <type>Real</type>
           <declname>relTol</declname>
           <defval>1e-8</defval>
         </param>
@@ -71,7 +71,7 @@
           <declname>a</declname>
         </param>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>t</declname>
         </param>
         <location file="/methods/finitedifferences/schemes/impliciteulerscheme.hpp" line="51"/>
@@ -82,7 +82,7 @@
         <argsstring>(Time dt)</argsstring>
         <name>setStep</name>
         <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <type>Time</type>
           <declname>dt</declname>
         </param>
         <location file="/methods/finitedifferences/schemes/impliciteulerscheme.hpp" line="52"/>
