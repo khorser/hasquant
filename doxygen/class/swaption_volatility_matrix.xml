@@ -5,65 +5,15 @@
     <includes local="no">/termstructures/volatility/swaption/swaptionvolmatrix.hpp</includes>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="swaption_volatility_matrix_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <detaileddescription>
-<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" line="96"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="swaption_volatility_matrix_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" line="100" bodyfile="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" bodystart="147" bodyend="149"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
-      <memberdef kind="function" id="swaption_volatility_matrix_1a92f7194103698b0abf537479db1bab49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate minStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>minStrike</name>
-        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
-        <briefdescription>
-<para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" line="104" bodyfile="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" bodystart="151" bodyend="153"/>
-      </memberdef>
-      <memberdef kind="function" id="swaption_volatility_matrix_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate maxStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>maxStrike</name>
-        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
-        <briefdescription>
-<para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" line="105" bodyfile="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" bodystart="155" bodyend="157"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>SwaptionVolatilityStructure interface</header>
-      <memberdef kind="function" id="swaption_volatility_matrix_1aab612f40ee132a09e19f67c16e502cdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
-        <definition>const Period &amp; maxSwapTenor</definition>
-        <argsstring>() const </argsstring>
-        <name>maxSwapTenor</name>
-        <reimplements refid="swaption_volatility_structure_1a95eb3bcb1f89026d83f78dd535d803a0">maxSwapTenor</reimplements>
-        <briefdescription>
-<para>the largest length for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" line="109" bodyfile="/termstructures/volatility/swaption/swaptionvolmatrix.hpp" bodystart="159" bodyend="161"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other inspectors</header>

@@ -29,18 +29,6 @@
         </param>
         <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="longstaff_schwartz_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real operator()</definition>
-        <argsstring>(const MultiPath &amp;multiPath) const </argsstring>
-        <name>operator()</name>
-        <reimplements refid="path_pricer_1a8d202422e04c42b1c33fe366569a4ef5">operator()</reimplements>
-        <param>
-          <type>const <ref refid="multi_path" kindref="compound">MultiPath</ref> &amp;</type>
-          <declname>multiPath</declname>
-        </param>
-        <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="57"/>
-      </memberdef>
       <memberdef kind="function" id="longstaff_schwartz_multi_path_pricer_1a8946c11a6ad8cd19bc92048019269157" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void calibrate</definition>

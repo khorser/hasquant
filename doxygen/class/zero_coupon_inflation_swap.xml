@@ -123,33 +123,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="zero_coupon_inflation_swap_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupArguments</definition>
-        <argsstring>(PricingEngine::arguments *) const </argsstring>
-        <name>setupArguments</name>
-        <reimplements refid="swap_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <param>
-          <type>PricingEngine::arguments *</type>
-        </param>
-        <detaileddescription>
-<para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/instruments/zerocouponinflationswap.hpp" line="116"/>
-      </memberdef>
-      <memberdef kind="function" id="zero_coupon_inflation_swap_1a0f63e39daa12d877d8156360b8f920af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void fetchResults</definition>
-        <argsstring>(const PricingEngine::results *r) const </argsstring>
-        <name>fetchResults</name>
-        <reimplements refid="swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
-        <param>
-          <type>const PricingEngine::results *</type>
-          <defname>r</defname>
-        </param>
-        <detaileddescription>
-<para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/instruments/zerocouponinflationswap.hpp" line="117"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Results</header>

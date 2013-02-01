@@ -48,66 +48,6 @@
         </param>
         <location file="/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="square_root_andersen_1aa7c096d1e12c20cfa755c0b3b033537a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>virtual Size variatesPerStep</definition>
-        <argsstring>()</argsstring>
-        <name>variatesPerStep</name>
-        <reimplements refid="market_model_vol_process_1a30b3195890d4684837576013f12dc480">variatesPerStep</reimplements>
-        <location file="/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" line="47"/>
-      </memberdef>
-      <memberdef kind="function" id="square_root_andersen_1a6d83557adbc933ab37b96a2bf545cb30" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>virtual Size numberSteps</definition>
-        <argsstring>()</argsstring>
-        <name>numberSteps</name>
-        <reimplements refid="market_model_vol_process_1a252a356cbc3fa869736761ac3f3fdb0f">numberSteps</reimplements>
-        <location file="/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" line="48"/>
-      </memberdef>
-      <memberdef kind="function" id="square_root_andersen_1aea9ac6ded607172edc58b33120d49305" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void nextPath</definition>
-        <argsstring>()</argsstring>
-        <name>nextPath</name>
-        <reimplements refid="market_model_vol_process_1abe94347b5b3b934a1484879af7175e78">nextPath</reimplements>
-        <location file="/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" line="50"/>
-      </memberdef>
-      <memberdef kind="function" id="square_root_andersen_1a790819874b2d07cfe050f88b7986775d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real nextstep</definition>
-        <argsstring>(const std::vector&lt; Real &gt; &amp;variates)</argsstring>
-        <name>nextstep</name>
-        <reimplements refid="market_model_vol_process_1a5889656dac25cff3583f7cf97b95d1f4">nextstep</reimplements>
-        <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
-          <declname>variates</declname>
-        </param>
-        <location file="/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" line="51"/>
-      </memberdef>
-      <memberdef kind="function" id="square_root_andersen_1add0737fe4f812e1669a809fdfd35345c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real stepSd</definition>
-        <argsstring>() const </argsstring>
-        <name>stepSd</name>
-        <reimplements refid="market_model_vol_process_1a855f726db559fa3b8d89c0fcc7b0d028">stepSd</reimplements>
-        <location file="/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" line="52"/>
-      </memberdef>
-      <memberdef kind="function" id="square_root_andersen_1a3483b4e6c56f73fd3604d6e70e27300d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
-        <definition>virtual const std::vector&lt;Real&gt;&amp; stateVariables</definition>
-        <argsstring>() const </argsstring>
-        <name>stateVariables</name>
-        <reimplements refid="market_model_vol_process_1ab8e2637cfe42113a8a7386dd18277a26">stateVariables</reimplements>
-        <location file="/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" line="54"/>
-      </memberdef>
-      <memberdef kind="function" id="square_root_andersen_1a700d068edb6482e7e012d396979c5930" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>virtual Size numberStateVariables</definition>
-        <argsstring>() const </argsstring>
-        <name>numberStateVariables</name>
-        <reimplements refid="market_model_vol_process_1a80b1fcbda138cec23753e2c78a0b7008">numberStateVariables</reimplements>
-        <location file="/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" line="55"/>
-      </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>Displaced diffusion LMM with uncorrelated vol process. Called &quot;Shifted BGM&quot; with Heston vol by Brace in &quot;Engineering BGM.&quot; Vol process is an external input. </para>    </detaileddescription>

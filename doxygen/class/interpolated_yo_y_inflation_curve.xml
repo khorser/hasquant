@@ -10,28 +10,6 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>InflationTermStructure interface</header>
-      <memberdef kind="function" id="interpolated_yo_y_inflation_curve_1a872006051a1b47c481388e2f5313fd91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date baseDate</definition>
-        <argsstring>() const </argsstring>
-        <name>baseDate</name>
-        <reimplements refid="inflation_term_structure_1afec07013d98138f010a327210da23b50">baseDate</reimplements>
-        <briefdescription>
-<para>minimum (base) date </para>        </briefdescription>
-        <detaileddescription>
-<para>Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking). </para>        </detaileddescription>
-        <location file="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" line="61" bodyfile="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" bodystart="178" bodyend="180"/>
-      </memberdef>
-      <memberdef kind="function" id="interpolated_yo_y_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" line="62" bodyfile="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" bodystart="183" bodyend="185"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -73,20 +51,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>YoYInflationTermStructure interface</header>
-      <memberdef kind="function" id="interpolated_yo_y_inflation_curve_1a2e2a01a333c4d7280473276ed302be13" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate yoyRateImpl</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>yoyRateImpl</name>
-        <reimplements refid="yo_y_inflation_term_structure_1a448f48c27119b6e2518ccd7827ab65c0">yoyRateImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>time</declname>
-        </param>
-        <briefdescription>
-<para>to be defined in derived classes </para>        </briefdescription>
-        <location file="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" line="77" bodyfile="/termstructures/inflation/interpolatedyoyinflationcurve.hpp" bodystart="189" bodyend="191"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interpolated_yo_y_inflation_curve_1a592ad4ba19ab6b5011c57b099082d04b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -72,106 +72,6 @@
         </param>
         <location file="/processes/hestonprocess.hpp" line="60"/>
       </memberdef>
-      <memberdef kind="function" id="heston_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size size</definition>
-        <argsstring>() const </argsstring>
-        <name>size</name>
-        <reimplements refid="stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
-        <briefdescription>
-<para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
-        <location file="/processes/hestonprocess.hpp" line="62"/>
-      </memberdef>
-      <memberdef kind="function" id="heston_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
-        <definition>Disposable&lt;Array&gt; initialValues</definition>
-        <argsstring>() const </argsstring>
-        <name>initialValues</name>
-        <reimplements refid="stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
-        <briefdescription>
-<para>returns the initial values of the state variables </para>        </briefdescription>
-        <location file="/processes/hestonprocess.hpp" line="63"/>
-      </memberdef>
-      <memberdef kind="function" id="heston_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
-        <definition>Disposable&lt;Array&gt; drift</definition>
-        <argsstring>(Time t, const Array &amp;x) const </argsstring>
-        <name>drift</name>
-        <reimplements refid="stochastic_process_1add74d4d9a1354fee6d3df7662b14e7e1">drift</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-        </param>
-        <briefdescription>
-<para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <location file="/processes/hestonprocess.hpp" line="64"/>
-      </memberdef>
-      <memberdef kind="function" id="heston_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>Disposable&lt;Matrix&gt; diffusion</definition>
-        <argsstring>(Time t, const Array &amp;x) const </argsstring>
-        <name>diffusion</name>
-        <reimplements refid="stochastic_process_1a8562aad455e247b42d47aab2b18f205a">diffusion</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-        </param>
-        <briefdescription>
-<para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <location file="/processes/hestonprocess.hpp" line="65"/>
-      </memberdef>
-      <memberdef kind="function" id="heston_process_1a87d025fa8e0daa4e048320c7ac266bb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
-        <definition>Disposable&lt;Array&gt; apply</definition>
-        <argsstring>(const Array &amp;x0, const Array &amp;dx) const </argsstring>
-        <name>apply</name>
-        <reimplements refid="stochastic_process_1a07090b508d659de1879284548f3ea344">apply</reimplements>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x0</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>dx</declname>
-        </param>
-        <detaileddescription>
-<para>applies a change to the asset value. By default, it returns <formula id="359">$ \mathrm{x} + \Delta \mathrm{x} $</formula>. </para>        </detaileddescription>
-        <location file="/processes/hestonprocess.hpp" line="66"/>
-      </memberdef>
-      <memberdef kind="function" id="heston_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
-        <definition>Disposable&lt;Array&gt; evolve</definition>
-        <argsstring>(Time t0, const Array &amp;x0, Time dt, const Array &amp;dw) const </argsstring>
-        <name>evolve</name>
-        <reimplements refid="stochastic_process_1add82def76a374049a66ae8cb3cfa0e97">evolve</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t0</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x0</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>dt</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>dw</declname>
-        </param>
-        <detaileddescription>
-<para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <location file="/processes/hestonprocess.hpp" line="68"/>
-      </memberdef>
       <memberdef kind="function" id="heston_process_1a30fd40988a93faccca807dd016f8c5e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real v0</definition>
@@ -227,20 +127,6 @@
         <argsstring>() const </argsstring>
         <name>riskFreeRate</name>
         <location file="/processes/hestonprocess.hpp" line="78"/>
-      </memberdef>
-      <memberdef kind="function" id="heston_process_1af8a1d4ca4369b3009d08291f1c2d7744" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time time</definition>
-        <argsstring>(const Date &amp;) const </argsstring>
-        <name>time</name>
-        <reimplements refid="stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef">time</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-        </param>
-        <detaileddescription>
-<para>returns the time value corresponding to the given date in the reference system of the stochastic process.</para><para><simplesect kind="note"><para>As a number of processes might not need this functionality, a default implementation is given which raises an exception. </para></simplesect>
-</para>        </detaileddescription>
-        <location file="/processes/hestonprocess.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

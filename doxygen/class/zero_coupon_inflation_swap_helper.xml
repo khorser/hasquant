@@ -39,29 +39,6 @@
         </param>
         <location file="/termstructures/inflation/inflationhelpers.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="zero_coupon_inflation_swap_helper_1a70ad3f5015feaac40fbe9ccb8cc04ee4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setTermStructure</definition>
-        <argsstring>(ZeroInflationTermStructure *)</argsstring>
-        <name>setTermStructure</name>
-        <reimplements refid="bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce">setTermStructure</reimplements>
-        <param>
-          <type><ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> *</type>
-        </param>
-        <briefdescription>
-<para>sets the term structure to be used for pricing </para>        </briefdescription>
-        <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000108"><xreftitle>Warning</xreftitle><xrefdescription><para>Being a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to <bold>this</bold>, i.e., the term structure itself. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/termstructures/inflation/inflationhelpers.hpp" line="48"/>
-      </memberdef>
-      <memberdef kind="function" id="zero_coupon_inflation_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real impliedQuote</definition>
-        <argsstring>() const </argsstring>
-        <name>impliedQuote</name>
-        <reimplements refid="bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <location file="/termstructures/inflation/inflationhelpers.hpp" line="49"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Zero-coupon inflation-swap bootstrap helper. </para>    </briefdescription>

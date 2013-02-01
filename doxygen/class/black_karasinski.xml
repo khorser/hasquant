@@ -26,30 +26,6 @@
         </param>
         <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="black_karasinski_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
-        <argsstring>() const </argsstring>
-        <name>dynamics</name>
-        <reimplements refid="one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
-        <briefdescription>
-<para>returns the short-rate dynamics </para>        </briefdescription>
-        <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="47" bodyfile="/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="47" bodyend="49"/>
-      </memberdef>
-      <memberdef kind="function" id="black_karasinski_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
-        <argsstring>(const TimeGrid &amp;grid) const </argsstring>
-        <name>tree</name>
-        <reimplements refid="one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
-        <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
-          <declname>grid</declname>
-        </param>
-        <briefdescription>
-<para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="51"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Standard Black-Karasinski model class. </para>    </briefdescription>

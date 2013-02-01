@@ -117,30 +117,6 @@
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="303"/>
       </memberdef>
-      <memberdef kind="function" id="numeric_hagan_pricer_1aac92f2768007012121b6a887ba0d5b0b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real optionletPrice</definition>
-        <argsstring>(Option::Type optionType, Rate strike) const </argsstring>
-        <name>optionletPrice</name>
-        <reimplements refid="hagan_pricer_1a44f8103051603e71b2588646300e229b">optionletPrice</reimplements>
-        <param>
-          <type>Option::Type</type>
-          <declname>optionType</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-          <declname>strike</declname>
-        </param>
-        <location file="/cashflows/conundrumpricer.hpp" line="305"/>
-      </memberdef>
-      <memberdef kind="function" id="numeric_hagan_pricer_1a3416b3c7e57041a332be8b73b8ba53a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real swapletPrice</definition>
-        <argsstring>() const </argsstring>
-        <name>swapletPrice</name>
-        <reimplements refid="hagan_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328">swapletPrice</reimplements>
-        <location file="/cashflows/conundrumpricer.hpp" line="306"/>
-      </memberdef>
       <memberdef kind="function" id="numeric_hagan_pricer_1a5ab54a87e9967e0e79c53a507e55e7b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real resetUpperLimit</definition>

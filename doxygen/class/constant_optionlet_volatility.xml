@@ -5,39 +5,9 @@
     <includes local="no">/termstructures/volatility/optionlet/constantoptionletvol.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="constant_optionlet_volatility_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="63" bodyfile="/termstructures/volatility/optionlet/constantoptionletvol.hpp" bodystart="82" bodyend="84"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
-      <memberdef kind="function" id="constant_optionlet_volatility_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real minStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>minStrike</name>
-        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
-        <briefdescription>
-<para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="67" bodyfile="/termstructures/volatility/optionlet/constantoptionletvol.hpp" bodystart="86" bodyend="88"/>
-      </memberdef>
-      <memberdef kind="function" id="constant_optionlet_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real maxStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>maxStrike</name>
-        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
-        <briefdescription>
-<para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="68" bodyfile="/termstructures/volatility/optionlet/constantoptionletvol.hpp" bodystart="90" bodyend="92"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="constant_optionlet_volatility_1a67313d8f577245f98e5d9ad63a122d99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -51,28 +51,6 @@
         </param>
         <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="generalized_hull_white_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
-        <argsstring>() const </argsstring>
-        <name>dynamics</name>
-        <reimplements refid="one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
-        <briefdescription>
-<para>returns the short-rate dynamics </para>        </briefdescription>
-        <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="63" bodyfile="/experimental/shortrate/generalizedhullwhite.hpp" bodystart="63" bodyend="65"/>
-      </memberdef>
-      <memberdef kind="function" id="generalized_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
-        <argsstring>(const TimeGrid &amp;grid) const </argsstring>
-        <name>tree</name>
-        <reimplements refid="short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d">tree</reimplements>
-        <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
-          <declname>grid</declname>
-        </param>
-        <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="67"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Generalized Hull-White model class. </para>    </briefdescription>

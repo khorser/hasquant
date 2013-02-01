@@ -5,14 +5,6 @@
     <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
-      <memberdef kind="function" id="type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::string</type>
-        <definition>std::string description</definition>
-        <argsstring>() const </argsstring>
-        <name>description</name>
-        <reimplements refid="payoff_1a77d7003fa5d2e29669371413d5662141">description</reimplements>
-        <location file="/instruments/payoffs.hpp" line="54"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="type_payoff_1aeb3010f80a6d93ea7ecfd86d7563d458" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

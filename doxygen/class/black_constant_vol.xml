@@ -5,54 +5,12 @@
     <includes local="no">/termstructures/volatility/equityfx/blackconstantvol.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="black_constant_vol_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/blackconstantvol.hpp" line="59" bodyfile="/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="111" bodyend="113"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
-      <memberdef kind="function" id="black_constant_vol_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real minStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>minStrike</name>
-        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
-        <briefdescription>
-<para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/blackconstantvol.hpp" line="63" bodyfile="/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="115" bodyend="117"/>
-      </memberdef>
-      <memberdef kind="function" id="black_constant_vol_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real maxStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>maxStrike</name>
-        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
-        <briefdescription>
-<para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/blackconstantvol.hpp" line="64" bodyfile="/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="119" bodyend="121"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="black_constant_vol_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="black_volatility_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-          <defname>v</defname>
-        </param>
-        <location file="/termstructures/volatility/equityfx/blackconstantvol.hpp" line="68" bodyfile="/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="123" bodyend="130"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="black_constant_vol_1a715f0ebaf60ac7805652ec9979aaa294" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

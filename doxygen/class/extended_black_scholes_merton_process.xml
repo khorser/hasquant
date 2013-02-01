@@ -52,68 +52,6 @@
         </param>
         <location file="/experimental/processes/extendedblackscholesprocess.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="extended_black_scholes_merton_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real drift</definition>
-        <argsstring>(Time t, Real x) const </argsstring>
-        <name>drift</name>
-        <reimplements refid="stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3">drift</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x</declname>
-        </param>
-        <briefdescription>
-<para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="/experimental/processes/extendedblackscholesprocess.hpp" line="48"/>
-      </memberdef>
-      <memberdef kind="function" id="extended_black_scholes_merton_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real diffusion</definition>
-        <argsstring>(Time t, Real x) const </argsstring>
-        <name>diffusion</name>
-        <reimplements refid="stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x</declname>
-        </param>
-        <briefdescription>
-<para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="/experimental/processes/extendedblackscholesprocess.hpp" line="49"/>
-      </memberdef>
-      <memberdef kind="function" id="extended_black_scholes_merton_process_1a28916b3498be74dceb699ad1499a46c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real evolve</definition>
-        <argsstring>(Time t0, Real x0, Time dt, Real dw) const </argsstring>
-        <name>evolve</name>
-        <reimplements refid="stochastic_process1_d_1a690ddf2804c6862d281f9181bd2b633e">evolve</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t0</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x0</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>dt</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>dw</declname>
-        </param>
-        <detaileddescription>
-<para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="365">\[ E(x_0,t_0,\Delta t) + S(x_0,t_0,\Delta t) \cdot \Delta w \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <location file="/experimental/processes/extendedblackscholesprocess.hpp" line="50"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>experimental Black-Scholes-Merton stochastic process </para>    </briefdescription>

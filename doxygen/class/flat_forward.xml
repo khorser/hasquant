@@ -132,27 +132,9 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="flat_forward_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/yield/flatforward.hpp" line="71" bodyfile="/termstructures/yield/flatforward.hpp" bodystart="71" bodyend="71"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="flat_forward_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="/termstructures/yield/flatforward.hpp" line="76" bodyfile="/termstructures/yield/flatforward.hpp" bodystart="97" bodyend="100"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="flat_forward_1a6968bd096b10d7259e742fa324abade3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

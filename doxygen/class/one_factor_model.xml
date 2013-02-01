@@ -33,20 +33,6 @@
 <para>returns the short-rate dynamics </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodel.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="one_factor_model_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
-        <argsstring>(const TimeGrid &amp;grid) const </argsstring>
-        <name>tree</name>
-        <reimplements refid="short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d">tree</reimplements>
-        <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
-          <declname>grid</declname>
-        </param>
-        <briefdescription>
-<para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <location file="/models/shortrate/onefactormodel.hpp" line="49"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Single-factor short-rate model abstract class. </para>    </briefdescription>

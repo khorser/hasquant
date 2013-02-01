@@ -31,27 +31,6 @@
         </param>
         <location file="/experimental/credit/recoveryratemodel.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="constant_recovery_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/experimental/credit/recoveryratemodel.hpp" line="67" bodyfile="/experimental/credit/recoveryratemodel.hpp" bodystart="67" bodyend="67"/>
-      </memberdef>
-      <memberdef kind="function" id="constant_recovery_model_1afe953f4160ca21765a8aadb329bab537" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
-        <definition>bool appliesToSeniority</definition>
-        <argsstring>(Seniority) const </argsstring>
-        <name>appliesToSeniority</name>
-        <reimplements refid="recovery_rate_model_1a8be5f6243e76fbc12665e1111531fb66">appliesToSeniority</reimplements>
-        <param>
-          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
-        </param>
-        <detaileddescription>
-<para>Returns true if the model will return recovery rates for the requested seniority. </para>        </detaileddescription>
-        <location file="/experimental/credit/recoveryratemodel.hpp" line="68" bodyfile="/experimental/credit/recoveryratemodel.hpp" bodystart="68" bodyend="68"/>
-      </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>Simple Recovery Rate model returning the constant value of the quote independently of the date and the seniority. </para>    </detaileddescription>

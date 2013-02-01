@@ -211,16 +211,6 @@
         <name>size</name>
         <location file="/experimental/credit/cdo.hpp" line="141" bodyfile="/experimental/credit/cdo.hpp" bodystart="141" bodyend="141"/>
       </memberdef>
-      <memberdef kind="function" id="c_d_o_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="/experimental/credit/cdo.hpp" line="143"/>
-      </memberdef>
       <memberdef kind="function" id="c_d_o_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairPremium</definition>

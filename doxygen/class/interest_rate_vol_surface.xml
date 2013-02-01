@@ -132,17 +132,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="interest_rate_vol_surface_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="black_vol_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-        </param>
-        <location file="/experimental/volatility/interestratevolsurface.hpp" line="85"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interest_rate_vol_surface_1a3abd7ea3a1e190b4a16ba6cdb32aa6b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

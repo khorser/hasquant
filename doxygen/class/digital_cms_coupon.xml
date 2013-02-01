@@ -5,17 +5,6 @@
     <includes local="no">/cashflows/digitalcmscoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="digital_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="digital_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-        </param>
-        <location file="/cashflows/digitalcmscoupon.hpp" line="53"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="digital_cms_coupon_1a599a52c89048aec18b0f0ff10a984606" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

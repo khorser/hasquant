@@ -28,31 +28,6 @@
 <para>Default constructor. </para>        </briefdescription>
         <location file="/math/optimization/armijo.hpp" line="54" bodyfile="/math/optimization/armijo.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="armijo_line_search_1a5d35ecca8f9fb5e845371eb48e90d3f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real operator()</definition>
-        <argsstring>(Problem &amp;P, EndCriteria::Type &amp;ecType, const EndCriteria &amp;, const Real t_ini)</argsstring>
-        <name>operator()</name>
-        <reimplements refid="line_search_1a97d8cb294aaa9a7bc88678370e80f31e">operator()</reimplements>
-        <param>
-          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
-          <declname>P</declname>
-        </param>
-        <param>
-          <type>EndCriteria::Type &amp;</type>
-          <declname>ecType</declname>
-        </param>
-        <param>
-          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
-        </param>
-        <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>t_ini</declname>
-        </param>
-        <briefdescription>
-<para>Perform line search. </para>        </briefdescription>
-        <location file="/math/optimization/armijo.hpp" line="60"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Armijo line search. </para>    </briefdescription>

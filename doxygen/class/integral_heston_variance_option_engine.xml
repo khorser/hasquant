@@ -14,14 +14,6 @@
         </param>
         <location file="/experimental/varianceoption/integralhestonvarianceoptionengine.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="integral_heston_variance_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/experimental/varianceoption/integralhestonvarianceoptionengine.hpp" line="42"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>integral Heston-model variance-option engine </para>    </briefdescription>

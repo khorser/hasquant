@@ -37,19 +37,6 @@
         </param>
         <location file="/instruments/asianoption.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="discrete_averaging_asian_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupArguments</definition>
-        <argsstring>(PricingEngine::arguments *) const </argsstring>
-        <name>setupArguments</name>
-        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <param>
-          <type>PricingEngine::arguments *</type>
-        </param>
-        <detaileddescription>
-<para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/instruments/asianoption.hpp" line="67"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Discrete-averaging Asian option. </para>    </briefdescription>

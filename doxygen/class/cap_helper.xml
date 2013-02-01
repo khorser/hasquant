@@ -44,42 +44,6 @@
         </param>
         <location file="/models/shortrate/calibrationhelpers/caphelper.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="cap_helper_1af4e5312442df0cb0ab6cccc66fb7bf6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void addTimesTo</definition>
-        <argsstring>(std::list&lt; Time &gt; &amp;times) const </argsstring>
-        <name>addTimesTo</name>
-        <reimplements refid="calibration_helper_1a06c670b250bcd21e9787ebc007093545">addTimesTo</reimplements>
-        <param>
-          <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
-          <declname>times</declname>
-        </param>
-        <location file="/models/shortrate/calibrationhelpers/caphelper.hpp" line="50"/>
-      </memberdef>
-      <memberdef kind="function" id="cap_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real modelValue</definition>
-        <argsstring>() const </argsstring>
-        <name>modelValue</name>
-        <reimplements refid="calibration_helper_1a573ec85444166decbaa5888155b9fa39">modelValue</reimplements>
-        <briefdescription>
-<para>returns the price of the instrument according to the model </para>        </briefdescription>
-        <location file="/models/shortrate/calibrationhelpers/caphelper.hpp" line="51"/>
-      </memberdef>
-      <memberdef kind="function" id="cap_helper_1a722ad9621557c52aa1b7e1e6f7308424" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real blackPrice</definition>
-        <argsstring>(Volatility volatility) const </argsstring>
-        <name>blackPrice</name>
-        <reimplements refid="calibration_helper_1ae916246904fe19039c315903020642ff">blackPrice</reimplements>
-        <param>
-          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-          <declname>volatility</declname>
-        </param>
-        <briefdescription>
-<para>Black price given a volatility. </para>        </briefdescription>
-        <location file="/models/shortrate/calibrationhelpers/caphelper.hpp" line="52"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>calibration helper for ATM cap </para>    </briefdescription>

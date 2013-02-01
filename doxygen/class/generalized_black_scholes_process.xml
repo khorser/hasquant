@@ -5,129 +5,9 @@
     <includes local="no">/processes/blackscholesprocess.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess1D interface</header>
-      <memberdef kind="function" id="generalized_black_scholes_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real x0</definition>
-        <argsstring>() const </argsstring>
-        <name>x0</name>
-        <reimplements refid="stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
-        <briefdescription>
-<para>returns the initial value of the state variable </para>        </briefdescription>
-        <location file="/processes/blackscholesprocess.hpp" line="58"/>
-      </memberdef>
-      <memberdef kind="function" id="generalized_black_scholes_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real drift</definition>
-        <argsstring>(Time t, Real x) const </argsstring>
-        <name>drift</name>
-        <reimplements refid="stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3">drift</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x</declname>
-        </param>
-        <detaileddescription>
-<para><xrefsect id="todo_1_todo000059"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>revise extrapolation </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/processes/blackscholesprocess.hpp" line="60"/>
-      </memberdef>
-      <memberdef kind="function" id="generalized_black_scholes_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real diffusion</definition>
-        <argsstring>(Time t, Real x) const </argsstring>
-        <name>diffusion</name>
-        <reimplements refid="stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x</declname>
-        </param>
-        <detaileddescription>
-<para><xrefsect id="todo_1_todo000060"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>revise extrapolation </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/processes/blackscholesprocess.hpp" line="62"/>
-      </memberdef>
-      <memberdef kind="function" id="generalized_black_scholes_process_1aee1aadb67f9085eb8a9fc89604bd8ead" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real apply</definition>
-        <argsstring>(Real x0, Real dx) const </argsstring>
-        <name>apply</name>
-        <reimplements refid="stochastic_process1_d_1a905bb2d5a924e5274035b0850c3e04fb">apply</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x0</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>dx</declname>
-        </param>
-        <detaileddescription>
-<para>applies a change to the asset value. By default, it returns <formula id="366">$ x + \Delta x $</formula>. </para>        </detaileddescription>
-        <location file="/processes/blackscholesprocess.hpp" line="63"/>
-      </memberdef>
-      <memberdef kind="function" id="generalized_black_scholes_process_1a81842299056bb82662dce099fca6bcba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real expectation</definition>
-        <argsstring>(Time t0, Real x0, Time dt) const </argsstring>
-        <name>expectation</name>
-        <reimplements refid="stochastic_process1_d_1a8be83040b1b61f27a482f14d5b461caa">expectation</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t0</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x0</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>dt</declname>
-        </param>
-        <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000105"><xreftitle>Warning</xreftitle><xrefdescription><para>raises a &quot;not implemented&quot; exception. It should be rewritten to return the expectation E(S) of the process, not exp(E(log S)). </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/processes/blackscholesprocess.hpp" line="68"/>
-      </memberdef>
-      <memberdef kind="function" id="generalized_black_scholes_process_1a28916b3498be74dceb699ad1499a46c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real evolve</definition>
-        <argsstring>(Time t0, Real x0, Time dt, Real dw) const </argsstring>
-        <name>evolve</name>
-        <reimplements refid="stochastic_process1_d_1a690ddf2804c6862d281f9181bd2b633e">evolve</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t0</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x0</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>dt</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>dw</declname>
-        </param>
-        <detaileddescription>
-<para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="365">\[ E(x_0,t_0,\Delta t) + S(x_0,t_0,\Delta t) \cdot \Delta w \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <location file="/processes/blackscholesprocess.hpp" line="69"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="generalized_black_scholes_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/processes/blackscholesprocess.hpp" line="74"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -195,20 +75,6 @@
           <defval>boost::shared_ptr&lt; <ref refid="stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
         </param>
         <location file="/processes/blackscholesprocess.hpp" line="55"/>
-      </memberdef>
-      <memberdef kind="function" id="generalized_black_scholes_process_1af8a1d4ca4369b3009d08291f1c2d7744" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time time</definition>
-        <argsstring>(const Date &amp;) const </argsstring>
-        <name>time</name>
-        <reimplements refid="stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef">time</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-        </param>
-        <detaileddescription>
-<para>returns the time value corresponding to the given date in the reference system of the stochastic process.</para><para><simplesect kind="note"><para>As a number of processes might not need this functionality, a default implementation is given which raises an exception. </para></simplesect>
-</para>        </detaileddescription>
-        <location file="/processes/blackscholesprocess.hpp" line="71"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

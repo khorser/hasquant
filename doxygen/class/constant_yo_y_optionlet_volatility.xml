@@ -58,36 +58,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Limits</header>
-      <memberdef kind="function" id="constant_yo_y_optionlet_volatility_1a8f99356f853de778d6eb053615c1bdbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>virtual Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="161" bodyfile="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="161" bodyend="161"/>
-      </memberdef>
-      <memberdef kind="function" id="constant_yo_y_optionlet_volatility_1a325a26f342dc0d36ac376c98e79f7565" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real minStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>minStrike</name>
-        <reimplements refid="yo_y_optionlet_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplements>
-        <briefdescription>
-<para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="163" bodyfile="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="163" bodyend="163"/>
-      </memberdef>
-      <memberdef kind="function" id="constant_yo_y_optionlet_volatility_1a890665a296b4f9991d4d01ac63e35873" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real maxStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>maxStrike</name>
-        <reimplements refid="yo_y_optionlet_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplements>
-        <briefdescription>
-<para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="165" bodyfile="/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="165" bodyend="165"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="constant_yo_y_optionlet_volatility_1a5bc76f64f8a3f16fe97a67e17f5cc5fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">

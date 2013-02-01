@@ -108,20 +108,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>YieldTermStructure implementation</header>
-      <memberdef kind="function" id="zero_yield_structure_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor discountImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>discountImpl</name>
-        <reimplements refid="yield_term_structure_1afe73bf9ae8077e99d6edde6ea309e991">discountImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <defname>t</defname>
-        </param>
-        <detaileddescription>
-<para>Returns the discount factor for the given date calculating it from the zero yield. </para>        </detaileddescription>
-        <location file="/termstructures/yield/zeroyieldstructure.hpp" line="86" bodyfile="/termstructures/yield/zeroyieldstructure.hpp" bodystart="92" bodyend="98"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Zero-yield term structure. </para>    </briefdescription>

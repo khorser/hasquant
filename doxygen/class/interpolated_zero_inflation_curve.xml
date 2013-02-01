@@ -10,28 +10,6 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>InflationTermStructure interface</header>
-      <memberdef kind="function" id="interpolated_zero_inflation_curve_1a872006051a1b47c481388e2f5313fd91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date baseDate</definition>
-        <argsstring>() const </argsstring>
-        <name>baseDate</name>
-        <reimplements refid="inflation_term_structure_1afec07013d98138f010a327210da23b50">baseDate</reimplements>
-        <briefdescription>
-<para>minimum (base) date </para>        </briefdescription>
-        <detaileddescription>
-<para>Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking). </para>        </detaileddescription>
-        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="57" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="184" bodyend="187"/>
-      </memberdef>
-      <memberdef kind="function" id="interpolated_zero_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="58" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="190" bodyend="198"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -73,20 +51,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>ZeroInflationTermStructure Interface</header>
-      <memberdef kind="function" id="interpolated_zero_inflation_curve_1a49e357360d4fec74eaa7858281dd662c" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate zeroRateImpl</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>zeroRateImpl</name>
-        <reimplements refid="zero_inflation_term_structure_1aca52e7fe785fca72b56319107c8f47b0">zeroRateImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <briefdescription>
-<para>to be defined in derived classes </para>        </briefdescription>
-        <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="73" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="202" bodyend="204"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interpolated_zero_inflation_curve_1a20a6bbceeb31afd577617566395ccb48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

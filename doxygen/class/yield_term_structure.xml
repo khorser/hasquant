@@ -314,14 +314,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="yield_term_structure_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="term_structure_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="/termstructures/yieldtermstructure.hpp" line="157" bodyfile="/termstructures/yieldtermstructure.hpp" bodystart="208" bodyend="212"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Calculations</header>

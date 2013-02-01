@@ -27,42 +27,6 @@
         </param>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="116" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="111" bodyend="116"/>
       </memberdef>
-      <memberdef kind="function" id="cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real variable</definition>
-        <argsstring>(Time, Rate r) const </argsstring>
-        <name>variable</name>
-        <reimplements refid="one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb">variable</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-          <declname>r</declname>
-        </param>
-        <briefdescription>
-<para>Compute state variable from short rate. </para>        </briefdescription>
-        <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="118" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="118" bodyend="120"/>
-      </memberdef>
-      <memberdef kind="function" id="cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real shortRate</definition>
-        <argsstring>(Time, Real y) const </argsstring>
-        <name>shortRate</name>
-        <reimplements refid="one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4">shortRate</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>variable</declname>
-        </param>
-        <briefdescription>
-<para>Compute short rate from state variable. </para>        </briefdescription>
-        <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="121" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="121" bodyend="123"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Dynamics of the short-rate under the Cox-Ingersoll-Ross model </para>    </briefdescription>

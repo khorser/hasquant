@@ -26,18 +26,6 @@
         </param>
         <location file="/methods/lattices/lattice1d.hpp" line="42" bodyfile="/methods/lattices/lattice1d.hpp" bodystart="41" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="tree_lattice1_d_1a9f0bc6b9482a95d66e1be219d3447589" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
-        <definition>Disposable&lt;Array&gt; grid</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>grid</name>
-        <reimplements refid="lattice_1a85dadec35b0b9775e93b8c0d826447ba">grid</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <location file="/methods/lattices/lattice1d.hpp" line="43" bodyfile="/methods/lattices/lattice1d.hpp" bodystart="43" bodyend="49"/>
-      </memberdef>
       <memberdef kind="function" id="tree_lattice1_d_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real underlying</definition>

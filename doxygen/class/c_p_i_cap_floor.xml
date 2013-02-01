@@ -62,43 +62,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="c_p_i_cap_floor_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="/instruments/cpicapfloor.hpp" line="95"/>
-      </memberdef>
-      <memberdef kind="function" id="c_p_i_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupArguments</definition>
-        <argsstring>(PricingEngine::arguments *) const </argsstring>
-        <name>setupArguments</name>
-        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <param>
-          <type>PricingEngine::arguments *</type>
-        </param>
-        <detaileddescription>
-<para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/instruments/cpicapfloor.hpp" line="96"/>
-      </memberdef>
-      <memberdef kind="function" id="c_p_i_cap_floor_1a0f63e39daa12d877d8156360b8f920af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void fetchResults</definition>
-        <argsstring>(const PricingEngine::results *r) const </argsstring>
-        <name>fetchResults</name>
-        <reimplements refid="instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
-        <param>
-          <type>const PricingEngine::results *</type>
-          <defname>r</defname>
-        </param>
-        <detaileddescription>
-<para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/instruments/cpicapfloor.hpp" line="97"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="c_p_i_cap_floor_1adc5fca7874ca8a0235557aa105b96267" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -5,32 +5,12 @@
     <includes local="no">/experimental/credit/recoveryratequote.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Quote interface</header>
-      <memberdef kind="function" id="recovery_rate_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real value</definition>
-        <argsstring>() const </argsstring>
-        <name>value</name>
-        <reimplements refid="quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
-        <briefdescription>
-<para>returns the current value </para>        </briefdescription>
-        <location file="/experimental/credit/recoveryratequote.hpp" line="43" bodyfile="/experimental/credit/recoveryratequote.hpp" bodystart="74" bodyend="77"/>
-      </memberdef>
       <memberdef kind="function" id="recovery_rate_quote_1a5b8c9356cc847f334f6eca69399f9dd9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
         <definition>Seniority seniority</definition>
         <argsstring>() const </argsstring>
         <name>seniority</name>
         <location file="/experimental/credit/recoveryratequote.hpp" line="44" bodyfile="/experimental/credit/recoveryratequote.hpp" bodystart="70" bodyend="72"/>
-      </memberdef>
-      <memberdef kind="function" id="recovery_rate_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
-        <definition>bool isValid</definition>
-        <argsstring>() const </argsstring>
-        <name>isValid</name>
-        <reimplements refid="quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
-        <briefdescription>
-<para>returns true if the <ref refid="quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <location file="/experimental/credit/recoveryratequote.hpp" line="45" bodyfile="/experimental/credit/recoveryratequote.hpp" bodystart="79" bodyend="83"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">

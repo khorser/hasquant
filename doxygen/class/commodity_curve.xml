@@ -125,16 +125,6 @@
         <name>currency</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="commodity_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/experimental/commodities/commoditycurve.hpp" line="63" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="117" bodyend="119"/>
-      </memberdef>
       <memberdef kind="function" id="commodity_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>

@@ -122,36 +122,6 @@
         </param>
         <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="60" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="92" bodyend="110"/>
       </memberdef>
-      <memberdef kind="function" id="k_interpolated_yo_y_optionlet_volatility_surface_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real minStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>minStrike</name>
-        <reimplements refid="yo_y_optionlet_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplements>
-        <briefdescription>
-<para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="62" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="123" bodyend="125"/>
-      </memberdef>
-      <memberdef kind="function" id="k_interpolated_yo_y_optionlet_volatility_surface_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real maxStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>maxStrike</name>
-        <reimplements refid="yo_y_optionlet_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplements>
-        <briefdescription>
-<para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="63" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="130" bodyend="132"/>
-      </memberdef>
-      <memberdef kind="function" id="k_interpolated_yo_y_optionlet_volatility_surface_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="64" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="115" bodyend="118"/>
-      </memberdef>
       <memberdef kind="function" id="k_interpolated_yo_y_optionlet_volatility_surface_1aed99cfee1edf3bbc3b19a9fe1a0c060a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &gt;</type>
         <definition>std::pair&lt; std::vector&lt; Rate &gt;, std::vector&lt; Volatility &gt; &gt; Dslice</definition>
@@ -177,24 +147,6 @@
           <declname>strike</declname>
         </param>
         <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="70" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="148" bodyend="162"/>
-      </memberdef>
-      <memberdef kind="function" id="k_interpolated_yo_y_optionlet_volatility_surface_1ae1dad241c14ce021b1b9e0ff138a5e85" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>Volatility volatilityImpl</definition>
-        <argsstring>(Time length, Rate strike) const </argsstring>
-        <name>volatilityImpl</name>
-        <reimplements refid="yo_y_optionlet_volatility_surface_1a36e205184c11421c639d90ff127f482a">volatilityImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>length</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-          <declname>strike</declname>
-        </param>
-        <detaileddescription>
-<para>Implements the actual volatility surface calculation in derived classes e.g. bilinear interpolation. N.B. does not derive the surface. </para>        </detaileddescription>
-        <location file="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" line="72" bodyfile="/experimental/inflation/kinterpolatedyoyoptionletvolatilitysurface.hpp" bodystart="179" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="k_interpolated_yo_y_optionlet_volatility_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>

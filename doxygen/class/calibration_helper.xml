@@ -39,14 +39,6 @@
         </param>
         <location file="/models/calibrationhelper.hpp" line="46" bodyfile="/models/calibrationhelper.hpp" bodystart="41" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="calibration_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/models/calibrationhelper.hpp" line="50" bodyfile="/models/calibrationhelper.hpp" bodystart="50" bodyend="53"/>
-      </memberdef>
       <memberdef kind="function" id="calibration_helper_1aa1d5a2a3e1205bdc482f59182282c426" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real marketValue</definition>

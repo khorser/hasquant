@@ -10,16 +10,6 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="interpolated_hazard_rate_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/credit/interpolatedhazardratecurve.hpp" line="65" bodyfile="/termstructures/credit/interpolatedhazardratecurve.hpp" bodystart="108" bodyend="110"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>other inspectors</header>
@@ -61,32 +51,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>DefaultProbabilityTermStructure implementation</header>
-      <memberdef kind="function" id="interpolated_hazard_rate_curve_1a817b9d19f3467a21ed88a000c64ce709" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real hazardRateImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>hazardRateImpl</name>
-        <reimplements refid="hazard_rate_structure_1a0186c4f02893fb518ec1eac362e77e35">hazardRateImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>hazard rate calculation </para>        </briefdescription>
-        <location file="/termstructures/credit/interpolatedhazardratecurve.hpp" line="96"/>
-      </memberdef>
-      <memberdef kind="function" id="interpolated_hazard_rate_curve_1a9ea9cd8b6b75f0c6e5ed1d907dfe63e1" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref></type>
-        <definition>Probability survivalProbabilityImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>survivalProbabilityImpl</name>
-        <reimplements refid="hazard_rate_structure_1a9ea9cd8b6b75f0c6e5ed1d907dfe63e1">survivalProbabilityImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <detaileddescription>
-<para>survival probability calculation implemented in terms of the hazard rate <formula id="369">$ h(t) $</formula> as <formula id="370">\[ S(t) = \exp\left( - \int_0^t h(\tau) d\tau \right). \]</formula></para><para><xrefsect id="caveats_1_caveats000110"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses numerical integration, which might be inefficient and inaccurate. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/termstructures/credit/interpolatedhazardratecurve.hpp" line="97"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interpolated_hazard_rate_curve_1ab8c703525e988d845c2105de98ecddfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

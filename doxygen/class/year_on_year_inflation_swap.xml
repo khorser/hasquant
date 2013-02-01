@@ -203,33 +203,6 @@
         <name>yoyLeg</name>
         <location file="/instruments/yearonyearinflationswap.hpp" line="96" bodyfile="/instruments/yearonyearinflationswap.hpp" bodystart="202" bodyend="204"/>
       </memberdef>
-      <memberdef kind="function" id="year_on_year_inflation_swap_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupArguments</definition>
-        <argsstring>(PricingEngine::arguments *args) const </argsstring>
-        <name>setupArguments</name>
-        <reimplements refid="swap_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <param>
-          <type>PricingEngine::arguments *</type>
-        </param>
-        <detaileddescription>
-<para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/instruments/yearonyearinflationswap.hpp" line="99"/>
-      </memberdef>
-      <memberdef kind="function" id="year_on_year_inflation_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void fetchResults</definition>
-        <argsstring>(const PricingEngine::results *) const </argsstring>
-        <name>fetchResults</name>
-        <reimplements refid="swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
-        <param>
-          <type>const PricingEngine::results *</type>
-          <defname>r</defname>
-        </param>
-        <detaileddescription>
-<para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/instruments/yearonyearinflationswap.hpp" line="100"/>
-      </memberdef>
       <memberdef kind="function" id="year_on_year_inflation_swap_1a4bf0b7d271fdda8a7508d1f5a6f27a0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~YearOnYearInflationSwap</definition>

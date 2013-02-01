@@ -59,14 +59,6 @@
         </param>
         <location file="/pricingengines/swaption/blackswaptionengine.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="black_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/pricingengines/swaption/blackswaptionengine.hpp" line="52"/>
-      </memberdef>
       <memberdef kind="function" id="black_swaption_engine_1aa6d8cf746064bbf8580d58fc2650d977" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; termStructure</definition>

@@ -90,16 +90,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Calculations</header>
-      <memberdef kind="function" id="instrument_1a10873979f635888606e03f9cb2d8a096" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="lazy_object_1a10873979f635888606e03f9cb2d8a096">calculate</reimplements>
-        <detaileddescription>
-<para>This method performs all needed calculations by calling the <emphasis><bold>performCalculations</bold></emphasis> method.</para><para><xrefsect id="caveats_1_caveats000085"><xreftitle>Warning</xreftitle><xrefdescription><para>Objects cache the results of the previous calculation. Such results will be returned upon later invocations of <emphasis><bold>calculate</bold></emphasis>. When the results depend on arguments which could change between invocations, the lazy object must register itself as observer of such objects for the calculations to be performed again when they change.</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000086"><xreftitle>Warning</xreftitle><xrefdescription><para>Should this method be redefined in derived classes, <ref refid="lazy_object_1a10873979f635888606e03f9cb2d8a096" kindref="member">LazyObject::calculate()</ref> should be called in the overriding method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/instrument.hpp" line="88" bodyfile="/instrument.hpp" bodystart="148" bodyend="155"/>
-      </memberdef>
       <memberdef kind="function" id="instrument_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void setupExpired</definition>
@@ -108,16 +98,6 @@
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
         <location file="/instrument.hpp" line="92" bodyfile="/instrument.hpp" bodystart="157" bodyend="161"/>
-      </memberdef>
-      <memberdef kind="function" id="instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <detaileddescription>
-<para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
-        <location file="/instrument.hpp" line="99" bodyfile="/instrument.hpp" bodystart="163" bodyend="170"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">

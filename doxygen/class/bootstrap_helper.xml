@@ -73,14 +73,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/termstructures/bootstraphelper.hpp" line="85" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="151" bodyend="153"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>

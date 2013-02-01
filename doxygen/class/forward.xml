@@ -51,16 +51,6 @@
 <para>term structure that discounts the underlying&apos;s income cash flows </para>        </briefdescription>
         <location file="/instruments/forward.hpp" line="77" bodyfile="/instruments/forward.hpp" bodystart="185" bodyend="187"/>
       </memberdef>
-      <memberdef kind="function" id="forward_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument is still tradable. </para>        </briefdescription>
-        <location file="/instruments/forward.hpp" line="79"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Calculations</header>

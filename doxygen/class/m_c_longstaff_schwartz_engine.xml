@@ -109,14 +109,6 @@
         </param>
         <location file="/pricingengines/mclongstaffschwartzengine.hpp" line="67" bodyfile="/pricingengines/mclongstaffschwartzengine.hpp" bodystart="96" bodyend="132"/>
       </memberdef>
-      <memberdef kind="function" id="m_c_longstaff_schwartz_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/pricingengines/mclongstaffschwartzengine.hpp" line="69" bodyfile="/pricingengines/mclongstaffschwartzengine.hpp" bodystart="148" bodyend="166"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Longstaff-Schwarz Monte Carlo engine for early exercise options. </para>    </briefdescription>

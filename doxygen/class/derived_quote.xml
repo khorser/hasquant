@@ -10,37 +10,9 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>Quote interface</header>
-      <memberdef kind="function" id="derived_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real value</definition>
-        <argsstring>() const </argsstring>
-        <name>value</name>
-        <reimplements refid="quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
-        <briefdescription>
-<para>returns the current value </para>        </briefdescription>
-        <location file="/quotes/derivedquote.hpp" line="45" bodyfile="/quotes/derivedquote.hpp" bodystart="67" bodyend="70"/>
-      </memberdef>
-      <memberdef kind="function" id="derived_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
-        <definition>bool isValid</definition>
-        <argsstring>() const </argsstring>
-        <name>isValid</name>
-        <reimplements refid="quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
-        <briefdescription>
-<para>returns true if the <ref refid="quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <location file="/quotes/derivedquote.hpp" line="46" bodyfile="/quotes/derivedquote.hpp" bodystart="73" bodyend="75"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="derived_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/quotes/derivedquote.hpp" line="50" bodyfile="/quotes/derivedquote.hpp" bodystart="78" bodyend="80"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="derived_quote_1aa20eb7655926a809d96c85943c38979a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

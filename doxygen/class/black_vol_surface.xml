@@ -161,48 +161,9 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="black_vol_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="black_atm_vol_curve_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-        </param>
-        <location file="/experimental/volatility/blackvolsurface.hpp" line="90"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>BlackAtmVolCurve interface</header>
-      <memberdef kind="function" id="black_vol_surface_1a399f9448fe345c23f0484547b98749fc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real atmVarianceImpl</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>atmVarianceImpl</name>
-        <reimplements refid="black_atm_vol_curve_1a3f60fbe8f11376ac813a5f751d33161c">atmVarianceImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <briefdescription>
-<para>spot at-the-money variance calculation </para>        </briefdescription>
-        <location file="/experimental/volatility/blackvolsurface.hpp" line="96"/>
-      </memberdef>
-      <memberdef kind="function" id="black_vol_surface_1a19afdb51423c925cb7f5ce598b2369ec" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>Volatility atmVolImpl</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>atmVolImpl</name>
-        <reimplements refid="black_atm_vol_curve_1a3e805d2195b83e2011386f39514d6100">atmVolImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <briefdescription>
-<para>spot at-the-money volatility calculation </para>        </briefdescription>
-        <location file="/experimental/volatility/blackvolsurface.hpp" line="98"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Calculations</header>

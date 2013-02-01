@@ -8,29 +8,6 @@
     <innerclass refid="path_multi_asset_option_1_1results" prot="public">QuantLib::PathMultiAssetOption::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="path_multi_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="48"/>
-      </memberdef>
-      <memberdef kind="function" id="path_multi_asset_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupArguments</definition>
-        <argsstring>(PricingEngine::arguments *) const </argsstring>
-        <name>setupArguments</name>
-        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <param>
-          <type>PricingEngine::arguments *</type>
-        </param>
-        <detaileddescription>
-<para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="50"/>
-      </memberdef>
       <memberdef kind="function" id="path_multi_asset_option_1a3762cf1ede25044eb5380658e479a49f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>boost::shared_ptr&lt; <ref refid="path_payoff" kindref="compound">PathPayoff</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;PathPayoff&gt; pathPayoff</definition>
@@ -44,16 +21,6 @@
         <argsstring>() const =0</argsstring>
         <name>fixingDates</name>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="53"/>
-      </memberdef>
-      <memberdef kind="function" id="path_multi_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>setupExpired</name>
-        <reimplements refid="instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <detaileddescription>
-<para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="56"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">

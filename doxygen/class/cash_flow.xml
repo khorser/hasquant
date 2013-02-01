@@ -5,39 +5,6 @@
     <includes local="no">/cashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
-      <memberdef kind="function" id="cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>virtual Date date</definition>
-        <argsstring>() const =0</argsstring>
-        <name>date</name>
-        <reimplements refid="event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
-        <detaileddescription>
-<para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
-</para>        </detaileddescription>
-        <location file="/cashflow.hpp" line="45"/>
-      </memberdef>
-      <memberdef kind="function" id="cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool hasOccurred</definition>
-        <argsstring>(const Date &amp;refDate=Date(), boost::optional&lt; bool &gt; includeRefDate=boost::none) const </argsstring>
-        <name>hasOccurred</name>
-        <reimplements refid="event_1aca737dd96c9485ce9613e5fb187c46eb">hasOccurred</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-          <declname>refDate</declname>
-          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
-        </param>
-        <param>
-          <type>boost::optional&lt; bool &gt;</type>
-          <declname>includeRefDate</declname>
-          <defval>boost::none</defval>
-        </param>
-        <briefdescription>
-<para>returns true if an event has already occurred before a date </para>        </briefdescription>
-        <detaileddescription>
-<para>overloads <ref refid="event_1aca737dd96c9485ce9613e5fb187c46eb" kindref="member">Event::hasOccurred</ref> in order to take QL_TODAYS_PAYMENTS in account </para>        </detaileddescription>
-        <location file="/cashflow.hpp" line="52"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>CashFlow interface</header>
@@ -56,17 +23,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="cash_flow_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-        </param>
-        <location file="/cashflow.hpp" line="64"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">

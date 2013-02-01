@@ -48,14 +48,6 @@
         </param>
         <location file="/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="fd2d_black_scholes_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="52"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Two dimensional finite-differences Black Scholes vanilla option engine. </para>    </briefdescription>

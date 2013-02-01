@@ -5,16 +5,6 @@
     <includes local="no">/experimental/credit/riskybond.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="risky_bond_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="/experimental/credit/riskybond.hpp" line="72"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="risky_bond_1a1392fb8c078ecf62236ec2558c44f3a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

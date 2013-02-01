@@ -29,38 +29,6 @@
         </param>
         <location file="/experimental/credit/onefactorstudentcopula.hpp" line="166"/>
       </memberdef>
-      <memberdef kind="function" id="one_factor_student_gaussian_copula_1a87748e5305096b30afeeaa93ce59137c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real density</definition>
-        <argsstring>(Real m) const </argsstring>
-        <name>density</name>
-        <reimplements refid="one_factor_copula_1a150d8a5373b942a7411cad42857ac0c2">density</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>m</declname>
-        </param>
-        <briefdescription>
-<para>Density function of M. </para>        </briefdescription>
-        <detaileddescription>
-<para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <location file="/experimental/credit/onefactorstudentcopula.hpp" line="168" bodyfile="/experimental/credit/onefactorstudentcopula.hpp" bodystart="187" bodyend="189"/>
-      </memberdef>
-      <memberdef kind="function" id="one_factor_student_gaussian_copula_1a7f12eff80e70545a68af09aaab9a5bfa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real cumulativeZ</definition>
-        <argsstring>(Real z) const </argsstring>
-        <name>cumulativeZ</name>
-        <reimplements refid="one_factor_copula_1a4d78de201751058a580a4104b569252f">cumulativeZ</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>z</declname>
-        </param>
-        <briefdescription>
-<para>Cumulative distribution of Z. </para>        </briefdescription>
-        <detaileddescription>
-<para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <location file="/experimental/credit/onefactorstudentcopula.hpp" line="169" bodyfile="/experimental/credit/onefactorstudentcopula.hpp" bodystart="191" bodyend="193"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>One-factor Student t - Gaussian Copula. </para>    </briefdescription>

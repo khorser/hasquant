@@ -65,20 +65,6 @@
         </param>
         <location file="/instruments/quantoforwardvanillaoption.hpp" line="42"/>
       </memberdef>
-      <memberdef kind="function" id="quanto_forward_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void fetchResults</definition>
-        <argsstring>(const PricingEngine::results *) const </argsstring>
-        <name>fetchResults</name>
-        <reimplements refid="forward_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
-        <param>
-          <type>const PricingEngine::results *</type>
-          <defname>r</defname>
-        </param>
-        <detaileddescription>
-<para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/instruments/quantoforwardvanillaoption.hpp" line="49"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Quanto version of a forward vanilla option. </para>    </briefdescription>

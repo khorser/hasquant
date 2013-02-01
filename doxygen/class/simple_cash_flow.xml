@@ -5,48 +5,12 @@
     <includes local="no">/cashflows/simplecashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
-      <memberdef kind="function" id="simple_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date date</definition>
-        <argsstring>() const </argsstring>
-        <name>date</name>
-        <reimplements refid="cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
-        <detaileddescription>
-<para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
-</para>        </detaileddescription>
-        <location file="/cashflows/simplecashflow.hpp" line="40" bodyfile="/cashflows/simplecashflow.hpp" bodystart="40" bodyend="40"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>CashFlow interface</header>
-      <memberdef kind="function" id="simple_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real amount</definition>
-        <argsstring>() const </argsstring>
-        <name>amount</name>
-        <reimplements refid="cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
-        <briefdescription>
-<para>returns the amount of the cash flow </para>        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
-</para>        </detaileddescription>
-        <location file="/cashflows/simplecashflow.hpp" line="44" bodyfile="/cashflows/simplecashflow.hpp" bodystart="44" bodyend="44"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="simple_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="cash_flow_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-          <defname>v</defname>
-        </param>
-        <location file="/cashflows/simplecashflow.hpp" line="48" bodyfile="/cashflows/simplecashflow.hpp" bodystart="89" bodyend="96"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="simple_cash_flow_1a0bd25764268be43d0c23bfbe8aba2b0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

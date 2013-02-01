@@ -9,64 +9,6 @@
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
-      <memberdef kind="function" id="interpolated_yo_y_optionlet_stripper_1aa5a448819773b424b8521378875e245d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void initialize</definition>
-        <argsstring>(const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;, const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;, const Real slope) const </argsstring>
-        <name>initialize</name>
-        <reimplements refid="yo_y_optionlet_stripper_1a5188210fcbaf217a55550e96c4909cfc">initialize</reimplements>
-        <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
-          <defname>s</defname>
-        </param>
-        <param>
-          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
-          <defname>p</defname>
-        </param>
-        <param>
-          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>slope</declname>
-        </param>
-        <briefdescription>
-<para><ref refid="yo_y_optionlet_stripper" kindref="compound">YoYOptionletStripper</ref> interface. </para>        </briefdescription>
-        <location file="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="52" bodyfile="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="176" bodyend="287"/>
-      </memberdef>
-      <memberdef kind="function" id="interpolated_yo_y_optionlet_stripper_1a5e7f4a8423be791d84c2f637f5f36309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>virtual Rate minStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>minStrike</name>
-        <reimplements refid="yo_y_optionlet_stripper_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
-        <location file="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="53" bodyfile="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="53" bodyend="55"/>
-      </memberdef>
-      <memberdef kind="function" id="interpolated_yo_y_optionlet_stripper_1a665e35ebe818f3866d6a3946ed399432" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>virtual Rate maxStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>maxStrike</name>
-        <reimplements refid="yo_y_optionlet_stripper_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
-        <location file="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="56" bodyfile="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="56" bodyend="58"/>
-      </memberdef>
-      <memberdef kind="function" id="interpolated_yo_y_optionlet_stripper_1a1b89821fd50ae8ad7335bb45f0f7ecf4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>virtual std::vector&lt;Rate&gt; strikes</definition>
-        <argsstring>() const </argsstring>
-        <name>strikes</name>
-        <reimplements refid="yo_y_optionlet_stripper_1ac959cc382e922f194db0da80ec9984d5">strikes</reimplements>
-        <location file="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="59" bodyfile="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="59" bodyend="61"/>
-      </memberdef>
-      <memberdef kind="function" id="interpolated_yo_y_optionlet_stripper_1a60ca89e5837b7d2c7c9ba70ee7205c36" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::pair&lt; std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &gt;</type>
-        <definition>std::pair&lt; std::vector&lt; Rate &gt;, std::vector&lt; Volatility &gt; &gt; slice</definition>
-        <argsstring>(const Date &amp;d) const </argsstring>
-        <name>slice</name>
-        <reimplements refid="yo_y_optionlet_stripper_1aea33d9a19826d827d20a9e73fe51298c">slice</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-          <declname>d</declname>
-        </param>
-        <location file="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="63" bodyfile="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="292" bodyend="310"/>
-      </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>The interpolated version interpolates along each K (as opposed to fitting a model, say).</para><para><xrefsect id="bug_1_bug000001"><xreftitle>Bug</xreftitle><xrefdescription><para>Tests currently fail. </para></xrefdescription></xrefsect></para>    </detaileddescription>

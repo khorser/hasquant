@@ -5,18 +5,6 @@
     <includes local="no">/cashflows/simplecashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="redemption_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="simple_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-          <defname>v</defname>
-        </param>
-        <location file="/cashflows/simplecashflow.hpp" line="67" bodyfile="/cashflows/simplecashflow.hpp" bodystart="98" bodyend="105"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="redemption_1a0078f8809cfc51f35eafd6c47cb56ba7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

@@ -72,14 +72,6 @@
         </param>
         <location file="/experimental/exoticoptions/mcpagodaengine.hpp" line="53" bodyfile="/experimental/exoticoptions/mcpagodaengine.hpp" bodystart="127" bodyend="140"/>
       </memberdef>
-      <memberdef kind="function" id="m_c_pagoda_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/experimental/exoticoptions/mcpagodaengine.hpp" line="54" bodyfile="/experimental/exoticoptions/mcpagodaengine.hpp" bodystart="54" bodyend="62"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for pagoda options using Monte Carlo simulation. </para>    </briefdescription>

@@ -31,29 +31,6 @@
         </param>
         <location file="/experimental/credit/randomdefaultmodel.hpp" line="69"/>
       </memberdef>
-      <memberdef kind="function" id="gaussian_random_default_model_1ac793b8fd2de34a6c7f3e7dce559ef39b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void nextSequence</definition>
-        <argsstring>(Real tmax=QL_MAX_REAL)</argsstring>
-        <name>nextSequence</name>
-        <reimplements refid="random_default_model_1ab88b59bed0374edc89a9d1ea4c13ace8">nextSequence</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>tmax</declname>
-          <defval><ref refid="group__limit_macros_1ga31675a375a563ed7a1bba05c664489af" kindref="member">QL_MAX_REAL</ref></defval>
-        </param>
-        <detaileddescription>
-<para>Generate a sequence of random default times, one for each name in the pool, and store the result in the Pool using method setTime(name). tmax denotes the maximum relevant time- default times &gt; tmax are not computed but set to tmax + 1 instead to save coputation time. </para>        </detaileddescription>
-        <location file="/experimental/credit/randomdefaultmodel.hpp" line="70"/>
-      </memberdef>
-      <memberdef kind="function" id="gaussian_random_default_model_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void reset</definition>
-        <argsstring>()</argsstring>
-        <name>reset</name>
-        <reimplements refid="random_default_model_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
-        <location file="/experimental/credit/randomdefaultmodel.hpp" line="71"/>
-      </memberdef>
       </sectiondef>
     <detaileddescription>
 <para>Random default times using a one-factor Gaussian copula. </para>    </detaileddescription>

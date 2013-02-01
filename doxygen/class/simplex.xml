@@ -17,24 +17,6 @@
 <para>Constructor taking as input the characteristic length </para>        </detaileddescription>
         <location file="/math/optimization/simplex.hpp" line="42" bodyfile="/math/optimization/simplex.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="simplex_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>EndCriteria::Type</type>
-        <definition>virtual EndCriteria::Type minimize</definition>
-        <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)</argsstring>
-        <name>minimize</name>
-        <reimplements refid="optimization_method_1a6bf9f0581475e7a28bdf478f941f116e">minimize</reimplements>
-        <param>
-          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
-          <declname>P</declname>
-        </param>
-        <param>
-          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
-          <declname>endCriteria</declname>
-        </param>
-        <briefdescription>
-<para>minimize the optimization problem P </para>        </briefdescription>
-        <location file="/math/optimization/simplex.hpp" line="44"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Multi-dimensional simplex class. </para>    </briefdescription>

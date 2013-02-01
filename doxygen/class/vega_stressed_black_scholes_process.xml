@@ -5,24 +5,6 @@
     <includes local="no">/experimental/processes/vegastressedblackscholesprocess.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess1D interface</header>
-      <memberdef kind="function" id="vega_stressed_black_scholes_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real diffusion</definition>
-        <argsstring>(Time t, Real x) const </argsstring>
-        <name>diffusion</name>
-        <reimplements refid="stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x</declname>
-        </param>
-        <briefdescription>
-<para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="/experimental/processes/vegastressedblackscholesprocess.hpp" line="49"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>interface for vega stress test</header>

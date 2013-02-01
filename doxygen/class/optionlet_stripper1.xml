@@ -5,16 +5,6 @@
     <includes local="no">/termstructures/volatility/optionlet/optionletstripper1.hpp</includes>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="optionlet_stripper1_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <detaileddescription>
-<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="58"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="optionlet_stripper1_1a50c685dc3d05c91348434bed9dadaa6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

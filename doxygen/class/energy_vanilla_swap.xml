@@ -63,16 +63,6 @@
         </param>
         <location file="/experimental/commodities/energyvanillaswap.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="energy_vanilla_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="/experimental/commodities/energyvanillaswap.hpp" line="51"/>
-      </memberdef>
       <memberdef kind="function" id="energy_vanilla_swap_1acf62c1e22a09f8f6ae515de3e07bef53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer payReceive</definition>

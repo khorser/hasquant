@@ -5,26 +5,6 @@
     <includes local="no">/instruments/compositeinstrument.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="composite_instrument_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="/instruments/compositeinstrument.hpp" line="62"/>
-      </memberdef>
-      <memberdef kind="function" id="composite_instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplements>
-        <detaileddescription>
-<para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
-        <location file="/instruments/compositeinstrument.hpp" line="64"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="composite_instrument_1a6c2e5140cb8d3d49eb526feba0d0fda0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -297,14 +297,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="default_probability_term_structure_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="term_structure_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="/termstructures/defaulttermstructure.hpp" line="149" bodyfile="/termstructures/defaulttermstructure.hpp" bodystart="238" bodyend="242"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Calculations</header>

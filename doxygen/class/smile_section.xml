@@ -55,14 +55,6 @@
         <name>~SmileSection</name>
         <location file="/termstructures/volatility/smilesection.hpp" line="45" bodyfile="/termstructures/volatility/smilesection.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="smile_section_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/termstructures/volatility/smilesection.hpp" line="47"/>
-      </memberdef>
       <memberdef kind="function" id="smile_section_1a1a0b4386bde01c8cc2678dc87489fcd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real minStrike</definition>

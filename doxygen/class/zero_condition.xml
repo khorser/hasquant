@@ -9,21 +9,6 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="zero_condition_1abd66e856646ef33d2ae796fb9d86f27f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void applyTo</definition>
-        <argsstring>(array_type &amp;a, Time) const </argsstring>
-        <name>applyTo</name>
-        <reimplements refid="step_condition_1afdc3da6d1c176db553a6e53b46684206">applyTo</reimplements>
-        <param>
-          <type>array_type &amp;</type>
-          <declname>a</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <location file="/methods/finitedifferences/zerocondition.hpp" line="37" bodyfile="/methods/finitedifferences/zerocondition.hpp" bodystart="37" bodyend="41"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Zero exercise condition. </para>    </briefdescription>

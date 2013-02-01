@@ -20,14 +20,6 @@
         </param>
         <location file="/pricingengines/forward/forwardengine.hpp" line="53" bodyfile="/pricingengines/forward/forwardengine.hpp" bodystart="68" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="forward_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/pricingengines/forward/forwardengine.hpp" line="54" bodyfile="/pricingengines/forward/forwardengine.hpp" bodystart="134" bodyend="138"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Forward engine for vanilla options </para>    </briefdescription>

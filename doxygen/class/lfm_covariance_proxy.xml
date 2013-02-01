@@ -33,40 +33,6 @@
         <name>correlationModel</name>
         <location file="/legacy/libormarketmodels/lfmcovarproxy.hpp" line="42"/>
       </memberdef>
-      <memberdef kind="function" id="lfm_covariance_proxy_1a98f01d842b650489da3c57e779f73c93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>Disposable&lt;Matrix&gt; diffusion</definition>
-        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
-        <name>diffusion</name>
-        <reimplements refid="lfm_covariance_parameterization_1aa158a54d0b3cc781418e3b64e18fcdcb">diffusion</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
-        </param>
-        <location file="/legacy/libormarketmodels/lfmcovarproxy.hpp" line="45"/>
-      </memberdef>
-      <memberdef kind="function" id="lfm_covariance_proxy_1a0278d24739a9bfc281246d6172530b49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>Disposable&lt;Matrix&gt; covariance</definition>
-        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
-        <name>covariance</name>
-        <reimplements refid="lfm_covariance_parameterization_1ad2d125d636a3618f4fc60050baf7c3fd">covariance</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
-        </param>
-        <location file="/legacy/libormarketmodels/lfmcovarproxy.hpp" line="47"/>
-      </memberdef>
       <memberdef kind="function" id="lfm_covariance_proxy_1aca9d976b9bf880a4f66011cc3b359688" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real integratedCovariance</definition>

@@ -6,30 +6,6 @@
       <sectiondef kind="user-defined">
       <header>Date calculations</header>
       <description><para>see <ulink url="http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1412">http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1412</ulink> </para></description>
-      <memberdef kind="function" id="e_u_r_libor_1a01fafdb3585a34706678b12af90b1cf9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date valueDate</definition>
-        <argsstring>(const Date &amp;fixingDate) const </argsstring>
-        <name>valueDate</name>
-        <reimplements refid="interest_rate_index_1a01fafdb3585a34706678b12af90b1cf9">valueDate</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-          <declname>fixingDate</declname>
-        </param>
-        <location file="/indexes/ibor/eurlibor.hpp" line="52"/>
-      </memberdef>
-      <memberdef kind="function" id="e_u_r_libor_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maturityDate</definition>
-        <argsstring>(const Date &amp;valueDate) const </argsstring>
-        <name>maturityDate</name>
-        <reimplements refid="interest_rate_index_1a272504b2735ffa618889e575d93212a9">maturityDate</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-          <declname>valueDate</declname>
-        </param>
-        <location file="/indexes/ibor/eurlibor.hpp" line="53"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="e_u_r_libor_1a3c295849ef82eac47318de584267ff33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

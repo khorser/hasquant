@@ -75,16 +75,6 @@
 <para>Use NoSeniority to settle to all seniorities with that recovery. In that case the event is assumed to have affected all seniorities. </para>        </detaileddescription>
         <location file="/experimental/credit/defaultevent.hpp" line="111"/>
       </memberdef>
-      <memberdef kind="function" id="default_event_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date date</definition>
-        <argsstring>() const </argsstring>
-        <name>date</name>
-        <reimplements refid="event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
-        <briefdescription>
-<para>returns the date at which the event occurs </para>        </briefdescription>
-        <location file="/experimental/credit/defaultevent.hpp" line="113"/>
-      </memberdef>
       <memberdef kind="function" id="default_event_1a6fef86acecb34c639bdbe8b1cb52a18c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isRestructuring</definition>
@@ -176,17 +166,6 @@
         <detaileddescription>
 <para>Returns true if this event would trigger a contract with the arguments characteristics. </para>        </detaileddescription>
         <location file="/experimental/credit/defaultevent.hpp" line="163"/>
-      </memberdef>
-      <memberdef kind="function" id="default_event_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-        </param>
-        <location file="/experimental/credit/defaultevent.hpp" line="165"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

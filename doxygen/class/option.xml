@@ -34,19 +34,6 @@
         </param>
         <location file="/option.hpp" line="43" bodyfile="/option.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void setupArguments</definition>
-        <argsstring>(PricingEngine::arguments *) const </argsstring>
-        <name>setupArguments</name>
-        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <param>
-          <type>PricingEngine::arguments *</type>
-        </param>
-        <detaileddescription>
-<para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/option.hpp" line="44" bodyfile="/option.hpp" bodystart="95" bodyend="102"/>
-      </memberdef>
       <memberdef kind="function" id="option_1ad20055b3037f613d7246b9b637768154" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>

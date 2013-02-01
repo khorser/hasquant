@@ -5,17 +5,6 @@
     <includes local="no">/cashflows/coupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
-      <memberdef kind="function" id="coupon_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date date</definition>
-        <argsstring>() const </argsstring>
-        <name>date</name>
-        <reimplements refid="cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
-        <detaileddescription>
-<para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
-</para>        </detaileddescription>
-        <location file="/cashflows/coupon.hpp" line="52" bodyfile="/cashflows/coupon.hpp" bodystart="52" bodyend="52"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -137,17 +126,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="cash_flow_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-        </param>
-        <location file="/cashflows/coupon.hpp" line="82"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="coupon_1a8059cf8902fe54a39631ef3c0775d05e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

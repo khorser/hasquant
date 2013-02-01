@@ -5,102 +5,12 @@
     <includes local="no">/termstructures/volatility/swaption/swaptionvolcube.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="swaption_volatility_cube_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter</definition>
-        <argsstring>() const </argsstring>
-        <name>dayCounter</name>
-        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
-        <briefdescription>
-<para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="52" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="52" bodyend="52"/>
-      </memberdef>
-      <memberdef kind="function" id="swaption_volatility_cube_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="53" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="53" bodyend="53"/>
-      </memberdef>
-      <memberdef kind="function" id="swaption_volatility_cube_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time maxTime</definition>
-        <argsstring>() const </argsstring>
-        <name>maxTime</name>
-        <reimplements refid="term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
-        <briefdescription>
-<para>the latest time for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="54" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="54" bodyend="54"/>
-      </memberdef>
-      <memberdef kind="function" id="swaption_volatility_cube_1a4a72314adf5959d9427df0fad16a1d3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-        <definition>const Date&amp; referenceDate</definition>
-        <argsstring>() const </argsstring>
-        <name>referenceDate</name>
-        <reimplements refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
-        <briefdescription>
-<para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="55" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="55" bodyend="55"/>
-      </memberdef>
-      <memberdef kind="function" id="swaption_volatility_cube_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
-        <definition>Calendar calendar</definition>
-        <argsstring>() const </argsstring>
-        <name>calendar</name>
-        <reimplements refid="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
-        <briefdescription>
-<para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="56" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="56" bodyend="56"/>
-      </memberdef>
-      <memberdef kind="function" id="swaption_volatility_cube_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural settlementDays</definition>
-        <argsstring>() const </argsstring>
-        <name>settlementDays</name>
-        <reimplements refid="term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
-        <briefdescription>
-<para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="57" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="57" bodyend="57"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
-      <memberdef kind="function" id="swaption_volatility_cube_1a92f7194103698b0abf537479db1bab49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate minStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>minStrike</name>
-        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
-        <briefdescription>
-<para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="60" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="60" bodyend="60"/>
-      </memberdef>
-      <memberdef kind="function" id="swaption_volatility_cube_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate maxStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>maxStrike</name>
-        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
-        <briefdescription>
-<para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="61" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="61" bodyend="61"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>SwaptionVolatilityStructure interface</header>
-      <memberdef kind="function" id="swaption_volatility_cube_1aa42d63fa6f2a1c9d377c25ca63fa5f6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
-        <definition>const Period&amp; maxSwapTenor</definition>
-        <argsstring>() const </argsstring>
-        <name>maxSwapTenor</name>
-        <reimplements refid="swaption_volatility_structure_1a95eb3bcb1f89026d83f78dd535d803a0">maxSwapTenor</reimplements>
-        <briefdescription>
-<para>the largest length for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="65" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="65" bodyend="65"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other inspectors</header>

@@ -76,14 +76,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="inflation_coupon_pricer_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>virtual void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/cashflows/inflationcouponpricer.hpp" line="70" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="70" bodyend="70"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="inflation_coupon_pricer_1ad147a1afa82e0fb39dde2053c1008538" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">

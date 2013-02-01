@@ -53,16 +53,6 @@
         <name>basket</name>
         <location file="/experimental/credit/syntheticcdo.hpp" line="115" bodyfile="/experimental/credit/syntheticcdo.hpp" bodystart="115" bodyend="115"/>
       </memberdef>
-      <memberdef kind="function" id="synthetic_c_d_o_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="/experimental/credit/syntheticcdo.hpp" line="117"/>
-      </memberdef>
       <memberdef kind="function" id="synthetic_c_d_o_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairPremium</definition>
@@ -129,33 +119,6 @@
         <argsstring>() const </argsstring>
         <name>error</name>
         <location file="/experimental/credit/syntheticcdo.hpp" line="132"/>
-      </memberdef>
-      <memberdef kind="function" id="synthetic_c_d_o_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupArguments</definition>
-        <argsstring>(PricingEngine::arguments *) const </argsstring>
-        <name>setupArguments</name>
-        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <param>
-          <type>PricingEngine::arguments *</type>
-        </param>
-        <detaileddescription>
-<para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/experimental/credit/syntheticcdo.hpp" line="134"/>
-      </memberdef>
-      <memberdef kind="function" id="synthetic_c_d_o_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void fetchResults</definition>
-        <argsstring>(const PricingEngine::results *) const </argsstring>
-        <name>fetchResults</name>
-        <reimplements refid="instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
-        <param>
-          <type>const PricingEngine::results *</type>
-          <defname>r</defname>
-        </param>
-        <detaileddescription>
-<para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="/experimental/credit/syntheticcdo.hpp" line="135"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

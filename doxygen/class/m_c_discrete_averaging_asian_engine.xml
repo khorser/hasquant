@@ -80,14 +80,6 @@
         </param>
         <location file="/pricingengines/asian/mcdiscreteasianengine.hpp" line="61" bodyfile="/pricingengines/asian/mcdiscreteasianengine.hpp" bodystart="104" bodyend="118"/>
       </memberdef>
-      <memberdef kind="function" id="m_c_discrete_averaging_asian_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/pricingengines/asian/mcdiscreteasianengine.hpp" line="62" bodyfile="/pricingengines/asian/mcdiscreteasianengine.hpp" bodystart="62" bodyend="77"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for discrete average Asians using Monte Carlo simulation. </para>    </briefdescription>

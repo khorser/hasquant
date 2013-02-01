@@ -44,30 +44,9 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>FloatingRateCoupon interface</header>
-      <memberdef kind="function" id="overnight_indexed_coupon_1a8672d26ae625ac44319bf3ad4ced846e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date fixingDate</definition>
-        <argsstring>() const </argsstring>
-        <name>fixingDate</name>
-        <reimplements refid="floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff">fixingDate</reimplements>
-        <briefdescription>
-<para>the date when the coupon is fully determined </para>        </briefdescription>
-        <location file="/cashflows/overnightindexedcoupon.hpp" line="63" bodyfile="/cashflows/overnightindexedcoupon.hpp" bodystart="63" bodyend="63"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="overnight_indexed_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-        </param>
-        <location file="/cashflows/overnightindexedcoupon.hpp" line="67"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="overnight_indexed_coupon_1a5df568754bf01c78a6f0720861a6b74a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -5,59 +5,6 @@
     <includes local="no">/termstructures/yield/impliedtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>YieldTermStructure interface</header>
-      <memberdef kind="function" id="implied_term_structure_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter</definition>
-        <argsstring>() const </argsstring>
-        <name>dayCounter</name>
-        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
-        <briefdescription>
-<para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="/termstructures/yield/impliedtermstructure.hpp" line="53" bodyfile="/termstructures/yield/impliedtermstructure.hpp" bodystart="74" bodyend="76"/>
-      </memberdef>
-      <memberdef kind="function" id="implied_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
-        <definition>Calendar calendar</definition>
-        <argsstring>() const </argsstring>
-        <name>calendar</name>
-        <reimplements refid="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
-        <briefdescription>
-<para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <location file="/termstructures/yield/impliedtermstructure.hpp" line="54" bodyfile="/termstructures/yield/impliedtermstructure.hpp" bodystart="78" bodyend="80"/>
-      </memberdef>
-      <memberdef kind="function" id="implied_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural settlementDays</definition>
-        <argsstring>() const </argsstring>
-        <name>settlementDays</name>
-        <reimplements refid="term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
-        <briefdescription>
-<para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <location file="/termstructures/yield/impliedtermstructure.hpp" line="55" bodyfile="/termstructures/yield/impliedtermstructure.hpp" bodystart="82" bodyend="84"/>
-      </memberdef>
-      <memberdef kind="function" id="implied_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/yield/impliedtermstructure.hpp" line="56" bodyfile="/termstructures/yield/impliedtermstructure.hpp" bodystart="86" bodyend="88"/>
-      </memberdef>
-      <memberdef kind="function" id="implied_term_structure_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor discountImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>discountImpl</name>
-        <reimplements refid="yield_term_structure_1afe73bf9ae8077e99d6edde6ea309e991">discountImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>discount factor calculation </para>        </briefdescription>
-        <location file="/termstructures/yield/impliedtermstructure.hpp" line="58" bodyfile="/termstructures/yield/impliedtermstructure.hpp" bodystart="90" bodyend="102"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="implied_term_structure_1a7dcfdfac9796267ba70661c9ad5c85e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

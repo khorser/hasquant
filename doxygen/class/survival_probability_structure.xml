@@ -92,21 +92,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>DefaultProbabilityTermStructure implementation</header>
-      <memberdef kind="function" id="survival_probability_structure_1aacf490703e42933ebc53ef281a4a38fb" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real defaultDensityImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>defaultDensityImpl</name>
-        <reimplements refid="default_probability_term_structure_1a6fa52b63cbf5503d39b7ce7cb66b741e">defaultDensityImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>instantaneous default density at a given time </para>        </briefdescription>
-        <detaileddescription>
-<para>implemented in terms of the survival probability <formula id="371">$ S(t) $</formula> as <formula id="372">$ p(t) = -\frac{d}{dt} S(t). $</formula></para><para><xrefsect id="caveats_1_caveats000112"><xreftitle>Warning</xreftitle><xrefdescription><para>This implementation uses numerical differentiation, which might be inefficient and inaccurate. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/termstructures/credit/survivalprobabilitystructure.hpp" line="79"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Hazard-rate term structure. </para>    </briefdescription>

@@ -5,49 +5,9 @@
     <includes local="no">/termstructures/volatility/equityfx/blackvariancecurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="black_variance_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter</definition>
-        <argsstring>() const </argsstring>
-        <name>dayCounter</name>
-        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
-        <briefdescription>
-<para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="56" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="56" bodyend="56"/>
-      </memberdef>
-      <memberdef kind="function" id="black_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="57" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="91" bodyend="93"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
-      <memberdef kind="function" id="black_variance_curve_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real minStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>minStrike</name>
-        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
-        <briefdescription>
-<para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="61" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="95" bodyend="97"/>
-      </memberdef>
-      <memberdef kind="function" id="black_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real maxStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>maxStrike</name>
-        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
-        <briefdescription>
-<para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="62" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="99" bodyend="101"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
@@ -71,18 +31,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="black_variance_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="black_variance_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-          <defname>v</defname>
-        </param>
-        <location file="/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="76" bodyfile="/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="103" bodyend="110"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="black_variance_curve_1a37ac548367be1e742bffbbd41518d6e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

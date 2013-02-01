@@ -5,31 +5,6 @@
     <includes local="no">/cashflows/dividend.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Dividend interface</header>
-      <memberdef kind="function" id="fractional_dividend_1a16b8c27249065cfd9c5a2df99c217fac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real amount</definition>
-        <argsstring>() const </argsstring>
-        <name>amount</name>
-        <reimplements refid="dividend_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
-        <briefdescription>
-<para>returns the amount of the cash flow </para>        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
-</para>        </detaileddescription>
-        <location file="/cashflows/dividend.hpp" line="83" bodyfile="/cashflows/dividend.hpp" bodystart="83" bodyend="86"/>
-      </memberdef>
-      <memberdef kind="function" id="fractional_dividend_1a4331227e15dd6175bbb270e7e6311a43" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real amount</definition>
-        <argsstring>(Real underlying) const </argsstring>
-        <name>amount</name>
-        <reimplements refid="dividend_1a4851910d5646519c98bb6ee48bab8648">amount</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>underlying</declname>
-        </param>
-        <location file="/cashflows/dividend.hpp" line="87" bodyfile="/cashflows/dividend.hpp" bodystart="87" bodyend="89"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>

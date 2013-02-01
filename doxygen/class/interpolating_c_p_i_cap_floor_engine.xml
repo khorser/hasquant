@@ -14,14 +14,6 @@
         </param>
         <location file="/experimental/inflation/cpicapfloorengines.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="interpolating_c_p_i_cap_floor_engine_1acf2f383eca3842fb5af46cbf59e9c2d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/experimental/inflation/cpicapfloorengines.hpp" line="46"/>
-      </memberdef>
       <memberdef kind="function" id="interpolating_c_p_i_cap_floor_engine_1a31de2d5748acd4ff3dbdc511202b505b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
         <definition>virtual std::string name</definition>

@@ -19,14 +19,6 @@
         </param>
         <location file="/experimental/credit/syntheticcdoengines.hpp" line="160" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="158" bodyend="160"/>
       </memberdef>
-      <memberdef kind="function" id="monte_carlo_c_d_o_engine2_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/experimental/credit/syntheticcdoengines.hpp" line="161"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="c_d_o" kindref="compound">CDO</ref> engine, Monte Carlo for the sample payoff. </para>    </briefdescription>

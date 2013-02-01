@@ -5,18 +5,6 @@
     <includes local="no">/indexes/swapindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>InterestRateIndex interface</header>
-      <memberdef kind="function" id="swap_index_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maturityDate</definition>
-        <argsstring>(const Date &amp;valueDate) const </argsstring>
-        <name>maturityDate</name>
-        <reimplements refid="interest_rate_index_1a272504b2735ffa618889e575d93212a9">maturityDate</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-          <declname>valueDate</declname>
-        </param>
-        <location file="/indexes/swapindex.hpp" line="63"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>

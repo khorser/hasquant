@@ -107,18 +107,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="black_variance_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="black_vol_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-          <defname>v</defname>
-        </param>
-        <location file="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="233" bodyfile="/termstructures/volatility/equityfx/blackvoltermstructure.hpp" bodystart="314" bodyend="321"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black variance term structure. </para>    </briefdescription>

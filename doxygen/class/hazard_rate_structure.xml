@@ -108,33 +108,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>DefaultProbabilityTermStructure implementation</header>
-      <memberdef kind="function" id="hazard_rate_structure_1a9ea9cd8b6b75f0c6e5ed1d907dfe63e1" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref></type>
-        <definition>Probability survivalProbabilityImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>survivalProbabilityImpl</name>
-        <reimplements refid="default_probability_term_structure_1a344fea84748c884236cd26be3f3b1dd5">survivalProbabilityImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <detaileddescription>
-<para>survival probability calculation implemented in terms of the hazard rate <formula id="369">$ h(t) $</formula> as <formula id="370">\[ S(t) = \exp\left( - \int_0^t h(\tau) d\tau \right). \]</formula></para><para><xrefsect id="caveats_1_caveats000110"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses numerical integration, which might be inefficient and inaccurate. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/termstructures/credit/hazardratestructure.hpp" line="98"/>
-      </memberdef>
-      <memberdef kind="function" id="hazard_rate_structure_1aacf490703e42933ebc53ef281a4a38fb" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real defaultDensityImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>defaultDensityImpl</name>
-        <reimplements refid="default_probability_term_structure_1a6fa52b63cbf5503d39b7ce7cb66b741e">defaultDensityImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <defname>t</defname>
-        </param>
-        <briefdescription>
-<para>default density calculation </para>        </briefdescription>
-        <location file="/termstructures/credit/hazardratestructure.hpp" line="100" bodyfile="/termstructures/credit/hazardratestructure.hpp" bodystart="106" bodyend="108"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Hazard-rate term structure. </para>    </briefdescription>

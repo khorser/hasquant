@@ -5,16 +5,6 @@
     <includes local="no">/cashflows/averagebmacoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>FloatingRateCoupon interface</header>
-      <memberdef kind="function" id="average_b_m_a_coupon_1a8672d26ae625ac44319bf3ad4ced846e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date fixingDate</definition>
-        <argsstring>() const </argsstring>
-        <name>fixingDate</name>
-        <reimplements refid="floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff">fixingDate</reimplements>
-        <briefdescription>
-<para>not applicable here; use <ref refid="average_b_m_a_coupon_1a7f00f23080f829019ba5a986a64f79ff" kindref="member">fixingDates()</ref> instead </para>        </briefdescription>
-        <location file="/cashflows/averagebmacoupon.hpp" line="60"/>
-      </memberdef>
       <memberdef kind="function" id="average_b_m_a_coupon_1a7f00f23080f829019ba5a986a64f79ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
@@ -23,16 +13,6 @@
         <briefdescription>
 <para>fixing dates of the rates to be averaged </para>        </briefdescription>
         <location file="/cashflows/averagebmacoupon.hpp" line="62"/>
-      </memberdef>
-      <memberdef kind="function" id="average_b_m_a_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate indexFixing</definition>
-        <argsstring>() const </argsstring>
-        <name>indexFixing</name>
-        <reimplements refid="floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a">indexFixing</reimplements>
-        <briefdescription>
-<para>not applicable here; use <ref refid="average_b_m_a_coupon_1a39b677b1780af304cd199b748fb139b6" kindref="member">indexFixings()</ref> instead </para>        </briefdescription>
-        <location file="/cashflows/averagebmacoupon.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="average_b_m_a_coupon_1a39b677b1780af304cd199b748fb139b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
@@ -43,30 +23,9 @@
 <para>fixings of the underlying index to be averaged </para>        </briefdescription>
         <location file="/cashflows/averagebmacoupon.hpp" line="67"/>
       </memberdef>
-      <memberdef kind="function" id="average_b_m_a_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate convexityAdjustment</definition>
-        <argsstring>() const </argsstring>
-        <name>convexityAdjustment</name>
-        <reimplements refid="floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplements>
-        <briefdescription>
-<para>not applicable here </para>        </briefdescription>
-        <location file="/cashflows/averagebmacoupon.hpp" line="70"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="average_b_m_a_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-        </param>
-        <location file="/cashflows/averagebmacoupon.hpp" line="75"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="average_b_m_a_coupon_1a145541adfeb389ba98f14de59d789f3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

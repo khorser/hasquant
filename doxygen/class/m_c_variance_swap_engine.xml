@@ -80,14 +80,6 @@
         </param>
         <location file="/pricingengines/forward/mcvarianceswapengine.hpp" line="68" bodyfile="/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="168" bodyend="196"/>
       </memberdef>
-      <memberdef kind="function" id="m_c_variance_swap_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/pricingengines/forward/mcvarianceswapengine.hpp" line="70" bodyfile="/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="70" bodyend="100"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Variance-swap pricing engine using Monte Carlo simulation,. </para>    </briefdescription>

@@ -20,14 +20,6 @@
         </param>
         <location file="/experimental/variancegamma/fftvanillaengine.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="f_f_t_vanilla_engine_1a0428dab69dd3bc7d09cfa5127bf039ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::auto_ptr&lt; <ref refid="f_f_t_engine" kindref="compound">FFTEngine</ref> &gt;</type>
-        <definition>virtual std::auto_ptr&lt;FFTEngine&gt; clone</definition>
-        <argsstring>() const </argsstring>
-        <name>clone</name>
-        <reimplements refid="f_f_t_engine_1a957725ec1d11493d09636c2a11701d87">clone</reimplements>
-        <location file="/experimental/variancegamma/fftvanillaengine.hpp" line="42"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>FFT Pricing engine vanilla options under a Black Scholes process. </para>    </briefdescription>

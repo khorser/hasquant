@@ -81,32 +81,6 @@
 <para>(dirty) forward bond price minus accrued on bond at delivery </para>        </briefdescription>
         <location file="/instruments/fixedratebondforward.hpp" line="107"/>
       </memberdef>
-      <memberdef kind="function" id="fixed_rate_bond_forward_1a1560226b41dc061de57d00f0b0e0b7eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real spotIncome</definition>
-        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve) const </argsstring>
-        <name>spotIncome</name>
-        <reimplements refid="forward_1a789981beda42e02c2698dee83d077a1d">spotIncome</reimplements>
-        <param>
-          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
-          <declname>incomeDiscountCurve</declname>
-        </param>
-        <briefdescription>
-<para>NPV of bond coupons discounted using incomeDiscountCurve. </para>        </briefdescription>
-        <detaileddescription>
-<para>Here only coupons between max(evaluation date,settlement date) and maturity date of bond forward contract are considered income. </para>        </detaileddescription>
-        <location file="/instruments/fixedratebondforward.hpp" line="115"/>
-      </memberdef>
-      <memberdef kind="function" id="fixed_rate_bond_forward_1a51d635d520ea883db82bac7f4e684b75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real spotValue</definition>
-        <argsstring>() const </argsstring>
-        <name>spotValue</name>
-        <reimplements refid="forward_1a0304e7ed8b1277b01dd0a094102ddbce">spotValue</reimplements>
-        <briefdescription>
-<para>NPV of underlying bond. </para>        </briefdescription>
-        <location file="/instruments/fixedratebondforward.hpp" line="118"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Forward contract on a fixed-rate bond </para>    </briefdescription>

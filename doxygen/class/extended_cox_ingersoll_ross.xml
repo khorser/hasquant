@@ -37,54 +37,6 @@
         </param>
         <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="extended_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
-        <argsstring>(const TimeGrid &amp;grid) const </argsstring>
-        <name>tree</name>
-        <reimplements refid="cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
-        <param>
-          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
-          <declname>grid</declname>
-        </param>
-        <briefdescription>
-<para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="53"/>
-      </memberdef>
-      <memberdef kind="function" id="extended_cox_ingersoll_ross_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt; OneFactorModel::ShortRateDynamics &gt; dynamics</definition>
-        <argsstring>() const </argsstring>
-        <name>dynamics</name>
-        <reimplements refid="cox_ingersoll_ross_1a625405160d212c8860ac39c19c9e91cd">dynamics</reimplements>
-        <briefdescription>
-<para>returns the short-rate dynamics </para>        </briefdescription>
-        <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="55" bodyfile="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="148" bodyend="151"/>
-      </memberdef>
-      <memberdef kind="function" id="extended_cox_ingersoll_ross_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real discountBondOption</definition>
-        <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const </argsstring>
-        <name>discountBondOption</name>
-        <reimplements refid="cox_ingersoll_ross_1a7c92e4a748c8ff38b33f1460ee56dceb">discountBondOption</reimplements>
-        <param>
-          <type>Option::Type</type>
-          <declname>type</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>strike</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>maturity</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>bondMaturity</declname>
-        </param>
-        <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="60"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Extended Cox-Ingersoll-Ross model class. </para>    </briefdescription>

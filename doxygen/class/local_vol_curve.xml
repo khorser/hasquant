@@ -5,84 +5,12 @@
     <includes local="no">/termstructures/volatility/equityfx/localvolcurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="local_vol_curve_1a4a72314adf5959d9427df0fad16a1d3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-        <definition>const Date&amp; referenceDate</definition>
-        <argsstring>() const </argsstring>
-        <name>referenceDate</name>
-        <reimplements refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
-        <briefdescription>
-<para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/localvolcurve.hpp" line="43" bodyfile="/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="43" bodyend="45"/>
-      </memberdef>
-      <memberdef kind="function" id="local_vol_curve_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
-        <definition>Calendar calendar</definition>
-        <argsstring>() const </argsstring>
-        <name>calendar</name>
-        <reimplements refid="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
-        <briefdescription>
-<para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/localvolcurve.hpp" line="46" bodyfile="/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="46" bodyend="48"/>
-      </memberdef>
-      <memberdef kind="function" id="local_vol_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter</definition>
-        <argsstring>() const </argsstring>
-        <name>dayCounter</name>
-        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
-        <briefdescription>
-<para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/localvolcurve.hpp" line="49" bodyfile="/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="49" bodyend="51"/>
-      </memberdef>
-      <memberdef kind="function" id="local_vol_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/localvolcurve.hpp" line="52" bodyfile="/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="52" bodyend="54"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
-      <memberdef kind="function" id="local_vol_curve_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real minStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>minStrike</name>
-        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
-        <briefdescription>
-<para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/localvolcurve.hpp" line="58" bodyfile="/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="58" bodyend="60"/>
-      </memberdef>
-      <memberdef kind="function" id="local_vol_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real maxStrike</definition>
-        <argsstring>() const </argsstring>
-        <name>maxStrike</name>
-        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
-        <briefdescription>
-<para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <location file="/termstructures/volatility/equityfx/localvolcurve.hpp" line="61" bodyfile="/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="61" bodyend="63"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="local_vol_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="local_vol_term_structure_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-          <defname>v</defname>
-        </param>
-        <location file="/termstructures/volatility/equityfx/localvolcurve.hpp" line="67" bodyfile="/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="79" bodyend="86"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="local_vol_curve_1a9bcfbba29fe0a01738bfb53056be256a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

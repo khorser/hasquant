@@ -5,56 +5,6 @@
     <includes local="no">/termstructures/yield/quantotermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>YieldTermStructure interface</header>
-      <memberdef kind="function" id="quanto_term_structure_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter</definition>
-        <argsstring>() const </argsstring>
-        <name>dayCounter</name>
-        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
-        <briefdescription>
-<para>the day counter used for date/time conversion </para>        </briefdescription>
-        <location file="/termstructures/yield/quantotermstructure.hpp" line="54" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="97" bodyend="99"/>
-      </memberdef>
-      <memberdef kind="function" id="quanto_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
-        <definition>Calendar calendar</definition>
-        <argsstring>() const </argsstring>
-        <name>calendar</name>
-        <reimplements refid="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
-        <briefdescription>
-<para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <location file="/termstructures/yield/quantotermstructure.hpp" line="55" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="101" bodyend="103"/>
-      </memberdef>
-      <memberdef kind="function" id="quanto_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural settlementDays</definition>
-        <argsstring>() const </argsstring>
-        <name>settlementDays</name>
-        <reimplements refid="term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
-        <briefdescription>
-<para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <location file="/termstructures/yield/quantotermstructure.hpp" line="56" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="105" bodyend="107"/>
-      </memberdef>
-      <memberdef kind="function" id="quanto_term_structure_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-        <definition>const Date &amp; referenceDate</definition>
-        <argsstring>() const </argsstring>
-        <name>referenceDate</name>
-        <reimplements refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
-        <briefdescription>
-<para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <location file="/termstructures/yield/quantotermstructure.hpp" line="57" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="109" bodyend="111"/>
-      </memberdef>
-      <memberdef kind="function" id="quanto_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/yield/quantotermstructure.hpp" line="58" bodyfile="/termstructures/yield/quantotermstructure.hpp" bodystart="113" bodyend="120"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="quanto_term_structure_1a8a492ca4a04a52b27abb13989ea942ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

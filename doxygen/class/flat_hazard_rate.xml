@@ -88,16 +88,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="flat_hazard_rate_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/credit/flathazardrate.hpp" line="56" bodyfile="/termstructures/credit/flathazardrate.hpp" bodystart="56" bodyend="56"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Flat hazard-rate curve. </para>    </briefdescription>

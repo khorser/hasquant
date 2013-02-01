@@ -10,14 +10,6 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="relative_date_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <location file="/termstructures/bootstraphelper.hpp" line="108" bodyfile="/termstructures/bootstraphelper.hpp" bodystart="108" bodyend="114"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="relative_date_bootstrap_helper_1a1fa46ec9a0cdf7a8bed120d969664a1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

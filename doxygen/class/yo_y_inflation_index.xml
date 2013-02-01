@@ -5,25 +5,6 @@
     <includes local="no">/indexes/inflationindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
-      <memberdef kind="function" id="yo_y_inflation_index_1a1c776ca10de744b29a4d051102003eb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate fixing</definition>
-        <argsstring>(const Date &amp;fixingDate, bool forecastTodaysFixing=false) const </argsstring>
-        <name>fixing</name>
-        <reimplements refid="inflation_index_1ab2e953a50a4d61d840d72c13c4789ea6">fixing</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-          <declname>fixingDate</declname>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>forecastTodaysFixing</declname>
-          <defval>false</defval>
-        </param>
-        <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000042"><xreftitle>Warning</xreftitle><xrefdescription><para>the forecastTodaysFixing parameter (required by the <ref refid="index" kindref="compound">Index</ref> interface) is currently ignored. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/indexes/inflationindex.hpp" line="193"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other methods</header>

@@ -29,57 +29,6 @@
         </param>
         <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="lfm_hull_white_parameterization_1a98f01d842b650489da3c57e779f73c93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>Disposable&lt;Matrix&gt; diffusion</definition>
-        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
-        <name>diffusion</name>
-        <reimplements refid="lfm_covariance_parameterization_1aa158a54d0b3cc781418e3b64e18fcdcb">diffusion</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
-        </param>
-        <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="49"/>
-      </memberdef>
-      <memberdef kind="function" id="lfm_hull_white_parameterization_1a0278d24739a9bfc281246d6172530b49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>Disposable&lt;Matrix&gt; covariance</definition>
-        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
-        <name>covariance</name>
-        <reimplements refid="lfm_covariance_parameterization_1ad2d125d636a3618f4fc60050baf7c3fd">covariance</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
-        </param>
-        <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="51"/>
-      </memberdef>
-      <memberdef kind="function" id="lfm_hull_white_parameterization_1abadf15cf4c8136891d2e91d8f36a0baf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>Disposable&lt;Matrix&gt; integratedCovariance</definition>
-        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
-        <name>integratedCovariance</name>
-        <reimplements refid="lfm_covariance_parameterization_1a9e0d819083f581d34120c40617baf7a6">integratedCovariance</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
-        </param>
-        <location file="/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="53"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Libor market model parameterization based on Hull White paper </para>    </briefdescription>

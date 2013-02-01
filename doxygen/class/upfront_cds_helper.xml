@@ -142,22 +142,6 @@
 </para>        </detaileddescription>
         <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="170"/>
       </memberdef>
-      <memberdef kind="function" id="upfront_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real impliedQuote</definition>
-        <argsstring>() const </argsstring>
-        <name>impliedQuote</name>
-        <reimplements refid="bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="171"/>
-      </memberdef>
-      <memberdef kind="function" id="upfront_cds_helper_1a5b508edbd7d439284c55178fd681adb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void initializeDates</definition>
-        <argsstring>()</argsstring>
-        <name>initializeDates</name>
-        <reimplements refid="cds_helper_1a5b508edbd7d439284c55178fd681adb0">initializeDates</reimplements>
-        <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="172"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Upfront-quoted CDS hazard rate bootstrap helper. </para>    </briefdescription>

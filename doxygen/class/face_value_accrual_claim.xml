@@ -15,26 +15,6 @@
         </param>
         <location file="/instruments/claim.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="face_value_accrual_claim_1acf1dfd8d88311d4ea2f5630de7b995e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real amount</definition>
-        <argsstring>(const Date &amp;d, Real notional, Real recoveryRate) const </argsstring>
-        <name>amount</name>
-        <reimplements refid="claim_1a72b7cb2651ac4d2b9143c54c49090d37">amount</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-          <declname>d</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>notional</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>recoveryRate</declname>
-        </param>
-        <location file="/instruments/claim.hpp" line="57"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="claim" kindref="compound">Claim</ref> on the notional of a reference security, including accrual. </para>    </briefdescription>

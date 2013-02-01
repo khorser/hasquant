@@ -35,24 +35,6 @@
         </param>
         <location file="/experimental/commodities/energyfuture.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="energy_future_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="/experimental/commodities/energyfuture.hpp" line="41"/>
-      </memberdef>
-      <memberdef kind="function" id="energy_future_1a83ca7dd25d2c6f6fef9e0af158976dda" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="quantity" kindref="compound">Quantity</ref></type>
-        <definition>Quantity quantity</definition>
-        <argsstring>() const </argsstring>
-        <name>quantity</name>
-        <reimplements refid="energy_commodity_1a27b04a25745e81c4a2717c927bff3b78">quantity</reimplements>
-        <location file="/experimental/commodities/energyfuture.hpp" line="43" bodyfile="/experimental/commodities/energyfuture.hpp" bodystart="43" bodyend="43"/>
-      </memberdef>
       <memberdef kind="function" id="energy_future_1a47f8287b4ee8147f4729ca22511c8789" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const CommodityUnitCost &amp;</type>
         <definition>const CommodityUnitCost&amp; tradePrice</definition>

@@ -10,16 +10,6 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="interpolated_forward_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate</definition>
-        <argsstring>() const </argsstring>
-        <name>maxDate</name>
-        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <briefdescription>
-<para>the latest date for which the curve can return values </para>        </briefdescription>
-        <location file="/termstructures/yield/forwardcurve.hpp" line="65" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="113" bodyend="115"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>other inspectors</header>
@@ -61,32 +51,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>ForwardRateStructure implementation</header>
-      <memberdef kind="function" id="interpolated_forward_curve_1af9a0dab6e2bfb4a21dce277a40fcf928" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate forwardImpl</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>forwardImpl</name>
-        <reimplements refid="forward_rate_structure_1aba98e032168bf53ec33f971ff872fa40">forwardImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>instantaneous forward-rate calculation </para>        </briefdescription>
-        <location file="/termstructures/yield/forwardcurve.hpp" line="96"/>
-      </memberdef>
-      <memberdef kind="function" id="interpolated_forward_curve_1a7b3637b3975a6b4b75b71f31793d4687" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate zeroYieldImpl</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>zeroYieldImpl</name>
-        <reimplements refid="forward_rate_structure_1a5da0d2e596148e3aa538b6e47a8ecf63">zeroYieldImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <detaileddescription>
-<para>Returns the zero yield rate for the given date calculating it from the instantaneous forward rate <formula id="302">$ f(t) $</formula> as <formula id="394">\[ z(t) = \int_0^t f(\tau) d\tau \]</formula></para><para><xrefsect id="caveats_1_caveats000138"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses an highly inefficient and possibly wildly inaccurate numerical integration. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <location file="/termstructures/yield/forwardcurve.hpp" line="97"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interpolated_forward_curve_1a412ee31d3796ca98b65003ad7de2a5b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

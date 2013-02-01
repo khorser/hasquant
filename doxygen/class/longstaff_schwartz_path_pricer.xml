@@ -37,18 +37,6 @@
         </param>
         <location file="/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="57" bodyfile="/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="75" bodyend="90"/>
       </memberdef>
-      <memberdef kind="function" id="longstaff_schwartz_path_pricer_1a973b5f4a40082fdcd2ccbb91e5116756" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real operator()</definition>
-        <argsstring>(const PathType &amp;path) const </argsstring>
-        <name>operator()</name>
-        <reimplements refid="path_pricer_1a8d202422e04c42b1c33fe366569a4ef5">operator()</reimplements>
-        <param>
-          <type>const PathType &amp;</type>
-          <declname>path</declname>
-        </param>
-        <location file="/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="59" bodyfile="/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="94" bodyend="123"/>
-      </memberdef>
       <memberdef kind="function" id="longstaff_schwartz_path_pricer_1ad4a7316a51b17d0f691bb3e33b95a5ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void calibrate</definition>

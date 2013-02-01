@@ -72,14 +72,6 @@
         </param>
         <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="82" bodyfile="/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="72" bodyend="84"/>
       </memberdef>
-      <memberdef kind="function" id="m_c_hull_white_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="86" bodyfile="/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="86" bodyend="94"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Monte Carlo Hull-White engine for cap/floors. </para>    </briefdescription>

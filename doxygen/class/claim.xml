@@ -30,14 +30,6 @@
         </param>
         <location file="/instruments/claim.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="claim_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/instruments/claim.hpp" line="38" bodyfile="/instruments/claim.hpp" bodystart="38" bodyend="38"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="claim" kindref="compound">Claim</ref> associated to a default event. </para>    </briefdescription>

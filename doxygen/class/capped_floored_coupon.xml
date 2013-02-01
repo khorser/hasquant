@@ -5,37 +5,9 @@
     <includes local="no">/cashflows/capflooredcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Coupon interface</header>
-      <memberdef kind="function" id="capped_floored_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate rate</definition>
-        <argsstring>() const </argsstring>
-        <name>rate</name>
-        <reimplements refid="coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
-        <briefdescription>
-<para>accrued rate </para>        </briefdescription>
-        <location file="/cashflows/capflooredcoupon.hpp" line="65"/>
-      </memberdef>
-      <memberdef kind="function" id="capped_floored_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate convexityAdjustment</definition>
-        <argsstring>() const </argsstring>
-        <name>convexityAdjustment</name>
-        <reimplements refid="floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplements>
-        <briefdescription>
-<para>convexity adjustment </para>        </briefdescription>
-        <location file="/cashflows/capflooredcoupon.hpp" line="66"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="capped_floored_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/cashflows/capflooredcoupon.hpp" line="79"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
@@ -73,17 +45,6 @@
         <argsstring></argsstring>
         <name>floor_</name>
         <location file="/cashflows/capflooredcoupon.hpp" line="95" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="95" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="function" id="capped_floored_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-        </param>
-        <location file="/cashflows/capflooredcoupon.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="capped_floored_coupon_1aa9a0e113b3dc93361f1c9f0b199191c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>

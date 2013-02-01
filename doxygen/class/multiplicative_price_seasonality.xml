@@ -43,60 +43,6 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Seasonality interface</header>
-      <memberdef kind="function" id="multiplicative_price_seasonality_1aa37fbae55acaa96be0560fa5d0639668" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>virtual Rate correctZeroRate</definition>
-        <argsstring>(const Date &amp;d, const Rate r, const InflationTermStructure &amp;iTS) const </argsstring>
-        <name>correctZeroRate</name>
-        <reimplements refid="seasonality_1af4103a7879130a7286d87ce550213553">correctZeroRate</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-          <declname>d</declname>
-        </param>
-        <param>
-          <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-          <declname>r</declname>
-        </param>
-        <param>
-          <type>const <ref refid="inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
-          <declname>iTS</declname>
-        </param>
-        <location file="/termstructures/inflation/seasonality.hpp" line="149"/>
-      </memberdef>
-      <memberdef kind="function" id="multiplicative_price_seasonality_1a88825843d6b6a77114265771bed9c0b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>virtual Rate correctYoYRate</definition>
-        <argsstring>(const Date &amp;d, const Rate r, const InflationTermStructure &amp;iTS) const </argsstring>
-        <name>correctYoYRate</name>
-        <reimplements refid="seasonality_1ac93d68f5fa5eaa0d5bde685923877e13">correctYoYRate</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-          <declname>d</declname>
-        </param>
-        <param>
-          <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-          <declname>r</declname>
-        </param>
-        <param>
-          <type>const <ref refid="inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
-          <declname>iTS</declname>
-        </param>
-        <location file="/termstructures/inflation/seasonality.hpp" line="151"/>
-      </memberdef>
-      <memberdef kind="function" id="multiplicative_price_seasonality_1ad3811d44e8830cd435b032e3d28a31f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>virtual bool isConsistent</definition>
-        <argsstring>(const InflationTermStructure &amp;iTS) const </argsstring>
-        <name>isConsistent</name>
-        <reimplements refid="seasonality_1ad3811d44e8830cd435b032e3d28a31f9">isConsistent</reimplements>
-        <param>
-          <type>const <ref refid="inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
-          <declname>iTS</declname>
-        </param>
-        <detaileddescription>
-<para>It is possible for multi-year seasonalities to be inconsistent with the inflation term structure they are given to. This method enables testing - but programmers are not required to implement it. E.g. for price seasonality the corrections at whole years after the inflation curve base date should be the same or else there can be an inconsistency with quoted instruments. Alternatively, the seasonality can be set <emphasis>before</emphasis> the inflation curve is bootstrapped. </para>        </detaileddescription>
-        <location file="/termstructures/inflation/seasonality.hpp" line="152"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="multiplicative_price_seasonality_1a44c1ae642d4a92fa718e6cbebff53a66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

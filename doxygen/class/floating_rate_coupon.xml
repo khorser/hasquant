@@ -5,32 +5,9 @@
     <includes local="no">/cashflows/floatingratecoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>CashFlow interface</header>
-      <memberdef kind="function" id="floating_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real amount</definition>
-        <argsstring>() const </argsstring>
-        <name>amount</name>
-        <reimplements refid="cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
-        <briefdescription>
-<para>returns the amount of the cash flow </para>        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
-</para>        </detaileddescription>
-        <location file="/cashflows/floatingratecoupon.hpp" line="61" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="61" bodyend="61"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Coupon interface</header>
-      <memberdef kind="function" id="floating_rate_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate rate</definition>
-        <argsstring>() const </argsstring>
-        <name>rate</name>
-        <reimplements refid="coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
-        <briefdescription>
-<para>accrued rate </para>        </briefdescription>
-        <location file="/cashflows/floatingratecoupon.hpp" line="66"/>
-      </memberdef>
       <memberdef kind="function" id="floating_rate_coupon_1ad88cf27f1c994a91f4f2ba821bbb6f8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real price</definition>
@@ -41,29 +18,6 @@
           <declname>discountingCurve</declname>
         </param>
         <location file="/cashflows/floatingratecoupon.hpp" line="67"/>
-      </memberdef>
-      <memberdef kind="function" id="floating_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter</definition>
-        <argsstring>() const </argsstring>
-        <name>dayCounter</name>
-        <reimplements refid="coupon_1a9d30a3965ddf6100738ec4624c56d847">dayCounter</reimplements>
-        <briefdescription>
-<para>day counter for accrual calculation </para>        </briefdescription>
-        <location file="/cashflows/floatingratecoupon.hpp" line="68" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="68" bodyend="68"/>
-      </memberdef>
-      <memberdef kind="function" id="floating_rate_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real accruedAmount</definition>
-        <argsstring>(const Date &amp;) const </argsstring>
-        <name>accruedAmount</name>
-        <reimplements refid="coupon_1ad6b1c6e4a74184e4a2079858a75d3fcf">accruedAmount</reimplements>
-        <param>
-          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
-        </param>
-        <briefdescription>
-<para>accrued amount at the given date </para>        </briefdescription>
-        <location file="/cashflows/floatingratecoupon.hpp" line="69"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -152,29 +106,9 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="floating_rate_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void update</definition>
-        <argsstring>()</argsstring>
-        <name>update</name>
-        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <location file="/cashflows/floatingratecoupon.hpp" line="96" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="96" bodyend="96"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-          <defname>v</defname>
-        </param>
-        <location file="/cashflows/floatingratecoupon.hpp" line="101" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="143" bodyend="150"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="floating_rate_coupon_1ab89801171c9400f3164ba182e21192d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

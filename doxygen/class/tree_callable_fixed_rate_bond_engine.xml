@@ -47,14 +47,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="tree_callable_fixed_rate_bond_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="/experimental/callablebonds/treecallablebondengine.hpp" line="54"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Numerical lattice engine for callable fixed rate bonds. </para>    </briefdescription>

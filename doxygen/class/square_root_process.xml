@@ -5,52 +5,6 @@
     <includes local="no">/processes/squarerootprocess.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess interface</header>
-      <memberdef kind="function" id="square_root_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real x0</definition>
-        <argsstring>() const </argsstring>
-        <name>x0</name>
-        <reimplements refid="stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
-        <briefdescription>
-<para>returns the initial value of the state variable </para>        </briefdescription>
-        <location file="/processes/squarerootprocess.hpp" line="50"/>
-      </memberdef>
-      <memberdef kind="function" id="square_root_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real drift</definition>
-        <argsstring>(Time t, Real x) const </argsstring>
-        <name>drift</name>
-        <reimplements refid="stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3">drift</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x</declname>
-        </param>
-        <briefdescription>
-<para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="/processes/squarerootprocess.hpp" line="51"/>
-      </memberdef>
-      <memberdef kind="function" id="square_root_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real diffusion</definition>
-        <argsstring>(Time t, Real x) const </argsstring>
-        <name>diffusion</name>
-        <reimplements refid="stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x</declname>
-        </param>
-        <briefdescription>
-<para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <location file="/processes/squarerootprocess.hpp" line="52"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="square_root_process_1a113c35a8d8c932b2a20ca2e1fe3fa68f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -6,31 +6,9 @@
     <innerclass refid="callability_1_1_price" prot="public">QuantLib::Callability::Price</innerclass>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
-      <memberdef kind="function" id="callability_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="date" kindref="compound">Date</ref></type>
-        <definition>Date date</definition>
-        <argsstring>() const </argsstring>
-        <name>date</name>
-        <reimplements refid="event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
-        <briefdescription>
-<para>returns the date at which the event occurs </para>        </briefdescription>
-        <location file="/instruments/callabilityschedule.hpp" line="66" bodyfile="/instruments/callabilityschedule.hpp" bodystart="66" bodyend="66"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="callability_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void accept</definition>
-        <argsstring>(AcyclicVisitor &amp;)</argsstring>
-        <name>accept</name>
-        <reimplements refid="event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <param>
-          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
-          <defname>v</defname>
-        </param>
-        <location file="/instruments/callabilityschedule.hpp" line="70" bodyfile="/instruments/callabilityschedule.hpp" bodystart="78" bodyend="84"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="callability_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">

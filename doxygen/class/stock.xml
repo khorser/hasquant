@@ -15,16 +15,6 @@
         </param>
         <location file="/instruments/stock.hpp" line="36"/>
       </memberdef>
-      <memberdef kind="function" id="stock_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
-        <definition>bool isExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>isExpired</name>
-        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <briefdescription>
-<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <location file="/instruments/stock.hpp" line="37" bodyfile="/instruments/stock.hpp" bodystart="37" bodyend="37"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Simple stock class. </para>    </briefdescription>
