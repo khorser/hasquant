@@ -1,0 +1,67 @@
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:output method="text"/>
+
+    <xsl:template match="/">
+	<xsl:apply-templates />
+    </xsl:template>
+
+    <xsl:template match="compounddef">
+	<xsl:value-of select="compoundname"/>
+	<xsl:text>&#xa;</xsl:text>
+	<xsl:value-of select="briefdescription"/>
+	<xsl:text>&#xa;</xsl:text>
+	<xsl:value-of select="detaileddescription"/>
+	<xsl:text>&#xa;</xsl:text>
+	<xsl:for-each select="sectiondef">
+	    <xsl:call-template name="section"/>
+	</xsl:for-each>
+    </xsl:template>
+
+
+    <xsl:template name="section">
+	<xsl:for-each select="memberdef[@kind='function']">
+	    <xsl:text>&#xa;MN  </xsl:text>
+	    <xsl:value-of select="name"/>
+	    <xsl:text>&#xa;MT  </xsl:text>
+	    <xsl:value-of select="type"/>
+	    <xsl:text>&#xa;</xsl:text>
+	    <xsl:value-of select="briefdescription"/>
+	    <xsl:text>&#xa;</xsl:text>
+	    <xsl:value-of select="detaileddescription"/>
+	    <xsl:text>&#xa;</xsl:text>
+	    <xsl:for-each select="param">
+		<xsl:text>&#xa;AT    </xsl:text>
+		<xsl:value-of select="type"/>
+		<xsl:text>&#xa;AN    </xsl:text>
+		<xsl:value-of select="declname"/>
+		<xsl:text>&#xa;AD    </xsl:text>
+		<xsl:value-of select="defval"/>
+		<xsl:text>&#xa;</xsl:text>
+		<xsl:value-of select="briefdescription"/>
+		<xsl:text>&#xa;</xsl:text>
+		<xsl:value-of select="detaileddescription"/>
+		<xsl:text>&#xa;</xsl:text>
+	    </xsl:for-each>
+	</xsl:for-each>
+
+	<xsl:for-each select="memberdef[@kind='enum']">
+	    <xsl:text>&#xa;EN  </xsl:text>
+	    <xsl:value-of select="name"/>
+	    <xsl:text>&#xa;</xsl:text>
+	    <xsl:value-of select="briefdescription"/>
+	    <xsl:text>&#xa;</xsl:text>
+	    <xsl:value-of select="detaileddescription"/>
+	    <xsl:text>&#xa;</xsl:text>
+	    <xsl:for-each select="enumvalue">
+		<xsl:text>&#xa;EV    </xsl:text>
+		<xsl:value-of select="name"/>
+		<xsl:text>&#xa;</xsl:text>
+		<xsl:value-of select="briefdescription"/>
+		<xsl:text>&#xa;</xsl:text>
+		<xsl:value-of select="detaileddescription"/>
+		<xsl:text>&#xa;</xsl:text>
+	    </xsl:for-each>
+	</xsl:for-each>
+    </xsl:template>
+
+</xsl:stylesheet>
