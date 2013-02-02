@@ -8,6 +8,7 @@ module QuantLib.TermStructure.Volatility
 where
 
 import QuantLib.Internal.Syntax
+import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
