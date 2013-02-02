@@ -12,7 +12,8 @@ Maintainer:          sergey.khorev@gmail.com
 Category:            Finance
 Build-Type:          Custom
 Cabal-Version:       >=1.10
---tested-with:       GHC-7.4.2
+Tested-With:         GHC==7.4.2
+                     , GHC==7.6.2
 --homepage:
 
 Flag buildExample
@@ -63,6 +64,13 @@ Library
   Default-Language:  Haskell2010
   Hs-source-dirs: src
 
+-- The test does not build on Windows x86-64 because of problems
+-- dynamic loading causing unresolved symbols:
+-- 1) GHCi cannot load FFI imports (__imp_CryptAcquireContextA) of hashable
+-- (can be workaround by installing hashable with -f fixed-salt
+-- 2) similar problem with regex-compat: '__imp_isupper'
+-- 3) strange thing is that it does work if you build it manually without Cabal!
+-- The library itself can be built and used without problems
 Test-Suite QL-Test
   Type:              exitcode-stdio-1.0
   Main-Is:           QuantLib/Test/Main.hs
