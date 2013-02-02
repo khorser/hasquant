@@ -93,7 +93,7 @@ linkCxxOpts :: Version -- ^ Version information to be used for Unix shared libra
             -> [String] -- ^ List of options which can be applied to 'runProgram'
 linkCxxOpts ver out_dir basename basepath =
     case buildOS of
-      Windows -> ["--dll", "-shared", 
+      Windows -> ["-shared", 
                   "-o", out_dir </> sharedLibName ver basename,
                   "-Wl,--out-implib," ++ out_dir </> "lib" ++ addExtension basename ".a",
                   "-Wl,--enable-auto-import"]
