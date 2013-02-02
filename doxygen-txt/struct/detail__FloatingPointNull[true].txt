@@ -1,5 +1,0 @@
-detail::FloatingPointNull< true >
-
- -f-
-  nullValue
-   ->float
