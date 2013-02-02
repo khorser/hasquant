@@ -1,89 +1,127 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+    xmlns:str="http://exslt.org/strings" extension-element-prefixes="str">
 <xsl:output method="text"/>
 
 <xsl:template match="/doxygen">
-    <xsl:for-each select="compounddef">
+    <xsl:for-each select="compounddef[(@kind='class' and @prot='public') or @kind='namespace']">
 	<xsl:call-template name="compounddef"/>
     </xsl:for-each>
 </xsl:template>
 
 <xsl:template name="compounddef">
     <xsl:value-of select="compoundname"/>
-    <xsl:if test="briefdescription">
-	<xsl:text>&#xa;</xsl:text>
-	<xsl:value-of select="briefdescription"/>
-    </xsl:if>
-    <xsl:if test="detaileddescription">
-	<xsl:text>&#xa;</xsl:text>
-	<xsl:value-of select="detaileddescription"/>
-    </xsl:if>
+    <xsl:call-template name="doc">
+	<xsl:with-param name="level" select="1"/>
+	<xsl:with-param name="prefix" select="'|'"/>
+    </xsl:call-template>
     <xsl:text>&#xa;</xsl:text>
     <xsl:for-each select="sectiondef">
 	<xsl:call-template name="section"/>
     </xsl:for-each>
 </xsl:template>
 
+<xsl:variable name='nl'><xsl:text>&#xa;</xsl:text></xsl:variable>
+
+<xsl:template name="doc">
+    <xsl:param name="level"/>
+    <xsl:param name="prefix"/>
+    <xsl:if test="str:replace(str:replace(briefdescription, $nl, ' '), ' ','')!=''">
+	<xsl:call-template name="newline">
+	    <xsl:with-param name="level" select="$level"/>
+	    <xsl:with-param name="leading">
+		<xsl:text>-- </xsl:text>
+		<xsl:value-of select="$prefix"/>
+	    </xsl:with-param>
+	</xsl:call-template>
+	<xsl:value-of select="normalize-space(str:replace(briefdescription, $nl, ' '))"/>
+    </xsl:if>
+    <xsl:if test="str:replace(str:replace(detaileddescription, $nl, ' '), ' ','')!=''">
+	<xsl:call-template name="newline">
+	    <xsl:with-param name="level" select="$level"/>
+	    <xsl:with-param name="leading">
+		<xsl:text>-- </xsl:text>
+		<xsl:value-of select="$prefix"/>
+	    </xsl:with-param>
+	</xsl:call-template>
+	<xsl:value-of select="normalize-space(str:replace(detaileddescription, $nl, ' '))"/>
+    </xsl:if>
+</xsl:template>
+
+<xsl:template name="newline">
+    <xsl:param name="level"/>
+    <xsl:param name="leading"/>
+    <xsl:value-of select="$nl"/>
+    <xsl:value-of select="str:padding($level, ' ')"/>
+    <xsl:value-of select="$leading"/>
+</xsl:template>
 
 <xsl:template name="section">
-    <xsl:for-each select="memberdef[@kind='function']">
-	<xsl:text>&#xa;MN  </xsl:text>
+    <xsl:for-each select="memberdef[@kind='function' and @prot='public']">
+	<xsl:call-template name="doc">
+	    <xsl:with-param name="level" select="2"/>
+	    <xsl:with-param name="prefix" select="'|'"/>
+	</xsl:call-template>
+
+	<xsl:call-template name="newline">
+	    <xsl:with-param name="level" select="2"/>
+	</xsl:call-template>
 	<xsl:value-of select="name"/>
-	<xsl:if test="type">
-	    <xsl:text>&#xa;MT  </xsl:text>
-	    <xsl:value-of select="type"/>
-	</xsl:if>
-	<xsl:if test="briefdescription">
-	    <xsl:text>&#xa;</xsl:text>
-	    <xsl:value-of select="briefdescription"/>
-	</xsl:if>
-	<xsl:if test="detaileddescription">
-	    <xsl:text>&#xa;</xsl:text>
-	    <xsl:value-of select="detaileddescription"/>
-	</xsl:if>
+
+	<xsl:call-template name="newline">
+	    <xsl:with-param name="level" select="3"/>
+	    <xsl:with-param name="leading" select="'->'"/>
+	</xsl:call-template>
+	<xsl:value-of select="type"/>
+
 	<xsl:for-each select="param">
-	    <xsl:text>&#xa;AT    </xsl:text>
+	    <xsl:call-template name="newline">
+		<xsl:with-param name="level" select="3"/>
+		<xsl:with-param name="leading" select="'::'"/>
+	    </xsl:call-template>
 	    <xsl:value-of select="type"/>
-	    <xsl:text>&#xa;AN    </xsl:text>
-	    <xsl:value-of select="declname"/>
-	    <xsl:if test="defval">
-		<xsl:text>&#xa;AD    </xsl:text>
+
+	    <xsl:if test="defval!=''">
+		<xsl:call-template name="newline">
+		    <xsl:with-param name="level" select="3"/>
+		    <xsl:with-param name="leading" select="'='"/>
+		</xsl:call-template>
 		<xsl:value-of select="defval"/>
 	    </xsl:if>
-	    <xsl:if test="briefdescription">
-		<xsl:text>&#xa;</xsl:text>
-		<xsl:value-of select="briefdescription"/>
-	    </xsl:if>
-	    <xsl:if test="detaileddescription">
-		<xsl:text>&#xa;</xsl:text>
-		<xsl:value-of select="detaileddescription"/>
-	    </xsl:if>
+
+	    <xsl:call-template name="newline">
+		<xsl:with-param name="level" select="3"/>
+		<xsl:with-param name="leading">
+		    <xsl:text>-- ^</xsl:text>
+		</xsl:with-param>
+	    </xsl:call-template>
+	    <xsl:value-of select="declname"/>
+
+	    <xsl:call-template name="doc">
+		<xsl:with-param name="level" select="3"/>
+		<xsl:with-param name="prefix" select="'^'"/>
+	    </xsl:call-template>
 	</xsl:for-each>
     </xsl:for-each>
 
     <xsl:for-each select="memberdef[@kind='enum']">
-	<xsl:text>&#xa;EN  </xsl:text>
+	<xsl:call-template name="doc">
+	    <xsl:with-param name="level" select="2"/>
+	    <xsl:with-param name="prefix" select="'|'"/>
+	</xsl:call-template>
+	    <xsl:call-template name="newline">
+		<xsl:with-param name="level" select="2"/>
+	    </xsl:call-template>
 	<xsl:value-of select="name"/>
-	<xsl:if test="briefdescription">
-	    <xsl:text>&#xa;</xsl:text>
-	    <xsl:value-of select="briefdescription"/>
-	</xsl:if>
-	<xsl:if test="detaileddescription">
-	    <xsl:text>&#xa;</xsl:text>
-	    <xsl:value-of select="detaileddescription"/>
-	</xsl:if>
 	<xsl:text>&#xa;</xsl:text>
 	<xsl:for-each select="enumvalue">
-	    <xsl:text>&#xa;EV    </xsl:text>
+	    <xsl:call-template name="newline">
+		<xsl:with-param name="level" select="3"/>
+	    </xsl:call-template>
 	    <xsl:value-of select="name"/>
-	    <xsl:text>&#xa;</xsl:text>
-	    <xsl:if test="briefdescription">
-		<xsl:text>&#xa;</xsl:text>
-		<xsl:value-of select="briefdescription"/>
-	    </xsl:if>
-	    <xsl:if test="detaileddescription">
-		<xsl:text>&#xa;</xsl:text>
-		<xsl:value-of select="detaileddescription"/>
-	    </xsl:if>
+	    <xsl:call-template name="doc">
+		<xsl:with-param name="level" select="3"/>
+		<xsl:with-param name="prefix" select="'^'"/>
+	    </xsl:call-template>
 	</xsl:for-each>
     </xsl:for-each>
 </xsl:template>
