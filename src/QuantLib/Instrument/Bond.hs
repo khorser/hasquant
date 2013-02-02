@@ -40,11 +40,25 @@ foreign import ccall safe "ql.h qlBondMaturityDate"
 foreign import ccall safe "ql.h qlBondIssueDate"
   c_issueDate :: Ptr CBond -> IO CDate
 
--- | (qlBond)
-bond :: Word -> Calendar -> Maybe Day -> Leg -> IO Bond
+-- |constructor for amortizing or non-amortizing bonds.
+-- Redemptions and maturity are calculated from the coupon data, if available. Therefore, redemptions must not be included in the passed cash flows.
+-- QuantLibXL: qlBond
+bond :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> Maybe Day -- ^issueDate
+  -> Leg -- ^coupons
+  -> IO Bond
 bond = $(ffiConstruct 'bond) c_bond
 
-bond' :: Word -> Calendar -> Double -> Maybe Day -> Maybe Day -> Leg -> IO Bond
+-- |old constructor for non amortizing bonds.
+-- /Warning/ The last passed cash flow must be the bond redemption. No other cash flow can have a date later than the redemption date.
+bond' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> Double -- ^faceAmount
+  -> Maybe Day -- ^maturityDate
+  -> Maybe Day -- ^issueDate
+  -> Leg -- ^cashflows
+  -> IO Bond
 bond' = $(ffiConstruct 'bond') c_bond'
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)

@@ -75,6 +75,8 @@ instance IndexClass IborIndex where
 
 -- instruments
 type Instrument = ForeignPtr CInstrument
+-- |Base bond type.
+-- /Warning/ Most methods assume that the cash flows are stored sorted by date, the redemption(s) being after any cash flow at the same date. In particular, if there's one single redemption, it must be the last cash flow,Tests price\/yield calculations are cross-checked for consistency.price/yield calculations are checked against known good values.
 type Bond = ForeignPtr CBond
 type FixedRateBond = ForeignPtr CFixedRateBond
 

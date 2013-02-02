@@ -1,19 +1,6 @@
 QuantLib
  -- |abstract base class implementation specifies how to decide volatility structure for additional synthetic rates which are interleavedClasses for computing derivative of the map taking rates one step to the next with respect to a change in the pseudo-root. We do it both numerically and analytically to provide an easy test of the analytic method. This is useful for pathwise vegas.Evolution is log Euler.One is tested against the other in MarketModelTest::testPathwiseVegasIn order to compute market vegas, we need a class that gives the derivative of a swaption implied vol against changes in pseudo-root elements. This is that class.This is tested in the pathwise vegas routine in MarketModels.cppWhen bumping vols, bumping every pseudo-root element individually seems excessive so we need to couple some together.
-
- -f-
- -v-
- -e-
-  -- |Interest rate coumpounding rule.
-  Compounding
-   Simple
-   -- ^$ 1+rt $
-   Compounded
-   -- ^$ (1+r)^t $
-   Continuous
-   -- ^$ e^{rt} $
-   SimpleThenCompounded
-   -- ^Simple up to the first period then Compounded.
+  
   -- |Seniority of a bond.
   -- |They are also ISDA tier/seniorities used for CDS conventional spreads.
   Seniority
@@ -48,104 +35,15 @@ QuantLib
    -- ^Mid equivalent price, calculated as a) the arithmetic average of bid and ask prices when both are available; b) either the bid or the ask price if any of them is available; c) the last price; or d) the close price.
    MidSafe
    -- ^Safe Mid price, returns the mid price only if both bid and ask are available.
-  -- |Business Day conventions.
-  -- |These conventions specify the algorithm used to adjust a date in case it is not a valid business day.
-  BusinessDayConvention
-   Following
-   -- ^Choose the first business day after the given holiday.
-   ModifiedFollowing
-   -- ^Choose the first business day after the given holiday unless it belongs to a different month, in which case choose the first business day before the holiday.
-   Preceding
-   -- ^Choose the first business day before the given holiday.
-   ModifiedPreceding
-   -- ^Choose the first business day before the given holiday unless it belongs to a different month, in which case choose the first business day after the holiday.
-   Unadjusted
-   -- ^Do not adjust.
+
+
   -- |rules for joining calendars
   JointCalendarRule
    JoinHolidays
    -- ^A date is a holiday for the joint calendar if it is a holiday for any of the given calendars
    JoinBusinessDays
    -- ^A date is a business day for the joint calendar if it is a business day for any of the given calendars
-  -- |Month names.
-  Month
-   January
-   February
-   March
-   April
-   May
-   June
-   July
-   August
-   September
-   October
-   November
-   December
-   Jan
-   Feb
-   Mar
-   Apr
-   Jun
-   Jul
-   Aug
-   Sep
-   Oct
-   Nov
-   Dec
-  -- |Frequency of events.
-  Frequency
-   NoFrequency
-   -- ^null frequency
-   Once
-   -- ^only once, e.g., a zero-coupon
-   Annual
-   -- ^once a year
-   Semiannual
-   -- ^twice a year
-   EveryFourthMonth
-   -- ^every fourth month
-   Quarterly
-   -- ^every third month
-   Bimonthly
-   -- ^every second month
-   Monthly
-   -- ^once a month
-   EveryFourthWeek
-   -- ^every fourth week
-   Biweekly
-   -- ^every second week
-   Weekly
-   -- ^once a week
-   Daily
-   -- ^once a day
-   OtherFrequency
-   -- ^some other unknown frequency
-  -- |Units used to describe time periods.
-  TimeUnit
-   Days
-   Weeks
-   Months
-   Years
-  -- |Day's serial number MOD 7; WEEKDAY Excel function is the same except for Sunday = 7.
-  Weekday
-   Sunday
-   Monday
-   Tuesday
-   Wednesday
-   Thursday
-   Friday
-   Saturday
-   Sun
-   Mon
-   Tue
-   Wed
-   Thu
-   Fri
-   Sat
- -f-
- -v-
- -e-
- -f-
+  
   FloatingLeg
    ->Leg
    ::const Schedule &
