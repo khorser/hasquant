@@ -1,0 +1,13 @@
+Uniform1dMesher
+
+ -f-
+  Uniform1dMesher
+   ->
+   ::Real
+   -- ^start
+   ::Real
+   -- ^end
+   ::Size
+   -- ^size
+ -v-
+ -e-

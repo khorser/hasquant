@@ -1,0 +1,52 @@
+Forward
+ -- |Abstract base forward class.
+ -- |Derived classes must implement the virtual functions spotValue() (NPV or spot price) and spotIncome() associated with the specific relevant underlying (e.g. bond, stock, commodity, loan/deposit). These functions must be used to set the protected member variables underlyingSpotValue_ and underlyingIncome_ within performCalculations() in the derived class before the base-class implementation is called.spotIncome() refers generically to the present value of coupons, dividends or storage costs.discountCurve_ is the curve used to discount forward contract cash flows back to the evaluation day, as well as to obtain forward values for spot values/prices.incomeDiscountCurve_, which for generality is not automatically set to the discountCurve_, is the curve used to discount future income/dividends/storage-costs etc back to the evaluation date.Possible enhancementsAdd preconditions and testsWarningThis class still needs to be rigorously tested
+
+ -f-
+  settlementDate
+   ->Date
+  calendar
+   ->const Calendar &
+  businessDayConvention
+   ->BusinessDayConvention
+  dayCounter
+   ->const DayCounter &
+  -- term structure relevant to the contract (e.g. repo curve)
+  discountCurve
+   ->Handle< YieldTermStructure >
+  -- term structure that discounts the underlying's income cash flows
+  incomeDiscountCurve
+   ->Handle< YieldTermStructure >
+ -v-
+ -e-
+ -f-
+  -- forward value/price of underlying, discounting income/dividends
+  -- if this is a bond forward price, is must be a dirty forward price.
+  forwardValue
+   ->Real
+  -- Simple yield calculation based on underlying spot and forward values, taking into account underlying income. When $ t>0 $, call with: underlyingSpotValue=spotValue(t), forwardValue=strikePrice, to get current yield. For a repo, if $ t=0 $, impliedYield should reproduce the spot repo rate. For FRA's, this should reproduce the relevant zero rate at the FRA's maturityDate_;
+  impliedYield
+   ->InterestRate
+   ::Real
+   -- ^underlyingSpotValue
+   ::Real
+   -- ^forwardValue
+   ::Date
+   -- ^settlementDate
+   ::Compounding
+   -- ^compoundingConvention
+   ::DayCounter
+   -- ^dayCounter
+ -v-
+ -e-
+ -f-
+  -- returns spot value/price of an underlying financial instrument
+  spotValue
+   ->Real
+  -- NPV of income/dividends/storage-costs etc. of underlying instrument.
+  spotIncome
+   ->Real
+   ::const Handle< YieldTermStructure > &
+   -- ^incomeDiscountCurve
+ -v-
+ -e-

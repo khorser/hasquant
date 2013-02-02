@@ -1,0 +1,18 @@
+StochasticProcessArray
+ -- |Array of correlated 1-D stochastic processes
+
+ -f-
+  StochasticProcessArray
+   ->
+   ::const std::vector< boost::shared_ptr< StochasticProcess1D > > &
+   -- ^
+   ::const Matrix &
+   -- ^correlation
+  process
+   ->const boost::shared_ptr< StochasticProcess1D > &
+   ::Size
+   -- ^i
+  correlation
+   ->Disposable< Matrix >
+ -v-
+ -e-

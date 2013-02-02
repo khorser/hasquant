@@ -1,0 +1,31 @@
+ExtendedBinomialTree
+ -- |Binomial tree base class.
+
+ -f-
+ -v-
+ -e-
+  Branches
+   branches
+ -f-
+  ExtendedBinomialTree
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^process
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+  size
+   ->Size
+   ::Size
+   -- ^i
+  descendant
+   ->Size
+   ::Size
+   -- ^
+   ::Size
+   -- ^index
+   ::Size
+   -- ^branch
+ -v-
+ -e-

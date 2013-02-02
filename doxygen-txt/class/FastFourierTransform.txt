@@ -1,0 +1,41 @@
+FastFourierTransform
+ -- |FFT implementation.
+
+ -f-
+  -- the minimum order required for the given input size
+  min_order
+   ->std::size_t
+   ::std::size_t
+   -- ^inputSize
+ -v-
+ -e-
+ -f-
+  FastFourierTransform
+   ->
+   ::std::size_t
+   -- ^order
+  -- The required size for the output vector.
+  output_size
+   ->std::size_t
+  -- FFT transform.
+  -- The output sequence must be allocated by the user
+  transform
+   ->void
+   ::InputIterator
+   -- ^inBegin
+   ::InputIterator
+   -- ^inEnd
+   ::RandomAccessIterator
+   -- ^out
+  -- Inverse FFT transform.
+  -- The output sequence must be allocated by the user.
+  inverse_transform
+   ->void
+   ::InputIterator
+   -- ^inBegin
+   ::InputIterator
+   -- ^inEnd
+   ::RandomAccessIterator
+   -- ^out
+ -v-
+ -e-

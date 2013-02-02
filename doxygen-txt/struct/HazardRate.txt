@@ -1,0 +1,57 @@
+HazardRate
+ -- |Hazard-rate-curve traits.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  initialDate
+   ->Date
+   ::const DefaultProbabilityTermStructure *
+   -- ^c
+  initialValue
+   ->Real
+   ::const DefaultProbabilityTermStructure *
+   -- ^
+  guess
+   ->Real
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  minValueAfter
+   ->Real
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  maxValueAfter
+   ->Real
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  updateGuess
+   ->void
+   ::std::vector< Real > &
+   -- ^data
+   ::Real
+   -- ^rate
+   ::Size
+   -- ^i
+  maxIterations
+   ->Size
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+EURCurrency
+ -- |European Euro.
+ -- |The ISO three-letter code is EUR; the numeric code is 978. It is divided into 100 cents.
+
+ -f-
+  EURCurrency
+   ->
+ -v-
+ -e-

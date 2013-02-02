@@ -1,0 +1,19 @@
+MarketModelPathwiseSwap
+ -- |Swap for doing Greeks. Fairly useless when used directly, but if we want to look a breakable swap it becomes useful.
+
+ -f-
+  MarketModelPathwiseSwap
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Time > &
+   -- ^accruals
+   ::const std::vector< Rate > &
+   -- ^strikes
+   ::Real
+   =1.0
+   -- ^multiplier
+  ~MarketModelPathwiseSwap
+   ->
+ -v-
+ -e-

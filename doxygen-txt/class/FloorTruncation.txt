@@ -1,0 +1,13 @@
+FloorTruncation
+ -- |Floor truncation.
+
+ -f-
+  FloorTruncation
+   ->
+   ::Integer
+   -- ^precision
+   ::Integer
+   =5
+   -- ^digit
+ -v-
+ -e-

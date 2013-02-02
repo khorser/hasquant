@@ -1,0 +1,12 @@
+Bond::results
+
+ -f-
+ -v-
+  settlementValue
+   ::Real
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

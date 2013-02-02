@@ -1,0 +1,26 @@
+AnalyticHestonHullWhiteEngine
+ -- |Analytic Heston engine incl. stochastic interest rates.
+ -- |This class is pricing a european options under the following processes\[ \begin{array}{rcl} dS(t, S) &=& (r-d) S dt +\sqrt{v} S dW_1 \\ dv(t, S) &=& \kappa (\theta - v) dt + \sigma \sqrt{v} dW_2 \\ dr(t) &=& (\theta(t) - a r) dt + \eta dW_3 \\ dW_1 dW_2 &=& \rho dt \\ dW_1 dW_3 &=& 0 \\ dW_2 dW_3 &=& 0 \\ \end{array} \] References: Karel in't Hout, Joris Bierkens, Antoine von der Ploeg, Joe in't Panhuis, A Semi closed-from analytic pricing formula for call options in a hybrid Heston-Hull-White Model. A. Sepp, Pricing European-Style Options under Jump Diffusion Processes with Stochastic Volatility: Applications of Fourier Transform (<http://math.ut.ee/~spartak/papers/stochjumpvols.pdf>) Teststhe correctness of the returned value is tested by reproducing results available in web/literature, testing against QuantLib's analytic Heston and Black-Scholes-Merton Hull-White engine
+
+ -f-
+  AnalyticHestonHullWhiteEngine
+   ->
+   ::const boost::shared_ptr< HestonModel > &
+   -- ^hestonModel
+   ::const boost::shared_ptr< HullWhite > &
+   -- ^hullWhiteModel
+   ::Size
+   =144
+   -- ^integrationOrder
+  AnalyticHestonHullWhiteEngine
+   ->
+   ::const boost::shared_ptr< HestonModel > &
+   -- ^model
+   ::const boost::shared_ptr< HullWhite > &
+   -- ^hullWhiteModel
+   ::Real
+   -- ^relTolerance
+   ::Size
+   -- ^maxEvaluations
+ -v-
+ -e-

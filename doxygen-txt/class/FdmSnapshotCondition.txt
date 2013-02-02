@@ -1,0 +1,19 @@
+FdmSnapshotCondition
+
+ -f-
+  FdmSnapshotCondition
+   ->
+   ::Time
+   -- ^t
+  applyTo
+   ->void
+   ::Array &
+   -- ^a
+   ::Time
+   -- ^t
+  getTime
+   ->Time
+  getValues
+   ->const Array &
+ -v-
+ -e-

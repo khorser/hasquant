@@ -1,0 +1,24 @@
+Callability::Price
+ -- |amount to be paid upon callability
+
+ -f-
+ -v-
+ -e-
+  Type
+   Dirty
+   Clean
+ -f-
+  Price
+   ->
+  Price
+   ->
+   ::Real
+   -- ^amount
+   ::Type
+   -- ^type
+  amount
+   ->Real
+  type
+   ->Type
+ -v-
+ -e-

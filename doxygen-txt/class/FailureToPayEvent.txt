@@ -1,0 +1,39 @@
+FailureToPayEvent
+
+ -f-
+  FailureToPayEvent
+   ->
+   ::const Date &
+   -- ^creditEventDate
+   ::const Currency &
+   -- ^curr
+   ::Seniority
+   -- ^bondsSen
+   ::Real
+   -- ^defaultedAmount
+   ::const Date &
+   -- ^settleDate
+   ::const std::map< Seniority, Real > &
+   -- ^recoveryRates
+  FailureToPayEvent
+   ->
+   ::const Date &
+   -- ^creditEventDate
+   ::const Currency &
+   -- ^curr
+   ::Seniority
+   -- ^bondsSen
+   ::Real
+   -- ^defaultedAmount
+   ::const Date &
+   -- ^settleDate
+   ::Real
+   -- ^recoveryRates
+  amountDefaulted
+   ->Real
+  matchesEventType
+   ->bool
+   ::const boost::shared_ptr< DefaultType > &
+   -- ^contractEvType
+ -v-
+ -e-

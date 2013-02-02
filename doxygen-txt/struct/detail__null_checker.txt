@@ -1,0 +1,14 @@
+detail::null_checker
+
+ -f-
+ -v-
+  value
+   ::T
+ -e-
+ -f-
+  null_checker
+   ->
+   ::T
+   -- ^value
+ -v-
+ -e-

@@ -1,0 +1,38 @@
+PseudoRootFacade
+
+ -f-
+  initialRates
+   ->const std::vector< Rate > &
+  displacements
+   ->const std::vector< Spread > &
+  evolution
+   ->const EvolutionDescription &
+  numberOfRates
+   ->Size
+  numberOfFactors
+   ->Size
+  numberOfSteps
+   ->Size
+  pseudoRoot
+   ->const Matrix &
+   ::Size
+   -- ^i
+ -v-
+ -e-
+ -f-
+  PseudoRootFacade
+   ->
+   ::const boost::shared_ptr< CTSMMCapletCalibration >
+   -- ^calibrator
+  PseudoRootFacade
+   ->
+   ::const std::vector< Matrix > &
+   -- ^covariancePseudoRoots
+   ::const std::vector< Rate > &
+   -- ^rateTimes
+   ::const std::vector< Rate > &
+   -- ^initialRates
+   ::const std::vector< Spread > &
+   -- ^displacements
+ -v-
+ -e-

@@ -1,0 +1,32 @@
+G2Process
+ -- |G2 stochastic process
+
+ -f-
+  G2Process
+   ->
+   ::Real
+   -- ^a
+   ::Real
+   -- ^sigma
+   ::Real
+   -- ^b
+   ::Real
+   -- ^eta
+   ::Real
+   -- ^rho
+  x0
+   ->Real
+  y0
+   ->Real
+  a
+   ->Real
+  sigma
+   ->Real
+  b
+   ->Real
+  eta
+   ->Real
+  rho
+   ->Real
+ -v-
+ -e-

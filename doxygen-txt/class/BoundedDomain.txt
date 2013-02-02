@@ -1,0 +1,13 @@
+BoundedDomain
+
+ -f-
+  xLowerBound
+   ->Real
+  xUpperBound
+   ->Real
+  yLowerBound
+   ->Real
+  yUpperBound
+   ->Real
+ -v-
+ -e-

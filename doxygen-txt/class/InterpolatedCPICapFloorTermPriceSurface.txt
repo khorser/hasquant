@@ -1,0 +1,69 @@
+InterpolatedCPICapFloorTermPriceSurface
+
+ -f-
+  update
+   ->void
+  -- set up the interpolations for capPrice_ and floorPrice_ since we know ATM, and we have single flows, we can use put/call parity to extend the surfaces across all strikes
+  performCalculations
+   ->void
+ -v-
+ -e-
+ -f-
+  -- remember that the strikes use the quoting convention
+  -- remember that the strike uses the quoting convention
+  price
+   ->Real
+   ::const Date &
+   -- ^d
+   ::Rate
+   -- ^k
+  -- remember that the strike uses the quoting convention
+  capPrice
+   ->Real
+   ::const Date &
+   -- ^d
+   ::Rate
+   -- ^k
+  -- remember that the strike uses the quoting convention
+  floorPrice
+   ->Real
+   ::const Date &
+   -- ^d
+   ::Rate
+   -- ^k
+ -v-
+ -e-
+ -f-
+  InterpolatedCPICapFloorTermPriceSurface
+   ->
+   ::Real
+   -- ^nominal
+   ::Rate
+   -- ^startRate
+   ::const Period &
+   -- ^observationLag
+   ::const Calendar &
+   -- ^cal
+   ::const BusinessDayConvention &
+   -- ^bdc
+   ::const DayCounter &
+   -- ^dc
+   ::const Handle< ZeroInflationIndex > &
+   -- ^zii
+   ::const Handle< YieldTermStructure > &
+   -- ^yts
+   ::const std::vector< Rate > &
+   -- ^cStrikes
+   ::const std::vector< Rate > &
+   -- ^fStrikes
+   ::const std::vector< Period > &
+   -- ^cfMaturities
+   ::const Matrix &
+   -- ^cPrice
+   ::const Matrix &
+   -- ^fPrice
+   ::const Interpolator2D &
+   =Interpolator2D()
+   -- ^interpolator2d
+ -v-
+ -e-

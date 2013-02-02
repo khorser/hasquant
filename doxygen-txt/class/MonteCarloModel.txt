@@ -1,0 +1,37 @@
+MonteCarloModel
+ -- |General-purpose Monte Carlo model for path samples.
+ -- |The template arguments of this class correspond to available policies for the particular model to be instantiatedi.e., whether it is single- or multi-asset, or whether it should use pseudo-random or low-discrepancy numbers for path generation. Such decisions are grouped in trait classes so as to be orthogonalsee mctraits.hpp for examples.The constructor accepts two safe references, i.e. two smart pointers, one to a path generator and the other to a path pricer. In case of control variate technique the user should provide the additional control option, namely the option path pricer and the option value.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MonteCarloModel
+   ->
+   ::const boost::shared_ptr< path_generator_type > &
+   -- ^pathGenerator
+   ::const boost::shared_ptr< path_pricer_type > &
+   -- ^pathPricer
+   ::const stats_type &
+   -- ^sampleAccumulator
+   ::bool
+   -- ^antitheticVariate
+   ::const boost::shared_ptr< path_pricer_type > &
+   =boost::shared_ptr< path_pricer_type >()
+   -- ^cvPathPricer
+   ::result_type
+   =result_type()
+   -- ^cvOptionValue
+   ::const boost::shared_ptr< path_generator_type > &
+   =boost::shared_ptr< path_generator_type >()
+   -- ^cvPathGenerator
+  addSamples
+   ->void
+   ::Size
+   -- ^samples
+  sampleAccumulator
+   ->const stats_type &
+   ::void
+   -- ^
+ -v-
+ -e-

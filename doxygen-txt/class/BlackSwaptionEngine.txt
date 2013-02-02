@@ -1,0 +1,35 @@
+BlackSwaptionEngine
+ -- |Black-formula swaption engine.
+ -- |WarningThe engine assumes that the exercise date equals the start date of the passed swap.
+
+ -f-
+  BlackSwaptionEngine
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+   ::Volatility
+   -- ^vol
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  BlackSwaptionEngine
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+   ::const Handle< Quote > &
+   -- ^vol
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  BlackSwaptionEngine
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+   ::const Handle< SwaptionVolatilityStructure > &
+   -- ^vol
+  termStructure
+   ->Handle< YieldTermStructure >
+  volatility
+   ->Handle< SwaptionVolatilityStructure >
+ -v-
+ -e-

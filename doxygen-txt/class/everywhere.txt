@@ -1,0 +1,7 @@
+everywhere
+
+ -f-
+  everywhere
+   ->
+ -v-
+ -e-

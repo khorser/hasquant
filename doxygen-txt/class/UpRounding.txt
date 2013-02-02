@@ -1,0 +1,13 @@
+UpRounding
+ -- |Up-rounding.
+
+ -f-
+  UpRounding
+   ->
+   ::Integer
+   -- ^precision
+   ::Integer
+   =5
+   -- ^digit
+ -v-
+ -e-

@@ -1,0 +1,27 @@
+GeneralizedHullWhite
+ -- |Generalized Hull-White model class.
+ -- |This class implements the standard Black-Karasinski model defined by \[ d f(r_t) = (\theta(t) - \alpha f(r_t))dt + \sigma dW_t, \] where $ alpha $ and $ sigma $ are piecewise linear functions.
+
+ -f-
+  GeneralizedHullWhite
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^yieldtermStructure
+   ::const std::vector< Date > &
+   -- ^speedstructure
+   ::const std::vector< Date > &
+   -- ^volstructure
+  GeneralizedHullWhite
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^yieldtermStructure
+   ::const std::vector< Date > &
+   -- ^speedstructure
+   ::const std::vector< Date > &
+   -- ^volstructure
+   ::const std::vector< Real > &
+   -- ^speed
+   ::const std::vector< Real > &
+   -- ^vol
+ -v-
+ -e-

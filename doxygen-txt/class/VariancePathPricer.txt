@@ -1,0 +1,13 @@
+VariancePathPricer
+
+ -f-
+  VariancePathPricer
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+  operator()
+   ->Real
+   ::const Path &
+   -- ^path
+ -v-
+ -e-

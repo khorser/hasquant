@@ -1,0 +1,60 @@
+BlackScholesLattice
+ -- |Simple binomial lattice approximating the Black-Scholes model.
+
+ -f-
+  BlackScholesLattice
+   ->
+   ::const boost::shared_ptr< T > &
+   -- ^tree
+   ::Rate
+   -- ^riskFreeRate
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+  riskFreeRate
+   ->Rate
+  dt
+   ->Time
+  size
+   ->Size
+   ::Size
+   -- ^i
+  discount
+   ->DiscountFactor
+   ::Size
+   -- ^
+   ::Size
+   -- ^
+  stepback
+   ->void
+   ::Size
+   -- ^i
+   ::const Array &
+   -- ^values
+   ::Array &
+   -- ^newValues
+  underlying
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+  descendant
+   ->Size
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+   ::Size
+   -- ^branch
+  probability
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+   ::Size
+   -- ^branch
+ -v-
+ -e-

@@ -1,0 +1,34 @@
+FwdPeriodAdapter
+
+ -f-
+  initialRates
+   ->const std::vector< Rate > &
+  displacements
+   ->const std::vector< Spread > &
+  evolution
+   ->const EvolutionDescription &
+  numberOfRates
+   ->Size
+  numberOfFactors
+   ->Size
+  numberOfSteps
+   ->Size
+  pseudoRoot
+   ->const Matrix &
+   ::Size
+   -- ^i
+ -v-
+ -e-
+ -f-
+  FwdPeriodAdapter
+   ->
+   ::const boost::shared_ptr< MarketModel > &
+   -- ^largeModel
+   ::Size
+   -- ^period
+   ::Size
+   -- ^offset
+   ::const std::vector< Spread > &
+   -- ^newDisplacements_
+ -v-
+ -e-

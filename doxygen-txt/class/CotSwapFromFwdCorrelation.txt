@@ -1,0 +1,21 @@
+CotSwapFromFwdCorrelation
+
+ -f-
+  CotSwapFromFwdCorrelation
+   ->
+   ::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+   -- ^fwdCorr
+   ::const CurveState &
+   -- ^curveState
+   ::Spread
+   -- ^displacement
+  times
+   ->const std::vector< Time > &
+  rateTimes
+   ->const std::vector< Time > &
+  correlations
+   ->const std::vector< Matrix > &
+  numberOfRates
+   ->Size
+ -v-
+ -e-

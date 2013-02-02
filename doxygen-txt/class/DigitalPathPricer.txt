@@ -1,0 +1,21 @@
+DigitalPathPricer
+
+ -f-
+  DigitalPathPricer
+   ->
+   ::const boost::shared_ptr< CashOrNothingPayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< AmericanExercise > &
+   -- ^exercise
+   ::const Handle< YieldTermStructure > &
+   -- ^discountTS
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^diffProcess
+   ::const PseudoRandom::ursg_type &
+   -- ^sequenceGen
+  operator()
+   ->Real
+   ::const Path &
+   -- ^path
+ -v-
+ -e-

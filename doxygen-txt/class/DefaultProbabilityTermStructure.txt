@@ -1,0 +1,146 @@
+DefaultProbabilityTermStructure
+ -- |Default probability term structure.
+ -- |This abstract class defines the interface of concrete credit structures which will be derived from this one.
+
+ -f-
+  DefaultProbabilityTermStructure
+   ->
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  DefaultProbabilityTermStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  DefaultProbabilityTermStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+ -v-
+ -e-
+ -f-
+  survivalProbability
+   ->Probability
+   ::const Date &
+   -- ^d
+   ::bool
+   =false
+   -- ^extrapolate
+  -- The same day-counting rule used by the term structure should be used for calculating the passed time t.
+  survivalProbability
+   ->Probability
+   ::Time
+   -- ^t
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  defaultProbability
+   ->Probability
+   ::const Date &
+   -- ^d
+   ::bool
+   =false
+   -- ^extrapolate
+  -- The same day-counting rule used by the term structure should be used for calculating the passed time t.
+  defaultProbability
+   ->Probability
+   ::Time
+   -- ^t
+   ::bool
+   =false
+   -- ^extrapolate
+  -- probability of default between two given dates
+  defaultProbability
+   ->Probability
+   ::const Date &
+   -- ^
+   ::const Date &
+   -- ^
+   ::bool
+   =false
+   -- ^extrapolate
+  -- probability of default between two given times
+  defaultProbability
+   ->Probability
+   ::Time
+   -- ^
+   ::Time
+   -- ^
+   ::bool
+   =false
+   -- ^extrapo
+ -v-
+ -e-
+ -f-
+  defaultDensity
+   ->Real
+   ::const Date &
+   -- ^d
+   ::bool
+   =false
+   -- ^extrapolate
+  defaultDensity
+   ->Real
+   ::Time
+   -- ^t
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  hazardRate
+   ->Rate
+   ::const Date &
+   -- ^d
+   ::bool
+   =false
+   -- ^extrapolate
+  hazardRate
+   ->Rate
+   ::Time
+   -- ^t
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  jumpDates
+   ->const std::vector< Date > &
+  jumpTimes
+   ->const std::vector< Time > &
+ -v-
+ -e-

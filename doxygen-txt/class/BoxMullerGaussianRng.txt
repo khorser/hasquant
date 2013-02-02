@@ -1,0 +1,17 @@
+BoxMullerGaussianRng
+ -- |Gaussian random number generator.
+ -- |It uses the well-known Box-Muller transformation to return a normal distributed Gaussian deviate with average 0.0 and standard deviation of 1.0, from a uniform deviate in (0,1) supplied by RNG.Class RNG must implement the following interface: RNG::sample_typeRNG::next()const;
+
+ -f-
+ -v-
+ -e-
+ -f-
+  BoxMullerGaussianRng
+   ->
+   ::const RNG &
+   -- ^uniformGenerator
+  -- returns a sample from a Gaussian distribution
+  next
+   ->sample_type
+ -v-
+ -e-

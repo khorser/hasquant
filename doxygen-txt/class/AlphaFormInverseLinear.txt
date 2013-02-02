@@ -1,0 +1,22 @@
+AlphaFormInverseLinear
+
+ -f-
+  AlphaFormInverseLinear
+   ->
+   ::const std::vector< Time > &
+   -- ^times
+   ::Real
+   =0.0
+   -- ^alpha
+  ~AlphaFormInverseLinear
+   ->
+  operator()
+   ->Real
+   ::Integer
+   -- ^i
+  setAlpha
+   ->void
+   ::Real
+   -- ^alpha_
+ -v-
+ -e-

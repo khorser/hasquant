@@ -1,0 +1,35 @@
+ProxyGreekEngine
+
+ -f-
+  ProxyGreekEngine
+   ->
+   ::const boost::shared_ptr< MarketModelEvolver > &
+   -- ^evolver
+   ::const std::vector< std::vector< boost::shared_ptr< ConstrainedEvolver > > > &
+   -- ^constrainedEvolvers
+   ::const std::vector< std::vector< std::vector< Real > > > &
+   -- ^diffWeights
+   ::const std::vector< Size > &
+   -- ^startIndexOfConstraint
+   ::const std::vector< Size > &
+   -- ^endIndexOfConstraint
+   ::const Clone< MarketModelMultiProduct > &
+   -- ^product
+   ::double
+   -- ^initialNumeraireValue
+  multiplePathValues
+   ->void
+   ::SequenceStatisticsInc &
+   -- ^stats
+   ::std::vector< std::vector< SequenceStatisticsInc > > &
+   -- ^modifiedStats
+   ::Size
+   -- ^numberOfPaths
+  singlePathValues
+   ->void
+   ::std::vector< Real > &
+   -- ^values
+   ::std::vector< std::vector< std::vector< Real > > > &
+   -- ^modifiedValues
+ -v-
+ -e-

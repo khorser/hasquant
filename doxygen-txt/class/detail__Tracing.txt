@@ -1,0 +1,23 @@
+detail::Tracing
+
+ -f-
+  enable
+   ->void
+  disable
+   ->void
+  setStream
+   ->void
+   ::std::ostream &
+   -- ^stream
+  enabled
+   ->bool
+  stream
+   ->std::ostream &
+  depth
+   ->Integer
+  down
+   ->void
+  up
+   ->void
+ -v-
+ -e-

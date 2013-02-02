@@ -1,0 +1,21 @@
+AverageBasketPayoff
+
+ -f-
+  AverageBasketPayoff
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^p
+   ::const Array &
+   -- ^a
+  AverageBasketPayoff
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^p
+   ::Size
+   -- ^n
+  accumulate
+   ->Real
+   ::const Array &
+   -- ^a
+ -v-
+ -e-

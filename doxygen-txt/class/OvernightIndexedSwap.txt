@@ -1,0 +1,84 @@
+OvernightIndexedSwap
+ -- |Overnight indexed swap: fix vs compounded overnight rate.
+
+ -f-
+  type
+   ->Type
+  nominal
+   ->Real
+  nominals
+   ->std::vector< Real >
+  paymentFrequency
+   ->Frequency
+  fixedRate
+   ->Rate
+  fixedDayCount
+   ->const DayCounter &
+  overnightIndex
+   ->const boost::shared_ptr< OvernightIndex > &
+  spread
+   ->Spread
+  fixedLeg
+   ->const Leg &
+  overnightLeg
+   ->const Leg &
+ -v-
+ -e-
+ -f-
+  fixedLegBPS
+   ->Real
+  fixedLegNPV
+   ->Real
+  fairRate
+   ->Real
+  overnightLegBPS
+   ->Real
+  overnightLegNPV
+   ->Real
+  fairSpread
+   ->Spread
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+  Type
+   Receiver
+   Payer
+ -f-
+  OvernightIndexedSwap
+   ->
+   ::Type
+   -- ^type
+   ::Real
+   -- ^nominal
+   ::const Schedule &
+   -- ^schedule
+   ::Rate
+   -- ^fixedRate
+   ::const DayCounter &
+   -- ^fixedDC
+   ::const boost::shared_ptr< OvernightIndex > &
+   -- ^overnightIndex
+   ::Spread
+   =0.0
+   -- ^spread
+  OvernightIndexedSwap
+   ->
+   ::Type
+   -- ^type
+   ::std::vector< Real >
+   -- ^nominals
+   ::const Schedule &
+   -- ^schedule
+   ::Rate
+   -- ^fixedRate
+   ::const DayCounter &
+   -- ^fixedDC
+   ::const boost::shared_ptr< OvernightIndex > &
+   -- ^overnightIndex
+   ::Spread
+   =0.0
+   -- ^spread
+ -v-
+ -e-

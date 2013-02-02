@@ -1,0 +1,20 @@
+BootstrapError
+ -- |bootstrap error
+
+ -f-
+  BootstrapError
+   ->
+   ::const Curve *
+   -- ^curve
+   ::const boost::shared_ptr< typename Traits::helper > &
+   -- ^instrument
+   ::Size
+   -- ^segment
+  operator()
+   ->Real
+   ::Rate
+   -- ^guess
+  helper
+   ->const boost::shared_ptr< typename Traits::helper > &
+ -v-
+ -e-

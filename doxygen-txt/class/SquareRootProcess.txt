@@ -1,0 +1,21 @@
+SquareRootProcess
+ -- |Square-root process class.
+ -- |This class describes a square-root process governed by \[ dx = a (b - x_t) dt + \sigma \sqrt{x_t} dW_t. \]
+
+ -f-
+  SquareRootProcess
+   ->
+   ::Real
+   -- ^b
+   ::Real
+   -- ^a
+   ::Volatility
+   -- ^sigma
+   ::Real
+   =0.0
+   -- ^x0
+   ::const boost::shared_ptr< discretization > &
+   =boost::shared_ptr< discretization >(new EulerDiscretization)
+   -- ^d
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+ISKCurrency
+ -- |Icelandic krona.
+ -- |The ISO three-letter code is ISK; the numeric code is 352. It is divided in 100 aurar.
+
+ -f-
+  ISKCurrency
+   ->
+ -v-
+ -e-

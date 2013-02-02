@@ -1,0 +1,12 @@
+ExponentialSplinesFitting
+ -- |Exponential-splines fitting method.
+ -- |Fits a discount function to the exponential form \[ d(t) = \sum_{i=1}^9 c_i \exp^{-kappa i t} \] where the constants $ c_i $ and $ \kappa $ are to be determined. See:Li, B., E. DeWetering, G. Lucas, R. Brenner and A. Shapiro (2001): "Merrill Lynch Exponential Spline Model." Merrill Lynch Working PaperWarningconvergence may be slow
+
+ -f-
+  ExponentialSplinesFitting
+   ->
+   ::bool
+   =true
+   -- ^constrainAtZero
+ -v-
+ -e-

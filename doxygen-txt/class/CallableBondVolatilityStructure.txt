@@ -1,0 +1,166 @@
+CallableBondVolatilityStructure
+ -- |Callable-bond volatility structure.
+ -- |This class is purely abstract and defines the interface of concrete callable-bond volatility structures which will be derived from this one.
+
+ -f-
+  -- default constructor
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  CallableBondVolatilityStructure
+   ->
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+  -- initialize with a fixed reference date
+  CallableBondVolatilityStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^calendar
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+  -- calculate the reference date based on the global evaluation date
+  CallableBondVolatilityStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+ -v-
+ -e-
+ -f-
+  -- returns the volatility for a given option time and bondLength
+  volatility
+   ->Volatility
+   ::Time
+   -- ^optionTime
+   ::Time
+   -- ^bondLength
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the Black variance for a given option time and bondLength
+  blackVariance
+   ->Real
+   ::Time
+   -- ^optionTime
+   ::Time
+   -- ^bondLength
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the volatility for a given option date and bond tenor
+  volatility
+   ->Volatility
+   ::const Date &
+   -- ^optionDate
+   ::const Period &
+   -- ^bondTenor
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the Black variance for a given option date and bond tenor
+  blackVariance
+   ->Real
+   ::const Date &
+   -- ^optionDate
+   ::const Period &
+   -- ^bondTenor
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  smileSection
+   ->boost::shared_ptr< SmileSection >
+   ::const Date &
+   -- ^optionDate
+   ::const Period &
+   -- ^bondTenor
+  -- returns the volatility for a given option tenor and bond tenor
+  volatility
+   ->Volatility
+   ::const Period &
+   -- ^optionTenor
+   ::const Period &
+   -- ^bondTenor
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the Black variance for a given option tenor and bond tenor
+  blackVariance
+   ->Real
+   ::const Period &
+   -- ^optionTenor
+   ::const Period &
+   -- ^bondTenor
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  smileSection
+   ->boost::shared_ptr< SmileSection >
+   ::const Period &
+   -- ^optionTenor
+   ::const Period &
+   -- ^bondTenor
+ -v-
+ -e-
+ -f-
+  -- the largest length for which the term structure can return vols
+  maxBondTenor
+   ->const Period &
+  -- the largest bondLength for which the term structure can return vols
+  maxBondLength
+   ->Time
+  -- the minimum strike for which the term structure can return vols
+  minStrike
+   ->Rate
+  -- the maximum strike for which the term structure can return vols
+  maxStrike
+   ->Rate
+ -v-
+ -e-
+ -f-
+  ~CallableBondVolatilityStructure
+   ->
+  -- implements the conversion between dates and times
+  convertDates
+   ->std::pair< Time, Time >
+   ::const Date &
+   -- ^optionDate
+   ::const Period &
+   -- ^bondTenor
+  -- the business day convention used for option date calculation
+  businessDayConvention
+   ->BusinessDayConvention
+  -- implements the conversion between optionTenors and optionDates
+  optionDateFromTenor
+   ->Date
+   ::const Period &
+   -- ^optionTenor
+ -v-
+ -e-

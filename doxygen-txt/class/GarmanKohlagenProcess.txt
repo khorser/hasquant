@@ -1,0 +1,20 @@
+GarmanKohlagenProcess
+ -- |Garman-Kohlhagen (1983) stochastic process.
+ -- |This class describes the stochastic process for an exchange rate given by \[ dS(t, S) = (r(t) - r_f(t) - \frac{\sigma(t, S)^2}{2}) dt + \sigma dW_t. \]
+
+ -f-
+  GarmanKohlagenProcess
+   ->
+   ::const Handle< Quote > &
+   -- ^x0
+   ::const Handle< YieldTermStructure > &
+   -- ^foreignRiskFreeTS
+   ::const Handle< YieldTermStructure > &
+   -- ^domesticRiskFreeTS
+   ::const Handle< BlackVolTermStructure > &
+   -- ^blackVolTS
+   ::const boost::shared_ptr< discretization > &
+   =boost::shared_ptr< discretization >(new EulerDiscretization)
+   -- ^d
+ -v-
+ -e-

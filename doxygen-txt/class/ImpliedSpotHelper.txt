@@ -1,0 +1,21 @@
+ImpliedSpotHelper
+
+ -f-
+  ImpliedSpotHelper
+   ->
+   ::DiscountFactor
+   -- ^dividendDiscount
+   ::DiscountFactor
+   -- ^riskFreeDiscount
+   ::Real
+   -- ^standardDeviation
+   ::boost::shared_ptr< PlainVanillaPayoff >
+   -- ^payoff
+   ::Real
+   -- ^strike
+  operator()
+   ->Real
+   ::Real
+   -- ^spot
+ -v-
+ -e-

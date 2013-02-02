@@ -1,0 +1,45 @@
+MultiStepInverseFloater
+
+ -f-
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  numberOfProducts
+   ->Size
+  maxNumberOfCashFlowsPerProductPerStep
+   ->Size
+  reset
+   ->void
+  nextTimeStep
+   ->bool
+   ::const CurveState &
+   -- ^currentState
+   ::std::vector< Size > &
+   -- ^numberCashFlowsThisStep
+   ::std::vector< std::vector< CashFlow > > &
+   -- ^cashFlowsGenerated
+  clone
+   ->std::auto_ptr< MarketModelMultiProduct >
+ -v-
+ -e-
+ -f-
+  MultiStepInverseFloater
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Real > &
+   -- ^fixedAccruals
+   ::const std::vector< Real > &
+   -- ^floatingAccruals
+   ::const std::vector< Real > &
+   -- ^fixedStrikes
+   ::const std::vector< Real > &
+   -- ^fixedMultipliers
+   ::const std::vector< Real > &
+   -- ^floatingSpreads
+   ::const std::vector< Time > &
+   -- ^paymentTimes
+   ::bool
+   =true
+   -- ^payer
+ -v-
+ -e-

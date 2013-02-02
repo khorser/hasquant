@@ -1,0 +1,17 @@
+AssetSwap::results
+ -- |Results from simple swap calculation
+
+ -f-
+ -v-
+  fairSpread
+   ::Spread
+  fairCleanPrice
+   ::Real
+  fairNonParRepayment
+   ::Real
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

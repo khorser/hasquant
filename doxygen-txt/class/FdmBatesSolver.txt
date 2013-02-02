@@ -1,0 +1,44 @@
+FdmBatesSolver
+
+ -f-
+  FdmBatesSolver
+   ->
+   ::const Handle< BatesProcess > &
+   -- ^process
+   ::const FdmSolverDesc &
+   -- ^solverDesc
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+   ::Size
+   =12
+   -- ^integroIntegrationOrder
+   ::const Handle< FdmQuantoHelper > &
+   =Handle< FdmQuantoHelper >()
+   -- ^quantoHelper
+  valueAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^v
+  thetaAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^v
+  deltaAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^v
+  gammaAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^v
+ -v-
+ -e-

@@ -1,0 +1,13 @@
+DerivedQuote
+ -- |market quote whose value depends on another quote
+ -- |Teststhe correctness of the returned values is tested by checking them against numerical calculations.
+
+ -f-
+  DerivedQuote
+   ->
+   ::const Handle< Quote > &
+   -- ^element
+   ::const UnaryFunction &
+   -- ^f
+ -v-
+ -e-

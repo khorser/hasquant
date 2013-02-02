@@ -1,0 +1,10 @@
+CommoditySettings
+ -- |global repository for run-time library settings
+
+ -f-
+  currency
+   ->Currency &
+  unitOfMeasure
+   ->UnitOfMeasure &
+ -v-
+ -e-

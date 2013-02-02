@@ -1,0 +1,19 @@
+ForwardVanillaOption
+ -- |Forward version of a vanilla option
+
+ -f-
+ -v-
+ -e-
+ -f-
+  ForwardVanillaOption
+   ->
+   ::Real
+   -- ^moneyness
+   ::const Date &
+   -- ^resetDate
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+ -v-
+ -e-

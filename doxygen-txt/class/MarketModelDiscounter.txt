@@ -1,0 +1,17 @@
+MarketModelDiscounter
+
+ -f-
+  MarketModelDiscounter
+   ->
+   ::Time
+   -- ^paymentTime
+   ::const std::vector< Time > &
+   -- ^rateTimes
+  numeraireBonds
+   ->Real
+   ::const CurveState &
+   -- ^
+   ::Size
+   -- ^numeraire
+ -v-
+ -e-

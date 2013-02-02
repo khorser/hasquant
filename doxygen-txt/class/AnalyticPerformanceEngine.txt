@@ -1,0 +1,11 @@
+AnalyticPerformanceEngine
+ -- |Pricing engine for performance options using analytical formulae.
+ -- |Teststhe correctness of the returned greeks is tested by reproducing numerical derivatives.
+
+ -f-
+  AnalyticPerformanceEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+ -v-
+ -e-

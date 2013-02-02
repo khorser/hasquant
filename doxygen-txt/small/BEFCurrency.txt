@@ -1,0 +1,9 @@
+BEFCurrency
+ -- |Belgian franc.
+ -- |The ISO three-letter code was BEF; the numeric code was 56. It had no subdivisions.Obsoleted by the Euro since 1999.
+
+ -f-
+  BEFCurrency
+   ->
+ -v-
+ -e-

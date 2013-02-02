@@ -1,0 +1,43 @@
+FdmBlackScholesMesher
+
+ -f-
+  FdmBlackScholesMesher
+   ->
+   ::Size
+   -- ^size
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Time
+   -- ^maturity
+   ::Real
+   -- ^strike
+   ::Real
+   =Null< Real >()
+   -- ^xMinConstraint
+   ::Real
+   =Null< Real >()
+   -- ^xMaxConstraint
+   ::Real
+   =0.0001
+   -- ^eps
+   ::Real
+   =1.5
+   -- ^scaleFactor
+   ::const std::pair< Real, Real > &
+   =(std::pair< Real, Real >(Null< Real >(), Null< Real >()))
+   -- ^cPoint
+ -v-
+ -e-
+ -f-
+  processHelper
+   ->boost::shared_ptr< GeneralizedBlackScholesProcess >
+   ::const Handle< Quote > &
+   -- ^s0
+   ::const Handle< YieldTermStructure > &
+   -- ^rTS
+   ::const Handle< YieldTermStructure > &
+   -- ^qTS
+   ::Volatility
+   -- ^vol
+ -v-
+ -e-

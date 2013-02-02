@@ -1,0 +1,16 @@
+GaussianCopula
+ -- |Gaussian copula.
+
+ -f-
+  GaussianCopula
+   ->
+   ::Real
+   -- ^rho
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

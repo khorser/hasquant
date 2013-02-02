@@ -1,0 +1,17 @@
+FDStepConditionEngine
+ -- |Finite-differences pricing engine for American-style vanilla options.
+
+ -f-
+  FDStepConditionEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   -- ^timeSteps
+   ::Size
+   -- ^gridPoints
+   ::bool
+   =false
+   -- ^timeDependent
+ -v-
+ -e-

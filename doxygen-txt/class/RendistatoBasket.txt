@@ -1,0 +1,33 @@
+RendistatoBasket
+
+ -f-
+  size
+   ->Size
+  btps
+   ->const std::vector< boost::shared_ptr< BTP > > &
+  cleanPriceQuotes
+   ->const std::vector< Handle< Quote > > &
+  outstandings
+   ->const std::vector< Real > &
+  weights
+   ->const std::vector< Real > &
+  outstanding
+   ->Real
+ -v-
+ -e-
+ -f-
+  update
+   ->void
+ -v-
+ -e-
+ -f-
+  RendistatoBasket
+   ->
+   ::const std::vector< boost::shared_ptr< BTP > > &
+   -- ^btps
+   ::const std::vector< Real > &
+   -- ^outstandings
+   ::const std::vector< Handle< Quote > > &
+   -- ^cleanPriceQuotes
+ -v-
+ -e-

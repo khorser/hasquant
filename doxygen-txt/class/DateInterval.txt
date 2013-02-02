@@ -1,0 +1,40 @@
+DateInterval
+ -- |Date interval described by a number of a given time unit.
+
+ -f-
+  DateInterval
+   ->
+  DateInterval
+   ->
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+  startDate
+   ->const Date &
+  endDate
+   ->const Date &
+  isDateBetween
+   ->bool
+   ::Date
+   -- ^date
+   ::bool
+   =true
+   -- ^includeFirst
+   ::bool
+   =true
+   -- ^includeLast
+  intersection
+   ->DateInterval
+   ::const DateInterval &
+   -- ^di
+  operator==
+   ->bool
+   ::const DateInterval &
+   -- ^rhs
+  operator!=
+   ->bool
+   ::const DateInterval &
+   -- ^rhs
+ -v-
+ -e-

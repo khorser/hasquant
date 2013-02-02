@@ -1,0 +1,29 @@
+OptionletStripper1
+ -- |Helper class to strip optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) term volatilities of a CapFloorTermVolSurface.
+
+ -f-
+  OptionletStripper1
+   ->
+   ::const boost::shared_ptr< CapFloorTermVolSurface > &
+   -- ^
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^index
+   ::Rate
+   =Null< Rate >()
+   -- ^switchStrikes
+   ::Real
+   =1.0e-6
+   -- ^accuracy
+   ::Natural
+   =100
+   -- ^maxIter
+  capFloorPrices
+   ->const Matrix &
+  capFloorVolatilities
+   ->const Matrix &
+  optionletPrices
+   ->const Matrix &
+  switchStrike
+   ->Rate
+ -v-
+ -e-

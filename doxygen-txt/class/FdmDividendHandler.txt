@@ -1,0 +1,29 @@
+FdmDividendHandler
+
+ -f-
+  FdmDividendHandler
+   ->
+   ::const DividendSchedule &
+   -- ^schedule
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const Date &
+   -- ^referenceDate
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Size
+   -- ^equityDirection
+  applyTo
+   ->void
+   ::Array &
+   -- ^a
+   ::Time
+   -- ^t
+  dividendTimes
+   ->const std::vector< Time > &
+  dividendDates
+   ->const std::vector< Date > &
+  dividends
+   ->const std::vector< Real > &
+ -v-
+ -e-

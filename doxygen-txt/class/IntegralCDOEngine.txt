@@ -1,0 +1,11 @@
+IntegralCDOEngine
+ -- |CDO base engine taking (possibly) small time steps.
+
+ -f-
+  IntegralCDOEngine
+   ->
+   ::Period
+   =3 *Months
+   -- ^stepSize
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+CHFCurrency
+ -- |Swiss franc.
+ -- |The ISO three-letter code is CHF; the numeric code is 756. It is divided into 100 cents.
+
+ -f-
+  CHFCurrency
+   ->
+ -v-
+ -e-

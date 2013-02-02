@@ -1,0 +1,17 @@
+DiscretizedSwaption
+
+ -f-
+  DiscretizedSwaption
+   ->
+   ::const Swaption::arguments &
+   -- ^
+   ::const Date &
+   -- ^referenceDate
+   ::const DayCounter &
+   -- ^dayCounter
+  reset
+   ->void
+   ::Size
+   -- ^size
+ -v-
+ -e-

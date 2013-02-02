@@ -1,0 +1,40 @@
+LfmCovarianceParameterization
+ -- |Libor market model parameterization
+ -- |Brigo, Damiano, Mercurio, Fabio, Morini, Massimo, 2003, Different Covariance Parameterizations of the Libor Market Model and Joint Caps/Swaptions Calibration (http://www.exoticderivatives.com/Files/Papers/brigomercuriomorini.pdf)
+
+ -f-
+  LfmCovarianceParameterization
+   ->
+   ::Size
+   -- ^size
+   ::Size
+   -- ^factors
+  ~LfmCovarianceParameterization
+   ->
+  size
+   ->Size
+  factors
+   ->Size
+  diffusion
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  covariance
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  integratedCovariance
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+ -v-
+ -e-

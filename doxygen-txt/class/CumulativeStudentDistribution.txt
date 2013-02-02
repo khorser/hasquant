@@ -1,0 +1,15 @@
+CumulativeStudentDistribution
+ -- |Cumulative Student t-distribution.
+ -- |Cumulative distribution function for $ n $ degrees of freedom (see mathworld.wolfram.com): \[ F(x) = \int_{-\infty}^x\,f(y)\,dy = \frac{1}{2}\, +\,\frac{1}{2}\,sgn(x)\, \left[ I\left(1,\frac{n}{2},\frac{1}{2}\right) - I\left(\frac{n}{n+y^2}, \frac{n}{2},\frac{1}{2}\right)\right] \] where $ I(z; a, b) $ is the regularized incomplete beta function.
+
+ -f-
+  CumulativeStudentDistribution
+   ->
+   ::Integer
+   -- ^n
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

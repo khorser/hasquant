@@ -1,0 +1,23 @@
+GaussianRecursiveCdoEngine
+ -- |Specialization for Gaussian copula, the integration still remains.
+
+ -f-
+  -- quote constructor.
+  GaussianRecursiveCdoEngine
+   ->
+   ::const Handle< Quote > &
+   -- ^correlQuote
+   ::Size
+   =1
+   -- ^nbuckets
+   ::Size
+   =12
+   -- ^quadOrder
+   ::Real
+   =5.
+   -- ^maxval
+   ::Size
+   =50
+   -- ^steps
+ -v-
+ -e-

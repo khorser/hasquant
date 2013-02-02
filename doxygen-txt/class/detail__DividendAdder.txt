@@ -1,0 +1,13 @@
+detail::DividendAdder
+
+ -f-
+  DividendAdder
+   ->
+   ::const Dividend *
+   -- ^d
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

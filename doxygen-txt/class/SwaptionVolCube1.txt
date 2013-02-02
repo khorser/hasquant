@@ -1,0 +1,81 @@
+SwaptionVolCube1
+
+ -f-
+  performCalculations
+   ->void
+ -v-
+ -e-
+ -f-
+  smileSectionImpl
+   ->boost::shared_ptr< SmileSection >
+   ::Time
+   -- ^optionTime
+   ::Time
+   -- ^swapLength
+ -v-
+ -e-
+ -f-
+  marketVolCube
+   ->const Matrix &
+   ::Size
+   -- ^i
+  sparseSabrParameters
+   ->Matrix
+  denseSabrParameters
+   ->Matrix
+  marketVolCube
+   ->Matrix
+  volCubeAtmCalibrated
+   ->Matrix
+ -v-
+ -e-
+ -f-
+  SwaptionVolCube1
+   ->
+   ::const Handle< SwaptionVolatilityStructure > &
+   -- ^atmVolStructure
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::const std::vector< Spread > &
+   -- ^strikeSpreads
+   ::const std::vector< std::vector< Handle< Quote > > > &
+   -- ^volSpreads
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^swapIndexBase
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^shortSwapIndexBase
+   ::bool
+   -- ^vegaWeightedSmileFit
+   ::const std::vector< std::vector< Handle< Quote > > > &
+   -- ^parametersGuess
+   ::const std::vector< bool > &
+   -- ^isParameterFixed
+   ::bool
+   -- ^isAtmCalibrated
+   ::const boost::shared_ptr< EndCriteria > &
+   =boost::shared_ptr< EndCriteria >()
+   -- ^endCriteria
+   ::Real
+   =Null< Real >()
+   -- ^maxErrorTolerance
+   ::const boost::shared_ptr< OptimizationMethod > &
+   =boost::shared_ptr< OptimizationMethod >()
+   -- ^optMethod
+  sabrCalibrationSection
+   ->void
+   ::const Cube &
+   -- ^marketVolCube
+   ::Cube &
+   -- ^parametersCube
+   ::const Period &
+   -- ^swapTenor
+  recalibration
+   ->void
+   ::Real
+   -- ^beta
+   ::const Period &
+   -- ^swapTenor
+ -v-
+ -e-

@@ -1,0 +1,22 @@
+CMSwapCurveState
+ -- |Curve state for constant-maturity-swap market models
+
+ -f-
+  setOnCMSwapRates
+   ->void
+   ::const std::vector< Rate > &
+   -- ^cmSwapRates
+   ::Size
+   =0
+   -- ^firstValidIndex
+ -v-
+ -e-
+ -f-
+  CMSwapCurveState
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::Size
+   -- ^spanningForwards
+ -v-
+ -e-

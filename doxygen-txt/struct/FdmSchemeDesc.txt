@@ -1,0 +1,49 @@
+FdmSchemeDesc
+
+ -f-
+ -v-
+ -e-
+  FdmSchemeType
+   HundsdorferType
+   DouglasType
+   CraigSneydType
+   ModifiedCraigSneydType
+   ImplicitEulerType
+   ExplicitEulerType
+ -f-
+ -v-
+  type
+   ::const FdmSchemeType
+  theta
+   ::const Real
+  mu
+   ::const Real
+ -e-
+ -f-
+  FdmSchemeDesc
+   ->
+   ::FdmSchemeType
+   -- ^type
+   ::Real
+   -- ^theta
+   ::Real
+   -- ^mu
+ -v-
+ -e-
+ -f-
+  Douglas
+   ->FdmSchemeDesc
+  ImplicitEuler
+   ->FdmSchemeDesc
+  ExplicitEuler
+   ->FdmSchemeDesc
+  CraigSneyd
+   ->FdmSchemeDesc
+  ModifiedCraigSneyd
+   ->FdmSchemeDesc
+  Hundsdorfer
+   ->FdmSchemeDesc
+  ModifiedHundsdorfer
+   ->FdmSchemeDesc
+ -v-
+ -e-

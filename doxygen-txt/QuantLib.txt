@@ -1,0 +1,2048 @@
+QuantLib
+ -- |abstract base class implementation specifies how to decide volatility structure for additional synthetic rates which are interleavedClasses for computing derivative of the map taking rates one step to the next with respect to a change in the pseudo-root. We do it both numerically and analytically to provide an easy test of the analytic method. This is useful for pathwise vegas.Evolution is log Euler.One is tested against the other in MarketModelTest::testPathwiseVegasIn order to compute market vegas, we need a class that gives the derivative of a swaption implied vol against changes in pseudo-root elements. This is that class.This is tested in the pathwise vegas routine in MarketModels.cppWhen bumping vols, bumping every pseudo-root element individually seems excessive so we need to couple some together.
+
+ -f-
+ -v-
+ -e-
+  -- |Interest rate coumpounding rule.
+  Compounding
+   Simple
+   -- ^$ 1+rt $
+   Compounded
+   -- ^$ (1+r)^t $
+   Continuous
+   -- ^$ e^{rt} $
+   SimpleThenCompounded
+   -- ^Simple up to the first period then Compounded.
+  -- |Seniority of a bond.
+  -- |They are also ISDA tier/seniorities used for CDS conventional spreads.
+  Seniority
+   SecDom
+   SnrFor
+   SubLT2
+   JrSubT2
+   PrefT1
+   NoSeniority
+   SeniorSec
+   SeniorUnSec
+   SubTier1
+   SubUpperTier2
+   SubLoweTier2
+  -- |Finite differences calculation.
+  SensitivityAnalysis
+   OneSide
+   Centered
+  -- |Price types.
+  PriceType
+   Bid
+   -- ^Bid price.
+   Ask
+   -- ^Ask price.
+   Last
+   -- ^Last price.
+   Close
+   -- ^Close price.
+   Mid
+   -- ^Mid price, calculated as the arithmetic average of bid and ask prices.
+   MidEquivalent
+   -- ^Mid equivalent price, calculated as a) the arithmetic average of bid and ask prices when both are available; b) either the bid or the ask price if any of them is available; c) the last price; or d) the close price.
+   MidSafe
+   -- ^Safe Mid price, returns the mid price only if both bid and ask are available.
+  -- |Business Day conventions.
+  -- |These conventions specify the algorithm used to adjust a date in case it is not a valid business day.
+  BusinessDayConvention
+   Following
+   -- ^Choose the first business day after the given holiday.
+   ModifiedFollowing
+   -- ^Choose the first business day after the given holiday unless it belongs to a different month, in which case choose the first business day before the holiday.
+   Preceding
+   -- ^Choose the first business day before the given holiday.
+   ModifiedPreceding
+   -- ^Choose the first business day before the given holiday unless it belongs to a different month, in which case choose the first business day after the holiday.
+   Unadjusted
+   -- ^Do not adjust.
+  -- |rules for joining calendars
+  JointCalendarRule
+   JoinHolidays
+   -- ^A date is a holiday for the joint calendar if it is a holiday for any of the given calendars
+   JoinBusinessDays
+   -- ^A date is a business day for the joint calendar if it is a business day for any of the given calendars
+  -- |Month names.
+  Month
+   January
+   February
+   March
+   April
+   May
+   June
+   July
+   August
+   September
+   October
+   November
+   December
+   Jan
+   Feb
+   Mar
+   Apr
+   Jun
+   Jul
+   Aug
+   Sep
+   Oct
+   Nov
+   Dec
+  -- |Frequency of events.
+  Frequency
+   NoFrequency
+   -- ^null frequency
+   Once
+   -- ^only once, e.g., a zero-coupon
+   Annual
+   -- ^once a year
+   Semiannual
+   -- ^twice a year
+   EveryFourthMonth
+   -- ^every fourth month
+   Quarterly
+   -- ^every third month
+   Bimonthly
+   -- ^every second month
+   Monthly
+   -- ^once a month
+   EveryFourthWeek
+   -- ^every fourth week
+   Biweekly
+   -- ^every second week
+   Weekly
+   -- ^once a week
+   Daily
+   -- ^once a day
+   OtherFrequency
+   -- ^some other unknown frequency
+  -- |Units used to describe time periods.
+  TimeUnit
+   Days
+   Weeks
+   Months
+   Years
+  -- |Day's serial number MOD 7; WEEKDAY Excel function is the same except for Sunday = 7.
+  Weekday
+   Sunday
+   Monday
+   Tuesday
+   Wednesday
+   Thursday
+   Friday
+   Saturday
+   Sun
+   Mon
+   Tue
+   Wed
+   Thu
+   Fri
+   Sat
+ -f-
+ -v-
+ -e-
+ -f-
+  FloatingLeg
+   ->Leg
+   ::const Schedule &
+   -- ^schedule
+   ::const std::vector< Real > &
+   -- ^nominals
+   ::const boost::shared_ptr< InterestRateIndexType > &
+   -- ^index
+   ::const DayCounter &
+   -- ^paymentDayCounter
+   ::BusinessDayConvention
+   -- ^paymentAdj
+   ::const std::vector< Natural > &
+   -- ^fixingDays
+   ::const std::vector< Real > &
+   -- ^gearings
+   ::const std::vector< Spread > &
+   -- ^spreads
+   ::const std::vector< Rate > &
+   -- ^caps
+   ::const std::vector< Rate > &
+   -- ^floors
+   ::bool
+   -- ^isInArrears
+   ::bool
+   -- ^isZero
+  FloatingDigitalLeg
+   ->Leg
+   ::const Schedule &
+   -- ^schedule
+   ::const std::vector< Real > &
+   -- ^nominals
+   ::const boost::shared_ptr< InterestRateIndexType > &
+   -- ^index
+   ::const DayCounter &
+   -- ^paymentDayCounter
+   ::BusinessDayConvention
+   -- ^paymentAdj
+   ::const std::vector< Natural > &
+   -- ^fixingDays
+   ::const std::vector< Real > &
+   -- ^gearings
+   ::const std::vector< Spread > &
+   -- ^spreads
+   ::bool
+   -- ^isInArrears
+   ::const std::vector< Rate > &
+   -- ^callStrikes
+   ::Position::Type
+   -- ^callPosition
+   ::bool
+   -- ^isCallATMIncluded
+   ::const std::vector< Rate > &
+   -- ^callDigitalPayoffs
+   ::const std::vector< Rate > &
+   -- ^putStrikes
+   ::Position::Type
+   -- ^putPosition
+   ::bool
+   -- ^isPutATMIncluded
+   ::const std::vector< Rate > &
+   -- ^putDigitalPayoffs
+   ::const boost::shared_ptr< DigitalReplication > &
+   -- ^replication
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::GFunctionFactory::YieldCurveModel
+   -- ^type
+  setCouponPricer
+   ->void
+   ::const Leg &
+   -- ^leg
+   ::const boost::shared_ptr< FloatingRateCouponPricer > &
+   -- ^
+  setCouponPricers
+   ->void
+   ::const Leg &
+   -- ^leg
+   ::const std::vector< boost::shared_ptr< FloatingRateCouponPricer > > &
+   -- ^
+  -- helper function building a sequence of fixed dividends
+  DividendVector
+   ->std::vector< boost::shared_ptr< Dividend > >
+   ::const std::vector< Date > &
+   -- ^dividendDates
+   ::const std::vector< Real > &
+   -- ^dividends
+  operator==
+   ->bool
+   ::const Currency &
+   -- ^c1
+   ::const Currency &
+   -- ^c2
+  operator!=
+   ->bool
+   ::const Currency &
+   -- ^c1
+   ::const Currency &
+   -- ^c2
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::const SecondaryCostAmounts &
+   -- ^secondaryCostAmounts
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::const PricingError &
+   -- ^error
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::const PricingErrors &
+   -- ^errors
+  operator==
+   ->bool
+   ::const CommodityCurve &
+   -- ^c1
+   ::const CommodityCurve &
+   -- ^c2
+  operator==
+   ->bool
+   ::const CommodityIndex &
+   -- ^i1
+   ::const CommodityIndex &
+   -- ^i2
+  operator==
+   ->bool
+   ::const CommodityType &
+   -- ^c1
+   ::const CommodityType &
+   -- ^c2
+  operator!=
+   ->bool
+   ::const CommodityType &
+   -- ^c1
+   ::const CommodityType &
+   -- ^c2
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::const CommodityUnitCost &
+   -- ^unitCost
+  operator==
+   ->bool
+   ::const PaymentTerm &
+   -- ^c1
+   ::const PaymentTerm &
+   -- ^c2
+  operator!=
+   ->bool
+   ::const PaymentTerm &
+   -- ^c1
+   ::const PaymentTerm &
+   -- ^c2
+  operator+
+   ->Quantity
+   ::const Quantity &
+   -- ^m1
+   ::const Quantity &
+   -- ^m2
+  operator-
+   ->Quantity
+   ::const Quantity &
+   -- ^m1
+   ::const Quantity &
+   -- ^m2
+  operator*
+   ->Quantity
+   ::const Quantity &
+   -- ^m
+   ::Real
+   -- ^x
+  operator*
+   ->Quantity
+   ::Real
+   -- ^x
+   ::const Quantity &
+   -- ^m
+  operator/
+   ->Quantity
+   ::const Quantity &
+   -- ^m
+   ::Real
+   -- ^x
+  operator!=
+   ->bool
+   ::const Quantity &
+   -- ^m1
+   ::const Quantity &
+   -- ^m2
+  operator>
+   ->bool
+   ::const Quantity &
+   -- ^m1
+   ::const Quantity &
+   -- ^m2
+  operator>=
+   ->bool
+   ::const Quantity &
+   -- ^m1
+   ::const Quantity &
+   -- ^m2
+  operator==
+   ->bool
+   ::const UnitOfMeasure &
+   -- ^c1
+   ::const UnitOfMeasure &
+   -- ^c2
+  operator!=
+   ->bool
+   ::const UnitOfMeasure &
+   -- ^c1
+   ::const UnitOfMeasure &
+   -- ^c2
+  -- Two credit events are the same independently of their settlement member data. This has the side effect of overwritting different settlements from the same credit event when, say, inserting in a map. But on the other hand one given event can only have one settlement. This means we can not have two restructuring events on a bond on the same date.
+  operator==
+   ->bool
+   ::const DefaultEvent &
+   -- ^lhs
+   ::const DefaultEvent &
+   -- ^rhs
+  operator!=
+   ->bool
+   ::const DefaultEvent &
+   -- ^lhs
+   ::const DefaultEvent &
+   -- ^rhs
+  operator==
+   ->bool
+   ::const DefaultProbKey &
+   -- ^lhs
+   ::const DefaultProbKey &
+   -- ^rhs
+  -- Equality is the criteria for indexing the curves. This depends only on the atomic types and not on idiosincracies of derived type as mentioned in the functional documentation (specific event characteristics are relevant to credit event matching but not to the probability meaning). operator== is also used to remove duplicates in some containers. This ensures we do not have two equal events (despite having different characteristics) in those containers. This makes sense, theres no logic in having two FailureToPay in a contract even if they have different characteristics.
+  operator==
+   ->bool
+   ::const DefaultType &
+   -- ^lhs
+   ::const DefaultType &
+   -- ^rhs
+  operator<
+   ->bool
+   ::const Loss &
+   -- ^l1
+   ::const Loss &
+   -- ^l2
+  operator>
+   ->bool
+   ::const Loss &
+   -- ^l1
+   ::const Loss &
+   -- ^l2
+  operator==
+   ->bool
+   ::const Loss &
+   -- ^l1
+   ::const Loss &
+   -- ^l2
+  operator!=
+   ->bool
+   ::const Loss &
+   -- ^l1
+   ::const Loss &
+   -- ^l2
+  -- Helper function for conventional recoveries. Returns the ISDA.
+  makeIsdaConvMap
+   ->std::map< Seniority, Real >
+  -- Convolutions of the input sequence.
+  -- Calculates x[0]*x[n]+x[1]*x[n+1]+x[2]*x[n+2]+... for n = 0,1,...,maxLag via FFT.The size of the output sequence must be maxLag + 1
+  convolutions
+   ->void
+   ::ForwardIterator
+   -- ^begin
+   ::ForwardIterator
+   -- ^end
+   ::OutputIterator
+   -- ^out
+   ::std::size_t
+   -- ^maxLag
+  -- Unbiased auto-covariances.
+  -- Results are calculated via FFT.Input data are supposed to be centered (i.e., zero mean). The size of the output sequence must be maxLag + 1
+  autocovariances
+   ->void
+   ::ForwardIterator
+   -- ^begin
+   ::ForwardIterator
+   -- ^end
+   ::OutputIterator
+   -- ^out
+   ::std::size_t
+   -- ^maxLag
+  -- Unbiased auto-covariances.
+  -- Results are calculated via FFT. This overload accepts non-centered data, removes the mean and returns it as a result. The centered sequence is written back into the input sequence if the reuse parameter is true. The size of the output sequence must be maxLag + 1
+  autocovariances
+   ->Real
+   ::ForwardIterator
+   -- ^begin
+   ::ForwardIterator
+   -- ^end
+   ::OutputIterator
+   -- ^out
+   ::std::size_t
+   -- ^maxLag
+   ::bool
+   -- ^reuse
+  -- Unbiased auto-correlations.
+  -- Results are calculated via FFT. The first element of the output is the unbiased sample variance.Input data are supposed to be centered (i.e., zero mean). The size of the output sequence must be maxLag + 1
+  autocorrelations
+   ->void
+   ::ForwardIterator
+   -- ^begin
+   ::ForwardIterator
+   -- ^end
+   ::OutputIterator
+   -- ^out
+   ::std::size_t
+   -- ^maxLag
+  -- Unbiased auto-correlations.
+  -- Results are calculated via FFT. The first element of the output is the unbiased sample variance.This overload accepts non-centered data, removes the mean and returns it as a result. The centered sequence is written back into the input sequence if the reuse parameter is true.The size of the output sequence must be maxLag + 1
+  autocorrelations
+   ->Real
+   ::ForwardIterator
+   -- ^begin
+   ::ForwardIterator
+   -- ^end
+   ::OutputIterator
+   -- ^out
+   ::std::size_t
+   -- ^maxLag
+   ::bool
+   -- ^reuse
+  -- utility fuction for weighted sum of NPVs
+  aggregateNPV
+   ->Real
+   ::const std::vector< boost::shared_ptr< Instrument > > &
+   -- ^
+   ::const std::vector< Real > &
+   -- ^quantities
+  -- parallel shift PV01 sensitivity analysis for a SimpleQuote vector
+  -- returns a pair of first and second derivative values calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is just one single element equal to one.All SimpleQuotes are tweaked together in a parallel fashion.
+  parallelAnalysis
+   ->std::pair< Real, Real >
+   ::const std::vector< Handle< SimpleQuote > > &
+   -- ^
+   ::const std::vector< boost::shared_ptr< Instrument > > &
+   -- ^
+   ::const std::vector< Real > &
+   -- ^quantities
+   ::Real
+   =0.0001
+   -- ^shift
+   ::SensitivityAnalysis
+   =Centered
+   -- ^type
+   ::Real
+   =Null< Real >()
+   -- ^referenceNpv
+  -- parallel shift PV01 sensitivity analysis for a SimpleQuote matrix
+  -- returns a pair of first and second derivative values calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is of size one.All SimpleQuotes are tweaked together in a parallel fashion.
+  parallelAnalysis
+   ->std::pair< Real, Real >
+   ::const std::vector< std::vector< Handle< SimpleQuote > > > &
+   -- ^
+   ::const std::vector< boost::shared_ptr< Instrument > > &
+   -- ^
+   ::const std::vector< Real > &
+   -- ^quantities
+   ::Real
+   =0.0001
+   -- ^shift
+   ::SensitivityAnalysis
+   =Centered
+   -- ^type
+   ::Real
+   =Null< Real >()
+   -- ^referenceNpv
+  -- (bucket) PV01 sensitivity analysis for a (single) SimpleQuote
+  -- returns a pair of first and second derivative values calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is of size one.
+  bucketAnalysis
+   ->std::pair< Real, Real >
+   ::Handle< SimpleQuote >
+   -- ^quote
+   ::const std::vector< boost::shared_ptr< Instrument > > &
+   -- ^
+   ::const std::vector< Real > &
+   -- ^quantities
+   ::Real
+   =0.0001
+   -- ^shift
+   ::SensitivityAnalysis
+   =Centered
+   -- ^type
+   ::Real
+   =Null< Real >()
+   -- ^referenceNpv
+  -- (bucket) parameters' sensitivity analysis for a (single) SimpleQuote
+  -- returns a vector (one element for each paramet) of pair of first and second derivative values calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is of size one.
+  bucketAnalysis
+   ->void
+   ::std::vector< Real > &
+   -- ^deltaVector
+   ::std::vector< Real > &
+   -- ^gammaVector
+   ::std::vector< Real > &
+   -- ^referenceValues
+   ::Handle< SimpleQuote >
+   -- ^quote
+   ::const std::vector< Handle< Quote > > &
+   -- ^parameters
+   ::Real
+   =0.0001
+   -- ^shift
+   ::SensitivityAnalysis
+   =Centered
+   -- ^type
+  -- bucket PV01 sensitivity analysis for a SimpleQuote vector
+  -- returns a pair of first and second derivative vectors calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is of size one.The (bucket) SimpleQuotes are tweaked one by one separately.
+  bucketAnalysis
+   ->std::pair< std::vector< Real >, std::vector< Real > >
+   ::const std::vector< Handle< SimpleQuote > > &
+   -- ^quotes
+   ::const std::vector< boost::shared_ptr< Instrument > > &
+   -- ^
+   ::const std::vector< Real > &
+   -- ^quantities
+   ::Real
+   =0.0001
+   -- ^shift
+   ::SensitivityAnalysis
+   =Centered
+   -- ^type
+  -- bucket parameters' sensitivity analysis for a SimpleQuote vector
+  -- returns a vector (one element for each paramet) of pair of first and second derivative vectors calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is of size one.The (bucket) SimpleQuotes are tweaked one by one separately.
+  bucketAnalysis
+   ->void
+   ::std::vector< std::vector< Real > > &
+   -- ^deltaMatrix
+   ::std::vector< std::vector< Real > > &
+   -- ^gammaMatrix
+   ::const std::vector< Handle< SimpleQuote > > &
+   -- ^quotes
+   ::const std::vector< Handle< Quote > > &
+   -- ^parameters
+   ::Real
+   =0.0001
+   -- ^shift
+   ::SensitivityAnalysis
+   =Centered
+   -- ^type
+  -- bucket sensitivity analysis for a SimpleQuote matrix
+  -- returns a pair of first and second derivative metrices calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is of size one.The (bucket) SimpleQuotes are tweaked one by one separately.
+  bucketAnalysis
+   ->std::pair< std::vector< std::vector< Real > >, std::vector< std::vector< Real > > >
+   ::const std::vector< std::vector< Handle< SimpleQuote > > > &
+   -- ^
+   ::const std::vector< boost::shared_ptr< Instrument > > &
+   -- ^
+   ::const std::vector< Real > &
+   -- ^quantities
+   ::Real
+   =0.0001
+   -- ^shift
+   ::SensitivityAnalysis
+   =Centered
+   -- ^type
+  CenteredGrid
+   ->Disposable< Array >
+   ::Real
+   -- ^center
+   ::Real
+   -- ^dx
+   ::Size
+   -- ^steps
+  BoundedGrid
+   ->Disposable< Array >
+   ::Real
+   -- ^xMin
+   ::Real
+   -- ^xMax
+   ::Size
+   -- ^steps
+  BoundedLogGrid
+   ->Disposable< Array >
+   ::Real
+   -- ^xMin
+   ::Real
+   -- ^xMax
+   ::Size
+   -- ^steps
+  operator==
+   ->bool
+   ::const Region &
+   -- ^r1
+   ::const Region &
+   -- ^r2
+  operator!=
+   ->bool
+   ::const Region &
+   -- ^r1
+   ::const Region &
+   -- ^r2
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::Average::Type
+   -- ^type
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::Barrier::Type
+   -- ^type
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::CapFloor::Type
+   -- ^
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::CPISwap::Type
+   -- ^t
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::YoYInflationCapFloor::Type
+   -- ^
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::Settlement::Type
+   -- ^type
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::VanillaSwap::Type
+   -- ^t
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::YearOnYearInflationSwap::Type
+   -- ^t
+  DotProduct
+   ->Real
+   ::const Array &
+   -- ^v1
+   ::const Array &
+   -- ^v2
+  operator+
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v
+  operator-
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v
+  operator+
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v1
+   ::const Array &
+   -- ^v2
+  operator+
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v1
+   ::Real
+   -- ^a
+  operator+
+   ->const Disposable< Array >
+   ::Real
+   -- ^a
+   ::const Array &
+   -- ^v2
+  operator-
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v1
+   ::const Array &
+   -- ^v2
+  operator-
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v1
+   ::Real
+   -- ^a
+  operator-
+   ->const Disposable< Array >
+   ::Real
+   -- ^a
+   ::const Array &
+   -- ^v2
+  operator*
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v1
+   ::const Array &
+   -- ^v2
+  operator*
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v1
+   ::Real
+   -- ^a
+  operator*
+   ->const Disposable< Array >
+   ::Real
+   -- ^a
+   ::const Array &
+   -- ^v2
+  operator/
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v1
+   ::const Array &
+   -- ^v2
+  operator/
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v1
+   ::Real
+   -- ^a
+  operator/
+   ->const Disposable< Array >
+   ::Real
+   -- ^a
+   ::const Array &
+   -- ^v2
+  Abs
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v
+  Sqrt
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v
+  Log
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v
+  Exp
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v
+  swap
+   ->void
+   ::Array &
+   -- ^v
+   ::Array &
+   -- ^w
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::const Array &
+   -- ^a
+  betaFunction
+   ->Real
+   ::Real
+   -- ^z
+   ::Real
+   -- ^w
+  betaContinuedFraction
+   ->Real
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^x
+   ::Real
+   =1e-16
+   -- ^accuracy
+   ::Integer
+   =100
+   -- ^maxIteration
+  -- Incomplete Beta function.
+  -- Incomplete Beta function The implementation of the algorithm was inspired by "Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery, chapter 6
+  incompleteBetaFunction
+   ->Real
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^x
+   ::Real
+   =1e-16
+   -- ^accuracy
+   ::Integer
+   =100
+   -- ^maxIteration
+  -- Follows somewhat the advice of Knuth on checking for floating-point equality. The closeness relationship is: \[ \mathrm{close}(x,y,n) \equiv |x-y| \leq \varepsilon |x| \wedge |x-y| \leq \varepsilon |y| \] where $ \varepsilon $ is $ n $ times the machine accuracy; $ n $ equals 42 if not given.
+  close
+   ->bool
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  close
+   ->bool
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+   ::Size
+   -- ^n
+  -- Follows somewhat the advice of Knuth on checking for floating-point equality. The closeness relationship is: \[ \mathrm{close}(x,y,n) \equiv |x-y| \leq \varepsilon |x| \vee |x-y| \leq \varepsilon |y| \] where $ \varepsilon $ is $ n $ times the machine accuracy; $ n $ equals 42 if not given.
+  close_enough
+   ->bool
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  close_enough
+   ->bool
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+   ::Size
+   -- ^n
+  binomialCoefficientLn
+   ->Real
+   ::BigNatural
+   -- ^n
+   ::BigNatural
+   -- ^k
+  binomialCoefficient
+   ->Real
+   ::BigNatural
+   -- ^n
+   ::BigNatural
+   -- ^k
+  -- Given an odd integer n and a real number z it returns p such that: 1 - CumulativeBinomialDistribution((n-1)/2, n, p) = CumulativeNormalDistribution(z)n must be odd
+  PeizerPrattMethod2Inversion
+   ->Real
+   ::Real
+   -- ^z
+   ::BigNatural
+   -- ^n
+  clip
+   ->clipped_function< F, R >
+   ::const F &
+   -- ^f
+   ::const R &
+   -- ^r
+  compose
+   ->composed_function< F, G >
+   ::const F &
+   -- ^f
+   ::const G &
+   -- ^g
+  compose3
+   ->binary_compose3_function< F, G, H >
+   ::const F &
+   -- ^f
+   ::const G &
+   -- ^g
+   ::const H &
+   -- ^h
+  -- Incomplete Gamma function.
+  -- Incomplete Gamma function The implementation of the algorithm was inspired by "Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery, chapter 6
+  incompleteGammaFunction
+   ->Real
+   ::Real
+   -- ^a
+   ::Real
+   -- ^x
+   ::Real
+   =1.0e-13
+   -- ^accuracy
+   ::Integer
+   =100
+   -- ^maxIteration
+  incompleteGammaFunctionSeriesRepr
+   ->Real
+   ::Real
+   -- ^a
+   ::Real
+   -- ^x
+   ::Real
+   =1.0e-13
+   -- ^accuracy
+   ::Integer
+   =100
+   -- ^maxIteration
+  incompleteGammaFunctionContinuedFractionRepr
+   ->Real
+   ::Real
+   -- ^a
+   ::Real
+   -- ^x
+   ::Real
+   =1.0e-13
+   -- ^accuracy
+   ::Integer
+   =100
+   -- ^maxIteration
+  operator+
+   ->const Disposable< Matrix >
+   ::const Matrix &
+   -- ^m1
+   ::const Matrix &
+   -- ^m2
+  operator-
+   ->const Disposable< Matrix >
+   ::const Matrix &
+   -- ^m1
+   ::const Matrix &
+   -- ^m2
+  operator*
+   ->const Disposable< Matrix >
+   ::const Matrix &
+   -- ^m
+   ::Real
+   -- ^x
+  operator*
+   ->const Disposable< Matrix >
+   ::Real
+   -- ^x
+   ::const Matrix &
+   -- ^m
+  operator/
+   ->const Disposable< Matrix >
+   ::const Matrix &
+   -- ^m
+   ::Real
+   -- ^x
+  operator*
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v
+   ::const Matrix &
+   -- ^m
+  operator*
+   ->const Disposable< Array >
+   ::const Matrix &
+   -- ^m
+   ::const Array &
+   -- ^v
+  operator*
+   ->const Disposable< Matrix >
+   ::const Matrix &
+   -- ^m1
+   ::const Matrix &
+   -- ^m2
+  transpose
+   ->const Disposable< Matrix >
+   ::const Matrix &
+   -- ^m
+  outerProduct
+   ->const Disposable< Matrix >
+   ::const Array &
+   -- ^v1
+   ::const Array &
+   -- ^v2
+  outerProduct
+   ->const Disposable< Matrix >
+   ::Iterator1
+   -- ^v1begin
+   ::Iterator1
+   -- ^v1end
+   ::Iterator2
+   -- ^v2begin
+   ::Iterator2
+   -- ^v2end
+  swap
+   ->void
+   ::Matrix &
+   -- ^m1
+   ::Matrix &
+   -- ^m2
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::const Matrix &
+   -- ^m
+  -- Iterative procedure to compute a correlation matrix reduction to a single factor dependence vector by minimizing the residuals.It assumes that such a reduction is possible, notice that if the dependence can not be reduced to one factor the correlation factors might be above 1.The matrix passed is destroyed.See for instance: "Modern Factor Analysis", Harry H. Harman, University Of Chicago Press, 1976. Chapter 9 is relevant to this context.
+  factorReduction
+   ->Disposable< std::vector< Real > >
+   ::Matrix
+   -- ^mtrx
+   ::Size
+   =25
+   -- ^maxIters
+  -- Calculation of covariance from correlation and standard deviations.
+  -- Combines the correlation matrix and the vector of standard deviations to return the covariance matrix.Note that only the symmetric part of the correlation matrix is used. Also it is assumed that the diagonal member of the correlation matrix equals one.The correlation matrix must be symmetric with the diagonal members equal to one. Teststested on know values and cross checked with CovarianceDecomposition
+  getCovariance
+   ->Disposable< Matrix >
+   ::DataIterator
+   -- ^stdDevBegin
+   ::DataIterator
+   -- ^stdDevEnd
+   ::const Matrix &
+   -- ^corr
+   ::Real
+   =1.0e-12
+   -- ^tolerance
+  -- QR decompoisition.
+  -- This implementation is based on MINPACK (http://www.netlib.org/minpack, http://www.netlib.org/cephes/linalg.tgz)This subroutine uses householder transformations with column pivoting (optional) to compute a qr factorization of the m by n matrix A. That is, qrfac determines an orthogonal matrix q, a permutation matrix p, and an upper trapezoidal matrix r with diagonal elements of nonincreasing magnitude, such that A*p = q*r.Return value ipvt is an integer array of length n, which defines the permutation matrix p such that A*p = q*r. Column j of p is column ipvt(j) of the identity matrix.See lmdiff.cpp for further details.
+  qrDecomposition
+   ->Disposable< std::vector< Size > >
+   ::const Matrix &
+   -- ^A
+   ::Matrix &
+   -- ^q
+   ::Matrix &
+   -- ^r
+   ::bool
+   =true
+   -- ^pivot
+  -- QR Solve.
+  -- This implementation is based on MINPACK (http://www.netlib.org/minpack, http://www.netlib.org/cephes/linalg.tgz)Given an m by n matrix A, an n by n diagonal matrix d, and an m-vector b, the problem is to determine an x which solves the systemA*x = b , d*x = 0 ,in the least squares sense.d is an input array of length n which must contain the diagonal elements of the matrix d.See lmdiff.cpp for further details.
+  qrSolve
+   ->Disposable< Array >
+   ::const Matrix &
+   -- ^a
+   ::const Array &
+   -- ^b
+   ::bool
+   =true
+   -- ^pivot
+   ::const Array &
+   =Array()
+   -- ^d
+  -- Returns the Triangular Angles Parametrized correlation matrix.
+  -- The matrix $ m $ is filled with values corresponding to angles given in the $ angles $ vector. See equation (24) in "Parameterizing correlations: a geometric interpretation" by Francesco Rapisarda, Damiano Brigo, Fabio MercurioTests the correctness of the results is tested by reproducing known good data.the correctness of the results is tested by checking returned values against numerical calculations.
+  triangularAnglesParametrization
+   ->Disposable< Matrix >
+   ::const Array &
+   -- ^angles
+   ::Size
+   -- ^matrixSize
+   ::Size
+   -- ^rank
+  lmmTriangularAnglesParametrization
+   ->Disposable< Matrix >
+   ::const Array &
+   -- ^angles
+   ::Size
+   -- ^matrixSize
+   ::Size
+   -- ^rank
+  triangularAnglesParametrizationUnconstrained
+   ->Disposable< Matrix >
+   ::const Array &
+   -- ^x
+   ::Size
+   -- ^matrixSize
+   ::Size
+   -- ^rank
+  lmmTriangularAnglesParametrizationUnconstrained
+   ->Disposable< Matrix >
+   ::const Array &
+   -- ^x
+   ::Size
+   -- ^matrixSize
+   ::Size
+   -- ^rank
+  -- Returns the rank reduced Triangular Angles Parametrized correlation matrix.
+  -- The matrix $ m $ is filled with values corresponding to angles corresponding to the 3D spherical spiral paramterized by $ alpha $, $ t0 $, $ epsilon $ values. See equation (32) in "Parameterizing correlations: a geometric interpretation" by Francesco Rapisarda, Damiano Brigo, Fabio MercurioTests the correctness of the results is tested by reproducing known good data.the correctness of the results is tested by checking returned values against numerical calculations.
+  triangularAnglesParametrizationRankThree
+   ->Disposable< Matrix >
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^t0
+   ::Real
+   -- ^epsilon
+   ::Size
+   -- ^nbRows
+  triangularAnglesParametrizationRankThreeVectorial
+   ->Disposable< Matrix >
+   ::const Array &
+   -- ^paramters
+   ::Size
+   -- ^nbRows
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::EndCriteria::Type
+   -- ^ecType
+  sphereCylinderOptimizerClosest
+   ->std::vector< Real >
+   ::Real
+   -- ^r
+   ::Real
+   -- ^s
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^z1
+   ::Real
+   -- ^z2
+   ::Real
+   -- ^z3
+   ::Natural
+   -- ^maxIterations
+   ::Real
+   -- ^tolerance
+   ::Real
+   =1.0
+   -- ^finalWeight
+  swap
+   ->void
+   ::SampledCurve &
+   -- ^
+   ::SampledCurve &
+   -- ^
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::const SampledCurve &
+   -- ^a
+  swap
+   ->void
+   ::TridiagonalOperator &
+   -- ^
+   ::TridiagonalOperator &
+   -- ^
+  operator+
+   ->Disposable< TridiagonalOperator >
+   ::const TridiagonalOperator &
+   -- ^D
+  operator-
+   ->Disposable< TridiagonalOperator >
+   ::const TridiagonalOperator &
+   -- ^D
+  operator+
+   ->Disposable< TridiagonalOperator >
+   ::const TridiagonalOperator &
+   -- ^D1
+   ::const TridiagonalOperator &
+   -- ^D2
+  operator-
+   ->Disposable< TridiagonalOperator >
+   ::const TridiagonalOperator &
+   -- ^D1
+   ::const TridiagonalOperator &
+   -- ^D2
+  operator*
+   ->Disposable< TridiagonalOperator >
+   ::Real
+   -- ^a
+   ::const TridiagonalOperator &
+   -- ^D
+  operator*
+   ->Disposable< TridiagonalOperator >
+   ::const TridiagonalOperator &
+   -- ^D
+   ::Real
+   -- ^a
+  operator/
+   ->Disposable< TridiagonalOperator >
+   ::const TridiagonalOperator &
+   -- ^D
+   ::Real
+   -- ^a
+  -- returns the biased estimate obtained while regressing
+  genericLongstaffSchwartzRegression
+   ->Real
+   ::std::vector< std::vector< NodeData > > &
+   -- ^simulationData
+   ::std::vector< std::vector< Real > > &
+   -- ^basisCoefficients
+  -- returns the biased estimate obtained while optimizing
+  genericEarlyExerciseOptimization
+   ->Real
+   ::std::vector< std::vector< NodeData > > &
+   -- ^simulationData
+   ::const ParametricExercise &
+   -- ^exercise
+   ::std::vector< std::vector< Real > > &
+   -- ^parameters
+   ::const EndCriteria &
+   -- ^endCriteria
+   ::OptimizationMethod &
+   -- ^method
+  collectNodeData
+   ->void
+   ::MarketModelEvolver &
+   -- ^evolver
+   ::MarketModelMultiProduct &
+   -- ^product
+   ::MarketModelNodeDataProvider &
+   -- ^dataProvider
+   ::MarketModelExerciseValue &
+   -- ^rebate
+   ::MarketModelExerciseValue &
+   -- ^control
+   ::Size
+   -- ^numberOfPaths
+   ::std::vector< std::vector< NodeData > > &
+   -- ^collectedData
+  -- Exponential correlation L = long term correlation beta = exponential decay of correlation between far away forward rates gamma = exponent for time to go t = time dependence
+  exponentialCorrelations
+   ->Disposable< Matrix >
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::Real
+   =0.5
+   -- ^longTermCorr
+   ::Real
+   =0.2
+   -- ^beta
+   ::Real
+   =1.0
+   -- ^gamma
+   ::Time
+   =0.0
+   -- ^t
+  forwardsFromDiscountRatios
+   ->void
+   ::const Size
+   -- ^firstValidIndex
+   ::const std::vector< DiscountFactor > &
+   -- ^ds
+   ::const std::vector< Time > &
+   -- ^taus
+   ::std::vector< Rate > &
+   -- ^fwds
+  coterminalFromDiscountRatios
+   ->void
+   ::const Size
+   -- ^firstValidIndex
+   ::const std::vector< DiscountFactor > &
+   -- ^ds
+   ::const std::vector< Time > &
+   -- ^taus
+   ::std::vector< Rate > &
+   -- ^cotSwapRates
+   ::std::vector< Real > &
+   -- ^cotSwapAnnuities
+  constantMaturityFromDiscountRatios
+   ->void
+   ::const Size
+   -- ^spanningForwards
+   ::const Size
+   -- ^firstValidIndex
+   ::const std::vector< DiscountFactor > &
+   -- ^ds
+   ::const std::vector< Time > &
+   -- ^taus
+   ::std::vector< Rate > &
+   -- ^cotSwapRates
+   ::std::vector< Real > &
+   -- ^cotSwapAnnuities
+  -- Check that there is one numeraire for each evolution time. Each numeraire must be an index amongst the rate times so it ranges from 0 to n. Each numeraire must not have expired before the end of the step.
+  checkCompatibility
+   ->void
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const std::vector< Size > &
+   -- ^numeraires
+  isInTerminalMeasure
+   ->bool
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const std::vector< Size > &
+   -- ^numeraires
+  isInMoneyMarketPlusMeasure
+   ->bool
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const std::vector< Size > &
+   -- ^numeraires
+   ::Size
+   =1
+   -- ^offset
+  isInMoneyMarketMeasure
+   ->bool
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const std::vector< Size > &
+   -- ^numeraires
+  -- Terminal measure: the last bond is used as numeraire.
+  terminalMeasure
+   ->std::vector< Size >
+   ::const EvolutionDescription &
+   -- ^evolution
+  -- Offsetted discretely compounded money market account measure: for each step the offset-th unexpired bond is used as numeraire. When offset=0 the result is the usual discretely compounded money market account measure
+  moneyMarketPlusMeasure
+   ->std::vector< Size >
+   ::const EvolutionDescription &
+   -- ^
+   ::Size
+   =1
+   -- ^offset
+  -- Discretely compounded money market account measure: for each step the first unexpired bond is used as numeraire.
+  moneyMarketMeasure
+   ->std::vector< Size >
+   ::const EvolutionDescription &
+   -- ^
+  historicalForwardRatesAnalysis
+   ->void
+   ::SequenceStatistics &
+   -- ^statistics
+   ::std::vector< Date > &
+   -- ^skippedDates
+   ::std::vector< std::string > &
+   -- ^skippedDatesErrorMessage
+   ::std::vector< Date > &
+   -- ^failedDates
+   ::std::vector< std::string > &
+   -- ^failedDatesErrorMessage
+   ::std::vector< Period > &
+   -- ^fixingPeriods
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::const Period &
+   -- ^step
+   ::const boost::shared_ptr< InterestRateIndex > &
+   -- ^fwdIndex
+   ::const Period &
+   -- ^initialGap
+   ::const Period &
+   -- ^horizon
+   ::const std::vector< boost::shared_ptr< IborIndex > > &
+   -- ^iborIndexes
+   ::const std::vector< boost::shared_ptr< SwapIndex > > &
+   -- ^swapIndexes
+   ::const DayCounter &
+   -- ^yieldCurveDayCounter
+   ::Real
+   =1.0e-12
+   -- ^yieldCurveAccuracy
+   ::const Interpolator &
+   =Interpolator()
+   -- ^i
+  historicalRatesAnalysis
+   ->void
+   ::SequenceStatistics &
+   -- ^statistics
+   ::std::vector< Date > &
+   -- ^skippedDates
+   ::std::vector< std::string > &
+   -- ^skippedDatesErrorMessage
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::const Period &
+   -- ^step
+   ::const std::vector< boost::shared_ptr< InterestRateIndex > > &
+   -- ^indexes
+  rateVolDifferences
+   ->std::vector< Volatility >
+   ::const MarketModel &
+   -- ^marketModel1
+   ::const MarketModel &
+   -- ^marketModel2
+  rateInstVolDifferences
+   ->std::vector< Spread >
+   ::const MarketModel &
+   -- ^marketModel1
+   ::const MarketModel &
+   -- ^marketModel2
+   ::Size
+   -- ^index
+  coterminalSwapPseudoRoots
+   ->std::vector< Real >
+   ::const PiecewiseConstantCorrelation &
+   -- ^
+   ::const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+   -- ^
+   ::const std::vector< Time > &
+   -- ^
+  capletSwaptionPeriodicCalibration
+   ->Integer
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+   -- ^corr
+   ::VolatilityInterpolationSpecifier &
+   -- ^displacedSwapVariances
+   ::const std::vector< Volatility > &
+   -- ^capletVols
+   ::const boost::shared_ptr< CurveState > &
+   -- ^cs
+   ::const Spread
+   -- ^displacement
+   ::Real
+   -- ^caplet0Swaption1Priority
+   ::Size
+   -- ^numberOfFactors
+   ::Size
+   -- ^period
+   ::Size
+   -- ^max1dIterations
+   ::Real
+   -- ^tolerance1d
+   ::Size
+   -- ^maxUnperiodicIterations
+   ::Real
+   -- ^toleranceUnperiodic
+   ::Size
+   -- ^maxPeriodIterations
+   ::Real
+   -- ^periodTolerance
+   ::Real &
+   -- ^deformationSize
+   ::Real &
+   -- ^totalSwaptionError
+   ::std::vector< Matrix > &
+   -- ^swapCovariancePseudoRoots
+   ::std::vector< Real > &
+   -- ^finalScales
+   ::Size &
+   -- ^iterationsDone
+   ::Real &
+   -- ^errorImprovement
+   ::Matrix &
+   -- ^modelSwaptionVolsMatrix
+  mergeTimes
+   ->void
+   ::const std::vector< std::vector< Time > > &
+   -- ^times
+   ::std::vector< Time > &
+   -- ^mergedTimes
+   ::std::vector< std::valarray< bool > > &
+   -- ^isPresent
+  -- Look for elements of a set in a subset. Returns a vector of booleans such that: element set[i] present/not present in subset.both vectors must be strictly increasing.
+  isInSubset
+   ->std::valarray< bool >
+   ::const std::vector< Time > &
+   -- ^set
+   ::const std::vector< Time > &
+   -- ^subset
+  -- check for strictly increasing times, first time greater than zero
+  checkIncreasingTimes
+   ->void
+   ::const std::vector< Time > &
+   -- ^times
+  checkIncreasingTimesAndCalculateTaus
+   ->void
+   ::const std::vector< Time > &
+   -- ^times
+   ::std::vector< Time > &
+   -- ^taus
+  operator+
+   ->Money
+   ::const Money &
+   -- ^m1
+   ::const Money &
+   -- ^m2
+  operator-
+   ->Money
+   ::const Money &
+   -- ^m1
+   ::const Money &
+   -- ^m2
+  operator*
+   ->Money
+   ::const Money &
+   -- ^m
+   ::Decimal
+   -- ^x
+  operator*
+   ->Money
+   ::Decimal
+   -- ^x
+   ::const Money &
+   -- ^m
+  operator/
+   ->Money
+   ::const Money &
+   -- ^m
+   ::Decimal
+   -- ^x
+  operator!=
+   ->bool
+   ::const Money &
+   -- ^m1
+   ::const Money &
+   -- ^m2
+  operator>
+   ->bool
+   ::const Money &
+   -- ^m1
+   ::const Money &
+   -- ^m2
+  operator>=
+   ->bool
+   ::const Money &
+   -- ^m1
+   ::const Money &
+   -- ^m2
+  operator*
+   ->Money
+   ::Decimal
+   -- ^value
+   ::const Currency &
+   -- ^c
+  operator*
+   ->Money
+   ::const Currency &
+   -- ^c
+   ::Decimal
+   -- ^value
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::Option::Type
+   -- ^type
+  -- return the MidEquivalent price, i.e. the mid if available, or a suitable substitute if the proper mid is not available
+  midEquivalent
+   ->Real
+   ::const Real
+   -- ^bid
+   ::const Real
+   -- ^ask
+   ::const Real
+   -- ^last
+   ::const Real
+   -- ^close
+  -- return the MidSafe price, i.e. the mid only if both bid and ask prices are available
+  midSafe
+   ->Real
+   ::const Real
+   -- ^bid
+   ::const Real
+   -- ^ask
+  -- Black 1976 formula Warninginstead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+  blackFormula
+   ->Real
+   ::Option::Type
+   -- ^optionType
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^stdDev
+   ::Real
+   =1.0
+   -- ^discount
+   ::Real
+   =0.0
+   -- ^displacement
+  -- Black 1976 formula Warninginstead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+  blackFormula
+   ->Real
+   ::const boost::shared_ptr< PlainVanillaPayoff > &
+   -- ^payoff
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^stdDev
+   ::Real
+   =1.0
+   -- ^discount
+   ::Real
+   =0.0
+   -- ^displacement
+  -- Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
+  blackFormulaImpliedStdDevApproximation
+   ->Real
+   ::Option::Type
+   -- ^optionType
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^blackPrice
+   ::Real
+   =1.0
+   -- ^discount
+   ::Real
+   =0.0
+   -- ^displacement
+  -- Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
+  blackFormulaImpliedStdDevApproximation
+   ->Real
+   ::const boost::shared_ptr< PlainVanillaPayoff > &
+   -- ^payoff
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^blackPrice
+   ::Real
+   =1.0
+   -- ^discount
+   ::Real
+   =0.0
+   -- ^displacement
+  -- Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
+  blackFormulaImpliedStdDev
+   ->Real
+   ::Option::Type
+   -- ^optionType
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^blackPrice
+   ::Real
+   =1.0
+   -- ^discount
+   ::Real
+   =0.0
+   -- ^displacement
+   ::Real
+   =Null< Real >()
+   -- ^guess
+   ::Real
+   =1.0e-6
+   -- ^accuracy
+   ::Natural
+   =100
+   -- ^maxIterations
+  -- Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
+  blackFormulaImpliedStdDev
+   ->Real
+   ::const boost::shared_ptr< PlainVanillaPayoff > &
+   -- ^payoff
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^blackPrice
+   ::Real
+   =1.0
+   -- ^discount
+   ::Real
+   =0.0
+   -- ^displacement
+   ::Real
+   =Null< Real >()
+   -- ^guess
+   ::Real
+   =1.0e-6
+   -- ^accuracy
+   ::Natural
+   =100
+   -- ^maxIterations
+  -- Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. Warninginstead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+  blackFormulaCashItmProbability
+   ->Real
+   ::Option::Type
+   -- ^optionType
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^stdDev
+   ::Real
+   =0.0
+   -- ^displacement
+  -- Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. Warninginstead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+  blackFormulaCashItmProbability
+   ->Real
+   ::const boost::shared_ptr< PlainVanillaPayoff > &
+   -- ^payoff
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^stdDev
+   ::Real
+   =0.0
+   -- ^displacement
+  -- Black 1976 formula for standard deviation derivative Warninginstead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity), and it returns the derivative with respect to the standard deviation. If T is the time to maturity Black vega would be blackStdDevDerivative(strike, forward, stdDev)*sqrt(T)
+  blackFormulaStdDevDerivative
+   ->Real
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^stdDev
+   ::Real
+   =1.0
+   -- ^discount
+   ::Real
+   =0.0
+   -- ^displacement
+  -- Black 1976 formula for derivative with respect to implied vol, this is basically the vega, but if you want 1% change multiply by 1%
+  blackFormulaVolDerivative
+   ->Real
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^stdDev
+   ::Real
+   -- ^expiry
+   ::Real
+   =1.0
+   -- ^discount
+   ::Real
+   =0.0
+   -- ^displacement
+  -- Black 1976 formula for standard deviation derivative Warninginstead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity), and it returns the derivative with respect to the standard deviation. If T is the time to maturity Black vega would be blackStdDevDerivative(strike, forward, stdDev)*sqrt(T)
+  blackFormulaStdDevDerivative
+   ->Real
+   ::const boost::shared_ptr< PlainVanillaPayoff > &
+   -- ^payoff
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^stdDev
+   ::Real
+   =1.0
+   -- ^discount
+   ::Real
+   =0.0
+   -- ^displacement
+  -- Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier.WarningBachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
+  bachelierBlackFormula
+   ->Real
+   ::Option::Type
+   -- ^optionType
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^stdDev
+   ::Real
+   =1.0
+   -- ^discount
+  -- Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier.WarningBachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
+  bachelierBlackFormula
+   ->Real
+   ::const boost::shared_ptr< PlainVanillaPayoff > &
+   -- ^payoff
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^stdDev
+   ::Real
+   =1.0
+   -- ^discount
+  -- default theta calculation for Black-Scholes options
+  blackScholesTheta
+   ->Real
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^
+   ::Real
+   -- ^value
+   ::Real
+   -- ^delta
+   ::Real
+   -- ^gamma
+  -- default theta-per-day calculation
+  defaultThetaPerDay
+   ->Real
+   ::Real
+   -- ^theta
+  -- utility function giving the inflation period for a given date
+  inflationPeriod
+   ->std::pair< Date, Date >
+   ::const Date &
+   -- ^
+   ::Frequency
+   -- ^
+  -- utility function giving the time between two dates depending on index frequency and interpolation, and a day counter
+  inflationYearFraction
+   ->Time
+   ::Frequency
+   -- ^
+   ::bool
+   -- ^indexIsInterpolated
+   ::const DayCounter &
+   -- ^
+   ::const Date &
+   -- ^
+   ::const Date &
+   -- ^
+  validateAbcdParameters
+   ->void
+   ::Real
+   -- ^a
+   ::Real
+   -- ^
+   ::Real
+   -- ^c
+   ::Real
+   -- ^d
+  abcdBlackVolatility
+   ->Real
+   ::Time
+   -- ^u
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^c
+   ::Real
+   -- ^d
+  unsafeSabrVolatility
+   ->Real
+   ::Rate
+   -- ^strike
+   ::Rate
+   -- ^forward
+   ::Time
+   -- ^expiryTime
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^nu
+   ::Real
+   -- ^rho
+  sabrVolatility
+   ->Real
+   ::Rate
+   -- ^strike
+   ::Rate
+   -- ^forward
+   ::Time
+   -- ^expiryTime
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^nu
+   ::Real
+   -- ^rho
+  validateSabrParameters
+   ->void
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^nu
+   ::Real
+   -- ^rho
+  operator==
+   ->bool
+   ::const Calendar &
+   -- ^c1
+   ::const Calendar &
+   -- ^c2
+  operator!=
+   ->bool
+   ::const Calendar &
+   -- ^c1
+   ::const Calendar &
+   -- ^c2
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::const Calendar &
+   -- ^c
+  operator-
+   ->BigInteger
+   ::const Date &
+   -- ^d1
+   ::const Date &
+   -- ^d2
+  operator==
+   ->bool
+   ::const Date &
+   -- ^d1
+   ::const Date &
+   -- ^d2
+  operator!=
+   ->bool
+   ::const Date &
+   -- ^d1
+   ::const Date &
+   -- ^d2
+  operator<
+   ->bool
+   ::const Date &
+   -- ^d1
+   ::const Date &
+   -- ^d2
+  operator<=
+   ->bool
+   ::const Date &
+   -- ^d1
+   ::const Date &
+   -- ^d2
+  operator>
+   ->bool
+   ::const Date &
+   -- ^d1
+   ::const Date &
+   -- ^d2
+  operator>=
+   ->bool
+   ::const Date &
+   -- ^d1
+   ::const Date &
+   -- ^d2
+  operator==
+   ->bool
+   ::const DayCounter &
+   -- ^d1
+   ::const DayCounter &
+   -- ^d2
+  operator!=
+   ->bool
+   ::const DayCounter &
+   -- ^d1
+   ::const DayCounter &
+   -- ^d2
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^out
+   ::const DayCounter &
+   -- ^d
+  operator*
+   ->Period
+   ::T
+   -- ^n
+   ::TimeUnit
+   -- ^units
+  operator*
+   ->Period
+   ::TimeUnit
+   -- ^units
+   ::T
+   -- ^n
+  operator-
+   ->Period
+   ::const Period &
+   -- ^p
+  operator*
+   ->Period
+   ::Integer
+   -- ^n
+   ::const Period &
+   -- ^p
+  operator*
+   ->Period
+   ::const Period &
+   -- ^p
+   ::Integer
+   -- ^n
+  operator==
+   ->bool
+   ::const Period &
+   -- ^p1
+   ::const Period &
+   -- ^p2
+  operator!=
+   ->bool
+   ::const Period &
+   -- ^p1
+   ::const Period &
+   -- ^p2
+  operator>
+   ->bool
+   ::const Period &
+   -- ^p1
+   ::const Period &
+   -- ^p2
+  operator<=
+   ->bool
+   ::const Period &
+   -- ^p1
+   ::const Period &
+   -- ^p2
+  operator>=
+   ->bool
+   ::const Period &
+   -- ^p1
+   ::const Period &
+   -- ^p2
+  swap
+   ->void
+   ::Clone< T > &
+   -- ^t
+   ::Clone< T > &
+   -- ^u
+ -v-
+ -e-

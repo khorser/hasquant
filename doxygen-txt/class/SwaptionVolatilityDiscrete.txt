@@ -1,0 +1,67 @@
+SwaptionVolatilityDiscrete
+
+ -f-
+  update
+   ->void
+ -v-
+ -e-
+ -f-
+  performCalculations
+   ->void
+ -v-
+ -e-
+ -f-
+  SwaptionVolatilityDiscrete
+   ->
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const DayCounter &
+   -- ^dc
+  SwaptionVolatilityDiscrete
+   ->
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const DayCounter &
+   -- ^dc
+  SwaptionVolatilityDiscrete
+   ->
+   ::const std::vector< Date > &
+   -- ^optionDates
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const DayCounter &
+   -- ^dc
+  optionTenors
+   ->const std::vector< Period > &
+  optionDates
+   ->const std::vector< Date > &
+  optionTimes
+   ->const std::vector< Time > &
+  swapTenors
+   ->const std::vector< Period > &
+  swapLengths
+   ->const std::vector< Time > &
+ -v-
+ -e-

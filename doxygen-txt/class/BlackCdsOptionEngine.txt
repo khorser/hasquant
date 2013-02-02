@@ -1,0 +1,21 @@
+BlackCdsOptionEngine
+ -- |Black-formula CDS-option engine.
+ -- |WarningThe engine assumes that the exercise date equals the start date of the passed CDS.
+
+ -f-
+  BlackCdsOptionEngine
+   ->
+   ::const Handle< DefaultProbabilityTermStructure > &
+   -- ^
+   ::Real
+   -- ^recoveryRate
+   ::const Handle< YieldTermStructure > &
+   -- ^termStructure
+   ::const Handle< Quote > &
+   -- ^vol
+  termStructure
+   ->Handle< YieldTermStructure >
+  volatility
+   ->Handle< Quote >
+ -v-
+ -e-

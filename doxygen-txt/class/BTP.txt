@@ -1,0 +1,48 @@
+BTP
+ -- |Italian BTP (Buono Poliennali del Tesoro) fixed rate bond.
+
+ -f-
+  BTP
+   ->
+   ::const Date &
+   -- ^maturityDate
+   ::Rate
+   -- ^fixedRate
+   ::const Date &
+   =Date()
+   -- ^startDate
+   ::const Date &
+   =Date()
+   -- ^issueDate
+  -- constructor needed for legacy non-par redemption BTPs. As of today the only remaining one is IT123456789012 that will redeem 99.999 on xx-may-2037
+  BTP
+   ->
+   ::const Date &
+   -- ^maturityDate
+   ::Rate
+   -- ^fixedRate
+   ::Real
+   -- ^redemption
+   ::const Date &
+   =Date()
+   -- ^startDate
+   ::const Date &
+   =Date()
+   -- ^issueDate
+  -- BTP yield given a (clean) price and settlement date.
+  -- The default BTP conventions are used: Actual/Actual (ISMA), Compounded, Annual. The default bond settlement is used if no date is given.
+  yield
+   ->Rate
+   ::Real
+   -- ^cleanPrice
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Real
+   =1.0e-8
+   -- ^accuracy
+   ::Size
+   =100
+   -- ^maxEvaluations
+ -v-
+ -e-

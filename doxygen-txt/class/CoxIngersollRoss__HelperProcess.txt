@@ -1,0 +1,29 @@
+CoxIngersollRoss::HelperProcess
+
+ -f-
+  HelperProcess
+   ->
+   ::Real
+   -- ^theta
+   ::Real
+   -- ^k
+   ::Real
+   -- ^sigma
+   ::Real
+   -- ^y0
+  x0
+   ->Real
+  drift
+   ->Real
+   ::Time
+   -- ^
+   ::Real
+   -- ^y
+  diffusion
+   ->Real
+   ::Time
+   -- ^
+   ::Real
+   -- ^
+ -v-
+ -e-

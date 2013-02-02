@@ -1,0 +1,11 @@
+AnalyticDiscreteGeometricAverageStrikeAsianEngine
+ -- |Pricing engine for European discrete geometric average-strike Asian option.
+ -- |This class implements a discrete geometric average-strike Asian option, with European exercise. The formula is from "Asian Option", E. Levy (1997) in "Exotic Options: The State of the Art", edited by L. Clewlow, C. Strickland, pag 65-97Tests the correctness of the returned value is tested by reproducing known good results.
+
+ -f-
+  AnalyticDiscreteGeometricAverageStrikeAsianEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+ -v-
+ -e-

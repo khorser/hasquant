@@ -1,0 +1,23 @@
+detail::ComboHelper
+
+ -f-
+  ComboHelper
+   ->
+   ::boost::shared_ptr< SectionHelper > &
+   -- ^quadraticHelper
+   ::boost::shared_ptr< SectionHelper > &
+   -- ^convMonoHelper
+   ::Real
+   -- ^quadraticity
+  value
+   ->Real
+   ::Real
+   -- ^x
+  primitive
+   ->Real
+   ::Real
+   -- ^x
+  fNext
+   ->Real
+ -v-
+ -e-

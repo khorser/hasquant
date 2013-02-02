@@ -1,0 +1,49 @@
+SurvivalProbabilityStructure
+ -- |Hazard-rate term structure.
+ -- |This abstract class acts as an adapter to DefaultProbabilityTermStructure allowing the programmer to implement only the survivalProbabilityImpl(Time) method in derived classes.Hazard rates and default densities are calculated from survival probabilities.
+
+ -f-
+  SurvivalProbabilityStructure
+   ->
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  SurvivalProbabilityStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  SurvivalProbabilityStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+ -v-
+ -e-

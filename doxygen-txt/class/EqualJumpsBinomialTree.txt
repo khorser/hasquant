@@ -1,0 +1,28 @@
+EqualJumpsBinomialTree
+ -- |Base class for equal jumps binomial tree.
+
+ -f-
+  EqualJumpsBinomialTree
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^process
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+  underlying
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+  probability
+   ->Real
+   ::Size
+   -- ^
+   ::Size
+   -- ^
+   ::Size
+   -- ^branch
+ -v-
+ -e-

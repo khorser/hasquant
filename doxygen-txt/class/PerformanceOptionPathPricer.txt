@@ -1,0 +1,17 @@
+PerformanceOptionPathPricer
+
+ -f-
+  PerformanceOptionPathPricer
+   ->
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^strike
+   ::const std::vector< DiscountFactor > &
+   -- ^discounts
+  operator()
+   ->Real
+   ::const Path &
+   -- ^path
+ -v-
+ -e-

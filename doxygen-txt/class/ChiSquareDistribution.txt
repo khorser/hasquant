@@ -1,0 +1,13 @@
+ChiSquareDistribution
+
+ -f-
+  ChiSquareDistribution
+   ->
+   ::Real
+   -- ^df
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

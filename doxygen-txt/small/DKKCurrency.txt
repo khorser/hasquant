@@ -1,0 +1,9 @@
+DKKCurrency
+ -- |Danish krone.
+ -- |The ISO three-letter code is DKK; the numeric code is 208. It is divided in 100 øre.
+
+ -f-
+  DKKCurrency
+   ->
+ -v-
+ -e-

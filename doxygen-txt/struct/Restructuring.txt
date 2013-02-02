@@ -1,0 +1,16 @@
+Restructuring
+ -- |Restructuring type.
+
+ -f-
+ -v-
+ -e-
+  Type
+   NoRestructuring
+   ModifiedRestructuring
+   ModifiedModifiedRestructuring
+   FullRestructuring
+   AnyRestructuring
+   XR
+   MR
+   MM
+   CR

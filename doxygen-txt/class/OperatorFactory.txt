@@ -1,0 +1,23 @@
+OperatorFactory
+ -- |Black-Scholes-Merton differential operator.
+ -- |Testscoefficients are tested against constant BSM operator
+
+ -f-
+  getOperator
+   ->TridiagonalOperator
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::const Array &
+   -- ^grid
+   ::Time
+   -- ^residualTime
+   ::bool
+   -- ^timeDependent
+  getOperator
+   ->TridiagonalOperator
+   ::const boost::shared_ptr< OneFactorModel::ShortRateDynamics > &
+   -- ^process
+   ::const Array &
+   -- ^grid
+ -v-
+ -e-

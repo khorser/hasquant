@@ -1,0 +1,85 @@
+TimeGrid
+ -- |time grid class
+ -- |Possible enhancementswhat was the rationale for limiting the grid to positive times? Investigate and see whether we can use it for negative ones as well.
+
+ -f-
+  TimeGrid
+   ->
+  -- Regularly spaced time-grid.
+  TimeGrid
+   ->
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+  -- Time grid with mandatory time points.
+  -- Mandatory points are guaranteed to belong to the grid. No additional points are added.
+  TimeGrid
+   ->
+   ::Iterator
+   -- ^begin
+   ::Iterator
+   -- ^end
+  -- Time grid with mandatory time points.
+  -- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
+  TimeGrid
+   ->
+   ::Iterator
+   -- ^begin
+   ::Iterator
+   -- ^end
+   ::Size
+   -- ^steps
+ -v-
+ -e-
+ -f-
+  -- returns the index i such that grid[i] = t
+  index
+   ->Size
+   ::Time
+   -- ^t
+  -- returns the index i such that grid[i] is closest to t
+  closestIndex
+   ->Size
+   ::Time
+   -- ^t
+  -- returns the time on the grid closest to the given t
+  closestTime
+   ->Time
+   ::Time
+   -- ^t
+  mandatoryTimes
+   ->const std::vector< Time > &
+  dt
+   ->Time
+   ::Size
+   -- ^i
+ -v-
+ -e-
+ -f-
+  operator[]
+   ->Time
+   ::Size
+   -- ^i
+  at
+   ->Time
+   ::Size
+   -- ^i
+  size
+   ->Size
+  empty
+   ->bool
+  begin
+   ->const_iterator
+  end
+   ->const_iterator
+  rbegin
+   ->const_reverse_iterator
+  rend
+   ->const_reverse_iterator
+  front
+   ->Time
+  back
+   ->Time
+ -v-
+ -e-

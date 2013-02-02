@@ -1,0 +1,9 @@
+PKRCurrency
+ -- |Pakistani rupee.
+ -- |The ISO three-letter code is PKR; the numeric code is 586. It is divided in 100 paisa.
+
+ -f-
+  PKRCurrency
+   ->
+ -v-
+ -e-

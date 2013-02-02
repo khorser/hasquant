@@ -1,0 +1,13 @@
+ClosestRounding
+ -- |Closest rounding.
+
+ -f-
+  ClosestRounding
+   ->
+   ::Integer
+   -- ^precision
+   ::Integer
+   =5
+   -- ^digit
+ -v-
+ -e-

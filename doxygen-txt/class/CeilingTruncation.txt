@@ -1,0 +1,13 @@
+CeilingTruncation
+ -- |Ceiling truncation.
+
+ -f-
+  CeilingTruncation
+   ->
+   ::Integer
+   -- ^precision
+   ::Integer
+   =5
+   -- ^digit
+ -v-
+ -e-

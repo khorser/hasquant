@@ -1,0 +1,15 @@
+ContinuousArithmeticAsianLevyEngine
+
+ -f-
+  ContinuousArithmeticAsianLevyEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::const Handle< Quote > &
+   -- ^currentAverage
+   ::Date
+   -- ^startDate
+  calculate
+   ->void
+ -v-
+ -e-

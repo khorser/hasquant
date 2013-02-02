@@ -1,0 +1,26 @@
+detail::CoefficientHolder
+
+ -f-
+ -v-
+  n_
+   ::Size
+  primitiveConst_
+   ::std::vector< Real >
+  a_
+   ::std::vector< Real >
+  b_
+   ::std::vector< Real >
+  c_
+   ::std::vector< Real >
+  monotonicityAdjustments_
+   ::std::vector< bool >
+ -e-
+ -f-
+  CoefficientHolder
+   ->
+   ::Size
+   -- ^n
+  ~CoefficientHolder
+   ->
+ -v-
+ -e-

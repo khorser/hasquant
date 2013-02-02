@@ -1,0 +1,36 @@
+MultiStepNothing
+
+ -f-
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  numberOfProducts
+   ->Size
+  maxNumberOfCashFlowsPerProductPerStep
+   ->Size
+  reset
+   ->void
+  nextTimeStep
+   ->bool
+   ::const CurveState &
+   -- ^
+   ::std::vector< Size > &
+   -- ^
+   ::std::vector< std::vector< CashFlow > > &
+   -- ^
+  clone
+   ->std::auto_ptr< MarketModelMultiProduct >
+ -v-
+ -e-
+ -f-
+  MultiStepNothing
+   ->
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::Size
+   =1
+   -- ^numberOfProducts
+   ::Size
+   =0
+   -- ^doneIndex
+ -v-
+ -e-

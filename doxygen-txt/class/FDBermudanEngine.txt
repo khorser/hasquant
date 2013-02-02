@@ -1,0 +1,21 @@
+FDBermudanEngine
+ -- |Finite-differences Bermudan engine.
+
+ -f-
+  FDBermudanEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   =100
+   -- ^timeSteps
+   ::Size
+   =100
+   -- ^gridPoints
+   ::bool
+   =false
+   -- ^timeDependent
+  calculate
+   ->void
+ -v-
+ -e-

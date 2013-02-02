@@ -1,0 +1,17 @@
+FrankCopulaRng
+ -- |Frank copula random-number generator.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  FrankCopulaRng
+   ->
+   ::const RNG &
+   -- ^uniformGenerator
+   ::Real
+   -- ^theta
+  next
+   ->sample_type
+ -v-
+ -e-

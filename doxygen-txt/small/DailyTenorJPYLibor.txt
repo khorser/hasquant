@@ -1,0 +1,13 @@
+DailyTenorJPYLibor
+ -- |base class for the one day deposit BBA JPY LIBOR indexes
+
+ -f-
+  DailyTenorJPYLibor
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

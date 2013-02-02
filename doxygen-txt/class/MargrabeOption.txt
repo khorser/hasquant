@@ -1,0 +1,23 @@
+MargrabeOption
+ -- |Margrabe option on two assets.
+ -- |This option gives the holder the right to exchange Q2 stocks of the second asset for Q1 stocks of the first at expiration.
+
+ -f-
+  MargrabeOption
+   ->
+   ::Integer
+   -- ^Q1
+   ::Integer
+   -- ^Q2
+   ::const boost::shared_ptr< Exercise > &
+   -- ^
+  delta1
+   ->Real
+  delta2
+   ->Real
+  gamma1
+   ->Real
+  gamma2
+   ->Real
+ -v-
+ -e-

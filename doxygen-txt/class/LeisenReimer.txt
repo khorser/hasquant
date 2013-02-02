@@ -1,0 +1,30 @@
+LeisenReimer
+ -- |Leisen & Reimer tree: multiplicative approach.
+
+ -f-
+  LeisenReimer
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+   ::Real
+   -- ^strike
+  underlying
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+  probability
+   ->Real
+   ::Size
+   -- ^
+   ::Size
+   -- ^
+   ::Size
+   -- ^branch
+ -v-
+ -e-

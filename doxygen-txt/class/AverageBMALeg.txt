@@ -1,0 +1,46 @@
+AverageBMALeg
+ -- |helper class building a sequence of average BMA coupons
+
+ -f-
+  AverageBMALeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+   ::const boost::shared_ptr< BMAIndex > &
+   -- ^index
+  withNotionals
+   ->AverageBMALeg &
+   ::Real
+   -- ^notional
+  withNotionals
+   ->AverageBMALeg &
+   ::const std::vector< Real > &
+   -- ^notionals
+  withPaymentDayCounter
+   ->AverageBMALeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentAdjustment
+   ->AverageBMALeg &
+   ::BusinessDayConvention
+   -- ^
+  withGearings
+   ->AverageBMALeg &
+   ::Real
+   -- ^gearing
+  withGearings
+   ->AverageBMALeg &
+   ::const std::vector< Real > &
+   -- ^gearings
+  withSpreads
+   ->AverageBMALeg &
+   ::Spread
+   -- ^spread
+  withSpreads
+   ->AverageBMALeg &
+   ::const std::vector< Spread > &
+   -- ^spreads
+  operator Leg
+   ->
+ -v-
+ -e-

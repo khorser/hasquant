@@ -1,0 +1,28 @@
+FdBlackScholesRebateEngine
+ -- |Finite-Differences Black Scholes barrier option rebate helper engine.
+
+ -f-
+  FdBlackScholesRebateEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   =100
+   -- ^tGrid
+   ::Size
+   =100
+   -- ^xGrid
+   ::Size
+   =0
+   -- ^dampingSteps
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Douglas()
+   -- ^schemeDesc
+   ::bool
+   =false
+   -- ^localVol
+   ::Real
+   =-Null< Real >()
+   -- ^illegalLocalVolOverwrite
+ -v-
+ -e-

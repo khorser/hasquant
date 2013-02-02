@@ -1,0 +1,17 @@
+Argentina
+ -- |Argentinian calendars.
+
+ -f-
+ -v-
+ -e-
+  Market
+   Merval
+   -- ^Buenos Aires stock exchange calendar.
+ -f-
+  Argentina
+   ->
+   ::Market
+   =Merval
+   -- ^m
+ -v-
+ -e-

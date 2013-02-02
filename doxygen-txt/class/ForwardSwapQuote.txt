@@ -1,0 +1,20 @@
+ForwardSwapQuote
+ -- |Quote for a forward starting swap.
+
+ -f-
+  ForwardSwapQuote
+   ->
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^swapIndex
+   ::const Handle< Quote > &
+   -- ^spread
+   ::const Period &
+   -- ^fwdStart
+  valueDate
+   ->const Date &
+  startDate
+   ->const Date &
+  fixingDate
+   ->const Date &
+ -v-
+ -e-

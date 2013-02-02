@@ -1,0 +1,31 @@
+AmericanBasketPathPricer
+
+ -f-
+  AmericanBasketPathPricer
+   ->
+   ::Size
+   -- ^assetNumber
+   ::const boost::shared_ptr< Payoff > &
+   -- ^payoff
+   ::Size
+   =2
+   -- ^polynomOrder
+   ::LsmBasisSystem::PolynomType
+   =LsmBasisSystem::Monomial
+   -- ^polynomType
+  state
+   ->Array
+   ::const MultiPath &
+   -- ^path
+   ::Size
+   -- ^t
+  operator()
+   ->Real
+   ::const MultiPath &
+   -- ^path
+   ::Size
+   -- ^t
+  basisSystem
+   ->std::vector< boost::function1< Real, Array > >
+ -v-
+ -e-

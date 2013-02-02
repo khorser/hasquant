@@ -1,0 +1,12 @@
+Floor
+ -- |Concrete floor class.
+
+ -f-
+  Floor
+   ->
+   ::const Leg &
+   -- ^floatingLeg
+   ::const std::vector< Rate > &
+   -- ^exerciseRates
+ -v-
+ -e-

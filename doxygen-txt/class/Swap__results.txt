@@ -1,0 +1,20 @@
+Swap::results
+
+ -f-
+ -v-
+  legNPV
+   ::std::vector< Real >
+  legBPS
+   ::std::vector< Real >
+  startDiscounts
+   ::std::vector< DiscountFactor >
+  endDiscounts
+   ::std::vector< DiscountFactor >
+  npvDateDiscount
+   ::DiscountFactor
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

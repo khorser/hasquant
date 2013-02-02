@@ -1,0 +1,62 @@
+DiscretizedAsset
+ -- |Discretized asset class used by numerical methods.
+
+ -f-
+  time
+   ->Time
+  time
+   ->Time &
+  values
+   ->const Array &
+  values
+   ->Array &
+  method
+   ->const boost::shared_ptr< Lattice > &
+ -v-
+ -e-
+ -f-
+  initialize
+   ->void
+   ::const boost::shared_ptr< Lattice > &
+   -- ^
+   ::Time
+   -- ^t
+  rollback
+   ->void
+   ::Time
+   -- ^to
+  partialRollback
+   ->void
+   ::Time
+   -- ^to
+  presentValue
+   ->Real
+ -v-
+ -e-
+ -f-
+  -- This method should initialize the asset values to an Array of the given size and with values depending on the particular asset.
+  reset
+   ->void
+   ::Size
+   -- ^size
+  -- This method will be invoked after rollback and before any other asset (i.e., an option on this one) has any chance to look at the values. For instance, payments happening at times already spanned by the rollback will be added here.This method is not virtual; derived classes must override the protected preAdjustValuesImpl() method instead.
+  preAdjustValues
+   ->void
+  -- This method will be invoked after rollback and after any other asset had their chance to look at the values. For instance, payments happening at the present time (and therefore not included in an option to be exercised at this time) will be added here.This method is not virtual; derived classes must override the protected postAdjustValuesImpl() method instead.
+  postAdjustValues
+   ->void
+  -- This method performs both pre- and post-adjustment
+  adjustValues
+   ->void
+  -- This method returns the times at which the numerical method should stop while rolling back the asset. Typical examples include payment times, exercise times and such.The returned values are not guaranteed to be sorted.
+  mandatoryTimes
+   ->std::vector< Time >
+ -v-
+ -e-
+ -f-
+  DiscretizedAsset
+   ->
+  ~DiscretizedAsset
+   ->
+ -v-
+ -e-

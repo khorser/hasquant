@@ -1,0 +1,27 @@
+MarketModelNodeDataProvider
+
+ -f-
+  ~MarketModelNodeDataProvider
+   ->
+  numberOfExercises
+   ->Size
+  numberOfData
+   ->std::vector< Size >
+  evolution
+   ->const EvolutionDescription &
+  nextStep
+   ->void
+   ::const CurveState &
+   -- ^
+  reset
+   ->void
+  isExerciseTime
+   ->std::valarray< bool >
+  values
+   ->void
+   ::const CurveState &
+   -- ^
+   ::std::vector< Real > &
+   -- ^results
+ -v-
+ -e-

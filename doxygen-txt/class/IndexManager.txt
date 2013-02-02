@@ -1,0 +1,40 @@
+IndexManager
+ -- |global repository for past index fixings
+ -- |index names are case insensitive
+
+ -f-
+  -- returns whether historical fixings were stored for the index
+  hasHistory
+   ->bool
+   ::const std::string &
+   -- ^name
+  -- returns the (possibly empty) history of the index fixings
+  getHistory
+   ->const TimeSeries< Real > &
+   ::const std::string &
+   -- ^name
+  -- stores the historical fixings of the index
+  setHistory
+   ->void
+   ::const std::string &
+   -- ^name
+   ::const TimeSeries< Real > &
+   -- ^
+  -- observer notifying of changes in the index fixings
+  notifier
+   ->boost::shared_ptr< Observable >
+   ::const std::string &
+   -- ^name
+  -- returns all names of the indexes for which fixings were stored
+  histories
+   ->std::vector< std::string >
+  -- clears the historical fixings of the index
+  clearHistory
+   ->void
+   ::const std::string &
+   -- ^name
+  -- clears all stored fixings
+  clearHistories
+   ->void
+ -v-
+ -e-

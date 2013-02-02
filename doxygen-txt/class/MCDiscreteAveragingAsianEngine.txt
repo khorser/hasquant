@@ -1,0 +1,28 @@
+MCDiscreteAveragingAsianEngine
+ -- |Pricing engine for discrete average Asians using Monte Carlo simulation.
+ -- |Warningcontrol-variate calculation is disabled under VC++6.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCDiscreteAveragingAsianEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::bool
+   -- ^controlVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+ -v-
+ -e-

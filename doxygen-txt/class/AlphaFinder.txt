@@ -1,0 +1,77 @@
+AlphaFinder
+
+ -f-
+  AlphaFinder
+   ->
+   ::boost::shared_ptr< AlphaForm >
+   -- ^parametricform
+  solve
+   ->bool
+   ::Real
+   -- ^alpha0
+   ::Integer
+   -- ^stepindex
+   ::const std::vector< Volatility > &
+   -- ^rateonevols
+   ::const std::vector< Volatility > &
+   -- ^ratetwohomogeneousvols
+   ::const std::vector< Real > &
+   -- ^correlations
+   ::Real
+   -- ^w0
+   ::Real
+   -- ^w1
+   ::Real
+   -- ^targetVariance
+   ::Real
+   -- ^tolerance
+   ::Real
+   -- ^alphaMax
+   ::Real
+   -- ^alphaMin
+   ::Integer
+   -- ^steps
+   ::Real &
+   -- ^alpha
+   ::Real &
+   -- ^a
+   ::Real &
+   -- ^b
+   ::std::vector< Volatility > &
+   -- ^ratetwovols
+  solveWithMaxHomogeneity
+   ->bool
+   ::Real
+   -- ^alpha0
+   ::Integer
+   -- ^stepindex
+   ::const std::vector< Volatility > &
+   -- ^rateonevols
+   ::const std::vector< Volatility > &
+   -- ^ratetwohomogeneousvols
+   ::const std::vector< Real > &
+   -- ^correlations
+   ::Real
+   -- ^w0
+   ::Real
+   -- ^w1
+   ::Real
+   -- ^targetVariance
+   ::Real
+   -- ^tolerance
+   ::Real
+   -- ^alphaMax
+   ::Real
+   -- ^alphaMin
+   ::Integer
+   -- ^steps
+   ::Real &
+   -- ^alpha
+   ::Real &
+   -- ^a
+   ::Real &
+   -- ^b
+   ::std::vector< Volatility > &
+   -- ^ratetwovols
+ -v-
+ -e-

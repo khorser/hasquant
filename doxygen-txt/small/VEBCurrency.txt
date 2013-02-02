@@ -1,0 +1,9 @@
+VEBCurrency
+ -- |Venezuelan bolivar.
+ -- |The ISO three-letter code is VEB; the numeric code is 862. It is divided in 100 centimos.
+
+ -f-
+  VEBCurrency
+   ->
+ -v-
+ -e-

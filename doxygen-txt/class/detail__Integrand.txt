@@ -1,0 +1,15 @@
+detail::Integrand
+
+ -f-
+  Integrand
+   ->
+   ::const Path &
+   -- ^path
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+  operator()
+   ->Real
+   ::Time
+   -- ^t
+ -v-
+ -e-

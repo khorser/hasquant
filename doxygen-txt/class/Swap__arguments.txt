@@ -1,0 +1,14 @@
+Swap::arguments
+
+ -f-
+ -v-
+  legs
+   ::std::vector< Leg >
+  payer
+   ::std::vector< Real >
+ -e-
+ -f-
+  validate
+   ->void
+ -v-
+ -e-

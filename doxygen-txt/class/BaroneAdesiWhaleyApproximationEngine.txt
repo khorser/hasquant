@@ -1,0 +1,29 @@
+BaroneAdesiWhaleyApproximationEngine
+ -- |Barone-Adesi and Whaley pricing engine for American options (1987)
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in literature.
+
+ -f-
+  BaroneAdesiWhaleyApproximationEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^
+  calculate
+   ->void
+ -v-
+ -e-
+ -f-
+  criticalPrice
+   ->Real
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+   ::DiscountFactor
+   -- ^riskFreeDiscount
+   ::DiscountFactor
+   -- ^dividendDiscount
+   ::Real
+   -- ^variance
+   ::Real
+   =1e-6
+   -- ^tolerance
+ -v-
+ -e-

@@ -1,0 +1,114 @@
+DigitalIborLeg
+ -- |helper class building a sequence of digital ibor-rate coupons
+
+ -f-
+  DigitalIborLeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^index
+  withNotionals
+   ->DigitalIborLeg &
+   ::Real
+   -- ^notional
+  withNotionals
+   ->DigitalIborLeg &
+   ::const std::vector< Real > &
+   -- ^notionals
+  withPaymentDayCounter
+   ->DigitalIborLeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentAdjustment
+   ->DigitalIborLeg &
+   ::BusinessDayConvention
+   -- ^
+  withFixingDays
+   ->DigitalIborLeg &
+   ::Natural
+   -- ^fixingDays
+  withFixingDays
+   ->DigitalIborLeg &
+   ::const std::vector< Natural > &
+   -- ^fixingDays
+  withGearings
+   ->DigitalIborLeg &
+   ::Real
+   -- ^gearing
+  withGearings
+   ->DigitalIborLeg &
+   ::const std::vector< Real > &
+   -- ^gearings
+  withSpreads
+   ->DigitalIborLeg &
+   ::Spread
+   -- ^spread
+  withSpreads
+   ->DigitalIborLeg &
+   ::const std::vector< Spread > &
+   -- ^spreads
+  inArrears
+   ->DigitalIborLeg &
+   ::bool
+   =true
+   -- ^flag
+  withCallStrikes
+   ->DigitalIborLeg &
+   ::Rate
+   -- ^strike
+  withCallStrikes
+   ->DigitalIborLeg &
+   ::const std::vector< Rate > &
+   -- ^strikes
+  withLongCallOption
+   ->DigitalIborLeg &
+   ::Position::Type
+   -- ^
+  withCallATM
+   ->DigitalIborLeg &
+   ::bool
+   =true
+   -- ^flag
+  withCallPayoffs
+   ->DigitalIborLeg &
+   ::Rate
+   -- ^payoff
+  withCallPayoffs
+   ->DigitalIborLeg &
+   ::const std::vector< Rate > &
+   -- ^payoffs
+  withPutStrikes
+   ->DigitalIborLeg &
+   ::Rate
+   -- ^strike
+  withPutStrikes
+   ->DigitalIborLeg &
+   ::const std::vector< Rate > &
+   -- ^strikes
+  withLongPutOption
+   ->DigitalIborLeg &
+   ::Position::Type
+   -- ^
+  withPutATM
+   ->DigitalIborLeg &
+   ::bool
+   =true
+   -- ^flag
+  withPutPayoffs
+   ->DigitalIborLeg &
+   ::Rate
+   -- ^payoff
+  withPutPayoffs
+   ->DigitalIborLeg &
+   ::const std::vector< Rate > &
+   -- ^payoffs
+  withReplication
+   ->DigitalIborLeg &
+   ::const boost::shared_ptr< DigitalReplication > &
+   =boost::shared_ptr< DigitalReplication >()
+   -- ^replication
+  operator Leg
+   ->
+ -v-
+ -e-

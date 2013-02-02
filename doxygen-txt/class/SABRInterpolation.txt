@@ -1,0 +1,63 @@
+SABRInterpolation
+ -- |SABR smile interpolation between discrete volatility points.
+
+ -f-
+  SABRInterpolation
+   ->
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+   ::Time
+   -- ^t
+   ::const Real &
+   -- ^forward
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^nu
+   ::Real
+   -- ^rho
+   ::bool
+   -- ^alphaIsFixed
+   ::bool
+   -- ^betaIsFixed
+   ::bool
+   -- ^nuIsFixed
+   ::bool
+   -- ^rhoIsFixed
+   ::bool
+   =true
+   -- ^vegaWeighted
+   ::const boost::shared_ptr< EndCriteria > &
+   =boost::shared_ptr< EndCriteria >()
+   -- ^endCriteria
+   ::const boost::shared_ptr< OptimizationMethod > &
+   =boost::shared_ptr< OptimizationMethod >()
+   -- ^optMethod
+  expiry
+   ->Real
+  forward
+   ->Real
+  alpha
+   ->Real
+  beta
+   ->Real
+  nu
+   ->Real
+  rho
+   ->Real
+  rmsError
+   ->Real
+  maxError
+   ->Real
+  interpolationWeights
+   ->const std::vector< Real > &
+  endCriteria
+   ->EndCriteria::Type
+ -v-
+ -e-

@@ -1,0 +1,98 @@
+EquityFXVolSurface
+ -- |Equity/FX volatility (smile) surface.
+ -- |This abstract class defines the interface of concrete Equity/FX volatility (smile) surfaces which will be derived from this one.Volatilities are assumed to be expressed on an annual basis.It's only in absence of smile that the concept of (at-the-money) forward volatility makes sense.
+
+ -f-
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  EquityFXVolSurface
+   ->
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- default constructor
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  EquityFXVolSurface
+   ->
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- initialize with a fixed reference date
+  EquityFXVolSurface
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- calculate the reference date based on the global evaluation date
+  EquityFXVolSurface
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+ -v-
+ -e-
+ -f-
+  -- forward (at-the-money) volatility
+  atmForwardVol
+   ->Volatility
+   ::const Date &
+   -- ^date1
+   ::const Date &
+   -- ^date2
+   ::bool
+   =false
+   -- ^extrapolate
+  -- forward (at-the-money) volatility
+  atmForwardVol
+   ->Volatility
+   ::Time
+   -- ^time1
+   ::Time
+   -- ^time2
+   ::bool
+   =false
+   -- ^extrapolate
+  -- forward (at-the-money) variance
+  atmForwardVariance
+   ->Real
+   ::const Date &
+   -- ^date1
+   ::const Date &
+   -- ^date2
+   ::bool
+   =false
+   -- ^extrapolate
+  -- forward (at-the-money) variance
+  atmForwardVariance
+   ->Real
+   ::Time
+   -- ^time1
+   ::Time
+   -- ^time2
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-

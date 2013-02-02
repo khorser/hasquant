@@ -1,0 +1,25 @@
+LatticeShortRateModelEngine
+ -- |Engine for a short-rate model specialized on a lattice.
+ -- |Derived engines only need to implement the calculate() method
+
+ -f-
+  LatticeShortRateModelEngine
+   ->
+   ::const boost::shared_ptr< ShortRateModel > &
+   -- ^model
+   ::Size
+   -- ^timeSteps
+  LatticeShortRateModelEngine
+   ->
+   ::const Handle< ShortRateModel > &
+   -- ^model
+   ::Size
+   -- ^timeSteps
+  LatticeShortRateModelEngine
+   ->
+   ::const boost::shared_ptr< ShortRateModel > &
+   -- ^model
+   ::const TimeGrid &
+   -- ^timeGrid
+ -v-
+ -e-

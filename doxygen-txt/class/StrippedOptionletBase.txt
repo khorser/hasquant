@@ -1,0 +1,30 @@
+StrippedOptionletBase
+ -- |Abstract base class interface for a (time indexed) vector of (strike indexed) optionlet (i.e. caplet/floorlet) volatilities.
+
+ -f-
+  optionletStrikes
+   ->const std::vector< Rate > &
+   ::Size
+   -- ^i
+  optionletVolatilities
+   ->const std::vector< Volatility > &
+   ::Size
+   -- ^i
+  optionletFixingDates
+   ->const std::vector< Date > &
+  optionletFixingTimes
+   ->const std::vector< Time > &
+  optionletMaturities
+   ->Size
+  atmOptionletRates
+   ->const std::vector< Rate > &
+  dayCounter
+   ->DayCounter
+  calendar
+   ->Calendar
+  settlementDays
+   ->Natural
+  businessDayConvention
+   ->BusinessDayConvention
+ -v-
+ -e-

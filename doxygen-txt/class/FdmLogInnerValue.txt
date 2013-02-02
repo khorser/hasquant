@@ -1,0 +1,25 @@
+FdmLogInnerValue
+
+ -f-
+  FdmLogInnerValue
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::Size
+   -- ^direction
+  innerValue
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^iter
+   ::Time
+   -- ^
+  avgInnerValue
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^iter
+   ::Time
+   -- ^
+ -v-
+ -e-

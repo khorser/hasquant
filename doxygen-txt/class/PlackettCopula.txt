@@ -1,0 +1,16 @@
+PlackettCopula
+ -- |Plackett copula.
+
+ -f-
+  PlackettCopula
+   ->
+   ::Real
+   -- ^theta
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

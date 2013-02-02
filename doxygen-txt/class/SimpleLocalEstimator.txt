@@ -1,0 +1,15 @@
+SimpleLocalEstimator
+ -- |Local-estimator volatility model.
+ -- |Volatilities are assumed to be expressed on an annual basis.
+
+ -f-
+  SimpleLocalEstimator
+   ->
+   ::Real
+   -- ^y
+  calculate
+   ->TimeSeries< Volatility >
+   ::const TimeSeries< Real > &
+   -- ^quoteSeries
+ -v-
+ -e-

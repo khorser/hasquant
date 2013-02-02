@@ -1,0 +1,15 @@
+SimpleChooserOption::arguments
+ -- |Extra arguments for single chooser option.
+
+ -f-
+ -v-
+  choosingDate
+   ::Date
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

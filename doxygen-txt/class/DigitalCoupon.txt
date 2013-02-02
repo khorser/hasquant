@@ -1,0 +1,75 @@
+DigitalCoupon
+ -- |Digital-payoff coupon.
+ -- |Implementation of a floating-rate coupon with digital call/put option. Payoffs: Coupon with cash-or-nothing Digital Call rate + csi * payoffRate * Heaviside(rate-strike)Coupon with cash-or-nothing Digital Put rate + csi * payoffRate * Heaviside(strike-rate) where csi=+1 or csi=-1.Coupon with asset-or-nothing Digital Call rate + csi * rate * Heaviside(rate-strike)Coupon with asset-or-nothing Digital Put rate + csi * rate * Heaviside(strike-rate) where csi=+1 or csi=-1. The evaluation of the coupon is made using the call/put spread replication method. Tests the correctness of the returned value in case of Asset-or-nothing embedded option is tested by pricing the digital option with Cox-Rubinstein formula.the correctness of the returned value in case of deep-in-the-money Asset-or-nothing embedded option is tested vs the expected values of coupon and option.the correctness of the returned value in case of deep-out-of-the-money Asset-or-nothing embedded option is tested vs the expected values of coupon and option.the correctness of the returned value in case of Cash-or-nothing embedded option is tested by pricing the digital option with Reiner-Rubinstein formula.the correctness of the returned value in case of deep-in-the-money Cash-or-nothing embedded option is tested vs the expected values of coupon and option.the correctness of the returned value in case of deep-out-of-the-money Cash-or-nothing embedded option is tested vs the expected values of coupon and option.the correctness of the returned value is tested checking the correctness of the call-put parity relation.the correctness of the returned value is tested by the relationship between prices in case of different replication types.
+
+ -f-
+  -- general constructor
+  DigitalCoupon
+   ->
+   ::const boost::shared_ptr< FloatingRateCoupon > &
+   -- ^underlying
+   ::Rate
+   =Null< Rate >()
+   -- ^callStrike
+   ::Position::Type
+   =Position::Long
+   -- ^callPosition
+   ::bool
+   =false
+   -- ^isCallITMIncluded
+   ::Rate
+   =Null< Rate >()
+   -- ^callDigitalPayoff
+   ::Rate
+   =Null< Rate >()
+   -- ^putStrike
+   ::Position::Type
+   =Position::Long
+   -- ^putPosition
+   ::bool
+   =false
+   -- ^isPutITMIncluded
+   ::Rate
+   =Null< Rate >()
+   -- ^putDigitalPayoff
+   ::const boost::shared_ptr< DigitalReplication > &
+   =boost::shared_ptr< DigitalReplication >()
+   -- ^replication
+ -v-
+ -e-
+ -f-
+  callStrike
+   ->Rate
+  putStrike
+   ->Rate
+  callDigitalPayoff
+   ->Rate
+  putDigitalPayoff
+   ->Rate
+  hasPut
+   ->bool
+  hasCall
+   ->bool
+  hasCollar
+   ->bool
+  isLongPut
+   ->bool
+  isLongCall
+   ->bool
+  underlying
+   ->boost::shared_ptr< FloatingRateCoupon >
+  -- Returns the call option rate (multiplied by: nominal*accrualperiod*discount is the NPV of the option)
+  callOptionRate
+   ->Rate
+  -- Returns the put option rate (multiplied by: nominal*accrualperiod*discount is the NPV of the option)
+  putOptionRate
+   ->Rate
+ -v-
+ -e-
+ -f-
+  setPricer
+   ->void
+   ::const boost::shared_ptr< FloatingRateCouponPricer > &
+   -- ^pricer
+ -v-
+ -e-

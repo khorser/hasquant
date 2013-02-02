@@ -1,0 +1,27 @@
+G2::Dynamics
+
+ -f-
+  Dynamics
+   ->
+   ::const Parameter &
+   -- ^fitting
+   ::Real
+   -- ^a
+   ::Real
+   -- ^sigma
+   ::Real
+   -- ^b
+   ::Real
+   -- ^eta
+   ::Real
+   -- ^rho
+  shortRate
+   ->Rate
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

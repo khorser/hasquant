@@ -1,0 +1,22 @@
+VanillaStorageOption::arguments
+
+ -f-
+ -v-
+  capacity
+   ::Real
+  load
+   ::Real
+  changeRate
+   ::Real
+  payoff
+   ::boost::shared_ptr< NullPayoff >
+  exercise
+   ::boost::shared_ptr< BermudanExercise >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

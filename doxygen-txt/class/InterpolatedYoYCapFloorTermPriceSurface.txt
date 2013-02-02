@@ -1,0 +1,100 @@
+InterpolatedYoYCapFloorTermPriceSurface
+
+ -f-
+  -- inflation term structure interface
+  maxDate
+   ->Date
+  baseDate
+   ->Date
+ -v-
+ -e-
+ -f-
+  atmYoYSwapTimeRates
+   ->std::pair< std::vector< Time >, std::vector< Rate > >
+  atmYoYSwapDateRates
+   ->std::pair< std::vector< Date >, std::vector< Rate > >
+  YoYTS
+   ->boost::shared_ptr< YoYInflationTermStructure >
+  price
+   ->Rate
+   ::const Date &
+   -- ^d
+   ::const Rate
+   -- ^k
+  floorPrice
+   ->Real
+   ::const Date &
+   -- ^d
+   ::const Rate
+   -- ^k
+  capPrice
+   ->Real
+   ::const Date &
+   -- ^d
+   ::const Rate
+   -- ^k
+  atmYoYSwapRate
+   ->Rate
+   ::const Date &
+   -- ^d
+   ::bool
+   =true
+   -- ^extrapolate
+  atmYoYRate
+   ->Rate
+   ::const Date &
+   -- ^d
+   ::const Period &
+   =Period(-1, Days)
+   -- ^obsLag
+   ::bool
+   =true
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  update
+   ->void
+  performCalculations
+   ->void
+ -v-
+ -e-
+ -f-
+  InterpolatedYoYCapFloorTermPriceSurface
+   ->
+   ::Natural
+   -- ^fixingDays
+   ::const Period &
+   -- ^yyLag
+   ::const boost::shared_ptr< YoYInflationIndex > &
+   -- ^yii
+   ::Rate
+   -- ^baseRate
+   ::const Handle< YieldTermStructure > &
+   -- ^nominal
+   ::const DayCounter &
+   -- ^dc
+   ::const Calendar &
+   -- ^cal
+   ::const BusinessDayConvention &
+   -- ^bdc
+   ::const std::vector< Rate > &
+   -- ^cStrikes
+   ::const std::vector< Rate > &
+   -- ^fStrikes
+   ::const std::vector< Period > &
+   -- ^cfMaturities
+   ::const Matrix &
+   -- ^cPrice
+   ::const Matrix &
+   -- ^fPrice
+   ::const Interpolator2D &
+   =Interpolator2D()
+   -- ^interpolator2d
+   ::const Interpolator1D &
+   =Interpolator1D()
+   -- ^interpolator1d
+  fixingDays
+   ->Natural
+ -v-
+ -e-

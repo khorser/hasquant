@@ -1,0 +1,10 @@
+GaussGegenbauerPolynomial
+ -- |Gauss-Gegenbauer polynomial.
+
+ -f-
+  GaussGegenbauerPolynomial
+   ->
+   ::Real
+   -- ^lambda
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+IEPCurrency
+ -- |Irish punt.
+ -- |The ISO three-letter code was IEP; the numeric code was 372. It was divided in 100 pence.Obsoleted by the Euro since 1999.
+
+ -f-
+  IEPCurrency
+   ->
+ -v-
+ -e-

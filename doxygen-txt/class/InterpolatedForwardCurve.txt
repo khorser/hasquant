@@ -1,0 +1,61 @@
+InterpolatedForwardCurve
+ -- |YieldTermStructure based on interpolation of forward rates.
+
+ -f-
+  times
+   ->const std::vector< Time > &
+  dates
+   ->const std::vector< Date > &
+  data
+   ->const std::vector< Real > &
+  forwards
+   ->const std::vector< Rate > &
+  nodes
+   ->std::vector< std::pair< Date, Real > >
+ -v-
+ -e-
+ -f-
+  InterpolatedForwardCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Rate > &
+   -- ^forwards
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+   ::const Interpolator &
+   =Interpolator()
+   -- ^interpolator
+  InterpolatedForwardCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Rate > &
+   -- ^forwards
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Calendar &
+   -- ^calendar
+   ::const Interpolator &
+   -- ^interpolator
+  InterpolatedForwardCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Rate > &
+   -- ^forwards
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Interpolator &
+   -- ^interpolator
+ -v-
+ -e-

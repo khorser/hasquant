@@ -1,0 +1,76 @@
+SwapIndex
+ -- |base class for swap-rate indexes
+
+ -f-
+  fixedLegTenor
+   ->Period
+  fixedLegConvention
+   ->BusinessDayConvention
+  iborIndex
+   ->boost::shared_ptr< IborIndex >
+  forwardingTermStructure
+   ->Handle< YieldTermStructure >
+  discountingTermStructure
+   ->Handle< YieldTermStructure >
+  exogenousDiscount
+   ->bool
+  -- WarningRelinking the term structure underlying the index will not have effect on the returned swap.
+  underlyingSwap
+   ->boost::shared_ptr< VanillaSwap >
+   ::const Date &
+   -- ^fixingDate
+ -v-
+ -e-
+ -f-
+  -- returns a copy of itself linked to a different forwarding curve
+  clone
+   ->boost::shared_ptr< SwapIndex >
+   ::const Handle< YieldTermStructure > &
+   -- ^forwarding
+ -v-
+ -e-
+ -f-
+  SwapIndex
+   ->
+   ::const std::string &
+   -- ^familyName
+   ::const Period &
+   -- ^tenor
+   ::Natural
+   -- ^settlementDays
+   ::Currency
+   -- ^currency
+   ::const Calendar &
+   -- ^calendar
+   ::const Period &
+   -- ^fixedLegTenor
+   ::BusinessDayConvention
+   -- ^fixedLegConvention
+   ::const DayCounter &
+   -- ^fixedLegDayCounter
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+  SwapIndex
+   ->
+   ::const std::string &
+   -- ^familyName
+   ::const Period &
+   -- ^tenor
+   ::Natural
+   -- ^settlementDays
+   ::Currency
+   -- ^currency
+   ::const Calendar &
+   -- ^calendar
+   ::const Period &
+   -- ^fixedLegTenor
+   ::BusinessDayConvention
+   -- ^fixedLegConvention
+   ::const DayCounter &
+   -- ^fixedLegDayCounter
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+   ::const Handle< YieldTermStructure > &
+   -- ^discountingTermStructure
+ -v-
+ -e-

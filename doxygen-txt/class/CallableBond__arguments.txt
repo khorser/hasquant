@@ -1,0 +1,32 @@
+CallableBond::arguments
+
+ -f-
+ -v-
+  couponDates
+   ::std::vector< Date >
+  couponAmounts
+   ::std::vector< Real >
+  -- |redemption = face amount * redemption / 100.
+  redemption
+   ::Real
+  redemptionDate
+   ::Date
+  paymentDayCounter
+   ::DayCounter
+  frequency
+   ::Frequency
+  putCallSchedule
+   ::CallabilitySchedule
+  -- |bond full/dirty/cash prices
+  callabilityPrices
+   ::std::vector< Real >
+  callabilityDates
+   ::std::vector< Date >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

@@ -1,0 +1,13 @@
+YYUKRPIr
+ -- |Fake year-on-year UK RPI (i.e. a ratio of UK RPI)
+
+ -f-
+  YYUKRPIr
+   ->
+   ::bool
+   -- ^interpolated
+   ::const Handle< YoYInflationTermStructure > &
+   =Handle< YoYInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

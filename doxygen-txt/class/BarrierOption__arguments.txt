@@ -1,0 +1,19 @@
+BarrierOption::arguments
+ -- |Arguments for barrier option calculation
+
+ -f-
+ -v-
+  barrierType
+   ::Barrier::Type
+  barrier
+   ::Real
+  rebate
+   ::Real
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

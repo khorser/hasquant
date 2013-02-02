@@ -1,0 +1,9 @@
+BDTCurrency
+ -- |Bangladesh taka.
+ -- |The ISO three-letter code is BDT; the numeric code is 50. It is divided in 100 paisa.
+
+ -f-
+  BDTCurrency
+   ->
+ -v-
+ -e-

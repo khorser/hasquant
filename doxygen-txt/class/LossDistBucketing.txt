@@ -1,0 +1,16 @@
+LossDistBucketing
+ -- |Loss distribution with Hull-White bucketing.
+ -- |Loss distribution with Hull-White bucketing Loss distribution for varying volumes and probabilities of default, independence assumed. The implementation of the loss distribution follows John Hull and Alan White, "Valuation of a CDO and nth to default CDS without Monte Carlo simulation", Journal of Derivatives 12, 2, 2004.
+
+ -f-
+  LossDistBucketing
+   ->
+   ::Size
+   -- ^nBuckets
+   ::Real
+   -- ^maximum
+   ::Real
+   =1e-6
+   -- ^epsilon
+ -v-
+ -e-

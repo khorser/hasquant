@@ -1,0 +1,38 @@
+FlatVol
+
+ -f-
+  initialRates
+   ->const std::vector< Rate > &
+  displacements
+   ->const std::vector< Spread > &
+  evolution
+   ->const EvolutionDescription &
+  numberOfRates
+   ->Size
+  numberOfFactors
+   ->Size
+  numberOfSteps
+   ->Size
+  pseudoRoot
+   ->const Matrix &
+   ::Size
+   -- ^i
+ -v-
+ -e-
+ -f-
+  FlatVol
+   ->
+   ::const std::vector< Volatility > &
+   -- ^volatilities
+   ::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+   -- ^corr
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::Size
+   -- ^numberOfFactors
+   ::const std::vector< Rate > &
+   -- ^initialRates
+   ::const std::vector< Spread > &
+   -- ^displacements
+ -v-
+ -e-

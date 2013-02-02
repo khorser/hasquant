@@ -1,0 +1,15 @@
+AlphaForm
+
+ -f-
+  ~AlphaForm
+   ->
+  operator()
+   ->Real
+   ::Integer
+   -- ^i
+  setAlpha
+   ->void
+   ::Real
+   -- ^alpha
+ -v-
+ -e-

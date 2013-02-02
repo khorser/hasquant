@@ -1,0 +1,38 @@
+BarrierOption
+ -- |Barrier option on a single asset.
+ -- |The analytic pricing engine will be used if none if passed.
+
+ -f-
+  BarrierOption
+   ->
+   ::Barrier::Type
+   -- ^barrierType
+   ::Real
+   -- ^barrier
+   ::Real
+   -- ^rebate
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+  -- Warningsee VanillaOption for notes on implied-volatility calculation.
+  impliedVolatility
+   ->Volatility
+   ::Real
+   -- ^price
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Real
+   =1.0e-4
+   -- ^accuracy
+   ::Size
+   =100
+   -- ^maxEvaluations
+   ::Volatility
+   =1.0e-7
+   -- ^minVol
+   ::Volatility
+   =4.0
+   -- ^maxVol
+ -v-
+ -e-

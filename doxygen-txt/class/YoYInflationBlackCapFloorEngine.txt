@@ -1,0 +1,12 @@
+YoYInflationBlackCapFloorEngine
+ -- |Black-formula inflation cap/floor engine (standalone, i.e. no coupon pricer)
+
+ -f-
+  YoYInflationBlackCapFloorEngine
+   ->
+   ::const boost::shared_ptr< YoYInflationIndex > &
+   -- ^
+   ::const Handle< YoYOptionletVolatilitySurface > &
+   -- ^
+ -v-
+ -e-

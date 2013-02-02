@@ -1,0 +1,16 @@
+SymmetricSchurDecomposition
+ -- |symmetric threshold Jacobi algorithm.
+ -- |Given a real symmetric matrix S, the Schur decomposition finds the eigenvalues and eigenvectors of S. If D is the diagonal matrix formed by the eigenvalues and U the unitarian matrix of the eigenvectors we can write the Schur decomposition as \[ S = U \cdot D \cdot U^T \, ,\] where $ \cdot $ is the standard matrix product and $ ^T $ is the transpose operator. This class implements the Schur decomposition using the symmetric threshold Jacobi algorithm. For details on the different Jacobi transfomations see "Matrix computation," second edition, by Golub and Van Loan, The Johns Hopkins University PressTeststhe correctness of the returned values is tested by checking their properties.
+
+ -f-
+  -- s must be symmetric
+  SymmetricSchurDecomposition
+   ->
+   ::const Matrix &
+   -- ^s
+  eigenvalues
+   ->const Array &
+  eigenvectors
+   ->const Matrix &
+ -v-
+ -e-

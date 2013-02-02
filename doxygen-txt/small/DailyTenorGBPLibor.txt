@@ -1,0 +1,13 @@
+DailyTenorGBPLibor
+ -- |base class for the one day deposit BBA GBP LIBOR indexes
+
+ -f-
+  DailyTenorGBPLibor
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

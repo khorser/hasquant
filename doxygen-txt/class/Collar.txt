@@ -1,0 +1,14 @@
+Collar
+ -- |Concrete collar class.
+
+ -f-
+  Collar
+   ->
+   ::const Leg &
+   -- ^floatingLeg
+   ::const std::vector< Rate > &
+   -- ^capRates
+   ::const std::vector< Rate > &
+   -- ^floorRates
+ -v-
+ -e-

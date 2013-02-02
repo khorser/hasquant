@@ -1,0 +1,11 @@
+BlackIborCouponPricer
+ -- |Black-formula pricer for capped/floored Ibor coupons.
+
+ -f-
+  BlackIborCouponPricer
+   ->
+   ::const Handle< OptionletVolatilityStructure > &
+   =Handle< OptionletVolatilityStructure >()
+   -- ^v
+ -v-
+ -e-

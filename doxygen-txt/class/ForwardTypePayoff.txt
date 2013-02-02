@@ -1,0 +1,16 @@
+ForwardTypePayoff
+ -- |Class for forward type payoffs.
+
+ -f-
+  ForwardTypePayoff
+   ->
+   ::Position::Type
+   -- ^type
+   ::Real
+   -- ^strike
+  forwardType
+   ->Position::Type
+  strike
+   ->Real
+ -v-
+ -e-

@@ -1,0 +1,16 @@
+VanillaStorageOption
+ -- |base option class
+
+ -f-
+  VanillaStorageOption
+   ->
+   ::const boost::shared_ptr< BermudanExercise > &
+   -- ^ex
+   ::Real
+   -- ^capacity
+   ::Real
+   -- ^load
+   ::Real
+   -- ^changeRate
+ -v-
+ -e-

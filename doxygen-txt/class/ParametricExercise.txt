@@ -1,0 +1,25 @@
+ParametricExercise
+
+ -f-
+  ~ParametricExercise
+   ->
+  numberOfVariables
+   ->std::vector< Size >
+  numberOfParameters
+   ->std::vector< Size >
+  exercise
+   ->bool
+   ::Size
+   -- ^exerciseNumber
+   ::const std::vector< Real > &
+   -- ^parameters
+   ::const std::vector< Real > &
+   -- ^variables
+  guess
+   ->void
+   ::Size
+   -- ^exerciseNumber
+   ::std::vector< Real > &
+   -- ^parameters
+ -v-
+ -e-

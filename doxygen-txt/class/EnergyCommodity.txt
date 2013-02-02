@@ -1,0 +1,41 @@
+EnergyCommodity
+ -- |Energy commodity class.
+
+ -f-
+ -v-
+ -e-
+  DeliverySchedule
+   Constant
+   Window
+   Hourly
+   Daily
+   Weekly
+   Monthly
+   Quarterly
+   Yearly
+  QuantityPeriodicity
+   Absolute
+   PerHour
+   PerDay
+   PerWeek
+   PerMonth
+   PerQuarter
+   PerYear
+  PaymentSchedule
+   WindowSettlement
+   MonthlySettlement
+   QuarterlySettlement
+   YearlySettlement
+ -f-
+  EnergyCommodity
+   ->
+   ::const CommodityType &
+   -- ^commodityType
+   ::const boost::shared_ptr< SecondaryCosts > &
+   -- ^secondaryCosts
+  quantity
+   ->Quantity
+  commodityType
+   ->const CommodityType &
+ -v-
+ -e-

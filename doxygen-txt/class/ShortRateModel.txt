@@ -1,0 +1,14 @@
+ShortRateModel
+ -- |Abstract short-rate model class.
+
+ -f-
+  ShortRateModel
+   ->
+   ::Size
+   -- ^nArguments
+  tree
+   ->boost::shared_ptr< Lattice >
+   ::const TimeGrid &
+   -- ^
+ -v-
+ -e-

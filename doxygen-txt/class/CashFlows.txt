@@ -1,0 +1,611 @@
+CashFlows
+ -- |cashflow-analysis functions
+ -- |Possible enhancementsadd tests
+
+ -f-
+  startDate
+   ->Date
+   ::const Leg &
+   -- ^leg
+  maturityDate
+   ->Date
+   ::const Leg &
+   -- ^leg
+  isExpired
+   ->bool
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+ -v-
+ -e-
+ -f-
+  -- the last cashflow paying before or at the given date
+  previousCashFlow
+   ->Leg::const_reverse_iterator
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  -- the first cashflow paying after the given date
+  nextCashFlow
+   ->Leg::const_iterator
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  previousCashFlowDate
+   ->Date
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  nextCashFlowDate
+   ->Date
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  previousCashFlowAmount
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  nextCashFlowAmount
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+ -v-
+ -e-
+ -f-
+  previousCouponRate
+   ->Rate
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  nextCouponRate
+   ->Rate
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  nominal
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlDate
+  accrualStartDate
+   ->Date
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlDate
+  accrualEndDate
+   ->Date
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  referencePeriodStart
+   ->Date
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlDate
+  referencePeriodEnd
+   ->Date
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlDate
+  accrualPeriod
+   ->Time
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accrualDays
+   ->BigInteger
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accruedPeriod
+   ->Time
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accruedDays
+   ->BigInteger
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accruedAmount
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+ -v-
+ -e-
+ -f-
+  -- NPV of the cash flows.
+  -- The NPV is the sum of the cash flows, each discounted according to the given term structure.
+  npv
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::const YieldTermStructure &
+   -- ^discountCurve
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  -- Basis-point sensitivity of the cash flows.
+  -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given term structure.
+  bps
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::const YieldTermStructure &
+   -- ^discountCurve
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  -- NPV and BPS of the cash flows.
+  -- The NPV and BPS of the cash flows calculated together for performance reason
+  npvbps
+   ->void
+   ::const Leg &
+   -- ^leg
+   ::const YieldTermStructure &
+   -- ^discountCurve
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   -- ^settlementDate
+   ::Date
+   -- ^npvDate
+   ::Real &
+   -- ^npv
+   ::Real &
+   -- ^bps
+  -- At-the-money rate of the cash flows.
+  -- The result is the fixed rate for which a fixed rate cash flow vector, equivalent to the input vector, has the required NPV according to the given term structure. If the required NPV is not given, the input cash flow vector's NPV is used instead.
+  atmRate
+   ->Rate
+   ::const Leg &
+   -- ^leg
+   ::const YieldTermStructure &
+   -- ^discountCurve
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+   ::Real
+   =Null< Real >()
+   -- ^npv
+ -v-
+ -e-
+ -f-
+  -- NPV of the cash flows.
+  -- The IRR is the interest rate at which the NPV of the cash flows equals the dirty price.The NPV is the sum of the cash flows, each discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
+  npv
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::const InterestRate &
+   -- ^yield
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  npv
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  -- Basis-point sensitivity of the cash flows.
+  -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
+  bps
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::const InterestRate &
+   -- ^yield
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  bps
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  -- Implied internal rate of return.
+  -- The function verifies the theoretical existance of an IRR and numerically establishes the IRR to the desired precision.
+  yield
+   ->Rate
+   ::const Leg &
+   -- ^leg
+   ::Real
+   -- ^npv
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+   ::Real
+   =1.0e-10
+   -- ^accuracy
+   ::Size
+   =100
+   -- ^maxIterations
+   ::Rate
+   =0.05
+   -- ^guess
+  -- Cash-flow duration.
+  -- The simple duration of a string of cash flows is defined as \[ D_{\mathrm{simple}} = \frac{\sum t_i c_i B(t_i)}{\sum c_i B(t_i)} \] where $ c_i $ is the amount of the $ i $-th cash flow, $ t_i $ is its payment time, and $ B(t_i) $ is the corresponding discount according to the passed yield.The modified duration is defined as \[ D_{\mathrm{modified}} = -\frac{1}{P} \frac{\partial P}{\partial y} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.The Macaulay duration is defined for a compounded IRR as \[ D_{\mathrm{Macaulay}} = \left( 1 + \frac{y}{N} \right) D_{\mathrm{modified}} \] where $ y $ is the IRR and $ N $ is the number of cash flows per year.
+  duration
+   ->Time
+   ::const Leg &
+   -- ^leg
+   ::const InterestRate &
+   -- ^yield
+   ::Duration::Type
+   -- ^type
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  duration
+   ->Time
+   ::const Leg &
+   -- ^leg
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Duration::Type
+   -- ^type
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  -- Cash-flow convexity.
+  -- The convexity of a string of cash flows is defined as \[ C = \frac{1}{P} \frac{\partial^2 P}{\partial y^2} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.
+  convexity
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::const InterestRate &
+   -- ^yield
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  convexity
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  -- Basis-point value.
+  -- Obtained by setting dy = 0.0001 in the 2nd-order Taylor series expansion.
+  basisPointValue
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::const InterestRate &
+   -- ^yield
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  basisPointValue
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  -- Yield value of a basis point.
+  -- The yield value of a one basis point change in price is the derivative of the yield with respect to the price multiplied by 0.01
+  yieldValueBasisPoint
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::const InterestRate &
+   -- ^yield
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  yieldValueBasisPoint
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+ -v-
+ -e-
+ -f-
+  -- NPV of the cash flows.
+  -- For details on z-spread refer to: "Credit Spreads Explained", Lehman Brothers European Fixed Income Research - March 2004, D. O'KaneThe NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter.
+  npv
+   ->Real
+   ::const Leg &
+   -- ^leg
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^discount
+   ::Spread
+   -- ^zSpread
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  -- implied Z-spread.
+  zSpread
+   ->Spread
+   ::const Leg &
+   -- ^leg
+   ::Real
+   -- ^npv
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+   ::Real
+   =1.0e-10
+   -- ^accuracy
+   ::Size
+   =100
+   -- ^maxIterations
+   ::Rate
+   =0.0
+   -- ^guess
+  -- deprecated implied Z-spread.
+  zSpread
+   ->Spread
+   ::const Leg &
+   -- ^leg
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^d
+   ::Real
+   -- ^npv
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+   ::Real
+   =1.0e-10
+   -- ^accuracy
+   ::Size
+   =100
+   -- ^maxIterations
+   ::Rate
+   =0.0
+   -- ^guess
+ -v-
+ -e-

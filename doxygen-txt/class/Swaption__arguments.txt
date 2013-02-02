@@ -1,0 +1,17 @@
+Swaption::arguments
+ -- |Arguments for swaption calculation
+
+ -f-
+ -v-
+  swap
+   ::boost::shared_ptr< VanillaSwap >
+  settlementType
+   ::Settlement::Type
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

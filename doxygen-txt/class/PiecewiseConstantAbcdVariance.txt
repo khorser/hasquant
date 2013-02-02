@@ -1,0 +1,35 @@
+PiecewiseConstantAbcdVariance
+
+ -f-
+  PiecewiseConstantAbcdVariance
+   ->
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^c
+   ::Real
+   -- ^d
+   ::Size
+   -- ^resetIndex
+   ::const std::vector< Time > &
+   -- ^rateTimes
+  variances
+   ->const std::vector< Real > &
+  volatilities
+   ->const std::vector< Real > &
+  rateTimes
+   ->const std::vector< Time > &
+  getABCD
+   ->void
+   ::Real &
+   -- ^a
+   ::Real &
+   -- ^b
+   ::Real &
+   -- ^c
+   ::Real &
+   -- ^d
+ -v-
+ -e-

@@ -1,0 +1,57 @@
+BlackDeltaCalculator
+ -- |Black delta calculator class.
+ -- |Class includes many operations needed for different applications in FX markets, which has special quoation mechanisms, since every price can be expressed in both numeraires.
+
+ -f-
+  BlackDeltaCalculator
+   ->
+   ::Option::Type
+   -- ^ot
+   ::DeltaVolQuote::DeltaType
+   -- ^dt
+   ::Real
+   -- ^spot
+   ::DiscountFactor
+   -- ^dDiscount
+   ::DiscountFactor
+   -- ^fDiscount
+   ::Real
+   -- ^stdDev
+  deltaFromStrike
+   ->Real
+   ::Real
+   -- ^strike
+  strikeFromDelta
+   ->Real
+   ::Real
+   -- ^delta
+  cumD1
+   ->Real
+   ::Real
+   -- ^strike
+  cumD2
+   ->Real
+   ::Real
+   -- ^strike
+  nD1
+   ->Real
+   ::Real
+   -- ^strike
+  nD2
+   ->Real
+   ::Real
+   -- ^strike
+  setDeltaType
+   ->void
+   ::DeltaVolQuote::DeltaType
+   -- ^dt
+  setOptionType
+   ->void
+   ::Option::Type
+   -- ^ot
+  atmStrike
+   ->Real
+   ::DeltaVolQuote::AtmType
+   -- ^atmT
+ -v-
+ -e-

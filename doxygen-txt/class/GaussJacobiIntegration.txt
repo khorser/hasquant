@@ -1,0 +1,15 @@
+GaussJacobiIntegration
+ -- |Gauss-Jacobi integration.
+ -- |This class performs a 1-dimensional Gauss-Jacobi integration. \[ \int_{-1}^{1} f(x) \mathrm{d}x \] The weighting function is \[ w(x;\alpha,\beta)=(1-x)^\alpha (1+x)^\beta \]
+
+ -f-
+  GaussJacobiIntegration
+   ->
+   ::Size
+   -- ^n
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+ -v-
+ -e-

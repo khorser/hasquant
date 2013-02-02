@@ -1,0 +1,34 @@
+BankruptcyEvent
+
+ -f-
+  BankruptcyEvent
+   ->
+   ::const Date &
+   -- ^creditEventDate
+   ::const Currency &
+   -- ^curr
+   ::Seniority
+   -- ^bondsSen
+   ::const Date &
+   -- ^settleDate
+   ::const std::map< Seniority, Real > &
+   -- ^recoveryRates
+  BankruptcyEvent
+   ->
+   ::const Date &
+   -- ^creditEventDate
+   ::const Currency &
+   -- ^curr
+   ::Seniority
+   -- ^bondsSen
+   ::const Date &
+   -- ^settleDate
+   ::Real
+   -- ^recoveryRates
+  -- This is a stronger than all event and will trigger all of them.
+  matchesEventType
+   ->bool
+   ::const boost::shared_ptr< DefaultType > &
+   -- ^
+ -v-
+ -e-

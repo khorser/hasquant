@@ -1,0 +1,73 @@
+CTSMMCapletAlphaFormCalibration
+
+ -f-
+  CTSMMCapletAlphaFormCalibration
+   ->
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+   -- ^corr
+   ::const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+   -- ^displacedSwapVariances
+   ::const std::vector< Volatility > &
+   -- ^capletVols
+   ::const boost::shared_ptr< CurveState > &
+   -- ^cs
+   ::Spread
+   -- ^displacement
+   ::const std::vector< Real > &
+   -- ^alphaInitial
+   ::const std::vector< Real > &
+   -- ^alphaMax
+   ::const std::vector< Real > &
+   -- ^alphaMin
+   ::bool
+   -- ^maximizeHomogeneity
+   ::boost::shared_ptr< AlphaForm >
+   =boost::shared_ptr< AlphaForm >()
+   -- ^parametricForm
+  alpha
+   ->const std::vector< Real > &
+ -v-
+ -e-
+ -f-
+  capletAlphaFormCalibration
+   ->Natural
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const PiecewiseConstantCorrelation &
+   -- ^corr
+   ::const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+   -- ^displacedSwapVariances
+   ::const std::vector< Volatility > &
+   -- ^capletVols
+   ::const CurveState &
+   -- ^cs
+   ::const Spread
+   -- ^displacement
+   ::const std::vector< Real > &
+   -- ^alphaInitial
+   ::const std::vector< Real > &
+   -- ^alphaMax
+   ::const std::vector< Real > &
+   -- ^alphaMin
+   ::bool
+   -- ^maximizeHomogeneity
+   ::boost::shared_ptr< AlphaForm >
+   -- ^parametricForm
+   ::const Size
+   -- ^numberOfFactors
+   ::Integer
+   -- ^steps
+   ::Real
+   -- ^toleranceForAlphaSolving
+   ::std::vector< Real > &
+   -- ^alpha
+   ::std::vector< Real > &
+   -- ^a
+   ::std::vector< Real > &
+   -- ^b
+   ::std::vector< Matrix > &
+   -- ^swapCovariancePseudoRoots
+ -v-
+ -e-

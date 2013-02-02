@@ -1,0 +1,9 @@
+TestCurve
+
+ -f-
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

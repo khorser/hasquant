@@ -1,0 +1,70 @@
+LexicographicalView
+ -- |Lexicographical 2-D view of a contiguous set of data.
+ -- |This view can be used to easily store a discretized 2-D function in an array to be used in a finite differences calculation.
+
+ -f-
+  operator[]
+   ->y_iterator
+   ::Size
+   -- ^i
+ -v-
+ -e-
+ -f-
+  xbegin
+   ->x_iterator
+   ::Size
+   -- ^j
+  xend
+   ->x_iterator
+   ::Size
+   -- ^j
+  rxbegin
+   ->reverse_x_iterator
+   ::Size
+   -- ^j
+  rxend
+   ->reverse_x_iterator
+   ::Size
+   -- ^j
+  ybegin
+   ->y_iterator
+   ::Size
+   -- ^i
+  yend
+   ->y_iterator
+   ::Size
+   -- ^i
+  rybegin
+   ->reverse_y_iterator
+   ::Size
+   -- ^i
+  ryend
+   ->reverse_y_iterator
+   ::Size
+   -- ^i
+ -v-
+ -e-
+ -f-
+  -- dimension of the array along x
+  xSize
+   ->Size
+  -- dimension of the array along y
+  ySize
+   ->Size
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+ -f-
+  -- attaches the view with the given dimension to a sequence
+  LexicographicalView
+   ->
+   ::const RandomAccessIterator &
+   -- ^begin
+   ::const RandomAccessIterator &
+   -- ^end
+   ::Size
+   -- ^xSize
+ -v-
+ -e-

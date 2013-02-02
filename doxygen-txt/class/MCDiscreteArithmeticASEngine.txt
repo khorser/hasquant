@@ -1,0 +1,25 @@
+MCDiscreteArithmeticASEngine
+ -- |Monte Carlo pricing engine for discrete arithmetic average-strike Asian.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCDiscreteArithmeticASEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+ -v-
+ -e-

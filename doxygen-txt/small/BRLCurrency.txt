@@ -1,0 +1,9 @@
+BRLCurrency
+ -- |Brazilian real.
+ -- |The ISO three-letter code is BRL; the numeric code is 986. It is divided in 100 centavos.
+
+ -f-
+  BRLCurrency
+   ->
+ -v-
+ -e-

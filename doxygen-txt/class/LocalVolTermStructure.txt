@@ -1,0 +1,87 @@
+LocalVolTermStructure
+ -- |This abstract class defines the interface of concrete local-volatility term structures which will be derived from this one.Volatilities are assumed to be expressed on an annual basis.
+
+ -f-
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  LocalVolTermStructure
+   ->
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- default constructor
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  LocalVolTermStructure
+   ->
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- initialize with a fixed reference date
+  LocalVolTermStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- calculate the reference date based on the global evaluation date
+  LocalVolTermStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+ -v-
+ -e-
+ -f-
+  localVol
+   ->Volatility
+   ::const Date &
+   -- ^d
+   ::Real
+   -- ^underlyingLevel
+   ::bool
+   =false
+   -- ^extrapolate
+  localVol
+   ->Volatility
+   ::Time
+   -- ^t
+   ::Real
+   -- ^underlyingLevel
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  accept
+   ->void
+   ::AcyclicVisitor &
+   -- ^
+ -v-
+ -e-
+ -f-
+  ~LocalVolTermStructure
+   ->
+ -v-
+ -e-

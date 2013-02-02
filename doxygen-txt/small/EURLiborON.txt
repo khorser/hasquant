@@ -1,0 +1,11 @@
+EURLiborON
+ -- |Overnight EUR Libor index.
+
+ -f-
+  EURLiborON
+   ->
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

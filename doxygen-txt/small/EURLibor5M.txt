@@ -1,0 +1,11 @@
+EURLibor5M
+ -- |5-months EUR Libor index
+
+ -f-
+  EURLibor5M
+   ->
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

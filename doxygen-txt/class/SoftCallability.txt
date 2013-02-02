@@ -1,0 +1,16 @@
+SoftCallability
+ -- |callability leaving to the holder the possibility to convert
+
+ -f-
+  SoftCallability
+   ->
+   ::const Price &
+   -- ^price
+   ::const Date &
+   -- ^date
+   ::Real
+   -- ^trigger
+  trigger
+   ->Real
+ -v-
+ -e-

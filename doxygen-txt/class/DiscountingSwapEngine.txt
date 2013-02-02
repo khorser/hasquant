@@ -1,0 +1,23 @@
+DiscountingSwapEngine
+
+ -f-
+  DiscountingSwapEngine
+   ->
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^discountCurve
+   ::boost::optional< bool >
+   =boost::none
+   -- ^includeSettlementDateFlows
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Date
+   =Date()
+   -- ^npvDate
+  calculate
+   ->void
+  discountCurve
+   ->Handle< YieldTermStructure >
+ -v-
+ -e-

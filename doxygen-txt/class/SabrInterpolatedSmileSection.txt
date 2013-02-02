@@ -1,0 +1,143 @@
+SabrInterpolatedSmileSection
+
+ -f-
+  -- all market data are quotes
+  SabrInterpolatedSmileSection
+   ->
+   ::const Date &
+   -- ^optionDate
+   ::const Handle< Quote > &
+   -- ^forward
+   ::const std::vector< Rate > &
+   -- ^strikes
+   ::bool
+   -- ^hasFloatingStrikes
+   ::const Handle< Quote > &
+   -- ^atmVolatility
+   ::const std::vector< Handle< Quote > > &
+   -- ^volHandles
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^nu
+   ::Real
+   -- ^rho
+   ::bool
+   =false
+   -- ^isAlphaFixed
+   ::bool
+   =false
+   -- ^isBetaFixed
+   ::bool
+   =false
+   -- ^isNuFixed
+   ::bool
+   =false
+   -- ^isRhoFixed
+   ::bool
+   =true
+   -- ^vegaWeighted
+   ::const boost::shared_ptr< EndCriteria > &
+   =boost::shared_ptr< EndCriteria >()
+   -- ^endCriteria
+   ::const boost::shared_ptr< OptimizationMethod > &
+   =boost::shared_ptr< OptimizationMethod >()
+   -- ^method
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  -- no quotes
+  SabrInterpolatedSmileSection
+   ->
+   ::const Date &
+   -- ^optionDate
+   ::const Rate &
+   -- ^forward
+   ::const std::vector< Rate > &
+   -- ^strikes
+   ::bool
+   -- ^hasFloatingStrikes
+   ::const Volatility &
+   -- ^atmVolatility
+   ::const std::vector< Volatility > &
+   -- ^vols
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^nu
+   ::Real
+   -- ^rho
+   ::bool
+   =false
+   -- ^isAlphaFixed
+   ::bool
+   =false
+   -- ^isBetaFixed
+   ::bool
+   =false
+   -- ^isNuFixed
+   ::bool
+   =false
+   -- ^isRhoFixed
+   ::bool
+   =true
+   -- ^vegaWeighted
+   ::const boost::shared_ptr< EndCriteria > &
+   =boost::shared_ptr< EndCriteria >()
+   -- ^endCriteria
+   ::const boost::shared_ptr< OptimizationMethod > &
+   =boost::shared_ptr< OptimizationMethod >()
+   -- ^method
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+ -v-
+ -e-
+ -f-
+  performCalculations
+   ->void
+  update
+   ->void
+ -v-
+ -e-
+ -f-
+  minStrike
+   ->Real
+  maxStrike
+   ->Real
+  atmLevel
+   ->Real
+ -v-
+ -e-
+ -f-
+  alpha
+   ->Real
+  beta
+   ->Real
+  nu
+   ->Real
+  rho
+   ->Real
+  rmsError
+   ->Real
+  maxError
+   ->Real
+  endCriteria
+   ->EndCriteria::Type
+ -v-
+ -e-
+ -f-
+  varianceImpl
+   ->Real
+   ::Rate
+   -- ^strike
+  volatilityImpl
+   ->Volatility
+   ::Rate
+   -- ^strike
+ -v-
+ -e-

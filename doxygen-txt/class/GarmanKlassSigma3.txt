@@ -1,0 +1,11 @@
+GarmanKlassSigma3
+
+ -f-
+  GarmanKlassSigma3
+   ->
+   ::Real
+   -- ^y
+   ::Real
+   -- ^marketOpenFraction
+ -v-
+ -e-

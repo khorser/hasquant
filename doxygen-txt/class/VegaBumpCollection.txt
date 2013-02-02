@@ -1,0 +1,31 @@
+VegaBumpCollection
+ -- |There are too many pseudo-root elements to allow bumping them all independently so we cluster them together and then divide all elements into a collection of such clusters.
+
+ -f-
+  VegaBumpCollection
+   ->
+   ::const boost::shared_ptr< MarketModel > &
+   -- ^volStructure
+   ::bool
+   =true
+   -- ^allowFactorwiseBumping
+  VegaBumpCollection
+   ->
+   ::const std::vector< VegaBumpCluster > &
+   -- ^allBumps
+   ::const boost::shared_ptr< MarketModel > &
+   -- ^volStructure
+  numberBumps
+   ->Size
+  associatedModel
+   ->const boost::shared_ptr< MarketModel > &
+  allBumps
+   ->const std::vector< VegaBumpCluster > &
+  isFull
+   ->bool
+  isNonOverlapping
+   ->bool
+  isSensible
+   ->bool
+ -v-
+ -e-

@@ -1,0 +1,15 @@
+HimalayaMultiPathPricer
+
+ -f-
+  HimalayaMultiPathPricer
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^payoff
+   ::DiscountFactor
+   -- ^discount
+  operator()
+   ->Real
+   ::const MultiPath &
+   -- ^multiPath
+ -v-
+ -e-

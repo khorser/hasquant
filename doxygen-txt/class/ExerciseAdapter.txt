@@ -1,0 +1,40 @@
+ExerciseAdapter
+
+ -f-
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  numberOfProducts
+   ->Size
+  evolution
+   ->const EvolutionDescription &
+  maxNumberOfCashFlowsPerProductPerStep
+   ->Size
+  reset
+   ->void
+  nextTimeStep
+   ->bool
+   ::const CurveState &
+   -- ^
+   ::std::vector< Size > &
+   -- ^
+   ::std::vector< std::vector< CashFlow > > &
+   -- ^
+  clone
+   ->std::auto_ptr< MarketModelMultiProduct >
+ -v-
+ -e-
+ -f-
+  exerciseValue
+   ->const MarketModelExerciseValue &
+ -v-
+ -e-
+ -f-
+  ExerciseAdapter
+   ->
+   ::const Clone< MarketModelExerciseValue > &
+   -- ^exercise
+   ::Size
+   =1
+   -- ^numberOfProducts
+ -v-
+ -e-

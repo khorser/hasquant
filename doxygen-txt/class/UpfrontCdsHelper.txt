@@ -1,0 +1,74 @@
+UpfrontCdsHelper
+ -- |Upfront-quoted CDS hazard rate bootstrap helper.
+
+ -f-
+  -- the upfront must be quoted in fractional units.
+  UpfrontCdsHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^upfront
+   ::Rate
+   -- ^runningSpread
+   ::const Period &
+   -- ^tenor
+   ::Integer
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::Frequency
+   -- ^frequency
+   ::BusinessDayConvention
+   -- ^paymentConvention
+   ::DateGeneration::Rule
+   -- ^rule
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Real
+   -- ^recoveryRate
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+   ::Natural
+   =0
+   -- ^upfrontSettlementDays
+   ::bool
+   =true
+   -- ^settlesAccrual
+   ::bool
+   =true
+   -- ^paysAtDefaultTime
+  -- the upfront must be quoted in fractional units.
+  UpfrontCdsHelper
+   ->
+   ::Rate
+   -- ^upfront
+   ::Rate
+   -- ^runningSpread
+   ::const Period &
+   -- ^tenor
+   ::Integer
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::Frequency
+   -- ^frequency
+   ::BusinessDayConvention
+   -- ^paymentConvention
+   ::DateGeneration::Rule
+   -- ^rule
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Real
+   -- ^recoveryRate
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+   ::Natural
+   =0
+   -- ^upfrontSettlementDays
+   ::bool
+   =true
+   -- ^settlesAccrual
+   ::bool
+   =true
+   -- ^paysAtDefaultTime
+ -v-
+ -e-

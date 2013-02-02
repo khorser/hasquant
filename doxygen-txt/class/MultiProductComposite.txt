@@ -1,0 +1,3 @@
+MultiProductComposite
+ -- |Composition of one or more market-model products.
+ -- |Instances of this class build a multiple market-model product by composing two or more subproducts.All subproducts must have the same rate times.

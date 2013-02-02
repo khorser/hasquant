@@ -1,0 +1,38 @@
+FdmLinearOpComposite
+
+ -f-
+  size
+   ->Size
+  -- Time $t1 <= t2$ is required.
+  setTime
+   ->void
+   ::Time
+   -- ^t1
+   ::Time
+   -- ^t2
+  apply_mixed
+   ->Disposable< Array >
+   ::const Array &
+   -- ^r
+  apply_direction
+   ->Disposable< Array >
+   ::Size
+   -- ^direction
+   ::const Array &
+   -- ^r
+  solve_splitting
+   ->Disposable< Array >
+   ::Size
+   -- ^direction
+   ::const Array &
+   -- ^r
+   ::Real
+   -- ^s
+  preconditioner
+   ->Disposable< Array >
+   ::const Array &
+   -- ^r
+   ::Real
+   -- ^s
+ -v-
+ -e-

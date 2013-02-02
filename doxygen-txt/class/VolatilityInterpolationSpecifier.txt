@@ -1,0 +1,29 @@
+VolatilityInterpolationSpecifier
+
+ -f-
+  VolatilityInterpolationSpecifier
+   ->
+  ~VolatilityInterpolationSpecifier
+   ->
+  setScalingFactors
+   ->void
+   ::const std::vector< Real > &
+   -- ^scales
+  setLastCapletVol
+   ->void
+   ::Real
+   -- ^vol
+  interpolatedVariances
+   ->const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+  originalVariances
+   ->const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+  getPeriod
+   ->Size
+  getOffset
+   ->Size
+  getNoBigRates
+   ->Size
+  getNoSmallRates
+   ->Size
+ -v-
+ -e-

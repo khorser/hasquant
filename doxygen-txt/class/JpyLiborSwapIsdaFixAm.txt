@@ -1,0 +1,22 @@
+JpyLiborSwapIsdaFixAm
+ -- |JpyLiborSwapIsdaFixAm index base class
+ -- |JPY Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 10am Tokyo. Semiannual Act/365 vs 6M Libor. Reuters page ISDAFIX1 or JPYSFIXA=.Further info can be found at http://www.isda.org/fix/isdafix.html or Reuters page ISDAFIX.
+
+ -f-
+  JpyLiborSwapIsdaFixAm
+   ->
+   ::const Period &
+   -- ^tenor
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+  JpyLiborSwapIsdaFixAm
+   ->
+   ::const Period &
+   -- ^tenor
+   ::const Handle< YieldTermStructure > &
+   -- ^forwarding
+   ::const Handle< YieldTermStructure > &
+   -- ^discounting
+ -v-
+ -e-

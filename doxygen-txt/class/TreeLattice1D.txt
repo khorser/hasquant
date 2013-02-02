@@ -1,0 +1,19 @@
+TreeLattice1D
+ -- |One-dimensional tree-based lattice.
+ -- |Derived classes must implement the following interface: Realunderlying(Sizei,Sizeindex)const;
+
+ -f-
+  TreeLattice1D
+   ->
+   ::const TimeGrid &
+   -- ^timeGrid
+   ::Size
+   -- ^n
+  underlying
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+ -v-
+ -e-

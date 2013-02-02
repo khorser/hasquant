@@ -1,0 +1,62 @@
+DayCounter
+ -- |day counter class
+ -- |This class provides methods for determining the length of a time period according to given market convention, both as a number of days and as a year fraction.The Bridge pattern is used to provide the base behavior of the day counter.
+
+ -f-
+  -- Returns whether or not the day counter is initialized.
+  empty
+   ->bool
+  -- Returns the name of the day counter.
+  -- WarningThis method is used for output and comparison between day counters. It is not meant to be used for writing switch-on-type code.
+  name
+   ->std::string
+  -- Returns the number of days between two dates.
+  dayCount
+   ->BigInteger
+   ::const Date &
+   -- ^
+   ::const Date &
+   -- ^
+  -- Returns the period between two dates as a fraction of year.
+  yearFraction
+   ->Time
+   ::const Date &
+   -- ^
+   ::const Date &
+   -- ^
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+ -v-
+ -e-
+ -f-
+  -- The default constructor returns a day counter with a null implementation, which is therefore unusable except as a placeholder.
+  DayCounter
+   ->
+ -v-
+ -e-
+ -f-
+  -- Returns true iff the two day counters belong to the same derived class.
+  operator==
+   ->bool
+   ::const DayCounter &
+   -- ^
+   ::const DayCounter &
+   -- ^
+  operator!=
+   ->bool
+   ::const DayCounter &
+   -- ^
+   ::const DayCounter &
+   -- ^
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::const DayCounter &
+   -- ^
+ -v-
+ -e-

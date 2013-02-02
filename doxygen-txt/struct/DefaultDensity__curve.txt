@@ -1,0 +1,5 @@
+DefaultDensity::curve
+
+ -f-
+ -v-
+ -e-

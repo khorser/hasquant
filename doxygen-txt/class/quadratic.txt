@@ -1,0 +1,29 @@
+quadratic
+
+ -f-
+  quadratic
+   ->
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^c
+  turningPoint
+   ->Real
+  valueAtTurningPoint
+   ->Real
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+  discriminant
+   ->Real
+  roots
+   ->bool
+   ::Real &
+   -- ^x
+   ::Real &
+   -- ^y
+ -v-
+ -e-

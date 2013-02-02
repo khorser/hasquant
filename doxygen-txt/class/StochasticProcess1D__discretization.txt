@@ -1,0 +1,38 @@
+StochasticProcess1D::discretization
+ -- |discretization of a 1-D stochastic process
+
+ -f-
+  ~discretization
+   ->
+  drift
+   ->Real
+   ::const StochasticProcess1D &
+   -- ^
+   ::Time
+   -- ^t0
+   ::Real
+   -- ^x0
+   ::Time
+   -- ^dt
+  diffusion
+   ->Real
+   ::const StochasticProcess1D &
+   -- ^
+   ::Time
+   -- ^t0
+   ::Real
+   -- ^x0
+   ::Time
+   -- ^dt
+  variance
+   ->Real
+   ::const StochasticProcess1D &
+   -- ^
+   ::Time
+   -- ^t0
+   ::Real
+   -- ^x0
+   ::Time
+   -- ^dt
+ -v-
+ -e-

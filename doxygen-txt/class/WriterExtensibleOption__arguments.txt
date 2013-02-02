@@ -1,0 +1,15 @@
+WriterExtensibleOption::arguments
+ -- |Additional arguments for writer-extensible option.
+
+ -f-
+ -v-
+  payoff2
+   ::boost::shared_ptr< Payoff >
+  exercise2
+   ::boost::shared_ptr< Exercise >
+ -e-
+ -f-
+  validate
+   ->void
+ -v-
+ -e-

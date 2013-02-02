@@ -1,0 +1,39 @@
+FlatSmileSection
+
+ -f-
+  minStrike
+   ->Real
+  maxStrike
+   ->Real
+  atmLevel
+   ->Real
+ -v-
+ -e-
+ -f-
+  FlatSmileSection
+   ->
+   ::const Date &
+   -- ^d
+   ::Volatility
+   -- ^vol
+   ::const DayCounter &
+   -- ^dc
+   ::const Date &
+   =Date()
+   -- ^referenceDate
+   ::Real
+   =Null< Rate >()
+   -- ^atmLevel
+  FlatSmileSection
+   ->
+   ::Time
+   -- ^exerciseTime
+   ::Volatility
+   -- ^vol
+   ::const DayCounter &
+   -- ^dc
+   ::Real
+   =Null< Rate >()
+   -- ^atmLevel
+ -v-
+ -e-

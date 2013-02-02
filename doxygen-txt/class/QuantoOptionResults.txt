@@ -1,0 +1,19 @@
+QuantoOptionResults
+ -- |Results from quanto option calculation
+
+ -f-
+ -v-
+  qvega
+   ::Real
+  qrho
+   ::Real
+  qlambda
+   ::Real
+ -e-
+ -f-
+  QuantoOptionResults
+   ->
+  reset
+   ->void
+ -v-
+ -e-

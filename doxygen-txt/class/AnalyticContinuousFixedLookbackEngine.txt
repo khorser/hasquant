@@ -1,0 +1,11 @@
+AnalyticContinuousFixedLookbackEngine
+ -- |Pricing engine for European continuous fixed-strike lookback.
+ -- |Formula from "Option Pricing Formulas", E.G. Haug, McGraw-Hill, 1998, p.63-64Testsreturned values are verified against results from literature
+
+ -f-
+  AnalyticContinuousFixedLookbackEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+ -v-
+ -e-

@@ -1,0 +1,30 @@
+Exercise
+ -- |Base exercise class.
+
+ -f-
+ -v-
+ -e-
+  Type
+   American
+   Bermudan
+   European
+ -f-
+  Exercise
+   ->
+   ::Type
+   -- ^type
+  ~Exercise
+   ->
+  type
+   ->Type
+  date
+   ->Date
+   ::Size
+   -- ^index
+  -- Returns all exercise dates.
+  dates
+   ->const std::vector< Date > &
+  lastDate
+   ->Date
+ -v-
+ -e-

@@ -1,0 +1,49 @@
+OvernightIndexedCoupon
+ -- |overnight coupon
+ -- |Coupon paying the compounded interest due to daily overnight fixings.
+
+ -f-
+  -- fixing dates for the rates to be compounded
+  fixingDates
+   ->const std::vector< Date > &
+  -- accrual (compounding) periods
+  dt
+   ->const std::vector< Time > &
+  -- fixings to be compounded
+  indexFixings
+   ->const std::vector< Rate > &
+  -- value dates for the rates to be compounded
+  valueDates
+   ->const std::vector< Date > &
+ -v-
+ -e-
+ -f-
+  OvernightIndexedCoupon
+   ->
+   ::const Date &
+   -- ^paymentDate
+   ::Real
+   -- ^nominal
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::const boost::shared_ptr< OvernightIndex > &
+   -- ^overnightIndex
+   ::Real
+   =1.0
+   -- ^gearing
+   ::Spread
+   =0.0
+   -- ^spread
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+ -v-
+ -e-

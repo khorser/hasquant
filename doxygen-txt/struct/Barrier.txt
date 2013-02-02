@@ -1,0 +1,11 @@
+Barrier
+ -- |Placeholder for enumerated barrier types.
+
+ -f-
+ -v-
+ -e-
+  Type
+   DownIn
+   UpIn
+   DownOut
+   UpOut

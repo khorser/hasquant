@@ -1,0 +1,55 @@
+BlackVarianceTermStructure
+ -- |Black variance term structure.
+ -- |This abstract class acts as an adapter to VolTermStructure allowing the programmer to implement only the blackVarianceImpl(Time, Real, bool) method in derived classes.Volatility are assumed to be expressed on an annual basis.
+
+ -f-
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  BlackVarianceTermStructure
+   ->
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- default constructor
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  BlackVarianceTermStructure
+   ->
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- initialize with a fixed reference date
+  BlackVarianceTermStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- calculate the reference date based on the global evaluation date
+  BlackVarianceTermStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+ -v-
+ -e-

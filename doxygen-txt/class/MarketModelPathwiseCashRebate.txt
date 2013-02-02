@@ -1,0 +1,16 @@
+MarketModelPathwiseCashRebate
+ -- |Swap for doing simple cash rebate. Fairly useless when used directly, but if we want to look a breakable swap it becomes useful.
+
+ -f-
+  MarketModelPathwiseCashRebate
+   ->
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const std::vector< Time > &
+   -- ^paymentTimes
+   ::const Matrix &
+   -- ^amounts
+   ::Size
+   -- ^numberOfProducts
+ -v-
+ -e-

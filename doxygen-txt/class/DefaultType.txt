@@ -1,0 +1,32 @@
+DefaultType
+ -- |Atomic credit-event type.
+ -- |This class encapsulates the ISDA default contractual types and their combinations. Non-atomicity works only at the atomic type level, obviating the specific event characteristics which it is accounted for only in derived classes.
+
+ -f-
+  DefaultType
+   ->
+   ::AtomicDefault::Type
+   =AtomicDefault::Bankruptcy
+   -- ^defType
+   ::Restructuring::Type
+   =Restructuring::XR
+   -- ^restType
+  ~DefaultType
+   ->
+  defaultType
+   ->AtomicDefault::Type
+  restructuringType
+   ->Restructuring::Type
+  isRestructuring
+   ->bool
+  -- Returns true if one or a set of event types is within this one and as such will be recognised as a trigger. Not the same as equality.Notice that these methods do not include any event logical hierarchy. The match is in a strict sense. If event B is contained in (implied by) event A this would not send a match. This policies should be implemented at the CreditEvent class, which is polymorphic.
+  containsDefaultType
+   ->bool
+   ::AtomicDefault::Type
+   -- ^defType
+  containsRestructuringType
+   ->bool
+   ::Restructuring::Type
+   -- ^resType
+ -v-
+ -e-

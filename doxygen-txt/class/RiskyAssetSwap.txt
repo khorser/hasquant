@@ -1,0 +1,41 @@
+RiskyAssetSwap
+ -- |Risky asset-swap instrument.
+
+ -f-
+  RiskyAssetSwap
+   ->
+   ::bool
+   -- ^fixedPayer
+   ::Real
+   -- ^nominal
+   ::const Schedule &
+   -- ^fixedSchedule
+   ::const Schedule &
+   -- ^floatSchedule
+   ::const DayCounter &
+   -- ^fixedDayCounter
+   ::const DayCounter &
+   -- ^floatDayCounter
+   ::Rate
+   -- ^spread
+   ::Rate
+   -- ^recoveryRate_
+   ::const Handle< YieldTermStructure > &
+   -- ^yieldTS
+   ::const Handle< DefaultProbabilityTermStructure > &
+   -- ^defaultTS
+   ::Rate
+   =Null< Rate >()
+   -- ^coupon
+  fairSpread
+   ->Real
+  floatAnnuity
+   ->Real
+  nominal
+   ->Real
+  spread
+   ->Rate
+  fixedPayer
+   ->bool
+ -v-
+ -e-

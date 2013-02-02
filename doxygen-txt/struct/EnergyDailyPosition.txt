@@ -1,0 +1,32 @@
+EnergyDailyPosition
+
+ -f-
+ -v-
+  date
+   ::Date
+  quantityAmount
+   ::Real
+  payLegPrice
+   ::Real
+  receiveLegPrice
+   ::Real
+  riskDelta
+   ::Real
+  unrealized
+   ::bool
+ -e-
+ -f-
+  EnergyDailyPosition
+   ->
+  EnergyDailyPosition
+   ->
+   ::const Date &
+   -- ^date
+   ::Real
+   -- ^payLegPrice
+   ::Real
+   -- ^receiveLegPrice
+   ::bool
+   -- ^unrealized
+ -v-
+ -e-

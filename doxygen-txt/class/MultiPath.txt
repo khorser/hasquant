@@ -1,0 +1,45 @@
+MultiPath
+ -- |Correlated multiple asset paths.
+ -- |MultiPath contains the list of paths for each asset, i.e., multipath[j] is the path followed by the j-th asset.
+
+ -f-
+  assetNumber
+   ->Size
+  pathSize
+   ->Size
+ -v-
+ -e-
+ -f-
+  operator[]
+   ->const Path &
+   ::Size
+   -- ^j
+  at
+   ->const Path &
+   ::Size
+   -- ^j
+  operator[]
+   ->Path &
+   ::Size
+   -- ^j
+  at
+   ->Path &
+   ::Size
+   -- ^j
+ -v-
+ -e-
+ -f-
+  MultiPath
+   ->
+  MultiPath
+   ->
+   ::Size
+   -- ^nAsset
+   ::const TimeGrid &
+   -- ^timeGrid
+  MultiPath
+   ->
+   ::const std::vector< Path > &
+   -- ^multiPath
+ -v-
+ -e-

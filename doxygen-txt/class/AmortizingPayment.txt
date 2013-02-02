@@ -1,0 +1,13 @@
+AmortizingPayment
+ -- |Amortizing payment.
+ -- |This class specializes SimpleCashFlow so that visitors can perform more detailed cash-flow analysis.
+
+ -f-
+  AmortizingPayment
+   ->
+   ::Real
+   -- ^amount
+   ::const Date &
+   -- ^date
+ -v-
+ -e-

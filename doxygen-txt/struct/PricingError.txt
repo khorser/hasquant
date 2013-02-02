@@ -1,0 +1,32 @@
+PricingError
+
+ -f-
+ -v-
+ -e-
+  Level
+   Info
+   Warning
+   Error
+   Fatal
+ -f-
+ -v-
+  errorLevel
+   ::Level
+  tradeId
+   ::std::string
+  error
+   ::std::string
+  detail
+   ::std::string
+ -e-
+ -f-
+  PricingError
+   ->
+   ::Level
+   -- ^errorLevel
+   ::const std::string &
+   -- ^error
+   ::const std::string &
+   -- ^detail
+ -v-
+ -e-

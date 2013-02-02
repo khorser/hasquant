@@ -1,0 +1,24 @@
+FaureRsg
+ -- |Faure low-discrepancy sequence generator.
+ -- |It is based on existing Fortran and C algorithms to calculate pascal matrix and gray transforms. E. Thiemard Economic generation of low-discrepancy sequences with a b-ary gray code.Algorithms 659, 647. http://www.netlib.org/toms/647, http://www.netlib.org/toms/659 Teststhe correctness of the returned values is tested by reproducing known good values.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  FaureRsg
+   ->
+   ::Size
+   -- ^dimensionality
+  nextIntSequence
+   ->const std::vector< long int > &
+  lastIntSequence
+   ->const std::vector< long int > &
+  nextSequence
+   ->const sample_type &
+  lastSequence
+   ->const sample_type &
+  dimension
+   ->Size
+ -v-
+ -e-

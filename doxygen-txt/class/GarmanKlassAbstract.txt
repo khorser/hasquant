@@ -1,0 +1,15 @@
+GarmanKlassAbstract
+ -- |Garman-Klass volatility model.
+ -- |This class implements a concrete volatility model based on high low formulas using the method of Garman and Klass in their paper "On the Estimation of the Security Price from Historical Data" at http://www.fea.com/resources/pdf/a_estimation_of_security_price.pdfVolatilities are assumed to be expressed on an annual basis.
+
+ -f-
+  GarmanKlassAbstract
+   ->
+   ::Real
+   -- ^y
+  calculate
+   ->TimeSeries< Volatility >
+   ::const TimeSeries< IntervalPrice > &
+   -- ^quoteSeries
+ -v-
+ -e-

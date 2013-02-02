@@ -1,0 +1,25 @@
+Callability
+ -- |instrument callability
+
+ -f-
+ -v-
+ -e-
+  -- |type of the callability
+  Type
+   Call
+   Put
+ -f-
+  Callability
+   ->
+   ::const Price &
+   -- ^price
+   ::Type
+   -- ^type
+   ::const Date &
+   -- ^date
+  price
+   ->const Price &
+  type
+   ->Type
+ -v-
+ -e-

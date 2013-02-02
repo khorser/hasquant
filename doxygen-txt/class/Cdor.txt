@@ -1,0 +1,14 @@
+Cdor
+ -- |CDOR rate
+ -- |Canadian Dollar Offered Rate fixed by IDA.WarningThis is the rate fixed in Canada by IDA. Use CADLibor if you're interested in the London fixing by BBA.Possible enhancementscheck settlement days, end-of-month adjustment, and day-count convention.
+
+ -f-
+  Cdor
+   ->
+   ::const Period &
+   -- ^tenor
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

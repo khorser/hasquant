@@ -1,0 +1,33 @@
+BMASwapRateHelper
+ -- |Rate helper for bootstrapping over BMA swap rates.
+
+ -f-
+  setTermStructure
+   ->void
+   ::YieldTermStructure *
+   -- ^
+ -v-
+ -e-
+ -f-
+  BMASwapRateHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^liborFraction
+   ::const Period &
+   -- ^tenor
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const Period &
+   -- ^bmaPeriod
+   ::BusinessDayConvention
+   -- ^bmaConvention
+   ::const DayCounter &
+   -- ^bmaDayCount
+   ::const boost::shared_ptr< BMAIndex > &
+   -- ^bmaIndex
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^index
+ -v-
+ -e-

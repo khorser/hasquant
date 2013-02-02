@@ -1,0 +1,31 @@
+Fdm3DimSolver
+
+ -f-
+  Fdm3DimSolver
+   ->
+   ::const FdmSolverDesc &
+   -- ^solverDesc
+   ::const FdmSchemeDesc &
+   -- ^schemeDesc
+   ::const boost::shared_ptr< FdmLinearOpComposite > &
+   -- ^op
+  performCalculations
+   ->void
+  interpolateAt
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+   ::Rate
+   -- ^z
+  thetaAt
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+   ::Rate
+   -- ^z
+ -v-
+ -e-

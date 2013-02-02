@@ -1,0 +1,28 @@
+FractionalDividend
+ -- |Predetermined cash flow.
+ -- |This cash flow pays a fractional amount at a given date.
+
+ -f-
+  rate
+   ->Real
+  nominal
+   ->Real
+ -v-
+ -e-
+ -f-
+  FractionalDividend
+   ->
+   ::Real
+   -- ^rate
+   ::const Date &
+   -- ^date
+  FractionalDividend
+   ->
+   ::Real
+   -- ^rate
+   ::Real
+   -- ^nominal
+   ::const Date &
+   -- ^date
+ -v-
+ -e-

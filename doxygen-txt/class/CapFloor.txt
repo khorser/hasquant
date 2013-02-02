@@ -1,0 +1,79 @@
+CapFloor
+ -- |Base class for cap-like instruments.
+ -- |Tests the correctness of the returned value is tested by checking that the price of a cap (resp. floor) decreases (resp. increases) with the strike rate.the relationship between the values of caps, floors and the resulting collars is checked.the put-call parity between the values of caps, floors and swaps is checked.the correctness of the returned implied volatility is tested by using it for reproducing the target value.the correctness of the returned value is tested by checking it against a known good value.
+
+ -f-
+  type
+   ->Type
+  capRates
+   ->const std::vector< Rate > &
+  floorRates
+   ->const std::vector< Rate > &
+  floatingLeg
+   ->const Leg &
+  startDate
+   ->Date
+  maturityDate
+   ->Date
+  lastFloatingRateCoupon
+   ->boost::shared_ptr< FloatingRateCoupon >
+  -- Returns the n-th optionlet as a new CapFloor with only one cash flow.
+  optionlet
+   ->boost::shared_ptr< CapFloor >
+   ::const Size
+   -- ^n
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+  Type
+   Cap
+   Floor
+   Collar
+ -f-
+  CapFloor
+   ->
+   ::Type
+   -- ^type
+   ::const Leg &
+   -- ^floatingLeg
+   ::const std::vector< Rate > &
+   -- ^capRates
+   ::const std::vector< Rate > &
+   -- ^floorRates
+  CapFloor
+   ->
+   ::Type
+   -- ^type
+   ::const Leg &
+   -- ^floatingLeg
+   ::const std::vector< Rate > &
+   -- ^strikes
+  atmRate
+   ->Rate
+   ::const YieldTermStructure &
+   -- ^discountCurve
+  -- implied term volatility
+  impliedVolatility
+   ->Volatility
+   ::Real
+   -- ^price
+   ::const Handle< YieldTermStructure > &
+   -- ^disc
+   ::Volatility
+   -- ^guess
+   ::Real
+   =1.0e-4
+   -- ^accuracy
+   ::Natural
+   =100
+   -- ^maxEvaluations
+   ::Volatility
+   =1.0e-7
+   -- ^minVol
+   ::Volatility
+   =4.0
+   -- ^maxVol
+ -v-
+ -e-

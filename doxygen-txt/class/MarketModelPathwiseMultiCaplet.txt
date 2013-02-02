@@ -1,0 +1,19 @@
+MarketModelPathwiseMultiCaplet
+ -- |market-model pathwise caplet
+ -- |implementation of path wise methodology for caplets, essentially a test class since we have better ways of computing Greeks of capletsused in MarketModelTest::testPathwiseVegas and MarketModelTest::testPathwiseGreeks
+
+ -f-
+  MarketModelPathwiseMultiCaplet
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Real > &
+   -- ^accruals
+   ::const std::vector< Time > &
+   -- ^paymentTimes
+   ::const std::vector< Rate > &
+   -- ^strikes
+  ~MarketModelPathwiseMultiCaplet
+   ->
+ -v-
+ -e-

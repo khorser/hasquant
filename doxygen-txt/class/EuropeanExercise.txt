@@ -1,0 +1,11 @@
+EuropeanExercise
+ -- |European exercise.
+ -- |A European option can only be exercised at one (expiry) date.
+
+ -f-
+  EuropeanExercise
+   ->
+   ::const Date &
+   -- ^date
+ -v-
+ -e-

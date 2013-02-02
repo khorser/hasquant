@@ -1,0 +1,12 @@
+YoYInflationBachelierCapFloorEngine
+ -- |Unit Displaced Black-formula inflation cap/floor engine (standalone, i.e. no coupon pricer)
+
+ -f-
+  YoYInflationBachelierCapFloorEngine
+   ->
+   ::const boost::shared_ptr< YoYInflationIndex > &
+   -- ^
+   ::const Handle< YoYOptionletVolatilitySurface > &
+   -- ^
+ -v-
+ -e-

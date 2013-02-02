@@ -1,0 +1,30 @@
+LossDistHomogeneous
+ -- |Loss Distribution for Homogeneous Pool.
+ -- |Loss Distribution for Homogeneous Pool Loss distribution for equal volumes but varying probabilities of default. The method builds the exact loss distribution for a homogeneous pool of underlyings iteratively by computing the convolution of the given loss distribution with the "loss distribution" of an additional credit following Xiaofong Ma, "Numerical Methods for the Valuation of Synthetic Collateralized Debt Obligations", PhD Thesis, Graduate Department of Computer Science, University of Toronto, 2007 http://www.cs.toronto.edu/pub/reports/na/ma-07-phd.pdf (formula 2.1) avoiding numerical instability of the algorithm by John Hull and Alan White, "Valuation of a CDO and nth to default CDS without Monte Carlo simulation", Journal of Derivatives 12, 2, 2004
+
+ -f-
+  LossDistHomogeneous
+   ->
+   ::Size
+   -- ^nBuckets
+   ::Real
+   -- ^maximum
+   ::Real
+   =1e-6
+   -- ^epsilon
+  operator()
+   ->Distribution
+   ::Real
+   -- ^volume
+   ::const std::vector< Real > &
+   -- ^probabilities
+  size
+   ->Size
+  volume
+   ->Real
+  probability
+   ->std::vector< Real >
+  excessProbability
+   ->std::vector< Real >
+ -v-
+ -e-

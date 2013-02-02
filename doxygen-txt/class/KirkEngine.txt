@@ -1,0 +1,15 @@
+KirkEngine
+ -- |Pricing engine for spread option on two futures.
+ -- |This class implements formulae from "Correlation in the Energy Markets", E. Kirk Managing Energy Price Risk. London: Risk Publications and Enron, pp. 71-78Teststhe correctness of the returned value is tested by reproducing results available in literature.
+
+ -f-
+  KirkEngine
+   ->
+   ::const boost::shared_ptr< BlackProcess > &
+   -- ^process1
+   ::const boost::shared_ptr< BlackProcess > &
+   -- ^process2
+   ::Real
+   -- ^correlation
+ -v-
+ -e-

@@ -1,0 +1,37 @@
+YoYInflationCapFloor::arguments
+ -- |Arguments for YoY Inflation cap/floor calculation
+
+ -f-
+ -v-
+  type
+   ::YoYInflationCapFloor::Type
+  index
+   ::boost::shared_ptr< YoYInflationIndex >
+  observationLag
+   ::Period
+  startDates
+   ::std::vector< Date >
+  fixingDates
+   ::std::vector< Date >
+  payDates
+   ::std::vector< Date >
+  accrualTimes
+   ::std::vector< Time >
+  capRates
+   ::std::vector< Rate >
+  floorRates
+   ::std::vector< Rate >
+  gearings
+   ::std::vector< Real >
+  spreads
+   ::std::vector< Real >
+  nominals
+   ::std::vector< Real >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

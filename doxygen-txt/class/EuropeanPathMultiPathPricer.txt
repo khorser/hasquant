@@ -1,0 +1,19 @@
+EuropeanPathMultiPathPricer
+
+ -f-
+  EuropeanPathMultiPathPricer
+   ->
+   ::boost::shared_ptr< PathPayoff > &
+   -- ^payoff
+   ::const std::vector< Size > &
+   -- ^timePositions
+   ::const std::vector< Handle< YieldTermStructure > > &
+   -- ^forwardTermStructures
+   ::const Array &
+   -- ^discounts
+  operator()
+   ->Real
+   ::const MultiPath &
+   -- ^multiPath
+ -v-
+ -e-

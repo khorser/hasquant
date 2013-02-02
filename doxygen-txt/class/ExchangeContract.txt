@@ -1,0 +1,25 @@
+ExchangeContract
+
+ -f-
+  ExchangeContract
+   ->
+  ExchangeContract
+   ->
+   ::const std::string &
+   -- ^code
+   ::Date
+   -- ^expirationDate
+   ::Date
+   -- ^underlyingStartDate
+   ::Date
+   -- ^underlyingEndDate
+  code
+   ->const std::string &
+  expirationDate
+   ->const Date &
+  underlyingStartDate
+   ->const Date &
+  underlyingEndDate
+   ->const Date &
+ -v-
+ -e-

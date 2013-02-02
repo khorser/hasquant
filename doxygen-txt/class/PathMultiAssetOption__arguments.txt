@@ -1,0 +1,17 @@
+PathMultiAssetOption::arguments
+ -- |Arguments for multi-asset option calculation
+
+ -f-
+ -v-
+  payoff
+   ::boost::shared_ptr< PathPayoff >
+  fixingDates
+   ::std::vector< Date >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

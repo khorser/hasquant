@@ -1,0 +1,14 @@
+AnalyticHaganPricer
+ -- |CMS-coupon pricer.
+
+ -f-
+  AnalyticHaganPricer
+   ->
+   ::const Handle< SwaptionVolatilityStructure > &
+   -- ^swaptionVol
+   ::GFunctionFactory::YieldCurveModel
+   -- ^modelOfYieldCurve
+   ::const Handle< Quote > &
+   -- ^meanReversion
+ -v-
+ -e-

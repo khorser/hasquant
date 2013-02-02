@@ -1,0 +1,16 @@
+CompoundOption
+ -- |Compound option on a single asset.
+
+ -f-
+  CompoundOption
+   ->
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^motherPayoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^motherExercise
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^daughterPayoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^daughterExercise
+ -v-
+ -e-

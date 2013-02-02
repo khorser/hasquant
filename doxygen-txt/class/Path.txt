@@ -1,0 +1,75 @@
+Path
+ -- |single-factor random walk
+ -- |the path includes the initial asset value as its first point.
+
+ -f-
+  empty
+   ->bool
+  length
+   ->Size
+  -- asset value at the $ i $-th point
+  operator[]
+   ->Real
+   ::Size
+   -- ^i
+  at
+   ->Real
+   ::Size
+   -- ^i
+  operator[]
+   ->Real &
+   ::Size
+   -- ^i
+  at
+   ->Real &
+   ::Size
+   -- ^i
+  value
+   ->Real
+   ::Size
+   -- ^i
+  value
+   ->Real &
+   ::Size
+   -- ^i
+  -- time at the $ i $-th point
+  time
+   ->Time
+   ::Size
+   -- ^i
+  -- initial asset value
+  front
+   ->Real
+  front
+   ->Real &
+  -- final asset value
+  back
+   ->Real
+  back
+   ->Real &
+  -- time grid
+  timeGrid
+   ->const TimeGrid &
+ -v-
+ -e-
+ -f-
+  begin
+   ->iterator
+  end
+   ->iterator
+  rbegin
+   ->reverse_iterator
+  rend
+   ->reverse_iterator
+ -v-
+ -e-
+ -f-
+  Path
+   ->
+   ::const TimeGrid &
+   -- ^timeGrid
+   ::const Array &
+   =Array()
+   -- ^values
+ -v-
+ -e-

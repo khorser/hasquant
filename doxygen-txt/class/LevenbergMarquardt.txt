@@ -1,0 +1,32 @@
+LevenbergMarquardt
+ -- |Levenberg-Marquardt optimization method.
+ -- |This implementation is based on MINPACK (http://www.netlib.org/minpack, http://www.netlib.org/cephes/linalg.tgz)
+
+ -f-
+  LevenbergMarquardt
+   ->
+   ::Real
+   =1.0e-8
+   -- ^epsfcn
+   ::Real
+   =1.0e-8
+   -- ^xtol
+   ::Real
+   =1.0e-8
+   -- ^gtol
+  getInfo
+   ->Integer
+  fcn
+   ->void
+   ::int
+   -- ^m
+   ::int
+   -- ^n
+   ::double *
+   -- ^x
+   ::double *
+   -- ^fvec
+   ::int *
+   -- ^iflag
+ -v-
+ -e-

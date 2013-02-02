@@ -1,0 +1,29 @@
+RectangularDomain
+
+ -f-
+  RectangularDomain
+   ->
+   ::Real
+   -- ^x1
+   ::Real
+   -- ^y1
+   ::Real
+   -- ^x2
+   ::Real
+   -- ^y2
+  includes
+   ->bool
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  xLowerBound
+   ->Real
+  yLowerBound
+   ->Real
+  xUpperBound
+   ->Real
+  yUpperBound
+   ->Real
+ -v-
+ -e-

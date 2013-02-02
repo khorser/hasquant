@@ -1,0 +1,16 @@
+JarrowRudd
+ -- |Jarrow-Rudd (multiplicative) equal probabilities binomial tree.
+
+ -f-
+  JarrowRudd
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+   ::Real
+   -- ^strike
+ -v-
+ -e-

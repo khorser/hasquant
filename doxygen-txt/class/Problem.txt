@@ -1,0 +1,77 @@
+Problem
+ -- |Constrained optimization problem.
+ -- |WarningThe passed CostFunction and Constraint instances are stored by reference. The user of this class must make sure that they are not destroyed before the Problem instance.
+
+ -f-
+  -- default constructor
+  Problem
+   ->
+   ::CostFunction &
+   -- ^costFunction
+   ::Constraint &
+   -- ^constraint
+   ::const Array &
+   =Array()
+   -- ^initialValue
+  -- Warningit does not reset the current minumum to any initial value
+  reset
+   ->void
+  -- call cost function computation and increment evaluation counter
+  value
+   ->Real
+   ::const Array &
+   -- ^x
+  -- call cost values computation and increment evaluation counter
+  values
+   ->Disposable< Array >
+   ::const Array &
+   -- ^x
+  -- call cost function gradient computation and increment
+  gradient
+   ->void
+   ::Array &
+   -- ^grad_f
+   ::const Array &
+   -- ^x
+  -- call cost function computation and it gradient
+  valueAndGradient
+   ->Real
+   ::Array &
+   -- ^grad_f
+   ::const Array &
+   -- ^x
+  -- Constraint.
+  constraint
+   ->Constraint &
+  -- Cost function.
+  costFunction
+   ->CostFunction &
+  setCurrentValue
+   ->void
+   ::const Array &
+   -- ^currentValue
+  -- current value of the local minimum
+  currentValue
+   ->const Array &
+  setFunctionValue
+   ->void
+   ::Real
+   -- ^functionValue
+  -- value of cost function
+  functionValue
+   ->Real
+  setGradientNormValue
+   ->void
+   ::Real
+   -- ^squaredNorm
+  -- value of cost function gradient norm
+  gradientNormValue
+   ->Real
+  -- number of evaluation of cost function
+  functionEvaluation
+   ->Integer
+  -- number of evaluation of cost function gradient
+  gradientEvaluation
+   ->Integer
+ -v-
+ -e-

@@ -1,0 +1,21 @@
+SobolBrownianGeneratorFactory
+
+ -f-
+  SobolBrownianGeneratorFactory
+   ->
+   ::SobolBrownianGenerator::Ordering
+   -- ^ordering
+   ::unsigned long
+   =0
+   -- ^seed
+   ::SobolRsg::DirectionIntegers
+   =SobolRsg::Jaeckel
+   -- ^directionIntegers
+  create
+   ->boost::shared_ptr< BrownianGenerator >
+   ::Size
+   -- ^factors
+   ::Size
+   -- ^steps
+ -v-
+ -e-

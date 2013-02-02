@@ -1,0 +1,12 @@
+BFGS
+ -- |Broyden-Fletcher-Goldfarb-Shanno algorithm.
+ -- |See http://en.wikipedia.org/wiki/BFGS_method. Adapted from Numerical Recipes in C, 2nd edition. User has to provide line-search method and optimization end criteria.
+
+ -f-
+  BFGS
+   ->
+   ::const boost::shared_ptr< LineSearch > &
+   =boost::shared_ptr< LineSearch >()
+   -- ^lineSearch
+ -v-
+ -e-

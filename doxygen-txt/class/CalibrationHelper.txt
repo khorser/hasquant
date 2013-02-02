@@ -1,0 +1,57 @@
+CalibrationHelper
+ -- |liquid market instrument used during calibration
+
+ -f-
+ -v-
+ -e-
+  CalibrationErrorType
+   RelativePriceError
+   PriceError
+   ImpliedVolError
+ -f-
+  CalibrationHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^volatility
+   ::const Handle< YieldTermStructure > &
+   -- ^termStructure
+   ::CalibrationErrorType
+   =RelativePriceError
+   -- ^calibrationErrorType
+  -- returns the actual price of the instrument (from volatility)
+  marketValue
+   ->Real
+  -- returns the price of the instrument according to the model
+  modelValue
+   ->Real
+  -- returns the error resulting from the model valuation
+  calibrationError
+   ->Real
+  addTimesTo
+   ->void
+   ::std::list< Time > &
+   -- ^times
+  -- Black volatility implied by the model.
+  impliedVolatility
+   ->Volatility
+   ::Real
+   -- ^targetValue
+   ::Real
+   -- ^accuracy
+   ::Size
+   -- ^maxEvaluations
+   ::Volatility
+   -- ^minVol
+   ::Volatility
+   -- ^maxVol
+  -- Black price given a volatility.
+  blackPrice
+   ->Real
+   ::Volatility
+   -- ^volatility
+  setPricingEngine
+   ->void
+   ::const boost::shared_ptr< PricingEngine > &
+   -- ^engine
+ -v-
+ -e-

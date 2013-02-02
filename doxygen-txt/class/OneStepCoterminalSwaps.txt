@@ -1,0 +1,38 @@
+OneStepCoterminalSwaps
+
+ -f-
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  numberOfProducts
+   ->Size
+  maxNumberOfCashFlowsPerProductPerStep
+   ->Size
+  reset
+   ->void
+  nextTimeStep
+   ->bool
+   ::const CurveState &
+   -- ^currentState
+   ::std::vector< Size > &
+   -- ^numberCashFlowsThisStep
+   ::std::vector< std::vector< CashFlow > > &
+   -- ^cashFlowsGenerated
+  clone
+   ->std::auto_ptr< MarketModelMultiProduct >
+ -v-
+ -e-
+ -f-
+  OneStepCoterminalSwaps
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Real > &
+   -- ^fixedAccruals
+   ::const std::vector< Real > &
+   -- ^floatingAccruals
+   ::const std::vector< Time > &
+   -- ^paymentTimes
+   ::double
+   -- ^fixedRate
+ -v-
+ -e-

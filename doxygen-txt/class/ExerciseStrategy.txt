@@ -1,0 +1,23 @@
+ExerciseStrategy
+
+ -f-
+  ~ExerciseStrategy
+   ->
+  exerciseTimes
+   ->std::vector< Time >
+  relevantTimes
+   ->std::vector< Time >
+  reset
+   ->void
+  exercise
+   ->bool
+   ::const State &
+   -- ^currentState
+  nextStep
+   ->void
+   ::const State &
+   -- ^currentState
+  clone
+   ->std::auto_ptr< ExerciseStrategy< State > >
+ -v-
+ -e-

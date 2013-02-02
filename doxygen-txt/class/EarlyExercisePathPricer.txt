@@ -1,0 +1,26 @@
+EarlyExercisePathPricer
+ -- |base class for early exercise path pricers
+ -- |Returns the value of an option on a given path and given time.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  ~EarlyExercisePathPricer
+   ->
+  operator()
+   ->ValueType
+   ::const PathType &
+   -- ^path
+   ::TimeType
+   -- ^t
+  state
+   ->StateType
+   ::const PathType &
+   -- ^path
+   ::TimeType
+   -- ^t
+  basisSystem
+   ->std::vector< boost::function1< ValueType, StateType > >
+ -v-
+ -e-

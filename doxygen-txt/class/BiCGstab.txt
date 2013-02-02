@@ -1,0 +1,26 @@
+BiCGstab
+
+ -f-
+ -v-
+ -e-
+ -f-
+  BiCGstab
+   ->
+   ::const MatrixMult &
+   -- ^A
+   ::Size
+   -- ^maxIter
+   ::Real
+   -- ^relTol
+   ::const MatrixMult &
+   =MatrixMult()
+   -- ^preConditioner
+  solve
+   ->BiCGStabResult
+   ::const Array &
+   -- ^b
+   ::const Array &
+   =Array()
+   -- ^x0
+ -v-
+ -e-

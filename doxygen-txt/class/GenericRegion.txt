@@ -1,0 +1,8 @@
+GenericRegion
+ -- |Generic geographical/economic region.
+
+ -f-
+  GenericRegion
+   ->
+ -v-
+ -e-

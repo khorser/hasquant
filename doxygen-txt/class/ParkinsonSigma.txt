@@ -1,0 +1,9 @@
+ParkinsonSigma
+
+ -f-
+  ParkinsonSigma
+   ->
+   ::Real
+   -- ^y
+ -v-
+ -e-

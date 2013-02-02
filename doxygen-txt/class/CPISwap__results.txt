@@ -1,0 +1,15 @@
+CPISwap::results
+ -- |Results from swap calculation
+
+ -f-
+ -v-
+  fairRate
+   ::Rate
+  fairSpread
+   ::Spread
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

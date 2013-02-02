@@ -1,0 +1,51 @@
+LmCorrelationModel
+ -- |libor forward correlation model
+
+ -f-
+  LmCorrelationModel
+   ->
+   ::Size
+   -- ^size
+   ::Size
+   -- ^nArguments
+  ~LmCorrelationModel
+   ->
+  size
+   ->Size
+  factors
+   ->Size
+  params
+   ->std::vector< Parameter > &
+  setParams
+   ->void
+   ::const std::vector< Parameter > &
+   -- ^arguments
+  correlation
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  pseudoSqrt
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  correlation
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^j
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  isTimeIndependent
+   ->bool
+ -v-
+ -e-

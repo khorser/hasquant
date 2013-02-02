@@ -1,0 +1,66 @@
+TripleBandLinearOp
+
+ -f-
+  TripleBandLinearOp
+   ->
+   ::Size
+   -- ^direction
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+  TripleBandLinearOp
+   ->
+   ::const TripleBandLinearOp &
+   -- ^m
+  TripleBandLinearOp
+   ->
+   ::const Disposable< TripleBandLinearOp > &
+   -- ^m
+  operator=
+   ->TripleBandLinearOp &
+   ::const TripleBandLinearOp &
+   -- ^m
+  operator=
+   ->TripleBandLinearOp &
+   ::const Disposable< TripleBandLinearOp > &
+   -- ^m
+  apply
+   ->Disposable< Array >
+   ::const Array &
+   -- ^r
+  solve_splitting
+   ->Disposable< Array >
+   ::const Array &
+   -- ^r
+   ::Real
+   -- ^a
+   ::Real
+   =1.0
+   -- ^b
+  mult
+   ->Disposable< TripleBandLinearOp >
+   ::const Array &
+   -- ^u
+  add
+   ->Disposable< TripleBandLinearOp >
+   ::const TripleBandLinearOp &
+   -- ^m
+  add
+   ->Disposable< TripleBandLinearOp >
+   ::const Array &
+   -- ^u
+  axpyb
+   ->void
+   ::const Array &
+   -- ^a
+   ::const TripleBandLinearOp &
+   -- ^x
+   ::const TripleBandLinearOp &
+   -- ^y
+   ::const Array &
+   -- ^b
+  swap
+   ->void
+   ::TripleBandLinearOp &
+   -- ^m
+ -v-
+ -e-

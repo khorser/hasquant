@@ -1,0 +1,10 @@
+AnalyticWriterExtensibleOptionEngine
+ -- |Analytic engine for writer-extensible options.
+
+ -f-
+  AnalyticWriterExtensibleOptionEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+ -v-
+ -e-

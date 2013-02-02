@@ -1,0 +1,16 @@
+CapletVarianceCurve
+ -- |Deprecateduse the StrippedOptionletAdapter of a StrippedOptionlet instance
+
+ -f-
+  CapletVarianceCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Volatility > &
+   -- ^capletVolCurve
+   ::const DayCounter &
+   -- ^dayCounter
+ -v-
+ -e-

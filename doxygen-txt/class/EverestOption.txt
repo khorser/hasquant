@@ -1,0 +1,23 @@
+EverestOption
+
+ -f-
+  EverestOption
+   ->
+   ::Real
+   -- ^notional
+   ::Rate
+   -- ^guarantee
+   ::const boost::shared_ptr< Exercise > &
+   -- ^
+  yield
+   ->Rate
+  setupArguments
+   ->void
+   ::PricingEngine::arguments *
+   -- ^
+  fetchResults
+   ->void
+   ::const PricingEngine::results *
+   -- ^
+ -v-
+ -e-

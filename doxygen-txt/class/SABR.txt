@@ -1,0 +1,50 @@
+SABR
+ -- |SABR interpolation factory and traits
+
+ -f-
+ -v-
+  global
+   ::const bool
+ -e-
+ -f-
+  SABR
+   ->
+   ::Time
+   -- ^t
+   ::Real
+   -- ^forward
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^nu
+   ::Real
+   -- ^rho
+   ::bool
+   -- ^alphaIsFixed
+   ::bool
+   -- ^betaIsFixed
+   ::bool
+   -- ^nuIsFixed
+   ::bool
+   -- ^rhoIsFixed
+   ::bool
+   =false
+   -- ^vegaWeighted
+   ::const boost::shared_ptr< EndCriteria >
+   =boost::shared_ptr< EndCriteria >()
+   -- ^endCriteria
+   ::const boost::shared_ptr< OptimizationMethod >
+   =boost::shared_ptr< OptimizationMethod >()
+   -- ^optMethod
+  interpolate
+   ->Interpolation
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+ -v-
+ -e-

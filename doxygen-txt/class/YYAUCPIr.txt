@@ -1,0 +1,17 @@
+YYAUCPIr
+ -- |Fake year-on-year AUCPI (i.e. a ratio)
+
+ -f-
+  YYAUCPIr
+   ->
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^revised
+   ::bool
+   -- ^interpolated
+   ::const Handle< YoYInflationTermStructure > &
+   =Handle< YoYInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

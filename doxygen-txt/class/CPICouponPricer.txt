@@ -1,0 +1,18 @@
+CPICouponPricer
+ -- |base pricer for capped/floored CPI coupons N.B. vol-dependent parts are a TODO
+ -- |this pricer can already do swaplets but to get volatility-dependent coupons you need to implement the descendents.
+
+ -f-
+  CPICouponPricer
+   ->
+   ::const Handle< CPIVolatilitySurface > &
+   =Handle< CPIVolatilitySurface >()
+   -- ^capletVol
+  capletVolatility
+   ->Handle< CPIVolatilitySurface >
+  setCapletVolatility
+   ->void
+   ::const Handle< CPIVolatilitySurface > &
+   -- ^capletVol
+ -v-
+ -e-

@@ -1,0 +1,30 @@
+FdmBackwardSolver
+
+ -f-
+ -v-
+ -e-
+ -f-
+  FdmBackwardSolver
+   ->
+   ::const boost::shared_ptr< FdmLinearOpComposite > &
+   -- ^map
+   ::const FdmBoundaryConditionSet &
+   -- ^bcSet
+   ::const boost::shared_ptr< FdmStepConditionComposite >
+   -- ^condition
+   ::const FdmSchemeDesc &
+   -- ^schemeDesc
+  rollback
+   ->void
+   ::array_type &
+   -- ^a
+   ::Time
+   -- ^from
+   ::Time
+   -- ^to
+   ::Size
+   -- ^steps
+   ::Size
+   -- ^dampingSteps
+ -v-
+ -e-

@@ -1,0 +1,33 @@
+AdaptedPathPayoff::ValuationData
+
+ -f-
+  numberOfTimes
+   ->Size
+  numberOfAssets
+   ->Size
+  getAssetValue
+   ->Real
+   ::Size
+   -- ^time
+   ::Size
+   -- ^asset
+  getYieldTermStructure
+   ->const Handle< YieldTermStructure > &
+   ::Size
+   -- ^time
+  setPayoffValue
+   ->void
+   ::Size
+   -- ^time
+   ::Real
+   -- ^value
+  setExerciseData
+   ->void
+   ::Size
+   -- ^time
+   ::Real
+   -- ^exercise
+   ::Array &
+   -- ^state
+ -v-
+ -e-

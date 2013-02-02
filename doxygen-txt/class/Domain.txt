@@ -1,0 +1,20 @@
+Domain
+ -- |domain abstract lcass
+
+ -f-
+  includes
+   ->bool
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  operator()
+   ->bool
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  ~Domain
+   ->
+ -v-
+ -e-

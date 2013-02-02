@@ -1,0 +1,45 @@
+GeneralLinearLeastSquares
+ -- |general linear least squares regression
+ -- |References: "Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery,Teststhe correctness of the returned values is tested by checking their properties.
+
+ -f-
+  GeneralLinearLeastSquares
+   ->
+   ::const xContainer &
+   -- ^x
+   ::const yContainer &
+   -- ^y
+   ::const vContainer &
+   -- ^v
+  GeneralLinearLeastSquares
+   ->
+   ::xIterator
+   -- ^xBegin
+   ::xIterator
+   -- ^xEnd
+   ::yIterator
+   -- ^yBegin
+   ::yIterator
+   -- ^yEnd
+   ::vIterator
+   -- ^vBegin
+   ::vIterator
+   -- ^vEnd
+  coefficients
+   ->const Array &
+  residuals
+   ->const Array &
+  -- standard parameter errors as given by Excel, R etc.
+  standardErrors
+   ->const Array &
+  -- modeling uncertainty as definied in Numerical Recipes
+  error
+   ->const Array &
+  a
+   ->const Array &
+  size
+   ->Size
+  dim
+   ->Size
+ -v-
+ -e-

@@ -1,0 +1,19 @@
+ExtendedCoxIngersollRoss::FittingParameter
+ -- |Analytical term-structure fitting parameter $ \varphi(t) $.
+ -- |$ \varphi(t) $ is analytically defined by \[ \varphi(t) = f(t) - \frac{2k\theta(e^{th}-1)}{2h+(k+h)(e^{th}-1)} - \frac{4 x_0 h^2 e^{th}}{(2h+(k+h)(e^{th}-1))^1}, \] where $ f(t) $ is the instantaneous forward rate at $ t $ and $ h = \sqrt{k^2 + 2\sigma^2} $.
+
+ -f-
+  FittingParameter
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^termStructure
+   ::Real
+   -- ^theta
+   ::Real
+   -- ^k
+   ::Real
+   -- ^sigma
+   ::Real
+   -- ^x0
+ -v-
+ -e-

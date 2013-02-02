@@ -1,0 +1,23 @@
+detail::EverywhereConstantHelper
+
+ -f-
+  EverywhereConstantHelper
+   ->
+   ::Real
+   -- ^value
+   ::Real
+   -- ^prevPrimitive
+   ::Real
+   -- ^xPrev
+  value
+   ->Real
+   ::Real
+   -- ^
+  primitive
+   ->Real
+   ::Real
+   -- ^x
+  fNext
+   ->Real
+ -v-
+ -e-

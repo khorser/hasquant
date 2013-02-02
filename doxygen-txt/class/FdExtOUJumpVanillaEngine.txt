@@ -1,0 +1,25 @@
+FdExtOUJumpVanillaEngine
+
+ -f-
+  FdExtOUJumpVanillaEngine
+   ->
+   ::const boost::shared_ptr< ExtOUWithJumpsProcess > &
+   -- ^p
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^rTS
+   ::Size
+   =50
+   -- ^tGrid
+   ::Size
+   =200
+   -- ^xGrid
+   ::Size
+   =50
+   -- ^yGrid
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+  calculate
+   ->void
+ -v-
+ -e-

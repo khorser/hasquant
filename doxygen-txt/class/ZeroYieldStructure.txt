@@ -1,0 +1,49 @@
+ZeroYieldStructure
+ -- |Zero-yield term structure.
+ -- |This abstract class acts as an adapter to YieldTermStructure allowing the programmer to implement only the zeroYieldImpl(Time) method in derived classes.Discount and forward are calculated from zero yields.Zero rates are assumed to be annual continuous compounding.
+
+ -f-
+  ZeroYieldStructure
+   ->
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  ZeroYieldStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^calendar
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  ZeroYieldStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+ -v-
+ -e-

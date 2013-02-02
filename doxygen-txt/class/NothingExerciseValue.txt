@@ -1,0 +1,30 @@
+NothingExerciseValue
+
+ -f-
+  -- Possible enhancementsuse Payoff
+  NothingExerciseValue
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+  numberOfExercises
+   ->Size
+  evolution
+   ->const EvolutionDescription &
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  nextStep
+   ->void
+   ::const CurveState &
+   -- ^
+  reset
+   ->void
+  isExerciseTime
+   ->std::valarray< bool >
+  value
+   ->MarketModelMultiProduct::CashFlow
+   ::const CurveState &
+   -- ^
+  clone
+   ->std::auto_ptr< MarketModelExerciseValue >
+ -v-
+ -e-

@@ -1,0 +1,11 @@
+AnalyticSimpleChooserEngine
+ -- |Pricing engine for European Simple Chooser option.
+ -- |This class implements a Simple Chooser Option option, with European exercise.
+
+ -f-
+  AnalyticSimpleChooserEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+ -v-
+ -e-

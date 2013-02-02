@@ -1,0 +1,20 @@
+BlackScholesMertonProcess
+ -- |Merton (1973) extension to the Black-Scholes stochastic process.
+ -- |This class describes the stochastic process for a stock or stock index paying a continuous dividend yield given by \[ dS(t, S) = (r(t) - q(t) - \frac{\sigma(t, S)^2}{2}) dt + \sigma dW_t. \]
+
+ -f-
+  BlackScholesMertonProcess
+   ->
+   ::const Handle< Quote > &
+   -- ^x0
+   ::const Handle< YieldTermStructure > &
+   -- ^dividendTS
+   ::const Handle< YieldTermStructure > &
+   -- ^riskFreeTS
+   ::const Handle< BlackVolTermStructure > &
+   -- ^blackVolTS
+   ::const boost::shared_ptr< discretization > &
+   =boost::shared_ptr< discretization >(new EulerDiscretization)
+   -- ^d
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+Null< IntervalPrice >
+
+ -f-
+  Null
+   ->
+  operator IntervalPrice
+   ->
+ -v-
+ -e-

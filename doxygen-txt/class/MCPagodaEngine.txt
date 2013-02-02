@@ -1,0 +1,25 @@
+MCPagodaEngine
+ -- |Pricing engine for pagoda options using Monte Carlo simulation.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCPagodaEngine
+   ->
+   ::const boost::shared_ptr< StochasticProcessArray > &
+   -- ^
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+ -v-
+ -e-

@@ -1,0 +1,17 @@
+GarmanKlassOpenClose
+
+ -f-
+  GarmanKlassOpenClose
+   ->
+   ::Real
+   -- ^y
+   ::Real
+   -- ^marketOpenFraction
+   ::Real
+   -- ^a
+  calculate
+   ->TimeSeries< Volatility >
+   ::const TimeSeries< IntervalPrice > &
+   -- ^quoteSeries
+ -v-
+ -e-

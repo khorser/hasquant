@@ -1,0 +1,25 @@
+FdmBermudanStepCondition
+
+ -f-
+  FdmBermudanStepCondition
+   ->
+   ::const std::vector< Date > &
+   -- ^exerciseDates
+   ::const Date &
+   -- ^referenceDate
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const boost::shared_ptr< FdmInnerValueCalculator > &
+   -- ^calculator
+  applyTo
+   ->void
+   ::Array &
+   -- ^a
+   ::Time
+   -- ^t
+  exerciseTimes
+   ->const std::vector< Time > &
+ -v-
+ -e-

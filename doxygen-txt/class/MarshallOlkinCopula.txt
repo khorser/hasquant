@@ -1,0 +1,18 @@
+MarshallOlkinCopula
+ -- |Marshall-Olkin copula.
+
+ -f-
+  MarshallOlkinCopula
+   ->
+   ::Real
+   -- ^a1
+   ::Real
+   -- ^a2
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

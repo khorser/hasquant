@@ -1,0 +1,41 @@
+TimeBasket
+ -- |Distribution over a number of dates.
+
+ -f-
+  -- membership
+  hasDate
+   ->bool
+   ::const Date &
+   -- ^
+ -v-
+ -e-
+ -f-
+  operator+=
+   ->TimeBasket &
+   ::const TimeBasket &
+   -- ^other
+  operator-=
+   ->TimeBasket &
+   ::const TimeBasket &
+   -- ^other
+ -v-
+ -e-
+ -f-
+  -- redistribute the entries over the given dates
+  rebin
+   ->TimeBasket
+   ::const std::vector< Date > &
+   -- ^buckets
+ -v-
+ -e-
+ -f-
+  TimeBasket
+   ->
+  TimeBasket
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Real > &
+   -- ^values
+ -v-
+ -e-

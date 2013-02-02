@@ -1,0 +1,29 @@
+NumericHaganPricer::ConundrumIntegrand
+
+ -f-
+  ConundrumIntegrand
+   ->
+   ::const boost::shared_ptr< VanillaOptionPricer > &
+   -- ^o
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^rateCurve
+   ::const boost::shared_ptr< GFunction > &
+   -- ^gFunction
+   ::Date
+   -- ^fixingDate
+   ::Date
+   -- ^paymentDate
+   ::Real
+   -- ^annuity
+   ::Real
+   -- ^forwardValue
+   ::Real
+   -- ^strike
+   ::Option::Type
+   -- ^optionType
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

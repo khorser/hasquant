@@ -1,0 +1,14 @@
+detail::power_of_two_holder
+
+ -f-
+ -v-
+  n
+   ::T
+ -e-
+ -f-
+  power_of_two_holder
+   ->
+   ::T
+   -- ^n
+ -v-
+ -e-

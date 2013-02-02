@@ -1,0 +1,46 @@
+FdmQuantoHelper
+
+ -f-
+ -v-
+  rTS_
+   ::const boost::shared_ptr< YieldTermStructure >
+  fTS_
+   ::const boost::shared_ptr< YieldTermStructure >
+  fxVolTS_
+   ::const boost::shared_ptr< BlackVolTermStructure >
+  equityFxCorrelation_
+   ::const Real
+  exchRateATMlevel_
+   ::const Real
+ -e-
+ -f-
+  FdmQuantoHelper
+   ->
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^rTS
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^fTS
+   ::const boost::shared_ptr< BlackVolTermStructure > &
+   -- ^fxVolTS
+   ::Real
+   -- ^equityFxCorrelation
+   ::Real
+   -- ^exchRateATMlevel
+  quantoAdjustment
+   ->Rate
+   ::Volatility
+   -- ^equityVol
+   ::Time
+   -- ^t1
+   ::Time
+   -- ^t2
+  quantoAdjustment
+   ->Disposable< Array >
+   ::const Array &
+   -- ^equityVol
+   ::Time
+   -- ^t1
+   ::Time
+   -- ^t2
+ -v-
+ -e-

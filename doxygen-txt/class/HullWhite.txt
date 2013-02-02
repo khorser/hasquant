@@ -1,0 +1,33 @@
+HullWhite
+ -- |Single-factor Hull-White (extended Vasicek) model class.
+ -- |This class implements the standard single-factor Hull-White model defined by \[ dr_t = (\theta(t) - \alpha r_t)dt + \sigma dW_t \] where $ \alpha $ and $ \sigma $ are constants.Testscalibration results are tested against cached valuesBugWhen the term structure is relinked, the r0 parameter of the underlying Vasicek model is not updated.
+
+ -f-
+  HullWhite
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^termStructure
+   ::Real
+   =0.1
+   -- ^a
+   ::Real
+   =0.01
+   -- ^sigma
+ -v-
+ -e-
+ -f-
+  -- Futures convexity bias (i.e., the difference between futures implied rate and forward rate) calculated as in G. Kirikos, D. Novak, "Convexity Conundrums", Risk Magazine, March 1997.t and T should be expressed in yearfraction using deposit day counter, F_quoted is futures' market price.
+  convexityBias
+   ->Rate
+   ::Real
+   -- ^futurePrice
+   ::Time
+   -- ^t
+   ::Time
+   -- ^T
+   ::Real
+   -- ^sigma
+   ::Real
+   -- ^a
+ -v-
+ -e-

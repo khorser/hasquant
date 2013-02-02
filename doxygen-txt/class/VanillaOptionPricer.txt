@@ -1,0 +1,15 @@
+VanillaOptionPricer
+
+ -f-
+  ~VanillaOptionPricer
+   ->
+  operator()
+   ->Real
+   ::Real
+   -- ^strike
+   ::Option::Type
+   -- ^optionType
+   ::Real
+   -- ^deflator
+ -v-
+ -e-

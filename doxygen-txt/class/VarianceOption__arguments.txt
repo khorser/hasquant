@@ -1,0 +1,21 @@
+VarianceOption::arguments
+ -- |Arguments for forward fair-variance calculation
+
+ -f-
+ -v-
+  payoff
+   ::boost::shared_ptr< Payoff >
+  notional
+   ::Real
+  startDate
+   ::Date
+  maturityDate
+   ::Date
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

@@ -1,0 +1,17 @@
+NormalFwdRatePc
+ -- |Predictor-Corrector.
+
+ -f-
+  NormalFwdRatePc
+   ->
+   ::const boost::shared_ptr< MarketModel > &
+   -- ^
+   ::const BrownianGeneratorFactory &
+   -- ^
+   ::const std::vector< Size > &
+   -- ^numeraires
+   ::Size
+   =0
+   -- ^initialStep
+ -v-
+ -e-

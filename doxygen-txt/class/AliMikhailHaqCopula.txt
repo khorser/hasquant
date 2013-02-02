@@ -1,0 +1,16 @@
+AliMikhailHaqCopula
+ -- |Ali-Mikhail-Haq copula.
+
+ -f-
+  AliMikhailHaqCopula
+   ->
+   ::Real
+   -- ^theta
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

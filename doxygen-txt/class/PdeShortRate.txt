@@ -1,0 +1,30 @@
+PdeShortRate
+
+ -f-
+ -v-
+ -e-
+ -f-
+  PdeShortRate
+   ->
+   ::const argument_type &
+   -- ^d
+  diffusion
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  drift
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  discount
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+ -v-
+ -e-

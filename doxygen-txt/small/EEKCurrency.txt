@@ -1,0 +1,9 @@
+EEKCurrency
+ -- |Estonian kroon.
+ -- |The ISO three-letter code is EEK; the numeric code is 233. It is divided in 100 senti.
+
+ -f-
+  EEKCurrency
+   ->
+ -v-
+ -e-

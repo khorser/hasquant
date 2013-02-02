@@ -1,0 +1,14 @@
+AnalyticCapFloorEngine
+ -- |Analytic engine for cap/floor.
+
+ -f-
+  -- the term structure is only needed when the short-rate model cannot provide one itself.
+  AnalyticCapFloorEngine
+   ->
+   ::const boost::shared_ptr< AffineModel > &
+   -- ^model
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^termStructure
+ -v-
+ -e-

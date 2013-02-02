@@ -1,0 +1,55 @@
+LineSearch
+ -- |Base class for line search.
+
+ -f-
+  -- Default constructor.
+  LineSearch
+   ->
+   ::Real
+   =0.0
+   -- ^
+  -- Destructor.
+  ~LineSearch
+   ->
+  -- return last x value
+  lastX
+   ->const Array &
+  -- return last cost function value
+  lastFunctionValue
+   ->Real
+  -- return last gradient
+  lastGradient
+   ->const Array &
+  -- return square norm of last gradient
+  lastGradientNorm2
+   ->Real
+  succeed
+   ->bool
+  -- Perform line search.
+  operator()
+   ->Real
+   ::Problem &
+   -- ^P
+   ::EndCriteria::Type &
+   -- ^ecType
+   ::const EndCriteria &
+   -- ^
+   ::const Real
+   -- ^t_ini
+  update
+   ->Real
+   ::Array &
+   -- ^params
+   ::const Array &
+   -- ^direction
+   ::Real
+   -- ^beta
+   ::const Constraint &
+   -- ^constraint
+  -- current value of the search direction
+  searchDirection
+   ->const Array &
+  searchDirection
+   ->Array &
+ -v-
+ -e-

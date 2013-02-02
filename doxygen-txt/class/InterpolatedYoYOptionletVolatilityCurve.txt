@@ -1,0 +1,52 @@
+InterpolatedYoYOptionletVolatilityCurve
+ -- |Interpolated flat smile surface.
+ -- |Interpolated in T direction and constant in K direction.
+
+ -f-
+  -- calculate the reference date based on the global evaluation date
+  -- The dates are those of the volatility ... there is no lag on the dates but they are relative to a start date earlier than the reference date as always for inflation.
+  InterpolatedYoYOptionletVolatilityCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const DayCounter &
+   -- ^dc
+   ::const Period &
+   -- ^lag
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^indexIsInterpolated
+   ::const std::vector< Date > &
+   -- ^d
+   ::const std::vector< Volatility > &
+   -- ^v
+   ::Rate
+   -- ^minStrike
+   ::Rate
+   -- ^maxStrike
+   ::const Interpolator1D &
+   =Interpolator1D()
+   -- ^interpolator
+ -v-
+ -e-
+ -f-
+  times
+   ->const std::vector< Time > &
+  dates
+   ->const std::vector< Date > &
+  data
+   ->const std::vector< Real > &
+  nodes
+   ->std::vector< std::pair< Date, Real > >
+ -v-
+ -e-
+ -f-
+  ~InterpolatedYoYOptionletVolatilityCurve
+   ->
+ -v-
+ -e-

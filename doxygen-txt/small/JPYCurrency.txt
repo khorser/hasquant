@@ -1,0 +1,9 @@
+JPYCurrency
+ -- |Japanese yen.
+ -- |The ISO three-letter code is JPY; the numeric code is 392. It is divided into 100 sen.
+
+ -f-
+  JPYCurrency
+   ->
+ -v-
+ -e-

@@ -1,0 +1,31 @@
+RatePseudoRootJacobianNumerical
+
+ -f-
+  RatePseudoRootJacobianNumerical
+   ->
+   ::const Matrix &
+   -- ^pseudoRoot
+   ::Size
+   -- ^aliveIndex
+   ::Size
+   -- ^numeraire
+   ::const std::vector< Time > &
+   -- ^taus
+   ::const std::vector< Matrix > &
+   -- ^pseudoBumps
+   ::const std::vector< Spread > &
+   -- ^displacements
+  getBumps
+   ->void
+   ::const std::vector< Rate > &
+   -- ^oldRates
+   ::const std::vector< Real > &
+   -- ^oneStepDFs
+   ::const std::vector< Rate > &
+   -- ^newRates
+   ::const std::vector< Real > &
+   -- ^gaussians
+   ::Matrix &
+   -- ^B
+ -v-
+ -e-

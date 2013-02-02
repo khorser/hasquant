@@ -1,0 +1,47 @@
+Currency::Data
+
+ -f-
+ -v-
+  name
+   ::std::string
+  code
+   ::std::string
+  numeric
+   ::Integer
+  symbol
+   ::std::string
+  fractionSymbol
+   ::std::string
+  fractionsPerUnit
+   ::Integer
+  rounding
+   ::Rounding
+  triangulated
+   ::Currency
+  formatString
+   ::std::string
+ -e-
+ -f-
+  Data
+   ->
+   ::const std::string &
+   -- ^name
+   ::const std::string &
+   -- ^code
+   ::Integer
+   -- ^numericCode
+   ::const std::string &
+   -- ^symbol
+   ::const std::string &
+   -- ^fractionSymbol
+   ::Integer
+   -- ^fractionsPerUnit
+   ::const Rounding &
+   -- ^rounding
+   ::const std::string &
+   -- ^formatString
+   ::const Currency &
+   =Currency()
+   -- ^triangulationCurrency
+ -v-
+ -e-

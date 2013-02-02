@@ -1,0 +1,16 @@
+CashFlow
+ -- |Base class for cash flows.
+ -- |This class is purely virtual and acts as a base class for the actual cash flow implementations.
+
+ -f-
+  -- returns the amount of the cash flow
+  -- The amount is not discounted, i.e., it is the actual amount paid at the cash flow date.
+  amount
+   ->Real
+ -v-
+ -e-
+ -f-
+  ~CashFlow
+   ->
+ -v-
+ -e-

@@ -1,0 +1,13 @@
+DMinus
+ -- |$ D_{-} $ matricial representation
+ -- |The differential operator $ D_{-} $ discretizes the first derivative with the first-order formula \[ \frac{\partial u_{i}}{\partial x} \approx \frac{u_{i}-u_{i-1}}{h} = D_{-} u_{i} \]
+
+ -f-
+  DMinus
+   ->
+   ::Size
+   -- ^gridPoints
+   ::Real
+   -- ^h
+ -v-
+ -e-

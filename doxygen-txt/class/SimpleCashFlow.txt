@@ -1,0 +1,13 @@
+SimpleCashFlow
+ -- |Predetermined cash flow.
+ -- |This cash flow pays a predetermined amount at a given date.
+
+ -f-
+  SimpleCashFlow
+   ->
+   ::Real
+   -- ^amount
+   ::const Date &
+   -- ^date
+ -v-
+ -e-

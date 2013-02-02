@@ -1,0 +1,27 @@
+BarrierPathPricer
+
+ -f-
+  BarrierPathPricer
+   ->
+   ::Barrier::Type
+   -- ^barrierType
+   ::Real
+   -- ^barrier
+   ::Real
+   -- ^rebate
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^strike
+   ::const std::vector< DiscountFactor > &
+   -- ^discounts
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^diffProcess
+   ::const PseudoRandom::ursg_type &
+   -- ^sequenceGen
+  operator()
+   ->Real
+   ::const Path &
+   -- ^path
+ -v-
+ -e-

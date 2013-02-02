@@ -1,0 +1,21 @@
+CoterminalSwapCurveState
+ -- |Curve state for coterminal-swap market models
+ -- |This class stores the state of the yield curve associated to the fixed calendar times within the simulation. This is the workhorse discounting object associated to the rate times of the simulation. It's important to pass the rates via an object like this to the product rather than directly to make it easier to switch to other engines such as a coterminal swap rate engine. Many products will not need expired rates and others will only require the first rate.
+
+ -f-
+  setOnCoterminalSwapRates
+   ->void
+   ::const std::vector< Rate > &
+   -- ^swapRates
+   ::Size
+   =0
+   -- ^firstValidIndex
+ -v-
+ -e-
+ -f-
+  CoterminalSwapCurveState
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+ -v-
+ -e-

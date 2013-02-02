@@ -1,0 +1,30 @@
+MCEuropeanBasketEngine
+ -- |Pricing engine for European basket options using Monte Carlo simulation.
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in literature.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCEuropeanBasketEngine
+   ->
+   ::const boost::shared_ptr< StochasticProcessArray > &
+   -- ^
+   ::Size
+   -- ^timeSteps
+   ::Size
+   -- ^timeStepsPerYear
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+ -v-
+ -e-

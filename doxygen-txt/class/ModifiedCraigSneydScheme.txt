@@ -1,0 +1,31 @@
+ModifiedCraigSneydScheme
+ -- |modified Craig-Sneyd scheme
+ -- |References: K. J. in ’t Hout and S. Foulon, ADI finite difference schemes for option pricing in the Heston model with correlation, http://arxiv.org/pdf/0811.3427
+
+ -f-
+ -v-
+ -e-
+ -f-
+  ModifiedCraigSneydScheme
+   ->
+   ::Real
+   -- ^theta
+   ::Real
+   -- ^mu
+   ::const boost::shared_ptr< FdmLinearOpComposite > &
+   -- ^map
+   ::const std::vector< boost::shared_ptr< FdmDirichletBoundary > > &
+   =std::vector< boost::shared_ptr< FdmDirichletBoundary > >()
+   -- ^bc_set
+  step
+   ->void
+   ::array_type &
+   -- ^a
+   ::Time
+   -- ^t
+  setStep
+   ->void
+   ::Time
+   -- ^dt
+ -v-
+ -e-

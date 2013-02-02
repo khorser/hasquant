@@ -1,0 +1,43 @@
+PathGenerator
+ -- |Generates random paths using a sequence generator.
+ -- |Generates random paths with drift(S,t) and variance(S,t) using a gaussian sequence generatorTeststhe generated paths are checked against cached results
+
+ -f-
+  next
+   ->const sample_type &
+  antithetic
+   ->const sample_type &
+  size
+   ->Size
+  timeGrid
+   ->const TimeGrid &
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+ -f-
+  PathGenerator
+   ->
+   ::const boost::shared_ptr< StochasticProcess > &
+   -- ^
+   ::Time
+   -- ^length
+   ::Size
+   -- ^timeSteps
+   ::const GSG &
+   -- ^generator
+   ::bool
+   -- ^brownianBridge
+  PathGenerator
+   ->
+   ::const boost::shared_ptr< StochasticProcess > &
+   -- ^
+   ::const TimeGrid &
+   -- ^timeGrid
+   ::const GSG &
+   -- ^generator
+   ::bool
+   -- ^brownianBridge
+ -v-
+ -e-

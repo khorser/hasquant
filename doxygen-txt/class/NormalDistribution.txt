@@ -1,0 +1,23 @@
+NormalDistribution
+ -- |Normal distribution function.
+ -- |Given x, it returns its probability in a Gaussian normal distribution. It provides the first derivative too.Teststhe correctness of the returned value is tested by checking it against numerical calculations. Cross-checks are also performed against the CumulativeNormalDistribution and InverseCumulativeNormal classes.
+
+ -f-
+  NormalDistribution
+   ->
+   ::Real
+   =0.0
+   -- ^average
+   ::Real
+   =1.0
+   -- ^sigma
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+  derivative
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

@@ -1,0 +1,46 @@
+FdmDirichletBoundary
+
+ -f-
+ -v-
+ -e-
+ -f-
+  FdmDirichletBoundary
+   ->
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^layout
+   ::Real
+   -- ^valueOnBoundary
+   ::Size
+   -- ^direction
+   ::Side
+   -- ^side
+  applyBeforeApplying
+   ->void
+   ::operator_type &
+   -- ^
+  applyBeforeSolving
+   ->void
+   ::operator_type &
+   -- ^
+   ::array_type &
+   -- ^
+  applyAfterApplying
+   ->void
+   ::array_type &
+   -- ^
+  applyAfterSolving
+   ->void
+   ::array_type &
+   -- ^
+  setTime
+   ->void
+   ::Time
+   -- ^
+  applyAfterApplying
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^value
+ -v-
+ -e-

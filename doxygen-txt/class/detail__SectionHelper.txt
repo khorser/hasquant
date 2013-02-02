@@ -1,0 +1,17 @@
+detail::SectionHelper
+
+ -f-
+  ~SectionHelper
+   ->
+  value
+   ->Real
+   ::Real
+   -- ^x
+  primitive
+   ->Real
+   ::Real
+   -- ^x
+  fNext
+   ->Real
+ -v-
+ -e-

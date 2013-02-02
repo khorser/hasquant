@@ -1,0 +1,14 @@
+detail::long_weekday_holder
+
+ -f-
+ -v-
+  d
+   ::Weekday
+ -e-
+ -f-
+  long_weekday_holder
+   ->
+   ::Weekday
+   -- ^d
+ -v-
+ -e-

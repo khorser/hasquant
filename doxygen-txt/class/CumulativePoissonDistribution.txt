@@ -1,0 +1,15 @@
+CumulativePoissonDistribution
+ -- |Cumulative Poisson distribution function.
+ -- |This function provides an approximation of the integral of the Poisson distribution.For this implementation see "Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery, chapter 6Teststhe correctness of the returned value is tested by checking it against known good results.
+
+ -f-
+  CumulativePoissonDistribution
+   ->
+   ::Real
+   -- ^mu
+  operator()
+   ->Real
+   ::BigNatural
+   -- ^k
+ -v-
+ -e-

@@ -1,0 +1,28 @@
+QuantoForwardVanillaOption
+ -- |Quanto version of a forward vanilla option.
+
+ -f-
+  qvega
+   ->Real
+  qrho
+   ->Real
+  qlambda
+   ->Real
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+ -f-
+  QuantoForwardVanillaOption
+   ->
+   ::Real
+   -- ^moneyness
+   ::const Date &
+   -- ^resetDate
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^
+   ::const boost::shared_ptr< Exercise > &
+   -- ^
+ -v-
+ -e-

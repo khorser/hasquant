@@ -1,0 +1,80 @@
+CmsLeg
+ -- |helper class building a sequence of capped/floored cms-rate coupons
+
+ -f-
+  CmsLeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^swapIndex
+  withNotionals
+   ->CmsLeg &
+   ::Real
+   -- ^notional
+  withNotionals
+   ->CmsLeg &
+   ::const std::vector< Real > &
+   -- ^notionals
+  withPaymentDayCounter
+   ->CmsLeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentAdjustment
+   ->CmsLeg &
+   ::BusinessDayConvention
+   -- ^
+  withFixingDays
+   ->CmsLeg &
+   ::Natural
+   -- ^fixingDays
+  withFixingDays
+   ->CmsLeg &
+   ::const std::vector< Natural > &
+   -- ^fixingDays
+  withGearings
+   ->CmsLeg &
+   ::Real
+   -- ^gearing
+  withGearings
+   ->CmsLeg &
+   ::const std::vector< Real > &
+   -- ^gearings
+  withSpreads
+   ->CmsLeg &
+   ::Spread
+   -- ^spread
+  withSpreads
+   ->CmsLeg &
+   ::const std::vector< Spread > &
+   -- ^spreads
+  withCaps
+   ->CmsLeg &
+   ::Rate
+   -- ^cap
+  withCaps
+   ->CmsLeg &
+   ::const std::vector< Rate > &
+   -- ^caps
+  withFloors
+   ->CmsLeg &
+   ::Rate
+   -- ^floor
+  withFloors
+   ->CmsLeg &
+   ::const std::vector< Rate > &
+   -- ^floors
+  inArrears
+   ->CmsLeg &
+   ::bool
+   =true
+   -- ^flag
+  withZeroPayments
+   ->CmsLeg &
+   ::bool
+   =true
+   -- ^flag
+  operator Leg
+   ->
+ -v-
+ -e-

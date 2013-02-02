@@ -1,0 +1,61 @@
+InterpolatedDefaultDensityCurve
+ -- |DefaultProbabilityTermStructure based on interpolation of default densities.
+
+ -f-
+  times
+   ->const std::vector< Time > &
+  dates
+   ->const std::vector< Date > &
+  data
+   ->const std::vector< Real > &
+  defaultDensities
+   ->const std::vector< Real > &
+  nodes
+   ->std::vector< std::pair< Date, Real > >
+ -v-
+ -e-
+ -f-
+  InterpolatedDefaultDensityCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Real > &
+   -- ^densities
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Calendar &
+   =Calendar()
+   -- ^calendar
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+   ::const Interpolator &
+   =Interpolator()
+   -- ^interpolator
+  InterpolatedDefaultDensityCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Real > &
+   -- ^densities
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Calendar &
+   -- ^calendar
+   ::const Interpolator &
+   -- ^interpolator
+  InterpolatedDefaultDensityCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Real > &
+   -- ^densities
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Interpolator &
+   -- ^interpolator
+ -v-
+ -e-

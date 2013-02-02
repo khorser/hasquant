@@ -1,0 +1,39 @@
+FdSimpleKlugeExtOUVPPEngine
+
+ -f-
+ -v-
+ -e-
+ -f-
+  FdSimpleKlugeExtOUVPPEngine
+   ->
+   ::const boost::shared_ptr< KlugeExtOUProcess > &
+   -- ^process
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^rTS
+   ::Real
+   -- ^carbonPrice
+   ::Size
+   =1
+   -- ^tGrid
+   ::Size
+   =50
+   -- ^xGrid
+   ::Size
+   =10
+   -- ^yGrid
+   ::Size
+   =20
+   -- ^gGrid
+   ::const boost::shared_ptr< Shape > &
+   =boost::shared_ptr< Shape >()
+   -- ^gasShape
+   ::const boost::shared_ptr< Shape > &
+   =boost::shared_ptr< Shape >()
+   -- ^powerShape
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+  calculate
+   ->void
+ -v-
+ -e-

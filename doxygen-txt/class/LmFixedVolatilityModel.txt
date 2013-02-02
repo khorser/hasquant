@@ -1,0 +1,26 @@
+LmFixedVolatilityModel
+
+ -f-
+  LmFixedVolatilityModel
+   ->
+   ::const Array &
+   -- ^volatilities
+   ::const std::vector< Time > &
+   -- ^startTimes
+  volatility
+   ->Disposable< Array >
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  volatility
+   ->Volatility
+   ::Size
+   -- ^i
+   ::Time
+   -- ^t
+   ::const Array &
+   -- ^x
+ -v-
+ -e-

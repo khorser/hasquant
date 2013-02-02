@@ -1,0 +1,12 @@
+CompositeConstraint
+ -- |Constraint enforcing both given sub-constraints
+
+ -f-
+  CompositeConstraint
+   ->
+   ::const Constraint &
+   -- ^c1
+   ::const Constraint &
+   -- ^c2
+ -v-
+ -e-

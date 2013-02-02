@@ -1,0 +1,24 @@
+QuantoVanillaOption
+ -- |quanto version of a vanilla option
+
+ -f-
+  qvega
+   ->Real
+  qrho
+   ->Real
+  qlambda
+   ->Real
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+ -f-
+  QuantoVanillaOption
+   ->
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^
+   ::const boost::shared_ptr< Exercise > &
+   -- ^
+ -v-
+ -e-

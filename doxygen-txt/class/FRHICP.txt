@@ -1,0 +1,13 @@
+FRHICP
+ -- |FR HICP index.
+
+ -f-
+  FRHICP
+   ->
+   ::bool
+   -- ^interpolated
+   ::const Handle< ZeroInflationTermStructure > &
+   =Handle< ZeroInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

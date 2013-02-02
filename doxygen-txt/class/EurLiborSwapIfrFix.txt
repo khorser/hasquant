@@ -1,0 +1,22 @@
+EurLiborSwapIfrFix
+ -- |EurLiborSwapIfrFix index base class
+ -- |EUR Libor Swap indexes published by IFR Markets and distributed by Reuters page TGM42281 and by Telerate. Annual 30/360 vs 6M Libor, 1Y vs 3M Libor. For more info see http://www.ifrmarkets.com.
+
+ -f-
+  EurLiborSwapIfrFix
+   ->
+   ::const Period &
+   -- ^tenor
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+  EurLiborSwapIfrFix
+   ->
+   ::const Period &
+   -- ^tenor
+   ::const Handle< YieldTermStructure > &
+   -- ^forwarding
+   ::const Handle< YieldTermStructure > &
+   -- ^discounting
+ -v-
+ -e-

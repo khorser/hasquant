@@ -1,0 +1,9 @@
+PeriodParser
+
+ -f-
+  parse
+   ->Period
+   ::const std::string &
+   -- ^str
+ -v-
+ -e-

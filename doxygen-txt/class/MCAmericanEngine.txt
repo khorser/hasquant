@@ -1,0 +1,36 @@
+MCAmericanEngine
+ -- |American Monte Carlo engine.
+ -- |References:Teststhe correctness of the returned value is tested by reproducing results available in web/literature
+
+ -f-
+  MCAmericanEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   -- ^timeSteps
+   ::Size
+   -- ^timeStepsPerYear
+   ::bool
+   -- ^antitheticVariate
+   ::bool
+   -- ^controlVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+   ::Size
+   -- ^polynomOrder
+   ::LsmBasisSystem::PolynomType
+   -- ^polynomType
+   ::Size
+   =Null< Size >()
+   -- ^nCalibrationSamples
+  calculate
+   ->void
+ -v-
+ -e-

@@ -1,0 +1,33 @@
+FdmMesherComposite
+
+ -f-
+  FdmMesherComposite
+   ->
+   ::const boost::shared_ptr< FdmLinearOpLayout > &
+   -- ^layout
+   ::const std::vector< boost::shared_ptr< Fdm1dMesher > > &
+   -- ^mesher
+  dplus
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^iter
+   ::Size
+   -- ^direction
+  dminus
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^iter
+   ::Size
+   -- ^direction
+  location
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^iter
+   ::Size
+   -- ^direction
+  locations
+   ->Disposable< Array >
+   ::Size
+   -- ^direction
+ -v-
+ -e-

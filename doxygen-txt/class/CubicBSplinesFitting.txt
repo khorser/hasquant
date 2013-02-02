@@ -1,0 +1,21 @@
+CubicBSplinesFitting
+ -- |CubicSpline B-splines fitting method.
+ -- |Fits a discount function to a set of cubic B-splines $ N_{i,3}(t) $, i.e., \[ d(t) = \sum_{i=0}^{n} c_i * N_{i,3}(t) \] See: McCulloch, J. 1971, "Measuring the Term Structure of Interest Rates." Journal of Business, 44: 19-31 McCulloch, J. 1975, "The tax adjusted yield curve." Journal of Finance, XXX811-30 Warning"The results are extremely sensitive to the number and location of the knot points, and there is no optimal way of selecting them." James, J. and N. Webber, "Interest Rate Modelling" John Wiley, 2000, pp. 440.
+
+ -f-
+  CubicBSplinesFitting
+   ->
+   ::const std::vector< Time > &
+   -- ^knotVector
+   ::bool
+   =true
+   -- ^constrainAtZero
+  -- cubic B-spline basis functions
+  basisFunction
+   ->Real
+   ::Integer
+   -- ^i
+   ::Time
+   -- ^t
+ -v-
+ -e-

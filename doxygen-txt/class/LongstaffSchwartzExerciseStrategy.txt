@@ -1,0 +1,35 @@
+LongstaffSchwartzExerciseStrategy
+
+ -f-
+  LongstaffSchwartzExerciseStrategy
+   ->
+   ::const Clone< MarketModelBasisSystem > &
+   -- ^basisSystem
+   ::const std::vector< std::vector< Real > > &
+   -- ^basisCoefficients
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const std::vector< Size > &
+   -- ^numeraires
+   ::const Clone< MarketModelExerciseValue > &
+   -- ^exercise
+   ::const Clone< MarketModelExerciseValue > &
+   -- ^control
+  exerciseTimes
+   ->std::vector< Time >
+  relevantTimes
+   ->std::vector< Time >
+  reset
+   ->void
+  exercise
+   ->bool
+   ::const CurveState &
+   -- ^currentState
+  nextStep
+   ->void
+   ::const CurveState &
+   -- ^currentState
+  clone
+   ->std::auto_ptr< ExerciseStrategy< CurveState > >
+ -v-
+ -e-

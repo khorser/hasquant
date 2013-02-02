@@ -1,0 +1,19 @@
+PiecewiseConstantCorrelation
+
+ -f-
+  ~PiecewiseConstantCorrelation
+   ->
+  times
+   ->const std::vector< Time > &
+  rateTimes
+   ->const std::vector< Time > &
+  correlations
+   ->const std::vector< Matrix > &
+  correlation
+   ->const Matrix &
+   ::Size
+   -- ^i
+  numberOfRates
+   ->Size
+ -v-
+ -e-

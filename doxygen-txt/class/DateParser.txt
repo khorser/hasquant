@@ -1,0 +1,21 @@
+DateParser
+
+ -f-
+  split
+   ->std::vector< std::string >
+   ::const std::string &
+   -- ^str
+   ::char
+   -- ^delim
+  parse
+   ->Date
+   ::const std::string &
+   -- ^str
+   ::const std::string &
+   -- ^fmt
+  parseISO
+   ->Date
+   ::const std::string &
+   -- ^str
+ -v-
+ -e-

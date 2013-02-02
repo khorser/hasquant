@@ -1,0 +1,29 @@
+MersenneTwisterUniformRng
+ -- |Uniform random number generator.
+ -- |Mersenne Twister random number generator of period 2**19937-1 For more details see http://www.math.keio.ac.jp/matumoto/emt.html Teststhe correctness of the returned values is tested by checking them against known good results.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  -- if the given seed is 0, a random seed will be chosen based on clock()
+  MersenneTwisterUniformRng
+   ->
+   ::unsigned long
+   =0
+   -- ^seed
+  MersenneTwisterUniformRng
+   ->
+   ::const std::vector< unsigned long > &
+   -- ^seeds
+  -- returns a sample with weight 1.0 containing a random number in the (0.0, 1.0) interval
+  next
+   ->sample_type
+  -- return a random number in the (0.0, 1.0)-interval
+  nextReal
+   ->Real
+  -- return a random integer in the [0,0xffffffff]-interval
+  nextInt32
+   ->unsigned long
+ -v-
+ -e-

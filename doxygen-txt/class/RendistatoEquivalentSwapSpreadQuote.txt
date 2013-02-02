@@ -1,0 +1,10 @@
+RendistatoEquivalentSwapSpreadQuote
+ -- |RendistatoCalculator equivalent swap spread Quote adapter.
+
+ -f-
+  RendistatoEquivalentSwapSpreadQuote
+   ->
+   ::const boost::shared_ptr< RendistatoCalculator > &
+   -- ^r
+ -v-
+ -e-

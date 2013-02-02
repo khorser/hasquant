@@ -1,0 +1,42 @@
+EnergyVanillaSwap
+ -- |Vanilla energy swap.
+
+ -f-
+  EnergyVanillaSwap
+   ->
+   ::bool
+   -- ^payer
+   ::const Calendar &
+   -- ^calendar
+   ::const Money &
+   -- ^fixedPrice
+   ::const UnitOfMeasure &
+   -- ^fixedPriceUnitOfMeasure
+   ::const boost::shared_ptr< CommodityIndex > &
+   -- ^index
+   ::const Currency &
+   -- ^payCurrency
+   ::const Currency &
+   -- ^receiveCurrency
+   ::const PricingPeriods &
+   -- ^pricingPeriods
+   ::const CommodityType &
+   -- ^commodityType
+   ::const boost::shared_ptr< SecondaryCosts > &
+   -- ^secondaryCosts
+   ::const Handle< YieldTermStructure > &
+   -- ^payLegTermStructure
+   ::const Handle< YieldTermStructure > &
+   -- ^receiveLegTermStructure
+   ::const Handle< YieldTermStructure > &
+   -- ^discountTermStructure
+  payReceive
+   ->Integer
+  fixedPrice
+   ->const Money &
+  fixedPriceUnitOfMeasure
+   ->const UnitOfMeasure &
+  index
+   ->const boost::shared_ptr< CommodityIndex > &
+ -v-
+ -e-

@@ -1,0 +1,26 @@
+ExtOUWithJumpsProcess
+ -- |This class describes a Ornstein Uhlenbeck model plus exp jump, an extension of the Lucia and Schwartz model \[ \begin{array}{rcl} S &=& exp(X_t + Y_t) \\ dX_t &=& \alpha(\mu(t)-X_t)dt + \sigma dW_t \\ dY_t &=& -\beta Y_{t-}dt + J_tdN_t \\ \omega(J)&=& \eta_u e^{-\eta_u J} \end{array} \]References: T. Kluge, 2008. Pricing Swing Options and other Electricity Derivatives, http://eprints.maths.ox.ac.uk/246/1/kluge.pdfB. Hambly, S. Howison, T. Kluge, Modelling spikes and pricing swing options in electricity markets, http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf
+
+ -f-
+  ExtOUWithJumpsProcess
+   ->
+   ::const boost::shared_ptr< ExtendedOrnsteinUhlenbeckProcess > &
+   -- ^process
+   ::Real
+   -- ^Y0
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^jumpIntensity
+   ::Real
+   -- ^eta
+  getExtendedOrnsteinUhlenbeckProcess
+   ->boost::shared_ptr< ExtendedOrnsteinUhlenbeckProcess >
+  beta
+   ->Real
+  eta
+   ->Real
+  jumpIntensity
+   ->Real
+ -v-
+ -e-

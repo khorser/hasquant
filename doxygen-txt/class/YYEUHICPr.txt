@@ -1,0 +1,13 @@
+YYEUHICPr
+ -- |Fake year-on-year EU HICP (i.e. a ratio of EU HICP)
+
+ -f-
+  YYEUHICPr
+   ->
+   ::bool
+   -- ^interpolated
+   ::const Handle< YoYInflationTermStructure > &
+   =Handle< YoYInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

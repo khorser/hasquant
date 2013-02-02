@@ -1,0 +1,13 @@
+SpreadedHazardRateCurve
+ -- |Default-probability structure with an additive spread on hazard rates.
+ -- |This term structure will remain linked to the original structure, i.e., any changes in the latter will be reflected in this structure as well.
+
+ -f-
+  SpreadedHazardRateCurve
+   ->
+   ::const Handle< DefaultProbabilityTermStructure > &
+   -- ^originalCurve
+   ::const Handle< Quote > &
+   -- ^spread
+ -v-
+ -e-

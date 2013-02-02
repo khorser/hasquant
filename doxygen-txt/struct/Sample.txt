@@ -1,0 +1,22 @@
+Sample
+ -- |weighted sample
+
+ -f-
+ -v-
+ -e-
+ -f-
+ -v-
+  value
+   ::T
+  weight
+   ::Real
+ -e-
+ -f-
+  Sample
+   ->
+   ::const T &
+   -- ^value
+   ::Real
+   -- ^weight
+ -v-
+ -e-

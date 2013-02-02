@@ -1,0 +1,57 @@
+Discount
+ -- |Discount-curve traits.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  initialDate
+   ->Date
+   ::const YieldTermStructure *
+   -- ^c
+  initialValue
+   ->Real
+   ::const YieldTermStructure *
+   -- ^
+  guess
+   ->Real
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  minValueAfter
+   ->Real
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  maxValueAfter
+   ->Real
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  updateGuess
+   ->void
+   ::std::vector< Real > &
+   -- ^data
+   ::Real
+   -- ^discount
+   ::Size
+   -- ^i
+  maxIterations
+   ->Size
+ -v-
+ -e-

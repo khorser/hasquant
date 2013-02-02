@@ -1,0 +1,21 @@
+Linear
+ -- |Linear-interpolation factory and traits
+
+ -f-
+ -v-
+  global
+   ::const bool
+  requiredPoints
+   ::const Size
+ -e-
+ -f-
+  interpolate
+   ->Interpolation
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+ -v-
+ -e-

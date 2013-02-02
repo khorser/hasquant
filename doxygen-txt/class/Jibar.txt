@@ -1,0 +1,14 @@
+Jibar
+ -- |JIBAR rate
+ -- |Johannesburg Interbank Agreed RatePossible enhancementscheck settlement days and day-count convention.
+
+ -f-
+  Jibar
+   ->
+   ::const Period &
+   -- ^tenor
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

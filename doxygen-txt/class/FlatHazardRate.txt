@@ -1,0 +1,42 @@
+FlatHazardRate
+ -- |Flat hazard-rate curve.
+
+ -f-
+  FlatHazardRate
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Handle< Quote > &
+   -- ^hazardRate
+   ::const DayCounter &
+   -- ^
+  FlatHazardRate
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::Rate
+   -- ^hazardRate
+   ::const DayCounter &
+   -- ^
+  FlatHazardRate
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const Handle< Quote > &
+   -- ^hazardRate
+   ::const DayCounter &
+   -- ^
+  FlatHazardRate
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::Rate
+   -- ^hazardRate
+   ::const DayCounter &
+   -- ^
+ -v-
+ -e-

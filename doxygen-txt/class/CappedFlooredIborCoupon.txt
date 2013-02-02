@@ -1,0 +1,47 @@
+CappedFlooredIborCoupon
+
+ -f-
+  CappedFlooredIborCoupon
+   ->
+   ::const Date &
+   -- ^paymentDate
+   ::Real
+   -- ^nominal
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::Natural
+   -- ^fixingDays
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^index
+   ::Real
+   =1.0
+   -- ^gearing
+   ::Spread
+   =0.0
+   -- ^spread
+   ::Rate
+   =Null< Rate >()
+   -- ^cap
+   ::Rate
+   =Null< Rate >()
+   -- ^floor
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::bool
+   =false
+   -- ^isInArrears
+  accept
+   ->void
+   ::AcyclicVisitor &
+   -- ^v
+ -v-
+ -e-

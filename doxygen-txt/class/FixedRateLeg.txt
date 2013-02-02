@@ -1,0 +1,64 @@
+FixedRateLeg
+ -- |helper class building a sequence of fixed rate coupons
+
+ -f-
+  FixedRateLeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+  withNotionals
+   ->FixedRateLeg &
+   ::Real
+   -- ^
+  withNotionals
+   ->FixedRateLeg &
+   ::const std::vector< Real > &
+   -- ^
+  withCouponRates
+   ->FixedRateLeg &
+   ::Rate
+   -- ^
+   ::const DayCounter &
+   -- ^paymentDayCounter
+   ::Compounding
+   =Simple
+   -- ^comp
+   ::Frequency
+   =Annual
+   -- ^freq
+  withCouponRates
+   ->FixedRateLeg &
+   ::const std::vector< Rate > &
+   -- ^
+   ::const DayCounter &
+   -- ^paymentDayCounter
+   ::Compounding
+   =Simple
+   -- ^comp
+   ::Frequency
+   =Annual
+   -- ^freq
+  withCouponRates
+   ->FixedRateLeg &
+   ::const InterestRate &
+   -- ^
+  withCouponRates
+   ->FixedRateLeg &
+   ::const std::vector< InterestRate > &
+   -- ^
+  withPaymentAdjustment
+   ->FixedRateLeg &
+   ::BusinessDayConvention
+   -- ^
+  withFirstPeriodDayCounter
+   ->FixedRateLeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentCalendar
+   ->FixedRateLeg &
+   ::const Calendar &
+   -- ^
+  operator Leg
+   ->
+ -v-
+ -e-

@@ -1,0 +1,40 @@
+FdmLinearOpIterator
+
+ -f-
+  FdmLinearOpIterator
+   ->
+   ::Size
+   =0
+   -- ^index
+  FdmLinearOpIterator
+   ->
+   ::const std::vector< Size > &
+   -- ^dim
+  FdmLinearOpIterator
+   ->
+   ::const std::vector< Size > &
+   -- ^dim
+   ::const std::vector< Size > &
+   -- ^coordinates
+   ::Size
+   -- ^index
+  FdmLinearOpIterator
+   ->
+   ::const Disposable< FdmLinearOpIterator > &
+   -- ^from
+  operator++
+   ->void
+  operator!=
+   ->bool
+   ::const FdmLinearOpIterator &
+   -- ^iterator
+  index
+   ->Size
+  coordinates
+   ->const std::vector< Size > &
+  swap
+   ->void
+   ::FdmLinearOpIterator &
+   -- ^iter
+ -v-
+ -e-

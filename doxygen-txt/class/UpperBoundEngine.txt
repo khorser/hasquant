@@ -1,0 +1,37 @@
+UpperBoundEngine
+ -- |Market-model engine for upper-bound estimation.
+ -- |product and hedge must have the same rate times and exercise times
+
+ -f-
+  UpperBoundEngine
+   ->
+   ::const boost::shared_ptr< MarketModelEvolver > &
+   -- ^evolver
+   ::const std::vector< boost::shared_ptr< MarketModelEvolver > > &
+   -- ^innerEvolvers
+   ::const MarketModelMultiProduct &
+   -- ^underlying
+   ::const MarketModelExerciseValue &
+   -- ^rebate
+   ::const MarketModelMultiProduct &
+   -- ^hedge
+   ::const MarketModelExerciseValue &
+   -- ^hedgeRebate
+   ::const ExerciseStrategy< CurveState > &
+   -- ^hedgeStrategy
+   ::Real
+   -- ^initialNumeraireValue
+  multiplePathValues
+   ->void
+   ::Statistics &
+   -- ^stats
+   ::Size
+   -- ^outerPaths
+   ::Size
+   -- ^innerPaths
+  singlePathValue
+   ->std::pair< Real, Real >
+   ::Size
+   -- ^innerPaths
+ -v-
+ -e-

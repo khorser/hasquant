@@ -1,0 +1,92 @@
+YoYInflationTermStructure
+ -- |Base class for year-on-year inflation term structures.
+
+ -f-
+  YoYInflationTermStructure
+   ->
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Rate
+   -- ^baseYoYRate
+   ::const Period &
+   -- ^lag
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^indexIsInterpolated
+   ::const Handle< YieldTermStructure > &
+   -- ^yieldTS
+   ::const boost::shared_ptr< Seasonality > &
+   =boost::shared_ptr< Seasonality >()
+   -- ^seasonality
+  YoYInflationTermStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^calendar
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Rate
+   -- ^baseYoYRate
+   ::const Period &
+   -- ^lag
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^indexIsInterpolated
+   ::const Handle< YieldTermStructure > &
+   -- ^yieldTS
+   ::const boost::shared_ptr< Seasonality > &
+   =boost::shared_ptr< Seasonality >()
+   -- ^seasonality
+  YoYInflationTermStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Rate
+   -- ^baseYoYRate
+   ::const Period &
+   -- ^lag
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^indexIsInterpolated
+   ::const Handle< YieldTermStructure > &
+   -- ^yieldTS
+   ::const boost::shared_ptr< Seasonality > &
+   =boost::shared_ptr< Seasonality >()
+   -- ^seasonality
+ -v-
+ -e-
+ -f-
+  -- year-on-year inflation rate.
+  -- The forceLinearInterpolation parameter is relative to the frequency of the TS.this is not the year-on-year swap (YYIIS) rate.
+  yoyRate
+   ->Rate
+   ::const Date &
+   -- ^d
+   ::const Period &
+   =Period(-1, Days)
+   -- ^instObsLag
+   ::bool
+   =false
+   -- ^forceLinearInterpolation
+   ::bool
+   =false
+   -- ^extrapolate
+  -- year-on-year inflation rate.
+  -- WarningSince inflation is highly linked to dates (lags, interpolation, months for seasonality, etc) this method cannot account for all effects. If you call it, You'll have to manage lag, seasonality etc. yourself.
+  yoyRate
+   ->Rate
+   ::Time
+   -- ^t
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-

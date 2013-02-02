@@ -1,0 +1,56 @@
+ExchangeRate
+ -- |exchange rate between two currencies
+ -- |Testsapplication of direct and derived exchange rate is tested against calculations.
+
+ -f-
+  ExchangeRate
+   ->
+  -- the rate $ r $ is given with the convention that a unit of the source is worth $ r $ units of the target.
+  ExchangeRate
+   ->
+   ::const Currency &
+   -- ^source
+   ::const Currency &
+   -- ^target
+   ::Decimal
+   -- ^rate
+ -v-
+ -e-
+ -f-
+  -- the source currency.
+  source
+   ->const Currency &
+  -- the target currency.
+  target
+   ->const Currency &
+  -- the type
+  type
+   ->Type
+  -- the exchange rate (when available)
+  rate
+   ->Decimal
+ -v-
+ -e-
+ -f-
+  -- apply the exchange rate to a cash amount
+  exchange
+   ->Money
+   ::const Money &
+   -- ^amount
+  -- chain two exchange rates
+  chain
+   ->ExchangeRate
+   ::const ExchangeRate &
+   -- ^r1
+   ::const ExchangeRate &
+   -- ^r2
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+  Type
+   Direct
+   -- ^given directly by the user
+   Derived
+   -- ^derived from exchange rates between other currencies

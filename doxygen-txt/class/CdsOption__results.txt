@@ -1,0 +1,13 @@
+CdsOption::results
+ -- |Results from CDS-option calculation
+
+ -f-
+ -v-
+  riskyAnnuity
+   ::Real
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

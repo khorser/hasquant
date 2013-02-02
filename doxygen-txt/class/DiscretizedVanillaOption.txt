@@ -1,0 +1,20 @@
+DiscretizedVanillaOption
+
+ -f-
+  DiscretizedVanillaOption
+   ->
+   ::const VanillaOption::arguments &
+   -- ^
+   ::const StochasticProcess &
+   -- ^process
+   ::const TimeGrid &
+   =TimeGrid()
+   -- ^grid
+  reset
+   ->void
+   ::Size
+   -- ^size
+  mandatoryTimes
+   ->std::vector< Time >
+ -v-
+ -e-

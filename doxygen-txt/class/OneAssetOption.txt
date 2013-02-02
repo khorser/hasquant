@@ -1,0 +1,37 @@
+OneAssetOption
+ -- |Base class for options on a single asset.
+
+ -f-
+  delta
+   ->Real
+  deltaForward
+   ->Real
+  elasticity
+   ->Real
+  gamma
+   ->Real
+  theta
+   ->Real
+  thetaPerDay
+   ->Real
+  vega
+   ->Real
+  rho
+   ->Real
+  dividendRho
+   ->Real
+  strikeSensitivity
+   ->Real
+  itmCashProbability
+   ->Real
+ -v-
+ -e-
+ -f-
+  OneAssetOption
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^
+   ::const boost::shared_ptr< Exercise > &
+   -- ^
+ -v-
+ -e-

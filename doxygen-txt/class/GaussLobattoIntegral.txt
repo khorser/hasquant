@@ -1,0 +1,19 @@
+GaussLobattoIntegral
+ -- |Integral of a one-dimensional function.
+ -- |Given a target accuracy $ \epsilon $, the integral of a function $ f $ between $ a $ and $ b $ is calculated by means of the Gauss-Lobatto formulaReferences: This algorithm is a C++ implementation of the algorithm outlined inW. Gander and W. Gautschi, Adaptive Quadrature - Revisited. BIT, 40(1):84-101, March 2000. CS technical report: ftp.inf.ethz.ch/pub/publications/tech-reports/3xx/306.ps.gzThe original MATLAB version can be downloaded here http://www.inf.ethz.ch/personal/gander/adaptlob.m
+
+ -f-
+  GaussLobattoIntegral
+   ->
+   ::Size
+   -- ^maxIterations
+   ::Real
+   -- ^absAccuracy
+   ::Real
+   =Null< Real >()
+   -- ^relAccuracy
+   ::bool
+   =true
+   -- ^useConvergenceEstimate
+ -v-
+ -e-

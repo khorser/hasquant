@@ -1,0 +1,43 @@
+AverageBMACoupon
+ -- |Average BMA coupon.
+ -- |Coupon paying a BMA index, where the coupon rate is a weighted average of relevant fixings.The weighted average is computed based on the actual calendar days for which a given fixing is valid and contributing to the given interest period.Before weights are computed, the fixing schedule is adjusted for the index's fixing day gap. See rate() method for details.
+
+ -f-
+  -- fixing dates of the rates to be averaged
+  fixingDates
+   ->std::vector< Date >
+  -- fixings of the underlying index to be averaged
+  indexFixings
+   ->std::vector< Rate >
+ -v-
+ -e-
+ -f-
+  AverageBMACoupon
+   ->
+   ::const Date &
+   -- ^paymentDate
+   ::Real
+   -- ^nominal
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::const boost::shared_ptr< BMAIndex > &
+   -- ^index
+   ::Real
+   =1.0
+   -- ^gearing
+   ::Spread
+   =0.0
+   -- ^spread
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+ -v-
+ -e-

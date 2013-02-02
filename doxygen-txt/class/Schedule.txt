@@ -1,0 +1,114 @@
+Schedule
+ -- |Payment schedule.
+
+ -f-
+  size
+   ->Size
+  operator[]
+   ->const Date &
+   ::Size
+   -- ^i
+  at
+   ->const Date &
+   ::Size
+   -- ^i
+  date
+   ->const Date &
+   ::Size
+   -- ^i
+  previousDate
+   ->Date
+   ::const Date &
+   -- ^refDate
+  nextDate
+   ->Date
+   ::const Date &
+   -- ^refDate
+  dates
+   ->const std::vector< Date > &
+  isRegular
+   ->bool
+   ::Size
+   -- ^i
+ -v-
+ -e-
+ -f-
+  empty
+   ->bool
+  calendar
+   ->const Calendar &
+  startDate
+   ->const Date &
+  endDate
+   ->const Date &
+  tenor
+   ->const Period &
+  businessDayConvention
+   ->BusinessDayConvention
+  terminationDateBusinessDayConvention
+   ->BusinessDayConvention
+  rule
+   ->DateGeneration::Rule
+  endOfMonth
+   ->bool
+ -v-
+ -e-
+ -f-
+  begin
+   ->const_iterator
+  end
+   ->const_iterator
+  lower_bound
+   ->const_iterator
+   ::const Date &
+   =Date()
+   -- ^d
+ -v-
+ -e-
+ -f-
+  -- truncated schedule
+  until
+   ->Schedule
+   ::const Date &
+   -- ^truncationDate
+ -v-
+ -e-
+ -f-
+  Schedule
+   ->
+   ::const std::vector< Date > &
+   -- ^
+   ::const Calendar &
+   =NullCalendar()
+   -- ^calendar
+   ::BusinessDayConvention
+   =Unadjusted
+   -- ^convention
+  Schedule
+   ->
+   ::Date
+   -- ^effectiveDate
+   ::const Date &
+   -- ^terminationDate
+   ::const Period &
+   -- ^tenor
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^convention
+   ::BusinessDayConvention
+   -- ^terminationDateConvention
+   ::DateGeneration::Rule
+   -- ^rule
+   ::bool
+   -- ^endOfMonth
+   ::const Date &
+   =Date()
+   -- ^firstDate
+   ::const Date &
+   =Date()
+   -- ^nextToLastDate
+  Schedule
+   ->
+ -v-
+ -e-

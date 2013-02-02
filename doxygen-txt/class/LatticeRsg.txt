@@ -1,0 +1,27 @@
+LatticeRsg
+
+ -f-
+ -v-
+ -e-
+ -f-
+  LatticeRsg
+   ->
+   ::Size
+   -- ^dimensionality
+   ::const std::vector< Real > &
+   -- ^z
+   ::Size
+   -- ^N
+  -- skip to the n-th sample in the low-discrepancy sequence
+  skipTo
+   ->void
+   ::unsigned long
+   -- ^n
+  nextSequence
+   ->const LatticeRsg::sample_type &
+  dimension
+   ->Size
+  lastSequence
+   ->const sample_type &
+ -v-
+ -e-

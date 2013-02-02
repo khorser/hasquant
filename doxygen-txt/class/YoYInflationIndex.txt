@@ -1,0 +1,39 @@
+YoYInflationIndex
+ -- |Base class for year-on-year inflation indices.
+ -- |These may be genuine indices published on, say, Bloomberg, or "fake" indices that are defined as the ratio of an index at different time points.
+
+ -f-
+  ratio
+   ->bool
+  yoyInflationTermStructure
+   ->Handle< YoYInflationTermStructure >
+  clone
+   ->boost::shared_ptr< YoYInflationIndex >
+   ::const Handle< YoYInflationTermStructure > &
+   -- ^h
+ -v-
+ -e-
+ -f-
+  YoYInflationIndex
+   ->
+   ::const std::string &
+   -- ^familyName
+   ::const Region &
+   -- ^region
+   ::bool
+   -- ^revised
+   ::bool
+   -- ^interpolated
+   ::bool
+   -- ^ratio
+   ::Frequency
+   -- ^frequency
+   ::const Period &
+   -- ^availabilityLag
+   ::const Currency &
+   -- ^currency
+   ::const Handle< YoYInflationTermStructure > &
+   =Handle< YoYInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

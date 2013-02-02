@@ -1,0 +1,88 @@
+CTSMMCapletCalibration
+
+ -f-
+  ~CTSMMCapletCalibration
+   ->
+  CTSMMCapletCalibration
+   ->
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+   -- ^corr
+   ::const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+   -- ^displacedSwapVariances
+   ::const std::vector< Volatility > &
+   -- ^mktCapletVols
+   ::const boost::shared_ptr< CurveState > &
+   -- ^cs
+   ::Spread
+   -- ^displacement
+  calibrate
+   ->bool
+   ::Natural
+   -- ^numberOfFactors
+   ::Natural
+   -- ^maxIterations
+   ::Real
+   -- ^tolerance
+   ::Natural
+   =100
+   -- ^innerMaxIterations
+   ::Real
+   =1e-8
+   -- ^innerTolerance
+  failures
+   ->Natural
+  deformationSize
+   ->Real
+  capletRmsError
+   ->Real
+  capletMaxError
+   ->Real
+  swaptionRmsError
+   ->Real
+  swaptionMaxError
+   ->Real
+  swapPseudoRoots
+   ->const std::vector< Matrix > &
+  swapPseudoRoot
+   ->const Matrix &
+   ::Size
+   -- ^i
+  mktCapletVols
+   ->const std::vector< Volatility > &
+  mdlCapletVols
+   ->const std::vector< Volatility > &
+  mktSwaptionVols
+   ->const std::vector< Volatility > &
+  mdlSwaptionVols
+   ->const std::vector< Volatility > &
+  timeDependentCalibratedSwaptionVols
+   ->const std::vector< Volatility > &
+   ::Size
+   -- ^i
+  timeDependentUnCalibratedSwaptionVols
+   ->const std::vector< Volatility > &
+   ::Size
+   -- ^i
+  curveState
+   ->const boost::shared_ptr< CurveState > &
+  displacements
+   ->std::vector< Spread >
+ -v-
+ -e-
+ -f-
+  performChecks
+   ->void
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const PiecewiseConstantCorrelation &
+   -- ^corr
+   ::const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+   -- ^displacedSwapVariances
+   ::const std::vector< Volatility > &
+   -- ^mktCapletVols
+   ::const CurveState &
+   -- ^cs
+ -v-
+ -e-

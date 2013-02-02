@@ -1,0 +1,12 @@
+Cap
+ -- |Concrete cap class.
+
+ -f-
+  Cap
+   ->
+   ::const Leg &
+   -- ^floatingLeg
+   ::const std::vector< Rate > &
+   -- ^exerciseRates
+ -v-
+ -e-

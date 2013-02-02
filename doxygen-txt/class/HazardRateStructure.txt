@@ -1,0 +1,49 @@
+HazardRateStructure
+ -- |Hazard-rate term structure.
+ -- |This abstract class acts as an adapter to DefaultProbabilityTermStructure allowing the programmer to implement only the hazardRateImpl(Time) method in derived classes.Survival/default probabilities and default densities are calculated from hazard rates.Hazard rates are defined with annual frequency and continuous compounding.
+
+ -f-
+  HazardRateStructure
+   ->
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  HazardRateStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  HazardRateStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+ -v-
+ -e-

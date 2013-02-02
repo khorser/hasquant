@@ -1,0 +1,146 @@
+YoYCapFloorTermPriceSurface
+ -- |Abstract base class, inheriting from InflationTermStructure.
+ -- |Since this can create a yoy term structure it does take a YoY index.Possible enhancementsdeal with index interpolation.
+
+ -f-
+  -- inspectors
+  -- you don't know if price() is a cap or a floor without checking the YoYSwapATM level. atm cap/floor prices are generally inaccurate because they are from extrapolation and intersection.
+  businessDayConvention
+   ->BusinessDayConvention
+  fixingDays
+   ->Natural
+  price
+   ->Real
+   ::const Date &
+   -- ^d
+   ::const Rate
+   -- ^k
+  capPrice
+   ->Real
+   ::const Date &
+   -- ^d
+   ::const Rate
+   -- ^k
+  floorPrice
+   ->Real
+   ::const Date &
+   -- ^d
+   ::const Rate
+   -- ^k
+  atmYoYSwapRate
+   ->Rate
+   ::const Date &
+   -- ^d
+   ::bool
+   =true
+   -- ^extrapolate
+  atmYoYRate
+   ->Rate
+   ::const Date &
+   -- ^d
+   ::const Period &
+   =Period(-1, Days)
+   -- ^obsLag
+   ::bool
+   =true
+   -- ^extrapolate
+  price
+   ->Real
+   ::const Period &
+   -- ^d
+   ::const Rate
+   -- ^k
+  capPrice
+   ->Real
+   ::const Period &
+   -- ^d
+   ::const Rate
+   -- ^k
+  floorPrice
+   ->Real
+   ::const Period &
+   -- ^d
+   ::const Rate
+   -- ^k
+  atmYoYSwapRate
+   ->Rate
+   ::const Period &
+   -- ^d
+   ::bool
+   =true
+   -- ^extrapolate
+  atmYoYRate
+   ->Rate
+   ::const Period &
+   -- ^d
+   ::const Period &
+   =Period(-1, Days)
+   -- ^obsLag
+   ::bool
+   =true
+   -- ^extrapolate
+  strikes
+   ->std::vector< Rate >
+  capStrikes
+   ->std::vector< Rate >
+  floorStrikes
+   ->std::vector< Rate >
+  maturities
+   ->std::vector< Period >
+  minStrike
+   ->Rate
+  maxStrike
+   ->Rate
+  minMaturity
+   ->Date
+  maxMaturity
+   ->Date
+ -v-
+ -e-
+ -f-
+  YoYCapFloorTermPriceSurface
+   ->
+   ::Natural
+   -- ^fixingDays
+   ::const Period &
+   -- ^yyLag
+   ::const boost::shared_ptr< YoYInflationIndex > &
+   -- ^yii
+   ::Rate
+   -- ^baseRate
+   ::const Handle< YieldTermStructure > &
+   -- ^nominal
+   ::const DayCounter &
+   -- ^dc
+   ::const Calendar &
+   -- ^cal
+   ::const BusinessDayConvention &
+   -- ^bdc
+   ::const std::vector< Rate > &
+   -- ^cStrikes
+   ::const std::vector< Rate > &
+   -- ^fStrikes
+   ::const std::vector< Period > &
+   -- ^cfMaturities
+   ::const Matrix &
+   -- ^cPrice
+   ::const Matrix &
+   -- ^fPrice
+  -- atm yoy swaps from put-call parity on cap/floor data
+  -- uses interpolation (on surface price data), yearly maturities.
+  atmYoYSwapTimeRates
+   ->std::pair< std::vector< Time >, std::vector< Rate > >
+  atmYoYSwapDateRates
+   ->std::pair< std::vector< Date >, std::vector< Rate > >
+  -- derived from yoy swap rates
+  YoYTS
+   ->boost::shared_ptr< YoYInflationTermStructure >
+  -- index yoy is based on
+  yoyIndex
+   ->boost::shared_ptr< YoYInflationIndex >
+  yoyOptionDateFromTenor
+   ->Date
+   ::const Period &
+   -- ^p
+ -v-
+ -e-

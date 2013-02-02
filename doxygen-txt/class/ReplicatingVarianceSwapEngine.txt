@@ -1,0 +1,23 @@
+ReplicatingVarianceSwapEngine
+ -- |Variance-swap pricing engine using replicating cost,.
+ -- |as described in Demeterfi, Derman, Kamal & Zou, "A Guide to Volatility and Variance Swaps", 1999Testsreturned variances verified against results from literature
+
+ -f-
+ -v-
+ -e-
+ -f-
+  ReplicatingVarianceSwapEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Real
+   =5.0
+   -- ^dk
+   ::const std::vector< Real > &
+   =std::vector< Real >()
+   -- ^callStrikes
+   ::const std::vector< Real > &
+   =std::vector< Real >()
+   -- ^putStrikes
+ -v-
+ -e-

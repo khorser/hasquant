@@ -1,0 +1,112 @@
+FittedBondDiscountCurve
+ -- |Discount curve fitted to a set of fixed-coupon bonds.
+ -- |This class fits a discount function $ d(t) $ over a set of bonds, using a user defined fitting method. The discount function is fit in such a way so that all cashflows of all input bonds, when discounted using $ d(t) $, will reproduce the set of input bond prices in an optimized sense. Minimized price errors are weighted by the inverse of their respective bond duration.The FittedBondDiscountCurve class acts as a generic wrapper, while its inner class FittingMethod provides the implementation details. Developers thus need only derive new fitting methods from the latter. Example: compares various bond discount curve fitting methodologies WarningThe method can be slow if there are many bonds to fit. Speed also depends on the particular choice of fitting method chosen and its convergence properties under optimization. See also todo list for BondDiscountCurveFittingMethod.Possible enhancementsrefactor the bond helper class so that it is pure virtual and returns a generic bond or its cash flows. Derived classes would include helpers for fixed-rate and zero-coupon bonds. In this way, both bonds and bills can be used to fit a discount curve using the exact same machinery. At present, only fixed-coupon bonds are supported. An even better way to move forward might be to get rate helpers to return cashflows, in which case this class could be used to fit any set of cash flows, not just bonds.Possible enhancementsadd more fitting diagnostics: smoothness, standard deviation, student-t test, etc. Generic smoothness method may be useful for smoothing splines fitting. See Fisher, M., D. Nychka and D. Zervos: "Fitting the term structure of interest rates with smoothing splines." Board of Governors of the Federal Reserve System, Federal Resere Board Working Paper, 95-1.Possible enhancementsadd extrapolation routines
+
+ -f-
+  -- reference date based on current evaluation date
+  FittedBondDiscountCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const std::vector< boost::shared_ptr< BondHelper > > &
+   -- ^bonds
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const FittingMethod &
+   -- ^fittingMethod
+   ::Real
+   =1.0e-10
+   -- ^accuracy
+   ::Size
+   =10000
+   -- ^maxEvaluations
+   ::const Array &
+   =Array()
+   -- ^guess
+   ::Real
+   =1.0
+   -- ^simplexLambda
+  -- curve reference date fixed for life of curve
+  FittedBondDiscountCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const std::vector< boost::shared_ptr< BondHelper > > &
+   -- ^bonds
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const FittingMethod &
+   -- ^fittingMethod
+   ::Real
+   =1.0e-10
+   -- ^accuracy
+   ::Size
+   =10000
+   -- ^maxEvaluations
+   ::const Array &
+   =Array()
+   -- ^guess
+   ::Real
+   =1.0
+   -- ^simplexLambda
+  -- reference date based on current evaluation date
+  FittedBondDiscountCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const std::vector< boost::shared_ptr< FixedRateBondHelper > > &
+   -- ^bonds
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const FittingMethod &
+   -- ^fittingMethod
+   ::Real
+   =1.0e-10
+   -- ^accuracy
+   ::Size
+   =10000
+   -- ^maxEvaluations
+   ::const Array &
+   =Array()
+   -- ^guess
+   ::Real
+   =1.0
+   -- ^simplexLambda
+  -- curve reference date fixed for life of curve
+  FittedBondDiscountCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const std::vector< boost::shared_ptr< FixedRateBondHelper > > &
+   -- ^bonds
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const FittingMethod &
+   -- ^fittingMethod
+   ::Real
+   =1.0e-10
+   -- ^accuracy
+   ::Size
+   =10000
+   -- ^maxEvaluations
+   ::const Array &
+   =Array()
+   -- ^guess
+   ::Real
+   =1.0
+   -- ^simplexLambda
+ -v-
+ -e-
+ -f-
+  -- total number of bonds used to fit the yield curve
+  numberOfBonds
+   ->Size
+  -- class holding the results of the fit
+  fitResults
+   ->const FittingMethod &
+ -v-
+ -e-

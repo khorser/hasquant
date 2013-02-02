@@ -1,0 +1,20 @@
+detail::base_cubic_spline
+
+ -f-
+ -v-
+ -e-
+ -f-
+  base_cubic_spline
+   ->
+   ::const data &
+   -- ^d
+   ::const data &
+   -- ^d2
+   ::const data_table &
+   -- ^y
+   ::data_table &
+   -- ^y2
+   ::output_data &
+   -- ^v
+ -v-
+ -e-

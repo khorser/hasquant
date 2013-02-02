@@ -1,0 +1,16 @@
+Trigeorgis
+ -- |Trigeorgis (additive equal jumps) binomial tree
+
+ -f-
+  Trigeorgis
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+   ::Real
+   -- ^strike
+ -v-
+ -e-

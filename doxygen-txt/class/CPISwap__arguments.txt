@@ -1,0 +1,17 @@
+CPISwap::arguments
+ -- |Arguments for swap calculation
+
+ -f-
+ -v-
+  type
+   ::Type
+  nominal
+   ::Real
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

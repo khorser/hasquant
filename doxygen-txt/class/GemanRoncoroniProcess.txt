@@ -1,0 +1,55 @@
+GemanRoncoroniProcess
+ -- |Geman-Roncoroni process class.
+ -- |This class describes the Geman-Roncoroni process governed by \[ \begin{array}{rcl} dE(t) &=& \left[ \frac{\partial}{\partial t} \mu(t) +\theta_1 \left(\mu(t)-E(t^-)\right)\right]dt +\sigma dW(t) + h(E(t^-))dJ(t) \\ \mu(t)&=& \alpha + \beta t +\gamma \cos(\epsilon+2\pi t) +\delta \cos(\zeta + 4\pi t) \end{array} \]
+
+ -f-
+  GemanRoncoroniProcess
+   ->
+   ::Real
+   -- ^x0
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^gamma
+   ::Real
+   -- ^delta
+   ::Real
+   -- ^eps
+   ::Real
+   -- ^zeta
+   ::Real
+   -- ^d
+   ::Real
+   -- ^k
+   ::Real
+   -- ^tau
+   ::Real
+   -- ^sig2
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^theta1
+   ::Real
+   -- ^theta2
+   ::Real
+   -- ^theta3
+   ::Real
+   -- ^psi
+  evolve
+   ->Real
+   ::Time
+   -- ^t0
+   ::Real
+   -- ^x0
+   ::Time
+   -- ^dt
+   ::Real
+   -- ^dw
+   ::const Array &
+   -- ^du
+ -v-
+ -e-

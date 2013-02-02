@@ -1,0 +1,23 @@
+VarianceSwap::arguments
+ -- |Arguments for forward fair-variance calculation
+
+ -f-
+ -v-
+  position
+   ::Position::Type
+  strike
+   ::Real
+  notional
+   ::Real
+  startDate
+   ::Date
+  maturityDate
+   ::Date
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

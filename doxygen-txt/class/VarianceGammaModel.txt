@@ -1,0 +1,19 @@
+VarianceGammaModel
+ -- |Variance Gamma model.
+ -- |References: Dilip B. Madan, Peter Carr, Eric C. Chang (1998) "The variance gamma process and option pricing," European Finance Review, 2, 79-105 Warningcalibration is not implemented for VG
+
+ -f-
+  VarianceGammaModel
+   ->
+   ::const boost::shared_ptr< VarianceGammaProcess > &
+   -- ^process
+  sigma
+   ->Real
+  nu
+   ->Real
+  theta
+   ->Real
+  process
+   ->boost::shared_ptr< VarianceGammaProcess >
+ -v-
+ -e-

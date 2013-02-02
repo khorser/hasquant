@@ -1,0 +1,26 @@
+InverseCumulativeNormal
+ -- |Inverse cumulative normal distribution function.
+ -- |Given x between zero and one as the integral value of a gaussian normal distribution this class provides the value y such that formula here ...It use Acklam's approximation: by Peter J. Acklam, University of Oslo, Statistics Division. URL: http://home.online.no/~pjacklam/notes/invnorm/index.htmlThis class can also be used to generate a gaussian normal distribution from a uniform distribution. This is especially useful when a gaussian normal distribution is generated from a low discrepancy uniform distribution: in this case the traditional Box-Muller approach and its variants would not preserve the sequence's low-discrepancy.
+
+ -f-
+  InverseCumulativeNormal
+   ->
+   ::Real
+   =0.0
+   -- ^average
+   ::Real
+   =1.0
+   -- ^sigma
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-
+ -f-
+  standard_value
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

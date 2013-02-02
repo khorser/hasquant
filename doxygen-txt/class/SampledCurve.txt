@@ -1,0 +1,123 @@
+SampledCurve
+ -- |This class contains a sampled curve.
+ -- |Initially the class will contain one indexed curve
+
+ -f-
+  grid
+   ->const Array &
+  grid
+   ->Array &
+  values
+   ->const Array &
+  values
+   ->Array &
+  gridValue
+   ->Real
+   ::Size
+   -- ^i
+  gridValue
+   ->Real &
+   ::Size
+   -- ^i
+  value
+   ->Real
+   ::Size
+   -- ^i
+  value
+   ->Real &
+   ::Size
+   -- ^i
+  size
+   ->Size
+  empty
+   ->bool
+ -v-
+ -e-
+ -f-
+  setGrid
+   ->void
+   ::const Array &
+   -- ^
+  setValues
+   ->void
+   ::const Array &
+   -- ^
+  sample
+   ->void
+   ::const F &
+   -- ^f
+ -v-
+ -e-
+ -f-
+  -- Possible enhancementsreplace or complement with a more general function valueAt(spot)
+  valueAtCenter
+   ->Real
+  -- Possible enhancementsreplace or complement with a more general function firstDerivativeAt(spot)
+  firstDerivativeAtCenter
+   ->Real
+  -- Possible enhancementsreplace or complement with a more general function secondDerivativeAt(spot)
+  secondDerivativeAtCenter
+   ->Real
+ -v-
+ -e-
+ -f-
+  swap
+   ->void
+   ::SampledCurve &
+   -- ^
+  setLogGrid
+   ->void
+   ::Real
+   -- ^min
+   ::Real
+   -- ^max
+  regridLogGrid
+   ->void
+   ::Real
+   -- ^min
+   ::Real
+   -- ^max
+  shiftGrid
+   ->void
+   ::Real
+   -- ^s
+  scaleGrid
+   ->void
+   ::Real
+   -- ^s
+  regrid
+   ->void
+   ::const Array &
+   -- ^new_grid
+  regrid
+   ->void
+   ::const Array &
+   -- ^new_grid
+   ::T
+   -- ^func
+  transform
+   ->const SampledCurve &
+   ::T
+   -- ^x
+  transformGrid
+   ->const SampledCurve &
+   ::T
+   -- ^x
+ -v-
+ -e-
+ -f-
+  SampledCurve
+   ->
+   ::Size
+   =0
+   -- ^gridSize
+  SampledCurve
+   ->
+   ::const Array &
+   -- ^grid
+  operator=
+   ->SampledCurve &
+   ::const SampledCurve &
+   -- ^
+ -v-
+ -e-

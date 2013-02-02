@@ -1,0 +1,38 @@
+detail::Data< std::vector< Real >, EmptyArg >
+
+ -f-
+ -v-
+  first
+   ::std::vector< Real >
+  second
+   ::EmptyArg
+ -e-
+ -f-
+  Data
+   ->
+  Data
+   ->
+   ::const SplineGrid::const_iterator &
+   -- ^i
+  Data
+   ->
+   ::const SplineGrid &
+   -- ^v
+  Data
+   ->
+   ::const std::vector< Real > &
+   -- ^v
+  swap
+   ->void
+   ::Data< std::vector< Real >, EmptyArg > &
+   -- ^d
+  operator[]
+   ->Real
+   ::Size
+   -- ^n
+  operator[]
+   ->Real &
+   ::Size
+   -- ^n
+ -v-
+ -e-

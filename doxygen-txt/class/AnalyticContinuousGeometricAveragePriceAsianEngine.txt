@@ -1,0 +1,11 @@
+AnalyticContinuousGeometricAveragePriceAsianEngine
+ -- |Pricing engine for European continuous geometric average price Asian.
+ -- |This class implements a continuous geometric average price Asian option with European exercise. The formula is from "Option Pricing Formulas", E. G. Haug (1997) pag 96-97.Tests the correctness of the returned value is tested by reproducing results available in literature, and results obtained using a discrete average approximation.the correctness of the returned greeks is tested by reproducing numerical derivatives. Possible enhancementshandle seasoned options
+
+ -f-
+  AnalyticContinuousGeometricAveragePriceAsianEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+ -v-
+ -e-

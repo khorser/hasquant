@@ -1,0 +1,13 @@
+DailyTenorUSDLibor
+ -- |base class for the one day deposit BBA USD LIBOR indexes
+
+ -f-
+  DailyTenorUSDLibor
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

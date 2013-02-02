@@ -1,0 +1,45 @@
+FdmNdimSolver
+
+ -f-
+ -v-
+ -e-
+ -f-
+  FdmNdimSolver
+   ->
+   ::const FdmSolverDesc &
+   -- ^solverDesc
+   ::const FdmSchemeDesc &
+   -- ^schemeDesc
+   ::const boost::shared_ptr< FdmLinearOpComposite > &
+   -- ^op
+  performCalculations
+   ->void
+  interpolateAt
+   ->Real
+   ::const std::vector< Real > &
+   -- ^x
+  thetaAt
+   ->Real
+   ::const std::vector< Real > &
+   -- ^x
+  setValue
+   ->void
+   ::data_table &
+   -- ^f
+   ::const std::vector< Size > &
+   -- ^x
+   ::Real
+   -- ^value
+ -v-
+ -e-
+ -f-
+  setValue
+   ->void
+   ::data_table &
+   -- ^f
+   ::const std::vector< Size > &
+   -- ^x
+   ::Real
+   -- ^value
+ -v-
+ -e-

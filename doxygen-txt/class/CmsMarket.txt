@@ -1,0 +1,58 @@
+CmsMarket
+ -- |set of CMS quotes
+
+ -f-
+  CmsMarket
+   ->
+   ::const std::vector< Period > &
+   -- ^swapLengths
+   ::const std::vector< boost::shared_ptr< SwapIndex > > &
+   -- ^swapIndexes
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+   ::const std::vector< std::vector< Handle< Quote > > > &
+   -- ^bidAskSpreads
+   ::const std::vector< boost::shared_ptr< HaganPricer > > &
+   -- ^pricers
+   ::const Handle< YieldTermStructure > &
+   -- ^discountingTS
+  reprice
+   ->void
+   ::const Handle< SwaptionVolatilityStructure > &
+   -- ^volStructure
+   ::Real
+   -- ^meanReversion
+  swapTenors
+   ->const std::vector< Period > &
+  impliedCmsSpreads
+   ->const Matrix &
+  spreadErrors
+   ->const Matrix &
+  browse
+   ->Matrix
+  weightedSpreadError
+   ->Real
+   ::const Matrix &
+   -- ^weights
+  weightedSpotNpvError
+   ->Real
+   ::const Matrix &
+   -- ^weights
+  weightedFwdNpvError
+   ->Real
+   ::const Matrix &
+   -- ^weights
+  weightedSpreadErrors
+   ->Disposable< Array >
+   ::const Matrix &
+   -- ^weights
+  weightedSpotNpvErrors
+   ->Disposable< Array >
+   ::const Matrix &
+   -- ^weights
+  weightedFwdNpvErrors
+   ->Disposable< Array >
+   ::const Matrix &
+   -- ^weights
+ -v-
+ -e-

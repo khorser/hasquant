@@ -1,0 +1,9 @@
+LUFCurrency
+ -- |Luxembourg franc.
+ -- |The ISO three-letter code was LUF; the numeric code was 442. It was divided in 100 centimes.Obsoleted by the Euro since 1999.
+
+ -f-
+  LUFCurrency
+   ->
+ -v-
+ -e-

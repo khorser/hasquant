@@ -1,0 +1,29 @@
+MixedLinearCubicInterpolation
+ -- |mixed linear/cubic interpolation between discrete points
+
+ -f-
+  -- the $ x $ values must be sorted.
+  MixedLinearCubicInterpolation
+   ->
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+   ::Size
+   -- ^n
+   ::CubicInterpolation::DerivativeApprox
+   -- ^da
+   ::bool
+   -- ^monotonic
+   ::CubicInterpolation::BoundaryCondition
+   -- ^leftC
+   ::Real
+   -- ^leftConditionValue
+   ::CubicInterpolation::BoundaryCondition
+   -- ^rightC
+   ::Real
+   -- ^rightConditionValue
+ -v-
+ -e-

@@ -1,0 +1,20 @@
+BasisIncompleteOrdered
+
+ -f-
+  BasisIncompleteOrdered
+   ->
+   ::Size
+   -- ^euclideanDimension
+  -- return value indicates if the vector was linearly independent
+  addVector
+   ->bool
+   ::const Array &
+   -- ^newVector
+  basisSize
+   ->Size
+  euclideanDimension
+   ->Size
+  getBasisAsRowsInMatrix
+   ->Matrix
+ -v-
+ -e-

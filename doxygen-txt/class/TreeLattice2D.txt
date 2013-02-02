@@ -1,0 +1,35 @@
+TreeLattice2D
+ -- |Two-dimensional tree-based lattice.
+ -- |This lattice is based on two trinomial trees and primarily used for the G2 short-rate model.
+
+ -f-
+  TreeLattice2D
+   ->
+   ::const boost::shared_ptr< T > &
+   -- ^tree1
+   ::const boost::shared_ptr< T > &
+   -- ^tree2
+   ::Real
+   -- ^correlation
+  size
+   ->Size
+   ::Size
+   -- ^i
+  descendant
+   ->Size
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+   ::Size
+   -- ^branch
+  probability
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+   ::Size
+   -- ^branch
+ -v-
+ -e-

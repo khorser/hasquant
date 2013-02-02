@@ -1,0 +1,10 @@
+Duration
+ -- |duration type
+
+ -f-
+ -v-
+ -e-
+  Type
+   Simple
+   Macaulay
+   Modified

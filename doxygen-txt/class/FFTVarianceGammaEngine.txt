@@ -1,0 +1,14 @@
+FFTVarianceGammaEngine
+ -- |FFT engine for vanilla options under a Variance Gamma process.
+ -- |Teststhe correctness of the returned values is tested by comparison with known good values and the analytic approach
+
+ -f-
+  FFTVarianceGammaEngine
+   ->
+   ::const boost::shared_ptr< VarianceGammaProcess > &
+   -- ^process
+   ::Real
+   =0.001
+   -- ^logStrikeSpacing
+ -v-
+ -e-

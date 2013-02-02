@@ -1,0 +1,14 @@
+detail::long_period_holder
+
+ -f-
+ -v-
+  p
+   ::Period
+ -e-
+ -f-
+  long_period_holder
+   ->
+   ::const Period &
+   -- ^p
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+NelsonSiegelFitting
+ -- |Nelson-Siegel fitting method.
+ -- |Fits a discount function to the form $ d(t) = \exp^{-r t}, $ where the zero rate $r$ is defined as \[ r \equiv c_0 + (c_0 + c_1)*(1 - exp^{-\kappa*t}/(\kappa t) - c_2 exp^{ - \kappa t}. \] See: Nelson, C. and A. Siegel (1985): "Parsimonious modeling of yield curves for US Treasury bills." NBER Working Paper Series, no 1594.
+
+ -f-
+  NelsonSiegelFitting
+   ->
+ -v-
+ -e-

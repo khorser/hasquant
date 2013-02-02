@@ -1,0 +1,14 @@
+IterativeBootstrap
+ -- |Universal piecewise-term-structure boostrapper.
+
+ -f-
+  IterativeBootstrap
+   ->
+  setup
+   ->void
+   ::Curve *
+   -- ^ts
+  calculate
+   ->void
+ -v-
+ -e-

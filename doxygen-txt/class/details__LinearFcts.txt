@@ -1,0 +1,16 @@
+details::LinearFcts
+
+ -f-
+ -v-
+ -e-
+ -f-
+  LinearFcts
+   ->
+   ::const xContainer &
+   -- ^x
+   ::Real
+   -- ^intercept
+  fcts
+   ->const std::vector< boost::function1< Real, ArgumentType > > &
+ -v-
+ -e-

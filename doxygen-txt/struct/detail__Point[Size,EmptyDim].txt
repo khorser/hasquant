@@ -1,0 +1,31 @@
+detail::Point< Size, EmptyDim >
+
+ -f-
+ -v-
+ -e-
+ -f-
+ -v-
+  first
+   ::data_type
+  second
+   ::EmptyDim
+ -e-
+ -f-
+  Point
+   ->
+  Point
+   ->
+   ::data_type
+   -- ^s
+  operator data_type
+   ->
+  operator[]
+   ->data_type
+   ::Size
+   -- ^n
+  operator[]
+   ->data_type &
+   ::Size
+   -- ^n
+ -v-
+ -e-

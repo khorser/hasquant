@@ -1,0 +1,21 @@
+GenericCPI
+ -- |Generic CPI index.
+
+ -f-
+  GenericCPI
+   ->
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^revised
+   ::bool
+   -- ^interpolated
+   ::const Period &
+   -- ^lag
+   ::const Currency &
+   -- ^ccy
+   ::const Handle< ZeroInflationTermStructure > &
+   =Handle< ZeroInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

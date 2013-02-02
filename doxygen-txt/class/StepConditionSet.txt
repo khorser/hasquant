@@ -1,0 +1,16 @@
+StepConditionSet
+ -- |Parallel evolver for multiple arrays.
+
+ -f-
+  applyTo
+   ->void
+   ::std::vector< array_type > &
+   -- ^a
+   ::Time
+   -- ^t
+  push_back
+   ->void
+   ::const itemType &
+   -- ^a
+ -v-
+ -e-

@@ -1,0 +1,39 @@
+VegaBumpCluster
+
+ -f-
+  VegaBumpCluster
+   ->
+   ::Size
+   -- ^factorBegin
+   ::Size
+   -- ^factorEnd
+   ::Size
+   -- ^rateBegin
+   ::Size
+   -- ^rateEnd
+   ::Size
+   -- ^stepBegin
+   ::Size
+   -- ^stepEnd
+  doesIntersect
+   ->bool
+   ::const VegaBumpCluster &
+   -- ^comparee
+  isCompatible
+   ->bool
+   ::const boost::shared_ptr< MarketModel > &
+   -- ^volStructure
+  factorBegin
+   ->Size
+  factorEnd
+   ->Size
+  rateBegin
+   ->Size
+  rateEnd
+   ->Size
+  stepBegin
+   ->Size
+  stepEnd
+   ->Size
+ -v-
+ -e-

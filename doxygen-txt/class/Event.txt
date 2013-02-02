@@ -1,0 +1,32 @@
+Event
+ -- |Base class for event.
+ -- |This class acts as a base class for the actual event implementations.
+
+ -f-
+  -- returns the date at which the event occurs
+  date
+   ->Date
+  -- returns true if an event has already occurred before a date
+  -- If includeRefDate is true, then an event has not occurred if its date is the same as the refDate, i.e. this method returns false if the event date is the same as the refDate.
+  hasOccurred
+   ->bool
+   ::const Date &
+   =Date()
+   -- ^refDate
+   ::boost::optional< bool >
+   =boost::none
+   -- ^includeRefDate
+ -v-
+ -e-
+ -f-
+  accept
+   ->void
+   ::AcyclicVisitor &
+   -- ^
+ -v-
+ -e-
+ -f-
+  ~Event
+   ->
+ -v-
+ -e-

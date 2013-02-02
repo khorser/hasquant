@@ -1,0 +1,37 @@
+FdmVPPStepCondition
+
+ -f-
+  FdmVPPStepCondition
+   ->
+   ::Real
+   -- ^heatRate
+   ::Real
+   -- ^pMin
+   ::Real
+   -- ^pMax
+   ::Size
+   -- ^tMinUp
+   ::Size
+   -- ^tMinDown
+   ::Real
+   -- ^startUpFuel
+   ::Real
+   -- ^startUpFixCost
+   ::Real
+   -- ^carbonPrice
+   ::Size
+   -- ^stateDirection
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const boost::shared_ptr< FdmInnerValueCalculator > &
+   -- ^gasPrice
+   ::const boost::shared_ptr< FdmInnerValueCalculator > &
+   -- ^sparkSpreadPrice
+  applyTo
+   ->void
+   ::Array &
+   -- ^a
+   ::Time
+   -- ^t
+ -v-
+ -e-

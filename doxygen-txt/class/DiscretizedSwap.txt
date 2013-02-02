@@ -1,0 +1,19 @@
+DiscretizedSwap
+
+ -f-
+  DiscretizedSwap
+   ->
+   ::const VanillaSwap::arguments &
+   -- ^
+   ::const Date &
+   -- ^referenceDate
+   ::const DayCounter &
+   -- ^dayCounter
+  reset
+   ->void
+   ::Size
+   -- ^size
+  mandatoryTimes
+   ->std::vector< Time >
+ -v-
+ -e-

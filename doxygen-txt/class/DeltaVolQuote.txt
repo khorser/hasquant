@@ -1,0 +1,51 @@
+DeltaVolQuote
+ -- |Class for the quotation of delta vs vol.
+ -- |It includes the various delta quotation types in FX markets as well as ATM types.
+
+ -f-
+ -v-
+ -e-
+  DeltaType
+   Spot
+   Fwd
+   PaSpot
+   PaFwd
+  AtmType
+   AtmNull
+   AtmSpot
+   AtmFwd
+   AtmDeltaNeutral
+   AtmVegaMax
+   AtmGammaMax
+   AtmPutCall50
+ -f-
+  DeltaVolQuote
+   ->
+   ::Real
+   -- ^delta
+   ::const Handle< Quote > &
+   -- ^vol
+   ::Time
+   -- ^maturity
+   ::DeltaType
+   -- ^deltaType
+  DeltaVolQuote
+   ->
+   ::const Handle< Quote > &
+   -- ^vol
+   ::DeltaType
+   -- ^deltaType
+   ::Time
+   -- ^maturity
+   ::AtmType
+   -- ^atmType
+  delta
+   ->Real
+  maturity
+   ->Time
+  atmType
+   ->AtmType
+  deltaType
+   ->DeltaType
+ -v-
+ -e-

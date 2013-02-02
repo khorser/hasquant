@@ -1,0 +1,12 @@
+SteepestDescent
+ -- |Multi-dimensional steepest-descent class.
+ -- |User has to provide line-search method and optimization end criteria search direction \form#237
+
+ -f-
+  SteepestDescent
+   ->
+   ::const boost::shared_ptr< LineSearch > &
+   =boost::shared_ptr< LineSearch >()
+   -- ^lineSearch
+ -v-
+ -e-

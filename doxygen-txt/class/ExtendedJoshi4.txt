@@ -1,0 +1,29 @@
+ExtendedJoshi4
+
+ -f-
+  ExtendedJoshi4
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+   ::Real
+   -- ^strike
+  underlying
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+  probability
+   ->Real
+   ::Size
+   -- ^
+   ::Size
+   -- ^
+   ::Size
+   -- ^branch
+ -v-
+ -e-

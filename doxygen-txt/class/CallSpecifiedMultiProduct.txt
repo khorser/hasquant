@@ -1,0 +1,49 @@
+CallSpecifiedMultiProduct
+
+ -f-
+  suggestedNumeraires
+   ->std::vector< Size >
+  evolution
+   ->const EvolutionDescription &
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  numberOfProducts
+   ->Size
+  maxNumberOfCashFlowsPerProductPerStep
+   ->Size
+  reset
+   ->void
+  nextTimeStep
+   ->bool
+   ::const CurveState &
+   -- ^currentState
+   ::std::vector< Size > &
+   -- ^numberCashFlowsThisStep
+   ::std::vector< std::vector< CashFlow > > &
+   -- ^cashFlowsGenerated
+  clone
+   ->std::auto_ptr< MarketModelMultiProduct >
+ -v-
+ -e-
+ -f-
+  CallSpecifiedMultiProduct
+   ->
+   ::const Clone< MarketModelMultiProduct > &
+   -- ^underlying
+   ::const Clone< ExerciseStrategy< CurveState > > &
+   -- ^
+   ::const Clone< MarketModelMultiProduct > &
+   =Clone< MarketModelMultiProduct >()
+   -- ^rebate
+  underlying
+   ->const MarketModelMultiProduct &
+  strategy
+   ->const ExerciseStrategy< CurveState > &
+  rebate
+   ->const MarketModelMultiProduct &
+  enableCallability
+   ->void
+  disableCallability
+   ->void
+ -v-
+ -e-

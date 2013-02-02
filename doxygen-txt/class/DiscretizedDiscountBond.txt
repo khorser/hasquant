@@ -1,0 +1,8 @@
+DiscretizedDiscountBond
+ -- |Useful discretized discount bond asset.
+
+ -f-
+  DiscretizedDiscountBond
+   ->
+ -v-
+ -e-

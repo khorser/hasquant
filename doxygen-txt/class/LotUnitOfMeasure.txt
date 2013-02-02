@@ -1,0 +1,7 @@
+LotUnitOfMeasure
+
+ -f-
+  LotUnitOfMeasure
+   ->
+ -v-
+ -e-

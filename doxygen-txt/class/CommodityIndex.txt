@@ -1,0 +1,79 @@
+CommodityIndex
+ -- |base class for commodity indexes
+
+ -f-
+  name
+   ->std::string
+ -v-
+ -e-
+ -f-
+  commodityType
+   ->const CommodityType &
+  currency
+   ->const Currency &
+  unitOfMeasure
+   ->const UnitOfMeasure &
+  calendar
+   ->const Calendar &
+  forwardCurve
+   ->const boost::shared_ptr< CommodityCurve > &
+  lotQuantity
+   ->Real
+  price
+   ->Real
+   ::const Date &
+   -- ^date
+  forwardPrice
+   ->Real
+   ::const Date &
+   -- ^date
+  lastQuoteDate
+   ->Date
+ -v-
+ -e-
+ -f-
+  CommodityIndex
+   ->
+   ::const std::string &
+   -- ^name
+   ::const CommodityType &
+   -- ^commodityType
+   ::const Currency &
+   -- ^currency
+   ::const UnitOfMeasure &
+   -- ^unitOfMeasure
+   ::const Calendar &
+   -- ^calendar
+   ::Real
+   -- ^lotQuantity
+   ::const boost::shared_ptr< CommodityCurve > &
+   -- ^forwardCurve
+   ::const boost::shared_ptr< ExchangeContracts > &
+   -- ^exchangeContracts
+   ::int
+   -- ^nearbyOffset
+  addQuote
+   ->void
+   ::const Date &
+   -- ^quoteDate
+   ::Real
+   -- ^quote
+  addQuotes
+   ->void
+   ::const std::map< Date, Real > &
+   -- ^quotes
+  clearQuotes
+   ->void
+  -- returns TRUE if the quote date is valid
+  isValidQuoteDate
+   ->bool
+   ::const Date &
+   -- ^quoteDate
+  empty
+   ->bool
+  forwardCurveEmpty
+   ->bool
+  quotes
+   ->const TimeSeries< Real > &
+ -v-
+ -e-

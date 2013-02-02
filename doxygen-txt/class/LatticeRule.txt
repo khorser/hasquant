@@ -1,0 +1,21 @@
+LatticeRule
+
+ -f-
+ -v-
+ -e-
+  type
+   A
+   B
+   C
+   D
+ -f-
+  getRule
+   ->void
+   ::type
+   -- ^name
+   ::std::vector< Real > &
+   -- ^Z
+   ::Integer
+   -- ^N
+ -v-
+ -e-

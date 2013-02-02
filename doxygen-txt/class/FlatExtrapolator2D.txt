@@ -1,0 +1,9 @@
+FlatExtrapolator2D
+
+ -f-
+  FlatExtrapolator2D
+   ->
+   ::boost::shared_ptr< Interpolation2D >
+   -- ^decoratedInterpolation
+ -v-
+ -e-

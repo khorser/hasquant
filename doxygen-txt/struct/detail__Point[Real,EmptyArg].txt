@@ -1,0 +1,37 @@
+detail::Point< Real, EmptyArg >
+
+ -f-
+ -v-
+ -e-
+ -f-
+ -v-
+  first
+   ::data_type
+  second
+   ::EmptyArg
+ -e-
+ -f-
+  Point
+   ->
+   ::data_type
+   -- ^s
+  Point
+   ->
+   ::const std::vector< Real >::const_iterator &
+   -- ^i
+  Point
+   ->
+   ::const std::vector< Real > &
+   -- ^v
+  operator data_type
+   ->
+  operator[]
+   ->data_type
+   ::Size
+   -- ^n
+  operator[]
+   ->data_type &
+   ::Size
+   -- ^n
+ -v-
+ -e-

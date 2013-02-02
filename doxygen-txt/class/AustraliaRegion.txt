@@ -1,0 +1,8 @@
+AustraliaRegion
+ -- |Australia as geographical/economic region.
+
+ -f-
+  AustraliaRegion
+   ->
+ -v-
+ -e-

@@ -1,0 +1,44 @@
+CmsCoupon
+ -- |CMS coupon class.
+ -- |WarningThis class does not perform any date adjustment, i.e., the start and end date passed upon construction should be already rolled to a business day.
+
+ -f-
+  swapIndex
+   ->const boost::shared_ptr< SwapIndex > &
+ -v-
+ -e-
+ -f-
+  CmsCoupon
+   ->
+   ::const Date &
+   -- ^paymentDate
+   ::Real
+   -- ^nominal
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::Natural
+   -- ^fixingDays
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^index
+   ::Real
+   =1.0
+   -- ^gearing
+   ::Spread
+   =0.0
+   -- ^spread
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::bool
+   =false
+   -- ^isInArrears
+ -v-
+ -e-

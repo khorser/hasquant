@@ -1,0 +1,60 @@
+AbcdAtmVolCurve
+ -- |Abcd-interpolated at-the-money (no-smile) volatility curve.
+ -- |blah blah
+
+ -f-
+  optionTenors
+   ->const std::vector< Period > &
+  optionTenorsInInterpolation
+   ->const std::vector< Period > &
+  optionDates
+   ->const std::vector< Date > &
+  optionTimes
+   ->const std::vector< Time > &
+ -v-
+ -e-
+ -f-
+  -- floating reference date, floating market data
+  AbcdAtmVolCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^cal
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Handle< Quote > > &
+   -- ^volsHandles
+   ::const std::vector< bool >
+   =std::vector< bool >(1, true)
+   -- ^inclusionInInterpolationFlag
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  -- Returns k adjustment factors for option tenors used in interpolation.
+  k
+   ->std::vector< Real >
+  -- Returns k adjustment factor at time t.
+  k
+   ->Real
+   ::Time
+   -- ^t
+  a
+   ->Real
+  b
+   ->Real
+  c
+   ->Real
+  d
+   ->Real
+  rmsError
+   ->Real
+  maxError
+   ->Real
+  endCriteria
+   ->EndCriteria::Type
+ -v-
+ -e-

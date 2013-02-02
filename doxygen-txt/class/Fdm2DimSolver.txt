@@ -1,0 +1,55 @@
+Fdm2DimSolver
+
+ -f-
+  Fdm2DimSolver
+   ->
+   ::const FdmSolverDesc &
+   -- ^solverDesc
+   ::const FdmSchemeDesc &
+   -- ^schemeDesc
+   ::const boost::shared_ptr< FdmLinearOpComposite > &
+   -- ^op
+  interpolateAt
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  thetaAt
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  derivativeX
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  derivativeY
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  derivativeXX
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  derivativeYY
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  derivativeXY
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

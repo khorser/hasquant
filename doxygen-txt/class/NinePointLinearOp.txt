@@ -1,0 +1,41 @@
+NinePointLinearOp
+
+ -f-
+  NinePointLinearOp
+   ->
+   ::Size
+   -- ^d0
+   ::Size
+   -- ^d1
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+  NinePointLinearOp
+   ->
+   ::const NinePointLinearOp &
+   -- ^m
+  NinePointLinearOp
+   ->
+   ::const Disposable< NinePointLinearOp > &
+   -- ^m
+  operator=
+   ->NinePointLinearOp &
+   ::const NinePointLinearOp &
+   -- ^m
+  operator=
+   ->NinePointLinearOp &
+   ::const Disposable< NinePointLinearOp > &
+   -- ^m
+  apply
+   ->Disposable< Array >
+   ::const Array &
+   -- ^r
+  mult
+   ->Disposable< NinePointLinearOp >
+   ::const Array &
+   -- ^u
+  swap
+   ->void
+   ::NinePointLinearOp &
+   -- ^m
+ -v-
+ -e-

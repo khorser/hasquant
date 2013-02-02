@@ -1,0 +1,24 @@
+CreditDefaultSwap::results
+
+ -f-
+ -v-
+  fairSpread
+   ::Rate
+  fairUpfront
+   ::Rate
+  couponLegBPS
+   ::Real
+  couponLegNPV
+   ::Real
+  defaultLegNPV
+   ::Real
+  upfrontBPS
+   ::Real
+  upfrontNPV
+   ::Real
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

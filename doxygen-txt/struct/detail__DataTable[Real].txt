@@ -1,0 +1,36 @@
+detail::DataTable< Real >
+
+ -f-
+ -v-
+  data_table_
+   ::std::vector< Real >
+ -e-
+ -f-
+  DataTable
+   ->
+   ::Size
+   -- ^n
+  DataTable
+   ->
+   ::const std::vector< Size >::const_iterator &
+   -- ^i
+  DataTable
+   ->
+   ::const SplineGrid::const_iterator &
+   -- ^i
+  DataTable
+   ->
+   ::const std::vector< U > &
+   -- ^v
+  size
+   ->Size
+  operator[]
+   ->Real
+   ::Size
+   -- ^n
+  operator[]
+   ->Real &
+   ::Size
+   -- ^n
+ -v-
+ -e-

@@ -1,0 +1,20 @@
+BatesDetJumpEngine
+
+ -f-
+  BatesDetJumpEngine
+   ->
+   ::const boost::shared_ptr< BatesDetJumpModel > &
+   -- ^model
+   ::Size
+   =144
+   -- ^integrationOrder
+  BatesDetJumpEngine
+   ->
+   ::const boost::shared_ptr< BatesDetJumpModel > &
+   -- ^model
+   ::Real
+   -- ^relTolerance
+   ::Size
+   -- ^maxEvaluations
+ -v-
+ -e-

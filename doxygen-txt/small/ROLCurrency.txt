@@ -1,0 +1,9 @@
+ROLCurrency
+ -- |Romanian leu.
+ -- |The ISO three-letter code was ROL; the numeric code was 642. It was divided in 100 bani.Obsoleted by the new leu since July 2005.
+
+ -f-
+  ROLCurrency
+   ->
+ -v-
+ -e-

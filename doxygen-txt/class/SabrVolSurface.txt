@@ -1,0 +1,29 @@
+SabrVolSurface
+ -- |SABR volatility (smile) surface.
+ -- |blah blah
+
+ -f-
+  SabrVolSurface
+   ->
+   ::const boost::shared_ptr< InterestRateIndex > &
+   -- ^
+   ::const Handle< BlackAtmVolCurve > &
+   -- ^
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Spread > &
+   -- ^atmRateSpreads
+   ::const std::vector< std::vector< Handle< Quote > > > &
+   -- ^volSpreads
+  atmCurve
+   ->const Handle< BlackAtmVolCurve > &
+  volatilitySpreads
+   ->std::vector< Volatility >
+   ::const Period &
+   -- ^
+  volatilitySpreads
+   ->std::vector< Volatility >
+   ::const Date &
+   -- ^
+ -v-
+ -e-

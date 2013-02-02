@@ -1,0 +1,42 @@
+MarketModelComposite
+ -- |Composition of two or more market-model products.
+ -- |Instances of this class build a market-model product by composing one or more subproducts.All subproducts must have the same rate times.
+
+ -f-
+  add
+   ->void
+   ::const Clone< MarketModelMultiProduct > &
+   -- ^
+   ::Real
+   =1.0
+   -- ^multiplier
+  subtract
+   ->void
+   ::const Clone< MarketModelMultiProduct > &
+   -- ^
+   ::Real
+   =1.0
+   -- ^multiplier
+  finalize
+   ->void
+  size
+   ->Size
+  item
+   ->const MarketModelMultiProduct &
+   ::Size
+   -- ^i
+  item
+   ->MarketModelMultiProduct &
+   ::Size
+   -- ^i
+  multiplier
+   ->Real
+   ::Size
+   -- ^i
+ -v-
+ -e-
+ -f-
+  MarketModelComposite
+   ->
+ -v-
+ -e-

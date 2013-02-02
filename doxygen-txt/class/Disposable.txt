@@ -1,0 +1,19 @@
+Disposable
+ -- |generic disposable object with move semantics
+ -- |This class can be used for returning a value by copy. It relies on the returned object exposing a swap(T&) method through which the copy constructor and assignment operator are implemented, thus resulting in actual move semantics. Typical use of this class is along the following lines: Disposable<Foo>bar(Integeri){ Foof(i*2); returnf; } WarningIn order to avoid copies in code such as shown above, the conversion from T to Disposable<T> is destructive, i.e., it does not preserve the state of the original object. Therefore, it is necessary for the developer to avoid code such as Disposable<Foo>bar(Foo&f){ returnf; } which would likely render the passed object unusable. The correct way to obtain the desired behavior would be: Disposable<Foo>bar(Foo&f){ Footemp=f; returntemp; }
+
+ -f-
+  Disposable
+   ->
+   ::T &
+   -- ^t
+  Disposable
+   ->
+   ::const Disposable< T > &
+   -- ^t
+  operator=
+   ->Disposable< T > &
+   ::const Disposable< T > &
+   -- ^t
+ -v-
+ -e-

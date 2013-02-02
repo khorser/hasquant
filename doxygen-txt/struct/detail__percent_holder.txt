@@ -1,0 +1,14 @@
+detail::percent_holder
+
+ -f-
+ -v-
+  value
+   ::Real
+ -e-
+ -f-
+  percent_holder
+   ->
+   ::Real
+   -- ^value
+ -v-
+ -e-

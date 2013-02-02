@@ -1,0 +1,31 @@
+YoYOptionletStripper
+ -- |Interface for inflation cap stripping, i.e. from price surfaces.
+ -- |Strippers return K slices of the volatility surface at a given T. In initialize they actually do the stripping along each K.
+
+ -f-
+  -- YoYOptionletStripper interface.
+  initialize
+   ->void
+   ::const boost::shared_ptr< YoYCapFloorTermPriceSurface > &
+   -- ^
+   ::const boost::shared_ptr< YoYInflationCapFloorEngine > &
+   -- ^
+   ::const Real
+   -- ^slope
+  minStrike
+   ->Rate
+  maxStrike
+   ->Rate
+  strikes
+   ->std::vector< Rate >
+  slice
+   ->std::pair< std::vector< Rate >, std::vector< Volatility > >
+   ::const Date &
+   -- ^d
+ -v-
+ -e-
+ -f-
+  ~YoYOptionletStripper
+   ->
+ -v-
+ -e-

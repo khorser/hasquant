@@ -1,0 +1,8 @@
+USRegion
+ -- |USA as geographical/economic region.
+
+ -f-
+  USRegion
+   ->
+ -v-
+ -e-

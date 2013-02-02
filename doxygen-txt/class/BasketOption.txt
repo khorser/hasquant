@@ -1,0 +1,12 @@
+BasketOption
+ -- |Basket option on a number of assets.
+
+ -f-
+  BasketOption
+   ->
+   ::const boost::shared_ptr< BasketPayoff > &
+   -- ^
+   ::const boost::shared_ptr< Exercise > &
+   -- ^
+ -v-
+ -e-

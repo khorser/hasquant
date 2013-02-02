@@ -1,0 +1,14 @@
+KirkSpreadOptionEngine
+ -- |Kirk approximation for European spread option on futures.
+
+ -f-
+  KirkSpreadOptionEngine
+   ->
+   ::const boost::shared_ptr< BlackProcess > &
+   -- ^process1
+   ::const boost::shared_ptr< BlackProcess > &
+   -- ^process2
+   ::const Handle< Quote > &
+   -- ^correlation
+ -v-
+ -e-

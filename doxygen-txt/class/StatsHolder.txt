@@ -1,0 +1,21 @@
+StatsHolder
+ -- |Helper class for precomputed distributions.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  StatsHolder
+   ->
+   ::Real
+   -- ^mean
+   ::Real
+   -- ^standardDeviation
+  ~StatsHolder
+   ->
+  mean
+   ->Real
+  standardDeviation
+   ->Real
+ -v-
+ -e-

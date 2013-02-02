@@ -1,0 +1,32 @@
+CreditDefaultSwap::arguments
+
+ -f-
+ -v-
+  side
+   ::Protection::Side
+  notional
+   ::Real
+  upfront
+   ::boost::optional< Rate >
+  spread
+   ::Rate
+  leg
+   ::Leg
+  upfrontPayment
+   ::boost::shared_ptr< CashFlow >
+  settlesAccrual
+   ::bool
+  paysAtDefaultTime
+   ::bool
+  claim
+   ::boost::shared_ptr< Claim >
+  protectionStart
+   ::Date
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

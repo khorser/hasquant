@@ -1,0 +1,3 @@
+GenericEngine
+ -- |template base class for option pricing engines
+ -- |Derived engines only need to implement the calculate() method.

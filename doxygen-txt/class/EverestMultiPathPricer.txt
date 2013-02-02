@@ -1,0 +1,17 @@
+EverestMultiPathPricer
+
+ -f-
+  EverestMultiPathPricer
+   ->
+   ::Real
+   -- ^notional
+   ::Rate
+   -- ^guarantee
+   ::DiscountFactor
+   -- ^discount
+  operator()
+   ->Real
+   ::const MultiPath &
+   -- ^multiPath
+ -v-
+ -e-

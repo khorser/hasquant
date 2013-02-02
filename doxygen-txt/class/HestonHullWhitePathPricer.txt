@@ -1,0 +1,17 @@
+HestonHullWhitePathPricer
+
+ -f-
+  HestonHullWhitePathPricer
+   ->
+   ::Time
+   -- ^exerciseTime
+   ::const boost::shared_ptr< Payoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< HybridHestonHullWhiteProcess > &
+   -- ^process
+  operator()
+   ->Real
+   ::const MultiPath &
+   -- ^path
+ -v-
+ -e-

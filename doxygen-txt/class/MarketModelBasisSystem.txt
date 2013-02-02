@@ -1,0 +1,11 @@
+MarketModelBasisSystem
+
+ -f-
+  numberOfFunctions
+   ->std::vector< Size >
+  numberOfData
+   ->std::vector< Size >
+  clone
+   ->std::auto_ptr< MarketModelBasisSystem >
+ -v-
+ -e-

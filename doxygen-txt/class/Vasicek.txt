@@ -1,0 +1,24 @@
+Vasicek
+ -- |Vasicek model class
+ -- |This class implements the Vasicek model defined by \[ dr_t = a(b - r_t)dt + \sigma dW_t , \] where $ a $, $ b $ and $ \sigma $ are constants; a risk premium $ \lambda $ can also be specified.
+
+ -f-
+  Vasicek
+   ->
+   ::Rate
+   =0.05
+   -- ^r0
+   ::Real
+   =0.1
+   -- ^a
+   ::Real
+   =0.05
+   -- ^b
+   ::Real
+   =0.01
+   -- ^sigma
+   ::Real
+   =0.0
+   -- ^lambda
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+SeedGenerator
+ -- |Random seed generator.
+ -- |Random number generator used for automatic generation of initialization seeds.Testscorrect initialization of the single instance is tested.
+
+ -f-
+  get
+   ->unsigned long
+ -v-
+ -e-

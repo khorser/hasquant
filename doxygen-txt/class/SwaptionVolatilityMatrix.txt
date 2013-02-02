@@ -1,0 +1,100 @@
+SwaptionVolatilityMatrix
+ -- |At-the-money swaption-volatility matrix.
+ -- |This class provides the at-the-money volatility for a given swaption by interpolating a volatility matrix whose elements are the market volatilities of a set of swaption with given option date and swapLength.The volatility matrix M must be defined so that: the number of rows equals the number of option dates;the number of columns equals the number of swap tenors;M[i][j] contains the volatility corresponding to the i-th option and j-th tenor.
+
+ -f-
+  -- returns the lower indexes of surrounding volatility matrix corners
+  locate
+   ->std::pair< Size, Size >
+   ::const Date &
+   -- ^optionDate
+   ::const Period &
+   -- ^swapTenor
+  -- returns the lower indexes of surrounding volatility matrix corners
+  locate
+   ->std::pair< Size, Size >
+   ::Time
+   -- ^optionTime
+   ::Time
+   -- ^swapLength
+ -v-
+ -e-
+ -f-
+  -- floating reference date, floating market data
+  SwaptionVolatilityMatrix
+   ->
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::const std::vector< std::vector< Handle< Quote > > > &
+   -- ^vols
+   ::const DayCounter &
+   -- ^dayCounter
+  -- fixed reference date, floating market data
+  SwaptionVolatilityMatrix
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::const std::vector< std::vector< Handle< Quote > > > &
+   -- ^vols
+   ::const DayCounter &
+   -- ^dayCounter
+  -- floating reference date, fixed market data
+  SwaptionVolatilityMatrix
+   ->
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::const Matrix &
+   -- ^volatilities
+   ::const DayCounter &
+   -- ^dayCounter
+  -- fixed reference date, fixed market data
+  SwaptionVolatilityMatrix
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::const Matrix &
+   -- ^volatilities
+   ::const DayCounter &
+   -- ^dayCounter
+  SwaptionVolatilityMatrix
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const std::vector< Date > &
+   -- ^optionDates
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::const Matrix &
+   -- ^volatilities
+   ::const DayCounter &
+   -- ^dayCounter
+ -v-
+ -e-

@@ -1,0 +1,103 @@
+SwapRateHelper
+ -- |Rate helper for bootstrapping over swap rates.
+ -- |Possible enhancementsuse input SwapIndex to create the swap
+
+ -f-
+  setTermStructure
+   ->void
+   ::YieldTermStructure *
+   -- ^
+ -v-
+ -e-
+ -f-
+  spread
+   ->Spread
+  swap
+   ->boost::shared_ptr< VanillaSwap >
+  forwardStart
+   ->const Period &
+ -v-
+ -e-
+ -f-
+  SwapRateHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^rate
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^swapIndex
+   ::const Handle< Quote > &
+   =Handle< Quote >()
+   -- ^spread
+   ::const Period &
+   =0 *Days
+   -- ^fwdStart
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^discountingCurve
+  SwapRateHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^rate
+   ::const Period &
+   -- ^tenor
+   ::const Calendar &
+   -- ^calendar
+   ::Frequency
+   -- ^fixedFrequency
+   ::BusinessDayConvention
+   -- ^fixedConvention
+   ::const DayCounter &
+   -- ^fixedDayCount
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+   ::const Handle< Quote > &
+   =Handle< Quote >()
+   -- ^spread
+   ::const Period &
+   =0 *Days
+   -- ^fwdStart
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^discountingCurve
+  SwapRateHelper
+   ->
+   ::Rate
+   -- ^rate
+   ::const Period &
+   -- ^tenor
+   ::const Calendar &
+   -- ^calendar
+   ::Frequency
+   -- ^fixedFrequency
+   ::BusinessDayConvention
+   -- ^fixedConvention
+   ::const DayCounter &
+   -- ^fixedDayCount
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+   ::const Handle< Quote > &
+   =Handle< Quote >()
+   -- ^spread
+   ::const Period &
+   =0 *Days
+   -- ^fwdStart
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^discountingCurve
+  SwapRateHelper
+   ->
+   ::Rate
+   -- ^rate
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^swapIndex
+   ::const Handle< Quote > &
+   =Handle< Quote >()
+   -- ^spread
+   ::const Period &
+   =0 *Days
+   -- ^fwdStart
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^discountingCurve
+ -v-
+ -e-

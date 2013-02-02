@@ -1,0 +1,17 @@
+FdmZeroInnerValue
+
+ -f-
+  innerValue
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^
+   ::Time
+   -- ^
+  avgInnerValue
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^
+   ::Time
+   -- ^
+ -v-
+ -e-

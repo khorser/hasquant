@@ -1,0 +1,45 @@
+McSimulation
+ -- |base class for Monte Carlo engines
+ -- |Eventually this class might offer greeks methods. Deriving a class from McSimulation gives an easy way to write a Monte Carlo engine.See McVanillaEngine as an example.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  ~McSimulation
+   ->
+  -- add samples until the required absolute tolerance is reached
+  value
+   ->result_type
+   ::Real
+   -- ^tolerance
+   ::Size
+   =QL_MAX_INTEGER
+   -- ^maxSamples
+   ::Size
+   =1023
+   -- ^minSamples
+  -- simulate a fixed number of samples
+  valueWithSamples
+   ->result_type
+   ::Size
+   -- ^samples
+  -- error estimated using the samples simulated so far
+  errorEstimate
+   ->result_type
+  -- access to the sample accumulator for richer statistics
+  sampleAccumulator
+   ->const stats_type &
+   ::void
+   -- ^
+  -- basic calculate method provided to inherited pricing engines
+  calculate
+   ->void
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^requiredSamples
+   ::Size
+   -- ^maxSamples
+ -v-
+ -e-

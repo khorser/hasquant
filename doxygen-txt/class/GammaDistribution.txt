@@ -1,0 +1,13 @@
+GammaDistribution
+
+ -f-
+  GammaDistribution
+   ->
+   ::Real
+   -- ^a
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

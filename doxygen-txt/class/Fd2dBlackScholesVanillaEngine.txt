@@ -1,0 +1,30 @@
+Fd2dBlackScholesVanillaEngine
+ -- |Two dimensional finite-differences Black Scholes vanilla option engine.
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature and comparison with Kirk approximation.
+
+ -f-
+  Fd2dBlackScholesVanillaEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^p1
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^p2
+   ::Real
+   -- ^correlation
+   ::Size
+   =100
+   -- ^xGrid
+   ::Size
+   =100
+   -- ^yGrid
+   ::Size
+   =50
+   -- ^tGrid
+   ::Size
+   =0
+   -- ^dampingSteps
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+Sweden
+ -- |Swedish calendar.
+ -- |Holidays: Saturdays Sundays New Year's Day, January 1st Epiphany, January 6th Good Friday Easter Monday Ascension Whit(Pentecost) Monday May Day, May 1st National Day, June 6th Midsummer Eve (Friday between June 19-25) Christmas Eve, December 24th Christmas Day, December 25th Boxing Day, December 26th New Year's Eve, December 31th
+
+ -f-
+  Sweden
+   ->
+ -v-
+ -e-

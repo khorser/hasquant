@@ -1,0 +1,26 @@
+SMMDriftCalculator
+ -- |Drift computation for coterminal swap market models.
+ -- |Returns the drift $ \mu \Delta t $. See Mark Joshi, Lorenzo Liesch, Effective Implementation Of Generic Market Models.
+
+ -f-
+  SMMDriftCalculator
+   ->
+   ::const Matrix &
+   -- ^pseudo
+   ::const std::vector< Spread > &
+   -- ^displacements
+   ::const std::vector< Time > &
+   -- ^taus
+   ::Size
+   -- ^numeraire
+   ::Size
+   -- ^alive
+  -- Computes the drifts.
+  compute
+   ->void
+   ::const CoterminalSwapCurveState &
+   -- ^cs
+   ::std::vector< Real > &
+   -- ^drifts
+ -v-
+ -e-

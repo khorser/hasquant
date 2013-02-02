@@ -1,0 +1,24 @@
+StrippedOptionlet
+ -- |Helper class to wrap in a StrippedOptionletBase object a matrix of exogenously calculated optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities).
+
+ -f-
+  StrippedOptionlet
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+   ::const std::vector< Date > &
+   -- ^optionletDates
+   ::const std::vector< Rate > &
+   -- ^strikes
+   ::const std::vector< std::vector< Handle< Quote > > > &
+   -- ^
+   ::const DayCounter &
+   -- ^dc
+ -v-
+ -e-

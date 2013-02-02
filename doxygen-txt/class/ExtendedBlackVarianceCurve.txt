@@ -1,0 +1,25 @@
+ExtendedBlackVarianceCurve
+ -- |Black volatility curve modelled as variance curve.
+ -- |This class is similar to BlackVarianceCurve, but extends it to use quotes for the input volatilities.
+
+ -f-
+  ExtendedBlackVarianceCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Handle< Quote > > &
+   -- ^volatilities
+   ::const DayCounter &
+   -- ^dayCounter
+   ::bool
+   =true
+   -- ^forceMonotoneVariance
+  setInterpolation
+   ->void
+   ::const Interpolator &
+   =Interpolator()
+   -- ^i
+ -v-
+ -e-

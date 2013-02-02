@@ -1,0 +1,11 @@
+GaussHyperbolicIntegration
+ -- |Gauss-Hyperbolic integration.
+ -- |This class performs a 1-dimensional Gauss-Hyperbolic integration. \[ \int_{-\inf}^{\inf} f(x) \mathrm{d}x \] The weighting function is \[ w(x)=1/cosh(x) \]
+
+ -f-
+  GaussHyperbolicIntegration
+   ->
+   ::Size
+   -- ^n
+ -v-
+ -e-

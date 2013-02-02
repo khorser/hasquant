@@ -1,0 +1,29 @@
+SVD
+ -- |Singular value decomposition.
+ -- |Refer to Golub and Van Loan: Matrix computation, The Johns Hopkins University PressTeststhe correctness of the returned values is tested by checking their properties.
+
+ -f-
+  SVD
+   ->
+   ::const Matrix &
+   -- ^
+  U
+   ->const Matrix &
+  V
+   ->const Matrix &
+  singularValues
+   ->const Array &
+  S
+   ->Disposable< Matrix >
+  norm2
+   ->Real
+  cond
+   ->Real
+  rank
+   ->Size
+  solveFor
+   ->Disposable< Array >
+   ::const Array &
+   -- ^
+ -v-
+ -e-

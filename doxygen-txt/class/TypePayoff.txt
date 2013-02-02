@@ -1,0 +1,8 @@
+TypePayoff
+ -- |Intermediate class for put/call payoffs.
+
+ -f-
+  optionType
+   ->Option::Type
+ -v-
+ -e-

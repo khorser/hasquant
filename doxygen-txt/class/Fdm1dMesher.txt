@@ -1,0 +1,25 @@
+Fdm1dMesher
+
+ -f-
+  Fdm1dMesher
+   ->
+   ::Size
+   -- ^size
+  size
+   ->Size
+  dplus
+   ->Real
+   ::Size
+   -- ^index
+  dminus
+   ->Real
+   ::Size
+   -- ^index
+  location
+   ->Real
+   ::Size
+   -- ^index
+  locations
+   ->const std::vector< Real > &
+ -v-
+ -e-

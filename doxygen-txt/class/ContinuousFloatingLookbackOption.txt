@@ -1,0 +1,14 @@
+ContinuousFloatingLookbackOption
+ -- |Continuous-floating lookback option.
+
+ -f-
+  ContinuousFloatingLookbackOption
+   ->
+   ::Real
+   -- ^currentMinmax
+   ::const boost::shared_ptr< TypePayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+ -v-
+ -e-

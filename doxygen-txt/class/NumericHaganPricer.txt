@@ -1,0 +1,61 @@
+NumericHaganPricer
+ -- |CMS-coupon pricer.
+ -- |Prices a cms coupon via static replication as in Hagan's "Conundrums..." article via numerical integration based on prices of vanilla swaptions
+
+ -f-
+ -v-
+  upperLimit_
+   ::Real
+  stdDeviationsForUpperLimit_
+   ::Real
+  lowerLimit_
+   ::const Real
+  requiredStdDeviations_
+   ::const Real
+  precision_
+   ::const Real
+  refiningIntegrationTolerance_
+   ::const Real
+ -e-
+ -f-
+  NumericHaganPricer
+   ->
+   ::const Handle< SwaptionVolatilityStructure > &
+   -- ^swaptionVol
+   ::GFunctionFactory::YieldCurveModel
+   -- ^modelOfYieldCurve
+   ::const Handle< Quote > &
+   -- ^meanReversion
+   ::Rate
+   =0.0
+   -- ^lowerLimit
+   ::Rate
+   =1.0
+   -- ^upperLimit
+   ::Real
+   =1.0e-6
+   -- ^precision
+  upperLimit
+   ->Real
+  stdDeviations
+   ->Real
+  integrate
+   ->Real
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::const ConundrumIntegrand &
+   -- ^Integrand
+  resetUpperLimit
+   ->Real
+   ::Real
+   -- ^stdDeviationsForUpperLimit
+  refineIntegration
+   ->Real
+   ::Real
+   -- ^integralValue
+   ::const ConundrumIntegrand &
+   -- ^integrand
+ -v-
+ -e-

@@ -1,0 +1,29 @@
+BasketPayoff
+
+ -f-
+  BasketPayoff
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^p
+  ~BasketPayoff
+   ->
+  name
+   ->std::string
+  description
+   ->std::string
+  operator()
+   ->Real
+   ::Real
+   -- ^price
+  operator()
+   ->Real
+   ::const Array &
+   -- ^a
+  accumulate
+   ->Real
+   ::const Array &
+   -- ^a
+  basePayoff
+   ->const boost::shared_ptr< Payoff >
+ -v-
+ -e-

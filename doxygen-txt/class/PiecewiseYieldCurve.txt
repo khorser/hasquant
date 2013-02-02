@@ -1,0 +1,136 @@
+PiecewiseYieldCurve
+ -- |Piecewise yield term structure.
+ -- |This term structure is bootstrapped on a number of interest rate instruments which are passed as a vector of handles to RateHelper instances. Their maturities mark the boundaries of the interpolated segments.Each segment is determined sequentially starting from the earliest period to the latest and is chosen so that the instrument whose maturity marks the end of such segment is correctly repriced on the curve.WarningThe bootstrapping algorithm will raise an exception if any two instruments have the same maturity date.Tests the correctness of the returned values is tested by checking them against the original inputs.the observability of the term structure is tested.
+
+ -f-
+  PiecewiseYieldCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
+   -- ^instruments
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+   ::Real
+   =1.0e-12
+   -- ^accuracy
+   ::const Interpolator &
+   =Interpolator()
+   -- ^i
+   ::const Bootstrap< this_curve > &
+   =Bootstrap< this_curve >()
+   -- ^bootstrap
+  PiecewiseYieldCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
+   -- ^instruments
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Real
+   -- ^accuracy
+   ::const Interpolator &
+   =Interpolator()
+   -- ^i
+   ::const Bootstrap< this_curve > &
+   =Bootstrap< this_curve >()
+   -- ^bootstrap
+  PiecewiseYieldCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
+   -- ^instruments
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Interpolator &
+   -- ^i
+   ::const Bootstrap< this_curve > &
+   =Bootstrap< this_curve >()
+   -- ^bootstrap
+  PiecewiseYieldCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
+   -- ^instruments
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+   ::Real
+   =1.0e-12
+   -- ^accuracy
+   ::const Interpolator &
+   =Interpolator()
+   -- ^i
+   ::const Bootstrap< this_curve > &
+   =Bootstrap< this_curve >()
+   -- ^bootstrap
+  PiecewiseYieldCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
+   -- ^instruments
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Real
+   -- ^accuracy
+   ::const Interpolator &
+   =Interpolator()
+   -- ^i
+   ::const Bootstrap< this_curve > &
+   =Bootstrap< this_curve >()
+   -- ^bootstrap
+  PiecewiseYieldCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
+   -- ^instruments
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Interpolator &
+   -- ^i
+   ::const Bootstrap< this_curve > &
+   =Bootstrap< this_curve >()
+   -- ^bootstrap
+ -v-
+ -e-
+ -f-
+  maxDate
+   ->Date
+ -v-
+ -e-
+ -f-
+  times
+   ->const std::vector< Time > &
+  dates
+   ->const std::vector< Date > &
+  data
+   ->const std::vector< Real > &
+  nodes
+   ->std::vector< std::pair< Date, Real > >
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-

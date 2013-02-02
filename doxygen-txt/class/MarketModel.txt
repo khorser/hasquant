@@ -1,0 +1,37 @@
+MarketModel
+ -- |base class for market models
+ -- |For each time step, generates the pseudo-square root of the covariance matrix for that time step.
+
+ -f-
+  ~MarketModel
+   ->
+  initialRates
+   ->const std::vector< Rate > &
+  displacements
+   ->const std::vector< Spread > &
+  evolution
+   ->const EvolutionDescription &
+  numberOfRates
+   ->Size
+  numberOfFactors
+   ->Size
+  numberOfSteps
+   ->Size
+  pseudoRoot
+   ->const Matrix &
+   ::Size
+   -- ^i
+  covariance
+   ->const Matrix &
+   ::Size
+   -- ^i
+  totalCovariance
+   ->const Matrix &
+   ::Size
+   -- ^endIndex
+  timeDependentVolatility
+   ->std::vector< Volatility >
+   ::Size
+   -- ^i
+ -v-
+ -e-

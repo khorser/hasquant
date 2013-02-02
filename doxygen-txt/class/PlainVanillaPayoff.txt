@@ -1,0 +1,12 @@
+PlainVanillaPayoff
+ -- |Plain-vanilla payoff.
+
+ -f-
+  PlainVanillaPayoff
+   ->
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^strike
+ -v-
+ -e-

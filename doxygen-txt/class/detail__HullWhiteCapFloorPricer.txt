@@ -1,0 +1,17 @@
+detail::HullWhiteCapFloorPricer
+
+ -f-
+  HullWhiteCapFloorPricer
+   ->
+   ::const CapFloor::arguments &
+   -- ^
+   ::const boost::shared_ptr< HullWhite > &
+   -- ^
+   ::Time
+   -- ^forwardMeasureTime
+  operator()
+   ->Real
+   ::const Path &
+   -- ^path
+ -v-
+ -e-

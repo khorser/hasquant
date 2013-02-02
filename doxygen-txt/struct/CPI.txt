@@ -1,0 +1,13 @@
+CPI
+
+ -f-
+ -v-
+ -e-
+  -- |when you observe an index, how do you interpolate between fixings?
+  InterpolationType
+   AsIndex
+   -- ^same interpolation as index
+   Flat
+   -- ^flat from previous fixing
+   Linear
+   -- ^linearly between bracketing fixings

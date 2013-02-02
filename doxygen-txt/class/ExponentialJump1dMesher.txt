@@ -1,0 +1,39 @@
+ExponentialJump1dMesher
+ -- |Mesher for a exponential jump process with high mean reversion rate and low jump intensity \[ \begin{array}{rcl} dY_t &=& -\beta Y_{t-}dt + J_tdN_t \\ \omega(J)&=&\frac{1}{\eta_u}e^{-\frac{1}{\eta_u}J} \end{array} \]References: B. Hambly, S. Howison, T. Kluge, Modelling spikes and pricing swing options in electricity markets, http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf
+
+ -f-
+  ExponentialJump1dMesher
+   ->
+   ::Size
+   -- ^steps
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^jumpIntensity
+   ::Real
+   -- ^eta
+   ::Real
+   =1e-3
+   -- ^eps
+  jumpSizeDensity
+   ->Real
+   ::Real
+   -- ^x
+  jumpSizeDensity
+   ->Real
+   ::Real
+   -- ^x
+   ::Time
+   -- ^t
+  jumpSizeDistribution
+   ->Real
+   ::Real
+   -- ^x
+  jumpSizeDistribution
+   ->Real
+   ::Real
+   -- ^x
+   ::Time
+   -- ^t
+ -v-
+ -e-

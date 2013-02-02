@@ -1,0 +1,30 @@
+AffineModel
+ -- |Affine model class.
+ -- |Base class for analytically tractable models.
+
+ -f-
+  -- Implied discount curve.
+  discount
+   ->DiscountFactor
+   ::Time
+   -- ^t
+  discountBond
+   ->Real
+   ::Time
+   -- ^now
+   ::Time
+   -- ^maturity
+   ::Array
+   -- ^factors
+  discountBondOption
+   ->Real
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^strike
+   ::Time
+   -- ^maturity
+   ::Time
+   -- ^bondMaturity
+ -v-
+ -e-

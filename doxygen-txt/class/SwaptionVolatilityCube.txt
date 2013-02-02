@@ -1,0 +1,40 @@
+SwaptionVolatilityCube
+ -- |swaption-volatility cube
+ -- |Warningthis class is not finalized and its interface might change in subsequent releases.
+
+ -f-
+  atmStrike
+   ->Rate
+   ::const Date &
+   -- ^optionDate
+   ::const Period &
+   -- ^swapTenor
+  atmStrike
+   ->Rate
+   ::const Period &
+   -- ^optionTenor
+   ::const Period &
+   -- ^swapTenor
+ -v-
+ -e-
+ -f-
+  SwaptionVolatilityCube
+   ->
+   ::const Handle< SwaptionVolatilityStructure > &
+   -- ^atmVolStructure
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Period > &
+   -- ^swapTenors
+   ::const std::vector< Spread > &
+   -- ^strikeSpreads
+   ::const std::vector< std::vector< Handle< Quote > > > &
+   -- ^volSpreads
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^swapIndexBase
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^shortSwapIndexBase
+   ::bool
+   -- ^vegaWeightedSmileFit
+ -v-
+ -e-

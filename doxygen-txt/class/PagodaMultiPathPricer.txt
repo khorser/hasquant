@@ -1,0 +1,17 @@
+PagodaMultiPathPricer
+
+ -f-
+  PagodaMultiPathPricer
+   ->
+   ::Real
+   -- ^roof
+   ::Real
+   -- ^fraction
+   ::DiscountFactor
+   -- ^discount
+  operator()
+   ->Real
+   ::const MultiPath &
+   -- ^multiPath
+ -v-
+ -e-

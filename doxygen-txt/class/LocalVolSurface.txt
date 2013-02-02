@@ -1,0 +1,27 @@
+LocalVolSurface
+ -- |Local volatility surface derived from a Black vol surface.
+ -- |For details about this implementation refer to "Stochastic Volatility and Local Volatility," in "Case Studies and Financial Modelling Course Notes," by Jim Gatheral, Fall Term, 2003see www.math.nyu.edu/fellows_fin_math/gatheral/Lecture1_Fall02.pdfBugthis class is untested, probably unreliable.
+
+ -f-
+  LocalVolSurface
+   ->
+   ::const Handle< BlackVolTermStructure > &
+   -- ^blackTS
+   ::const Handle< YieldTermStructure > &
+   -- ^riskFreeTS
+   ::const Handle< YieldTermStructure > &
+   -- ^dividendTS
+   ::const Handle< Quote > &
+   -- ^underlying
+  LocalVolSurface
+   ->
+   ::const Handle< BlackVolTermStructure > &
+   -- ^blackTS
+   ::const Handle< YieldTermStructure > &
+   -- ^riskFreeTS
+   ::const Handle< YieldTermStructure > &
+   -- ^dividendTS
+   ::Real
+   -- ^underlying
+ -v-
+ -e-

@@ -1,0 +1,12 @@
+ConjugateGradient
+ -- |Multi-dimensional Conjugate Gradient class.
+ -- |Fletcher-Reeves-Polak-Ribiere algorithm adapted from Numerical Recipes in C, 2nd edition.User has to provide line-search method and optimization end criteria. Search direction $ d_i = - f'(x_i) + c_i*d_{i-1} $ where $ c_i = ||f'(x_i)||^2/||f'(x_{i-1})||^2 $ and $ d_1 = - f'(x_1) $
+
+ -f-
+  ConjugateGradient
+   ->
+   ::const boost::shared_ptr< LineSearch > &
+   =boost::shared_ptr< LineSearch >()
+   -- ^lineSearch
+ -v-
+ -e-

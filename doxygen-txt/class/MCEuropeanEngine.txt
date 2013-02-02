@@ -1,0 +1,30 @@
+MCEuropeanEngine
+ -- |European option pricing engine using Monte Carlo simulation.
+ -- |Teststhe correctness of the returned value is tested by checking it against analytic results.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCEuropeanEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   -- ^timeSteps
+   ::Size
+   -- ^timeStepsPerYear
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+ -v-
+ -e-

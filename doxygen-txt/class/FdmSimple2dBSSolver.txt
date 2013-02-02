@@ -1,0 +1,44 @@
+FdmSimple2dBSSolver
+
+ -f-
+  FdmSimple2dBSSolver
+   ->
+   ::const Handle< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Real
+   -- ^strike
+   ::const FdmSolverDesc &
+   -- ^desc
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Douglas()
+   -- ^schemeDesc
+  valueAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^a
+  deltaAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^a
+   ::Real
+   -- ^eps
+  gammaAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^a
+   ::Real
+   -- ^eps
+  thetaAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^a
+ -v-
+ -e-

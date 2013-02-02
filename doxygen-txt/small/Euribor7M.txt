@@ -1,0 +1,11 @@
+Euribor7M
+ -- |7-months Euribor index
+
+ -f-
+  Euribor7M
+   ->
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

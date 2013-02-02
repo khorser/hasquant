@@ -1,0 +1,11 @@
+GaussChebyshev2ndIntegration
+ -- |Gauss-Chebyshev integration (second kind)
+ -- |This class performs a 1-dimensional Gauss-Chebyshev integration. \[ \int_{-1}^{1} f(x) \mathrm{d}x \] The weighting function is \[ w(x)=(1-x^2)^{1/2} \]
+
+ -f-
+  GaussChebyshev2ndIntegration
+   ->
+   ::Size
+   -- ^n
+ -v-
+ -e-

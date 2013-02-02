@@ -1,0 +1,9 @@
+HKDCurrency
+ -- |Honk Kong dollar.
+ -- |The ISO three-letter code is HKD; the numeric code is 344. It is divided in 100 cents.
+
+ -f-
+  HKDCurrency
+   ->
+ -v-
+ -e-

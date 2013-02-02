@@ -1,0 +1,18 @@
+IborCouponPricer
+ -- |base pricer for capped/floored Ibor coupons
+
+ -f-
+  IborCouponPricer
+   ->
+   ::const Handle< OptionletVolatilityStructure > &
+   =Handle< OptionletVolatilityStructure >()
+   -- ^v
+  capletVolatility
+   ->Handle< OptionletVolatilityStructure >
+  setCapletVolatility
+   ->void
+   ::const Handle< OptionletVolatilityStructure > &
+   =Handle< OptionletVolatilityStructure >()
+   -- ^v
+ -v-
+ -e-

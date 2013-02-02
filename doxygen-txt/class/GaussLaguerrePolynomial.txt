@@ -1,0 +1,11 @@
+GaussLaguerrePolynomial
+ -- |Gauss-Laguerre polynomial.
+
+ -f-
+  GaussLaguerrePolynomial
+   ->
+   ::Real
+   =0.0
+   -- ^s
+ -v-
+ -e-

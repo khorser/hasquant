@@ -1,0 +1,54 @@
+FdmExtOUJumpOp
+ -- |References: Kluge, Timo L., 2008. Pricing Swing Options and other Electricity Derivatives, http://eprints.maths.ox.ac.uk/246/1/kluge.pdf
+
+ -f-
+  FdmExtOUJumpOp
+   ->
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const boost::shared_ptr< ExtOUWithJumpsProcess > &
+   -- ^process
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^rTS
+   ::const FdmBoundaryConditionSet &
+   -- ^bcSet
+   ::Size
+   -- ^integroIntegrationOrder
+  size
+   ->Size
+  setTime
+   ->void
+   ::Time
+   -- ^t1
+   ::Time
+   -- ^t2
+  apply
+   ->Disposable< Array >
+   ::const Array &
+   -- ^r
+  apply_mixed
+   ->Disposable< Array >
+   ::const Array &
+   -- ^r
+  apply_direction
+   ->Disposable< Array >
+   ::Size
+   -- ^direction
+   ::const Array &
+   -- ^r
+  solve_splitting
+   ->Disposable< Array >
+   ::Size
+   -- ^direction
+   ::const Array &
+   -- ^r
+   ::Real
+   -- ^s
+  preconditioner
+   ->Disposable< Array >
+   ::const Array &
+   -- ^r
+   ::Real
+   -- ^s
+ -v-
+ -e-

@@ -1,0 +1,23 @@
+FdmLogBasketInnerValue
+
+ -f-
+  FdmLogBasketInnerValue
+   ->
+   ::const boost::shared_ptr< BasketPayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+  innerValue
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^iter
+   ::Time
+   -- ^
+  avgInnerValue
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^iter
+   ::Time
+   -- ^
+ -v-
+ -e-

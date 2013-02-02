@@ -1,0 +1,30 @@
+PdeBSM
+
+ -f-
+ -v-
+ -e-
+ -f-
+  PdeBSM
+   ->
+   ::const argument_type &
+   -- ^process
+  diffusion
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  drift
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  discount
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^
+ -v-
+ -e-

@@ -1,0 +1,28 @@
+RiskyFloatingBond
+ -- |Default risky floating bonds
+
+ -f-
+  RiskyFloatingBond
+   ->
+   ::std::string
+   -- ^name
+   ::Currency
+   -- ^ccy
+   ::Real
+   -- ^recoveryRate
+   ::Handle< DefaultProbabilityTermStructure >
+   -- ^defaultTS
+   ::Schedule
+   -- ^schedule
+   ::boost::shared_ptr< IborIndex >
+   -- ^index
+   ::Integer
+   -- ^fixingDays
+   ::Real
+   -- ^spread
+   ::std::vector< Real >
+   -- ^notionals
+   ::Handle< YieldTermStructure >
+   -- ^yieldTS
+ -v-
+ -e-

@@ -1,0 +1,2 @@
+GaussHyperbolicPolynomial
+ -- |Gauss hyperbolic polynomial.

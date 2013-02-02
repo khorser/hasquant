@@ -1,0 +1,20 @@
+DiscreteAveragingAsianOption
+ -- |Discrete-averaging Asian option.
+
+ -f-
+  DiscreteAveragingAsianOption
+   ->
+   ::Average::Type
+   -- ^averageType
+   ::Real
+   -- ^runningAccumulator
+   ::Size
+   -- ^pastFixings
+   ::const std::vector< Date > &
+   -- ^fixingDates
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+ -v-
+ -e-

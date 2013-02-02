@@ -1,0 +1,29 @@
+ExponentialForwardCorrelation
+
+ -f-
+  ExponentialForwardCorrelation
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::Real
+   =0.5
+   -- ^longTermCorr
+   ::Real
+   =0.2
+   -- ^beta
+   ::Real
+   =1.0
+   -- ^gamma
+   ::const std::vector< Time > &
+   =std::vector< Time >()
+   -- ^times
+  times
+   ->const std::vector< Time > &
+  rateTimes
+   ->const std::vector< Time > &
+  correlations
+   ->const std::vector< Matrix > &
+  numberOfRates
+   ->Size
+ -v-
+ -e-

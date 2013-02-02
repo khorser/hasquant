@@ -1,0 +1,13 @@
+IntegralEngine
+ -- |Pricing engine for European vanilla options using integral approach.
+ -- |Possible enhancementsdefine tolerance for calculate()
+
+ -f-
+  IntegralEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^
+  calculate
+   ->void
+ -v-
+ -e-

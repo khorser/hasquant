@@ -1,0 +1,28 @@
+VarianceOption
+ -- |Variance option.
+ -- |WarningThis class does not manage seasoned variance options.
+
+ -f-
+  startDate
+   ->Date
+  maturityDate
+   ->Date
+  notional
+   ->Real
+  payoff
+   ->boost::shared_ptr< Payoff >
+ -v-
+ -e-
+ -f-
+  VarianceOption
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^payoff
+   ::Real
+   -- ^notional
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^maturityDate
+ -v-
+ -e-

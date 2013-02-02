@@ -1,0 +1,11 @@
+BiCGStabResult
+
+ -f-
+ -v-
+  iterations
+   ::Size
+  error
+   ::Real
+  x
+   ::Array
+ -e-

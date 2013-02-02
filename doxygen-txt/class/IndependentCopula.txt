@@ -1,0 +1,12 @@
+IndependentCopula
+ -- |independent copula
+
+ -f-
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

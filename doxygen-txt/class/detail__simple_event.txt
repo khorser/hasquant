@@ -1,0 +1,11 @@
+detail::simple_event
+
+ -f-
+  simple_event
+   ->
+   ::const Date &
+   -- ^date
+  date
+   ->Date
+ -v-
+ -e-

@@ -1,0 +1,16 @@
+HuslerReissCopula
+ -- |Husler-Reiss copula.
+
+ -f-
+  HuslerReissCopula
+   ->
+   ::Real
+   -- ^theta_
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

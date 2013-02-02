@@ -1,0 +1,145 @@
+Period
+ -- |This class provides a Period (length + TimeUnit) class and implements a limited algebra.Testsself-consistency of algebra is checked.
+
+ -f-
+  Period
+   ->
+  Period
+   ->
+   ::Integer
+   -- ^n
+   ::TimeUnit
+   -- ^units
+  Period
+   ->
+   ::Frequency
+   -- ^f
+  length
+   ->Integer
+  units
+   ->TimeUnit
+  frequency
+   ->Frequency
+  operator+=
+   ->Period &
+   ::const Period &
+   -- ^
+  operator-=
+   ->Period &
+   ::const Period &
+   -- ^
+  operator/=
+   ->Period &
+   ::Integer
+   -- ^
+  normalize
+   ->void
+ -v-
+ -e-
+ -f-
+  years
+   ->Real
+   ::const Period &
+   -- ^
+  months
+   ->Real
+   ::const Period &
+   -- ^
+  weeks
+   ->Real
+   ::const Period &
+   -- ^
+  days
+   ->Real
+   ::const Period &
+   -- ^
+  operator*
+   ->Period
+   ::T
+   -- ^n
+   ::TimeUnit
+   -- ^units
+  operator*
+   ->Period
+   ::TimeUnit
+   -- ^units
+   ::T
+   -- ^n
+  operator-
+   ->Period
+   ::const Period &
+   -- ^
+  operator*
+   ->Period
+   ::Integer
+   -- ^n
+   ::const Period &
+   -- ^
+  operator*
+   ->Period
+   ::const Period &
+   -- ^
+   ::Integer
+   -- ^n
+  operator/
+   ->Period
+   ::const Period &
+   -- ^
+   ::Integer
+   -- ^n
+  operator+
+   ->Period
+   ::const Period &
+   -- ^
+   ::const Period &
+   -- ^
+  operator-
+   ->Period
+   ::const Period &
+   -- ^
+   ::const Period &
+   -- ^
+  operator<
+   ->bool
+   ::const Period &
+   -- ^
+   ::const Period &
+   -- ^
+  operator==
+   ->bool
+   ::const Period &
+   -- ^
+   ::const Period &
+   -- ^
+  operator!=
+   ->bool
+   ::const Period &
+   -- ^
+   ::const Period &
+   -- ^
+  operator>
+   ->bool
+   ::const Period &
+   -- ^
+   ::const Period &
+   -- ^
+  operator<=
+   ->bool
+   ::const Period &
+   -- ^
+   ::const Period &
+   -- ^
+  operator>=
+   ->bool
+   ::const Period &
+   -- ^
+   ::const Period &
+   -- ^
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::const Period &
+   -- ^
+ -v-
+ -e-

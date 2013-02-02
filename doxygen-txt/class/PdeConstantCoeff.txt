@@ -1,0 +1,31 @@
+PdeConstantCoeff
+
+ -f-
+  PdeConstantCoeff
+   ->
+   ::const typename PdeClass::argument_type &
+   -- ^process
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  diffusion
+   ->Real
+   ::Time
+   -- ^
+   ::Real
+   -- ^
+  drift
+   ->Real
+   ::Time
+   -- ^
+   ::Real
+   -- ^
+  discount
+   ->Real
+   ::Time
+   -- ^
+   ::Real
+   -- ^
+ -v-
+ -e-

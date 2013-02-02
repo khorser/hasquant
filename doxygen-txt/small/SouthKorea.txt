@@ -1,0 +1,20 @@
+SouthKorea
+ -- |South Korean calendars.
+ -- |Public holidays: Saturdays Sundays New Year's Day, January 1st Independence Day, March 1st Arbour Day, April 5th (until 2005) Labour Day, May 1st Children's Day, May 5th Memorial Day, June 6th Constitution Day, July 17th (until 2007) Liberation Day, August 15th National Fondation Day, October 3th Christmas Day, December 25th Other holidays for which no rule is given (data available for 2004-2012 only:) Lunar New Year, the last day of the previous lunar year, January 1st, 2nd in lunar calendar Election Days National Assemblies Presidency Regional Election Days Buddha's birthday, April 8th in lunar calendar Harvest Moon Day, August 14th, 15th, 16th in lunar calendar Holidays for the Korea exchange (data from http://eng.krx.co.kr/m8/m8_6/m8_6_1/JHPENG08006_01.jsp or http://www.dooriworld.com/daishin/holiday/holiday.html): Public holidays as listed above Year-end closing
+
+ -f-
+ -v-
+ -e-
+  Market
+   Settlement
+   -- ^Public holidays.
+   KRX
+   -- ^Korea exchange.
+ -f-
+  SouthKorea
+   ->
+   ::Market
+   =KRX
+   -- ^m
+ -v-
+ -e-

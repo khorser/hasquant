@@ -1,0 +1,83 @@
+CPILeg
+ -- |Helper class building a sequence of capped/floored CPI coupons.
+ -- |Also allowing for the inflated notional at the end... especially if there is only one date in the schedule. If a fixedRate is zero you get a FixedRateCoupon, otherwise you get a ZeroInflationCoupon.payoff is: spread + fixedRate x index
+
+ -f-
+  CPILeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+   ::const boost::shared_ptr< ZeroInflationIndex > &
+   -- ^index
+   ::const Real
+   -- ^baseCPI
+   ::const Period &
+   -- ^observationLag
+  withNotionals
+   ->CPILeg &
+   ::Real
+   -- ^notional
+  withNotionals
+   ->CPILeg &
+   ::const std::vector< Real > &
+   -- ^notionals
+  withFixedRates
+   ->CPILeg &
+   ::Real
+   -- ^fixedRate
+  withFixedRates
+   ->CPILeg &
+   ::const std::vector< Real > &
+   -- ^fixedRates
+  withPaymentDayCounter
+   ->CPILeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentAdjustment
+   ->CPILeg &
+   ::BusinessDayConvention
+   -- ^
+  withFixingDays
+   ->CPILeg &
+   ::Natural
+   -- ^fixingDays
+  withFixingDays
+   ->CPILeg &
+   ::const std::vector< Natural > &
+   -- ^fixingDays
+  withObservationInterpolation
+   ->CPILeg &
+   ::CPI::InterpolationType
+   -- ^
+  withSubtractInflationNominal
+   ->CPILeg &
+   ::bool
+   -- ^
+  withSpreads
+   ->CPILeg &
+   ::Spread
+   -- ^spread
+  withSpreads
+   ->CPILeg &
+   ::const std::vector< Spread > &
+   -- ^spreads
+  withCaps
+   ->CPILeg &
+   ::Rate
+   -- ^cap
+  withCaps
+   ->CPILeg &
+   ::const std::vector< Rate > &
+   -- ^caps
+  withFloors
+   ->CPILeg &
+   ::Rate
+   -- ^floor
+  withFloors
+   ->CPILeg &
+   ::const std::vector< Rate > &
+   -- ^floors
+  operator Leg
+   ->
+ -v-
+ -e-

@@ -1,0 +1,19 @@
+LmLinearExponentialVolatilityModel
+ -- |linear exponential volatility model
+ -- |This class describes a linear-exponential volatility model\[ \sigma_i(t)=(a*(T_{i}-t)+d)*e^{-b(T_{i}-t)}+c \] References: Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003, Different Covariance Parameterizations of Libor Market Model and Joint Caps/Swaptions Calibration, (<http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdf>)
+
+ -f-
+  LmLinearExponentialVolatilityModel
+   ->
+   ::const std::vector< Time > &
+   -- ^fixingTimes
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^c
+   ::Real
+   -- ^d
+ -v-
+ -e-

@@ -1,0 +1,29 @@
+LossDistBinomial
+ -- |Binomial loss distribution.
+ -- |Binomial loss distribution
+
+ -f-
+  LossDistBinomial
+   ->
+   ::Size
+   -- ^nBuckets
+   ::Real
+   -- ^maximum
+  operator()
+   ->Distribution
+   ::Size
+   -- ^n
+   ::Real
+   -- ^volume
+   ::Real
+   -- ^probability
+  volume
+   ->Real
+  size
+   ->Size
+  probability
+   ->std::vector< Real >
+  excessProbability
+   ->std::vector< Real >
+ -v-
+ -e-

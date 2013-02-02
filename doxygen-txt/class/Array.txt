@@ -1,0 +1,279 @@
+Array
+ -- |1-D array used in linear algebra.
+ -- |This class implements the concept of vector as used in linear algebra. As such, it is not meant to be used as a container - std::vector should be used instead.Testsconstruction of arrays is checked in a number of cases
+
+ -f-
+  -- creates the array with the given dimension
+  Array
+   ->
+   ::Size
+   =0
+   -- ^size
+  -- creates the array and fills it with value
+  Array
+   ->
+   ::Size
+   -- ^size
+   ::Real
+   -- ^value
+  -- creates the array and fills it according to $ a_{0} = value, a_{i}=a_{i-1}+increment $
+  Array
+   ->
+   ::Size
+   -- ^size
+   ::Real
+   -- ^value
+   ::Real
+   -- ^increment
+  Array
+   ->
+   ::const Array &
+   -- ^
+  Array
+   ->
+   ::const Disposable< Array > &
+   -- ^
+  -- creates the array from an iterable sequence
+  Array
+   ->
+   ::ForwardIterator
+   -- ^begin
+   ::ForwardIterator
+   -- ^end
+  operator=
+   ->Array &
+   ::const Array &
+   -- ^
+  operator=
+   ->Array &
+   ::const Disposable< Array > &
+   -- ^
+  operator==
+   ->bool
+   ::const Array &
+   -- ^
+  operator!=
+   ->bool
+   ::const Array &
+   -- ^
+ -v-
+ -e-
+ -f-
+  operator+=
+   ->const Array &
+   ::const Array &
+   -- ^
+  operator+=
+   ->const Array &
+   ::Real
+   -- ^
+  operator-=
+   ->const Array &
+   ::const Array &
+   -- ^
+  operator-=
+   ->const Array &
+   ::Real
+   -- ^
+  operator*=
+   ->const Array &
+   ::const Array &
+   -- ^
+  operator*=
+   ->const Array &
+   ::Real
+   -- ^
+  operator/=
+   ->const Array &
+   ::const Array &
+   -- ^
+  operator/=
+   ->const Array &
+   ::Real
+   -- ^
+ -v-
+ -e-
+ -f-
+  -- read-only
+  operator[]
+   ->Real
+   ::Size
+   -- ^
+  at
+   ->Real
+   ::Size
+   -- ^
+  front
+   ->Real
+  back
+   ->Real
+  -- read-write
+  operator[]
+   ->Real &
+   ::Size
+   -- ^
+  at
+   ->Real &
+   ::Size
+   -- ^
+  front
+   ->Real &
+  back
+   ->Real &
+ -v-
+ -e-
+ -f-
+  -- dimension of the array
+  size
+   ->Size
+  -- whether the array is empty
+  empty
+   ->bool
+ -v-
+ -e-
+ -f-
+  begin
+   ->const_iterator
+  begin
+   ->iterator
+  end
+   ->const_iterator
+  end
+   ->iterator
+  rbegin
+   ->const_reverse_iterator
+  rbegin
+   ->reverse_iterator
+  rend
+   ->const_reverse_iterator
+  rend
+   ->reverse_iterator
+ -v-
+ -e-
+ -f-
+  swap
+   ->void
+   ::Array &
+   -- ^
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+ -f-
+  DotProduct
+   ->Real
+   ::const Array &
+   -- ^
+   ::const Array &
+   -- ^
+  operator+
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v
+  operator-
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^v
+  operator+
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+   ::const Array &
+   -- ^
+  operator+
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+   ::Real
+   -- ^
+  operator+
+   ->const Disposable< Array >
+   ::Real
+   -- ^
+   ::const Array &
+   -- ^
+  operator-
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+   ::const Array &
+   -- ^
+  operator-
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+   ::Real
+   -- ^
+  operator-
+   ->const Disposable< Array >
+   ::Real
+   -- ^
+   ::const Array &
+   -- ^
+  operator*
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+   ::const Array &
+   -- ^
+  operator*
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+   ::Real
+   -- ^
+  operator*
+   ->const Disposable< Array >
+   ::Real
+   -- ^
+   ::const Array &
+   -- ^
+  operator/
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+   ::const Array &
+   -- ^
+  operator/
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+   ::Real
+   -- ^
+  operator/
+   ->const Disposable< Array >
+   ::Real
+   -- ^
+   ::const Array &
+   -- ^
+  Abs
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+  Sqrt
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+  Log
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+  Exp
+   ->const Disposable< Array >
+   ::const Array &
+   -- ^
+  swap
+   ->void
+   ::Array &
+   -- ^
+   ::Array &
+   -- ^
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::const Array &
+   -- ^
+ -v-
+ -e-

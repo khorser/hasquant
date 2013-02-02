@@ -1,0 +1,11 @@
+Euribor365_1M
+ -- |1-month Euribor365 index
+
+ -f-
+  Euribor365_1M
+   ->
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

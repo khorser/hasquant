@@ -1,0 +1,21 @@
+OneFactorStudentCopula
+ -- |One-factor Double Student t-Copula.
+ -- |The copula model \[ Y_i = a_i\,M+\sqrt{1-a_i^2}\:Z_i \] is specified here by setting the probability density functions for \form#120 ( \form#121) and \form#122 ( \form#123) to Student t-distributions with \form#124 and \form#125 degrees of freedom, respectively. The variance of the Student t-distribution with \form#126 degrees of freedom is \form#127. Since the copula approach requires zero mean and unit variance distributions, variables \form#128 and \form#122 are scaled by $ \sqrt{(N_z - 2) / N_z} $ and $ \sqrt{(N_m - 2) / N_m}, $ respectively.Possible enhancementsImprove performance/accuracy of the calculation of inverse cumulative Y. Tabulate and store it for selected correlations?
+
+ -f-
+  OneFactorStudentCopula
+   ->
+   ::const Handle< Quote > &
+   -- ^correlation
+   ::int
+   -- ^nz
+   ::int
+   -- ^nm
+   ::Real
+   =10
+   -- ^maximum
+   ::Size
+   =200
+   -- ^integrationSteps
+ -v-
+ -e-

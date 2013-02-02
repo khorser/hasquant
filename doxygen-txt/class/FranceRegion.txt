@@ -1,0 +1,8 @@
+FranceRegion
+ -- |France as geographical/economic region.
+
+ -f-
+  FranceRegion
+   ->
+ -v-
+ -e-

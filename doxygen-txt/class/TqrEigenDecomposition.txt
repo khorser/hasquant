@@ -1,0 +1,36 @@
+TqrEigenDecomposition
+ -- |tridiag. QR eigen decomposition with explicite shift aka Wilkinson
+ -- |References: Wilkinson, J.H. and Reinsch, C. 1971, Linear Algebra, vol. II of Handbook for Automatic Computation (New York: Springer-Verlag) "Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery, Teststhe correctness of the result is tested by checking it against known good values.
+
+ -f-
+ -v-
+ -e-
+  EigenVectorCalculation
+   WithEigenVector
+   WithoutEigenVector
+   OnlyFirstRowEigenVector
+  ShiftStrategy
+   NoShift
+   Overrelaxation
+   CloseEigenValue
+ -f-
+  TqrEigenDecomposition
+   ->
+   ::const Array &
+   -- ^diag
+   ::const Array &
+   -- ^sub
+   ::EigenVectorCalculation
+   =WithEigenVector
+   -- ^calc
+   ::ShiftStrategy
+   =CloseEigenValue
+   -- ^strategy
+  eigenvalues
+   ->const Array &
+  eigenvectors
+   ->const Matrix &
+  iterations
+   ->Size
+ -v-
+ -e-

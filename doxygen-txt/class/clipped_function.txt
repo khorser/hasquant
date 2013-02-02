@@ -1,0 +1,18 @@
+clipped_function
+
+ -f-
+ -v-
+ -e-
+ -f-
+  clipped_function
+   ->
+   ::const F &
+   -- ^f
+   ::const R &
+   -- ^r
+  operator()
+   ->result_type
+   ::const argument_type &
+   -- ^x
+ -v-
+ -e-

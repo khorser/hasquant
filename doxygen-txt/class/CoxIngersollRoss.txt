@@ -1,0 +1,21 @@
+CoxIngersollRoss
+ -- |Cox-Ingersoll-Ross model class.
+ -- |This class implements the Cox-Ingersoll-Ross model defined by \[ dr_t = k(\theta - r_t)dt + \sqrt{r_t}\sigma dW_t . \]Bugthis class was not tested enough to guarantee its functionality.
+
+ -f-
+  CoxIngersollRoss
+   ->
+   ::Rate
+   =0.05
+   -- ^r0
+   ::Real
+   =0.1
+   -- ^theta
+   ::Real
+   =0.1
+   -- ^k
+   ::Real
+   =0.1
+   -- ^sigma
+ -v-
+ -e-

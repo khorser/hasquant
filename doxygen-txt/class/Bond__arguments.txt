@@ -1,0 +1,16 @@
+Bond::arguments
+
+ -f-
+ -v-
+  settlementDate
+   ::Date
+  cashflows
+   ::Leg
+  calendar
+   ::Calendar
+ -e-
+ -f-
+  validate
+   ->void
+ -v-
+ -e-

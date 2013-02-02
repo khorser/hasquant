@@ -1,0 +1,9 @@
+KWDCurrency
+ -- |Kuwaiti dinar.
+ -- |The ISO three-letter code is KWD; the numeric code is 414. It is divided in 1000 fils.
+
+ -f-
+  KWDCurrency
+   ->
+ -v-
+ -e-

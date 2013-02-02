@@ -1,0 +1,10 @@
+LocalVolCurve
+ -- |Local volatility curve derived from a Black curve.
+
+ -f-
+  LocalVolCurve
+   ->
+   ::const Handle< BlackVarianceCurve > &
+   -- ^curve
+ -v-
+ -e-

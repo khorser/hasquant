@@ -1,0 +1,17 @@
+AUCPI
+ -- |AU CPI index (either quarterly or annual)
+
+ -f-
+  AUCPI
+   ->
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^revised
+   ::bool
+   -- ^interpolated
+   ::const Handle< ZeroInflationTermStructure > &
+   =Handle< ZeroInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

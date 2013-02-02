@@ -1,0 +1,19 @@
+LmConstWrapperVolatilityModel
+ -- |caplet const volatility model
+
+ -f-
+  LmConstWrapperVolatilityModel
+   ->
+   ::const boost::shared_ptr< LmVolatilityModel > &
+   -- ^volaModel
+  volatility
+   ->Volatility
+   ::Size
+   -- ^i
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+ -v-
+ -e-

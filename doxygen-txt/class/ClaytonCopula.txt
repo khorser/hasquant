@@ -1,0 +1,16 @@
+ClaytonCopula
+ -- |Clayton copula.
+
+ -f-
+  ClaytonCopula
+   ->
+   ::Real
+   -- ^theta
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

@@ -1,0 +1,29 @@
+GeneralizedOrnsteinUhlenbeckProcess
+ -- |Piecewise linear Ornstein-Uhlenbeck process class.
+ -- |This class describes the Ornstein-Uhlenbeck process governed by \[ dx = a (level - x_t) dt + \sigma dW_t \] where the coefficients a and sigma are piecewise linear.
+
+ -f-
+  GeneralizedOrnsteinUhlenbeckProcess
+   ->
+   ::const boost::function< Real(Time)> &
+   -- ^speed
+   ::const boost::function< Real(Time)> &
+   -- ^vol
+   ::Real
+   =0.0
+   -- ^x0
+   ::Real
+   =0.0
+   -- ^level
+  speed
+   ->Real
+   ::Time
+   -- ^t
+  volatility
+   ->Real
+   ::Time
+   -- ^t
+  level
+   ->Real
+ -v-
+ -e-

@@ -1,0 +1,56 @@
+CommodityCashFlow
+
+ -f-
+  date
+   ->Date
+ -v-
+ -e-
+ -f-
+  amount
+   ->Real
+ -v-
+ -e-
+ -f-
+  accept
+   ->void
+   ::AcyclicVisitor &
+   -- ^
+ -v-
+ -e-
+ -f-
+  CommodityCashFlow
+   ->
+   ::const Date &
+   -- ^date
+   ::Money
+   -- ^discountedAmount
+   ::Money
+   -- ^undiscountedAmount
+   ::Money
+   -- ^discountedPaymentAmount
+   ::Money
+   -- ^undiscountedPaymentAmount
+   ::Real
+   -- ^discountFactor
+   ::Real
+   -- ^paymentDiscountFactor
+   ::bool
+   -- ^finalized
+  currency
+   ->const Currency &
+  discountedAmount
+   ->const Money &
+  undiscountedAmount
+   ->const Money &
+  discountedPaymentAmount
+   ->const Money &
+  undiscountedPaymentAmount
+   ->const Money &
+  discountFactor
+   ->Real
+  paymentDiscountFactor
+   ->Real
+  finalized
+   ->bool
+ -v-
+ -e-

@@ -1,0 +1,46 @@
+OvernightLeg
+ -- |helper class building a sequence of overnight coupons
+
+ -f-
+  OvernightLeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+   ::const boost::shared_ptr< OvernightIndex > &
+   -- ^overnightIndex
+  withNotionals
+   ->OvernightLeg &
+   ::Real
+   -- ^notional
+  withNotionals
+   ->OvernightLeg &
+   ::const std::vector< Real > &
+   -- ^notionals
+  withPaymentDayCounter
+   ->OvernightLeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentAdjustment
+   ->OvernightLeg &
+   ::BusinessDayConvention
+   -- ^
+  withGearings
+   ->OvernightLeg &
+   ::Real
+   -- ^gearing
+  withGearings
+   ->OvernightLeg &
+   ::const std::vector< Real > &
+   -- ^gearings
+  withSpreads
+   ->OvernightLeg &
+   ::Spread
+   -- ^spread
+  withSpreads
+   ->OvernightLeg &
+   ::const std::vector< Spread > &
+   -- ^spreads
+  operator Leg
+   ->
+ -v-
+ -e-

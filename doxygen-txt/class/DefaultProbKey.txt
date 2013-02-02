@@ -1,0 +1,24 @@
+DefaultProbKey
+ -- |Used to index market implied credit curve probabilities. It is a proxy to the defaultable bond or class of bonds which determines the credit contract conditions. It aggregates the atomic default types in a group defining the contract conditions and which serves to index the probability curves calibrated to the market.
+
+ -f-
+  DefaultProbKey
+   ->
+  DefaultProbKey
+   ->
+   ::const std::vector< boost::shared_ptr< DefaultType > > &
+   -- ^eventTypes
+   ::const Currency
+   -- ^cur
+   ::Seniority
+   -- ^sen
+  currency
+   ->const Currency &
+  seniority
+   ->Seniority
+  eventTypes
+   ->const std::vector< boost::shared_ptr< DefaultType > > &
+  size
+   ->Size
+ -v-
+ -e-

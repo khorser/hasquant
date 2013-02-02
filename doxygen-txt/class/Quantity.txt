@@ -1,0 +1,157 @@
+Quantity
+ -- |Amount of a commodity.
+
+ -f-
+  Quantity
+   ->
+  Quantity
+   ->
+   ::const CommodityType &
+   -- ^commodityType
+   ::const UnitOfMeasure &
+   -- ^unitOfMeasure
+   ::Real
+   -- ^amount
+ -v-
+ -e-
+ -f-
+  commodityType
+   ->const CommodityType &
+  unitOfMeasure
+   ->const UnitOfMeasure &
+  amount
+   ->Real
+  rounded
+   ->Quantity
+ -v-
+ -e-
+ -f-
+  operator+
+   ->Quantity
+  operator-
+   ->Quantity
+  operator+=
+   ->Quantity &
+   ::const Quantity &
+   -- ^
+  operator-=
+   ->Quantity &
+   ::const Quantity &
+   -- ^
+  operator*=
+   ->Quantity &
+   ::Real
+   -- ^
+  operator/=
+   ->Quantity &
+   ::Real
+   -- ^
+ -v-
+ -e-
+ -f-
+ -v-
+  conversionType
+   ::ConversionType
+  baseUnitOfMeasure
+   ::UnitOfMeasure
+ -e-
+  ConversionType
+   NoConversion
+   -- ^do not perform conversions
+   BaseUnitOfMeasureConversion
+   -- ^convert both operands to the base unitOfMeasure before converting
+   AutomatedConversion
+   -- ^return the result in the unitOfMeasure of the first operand
+ -f-
+  operator+
+   ->Quantity
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+  operator-
+   ->Quantity
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+  operator*
+   ->Quantity
+   ::const Quantity &
+   -- ^
+   ::Real
+   -- ^
+  operator*
+   ->Quantity
+   ::Real
+   -- ^
+   ::const Quantity &
+   -- ^
+  operator/
+   ->Quantity
+   ::const Quantity &
+   -- ^
+   ::Real
+   -- ^
+  operator/
+   ->Real
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+  operator==
+   ->bool
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+  operator!=
+   ->bool
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+  operator<
+   ->bool
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+  operator<=
+   ->bool
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+  operator>
+   ->bool
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+  operator>=
+   ->bool
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+  close
+   ->bool
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+   ::Size
+   =42
+   -- ^n
+  close_enough
+   ->bool
+   ::const Quantity &
+   -- ^
+   ::const Quantity &
+   -- ^
+   ::Size
+   =42
+   -- ^n
+ -v-
+ -e-

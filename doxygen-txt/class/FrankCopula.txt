@@ -1,0 +1,16 @@
+FrankCopula
+ -- |Frank copula.
+
+ -f-
+  FrankCopula
+   ->
+   ::Real
+   -- ^theta
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

@@ -1,0 +1,120 @@
+TridiagonalOperator
+ -- |Base implementation for tridiagonal operator.
+ -- |Warningto use real time-dependant algebra, you must overload the corresponding operators in the inheriting time-dependent class.
+
+ -f-
+  -- apply operator to a given array
+  applyTo
+   ->Disposable< Array >
+   ::const Array &
+   -- ^v
+  -- solve linear system for a given right-hand side
+  solveFor
+   ->Disposable< Array >
+   ::const Array &
+   -- ^rhs
+  -- solve linear system for a given right-hand side without result Array allocation. The rhs and result parameters can be the same Array, in which case rhs will be changed
+  solveFor
+   ->void
+   ::const Array &
+   -- ^rhs
+   ::Array &
+   -- ^result
+  -- solve linear system with SOR approach
+  SOR
+   ->Disposable< Array >
+   ::const Array &
+   -- ^rhs
+   ::Real
+   -- ^tol
+  -- identity instance
+  identity
+   ->Disposable< TridiagonalOperator >
+   ::Size
+   -- ^size
+ -v-
+ -e-
+ -f-
+  size
+   ->Size
+  isTimeDependent
+   ->bool
+  lowerDiagonal
+   ->const Array &
+  diagonal
+   ->const Array &
+  upperDiagonal
+   ->const Array &
+ -v-
+ -e-
+ -f-
+  setFirstRow
+   ->void
+   ::Real
+   -- ^
+   ::Real
+   -- ^
+  setMidRow
+   ->void
+   ::Size
+   -- ^
+   ::Real
+   -- ^
+   ::Real
+   -- ^
+   ::Real
+   -- ^
+  setMidRows
+   ->void
+   ::Real
+   -- ^
+   ::Real
+   -- ^
+   ::Real
+   -- ^
+  setLastRow
+   ->void
+   ::Real
+   -- ^
+   ::Real
+   -- ^
+  setTime
+   ->void
+   ::Time
+   -- ^t
+ -v-
+ -e-
+ -f-
+  swap
+   ->void
+   ::TridiagonalOperator &
+   -- ^
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+ -f-
+  TridiagonalOperator
+   ->
+   ::Size
+   =0
+   -- ^size
+  TridiagonalOperator
+   ->
+   ::const Array &
+   -- ^low
+   ::const Array &
+   -- ^mid
+   ::const Array &
+   -- ^high
+  TridiagonalOperator
+   ->
+   ::const Disposable< TridiagonalOperator > &
+   -- ^
+  operator=
+   ->TridiagonalOperator &
+   ::const Disposable< TridiagonalOperator > &
+   -- ^
+ -v-
+ -e-

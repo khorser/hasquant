@@ -1,0 +1,9 @@
+GarmanKlassSimpleSigma
+
+ -f-
+  GarmanKlassSimpleSigma
+   ->
+   ::Real
+   -- ^y
+ -v-
+ -e-

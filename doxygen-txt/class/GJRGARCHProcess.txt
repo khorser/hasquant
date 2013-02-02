@@ -1,0 +1,60 @@
+GJRGARCHProcess
+ -- |Stochastic-volatility GJR-GARCH(1,1) process.
+ -- |This class describes the stochastic volatility process governed by \[ \begin{array}{rcl} dS(t, S) &=& \mu S dt + \sqrt{v} S dW_1 \\ dv(t, S) &=& (\omega + (\beta + \alpha * q_{2} + \gamma * q_{3} - 1) v) dt + (\alpha \sigma_{12} + \gamma \sigma_{13}) v dW_1 + \sqrt{\alpha^{2} (\sigma^{2}_{2} - \sigma^{2}_{12}) + \gamma^{2} (\sigma^{2}_{3} - \sigma^{2}_{13}) + 2 \alpha \gamma (\sigma_{23} - \sigma_{12} \sigma_{13})} v dW_2 \ \ N = normalCDF(\lambda) \\ n &=& \exp{-\lambda^{2}/2} / \sqrt{2 \pi} \\ q_{2} &=& 1 + \lambda^{2} \\ q_{3} &=& \lambda n + N + \lambda^2 N \\ \sigma^{2}_{2} = 2 + 4 \lambda^{4} \\ \sigma^{2}_{3} = \lambda^{3} n + 5 \lambda n + 3N + \lambda^{4} N + 6 \lambda^{2} N -\\lambda^{2} n^{2} - N^{2} - \lambda^{4} N^{2} - 2 \lambda n N - 2 \lambda^{3} nN - 2 \lambda^{2} N^{2} \ \ \sigma_{12} = -2 \lambda \\ \sigma_{13} = -2 n - 2 \lambda N \\ \sigma_{23} = 2N + \sigma_{12} \sigma_{13} \\ \end{array} \]
+
+ -f-
+ -v-
+ -e-
+  Discretization
+   PartialTruncation
+   FullTruncation
+   Reflection
+ -f-
+  GJRGARCHProcess
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^riskFreeRate
+   ::const Handle< YieldTermStructure > &
+   -- ^dividendYield
+   ::const Handle< Quote > &
+   -- ^s0
+   ::Real
+   -- ^v0
+   ::Real
+   -- ^omega
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^gamma
+   ::Real
+   -- ^lambda
+   ::Real
+   =252.0
+   -- ^daysPerYear
+   ::Discretization
+   =FullTruncation
+   -- ^d
+  v0
+   ->Real
+  lambda
+   ->Real
+  omega
+   ->Real
+  alpha
+   ->Real
+  beta
+   ->Real
+  gamma
+   ->Real
+  daysPerYear
+   ->Real
+  s0
+   ->const Handle< Quote > &
+  dividendYield
+   ->const Handle< YieldTermStructure > &
+  riskFreeRate
+   ->const Handle< YieldTermStructure > &
+ -v-
+ -e-

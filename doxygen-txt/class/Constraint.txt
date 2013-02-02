@@ -1,0 +1,25 @@
+Constraint
+ -- |Base constraint class.
+
+ -f-
+  empty
+   ->bool
+  test
+   ->bool
+   ::const Array &
+   -- ^p
+  update
+   ->Real
+   ::Array &
+   -- ^p
+   ::const Array &
+   -- ^direction
+   ::Real
+   -- ^beta
+  Constraint
+   ->
+   ::const boost::shared_ptr< Impl > &
+   =boost::shared_ptr< Impl >()
+   -- ^impl
+ -v-
+ -e-

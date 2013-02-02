@@ -1,0 +1,17 @@
+InverseCumulativeRng
+ -- |Inverse cumulative random number generator.
+ -- |It uses a uniform deviate in (0, 1) as the source of cumulative distribution values. Then an inverse cumulative distribution is used to calculate the distribution deviate.The uniform deviate is supplied by RNG.Class RNG must implement the following interface: RNG::sample_typeRNG::next()const; The inverse cumulative distribution is supplied by IC.Class IC must implement the following interface: IC::IC(); RealIC::operator()const;
+
+ -f-
+ -v-
+ -e-
+ -f-
+  InverseCumulativeRng
+   ->
+   ::const RNG &
+   -- ^uniformGenerator
+  -- returns a sample from a Gaussian distribution
+  next
+   ->sample_type
+ -v-
+ -e-

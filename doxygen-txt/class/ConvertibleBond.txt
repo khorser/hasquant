@@ -1,0 +1,14 @@
+ConvertibleBond
+ -- |base class for convertible bonds
+
+ -f-
+  conversionRatio
+   ->Real
+  dividends
+   ->const DividendSchedule &
+  callability
+   ->const CallabilitySchedule &
+  creditSpread
+   ->const Handle< Quote > &
+ -v-
+ -e-

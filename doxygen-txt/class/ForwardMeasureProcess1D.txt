@@ -1,0 +1,13 @@
+ForwardMeasureProcess1D
+ -- |forward-measure 1-D stochastic process
+ -- |1-D stochastic process whose dynamics are expressed in the forward measure.
+
+ -f-
+  setForwardMeasureTime
+   ->void
+   ::Time
+   -- ^
+  getForwardMeasureTime
+   ->Time
+ -v-
+ -e-

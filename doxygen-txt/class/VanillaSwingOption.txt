@@ -1,0 +1,16 @@
+VanillaSwingOption
+ -- |base option class
+
+ -f-
+  VanillaSwingOption
+   ->
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< SwingExercise > &
+   -- ^ex
+   ::Size
+   -- ^minExerciseRights
+   ::Size
+   -- ^maxExerciseRights
+ -v-
+ -e-

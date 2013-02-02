@@ -1,0 +1,14 @@
+Euribor
+ -- |Euribor index
+ -- |Euribor rate fixed by the ECB.WarningThis is the rate fixed by the ECB. Use EurLibor if you're interested in the London fixing by BBA.
+
+ -f-
+  Euribor
+   ->
+   ::const Period &
+   -- ^tenor
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

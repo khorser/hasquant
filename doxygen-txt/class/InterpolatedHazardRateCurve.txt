@@ -1,0 +1,61 @@
+InterpolatedHazardRateCurve
+ -- |DefaultProbabilityTermStructure based on interpolation of hazard rates.
+
+ -f-
+  times
+   ->const std::vector< Time > &
+  dates
+   ->const std::vector< Date > &
+  data
+   ->const std::vector< Real > &
+  hazardRates
+   ->const std::vector< Rate > &
+  nodes
+   ->std::vector< std::pair< Date, Real > >
+ -v-
+ -e-
+ -f-
+  InterpolatedHazardRateCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Rate > &
+   -- ^hazardRates
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+   ::const Interpolator &
+   =Interpolator()
+   -- ^interpolator
+  InterpolatedHazardRateCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Rate > &
+   -- ^hazardRates
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Calendar &
+   -- ^calendar
+   ::const Interpolator &
+   -- ^interpolator
+  InterpolatedHazardRateCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Rate > &
+   -- ^hazardRates
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Interpolator &
+   -- ^interpolator
+ -v-
+ -e-

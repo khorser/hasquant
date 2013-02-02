@@ -1,0 +1,12 @@
+SpreadOption
+ -- |Spread option on two assets.
+
+ -f-
+  SpreadOption
+   ->
+   ::const boost::shared_ptr< PlainVanillaPayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+ -v-
+ -e-

@@ -1,0 +1,26 @@
+MarketModelVolProcess
+ -- |Displaced diffusion LMM with uncorrelated vol process. Called "Shifted BGM" with Heston vol by Brace in "Engineering BGM." Vol process is an external input.
+
+ -f-
+  MarketModelVolProcess
+   ->
+  ~MarketModelVolProcess
+   ->
+  variatesPerStep
+   ->Size
+  numberSteps
+   ->Size
+  nextPath
+   ->void
+  nextstep
+   ->Real
+   ::const std::vector< Real > &
+   -- ^variates
+  stepSd
+   ->Real
+  stateVariables
+   ->const std::vector< Real > &
+  numberStateVariables
+   ->Size
+ -v-
+ -e-

@@ -1,0 +1,53 @@
+AmortizingFixedRateBond
+ -- |amortizing fixed-rate bond
+
+ -f-
+  AmortizingFixedRateBond
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const std::vector< Real > &
+   -- ^notionals
+   ::const Schedule &
+   -- ^schedule
+   ::const std::vector< Rate > &
+   -- ^coupons
+   ::const DayCounter &
+   -- ^accrualDayCounter
+   ::BusinessDayConvention
+   =Following
+   -- ^paymentConvention
+   ::const Date &
+   =Date()
+   -- ^issueDate
+  -- Automatically generates a set of equal coupons, with an amortizing bond. The coupons are equal and the accrual daycount is only used for quoting/settlement purposes - not for calculating the coupons.
+  AmortizingFixedRateBond
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::Real
+   -- ^faceAmount
+   ::const Date &
+   -- ^startDate
+   ::const Period &
+   -- ^bondTenor
+   ::const Frequency &
+   -- ^sinkingFrequency
+   ::const Rate
+   -- ^coupon
+   ::const DayCounter &
+   -- ^accrualDayCounter
+   ::BusinessDayConvention
+   =Following
+   -- ^paymentConvention
+   ::const Date &
+   =Date()
+   -- ^issueDate
+  frequency
+   ->Frequency
+  dayCounter
+   ->const DayCounter &
+ -v-
+ -e-

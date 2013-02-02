@@ -1,0 +1,11 @@
+DoublingConvergenceSteps
+
+ -f-
+  initialSamples
+   ->Size
+  nextSamples
+   ->Size
+   ::Size
+   -- ^current
+ -v-
+ -e-

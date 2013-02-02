@@ -1,0 +1,31 @@
+detail::ConvexMonotone2Helper
+
+ -f-
+  ConvexMonotone2Helper
+   ->
+   ::Real
+   -- ^xPrev
+   ::Real
+   -- ^xNext
+   ::Real
+   -- ^gPrev
+   ::Real
+   -- ^gNext
+   ::Real
+   -- ^fAverage
+   ::Real
+   -- ^eta2
+   ::Real
+   -- ^prevPrimitive
+  value
+   ->Real
+   ::Real
+   -- ^x
+  primitive
+   ->Real
+   ::Real
+   -- ^x
+  fNext
+   ->Real
+ -v-
+ -e-

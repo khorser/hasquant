@@ -1,0 +1,17 @@
+FarlieGumbelMorgensternCopulaRng
+ -- |Farlie-Gumbel-Morgenstern copula random-number generator.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  FarlieGumbelMorgensternCopulaRng
+   ->
+   ::const RNG &
+   -- ^uniformGenerator
+   ::Real
+   -- ^theta
+  next
+   ->sample_type
+ -v-
+ -e-

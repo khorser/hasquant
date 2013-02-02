@@ -1,0 +1,57 @@
+DepositRateHelper
+ -- |Rate helper for bootstrapping over deposit rates.
+
+ -f-
+  setTermStructure
+   ->void
+   ::YieldTermStructure *
+   -- ^
+ -v-
+ -e-
+ -f-
+  DepositRateHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^rate
+   ::const Period &
+   -- ^tenor
+   ::Natural
+   -- ^fixingDays
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^convention
+   ::bool
+   -- ^endOfMonth
+   ::const DayCounter &
+   -- ^dayCounter
+  DepositRateHelper
+   ->
+   ::Rate
+   -- ^rate
+   ::const Period &
+   -- ^tenor
+   ::Natural
+   -- ^fixingDays
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^convention
+   ::bool
+   -- ^endOfMonth
+   ::const DayCounter &
+   -- ^dayCounter
+  DepositRateHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^rate
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+  DepositRateHelper
+   ->
+   ::Rate
+   -- ^rate
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+ -v-
+ -e-

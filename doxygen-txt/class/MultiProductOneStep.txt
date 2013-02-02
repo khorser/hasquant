@@ -1,0 +1,11 @@
+MultiProductOneStep
+ -- |Single-step market-model product.
+ -- |This is the abstract base class that encapsulates the notion of a MarketModelMultiProduct which can be evaluated in one step (aka Rebonato's very long jump).
+
+ -f-
+  MultiProductOneStep
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+ -v-
+ -e-

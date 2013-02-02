@@ -1,0 +1,37 @@
+DigitalIborCoupon
+ -- |Ibor rate coupon with digital digital call/put option.
+
+ -f-
+  DigitalIborCoupon
+   ->
+   ::const boost::shared_ptr< IborCoupon > &
+   -- ^underlying
+   ::Rate
+   =Null< Rate >()
+   -- ^callStrike
+   ::Position::Type
+   =Position::Long
+   -- ^callPosition
+   ::bool
+   =false
+   -- ^isCallATMIncluded
+   ::Rate
+   =Null< Rate >()
+   -- ^callDigitalPayoff
+   ::Rate
+   =Null< Rate >()
+   -- ^putStrike
+   ::Position::Type
+   =Position::Long
+   -- ^putPosition
+   ::bool
+   =false
+   -- ^isPutATMIncluded
+   ::Rate
+   =Null< Rate >()
+   -- ^putDigitalPayoff
+   ::const boost::shared_ptr< DigitalReplication > &
+   =boost::shared_ptr< DigitalReplication >()
+   -- ^replication
+ -v-
+ -e-

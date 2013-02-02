@@ -1,0 +1,42 @@
+CallableBondConstantVolatility
+ -- |Constant callable-bond volatility, no time-strike dependence.
+
+ -f-
+  CallableBondConstantVolatility
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::Volatility
+   -- ^volatility
+   ::const DayCounter &
+   -- ^dayCounter
+  CallableBondConstantVolatility
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Handle< Quote > &
+   -- ^volatility
+   ::const DayCounter &
+   -- ^dayCounter
+  CallableBondConstantVolatility
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::Volatility
+   -- ^volatility
+   ::const DayCounter &
+   -- ^dayCounter
+  CallableBondConstantVolatility
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::const Handle< Quote > &
+   -- ^volatility
+   ::const DayCounter &
+   -- ^dayCounter
+ -v-
+ -e-

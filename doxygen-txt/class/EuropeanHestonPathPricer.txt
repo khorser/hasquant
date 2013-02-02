@@ -1,0 +1,17 @@
+EuropeanHestonPathPricer
+
+ -f-
+  EuropeanHestonPathPricer
+   ->
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^strike
+   ::DiscountFactor
+   -- ^discount
+  operator()
+   ->Real
+   ::const MultiPath &
+   -- ^Multipath
+ -v-
+ -e-

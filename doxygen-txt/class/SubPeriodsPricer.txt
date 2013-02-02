@@ -1,0 +1,27 @@
+SubPeriodsPricer
+
+ -f-
+  swapletRate
+   ->Rate
+  capletPrice
+   ->Real
+   ::Rate
+   -- ^effectiveCap
+  capletRate
+   ->Rate
+   ::Rate
+   -- ^effectiveCap
+  floorletPrice
+   ->Real
+   ::Rate
+   -- ^effectiveFloor
+  floorletRate
+   ->Rate
+   ::Rate
+   -- ^effectiveFloor
+  initialize
+   ->void
+   ::const FloatingRateCoupon &
+   -- ^coupon
+ -v-
+ -e-

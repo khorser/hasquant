@@ -1,0 +1,8 @@
+GaussChebyshevPolynomial
+ -- |Gauss-Chebyshev polynomial.
+
+ -f-
+  GaussChebyshevPolynomial
+   ->
+ -v-
+ -e-

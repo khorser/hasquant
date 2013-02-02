@@ -1,0 +1,13 @@
+VarianceGammaEngine
+ -- |Variance Gamma Pricing engine for European vanilla options using integral approach.
+ -- |Teststhe correctness of the returned values is tested by checking it against known good results.
+
+ -f-
+  VarianceGammaEngine
+   ->
+   ::const boost::shared_ptr< VarianceGammaProcess > &
+   -- ^
+  calculate
+   ->void
+ -v-
+ -e-

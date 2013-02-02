@@ -1,0 +1,47 @@
+FdmStepConditionComposite
+
+ -f-
+ -v-
+ -e-
+ -f-
+  FdmStepConditionComposite
+   ->
+   ::const std::list< std::vector< Time > > &
+   -- ^stoppingTimes
+   ::const Conditions &
+   -- ^conditions
+  applyTo
+   ->void
+   ::Array &
+   -- ^a
+   ::Time
+   -- ^t
+  stoppingTimes
+   ->const std::vector< Time > &
+  conditions
+   ->const Conditions &
+ -v-
+ -e-
+ -f-
+  joinConditions
+   ->boost::shared_ptr< FdmStepConditionComposite >
+   ::const boost::shared_ptr< FdmSnapshotCondition > &
+   -- ^c1
+   ::const boost::shared_ptr< FdmStepConditionComposite > &
+   -- ^c2
+  vanillaComposite
+   ->boost::shared_ptr< FdmStepConditionComposite >
+   ::const DividendSchedule &
+   -- ^schedule
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const boost::shared_ptr< FdmInnerValueCalculator > &
+   -- ^calculator
+   ::const Date &
+   -- ^refDate
+   ::const DayCounter &
+   -- ^dayCounter
+ -v-
+ -e-

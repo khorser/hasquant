@@ -1,0 +1,28 @@
+Parameter
+ -- |Base class for model arguments.
+
+ -f-
+  Parameter
+   ->
+  params
+   ->const Array &
+  setParam
+   ->void
+   ::Size
+   -- ^i
+   ::Real
+   -- ^x
+  testParams
+   ->bool
+   ::const Array &
+   -- ^params
+  size
+   ->Size
+  operator()
+   ->Real
+   ::Time
+   -- ^t
+  implementation
+   ->const boost::shared_ptr< Impl > &
+ -v-
+ -e-

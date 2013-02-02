@@ -1,0 +1,29 @@
+AssetSwap::arguments
+ -- |Arguments for asset swap calculation
+
+ -f-
+ -v-
+  fixedResetDates
+   ::std::vector< Date >
+  fixedPayDates
+   ::std::vector< Date >
+  fixedCoupons
+   ::std::vector< Real >
+  floatingAccrualTimes
+   ::std::vector< Time >
+  floatingResetDates
+   ::std::vector< Date >
+  floatingFixingDates
+   ::std::vector< Date >
+  floatingPayDates
+   ::std::vector< Date >
+  floatingSpreads
+   ::std::vector< Spread >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

@@ -1,0 +1,65 @@
+BMASwap
+ -- |swap paying Libor against BMA coupons
+
+ -f-
+  liborFraction
+   ->Real
+  liborSpread
+   ->Spread
+  nominal
+   ->Real
+  -- "payer" or "receiver" refer to the BMA leg
+  type
+   ->Type
+  bmaLeg
+   ->const Leg &
+  liborLeg
+   ->const Leg &
+ -v-
+ -e-
+ -f-
+  liborLegBPS
+   ->Real
+  liborLegNPV
+   ->Real
+  fairLiborFraction
+   ->Rate
+  fairLiborSpread
+   ->Spread
+  bmaLegBPS
+   ->Real
+  bmaLegNPV
+   ->Real
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+  Type
+   Receiver
+   Payer
+ -f-
+  BMASwap
+   ->
+   ::Type
+   -- ^type
+   ::Real
+   -- ^nominal
+   ::const Schedule &
+   -- ^liborSchedule
+   ::Rate
+   -- ^liborFraction
+   ::Rate
+   -- ^liborSpread
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^liborIndex
+   ::const DayCounter &
+   -- ^liborDayCount
+   ::const Schedule &
+   -- ^bmaSchedule
+   ::const boost::shared_ptr< BMAIndex > &
+   -- ^bmaIndex
+   ::const DayCounter &
+   -- ^bmaDayCount
+ -v-
+ -e-

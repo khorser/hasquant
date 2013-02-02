@@ -1,0 +1,13 @@
+BjerksundStenslandApproximationEngine
+ -- |Bjerksund and Stensland pricing engine for American options (1993)
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in literature.
+
+ -f-
+  BjerksundStenslandApproximationEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^
+  calculate
+   ->void
+ -v-
+ -e-

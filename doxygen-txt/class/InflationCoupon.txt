@@ -1,0 +1,62 @@
+InflationCoupon
+ -- |Base inflation-coupon class.
+ -- |The day counter is usually obtained from the inflation term structure that the inflation index uses for forecasting. There is no gearing or spread because these are relevant for YoY coupons but not zero inflation coupons.inflation indices do not contain day counters or calendars.
+
+ -f-
+  price
+   ->Real
+   ::const Handle< YieldTermStructure > &
+   -- ^discountingCurve
+ -v-
+ -e-
+ -f-
+  -- yoy inflation index
+  index
+   ->const boost::shared_ptr< InflationIndex > &
+  -- how the coupon observes the index
+  observationLag
+   ->Period
+  -- fixing days
+  fixingDays
+   ->Natural
+  -- fixing date
+  fixingDate
+   ->Date
+  -- fixing of the underlying index, as observed by the coupon
+  indexFixing
+   ->Rate
+ -v-
+ -e-
+ -f-
+  InflationCoupon
+   ->
+   ::const Date &
+   -- ^paymentDate
+   ::Real
+   -- ^nominal
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::Natural
+   -- ^fixingDays
+   ::const boost::shared_ptr< InflationIndex > &
+   -- ^index
+   ::const Period &
+   -- ^observationLag
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+  setPricer
+   ->void
+   ::const boost::shared_ptr< InflationCouponPricer > &
+   -- ^
+  pricer
+   ->boost::shared_ptr< InflationCouponPricer >
+ -v-
+ -e-

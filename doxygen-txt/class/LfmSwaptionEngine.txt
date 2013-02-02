@@ -1,0 +1,12 @@
+LfmSwaptionEngine
+ -- |Libor forward model swaption engine based on Black formula
+
+ -f-
+  LfmSwaptionEngine
+   ->
+   ::const boost::shared_ptr< LiborForwardModel > &
+   -- ^model
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+ -v-
+ -e-

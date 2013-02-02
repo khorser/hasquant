@@ -1,0 +1,32 @@
+detail::ImpliedVolatilityHelper
+ -- |helper class for one-asset implied-volatility calculation
+ -- |The passed engine must be linked to the passed quote (see, e.g., VanillaOption to see how this can be achieved.)this function is meant for developers of option classes so that they can implement an impliedVolatility() method.
+
+ -f-
+  calculate
+   ->Volatility
+   ::const Instrument &
+   -- ^instrument
+   ::const PricingEngine &
+   -- ^engine
+   ::SimpleQuote &
+   -- ^volQuote
+   ::Real
+   -- ^targetValue
+   ::Real
+   -- ^accuracy
+   ::Natural
+   -- ^maxEvaluations
+   ::Volatility
+   -- ^minVol
+   ::Volatility
+   -- ^maxVol
+  -- The returned process is equal to the passed one, except for the volatility which is flat and whose value is driven by the passed quote.
+  clone
+   ->boost::shared_ptr< GeneralizedBlackScholesProcess >
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^
+   ::const boost::shared_ptr< SimpleQuote > &
+   -- ^
+ -v-
+ -e-

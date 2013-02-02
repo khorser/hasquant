@@ -1,0 +1,30 @@
+SwingExercise
+ -- |Swing exercise.
+ -- |A Swing option can only be exercised at a set of fixed date times
+
+ -f-
+  SwingExercise
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Size > &
+   =std::vector< Size >()
+   -- ^seconds
+  SwingExercise
+   ->
+   ::const Date &
+   -- ^from
+   ::const Date &
+   -- ^to
+   ::Size
+   -- ^stepSizeSecs
+  seconds
+   ->const std::vector< Size > &
+  exerciseTimes
+   ->std::vector< Time >
+   ::const DayCounter &
+   -- ^dc
+   ::const Date &
+   -- ^refDate
+ -v-
+ -e-

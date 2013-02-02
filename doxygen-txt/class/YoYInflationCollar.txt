@@ -1,0 +1,14 @@
+YoYInflationCollar
+ -- |Concrete YoY Inflation collar class.
+
+ -f-
+  YoYInflationCollar
+   ->
+   ::const Leg &
+   -- ^yoyLeg
+   ::const std::vector< Rate > &
+   -- ^capRates
+   ::const std::vector< Rate > &
+   -- ^floorRates
+ -v-
+ -e-

@@ -1,0 +1,24 @@
+HistoricalRatesAnalysis
+ -- |Historical rate analysis class
+
+ -f-
+  HistoricalRatesAnalysis
+   ->
+   ::const boost::shared_ptr< SequenceStatistics > &
+   -- ^stats
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::const Period &
+   -- ^step
+   ::const std::vector< boost::shared_ptr< InterestRateIndex > > &
+   -- ^indexes
+  skippedDates
+   ->const std::vector< Date > &
+  skippedDatesErrorMessage
+   ->const std::vector< std::string > &
+  stats
+   ->const boost::shared_ptr< SequenceStatistics > &
+ -v-
+ -e-

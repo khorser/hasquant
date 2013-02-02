@@ -1,0 +1,51 @@
+CallSpecifiedPathwiseMultiProduct
+
+ -f-
+  suggestedNumeraires
+   ->std::vector< Size >
+  evolution
+   ->const EvolutionDescription &
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  numberOfProducts
+   ->Size
+  maxNumberOfCashFlowsPerProductPerStep
+   ->Size
+  reset
+   ->void
+  nextTimeStep
+   ->bool
+   ::const CurveState &
+   -- ^currentState
+   ::std::vector< Size > &
+   -- ^numberCashFlowsThisStep
+   ::std::vector< std::vector< MarketModelPathwiseMultiProduct::CashFlow > > &
+   -- ^cashFlowsGenerated
+  clone
+   ->std::auto_ptr< MarketModelPathwiseMultiProduct >
+  alreadyDeflated
+   ->bool
+ -v-
+ -e-
+ -f-
+  CallSpecifiedPathwiseMultiProduct
+   ->
+   ::const Clone< MarketModelPathwiseMultiProduct > &
+   -- ^underlying
+   ::const Clone< ExerciseStrategy< CurveState > > &
+   -- ^
+   ::const Clone< MarketModelPathwiseMultiProduct > &
+   =Clone< MarketModelPathwiseMultiProduct >()
+   -- ^rebate
+  underlying
+   ->const MarketModelPathwiseMultiProduct &
+  strategy
+   ->const ExerciseStrategy< CurveState > &
+  rebate
+   ->const MarketModelPathwiseMultiProduct &
+  enableCallability
+   ->void
+  disableCallability
+   ->void
+ -v-
+ -e-

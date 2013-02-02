@@ -1,0 +1,30 @@
+ConvertibleZeroCouponBond
+ -- |convertible zero-coupon bond
+ -- |WarningMost methods inherited from Bond (such as yield or the yield-based dirtyPrice and cleanPrice) refer to the underlying plain-vanilla bond and do not take convertibility and callability into account.
+
+ -f-
+  ConvertibleZeroCouponBond
+   ->
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+   ::Real
+   -- ^conversionRatio
+   ::const DividendSchedule &
+   -- ^dividends
+   ::const CallabilitySchedule &
+   -- ^callability
+   ::const Handle< Quote > &
+   -- ^creditSpread
+   ::const Date &
+   -- ^issueDate
+   ::Natural
+   -- ^settlementDays
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Schedule &
+   -- ^schedule
+   ::Real
+   =100
+   -- ^redemption
+ -v-
+ -e-

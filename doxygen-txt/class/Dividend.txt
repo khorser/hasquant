@@ -1,0 +1,15 @@
+Dividend
+ -- |Predetermined cash flow.
+ -- |This cash flow pays a predetermined amount at a given date.
+
+ -f-
+  Dividend
+   ->
+   ::const Date &
+   -- ^date
+  amount
+   ->Real
+   ::Real
+   -- ^underlying
+ -v-
+ -e-

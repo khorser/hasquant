@@ -1,0 +1,39 @@
+CPICashFlow
+ -- |Cash flow paying the performance of a CPI (zero inflation) index.
+ -- |It is NOT a coupon, i.e. no accruals.
+
+ -f-
+  CPICashFlow
+   ->
+   ::Real
+   -- ^notional
+   ::const boost::shared_ptr< ZeroInflationIndex > &
+   -- ^index
+   ::const Date &
+   -- ^baseDate
+   ::Real
+   -- ^baseFixing
+   ::const Date &
+   -- ^fixingDate
+   ::const Date &
+   -- ^paymentDate
+   ::bool
+   =false
+   -- ^growthOnly
+   ::CPI::InterpolationType
+   =CPI::AsIndex
+   -- ^interpolation
+   ::const Frequency &
+   =NoFrequency
+   -- ^frequency
+  -- value used on base date
+  -- This does not have to agree with index on that date.
+  baseFixing
+   ->Real
+  -- do you want linear/constant/as-index interpolation of future data?
+  interpolation
+   ->CPI::InterpolationType
+  frequency
+   ->Frequency
+ -v-
+ -e-

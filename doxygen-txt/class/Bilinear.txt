@@ -1,0 +1,18 @@
+Bilinear
+ -- |bilinear-interpolation factory
+
+ -f-
+  interpolate
+   ->Interpolation2D
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+   ::const I2 &
+   -- ^yEnd
+   ::const M &
+   -- ^z
+ -v-
+ -e-

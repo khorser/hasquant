@@ -1,0 +1,19 @@
+Default
+
+ -f-
+  integrate
+   ->Real
+   ::const boost::function< Real(Real)> &
+   -- ^f
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^I
+   ::Size
+   -- ^N
+  nbEvalutions
+   ->Size
+ -v-
+ -e-

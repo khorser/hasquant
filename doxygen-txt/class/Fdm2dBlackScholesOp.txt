@@ -1,0 +1,59 @@
+Fdm2dBlackScholesOp
+
+ -f-
+  Fdm2dBlackScholesOp
+   ->
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^p1
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^p2
+   ::Real
+   -- ^correlation
+   ::Time
+   -- ^maturity
+   ::bool
+   =false
+   -- ^localVol
+   ::Real
+   =-Null< Real >()
+   -- ^illegalLocalVolOverwrite
+  size
+   ->Size
+  setTime
+   ->void
+   ::Time
+   -- ^t1
+   ::Time
+   -- ^t2
+  apply
+   ->Disposable< Array >
+   ::const Array &
+   -- ^x
+  apply_mixed
+   ->Disposable< Array >
+   ::const Array &
+   -- ^x
+  apply_direction
+   ->Disposable< Array >
+   ::Size
+   -- ^direction
+   ::const Array &
+   -- ^x
+  solve_splitting
+   ->Disposable< Array >
+   ::Size
+   -- ^direction
+   ::const Array &
+   -- ^x
+   ::Real
+   -- ^s
+  preconditioner
+   ->Disposable< Array >
+   ::const Array &
+   -- ^r
+   ::Real
+   -- ^s
+ -v-
+ -e-

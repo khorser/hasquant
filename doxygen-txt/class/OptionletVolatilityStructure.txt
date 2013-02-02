@@ -1,0 +1,144 @@
+OptionletVolatilityStructure
+ -- |Optionlet (caplet/floorlet) volatility structure.
+ -- |This class is purely abstract and defines the interface of concrete structures which will be derived from this one.
+
+ -f-
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  OptionletVolatilityStructure
+   ->
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- default constructor
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  OptionletVolatilityStructure
+   ->
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- initialize with a fixed reference date
+  OptionletVolatilityStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- calculate the reference date based on the global evaluation date
+  OptionletVolatilityStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+ -v-
+ -e-
+ -f-
+  -- returns the volatility for a given option tenor and strike rate
+  volatility
+   ->Volatility
+   ::const Period &
+   -- ^optionTenor
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the volatility for a given option date and strike rate
+  volatility
+   ->Volatility
+   ::const Date &
+   -- ^optionDate
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the volatility for a given option time and strike rate
+  volatility
+   ->Volatility
+   ::Time
+   -- ^optionTime
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the Black variance for a given option tenor and strike rate
+  blackVariance
+   ->Real
+   ::const Period &
+   -- ^optionTenor
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the Black variance for a given option date and strike rate
+  blackVariance
+   ->Real
+   ::const Date &
+   -- ^optionDate
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the Black variance for a given option time and strike rate
+  blackVariance
+   ->Real
+   ::Time
+   -- ^optionTime
+   ::Rate
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- returns the smile for a given option tenor
+  smileSection
+   ->boost::shared_ptr< SmileSection >
+   ::const Period &
+   -- ^optionTenor
+   ::bool
+   =false
+   -- ^extr
+  -- returns the smile for a given option date
+  smileSection
+   ->boost::shared_ptr< SmileSection >
+   ::const Date &
+   -- ^optionDate
+   ::bool
+   =false
+   -- ^extr
+  -- returns the smile for a given option time
+  smileSection
+   ->boost::shared_ptr< SmileSection >
+   ::Time
+   -- ^optionTime
+   ::bool
+   =false
+   -- ^extr
+ -v-
+ -e-
+ -f-
+  ~OptionletVolatilityStructure
+   ->
+ -v-
+ -e-

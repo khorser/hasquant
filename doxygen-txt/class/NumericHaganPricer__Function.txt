@@ -1,0 +1,11 @@
+NumericHaganPricer::Function
+
+ -f-
+  ~Function
+   ->
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

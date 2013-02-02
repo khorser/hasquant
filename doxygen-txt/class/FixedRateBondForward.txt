@@ -1,0 +1,43 @@
+FixedRateBondForward
+ -- |Forward contract on a fixed-rate bond
+ -- |valueDate refers to the settlement date of the bond forward contract. maturityDate is the delivery (or repurchase) date for the underlying bond (not the bond's maturity date). Relevant formulas used in the calculations ( $P$ refers to a price):a. $ P_{CleanFwd}(t) = P_{DirtyFwd}(t) - AI(t=deliveryDate) $ where $ AI $ refers to the accrued interest on the underlying bond.b. $ P_{DirtyFwd}(t) = \frac{P_{DirtySpot}(t) - SpotIncome(t)} {discountCurve->discount(t=deliveryDate)} $c. $ SpotIncome(t) = \sum_i \left( CF_i \times incomeDiscountCurve->discount(t_i) \right) $ where $ CF_i $ represents the ith bond cash flow (coupon payment) associated with the underlying bond falling between the settlementDate and the deliveryDate. (Note the two different discount curves used in b. and c.) Example: valuation of a repo on a fixed-rate bond Possible enhancementsAdd preconditions and testsPossible enhancementsCreate switch- if coupon goes to seller is toggled on, don't consider income in the $ P_{DirtyFwd}(t) $ calculation.Possible enhancementsVerify this works when the underlying is paper (in which case ignore all AI.)WarningThis class still needs to be rigorously tested
+
+ -f-
+  -- If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
+  FixedRateBondForward
+   ->
+   ::const Date &
+   -- ^valueDate
+   ::const Date &
+   -- ^maturityDate
+   ::Position::Type
+   -- ^type
+   ::Real
+   -- ^strike
+   ::Natural
+   -- ^settlementDays
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^businessDayConvention
+   ::const boost::shared_ptr< FixedRateBond > &
+   -- ^fixedCouponBond
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^discountCurve
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^incomeDiscountCurve
+ -v-
+ -e-
+ -f-
+  -- (dirty) forward bond price
+  forwardPrice
+   ->Real
+  -- (dirty) forward bond price minus accrued on bond at delivery
+  cleanForwardPrice
+   ->Real
+ -v-
+ -e-

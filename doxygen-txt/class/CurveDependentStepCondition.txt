@@ -1,0 +1,11 @@
+CurveDependentStepCondition
+
+ -f-
+  applyTo
+   ->void
+   ::Array &
+   -- ^a
+   ::Time
+   -- ^
+ -v-
+ -e-

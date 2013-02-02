@@ -1,0 +1,26 @@
+TimeHomogeneousForwardCorrelation
+
+ -f-
+  TimeHomogeneousForwardCorrelation
+   ->
+   ::const Matrix &
+   -- ^fwdCorrelation
+   ::const std::vector< Time > &
+   -- ^rateTimes
+  times
+   ->const std::vector< Time > &
+  rateTimes
+   ->const std::vector< Time > &
+  correlations
+   ->const std::vector< Matrix > &
+  numberOfRates
+   ->Size
+ -v-
+ -e-
+ -f-
+  evolvedMatrices
+   ->std::vector< Matrix >
+   ::const Matrix &
+   -- ^fwdCorrelation
+ -v-
+ -e-

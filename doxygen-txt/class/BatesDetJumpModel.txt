@@ -1,0 +1,19 @@
+BatesDetJumpModel
+
+ -f-
+  BatesDetJumpModel
+   ->
+   ::const boost::shared_ptr< BatesProcess > &
+   -- ^process
+   ::Real
+   =1.0
+   -- ^kappaLambda
+   ::Real
+   =0.1
+   -- ^thetaLambda
+  kappaLambda
+   ->Real
+  thetaLambda
+   ->Real
+ -v-
+ -e-

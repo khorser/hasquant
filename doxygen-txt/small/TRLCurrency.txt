@@ -1,0 +1,9 @@
+TRLCurrency
+ -- |Turkish lira.
+ -- |The ISO three-letter code was TRL; the numeric code was 792. It was divided in 100 kurus.Obsoleted by the new Turkish lira since 2005.
+
+ -f-
+  TRLCurrency
+   ->
+ -v-
+ -e-

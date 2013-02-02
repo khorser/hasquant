@@ -1,0 +1,49 @@
+LmVolatilityModel
+ -- |caplet volatility model
+
+ -f-
+  LmVolatilityModel
+   ->
+   ::Size
+   -- ^size
+   ::Size
+   -- ^nArguments
+  ~LmVolatilityModel
+   ->
+  size
+   ->Size
+  params
+   ->std::vector< Parameter > &
+  setParams
+   ->void
+   ::const std::vector< Parameter > &
+   -- ^arguments
+  volatility
+   ->Disposable< Array >
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  volatility
+   ->Volatility
+   ::Size
+   -- ^i
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  integratedVariance
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^j
+   ::Time
+   -- ^u
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+ -v-
+ -e-

@@ -1,0 +1,14 @@
+MonotonicLogParabolic
+
+ -f-
+  -- the $ x $ values must be sorted.
+  MonotonicLogParabolic
+   ->
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+ -v-
+ -e-

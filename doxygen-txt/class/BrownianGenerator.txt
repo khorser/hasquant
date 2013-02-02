@@ -1,0 +1,17 @@
+BrownianGenerator
+
+ -f-
+  ~BrownianGenerator
+   ->
+  nextStep
+   ->Real
+   ::std::vector< Real > &
+   -- ^
+  nextPath
+   ->Real
+  numberOfFactors
+   ->Size
+  numberOfSteps
+   ->Size
+ -v-
+ -e-

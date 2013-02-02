@@ -1,0 +1,102 @@
+FixedRateBond
+ -- |fixed-rate bond
+ -- |Testscalculations are tested by checking results against cached values.
+
+ -f-
+  -- simple annual compounding coupon rates
+  FixedRateBond
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::Real
+   -- ^faceAmount
+   ::const Schedule &
+   -- ^schedule
+   ::const std::vector< Rate > &
+   -- ^coupons
+   ::const DayCounter &
+   -- ^accrualDayCounter
+   ::BusinessDayConvention
+   =Following
+   -- ^paymentConvention
+   ::Real
+   =100.0
+   -- ^redemption
+   ::const Date &
+   =Date()
+   -- ^issueDate
+   ::const Calendar &
+   =Calendar()
+   -- ^paymentCalendar
+  -- simple annual compounding coupon rates with internal schedule calculation
+  FixedRateBond
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^couponCalendar
+   ::Real
+   -- ^faceAmount
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^maturityDate
+   ::const Period &
+   -- ^tenor
+   ::const std::vector< Rate > &
+   -- ^coupons
+   ::const DayCounter &
+   -- ^accrualDayCounter
+   ::BusinessDayConvention
+   =Following
+   -- ^accrualConvention
+   ::BusinessDayConvention
+   =Following
+   -- ^paymentConvention
+   ::Real
+   =100.0
+   -- ^redemption
+   ::const Date &
+   =Date()
+   -- ^issueDate
+   ::const Date &
+   =Date()
+   -- ^stubDate
+   ::DateGeneration::Rule
+   =DateGeneration::Backward
+   -- ^rule
+   ::bool
+   =false
+   -- ^endOfMonth
+   ::const Calendar &
+   =Calendar()
+   -- ^paymentCalendar
+  -- generic compounding and frequency InterestRate coupons
+  FixedRateBond
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::Real
+   -- ^faceAmount
+   ::const Schedule &
+   -- ^schedule
+   ::const std::vector< InterestRate > &
+   -- ^coupons
+   ::BusinessDayConvention
+   =Following
+   -- ^paymentConvention
+   ::Real
+   =100.0
+   -- ^redemption
+   ::const Date &
+   =Date()
+   -- ^issueDate
+   ::const Calendar &
+   =Calendar()
+   -- ^paymentCalendar
+  frequency
+   ->Frequency
+  dayCounter
+   ->const DayCounter &
+ -v-
+ -e-

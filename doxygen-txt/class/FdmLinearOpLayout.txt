@@ -1,0 +1,51 @@
+FdmLinearOpLayout
+
+ -f-
+  FdmLinearOpLayout
+   ->
+   ::const std::vector< Size > &
+   -- ^dim
+  begin
+   ->FdmLinearOpIterator
+  end
+   ->FdmLinearOpIterator
+  dim
+   ->const std::vector< Size > &
+  spacing
+   ->const std::vector< Size > &
+  size
+   ->Size
+  index
+   ->Size
+   ::const std::vector< Size > &
+   -- ^coordinates
+  neighbourhood
+   ->Size
+   ::const FdmLinearOpIterator &
+   -- ^iterator
+   ::Size
+   -- ^i
+   ::Integer
+   -- ^offset
+  neighbourhood
+   ->Size
+   ::const FdmLinearOpIterator &
+   -- ^iterator
+   ::Size
+   -- ^i1
+   ::Integer
+   -- ^offset1
+   ::Size
+   -- ^i2
+   ::Integer
+   -- ^offset2
+  iter_neighbourhood
+   ->Disposable< FdmLinearOpIterator >
+   ::const FdmLinearOpIterator &
+   -- ^iterator
+   ::Size
+   -- ^i
+   ::Integer
+   -- ^offset
+ -v-
+ -e-

@@ -1,0 +1,25 @@
+ProjectedCostFunction
+ -- |Parameterized cost function.
+ -- |This class creates a proxy cost function which can depend on any arbitrary subset of parameters (the other being fixed)
+
+ -f-
+  ProjectedCostFunction
+   ->
+   ::const CostFunction &
+   -- ^costFunction
+   ::const Array &
+   -- ^parametersValues
+   ::const std::vector< bool > &
+   -- ^parametersFreedoms
+  -- returns the subset of free parameters corresponding
+  project
+   ->Disposable< Array >
+   ::const Array &
+   -- ^parameters
+  -- returns whole set of parameters corresponding to the set
+  include
+   ->Disposable< Array >
+   ::const Array &
+   -- ^projectedParameters
+ -v-
+ -e-

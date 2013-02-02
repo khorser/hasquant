@@ -1,0 +1,9 @@
+IQDCurrency
+ -- |Iraqi dinar.
+ -- |The ISO three-letter code is IQD; the numeric code is 368. It is divided in 1000 fils.
+
+ -f-
+  IQDCurrency
+   ->
+ -v-
+ -e-

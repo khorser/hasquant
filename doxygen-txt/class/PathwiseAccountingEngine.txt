@@ -1,0 +1,22 @@
+PathwiseAccountingEngine
+ -- |Engine collecting cash flows along a market-model simulation for doing pathwise computation of Deltas.
+
+ -f-
+  PathwiseAccountingEngine
+   ->
+   ::const boost::shared_ptr< LogNormalFwdRateEuler > &
+   -- ^evolver
+   ::const Clone< MarketModelPathwiseMultiProduct > &
+   -- ^product
+   ::const boost::shared_ptr< MarketModel > &
+   -- ^pseudoRootStructure
+   ::Real
+   -- ^initialNumeraireValue
+  multiplePathValues
+   ->void
+   ::SequenceStatisticsInc &
+   -- ^stats
+   ::Size
+   -- ^numberOfPaths
+ -v-
+ -e-

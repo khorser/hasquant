@@ -1,0 +1,20 @@
+MarketModelPathwiseMultiDeflatedCap
+ -- |MarketModelPathwiseMultiDeflatedCap to price several caps and get their derivatives simultaneously. Mainly useful for testing pathwise market vegas code.
+
+ -f-
+  MarketModelPathwiseMultiDeflatedCap
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Real > &
+   -- ^accruals
+   ::const std::vector< Time > &
+   -- ^paymentTimes
+   ::Rate
+   -- ^strike
+   ::const std::vector< std::pair< Size, Size > > &
+   -- ^startsAndEnds
+  ~MarketModelPathwiseMultiDeflatedCap
+   ->
+ -v-
+ -e-

@@ -1,0 +1,50 @@
+BicubicSpline
+ -- |bicubic-spline interpolation between discrete points
+ -- |Possible enhancementsrevise end conditions
+
+ -f-
+  -- the $ x $ and $ y $ values must be sorted.
+  BicubicSpline
+   ->
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+   ::const I2 &
+   -- ^yEnd
+   ::const M &
+   -- ^zData
+  derivativeX
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  derivativeY
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  secondDerivativeX
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  secondDerivativeY
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  derivativeXY
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

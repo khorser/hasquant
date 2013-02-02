@@ -1,0 +1,38 @@
+StochasticProcess::discretization
+ -- |discretization of a stochastic process over a given time interval
+
+ -f-
+  ~discretization
+   ->
+  drift
+   ->Disposable< Array >
+   ::const StochasticProcess &
+   -- ^
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+  diffusion
+   ->Disposable< Matrix >
+   ::const StochasticProcess &
+   -- ^
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+  covariance
+   ->Disposable< Matrix >
+   ::const StochasticProcess &
+   -- ^
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+ -v-
+ -e-

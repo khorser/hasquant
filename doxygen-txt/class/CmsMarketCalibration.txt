@@ -1,0 +1,53 @@
+CmsMarketCalibration
+
+ -f-
+ -v-
+ -e-
+  CalibrationType
+   OnSpread
+   OnPrice
+   OnForwardCmsPrice
+ -f-
+ -v-
+  volCube_
+   ::Handle< SwaptionVolatilityStructure >
+  cmsMarket_
+   ::boost::shared_ptr< CmsMarket >
+  weights_
+   ::Matrix
+  calibrationType_
+   ::CalibrationType
+  sparseSabrParameters_
+   ::Matrix
+  denseSabrParameters_
+   ::Matrix
+  browseCmsMarket_
+   ::Matrix
+ -e-
+ -f-
+  CmsMarketCalibration
+   ->
+   ::Handle< SwaptionVolatilityStructure > &
+   -- ^volCube
+   ::boost::shared_ptr< CmsMarket > &
+   -- ^cmsMarket
+   ::const Matrix &
+   -- ^weights
+   ::CalibrationType
+   -- ^calibrationType
+  compute
+   ->Array
+   ::const boost::shared_ptr< EndCriteria > &
+   -- ^endCriteria
+   ::const boost::shared_ptr< OptimizationMethod > &
+   -- ^method
+   ::const Array &
+   -- ^guess
+   ::bool
+   -- ^isMeanReversionFixed
+  error
+   ->Real
+  endCriteria
+   ->EndCriteria::Type
+ -v-
+ -e-

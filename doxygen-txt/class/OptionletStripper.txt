@@ -1,0 +1,16 @@
+OptionletStripper
+ -- |StrippedOptionletBase specialization. It's up to derived classes to implement LazyObject::performCalculations
+
+ -f-
+  optionletFixingTenors
+   ->const std::vector< Period > &
+  optionletPaymentDates
+   ->const std::vector< Date > &
+  optionletAccrualPeriods
+   ->const std::vector< Time > &
+  termVolSurface
+   ->boost::shared_ptr< CapFloorTermVolSurface >
+  iborIndex
+   ->boost::shared_ptr< IborIndex >
+ -v-
+ -e-

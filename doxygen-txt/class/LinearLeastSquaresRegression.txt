@@ -1,0 +1,13 @@
+LinearLeastSquaresRegression
+
+ -f-
+  LinearLeastSquaresRegression
+   ->
+   ::const std::vector< ArgumentType > &
+   -- ^x
+   ::const std::vector< Real > &
+   -- ^y
+   ::const std::vector< boost::function1< Real, ArgumentType > > &
+   -- ^v
+ -v-
+ -e-

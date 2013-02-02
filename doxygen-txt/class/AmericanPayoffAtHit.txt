@@ -1,0 +1,29 @@
+AmericanPayoffAtHit
+ -- |Analytic formula for American exercise payoff at-hit options.
+ -- |Possible enhancementscalculate greeks
+
+ -f-
+  AmericanPayoffAtHit
+   ->
+   ::Real
+   -- ^spot
+   ::DiscountFactor
+   -- ^discount
+   ::DiscountFactor
+   -- ^dividendDiscount
+   ::Real
+   -- ^variance
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+  value
+   ->Real
+  delta
+   ->Real
+  gamma
+   ->Real
+  rho
+   ->Real
+   ::Time
+   -- ^maturity
+ -v-
+ -e-

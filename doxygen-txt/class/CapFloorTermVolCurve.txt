@@ -1,0 +1,80 @@
+CapFloorTermVolCurve
+ -- |Cap/floor at-the-money term-volatility vector.
+ -- |This class provides the at-the-money volatility for a given cap/floor interpolating a volatility vector whose elements are the market volatilities of a set of caps/floors with given length.
+
+ -f-
+  optionTenors
+   ->const std::vector< Period > &
+  optionDates
+   ->const std::vector< Date > &
+  optionTimes
+   ->const std::vector< Time > &
+ -v-
+ -e-
+ -f-
+  -- floating reference date, floating market data
+  CapFloorTermVolCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Handle< Quote > > &
+   -- ^vols
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  -- fixed reference date, floating market data
+  CapFloorTermVolCurve
+   ->
+   ::const Date &
+   -- ^settlementDate
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Handle< Quote > > &
+   -- ^vols
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  -- fixed reference date, fixed market data
+  CapFloorTermVolCurve
+   ->
+   ::const Date &
+   -- ^settlementDate
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Volatility > &
+   -- ^vols
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  -- floating reference date, fixed market data
+  CapFloorTermVolCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const std::vector< Period > &
+   -- ^optionTenors
+   ::const std::vector< Volatility > &
+   -- ^vols
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+ -v-
+ -e-

@@ -1,0 +1,158 @@
+BlackVolTermStructure
+ -- |Black-volatility term structure.
+ -- |This abstract class defines the interface of concrete Black-volatility term structures which will be derived from this one.Volatilities are assumed to be expressed on an annual basis.
+
+ -f-
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  BlackVolTermStructure
+   ->
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- default constructor
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  BlackVolTermStructure
+   ->
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- initialize with a fixed reference date
+  BlackVolTermStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- calculate the reference date based on the global evaluation date
+  BlackVolTermStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+ -v-
+ -e-
+ -f-
+  -- spot volatility
+  blackVol
+   ->Volatility
+   ::const Date &
+   -- ^maturity
+   ::Real
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- spot volatility
+  blackVol
+   ->Volatility
+   ::Time
+   -- ^maturity
+   ::Real
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- spot variance
+  blackVariance
+   ->Real
+   ::const Date &
+   -- ^maturity
+   ::Real
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- spot variance
+  blackVariance
+   ->Real
+   ::Time
+   -- ^maturity
+   ::Real
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- forward (at-the-money) volatility
+  blackForwardVol
+   ->Volatility
+   ::const Date &
+   -- ^date1
+   ::const Date &
+   -- ^date2
+   ::Real
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- forward (at-the-money) volatility
+  blackForwardVol
+   ->Volatility
+   ::Time
+   -- ^time1
+   ::Time
+   -- ^time2
+   ::Real
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- forward (at-the-money) variance
+  blackForwardVariance
+   ->Real
+   ::const Date &
+   -- ^date1
+   ::const Date &
+   -- ^date2
+   ::Real
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+  -- forward (at-the-money) variance
+  blackForwardVariance
+   ->Real
+   ::Time
+   -- ^time1
+   ::Time
+   -- ^time2
+   ::Real
+   -- ^strike
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  accept
+   ->void
+   ::AcyclicVisitor &
+   -- ^
+ -v-
+ -e-
+ -f-
+  ~BlackVolTermStructure
+   ->
+ -v-
+ -e-

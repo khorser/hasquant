@@ -1,0 +1,13 @@
+FactorSpreadedHazardRateCurve
+ -- |Default-probability structure with a multiplicative spread on hazard rates.
+ -- |This term structure will remain linked to the original structure, i.e., any changes in the latter will be reflected in this structure as well.
+
+ -f-
+  FactorSpreadedHazardRateCurve
+   ->
+   ::const Handle< DefaultProbabilityTermStructure > &
+   -- ^originalCurve
+   ::const Handle< Quote > &
+   -- ^spread
+ -v-
+ -e-

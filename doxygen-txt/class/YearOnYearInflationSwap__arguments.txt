@@ -1,0 +1,35 @@
+YearOnYearInflationSwap::arguments
+ -- |Arguments for YoY swap calculation
+
+ -f-
+ -v-
+  type
+   ::Type
+  nominal
+   ::Real
+  fixedResetDates
+   ::std::vector< Date >
+  fixedPayDates
+   ::std::vector< Date >
+  yoyAccrualTimes
+   ::std::vector< Time >
+  yoyResetDates
+   ::std::vector< Date >
+  yoyFixingDates
+   ::std::vector< Date >
+  yoyPayDates
+   ::std::vector< Date >
+  fixedCoupons
+   ::std::vector< Real >
+  yoySpreads
+   ::std::vector< Spread >
+  yoyCoupons
+   ::std::vector< Real >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

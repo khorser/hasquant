@@ -1,0 +1,62 @@
+SpreadCdsHelper
+ -- |Spread-quoted CDS hazard rate bootstrap helper.
+
+ -f-
+  SpreadCdsHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^runningSpread
+   ::const Period &
+   -- ^tenor
+   ::Integer
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::Frequency
+   -- ^frequency
+   ::BusinessDayConvention
+   -- ^paymentConvention
+   ::DateGeneration::Rule
+   -- ^rule
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Real
+   -- ^recoveryRate
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+   ::bool
+   =true
+   -- ^settlesAccrual
+   ::bool
+   =true
+   -- ^paysAtDefaultTime
+  SpreadCdsHelper
+   ->
+   ::Rate
+   -- ^runningSpread
+   ::const Period &
+   -- ^tenor
+   ::Integer
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::Frequency
+   -- ^frequency
+   ::BusinessDayConvention
+   -- ^paymentConvention
+   ::DateGeneration::Rule
+   -- ^rule
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Real
+   -- ^recoveryRate
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+   ::bool
+   =true
+   -- ^settlesAccrual
+   ::bool
+   =true
+   -- ^paysAtDefaultTime
+ -v-
+ -e-

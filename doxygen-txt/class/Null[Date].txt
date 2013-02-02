@@ -1,0 +1,10 @@
+Null< Date >
+ -- |specialization of Null template for the Date class
+
+ -f-
+  Null
+   ->
+  operator Date
+   ->
+ -v-
+ -e-

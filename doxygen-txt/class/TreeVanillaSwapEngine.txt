@@ -1,0 +1,25 @@
+TreeVanillaSwapEngine
+ -- |Numerical lattice engine for simple swaps.
+ -- |Testscalculations are checked against known good results
+
+ -f-
+  TreeVanillaSwapEngine
+   ->
+   ::const boost::shared_ptr< ShortRateModel > &
+   -- ^
+   ::Size
+   -- ^timeSteps
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^termStructure
+  TreeVanillaSwapEngine
+   ->
+   ::const boost::shared_ptr< ShortRateModel > &
+   -- ^
+   ::const TimeGrid &
+   -- ^timeGrid
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^termStructure
+ -v-
+ -e-

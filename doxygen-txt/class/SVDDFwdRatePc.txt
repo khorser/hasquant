@@ -1,0 +1,23 @@
+SVDDFwdRatePc
+ -- |Displaced diffusion LMM with uncorrelated vol process. Called "Shifted BGM" with Heston vol by Brac in "Engineering BGM." Vol process is an external input.
+
+ -f-
+  SVDDFwdRatePc
+   ->
+   ::const boost::shared_ptr< MarketModel > &
+   -- ^
+   ::const BrownianGeneratorFactory &
+   -- ^
+   ::const boost::shared_ptr< MarketModelVolProcess > &
+   -- ^volProcess
+   ::Size
+   -- ^firstVolatilityFactor
+   ::Size
+   -- ^volatilityFactorStep
+   ::const std::vector< Size > &
+   -- ^numeraires
+   ::Size
+   =0
+   -- ^initialStep
+ -v-
+ -e-

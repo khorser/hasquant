@@ -1,0 +1,57 @@
+YoYInflationVolatilityTraits
+ -- |traits for inflation-volatility bootstrap
+
+ -f-
+ -v-
+ -e-
+ -f-
+  initialDate
+   ->Date
+   ::const YoYOptionletVolatilitySurface *
+   -- ^s
+  initialValue
+   ->Real
+   ::const YoYOptionletVolatilitySurface *
+   -- ^s
+  guess
+   ->Real
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  minValueAfter
+   ->Real
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^
+   ::Size
+   -- ^
+  maxValueAfter
+   ->Real
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^
+   ::Size
+   -- ^
+  updateGuess
+   ->void
+   ::std::vector< Real > &
+   -- ^vols
+   ::Real
+   -- ^level
+   ::Size
+   -- ^i
+  maxIterations
+   ->Size
+ -v-
+ -e-

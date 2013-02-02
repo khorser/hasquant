@@ -1,0 +1,178 @@
+Money
+ -- |amount of cash
+ -- |Testsmoney arithmetic is tested with and without currency conversions.
+
+ -f-
+  Money
+   ->
+  Money
+   ->
+   ::const Currency &
+   -- ^currency
+   ::Decimal
+   -- ^value
+  Money
+   ->
+   ::Decimal
+   -- ^value
+   ::const Currency &
+   -- ^currency
+ -v-
+ -e-
+ -f-
+  currency
+   ->const Currency &
+  value
+   ->Decimal
+  rounded
+   ->Money
+ -v-
+ -e-
+ -f-
+  operator+
+   ->Money
+  operator-
+   ->Money
+  operator+=
+   ->Money &
+   ::const Money &
+   -- ^
+  operator-=
+   ->Money &
+   ::const Money &
+   -- ^
+  operator*=
+   ->Money &
+   ::Decimal
+   -- ^
+  operator/=
+   ->Money &
+   ::Decimal
+   -- ^
+ -v-
+ -e-
+ -f-
+ -v-
+  conversionType
+   ::ConversionType
+  baseCurrency
+   ::Currency
+ -e-
+  ConversionType
+   NoConversion
+   -- ^do not perform conversions
+   BaseCurrencyConversion
+   -- ^convert both operands to the base currency before converting
+   AutomatedConversion
+   -- ^return the result in the currency of the first operand
+ -f-
+  operator+
+   ->Money
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+  operator-
+   ->Money
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+  operator*
+   ->Money
+   ::const Money &
+   -- ^
+   ::Decimal
+   -- ^
+  operator*
+   ->Money
+   ::Decimal
+   -- ^
+   ::const Money &
+   -- ^
+  operator/
+   ->Money
+   ::const Money &
+   -- ^
+   ::Decimal
+   -- ^
+  operator/
+   ->Decimal
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+  operator==
+   ->bool
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+  operator!=
+   ->bool
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+  operator<
+   ->bool
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+  operator<=
+   ->bool
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+  operator>
+   ->bool
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+  operator>=
+   ->bool
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+  close
+   ->bool
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+   ::Size
+   =42
+   -- ^n
+  close_enough
+   ->bool
+   ::const Money &
+   -- ^
+   ::const Money &
+   -- ^
+   ::Size
+   =42
+   -- ^n
+  operator*
+   ->Money
+   ::Decimal
+   -- ^
+   ::const Currency &
+   -- ^
+  operator*
+   ->Money
+   ::const Currency &
+   -- ^
+   ::Decimal
+   -- ^
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::const Money &
+   -- ^
+ -v-
+ -e-

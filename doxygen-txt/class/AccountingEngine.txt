@@ -1,0 +1,20 @@
+AccountingEngine
+ -- |Engine collecting cash flows along a market-model simulation.
+
+ -f-
+  AccountingEngine
+   ->
+   ::const boost::shared_ptr< MarketModelEvolver > &
+   -- ^evolver
+   ::const Clone< MarketModelMultiProduct > &
+   -- ^product
+   ::Real
+   -- ^initialNumeraireValue
+  multiplePathValues
+   ->void
+   ::SequenceStatisticsInc &
+   -- ^stats
+   ::Size
+   -- ^numberOfPaths
+ -v-
+ -e-

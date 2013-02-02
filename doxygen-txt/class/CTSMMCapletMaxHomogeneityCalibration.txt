@@ -1,0 +1,53 @@
+CTSMMCapletMaxHomogeneityCalibration
+
+ -f-
+  CTSMMCapletMaxHomogeneityCalibration
+   ->
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+   -- ^corr
+   ::const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+   -- ^displacedSwapVariances
+   ::const std::vector< Volatility > &
+   -- ^capletVols
+   ::const boost::shared_ptr< CurveState > &
+   -- ^cs
+   ::Spread
+   -- ^displacement
+   ::Real
+   =1.0
+   -- ^caplet0Swaption1Priority
+ -v-
+ -e-
+ -f-
+  capletMaxHomogeneityCalibration
+   ->Natural
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const PiecewiseConstantCorrelation &
+   -- ^corr
+   ::const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+   -- ^displacedSwapVariances
+   ::const std::vector< Volatility > &
+   -- ^capletVols
+   ::const CurveState &
+   -- ^cs
+   ::const Spread
+   -- ^displacement
+   ::Real
+   -- ^caplet0Swaption1Priority
+   ::Size
+   -- ^numberOfFactors
+   ::Size
+   -- ^maxIterations
+   ::Real
+   -- ^tolerance
+   ::Real &
+   -- ^deformationSize
+   ::Real &
+   -- ^totalSwaptionError
+   ::std::vector< Matrix > &
+   -- ^swapCovariancePseudoRoots
+ -v-
+ -e-

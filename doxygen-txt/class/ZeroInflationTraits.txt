@@ -1,0 +1,57 @@
+ZeroInflationTraits
+ -- |Bootstrap traits to use for PiecewiseZeroInflationCurve.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  initialDate
+   ->Date
+   ::const ZeroInflationTermStructure *
+   -- ^t
+  initialValue
+   ->Rate
+   ::const ZeroInflationTermStructure *
+   -- ^t
+  guess
+   ->Rate
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  minValueAfter
+   ->Rate
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  maxValueAfter
+   ->Rate
+   ::Size
+   -- ^i
+   ::const C *
+   -- ^c
+   ::bool
+   -- ^validData
+   ::Size
+   -- ^
+  updateGuess
+   ->void
+   ::std::vector< Rate > &
+   -- ^data
+   ::Rate
+   -- ^level
+   ::Size
+   -- ^i
+  maxIterations
+   ->Size
+ -v-
+ -e-

@@ -1,0 +1,40 @@
+CPICapFloor::arguments
+
+ -f-
+ -v-
+  type
+   ::Option::Type
+  nominal
+   ::Real
+  startDate
+   ::Date
+  fixDate
+   ::Date
+  payDate
+   ::Date
+  baseCPI
+   ::Real
+  maturity
+   ::Date
+  fixCalendar
+   ::Calendar
+  payCalendar
+   ::Calendar
+  fixConvention
+   ::BusinessDayConvention
+  payConvention
+   ::BusinessDayConvention
+  strike
+   ::Rate
+  infIndex
+   ::Handle< ZeroInflationIndex >
+  observationLag
+   ::Period
+  observationInterpolation
+   ::CPI::InterpolationType
+ -e-
+ -f-
+  validate
+   ->void
+ -v-
+ -e-

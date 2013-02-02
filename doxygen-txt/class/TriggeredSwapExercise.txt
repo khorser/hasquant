@@ -1,0 +1,51 @@
+TriggeredSwapExercise
+
+ -f-
+  TriggeredSwapExercise
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Time > &
+   -- ^exerciseTimes
+   ::const std::vector< Rate > &
+   -- ^strikes
+  numberOfExercises
+   ->Size
+  evolution
+   ->const EvolutionDescription &
+  nextStep
+   ->void
+   ::const CurveState &
+   -- ^
+  reset
+   ->void
+  isExerciseTime
+   ->std::valarray< bool >
+  values
+   ->void
+   ::const CurveState &
+   -- ^
+   ::std::vector< Real > &
+   -- ^results
+  numberOfVariables
+   ->std::vector< Size >
+  numberOfParameters
+   ->std::vector< Size >
+  exercise
+   ->bool
+   ::Size
+   -- ^exerciseNumber
+   ::const std::vector< Real > &
+   -- ^parameters
+   ::const std::vector< Real > &
+   -- ^variables
+  guess
+   ->void
+   ::Size
+   -- ^exerciseNumber
+   ::std::vector< Real > &
+   -- ^parameters
+  clone
+   ->std::auto_ptr< MarketModelParametricExercise >
+ -v-
+ -e-

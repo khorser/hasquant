@@ -1,0 +1,40 @@
+LogCubic
+ -- |log-cubic interpolation factory and traits
+
+ -f-
+ -v-
+  global
+   ::const bool
+  requiredPoints
+   ::const Size
+ -e-
+ -f-
+  LogCubic
+   ->
+   ::CubicInterpolation::DerivativeApprox
+   -- ^da
+   ::bool
+   =true
+   -- ^monotonic
+   ::CubicInterpolation::BoundaryCondition
+   =CubicInterpolation::SecondDerivative
+   -- ^leftCondition
+   ::Real
+   =0.0
+   -- ^leftConditionValue
+   ::CubicInterpolation::BoundaryCondition
+   =CubicInterpolation::SecondDerivative
+   -- ^rightCondition
+   ::Real
+   =0.0
+   -- ^rightConditionValue
+  interpolate
+   ->Interpolation
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+ -v-
+ -e-

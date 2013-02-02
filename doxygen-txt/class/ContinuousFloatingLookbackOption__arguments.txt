@@ -1,0 +1,13 @@
+ContinuousFloatingLookbackOption::arguments
+ -- |Arguments for continuous floating lookback option calculation
+
+ -f-
+ -v-
+  minmax
+   ::Real
+ -e-
+ -f-
+  validate
+   ->void
+ -v-
+ -e-

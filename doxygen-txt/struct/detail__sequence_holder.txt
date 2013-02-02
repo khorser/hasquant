@@ -1,0 +1,18 @@
+detail::sequence_holder
+
+ -f-
+ -v-
+  begin
+   ::InputIterator
+  end
+   ::InputIterator
+ -e-
+ -f-
+  sequence_holder
+   ->
+   ::InputIterator
+   -- ^begin
+   ::InputIterator
+   -- ^end
+ -v-
+ -e-

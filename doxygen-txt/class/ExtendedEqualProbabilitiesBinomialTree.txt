@@ -1,0 +1,30 @@
+ExtendedEqualProbabilitiesBinomialTree
+ -- |Base class for equal probabilities binomial tree.
+
+ -f-
+  ExtendedEqualProbabilitiesBinomialTree
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^process
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+  ~ExtendedEqualProbabilitiesBinomialTree
+   ->
+  underlying
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+  probability
+   ->Real
+   ::Size
+   -- ^
+   ::Size
+   -- ^
+   ::Size
+   -- ^
+ -v-
+ -e-

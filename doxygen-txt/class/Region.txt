@@ -1,0 +1,25 @@
+Region
+ -- |Region class, used for inflation applicability.
+
+ -f-
+  name
+   ->const std::string &
+  code
+   ->const std::string &
+ -v-
+ -e-
+ -f-
+  operator==
+   ->bool
+   ::const Region &
+   -- ^
+   ::const Region &
+   -- ^
+  operator!=
+   ->bool
+   ::const Region &
+   -- ^
+   ::const Region &
+   -- ^
+ -v-
+ -e-

@@ -1,0 +1,21 @@
+TimeSeries::reverse
+
+ -f-
+ -v-
+ -e-
+ -f-
+ -v-
+  c_
+   ::const container &
+ -e-
+ -f-
+  reverse
+   ->
+   ::const container &
+   -- ^c
+  rbegin
+   ->const_reverse_iterator
+  rend
+   ->const_reverse_iterator
+ -v-
+ -e-

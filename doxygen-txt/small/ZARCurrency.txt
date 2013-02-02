@@ -1,0 +1,9 @@
+ZARCurrency
+ -- |South-African rand.
+ -- |The ISO three-letter code is ZAR; the numeric code is 710. It is divided into 100 cents.
+
+ -f-
+  ZARCurrency
+   ->
+ -v-
+ -e-

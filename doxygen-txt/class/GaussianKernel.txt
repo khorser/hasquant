@@ -1,0 +1,20 @@
+GaussianKernel
+ -- |Gaussian kernel function.
+
+ -f-
+  GaussianKernel
+   ->
+   ::Real
+   -- ^average
+   ::Real
+   -- ^sigma
+  derivative
+   ->Real
+   ::Real
+   -- ^x
+  primitive
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

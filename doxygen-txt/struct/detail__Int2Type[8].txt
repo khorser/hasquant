@@ -1,0 +1,5 @@
+detail::Int2Type< 8 >
+
+ -f-
+ -v-
+ -e-

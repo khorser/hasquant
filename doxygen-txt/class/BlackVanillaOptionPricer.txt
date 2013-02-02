@@ -1,0 +1,23 @@
+BlackVanillaOptionPricer
+
+ -f-
+  BlackVanillaOptionPricer
+   ->
+   ::Rate
+   -- ^forwardValue
+   ::Date
+   -- ^expiryDate
+   ::const Period &
+   -- ^swapTenor
+   ::const boost::shared_ptr< SwaptionVolatilityStructure > &
+   -- ^volatilityStructure
+  operator()
+   ->Real
+   ::Real
+   -- ^strike
+   ::Option::Type
+   -- ^optionType
+   ::Real
+   -- ^deflator
+ -v-
+ -e-

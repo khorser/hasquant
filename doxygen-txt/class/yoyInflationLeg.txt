@@ -1,0 +1,74 @@
+yoyInflationLeg
+ -- |Helper class building a sequence of capped/floored yoy inflation coupons payoff is: spread + gearing x index
+
+ -f-
+  yoyInflationLeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+   ::const Calendar &
+   -- ^cal
+   ::const boost::shared_ptr< YoYInflationIndex > &
+   -- ^index
+   ::const Period &
+   -- ^observationLag
+  withNotionals
+   ->yoyInflationLeg &
+   ::Real
+   -- ^notional
+  withNotionals
+   ->yoyInflationLeg &
+   ::const std::vector< Real > &
+   -- ^notionals
+  withPaymentDayCounter
+   ->yoyInflationLeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentAdjustment
+   ->yoyInflationLeg &
+   ::BusinessDayConvention
+   -- ^
+  withFixingDays
+   ->yoyInflationLeg &
+   ::Natural
+   -- ^fixingDays
+  withFixingDays
+   ->yoyInflationLeg &
+   ::const std::vector< Natural > &
+   -- ^fixingDays
+  withGearings
+   ->yoyInflationLeg &
+   ::Real
+   -- ^gearing
+  withGearings
+   ->yoyInflationLeg &
+   ::const std::vector< Real > &
+   -- ^gearings
+  withSpreads
+   ->yoyInflationLeg &
+   ::Spread
+   -- ^spread
+  withSpreads
+   ->yoyInflationLeg &
+   ::const std::vector< Spread > &
+   -- ^spreads
+  withCaps
+   ->yoyInflationLeg &
+   ::Rate
+   -- ^cap
+  withCaps
+   ->yoyInflationLeg &
+   ::const std::vector< Rate > &
+   -- ^caps
+  withFloors
+   ->yoyInflationLeg &
+   ::Rate
+   -- ^floor
+  withFloors
+   ->yoyInflationLeg &
+   ::const std::vector< Rate > &
+   -- ^floors
+  operator Leg
+   ->
+ -v-
+ -e-

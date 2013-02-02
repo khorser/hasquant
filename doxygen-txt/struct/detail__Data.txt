@@ -1,0 +1,26 @@
+detail::Data
+
+ -f-
+ -v-
+  first
+   ::X
+  second
+   ::Y
+ -e-
+ -f-
+  Data
+   ->
+  Data
+   ->
+   ::const SplineGrid::const_iterator &
+   -- ^i
+  Data
+   ->
+   ::const SplineGrid &
+   -- ^v
+  swap
+   ->void
+   ::Data< X, Y > &
+   -- ^d
+ -v-
+ -e-

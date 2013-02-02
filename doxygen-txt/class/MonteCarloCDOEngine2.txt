@@ -1,0 +1,12 @@
+MonteCarloCDOEngine2
+ -- |CDO engine, Monte Carlo for the sample payoff.
+
+ -f-
+  MonteCarloCDOEngine2
+   ->
+   ::boost::shared_ptr< RandomDefaultModel >
+   -- ^rdm
+   ::Size
+   -- ^samples
+ -v-
+ -e-

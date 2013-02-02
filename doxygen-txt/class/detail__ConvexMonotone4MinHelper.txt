@@ -1,0 +1,29 @@
+detail::ConvexMonotone4MinHelper
+
+ -f-
+  ConvexMonotone4MinHelper
+   ->
+   ::Real
+   -- ^xPrev
+   ::Real
+   -- ^xNext
+   ::Real
+   -- ^gPrev
+   ::Real
+   -- ^gNext
+   ::Real
+   -- ^fAverage
+   ::Real
+   -- ^eta4
+   ::Real
+   -- ^prevPrimitive
+  value
+   ->Real
+   ::Real
+   -- ^x
+  primitive
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

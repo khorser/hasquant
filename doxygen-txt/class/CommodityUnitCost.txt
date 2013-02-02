@@ -1,0 +1,17 @@
+CommodityUnitCost
+
+ -f-
+  CommodityUnitCost
+   ->
+  CommodityUnitCost
+   ->
+   ::const Money &
+   -- ^amount
+   ::const UnitOfMeasure &
+   -- ^unitOfMeasure
+  amount
+   ->const Money &
+  unitOfMeasure
+   ->const UnitOfMeasure &
+ -v-
+ -e-

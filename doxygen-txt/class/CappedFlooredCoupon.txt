@@ -1,0 +1,40 @@
+CappedFlooredCoupon
+ -- |Capped and/or floored floating-rate coupon.
+ -- |The payoff $ P $ of a capped floating-rate coupon is: \[ P = N \times T \times \min(a L + b, C). \] The payoff of a floored floating-rate coupon is: \[ P = N \times T \times \max(a L + b, F). \] The payoff of a collared floating-rate coupon is: \[ P = N \times T \times \min(\max(a L + b, F), C). \] where \form#32 is the notional, \form#45 is the accrual time, \form#46 is the floating rate, \form#47 is its gearing, \form#48 is the spread, and \form#49 and \form#50 the strikes. They can be decomposed in the following manner. Decomposition of a capped floating rate coupon: \[ R = \min(a L + b, C) = (a L + b) + \min(C - b - \xi |a| L, 0) \] where $ \xi = sgn(a) $. Then: \[ R = (a L + b) + |a| \min(\frac{C - b}{|a|} - \xi L, 0) \]
+
+ -f-
+  isCapped
+   ->bool
+  isFloored
+   ->bool
+  setPricer
+   ->void
+   ::const boost::shared_ptr< FloatingRateCouponPricer > &
+   -- ^pricer
+ -v-
+ -e-
+ -f-
+  CappedFlooredCoupon
+   ->
+   ::const boost::shared_ptr< FloatingRateCoupon > &
+   -- ^underlying
+   ::Rate
+   =Null< Rate >()
+   -- ^cap
+   ::Rate
+   =Null< Rate >()
+   -- ^floor
+  -- cap
+  cap
+   ->Rate
+  -- floor
+  floor
+   ->Rate
+  -- effective cap of fixing
+  effectiveCap
+   ->Rate
+  -- effective floor of fixing
+  effectiveFloor
+   ->Rate
+ -v-
+ -e-

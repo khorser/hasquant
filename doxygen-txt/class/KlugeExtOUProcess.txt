@@ -1,0 +1,20 @@
+KlugeExtOUProcess
+ -- |This class describes a correlated Kluge - extended Ornstein-Uhlenbeck process governed by \[ \begin{array}{rcl} P_t &=& \exp(p_t + X_t + Y_t) \\ dX_t &=& -\alpha X_tdt + \sigma_x dW_t^x \\ dY_t &=& -\beta Y_{t-}dt + J_tdN_t \\ \omega(J) &=& \eta e^{-\eta J} \\ G_t &=& \exp(g_t + U_t) \\ dU_t &=& -\kappa U_tdt + \sigma_udW_t^u \\ \rho &=& \mathrm{corr} (dW_t^x, dW_t^u) \end{array} \]References: B. Hambly, S. Howison, T. Kluge, Modelling spikes and pricing swing options in electricity markets, http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf
+
+ -f-
+  KlugeExtOUProcess
+   ->
+   ::Real
+   -- ^rho
+   ::const boost::shared_ptr< ExtOUWithJumpsProcess > &
+   -- ^kluge
+   ::const boost::shared_ptr< ExtendedOrnsteinUhlenbeckProcess > &
+   -- ^extOU
+  getKlugeProcess
+   ->boost::shared_ptr< ExtOUWithJumpsProcess >
+  getExtOUProcess
+   ->boost::shared_ptr< ExtendedOrnsteinUhlenbeckProcess >
+  rho
+   ->Real
+ -v-
+ -e-

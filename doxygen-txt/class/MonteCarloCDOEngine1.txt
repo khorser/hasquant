@@ -1,0 +1,12 @@
+MonteCarloCDOEngine1
+ -- |CDO engine, Monte Carlo for the exptected tranche loss distribution.
+
+ -f-
+  MonteCarloCDOEngine1
+   ->
+   ::boost::shared_ptr< RandomDefaultModel >
+   -- ^rdm
+   ::Size
+   -- ^samples
+ -v-
+ -e-

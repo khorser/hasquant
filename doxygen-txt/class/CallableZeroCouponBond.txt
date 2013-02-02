@@ -1,0 +1,31 @@
+CallableZeroCouponBond
+ -- |callable/puttable zero coupon bond
+ -- |Callable zero coupon bond class.
+
+ -f-
+  CallableZeroCouponBond
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::Real
+   -- ^faceAmount
+   ::const Calendar &
+   -- ^calendar
+   ::const Date &
+   -- ^maturityDate
+   ::const DayCounter &
+   -- ^dayCounter
+   ::BusinessDayConvention
+   =Following
+   -- ^paymentConvention
+   ::Real
+   =100.0
+   -- ^redemption
+   ::const Date &
+   =Date()
+   -- ^issueDate
+   ::const CallabilitySchedule &
+   =CallabilitySchedule()
+   -- ^putCallSchedule
+ -v-
+ -e-

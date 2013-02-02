@@ -1,0 +1,53 @@
+TrinomialTree
+ -- |Recombining trinomial tree class.
+ -- |This class defines a recombining trinomial tree approximating a 1-D stochastic process. WarningThe diffusion term of the SDE must be independent of the underlying process.
+
+ -f-
+ -v-
+ -e-
+  Branches
+   branches
+ -f-
+  TrinomialTree
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^process
+   ::const TimeGrid &
+   -- ^timeGrid
+   ::bool
+   =false
+   -- ^isPositive
+  dx
+   ->Real
+   ::Size
+   -- ^i
+  timeGrid
+   ->const TimeGrid &
+  size
+   ->Size
+   ::Size
+   -- ^i
+  underlying
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+  descendant
+   ->Size
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+   ::Size
+   -- ^branch
+  probability
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+   ::Size
+   -- ^branch
+ -v-
+ -e-

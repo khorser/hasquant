@@ -1,0 +1,31 @@
+detail::ConvexMonotone3Helper
+
+ -f-
+  ConvexMonotone3Helper
+   ->
+   ::Real
+   -- ^xPrev
+   ::Real
+   -- ^xNext
+   ::Real
+   -- ^gPrev
+   ::Real
+   -- ^gNext
+   ::Real
+   -- ^fAverage
+   ::Real
+   -- ^eta3
+   ::Real
+   -- ^prevPrimitive
+  value
+   ->Real
+   ::Real
+   -- ^x
+  primitive
+   ->Real
+   ::Real
+   -- ^x
+  fNext
+   ->Real
+ -v-
+ -e-

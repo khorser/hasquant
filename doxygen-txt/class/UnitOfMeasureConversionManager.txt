@@ -1,0 +1,24 @@
+UnitOfMeasureConversionManager
+ -- |repository of conversion factors between units of measure
+ -- |Testslookup of direct unit of measure conversion is tested.
+
+ -f-
+  lookup
+   ->UnitOfMeasureConversion
+   ::const CommodityType &
+   -- ^commodityType
+   ::const UnitOfMeasure &
+   -- ^
+   ::const UnitOfMeasure &
+   -- ^
+   ::UnitOfMeasureConversion::Type
+   =UnitOfMeasureConversion::Derived
+   -- ^type
+  add
+   ->void
+   ::const UnitOfMeasureConversion &
+   -- ^
+  clear
+   ->void
+ -v-
+ -e-

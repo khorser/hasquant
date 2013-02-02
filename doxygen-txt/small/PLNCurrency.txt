@@ -1,0 +1,9 @@
+PLNCurrency
+ -- |Polish zloty.
+ -- |The ISO three-letter code is PLN; the numeric code is 985. It is divided in 100 groszy.
+
+ -f-
+  PLNCurrency
+   ->
+ -v-
+ -e-

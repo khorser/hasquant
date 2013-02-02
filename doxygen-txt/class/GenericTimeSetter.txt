@@ -1,0 +1,17 @@
+GenericTimeSetter
+
+ -f-
+  GenericTimeSetter
+   ->
+   ::const Array &
+   -- ^grid
+   ::T
+   -- ^process
+  setTime
+   ->void
+   ::Time
+   -- ^t
+   ::TridiagonalOperator &
+   -- ^L
+ -v-
+ -e-

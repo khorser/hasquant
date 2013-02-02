@@ -1,0 +1,13 @@
+DailyTenorCHFLibor
+ -- |base class for the one day deposit BBA CHF LIBOR indexes
+
+ -f-
+  DailyTenorCHFLibor
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

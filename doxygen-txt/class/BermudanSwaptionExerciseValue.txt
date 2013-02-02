@@ -1,0 +1,31 @@
+BermudanSwaptionExerciseValue
+
+ -f-
+  BermudanSwaptionExerciseValue
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< boost::shared_ptr< Payoff > > &
+   -- ^
+  numberOfExercises
+   ->Size
+  evolution
+   ->const EvolutionDescription &
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  nextStep
+   ->void
+   ::const CurveState &
+   -- ^
+  reset
+   ->void
+  isExerciseTime
+   ->std::valarray< bool >
+  value
+   ->MarketModelMultiProduct::CashFlow
+   ::const CurveState &
+   -- ^
+  clone
+   ->std::auto_ptr< MarketModelExerciseValue >
+ -v-
+ -e-

@@ -1,0 +1,35 @@
+DividendVanillaOption
+ -- |Single-asset vanilla option (no barriers) with discrete dividends.
+
+ -f-
+  DividendVanillaOption
+   ->
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+   ::const std::vector< Date > &
+   -- ^dividendDates
+   ::const std::vector< Real > &
+   -- ^dividends
+  -- Warningsee VanillaOption for notes on implied-volatility calculation.
+  impliedVolatility
+   ->Volatility
+   ::Real
+   -- ^price
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Real
+   =1.0e-4
+   -- ^accuracy
+   ::Size
+   =100
+   -- ^maxEvaluations
+   ::Volatility
+   =1.0e-7
+   -- ^minVol
+   ::Volatility
+   =4.0
+   -- ^maxVol
+ -v-
+ -e-

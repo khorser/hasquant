@@ -1,0 +1,13 @@
+SimplePolynomialFitting
+ -- |Simple polynomial fitting method.
+
+ -f-
+  SimplePolynomialFitting
+   ->
+   ::Natural
+   -- ^degree
+   ::bool
+   =true
+   -- ^constrainAtZero
+ -v-
+ -e-

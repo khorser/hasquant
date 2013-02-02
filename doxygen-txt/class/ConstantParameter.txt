@@ -1,0 +1,16 @@
+ConstantParameter
+ -- |Standard constant parameter $ a(t) = a $.
+
+ -f-
+  ConstantParameter
+   ->
+   ::const Constraint &
+   -- ^constraint
+  ConstantParameter
+   ->
+   ::Real
+   -- ^value
+   ::const Constraint &
+   -- ^constraint
+ -v-
+ -e-

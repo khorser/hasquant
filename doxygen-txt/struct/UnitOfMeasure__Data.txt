@@ -1,0 +1,32 @@
+UnitOfMeasure::Data
+
+ -f-
+ -v-
+  name
+   ::std::string
+  code
+   ::std::string
+  unitType
+   ::UnitOfMeasure::Type
+  triangulationUnitOfMeasure
+   ::UnitOfMeasure
+  rounding
+   ::Rounding
+ -e-
+ -f-
+  Data
+   ->
+   ::const std::string &
+   -- ^name
+   ::const std::string &
+   -- ^code
+   ::UnitOfMeasure::Type
+   -- ^unitType
+   ::const UnitOfMeasure &
+   =UnitOfMeasure()
+   -- ^triangulationUnitOfMeasure
+   ::const Rounding &
+   =Rounding(0)
+   -- ^rounding
+ -v-
+ -e-

@@ -1,0 +1,68 @@
+AnalyticHestonEngine::Integration
+
+ -f-
+  gaussLaguerre
+   ->Integration
+   ::Size
+   =128
+   -- ^integrationOrder
+  gaussLegendre
+   ->Integration
+   ::Size
+   =128
+   -- ^integrationOrder
+  gaussChebyshev
+   ->Integration
+   ::Size
+   =128
+   -- ^integrationOrder
+  gaussChebyshev2nd
+   ->Integration
+   ::Size
+   =128
+   -- ^integrationOrder
+  gaussLobatto
+   ->Integration
+   ::Real
+   -- ^relTolerance
+   ::Real
+   -- ^absTolerance
+   ::Size
+   =1000
+   -- ^maxEvaluations
+  gaussKronrod
+   ->Integration
+   ::Real
+   -- ^absTolerance
+   ::Size
+   =1000
+   -- ^maxEvaluations
+  simpson
+   ->Integration
+   ::Real
+   -- ^absTolerance
+   ::Size
+   =1000
+   -- ^maxEvaluations
+  trapezoid
+   ->Integration
+   ::Real
+   -- ^absTolerance
+   ::Size
+   =1000
+   -- ^maxEvaluations
+ -v-
+ -e-
+ -f-
+  calculate
+   ->Real
+   ::Real
+   -- ^c_inf
+   ::const boost::function1< Real, Real > &
+   -- ^f
+  numberOfEvaluations
+   ->Size
+  isAdaptiveIntegration
+   ->bool
+ -v-
+ -e-

@@ -1,0 +1,19 @@
+GFunction
+
+ -f-
+  ~GFunction
+   ->
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+  firstDerivative
+   ->Real
+   ::Real
+   -- ^x
+  secondDerivative
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

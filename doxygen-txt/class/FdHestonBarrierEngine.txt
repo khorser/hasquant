@@ -1,0 +1,26 @@
+FdHestonBarrierEngine
+ -- |Finite-Differences Heston Barrier Option engine.
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature and comparison with Black pricing.
+
+ -f-
+  FdHestonBarrierEngine
+   ->
+   ::const boost::shared_ptr< HestonModel > &
+   -- ^model
+   ::Size
+   =100
+   -- ^tGrid
+   ::Size
+   =100
+   -- ^xGrid
+   ::Size
+   =50
+   -- ^vGrid
+   ::Size
+   =0
+   -- ^dampingSteps
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+ -v-
+ -e-

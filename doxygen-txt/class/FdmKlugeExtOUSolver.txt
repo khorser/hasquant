@@ -1,0 +1,20 @@
+FdmKlugeExtOUSolver
+
+ -f-
+  FdmKlugeExtOUSolver
+   ->
+   ::const Handle< KlugeExtOUProcess > &
+   -- ^klugeOUProcess
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^rTS
+   ::const FdmSolverDesc &
+   -- ^solverDesc
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+  valueAt
+   ->Real
+   ::const std::vector< Real > &
+   -- ^x
+ -v-
+ -e-

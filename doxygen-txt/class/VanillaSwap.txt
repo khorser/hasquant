@@ -1,0 +1,78 @@
+VanillaSwap
+ -- |Plain-vanilla swap: fix vs floating leg.
+ -- |If no payment convention is passed, the convention of the floating-rate schedule is used. Warningif Settings::includeReferenceDateCashFlows() is set to true, payments occurring at the settlement date of the swap might be included in the NPV and therefore affect the fair-rate and fair-spread calculation. This might not be what you want.Tests the correctness of the returned value is tested by checking that the price of a swap paying the fair fixed rate is null.the correctness of the returned value is tested by checking that the price of a swap receiving the fair floating-rate spread is null.the correctness of the returned value is tested by checking that the price of a swap decreases with the paid fixed rate.the correctness of the returned value is tested by checking that the price of a swap increases with the received floating-rate spread.the correctness of the returned value is tested by checking it against a known good value.
+
+ -f-
+  type
+   ->Type
+  nominal
+   ->Real
+  fixedSchedule
+   ->const Schedule &
+  fixedRate
+   ->Rate
+  fixedDayCount
+   ->const DayCounter &
+  floatingSchedule
+   ->const Schedule &
+  iborIndex
+   ->const boost::shared_ptr< IborIndex > &
+  spread
+   ->Spread
+  floatingDayCount
+   ->const DayCounter &
+  paymentConvention
+   ->BusinessDayConvention
+  fixedLeg
+   ->const Leg &
+  floatingLeg
+   ->const Leg &
+ -v-
+ -e-
+ -f-
+  fixedLegBPS
+   ->Real
+  fixedLegNPV
+   ->Real
+  fairRate
+   ->Rate
+  floatingLegBPS
+   ->Real
+  floatingLegNPV
+   ->Real
+  fairSpread
+   ->Spread
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+  Type
+   Receiver
+   Payer
+ -f-
+  VanillaSwap
+   ->
+   ::Type
+   -- ^type
+   ::Real
+   -- ^nominal
+   ::const Schedule &
+   -- ^fixedSchedule
+   ::Rate
+   -- ^fixedRate
+   ::const DayCounter &
+   -- ^fixedDayCount
+   ::const Schedule &
+   -- ^floatSchedule
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+   ::Spread
+   -- ^spread
+   ::const DayCounter &
+   -- ^floatingDayCount
+   ::boost::optional< BusinessDayConvention >
+   =boost::none
+   -- ^paymentConvention
+ -v-
+ -e-

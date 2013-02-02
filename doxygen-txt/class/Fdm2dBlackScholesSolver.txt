@@ -1,0 +1,54 @@
+Fdm2dBlackScholesSolver
+
+ -f-
+  Fdm2dBlackScholesSolver
+   ->
+   ::const Handle< GeneralizedBlackScholesProcess > &
+   -- ^p1
+   ::const Handle< GeneralizedBlackScholesProcess > &
+   -- ^p2
+   ::const Real
+   -- ^correlation
+   ::const FdmSolverDesc &
+   -- ^solverDesc
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+  valueAt
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  thetaAt
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  deltaXat
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  deltaYat
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  gammaXat
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  gammaYat
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

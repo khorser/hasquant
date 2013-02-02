@@ -1,0 +1,16 @@
+MultiStepSwaption
+ -- |Price a swaption associated to a contiguous subset of rates. Useful only for testing purposes. Steps through all rate times up to start of swap.
+
+ -f-
+  MultiStepSwaption
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::Size
+   -- ^startIndex
+   ::Size
+   -- ^endIndex
+   ::boost::shared_ptr< StrikedTypePayoff > &
+   -- ^
+ -v-
+ -e-

@@ -1,0 +1,15 @@
+StudentDistribution
+ -- |Student t-distribution.
+ -- |Probability density function for $ n $ degrees of freedom (see mathworld.wolfram.com or wikipedia.org): \[ f(x) = \frac {\Gamma\left(\frac{n+1}{2}\right)} {\sqrt{n\pi} \, \Gamma\left(\frac{n}{2}\right)}\: \frac {1} {\left(1+\frac{x^2}{n}\right)^{(n+1)/2}} \]
+
+ -f-
+  StudentDistribution
+   ->
+   ::Integer
+   -- ^n
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

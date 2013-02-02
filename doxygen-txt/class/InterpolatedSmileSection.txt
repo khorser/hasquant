@@ -1,0 +1,93 @@
+InterpolatedSmileSection
+
+ -f-
+  InterpolatedSmileSection
+   ->
+   ::Time
+   -- ^expiryTime
+   ::const std::vector< Rate > &
+   -- ^strikes
+   ::const std::vector< Handle< Quote > > &
+   -- ^stdDevHandles
+   ::const Handle< Quote > &
+   -- ^atmLevel
+   ::const Interpolator &
+   =Interpolator()
+   -- ^interpolator
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  InterpolatedSmileSection
+   ->
+   ::Time
+   -- ^expiryTime
+   ::const std::vector< Rate > &
+   -- ^strikes
+   ::const std::vector< Real > &
+   -- ^stdDevs
+   ::Real
+   -- ^atmLevel
+   ::const Interpolator &
+   =Interpolator()
+   -- ^interpolator
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  InterpolatedSmileSection
+   ->
+   ::const Date &
+   -- ^d
+   ::const std::vector< Rate > &
+   -- ^strikes
+   ::const std::vector< Handle< Quote > > &
+   -- ^stdDevHandles
+   ::const Handle< Quote > &
+   -- ^atmLevel
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+   ::const Interpolator &
+   =Interpolator()
+   -- ^interpolator
+   ::const Date &
+   =Date()
+   -- ^referenceDate
+  InterpolatedSmileSection
+   ->
+   ::const Date &
+   -- ^d
+   ::const std::vector< Rate > &
+   -- ^strikes
+   ::const std::vector< Real > &
+   -- ^stdDevs
+   ::Real
+   -- ^atmLevel
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+   ::const Interpolator &
+   =Interpolator()
+   -- ^interpolator
+   ::const Date &
+   =Date()
+   -- ^referenceDate
+  performCalculations
+   ->void
+  varianceImpl
+   ->Real
+   ::Rate
+   -- ^strike
+  volatilityImpl
+   ->Volatility
+   ::Rate
+   -- ^strike
+  minStrike
+   ->Real
+  maxStrike
+   ->Real
+  atmLevel
+   ->Real
+  update
+   ->void
+ -v-
+ -e-

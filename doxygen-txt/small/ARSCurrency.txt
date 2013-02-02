@@ -1,0 +1,9 @@
+ARSCurrency
+ -- |Argentinian peso.
+ -- |The ISO three-letter code is ARS; the numeric code is 32. It is divided in 100 centavos.
+
+ -f-
+  ARSCurrency
+   ->
+ -v-
+ -e-

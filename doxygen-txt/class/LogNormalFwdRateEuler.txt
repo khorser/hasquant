@@ -1,0 +1,20 @@
+LogNormalFwdRateEuler
+ -- |Euler.
+
+ -f-
+  LogNormalFwdRateEuler
+   ->
+   ::const boost::shared_ptr< MarketModel > &
+   -- ^
+   ::const BrownianGeneratorFactory &
+   -- ^
+   ::const std::vector< Size > &
+   -- ^numeraires
+   ::Size
+   =0
+   -- ^initialStep
+  -- accessor methods useful for doing pathwise vegas
+  browniansThisStep
+   ->const std::vector< Real > &
+ -v-
+ -e-

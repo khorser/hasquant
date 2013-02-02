@@ -1,0 +1,12 @@
+YoYInflationCap
+ -- |Concrete YoY Inflation cap class.
+
+ -f-
+  YoYInflationCap
+   ->
+   ::const Leg &
+   -- ^yoyLeg
+   ::const std::vector< Rate > &
+   -- ^exerciseRates
+ -v-
+ -e-

@@ -1,0 +1,16 @@
+MixedLinearFritschButlandCubic
+
+ -f-
+  -- the $ x $ values must be sorted.
+  MixedLinearFritschButlandCubic
+   ->
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+   ::Size
+   -- ^n
+ -v-
+ -e-

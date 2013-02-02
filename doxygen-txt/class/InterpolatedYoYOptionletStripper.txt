@@ -1,0 +1,2 @@
+InterpolatedYoYOptionletStripper
+ -- |The interpolated version interpolates along each K (as opposed to fitting a model, say).BugTests currently fail.

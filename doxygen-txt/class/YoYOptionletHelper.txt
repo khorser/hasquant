@@ -1,0 +1,30 @@
+YoYOptionletHelper
+ -- |Year-on-year inflation-volatility bootstrap helper.
+
+ -f-
+  YoYOptionletHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^price
+   ::Real
+   -- ^notional
+   ::YoYInflationCapFloor::Type
+   -- ^capFloorType
+   ::Period &
+   -- ^lag
+   ::const DayCounter &
+   -- ^yoyDayCounter
+   ::const Calendar &
+   -- ^paymentCalendar
+   ::Natural
+   -- ^fixingDays
+   ::const boost::shared_ptr< YoYInflationIndex > &
+   -- ^index
+   ::Rate
+   -- ^strike
+   ::Size
+   -- ^n
+   ::const boost::shared_ptr< YoYInflationCapFloorEngine > &
+   -- ^pricer
+ -v-
+ -e-

@@ -1,0 +1,52 @@
+CommodityType
+ -- |commodity type
+
+ -f-
+  -- commodity code, e.g, "HO"
+  code
+   ->const std::string &
+  -- name, e.g, "Heating Oil"
+  name
+   ->const std::string &
+ -v-
+ -e-
+ -f-
+  -- is this a usable instance?
+  empty
+   ->bool
+ -v-
+ -e-
+ -f-
+  -- default constructor
+  -- Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used.
+  CommodityType
+   ->
+  CommodityType
+   ->
+   ::const std::string &
+   -- ^code
+   ::const std::string &
+   -- ^name
+ -v-
+ -e-
+ -f-
+  operator==
+   ->bool
+   ::const CommodityType &
+   -- ^
+   ::const CommodityType &
+   -- ^
+  operator!=
+   ->bool
+   ::const CommodityType &
+   -- ^
+   ::const CommodityType &
+   -- ^
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::const CommodityType &
+   -- ^
+ -v-
+ -e-

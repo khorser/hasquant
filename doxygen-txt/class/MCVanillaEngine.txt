@@ -1,0 +1,8 @@
+MCVanillaEngine
+ -- |Pricing engine for vanilla options using Monte Carlo simulation.
+
+ -f-
+  calculate
+   ->void
+ -v-
+ -e-

@@ -1,0 +1,118 @@
+BlackAtmVolCurve
+ -- |Black at-the-money (no-smile) volatility curve.
+ -- |This abstract class defines the interface of concrete Black at-the-money (no-smile) volatility curves which will be derived from this one.Volatilities are assumed to be expressed on an annual basis.
+
+ -f-
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  BlackAtmVolCurve
+   ->
+   ::const Calendar &
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- default constructor
+  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  BlackAtmVolCurve
+   ->
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- initialize with a fixed reference date
+  BlackAtmVolCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  -- calculate the reference date based on the global evaluation date
+  BlackAtmVolCurve
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::BusinessDayConvention
+   =Following
+   -- ^bdc
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+ -v-
+ -e-
+ -f-
+  -- spot at-the-money volatility
+  atmVol
+   ->Volatility
+   ::const Period &
+   -- ^optionTenor
+   ::bool
+   =false
+   -- ^extrapolate
+  -- spot at-the-money volatility
+  atmVol
+   ->Volatility
+   ::const Date &
+   -- ^maturity
+   ::bool
+   =false
+   -- ^extrapolate
+  -- spot at-the-money volatility
+  atmVol
+   ->Volatility
+   ::Time
+   -- ^maturity
+   ::bool
+   =false
+   -- ^extrapolate
+  -- spot at-the-money variance
+  atmVariance
+   ->Real
+   ::const Period &
+   -- ^optionTenor
+   ::bool
+   =false
+   -- ^extrapolate
+  -- spot at-the-money variance
+  atmVariance
+   ->Real
+   ::const Date &
+   -- ^maturity
+   ::bool
+   =false
+   -- ^extrapolate
+  -- spot at-the-money variance
+  atmVariance
+   ->Real
+   ::Time
+   -- ^maturity
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  accept
+   ->void
+   ::AcyclicVisitor &
+   -- ^
+ -v-
+ -e-
+ -f-
+  ~BlackAtmVolCurve
+   ->
+ -v-
+ -e-

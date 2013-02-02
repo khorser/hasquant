@@ -1,0 +1,105 @@
+EndCriteria
+ -- |Criteria to end optimization process:
+ -- |maximum number of iterations AND minimum number of iterations around stationary point x (independent variable) stationary pointy=f(x) (dependent variable) stationary pointstationary gradient
+
+ -f-
+ -v-
+ -e-
+  Type
+   None
+   MaxIterations
+   StationaryPoint
+   StationaryFunctionValue
+   StationaryFunctionAccuracy
+   ZeroGradientNorm
+   Unknown
+ -f-
+  -- Initialization constructor.
+  EndCriteria
+   ->
+   ::Size
+   -- ^maxIterations
+   ::Size
+   -- ^maxStationaryStateIterations
+   ::Real
+   -- ^rootEpsilon
+   ::Real
+   -- ^functionEpsilon
+   ::Real
+   -- ^gradientNormEpsilon
+  maxIterations
+   ->Size
+  maxStationaryStateIterations
+   ->Size
+  rootEpsilon
+   ->Real
+  functionEpsilon
+   ->Real
+  gradientNormEpsilon
+   ->Real
+  -- Test if the number of iterations is not too big and if a minimum point is not reached
+  operator()
+   ->bool
+   ::const Size
+   -- ^iteration
+   ::Size &
+   -- ^statState
+   ::const bool
+   -- ^positiveOptimization
+   ::const Real
+   -- ^fold
+   ::const Real
+   -- ^normgold
+   ::const Real
+   -- ^fnew
+   ::const Real
+   -- ^normgnew
+   ::EndCriteria::Type &
+   -- ^ecType
+  -- Test if the number of iteration is below MaxIterations
+  checkMaxIterations
+   ->bool
+   ::const Size
+   -- ^iteration
+   ::EndCriteria::Type &
+   -- ^ecType
+  -- Test if the root variation is below rootEpsilon
+  checkStationaryPoint
+   ->bool
+   ::const Real
+   -- ^xOld
+   ::const Real
+   -- ^xNew
+   ::Size &
+   -- ^statStateIterations
+   ::EndCriteria::Type &
+   -- ^ecType
+  -- Test if the function variation is below functionEpsilon
+  checkStationaryFunctionValue
+   ->bool
+   ::const Real
+   -- ^fxOld
+   ::const Real
+   -- ^fxNew
+   ::Size &
+   -- ^statStateIterations
+   ::EndCriteria::Type &
+   -- ^ecType
+  -- Test if the function value is below functionEpsilon
+  checkStationaryFunctionAccuracy
+   ->bool
+   ::const Real
+   -- ^f
+   ::const bool
+   -- ^positiveOptimization
+   ::EndCriteria::Type &
+   -- ^ecType
+  -- Test if the gradient norm variation is below gradientNormEpsilonTest if the gradient norm value is below gradientNormEpsilon
+  checkZeroGradientNorm
+   ->bool
+   ::const Real
+   -- ^gNorm
+   ::EndCriteria::Type &
+   -- ^ecType
+ -v-
+ -e-

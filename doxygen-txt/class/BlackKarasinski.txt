@@ -1,0 +1,17 @@
+BlackKarasinski
+ -- |Standard Black-Karasinski model class.
+ -- |This class implements the standard Black-Karasinski model defined by \[ d\ln r_t = (\theta(t) - \alpha \ln r_t)dt + \sigma dW_t, \] where $ alpha $ and $ sigma $ are constants.
+
+ -f-
+  BlackKarasinski
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^termStructure
+   ::Real
+   =0.1
+   -- ^a
+   ::Real
+   =0.1
+   -- ^sigma
+ -v-
+ -e-

@@ -1,0 +1,28 @@
+SyntheticCDO::arguments
+
+ -f-
+ -v-
+  basket
+   ::boost::shared_ptr< Basket >
+  side
+   ::Protection::Side
+  schedule
+   ::Schedule
+  upfrontRate
+   ::Rate
+  runningRate
+   ::Rate
+  dayCounter
+   ::DayCounter
+  paymentConvention
+   ::BusinessDayConvention
+  yieldTS
+   ::Handle< YieldTermStructure >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

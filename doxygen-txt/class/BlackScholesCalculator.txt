@@ -1,0 +1,53 @@
+BlackScholesCalculator
+ -- |Black-Scholes 1973 calculator class.
+
+ -f-
+  BlackScholesCalculator
+   ->
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+   ::Real
+   -- ^spot
+   ::DiscountFactor
+   -- ^growth
+   ::Real
+   -- ^stdDev
+   ::DiscountFactor
+   -- ^discount
+  BlackScholesCalculator
+   ->
+   ::Option::Type
+   -- ^optionType
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^spot
+   ::DiscountFactor
+   -- ^growth
+   ::Real
+   -- ^stdDev
+   ::DiscountFactor
+   -- ^discount
+  ~BlackScholesCalculator
+   ->
+  -- Sensitivity to change in the underlying spot price.
+  delta
+   ->Real
+  -- Sensitivity in percent to a percent change in the underlying spot price.
+  elasticity
+   ->Real
+  -- Second order derivative with respect to change in the underlying spot price.
+  gamma
+   ->Real
+  -- Sensitivity to time to maturity.
+  theta
+   ->Real
+   ::Time
+   -- ^maturity
+  -- Sensitivity to time to maturity per day (assuming 365 day in a year).
+  thetaPerDay
+   ->Real
+   ::Time
+   -- ^maturity
+ -v-
+ -e-

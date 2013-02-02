@@ -1,0 +1,23 @@
+FrobeniusCostFunction
+
+ -f-
+  FrobeniusCostFunction
+   ->
+   ::const Matrix &
+   -- ^target
+   ::const boost::function< Disposable< Matrix >(const Array &, Size, Size)> &
+   -- ^f
+   ::Size
+   -- ^matrixSize
+   ::Size
+   -- ^rank
+  value
+   ->Real
+   ::const Array &
+   -- ^x
+  values
+   ->Disposable< Array >
+   ::const Array &
+   -- ^x
+ -v-
+ -e-

@@ -1,0 +1,17 @@
+BinomialDistribution
+ -- |Binomial probability distribution function.
+ -- |formula here ... Given an integer k it returns its probability in a Binomial distribution with parameters p and n.
+
+ -f-
+  BinomialDistribution
+   ->
+   ::Real
+   -- ^p
+   ::BigNatural
+   -- ^n
+  operator()
+   ->Real
+   ::BigNatural
+   -- ^k
+ -v-
+ -e-

@@ -1,0 +1,12 @@
+GaussJacobiPolynomial
+ -- |Gauss-Jacobi polynomial.
+
+ -f-
+  GaussJacobiPolynomial
+   ->
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+ -v-
+ -e-

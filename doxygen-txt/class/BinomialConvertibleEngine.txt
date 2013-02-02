@@ -1,0 +1,12 @@
+BinomialConvertibleEngine
+ -- |Binomial Tsiveriotis-Fernandes engine for convertible bonds.
+
+ -f-
+  BinomialConvertibleEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   -- ^timeSteps
+ -v-
+ -e-

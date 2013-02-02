@@ -1,0 +1,9 @@
+CADCurrency
+ -- |Canadian dollar.
+ -- |The ISO three-letter code is CAD; the numeric code is 124. It is divided into 100 cents.
+
+ -f-
+  CADCurrency
+   ->
+ -v-
+ -e-

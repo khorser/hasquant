@@ -1,0 +1,9 @@
+HUFCurrency
+ -- |Hungarian forint.
+ -- |The ISO three-letter code is HUF; the numeric code is 348. It has no subdivisions.
+
+ -f-
+  HUFCurrency
+   ->
+ -v-
+ -e-

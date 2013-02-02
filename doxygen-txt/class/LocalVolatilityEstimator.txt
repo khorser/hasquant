@@ -1,0 +1,11 @@
+LocalVolatilityEstimator
+
+ -f-
+  ~LocalVolatilityEstimator
+   ->
+  calculate
+   ->TimeSeries< Volatility >
+   ::const TimeSeries< T > &
+   -- ^quoteSeries
+ -v-
+ -e-

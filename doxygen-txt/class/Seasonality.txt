@@ -1,0 +1,33 @@
+Seasonality
+ -- |A transformation of an existing inflation swap rate.
+ -- |This is an abstract class and contains the functions correctXXXRate which returns rates with the seasonality correction. Currently only the price multiplicative version is implemented, but this covers stationary (1-year) and non-stationary (multi-year) seasonality depending on how many years of factors are given. Seasonality is piecewise constant, hence it will work with un-interpolated inflation indices.A seasonality assumption can be used to fill in inflation swap curves between maturities that are usually given in integer numbers of years, e.g. 8,9,10,15,20, etc. Historical seasonality may be observed in reported CPI values, alternatively it may be affected by known future events, e.g. announced changes in VAT rates. Thus seasonality may be stationary or non-stationary.If seasonality is additive then both swap rates will show affects. Additive seasonality is not implemented.
+
+ -f-
+  correctZeroRate
+   ->Rate
+   ::const Date &
+   -- ^d
+   ::const Rate
+   -- ^r
+   ::const InflationTermStructure &
+   -- ^iTS
+  correctYoYRate
+   ->Rate
+   ::const Date &
+   -- ^d
+   ::const Rate
+   -- ^r
+   ::const InflationTermStructure &
+   -- ^iTS
+  -- It is possible for multi-year seasonalities to be inconsistent with the inflation term structure they are given to. This method enables testing - but programmers are not required to implement it. E.g. for price seasonality the corrections at whole years after the inflation curve base date should be the same or else there can be an inconsistency with quoted instruments. Alternatively, the seasonality can be set before the inflation curve is bootstrapped.
+  isConsistent
+   ->bool
+   ::const InflationTermStructure &
+   -- ^iTS
+ -v-
+ -e-
+ -f-
+  ~Seasonality
+   ->
+ -v-
+ -e-

@@ -1,0 +1,29 @@
+MultiCubicSpline
+ -- |N-dimensional cubic spline interpolation between discrete points.
+ -- |Testsinterpolated values are checked against the original function.Possible enhancements allow extrapolation as for the other interpolationsinvestigate if and how to implement Hyman filters and different boundary conditions Bugcannot interpolate at the grid points on the boundary surface of the N-dimensional region
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MultiCubicSpline
+   ->
+   ::const SplineGrid &
+   -- ^grid
+   ::const data_table &
+   -- ^y
+   ::const std::vector< bool > &
+   =std::vector< bool >(20, false)
+   -- ^ae
+  operator()
+   ->result_type
+   ::const argument_type &
+   -- ^x
+  set_shared_increments
+   ->void
+  set_shared_coefficients
+   ->void
+   ::const argument_type &
+   -- ^x
+ -v-
+ -e-

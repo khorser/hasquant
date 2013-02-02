@@ -1,0 +1,35 @@
+CapFloor::arguments
+ -- |Arguments for cap/floor calculation
+
+ -f-
+ -v-
+  type
+   ::CapFloor::Type
+  startDates
+   ::std::vector< Date >
+  fixingDates
+   ::std::vector< Date >
+  endDates
+   ::std::vector< Date >
+  accrualTimes
+   ::std::vector< Time >
+  capRates
+   ::std::vector< Rate >
+  floorRates
+   ::std::vector< Rate >
+  forwards
+   ::std::vector< Rate >
+  gearings
+   ::std::vector< Real >
+  spreads
+   ::std::vector< Real >
+  nominals
+   ::std::vector< Real >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

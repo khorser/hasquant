@@ -1,0 +1,23 @@
+LiborForwardModel
+ -- |Libor forward model
+ -- |References:Stefan Weber, 2005, Efficient Calibration for Libor Market Models, (http://workshop.mathfinance.de/2005/papers/weber/slides.pdf)Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003, Different Covariance Parameterizations of Libor Market Model and Joint Caps/Swaptions Calibration, (http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdfTeststhe correctness is tested using Monte-Carlo Simulation to reproduce swaption npvs, model calibration and exact cap pricing
+
+ -f-
+  LiborForwardModel
+   ->
+   ::const boost::shared_ptr< LiborForwardModelProcess > &
+   -- ^process
+   ::const boost::shared_ptr< LmVolatilityModel > &
+   -- ^volaModel
+   ::const boost::shared_ptr< LmCorrelationModel > &
+   -- ^corrModel
+  S_0
+   ->Rate
+   ::Size
+   -- ^alpha
+   ::Size
+   -- ^beta
+  getSwaptionVolatilityMatrix
+   ->boost::shared_ptr< SwaptionVolatilityMatrix >
+ -v-
+ -e-

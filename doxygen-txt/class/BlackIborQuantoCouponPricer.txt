@@ -1,0 +1,13 @@
+BlackIborQuantoCouponPricer
+
+ -f-
+  BlackIborQuantoCouponPricer
+   ->
+   ::const Handle< BlackVolTermStructure > &
+   -- ^fxRateBlackVolatility
+   ::const Handle< Quote > &
+   -- ^underlyingFxCorrelation
+   ::const Handle< OptionletVolatilityStructure > &
+   -- ^capletVolatility
+ -v-
+ -e-

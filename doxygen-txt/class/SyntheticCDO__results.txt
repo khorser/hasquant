@@ -1,0 +1,26 @@
+SyntheticCDO::results
+
+ -f-
+ -v-
+  premiumValue
+   ::Real
+  protectionValue
+   ::Real
+  upfrontPremiumValue
+   ::Real
+  remainingNotional
+   ::Real
+  xMin
+   ::Real
+  xMax
+   ::Real
+  error
+   ::Size
+  expectedTrancheLoss
+   ::std::vector< Real >
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

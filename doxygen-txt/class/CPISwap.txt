@@ -1,0 +1,101 @@
+CPISwap
+ -- |zero-inflation-indexed swap,
+ -- |fixed x zero-inflation, i.e. fixed x CPI(i'th fixing)/CPI(base) versus floating + spreadNote that this does ony the inflation-vs-floating-leg. Extension to inflation-vs-fixed-leg. is simple - just replace the floating leg with a fixed leg.Typically there are notional exchanges at the end: either inflated-notional vs notional; or just (inflated-notional - notional) vs zero. The latter is perhaphs more typical. WarningSetting subtractInflationNominal to true means that the original inflation nominal is subtracted from both nominals before they are exchanged, even if they are different. This swap can mimic a ZCIIS where [(1+q)^n - 1] is exchanged against (cpi ratio - 1), by using differnt nominals on each leg and setting subtractInflationNominal to true. ALSO - there must be just one date in each schedule. The two legs can have different schedules, fixing (days vs lag), settlement, and roll conventions. N.B. accrual adjustment periods are already in the schedules. Trade date and swap settlement date are outside the scope of the instrument.
+
+ -f-
+ -v-
+ -e-
+  Type
+   Receiver
+   Payer
+ -f-
+  CPISwap
+   ->
+   ::Type
+   -- ^type
+   ::Real
+   -- ^nominal
+   ::bool
+   -- ^subtractInflationNominal
+   ::Spread
+   -- ^spread
+   ::const DayCounter &
+   -- ^floatDayCount
+   ::const Schedule &
+   -- ^floatSchedule
+   ::const BusinessDayConvention &
+   -- ^floatRoll
+   ::Natural
+   -- ^fixingDays
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^floatIndex
+   ::Rate
+   -- ^fixedRate
+   ::Real
+   -- ^baseCPI
+   ::const DayCounter &
+   -- ^fixedDayCount
+   ::const Schedule &
+   -- ^fixedSchedule
+   ::const BusinessDayConvention &
+   -- ^fixedRoll
+   ::const Period &
+   -- ^observationLag
+   ::const boost::shared_ptr< ZeroInflationIndex > &
+   -- ^fixedIndex
+   ::CPI::InterpolationType
+   =CPI::AsIndex
+   -- ^observationInterpolation
+   ::Real
+   =Null< Real >()
+   -- ^inflationNominal
+  floatLegNPV
+   ->Real
+  fairSpread
+   ->Spread
+  fixedLegNPV
+   ->Real
+  fairRate
+   ->Rate
+  type
+   ->Type
+  nominal
+   ->Real
+  subtractInflationNominal
+   ->bool
+  spread
+   ->Spread
+  floatDayCount
+   ->const DayCounter &
+  floatSchedule
+   ->const Schedule &
+  floatPaymentRoll
+   ->const BusinessDayConvention &
+  fixingDays
+   ->Natural
+  floatIndex
+   ->const boost::shared_ptr< IborIndex > &
+  fixedRate
+   ->Rate
+  baseCPI
+   ->Real
+  fixedDayCount
+   ->const DayCounter &
+  fixedSchedule
+   ->const Schedule &
+  fixedPaymentRoll
+   ->const BusinessDayConvention &
+  observationLag
+   ->Period
+  fixedIndex
+   ->const boost::shared_ptr< ZeroInflationIndex > &
+  observationInterpolation
+   ->CPI::InterpolationType
+  inflationNominal
+   ->Real
+  cpiLeg
+   ->const Leg &
+  floatLeg
+   ->const Leg &
+ -v-
+ -e-

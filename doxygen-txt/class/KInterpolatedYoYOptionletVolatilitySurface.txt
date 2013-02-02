@@ -1,0 +1,34 @@
+KInterpolatedYoYOptionletVolatilitySurface
+ -- |K-interpolated YoY optionlet volatility.
+ -- |The stripper provides curves in the T direction along each K. We don't know whether this is interpolating or fitting in the T direction. Our K direction interpolations are not model fitting.An alternative design would be a FittedYoYOptionletVolatilitySurface taking a model, e.g. SABR in the interest rate world. This could use the same stripping in the T direction along each K.BugTests currently fail.
+
+ -f-
+  KInterpolatedYoYOptionletVolatilitySurface
+   ->
+   ::const Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::const BusinessDayConvention
+   -- ^bdc
+   ::const DayCounter &
+   -- ^dc
+   ::const Period &
+   -- ^lag
+   ::const boost::shared_ptr< YoYCapFloorTermPriceSurface > &
+   -- ^capFloorPrices
+   ::const boost::shared_ptr< YoYInflationCapFloorEngine > &
+   -- ^pricer
+   ::const boost::shared_ptr< YoYOptionletStripper > &
+   -- ^yoyOptionletStripper
+   ::const Real
+   -- ^slope
+   ::const Interpolator1D &
+   =Interpolator1D()
+   -- ^interpolator
+  Dslice
+   ->std::pair< std::vector< Rate >, std::vector< Volatility > >
+   ::const Date &
+   -- ^d
+ -v-
+ -e-

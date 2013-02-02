@@ -1,0 +1,47 @@
+SobolBrownianGenerator
+ -- |Sobol Brownian generator for market-model simulations.
+ -- |Incremental Brownian generator using a Sobol generator, inverse-cumulative Gaussian method, and Brownian bridging.
+
+ -f-
+ -v-
+ -e-
+  Ordering
+   Factors
+   -- ^The variates with the best quality will be used for the evolution of the first factor.
+   Steps
+   -- ^The variates with the best quality will be used for the largest steps of all factors.
+   Diagonal
+   -- ^A diagonal schema will be used to assign the variates with the best quality to the most important factors and the largest steps.
+ -f-
+  SobolBrownianGenerator
+   ->
+   ::Size
+   -- ^factors
+   ::Size
+   -- ^steps
+   ::Ordering
+   -- ^ordering
+   ::unsigned long
+   =0
+   -- ^seed
+   ::SobolRsg::DirectionIntegers
+   =SobolRsg::Jaeckel
+   -- ^directionIntegers
+  nextPath
+   ->Real
+  nextStep
+   ->Real
+   ::std::vector< Real > &
+   -- ^
+  numberOfFactors
+   ->Size
+  numberOfSteps
+   ->Size
+  orderedIndices
+   ->const std::vector< std::vector< Size > > &
+  transform
+   ->std::vector< std::vector< Real > >
+   ::const std::vector< std::vector< Real > > &
+   -- ^variates
+ -v-
+ -e-

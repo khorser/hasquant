@@ -1,0 +1,62 @@
+Issuer
+
+ -f-
+  defaultProbability
+   ->const Handle< DefaultProbabilityTermStructure > &
+   ::const DefaultProbKey &
+   -- ^key
+ -v-
+ -e-
+ -f-
+  -- If a default event with the required seniority and.
+  defaultedBetween
+   ->boost::shared_ptr< DefaultEvent >
+   ::const Date &
+   -- ^start
+   ::const Date &
+   -- ^end
+   ::const DefaultProbKey &
+   -- ^key
+   ::bool
+   =false
+   -- ^includeRefDate
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+ -f-
+  -- The first argument represents the probability of an issuer of having any of its bonds with the given seniority, currency incurring in that particular event. The second argument represents the history of past events. Theres no check on wether the event list makes sense, events can occur several times and several of them can take place on the same date.To do: add settlement event access
+  Issuer
+   ->
+   ::const std::vector< key_curve_pair > &
+   =std::vector< key_curve_pair >()
+   -- ^probabilities
+   ::const DefaultEventSet &
+   =DefaultEventSet()
+   -- ^events
+  Issuer
+   ->
+   ::const std::vector< std::vector< boost::shared_ptr< DefaultType > > > &
+   -- ^eventTypes
+   ::const std::vector< Currency > &
+   -- ^currencies
+   ::const std::vector< Seniority > &
+   -- ^seniorities
+   ::const std::vector< Handle< DefaultProbabilityTermStructure > > &
+   -- ^curves
+   ::const DefaultEventSet &
+   =DefaultEventSet()
+   -- ^events
+  defaultsBetween
+   ->std::vector< boost::shared_ptr< DefaultEvent > >
+   ::const Date &
+   -- ^start
+   ::const Date &
+   -- ^end
+   ::const DefaultProbKey &
+   -- ^contractKey
+   ::bool
+   -- ^includeRefDate
+ -v-
+ -e-

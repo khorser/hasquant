@@ -1,0 +1,16 @@
+CoxRossRubinstein
+ -- |Cox-Ross-Rubinstein (multiplicative) equal jumps binomial tree.
+
+ -f-
+  CoxRossRubinstein
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+   ::Real
+   -- ^strike
+ -v-
+ -e-

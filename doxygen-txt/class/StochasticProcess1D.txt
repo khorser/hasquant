@@ -1,0 +1,69 @@
+StochasticProcess1D
+ -- |1-dimensional stochastic process
+ -- |This class describes a stochastic process governed by \[ dx_t = \mu(t, x_t)dt + \sigma(t, x_t)dW_t. \]
+
+ -f-
+  -- returns the initial value of the state variable
+  x0
+   ->Real
+  -- returns the drift part of the equation, i.e. $ \mu(t, x_t) $
+  drift
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  -- returns the diffusion part of the equation, i.e. $ \sigma(t, x_t) $
+  diffusion
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  -- returns the expectation $ E(x_{t_0 + \Delta t} | x_{t_0} = x_0) $ of the process after a time interval $ \Delta t $ according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization.
+  expectation
+   ->Real
+   ::Time
+   -- ^t0
+   ::Real
+   -- ^x0
+   ::Time
+   -- ^dt
+  -- returns the standard deviation $ S(x_{t_0 + \Delta t} | x_{t_0} = x_0) $ of the process after a time interval $ \Delta t $ according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization.
+  stdDeviation
+   ->Real
+   ::Time
+   -- ^t0
+   ::Real
+   -- ^x0
+   ::Time
+   -- ^dt
+  -- returns the variance $ V(x_{t_0 + \Delta t} | x_{t_0} = x_0) $ of the process after a time interval $ \Delta t $ according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization.
+  variance
+   ->Real
+   ::Time
+   -- ^t0
+   ::Real
+   -- ^x0
+   ::Time
+   -- ^dt
+  -- returns the asset value after a time interval $ \Delta t $ according to the given discretization. By default, it returns \[ E(x_0,t_0,\Delta t) + S(x_0,t_0,\Delta t) \cdot \Delta w \] where $ E $ is the expectation and $ S $ the standard deviation.
+  evolve
+   ->Real
+   ::Time
+   -- ^t0
+   ::Real
+   -- ^x0
+   ::Time
+   -- ^dt
+   ::Real
+   -- ^dw
+  -- applies a change to the asset value. By default, it returns $ x + \Delta x $.
+  apply
+   ->Real
+   ::Real
+   -- ^x0
+   ::Real
+   -- ^dx
+ -v-
+ -e-

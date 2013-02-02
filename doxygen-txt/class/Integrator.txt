@@ -1,0 +1,45 @@
+Integrator
+
+ -f-
+  setAbsoluteAccuracy
+   ->void
+   ::Real
+   -- ^
+  setMaxEvaluations
+   ->void
+   ::Size
+   -- ^
+ -v-
+ -e-
+ -f-
+  absoluteAccuracy
+   ->Real
+  maxEvaluations
+   ->Size
+ -v-
+ -e-
+ -f-
+  Integrator
+   ->
+   ::Real
+   -- ^absoluteAccuracy
+   ::Size
+   -- ^maxEvaluations
+  ~Integrator
+   ->
+  operator()
+   ->Real
+   ::const boost::function< Real(Real)> &
+   -- ^f
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+  absoluteError
+   ->Real
+  numberOfEvaluations
+   ->Size
+  integrationSuccess
+   ->bool
+ -v-
+ -e-

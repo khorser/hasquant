@@ -1,0 +1,18 @@
+Instrument::results
+
+ -f-
+ -v-
+  value
+   ::Real
+  errorEstimate
+   ::Real
+  valuationDate
+   ::Date
+  additionalResults
+   ::std::map< std::string, boost::any >
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

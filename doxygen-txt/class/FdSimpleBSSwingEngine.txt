@@ -1,0 +1,20 @@
+FdSimpleBSSwingEngine
+
+ -f-
+  FdSimpleBSSwingEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^p
+   ::Size
+   =50
+   -- ^tGrid
+   ::Size
+   =100
+   -- ^xGrid
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Douglas()
+   -- ^schemeDesc
+  calculate
+   ->void
+ -v-
+ -e-

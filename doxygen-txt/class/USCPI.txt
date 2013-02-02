@@ -1,0 +1,13 @@
+USCPI
+ -- |US CPI index.
+
+ -f-
+  USCPI
+   ->
+   ::bool
+   -- ^interpolated
+   ::const Handle< ZeroInflationTermStructure > &
+   =Handle< ZeroInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

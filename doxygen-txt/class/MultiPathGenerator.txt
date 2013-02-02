@@ -1,0 +1,25 @@
+MultiPathGenerator
+ -- |Generates a multipath from a random number generator.
+ -- |RSG is a sample generator which returns a random sequence. It must have the minimal interface: RSG{ Sample<Array>next(); }; Teststhe generated paths are checked against cached results
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MultiPathGenerator
+   ->
+   ::const boost::shared_ptr< StochasticProcess > &
+   -- ^
+   ::const TimeGrid &
+   -- ^
+   ::GSG
+   -- ^generator
+   ::bool
+   =false
+   -- ^brownianBridge
+  next
+   ->const sample_type &
+  antithetic
+   ->const sample_type &
+ -v-
+ -e-

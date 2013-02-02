@@ -1,0 +1,36 @@
+PathwiseVegasOuterAccountingEngine
+ -- |Engine collecting cash flows along a market-model simulation for doing pathwise computation of Deltas and vegas.
+
+ -f-
+  PathwiseVegasOuterAccountingEngine
+   ->
+   ::const boost::shared_ptr< LogNormalFwdRateEuler > &
+   -- ^evolver
+   ::const Clone< MarketModelPathwiseMultiProduct > &
+   -- ^product
+   ::const boost::shared_ptr< MarketModel > &
+   -- ^pseudoRootStructure
+   ::const std::vector< std::vector< Matrix > > &
+   -- ^VegaBumps
+   ::Real
+   -- ^initialNumeraireValue
+  -- Use to get vegas with respect to VegaBumps.
+  multiplePathValues
+   ->void
+   ::std::vector< Real > &
+   -- ^means
+   ::std::vector< Real > &
+   -- ^errors
+   ::Size
+   -- ^numberOfPaths
+  -- Use to get vegas with respect to pseudo-root-elements.
+  multiplePathValuesElementary
+   ->void
+   ::std::vector< Real > &
+   -- ^means
+   ::std::vector< Real > &
+   -- ^errors
+   ::Size
+   -- ^numberOfPaths
+ -v-
+ -e-

@@ -1,0 +1,88 @@
+StochasticProcess
+ -- |multi-dimensional stochastic process class.
+ -- |This class describes a stochastic process governed by \[ d\mathrm{x}_t = \mu(t, x_t)\mathrm{d}t + \sigma(t, \mathrm{x}_t) \cdot d\mathrm{W}_t. \]
+
+ -f-
+  -- returns the number of dimensions of the stochastic process
+  size
+   ->Size
+  -- returns the number of independent factors of the process
+  factors
+   ->Size
+  -- returns the initial values of the state variables
+  initialValues
+   ->Disposable< Array >
+  -- returns the drift part of the equation, i.e., $ \mu(t, \mathrm{x}_t) $
+  drift
+   ->Disposable< Array >
+   ::Time
+   -- ^t
+   ::const Array &
+   -- ^x
+  -- returns the diffusion part of the equation, i.e. $ \sigma(t, \mathrm{x}_t) $
+  diffusion
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t
+   ::const Array &
+   -- ^x
+  -- returns the expectation $ E(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $ of the process after a time interval $ \Delta t $ according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization.
+  expectation
+   ->Disposable< Array >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+  -- returns the standard deviation $ S(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $ of the process after a time interval $ \Delta t $ according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization.
+  stdDeviation
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+  -- returns the covariance $ V(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $ of the process after a time interval $ \Delta t $ according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization.
+  covariance
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+  -- returns the asset value after a time interval $ \Delta t $ according to the given discretization. By default, it returns \[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \] where $ E $ is the expectation and $ S $ the standard deviation.
+  evolve
+   ->Disposable< Array >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+   ::const Array &
+   -- ^dw
+  -- applies a change to the asset value. By default, it returns $ \mathrm{x} + \Delta \mathrm{x} $.
+  apply
+   ->Disposable< Array >
+   ::const Array &
+   -- ^x0
+   ::const Array &
+   -- ^dx
+ -v-
+ -e-
+ -f-
+  -- returns the time value corresponding to the given date in the reference system of the stochastic process.As a number of processes might not need this functionality, a default implementation is given which raises an exception.
+  time
+   ->Time
+   ::const Date &
+   -- ^
+ -v-
+ -e-
+ -f-
+  ~StochasticProcess
+   ->
+ -v-
+ -e-

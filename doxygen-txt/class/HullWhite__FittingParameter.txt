@@ -1,0 +1,15 @@
+HullWhite::FittingParameter
+ -- |Analytical term-structure fitting parameter $ \varphi(t) $.
+ -- |$ \varphi(t) $ is analytically defined by \[ \varphi(t) = f(t) + \frac{1}{2}[\frac{\sigma(1-e^{-at})}{a}]^2, \] where $ f(t) $ is the instantaneous forward rate at $ t $.
+
+ -f-
+  FittingParameter
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^termStructure
+   ::Real
+   -- ^a
+   ::Real
+   -- ^sigma
+ -v-
+ -e-

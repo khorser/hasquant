@@ -1,0 +1,17 @@
+HistoricalForwardRatesAnalysis
+
+ -f-
+  ~HistoricalForwardRatesAnalysis
+   ->
+  skippedDates
+   ->const std::vector< Date > &
+  skippedDatesErrorMessage
+   ->const std::vector< std::string > &
+  failedDates
+   ->const std::vector< Date > &
+  failedDatesErrorMessage
+   ->const std::vector< std::string > &
+  fixingPeriods
+   ->const std::vector< Period > &
+ -v-
+ -e-

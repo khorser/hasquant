@@ -1,0 +1,17 @@
+Vasicek::Dynamics
+ -- |Short-rate dynamics in the Vasicek model.
+ -- |The short-rate follows an Ornstein-Uhlenbeck process with mean $ b $.
+
+ -f-
+  Dynamics
+   ->
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^sigma
+   ::Real
+   -- ^r0
+ -v-
+ -e-

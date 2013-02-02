@@ -1,0 +1,78 @@
+RangeAccrualLeg
+ -- |helper class building a sequence of range-accrual floating-rate coupons
+
+ -f-
+  RangeAccrualLeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^index
+  withNotionals
+   ->RangeAccrualLeg &
+   ::Real
+   -- ^notional
+  withNotionals
+   ->RangeAccrualLeg &
+   ::const std::vector< Real > &
+   -- ^notionals
+  withPaymentDayCounter
+   ->RangeAccrualLeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentAdjustment
+   ->RangeAccrualLeg &
+   ::BusinessDayConvention
+   -- ^
+  withFixingDays
+   ->RangeAccrualLeg &
+   ::Natural
+   -- ^fixingDays
+  withFixingDays
+   ->RangeAccrualLeg &
+   ::const std::vector< Natural > &
+   -- ^fixingDays
+  withGearings
+   ->RangeAccrualLeg &
+   ::Real
+   -- ^gearing
+  withGearings
+   ->RangeAccrualLeg &
+   ::const std::vector< Real > &
+   -- ^gearings
+  withSpreads
+   ->RangeAccrualLeg &
+   ::Spread
+   -- ^spread
+  withSpreads
+   ->RangeAccrualLeg &
+   ::const std::vector< Spread > &
+   -- ^spreads
+  withLowerTriggers
+   ->RangeAccrualLeg &
+   ::Rate
+   -- ^trigger
+  withLowerTriggers
+   ->RangeAccrualLeg &
+   ::const std::vector< Rate > &
+   -- ^triggers
+  withUpperTriggers
+   ->RangeAccrualLeg &
+   ::Rate
+   -- ^trigger
+  withUpperTriggers
+   ->RangeAccrualLeg &
+   ::const std::vector< Rate > &
+   -- ^triggers
+  withObservationTenor
+   ->RangeAccrualLeg &
+   ::const Period &
+   -- ^
+  withObservationConvention
+   ->RangeAccrualLeg &
+   ::BusinessDayConvention
+   -- ^
+  operator Leg
+   ->
+ -v-
+ -e-

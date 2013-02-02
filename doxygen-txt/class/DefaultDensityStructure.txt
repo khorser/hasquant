@@ -1,0 +1,49 @@
+DefaultDensityStructure
+ -- |Default-density term structure.
+ -- |This abstract class acts as an adapter to DefaultProbabilityTermStructure allowing the programmer to implement only the defaultDensityImpl(Time) method in derived classes.Survival/default probabilities and hazard rates are calculated from default densities.
+
+ -f-
+  DefaultDensityStructure
+   ->
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  DefaultDensityStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  DefaultDensityStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+ -v-
+ -e-

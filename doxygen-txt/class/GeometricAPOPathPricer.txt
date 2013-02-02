@@ -1,0 +1,23 @@
+GeometricAPOPathPricer
+
+ -f-
+  GeometricAPOPathPricer
+   ->
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^strike
+   ::DiscountFactor
+   -- ^discount
+   ::Real
+   =1.0
+   -- ^runningProduct
+   ::Size
+   =0
+   -- ^pastFixings
+  operator()
+   ->Real
+   ::const Path &
+   -- ^path
+ -v-
+ -e-

@@ -1,0 +1,19 @@
+FdmHestonHullWhiteRatesPart
+
+ -f-
+  FdmHestonHullWhiteRatesPart
+   ->
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const boost::shared_ptr< HullWhiteProcess > &
+   -- ^hwProcess
+  setTime
+   ->void
+   ::Time
+   -- ^t1
+   ::Time
+   -- ^t2
+  getMap
+   ->const TripleBandLinearOp &
+ -v-
+ -e-

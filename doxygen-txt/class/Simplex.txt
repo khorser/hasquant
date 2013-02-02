@@ -1,0 +1,11 @@
+Simplex
+ -- |Multi-dimensional simplex class.
+
+ -f-
+  -- Constructor taking as input the characteristic length
+  Simplex
+   ->
+   ::Real
+   -- ^lambda
+ -v-
+ -e-

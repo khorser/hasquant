@@ -1,0 +1,21 @@
+YYGenericCPI
+ -- |Genuine year-on-year Generic CPI (i.e. not a ratio)
+
+ -f-
+  YYGenericCPI
+   ->
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^revised
+   ::bool
+   -- ^interpolated
+   ::const Period &
+   -- ^lag
+   ::const Currency &
+   -- ^ccy
+   ::const Handle< YoYInflationTermStructure > &
+   =Handle< YoYInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

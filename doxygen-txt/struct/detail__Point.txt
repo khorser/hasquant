@@ -1,0 +1,43 @@
+detail::Point
+
+ -f-
+ -v-
+ -e-
+ -f-
+ -v-
+  first
+   ::data_type
+  second
+   ::Y
+ -e-
+ -f-
+  Point
+   ->
+  Point
+   ->
+   ::const std::vector< Real >::const_iterator &
+   -- ^i
+  Point
+   ->
+   ::const std::vector< Real > &
+   -- ^v
+  Point
+   ->
+   ::const SplineGrid::const_iterator &
+   -- ^i
+  Point
+   ->
+   ::const SplineGrid &
+   -- ^grid
+  operator data_type
+   ->
+  operator[]
+   ->data_type
+   ::Size
+   -- ^n
+  operator[]
+   ->data_type &
+   ::Size
+   -- ^n
+ -v-
+ -e-

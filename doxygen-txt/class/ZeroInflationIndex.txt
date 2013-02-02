@@ -1,0 +1,35 @@
+ZeroInflationIndex
+ -- |Base class for zero inflation indices.
+
+ -f-
+  zeroInflationTermStructure
+   ->Handle< ZeroInflationTermStructure >
+  clone
+   ->boost::shared_ptr< ZeroInflationIndex >
+   ::const Handle< ZeroInflationTermStructure > &
+   -- ^h
+ -v-
+ -e-
+ -f-
+  -- Always use the evaluation date as the reference date.
+  ZeroInflationIndex
+   ->
+   ::const std::string &
+   -- ^familyName
+   ::const Region &
+   -- ^region
+   ::bool
+   -- ^revised
+   ::bool
+   -- ^interpolated
+   ::Frequency
+   -- ^frequency
+   ::const Period &
+   -- ^availabilityLag
+   ::const Currency &
+   -- ^currency
+   ::const Handle< ZeroInflationTermStructure > &
+   =Handle< ZeroInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

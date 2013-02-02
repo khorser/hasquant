@@ -1,0 +1,49 @@
+FixedRateCoupon
+ -- |Coupon paying a fixed interest rate
+
+ -f-
+  FixedRateCoupon
+   ->
+   ::const Date &
+   -- ^paymentDate
+   ::Real
+   -- ^nominal
+   ::Rate
+   -- ^rate
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Date &
+   -- ^accrualStartDate
+   ::const Date &
+   -- ^accrualEndDate
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+  FixedRateCoupon
+   ->
+   ::const Date &
+   -- ^paymentDate
+   ::Real
+   -- ^nominal
+   ::const InterestRate &
+   -- ^interestRate
+   ::const Date &
+   -- ^accrualStartDate
+   ::const Date &
+   -- ^accrualEndDate
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+ -v-
+ -e-
+ -f-
+  interestRate
+   ->InterestRate
+ -v-
+ -e-

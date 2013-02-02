@@ -1,0 +1,9 @@
+NOKCurrency
+ -- |Norwegian krone.
+ -- |The ISO three-letter code is NOK; the numeric code is 578. It is divided in 100 øre.
+
+ -f-
+  NOKCurrency
+   ->
+ -v-
+ -e-

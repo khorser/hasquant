@@ -1,0 +1,40 @@
+ConvertibleBond::option::arguments
+
+ -f-
+ -v-
+  conversionRatio
+   ::Real
+  creditSpread
+   ::Handle< Quote >
+  dividends
+   ::DividendSchedule
+  dividendDates
+   ::std::vector< Date >
+  callabilityDates
+   ::std::vector< Date >
+  callabilityTypes
+   ::std::vector< Callability::Type >
+  callabilityPrices
+   ::std::vector< Real >
+  callabilityTriggers
+   ::std::vector< Real >
+  couponDates
+   ::std::vector< Date >
+  couponAmounts
+   ::std::vector< Real >
+  issueDate
+   ::Date
+  settlementDate
+   ::Date
+  settlementDays
+   ::Natural
+  redemption
+   ::Real
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

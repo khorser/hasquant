@@ -1,0 +1,38 @@
+LmConstWrapperCorrelationModel
+
+ -f-
+  LmConstWrapperCorrelationModel
+   ->
+   ::const boost::shared_ptr< LmCorrelationModel > &
+   -- ^corrModel
+  factors
+   ->Size
+  correlation
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  pseudoSqrt
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  correlation
+   ->Real
+   ::Size
+   -- ^i
+   ::Size
+   -- ^j
+   ::Time
+   -- ^t
+   ::const Array &
+   =Null< Array >()
+   -- ^x
+  isTimeIndependent
+   ->bool
+ -v-
+ -e-

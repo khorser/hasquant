@@ -1,0 +1,13 @@
+SimpsonIntegral
+ -- |Integral of a one-dimensional function.
+ -- |Teststhe correctness of the result is tested by checking it against known good values.
+
+ -f-
+  SimpsonIntegral
+   ->
+   ::Real
+   -- ^accuracy
+   ::Size
+   -- ^maxIterations
+ -v-
+ -e-

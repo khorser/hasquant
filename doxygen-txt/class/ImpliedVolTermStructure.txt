@@ -1,0 +1,13 @@
+ImpliedVolTermStructure
+ -- |Implied vol term structure at a given date in the future.
+ -- |The given date will be the implied reference date. This term structure will remain linked to the original structure, i.e., any changes in the latter will be reflected in this structure as well. WarningIt doesn't make financial sense to have an asset-dependant implied Vol Term Structure. This class should be used with term structures that are time dependant only.
+
+ -f-
+  ImpliedVolTermStructure
+   ->
+   ::const Handle< BlackVolTermStructure > &
+   -- ^origTS
+   ::const Date &
+   -- ^referenceDate
+ -v-
+ -e-

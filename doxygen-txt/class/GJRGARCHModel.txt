@@ -1,0 +1,25 @@
+GJRGARCHModel
+ -- |GJR-GARCH model for the stochastic volatility of an asset.
+ -- |References: Glosten, L., Jagannathan, R., Runkle, D., 1993. Relationship between the expected value and the volatility of the nominal excess return on stocks. Journal of Finance 48, 1779-1801Testscalibration is not implemented for GJR-GARCH
+
+ -f-
+  GJRGARCHModel
+   ->
+   ::const boost::shared_ptr< GJRGARCHProcess > &
+   -- ^process
+  omega
+   ->Real
+  alpha
+   ->Real
+  beta
+   ->Real
+  gamma
+   ->Real
+  lambda
+   ->Real
+  v0
+   ->Real
+  process
+   ->boost::shared_ptr< GJRGARCHProcess >
+ -v-
+ -e-

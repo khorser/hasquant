@@ -1,0 +1,8 @@
+MidPointCDOEngine
+ -- |CDO base engine taking schedule steps.
+
+ -f-
+  MidPointCDOEngine
+   ->
+ -v-
+ -e-

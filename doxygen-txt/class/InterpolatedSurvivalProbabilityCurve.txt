@@ -1,0 +1,39 @@
+InterpolatedSurvivalProbabilityCurve
+ -- |DefaultProbabilityTermStructure based on interpolation of survival probabilities.
+
+ -f-
+  times
+   ->const std::vector< Time > &
+  dates
+   ->const std::vector< Date > &
+  data
+   ->const std::vector< Real > &
+  survivalProbabilities
+   ->const std::vector< Probability > &
+  nodes
+   ->std::vector< std::pair< Date, Real > >
+ -v-
+ -e-
+ -f-
+  InterpolatedSurvivalProbabilityCurve
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Probability > &
+   -- ^probabilities
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Calendar &
+   =Calendar()
+   -- ^calendar
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+   ::const Interpolator &
+   =Interpolator()
+   -- ^interpolator
+ -v-
+ -e-

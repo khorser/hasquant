@@ -1,0 +1,41 @@
+BlackVarianceSurface
+ -- |Black volatility surface modelled as variance surface.
+ -- |This class calculates time/strike dependent Black volatilities using as input a matrix of Black volatilities observed in the market.The calculation is performed interpolating on the variance surface. Bilinear interpolation is used as default; this can be changed by the setInterpolation() method.Possible enhancementscheck time extrapolation
+
+ -f-
+  setInterpolation
+   ->void
+   ::const Interpolator &
+   =Interpolator()
+   -- ^i
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+  Extrapolation
+   ConstantExtrapolation
+   InterpolatorDefaultExtrapolation
+ -f-
+  BlackVarianceSurface
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^cal
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Real > &
+   -- ^strikes
+   ::const Matrix &
+   -- ^blackVolMatrix
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Extrapolation
+   =InterpolatorDefaultExtrapolation
+   -- ^lowerExtrapolation
+   ::Extrapolation
+   =InterpolatorDefaultExtrapolation
+   -- ^upperExtrapolation
+ -v-
+ -e-

@@ -1,0 +1,23 @@
+BlackDeltaPremiumAdjustedMaxStrikeClass
+
+ -f-
+  BlackDeltaPremiumAdjustedMaxStrikeClass
+   ->
+   ::Option::Type
+   -- ^ot
+   ::DeltaVolQuote::DeltaType
+   -- ^dt
+   ::Real
+   -- ^spot
+   ::DiscountFactor
+   -- ^dDiscount
+   ::DiscountFactor
+   -- ^fDiscount
+   ::Real
+   -- ^stdDev
+  operator()
+   ->Real
+   ::Real
+   -- ^strike
+ -v-
+ -e-

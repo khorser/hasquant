@@ -1,0 +1,35 @@
+detail::Point< base_data_table, EmptyRes >
+
+ -f-
+ -v-
+ -e-
+ -f-
+ -v-
+  first
+   ::data_type
+  second
+   ::EmptyRes
+ -e-
+ -f-
+  Point
+   ->
+   ::data_type
+   -- ^s
+  Point
+   ->
+   ::const SplineGrid::const_iterator &
+   -- ^i
+  Point
+   ->
+   ::const SplineGrid &
+   -- ^grid
+  operator[]
+   ->Real
+   ::Size
+   -- ^n
+  operator[]
+   ->Real &
+   ::Size
+   -- ^n
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+MarketModelParametricExercise
+
+ -f-
+  numberOfData
+   ->std::vector< Size >
+  clone
+   ->std::auto_ptr< MarketModelParametricExercise >
+ -v-
+ -e-

@@ -1,0 +1,22 @@
+RangeAccrualPricerByBgm
+
+ -f-
+  swapletPrice
+   ->Real
+ -v-
+ -e-
+ -f-
+  RangeAccrualPricerByBgm
+   ->
+   ::Real
+   -- ^correlation
+   ::const boost::shared_ptr< SmileSection > &
+   -- ^smilesOnExpiry
+   ::const boost::shared_ptr< SmileSection > &
+   -- ^smilesOnPayment
+   ::bool
+   -- ^withSmile
+   ::bool
+   -- ^byCallSpread
+ -v-
+ -e-

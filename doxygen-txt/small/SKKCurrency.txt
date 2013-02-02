@@ -1,0 +1,9 @@
+SKKCurrency
+ -- |Slovak koruna.
+ -- |The ISO three-letter code is SKK; the numeric code is 703. It is divided in 100 halierov.
+
+ -f-
+  SKKCurrency
+   ->
+ -v-
+ -e-

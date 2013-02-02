@@ -1,0 +1,14 @@
+ContinuousFixedLookbackOption
+ -- |Continuous-fixed lookback option.
+
+ -f-
+  ContinuousFixedLookbackOption
+   ->
+   ::Real
+   -- ^currentMinmax
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+ -v-
+ -e-

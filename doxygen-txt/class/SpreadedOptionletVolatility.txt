@@ -1,0 +1,35 @@
+SpreadedOptionletVolatility
+
+ -f-
+  businessDayConvention
+   ->BusinessDayConvention
+  minStrike
+   ->Rate
+  maxStrike
+   ->Rate
+ -v-
+ -e-
+ -f-
+  dayCounter
+   ->DayCounter
+  maxDate
+   ->Date
+  maxTime
+   ->Time
+  referenceDate
+   ->const Date &
+  calendar
+   ->Calendar
+  settlementDays
+   ->Natural
+ -v-
+ -e-
+ -f-
+  SpreadedOptionletVolatility
+   ->
+   ::const Handle< OptionletVolatilityStructure > &
+   -- ^
+   ::const Handle< Quote > &
+   -- ^spread
+ -v-
+ -e-

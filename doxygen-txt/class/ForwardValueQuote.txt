@@ -1,0 +1,12 @@
+ForwardValueQuote
+ -- |quote for the forward value of an index
+
+ -f-
+  ForwardValueQuote
+   ->
+   ::const boost::shared_ptr< Index > &
+   -- ^index
+   ::const Date &
+   -- ^fixingDate
+ -v-
+ -e-

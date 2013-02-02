@@ -1,0 +1,26 @@
+MCDiscreteGeometricAPEngine
+ -- |Monte Carlo pricing engine for discrete geometric average price Asian.
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in literature.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCDiscreteGeometricAPEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+ -v-
+ -e-

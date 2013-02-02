@@ -1,0 +1,50 @@
+Swap
+ -- |Interest rate swap.
+ -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
+
+ -f-
+  -- The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
+  Swap
+   ->
+   ::const Leg &
+   -- ^firstLeg
+   ::const Leg &
+   -- ^secondLeg
+  -- Multi leg constructor.
+  Swap
+   ->
+   ::const std::vector< Leg > &
+   -- ^legs
+   ::const std::vector< bool > &
+   -- ^payer
+ -v-
+ -e-
+ -f-
+  startDate
+   ->Date
+  maturityDate
+   ->Date
+  legBPS
+   ->Real
+   ::Size
+   -- ^j
+  legNPV
+   ->Real
+   ::Size
+   -- ^j
+  startDiscounts
+   ->DiscountFactor
+   ::Size
+   -- ^j
+  endDiscounts
+   ->DiscountFactor
+   ::Size
+   -- ^j
+  npvDateDiscount
+   ->DiscountFactor
+  leg
+   ->const Leg &
+   ::Size
+   -- ^j
+ -v-
+ -e-

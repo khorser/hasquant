@@ -1,0 +1,68 @@
+Coupon
+ -- |coupon accruing over a fixed period
+ -- |This class implements part of the CashFlow interface but it is still abstract and provides derived classes with methods for accrual period calculations.
+
+ -f-
+  nominal
+   ->Real
+  -- start of the accrual period
+  accrualStartDate
+   ->const Date &
+  -- end of the accrual period
+  accrualEndDate
+   ->const Date &
+  -- start date of the reference period
+  referencePeriodStart
+   ->const Date &
+  -- end date of the reference period
+  referencePeriodEnd
+   ->const Date &
+  -- accrual period as fraction of year
+  accrualPeriod
+   ->Time
+  -- accrual period in days
+  accrualDays
+   ->BigInteger
+  -- accrued rate
+  rate
+   ->Rate
+  -- day counter for accrual calculation
+  dayCounter
+   ->DayCounter
+  -- accrued period as fraction of year at the given date
+  accruedPeriod
+   ->Time
+   ::const Date &
+   -- ^
+  -- accrued days at the given date
+  accruedDays
+   ->BigInteger
+   ::const Date &
+   -- ^
+  -- accrued amount at the given date
+  accruedAmount
+   ->Real
+   ::const Date &
+   -- ^
+ -v-
+ -e-
+ -f-
+  -- Warningthe coupon does not adjust the payment date which must already be a business day.
+  Coupon
+   ->
+   ::const Date &
+   -- ^paymentDate
+   ::Real
+   -- ^nominal
+   ::const Date &
+   -- ^accrualStartDate
+   ::const Date &
+   -- ^accrualEndDate
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+ -v-
+ -e-

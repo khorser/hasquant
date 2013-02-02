@@ -1,0 +1,12 @@
+EarlyExerciseTraits< MultiPath >
+
+ -f-
+ -v-
+ -e-
+ -f-
+  pathLength
+   ->Size
+   ::const MultiPath &
+   -- ^path
+ -v-
+ -e-

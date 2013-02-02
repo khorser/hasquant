@@ -1,0 +1,73 @@
+FlatForward
+ -- |Flat interest-rate curve.
+
+ -f-
+  FlatForward
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Handle< Quote > &
+   -- ^forward
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   =Continuous
+   -- ^compounding
+   ::Frequency
+   =Annual
+   -- ^frequency
+  FlatForward
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::Rate
+   -- ^forward
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   =Continuous
+   -- ^compounding
+   ::Frequency
+   =Annual
+   -- ^frequency
+  FlatForward
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::const Handle< Quote > &
+   -- ^forward
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   =Continuous
+   -- ^compounding
+   ::Frequency
+   =Annual
+   -- ^frequency
+  FlatForward
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::Rate
+   -- ^forward
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   =Continuous
+   -- ^compounding
+   ::Frequency
+   =Annual
+   -- ^frequency
+ -v-
+ -e-
+ -f-
+  compounding
+   ->Compounding
+  compoundingFrequency
+   ->Frequency
+ -v-
+ -e-

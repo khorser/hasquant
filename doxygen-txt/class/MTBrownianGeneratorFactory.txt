@@ -1,0 +1,16 @@
+MTBrownianGeneratorFactory
+
+ -f-
+  MTBrownianGeneratorFactory
+   ->
+   ::unsigned long
+   =0
+   -- ^seed
+  create
+   ->boost::shared_ptr< BrownianGenerator >
+   ::Size
+   -- ^factors
+   ::Size
+   -- ^steps
+ -v-
+ -e-

@@ -1,0 +1,30 @@
+SabrSmileSection
+
+ -f-
+  SabrSmileSection
+   ->
+   ::Time
+   -- ^timeToExpiry
+   ::Rate
+   -- ^forward
+   ::const std::vector< Real > &
+   -- ^sabrParameters
+  SabrSmileSection
+   ->
+   ::const Date &
+   -- ^d
+   ::Rate
+   -- ^forward
+   ::const std::vector< Real > &
+   -- ^sabrParameters
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dc
+  minStrike
+   ->Real
+  maxStrike
+   ->Real
+  atmLevel
+   ->Real
+ -v-
+ -e-

@@ -1,0 +1,16 @@
+ExtendedAdditiveEQPBinomialTree
+ -- |Additive equal probabilities binomial tree.
+
+ -f-
+  ExtendedAdditiveEQPBinomialTree
+   ->
+   ::const boost::shared_ptr< StochasticProcess1D > &
+   -- ^
+   ::Time
+   -- ^end
+   ::Size
+   -- ^steps
+   ::Real
+   -- ^strike
+ -v-
+ -e-

@@ -1,0 +1,24 @@
+TreeCapFloorEngine
+ -- |Numerical lattice engine for cap/floors.
+
+ -f-
+  TreeCapFloorEngine
+   ->
+   ::const boost::shared_ptr< ShortRateModel > &
+   -- ^model
+   ::Size
+   -- ^timeSteps
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^termStructure
+  TreeCapFloorEngine
+   ->
+   ::const boost::shared_ptr< ShortRateModel > &
+   -- ^model
+   ::const TimeGrid &
+   -- ^timeGrid
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^termStructure
+ -v-
+ -e-

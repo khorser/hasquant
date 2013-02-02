@@ -1,0 +1,17 @@
+YYAUCPI
+ -- |Genuine year-on-year AU CPI (i.e. not a ratio)
+
+ -f-
+  YYAUCPI
+   ->
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^revised
+   ::bool
+   -- ^interpolated
+   ::const Handle< YoYInflationTermStructure > &
+   =Handle< YoYInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

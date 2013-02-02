@@ -1,0 +1,13 @@
+YYUSCPI
+ -- |Genuine year-on-year US CPI (i.e. not a ratio of US CPI)
+
+ -f-
+  YYUSCPI
+   ->
+   ::bool
+   -- ^interpolated
+   ::const Handle< YoYInflationTermStructure > &
+   =Handle< YoYInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

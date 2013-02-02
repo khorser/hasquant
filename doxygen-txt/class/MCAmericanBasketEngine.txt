@@ -1,0 +1,30 @@
+MCAmericanBasketEngine
+ -- |least-square Monte Carlo engine
+ -- |WarningThis method is intrinsically weak for out-of-the-money options.
+
+ -f-
+  MCAmericanBasketEngine
+   ->
+   ::const boost::shared_ptr< StochasticProcessArray > &
+   -- ^
+   ::Size
+   -- ^timeSteps
+   ::Size
+   -- ^timeStepsPerYear
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+   ::Size
+   =Null< Size >()
+   -- ^nCalibrationSamples
+ -v-
+ -e-

@@ -1,0 +1,28 @@
+CMSMMDriftCalculator
+ -- |Drift computation for CMS market models.
+ -- |Returns the drift $ \mu \Delta t $. See Mark Joshi, Rapid Computation of Drifts in a Reduced Factor Libor Market Model, Wilmott Magazine, May 2003.
+
+ -f-
+  CMSMMDriftCalculator
+   ->
+   ::const Matrix &
+   -- ^pseudo
+   ::const std::vector< Spread > &
+   -- ^displacements
+   ::const std::vector< Time > &
+   -- ^taus
+   ::Size
+   -- ^numeraire
+   ::Size
+   -- ^alive
+   ::Size
+   -- ^spanningFwds
+  -- Computes the drifts.
+  compute
+   ->void
+   ::const CMSwapCurveState &
+   -- ^cs
+   ::std::vector< Real > &
+   -- ^drifts
+ -v-
+ -e-

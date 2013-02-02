@@ -1,0 +1,25 @@
+ConstantCPIVolatility
+ -- |Constant surface, no K or T dependence.
+
+ -f-
+  -- calculate the reference date based on the global evaluation date
+  ConstantCPIVolatility
+   ->
+   ::const Volatility
+   -- ^v
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::BusinessDayConvention
+   -- ^bdc
+   ::const DayCounter &
+   -- ^dc
+   ::const Period &
+   -- ^observationLag
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^indexIsInterpolated
+ -v-
+ -e-

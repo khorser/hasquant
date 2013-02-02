@@ -1,0 +1,61 @@
+InterestRateIndex
+ -- |base class for interest rate indexes
+ -- |Possible enhancementsadd methods returning InterestRate
+
+ -f-
+  familyName
+   ->std::string
+  tenor
+   ->Period
+  fixingDays
+   ->Natural
+  fixingDate
+   ->Date
+   ::const Date &
+   -- ^valueDate
+  currency
+   ->const Currency &
+  dayCounter
+   ->const DayCounter &
+ -v-
+ -e-
+ -f-
+  valueDate
+   ->Date
+   ::const Date &
+   -- ^fixingDate
+  maturityDate
+   ->Date
+   ::const Date &
+   -- ^valueDate
+ -v-
+ -e-
+ -f-
+  -- It can be overridden to implement particular conventions.
+  forecastFixing
+   ->Rate
+   ::const Date &
+   -- ^fixingDate
+  pastFixing
+   ->Rate
+   ::const Date &
+   -- ^fixingDate
+ -v-
+ -e-
+ -f-
+  InterestRateIndex
+   ->
+   ::const std::string &
+   -- ^familyName
+   ::const Period &
+   -- ^tenor
+   ::Natural
+   -- ^settlementDays
+   ::const Currency &
+   -- ^currency
+   ::const Calendar &
+   -- ^fixingCalendar
+   ::const DayCounter &
+   -- ^dayCounter
+ -v-
+ -e-

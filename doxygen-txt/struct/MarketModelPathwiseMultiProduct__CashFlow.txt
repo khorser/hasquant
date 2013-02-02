@@ -1,0 +1,9 @@
+MarketModelPathwiseMultiProduct::CashFlow
+
+ -f-
+ -v-
+  timeIndex
+   ::Size
+  amount
+   ::std::vector< Real >
+ -e-

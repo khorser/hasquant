@@ -1,0 +1,15 @@
+SimpleChooserOption
+ -- |Simple chooser option.
+ -- |This option gives the holder the right to choose, at a future date prior to exercise, whether the option should be a call or a put. The exercise date and strike are the same for both call and put option.
+
+ -f-
+  SimpleChooserOption
+   ->
+   ::Date
+   -- ^choosingDate
+   ::Real
+   -- ^strike
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+ -v-
+ -e-

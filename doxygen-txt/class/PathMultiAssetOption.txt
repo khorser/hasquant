@@ -1,0 +1,20 @@
+PathMultiAssetOption
+ -- |Base class for path-dependent options on multiple assets.
+
+ -f-
+  pathPayoff
+   ->boost::shared_ptr< PathPayoff >
+  fixingDates
+   ->std::vector< Date >
+ -v-
+ -e-
+ -f-
+  PathMultiAssetOption
+   ->
+   ::const boost::shared_ptr< PricingEngine > &
+   =boost::shared_ptr< PricingEngine >()
+   -- ^engine
+  ~PathMultiAssetOption
+   ->
+ -v-
+ -e-

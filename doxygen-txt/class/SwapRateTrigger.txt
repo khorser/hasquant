@@ -1,0 +1,29 @@
+SwapRateTrigger
+
+ -f-
+  SwapRateTrigger
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Rate > &
+   -- ^swapTriggers
+   ::const std::vector< Time > &
+   -- ^exerciseTimes
+  exerciseTimes
+   ->std::vector< Time >
+  relevantTimes
+   ->std::vector< Time >
+  reset
+   ->void
+  exercise
+   ->bool
+   ::const CurveState &
+   -- ^currentState
+  nextStep
+   ->void
+   ::const CurveState &
+   -- ^currentState
+  clone
+   ->std::auto_ptr< ExerciseStrategy< CurveState > >
+ -v-
+ -e-

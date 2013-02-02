@@ -1,0 +1,63 @@
+detail::SABRCoeffHolder
+
+ -f-
+ -v-
+  -- |Option expiry
+  t_
+   ::Real
+  forward_
+   ::const Real &
+  -- |Sabr parameters
+  alpha_
+   ::Real
+  beta_
+   ::Real
+  nu_
+   ::Real
+  rho_
+   ::Real
+  alphaIsFixed_
+   ::bool
+  betaIsFixed_
+   ::bool
+  nuIsFixed_
+   ::bool
+  rhoIsFixed_
+   ::bool
+  weights_
+   ::std::vector< Real >
+  -- |Sabr interpolation results
+  error_
+   ::Real
+  maxError_
+   ::Real
+  SABREndCriteria_
+   ::EndCriteria::Type
+ -e-
+ -f-
+  SABRCoeffHolder
+   ->
+   ::Time
+   -- ^t
+   ::const Real &
+   -- ^forward
+   ::Real
+   -- ^alpha
+   ::Real
+   -- ^beta
+   ::Real
+   -- ^nu
+   ::Real
+   -- ^rho
+   ::bool
+   -- ^alphaIsFixed
+   ::bool
+   -- ^betaIsFixed
+   ::bool
+   -- ^nuIsFixed
+   ::bool
+   -- ^rhoIsFixed
+  ~SABRCoeffHolder
+   ->
+ -v-
+ -e-

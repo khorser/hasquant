@@ -1,0 +1,48 @@
+CPIBond
+ -- |cpi bond; if there is only one date in the schedule it is a zero bond returning an inflated notional.
+
+ -f-
+  CPIBond
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::Real
+   -- ^faceAmount
+   ::bool
+   -- ^growthOnly
+   ::Real
+   -- ^baseCPI
+   ::const Period &
+   -- ^observationLag
+   ::const boost::shared_ptr< ZeroInflationIndex > &
+   -- ^cpiIndex
+   ::CPI::InterpolationType
+   -- ^observationInterpolation
+   ::const Schedule &
+   -- ^schedule
+   ::const std::vector< Rate > &
+   -- ^coupons
+   ::const DayCounter &
+   -- ^accrualDayCounter
+   ::BusinessDayConvention
+   =ModifiedFollowing
+   -- ^paymentConvention
+   ::const Date &
+   =Date()
+   -- ^issueDate
+  frequency
+   ->Frequency
+  dayCounter
+   ->const DayCounter &
+  growthOnly
+   ->bool
+  baseCPI
+   ->Real
+  observationLag
+   ->Period
+  cpiIndex
+   ->const boost::shared_ptr< ZeroInflationIndex > &
+  observationInterpolation
+   ->CPI::InterpolationType
+ -v-
+ -e-

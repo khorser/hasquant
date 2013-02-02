@@ -1,0 +1,13 @@
+SpreadBasketPayoff
+
+ -f-
+  SpreadBasketPayoff
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^p
+  accumulate
+   ->Real
+   ::const Array &
+   -- ^a
+ -v-
+ -e-

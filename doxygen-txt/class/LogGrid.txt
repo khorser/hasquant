@@ -1,0 +1,15 @@
+LogGrid
+
+ -f-
+  LogGrid
+   ->
+   ::const Array &
+   -- ^grid
+  logGridArray
+   ->const Array &
+  logGrid
+   ->Real
+   ::Size
+   -- ^i
+ -v-
+ -e-

@@ -1,0 +1,15 @@
+EuropeanMultiPathPricer
+
+ -f-
+  EuropeanMultiPathPricer
+   ->
+   ::const boost::shared_ptr< BasketPayoff > &
+   -- ^payoff
+   ::DiscountFactor
+   -- ^discount
+  operator()
+   ->Real
+   ::const MultiPath &
+   -- ^multiPath
+ -v-
+ -e-

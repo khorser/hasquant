@@ -1,0 +1,15 @@
+NodeData
+
+ -f-
+ -v-
+  exerciseValue
+   ::Real
+  cumulatedCashFlows
+   ::Real
+  values
+   ::std::vector< Real >
+  controlValue
+   ::Real
+  isValid
+   ::bool
+ -e-

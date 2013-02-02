@@ -1,0 +1,21 @@
+MargrabeOption::results
+ -- |Extra results for Margrabe option.
+
+ -f-
+ -v-
+  delta1
+   ::Real
+  delta2
+   ::Real
+  gamma1
+   ::Real
+  gamma2
+   ::Real
+ -e-
+ -f-
+  results
+   ->
+  reset
+   ->void
+ -v-
+ -e-

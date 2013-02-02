@@ -1,0 +1,9 @@
+PricingEngine::results
+
+ -f-
+  ~results
+   ->
+  reset
+   ->void
+ -v-
+ -e-

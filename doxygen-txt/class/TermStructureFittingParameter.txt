@@ -1,0 +1,14 @@
+TermStructureFittingParameter
+ -- |Deterministic time-dependent parameter used for yield-curve fitting.
+
+ -f-
+  TermStructureFittingParameter
+   ->
+   ::const boost::shared_ptr< Parameter::Impl > &
+   -- ^impl
+  TermStructureFittingParameter
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^term
+ -v-
+ -e-

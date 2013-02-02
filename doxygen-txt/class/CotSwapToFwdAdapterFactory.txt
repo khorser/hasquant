@@ -1,0 +1,17 @@
+CotSwapToFwdAdapterFactory
+
+ -f-
+  CotSwapToFwdAdapterFactory
+   ->
+   ::const boost::shared_ptr< MarketModelFactory > &
+   -- ^coterminalFactory
+  create
+   ->boost::shared_ptr< MarketModel >
+   ::const EvolutionDescription &
+   -- ^
+   ::Size
+   -- ^numberOfFactors
+  update
+   ->void
+ -v-
+ -e-

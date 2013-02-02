@@ -1,0 +1,18 @@
+PagodaOption::arguments
+
+ -f-
+ -v-
+  fixingDates
+   ::std::vector< Date >
+  roof
+   ::Real
+  fraction
+   ::Real
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

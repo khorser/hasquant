@@ -1,0 +1,15 @@
+CliquetOption
+ -- |cliquet (Ratchet) option
+ -- |A cliquet option, also known as Ratchet option, is a series of forward-starting (a.k.a. deferred strike) options where the strike for each forward start option is set equal to a fixed percentage of the spot price at the beginning of each period.Possible enhancements add local/global caps/floorsadd accrued coupon and last fixing
+
+ -f-
+  CliquetOption
+   ->
+   ::const boost::shared_ptr< PercentageStrikePayoff > &
+   -- ^
+   ::const boost::shared_ptr< EuropeanExercise > &
+   -- ^maturity
+   ::const std::vector< Date > &
+   -- ^resetDates
+ -v-
+ -e-

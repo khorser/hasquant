@@ -1,0 +1,24 @@
+FittedBondDiscountCurve::FittingMethod
+ -- |Base fitting method used to construct a fitted bond discount curve.
+ -- |This base class provides the specific methodology/strategy used to construct a FittedBondDiscountCurve. Derived classes need only define the virtual function discountFunction() based on the particular fitting method to be implemented, as well as size(), the number of variables to be solved for/optimized. The generic fitting methodology implemented here can be termed nonlinear, in contrast to (typically faster, computationally) linear fitting method.Possible enhancementsderive the special-case class LinearFittingMethods from FittingMethod. A linear fitting to a set of basis functions $ b_i(t) $ is any fitting of the form \[ d(t) = \sum_{i=0} c_i b_i(t) \] i.e., linear in the unknown coefficients $ c_i $. Such a fitting can be reduced to a linear algebra problem $ Ax = b $, and for large numbers of bonds, would typically be much faster computationally than the generic non-linear fitting method.Warningsome parameters to the Simplex optimization method may need to be tweaked internally to the class, depending on the fitting method used, in order to get proper/reasonable/faster convergence.
+
+ -f-
+  ~FittingMethod
+   ->
+  -- total number of coefficients to fit/solve for
+  size
+   ->Size
+  -- output array of results of optimization problem
+  solution
+   ->Array
+  -- final number of iterations used in the optimization problem
+  numberOfIterations
+   ->Integer
+  -- final value of cost function after optimization
+  minimumCostValue
+   ->Real
+  -- clone of the current object
+  clone
+   ->std::auto_ptr< FittingMethod >
+ -v-
+ -e-

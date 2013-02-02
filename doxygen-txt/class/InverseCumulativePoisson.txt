@@ -1,0 +1,16 @@
+InverseCumulativePoisson
+ -- |Inverse cumulative Poisson distribution function.
+ -- |Teststhe correctness of the returned value is tested by checking it against known good results.
+
+ -f-
+  InverseCumulativePoisson
+   ->
+   ::Real
+   =1.0
+   -- ^lambda
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

@@ -1,0 +1,17 @@
+ForwardOptionArguments
+ -- |Arguments for forward (strike-resetting) option calculation
+
+ -f-
+ -v-
+  moneyness
+   ::Real
+  resetDate
+   ::Date
+ -e-
+ -f-
+  ForwardOptionArguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

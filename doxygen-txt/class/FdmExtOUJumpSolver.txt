@@ -1,0 +1,22 @@
+FdmExtOUJumpSolver
+
+ -f-
+  FdmExtOUJumpSolver
+   ->
+   ::const Handle< ExtOUWithJumpsProcess > &
+   -- ^process
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^rTS
+   ::const FdmSolverDesc &
+   -- ^solverDesc
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+  valueAt
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

@@ -1,0 +1,20 @@
+RatchetPayoff
+ -- |Ratchet payoff (single option)
+
+ -f-
+  RatchetPayoff
+   ->
+   ::Real
+   -- ^gearing1
+   ::Real
+   -- ^gearing2
+   ::Real
+   -- ^spread1
+   ::Real
+   -- ^spread2
+   ::Real
+   -- ^initialValue
+   ::Real
+   -- ^accrualFactor
+ -v-
+ -e-

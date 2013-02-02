@@ -1,0 +1,47 @@
+RecoveryRateQuote
+ -- |Stores a recovery rate market quote and the associated seniority.
+
+ -f-
+  seniority
+   ->Seniority
+ -v-
+ -e-
+ -f-
+  -- returns the difference between the new value and the old value
+  setValue
+   ->Real
+   ::Real
+   =Null< Real >()
+   -- ^value
+  reset
+   ->void
+ -v-
+ -e-
+ -f-
+  -- Returns a map with the ISDA conventional (values by default) of the recovery rate per each ISDA seniority.
+  conventionalRecovery
+   ->Real
+   ::Seniority
+   -- ^sen
+  -- Turn a set of recoveries into a seniority-recovery map (intended to be used in an event construction)
+  makeIsdaMap
+   ->const std::map< Seniority, Real >
+   ::const 
+   -- ^Real
+ -v-
+ -e-
+ -f-
+  RecoveryRateQuote
+   ->
+   ::Real
+   =Null< Real >()
+   -- ^value
+   ::Seniority
+   =NoSeniority
+   -- ^seniority
+  makeIsdaMap
+   ->const std::map< Seniority, Real >
+   ::const 
+   -- ^Real
+ -v-
+ -e-

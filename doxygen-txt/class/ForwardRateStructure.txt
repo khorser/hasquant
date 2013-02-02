@@ -1,0 +1,49 @@
+ForwardRateStructure
+ -- |Forward-rate term structure
+ -- |This abstract class acts as an adapter to YieldTermStructure allowing the programmer to implement only the forwardImpl(Time) method in derived classes.Zero yields and discounts are calculated from forwards.Forward rates are assumed to be annual continuous compounding.
+
+ -f-
+  ForwardRateStructure
+   ->
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  ForwardRateStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  ForwardRateStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+ -v-
+ -e-

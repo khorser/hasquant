@@ -1,0 +1,12 @@
+BoundaryConstraint
+ -- |Constraint imposing all arguments to be in [low,high]
+
+ -f-
+  BoundaryConstraint
+   ->
+   ::Real
+   -- ^low
+   ::Real
+   -- ^high
+ -v-
+ -e-

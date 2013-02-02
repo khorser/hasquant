@@ -1,0 +1,46 @@
+step_iterator
+ -- |Iterator advancing in constant steps.
+ -- |This iterator advances an underlying random-access iterator in steps of $ n $ positions, where $ n $ is a positive integer given upon construction.
+
+ -f-
+  step_iterator
+   ->
+  step_iterator
+   ->
+   ::const Iterator &
+   -- ^base
+   ::Size
+   -- ^step
+  step_iterator
+   ->
+   ::const step_iterator< OtherIterator > &
+   -- ^i
+   ::typename boost::enable_if_convertible< OtherIterator, Iterator >::type *
+   =0
+   -- ^
+  step
+   ->Size
+  increment
+   ->void
+  decrement
+   ->void
+  advance
+   ->void
+   ::typename super_t::difference_type
+   -- ^n
+  distance_to
+   ->super_t::difference_type
+   ::const step_iterator &
+   -- ^i
+ -v-
+ -e-
+ -f-
+  -- helper function to create step iterators
+  make_step_iterator
+   ->step_iterator< Iterator >
+   ::Iterator
+   -- ^it
+   ::Size
+   -- ^step
+ -v-
+ -e-

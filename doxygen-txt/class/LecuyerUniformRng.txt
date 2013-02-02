@@ -1,0 +1,19 @@
+LecuyerUniformRng
+ -- |Uniform random number generator.
+ -- |Random number generator of L'Ecuyer with added Bays-Durham shuffle (know as ran2 in Numerical recipes)For more details see Section 7.1 of Numerical Recipes in C, 2nd Edition, Cambridge University Press (available at http://www.nr.com/)
+
+ -f-
+ -v-
+ -e-
+ -f-
+  -- if the given seed is 0, a random seed will be chosen based on clock()
+  LecuyerUniformRng
+   ->
+   ::long
+   =0
+   -- ^seed
+  -- returns a sample with weight 1.0 containing a random number uniformly chosen from (0.0,1.0)
+  next
+   ->sample_type
+ -v-
+ -e-

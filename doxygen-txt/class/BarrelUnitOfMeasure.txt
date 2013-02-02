@@ -1,0 +1,7 @@
+BarrelUnitOfMeasure
+
+ -f-
+  BarrelUnitOfMeasure
+   ->
+ -v-
+ -e-

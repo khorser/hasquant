@@ -1,0 +1,37 @@
+Garch11
+ -- |GARCH volatility model.
+ -- |Volatilities are assumed to be expressed on an annual basis.
+
+ -f-
+  Garch11
+   ->
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^vl
+  Garch11
+   ->
+   ::const TimeSeries< Volatility > &
+   -- ^qs
+  calculate
+   ->TimeSeries< Volatility >
+   ::const TimeSeries< Volatility > &
+   -- ^quoteSeries
+  calculate
+   ->TimeSeries< Volatility >
+   ::const TimeSeries< Volatility > &
+   -- ^quoteSeries
+   ::Real
+   -- ^
+   ::Real
+   -- ^
+   ::Real
+   -- ^
+  calibrate
+   ->void
+   ::const TimeSeries< Volatility > &
+   -- ^quoteSeries
+ -v-
+ -e-

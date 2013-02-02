@@ -1,0 +1,17 @@
+DigitalReplication
+
+ -f-
+  DigitalReplication
+   ->
+   ::Replication::Type
+   =Replication::Central
+   -- ^t
+   ::Real
+   =1e-4
+   -- ^gap
+  replicationType
+   ->Replication::Type
+  gap
+   ->Real
+ -v-
+ -e-

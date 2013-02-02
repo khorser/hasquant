@@ -1,0 +1,27 @@
+DouglasScheme
+
+ -f-
+ -v-
+ -e-
+ -f-
+  DouglasScheme
+   ->
+   ::Real
+   -- ^theta
+   ::const boost::shared_ptr< FdmLinearOpComposite > &
+   -- ^map
+   ::const std::vector< boost::shared_ptr< FdmDirichletBoundary > > &
+   =std::vector< boost::shared_ptr< FdmDirichletBoundary > >()
+   -- ^bc_set
+  step
+   ->void
+   ::array_type &
+   -- ^a
+   ::Time
+   -- ^t
+  setStep
+   ->void
+   ::Time
+   -- ^dt
+ -v-
+ -e-

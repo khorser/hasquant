@@ -1,0 +1,27 @@
+MultiAssetOption
+ -- |Base class for options on multiple assets.
+
+ -f-
+  delta
+   ->Real
+  gamma
+   ->Real
+  theta
+   ->Real
+  vega
+   ->Real
+  rho
+   ->Real
+  dividendRho
+   ->Real
+ -v-
+ -e-
+ -f-
+  MultiAssetOption
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^
+   ::const boost::shared_ptr< Exercise > &
+   -- ^
+ -v-
+ -e-

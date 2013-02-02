@@ -1,0 +1,13 @@
+BoundaryConditionSet
+
+ -f-
+  push_back
+   ->void
+   ::const bc_set &
+   -- ^a
+  operator[]
+   ->const bc_set &
+   ::Size
+   -- ^i
+ -v-
+ -e-

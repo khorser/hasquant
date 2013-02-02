@@ -1,0 +1,66 @@
+CdsHelper
+ -- |Base default-probability bootstrap helper tenor CDS tenor. frequency Coupon frequency. settlementDays The number of days from today's date to the start of the protection period. paymentConvention The payment convention applied to coupons schedules, settlement dates and protection period calculations.
+
+ -f-
+  CdsHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^quote
+   ::const Period &
+   -- ^tenor
+   ::Integer
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::Frequency
+   -- ^frequency
+   ::BusinessDayConvention
+   -- ^paymentConvention
+   ::DateGeneration::Rule
+   -- ^rule
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Real
+   -- ^recoveryRate
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+   ::bool
+   =true
+   -- ^settlesAccrual
+   ::bool
+   =true
+   -- ^paysAtDefaultTime
+  CdsHelper
+   ->
+   ::Rate
+   -- ^quote
+   ::const Period &
+   -- ^tenor
+   ::Integer
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^calendar
+   ::Frequency
+   -- ^frequency
+   ::BusinessDayConvention
+   -- ^paymentConvention
+   ::DateGeneration::Rule
+   -- ^rule
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Real
+   -- ^recoveryRate
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+   ::bool
+   =true
+   -- ^settlesAccrual
+   ::bool
+   =true
+   -- ^paysAtDefaultTime
+  setTermStructure
+   ->void
+   ::DefaultProbabilityTermStructure *
+   -- ^
+ -v-
+ -e-

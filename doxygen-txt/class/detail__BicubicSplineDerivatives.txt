@@ -1,0 +1,35 @@
+detail::BicubicSplineDerivatives
+
+ -f-
+  derivativeX
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  derivativeY
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  derivativeXY
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  secondDerivativeX
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+  secondDerivativeY
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

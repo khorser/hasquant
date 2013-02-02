@@ -1,0 +1,27 @@
+LogCubicInterpolation
+ -- |log-cubic interpolation between discrete points
+
+ -f-
+  -- the $ x $ values must be sorted.
+  LogCubicInterpolation
+   ->
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+   ::CubicInterpolation::DerivativeApprox
+   -- ^da
+   ::bool
+   -- ^monotonic
+   ::CubicInterpolation::BoundaryCondition
+   -- ^leftC
+   ::Real
+   -- ^leftConditionValue
+   ::CubicInterpolation::BoundaryCondition
+   -- ^rightC
+   ::Real
+   -- ^rightConditionValue
+ -v-
+ -e-

@@ -1,0 +1,18 @@
+OptionletStripper2
+ -- |Helper class to extend an OptionletStripper1 object stripping additional optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) At-The-Money term volatilities of a CapFloorTermVolCurve.
+
+ -f-
+  OptionletStripper2
+   ->
+   ::const boost::shared_ptr< OptionletStripper1 > &
+   -- ^optionletStripper1
+   ::const Handle< CapFloorTermVolCurve > &
+   -- ^atmCapFloorTermVolCurve
+  atmCapFloorStrikes
+   ->std::vector< Rate >
+  atmCapFloorPrices
+   ->std::vector< Real >
+  spreadsVol
+   ->std::vector< Volatility >
+ -v-
+ -e-

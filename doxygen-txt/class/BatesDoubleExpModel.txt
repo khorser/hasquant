@@ -1,0 +1,29 @@
+BatesDoubleExpModel
+
+ -f-
+  BatesDoubleExpModel
+   ->
+   ::const boost::shared_ptr< HestonProcess > &
+   -- ^process
+   ::Real
+   =0.1
+   -- ^lambda
+   ::Real
+   =0.1
+   -- ^nuUp
+   ::Real
+   =0.1
+   -- ^nuDown
+   ::Real
+   =0.5
+   -- ^p
+  p
+   ->Real
+  nuDown
+   ->Real
+  nuUp
+   ->Real
+  lambda
+   ->Real
+ -v-
+ -e-

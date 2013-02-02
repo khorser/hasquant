@@ -1,0 +1,20 @@
+Replication
+ -- |Digital option replication strategy.
+ -- |Specification of replication strategies used to price the embedded digital option in a digital coupon.
+
+ -f-
+ -v-
+ -e-
+  Type
+   Sub
+   Central
+   Super
+ -f-
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::Replication::Type
+   -- ^
+ -v-
+ -e-

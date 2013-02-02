@@ -1,0 +1,46 @@
+PiecewiseZeroInflationCurve
+ -- |Piecewise zero-inflation term structure.
+
+ -f-
+  PiecewiseZeroInflationCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^calendar
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Period &
+   -- ^lag
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^indexIsInterpolated
+   ::Rate
+   -- ^baseZeroRate
+   ::const Handle< YieldTermStructure > &
+   -- ^nominalTS
+   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
+   -- ^instruments
+   ::Real
+   =1.0e-12
+   -- ^accuracy
+   ::const Interpolator &
+   =Interpolator()
+   -- ^i
+ -v-
+ -e-
+ -f-
+  times
+   ->const std::vector< Time > &
+  dates
+   ->const std::vector< Date > &
+  data
+   ->const std::vector< Real > &
+  nodes
+   ->std::vector< std::pair< Date, Real > >
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-

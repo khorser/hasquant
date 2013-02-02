@@ -1,0 +1,11 @@
+ManipulateDistribution
+
+ -f-
+  convolve
+   ->Distribution
+   ::const Distribution &
+   -- ^d1
+   ::const Distribution &
+   -- ^d2
+ -v-
+ -e-

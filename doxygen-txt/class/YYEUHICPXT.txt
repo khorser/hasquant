@@ -1,0 +1,13 @@
+YYEUHICPXT
+ -- |Genuine year-on-year EU HICPXT.
+
+ -f-
+  YYEUHICPXT
+   ->
+   ::bool
+   -- ^interpolated
+   ::const Handle< YoYInflationTermStructure > &
+   =Handle< YoYInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

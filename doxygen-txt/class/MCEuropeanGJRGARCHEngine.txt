@@ -1,0 +1,28 @@
+MCEuropeanGJRGARCHEngine
+ -- |Monte Carlo GJR-GARCH-model engine for European options.
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCEuropeanGJRGARCHEngine
+   ->
+   ::const boost::shared_ptr< GJRGARCHProcess > &
+   -- ^
+   ::Size
+   -- ^timeSteps
+   ::Size
+   -- ^timeStepsPerYear
+   ::bool
+   -- ^antitheticVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+ -v-
+ -e-

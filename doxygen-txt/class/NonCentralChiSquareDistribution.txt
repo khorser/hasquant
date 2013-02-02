@@ -1,0 +1,15 @@
+NonCentralChiSquareDistribution
+
+ -f-
+  NonCentralChiSquareDistribution
+   ->
+   ::Real
+   -- ^df
+   ::Real
+   -- ^ncp
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

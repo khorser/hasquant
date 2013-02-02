@@ -1,0 +1,13 @@
+UKRPI
+ -- |UK Retail Price Inflation Index.
+
+ -f-
+  UKRPI
+   ->
+   ::bool
+   -- ^interpolated
+   ::const Handle< ZeroInflationTermStructure > &
+   =Handle< ZeroInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

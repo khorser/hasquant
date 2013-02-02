@@ -1,0 +1,18 @@
+CmsCouponPricer
+ -- |base pricer for vanilla CMS coupons
+
+ -f-
+  CmsCouponPricer
+   ->
+   ::const Handle< SwaptionVolatilityStructure > &
+   =Handle< SwaptionVolatilityStructure >()
+   -- ^v
+  swaptionVolatility
+   ->Handle< SwaptionVolatilityStructure >
+  setSwaptionVolatility
+   ->void
+   ::const Handle< SwaptionVolatilityStructure > &
+   =Handle< SwaptionVolatilityStructure >()
+   -- ^v
+ -v-
+ -e-

@@ -1,0 +1,47 @@
+BlackConstantVol
+ -- |Constant Black volatility, no time-strike dependence.
+ -- |This class implements the BlackVolatilityTermStructure interface for a constant Black volatility (no time/strike dependence).
+
+ -f-
+  BlackConstantVol
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^
+   ::Volatility
+   -- ^volatility
+   ::const DayCounter &
+   -- ^dayCounter
+  BlackConstantVol
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^
+   ::const Handle< Quote > &
+   -- ^volatility
+   ::const DayCounter &
+   -- ^dayCounter
+  BlackConstantVol
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::Volatility
+   -- ^volatility
+   ::const DayCounter &
+   -- ^dayCounter
+  BlackConstantVol
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^
+   ::const Handle< Quote > &
+   -- ^volatility
+   ::const DayCounter &
+   -- ^dayCounter
+ -v-
+ -e-

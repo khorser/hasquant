@@ -1,0 +1,24 @@
+ParallelEvolver
+
+ -f-
+ -v-
+ -e-
+ -f-
+  ParallelEvolver
+   ->
+   ::const operator_type &
+   -- ^L
+   ::const bc_set &
+   -- ^bcs
+  step
+   ->void
+   ::array_type &
+   -- ^a
+   ::Time
+   -- ^t
+  setStep
+   ->void
+   ::Time
+   -- ^dt
+ -v-
+ -e-

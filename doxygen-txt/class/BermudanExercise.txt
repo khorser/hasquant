@@ -1,0 +1,14 @@
+BermudanExercise
+ -- |Bermudan exercise.
+ -- |A Bermudan option can only be exercised at a set of fixed dates.
+
+ -f-
+  BermudanExercise
+   ->
+   ::const std::vector< Date > &
+   -- ^dates
+   ::bool
+   =false
+   -- ^payoffAtExpiry
+ -v-
+ -e-

@@ -1,0 +1,25 @@
+QuantoTermStructure
+ -- |Quanto term structure.
+ -- |Quanto term structure for modelling quanto effect in option pricing.This term structure will remain linked to the original structures, i.e., any changes in the latters will be reflected in this structure as well.
+
+ -f-
+  QuantoTermStructure
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^underlyingDividendTS
+   ::const Handle< YieldTermStructure > &
+   -- ^riskFreeTS
+   ::const Handle< YieldTermStructure > &
+   -- ^foreignRiskFreeTS
+   ::const Handle< BlackVolTermStructure > &
+   -- ^underlyingBlackVolTS
+   ::Real
+   -- ^strike
+   ::const Handle< BlackVolTermStructure > &
+   -- ^exchRateBlackVolTS
+   ::Real
+   -- ^exchRateATMlevel
+   ::Real
+   -- ^underlyingExchRateCorrelation
+ -v-
+ -e-

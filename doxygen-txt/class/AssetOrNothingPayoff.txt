@@ -1,0 +1,13 @@
+AssetOrNothingPayoff
+ -- |Binary asset-or-nothing payoff.
+ -- |Definitions of Binary path-independent payoffs used below, can be found in M. Rubinstein, E. Reiner:"Unscrambling The Binary Code", Risk, Vol.4 no.9,1991. (see: http://www.in-the-money.com/artandpap/Binary%20Options.doc)
+
+ -f-
+  AssetOrNothingPayoff
+   ->
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^strike
+ -v-
+ -e-

@@ -1,0 +1,28 @@
+VanillaVPPOption::arguments
+
+ -f-
+ -v-
+  heatRate
+   ::Real
+  pMin
+   ::Real
+  pMax
+   ::Real
+  tMinUp
+   ::Size
+  tMinDown
+   ::Size
+  startUpFuel
+   ::Real
+  startUpFixCost
+   ::Real
+  initialState
+   ::Size
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

@@ -1,0 +1,9 @@
+GBPCurrency
+ -- |British pound sterling.
+ -- |The ISO three-letter code is GBP; the numeric code is 826. It is divided into 100 pence.
+
+ -f-
+  GBPCurrency
+   ->
+ -v-
+ -e-

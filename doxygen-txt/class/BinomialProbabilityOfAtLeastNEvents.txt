@@ -1,0 +1,14 @@
+BinomialProbabilityOfAtLeastNEvents
+ -- |Probability of at least N events.
+
+ -f-
+  BinomialProbabilityOfAtLeastNEvents
+   ->
+   ::int
+   -- ^n
+  operator()
+   ->Real
+   ::std::vector< Real >
+   -- ^p
+ -v-
+ -e-

@@ -1,0 +1,8 @@
+GaussChebyshev2ndPolynomial
+ -- |Gauss-Chebyshev polynomial (second kind)
+
+ -f-
+  GaussChebyshev2ndPolynomial
+   ->
+ -v-
+ -e-

@@ -1,0 +1,80 @@
+IborLeg
+ -- |helper class building a sequence of capped/floored ibor-rate coupons
+
+ -f-
+  IborLeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^index
+  withNotionals
+   ->IborLeg &
+   ::Real
+   -- ^notional
+  withNotionals
+   ->IborLeg &
+   ::const std::vector< Real > &
+   -- ^notionals
+  withPaymentDayCounter
+   ->IborLeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentAdjustment
+   ->IborLeg &
+   ::BusinessDayConvention
+   -- ^
+  withFixingDays
+   ->IborLeg &
+   ::Natural
+   -- ^fixingDays
+  withFixingDays
+   ->IborLeg &
+   ::const std::vector< Natural > &
+   -- ^fixingDays
+  withGearings
+   ->IborLeg &
+   ::Real
+   -- ^gearing
+  withGearings
+   ->IborLeg &
+   ::const std::vector< Real > &
+   -- ^gearings
+  withSpreads
+   ->IborLeg &
+   ::Spread
+   -- ^spread
+  withSpreads
+   ->IborLeg &
+   ::const std::vector< Spread > &
+   -- ^spreads
+  withCaps
+   ->IborLeg &
+   ::Rate
+   -- ^cap
+  withCaps
+   ->IborLeg &
+   ::const std::vector< Rate > &
+   -- ^caps
+  withFloors
+   ->IborLeg &
+   ::Rate
+   -- ^floor
+  withFloors
+   ->IborLeg &
+   ::const std::vector< Rate > &
+   -- ^floors
+  inArrears
+   ->IborLeg &
+   ::bool
+   =true
+   -- ^flag
+  withZeroPayments
+   ->IborLeg &
+   ::bool
+   =true
+   -- ^flag
+  operator Leg
+   ->
+ -v-
+ -e-

@@ -1,0 +1,87 @@
+IntervalPrice
+ -- |interval price
+
+ -f-
+  open
+   ->Real
+  close
+   ->Real
+  high
+   ->Real
+  low
+   ->Real
+  value
+   ->Real
+   ::IntervalPrice::Type
+   -- ^
+ -v-
+ -e-
+ -f-
+  setValue
+   ->void
+   ::Real
+   -- ^value
+   ::IntervalPrice::Type
+   -- ^
+  setValues
+   ->void
+   ::Real
+   -- ^open
+   ::Real
+   -- ^close
+   ::Real
+   -- ^high
+   ::Real
+   -- ^low
+ -v-
+ -e-
+ -f-
+  makeSeries
+   ->TimeSeries< IntervalPrice >
+   ::const std::vector< Date > &
+   -- ^d
+   ::const std::vector< Real > &
+   -- ^open
+   ::const std::vector< Real > &
+   -- ^close
+   ::const std::vector< Real > &
+   -- ^high
+   ::const std::vector< Real > &
+   -- ^low
+  extractValues
+   ->std::vector< Real >
+   ::const TimeSeries< IntervalPrice > &
+   -- ^
+   ::IntervalPrice::Type
+   -- ^
+  extractComponent
+   ->TimeSeries< Real >
+   ::const TimeSeries< IntervalPrice > &
+   -- ^
+   ::enum IntervalPrice::Type
+   -- ^
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+  Type
+   Open
+   Close
+   High
+   Low
+ -f-
+  IntervalPrice
+   ->
+  IntervalPrice
+   ->
+   ::Real
+   -- ^open
+   ::Real
+   -- ^close
+   ::Real
+   -- ^high
+   ::Real
+   -- ^low
+ -v-
+ -e-

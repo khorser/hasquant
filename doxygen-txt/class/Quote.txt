@@ -1,0 +1,15 @@
+Quote
+ -- |purely virtual base class for market observables
+ -- |Teststhe observability of class instances is tested.
+
+ -f-
+  ~Quote
+   ->
+  -- returns the current value
+  value
+   ->Real
+  -- returns true if the Quote holds a valid value
+  isValid
+   ->bool
+ -v-
+ -e-

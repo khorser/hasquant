@@ -1,0 +1,22 @@
+AlphaFormLinearHyperbolic
+
+ -f-
+  AlphaFormLinearHyperbolic
+   ->
+   ::const std::vector< Time > &
+   -- ^times
+   ::Real
+   =0.0
+   -- ^alpha
+  ~AlphaFormLinearHyperbolic
+   ->
+  operator()
+   ->Real
+   ::Integer
+   -- ^i
+  setAlpha
+   ->void
+   ::Real
+   -- ^alpha_
+ -v-
+ -e-

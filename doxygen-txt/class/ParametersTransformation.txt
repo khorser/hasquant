@@ -1,0 +1,15 @@
+ParametersTransformation
+
+ -f-
+  ~ParametersTransformation
+   ->
+  direct
+   ->Array
+   ::const Array &
+   -- ^x
+  inverse
+   ->Array
+   ::const Array &
+   -- ^x
+ -v-
+ -e-

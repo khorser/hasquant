@@ -1,0 +1,19 @@
+FdmSolverDesc
+
+ -f-
+ -v-
+  mesher
+   ::const boost::shared_ptr< FdmMesher >
+  bcSet
+   ::const FdmBoundaryConditionSet
+  condition
+   ::const boost::shared_ptr< FdmStepConditionComposite >
+  calculator
+   ::const boost::shared_ptr< FdmInnerValueCalculator >
+  maturity
+   ::const Time
+  timeSteps
+   ::const Size
+  dampingSteps
+   ::const Size
+ -e-

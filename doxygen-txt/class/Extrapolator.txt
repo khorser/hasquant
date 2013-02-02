@@ -1,0 +1,31 @@
+Extrapolator
+ -- |base class for classes possibly allowing extrapolation
+
+ -f-
+  -- enable extrapolation in subsequent calls
+  enableExtrapolation
+   ->void
+   ::bool
+   =true
+   -- ^b
+  -- disable extrapolation in subsequent calls
+  disableExtrapolation
+   ->void
+   ::bool
+   =true
+   -- ^b
+ -v-
+ -e-
+ -f-
+  -- tells whether extrapolation is enabled
+  allowsExtrapolation
+   ->bool
+ -v-
+ -e-
+ -f-
+  Extrapolator
+   ->
+  ~Extrapolator
+   ->
+ -v-
+ -e-

@@ -1,0 +1,41 @@
+FuturesConvAdjustmentQuote
+ -- |quote for the futures-convexity adjustment of an index
+
+ -f-
+  futuresValue
+   ->Real
+  volatility
+   ->Real
+  meanReversion
+   ->Real
+  immDate
+   ->Date
+ -v-
+ -e-
+ -f-
+  FuturesConvAdjustmentQuote
+   ->
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^index
+   ::const Date &
+   -- ^futuresDate
+   ::const Handle< Quote > &
+   -- ^futuresQuote
+   ::const Handle< Quote > &
+   -- ^volatility
+   ::const Handle< Quote > &
+   -- ^meanReversion
+  FuturesConvAdjustmentQuote
+   ->
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^index
+   ::const std::string &
+   -- ^immCode
+   ::const Handle< Quote > &
+   -- ^futuresQuote
+   ::const Handle< Quote > &
+   -- ^volatility
+   ::const Handle< Quote > &
+   -- ^meanReversion
+ -v-
+ -e-

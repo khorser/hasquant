@@ -1,0 +1,19 @@
+VolatilityCube
+
+ -f-
+  VolatilityCube
+   ->
+   ::const std::vector< Handle< InterestRateVolSurface > > &
+   -- ^
+   ::const std::vector< Handle< AbcdAtmVolCurve > > &
+   -- ^
+  minIndexTenor
+   ->const Period &
+  maxIndexTenor
+   ->const Period &
+  surfaces
+   ->const std::vector< Handle< InterestRateVolSurface > > &
+  curves
+   ->const std::vector< Handle< AbcdAtmVolCurve > > &
+ -v-
+ -e-

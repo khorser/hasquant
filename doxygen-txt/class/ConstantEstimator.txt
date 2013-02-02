@@ -1,0 +1,19 @@
+ConstantEstimator
+ -- |Constant-estimator volatility model.
+ -- |Volatilities are assumed to be expressed on an annual basis.
+
+ -f-
+  ConstantEstimator
+   ->
+   ::Size
+   -- ^size
+  calculate
+   ->TimeSeries< Volatility >
+   ::const TimeSeries< Volatility > &
+   -- ^
+  calibrate
+   ->void
+   ::const TimeSeries< Volatility > &
+   -- ^
+ -v-
+ -e-

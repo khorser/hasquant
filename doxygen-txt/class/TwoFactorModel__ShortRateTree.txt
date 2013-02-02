@@ -1,0 +1,21 @@
+TwoFactorModel::ShortRateTree
+ -- |Recombining two-dimensional tree discretizing the state variable.
+
+ -f-
+  -- Plain tree build-up from short-rate dynamics.
+  ShortRateTree
+   ->
+   ::const boost::shared_ptr< TrinomialTree > &
+   -- ^tree1
+   ::const boost::shared_ptr< TrinomialTree > &
+   -- ^tree2
+   ::const boost::shared_ptr< ShortRateDynamics > &
+   -- ^dynamics
+  discount
+   ->DiscountFactor
+   ::Size
+   -- ^i
+   ::Size
+   -- ^index
+ -v-
+ -e-

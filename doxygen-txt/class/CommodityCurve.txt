@@ -1,0 +1,91 @@
+CommodityCurve
+ -- |Commodity term structure.
+
+ -f-
+  name
+   ->const std::string &
+  commodityType
+   ->const CommodityType &
+  unitOfMeasure
+   ->const UnitOfMeasure &
+  currency
+   ->const Currency &
+  times
+   ->const std::vector< Time > &
+  dates
+   ->const std::vector< Date > &
+  prices
+   ->const std::vector< Real > &
+  nodes
+   ->std::vector< std::pair< Date, Real > >
+  empty
+   ->bool
+  setPrices
+   ->void
+   ::std::map< Date, Real > &
+   -- ^prices
+  setBasisOfCurve
+   ->void
+   ::const boost::shared_ptr< CommodityCurve > &
+   -- ^basisOfCurve
+  price
+   ->Real
+   ::const Date &
+   -- ^d
+   ::const boost::shared_ptr< ExchangeContracts > &
+   -- ^exchangeContracts
+   ::Integer
+   -- ^nearbyOffset
+  basisOfPrice
+   ->Real
+   ::const Date &
+   -- ^d
+  underlyingPriceDate
+   ->Date
+   ::const Date &
+   -- ^date
+   ::const boost::shared_ptr< ExchangeContracts > &
+   -- ^exchangeContracts
+   ::Integer
+   -- ^nearbyOffset
+  basisOfCurve
+   ->const boost::shared_ptr< CommodityCurve > &
+ -v-
+ -e-
+ -f-
+  CommodityCurve
+   ->
+   ::const std::string &
+   -- ^name
+   ::const CommodityType &
+   -- ^commodityType
+   ::const Currency &
+   -- ^currency
+   ::const UnitOfMeasure &
+   -- ^unitOfMeasure
+   ::const Calendar &
+   -- ^calendar
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Real > &
+   -- ^prices
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dayCounter
+  CommodityCurve
+   ->
+   ::const std::string &
+   -- ^name
+   ::const CommodityType &
+   -- ^commodityType
+   ::const Currency &
+   -- ^currency
+   ::const UnitOfMeasure &
+   -- ^unitOfMeasure
+   ::const Calendar &
+   -- ^calendar
+   ::const DayCounter &
+   =Actual365Fixed()
+   -- ^dayCounter
+ -v-
+ -e-

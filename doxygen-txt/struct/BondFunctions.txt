@@ -1,0 +1,403 @@
+BondFunctions
+ -- |Bond adapters of CashFlows functions.
+ -- |See CashFlows for functions' documentation. These adapters calls into CashFlows functions passing as input the Bond cashflows, the dirty price (i.e. npv) calculated from clean price, the bond settlement date (unless another date is given), zero ex-dividend days, and excluding any cashflow on the settlement date. Prices are always clean, as per market convention.
+
+ -f-
+  startDate
+   ->Date
+   ::const Bond &
+   -- ^bond
+  maturityDate
+   ->Date
+   ::const Bond &
+   -- ^bond
+  isTradable
+   ->bool
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+ -v-
+ -e-
+ -f-
+  previousCashFlow
+   ->Leg::const_reverse_iterator
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^refDate
+  nextCashFlow
+   ->Leg::const_iterator
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^refDate
+  previousCashFlowDate
+   ->Date
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^refDate
+  nextCashFlowDate
+   ->Date
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^refDate
+  previousCashFlowAmount
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^refDate
+  nextCashFlowAmount
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^refDate
+ -v-
+ -e-
+ -f-
+  previousCouponRate
+   ->Rate
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  nextCouponRate
+   ->Rate
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accrualStartDate
+   ->Date
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accrualEndDate
+   ->Date
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  referencePeriodStart
+   ->Date
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  referencePeriodEnd
+   ->Date
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accrualPeriod
+   ->Time
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accrualDays
+   ->BigInteger
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accruedPeriod
+   ->Time
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accruedDays
+   ->BigInteger
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+  accruedAmount
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::Date
+   =Date()
+   -- ^settlementDate
+ -v-
+ -e-
+ -f-
+  cleanPrice
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::const YieldTermStructure &
+   -- ^discountCurve
+   ::Date
+   =Date()
+   -- ^settlementDate
+  bps
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::const YieldTermStructure &
+   -- ^discountCurve
+   ::Date
+   =Date()
+   -- ^settlementDate
+  atmRate
+   ->Rate
+   ::const Bond &
+   -- ^bond
+   ::const YieldTermStructure &
+   -- ^discountCurve
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Real
+   =Null< Real >()
+   -- ^cleanPrice
+ -v-
+ -e-
+ -f-
+  cleanPrice
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::const InterestRate &
+   -- ^yield
+   ::Date
+   =Date()
+   -- ^settlementDate
+  cleanPrice
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Date
+   =Date()
+   -- ^settlementDate
+  bps
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::const InterestRate &
+   -- ^yield
+   ::Date
+   =Date()
+   -- ^settlementDate
+  bps
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Date
+   =Date()
+   -- ^settlementDate
+  yield
+   ->Rate
+   ::const Bond &
+   -- ^bond
+   ::Real
+   -- ^cleanPrice
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Real
+   =1.0e-10
+   -- ^accuracy
+   ::Size
+   =100
+   -- ^maxIterations
+   ::Rate
+   =0.05
+   -- ^guess
+  duration
+   ->Time
+   ::const Bond &
+   -- ^bond
+   ::const InterestRate &
+   -- ^yield
+   ::Duration::Type
+   =Duration::Modified
+   -- ^type
+   ::Date
+   =Date()
+   -- ^settlementDate
+  duration
+   ->Time
+   ::const Bond &
+   -- ^bond
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Duration::Type
+   =Duration::Modified
+   -- ^type
+   ::Date
+   =Date()
+   -- ^settlementDate
+  convexity
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::const InterestRate &
+   -- ^yield
+   ::Date
+   =Date()
+   -- ^settlementDate
+  convexity
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Date
+   =Date()
+   -- ^settlementDate
+  basisPointValue
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::const InterestRate &
+   -- ^yield
+   ::Date
+   =Date()
+   -- ^settlementDate
+  basisPointValue
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Date
+   =Date()
+   -- ^settlementDate
+  yieldValueBasisPoint
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::const InterestRate &
+   -- ^yield
+   ::Date
+   =Date()
+   -- ^settlementDate
+  yieldValueBasisPoint
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::Rate
+   -- ^yield
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Date
+   =Date()
+   -- ^settlementDate
+ -v-
+ -e-
+ -f-
+  cleanPrice
+   ->Real
+   ::const Bond &
+   -- ^bond
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^discount
+   ::Spread
+   -- ^zSpread
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Date
+   =Date()
+   -- ^settlementDate
+  zSpread
+   ->Spread
+   ::const Bond &
+   -- ^bond
+   ::Real
+   -- ^cleanPrice
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Compounding
+   -- ^compounding
+   ::Frequency
+   -- ^frequency
+   ::Date
+   =Date()
+   -- ^settlementDate
+   ::Real
+   =1.0e-10
+   -- ^accuracy
+   ::Size
+   =100
+   -- ^maxIterations
+   ::Rate
+   =0.0
+   -- ^guess
+ -v-
+ -e-

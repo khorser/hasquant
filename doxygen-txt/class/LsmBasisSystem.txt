@@ -1,0 +1,30 @@
+LsmBasisSystem
+
+ -f-
+ -v-
+ -e-
+  PolynomType
+   Monomial
+   Laguerre
+   Hermite
+   Hyperbolic
+   Legendre
+   Chebyshev
+   Chebyshev2nd
+ -f-
+  pathBasisSystem
+   ->std::vector< boost::function1< Real, Real > >
+   ::Size
+   -- ^order
+   ::PolynomType
+   -- ^polyType
+  multiPathBasisSystem
+   ->std::vector< boost::function1< Real, Array > >
+   ::Size
+   -- ^dim
+   ::Size
+   -- ^order
+   ::PolynomType
+   -- ^polyType
+ -v-
+ -e-

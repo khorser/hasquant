@@ -1,0 +1,35 @@
+GaussianOrthogonalPolynomial
+ -- |orthogonal polynomial for Gaussian quadratures
+ -- |References: Gauss quadratures and orthogonal polynomialsG.H. Gloub and J.H. Welsch: Calculation of Gauss quadrature rule. Math. Comput. 23 (1986), 221-230"Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery,The polynomials are defined by the three-term recurrence relation \[ P_{k+1}(x)=(x-\alpha_k) P_k(x) - \beta_k P_{k-1}(x) \] and \[ \mu_0 = \int{w(x)dx} \]
+
+ -f-
+  ~GaussianOrthogonalPolynomial
+   ->
+  mu_0
+   ->Real
+  alpha
+   ->Real
+   ::Size
+   -- ^i
+  beta
+   ->Real
+   ::Size
+   -- ^i
+  w
+   ->Real
+   ::Real
+   -- ^x
+  value
+   ->Real
+   ::Size
+   -- ^i
+   ::Real
+   -- ^x
+  weightedValue
+   ->Real
+   ::Size
+   -- ^i
+   ::Real
+   -- ^x
+ -v-
+ -e-

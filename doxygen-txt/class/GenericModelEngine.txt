@@ -1,0 +1,16 @@
+GenericModelEngine
+ -- |Base class for some pricing engine on a particular model.
+ -- |Derived engines only need to implement the calculate() method
+
+ -f-
+  GenericModelEngine
+   ->
+   ::const Handle< ModelType > &
+   =Handle< ModelType >()
+   -- ^model
+  GenericModelEngine
+   ->
+   ::const boost::shared_ptr< ModelType > &
+   -- ^model
+ -v-
+ -e-

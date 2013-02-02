@@ -1,0 +1,47 @@
+RendistatoCalculator
+
+ -f-
+  yield
+   ->Rate
+  duration
+   ->Time
+  yields
+   ->const std::vector< Rate > &
+  durations
+   ->const std::vector< Time > &
+  swapLengths
+   ->const std::vector< Time > &
+  swapRates
+   ->const std::vector< Rate > &
+  swapYields
+   ->const std::vector< Rate > &
+  swapDurations
+   ->const std::vector< Time > &
+ -v-
+ -e-
+ -f-
+  equivalentSwap
+   ->boost::shared_ptr< VanillaSwap >
+  equivalentSwapRate
+   ->Rate
+  equivalentSwapYield
+   ->Rate
+  equivalentSwapDuration
+   ->Time
+  equivalentSwapLength
+   ->Time
+  equivalentSwapSpread
+   ->Spread
+ -v-
+ -e-
+ -f-
+  RendistatoCalculator
+   ->
+   ::const boost::shared_ptr< RendistatoBasket > &
+   -- ^basket
+   ::const boost::shared_ptr< Euribor > &
+   -- ^euriborIndex
+   ::const Handle< YieldTermStructure > &
+   -- ^discountCurve
+ -v-
+ -e-

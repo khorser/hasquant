@@ -1,0 +1,50 @@
+SmileSection
+ -- |interest rate volatility smile section
+ -- |This abstract class provides volatility smile section interface
+
+ -f-
+  SmileSection
+   ->
+   ::const Date &
+   -- ^d
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const Date &
+   =Date()
+   -- ^referenceDate
+  SmileSection
+   ->
+   ::Time
+   -- ^exerciseTime
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+  SmileSection
+   ->
+  ~SmileSection
+   ->
+  minStrike
+   ->Real
+  maxStrike
+   ->Real
+  variance
+   ->Real
+   ::Rate
+   -- ^strike
+  volatility
+   ->Volatility
+   ::Rate
+   -- ^strike
+  atmLevel
+   ->Real
+  exerciseDate
+   ->const Date &
+  referenceDate
+   ->const Date &
+  exerciseTime
+   ->Time
+  dayCounter
+   ->const DayCounter &
+ -v-
+ -e-

@@ -1,0 +1,11 @@
+EuriborSW
+ -- |1-week Euribor index
+
+ -f-
+  EuriborSW
+   ->
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

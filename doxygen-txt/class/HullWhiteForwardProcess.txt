@@ -1,0 +1,36 @@
+HullWhiteForwardProcess
+ -- |Forward Hull-White stochastic process
+
+ -f-
+  HullWhiteForwardProcess
+   ->
+   ::const Handle< YieldTermStructure > &
+   -- ^h
+   ::Real
+   -- ^a
+   ::Real
+   -- ^sigma
+  a
+   ->Real
+  sigma
+   ->Real
+  alpha
+   ->Real
+   ::Time
+   -- ^t
+  M_T
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^t
+   ::Real
+   -- ^T
+  B
+   ->Real
+   ::Time
+   -- ^t
+   ::Time
+   -- ^T
+ -v-
+ -e-

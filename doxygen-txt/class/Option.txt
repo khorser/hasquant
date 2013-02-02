@@ -1,0 +1,31 @@
+Option
+ -- |base option class
+
+ -f-
+ -v-
+ -e-
+  Type
+   Put
+   Call
+ -f-
+  Option
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+  payoff
+   ->boost::shared_ptr< Payoff >
+  exercise
+   ->boost::shared_ptr< Exercise >
+ -v-
+ -e-
+ -f-
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::Option::Type
+   -- ^
+ -v-
+ -e-

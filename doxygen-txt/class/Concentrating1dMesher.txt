@@ -1,0 +1,16 @@
+Concentrating1dMesher
+
+ -f-
+  Concentrating1dMesher
+   ->
+   ::Real
+   -- ^start
+   ::Real
+   -- ^end
+   ::Size
+   -- ^size
+   ::const std::pair< Real, Real > &
+   =(std::pair< double, double >(Null< Real >(), Null< Real >()))
+   -- ^cPoints
+ -v-
+ -e-

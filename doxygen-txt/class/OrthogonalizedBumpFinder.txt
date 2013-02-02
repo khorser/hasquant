@@ -1,0 +1,22 @@
+OrthogonalizedBumpFinder
+ -- |Pass in a market model, a list of instruments, and possible bumps.Get out pseudo-root bumps that shift each implied vol by one percent, and leave the other instruments fixed.If the contribution of an instrument is too correlated with other instruments used, discard it.
+
+ -f-
+  OrthogonalizedBumpFinder
+   ->
+   ::const VegaBumpCollection &
+   -- ^bumps
+   ::const std::vector< VolatilityBumpInstrumentJacobian::Swaption > &
+   -- ^swaptions
+   ::const std::vector< VolatilityBumpInstrumentJacobian::Cap > &
+   -- ^caps
+   ::Real
+   -- ^multiplierCutOff
+   ::Real
+   -- ^tolerance
+  GetVegaBumps
+   ->void
+   ::std::vector< std::vector< Matrix > > &
+   -- ^theBumps
+ -v-
+ -e-

@@ -1,0 +1,20 @@
+SuperSharePayoff
+ -- |Binary supershare payoff.
+
+ -f-
+  SuperSharePayoff
+   ->
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^secondStrike
+   ::Real
+   -- ^cashPayoff
+  strike
+   ->Real
+  secondStrike
+   ->Real
+  cashPayoff
+   ->Real
+ -v-
+ -e-

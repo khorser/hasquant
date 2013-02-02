@@ -1,0 +1,15 @@
+VolatilityCompositor
+
+ -f-
+  ~VolatilityCompositor
+   ->
+  calculate
+   ->TimeSeries< Volatility >
+   ::const TimeSeries< Volatility > &
+   -- ^volatilitySeries
+  calibrate
+   ->void
+   ::const TimeSeries< Volatility > &
+   -- ^volatilitySeries
+ -v-
+ -e-

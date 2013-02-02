@@ -1,0 +1,97 @@
+FuturesRateHelper
+ -- |Rate helper for bootstrapping over IborIndex futures prices.
+
+ -f-
+  convexityAdjustment
+   ->Real
+ -v-
+ -e-
+ -f-
+  FuturesRateHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^price
+   ::const Date &
+   -- ^immDate
+   ::Natural
+   -- ^lengthInMonths
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^convention
+   ::bool
+   -- ^endOfMonth
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Handle< Quote > &
+   =Handle< Quote >()
+   -- ^convexityAdjustment
+  FuturesRateHelper
+   ->
+   ::Real
+   -- ^price
+   ::const Date &
+   -- ^immDate
+   ::Natural
+   -- ^lengthInMonths
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^convention
+   ::bool
+   -- ^endOfMonth
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Rate
+   =0.0
+   -- ^convexityAdjustment
+  FuturesRateHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^price
+   ::const Date &
+   -- ^immStartDate
+   ::const Date &
+   -- ^endDate
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Handle< Quote > &
+   =Handle< Quote >()
+   -- ^convexityAdjustment
+  FuturesRateHelper
+   ->
+   ::Real
+   -- ^price
+   ::const Date &
+   -- ^immStartDate
+   ::const Date &
+   -- ^endDate
+   ::const DayCounter &
+   -- ^dayCounter
+   ::Rate
+   =0.0
+   -- ^convexityAdjustment
+  FuturesRateHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^price
+   ::const Date &
+   -- ^immDate
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+   ::const Handle< Quote > &
+   =Handle< Quote >()
+   -- ^convexityAdjustment
+  FuturesRateHelper
+   ->
+   ::Real
+   -- ^price
+   ::const Date &
+   -- ^immDate
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^iborIndex
+   ::Rate
+   =0.0
+   -- ^convexityAdjustment
+ -v-
+ -e-

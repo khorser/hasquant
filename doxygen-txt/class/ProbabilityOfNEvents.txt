@@ -1,0 +1,14 @@
+ProbabilityOfNEvents
+ -- |Probability of N events.
+
+ -f-
+  ProbabilityOfNEvents
+   ->
+   ::int
+   -- ^n
+  operator()
+   ->Real
+   ::std::vector< Real >
+   -- ^p
+ -v-
+ -e-

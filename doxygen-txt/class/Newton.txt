@@ -1,0 +1,13 @@
+Newton
+ -- |Newton 1-D solver
+ -- |This solver requires that the passed function object implement a method Real derivative(Real). Teststhe correctness of the returned values is tested by checking them against known good results.
+
+ -f-
+  solveImpl
+   ->Real
+   ::const F &
+   -- ^f
+   ::Real
+   -- ^xAccuracy
+ -v-
+ -e-

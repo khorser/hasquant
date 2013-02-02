@@ -1,0 +1,18 @@
+FDDividendAmericanEngineMerton73
+
+ -f-
+  FDDividendAmericanEngineMerton73
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   =100
+   -- ^timeSteps
+   ::Size
+   =100
+   -- ^gridPoints
+   ::bool
+   =false
+   -- ^timeDependent
+ -v-
+ -e-

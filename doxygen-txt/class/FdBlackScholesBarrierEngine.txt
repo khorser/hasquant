@@ -1,0 +1,29 @@
+FdBlackScholesBarrierEngine
+ -- |Finite-Differences Black Scholes barrier option engine.
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature and comparison with Black pricing.
+
+ -f-
+  FdBlackScholesBarrierEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   =100
+   -- ^tGrid
+   ::Size
+   =100
+   -- ^xGrid
+   ::Size
+   =0
+   -- ^dampingSteps
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Douglas()
+   -- ^schemeDesc
+   ::bool
+   =false
+   -- ^localVol
+   ::Real
+   =-Null< Real >()
+   -- ^illegalLocalVolOverwrite
+ -v-
+ -e-

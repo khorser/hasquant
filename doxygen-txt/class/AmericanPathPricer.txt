@@ -1,0 +1,27 @@
+AmericanPathPricer
+
+ -f-
+  AmericanPathPricer
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^payoff
+   ::Size
+   -- ^polynomOrder
+   ::LsmBasisSystem::PolynomType
+   -- ^polynomType
+  state
+   ->Real
+   ::const Path &
+   -- ^path
+   ::Size
+   -- ^t
+  operator()
+   ->Real
+   ::const Path &
+   -- ^path
+   ::Size
+   -- ^t
+  basisSystem
+   ->std::vector< boost::function1< Real, Real > >
+ -v-
+ -e-

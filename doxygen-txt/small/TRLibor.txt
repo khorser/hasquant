@@ -1,0 +1,14 @@
+TRLibor
+ -- |TRY LIBOR rate
+ -- |TRY LIBOR fixed by TBA. See <http://www.trlibor.org/trlibor/english/default.asp> Possible enhancementscheck end-of-month adjustment.
+
+ -f-
+  TRLibor
+   ->
+   ::const Period &
+   -- ^tenor
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

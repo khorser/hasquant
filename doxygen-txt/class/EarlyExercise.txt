@@ -1,0 +1,16 @@
+EarlyExercise
+ -- |Early-exercise base class.
+ -- |The payoff can be at exercise (the default) or at expiry
+
+ -f-
+  EarlyExercise
+   ->
+   ::Type
+   -- ^type
+   ::bool
+   =false
+   -- ^payoffAtExpiry
+  payoffAtExpiry
+   ->bool
+ -v-
+ -e-

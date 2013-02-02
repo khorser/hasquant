@@ -1,0 +1,36 @@
+OneStepOptionlets
+
+ -f-
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  numberOfProducts
+   ->Size
+  maxNumberOfCashFlowsPerProductPerStep
+   ->Size
+  reset
+   ->void
+  nextTimeStep
+   ->bool
+   ::const CurveState &
+   -- ^currentState
+   ::std::vector< Size > &
+   -- ^numberCashFlowsThisStep
+   ::std::vector< std::vector< CashFlow > > &
+   -- ^cashFlowsGenerated
+  clone
+   ->std::auto_ptr< MarketModelMultiProduct >
+ -v-
+ -e-
+ -f-
+  OneStepOptionlets
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Real > &
+   -- ^accruals
+   ::const std::vector< Time > &
+   -- ^paymentTimes
+   ::const std::vector< boost::shared_ptr< Payoff > > &
+   -- ^
+ -v-
+ -e-

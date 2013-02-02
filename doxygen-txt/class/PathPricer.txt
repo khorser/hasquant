@@ -1,0 +1,13 @@
+PathPricer
+ -- |base class for path pricers
+ -- |Returns the value of an option on a given path.
+
+ -f-
+  ~PathPricer
+   ->
+  operator()
+   ->ValueType
+   ::const PathType &
+   -- ^path
+ -v-
+ -e-

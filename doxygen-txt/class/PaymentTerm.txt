@@ -1,0 +1,62 @@
+PaymentTerm
+
+ -f-
+  -- name, e.g, "Pricing end + 5 days"
+  name
+   ->const std::string &
+  eventType
+   ->EventType
+  offsetDays
+   ->Integer
+  calendar
+   ->const Calendar &
+  empty
+   ->bool
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+  EventType
+   TradeDate
+   PricingDate
+ -f-
+  PaymentTerm
+   ->
+  PaymentTerm
+   ->
+   ::const std::string &
+   -- ^name
+   ::EventType
+   -- ^eventType
+   ::Integer
+   -- ^offsetDays
+   ::const Calendar &
+   -- ^calendar
+  getPaymentDate
+   ->Date
+   ::const Date &
+   -- ^date
+ -v-
+ -e-
+ -f-
+  operator==
+   ->bool
+   ::const PaymentTerm &
+   -- ^
+   ::const PaymentTerm &
+   -- ^
+  operator!=
+   ->bool
+   ::const PaymentTerm &
+   -- ^
+   ::const PaymentTerm &
+   -- ^
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::const PaymentTerm &
+   -- ^
+ -v-
+ -e-

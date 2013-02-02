@@ -1,0 +1,12 @@
+PercentageStrikePayoff
+ -- |Payoff with strike expressed as percentage
+
+ -f-
+  PercentageStrikePayoff
+   ->
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^moneyness
+ -v-
+ -e-

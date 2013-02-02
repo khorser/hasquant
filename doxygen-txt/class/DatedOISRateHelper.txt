@@ -1,0 +1,26 @@
+DatedOISRateHelper
+ -- |Rate helper for bootstrapping over Overnight Indexed Swap rates.
+
+ -f-
+  setTermStructure
+   ->void
+   ::YieldTermStructure *
+   -- ^
+ -v-
+ -e-
+ -f-
+  DatedOISRateHelper
+   ->
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::const Handle< Quote > &
+   -- ^fixedRate
+   ::const boost::shared_ptr< OvernightIndex > &
+   -- ^overnightIndex
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^discountingCurve
+ -v-
+ -e-

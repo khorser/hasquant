@@ -1,0 +1,10 @@
+Null< Array >
+ -- |specialization of null template for this class
+
+ -f-
+  Null
+   ->
+  operator Array
+   ->
+ -v-
+ -e-

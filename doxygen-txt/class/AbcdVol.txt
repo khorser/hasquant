@@ -1,0 +1,28 @@
+AbcdVol
+ -- |Abcd-interpolated volatility structure
+
+ -f-
+  AbcdVol
+   ->
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+   ::Real
+   -- ^c
+   ::Real
+   -- ^d
+   ::const std::vector< Real > &
+   -- ^ks
+   ::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+   -- ^corr
+   ::const EvolutionDescription &
+   -- ^evolution
+   ::const Size
+   -- ^numberOfFactors
+   ::const std::vector< Rate > &
+   -- ^initialRates
+   ::const std::vector< Spread > &
+   -- ^displacements
+ -v-
+ -e-

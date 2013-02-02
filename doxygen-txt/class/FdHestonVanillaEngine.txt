@@ -1,0 +1,34 @@
+FdHestonVanillaEngine
+ -- |Finite-Differences Heston Vanilla Option engine.
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature and comparison with Black pricing.
+
+ -f-
+  FdHestonVanillaEngine
+   ->
+   ::const boost::shared_ptr< HestonModel > &
+   -- ^model
+   ::Size
+   =100
+   -- ^tGrid
+   ::Size
+   =100
+   -- ^xGrid
+   ::Size
+   =50
+   -- ^vGrid
+   ::Size
+   =0
+   -- ^dampingSteps
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+  enableMultipleStrikesCaching
+   ->void
+   ::const std::vector< Real > &
+   -- ^strikes
+  getSolverDesc
+   ->FdmSolverDesc
+   ::Real
+   -- ^equityScaleFactor
+ -v-
+ -e-

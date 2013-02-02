@@ -1,0 +1,8 @@
+MultiAssetOption::results
+ -- |Results from multi-asset option calculation
+
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

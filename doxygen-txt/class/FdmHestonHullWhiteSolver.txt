@@ -1,0 +1,54 @@
+FdmHestonHullWhiteSolver
+
+ -f-
+  FdmHestonHullWhiteSolver
+   ->
+   ::const Handle< HestonProcess > &
+   -- ^hestonProcess
+   ::const Handle< HullWhiteProcess > &
+   -- ^hwProcess
+   ::Rate
+   -- ^corrEquityShortRate
+   ::const FdmSolverDesc &
+   -- ^solverDesc
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+  valueAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^v
+   ::Rate
+   -- ^r
+  thetaAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^v
+   ::Rate
+   -- ^r
+  deltaAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^v
+   ::Rate
+   -- ^r
+   ::Real
+   -- ^eps
+  gammaAt
+   ->Real
+   ::Real
+   -- ^s
+   ::Real
+   -- ^v
+   ::Rate
+   -- ^r
+   ::Real
+   -- ^eps
+ -v-
+ -e-

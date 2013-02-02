@@ -1,0 +1,10 @@
+FloatingTypePayoff
+ -- |Payoff based on a floating strike
+
+ -f-
+  FloatingTypePayoff
+   ->
+   ::Option::Type
+   -- ^type
+ -v-
+ -e-

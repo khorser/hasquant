@@ -1,0 +1,18 @@
+GaussianRandomDefaultModel
+ -- |Random default times using a one-factor Gaussian copula.
+
+ -f-
+  GaussianRandomDefaultModel
+   ->
+   ::boost::shared_ptr< Pool >
+   -- ^pool
+   ::const std::vector< DefaultProbKey > &
+   -- ^defaultKeys
+   ::Handle< OneFactorCopula >
+   -- ^copula
+   ::Real
+   -- ^accuracy
+   ::long
+   -- ^seed
+ -v-
+ -e-

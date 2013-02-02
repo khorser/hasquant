@@ -1,0 +1,33 @@
+PdeSecondOrderParabolic
+
+ -f-
+  ~PdeSecondOrderParabolic
+   ->
+  diffusion
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  drift
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  discount
+   ->Real
+   ::Time
+   -- ^t
+   ::Real
+   -- ^x
+  generateOperator
+   ->void
+   ::Time
+   -- ^t
+   ::const TransformedGrid &
+   -- ^tg
+   ::TridiagonalOperator &
+   -- ^L
+ -v-
+ -e-

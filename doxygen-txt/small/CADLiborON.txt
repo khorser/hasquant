@@ -1,0 +1,11 @@
+CADLiborON
+ -- |Overnight CAD Libor index.
+
+ -f-
+  CADLiborON
+   ->
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^h
+ -v-
+ -e-

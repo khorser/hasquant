@@ -1,0 +1,31 @@
+MCPathBasketEngine
+ -- |Pricing engine for path dependent basket options using.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCPathBasketEngine
+   ->
+   ::const boost::shared_ptr< StochasticProcessArray > &
+   -- ^
+   ::Size
+   -- ^timeSteps
+   ::Size
+   -- ^timeStepsPerYear
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::bool
+   -- ^controlVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+ -v-
+ -e-

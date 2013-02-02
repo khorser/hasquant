@@ -1,0 +1,69 @@
+Index
+ -- |purely virtual base class for indexes
+ -- |Warningthis class performs no check that the provided/requested fixings are for dates in the past, i.e. for dates less than or equal to the evaluation date. It is up to the client code to take care of possible inconsistencies due to "seeing in the future"
+
+ -f-
+  ~Index
+   ->
+  -- Returns the name of the index.
+  -- WarningThis method is used for output and comparison between indexes. It is not meant to be used for writing switch-on-type code.
+  name
+   ->std::string
+  -- returns the calendar defining valid fixing dates
+  fixingCalendar
+   ->Calendar
+  -- returns TRUE if the fixing date is a valid one
+  isValidFixingDate
+   ->bool
+   ::const Date &
+   -- ^fixingDate
+  -- returns the fixing at the given date
+  -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
+  fixing
+   ->Real
+   ::const Date &
+   -- ^fixingDate
+   ::bool
+   =false
+   -- ^forecastTodaysFixing
+  -- returns the fixing TimeSeries
+  timeSeries
+   ->const TimeSeries< Real > &
+  -- stores the historical fixing at the given date
+  -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
+  addFixing
+   ->void
+   ::const Date &
+   -- ^fixingDate
+   ::Real
+   -- ^fixing
+   ::bool
+   =false
+   -- ^forceOverwrite
+  -- stores historical fixings from a TimeSeries
+  -- the dates in the TimeSeries must be the actual calendar dates of the fixings; no settlement days must be used.
+  addFixings
+   ->void
+   ::const TimeSeries< Real > &
+   -- ^t
+   ::bool
+   =false
+   -- ^forceOverwrite
+  -- stores historical fixings at the given dates
+  -- the dates passed as arguments must be the actual calendar dates of the fixings; no settlement days must be used.
+  addFixings
+   ->void
+   ::DateIterator
+   -- ^dBegin
+   ::DateIterator
+   -- ^dEnd
+   ::ValueIterator
+   -- ^vBegin
+   ::bool
+   =false
+   -- ^forceOverwrite
+  -- clears all stored historical fixings
+  clearFixings
+   ->void
+ -v-
+ -e-

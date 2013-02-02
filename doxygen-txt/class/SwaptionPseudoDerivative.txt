@@ -1,0 +1,27 @@
+SwaptionPseudoDerivative
+
+ -f-
+  SwaptionPseudoDerivative
+   ->
+   ::boost::shared_ptr< MarketModel >
+   -- ^inputModel
+   ::Size
+   -- ^startIndex
+   ::Size
+   -- ^endIndex
+  varianceDerivative
+   ->const Matrix &
+   ::Size
+   -- ^i
+  volatilityDerivative
+   ->const Matrix &
+   ::Size
+   -- ^i
+  impliedVolatility
+   ->Real
+  variance
+   ->Real
+  expiry
+   ->Real
+ -v-
+ -e-

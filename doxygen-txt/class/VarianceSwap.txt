@@ -1,0 +1,34 @@
+VarianceSwap
+ -- |Variance swap.
+ -- |WarningThis class does not manage seasoned variance swaps.
+
+ -f-
+  strike
+   ->Real
+  position
+   ->Position::Type
+  startDate
+   ->Date
+  maturityDate
+   ->Date
+  notional
+   ->Real
+  variance
+   ->Real
+ -v-
+ -e-
+ -f-
+  VarianceSwap
+   ->
+   ::Position::Type
+   -- ^position
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^notional
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^maturityDate
+ -v-
+ -e-

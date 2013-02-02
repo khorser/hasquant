@@ -1,0 +1,19 @@
+DiscretizedCallableFixedRateBond
+
+ -f-
+  DiscretizedCallableFixedRateBond
+   ->
+   ::const CallableBond::arguments &
+   -- ^
+   ::const Date &
+   -- ^referenceDate
+   ::const DayCounter &
+   -- ^dayCounter
+  reset
+   ->void
+   ::Size
+   -- ^size
+  mandatoryTimes
+   ->std::vector< Time >
+ -v-
+ -e-

@@ -1,0 +1,19 @@
+Polynomial2DSpline
+ -- |polynomial2D-spline interpolation between discrete points
+
+ -f-
+  -- the $ x $ and $ y $ values must be sorted.
+  Polynomial2DSpline
+   ->
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+   ::const I2 &
+   -- ^yEnd
+   ::const M &
+   -- ^zData
+ -v-
+ -e-

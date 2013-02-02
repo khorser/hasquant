@@ -1,0 +1,21 @@
+WriterExtensibleOption
+ -- |Writer-extensible option.
+
+ -f-
+  -- payoff1 The first payoff exercise1 The first exercise date payoff2 The payoff of the extended option exercise2 The second exercise date
+  WriterExtensibleOption
+   ->
+   ::const boost::shared_ptr< PlainVanillaPayoff > &
+   -- ^payoff1
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise1
+   ::const boost::shared_ptr< PlainVanillaPayoff > &
+   -- ^payoff2
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise2
+  payoff2
+   ->boost::shared_ptr< Payoff >
+  exercise2
+   ->boost::shared_ptr< Exercise >
+ -v-
+ -e-

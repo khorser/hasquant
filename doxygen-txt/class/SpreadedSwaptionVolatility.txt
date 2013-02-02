@@ -1,0 +1,38 @@
+SpreadedSwaptionVolatility
+
+ -f-
+  dayCounter
+   ->DayCounter
+  maxDate
+   ->Date
+  maxTime
+   ->Time
+  referenceDate
+   ->const Date &
+  calendar
+   ->Calendar
+  settlementDays
+   ->Natural
+ -v-
+ -e-
+ -f-
+  minStrike
+   ->Rate
+  maxStrike
+   ->Rate
+ -v-
+ -e-
+ -f-
+  maxSwapTenor
+   ->const Period &
+ -v-
+ -e-
+ -f-
+  SpreadedSwaptionVolatility
+   ->
+   ::const Handle< SwaptionVolatilityStructure > &
+   -- ^
+   ::const Handle< Quote > &
+   -- ^spread
+ -v-
+ -e-

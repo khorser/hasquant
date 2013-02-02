@@ -1,0 +1,16 @@
+EverestOption::arguments
+
+ -f-
+ -v-
+  notional
+   ::Real
+  guarantee
+   ::Rate
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

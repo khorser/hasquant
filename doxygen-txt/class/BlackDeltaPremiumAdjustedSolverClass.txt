@@ -1,0 +1,25 @@
+BlackDeltaPremiumAdjustedSolverClass
+
+ -f-
+  BlackDeltaPremiumAdjustedSolverClass
+   ->
+   ::Option::Type
+   -- ^ot
+   ::DeltaVolQuote::DeltaType
+   -- ^dt
+   ::Real
+   -- ^spot
+   ::DiscountFactor
+   -- ^dDiscount
+   ::DiscountFactor
+   -- ^fDiscount
+   ::Real
+   -- ^stdDev
+   ::Real
+   -- ^delta
+  operator()
+   ->Real
+   ::Real
+   -- ^strike
+ -v-
+ -e-

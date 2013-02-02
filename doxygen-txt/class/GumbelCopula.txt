@@ -1,0 +1,16 @@
+GumbelCopula
+ -- |Gumbel copula.
+
+ -f-
+  GumbelCopula
+   ->
+   ::Real
+   -- ^theta
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

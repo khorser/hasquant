@@ -1,0 +1,46 @@
+MultiStepTarn
+
+ -f-
+  possibleCashFlowTimes
+   ->std::vector< Time >
+  numberOfProducts
+   ->Size
+  maxNumberOfCashFlowsPerProductPerStep
+   ->Size
+  reset
+   ->void
+  nextTimeStep
+   ->bool
+   ::const CurveState &
+   -- ^currentState
+   ::std::vector< Size > &
+   -- ^numberCashFlowsThisStep
+   ::std::vector< std::vector< CashFlow > > &
+   -- ^cashFlowsGenerated
+  clone
+   ->std::auto_ptr< MarketModelMultiProduct >
+ -v-
+ -e-
+ -f-
+  MultiStepTarn
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Real > &
+   -- ^accruals
+   ::const std::vector< Real > &
+   -- ^accrualsFloating
+   ::const std::vector< Time > &
+   -- ^paymentTimes
+   ::const std::vector< Time > &
+   -- ^paymentTimesFloating
+   ::Real
+   -- ^totalCoupon
+   ::const std::vector< Real > &
+   -- ^strikes
+   ::const std::vector< Real > &
+   -- ^multipliers
+   ::const std::vector< Real > &
+   -- ^floatingSpreads
+ -v-
+ -e-

@@ -1,0 +1,31 @@
+GFunctionFactory
+
+ -f-
+ -v-
+ -e-
+  YieldCurveModel
+   Standard
+   ExactYield
+   ParallelShifts
+   NonParallelShifts
+ -f-
+  newGFunctionStandard
+   ->boost::shared_ptr< GFunction >
+   ::Size
+   -- ^q
+   ::Real
+   -- ^delta
+   ::Size
+   -- ^swapLength
+  newGFunctionExactYield
+   ->boost::shared_ptr< GFunction >
+   ::const CmsCoupon &
+   -- ^coupon
+  newGFunctionWithShifts
+   ->boost::shared_ptr< GFunction >
+   ::const CmsCoupon &
+   -- ^coupon
+   ::const Handle< Quote > &
+   -- ^meanReversion
+ -v-
+ -e-

@@ -1,0 +1,21 @@
+FdmSimpleSwingCondition
+
+ -f-
+  FdmSimpleSwingCondition
+   ->
+   ::const std::vector< Time > &
+   -- ^exerciseTimes
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const boost::shared_ptr< FdmInnerValueCalculator > &
+   -- ^calculator
+   ::Size
+   -- ^swingDirection
+  applyTo
+   ->void
+   ::Array &
+   -- ^a
+   ::Time
+   -- ^t
+ -v-
+ -e-

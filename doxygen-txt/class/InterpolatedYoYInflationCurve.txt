@@ -1,0 +1,43 @@
+InterpolatedYoYInflationCurve
+ -- |Inflation term structure based on interpolated year-on-year rates.
+ -- |The provided rates are not YY inflation-swap quotes.
+
+ -f-
+  dates
+   ->const std::vector< Date > &
+  times
+   ->const std::vector< Time > &
+  data
+   ->const std::vector< Real > &
+  rates
+   ->const std::vector< Rate > &
+  nodes
+   ->std::vector< std::pair< Date, Rate > >
+ -v-
+ -e-
+ -f-
+  InterpolatedYoYInflationCurve
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   -- ^calendar
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Period &
+   -- ^lag
+   ::Frequency
+   -- ^frequency
+   ::bool
+   -- ^indexIsInterpolated
+   ::const Handle< YieldTermStructure > &
+   -- ^yTS
+   ::const std::vector< Date > &
+   -- ^dates
+   ::const std::vector< Rate > &
+   -- ^rates
+   ::const Interpolator &
+   =Interpolator()
+   -- ^interpolator
+ -v-
+ -e-

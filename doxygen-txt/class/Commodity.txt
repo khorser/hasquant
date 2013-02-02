@@ -1,0 +1,25 @@
+Commodity
+ -- |Commodity base class.
+
+ -f-
+  Commodity
+   ->
+   ::const boost::shared_ptr< SecondaryCosts > &
+   -- ^secondaryCosts
+  secondaryCosts
+   ->const boost::shared_ptr< SecondaryCosts > &
+  secondaryCostAmounts
+   ->const SecondaryCostAmounts &
+  pricingErrors
+   ->const PricingErrors &
+  addPricingError
+   ->void
+   ::PricingError::Level
+   -- ^errorLevel
+   ::const std::string &
+   -- ^error
+   ::const std::string &
+   =""
+   -- ^detail
+ -v-
+ -e-

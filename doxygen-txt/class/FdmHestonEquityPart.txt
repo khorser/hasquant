@@ -1,0 +1,23 @@
+FdmHestonEquityPart
+
+ -f-
+  FdmHestonEquityPart
+   ->
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^rTS
+   ::const boost::shared_ptr< YieldTermStructure > &
+   -- ^qTS
+   ::const boost::shared_ptr< FdmQuantoHelper > &
+   -- ^quantoHelper
+  setTime
+   ->void
+   ::Time
+   -- ^t1
+   ::Time
+   -- ^t2
+  getMap
+   ->const TripleBandLinearOp &
+ -v-
+ -e-

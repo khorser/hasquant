@@ -1,0 +1,12 @@
+SalvagingAlgorithm
+ -- |algorithm used for matricial pseudo square root
+
+ -f-
+ -v-
+ -e-
+  Type
+   None
+   Spectral
+   Hypersphere
+   LowerDiagonal
+   Higham

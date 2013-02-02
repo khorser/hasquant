@@ -1,0 +1,16 @@
+CashOrNothingPayoff
+ -- |Binary cash-or-nothing payoff.
+
+ -f-
+  CashOrNothingPayoff
+   ->
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^strike
+   ::Real
+   -- ^cashPayoff
+  cashPayoff
+   ->Real
+ -v-
+ -e-

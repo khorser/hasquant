@@ -1,0 +1,17 @@
+LastFixingQuote
+ -- |Quote adapter for the last fixing available of a given Index.
+
+ -f-
+  index
+   ->const boost::shared_ptr< Index > &
+  referenceDate
+   ->Date
+ -v-
+ -e-
+ -f-
+  LastFixingQuote
+   ->
+   ::const boost::shared_ptr< Index > &
+   -- ^index
+ -v-
+ -e-

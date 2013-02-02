@@ -1,0 +1,27 @@
+FlatVolFactory
+
+ -f-
+  FlatVolFactory
+   ->
+   ::Real
+   -- ^longTermCorrelation
+   ::Real
+   -- ^beta
+   ::const std::vector< Time > &
+   -- ^times
+   ::const std::vector< Volatility > &
+   -- ^vols
+   ::const Handle< YieldTermStructure > &
+   -- ^yieldCurve
+   ::Spread
+   -- ^displacement
+  create
+   ->boost::shared_ptr< MarketModel >
+   ::const EvolutionDescription &
+   -- ^
+   ::Size
+   -- ^numberOfFactors
+  update
+   ->void
+ -v-
+ -e-

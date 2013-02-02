@@ -1,0 +1,21 @@
+OneFactorGaussianCopula
+ -- |One-factor Gaussian Copula.
+ -- |The copula model \[ Y_i = a_i\,M+\sqrt{1-a_i^2}\:Z_i \] is specified here by setting the desnity function for all variables, $ M, Z,$ and also $ Y $ to the standard normal distribution $ \phi(x) = \exp(-x^2/2) / \sqrt{2\pi}. $
+
+ -f-
+  OneFactorGaussianCopula
+   ->
+   ::const Handle< Quote > &
+   -- ^correlation
+   ::Real
+   =5
+   -- ^maximum
+   ::Size
+   =50
+   -- ^integrationSteps
+  testCumulativeY
+   ->Real
+   ::Real
+   -- ^y
+ -v-
+ -e-

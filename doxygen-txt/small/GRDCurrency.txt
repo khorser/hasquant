@@ -1,0 +1,9 @@
+GRDCurrency
+ -- |Greek drachma.
+ -- |The ISO three-letter code was GRD; the numeric code was 300. It was divided in 100 lepta.Obsoleted by the Euro since 2001.
+
+ -f-
+  GRDCurrency
+   ->
+ -v-
+ -e-

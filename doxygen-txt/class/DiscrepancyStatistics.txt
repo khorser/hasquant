@@ -1,0 +1,40 @@
+DiscrepancyStatistics
+ -- |Statistic tool for sequences with discrepancy calculation.
+ -- |It inherit from SequenceStatistics<Statistics> and adds $ L^2 $ discrepancy calculation
+
+ -f-
+  discrepancy
+   ->Real
+ -v-
+ -e-
+ -f-
+ -v-
+ -e-
+ -f-
+  DiscrepancyStatistics
+   ->
+   ::Size
+   -- ^dimension
+  add
+   ->void
+   ::const Sequence &
+   -- ^sample
+   ::Real
+   =1.0
+   -- ^weight
+  add
+   ->void
+   ::Iterator
+   -- ^begin
+   ::Iterator
+   -- ^end
+   ::Real
+   =1.0
+   -- ^weight
+  reset
+   ->void
+   ::Size
+   =0
+   -- ^dimension
+ -v-
+ -e-

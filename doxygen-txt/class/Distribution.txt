@@ -1,0 +1,108 @@
+Distribution
+
+ -f-
+  Distribution
+   ->
+   ::int
+   -- ^nBuckets
+   ::Real
+   -- ^xmin
+   ::Real
+   -- ^xmax
+  Distribution
+   ->
+  add
+   ->void
+   ::Real
+   -- ^value
+  addDensity
+   ->void
+   ::int
+   -- ^bucket
+   ::Real
+   -- ^value
+  addAverage
+   ->void
+   ::int
+   -- ^bucket
+   ::Real
+   -- ^value
+  normalize
+   ->void
+  size
+   ->Size
+  x
+   ->Real
+   ::Size
+   -- ^k
+  x
+   ->std::vector< Real > &
+  dx
+   ->Real
+   ::Size
+   -- ^k
+  dx
+   ->std::vector< Real > &
+  dx
+   ->Real
+   ::Real
+   -- ^x
+  density
+   ->Real
+   ::Size
+   -- ^k
+  cumulative
+   ->Real
+   ::Size
+   -- ^k
+  excess
+   ->Real
+   ::Size
+   -- ^k
+  cumulativeExcess
+   ->Real
+   ::Size
+   -- ^k
+  average
+   ->Real
+   ::Size
+   -- ^k
+  confidenceLevel
+   ->Real
+   ::Real
+   -- ^quantil
+  cumulativeDensity
+   ->Real
+   ::Real
+   -- ^x
+  cumulativeExcessProbability
+   ->Real
+   ::Real
+   -- ^a
+   ::Real
+   -- ^b
+  expectedValue
+   ->Real
+  trancheExpectedValue
+   ->Real
+   ::Real
+   -- ^a
+   ::Real
+   -- ^d
+  expectedValue
+   ->Real
+   ::F &
+   -- ^f
+  -- Transform the loss distribution into the tranche loss distribution for losses L_T = min(L,D) - min(L,A). The effects are: 1) shift the distribution to the left by A, then 2) cut off at D-A, Pr(L_T > D-A) = 0 3) ensure Pr(L_T >= 0) = 1, i.e. a density spike at L_T = 0
+  tranche
+   ->void
+   ::Real
+   -- ^attachmentPoint
+   ::Real
+   -- ^detachmentPoint
+  locate
+   ->int
+   ::Real
+   -- ^x
+ -v-
+ -e-

@@ -1,0 +1,26 @@
+MCHimalayaEngine
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCHimalayaEngine
+   ->
+   ::const boost::shared_ptr< StochasticProcessArray > &
+   -- ^
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::BigNatural
+   -- ^seed
+  calculate
+   ->void
+ -v-
+ -e-

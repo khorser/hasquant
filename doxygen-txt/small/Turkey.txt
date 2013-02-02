@@ -1,0 +1,9 @@
+Turkey
+ -- |Turkish calendar.
+ -- |Holidays for the Istanbul Stock Exchange: (data from http://www.ise.org/Markets/OfficialHolidays.aspx?sflang=en): Saturdays Sundays New Year's Day, January 1st National Sovereignty and Children’s Day, April 23rd Youth and Sports Day, May 19th Victory Day, August 30th Republic Day, October 29th Local Holidays (Kurban, Ramadan; 2004 to 2010 only)
+
+ -f-
+  Turkey
+   ->
+ -v-
+ -e-

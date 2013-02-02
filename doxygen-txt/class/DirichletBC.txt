@@ -1,0 +1,13 @@
+DirichletBC
+ -- |Neumann boundary condition (i.e., constant value)
+ -- |Possible enhancementsgeneralize to time-dependent conditions.
+
+ -f-
+  DirichletBC
+   ->
+   ::Real
+   -- ^value
+   ::Side
+   -- ^side
+ -v-
+ -e-

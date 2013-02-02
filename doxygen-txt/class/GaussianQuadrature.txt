@@ -1,0 +1,23 @@
+GaussianQuadrature
+ -- |Integral of a 1-dimensional function using the Gauss quadratures method.
+ -- |References: Gauss quadratures and orthogonal polynomialsG.H. Gloub and J.H. Welsch: Calculation of Gauss quadrature rule. Math. Comput. 23 (1986), 221-230"Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery,Teststhe correctness of the result is tested by checking it against known good values.
+
+ -f-
+  GaussianQuadrature
+   ->
+   ::Size
+   -- ^n
+   ::const GaussianOrthogonalPolynomial &
+   -- ^p
+  operator()
+   ->Real
+   ::const F &
+   -- ^f
+  order
+   ->Size
+  weights
+   ->const Array &
+  x
+   ->const Array &
+ -v-
+ -e-

@@ -1,0 +1,67 @@
+VegaStressedBlackScholesProcess
+ -- |Black-Scholes process which supports local vega stress tests.
+
+ -f-
+  getLowerTimeBorderForStressTest
+   ->Real
+  setLowerTimeBorderForStressTest
+   ->void
+   ::Time
+   -- ^LTB
+  getUpperTimeBorderForStressTest
+   ->Real
+  setUpperTimeBorderForStressTest
+   ->void
+   ::Time
+   -- ^UTB
+  getLowerAssetBorderForStressTest
+   ->Real
+  setLowerAssetBorderForStressTest
+   ->void
+   ::Real
+   -- ^LAB
+  getUpperAssetBorderForStressTest
+   ->Real
+  setUpperAssetBorderForStressTest
+   ->void
+   ::Real
+   -- ^UBA
+  getStressLevel
+   ->Real
+  setStressLevel
+   ->void
+   ::Real
+   -- ^SL
+ -v-
+ -e-
+ -f-
+  VegaStressedBlackScholesProcess
+   ->
+   ::const Handle< Quote > &
+   -- ^x0
+   ::const Handle< YieldTermStructure > &
+   -- ^dividendTS
+   ::const Handle< YieldTermStructure > &
+   -- ^riskFreeTS
+   ::const Handle< BlackVolTermStructure > &
+   -- ^blackVolTS
+   ::Time
+   =0
+   -- ^lowerTimeBorderForStressTest
+   ::Time
+   =1000000
+   -- ^upperTimeBorderForStressTest
+   ::Real
+   =0
+   -- ^lowerAssetBorderForStressTest
+   ::Real
+   =1000000
+   -- ^upperAssetBorderForStressTest
+   ::Real
+   =0
+   -- ^stressLevel
+   ::const boost::shared_ptr< discretization > &
+   =boost::shared_ptr< discretization >(new EulerDiscretization)
+   -- ^d
+ -v-
+ -e-

@@ -1,0 +1,48 @@
+ConvexMonotone
+ -- |Convex-monotone interpolation factory and traits.
+
+ -f-
+ -v-
+  global
+   ::const bool
+  requiredPoints
+   ::const Size
+  dataSizeAdjustment
+   ::const Size
+ -e-
+ -f-
+  ConvexMonotone
+   ->
+   ::Real
+   =0.3
+   -- ^quadraticity
+   ::Real
+   =0.7
+   -- ^monotonicity
+   ::bool
+   =true
+   -- ^forcePositive
+  interpolate
+   ->Interpolation
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+  localInterpolate
+   ->Interpolation
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+   ::Size
+   -- ^localisation
+   ::Interpolation &
+   -- ^prevInterpolation
+   ::Size
+   -- ^finalSize
+ -v-
+ -e-

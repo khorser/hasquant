@@ -1,0 +1,9 @@
+Settlement
+ -- |settlement information
+
+ -f-
+ -v-
+ -e-
+  Type
+   Physical
+   Cash

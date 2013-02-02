@@ -1,0 +1,14 @@
+AkimaCubicInterpolation
+
+ -f-
+  -- the $ x $ values must be sorted.
+  AkimaCubicInterpolation
+   ->
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+ -v-
+ -e-

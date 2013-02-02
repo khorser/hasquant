@@ -1,0 +1,13 @@
+EUHICP
+ -- |EU HICP index.
+
+ -f-
+  EUHICP
+   ->
+   ::bool
+   -- ^interpolated
+   ::const Handle< ZeroInflationTermStructure > &
+   =Handle< ZeroInflationTermStructure >()
+   -- ^ts
+ -v-
+ -e-

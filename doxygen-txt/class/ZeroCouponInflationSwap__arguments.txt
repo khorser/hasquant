@@ -1,0 +1,12 @@
+ZeroCouponInflationSwap::arguments
+
+ -f-
+ -v-
+  fixedRate
+   ::Rate
+ -e-
+ -f-
+  validate
+   ->void
+ -v-
+ -e-

@@ -1,0 +1,21 @@
+InverseNonCentralChiSquareDistribution
+
+ -f-
+  InverseNonCentralChiSquareDistribution
+   ->
+   ::Real
+   -- ^df
+   ::Real
+   -- ^ncp
+   ::Size
+   =10
+   -- ^maxEvaluations
+   ::Real
+   =1e-8
+   -- ^accuracy
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+ -v-
+ -e-

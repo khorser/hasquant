@@ -1,0 +1,32 @@
+DiscretizedConvertible
+
+ -f-
+  DiscretizedConvertible
+   ->
+   ::const ConvertibleBond::option::arguments &
+   -- ^
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::const TimeGrid &
+   =TimeGrid()
+   -- ^grid
+  reset
+   ->void
+   ::Size
+   -- ^size
+  conversionProbability
+   ->const Array &
+  conversionProbability
+   ->Array &
+  spreadAdjustedRate
+   ->const Array &
+  spreadAdjustedRate
+   ->Array &
+  dividendValues
+   ->const Array &
+  dividendValues
+   ->Array &
+  mandatoryTimes
+   ->std::vector< Time >
+ -v-
+ -e-

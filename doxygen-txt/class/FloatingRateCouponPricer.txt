@@ -1,0 +1,35 @@
+FloatingRateCouponPricer
+ -- |generic pricer for floating-rate coupons
+
+ -f-
+  swapletPrice
+   ->Real
+  swapletRate
+   ->Rate
+  capletPrice
+   ->Real
+   ::Rate
+   -- ^effectiveCap
+  capletRate
+   ->Rate
+   ::Rate
+   -- ^effectiveCap
+  floorletPrice
+   ->Real
+   ::Rate
+   -- ^effectiveFloor
+  floorletRate
+   ->Rate
+   ::Rate
+   -- ^effectiveFloor
+  initialize
+   ->void
+   ::const FloatingRateCoupon &
+   -- ^coupon
+ -v-
+ -e-
+ -f-
+  ~FloatingRateCouponPricer
+   ->
+ -v-
+ -e-

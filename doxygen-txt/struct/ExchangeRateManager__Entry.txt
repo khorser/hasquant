@@ -1,0 +1,24 @@
+ExchangeRateManager::Entry
+
+ -f-
+ -v-
+  rate
+   ::ExchangeRate
+  startDate
+   ::Date
+  endDate
+   ::Date
+ -e-
+ -f-
+  Entry
+   ->
+  Entry
+   ->
+   ::const ExchangeRate &
+   -- ^rate
+   ::const Date &
+   -- ^start
+   ::const Date &
+   -- ^end
+ -v-
+ -e-

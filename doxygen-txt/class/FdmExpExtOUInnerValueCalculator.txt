@@ -1,0 +1,32 @@
+FdmExpExtOUInnerValueCalculator
+
+ -f-
+ -v-
+ -e-
+ -f-
+  FdmExpExtOUInnerValueCalculator
+   ->
+   ::const boost::shared_ptr< Payoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+   ::const boost::shared_ptr< Shape > &
+   =boost::shared_ptr< Shape >()
+   -- ^shape
+   ::Size
+   =0
+   -- ^direction
+  innerValue
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^iter
+   ::Time
+   -- ^t
+  avgInnerValue
+   ->Real
+   ::const FdmLinearOpIterator &
+   -- ^iter
+   ::Time
+   -- ^t
+ -v-
+ -e-

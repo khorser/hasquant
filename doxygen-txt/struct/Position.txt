@@ -1,0 +1,17 @@
+Position
+
+ -f-
+ -v-
+ -e-
+  Type
+   Long
+   Short
+ -f-
+  operator<<
+   ->std::ostream &
+   ::std::ostream &
+   -- ^
+   ::Position::Type
+   -- ^
+ -v-
+ -e-

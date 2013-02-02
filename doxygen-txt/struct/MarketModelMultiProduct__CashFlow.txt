@@ -1,0 +1,9 @@
+MarketModelMultiProduct::CashFlow
+
+ -f-
+ -v-
+  timeIndex
+   ::Size
+  amount
+   ::Real
+ -e-

@@ -1,0 +1,17 @@
+AmericanCondition
+ -- |American exercise condition.
+ -- |Possible enhancementsunify the intrinsicValues/Payoff thing
+
+ -f-
+  AmericanCondition
+   ->
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^strike
+  AmericanCondition
+   ->
+   ::const Array &
+   -- ^intrinsicValues
+ -v-
+ -e-

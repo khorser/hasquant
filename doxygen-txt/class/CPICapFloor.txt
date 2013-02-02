@@ -1,0 +1,54 @@
+CPICapFloor
+ -- |CPI cap or floor.
+ -- |Quoted as a fixed strike rate $ K $. Payoff: \[ P_n(0,T) \max(y (N [(1+K)^{T}-1] - N \left[ \frac{I(T)}{I(0)} -1 \right]), 0) \] where $ T $ is the maturity time, $ P_n(0,t) $ is the nominal discount factor at time $ t $, $ N $ is the notional, and $ I(t) $ is the inflation index value at time $ t $.Inflation is generally available on every day, including holidays and weekends. Hence there is a variable to state whether the observe/fix dates for inflation are adjusted or not. The default is not to adjust.N.B. a cpi cap or floor is an option, not a cap or floor on a coupon. Thus this is very similar to a ZCIIS and has a single flow, this is as usual for cpi because it is cumulative up to option maturity from base date.We do not inherit from Option, although this would be reasonable, because we do not have that degree of generality.
+
+ -f-
+  type
+   ->Option::Type
+  nominal
+   ->Real
+  -- $ K $ in the above formula.
+  strike
+   ->Rate
+  fixingDate
+   ->Date
+  payDate
+   ->Date
+  inflationIndex
+   ->Handle< ZeroInflationIndex >
+  observationLag
+   ->Period
+ -v-
+ -e-
+ -f-
+  CPICapFloor
+   ->
+   ::Option::Type
+   -- ^type
+   ::Real
+   -- ^nominal
+   ::const Date &
+   -- ^startDate
+   ::Real
+   -- ^baseCPI
+   ::const Date &
+   -- ^maturity
+   ::const Calendar &
+   -- ^fixCalendar
+   ::BusinessDayConvention
+   -- ^fixConvention
+   ::const Calendar &
+   -- ^payCalendar
+   ::BusinessDayConvention
+   -- ^payConvention
+   ::Rate
+   -- ^strike
+   ::const Handle< ZeroInflationIndex > &
+   -- ^infIndex
+   ::const Period &
+   -- ^observationLag
+   ::CPI::InterpolationType
+   =CPI::AsIndex
+   -- ^observationInterpolation
+ -v-
+ -e-

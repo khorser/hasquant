@@ -1,0 +1,114 @@
+DigitalCmsLeg
+ -- |helper class building a sequence of digital ibor-rate coupons
+
+ -f-
+  DigitalCmsLeg
+   ->
+   ::const Schedule &
+   -- ^schedule
+   ::const boost::shared_ptr< SwapIndex > &
+   -- ^index
+  withNotionals
+   ->DigitalCmsLeg &
+   ::Real
+   -- ^notional
+  withNotionals
+   ->DigitalCmsLeg &
+   ::const std::vector< Real > &
+   -- ^notionals
+  withPaymentDayCounter
+   ->DigitalCmsLeg &
+   ::const DayCounter &
+   -- ^
+  withPaymentAdjustment
+   ->DigitalCmsLeg &
+   ::BusinessDayConvention
+   -- ^
+  withFixingDays
+   ->DigitalCmsLeg &
+   ::Natural
+   -- ^fixingDays
+  withFixingDays
+   ->DigitalCmsLeg &
+   ::const std::vector< Natural > &
+   -- ^fixingDays
+  withGearings
+   ->DigitalCmsLeg &
+   ::Real
+   -- ^gearing
+  withGearings
+   ->DigitalCmsLeg &
+   ::const std::vector< Real > &
+   -- ^gearings
+  withSpreads
+   ->DigitalCmsLeg &
+   ::Spread
+   -- ^spread
+  withSpreads
+   ->DigitalCmsLeg &
+   ::const std::vector< Spread > &
+   -- ^spreads
+  inArrears
+   ->DigitalCmsLeg &
+   ::bool
+   =true
+   -- ^flag
+  withCallStrikes
+   ->DigitalCmsLeg &
+   ::Rate
+   -- ^strike
+  withCallStrikes
+   ->DigitalCmsLeg &
+   ::const std::vector< Rate > &
+   -- ^strikes
+  withLongCallOption
+   ->DigitalCmsLeg &
+   ::Position::Type
+   -- ^
+  withCallATM
+   ->DigitalCmsLeg &
+   ::bool
+   =true
+   -- ^flag
+  withCallPayoffs
+   ->DigitalCmsLeg &
+   ::Rate
+   -- ^payoff
+  withCallPayoffs
+   ->DigitalCmsLeg &
+   ::const std::vector< Rate > &
+   -- ^payoffs
+  withPutStrikes
+   ->DigitalCmsLeg &
+   ::Rate
+   -- ^strike
+  withPutStrikes
+   ->DigitalCmsLeg &
+   ::const std::vector< Rate > &
+   -- ^strikes
+  withLongPutOption
+   ->DigitalCmsLeg &
+   ::Position::Type
+   -- ^
+  withPutATM
+   ->DigitalCmsLeg &
+   ::bool
+   =true
+   -- ^flag
+  withPutPayoffs
+   ->DigitalCmsLeg &
+   ::Rate
+   -- ^payoff
+  withPutPayoffs
+   ->DigitalCmsLeg &
+   ::const std::vector< Rate > &
+   -- ^payoffs
+  withReplication
+   ->DigitalCmsLeg &
+   ::const boost::shared_ptr< DigitalReplication > &
+   =boost::shared_ptr< DigitalReplication >()
+   -- ^replication
+  operator Leg
+   ->
+ -v-
+ -e-

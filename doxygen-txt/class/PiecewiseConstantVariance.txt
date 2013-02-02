@@ -1,0 +1,29 @@
+PiecewiseConstantVariance
+
+ -f-
+  ~PiecewiseConstantVariance
+   ->
+  variances
+   ->const std::vector< Real > &
+  volatilities
+   ->const std::vector< Volatility > &
+  rateTimes
+   ->const std::vector< Time > &
+  variance
+   ->Real
+   ::Size
+   -- ^i
+  volatility
+   ->Volatility
+   ::Size
+   -- ^i
+  totalVariance
+   ->Real
+   ::Size
+   -- ^i
+  totalVolatility
+   ->Volatility
+   ::Size
+   -- ^i
+ -v-
+ -e-

@@ -1,0 +1,27 @@
+SquareRootAndersen
+ -- |Displaced diffusion LMM with uncorrelated vol process. Called "Shifted BGM" with Heston vol by Brace in "Engineering BGM." Vol process is an external input.
+
+ -f-
+  SquareRootAndersen
+   ->
+   ::Real
+   -- ^meanLevel
+   ::Real
+   -- ^reversionSpeed
+   ::Real
+   -- ^volVar
+   ::Real
+   -- ^v0
+   ::const std::vector< Real > &
+   -- ^evolutionTimes
+   ::Size
+   -- ^numberSubSteps_
+   ::Real
+   -- ^w1
+   ::Real
+   -- ^w2
+   ::Real
+   =1.5
+   -- ^cutPoint
+ -v-
+ -e-

@@ -1,0 +1,22 @@
+ZeroCouponInflationSwapHelper
+ -- |Zero-coupon inflation-swap bootstrap helper.
+
+ -f-
+  ZeroCouponInflationSwapHelper
+   ->
+   ::const Handle< Quote > &
+   -- ^quote
+   ::const Period &
+   -- ^swapObsLag
+   ::const Date &
+   -- ^maturity
+   ::const Calendar &
+   -- ^calendar
+   ::BusinessDayConvention
+   -- ^paymentConvention
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const boost::shared_ptr< ZeroInflationIndex > &
+   -- ^zii
+ -v-
+ -e-

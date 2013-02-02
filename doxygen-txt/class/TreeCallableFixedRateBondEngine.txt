@@ -1,0 +1,24 @@
+TreeCallableFixedRateBondEngine
+ -- |Numerical lattice engine for callable fixed rate bonds.
+
+ -f-
+  TreeCallableFixedRateBondEngine
+   ->
+   ::const boost::shared_ptr< ShortRateModel > &
+   -- ^
+   ::const Size
+   -- ^timeSteps
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^termStructure
+  TreeCallableFixedRateBondEngine
+   ->
+   ::const boost::shared_ptr< ShortRateModel > &
+   -- ^
+   ::const TimeGrid &
+   -- ^timeGrid
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^termStructure
+ -v-
+ -e-

@@ -1,0 +1,8 @@
+NoConstraint
+ -- |No constraint.
+
+ -f-
+  NoConstraint
+   ->
+ -v-
+ -e-

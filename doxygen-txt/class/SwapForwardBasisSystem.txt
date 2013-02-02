@@ -1,0 +1,33 @@
+SwapForwardBasisSystem
+
+ -f-
+  SwapForwardBasisSystem
+   ->
+   ::const std::vector< Time > &
+   -- ^rateTimes
+   ::const std::vector< Time > &
+   -- ^exerciseTimes
+  numberOfExercises
+   ->Size
+  numberOfFunctions
+   ->std::vector< Size >
+  evolution
+   ->const EvolutionDescription &
+  nextStep
+   ->void
+   ::const CurveState &
+   -- ^
+  reset
+   ->void
+  isExerciseTime
+   ->std::valarray< bool >
+  values
+   ->void
+   ::const CurveState &
+   -- ^
+   ::std::vector< Real > &
+   -- ^results
+  clone
+   ->std::auto_ptr< MarketModelBasisSystem >
+ -v-
+ -e-

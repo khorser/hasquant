@@ -1,0 +1,20 @@
+FDDividendEngineMerton73
+ -- |Finite-differences pricing engine for dividend options using escowed dividends model.
+ -- |The Merton-73 engine is the classic engine described in most derivatives texts. However, Haug, Haug, and Lewis in "Back to Basics: a new approach to the discrete dividend problem" argues that this scheme underprices call options. This is set as the default engine, because it is consistent with the analytic version.
+
+ -f-
+  FDDividendEngineMerton73
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   =100
+   -- ^timeSteps
+   ::Size
+   =100
+   -- ^gridPoints
+   ::bool
+   =false
+   -- ^timeDependent
+ -v-
+ -e-

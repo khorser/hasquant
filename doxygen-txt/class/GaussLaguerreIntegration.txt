@@ -1,0 +1,14 @@
+GaussLaguerreIntegration
+ -- |generalized Gauss-Laguerre integration
+ -- |This class performs a 1-dimensional Gauss-Laguerre integration. \[ \int_{0}^{\inf} f(x) \mathrm{d}x \] The weighting function is \[ w(x;s)=x^s \exp{-x} \] and \[ s > -1 \]
+
+ -f-
+  GaussLaguerreIntegration
+   ->
+   ::Size
+   -- ^n
+   ::Real
+   =0.0
+   -- ^s
+ -v-
+ -e-

@@ -1,0 +1,27 @@
+CliquetOption::arguments
+ -- |Arguments for cliquet option calculation
+
+ -f-
+ -v-
+  accruedCoupon
+   ::Real
+  lastFixing
+   ::Real
+  localCap
+   ::Real
+  localFloor
+   ::Real
+  globalCap
+   ::Real
+  globalFloor
+   ::Real
+  resetDates
+   ::std::vector< Date >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

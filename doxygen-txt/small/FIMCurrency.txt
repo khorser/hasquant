@@ -1,0 +1,9 @@
+FIMCurrency
+ -- |Finnish markka.
+ -- |The ISO three-letter code was FIM; the numeric code was 246. It was divided in 100 penniä.Obsoleted by the Euro since 1999.
+
+ -f-
+  FIMCurrency
+   ->
+ -v-
+ -e-

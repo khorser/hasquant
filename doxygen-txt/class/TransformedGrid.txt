@@ -1,0 +1,49 @@
+TransformedGrid
+ -- |transformed grid
+ -- |This package encapuslates an array of grid points. It is used primarily in PDE calculations.
+
+ -f-
+  TransformedGrid
+   ->
+   ::const Array &
+   -- ^grid
+  TransformedGrid
+   ->
+   ::const Array &
+   -- ^grid
+   ::T
+   -- ^func
+  gridArray
+   ->const Array &
+  transformedGridArray
+   ->const Array &
+  dxmArray
+   ->const Array &
+  dxpArray
+   ->const Array &
+  dxArray
+   ->const Array &
+  grid
+   ->Real
+   ::Size
+   -- ^i
+  transformedGrid
+   ->Real
+   ::Size
+   -- ^i
+  dxm
+   ->Real
+   ::Size
+   -- ^i
+  dxp
+   ->Real
+   ::Size
+   -- ^i
+  dx
+   ->Real
+   ::Size
+   -- ^i
+  size
+   ->Size
+ -v-
+ -e-

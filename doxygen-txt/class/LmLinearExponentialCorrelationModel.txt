@@ -1,0 +1,18 @@
+LmLinearExponentialCorrelationModel
+ -- |linear exponential correlation model
+ -- |This class describes a exponential correlation model\[ \rho_{i,j}=rho + (1-rho)*e^{(-\beta \|i-j\|)} \] References: Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003, Different Covariance Parameterizations of Libor Market Model and Joint Caps/Swaptions Calibration, (<http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdf>)
+
+ -f-
+  LmLinearExponentialCorrelationModel
+   ->
+   ::Size
+   -- ^size
+   ::Real
+   -- ^rho
+   ::Real
+   -- ^beta
+   ::Size
+   =Null< Size >()
+   -- ^factors
+ -v-
+ -e-

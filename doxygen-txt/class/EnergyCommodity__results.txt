@@ -1,0 +1,16 @@
+EnergyCommodity::results
+
+ -f-
+ -v-
+  NPV
+   ::Real
+  currency
+   ::Currency
+  unitOfMeasure
+   ::UnitOfMeasure
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

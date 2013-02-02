@@ -1,0 +1,15 @@
+LinearInterpolation
+ -- |Linear interpolation between discrete points
+
+ -f-
+  -- the $ x $ values must be sorted.
+  LinearInterpolation
+   ->
+   ::const I1 &
+   -- ^xBegin
+   ::const I1 &
+   -- ^xEnd
+   ::const I2 &
+   -- ^yBegin
+ -v-
+ -e-

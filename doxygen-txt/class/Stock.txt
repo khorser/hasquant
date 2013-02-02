@@ -1,0 +1,10 @@
+Stock
+ -- |Simple stock class.
+
+ -f-
+  Stock
+   ->
+   ::const Handle< Quote > &
+   -- ^quote
+ -v-
+ -e-

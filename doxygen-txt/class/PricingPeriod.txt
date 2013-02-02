@@ -1,0 +1,20 @@
+PricingPeriod
+ -- |Time pricingperiod described by a number of a given time unit.
+
+ -f-
+  PricingPeriod
+   ->
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::const Date &
+   -- ^paymentDate
+   ::const Quantity &
+   -- ^quantity
+  paymentDate
+   ->const Date &
+  quantity
+   ->const Quantity &
+ -v-
+ -e-

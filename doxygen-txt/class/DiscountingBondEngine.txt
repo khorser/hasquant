@@ -1,0 +1,17 @@
+DiscountingBondEngine
+
+ -f-
+  DiscountingBondEngine
+   ->
+   ::const Handle< YieldTermStructure > &
+   =Handle< YieldTermStructure >()
+   -- ^discountCurve
+   ::boost::optional< bool >
+   =boost::none
+   -- ^includeSettlementDateFlows
+  calculate
+   ->void
+  discountCurve
+   ->Handle< YieldTermStructure >
+ -v-
+ -e-

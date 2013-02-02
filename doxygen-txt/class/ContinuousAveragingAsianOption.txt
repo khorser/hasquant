@@ -1,0 +1,15 @@
+ContinuousAveragingAsianOption
+ -- |Continuous-averaging Asian option.
+ -- |Possible enhancementsadd running average
+
+ -f-
+  ContinuousAveragingAsianOption
+   ->
+   ::Average::Type
+   -- ^averageType
+   ::const boost::shared_ptr< StrikedTypePayoff > &
+   -- ^payoff
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+ -v-
+ -e-

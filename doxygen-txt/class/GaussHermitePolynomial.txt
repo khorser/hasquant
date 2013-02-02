@@ -1,0 +1,11 @@
+GaussHermitePolynomial
+ -- |Gauss-Hermite polynomial.
+
+ -f-
+  GaussHermitePolynomial
+   ->
+   ::Real
+   =0.0
+   -- ^mu
+ -v-
+ -e-

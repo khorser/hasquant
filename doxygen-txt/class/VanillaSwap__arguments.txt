@@ -1,0 +1,35 @@
+VanillaSwap::arguments
+ -- |Arguments for simple swap calculation
+
+ -f-
+ -v-
+  type
+   ::Type
+  nominal
+   ::Real
+  fixedResetDates
+   ::std::vector< Date >
+  fixedPayDates
+   ::std::vector< Date >
+  floatingAccrualTimes
+   ::std::vector< Time >
+  floatingResetDates
+   ::std::vector< Date >
+  floatingFixingDates
+   ::std::vector< Date >
+  floatingPayDates
+   ::std::vector< Date >
+  fixedCoupons
+   ::std::vector< Real >
+  floatingSpreads
+   ::std::vector< Spread >
+  floatingCoupons
+   ::std::vector< Real >
+ -e-
+ -f-
+  arguments
+   ->
+  validate
+   ->void
+ -v-
+ -e-

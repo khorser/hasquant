@@ -1,0 +1,114 @@
+JointStochasticProcess
+
+ -f-
+  JointStochasticProcess
+   ->
+   ::const std::vector< boost::shared_ptr< StochasticProcess > > &
+   -- ^l
+   ::Size
+   =Null< Size >()
+   -- ^factors
+  size
+   ->Size
+  factors
+   ->Size
+  initialValues
+   ->Disposable< Array >
+  drift
+   ->Disposable< Array >
+   ::Time
+   -- ^t
+   ::const Array &
+   -- ^x
+  expectation
+   ->Disposable< Array >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+  diffusion
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t
+   ::const Array &
+   -- ^x
+  covariance
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+  stdDeviation
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+  apply
+   ->Disposable< Array >
+   ::const Array &
+   -- ^x0
+   ::const Array &
+   -- ^dx
+  evolve
+   ->Disposable< Array >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+   ::const Array &
+   -- ^dw
+  preEvolve
+   ->void
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+   ::const Array &
+   -- ^dw
+  postEvolve
+   ->Disposable< Array >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+   ::Time
+   -- ^dt
+   ::const Array &
+   -- ^dw
+   ::const Array &
+   -- ^y0
+  numeraire
+   ->DiscountFactor
+   ::Time
+   -- ^t
+   ::const Array &
+   -- ^x
+  correlationIsStateDependent
+   ->bool
+  crossModelCorrelation
+   ->Disposable< Matrix >
+   ::Time
+   -- ^t0
+   ::const Array &
+   -- ^x0
+  constituents
+   ->const std::vector< boost::shared_ptr< StochasticProcess > > &
+  update
+   ->void
+  time
+   ->Time
+   ::const Date &
+   -- ^date
+ -v-
+ -e-

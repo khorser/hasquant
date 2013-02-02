@@ -1,0 +1,9 @@
+NLGCurrency
+ -- |Dutch guilder.
+ -- |The ISO three-letter code was NLG; the numeric code was 528. It was divided in 100 cents.Obsoleted by the Euro since 1999.
+
+ -f-
+  NLGCurrency
+   ->
+ -v-
+ -e-

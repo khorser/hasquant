@@ -1,0 +1,21 @@
+NorthAmericaCorpDefaultKey
+ -- |ISDA standard default contractual key for corporate US debt.
+
+ -f-
+  NorthAmericaCorpDefaultKey
+   ->
+   ::const Currency &
+   -- ^currency
+   ::Seniority
+   -- ^sen
+   ::Period
+   =Period(30, Days)
+   -- ^graceFailureToPay
+   ::Real
+   =1.e6
+   -- ^amountFailure
+   ::Restructuring::Type
+   =Restructuring::CR
+   -- ^resType
+ -v-
+ -e-

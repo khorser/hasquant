@@ -1,0 +1,16 @@
+FarlieGumbelMorgensternCopula
+ -- |Farlie-Gumbel-Morgenstern copula.
+
+ -f-
+  FarlieGumbelMorgensternCopula
+   ->
+   ::Real
+   -- ^theta
+  operator()
+   ->Real
+   ::Real
+   -- ^x
+   ::Real
+   -- ^y
+ -v-
+ -e-

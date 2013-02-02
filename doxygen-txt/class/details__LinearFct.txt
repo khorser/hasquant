@@ -1,0 +1,13 @@
+details::LinearFct
+
+ -f-
+  LinearFct
+   ->
+   ::Size
+   -- ^i
+  operator()
+   ->Real
+   ::const Container &
+   -- ^x
+ -v-
+ -e-

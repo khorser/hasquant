@@ -1,0 +1,27 @@
+ParametricExerciseAdapter
+
+ -f-
+  ParametricExerciseAdapter
+   ->
+   ::const MarketModelParametricExercise &
+   -- ^exercise
+   ::const std::vector< std::vector< Real > > &
+   -- ^parameters
+  exerciseTimes
+   ->std::vector< Time >
+  relevantTimes
+   ->std::vector< Time >
+  reset
+   ->void
+  nextStep
+   ->void
+   ::const CurveState &
+   -- ^currentState
+  exercise
+   ->bool
+   ::const CurveState &
+   -- ^currentState
+  clone
+   ->std::auto_ptr< ExerciseStrategy< CurveState > >
+ -v-
+ -e-

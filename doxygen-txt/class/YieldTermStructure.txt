@@ -1,0 +1,157 @@
+YieldTermStructure
+ -- |Interest-rate term structure.
+ -- |This abstract class defines the interface of concrete interest rate structures which will be derived from this one.Testsobservability against evaluation date changes is checked.
+
+ -f-
+  YieldTermStructure
+   ->
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  YieldTermStructure
+   ->
+   ::const Date &
+   -- ^referenceDate
+   ::const Calendar &
+   =Calendar()
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+  YieldTermStructure
+   ->
+   ::Natural
+   -- ^settlementDays
+   ::const Calendar &
+   -- ^cal
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dc
+   ::const std::vector< Handle< Quote > > &
+   =std::vector< Handle< Quote > >()
+   -- ^jumps
+   ::const std::vector< Date > &
+   =std::vector< Date >()
+   -- ^jumpDates
+ -v-
+ -e-
+ -f-
+  discount
+   ->DiscountFactor
+   ::const Date &
+   -- ^d
+   ::bool
+   =false
+   -- ^extrapolate
+  -- The same day-counting rule used by the term structure should be used for calculating the passed time t.
+  discount
+   ->DiscountFactor
+   ::Time
+   -- ^t
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  -- The resulting interest rate has the required daycounting rule.
+  zeroRate
+   ->InterestRate
+   ::const Date &
+   -- ^d
+   ::const DayCounter &
+   -- ^resultDayCounter
+   ::Compounding
+   -- ^comp
+   ::Frequency
+   =Annual
+   -- ^freq
+   ::bool
+   =false
+   -- ^extrapolate
+  -- The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed time t.
+  zeroRate
+   ->InterestRate
+   ::Time
+   -- ^t
+   ::Compounding
+   -- ^comp
+   ::Frequency
+   =Annual
+   -- ^freq
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  -- The resulting interest rate has the required day-counting rule.
+  forwardRate
+   ->InterestRate
+   ::const Date &
+   -- ^d1
+   ::const Date &
+   -- ^d2
+   ::const DayCounter &
+   -- ^resultDayCounter
+   ::Compounding
+   -- ^comp
+   ::Frequency
+   =Annual
+   -- ^freq
+   ::bool
+   =false
+   -- ^extrapolate
+  -- The resulting interest rate has the required day-counting rule. Warningdates are not adjusted for holidays
+  forwardRate
+   ->InterestRate
+   ::const Date &
+   -- ^d
+   ::const Period &
+   -- ^p
+   ::const DayCounter &
+   -- ^resultDayCounter
+   ::Compounding
+   -- ^comp
+   ::Frequency
+   =Annual
+   -- ^freq
+   ::bool
+   =false
+   -- ^extrapolate
+  -- The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
+  forwardRate
+   ->InterestRate
+   ::Time
+   -- ^t1
+   ::Time
+   -- ^t2
+   ::Compounding
+   -- ^comp
+   ::Frequency
+   =Annual
+   -- ^freq
+   ::bool
+   =false
+   -- ^extrapolate
+ -v-
+ -e-
+ -f-
+  jumpDates
+   ->const std::vector< Date > &
+  jumpTimes
+   ->const std::vector< Time > &
+ -v-
+ -e-

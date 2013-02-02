@@ -1,0 +1,81 @@
+FloatingRateCoupon
+ -- |base floating-rate coupon class
+
+ -f-
+  price
+   ->Real
+   ::const Handle< YieldTermStructure > &
+   -- ^discountingCurve
+ -v-
+ -e-
+ -f-
+  -- floating index
+  index
+   ->const boost::shared_ptr< InterestRateIndex > &
+  -- fixing days
+  fixingDays
+   ->Natural
+  -- fixing date
+  fixingDate
+   ->Date
+  -- index gearing, i.e. multiplicative coefficient for the index
+  gearing
+   ->Real
+  -- spread paid over the fixing of the underlying index
+  spread
+   ->Spread
+  -- fixing of the underlying index
+  indexFixing
+   ->Rate
+  -- convexity adjustment
+  convexityAdjustment
+   ->Rate
+  -- convexity-adjusted fixing
+  adjustedFixing
+   ->Rate
+  -- whether or not the coupon fixes in arrears
+  isInArrears
+   ->bool
+ -v-
+ -e-
+ -f-
+  FloatingRateCoupon
+   ->
+   ::const Date &
+   -- ^paymentDate
+   ::Real
+   -- ^nominal
+   ::const Date &
+   -- ^startDate
+   ::const Date &
+   -- ^endDate
+   ::Natural
+   -- ^fixingDays
+   ::const boost::shared_ptr< InterestRateIndex > &
+   -- ^index
+   ::Real
+   =1.0
+   -- ^gearing
+   ::Spread
+   =0.0
+   -- ^spread
+   ::const Date &
+   =Date()
+   -- ^refPeriodStart
+   ::const Date &
+   =Date()
+   -- ^refPeriodEnd
+   ::const DayCounter &
+   =DayCounter()
+   -- ^dayCounter
+   ::bool
+   =false
+   -- ^isInArrears
+  setPricer
+   ->void
+   ::const boost::shared_ptr< FloatingRateCouponPricer > &
+   -- ^
+  pricer
+   ->boost::shared_ptr< FloatingRateCouponPricer >
+ -v-
+ -e-

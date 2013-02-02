@@ -1,0 +1,5 @@
+detail::Int2Type< 11 >
+
+ -f-
+ -v-
+ -e-

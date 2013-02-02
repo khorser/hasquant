@@ -1,0 +1,36 @@
+ConvertibleFloatingRateBond
+ -- |convertible floating-rate bond
+ -- |WarningMost methods inherited from Bond (such as yield or the yield-based dirtyPrice and cleanPrice) refer to the underlying plain-vanilla bond and do not take convertibility and callability into account.
+
+ -f-
+  ConvertibleFloatingRateBond
+   ->
+   ::const boost::shared_ptr< Exercise > &
+   -- ^exercise
+   ::Real
+   -- ^conversionRatio
+   ::const DividendSchedule &
+   -- ^dividends
+   ::const CallabilitySchedule &
+   -- ^callability
+   ::const Handle< Quote > &
+   -- ^creditSpread
+   ::const Date &
+   -- ^issueDate
+   ::Natural
+   -- ^settlementDays
+   ::const boost::shared_ptr< IborIndex > &
+   -- ^index
+   ::Natural
+   -- ^fixingDays
+   ::const std::vector< Spread > &
+   -- ^spreads
+   ::const DayCounter &
+   -- ^dayCounter
+   ::const Schedule &
+   -- ^schedule
+   ::Real
+   =100
+   -- ^redemption
+ -v-
+ -e-

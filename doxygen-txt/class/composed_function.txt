@@ -1,0 +1,18 @@
+composed_function
+
+ -f-
+ -v-
+ -e-
+ -f-
+  composed_function
+   ->
+   ::const F &
+   -- ^f
+   ::const G &
+   -- ^g
+  operator()
+   ->result_type
+   ::const argument_type &
+   -- ^x
+ -v-
+ -e-

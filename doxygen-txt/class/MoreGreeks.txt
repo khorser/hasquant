@@ -1,0 +1,21 @@
+MoreGreeks
+ -- |more additional option results
+
+ -f-
+ -v-
+  itmCashProbability
+   ::Real
+  deltaForward
+   ::Real
+  elasticity
+   ::Real
+  thetaPerDay
+   ::Real
+  strikeSensitivity
+   ::Real
+ -e-
+ -f-
+  reset
+   ->void
+ -v-
+ -e-

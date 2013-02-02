@@ -1,0 +1,38 @@
+HybridHestonHullWhiteProcess
+ -- |Hybrid Heston Hull-White stochastic process.
+ -- |This class implements a three factor Heston Hull-White modelBugThis class was not tested enough to guarantee its functionality... work in progress
+
+ -f-
+ -v-
+ -e-
+  Discretization
+   Euler
+   BSMHullWhite
+ -f-
+  HybridHestonHullWhiteProcess
+   ->
+   ::const boost::shared_ptr< HestonProcess > &
+   -- ^hestonProcess
+   ::const boost::shared_ptr< HullWhiteForwardProcess > &
+   -- ^hullWhiteProcess
+   ::Real
+   -- ^corrEquityShortRate
+   ::Discretization
+   =BSMHullWhite
+   -- ^discretization
+  numeraire
+   ->DiscountFactor
+   ::Time
+   -- ^t
+   ::const Array &
+   -- ^x
+  hestonProcess
+   ->const boost::shared_ptr< HestonProcess > &
+  hullWhiteProcess
+   ->const boost::shared_ptr< HullWhiteForwardProcess > &
+  eta
+   ->Real
+  discretization
+   ->Discretization
+ -v-
+ -e-

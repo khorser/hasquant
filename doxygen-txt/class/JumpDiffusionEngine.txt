@@ -1,0 +1,19 @@
+JumpDiffusionEngine
+ -- |Jump-diffusion engine for vanilla options.
+ -- |Tests the correctness of the returned value is tested by reproducing results available in literature.the correctness of the returned greeks is tested by reproducing numerical derivatives.
+
+ -f-
+  JumpDiffusionEngine
+   ->
+   ::const boost::shared_ptr< Merton76Process > &
+   -- ^
+   ::Real
+   =1e-4
+   -- ^relativeAccuracy_
+   ::Size
+   =100
+   -- ^maxIterations
+  calculate
+   ->void
+ -v-
+ -e-

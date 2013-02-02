@@ -1,0 +1,32 @@
+MCBarrierEngine
+ -- |Pricing engine for barrier options using Monte Carlo simulation.
+ -- |Uses the Brownian-bridge correction for the barrier found in Going to Extremes: Correcting Simulation Bias in Exotic Option Valuation - D.R. Beaglehole, P.H. Dybvig and G. Zhou Financial Analysts Journal; Jan/Feb 1997; 53, 1. pg. 62-68 and Simulating path-dependent options: A new approach - M. El Babsiri and G. Noel Journal of Derivatives; Winter 1998; 6, 2; pg. 65-83 Teststhe correctness of the returned value is tested by reproducing results available in literature.
+
+ -f-
+ -v-
+ -e-
+ -f-
+  MCBarrierEngine
+   ->
+   ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+   -- ^process
+   ::Size
+   -- ^timeSteps
+   ::Size
+   -- ^timeStepsPerYear
+   ::bool
+   -- ^brownianBridge
+   ::bool
+   -- ^antitheticVariate
+   ::Size
+   -- ^requiredSamples
+   ::Real
+   -- ^requiredTolerance
+   ::Size
+   -- ^maxSamples
+   ::bool
+   -- ^isBiased
+   ::BigNatural
+   -- ^seed
+ -v-
+ -e-

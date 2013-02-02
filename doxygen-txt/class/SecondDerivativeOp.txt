@@ -1,0 +1,11 @@
+SecondDerivativeOp
+
+ -f-
+  SecondDerivativeOp
+   ->
+   ::Size
+   -- ^direction
+   ::const boost::shared_ptr< FdmMesher > &
+   -- ^mesher
+ -v-
+ -e-

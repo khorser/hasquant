@@ -1,0 +1,51 @@
+RiskyBond
+ -- |Base class for default risky bonds
+
+ -f-
+  RiskyBond
+   ->
+   ::std::string
+   -- ^name
+   ::Currency
+   -- ^ccy
+   ::Real
+   -- ^recoveryRate
+   ::Handle< DefaultProbabilityTermStructure >
+   -- ^defaultTS
+   ::Handle< YieldTermStructure >
+   -- ^yieldTS
+  ~RiskyBond
+   ->
+  cashflows
+   ->std::vector< boost::shared_ptr< CashFlow > >
+  expectedCashflows
+   ->std::vector< boost::shared_ptr< CashFlow > >
+  notional
+   ->Real
+   ::Date
+   =Date::minDate()
+   -- ^date
+  effectiveDate
+   ->Date
+  maturityDate
+   ->Date
+  interestFlows
+   ->std::vector< boost::shared_ptr< CashFlow > >
+  notionalFlows
+   ->std::vector< boost::shared_ptr< CashFlow > >
+  riskfreeNPV
+   ->Real
+  totalFutureFlows
+   ->Real
+  name
+   ->std::string
+  ccy
+   ->Currency
+  yieldTS
+   ->Handle< YieldTermStructure >
+  defaultTS
+   ->Handle< DefaultProbabilityTermStructure >
+  recoveryRate
+   ->Real
+ -v-
+ -e-

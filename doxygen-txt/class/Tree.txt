@@ -1,0 +1,13 @@
+Tree
+ -- |Tree approximating a single-factor diffusion
+ -- |Derived classes must implement the following interface: public: Realunderlying(Sizei,Sizeindex)const; Sizesize(Sizei)const; Sizedescendant(Sizei,Sizeindex,Sizebranch)const; Realprobability(Sizei,Sizeindex,Sizebranch)const; and provide a public enumeration enum{branches=N}; where N is a suitable constant (2 for binomial, 3 for trinomial...)
+
+ -f-
+  Tree
+   ->
+   ::Size
+   -- ^columns
+  columns
+   ->Size
+ -v-
+ -e-

@@ -1,0 +1,29 @@
+detail::QuadraticHelper
+
+ -f-
+  QuadraticHelper
+   ->
+   ::Real
+   -- ^xPrev
+   ::Real
+   -- ^xNext
+   ::Real
+   -- ^fPrev
+   ::Real
+   -- ^fNext
+   ::Real
+   -- ^fAverage
+   ::Real
+   -- ^prevPrimitive
+  value
+   ->Real
+   ::Real
+   -- ^x
+  primitive
+   ->Real
+   ::Real
+   -- ^x
+  fNext
+   ->Real
+ -v-
+ -e-

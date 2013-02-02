@@ -1,0 +1,89 @@
+OneFactorCopula
+ -- |Abstract base class for one-factor copula models.
+ -- |Reference: John Hull and Alan White, The Perfect Copula, June 2006 Let \form#87 be the cumulative probability of default of counterparty i before time t. In a one-factor model, consider random variables \[ Y_i = a_i\,M+\sqrt{1-a_i^2}\:Z_i \] where $M$ and $Z_i$ have independent zero-mean unit-variance distributions and $-1\leq a_i \leq 1$. The correlation between $Y_i$ and $Y_j$ is then $a_i a_j$. Let \form#95 be the cumulative distribution function of \form#92. $y$ is mapped to $t$ such that percentiles match, i.e. $F_Y(y)=Q_i(t)$ or $y=F_Y^{-1}(Q_i(t))$. Now let \form#100 be the cumulated distribution function of $Z_i$. For given realization of $M$, this determines the distribution of $y$: \[ Prob \,(Y_i < y|M) = F_Z \left( \frac{y-a_i\,M}{\sqrt{1-a_i^2}}\right) \qquad \mbox{or} \qquad Prob \,(t_i < t|M) = F_Z \left( \frac{F_Y^{-1}(Q_i(t))-a_i\,M} {\sqrt{1-a_i^2}} \right) \] The distribution functions of \form#102 are specified in derived classes. The distribution function of \form#103 is then given by the convolution \[ F_Y(y) = Prob\,(Y<y) = \int_{-\infty}^\infty\,\int_{-\infty}^{\infty}\: D_Z(z)\,D_M(m) \quad \Theta \left(y - a\,m - \sqrt{1-a^2}\,z\right)\,dm\,dz, \qquad \Theta (x) = \left\{ \begin{array}{ll} 1 & x \geq 0 \\ 0 & x < 0 \end{array}\right. \] where $ D_Z(z) $ and $ D_M(m) $ are the probability densities of $ Z$ and $ M, $ respectively.This convolution can also be written \[ F(y) = Prob \,(Y < y) = \int_{-\infty}^\infty D_M(m)\,dm\: \int_{-\infty}^{g(y,a,m)} D_Z(z)\,dz, \qquad g(y,a,m) = \frac{y - a\cdot m}{\sqrt{1-a^2}}, \qquad a < 1 \] or \[ F(y) = Prob \,(Y < y) = \int_{-\infty}^\infty D_Z(z)\,dz\: \int_{-\infty}^{h(y,a,z)} D_M(m)\,dm, \qquad h(y,a,z) = \frac{y - \sqrt{1 - a^2}\cdot z}{a}, \qquad a > 0. \] In general, \form#111 needs to be computed numerically. Possible enhancementsImprove on simple Euler integration
+
+ -f-
+  OneFactorCopula
+   ->
+   ::const Handle< Quote > &
+   -- ^correlation
+   ::Real
+   =5.0
+   -- ^maximum
+   ::Size
+   =50
+   -- ^integrationSteps
+   ::Real
+   =-5.0
+   -- ^minimum
+  -- Density function of M.
+  -- Derived classes must override this method and ensure zero mean and unit variance.
+  density
+   ->Real
+   ::Real
+   -- ^m
+  -- Cumulative distribution of Z.
+  -- Derived classes must override this method and ensure zero mean and unit variance.
+  cumulativeZ
+   ->Real
+   ::Real
+   -- ^z
+  -- Cumulative distribution of Y.
+  -- This is the default implementation based on tabulated data. The table needs to be filled by derived classes. If analytic calculation is feasible, this method can also be overridden.
+  cumulativeY
+   ->Real
+   ::Real
+   -- ^y
+  -- Inverse cumulative distribution of Y.
+  -- This is the default implementation based on tabulated data. The table needs to be filled by derived classes. If analytic calculation is feasible, this method can also be overridden.
+  inverseCumulativeY
+   ->Real
+   ::Real
+   -- ^p
+  -- Single correlation parameter.
+  correlation
+   ->Real
+  -- Conditional probability.
+  -- \[ \hat p(m) = F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]
+  conditionalProbability
+   ->Real
+   ::Real
+   -- ^prob
+   ::Real
+   -- ^m
+  -- Vector of conditional probabilities.
+  -- \[ \hat p_i(m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]
+  conditionalProbability
+   ->std::vector< Real >
+   ::const std::vector< Real > &
+   -- ^prob
+   ::Real
+   -- ^m
+  -- Integral over the density $ \rho(m) $ of M and the conditional probability related to p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]
+  integral
+   ->Real
+   ::Real
+   -- ^p
+  -- Integral over the density $ \rho(m) $ of M and a one-dimensional function $ f $ of conditional probabilities related to the input vector of probabilities p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, f (\hat p_1, \hat p_2, \dots, \hat p_N), \qquad \hat p_i (m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]
+  integral
+   ->Real
+   ::const F &
+   -- ^f
+   ::std::vector< Real > &
+   -- ^probabilities
+  -- Integral over the density $ \rho(m) $ of M and a multi-dimensional function $ f $ of conditional probabilities related to the input vector of probabilities p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, f (\hat p_1, \hat p_2, \dots, \hat p_N), \qquad \hat p_i = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}}\right) \]
+  integral
+   ->Distribution
+   ::const F &
+   -- ^f
+   ::const std::vector< Real > &
+   -- ^nominals
+   ::const std::vector< Real > &
+   -- ^probabilities
+  -- Check moments (unit norm, zero mean and unit variance) of the distributions of M, Z, and Y by numerically integrating the respective density. Parameter tolerance is the maximum tolerable absolute error.
+  checkMoments
+   ->int
+   ::Real
+   -- ^tolerance
+ -v-
+ -e-

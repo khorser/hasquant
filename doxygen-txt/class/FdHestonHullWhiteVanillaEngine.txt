@@ -1,0 +1,40 @@
+FdHestonHullWhiteVanillaEngine
+ -- |Finite-Differences Heston Hull-White Vanilla Option engine.
+ -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature and comparison with Black/Heston pricing.
+
+ -f-
+  FdHestonHullWhiteVanillaEngine
+   ->
+   ::const boost::shared_ptr< HestonModel > &
+   -- ^model
+   ::const boost::shared_ptr< HullWhiteProcess > &
+   -- ^hwProcess
+   ::Real
+   -- ^corrEquityShortRate
+   ::Size
+   =50
+   -- ^tGrid
+   ::Size
+   =100
+   -- ^xGrid
+   ::Size
+   =40
+   -- ^vGrid
+   ::Size
+   =20
+   -- ^rGrid
+   ::Size
+   =0
+   -- ^dampingSteps
+   ::bool
+   =true
+   -- ^controlVariate
+   ::const FdmSchemeDesc &
+   =FdmSchemeDesc::Hundsdorfer()
+   -- ^schemeDesc
+  enableMultipleStrikesCaching
+   ->void
+   ::const std::vector< Real > &
+   -- ^strikes
+ -v-
+ -e-

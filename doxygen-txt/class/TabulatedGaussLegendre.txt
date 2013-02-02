@@ -1,0 +1,21 @@
+TabulatedGaussLegendre
+ -- |tabulated Gauss-Legendre quadratures
+
+ -f-
+  TabulatedGaussLegendre
+   ->
+   ::Size
+   =20
+   -- ^n
+  operator()
+   ->Real
+   ::const F &
+   -- ^f
+  order
+   ->void
+   ::Size
+   -- ^
+  order
+   ->Size
+ -v-
+ -e-
