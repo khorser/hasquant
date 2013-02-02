@@ -1,7 +1,6 @@
 YearOnYearInflationSwap::arguments
  -- |Arguments for YoY swap calculation
 
- -f-
  -v-
   type
    ::Type
@@ -25,11 +24,8 @@ YearOnYearInflationSwap::arguments
    ::std::vector< Spread >
   yoyCoupons
    ::std::vector< Real >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

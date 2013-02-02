@@ -55,5 +55,3 @@ Fdm2dBlackScholesOp
    -- ^r
    ::Real
    -- ^s
- -v-
- -e-

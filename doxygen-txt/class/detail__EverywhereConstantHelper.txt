@@ -19,5 +19,3 @@ detail::EverywhereConstantHelper
    -- ^x
   fNext
    ->Real
- -v-
- -e-

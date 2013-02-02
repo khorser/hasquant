@@ -95,13 +95,9 @@ PiecewiseDefaultCurve
    -- ^dayCounter
    ::const Interpolator &
    -- ^i
- -v-
- -e-
  -f-
   maxDate
    ->Date
- -v-
- -e-
  -f-
   times
    ->const std::vector< Time > &
@@ -111,8 +107,3 @@ PiecewiseDefaultCurve
    ->const std::vector< Real > &
   nodes
    ->std::vector< std::pair< Date, Real > >
- -v-
- -e-
- -f-
- -v-
- -e-

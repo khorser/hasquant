@@ -22,5 +22,3 @@ ZeroCouponBond
    ::const Date &
    =Date()
    -- ^issueDate
- -v-
- -e-

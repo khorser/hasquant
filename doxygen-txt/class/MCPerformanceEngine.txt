@@ -2,9 +2,6 @@ MCPerformanceEngine
  -- |Pricing engine for performance options using Monte Carlo simulation.
 
  -f-
- -v-
- -e-
- -f-
   MCPerformanceEngine
    ->
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
@@ -21,5 +18,3 @@ MCPerformanceEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

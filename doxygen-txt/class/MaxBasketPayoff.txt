@@ -9,5 +9,3 @@ MaxBasketPayoff
    ->Real
    ::const Array &
    -- ^a
- -v-
- -e-

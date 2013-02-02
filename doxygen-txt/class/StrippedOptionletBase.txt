@@ -26,5 +26,3 @@ StrippedOptionletBase
    ->Natural
   businessDayConvention
    ->BusinessDayConvention
- -v-
- -e-

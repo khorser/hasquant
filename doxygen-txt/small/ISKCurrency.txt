@@ -5,5 +5,3 @@ ISKCurrency
  -f-
   ISKCurrency
    ->
- -v-
- -e-

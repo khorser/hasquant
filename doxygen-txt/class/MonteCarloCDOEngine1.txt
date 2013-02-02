@@ -8,5 +8,3 @@ MonteCarloCDOEngine1
    -- ^rdm
    ::Size
    -- ^samples
- -v-
- -e-

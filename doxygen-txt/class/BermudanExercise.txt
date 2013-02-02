@@ -10,5 +10,3 @@ BermudanExercise
    ::bool
    =false
    -- ^payoffAtExpiry
- -v-
- -e-

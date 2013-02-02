@@ -12,5 +12,3 @@ EarlyExercise
    -- ^payoffAtExpiry
   payoffAtExpiry
    ->bool
- -v-
- -e-

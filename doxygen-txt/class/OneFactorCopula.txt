@@ -16,62 +16,62 @@ OneFactorCopula
    ::Real
    =-5.0
    -- ^minimum
-  -- Density function of M.
-  -- Derived classes must override this method and ensure zero mean and unit variance.
+  -- |Density function of M.
+  -- |Derived classes must override this method and ensure zero mean and unit variance.
   density
    ->Real
    ::Real
    -- ^m
-  -- Cumulative distribution of Z.
-  -- Derived classes must override this method and ensure zero mean and unit variance.
+  -- |Cumulative distribution of Z.
+  -- |Derived classes must override this method and ensure zero mean and unit variance.
   cumulativeZ
    ->Real
    ::Real
    -- ^z
-  -- Cumulative distribution of Y.
-  -- This is the default implementation based on tabulated data. The table needs to be filled by derived classes. If analytic calculation is feasible, this method can also be overridden.
+  -- |Cumulative distribution of Y.
+  -- |This is the default implementation based on tabulated data. The table needs to be filled by derived classes. If analytic calculation is feasible, this method can also be overridden.
   cumulativeY
    ->Real
    ::Real
    -- ^y
-  -- Inverse cumulative distribution of Y.
-  -- This is the default implementation based on tabulated data. The table needs to be filled by derived classes. If analytic calculation is feasible, this method can also be overridden.
+  -- |Inverse cumulative distribution of Y.
+  -- |This is the default implementation based on tabulated data. The table needs to be filled by derived classes. If analytic calculation is feasible, this method can also be overridden.
   inverseCumulativeY
    ->Real
    ::Real
    -- ^p
-  -- Single correlation parameter.
+  -- |Single correlation parameter.
   correlation
    ->Real
-  -- Conditional probability.
-  -- \[ \hat p(m) = F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]
+  -- |Conditional probability.
+  -- |\[ \hat p(m) = F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]
   conditionalProbability
    ->Real
    ::Real
    -- ^prob
    ::Real
    -- ^m
-  -- Vector of conditional probabilities.
-  -- \[ \hat p_i(m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]
+  -- |Vector of conditional probabilities.
+  -- |\[ \hat p_i(m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]
   conditionalProbability
    ->std::vector< Real >
    ::const std::vector< Real > &
    -- ^prob
    ::Real
    -- ^m
-  -- Integral over the density $ \rho(m) $ of M and the conditional probability related to p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]
+  -- |Integral over the density $ \rho(m) $ of M and the conditional probability related to p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]
   integral
    ->Real
    ::Real
    -- ^p
-  -- Integral over the density $ \rho(m) $ of M and a one-dimensional function $ f $ of conditional probabilities related to the input vector of probabilities p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, f (\hat p_1, \hat p_2, \dots, \hat p_N), \qquad \hat p_i (m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]
+  -- |Integral over the density $ \rho(m) $ of M and a one-dimensional function $ f $ of conditional probabilities related to the input vector of probabilities p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, f (\hat p_1, \hat p_2, \dots, \hat p_N), \qquad \hat p_i (m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]
   integral
    ->Real
    ::const F &
    -- ^f
    ::std::vector< Real > &
    -- ^probabilities
-  -- Integral over the density $ \rho(m) $ of M and a multi-dimensional function $ f $ of conditional probabilities related to the input vector of probabilities p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, f (\hat p_1, \hat p_2, \dots, \hat p_N), \qquad \hat p_i = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}}\right) \]
+  -- |Integral over the density $ \rho(m) $ of M and a multi-dimensional function $ f $ of conditional probabilities related to the input vector of probabilities p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, f (\hat p_1, \hat p_2, \dots, \hat p_N), \qquad \hat p_i = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}}\right) \]
   integral
    ->Distribution
    ::const F &
@@ -80,10 +80,8 @@ OneFactorCopula
    -- ^nominals
    ::const std::vector< Real > &
    -- ^probabilities
-  -- Check moments (unit norm, zero mean and unit variance) of the distributions of M, Z, and Y by numerically integrating the respective density. Parameter tolerance is the maximum tolerable absolute error.
+  -- |Check moments (unit norm, zero mean and unit variance) of the distributions of M, Z, and Y by numerically integrating the respective density. Parameter tolerance is the maximum tolerable absolute error.
   checkMoments
    ->int
    ::Real
    -- ^tolerance
- -v-
- -e-

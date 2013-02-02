@@ -9,5 +9,3 @@ HimalayaOption
    -- ^fixingDates
    ::Real
    -- ^strike
- -v-
- -e-

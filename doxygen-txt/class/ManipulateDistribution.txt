@@ -7,5 +7,3 @@ ManipulateDistribution
    -- ^d1
    ::const Distribution &
    -- ^d2
- -v-
- -e-

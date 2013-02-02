@@ -9,5 +9,3 @@ AssetOrNothingPayoff
    -- ^type
    ::Real
    -- ^strike
- -v-
- -e-

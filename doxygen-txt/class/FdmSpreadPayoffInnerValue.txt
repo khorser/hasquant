@@ -21,5 +21,3 @@ FdmSpreadPayoffInnerValue
    -- ^iter
    ::Time
    -- ^t
- -v-
- -e-

@@ -1,26 +1,24 @@
 ForwardRateAgreement
 
  -f-
-  -- A FRA expires/settles on the valueDate
+  -- |A FRA expires/settles on the valueDate
   isExpired
    ->bool
-  -- This returns evaluationDate + settlementDays (not FRA valueDate).
+  -- |This returns evaluationDate + settlementDays (not FRA valueDate).
   settlementDate
    ->Date
-  -- Income is zero for a FRA
+  -- |Income is zero for a FRA
   spotIncome
    ->Real
    ::const Handle< YieldTermStructure > &
    -- ^incomeDiscountCurve
-  -- Spot value (NPV) of the underlying loan.
-  -- This has always a positive value (asset), even if short the FRA
+  -- |Spot value (NPV) of the underlying loan.
+  -- |This has always a positive value (asset), even if short the FRA
   spotValue
    ->Real
-  -- Returns the relevant forward rate associated with the FRA term.
+  -- |Returns the relevant forward rate associated with the FRA term.
   forwardRate
    ->InterestRate
- -v-
- -e-
  -f-
   ForwardRateAgreement
    ->
@@ -39,5 +37,3 @@ ForwardRateAgreement
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^discountCurve
- -v-
- -e-

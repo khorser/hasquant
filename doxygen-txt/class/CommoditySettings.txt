@@ -6,5 +6,3 @@ CommoditySettings
    ->Currency &
   unitOfMeasure
    ->UnitOfMeasure &
- -v-
- -e-

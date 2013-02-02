@@ -3,9 +3,6 @@ MCEuropeanGJRGARCHEngine
  -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature
 
  -f-
- -v-
- -e-
- -f-
   MCEuropeanGJRGARCHEngine
    ->
    ::const boost::shared_ptr< GJRGARCHProcess > &
@@ -24,5 +21,3 @@ MCEuropeanGJRGARCHEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

@@ -50,5 +50,3 @@ Fdm2dBlackScholesSolver
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

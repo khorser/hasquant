@@ -1,6 +1,5 @@
 PagodaOption::arguments
 
- -f-
  -v-
   fixingDates
    ::std::vector< Date >
@@ -8,11 +7,8 @@ PagodaOption::arguments
    ::Real
   fraction
    ::Real
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

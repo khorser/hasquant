@@ -15,5 +15,3 @@ Disposable
    ->Disposable< T > &
    ::const Disposable< T > &
    -- ^t
- -v-
- -e-

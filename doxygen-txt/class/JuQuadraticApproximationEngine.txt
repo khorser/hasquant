@@ -9,5 +9,3 @@ JuQuadraticApproximationEngine
    -- ^
   calculate
    ->void
- -v-
- -e-

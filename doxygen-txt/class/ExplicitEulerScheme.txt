@@ -1,9 +1,6 @@
 ExplicitEulerScheme
 
  -f-
- -v-
- -e-
- -f-
   ExplicitEulerScheme
    ->
    ::const boost::shared_ptr< FdmLinearOpComposite > &
@@ -21,5 +18,3 @@ ExplicitEulerScheme
    ->void
    ::Time
    -- ^dt
- -v-
- -e-

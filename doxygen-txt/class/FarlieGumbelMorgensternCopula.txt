@@ -12,5 +12,3 @@ FarlieGumbelMorgensternCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

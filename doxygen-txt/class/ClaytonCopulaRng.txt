@@ -2,9 +2,6 @@ ClaytonCopulaRng
  -- |Clayton copula random-number generator.
 
  -f-
- -v-
- -e-
- -f-
   ClaytonCopulaRng
    ->
    ::const RNG &
@@ -13,5 +10,3 @@ ClaytonCopulaRng
    -- ^theta
   next
    ->sample_type
- -v-
- -e-

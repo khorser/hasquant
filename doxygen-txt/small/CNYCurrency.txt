@@ -5,5 +5,3 @@ CNYCurrency
  -f-
   CNYCurrency
    ->
- -v-
- -e-

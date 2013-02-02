@@ -7,7 +7,7 @@ CPICapFloor
    ->Option::Type
   nominal
    ->Real
-  -- $ K $ in the above formula.
+  -- |$ K $ in the above formula.
   strike
    ->Rate
   fixingDate
@@ -18,8 +18,6 @@ CPICapFloor
    ->Handle< ZeroInflationIndex >
   observationLag
    ->Period
- -v-
- -e-
  -f-
   CPICapFloor
    ->
@@ -50,5 +48,3 @@ CPICapFloor
    ::CPI::InterpolationType
    =CPI::AsIndex
    -- ^observationInterpolation
- -v-
- -e-

@@ -5,5 +5,3 @@ NewZealand
  -f-
   NewZealand
    ->
- -v-
- -e-

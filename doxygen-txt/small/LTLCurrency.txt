@@ -5,5 +5,3 @@ LTLCurrency
  -f-
   LTLCurrency
    ->
- -v-
- -e-

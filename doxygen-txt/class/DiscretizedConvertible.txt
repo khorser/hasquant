@@ -28,5 +28,3 @@ DiscretizedConvertible
    ->Array &
   mandatoryTimes
    ->std::vector< Time >
- -v-
- -e-

@@ -19,8 +19,6 @@ MultiStepCoterminalSwaptions
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   MultiStepCoterminalSwaptions
    ->
@@ -30,5 +28,3 @@ MultiStepCoterminalSwaptions
    -- ^paymentTimes
    ::const std::vector< boost::shared_ptr< StrikedTypePayoff > > &
    -- ^
- -v-
- -e-

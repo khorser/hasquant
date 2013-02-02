@@ -7,5 +7,3 @@ GarmanKlassSigma1
    -- ^y
    ::Real
    -- ^marketOpenFraction
- -v-
- -e-

@@ -7,5 +7,3 @@ NumericHaganPricer::Function
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

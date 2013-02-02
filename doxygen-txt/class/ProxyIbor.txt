@@ -26,5 +26,3 @@ ProxyIbor
    -- ^iborIndex
    ::const Handle< Quote > &
    -- ^spread
- -v-
- -e-

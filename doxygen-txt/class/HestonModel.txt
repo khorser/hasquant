@@ -19,5 +19,3 @@ HestonModel
    ->Real
   process
    ->boost::shared_ptr< HestonProcess >
- -v-
- -e-

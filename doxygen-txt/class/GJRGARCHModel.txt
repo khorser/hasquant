@@ -21,5 +21,3 @@ GJRGARCHModel
    ->Real
   process
    ->boost::shared_ptr< GJRGARCHProcess >
- -v-
- -e-

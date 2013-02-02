@@ -5,5 +5,3 @@ INRCurrency
  -f-
   INRCurrency
    ->
- -v-
- -e-

@@ -70,5 +70,3 @@ yoyInflationLeg
    -- ^floors
   operator Leg
    ->
- -v-
- -e-

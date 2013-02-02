@@ -25,10 +25,8 @@ BankruptcyEvent
    -- ^settleDate
    ::Real
    -- ^recoveryRates
-  -- This is a stronger than all event and will trigger all of them.
+  -- |This is a stronger than all event and will trigger all of them.
   matchesEventType
    ->bool
    ::const boost::shared_ptr< DefaultType > &
    -- ^
- -v-
- -e-

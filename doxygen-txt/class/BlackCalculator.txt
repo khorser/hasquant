@@ -31,71 +31,69 @@ BlackCalculator
    ->
   value
    ->Real
-  -- Sensitivity to change in the underlying forward price.
+  -- |Sensitivity to change in the underlying forward price.
   deltaForward
    ->Real
-  -- Sensitivity to change in the underlying spot price.
+  -- |Sensitivity to change in the underlying spot price.
   delta
    ->Real
    ::Real
    -- ^spot
-  -- Sensitivity in percent to a percent change in the underlying forward price.
+  -- |Sensitivity in percent to a percent change in the underlying forward price.
   elasticityForward
    ->Real
-  -- Sensitivity in percent to a percent change in the underlying spot price.
+  -- |Sensitivity in percent to a percent change in the underlying spot price.
   elasticity
    ->Real
    ::Real
    -- ^spot
-  -- Second order derivative with respect to change in the underlying forward price.
+  -- |Second order derivative with respect to change in the underlying forward price.
   gammaForward
    ->Real
-  -- Second order derivative with respect to change in the underlying spot price.
+  -- |Second order derivative with respect to change in the underlying spot price.
   gamma
    ->Real
    ::Real
    -- ^spot
-  -- Sensitivity to time to maturity.
+  -- |Sensitivity to time to maturity.
   theta
    ->Real
    ::Real
    -- ^spot
    ::Time
    -- ^maturity
-  -- Sensitivity to time to maturity per day, assuming 365 day per year.
+  -- |Sensitivity to time to maturity per day, assuming 365 day per year.
   thetaPerDay
    ->Real
    ::Real
    -- ^spot
    ::Time
    -- ^maturity
-  -- Sensitivity to volatility.
+  -- |Sensitivity to volatility.
   vega
    ->Real
    ::Time
    -- ^maturity
-  -- Sensitivity to discounting rate.
+  -- |Sensitivity to discounting rate.
   rho
    ->Real
    ::Time
    -- ^maturity
-  -- Sensitivity to dividend/growth rate.
+  -- |Sensitivity to dividend/growth rate.
   dividendRho
    ->Real
    ::Time
    -- ^maturity
-  -- Probability of being in the money in the bond martingale measure, i.e. N(d2). It is a risk-neutral probability, not the real world one.
+  -- |Probability of being in the money in the bond martingale measure, i.e. N(d2). It is a risk-neutral probability, not the real world one.
   itmCashProbability
    ->Real
-  -- Probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one.
+  -- |Probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one.
   itmAssetProbability
    ->Real
-  -- Sensitivity to strike.
+  -- |Sensitivity to strike.
   strikeSensitivity
    ->Real
   alpha
    ->Real
   beta
    ->Real
- -v-
- -e-

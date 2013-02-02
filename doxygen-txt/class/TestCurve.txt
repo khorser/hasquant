@@ -5,5 +5,3 @@ TestCurve
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

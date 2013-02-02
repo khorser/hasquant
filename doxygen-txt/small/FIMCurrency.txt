@@ -5,5 +5,3 @@ FIMCurrency
  -f-
   FIMCurrency
    ->
- -v-
- -e-

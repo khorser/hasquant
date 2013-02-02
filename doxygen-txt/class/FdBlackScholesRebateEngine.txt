@@ -24,5 +24,3 @@ FdBlackScholesRebateEngine
    ::Real
    =-Null< Real >()
    -- ^illegalLocalVolOverwrite
- -v-
- -e-

@@ -4,12 +4,10 @@ OptimizationMethod
  -f-
   ~OptimizationMethod
    ->
-  -- minimize the optimization problem P
+  -- |minimize the optimization problem P
   minimize
    ->EndCriteria::Type
    ::Problem &
    -- ^P
    ::const EndCriteria &
    -- ^endCriteria
- -v-
- -e-

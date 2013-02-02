@@ -99,5 +99,3 @@ FloatingRateBond
    ::bool
    =false
    -- ^endOfMonth
- -v-
- -e-

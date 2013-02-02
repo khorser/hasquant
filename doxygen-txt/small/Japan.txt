@@ -5,5 +5,3 @@ Japan
  -f-
   Japan
    ->
- -v-
- -e-

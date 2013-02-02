@@ -9,5 +9,3 @@ LmExponentialCorrelationModel
    -- ^size
    ::Real
    -- ^rho
- -v-
- -e-

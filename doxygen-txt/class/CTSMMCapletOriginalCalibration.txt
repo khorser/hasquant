@@ -21,8 +21,6 @@ CTSMMCapletOriginalCalibration
    -- ^lowestRoot
    ::bool
    -- ^useFullApprox
- -v-
- -e-
  -f-
   calibrationFunction
    ->Natural
@@ -48,5 +46,3 @@ CTSMMCapletOriginalCalibration
    -- ^numberOfFactors
    ::std::vector< Matrix > &
    -- ^swapCovariancePseudoRoots
- -v-
- -e-

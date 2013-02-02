@@ -5,8 +5,6 @@ SubPeriodsCoupon
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-
  -f-
   SubPeriodsCoupon
    ->
@@ -52,5 +50,3 @@ SubPeriodsCoupon
    ->Real
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
- -v-
- -e-

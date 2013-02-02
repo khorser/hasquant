@@ -15,12 +15,10 @@ SMMDriftCalculator
    -- ^numeraire
    ::Size
    -- ^alive
-  -- Computes the drifts.
+  -- |Computes the drifts.
   compute
    ->void
    ::const CoterminalSwapCurveState &
    -- ^cs
    ::std::vector< Real > &
    -- ^drifts
- -v-
- -e-

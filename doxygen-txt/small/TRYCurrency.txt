@@ -5,5 +5,3 @@ TRYCurrency
  -f-
   TRYCurrency
    ->
- -v-
- -e-

@@ -26,5 +26,3 @@ ExtendedEqualJumpsBinomialTree
    -- ^
    ::Size
    -- ^branch
- -v-
- -e-

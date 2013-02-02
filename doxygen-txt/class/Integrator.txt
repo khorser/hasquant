@@ -9,15 +9,11 @@ Integrator
    ->void
    ::Size
    -- ^
- -v-
- -e-
  -f-
   absoluteAccuracy
    ->Real
   maxEvaluations
    ->Size
- -v-
- -e-
  -f-
   Integrator
    ->
@@ -41,5 +37,3 @@ Integrator
    ->Size
   integrationSuccess
    ->bool
- -v-
- -e-

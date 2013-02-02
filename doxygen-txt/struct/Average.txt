@@ -1,8 +1,6 @@
 Average
  -- |Placeholder for enumerated averaging types.
 
- -f-
- -v-
  -e-
   Type
    Arithmetic

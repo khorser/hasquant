@@ -18,8 +18,6 @@ CTSMMCapletMaxHomogeneityCalibration
    ::Real
    =1.0
    -- ^caplet0Swaption1Priority
- -v-
- -e-
  -f-
   capletMaxHomogeneityCalibration
    ->Natural
@@ -49,5 +47,3 @@ CTSMMCapletMaxHomogeneityCalibration
    -- ^totalSwaptionError
    ::std::vector< Matrix > &
    -- ^swapCovariancePseudoRoots
- -v-
- -e-

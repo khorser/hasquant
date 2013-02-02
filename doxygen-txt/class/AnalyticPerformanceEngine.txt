@@ -7,5 +7,3 @@ AnalyticPerformanceEngine
    ->
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
    -- ^process
- -v-
- -e-

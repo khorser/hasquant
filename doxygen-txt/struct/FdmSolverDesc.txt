@@ -1,6 +1,5 @@
 FdmSolverDesc
 
- -f-
  -v-
   mesher
    ::const boost::shared_ptr< FdmMesher >
@@ -16,4 +15,3 @@ FdmSolverDesc
    ::const Size
   dampingSteps
    ::const Size
- -e-

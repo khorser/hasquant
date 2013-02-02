@@ -11,5 +11,3 @@ CumulativeStudentDistribution
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

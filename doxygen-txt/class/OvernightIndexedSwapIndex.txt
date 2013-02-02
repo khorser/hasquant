@@ -4,13 +4,11 @@ OvernightIndexedSwapIndex
  -f-
   overnightIndex
    ->boost::shared_ptr< OvernightIndex >
-  -- WarningRelinking the term structure underlying the index will not have effect on the returned swap.
+  -- |WarningRelinking the term structure underlying the index will not have effect on the returned swap.
   underlyingSwap
    ->boost::shared_ptr< OvernightIndexedSwap >
    ::const Date &
    -- ^fixingDate
- -v-
- -e-
  -f-
   OvernightIndexedSwapIndex
    ->
@@ -24,5 +22,3 @@ OvernightIndexedSwapIndex
    -- ^currency
    ::const boost::shared_ptr< OvernightIndex > &
    -- ^overnightIndex
- -v-
- -e-

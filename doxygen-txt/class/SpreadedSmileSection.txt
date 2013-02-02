@@ -13,13 +13,9 @@ SpreadedSmileSection
    ->Time
   dayCounter
    ->const DayCounter &
- -v-
- -e-
  -f-
   update
    ->void
- -v-
- -e-
  -f-
   SpreadedSmileSection
    ->
@@ -27,5 +23,3 @@ SpreadedSmileSection
    -- ^
    ::const Handle< Quote > &
    -- ^spread
- -v-
- -e-

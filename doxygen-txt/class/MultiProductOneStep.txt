@@ -7,5 +7,3 @@ MultiProductOneStep
    ->
    ::const std::vector< Time > &
    -- ^rateTimes
- -v-
- -e-

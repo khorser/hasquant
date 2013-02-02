@@ -1,6 +1,5 @@
 ExchangeRateManager::Entry
 
- -f-
  -v-
   rate
    ::ExchangeRate
@@ -8,7 +7,6 @@ ExchangeRateManager::Entry
    ::Date
   endDate
    ::Date
- -e-
  -f-
   Entry
    ->
@@ -20,5 +18,3 @@ ExchangeRateManager::Entry
    -- ^start
    ::const Date &
    -- ^end
- -v-
- -e-

@@ -9,5 +9,3 @@ BjerksundStenslandApproximationEngine
    -- ^
   calculate
    ->void
- -v-
- -e-

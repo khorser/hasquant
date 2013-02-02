@@ -38,5 +38,3 @@ EnergyVanillaSwap
    ->const UnitOfMeasure &
   index
    ->const boost::shared_ptr< CommodityIndex > &
- -v-
- -e-

@@ -1,6 +1,5 @@
 detail::SABRCoeffHolder
 
- -f-
  -v-
   -- |Option expiry
   t_
@@ -33,7 +32,6 @@ detail::SABRCoeffHolder
    ::Real
   SABREndCriteria_
    ::EndCriteria::Type
- -e-
  -f-
   SABRCoeffHolder
    ->
@@ -59,5 +57,3 @@ detail::SABRCoeffHolder
    -- ^rhoIsFixed
   ~SABRCoeffHolder
    ->
- -v-
- -e-

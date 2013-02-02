@@ -50,5 +50,3 @@ FdmHestonHullWhiteSolver
    -- ^r
    ::Real
    -- ^eps
- -v-
- -e-

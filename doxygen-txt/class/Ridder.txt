@@ -9,5 +9,3 @@ Ridder
    -- ^f
    ::Real
    -- ^xAcc
- -v-
- -e-

@@ -19,26 +19,24 @@ BrownianBridge
    ->const std::vector< Real > &
   stdDeviation
    ->const std::vector< Real > &
- -v-
- -e-
  -f-
-  -- The constructor generates the time grid so that each step is of unit-time length. steps The number of steps in the path
+  -- |The constructor generates the time grid so that each step is of unit-time length. steps The number of steps in the path
   BrownianBridge
    ->
    ::Size
    -- ^steps
-  -- The step times are copied from the supplied vector times A vector containing the times at which the steps occur. This also defines the number of steps that will be generated. the starting time of the path is assumed to be 0 and must not be included
+  -- |The step times are copied from the supplied vector times A vector containing the times at which the steps occur. This also defines the number of steps that will be generated. the starting time of the path is assumed to be 0 and must not be included
   BrownianBridge
    ->
    ::const std::vector< Time > &
    -- ^times
-  -- The step times are copied from the TimeGrid object timeGrid a time grid containing the times at which the steps will occur
+  -- |The step times are copied from the TimeGrid object timeGrid a time grid containing the times at which the steps will occur
   BrownianBridge
    ->
    ::const TimeGrid &
    -- ^timeGrid
-  -- Brownian-bridge generator function.
-  -- Transforms an input sequence of random variates into a sequence of variations in a Brownian bridge path. begin The start iterator of the input sequence. end The end iterator of the input sequence. output The start iterator of the output sequence. To get the canonical Brownian bridge which starts and finishes at the same value, the first element of the input sequence must be zero. Conversely, to get a sloped bridge set the first element to a non-zero value. In this case, the final value in the bridge will be sqrt(last time point)*(first element of input sequence).
+  -- |Brownian-bridge generator function.
+  -- |Transforms an input sequence of random variates into a sequence of variations in a Brownian bridge path. begin The start iterator of the input sequence. end The end iterator of the input sequence. output The start iterator of the output sequence. To get the canonical Brownian bridge which starts and finishes at the same value, the first element of the input sequence must be zero. Conversely, to get a sloped bridge set the first element to a non-zero value. In this case, the final value in the bridge will be sqrt(last time point)*(first element of input sequence).
   transform
    ->void
    ::RandomAccessIterator1
@@ -47,5 +45,3 @@ BrownianBridge
    -- ^end
    ::RandomAccessIterator2
    -- ^output
- -v-
- -e-

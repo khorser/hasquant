@@ -1,7 +1,5 @@
 FdmSchemeDesc
 
- -f-
- -v-
  -e-
   FdmSchemeType
    HundsdorferType
@@ -10,7 +8,6 @@ FdmSchemeDesc
    ModifiedCraigSneydType
    ImplicitEulerType
    ExplicitEulerType
- -f-
  -v-
   type
    ::const FdmSchemeType
@@ -18,7 +15,6 @@ FdmSchemeDesc
    ::const Real
   mu
    ::const Real
- -e-
  -f-
   FdmSchemeDesc
    ->
@@ -28,8 +24,6 @@ FdmSchemeDesc
    -- ^theta
    ::Real
    -- ^mu
- -v-
- -e-
  -f-
   Douglas
    ->FdmSchemeDesc
@@ -45,5 +39,3 @@ FdmSchemeDesc
    ->FdmSchemeDesc
   ModifiedHundsdorfer
    ->FdmSchemeDesc
- -v-
- -e-

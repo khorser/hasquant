@@ -3,9 +3,6 @@ MCDiscreteArithmeticAPEngine
  -- |Monte Carlo pricing engine for discrete arithmetic average price Asian options. It can use MCDiscreteGeometricAPEngine (Monte Carlo discrete arithmetic average price engine) and AnalyticDiscreteGeometricAveragePriceAsianEngine (analytic discrete arithmetic average price engine) for control variation.Teststhe correctness of the returned value is tested by reproducing results available in literature.
 
  -f-
- -v-
- -e-
- -f-
   MCDiscreteArithmeticAPEngine
    ->
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
@@ -24,5 +21,3 @@ MCDiscreteArithmeticAPEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

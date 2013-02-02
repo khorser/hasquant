@@ -1,6 +1,5 @@
 detail::CoefficientHolder
 
- -f-
  -v-
   n_
    ::Size
@@ -14,7 +13,6 @@ detail::CoefficientHolder
    ::std::vector< Real >
   monotonicityAdjustments_
    ::std::vector< bool >
- -e-
  -f-
   CoefficientHolder
    ->
@@ -22,5 +20,3 @@ detail::CoefficientHolder
    -- ^n
   ~CoefficientHolder
    ->
- -v-
- -e-

@@ -2,8 +2,6 @@ TrinomialTree
  -- |Recombining trinomial tree class.
  -- |This class defines a recombining trinomial tree approximating a 1-D stochastic process. WarningThe diffusion term of the SDE must be independent of the underlying process.
 
- -f-
- -v-
  -e-
   Branches
    branches
@@ -49,5 +47,3 @@ TrinomialTree
    -- ^index
    ::Size
    -- ^branch
- -v-
- -e-

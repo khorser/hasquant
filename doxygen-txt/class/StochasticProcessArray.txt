@@ -14,5 +14,3 @@ StochasticProcessArray
    -- ^i
   correlation
    ->Disposable< Matrix >
- -v-
- -e-

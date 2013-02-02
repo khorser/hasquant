@@ -1,9 +1,6 @@
 MCEverestEngine
 
  -f-
- -v-
- -e-
- -f-
   MCEverestEngine
    ->
    ::const boost::shared_ptr< StochasticProcessArray > &
@@ -26,5 +23,3 @@ MCEverestEngine
    -- ^seed
   calculate
    ->void
- -v-
- -e-

@@ -12,7 +12,7 @@ DividendVanillaOption
    -- ^dividendDates
    ::const std::vector< Real > &
    -- ^dividends
-  -- Warningsee VanillaOption for notes on implied-volatility calculation.
+  -- |Warningsee VanillaOption for notes on implied-volatility calculation.
   impliedVolatility
    ->Volatility
    ::Real
@@ -31,5 +31,3 @@ DividendVanillaOption
    ::Volatility
    =4.0
    -- ^maxVol
- -v-
- -e-

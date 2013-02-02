@@ -12,5 +12,3 @@ InverseCumulativePoisson
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

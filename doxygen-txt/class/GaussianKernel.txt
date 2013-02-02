@@ -16,5 +16,3 @@ GaussianKernel
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

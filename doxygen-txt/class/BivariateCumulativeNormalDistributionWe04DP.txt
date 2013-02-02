@@ -13,5 +13,3 @@ BivariateCumulativeNormalDistributionWe04DP
    -- ^a
    ::Real
    -- ^b
- -v-
- -e-

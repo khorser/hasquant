@@ -13,5 +13,3 @@ CommodityUnitCost
    ->const Money &
   unitOfMeasure
    ->const UnitOfMeasure &
- -v-
- -e-

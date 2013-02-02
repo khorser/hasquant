@@ -31,5 +31,3 @@ FdmMesher
    -- ^direction
   layout
    ->const boost::shared_ptr< FdmLinearOpLayout > &
- -v-
- -e-

@@ -17,15 +17,11 @@ YoYInflationCapFloor
    ->Date
   lastYoYInflationCoupon
    ->boost::shared_ptr< YoYInflationCoupon >
-  -- Returns the n-th optionlet as a cap/floor with only one cash flow.
+  -- |Returns the n-th optionlet as a cap/floor with only one cash flow.
   optionlet
    ->boost::shared_ptr< YoYInflationCapFloor >
    ::const Size
    -- ^n
- -v-
- -e-
- -f-
- -v-
  -e-
   Type
    Cap
@@ -54,7 +50,7 @@ YoYInflationCapFloor
    ->Rate
    ::const YieldTermStructure &
    -- ^discountCurve
-  -- implied term volatility
+  -- |implied term volatility
   impliedVolatility
    ->Volatility
    ::Real
@@ -75,5 +71,3 @@ YoYInflationCapFloor
    ::Volatility
    =4.0
    -- ^maxVol
- -v-
- -e-

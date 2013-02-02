@@ -4,5 +4,3 @@ OneAssetOption::results
  -f-
   reset
    ->void
- -v-
- -e-

@@ -2,9 +2,6 @@ FiniteDifferenceModel
  -- |Generic finite difference model.
 
  -f-
- -v-
- -e-
- -f-
   FiniteDifferenceModel
    ->
    ::const operator_type &
@@ -23,7 +20,7 @@ FiniteDifferenceModel
    -- ^stoppingTimes
   evolver
    ->const Evolver &
-  -- solves the problem between the given times. Warningbeing this a rollback, from must be a later time than to.
+  -- |solves the problem between the given times. Warningbeing this a rollback, from must be a later time than to.
   rollback
    ->void
    ::array_type &
@@ -34,7 +31,7 @@ FiniteDifferenceModel
    -- ^to
    ::Size
    -- ^steps
-  -- solves the problem between the given times, applying a condition at every step. Warningbeing this a rollback, from must be a later time than to.
+  -- |solves the problem between the given times, applying a condition at every step. Warningbeing this a rollback, from must be a later time than to.
   rollback
    ->void
    ::array_type &
@@ -47,5 +44,3 @@ FiniteDifferenceModel
    -- ^steps
    ::const condition_type &
    -- ^condition
- -v-
- -e-

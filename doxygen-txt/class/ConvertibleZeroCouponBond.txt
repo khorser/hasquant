@@ -26,5 +26,3 @@ ConvertibleZeroCouponBond
    ::Real
    =100
    -- ^redemption
- -v-
- -e-

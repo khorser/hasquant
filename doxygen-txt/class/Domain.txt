@@ -16,5 +16,3 @@ Domain
    -- ^y
   ~Domain
    ->
- -v-
- -e-

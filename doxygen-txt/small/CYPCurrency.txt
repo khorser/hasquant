@@ -5,5 +5,3 @@ CYPCurrency
  -f-
   CYPCurrency
    ->
- -v-
- -e-

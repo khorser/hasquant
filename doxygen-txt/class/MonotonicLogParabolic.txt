@@ -1,7 +1,7 @@
 MonotonicLogParabolic
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   MonotonicLogParabolic
    ->
    ::const I1 &
@@ -10,5 +10,3 @@ MonotonicLogParabolic
    -- ^xEnd
    ::const I2 &
    -- ^yBegin
- -v-
- -e-

@@ -34,5 +34,3 @@ LmConstWrapperCorrelationModel
    -- ^x
   isTimeIndependent
    ->bool
- -v-
- -e-

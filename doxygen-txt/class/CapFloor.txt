@@ -17,15 +17,11 @@ CapFloor
    ->Date
   lastFloatingRateCoupon
    ->boost::shared_ptr< FloatingRateCoupon >
-  -- Returns the n-th optionlet as a new CapFloor with only one cash flow.
+  -- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
   optionlet
    ->boost::shared_ptr< CapFloor >
    ::const Size
    -- ^n
- -v-
- -e-
- -f-
- -v-
  -e-
   Type
    Cap
@@ -54,7 +50,7 @@ CapFloor
    ->Rate
    ::const YieldTermStructure &
    -- ^discountCurve
-  -- implied term volatility
+  -- |implied term volatility
   impliedVolatility
    ->Volatility
    ::Real
@@ -75,5 +71,3 @@ CapFloor
    ::Volatility
    =4.0
    -- ^maxVol
- -v-
- -e-

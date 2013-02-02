@@ -17,5 +17,3 @@ YoYInflationCapFloorEngine
    ->void
    ::const Handle< YoYOptionletVolatilitySurface > &
    -- ^vol
- -v-
- -e-

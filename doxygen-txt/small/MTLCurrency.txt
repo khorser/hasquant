@@ -5,5 +5,3 @@ MTLCurrency
  -f-
   MTLCurrency
    ->
- -v-
- -e-

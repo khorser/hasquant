@@ -25,5 +25,3 @@ FdBlackScholesBarrierEngine
    ::Real
    =-Null< Real >()
    -- ^illegalLocalVolOverwrite
- -v-
- -e-

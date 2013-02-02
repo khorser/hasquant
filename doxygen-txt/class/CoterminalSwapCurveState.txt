@@ -10,12 +10,8 @@ CoterminalSwapCurveState
    ::Size
    =0
    -- ^firstValidIndex
- -v-
- -e-
  -f-
   CoterminalSwapCurveState
    ->
    ::const std::vector< Time > &
    -- ^rateTimes
- -v-
- -e-

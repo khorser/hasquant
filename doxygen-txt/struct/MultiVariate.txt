@@ -1,8 +1,6 @@
 MultiVariate
  -- |default Monte Carlo traits for multi-variate models
 
- -f-
- -v-
  -e-
   @4
    allowsErrorEstimate

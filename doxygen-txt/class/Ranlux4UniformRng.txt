@@ -1,9 +1,6 @@
 Ranlux4UniformRng
 
  -f-
- -v-
- -e-
- -f-
   Ranlux4UniformRng
    ->
    ::Size
@@ -11,5 +8,3 @@ Ranlux4UniformRng
    -- ^seed
   next
    ->sample_type
- -v-
- -e-

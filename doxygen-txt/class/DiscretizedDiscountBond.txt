@@ -4,5 +4,3 @@ DiscretizedDiscountBond
  -f-
   DiscretizedDiscountBond
    ->
- -v-
- -e-

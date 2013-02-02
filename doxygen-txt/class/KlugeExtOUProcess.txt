@@ -16,5 +16,3 @@ KlugeExtOUProcess
    ->boost::shared_ptr< ExtendedOrnsteinUhlenbeckProcess >
   rho
    ->Real
- -v-
- -e-

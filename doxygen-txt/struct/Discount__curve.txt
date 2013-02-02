@@ -1,5 +1,1 @@
 Discount::curve
-
- -f-
- -v-
- -e-

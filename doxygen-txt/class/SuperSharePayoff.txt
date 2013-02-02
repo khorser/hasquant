@@ -16,5 +16,3 @@ SuperSharePayoff
    ->Real
   cashPayoff
    ->Real
- -v-
- -e-

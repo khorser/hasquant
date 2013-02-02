@@ -5,5 +5,3 @@ LUFCurrency
  -f-
   LUFCurrency
    ->
- -v-
- -e-

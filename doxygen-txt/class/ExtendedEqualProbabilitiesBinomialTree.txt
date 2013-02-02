@@ -26,5 +26,3 @@ ExtendedEqualProbabilitiesBinomialTree
    -- ^
    ::Size
    -- ^
- -v-
- -e-

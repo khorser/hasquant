@@ -11,5 +11,3 @@ SimpleLocalEstimator
    ->TimeSeries< Volatility >
    ::const TimeSeries< Real > &
    -- ^quoteSeries
- -v-
- -e-

@@ -6,8 +6,6 @@ DepositRateHelper
    ->void
    ::YieldTermStructure *
    -- ^
- -v-
- -e-
  -f-
   DepositRateHelper
    ->
@@ -53,5 +51,3 @@ DepositRateHelper
    -- ^rate
    ::const boost::shared_ptr< IborIndex > &
    -- ^iborIndex
- -v-
- -e-

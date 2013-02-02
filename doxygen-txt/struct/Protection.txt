@@ -1,8 +1,6 @@
 Protection
  -- |information on a default-protection contract
 
- -f-
- -v-
  -e-
   Side
    Buyer

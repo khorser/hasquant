@@ -6,8 +6,6 @@ TwoFactorModel
    ->
    ::Size
    -- ^nParams
-  -- Returns the short-rate dynamics.
+  -- |Returns the short-rate dynamics.
   dynamics
    ->boost::shared_ptr< ShortRateDynamics >
- -v-
- -e-

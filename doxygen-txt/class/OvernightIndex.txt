@@ -16,10 +16,8 @@ OvernightIndex
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^h
-  -- returns a copy of itself linked to a different forwarding curve
+  -- |returns a copy of itself linked to a different forwarding curve
   clone
    ->boost::shared_ptr< IborIndex >
    ::const Handle< YieldTermStructure > &
    -- ^h
- -v-
- -e-

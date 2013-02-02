@@ -17,5 +17,3 @@ GaussKronrodNonAdaptive
    -- ^
   relativeAccuracy
    ->Real
- -v-
- -e-

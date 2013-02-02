@@ -13,5 +13,3 @@ DigitalReplication
    ->Replication::Type
   gap
    ->Real
- -v-
- -e-

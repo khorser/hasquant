@@ -17,12 +17,8 @@ FwdToCotSwapAdapter
    ->const Matrix &
    ::Size
    -- ^i
- -v-
- -e-
  -f-
   FwdToCotSwapAdapter
    ->
    ::const boost::shared_ptr< MarketModel > &
    -- ^forwardModel
- -v-
- -e-

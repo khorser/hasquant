@@ -62,5 +62,3 @@ CdsHelper
    ->void
    ::DefaultProbabilityTermStructure *
    -- ^
- -v-
- -e-

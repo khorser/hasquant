@@ -29,5 +29,3 @@ FdmMesherComposite
    ->Disposable< Array >
    ::Size
    -- ^direction
- -v-
- -e-

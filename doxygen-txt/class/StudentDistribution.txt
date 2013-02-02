@@ -11,5 +11,3 @@ StudentDistribution
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

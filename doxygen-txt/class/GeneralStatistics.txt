@@ -3,61 +3,59 @@ GeneralStatistics
  -- |This class accumulates a set of data and returns their statistics (e.g: mean, variance, skewness, kurtosis, error estimation, percentile, etc.) based on the empirical distribution (no gaussian assumption)It doesn't suffer the numerical instability problem of IncrementalStatistics. The downside is that it stores all samples, thus increasing the memory requirements.
 
  -f-
-  -- number of samples collected
+  -- |number of samples collected
   samples
    ->Size
-  -- collected data
+  -- |collected data
   data
    ->const std::vector< std::pair< Real, Real > > &
-  -- sum of data weights
+  -- |sum of data weights
   weightSum
    ->Real
-  -- returns the mean, defined as \[ \langle x \rangle = \frac{\sum w_i x_i}{\sum w_i}. \]
+  -- |returns the mean, defined as \[ \langle x \rangle = \frac{\sum w_i x_i}{\sum w_i}. \]
   mean
    ->Real
-  -- returns the variance, defined as \[ \sigma^2 = \frac{N}{N-1} \left\langle \left( x-\langle x \rangle \right)^2 \right\rangle. \]
+  -- |returns the variance, defined as \[ \sigma^2 = \frac{N}{N-1} \left\langle \left( x-\langle x \rangle \right)^2 \right\rangle. \]
   variance
    ->Real
-  -- returns the standard deviation $ \sigma $, defined as the square root of the variance.
+  -- |returns the standard deviation $ \sigma $, defined as the square root of the variance.
   standardDeviation
    ->Real
-  -- returns the error estimate on the mean value, defined as $ \epsilon = \sigma/\sqrt{N}. $
+  -- |returns the error estimate on the mean value, defined as $ \epsilon = \sigma/\sqrt{N}. $
   errorEstimate
    ->Real
-  -- returns the skewness, defined as \[ \frac{N^2}{(N-1)(N-2)} \frac{\left\langle \left( x-\langle x \rangle \right)^3 \right\rangle}{\sigma^3}. \] The above evaluates to 0 for a Gaussian distribution.
+  -- |returns the skewness, defined as \[ \frac{N^2}{(N-1)(N-2)} \frac{\left\langle \left( x-\langle x \rangle \right)^3 \right\rangle}{\sigma^3}. \] The above evaluates to 0 for a Gaussian distribution.
   skewness
    ->Real
-  -- returns the excess kurtosis, defined as \[ \frac{N^2(N+1)}{(N-1)(N-2)(N-3)} \frac{\left\langle \left(x-\langle x \rangle \right)^4 \right\rangle}{\sigma^4} - \frac{3(N-1)^2}{(N-2)(N-3)}. \] The above evaluates to 0 for a Gaussian distribution.
+  -- |returns the excess kurtosis, defined as \[ \frac{N^2(N+1)}{(N-1)(N-2)(N-3)} \frac{\left\langle \left(x-\langle x \rangle \right)^4 \right\rangle}{\sigma^4} - \frac{3(N-1)^2}{(N-2)(N-3)}. \] The above evaluates to 0 for a Gaussian distribution.
   kurtosis
    ->Real
-  -- returns the minimum sample value
+  -- |returns the minimum sample value
   min
    ->Real
-  -- returns the maximum sample value
+  -- |returns the maximum sample value
   max
    ->Real
-  -- Expectation value of a function $ f $ on a given range $ \mathcal{R} $, i.e., \[ \mathrm{E}\left[f \;|\; \mathcal{R}\right] = \frac{\sum_{x_i \in \mathcal{R}} f(x_i) w_i}{ \sum_{x_i \in \mathcal{R}} w_i}. \] The range is passed as a boolean function returning true if the argument belongs to the range or false otherwise.The function returns a pair made of the result and the number of observations in the given range.
+  -- |Expectation value of a function $ f $ on a given range $ \mathcal{R} $, i.e., \[ \mathrm{E}\left[f \;|\; \mathcal{R}\right] = \frac{\sum_{x_i \in \mathcal{R}} f(x_i) w_i}{ \sum_{x_i \in \mathcal{R}} w_i}. \] The range is passed as a boolean function returning true if the argument belongs to the range or false otherwise.The function returns a pair made of the result and the number of observations in the given range.
   expectationValue
    ->std::pair< Real, Size >
    ::const Func &
    -- ^f
    ::const Predicate &
    -- ^inRange
-  -- $ y $-th percentile, defined as the value $ \bar{x} $ such that \[ y = \frac{\sum_{x_i < \bar{x}} w_i}{ \sum_i w_i} \]$ y $ must be in the range $ (0-1]. $
+  -- |$ y $-th percentile, defined as the value $ \bar{x} $ such that \[ y = \frac{\sum_{x_i < \bar{x}} w_i}{ \sum_i w_i} \]$ y $ must be in the range $ (0-1]. $
   percentile
    ->Real
    ::Real
    -- ^y
-  -- $ y $-th top percentile, defined as the value $ \bar{x} $ such that \[ y = \frac{\sum_{x_i > \bar{x}} w_i}{ \sum_i w_i} \]$ y $ must be in the range $ (0-1]. $
+  -- |$ y $-th top percentile, defined as the value $ \bar{x} $ such that \[ y = \frac{\sum_{x_i > \bar{x}} w_i}{ \sum_i w_i} \]$ y $ must be in the range $ (0-1]. $
   topPercentile
    ->Real
    ::Real
    -- ^y
- -v-
- -e-
  -f-
-  -- adds a datum to the set, possibly with a weight
-  -- weights must be positive or null
+  -- |adds a datum to the set, possibly with a weight
+  -- |weights must be positive or null
   add
    ->void
    ::Real
@@ -65,14 +63,14 @@ GeneralStatistics
    ::Real
    =1.0
    -- ^weight
-  -- adds a sequence of data to the set, with default weight
+  -- |adds a sequence of data to the set, with default weight
   addSequence
    ->void
    ::DataIterator
    -- ^begin
    ::DataIterator
    -- ^end
-  -- adds a sequence of data to the set, each with its weight
+  -- |adds a sequence of data to the set, each with its weight
   addSequence
    ->void
    ::DataIterator
@@ -81,24 +79,17 @@ GeneralStatistics
    -- ^end
    ::WeightIterator
    -- ^wbegin
-  -- resets the data to a null set
+  -- |resets the data to a null set
   reset
    ->void
-  -- informs the internal storage of a planned increase in size
+  -- |informs the internal storage of a planned increase in size
   reserve
    ->void
    ::Size
    -- ^n
-  -- sort the data set in increasing order
+  -- |sort the data set in increasing order
   sort
    ->void
- -v-
- -e-
- -f-
- -v-
- -e-
  -f-
   GeneralStatistics
    ->
- -v-
- -e-

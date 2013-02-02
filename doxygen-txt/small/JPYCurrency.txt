@@ -5,5 +5,3 @@ JPYCurrency
  -f-
   JPYCurrency
    ->
- -v-
- -e-

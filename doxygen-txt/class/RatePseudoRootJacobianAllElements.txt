@@ -25,5 +25,3 @@ RatePseudoRootJacobianAllElements
    -- ^gaussians
    ::std::vector< Matrix > &
    -- ^B
- -v-
- -e-

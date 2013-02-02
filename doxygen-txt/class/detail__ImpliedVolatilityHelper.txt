@@ -21,12 +21,10 @@ detail::ImpliedVolatilityHelper
    -- ^minVol
    ::Volatility
    -- ^maxVol
-  -- The returned process is equal to the passed one, except for the volatility which is flat and whose value is driven by the passed quote.
+  -- |The returned process is equal to the passed one, except for the volatility which is flat and whose value is driven by the passed quote.
   clone
    ->boost::shared_ptr< GeneralizedBlackScholesProcess >
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
    -- ^
    ::const boost::shared_ptr< SimpleQuote > &
    -- ^
- -v-
- -e-

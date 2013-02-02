@@ -5,8 +5,6 @@ RangeAccrualFloatersCoupon
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-
  -f-
   RangeAccrualFloatersCoupon
    ->
@@ -58,5 +56,3 @@ RangeAccrualFloatersCoupon
    ->Real
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
- -v-
- -e-

@@ -32,15 +32,11 @@ step_iterator
    ->super_t::difference_type
    ::const step_iterator &
    -- ^i
- -v-
- -e-
  -f-
-  -- helper function to create step iterators
+  -- |helper function to create step iterators
   make_step_iterator
    ->step_iterator< Iterator >
    ::Iterator
    -- ^it
    ::Size
    -- ^step
- -v-
- -e-

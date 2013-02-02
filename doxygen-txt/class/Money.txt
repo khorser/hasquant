@@ -17,8 +17,6 @@ Money
    -- ^value
    ::const Currency &
    -- ^currency
- -v-
- -e-
  -f-
   currency
    ->const Currency &
@@ -26,8 +24,6 @@ Money
    ->Decimal
   rounded
    ->Money
- -v-
- -e-
  -f-
   operator+
    ->Money
@@ -49,9 +45,6 @@ Money
    ->Money &
    ::Decimal
    -- ^
- -v-
- -e-
- -f-
  -v-
   conversionType
    ::ConversionType
@@ -174,5 +167,3 @@ Money
    -- ^
    ::const Money &
    -- ^
- -v-
- -e-

@@ -3,9 +3,6 @@ RandomizedLDS
  -- |Random-shifts a uniform low-discrepancy sequence of dimension $ N $ by adding (modulo 1 for each coordinate) a pseudo-random uniform deviate in $ (0, 1)^N. $ It is used for implementing Randomized Quasi Monte Carlo.The uniform low discrepancy sequence is supplied by LDS; the uniform pseudo-random sequence is supplied by PRS.Both class LDS and PRS must implement the following interface: LDS::sample_typeLDS::nextSequence()const; SizeLDS::dimension()const; LDS and PRS must have the same dimension $ N $ WarningInverting LDS and PRS is possible, but it doesn't make sense.Possible enhancementsimplement the other randomization algorithmsTestscorrect initialization is tested.
 
  -f-
- -v-
- -e-
- -f-
   RandomizedLDS
    ->
    ::const LDS &
@@ -26,15 +23,13 @@ RandomizedLDS
    ::BigNatural
    =0
    -- ^prsSeed
-  -- returns next sample using a given randomizing vector
+  -- |returns next sample using a given randomizing vector
   nextSequence
    ->const sample_type &
   lastSequence
    ->const sample_type &
-  -- update the randomizing vector and re-initialize the low discrepancy generator
+  -- |update the randomizing vector and re-initialize the low discrepancy generator
   nextRandomizer
    ->void
   dimension
    ->Size
- -v-
- -e-

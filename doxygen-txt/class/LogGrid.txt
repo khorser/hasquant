@@ -11,5 +11,3 @@ LogGrid
    ->Real
    ::Size
    -- ^i
- -v-
- -e-

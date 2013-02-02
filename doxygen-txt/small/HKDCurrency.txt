@@ -5,5 +5,3 @@ HKDCurrency
  -f-
   HKDCurrency
    ->
- -v-
- -e-

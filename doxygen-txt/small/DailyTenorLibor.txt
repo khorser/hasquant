@@ -18,5 +18,3 @@ DailyTenorLibor
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^h
- -v-
- -e-

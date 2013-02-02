@@ -1,17 +1,13 @@
 MargrabeOption::arguments
  -- |Extra arguments for Margrabe option.
 
- -f-
  -v-
   Q1
    ::Integer
   Q2
    ::Integer
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

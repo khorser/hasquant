@@ -11,5 +11,3 @@ DiscretizedOption
    -- ^exerciseType
    ::const std::vector< Time > &
    -- ^exerciseTimes
- -v-
- -e-

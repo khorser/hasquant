@@ -1,12 +1,10 @@
 Region::Data
 
- -f-
  -v-
   name
    ::std::string
   code
    ::std::string
- -e-
  -f-
   Data
    ->
@@ -14,5 +12,3 @@ Region::Data
    -- ^name
    ::const std::string &
    -- ^code
- -v-
- -e-

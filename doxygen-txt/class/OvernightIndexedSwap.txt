@@ -22,8 +22,6 @@ OvernightIndexedSwap
    ->const Leg &
   overnightLeg
    ->const Leg &
- -v-
- -e-
  -f-
   fixedLegBPS
    ->Real
@@ -37,10 +35,6 @@ OvernightIndexedSwap
    ->Real
   fairSpread
    ->Spread
- -v-
- -e-
- -f-
- -v-
  -e-
   Type
    Receiver
@@ -80,5 +74,3 @@ OvernightIndexedSwap
    ::Spread
    =0.0
    -- ^spread
- -v-
- -e-

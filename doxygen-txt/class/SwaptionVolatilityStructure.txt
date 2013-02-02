@@ -3,7 +3,7 @@ SwaptionVolatilityStructure
  -- |This abstract class defines the interface of concrete swaption volatility structures which will be derived from this one.
 
  -f-
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   SwaptionVolatilityStructure
    ->
    ::const Calendar &
@@ -13,7 +13,7 @@ SwaptionVolatilityStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   SwaptionVolatilityStructure
    ->
    ::BusinessDayConvention
@@ -21,7 +21,7 @@ SwaptionVolatilityStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   SwaptionVolatilityStructure
    ->
    ::const Date &
@@ -33,7 +33,7 @@ SwaptionVolatilityStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   SwaptionVolatilityStructure
    ->
    ::Natural
@@ -45,10 +45,8 @@ SwaptionVolatilityStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-
  -f-
-  -- returns the volatility for a given option tenor and swap tenor
+  -- |returns the volatility for a given option tenor and swap tenor
   volatility
    ->Volatility
    ::const Period &
@@ -60,7 +58,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option date and swap tenor
+  -- |returns the volatility for a given option date and swap tenor
   volatility
    ->Volatility
    ::const Date &
@@ -72,7 +70,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option time and swap tenor
+  -- |returns the volatility for a given option time and swap tenor
   volatility
    ->Volatility
    ::Time
@@ -84,7 +82,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option tenor and swap length
+  -- |returns the volatility for a given option tenor and swap length
   volatility
    ->Volatility
    ::const Period &
@@ -96,7 +94,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option date and swap length
+  -- |returns the volatility for a given option date and swap length
   volatility
    ->Volatility
    ::const Date &
@@ -108,7 +106,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option time and swap length
+  -- |returns the volatility for a given option time and swap length
   volatility
    ->Volatility
    ::Time
@@ -120,7 +118,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option tenor and swap tenor
+  -- |returns the Black variance for a given option tenor and swap tenor
   blackVariance
    ->Real
    ::const Period &
@@ -132,7 +130,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option date and swap tenor
+  -- |returns the Black variance for a given option date and swap tenor
   blackVariance
    ->Real
    ::const Date &
@@ -144,7 +142,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option time and swap tenor
+  -- |returns the Black variance for a given option time and swap tenor
   blackVariance
    ->Real
    ::Time
@@ -156,7 +154,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option tenor and swap length
+  -- |returns the Black variance for a given option tenor and swap length
   blackVariance
    ->Real
    ::const Period &
@@ -168,7 +166,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option date and swap length
+  -- |returns the Black variance for a given option date and swap length
   blackVariance
    ->Real
    ::const Date &
@@ -180,7 +178,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option time and swap length
+  -- |returns the Black variance for a given option time and swap length
   blackVariance
    ->Real
    ::Time
@@ -192,7 +190,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the smile for a given option tenor and swap tenor
+  -- |returns the smile for a given option tenor and swap tenor
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::const Period &
@@ -202,7 +200,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extr
-  -- returns the smile for a given option date and swap tenor
+  -- |returns the smile for a given option date and swap tenor
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::const Date &
@@ -212,7 +210,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extr
-  -- returns the smile for a given option time and swap tenor
+  -- |returns the smile for a given option time and swap tenor
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::Time
@@ -222,7 +220,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extr
-  -- returns the smile for a given option tenor and swap length
+  -- |returns the smile for a given option tenor and swap length
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::const Period &
@@ -232,7 +230,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extr
-  -- returns the smile for a given option date and swap length
+  -- |returns the smile for a given option date and swap length
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::const Date &
@@ -242,7 +240,7 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extr
-  -- returns the smile for a given option time and swap length
+  -- |returns the smile for a given option time and swap length
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::Time
@@ -252,31 +250,25 @@ SwaptionVolatilityStructure
    ::bool
    =false
    -- ^extr
- -v-
- -e-
  -f-
-  -- the largest length for which the term structure can return vols
+  -- |the largest length for which the term structure can return vols
   maxSwapTenor
    ->const Period &
-  -- the largest swapLength for which the term structure can return vols
+  -- |the largest swapLength for which the term structure can return vols
   maxSwapLength
    ->Time
- -v-
- -e-
  -f-
   ~SwaptionVolatilityStructure
    ->
-  -- implements the conversion between swap tenor and swap (time) length
+  -- |implements the conversion between swap tenor and swap (time) length
   swapLength
    ->Time
    ::const Period &
    -- ^swapTenor
-  -- implements the conversion between swap dates and swap (time) length
+  -- |implements the conversion between swap dates and swap (time) length
   swapLength
    ->Time
    ::const Date &
    -- ^start
    ::const Date &
    -- ^end
- -v-
- -e-

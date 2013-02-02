@@ -5,5 +5,3 @@ Russia
  -f-
   Russia
    ->
- -v-
- -e-

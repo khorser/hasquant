@@ -9,5 +9,3 @@ SimpleCashFlow
    -- ^amount
    ::const Date &
    -- ^date
- -v-
- -e-

@@ -1,7 +1,5 @@
 LsmBasisSystem
 
- -f-
- -v-
  -e-
   PolynomType
    Monomial
@@ -26,5 +24,3 @@ LsmBasisSystem
    -- ^order
    ::PolynomType
    -- ^polyType
- -v-
- -e-

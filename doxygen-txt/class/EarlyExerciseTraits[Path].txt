@@ -1,12 +1,7 @@
 EarlyExerciseTraits< Path >
 
  -f-
- -v-
- -e-
- -f-
   pathLength
    ->Size
    ::const Path &
    -- ^path
- -v-
- -e-

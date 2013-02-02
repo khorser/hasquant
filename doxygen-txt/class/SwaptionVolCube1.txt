@@ -3,8 +3,6 @@ SwaptionVolCube1
  -f-
   performCalculations
    ->void
- -v-
- -e-
  -f-
   smileSectionImpl
    ->boost::shared_ptr< SmileSection >
@@ -12,8 +10,6 @@ SwaptionVolCube1
    -- ^optionTime
    ::Time
    -- ^swapLength
- -v-
- -e-
  -f-
   marketVolCube
    ->const Matrix &
@@ -27,8 +23,6 @@ SwaptionVolCube1
    ->Matrix
   volCubeAtmCalibrated
    ->Matrix
- -v-
- -e-
  -f-
   SwaptionVolCube1
    ->
@@ -77,5 +71,3 @@ SwaptionVolCube1
    -- ^beta
    ::const Period &
    -- ^swapTenor
- -v-
- -e-

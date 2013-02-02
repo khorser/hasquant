@@ -2,7 +2,7 @@ KernelInterpolation2D
  -- |Implementation of the 2D kernel interpolation approach, which can be found in "Foreign Exchange Risk" by Hakala, Wystup page 256.The kernel in the implementation is kept general, although a Gaussian is considered in the cited text.
 
  -f-
-  -- the $ x $ values must be sorted. kernel needs a Real operator()(Real x) implementation
+  -- |the $ x $ values must be sorted. kernel needs a Real operator()(Real x) implementation
   KernelInterpolation2D
    ->
    ::const I1 &
@@ -17,5 +17,3 @@ KernelInterpolation2D
    -- ^zData
    ::const Kernel &
    -- ^kernel
- -v-
- -e-

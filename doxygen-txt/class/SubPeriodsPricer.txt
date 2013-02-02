@@ -23,5 +23,3 @@ SubPeriodsPricer
    ->void
    ::const FloatingRateCoupon &
    -- ^coupon
- -v-
- -e-

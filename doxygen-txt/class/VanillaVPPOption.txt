@@ -27,5 +27,3 @@ VanillaVPPOption
    ->void
    ::PricingEngine::arguments *
    -- ^
- -v-
- -e-

@@ -1,7 +1,5 @@
 GFunctionFactory
 
- -f-
- -v-
  -e-
   YieldCurveModel
    Standard
@@ -27,5 +25,3 @@ GFunctionFactory
    -- ^coupon
    ::const Handle< Quote > &
    -- ^meanReversion
- -v-
- -e-

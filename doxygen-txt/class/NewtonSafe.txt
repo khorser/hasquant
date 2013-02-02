@@ -9,5 +9,3 @@ NewtonSafe
    -- ^f
    ::Real
    -- ^xAccuracy
- -v-
- -e-

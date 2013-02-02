@@ -2,8 +2,6 @@ ExtendedBlackScholesMertonProcess
  -- |experimental Black-Scholes-Merton stochastic process
  -- |This class allows to choose a built-in discretization scheme
 
- -f-
- -v-
  -e-
   Discretization
    Euler
@@ -26,5 +24,3 @@ ExtendedBlackScholesMertonProcess
    ::Discretization
    =Milstein
    -- ^evolDisc
- -v-
- -e-

@@ -1,9 +1,6 @@
 clipped_function
 
  -f-
- -v-
- -e-
- -f-
   clipped_function
    ->
    ::const F &
@@ -14,5 +11,3 @@ clipped_function
    ->result_type
    ::const argument_type &
    -- ^x
- -v-
- -e-

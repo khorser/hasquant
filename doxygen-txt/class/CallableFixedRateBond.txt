@@ -27,5 +27,3 @@ CallableFixedRateBond
    ::const CallabilitySchedule &
    =CallabilitySchedule()
    -- ^putCallSchedule
- -v-
- -e-

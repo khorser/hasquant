@@ -9,5 +9,3 @@ constant
    ->U
    ::const T &
    -- ^
- -v-
- -e-

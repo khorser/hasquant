@@ -4,5 +4,3 @@ EURegion
  -f-
   EURegion
    ->
- -v-
- -e-

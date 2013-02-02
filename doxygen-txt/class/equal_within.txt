@@ -11,5 +11,3 @@ equal_within
    -- ^a
    ::const T
    -- ^b
- -v-
- -e-

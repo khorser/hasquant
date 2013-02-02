@@ -12,5 +12,3 @@ GumbelCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

@@ -18,5 +18,3 @@ OrthogonalizedBumpFinder
    ->void
    ::std::vector< std::vector< Matrix > > &
    -- ^theBumps
- -v-
- -e-

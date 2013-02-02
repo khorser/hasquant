@@ -50,5 +50,3 @@ FdmBatesOp
    -- ^r
    ::Real
    -- ^s
- -v-
- -e-

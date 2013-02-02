@@ -5,5 +5,3 @@ NZDCurrency
  -f-
   NZDCurrency
    ->
- -v-
- -e-

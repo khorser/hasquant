@@ -2,7 +2,7 @@ RecoveryRateModel
  -- |Models of the recovery rate provide future values of a recovery rate in the event of a default.
 
  -f-
-  -- returns the expected recovery rate at a future time conditional on some default event type and seniority.
+  -- |returns the expected recovery rate at a future time conditional on some default event type and seniority.
   recoveryValue
    ->Real
    ::const Date &
@@ -10,12 +10,10 @@ RecoveryRateModel
    ::const DefaultProbKey &
    =DefaultProbKey()
    -- ^defaultKey
-  -- Returns true if the model will return recovery rates for the requested seniority.
+  -- |Returns true if the model will return recovery rates for the requested seniority.
   appliesToSeniority
    ->bool
    ::Seniority
    -- ^
   ~RecoveryRateModel
    ->
- -v-
- -e-

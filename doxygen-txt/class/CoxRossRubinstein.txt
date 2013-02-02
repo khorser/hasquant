@@ -12,5 +12,3 @@ CoxRossRubinstein
    -- ^steps
    ::Real
    -- ^strike
- -v-
- -e-

@@ -13,5 +13,3 @@ QuantoEngine
    -- ^exchangeRateVolatility
    ::const Handle< Quote > &
    -- ^correlation
- -v-
- -e-

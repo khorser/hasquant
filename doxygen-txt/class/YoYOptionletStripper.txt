@@ -3,7 +3,7 @@ YoYOptionletStripper
  -- |Strippers return K slices of the volatility surface at a given T. In initialize they actually do the stripping along each K.
 
  -f-
-  -- YoYOptionletStripper interface.
+  -- |YoYOptionletStripper interface.
   initialize
    ->void
    ::const boost::shared_ptr< YoYCapFloorTermPriceSurface > &
@@ -22,10 +22,6 @@ YoYOptionletStripper
    ->std::pair< std::vector< Rate >, std::vector< Volatility > >
    ::const Date &
    -- ^d
- -v-
- -e-
  -f-
   ~YoYOptionletStripper
    ->
- -v-
- -e-

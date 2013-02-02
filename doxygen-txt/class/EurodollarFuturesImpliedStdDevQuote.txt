@@ -21,5 +21,3 @@ EurodollarFuturesImpliedStdDevQuote
    ::Natural
    =100
    -- ^maxIter
- -v-
- -e-

@@ -18,5 +18,3 @@ ZeroCouponInflationSwapHelper
    -- ^dayCounter
    ::const boost::shared_ptr< ZeroInflationIndex > &
    -- ^zii
- -v-
- -e-

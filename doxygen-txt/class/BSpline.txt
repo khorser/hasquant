@@ -17,5 +17,3 @@ BSpline
    -- ^i
    ::Real
    -- ^x
- -v-
- -e-

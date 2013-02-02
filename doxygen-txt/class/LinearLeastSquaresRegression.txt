@@ -9,5 +9,3 @@ LinearLeastSquaresRegression
    -- ^y
    ::const std::vector< boost::function1< Real, ArgumentType > > &
    -- ^v
- -v-
- -e-

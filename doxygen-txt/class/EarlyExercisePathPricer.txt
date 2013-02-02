@@ -3,9 +3,6 @@ EarlyExercisePathPricer
  -- |Returns the value of an option on a given path and given time.
 
  -f-
- -v-
- -e-
- -f-
   ~EarlyExercisePathPricer
    ->
   operator()
@@ -22,5 +19,3 @@ EarlyExercisePathPricer
    -- ^t
   basisSystem
    ->std::vector< boost::function1< ValueType, StateType > >
- -v-
- -e-

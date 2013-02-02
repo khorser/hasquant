@@ -28,5 +28,3 @@ ConvertibleFixedCouponBond
    ::Real
    =100
    -- ^redemption
- -v-
- -e-

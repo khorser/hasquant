@@ -40,10 +40,6 @@ FixedRateCoupon
    ::const Date &
    =Date()
    -- ^refPeriodEnd
- -v-
- -e-
  -f-
   interestRate
    ->InterestRate
- -v-
- -e-

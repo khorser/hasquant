@@ -33,5 +33,3 @@ EnergySwap
    ->const CommodityType &
   quantity
    ->Quantity
- -v-
- -e-

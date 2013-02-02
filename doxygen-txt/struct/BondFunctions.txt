@@ -18,8 +18,6 @@ BondFunctions
    ::Date
    =Date()
    -- ^settlementDate
- -v-
- -e-
  -f-
   previousCashFlow
    ->Leg::const_reverse_iterator
@@ -63,8 +61,6 @@ BondFunctions
    ::Date
    =Date()
    -- ^refDate
- -v-
- -e-
  -f-
   previousCouponRate
    ->Rate
@@ -143,8 +139,6 @@ BondFunctions
    ::Date
    =Date()
    -- ^settlementDate
- -v-
- -e-
  -f-
   cleanPrice
    ->Real
@@ -176,8 +170,6 @@ BondFunctions
    ::Real
    =Null< Real >()
    -- ^cleanPrice
- -v-
- -e-
  -f-
   cleanPrice
    ->Real
@@ -353,8 +345,6 @@ BondFunctions
    ::Date
    =Date()
    -- ^settlementDate
- -v-
- -e-
  -f-
   cleanPrice
    ->Real
@@ -399,5 +389,3 @@ BondFunctions
    ::Rate
    =0.0
    -- ^guess
- -v-
- -e-

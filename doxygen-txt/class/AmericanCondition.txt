@@ -13,5 +13,3 @@ AmericanCondition
    ->
    ::const Array &
    -- ^intrinsicValues
- -v-
- -e-

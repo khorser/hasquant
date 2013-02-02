@@ -9,5 +9,3 @@ ImpliedTermStructure
    -- ^
    ::const Date &
    -- ^referenceDate
- -v-
- -e-

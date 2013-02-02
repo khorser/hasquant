@@ -6,5 +6,3 @@ FloatingTypePayoff
    ->
    ::Option::Type
    -- ^type
- -v-
- -e-

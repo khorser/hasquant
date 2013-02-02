@@ -36,5 +36,3 @@ DateInterval
    ->bool
    ::const DateInterval &
    -- ^rhs
- -v-
- -e-

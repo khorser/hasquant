@@ -23,5 +23,3 @@ SwaptionPseudoDerivative
    ->Real
   expiry
    ->Real
- -v-
- -e-

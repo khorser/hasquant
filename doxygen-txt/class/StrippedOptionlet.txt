@@ -20,5 +20,3 @@ StrippedOptionlet
    -- ^
    ::const DayCounter &
    -- ^dc
- -v-
- -e-

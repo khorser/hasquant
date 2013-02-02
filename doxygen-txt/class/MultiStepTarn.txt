@@ -19,8 +19,6 @@ MultiStepTarn
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   MultiStepTarn
    ->
@@ -42,5 +40,3 @@ MultiStepTarn
    -- ^multipliers
    ::const std::vector< Real > &
    -- ^floatingSpreads
- -v-
- -e-

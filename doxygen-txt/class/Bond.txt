@@ -12,13 +12,13 @@ Bond
    ::Date
    =Date()
    -- ^d
-  -- returns all the cashflows, including the redemptions.
+  -- |returns all the cashflows, including the redemptions.
   cashflows
    ->const Leg &
-  -- returns just the redemption flows (not interest payments)
+  -- |returns just the redemption flows (not interest payments)
   redemptions
    ->const Leg &
-  -- returns the redemption, if only one is defined
+  -- |returns the redemption, if only one is defined
   redemption
    ->const boost::shared_ptr< CashFlow > &
   startDate
@@ -40,20 +40,20 @@ Bond
  -v-
  -e-
  -f-
-  -- theoretical clean price
-  -- The default bond settlement is used for calculation.Warningthe theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
+  -- |theoretical clean price
+  -- |The default bond settlement is used for calculation.Warningthe theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
   cleanPrice
    ->Real
-  -- theoretical dirty price
-  -- The default bond settlement is used for calculation.Warningthe theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
+  -- |theoretical dirty price
+  -- |The default bond settlement is used for calculation.Warningthe theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
   dirtyPrice
    ->Real
-  -- theoretical settlement value
-  -- The default bond settlement date is used for calculation.
+  -- |theoretical settlement value
+  -- |The default bond settlement date is used for calculation.
   settlementValue
    ->Real
-  -- theoretical bond yield
-  -- The default bond settlement and theoretical price are used for calculation.
+  -- |theoretical bond yield
+  -- |The default bond settlement and theoretical price are used for calculation.
   yield
    ->Rate
    ::const DayCounter &
@@ -68,8 +68,8 @@ Bond
    ::Size
    =100
    -- ^maxEvaluations
-  -- clean price given a yield and settlement date
-  -- The default bond settlement is used if no date is given.
+  -- |clean price given a yield and settlement date
+  -- |The default bond settlement is used if no date is given.
   cleanPrice
    ->Real
    ::Rate
@@ -83,8 +83,8 @@ Bond
    ::Date
    =Date()
    -- ^settlementDate
-  -- dirty price given a yield and settlement date
-  -- The default bond settlement is used if no date is given.
+  -- |dirty price given a yield and settlement date
+  -- |The default bond settlement is used if no date is given.
   dirtyPrice
    ->Real
    ::Rate
@@ -98,14 +98,14 @@ Bond
    ::Date
    =Date()
    -- ^settlementDate
-  -- settlement value as a function of the clean price
-  -- The default bond settlement date is used for calculation.
+  -- |settlement value as a function of the clean price
+  -- |The default bond settlement date is used for calculation.
   settlementValue
    ->Real
    ::Real
    -- ^cleanPrice
-  -- yield given a (clean) price and settlement date
-  -- The default bond settlement is used if no date is given.
+  -- |yield given a (clean) price and settlement date
+  -- |The default bond settlement is used if no date is given.
   yield
    ->Rate
    ::Real
@@ -125,22 +125,22 @@ Bond
    ::Size
    =100
    -- ^maxEvaluations
-  -- accrued amount at a given date
-  -- The default bond settlement is used if no date is given.
+  -- |accrued amount at a given date
+  -- |The default bond settlement is used if no date is given.
   accruedAmount
    ->Real
    ::Date
    =Date()
    -- ^d
  -f-
-  -- Expected next coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the already-fixed not-yet-paid one.The current bond settlement is used if no date is given.
+  -- |Expected next coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the already-fixed not-yet-paid one.The current bond settlement is used if no date is given.
   nextCouponRate
    ->Rate
    ::Date
    =Date()
    -- ^d
-  -- Previous coupon already paid at a given date.
-  -- Expected previous coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the last paid one.The current bond settlement is used if no date is given.
+  -- |Previous coupon already paid at a given date.
+  -- |Expected previous coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the last paid one.The current bond settlement is used if no date is given.
   previousCouponRate
    ->Rate
    ::Date

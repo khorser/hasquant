@@ -35,13 +35,11 @@ SyntheticCDO
    ->Real
   protectionLegNPV
    ->Real
-  -- Total outstanding tranche notional, not wiped out
+  -- |Total outstanding tranche notional, not wiped out
   remainingNotional
    ->Real
-  -- Expected tranche loss for all payment dates
+  -- |Expected tranche loss for all payment dates
   expectedTrancheLoss
    ->std::vector< Real >
   error
    ->Size
- -v-
- -e-

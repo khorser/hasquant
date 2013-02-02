@@ -4,5 +4,3 @@ MidPointCDOEngine
  -f-
   MidPointCDOEngine
    ->
- -v-
- -e-

@@ -1,8 +1,6 @@
 Argentina
  -- |Argentinian calendars.
 
- -f-
- -v-
  -e-
   Market
    Merval
@@ -13,5 +11,3 @@ Argentina
    ::Market
    =Merval
    -- ^m
- -v-
- -e-

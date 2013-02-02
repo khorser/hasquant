@@ -4,32 +4,30 @@ CostFunction
  -f-
   ~CostFunction
    ->
-  -- method to overload to compute the cost function value in x
+  -- |method to overload to compute the cost function value in x
   value
    ->Real
    ::const Array &
    -- ^x
-  -- method to overload to compute the cost function values in x
+  -- |method to overload to compute the cost function values in x
   values
    ->Disposable< Array >
    ::const Array &
    -- ^x
-  -- method to overload to compute grad_f, the first derivative of
+  -- |method to overload to compute grad_f, the first derivative of
   gradient
    ->void
    ::Array &
    -- ^grad
    ::const Array &
    -- ^x
-  -- method to overload to compute grad_f, the first derivative of
+  -- |method to overload to compute grad_f, the first derivative of
   valueAndGradient
    ->Real
    ::Array &
    -- ^grad
    ::const Array &
    -- ^x
-  -- Default epsilon for finite difference method :
+  -- |Default epsilon for finite difference method :
   finiteDifferenceEpsilon
    ->Real
- -v-
- -e-

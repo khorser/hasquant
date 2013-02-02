@@ -7,8 +7,6 @@ MultiPath
    ->Size
   pathSize
    ->Size
- -v-
- -e-
  -f-
   operator[]
    ->const Path &
@@ -26,8 +24,6 @@ MultiPath
    ->Path &
    ::Size
    -- ^j
- -v-
- -e-
  -f-
   MultiPath
    ->
@@ -41,5 +37,3 @@ MultiPath
    ->
    ::const std::vector< Path > &
    -- ^multiPath
- -v-
- -e-

@@ -1,9 +1,6 @@
 binary_compose3_function
 
  -f-
- -v-
- -e-
- -f-
   binary_compose3_function
    ->
    ::const F &
@@ -18,5 +15,3 @@ binary_compose3_function
    -- ^x
    ::const second_argument_type &
    -- ^y
- -v-
- -e-

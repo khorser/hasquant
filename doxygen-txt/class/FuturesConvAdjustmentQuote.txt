@@ -10,8 +10,6 @@ FuturesConvAdjustmentQuote
    ->Real
   immDate
    ->Date
- -v-
- -e-
  -f-
   FuturesConvAdjustmentQuote
    ->
@@ -37,5 +35,3 @@ FuturesConvAdjustmentQuote
    -- ^volatility
    ::const Handle< Quote > &
    -- ^meanReversion
- -v-
- -e-

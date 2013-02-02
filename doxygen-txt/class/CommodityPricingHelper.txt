@@ -4,8 +4,6 @@ CommodityPricingHelper
  -f-
   CommodityPricingHelper
    ->
- -v-
- -e-
  -f-
   calculateFxConversionFactor
    ->Real
@@ -51,5 +49,3 @@ CommodityPricingHelper
    -- ^paymentTerm
    ::PricingPeriods &
    -- ^pricingPeriods
- -v-
- -e-

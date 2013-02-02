@@ -11,5 +11,3 @@ DriftTermStructure
    -- ^dividendTS
    ::const Handle< BlackVolTermStructure > &
    -- ^blackVolTS
- -v-
- -e-

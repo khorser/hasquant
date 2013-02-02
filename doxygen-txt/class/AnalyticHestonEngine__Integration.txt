@@ -51,8 +51,6 @@ AnalyticHestonEngine::Integration
    ::Size
    =1000
    -- ^maxEvaluations
- -v-
- -e-
  -f-
   calculate
    ->Real
@@ -64,5 +62,3 @@ AnalyticHestonEngine::Integration
    ->Size
   isAdaptiveIntegration
    ->bool
- -v-
- -e-

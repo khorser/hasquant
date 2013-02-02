@@ -28,8 +28,6 @@ PiecewiseZeroInflationCurve
    ::const Interpolator &
    =Interpolator()
    -- ^i
- -v-
- -e-
  -f-
   times
    ->const std::vector< Time > &
@@ -39,8 +37,3 @@ PiecewiseZeroInflationCurve
    ->const std::vector< Real > &
   nodes
    ->std::vector< std::pair< Date, Real > >
- -v-
- -e-
- -f-
- -v-
- -e-

@@ -5,5 +5,3 @@ IRRCurrency
  -f-
   IRRCurrency
    ->
- -v-
- -e-

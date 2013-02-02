@@ -19,15 +19,11 @@ Seasonality
    -- ^r
    ::const InflationTermStructure &
    -- ^iTS
-  -- It is possible for multi-year seasonalities to be inconsistent with the inflation term structure they are given to. This method enables testing - but programmers are not required to implement it. E.g. for price seasonality the corrections at whole years after the inflation curve base date should be the same or else there can be an inconsistency with quoted instruments. Alternatively, the seasonality can be set before the inflation curve is bootstrapped.
+  -- |It is possible for multi-year seasonalities to be inconsistent with the inflation term structure they are given to. This method enables testing - but programmers are not required to implement it. E.g. for price seasonality the corrections at whole years after the inflation curve base date should be the same or else there can be an inconsistency with quoted instruments. Alternatively, the seasonality can be set before the inflation curve is bootstrapped.
   isConsistent
    ->bool
    ::const InflationTermStructure &
    -- ^iTS
- -v-
- -e-
  -f-
   ~Seasonality
    ->
- -v-
- -e-

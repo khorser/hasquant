@@ -14,5 +14,3 @@ OptionletStripper2
    ->std::vector< Real >
   spreadsVol
    ->std::vector< Volatility >
- -v-
- -e-

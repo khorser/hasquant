@@ -32,5 +32,3 @@ ConvertibleFloatingRateBond
    ::Real
    =100
    -- ^redemption
- -v-
- -e-

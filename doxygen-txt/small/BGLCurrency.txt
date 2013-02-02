@@ -5,5 +5,3 @@ BGLCurrency
  -f-
   BGLCurrency
    ->
- -v-
- -e-

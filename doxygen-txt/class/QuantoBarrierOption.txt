@@ -8,11 +8,6 @@ QuantoBarrierOption
    ->Real
   qlambda
    ->Real
- -v-
- -e-
- -f-
- -v-
- -e-
  -f-
   QuantoBarrierOption
    ->
@@ -26,5 +21,3 @@ QuantoBarrierOption
    -- ^payoff
    ::const boost::shared_ptr< Exercise > &
    -- ^exercise
- -v-
- -e-

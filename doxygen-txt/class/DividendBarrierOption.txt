@@ -18,5 +18,3 @@ DividendBarrierOption
    -- ^dividendDates
    ::const std::vector< Real > &
    -- ^dividends
- -v-
- -e-

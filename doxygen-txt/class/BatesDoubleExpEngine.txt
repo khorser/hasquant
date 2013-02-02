@@ -16,5 +16,3 @@ BatesDoubleExpEngine
    -- ^relTolerance
    ::Size
    -- ^maxEvaluations
- -v-
- -e-

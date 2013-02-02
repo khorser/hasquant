@@ -19,5 +19,3 @@ DiscountingSwapEngine
    ->void
   discountCurve
    ->Handle< YieldTermStructure >
- -v-
- -e-

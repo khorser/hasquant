@@ -43,5 +43,3 @@ CappedFlooredCmsCoupon
    ->void
    ::AcyclicVisitor &
    -- ^v
- -v-
- -e-

@@ -1,7 +1,6 @@
 QuantoOptionResults
  -- |Results from quanto option calculation
 
- -f-
  -v-
   qvega
    ::Real
@@ -9,11 +8,8 @@ QuantoOptionResults
    ::Real
   qlambda
    ::Real
- -e-
  -f-
   QuantoOptionResults
    ->
   reset
    ->void
- -v-
- -e-

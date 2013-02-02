@@ -76,5 +76,3 @@ IborLeg
    -- ^flag
   operator Leg
    ->
- -v-
- -e-

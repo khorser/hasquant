@@ -8,5 +8,3 @@ SpreadOption
    -- ^payoff
    ::const boost::shared_ptr< Exercise > &
    -- ^exercise
- -v-
- -e-

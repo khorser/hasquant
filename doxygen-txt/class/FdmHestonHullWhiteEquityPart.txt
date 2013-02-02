@@ -15,5 +15,3 @@ FdmHestonHullWhiteEquityPart
    -- ^t2
   getMap
    ->const TripleBandLinearOp &
- -v-
- -e-

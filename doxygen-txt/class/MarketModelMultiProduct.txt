@@ -15,10 +15,10 @@ MarketModelMultiProduct
    ->Size
   maxNumberOfCashFlowsPerProductPerStep
    ->Size
-  -- during simulation put product at start of path
+  -- |during simulation put product at start of path
   reset
    ->void
-  -- return value indicates whether path is finished, TRUE means done
+  -- |return value indicates whether path is finished, TRUE means done
   nextTimeStep
    ->bool
    ::const CurveState &
@@ -27,8 +27,6 @@ MarketModelMultiProduct
    -- ^numberCashFlowsThisStep
    ::std::vector< std::vector< CashFlow > > &
    -- ^cashFlowsGenerated
-  -- returns a newly-allocated copy of itself
+  -- |returns a newly-allocated copy of itself
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-

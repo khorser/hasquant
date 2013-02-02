@@ -25,8 +25,6 @@ CallSpecifiedPathwiseMultiProduct
    ->std::auto_ptr< MarketModelPathwiseMultiProduct >
   alreadyDeflated
    ->bool
- -v-
- -e-
  -f-
   CallSpecifiedPathwiseMultiProduct
    ->
@@ -47,5 +45,3 @@ CallSpecifiedPathwiseMultiProduct
    ->void
   disableCallability
    ->void
- -v-
- -e-

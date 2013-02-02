@@ -26,5 +26,3 @@ SabrSmileSection
    ->Real
   atmLevel
    ->Real
- -v-
- -e-

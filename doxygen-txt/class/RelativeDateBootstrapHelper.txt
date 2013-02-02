@@ -11,5 +11,3 @@ RelativeDateBootstrapHelper
    ->
    ::Real
    -- ^quote
- -v-
- -e-

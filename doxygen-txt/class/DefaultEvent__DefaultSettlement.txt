@@ -3,7 +3,7 @@ DefaultEvent::DefaultSettlement
  -f-
   date
    ->Date
-  -- Returns the recovery rate of a default event which has already settled.
+  -- |Returns the recovery rate of a default event which has already settled.
   recoveryRate
    ->Real
    ::Seniority
@@ -12,5 +12,3 @@ DefaultEvent::DefaultSettlement
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-

@@ -2,7 +2,7 @@ RecursiveCdoEngine
  -- |Recursive STCDO pricing for a heterogeneous pool of names. The pool names are heterogeneous in their default probabilities, notionals and recovery rates. Correlations are pairwise. The recursive pricing algorithm used here is described in Andersen, Sidenius and Basu; "All your hedges in one basket", Risk, November 2003, pages 67-72Notice that using copulas other than Gaussian it is only an approximation (see remark on p.68).
 
  -f-
-  -- Single correlation construction.
+  -- |Single correlation construction.
   RecursiveCdoEngine
    ->
    ::const Handle< Quote > &
@@ -13,7 +13,7 @@ RecursiveCdoEngine
    ::Size
    =20
    -- ^quadOrder
-  -- Correlation name to name single factor construction.
+  -- |Correlation name to name single factor construction.
   RecursiveCdoEngine
    ->
    ::const Handle< Quote > &
@@ -32,5 +32,3 @@ RecursiveCdoEngine
    ->Real
    ::const Date &
    -- ^date
- -v-
- -e-

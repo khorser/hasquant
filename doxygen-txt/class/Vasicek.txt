@@ -20,5 +20,3 @@ Vasicek
    ::Real
    =0.0
    -- ^lambda
- -v-
- -e-

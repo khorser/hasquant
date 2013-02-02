@@ -19,5 +19,3 @@ FrobeniusCostFunction
    ->Disposable< Array >
    ::const Array &
    -- ^x
- -v-
- -e-

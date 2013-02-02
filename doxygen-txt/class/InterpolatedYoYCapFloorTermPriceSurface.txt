@@ -1,13 +1,11 @@
 InterpolatedYoYCapFloorTermPriceSurface
 
  -f-
-  -- inflation term structure interface
+  -- |inflation term structure interface
   maxDate
    ->Date
   baseDate
    ->Date
- -v-
- -e-
  -f-
   atmYoYSwapTimeRates
    ->std::pair< std::vector< Time >, std::vector< Rate > >
@@ -50,15 +48,11 @@ InterpolatedYoYCapFloorTermPriceSurface
    ::bool
    =true
    -- ^extrapolate
- -v-
- -e-
  -f-
   update
    ->void
   performCalculations
    ->void
- -v-
- -e-
  -f-
   InterpolatedYoYCapFloorTermPriceSurface
    ->
@@ -96,5 +90,3 @@ InterpolatedYoYCapFloorTermPriceSurface
    -- ^interpolator1d
   fixingDays
    ->Natural
- -v-
- -e-

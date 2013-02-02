@@ -3,9 +3,6 @@ Interpolation
  -- |Classes derived from this class will provide interpolated values from two sequences of equal length, representing discretized values of a variable and a function of the former, respectively.
 
  -f-
- -v-
- -e-
- -f-
   Interpolation
    ->
   ~Interpolation
@@ -50,5 +47,3 @@ Interpolation
    -- ^x
   update
    ->void
- -v-
- -e-

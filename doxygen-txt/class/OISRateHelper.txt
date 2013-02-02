@@ -6,13 +6,9 @@ OISRateHelper
    ->void
    ::YieldTermStructure *
    -- ^
- -v-
- -e-
  -f-
   swap
    ->boost::shared_ptr< OvernightIndexedSwap >
- -v-
- -e-
  -f-
   OISRateHelper
    ->
@@ -27,5 +23,3 @@ OISRateHelper
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^discountingCurve
- -v-
- -e-

@@ -20,10 +20,8 @@ YoYOptionletVolatilitySurface
    -- ^indexIsInterpolated
   ~YoYOptionletVolatilitySurface
    ->
- -v-
- -e-
  -f-
-  -- Returns the volatility for a given maturity date and strike rate that observes inflation, by default, with the observation lag of the term structure. Because inflation is highly linked to dates (for interpolation, periods, etc) we do NOT provide a time version.
+  -- |Returns the volatility for a given maturity date and strike rate that observes inflation, by default, with the observation lag of the term structure. Because inflation is highly linked to dates (for interpolation, periods, etc) we do NOT provide a time version.
   volatility
    ->Volatility
    ::const Date &
@@ -36,7 +34,7 @@ YoYOptionletVolatilitySurface
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option tenor and strike rate
+  -- |returns the volatility for a given option tenor and strike rate
   volatility
    ->Volatility
    ::const Period &
@@ -49,8 +47,8 @@ YoYOptionletVolatilitySurface
    ::bool
    =false
    -- ^extrapolate
-  -- Returns the total integrated variance for a given exercise date and strike rate.
-  -- Total integrated variance is useful because it scales out t for the optionlet pricing formulae. Note that it is called "total" because the surface does not know whether it represents Black, Bachelier or Displaced Diffusion variance. These are virtual so alternate connections between const vol and total var are possible.Because inflation is highly linked to dates (for interpolation, periods, etc) we do NOT provide a time version
+  -- |Returns the total integrated variance for a given exercise date and strike rate.
+  -- |Total integrated variance is useful because it scales out t for the optionlet pricing formulae. Note that it is called "total" because the surface does not know whether it represents Black, Bachelier or Displaced Diffusion variance. These are virtual so alternate connections between const vol and total var are possible.Because inflation is highly linked to dates (for interpolation, periods, etc) we do NOT provide a time version
   totalVariance
    ->Volatility
    ::const Date &
@@ -63,7 +61,7 @@ YoYOptionletVolatilitySurface
    ::bool
    =false
    -- ^extrapolate
-  -- returns the total integrated variance for a given option tenor and strike rate
+  -- |returns the total integrated variance for a given option tenor and strike rate
   totalVariance
    ->Volatility
    ::const Period &
@@ -76,7 +74,7 @@ YoYOptionletVolatilitySurface
    ::bool
    =false
    -- ^extrapolate
-  -- The TS observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag.
+  -- |The TS observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag.
   observationLag
    ->Period
   frequency
@@ -85,7 +83,7 @@ YoYOptionletVolatilitySurface
    ->bool
   baseDate
    ->Date
-  -- base date will be in the past because of observation lag
+  -- |base date will be in the past because of observation lag
   timeFromBase
    ->Time
    ::const Date &
@@ -93,10 +91,6 @@ YoYOptionletVolatilitySurface
    ::const Period &
    =Period(-1, Days)
    -- ^obsLag
- -v-
- -e-
  -f-
   baseLevel
    ->Volatility
- -v-
- -e-

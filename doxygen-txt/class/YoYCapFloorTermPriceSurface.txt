@@ -3,8 +3,8 @@ YoYCapFloorTermPriceSurface
  -- |Since this can create a yoy term structure it does take a YoY index.Possible enhancementsdeal with index interpolation.
 
  -f-
-  -- inspectors
-  -- you don't know if price() is a cap or a floor without checking the YoYSwapATM level. atm cap/floor prices are generally inaccurate because they are from extrapolation and intersection.
+  -- |inspectors
+  -- |you don't know if price() is a cap or a floor without checking the YoYSwapATM level. atm cap/floor prices are generally inaccurate because they are from extrapolation and intersection.
   businessDayConvention
    ->BusinessDayConvention
   fixingDays
@@ -95,8 +95,6 @@ YoYCapFloorTermPriceSurface
    ->Date
   maxMaturity
    ->Date
- -v-
- -e-
  -f-
   YoYCapFloorTermPriceSurface
    ->
@@ -126,21 +124,19 @@ YoYCapFloorTermPriceSurface
    -- ^cPrice
    ::const Matrix &
    -- ^fPrice
-  -- atm yoy swaps from put-call parity on cap/floor data
-  -- uses interpolation (on surface price data), yearly maturities.
+  -- |atm yoy swaps from put-call parity on cap/floor data
+  -- |uses interpolation (on surface price data), yearly maturities.
   atmYoYSwapTimeRates
    ->std::pair< std::vector< Time >, std::vector< Rate > >
   atmYoYSwapDateRates
    ->std::pair< std::vector< Date >, std::vector< Rate > >
-  -- derived from yoy swap rates
+  -- |derived from yoy swap rates
   YoYTS
    ->boost::shared_ptr< YoYInflationTermStructure >
-  -- index yoy is based on
+  -- |index yoy is based on
   yoyIndex
    ->boost::shared_ptr< YoYInflationIndex >
   yoyOptionDateFromTenor
    ->Date
    ::const Period &
    -- ^p
- -v-
- -e-

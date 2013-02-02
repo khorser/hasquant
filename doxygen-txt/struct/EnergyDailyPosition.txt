@@ -1,6 +1,5 @@
 EnergyDailyPosition
 
- -f-
  -v-
   date
    ::Date
@@ -14,7 +13,6 @@ EnergyDailyPosition
    ::Real
   unrealized
    ::bool
- -e-
  -f-
   EnergyDailyPosition
    ->
@@ -28,5 +26,3 @@ EnergyDailyPosition
    -- ^receiveLegPrice
    ::bool
    -- ^unrealized
- -v-
- -e-

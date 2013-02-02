@@ -1,9 +1,6 @@
 composed_function
 
  -f-
- -v-
- -e-
- -f-
   composed_function
    ->
    ::const F &
@@ -14,5 +11,3 @@ composed_function
    ->result_type
    ::const argument_type &
    -- ^x
- -v-
- -e-

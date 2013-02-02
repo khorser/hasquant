@@ -3,9 +3,6 @@ ReplicatingVarianceSwapEngine
  -- |as described in Demeterfi, Derman, Kamal & Zou, "A Guide to Volatility and Variance Swaps", 1999Testsreturned variances verified against results from literature
 
  -f-
- -v-
- -e-
- -f-
   ReplicatingVarianceSwapEngine
    ->
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
@@ -19,5 +16,3 @@ ReplicatingVarianceSwapEngine
    ::const std::vector< Real > &
    =std::vector< Real >()
    -- ^putStrikes
- -v-
- -e-

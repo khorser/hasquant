@@ -14,5 +14,3 @@ G2ForwardProcess
    -- ^eta
    ::Real
    -- ^rho
- -v-
- -e-

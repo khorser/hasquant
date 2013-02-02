@@ -5,5 +5,3 @@ Denmark
  -f-
   Denmark
    ->
- -v-
- -e-

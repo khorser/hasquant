@@ -16,5 +16,3 @@ FDEuropeanEngine
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

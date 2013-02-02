@@ -10,5 +10,3 @@ TridiagonalOperator::TimeSetter
    -- ^t
    ::TridiagonalOperator &
    -- ^L
- -v-
- -e-

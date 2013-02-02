@@ -8,5 +8,3 @@ EuropeanOption
    -- ^
    ::const boost::shared_ptr< Exercise > &
    -- ^
- -v-
- -e-

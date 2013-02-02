@@ -13,5 +13,3 @@ HistoricalForwardRatesAnalysis
    ->const std::vector< std::string > &
   fixingPeriods
    ->const std::vector< Period > &
- -v-
- -e-

@@ -25,5 +25,3 @@ FdmDividendHandler
    ->const std::vector< Date > &
   dividends
    ->const std::vector< Real > &
- -v-
- -e-

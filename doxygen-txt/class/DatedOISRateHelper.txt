@@ -6,8 +6,6 @@ DatedOISRateHelper
    ->void
    ::YieldTermStructure *
    -- ^
- -v-
- -e-
  -f-
   DatedOISRateHelper
    ->
@@ -22,5 +20,3 @@ DatedOISRateHelper
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^discountingCurve
- -v-
- -e-

@@ -2,7 +2,7 @@ ConstantYoYOptionletVolatility
  -- |Constant surface, no K or T dependence.
 
  -f-
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   ConstantYoYOptionletVolatility
    ->
    ::const Volatility
@@ -27,10 +27,6 @@ ConstantYoYOptionletVolatility
    ::Rate
    =100.0
    -- ^maxStrike
- -v-
- -e-
  -f-
   ~ConstantYoYOptionletVolatility
    ->
- -v-
- -e-

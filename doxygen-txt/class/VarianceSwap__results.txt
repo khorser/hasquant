@@ -1,13 +1,9 @@
 VarianceSwap::results
  -- |Results from variance-swap calculation
 
- -f-
  -v-
   variance
    ::Real
- -e-
  -f-
   reset
    ->void
- -v-
- -e-

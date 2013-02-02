@@ -5,5 +5,3 @@ PKRCurrency
  -f-
   PKRCurrency
    ->
- -v-
- -e-

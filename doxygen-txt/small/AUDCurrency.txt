@@ -5,5 +5,3 @@ AUDCurrency
  -f-
   AUDCurrency
    ->
- -v-
- -e-

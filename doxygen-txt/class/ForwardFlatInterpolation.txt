@@ -2,7 +2,7 @@ ForwardFlatInterpolation
  -- |Forward-flat interpolation between discrete points.
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   ForwardFlatInterpolation
    ->
    ::const I1 &
@@ -11,5 +11,3 @@ ForwardFlatInterpolation
    -- ^xEnd
    ::const I2 &
    -- ^yBegin
- -v-
- -e-

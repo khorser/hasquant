@@ -3,15 +3,11 @@ FixedRateBondHelper
  -f-
   fixedRateBond
    ->boost::shared_ptr< FixedRateBond >
- -v-
- -e-
  -f-
   accept
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-
  -f-
   FixedRateBondHelper
    ->
@@ -36,5 +32,3 @@ FixedRateBondHelper
    ::const Date &
    =Date()
    -- ^issueDate
- -v-
- -e-

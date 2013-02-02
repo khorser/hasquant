@@ -14,5 +14,3 @@ MarshallOlkinCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

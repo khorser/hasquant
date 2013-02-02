@@ -19,5 +19,3 @@ NormalDistribution
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

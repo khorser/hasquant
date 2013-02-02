@@ -51,5 +51,3 @@ GemanRoncoroniProcess
    -- ^dw
    ::const Array &
    -- ^du
- -v-
- -e-

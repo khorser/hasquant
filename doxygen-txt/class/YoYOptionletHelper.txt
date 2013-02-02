@@ -26,5 +26,3 @@ YoYOptionletHelper
    -- ^n
    ::const boost::shared_ptr< YoYInflationCapFloorEngine > &
    -- ^pricer
- -v-
- -e-

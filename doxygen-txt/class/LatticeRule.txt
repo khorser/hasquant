@@ -1,7 +1,5 @@
 LatticeRule
 
- -f-
- -v-
  -e-
   type
    A
@@ -17,5 +15,3 @@ LatticeRule
    -- ^Z
    ::Integer
    -- ^N
- -v-
- -e-

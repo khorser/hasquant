@@ -1,7 +1,7 @@
 SabrInterpolatedSmileSection
 
  -f-
-  -- all market data are quotes
+  -- |all market data are quotes
   SabrInterpolatedSmileSection
    ->
    ::const Date &
@@ -48,7 +48,7 @@ SabrInterpolatedSmileSection
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
-  -- no quotes
+  -- |no quotes
   SabrInterpolatedSmileSection
    ->
    ::const Date &
@@ -95,15 +95,11 @@ SabrInterpolatedSmileSection
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
- -v-
- -e-
  -f-
   performCalculations
    ->void
   update
    ->void
- -v-
- -e-
  -f-
   minStrike
    ->Real
@@ -111,8 +107,6 @@ SabrInterpolatedSmileSection
    ->Real
   atmLevel
    ->Real
- -v-
- -e-
  -f-
   alpha
    ->Real
@@ -128,8 +122,6 @@ SabrInterpolatedSmileSection
    ->Real
   endCriteria
    ->EndCriteria::Type
- -v-
- -e-
  -f-
   varianceImpl
    ->Real
@@ -139,5 +131,3 @@ SabrInterpolatedSmileSection
    ->Volatility
    ::Rate
    -- ^strike
- -v-
- -e-

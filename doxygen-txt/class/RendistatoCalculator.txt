@@ -17,8 +17,6 @@ RendistatoCalculator
    ->const std::vector< Rate > &
   swapDurations
    ->const std::vector< Time > &
- -v-
- -e-
  -f-
   equivalentSwap
    ->boost::shared_ptr< VanillaSwap >
@@ -32,8 +30,6 @@ RendistatoCalculator
    ->Time
   equivalentSwapSpread
    ->Spread
- -v-
- -e-
  -f-
   RendistatoCalculator
    ->
@@ -43,5 +39,3 @@ RendistatoCalculator
    -- ^euriborIndex
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
- -v-
- -e-

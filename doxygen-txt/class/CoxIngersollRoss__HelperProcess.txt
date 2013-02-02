@@ -25,5 +25,3 @@ CoxIngersollRoss::HelperProcess
    -- ^
    ::Real
    -- ^
- -v-
- -e-

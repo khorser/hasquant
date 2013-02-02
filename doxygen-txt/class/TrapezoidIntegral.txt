@@ -9,5 +9,3 @@ TrapezoidIntegral
    -- ^accuracy
    ::Size
    -- ^maxIterations
- -v-
- -e-

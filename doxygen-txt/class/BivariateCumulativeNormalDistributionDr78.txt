@@ -13,5 +13,3 @@ BivariateCumulativeNormalDistributionDr78
    -- ^a
    ::Real
    -- ^b
- -v-
- -e-

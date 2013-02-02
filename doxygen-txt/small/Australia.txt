@@ -5,5 +5,3 @@ Australia
  -f-
   Australia
    ->
- -v-
- -e-

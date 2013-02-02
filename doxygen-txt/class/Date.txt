@@ -3,15 +3,15 @@ Date
  -- |This class provides methods to inspect dates as well as methods and operators which implement a limited date algebra (increasing and decreasing dates, and calculating their difference).Testsself-consistency of dates, serial numbers, days of month, months, and weekdays is checked over the whole date range.
 
  -f-
-  -- Default constructor returning a null date.
+  -- |Default constructor returning a null date.
   Date
    ->
-  -- Constructor taking a serial number as given by Applix or Excel.
+  -- |Constructor taking a serial number as given by Applix or Excel.
   Date
    ->
    ::BigInteger
    -- ^serialNumber
-  -- More traditional constructor.
+  -- |More traditional constructor.
   Date
    ->
    ::Day
@@ -20,14 +20,12 @@ Date
    -- ^m
    ::Year
    -- ^y
- -v-
- -e-
  -f-
   weekday
    ->Weekday
   dayOfMonth
    ->Day
-  -- One-based (Jan 1st = 1)
+  -- |One-based (Jan 1st = 1)
   dayOfYear
    ->Day
   month
@@ -36,102 +34,98 @@ Date
    ->Year
   serialNumber
    ->BigInteger
- -v-
- -e-
  -f-
-  -- increments date by the given number of days
+  -- |increments date by the given number of days
   operator+=
    ->Date &
    ::BigInteger
    -- ^days
-  -- increments date by the given period
+  -- |increments date by the given period
   operator+=
    ->Date &
    ::const Period &
    -- ^
-  -- decrement date by the given number of days
+  -- |decrement date by the given number of days
   operator-=
    ->Date &
    ::BigInteger
    -- ^days
-  -- decrements date by the given period
+  -- |decrements date by the given period
   operator-=
    ->Date &
    ::const Period &
    -- ^
-  -- 1-day pre-increment
+  -- |1-day pre-increment
   operator++
    ->Date &
-  -- 1-day post-increment
+  -- |1-day post-increment
   operator++
    ->Date
    ::int
    -- ^
-  -- 1-day pre-decrement
+  -- |1-day pre-decrement
   operator--
    ->Date &
-  -- 1-day post-decrement
+  -- |1-day post-decrement
   operator--
    ->Date
    ::int
    -- ^
-  -- returns a new date incremented by the given number of days
+  -- |returns a new date incremented by the given number of days
   operator+
    ->Date
    ::BigInteger
    -- ^days
-  -- returns a new date incremented by the given period
+  -- |returns a new date incremented by the given period
   operator+
    ->Date
    ::const Period &
    -- ^
-  -- returns a new date decremented by the given number of days
+  -- |returns a new date decremented by the given number of days
   operator-
    ->Date
    ::BigInteger
    -- ^days
-  -- returns a new date decremented by the given period
+  -- |returns a new date decremented by the given period
   operator-
    ->Date
    ::const Period &
    -- ^
- -v-
- -e-
  -f-
-  -- today's date.
+  -- |today's date.
   todaysDate
    ->Date
-  -- earliest allowed date
+  -- |earliest allowed date
   minDate
    ->Date
-  -- latest allowed date
+  -- |latest allowed date
   maxDate
    ->Date
-  -- whether the given year is a leap one
+  -- |whether the given year is a leap one
   isLeap
    ->bool
    ::Year
    -- ^y
-  -- last day of the month to which the given date belongs
+  -- |last day of the month to which the given date belongs
   endOfMonth
    ->Date
    ::const Date &
    -- ^d
-  -- whether a date is the last day of its month
+  -- |whether a date is the last day of its month
   isEndOfMonth
    ->bool
    ::const Date &
    -- ^d
-  -- next given weekday following or equal to the given date
-  -- E.g., the Friday following Tuesday, January 15th, 2002 was January 18th, 2002.see http://www.cpearson.com/excel/DateTimeWS.htm
+  -- |next given weekday following or equal to the given date
+  -- |E.g., the Friday following Tuesday, January 15th, 2002 was January 18th, 2002.see http://www.cpearson.com/excel/DateTimeWS.htm
   nextWeekday
    ->Date
    ::const Date &
    -- ^d
    ::Weekday
    -- ^w
-  -- n-th given weekday in the given month and year
-  -- E.g., the 4th Thursday of March, 1998 was March 26th, 1998.see http://www.cpearson.com/excel/DateTimeWS.htm
+  -- |n-th given weekday in the given month and year
+  -- |E.g., the 4th Thursday of March, 1998 was March 26th, 1998.see http://www.cpearson.com/excel/DateTimeWS.htm
   nthWeekday
    ->Date
    ::Size
@@ -142,10 +136,8 @@ Date
    -- ^m
    ::Year
    -- ^y
- -v-
- -e-
  -f-
-  -- Difference in days between dates.
+  -- |Difference in days between dates.
   operator-
    ->BigInteger
    ::const Date &
@@ -194,5 +186,3 @@ Date
    -- ^
    ::const Date &
    -- ^
- -v-
- -e-

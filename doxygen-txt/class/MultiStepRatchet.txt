@@ -19,8 +19,6 @@ MultiStepRatchet
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   MultiStepRatchet
    ->
@@ -43,5 +41,3 @@ MultiStepRatchet
    ::bool
    =true
    -- ^payer
- -v-
- -e-

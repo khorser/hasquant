@@ -21,5 +21,3 @@ QuantoTermStructure
    -- ^exchRateATMlevel
    ::Real
    -- ^underlyingExchRateCorrelation
- -v-
- -e-

@@ -9,5 +9,3 @@ BoundedDomain
    ->Real
   yUpperBound
    ->Real
- -v-
- -e-

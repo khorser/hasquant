@@ -50,5 +50,3 @@ FdmKlugeExtOUOp
    -- ^r
    ::Real
    -- ^s
- -v-
- -e-

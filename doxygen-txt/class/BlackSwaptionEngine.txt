@@ -31,5 +31,3 @@ BlackSwaptionEngine
    ->Handle< YieldTermStructure >
   volatility
    ->Handle< SwaptionVolatilityStructure >
- -v-
- -e-

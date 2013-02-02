@@ -16,5 +16,3 @@ PricingPeriod
    ->const Date &
   quantity
    ->const Quantity &
- -v-
- -e-

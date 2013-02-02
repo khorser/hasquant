@@ -1,7 +1,6 @@
 MargrabeOption::results
  -- |Extra results for Margrabe option.
 
- -f-
  -v-
   delta1
    ::Real
@@ -11,11 +10,8 @@ MargrabeOption::results
    ::Real
   gamma2
    ::Real
- -e-
  -f-
   results
    ->
   reset
    ->void
- -v-
- -e-

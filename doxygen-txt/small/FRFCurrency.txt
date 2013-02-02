@@ -5,5 +5,3 @@ FRFCurrency
  -f-
   FRFCurrency
    ->
- -v-
- -e-

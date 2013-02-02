@@ -5,5 +5,3 @@ GBPCurrency
  -f-
   GBPCurrency
    ->
- -v-
- -e-

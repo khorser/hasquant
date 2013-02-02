@@ -11,5 +11,3 @@ detail::Integrand
    ->Real
    ::Time
    -- ^t
- -v-
- -e-

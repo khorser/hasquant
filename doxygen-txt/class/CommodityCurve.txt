@@ -50,8 +50,6 @@ CommodityCurve
    -- ^nearbyOffset
   basisOfCurve
    ->const boost::shared_ptr< CommodityCurve > &
- -v-
- -e-
  -f-
   CommodityCurve
    ->
@@ -87,5 +85,3 @@ CommodityCurve
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dayCounter
- -v-
- -e-

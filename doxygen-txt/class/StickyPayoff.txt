@@ -16,5 +16,3 @@ StickyPayoff
    -- ^initialValue
    ::Real
    -- ^accrualFactor
- -v-
- -e-

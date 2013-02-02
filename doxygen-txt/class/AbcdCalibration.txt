@@ -1,6 +1,5 @@
 AbcdCalibration
 
- -f-
  -v-
   aIsFixed_
    ::bool
@@ -20,7 +19,6 @@ AbcdCalibration
    ::Real
   transformation_
    ::boost::shared_ptr< ParametersTransformation >
- -e-
  -f-
   AbcdCalibration
    ->
@@ -63,7 +61,7 @@ AbcdCalibration
    ::const boost::shared_ptr< OptimizationMethod > &
    =boost::shared_ptr< OptimizationMethod >()
    -- ^method
-  -- adjustment factors needed to match Black vols
+  -- |adjustment factors needed to match Black vols
   k
    ->std::vector< Real >
    ::const std::vector< Real > &
@@ -92,5 +90,3 @@ AbcdCalibration
    ->Real
   d
    ->Real
- -v-
- -e-

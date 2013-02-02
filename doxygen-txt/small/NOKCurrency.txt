@@ -5,5 +5,3 @@ NOKCurrency
  -f-
   NOKCurrency
    ->
- -v-
- -e-

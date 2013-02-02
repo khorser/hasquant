@@ -7,8 +7,6 @@ CompositeQuote
    ->Real
   value2
    ->Real
- -v-
- -e-
  -f-
   CompositeQuote
    ->
@@ -18,5 +16,3 @@ CompositeQuote
    -- ^element2
    ::const BinaryFunction &
    -- ^f
- -v-
- -e-

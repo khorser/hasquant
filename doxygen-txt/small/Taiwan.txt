@@ -2,8 +2,6 @@ Taiwan
  -- |Taiwanese calendars.
  -- |Holidays for the Taiwan stock exchange (data from http://www.tse.com.tw/en/trading/trading_days.php): Saturdays Sundays New Year's Day, January 1st Peace Memorial Day, February 28 Labor Day, May 1st Double Tenth National Day, October 10th Other holidays for which no rule is given (data available for 2002-2011 only:) Chinese Lunar New Year Tomb Sweeping Day Dragon Boat Festival Moon Festival
 
- -f-
- -v-
  -e-
   Market
    TSEC
@@ -14,5 +12,3 @@ Taiwan
    ::Market
    =TSEC
    -- ^m
- -v-
- -e-

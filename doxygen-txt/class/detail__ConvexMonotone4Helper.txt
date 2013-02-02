@@ -27,5 +27,3 @@ detail::ConvexMonotone4Helper
    -- ^x
   fNext
    ->Real
- -v-
- -e-

@@ -113,13 +113,9 @@ PiecewiseYieldCurve
    ::const Bootstrap< this_curve > &
    =Bootstrap< this_curve >()
    -- ^bootstrap
- -v-
- -e-
  -f-
   maxDate
    ->Date
- -v-
- -e-
  -f-
   times
    ->const std::vector< Time > &
@@ -129,8 +125,3 @@ PiecewiseYieldCurve
    ->const std::vector< Real > &
   nodes
    ->std::vector< std::pair< Date, Real > >
- -v-
- -e-
- -f-
- -v-
- -e-

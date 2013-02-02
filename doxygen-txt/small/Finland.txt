@@ -5,5 +5,3 @@ Finland
  -f-
   Finland
    ->
- -v-
- -e-

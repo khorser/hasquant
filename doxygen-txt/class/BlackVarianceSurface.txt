@@ -8,10 +8,6 @@ BlackVarianceSurface
    ::const Interpolator &
    =Interpolator()
    -- ^i
- -v-
- -e-
- -f-
- -v-
  -e-
   Extrapolation
    ConstantExtrapolation
@@ -37,5 +33,3 @@ BlackVarianceSurface
    ::Extrapolation
    =InterpolatorDefaultExtrapolation
    -- ^upperExtrapolation
- -v-
- -e-

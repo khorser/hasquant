@@ -10,5 +10,3 @@ StepCondition
    -- ^a
    ::Time
    -- ^t
- -v-
- -e-

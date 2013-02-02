@@ -26,5 +26,3 @@ ExtendedLeisenReimer
    -- ^
    ::Size
    -- ^branch
- -v-
- -e-

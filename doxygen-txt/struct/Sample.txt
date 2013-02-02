@@ -1,16 +1,11 @@
 Sample
  -- |weighted sample
 
- -f-
- -v-
- -e-
- -f-
  -v-
   value
    ::T
   weight
    ::Real
- -e-
  -f-
   Sample
    ->
@@ -18,5 +13,3 @@ Sample
    -- ^value
    ::Real
    -- ^weight
- -v-
- -e-

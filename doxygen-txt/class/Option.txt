@@ -1,8 +1,6 @@
 Option
  -- |base option class
 
- -f-
- -v-
  -e-
   Type
    Put
@@ -18,8 +16,6 @@ Option
    ->boost::shared_ptr< Payoff >
   exercise
    ->boost::shared_ptr< Exercise >
- -v-
- -e-
  -f-
   operator<<
    ->std::ostream &
@@ -27,5 +23,3 @@ Option
    -- ^
    ::Option::Type
    -- ^
- -v-
- -e-

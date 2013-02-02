@@ -1,15 +1,11 @@
 GenericLowDiscrepancy
 
- -f-
- -v-
  -e-
   @2
    allowsErrorEstimate
- -f-
  -v-
   icInstance
    ::boost::shared_ptr< IC >
- -e-
  -f-
   make_sequence_generator
    ->rsg_type
@@ -17,5 +13,3 @@ GenericLowDiscrepancy
    -- ^dimension
    ::BigNatural
    -- ^seed
- -v-
- -e-

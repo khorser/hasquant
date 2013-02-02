@@ -11,15 +11,13 @@ ProjectedCostFunction
    -- ^parametersValues
    ::const std::vector< bool > &
    -- ^parametersFreedoms
-  -- returns the subset of free parameters corresponding
+  -- |returns the subset of free parameters corresponding
   project
    ->Disposable< Array >
    ::const Array &
    -- ^parameters
-  -- returns whole set of parameters corresponding to the set
+  -- |returns whole set of parameters corresponding to the set
   include
    ->Disposable< Array >
    ::const Array &
    -- ^projectedParameters
- -v-
- -e-

@@ -31,5 +31,3 @@ detail::BicubicSplineDerivatives
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

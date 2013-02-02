@@ -5,5 +5,3 @@ THBCurrency
  -f-
   THBCurrency
    ->
- -v-
- -e-

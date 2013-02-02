@@ -5,5 +5,3 @@ MXNCurrency
  -f-
   MXNCurrency
    ->
- -v-
- -e-

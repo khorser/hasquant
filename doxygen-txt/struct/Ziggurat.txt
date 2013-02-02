@@ -1,7 +1,5 @@
 Ziggurat
 
- -f-
- -v-
  -e-
   @0
    allowsErrorEstimate
@@ -12,5 +10,3 @@ Ziggurat
    -- ^dimension
    ::BigNatural
    -- ^seed
- -v-
- -e-

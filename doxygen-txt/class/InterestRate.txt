@@ -3,10 +3,10 @@ InterestRate
  -- |This class encapsulate the interest rate compounding algebra. It manages day-counting conventions, compounding conventions, conversion between different conventions, discount/compound factor calculations, and implied/equivalent rate calculations.TestsConverted rates are checked against known good results
 
  -f-
-  -- Default constructor returning a null interest rate.
+  -- |Default constructor returning a null interest rate.
   InterestRate
    ->
-  -- Standard constructor.
+  -- |Standard constructor.
   InterestRate
    ->
    ::Rate
@@ -17,13 +17,9 @@ InterestRate
    -- ^comp
    ::Frequency
    -- ^freq
- -v-
- -e-
  -f-
   operator Rate
    ->
- -v-
- -e-
  -f-
   rate
    ->Rate
@@ -33,16 +29,14 @@ InterestRate
    ->Compounding
   frequency
    ->Frequency
- -v-
- -e-
  -f-
-  -- discount factor implied by the rate compounded at time t.
-  -- WarningTime must be measured using InterestRate's own day counter.
+  -- |discount factor implied by the rate compounded at time t.
+  -- |WarningTime must be measured using InterestRate's own day counter.
   discountFactor
    ->DiscountFactor
    ::Time
    -- ^t
-  -- discount factor implied by the rate compounded between two dates
+  -- |discount factor implied by the rate compounded between two dates
   discountFactor
    ->DiscountFactor
    ::const Date &
@@ -55,14 +49,14 @@ InterestRate
    ::const Date &
    =Date()
    -- ^refEnd
-  -- compound factor implied by the rate compounded at time t.
-  -- returns the compound (a.k.a capitalization) factor implied by the rate compounded at time t.WarningTime must be measured using InterestRate's own day counter.
+  -- |compound factor implied by the rate compounded at time t.
+  -- |returns the compound (a.k.a capitalization) factor implied by the rate compounded at time t.WarningTime must be measured using InterestRate's own day counter.
   compoundFactor
    ->Real
    ::Time
    -- ^t
-  -- compound factor implied by the rate compounded between two dates
-  -- returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
+  -- |compound factor implied by the rate compounded between two dates
+  -- |returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
   compoundFactor
    ->Real
    ::const Date &
@@ -75,11 +69,9 @@ InterestRate
    ::const Date &
    =Date()
    -- ^refEnd
- -v-
- -e-
  -f-
-  -- implied interest rate for a given compound factor at a given time.
-  -- The resulting InterestRate has the day-counter provided as input.WarningTime must be measured using the day-counter provided as input.
+  -- |implied interest rate for a given compound factor at a given time.
+  -- |The resulting InterestRate has the day-counter provided as input.WarningTime must be measured using the day-counter provided as input.
   impliedRate
    ->InterestRate
    ::Real
@@ -92,8 +84,8 @@ InterestRate
    -- ^freq
    ::Time
    -- ^t
-  -- implied rate for a given compound factor between two dates.
-  -- The resulting rate is calculated taking the required day-counting rule into account.
+  -- |implied rate for a given compound factor between two dates.
+  -- |The resulting rate is calculated taking the required day-counting rule into account.
   impliedRate
    ->InterestRate
    ::Real
@@ -114,11 +106,9 @@ InterestRate
    ::const Date &
    =Date()
    -- ^refEnd
- -v-
- -e-
  -f-
-  -- equivalent interest rate for a compounding period t.
-  -- The resulting InterestRate shares the same implicit day-counting rule of the original InterestRate instance.WarningTime must be measured using the InterestRate's own day counter.
+  -- |equivalent interest rate for a compounding period t.
+  -- |The resulting InterestRate shares the same implicit day-counting rule of the original InterestRate instance.WarningTime must be measured using the InterestRate's own day counter.
   equivalentRate
    ->InterestRate
    ::Compounding
@@ -127,8 +117,8 @@ InterestRate
    -- ^freq
    ::Time
    -- ^t
-  -- equivalent rate for a compounding period between two dates
-  -- The resulting rate is calculated taking the required day-counting rule into account.
+  -- |equivalent rate for a compounding period between two dates
+  -- |The resulting rate is calculated taking the required day-counting rule into account.
   equivalentRate
    ->InterestRate
    ::const DayCounter &
@@ -147,8 +137,6 @@ InterestRate
    ::const Date &
    =Date()
    -- ^refEnd
- -v-
- -e-
  -f-
   operator<<
    ->std::ostream &
@@ -156,5 +144,3 @@ InterestRate
    -- ^
    ::const InterestRate &
    -- ^
- -v-
- -e-

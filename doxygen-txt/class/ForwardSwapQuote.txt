@@ -16,5 +16,3 @@ ForwardSwapQuote
    ->const Date &
   fixingDate
    ->const Date &
- -v-
- -e-

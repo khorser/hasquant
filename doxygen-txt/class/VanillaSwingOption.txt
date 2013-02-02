@@ -12,5 +12,3 @@ VanillaSwingOption
    -- ^minExerciseRights
    ::Size
    -- ^maxExerciseRights
- -v-
- -e-

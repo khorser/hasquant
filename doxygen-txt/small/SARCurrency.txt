@@ -5,5 +5,3 @@ SARCurrency
  -f-
   SARCurrency
    ->
- -v-
- -e-

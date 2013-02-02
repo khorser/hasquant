@@ -1,9 +1,6 @@
 FdSimpleKlugeExtOUVPPEngine
 
  -f-
- -v-
- -e-
- -f-
   FdSimpleKlugeExtOUVPPEngine
    ->
    ::const boost::shared_ptr< KlugeExtOUProcess > &
@@ -35,5 +32,3 @@ FdSimpleKlugeExtOUVPPEngine
    -- ^schemeDesc
   calculate
    ->void
- -v-
- -e-

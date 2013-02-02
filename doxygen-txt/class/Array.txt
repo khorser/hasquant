@@ -3,20 +3,20 @@ Array
  -- |This class implements the concept of vector as used in linear algebra. As such, it is not meant to be used as a container - std::vector should be used instead.Testsconstruction of arrays is checked in a number of cases
 
  -f-
-  -- creates the array with the given dimension
+  -- |creates the array with the given dimension
   Array
    ->
    ::Size
    =0
    -- ^size
-  -- creates the array and fills it with value
+  -- |creates the array and fills it with value
   Array
    ->
    ::Size
    -- ^size
    ::Real
    -- ^value
-  -- creates the array and fills it according to $ a_{0} = value, a_{i}=a_{i-1}+increment $
+  -- |creates the array and fills it according to $ a_{0} = value, a_{i}=a_{i-1}+increment $
   Array
    ->
    ::Size
@@ -33,7 +33,7 @@ Array
    ->
    ::const Disposable< Array > &
    -- ^
-  -- creates the array from an iterable sequence
+  -- |creates the array from an iterable sequence
   Array
    ->
    ::ForwardIterator
@@ -56,8 +56,6 @@ Array
    ->bool
    ::const Array &
    -- ^
- -v-
- -e-
  -f-
   operator+=
    ->const Array &
@@ -91,10 +89,8 @@ Array
    ->const Array &
    ::Real
    -- ^
- -v-
- -e-
  -f-
-  -- read-only
+  -- |read-only
   operator[]
    ->Real
    ::Size
@@ -107,7 +103,7 @@ Array
    ->Real
   back
    ->Real
-  -- read-write
+  -- |read-write
   operator[]
    ->Real &
    ::Size
@@ -120,17 +116,13 @@ Array
    ->Real &
   back
    ->Real &
- -v-
- -e-
  -f-
-  -- dimension of the array
+  -- |dimension of the array
   size
    ->Size
-  -- whether the array is empty
+  -- |whether the array is empty
   empty
    ->bool
- -v-
- -e-
  -f-
   begin
    ->const_iterator
@@ -148,18 +140,11 @@ Array
    ->const_reverse_iterator
   rend
    ->reverse_iterator
- -v-
- -e-
  -f-
   swap
    ->void
    ::Array &
    -- ^
- -v-
- -e-
- -f-
- -v-
- -e-
  -f-
   DotProduct
    ->Real
@@ -275,5 +260,3 @@ Array
    -- ^
    ::const Array &
    -- ^
- -v-
- -e-

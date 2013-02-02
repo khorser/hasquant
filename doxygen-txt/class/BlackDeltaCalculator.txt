@@ -53,5 +53,3 @@ BlackDeltaCalculator
    ->Real
    ::DeltaVolQuote::AtmType
    -- ^atmT
- -v-
- -e-

@@ -20,5 +20,3 @@ DefaultProbKey
    ->const std::vector< boost::shared_ptr< DefaultType > > &
   size
    ->Size
- -v-
- -e-

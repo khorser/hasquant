@@ -20,5 +20,3 @@ PiecewiseZeroSpreadedTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-

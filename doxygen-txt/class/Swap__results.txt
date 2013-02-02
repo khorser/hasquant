@@ -1,6 +1,5 @@
 Swap::results
 
- -f-
  -v-
   legNPV
    ::std::vector< Real >
@@ -12,9 +11,6 @@ Swap::results
    ::std::vector< DiscountFactor >
   npvDateDiscount
    ::DiscountFactor
- -e-
  -f-
   reset
    ->void
- -v-
- -e-

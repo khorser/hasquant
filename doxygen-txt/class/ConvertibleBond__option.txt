@@ -31,5 +31,3 @@ ConvertibleBond::option
    ->void
    ::PricingEngine::arguments *
    -- ^
- -v-
- -e-

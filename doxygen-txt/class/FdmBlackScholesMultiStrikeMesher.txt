@@ -20,8 +20,6 @@ FdmBlackScholesMultiStrikeMesher
    ::const std::pair< Real, Real > &
    =(std::pair< Real, Real >(Null< Real >(), Null< Real >()))
    -- ^cPoint
- -v-
- -e-
  -f-
   processHelper
    ->boost::shared_ptr< GeneralizedBlackScholesProcess >
@@ -33,5 +31,3 @@ FdmBlackScholesMultiStrikeMesher
    -- ^qTS
    ::Volatility
    -- ^vol
- -v-
- -e-

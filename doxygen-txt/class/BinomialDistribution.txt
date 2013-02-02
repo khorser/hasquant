@@ -13,5 +13,3 @@ BinomialDistribution
    ->Real
    ::BigNatural
    -- ^k
- -v-
- -e-

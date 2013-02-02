@@ -30,8 +30,6 @@ Schedule
    ->bool
    ::Size
    -- ^i
- -v-
- -e-
  -f-
   empty
    ->bool
@@ -51,8 +49,6 @@ Schedule
    ->DateGeneration::Rule
   endOfMonth
    ->bool
- -v-
- -e-
  -f-
   begin
    ->const_iterator
@@ -63,16 +59,12 @@ Schedule
    ::const Date &
    =Date()
    -- ^d
- -v-
- -e-
  -f-
-  -- truncated schedule
+  -- |truncated schedule
   until
    ->Schedule
    ::const Date &
    -- ^truncationDate
- -v-
- -e-
  -f-
   Schedule
    ->
@@ -110,5 +102,3 @@ Schedule
    -- ^nextToLastDate
   Schedule
    ->
- -v-
- -e-

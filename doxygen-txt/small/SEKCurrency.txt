@@ -5,5 +5,3 @@ SEKCurrency
  -f-
   SEKCurrency
    ->
- -v-
- -e-

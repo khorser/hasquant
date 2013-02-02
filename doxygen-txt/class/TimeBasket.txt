@@ -2,13 +2,11 @@ TimeBasket
  -- |Distribution over a number of dates.
 
  -f-
-  -- membership
+  -- |membership
   hasDate
    ->bool
    ::const Date &
    -- ^
- -v-
- -e-
  -f-
   operator+=
    ->TimeBasket &
@@ -18,16 +16,12 @@ TimeBasket
    ->TimeBasket &
    ::const TimeBasket &
    -- ^other
- -v-
- -e-
  -f-
-  -- redistribute the entries over the given dates
+  -- |redistribute the entries over the given dates
   rebin
    ->TimeBasket
    ::const std::vector< Date > &
    -- ^buckets
- -v-
- -e-
  -f-
   TimeBasket
    ->
@@ -37,5 +31,3 @@ TimeBasket
    -- ^dates
    ::const std::vector< Real > &
    -- ^values
- -v-
- -e-

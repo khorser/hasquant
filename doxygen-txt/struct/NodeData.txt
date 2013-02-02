@@ -1,6 +1,5 @@
 NodeData
 
- -f-
  -v-
   exerciseValue
    ::Real
@@ -12,4 +11,3 @@ NodeData
    ::Real
   isValid
    ::bool
- -e-

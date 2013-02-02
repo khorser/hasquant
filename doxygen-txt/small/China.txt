@@ -2,8 +2,6 @@ China
  -- |Chinese calendar.
  -- |Holidays: Saturdays Sundays New Year's day, January 1st (possibly followed by one or two more holidays) Labour Day, first week in May National Day, one week from October 1st Other holidays for which no rule is given (data available for 2004-2011 only): Chinese New Year Ching Ming Festival Tuen Ng Festival Mid-Autumn Festival Data from http://www.sse.com.cn/sseportal/en/home/home.shtml
 
- -f-
- -v-
  -e-
   Market
    SSE
@@ -14,5 +12,3 @@ China
    ::Market
    =SSE
    -- ^m
- -v-
- -e-

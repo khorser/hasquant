@@ -12,5 +12,3 @@ Surface
    ->boost::shared_ptr< Domain >
   ~Surface
    ->
- -v-
- -e-

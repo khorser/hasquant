@@ -13,8 +13,6 @@ InterpolatedYoYInflationCurve
    ->const std::vector< Rate > &
   nodes
    ->std::vector< std::pair< Date, Rate > >
- -v-
- -e-
  -f-
   InterpolatedYoYInflationCurve
    ->
@@ -39,5 +37,3 @@ InterpolatedYoYInflationCurve
    ::const Interpolator &
    =Interpolator()
    -- ^interpolator
- -v-
- -e-

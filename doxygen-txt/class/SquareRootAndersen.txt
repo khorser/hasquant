@@ -23,5 +23,3 @@ SquareRootAndersen
    ::Real
    =1.5
    -- ^cutPoint
- -v-
- -e-

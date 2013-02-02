@@ -5,5 +5,3 @@ TTDCurrency
  -f-
   TTDCurrency
    ->
- -v-
- -e-

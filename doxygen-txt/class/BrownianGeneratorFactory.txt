@@ -9,5 +9,3 @@ BrownianGeneratorFactory
    -- ^factors
    ::Size
    -- ^steps
- -v-
- -e-

@@ -4,5 +4,3 @@ GenericRegion
  -f-
   GenericRegion
    ->
- -v-
- -e-

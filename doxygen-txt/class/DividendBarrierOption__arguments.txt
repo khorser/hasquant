@@ -1,15 +1,11 @@
 DividendBarrierOption::arguments
  -- |Arguments for dividend barrier option calculation
 
- -f-
  -v-
   cashFlow
    ::DividendSchedule
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

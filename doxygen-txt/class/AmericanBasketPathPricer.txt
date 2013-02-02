@@ -27,5 +27,3 @@ AmericanBasketPathPricer
    -- ^t
   basisSystem
    ->std::vector< boost::function1< Real, Array > >
- -v-
- -e-

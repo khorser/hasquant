@@ -19,5 +19,3 @@ MargrabeOption
    ->Real
   gamma2
    ->Real
- -v-
- -e-

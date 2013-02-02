@@ -20,5 +20,3 @@ HistoricalRatesAnalysis
    ->const std::vector< std::string > &
   stats
    ->const boost::shared_ptr< SequenceStatistics > &
- -v-
- -e-

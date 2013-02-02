@@ -3,5 +3,3 @@ GallonUnitOfMeasure
  -f-
   GallonUnitOfMeasure
    ->
- -v-
- -e-

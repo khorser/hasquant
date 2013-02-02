@@ -12,5 +12,3 @@ StepConditionSet
    ->void
    ::const itemType &
    -- ^a
- -v-
- -e-

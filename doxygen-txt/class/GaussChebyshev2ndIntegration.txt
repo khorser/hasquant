@@ -7,5 +7,3 @@ GaussChebyshev2ndIntegration
    ->
    ::Size
    -- ^n
- -v-
- -e-

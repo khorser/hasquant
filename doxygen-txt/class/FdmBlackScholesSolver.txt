@@ -1,9 +1,6 @@
 FdmBlackScholesSolver
 
  -f-
- -v-
- -e-
- -f-
   FdmBlackScholesSolver
    ->
    ::const Handle< GeneralizedBlackScholesProcess > &
@@ -37,5 +34,3 @@ FdmBlackScholesSolver
    ->Real
    ::Real
    -- ^s
- -v-
- -e-

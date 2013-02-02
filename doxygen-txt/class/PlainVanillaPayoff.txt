@@ -8,5 +8,3 @@ PlainVanillaPayoff
    -- ^type
    ::Real
    -- ^strike
- -v-
- -e-

@@ -42,5 +42,3 @@ AverageBMALeg
    -- ^spreads
   operator Leg
    ->
- -v-
- -e-

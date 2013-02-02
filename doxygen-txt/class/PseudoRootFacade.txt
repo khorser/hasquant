@@ -17,8 +17,6 @@ PseudoRootFacade
    ->const Matrix &
    ::Size
    -- ^i
- -v-
- -e-
  -f-
   PseudoRootFacade
    ->
@@ -34,5 +32,3 @@ PseudoRootFacade
    -- ^initialRates
    ::const std::vector< Spread > &
    -- ^displacements
- -v-
- -e-

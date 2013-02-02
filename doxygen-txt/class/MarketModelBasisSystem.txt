@@ -7,5 +7,3 @@ MarketModelBasisSystem
    ->std::vector< Size >
   clone
    ->std::auto_ptr< MarketModelBasisSystem >
- -v-
- -e-

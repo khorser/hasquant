@@ -33,5 +33,3 @@ UpperBoundEngine
    ->std::pair< Real, Real >
    ::Size
    -- ^innerPaths
- -v-
- -e-

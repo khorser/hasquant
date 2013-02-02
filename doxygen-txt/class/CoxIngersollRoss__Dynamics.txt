@@ -13,5 +13,3 @@ CoxIngersollRoss::Dynamics
    -- ^sigma
    ::Real
    -- ^x0
- -v-
- -e-

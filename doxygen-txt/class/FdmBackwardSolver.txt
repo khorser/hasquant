@@ -1,9 +1,6 @@
 FdmBackwardSolver
 
  -f-
- -v-
- -e-
- -f-
   FdmBackwardSolver
    ->
    ::const boost::shared_ptr< FdmLinearOpComposite > &
@@ -26,5 +23,3 @@ FdmBackwardSolver
    -- ^steps
    ::Size
    -- ^dampingSteps
- -v-
- -e-

@@ -15,5 +15,3 @@ OneFactorAffineModel
    -- ^maturity
    ::Rate
    -- ^rate
- -v-
- -e-

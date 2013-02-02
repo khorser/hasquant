@@ -23,5 +23,3 @@ MarketModelPathwiseInverseFloater
    -- ^payer
   ~MarketModelPathwiseInverseFloater
    ->
- -v-
- -e-

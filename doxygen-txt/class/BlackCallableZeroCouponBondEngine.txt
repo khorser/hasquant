@@ -3,19 +3,17 @@ BlackCallableZeroCouponBondEngine
  -- |Callable zero coupon bond, where the embedded (European) option price is assumed to obey the Black formula. Follows "European bond option" treatment in Hull, Fourth Edition, Chapter 20.WarningThis class has yet to be tested.
 
  -f-
-  -- volatility is the quoted fwd yield volatility, not price vol
+  -- |volatility is the quoted fwd yield volatility, not price vol
   BlackCallableZeroCouponBondEngine
    ->
    ::const Handle< Quote > &
    -- ^fwdYieldVol
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
-  -- volatility is the quoted fwd yield volatility, not price vol
+  -- |volatility is the quoted fwd yield volatility, not price vol
   BlackCallableZeroCouponBondEngine
    ->
    ::const Handle< CallableBondVolatilityStructure > &
    -- ^yieldVolStructure
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
- -v-
- -e-

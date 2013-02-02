@@ -8,8 +8,6 @@ BlackVarianceCurve
    ::const Interpolator &
    =Interpolator()
    -- ^i
- -v-
- -e-
  -f-
   BlackVarianceCurve
    ->
@@ -24,5 +22,3 @@ BlackVarianceCurve
    ::bool
    =true
    -- ^forceMonotoneVariance
- -v-
- -e-

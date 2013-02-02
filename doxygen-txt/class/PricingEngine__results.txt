@@ -5,5 +5,3 @@ PricingEngine::results
    ->
   reset
    ->void
- -v-
- -e-

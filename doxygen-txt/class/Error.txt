@@ -2,7 +2,7 @@ Error
  -- |Base error class.
 
  -f-
-  -- The explicit use of this constructor is not advised. Use the QL_FAIL macro instead.
+  -- |The explicit use of this constructor is not advised. Use the QL_FAIL macro instead.
   Error
    ->
    ::const std::string &
@@ -14,11 +14,9 @@ Error
    ::const std::string &
    =""
    -- ^message
-  -- the automatically generated destructor would not have the throw specifier.
+  -- |the automatically generated destructor would not have the throw specifier.
   ~Error
    ->
-  -- returns the error message.
+  -- |returns the error message.
   what
    ->const char *
- -v-
- -e-

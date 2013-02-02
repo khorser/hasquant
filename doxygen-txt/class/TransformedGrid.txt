@@ -45,5 +45,3 @@ TransformedGrid
    -- ^i
   size
    ->Size
- -v-
- -e-

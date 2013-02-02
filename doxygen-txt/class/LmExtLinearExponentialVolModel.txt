@@ -15,5 +15,3 @@ LmExtLinearExponentialVolModel
    -- ^c
    ::Real
    -- ^d
- -v-
- -e-

@@ -2,14 +2,14 @@ TermStructure
  -- |Basic term-structure functionality.
 
  -f-
-  -- default constructor
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |default constructor
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   TermStructure
    ->
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   TermStructure
    ->
    ::const Date &
@@ -20,7 +20,7 @@ TermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   TermStructure
    ->
    ::Natural
@@ -30,36 +30,30 @@ TermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-
  -f-
-  -- the day counter used for date/time conversion
+  -- |the day counter used for date/time conversion
   dayCounter
    ->DayCounter
-  -- date/time conversion
+  -- |date/time conversion
   timeFromReference
    ->Time
    ::const Date &
    -- ^date
-  -- the latest date for which the curve can return values
+  -- |the latest date for which the curve can return values
   maxDate
    ->Date
-  -- the latest time for which the curve can return values
+  -- |the latest time for which the curve can return values
   maxTime
    ->Time
-  -- the date at which discount = 1.0 and/or variance = 0.0
+  -- |the date at which discount = 1.0 and/or variance = 0.0
   referenceDate
    ->const Date &
-  -- the calendar used for reference and/or option date calculation
+  -- |the calendar used for reference and/or option date calculation
   calendar
    ->Calendar
-  -- the settlementDays used for reference date calculation
+  -- |the settlementDays used for reference date calculation
   settlementDays
    ->Natural
- -v-
- -e-
  -f-
   ~TermStructure
    ->
- -v-
- -e-

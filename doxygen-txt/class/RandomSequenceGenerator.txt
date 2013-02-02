@@ -3,9 +3,6 @@ RandomSequenceGenerator
  -- |Random sequence generator based on a pseudo-random number generator RNG.Class RNG must implement the following interface: RNG::sample_typeRNG::next()const; If a client of this class wants to use the nextInt32Sequence method, class RNG must also implement unsignedlongRNG::nextInt32()const; Warningdo not use with low-discrepancy sequence generator.
 
  -f-
- -v-
- -e-
- -f-
   RandomSequenceGenerator
    ->
    ::Size
@@ -27,5 +24,3 @@ RandomSequenceGenerator
    ->const sample_type &
   dimension
    ->Size
- -v-
- -e-

@@ -25,5 +25,3 @@ detail::QuadraticMinHelper
    -- ^x
   fNext
    ->Real
- -v-
- -e-

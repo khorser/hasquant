@@ -12,5 +12,3 @@ ForwardTypePayoff
    ->Position::Type
   strike
    ->Real
- -v-
- -e-

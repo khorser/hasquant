@@ -22,5 +22,3 @@ MarketModelVolProcess
    ->const std::vector< Real > &
   numberStateVariables
    ->Size
- -v-
- -e-

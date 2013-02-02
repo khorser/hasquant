@@ -10,5 +10,3 @@ AnalyticHaganPricer
    -- ^modelOfYieldCurve
    ::const Handle< Quote > &
    -- ^meanReversion
- -v-
- -e-

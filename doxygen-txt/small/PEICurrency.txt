@@ -5,5 +5,3 @@ PEICurrency
  -f-
   PEICurrency
    ->
- -v-
- -e-

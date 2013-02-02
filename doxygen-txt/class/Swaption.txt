@@ -9,8 +9,6 @@ Swaption
    ->VanillaSwap::Type
   underlyingSwap
    ->const boost::shared_ptr< VanillaSwap > &
- -v-
- -e-
  -f-
   Swaption
    ->
@@ -21,7 +19,7 @@ Swaption
    ::Settlement::Type
    =Settlement::Physical
    -- ^delivery
-  -- implied volatility
+  -- |implied volatility
   impliedVolatility
    ->Volatility
    ::Real
@@ -42,5 +40,3 @@ Swaption
    ::Volatility
    =4.0
    -- ^maxVol
- -v-
- -e-

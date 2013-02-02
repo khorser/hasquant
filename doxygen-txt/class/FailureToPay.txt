@@ -13,5 +13,3 @@ FailureToPay
    ->Real
   gracePeriod
    ->const Period &
- -v-
- -e-

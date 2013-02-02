@@ -11,10 +11,8 @@ CapFloorTermVolSurface
    ->const std::vector< Time > &
   strikes
    ->const std::vector< Rate > &
- -v-
- -e-
  -f-
-  -- floating reference date, floating market data
+  -- |floating reference date, floating market data
   CapFloorTermVolSurface
    ->
    ::Natural
@@ -32,7 +30,7 @@ CapFloorTermVolSurface
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
-  -- fixed reference date, floating market data
+  -- |fixed reference date, floating market data
   CapFloorTermVolSurface
    ->
    ::const Date &
@@ -50,7 +48,7 @@ CapFloorTermVolSurface
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
-  -- fixed reference date, fixed market data
+  -- |fixed reference date, fixed market data
   CapFloorTermVolSurface
    ->
    ::const Date &
@@ -68,7 +66,7 @@ CapFloorTermVolSurface
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
-  -- floating reference date, fixed market data
+  -- |floating reference date, fixed market data
   CapFloorTermVolSurface
    ->
    ::Natural
@@ -86,5 +84,3 @@ CapFloorTermVolSurface
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
- -v-
- -e-

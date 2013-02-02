@@ -29,5 +29,3 @@ ConvexMonotoneInterpolation
    -- ^interp
   getExistingHelpers
    ->std::map< Real, boost::shared_ptr< detail::SectionHelper > >
- -v-
- -e-

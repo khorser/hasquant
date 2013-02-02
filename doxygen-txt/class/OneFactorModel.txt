@@ -8,8 +8,6 @@ OneFactorModel
    -- ^nArguments
   ~OneFactorModel
    ->
-  -- returns the short-rate dynamics
+  -- |returns the short-rate dynamics
   dynamics
    ->boost::shared_ptr< ShortRateDynamics >
- -v-
- -e-

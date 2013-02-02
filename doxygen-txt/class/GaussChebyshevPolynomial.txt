@@ -4,5 +4,3 @@ GaussChebyshevPolynomial
  -f-
   GaussChebyshevPolynomial
    ->
- -v-
- -e-

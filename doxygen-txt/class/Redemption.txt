@@ -9,5 +9,3 @@ Redemption
    -- ^amount
    ::const Date &
    -- ^date
- -v-
- -e-

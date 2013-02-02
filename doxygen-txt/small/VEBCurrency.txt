@@ -5,5 +5,3 @@ VEBCurrency
  -f-
   VEBCurrency
    ->
- -v-
- -e-

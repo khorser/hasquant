@@ -23,5 +23,3 @@ FlatVolFactory
    -- ^numberOfFactors
   update
    ->void
- -v-
- -e-

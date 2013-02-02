@@ -26,5 +26,3 @@ SwingExercise
    -- ^dc
    ::const Date &
    -- ^refDate
- -v-
- -e-

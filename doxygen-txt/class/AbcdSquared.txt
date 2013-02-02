@@ -19,5 +19,3 @@ AbcdSquared
    ->Real
    ::Time
    -- ^t
- -v-
- -e-

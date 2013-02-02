@@ -30,5 +30,3 @@ FdHestonVanillaEngine
    ->FdmSolverDesc
    ::Real
    -- ^equityScaleFactor
- -v-
- -e-

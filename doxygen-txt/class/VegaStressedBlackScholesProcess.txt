@@ -32,8 +32,6 @@ VegaStressedBlackScholesProcess
    ->void
    ::Real
    -- ^SL
- -v-
- -e-
  -f-
   VegaStressedBlackScholesProcess
    ->
@@ -63,5 +61,3 @@ VegaStressedBlackScholesProcess
    ::const boost::shared_ptr< discretization > &
    =boost::shared_ptr< discretization >(new EulerDiscretization)
    -- ^d
- -v-
- -e-

@@ -2,9 +2,6 @@ ZeroYield
  -- |Zero-curve traits.
 
  -f-
- -v-
- -e-
- -f-
   initialDate
    ->Date
    ::const YieldTermStructure *
@@ -53,5 +50,3 @@ ZeroYield
    -- ^i
   maxIterations
    ->Size
- -v-
- -e-

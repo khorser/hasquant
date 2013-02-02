@@ -3,14 +3,9 @@ ImplicitEuler
  -- |In this implementation, the passed operator must be derived from either TimeConstantOperator or TimeDependentOperator. Also, it must implement at least the following interface:typedef...array_type; //copyconstructor/assignment //(thesewillbeprovidedbythecompilerifnoneisdefined) Operator(constOperator&); Operator&operator=(constOperator&); //inspectors Sizesize(); //modifiers voidsetTime(Timet); //operatorinterface array_typesolveFor(constarray_type&); staticOperatoridentity(Sizesize); //operatoralgebra Operatoroperator*(Real,constOperator&); Operatoroperator+(constOperator&,constOperator&);
 
  -f-
- -v-
- -e-
- -f-
   ImplicitEuler
    ->
    ::const operator_type &
    -- ^L
    ::const bc_set &
    -- ^bcs
- -v-
- -e-

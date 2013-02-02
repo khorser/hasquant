@@ -16,5 +16,3 @@ FDDividendEngineBase
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

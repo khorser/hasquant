@@ -47,5 +47,3 @@ RiskyBond
    ->Handle< DefaultProbabilityTermStructure >
   recoveryRate
    ->Real
- -v-
- -e-

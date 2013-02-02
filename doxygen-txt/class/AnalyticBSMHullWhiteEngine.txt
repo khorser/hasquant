@@ -11,5 +11,3 @@ AnalyticBSMHullWhiteEngine
    -- ^
    ::const boost::shared_ptr< HullWhite > &
    -- ^
- -v-
- -e-

@@ -1,7 +1,6 @@
 VarianceOption::arguments
  -- |Arguments for forward fair-variance calculation
 
- -f-
  -v-
   payoff
    ::boost::shared_ptr< Payoff >
@@ -11,11 +10,8 @@ VarianceOption::arguments
    ::Date
   maturityDate
    ::Date
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

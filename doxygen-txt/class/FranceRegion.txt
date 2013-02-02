@@ -4,5 +4,3 @@ FranceRegion
  -f-
   FranceRegion
    ->
- -v-
- -e-

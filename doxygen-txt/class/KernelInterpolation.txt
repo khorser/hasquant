@@ -3,7 +3,7 @@ KernelInterpolation
  -- |Implementation of the kernel interpolation approach, which can be found in "Foreign Exchange Risk" by Hakala, Wystup page 256.The kernel in the implementation is kept general, although a Gaussian is considered in the cited text.
 
  -f-
-  -- the $ x $ values must be sorted. kernel needs a Real operator()(Real x) implementation
+  -- |the $ x $ values must be sorted. kernel needs a Real operator()(Real x) implementation
   KernelInterpolation
    ->
    ::const I1 &
@@ -14,5 +14,3 @@ KernelInterpolation
    -- ^yBegin
    ::const Kernel &
    -- ^kernel
- -v-
- -e-

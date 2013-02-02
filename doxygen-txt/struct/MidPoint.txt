@@ -15,5 +15,3 @@ MidPoint
    -- ^N
   nbEvalutions
    ->Size
- -v-
- -e-

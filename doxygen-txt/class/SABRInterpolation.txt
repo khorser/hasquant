@@ -59,5 +59,3 @@ SABRInterpolation
    ->const std::vector< Real > &
   endCriteria
    ->EndCriteria::Type
- -v-
- -e-

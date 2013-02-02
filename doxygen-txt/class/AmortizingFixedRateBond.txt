@@ -20,7 +20,7 @@ AmortizingFixedRateBond
    ::const Date &
    =Date()
    -- ^issueDate
-  -- Automatically generates a set of equal coupons, with an amortizing bond. The coupons are equal and the accrual daycount is only used for quoting/settlement purposes - not for calculating the coupons.
+  -- |Automatically generates a set of equal coupons, with an amortizing bond. The coupons are equal and the accrual daycount is only used for quoting/settlement purposes - not for calculating the coupons.
   AmortizingFixedRateBond
    ->
    ::Natural
@@ -49,5 +49,3 @@ AmortizingFixedRateBond
    ->Frequency
   dayCounter
    ->const DayCounter &
- -v-
- -e-

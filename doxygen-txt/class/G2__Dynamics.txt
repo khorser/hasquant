@@ -23,5 +23,3 @@ G2::Dynamics
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

@@ -10,5 +10,3 @@ PiecewiseConstantParameter
    ::const Constraint &
    =NoConstraint()
    -- ^constraint
- -v-
- -e-

@@ -9,5 +9,3 @@ Uniform1dMesher
    -- ^end
    ::Size
    -- ^size
- -v-
- -e-

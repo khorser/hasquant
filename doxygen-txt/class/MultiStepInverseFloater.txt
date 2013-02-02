@@ -19,8 +19,6 @@ MultiStepInverseFloater
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   MultiStepInverseFloater
    ->
@@ -41,5 +39,3 @@ MultiStepInverseFloater
    ::bool
    =true
    -- ^payer
- -v-
- -e-

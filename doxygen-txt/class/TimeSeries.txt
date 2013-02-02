@@ -3,22 +3,20 @@ TimeSeries
  -- |This class acts as a generic repository for a set of historical data. Any single datum can be accessed through its date, while sets of consecutive data can be accessed through iterators.The Container type must satisfy the requirements set by the C++ standard for associative containers.
 
  -f-
-  -- returns the first date for which a historical datum exists
+  -- |returns the first date for which a historical datum exists
   firstDate
    ->Date
-  -- returns the last date for which a historical datum exists
+  -- |returns the last date for which a historical datum exists
   lastDate
    ->Date
-  -- returns the number of historical data including null ones
+  -- |returns the number of historical data including null ones
   size
    ->Size
-  -- returns whether the series contains any data
+  -- |returns whether the series contains any data
   empty
    ->bool
- -v-
- -e-
  -f-
-  -- returns the (possibly null) datum corresponding to the given date
+  -- |returns the (possibly null) datum corresponding to the given date
   operator[]
    ->T
    ::const Date &
@@ -27,8 +25,6 @@ TimeSeries
    ->T &
    ::const Date &
    -- ^d
- -v-
- -e-
  -f-
   cbegin
    ->const_iterator
@@ -46,8 +42,6 @@ TimeSeries
    ->const_reverse_iterator
   rend
    ->const_reverse_iterator
- -v-
- -e-
  -f-
   cbegin_values
    ->const_value_iterator
@@ -65,29 +59,22 @@ TimeSeries
    ->const_reverse_time_iterator
   crend_time
    ->const_reverse_time_iterator
- -v-
- -e-
  -f-
   find
    ->const_iterator
    ::const Date &
    -- ^
-  -- returns the dates for which historical data exist
+  -- |returns the dates for which historical data exist
   dates
    ->std::vector< Date >
-  -- returns the historical data
+  -- |returns the historical data
   values
    ->std::vector< T >
- -v-
- -e-
  -f-
- -v-
- -e-
- -f-
-  -- Default constructor
+  -- |Default constructor
   TimeSeries
    ->
-  -- This constructor initializes the history with a set of values passed as two sequences, the first containing dates and the second containing corresponding values.
+  -- |This constructor initializes the history with a set of values passed as two sequences, the first containing dates and the second containing corresponding values.
   TimeSeries
    ->
    ::DateIterator
@@ -96,7 +83,7 @@ TimeSeries
    -- ^dEnd
    ::ValueIterator
    -- ^vBegin
-  -- This constructor initializes the history with a set of values. Such values are assigned to a corresponding number of consecutive dates starting from firstDate included.
+  -- |This constructor initializes the history with a set of values. Such values are assigned to a corresponding number of consecutive dates starting from firstDate included.
   TimeSeries
    ->
    ::const Date &
@@ -105,5 +92,3 @@ TimeSeries
    -- ^begin
    ::ValueIterator
    -- ^end
- -v-
- -e-

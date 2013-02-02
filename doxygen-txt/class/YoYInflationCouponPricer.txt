@@ -14,5 +14,3 @@ YoYInflationCouponPricer
    ->void
    ::const Handle< YoYOptionletVolatilitySurface > &
    -- ^capletVol
- -v-
- -e-

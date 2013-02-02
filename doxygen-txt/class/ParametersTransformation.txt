@@ -11,5 +11,3 @@ ParametersTransformation
    ->Array
    ::const Array &
    -- ^x
- -v-
- -e-

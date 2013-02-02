@@ -2,9 +2,6 @@ MCHullWhiteCapFloorEngine
  -- |Monte Carlo Hull-White engine for cap/floors.
 
  -f-
- -v-
- -e-
- -f-
   MCHullWhiteCapFloorEngine
    ->
    ::const boost::shared_ptr< HullWhite > &
@@ -21,5 +18,3 @@ MCHullWhiteCapFloorEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

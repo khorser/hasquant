@@ -3,7 +3,7 @@ FdmLinearOpComposite
  -f-
   size
    ->Size
-  -- Time $t1 <= t2$ is required.
+  -- |Time $t1 <= t2$ is required.
   setTime
    ->void
    ::Time
@@ -34,5 +34,3 @@ FdmLinearOpComposite
    -- ^r
    ::Real
    -- ^s
- -v-
- -e-

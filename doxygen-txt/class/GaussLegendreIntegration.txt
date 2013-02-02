@@ -7,5 +7,3 @@ GaussLegendreIntegration
    ->
    ::Size
    -- ^n
- -v-
- -e-

@@ -13,8 +13,6 @@ GeneralizedBlackScholesProcess
    ->const Handle< BlackVolTermStructure > &
   localVolatility
    ->const Handle< LocalVolTermStructure > &
- -v-
- -e-
  -f-
   GeneralizedBlackScholesProcess
    ->
@@ -29,5 +27,3 @@ GeneralizedBlackScholesProcess
    ::const boost::shared_ptr< discretization > &
    =boost::shared_ptr< discretization >(new EulerDiscretization)
    -- ^d
- -v-
- -e-

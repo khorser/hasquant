@@ -17,12 +17,8 @@ LMMCurveState
    ::Size
    =0
    -- ^firstValidIndex
- -v-
- -e-
  -f-
   LMMCurveState
    ->
    ::const std::vector< Time > &
    -- ^rateTimes
- -v-
- -e-

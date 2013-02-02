@@ -3,14 +3,12 @@ CallableBond
  -- |Base callable bond class for fixed and zero coupon bonds. Defines commonalities between fixed and zero coupon callable bonds. At present, only European and Bermudan put/call schedules supported (no American optionality), as defined by the Callability class.Possible enhancementsmodels/shortrate/calibrationHelpers OAS/OAD floating rate callable bonds ?
 
  -f-
-  -- return the bond's put/call schedule
+  -- |return the bond's put/call schedule
   callability
    ->const CallabilitySchedule &
- -v-
- -e-
  -f-
-  -- returns the Black implied forward yield volatility
-  -- the forward yield volatility, see Hull, Fourth Edition, Chapter 20, pg 536). Relevant only to European put/call schedules
+  -- |returns the Black implied forward yield volatility
+  -- |the forward yield volatility, see Hull, Fourth Edition, Chapter 20, pg 536). Relevant only to European put/call schedules
   impliedVolatility
    ->Volatility
    ::Real
@@ -25,5 +23,3 @@ CallableBond
    -- ^minVol
    ::Volatility
    -- ^maxVol
- -v-
- -e-

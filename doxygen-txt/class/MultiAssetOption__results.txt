@@ -4,5 +4,3 @@ MultiAssetOption::results
  -f-
   reset
    ->void
- -v-
- -e-

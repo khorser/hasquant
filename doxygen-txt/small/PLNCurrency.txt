@@ -5,5 +5,3 @@ PLNCurrency
  -f-
   PLNCurrency
    ->
- -v-
- -e-

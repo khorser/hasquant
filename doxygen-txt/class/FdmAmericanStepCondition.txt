@@ -13,5 +13,3 @@ FdmAmericanStepCondition
    -- ^a
    ::Time
    -- ^
- -v-
- -e-

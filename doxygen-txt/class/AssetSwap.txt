@@ -76,5 +76,3 @@ AssetSwap
    ->const Leg &
   floatingLeg
    ->const Leg &
- -v-
- -e-

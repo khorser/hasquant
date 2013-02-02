@@ -31,8 +31,6 @@ SampledCurve
    ->Size
   empty
    ->bool
- -v-
- -e-
  -f-
   setGrid
    ->void
@@ -46,20 +44,16 @@ SampledCurve
    ->void
    ::const F &
    -- ^f
- -v-
- -e-
  -f-
-  -- Possible enhancementsreplace or complement with a more general function valueAt(spot)
+  -- |Possible enhancementsreplace or complement with a more general function valueAt(spot)
   valueAtCenter
    ->Real
-  -- Possible enhancementsreplace or complement with a more general function firstDerivativeAt(spot)
+  -- |Possible enhancementsreplace or complement with a more general function firstDerivativeAt(spot)
   firstDerivativeAtCenter
    ->Real
-  -- Possible enhancementsreplace or complement with a more general function secondDerivativeAt(spot)
+  -- |Possible enhancementsreplace or complement with a more general function secondDerivativeAt(spot)
   secondDerivativeAtCenter
    ->Real
- -v-
- -e-
  -f-
   swap
    ->void
@@ -103,8 +97,6 @@ SampledCurve
    ->const SampledCurve &
    ::T
    -- ^x
- -v-
- -e-
  -f-
   SampledCurve
    ->
@@ -119,5 +111,3 @@ SampledCurve
    ->SampledCurve &
    ::const SampledCurve &
    -- ^
- -v-
- -e-

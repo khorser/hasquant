@@ -28,5 +28,3 @@ MCAmericanPathEngine
    ::Size
    =Null< Size >()
    -- ^nCalibrationSamples
- -v-
- -e-

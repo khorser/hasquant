@@ -1,7 +1,6 @@
 AssetSwap::arguments
  -- |Arguments for asset swap calculation
 
- -f-
  -v-
   fixedResetDates
    ::std::vector< Date >
@@ -19,11 +18,8 @@ AssetSwap::arguments
    ::std::vector< Date >
   floatingSpreads
    ::std::vector< Spread >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

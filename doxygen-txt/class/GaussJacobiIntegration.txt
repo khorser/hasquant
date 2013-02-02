@@ -11,5 +11,3 @@ GaussJacobiIntegration
    -- ^alpha
    ::Real
    -- ^beta
- -v-
- -e-

@@ -16,5 +16,3 @@ FdmKlugeExtOUSolver
    ->Real
    ::const std::vector< Real > &
    -- ^x
- -v-
- -e-

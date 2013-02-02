@@ -11,5 +11,3 @@ GeometricBrownianMotionProcess
    -- ^mue
    ::double
    -- ^sigma
- -v-
- -e-

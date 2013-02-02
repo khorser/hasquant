@@ -4,37 +4,33 @@ Lattice
  -f-
   timeGrid
    ->const TimeGrid &
- -v-
- -e-
  -f-
-  -- initialize an asset at the given time.
+  -- |initialize an asset at the given time.
   initialize
    ->void
    ::DiscretizedAsset &
    -- ^
    ::Time
    -- ^time
-  -- Roll back an asset until the given time, performing any needed adjustment.
+  -- |Roll back an asset until the given time, performing any needed adjustment.
   rollback
    ->void
    ::DiscretizedAsset &
    -- ^
    ::Time
    -- ^to
-  -- Roll back an asset until the given time, but do not perform the final adjustment.WarningIn version 0.3.7 and earlier, this method was called rollAlmostBack method and performed pre-adjustment. This is no longer true; when migrating your code, you'll have to replace calls such as: method->rollAlmostBack(asset,t); with the two statements: method->partialRollback(asset,t); asset->preAdjustValues();
+  -- |Roll back an asset until the given time, but do not perform the final adjustment.WarningIn version 0.3.7 and earlier, this method was called rollAlmostBack method and performed pre-adjustment. This is no longer true; when migrating your code, you'll have to replace calls such as: method->rollAlmostBack(asset,t); with the two statements: method->partialRollback(asset,t); asset->preAdjustValues();
   partialRollback
    ->void
    ::DiscretizedAsset &
    -- ^
    ::Time
    -- ^to
-  -- computes the present value of an asset.
+  -- |computes the present value of an asset.
   presentValue
    ->Real
    ::DiscretizedAsset &
    -- ^
- -v-
- -e-
  -f-
   Lattice
    ->
@@ -46,5 +42,3 @@ Lattice
    ->Disposable< Array >
    ::Time
    -- ^
- -v-
- -e-

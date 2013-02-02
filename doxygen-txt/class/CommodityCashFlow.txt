@@ -3,20 +3,14 @@ CommodityCashFlow
  -f-
   date
    ->Date
- -v-
- -e-
  -f-
   amount
    ->Real
- -v-
- -e-
  -f-
   accept
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-
  -f-
   CommodityCashFlow
    ->
@@ -52,5 +46,3 @@ CommodityCashFlow
    ->Real
   finalized
    ->bool
- -v-
- -e-

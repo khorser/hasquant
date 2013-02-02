@@ -38,5 +38,3 @@ AmortizingCmsRateBond
    ::const Date &
    =Date()
    -- ^issueDate
- -v-
- -e-

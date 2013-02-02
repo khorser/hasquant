@@ -1,14 +1,10 @@
 detail::long_date_holder
 
- -f-
  -v-
   d
    ::Date
- -e-
  -f-
   long_date_holder
    ->
    ::const Date &
    -- ^d
- -v-
- -e-

@@ -3,7 +3,7 @@ Solver1D
  -- |The implementation of this class uses the so-called "Barton-Nackman trick", also known as "the curiously recurring template pattern". Concrete solvers will be declared as: classFoo:publicSolver1D<Foo>{ public: ... template<classF> RealsolveImpl(constF&f,Realaccuracy)const{ ... } }; Before calling solveImpl, the base class will set its protected data members so that: xMin_ and xMax_ form a valid bracket;fxMin_ and fxMax_ contain the values of the function in xMin_ and xMax_;root_ is a valid initial guess. The implementation of solveImpl can safely assume all of the above. Possible enhancements clean up the interface so that it is clear whether the accuracy is specified for $ x $ or $ f(x) $.add target value (now the target value is 0.0)
 
  -f-
-  -- This method returns the zero of the function $ f $, determined with the given accuracy $ \epsilon $; depending on the particular solver, this might mean that the returned $ x $ is such that $ |f(x)| < \epsilon $, or that $ |x-\xi| < \epsilon $ where $ \xi $ is the real zero.This method contains a bracketing routine to which an initial guess must be supplied as well as a step used to scan the range of the possible bracketing values.
+  -- |This method returns the zero of the function $ f $, determined with the given accuracy $ \epsilon $; depending on the particular solver, this might mean that the returned $ x $ is such that $ |f(x)| < \epsilon $, or that $ |x-\xi| < \epsilon $ where $ \xi $ is the real zero.This method contains a bracketing routine to which an initial guess must be supplied as well as a step used to scan the range of the possible bracketing values.
   solve
    ->Real
    ::const F &
@@ -14,7 +14,7 @@ Solver1D
    -- ^guess
    ::Real
    -- ^step
-  -- This method returns the zero of the function $ f $, determined with the given accuracy $ \epsilon $; depending on the particular solver, this might mean that the returned $ x $ is such that $ |f(x)| < \epsilon $, or that $ |x-\xi| < \epsilon $ where $ \xi $ is the real zero.An initial guess must be supplied, as well as two values $ x_\mathrm{min} $ and $ x_\mathrm{max} $ which must bracket the zero (i.e., either $ f(x_\mathrm{min}) \leq 0 \leq f(x_\mathrm{max}) $, or $ f(x_\mathrm{max}) \leq 0 \leq f(x_\mathrm{min}) $ must be true).
+  -- |This method returns the zero of the function $ f $, determined with the given accuracy $ \epsilon $; depending on the particular solver, this might mean that the returned $ x $ is such that $ |f(x)| < \epsilon $, or that $ |x-\xi| < \epsilon $ where $ \xi $ is the real zero.An initial guess must be supplied, as well as two values $ x_\mathrm{min} $ and $ x_\mathrm{max} $ which must bracket the zero (i.e., either $ f(x_\mathrm{min}) \leq 0 \leq f(x_\mathrm{max}) $, or $ f(x_\mathrm{max}) \leq 0 \leq f(x_\mathrm{min}) $ must be true).
   solve
    ->Real
    ::const F &
@@ -27,25 +27,21 @@ Solver1D
    -- ^xMin
    ::Real
    -- ^xMax
-  -- This method sets the maximum number of function evaluations for the bracketing routine. An error is thrown if a bracket is not found after this number of evaluations.
+  -- |This method sets the maximum number of function evaluations for the bracketing routine. An error is thrown if a bracket is not found after this number of evaluations.
   setMaxEvaluations
    ->void
    ::Size
    -- ^evaluations
-  -- sets the lower bound for the function domain
+  -- |sets the lower bound for the function domain
   setLowerBound
    ->void
    ::Real
    -- ^lowerBound
-  -- sets the upper bound for the function domain
+  -- |sets the upper bound for the function domain
   setUpperBound
    ->void
    ::Real
    -- ^upperBound
- -v-
- -e-
  -f-
   Solver1D
    ->
- -v-
- -e-

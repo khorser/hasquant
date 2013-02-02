@@ -13,5 +13,3 @@ GapPayoff
    -- ^secondStrike
   secondStrike
    ->Real
- -v-
- -e-

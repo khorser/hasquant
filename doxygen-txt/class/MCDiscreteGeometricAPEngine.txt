@@ -3,9 +3,6 @@ MCDiscreteGeometricAPEngine
  -- |Teststhe correctness of the returned value is tested by reproducing results available in literature.
 
  -f-
- -v-
- -e-
- -f-
   MCDiscreteGeometricAPEngine
    ->
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
@@ -22,5 +19,3 @@ MCDiscreteGeometricAPEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

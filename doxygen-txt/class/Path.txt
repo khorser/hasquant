@@ -7,7 +7,7 @@ Path
    ->bool
   length
    ->Size
-  -- asset value at the $ i $-th point
+  -- |asset value at the $ i $-th point
   operator[]
    ->Real
    ::Size
@@ -32,26 +32,24 @@ Path
    ->Real &
    ::Size
    -- ^i
-  -- time at the $ i $-th point
+  -- |time at the $ i $-th point
   time
    ->Time
    ::Size
    -- ^i
-  -- initial asset value
+  -- |initial asset value
   front
    ->Real
   front
    ->Real &
-  -- final asset value
+  -- |final asset value
   back
    ->Real
   back
    ->Real &
-  -- time grid
+  -- |time grid
   timeGrid
    ->const TimeGrid &
- -v-
- -e-
  -f-
   begin
    ->iterator
@@ -61,8 +59,6 @@ Path
    ->reverse_iterator
   rend
    ->reverse_iterator
- -v-
- -e-
  -f-
   Path
    ->
@@ -71,5 +67,3 @@ Path
    ::const Array &
    =Array()
    -- ^values
- -v-
- -e-

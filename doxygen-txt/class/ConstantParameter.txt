@@ -12,5 +12,3 @@ ConstantParameter
    -- ^value
    ::const Constraint &
    -- ^constraint
- -v-
- -e-

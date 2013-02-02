@@ -18,5 +18,3 @@ FdmSimple2dExtOUSolver
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

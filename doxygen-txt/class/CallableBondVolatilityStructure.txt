@@ -3,8 +3,8 @@ CallableBondVolatilityStructure
  -- |This class is purely abstract and defines the interface of concrete callable-bond volatility structures which will be derived from this one.
 
  -f-
-  -- default constructor
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |default constructor
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   CallableBondVolatilityStructure
    ->
    ::const DayCounter &
@@ -13,7 +13,7 @@ CallableBondVolatilityStructure
    ::BusinessDayConvention
    =Following
    -- ^bdc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   CallableBondVolatilityStructure
    ->
    ::const Date &
@@ -27,7 +27,7 @@ CallableBondVolatilityStructure
    ::BusinessDayConvention
    =Following
    -- ^bdc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   CallableBondVolatilityStructure
    ->
    ::Natural
@@ -40,10 +40,8 @@ CallableBondVolatilityStructure
    ::BusinessDayConvention
    =Following
    -- ^bdc
- -v-
- -e-
  -f-
-  -- returns the volatility for a given option time and bondLength
+  -- |returns the volatility for a given option time and bondLength
   volatility
    ->Volatility
    ::Time
@@ -55,7 +53,7 @@ CallableBondVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option time and bondLength
+  -- |returns the Black variance for a given option time and bondLength
   blackVariance
    ->Real
    ::Time
@@ -67,7 +65,7 @@ CallableBondVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option date and bond tenor
+  -- |returns the volatility for a given option date and bond tenor
   volatility
    ->Volatility
    ::const Date &
@@ -79,7 +77,7 @@ CallableBondVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option date and bond tenor
+  -- |returns the Black variance for a given option date and bond tenor
   blackVariance
    ->Real
    ::const Date &
@@ -97,7 +95,7 @@ CallableBondVolatilityStructure
    -- ^optionDate
    ::const Period &
    -- ^bondTenor
-  -- returns the volatility for a given option tenor and bond tenor
+  -- |returns the volatility for a given option tenor and bond tenor
   volatility
    ->Volatility
    ::const Period &
@@ -109,7 +107,7 @@ CallableBondVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option tenor and bond tenor
+  -- |returns the Black variance for a given option tenor and bond tenor
   blackVariance
    ->Real
    ::const Period &
@@ -127,40 +125,34 @@ CallableBondVolatilityStructure
    -- ^optionTenor
    ::const Period &
    -- ^bondTenor
- -v-
- -e-
  -f-
-  -- the largest length for which the term structure can return vols
+  -- |the largest length for which the term structure can return vols
   maxBondTenor
    ->const Period &
-  -- the largest bondLength for which the term structure can return vols
+  -- |the largest bondLength for which the term structure can return vols
   maxBondLength
    ->Time
-  -- the minimum strike for which the term structure can return vols
+  -- |the minimum strike for which the term structure can return vols
   minStrike
    ->Rate
-  -- the maximum strike for which the term structure can return vols
+  -- |the maximum strike for which the term structure can return vols
   maxStrike
    ->Rate
- -v-
- -e-
  -f-
   ~CallableBondVolatilityStructure
    ->
-  -- implements the conversion between dates and times
+  -- |implements the conversion between dates and times
   convertDates
    ->std::pair< Time, Time >
    ::const Date &
    -- ^optionDate
    ::const Period &
    -- ^bondTenor
-  -- the business day convention used for option date calculation
+  -- |the business day convention used for option date calculation
   businessDayConvention
    ->BusinessDayConvention
-  -- implements the conversion between optionTenors and optionDates
+  -- |implements the conversion between optionTenors and optionDates
   optionDateFromTenor
    ->Date
    ::const Period &
    -- ^optionTenor
- -v-
- -e-

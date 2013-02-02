@@ -5,5 +5,3 @@ CADCurrency
  -f-
   CADCurrency
    ->
- -v-
- -e-

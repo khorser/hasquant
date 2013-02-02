@@ -2,8 +2,6 @@ Iceland
  -- |Icelandic calendars.
  -- |Holidays for the Iceland stock exchange (data from http://www.icex.is/is/calendar?languageID=1): Saturdays Sundays New Year's Day, January 1st (possibly moved to Monday) Holy Thursday Good Friday Easter Monday First day of Summer (third or fourth Thursday in April) Labour Day, May 1st Ascension Thursday Pentecost Monday Independence Day, June 17th Commerce Day, first Monday in August Christmas, December 25th Boxing Day, December 26th
 
- -f-
- -v-
  -e-
   Market
    ICEX
@@ -14,5 +12,3 @@ Iceland
    ::Market
    =ICEX
    -- ^m
- -v-
- -e-

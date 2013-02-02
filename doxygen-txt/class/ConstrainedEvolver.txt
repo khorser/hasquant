@@ -5,19 +5,17 @@ ConstrainedEvolver
  -f-
   ~ConstrainedEvolver
    ->
-  -- call once
+  -- |call once
   setConstraintType
    ->void
    ::const std::vector< Size > &
    -- ^startIndexOfSwapRate
    ::const std::vector< Size > &
    -- ^EndIndexOfSwapRate
-  -- call before each path
+  -- |call before each path
   setThisConstraint
    ->void
    ::const std::vector< Rate > &
    -- ^rateConstraints
    ::const std::valarray< bool > &
    -- ^isConstraintActive
- -v-
- -e-

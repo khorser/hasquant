@@ -6,19 +6,15 @@ IborIndex
    ->BusinessDayConvention
   endOfMonth
    ->bool
-  -- the curve used to forecast fixings
+  -- |the curve used to forecast fixings
   forwardingTermStructure
    ->Handle< YieldTermStructure >
- -v-
- -e-
  -f-
-  -- returns a copy of itself linked to a different forwarding curve
+  -- |returns a copy of itself linked to a different forwarding curve
   clone
    ->boost::shared_ptr< IborIndex >
    ::const Handle< YieldTermStructure > &
    -- ^forwarding
- -v-
- -e-
  -f-
   IborIndex
    ->
@@ -41,5 +37,3 @@ IborIndex
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^h
- -v-
- -e-

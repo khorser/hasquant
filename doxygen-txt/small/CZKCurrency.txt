@@ -5,5 +5,3 @@ CZKCurrency
  -f-
   CZKCurrency
    ->
- -v-
- -e-

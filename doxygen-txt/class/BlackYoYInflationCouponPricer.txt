@@ -9,5 +9,3 @@ BlackYoYInflationCouponPricer
    -- ^capletVol
   ~BlackYoYInflationCouponPricer
    ->
- -v-
- -e-

@@ -110,5 +110,3 @@ DigitalCmsLeg
    -- ^replication
   operator Leg
    ->
- -v-
- -e-

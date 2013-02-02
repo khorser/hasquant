@@ -5,5 +5,3 @@ EEKCurrency
  -f-
   EEKCurrency
    ->
- -v-
- -e-

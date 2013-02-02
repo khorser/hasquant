@@ -1,9 +1,6 @@
 PdeBSM
 
  -f-
- -v-
- -e-
- -f-
   PdeBSM
    ->
    ::const argument_type &
@@ -26,5 +23,3 @@ PdeBSM
    -- ^t
    ::Real
    -- ^
- -v-
- -e-

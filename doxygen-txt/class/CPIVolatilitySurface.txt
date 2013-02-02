@@ -3,8 +3,8 @@ CPIVolatilitySurface
  -- |Abstract interface. CPI volatility is always with respect to some base date. Also deal with lagged observations of an index with a (usually different) availability lag.
 
  -f-
-  -- Returns the volatility for a given maturity date and strike rate.
-  -- by default, inflation is observed with the lag of the term structure.Because inflation is highly linked to dates (for interpolation, periods, etc) time-based overload of the methods are not provided.
+  -- |Returns the volatility for a given maturity date and strike rate.
+  -- |by default, inflation is observed with the lag of the term structure.Because inflation is highly linked to dates (for interpolation, periods, etc) time-based overload of the methods are not provided.
   volatility
    ->Volatility
    ::const Date &
@@ -17,7 +17,7 @@ CPIVolatilitySurface
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option tenor and strike rate
+  -- |returns the volatility for a given option tenor and strike rate
   volatility
    ->Volatility
    ::const Period &
@@ -30,7 +30,7 @@ CPIVolatilitySurface
    ::bool
    =false
    -- ^extrapolate
-  -- Returns the total integrated variance for a given exercise date and strike rate.Total integrated variance is useful because it scales out t for the optionlet pricing formulae. Note that it is called "total" because the surface does not know whether it represents Black, Bachelier or Displaced Diffusion variance. These are virtual so alternate connections between const vol and total var are possible.
+  -- |Returns the total integrated variance for a given exercise date and strike rate.Total integrated variance is useful because it scales out t for the optionlet pricing formulae. Note that it is called "total" because the surface does not know whether it represents Black, Bachelier or Displaced Diffusion variance. These are virtual so alternate connections between const vol and total var are possible.
   totalVariance
    ->Volatility
    ::const Date &
@@ -43,7 +43,7 @@ CPIVolatilitySurface
    ::bool
    =false
    -- ^extrapolate
-  -- returns the total integrated variance for a given option tenor and strike rate.
+  -- |returns the total integrated variance for a given option tenor and strike rate.
   totalVariance
    ->Volatility
    ::const Period &
@@ -56,10 +56,8 @@ CPIVolatilitySurface
    ::bool
    =false
    -- ^extrapolate
- -v-
- -e-
  -f-
-  -- The term structure observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag.
+  -- |The term structure observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag.
   observationLag
    ->Period
   frequency
@@ -68,7 +66,7 @@ CPIVolatilitySurface
    ->bool
   baseDate
    ->Date
-  -- base date will be in the past because of observation lag
+  -- |base date will be in the past because of observation lag
   timeFromBase
    ->Time
    ::const Date &
@@ -78,10 +76,8 @@ CPIVolatilitySurface
    -- ^obsLag
   baseLevel
    ->Volatility
- -v-
- -e-
  -f-
-  -- calculates the reference date based on the global evaluation date.
+  -- |calculates the reference date based on the global evaluation date.
   CPIVolatilitySurface
    ->
    ::Natural
@@ -98,5 +94,3 @@ CPIVolatilitySurface
    -- ^frequency
    ::bool
    -- ^indexIsInterpolated
- -v-
- -e-

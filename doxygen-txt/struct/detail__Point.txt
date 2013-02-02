@@ -1,15 +1,10 @@
 detail::Point
 
- -f-
- -v-
- -e-
- -f-
  -v-
   first
    ::data_type
   second
    ::Y
- -e-
  -f-
   Point
    ->
@@ -39,5 +34,3 @@ detail::Point
    ->data_type &
    ::Size
    -- ^n
- -v-
- -e-

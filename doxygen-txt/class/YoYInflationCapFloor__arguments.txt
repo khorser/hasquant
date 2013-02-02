@@ -1,7 +1,6 @@
 YoYInflationCapFloor::arguments
  -- |Arguments for YoY Inflation cap/floor calculation
 
- -f-
  -v-
   type
    ::YoYInflationCapFloor::Type
@@ -27,11 +26,8 @@ YoYInflationCapFloor::arguments
    ::std::vector< Real >
   nominals
    ::std::vector< Real >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

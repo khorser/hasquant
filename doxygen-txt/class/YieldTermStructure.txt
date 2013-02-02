@@ -45,8 +45,6 @@ YieldTermStructure
    ::const std::vector< Date > &
    =std::vector< Date >()
    -- ^jumpDates
- -v-
- -e-
  -f-
   discount
    ->DiscountFactor
@@ -55,7 +53,7 @@ YieldTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- The same day-counting rule used by the term structure should be used for calculating the passed time t.
+  -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
   discount
    ->DiscountFactor
    ::Time
@@ -63,10 +61,8 @@ YieldTermStructure
    ::bool
    =false
    -- ^extrapolate
- -v-
- -e-
  -f-
-  -- The resulting interest rate has the required daycounting rule.
+  -- |The resulting interest rate has the required daycounting rule.
   zeroRate
    ->InterestRate
    ::const Date &
@@ -81,7 +77,7 @@ YieldTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed time t.
+  -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed time t.
   zeroRate
    ->InterestRate
    ::Time
@@ -94,10 +90,8 @@ YieldTermStructure
    ::bool
    =false
    -- ^extrapolate
- -v-
- -e-
  -f-
-  -- The resulting interest rate has the required day-counting rule.
+  -- |The resulting interest rate has the required day-counting rule.
   forwardRate
    ->InterestRate
    ::const Date &
@@ -114,7 +108,7 @@ YieldTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- The resulting interest rate has the required day-counting rule. Warningdates are not adjusted for holidays
+  -- |The resulting interest rate has the required day-counting rule. Warningdates are not adjusted for holidays
   forwardRate
    ->InterestRate
    ::const Date &
@@ -131,7 +125,7 @@ YieldTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
+  -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
   forwardRate
    ->InterestRate
    ::Time
@@ -146,12 +140,8 @@ YieldTermStructure
    ::bool
    =false
    -- ^extrapolate
- -v-
- -e-
  -f-
   jumpDates
    ->const std::vector< Date > &
   jumpTimes
    ->const std::vector< Time > &
- -v-
- -e-

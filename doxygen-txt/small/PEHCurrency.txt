@@ -5,5 +5,3 @@ PEHCurrency
  -f-
   PEHCurrency
    ->
- -v-
- -e-

@@ -4,5 +4,3 @@ PositiveConstraint
  -f-
   PositiveConstraint
    ->
- -v-
- -e-

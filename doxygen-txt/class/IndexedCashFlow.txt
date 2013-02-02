@@ -28,5 +28,3 @@ IndexedCashFlow
    ->boost::shared_ptr< Index >
   growthOnly
    ->bool
- -v-
- -e-

@@ -10,5 +10,3 @@ ProbabilityOfAtLeastNEvents
    ->Real
    ::std::vector< Real >
    -- ^p
- -v-
- -e-

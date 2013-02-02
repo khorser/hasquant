@@ -1,14 +1,10 @@
 detail::ordinal_holder
 
- -f-
  -v-
   n
    ::Size
- -e-
  -f-
   ordinal_holder
    ->
    ::Size
    -- ^n
- -v-
- -e-

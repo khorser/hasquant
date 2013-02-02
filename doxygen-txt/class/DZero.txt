@@ -9,5 +9,3 @@ DZero
    -- ^gridPoints
    ::Real
    -- ^h
- -v-
- -e-

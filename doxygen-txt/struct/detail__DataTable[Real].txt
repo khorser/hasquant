@@ -1,10 +1,8 @@
 detail::DataTable< Real >
 
- -f-
  -v-
   data_table_
    ::std::vector< Real >
- -e-
  -f-
   DataTable
    ->
@@ -32,5 +30,3 @@ detail::DataTable< Real >
    ->Real &
    ::Size
    -- ^n
- -v-
- -e-

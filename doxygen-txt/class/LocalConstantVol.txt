@@ -39,5 +39,3 @@ LocalConstantVol
    -- ^volatility
    ::const DayCounter &
    -- ^dayCounter
- -v-
- -e-

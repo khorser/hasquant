@@ -1,9 +1,6 @@
 DouglasScheme
 
  -f-
- -v-
- -e-
- -f-
   DouglasScheme
    ->
    ::Real
@@ -23,5 +20,3 @@ DouglasScheme
    ->void
    ::Time
    -- ^dt
- -v-
- -e-

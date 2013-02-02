@@ -2,9 +2,6 @@ ZeroInflationTraits
  -- |Bootstrap traits to use for PiecewiseZeroInflationCurve.
 
  -f-
- -v-
- -e-
- -f-
   initialDate
    ->Date
    ::const ZeroInflationTermStructure *
@@ -53,5 +50,3 @@ ZeroInflationTraits
    -- ^i
   maxIterations
    ->Size
- -v-
- -e-

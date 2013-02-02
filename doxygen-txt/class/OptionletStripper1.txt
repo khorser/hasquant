@@ -25,5 +25,3 @@ OptionletStripper1
    ->const Matrix &
   switchStrike
    ->Rate
- -v-
- -e-

@@ -25,5 +25,3 @@ detail::QuadraticHelper
    -- ^x
   fNext
    ->Real
- -v-
- -e-

@@ -19,8 +19,6 @@ MultiStepSwap
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   MultiStepSwap
    ->
@@ -37,5 +35,3 @@ MultiStepSwap
    ::bool
    =true
    -- ^payer
- -v-
- -e-

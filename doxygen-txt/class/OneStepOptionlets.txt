@@ -19,8 +19,6 @@ OneStepOptionlets
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   OneStepOptionlets
    ->
@@ -32,5 +30,3 @@ OneStepOptionlets
    -- ^paymentTimes
    ::const std::vector< boost::shared_ptr< Payoff > > &
    -- ^
- -v-
- -e-

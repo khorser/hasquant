@@ -13,5 +13,3 @@ EuropeanPathPricer
    ->Real
    ::const Path &
    -- ^path
- -v-
- -e-

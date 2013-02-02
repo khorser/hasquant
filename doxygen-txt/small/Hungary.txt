@@ -5,5 +5,3 @@ Hungary
  -f-
   Hungary
    ->
- -v-
- -e-

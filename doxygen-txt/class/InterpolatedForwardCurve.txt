@@ -12,8 +12,6 @@ InterpolatedForwardCurve
    ->const std::vector< Rate > &
   nodes
    ->std::vector< std::pair< Date, Real > >
- -v-
- -e-
  -f-
   InterpolatedForwardCurve
    ->
@@ -57,5 +55,3 @@ InterpolatedForwardCurve
    -- ^dayCounter
    ::const Interpolator &
    -- ^interpolator
- -v-
- -e-

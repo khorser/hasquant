@@ -1,9 +1,6 @@
 CraigSneydScheme
 
  -f-
- -v-
- -e-
- -f-
   CraigSneydScheme
    ->
    ::Real
@@ -25,5 +22,3 @@ CraigSneydScheme
    ->void
    ::Time
    -- ^dt
- -v-
- -e-

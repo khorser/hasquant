@@ -4,5 +4,3 @@ NullParameter
  -f-
   NullParameter
    ->
- -v-
- -e-

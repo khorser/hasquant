@@ -12,5 +12,3 @@ Concentrating1dMesher
    ::const std::pair< Real, Real > &
    =(std::pair< double, double >(Null< Real >(), Null< Real >()))
    -- ^cPoints
- -v-
- -e-

@@ -13,5 +13,3 @@ AdaptedPathPayoff
    -- ^exercises
    ::std::vector< Array > &
    -- ^states
- -v-
- -e-

@@ -6,8 +6,8 @@ CalibratedModel
    ->
    ::Size
    -- ^nArguments
-  -- Calibrate to a set of market instruments (caps/swaptions)
-  -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
+  -- |Calibrate to a set of market instruments (caps/swaptions)
+  -- |An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
   calibrate
    ->void
    ::const std::vector< boost::shared_ptr< CalibrationHelper > > &
@@ -30,15 +30,13 @@ CalibratedModel
    -- ^
   constraint
    ->const boost::shared_ptr< Constraint > &
-  -- returns end criteria result
+  -- |returns end criteria result
   endCriteria
    ->EndCriteria::Type
-  -- Returns array of arguments on which calibration is done.
+  -- |Returns array of arguments on which calibration is done.
   params
    ->Disposable< Array >
   setParams
    ->void
    ::const Array &
    -- ^params
- -v-
- -e-

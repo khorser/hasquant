@@ -14,8 +14,6 @@ MultiAssetOption
    ->Real
   dividendRho
    ->Real
- -v-
- -e-
  -f-
   MultiAssetOption
    ->
@@ -23,5 +21,3 @@ MultiAssetOption
    -- ^
    ::const boost::shared_ptr< Exercise > &
    -- ^
- -v-
- -e-

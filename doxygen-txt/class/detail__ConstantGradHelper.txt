@@ -23,5 +23,3 @@ detail::ConstantGradHelper
    -- ^x
   fNext
    ->Real
- -v-
- -e-

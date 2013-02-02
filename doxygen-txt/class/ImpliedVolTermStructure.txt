@@ -9,5 +9,3 @@ ImpliedVolTermStructure
    -- ^origTS
    ::const Date &
    -- ^referenceDate
- -v-
- -e-

@@ -19,5 +19,3 @@ detail::ComboHelper
    -- ^x
   fNext
    ->Real
- -v-
- -e-

@@ -5,11 +5,9 @@ Quote
  -f-
   ~Quote
    ->
-  -- returns the current value
+  -- |returns the current value
   value
    ->Real
-  -- returns true if the Quote holds a valid value
+  -- |returns true if the Quote holds a valid value
   isValid
    ->bool
- -v-
- -e-

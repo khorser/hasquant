@@ -11,5 +11,3 @@ CumulativePoissonDistribution
    ->Real
    ::BigNatural
    -- ^k
- -v-
- -e-

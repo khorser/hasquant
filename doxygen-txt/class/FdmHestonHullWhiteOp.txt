@@ -47,5 +47,3 @@ FdmHestonHullWhiteOp
    -- ^r
    ::Real
    -- ^s
- -v-
- -e-

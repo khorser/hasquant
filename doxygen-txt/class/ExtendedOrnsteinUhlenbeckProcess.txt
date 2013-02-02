@@ -7,10 +7,6 @@ ExtendedOrnsteinUhlenbeckProcess
    ->Real
   volatility
    ->Real
- -v-
- -e-
- -f-
- -v-
  -e-
   Discretization
    MidPoint
@@ -33,5 +29,3 @@ ExtendedOrnsteinUhlenbeckProcess
    ::Real
    =1e-4
    -- ^intEps
- -v-
- -e-

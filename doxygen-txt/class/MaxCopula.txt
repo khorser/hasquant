@@ -8,5 +8,3 @@ MaxCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

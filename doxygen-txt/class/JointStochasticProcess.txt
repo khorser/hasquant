@@ -110,5 +110,3 @@ JointStochasticProcess
    ->Time
    ::const Date &
    -- ^date
- -v-
- -e-

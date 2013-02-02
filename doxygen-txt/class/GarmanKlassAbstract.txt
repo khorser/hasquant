@@ -11,5 +11,3 @@ GarmanKlassAbstract
    ->TimeSeries< Volatility >
    ::const TimeSeries< IntervalPrice > &
    -- ^quoteSeries
- -v-
- -e-

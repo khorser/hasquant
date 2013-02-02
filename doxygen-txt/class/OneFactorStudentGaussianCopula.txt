@@ -15,5 +15,3 @@ OneFactorStudentGaussianCopula
    ::Size
    =200
    -- ^integrationSteps
- -v-
- -e-

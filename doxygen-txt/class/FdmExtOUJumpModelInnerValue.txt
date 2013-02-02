@@ -1,9 +1,6 @@
 FdmExtOUJumpModelInnerValue
 
  -f-
- -v-
- -e-
- -f-
   FdmExtOUJumpModelInnerValue
    ->
    ::const boost::shared_ptr< Payoff > &
@@ -25,5 +22,3 @@ FdmExtOUJumpModelInnerValue
    -- ^iter
    ::Time
    -- ^t
- -v-
- -e-

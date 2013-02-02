@@ -1,7 +1,7 @@
 LinearRegression
 
  -f-
-  -- linear regression y_i = a_0 + a_1*x_0 +..+a_n*x_{n-1} + eps
+  -- |linear regression y_i = a_0 + a_1*x_0 +..+a_n*x_{n-1} + eps
   LinearRegression
    ->
    ::const xContainer &
@@ -19,5 +19,3 @@ LinearRegression
    -- ^y
    ::const vContainer &
    -- ^v
- -v-
- -e-

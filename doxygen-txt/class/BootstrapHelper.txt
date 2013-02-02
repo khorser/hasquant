@@ -9,29 +9,25 @@ BootstrapHelper
    ->Real
   quoteError
    ->Real
-  -- sets the term structure to be used for pricing
-  -- WarningBeing a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to this, i.e., the term structure itself.
+  -- |sets the term structure to be used for pricing
+  -- |WarningBeing a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to this, i.e., the term structure itself.
   setTermStructure
    ->void
    ::TS *
    -- ^
-  -- earliest relevant date
-  -- The earliest date at which data are needed by the helper in order to provide a quote.
+  -- |earliest relevant date
+  -- |The earliest date at which data are needed by the helper in order to provide a quote.
   earliestDate
    ->Date
-  -- latest relevant date
-  -- The latest date at which data are needed by the helper in order to provide a quote. It does not necessarily equal the maturity of the underlying instrument.
+  -- |latest relevant date
+  -- |The latest date at which data are needed by the helper in order to provide a quote. It does not necessarily equal the maturity of the underlying instrument.
   latestDate
    ->Date
- -v-
- -e-
  -f-
   accept
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-
  -f-
   BootstrapHelper
    ->
@@ -43,5 +39,3 @@ BootstrapHelper
    -- ^quote
   ~BootstrapHelper
    ->
- -v-
- -e-

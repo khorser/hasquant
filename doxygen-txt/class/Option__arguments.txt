@@ -1,17 +1,13 @@
 Option::arguments
  -- |basic option arguments
 
- -f-
  -v-
   payoff
    ::boost::shared_ptr< Payoff >
   exercise
    ::boost::shared_ptr< Exercise >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

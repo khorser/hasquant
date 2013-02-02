@@ -14,5 +14,3 @@ FDDividendShoutEngineShiftScale
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

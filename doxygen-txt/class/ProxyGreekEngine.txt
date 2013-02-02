@@ -31,5 +31,3 @@ ProxyGreekEngine
    -- ^values
    ::std::vector< std::vector< std::vector< Real > > > &
    -- ^modifiedValues
- -v-
- -e-

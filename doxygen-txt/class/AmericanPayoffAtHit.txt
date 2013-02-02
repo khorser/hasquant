@@ -25,5 +25,3 @@ AmericanPayoffAtHit
    ->Real
    ::Time
    -- ^maturity
- -v-
- -e-

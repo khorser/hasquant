@@ -5,49 +5,47 @@ Coupon
  -f-
   nominal
    ->Real
-  -- start of the accrual period
+  -- |start of the accrual period
   accrualStartDate
    ->const Date &
-  -- end of the accrual period
+  -- |end of the accrual period
   accrualEndDate
    ->const Date &
-  -- start date of the reference period
+  -- |start date of the reference period
   referencePeriodStart
    ->const Date &
-  -- end date of the reference period
+  -- |end date of the reference period
   referencePeriodEnd
    ->const Date &
-  -- accrual period as fraction of year
+  -- |accrual period as fraction of year
   accrualPeriod
    ->Time
-  -- accrual period in days
+  -- |accrual period in days
   accrualDays
    ->BigInteger
-  -- accrued rate
+  -- |accrued rate
   rate
    ->Rate
-  -- day counter for accrual calculation
+  -- |day counter for accrual calculation
   dayCounter
    ->DayCounter
-  -- accrued period as fraction of year at the given date
+  -- |accrued period as fraction of year at the given date
   accruedPeriod
    ->Time
    ::const Date &
    -- ^
-  -- accrued days at the given date
+  -- |accrued days at the given date
   accruedDays
    ->BigInteger
    ::const Date &
    -- ^
-  -- accrued amount at the given date
+  -- |accrued amount at the given date
   accruedAmount
    ->Real
    ::const Date &
    -- ^
- -v-
- -e-
  -f-
-  -- Warningthe coupon does not adjust the payment date which must already be a business day.
+  -- |Warningthe coupon does not adjust the payment date which must already be a business day.
   Coupon
    ->
    ::const Date &
@@ -64,5 +62,3 @@ Coupon
    ::const Date &
    =Date()
    -- ^refPeriodEnd
- -v-
- -e-

@@ -1,7 +1,6 @@
 Greeks
  -- |additional option results
 
- -f-
  -v-
   delta
    ::Real
@@ -15,9 +14,6 @@ Greeks
    ::Real
   dividendRho
    ::Real
- -e-
  -f-
   reset
    ->void
- -v-
- -e-

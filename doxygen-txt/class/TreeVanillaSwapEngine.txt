@@ -21,5 +21,3 @@ TreeVanillaSwapEngine
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^termStructure
- -v-
- -e-

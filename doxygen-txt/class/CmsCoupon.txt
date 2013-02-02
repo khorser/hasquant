@@ -5,8 +5,6 @@ CmsCoupon
  -f-
   swapIndex
    ->const boost::shared_ptr< SwapIndex > &
- -v-
- -e-
  -f-
   CmsCoupon
    ->
@@ -40,5 +38,3 @@ CmsCoupon
    ::bool
    =false
    -- ^isInArrears
- -v-
- -e-

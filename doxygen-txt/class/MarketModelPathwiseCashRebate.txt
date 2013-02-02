@@ -12,5 +12,3 @@ MarketModelPathwiseCashRebate
    -- ^amounts
    ::Size
    -- ^numberOfProducts
- -v-
- -e-

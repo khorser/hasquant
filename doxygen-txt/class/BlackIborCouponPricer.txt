@@ -7,5 +7,3 @@ BlackIborCouponPricer
    ::const Handle< OptionletVolatilityStructure > &
    =Handle< OptionletVolatilityStructure >()
    -- ^v
- -v-
- -e-

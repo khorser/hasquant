@@ -5,5 +5,3 @@ Sweden
  -f-
   Sweden
    ->
- -v-
- -e-

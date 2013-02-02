@@ -4,5 +4,3 @@ TypePayoff
  -f-
   optionType
    ->Option::Type
- -v-
- -e-

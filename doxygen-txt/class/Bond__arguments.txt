@@ -1,6 +1,5 @@
 Bond::arguments
 
- -f-
  -v-
   settlementDate
    ::Date
@@ -8,9 +7,6 @@ Bond::arguments
    ::Leg
   calendar
    ::Calendar
- -e-
  -f-
   validate
    ->void
- -v-
- -e-

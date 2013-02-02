@@ -1,9 +1,6 @@
 HundsdorferScheme
 
  -f-
- -v-
- -e-
- -f-
   HundsdorferScheme
    ->
    ::Real
@@ -25,5 +22,3 @@ HundsdorferScheme
    ->void
    ::Time
    -- ^dt
- -v-
- -e-

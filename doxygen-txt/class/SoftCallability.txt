@@ -12,5 +12,3 @@ SoftCallability
    -- ^trigger
   trigger
    ->Real
- -v-
- -e-

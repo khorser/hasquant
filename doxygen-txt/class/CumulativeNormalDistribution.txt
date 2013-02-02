@@ -19,5 +19,3 @@ CumulativeNormalDistribution
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

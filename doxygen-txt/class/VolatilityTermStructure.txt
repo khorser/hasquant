@@ -3,7 +3,7 @@ VolatilityTermStructure
  -- |This abstract class defines the interface of concrete volatility structures which will be derived from this one.
 
  -f-
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   VolatilityTermStructure
    ->
    ::const Calendar &
@@ -13,7 +13,7 @@ VolatilityTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   VolatilityTermStructure
    ->
    ::BusinessDayConvention
@@ -21,7 +21,7 @@ VolatilityTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   VolatilityTermStructure
    ->
    ::const Date &
@@ -33,7 +33,7 @@ VolatilityTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   VolatilityTermStructure
    ->
    ::Natural
@@ -45,22 +45,18 @@ VolatilityTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-
  -f-
-  -- the business day convention used in tenor to date conversion
+  -- |the business day convention used in tenor to date conversion
   businessDayConvention
    ->BusinessDayConvention
-  -- period/date conversion
+  -- |period/date conversion
   optionDateFromTenor
    ->Date
    ::const Period &
    -- ^
-  -- the minimum strike for which the term structure can return vols
+  -- |the minimum strike for which the term structure can return vols
   minStrike
    ->Rate
-  -- the maximum strike for which the term structure can return vols
+  -- |the maximum strike for which the term structure can return vols
   maxStrike
    ->Rate
- -v-
- -e-

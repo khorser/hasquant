@@ -17,8 +17,6 @@ InterestRateIndex
    ->const Currency &
   dayCounter
    ->const DayCounter &
- -v-
- -e-
  -f-
   valueDate
    ->Date
@@ -28,10 +26,8 @@ InterestRateIndex
    ->Date
    ::const Date &
    -- ^valueDate
- -v-
- -e-
  -f-
-  -- It can be overridden to implement particular conventions.
+  -- |It can be overridden to implement particular conventions.
   forecastFixing
    ->Rate
    ::const Date &
@@ -40,8 +36,6 @@ InterestRateIndex
    ->Rate
    ::const Date &
    -- ^fixingDate
- -v-
- -e-
  -f-
   InterestRateIndex
    ->
@@ -57,5 +51,3 @@ InterestRateIndex
    -- ^fixingCalendar
    ::const DayCounter &
    -- ^dayCounter
- -v-
- -e-

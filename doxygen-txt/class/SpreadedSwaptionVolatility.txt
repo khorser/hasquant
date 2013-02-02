@@ -13,20 +13,14 @@ SpreadedSwaptionVolatility
    ->Calendar
   settlementDays
    ->Natural
- -v-
- -e-
  -f-
   minStrike
    ->Rate
   maxStrike
    ->Rate
- -v-
- -e-
  -f-
   maxSwapTenor
    ->const Period &
- -v-
- -e-
  -f-
   SpreadedSwaptionVolatility
    ->
@@ -34,5 +28,3 @@ SpreadedSwaptionVolatility
    -- ^
    ::const Handle< Quote > &
    -- ^spread
- -v-
- -e-

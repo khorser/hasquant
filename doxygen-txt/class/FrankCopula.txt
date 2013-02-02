@@ -12,5 +12,3 @@ FrankCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

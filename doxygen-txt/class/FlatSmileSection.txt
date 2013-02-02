@@ -7,8 +7,6 @@ FlatSmileSection
    ->Real
   atmLevel
    ->Real
- -v-
- -e-
  -f-
   FlatSmileSection
    ->
@@ -35,5 +33,3 @@ FlatSmileSection
    ::Real
    =Null< Rate >()
    -- ^atmLevel
- -v-
- -e-

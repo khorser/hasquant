@@ -21,5 +21,3 @@ ParametricExercise
    -- ^exerciseNumber
    ::std::vector< Real > &
    -- ^parameters
- -v-
- -e-

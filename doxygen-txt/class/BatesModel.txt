@@ -13,5 +13,3 @@ BatesModel
    ->Real
   lambda
    ->Real
- -v-
- -e-

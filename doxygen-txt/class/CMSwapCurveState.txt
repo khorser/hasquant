@@ -9,8 +9,6 @@ CMSwapCurveState
    ::Size
    =0
    -- ^firstValidIndex
- -v-
- -e-
  -f-
   CMSwapCurveState
    ->
@@ -18,5 +16,3 @@ CMSwapCurveState
    -- ^rateTimes
    ::Size
    -- ^spanningForwards
- -v-
- -e-

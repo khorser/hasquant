@@ -27,5 +27,3 @@ CallableZeroCouponBond
    ::const CallabilitySchedule &
    =CallabilitySchedule()
    -- ^putCallSchedule
- -v-
- -e-

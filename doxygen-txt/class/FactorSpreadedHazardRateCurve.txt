@@ -9,5 +9,3 @@ FactorSpreadedHazardRateCurve
    -- ^originalCurve
    ::const Handle< Quote > &
    -- ^spread
- -v-
- -e-

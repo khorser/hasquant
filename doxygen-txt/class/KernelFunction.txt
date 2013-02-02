@@ -8,5 +8,3 @@ KernelFunction
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

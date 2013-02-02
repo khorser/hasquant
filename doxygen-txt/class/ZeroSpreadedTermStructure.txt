@@ -18,5 +18,3 @@ ZeroSpreadedTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-

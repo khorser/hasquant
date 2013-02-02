@@ -16,5 +16,3 @@ FDDividendEuropeanEngine
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

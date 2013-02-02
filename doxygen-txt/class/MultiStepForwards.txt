@@ -19,8 +19,6 @@ MultiStepForwards
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   MultiStepForwards
    ->
@@ -32,5 +30,3 @@ MultiStepForwards
    -- ^paymentTimes
    ::const std::vector< Rate > &
    -- ^strikes
- -v-
- -e-

@@ -14,5 +14,3 @@ CPICouponPricer
    ->void
    ::const Handle< CPIVolatilitySurface > &
    -- ^capletVol
- -v-
- -e-

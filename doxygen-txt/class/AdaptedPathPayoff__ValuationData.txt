@@ -29,5 +29,3 @@ AdaptedPathPayoff::ValuationData
    -- ^exercise
    ::Array &
    -- ^state
- -v-
- -e-

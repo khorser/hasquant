@@ -7,5 +7,3 @@ ForwardVanillaEngine
    ->
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
    -- ^
- -v-
- -e-

@@ -1,6 +1,5 @@
 CreditDefaultSwap::arguments
 
- -f-
  -v-
   side
    ::Protection::Side
@@ -22,11 +21,8 @@ CreditDefaultSwap::arguments
    ::boost::shared_ptr< Claim >
   protectionStart
    ::Date
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

@@ -2,8 +2,6 @@ YearOnYearInflationSwap
  -- |Year-on-year inflation-indexed swap.
  -- |Quoted as a fixed rate $ K $. At start: \[ \sum_{i=1}^{M} P_n(0,t_i) N K = \sum_{i=1}^{M} P_n(0,t_i) N \left[ \frac{I(t_i)}{I(t_i-1)} - 1 \right] \] where $ t_M $ is the maturity time, $ P_n(0,t) $ is the nominal discount factor at time $ t $, $ N $ is the notional, and $ I(t) $ is the inflation index value at time $ t $.These instruments have now been changed to follow typical VanillaSwap type design conventions w.r.t. Schedules etc.
 
- -f-
- -v-
  -e-
   Type
    Receiver
@@ -74,5 +72,3 @@ YearOnYearInflationSwap
    ->const Leg &
   ~YearOnYearInflationSwap
    ->
- -v-
- -e-

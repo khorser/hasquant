@@ -1,8 +1,6 @@
 BoundaryCondition
  -- |Abstract boundary condition class for finite difference problems.
 
- -f-
- -v-
  -e-
   -- |Possible enhancementsGeneralize for n-dimensional conditions
   Side
@@ -12,32 +10,30 @@ BoundaryCondition
  -f-
   ~BoundaryCondition
    ->
-  -- This method modifies an operator $ L $ before it is applied to an array $ u $ so that $ v = Lu $ will satisfy the given condition.
+  -- |This method modifies an operator $ L $ before it is applied to an array $ u $ so that $ v = Lu $ will satisfy the given condition.
   applyBeforeApplying
    ->void
    ::operator_type &
    -- ^
-  -- This method modifies an array $ u $ so that it satisfies the given condition.
+  -- |This method modifies an array $ u $ so that it satisfies the given condition.
   applyAfterApplying
    ->void
    ::array_type &
    -- ^
-  -- This method modifies an operator $ L $ before the linear system $ Lu' = u $ is solved so that $ u' $ will satisfy the given condition.
+  -- |This method modifies an operator $ L $ before the linear system $ Lu' = u $ is solved so that $ u' $ will satisfy the given condition.
   applyBeforeSolving
    ->void
    ::operator_type &
    -- ^
    ::array_type &
    -- ^rhs
-  -- This method modifies an array $ u $ so that it satisfies the given condition.
+  -- |This method modifies an array $ u $ so that it satisfies the given condition.
   applyAfterSolving
    ->void
    ::array_type &
    -- ^
-  -- This method sets the current time for time-dependent boundary conditions.
+  -- |This method sets the current time for time-dependent boundary conditions.
   setTime
    ->void
    ::Time
    -- ^t
- -v-
- -e-

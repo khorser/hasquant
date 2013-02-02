@@ -12,5 +12,3 @@ MultiStepSwaption
    -- ^endIndex
    ::boost::shared_ptr< StrikedTypePayoff > &
    -- ^
- -v-
- -e-

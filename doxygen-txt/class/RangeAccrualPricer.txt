@@ -23,5 +23,3 @@ RangeAccrualPricer
    ->void
    ::const FloatingRateCoupon &
    -- ^coupon
- -v-
- -e-

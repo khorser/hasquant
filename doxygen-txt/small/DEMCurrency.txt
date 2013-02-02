@@ -5,5 +5,3 @@ DEMCurrency
  -f-
   DEMCurrency
    ->
- -v-
- -e-

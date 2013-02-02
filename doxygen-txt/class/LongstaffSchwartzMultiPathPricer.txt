@@ -19,5 +19,3 @@ LongstaffSchwartzMultiPathPricer
    -- ^
   calibrate
    ->void
- -v-
- -e-

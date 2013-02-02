@@ -19,5 +19,3 @@ FdBlackScholesAsianEngine
    -- ^schemeDesc
   calculate
    ->void
- -v-
- -e-

@@ -9,8 +9,6 @@ BaroneAdesiWhaleyApproximationEngine
    -- ^
   calculate
    ->void
- -v-
- -e-
  -f-
   criticalPrice
    ->Real
@@ -25,5 +23,3 @@ BaroneAdesiWhaleyApproximationEngine
    ::Real
    =1e-6
    -- ^tolerance
- -v-
- -e-

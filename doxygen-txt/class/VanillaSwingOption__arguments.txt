@@ -1,6 +1,5 @@
 VanillaSwingOption::arguments
 
- -f-
  -v-
   minExerciseRights
    ::Size
@@ -10,11 +9,8 @@ VanillaSwingOption::arguments
    ::boost::shared_ptr< StrikedTypePayoff >
   exercise
    ::boost::shared_ptr< SwingExercise >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

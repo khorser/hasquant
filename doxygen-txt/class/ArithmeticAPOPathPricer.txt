@@ -19,5 +19,3 @@ ArithmeticAPOPathPricer
    ->Real
    ::const Path &
    -- ^path
- -v-
- -e-

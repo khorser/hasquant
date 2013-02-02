@@ -46,5 +46,3 @@ SmileSection
    ->Time
   dayCounter
    ->const DayCounter &
- -v-
- -e-

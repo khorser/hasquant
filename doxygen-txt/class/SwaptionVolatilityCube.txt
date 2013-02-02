@@ -15,8 +15,6 @@ SwaptionVolatilityCube
    -- ^optionTenor
    ::const Period &
    -- ^swapTenor
- -v-
- -e-
  -f-
   SwaptionVolatilityCube
    ->
@@ -36,5 +34,3 @@ SwaptionVolatilityCube
    -- ^shortSwapIndexBase
    ::bool
    -- ^vegaWeightedSmileFit
- -v-
- -e-

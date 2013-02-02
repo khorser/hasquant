@@ -1,7 +1,7 @@
 MixedLinearCubicNaturalSpline
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   MixedLinearCubicNaturalSpline
    ->
    ::const I1 &
@@ -12,5 +12,3 @@ MixedLinearCubicNaturalSpline
    -- ^yBegin
    ::Size
    -- ^n
- -v-
- -e-

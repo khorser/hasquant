@@ -5,5 +5,3 @@ Null< IntervalPrice >
    ->
   operator IntervalPrice
    ->
- -v-
- -e-

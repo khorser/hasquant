@@ -6,8 +6,6 @@ PathMultiAssetOption
    ->boost::shared_ptr< PathPayoff >
   fixingDates
    ->std::vector< Date >
- -v-
- -e-
  -f-
   PathMultiAssetOption
    ->
@@ -16,5 +14,3 @@ PathMultiAssetOption
    -- ^engine
   ~PathMultiAssetOption
    ->
- -v-
- -e-

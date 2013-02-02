@@ -6,5 +6,3 @@ GaussGegenbauerPolynomial
    ->
    ::Real
    -- ^lambda
- -v-
- -e-

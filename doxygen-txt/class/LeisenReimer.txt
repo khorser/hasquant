@@ -26,5 +26,3 @@ LeisenReimer
    -- ^
    ::Size
    -- ^branch
- -v-
- -e-

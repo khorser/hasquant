@@ -1,6 +1,5 @@
 ConvertibleBond::option::arguments
 
- -f-
  -v-
   conversionRatio
    ::Real
@@ -30,11 +29,8 @@ ConvertibleBond::option::arguments
    ::Natural
   redemption
    ::Real
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

@@ -22,5 +22,3 @@ FdHestonBarrierEngine
    ::const FdmSchemeDesc &
    =FdmSchemeDesc::Hundsdorfer()
    -- ^schemeDesc
- -v-
- -e-

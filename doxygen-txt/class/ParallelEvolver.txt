@@ -1,9 +1,6 @@
 ParallelEvolver
 
  -f-
- -v-
- -e-
- -f-
   ParallelEvolver
    ->
    ::const operator_type &
@@ -20,5 +17,3 @@ ParallelEvolver
    ->void
    ::Time
    -- ^dt
- -v-
- -e-

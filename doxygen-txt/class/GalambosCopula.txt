@@ -12,5 +12,3 @@ GalambosCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

@@ -1,6 +1,5 @@
 VolatilityBumpInstrumentJacobian::Cap
 
- -f-
  -v-
   startIndex_
    ::Size
@@ -8,4 +7,3 @@ VolatilityBumpInstrumentJacobian::Cap
    ::Size
   strike_
    ::Real
- -e-

@@ -12,8 +12,6 @@ InterpolatedHazardRateCurve
    ->const std::vector< Rate > &
   nodes
    ->std::vector< std::pair< Date, Real > >
- -v-
- -e-
  -f-
   InterpolatedHazardRateCurve
    ->
@@ -57,5 +55,3 @@ InterpolatedHazardRateCurve
    -- ^dayCounter
    ::const Interpolator &
    -- ^interpolator
- -v-
- -e-

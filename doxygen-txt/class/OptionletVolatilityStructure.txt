@@ -3,7 +3,7 @@ OptionletVolatilityStructure
  -- |This class is purely abstract and defines the interface of concrete structures which will be derived from this one.
 
  -f-
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   OptionletVolatilityStructure
    ->
    ::const Calendar &
@@ -14,8 +14,8 @@ OptionletVolatilityStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- default constructor
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |default constructor
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   OptionletVolatilityStructure
    ->
    ::BusinessDayConvention
@@ -24,7 +24,7 @@ OptionletVolatilityStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   OptionletVolatilityStructure
    ->
    ::const Date &
@@ -36,7 +36,7 @@ OptionletVolatilityStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   OptionletVolatilityStructure
    ->
    ::Natural
@@ -48,10 +48,8 @@ OptionletVolatilityStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-
  -f-
-  -- returns the volatility for a given option tenor and strike rate
+  -- |returns the volatility for a given option tenor and strike rate
   volatility
    ->Volatility
    ::const Period &
@@ -61,7 +59,7 @@ OptionletVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option date and strike rate
+  -- |returns the volatility for a given option date and strike rate
   volatility
    ->Volatility
    ::const Date &
@@ -71,7 +69,7 @@ OptionletVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the volatility for a given option time and strike rate
+  -- |returns the volatility for a given option time and strike rate
   volatility
    ->Volatility
    ::Time
@@ -81,7 +79,7 @@ OptionletVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option tenor and strike rate
+  -- |returns the Black variance for a given option tenor and strike rate
   blackVariance
    ->Real
    ::const Period &
@@ -91,7 +89,7 @@ OptionletVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option date and strike rate
+  -- |returns the Black variance for a given option date and strike rate
   blackVariance
    ->Real
    ::const Date &
@@ -101,7 +99,7 @@ OptionletVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the Black variance for a given option time and strike rate
+  -- |returns the Black variance for a given option time and strike rate
   blackVariance
    ->Real
    ::Time
@@ -111,7 +109,7 @@ OptionletVolatilityStructure
    ::bool
    =false
    -- ^extrapolate
-  -- returns the smile for a given option tenor
+  -- |returns the smile for a given option tenor
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::const Period &
@@ -119,7 +117,7 @@ OptionletVolatilityStructure
    ::bool
    =false
    -- ^extr
-  -- returns the smile for a given option date
+  -- |returns the smile for a given option date
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::const Date &
@@ -127,7 +125,7 @@ OptionletVolatilityStructure
    ::bool
    =false
    -- ^extr
-  -- returns the smile for a given option time
+  -- |returns the smile for a given option time
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::Time
@@ -135,10 +133,6 @@ OptionletVolatilityStructure
    ::bool
    =false
    -- ^extr
- -v-
- -e-
  -f-
   ~OptionletVolatilityStructure
    ->
- -v-
- -e-

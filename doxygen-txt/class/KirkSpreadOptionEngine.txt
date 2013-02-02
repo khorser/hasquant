@@ -10,5 +10,3 @@ KirkSpreadOptionEngine
    -- ^process2
    ::const Handle< Quote > &
    -- ^correlation
- -v-
- -e-

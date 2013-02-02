@@ -7,5 +7,3 @@ Euribor3W
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^h
- -v-
- -e-

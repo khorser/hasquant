@@ -15,5 +15,3 @@ VarianceGammaModel
    ->Real
   process
    ->boost::shared_ptr< VarianceGammaProcess >
- -v-
- -e-

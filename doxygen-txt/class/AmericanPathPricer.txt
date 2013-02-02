@@ -23,5 +23,3 @@ AmericanPathPricer
    -- ^t
   basisSystem
    ->std::vector< boost::function1< Real, Real > >
- -v-
- -e-

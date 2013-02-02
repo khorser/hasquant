@@ -17,5 +17,3 @@ DateParser
    ->Date
    ::const std::string &
    -- ^str
- -v-
- -e-

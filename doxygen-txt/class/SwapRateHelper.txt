@@ -7,8 +7,6 @@ SwapRateHelper
    ->void
    ::YieldTermStructure *
    -- ^
- -v-
- -e-
  -f-
   spread
    ->Spread
@@ -16,8 +14,6 @@ SwapRateHelper
    ->boost::shared_ptr< VanillaSwap >
   forwardStart
    ->const Period &
- -v-
- -e-
  -f-
   SwapRateHelper
    ->
@@ -99,5 +95,3 @@ SwapRateHelper
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^discountingCurve
- -v-
- -e-

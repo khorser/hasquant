@@ -1,17 +1,13 @@
 CdsOption::arguments
  -- |Arguments for CDS-option calculation
 
- -f-
  -v-
   swap
    ::boost::shared_ptr< CreditDefaultSwap >
   knocksOut
    ::bool
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

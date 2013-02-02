@@ -12,5 +12,3 @@ ClaytonCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

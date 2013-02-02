@@ -14,5 +14,3 @@ FDDividendEuropeanEngineMerton73
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

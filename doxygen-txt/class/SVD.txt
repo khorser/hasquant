@@ -25,5 +25,3 @@ SVD
    ->Disposable< Array >
    ::const Array &
    -- ^
- -v-
- -e-

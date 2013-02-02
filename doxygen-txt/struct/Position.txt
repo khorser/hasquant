@@ -1,7 +1,5 @@
 Position
 
- -f-
- -v-
  -e-
   Type
    Long
@@ -13,5 +11,3 @@ Position
    -- ^
    ::Position::Type
    -- ^
- -v-
- -e-

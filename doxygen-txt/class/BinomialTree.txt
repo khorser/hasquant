@@ -1,8 +1,6 @@
 BinomialTree
  -- |Binomial tree base class.
 
- -f-
- -v-
  -e-
   Branches
    branches
@@ -27,5 +25,3 @@ BinomialTree
    -- ^index
    ::Size
    -- ^branch
- -v-
- -e-

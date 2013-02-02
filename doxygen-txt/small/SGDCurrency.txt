@@ -5,5 +5,3 @@ SGDCurrency
  -f-
   SGDCurrency
    ->
- -v-
- -e-

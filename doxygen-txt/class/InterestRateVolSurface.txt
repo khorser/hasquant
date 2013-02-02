@@ -3,7 +3,7 @@ InterestRateVolSurface
  -- |This abstract class defines the interface of concrete Interest rate volatility (smile) surfaces which will be derived from this one.Volatilities are assumed to be expressed on an annual basis.
 
  -f-
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   InterestRateVolSurface
    ->
    ::const boost::shared_ptr< InterestRateIndex > &
@@ -16,7 +16,7 @@ InterestRateVolSurface
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   InterestRateVolSurface
    ->
    ::const boost::shared_ptr< InterestRateIndex > &
@@ -27,7 +27,7 @@ InterestRateVolSurface
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   InterestRateVolSurface
    ->
    ::const boost::shared_ptr< InterestRateIndex > &
@@ -43,7 +43,7 @@ InterestRateVolSurface
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   InterestRateVolSurface
    ->
    ::const boost::shared_ptr< InterestRateIndex > &
@@ -58,18 +58,12 @@ InterestRateVolSurface
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-
  -f-
-  -- period/date conversion
+  -- |period/date conversion
   optionDateFromTenor
    ->Date
    ::const Period &
    -- ^
- -v-
- -e-
  -f-
   index
    ->const boost::shared_ptr< InterestRateIndex > &
- -v-
- -e-

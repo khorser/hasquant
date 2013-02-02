@@ -69,8 +69,6 @@ CTSMMCapletCalibration
    ->const boost::shared_ptr< CurveState > &
   displacements
    ->std::vector< Spread >
- -v-
- -e-
  -f-
   performChecks
    ->void
@@ -84,5 +82,3 @@ CTSMMCapletCalibration
    -- ^mktCapletVols
    ::const CurveState &
    -- ^cs
- -v-
- -e-

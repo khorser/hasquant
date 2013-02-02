@@ -2,9 +2,6 @@ YoYInflationTraits
  -- |Bootstrap traits to use for PiecewiseZeroInflationCurve.
 
  -f-
- -v-
- -e-
- -f-
   initialDate
    ->Date
    ::const YoYInflationTermStructure *
@@ -53,5 +50,3 @@ YoYInflationTraits
    -- ^i
   maxIterations
    ->Size
- -v-
- -e-

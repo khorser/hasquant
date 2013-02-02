@@ -10,5 +10,3 @@ ConvertibleBond
    ->const CallabilitySchedule &
   creditSpread
    ->const Handle< Quote > &
- -v-
- -e-

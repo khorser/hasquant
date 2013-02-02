@@ -25,5 +25,3 @@ VolatilityInterpolationSpecifier
    ->Size
   getNoSmallRates
    ->Size
- -v-
- -e-

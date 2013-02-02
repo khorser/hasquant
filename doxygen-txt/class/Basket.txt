@@ -36,59 +36,59 @@ Basket
    ->const std::vector< DefaultProbKey > &
   recoveryModels
    ->const std::vector< boost::shared_ptr< RecoveryRateModel > > &
-  -- Loss Given Default for all issuers/notionals based on expected recovery rates for the respective issuers.
+  -- |Loss Given Default for all issuers/notionals based on expected recovery rates for the respective issuers.
   LGDs
    ->const std::vector< Real > &
   lgd
    ->Real
-  -- Attachment point expressed as a fraction of the total pool notional.
+  -- |Attachment point expressed as a fraction of the total pool notional.
   attachmentRatio
    ->Real
-  -- Detachment point expressed as a fraction of the total pool notional.
+  -- |Detachment point expressed as a fraction of the total pool notional.
   detachmentRatio
    ->Real
-  -- Original basket notional ignoring any losses.
+  -- |Original basket notional ignoring any losses.
   basketNotional
    ->Real
-  -- Original expected basket LGD.
+  -- |Original expected basket LGD.
   basketLGD
    ->Real
-  -- Original tranche notional ignoring any losses.
+  -- |Original tranche notional ignoring any losses.
   trancheNotional
    ->Real
-  -- Attachment amount = attachmentRatio() * basketNotional()
+  -- |Attachment amount = attachmentRatio() * basketNotional()
   attachmentAmount
    ->Real
-  -- Detachment amount = detachmentRatio() * basketNotional()
+  -- |Detachment amount = detachmentRatio() * basketNotional()
   detachmentAmount
    ->Real
-  -- Vector of cumulative default probability to date d for al issuers in the basket.
+  -- |Vector of cumulative default probability to date d for al issuers in the basket.
   probabilities
    ->std::vector< Real >
    ::const Date &
    -- ^d
-  -- Actual basket losses between start and end date, taking the actual recovery rates of loss events into account.
+  -- |Actual basket losses between start and end date, taking the actual recovery rates of loss events into account.
   cumulatedLoss
    ->Real
    ::const Date &
    -- ^startDate
    ::const Date &
    -- ^endDate
-  -- Remaining basket notional after losses between start and end date. The full notional for defaulted names is subracted, recovery ignored.
+  -- |Remaining basket notional after losses between start and end date. The full notional for defaulted names is subracted, recovery ignored.
   remainingNotional
    ->Real
    ::const Date &
    -- ^startDate
    ::const Date &
    -- ^endDate
-  -- Vector of surviving notionals after losses between start and end date, recovery ignored.
+  -- |Vector of surviving notionals after losses between start and end date, recovery ignored.
   remainingNotionals
    ->std::vector< Real >
    ::const Date &
    -- ^startDate
    ::const Date &
    -- ^endDate
-  -- Vector of surviving issuers after defaults between start and end date.
+  -- |Vector of surviving issuers after defaults between start and end date.
   remainingNames
    ->std::vector< std::string >
    ::const Date &
@@ -107,7 +107,7 @@ Basket
    -- ^startDate
    ::const Date &
    -- ^endDate
-  -- The remaining attachment amount is RAA = max (0, attachmentAmount - cumulatedLoss())The remaining attachment ratio is then RAR = RAA / remainingNotional()
+  -- |The remaining attachment amount is RAA = max (0, attachmentAmount - cumulatedLoss())The remaining attachment ratio is then RAR = RAA / remainingNotional()
   remainingAttachmentRatio
    ->Real
    ::const Date &
@@ -120,7 +120,7 @@ Basket
    -- ^startDate
    ::const Date &
    -- ^endDate
-  -- The remaining detachment amount is RDA = max (0, detachmentAmount - cumulatedLoss())The remaining detachment ratio is then RDR = RDA / remainingNotional()
+  -- |The remaining detachment amount is RDA = max (0, detachmentAmount - cumulatedLoss())The remaining detachment ratio is then RDR = RDA / remainingNotional()
   remainingDetachmentRatio
    ->Real
    ::const Date &
@@ -133,21 +133,21 @@ Basket
    -- ^startDate
    ::const Date &
    -- ^endDate
-  -- Based on the default times stored in the Pool for each name, update the vector of incremental basket losses (sorted by default time) for this basket. If zeroRecovery is set to true, losses are full notional amounts, otherwise loss give defaults.
+  -- |Based on the default times stored in the Pool for each name, update the vector of incremental basket losses (sorted by default time) for this basket. If zeroRecovery is set to true, losses are full notional amounts, otherwise loss give defaults.
   updateScenarioLoss
    ->void
    ::bool
    =false
    -- ^zeroRecovery
-  -- Cumulative tranche loss up to end date under the current scenario.
+  -- |Cumulative tranche loss up to end date under the current scenario.
   scenarioTrancheLoss
    ->Real
    ::Date
    -- ^endDate
-  -- Vector of incremental basket losses under the current scenario.
+  -- |Vector of incremental basket losses under the current scenario.
   scenarioIncrementalBasketLosses
    ->std::vector< Loss >
-  -- Vector of incremental tranche losses under the current scenario.
+  -- |Vector of incremental tranche losses under the current scenario.
   scenarioIncrementalTrancheLosses
    ->std::vector< Loss >
    ::Date
@@ -156,5 +156,3 @@ Basket
    ::Date
    =Date::maxDate()
    -- ^endDate
- -v-
- -e-

@@ -16,5 +16,3 @@ FDShoutEngine
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

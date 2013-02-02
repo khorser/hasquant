@@ -1,9 +1,6 @@
 FdmStepConditionComposite
 
  -f-
- -v-
- -e-
- -f-
   FdmStepConditionComposite
    ->
    ::const std::list< std::vector< Time > > &
@@ -20,8 +17,6 @@ FdmStepConditionComposite
    ->const std::vector< Time > &
   conditions
    ->const Conditions &
- -v-
- -e-
  -f-
   joinConditions
    ->boost::shared_ptr< FdmStepConditionComposite >
@@ -43,5 +38,3 @@ FdmStepConditionComposite
    -- ^refDate
    ::const DayCounter &
    -- ^dayCounter
- -v-
- -e-

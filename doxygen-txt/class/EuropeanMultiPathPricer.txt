@@ -11,5 +11,3 @@ EuropeanMultiPathPricer
    ->Real
    ::const MultiPath &
    -- ^multiPath
- -v-
- -e-

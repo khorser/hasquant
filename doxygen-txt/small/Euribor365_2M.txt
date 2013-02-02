@@ -7,5 +7,3 @@ Euribor365_2M
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^h
- -v-
- -e-

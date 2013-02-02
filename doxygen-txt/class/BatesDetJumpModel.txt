@@ -15,5 +15,3 @@ BatesDetJumpModel
    ->Real
   thetaLambda
    ->Real
- -v-
- -e-

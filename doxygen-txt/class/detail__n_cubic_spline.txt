@@ -1,9 +1,6 @@
 detail::n_cubic_spline
 
  -f-
- -v-
- -e-
- -f-
   n_cubic_spline
    ->
    ::const data &
@@ -18,5 +15,3 @@ detail::n_cubic_spline
    -- ^v
   ~n_cubic_spline
    ->
- -v-
- -e-

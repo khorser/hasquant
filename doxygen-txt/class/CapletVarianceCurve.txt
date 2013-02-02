@@ -12,5 +12,3 @@ CapletVarianceCurve
    -- ^capletVolCurve
    ::const DayCounter &
    -- ^dayCounter
- -v-
- -e-

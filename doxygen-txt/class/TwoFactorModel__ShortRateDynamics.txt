@@ -21,17 +21,15 @@ TwoFactorModel::ShortRateDynamics
    -- ^x
    ::Real
    -- ^y
-  -- Risk-neutral dynamics of the first state variable x.
+  -- |Risk-neutral dynamics of the first state variable x.
   xProcess
    ->const boost::shared_ptr< StochasticProcess1D > &
-  -- Risk-neutral dynamics of the second state variable y.
+  -- |Risk-neutral dynamics of the second state variable y.
   yProcess
    ->const boost::shared_ptr< StochasticProcess1D > &
-  -- Correlation $ \rho $ between the two brownian motions.
+  -- |Correlation $ \rho $ between the two brownian motions.
   correlation
    ->Real
-  -- Joint process of the two variables.
+  -- |Joint process of the two variables.
   process
    ->boost::shared_ptr< StochasticProcess >
- -v-
- -e-

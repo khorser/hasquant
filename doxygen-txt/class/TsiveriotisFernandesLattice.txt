@@ -20,5 +20,3 @@ TsiveriotisFernandesLattice
    -- ^divYield
   creditSpread
    ->Spread
- -v-
- -e-

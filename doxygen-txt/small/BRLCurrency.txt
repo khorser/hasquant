@@ -5,5 +5,3 @@ BRLCurrency
  -f-
   BRLCurrency
    ->
- -v-
- -e-

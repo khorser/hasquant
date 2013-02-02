@@ -5,5 +5,3 @@ BYRCurrency
  -f-
   BYRCurrency
    ->
- -v-
- -e-

@@ -54,5 +54,3 @@ CmsMarket
    ->Disposable< Array >
    ::const Matrix &
    -- ^weights
- -v-
- -e-

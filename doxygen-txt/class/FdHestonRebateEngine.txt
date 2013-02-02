@@ -21,5 +21,3 @@ FdHestonRebateEngine
    ::const FdmSchemeDesc &
    =FdmSchemeDesc::Hundsdorfer()
    -- ^schemeDesc
- -v-
- -e-

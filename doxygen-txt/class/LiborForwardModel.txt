@@ -19,5 +19,3 @@ LiborForwardModel
    -- ^beta
   getSwaptionVolatilityMatrix
    ->boost::shared_ptr< SwaptionVolatilityMatrix >
- -v-
- -e-

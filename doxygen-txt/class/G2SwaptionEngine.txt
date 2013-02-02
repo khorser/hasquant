@@ -11,5 +11,3 @@ G2SwaptionEngine
    -- ^range
    ::Size
    -- ^intervals
- -v-
- -e-

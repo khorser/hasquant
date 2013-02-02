@@ -1,6 +1,5 @@
 CPICapFloor::arguments
 
- -f-
  -v-
   type
    ::Option::Type
@@ -32,9 +31,6 @@ CPICapFloor::arguments
    ::Period
   observationInterpolation
    ::CPI::InterpolationType
- -e-
  -f-
   validate
    ->void
- -v-
- -e-

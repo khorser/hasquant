@@ -5,5 +5,3 @@ CLPCurrency
  -f-
   CLPCurrency
    ->
- -v-
- -e-

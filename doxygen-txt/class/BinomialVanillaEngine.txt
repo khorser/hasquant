@@ -9,5 +9,3 @@ BinomialVanillaEngine
    -- ^process
    ::Size
    -- ^timeSteps
- -v-
- -e-

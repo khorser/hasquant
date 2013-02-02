@@ -3,7 +3,7 @@ BlackAtmVolCurve
  -- |This abstract class defines the interface of concrete Black at-the-money (no-smile) volatility curves which will be derived from this one.Volatilities are assumed to be expressed on an annual basis.
 
  -f-
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   BlackAtmVolCurve
    ->
    ::const Calendar &
@@ -14,8 +14,8 @@ BlackAtmVolCurve
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- default constructor
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |default constructor
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   BlackAtmVolCurve
    ->
    ::BusinessDayConvention
@@ -24,7 +24,7 @@ BlackAtmVolCurve
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   BlackAtmVolCurve
    ->
    ::const Date &
@@ -38,7 +38,7 @@ BlackAtmVolCurve
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   BlackAtmVolCurve
    ->
    ::Natural
@@ -51,10 +51,8 @@ BlackAtmVolCurve
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-
  -f-
-  -- spot at-the-money volatility
+  -- |spot at-the-money volatility
   atmVol
    ->Volatility
    ::const Period &
@@ -62,7 +60,7 @@ BlackAtmVolCurve
    ::bool
    =false
    -- ^extrapolate
-  -- spot at-the-money volatility
+  -- |spot at-the-money volatility
   atmVol
    ->Volatility
    ::const Date &
@@ -70,7 +68,7 @@ BlackAtmVolCurve
    ::bool
    =false
    -- ^extrapolate
-  -- spot at-the-money volatility
+  -- |spot at-the-money volatility
   atmVol
    ->Volatility
    ::Time
@@ -78,7 +76,7 @@ BlackAtmVolCurve
    ::bool
    =false
    -- ^extrapolate
-  -- spot at-the-money variance
+  -- |spot at-the-money variance
   atmVariance
    ->Real
    ::const Period &
@@ -86,7 +84,7 @@ BlackAtmVolCurve
    ::bool
    =false
    -- ^extrapolate
-  -- spot at-the-money variance
+  -- |spot at-the-money variance
   atmVariance
    ->Real
    ::const Date &
@@ -94,7 +92,7 @@ BlackAtmVolCurve
    ::bool
    =false
    -- ^extrapolate
-  -- spot at-the-money variance
+  -- |spot at-the-money variance
   atmVariance
    ->Real
    ::Time
@@ -102,17 +100,11 @@ BlackAtmVolCurve
    ::bool
    =false
    -- ^extrapolate
- -v-
- -e-
  -f-
   accept
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-
  -f-
   ~BlackAtmVolCurve
    ->
- -v-
- -e-

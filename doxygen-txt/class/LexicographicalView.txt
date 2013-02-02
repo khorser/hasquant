@@ -7,8 +7,6 @@ LexicographicalView
    ->y_iterator
    ::Size
    -- ^i
- -v-
- -e-
  -f-
   xbegin
    ->x_iterator
@@ -42,22 +40,15 @@ LexicographicalView
    ->reverse_y_iterator
    ::Size
    -- ^i
- -v-
- -e-
  -f-
-  -- dimension of the array along x
+  -- |dimension of the array along x
   xSize
    ->Size
-  -- dimension of the array along y
+  -- |dimension of the array along y
   ySize
    ->Size
- -v-
- -e-
  -f-
- -v-
- -e-
- -f-
-  -- attaches the view with the given dimension to a sequence
+  -- |attaches the view with the given dimension to a sequence
   LexicographicalView
    ->
    ::const RandomAccessIterator &
@@ -66,5 +57,3 @@ LexicographicalView
    -- ^end
    ::Size
    -- ^xSize
- -v-
- -e-

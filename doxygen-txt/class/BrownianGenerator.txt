@@ -13,5 +13,3 @@ BrownianGenerator
    ->Size
   numberOfSteps
    ->Size
- -v-
- -e-

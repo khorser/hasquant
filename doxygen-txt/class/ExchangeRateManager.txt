@@ -3,8 +3,8 @@ ExchangeRateManager
  -- |Testslookup of direct, triangulated, and derived exchange rates is tested.
 
  -f-
-  -- Add an exchange rate.
-  -- The given rate is valid between the given dates.If two rates are given between the same currencies and with overlapping date ranges, the latest one added takes precedence during lookup.
+  -- |Add an exchange rate.
+  -- |The given rate is valid between the given dates.If two rates are given between the same currencies and with overlapping date ranges, the latest one added takes precedence during lookup.
   add
    ->void
    ::const ExchangeRate &
@@ -15,7 +15,7 @@ ExchangeRateManager
    ::const Date &
    =Date::maxDate()
    -- ^endDate
-  -- Lookup the exchange rate between two currencies at a given date. If the given type is Direct, only direct exchange rates will be returned if available; if Derived, direct rates are still preferred but derived rates are allowed.Warningif two or more exchange-rate chains are possible which allow to specify a requested rate, it is unspecified which one is returned.
+  -- |Lookup the exchange rate between two currencies at a given date. If the given type is Direct, only direct exchange rates will be returned if available; if Derived, direct rates are still preferred but derived rates are allowed.Warningif two or more exchange-rate chains are possible which allow to specify a requested rate, it is unspecified which one is returned.
   lookup
    ->ExchangeRate
    ::const Currency &
@@ -28,8 +28,6 @@ ExchangeRateManager
    ::ExchangeRate::Type
    =ExchangeRate::Derived
    -- ^type
-  -- remove the added exchange rates
+  -- |remove the added exchange rates
   clear
    ->void
- -v-
- -e-

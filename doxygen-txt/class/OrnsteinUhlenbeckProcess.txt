@@ -21,5 +21,3 @@ OrnsteinUhlenbeckProcess
    ->Real
   level
    ->Real
- -v-
- -e-

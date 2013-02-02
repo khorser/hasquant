@@ -9,5 +9,3 @@ Tree
    -- ^columns
   columns
    ->Size
- -v-
- -e-

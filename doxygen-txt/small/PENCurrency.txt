@@ -5,5 +5,3 @@ PENCurrency
  -f-
   PENCurrency
    ->
- -v-
- -e-

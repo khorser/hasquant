@@ -33,5 +33,3 @@ MarketModel
    ->std::vector< Volatility >
    ::Size
    -- ^i
- -v-
- -e-

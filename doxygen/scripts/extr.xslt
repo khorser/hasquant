@@ -60,14 +60,16 @@
   </xsl:template>
 
   <xsl:template name="section">
-    <xsl:call-template name="newline">
-      <xsl:with-param name="level" select="1"/>
-      <xsl:with-param name="leading" select="'-f-'"/>
-    </xsl:call-template>
+    <xsl:if test="memberdef[@kind='function' and @prot='public']">
+      <xsl:call-template name="newline">
+	<xsl:with-param name="level" select="1"/>
+	<xsl:with-param name="leading" select="'-f-'"/>
+      </xsl:call-template>
+    </xsl:if>
     <xsl:for-each select="memberdef[@kind='function' and @prot='public']">
       <xsl:call-template name="doc">
 	<xsl:with-param name="level" select="2"/>
-	<xsl:with-param name="leading" select="'|'"/>
+	<xsl:with-param name="prefix" select="'|'"/>
       </xsl:call-template>
 
       <xsl:call-template name="newline">
@@ -111,10 +113,12 @@
       </xsl:for-each>
     </xsl:for-each>
 
-    <xsl:call-template name="newline">
-      <xsl:with-param name="level" select="1"/>
-      <xsl:with-param name="leading" select="'-v-'"/>
-    </xsl:call-template>
+    <xsl:if test="memberdef[@kind='variable' and @prot='public']">
+      <xsl:call-template name="newline">
+	<xsl:with-param name="level" select="1"/>
+	<xsl:with-param name="leading" select="'-v-'"/>
+      </xsl:call-template>
+    </xsl:if>
     <xsl:for-each select="memberdef[@kind='variable' and @prot='public']">
       <xsl:call-template name="doc">
 	<xsl:with-param name="level" select="2"/>
@@ -133,10 +137,12 @@
       </xsl:call-template>
     </xsl:for-each>
 
-    <xsl:call-template name="newline">
-      <xsl:with-param name="level" select="1"/>
-      <xsl:with-param name="leading" select="'-e-'"/>
-    </xsl:call-template>
+    <xsl:if test="memberdef[@kind='enum' and @prot='public']">
+      <xsl:call-template name="newline">
+	<xsl:with-param name="level" select="1"/>
+	<xsl:with-param name="leading" select="'-e-'"/>
+      </xsl:call-template>
+    </xsl:if>
     <xsl:for-each select="memberdef[@kind='enum' and @prot='public']">
       <xsl:call-template name="doc">
 	<xsl:with-param name="level" select="2"/>

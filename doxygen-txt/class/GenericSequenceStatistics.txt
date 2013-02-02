@@ -5,24 +5,18 @@ GenericSequenceStatistics
  -f-
   size
    ->Size
- -v-
- -e-
  -f-
-  -- returns the covariance Matrix
+  -- |returns the covariance Matrix
   covariance
    ->Disposable< Matrix >
-  -- returns the correlation Matrix
+  -- |returns the correlation Matrix
   correlation
    ->Disposable< Matrix >
- -v-
- -e-
  -f-
   samples
    ->Size
   weightSum
    ->Real
- -v-
- -e-
  -f-
   mean
    ->std::vector< Real >
@@ -100,8 +94,6 @@ GenericSequenceStatistics
    ->std::vector< Real >
    ::Real
    -- ^target
- -v-
- -e-
  -f-
   reset
    ->void
@@ -124,16 +116,9 @@ GenericSequenceStatistics
    ::Real
    =1.0
    -- ^weight
- -v-
- -e-
- -f-
- -v-
- -e-
  -f-
   GenericSequenceStatistics
    ->
    ::Size
    =0
    -- ^dimension
- -v-
- -e-

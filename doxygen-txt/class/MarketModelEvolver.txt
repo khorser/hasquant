@@ -19,5 +19,3 @@ MarketModelEvolver
    ->void
    ::const CurveState &
    -- ^
- -v-
- -e-

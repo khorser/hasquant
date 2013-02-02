@@ -15,5 +15,3 @@ PiecewiseConstantCorrelation
    -- ^i
   numberOfRates
    ->Size
- -v-
- -e-

@@ -7,5 +7,3 @@ GaussLaguerrePolynomial
    ::Real
    =0.0
    -- ^s
- -v-
- -e-

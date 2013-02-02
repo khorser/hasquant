@@ -12,8 +12,6 @@ Quantity
    -- ^unitOfMeasure
    ::Real
    -- ^amount
- -v-
- -e-
  -f-
   commodityType
    ->const CommodityType &
@@ -23,8 +21,6 @@ Quantity
    ->Real
   rounded
    ->Quantity
- -v-
- -e-
  -f-
   operator+
    ->Quantity
@@ -46,9 +42,6 @@ Quantity
    ->Quantity &
    ::Real
    -- ^
- -v-
- -e-
- -f-
  -v-
   conversionType
    ::ConversionType
@@ -153,5 +146,3 @@ Quantity
    ::Size
    =42
    -- ^n
- -v-
- -e-

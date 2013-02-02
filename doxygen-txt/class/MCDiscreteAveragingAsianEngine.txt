@@ -3,9 +3,6 @@ MCDiscreteAveragingAsianEngine
  -- |Warningcontrol-variate calculation is disabled under VC++6.
 
  -f-
- -v-
- -e-
- -f-
   MCDiscreteAveragingAsianEngine
    ->
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
@@ -24,5 +21,3 @@ MCDiscreteAveragingAsianEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

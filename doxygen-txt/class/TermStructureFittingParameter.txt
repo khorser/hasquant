@@ -10,5 +10,3 @@ TermStructureFittingParameter
    ->
    ::const Handle< YieldTermStructure > &
    -- ^term
- -v-
- -e-

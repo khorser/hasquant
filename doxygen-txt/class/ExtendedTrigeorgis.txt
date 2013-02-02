@@ -12,5 +12,3 @@ ExtendedTrigeorgis
    -- ^steps
    ::Real
    -- ^strike
- -v-
- -e-

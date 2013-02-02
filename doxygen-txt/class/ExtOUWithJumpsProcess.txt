@@ -22,5 +22,3 @@ ExtOUWithJumpsProcess
    ->Real
   jumpIntensity
    ->Real
- -v-
- -e-

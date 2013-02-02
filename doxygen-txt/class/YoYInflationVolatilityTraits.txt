@@ -2,9 +2,6 @@ YoYInflationVolatilityTraits
  -- |traits for inflation-volatility bootstrap
 
  -f-
- -v-
- -e-
- -f-
   initialDate
    ->Date
    ::const YoYOptionletVolatilitySurface *
@@ -53,5 +50,3 @@ YoYInflationVolatilityTraits
    -- ^i
   maxIterations
    ->Size
- -v-
- -e-

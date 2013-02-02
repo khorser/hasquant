@@ -11,10 +11,8 @@ AbcdAtmVolCurve
    ->const std::vector< Date > &
   optionTimes
    ->const std::vector< Time > &
- -v-
- -e-
  -f-
-  -- floating reference date, floating market data
+  -- |floating reference date, floating market data
   AbcdAtmVolCurve
    ->
    ::Natural
@@ -34,10 +32,10 @@ AbcdAtmVolCurve
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
-  -- Returns k adjustment factors for option tenors used in interpolation.
+  -- |Returns k adjustment factors for option tenors used in interpolation.
   k
    ->std::vector< Real >
-  -- Returns k adjustment factor at time t.
+  -- |Returns k adjustment factor at time t.
   k
    ->Real
    ::Time
@@ -56,5 +54,3 @@ AbcdAtmVolCurve
    ->Real
   endCriteria
    ->EndCriteria::Type
- -v-
- -e-

@@ -1,6 +1,5 @@
 BiCGStabResult
 
- -f-
  -v-
   iterations
    ::Size
@@ -8,4 +7,3 @@ BiCGStabResult
    ::Real
   x
    ::Array
- -e-

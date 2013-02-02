@@ -3,19 +3,17 @@ BlackCallableFixedRateBondEngine
  -- |Callable fixed rate bond Black engine. The embedded (European) option follows the Black "European bond option" treatment in Hull, Fourth Edition, Chapter 20.Possible enhancementsset additionalResults (e.g. vega, fairStrike, etc.)WarningThis class has yet to be tested
 
  -f-
-  -- volatility is the quoted fwd yield volatility, not price vol
+  -- |volatility is the quoted fwd yield volatility, not price vol
   BlackCallableFixedRateBondEngine
    ->
    ::const Handle< Quote > &
    -- ^fwdYieldVol
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
-  -- volatility is the quoted fwd yield volatility, not price vol
+  -- |volatility is the quoted fwd yield volatility, not price vol
   BlackCallableFixedRateBondEngine
    ->
    ::const Handle< CallableBondVolatilityStructure > &
    -- ^yieldVolStructure
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
- -v-
- -e-

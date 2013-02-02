@@ -1,9 +1,6 @@
 FdmDirichletBoundary
 
  -f-
- -v-
- -e-
- -f-
   FdmDirichletBoundary
    ->
    ::const boost::shared_ptr< FdmMesher > &
@@ -42,5 +39,3 @@ FdmDirichletBoundary
    -- ^x
    ::Real
    -- ^value
- -v-
- -e-

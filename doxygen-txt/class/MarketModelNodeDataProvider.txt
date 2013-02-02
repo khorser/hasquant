@@ -23,5 +23,3 @@ MarketModelNodeDataProvider
    -- ^
    ::std::vector< Real > &
    -- ^results
- -v-
- -e-

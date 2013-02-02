@@ -19,5 +19,3 @@ AmericanExercise
    ::bool
    =false
    -- ^payoffAtExpiry
- -v-
- -e-

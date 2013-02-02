@@ -4,5 +4,3 @@ AustraliaRegion
  -f-
   AustraliaRegion
    ->
- -v-
- -e-

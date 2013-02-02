@@ -7,8 +7,6 @@ SpreadedOptionletVolatility
    ->Rate
   maxStrike
    ->Rate
- -v-
- -e-
  -f-
   dayCounter
    ->DayCounter
@@ -22,8 +20,6 @@ SpreadedOptionletVolatility
    ->Calendar
   settlementDays
    ->Natural
- -v-
- -e-
  -f-
   SpreadedOptionletVolatility
    ->
@@ -31,5 +27,3 @@ SpreadedOptionletVolatility
    -- ^
    ::const Handle< Quote > &
    -- ^spread
- -v-
- -e-

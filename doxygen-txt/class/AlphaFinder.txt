@@ -73,5 +73,3 @@ AlphaFinder
    -- ^b
    ::std::vector< Volatility > &
    -- ^ratetwovols
- -v-
- -e-

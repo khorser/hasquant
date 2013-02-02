@@ -3,9 +3,6 @@ ConvergenceStatistics
  -- |This class decorates another statistics class adding a convergence table calculation. The table tracks the convergence of the mean.It is possible to specify the number of samples at which the mean should be stored by mean of the second template parameter; the default is to store $ 2^{n-1} $ samples at the $ n $-th step. Any passed class must implement the following interface: SizeinitialSamples()const; SizenextSamples(SizecurrentSamples)const; as well as a copy constructor.Testsresults are tested against known good values.
 
  -f-
- -v-
- -e-
- -f-
   ConvergenceStatistics
    ->
    ::const T &
@@ -43,5 +40,3 @@ ConvergenceStatistics
    ->void
   convergenceTable
    ->const std::vector< std::pair< Size, value_type > > &
- -v-
- -e-

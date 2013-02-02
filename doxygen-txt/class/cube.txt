@@ -5,5 +5,3 @@ cube
    ->T
    ::const T &
    -- ^t
- -v-
- -e-

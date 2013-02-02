@@ -5,5 +5,3 @@ identity
    ->T
    ::const T &
    -- ^t
- -v-
- -e-

@@ -2,8 +2,6 @@ HybridHestonHullWhiteProcess
  -- |Hybrid Heston Hull-White stochastic process.
  -- |This class implements a three factor Heston Hull-White modelBugThis class was not tested enough to guarantee its functionality... work in progress
 
- -f-
- -v-
  -e-
   Discretization
    Euler
@@ -34,5 +32,3 @@ HybridHestonHullWhiteProcess
    ->Real
   discretization
    ->Discretization
- -v-
- -e-

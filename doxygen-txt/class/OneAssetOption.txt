@@ -24,8 +24,6 @@ OneAssetOption
    ->Real
   itmCashProbability
    ->Real
- -v-
- -e-
  -f-
   OneAssetOption
    ->
@@ -33,5 +31,3 @@ OneAssetOption
    -- ^
    ::const boost::shared_ptr< Exercise > &
    -- ^
- -v-
- -e-

@@ -11,5 +11,3 @@ PagodaOption
    -- ^roof
    ::Real
    -- ^fraction
- -v-
- -e-

@@ -11,5 +11,3 @@ Dividend
    ->Real
    ::Real
    -- ^underlying
- -v-
- -e-

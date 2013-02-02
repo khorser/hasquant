@@ -15,5 +15,3 @@ GFunction
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

@@ -4,5 +4,3 @@ GaussLegendrePolynomial
  -f-
   GaussLegendrePolynomial
    ->
- -v-
- -e-

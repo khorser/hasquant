@@ -5,5 +5,3 @@ USDCurrency
  -f-
   USDCurrency
    ->
- -v-
- -e-

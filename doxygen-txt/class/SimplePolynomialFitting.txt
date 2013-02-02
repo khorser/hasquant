@@ -9,5 +9,3 @@ SimplePolynomialFitting
    ::bool
    =true
    -- ^constrainAtZero
- -v-
- -e-

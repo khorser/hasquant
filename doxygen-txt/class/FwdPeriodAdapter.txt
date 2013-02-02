@@ -17,8 +17,6 @@ FwdPeriodAdapter
    ->const Matrix &
    ::Size
    -- ^i
- -v-
- -e-
  -f-
   FwdPeriodAdapter
    ->
@@ -30,5 +28,3 @@ FwdPeriodAdapter
    -- ^offset
    ::const std::vector< Spread > &
    -- ^newDisplacements_
- -v-
- -e-

@@ -15,5 +15,3 @@ LfmHullWhiteParameterization
    ::Size
    =1
    -- ^factors
- -v-
- -e-

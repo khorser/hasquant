@@ -15,5 +15,3 @@ LmLinearExponentialVolatilityModel
    -- ^c
    ::Real
    -- ^d
- -v-
- -e-

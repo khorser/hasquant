@@ -12,5 +12,3 @@ Trigeorgis
    -- ^steps
    ::Real
    -- ^strike
- -v-
- -e-

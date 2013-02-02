@@ -25,5 +25,3 @@ BasketPayoff
    -- ^a
   basePayoff
    ->const boost::shared_ptr< Payoff >
- -v-
- -e-

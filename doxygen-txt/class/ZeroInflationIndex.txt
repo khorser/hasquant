@@ -8,10 +8,8 @@ ZeroInflationIndex
    ->boost::shared_ptr< ZeroInflationIndex >
    ::const Handle< ZeroInflationTermStructure > &
    -- ^h
- -v-
- -e-
  -f-
-  -- Always use the evaluation date as the reference date.
+  -- |Always use the evaluation date as the reference date.
   ZeroInflationIndex
    ->
    ::const std::string &
@@ -31,5 +29,3 @@ ZeroInflationIndex
    ::const Handle< ZeroInflationTermStructure > &
    =Handle< ZeroInflationTermStructure >()
    -- ^ts
- -v-
- -e-

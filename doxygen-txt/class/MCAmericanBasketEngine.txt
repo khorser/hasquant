@@ -26,5 +26,3 @@ MCAmericanBasketEngine
    ::Size
    =Null< Size >()
    -- ^nCalibrationSamples
- -v-
- -e-

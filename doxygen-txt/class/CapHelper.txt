@@ -22,5 +22,3 @@ CapHelper
    ::CalibrationHelper::CalibrationErrorType
    =CalibrationHelper::RelativePriceError
    -- ^errorType
- -v-
- -e-

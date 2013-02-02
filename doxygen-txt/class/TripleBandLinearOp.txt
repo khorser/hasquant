@@ -62,5 +62,3 @@ TripleBandLinearOp
    ->void
    ::TripleBandLinearOp &
    -- ^m
- -v-
- -e-

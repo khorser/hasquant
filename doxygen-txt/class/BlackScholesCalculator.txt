@@ -30,24 +30,22 @@ BlackScholesCalculator
    -- ^discount
   ~BlackScholesCalculator
    ->
-  -- Sensitivity to change in the underlying spot price.
+  -- |Sensitivity to change in the underlying spot price.
   delta
    ->Real
-  -- Sensitivity in percent to a percent change in the underlying spot price.
+  -- |Sensitivity in percent to a percent change in the underlying spot price.
   elasticity
    ->Real
-  -- Second order derivative with respect to change in the underlying spot price.
+  -- |Second order derivative with respect to change in the underlying spot price.
   gamma
    ->Real
-  -- Sensitivity to time to maturity.
+  -- |Sensitivity to time to maturity.
   theta
    ->Real
    ::Time
    -- ^maturity
-  -- Sensitivity to time to maturity per day (assuming 365 day in a year).
+  -- |Sensitivity to time to maturity per day (assuming 365 day in a year).
   thetaPerDay
    ->Real
    ::Time
    -- ^maturity
- -v-
- -e-

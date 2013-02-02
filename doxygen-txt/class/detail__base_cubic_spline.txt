@@ -1,9 +1,6 @@
 detail::base_cubic_spline
 
  -f-
- -v-
- -e-
- -f-
   base_cubic_spline
    ->
    ::const data &
@@ -16,5 +13,3 @@ detail::base_cubic_spline
    -- ^y2
    ::output_data &
    -- ^v
- -v-
- -e-

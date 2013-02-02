@@ -15,5 +15,3 @@ MarketModelPathwiseMultiCaplet
    -- ^strikes
   ~MarketModelPathwiseMultiCaplet
    ->
- -v-
- -e-

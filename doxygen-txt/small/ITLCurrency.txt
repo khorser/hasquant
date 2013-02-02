@@ -5,5 +5,3 @@ ITLCurrency
  -f-
   ITLCurrency
    ->
- -v-
- -e-

@@ -19,5 +19,3 @@ ExerciseStrategy
    -- ^currentState
   clone
    ->std::auto_ptr< ExerciseStrategy< State > >
- -v-
- -e-

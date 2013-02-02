@@ -1,7 +1,6 @@
 DiscreteAveragingAsianOption::arguments
  -- |Extra arguments for single-asset discrete-average Asian option.
 
- -f-
  -v-
   averageType
    ::Average::Type
@@ -11,11 +10,8 @@ DiscreteAveragingAsianOption::arguments
    ::Size
   fixingDates
    ::std::vector< Date >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

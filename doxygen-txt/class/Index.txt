@@ -5,20 +5,20 @@ Index
  -f-
   ~Index
    ->
-  -- Returns the name of the index.
-  -- WarningThis method is used for output and comparison between indexes. It is not meant to be used for writing switch-on-type code.
+  -- |Returns the name of the index.
+  -- |WarningThis method is used for output and comparison between indexes. It is not meant to be used for writing switch-on-type code.
   name
    ->std::string
-  -- returns the calendar defining valid fixing dates
+  -- |returns the calendar defining valid fixing dates
   fixingCalendar
    ->Calendar
-  -- returns TRUE if the fixing date is a valid one
+  -- |returns TRUE if the fixing date is a valid one
   isValidFixingDate
    ->bool
    ::const Date &
    -- ^fixingDate
-  -- returns the fixing at the given date
-  -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
+  -- |returns the fixing at the given date
+  -- |the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
   fixing
    ->Real
    ::const Date &
@@ -26,11 +26,11 @@ Index
    ::bool
    =false
    -- ^forecastTodaysFixing
-  -- returns the fixing TimeSeries
+  -- |returns the fixing TimeSeries
   timeSeries
    ->const TimeSeries< Real > &
-  -- stores the historical fixing at the given date
-  -- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
+  -- |stores the historical fixing at the given date
+  -- |the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
   addFixing
    ->void
    ::const Date &
@@ -40,8 +40,8 @@ Index
    ::bool
    =false
    -- ^forceOverwrite
-  -- stores historical fixings from a TimeSeries
-  -- the dates in the TimeSeries must be the actual calendar dates of the fixings; no settlement days must be used.
+  -- |stores historical fixings from a TimeSeries
+  -- |the dates in the TimeSeries must be the actual calendar dates of the fixings; no settlement days must be used.
   addFixings
    ->void
    ::const TimeSeries< Real > &
@@ -49,8 +49,8 @@ Index
    ::bool
    =false
    -- ^forceOverwrite
-  -- stores historical fixings at the given dates
-  -- the dates passed as arguments must be the actual calendar dates of the fixings; no settlement days must be used.
+  -- |stores historical fixings at the given dates
+  -- |the dates passed as arguments must be the actual calendar dates of the fixings; no settlement days must be used.
   addFixings
    ->void
    ::DateIterator
@@ -62,8 +62,6 @@ Index
    ::bool
    =false
    -- ^forceOverwrite
-  -- clears all stored historical fixings
+  -- |clears all stored historical fixings
   clearFixings
    ->void
- -v-
- -e-

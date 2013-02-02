@@ -5,5 +5,3 @@ RONCurrency
  -f-
   RONCurrency
    ->
- -v-
- -e-

@@ -1,7 +1,7 @@
 MixedLinearKrugerCubic
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   MixedLinearKrugerCubic
    ->
    ::const I1 &
@@ -12,5 +12,3 @@ MixedLinearKrugerCubic
    -- ^yBegin
    ::Size
    -- ^n
- -v-
- -e-

@@ -27,5 +27,3 @@ PdeConstantCoeff
    -- ^
    ::Real
    -- ^
- -v-
- -e-

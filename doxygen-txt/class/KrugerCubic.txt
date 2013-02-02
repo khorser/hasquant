@@ -1,7 +1,7 @@
 KrugerCubic
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   KrugerCubic
    ->
    ::const I1 &
@@ -10,5 +10,3 @@ KrugerCubic
    -- ^xEnd
    ::const I2 &
    -- ^yBegin
- -v-
- -e-

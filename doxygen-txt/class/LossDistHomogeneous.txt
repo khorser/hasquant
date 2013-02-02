@@ -26,5 +26,3 @@ LossDistHomogeneous
    ->std::vector< Real >
   excessProbability
    ->std::vector< Real >
- -v-
- -e-

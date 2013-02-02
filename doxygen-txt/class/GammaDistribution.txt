@@ -9,5 +9,3 @@ GammaDistribution
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

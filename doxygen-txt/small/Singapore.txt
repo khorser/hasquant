@@ -2,8 +2,6 @@ Singapore
  -- |Singapore calendars
  -- |Holidays for the Singapore exchange (data from http://www.simex.com.sg): Saturdays Sundays New Year's day, January 1st Good Friday Labour Day, May 1st National Day, August 9th Christmas, December 25th Other holidays for which no rule is given (data available for 2004-2010 only:) Chinese New Year Hari Raya Haji Vesak Poya Day Deepavali Diwali Hari Raya Puasa
 
- -f-
- -v-
  -e-
   Market
    SGX
@@ -14,5 +12,3 @@ Singapore
    ::Market
    =SGX
    -- ^m
- -v-
- -e-

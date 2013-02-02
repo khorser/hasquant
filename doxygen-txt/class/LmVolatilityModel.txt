@@ -45,5 +45,3 @@ LmVolatilityModel
    ::const Array &
    =Null< Array >()
    -- ^x
- -v-
- -e-

@@ -19,7 +19,7 @@ DefaultType
    ->Restructuring::Type
   isRestructuring
    ->bool
-  -- Returns true if one or a set of event types is within this one and as such will be recognised as a trigger. Not the same as equality.Notice that these methods do not include any event logical hierarchy. The match is in a strict sense. If event B is contained in (implied by) event A this would not send a match. This policies should be implemented at the CreditEvent class, which is polymorphic.
+  -- |Returns true if one or a set of event types is within this one and as such will be recognised as a trigger. Not the same as equality.Notice that these methods do not include any event logical hierarchy. The match is in a strict sense. If event B is contained in (implied by) event A this would not send a match. This policies should be implemented at the CreditEvent class, which is polymorphic.
   containsDefaultType
    ->bool
    ::AtomicDefault::Type
@@ -28,5 +28,3 @@ DefaultType
    ->bool
    ::Restructuring::Type
    -- ^resType
- -v-
- -e-

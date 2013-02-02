@@ -1,5 +1,1 @@
 detail::Int2Type< 15 >
-
- -f-
- -v-
- -e-

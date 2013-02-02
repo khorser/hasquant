@@ -24,5 +24,3 @@ AbcdVol
    -- ^initialRates
    ::const std::vector< Spread > &
    -- ^displacements
- -v-
- -e-

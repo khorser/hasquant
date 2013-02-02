@@ -6,12 +6,8 @@ LastFixingQuote
    ->const boost::shared_ptr< Index > &
   referenceDate
    ->Date
- -v-
- -e-
  -f-
   LastFixingQuote
    ->
    ::const boost::shared_ptr< Index > &
    -- ^index
- -v-
- -e-

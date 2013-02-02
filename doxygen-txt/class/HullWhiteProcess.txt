@@ -10,8 +10,6 @@ HullWhiteProcess
    ->Real
    ::Time
    -- ^t
- -v-
- -e-
  -f-
   HullWhiteProcess
    ->
@@ -21,5 +19,3 @@ HullWhiteProcess
    -- ^a
    ::Real
    -- ^sigma
- -v-
- -e-

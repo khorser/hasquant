@@ -16,5 +16,3 @@ BootstrapError
    -- ^guess
   helper
    ->const boost::shared_ptr< typename Traits::helper > &
- -v-
- -e-

@@ -25,5 +25,3 @@ quadratic
    -- ^x
    ::Real &
    -- ^y
- -v-
- -e-

@@ -21,13 +21,9 @@ ExerciseAdapter
    -- ^
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   exerciseValue
    ->const MarketModelExerciseValue &
- -v-
- -e-
  -f-
   ExerciseAdapter
    ->
@@ -36,5 +32,3 @@ ExerciseAdapter
    ::Size
    =1
    -- ^numberOfProducts
- -v-
- -e-

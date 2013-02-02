@@ -49,5 +49,3 @@ FdmHestonSolver
    -- ^s
    ::Real
    -- ^v
- -v-
- -e-

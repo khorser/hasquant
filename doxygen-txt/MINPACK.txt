@@ -1,9 +1,6 @@
 MINPACK
 
  -f-
- -v-
- -e-
- -f-
   lmdif
    ->void
    ::int
@@ -96,5 +93,3 @@ MINPACK
    -- ^acnorm
    ::double *
    -- ^wa
- -v-
- -e-

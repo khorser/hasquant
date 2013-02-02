@@ -25,5 +25,3 @@ ExponentialForwardCorrelation
    ->const std::vector< Matrix > &
   numberOfRates
    ->Size
- -v-
- -e-

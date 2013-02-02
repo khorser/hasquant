@@ -26,14 +26,12 @@ CPICashFlow
    ::const Frequency &
    =NoFrequency
    -- ^frequency
-  -- value used on base date
-  -- This does not have to agree with index on that date.
+  -- |value used on base date
+  -- |This does not have to agree with index on that date.
   baseFixing
    ->Real
-  -- do you want linear/constant/as-index interpolation of future data?
+  -- |do you want linear/constant/as-index interpolation of future data?
   interpolation
    ->CPI::InterpolationType
   frequency
    ->Frequency
- -v-
- -e-

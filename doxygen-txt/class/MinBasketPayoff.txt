@@ -9,5 +9,3 @@ MinBasketPayoff
    ->Real
    ::const Array &
    -- ^a
- -v-
- -e-

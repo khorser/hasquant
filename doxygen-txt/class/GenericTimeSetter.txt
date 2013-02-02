@@ -13,5 +13,3 @@ GenericTimeSetter
    -- ^t
    ::TridiagonalOperator &
    -- ^L
- -v-
- -e-

@@ -12,5 +12,3 @@ ExtendedJarrowRudd
    -- ^steps
    ::Real
    -- ^strike
- -v-
- -e-

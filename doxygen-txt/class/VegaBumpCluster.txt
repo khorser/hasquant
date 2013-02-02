@@ -35,5 +35,3 @@ VegaBumpCluster
    ->Size
   stepEnd
    ->Size
- -v-
- -e-

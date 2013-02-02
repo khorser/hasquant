@@ -14,5 +14,3 @@ FDAmericanCondition
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

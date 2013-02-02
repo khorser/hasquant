@@ -17,5 +17,3 @@ ImpliedSpotHelper
    ->Real
    ::Real
    -- ^spot
- -v-
- -e-

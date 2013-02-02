@@ -11,5 +11,3 @@ CliquetOption
    -- ^maturity
    ::const std::vector< Date > &
    -- ^resetDates
- -v-
- -e-

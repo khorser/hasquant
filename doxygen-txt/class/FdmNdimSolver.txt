@@ -1,9 +1,6 @@
 FdmNdimSolver
 
  -f-
- -v-
- -e-
- -f-
   FdmNdimSolver
    ->
    ::const FdmSolverDesc &
@@ -30,8 +27,6 @@ FdmNdimSolver
    -- ^x
    ::Real
    -- ^value
- -v-
- -e-
  -f-
   setValue
    ->void
@@ -41,5 +36,3 @@ FdmNdimSolver
    -- ^x
    ::Real
    -- ^value
- -v-
- -e-

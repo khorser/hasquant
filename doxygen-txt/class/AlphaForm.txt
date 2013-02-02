@@ -11,5 +11,3 @@ AlphaForm
    ->void
    ::Real
    -- ^alpha
- -v-
- -e-

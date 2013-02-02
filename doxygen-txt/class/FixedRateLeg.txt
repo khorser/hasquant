@@ -60,5 +60,3 @@ FixedRateLeg
    -- ^
   operator Leg
    ->
- -v-
- -e-

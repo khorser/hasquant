@@ -1,12 +1,10 @@
 detail::sequence_holder
 
- -f-
  -v-
   begin
    ::InputIterator
   end
    ::InputIterator
- -e-
  -f-
   sequence_holder
    ->
@@ -14,5 +12,3 @@ detail::sequence_holder
    -- ^begin
    ::InputIterator
    -- ^end
- -v-
- -e-

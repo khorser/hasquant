@@ -18,5 +18,3 @@ MarketModelPathwiseDiscounter
    -- ^currentStep
    ::std::vector< Real > &
    -- ^factors
- -v-
- -e-

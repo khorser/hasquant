@@ -1,7 +1,7 @@
 StudentRecursiveCdoEngine
 
  -f-
-  -- quote constructor.
+  -- |quote constructor.
   StudentRecursiveCdoEngine
    ->
    ::const Handle< Quote > &
@@ -22,5 +22,3 @@ StudentRecursiveCdoEngine
    ::Size
    =50
    -- ^steps
- -v-
- -e-

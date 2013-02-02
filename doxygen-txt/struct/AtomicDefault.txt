@@ -2,8 +2,6 @@ AtomicDefault
  -- |Atomic (single contractual event) default events.
  -- |Default types defined as enum to allow easy aggregation of types. Theres an event algebra logic by default provided by DefaultType. If your new type requires more sofisticated test you need to derive from it as in FailureToPay
 
- -f-
- -v-
  -e-
   Type
    Restructuring

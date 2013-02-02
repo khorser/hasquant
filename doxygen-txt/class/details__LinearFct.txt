@@ -9,5 +9,3 @@ details::LinearFct
    ->Real
    ::const Container &
    -- ^x
- -v-
- -e-

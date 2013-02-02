@@ -26,5 +26,3 @@ DoubleStickyRatchetPayoff
    -- ^initialValue2
    ::Real
    -- ^accrualFactor
- -v-
- -e-

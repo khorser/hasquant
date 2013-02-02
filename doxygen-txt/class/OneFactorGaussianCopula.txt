@@ -17,5 +17,3 @@ OneFactorGaussianCopula
    ->Real
    ::Real
    -- ^y
- -v-
- -e-

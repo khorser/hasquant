@@ -2,9 +2,6 @@ MCPathBasketEngine
  -- |Pricing engine for path dependent basket options using.
 
  -f-
- -v-
- -e-
- -f-
   MCPathBasketEngine
    ->
    ::const boost::shared_ptr< StochasticProcessArray > &
@@ -27,5 +24,3 @@ MCPathBasketEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

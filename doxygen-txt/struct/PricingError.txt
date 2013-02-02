@@ -1,14 +1,11 @@
 PricingError
 
- -f-
- -v-
  -e-
   Level
    Info
    Warning
    Error
    Fatal
- -f-
  -v-
   errorLevel
    ::Level
@@ -18,7 +15,6 @@ PricingError
    ::std::string
   detail
    ::std::string
- -e-
  -f-
   PricingError
    ->
@@ -28,5 +24,3 @@ PricingError
    -- ^error
    ::const std::string &
    -- ^detail
- -v-
- -e-

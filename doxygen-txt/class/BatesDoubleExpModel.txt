@@ -25,5 +25,3 @@ BatesDoubleExpModel
    ->Real
   lambda
    ->Real
- -v-
- -e-

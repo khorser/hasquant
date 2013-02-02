@@ -13,5 +13,3 @@ EuropeanHestonPathPricer
    ->Real
    ::const MultiPath &
    -- ^Multipath
- -v-
- -e-

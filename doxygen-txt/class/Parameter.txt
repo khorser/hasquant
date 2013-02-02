@@ -24,5 +24,3 @@ Parameter
    -- ^t
   implementation
    ->const boost::shared_ptr< Impl > &
- -v-
- -e-

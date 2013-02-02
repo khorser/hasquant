@@ -7,5 +7,3 @@ EuropeanExercise
    ->
    ::const Date &
    -- ^date
- -v-
- -e-

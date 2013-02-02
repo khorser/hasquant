@@ -33,5 +33,3 @@ Garch11
    ->void
    ::const TimeSeries< Volatility > &
    -- ^quoteSeries
- -v-
- -e-

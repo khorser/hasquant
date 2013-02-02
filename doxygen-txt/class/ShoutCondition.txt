@@ -27,5 +27,3 @@ ShoutCondition
    -- ^a
    ::Time
    -- ^t
- -v-
- -e-

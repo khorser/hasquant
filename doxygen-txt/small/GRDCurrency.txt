@@ -5,5 +5,3 @@ GRDCurrency
  -f-
   GRDCurrency
    ->
- -v-
- -e-

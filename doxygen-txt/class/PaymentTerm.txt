@@ -1,7 +1,7 @@
 PaymentTerm
 
  -f-
-  -- name, e.g, "Pricing end + 5 days"
+  -- |name, e.g, "Pricing end + 5 days"
   name
    ->const std::string &
   eventType
@@ -12,10 +12,6 @@ PaymentTerm
    ->const Calendar &
   empty
    ->bool
- -v-
- -e-
- -f-
- -v-
  -e-
   EventType
    TradeDate
@@ -37,8 +33,6 @@ PaymentTerm
    ->Date
    ::const Date &
    -- ^date
- -v-
- -e-
  -f-
   operator==
    ->bool
@@ -58,5 +52,3 @@ PaymentTerm
    -- ^
    ::const PaymentTerm &
    -- ^
- -v-
- -e-

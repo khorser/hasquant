@@ -27,5 +27,3 @@ RatePseudoRootJacobianNumerical
    -- ^gaussians
    ::Matrix &
    -- ^B
- -v-
- -e-

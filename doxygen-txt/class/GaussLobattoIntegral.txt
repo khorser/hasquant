@@ -15,5 +15,3 @@ GaussLobattoIntegral
    ::bool
    =true
    -- ^useConvergenceEstimate
- -v-
- -e-

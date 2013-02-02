@@ -5,5 +5,3 @@ DKKCurrency
  -f-
   DKKCurrency
    ->
- -v-
- -e-

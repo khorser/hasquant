@@ -3,7 +3,7 @@ CovarianceDecomposition
  -- |Extracts the correlation matrix and the vector of variances out of the input covariance matrix.Note that only the lower symmetric part of the covariance matrix is used.The covariance matrix must be symmetric. Testscross checked with getCovariance
 
  -f-
-  -- covarianceMatrix must be symmetric
+  -- |covarianceMatrix must be symmetric
   CovarianceDecomposition
    ->
    ::const Matrix &
@@ -11,14 +11,12 @@ CovarianceDecomposition
    ::Real
    =1.0e-12
    -- ^tolerance
-  -- returns the variances Array
+  -- |returns the variances Array
   variances
    ->const Array &
-  -- returns the standard deviations Array
+  -- |returns the standard deviations Array
   standardDeviations
    ->const Array &
-  -- returns the correlation matrix
+  -- |returns the correlation matrix
   correlationMatrix
    ->const Matrix &
- -v-
- -e-

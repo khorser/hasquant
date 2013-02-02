@@ -16,5 +16,3 @@ FDDividendAmericanEngine
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

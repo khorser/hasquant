@@ -44,5 +44,3 @@ CPIBond
    ->const boost::shared_ptr< ZeroInflationIndex > &
   observationInterpolation
    ->CPI::InterpolationType
- -v-
- -e-

@@ -23,5 +23,3 @@ GeneralizedHullWhite::Dynamics
    -- ^t
    ::Real
    -- ^x
- -v-
- -e-

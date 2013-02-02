@@ -3,7 +3,7 @@ NonLinearLeastSquare
  -- |Using a given optimization algorithm (default is conjugate gradient),\[ min \{ r(x) : x in R^n \} \] where \form#229 is the Euclidean norm of \form#230@_fakenl for some vector-valued function \form#37 from $ R^n $ to $ R^m $, \[ f = (f_1, ..., f_m) \] with $ f_i(x) = b_i - \phi(x,t_i) $ where $ b $ is the vector of target data and $ phi $ is a scalar function.Assuming the differentiability of $ f $, the gradient of $ r $ is defined by \[ grad r(x) = f'(x)^t.f(x) \]
 
  -f-
-  -- Default constructor.
+  -- |Default constructor.
   NonLinearLeastSquare
    ->
    ::Constraint &
@@ -14,7 +14,7 @@ NonLinearLeastSquare
    ::Size
    =100
    -- ^maxiter
-  -- Default constructor.
+  -- |Default constructor.
   NonLinearLeastSquare
    ->
    ::Constraint &
@@ -25,10 +25,10 @@ NonLinearLeastSquare
    -- ^maxiter
    ::boost::shared_ptr< OptimizationMethod >
    -- ^om
-  -- Destructor.
+  -- |Destructor.
   ~NonLinearLeastSquare
    ->
-  -- Solve least square problem using numerix solver.
+  -- |Solve least square problem using numerix solver.
   perform
    ->Array &
    ::LeastSquareProblem &
@@ -37,20 +37,18 @@ NonLinearLeastSquare
    ->void
    ::const Array &
    -- ^initialValue
-  -- return the results
+  -- |return the results
   results
    ->Array &
-  -- return the least square residual norm
+  -- |return the least square residual norm
   residualNorm
    ->Real
-  -- return last function value
+  -- |return last function value
   lastValue
    ->Real
-  -- return exit flag
+  -- |return exit flag
   exitFlag
    ->Integer
-  -- return the performed number of iterations
+  -- |return the performed number of iterations
   iterationsNumber
    ->Integer
- -v-
- -e-

@@ -21,5 +21,3 @@ FdmBermudanStepCondition
    -- ^t
   exerciseTimes
    ->const std::vector< Time > &
- -v-
- -e-

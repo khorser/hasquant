@@ -14,5 +14,3 @@ GaussianRandomDefaultModel
    -- ^accuracy
    ::long
    -- ^seed
- -v-
- -e-

@@ -43,5 +43,3 @@ CappedFlooredIborCoupon
    ->void
    ::AcyclicVisitor &
    -- ^v
- -v-
- -e-

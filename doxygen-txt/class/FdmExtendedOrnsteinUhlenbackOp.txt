@@ -50,5 +50,3 @@ FdmExtendedOrnsteinUhlenbackOp
    -- ^r
    ::Real
    -- ^s
- -v-
- -e-

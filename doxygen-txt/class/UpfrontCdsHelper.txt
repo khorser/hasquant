@@ -2,7 +2,7 @@ UpfrontCdsHelper
  -- |Upfront-quoted CDS hazard rate bootstrap helper.
 
  -f-
-  -- the upfront must be quoted in fractional units.
+  -- |the upfront must be quoted in fractional units.
   UpfrontCdsHelper
    ->
    ::const Handle< Quote > &
@@ -36,7 +36,7 @@ UpfrontCdsHelper
    ::bool
    =true
    -- ^paysAtDefaultTime
-  -- the upfront must be quoted in fractional units.
+  -- |the upfront must be quoted in fractional units.
   UpfrontCdsHelper
    ->
    ::Rate
@@ -70,5 +70,3 @@ UpfrontCdsHelper
    ::bool
    =true
    -- ^paysAtDefaultTime
- -v-
- -e-

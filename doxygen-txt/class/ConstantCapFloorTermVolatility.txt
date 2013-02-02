@@ -2,7 +2,7 @@ ConstantCapFloorTermVolatility
  -- |Constant caplet volatility, no time-strike dependence.
 
  -f-
-  -- floating reference date, floating market data
+  -- |floating reference date, floating market data
   ConstantCapFloorTermVolatility
    ->
    ::Natural
@@ -15,7 +15,7 @@ ConstantCapFloorTermVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dc
-  -- fixed reference date, floating market data
+  -- |fixed reference date, floating market data
   ConstantCapFloorTermVolatility
    ->
    ::const Date &
@@ -28,7 +28,7 @@ ConstantCapFloorTermVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dc
-  -- floating reference date, fixed market data
+  -- |floating reference date, fixed market data
   ConstantCapFloorTermVolatility
    ->
    ::Natural
@@ -41,7 +41,7 @@ ConstantCapFloorTermVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dc
-  -- fixed reference date, fixed market data
+  -- |fixed reference date, fixed market data
   ConstantCapFloorTermVolatility
    ->
    ::const Date &
@@ -54,5 +54,3 @@ ConstantCapFloorTermVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dc
- -v-
- -e-

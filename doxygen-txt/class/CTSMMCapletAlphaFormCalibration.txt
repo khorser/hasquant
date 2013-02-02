@@ -28,8 +28,6 @@ CTSMMCapletAlphaFormCalibration
    -- ^parametricForm
   alpha
    ->const std::vector< Real > &
- -v-
- -e-
  -f-
   capletAlphaFormCalibration
    ->Natural
@@ -69,5 +67,3 @@ CTSMMCapletAlphaFormCalibration
    -- ^b
    ::std::vector< Matrix > &
    -- ^swapCovariancePseudoRoots
- -v-
- -e-

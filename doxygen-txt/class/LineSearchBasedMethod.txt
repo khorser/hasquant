@@ -14,5 +14,3 @@ LineSearchBasedMethod
    -- ^P
    ::const EndCriteria &
    -- ^endCriteria
- -v-
- -e-

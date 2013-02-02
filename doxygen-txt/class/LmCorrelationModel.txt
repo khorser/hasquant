@@ -47,5 +47,3 @@ LmCorrelationModel
    -- ^x
   isTimeIndependent
    ->bool
- -v-
- -e-

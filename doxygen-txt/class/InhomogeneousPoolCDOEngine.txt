@@ -8,5 +8,3 @@ InhomogeneousPoolCDOEngine
    -- ^copula
    ::Size
    -- ^nBuckets
- -v-
- -e-

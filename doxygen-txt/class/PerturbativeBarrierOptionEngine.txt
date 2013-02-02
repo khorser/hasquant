@@ -13,5 +13,3 @@ PerturbativeBarrierOptionEngine
    ::bool
    =false
    -- ^zeroGamma
- -v-
- -e-

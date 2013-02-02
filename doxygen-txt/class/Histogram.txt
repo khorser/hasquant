@@ -31,8 +31,6 @@ Histogram
    -- ^breaks_begin
    ::U
    -- ^breaks_end
- -v-
- -e-
  -f-
   bins
    ->Size
@@ -42,8 +40,6 @@ Histogram
    ->Algorithm
   empty
    ->bool
- -v-
- -e-
  -f-
   counts
    ->Size
@@ -53,10 +49,6 @@ Histogram
    ->Real
    ::Size
    -- ^i
- -v-
- -e-
- -f-
- -v-
  -e-
   Algorithm
    None

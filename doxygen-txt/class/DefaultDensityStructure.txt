@@ -45,5 +45,3 @@ DefaultDensityStructure
    ::const std::vector< Date > &
    =std::vector< Date >()
    -- ^jumpDates
- -v-
- -e-

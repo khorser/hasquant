@@ -8,22 +8,20 @@ OneFactorModel::ShortRateDynamics
    -- ^process
   ~ShortRateDynamics
    ->
-  -- Compute state variable from short rate.
+  -- |Compute state variable from short rate.
   variable
    ->Real
    ::Time
    -- ^t
    ::Rate
    -- ^r
-  -- Compute short rate from state variable.
+  -- |Compute short rate from state variable.
   shortRate
    ->Rate
    ::Time
    -- ^t
    ::Real
    -- ^variable
-  -- Returns the risk-neutral dynamics of the state variable.
+  -- |Returns the risk-neutral dynamics of the state variable.
   process
    ->const boost::shared_ptr< StochasticProcess1D > &
- -v-
- -e-

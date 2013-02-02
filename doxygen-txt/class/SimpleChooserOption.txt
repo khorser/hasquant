@@ -11,5 +11,3 @@ SimpleChooserOption
    -- ^strike
    ::const boost::shared_ptr< Exercise > &
    -- ^exercise
- -v-
- -e-

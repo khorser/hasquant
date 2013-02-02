@@ -1,12 +1,10 @@
 detail::Data< std::vector< Real >, EmptyArg >
 
- -f-
  -v-
   first
    ::std::vector< Real >
   second
    ::EmptyArg
- -e-
  -f-
   Data
    ->
@@ -34,5 +32,3 @@ detail::Data< std::vector< Real >, EmptyArg >
    ->Real &
    ::Size
    -- ^n
- -v-
- -e-

@@ -5,5 +5,3 @@ NPRCurrency
  -f-
   NPRCurrency
    ->
- -v-
- -e-

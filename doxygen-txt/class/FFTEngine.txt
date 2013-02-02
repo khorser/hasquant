@@ -19,5 +19,3 @@ FFTEngine
    -- ^optionList
   clone
    ->std::auto_ptr< FFTEngine >
- -v-
- -e-

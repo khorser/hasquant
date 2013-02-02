@@ -14,5 +14,3 @@ RiskyAssetSwapOption
    -- ^marketSpread
    ::Volatility
    -- ^spreadVolatility
- -v-
- -e-

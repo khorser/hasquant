@@ -19,8 +19,6 @@ MultiStepNothing
    -- ^
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   MultiStepNothing
    ->
@@ -32,5 +30,3 @@ MultiStepNothing
    ::Size
    =0
    -- ^doneIndex
- -v-
- -e-

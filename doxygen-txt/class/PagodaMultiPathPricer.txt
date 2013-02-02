@@ -13,5 +13,3 @@ PagodaMultiPathPricer
    ->Real
    ::const MultiPath &
    -- ^multiPath
- -v-
- -e-

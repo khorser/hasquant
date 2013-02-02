@@ -15,5 +15,3 @@ TreeLattice1D
    -- ^i
    ::Size
    -- ^index
- -v-
- -e-

@@ -3,9 +3,6 @@ MCEuropeanEngine
  -- |Teststhe correctness of the returned value is tested by checking it against analytic results.
 
  -f-
- -v-
- -e-
- -f-
   MCEuropeanEngine
    ->
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
@@ -26,5 +23,3 @@ MCEuropeanEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

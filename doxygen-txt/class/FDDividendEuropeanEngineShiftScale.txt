@@ -14,5 +14,3 @@ FDDividendEuropeanEngineShiftScale
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

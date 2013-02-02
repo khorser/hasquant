@@ -18,5 +18,3 @@ FdmExtOUJumpSolver
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

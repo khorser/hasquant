@@ -40,5 +40,3 @@ FdmBatesSolver
    -- ^s
    ::Real
    -- ^v
- -v-
- -e-

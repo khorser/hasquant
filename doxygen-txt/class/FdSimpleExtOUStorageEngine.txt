@@ -18,5 +18,3 @@ FdSimpleExtOUStorageEngine
    -- ^schemeDesc
   calculate
    ->void
- -v-
- -e-

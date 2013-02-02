@@ -9,5 +9,3 @@ GaussGegenbauerIntegration
    -- ^n
    ::Real
    -- ^lambda
- -v-
- -e-

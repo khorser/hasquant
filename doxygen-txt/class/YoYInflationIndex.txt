@@ -11,8 +11,6 @@ YoYInflationIndex
    ->boost::shared_ptr< YoYInflationIndex >
    ::const Handle< YoYInflationTermStructure > &
    -- ^h
- -v-
- -e-
  -f-
   YoYInflationIndex
    ->
@@ -35,5 +33,3 @@ YoYInflationIndex
    ::const Handle< YoYInflationTermStructure > &
    =Handle< YoYInflationTermStructure >()
    -- ^ts
- -v-
- -e-

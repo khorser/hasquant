@@ -11,5 +11,3 @@ BernsteinPolynomial
    -- ^n
    ::Real
    -- ^x
- -v-
- -e-

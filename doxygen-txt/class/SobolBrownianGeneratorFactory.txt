@@ -17,5 +17,3 @@ SobolBrownianGeneratorFactory
    -- ^factors
    ::Size
    -- ^steps
- -v-
- -e-

@@ -6,5 +6,3 @@ Stock
    ->
    ::const Handle< Quote > &
    -- ^quote
- -v-
- -e-

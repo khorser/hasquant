@@ -8,5 +8,3 @@ BinomialConvertibleEngine
    -- ^process
    ::Size
    -- ^timeSteps
- -v-
- -e-

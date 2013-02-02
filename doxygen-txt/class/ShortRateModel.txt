@@ -10,5 +10,3 @@ ShortRateModel
    ->boost::shared_ptr< Lattice >
    ::const TimeGrid &
    -- ^
- -v-
- -e-

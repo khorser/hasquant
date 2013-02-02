@@ -27,10 +27,6 @@ InflationCouponPricer
    ->void
    ::const InflationCoupon &
    -- ^
- -v-
- -e-
  -f-
   ~InflationCouponPricer
    ->
- -v-
- -e-

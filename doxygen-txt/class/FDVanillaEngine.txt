@@ -18,5 +18,3 @@ FDVanillaEngine
    ->
   grid
    ->const Array &
- -v-
- -e-

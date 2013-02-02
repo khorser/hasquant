@@ -8,15 +8,13 @@ BMASwap
    ->Spread
   nominal
    ->Real
-  -- "payer" or "receiver" refer to the BMA leg
+  -- |"payer" or "receiver" refer to the BMA leg
   type
    ->Type
   bmaLeg
    ->const Leg &
   liborLeg
    ->const Leg &
- -v-
- -e-
  -f-
   liborLegBPS
    ->Real
@@ -30,10 +28,6 @@ BMASwap
    ->Real
   bmaLegNPV
    ->Real
- -v-
- -e-
- -f-
- -v-
  -e-
   Type
    Receiver
@@ -61,5 +55,3 @@ BMASwap
    -- ^bmaIndex
    ::const DayCounter &
    -- ^bmaDayCount
- -v-
- -e-

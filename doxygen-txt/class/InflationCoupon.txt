@@ -7,26 +7,22 @@ InflationCoupon
    ->Real
    ::const Handle< YieldTermStructure > &
    -- ^discountingCurve
- -v-
- -e-
  -f-
-  -- yoy inflation index
+  -- |yoy inflation index
   index
    ->const boost::shared_ptr< InflationIndex > &
-  -- how the coupon observes the index
+  -- |how the coupon observes the index
   observationLag
    ->Period
-  -- fixing days
+  -- |fixing days
   fixingDays
    ->Natural
-  -- fixing date
+  -- |fixing date
   fixingDate
    ->Date
-  -- fixing of the underlying index, as observed by the coupon
+  -- |fixing of the underlying index, as observed by the coupon
   indexFixing
    ->Rate
- -v-
- -e-
  -f-
   InflationCoupon
    ->
@@ -58,5 +54,3 @@ InflationCoupon
    -- ^
   pricer
    ->boost::shared_ptr< InflationCouponPricer >
- -v-
- -e-

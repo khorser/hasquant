@@ -2,7 +2,7 @@ PathPayoff
  -- |Abstract base class for path-dependent option payoffs.
 
  -f-
-  -- WarningThis method is used for output and comparison between payoffs. It is not meant to be used for writing switch-on-type code.
+  -- |WarningThis method is used for output and comparison between payoffs. It is not meant to be used for writing switch-on-type code.
   name
    ->std::string
   description
@@ -21,17 +21,11 @@ PathPayoff
    -- ^states
   basisSystemDimension
    ->Size
- -v-
- -e-
  -f-
   accept
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-
  -f-
   ~PathPayoff
    ->
- -v-
- -e-

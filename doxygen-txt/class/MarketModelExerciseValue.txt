@@ -23,5 +23,3 @@ MarketModelExerciseValue
    -- ^
   clone
    ->std::auto_ptr< MarketModelExerciseValue >
- -v-
- -e-

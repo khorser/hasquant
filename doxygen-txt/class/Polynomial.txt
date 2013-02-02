@@ -14,5 +14,3 @@ Polynomial
    -- ^yEnd
    ::const M &
    -- ^z
- -v-
- -e-

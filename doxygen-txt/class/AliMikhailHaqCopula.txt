@@ -12,5 +12,3 @@ AliMikhailHaqCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

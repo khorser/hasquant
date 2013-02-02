@@ -13,5 +13,3 @@ DiscountingBondEngine
    ->void
   discountCurve
    ->Handle< YieldTermStructure >
- -v-
- -e-

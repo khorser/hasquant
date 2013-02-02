@@ -5,5 +5,3 @@ ILSCurrency
  -f-
   ILSCurrency
    ->
- -v-
- -e-

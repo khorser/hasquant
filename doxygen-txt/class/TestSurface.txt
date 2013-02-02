@@ -9,5 +9,3 @@ TestSurface
    -- ^y
   domain
    ->boost::shared_ptr< Domain >
- -v-
- -e-

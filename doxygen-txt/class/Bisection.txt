@@ -9,5 +9,3 @@ Bisection
    -- ^f
    ::Real
    -- ^xAccuracy
- -v-
- -e-

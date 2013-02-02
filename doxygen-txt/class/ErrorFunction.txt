@@ -9,5 +9,3 @@ ErrorFunction
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

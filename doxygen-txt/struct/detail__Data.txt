@@ -1,12 +1,10 @@
 detail::Data
 
- -f-
  -v-
   first
    ::X
   second
    ::Y
- -e-
  -f-
   Data
    ->
@@ -22,5 +20,3 @@ detail::Data
    ->void
    ::Data< X, Y > &
    -- ^d
- -v-
- -e-

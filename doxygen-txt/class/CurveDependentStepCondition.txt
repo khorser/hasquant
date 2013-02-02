@@ -7,5 +7,3 @@ CurveDependentStepCondition
    -- ^a
    ::Time
    -- ^
- -v-
- -e-

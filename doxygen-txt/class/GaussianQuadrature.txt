@@ -19,5 +19,3 @@ GaussianQuadrature
    ->const Array &
   x
    ->const Array &
- -v-
- -e-

@@ -5,5 +5,3 @@ fourth_power
    ->T
    ::const T &
    -- ^t
- -v-
- -e-

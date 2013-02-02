@@ -2,30 +2,24 @@ UnitOfMeasure
  -- |Unit of measure specification
 
  -f-
-  -- name, e.g, "Barrels"
+  -- |name, e.g, "Barrels"
   name
    ->const std::string &
-  -- code, e.g, "BBL", "MT"
+  -- |code, e.g, "BBL", "MT"
   code
    ->const std::string &
-  -- unit type (mass, volume...)
+  -- |unit type (mass, volume...)
   unitType
    ->Type
- -v-
- -e-
  -f-
-  -- is this a usable instance?
+  -- |is this a usable instance?
   empty
    ->bool
   rounding
    ->const Rounding &
-  -- unit used for triangulation when required
+  -- |unit used for triangulation when required
   triangulationUnitOfMeasure
    ->const UnitOfMeasure &
- -v-
- -e-
- -f-
- -v-
  -e-
   Type
    Mass
@@ -33,8 +27,8 @@ UnitOfMeasure
    Energy
    Quantity
  -f-
-  -- default constructor
-  -- Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used.
+  -- |default constructor
+  -- |Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used.
   UnitOfMeasure
    ->
   UnitOfMeasure
@@ -45,8 +39,6 @@ UnitOfMeasure
    -- ^code
    ::Type
    -- ^unitType
- -v-
- -e-
  -f-
   operator==
    ->bool
@@ -66,5 +58,3 @@ UnitOfMeasure
    -- ^
    ::const UnitOfMeasure &
    -- ^
- -v-
- -e-

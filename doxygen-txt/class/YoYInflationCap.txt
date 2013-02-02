@@ -8,5 +8,3 @@ YoYInflationCap
    -- ^yoyLeg
    ::const std::vector< Rate > &
    -- ^exerciseRates
- -v-
- -e-

@@ -12,5 +12,3 @@ ExtendedAdditiveEQPBinomialTree
    -- ^steps
    ::Real
    -- ^strike
- -v-
- -e-

@@ -5,5 +5,3 @@ SimpleDayCounter
  -f-
   SimpleDayCounter
    ->
- -v-
- -e-

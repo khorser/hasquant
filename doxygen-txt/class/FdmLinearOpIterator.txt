@@ -36,5 +36,3 @@ FdmLinearOpIterator
    ->void
    ::FdmLinearOpIterator &
    -- ^iter
- -v-
- -e-

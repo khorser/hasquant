@@ -3,7 +3,7 @@ BlackVolatilityTermStructure
  -- |This abstract class acts as an adapter to BlackVolTermStructure allowing the programmer to implement only the blackVolImpl(Time, Real, bool) method in derived classes.Volatility are assumed to be expressed on an annual basis.
 
  -f-
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   BlackVolatilityTermStructure
    ->
    ::const Calendar &
@@ -14,8 +14,8 @@ BlackVolatilityTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- default constructor
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |default constructor
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   BlackVolatilityTermStructure
    ->
    ::BusinessDayConvention
@@ -24,7 +24,7 @@ BlackVolatilityTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   BlackVolatilityTermStructure
    ->
    ::const Date &
@@ -38,7 +38,7 @@ BlackVolatilityTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   BlackVolatilityTermStructure
    ->
    ::Natural
@@ -51,5 +51,3 @@ BlackVolatilityTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-

@@ -5,5 +5,3 @@ Norway
  -f-
   Norway
    ->
- -v-
- -e-

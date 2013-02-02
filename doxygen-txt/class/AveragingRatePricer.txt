@@ -3,5 +3,3 @@ AveragingRatePricer
  -f-
   swapletPrice
    ->Real
- -v-
- -e-

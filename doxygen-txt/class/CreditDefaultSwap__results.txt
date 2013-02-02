@@ -1,6 +1,5 @@
 CreditDefaultSwap::results
 
- -f-
  -v-
   fairSpread
    ::Rate
@@ -16,9 +15,6 @@ CreditDefaultSwap::results
    ::Real
   upfrontNPV
    ::Real
- -e-
  -f-
   reset
    ->void
- -v-
- -e-

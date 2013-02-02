@@ -18,5 +18,3 @@ OrthogonalProjections
    -- ^index
   numberValidVectors
    ->Size
- -v-
- -e-

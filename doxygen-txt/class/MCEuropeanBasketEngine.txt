@@ -3,9 +3,6 @@ MCEuropeanBasketEngine
  -- |Teststhe correctness of the returned value is tested by reproducing results available in literature.
 
  -f-
- -v-
- -e-
- -f-
   MCEuropeanBasketEngine
    ->
    ::const boost::shared_ptr< StochasticProcessArray > &
@@ -26,5 +23,3 @@ MCEuropeanBasketEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

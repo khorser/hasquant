@@ -9,5 +9,3 @@ DMinus
    -- ^gridPoints
    ::Real
    -- ^h
- -v-
- -e-

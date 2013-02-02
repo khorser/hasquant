@@ -12,5 +12,3 @@ CompoundOption
    -- ^daughterPayoff
    ::const boost::shared_ptr< Exercise > &
    -- ^daughterExercise
- -v-
- -e-

@@ -2,7 +2,7 @@ LogLinearInterpolation
  -- |log-linear interpolation between discrete points
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   LogLinearInterpolation
    ->
    ::const I1 &
@@ -11,5 +11,3 @@ LogLinearInterpolation
    -- ^xEnd
    ::const I2 &
    -- ^yBegin
- -v-
- -e-

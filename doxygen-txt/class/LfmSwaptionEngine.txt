@@ -8,5 +8,3 @@ LfmSwaptionEngine
    -- ^model
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
- -v-
- -e-

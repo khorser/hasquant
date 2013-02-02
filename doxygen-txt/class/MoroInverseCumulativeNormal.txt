@@ -15,5 +15,3 @@ MoroInverseCumulativeNormal
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

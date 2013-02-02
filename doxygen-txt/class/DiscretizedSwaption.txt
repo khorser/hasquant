@@ -13,5 +13,3 @@ DiscretizedSwaption
    ->void
    ::Size
    -- ^size
- -v-
- -e-

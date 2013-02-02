@@ -25,5 +25,3 @@ SabrVolSurface
    ->std::vector< Volatility >
    ::const Date &
    -- ^
- -v-
- -e-

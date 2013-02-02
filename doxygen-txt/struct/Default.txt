@@ -15,5 +15,3 @@ Default
    -- ^N
   nbEvalutions
    ->Size
- -v-
- -e-

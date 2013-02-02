@@ -11,5 +11,3 @@ SuperFundPayoff
    -- ^secondStrike
   secondStrike
    ->Real
- -v-
- -e-

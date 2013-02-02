@@ -5,5 +5,3 @@ PTECurrency
  -f-
   PTECurrency
    ->
- -v-
- -e-

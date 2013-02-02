@@ -24,5 +24,3 @@ EqualJumpsBinomialTree
    -- ^
    ::Size
    -- ^branch
- -v-
- -e-

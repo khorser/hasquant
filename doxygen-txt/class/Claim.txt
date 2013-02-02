@@ -12,5 +12,3 @@ Claim
    -- ^notional
    ::Real
    -- ^recoveryRate
- -v-
- -e-

@@ -25,5 +25,3 @@ NumericHaganPricer::ConundrumIntegrand
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

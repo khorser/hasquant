@@ -4,8 +4,6 @@ CommodityIndex
  -f-
   name
    ->std::string
- -v-
- -e-
  -f-
   commodityType
    ->const CommodityType &
@@ -29,8 +27,6 @@ CommodityIndex
    -- ^date
   lastQuoteDate
    ->Date
- -v-
- -e-
  -f-
   CommodityIndex
    ->
@@ -64,7 +60,7 @@ CommodityIndex
    -- ^quotes
   clearQuotes
    ->void
-  -- returns TRUE if the quote date is valid
+  -- |returns TRUE if the quote date is valid
   isValidQuoteDate
    ->bool
    ::const Date &
@@ -75,5 +71,3 @@ CommodityIndex
    ->bool
   quotes
    ->const TimeSeries< Real > &
- -v-
- -e-

@@ -16,8 +16,6 @@ Merton76Process
    ->const Handle< Quote > &
   logJumpVolatility
    ->const Handle< Quote > &
- -v-
- -e-
  -f-
   Merton76Process
    ->
@@ -38,5 +36,3 @@ Merton76Process
    ::const boost::shared_ptr< discretization > &
    =boost::shared_ptr< discretization >(new EulerDiscretization)
    -- ^d
- -v-
- -e-

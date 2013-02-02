@@ -2,8 +2,6 @@ CzechRepublic
  -- |Czech calendars.
  -- |Holidays for the Prague stock exchange (see http://www.pse.cz/): Saturdays Sundays New Year's Day, January 1st Easter Monday Labour Day, May 1st Liberation Day, May 8th SS. Cyril and Methodius, July 5th Jan Hus Day, July 6th Czech Statehood Day, September 28th Independence Day, October 28th Struggle for Freedom and Democracy Day, November 17th Christmas Eve, December 24th Christmas, December 25th St. Stephen, December 26th
 
- -f-
- -v-
  -e-
   Market
    PSE
@@ -14,5 +12,3 @@ CzechRepublic
    ::Market
    =PSE
    -- ^m
- -v-
- -e-

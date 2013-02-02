@@ -5,5 +5,3 @@ ParkinsonSigma
    ->
    ::Real
    -- ^y
- -v-
- -e-

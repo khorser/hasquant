@@ -36,5 +36,3 @@ JointCalendar
    ::JointCalendarRule
    =JoinHolidays
    -- ^
- -v-
- -e-

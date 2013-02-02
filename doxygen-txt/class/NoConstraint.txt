@@ -4,5 +4,3 @@ NoConstraint
  -f-
   NoConstraint
    ->
- -v-
- -e-

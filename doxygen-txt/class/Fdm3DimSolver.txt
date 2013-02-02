@@ -27,5 +27,3 @@ Fdm3DimSolver
    -- ^y
    ::Rate
    -- ^z
- -v-
- -e-

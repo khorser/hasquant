@@ -12,5 +12,3 @@ MarketModelCashRebate
    -- ^amounts
    ::Size
    -- ^numberOfProducts
- -v-
- -e-

@@ -1,7 +1,6 @@
 MoreGreeks
  -- |more additional option results
 
- -f-
  -v-
   itmCashProbability
    ::Real
@@ -13,9 +12,6 @@ MoreGreeks
    ::Real
   strikeSensitivity
    ::Real
- -e-
  -f-
   reset
    ->void
- -v-
- -e-

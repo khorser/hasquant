@@ -14,5 +14,3 @@ FDDividendAmericanEngineMerton73
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

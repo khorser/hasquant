@@ -3,9 +3,6 @@ MCVarianceSwapEngine
  -- |as described in Demeterfi, Derman, Kamal & Zou, "A Guide to Volatility and Variance Swaps", 1999Possible enhancementsdefine tolerance of numerical integral and incorporate it in errorEstimateTestsreturned fair variances checked for consistency with implied volatility curve.
 
  -f-
- -v-
- -e-
- -f-
   MCVarianceSwapEngine
    ->
    ::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
@@ -26,5 +23,3 @@ MCVarianceSwapEngine
    -- ^maxSamples
    ::BigNatural
    -- ^seed
- -v-
- -e-

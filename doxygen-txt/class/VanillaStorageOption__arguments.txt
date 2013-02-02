@@ -1,6 +1,5 @@
 VanillaStorageOption::arguments
 
- -f-
  -v-
   capacity
    ::Real
@@ -12,11 +11,8 @@ VanillaStorageOption::arguments
    ::boost::shared_ptr< NullPayoff >
   exercise
    ::boost::shared_ptr< BermudanExercise >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

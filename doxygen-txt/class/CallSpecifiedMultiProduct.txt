@@ -23,8 +23,6 @@ CallSpecifiedMultiProduct
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   CallSpecifiedMultiProduct
    ->
@@ -45,5 +43,3 @@ CallSpecifiedMultiProduct
    ->void
   disableCallability
    ->void
- -v-
- -e-

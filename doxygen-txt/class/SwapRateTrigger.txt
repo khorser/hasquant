@@ -25,5 +25,3 @@ SwapRateTrigger
    -- ^currentState
   clone
    ->std::auto_ptr< ExerciseStrategy< CurveState > >
- -v-
- -e-

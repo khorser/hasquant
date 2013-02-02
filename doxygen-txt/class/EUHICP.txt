@@ -9,5 +9,3 @@ EUHICP
    ::const Handle< ZeroInflationTermStructure > &
    =Handle< ZeroInflationTermStructure >()
    -- ^ts
- -v-
- -e-

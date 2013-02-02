@@ -4,5 +4,3 @@ MCVanillaEngine
  -f-
   calculate
    ->void
- -v-
- -e-

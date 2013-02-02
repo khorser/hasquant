@@ -1,6 +1,5 @@
 VanillaVPPOption::arguments
 
- -f-
  -v-
   heatRate
    ::Real
@@ -18,11 +17,8 @@ VanillaVPPOption::arguments
    ::Real
   initialState
    ::Size
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

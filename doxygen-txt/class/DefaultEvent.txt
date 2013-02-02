@@ -3,7 +3,7 @@ DefaultEvent
  -- |Represents a credit event affecting all bonds with a given \ seniority and currency. It assumes that all such bonds suffer \ the event simultaneously. Some events affect all seniorities and this has to be encoded through a different set of events of the same event type. The event is an actual realization, not a contractual reference, as such it contains only an atomic type.
 
  -f-
-  -- Credit event with optional settlement information. Represents a credit event that has taken place. Realized events are of an atomic type. If the settlement information is given seniorities present are the seniorities/bonds affected by the event.
+  -- |Credit event with optional settlement information. Represents a credit event that has taken place. Realized events are of an atomic type. If the settlement information is given seniorities present are the seniorities/bonds affected by the event.
   DefaultEvent
    ->
    ::const Date &
@@ -20,7 +20,7 @@ DefaultEvent
    ::const std::map< Seniority, Real > &
    =rate_map()
    -- ^recoveryRates
-  -- Use NoSeniority to settle to all seniorities with that recovery. In that case the event is assumed to have affected all seniorities.
+  -- |Use NoSeniority to settle to all seniorities with that recovery. In that case the event is assumed to have affected all seniorities.
   DefaultEvent
    ->
    ::const Date &
@@ -47,26 +47,24 @@ DefaultEvent
    ->const DefaultSettlement &
   defaultType
    ->const DefaultType &
-  -- returns the currency of the bond this event refers to.
+  -- |returns the currency of the bond this event refers to.
   currency
    ->const Currency &
-  -- returns the seniority of the bond that triggered the event.
+  -- |returns the seniority of the bond that triggered the event.
   eventSeniority
    ->Seniority
-  -- returns a value if the event lead to a settlement for the requested seniority. Specializations on the default atomics and recoveries could change the default policy.
+  -- |returns a value if the event lead to a settlement for the requested seniority. Specializations on the default atomics and recoveries could change the default policy.
   recoveryRate
    ->Real
    ::Seniority
    -- ^seniority
-  -- matches the event if this event would trigger a contract related to the requested event type. Notice the contractual event types are not neccesarily atomic. Notice it does not check seniority or currency only event type. typically used from Issuer
+  -- |matches the event if this event would trigger a contract related to the requested event type. Notice the contractual event types are not neccesarily atomic. Notice it does not check seniority or currency only event type. typically used from Issuer
   matchesEventType
    ->bool
    ::const boost::shared_ptr< DefaultType > &
    -- ^contractEvType
-  -- Returns true if this event would trigger a contract with the arguments characteristics.
+  -- |Returns true if this event would trigger a contract with the arguments characteristics.
   matchesDefaultKey
    ->bool
    ::const DefaultProbKey &
    -- ^contractKey
- -v-
- -e-

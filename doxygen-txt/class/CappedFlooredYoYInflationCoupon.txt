@@ -3,20 +3,18 @@ CappedFlooredYoYInflationCoupon
  -- |Essentially a copy of the nominal version but taking a different index and a set of pricers (not just one).The payoff $ P $ of a capped inflation-rate coupon with paysWithin = true is:\[ P = N \times T \times \min(a L + b, C). \] where \form#32 is the notional, \form#45 is the accrual time, \form#46 is the inflation rate, \form#47 is its gearing, \form#48 is the spread, and \form#49 and \form#50 the strikes. The payoff of a floored inflation-rate coupon is: \[ P = N \times T \times \max(a L + b, F). \] The payoff of a collared inflation-rate coupon is: \[ P = N \times T \times \min(\max(a L + b, F), C). \] If paysWithin = false then the inverse is returned (this provides for instrument cap and caplet prices). They can be decomposed in the following manner. Decomposition of a capped floating rate coupon when paysWithin = true: \[ R = \min(a L + b, C) = (a L + b) + \min(C - b - \xi |a| L, 0) \] where $ \xi = sgn(a) $. Then: \[ R = (a L + b) + |a| \min(\frac{C - b}{|a|} - \xi L, 0) \]
 
  -f-
-  -- cap
+  -- |cap
   cap
    ->Rate
-  -- floor
+  -- |floor
   floor
    ->Rate
-  -- effective cap of fixing
+  -- |effective cap of fixing
   effectiveCap
    ->Rate
-  -- effective floor of fixing
+  -- |effective floor of fixing
   effectiveFloor
    ->Rate
- -v-
- -e-
  -f-
   CappedFlooredYoYInflationCoupon
    ->
@@ -72,5 +70,3 @@ CappedFlooredYoYInflationCoupon
    ->void
    ::const boost::shared_ptr< YoYInflationCouponPricer > &
    -- ^
- -v-
- -e-

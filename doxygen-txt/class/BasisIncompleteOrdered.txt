@@ -5,7 +5,7 @@ BasisIncompleteOrdered
    ->
    ::Size
    -- ^euclideanDimension
-  -- return value indicates if the vector was linearly independent
+  -- |return value indicates if the vector was linearly independent
   addVector
    ->bool
    ::const Array &
@@ -16,5 +16,3 @@ BasisIncompleteOrdered
    ->Size
   getBasisAsRowsInMatrix
    ->Matrix
- -v-
- -e-

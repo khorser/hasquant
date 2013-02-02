@@ -1,9 +1,6 @@
 BiCGstab
 
  -f-
- -v-
- -e-
- -f-
   BiCGstab
    ->
    ::const MatrixMult &
@@ -22,5 +19,3 @@ BiCGstab
    ::const Array &
    =Array()
    -- ^x0
- -v-
- -e-

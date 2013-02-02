@@ -35,5 +35,3 @@ FailureToPayEvent
    ->bool
    ::const boost::shared_ptr< DefaultType > &
    -- ^contractEvType
- -v-
- -e-

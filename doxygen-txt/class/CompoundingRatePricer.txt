@@ -3,5 +3,3 @@ CompoundingRatePricer
  -f-
   swapletPrice
    ->Real
- -v-
- -e-

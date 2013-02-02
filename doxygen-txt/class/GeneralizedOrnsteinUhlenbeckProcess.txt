@@ -25,5 +25,3 @@ GeneralizedOrnsteinUhlenbeckProcess
    -- ^t
   level
    ->Real
- -v-
- -e-

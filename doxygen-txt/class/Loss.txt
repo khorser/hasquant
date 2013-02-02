@@ -1,12 +1,10 @@
 Loss
 
- -f-
  -v-
   time
    ::Real
   amount
    ::Real
- -e-
  -f-
   Loss
    ->
@@ -16,5 +14,3 @@ Loss
    ::Real
    =0.0
    -- ^a
- -v-
- -e-

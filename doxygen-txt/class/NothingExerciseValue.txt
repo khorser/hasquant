@@ -1,7 +1,7 @@
 NothingExerciseValue
 
  -f-
-  -- Possible enhancementsuse Payoff
+  -- |Possible enhancementsuse Payoff
   NothingExerciseValue
    ->
    ::const std::vector< Time > &
@@ -26,5 +26,3 @@ NothingExerciseValue
    -- ^
   clone
    ->std::auto_ptr< MarketModelExerciseValue >
- -v-
- -e-

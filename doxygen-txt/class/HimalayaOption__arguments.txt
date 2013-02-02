@@ -1,14 +1,10 @@
 HimalayaOption::arguments
 
- -f-
  -v-
   fixingDates
    ::std::vector< Date >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

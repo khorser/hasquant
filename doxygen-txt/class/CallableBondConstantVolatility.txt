@@ -38,5 +38,3 @@ CallableBondConstantVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dayCounter
- -v-
- -e-

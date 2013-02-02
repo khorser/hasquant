@@ -2,7 +2,7 @@ SimpleQuote
  -- |market element returning a stored value
 
  -f-
-  -- returns the difference between the new value and the old value
+  -- |returns the difference between the new value and the old value
   setValue
    ->Real
    ::Real
@@ -10,13 +10,9 @@ SimpleQuote
    -- ^value
   reset
    ->void
- -v-
- -e-
  -f-
   SimpleQuote
    ->
    ::Real
    =Null< Real >()
    -- ^value
- -v-
- -e-

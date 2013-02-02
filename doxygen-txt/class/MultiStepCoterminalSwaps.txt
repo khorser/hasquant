@@ -19,8 +19,6 @@ MultiStepCoterminalSwaps
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   MultiStepCoterminalSwaps
    ->
@@ -34,5 +32,3 @@ MultiStepCoterminalSwaps
    -- ^paymentTimes
    ::double
    -- ^fixedRate
- -v-
- -e-

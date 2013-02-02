@@ -12,14 +12,14 @@ ECB
    ->void
    ::const Date &
    -- ^d
-  -- maintenance period start date in the given month/year
+  -- |maintenance period start date in the given month/year
   date
    ->Date
    ::Month
    -- ^m
    ::Year
    -- ^y
-  -- returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).WarningIt raises an exception if the input string is not an ECB code
+  -- |returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).WarningIt raises an exception if the input string is not an ECB code
   date
    ->Date
    ::const std::string &
@@ -27,18 +27,18 @@ ECB
    ::const Date &
    =Date()
    -- ^referenceDate
-  -- returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).WarningIt raises an exception if the input date is not an ECB date
+  -- |returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).WarningIt raises an exception if the input date is not an ECB date
   code
    ->std::string
    ::const Date &
    -- ^ecbDate
-  -- next maintenance period start date following the given date
+  -- |next maintenance period start date following the given date
   nextDate
    ->Date
    ::const Date &
    =Date()
    -- ^d
-  -- next maintenance period start date following the given ECB code
+  -- |next maintenance period start date following the given ECB code
   nextDate
    ->Date
    ::const std::string &
@@ -46,13 +46,13 @@ ECB
    ::const Date &
    =Date()
    -- ^referenceDate
-  -- next maintenance period start dates following the given date
+  -- |next maintenance period start dates following the given date
   nextDates
    ->std::vector< Date >
    ::const Date &
    =Date()
    -- ^d
-  -- next maintenance period start dates following the given code
+  -- |next maintenance period start dates following the given code
   nextDates
    ->std::vector< Date >
    ::const std::string &
@@ -60,26 +60,24 @@ ECB
    ::const Date &
    =Date()
    -- ^referenceDate
-  -- returns whether or not the given date is a maintenance period start date
+  -- |returns whether or not the given date is a maintenance period start date
   isECBdate
    ->bool
    ::const Date &
    -- ^d
-  -- returns whether or not the given string is an ECB code
+  -- |returns whether or not the given string is an ECB code
   isECBcode
    ->bool
    ::const std::string &
    -- ^in
-  -- next ECB code following the given date
+  -- |next ECB code following the given date
   nextCode
    ->std::string
    ::const Date &
    =Date()
    -- ^d
-  -- next ECB code following the given code
+  -- |next ECB code following the given code
   nextCode
    ->std::string
    ::const std::string &
    -- ^ecbCode
- -v-
- -e-

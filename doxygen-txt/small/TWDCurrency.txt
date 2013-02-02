@@ -5,5 +5,3 @@ TWDCurrency
  -f-
   TWDCurrency
    ->
- -v-
- -e-

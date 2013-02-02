@@ -38,5 +38,3 @@ FlatHazardRate
    -- ^hazardRate
    ::const DayCounter &
    -- ^
- -v-
- -e-

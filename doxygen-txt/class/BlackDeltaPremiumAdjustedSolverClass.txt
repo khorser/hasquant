@@ -21,5 +21,3 @@ BlackDeltaPremiumAdjustedSolverClass
    ->Real
    ::Real
    -- ^strike
- -v-
- -e-

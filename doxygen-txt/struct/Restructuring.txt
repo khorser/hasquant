@@ -1,8 +1,6 @@
 Restructuring
  -- |Restructuring type.
 
- -f-
- -v-
  -e-
   Type
    NoRestructuring

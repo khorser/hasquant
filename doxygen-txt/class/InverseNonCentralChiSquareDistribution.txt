@@ -17,5 +17,3 @@ InverseNonCentralChiSquareDistribution
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

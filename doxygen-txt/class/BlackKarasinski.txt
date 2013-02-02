@@ -13,5 +13,3 @@ BlackKarasinski
    ::Real
    =0.1
    -- ^sigma
- -v-
- -e-

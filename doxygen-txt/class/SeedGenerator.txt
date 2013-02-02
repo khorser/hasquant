@@ -5,5 +5,3 @@ SeedGenerator
  -f-
   get
    ->unsigned long
- -v-
- -e-

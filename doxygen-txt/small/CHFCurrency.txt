@@ -5,5 +5,3 @@ CHFCurrency
  -f-
   CHFCurrency
    ->
- -v-
- -e-

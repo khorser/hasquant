@@ -3,32 +3,30 @@ CPICoupon
  -- |The performance is relative to the index value on the base date. The other inflation value is taken from the refPeriodEnd date with observation lag, so any roll/calendar etc. will be built in by the caller. By default this is done in the InflationCoupon which uses ModifiedPreceding with fixing days assumed positive meaning earlier, i.e. always stay in same month (relative to referencePeriodEnd). This is more sophisticated than an %IndexedCashFlow because it does date calculations itself. Possible enhancementswe do not do any convexity adjustment for lags different to the natural ZCIIS lag that was used to create the forward inflation curve.
 
  -f-
-  -- fixed rate that will be inflated by the index ratio
+  -- |fixed rate that will be inflated by the index ratio
   fixedRate
    ->Real
-  -- spread paid over the fixing of the underlying index
+  -- |spread paid over the fixing of the underlying index
   spread
    ->Spread
-  -- adjusted fixing (already divided by the base fixing)
+  -- |adjusted fixing (already divided by the base fixing)
   adjustedFixing
    ->Rate
-  -- base value for the CPI index
-  -- Warningmake sure that the interpolation used to create this is what you are using for the fixing, i.e. the observationInterpolation.
+  -- |base value for the CPI index
+  -- |Warningmake sure that the interpolation used to create this is what you are using for the fixing, i.e. the observationInterpolation.
   baseCPI
    ->Rate
-  -- how do you observe the index? as-is, flat, linear?
+  -- |how do you observe the index? as-is, flat, linear?
   observationInterpolation
    ->CPI::InterpolationType
-  -- utility method, calls indexFixing
+  -- |utility method, calls indexFixing
   indexObservation
    ->Rate
    ::const Date &
    -- ^onDate
-  -- index used
+  -- |index used
   cpiIndex
    ->boost::shared_ptr< ZeroInflationIndex >
- -v-
- -e-
  -f-
   CPICoupon
    ->
@@ -63,5 +61,3 @@ CPICoupon
    ::const Date &
    =Date()
    -- ^refPeriodEnd
- -v-
- -e-

@@ -8,20 +8,18 @@ InflationIndex
    ->Region
   revised
    ->bool
-  -- Forecasting index values using an inflation term structure uses the interpolation of the inflation term structure unless interpolation is set to false. In this case the extrapolated values are constant within each period taking the mid-period extrapolated value.
+  -- |Forecasting index values using an inflation term structure uses the interpolation of the inflation term structure unless interpolation is set to false. In this case the extrapolated values are constant within each period taking the mid-period extrapolated value.
   interpolated
    ->bool
   frequency
    ->Frequency
-  -- The availability lag describes when the index is available, not how it is used. Specifically the fixing for, say, January, may only be available in April but the index will always return the index value applicable for January as its January fixing (independent of the lag in availability).
+  -- |The availability lag describes when the index is available, not how it is used. Specifically the fixing for, say, January, may only be available in April but the index will always return the index value applicable for January as its January fixing (independent of the lag in availability).
   availabilityLag
    ->Period
   currency
    ->Currency
- -v-
- -e-
  -f-
-  -- An inflation index may return interpolated values. These are linearly interpolated values with act/act convention within a period. Note that stored "fixings" are always flat (constant) within a period and interpolated as needed. This is because interpolation adds an addional availability lag (because you always need the next period to give the previous period's value) and enables storage of the most recent uninterpolated value.
+  -- |An inflation index may return interpolated values. These are linearly interpolated values with act/act convention within a period. Note that stored "fixings" are always flat (constant) within a period and interpolated as needed. This is because interpolation adds an addional availability lag (because you always need the next period to give the previous period's value) and enables storage of the most recent uninterpolated value.
   InflationIndex
    ->
    ::const std::string &
@@ -38,5 +36,3 @@ InflationIndex
    -- ^availabilitiyLag
    ::const Currency &
    -- ^currency
- -v-
- -e-

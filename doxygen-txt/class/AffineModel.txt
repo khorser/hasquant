@@ -3,7 +3,7 @@ AffineModel
  -- |Base class for analytically tractable models.
 
  -f-
-  -- Implied discount curve.
+  -- |Implied discount curve.
   discount
    ->DiscountFactor
    ::Time
@@ -26,5 +26,3 @@ AffineModel
    -- ^maturity
    ::Time
    -- ^bondMaturity
- -v-
- -e-

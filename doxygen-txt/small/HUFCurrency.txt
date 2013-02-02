@@ -5,5 +5,3 @@ HUFCurrency
  -f-
   HUFCurrency
    ->
- -v-
- -e-

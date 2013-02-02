@@ -19,5 +19,3 @@ BlackDeltaPremiumAdjustedMaxStrikeClass
    ->Real
    ::Real
    -- ^strike
- -v-
- -e-

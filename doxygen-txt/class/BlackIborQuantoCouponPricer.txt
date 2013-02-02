@@ -9,5 +9,3 @@ BlackIborQuantoCouponPricer
    -- ^underlyingFxCorrelation
    ::const Handle< OptionletVolatilityStructure > &
    -- ^capletVolatility
- -v-
- -e-

@@ -5,5 +5,3 @@ ESPCurrency
  -f-
   ESPCurrency
    ->
- -v-
- -e-

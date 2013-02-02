@@ -5,5 +5,3 @@ ATSCurrency
  -f-
   ATSCurrency
    ->
- -v-
- -e-

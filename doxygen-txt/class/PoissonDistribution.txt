@@ -11,5 +11,3 @@ PoissonDistribution
    ->Real
    ::BigNatural
    -- ^k
- -v-
- -e-

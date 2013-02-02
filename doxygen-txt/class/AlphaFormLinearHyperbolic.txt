@@ -18,5 +18,3 @@ AlphaFormLinearHyperbolic
    ->void
    ::Real
    -- ^alpha_
- -v-
- -e-

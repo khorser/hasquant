@@ -1,14 +1,10 @@
 detail::short_period_holder
 
- -f-
  -v-
   p
    ::Period
- -e-
  -f-
   short_period_holder
    ->
    ::Period
    -- ^p
- -v-
- -e-

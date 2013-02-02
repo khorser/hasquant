@@ -3,13 +3,9 @@ SwaptionVolatilityDiscrete
  -f-
   update
    ->void
- -v-
- -e-
  -f-
   performCalculations
    ->void
- -v-
- -e-
  -f-
   SwaptionVolatilityDiscrete
    ->
@@ -63,5 +59,3 @@ SwaptionVolatilityDiscrete
    ->const std::vector< Period > &
   swapLengths
    ->const std::vector< Time > &
- -v-
- -e-

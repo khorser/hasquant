@@ -8,5 +8,3 @@ ForwardValueQuote
    -- ^index
    ::const Date &
    -- ^fixingDate
- -v-
- -e-

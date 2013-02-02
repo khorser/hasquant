@@ -12,8 +12,6 @@ InterpolatedZeroInflationCurve
    ->const std::vector< Rate > &
   nodes
    ->std::vector< std::pair< Date, Rate > >
- -v-
- -e-
  -f-
   InterpolatedZeroInflationCurve
    ->
@@ -38,5 +36,3 @@ InterpolatedZeroInflationCurve
    ::const Interpolator &
    =Interpolator()
    -- ^interpolator
- -v-
- -e-

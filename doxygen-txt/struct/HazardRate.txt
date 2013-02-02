@@ -2,9 +2,6 @@ HazardRate
  -- |Hazard-rate-curve traits.
 
  -f-
- -v-
- -e-
- -f-
   initialDate
    ->Date
    ::const DefaultProbabilityTermStructure *
@@ -53,5 +50,3 @@ HazardRate
    -- ^i
   maxIterations
    ->Size
- -v-
- -e-

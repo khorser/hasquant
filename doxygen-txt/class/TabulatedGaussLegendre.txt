@@ -17,5 +17,3 @@ TabulatedGaussLegendre
    -- ^
   order
    ->Size
- -v-
- -e-

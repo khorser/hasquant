@@ -5,5 +5,3 @@ CalibratedModel::PrivateConstraint
    ->
    ::const std::vector< Parameter > &
    -- ^arguments
- -v-
- -e-

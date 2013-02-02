@@ -8,5 +8,3 @@ IndependentCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

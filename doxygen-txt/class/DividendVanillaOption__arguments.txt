@@ -1,15 +1,11 @@
 DividendVanillaOption::arguments
  -- |Arguments for dividend vanilla option calculation
 
- -f-
  -v-
   cashFlow
    ::DividendSchedule
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

@@ -1,8 +1,6 @@
 EnergyCommodity
  -- |Energy commodity class.
 
- -f-
- -v-
  -e-
   DeliverySchedule
    Constant
@@ -37,5 +35,3 @@ EnergyCommodity
    ->Quantity
   commodityType
    ->const CommodityType &
- -v-
- -e-

@@ -19,5 +19,3 @@ FdmArithmeticAverageCondition
    -- ^a
    ::Time
    -- ^t
- -v-
- -e-

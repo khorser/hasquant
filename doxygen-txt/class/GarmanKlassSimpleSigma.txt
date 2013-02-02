@@ -5,5 +5,3 @@ GarmanKlassSimpleSigma
    ->
    ::Real
    -- ^y
- -v-
- -e-

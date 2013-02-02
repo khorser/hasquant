@@ -23,5 +23,3 @@ GeneralizedHullWhite
    -- ^speed
    ::const std::vector< Real > &
    -- ^vol
- -v-
- -e-

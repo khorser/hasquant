@@ -2,7 +2,7 @@ BackwardFlatInterpolation
  -- |Backward-flat interpolation between discrete points.
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   BackwardFlatInterpolation
    ->
    ::const I1 &
@@ -11,5 +11,3 @@ BackwardFlatInterpolation
    -- ^xEnd
    ::const I2 &
    -- ^yBegin
- -v-
- -e-

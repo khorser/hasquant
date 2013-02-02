@@ -2,7 +2,7 @@ ConstantSwaptionVolatility
  -- |Constant swaption volatility, no time-strike dependence.
 
  -f-
-  -- floating reference date, floating market data
+  -- |floating reference date, floating market data
   ConstantSwaptionVolatility
    ->
    ::Natural
@@ -15,7 +15,7 @@ ConstantSwaptionVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dc
-  -- fixed reference date, floating market data
+  -- |fixed reference date, floating market data
   ConstantSwaptionVolatility
    ->
    ::const Date &
@@ -28,7 +28,7 @@ ConstantSwaptionVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dc
-  -- floating reference date, fixed market data
+  -- |floating reference date, fixed market data
   ConstantSwaptionVolatility
    ->
    ::Natural
@@ -41,7 +41,7 @@ ConstantSwaptionVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dc
-  -- fixed reference date, fixed market data
+  -- |fixed reference date, fixed market data
   ConstantSwaptionVolatility
    ->
    ::const Date &
@@ -54,5 +54,3 @@ ConstantSwaptionVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dc
- -v-
- -e-

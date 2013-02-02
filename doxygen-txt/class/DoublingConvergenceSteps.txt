@@ -7,5 +7,3 @@ DoublingConvergenceSteps
    ->Size
    ::Size
    -- ^current
- -v-
- -e-

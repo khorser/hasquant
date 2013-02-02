@@ -14,5 +14,3 @@ LmLinearExponentialCorrelationModel
    ::Size
    =Null< Size >()
    -- ^factors
- -v-
- -e-

@@ -9,10 +9,8 @@ CapFloorTermVolCurve
    ->const std::vector< Date > &
   optionTimes
    ->const std::vector< Time > &
- -v-
- -e-
  -f-
-  -- floating reference date, floating market data
+  -- |floating reference date, floating market data
   CapFloorTermVolCurve
    ->
    ::Natural
@@ -28,7 +26,7 @@ CapFloorTermVolCurve
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
-  -- fixed reference date, floating market data
+  -- |fixed reference date, floating market data
   CapFloorTermVolCurve
    ->
    ::const Date &
@@ -44,7 +42,7 @@ CapFloorTermVolCurve
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
-  -- fixed reference date, fixed market data
+  -- |fixed reference date, fixed market data
   CapFloorTermVolCurve
    ->
    ::const Date &
@@ -60,7 +58,7 @@ CapFloorTermVolCurve
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
-  -- floating reference date, fixed market data
+  -- |floating reference date, fixed market data
   CapFloorTermVolCurve
    ->
    ::Natural
@@ -76,5 +74,3 @@ CapFloorTermVolCurve
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
- -v-
- -e-

@@ -3,9 +3,6 @@ PiecewiseYoYOptionletVolatilityCurve
  -- |We use a flat smile for bootstrapping at constant K. Happily most of the work has already been done in the bootstrapping classes. We only need to add special attention for the start where there is usually no data, only assumptions.
 
  -f-
- -v-
- -e-
- -f-
   PiecewiseYoYOptionletVolatilityCurve
    ->
    ::Natural
@@ -36,5 +33,3 @@ PiecewiseYoYOptionletVolatilityCurve
    ::const Interpolator &
    =Interpolator()
    -- ^interpolator
- -v-
- -e-

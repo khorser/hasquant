@@ -30,5 +30,3 @@ KInterpolatedYoYOptionletVolatilitySurface
    ->std::pair< std::vector< Rate >, std::vector< Volatility > >
    ::const Date &
    -- ^d
- -v-
- -e-

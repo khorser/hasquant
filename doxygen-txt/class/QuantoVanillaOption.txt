@@ -8,11 +8,6 @@ QuantoVanillaOption
    ->Real
   qlambda
    ->Real
- -v-
- -e-
- -f-
- -v-
- -e-
  -f-
   QuantoVanillaOption
    ->
@@ -20,5 +15,3 @@ QuantoVanillaOption
    -- ^
    ::const boost::shared_ptr< Exercise > &
    -- ^
- -v-
- -e-

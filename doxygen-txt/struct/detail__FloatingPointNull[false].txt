@@ -3,5 +3,3 @@ detail::FloatingPointNull< false >
  -f-
   nullValue
    ->int
- -v-
- -e-

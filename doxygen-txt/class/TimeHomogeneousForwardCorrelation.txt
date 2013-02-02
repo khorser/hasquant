@@ -15,12 +15,8 @@ TimeHomogeneousForwardCorrelation
    ->const std::vector< Matrix > &
   numberOfRates
    ->Size
- -v-
- -e-
  -f-
   evolvedMatrices
    ->std::vector< Matrix >
    ::const Matrix &
    -- ^fwdCorrelation
- -v-
- -e-

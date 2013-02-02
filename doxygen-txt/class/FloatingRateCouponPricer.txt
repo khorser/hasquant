@@ -26,10 +26,6 @@ FloatingRateCouponPricer
    ->void
    ::const FloatingRateCoupon &
    -- ^coupon
- -v-
- -e-
  -f-
   ~FloatingRateCouponPricer
    ->
- -v-
- -e-

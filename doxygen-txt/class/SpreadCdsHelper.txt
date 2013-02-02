@@ -58,5 +58,3 @@ SpreadCdsHelper
    ::bool
    =true
    -- ^paysAtDefaultTime
- -v-
- -e-

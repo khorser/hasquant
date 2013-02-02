@@ -2,49 +2,43 @@ Currency
  -- |Currency specification
 
  -f-
-  -- currency name, e.g, "U.S. Dollar"
+  -- |currency name, e.g, "U.S. Dollar"
   name
    ->const std::string &
-  -- ISO 4217 three-letter code, e.g, "USD".
+  -- |ISO 4217 three-letter code, e.g, "USD".
   code
    ->const std::string &
-  -- ISO 4217 numeric code, e.g, "840".
+  -- |ISO 4217 numeric code, e.g, "840".
   numericCode
    ->Integer
-  -- symbol, e.g, "$"
+  -- |symbol, e.g, "$"
   symbol
    ->const std::string &
-  -- fraction symbol, e.g, "¢"
+  -- |fraction symbol, e.g, "¢"
   fractionSymbol
    ->const std::string &
-  -- number of fractionary parts in a unit, e.g, 100
+  -- |number of fractionary parts in a unit, e.g, 100
   fractionsPerUnit
    ->Integer
-  -- rounding convention
+  -- |rounding convention
   rounding
    ->const Rounding &
-  -- output format
-  -- The format will be fed three positional parameters, namely, value, code, and symbol, in this order.
+  -- |output format
+  -- |The format will be fed three positional parameters, namely, value, code, and symbol, in this order.
   format
    ->std::string
- -v-
- -e-
  -f-
-  -- is this a usable instance?
+  -- |is this a usable instance?
   empty
    ->bool
-  -- currency used for triangulated exchange when required
+  -- |currency used for triangulated exchange when required
   triangulationCurrency
    ->const Currency &
- -v-
- -e-
  -f-
-  -- default constructor
-  -- Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used.
+  -- |default constructor
+  -- |Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used.
   Currency
    ->
- -v-
- -e-
  -f-
   operator==
    ->bool
@@ -64,5 +58,3 @@ Currency
    -- ^
    ::const Currency &
    -- ^
- -v-
- -e-

@@ -93,7 +93,7 @@ Distribution
    ->Real
    ::F &
    -- ^f
-  -- Transform the loss distribution into the tranche loss distribution for losses L_T = min(L,D) - min(L,A). The effects are: 1) shift the distribution to the left by A, then 2) cut off at D-A, Pr(L_T > D-A) = 0 3) ensure Pr(L_T >= 0) = 1, i.e. a density spike at L_T = 0
+  -- |Transform the loss distribution into the tranche loss distribution for losses L_T = min(L,D) - min(L,A). The effects are: 1) shift the distribution to the left by A, then 2) cut off at D-A, Pr(L_T > D-A) = 0 3) ensure Pr(L_T >= 0) = 1, i.e. a density spike at L_T = 0
   tranche
    ->void
    ::Real
@@ -104,5 +104,3 @@ Distribution
    ->int
    ::Real
    -- ^x
- -v-
- -e-

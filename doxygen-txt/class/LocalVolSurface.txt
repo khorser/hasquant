@@ -23,5 +23,3 @@ LocalVolSurface
    -- ^dividendTS
    ::Real
    -- ^underlying
- -v-
- -e-

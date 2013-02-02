@@ -18,5 +18,3 @@ AnalyticPTDHestonEngine
    ::Size
    =144
    -- ^integrationOrder
- -v-
- -e-

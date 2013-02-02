@@ -27,5 +27,3 @@ BatesDoubleExpDetJumpModel
    ->Real
   thetaLambda
    ->Real
- -v-
- -e-

@@ -14,5 +14,3 @@ CmsCouponPricer
    ::const Handle< SwaptionVolatilityStructure > &
    =Handle< SwaptionVolatilityStructure >()
    -- ^v
- -v-
- -e-

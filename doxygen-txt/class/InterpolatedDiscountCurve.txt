@@ -12,8 +12,6 @@ InterpolatedDiscountCurve
    ->const std::vector< DiscountFactor > &
   nodes
    ->std::vector< std::pair< Date, Real > >
- -v-
- -e-
  -f-
   InterpolatedDiscountCurve
    ->
@@ -57,5 +55,3 @@ InterpolatedDiscountCurve
    -- ^dayCounter
    ::const Interpolator &
    -- ^interpolator
- -v-
- -e-

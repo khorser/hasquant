@@ -1,12 +1,8 @@
 EverestOption::results
 
- -f-
  -v-
   yield
    ::Rate
- -e-
  -f-
   reset
    ->void
- -v-
- -e-

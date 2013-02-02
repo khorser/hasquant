@@ -1,13 +1,10 @@
 CmsMarketCalibration
 
- -f-
- -v-
  -e-
   CalibrationType
    OnSpread
    OnPrice
    OnForwardCmsPrice
- -f-
  -v-
   volCube_
    ::Handle< SwaptionVolatilityStructure >
@@ -23,7 +20,6 @@ CmsMarketCalibration
    ::Matrix
   browseCmsMarket_
    ::Matrix
- -e-
  -f-
   CmsMarketCalibration
    ->
@@ -49,5 +45,3 @@ CmsMarketCalibration
    ->Real
   endCriteria
    ->EndCriteria::Type
- -v-
- -e-

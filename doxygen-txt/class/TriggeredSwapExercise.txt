@@ -47,5 +47,3 @@ TriggeredSwapExercise
    -- ^parameters
   clone
    ->std::auto_ptr< MarketModelParametricExercise >
- -v-
- -e-

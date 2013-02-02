@@ -16,5 +16,3 @@ FDAmericanEngine
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

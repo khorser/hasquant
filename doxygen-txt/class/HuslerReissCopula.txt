@@ -12,5 +12,3 @@ HuslerReissCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

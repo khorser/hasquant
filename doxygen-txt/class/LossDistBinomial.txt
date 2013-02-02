@@ -25,5 +25,3 @@ LossDistBinomial
    ->std::vector< Real >
   excessProbability
    ->std::vector< Real >
- -v-
- -e-

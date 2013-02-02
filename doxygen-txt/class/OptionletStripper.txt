@@ -12,5 +12,3 @@ OptionletStripper
    ->boost::shared_ptr< CapFloorTermVolSurface >
   iborIndex
    ->boost::shared_ptr< IborIndex >
- -v-
- -e-

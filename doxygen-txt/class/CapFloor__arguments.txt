@@ -1,7 +1,6 @@
 CapFloor::arguments
  -- |Arguments for cap/floor calculation
 
- -f-
  -v-
   type
    ::CapFloor::Type
@@ -25,11 +24,8 @@ CapFloor::arguments
    ::std::vector< Real >
   nominals
    ::std::vector< Real >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

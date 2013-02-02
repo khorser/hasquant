@@ -3,7 +3,7 @@ BicubicSpline
  -- |Possible enhancementsrevise end conditions
 
  -f-
-  -- the $ x $ and $ y $ values must be sorted.
+  -- |the $ x $ and $ y $ values must be sorted.
   BicubicSpline
    ->
    ::const I1 &
@@ -46,5 +46,3 @@ BicubicSpline
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

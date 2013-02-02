@@ -38,5 +38,3 @@ EnergyBasisSwap
    ->const boost::shared_ptr< CommodityIndex > &
   basis
    ->const CommodityUnitCost &
- -v-
- -e-

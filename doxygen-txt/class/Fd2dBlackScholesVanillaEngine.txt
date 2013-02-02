@@ -26,5 +26,3 @@ Fd2dBlackScholesVanillaEngine
    ::const FdmSchemeDesc &
    =FdmSchemeDesc::Hundsdorfer()
    -- ^schemeDesc
- -v-
- -e-

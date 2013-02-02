@@ -12,8 +12,6 @@ InterpolatedSurvivalProbabilityCurve
    ->const std::vector< Probability > &
   nodes
    ->std::vector< std::pair< Date, Real > >
- -v-
- -e-
  -f-
   InterpolatedSurvivalProbabilityCurve
    ->
@@ -35,5 +33,3 @@ InterpolatedSurvivalProbabilityCurve
    ::const Interpolator &
    =Interpolator()
    -- ^interpolator
- -v-
- -e-

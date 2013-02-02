@@ -3,7 +3,7 @@ FixedRateBond
  -- |Testscalculations are tested by checking results against cached values.
 
  -f-
-  -- simple annual compounding coupon rates
+  -- |simple annual compounding coupon rates
   FixedRateBond
    ->
    ::Natural
@@ -28,7 +28,7 @@ FixedRateBond
    ::const Calendar &
    =Calendar()
    -- ^paymentCalendar
-  -- simple annual compounding coupon rates with internal schedule calculation
+  -- |simple annual compounding coupon rates with internal schedule calculation
   FixedRateBond
    ->
    ::Natural
@@ -71,7 +71,7 @@ FixedRateBond
    ::const Calendar &
    =Calendar()
    -- ^paymentCalendar
-  -- generic compounding and frequency InterestRate coupons
+  -- |generic compounding and frequency InterestRate coupons
   FixedRateBond
    ->
    ::Natural
@@ -98,5 +98,3 @@ FixedRateBond
    ->Frequency
   dayCounter
    ->const DayCounter &
- -v-
- -e-

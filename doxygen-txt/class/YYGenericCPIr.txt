@@ -17,5 +17,3 @@ YYGenericCPIr
    ::const Handle< YoYInflationTermStructure > &
    =Handle< YoYInflationTermStructure >()
    -- ^ts
- -v-
- -e-

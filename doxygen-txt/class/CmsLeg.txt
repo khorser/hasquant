@@ -76,5 +76,3 @@ CmsLeg
    -- ^flag
   operator Leg
    ->
- -v-
- -e-

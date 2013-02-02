@@ -15,5 +15,3 @@ VolatilityCube
    ->const std::vector< Handle< InterestRateVolSurface > > &
   curves
    ->const std::vector< Handle< AbcdAtmVolCurve > > &
- -v-
- -e-

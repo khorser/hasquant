@@ -20,5 +20,3 @@ EnergyFuture
    ->const CommodityUnitCost &
   index
    ->const boost::shared_ptr< CommodityIndex >
- -v-
- -e-

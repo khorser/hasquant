@@ -1,8 +1,6 @@
 Callability::Price
  -- |amount to be paid upon callability
 
- -f-
- -v-
  -e-
   Type
    Dirty
@@ -20,5 +18,3 @@ Callability::Price
    ->Real
   type
    ->Type
- -v-
- -e-

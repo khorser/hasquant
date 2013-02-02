@@ -19,5 +19,3 @@ EverestOption
    ->void
    ::const PricingEngine::results *
    -- ^
- -v-
- -e-

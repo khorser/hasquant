@@ -18,5 +18,3 @@ AlphaFormInverseLinear
    ->void
    ::Real
    -- ^alpha_
- -v-
- -e-

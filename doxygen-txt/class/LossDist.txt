@@ -16,24 +16,22 @@ LossDist
    ->Size
   maximum
    ->Real
- -v-
- -e-
  -f-
-  -- Binomial probability of n defaults using prob[0]
+  -- |Binomial probability of n defaults using prob[0]
   binomialProbabilityOfNEvents
    ->Real
    ::int
    -- ^n
    ::std::vector< Real > &
    -- ^p
-  -- Binomial probability of at least n defaults using prob[0]
+  -- |Binomial probability of at least n defaults using prob[0]
   binomialProbabilityOfAtLeastNEvents
    ->Real
    ::int
    -- ^n
    ::std::vector< Real > &
    -- ^p
-  -- Probability of exactly n default events Xiaofong Ma, "Numerical Methods for the Valuation of Synthetic Collateralized Debt Obligations", PhD Thesis, Graduate Department of Computer Science, University of Toronto, 2007 http://www.cs.toronto.edu/pub/reports/na/ma-07-phd.pdf (formula 2.1)
+  -- |Probability of exactly n default events Xiaofong Ma, "Numerical Methods for the Valuation of Synthetic Collateralized Debt Obligations", PhD Thesis, Graduate Department of Computer Science, University of Toronto, 2007 http://www.cs.toronto.edu/pub/reports/na/ma-07-phd.pdf (formula 2.1)
   probabilityOfNEvents
    ->std::vector< Real >
    ::std::vector< Real > &
@@ -44,12 +42,10 @@ LossDist
    -- ^n
    ::std::vector< Real > &
    -- ^p
-  -- Probability of at least n defaults
+  -- |Probability of at least n defaults
   probabilityOfAtLeastNEvents
    ->Real
    ::int
    -- ^n
    ::std::vector< Real > &
    -- ^p
- -v-
- -e-

@@ -5,5 +5,3 @@ BEFCurrency
  -f-
   BEFCurrency
    ->
- -v-
- -e-

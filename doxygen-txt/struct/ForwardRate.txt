@@ -2,9 +2,6 @@ ForwardRate
  -- |Forward-curve traits.
 
  -f-
- -v-
- -e-
- -f-
   initialDate
    ->Date
    ::const YieldTermStructure *
@@ -53,5 +50,3 @@ ForwardRate
    -- ^i
   maxIterations
    ->Size
- -v-
- -e-

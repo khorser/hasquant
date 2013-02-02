@@ -1,9 +1,6 @@
 MCHestonHullWhiteEngine
 
  -f-
- -v-
- -e-
- -f-
   MCHestonHullWhiteEngine
    ->
    ::const boost::shared_ptr< HybridHestonHullWhiteProcess > &
@@ -26,5 +23,3 @@ MCHestonHullWhiteEngine
    -- ^seed
   calculate
    ->void
- -v-
- -e-

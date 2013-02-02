@@ -10,12 +10,10 @@ CubicBSplinesFitting
    ::bool
    =true
    -- ^constrainAtZero
-  -- cubic B-spline basis functions
+  -- |cubic B-spline basis functions
   basisFunction
    ->Real
    ::Integer
    -- ^i
    ::Time
    -- ^t
- -v-
- -e-

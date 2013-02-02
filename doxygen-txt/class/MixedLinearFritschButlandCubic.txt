@@ -1,7 +1,7 @@
 MixedLinearFritschButlandCubic
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   MixedLinearFritschButlandCubic
    ->
    ::const I1 &
@@ -12,5 +12,3 @@ MixedLinearFritschButlandCubic
    -- ^yBegin
    ::Size
    -- ^n
- -v-
- -e-

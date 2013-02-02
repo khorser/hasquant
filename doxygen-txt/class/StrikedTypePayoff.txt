@@ -4,5 +4,3 @@ StrikedTypePayoff
  -f-
   strike
    ->Real
- -v-
- -e-

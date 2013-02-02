@@ -17,5 +17,3 @@ AmericanPayoffAtExpiry
    -- ^payoff
   value
    ->Real
- -v-
- -e-

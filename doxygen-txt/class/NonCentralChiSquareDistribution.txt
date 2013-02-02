@@ -11,5 +11,3 @@ NonCentralChiSquareDistribution
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

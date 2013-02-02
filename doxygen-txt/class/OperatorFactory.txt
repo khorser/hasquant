@@ -19,5 +19,3 @@ OperatorFactory
    -- ^process
    ::const Array &
    -- ^grid
- -v-
- -e-

@@ -34,5 +34,3 @@ StochasticProcess1D::discretization
    -- ^x0
    ::Time
    -- ^dt
- -v-
- -e-

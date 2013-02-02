@@ -1,14 +1,10 @@
 detail::shortest_weekday_holder
 
- -f-
  -v-
   d
    ::Weekday
- -e-
  -f-
   shortest_weekday_holder
    ->
    ::Weekday
    -- ^d
- -v-
- -e-

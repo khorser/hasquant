@@ -5,5 +5,3 @@ SITCurrency
  -f-
   SITCurrency
    ->
- -v-
- -e-

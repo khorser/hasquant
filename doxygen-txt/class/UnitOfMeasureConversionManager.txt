@@ -20,5 +20,3 @@ UnitOfMeasureConversionManager
    -- ^
   clear
    ->void
- -v-
- -e-

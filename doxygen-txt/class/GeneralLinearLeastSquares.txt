@@ -29,10 +29,10 @@ GeneralLinearLeastSquares
    ->const Array &
   residuals
    ->const Array &
-  -- standard parameter errors as given by Excel, R etc.
+  -- |standard parameter errors as given by Excel, R etc.
   standardErrors
    ->const Array &
-  -- modeling uncertainty as definied in Numerical Recipes
+  -- |modeling uncertainty as definied in Numerical Recipes
   error
    ->const Array &
   a
@@ -41,5 +41,3 @@ GeneralLinearLeastSquares
    ->Size
   dim
    ->Size
- -v-
- -e-

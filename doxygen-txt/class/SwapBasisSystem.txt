@@ -29,5 +29,3 @@ SwapBasisSystem
    -- ^results
   clone
    ->std::auto_ptr< MarketModelBasisSystem >
- -v-
- -e-

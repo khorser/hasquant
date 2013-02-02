@@ -1,15 +1,10 @@
 detail::Point< Size, EmptyDim >
 
- -f-
- -v-
- -e-
- -f-
  -v-
   first
    ::data_type
   second
    ::EmptyDim
- -e-
  -f-
   Point
    ->
@@ -27,5 +22,3 @@ detail::Point< Size, EmptyDim >
    ->data_type &
    ::Size
    -- ^n
- -v-
- -e-

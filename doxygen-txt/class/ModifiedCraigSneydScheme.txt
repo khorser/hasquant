@@ -3,9 +3,6 @@ ModifiedCraigSneydScheme
  -- |References: K. J. in ’t Hout and S. Foulon, ADI finite difference schemes for option pricing in the Heston model with correlation, http://arxiv.org/pdf/0811.3427
 
  -f-
- -v-
- -e-
- -f-
   ModifiedCraigSneydScheme
    ->
    ::Real
@@ -27,5 +24,3 @@ ModifiedCraigSneydScheme
    ->void
    ::Time
    -- ^dt
- -v-
- -e-

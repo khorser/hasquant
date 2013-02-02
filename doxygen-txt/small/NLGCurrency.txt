@@ -5,5 +5,3 @@ NLGCurrency
  -f-
   NLGCurrency
    ->
- -v-
- -e-

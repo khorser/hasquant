@@ -36,5 +36,3 @@ FdHestonHullWhiteVanillaEngine
    ->void
    ::const std::vector< Real > &
    -- ^strikes
- -v-
- -e-

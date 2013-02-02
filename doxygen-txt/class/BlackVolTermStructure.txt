@@ -3,7 +3,7 @@ BlackVolTermStructure
  -- |This abstract class defines the interface of concrete Black-volatility term structures which will be derived from this one.Volatilities are assumed to be expressed on an annual basis.
 
  -f-
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   BlackVolTermStructure
    ->
    ::const Calendar &
@@ -14,8 +14,8 @@ BlackVolTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- default constructor
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |default constructor
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   BlackVolTermStructure
    ->
    ::BusinessDayConvention
@@ -24,7 +24,7 @@ BlackVolTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   BlackVolTermStructure
    ->
    ::const Date &
@@ -38,7 +38,7 @@ BlackVolTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   BlackVolTermStructure
    ->
    ::Natural
@@ -51,10 +51,8 @@ BlackVolTermStructure
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-
  -f-
-  -- spot volatility
+  -- |spot volatility
   blackVol
    ->Volatility
    ::const Date &
@@ -64,7 +62,7 @@ BlackVolTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- spot volatility
+  -- |spot volatility
   blackVol
    ->Volatility
    ::Time
@@ -74,7 +72,7 @@ BlackVolTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- spot variance
+  -- |spot variance
   blackVariance
    ->Real
    ::const Date &
@@ -84,7 +82,7 @@ BlackVolTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- spot variance
+  -- |spot variance
   blackVariance
    ->Real
    ::Time
@@ -94,7 +92,7 @@ BlackVolTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- forward (at-the-money) volatility
+  -- |forward (at-the-money) volatility
   blackForwardVol
    ->Volatility
    ::const Date &
@@ -106,7 +104,7 @@ BlackVolTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- forward (at-the-money) volatility
+  -- |forward (at-the-money) volatility
   blackForwardVol
    ->Volatility
    ::Time
@@ -118,7 +116,7 @@ BlackVolTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- forward (at-the-money) variance
+  -- |forward (at-the-money) variance
   blackForwardVariance
    ->Real
    ::const Date &
@@ -130,7 +128,7 @@ BlackVolTermStructure
    ::bool
    =false
    -- ^extrapolate
-  -- forward (at-the-money) variance
+  -- |forward (at-the-money) variance
   blackForwardVariance
    ->Real
    ::Time
@@ -142,17 +140,11 @@ BlackVolTermStructure
    ::bool
    =false
    -- ^extrapolate
- -v-
- -e-
  -f-
   accept
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-
  -f-
   ~BlackVolTermStructure
    ->
- -v-
- -e-

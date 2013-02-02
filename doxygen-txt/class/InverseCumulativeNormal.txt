@@ -15,12 +15,8 @@ InverseCumulativeNormal
    ->Real
    ::Real
    -- ^x
- -v-
- -e-
  -f-
   standard_value
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

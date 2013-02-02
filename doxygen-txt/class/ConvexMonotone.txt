@@ -1,7 +1,6 @@
 ConvexMonotone
  -- |Convex-monotone interpolation factory and traits.
 
- -f-
  -v-
   global
    ::const bool
@@ -9,7 +8,6 @@ ConvexMonotone
    ::const Size
   dataSizeAdjustment
    ::const Size
- -e-
  -f-
   ConvexMonotone
    ->
@@ -44,5 +42,3 @@ ConvexMonotone
    -- ^prevInterpolation
    ::Size
    -- ^finalSize
- -v-
- -e-

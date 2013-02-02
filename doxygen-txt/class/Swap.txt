@@ -3,22 +3,20 @@ Swap
  -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
 
  -f-
-  -- The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
+  -- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
   Swap
    ->
    ::const Leg &
    -- ^firstLeg
    ::const Leg &
    -- ^secondLeg
-  -- Multi leg constructor.
+  -- |Multi leg constructor.
   Swap
    ->
    ::const std::vector< Leg > &
    -- ^legs
    ::const std::vector< bool > &
    -- ^payer
- -v-
- -e-
  -f-
   startDate
    ->Date
@@ -46,5 +44,3 @@ Swap
    ->const Leg &
    ::Size
    -- ^j
- -v-
- -e-

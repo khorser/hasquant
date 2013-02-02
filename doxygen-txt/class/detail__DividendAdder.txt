@@ -9,5 +9,3 @@ detail::DividendAdder
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

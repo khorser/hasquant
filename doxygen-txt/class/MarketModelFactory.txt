@@ -10,5 +10,3 @@ MarketModelFactory
    -- ^
    ::Size
    -- ^numberOfFactors
- -v-
- -e-

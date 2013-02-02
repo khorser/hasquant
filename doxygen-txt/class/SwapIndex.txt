@@ -14,21 +14,17 @@ SwapIndex
    ->Handle< YieldTermStructure >
   exogenousDiscount
    ->bool
-  -- WarningRelinking the term structure underlying the index will not have effect on the returned swap.
+  -- |WarningRelinking the term structure underlying the index will not have effect on the returned swap.
   underlyingSwap
    ->boost::shared_ptr< VanillaSwap >
    ::const Date &
    -- ^fixingDate
- -v-
- -e-
  -f-
-  -- returns a copy of itself linked to a different forwarding curve
+  -- |returns a copy of itself linked to a different forwarding curve
   clone
    ->boost::shared_ptr< SwapIndex >
    ::const Handle< YieldTermStructure > &
    -- ^forwarding
- -v-
- -e-
  -f-
   SwapIndex
    ->
@@ -72,5 +68,3 @@ SwapIndex
    -- ^iborIndex
    ::const Handle< YieldTermStructure > &
    -- ^discountingTermStructure
- -v-
- -e-

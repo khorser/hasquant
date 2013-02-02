@@ -4,8 +4,6 @@ FuturesRateHelper
  -f-
   convexityAdjustment
    ->Real
- -v-
- -e-
  -f-
   FuturesRateHelper
    ->
@@ -93,5 +91,3 @@ FuturesRateHelper
    ::Rate
    =0.0
    -- ^convexityAdjustment
- -v-
- -e-

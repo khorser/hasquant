@@ -8,5 +8,3 @@ YoYInflationUnitDisplacedBlackCapFloorEngine
    -- ^
    ::const Handle< YoYOptionletVolatilitySurface > &
    -- ^
- -v-
- -e-

@@ -11,5 +11,3 @@ HullWhite::FittingParameter
    -- ^a
    ::Real
    -- ^sigma
- -v-
- -e-

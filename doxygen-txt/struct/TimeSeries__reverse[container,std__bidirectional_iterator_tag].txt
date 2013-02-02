@@ -1,13 +1,8 @@
 TimeSeries::reverse< container, std::bidirectional_iterator_tag >
 
- -f-
- -v-
- -e-
- -f-
  -v-
   c_
    ::const container &
- -e-
  -f-
   reverse
    ->
@@ -17,5 +12,3 @@ TimeSeries::reverse< container, std::bidirectional_iterator_tag >
    ->const_reverse_iterator
   rend
    ->const_reverse_iterator
- -v-
- -e-

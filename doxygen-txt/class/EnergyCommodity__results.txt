@@ -1,6 +1,5 @@
 EnergyCommodity::results
 
- -f-
  -v-
   NPV
    ::Real
@@ -8,9 +7,6 @@ EnergyCommodity::results
    ::Currency
   unitOfMeasure
    ::UnitOfMeasure
- -e-
  -f-
   reset
    ->void
- -v-
- -e-

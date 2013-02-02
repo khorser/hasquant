@@ -21,5 +21,3 @@ FdBatesVanillaEngine
    ::const FdmSchemeDesc &
    =FdmSchemeDesc::Hundsdorfer()
    -- ^schemeDesc
- -v-
- -e-

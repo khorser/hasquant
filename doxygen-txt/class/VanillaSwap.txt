@@ -27,8 +27,6 @@ VanillaSwap
    ->const Leg &
   floatingLeg
    ->const Leg &
- -v-
- -e-
  -f-
   fixedLegBPS
    ->Real
@@ -42,10 +40,6 @@ VanillaSwap
    ->Real
   fairSpread
    ->Spread
- -v-
- -e-
- -f-
- -v-
  -e-
   Type
    Receiver
@@ -74,5 +68,3 @@ VanillaSwap
    ::boost::optional< BusinessDayConvention >
    =boost::none
    -- ^paymentConvention
- -v-
- -e-

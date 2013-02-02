@@ -9,5 +9,3 @@ TermStructureConsistentModel
    -- ^termStructure
   termStructure
    ->const Handle< YieldTermStructure > &
- -v-
- -e-

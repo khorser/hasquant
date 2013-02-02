@@ -49,5 +49,3 @@ PiecewiseTimeDependentHestonModel
    ->const Handle< YieldTermStructure > &
   riskFreeRate
    ->const Handle< YieldTermStructure > &
- -v-
- -e-

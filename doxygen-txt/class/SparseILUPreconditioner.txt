@@ -17,5 +17,3 @@ SparseILUPreconditioner
    ->Disposable< Array >
    ::const Array &
    -- ^b
- -v-
- -e-

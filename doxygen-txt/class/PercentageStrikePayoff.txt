@@ -8,5 +8,3 @@ PercentageStrikePayoff
    -- ^type
    ::Real
    -- ^moneyness
- -v-
- -e-

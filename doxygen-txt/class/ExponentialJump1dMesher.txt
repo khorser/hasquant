@@ -35,5 +35,3 @@ ExponentialJump1dMesher
    -- ^x
    ::Time
    -- ^t
- -v-
- -e-

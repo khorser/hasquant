@@ -13,8 +13,6 @@ LogNormalFwdRateEuler
    ::Size
    =0
    -- ^initialStep
-  -- accessor methods useful for doing pathwise vegas
+  -- |accessor methods useful for doing pathwise vegas
   browniansThisStep
    ->const std::vector< Real > &
- -v-
- -e-

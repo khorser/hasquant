@@ -1,7 +1,7 @@
 LogParabolic
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   LogParabolic
    ->
    ::const I1 &
@@ -10,5 +10,3 @@ LogParabolic
    -- ^xEnd
    ::const I2 &
    -- ^yBegin
- -v-
- -e-

@@ -3,49 +3,49 @@ Calendar
  -- |This class provides methods for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days.The Bridge pattern is used to provide the base behavior of the calendar, namely, to determine whether a date is a business day.A calendar should be defined for specific exchange holiday schedule or for general country holiday schedule. Legacy city holiday schedule calendars will be moved to the exchange/country convention.Teststhe methods for adding and removing holidays are tested by inspecting the calendar before and after their invocation.
 
  -f-
-  -- Returns whether or not the calendar is initialized.
+  -- |Returns whether or not the calendar is initialized.
   empty
    ->bool
-  -- Returns the name of the calendar.
-  -- WarningThis method is used for output and comparison between calendars. It is not meant to be used for writing switch-on-type code.
+  -- |Returns the name of the calendar.
+  -- |WarningThis method is used for output and comparison between calendars. It is not meant to be used for writing switch-on-type code.
   name
    ->std::string
-  -- Returns true iff the date is a business day for the given market.
+  -- |Returns true iff the date is a business day for the given market.
   isBusinessDay
    ->bool
    ::const Date &
    -- ^d
-  -- Returns true iff the date is a holiday for the given market.
+  -- |Returns true iff the date is a holiday for the given market.
   isHoliday
    ->bool
    ::const Date &
    -- ^d
-  -- Returns true iff the weekday is part of the weekend for the given market.
+  -- |Returns true iff the weekday is part of the weekend for the given market.
   isWeekend
    ->bool
    ::Weekday
    -- ^w
-  -- Returns true iff the date is last business day for the month in given market.
+  -- |Returns true iff the date is last business day for the month in given market.
   isEndOfMonth
    ->bool
    ::const Date &
    -- ^d
-  -- last business day of the month to which the given date belongs
+  -- |last business day of the month to which the given date belongs
   endOfMonth
    ->Date
    ::const Date &
    -- ^d
-  -- Adds a date to the set of holidays for the given calendar.
+  -- |Adds a date to the set of holidays for the given calendar.
   addHoliday
    ->void
    ::const Date &
    -- ^
-  -- Removes a date from the set of holidays for the given calendar.
+  -- |Removes a date from the set of holidays for the given calendar.
   removeHoliday
    ->void
    ::const Date &
    -- ^
-  -- Adjusts a non-business day to the appropriate near business day with respect to the given convention.
+  -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention.
   adjust
    ->Date
    ::const Date &
@@ -53,7 +53,7 @@ Calendar
    ::BusinessDayConvention
    =Following
    -- ^convention
-  -- Advances the given date of the given number of business days and returns the result. The input date is not modified.
+  -- |Advances the given date of the given number of business days and returns the result. The input date is not modified.
   advance
    ->Date
    ::const Date &
@@ -68,7 +68,7 @@ Calendar
    ::bool
    =false
    -- ^endOfMonth
-  -- Advances the given date as specified by the given period and returns the result. The input date is not modified.
+  -- |Advances the given date as specified by the given period and returns the result. The input date is not modified.
   advance
    ->Date
    ::const Date &
@@ -81,7 +81,7 @@ Calendar
    ::bool
    =false
    -- ^endOfMonth
-  -- Calculates the number of business days between two given dates and returns the result.
+  -- |Calculates the number of business days between two given dates and returns the result.
   businessDaysBetween
    ->BigInteger
    ::const Date &
@@ -94,7 +94,7 @@ Calendar
    ::bool
    =false
    -- ^includeLast
-  -- Returns the holidays between two dates.
+  -- |Returns the holidays between two dates.
   holidayList
    ->std::vector< Date >
    ::const Calendar &
@@ -106,16 +106,12 @@ Calendar
    ::bool
    =false
    -- ^includeWeekEnds
- -v-
- -e-
  -f-
-  -- The default constructor returns a calendar with a null implementation, which is therefore unusable except as a placeholder.
+  -- |The default constructor returns a calendar with a null implementation, which is therefore unusable except as a placeholder.
   Calendar
    ->
- -v-
- -e-
  -f-
-  -- Returns true iff the two calendars belong to the same derived class.
+  -- |Returns true iff the two calendars belong to the same derived class.
   operator==
    ->bool
    ::const Calendar &
@@ -134,5 +130,3 @@ Calendar
    -- ^
    ::const Calendar &
    -- ^
- -v-
- -e-

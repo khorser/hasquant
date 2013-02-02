@@ -1,6 +1,5 @@
 UnitOfMeasure::Data
 
- -f-
  -v-
   name
    ::std::string
@@ -12,7 +11,6 @@ UnitOfMeasure::Data
    ::UnitOfMeasure
   rounding
    ::Rounding
- -e-
  -f-
   Data
    ->
@@ -28,5 +26,3 @@ UnitOfMeasure::Data
    ::const Rounding &
    =Rounding(0)
    -- ^rounding
- -v-
- -e-

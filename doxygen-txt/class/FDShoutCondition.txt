@@ -14,5 +14,3 @@ FDShoutCondition
    ::bool
    =false
    -- ^timeDependent
- -v-
- -e-

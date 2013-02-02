@@ -12,5 +12,3 @@ GaussianCopula
    -- ^x
    ::Real
    -- ^y
- -v-
- -e-

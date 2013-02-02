@@ -17,5 +17,3 @@ LocalBootstrap
    -- ^ts
   calculate
    ->void
- -v-
- -e-

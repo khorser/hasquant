@@ -24,5 +24,3 @@ BSMOperator
    -- ^
    ::Time
    -- ^residualTime
- -v-
- -e-

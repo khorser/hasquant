@@ -5,5 +5,3 @@ Switzerland
  -f-
   Switzerland
    ->
- -v-
- -e-

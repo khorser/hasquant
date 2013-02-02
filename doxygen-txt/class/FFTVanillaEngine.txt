@@ -10,5 +10,3 @@ FFTVanillaEngine
    ::Real
    =0.001
    -- ^logStrikeSpacing
- -v-
- -e-

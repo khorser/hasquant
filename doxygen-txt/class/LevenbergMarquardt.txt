@@ -28,5 +28,3 @@ LevenbergMarquardt
    -- ^fvec
    ::int *
    -- ^iflag
- -v-
- -e-

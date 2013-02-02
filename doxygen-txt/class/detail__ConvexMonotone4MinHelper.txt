@@ -25,5 +25,3 @@ detail::ConvexMonotone4MinHelper
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

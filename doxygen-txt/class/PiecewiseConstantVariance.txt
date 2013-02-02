@@ -25,5 +25,3 @@ PiecewiseConstantVariance
    ->Volatility
    ::Size
    -- ^i
- -v-
- -e-

@@ -2,8 +2,6 @@ Replication
  -- |Digital option replication strategy.
  -- |Specification of replication strategies used to price the embedded digital option in a digital coupon.
 
- -f-
- -v-
  -e-
   Type
    Sub
@@ -16,5 +14,3 @@ Replication
    -- ^
    ::Replication::Type
    -- ^
- -v-
- -e-

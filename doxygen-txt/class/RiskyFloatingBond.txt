@@ -24,5 +24,3 @@ RiskyFloatingBond
    -- ^notionals
    ::Handle< YieldTermStructure >
    -- ^yieldTS
- -v-
- -e-

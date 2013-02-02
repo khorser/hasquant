@@ -1,15 +1,10 @@
 detail::Point< base_data_table, EmptyRes >
 
- -f-
- -v-
- -e-
- -f-
  -v-
   first
    ::data_type
   second
    ::EmptyRes
- -e-
  -f-
   Point
    ->
@@ -31,5 +26,3 @@ detail::Point< base_data_table, EmptyRes >
    ->Real &
    ::Size
    -- ^n
- -v-
- -e-

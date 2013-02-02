@@ -7,5 +7,3 @@ AnalyticGJRGARCHEngine
    ->
    ::const boost::shared_ptr< GJRGARCHModel > &
    -- ^model
- -v-
- -e-

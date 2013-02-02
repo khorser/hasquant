@@ -15,5 +15,3 @@ FdmSnapshotCondition
    ->Time
   getValues
    ->const Array &
- -v-
- -e-

@@ -10,5 +10,3 @@ BinomialProbabilityOfAtLeastNEvents
    ->Real
    ::std::vector< Real >
    -- ^p
- -v-
- -e-

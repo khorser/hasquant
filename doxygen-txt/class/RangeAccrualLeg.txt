@@ -74,5 +74,3 @@ RangeAccrualLeg
    -- ^
   operator Leg
    ->
- -v-
- -e-

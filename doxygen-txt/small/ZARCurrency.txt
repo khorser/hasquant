@@ -5,5 +5,3 @@ ZARCurrency
  -f-
   ZARCurrency
    ->
- -v-
- -e-

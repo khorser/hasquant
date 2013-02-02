@@ -7,5 +7,3 @@ detail::BootstrapHelperSorter
    -- ^h1
    ::const boost::shared_ptr< Helper > &
    -- ^h2
- -v-
- -e-

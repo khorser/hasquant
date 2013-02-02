@@ -3,10 +3,8 @@ PrimeNumbers
  -- |Taken from "Monte Carlo Methods in Finance", by Peter Jäckel
 
  -f-
-  -- Get and store one after another.
+  -- |Get and store one after another.
   get
    ->BigNatural
    ::Size
    -- ^absoluteIndex
- -v-
- -e-

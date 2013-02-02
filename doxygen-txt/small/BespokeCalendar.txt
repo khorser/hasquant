@@ -3,16 +3,14 @@ BespokeCalendar
  -- |This calendar has no predefined set of business days. Holidays and weekdays can be defined by means of the provided interface. Instances constructed by copying remain linked to the original one; adding a new holiday or weekday will affect all linked instances.
 
  -f-
-  -- Warningdifferent bespoke calendars created with the same name (or different bespoke calendars created with no name) will compare as equal.
+  -- |Warningdifferent bespoke calendars created with the same name (or different bespoke calendars created with no name) will compare as equal.
   BespokeCalendar
    ->
    ::const std::string &
    =""
    -- ^name
-  -- marks the passed day as part of the weekend
+  -- |marks the passed day as part of the weekend
   addWeekend
    ->void
    ::Weekday
    -- ^
- -v-
- -e-

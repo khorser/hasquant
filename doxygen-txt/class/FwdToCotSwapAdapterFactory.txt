@@ -13,5 +13,3 @@ FwdToCotSwapAdapterFactory
    -- ^numberOfFactors
   update
    ->void
- -v-
- -e-

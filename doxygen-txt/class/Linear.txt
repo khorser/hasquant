@@ -1,13 +1,11 @@
 Linear
  -- |Linear-interpolation factory and traits
 
- -f-
  -v-
   global
    ::const bool
   requiredPoints
    ::const Size
- -e-
  -f-
   interpolate
    ->Interpolation
@@ -17,5 +15,3 @@ Linear
    -- ^xEnd
    ::const I2 &
    -- ^yBegin
- -v-
- -e-

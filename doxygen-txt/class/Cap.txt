@@ -8,5 +8,3 @@ Cap
    -- ^floatingLeg
    ::const std::vector< Rate > &
    -- ^exerciseRates
- -v-
- -e-

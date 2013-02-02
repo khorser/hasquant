@@ -5,5 +5,3 @@ BDTCurrency
  -f-
   BDTCurrency
    ->
- -v-
- -e-

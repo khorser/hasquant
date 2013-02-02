@@ -15,5 +15,3 @@ ExtendedCoxIngersollRoss::FittingParameter
    -- ^sigma
    ::Real
    -- ^x0
- -v-
- -e-

@@ -12,8 +12,6 @@ InterpolatedDefaultDensityCurve
    ->const std::vector< Real > &
   nodes
    ->std::vector< std::pair< Date, Real > >
- -v-
- -e-
  -f-
   InterpolatedDefaultDensityCurve
    ->
@@ -57,5 +55,3 @@ InterpolatedDefaultDensityCurve
    -- ^dayCounter
    ::const Interpolator &
    -- ^interpolator
- -v-
- -e-

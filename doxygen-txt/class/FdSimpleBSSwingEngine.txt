@@ -16,5 +16,3 @@ FdSimpleBSSwingEngine
    -- ^schemeDesc
   calculate
    ->void
- -v-
- -e-

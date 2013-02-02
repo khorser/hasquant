@@ -27,5 +27,3 @@ VegaBumpCollection
    ->bool
   isSensible
    ->bool
- -v-
- -e-

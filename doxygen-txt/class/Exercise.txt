@@ -1,8 +1,6 @@
 Exercise
  -- |Base exercise class.
 
- -f-
- -v-
  -e-
   Type
    American
@@ -21,10 +19,8 @@ Exercise
    ->Date
    ::Size
    -- ^index
-  -- Returns all exercise dates.
+  -- |Returns all exercise dates.
   dates
    ->const std::vector< Date > &
   lastDate
    ->Date
- -v-
- -e-

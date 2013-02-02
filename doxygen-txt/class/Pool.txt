@@ -33,5 +33,3 @@ Pool
    -- ^name
   names
    ->const std::vector< std::string > &
- -v-
- -e-

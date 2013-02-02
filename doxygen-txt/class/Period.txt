@@ -34,8 +34,6 @@ Period
    -- ^
   normalize
    ->void
- -v-
- -e-
  -f-
   years
    ->Real
@@ -141,5 +139,3 @@ Period
    -- ^
    ::const Period &
    -- ^
- -v-
- -e-

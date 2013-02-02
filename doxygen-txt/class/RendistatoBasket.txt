@@ -13,13 +13,9 @@ RendistatoBasket
    ->const std::vector< Real > &
   outstanding
    ->Real
- -v-
- -e-
  -f-
   update
    ->void
- -v-
- -e-
  -f-
   RendistatoBasket
    ->
@@ -29,5 +25,3 @@ RendistatoBasket
    -- ^outstandings
    ::const std::vector< Handle< Quote > > &
    -- ^cleanPriceQuotes
- -v-
- -e-

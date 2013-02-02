@@ -19,8 +19,6 @@ MultiStepPeriodCapletSwaptions
    -- ^cashFlowsGenerated
   clone
    ->std::auto_ptr< MarketModelMultiProduct >
- -v-
- -e-
  -f-
   MultiStepPeriodCapletSwaptions
    ->
@@ -38,5 +36,3 @@ MultiStepPeriodCapletSwaptions
    -- ^period
    ::Size
    -- ^offset
- -v-
- -e-

@@ -2,9 +2,6 @@ ForwardVanillaOption
  -- |Forward version of a vanilla option
 
  -f-
- -v-
- -e-
- -f-
   ForwardVanillaOption
    ->
    ::Real
@@ -15,5 +12,3 @@ ForwardVanillaOption
    -- ^payoff
    ::const boost::shared_ptr< Exercise > &
    -- ^exercise
- -v-
- -e-

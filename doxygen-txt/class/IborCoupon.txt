@@ -4,8 +4,6 @@ IborCoupon
  -f-
   iborIndex
    ->const boost::shared_ptr< IborIndex > &
- -v-
- -e-
  -f-
   IborCoupon
    ->
@@ -39,5 +37,3 @@ IborCoupon
    ::bool
    =false
    -- ^isInArrears
- -v-
- -e-

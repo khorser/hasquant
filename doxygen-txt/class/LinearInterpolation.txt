@@ -2,7 +2,7 @@ LinearInterpolation
  -- |Linear interpolation between discrete points
 
  -f-
-  -- the $ x $ values must be sorted.
+  -- |the $ x $ values must be sorted.
   LinearInterpolation
    ->
    ::const I1 &
@@ -11,5 +11,3 @@ LinearInterpolation
    -- ^xEnd
    ::const I2 &
    -- ^yBegin
- -v-
- -e-

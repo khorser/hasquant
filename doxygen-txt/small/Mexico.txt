@@ -2,8 +2,6 @@ Mexico
  -- |Mexican calendars
  -- |Holidays for the Mexican stock exchange (data from http://www.bmv.com.mx/): Saturdays Sundays New Year's Day, January 1st Constitution Day, February 5th Birthday of Benito Juarez, March 21st Holy Thursday Good Friday Labour Day, May 1st National Day, September 16th Our Lady of Guadalupe, December 12th Christmas, December 25th
 
- -f-
- -v-
  -e-
   Market
    BMV
@@ -14,5 +12,3 @@ Mexico
    ::Market
    =BMV
    -- ^m
- -v-
- -e-

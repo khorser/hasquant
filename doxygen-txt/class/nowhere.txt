@@ -3,5 +3,3 @@ nowhere
  -f-
   nowhere
    ->
- -v-
- -e-

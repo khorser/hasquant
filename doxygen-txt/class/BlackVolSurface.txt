@@ -3,7 +3,7 @@ BlackVolSurface
  -- |This abstract class defines the interface of concrete Black volatility (smile) surface which will be derived from this one.Volatilities are assumed to be expressed on an annual basis.
 
  -f-
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   BlackVolSurface
    ->
    ::const Calendar &
@@ -14,8 +14,8 @@ BlackVolSurface
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- default constructor
-  -- Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+  -- |default constructor
+  -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   BlackVolSurface
    ->
    ::BusinessDayConvention
@@ -24,7 +24,7 @@ BlackVolSurface
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- initialize with a fixed reference date
+  -- |initialize with a fixed reference date
   BlackVolSurface
    ->
    ::const Date &
@@ -38,7 +38,7 @@ BlackVolSurface
    ::const DayCounter &
    =DayCounter()
    -- ^dc
-  -- calculate the reference date based on the global evaluation date
+  -- |calculate the reference date based on the global evaluation date
   BlackVolSurface
    ->
    ::Natural
@@ -51,29 +51,25 @@ BlackVolSurface
    ::const DayCounter &
    =DayCounter()
    -- ^dc
- -v-
- -e-
  -f-
-  -- returns the smile for a given option tenor
+  -- |returns the smile for a given option tenor
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::const Period &
    -- ^
    ::bool
    -- ^extrapolate
-  -- returns the smile for a given option date
+  -- |returns the smile for a given option date
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::const Date &
    -- ^
    ::bool
    -- ^extrapolate
-  -- returns the smile for a given option time
+  -- |returns the smile for a given option time
   smileSection
    ->boost::shared_ptr< SmileSection >
    ::Time
    -- ^
    ::bool
    -- ^extrapolate
- -v-
- -e-

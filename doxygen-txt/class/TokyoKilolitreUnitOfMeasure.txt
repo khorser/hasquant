@@ -3,5 +3,3 @@ TokyoKilolitreUnitOfMeasure
  -f-
   TokyoKilolitreUnitOfMeasure
    ->
- -v-
- -e-

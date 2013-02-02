@@ -17,8 +17,6 @@ FlatVol
    ->const Matrix &
    ::Size
    -- ^i
- -v-
- -e-
  -f-
   FlatVol
    ->
@@ -34,5 +32,3 @@ FlatVol
    -- ^initialRates
    ::const std::vector< Spread > &
    -- ^displacements
- -v-
- -e-

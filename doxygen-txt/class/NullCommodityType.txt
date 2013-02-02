@@ -3,5 +3,3 @@ NullCommodityType
  -f-
   NullCommodityType
    ->
- -v-
- -e-

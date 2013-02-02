@@ -1,6 +1,5 @@
 SyntheticCDO::arguments
 
- -f-
  -v-
   basket
    ::boost::shared_ptr< Basket >
@@ -18,11 +17,8 @@ SyntheticCDO::arguments
    ::BusinessDayConvention
   yieldTS
    ::Handle< YieldTermStructure >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

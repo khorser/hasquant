@@ -4,5 +4,3 @@ OneDayCounter
  -f-
   OneDayCounter
    ->
- -v-
- -e-

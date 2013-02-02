@@ -1,5 +1,1 @@
 HazardRate::curve
-
- -f-
- -v-
- -e-

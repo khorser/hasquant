@@ -59,8 +59,6 @@ CurveState
    -- ^end
   clone
    ->std::auto_ptr< CurveState >
- -v-
- -e-
  -f-
   CurveState
    ->
@@ -68,5 +66,3 @@ CurveState
    -- ^rateTimes
   ~CurveState
    ->
- -v-
- -e-

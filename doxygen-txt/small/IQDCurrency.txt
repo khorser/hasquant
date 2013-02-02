@@ -5,5 +5,3 @@ IQDCurrency
  -f-
   IQDCurrency
    ->
- -v-
- -e-

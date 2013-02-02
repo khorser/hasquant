@@ -9,5 +9,3 @@ ChiSquareDistribution
    ->Real
    ::Real
    -- ^x
- -v-
- -e-

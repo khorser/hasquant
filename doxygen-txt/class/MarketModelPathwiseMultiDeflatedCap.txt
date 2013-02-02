@@ -16,5 +16,3 @@ MarketModelPathwiseMultiDeflatedCap
    -- ^startsAndEnds
   ~MarketModelPathwiseMultiDeflatedCap
    ->
- -v-
- -e-

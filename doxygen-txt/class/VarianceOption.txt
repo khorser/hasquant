@@ -11,8 +11,6 @@ VarianceOption
    ->Real
   payoff
    ->boost::shared_ptr< Payoff >
- -v-
- -e-
  -f-
   VarianceOption
    ->
@@ -24,5 +22,3 @@ VarianceOption
    -- ^startDate
    ::const Date &
    -- ^maturityDate
- -v-
- -e-

@@ -47,5 +47,3 @@ FdmLinearOpLayout
    -- ^i
    ::Integer
    -- ^offset
- -v-
- -e-

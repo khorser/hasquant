@@ -9,5 +9,3 @@ ForwardMeasureProcess1D
    -- ^
   getForwardMeasureTime
    ->Time
- -v-
- -e-

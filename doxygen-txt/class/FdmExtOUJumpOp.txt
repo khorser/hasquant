@@ -50,5 +50,3 @@ FdmExtOUJumpOp
    -- ^r
    ::Real
    -- ^s
- -v-
- -e-

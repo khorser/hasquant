@@ -5,20 +5,18 @@ FittedBondDiscountCurve::FittingMethod
  -f-
   ~FittingMethod
    ->
-  -- total number of coefficients to fit/solve for
+  -- |total number of coefficients to fit/solve for
   size
    ->Size
-  -- output array of results of optimization problem
+  -- |output array of results of optimization problem
   solution
    ->Array
-  -- final number of iterations used in the optimization problem
+  -- |final number of iterations used in the optimization problem
   numberOfIterations
    ->Integer
-  -- final value of cost function after optimization
+  -- |final value of cost function after optimization
   minimumCostValue
    ->Real
-  -- clone of the current object
+  -- |clone of the current object
   clone
    ->std::auto_ptr< FittingMethod >
- -v-
- -e-

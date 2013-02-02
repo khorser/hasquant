@@ -6,38 +6,34 @@ FloatingRateCoupon
    ->Real
    ::const Handle< YieldTermStructure > &
    -- ^discountingCurve
- -v-
- -e-
  -f-
-  -- floating index
+  -- |floating index
   index
    ->const boost::shared_ptr< InterestRateIndex > &
-  -- fixing days
+  -- |fixing days
   fixingDays
    ->Natural
-  -- fixing date
+  -- |fixing date
   fixingDate
    ->Date
-  -- index gearing, i.e. multiplicative coefficient for the index
+  -- |index gearing, i.e. multiplicative coefficient for the index
   gearing
    ->Real
-  -- spread paid over the fixing of the underlying index
+  -- |spread paid over the fixing of the underlying index
   spread
    ->Spread
-  -- fixing of the underlying index
+  -- |fixing of the underlying index
   indexFixing
    ->Rate
-  -- convexity adjustment
+  -- |convexity adjustment
   convexityAdjustment
    ->Rate
-  -- convexity-adjusted fixing
+  -- |convexity-adjusted fixing
   adjustedFixing
    ->Rate
-  -- whether or not the coupon fixes in arrears
+  -- |whether or not the coupon fixes in arrears
   isInArrears
    ->bool
- -v-
- -e-
  -f-
   FloatingRateCoupon
    ->
@@ -77,5 +73,3 @@ FloatingRateCoupon
    -- ^
   pricer
    ->boost::shared_ptr< FloatingRateCouponPricer >
- -v-
- -e-

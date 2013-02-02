@@ -12,5 +12,3 @@ VanillaStorageOption
    -- ^load
    ::Real
    -- ^changeRate
- -v-
- -e-

@@ -2,7 +2,7 @@ Payoff
  -- |Abstract base class for option payoffs.
 
  -f-
-  -- WarningThis method is used for output and comparison between payoffs. It is not meant to be used for writing switch-on-type code.
+  -- |WarningThis method is used for output and comparison between payoffs. It is not meant to be used for writing switch-on-type code.
   name
    ->std::string
   description
@@ -11,17 +11,11 @@ Payoff
    ->Real
    ::Real
    -- ^price
- -v-
- -e-
  -f-
   accept
    ->void
    ::AcyclicVisitor &
    -- ^
- -v-
- -e-
  -f-
   ~Payoff
    ->
- -v-
- -e-

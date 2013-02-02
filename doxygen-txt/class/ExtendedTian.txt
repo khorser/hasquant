@@ -26,5 +26,3 @@ ExtendedTian
    -- ^
    ::Size
    -- ^branch
- -v-
- -e-

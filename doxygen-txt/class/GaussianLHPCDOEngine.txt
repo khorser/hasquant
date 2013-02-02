@@ -6,5 +6,3 @@ GaussianLHPCDOEngine
    ->
    ::const Handle< OneFactorCopula > &
    -- ^copula
- -v-
- -e-

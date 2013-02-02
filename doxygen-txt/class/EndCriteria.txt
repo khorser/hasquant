@@ -2,8 +2,6 @@ EndCriteria
  -- |Criteria to end optimization process:
  -- |maximum number of iterations AND minimum number of iterations around stationary point x (independent variable) stationary pointy=f(x) (dependent variable) stationary pointstationary gradient
 
- -f-
- -v-
  -e-
   Type
    None
@@ -14,7 +12,7 @@ EndCriteria
    ZeroGradientNorm
    Unknown
  -f-
-  -- Initialization constructor.
+  -- |Initialization constructor.
   EndCriteria
    ->
    ::Size
@@ -37,7 +35,7 @@ EndCriteria
    ->Real
   gradientNormEpsilon
    ->Real
-  -- Test if the number of iterations is not too big and if a minimum point is not reached
+  -- |Test if the number of iterations is not too big and if a minimum point is not reached
   operator()
    ->bool
    ::const Size
@@ -56,14 +54,14 @@ EndCriteria
    -- ^normgnew
    ::EndCriteria::Type &
    -- ^ecType
-  -- Test if the number of iteration is below MaxIterations
+  -- |Test if the number of iteration is below MaxIterations
   checkMaxIterations
    ->bool
    ::const Size
    -- ^iteration
    ::EndCriteria::Type &
    -- ^ecType
-  -- Test if the root variation is below rootEpsilon
+  -- |Test if the root variation is below rootEpsilon
   checkStationaryPoint
    ->bool
    ::const Real
@@ -74,7 +72,7 @@ EndCriteria
    -- ^statStateIterations
    ::EndCriteria::Type &
    -- ^ecType
-  -- Test if the function variation is below functionEpsilon
+  -- |Test if the function variation is below functionEpsilon
   checkStationaryFunctionValue
    ->bool
    ::const Real
@@ -85,7 +83,7 @@ EndCriteria
    -- ^statStateIterations
    ::EndCriteria::Type &
    -- ^ecType
-  -- Test if the function value is below functionEpsilon
+  -- |Test if the function value is below functionEpsilon
   checkStationaryFunctionAccuracy
    ->bool
    ::const Real
@@ -94,12 +92,10 @@ EndCriteria
    -- ^positiveOptimization
    ::EndCriteria::Type &
    -- ^ecType
-  -- Test if the gradient norm variation is below gradientNormEpsilonTest if the gradient norm value is below gradientNormEpsilon
+  -- |Test if the gradient norm variation is below gradientNormEpsilonTest if the gradient norm value is below gradientNormEpsilon
   checkZeroGradientNorm
    ->bool
    ::const Real
    -- ^gNorm
    ::EndCriteria::Type &
    -- ^ecType
- -v-
- -e-

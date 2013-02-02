@@ -31,5 +31,3 @@ GaussianOrthogonalPolynomial
    -- ^i
    ::Real
    -- ^x
- -v-
- -e-

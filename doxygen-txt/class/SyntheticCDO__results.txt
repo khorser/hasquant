@@ -1,6 +1,5 @@
 SyntheticCDO::results
 
- -f-
  -v-
   premiumValue
    ::Real
@@ -18,9 +17,6 @@ SyntheticCDO::results
    ::Size
   expectedTrancheLoss
    ::std::vector< Real >
- -e-
  -f-
   reset
    ->void
- -v-
- -e-

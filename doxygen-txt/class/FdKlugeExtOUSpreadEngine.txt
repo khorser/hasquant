@@ -1,9 +1,6 @@
 FdKlugeExtOUSpreadEngine
 
  -f-
- -v-
- -e-
- -f-
   FdKlugeExtOUSpreadEngine
    ->
    ::const boost::shared_ptr< KlugeExtOUProcess > &
@@ -33,5 +30,3 @@ FdKlugeExtOUSpreadEngine
    -- ^schemeDesc
   calculate
    ->void
- -v-
- -e-

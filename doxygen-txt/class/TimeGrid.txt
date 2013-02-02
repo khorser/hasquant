@@ -5,23 +5,23 @@ TimeGrid
  -f-
   TimeGrid
    ->
-  -- Regularly spaced time-grid.
+  -- |Regularly spaced time-grid.
   TimeGrid
    ->
    ::Time
    -- ^end
    ::Size
    -- ^steps
-  -- Time grid with mandatory time points.
-  -- Mandatory points are guaranteed to belong to the grid. No additional points are added.
+  -- |Time grid with mandatory time points.
+  -- |Mandatory points are guaranteed to belong to the grid. No additional points are added.
   TimeGrid
    ->
    ::Iterator
    -- ^begin
    ::Iterator
    -- ^end
-  -- Time grid with mandatory time points.
-  -- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
+  -- |Time grid with mandatory time points.
+  -- |Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
   TimeGrid
    ->
    ::Iterator
@@ -30,20 +30,18 @@ TimeGrid
    -- ^end
    ::Size
    -- ^steps
- -v-
- -e-
  -f-
-  -- returns the index i such that grid[i] = t
+  -- |returns the index i such that grid[i] = t
   index
    ->Size
    ::Time
    -- ^t
-  -- returns the index i such that grid[i] is closest to t
+  -- |returns the index i such that grid[i] is closest to t
   closestIndex
    ->Size
    ::Time
    -- ^t
-  -- returns the time on the grid closest to the given t
+  -- |returns the time on the grid closest to the given t
   closestTime
    ->Time
    ::Time
@@ -54,8 +52,6 @@ TimeGrid
    ->Time
    ::Size
    -- ^i
- -v-
- -e-
  -f-
   operator[]
    ->Time
@@ -81,5 +77,3 @@ TimeGrid
    ->Time
   back
    ->Time
- -v-
- -e-

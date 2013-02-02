@@ -8,5 +8,3 @@ SteepestDescent
    ::const boost::shared_ptr< LineSearch > &
    =boost::shared_ptr< LineSearch >()
    -- ^lineSearch
- -v-
- -e-

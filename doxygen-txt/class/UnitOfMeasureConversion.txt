@@ -3,7 +3,7 @@ UnitOfMeasureConversion
  -f-
   UnitOfMeasureConversion
    ->
-  -- the conversionFactor $ r $ is given with the convention that a unit of the source is worth $ r $ units of the target.
+  -- |the conversionFactor $ r $ is given with the convention that a unit of the source is worth $ r $ units of the target.
   UnitOfMeasureConversion
    ->
    ::const CommodityType &
@@ -14,45 +14,37 @@ UnitOfMeasureConversion
    -- ^target
    ::Real
    -- ^conversionFactor
- -v-
- -e-
  -f-
-  -- the source UOM.
+  -- |the source UOM.
   source
    ->const UnitOfMeasure &
-  -- the target UOM.
+  -- |the target UOM.
   target
    ->const UnitOfMeasure &
-  -- the commodity type.
+  -- |the commodity type.
   commodityType
    ->const CommodityType &
-  -- the type
+  -- |the type
   type
    ->Type
-  -- the conversion factor
+  -- |the conversion factor
   conversionFactor
    ->Real
   code
    ->const std::string &
- -v-
- -e-
  -f-
-  -- apply the conversion factor to a cash amount
+  -- |apply the conversion factor to a cash amount
   convert
    ->Quantity
    ::const Quantity &
    -- ^quantity
-  -- chain two conversion factors
+  -- |chain two conversion factors
   chain
    ->UnitOfMeasureConversion
    ::const UnitOfMeasureConversion &
    -- ^r1
    ::const UnitOfMeasureConversion &
    -- ^r2
- -v-
- -e-
- -f-
- -v-
  -e-
   Type
    Direct

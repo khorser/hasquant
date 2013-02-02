@@ -9,5 +9,3 @@ IntegralEngine
    -- ^
   calculate
    ->void
- -v-
- -e-

@@ -1,7 +1,6 @@
 VanillaSwap::arguments
  -- |Arguments for simple swap calculation
 
- -f-
  -v-
   type
    ::Type
@@ -25,11 +24,8 @@ VanillaSwap::arguments
    ::std::vector< Spread >
   floatingCoupons
    ::std::vector< Real >
- -e-
  -f-
   arguments
    ->
   validate
    ->void
- -v-
- -e-

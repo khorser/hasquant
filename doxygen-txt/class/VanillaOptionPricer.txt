@@ -11,5 +11,3 @@ VanillaOptionPricer
    -- ^optionType
    ::Real
    -- ^deflator
- -v-
- -e-

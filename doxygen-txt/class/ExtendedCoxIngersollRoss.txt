@@ -19,5 +19,3 @@ ExtendedCoxIngersollRoss
    ::Real
    =0.05
    -- ^x0
- -v-
- -e-

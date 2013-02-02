@@ -5,5 +5,3 @@ WeekendsOnly
  -f-
   WeekendsOnly
    ->
- -v-
- -e-

@@ -28,5 +28,3 @@ G2Process
    ->Real
   rho
    ->Real
- -v-
- -e-

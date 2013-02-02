@@ -5,5 +5,3 @@ COPCurrency
  -f-
   COPCurrency
    ->
- -v-
- -e-

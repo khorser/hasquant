@@ -1,7 +1,5 @@
 CPI
 
- -f-
- -v-
  -e-
   -- |when you observe an index, how do you interpolate between fixings?
   InterpolationType

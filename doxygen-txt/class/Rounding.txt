@@ -9,10 +9,6 @@ Rounding
    ->Type
   roundingDigit
    ->Integer
- -v-
- -e-
- -f-
- -v-
  -e-
   -- |rounding methods
   -- |The rounding methods follow the OMG specification available at ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdfWarningthe names of the Floor and Ceiling methods might be misleading. Check the provided reference.
@@ -30,8 +26,8 @@ Rounding
    Ceiling
    -- ^positive numbers will be rounded down and negative numbers will be rounded up using the OMG round up and round down rules
  -f-
-  -- default constructor
-  -- Instances built through this constructor don't perform any rounding.
+  -- |default constructor
+  -- |Instances built through this constructor don't perform any rounding.
   Rounding
    ->
   Rounding
@@ -44,10 +40,8 @@ Rounding
    ::Integer
    =5
    -- ^digit
-  -- perform rounding
+  -- |perform rounding
   operator()
    ->Decimal
    ::Decimal
    -- ^value
- -v-
- -e-

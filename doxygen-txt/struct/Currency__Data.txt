@@ -1,6 +1,5 @@
 Currency::Data
 
- -f-
  -v-
   name
    ::std::string
@@ -20,7 +19,6 @@ Currency::Data
    ::Currency
   formatString
    ::std::string
- -e-
  -f-
   Data
    ->
@@ -43,5 +41,3 @@ Currency::Data
    ::const Currency &
    =Currency()
    -- ^triangulationCurrency
- -v-
- -e-

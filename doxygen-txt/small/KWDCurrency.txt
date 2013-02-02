@@ -5,5 +5,3 @@ KWDCurrency
  -f-
   KWDCurrency
    ->
- -v-
- -e-

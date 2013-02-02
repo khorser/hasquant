@@ -17,5 +17,3 @@ BlackCdsOptionEngine
    ->Handle< YieldTermStructure >
   volatility
    ->Handle< Quote >
- -v-
- -e-

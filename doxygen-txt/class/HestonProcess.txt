@@ -2,8 +2,6 @@ HestonProcess
  -- |Square-root stochastic-volatility Heston process.
  -- |This class describes the square root stochastic volatility process governed by \[ \begin{array}{rcl} dS(t, S) &=& \mu S dt + \sqrt{v} S dW_1 \\ dv(t, S) &=& \kappa (\theta - v) dt + \sigma \sqrt{v} dW_2 \\ dW_1 dW_2 &=& \rho dt \end{array} \]
 
- -f-
- -v-
  -e-
   Discretization
    PartialTruncation
@@ -50,5 +48,3 @@ HestonProcess
    ->const Handle< YieldTermStructure > &
   riskFreeRate
    ->const Handle< YieldTermStructure > &
- -v-
- -e-

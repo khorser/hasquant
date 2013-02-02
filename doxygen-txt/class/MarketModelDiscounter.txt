@@ -13,5 +13,3 @@ MarketModelDiscounter
    -- ^
    ::Size
    -- ^numeraire
- -v-
- -e-

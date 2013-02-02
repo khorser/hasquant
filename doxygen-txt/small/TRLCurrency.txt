@@ -5,5 +5,3 @@ TRLCurrency
  -f-
   TRLCurrency
    ->
- -v-
- -e-

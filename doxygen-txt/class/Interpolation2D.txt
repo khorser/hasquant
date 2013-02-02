@@ -3,9 +3,6 @@ Interpolation2D
  -- |Classes derived from this class will provide interpolated values from two sequences of length $ N $ and $ M $, representing the discretized values of the $ x $ and $ y $ variables, and a $ N \times M $ matrix representing the tabulated function values.
 
  -f-
- -v-
- -e-
- -f-
   Interpolation2D
    ->
   operator()
@@ -47,5 +44,3 @@ Interpolation2D
    -- ^y
   update
    ->void
- -v-
- -e-

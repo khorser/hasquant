@@ -1,15 +1,10 @@
 detail::Point< Real, EmptyArg >
 
- -f-
- -v-
- -e-
- -f-
  -v-
   first
    ::data_type
   second
    ::EmptyArg
- -e-
  -f-
   Point
    ->
@@ -33,5 +28,3 @@ detail::Point< Real, EmptyArg >
    ->data_type &
    ::Size
    -- ^n
- -v-
- -e-

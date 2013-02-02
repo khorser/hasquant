@@ -1,9 +1,6 @@
 detail::base_cubic_splint
 
  -f-
- -v-
- -e-
- -f-
   base_cubic_splint
    ->
    ::const return_type &
@@ -32,5 +29,3 @@ detail::base_cubic_splint
    -- ^
    ::result_type &
    -- ^res
- -v-
- -e-

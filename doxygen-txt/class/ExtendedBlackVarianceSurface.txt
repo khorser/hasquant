@@ -2,8 +2,6 @@ ExtendedBlackVarianceSurface
  -- |Black volatility surface modelled as variance surface.
  -- |This class is similar to BlackVarianceSurface, but extends it to use quotes for the input volatilities.
 
- -f-
- -v-
  -e-
   Extrapolation
    ConstantExtrapolation
@@ -34,5 +32,3 @@ ExtendedBlackVarianceSurface
    ::const Interpolator &
    =Interpolator()
    -- ^i
- -v-
- -e-

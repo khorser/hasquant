@@ -9,5 +9,3 @@ ForwardSpreadedTermStructure
    -- ^
    ::const Handle< Quote > &
    -- ^spread
- -v-
- -e-

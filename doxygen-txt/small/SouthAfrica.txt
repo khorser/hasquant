@@ -5,5 +5,3 @@ SouthAfrica
  -f-
   SouthAfrica
    ->
- -v-
- -e-

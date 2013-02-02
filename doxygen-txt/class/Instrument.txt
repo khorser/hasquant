@@ -3,49 +3,43 @@ Instrument
  -- |This class is purely abstract and defines the interface of concrete instruments which will be derived from this one.Testsobservability of class instances is checked.
 
  -f-
-  -- returns the net present value of the instrument.
+  -- |returns the net present value of the instrument.
   NPV
    ->Real
-  -- returns the error estimate on the NPV when available.
+  -- |returns the error estimate on the NPV when available.
   errorEstimate
    ->Real
-  -- returns the date the net present value refers to.
+  -- |returns the date the net present value refers to.
   valuationDate
    ->const Date &
-  -- returns any additional result returned by the pricing engine.
+  -- |returns any additional result returned by the pricing engine.
   result
    ->T
    ::const std::string &
    -- ^tag
-  -- returns all additional result returned by the pricing engine.
+  -- |returns all additional result returned by the pricing engine.
   additionalResults
    ->const std::map< std::string, boost::any > &
-  -- returns whether the instrument might have value greater than zero.
+  -- |returns whether the instrument might have value greater than zero.
   isExpired
    ->bool
- -v-
- -e-
  -f-
-  -- set the pricing engine to be used.
-  -- Warningcalling this method will have no effects in case the performCalculation method was overridden in a derived class.
+  -- |set the pricing engine to be used.
+  -- |Warningcalling this method will have no effects in case the performCalculation method was overridden in a derived class.
   setPricingEngine
    ->void
    ::const boost::shared_ptr< PricingEngine > &
    -- ^
- -v-
- -e-
  -f-
   Instrument
    ->
-  -- When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used.
+  -- |When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used.
   setupArguments
    ->void
    ::PricingEngine::arguments *
    -- ^
-  -- When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used.
+  -- |When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used.
   fetchResults
    ->void
    ::const PricingEngine::results *
    -- ^
- -v-
- -e-

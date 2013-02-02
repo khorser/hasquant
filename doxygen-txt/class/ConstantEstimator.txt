@@ -15,5 +15,3 @@ ConstantEstimator
    ->void
    ::const TimeSeries< Volatility > &
    -- ^
- -v-
- -e-

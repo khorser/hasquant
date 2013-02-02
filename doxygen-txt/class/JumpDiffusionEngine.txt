@@ -15,5 +15,3 @@ JumpDiffusionEngine
    -- ^maxIterations
   calculate
    ->void
- -v-
- -e-

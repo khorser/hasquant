@@ -12,5 +12,3 @@ GenericModelEngine
    ->
    ::const boost::shared_ptr< ModelType > &
    -- ^model
- -v-
- -e-

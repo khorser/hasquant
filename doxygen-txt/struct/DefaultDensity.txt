@@ -2,9 +2,6 @@ DefaultDensity
  -- |Default-density-curve traits.
 
  -f-
- -v-
- -e-
- -f-
   initialDate
    ->Date
    ::const DefaultProbabilityTermStructure *
@@ -53,5 +50,3 @@ DefaultDensity
    -- ^i
   maxIterations
    ->Size
- -v-
- -e-

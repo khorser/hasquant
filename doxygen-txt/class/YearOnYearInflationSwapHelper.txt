@@ -18,5 +18,3 @@ YearOnYearInflationSwapHelper
    -- ^dayCounter
    ::const boost::shared_ptr< YoYInflationIndex > &
    -- ^yii
- -v-
- -e-

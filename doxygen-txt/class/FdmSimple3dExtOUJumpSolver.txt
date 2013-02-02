@@ -20,5 +20,3 @@ FdmSimple3dExtOUJumpSolver
    -- ^y
    ::Real
    -- ^z
- -v-
- -e-

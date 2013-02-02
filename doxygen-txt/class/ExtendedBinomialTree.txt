@@ -1,8 +1,6 @@
 ExtendedBinomialTree
  -- |Binomial tree base class.
 
- -f-
- -v-
  -e-
   Branches
    branches
@@ -27,5 +25,3 @@ ExtendedBinomialTree
    -- ^index
    ::Size
    -- ^branch
- -v-
- -e-

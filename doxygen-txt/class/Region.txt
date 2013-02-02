@@ -6,8 +6,6 @@ Region
    ->const std::string &
   code
    ->const std::string &
- -v-
- -e-
  -f-
   operator==
    ->bool
@@ -21,5 +19,3 @@ Region
    -- ^
    ::const Region &
    -- ^
- -v-
- -e-

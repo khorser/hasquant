@@ -9,5 +9,3 @@ VarianceGammaEngine
    -- ^
   calculate
    ->void
- -v-
- -e-

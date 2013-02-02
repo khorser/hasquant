@@ -2,7 +2,7 @@ OneFactorModel::ShortRateTree
  -- |Recombining trinomial tree discretizing the state variable.
 
  -f-
-  -- Plain tree build-up from short-rate dynamics.
+  -- |Plain tree build-up from short-rate dynamics.
   ShortRateTree
    ->
    ::const boost::shared_ptr< TrinomialTree > &
@@ -11,7 +11,7 @@ OneFactorModel::ShortRateTree
    -- ^dynamics
    ::const TimeGrid &
    -- ^timeGrid
-  -- Tree build-up + numerical fitting to term-structure.
+  -- |Tree build-up + numerical fitting to term-structure.
   ShortRateTree
    ->
    ::const boost::shared_ptr< TrinomialTree > &
@@ -54,5 +54,3 @@ OneFactorModel::ShortRateTree
    -- ^index
    ::Size
    -- ^branch
- -v-
- -e-

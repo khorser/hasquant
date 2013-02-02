@@ -12,5 +12,3 @@ MTBrownianGeneratorFactory
    -- ^factors
    ::Size
    -- ^steps
- -v-
- -e-

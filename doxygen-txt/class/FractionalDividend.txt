@@ -7,8 +7,6 @@ FractionalDividend
    ->Real
   nominal
    ->Real
- -v-
- -e-
  -f-
   FractionalDividend
    ->
@@ -24,5 +22,3 @@ FractionalDividend
    -- ^nominal
    ::const Date &
    -- ^date
- -v-
- -e-

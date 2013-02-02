@@ -3,9 +3,6 @@ MultiCubicSpline
  -- |Testsinterpolated values are checked against the original function.Possible enhancements allow extrapolation as for the other interpolationsinvestigate if and how to implement Hyman filters and different boundary conditions Bugcannot interpolate at the grid points on the boundary surface of the N-dimensional region
 
  -f-
- -v-
- -e-
- -f-
   MultiCubicSpline
    ->
    ::const SplineGrid &
@@ -25,5 +22,3 @@ MultiCubicSpline
    ->void
    ::const argument_type &
    -- ^x
- -v-
- -e-

@@ -65,10 +65,8 @@ InflationTermStructure
    ::const boost::shared_ptr< Seasonality > &
    =boost::shared_ptr< Seasonality >()
    -- ^seasonality
- -v-
- -e-
  -f-
-  -- The TS observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag.
+  -- |The TS observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag.
   observationLag
    ->Period
   frequency
@@ -79,15 +77,13 @@ InflationTermStructure
    ->Rate
   nominalTermStructure
    ->Handle< YieldTermStructure >
-  -- minimum (base) date
-  -- Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking).
+  -- |minimum (base) date
+  -- |Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking).
   baseDate
    ->Date
- -v-
- -e-
  -f-
-  -- Functions to set and get seasonality.
-  -- Calling setSeasonality with no arguments means unsetting as the default is used to choose unsetting.
+  -- |Functions to set and get seasonality.
+  -- |Calling setSeasonality with no arguments means unsetting as the default is used to choose unsetting.
   setSeasonality
    ->void
    ::const boost::shared_ptr< Seasonality > &
@@ -97,5 +93,3 @@ InflationTermStructure
    ->boost::shared_ptr< Seasonality >
   hasSeasonality
    ->bool
- -v-
- -e-

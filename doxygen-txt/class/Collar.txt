@@ -10,5 +10,3 @@ Collar
    -- ^capRates
    ::const std::vector< Rate > &
    -- ^floorRates
- -v-
- -e-

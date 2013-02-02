@@ -6,8 +6,6 @@ BMASwapRateHelper
    ->void
    ::YieldTermStructure *
    -- ^
- -v-
- -e-
  -f-
   BMASwapRateHelper
    ->
@@ -29,5 +27,3 @@ BMASwapRateHelper
    -- ^bmaIndex
    ::const boost::shared_ptr< IborIndex > &
    -- ^index
- -v-
- -e-

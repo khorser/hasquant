@@ -9,5 +9,3 @@ AmortizingPayment
    -- ^amount
    ::const Date &
    -- ^date
- -v-
- -e-

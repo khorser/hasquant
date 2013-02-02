@@ -41,5 +41,3 @@ SphereCylinderOptimizer
    -- ^y2
    ::Real &
    -- ^y3
- -v-
- -e-

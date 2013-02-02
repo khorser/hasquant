@@ -9,5 +9,3 @@ PathPricer
    ->ValueType
    ::const PathType &
    -- ^path
- -v-
- -e-

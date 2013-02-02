@@ -10,5 +10,3 @@ GaussKronrodAdaptive
    ::Size
    =Null< Size >()
    -- ^maxFunctionEvaluations
- -v-
- -e-

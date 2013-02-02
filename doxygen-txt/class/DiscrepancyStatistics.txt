@@ -5,11 +5,6 @@ DiscrepancyStatistics
  -f-
   discrepancy
    ->Real
- -v-
- -e-
- -f-
- -v-
- -e-
  -f-
   DiscrepancyStatistics
    ->
@@ -36,5 +31,3 @@ DiscrepancyStatistics
    ::Size
    =0
    -- ^dimension
- -v-
- -e-

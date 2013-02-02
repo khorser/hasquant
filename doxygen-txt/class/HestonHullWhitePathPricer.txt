@@ -13,5 +13,3 @@ HestonHullWhitePathPricer
    ->Real
    ::const MultiPath &
    -- ^path
- -v-
- -e-

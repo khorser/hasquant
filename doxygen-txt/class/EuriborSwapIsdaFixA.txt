@@ -18,5 +18,3 @@ EuriborSwapIsdaFixA
    -- ^forwarding
    ::const Handle< YieldTermStructure > &
    -- ^discounting
- -v-
- -e-

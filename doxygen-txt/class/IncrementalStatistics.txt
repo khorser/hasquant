@@ -3,47 +3,45 @@ IncrementalStatistics
  -- |It can accumulate a set of data and return statistics (e.g: mean, variance, skewness, kurtosis, error estimation, etc.)Warninghigh moments are numerically unstable for high average/standardDeviation ratios.
 
  -f-
-  -- number of samples collected
+  -- |number of samples collected
   samples
    ->Size
-  -- sum of data weights
+  -- |sum of data weights
   weightSum
    ->Real
-  -- returns the mean, defined as \[ \langle x \rangle = \frac{\sum w_i x_i}{\sum w_i}. \]
+  -- |returns the mean, defined as \[ \langle x \rangle = \frac{\sum w_i x_i}{\sum w_i}. \]
   mean
    ->Real
-  -- returns the variance, defined as \[ \frac{N}{N-1} \left\langle \left( x-\langle x \rangle \right)^2 \right\rangle. \]
+  -- |returns the variance, defined as \[ \frac{N}{N-1} \left\langle \left( x-\langle x \rangle \right)^2 \right\rangle. \]
   variance
    ->Real
-  -- returns the standard deviation $ \sigma $, defined as the square root of the variance.
+  -- |returns the standard deviation $ \sigma $, defined as the square root of the variance.
   standardDeviation
    ->Real
-  -- returns the error estimate $ \epsilon $, defined as the square root of the ratio of the variance to the number of samples.
+  -- |returns the error estimate $ \epsilon $, defined as the square root of the ratio of the variance to the number of samples.
   errorEstimate
    ->Real
-  -- returns the skewness, defined as \[ \frac{N^2}{(N-1)(N-2)} \frac{\left\langle \left( x-\langle x \rangle \right)^3 \right\rangle}{\sigma^3}. \] The above evaluates to 0 for a Gaussian distribution.
+  -- |returns the skewness, defined as \[ \frac{N^2}{(N-1)(N-2)} \frac{\left\langle \left( x-\langle x \rangle \right)^3 \right\rangle}{\sigma^3}. \] The above evaluates to 0 for a Gaussian distribution.
   skewness
    ->Real
-  -- returns the excess kurtosis, defined as \[ \frac{N^2(N+1)}{(N-1)(N-2)(N-3)} \frac{\left\langle \left(x-\langle x \rangle \right)^4 \right\rangle}{\sigma^4} - \frac{3(N-1)^2}{(N-2)(N-3)}. \] The above evaluates to 0 for a Gaussian distribution.
+  -- |returns the excess kurtosis, defined as \[ \frac{N^2(N+1)}{(N-1)(N-2)(N-3)} \frac{\left\langle \left(x-\langle x \rangle \right)^4 \right\rangle}{\sigma^4} - \frac{3(N-1)^2}{(N-2)(N-3)}. \] The above evaluates to 0 for a Gaussian distribution.
   kurtosis
    ->Real
-  -- returns the minimum sample value
+  -- |returns the minimum sample value
   min
    ->Real
-  -- returns the maximum sample value
+  -- |returns the maximum sample value
   max
    ->Real
-  -- returns the downside variance, defined as \[ \frac{N}{N-1} \times \frac{ \sum_{i=1}^{N} \theta \times x_i^{2}}{ \sum_{i=1}^{N} w_i} \], where $ \theta $ = 0 if x > 0 and $ \theta $ =1 if x <0
+  -- |returns the downside variance, defined as \[ \frac{N}{N-1} \times \frac{ \sum_{i=1}^{N} \theta \times x_i^{2}}{ \sum_{i=1}^{N} w_i} \], where $ \theta $ = 0 if x > 0 and $ \theta $ =1 if x <0
   downsideVariance
    ->Real
-  -- returns the downside deviation, defined as the square root of the downside variance.
+  -- |returns the downside deviation, defined as the square root of the downside variance.
   downsideDeviation
    ->Real
- -v-
- -e-
  -f-
-  -- adds a datum to the set, possibly with a weight
-  -- weight must be positive or null
+  -- |adds a datum to the set, possibly with a weight
+  -- |weight must be positive or null
   add
    ->void
    ::Real
@@ -51,15 +49,15 @@ IncrementalStatistics
    ::Real
    =1.0
    -- ^weight
-  -- adds a sequence of data to the set, with default weight
+  -- |adds a sequence of data to the set, with default weight
   addSequence
    ->void
    ::DataIterator
    -- ^begin
    ::DataIterator
    -- ^end
-  -- adds a sequence of data to the set, each with its weight
-  -- weights must be positive or null
+  -- |adds a sequence of data to the set, each with its weight
+  -- |weights must be positive or null
   addSequence
    ->void
    ::DataIterator
@@ -68,16 +66,9 @@ IncrementalStatistics
    -- ^end
    ::WeightIterator
    -- ^wbegin
-  -- resets the data to a null set
+  -- |resets the data to a null set
   reset
    ->void
- -v-
- -e-
- -f-
- -v-
- -e-
  -f-
   IncrementalStatistics
    ->
- -v-
- -e-

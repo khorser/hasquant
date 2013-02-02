@@ -1,10 +1,8 @@
 detail::DataTable
 
- -f-
  -v-
   data_table_
    ::std::vector< X >
- -e-
  -f-
   DataTable
    ->
@@ -28,5 +26,3 @@ detail::DataTable
    ->X &
    ::Size
    -- ^n
- -v-
- -e-

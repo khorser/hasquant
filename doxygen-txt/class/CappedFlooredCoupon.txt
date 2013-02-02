@@ -11,8 +11,6 @@ CappedFlooredCoupon
    ->void
    ::const boost::shared_ptr< FloatingRateCouponPricer > &
    -- ^pricer
- -v-
- -e-
  -f-
   CappedFlooredCoupon
    ->
@@ -24,17 +22,15 @@ CappedFlooredCoupon
    ::Rate
    =Null< Rate >()
    -- ^floor
-  -- cap
+  -- |cap
   cap
    ->Rate
-  -- floor
+  -- |floor
   floor
    ->Rate
-  -- effective cap of fixing
+  -- |effective cap of fixing
   effectiveCap
    ->Rate
-  -- effective floor of fixing
+  -- |effective floor of fixing
   effectiveFloor
    ->Rate
- -v-
- -e-

@@ -8,5 +8,3 @@ GaussJacobiPolynomial
    -- ^alpha
    ::Real
    -- ^beta
- -v-
- -e-

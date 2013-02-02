@@ -1,12 +1,8 @@
 CompoundOption::arguments
 
- -f-
  -v-
   motherOption
    ::boost::shared_ptr< OneAssetOption >
- -e-
  -f-
   validate
    ->void
- -v-
- -e-

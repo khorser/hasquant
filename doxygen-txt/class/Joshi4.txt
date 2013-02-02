@@ -25,5 +25,3 @@ Joshi4
    -- ^
    ::Size
    -- ^branch
- -v-
- -e-

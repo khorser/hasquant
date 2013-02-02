@@ -40,5 +40,3 @@ FdmSimple2dBSSolver
    -- ^s
    ::Real
    -- ^a
- -v-
- -e-

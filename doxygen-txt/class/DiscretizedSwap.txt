@@ -15,5 +15,3 @@ DiscretizedSwap
    -- ^size
   mandatoryTimes
    ->std::vector< Time >
- -v-
- -e-

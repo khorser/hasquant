@@ -4,5 +4,3 @@ GaussChebyshev2ndPolynomial
  -f-
   GaussChebyshev2ndPolynomial
    ->
- -v-
- -e-

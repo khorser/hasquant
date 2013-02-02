@@ -1,8 +1,6 @@
 Callability
  -- |instrument callability
 
- -f-
- -v-
  -e-
   -- |type of the callability
   Type
@@ -21,5 +19,3 @@ Callability
    ->const Price &
   type
    ->Type
- -v-
- -e-

@@ -110,5 +110,3 @@ DigitalIborLeg
    -- ^replication
   operator Leg
    ->
- -v-
- -e-

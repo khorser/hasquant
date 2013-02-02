@@ -17,12 +17,10 @@ CMSMMDriftCalculator
    -- ^alive
    ::Size
    -- ^spanningFwds
-  -- Computes the drifts.
+  -- |Computes the drifts.
   compute
    ->void
    ::const CMSwapCurveState &
    -- ^cs
    ::std::vector< Real > &
    -- ^drifts
- -v-
- -e-

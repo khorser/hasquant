@@ -5,5 +5,3 @@ EURCurrency
  -f-
   EURCurrency
    ->
- -v-
- -e-

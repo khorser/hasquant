@@ -5,5 +5,3 @@ Turkey
  -f-
   Turkey
    ->
- -v-
- -e-

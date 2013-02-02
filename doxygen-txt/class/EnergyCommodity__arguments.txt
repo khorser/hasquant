@@ -1,14 +1,10 @@
 EnergyCommodity::arguments
 
- -f-
  -v-
   currency
    ::Currency
   unitOfMeasure
    ::UnitOfMeasure
- -e-
  -f-
   validate
    ->void
- -v-
- -e-

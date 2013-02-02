@@ -1,8 +1,6 @@
 IMM
  -- |Main cycle of the International Money Market (a.k.a. IMM) months.
 
- -f-
- -v-
  -e-
   Month
    F
@@ -18,7 +16,7 @@ IMM
    X
    Z
  -f-
-  -- returns whether or not the given date is an IMM date
+  -- |returns whether or not the given date is an IMM date
   isIMMdate
    ->bool
    ::const Date &
@@ -26,7 +24,7 @@ IMM
    ::bool
    =true
    -- ^mainCycle
-  -- returns whether or not the given string is an IMM code
+  -- |returns whether or not the given string is an IMM code
   isIMMcode
    ->bool
    ::const std::string &
@@ -34,12 +32,12 @@ IMM
    ::bool
    =true
    -- ^mainCycle
-  -- returns the IMM code for the given date (e.g. H3 for March 20th, 2013).WarningIt raises an exception if the input date is not an IMM date
+  -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013).WarningIt raises an exception if the input date is not an IMM date
   code
    ->std::string
    ::const Date &
    -- ^immDate
-  -- returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3).WarningIt raises an exception if the input string is not an IMM code
+  -- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3).WarningIt raises an exception if the input string is not an IMM code
   date
    ->Date
    ::const std::string &
@@ -47,8 +45,8 @@ IMM
    ::const Date &
    =Date()
    -- ^referenceDate
-  -- next IMM date following the given date
-  -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
+  -- |next IMM date following the given date
+  -- |returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
   nextDate
    ->Date
    ::const Date &
@@ -57,8 +55,8 @@ IMM
    ::bool
    =true
    -- ^mainCycle
-  -- next IMM date following the given IMM code
-  -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
+  -- |next IMM date following the given IMM code
+  -- |returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
   nextDate
    ->Date
    ::const std::string &
@@ -69,8 +67,8 @@ IMM
    ::const Date &
    =Date()
    -- ^referenceDate
-  -- next IMM code following the given date
-  -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
+  -- |next IMM code following the given date
+  -- |returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
   nextCode
    ->std::string
    ::const Date &
@@ -79,8 +77,8 @@ IMM
    ::bool
    =true
    -- ^mainCycle
-  -- next IMM code following the given code
-  -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
+  -- |next IMM code following the given code
+  -- |returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
   nextCode
    ->std::string
    ::const std::string &
@@ -91,5 +89,3 @@ IMM
    ::const Date &
    =Date()
    -- ^referenceDate
- -v-
- -e-

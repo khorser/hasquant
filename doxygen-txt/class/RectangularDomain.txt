@@ -25,5 +25,3 @@ RectangularDomain
    ->Real
   yUpperBound
    ->Real
- -v-
- -e-

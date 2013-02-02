@@ -9,5 +9,3 @@ UnitDisplacedBlackYoYInflationCouponPricer
    -- ^capletVol
   ~UnitDisplacedBlackYoYInflationCouponPricer
    ->
- -v-
- -e-

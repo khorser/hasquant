@@ -1,9 +1,6 @@
 MCHimalayaEngine
 
  -f-
- -v-
- -e-
- -f-
   MCHimalayaEngine
    ->
    ::const boost::shared_ptr< StochasticProcessArray > &
@@ -22,5 +19,3 @@ MCHimalayaEngine
    -- ^seed
   calculate
    ->void
- -v-
- -e-

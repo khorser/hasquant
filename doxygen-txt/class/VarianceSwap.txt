@@ -15,8 +15,6 @@ VarianceSwap
    ->Real
   variance
    ->Real
- -v-
- -e-
  -f-
   VarianceSwap
    ->
@@ -30,5 +28,3 @@ VarianceSwap
    -- ^startDate
    ::const Date &
    -- ^maturityDate
- -v-
- -e-

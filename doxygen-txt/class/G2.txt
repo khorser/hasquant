@@ -42,5 +42,3 @@ G2
    -- ^range
    ::Size
    -- ^intervals
- -v-
- -e-

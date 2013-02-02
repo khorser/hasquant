@@ -36,5 +36,3 @@ LfmCovarianceParameterization
    ::const Array &
    =Null< Array >()
    -- ^x
- -v-
- -e-
