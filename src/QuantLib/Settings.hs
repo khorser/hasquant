@@ -1,4 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
+-- |global repository for run-time library settings
 module QuantLib.Settings
   (
   -- accessors and mutators
@@ -22,22 +23,23 @@ foreign import ccall safe "ql.h qlSettingsSetEvaluationDate"
 foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"
   c_setEnforceTodaysHistoricFixings :: CInt -> Ptr CString -> IO ()
 
--- |returns the current value of the Evaluation Date (qlSettingsEvaluationDate)
+-- |returns the current value of the Evaluation Date:
+-- the date at which pricing is to be performed. QuantLibXL: qlSettingsEvaluationDate
 evaluationDate :: IO Day
 evaluationDate = $(ffiCall 'evaluationDate) c_evaluationDate
 
--- |sets the value of the Evaluation Date (qlSettingsSetEvaluationDate)
+-- |sets the value of the Evaluation Date. QuantLibXL: qlSettingsSetEvaluationDate
 setEvaluationDate :: Maybe Day -> IO ()
 setEvaluationDate = $(ffiCallX 'setEvaluationDate) c_setEvaluationDate
 
 -- |returns the current value of the boolean which enforce the usage of historic
--- fixings for today's date (qlSettingsEnforceTodaysHistoricFixings)
+-- fixings for today's date. QuantLibXL: qlSettingsEnforceTodaysHistoricFixings
 enforceTodaysHistoricFixings :: IO Bool
 enforceTodaysHistoricFixings =
   $(ffiCall 'enforceTodaysHistoricFixings) c_enforceTodaysHistoricFixings
 
 -- |sets the value of the boolean which enforce the usage of historic fixings
--- for today's date (qlSettingsSetEnforceTodaysHistoricFixings)
+-- for today's date. QuantLibXL: qlSettingsSetEnforceTodaysHistoricFixings
 setEnforceTodaysHistoricFixings :: Bool -> IO ()
 setEnforceTodaysHistoricFixings =
   $(ffiCallX 'setEnforceTodaysHistoricFixings) c_setEnforceTodaysHistoricFixings

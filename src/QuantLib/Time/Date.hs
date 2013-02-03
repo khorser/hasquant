@@ -44,7 +44,7 @@ instance QLEnum Weekday
 year :: Day -> Integer
 year x = y where (y, _, _) = toGregorian x
 
--- |returns TRUE if a year is leap (qlDateIsLeap), reimplemented in Haskell
+-- |returns TRUE if the given date's year is leap. QuantLibXL: qlDateIsLeap
 isLeap :: Day -> Bool
 isLeap = isLeapYear . year
 
@@ -56,11 +56,11 @@ data Month = January | February | March | April | May | June | July | August
   | September | October | November | December
   deriving (Show, Eq, Enum, Typeable)
 
--- |returns the earliest date allowed in QuantLib (qlDateMinDate)
+-- |earliest allowed date in QuantLib. QuantLibXL: qlDateMinDate
 minDate :: Day
 minDate = fromQlDate c_minDateSerialNumber
 
--- |returns the latest date allowed in QuantLib (qlDateMaxDate)
+-- |latest date allowed in QuantLib. QuantLibXL: qlDateMaxDate
 maxDate :: Day
 maxDate = fromQlDate c_maxDateSerialNumber
 

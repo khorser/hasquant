@@ -18,11 +18,12 @@ foreign import ccall safe "ql.h qlSimpleQuote"
 foreign import ccall safe "ql.h qlQuoteValue"
   c_quoteValue :: Ptr CQuote -> Ptr CString -> IO CDouble
 
--- | (qlSimpleQuote)
-simpleQuote :: Double -> IO Quote
+-- |market element returning a stored value. QuantLibXL: qlSimpleQuote
+simpleQuote :: Double -- ^value
+  -> IO Quote
 simpleQuote = $(ffiConstruct 'simpleQuote) c_simpleQuote
 
--- |Returns the current value of the given Quote object (qlQuoteValue)
+-- |Returns the current value of the given Quote object. QuantLibXL: qlQuoteValue
 value :: Quote -> Double
 value = $(ffiCallXIO 'value) c_quoteValue
 -- XXX assuming quotes are immutable

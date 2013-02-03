@@ -46,13 +46,6 @@ YieldTermStructure
    =std::vector< Date >()
    -- ^jumpDates
  -f-
-  discount
-   ->DiscountFactor
-   ::const Date &
-   -- ^d
-   ::bool
-   =false
-   -- ^extrapolate
   -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
   discount
    ->DiscountFactor

@@ -3,10 +3,6 @@ CashFlows
  -- |Possible enhancementsadd tests
 
  -f-
-  startDate
-   ->Date
-   ::const Leg &
-   -- ^leg
   maturityDate
    ->Date
    ::const Leg &

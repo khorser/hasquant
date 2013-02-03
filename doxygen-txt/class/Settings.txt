@@ -1,13 +1,6 @@
 Settings
- -- |global repository for run-time library settings
 
  -f-
-  -- |the date at which pricing is to be performed.
-  -- |Client code can inspect the evaluation date, as in: Dated=Settings::instance().evaluationDate(); where today's date is returned if the evaluation date is set to the null date (its default value;) can set it to a new value, as in: Settings::instance().evaluationDate()=d; and can register with it, as in: registerWith(Settings::instance().evaluationDate()); to be notified when it is set to a new value. Warninga notification is not sent when the evaluation date changes for natural causesi.e., a date was not explicitly set (which results in today's date being used for pricing) and the current date changes as the clock strikes midnight.
-  evaluationDate
-   ->DateProxy &
-  evaluationDate
-   ->const DateProxy &
   -- |Call this to prevent the evaluation date to change at midnight (and, incidentally, to gain quite a bit of performance.) If no evaluation date was previously set, it is equivalent to setting the evaluation date to Date::todaysDate(); if an evaluation date other than Date() was already set, it has no effect.
   anchorEvaluationDate
    ->void
@@ -28,7 +21,3 @@ Settings
    ->boost::optional< bool > &
   includeTodaysCashFlows
    ->boost::optional< bool >
-  enforcesTodaysHistoricFixings
-   ->bool &
-  enforcesTodaysHistoricFixings
-   ->bool

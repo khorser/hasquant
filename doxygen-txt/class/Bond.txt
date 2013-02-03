@@ -23,10 +23,6 @@ Bond
    ->const boost::shared_ptr< CashFlow > &
   startDate
    ->Date
-  maturityDate
-   ->Date
-  issueDate
-   ->Date
   isTradable
    ->bool
    ::Date

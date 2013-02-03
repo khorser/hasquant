@@ -3,24 +3,6 @@ Date
  -- |This class provides methods to inspect dates as well as methods and operators which implement a limited date algebra (increasing and decreasing dates, and calculating their difference).Testsself-consistency of dates, serial numbers, days of month, months, and weekdays is checked over the whole date range.
 
  -f-
-  -- |Default constructor returning a null date.
-  Date
-   ->
-  -- |Constructor taking a serial number as given by Applix or Excel.
-  Date
-   ->
-   ::BigInteger
-   -- ^serialNumber
-  -- |More traditional constructor.
-  Date
-   ->
-   ::Day
-   -- ^d
-   ::Month
-   -- ^m
-   ::Year
-   -- ^y
- -f-
   weekday
    ->Weekday
   dayOfMonth
@@ -95,17 +77,6 @@ Date
   -- |today's date.
   todaysDate
    ->Date
-  -- |earliest allowed date
-  minDate
-   ->Date
-  -- |latest allowed date
-  maxDate
-   ->Date
-  -- |whether the given year is a leap one
-  isLeap
-   ->bool
-   ::Year
-   -- ^y
   -- |last day of the month to which the given date belongs
   endOfMonth
    ->Date

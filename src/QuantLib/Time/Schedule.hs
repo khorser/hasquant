@@ -32,26 +32,39 @@ foreign import ccall safe "ql.h qlScheduleUntil"
 foreign import ccall safe "ql.h qlScheduleDates"
   c_scheduleDates :: Ptr CSchedule -> Ptr CInt -> IO (Ptr CDate)
 
--- | (qlSchedule)
-schedule :: Maybe Day -> Day -> Period -> Calendar -> BusinessDayConvention
-  -> BusinessDayConvention -> DateGenerationRule -> Bool
-  -> Maybe Day -> Maybe Day -> IO Schedule
+-- | QuantLibXL: qlSchedule
+schedule :: Maybe Day -- ^effectiveDate
+  -> Day -- ^terminationDate
+  -> Period -- ^tenor
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^convention
+  -> BusinessDayConvention -- ^terminationDateConvention
+  -> DateGenerationRule -- ^rule
+  -> Bool -- ^endOfMonth
+  -> Maybe Day -- ^firstDate
+  -> Maybe Day -- ^nextToLastDate
+  -> IO Schedule
 schedule = $(ffiConstruct 'schedule) c_schedule
 
--- | (qlScheduleFromDateVector)
-schedule' :: [Day] -> Calendar -> BusinessDayConvention -> IO Schedule
+-- | QuantLibXL: qlScheduleFromDateVector
+schedule' :: [Day]
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^convention
+  -> IO Schedule
 schedule' = $(ffiConstruct 'schedule') c_schedule'
 
--- | (qlScheduleTruncated)
+-- |truncated schedule. QuantLibXL: qlScheduleTruncated
 -- DO NOT call this on schedules created with 'schedule'
 -- because result.isRegular_.pop_back() in QuantLib's Schedule::until
 -- is called on empty isRegular_ causing unspecified behaviour including
 -- segfaults.
--- TODO Introduce another Schedule type with restricted interface?
+-- XXX Introduce another Schedule type with restricted interface?
 -- moreover, a fixed rate bond can be constructed from a full schedule only!
-until :: Schedule -> Day -> IO Schedule
+until :: Schedule
+  -> Day -- ^truncationDate
+  -> IO Schedule
 until = $(ffiConstruct 'until) c_until
 
--- |returns the dates for the given Schedule object (qlScheduleDates)
+-- |returns the dates for the given Schedule object. QuantLibXL: qlScheduleDates
 dates :: Schedule -> [Day]
 dates = $(ffiCallIO 'dates) c_scheduleDates

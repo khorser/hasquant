@@ -35,14 +35,27 @@ foreign import ccall safe "ql.h qlPiecewiseYieldCurve"
     -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble
     -> CString -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
 
--- |(qlDepositRateHelper2)
-depositRateHelper :: Quote -> Period -> Word -> Calendar
-  -> BusinessDayConvention -> Bool -> DayCounter -> IO RateHelper
+-- |QuantLibXL: qlDepositRateHelper2
+depositRateHelper :: Quote -- ^rate
+  -> Period -- ^tenor
+  -> Word -- ^fixingDays
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^convention
+  -> Bool -- ^endOfMonth
+  -> DayCounter -- ^dayCounter
+  -> IO RateHelper
 depositRateHelper = $(ffiConstruct 'depositRateHelper) c_depositRateHelper
 
--- |(qlFixedRateBondHelper)
-fixedRateBondHelper :: Quote -> Word -> Double -> Schedule -> [Double]
-  -> DayCounter -> BusinessDayConvention -> Double -> Maybe Day
+-- |QuantLibXL: qlFixedRateBondHelper
+fixedRateBondHelper :: Quote -- ^cleanPrice
+  -> Word -- ^settlementDays
+  -> Double -- ^faceAmount
+  -> Schedule -- ^schedule
+  -> [Double] -- ^coupons
+  -> DayCounter -- ^dayCounter
+  -> BusinessDayConvention -- ^paymentConv
+  -> Double -- ^redemption
+  -> Maybe Day -- ^issueDate
   -> IO RateHelper
 fixedRateBondHelper = $(ffiConstruct 'fixedRateBondHelper) c_fixedRateBondHelper
 
@@ -50,20 +63,34 @@ foreign import ccall safe "ql.h qlYieldTSDiscount"
   c_yieldTSDiscount :: Ptr CYieldTermStructure -> CDate -> CInt
     -> Ptr CString -> IO CDouble
 
-piecewiseYieldCurve :: Day -> [RateHelper] -> DayCounter
-  -> [(Quote, Day)] -> Double -> Trait -> Interpolation
+piecewiseYieldCurve :: Day -- ^referenceDate
+  -> [RateHelper] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Quote, Day)] -- ^jumps and jumpDates
+  -> Double -- ^accuracy
+  -> Trait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
 piecewiseYieldCurve =
   $(ffiConstruct 'piecewiseYieldCurve) c_piecewiseYieldCurve
 
--- |(qlPiecewiseYieldCurve)
-piecewiseYieldCurve' :: Word -> Calendar -> [RateHelper] -> DayCounter
-  -> [(Quote, Day)] -> Double -> Trait -> Interpolation
+-- |QuantLibXL: qlPiecewiseYieldCurve
+piecewiseYieldCurve' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [RateHelper] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Quote, Day)] -- ^jumps and jumpDates
+  -> Double -- ^accuracy
+  -> Trait -- ^bootstrap trait
+  -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
 piecewiseYieldCurve' = undefined
 
--- |Returns a discount factor from the given YieldTermStructure object (qlYieldTSDiscount)
-discount :: YieldTermStructure -> Day -> Bool -> IO Double
+-- |Returns a discount factor from the given YieldTermStructure object. QuantLibXL: qlYieldTSDiscount
+discount :: YieldTermStructure
+  -> Day -- ^d
+  -> Bool -- ^extrapolate
+  -> IO Double
 discount = $(ffiCallX 'discount) c_yieldTSDiscount
 
 foreign import ccall safe "ql.h qlSwapRateHelper1"
@@ -71,8 +98,16 @@ foreign import ccall safe "ql.h qlSwapRateHelper1"
     -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CQuote -> Ptr CPeriod
     -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CRateHelper)
 
--- |(qlSwapRateHelper2)
-swapRateHelper' :: Quote -> Period -> Calendar -> Frequency
-  -> BusinessDayConvention -> DayCounter -> IborIndex -> Quote
-  -> Period -> Maybe YieldTermStructure -> IO RateHelper
+-- |QuantLibXL: qlSwapRateHelper2
+swapRateHelper' :: Quote -- ^rate
+  -> Period -- ^tenor
+  -> Calendar -- ^calendar
+  -> Frequency -- ^fixedFrequency
+  -> BusinessDayConvention -- ^fixedConvention
+  -> DayCounter -- ^fixedDayCount
+  -> IborIndex -- ^iborIndex
+  -> Quote -- ^spread
+  -> Period -- ^fwdStart
+  -> Maybe YieldTermStructure -- ^discountingCurve
+  -> IO RateHelper
 swapRateHelper' = $(ffiConstruct 'swapRateHelper') c_swapRateHelper'

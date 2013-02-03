@@ -19,11 +19,12 @@ foreign import ccall safe "ql.h qlLeg"
 foreign import ccall safe "ql.h qlLegStartDate"
   c_legStartDate :: Ptr CLeg -> Ptr CString -> IO CDate
 
--- | (qlLeg)
-leg :: [(Double, Day)] -> IO Leg
+-- | QuantLibXL: qlLeg
+leg :: [(Double, Day)] -- ^amounts and dates
+  -> IO Leg
 leg = $(ffiConstruct 'leg) c_leg
 
--- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
--- XXX assuming legs are immutable
+-- |Returns the start (i.e. first accrual) date for the given Leg. QuantLibXL: qlLegStartDate
 startDate :: Leg -> Day
 startDate = $(ffiCallXIO 'startDate) c_legStartDate
+-- XXX assuming legs are immutable

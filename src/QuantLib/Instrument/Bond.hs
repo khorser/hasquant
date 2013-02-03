@@ -61,12 +61,12 @@ bond' :: Word -- ^settlementDays
   -> IO Bond
 bond' = $(ffiConstruct 'bond') c_bond'
 
--- |Returns the maturity date of the bond (qlBondMaturityDate)
+-- |Returns the maturity date of the bond. QuantLib: qlBondMaturityDate
 maturityDate :: Bond -> Maybe Day
 maturityDate = $(ffiCallIO 'maturityDate) c_maturityDate
 -- XXX any exceptions possible?
 
--- |Returns the issue date of the bond (qlBondIssueDate)
+-- |Returns the issue date of the bond. QuantLib: qlBondIssueDate
 issueDate :: Bond -> Maybe Day
 issueDate = $(ffiCallIO 'issueDate) c_issueDate
 -- XXX any exceptions possible?
@@ -88,21 +88,48 @@ foreign import ccall safe "ql.h qlFixedRateBond2"
 foreign import ccall safe "ql.h qlFixedBondFrequency"
   c_fixedBondFrequency :: Ptr CFixedRateBond -> IO CInt
 
--- |(qlFixedRateBond)
-fixedRateBond :: Word -> Double -> Schedule -> [Double] -> DayCounter
-   -> BusinessDayConvention -> Double -> Maybe Day -> Calendar
-   -> IO FixedRateBond
+-- |simple annual compounding coupon rates. QuantLibXL: qlFixedRateBond
+fixedRateBond :: Word -- ^settlementDays
+  -> Double -- ^faceAmount
+  -> Schedule -- ^schedule
+  -> [Double] -- ^coupons
+  -> DayCounter -- ^accrualDayCounter
+  -> BusinessDayConvention -- ^paymentConvention
+  -> Double -- ^redemption
+  -> Maybe Day -- ^issueDate
+  -> Calendar -- ^paymentCalendar
+  -> IO FixedRateBond
 fixedRateBond = $(ffiConstruct 'fixedRateBond) c_fixedRateBond
 
-fixedRateBond' :: Word -> Calendar -> Double -> Day -> Day -> Period -> [Double]
-  -> DayCounter -> BusinessDayConvention -> BusinessDayConvention -> Double
-  -> Maybe Day -> Maybe Day -> DateGenerationRule -> Bool -> Calendar
+-- |simple annual compounding coupon rates with internal schedule calculation
+fixedRateBond' :: Word -- ^settlementDays
+  -> Calendar -- ^couponCalendar
+  -> Double -- ^faceAmount
+  -> Day -- ^startDate
+  -> Day -- ^maturityDate
+  -> Period -- ^tenor
+  -> [Double] -- ^coupons
+  -> DayCounter -- ^accrualDayCounter
+  -> BusinessDayConvention -- ^accrualConvention
+  -> BusinessDayConvention -- ^paymentConvention
+  -> Double -- ^redemption
+  -> Maybe Day -- ^issueDate
+  -> Maybe Day -- ^stubDate
+  -> DateGenerationRule -- ^rule
+  -> Bool -- ^endOfMonth
+  -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
 fixedRateBond' = $(ffiConstruct 'fixedRateBond') c_fixedRateBond'
                                          
--- |(qlFixedRateBond2)
-fixedRateBond'' :: Word -> Double -> Schedule -> [InterestRate]
-  -> BusinessDayConvention -> Double -> Maybe Day -> Calendar
+-- |generic compounding and frequency InterestRate coupons. QuantLibXL: qlFixedRateBond2
+fixedRateBond'' :: Word -- ^settlementDays
+  -> Double -- ^faceAmount
+  -> Schedule -- ^schedule
+  -> [InterestRate] -- ^coupons
+  -> BusinessDayConvention -- ^paymentConvention
+  -> Double -- ^redemption
+  -> Maybe Day -- ^issueDate
+  -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
 fixedRateBond'' = $(ffiConstruct 'fixedRateBond'') c_fixedRateBond''
 
@@ -113,17 +140,24 @@ foreign import ccall safe "ql.h qlZeroCouponBond"
   c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate
     -> CInt -> CDouble -> CDate -> Ptr CString -> IO (Ptr CBond)
 
--- |(qlZeroCouponBond)
-zeroCouponBond :: Word -> Calendar -> Double -> Day -> BusinessDayConvention
-  -> Double -> Maybe Day -> IO Bond
+-- |zero-coupon bond. QuantLibXL: qlZeroCouponBond
+zeroCouponBond :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> Double -- ^faceAmount
+  -> Day -- ^maturityDate
+  -> BusinessDayConvention -- ^paymentConvention
+  -> Double -- ^redemption
+  -> Maybe Day -- ^issueDate
+  -> IO Bond
 zeroCouponBond = $(ffiConstruct 'zeroCouponBond) c_zeroCouponBond
 
 foreign import ccall safe "ql.h qlBondSetCouponPricer"
   c_bondSetCouponPricer :: Ptr CBond -> Ptr CFloatingRateCouponPricer
     -> Ptr CString -> IO ()
 
--- |Set the coupon pricer at the given Bond object (qlBondSetCouponPricer)
--- doing like QuantLibXL here, in QuantLib it is a function working on
+-- |Set the coupon pricer at the given Bond object
+-- following QuantLibXL qlBondSetCouponPricer here.
+-- In C++ it is a function working on
 -- cashflows (see the implementation in qlBondSetCouponPricer)
 setCouponPricer :: Bond -> FloatingRateCouponPricer -> IO ()
 setCouponPricer = $(ffiCallX 'setCouponPricer) c_bondSetCouponPricer
@@ -134,8 +168,20 @@ foreign import ccall safe "ql.h qlFloatingRateBond"
     -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble
     -> CInt -> CDouble -> CDate -> Ptr CString -> IO (Ptr CBond)
 
--- |(qlFloatingRateBond)
-floatingRateBond :: Word -> Double -> Schedule -> IborIndex
-  -> DayCounter -> BusinessDayConvention -> Word -> [Double] -> [Double]
-  -> [Double] -> [Double] -> Bool -> Double -> Maybe Day -> IO Bond
+-- |floating-rate bond (possibly capped and/or floored). QuantLibXL: qlFloatingRateBond
+floatingRateBond :: Word -- ^settlementDays
+ -> Double -- ^faceAmount
+ -> Schedule -- ^schedule
+ -> IborIndex -- ^iborIndex
+ -> DayCounter -- ^accrualDayCounter
+ -> BusinessDayConvention -- ^paymentConvention
+ -> Word -- ^fixingDays
+ -> [Double] -- ^gearings
+ -> [Double] -- ^spreads
+ -> [Double] -- ^caps
+ -> [Double] -- ^floors
+ -> Bool -- ^inArrears
+ -> Double -- ^redemption
+ -> Maybe Day -- ^issueDate
+ -> IO Bond
 floatingRateBond = $(ffiConstruct 'floatingRateBond) c_floatingRateBond

@@ -1,21 +1,5 @@
 Schedule
- -- |Payment schedule.
-
  -f-
-  size
-   ->Size
-  operator[]
-   ->const Date &
-   ::Size
-   -- ^i
-  at
-   ->const Date &
-   ::Size
-   -- ^i
-  date
-   ->const Date &
-   ::Size
-   -- ^i
   previousDate
    ->Date
    ::const Date &
@@ -24,8 +8,6 @@ Schedule
    ->Date
    ::const Date &
    -- ^refDate
-  dates
-   ->const std::vector< Date > &
   isRegular
    ->bool
    ::Size
@@ -49,56 +31,3 @@ Schedule
    ->DateGeneration::Rule
   endOfMonth
    ->bool
- -f-
-  begin
-   ->const_iterator
-  end
-   ->const_iterator
-  lower_bound
-   ->const_iterator
-   ::const Date &
-   =Date()
-   -- ^d
- -f-
-  -- |truncated schedule
-  until
-   ->Schedule
-   ::const Date &
-   -- ^truncationDate
- -f-
-  Schedule
-   ->
-   ::const std::vector< Date > &
-   -- ^
-   ::const Calendar &
-   =NullCalendar()
-   -- ^calendar
-   ::BusinessDayConvention
-   =Unadjusted
-   -- ^convention
-  Schedule
-   ->
-   ::Date
-   -- ^effectiveDate
-   ::const Date &
-   -- ^terminationDate
-   ::const Period &
-   -- ^tenor
-   ::const Calendar &
-   -- ^calendar
-   ::BusinessDayConvention
-   -- ^convention
-   ::BusinessDayConvention
-   -- ^terminationDateConvention
-   ::DateGeneration::Rule
-   -- ^rule
-   ::bool
-   -- ^endOfMonth
-   ::const Date &
-   =Date()
-   -- ^firstDate
-   ::const Date &
-   =Date()
-   -- ^nextToLastDate
-  Schedule
-   ->

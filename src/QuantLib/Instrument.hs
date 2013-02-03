@@ -20,11 +20,12 @@ foreign import ccall safe "ql.h qlInstrumentSetPricingEngine"
   c_setPricingEngine :: Ptr CInstrument -> Ptr CPricingEngine -> Ptr CString
     -> IO ()
 
--- |Returns the NPV for the given Instrument object (qlInstrumentNPV)
+-- |Returns the net present value of the given Instrument. QuantLibXL: qlInstrumentNPV
 npv :: Instrument -> IO Double
 npv = $(ffiCallX 'npv) c_npv
 
--- |Sets a new pricing engine to the given Instrument pbject
--- (qlInstrumentSetPricingEngine)
+-- |set the pricing engine to be used.
+-- /Warning/ calling this method will have no effects in case the performCalculation method was overridden in a derived class.
+-- Sets a new pricing engine to the given Instrument. QuantLibXL: qlInstrumentSetPricingEngine
 setPricingEngine :: Instrument -> PricingEngine -> IO ()
 setPricingEngine = $(ffiCallX 'setPricingEngine) c_setPricingEngine
