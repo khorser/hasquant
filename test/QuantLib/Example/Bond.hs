@@ -128,8 +128,8 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
                                           100.0
                                           (Just (15 `may` 2007))
                                           nocal
-          Types.asInstrument fixedBond >>= flip Instrument.setPricingEngine pricing
-          fixnpv <- Types.asInstrument fixedBond >>= Instrument.npv
+          Types.withInstrument fixedBond (flip Instrument.setPricingEngine pricing)
+          fixnpv <- Types.withInstrument fixedBond Instrument.npv
           zcBond <- Bond.zeroCouponBond settlementDays
                                        usGovBondCal
                                        faceAmount
@@ -137,8 +137,8 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
                                        BusinessDayConvention.Following
                                        116.92
                                        (Just $ 15 `august` 2003)
-          Types.asInstrument zcBond >>= flip Instrument.setPricingEngine pricing
-          znpv <- Types.asInstrument zcBond >>= Instrument.npv
+          Types.withInstrument zcBond $ flip Instrument.setPricingEngine pricing
+          znpv <- Types.withInstrument zcBond Instrument.npv
         
           depoLiborHelpers <-
             mapM (\(q, (n, u)) ->
@@ -196,7 +196,7 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
                                            True
                                            100.0
                                            (Just $ fromGregorian 2005 10 21)
-          Types.asInstrument floater >>= flip Instrument.setPricingEngine pricing 
+          Types.withInstrument floater $ flip Instrument.setPricingEngine pricing
           volval <- Quote.simpleQuote 0
           vol <- Vol.constantOptionletVol settlementDays
                                           targetCal
@@ -206,7 +206,7 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
           couponPricer <- CouponPricer.blackIborCouponPricer vol
           Bond.setCouponPricer floater couponPricer
         
-          fnpv <- Types.asInstrument floater >>= Instrument.npv
+          fnpv <- Types.withInstrument floater Instrument.npv
           return (fixnpv, znpv, fnpv)
 
           where zcQuotes = [0.0096, 0.0145, 0.0194]

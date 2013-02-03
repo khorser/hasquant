@@ -41,6 +41,8 @@ module QuantLib.Types
   , asBond
   , asInstrument
   , asIndex
+  , withBond
+  , withInstrument
   )
 where
 
@@ -80,6 +82,8 @@ type FixedRateBond = ForeignPtr CFixedRateBond
 
 class BondClass a where
   asBond :: a -> IO Bond
+  withBond :: a -> (Bond -> IO b) -> IO b
+  withBond x f = asBond x >>= f
 
 foreign import ccall safe "ql.h qlFixedRateBondAsBond"
   c_fixedRateBondAsBond :: Ptr CFixedRateBond -> IO (Ptr CBond)
@@ -88,6 +92,8 @@ instance BondClass FixedRateBond where
 
 class InstrumentClass a where
   asInstrument :: a -> IO Instrument
+  withInstrument :: a -> (Instrument -> IO b) -> IO b
+  withInstrument x f = asInstrument x >>= f
 
 foreign import ccall safe "ql.h qlBondAsInstrument"
   c_bondAsInstrument :: Ptr CBond -> IO (Ptr CInstrument)

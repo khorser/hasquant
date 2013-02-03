@@ -21,7 +21,7 @@ module QuantLib.Internal.Utils
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
   , CString
   , Ptr, FunPtr
-  , castPtr, castFunPtr, castForeignPtr, withForeignPtr, newForeignPtr_, newForeignPtr
+  , castPtr, castFunPtr, castForeignPtr, withForeignPtr, newForeignPtr
   , ForeignPtr
   )
 
@@ -32,7 +32,7 @@ import Data.Word(Word)
 
 import Foreign.C.String
 import Foreign.C.Types
-import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr, castForeignPtr, newForeignPtr_, newForeignPtr)
+import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr, castForeignPtr, newForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr, castPtr, castFunPtr)
