@@ -1,2 +1,0 @@
-NullCondition
- -- |null step condition

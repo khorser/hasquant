@@ -7,10 +7,3 @@ Replication
    Sub
    Central
    Super
- -f-
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::Replication::Type
-   -- ^

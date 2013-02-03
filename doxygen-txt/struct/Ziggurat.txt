@@ -1,12 +1,1 @@
 Ziggurat
-
- -e-
-  @0
-   allowsErrorEstimate
- -f-
-  make_sequence_generator
-   ->rsg_type
-   ::Size
-   -- ^dimension
-   ::BigNatural
-   -- ^seed

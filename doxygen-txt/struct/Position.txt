@@ -4,10 +4,3 @@ Position
   Type
    Long
    Short
- -f-
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::Position::Type
-   -- ^

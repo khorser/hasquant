@@ -1,6 +1,2 @@
 SingleVariate
  -- |default Monte Carlo traits for single-variate models
-
- -e-
-  @3
-   allowsErrorEstimate

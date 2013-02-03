@@ -1,2 +1,0 @@
-NullPayoff
- -- |Dummy payoff class.

@@ -1,4 +1,0 @@
-NullCommodityType
- -f-
-  NullCommodityType
-   ->

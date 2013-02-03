@@ -1816,11 +1816,3 @@ QuantLib
    -- ^p1
    ::const Period &
    -- ^p2
-  swap
-   ->void
-   ::Clone< T > &
-   -- ^t
-   ::Clone< T > &
-   -- ^u
- -v-
- -e-
