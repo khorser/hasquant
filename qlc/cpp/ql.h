@@ -150,7 +150,7 @@ extern "C" {
     int extrapolate, char **e);
 
   /* pricing engine */
-  QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, char **e);
+  QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
 
   void DLLEXPORT qlFreePricingEngine(QlPricingEngine *engine);
 

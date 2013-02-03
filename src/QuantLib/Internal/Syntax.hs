@@ -34,7 +34,7 @@ data NestedArg = DayN | DoubleN | ForeignPtrN
 
 -- XXX use GADTs/SYB/Uniplate?
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA
-  | OptDayA | ForeignPtrA | OptForeignPtrA
+  | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA
   | ListA NestedArg | ListA2 NestedArg NestedArg
   | EnumA | LitEnumA
   deriving (Show, Eq)
@@ -87,10 +87,13 @@ topArgType (ConT n) = do
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe =
   if n == ''Day
     then return OptDayA
-  else
-    tryForeignPtr n >>=
-      either (\x -> fail $ "Error parsing optional top arg: " ++ x)
-        (\_ -> return OptForeignPtrA)
+    else
+      if n == ''Bool
+        then return OptBoolA
+        else
+          tryForeignPtr n >>=
+            either (\x -> fail $ "Error parsing optional top arg: " ++ x)
+              (\_ -> return OptForeignPtrA)
 topArgType (AppT ListT (ConT n)) = liftM ListA (nestedNameToTop n)
 topArgType (AppT
           ListT
@@ -226,6 +229,9 @@ genFfiCall io constr extra aa r = do
 
     genFfiCallImpl ((BoolA, v):as) c_call =
       genFfiCallImpl as [|$c_call ((fromBool :: Bool -> CInt) $v)|]
+
+    genFfiCallImpl ((OptBoolA, v):as) c_call =
+      genFfiCallImpl as [|$c_call (maybe (-1::CInt) (fromBool :: Bool -> CInt) $v)|]
 
     genFfiCallImpl ((DoubleA, v):as) c_call =
       genFfiCallImpl as [|$c_call ((realToFrac :: Double -> CDouble) $v)|]

@@ -107,7 +107,7 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
                   --(Interpolation.Cubic Interpolation.FritschButland)
                   --Interpolation.Abcd
           --df <- Yield.discount ts (fromGregorian 2011 08 03) True
-          pricing <- Pricing.discountingBondEngine ts
+          pricing <- Pricing.discountingBondEngine ts Nothing
           -- Fixed 4.5% US Treasury Note
           fixedSchedule <- Schedule.schedule (Just (15 `may` 2007))
                                              (15 `may` 2017)
