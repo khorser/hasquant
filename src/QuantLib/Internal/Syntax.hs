@@ -9,7 +9,7 @@ module QuantLib.Internal.Syntax
   )
 where
 
-import Control.Monad(liftM, liftM2)
+import Control.Monad(liftM, liftM2, unless)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
@@ -164,31 +164,37 @@ parseSignature t@(AppT _ _) = do
 parseSignature t = fail $ "Unsupported type: " ++ show t
 
 ffiCall :: Name -> ExpQ
-ffiCall hn = ffiCallImpl False hn [|id|]
+ffiCall hn = ffiCallImpl False False hn [|id|]
 
 ffiCallIO :: Name -> ExpQ
-ffiCallIO hn = ffiCallImpl True hn [|id|]
+ffiCallIO hn = ffiCallImpl True False hn [|id|]
 
 ffiConstruct :: Name -> ExpQ
-ffiConstruct hn = ffiCallImpl False hn [|construct|]
+ffiConstruct hn = ffiCallImpl False True hn [|construct|]
 
 ffiCallX :: Name -> ExpQ
-ffiCallX hn = ffiCallImpl False hn [|handleExceptions|]
+ffiCallX hn = ffiCallImpl False False hn [|handleExceptions|]
 
 ffiCallXIO :: Name -> ExpQ
-ffiCallXIO hn = ffiCallImpl True hn [|handleExceptions|]
+ffiCallXIO hn = ffiCallImpl True False hn [|handleExceptions|]
 
-ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
-ffiCallImpl io hFun extra = do
+ffiCallImpl :: Bool -> Bool -> Name -> ExpQ -> ExpQ
+ffiCallImpl io constr hFun extra = do
   r <- reify hFun
   case r of
-    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall io extra)
+    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall io constr extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
-genFfiCall io extra aa r = do
+genFfiCall :: Bool -> Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
+genFfiCall io constr extra aa r = do
   varNames <- mapM (\_ -> newName "x") aa
   cFunName <- newName "fun"
+  unless constr $
+    case r of
+      AtomicRV ForeignPtrR -> fail "ForeignPtr can be returned from constructors only"
+      IORV ForeignPtrR -> fail "ForeignPtr can be returned from constructors only"
+      _ -> return ()
+
   lamE (map varP (cFunName : varNames))
        (if io 
          then [|unsafePerformIO $(nakedCall varNames cFunName)|]
