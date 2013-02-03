@@ -47,9 +47,3 @@ DayCounter
    -- ^
    ::const DayCounter &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const DayCounter &
-   -- ^

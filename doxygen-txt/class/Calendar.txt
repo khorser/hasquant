@@ -98,9 +98,3 @@ Calendar
    -- ^
    ::const Calendar &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const Calendar &
-   -- ^

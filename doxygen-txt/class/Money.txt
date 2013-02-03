@@ -160,9 +160,3 @@ Money
    -- ^
    ::Decimal
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const Money &
-   -- ^

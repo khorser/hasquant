@@ -108,12 +108,6 @@ QuantLib
    -- ^putDigitalPayoffs
    ::const boost::shared_ptr< DigitalReplication > &
    -- ^replication
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::GFunctionFactory::YieldCurveModel
-   -- ^type
   setCouponPricer
    ->void
    ::const Leg &
@@ -145,24 +139,6 @@ QuantLib
    -- ^c1
    ::const Currency &
    -- ^c2
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::const SecondaryCostAmounts &
-   -- ^secondaryCostAmounts
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::const PricingError &
-   -- ^error
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::const PricingErrors &
-   -- ^errors
   operator==
    ->bool
    ::const CommodityCurve &
@@ -187,12 +163,6 @@ QuantLib
    -- ^c1
    ::const CommodityType &
    -- ^c2
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::const CommodityUnitCost &
-   -- ^unitCost
   operator==
    ->bool
    ::const PaymentTerm &
@@ -552,54 +522,6 @@ QuantLib
    -- ^r1
    ::const Region &
    -- ^r2
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::Average::Type
-   -- ^type
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::Barrier::Type
-   -- ^type
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::CapFloor::Type
-   -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::CPISwap::Type
-   -- ^t
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::YoYInflationCapFloor::Type
-   -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::Settlement::Type
-   -- ^type
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::VanillaSwap::Type
-   -- ^t
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::YearOnYearInflationSwap::Type
-   -- ^t
   DotProduct
    ->Real
    ::const Array &
@@ -708,12 +630,6 @@ QuantLib
    -- ^v
    ::Array &
    -- ^w
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::const Array &
-   -- ^a
   betaFunction
    ->Real
    ::Real
@@ -931,12 +847,6 @@ QuantLib
    -- ^m1
    ::Matrix &
    -- ^m2
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::const Matrix &
-   -- ^m
   -- |Iterative procedure to compute a correlation matrix reduction to a single factor dependence vector by minimizing the residuals.It assumes that such a reduction is possible, notice that if the dependence can not be reduced to one factor the correlation factors might be above 1.The matrix passed is destroyed.See for instance: "Modern Factor Analysis", Harry H. Harman, University Of Chicago Press, 1976. Chapter 9 is relevant to this context.
   factorReduction
    ->Disposable< std::vector< Real > >
@@ -1037,12 +947,6 @@ QuantLib
    -- ^paramters
    ::Size
    -- ^nbRows
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::EndCriteria::Type
-   -- ^ecType
   sphereCylinderOptimizerClosest
    ->std::vector< Real >
    ::Real
@@ -1070,12 +974,6 @@ QuantLib
    -- ^
    ::SampledCurve &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::const SampledCurve &
-   -- ^a
   swap
    ->void
    ::TridiagonalOperator &
@@ -1463,12 +1361,6 @@ QuantLib
    -- ^c
    ::Decimal
    -- ^value
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::Option::Type
-   -- ^type
   -- |return the MidEquivalent price, i.e. the mid if available, or a suitable substitute if the proper mid is not available
   midEquivalent
    ->Real
@@ -1812,12 +1704,6 @@ QuantLib
    -- ^c1
    ::const Calendar &
    -- ^c2
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::const Calendar &
-   -- ^c
   operator-
    ->BigInteger
    ::const Date &
@@ -1872,12 +1758,6 @@ QuantLib
    -- ^d1
    ::const DayCounter &
    -- ^d2
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^out
-   ::const DayCounter &
-   -- ^d
   operator*
    ->Period
    ::T

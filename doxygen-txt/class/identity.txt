@@ -1,6 +1,0 @@
-identity
- -f-
-  operator()
-   ->T
-   ::const T &
-   -- ^t

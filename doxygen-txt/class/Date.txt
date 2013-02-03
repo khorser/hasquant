@@ -150,9 +150,3 @@ Date
    -- ^
    ::const Date &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const Date &
-   -- ^

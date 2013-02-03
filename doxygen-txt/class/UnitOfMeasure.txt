@@ -51,9 +51,3 @@ UnitOfMeasure
    -- ^
    ::const UnitOfMeasure &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const UnitOfMeasure &
-   -- ^

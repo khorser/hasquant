@@ -244,12 +244,6 @@ Matrix
    -- ^
    ::Matrix &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const Matrix &
-   -- ^
   inverse
    ->Disposable< Matrix >
    ::const Matrix &

@@ -1,6 +1,0 @@
-fourth_power
- -f-
-  operator()
-   ->T
-   ::const T &
-   -- ^t

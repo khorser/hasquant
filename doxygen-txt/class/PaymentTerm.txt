@@ -45,9 +45,3 @@ PaymentTerm
    -- ^
    ::const PaymentTerm &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const PaymentTerm &
-   -- ^

@@ -1,4 +1,0 @@
-everywhere
- -f-
-  everywhere
-   ->

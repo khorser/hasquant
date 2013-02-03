@@ -15,10 +15,3 @@ Option
    ->boost::shared_ptr< Payoff >
   exercise
    ->boost::shared_ptr< Exercise >
- -f-
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::Option::Type
-   -- ^

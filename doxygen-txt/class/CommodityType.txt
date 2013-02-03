@@ -35,9 +35,3 @@ CommodityType
    -- ^
    ::const CommodityType &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const CommodityType &
-   -- ^

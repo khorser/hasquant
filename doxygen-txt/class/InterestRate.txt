@@ -118,10 +118,3 @@ InterestRate
    ::const Date &
    =Date()
    -- ^refEnd
- -f-
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const InterestRate &
-   -- ^

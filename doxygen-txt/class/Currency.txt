@@ -51,9 +51,3 @@ Currency
    -- ^
    ::const Currency &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const Currency &
-   -- ^

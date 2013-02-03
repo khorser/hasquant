@@ -27,3 +27,5 @@ as result that Handle/RelinkableHandle machinery isn't going to be much of help
 If needed, we could use FRP to model the propagation of changes in market data
 
 Introduce money data type parameterized by currency
+
+Implement show via operator <<

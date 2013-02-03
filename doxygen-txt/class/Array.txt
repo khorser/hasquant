@@ -253,9 +253,3 @@ Array
    -- ^
    ::Array &
    -- ^
-  operator<<
-   ->std::ostream &
-   ::std::ostream &
-   -- ^
-   ::const Array &
-   -- ^

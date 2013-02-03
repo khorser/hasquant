@@ -1,4 +1,0 @@
-nowhere
- -f-
-  nowhere
-   ->
