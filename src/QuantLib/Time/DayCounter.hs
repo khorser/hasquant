@@ -59,6 +59,7 @@ actual365Fixed  :: IO DayCounter
 act365Fixed     :: IO DayCounter
 a365Fixed       :: IO DayCounter
 a365F           :: IO DayCounter
+-- |1/1 day count convention
 one             :: IO DayCounter
 actualActualISDA:: IO DayCounter
 -- |Actual\/Actual day count.

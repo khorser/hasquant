@@ -1,6 +1,0 @@
-OneDayCounter
- -- |1/1 day count convention
-
- -f-
-  OneDayCounter
-   ->

@@ -220,7 +220,7 @@ dailyTenorCHFLibor = createDailyTenorLibor "DailyTenorCHFLibor"
 dkkLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
 dkkLibor = createIbor "DKKLibor"
 
--- |(qlEonia)
+-- |Eonia (Euro Overnight Index Average) rate fixed by the ECB. QuantLibXL: qlEonia
 eonia :: Maybe YieldTermStructure -> IO IborIndex
 eonia = createIborON "Eonia"
 

@@ -1,9 +1,0 @@
-Eonia
- -- |Eonia (Euro Overnight Index Average) rate fixed by the ECB.
-
- -f-
-  Eonia
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h
