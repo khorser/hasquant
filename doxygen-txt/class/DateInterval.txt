@@ -1,6 +1,5 @@
 DateInterval
  -- |Date interval described by a number of a given time unit.
-
  -f-
   DateInterval
    ->

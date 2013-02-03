@@ -1,6 +1,5 @@
 CalibrationHelper
  -- |liquid market instrument used during calibration
-
  -e-
   CalibrationErrorType
    RelativePriceError

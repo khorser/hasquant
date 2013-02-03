@@ -1,6 +1,5 @@
 Bilinear
  -- |bilinear-interpolation factory
-
  -f-
   interpolate
    ->Interpolation2D

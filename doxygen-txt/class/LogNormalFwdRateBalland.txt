@@ -1,6 +1,5 @@
 LogNormalFwdRateBalland
  -- |Iterative Predictor-Corrector.
-
  -f-
   LogNormalFwdRateBalland
    ->

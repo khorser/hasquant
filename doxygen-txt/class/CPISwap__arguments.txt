@@ -1,6 +1,5 @@
 CPISwap::arguments
  -- |Arguments for swap calculation
-
  -v-
   type
    ::Type

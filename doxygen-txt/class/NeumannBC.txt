@@ -1,7 +1,6 @@
 NeumannBC
  -- |Neumann boundary condition (i.e., constant derivative)
  -- |WarningThe value passed must not be the value of the derivative. Instead, it must be comprehensive of the grid step between the first two pointsi.e., it must be the difference between f[0] and f[1]. Possible enhancementsgeneralize to time-dependent conditions.
-
  -f-
   NeumannBC
    ->

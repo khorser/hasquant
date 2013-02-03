@@ -1,6 +1,5 @@
 CMSwapCurveState
  -- |Curve state for constant-maturity-swap market models
-
  -f-
   setOnCMSwapRates
    ->void

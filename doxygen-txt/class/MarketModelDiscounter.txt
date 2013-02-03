@@ -1,5 +1,4 @@
 MarketModelDiscounter
-
  -f-
   MarketModelDiscounter
    ->

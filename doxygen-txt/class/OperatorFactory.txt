@@ -1,7 +1,6 @@
 OperatorFactory
  -- |Black-Scholes-Merton differential operator.
  -- |Testscoefficients are tested against constant BSM operator
-
  -f-
   getOperator
    ->TridiagonalOperator

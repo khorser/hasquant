@@ -1,5 +1,4 @@
 details::LinearFct
-
  -f-
   LinearFct
    ->

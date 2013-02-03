@@ -1,6 +1,5 @@
 Cubic
  -- |Cubic interpolation factory and traits
-
  -v-
   global
    ::const bool

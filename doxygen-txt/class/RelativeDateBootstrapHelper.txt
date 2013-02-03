@@ -1,7 +1,6 @@
 RelativeDateBootstrapHelper
  -- |Bootstrap helper with date schedule relative to global evaluation date.
  -- |Derived classes must takes care of rebuilding the date schedule when the global evaluation date changes
-
  -f-
   RelativeDateBootstrapHelper
    ->

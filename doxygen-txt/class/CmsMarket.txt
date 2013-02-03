@@ -1,6 +1,5 @@
 CmsMarket
  -- |set of CMS quotes
-
  -f-
   CmsMarket
    ->

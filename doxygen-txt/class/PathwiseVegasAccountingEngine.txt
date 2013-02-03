@@ -1,6 +1,5 @@
 PathwiseVegasAccountingEngine
  -- |Engine collecting cash flows along a market-model simulation for doing pathwise computation of Deltas and vegas.
-
  -f-
   PathwiseVegasAccountingEngine
    ->

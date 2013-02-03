@@ -1,7 +1,6 @@
 ExtendedBlackVarianceCurve
  -- |Black volatility curve modelled as variance curve.
  -- |This class is similar to BlackVarianceCurve, but extends it to use quotes for the input volatilities.
-
  -f-
   ExtendedBlackVarianceCurve
    ->

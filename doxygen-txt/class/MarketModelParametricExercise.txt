@@ -1,5 +1,4 @@
 MarketModelParametricExercise
-
  -f-
   numberOfData
    ->std::vector< Size >

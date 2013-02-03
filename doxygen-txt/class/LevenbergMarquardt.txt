@@ -1,7 +1,6 @@
 LevenbergMarquardt
  -- |Levenberg-Marquardt optimization method.
  -- |This implementation is based on MINPACK (http://www.netlib.org/minpack, http://www.netlib.org/cephes/linalg.tgz)
-
  -f-
   LevenbergMarquardt
    ->

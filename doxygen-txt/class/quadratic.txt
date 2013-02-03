@@ -1,5 +1,4 @@
 quadratic
-
  -f-
   quadratic
    ->

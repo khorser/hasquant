@@ -1,7 +1,6 @@
 InterpolatedYoYInflationCurve
  -- |Inflation term structure based on interpolated year-on-year rates.
  -- |The provided rates are not YY inflation-swap quotes.
-
  -f-
   dates
    ->const std::vector< Date > &

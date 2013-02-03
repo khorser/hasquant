@@ -1,5 +1,4 @@
 detail::base_cubic_spline
-
  -f-
   base_cubic_spline
    ->

@@ -1,10 +1,7 @@
 McSimulation
  -- |base class for Monte Carlo engines
  -- |Eventually this class might offer greeks methods. Deriving a class from McSimulation gives an easy way to write a Monte Carlo engine.See McVanillaEngine as an example.
-
  -f-
-  ~McSimulation
-   ->
   -- |add samples until the required absolute tolerance is reached
   value
    ->result_type

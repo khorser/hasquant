@@ -1,6 +1,5 @@
 TreeCallableFixedRateBondEngine
  -- |Numerical lattice engine for callable fixed rate bonds.
-
  -f-
   TreeCallableFixedRateBondEngine
    ->

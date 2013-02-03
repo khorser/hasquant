@@ -1,5 +1,4 @@
 G2::Dynamics
-
  -f-
   Dynamics
    ->

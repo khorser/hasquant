@@ -1,6 +1,5 @@
 MCHullWhiteCapFloorEngine
  -- |Monte Carlo Hull-White engine for cap/floors.
-
  -f-
   MCHullWhiteCapFloorEngine
    ->

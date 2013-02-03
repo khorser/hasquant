@@ -1,6 +1,5 @@
 CompositeConstraint
  -- |Constraint enforcing both given sub-constraints
-
  -f-
   CompositeConstraint
    ->

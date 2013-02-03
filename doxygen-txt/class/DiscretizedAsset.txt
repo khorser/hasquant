@@ -1,6 +1,5 @@
 DiscretizedAsset
  -- |Discretized asset class used by numerical methods.
-
  -f-
   time
    ->Time
@@ -49,6 +48,4 @@ DiscretizedAsset
    ->std::vector< Time >
  -f-
   DiscretizedAsset
-   ->
-  ~DiscretizedAsset
    ->

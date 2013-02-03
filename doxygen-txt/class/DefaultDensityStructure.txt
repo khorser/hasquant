@@ -1,7 +1,6 @@
 DefaultDensityStructure
  -- |Default-density term structure.
  -- |This abstract class acts as an adapter to DefaultProbabilityTermStructure allowing the programmer to implement only the defaultDensityImpl(Time) method in derived classes.Survival/default probabilities and hazard rates are calculated from default densities.
-
  -f-
   DefaultDensityStructure
    ->

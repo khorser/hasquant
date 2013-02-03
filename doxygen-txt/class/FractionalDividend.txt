@@ -1,7 +1,6 @@
 FractionalDividend
  -- |Predetermined cash flow.
  -- |This cash flow pays a fractional amount at a given date.
-
  -f-
   rate
    ->Real

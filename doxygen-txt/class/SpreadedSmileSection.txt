@@ -1,5 +1,4 @@
 SpreadedSmileSection
-
  -f-
   minStrike
    ->Real

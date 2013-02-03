@@ -1,6 +1,5 @@
 DigitalCmsCoupon
  -- |Cms-rate coupon with digital digital call/put option.
-
  -f-
   DigitalCmsCoupon
    ->

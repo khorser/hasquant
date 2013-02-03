@@ -1,6 +1,5 @@
 SwapIndex
  -- |base class for swap-rate indexes
-
  -f-
   fixedLegTenor
    ->Period

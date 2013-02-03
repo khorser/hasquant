@@ -1,5 +1,4 @@
 equal_within
-
  -f-
   equal_within
    ->

@@ -1,6 +1,5 @@
 Callability
  -- |instrument callability
-
  -e-
   -- |type of the callability
   Type

@@ -1,7 +1,6 @@
 OvernightIndexedCoupon
  -- |overnight coupon
  -- |Coupon paying the compounded interest due to daily overnight fixings.
-
  -f-
   -- |fixing dates for the rates to be compounded
   fixingDates

@@ -1,6 +1,5 @@
 MaxCopula
  -- |max copula
-
  -f-
   operator()
    ->Real

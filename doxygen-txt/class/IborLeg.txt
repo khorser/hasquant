@@ -1,6 +1,5 @@
 IborLeg
  -- |helper class building a sequence of capped/floored ibor-rate coupons
-
  -f-
   IborLeg
    ->

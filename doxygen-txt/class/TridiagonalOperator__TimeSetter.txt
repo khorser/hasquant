@@ -1,9 +1,6 @@
 TridiagonalOperator::TimeSetter
  -- |encapsulation of time-setting logic
-
  -f-
-  ~TimeSetter
-   ->
   setTime
    ->void
    ::Time

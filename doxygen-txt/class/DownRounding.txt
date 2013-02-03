@@ -1,6 +1,5 @@
 DownRounding
  -- |Down-rounding.
-
  -f-
   DownRounding
    ->

@@ -1,6 +1,5 @@
 G2ForwardProcess
  -- |Forward G2 stochastic process
-
  -f-
   G2ForwardProcess
    ->

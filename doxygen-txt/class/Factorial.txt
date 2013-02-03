@@ -1,7 +1,6 @@
 Factorial
  -- |Factorial numbers calculator
  -- |Teststhe correctness of the returned value is tested by checking it against numerical calculations.
-
  -f-
   get
    ->Real

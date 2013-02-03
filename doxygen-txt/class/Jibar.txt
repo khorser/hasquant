@@ -1,7 +1,6 @@
 Jibar
  -- |JIBAR rate
  -- |Johannesburg Interbank Agreed RatePossible enhancementscheck settlement days and day-count convention.
-
  -f-
   Jibar
    ->

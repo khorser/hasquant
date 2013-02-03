@@ -1,5 +1,4 @@
 LogParabolic
-
  -f-
   -- |the $ x $ values must be sorted.
   LogParabolic

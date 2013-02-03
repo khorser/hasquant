@@ -1,6 +1,5 @@
 Extrapolator
  -- |base class for classes possibly allowing extrapolation
-
  -f-
   -- |enable extrapolation in subsequent calls
   enableExtrapolation
@@ -20,6 +19,4 @@ Extrapolator
    ->bool
  -f-
   Extrapolator
-   ->
-  ~Extrapolator
    ->

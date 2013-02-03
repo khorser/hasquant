@@ -1,6 +1,5 @@
 FarlieGumbelMorgensternCopula
  -- |Farlie-Gumbel-Morgenstern copula.
-
  -f-
   FarlieGumbelMorgensternCopula
    ->

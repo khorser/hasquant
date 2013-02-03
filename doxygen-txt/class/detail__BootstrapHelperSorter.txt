@@ -1,5 +1,4 @@
 detail::BootstrapHelperSorter
-
  -f-
   operator()
    ->bool

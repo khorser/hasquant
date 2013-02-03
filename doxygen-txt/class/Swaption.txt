@@ -1,7 +1,6 @@
 Swaption
  -- |Swaption class
  -- |Tests the correctness of the returned value is tested by checking that the price of a payer (resp. receiver) swaption decreases (resp. increases) with the strike.the correctness of the returned value is tested by checking that the price of a payer (resp. receiver) swaption increases (resp. decreases) with the spread.the correctness of the returned value is tested by checking it against that of a swaption on a swap with no spread and a correspondingly adjusted fixed rate.the correctness of the returned value is tested by checking it against a known good value.the correctness of the returned value of cash settled swaptions is tested by checking the modified annuity against a value calculated without using the Swaption class. Possible enhancementsadd greeks and explicit exercise lag
-
  -f-
   settlementType
    ->Settlement::Type

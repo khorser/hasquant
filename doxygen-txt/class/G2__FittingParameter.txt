@@ -1,7 +1,6 @@
 G2::FittingParameter
  -- |Analytical term-structure fitting parameter $ \varphi(t) $.
  -- |$ \varphi(t) $ is analytically defined by \[ \varphi(t) = f(t) + \frac{1}{2}(\frac{\sigma(1-e^{-at})}{a})^2 + \frac{1}{2}(\frac{\eta(1-e^{-bt})}{b})^2 + \rho\frac{\sigma(1-e^{-at})}{a}\frac{\eta(1-e^{-bt})}{b}, \] where $ f(t) $ is the instantaneous forward rate at $ t $.
-
  -f-
   FittingParameter
    ->

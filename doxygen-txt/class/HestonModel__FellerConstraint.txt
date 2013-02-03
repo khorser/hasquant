@@ -1,5 +1,4 @@
 HestonModel::FellerConstraint
-
  -f-
   FellerConstraint
    ->

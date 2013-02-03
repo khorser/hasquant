@@ -1,7 +1,6 @@
 MCEuropeanBasketEngine
  -- |Pricing engine for European basket options using Monte Carlo simulation.
  -- |Teststhe correctness of the returned value is tested by reproducing results available in literature.
-
  -f-
   MCEuropeanBasketEngine
    ->

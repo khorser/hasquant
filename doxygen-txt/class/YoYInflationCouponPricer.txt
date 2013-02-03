@@ -1,7 +1,6 @@
 YoYInflationCouponPricer
  -- |base pricer for capped/floored YoY inflation coupons
  -- |this pricer can already do swaplets but to get volatility-dependent coupons you need the descendents.
-
  -f-
   YoYInflationCouponPricer
    ->

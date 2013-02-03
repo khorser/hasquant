@@ -1,7 +1,6 @@
 LfmCovarianceParameterization
  -- |Libor market model parameterization
  -- |Brigo, Damiano, Mercurio, Fabio, Morini, Massimo, 2003, Different Covariance Parameterizations of the Libor Market Model and Joint Caps/Swaptions Calibration (http://www.exoticderivatives.com/Files/Papers/brigomercuriomorini.pdf)
-
  -f-
   LfmCovarianceParameterization
    ->
@@ -9,8 +8,6 @@ LfmCovarianceParameterization
    -- ^size
    ::Size
    -- ^factors
-  ~LfmCovarianceParameterization
-   ->
   size
    ->Size
   factors

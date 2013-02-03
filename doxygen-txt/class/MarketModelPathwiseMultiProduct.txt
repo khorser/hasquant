@@ -1,10 +1,7 @@
 MarketModelPathwiseMultiProduct
  -- |market-model pathwise product
  -- |This is the abstract base class that encapsulates the notion of a product: it contains the information that would be in the termsheet of the product.It's useful to have it be able to do several products simultaneously. The products would have to have the same underlying rate times of course. The class is therefore really encapsulating the notion of a multi-product.For each time evolved to, it generates the cash flows associated to that time for the state of the yield curve. If one was doing a callable product then this would encompass the product and its exercise strategy.This class differs from market-model multi-product in that it also returns the derivative of the pay-off with respect to each forward rate
-
  -f-
-  ~MarketModelPathwiseMultiProduct
-   ->
   suggestedNumeraires
    ->std::vector< Size >
   evolution

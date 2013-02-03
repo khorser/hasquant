@@ -1,7 +1,6 @@
 JamshidianSwaptionEngine
  -- |Jamshidian swaption engine.
  -- |WarningThe engine assumes that the exercise date equals the start date of the passed swap.
-
  -f-
   -- |the term structure is only needed when the short-rate model cannot provide one itself.
   JamshidianSwaptionEngine

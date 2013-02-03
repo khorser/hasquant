@@ -1,6 +1,5 @@
 MCPerformanceEngine
  -- |Pricing engine for performance options using Monte Carlo simulation.
-
  -f-
   MCPerformanceEngine
    ->

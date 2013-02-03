@@ -1,5 +1,4 @@
 detail::ConvexMonotone3Helper
-
  -f-
   ConvexMonotone3Helper
    ->

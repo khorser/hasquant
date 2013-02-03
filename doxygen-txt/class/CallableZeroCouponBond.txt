@@ -1,7 +1,6 @@
 CallableZeroCouponBond
  -- |callable/puttable zero coupon bond
  -- |Callable zero coupon bond class.
-
  -f-
   CallableZeroCouponBond
    ->

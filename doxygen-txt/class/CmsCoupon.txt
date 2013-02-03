@@ -1,7 +1,6 @@
 CmsCoupon
  -- |CMS coupon class.
  -- |WarningThis class does not perform any date adjustment, i.e., the start and end date passed upon construction should be already rolled to a business day.
-
  -f-
   swapIndex
    ->const boost::shared_ptr< SwapIndex > &

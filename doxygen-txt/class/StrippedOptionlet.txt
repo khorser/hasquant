@@ -1,6 +1,5 @@
 StrippedOptionlet
  -- |Helper class to wrap in a StrippedOptionletBase object a matrix of exogenously calculated optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities).
-
  -f-
   StrippedOptionlet
    ->

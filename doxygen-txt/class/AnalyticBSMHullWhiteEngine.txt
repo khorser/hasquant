@@ -1,7 +1,6 @@
 AnalyticBSMHullWhiteEngine
  -- |analytic european option pricer including stochastic interest rates
  -- |References: Brigo, Mercurio, Interest Rate Models Teststhe correctness of the returned value is tested by reproducing results available in web/literature
-
  -f-
   AnalyticBSMHullWhiteEngine
    ->

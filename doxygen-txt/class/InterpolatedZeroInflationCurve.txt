@@ -1,6 +1,5 @@
 InterpolatedZeroInflationCurve
  -- |Inflation term structure based on the interpolation of zero rates.
-
  -f-
   dates
    ->const std::vector< Date > &

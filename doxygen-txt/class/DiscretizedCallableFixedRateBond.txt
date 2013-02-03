@@ -1,5 +1,4 @@
 DiscretizedCallableFixedRateBond
-
  -f-
   DiscretizedCallableFixedRateBond
    ->

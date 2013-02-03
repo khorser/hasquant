@@ -1,6 +1,5 @@
 EnergyBasisSwap
  -- |Energy basis swap.
-
  -f-
   EnergyBasisSwap
    ->

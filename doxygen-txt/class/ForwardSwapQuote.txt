@@ -1,6 +1,5 @@
 ForwardSwapQuote
  -- |Quote for a forward starting swap.
-
  -f-
   ForwardSwapQuote
    ->

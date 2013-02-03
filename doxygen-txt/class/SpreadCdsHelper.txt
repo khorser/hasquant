@@ -1,6 +1,5 @@
 SpreadCdsHelper
  -- |Spread-quoted CDS hazard rate bootstrap helper.
-
  -f-
   SpreadCdsHelper
    ->

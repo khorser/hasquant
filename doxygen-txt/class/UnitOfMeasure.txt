@@ -1,6 +1,5 @@
 UnitOfMeasure
  -- |Unit of measure specification
-
  -f-
   -- |name, e.g, "Barrels"
   name

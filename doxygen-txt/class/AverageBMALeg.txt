@@ -1,6 +1,5 @@
 AverageBMALeg
  -- |helper class building a sequence of average BMA coupons
-
  -f-
   AverageBMALeg
    ->

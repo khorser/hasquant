@@ -1,7 +1,6 @@
 ExchangeRateManager
  -- |exchange-rate repository
  -- |Testslookup of direct, triangulated, and derived exchange rates is tested.
-
  -f-
   -- |Add an exchange rate.
   -- |The given rate is valid between the given dates.If two rates are given between the same currencies and with overlapping date ranges, the latest one added takes precedence during lookup.

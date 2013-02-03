@@ -1,6 +1,5 @@
 AmortizingFixedRateBond
  -- |amortizing fixed-rate bond
-
  -f-
   AmortizingFixedRateBond
    ->

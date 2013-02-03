@@ -1,6 +1,5 @@
 SABR
  -- |SABR interpolation factory and traits
-
  -v-
   global
    ::const bool

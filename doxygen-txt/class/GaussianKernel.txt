@@ -1,6 +1,5 @@
 GaussianKernel
  -- |Gaussian kernel function.
-
  -f-
   GaussianKernel
    ->

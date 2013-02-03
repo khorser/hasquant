@@ -1,6 +1,5 @@
 YoYInflationCoupon
  -- |Coupon paying a YoY-inflation type index
-
  -f-
   -- |index gearing, i.e. multiplicative coefficient for the index
   gearing

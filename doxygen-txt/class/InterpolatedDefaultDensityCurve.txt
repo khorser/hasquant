@@ -1,6 +1,5 @@
 InterpolatedDefaultDensityCurve
  -- |DefaultProbabilityTermStructure based on interpolation of default densities.
-
  -f-
   times
    ->const std::vector< Time > &

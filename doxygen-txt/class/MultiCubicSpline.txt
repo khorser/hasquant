@@ -1,7 +1,6 @@
 MultiCubicSpline
  -- |N-dimensional cubic spline interpolation between discrete points.
  -- |Testsinterpolated values are checked against the original function.Possible enhancements allow extrapolation as for the other interpolationsinvestigate if and how to implement Hyman filters and different boundary conditions Bugcannot interpolate at the grid points on the boundary surface of the N-dimensional region
-
  -f-
   MultiCubicSpline
    ->

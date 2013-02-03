@@ -1,7 +1,6 @@
 Redemption
  -- |Bond redemption.
  -- |This class specializes SimpleCashFlow so that visitors can perform more detailed cash-flow analysis.
-
  -f-
   Redemption
    ->

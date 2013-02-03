@@ -1,7 +1,6 @@
 Secant
  -- |Secant 1-D solver
  -- |Teststhe correctness of the returned values is tested by checking them against known good results.
-
  -f-
   solveImpl
    ->Real

@@ -1,7 +1,6 @@
 BondHelper
  -- |fixed-coupon bond helper
  -- |WarningThis class assumes that the reference date does not change between calls of setTermStructure().
-
  -f-
   setTermStructure
    ->void

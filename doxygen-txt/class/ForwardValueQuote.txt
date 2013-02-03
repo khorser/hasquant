@@ -1,6 +1,5 @@
 ForwardValueQuote
  -- |quote for the forward value of an index
-
  -f-
   ForwardValueQuote
    ->

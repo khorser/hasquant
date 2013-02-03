@@ -1,6 +1,5 @@
 CPIBond
  -- |cpi bond; if there is only one date in the schedule it is a zero bond returning an inflated notional.
-
  -f-
   CPIBond
    ->

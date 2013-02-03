@@ -1,7 +1,6 @@
 CumulativeNormalDistribution
  -- |Cumulative normal distribution function.
  -- |Given x it provides an approximation to the integral of the gaussian normal distribution: formula here ...For this implementation see M. Abramowitz and I. Stegun, Handbook of Mathematical Functions, Dover Publications, New York (1972)
-
  -f-
   CumulativeNormalDistribution
    ->

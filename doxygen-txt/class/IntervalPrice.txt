@@ -1,6 +1,5 @@
 IntervalPrice
  -- |interval price
-
  -f-
   open
    ->Real

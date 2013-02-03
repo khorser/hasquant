@@ -1,7 +1,6 @@
 UpperBoundEngine
  -- |Market-model engine for upper-bound estimation.
  -- |product and hedge must have the same rate times and exercise times
-
  -f-
   UpperBoundEngine
    ->

@@ -1,5 +1,4 @@
 detail::ConstantGradHelper
-
  -f-
   ConstantGradHelper
    ->

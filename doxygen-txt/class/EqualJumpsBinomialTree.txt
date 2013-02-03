@@ -1,6 +1,5 @@
 EqualJumpsBinomialTree
  -- |Base class for equal jumps binomial tree.
-
  -f-
   EqualJumpsBinomialTree
    ->

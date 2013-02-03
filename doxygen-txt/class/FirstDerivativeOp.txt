@@ -1,5 +1,4 @@
 FirstDerivativeOp
-
  -f-
   FirstDerivativeOp
    ->

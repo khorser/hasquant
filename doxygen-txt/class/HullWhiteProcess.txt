@@ -1,6 +1,5 @@
 HullWhiteProcess
  -- |Hull-White stochastic process.
-
  -f-
   a
    ->Real

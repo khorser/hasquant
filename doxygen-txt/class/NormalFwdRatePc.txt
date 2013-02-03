@@ -1,6 +1,5 @@
 NormalFwdRatePc
  -- |Predictor-Corrector.
-
  -f-
   NormalFwdRatePc
    ->

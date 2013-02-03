@@ -1,5 +1,4 @@
 square
-
  -f-
   operator()
    ->T

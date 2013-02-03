@@ -1,7 +1,6 @@
 Rounding
  -- |basic rounding class
  -- |Teststhe correctness of the returned values is tested by checking them against known good results.
-
  -f-
   precision
    ->Integer

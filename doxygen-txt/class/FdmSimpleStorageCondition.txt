@@ -1,5 +1,4 @@
 FdmSimpleStorageCondition
-
  -f-
   FdmSimpleStorageCondition
    ->

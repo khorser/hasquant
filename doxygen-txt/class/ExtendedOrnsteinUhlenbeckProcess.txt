@@ -1,7 +1,6 @@
 ExtendedOrnsteinUhlenbeckProcess
  -- |Extended Ornstein-Uhlenbeck process class.
  -- |This class describes the Ornstein-Uhlenbeck process governed by \[ dx = a (b(t) - x_t) dt + \sigma dW_t. \]
-
  -f-
   speed
    ->Real

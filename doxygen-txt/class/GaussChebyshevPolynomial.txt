@@ -1,6 +1,5 @@
 GaussChebyshevPolynomial
  -- |Gauss-Chebyshev polynomial.
-
  -f-
   GaussChebyshevPolynomial
    ->

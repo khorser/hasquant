@@ -1,7 +1,6 @@
 SwaptionVolatilityCube
  -- |swaption-volatility cube
  -- |Warningthis class is not finalized and its interface might change in subsequent releases.
-
  -f-
   atmStrike
    ->Rate

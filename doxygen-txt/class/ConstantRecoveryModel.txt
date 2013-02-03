@@ -1,6 +1,5 @@
 ConstantRecoveryModel
  -- |Simple Recovery Rate model returning the constant value of the quote independently of the date and the seniority.
-
  -f-
   ConstantRecoveryModel
    ->

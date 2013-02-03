@@ -1,6 +1,5 @@
 MarketModelPathwiseInverseFloater
  -- |Pathwise product inverse floater for doing Greeks Tested in MarketModels::testInverseFloater()
-
  -f-
   MarketModelPathwiseInverseFloater
    ->
@@ -21,5 +20,3 @@ MarketModelPathwiseInverseFloater
    ::bool
    =true
    -- ^payer
-  ~MarketModelPathwiseInverseFloater
-   ->

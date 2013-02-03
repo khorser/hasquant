@@ -1,6 +1,5 @@
 FrankCopulaRng
  -- |Frank copula random-number generator.
-
  -f-
   FrankCopulaRng
    ->

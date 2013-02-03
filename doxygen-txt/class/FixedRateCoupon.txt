@@ -1,6 +1,5 @@
 FixedRateCoupon
  -- |Coupon paying a fixed interest rate
-
  -f-
   FixedRateCoupon
    ->

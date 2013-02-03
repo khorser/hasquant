@@ -1,7 +1,6 @@
 ForwardMeasureProcess
  -- |forward-measure stochastic process
  -- |stochastic process whose dynamics are expressed in the forward measure.
-
  -f-
   setForwardMeasureTime
    ->void

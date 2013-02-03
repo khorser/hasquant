@@ -1,6 +1,5 @@
 SimpleChooserOption::arguments
  -- |Extra arguments for single chooser option.
-
  -v-
   choosingDate
    ::Date

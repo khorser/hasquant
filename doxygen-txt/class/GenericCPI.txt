@@ -1,6 +1,5 @@
 GenericCPI
  -- |Generic CPI index.
-
  -f-
   GenericCPI
    ->

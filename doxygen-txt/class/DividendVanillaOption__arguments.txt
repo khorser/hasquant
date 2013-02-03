@@ -1,6 +1,5 @@
 DividendVanillaOption::arguments
  -- |Arguments for dividend vanilla option calculation
-
  -v-
   cashFlow
    ::DividendSchedule

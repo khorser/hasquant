@@ -1,6 +1,5 @@
 YYUSCPIr
  -- |Fake year-on-year US CPI (i.e. a ratio of US CPI)
-
  -f-
   YYUSCPIr
    ->

@@ -1,6 +1,5 @@
 FDDividendShoutEngine
  -- |Finite-differences shout engine with dividends.
-
  -f-
   FDDividendShoutEngine
    ->

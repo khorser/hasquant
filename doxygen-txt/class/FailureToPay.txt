@@ -1,6 +1,5 @@
 FailureToPay
  -- |Failure to Pay atomic event type.
-
  -f-
   FailureToPay
    ->

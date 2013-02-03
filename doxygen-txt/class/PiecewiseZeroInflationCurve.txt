@@ -1,6 +1,5 @@
 PiecewiseZeroInflationCurve
  -- |Piecewise zero-inflation term structure.
-
  -f-
   PiecewiseZeroInflationCurve
    ->

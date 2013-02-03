@@ -1,6 +1,5 @@
 Polynomial
  -- |polynomial2D-spline-interpolation factory
-
  -f-
   interpolate
    ->Interpolation2D

@@ -1,6 +1,5 @@
 BlackScholesCalculator
  -- |Black-Scholes 1973 calculator class.
-
  -f-
   BlackScholesCalculator
    ->
@@ -28,8 +27,6 @@ BlackScholesCalculator
    -- ^stdDev
    ::DiscountFactor
    -- ^discount
-  ~BlackScholesCalculator
-   ->
   -- |Sensitivity to change in the underlying spot price.
   delta
    ->Real

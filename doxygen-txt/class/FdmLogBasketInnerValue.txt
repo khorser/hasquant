@@ -1,5 +1,4 @@
 FdmLogBasketInnerValue
-
  -f-
   FdmLogBasketInnerValue
    ->

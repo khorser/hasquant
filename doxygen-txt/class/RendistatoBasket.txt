@@ -1,5 +1,4 @@
 RendistatoBasket
-
  -f-
   size
    ->Size

@@ -1,6 +1,5 @@
 YoYInflationBachelierCapFloorEngine
  -- |Unit Displaced Black-formula inflation cap/floor engine (standalone, i.e. no coupon pricer)
-
  -f-
   YoYInflationBachelierCapFloorEngine
    ->

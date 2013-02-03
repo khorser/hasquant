@@ -1,7 +1,6 @@
 BlackKarasinski::Dynamics
  -- |Short-rate dynamics in the Black-Karasinski model.
  -- |The short-rate is here \[ r_t = e^{\varphi(t) + x_t} \] where $ \varphi(t) $ is the deterministic time-dependent parameter (which can not be determined analytically) used for term-structure fitting and $ x_t $ is the state variable following an Ornstein-Uhlenbeck process.
-
  -f-
   Dynamics
    ->

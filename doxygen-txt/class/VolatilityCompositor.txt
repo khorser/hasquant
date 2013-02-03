@@ -1,8 +1,5 @@
 VolatilityCompositor
-
  -f-
-  ~VolatilityCompositor
-   ->
   calculate
    ->TimeSeries< Volatility >
    ::const TimeSeries< Volatility > &

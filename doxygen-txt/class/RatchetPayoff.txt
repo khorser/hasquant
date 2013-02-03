@@ -1,6 +1,5 @@
 RatchetPayoff
  -- |Ratchet payoff (single option)
-
  -f-
   RatchetPayoff
    ->

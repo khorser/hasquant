@@ -1,10 +1,7 @@
 LossDist
  -- |Probability formulas and algorithms.
-
  -f-
   LossDist
-   ->
-  ~LossDist
    ->
   operator()
    ->Distribution

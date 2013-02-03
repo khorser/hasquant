@@ -1,7 +1,6 @@
 AbcdFunction
  -- |Abcd functional form for instantaneous volatility
  -- |\[ f(T-t) = [ a + b(T-t) ] e^{-c(T-t)} + d \] following Rebonato's notation.
-
  -f-
   AbcdFunction
    ->

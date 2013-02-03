@@ -1,7 +1,6 @@
 YoYCapFloorTermPriceSurface
  -- |Abstract base class, inheriting from InflationTermStructure.
  -- |Since this can create a yoy term structure it does take a YoY index.Possible enhancementsdeal with index interpolation.
-
  -f-
   -- |inspectors
   -- |you don't know if price() is a cap or a floor without checking the YoYSwapATM level. atm cap/floor prices are generally inaccurate because they are from extrapolation and intersection.

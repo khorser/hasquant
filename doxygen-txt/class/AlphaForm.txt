@@ -1,8 +1,5 @@
 AlphaForm
-
  -f-
-  ~AlphaForm
-   ->
   operator()
    ->Real
    ::Integer

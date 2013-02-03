@@ -1,6 +1,5 @@
 ClaytonCopulaRng
  -- |Clayton copula random-number generator.
-
  -f-
   ClaytonCopulaRng
    ->

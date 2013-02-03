@@ -1,5 +1,4 @@
 FDDividendAmericanEngineShiftScale
-
  -f-
   FDDividendAmericanEngineShiftScale
    ->

@@ -1,7 +1,6 @@
 ForwardSpreadedTermStructure
  -- |Term structure with added spread on the instantaneous forward rate.
  -- |This term structure will remain linked to the original structure, i.e., any changes in the latter will be reflected in this structure as well. Tests the correctness of the returned values is tested by checking them against numerical calculations.observability against changes in the underlying term structure and in the added spread is checked.
-
  -f-
   ForwardSpreadedTermStructure
    ->

@@ -1,6 +1,5 @@
 StatsHolder
  -- |Helper class for precomputed distributions.
-
  -f-
   StatsHolder
    ->
@@ -8,8 +7,6 @@ StatsHolder
    -- ^mean
    ::Real
    -- ^standardDeviation
-  ~StatsHolder
-   ->
   mean
    ->Real
   standardDeviation

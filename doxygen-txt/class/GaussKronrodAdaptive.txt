@@ -1,7 +1,6 @@
 GaussKronrodAdaptive
  -- |Integral of a 1-dimensional function using the Gauss-Kronrod methods.
  -- |This class provide an adaptive integration procedure using 15 points Gauss-Kronrod integration rule. This is more robust in that it allows to integrate less smooth functions (though singular functions should be integrated using dedicated algorithms) but less efficient beacuse it does not reuse precedently computed points during computation steps.References:Gauss-Kronrod Integration http://mathcssun1.emporia.edu/~oneilcat/ExperimentApplet3/ExperimentApplet3.htmlNMS - Numerical Analysis Library http://www.math.iastate.edu/burkardt/f_src/nms/nms.htmlTeststhe correctness of the result is tested by checking it against known good values.
-
  -f-
   GaussKronrodAdaptive
    ->

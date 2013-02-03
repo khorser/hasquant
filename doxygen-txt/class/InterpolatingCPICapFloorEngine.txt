@@ -1,6 +1,5 @@
 InterpolatingCPICapFloorEngine
  -- |This engine only adds timing functionality (e.g. different lag) w.r.t. an existing interpolated price surface.
-
  -f-
   InterpolatingCPICapFloorEngine
    ->
@@ -8,5 +7,3 @@ InterpolatingCPICapFloorEngine
    -- ^
   name
    ->std::string
-  ~InterpolatingCPICapFloorEngine
-   ->

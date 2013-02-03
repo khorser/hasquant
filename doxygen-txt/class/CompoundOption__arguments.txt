@@ -1,5 +1,4 @@
 CompoundOption::arguments
-
  -v-
   motherOption
    ::boost::shared_ptr< OneAssetOption >

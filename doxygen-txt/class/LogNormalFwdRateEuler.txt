@@ -1,6 +1,5 @@
 LogNormalFwdRateEuler
  -- |Euler.
-
  -f-
   LogNormalFwdRateEuler
    ->

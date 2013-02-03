@@ -1,6 +1,5 @@
 VarianceOption::arguments
  -- |Arguments for forward fair-variance calculation
-
  -v-
   payoff
    ::boost::shared_ptr< Payoff >

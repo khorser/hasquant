@@ -1,5 +1,4 @@
 SubPeriodsPricer
-
  -f-
   swapletRate
    ->Rate

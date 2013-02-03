@@ -1,6 +1,5 @@
 MixedLinearCubicInterpolation
  -- |mixed linear/cubic interpolation between discrete points
-
  -f-
   -- |the $ x $ values must be sorted.
   MixedLinearCubicInterpolation

@@ -1,7 +1,6 @@
 SwaptionVolatilityStructure
  -- |Swaption-volatility structure
  -- |This abstract class defines the interface of concrete swaption volatility structures which will be derived from this one.
-
  -f-
   -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   SwaptionVolatilityStructure
@@ -258,8 +257,6 @@ SwaptionVolatilityStructure
   maxSwapLength
    ->Time
  -f-
-  ~SwaptionVolatilityStructure
-   ->
   -- |implements the conversion between swap tenor and swap (time) length
   swapLength
    ->Time

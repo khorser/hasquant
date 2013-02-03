@@ -1,7 +1,6 @@
 HullWhite::Dynamics
  -- |Short-rate dynamics in the Hull-White model.
  -- |The short-rate is here \[ r_t = \varphi(t) + x_t \] where $ \varphi(t) $ is the deterministic time-dependent parameter used for term-structure fitting and $ x_t $ is the state variable following an Ornstein-Uhlenbeck process.
-
  -f-
   Dynamics
    ->

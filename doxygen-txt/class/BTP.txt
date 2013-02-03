@@ -1,6 +1,5 @@
 BTP
  -- |Italian BTP (Buono Poliennali del Tesoro) fixed rate bond.
-
  -f-
   BTP
    ->

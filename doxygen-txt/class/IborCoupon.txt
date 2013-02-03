@@ -1,6 +1,5 @@
 IborCoupon
  -- |Coupon paying a Libor-type index
-
  -f-
   iborIndex
    ->const boost::shared_ptr< IborIndex > &

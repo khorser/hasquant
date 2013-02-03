@@ -1,7 +1,6 @@
 Vasicek::Dynamics
  -- |Short-rate dynamics in the Vasicek model.
  -- |The short-rate follows an Ornstein-Uhlenbeck process with mean $ b $.
-
  -f-
   Dynamics
    ->

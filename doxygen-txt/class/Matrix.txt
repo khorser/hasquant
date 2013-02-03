@@ -1,7 +1,6 @@
 Matrix
  -- |Matrix used in linear algebra.
  -- |This class implements the concept of Matrix as used in linear algebra. As such, it is not meant to be used as a container.
-
  -f-
   -- |creates a null matrix
   Matrix

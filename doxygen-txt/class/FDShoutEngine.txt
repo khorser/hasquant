@@ -1,7 +1,6 @@
 FDShoutEngine
  -- |Finite-differences pricing engine for shout vanilla options.
  -- |Teststhe correctness of the returned greeks is tested by reproducing numerical derivatives.
-
  -f-
   FDShoutEngine
    ->

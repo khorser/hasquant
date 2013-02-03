@@ -1,7 +1,6 @@
 DriftTermStructure
  -- |Drift term structure.
  -- |Drift term structure for modelling the common drift term: riskFreeRate - dividendYield - 0.5*vol*volThis term structure will remain linked to the original structures, i.e., any changes in the latters will be reflected in this structure as well.
-
  -f-
   DriftTermStructure
    ->

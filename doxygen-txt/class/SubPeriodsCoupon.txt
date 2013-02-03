@@ -1,5 +1,4 @@
 SubPeriodsCoupon
-
  -f-
   accept
    ->void

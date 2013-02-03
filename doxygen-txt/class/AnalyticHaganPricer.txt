@@ -1,6 +1,5 @@
 AnalyticHaganPricer
  -- |CMS-coupon pricer.
-
  -f-
   AnalyticHaganPricer
    ->

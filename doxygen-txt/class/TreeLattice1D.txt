@@ -1,7 +1,6 @@
 TreeLattice1D
  -- |One-dimensional tree-based lattice.
  -- |Derived classes must implement the following interface: Realunderlying(Sizei,Sizeindex)const;
-
  -f-
   TreeLattice1D
    ->

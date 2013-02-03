@@ -1,6 +1,5 @@
 MixedLinearCubic
  -- |mixed linear/cubic interpolation factory and traits
-
  -v-
   global
    ::const bool

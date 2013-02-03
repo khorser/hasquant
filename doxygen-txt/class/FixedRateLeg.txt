@@ -1,6 +1,5 @@
 FixedRateLeg
  -- |helper class building a sequence of fixed rate coupons
-
  -f-
   FixedRateLeg
    ->

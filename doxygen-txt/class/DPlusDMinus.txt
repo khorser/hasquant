@@ -1,7 +1,6 @@
 DPlusDMinus
  -- |$ D_{+}D_{-} $ matricial representation
  -- |The differential operator $ D_{+}D_{-} $ discretizes the second derivative with the second-order formula \[ \frac{\partial^2 u_{i}}{\partial x^2} \approx \frac{u_{i+1}-2u_{i}+u_{i-1}}{h^2} = D_{+}D_{-} u_{i} \]Teststhe correctness of the returned values is tested by checking them against numerical calculations.
-
  -f-
   DPlusDMinus
    ->

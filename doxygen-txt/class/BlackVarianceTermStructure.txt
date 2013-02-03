@@ -1,7 +1,6 @@
 BlackVarianceTermStructure
  -- |Black variance term structure.
  -- |This abstract class acts as an adapter to VolTermStructure allowing the programmer to implement only the blackVarianceImpl(Time, Real, bool) method in derived classes.Volatility are assumed to be expressed on an annual basis.
-
  -f-
   -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   BlackVarianceTermStructure

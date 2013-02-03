@@ -1,6 +1,5 @@
 LogNormalCotSwapRatePc
  -- |Predictor-Corrector.
-
  -f-
   LogNormalCotSwapRatePc
    ->

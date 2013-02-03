@@ -1,6 +1,5 @@
 Lattice
  -- |Lattice (tree, finite-differences) base class
-
  -f-
   timeGrid
    ->const TimeGrid &
@@ -36,8 +35,6 @@ Lattice
    ->
    ::const TimeGrid &
    -- ^timeGrid
-  ~Lattice
-   ->
   grid
    ->Disposable< Array >
    ::Time

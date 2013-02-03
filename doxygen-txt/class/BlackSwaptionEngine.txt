@@ -1,7 +1,6 @@
 BlackSwaptionEngine
  -- |Black-formula swaption engine.
  -- |WarningThe engine assumes that the exercise date equals the start date of the passed swap.
-
  -f-
   BlackSwaptionEngine
    ->

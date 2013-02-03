@@ -1,6 +1,5 @@
 FdBlackScholesRebateEngine
  -- |Finite-Differences Black Scholes barrier option rebate helper engine.
-
  -f-
   FdBlackScholesRebateEngine
    ->

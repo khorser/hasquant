@@ -1,7 +1,6 @@
 SampledCurve
  -- |This class contains a sampled curve.
  -- |Initially the class will contain one indexed curve
-
  -f-
   grid
    ->const Array &

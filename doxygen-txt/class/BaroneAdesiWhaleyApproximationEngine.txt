@@ -1,7 +1,6 @@
 BaroneAdesiWhaleyApproximationEngine
  -- |Barone-Adesi and Whaley pricing engine for American options (1987)
  -- |Teststhe correctness of the returned value is tested by reproducing results available in literature.
-
  -f-
   BaroneAdesiWhaleyApproximationEngine
    ->

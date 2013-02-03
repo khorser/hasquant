@@ -1,7 +1,6 @@
 MCEuropeanGJRGARCHEngine
  -- |Monte Carlo GJR-GARCH-model engine for European options.
  -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature
-
  -f-
   MCEuropeanGJRGARCHEngine
    ->

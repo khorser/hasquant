@@ -1,6 +1,5 @@
 OvernightIndexedSwap
  -- |Overnight indexed swap: fix vs compounded overnight rate.
-
  -f-
   type
    ->Type

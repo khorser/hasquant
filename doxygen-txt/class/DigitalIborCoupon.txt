@@ -1,6 +1,5 @@
 DigitalIborCoupon
  -- |Ibor rate coupon with digital digital call/put option.
-
  -f-
   DigitalIborCoupon
    ->

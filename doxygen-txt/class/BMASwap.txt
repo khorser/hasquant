@@ -1,6 +1,5 @@
 BMASwap
  -- |swap paying Libor against BMA coupons
-
  -f-
   liborFraction
    ->Real

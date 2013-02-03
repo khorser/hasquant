@@ -1,8 +1,5 @@
 ParametersTransformation
-
  -f-
-  ~ParametersTransformation
-   ->
   direct
    ->Array
    ::const Array &

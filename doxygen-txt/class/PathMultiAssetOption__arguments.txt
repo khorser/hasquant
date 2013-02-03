@@ -1,6 +1,5 @@
 PathMultiAssetOption::arguments
  -- |Arguments for multi-asset option calculation
-
  -v-
   payoff
    ::boost::shared_ptr< PathPayoff >

@@ -1,6 +1,5 @@
 CallableBondConstantVolatility
  -- |Constant callable-bond volatility, no time-strike dependence.
-
  -f-
   CallableBondConstantVolatility
    ->

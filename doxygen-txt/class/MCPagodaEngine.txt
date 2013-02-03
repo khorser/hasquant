@@ -1,6 +1,5 @@
 MCPagodaEngine
  -- |Pricing engine for pagoda options using Monte Carlo simulation.
-
  -f-
   MCPagodaEngine
    ->

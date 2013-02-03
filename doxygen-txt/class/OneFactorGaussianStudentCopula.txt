@@ -1,7 +1,6 @@
 OneFactorGaussianStudentCopula
  -- |One-factor Gaussian-Student t-Copula.
  -- |The copula model \[ Y_i = a_i\,M+\sqrt{1-a_i^2}\:Z_i \] is specified here by setting the probability density functions for \form#120 ( \form#121) to a Student t-distributions with \form#124 degrees of freedom, and for \form#122 ( \form#123) to a Gaussian. The variance of the Student t-distribution with \form#126 degrees of freedom is \form#127. Since the copula approach requires zero mean and unit variance distributions, \form#128 is scaled by \form#131@_fakenl Possible enhancementsImprove performance/accuracy of the calculation of inverse cumulative Y. Tabulate and store it for selected correlations?
-
  -f-
   OneFactorGaussianStudentCopula
    ->

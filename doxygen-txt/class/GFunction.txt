@@ -1,8 +1,5 @@
 GFunction
-
  -f-
-  ~GFunction
-   ->
   operator()
    ->Real
    ::Real

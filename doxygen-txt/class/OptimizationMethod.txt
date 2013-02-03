@@ -1,9 +1,6 @@
 OptimizationMethod
  -- |Abstract class for constrained optimization method.
-
  -f-
-  ~OptimizationMethod
-   ->
   -- |minimize the optimization problem P
   minimize
    ->EndCriteria::Type

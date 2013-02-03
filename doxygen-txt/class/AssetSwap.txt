@@ -1,7 +1,6 @@
 AssetSwap
  -- |Bullet bond vs Libor swap.
  -- |for mechanics of par asset swap and market asset swap, refer to "Introduction to Asset Swap", Lehman Brothers European Fixed Income Research - January 2000, D. O'KaneWarningbondCleanPrice must be the (forward) price at the floatSchedule start dateBugfair prices are not calculated correctly when using indexed coupons.
-
  -f-
   AssetSwap
    ->

@@ -1,7 +1,6 @@
 DefaultProbabilityTermStructure
  -- |Default probability term structure.
  -- |This abstract class defines the interface of concrete credit structures which will be derived from this one.
-
  -f-
   DefaultProbabilityTermStructure
    ->

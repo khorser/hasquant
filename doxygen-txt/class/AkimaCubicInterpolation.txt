@@ -1,5 +1,4 @@
 AkimaCubicInterpolation
-
  -f-
   -- |the $ x $ values must be sorted.
   AkimaCubicInterpolation

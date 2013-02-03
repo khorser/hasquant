@@ -1,6 +1,5 @@
 QuantoVanillaOption
  -- |quanto version of a vanilla option
-
  -f-
   qvega
    ->Real

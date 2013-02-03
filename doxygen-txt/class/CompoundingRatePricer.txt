@@ -1,5 +1,4 @@
 CompoundingRatePricer
-
  -f-
   swapletPrice
    ->Real

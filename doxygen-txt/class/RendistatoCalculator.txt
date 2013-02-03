@@ -1,5 +1,4 @@
 RendistatoCalculator
-
  -f-
   yield
    ->Rate

@@ -1,6 +1,5 @@
 YYEUHICP
  -- |Genuine year-on-year EU HICP (i.e. not a ratio of EU HICP)
-
  -f-
   YYEUHICP
    ->

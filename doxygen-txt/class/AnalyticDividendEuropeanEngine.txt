@@ -1,7 +1,6 @@
 AnalyticDividendEuropeanEngine
  -- |Analytic pricing engine for European options with discrete dividends.
  -- |Teststhe correctness of the returned greeks is tested by reproducing numerical derivatives.
-
  -f-
   AnalyticDividendEuropeanEngine
    ->

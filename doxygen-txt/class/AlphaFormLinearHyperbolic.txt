@@ -1,5 +1,4 @@
 AlphaFormLinearHyperbolic
-
  -f-
   AlphaFormLinearHyperbolic
    ->
@@ -8,8 +7,6 @@ AlphaFormLinearHyperbolic
    ::Real
    =0.0
    -- ^alpha
-  ~AlphaFormLinearHyperbolic
-   ->
   operator()
    ->Real
    ::Integer

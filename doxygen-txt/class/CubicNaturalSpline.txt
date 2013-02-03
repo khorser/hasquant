@@ -1,5 +1,4 @@
 CubicNaturalSpline
-
  -f-
   -- |the $ x $ values must be sorted.
   CubicNaturalSpline

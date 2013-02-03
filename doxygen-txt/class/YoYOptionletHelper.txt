@@ -1,6 +1,5 @@
 YoYOptionletHelper
  -- |Year-on-year inflation-volatility bootstrap helper.
-
  -f-
   YoYOptionletHelper
    ->

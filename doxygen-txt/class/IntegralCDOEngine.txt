@@ -1,6 +1,5 @@
 IntegralCDOEngine
  -- |CDO base engine taking (possibly) small time steps.
-
  -f-
   IntegralCDOEngine
    ->

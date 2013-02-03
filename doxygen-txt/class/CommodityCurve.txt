@@ -1,6 +1,5 @@
 CommodityCurve
  -- |Commodity term structure.
-
  -f-
   name
    ->const std::string &

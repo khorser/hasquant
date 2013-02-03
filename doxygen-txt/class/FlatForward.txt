@@ -1,6 +1,5 @@
 FlatForward
  -- |Flat interest-rate curve.
-
  -f-
   FlatForward
    ->

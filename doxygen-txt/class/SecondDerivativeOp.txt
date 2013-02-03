@@ -1,5 +1,4 @@
 SecondDerivativeOp
-
  -f-
   SecondDerivativeOp
    ->

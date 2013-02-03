@@ -1,6 +1,5 @@
 PricingPeriod
  -- |Time pricingperiod described by a number of a given time unit.
-
  -f-
   PricingPeriod
    ->

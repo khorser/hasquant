@@ -1,6 +1,5 @@
 VarianceSwap::results
  -- |Results from variance-swap calculation
-
  -v-
   variance
    ::Real

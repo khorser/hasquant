@@ -1,7 +1,6 @@
 MargrabeOption
  -- |Margrabe option on two assets.
  -- |This option gives the holder the right to exchange Q2 stocks of the second asset for Q1 stocks of the first at expiration.
-
  -f-
   MargrabeOption
    ->

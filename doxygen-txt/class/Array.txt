@@ -1,7 +1,6 @@
 Array
  -- |1-D array used in linear algebra.
  -- |This class implements the concept of vector as used in linear algebra. As such, it is not meant to be used as a container - std::vector should be used instead.Testsconstruction of arrays is checked in a number of cases
-
  -f-
   -- |creates the array with the given dimension
   Array

@@ -1,6 +1,5 @@
 Region
  -- |Region class, used for inflation applicability.
-
  -f-
   name
    ->const std::string &

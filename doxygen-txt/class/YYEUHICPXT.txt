@@ -1,6 +1,5 @@
 YYEUHICPXT
  -- |Genuine year-on-year EU HICPXT.
-
  -f-
   YYEUHICPXT
    ->

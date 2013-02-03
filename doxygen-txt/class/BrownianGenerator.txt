@@ -1,8 +1,5 @@
 BrownianGenerator
-
  -f-
-  ~BrownianGenerator
-   ->
   nextStep
    ->Real
    ::std::vector< Real > &

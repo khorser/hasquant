@@ -1,6 +1,5 @@
 FuturesRateHelper
  -- |Rate helper for bootstrapping over IborIndex futures prices.
-
  -f-
   convexityAdjustment
    ->Real

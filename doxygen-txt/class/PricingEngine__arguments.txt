@@ -1,7 +1,4 @@
 PricingEngine::arguments
-
  -f-
-  ~arguments
-   ->
   validate
    ->void

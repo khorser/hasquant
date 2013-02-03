@@ -1,7 +1,6 @@
 SwapRateHelper
  -- |Rate helper for bootstrapping over swap rates.
  -- |Possible enhancementsuse input SwapIndex to create the swap
-
  -f-
   setTermStructure
    ->void

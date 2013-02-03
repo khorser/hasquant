@@ -1,6 +1,5 @@
 DepositRateHelper
  -- |Rate helper for bootstrapping over deposit rates.
-
  -f-
   setTermStructure
    ->void

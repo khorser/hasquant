@@ -1,6 +1,5 @@
 RiskyAssetSwap
  -- |Risky asset-swap instrument.
-
  -f-
   RiskyAssetSwap
    ->

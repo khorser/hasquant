@@ -1,6 +1,5 @@
 BlackCapFloorEngine
  -- |Black-formula cap/floor engine.
-
  -f-
   BlackCapFloorEngine
    ->

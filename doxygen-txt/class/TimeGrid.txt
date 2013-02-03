@@ -1,7 +1,6 @@
 TimeGrid
  -- |time grid class
  -- |Possible enhancementswhat was the rationale for limiting the grid to positive times? Investigate and see whether we can use it for negative ones as well.
-
  -f-
   TimeGrid
    ->

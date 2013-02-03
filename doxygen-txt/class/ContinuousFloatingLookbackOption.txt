@@ -1,6 +1,5 @@
 ContinuousFloatingLookbackOption
  -- |Continuous-floating lookback option.
-
  -f-
   ContinuousFloatingLookbackOption
    ->

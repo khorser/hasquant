@@ -1,6 +1,5 @@
 QuantoOptionResults
  -- |Results from quanto option calculation
-
  -v-
   qvega
    ::Real

@@ -1,10 +1,7 @@
 EarlyExercisePathPricer
  -- |base class for early exercise path pricers
  -- |Returns the value of an option on a given path and given time.
-
  -f-
-  ~EarlyExercisePathPricer
-   ->
   operator()
    ->ValueType
    ::const PathType &

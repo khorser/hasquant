@@ -1,7 +1,6 @@
 JointCalendar
  -- |Joint calendar.
  -- |Depending on the chosen rule, this calendar has a set of business days given by either the union or the intersection of the sets of business days of the given calendars.Teststhe correctness of the returned results is tested by reproducing the calculations.
-
  -f-
   JointCalendar
    ->

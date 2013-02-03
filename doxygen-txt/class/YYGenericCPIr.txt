@@ -1,6 +1,5 @@
 YYGenericCPIr
  -- |Fake year-on-year GenericCPI (i.e. a ratio)
-
  -f-
   YYGenericCPIr
    ->

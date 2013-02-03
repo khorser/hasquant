@@ -1,6 +1,5 @@
 LogNormalFwdRateIpc
  -- |Iterative Predictor-Corrector.
-
  -f-
   LogNormalFwdRateIpc
    ->

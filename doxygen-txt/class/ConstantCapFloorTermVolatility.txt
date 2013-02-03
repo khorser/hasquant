@@ -1,6 +1,5 @@
 ConstantCapFloorTermVolatility
  -- |Constant caplet volatility, no time-strike dependence.
-
  -f-
   -- |floating reference date, floating market data
   ConstantCapFloorTermVolatility

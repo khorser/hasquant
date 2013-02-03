@@ -1,6 +1,5 @@
 BackwardFlat
  -- |Backward-flat interpolation factory and traits.
-
  -v-
   global
    ::const bool

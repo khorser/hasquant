@@ -1,6 +1,5 @@
 YearOnYearInflationSwap::arguments
  -- |Arguments for YoY swap calculation
-
  -v-
   type
    ::Type

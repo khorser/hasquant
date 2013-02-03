@@ -1,6 +1,5 @@
 FiniteDifferenceModel
  -- |Generic finite difference model.
-
  -f-
   FiniteDifferenceModel
    ->

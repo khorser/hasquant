@@ -1,6 +1,5 @@
 SuperSharePayoff
  -- |Binary supershare payoff.
-
  -f-
   SuperSharePayoff
    ->

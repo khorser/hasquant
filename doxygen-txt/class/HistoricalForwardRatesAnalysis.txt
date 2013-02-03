@@ -1,8 +1,5 @@
 HistoricalForwardRatesAnalysis
-
  -f-
-  ~HistoricalForwardRatesAnalysis
-   ->
   skippedDates
    ->const std::vector< Date > &
   skippedDatesErrorMessage

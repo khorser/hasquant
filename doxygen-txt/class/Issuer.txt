@@ -1,5 +1,4 @@
 Issuer
-
  -f-
   defaultProbability
    ->const Handle< DefaultProbabilityTermStructure > &

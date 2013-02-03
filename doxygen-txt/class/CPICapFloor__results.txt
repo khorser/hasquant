@@ -1,5 +1,4 @@
 CPICapFloor::results
-
  -f-
   reset
    ->void

@@ -1,6 +1,5 @@
 RiskyBond
  -- |Base class for default risky bonds
-
  -f-
   RiskyBond
    ->
@@ -14,8 +13,6 @@ RiskyBond
    -- ^defaultTS
    ::Handle< YieldTermStructure >
    -- ^yieldTS
-  ~RiskyBond
-   ->
   cashflows
    ->std::vector< boost::shared_ptr< CashFlow > >
   expectedCashflows

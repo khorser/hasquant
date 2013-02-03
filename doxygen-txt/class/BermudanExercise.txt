@@ -1,7 +1,6 @@
 BermudanExercise
  -- |Bermudan exercise.
  -- |A Bermudan option can only be exercised at a set of fixed dates.
-
  -f-
   BermudanExercise
    ->

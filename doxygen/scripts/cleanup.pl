@@ -97,5 +97,6 @@ for $f (glob("*.xml"))
 # :silent! argdo %s/<ref refid="[^"]\+" kindref="member">\([^<]\+\)<\/ref>/\1/g
 # :silent! argdo %s/QuantLib:://g
 # :g/^\s*<sectiondef.*\n\s*<header.*\n.*\/sectiondef>/e
+# on text files: :silent! argdo %s/  \~.*\n   ->/
 # :silent! argdo g/^$/delete
 # :silent! xa

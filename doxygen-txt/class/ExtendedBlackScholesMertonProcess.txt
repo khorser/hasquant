@@ -1,7 +1,6 @@
 ExtendedBlackScholesMertonProcess
  -- |experimental Black-Scholes-Merton stochastic process
  -- |This class allows to choose a built-in discretization scheme
-
  -e-
   Discretization
    Euler

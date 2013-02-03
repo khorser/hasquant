@@ -1,5 +1,4 @@
 NullDomain
-
  -f-
   includes
    ->bool

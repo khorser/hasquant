@@ -1,7 +1,6 @@
 CPILeg
  -- |Helper class building a sequence of capped/floored CPI coupons.
  -- |Also allowing for the inflated notional at the end... especially if there is only one date in the schedule. If a fixedRate is zero you get a FixedRateCoupon, otherwise you get a ZeroInflationCoupon.payoff is: spread + fixedRate x index
-
  -f-
   CPILeg
    ->

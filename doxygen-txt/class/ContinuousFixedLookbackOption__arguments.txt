@@ -1,6 +1,5 @@
 ContinuousFixedLookbackOption::arguments
  -- |Arguments for continuous fixed lookback option calculation
-
  -v-
   minmax
    ::Real

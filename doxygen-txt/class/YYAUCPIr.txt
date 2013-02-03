@@ -1,6 +1,5 @@
 YYAUCPIr
  -- |Fake year-on-year AUCPI (i.e. a ratio)
-
  -f-
   YYAUCPIr
    ->

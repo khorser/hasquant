@@ -1,6 +1,5 @@
 IborCouponPricer
  -- |base pricer for capped/floored Ibor coupons
-
  -f-
   IborCouponPricer
    ->

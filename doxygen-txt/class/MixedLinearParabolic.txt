@@ -1,5 +1,4 @@
 MixedLinearParabolic
-
  -f-
   -- |the $ x $ values must be sorted.
   MixedLinearParabolic

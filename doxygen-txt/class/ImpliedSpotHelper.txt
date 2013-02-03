@@ -1,5 +1,4 @@
 ImpliedSpotHelper
-
  -f-
   ImpliedSpotHelper
    ->

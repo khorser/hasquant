@@ -1,7 +1,6 @@
 NumericHaganPricer
  -- |CMS-coupon pricer.
  -- |Prices a cms coupon via static replication as in Hagan's "Conundrums..." article via numerical integration based on prices of vanilla swaptions
-
  -v-
   upperLimit_
    ::Real

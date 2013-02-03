@@ -1,7 +1,6 @@
 ErrorFunction
  -- |Error function
  -- |formula here ... Used to calculate the cumulative normal distribution function
-
  -f-
   ErrorFunction
    ->

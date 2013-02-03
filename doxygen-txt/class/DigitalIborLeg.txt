@@ -1,6 +1,5 @@
 DigitalIborLeg
  -- |helper class building a sequence of digital ibor-rate coupons
-
  -f-
   DigitalIborLeg
    ->

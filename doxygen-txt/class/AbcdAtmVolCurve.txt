@@ -1,7 +1,6 @@
 AbcdAtmVolCurve
  -- |Abcd-interpolated at-the-money (no-smile) volatility curve.
  -- |blah blah
-
  -f-
   optionTenors
    ->const std::vector< Period > &

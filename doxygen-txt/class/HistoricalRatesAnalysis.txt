@@ -1,6 +1,5 @@
 HistoricalRatesAnalysis
  -- |Historical rate analysis class
-
  -f-
   HistoricalRatesAnalysis
    ->

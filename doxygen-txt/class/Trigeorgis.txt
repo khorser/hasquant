@@ -1,6 +1,5 @@
 Trigeorgis
  -- |Trigeorgis (additive equal jumps) binomial tree
-
  -f-
   Trigeorgis
    ->

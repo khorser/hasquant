@@ -1,6 +1,5 @@
 Option
  -- |base option class
-
  -e-
   Type
    Put

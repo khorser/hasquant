@@ -1,8 +1,5 @@
 PdeSecondOrderParabolic
-
  -f-
-  ~PdeSecondOrderParabolic
-   ->
   diffusion
    ->Real
    ::Time

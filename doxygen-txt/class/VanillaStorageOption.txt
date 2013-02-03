@@ -1,6 +1,5 @@
 VanillaStorageOption
  -- |base option class
-
  -f-
   VanillaStorageOption
    ->

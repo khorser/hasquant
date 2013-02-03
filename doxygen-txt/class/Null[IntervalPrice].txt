@@ -1,5 +1,4 @@
 Null< IntervalPrice >
-
  -f-
   Null
    ->

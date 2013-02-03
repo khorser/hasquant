@@ -1,5 +1,4 @@
 SpreadedOptionletVolatility
-
  -f-
   businessDayConvention
    ->BusinessDayConvention

@@ -1,5 +1,4 @@
 DoublingConvergenceSteps
-
  -f-
   initialSamples
    ->Size

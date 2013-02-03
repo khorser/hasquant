@@ -1,7 +1,6 @@
 BlackCalculator
  -- |Black 1976 calculator class.
  -- |BugWhen the variance is null, division by zero occur during the calculation of delta, delta forward, gamma, gamma forward, rho, dividend rho, vega, and strike sensitivity.
-
  -f-
   BlackCalculator
    ->
@@ -27,8 +26,6 @@ BlackCalculator
    ::Real
    =1.0
    -- ^discount
-  ~BlackCalculator
-   ->
   value
    ->Real
   -- |Sensitivity to change in the underlying forward price.

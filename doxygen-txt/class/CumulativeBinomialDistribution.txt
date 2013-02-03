@@ -1,7 +1,6 @@
 CumulativeBinomialDistribution
  -- |Cumulative binomial distribution function.
  -- |Given an integer k it provides the cumulative probability of observing kk<=k: formula here ...
-
  -f-
   CumulativeBinomialDistribution
    ->

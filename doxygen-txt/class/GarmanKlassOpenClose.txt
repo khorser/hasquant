@@ -1,5 +1,4 @@
 GarmanKlassOpenClose
-
  -f-
   GarmanKlassOpenClose
    ->

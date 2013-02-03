@@ -1,6 +1,5 @@
 AdditiveEQPBinomialTree
  -- |Additive equal probabilities binomial tree.
-
  -f-
   AdditiveEQPBinomialTree
    ->

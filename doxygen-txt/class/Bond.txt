@@ -1,5 +1,4 @@
 Bond
-
  -f-
   settlementDays
    ->Natural

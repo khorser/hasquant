@@ -1,12 +1,9 @@
 FdmMesher
-
  -f-
   FdmMesher
    ->
    ::const boost::shared_ptr< FdmLinearOpLayout > &
    -- ^layout
-  ~FdmMesher
-   ->
   dplus
    ->Real
    ::const FdmLinearOpIterator &

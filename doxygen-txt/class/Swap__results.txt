@@ -1,5 +1,4 @@
 Swap::results
-
  -v-
   legNPV
    ::std::vector< Real >

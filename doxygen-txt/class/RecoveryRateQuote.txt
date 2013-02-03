@@ -1,6 +1,5 @@
 RecoveryRateQuote
  -- |Stores a recovery rate market quote and the associated seniority.
-
  -f-
   seniority
    ->Seniority

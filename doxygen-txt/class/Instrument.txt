@@ -1,7 +1,6 @@
 Instrument
  -- |Abstract instrument class.
  -- |This class is purely abstract and defines the interface of concrete instruments which will be derived from this one.Testsobservability of class instances is checked.
-
  -f-
   -- |returns the error estimate on the NPV when available.
   errorEstimate

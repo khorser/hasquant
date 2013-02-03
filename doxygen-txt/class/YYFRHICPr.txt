@@ -1,6 +1,5 @@
 YYFRHICPr
  -- |Fake year-on-year FR HICP (i.e. a ratio)
-
  -f-
   YYFRHICPr
    ->

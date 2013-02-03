@@ -1,7 +1,6 @@
 DefaultType
  -- |Atomic credit-event type.
  -- |This class encapsulates the ISDA default contractual types and their combinations. Non-atomicity works only at the atomic type level, obviating the specific event characteristics which it is accounted for only in derived classes.
-
  -f-
   DefaultType
    ->
@@ -11,8 +10,6 @@ DefaultType
    ::Restructuring::Type
    =Restructuring::XR
    -- ^restType
-  ~DefaultType
-   ->
   defaultType
    ->AtomicDefault::Type
   restructuringType

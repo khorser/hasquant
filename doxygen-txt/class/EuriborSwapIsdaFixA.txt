@@ -1,7 +1,6 @@
 EuriborSwapIsdaFixA
  -- |EuriborSwapIsdaFixA index base class
  -- |Euribor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 11am Frankfurt. Annual 30/360 vs 6M Euribor, 1Y vs 3M Euribor. Reuters page ISDAFIX2 or EURSFIXA=.Further info can be found at http://www.isda.org/fix/isdafix.html or Reuters page ISDAFIX.
-
  -f-
   EuriborSwapIsdaFixA
    ->

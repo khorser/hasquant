@@ -1,6 +1,5 @@
 ForwardTypePayoff
  -- |Class for forward type payoffs.
-
  -f-
   ForwardTypePayoff
    ->

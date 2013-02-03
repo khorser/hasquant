@@ -1,6 +1,5 @@
 HomogeneousPoolCDOEngine
  -- |CDO engine, loss distribution convolution for finite homogeneous pool.
-
  -f-
   HomogeneousPoolCDOEngine
    ->

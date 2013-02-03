@@ -1,6 +1,5 @@
 LogNormalFwdRatePc
  -- |Predictor-Corrector.
-
  -f-
   LogNormalFwdRatePc
    ->

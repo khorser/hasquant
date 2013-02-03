@@ -1,6 +1,5 @@
 AssetSwap::results
  -- |Results from simple swap calculation
-
  -v-
   fairSpread
    ::Spread

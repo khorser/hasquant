@@ -1,6 +1,5 @@
 UKRegion
  -- |United Kingdom as geographical/economic region.
-
  -f-
   UKRegion
    ->

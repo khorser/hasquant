@@ -1,6 +1,5 @@
 Greeks
  -- |additional option results
-
  -v-
   delta
    ::Real

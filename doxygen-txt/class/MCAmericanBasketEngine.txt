@@ -1,7 +1,6 @@
 MCAmericanBasketEngine
  -- |least-square Monte Carlo engine
  -- |WarningThis method is intrinsically weak for out-of-the-money options.
-
  -f-
   MCAmericanBasketEngine
    ->

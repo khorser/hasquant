@@ -1,6 +1,5 @@
 MarketModelPathwiseCoterminalSwaptionsDeflated
  -- |Main use is to test market pathwise vegas. The swaptions are payers and co-terminal. The class is tested in TestPathwiseVegas by running against the numerical version below.
-
  -f-
   MarketModelPathwiseCoterminalSwaptionsDeflated
    ->
@@ -8,5 +7,3 @@ MarketModelPathwiseCoterminalSwaptionsDeflated
    -- ^rateTimes
    ::const std::vector< Rate > &
    -- ^strikes
-  ~MarketModelPathwiseCoterminalSwaptionsDeflated
-   ->

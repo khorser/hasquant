@@ -1,9 +1,6 @@
 StepCondition
  -- |condition to be applied at every time step
-
  -f-
-  ~StepCondition
-   ->
   applyTo
    ->void
    ::array_type &

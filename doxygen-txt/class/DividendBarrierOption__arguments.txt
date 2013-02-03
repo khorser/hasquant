@@ -1,6 +1,5 @@
 DividendBarrierOption::arguments
  -- |Arguments for dividend barrier option calculation
-
  -v-
   cashFlow
    ::DividendSchedule

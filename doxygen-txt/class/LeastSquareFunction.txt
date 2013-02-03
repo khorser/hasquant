@@ -1,7 +1,6 @@
 LeastSquareFunction
  -- |Cost function for least-square problems.
  -- |Implements a cost function using the interface provided by the LeastSquareProblem class.
-
  -f-
   -- |Default constructor.
   LeastSquareFunction
@@ -9,5 +8,3 @@ LeastSquareFunction
    ::LeastSquareProblem &
    -- ^lsp
   -- |Destructor.
-  ~LeastSquareFunction
-   ->

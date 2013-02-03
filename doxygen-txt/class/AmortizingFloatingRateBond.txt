@@ -1,6 +1,5 @@
 AmortizingFloatingRateBond
  -- |amortizing floating-rate bond (possibly capped and/or floored)
-
  -f-
   AmortizingFloatingRateBond
    ->

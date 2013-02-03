@@ -1,7 +1,6 @@
 Solver1D
  -- |Base class for 1-D solvers.
  -- |The implementation of this class uses the so-called "Barton-Nackman trick", also known as "the curiously recurring template pattern". Concrete solvers will be declared as: classFoo:publicSolver1D<Foo>{ public: ... template<classF> RealsolveImpl(constF&f,Realaccuracy)const{ ... } }; Before calling solveImpl, the base class will set its protected data members so that: xMin_ and xMax_ form a valid bracket;fxMin_ and fxMax_ contain the values of the function in xMin_ and xMax_;root_ is a valid initial guess. The implementation of solveImpl can safely assume all of the above. Possible enhancements clean up the interface so that it is clear whether the accuracy is specified for $ x $ or $ f(x) $.add target value (now the target value is 0.0)
-
  -f-
   -- |This method returns the zero of the function $ f $, determined with the given accuracy $ \epsilon $; depending on the particular solver, this might mean that the returned $ x $ is such that $ |f(x)| < \epsilon $, or that $ |x-\xi| < \epsilon $ where $ \xi $ is the real zero.This method contains a bracketing routine to which an initial guess must be supplied as well as a step used to scan the range of the possible bracketing values.
   solve

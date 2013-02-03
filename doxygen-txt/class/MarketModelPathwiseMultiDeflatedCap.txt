@@ -1,6 +1,5 @@
 MarketModelPathwiseMultiDeflatedCap
  -- |MarketModelPathwiseMultiDeflatedCap to price several caps and get their derivatives simultaneously. Mainly useful for testing pathwise market vegas code.
-
  -f-
   MarketModelPathwiseMultiDeflatedCap
    ->
@@ -14,5 +13,3 @@ MarketModelPathwiseMultiDeflatedCap
    -- ^strike
    ::const std::vector< std::pair< Size, Size > > &
    -- ^startsAndEnds
-  ~MarketModelPathwiseMultiDeflatedCap
-   ->

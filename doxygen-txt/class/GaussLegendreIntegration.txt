@@ -1,7 +1,6 @@
 GaussLegendreIntegration
  -- |Gauss-Legendre integration.
  -- |This class performs a 1-dimensional Gauss-Legendre integration. \[ \int_{-1}^{1} f(x) \mathrm{d}x \] The weighting function is \[ w(x)=1 \]
-
  -f-
   GaussLegendreIntegration
    ->

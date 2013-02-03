@@ -1,6 +1,5 @@
 RatchetMaxPayoff
  -- |RatchetMax payoff (double option)
-
  -f-
   RatchetMaxPayoff
    ->

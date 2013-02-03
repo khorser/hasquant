@@ -1,6 +1,5 @@
 InterpolatedForwardCurve
  -- |YieldTermStructure based on interpolation of forward rates.
-
  -f-
   times
    ->const std::vector< Time > &

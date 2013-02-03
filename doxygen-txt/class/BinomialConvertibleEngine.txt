@@ -1,6 +1,5 @@
 BinomialConvertibleEngine
  -- |Binomial Tsiveriotis-Fernandes engine for convertible bonds.
-
  -f-
   BinomialConvertibleEngine
    ->

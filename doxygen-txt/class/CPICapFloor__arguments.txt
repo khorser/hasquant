@@ -1,5 +1,4 @@
 CPICapFloor::arguments
-
  -v-
   type
    ::Option::Type

@@ -1,10 +1,7 @@
 MarketModelEvolver
  -- |Market-model evolver.
  -- |Abstract base class. The evolver does the actual gritty work of evolving the forward rates from one time to the next.
-
  -f-
-  ~MarketModelEvolver
-   ->
   numeraires
    ->const std::vector< Size > &
   startNewPath

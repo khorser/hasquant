@@ -1,7 +1,6 @@
 GenericRiskStatistics
  -- |empirical-distribution risk measures
  -- |This class wraps a somewhat generic statistic tool and adds a number of risk measures (e.g.: value-at-risk, expected shortfall, etc.) based on the data distribution as reported by the underlying statistic tool.Possible enhancementsadd historical annualized volatility
-
  -f-
   -- |returns the variance of observations below the mean, \[ \frac{N}{N-1} \mathrm{E}\left[ (x-\langle x \rangle)^2 \;|\; x < \langle x \rangle \right]. \] See Markowitz (1959).
   semiVariance

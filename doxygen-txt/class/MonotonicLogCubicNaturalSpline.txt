@@ -1,5 +1,4 @@
 MonotonicLogCubicNaturalSpline
-
  -f-
   -- |the $ x $ values must be sorted.
   MonotonicLogCubicNaturalSpline

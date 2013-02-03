@@ -1,7 +1,6 @@
 StochasticProcess
  -- |multi-dimensional stochastic process class.
  -- |This class describes a stochastic process governed by \[ d\mathrm{x}_t = \mu(t, x_t)\mathrm{d}t + \sigma(t, \mathrm{x}_t) \cdot d\mathrm{W}_t. \]
-
  -f-
   -- |returns the number of dimensions of the stochastic process
   size
@@ -78,5 +77,3 @@ StochasticProcess
    ::const Date &
    -- ^
  -f-
-  ~StochasticProcess
-   ->

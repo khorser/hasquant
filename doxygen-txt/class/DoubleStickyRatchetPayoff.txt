@@ -1,6 +1,5 @@
 DoubleStickyRatchetPayoff
  -- |Intermediate class for single/double sticky/ratchet payoffs.
-
  -f-
   DoubleStickyRatchetPayoff
    ->

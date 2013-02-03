@@ -1,5 +1,4 @@
 Bond::arguments
-
  -v-
   settlementDate
    ::Date

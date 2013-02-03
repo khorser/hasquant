@@ -1,5 +1,4 @@
 detail::HullWhiteCapFloorPricer
-
  -f-
   HullWhiteCapFloorPricer
    ->

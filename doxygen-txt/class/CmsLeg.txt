@@ -1,6 +1,5 @@
 CmsLeg
  -- |helper class building a sequence of capped/floored cms-rate coupons
-
  -f-
   CmsLeg
    ->

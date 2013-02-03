@@ -1,9 +1,6 @@
 MarketModelFactory
  -- |base class for market-model factories
-
  -f-
-  ~MarketModelFactory
-   ->
   create
    ->boost::shared_ptr< MarketModel >
    ::const EvolutionDescription &

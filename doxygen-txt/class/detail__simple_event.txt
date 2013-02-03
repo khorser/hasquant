@@ -1,5 +1,4 @@
 detail::simple_event
-
  -f-
   simple_event
    ->

@@ -1,6 +1,5 @@
 DividendBarrierOption
  -- |Single-asset barrier option with discrete dividends.
-
  -f-
   DividendBarrierOption
    ->

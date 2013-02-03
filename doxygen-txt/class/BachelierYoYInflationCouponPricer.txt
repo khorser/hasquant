@@ -1,11 +1,8 @@
 BachelierYoYInflationCouponPricer
  -- |Bachelier-formula pricer for capped/floored yoy inflation coupons.
-
  -f-
   BachelierYoYInflationCouponPricer
    ->
    ::const Handle< YoYOptionletVolatilitySurface > &
    =Handle< YoYOptionletVolatilitySurface >()
    -- ^capletVol
-  ~BachelierYoYInflationCouponPricer
-   ->

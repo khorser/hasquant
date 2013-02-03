@@ -1,5 +1,4 @@
 FwdToCotSwapAdapterFactory
-
  -f-
   FwdToCotSwapAdapterFactory
    ->

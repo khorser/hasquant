@@ -1,6 +1,5 @@
 ExtendedTrigeorgis
  -- |Trigeorgis (additive equal jumps) binomial tree
-
  -f-
   ExtendedTrigeorgis
    ->

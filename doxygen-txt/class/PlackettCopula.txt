@@ -1,6 +1,5 @@
 PlackettCopula
  -- |Plackett copula.
-
  -f-
   PlackettCopula
    ->

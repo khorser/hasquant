@@ -1,6 +1,5 @@
 QuantoForwardVanillaOption
  -- |Quanto version of a forward vanilla option.
-
  -f-
   qvega
    ->Real

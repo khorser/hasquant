@@ -1,6 +1,5 @@
 FDStepConditionEngine
  -- |Finite-differences pricing engine for American-style vanilla options.
-
  -f-
   FDStepConditionEngine
    ->

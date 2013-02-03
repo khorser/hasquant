@@ -1,6 +1,5 @@
 VanillaSwap::arguments
  -- |Arguments for simple swap calculation
-
  -v-
   type
    ::Type

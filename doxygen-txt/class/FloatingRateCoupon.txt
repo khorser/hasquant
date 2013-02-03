@@ -1,6 +1,5 @@
 FloatingRateCoupon
  -- |base floating-rate coupon class
-
  -f-
   price
    ->Real

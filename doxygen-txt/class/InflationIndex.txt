@@ -1,6 +1,5 @@
 InflationIndex
  -- |Base class for inflation-rate indexes,.
-
  -f-
   familyName
    ->std::string

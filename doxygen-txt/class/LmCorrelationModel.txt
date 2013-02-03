@@ -1,6 +1,5 @@
 LmCorrelationModel
  -- |libor forward correlation model
-
  -f-
   LmCorrelationModel
    ->
@@ -8,8 +7,6 @@ LmCorrelationModel
    -- ^size
    ::Size
    -- ^nArguments
-  ~LmCorrelationModel
-   ->
   size
    ->Size
   factors

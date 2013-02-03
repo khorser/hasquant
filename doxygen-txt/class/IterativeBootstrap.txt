@@ -1,6 +1,5 @@
 IterativeBootstrap
  -- |Universal piecewise-term-structure boostrapper.
-
  -f-
   IterativeBootstrap
    ->

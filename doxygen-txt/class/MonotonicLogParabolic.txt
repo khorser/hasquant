@@ -1,5 +1,4 @@
 MonotonicLogParabolic
-
  -f-
   -- |the $ x $ values must be sorted.
   MonotonicLogParabolic

@@ -1,7 +1,6 @@
 YieldTermStructure
  -- |Interest-rate term structure.
  -- |This abstract class defines the interface of concrete interest rate structures which will be derived from this one.Testsobservability against evaluation date changes is checked.
-
  -f-
   YieldTermStructure
    ->

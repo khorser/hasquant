@@ -1,5 +1,4 @@
 SwapForwardMappings
-
  -f-
   -- |compute annuity of arbitrary swap-rate
   annuity

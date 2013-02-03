@@ -1,7 +1,6 @@
 G2SwaptionEngine
  -- |Swaption priced by means of the Black formula
  -- |WarningThe engine assumes that the exercise date equals the start date of the passed swap.
-
  -f-
   G2SwaptionEngine
    ->

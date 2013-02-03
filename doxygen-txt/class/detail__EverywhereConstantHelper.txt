@@ -1,5 +1,4 @@
 detail::EverywhereConstantHelper
-
  -f-
   EverywhereConstantHelper
    ->

@@ -1,6 +1,5 @@
 AnalyticCapFloorEngine
  -- |Analytic engine for cap/floor.
-
  -f-
   -- |the term structure is only needed when the short-rate model cannot provide one itself.
   AnalyticCapFloorEngine

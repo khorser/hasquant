@@ -1,7 +1,6 @@
 AffineModel
  -- |Affine model class.
  -- |Base class for analytically tractable models.
-
  -f-
   -- |Implied discount curve.
   discount

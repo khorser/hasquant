@@ -1,7 +1,6 @@
 BootstrapHelper
  -- |Base helper class for bootstrapping.
  -- |This class provides an abstraction for the instruments used to bootstrap a term structure.It is advised that a bootstrap helper for an instrument contains an instance of the actual instrument class to ensure consistancy between the algorithms used during bootstrapping and later instrument pricing. This is not yet fully enforced in the available bootstrap helpers.
-
  -f-
   quote
    ->const Handle< Quote > &
@@ -37,5 +36,3 @@ BootstrapHelper
    ->
    ::Real
    -- ^quote
-  ~BootstrapHelper
-   ->

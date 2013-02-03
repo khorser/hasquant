@@ -1,6 +1,5 @@
 AnalyticWriterExtensibleOptionEngine
  -- |Analytic engine for writer-extensible options.
-
  -f-
   AnalyticWriterExtensibleOptionEngine
    ->

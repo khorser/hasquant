@@ -1,7 +1,6 @@
 CompositeQuote
  -- |market element whose value depends on two other market element
  -- |Teststhe correctness of the returned values is tested by checking them against numerical calculations.
-
  -f-
   value1
    ->Real

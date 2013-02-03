@@ -1,5 +1,4 @@
 CallableBond::arguments
-
  -v-
   couponDates
    ::std::vector< Date >

@@ -1,6 +1,5 @@
 ContinuousFloatingLookbackOption::arguments
  -- |Arguments for continuous floating lookback option calculation
-
  -v-
   minmax
    ::Real

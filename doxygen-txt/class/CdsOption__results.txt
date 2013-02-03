@@ -1,6 +1,5 @@
 CdsOption::results
  -- |Results from CDS-option calculation
-
  -v-
   riskyAnnuity
    ::Real

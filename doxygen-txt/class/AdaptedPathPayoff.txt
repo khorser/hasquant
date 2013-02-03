@@ -1,5 +1,4 @@
 AdaptedPathPayoff
-
  -f-
   value
    ->void

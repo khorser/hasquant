@@ -1,6 +1,5 @@
 YoYInflationBlackCapFloorEngine
  -- |Black-formula inflation cap/floor engine (standalone, i.e. no coupon pricer)
-
  -f-
   YoYInflationBlackCapFloorEngine
    ->

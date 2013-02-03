@@ -1,5 +1,4 @@
 SpreadBasketPayoff
-
  -f-
   SpreadBasketPayoff
    ->

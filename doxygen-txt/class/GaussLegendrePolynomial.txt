@@ -1,6 +1,5 @@
 GaussLegendrePolynomial
  -- |Gauss-Legendre polynomial.
-
  -f-
   GaussLegendrePolynomial
    ->

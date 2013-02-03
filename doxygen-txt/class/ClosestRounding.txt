@@ -1,6 +1,5 @@
 ClosestRounding
  -- |Closest rounding.
-
  -f-
   ClosestRounding
    ->

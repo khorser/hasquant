@@ -1,6 +1,5 @@
 Bicubic
  -- |bicubic-spline-interpolation factory
-
  -f-
   interpolate
    ->Interpolation2D

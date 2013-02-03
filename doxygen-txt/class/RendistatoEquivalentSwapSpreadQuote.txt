@@ -1,6 +1,5 @@
 RendistatoEquivalentSwapSpreadQuote
  -- |RendistatoCalculator equivalent swap spread Quote adapter.
-
  -f-
   RendistatoEquivalentSwapSpreadQuote
    ->

@@ -1,6 +1,5 @@
 GaussianCopula
  -- |Gaussian copula.
-
  -f-
   GaussianCopula
    ->

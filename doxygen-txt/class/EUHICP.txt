@@ -1,6 +1,5 @@
 EUHICP
  -- |EU HICP index.
-
  -f-
   EUHICP
    ->

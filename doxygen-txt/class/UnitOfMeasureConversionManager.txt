@@ -1,7 +1,6 @@
 UnitOfMeasureConversionManager
  -- |repository of conversion factors between units of measure
  -- |Testslookup of direct unit of measure conversion is tested.
-
  -f-
   lookup
    ->UnitOfMeasureConversion

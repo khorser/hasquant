@@ -1,6 +1,5 @@
 CmsCouponPricer
  -- |base pricer for vanilla CMS coupons
-
  -f-
   CmsCouponPricer
    ->

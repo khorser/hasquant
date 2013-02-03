@@ -1,6 +1,5 @@
 WriterExtensibleOption::arguments
  -- |Additional arguments for writer-extensible option.
-
  -v-
   payoff2
    ::boost::shared_ptr< Payoff >

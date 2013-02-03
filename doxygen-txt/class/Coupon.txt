@@ -1,7 +1,6 @@
 Coupon
  -- |coupon accruing over a fixed period
  -- |This class implements part of the CashFlow interface but it is still abstract and provides derived classes with methods for accrual period calculations.
-
  -f-
   nominal
    ->Real

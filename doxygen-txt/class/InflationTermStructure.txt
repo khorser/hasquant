@@ -1,6 +1,5 @@
 InflationTermStructure
  -- |Interface for inflation term structures.
-
  -f-
   InflationTermStructure
    ->

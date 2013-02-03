@@ -1,7 +1,6 @@
 LossDistBinomial
  -- |Binomial loss distribution.
  -- |Binomial loss distribution
-
  -f-
   LossDistBinomial
    ->

@@ -1,9 +1,6 @@
 Claim
  -- |Claim associated to a default event.
-
  -f-
-  ~Claim
-   ->
   amount
    ->Real
    ::const Date &

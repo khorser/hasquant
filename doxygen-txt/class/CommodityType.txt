@@ -1,6 +1,5 @@
 CommodityType
  -- |commodity type
-
  -f-
   -- |commodity code, e.g, "HO"
   code

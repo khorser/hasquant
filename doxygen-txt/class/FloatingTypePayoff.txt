@@ -1,6 +1,5 @@
 FloatingTypePayoff
  -- |Payoff based on a floating strike
-
  -f-
   FloatingTypePayoff
    ->

@@ -1,7 +1,6 @@
 AnalyticEuropeanMargrabeEngine
  -- |Analytic engine for European Margrabe option.
  -- |This class implements formulae from "The Value of an Option to Exchange One Asset for Another", W. Margrabe, Journal of Finance, 33 (March 1978), 177-186.Teststhe correctness of the returned value is tested by reproducing results available in literature.
-
  -f-
   AnalyticEuropeanMargrabeEngine
    ->

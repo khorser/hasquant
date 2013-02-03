@@ -1,7 +1,6 @@
 SvenssonFitting
  -- |Svensson Fitting method.
  -- |Fits a discount function to the form $ d(t) = \exp^{-r t}, $ where the zero rate $r$ is defined as \[ r \equiv c_0 + (c_0 + c_1)(\frac {1 - exp^{-\kappa t}}{\kappa t}) - c_2exp^{ - \kappa t} + c_3{(\frac{1 - exp^{-\kappa_1 t}}{\kappa_1 t} -exp^{-\kappa_1 t})}. \] See: Svensson, L. (1994). Estimating and interpreting forward interest rates: Sweden 1992-4. Discussion paper, Centre for Economic Policy Research(1051).
-
  -f-
   SvenssonFitting
    ->

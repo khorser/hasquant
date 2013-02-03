@@ -1,6 +1,5 @@
 LmVolatilityModel
  -- |caplet volatility model
-
  -f-
   LmVolatilityModel
    ->
@@ -8,8 +7,6 @@ LmVolatilityModel
    -- ^size
    ::Size
    -- ^nArguments
-  ~LmVolatilityModel
-   ->
   size
    ->Size
   params

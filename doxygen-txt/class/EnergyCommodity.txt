@@ -1,6 +1,5 @@
 EnergyCommodity
  -- |Energy commodity class.
-
  -e-
   DeliverySchedule
    Constant

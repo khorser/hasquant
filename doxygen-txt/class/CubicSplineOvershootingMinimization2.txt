@@ -1,5 +1,4 @@
 CubicSplineOvershootingMinimization2
-
  -f-
   -- |the $ x $ values must be sorted.
   CubicSplineOvershootingMinimization2

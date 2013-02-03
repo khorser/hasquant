@@ -1,7 +1,6 @@
 CapFloorTermVolCurve
  -- |Cap/floor at-the-money term-volatility vector.
  -- |This class provides the at-the-money volatility for a given cap/floor interpolating a volatility vector whose elements are the market volatilities of a set of caps/floors with given length.
-
  -f-
   optionTenors
    ->const std::vector< Period > &

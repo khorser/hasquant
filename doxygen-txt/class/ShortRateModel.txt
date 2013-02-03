@@ -1,6 +1,5 @@
 ShortRateModel
  -- |Abstract short-rate model class.
-
  -f-
   ShortRateModel
    ->

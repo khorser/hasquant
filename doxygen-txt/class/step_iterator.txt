@@ -1,7 +1,6 @@
 step_iterator
  -- |Iterator advancing in constant steps.
  -- |This iterator advances an underlying random-access iterator in steps of $ n $ positions, where $ n $ is a positive integer given upon construction.
-
  -f-
   step_iterator
    ->

@@ -1,7 +1,6 @@
 TimeSeries
  -- |Container for historical data.
  -- |This class acts as a generic repository for a set of historical data. Any single datum can be accessed through its date, while sets of consecutive data can be accessed through iterators.The Container type must satisfy the requirements set by the C++ standard for associative containers.
-
  -f-
   -- |returns the first date for which a historical datum exists
   firstDate

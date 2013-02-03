@@ -1,6 +1,5 @@
 OISRateHelper
  -- |Rate helper for bootstrapping over Overnight Indexed Swap rates.
-
  -f-
   setTermStructure
    ->void

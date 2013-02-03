@@ -1,6 +1,5 @@
 OptionletStripper
  -- |StrippedOptionletBase specialization. It's up to derived classes to implement LazyObject::performCalculations
-
  -f-
   optionletFixingTenors
    ->const std::vector< Period > &

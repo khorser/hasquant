@@ -1,5 +1,4 @@
 detail::SABRCoeffHolder
-
  -v-
   -- |Option expiry
   t_
@@ -55,5 +54,3 @@ detail::SABRCoeffHolder
    -- ^nuIsFixed
    ::bool
    -- ^rhoIsFixed
-  ~SABRCoeffHolder
-   ->

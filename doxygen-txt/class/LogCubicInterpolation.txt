@@ -1,6 +1,5 @@
 LogCubicInterpolation
  -- |log-cubic interpolation between discrete points
-
  -f-
   -- |the $ x $ values must be sorted.
   LogCubicInterpolation

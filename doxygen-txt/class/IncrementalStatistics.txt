@@ -1,7 +1,6 @@
 IncrementalStatistics
  -- |Statistics tool based on incremental accumulation.
  -- |It can accumulate a set of data and return statistics (e.g: mean, variance, skewness, kurtosis, error estimation, etc.)Warninghigh moments are numerically unstable for high average/standardDeviation ratios.
-
  -f-
   -- |number of samples collected
   samples

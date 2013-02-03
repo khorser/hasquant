@@ -1,7 +1,6 @@
 Ranlux3UniformRng
  -- |Uniform random number generator.
  -- |M. Luescher's "luxury" random number generator Implementation is a proxy for the corresponding boost random number generator. For more detail see the boost documentation and: M.Luescher, A portable high-quality random number generator for lattice field theory simulations, Comp. Phys. Comm. 79 (1994) 100 Available luxury levels: Ranlux3: Any theoretically possible correlations have very small change of being observed. Ranlux4: highest possible luxury.
-
  -f-
   Ranlux3UniformRng
    ->

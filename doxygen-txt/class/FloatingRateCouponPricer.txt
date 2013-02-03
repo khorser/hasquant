@@ -1,6 +1,5 @@
 FloatingRateCouponPricer
  -- |generic pricer for floating-rate coupons
-
  -f-
   swapletPrice
    ->Real
@@ -27,5 +26,3 @@ FloatingRateCouponPricer
    ::const FloatingRateCoupon &
    -- ^coupon
  -f-
-  ~FloatingRateCouponPricer
-   ->

@@ -1,7 +1,6 @@
 MCDiscreteAveragingAsianEngine
  -- |Pricing engine for discrete average Asians using Monte Carlo simulation.
  -- |Warningcontrol-variate calculation is disabled under VC++6.
-
  -f-
   MCDiscreteAveragingAsianEngine
    ->

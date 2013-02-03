@@ -1,6 +1,5 @@
 EUHICPXT
  -- |EU HICPXT index.
-
  -f-
   EUHICPXT
    ->

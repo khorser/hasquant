@@ -1,6 +1,5 @@
 AccountingEngine
  -- |Engine collecting cash flows along a market-model simulation.
-
  -f-
   AccountingEngine
    ->

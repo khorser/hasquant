@@ -1,5 +1,4 @@
 SabrInterpolatedSmileSection
-
  -f-
   -- |all market data are quotes
   SabrInterpolatedSmileSection

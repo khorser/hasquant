@@ -1,7 +1,6 @@
 InterestRateIndex
  -- |base class for interest rate indexes
  -- |Possible enhancementsadd methods returning InterestRate
-
  -f-
   familyName
    ->std::string

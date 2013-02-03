@@ -1,6 +1,5 @@
 EURegion
  -- |European Union as geographical/economic region.
-
  -f-
   EURegion
    ->

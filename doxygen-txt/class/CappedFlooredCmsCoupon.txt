@@ -1,5 +1,4 @@
 CappedFlooredCmsCoupon
-
  -f-
   CappedFlooredCmsCoupon
    ->

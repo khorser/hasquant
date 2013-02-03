@@ -1,7 +1,6 @@
 SurvivalProbabilityStructure
  -- |Hazard-rate term structure.
  -- |This abstract class acts as an adapter to DefaultProbabilityTermStructure allowing the programmer to implement only the survivalProbabilityImpl(Time) method in derived classes.Hazard rates and default densities are calculated from survival probabilities.
-
  -f-
   SurvivalProbabilityStructure
    ->

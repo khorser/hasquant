@@ -1,7 +1,6 @@
 LongstaffSchwartzPathPricer
  -- |Longstaff-Schwarz path pricer for early exercise options.
  -- |References: Francis Longstaff, Eduardo Schwartz, 2001. Valuing American Options by Simulation: A Simple Least-Squares Approach, The Review of Financial Studies, Volume 14, No. 1, 113-147 Teststhe correctness of the returned value is tested by reproducing results available in web/literature
-
  -f-
   LongstaffSchwartzPathPricer
    ->

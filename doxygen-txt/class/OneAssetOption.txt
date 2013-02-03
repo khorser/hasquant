@@ -1,6 +1,5 @@
 OneAssetOption
  -- |Base class for options on a single asset.
-
  -f-
   delta
    ->Real

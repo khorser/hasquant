@@ -1,7 +1,6 @@
 detail::ImpliedVolatilityHelper
  -- |helper class for one-asset implied-volatility calculation
  -- |The passed engine must be linked to the passed quote (see, e.g., VanillaOption to see how this can be achieved.)this function is meant for developers of option classes so that they can implement an impliedVolatility() method.
-
  -f-
   calculate
    ->Volatility

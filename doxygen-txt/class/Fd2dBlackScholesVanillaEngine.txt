@@ -1,7 +1,6 @@
 Fd2dBlackScholesVanillaEngine
  -- |Two dimensional finite-differences Black Scholes vanilla option engine.
  -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature and comparison with Kirk approximation.
-
  -f-
   Fd2dBlackScholesVanillaEngine
    ->

@@ -1,5 +1,4 @@
 NothingExerciseValue
-
  -f-
   -- |Possible enhancementsuse Payoff
   NothingExerciseValue

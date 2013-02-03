@@ -1,5 +1,4 @@
 AdaptedPathPayoff::ValuationData
-
  -f-
   numberOfTimes
    ->Size

@@ -1,6 +1,5 @@
 BSMOperator
  -- |Black-Scholes-Merton differential operator.
-
  -f-
   BSMOperator
    ->

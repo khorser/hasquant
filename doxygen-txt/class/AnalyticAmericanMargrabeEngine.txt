@@ -1,7 +1,6 @@
 AnalyticAmericanMargrabeEngine
  -- |Analytic engine for American Margrabe option.
  -- |This class implements formulae from "The Value of an American Option to Exchange One Asset for Another", W. Margrabe, Journal of Finance, 33, 177-86.Teststhe correctness of the returned value is tested by reproducing results available in literature.
-
  -f-
   AnalyticAmericanMargrabeEngine
    ->

@@ -1,5 +1,4 @@
 MarketModelPathwiseMultiDeflatedCaplet
-
  -f-
   MarketModelPathwiseMultiDeflatedCaplet
    ->
@@ -21,8 +20,6 @@ MarketModelPathwiseMultiDeflatedCaplet
    -- ^paymentTimes
    ::Rate
    -- ^strike
-  ~MarketModelPathwiseMultiDeflatedCaplet
-   ->
   suggestedNumeraires
    ->std::vector< Size >
   evolution

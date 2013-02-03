@@ -1,6 +1,5 @@
 BarrierOption::arguments
  -- |Arguments for barrier option calculation
-
  -v-
   barrierType
    ::Barrier::Type

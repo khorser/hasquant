@@ -1,7 +1,6 @@
 CallableFixedRateBond
  -- |callable/puttable fixed rate bond
  -- |Callable fixed rate bond class. <b> Example: </b> \link CallableBonds.cpp \endlink
-
  -f-
   CallableFixedRateBond
    ->

@@ -1,7 +1,6 @@
 GeneralizedHullWhite::Dynamics
  -- |Short-rate dynamics in the generalized Hull-White model.
  -- |The short-rate is here f(r_t) = x_t + g(t) where g is the deterministic time-dependent parameter (which can not be determined analytically) used for term-structure fitting and x_t is the state variable following an Ornstein-Uhlenbeck process.
-
  -f-
   Dynamics
    ->

@@ -1,6 +1,5 @@
 TermStructure
  -- |Basic term-structure functionality.
-
  -f-
   -- |default constructor
   -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
@@ -55,5 +54,3 @@ TermStructure
   settlementDays
    ->Natural
  -f-
-  ~TermStructure
-   ->

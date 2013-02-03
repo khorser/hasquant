@@ -1,8 +1,5 @@
 ParametricExercise
-
  -f-
-  ~ParametricExercise
-   ->
   numberOfVariables
    ->std::vector< Size >
   numberOfParameters

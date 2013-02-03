@@ -1,6 +1,5 @@
 AmortizingCmsRateBond
  -- |amortizing CMS-rate bond
-
  -f-
   AmortizingCmsRateBond
    ->

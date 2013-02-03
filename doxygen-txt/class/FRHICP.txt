@@ -1,6 +1,5 @@
 FRHICP
  -- |FR HICP index.
-
  -f-
   FRHICP
    ->

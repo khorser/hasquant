@@ -1,5 +1,4 @@
 VanillaSwingOption::arguments
-
  -v-
   minExerciseRights
    ::Size

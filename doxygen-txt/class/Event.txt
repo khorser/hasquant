@@ -1,7 +1,6 @@
 Event
  -- |Base class for event.
  -- |This class acts as a base class for the actual event implementations.
-
  -f-
   -- |returns the date at which the event occurs
   date
@@ -22,5 +21,3 @@ Event
    ::AcyclicVisitor &
    -- ^
  -f-
-  ~Event
-   ->

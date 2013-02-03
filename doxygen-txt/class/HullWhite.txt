@@ -1,7 +1,6 @@
 HullWhite
  -- |Single-factor Hull-White (extended Vasicek) model class.
  -- |This class implements the standard single-factor Hull-White model defined by \[ dr_t = (\theta(t) - \alpha r_t)dt + \sigma dW_t \] where $ \alpha $ and $ \sigma $ are constants.Testscalibration results are tested against cached valuesBugWhen the term structure is relinked, the r0 parameter of the underlying Vasicek model is not updated.
-
  -f-
   HullWhite
    ->

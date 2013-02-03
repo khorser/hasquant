@@ -1,7 +1,6 @@
 MarketModelComposite
  -- |Composition of two or more market-model products.
  -- |Instances of this class build a market-model product by composing one or more subproducts.All subproducts must have the same rate times.
-
  -f-
   add
    ->void

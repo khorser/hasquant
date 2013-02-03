@@ -1,7 +1,6 @@
 ZeroYieldStructure
  -- |Zero-yield term structure.
  -- |This abstract class acts as an adapter to YieldTermStructure allowing the programmer to implement only the zeroYieldImpl(Time) method in derived classes.Discount and forward are calculated from zero yields.Zero rates are assumed to be annual continuous compounding.
-
  -f-
   ZeroYieldStructure
    ->

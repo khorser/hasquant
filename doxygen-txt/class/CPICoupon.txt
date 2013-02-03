@@ -1,7 +1,6 @@
 CPICoupon
  -- |Coupon paying the performance of a CPI (zero inflation) index
  -- |The performance is relative to the index value on the base date. The other inflation value is taken from the refPeriodEnd date with observation lag, so any roll/calendar etc. will be built in by the caller. By default this is done in the InflationCoupon which uses ModifiedPreceding with fixing days assumed positive meaning earlier, i.e. always stay in same month (relative to referencePeriodEnd). This is more sophisticated than an %IndexedCashFlow because it does date calculations itself. Possible enhancementswe do not do any convexity adjustment for lags different to the natural ZCIIS lag that was used to create the forward inflation curve.
-
  -f-
   -- |fixed rate that will be inflated by the index ratio
   fixedRate

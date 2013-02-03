@@ -1,6 +1,5 @@
 Domain
  -- |domain abstract lcass
-
  -f-
   includes
    ->bool
@@ -14,5 +13,3 @@ Domain
    -- ^x
    ::Real
    -- ^y
-  ~Domain
-   ->

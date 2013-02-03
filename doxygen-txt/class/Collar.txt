@@ -1,6 +1,5 @@
 Collar
  -- |Concrete collar class.
-
  -f-
   Collar
    ->

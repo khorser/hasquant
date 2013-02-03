@@ -1,6 +1,5 @@
 ContinuousAveragingAsianOption::arguments
  -- |Extra arguments for single-asset continuous-average Asian option.
-
  -v-
   averageType
    ::Average::Type

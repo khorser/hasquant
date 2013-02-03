@@ -1,6 +1,5 @@
 DiscretizedDiscountBond
  -- |Useful discretized discount bond asset.
-
  -f-
   DiscretizedDiscountBond
    ->

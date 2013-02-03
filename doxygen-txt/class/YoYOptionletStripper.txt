@@ -1,7 +1,6 @@
 YoYOptionletStripper
  -- |Interface for inflation cap stripping, i.e. from price surfaces.
  -- |Strippers return K slices of the volatility surface at a given T. In initialize they actually do the stripping along each K.
-
  -f-
   -- |YoYOptionletStripper interface.
   initialize
@@ -23,5 +22,3 @@ YoYOptionletStripper
    ::const Date &
    -- ^d
  -f-
-  ~YoYOptionletStripper
-   ->

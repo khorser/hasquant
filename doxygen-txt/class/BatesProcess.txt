@@ -1,7 +1,6 @@
 BatesProcess
  -- |Square-root stochastic-volatility Bates process.
  -- |This class describes the square root stochastic volatility process incl jumps governed by \[ \begin{array}{rcl} dS(t, S) &=& (r-d-\lambda m) S dt +\sqrt{v} S dW_1 + (e^J - 1) S dN \\ dv(t, S) &=& \kappa (\theta - v) dt + \sigma \sqrt{v} dW_2 \\ dW_1 dW_2 &=& \rho dt \\ \omega(J) &=& \frac{1}{\sqrt{2\pi \delta^2}} \exp\left[-\frac{(J-\nu)^2}{2\delta^2}\right] \end{array} \]
-
  -f-
   BatesProcess
    ->

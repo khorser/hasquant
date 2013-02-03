@@ -1,7 +1,6 @@
 CapFloorTermVolatilityStructure
  -- |Cap/floor term-volatility structure.
  -- |This class is purely abstract and defines the interface of concrete structures which will be derived from this one.
-
  -f-
   -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   CapFloorTermVolatilityStructure
@@ -76,5 +75,3 @@ CapFloorTermVolatilityStructure
    =false
    -- ^extrapolate
  -f-
-  ~CapFloorTermVolatilityStructure
-   ->

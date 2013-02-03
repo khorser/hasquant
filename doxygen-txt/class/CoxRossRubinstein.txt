@@ -1,6 +1,5 @@
 CoxRossRubinstein
  -- |Cox-Ross-Rubinstein (multiplicative) equal jumps binomial tree.
-
  -f-
   CoxRossRubinstein
    ->

@@ -1,6 +1,5 @@
 YearOnYearInflationSwapHelper
  -- |Year-on-year inflation-swap bootstrap helper.
-
  -f-
   YearOnYearInflationSwapHelper
    ->

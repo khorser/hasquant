@@ -1,5 +1,4 @@
 ManipulateDistribution
-
  -f-
   convolve
    ->Distribution

@@ -1,6 +1,5 @@
 RatchetMinPayoff
  -- |RatchetMin payoff (double option)
-
  -f-
   RatchetMinPayoff
    ->

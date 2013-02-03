@@ -1,6 +1,5 @@
 AssetSwap::arguments
  -- |Arguments for asset swap calculation
-
  -v-
   fixedResetDates
    ::std::vector< Date >

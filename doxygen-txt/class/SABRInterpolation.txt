@@ -1,6 +1,5 @@
 SABRInterpolation
  -- |SABR smile interpolation between discrete volatility points.
-
  -f-
   SABRInterpolation
    ->

@@ -1,7 +1,6 @@
 GeometricBrownianMotionProcess
  -- |Geometric brownian-motion process.
  -- |This class describes the stochastic process governed by \[ dS(t, S)= \mu S dt + \sigma S dW_t. \]
-
  -f-
   GeometricBrownianMotionProcess
    ->

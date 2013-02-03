@@ -1,6 +1,5 @@
 GaussJacobiPolynomial
  -- |Gauss-Jacobi polynomial.
-
  -f-
   GaussJacobiPolynomial
    ->

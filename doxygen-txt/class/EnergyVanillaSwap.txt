@@ -1,6 +1,5 @@
 EnergyVanillaSwap
  -- |Vanilla energy swap.
-
  -f-
   EnergyVanillaSwap
    ->

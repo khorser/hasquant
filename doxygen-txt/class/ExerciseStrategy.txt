@@ -1,8 +1,5 @@
 ExerciseStrategy
-
  -f-
-  ~ExerciseStrategy
-   ->
   exerciseTimes
    ->std::vector< Time >
   relevantTimes

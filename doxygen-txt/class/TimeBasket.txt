@@ -1,6 +1,5 @@
 TimeBasket
  -- |Distribution over a number of dates.
-
  -f-
   -- |membership
   hasDate

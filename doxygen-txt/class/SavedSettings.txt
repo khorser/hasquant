@@ -1,7 +1,4 @@
 SavedSettings
-
  -f-
   SavedSettings
-   ->
-  ~SavedSettings
    ->

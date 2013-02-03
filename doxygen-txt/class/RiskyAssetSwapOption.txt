@@ -1,6 +1,5 @@
 RiskyAssetSwapOption
  -- |Option on risky asset swap
-
  -f-
   RiskyAssetSwapOption
    ->

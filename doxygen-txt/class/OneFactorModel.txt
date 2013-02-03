@@ -1,13 +1,10 @@
 OneFactorModel
  -- |Single-factor short-rate model abstract class.
-
  -f-
   OneFactorModel
    ->
    ::Size
    -- ^nArguments
-  ~OneFactorModel
-   ->
   -- |returns the short-rate dynamics
   dynamics
    ->boost::shared_ptr< ShortRateDynamics >

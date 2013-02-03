@@ -1,6 +1,5 @@
 MargrabeOption::results
  -- |Extra results for Margrabe option.
-
  -v-
   delta1
    ::Real

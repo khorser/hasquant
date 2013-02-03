@@ -1,6 +1,5 @@
 RendistatoEquivalentSwapLengthQuote
  -- |RendistatoCalculator equivalent swap lenth Quote adapter.
-
  -f-
   RendistatoEquivalentSwapLengthQuote
    ->

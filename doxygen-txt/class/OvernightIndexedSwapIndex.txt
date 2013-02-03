@@ -1,6 +1,5 @@
 OvernightIndexedSwapIndex
  -- |base class for overnight indexed swap indexes
-
  -f-
   overnightIndex
    ->boost::shared_ptr< OvernightIndex >

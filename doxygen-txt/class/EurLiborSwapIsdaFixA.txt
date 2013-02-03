@@ -1,7 +1,6 @@
 EurLiborSwapIsdaFixA
  -- |EurLiborSwapIsdaFixA index base class
  -- |EUR Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 10am London. Annual 30/360 vs 6M Libor, 1Y vs 3M Libor. Reuters page ISDAFIX2 or EURSFIXLA=.Further info can be found at http://www.isda.org/fix/isdafix.html or Reuters page ISDAFIX.
-
  -f-
   EurLiborSwapIsdaFixA
    ->

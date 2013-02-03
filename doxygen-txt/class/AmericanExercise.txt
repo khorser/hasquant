@@ -1,7 +1,6 @@
 AmericanExercise
  -- |American exercise.
  -- |An American option can be exercised at any time between two predefined dates; the first date might be omitted, in which case the option can be exercised at any time before the expiry.Possible enhancementscheck that everywhere the American condition is applied from earliestDate and not earlier
-
  -f-
   AmericanExercise
    ->

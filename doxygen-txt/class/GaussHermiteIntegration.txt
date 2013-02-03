@@ -1,7 +1,6 @@
 GaussHermiteIntegration
  -- |generalized Gauss-Hermite integration
  -- |This class performs a 1-dimensional Gauss-Hermite integration. \[ \int_{-\inf}^{\inf} f(x) \mathrm{d}x \] The weighting function is \[ w(x;\mu)=|x|^{2\mu} \exp{-x*x} \] and \[ \mu > -0.5 \]
-
  -f-
   GaussHermiteIntegration
    ->

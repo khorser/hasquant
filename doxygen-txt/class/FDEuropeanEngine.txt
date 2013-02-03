@@ -1,7 +1,6 @@
 FDEuropeanEngine
  -- |Pricing engine for European options using finite-differences.
  -- |Teststhe correctness of the returned value is tested by checking it against analytic results.
-
  -f-
   FDEuropeanEngine
    ->

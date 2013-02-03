@@ -1,6 +1,5 @@
 Exercise
  -- |Base exercise class.
-
  -e-
   Type
    American
@@ -11,8 +10,6 @@ Exercise
    ->
    ::Type
    -- ^type
-  ~Exercise
-   ->
   type
    ->Type
   date

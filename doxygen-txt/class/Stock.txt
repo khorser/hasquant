@@ -1,6 +1,5 @@
 Stock
  -- |Simple stock class.
-
  -f-
   Stock
    ->

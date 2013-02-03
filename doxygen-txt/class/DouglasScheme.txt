@@ -1,5 +1,4 @@
 DouglasScheme
-
  -f-
   DouglasScheme
    ->

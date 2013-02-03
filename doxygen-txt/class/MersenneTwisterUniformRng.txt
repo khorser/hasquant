@@ -1,7 +1,6 @@
 MersenneTwisterUniformRng
  -- |Uniform random number generator.
  -- |Mersenne Twister random number generator of period 2**19937-1 For more details see http://www.math.keio.ac.jp/matumoto/emt.html Teststhe correctness of the returned values is tested by checking them against known good results.
-
  -f-
   -- |if the given seed is 0, a random seed will be chosen based on clock()
   MersenneTwisterUniformRng

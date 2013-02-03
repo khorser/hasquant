@@ -1,8 +1,5 @@
 VanillaOptionPricer
-
  -f-
-  ~VanillaOptionPricer
-   ->
   operator()
    ->Real
    ::Real

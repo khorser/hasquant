@@ -1,5 +1,4 @@
 detail::n_cubic_splint
-
  -f-
   n_cubic_splint
    ->
@@ -29,5 +28,3 @@ detail::n_cubic_splint
    -- ^v2
    ::typename super::result_type &
    -- ^r
-  ~n_cubic_splint
-   ->

@@ -1,6 +1,5 @@
 ExtendedLeisenReimer
  -- |Leisen & Reimer tree: multiplicative approach.
-
  -f-
   ExtendedLeisenReimer
    ->

@@ -1,6 +1,5 @@
 CapFloor::arguments
  -- |Arguments for cap/floor calculation
-
  -v-
   type
    ::CapFloor::Type

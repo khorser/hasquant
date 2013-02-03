@@ -1,11 +1,8 @@
 UnitDisplacedBlackYoYInflationCouponPricer
  -- |Unit-Displaced-Black-formula pricer for capped/floored yoy inflation coupons.
-
  -f-
   UnitDisplacedBlackYoYInflationCouponPricer
    ->
    ::const Handle< YoYOptionletVolatilitySurface > &
    =Handle< YoYOptionletVolatilitySurface >()
    -- ^capletVol
-  ~UnitDisplacedBlackYoYInflationCouponPricer
-   ->

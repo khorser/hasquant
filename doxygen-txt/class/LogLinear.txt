@@ -1,6 +1,5 @@
 LogLinear
  -- |log-linear interpolation factory and traits
-
  -v-
   global
    ::const bool

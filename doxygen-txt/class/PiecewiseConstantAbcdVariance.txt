@@ -1,5 +1,4 @@
 PiecewiseConstantAbcdVariance
-
  -f-
   PiecewiseConstantAbcdVariance
    ->

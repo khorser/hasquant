@@ -1,6 +1,5 @@
 ExtendedEqualJumpsBinomialTree
  -- |Base class for equal jumps binomial tree.
-
  -f-
   ExtendedEqualJumpsBinomialTree
    ->
@@ -10,8 +9,6 @@ ExtendedEqualJumpsBinomialTree
    -- ^end
    ::Size
    -- ^steps
-  ~ExtendedEqualJumpsBinomialTree
-   ->
   underlying
    ->Real
    ::Size

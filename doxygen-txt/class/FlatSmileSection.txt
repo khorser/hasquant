@@ -1,5 +1,4 @@
 FlatSmileSection
-
  -f-
   minStrike
    ->Real

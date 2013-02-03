@@ -1,6 +1,5 @@
 InhomogeneousPoolCDOEngine
  -- |CDO engine, loss disctribution bucketing for finite inhomogeneous pool.
-
  -f-
   InhomogeneousPoolCDOEngine
    ->

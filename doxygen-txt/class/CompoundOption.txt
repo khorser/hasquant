@@ -1,6 +1,5 @@
 CompoundOption
  -- |Compound option on a single asset.
-
  -f-
   CompoundOption
    ->

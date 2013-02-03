@@ -1,7 +1,6 @@
 GenericGaussianStatistics
  -- |Statistics tool for gaussian-assumption risk measures.
  -- |This class wraps a somewhat generic statistic tool and adds a number of gaussian risk measures (e.g.: value-at-risk, expected shortfall, etc.) based on the mean and variance provided by the underlying statistic tool.
-
  -f-
   -- |returns the downside variance, defined as \[ \frac{N}{N-1} \times \frac{ \sum_{i=1}^{N} \theta \times x_i^{2}}{ \sum_{i=1}^{N} w_i} \], where $ \theta $ = 0 if x > 0 and $ \theta $ =1 if x <0
   gaussianDownsideVariance

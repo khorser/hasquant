@@ -1,7 +1,6 @@
 VolatilityTermStructure
  -- |Volatility term structure.
  -- |This abstract class defines the interface of concrete volatility structures which will be derived from this one.
-
  -f-
   -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   VolatilityTermStructure

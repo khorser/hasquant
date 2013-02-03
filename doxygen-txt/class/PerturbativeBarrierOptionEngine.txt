@@ -1,7 +1,6 @@
 PerturbativeBarrierOptionEngine
  -- |perturbative barrier-option engine
  -- |This engine implements the approach described in http://www.econ.univpm.it/recchioni/finance/w3/.
-
  -f-
   PerturbativeBarrierOptionEngine
    ->

@@ -1,6 +1,5 @@
 Linear
  -- |Linear-interpolation factory and traits
-
  -v-
   global
    ::const bool

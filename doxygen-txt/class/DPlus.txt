@@ -1,7 +1,6 @@
 DPlus
  -- |$ D_{+} $ matricial representation
  -- |The differential operator $ D_{+} $ discretizes the first derivative with the first-order formula \[ \frac{\partial u_{i}}{\partial x} \approx \frac{u_{i+1}-u_{i}}{h} = D_{+} u_{i} \]
-
  -f-
   DPlus
    ->

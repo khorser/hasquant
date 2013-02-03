@@ -1,8 +1,5 @@
 PiecewiseConstantCorrelation
-
  -f-
-  ~PiecewiseConstantCorrelation
-   ->
   times
    ->const std::vector< Time > &
   rateTimes

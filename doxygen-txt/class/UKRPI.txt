@@ -1,6 +1,5 @@
 UKRPI
  -- |UK Retail Price Inflation Index.
-
  -f-
   UKRPI
    ->

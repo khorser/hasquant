@@ -1,5 +1,4 @@
 FdmSimpleSwingCondition
-
  -f-
   FdmSimpleSwingCondition
    ->

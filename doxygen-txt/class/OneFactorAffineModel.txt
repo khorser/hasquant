@@ -1,7 +1,6 @@
 OneFactorAffineModel
  -- |Single-factor affine base class.
  -- |Single-factor models with an analytical formula for discount bonds should inherit from this class. They must then implement the functions $ A(t,T) $ and $ B(t,T) $ such that \[ P(t, T, r_t) = A(t,T)e^{ -B(t,T) r_t}. \]
-
  -f-
   OneFactorAffineModel
    ->

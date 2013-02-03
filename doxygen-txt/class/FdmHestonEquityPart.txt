@@ -1,5 +1,4 @@
 FdmHestonEquityPart
-
  -f-
   FdmHestonEquityPart
    ->

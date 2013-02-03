@@ -1,7 +1,6 @@
 IntegralEngine
  -- |Pricing engine for European vanilla options using integral approach.
  -- |Possible enhancementsdefine tolerance for calculate()
-
  -f-
   IntegralEngine
    ->

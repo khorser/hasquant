@@ -1,6 +1,5 @@
 ForwardFlatInterpolation
  -- |Forward-flat interpolation between discrete points.
-
  -f-
   -- |the $ x $ values must be sorted.
   ForwardFlatInterpolation

@@ -1,6 +1,5 @@
 CeilingTruncation
  -- |Ceiling truncation.
-
  -f-
   CeilingTruncation
    ->

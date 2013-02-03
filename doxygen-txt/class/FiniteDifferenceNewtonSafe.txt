@@ -1,7 +1,6 @@
 FiniteDifferenceNewtonSafe
  -- |safe Newton 1-D solver with finite difference derivatives
  -- |Teststhe correctness of the returned values is tested by checking them against known good results.
-
  -f-
   solveImpl
    ->Real

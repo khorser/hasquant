@@ -1,7 +1,6 @@
 TreeVanillaSwapEngine
  -- |Numerical lattice engine for simple swaps.
  -- |Testscalculations are checked against known good results
-
  -f-
   TreeVanillaSwapEngine
    ->

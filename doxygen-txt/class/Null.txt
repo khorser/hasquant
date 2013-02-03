@@ -1,6 +1,5 @@
 Null
  -- |template class providing a null value for a given type.
-
  -f-
   Null
    ->

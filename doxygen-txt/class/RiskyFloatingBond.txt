@@ -1,6 +1,5 @@
 RiskyFloatingBond
  -- |Default risky floating bonds
-
  -f-
   RiskyFloatingBond
    ->

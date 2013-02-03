@@ -1,6 +1,5 @@
 YYFRHICP
  -- |Genuine year-on-year FR HICP (i.e. not a ratio)
-
  -f-
   YYFRHICP
    ->

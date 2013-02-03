@@ -1,5 +1,4 @@
 KrugerLogCubic
-
  -f-
   -- |the $ x $ values must be sorted.
   KrugerLogCubic

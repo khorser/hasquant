@@ -1,6 +1,5 @@
 ExtendedTian
  -- |Tian tree: third moment matching, multiplicative approach
-
  -f-
   ExtendedTian
    ->

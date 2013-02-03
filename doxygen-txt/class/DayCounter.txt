@@ -1,7 +1,6 @@
 DayCounter
  -- |day counter class
  -- |This class provides methods for determining the length of a time period according to given market convention, both as a number of days and as a year fraction.The Bridge pattern is used to provide the base behavior of the day counter.
-
  -f-
   -- |Returns whether or not the day counter is initialized.
   empty

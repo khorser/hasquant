@@ -1,6 +1,5 @@
 InterpolatedHazardRateCurve
  -- |DefaultProbabilityTermStructure based on interpolation of hazard rates.
-
  -f-
   times
    ->const std::vector< Time > &

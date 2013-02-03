@@ -1,5 +1,4 @@
 BoundedDomain
-
  -f-
   xLowerBound
    ->Real

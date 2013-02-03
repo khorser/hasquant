@@ -1,7 +1,6 @@
 BatesModel
  -- |Bates stochastic-volatility model.
  -- |extended versions of Heston model for the stochastic volatility of an asset including jumps.References: A. Sepp, Pricing European-Style Options under Jump Diffusion Processes with Stochastic Volatility: Applications of Fourier Transform (http://math.ut.ee/~spartak/papers/stochjumpvols.pdf)Testscalibration is tested against known values.
-
  -f-
   BatesModel
    ->

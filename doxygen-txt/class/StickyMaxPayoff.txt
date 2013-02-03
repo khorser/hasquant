@@ -1,6 +1,5 @@
 StickyMaxPayoff
  -- |StickyMax payoff (double option)
-
  -f-
   StickyMaxPayoff
    ->

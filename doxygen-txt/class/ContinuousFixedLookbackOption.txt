@@ -1,6 +1,5 @@
 ContinuousFixedLookbackOption
  -- |Continuous-fixed lookback option.
-
  -f-
   ContinuousFixedLookbackOption
    ->

@@ -1,6 +1,5 @@
 ProbabilityOfAtLeastNEvents
  -- |Probability of at least N events.
-
  -f-
   ProbabilityOfAtLeastNEvents
    ->

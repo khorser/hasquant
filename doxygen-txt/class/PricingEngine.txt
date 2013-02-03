@@ -1,9 +1,6 @@
 PricingEngine
  -- |interface for pricing engines
-
  -f-
-  ~PricingEngine
-   ->
   getArguments
    ->arguments *
   getResults

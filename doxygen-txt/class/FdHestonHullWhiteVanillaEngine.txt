@@ -1,7 +1,6 @@
 FdHestonHullWhiteVanillaEngine
  -- |Finite-Differences Heston Hull-White Vanilla Option engine.
  -- |Teststhe correctness of the returned value is tested by reproducing results available in web/literature and comparison with Black/Heston pricing.
-
  -f-
   FdHestonHullWhiteVanillaEngine
    ->

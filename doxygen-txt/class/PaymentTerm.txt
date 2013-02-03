@@ -1,5 +1,4 @@
 PaymentTerm
-
  -f-
   -- |name, e.g, "Pricing end + 5 days"
   name

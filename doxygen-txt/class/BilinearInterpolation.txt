@@ -1,6 +1,5 @@
 BilinearInterpolation
  -- |bilinear interpolation between discrete points
-
  -f-
   -- |the $ x $ and $ y $ values must be sorted.
   BilinearInterpolation

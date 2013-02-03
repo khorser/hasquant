@@ -1,5 +1,4 @@
 AveragingRatePricer
-
  -f-
   swapletPrice
    ->Real

@@ -1,7 +1,6 @@
 AmericanCondition
  -- |American exercise condition.
  -- |Possible enhancementsunify the intrinsicValues/Payoff thing
-
  -f-
   AmericanCondition
    ->

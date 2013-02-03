@@ -1,7 +1,6 @@
 SquareRootProcess
  -- |Square-root process class.
  -- |This class describes a square-root process governed by \[ dx = a (b - x_t) dt + \sigma \sqrt{x_t} dW_t. \]
-
  -f-
   SquareRootProcess
    ->

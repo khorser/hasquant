@@ -1,6 +1,5 @@
 MultiStepSwaption
  -- |Price a swaption associated to a contiguous subset of rates. Useful only for testing purposes. Steps through all rate times up to start of swap.
-
  -f-
   MultiStepSwaption
    ->

@@ -1,5 +1,4 @@
 BarrelUnitOfMeasure
-
  -f-
   BarrelUnitOfMeasure
    ->

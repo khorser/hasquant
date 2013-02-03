@@ -1,7 +1,6 @@
 AnalyticDiscreteGeometricAveragePriceAsianEngine
  -- |Pricing engine for European discrete geometric average price Asian.
  -- |This class implements a discrete geometric average price Asian option, with European exercise. The formula is from "Asian Option", E. Levy (1997) in "Exotic Options: The State of the Art", edited by L. Clewlow, C. Strickland, pag 65-97Possible enhancementsimplement correct theta, rho, and dividend-rho calculationTests the correctness of the returned value is tested by reproducing results available in literature.the correctness of the available greeks is tested against numerical calculations.
-
  -f-
   AnalyticDiscreteGeometricAveragePriceAsianEngine
    ->

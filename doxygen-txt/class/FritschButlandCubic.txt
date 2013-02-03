@@ -1,5 +1,4 @@
 FritschButlandCubic
-
  -f-
   -- |the $ x $ values must be sorted.
   FritschButlandCubic

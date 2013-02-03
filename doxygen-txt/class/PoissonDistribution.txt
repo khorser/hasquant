@@ -1,7 +1,6 @@
 PoissonDistribution
  -- |Poisson distribution function.
  -- |Given an integer $ k $, it returns its probability in a Poisson distribution.Teststhe correctness of the returned value is tested by checking it against known good results.
-
  -f-
   PoissonDistribution
    ->

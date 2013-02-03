@@ -1,5 +1,4 @@
 EverestOption::arguments
-
  -v-
   notional
    ::Real

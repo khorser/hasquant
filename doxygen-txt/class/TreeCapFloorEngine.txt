@@ -1,6 +1,5 @@
 TreeCapFloorEngine
  -- |Numerical lattice engine for cap/floors.
-
  -f-
   TreeCapFloorEngine
    ->

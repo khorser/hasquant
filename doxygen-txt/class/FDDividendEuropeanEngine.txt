@@ -1,7 +1,6 @@
 FDDividendEuropeanEngine
  -- |Finite-differences pricing engine for dividend European options.
  -- |Tests the correctness of the returned greeks is tested by reproducing numerical derivatives.the invariance of the results upon addition of null dividends is tested.
-
  -f-
   FDDividendEuropeanEngine
    ->

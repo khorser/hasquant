@@ -1,7 +1,6 @@
 BlackConstantVol
  -- |Constant Black volatility, no time-strike dependence.
  -- |This class implements the BlackVolatilityTermStructure interface for a constant Black volatility (no time/strike dependence).
-
  -f-
   BlackConstantVol
    ->

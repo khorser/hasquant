@@ -1,6 +1,5 @@
 OneAssetOption::results
  -- |Results from single-asset option calculation
-
  -f-
   reset
    ->void

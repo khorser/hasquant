@@ -1,5 +1,4 @@
 NumericHaganPricer::ConundrumIntegrand
-
  -f-
   ConundrumIntegrand
    ->

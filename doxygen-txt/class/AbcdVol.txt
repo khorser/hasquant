@@ -1,6 +1,5 @@
 AbcdVol
  -- |Abcd-interpolated volatility structure
-
  -f-
   AbcdVol
    ->

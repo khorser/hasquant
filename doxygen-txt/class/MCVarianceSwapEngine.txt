@@ -1,7 +1,6 @@
 MCVarianceSwapEngine
  -- |Variance-swap pricing engine using Monte Carlo simulation,.
  -- |as described in Demeterfi, Derman, Kamal & Zou, "A Guide to Volatility and Variance Swaps", 1999Possible enhancementsdefine tolerance of numerical integral and incorporate it in errorEstimateTestsreturned fair variances checked for consistency with implied volatility curve.
-
  -f-
   MCVarianceSwapEngine
    ->

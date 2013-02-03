@@ -1,6 +1,5 @@
 YoYInflationTraits
  -- |Bootstrap traits to use for PiecewiseZeroInflationCurve.
-
  -f-
   initialDate
    ->Date

@@ -1,5 +1,4 @@
 SyntheticCDO::results
-
  -v-
   premiumValue
    ::Real

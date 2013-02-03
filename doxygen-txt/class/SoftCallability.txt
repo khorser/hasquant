@@ -1,6 +1,5 @@
 SoftCallability
  -- |callability leaving to the holder the possibility to convert
-
  -f-
   SoftCallability
    ->

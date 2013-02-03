@@ -1,8 +1,5 @@
 FdmInnerValueCalculator
-
  -f-
-  ~FdmInnerValueCalculator
-   ->
   innerValue
    ->Real
    ::const FdmLinearOpIterator &

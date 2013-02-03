@@ -1,6 +1,5 @@
 DigitalCmsLeg
  -- |helper class building a sequence of digital ibor-rate coupons
-
  -f-
   DigitalCmsLeg
    ->

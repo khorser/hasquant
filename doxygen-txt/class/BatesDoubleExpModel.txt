@@ -1,5 +1,4 @@
 BatesDoubleExpModel
-
  -f-
   BatesDoubleExpModel
    ->

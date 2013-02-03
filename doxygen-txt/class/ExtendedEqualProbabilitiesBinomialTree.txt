@@ -1,6 +1,5 @@
 ExtendedEqualProbabilitiesBinomialTree
  -- |Base class for equal probabilities binomial tree.
-
  -f-
   ExtendedEqualProbabilitiesBinomialTree
    ->
@@ -10,8 +9,6 @@ ExtendedEqualProbabilitiesBinomialTree
    -- ^end
    ::Size
    -- ^steps
-  ~ExtendedEqualProbabilitiesBinomialTree
-   ->
   underlying
    ->Real
    ::Size

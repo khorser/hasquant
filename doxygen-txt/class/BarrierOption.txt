@@ -1,7 +1,6 @@
 BarrierOption
  -- |Barrier option on a single asset.
  -- |The analytic pricing engine will be used if none if passed.
-
  -f-
   BarrierOption
    ->

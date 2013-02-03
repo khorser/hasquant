@@ -1,6 +1,5 @@
 SimplePolynomialFitting
  -- |Simple polynomial fitting method.
-
  -f-
   SimplePolynomialFitting
    ->

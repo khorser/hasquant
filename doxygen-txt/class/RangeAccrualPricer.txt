@@ -1,5 +1,4 @@
 RangeAccrualPricer
-
  -f-
   swapletRate
    ->Rate

@@ -1,6 +1,5 @@
 YoYInflationFloor
  -- |Concrete YoY Inflation floor class.
-
  -f-
   YoYInflationFloor
    ->

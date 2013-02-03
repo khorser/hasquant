@@ -1,7 +1,6 @@
 Dividend
  -- |Predetermined cash flow.
  -- |This cash flow pays a predetermined amount at a given date.
-
  -f-
   Dividend
    ->

@@ -1,6 +1,5 @@
 DiscreteAveragingAsianOption::arguments
  -- |Extra arguments for single-asset discrete-average Asian option.
-
  -v-
   averageType
    ::Average::Type

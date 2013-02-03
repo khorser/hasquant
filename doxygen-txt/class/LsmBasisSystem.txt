@@ -1,5 +1,4 @@
 LsmBasisSystem
-
  -e-
   PolynomType
    Monomial

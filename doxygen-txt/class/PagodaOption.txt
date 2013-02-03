@@ -1,7 +1,6 @@
 PagodaOption
  -- |Roofed Asian option on a number of assets.
  -- |The payoff is a given fraction multiplied by the minimum between a given roof and the positive portfolio performance. If the performance of the portfolio is below then the payoff is null.WarningThis implementation still does not manage seasoned options.
-
  -f-
   PagodaOption
    ->

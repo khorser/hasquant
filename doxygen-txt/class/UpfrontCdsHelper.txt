@@ -1,6 +1,5 @@
 UpfrontCdsHelper
  -- |Upfront-quoted CDS hazard rate bootstrap helper.
-
  -f-
   -- |the upfront must be quoted in fractional units.
   UpfrontCdsHelper

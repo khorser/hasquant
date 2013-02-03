@@ -1,6 +1,5 @@
 FuturesConvAdjustmentQuote
  -- |quote for the futures-convexity adjustment of an index
-
  -f-
   futuresValue
    ->Real

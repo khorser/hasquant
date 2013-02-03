@@ -1,7 +1,6 @@
 CallableBond
  -- |Callable bond base class.
  -- |Base callable bond class for fixed and zero coupon bonds. Defines commonalities between fixed and zero coupon callable bonds. At present, only European and Bermudan put/call schedules supported (no American optionality), as defined by the Callability class.Possible enhancementsmodels/shortrate/calibrationHelpers OAS/OAD floating rate callable bonds ?
-
  -f-
   -- |return the bond's put/call schedule
   callability

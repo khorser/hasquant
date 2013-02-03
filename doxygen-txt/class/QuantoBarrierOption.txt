@@ -1,6 +1,5 @@
 QuantoBarrierOption
  -- |Quanto version of a barrier option.
-
  -f-
   qvega
    ->Real

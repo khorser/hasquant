@@ -1,6 +1,5 @@
 MarketModelCashRebate
  -- |Class to model receipt of a fixed cash amount once. Product terminates immediately. Mainly useful as rebate received when another product is cancelled.
-
  -f-
   MarketModelCashRebate
    ->

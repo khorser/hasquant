@@ -1,6 +1,5 @@
 HullWhiteForwardProcess
  -- |Forward Hull-White stochastic process
-
  -f-
   HullWhiteForwardProcess
    ->

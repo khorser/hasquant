@@ -1,7 +1,6 @@
 Path
  -- |single-factor random walk
  -- |the path includes the initial asset value as its first point.
-
  -f-
   empty
    ->bool

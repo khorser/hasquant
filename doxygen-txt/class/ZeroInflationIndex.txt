@@ -1,6 +1,5 @@
 ZeroInflationIndex
  -- |Base class for zero inflation indices.
-
  -f-
   zeroInflationTermStructure
    ->Handle< ZeroInflationTermStructure >

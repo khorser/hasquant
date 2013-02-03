@@ -1,6 +1,5 @@
 BasketOption
  -- |Basket option on a number of assets.
-
  -f-
   BasketOption
    ->

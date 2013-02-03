@@ -1,7 +1,6 @@
 Vasicek
  -- |Vasicek model class
  -- |This class implements the Vasicek model defined by \[ dr_t = a(b - r_t)dt + \sigma dW_t , \] where $ a $, $ b $ and $ \sigma $ are constants; a risk premium $ \lambda $ can also be specified.
-
  -f-
   Vasicek
    ->

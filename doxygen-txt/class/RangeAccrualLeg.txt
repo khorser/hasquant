@@ -1,6 +1,5 @@
 RangeAccrualLeg
  -- |helper class building a sequence of range-accrual floating-rate coupons
-
  -f-
   RangeAccrualLeg
    ->

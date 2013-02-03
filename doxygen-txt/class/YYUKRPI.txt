@@ -1,6 +1,5 @@
 YYUKRPI
  -- |Genuine year-on-year UK RPI (i.e. not a ratio of UK RPI)
-
  -f-
   YYUKRPI
    ->

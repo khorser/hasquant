@@ -1,7 +1,6 @@
 ContinuousAveragingAsianOption
  -- |Continuous-averaging Asian option.
  -- |Possible enhancementsadd running average
-
  -f-
   ContinuousAveragingAsianOption
    ->

@@ -1,6 +1,5 @@
 PiecewiseYoYInflationCurve
  -- |Piecewise year-on-year inflation term structure.
-
  -f-
   PiecewiseYoYInflationCurve
    ->

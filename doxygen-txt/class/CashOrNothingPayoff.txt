@@ -1,6 +1,5 @@
 CashOrNothingPayoff
  -- |Binary cash-or-nothing payoff.
-
  -f-
   CashOrNothingPayoff
    ->

@@ -1,6 +1,5 @@
 FlatHazardRate
  -- |Flat hazard-rate curve.
-
  -f-
   FlatHazardRate
    ->

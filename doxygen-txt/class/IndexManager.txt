@@ -1,7 +1,6 @@
 IndexManager
  -- |global repository for past index fixings
  -- |index names are case insensitive
-
  -f-
   -- |returns whether historical fixings were stored for the index
   hasHistory

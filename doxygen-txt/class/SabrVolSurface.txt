@@ -1,7 +1,6 @@
 SabrVolSurface
  -- |SABR volatility (smile) surface.
  -- |blah blah
-
  -f-
   SabrVolSurface
    ->

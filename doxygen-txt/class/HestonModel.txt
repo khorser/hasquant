@@ -1,7 +1,6 @@
 HestonModel
  -- |Heston model for the stochastic volatility of an asset.
  -- |References: Heston, Steven L., 1993. A Closed-Form Solution for Options with Stochastic Volatility with Applications to Bond and Currency Options. The review of Financial Studies, Volume 6, Issue 2, 327-343. Testscalibration is tested against known good values.
-
  -f-
   HestonModel
    ->

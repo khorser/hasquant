@@ -1,6 +1,5 @@
 CdsOption::arguments
  -- |Arguments for CDS-option calculation
-
  -v-
   swap
    ::boost::shared_ptr< CreditDefaultSwap >

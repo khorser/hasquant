@@ -1,6 +1,5 @@
 VanillaSwap::results
  -- |Results from simple swap calculation
-
  -v-
   fairRate
    ::Rate

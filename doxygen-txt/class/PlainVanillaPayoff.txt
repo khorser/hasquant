@@ -1,6 +1,5 @@
 PlainVanillaPayoff
  -- |Plain-vanilla payoff.
-
  -f-
   PlainVanillaPayoff
    ->

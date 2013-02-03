@@ -1,5 +1,4 @@
 MarketModelBasisSystem
-
  -f-
   numberOfFunctions
    ->std::vector< Size >

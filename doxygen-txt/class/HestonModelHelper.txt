@@ -1,6 +1,5 @@
 HestonModelHelper
  -- |calibration helper for Heston model
-
  -f-
   HestonModelHelper
    ->

@@ -1,6 +1,5 @@
 Swaption::arguments
  -- |Arguments for swaption calculation
-
  -v-
   swap
    ::boost::shared_ptr< VanillaSwap >

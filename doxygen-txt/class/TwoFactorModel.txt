@@ -1,6 +1,5 @@
 TwoFactorModel
  -- |Abstract base-class for two-factor models.
-
  -f-
   TwoFactorModel
    ->

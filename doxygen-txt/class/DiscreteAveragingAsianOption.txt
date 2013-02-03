@@ -1,6 +1,5 @@
 DiscreteAveragingAsianOption
  -- |Discrete-averaging Asian option.
-
  -f-
   DiscreteAveragingAsianOption
    ->

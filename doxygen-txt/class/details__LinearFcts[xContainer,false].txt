@@ -1,5 +1,4 @@
 details::LinearFcts< xContainer, false >
-
  -f-
   LinearFcts
    ->

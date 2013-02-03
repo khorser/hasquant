@@ -1,6 +1,5 @@
 yoyInflationLeg
  -- |Helper class building a sequence of capped/floored yoy inflation coupons payoff is: spread + gearing x index
-
  -f-
   yoyInflationLeg
    ->

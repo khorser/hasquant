@@ -1,6 +1,5 @@
 ConstantParameter
  -- |Standard constant parameter $ a(t) = a $.
-
  -f-
   ConstantParameter
    ->

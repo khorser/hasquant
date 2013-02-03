@@ -1,5 +1,4 @@
 FixedRateBondHelper
-
  -f-
   fixedRateBond
    ->boost::shared_ptr< FixedRateBond >

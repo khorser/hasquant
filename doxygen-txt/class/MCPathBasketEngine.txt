@@ -1,6 +1,5 @@
 MCPathBasketEngine
  -- |Pricing engine for path dependent basket options using.
-
  -f-
   MCPathBasketEngine
    ->

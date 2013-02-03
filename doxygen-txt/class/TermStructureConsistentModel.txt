@@ -1,7 +1,6 @@
 TermStructureConsistentModel
  -- |Term-structure consistent model class.
  -- |This is a base class for models that can reprice exactly any discount bond.
-
  -f-
   TermStructureConsistentModel
    ->

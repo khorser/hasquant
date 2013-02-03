@@ -1,6 +1,5 @@
 G2Process
  -- |G2 stochastic process
-
  -f-
   G2Process
    ->

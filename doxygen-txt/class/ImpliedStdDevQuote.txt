@@ -1,6 +1,5 @@
 ImpliedStdDevQuote
  -- |quote for the implied standard deviation of an underlying
-
  -f-
   ImpliedStdDevQuote
    ->

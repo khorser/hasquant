@@ -1,7 +1,6 @@
 MCDiscreteGeometricAPEngine
  -- |Monte Carlo pricing engine for discrete geometric average price Asian.
  -- |Teststhe correctness of the returned value is tested by reproducing results available in literature.
-
  -f-
   MCDiscreteGeometricAPEngine
    ->

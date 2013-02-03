@@ -1,8 +1,5 @@
 CTSMMCapletCalibration
-
  -f-
-  ~CTSMMCapletCalibration
-   ->
   CTSMMCapletCalibration
    ->
    ::const EvolutionDescription &

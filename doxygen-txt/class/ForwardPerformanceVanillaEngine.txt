@@ -1,7 +1,6 @@
 ForwardPerformanceVanillaEngine
  -- |Forward performance engine for vanilla options
  -- |Tests the correctness of the returned value is tested by reproducing results available in literature.the correctness of the returned greeks is tested by reproducing numerical derivatives.
-
  -f-
   ForwardPerformanceVanillaEngine
    ->

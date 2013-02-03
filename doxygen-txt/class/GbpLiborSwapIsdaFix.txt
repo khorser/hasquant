@@ -1,7 +1,6 @@
 GbpLiborSwapIsdaFix
  -- |GbpLiborSwapIsdaFix index base class
  -- |GBP Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 11am London. Semiannual Actual/365F vs 6M Libor, 1Y Annual vs 3M Libor. Reuters page ISDAFIX4 or GBPSFIX=.Further info can be found at http://www.isda.org/fix/isdafix.html or Reuters page ISDAFIX.
-
  -f-
   GbpLiborSwapIsdaFix
    ->

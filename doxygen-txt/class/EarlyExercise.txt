@@ -1,7 +1,6 @@
 EarlyExercise
  -- |Early-exercise base class.
  -- |The payoff can be at exercise (the default) or at expiry
-
  -f-
   EarlyExercise
    ->

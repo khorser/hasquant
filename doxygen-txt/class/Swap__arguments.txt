@@ -1,5 +1,4 @@
 Swap::arguments
-
  -v-
   legs
    ::std::vector< Leg >

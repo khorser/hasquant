@@ -1,6 +1,5 @@
 ClaytonCopula
  -- |Clayton copula.
-
  -f-
   ClaytonCopula
    ->

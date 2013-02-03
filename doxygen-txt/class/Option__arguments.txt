@@ -1,6 +1,5 @@
 Option::arguments
  -- |basic option arguments
-
  -v-
   payoff
    ::boost::shared_ptr< Payoff >

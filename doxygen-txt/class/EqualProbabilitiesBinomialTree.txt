@@ -1,6 +1,5 @@
 EqualProbabilitiesBinomialTree
  -- |Base class for equal probabilities binomial tree.
-
  -f-
   EqualProbabilitiesBinomialTree
    ->

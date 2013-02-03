@@ -1,5 +1,4 @@
 OvernightIndex
-
  -f-
   -- |returns a copy of itself linked to a different forwarding curve
   clone

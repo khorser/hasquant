@@ -1,7 +1,6 @@
 GeneralLinearLeastSquares
  -- |general linear least squares regression
  -- |References: "Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery,Teststhe correctness of the returned values is tested by checking their properties.
-
  -f-
   GeneralLinearLeastSquares
    ->

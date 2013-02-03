@@ -1,6 +1,5 @@
 VarianceSwap::arguments
  -- |Arguments for forward fair-variance calculation
-
  -v-
   position
    ::Position::Type

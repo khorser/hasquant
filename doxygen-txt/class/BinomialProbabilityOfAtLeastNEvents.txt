@@ -1,6 +1,5 @@
 BinomialProbabilityOfAtLeastNEvents
  -- |Probability of at least N events.
-
  -f-
   BinomialProbabilityOfAtLeastNEvents
    ->

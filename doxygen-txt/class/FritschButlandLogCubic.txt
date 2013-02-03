@@ -1,5 +1,4 @@
 FritschButlandLogCubic
-
  -f-
   -- |the $ x $ values must be sorted.
   FritschButlandLogCubic

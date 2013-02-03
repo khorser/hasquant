@@ -1,6 +1,5 @@
 SimpleQuote
  
-
  -f-
   -- |returns the difference between the new value and the old value
   setValue

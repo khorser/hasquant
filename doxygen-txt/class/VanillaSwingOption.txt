@@ -1,6 +1,5 @@
 VanillaSwingOption
  -- |base option class
-
  -f-
   VanillaSwingOption
    ->

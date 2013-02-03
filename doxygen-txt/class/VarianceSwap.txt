@@ -1,7 +1,6 @@
 VarianceSwap
  -- |Variance swap.
  -- |WarningThis class does not manage seasoned variance swaps.
-
  -f-
   strike
    ->Real

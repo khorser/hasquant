@@ -1,6 +1,5 @@
 AUCPI
  -- |AU CPI index (either quarterly or annual)
-
  -f-
   AUCPI
    ->

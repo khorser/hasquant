@@ -1,6 +1,5 @@
 HuslerReissCopula
  -- |Husler-Reiss copula.
-
  -f-
   HuslerReissCopula
    ->

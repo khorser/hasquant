@@ -1,6 +1,5 @@
 StochasticProcessArray
  -- |Array of correlated 1-D stochastic processes
-
  -f-
   StochasticProcessArray
    ->

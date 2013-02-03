@@ -1,7 +1,6 @@
 TrapezoidIntegral
  -- |Integral of a one-dimensional function.
  -- |Given a target accuracy $ \epsilon $, the integral of a function $ f $ between $ a $ and $ b $ is calculated by means of the trapezoid formula \[ \int_{a}^{b} f \mathrm{d}x = \frac{1}{2} f(x_{0}) + f(x_{1}) + f(x_{2}) + \dots + f(x_{N-1}) + \frac{1}{2} f(x_{N}) \] where $ x_0 = a $, $ x_N = b $, and $ x_i = a+i \Delta x $ with $ \Delta x = (b-a)/N $. The number $ N $ of intervals is repeatedly increased until the target accuracy is reached.Teststhe correctness of the result is tested by checking it against known good values.
-
  -f-
   TrapezoidIntegral
    ->

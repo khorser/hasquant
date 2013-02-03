@@ -1,6 +1,5 @@
 ForwardVanillaOption
  -- |Forward version of a vanilla option
-
  -f-
   ForwardVanillaOption
    ->

@@ -1,6 +1,5 @@
 BoundaryCondition
  -- |Abstract boundary condition class for finite difference problems.
-
  -e-
   -- |Possible enhancementsGeneralize for n-dimensional conditions
   Side
@@ -8,8 +7,6 @@ BoundaryCondition
    Upper
    Lower
  -f-
-  ~BoundaryCondition
-   ->
   -- |This method modifies an operator $ L $ before it is applied to an array $ u $ so that $ v = Lu $ will satisfy the given condition.
   applyBeforeApplying
    ->void

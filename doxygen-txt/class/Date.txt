@@ -1,7 +1,6 @@
 Date
  -- |Concrete date class.
  -- |This class provides methods to inspect dates as well as methods and operators which implement a limited date algebra (increasing and decreasing dates, and calculating their difference).Testsself-consistency of dates, serial numbers, days of month, months, and weekdays is checked over the whole date range.
-
  -f-
   weekday
    ->Weekday

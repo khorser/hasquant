@@ -1,6 +1,5 @@
 ProbabilityOfNEvents
  -- |Probability of N events.
-
  -f-
   ProbabilityOfNEvents
    ->

@@ -1,9 +1,6 @@
 LeastSquareProblem
  -- |Base class for least square problem.
-
  -f-
-  ~LeastSquareProblem
-   ->
   -- |size of the problem ie size of target vector
   size
    ->Size

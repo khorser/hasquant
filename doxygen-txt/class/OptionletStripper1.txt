@@ -1,6 +1,5 @@
 OptionletStripper1
  -- |Helper class to strip optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) term volatilities of a CapFloorTermVolSurface.
-
  -f-
   OptionletStripper1
    ->

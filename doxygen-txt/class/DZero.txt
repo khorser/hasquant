@@ -1,7 +1,6 @@
 DZero
  -- |$ D_{0} $ matricial representation
  -- |The differential operator $ D_{0} $ discretizes the first derivative with the second-order formula \[ \frac{\partial u_{i}}{\partial x} \approx \frac{u_{i+1}-u_{i-1}}{2h} = D_{0} u_{i} \]Teststhe correctness of the returned values is tested by checking them against numerical calculations.
-
  -f-
   DZero
    ->

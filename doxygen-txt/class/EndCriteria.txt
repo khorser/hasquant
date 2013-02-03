@@ -1,7 +1,6 @@
 EndCriteria
  -- |Criteria to end optimization process:
  -- |maximum number of iterations AND minimum number of iterations around stationary point x (independent variable) stationary pointy=f(x) (dependent variable) stationary pointstationary gradient
-
  -e-
   Type
    None

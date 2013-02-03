@@ -1,5 +1,4 @@
 detail::DividendAdder
-
  -f-
   DividendAdder
    ->

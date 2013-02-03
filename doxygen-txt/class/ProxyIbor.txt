@@ -1,6 +1,5 @@
 ProxyIbor
  -- |IborIndex calculated as proxy of some other IborIndex.
-
  -f-
   ProxyIbor
    ->

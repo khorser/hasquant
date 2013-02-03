@@ -1,7 +1,6 @@
 InverseCumulativeStudent
  -- |Inverse cumulative Student t-distribution.
  -- |Possible enhancementsFind/implement an efficient algorithm for evaluating the cumulative Student t-distribution, replacing the Newton iteration
-
  -f-
   InverseCumulativeStudent
    ->

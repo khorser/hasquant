@@ -1,6 +1,5 @@
 InterpolatedZeroCurve
  -- |YieldTermStructure based on interpolation of zero rates.
-
  -f-
   times
    ->const std::vector< Time > &

@@ -1,7 +1,6 @@
 EuriborSwapIfrFix
  -- |EuriborSwapIfrFix index base class
  -- |Euribor Swap indexes published by IFR Markets and distributed by Reuters page TGM42281 and by Telerate. Annual 30/360 vs 6M Euribor, 1Y vs 3M Euribor. For more info see http://www.ifrmarkets.com.
-
  -f-
   EuriborSwapIfrFix
    ->

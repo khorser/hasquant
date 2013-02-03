@@ -1,6 +1,5 @@
 Quantity
  -- |Amount of a commodity.
-
  -f-
   Quantity
    ->

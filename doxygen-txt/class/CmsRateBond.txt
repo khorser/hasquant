@@ -1,7 +1,6 @@
 CmsRateBond
  -- |CMS-rate bond.
  -- |Testscalculations are tested by checking results against cached values.
-
  -f-
   CmsRateBond
    ->

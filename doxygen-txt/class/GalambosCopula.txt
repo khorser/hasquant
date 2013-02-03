@@ -1,6 +1,5 @@
 GalambosCopula
  -- |Galambos copula.
-
  -f-
   GalambosCopula
    ->

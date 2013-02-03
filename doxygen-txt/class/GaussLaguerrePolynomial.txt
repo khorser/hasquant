@@ -1,6 +1,5 @@
 GaussLaguerrePolynomial
  -- |Gauss-Laguerre polynomial.
-
  -f-
   GaussLaguerrePolynomial
    ->

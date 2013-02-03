@@ -1,7 +1,6 @@
 ProjectedCostFunction
  -- |Parameterized cost function.
  -- |This class creates a proxy cost function which can depend on any arbitrary subset of parameters (the other being fixed)
-
  -f-
   ProjectedCostFunction
    ->

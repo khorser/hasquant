@@ -1,7 +1,6 @@
 ReplicatingVarianceSwapEngine
  -- |Variance-swap pricing engine using replicating cost,.
  -- |as described in Demeterfi, Derman, Kamal & Zou, "A Guide to Volatility and Variance Swaps", 1999Testsreturned variances verified against results from literature
-
  -f-
   ReplicatingVarianceSwapEngine
    ->

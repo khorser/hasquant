@@ -1,9 +1,6 @@
 Curve
  -- |abstract curve class
-
  -f-
-  ~Curve
-   ->
   operator()
    ->Real
    ::Real

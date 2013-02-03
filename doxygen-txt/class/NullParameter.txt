@@ -1,6 +1,5 @@
 NullParameter
  -- |Parameter which is always zero $ a(t) = 0 $
-
  -f-
   NullParameter
    ->

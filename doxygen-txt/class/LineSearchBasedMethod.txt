@@ -1,13 +1,10 @@
 LineSearchBasedMethod
-
  -f-
   LineSearchBasedMethod
    ->
    ::const boost::shared_ptr< LineSearch > &
    =boost::shared_ptr< LineSearch >()
    -- ^lSearch
-  ~LineSearchBasedMethod
-   ->
   minimize
    ->EndCriteria::Type
    ::Problem &

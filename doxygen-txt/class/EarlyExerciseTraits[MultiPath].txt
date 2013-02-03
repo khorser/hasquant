@@ -1,5 +1,4 @@
 EarlyExerciseTraits< MultiPath >
-
  -f-
   pathLength
    ->Size

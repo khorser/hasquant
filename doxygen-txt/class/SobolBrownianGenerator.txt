@@ -1,7 +1,6 @@
 SobolBrownianGenerator
  -- |Sobol Brownian generator for market-model simulations.
  -- |Incremental Brownian generator using a Sobol generator, inverse-cumulative Gaussian method, and Brownian bridging.
-
  -e-
   Ordering
    Factors

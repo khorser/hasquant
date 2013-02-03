@@ -1,11 +1,8 @@
 BlackYoYInflationCouponPricer
  -- |Black-formula pricer for capped/floored yoy inflation coupons.
-
  -f-
   BlackYoYInflationCouponPricer
    ->
    ::const Handle< YoYOptionletVolatilitySurface > &
    =Handle< YoYOptionletVolatilitySurface >()
    -- ^capletVol
-  ~BlackYoYInflationCouponPricer
-   ->

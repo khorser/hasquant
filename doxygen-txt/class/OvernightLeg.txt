@@ -1,6 +1,5 @@
 OvernightLeg
  -- |helper class building a sequence of overnight coupons
-
  -f-
   OvernightLeg
    ->

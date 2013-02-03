@@ -1,7 +1,6 @@
 TreeSwaptionEngine
  -- |Numerical lattice engine for swaptions.
  -- |WarningThis engine is not guaranteed to work if the underlying swap has a start date in the past, i.e., before today's date. When using this engine, prune the initial part of the swap so that it starts at $ t \geq 0 $.Testscalculations are checked against cached results
-
  -f-
   TreeSwaptionEngine
    ->

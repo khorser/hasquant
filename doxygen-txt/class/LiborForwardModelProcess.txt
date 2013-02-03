@@ -1,7 +1,6 @@
 LiborForwardModelProcess
  -- |libor-forward-model process
  -- |stochastic process of a libor forward model using the rolling forward measure incl. predictor-corrector stepReferences:Glasserman, Paul, 2004, Monte Carlo Methods in Financial Engineering, Springer, Section 3.7Antoon Pelsser, 2000, Efficient Methods for Valuing Interest Rate Derivatives, Springer, 8Hull, John, White, Alan, 1999, Forward Rate Volatilities, Swap Rate Volatilities and the Implementation of the Libor Market Model (http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf)Teststhe correctness is tested by Monte-Carlo reproduction of caplet & ratchet NPVs and comparison with Black pricing.Warningthis class does not work correctly with Visual C++ 6.
-
  -f-
   LiborForwardModelProcess
    ->

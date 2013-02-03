@@ -1,6 +1,5 @@
 Polynomial2DSpline
  -- |polynomial2D-spline interpolation between discrete points
-
  -f-
   -- |the $ x $ and $ y $ values must be sorted.
   Polynomial2DSpline

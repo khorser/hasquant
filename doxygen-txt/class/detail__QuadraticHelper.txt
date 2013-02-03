@@ -1,5 +1,4 @@
 detail::QuadraticHelper
-
  -f-
   QuadraticHelper
    ->

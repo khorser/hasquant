@@ -1,6 +1,5 @@
 YoYInflationCap
  -- |Concrete YoY Inflation cap class.
-
  -f-
   YoYInflationCap
    ->

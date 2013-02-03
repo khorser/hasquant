@@ -1,6 +1,5 @@
 Callability::Price
  -- |amount to be paid upon callability
-
  -e-
   Type
    Dirty

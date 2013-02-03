@@ -1,8 +1,5 @@
 BrownianGeneratorFactory
-
  -f-
-  ~BrownianGeneratorFactory
-   ->
   create
    ->boost::shared_ptr< BrownianGenerator >
    ::Size

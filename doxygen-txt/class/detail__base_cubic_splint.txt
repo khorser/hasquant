@@ -1,5 +1,4 @@
 detail::base_cubic_splint
-
  -f-
   base_cubic_splint
    ->

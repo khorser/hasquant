@@ -1,7 +1,6 @@
 SMMDriftCalculator
  -- |Drift computation for coterminal swap market models.
  -- |Returns the drift $ \mu \Delta t $. See Mark Joshi, Lorenzo Liesch, Effective Implementation Of Generic Market Models.
-
  -f-
   SMMDriftCalculator
    ->

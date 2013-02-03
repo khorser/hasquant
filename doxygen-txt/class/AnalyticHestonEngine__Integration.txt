@@ -1,5 +1,4 @@
 AnalyticHestonEngine::Integration
-
  -f-
   gaussLaguerre
    ->Integration

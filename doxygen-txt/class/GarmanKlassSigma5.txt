@@ -1,5 +1,4 @@
 GarmanKlassSigma5
-
  -f-
   GarmanKlassSigma5
    ->

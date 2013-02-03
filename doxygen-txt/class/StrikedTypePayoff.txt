@@ -1,6 +1,5 @@
 StrikedTypePayoff
  -- |Intermediate class for payoffs based on a fixed strike.
-
  -f-
   strike
    ->Real

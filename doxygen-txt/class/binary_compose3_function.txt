@@ -1,5 +1,4 @@
 binary_compose3_function
-
  -f-
   binary_compose3_function
    ->

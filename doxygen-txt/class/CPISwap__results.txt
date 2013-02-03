@@ -1,6 +1,5 @@
 CPISwap::results
  -- |Results from swap calculation
-
  -v-
   fairRate
    ::Rate

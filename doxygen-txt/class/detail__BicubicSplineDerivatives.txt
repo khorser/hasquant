@@ -1,5 +1,4 @@
 detail::BicubicSplineDerivatives
-
  -f-
   derivativeX
    ->Real

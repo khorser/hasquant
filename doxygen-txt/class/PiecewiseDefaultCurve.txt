@@ -1,7 +1,6 @@
 PiecewiseDefaultCurve
  -- |Piecewise default-probability term structure.
  -- |This term structure is bootstrapped on a number of credit instruments which are passed as a vector of handles to DefaultProbabilityHelper instances. Their maturities mark the boundaries of the interpolated segments.Each segment is determined sequentially starting from the earliest period to the latest and is chosen so that the instrument whose maturity marks the end of such segment is correctly repriced on the curve.WarningThe bootstrapping algorithm will raise an exception if any two instruments have the same maturity date.
-
  -f-
   PiecewiseDefaultCurve
    ->

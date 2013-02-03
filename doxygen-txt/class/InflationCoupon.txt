@@ -1,7 +1,6 @@
 InflationCoupon
  -- |Base inflation-coupon class.
  -- |The day counter is usually obtained from the inflation term structure that the inflation index uses for forecasting. There is no gearing or spread because these are relevant for YoY coupons but not zero inflation coupons.inflation indices do not contain day counters or calendars.
-
  -f-
   price
    ->Real

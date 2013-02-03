@@ -1,6 +1,5 @@
 DividendVanillaOption
  -- |Single-asset vanilla option (no barriers) with discrete dividends.
-
  -f-
   DividendVanillaOption
    ->

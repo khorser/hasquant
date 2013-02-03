@@ -1,6 +1,5 @@
 GaussianLHPCDOEngine
  -- |CDO engine with analytical expected tranche loss for a large homogeneous pool with Gaussian one-factor copula. See for example "The Normal Inverse Gaussian Distribution for Synthetic CDO pricing.", Anna Kalemanova, Bernd Schmid, Ralf Werner, Journal of Derivatives, Vol. 14, No. 3, (Spring 2007), pp. 80-93. http://www.defaultrisk.com/pp_crdrv_91.htm
-
  -f-
   GaussianLHPCDOEngine
    ->

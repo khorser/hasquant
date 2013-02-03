@@ -1,5 +1,4 @@
 identity
-
  -f-
   operator()
    ->T

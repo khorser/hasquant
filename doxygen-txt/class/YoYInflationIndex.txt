@@ -1,7 +1,6 @@
 YoYInflationIndex
  -- |Base class for year-on-year inflation indices.
  -- |These may be genuine indices published on, say, Bloomberg, or "fake" indices that are defined as the ratio of an index at different time points.
-
  -f-
   ratio
    ->bool

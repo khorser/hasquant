@@ -1,6 +1,5 @@
 TermStructureFittingParameter
  -- |Deterministic time-dependent parameter used for yield-curve fitting.
-
  -f-
   TermStructureFittingParameter
    ->

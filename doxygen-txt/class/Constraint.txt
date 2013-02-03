@@ -1,6 +1,5 @@
 Constraint
  -- |Base constraint class.
-
  -f-
   empty
    ->bool

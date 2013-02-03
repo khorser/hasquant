@@ -1,7 +1,6 @@
 StochasticProcess1D
  -- |1-dimensional stochastic process
  -- |This class describes a stochastic process governed by \[ dx_t = \mu(t, x_t)dt + \sigma(t, x_t)dW_t. \]
-
  -f-
   -- |returns the initial value of the state variable
   x0

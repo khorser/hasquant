@@ -1,6 +1,5 @@
 GenericRegion
  -- |Generic geographical/economic region.
-
  -f-
   GenericRegion
    ->

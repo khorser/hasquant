@@ -1,6 +1,5 @@
 Floor
  -- |Concrete floor class.
-
  -f-
   Floor
    ->

@@ -1,7 +1,6 @@
 EquityFXVolSurface
  -- |Equity/FX volatility (smile) surface.
  -- |This abstract class defines the interface of concrete Equity/FX volatility (smile) surfaces which will be derived from this one.Volatilities are assumed to be expressed on an annual basis.It's only in absence of smile that the concept of (at-the-money) forward volatility makes sense.
-
  -f-
   -- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
   EquityFXVolSurface

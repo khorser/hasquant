@@ -1,6 +1,5 @@
 Cap
  -- |Concrete cap class.
-
  -f-
   Cap
    ->

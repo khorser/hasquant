@@ -1,5 +1,4 @@
 EnergyCommodity::results
-
  -v-
   NPV
    ::Real

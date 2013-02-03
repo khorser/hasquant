@@ -1,6 +1,5 @@
 Basket
  -- |Credit Basket. A basket is a collection of credit names, represented by a unique identifier (a text string), associated notional amounts, a pool and tranche information. The pool is a map of "names" to issuers. The Basket structure is motivated by CDO squared instruments containing various underlying inner CDOs which can be represented by respective baskets including their tranche structure. The role of the Pool is providing a unique list of relevant issuers while names may appear multiple times across different baskets (overlap).
-
  -f-
   Basket
    ->

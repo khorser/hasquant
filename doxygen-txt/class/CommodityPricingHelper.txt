@@ -1,6 +1,5 @@
 CommodityPricingHelper
  -- |commodity index helper
-
  -f-
   CommodityPricingHelper
    ->

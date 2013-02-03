@@ -1,6 +1,5 @@
 NorthAmericaCorpDefaultKey
  -- |ISDA standard default contractual key for corporate US debt.
-
  -f-
   NorthAmericaCorpDefaultKey
    ->

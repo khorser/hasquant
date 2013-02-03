@@ -1,6 +1,5 @@
 BlackScholesLattice
  -- |Simple binomial lattice approximating the Black-Scholes model.
-
  -f-
   BlackScholesLattice
    ->

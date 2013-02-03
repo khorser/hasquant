@@ -1,6 +1,5 @@
 TabulatedGaussLegendre
  -- |tabulated Gauss-Legendre quadratures
-
  -f-
   TabulatedGaussLegendre
    ->

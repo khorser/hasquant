@@ -1,6 +1,5 @@
 StrippedOptionletBase
  -- |Abstract base class interface for a (time indexed) vector of (strike indexed) optionlet (i.e. caplet/floorlet) volatilities.
-
  -f-
   optionletStrikes
    ->const std::vector< Rate > &

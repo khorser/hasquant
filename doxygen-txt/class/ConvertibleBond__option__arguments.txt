@@ -1,5 +1,4 @@
 ConvertibleBond::option::arguments
-
  -v-
   conversionRatio
    ::Real

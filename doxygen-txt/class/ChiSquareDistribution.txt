@@ -1,5 +1,4 @@
 ChiSquareDistribution
-
  -f-
   ChiSquareDistribution
    ->

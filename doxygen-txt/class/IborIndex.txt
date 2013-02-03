@@ -1,5 +1,4 @@
 IborIndex
-
  -f-
   businessDayConvention
    ->BusinessDayConvention

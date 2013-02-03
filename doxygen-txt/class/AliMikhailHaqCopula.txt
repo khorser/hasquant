@@ -1,6 +1,5 @@
 AliMikhailHaqCopula
  -- |Ali-Mikhail-Haq copula.
-
  -f-
   AliMikhailHaqCopula
    ->

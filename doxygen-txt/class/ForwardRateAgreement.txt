@@ -1,5 +1,4 @@
 ForwardRateAgreement
-
  -f-
   -- |A FRA expires/settles on the valueDate
   isExpired

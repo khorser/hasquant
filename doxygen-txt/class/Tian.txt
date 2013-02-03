@@ -1,6 +1,5 @@
 Tian
  -- |Tian tree: third moment matching, multiplicative approach
-
  -f-
   Tian
    ->

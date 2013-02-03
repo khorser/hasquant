@@ -1,7 +1,6 @@
 AnalyticGJRGARCHEngine
  -- |GJR-GARCH(1,1) engine.
  -- |References:Jin-Chuan Duan, Genevieve Gauthier, Jean-Guy Simonato, Caroline Sasseville, 2006. Approximating the GJR-GARCH and EGARCH option pricing models analytically Journal of Computational Finance, Volume 9, Number 3, Spring 2006Teststhe correctness of the returned value is tested by reproducing results available in the Duan et al's 2006 paper.
-
  -f-
   AnalyticGJRGARCHEngine
    ->

@@ -1,6 +1,5 @@
 VegaStressedBlackScholesProcess
  -- |Black-Scholes process which supports local vega stress tests.
-
  -f-
   getLowerTimeBorderForStressTest
    ->Real

@@ -1,6 +1,5 @@
 Currency
  -- |Currency specification
-
  -f-
   -- |currency name, e.g, "U.S. Dollar"
   name

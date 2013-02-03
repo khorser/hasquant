@@ -1,7 +1,6 @@
 InterestRate
  -- |Concrete interest rate class.
  -- |This class encapsulate the interest rate compounding algebra. It manages day-counting conventions, compounding conventions, conversion between different conventions, discount/compound factor calculations, and implied/equivalent rate calculations.TestsConverted rates are checked against known good results
-
  -f-
   rate
    ->Rate

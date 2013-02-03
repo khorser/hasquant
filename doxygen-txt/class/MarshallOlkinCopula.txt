@@ -1,6 +1,5 @@
 MarshallOlkinCopula
  -- |Marshall-Olkin copula.
-
  -f-
   MarshallOlkinCopula
    ->

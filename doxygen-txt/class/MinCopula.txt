@@ -1,6 +1,5 @@
 MinCopula
  -- |min copula
-
  -f-
   operator()
    ->Real

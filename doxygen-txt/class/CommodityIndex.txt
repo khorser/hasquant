@@ -1,6 +1,5 @@
 CommodityIndex
  -- |base class for commodity indexes
-
  -f-
   name
    ->std::string

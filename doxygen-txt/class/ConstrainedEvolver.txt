@@ -1,10 +1,7 @@
 ConstrainedEvolver
  -- |Constrained market-model evolver.
  -- |Abstract base class. Requires extra methods above that of marketmodelevolver to let you fix rates via importance sampling.The evolver does the actual gritty work of evolving the forward rates from one time to the next.This is intended to be used for the Fries-Joshi proxy simulation approach to Greeks
-
  -f-
-  ~ConstrainedEvolver
-   ->
   -- |call once
   setConstraintType
    ->void

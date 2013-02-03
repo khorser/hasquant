@@ -1,5 +1,4 @@
 FdmAmericanStepCondition
-
  -f-
   FdmAmericanStepCondition
    ->

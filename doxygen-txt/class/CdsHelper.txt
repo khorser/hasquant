@@ -1,6 +1,5 @@
 CdsHelper
  -- |Base default-probability bootstrap helper tenor CDS tenor. frequency Coupon frequency. settlementDays The number of days from today's date to the start of the protection period. paymentConvention The payment convention applied to coupons schedules, settlement dates and protection period calculations.
-
  -f-
   CdsHelper
    ->

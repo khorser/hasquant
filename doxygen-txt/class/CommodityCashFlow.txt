@@ -1,5 +1,4 @@
 CommodityCashFlow
-
  -f-
   date
    ->Date

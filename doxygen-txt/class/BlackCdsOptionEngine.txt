@@ -1,7 +1,6 @@
 BlackCdsOptionEngine
  -- |Black-formula CDS-option engine.
  -- |WarningThe engine assumes that the exercise date equals the start date of the passed CDS.
-
  -f-
   BlackCdsOptionEngine
    ->

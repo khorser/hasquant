@@ -1,13 +1,10 @@
 OneFactorModel::ShortRateDynamics
  -- |Base class describing the short-rate dynamics.
-
  -f-
   ShortRateDynamics
    ->
    ::const boost::shared_ptr< StochasticProcess1D > &
    -- ^process
-  ~ShortRateDynamics
-   ->
   -- |Compute state variable from short rate.
   variable
    ->Real

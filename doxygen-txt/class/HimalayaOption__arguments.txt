@@ -1,5 +1,4 @@
 HimalayaOption::arguments
-
  -v-
   fixingDates
    ::std::vector< Date >

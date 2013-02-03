@@ -1,5 +1,4 @@
 clipped_function
-
  -f-
   clipped_function
    ->

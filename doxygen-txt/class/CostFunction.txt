@@ -1,9 +1,6 @@
 CostFunction
  -- |Cost function abstract class for optimization problem.
-
  -f-
-  ~CostFunction
-   ->
   -- |method to overload to compute the cost function value in x
   value
    ->Real

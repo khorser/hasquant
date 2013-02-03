@@ -1,6 +1,5 @@
 GaussHermitePolynomial
  -- |Gauss-Hermite polynomial.
-
  -f-
   GaussHermitePolynomial
    ->

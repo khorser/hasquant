@@ -1,6 +1,5 @@
 ZeroInflationTermStructure
  -- |Interface for zero inflation term structures.
-
  -f-
   ZeroInflationTermStructure
    ->

@@ -1,7 +1,6 @@
 ZigguratRng
  -- |Ziggurat random-number generator.
  -- |This generator returns standard normal variates using the Ziggurat method. The underlying RNG is mt19937 (32 bit version). The algorithm is described in Marsaglia and Tsang (2000). "The Ziggurat Method for Generating Random Variables". Journal of Statistical Software 5 (8). Note that step 2 from the above paper reuses the rightmost 8 bits of the random integer, which creates correlation between steps 1 and This implementation was written from scratch, following Marsaglia and Tsang. It avoids the correlation by using only the leftmost 24 bits of mt19937's output. Note that the GNU GSL implementation uses a different value for the right-most step. The GSL value is somewhat different from the one reported by Marsaglia and Tsang because GSL uses a different tail. This implementation uses the same right-most step as reported by Marsaglia and Tsang. The generator was put through Marsaglia's Diehard battery of tests and didn't exibit any abnormal behavior.
-
  -f-
   ZigguratRng
    ->

@@ -1,7 +1,6 @@
 LMMDriftCalculator
  -- |Drift computation for log-normal Libor market models.
  -- |Returns the drift $ \mu \Delta t $. See Mark Joshi, Rapid Computation of Drifts in a Reduced Factor Libor Market Model, Wilmott Magazine, May 2003.
-
  -f-
   LMMDriftCalculator
    ->

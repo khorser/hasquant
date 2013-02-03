@@ -1,6 +1,5 @@
 Surface
  -- |Surface abstract class
-
  -f-
   operator()
    ->Real
@@ -10,5 +9,3 @@ Surface
    -- ^y
   domain
    ->boost::shared_ptr< Domain >
-  ~Surface
-   ->

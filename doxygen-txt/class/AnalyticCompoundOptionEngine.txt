@@ -1,7 +1,6 @@
 AnalyticCompoundOptionEngine
  -- |Pricing engine for compound options using analytical formulae.
  -- |The formulas are taken from "Foreign Exchange Risk", Uwe Wystup, Risk 2002, where closed form Greeks are available. (not available in Haug 2007). Value: Page 84, Greeks: Pages 94-95.Teststhe correctness of the returned value is tested by reproducing results available in literature.
-
  -f-
   AnalyticCompoundOptionEngine
    ->

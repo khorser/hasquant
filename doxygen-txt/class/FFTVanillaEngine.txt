@@ -1,7 +1,6 @@
 FFTVanillaEngine
  -- |FFT Pricing engine vanilla options under a Black Scholes process.
  -- |Teststhe correctness of the returned values is tested by comparison with Black Scholes pricing.
-
  -f-
   FFTVanillaEngine
    ->

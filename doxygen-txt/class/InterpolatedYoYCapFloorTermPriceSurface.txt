@@ -1,5 +1,4 @@
 InterpolatedYoYCapFloorTermPriceSurface
-
  -f-
   -- |inflation term structure interface
   maxDate

@@ -1,7 +1,6 @@
 SimpleLocalEstimator
  -- |Local-estimator volatility model.
  -- |Volatilities are assumed to be expressed on an annual basis.
-
  -f-
   SimpleLocalEstimator
    ->

@@ -1,5 +1,4 @@
 FwdToCotSwapAdapter
-
  -f-
   initialRates
    ->const std::vector< Rate > &

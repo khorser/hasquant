@@ -1,9 +1,6 @@
 StochasticProcess1D::discretization
  -- |discretization of a 1-D stochastic process
-
  -f-
-  ~discretization
-   ->
   drift
    ->Real
    ::const StochasticProcess1D &

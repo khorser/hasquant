@@ -1,8 +1,5 @@
 NumericHaganPricer::Function
-
  -f-
-  ~Function
-   ->
   operator()
    ->Real
    ::Real

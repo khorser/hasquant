@@ -1,7 +1,6 @@
 AmericanPayoffAtHit
  -- |Analytic formula for American exercise payoff at-hit options.
  -- |Possible enhancementscalculate greeks
-
  -f-
   AmericanPayoffAtHit
    ->

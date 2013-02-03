@@ -1,6 +1,5 @@
 FdBatesVanillaEngine
  -- |Partial Integro FiniteDifferences Bates Vanilla Option engine.
-
  -f-
   FdBatesVanillaEngine
    ->

@@ -1,6 +1,5 @@
 MargrabeOption::arguments
  -- |Extra arguments for Margrabe option.
-
  -v-
   Q1
    ::Integer

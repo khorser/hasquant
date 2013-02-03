@@ -1,6 +1,5 @@
 MonteCarloCDOEngine1
  -- |CDO engine, Monte Carlo for the exptected tranche loss distribution.
-
  -f-
   MonteCarloCDOEngine1
    ->

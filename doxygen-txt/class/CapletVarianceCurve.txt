@@ -1,6 +1,5 @@
 CapletVarianceCurve
  -- |Deprecateduse the StrippedOptionletAdapter of a StrippedOptionlet instance
-
  -f-
   CapletVarianceCurve
    ->

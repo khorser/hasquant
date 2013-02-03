@@ -1,7 +1,6 @@
 BSpline
  -- |B-spline basis functions.
  -- |Follows treatment and notation from: Weisstein, Eric W. "B-Spline." From MathWorld--A Wolfram Web Resource. <http://mathworld.wolfram.com/B-Spline.html> $ (p+1) $-th order B-spline (or p degree polynomial) basis functions $ N_{i,p}(x), i = 0,1,2 \ldots n $, with $ n+1 $ control points, or equivalently, an associated knot vector of size $ p+n+2 $ defined at the increasingly sorted points $ (x_0, x_1 \ldots x_{n+p+1}) $. A linear B-spline has $ p=1 $, quadratic B-spline has $ p=2 $, a cubic B-spline has $ p=3 $, etc.The B-spline basis functions are defined recursively as follows:\[ \begin{array}{rcl} N_{i,0}(x) &=& 1 \textrm{\ if\ } x_{i} \leq x < x_{i+1} \\ &=& 0 \textrm{\ otherwise} \\ N_{i,p}(x) &=& N_{i,p-1}(x) \frac{(x - x_{i})}{ (x_{i+p-1} - x_{i})} + N_{i+1,p-1}(x) \frac{(x_{i+p} - x)}{(x_{i+p} - x_{i+1})} \end{array} \]
-
  -f-
   BSpline
    ->

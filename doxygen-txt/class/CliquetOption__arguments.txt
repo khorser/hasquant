@@ -1,6 +1,5 @@
 CliquetOption::arguments
  -- |Arguments for cliquet option calculation
-
  -v-
   accruedCoupon
    ::Real

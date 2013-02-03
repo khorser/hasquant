@@ -1,6 +1,5 @@
 PositiveConstraint
  -- |Constraint imposing positivity to all arguments
-
  -f-
   PositiveConstraint
    ->

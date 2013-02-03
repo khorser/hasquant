@@ -1,7 +1,6 @@
 DefaultEvent
  -- |Credit event on a bond of a certain seniority(ies)/currency.
  -- |Represents a credit event affecting all bonds with a given \ seniority and currency. It assumes that all such bonds suffer \ the event simultaneously. Some events affect all seniorities and this has to be encoded through a different set of events of the same event type. The event is an actual realization, not a contractual reference, as such it contains only an atomic type.
-
  -f-
   -- |Credit event with optional settlement information. Represents a credit event that has taken place. Realized events are of an atomic type. If the settlement information is given seniorities present are the seniorities/bonds affected by the event.
   DefaultEvent

@@ -1,7 +1,6 @@
 VarianceGammaProcess
  -- |Variance gamma process.
  -- |This class describes the stochastic volatility process. With a Brownian motion given by \[ db = \theta dt + \sigma dW_t \] then a Variance Gamma process X is defined by evaluating this Brownian motion at sample times driven by a Gamma process. If T is the value of a Gamma process with mean 1 and variance rate $ \nu $ then the Variance Gamma process is given by \[ X(t) = B(T) \]
-
  -f-
   VarianceGammaProcess
    ->

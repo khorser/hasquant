@@ -1,6 +1,5 @@
 YoYInflationVolatilityTraits
  -- |traits for inflation-volatility bootstrap
-
  -f-
   initialDate
    ->Date

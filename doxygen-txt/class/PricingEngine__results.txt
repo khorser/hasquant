@@ -1,7 +1,4 @@
 PricingEngine::results
-
  -f-
-  ~results
-   ->
   reset
    ->void

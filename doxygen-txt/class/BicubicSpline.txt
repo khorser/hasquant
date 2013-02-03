@@ -1,7 +1,6 @@
 BicubicSpline
  -- |bicubic-spline interpolation between discrete points
  -- |Possible enhancementsrevise end conditions
-
  -f-
   -- |the $ x $ and $ y $ values must be sorted.
   BicubicSpline

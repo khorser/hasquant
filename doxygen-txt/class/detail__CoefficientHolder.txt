@@ -1,5 +1,4 @@
 detail::CoefficientHolder
-
  -v-
   n_
    ::Size
@@ -18,5 +17,3 @@ detail::CoefficientHolder
    ->
    ::Size
    -- ^n
-  ~CoefficientHolder
-   ->

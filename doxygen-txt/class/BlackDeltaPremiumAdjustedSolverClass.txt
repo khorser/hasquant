@@ -1,5 +1,4 @@
 BlackDeltaPremiumAdjustedSolverClass
-
  -f-
   BlackDeltaPremiumAdjustedSolverClass
    ->

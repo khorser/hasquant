@@ -1,5 +1,4 @@
 SwaptionVolCube2
-
  -f-
   performCalculations
    ->void

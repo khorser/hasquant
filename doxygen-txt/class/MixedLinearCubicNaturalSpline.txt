@@ -1,5 +1,4 @@
 MixedLinearCubicNaturalSpline
-
  -f-
   -- |the $ x $ values must be sorted.
   MixedLinearCubicNaturalSpline

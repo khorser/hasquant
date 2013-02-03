@@ -1,5 +1,4 @@
 detail::ComboHelper
-
  -f-
   ComboHelper
    ->

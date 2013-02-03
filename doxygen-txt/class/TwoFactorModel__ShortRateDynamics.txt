@@ -1,7 +1,6 @@
 TwoFactorModel::ShortRateDynamics
  -- |Class describing the dynamics of the two state variables.
  -- |We assume here that the short-rate is a function of two state variables x and y. \[ r_t = f(t, x_t, y_t) \] of two state variables $ x_t $ and $ y_t $. These stochastic processes satisfy \[ x_t = \mu_x(t, x_t)dt + \sigma_x(t, x_t) dW_t^x \] and \[ y_t = \mu_y(t,y_t)dt + \sigma_y(t, y_t) dW_t^y \] where $ W^x $ and $ W^y $ are two brownian motions satisfying \[ dW^x_t dW^y_t = \rho dt \].
-
  -f-
   ShortRateDynamics
    ->
@@ -11,8 +10,6 @@ TwoFactorModel::ShortRateDynamics
    -- ^yProcess
    ::Real
    -- ^correlation
-  ~ShortRateDynamics
-   ->
   shortRate
    ->Rate
    ::Time

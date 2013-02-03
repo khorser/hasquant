@@ -1,7 +1,6 @@
 CdsOption
  -- |CDS option.
  -- |The side of the swaption is set by choosing the side of the CDS. A receiver CDS option is a right to buy an underlying CDS selling protection and receiving a coupon. A payer CDS option is a right to buy an underlying CDS buying protection and paying coupon.
-
  -f-
   underlyingSwap
    ->const boost::shared_ptr< CreditDefaultSwap > &

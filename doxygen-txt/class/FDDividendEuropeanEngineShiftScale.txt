@@ -1,5 +1,4 @@
 FDDividendEuropeanEngineShiftScale
-
  -f-
   FDDividendEuropeanEngineShiftScale
    ->

@@ -1,7 +1,6 @@
 GapPayoff
  -- |Binary gap payoff.
  -- |This payoff is equivalent to being a) long a PlainVanillaPayoff at the first strike (same Call/Put type) and b) short a CashOrNothingPayoff at the first strike (same Call/Put type) with cash payoff equal to the difference between the second and the first strike. Warningthis payoff can be negative depending on the strikes
-
  -f-
   GapPayoff
    ->

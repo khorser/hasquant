@@ -1,7 +1,6 @@
 SwingExercise
  -- |Swing exercise.
  -- |A Swing option can only be exercised at a set of fixed date times
-
  -f-
   SwingExercise
    ->

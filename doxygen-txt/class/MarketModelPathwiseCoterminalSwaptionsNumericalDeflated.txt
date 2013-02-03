@@ -1,6 +1,5 @@
 MarketModelPathwiseCoterminalSwaptionsNumericalDeflated
  -- |Easiest way to test MarketModelPathwiseCoterminalSwaptionsDeflated is by doing a numerical differentiation version.
-
  -f-
   MarketModelPathwiseCoterminalSwaptionsNumericalDeflated
    ->
@@ -10,5 +9,3 @@ MarketModelPathwiseCoterminalSwaptionsNumericalDeflated
    -- ^strikes
    ::Real
    -- ^bumpSize_
-  ~MarketModelPathwiseCoterminalSwaptionsNumericalDeflated
-   ->

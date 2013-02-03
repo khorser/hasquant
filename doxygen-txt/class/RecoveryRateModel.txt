@@ -1,6 +1,5 @@
 RecoveryRateModel
  -- |Models of the recovery rate provide future values of a recovery rate in the event of a default.
-
  -f-
   -- |returns the expected recovery rate at a future time conditional on some default event type and seniority.
   recoveryValue
@@ -15,5 +14,3 @@ RecoveryRateModel
    ->bool
    ::Seniority
    -- ^
-  ~RecoveryRateModel
-   ->

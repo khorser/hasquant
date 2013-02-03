@@ -1,5 +1,4 @@
 SyntheticCDO::arguments
-
  -v-
   basket
    ::boost::shared_ptr< Basket >

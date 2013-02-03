@@ -1,5 +1,4 @@
 CurveDependentStepCondition
-
  -f-
   applyTo
    ->void

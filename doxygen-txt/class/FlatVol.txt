@@ -1,5 +1,4 @@
 FlatVol
-
  -f-
   initialRates
    ->const std::vector< Rate > &

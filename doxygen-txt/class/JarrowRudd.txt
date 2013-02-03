@@ -1,6 +1,5 @@
 JarrowRudd
  -- |Jarrow-Rudd (multiplicative) equal probabilities binomial tree.
-
  -f-
   JarrowRudd
    ->

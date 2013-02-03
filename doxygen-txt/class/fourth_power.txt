@@ -1,5 +1,4 @@
 fourth_power
-
  -f-
   operator()
    ->T

@@ -1,7 +1,6 @@
 LossDistMonteCarlo
  -- |Loss distribution with Monte Carlo simulation.
  -- |Loss distribution for varying volumes and probabilities of default via Monte Carlo simulation of independent default events.
-
  -f-
   LossDistMonteCarlo
    ->

@@ -1,6 +1,5 @@
 LfmCovarianceProxy
  -- |proxy for a libor forward model covariance parameterization
-
  -f-
   LfmCovarianceProxy
    ->

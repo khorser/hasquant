@@ -1,6 +1,5 @@
 LogNormalFwdRateEulerConstrained
  -- |euler stepping
-
  -f-
   LogNormalFwdRateEulerConstrained
    ->

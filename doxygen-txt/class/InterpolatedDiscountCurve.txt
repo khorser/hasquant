@@ -1,6 +1,5 @@
 InterpolatedDiscountCurve
  -- |YieldTermStructure based on interpolation of discount factors.
-
  -f-
   times
    ->const std::vector< Time > &

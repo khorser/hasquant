@@ -1,7 +1,6 @@
 SmileSection
  -- |interest rate volatility smile section
  -- |This abstract class provides volatility smile section interface
-
  -f-
   SmileSection
    ->
@@ -21,8 +20,6 @@ SmileSection
    =DayCounter()
    -- ^dc
   SmileSection
-   ->
-  ~SmileSection
    ->
   minStrike
    ->Real

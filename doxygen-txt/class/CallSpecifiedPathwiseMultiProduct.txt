@@ -1,5 +1,4 @@
 CallSpecifiedPathwiseMultiProduct
-
  -f-
   suggestedNumeraires
    ->std::vector< Size >

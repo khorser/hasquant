@@ -1,6 +1,5 @@
 BinomialTree
  -- |Binomial tree base class.
-
  -e-
   Branches
    branches

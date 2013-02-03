@@ -1,5 +1,4 @@
 GFunctionFactory
-
  -e-
   YieldCurveModel
    Standard

@@ -1,6 +1,5 @@
 IndependentCopula
  -- |independent copula
-
  -f-
   operator()
    ->Real

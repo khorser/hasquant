@@ -1,7 +1,6 @@
 Money
  -- |amount of cash
  -- |Testsmoney arithmetic is tested with and without currency conversions.
-
  -f-
   Money
    ->

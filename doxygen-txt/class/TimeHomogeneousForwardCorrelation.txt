@@ -1,5 +1,4 @@
 TimeHomogeneousForwardCorrelation
-
  -f-
   TimeHomogeneousForwardCorrelation
    ->

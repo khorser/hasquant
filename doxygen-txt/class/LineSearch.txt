@@ -1,6 +1,5 @@
 LineSearch
  -- |Base class for line search.
-
  -f-
   -- |Default constructor.
   LineSearch
@@ -9,8 +8,6 @@ LineSearch
    =0.0
    -- ^
   -- |Destructor.
-  ~LineSearch
-   ->
   -- |return last x value
   lastX
    ->const Array &

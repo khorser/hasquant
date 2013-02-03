@@ -1,7 +1,6 @@
 InverseCumulativeRsg
  -- |Inverse cumulative random sequence generator.
  -- |It uses a sequence of uniform deviate in (0, 1) as the source of cumulative distribution values. Then an inverse cumulative distribution is used to calculate the distribution deviate.The uniform deviate sequence is supplied by USG.Class USG must implement the following interface: USG::sample_typeUSG::nextSequence()const; SizeUSG::dimension()const; The inverse cumulative distribution is supplied by IC.Class IC must implement the following interface: IC::IC(); RealIC::operator()const;
-
  -f-
   InverseCumulativeRsg
    ->

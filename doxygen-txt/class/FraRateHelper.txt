@@ -1,6 +1,5 @@
 FraRateHelper
  -- |Rate helper for bootstrapping over FRA rates.
-
  -f-
   setTermStructure
    ->void

@@ -1,7 +1,6 @@
 ExchangeRate
  -- |exchange rate between two currencies
  -- |Testsapplication of direct and derived exchange rate is tested against calculations.
-
  -f-
   ExchangeRate
    ->

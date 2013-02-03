@@ -1,5 +1,4 @@
 GarmanKlassSigma6
-
  -f-
   GarmanKlassSigma6
    ->

@@ -1,5 +1,4 @@
 EverestOption::results
-
  -v-
   yield
    ::Rate

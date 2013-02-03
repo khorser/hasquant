@@ -1,5 +1,4 @@
 ContinuousArithmeticAsianLevyEngine
-
  -f-
   ContinuousArithmeticAsianLevyEngine
    ->

@@ -1,7 +1,6 @@
 FDDividendEngineShiftScale
  -- |Finite-differences engine for dividend options using shifted dividends.
  -- |This engine uses the same algorithm that was used in versions 0.3.11 and earlier. It produces results that are different from the Merton-73 engine.Possible enhancementsReview literature to see whether this is described
-
  -f-
   FDDividendEngineShiftScale
    ->

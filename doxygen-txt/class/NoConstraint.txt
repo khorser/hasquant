@@ -1,6 +1,5 @@
 NoConstraint
  -- |No constraint.
-
  -f-
   NoConstraint
    ->

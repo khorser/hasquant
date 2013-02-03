@@ -1,5 +1,4 @@
 Loss
-
  -v-
   time
    ::Real

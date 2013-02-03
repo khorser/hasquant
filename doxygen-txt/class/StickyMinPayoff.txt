@@ -1,6 +1,5 @@
 StickyMinPayoff
  -- |StickyMin payoff (double option)
-
  -f-
   StickyMinPayoff
    ->

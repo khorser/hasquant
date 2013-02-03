@@ -1,7 +1,6 @@
 HaganPricer
  -- |CMS-coupon pricer.
  -- |Base class for the pricing of a CMS coupon via static replication as in Hagan's "Conundrums..." article
-
  -f-
   meanReversion
    ->Real

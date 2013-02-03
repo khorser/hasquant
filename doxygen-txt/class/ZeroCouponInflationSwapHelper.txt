@@ -1,6 +1,5 @@
 ZeroCouponInflationSwapHelper
  -- |Zero-coupon inflation-swap bootstrap helper.
-
  -f-
   ZeroCouponInflationSwapHelper
    ->

@@ -1,8 +1,5 @@
 FdmLinearOp
-
  -f-
-  ~FdmLinearOp
-   ->
   apply
    ->Disposable< array_type >
    ::const array_type &

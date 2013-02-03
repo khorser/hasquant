@@ -1,7 +1,6 @@
 CPICashFlow
  -- |Cash flow paying the performance of a CPI (zero inflation) index.
  -- |It is NOT a coupon, i.e. no accruals.
-
  -f-
   CPICashFlow
    ->

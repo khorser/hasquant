@@ -1,7 +1,6 @@
 MultiPath
  -- |Correlated multiple asset paths.
  -- |MultiPath contains the list of paths for each asset, i.e., multipath[j] is the path followed by the j-th asset.
-
  -f-
   assetNumber
    ->Size

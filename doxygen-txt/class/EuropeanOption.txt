@@ -1,6 +1,5 @@
 EuropeanOption
  -- |European option on a single asset.
-
  -f-
   EuropeanOption
    ->

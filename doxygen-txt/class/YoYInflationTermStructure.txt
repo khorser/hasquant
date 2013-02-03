@@ -1,6 +1,5 @@
 YoYInflationTermStructure
  -- |Base class for year-on-year inflation term structures.
-
  -f-
   YoYInflationTermStructure
    ->

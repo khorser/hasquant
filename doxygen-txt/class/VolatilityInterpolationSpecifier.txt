@@ -1,9 +1,6 @@
 VolatilityInterpolationSpecifier
-
  -f-
   VolatilityInterpolationSpecifier
-   ->
-  ~VolatilityInterpolationSpecifier
    ->
   setScalingFactors
    ->void

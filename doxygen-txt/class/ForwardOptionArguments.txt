@@ -1,6 +1,5 @@
 ForwardOptionArguments
  -- |Arguments for forward (strike-resetting) option calculation
-
  -v-
   moneyness
    ::Real

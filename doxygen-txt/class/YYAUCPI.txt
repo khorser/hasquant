@@ -1,6 +1,5 @@
 YYAUCPI
  -- |Genuine year-on-year AU CPI (i.e. not a ratio)
-
  -f-
   YYAUCPI
    ->

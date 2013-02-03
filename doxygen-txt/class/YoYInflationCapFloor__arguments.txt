@@ -1,6 +1,5 @@
 YoYInflationCapFloor::arguments
  -- |Arguments for YoY Inflation cap/floor calculation
-
  -v-
   type
    ::YoYInflationCapFloor::Type

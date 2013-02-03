@@ -1,7 +1,6 @@
 HazardRateStructure
  -- |Hazard-rate term structure.
  -- |This abstract class acts as an adapter to DefaultProbabilityTermStructure allowing the programmer to implement only the hazardRateImpl(Time) method in derived classes.Survival/default probabilities and default densities are calculated from hazard rates.Hazard rates are defined with annual frequency and continuous compounding.
-
  -f-
   HazardRateStructure
    ->

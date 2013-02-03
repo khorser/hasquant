@@ -1,5 +1,4 @@
 AlphaFormInverseLinear
-
  -f-
   AlphaFormInverseLinear
    ->
@@ -8,8 +7,6 @@ AlphaFormInverseLinear
    ::Real
    =0.0
    -- ^alpha
-  ~AlphaFormInverseLinear
-   ->
   operator()
    ->Real
    ::Integer

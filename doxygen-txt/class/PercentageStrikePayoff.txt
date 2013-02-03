@@ -1,6 +1,5 @@
 PercentageStrikePayoff
  -- |Payoff with strike expressed as percentage
-
  -f-
   PercentageStrikePayoff
    ->

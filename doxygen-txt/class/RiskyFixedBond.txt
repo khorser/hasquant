@@ -1,6 +1,5 @@
 RiskyFixedBond
  -- |Default risky fixed bond
-
  -f-
   RiskyFixedBond
    ->

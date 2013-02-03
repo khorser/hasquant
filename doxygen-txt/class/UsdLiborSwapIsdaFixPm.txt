@@ -1,7 +1,6 @@
 UsdLiborSwapIsdaFixPm
  -- |UsdLiborSwapIsdaFixPm index base class
  -- |USD Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 3pm New York. Semiannual 30/360 vs 3M Libor. Reuters page ISDAFIX1 or USDSFIXP=.Further info can be found at http://www.isda.org/fix/isdafix.html or Reuters page ISDAFIX.
-
  -f-
   UsdLiborSwapIsdaFixPm
    ->

@@ -1,6 +1,5 @@
 LogCubic
  -- |log-cubic interpolation factory and traits
-
  -v-
   global
    ::const bool

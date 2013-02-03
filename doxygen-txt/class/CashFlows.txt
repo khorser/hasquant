@@ -1,7 +1,6 @@
 CashFlows
  -- |cashflow-analysis functions
  -- |Possible enhancementsadd tests
-
  -f-
   maturityDate
    ->Date

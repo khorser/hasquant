@@ -1,7 +1,6 @@
 FDVanillaEngine
  -- |Finite-differences pricing engine for BSM one asset options.
  -- |The name is a misnomer as this is a base class for any finite difference scheme. Its main job is to handle grid layout.
-
  -f-
   FDVanillaEngine
    ->
@@ -14,7 +13,5 @@ FDVanillaEngine
    ::bool
    =false
    -- ^timeDependent
-  ~FDVanillaEngine
-   ->
   grid
    ->const Array &

@@ -1,6 +1,5 @@
 Commodity
  -- |Commodity base class.
-
  -f-
   Commodity
    ->

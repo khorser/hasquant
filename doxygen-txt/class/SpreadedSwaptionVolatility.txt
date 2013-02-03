@@ -1,5 +1,4 @@
 SpreadedSwaptionVolatility
-
  -f-
   dayCounter
    ->DayCounter

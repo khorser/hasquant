@@ -1,5 +1,4 @@
 CreditDefaultSwap::results
-
  -v-
   fairSpread
    ::Rate

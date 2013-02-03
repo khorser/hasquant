@@ -1,5 +1,4 @@
 GallonUnitOfMeasure
-
  -f-
   GallonUnitOfMeasure
    ->

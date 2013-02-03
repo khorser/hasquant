@@ -1,6 +1,5 @@
 LmConstWrapperVolatilityModel
  -- |caplet const volatility model
-
  -f-
   LmConstWrapperVolatilityModel
    ->

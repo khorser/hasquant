@@ -1,5 +1,4 @@
 FdmQuantoHelper
-
  -v-
   rTS_
    ::const boost::shared_ptr< YieldTermStructure >

@@ -1,6 +1,5 @@
 FDBermudanEngine
  -- |Finite-differences Bermudan engine.
-
  -f-
   FDBermudanEngine
    ->

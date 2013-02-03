@@ -1,5 +1,4 @@
 Integrator
-
  -f-
   setAbsoluteAccuracy
    ->void
@@ -21,8 +20,6 @@ Integrator
    -- ^absoluteAccuracy
    ::Size
    -- ^maxEvaluations
-  ~Integrator
-   ->
   operator()
    ->Real
    ::const boost::function< Real(Real)> &

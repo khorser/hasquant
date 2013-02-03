@@ -1,7 +1,6 @@
 BernsteinPolynomial
  -- |class of Bernstein polynomials
  -- |see definition: Weisstein, Eric W. "Bernstein Polynomial." From MathWorld--A Wolfram Web Resource. <http://mathworld.wolfram.com/BernsteinPolynomial.html> The Bernstein polynomials \form#168 are defined as \[ B_{i,n}(x) \equiv \left( \begin{array}{c} n \\ i \end{array} \right) x^i (1-x)^{n-i} \]
-
  -f-
   get
    ->Real

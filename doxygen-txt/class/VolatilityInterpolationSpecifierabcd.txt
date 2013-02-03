@@ -1,5 +1,4 @@
 VolatilityInterpolationSpecifierabcd
-
  -f-
   VolatilityInterpolationSpecifierabcd
    ->
@@ -14,8 +13,6 @@ VolatilityInterpolationSpecifierabcd
    ::Real
    =0.0
    -- ^lastCapletVol_
-  ~VolatilityInterpolationSpecifierabcd
-   ->
   setScalingFactors
    ->void
    ::const std::vector< Real > &

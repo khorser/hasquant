@@ -1,6 +1,5 @@
 FastFourierTransform
  -- |FFT implementation.
-
  -f-
   -- |the minimum order required for the given input size
   min_order

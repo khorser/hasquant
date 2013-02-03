@@ -1,8 +1,5 @@
 PiecewiseConstantVariance
-
  -f-
-  ~PiecewiseConstantVariance
-   ->
   variances
    ->const std::vector< Real > &
   volatilities

@@ -1,7 +1,6 @@
 AmericanPayoffAtExpiry
  -- |Analytic formula for American exercise payoff at-expiry options.
  -- |Possible enhancementscalculate greeks
-
  -f-
   AmericanPayoffAtExpiry
    ->

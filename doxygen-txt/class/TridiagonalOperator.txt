@@ -1,7 +1,6 @@
 TridiagonalOperator
  -- |Base implementation for tridiagonal operator.
  -- |Warningto use real time-dependant algebra, you must overload the corresponding operators in the inheriting time-dependent class.
-
  -f-
   -- |apply operator to a given array
   applyTo

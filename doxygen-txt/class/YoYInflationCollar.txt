@@ -1,6 +1,5 @@
 YoYInflationCollar
  -- |Concrete YoY Inflation collar class.
-
  -f-
   YoYInflationCollar
    ->

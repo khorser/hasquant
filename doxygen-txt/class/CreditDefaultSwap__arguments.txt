@@ -1,5 +1,4 @@
 CreditDefaultSwap::arguments
-
  -v-
   side
    ::Protection::Side

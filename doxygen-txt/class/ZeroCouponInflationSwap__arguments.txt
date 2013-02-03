@@ -1,5 +1,4 @@
 ZeroCouponInflationSwap::arguments
-
  -v-
   fixedRate
    ::Rate

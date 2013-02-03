@@ -1,7 +1,6 @@
 TransformedGrid
  -- |transformed grid
  -- |This package encapuslates an array of grid points. It is used primarily in PDE calculations.
-
  -f-
   TransformedGrid
    ->

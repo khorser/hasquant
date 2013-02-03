@@ -1,6 +1,5 @@
 GumbelCopula
  -- |Gumbel copula.
-
  -f-
   GumbelCopula
    ->

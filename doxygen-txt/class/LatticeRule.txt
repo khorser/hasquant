@@ -1,5 +1,4 @@
 LatticeRule
-
  -e-
   type
    A

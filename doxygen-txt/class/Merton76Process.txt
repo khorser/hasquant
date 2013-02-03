@@ -1,6 +1,5 @@
 Merton76Process
  -- |Merton-76 jump-diffusion process.
-
  -f-
   stateVariable
    ->const Handle< Quote > &

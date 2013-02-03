@@ -1,6 +1,5 @@
 StrippedOptionletAdapter
  -- |Adapter class for turning a StrippedOptionletBase object into an OptionletVolatilityStructure.
-
  -f-
   StrippedOptionletAdapter
    ->

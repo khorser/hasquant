@@ -1,6 +1,5 @@
 MarketModelPathwiseSwap
  -- |Swap for doing Greeks. Fairly useless when used directly, but if we want to look a breakable swap it becomes useful.
-
  -f-
   MarketModelPathwiseSwap
    ->
@@ -13,5 +12,3 @@ MarketModelPathwiseSwap
    ::Real
    =1.0
    -- ^multiplier
-  ~MarketModelPathwiseSwap
-   ->

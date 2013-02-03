@@ -1,6 +1,5 @@
 PathPayoff
  -- |Abstract base class for path-dependent option payoffs.
-
  -f-
   -- |WarningThis method is used for output and comparison between payoffs. It is not meant to be used for writing switch-on-type code.
   name
@@ -27,5 +26,3 @@ PathPayoff
    ::AcyclicVisitor &
    -- ^
  -f-
-  ~PathPayoff
-   ->

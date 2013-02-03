@@ -1,6 +1,5 @@
 TsiveriotisFernandesLattice
  -- |Binomial lattice approximating the Tsiveriotis-Fernandes model.
-
  -f-
   TsiveriotisFernandesLattice
    ->

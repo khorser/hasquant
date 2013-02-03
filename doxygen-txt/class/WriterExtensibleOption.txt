@@ -1,6 +1,5 @@
 WriterExtensibleOption
  -- |Writer-extensible option.
-
  -f-
   -- |payoff1 The first payoff exercise1 The first exercise date payoff2 The payoff of the extended option exercise2 The second exercise date
   WriterExtensibleOption

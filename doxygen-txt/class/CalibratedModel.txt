@@ -1,6 +1,5 @@
 CalibratedModel
  -- |Calibrated model class.
-
  -f-
   CalibratedModel
    ->

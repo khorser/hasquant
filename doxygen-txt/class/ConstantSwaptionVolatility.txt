@@ -1,6 +1,5 @@
 ConstantSwaptionVolatility
  -- |Constant swaption volatility, no time-strike dependence.
-
  -f-
   -- |floating reference date, floating market data
   ConstantSwaptionVolatility

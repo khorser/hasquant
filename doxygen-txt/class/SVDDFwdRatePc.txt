@@ -1,6 +1,5 @@
 SVDDFwdRatePc
  -- |Displaced diffusion LMM with uncorrelated vol process. Called "Shifted BGM" with Heston vol by Brac in "Engineering BGM." Vol process is an external input.
-
  -f-
   SVDDFwdRatePc
    ->

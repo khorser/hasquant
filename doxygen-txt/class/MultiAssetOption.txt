@@ -1,6 +1,5 @@
 MultiAssetOption
  -- |Base class for options on multiple assets.
-
  -f-
   delta
    ->Real

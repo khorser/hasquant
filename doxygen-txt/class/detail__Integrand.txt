@@ -1,5 +1,4 @@
 detail::Integrand
-
  -f-
   Integrand
    ->

@@ -1,6 +1,5 @@
 YearOnYearInflationSwap::results
  -- |Results from YoY swap calculation
-
  -v-
   fairRate
    ::Rate

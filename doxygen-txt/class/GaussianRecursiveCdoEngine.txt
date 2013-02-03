@@ -1,6 +1,5 @@
 GaussianRecursiveCdoEngine
  -- |Specialization for Gaussian copula, the integration still remains.
-
  -f-
   -- |quote constructor.
   GaussianRecursiveCdoEngine

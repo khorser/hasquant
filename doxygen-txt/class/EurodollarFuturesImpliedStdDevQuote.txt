@@ -1,6 +1,5 @@
 EurodollarFuturesImpliedStdDevQuote
  -- |quote for the Eurodollar-future implied standard deviation
-
  -f-
   EurodollarFuturesImpliedStdDevQuote
    ->

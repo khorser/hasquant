@@ -1,5 +1,4 @@
 Settings
-
  -f-
   -- |Call this to prevent the evaluation date to change at midnight (and, incidentally, to gain quite a bit of performance.) If no evaluation date was previously set, it is equivalent to setting the evaluation date to Date::todaysDate(); if an evaluation date other than Date() was already set, it has no effect.
   anchorEvaluationDate

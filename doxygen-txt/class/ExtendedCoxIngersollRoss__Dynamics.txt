@@ -1,7 +1,6 @@
 ExtendedCoxIngersollRoss::Dynamics
  -- |Short-rate dynamics in the extended Cox-Ingersoll-Ross model.
  -- |The short-rate is here \[ r_t = \varphi(t) + y_t^2 \] where $ \varphi(t) $ is the deterministic time-dependent parameter used for term-structure fitting and $ y_t $ is the state variable, the square-root of a standard CIR process.
-
  -f-
   Dynamics
    ->

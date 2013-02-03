@@ -1,5 +1,4 @@
 GeometricAPOPathPricer
-
  -f-
   GeometricAPOPathPricer
    ->

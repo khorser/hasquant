@@ -1,6 +1,5 @@
 MCDiscreteArithmeticASEngine
  -- |Monte Carlo pricing engine for discrete arithmetic average-strike Asian.
-
  -f-
   MCDiscreteArithmeticASEngine
    ->

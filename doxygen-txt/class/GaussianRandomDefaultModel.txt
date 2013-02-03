@@ -1,6 +1,5 @@
 GaussianRandomDefaultModel
  -- |Random default times using a one-factor Gaussian copula.
-
  -f-
   GaussianRandomDefaultModel
    ->

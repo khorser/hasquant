@@ -1,7 +1,6 @@
 VarianceOption
  -- |Variance option.
  -- |WarningThis class does not manage seasoned variance options.
-
  -f-
   startDate
    ->Date

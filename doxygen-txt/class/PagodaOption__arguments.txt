@@ -1,5 +1,4 @@
 PagodaOption::arguments
-
  -v-
   fixingDates
    ::std::vector< Date >

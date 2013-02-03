@@ -1,7 +1,6 @@
 GarmanKohlagenProcess
  -- |Garman-Kohlhagen (1983) stochastic process.
  -- |This class describes the stochastic process for an exchange rate given by \[ dS(t, S) = (r(t) - r_f(t) - \frac{\sigma(t, S)^2}{2}) dt + \sigma dW_t. \]
-
  -f-
   GarmanKohlagenProcess
    ->

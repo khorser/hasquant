@@ -1,6 +1,5 @@
 StickyPayoff
  -- |Sticky payoff (single option)
-
  -f-
   StickyPayoff
    ->

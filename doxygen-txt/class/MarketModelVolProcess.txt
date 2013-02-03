@@ -1,10 +1,7 @@
 MarketModelVolProcess
  -- |Displaced diffusion LMM with uncorrelated vol process. Called "Shifted BGM" with Heston vol by Brace in "Engineering BGM." Vol process is an external input.
-
  -f-
   MarketModelVolProcess
-   ->
-  ~MarketModelVolProcess
    ->
   variatesPerStep
    ->Size

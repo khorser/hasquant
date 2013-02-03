@@ -1,5 +1,4 @@
 VanillaVPPOption::arguments
-
  -v-
   heatRate
    ::Real

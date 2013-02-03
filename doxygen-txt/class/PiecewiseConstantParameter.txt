@@ -1,7 +1,6 @@
 PiecewiseConstantParameter
  -- |Piecewise-constant parameter.
  -- |$ a(t) = a_i if t_{i-1} \geq t < t_i $. This kind of parameter is usually used to enhance the fitting of a model
-
  -f-
   PiecewiseConstantParameter
    ->

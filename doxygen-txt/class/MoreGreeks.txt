@@ -1,6 +1,5 @@
 MoreGreeks
  -- |more additional option results
-
  -v-
   itmCashProbability
    ::Real

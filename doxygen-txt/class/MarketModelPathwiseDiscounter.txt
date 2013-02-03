@@ -1,6 +1,5 @@
 MarketModelPathwiseDiscounter
  -- |this class returns the number of units of the discretely compounding money market account that 1 unit of cash at the payment can buy using the LIBOR rates from current step.It also returns the derivative of this number with respect to each of the rates.Discounting is purely based on the simulation LIBOR rates, to get a discounting back to zero you need to multiply by the discount factor of t_0.
-
  -f-
   MarketModelPathwiseDiscounter
    ->

@@ -1,6 +1,5 @@
 FarlieGumbelMorgensternCopulaRng
  -- |Farlie-Gumbel-Morgenstern copula random-number generator.
-
  -f-
   FarlieGumbelMorgensternCopulaRng
    ->

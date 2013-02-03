@@ -1,5 +1,4 @@
 BatesDoubleExpDetJumpModel
-
  -f-
   BatesDoubleExpDetJumpModel
    ->

@@ -1,6 +1,5 @@
 EnergyFuture
  -- |Energy future.
-
  -f-
   EnergyFuture
    ->

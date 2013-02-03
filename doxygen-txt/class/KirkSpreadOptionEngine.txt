@@ -1,6 +1,5 @@
 KirkSpreadOptionEngine
  -- |Kirk approximation for European spread option on futures.
-
  -f-
   KirkSpreadOptionEngine
    ->

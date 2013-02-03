@@ -1,5 +1,4 @@
 CmsMarketCalibration
-
  -e-
   CalibrationType
    OnSpread
