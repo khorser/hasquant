@@ -1,7 +1,0 @@
-IRRCurrency
- -- |Iranian rial.
- -- |The ISO three-letter code is IRR; the numeric code is 364. It has no subdivisions.
-
- -f-
-  IRRCurrency
-   ->

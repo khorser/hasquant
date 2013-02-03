@@ -1,7 +1,0 @@
-CZKCurrency
- -- |Czech koruna.
- -- |The ISO three-letter code is CZK; the numeric code is 203. It is divided in 100 haleru.
-
- -f-
-  CZKCurrency
-   ->

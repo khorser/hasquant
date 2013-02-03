@@ -1,7 +1,0 @@
-SARCurrency
- -- |Saudi riyal.
- -- |The ISO three-letter code is SAR; the numeric code is 682. It is divided in 100 halalat.
-
- -f-
-  SARCurrency
-   ->

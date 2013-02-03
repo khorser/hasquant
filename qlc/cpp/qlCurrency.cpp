@@ -102,6 +102,12 @@ Currency *qlCurrency(const char *name, char **e) {
       c = new NPRCurrency();
     else if (!strcmp("NZD", name))
       c = new NZDCurrency();
+    else if (!strcmp("PEH", name))
+      c = new PEHCurrency();
+    else if (!strcmp("PEI", name))
+      c = new PEICurrency();
+    else if (!strcmp("PEN", name))
+      c = new PEICurrency();
     else if (!strcmp("PKR", name))
       c = new PKRCurrency();
     else if (!strcmp("PLN", name))
@@ -110,6 +116,8 @@ Currency *qlCurrency(const char *name, char **e) {
       c = new PTECurrency();
     else if (!strcmp("ROL", name))
       c = new ROLCurrency();
+    else if (!strcmp("RON", name))
+      c = new RONCurrency();
     else if (!strcmp("SAR", name))
       c = new SARCurrency();
     else if (!strcmp("SEK", name))

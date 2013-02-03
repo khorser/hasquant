@@ -1,7 +1,0 @@
-BYRCurrency
- -- |Belarussian ruble.
- -- |The ISO three-letter code is BYR; the numeric code is 974. It has no subdivisions.
-
- -f-
-  BYRCurrency
-   ->

@@ -1,7 +1,0 @@
-BGLCurrency
- -- |Bulgarian lev.
- -- |The ISO three-letter code is BGL; the numeric code is 100. It is divided in 100 stotinki.
-
- -f-
-  BGLCurrency
-   ->

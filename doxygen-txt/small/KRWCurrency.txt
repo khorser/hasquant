@@ -1,7 +1,0 @@
-KRWCurrency
- -- |South-Korean won.
- -- |The ISO three-letter code is KRW; the numeric code is 410. It is divided in 100 chon.
-
- -f-
-  KRWCurrency
-   ->

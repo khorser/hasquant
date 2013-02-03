@@ -1,7 +1,0 @@
-MXNCurrency
- -- |Mexican peso.
- -- |The ISO three-letter code is MXN; the numeric code is 484. It is divided in 100 centavos.
-
- -f-
-  MXNCurrency
-   ->

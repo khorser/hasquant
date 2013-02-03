@@ -1,7 +1,0 @@
-THBCurrency
- -- |Thai baht.
- -- |The ISO three-letter code is THB; the numeric code is 764. It is divided in 100 stang.
-
- -f-
-  THBCurrency
-   ->

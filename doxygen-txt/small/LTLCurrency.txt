@@ -1,7 +1,0 @@
-LTLCurrency
- -- |Lithuanian litas.
- -- |The ISO three-letter code is LTL; the numeric code is 440. It is divided in 100 centu.
-
- -f-
-  LTLCurrency
-   ->

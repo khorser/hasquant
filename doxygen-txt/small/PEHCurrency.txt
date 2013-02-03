@@ -1,7 +1,0 @@
-PEHCurrency
- -- |Peruvian sol.
- -- |The ISO three-letter code was PEH. A numeric code is not available; as per ISO 3166-1, we assign 999 as a user-defined code. It was divided in 100 centavos.Obsoleted by the inti since February 1985.
-
- -f-
-  PEHCurrency
-   ->

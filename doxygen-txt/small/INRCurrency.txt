@@ -1,7 +1,0 @@
-INRCurrency
- -- |Indian rupee.
- -- |The ISO three-letter code is INR; the numeric code is 356. It is divided in 100 paise.
-
- -f-
-  INRCurrency
-   ->

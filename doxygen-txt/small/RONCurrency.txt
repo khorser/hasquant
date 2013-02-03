@@ -1,7 +1,0 @@
-RONCurrency
- -- |Romanian new leu.
- -- |The ISO three-letter code is RON; the numeric code is 946. It is divided in 100 bani.
-
- -f-
-  RONCurrency
-   ->

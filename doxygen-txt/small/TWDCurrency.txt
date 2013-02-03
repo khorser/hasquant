@@ -1,7 +1,0 @@
-TWDCurrency
- -- |Taiwan dollar
- -- |The ISO three-letter code is TWD; the numeric code is 901. It is divided in 100 cents.
-
- -f-
-  TWDCurrency
-   ->

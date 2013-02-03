@@ -1,7 +1,0 @@
-CYPCurrency
- -- |Cyprus pound.
- -- |The ISO three-letter code is CYP; the numeric code is 196. It is divided in 100 cents.
-
- -f-
-  CYPCurrency
-   ->

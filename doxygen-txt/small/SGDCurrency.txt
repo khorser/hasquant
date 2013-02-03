@@ -1,7 +1,0 @@
-SGDCurrency
- -- |Singapore dollar
- -- |The ISO three-letter code is SGD; the numeric code is 702. It is divided in 100 cents.
-
- -f-
-  SGDCurrency
-   ->

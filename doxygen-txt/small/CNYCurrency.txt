@@ -1,7 +1,0 @@
-CNYCurrency
- -- |Chinese yuan.
- -- |The ISO three-letter code is CNY; the numeric code is 156. It is divided in 100 fen.
-
- -f-
-  CNYCurrency
-   ->

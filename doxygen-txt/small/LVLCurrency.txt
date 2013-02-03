@@ -1,7 +1,0 @@
-LVLCurrency
- -- |Latvian lat.
- -- |The ISO three-letter code is LVL; the numeric code is 428. It is divided in 100 santims.
-
- -f-
-  LVLCurrency
-   ->

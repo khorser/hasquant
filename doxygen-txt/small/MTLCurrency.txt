@@ -1,7 +1,0 @@
-MTLCurrency
- -- |Maltese lira.
- -- |The ISO three-letter code is MTL; the numeric code is 470. It is divided in 100 cents.
-
- -f-
-  MTLCurrency
-   ->

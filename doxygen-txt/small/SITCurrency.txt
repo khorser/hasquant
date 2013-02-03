@@ -1,7 +1,0 @@
-SITCurrency
- -- |Slovenian tolar.
- -- |The ISO three-letter code is SIT; the numeric code is 705. It is divided in 100 stotinov.
-
- -f-
-  SITCurrency
-   ->

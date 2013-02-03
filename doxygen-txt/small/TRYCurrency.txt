@@ -1,7 +1,0 @@
-TRYCurrency
- -- |New Turkish lira.
- -- |The ISO three-letter code is TRY; the numeric code is 949. It is divided in 100 new kurus.
-
- -f-
-  TRYCurrency
-   ->

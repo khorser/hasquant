@@ -1,7 +1,0 @@
-SEKCurrency
- -- |Swedish krona.
- -- |The ISO three-letter code is SEK; the numeric code is 752. It is divided in 100 öre.
-
- -f-
-  SEKCurrency
-   ->

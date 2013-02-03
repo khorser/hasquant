@@ -1,7 +1,0 @@
-CLPCurrency
- -- |Chilean peso.
- -- |The ISO three-letter code is CLP; the numeric code is 152. It is divided in 100 centavos.
-
- -f-
-  CLPCurrency
-   ->

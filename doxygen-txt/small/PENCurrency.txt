@@ -1,7 +1,0 @@
-PENCurrency
- -- |Peruvian nuevo sol.
- -- |The ISO three-letter code is PEN; the numeric code is 604. It is divided in 100 centimos.
-
- -f-
-  PENCurrency
-   ->

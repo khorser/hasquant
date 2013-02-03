@@ -1,7 +1,0 @@
-ILSCurrency
- -- |Israeli shekel.
- -- |The ISO three-letter code is ILS; the numeric code is 376. It is divided in 100 agorot.
-
- -f-
-  ILSCurrency
-   ->

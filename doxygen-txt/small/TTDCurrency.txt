@@ -1,7 +1,0 @@
-TTDCurrency
- -- |Trinidad & Tobago dollar.
- -- |The ISO three-letter code is TTD; the numeric code is 780. It is divided in 100 cents.
-
- -f-
-  TTDCurrency
-   ->

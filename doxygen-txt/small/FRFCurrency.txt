@@ -1,7 +1,0 @@
-FRFCurrency
- -- |French franc.
- -- |The ISO three-letter code was FRF; the numeric code was 250. It was divided in 100 centimes.Obsoleted by the Euro since 1999.
-
- -f-
-  FRFCurrency
-   ->

@@ -1,7 +1,0 @@
-NPRCurrency
- -- |Nepal rupee.
- -- |The ISO three-letter code is NPR; the numeric code is 524. It is divided in 100 paise.
-
- -f-
-  NPRCurrency
-   ->

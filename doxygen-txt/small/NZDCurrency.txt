@@ -1,7 +1,0 @@
-NZDCurrency
- -- |New Zealand dollar.
- -- |The ISO three-letter code is NZD; the numeric code is 554. It is divided in 100 cents.
-
- -f-
-  NZDCurrency
-   ->

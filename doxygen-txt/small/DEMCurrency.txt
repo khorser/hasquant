@@ -1,7 +1,0 @@
-DEMCurrency
- -- |Deutsche mark.
- -- |The ISO three-letter code was DEM; the numeric code was 276. It was divided into 100 pfennig.Obsoleted by the Euro since 1999.
-
- -f-
-  DEMCurrency
-   ->
