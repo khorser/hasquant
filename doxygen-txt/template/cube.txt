@@ -1,0 +1,7 @@
+cube
+
+ -f-
+  operator()
+   ->T
+   ::const T &
+   -- ^t

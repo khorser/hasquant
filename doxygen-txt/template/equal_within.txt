@@ -1,0 +1,13 @@
+equal_within
+
+ -f-
+  equal_within
+   ->
+   ::const T &
+   -- ^eps
+  operator()
+   ->bool
+   ::const T
+   -- ^a
+   ::const T
+   -- ^b

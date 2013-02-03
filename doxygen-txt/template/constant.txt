@@ -1,0 +1,11 @@
+constant
+
+ -f-
+  constant
+   ->
+   ::const U &
+   -- ^u
+  operator()
+   ->U
+   ::const T &
+   -- ^

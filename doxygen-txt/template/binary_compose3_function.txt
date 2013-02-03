@@ -1,0 +1,17 @@
+binary_compose3_function
+
+ -f-
+  binary_compose3_function
+   ->
+   ::const F &
+   -- ^f
+   ::const G &
+   -- ^g
+   ::const H &
+   -- ^h
+  operator()
+   ->result_type
+   ::const first_argument_type &
+   -- ^x
+   ::const second_argument_type &
+   -- ^y
