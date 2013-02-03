@@ -1,7 +1,0 @@
-Finland
- -- |Finnish calendar.
- -- |Holidays: Saturdays Sundays New Year's Day, January 1st Epiphany, January 6th Good Friday Easter Monday Ascension Thursday Labour Day, May 1st Midsummer Eve (Friday between June 18-24) Independence Day, December 6th Christmas Eve, December 24th Christmas, December 25th Boxing Day, December 26th
-
- -f-
-  Finland
-   ->

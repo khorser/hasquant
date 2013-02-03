@@ -1,7 +1,0 @@
-Denmark
- -- |Danish calendar.
- -- |Holidays: Saturdays Sundays Maunday Thursday Good Friday Easter Monday General Prayer Day, 25 days after Easter Monday Ascension Whit (Pentecost) Monday New Year's Day, January 1st Constitution Day, June 5th Christmas, December 25th Boxing Day, December 26th
-
- -f-
-  Denmark
-   ->

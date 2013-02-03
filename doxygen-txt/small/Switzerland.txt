@@ -1,7 +1,0 @@
-Switzerland
- -- |Swiss calendar.
- -- |Holidays: Saturdays Sundays New Year's Day, January 1st Berchtoldstag, January 2nd Good Friday Easter Monday Ascension Day Whit Monday Labour Day, May 1st National Day, August 1st Christmas, December 25th St. Stephen's Day, December 26th
-
- -f-
-  Switzerland
-   ->

@@ -1,7 +1,0 @@
-Russia
- -- |Russian calendar.
- -- |Public holidays (see http://www.cbr.ru/eng/:): Saturdays Sundays New Year holidays and Christmas, January 1st to 8th Defender of the Fatherland Day, February 23rd (possibly moved to Monday) International Women's Day, March 8th (possibly moved to Monday) Labour Day, May 1st (possibly moved to Monday) Victory Day, May 9th (possibly moved to Monday) Russia Day, June 12th (possibly moved to Monday) Unity Day, November 4th (possibly moved to Monday)
-
- -f-
-  Russia
-   ->

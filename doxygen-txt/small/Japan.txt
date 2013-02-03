@@ -1,7 +1,0 @@
-Japan
- -- |Japanese calendar.
- -- |Holidays: Saturdays Sundays New Year's Day, January 1st Bank Holiday, January 2nd Bank Holiday, January 3rd Coming of Age Day, 2nd Monday in January National Foundation Day, February 11th Vernal Equinox Greenery Day, April 29th Constitution Memorial Day, May 3rd Holiday for a Nation, May 4th Children's Day, May 5th Marine Day, 3rd Monday in July Respect for the Aged Day, 3rd Monday in September Autumnal Equinox Health and Sports Day, 2nd Monday in October National Culture Day, November 3rd Labor Thanksgiving Day, November 23rd Emperor's Birthday, December 23rd Bank Holiday, December 31st a few one-shot holidays Holidays falling on a Sunday are observed on the Monday following except for the bank holidays associated with the new year.
-
- -f-
-  Japan
-   ->

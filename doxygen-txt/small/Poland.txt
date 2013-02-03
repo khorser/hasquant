@@ -1,7 +1,0 @@
-Poland
- -- |Polish calendar.
- -- |Holidays: Saturdays Sundays Easter Monday Corpus Christi New Year's Day, January 1st May Day, May 1st Constitution Day, May 3rd Assumption of the Blessed Virgin Mary, August 15th All Saints Day, November 1st Independence Day, November 11th Christmas, December 25th 2nd Day of Christmas, December 26th
-
- -f-
-  Poland
-   ->

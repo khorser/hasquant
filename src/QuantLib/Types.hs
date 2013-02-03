@@ -113,6 +113,7 @@ type VolTermStructure = ForeignPtr CVolTermStructure
 type OptionletVolStructure = ForeignPtr COptionletVolStructure
 
 -- time
+-- |Calendars provide the means for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days
 type Calendar = ForeignPtr CCalendar
 instance Show Calendar where
   show = name

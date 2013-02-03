@@ -28,6 +28,7 @@ module QuantLib.Time.Calendar
   , indiaNSE
   , indonesiaBEJ
   , indonesiaJSX
+  , indonesiaIDX
   , italyExchange
   , italySettlement
   , japan
@@ -41,13 +42,13 @@ module QuantLib.Time.Calendar
   , slovakiaBSSE
   , southAfrica
   , southKoreaKRX
+  , southKoreaSettlement
   , sweden
   , switzerland
   , taiwanTSEC
   , eur
   , turkey
   , ukraineUSE
-  , unitedKingdomExchange
   , londonStockExchange
   , london
   , gbp
@@ -73,12 +74,14 @@ foreign import ccall safe "ql.h qlCalendarAdjust"
 foreign import ccall safe "ql.h qlCalendarAdvance"
   c_calendarAdvance :: Ptr CCalendar -> CDate -> CInt -> CInt -> CInt -> CInt -> IO CDate
 
--- |Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention (qlCalendarAdjust)
+-- |Adjusts a non-business day to the appropriate near business day with respect to the given convention. QuantLibXL: qlCalendarAdjust
 adjust :: Calendar -> Day -> BusinessDayConvention -> IO Day
 adjust = $(ffiCall 'adjust) c_calendarAdjust
 
--- |advances a date according to a given calendar (qlCalendarAdvance)
-advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention -> Bool -> IO Day
+-- |Advances the given date of the given number of business days and returns the result. QuantLibXL: qlCalendarAdvance
+advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention
+  -> Bool -- ^endOfMonth
+  -> IO Day
 advance = $(ffiCall 'advance) c_calendarAdvance
 
 -- TODO add data Calendar = ...
@@ -94,57 +97,61 @@ advance = $(ffiCall 'advance) c_calendarAdvance
 -- for actual implementation
 
 noCalendar              :: IO Calendar
+-- |Calendar for reproducing theoretical calculations.
+-- This calendar has no holidays. It ensures that dates at whole-month distances have the same day of month.
 nullCalendar            :: IO Calendar
-target                  :: IO Calendar
-argentinaMerval         :: IO Calendar
-australia               :: IO Calendar
-brazilSettlement        :: IO Calendar
-brazilExchange          :: IO Calendar
-canadaSettlement        :: IO Calendar
-canadaTSX               :: IO Calendar
-china                   :: IO Calendar
-czechRepublicPSE        :: IO Calendar
-denmark                 :: IO Calendar
-finland                 :: IO Calendar
-germanyEurex            :: IO Calendar
-germanyFrankfurtStockExchange :: IO Calendar
-germanySettlement       :: IO Calendar
-germanyXetra            :: IO Calendar
-hongKongHKEx            :: IO Calendar
-hungary                 :: IO Calendar
-icelandICEX             :: IO Calendar
-indiaNSE                :: IO Calendar
-indonesiaBEJ            :: IO Calendar
-indonesiaJSX            :: IO Calendar
-italyExchange           :: IO Calendar
-italySettlement         :: IO Calendar
-japan                   :: IO Calendar
-mexicoBMV               :: IO Calendar
-newZealand              :: IO Calendar
-norway                  :: IO Calendar
-poland                  :: IO Calendar
-russia                  :: IO Calendar
-saudiArabiaTadawul      :: IO Calendar
-singaporeSGX            :: IO Calendar
-slovakiaBSSE            :: IO Calendar
-southAfrica             :: IO Calendar
-southKoreaKRX           :: IO Calendar
-sweden                  :: IO Calendar
-switzerland             :: IO Calendar
-taiwanTSEC              :: IO Calendar
-eur                     :: IO Calendar
-turkey                  :: IO Calendar
-ukraineUSE              :: IO Calendar
-unitedKingdomExchange   :: IO Calendar
-londonStockExchange     :: IO Calendar
-london                  :: IO Calendar
-gbp                     :: IO Calendar
-unitedKingdomMetals     :: IO Calendar
-unitedKingdomSettlement :: IO Calendar
-unitedStatesGovernmentBond:: IO Calendar
-unitedStatesNERC        :: IO Calendar
-unitedStatesNYSE        :: IO Calendar
-unitedStatesSettlement  :: IO Calendar
+target                  :: IO Calendar -- ^TARGET calendar
+argentinaMerval         :: IO Calendar -- ^Argentinian calendar: Buenos Aires stock exchange
+australia               :: IO Calendar -- ^Australian calendar
+brazilSettlement        :: IO Calendar -- ^Brazilian calendar: generic settlement
+brazilExchange          :: IO Calendar -- ^Brazilian calendar: BOVESPA
+canadaSettlement        :: IO Calendar -- ^Canadian calendar: generic settlement
+canadaTSX               :: IO Calendar -- ^Canadian calendar: Toronto stock exchange
+china                   :: IO Calendar -- ^Chinese calendar
+czechRepublicPSE        :: IO Calendar -- ^Czech calendar: Prague stock exchange
+denmark                 :: IO Calendar -- ^Danish calendar
+finland                 :: IO Calendar -- ^Finnish calendar
+germanyEurex            :: IO Calendar -- ^German calendar: Eurex
+germanyFrankfurtStockExchange :: IO Calendar -- ^German calendar: Frankfurt stock-exchange
+germanySettlement       :: IO Calendar -- ^German calendar: generic settlement
+germanyXetra            :: IO Calendar -- ^German calendar: Xetra
+hongKongHKEx            :: IO Calendar -- ^Hong Kong calendar: Hong Kong stock exchange
+hungary                 :: IO Calendar -- ^Hungarian calendar
+icelandICEX             :: IO Calendar -- ^Icelandic calendar: Iceland stock exchange.
+indiaNSE                :: IO Calendar -- ^Indian calendar: National Stock Exchange.
+indonesiaBEJ            :: IO Calendar -- ^Indonesian calendar: Jakarta stock exchange (merged into IDX)
+indonesiaJSX            :: IO Calendar -- ^Indonesian calendar: Jakarta stock exchange (merged into IDX)
+indonesiaIDX            :: IO Calendar -- ^Indonesian calendar: Indonesia stock exchange
+italyExchange           :: IO Calendar -- ^Italian calendar: Milan stock-exchange
+italySettlement         :: IO Calendar -- ^Italian calendar: generic settlement
+japan                   :: IO Calendar -- ^Japanese calendar
+mexicoBMV               :: IO Calendar -- ^Mexican calendar: Mexican stock exchange
+newZealand              :: IO Calendar -- ^New Zealand calendar
+norway                  :: IO Calendar -- ^Norwegian calendar
+poland                  :: IO Calendar -- ^Polish calendar
+russia                  :: IO Calendar -- ^Russian calendar
+saudiArabiaTadawul      :: IO Calendar -- ^Saudi Arabian calendar: Tadawul financial market
+singaporeSGX            :: IO Calendar -- ^Singapore calendar: Singapore exchange.
+slovakiaBSSE            :: IO Calendar -- ^Slovak calendars: Bratislava stock exchange
+southAfrica             :: IO Calendar -- ^South-African calendar
+southKoreaKRX           :: IO Calendar -- ^South Korean calendar: KRX
+southKoreaSettlement    :: IO Calendar -- ^South Korean calendar: public holidays
+sweden                  :: IO Calendar -- ^Swedish calendar
+switzerland             :: IO Calendar -- ^Swiss calendar
+taiwanTSEC              :: IO Calendar -- ^Taiwanese calendar: Taiwan stock exchange
+eur                     :: IO Calendar -- ^TARGET
+turkey                  :: IO Calendar -- ^Turkish calendar
+ukraineUSE              :: IO Calendar -- ^Ukrainian calendar: Ukrainian stock exchange
+unitedKingdomExchange   :: IO Calendar -- ^United Kingdom calendar: London stock-exchange
+londonStockExchange     :: IO Calendar -- ^United Kingdom calendar: London stock exchange
+london                  :: IO Calendar -- ^United Kingdom calendar: London stock exchange
+unitedKingdomMetals     :: IO Calendar -- ^United Kingdom calendar: London metal exchange
+unitedKingdomSettlement :: IO Calendar -- ^United Kingdom calendar: generic settlement
+gbp                     :: IO Calendar -- ^London Stock Exchange
+unitedStatesGovernmentBond:: IO Calendar -- ^United States calendar: government-bond
+unitedStatesNERC        :: IO Calendar -- ^United States calendar: off-peak days for NERC
+unitedStatesNYSE        :: IO Calendar -- ^United States calendar: New York stock exchange
+unitedStatesSettlement  :: IO Calendar -- ^United States calendar: generic settlement
 
 noCalendar              = constructNamed "NoCalendar"
 nullCalendar            = constructNamed "NullCalendar"
@@ -169,6 +176,7 @@ icelandICEX             = constructNamed "Iceland::ICEX"
 indiaNSE                = constructNamed "India::NSE"
 indonesiaBEJ            = constructNamed "Indonesia::BEJ"
 indonesiaJSX            = constructNamed "Indonesia::JSX"
+indonesiaIDX            = constructNamed "Indonesia::IDX"
 italyExchange           = constructNamed "Italy::Exchange"
 italySettlement         = constructNamed "Italy::Settlement"
 japan                   = constructNamed "Japan"
@@ -182,6 +190,7 @@ singaporeSGX            = constructNamed "Singapore::SGX"
 slovakiaBSSE            = constructNamed "Slovakia::BSSE"
 southAfrica             = constructNamed "SouthAfrica"
 southKoreaKRX           = constructNamed "SouthKorea::KRX"
+southKoreaSettlement    = constructNamed "SouthKorea::Settlement"
 sweden                  = constructNamed "Sweden"
 switzerland             = constructNamed "Switzerland"
 taiwanTSEC              = constructNamed "Taiwan::TSEC"

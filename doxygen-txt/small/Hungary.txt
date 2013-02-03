@@ -1,7 +1,0 @@
-Hungary
- -- |Hungarian calendar.
- -- |Holidays: Saturdays Sundays Easter Monday Whit(Pentecost) Monday New Year's Day, January 1st National Day, March 15th Labour Day, May 1st Constitution Day, August 20th Republic Day, October 23rd All Saints Day, November 1st Christmas, December 25th 2nd Day of Christmas, December 26th
-
- -f-
-  Hungary
-   ->

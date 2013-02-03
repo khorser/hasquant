@@ -55,6 +55,8 @@ Calendar *qlCalendar(const char *name, char **e) {
       c = new Indonesia(Indonesia::BEJ);
     else if (!strcmp(name, "Indonesia::JSX"))
       c = new Indonesia(Indonesia::JSX);
+    else if (!strcmp(name, "Indonesia::IDX"))
+      c = new Indonesia(Indonesia::IDX);
     else if (!strcmp(name, "Italy::Exchange"))
       c = new Italy(Italy::Exchange);
     else if (!strcmp(name, "Italy::Settlement"))
@@ -81,6 +83,8 @@ Calendar *qlCalendar(const char *name, char **e) {
       c = new SouthAfrica();
     else if (!strcmp(name, "SouthKorea::KRX"))
       c = new SouthKorea(SouthKorea::KRX);
+    else if (!strcmp(name, "SouthKorea::Settlement"))
+      c = new SouthKorea(SouthKorea::Settlement);
     else if (!strcmp(name, "Sweden"))
       c = new Sweden();
     else if (!strcmp(name, "Switzerland"))

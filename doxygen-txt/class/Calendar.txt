@@ -1,6 +1,4 @@
 Calendar
- -- |calendar class
- -- |This class provides methods for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days.The Bridge pattern is used to provide the base behavior of the calendar, namely, to determine whether a date is a business day.A calendar should be defined for specific exchange holiday schedule or for general country holiday schedule. Legacy city holiday schedule calendars will be moved to the exchange/country convention.Teststhe methods for adding and removing holidays are tested by inspecting the calendar before and after their invocation.
 
  -f-
   -- |Returns whether or not the calendar is initialized.
@@ -45,29 +43,6 @@ Calendar
    ->void
    ::const Date &
    -- ^
-  -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention.
-  adjust
-   ->Date
-   ::const Date &
-   -- ^
-   ::BusinessDayConvention
-   =Following
-   -- ^convention
-  -- |Advances the given date of the given number of business days and returns the result. The input date is not modified.
-  advance
-   ->Date
-   ::const Date &
-   -- ^
-   ::Integer
-   -- ^n
-   ::TimeUnit
-   -- ^unit
-   ::BusinessDayConvention
-   =Following
-   -- ^convention
-   ::bool
-   =false
-   -- ^endOfMonth
   -- |Advances the given date as specified by the given period and returns the result. The input date is not modified.
   advance
    ->Date

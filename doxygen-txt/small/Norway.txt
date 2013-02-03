@@ -1,7 +1,0 @@
-Norway
- -- |Norwegian calendar.
- -- |Holidays: Saturdays Sundays Holy Thursday Good Friday Easter Monday Ascension Whit(Pentecost) Monday New Year's Day, January 1st May Day, May 1st National Independence Day, May 17st Christmas, December 25th Boxing Day, December 26th
-
- -f-
-  Norway
-   ->
