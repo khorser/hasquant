@@ -114,6 +114,8 @@ QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
       i = new GBPLiborON(ts);
     else if (!strcmp(name, "USDLiborON"))
       i = new USDLiborON(ts);
+    else if (!strcmp(name, "EURLiborON"))
+      i = new EURLiborON(ts);
     else
       QL_FAIL("Unknown ON Ibor " << name);
     return ret(new QlIborIndex(alloc(i)));

@@ -1,9 +1,0 @@
-EURLibor2W
- -- |2-weeks EUR Libor index
-
- -f-
-  EURLibor2W
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

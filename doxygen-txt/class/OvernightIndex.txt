@@ -1,21 +1,6 @@
 OvernightIndex
 
  -f-
-  OvernightIndex
-   ->
-   ::const std::string &
-   -- ^familyName
-   ::Natural
-   -- ^settlementDays
-   ::const Currency &
-   -- ^currency
-   ::const Calendar &
-   -- ^fixingCalendar
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h
   -- |returns a copy of itself linked to a different forwarding curve
   clone
    ->boost::shared_ptr< IborIndex >

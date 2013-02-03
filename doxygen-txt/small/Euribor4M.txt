@@ -1,9 +1,0 @@
-Euribor4M
- -- |4-months Euribor index
-
- -f-
-  Euribor4M
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

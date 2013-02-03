@@ -1,9 +1,0 @@
-Euribor3W
- -- |3-weeks Euribor index
-
- -f-
-  Euribor3W
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

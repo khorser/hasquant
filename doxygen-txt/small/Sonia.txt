@@ -1,9 +1,0 @@
-Sonia
- -- |Sonia (Sterling Overnight Index Average) rate.
-
- -f-
-  Sonia
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

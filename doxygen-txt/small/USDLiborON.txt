@@ -1,9 +1,0 @@
-USDLiborON
- -- |Overnight USD Libor index.
-
- -f-
-  USDLiborON
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

@@ -1,9 +1,0 @@
-EURLibor10M
- -- |10-months EUR Libor index
-
- -f-
-  EURLibor10M
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

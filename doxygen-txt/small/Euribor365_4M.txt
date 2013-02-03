@@ -1,9 +1,0 @@
-Euribor365_4M
- -- |4-months Euribor365 index
-
- -f-
-  Euribor365_4M
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

@@ -1,9 +1,0 @@
-Euribor6M
- -- |6-months Euribor index
-
- -f-
-  Euribor6M
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

@@ -1,5 +1,4 @@
 IborIndex
- -- |base class for Inter-Bank-Offered-Rate indexes (e.g. Libor, etc.)
 
  -f-
   businessDayConvention
@@ -15,25 +14,3 @@ IborIndex
    ->boost::shared_ptr< IborIndex >
    ::const Handle< YieldTermStructure > &
    -- ^forwarding
- -f-
-  IborIndex
-   ->
-   ::const std::string &
-   -- ^familyName
-   ::const Period &
-   -- ^tenor
-   ::Natural
-   -- ^settlementDays
-   ::const Currency &
-   -- ^currency
-   ::const Calendar &
-   -- ^fixingCalendar
-   ::BusinessDayConvention
-   -- ^convention
-   ::bool
-   -- ^endOfMonth
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

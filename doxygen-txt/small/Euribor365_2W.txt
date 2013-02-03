@@ -1,9 +1,0 @@
-Euribor365_2W
- -- |2-weeks Euribor365 index
-
- -f-
-  Euribor365_2W
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

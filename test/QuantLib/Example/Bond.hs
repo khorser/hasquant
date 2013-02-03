@@ -149,7 +149,7 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
                                                 True actual360)
                  $ zip liborDepoQuotes liborDepoTerms
         
-          eur6M <- Ibor.euribor p6m Nothing
+          eur6M <- Ibor.euribor6M Nothing
           spread <- Quote.simpleQuote 0
         
           swapLiborHelpers <-

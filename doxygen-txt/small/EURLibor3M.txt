@@ -1,9 +1,0 @@
-EURLibor3M
- -- |3-months EUR Libor index
-
- -f-
-  EURLibor3M
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h

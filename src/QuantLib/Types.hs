@@ -58,6 +58,7 @@ instance Show Currency where
 
 -- indexes
 type Index = ForeignPtr CIndex
+-- |Inter-Bank-Offered-Rate indexes (e.g. Libor, etc.)
 type IborIndex = ForeignPtr CIborIndex
 
 class IndexClass a where

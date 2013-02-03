@@ -1,9 +1,0 @@
-GBPLiborON
- -- |Overnight GBP Libor index.
-
- -f-
-  GBPLiborON
-   ->
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^h
