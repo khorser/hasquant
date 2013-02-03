@@ -155,8 +155,9 @@ test_fixedBondWithWchedule = do c <- Calendar.russia
                                       100
                                       (Just $ fromGregorian 2012 10 11)
                                       c
-                                assertEqual (Just $ fromGregorian 2012 10 11) (Bond.issueDate $ Types.asBond b)
-                                assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate $ Types.asBond b)
+                                asB <- Types.asBond b
+                                assertEqual (Just $ fromGregorian 2012 10 11) (Bond.issueDate asB)
+                                assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate asB)
                                 assertEqual Frequency.Monthly (Bond.frequency b)
 
 test_fixedBondWithCalendars :: IO ()
@@ -180,8 +181,9 @@ test_fixedBondWithCalendars = do  c <- Calendar.russia
                                     DateGenerationRule.Forward
                                     False
                                     c
-                                  assertEqual (Just $ fromGregorian 2012 10 01) (Bond.issueDate $ Types.asBond b)
-                                  assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate $ Types.asBond b)
+                                  asB <- Types.asBond b
+                                  assertEqual (Just $ fromGregorian 2012 10 01) (Bond.issueDate asB)
+                                  assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate asB)
                                   assertEqual Frequency.Monthly (Bond.frequency b)
 test_fixedBond :: IO ()
 test_fixedBond = do dc <- DayCounter.actual365Fixed
@@ -209,8 +211,9 @@ test_fixedBond = do dc <- DayCounter.actual365Fixed
                             100
                             (Just (fromGregorian 2012 12 21))
                             cal
-                    assertEqual (Just $ fromGregorian 2012 12 21) (Bond.issueDate $ Types.asBond b)
-                    assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate $ Types.asBond b)
+                    asB <- Types.asBond b
+                    assertEqual (Just $ fromGregorian 2012 12 21) (Bond.issueDate asB)
+                    assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate asB)
                     assertEqual Frequency.Semiannual (Bond.frequency b)
 
 test_frequency :: IO ()

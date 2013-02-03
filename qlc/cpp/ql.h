@@ -49,37 +49,39 @@ extern "C" {
 
   /* bond */
 #ifdef quantlib_cash_flow_hpp
-  Bond *DLLEXPORT qlBond(unsigned settlDays, Calendar *calendar, int issueDate,
+  QlBond *DLLEXPORT qlBond(unsigned settlDays, Calendar *calendar, int issueDate,
     Leg *coupons, char **e);
-  Bond *DLLEXPORT qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
+  QlBond *DLLEXPORT qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
     int maturityDate, int issueDate, Leg *cashFlows, char **e);
 #endif
-  int DLLEXPORT qlBondMaturityDate(Bond *bond);
-  int DLLEXPORT qlBondIssueDate(Bond *bond);
-  Instrument *DLLEXPORT qlBondAsInstrument(Bond *bond);
+  int DLLEXPORT qlBondMaturityDate(QlBond *bond);
+  int DLLEXPORT qlBondIssueDate(QlBond *bond);
+  QlInstrument *DLLEXPORT qlBondAsInstrument(QlBond *bond);
 
-  Bond *DLLEXPORT qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
+  QlFixedRateBond *DLLEXPORT qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
     unsigned cLen, double *coupons, DayCounter *counter,
     int payConv, double redemption, int issue, Calendar *payCal,
     char **e);
-  Bond *DLLEXPORT qlFixedRateBond1(unsigned settlDays, Calendar *cpnCal, double face,
+  QlFixedRateBond *DLLEXPORT qlFixedRateBond1(unsigned settlDays, Calendar *cpnCal, double face,
     int start, int maturity, Period *tenor, unsigned cLen, double *coupons,
     DayCounter *dayCounter, int accrConv, int paymentConv, double redemption,
     int issue, int stub, int rule, int eom, Calendar *payCal, char **e);
-  Bond *DLLEXPORT qlFixedRateBond2(unsigned settlDays, double face, Schedule *sched,
+  QlFixedRateBond *DLLEXPORT qlFixedRateBond2(unsigned settlDays, double face, Schedule *sched,
     unsigned cLen, InterestRate **coupons, int paymentConv, double redemption,
     int issue, Calendar *cal, char **e);
-  int DLLEXPORT qlFixedBondFrequency(Bond *bond);
-  Bond *DLLEXPORT qlZeroCouponBond(int settlDays, Calendar *cal, double face,
+  int DLLEXPORT qlFixedBondFrequency(QlFixedRateBond *bond);
+  QlBond *DLLEXPORT qlZeroCouponBond(int settlDays, Calendar *cal, double face,
     int maturity, int payConv, double redemption, int issue, char **e);
-  void DLLEXPORT qlBondSetCouponPricer(Bond *b, QlFloatingRateCouponPricer *p, char **e);
-  Bond *DLLEXPORT qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
+  void DLLEXPORT qlBondSetCouponPricer(QlBond *b, QlFloatingRateCouponPricer *p, char **e);
+  QlBond *DLLEXPORT qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
     QlIborIndex *index, DayCounter *dc, int payConv, unsigned fixDays,
     unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
     unsigned nCaps, double *caps, unsigned nFloors, double *floors,
     int inArrears, double redemption, int issue, char **e);
+  QlBond *DLLEXPORT qlFixedRateBondAsBond(QlFixedRateBond *bond);
 
-  void DLLEXPORT qlFreeBond(Bond *bond);
+  void DLLEXPORT qlFreeBond(QlBond *bond);
+  void DLLEXPORT qlFreeFixedRateBond(QlFixedRateBond *bond);
 
   /* daycounter */
   DayCounter *DLLEXPORT qlDayCounter(const char *name, char **e);
@@ -155,9 +157,10 @@ extern "C" {
   void DLLEXPORT qlFreePricingEngine(QlPricingEngine *engine);
 
   /* instrument */
-  void DLLEXPORT qlInstrumentSetPricingEngine(Instrument *instr, QlPricingEngine *eng,
+  void DLLEXPORT qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
     char **e);
-  double DLLEXPORT qlInstrumentNPV(Instrument *instr, char **e);
+  double DLLEXPORT qlInstrumentNPV(QlInstrument *instr, char **e);
+  void DLLEXPORT qlFreeInstrument(QlInstrument *instr);
 
   /* ibor index */
   QlIborIndex *DLLEXPORT qlIborIndex(char *name, Period *period, unsigned settlDays,
@@ -179,10 +182,11 @@ extern "C" {
     QlYieldTermStructure *fwd, char **e);
 
   void DLLEXPORT qlFreeIborIndex(QlIborIndex *i);
-  Index *DLLEXPORT qlIborAsIndex(QlIborIndex *i);
+  QlIndex *DLLEXPORT qlIborAsIndex(QlIborIndex *i);
 
   /* index */
-  void DLLEXPORT qlIndexAddFixing(Index *i, int date, double fix, int overwrite, char **e);
+  void DLLEXPORT qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e);
+  void DLLEXPORT qlFreeIndex(QlIndex *i);
 
   /* coupon pricer */
   QlFloatingRateCouponPricer *DLLEXPORT qlBlackIborCouponPricer(

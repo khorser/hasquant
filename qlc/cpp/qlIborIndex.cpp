@@ -147,9 +147,8 @@ QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
   }
 }
 
-Index *qlIborAsIndex(QlIborIndex *i) {
-  // the pointer can be used only as long as `i' as alive
-  return (*i).get();
+QlIndex *qlIborAsIndex(QlIborIndex *i) {
+  return ret(new QlIndex(*(arg(i))));
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

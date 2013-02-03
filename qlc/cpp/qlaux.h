@@ -81,6 +81,9 @@ typedef boost::shared_ptr<IborIndex> QlIborIndex;
 typedef boost::shared_ptr<Index> QlIndex;
 typedef boost::shared_ptr<FloatingRateCouponPricer> QlFloatingRateCouponPricer;
 typedef boost::shared_ptr<OptionletVolatilityStructure> QlOptionletVolatilityStructure;
+typedef boost::shared_ptr<Instrument> QlInstrument;
+typedef boost::shared_ptr<Bond> QlBond;
+typedef boost::shared_ptr<FixedRateBond> QlFixedRateBond;
 
 // Leg and RateHelper are typedefs so we cannot use forward declaration
 // for them. Using them only when corresponding headers have been included
@@ -121,6 +124,14 @@ public:
 };
 
 template <>
+class objClassName<QlInstrument *> {
+public:
+  static const char *name() {
+    return "QlInstrument";
+  }
+};
+
+template <>
 class objClassName<Bond *> {
 public:
   static const char *name() {
@@ -129,10 +140,26 @@ public:
 };
 
 template <>
+class objClassName<QlBond *> {
+public:
+  static const char *name() {
+    return "QlBond";
+  }
+};
+
+template <>
 class objClassName<FixedRateBond *> {
 public:
   static const char *name() {
     return "FixedRateBond";
+  }
+};
+
+template <>
+class objClassName<QlFixedRateBond *> {
+public:
+  static const char *name() {
+    return "QlFixedRateBond";
   }
 };
 

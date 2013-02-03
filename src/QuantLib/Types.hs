@@ -39,8 +39,8 @@ module QuantLib.Types
 
   -- casts
   , asBond
-  , withInstrument
-  , withIndex
+  , asInstrument
+  , asIndex
   )
 where
 
@@ -62,17 +62,13 @@ type Index = ForeignPtr CIndex
 type IborIndex = ForeignPtr CIborIndex
 
 class IndexClass a where
-  -- it is NOT ok to keep the argument of the function after the call
-  withIndex :: a -> (Index -> IO b) -> IO b
+  asIndex :: a -> IO Index
 
 foreign import ccall safe "ql.h qlIborAsIndex"
-  c_iborAsIndex :: Ptr CIborIndex -> Ptr CIndex
+  c_iborAsIndex :: Ptr CIborIndex -> IO (Ptr CIndex)
 
 instance IndexClass IborIndex where
-  withIndex x f =
-    withForeignPtr x
-      (\p -> do ptr <- newForeignPtr_ (c_iborAsIndex p)
-                f ptr)
+  asIndex x = withObject x c_iborAsIndex >>= newForeignPtr finalize
 
 -- instruments
 type Instrument = ForeignPtr CInstrument
@@ -83,27 +79,24 @@ type Bond = ForeignPtr CBond
 type FixedRateBond = ForeignPtr CFixedRateBond
 
 class BondClass a where
-  -- it is ok to keep the result of the cast
-  asBond :: a -> Bond
+  asBond :: a -> IO Bond
 
+foreign import ccall safe "ql.h qlFixedRateBondAsBond"
+  c_fixedRateBondAsBond :: Ptr CFixedRateBond -> IO (Ptr CBond)
 instance BondClass FixedRateBond where
-  asBond = castForeignPtr
+  asBond x = withObject x c_fixedRateBondAsBond >>= newForeignPtr finalize
 
 class InstrumentClass a where
-  -- it is NOT ok to keep the argument of the function after the call
-  withInstrument :: a -> (Instrument -> IO b) -> IO b
+  asInstrument :: a -> IO Instrument
 
 foreign import ccall safe "ql.h qlBondAsInstrument"
-  c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
+  c_bondAsInstrument :: Ptr CBond -> IO (Ptr CInstrument)
 
 instance InstrumentClass Bond where
-  withInstrument x f =
-    withForeignPtr x
-    (\p -> do ptr <- newForeignPtr_ (c_bondAsInstrument p)
-              f ptr)
+  asInstrument x = withObject x c_bondAsInstrument >>= newForeignPtr finalize
 
 instance InstrumentClass FixedRateBond where
-  withInstrument = withInstrument . asBond
+  asInstrument x = asBond x >>= asInstrument
 
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine

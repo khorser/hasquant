@@ -76,8 +76,12 @@ data CIborIndex
 
 instance Finalizable CIborIndex where
   finalize = p_freeIborIndex
+instance Finalizable CIndex where
+  finalize = p_freeIndex
 foreign import ccall safe "ql.h &qlFreeIborIndex"
   p_freeIborIndex :: FunPtr (Ptr CIborIndex -> IO ())
+foreign import ccall safe "ql.h &qlFreeIndex"
+  p_freeIndex :: FunPtr (Ptr CIndex -> IO ())
 
 -- instruments
 data CInstrument
@@ -87,9 +91,15 @@ data CFixedRateBond
 instance Finalizable CBond where
   finalize = p_freeBond
 instance Finalizable CFixedRateBond where
-  finalize = castFunPtr p_freeBond
+  finalize = p_freeFixedRateBond
+instance Finalizable CInstrument where
+  finalize = p_freeInstrument
 foreign import ccall safe "ql.h &qlFreeBond"
   p_freeBond :: FunPtr (Ptr CBond -> IO ())
+foreign import ccall safe "ql.h &qlFreeFixedRateBond"
+  p_freeFixedRateBond :: FunPtr (Ptr CFixedRateBond -> IO ())
+foreign import ccall safe "ql.h &qlFreeInstrument"
+  p_freeInstrument :: FunPtr (Ptr CInstrument -> IO ())
 
 -- pricingengines
 data CPricingEngine
