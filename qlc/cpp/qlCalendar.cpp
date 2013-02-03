@@ -117,6 +117,8 @@ Calendar *qlCalendar(const char *name, char **e) {
       c = new UnitedStates(UnitedStates::NYSE);
     else if (!strcmp(name, "UnitedStates::Settlement"))
       c = new UnitedStates(UnitedStates::Settlement);
+    else if (!strcmp(name, "WeekendsOnly"))
+      c = new WeekendsOnly();
     else
       QL_FAIL("Calendar not found " << name);
     return alloc(c);

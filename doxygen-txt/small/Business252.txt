@@ -1,9 +1,0 @@
-Business252
- -- |Business/252 day count convention.
-
- -f-
-  Business252
-   ->
-   ::Calendar
-   =Brazil()
-   -- ^c

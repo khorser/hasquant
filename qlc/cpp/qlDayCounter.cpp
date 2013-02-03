@@ -64,7 +64,7 @@ DayCounter *qlDayCounter(const char *name, char **e) {
     else if (!strcmp(name, "Actual/Actual (AFB)"))
       c = new ActualActual(ActualActual::AFB);
     else if (!strcmp(name, "Actual/Actual (Euro)"))
-      c = new ActualActual(ActualActual::AFB);
+      c = new ActualActual(ActualActual::Euro);
     else if (!strcmp(name, "30/360 (Italian)"))
       c = new Thirty360(Thirty360::Italian);
     else if (!strcmp(name, "Simple"))
@@ -81,11 +81,23 @@ DayCounter *qlDayCounter(const char *name, char **e) {
       c = new ActualActual(ActualActual::ISDA);
     else if (!strcmp(name, "LIN ACTACT ISMA"))
       c = new ActualActual(ActualActual::ISMA);
-    else if (!strcmp(name, "Business252"))
-      c = new Business252();
+    else if (!strcmp(name, "30/360 (USA)"))
+      c = new Thirty360(Thirty360::USA);
+    else if (!strcmp(name, "Actual/Actual (Historical)"))
+      c = new ActualActual(ActualActual::Historical);
+    else if (!strcmp(name, "Actual/Actual (Actual365)"))
+      c = new ActualActual(ActualActual::Actual365);
     else
       QL_FAIL("Counter not found " << name);
     return alloc(c);
+  } catch (std::exception& er) {
+    return handleException<DayCounter *>(e, er);
+  }
+}
+
+DayCounter *DLLEXPORT qlDayCounterBusiness252(Calendar *cal, char **e) {
+  try {
+    return alloc(new Business252(*arg(cal)));
   } catch (std::exception& er) {
     return handleException<DayCounter *>(e, er);
   }

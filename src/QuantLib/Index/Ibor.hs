@@ -114,7 +114,7 @@ foreign import ccall safe "ql.h qlLibor"
     -> Ptr CCalendar -> Ptr CDayCounter -> Ptr CYieldTermStructure
     -> Ptr CString -> IO (Ptr CIborIndex)
 
--- |all BBA LIBOR indexes but the EUR, O/N, and S/N ones
+-- |all BBA LIBOR indexes but the EUR, O\/N, and S\/N ones
 -- LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
 -- QuantLibXL: qlLibor
 libor :: String -- ^familyName
@@ -131,7 +131,7 @@ foreign import ccall safe "ql.h qlDailyTenorLibor"
     -> Ptr CDayCounter -> Ptr CYieldTermStructure -> Ptr CString
     -> IO (Ptr CIborIndex)
 
--- |O/N-S/N BBA LIBOR indexes but the EUR ones
+-- |O\/N-S\/N BBA LIBOR indexes but the EUR ones
 -- One day deposit LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
 dailyTenorLibor :: String -- ^ familyName
   -> Word -- ^settlementDays
@@ -224,13 +224,13 @@ dkkLibor = createIbor "DKKLibor"
 eonia :: Maybe YieldTermStructure -> IO IborIndex
 eonia = createIborON "Eonia"
 
--- |all BBA EUR LIBOR indexes but the O/N
+-- |all BBA EUR LIBOR indexes but the O\/N
 -- Euro LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>. /Warning/ This is the rate fixed in London by BBA. Use Euribor if you're interested in the fixing by the ECB.
 eurLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
 eurLibor = createIbor "EURLibor"
 
 -- |one day deposit BBA EUR LIBOR indexes
--- |Euro O/N LIBOR fixed by BBA. It can be also used for T/N and S/N indexes, even if such indexes do not have BBA fixing. See http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414. /Warning/ This is the rate fixed in London by BBA. Use Eonia if you're interested in the fixing by the ECB.
+-- |Euro O\/N LIBOR fixed by BBA. It can be also used for T/N and S/N indexes, even if such indexes do not have BBA fixing. See http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414. /Warning/ This is the rate fixed in London by BBA. Use Eonia if you're interested in the fixing by the ECB.
 dailyTenorEURLibor :: Word -- ^settlementDays
   -> Maybe YieldTermStructure -> IO IborIndex
 dailyTenorEURLibor = createDailyTenorLibor "DailyTenorEURLibor"

@@ -1,7 +1,0 @@
-WeekendsOnly
- -- |Weekends-only calendar.
- -- |This calendar has no bank holidays except for weekends (Saturdays and Sundays) as required by ISDA for calculating conventional CDS spreads.
-
- -f-
-  WeekendsOnly
-   ->

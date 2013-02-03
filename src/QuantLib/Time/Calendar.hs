@@ -58,6 +58,7 @@ module QuantLib.Time.Calendar
   , unitedStatesNERC
   , unitedStatesNYSE
   , unitedStatesSettlement
+  , weekendsOnly
   )
 where
 
@@ -93,8 +94,9 @@ advance = $(ffiCall 'advance) c_calendarAdvance
 -- but there is another drawback: the name of a joint calendar is
 -- the concatenation of its components so == will return TRUE
 -- even while holidays might be different
--- Also we can create a calendar that will call back Haskell
+-- Later it might be worthwhile to create a calendar that will call back Haskell
 -- for actual implementation
+-- Or we could use BespokeCalendar
 
 noCalendar              :: IO Calendar
 -- |Calendar for reproducing theoretical calculations.
@@ -152,6 +154,9 @@ unitedStatesGovernmentBond:: IO Calendar -- ^United States calendar: government-
 unitedStatesNERC        :: IO Calendar -- ^United States calendar: off-peak days for NERC
 unitedStatesNYSE        :: IO Calendar -- ^United States calendar: New York stock exchange
 unitedStatesSettlement  :: IO Calendar -- ^United States calendar: generic settlement
+-- |Weekends-only calendar.
+-- This calendar has no bank holidays except for weekends (Saturdays and Sundays) as required by ISDA for calculating conventional CDS spreads.
+weekendsOnly            :: IO Calendar
 
 noCalendar              = constructNamed "NoCalendar"
 nullCalendar            = constructNamed "NullCalendar"
@@ -207,3 +212,4 @@ unitedStatesGovernmentBond = constructNamed "UnitedStates::GovernmentBond"
 unitedStatesNERC        = constructNamed "UnitedStates::NERC"
 unitedStatesNYSE        = constructNamed "UnitedStates::NYSE"
 unitedStatesSettlement  = constructNamed "UnitedStates::Settlement"
+weekendsOnly            = constructNamed "WeekendsOnly"

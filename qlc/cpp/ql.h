@@ -83,6 +83,7 @@ extern "C" {
 
   /* daycounter */
   DayCounter *DLLEXPORT qlDayCounter(const char *name, char **e);
+  DayCounter *DLLEXPORT qlDayCounterBusiness252(Calendar *cal, char **e);
   const char *DLLEXPORT qlDayCounterName(DayCounter *counter);
 
   void DLLEXPORT qlFreeDayCounter(DayCounter *counter);

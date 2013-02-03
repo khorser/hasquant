@@ -1,7 +1,0 @@
-Actual360
- -- |Actual/360 day count convention.
- -- |Actual/360 day count convention, also known as "Act/360", or "A/360".
-
- -f-
-  Actual360
-   ->
