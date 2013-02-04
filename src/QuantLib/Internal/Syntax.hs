@@ -15,11 +15,12 @@ import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal.Date
-import QuantLib.Internal.Utils
 import QuantLib.Internal.Enum
+import QuantLib.Internal.Utils
 
 -- All QLEnum instances should be imported here!
 import QuantLib.Compounding()
+import QuantLib.Position()
 import QuantLib.Time.BusinessDayConvention()
 import QuantLib.Time.Date()
 import QuantLib.Time.DateGenerationRule()

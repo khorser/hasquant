@@ -77,6 +77,7 @@ type FixedRateBond = ForeignPtr CFixedRateBond
 
 -- both 'with' and 'as' casting styles compose poorly with functions accepting
 -- several arguments with first being a Bond
+-- XXX use applicative style?
 withBond :: (Upcastable a CBond) => ForeignPtr a -> (Bond -> IO b) -> IO b
 withBond x f = upcast x >>= f
 
