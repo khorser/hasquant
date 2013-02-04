@@ -98,6 +98,27 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
   }
 }
 
+QlYieldTermStructure *DLLEXPORT qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
+  unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlQuote **quotes, int *dates, double accuracy, char *trait,
+  char *interpolator, char **e) {
+  try {
+    std::vector<boost::shared_ptr<RateHelper> > instr;
+    std::vector<Handle<Quote> > jumps;
+    std::vector<Date> jumpDates;
+    for (unsigned i = 0; i < rateLen; ++i)
+      instr.push_back(*arg(ratehelpers[i]));
+    for (unsigned i = 0; i < quoteLen; ++i) {
+      jumps.push_back(Handle<Quote>(*arg(quotes[i])));
+      jumpDates.push_back(Date(dates[i]));
+    }
+    YieldTermStructure *ts = qlPiecewiseYieldCurveAux1(settl, *arg(cal),
+      instr, *arg(dayCount), jumps, jumpDates, accuracy, trait, interpolator);
+    return ret(new QlYieldTermStructure(alloc(ts)));
+  } catch (std::exception& er) {
+    return handleException<QlYieldTermStructure *>(e, er);
+  }
+}
 void qlFreeYieldTermStructure(QlYieldTermStructure *ts) {
   del(ts);
 }

@@ -106,6 +106,19 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
                   --(Interpolation.LogCubic Interpolation.Kruger)
                   --(Interpolation.Cubic Interpolation.FritschButland)
                   --Interpolation.Abcd
+
+          {-
+          ts1 <- Yield.piecewiseYieldCurve'
+                  3
+                  targetCal
+                  (discDepoHelpers ++ discBondHelpers)
+                  actActISDA
+                  []
+                  tolerance
+                  Trait.Discount
+                  Interpolation.LogLinear
+          -}
+
           --df <- Yield.discount ts (fromGregorian 2011 08 03) True
           pricing <- Pricing.discountingBondEngine ts Nothing
           -- Fixed 4.5% US Treasury Note

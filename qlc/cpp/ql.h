@@ -141,6 +141,10 @@ extern "C" {
     QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
     QlQuote **quotes, int *dates, double accuracy, char *trait,
     char *interpolator, char **e);
+  QlYieldTermStructure *DLLEXPORT qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
+    unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+    QlQuote **quotes, int *dates, double accuracy, char *trait,
+    char *interpolator, char **e);
   QlRateHelper *DLLEXPORT qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
     int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, Period *fwdStart,
     QlYieldTermStructure *ts, char **e);

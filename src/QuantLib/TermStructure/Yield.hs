@@ -74,6 +74,12 @@ piecewiseYieldCurve :: Day -- ^referenceDate
 piecewiseYieldCurve =
   $(ffiConstruct 'piecewiseYieldCurve) c_piecewiseYieldCurve
 
+foreign import ccall safe "ql.h qlPiecewiseYieldCurve1"
+  c_piecewiseYieldCurve' :: CUInt -> Ptr CCalendar -> CUInt
+    -> Ptr (Ptr CRateHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote)
+    -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString
+    -> IO (Ptr CYieldTermStructure)
+
 -- |QuantLibXL: qlPiecewiseYieldCurve
 piecewiseYieldCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
@@ -84,7 +90,7 @@ piecewiseYieldCurve' :: Word -- ^settlementDays
   -> Trait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-piecewiseYieldCurve' = undefined
+piecewiseYieldCurve' = $(ffiConstruct 'piecewiseYieldCurve') c_piecewiseYieldCurve'
 
 -- |Returns a discount factor from the given YieldTermStructure object. QuantLibXL: qlYieldTSDiscount
 discount :: YieldTermStructure
