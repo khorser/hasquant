@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Internal.Utils
   (
   -- exceptions
@@ -5,6 +6,8 @@ module QuantLib.Internal.Utils
   , handleExceptions
   -- object construction and access
   , Finalizable(..)
+  , Upcastable(..)
+  , upcast
   , construct
   , NamedSingleton(..)
   , constructNamed
@@ -21,7 +24,6 @@ module QuantLib.Internal.Utils
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
   , CString
   , Ptr, FunPtr
-  , castPtr, castFunPtr, castForeignPtr, withForeignPtr, newForeignPtr
   , ForeignPtr
   )
 
@@ -32,10 +34,10 @@ import Data.Word(Word)
 
 import Foreign.C.String
 import Foreign.C.Types
-import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr, castForeignPtr, newForeignPtr)
+import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
-import Foreign.Ptr(nullPtr, Ptr, FunPtr, castPtr, castFunPtr)
+import Foreign.Ptr(nullPtr, Ptr, FunPtr)
 import Foreign.Storable(peek, poke)
 
 import System.IO.Unsafe(unsafePerformIO)
@@ -111,7 +113,7 @@ class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
--- XXX ???Create non-finalizable objects and then we won't have to use IO monad
+-- XXX ???Create non-finalizable objects and then we won't have to use the IO monad
 constructNamed :: NamedSingleton a => String -> IO (ForeignPtr a)
 constructNamed n = withCString n $ construct . c_construct
 
@@ -122,3 +124,9 @@ name c = unsafePerformIO
                          str <- peekCString n
                          c_freeString n
                          return str)
+
+class (Finalizable a, Finalizable b) => Upcastable a b where
+  c_upcast :: Ptr a -> IO (Ptr b)
+
+upcast :: (Upcastable a b) => ForeignPtr a -> IO (ForeignPtr b)
+upcast x = withObject x c_upcast >>= newForeignPtr finalize

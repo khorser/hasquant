@@ -1,3 +1,4 @@
+{-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Internal.Types
   (
   -- cashflows
@@ -83,6 +84,11 @@ foreign import ccall safe "ql.h &qlFreeIborIndex"
 foreign import ccall safe "ql.h &qlFreeIndex"
   p_freeIndex :: FunPtr (Ptr CIndex -> IO ())
 
+instance Upcastable CIborIndex CIndex where
+  c_upcast = c_iborAsIndex
+foreign import ccall safe "ql.h qlIborAsIndex"
+  c_iborAsIndex :: Ptr CIborIndex -> IO (Ptr CIndex)
+
 -- instruments
 data CInstrument
 data CBond
@@ -100,6 +106,15 @@ foreign import ccall safe "ql.h &qlFreeFixedRateBond"
   p_freeFixedRateBond :: FunPtr (Ptr CFixedRateBond -> IO ())
 foreign import ccall safe "ql.h &qlFreeInstrument"
   p_freeInstrument :: FunPtr (Ptr CInstrument -> IO ())
+
+instance Upcastable CFixedRateBond CBond where
+  c_upcast = c_fixedRateBondAsBond
+instance Upcastable CBond CInstrument where
+  c_upcast = c_bondAsInstrument
+foreign import ccall safe "ql.h qlFixedRateBondAsBond"
+  c_fixedRateBondAsBond :: Ptr CFixedRateBond -> IO (Ptr CBond)
+foreign import ccall safe "ql.h qlBondAsInstrument"
+  c_bondAsInstrument :: Ptr CBond -> IO (Ptr CInstrument)
 
 -- pricingengines
 data CPricingEngine

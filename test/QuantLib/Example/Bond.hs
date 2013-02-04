@@ -128,8 +128,9 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
                                           100.0
                                           (Just (15 `may` 2007))
                                           nocal
-          Types.withInstrument fixedBond (flip Instrument.setPricingEngine pricing)
-          fixnpv <- Types.withInstrument fixedBond Instrument.npv
+          fbi <- Types.asBond fixedBond >>= Types.asInstrument
+          Instrument.setPricingEngine fbi pricing
+          fixnpv <- Instrument.npv fbi
           zcBond <- Bond.zeroCouponBond settlementDays
                                        usGovBondCal
                                        faceAmount

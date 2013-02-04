@@ -1,4 +1,4 @@
-{-# LANGUAGE FlexibleInstances,OverlappingInstances #-}
+{-# LANGUAGE FlexibleInstances,OverlappingInstances,FlexibleContexts #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-} -- for Show instances
 module QuantLib.Types
   (
@@ -38,11 +38,12 @@ module QuantLib.Types
   , Quote
 
   -- casts
-  , asBond
-  , asInstrument
+  , upcast
   , asIndex
   , withBond
+  , asBond
   , withInstrument
+  , asInstrument
   )
 where
 
@@ -63,14 +64,8 @@ type Index = ForeignPtr CIndex
 -- |Inter-Bank-Offered-Rate indexes (e.g. Libor, etc.)
 type IborIndex = ForeignPtr CIborIndex
 
-class IndexClass a where
-  asIndex :: a -> IO Index
-
-foreign import ccall safe "ql.h qlIborAsIndex"
-  c_iborAsIndex :: Ptr CIborIndex -> IO (Ptr CIndex)
-
-instance IndexClass IborIndex where
-  asIndex x = withObject x c_iborAsIndex >>= newForeignPtr finalize
+asIndex :: (Upcastable a CIndex) => ForeignPtr a -> IO Index
+asIndex = upcast
 
 -- instruments
 type Instrument = ForeignPtr CInstrument
@@ -80,29 +75,19 @@ type Bond = ForeignPtr CBond
 -- |fixed-rate bond
 type FixedRateBond = ForeignPtr CFixedRateBond
 
-class BondClass a where
-  asBond :: a -> IO Bond
-  withBond :: a -> (Bond -> IO b) -> IO b
-  withBond x f = asBond x >>= f
+-- both 'with' and 'as' casting styles compose poorly with functions accepting
+-- several arguments with first being a Bond
+withBond :: (Upcastable a CBond) => ForeignPtr a -> (Bond -> IO b) -> IO b
+withBond x f = upcast x >>= f
 
-foreign import ccall safe "ql.h qlFixedRateBondAsBond"
-  c_fixedRateBondAsBond :: Ptr CFixedRateBond -> IO (Ptr CBond)
-instance BondClass FixedRateBond where
-  asBond x = withObject x c_fixedRateBondAsBond >>= newForeignPtr finalize
+asBond :: (Upcastable a CBond) => ForeignPtr a -> IO Bond
+asBond = upcast
 
-class InstrumentClass a where
-  asInstrument :: a -> IO Instrument
-  withInstrument :: a -> (Instrument -> IO b) -> IO b
-  withInstrument x f = asInstrument x >>= f
+asInstrument :: (Upcastable a CInstrument) => ForeignPtr a -> IO Instrument
+asInstrument = upcast
 
-foreign import ccall safe "ql.h qlBondAsInstrument"
-  c_bondAsInstrument :: Ptr CBond -> IO (Ptr CInstrument)
-
-instance InstrumentClass Bond where
-  asInstrument x = withObject x c_bondAsInstrument >>= newForeignPtr finalize
-
-instance InstrumentClass FixedRateBond where
-  asInstrument x = asBond x >>= asInstrument
+withInstrument :: (Upcastable a CInstrument) => ForeignPtr a -> (Instrument -> IO b) -> IO b
+withInstrument x f = upcast x >>= f
 
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine
