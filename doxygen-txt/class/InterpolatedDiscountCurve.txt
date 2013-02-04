@@ -32,25 +32,3 @@ InterpolatedDiscountCurve
    ::const Interpolator &
    =Interpolator()
    -- ^interpolator
-  InterpolatedDiscountCurve
-   ->
-   ::const std::vector< Date > &
-   -- ^dates
-   ::const std::vector< DiscountFactor > &
-   -- ^dfs
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Calendar &
-   -- ^calendar
-   ::const Interpolator &
-   -- ^interpolator
-  InterpolatedDiscountCurve
-   ->
-   ::const std::vector< Date > &
-   -- ^dates
-   ::const std::vector< DiscountFactor > &
-   -- ^dfs
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Interpolator &
-   -- ^interpolator

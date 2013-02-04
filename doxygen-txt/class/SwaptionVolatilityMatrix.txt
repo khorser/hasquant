@@ -49,38 +49,6 @@ SwaptionVolatilityMatrix
    -- ^vols
    ::const DayCounter &
    -- ^dayCounter
-  -- |floating reference date, fixed market data
-  SwaptionVolatilityMatrix
-   ->
-   ::const Calendar &
-   -- ^calendar
-   ::BusinessDayConvention
-   -- ^bdc
-   ::const std::vector< Period > &
-   -- ^optionTenors
-   ::const std::vector< Period > &
-   -- ^swapTenors
-   ::const Matrix &
-   -- ^volatilities
-   ::const DayCounter &
-   -- ^dayCounter
-  -- |fixed reference date, fixed market data
-  SwaptionVolatilityMatrix
-   ->
-   ::const Date &
-   -- ^referenceDate
-   ::const Calendar &
-   -- ^calendar
-   ::BusinessDayConvention
-   -- ^bdc
-   ::const std::vector< Period > &
-   -- ^optionTenors
-   ::const std::vector< Period > &
-   -- ^swapTenors
-   ::const Matrix &
-   -- ^volatilities
-   ::const DayCounter &
-   -- ^dayCounter
   SwaptionVolatilityMatrix
    ->
    ::const Date &

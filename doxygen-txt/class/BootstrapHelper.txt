@@ -32,7 +32,3 @@ BootstrapHelper
    ->
    ::const Handle< Quote > &
    -- ^quote
-  BootstrapHelper
-   ->
-   ::Real
-   -- ^quote

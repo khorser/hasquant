@@ -29,18 +29,3 @@ SwapRateHelper
    ::const Handle< YieldTermStructure > &
    =Handle< YieldTermStructure >()
    -- ^discountingCurve
-  SwapRateHelper
-   ->
-   ::Rate
-   -- ^rate
-   ::const boost::shared_ptr< SwapIndex > &
-   -- ^swapIndex
-   ::const Handle< Quote > &
-   =Handle< Quote >()
-   -- ^spread
-   ::const Period &
-   =0 *Days
-   -- ^fwdStart
-   ::const Handle< YieldTermStructure > &
-   =Handle< YieldTermStructure >()
-   -- ^discountingCurve

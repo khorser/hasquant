@@ -12,13 +12,3 @@ LocalVolSurface
    -- ^dividendTS
    ::const Handle< Quote > &
    -- ^underlying
-  LocalVolSurface
-   ->
-   ::const Handle< BlackVolTermStructure > &
-   -- ^blackTS
-   ::const Handle< YieldTermStructure > &
-   -- ^riskFreeTS
-   ::const Handle< YieldTermStructure > &
-   -- ^dividendTS
-   ::Real
-   -- ^underlying

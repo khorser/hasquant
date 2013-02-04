@@ -12,9 +12,3 @@ DepositRateHelper
    -- ^rate
    ::const boost::shared_ptr< IborIndex > &
    -- ^iborIndex
-  DepositRateHelper
-   ->
-   ::Rate
-   -- ^rate
-   ::const boost::shared_ptr< IborIndex > &
-   -- ^iborIndex

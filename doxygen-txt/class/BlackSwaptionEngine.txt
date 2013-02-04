@@ -6,15 +6,6 @@ BlackSwaptionEngine
    ->
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
-   ::Volatility
-   -- ^vol
-   ::const DayCounter &
-   =Actual365Fixed()
-   -- ^dc
-  BlackSwaptionEngine
-   ->
-   ::const Handle< YieldTermStructure > &
-   -- ^discountCurve
    ::const Handle< Quote > &
    -- ^vol
    ::const DayCounter &

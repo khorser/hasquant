@@ -17,41 +17,11 @@ FlatForward
    -- ^frequency
   FlatForward
    ->
-   ::const Date &
-   -- ^referenceDate
-   ::Rate
-   -- ^forward
-   ::const DayCounter &
-   -- ^dayCounter
-   ::Compounding
-   =Continuous
-   -- ^compounding
-   ::Frequency
-   =Annual
-   -- ^frequency
-  FlatForward
-   ->
    ::Natural
    -- ^settlementDays
    ::const Calendar &
    -- ^calendar
    ::const Handle< Quote > &
-   -- ^forward
-   ::const DayCounter &
-   -- ^dayCounter
-   ::Compounding
-   =Continuous
-   -- ^compounding
-   ::Frequency
-   =Annual
-   -- ^frequency
-  FlatForward
-   ->
-   ::Natural
-   -- ^settlementDays
-   ::const Calendar &
-   -- ^calendar
-   ::Rate
    -- ^forward
    ::const DayCounter &
    -- ^dayCounter

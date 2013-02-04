@@ -27,16 +27,3 @@ ConstantOptionletVolatility
    -- ^volatility
    ::const DayCounter &
    -- ^dc
-  -- |fixed reference date, fixed market data
-  ConstantOptionletVolatility
-   ->
-   ::const Date &
-   -- ^referenceDate
-   ::const Calendar &
-   -- ^cal
-   ::BusinessDayConvention
-   -- ^bdc
-   ::Volatility
-   -- ^volatility
-   ::const DayCounter &
-   -- ^dc

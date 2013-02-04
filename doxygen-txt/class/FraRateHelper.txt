@@ -26,33 +26,7 @@ FraRateHelper
    -- ^dayCounter
   FraRateHelper
    ->
-   ::Rate
-   -- ^rate
-   ::Natural
-   -- ^monthsToStart
-   ::Natural
-   -- ^monthsToEnd
-   ::Natural
-   -- ^fixingDays
-   ::const Calendar &
-   -- ^calendar
-   ::BusinessDayConvention
-   -- ^convention
-   ::bool
-   -- ^endOfMonth
-   ::const DayCounter &
-   -- ^dayCounter
-  FraRateHelper
-   ->
    ::const Handle< Quote > &
-   -- ^rate
-   ::Natural
-   -- ^monthsToStart
-   ::const boost::shared_ptr< IborIndex > &
-   -- ^iborIndex
-  FraRateHelper
-   ->
-   ::Rate
    -- ^rate
    ::Natural
    -- ^monthsToStart
@@ -78,33 +52,7 @@ FraRateHelper
    -- ^dayCounter
   FraRateHelper
    ->
-   ::Rate
-   -- ^rate
-   ::Period
-   -- ^periodToStart
-   ::Natural
-   -- ^lengthInMonths
-   ::Natural
-   -- ^fixingDays
-   ::const Calendar &
-   -- ^calendar
-   ::BusinessDayConvention
-   -- ^convention
-   ::bool
-   -- ^endOfMonth
-   ::const DayCounter &
-   -- ^dayCounter
-  FraRateHelper
-   ->
    ::const Handle< Quote > &
-   -- ^rate
-   ::Period
-   -- ^periodToStart
-   ::const boost::shared_ptr< IborIndex > &
-   -- ^iborIndex
-  FraRateHelper
-   ->
-   ::Rate
    -- ^rate
    ::Period
    -- ^periodToStart

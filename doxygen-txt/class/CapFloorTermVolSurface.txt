@@ -25,7 +25,7 @@ CapFloorTermVolSurface
    ::const std::vector< Rate > &
    -- ^strikes
    ::const std::vector< std::vector< Handle< Quote > > > &
-   -- ^
+   -- ^volatilities
    ::const DayCounter &
    =Actual365Fixed()
    -- ^dc
@@ -43,42 +43,6 @@ CapFloorTermVolSurface
    ::const std::vector< Rate > &
    -- ^strikes
    ::const std::vector< std::vector< Handle< Quote > > > &
-   -- ^
-   ::const DayCounter &
-   =Actual365Fixed()
-   -- ^dc
-  -- |fixed reference date, fixed market data
-  CapFloorTermVolSurface
-   ->
-   ::const Date &
-   -- ^settlementDate
-   ::const Calendar &
-   -- ^calendar
-   ::BusinessDayConvention
-   -- ^bdc
-   ::const std::vector< Period > &
-   -- ^optionTenors
-   ::const std::vector< Rate > &
-   -- ^strikes
-   ::const Matrix &
-   -- ^volatilities
-   ::const DayCounter &
-   =Actual365Fixed()
-   -- ^dc
-  -- |floating reference date, fixed market data
-  CapFloorTermVolSurface
-   ->
-   ::Natural
-   -- ^settlementDays
-   ::const Calendar &
-   -- ^calendar
-   ::BusinessDayConvention
-   -- ^bdc
-   ::const std::vector< Period > &
-   -- ^optionTenors
-   ::const std::vector< Rate > &
-   -- ^strikes
-   ::const Matrix &
    -- ^volatilities
    ::const DayCounter &
    =Actual365Fixed()

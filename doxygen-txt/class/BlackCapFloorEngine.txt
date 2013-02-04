@@ -5,15 +5,6 @@ BlackCapFloorEngine
    ->
    ::const Handle< YieldTermStructure > &
    -- ^discountCurve
-   ::Volatility
-   -- ^vol
-   ::const DayCounter &
-   =Actual365Fixed()
-   -- ^dc
-  BlackCapFloorEngine
-   ->
-   ::const Handle< YieldTermStructure > &
-   -- ^discountCurve
    ::const Handle< Quote > &
    -- ^vol
    ::const DayCounter &

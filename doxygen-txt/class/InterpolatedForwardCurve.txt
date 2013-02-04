@@ -32,25 +32,3 @@ InterpolatedForwardCurve
    ::const Interpolator &
    =Interpolator()
    -- ^interpolator
-  InterpolatedForwardCurve
-   ->
-   ::const std::vector< Date > &
-   -- ^dates
-   ::const std::vector< Rate > &
-   -- ^forwards
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Calendar &
-   -- ^calendar
-   ::const Interpolator &
-   -- ^interpolator
-  InterpolatedForwardCurve
-   ->
-   ::const std::vector< Date > &
-   -- ^dates
-   ::const std::vector< Rate > &
-   -- ^forwards
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Interpolator &
-   -- ^interpolator

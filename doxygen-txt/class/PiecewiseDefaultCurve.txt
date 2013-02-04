@@ -24,29 +24,6 @@ PiecewiseDefaultCurve
    -- ^i
   PiecewiseDefaultCurve
    ->
-   ::const Date &
-   -- ^referenceDate
-   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
-   -- ^instruments
-   ::const DayCounter &
-   -- ^dayCounter
-   ::Real
-   -- ^accuracy
-   ::const Interpolator &
-   =Interpolator()
-   -- ^i
-  PiecewiseDefaultCurve
-   ->
-   ::const Date &
-   -- ^referenceDate
-   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
-   -- ^instruments
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Interpolator &
-   -- ^i
-  PiecewiseDefaultCurve
-   ->
    ::Natural
    -- ^settlementDays
    ::const Calendar &
@@ -66,33 +43,6 @@ PiecewiseDefaultCurve
    -- ^accuracy
    ::const Interpolator &
    =Interpolator()
-   -- ^i
-  PiecewiseDefaultCurve
-   ->
-   ::Natural
-   -- ^settlementDays
-   ::const Calendar &
-   -- ^calendar
-   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
-   -- ^instruments
-   ::const DayCounter &
-   -- ^dayCounter
-   ::Real
-   -- ^accuracy
-   ::const Interpolator &
-   =Interpolator()
-   -- ^i
-  PiecewiseDefaultCurve
-   ->
-   ::Natural
-   -- ^settlementDays
-   ::const Calendar &
-   -- ^calendar
-   ::const std::vector< boost::shared_ptr< typename Traits::helper > > &
-   -- ^instruments
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Interpolator &
    -- ^i
  -f-
   maxDate

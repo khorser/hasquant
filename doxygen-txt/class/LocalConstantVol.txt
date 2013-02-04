@@ -6,25 +6,7 @@ LocalConstantVol
    ->
    ::const Date &
    -- ^referenceDate
-   ::Volatility
-   -- ^volatility
-   ::const DayCounter &
-   -- ^dayCounter
-  LocalConstantVol
-   ->
-   ::const Date &
-   -- ^referenceDate
    ::const Handle< Quote > &
-   -- ^volatility
-   ::const DayCounter &
-   -- ^dayCounter
-  LocalConstantVol
-   ->
-   ::Natural
-   -- ^settlementDays
-   ::const Calendar &
-   -- ^
-   ::Volatility
    -- ^volatility
    ::const DayCounter &
    -- ^dayCounter

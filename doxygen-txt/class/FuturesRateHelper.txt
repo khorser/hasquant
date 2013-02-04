@@ -25,25 +25,6 @@ FuturesRateHelper
    -- ^convexityAdjustment
   FuturesRateHelper
    ->
-   ::Real
-   -- ^price
-   ::const Date &
-   -- ^immDate
-   ::Natural
-   -- ^lengthInMonths
-   ::const Calendar &
-   -- ^calendar
-   ::BusinessDayConvention
-   -- ^convention
-   ::bool
-   -- ^endOfMonth
-   ::const DayCounter &
-   -- ^dayCounter
-   ::Rate
-   =0.0
-   -- ^convexityAdjustment
-  FuturesRateHelper
-   ->
    ::const Handle< Quote > &
    -- ^price
    ::const Date &
@@ -57,19 +38,6 @@ FuturesRateHelper
    -- ^convexityAdjustment
   FuturesRateHelper
    ->
-   ::Real
-   -- ^price
-   ::const Date &
-   -- ^immStartDate
-   ::const Date &
-   -- ^endDate
-   ::const DayCounter &
-   -- ^dayCounter
-   ::Rate
-   =0.0
-   -- ^convexityAdjustment
-  FuturesRateHelper
-   ->
    ::const Handle< Quote > &
    -- ^price
    ::const Date &
@@ -78,15 +46,4 @@ FuturesRateHelper
    -- ^iborIndex
    ::const Handle< Quote > &
    =Handle< Quote >()
-   -- ^convexityAdjustment
-  FuturesRateHelper
-   ->
-   ::Real
-   -- ^price
-   ::const Date &
-   -- ^immDate
-   ::const boost::shared_ptr< IborIndex > &
-   -- ^iborIndex
-   ::Rate
-   =0.0
    -- ^convexityAdjustment

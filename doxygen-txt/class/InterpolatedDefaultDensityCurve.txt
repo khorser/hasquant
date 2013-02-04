@@ -32,25 +32,3 @@ InterpolatedDefaultDensityCurve
    ::const Interpolator &
    =Interpolator()
    -- ^interpolator
-  InterpolatedDefaultDensityCurve
-   ->
-   ::const std::vector< Date > &
-   -- ^dates
-   ::const std::vector< Real > &
-   -- ^densities
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Calendar &
-   -- ^calendar
-   ::const Interpolator &
-   -- ^interpolator
-  InterpolatedDefaultDensityCurve
-   ->
-   ::const std::vector< Date > &
-   -- ^dates
-   ::const std::vector< Real > &
-   -- ^densities
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Interpolator &
-   -- ^interpolator

@@ -8,27 +8,7 @@ BlackConstantVol
    -- ^referenceDate
    ::const Calendar &
    -- ^
-   ::Volatility
-   -- ^volatility
-   ::const DayCounter &
-   -- ^dayCounter
-  BlackConstantVol
-   ->
-   ::const Date &
-   -- ^referenceDate
-   ::const Calendar &
-   -- ^
    ::const Handle< Quote > &
-   -- ^volatility
-   ::const DayCounter &
-   -- ^dayCounter
-  BlackConstantVol
-   ->
-   ::Natural
-   -- ^settlementDays
-   ::const Calendar &
-   -- ^
-   ::Volatility
    -- ^volatility
    ::const DayCounter &
    -- ^dayCounter

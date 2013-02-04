@@ -11,29 +11,11 @@ FlatHazardRate
    -- ^
   FlatHazardRate
    ->
-   ::const Date &
-   -- ^referenceDate
-   ::Rate
-   -- ^hazardRate
-   ::const DayCounter &
-   -- ^
-  FlatHazardRate
-   ->
    ::Natural
    -- ^settlementDays
    ::const Calendar &
    -- ^calendar
    ::const Handle< Quote > &
-   -- ^hazardRate
-   ::const DayCounter &
-   -- ^
-  FlatHazardRate
-   ->
-   ::Natural
-   -- ^settlementDays
-   ::const Calendar &
-   -- ^calendar
-   ::Rate
    -- ^hazardRate
    ::const DayCounter &
    -- ^

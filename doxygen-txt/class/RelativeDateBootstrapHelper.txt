@@ -6,7 +6,3 @@ RelativeDateBootstrapHelper
    ->
    ::const Handle< Quote > &
    -- ^quote
-  RelativeDateBootstrapHelper
-   ->
-   ::Real
-   -- ^quote

@@ -32,25 +32,3 @@ InterpolatedHazardRateCurve
    ::const Interpolator &
    =Interpolator()
    -- ^interpolator
-  InterpolatedHazardRateCurve
-   ->
-   ::const std::vector< Date > &
-   -- ^dates
-   ::const std::vector< Rate > &
-   -- ^hazardRates
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Calendar &
-   -- ^calendar
-   ::const Interpolator &
-   -- ^interpolator
-  InterpolatedHazardRateCurve
-   ->
-   ::const std::vector< Date > &
-   -- ^dates
-   ::const std::vector< Rate > &
-   -- ^hazardRates
-   ::const DayCounter &
-   -- ^dayCounter
-   ::const Interpolator &
-   -- ^interpolator
