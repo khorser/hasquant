@@ -1,6 +1,0 @@
-Position
-
- -e-
-  Type
-   Long
-   Short

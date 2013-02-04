@@ -3,6 +3,7 @@
 #include <ql/time/frequency.hpp>
 #include <ql/time/timeunit.hpp>
 #include <ql/compounding.hpp>
+#include <ql/position.hpp>
 
 #include <string.h>
 
@@ -94,6 +95,12 @@ static int monthValues[] =
   , December
   };
 
+static int positionValues[] =
+  {
+    Position::Long
+  , Position::Short
+  };
+
 int *qlEnumerationValue(const char *name, int *c) {
   if (!strcmp(name, "BusinessDayConvention")) {
     *c = sizeof(businessDayConventionValues)/sizeof(businessDayConventionValues[0]);
@@ -118,6 +125,9 @@ int *qlEnumerationValue(const char *name, int *c) {
   } else if (!strcmp(name, "Month")) {
     *c = sizeof(monthValues)/sizeof(monthValues[0]);
     return monthValues;
+  } else if (!strcmp(name, "Position")) {
+    *c = sizeof(positionValues)/sizeof(positionValues[0]);
+    return positionValues;
   } else {
     *c = 0;
     return 0;

@@ -40,6 +40,7 @@ Library
    , QuantLib.CashFlow.Leg
    , QuantLib.Time.Period
    , QuantLib.PricingEngine
+   , QuantLib.Position
    , QuantLib.Quote
    , QuantLib.Time.Schedule
    , QuantLib.Settings
