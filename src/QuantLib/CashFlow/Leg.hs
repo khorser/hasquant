@@ -1,9 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.CashFlow.Leg
   (
-  -- makers
     leg
-  -- accessors
+
   , startDate
   )
 where

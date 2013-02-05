@@ -1,10 +1,9 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Time.Calendar
   (
-  -- accessors
     adjust
   , advance
-  -- makers
+
   , noCalendar
   , nullCalendar
   , target

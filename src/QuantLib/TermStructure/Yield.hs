@@ -2,13 +2,12 @@
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.TermStructure.Yield
   (
-  -- makers
     depositRateHelper
   , fixedRateBondHelper
   , swapRateHelper'
   , piecewiseYieldCurve
   , piecewiseYieldCurve'
-  -- accessors
+
   , discount
   )
 where

@@ -1,10 +1,9 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Internal.Utils
   (
-  -- exceptions
     signalError
   , handleExceptions
-  -- object construction and access
+
   , Finalizable(..)
   , Upcastable(..)
   , upcast
@@ -18,6 +17,7 @@ module QuantLib.Internal.Utils
   , withObjects
   , getDynIntArray
   , getStaticIntArray
+
   -- re-exporting some popular stuff
   , Word
   , withCString

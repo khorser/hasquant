@@ -2,11 +2,10 @@
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.Time.Schedule
   (
-  -- makers
     schedule
   , schedule'
   , until
-  -- accessors
+
   , dates
   )
 where

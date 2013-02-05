@@ -1,2 +1,0 @@
--- |Returns whether or not the calendar is initialized.
-->bool

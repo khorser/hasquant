@@ -1,10 +1,9 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Time.Period
   (
-  -- makers
     period
   , fromFrequency
-  -- accessors
+
   , toFrequency
   )
 where
