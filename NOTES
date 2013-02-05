@@ -28,4 +28,6 @@ If needed, we could use FRP to model the propagation of changes in market data
 
 Introduce money data type parameterized by currency
 
-Implement show via operator <<
+Implement `show' via operator <<
+
+Plan: migrate business calculation first and then think of reusing math
