@@ -1,0 +1,2 @@
+-- |index gearing, i.e. multiplicative coefficient for the index
+->Real

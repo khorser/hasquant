@@ -1,0 +1,7 @@
+->
+::const Handle< BlackVolTermStructure > &
+-- ^fxRateBlackVolatility
+::const Handle< Quote > &
+-- ^underlyingFxCorrelation
+::const Handle< OptionletVolatilityStructure > &
+-- ^capletVolatility

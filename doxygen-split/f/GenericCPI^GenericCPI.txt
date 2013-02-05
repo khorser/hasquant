@@ -1,0 +1,14 @@
+->
+::Frequency
+-- ^frequency
+::bool
+-- ^revised
+::bool
+-- ^interpolated
+::const Period &
+-- ^lag
+::const Currency &
+-- ^ccy
+::const Handle< ZeroInflationTermStructure > &
+=Handle< ZeroInflationTermStructure >()
+-- ^ts

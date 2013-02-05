@@ -1,0 +1,31 @@
+-- |general constructor
+->
+::const boost::shared_ptr< FloatingRateCoupon > &
+-- ^underlying
+::Rate
+=Null< Rate >()
+-- ^callStrike
+::Position::Type
+=Position::Long
+-- ^callPosition
+::bool
+=false
+-- ^isCallITMIncluded
+::Rate
+=Null< Rate >()
+-- ^callDigitalPayoff
+::Rate
+=Null< Rate >()
+-- ^putStrike
+::Position::Type
+=Position::Long
+-- ^putPosition
+::bool
+=false
+-- ^isPutITMIncluded
+::Rate
+=Null< Rate >()
+-- ^putDigitalPayoff
+::const boost::shared_ptr< DigitalReplication > &
+=boost::shared_ptr< DigitalReplication >()
+-- ^replication

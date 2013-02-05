@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< HestonModel > &
+-- ^model
+::ComplexLogFormula
+-- ^cpxLog
+::const Integration &
+-- ^itg

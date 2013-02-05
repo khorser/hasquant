@@ -1,0 +1,7 @@
+->
+::Real
+-- ^value
+::Real
+-- ^prevPrimitive
+::Real
+-- ^xPrev

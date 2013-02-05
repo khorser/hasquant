@@ -1,0 +1,3 @@
+->Rate
+::const Date &
+-- ^fixingDate

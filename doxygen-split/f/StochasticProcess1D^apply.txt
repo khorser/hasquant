@@ -1,0 +1,6 @@
+-- |applies a change to the asset value. By default, it returns $ x + \Delta x $.
+->Real
+::Real
+-- ^x0
+::Real
+-- ^dx

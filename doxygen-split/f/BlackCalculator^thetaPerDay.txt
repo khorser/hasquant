@@ -1,0 +1,6 @@
+-- |Sensitivity to time to maturity per day, assuming 365 day per year.
+->Real
+::Real
+-- ^spot
+::Time
+-- ^maturity

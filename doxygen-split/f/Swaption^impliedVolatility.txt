@@ -1,0 +1,20 @@
+-- |implied volatility
+->Volatility
+::Real
+-- ^price
+::const Handle< YieldTermStructure > &
+-- ^discountCurve
+::Volatility
+-- ^guess
+::Real
+=1.0e-4
+-- ^accuracy
+::Natural
+=100
+-- ^maxEvaluations
+::Volatility
+=1.0e-7
+-- ^minVol
+::Volatility
+=4.0
+-- ^maxVol

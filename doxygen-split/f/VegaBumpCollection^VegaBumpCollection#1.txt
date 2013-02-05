@@ -1,0 +1,5 @@
+->
+::const std::vector< VegaBumpCluster > &
+-- ^allBumps
+::const boost::shared_ptr< MarketModel > &
+-- ^volStructure

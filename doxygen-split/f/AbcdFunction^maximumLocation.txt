@@ -1,0 +1,2 @@
+-- |time at which the volatility function reaches maximum (if any)
+->Real

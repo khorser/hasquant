@@ -1,0 +1,7 @@
+-- |shorts an instrument from the composite
+->void
+::const boost::shared_ptr< Instrument > &
+-- ^instrument
+::Real
+=1.0
+-- ^multiplier

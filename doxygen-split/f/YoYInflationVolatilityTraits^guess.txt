@@ -1,0 +1,9 @@
+->Real
+::Size
+-- ^i
+::const C *
+-- ^c
+::bool
+-- ^validData
+::Size
+-- ^

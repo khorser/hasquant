@@ -1,0 +1,6 @@
+-- |method to overload to compute grad_f, the first derivative of
+->void
+::Array &
+-- ^grad
+::const Array &
+-- ^x

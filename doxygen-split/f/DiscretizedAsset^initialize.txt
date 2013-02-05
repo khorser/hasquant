@@ -1,0 +1,5 @@
+->void
+::const boost::shared_ptr< Lattice > &
+-- ^
+::Time
+-- ^t

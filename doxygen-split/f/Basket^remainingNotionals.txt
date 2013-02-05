@@ -1,0 +1,6 @@
+-- |Vector of surviving notionals after losses between start and end date, recovery ignored.
+->std::vector< Real >
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate

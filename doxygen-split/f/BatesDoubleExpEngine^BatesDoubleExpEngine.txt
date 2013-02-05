@@ -1,0 +1,6 @@
+->
+::const boost::shared_ptr< BatesDoubleExpModel > &
+-- ^model
+::Size
+=144
+-- ^integrationOrder

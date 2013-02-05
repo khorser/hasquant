@@ -1,0 +1,12 @@
+->
+::Size
+-- ^dimensionality
+::unsigned long
+=0
+-- ^seed
+::bool
+=true
+-- ^randomStart
+::bool
+=false
+-- ^randomShift

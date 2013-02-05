@@ -1,0 +1,17 @@
+->
+::const boost::shared_ptr< MarketModelEvolver > &
+-- ^evolver
+::const std::vector< boost::shared_ptr< MarketModelEvolver > > &
+-- ^innerEvolvers
+::const MarketModelMultiProduct &
+-- ^underlying
+::const MarketModelExerciseValue &
+-- ^rebate
+::const MarketModelMultiProduct &
+-- ^hedge
+::const MarketModelExerciseValue &
+-- ^hedgeRebate
+::const ExerciseStrategy< CurveState > &
+-- ^hedgeStrategy
+::Real
+-- ^initialNumeraireValue

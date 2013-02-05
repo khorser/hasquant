@@ -1,0 +1,5 @@
+->void
+::const CurveState &
+-- ^
+::std::vector< Real > &
+-- ^results

@@ -1,0 +1,9 @@
+->TimeSeries< Volatility >
+::const TimeSeries< Volatility > &
+-- ^quoteSeries
+::Real
+-- ^
+::Real
+-- ^
+::Real
+-- ^

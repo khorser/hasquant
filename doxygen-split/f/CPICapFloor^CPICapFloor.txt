@@ -1,0 +1,28 @@
+->
+::Option::Type
+-- ^type
+::Real
+-- ^nominal
+::const Date &
+-- ^startDate
+::Real
+-- ^baseCPI
+::const Date &
+-- ^maturity
+::const Calendar &
+-- ^fixCalendar
+::BusinessDayConvention
+-- ^fixConvention
+::const Calendar &
+-- ^payCalendar
+::BusinessDayConvention
+-- ^payConvention
+::Rate
+-- ^strike
+::const Handle< ZeroInflationIndex > &
+-- ^infIndex
+::const Period &
+-- ^observationLag
+::CPI::InterpolationType
+=CPI::AsIndex
+-- ^observationInterpolation

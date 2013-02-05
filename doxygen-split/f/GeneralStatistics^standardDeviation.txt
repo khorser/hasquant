@@ -1,0 +1,2 @@
+-- |returns the standard deviation $ \sigma $, defined as the square root of the variance.
+->Real

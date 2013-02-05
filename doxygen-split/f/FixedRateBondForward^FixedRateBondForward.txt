@@ -1,0 +1,26 @@
+-- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
+->
+::const Date &
+-- ^valueDate
+::const Date &
+-- ^maturityDate
+::Position::Type
+-- ^type
+::Real
+-- ^strike
+::Natural
+-- ^settlementDays
+::const DayCounter &
+-- ^dayCounter
+::const Calendar &
+-- ^calendar
+::BusinessDayConvention
+-- ^businessDayConvention
+::const boost::shared_ptr< FixedRateBond > &
+-- ^fixedCouponBond
+::const Handle< YieldTermStructure > &
+=Handle< YieldTermStructure >()
+-- ^discountCurve
+::const Handle< YieldTermStructure > &
+=Handle< YieldTermStructure >()
+-- ^incomeDiscountCurve

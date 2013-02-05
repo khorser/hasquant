@@ -1,0 +1,6 @@
+->
+::const boost::shared_ptr< MarketModel > &
+-- ^volStructure
+::bool
+=true
+-- ^allowFactorwiseBumping

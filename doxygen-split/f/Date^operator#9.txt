@@ -1,0 +1,4 @@
+-- |returns a new date incremented by the given period
+->Date
+::const Period &
+-- ^

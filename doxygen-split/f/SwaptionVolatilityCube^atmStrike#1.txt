@@ -1,0 +1,5 @@
+->Rate
+::const Period &
+-- ^optionTenor
+::const Period &
+-- ^swapTenor

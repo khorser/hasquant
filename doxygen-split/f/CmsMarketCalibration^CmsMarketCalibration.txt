@@ -1,0 +1,9 @@
+->
+::Handle< SwaptionVolatilityStructure > &
+-- ^volCube
+::boost::shared_ptr< CmsMarket > &
+-- ^cmsMarket
+::const Matrix &
+-- ^weights
+::CalibrationType
+-- ^calibrationType

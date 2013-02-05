@@ -1,0 +1,7 @@
+->void
+::data_table &
+-- ^f
+::const std::vector< Size > &
+-- ^x
+::Real
+-- ^value

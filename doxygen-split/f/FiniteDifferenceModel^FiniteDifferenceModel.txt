@@ -1,0 +1,8 @@
+->
+::const operator_type &
+-- ^L
+::const bc_set &
+-- ^bcs
+::const std::vector< Time > &
+=std::vector< Time >()
+-- ^stoppingTimes

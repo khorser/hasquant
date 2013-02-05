@@ -1,0 +1,7 @@
+->void
+::Size
+-- ^time
+::Real
+-- ^exercise
+::Array &
+-- ^state

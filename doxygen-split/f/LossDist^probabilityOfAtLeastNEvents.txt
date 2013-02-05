@@ -1,0 +1,6 @@
+-- |Probability of at least n defaults
+->Real
+::int
+-- ^n
+::std::vector< Real > &
+-- ^p

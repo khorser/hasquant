@@ -1,0 +1,12 @@
+-- |Returns the period between two dates as a fraction of year.
+->Time
+::const Date &
+-- ^
+::const Date &
+-- ^
+::const Date &
+=Date()
+-- ^refPeriodStart
+::const Date &
+=Date()
+-- ^refPeriodEnd

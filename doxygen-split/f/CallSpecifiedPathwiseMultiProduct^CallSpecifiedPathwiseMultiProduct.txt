@@ -1,0 +1,8 @@
+->
+::const Clone< MarketModelPathwiseMultiProduct > &
+-- ^underlying
+::const Clone< ExerciseStrategy< CurveState > > &
+-- ^
+::const Clone< MarketModelPathwiseMultiProduct > &
+=Clone< MarketModelPathwiseMultiProduct >()
+-- ^rebate

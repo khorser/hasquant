@@ -1,0 +1,9 @@
+->
+::const std::vector< Time > &
+-- ^rateTimes
+::Size
+-- ^startIndex
+::Size
+-- ^endIndex
+::boost::shared_ptr< StrikedTypePayoff > &
+-- ^

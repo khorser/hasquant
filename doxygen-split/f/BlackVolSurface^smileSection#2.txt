@@ -1,0 +1,6 @@
+-- |returns the smile for a given option time
+->boost::shared_ptr< SmileSection >
+::Time
+-- ^
+::bool
+-- ^extrapolate

@@ -1,0 +1,7 @@
+-- |spot at-the-money volatility
+->Volatility
+::const Date &
+-- ^maturity
+::bool
+=false
+-- ^extrapolate

@@ -1,0 +1,11 @@
+->Disposable< Array >
+::Time
+-- ^t0
+::const Array &
+-- ^x0
+::Time
+-- ^dt
+::const Array &
+-- ^dw
+::const Array &
+-- ^y0

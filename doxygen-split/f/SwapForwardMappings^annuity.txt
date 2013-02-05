@@ -1,0 +1,10 @@
+-- |compute annuity of arbitrary swap-rate
+->Real
+::const CurveState &
+-- ^cs
+::Size
+-- ^startIndex
+::Size
+-- ^endIndex
+::Size
+-- ^numeraireIndex

@@ -1,0 +1,7 @@
+->Rate
+::const Date &
+-- ^d
+::const Rate
+-- ^r
+::const InflationTermStructure &
+-- ^iTS

@@ -1,0 +1,8 @@
+-- |variance between tMin and tMax of T-fixing rate: \[ \frac{\int_{tMin}^{tMax} f^2(T-u)du}{tMax-tMin} \]
+->Real
+::Time
+-- ^tMin
+::Time
+-- ^tMax
+::Time
+-- ^T

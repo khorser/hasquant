@@ -1,0 +1,2 @@
+-- |The term structure observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag.
+->Period

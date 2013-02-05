@@ -1,0 +1,5 @@
+->boost::shared_ptr< MarketModel >
+::const EvolutionDescription &
+-- ^
+::Size
+-- ^numberOfFactors

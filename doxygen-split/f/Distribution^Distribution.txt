@@ -1,0 +1,7 @@
+->
+::int
+-- ^nBuckets
+::Real
+-- ^xmin
+::Real
+-- ^xmax

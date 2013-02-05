@@ -1,0 +1,7 @@
+->
+::const CapFloor::arguments &
+-- ^args
+::const Date &
+-- ^referenceDate
+::const DayCounter &
+-- ^dayCounter

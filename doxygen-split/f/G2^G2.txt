@@ -1,0 +1,18 @@
+->
+::const Handle< YieldTermStructure > &
+-- ^termStructure
+::Real
+=0.1
+-- ^a
+::Real
+=0.01
+-- ^sigma
+::Real
+=0.1
+-- ^b
+::Real
+=0.01
+-- ^eta
+::Real
+=-0.75
+-- ^rho

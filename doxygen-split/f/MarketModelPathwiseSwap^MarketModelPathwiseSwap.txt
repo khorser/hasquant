@@ -1,0 +1,10 @@
+->
+::const std::vector< Time > &
+-- ^rateTimes
+::const std::vector< Time > &
+-- ^accruals
+::const std::vector< Rate > &
+-- ^strikes
+::Real
+=1.0
+-- ^multiplier

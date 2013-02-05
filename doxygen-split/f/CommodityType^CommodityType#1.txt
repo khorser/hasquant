@@ -1,0 +1,5 @@
+->
+::const std::string &
+-- ^code
+::const std::string &
+-- ^name

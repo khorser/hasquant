@@ -1,0 +1,7 @@
+->
+::const Period &
+-- ^tenor
+::const Handle< YieldTermStructure > &
+-- ^forwarding
+::const Handle< YieldTermStructure > &
+-- ^discounting

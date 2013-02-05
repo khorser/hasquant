@@ -1,0 +1,29 @@
+->
+::const Date &
+-- ^paymentDate
+::Real
+-- ^nominal
+::const boost::shared_ptr< IborIndex > &
+-- ^index
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate
+::Natural
+-- ^fixingDays
+::const DayCounter &
+-- ^dayCounter
+::Real
+-- ^gearing
+::Rate
+-- ^spread
+::const Date &
+-- ^refPeriodStart
+::const Date &
+-- ^refPeriodEnd
+::const boost::shared_ptr< Schedule > &
+-- ^observationsSchedule
+::Real
+-- ^lowerTrigger
+::Real
+-- ^upperTrigger

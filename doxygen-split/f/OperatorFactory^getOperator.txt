@@ -1,0 +1,9 @@
+->TridiagonalOperator
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^process
+::const Array &
+-- ^grid
+::Time
+-- ^residualTime
+::bool
+-- ^timeDependent

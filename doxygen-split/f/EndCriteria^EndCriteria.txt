@@ -1,0 +1,12 @@
+-- |Initialization constructor.
+->
+::Size
+-- ^maxIterations
+::Size
+-- ^maxStationaryStateIterations
+::Real
+-- ^rootEpsilon
+::Real
+-- ^functionEpsilon
+::Real
+-- ^gradientNormEpsilon

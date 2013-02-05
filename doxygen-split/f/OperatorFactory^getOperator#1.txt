@@ -1,0 +1,5 @@
+->TridiagonalOperator
+::const boost::shared_ptr< OneFactorModel::ShortRateDynamics > &
+-- ^process
+::const Array &
+-- ^grid

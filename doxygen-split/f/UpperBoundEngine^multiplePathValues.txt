@@ -1,0 +1,7 @@
+->void
+::Statistics &
+-- ^stats
+::Size
+-- ^outerPaths
+::Size
+-- ^innerPaths

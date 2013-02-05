@@ -1,0 +1,2 @@
+-- |return the performed number of iterations
+->Integer

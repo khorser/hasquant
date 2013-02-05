@@ -1,0 +1,5 @@
+->
+::const Array &
+-- ^volatilities
+::const std::vector< Time > &
+-- ^startTimes

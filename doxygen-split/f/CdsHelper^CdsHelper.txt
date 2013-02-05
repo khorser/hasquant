@@ -1,0 +1,27 @@
+->
+::const Handle< Quote > &
+-- ^quote
+::const Period &
+-- ^tenor
+::Integer
+-- ^settlementDays
+::const Calendar &
+-- ^calendar
+::Frequency
+-- ^frequency
+::BusinessDayConvention
+-- ^paymentConvention
+::DateGeneration::Rule
+-- ^rule
+::const DayCounter &
+-- ^dayCounter
+::Real
+-- ^recoveryRate
+::const Handle< YieldTermStructure > &
+-- ^discountCurve
+::bool
+=true
+-- ^settlesAccrual
+::bool
+=true
+-- ^paysAtDefaultTime

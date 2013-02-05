@@ -1,0 +1,7 @@
+-- |covarianceMatrix must be symmetric
+->
+::const Matrix &
+-- ^covarianceMatrix
+::Real
+=1.0e-12
+-- ^tolerance

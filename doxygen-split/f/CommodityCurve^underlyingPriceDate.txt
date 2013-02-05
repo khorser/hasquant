@@ -1,0 +1,7 @@
+->Date
+::const Date &
+-- ^date
+::const boost::shared_ptr< ExchangeContracts > &
+-- ^exchangeContracts
+::Integer
+-- ^nearbyOffset

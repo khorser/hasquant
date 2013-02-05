@@ -1,0 +1,4 @@
+-- |method to overload to compute the cost function value in x
+->Real
+::const Array &
+-- ^x

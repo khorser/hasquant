@@ -1,0 +1,10 @@
+->UnitOfMeasureConversion
+::const CommodityType &
+-- ^commodityType
+::const UnitOfMeasure &
+-- ^
+::const UnitOfMeasure &
+-- ^
+::UnitOfMeasureConversion::Type
+=UnitOfMeasureConversion::Derived
+-- ^type

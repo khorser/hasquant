@@ -1,0 +1,17 @@
+->
+::const Date &
+-- ^date
+::Money
+-- ^discountedAmount
+::Money
+-- ^undiscountedAmount
+::Money
+-- ^discountedPaymentAmount
+::Money
+-- ^undiscountedPaymentAmount
+::Real
+-- ^discountFactor
+::Real
+-- ^paymentDiscountFactor
+::bool
+-- ^finalized

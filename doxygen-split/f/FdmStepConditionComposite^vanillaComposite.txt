@@ -1,0 +1,13 @@
+->boost::shared_ptr< FdmStepConditionComposite >
+::const DividendSchedule &
+-- ^schedule
+::const boost::shared_ptr< Exercise > &
+-- ^exercise
+::const boost::shared_ptr< FdmMesher > &
+-- ^mesher
+::const boost::shared_ptr< FdmInnerValueCalculator > &
+-- ^calculator
+::const Date &
+-- ^refDate
+::const DayCounter &
+-- ^dayCounter

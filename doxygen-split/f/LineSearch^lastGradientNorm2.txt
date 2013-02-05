@@ -1,0 +1,2 @@
+-- |return square norm of last gradient
+->Real

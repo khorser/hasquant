@@ -1,0 +1,7 @@
+->Real
+::Natural
+-- ^i
+::Natural
+-- ^n
+::Real
+-- ^x

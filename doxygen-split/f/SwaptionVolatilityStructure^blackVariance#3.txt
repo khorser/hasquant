@@ -1,0 +1,11 @@
+-- |returns the Black variance for a given option tenor and swap length
+->Real
+::const Period &
+-- ^optionTenor
+::Time
+-- ^swapLength
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

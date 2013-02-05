@@ -1,0 +1,1 @@
+->const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &

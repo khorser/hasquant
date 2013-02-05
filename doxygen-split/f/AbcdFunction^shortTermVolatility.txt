@@ -1,0 +1,2 @@
+-- |volatility function value at time 0: \[ f(0) \]
+->Real

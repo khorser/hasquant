@@ -1,0 +1,12 @@
+->
+::Size
+-- ^steps
+::Real
+-- ^beta
+::Real
+-- ^jumpIntensity
+::Real
+-- ^eta
+::Real
+=1e-3
+-- ^eps

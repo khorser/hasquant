@@ -1,0 +1,7 @@
+->
+::const TimeGrid &
+-- ^times
+::const boost::shared_ptr< EarlyExercisePathPricer< PathType > > &
+-- ^
+::const boost::shared_ptr< YieldTermStructure > &
+-- ^termStructure

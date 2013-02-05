@@ -1,0 +1,2 @@
+-- |Vector of incremental basket losses under the current scenario.
+->std::vector< Loss >

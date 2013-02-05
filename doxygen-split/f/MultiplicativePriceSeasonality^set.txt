@@ -1,0 +1,7 @@
+->void
+::const Date &
+-- ^seasonalityBaseDate
+::const Frequency
+-- ^frequency
+::const std::vector< Rate >
+-- ^seasonalityFactors

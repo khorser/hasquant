@@ -1,0 +1,8 @@
+->bool
+::const Money &
+-- ^
+::const Money &
+-- ^
+::Size
+=42
+-- ^n

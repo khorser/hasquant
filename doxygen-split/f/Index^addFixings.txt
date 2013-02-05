@@ -1,0 +1,8 @@
+-- |stores historical fixings from a TimeSeries
+-- |the dates in the TimeSeries must be the actual calendar dates of the fixings; no settlement days must be used.
+->void
+::const TimeSeries< Real > &
+-- ^t
+::bool
+=false
+-- ^forceOverwrite

@@ -1,0 +1,4 @@
+-- |Returns the n-th optionlet as a new CapFloor with only one cash flow.
+->boost::shared_ptr< CapFloor >
+::const Size
+-- ^n

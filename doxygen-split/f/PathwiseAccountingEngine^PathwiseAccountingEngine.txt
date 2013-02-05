@@ -1,0 +1,9 @@
+->
+::const boost::shared_ptr< LogNormalFwdRateEuler > &
+-- ^evolver
+::const Clone< MarketModelPathwiseMultiProduct > &
+-- ^product
+::const boost::shared_ptr< MarketModel > &
+-- ^pseudoRootStructure
+::Real
+-- ^initialNumeraireValue

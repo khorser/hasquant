@@ -1,0 +1,9 @@
+-- |probability of default between two given times
+->Probability
+::Time
+-- ^
+::Time
+-- ^
+::bool
+=false
+-- ^extrapo

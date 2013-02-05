@@ -1,0 +1,6 @@
+-- |call cost function computation and it gradient
+->Real
+::Array &
+-- ^grad_f
+::const Array &
+-- ^x

@@ -1,0 +1,3 @@
+->bool
+::Restructuring::Type
+-- ^resType

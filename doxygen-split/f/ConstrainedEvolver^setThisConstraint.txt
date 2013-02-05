@@ -1,0 +1,6 @@
+-- |call before each path
+->void
+::const std::vector< Rate > &
+-- ^rateConstraints
+::const std::valarray< bool > &
+-- ^isConstraintActive

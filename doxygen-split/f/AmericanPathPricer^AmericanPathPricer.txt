@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< Payoff > &
+-- ^payoff
+::Size
+-- ^polynomOrder
+::LsmBasisSystem::PolynomType
+-- ^polynomType

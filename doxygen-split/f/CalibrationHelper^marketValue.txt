@@ -1,0 +1,2 @@
+-- |returns the actual price of the instrument (from volatility)
+->Real

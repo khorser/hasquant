@@ -1,0 +1,17 @@
+->Volatility
+::const Instrument &
+-- ^instrument
+::const PricingEngine &
+-- ^engine
+::SimpleQuote &
+-- ^volQuote
+::Real
+-- ^targetValue
+::Real
+-- ^accuracy
+::Natural
+-- ^maxEvaluations
+::Volatility
+-- ^minVol
+::Volatility
+-- ^maxVol

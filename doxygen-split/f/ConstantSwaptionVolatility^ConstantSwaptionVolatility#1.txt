@@ -1,0 +1,12 @@
+-- |fixed reference date, floating market data
+->
+::const Date &
+-- ^referenceDate
+::const Calendar &
+-- ^cal
+::BusinessDayConvention
+-- ^bdc
+::const Handle< Quote > &
+-- ^volatility
+::const DayCounter &
+-- ^dc

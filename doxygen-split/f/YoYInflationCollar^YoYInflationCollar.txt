@@ -1,0 +1,7 @@
+->
+::const Leg &
+-- ^yoyLeg
+::const std::vector< Rate > &
+-- ^capRates
+::const std::vector< Rate > &
+-- ^floorRates

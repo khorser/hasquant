@@ -1,0 +1,1 @@
+->AtomicDefault::Type

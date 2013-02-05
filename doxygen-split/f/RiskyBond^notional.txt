@@ -1,0 +1,4 @@
+->Real
+::Date
+=Date::minDate()
+-- ^date

@@ -1,0 +1,2 @@
+-- |whether or not the coupon fixes in arrears
+->bool

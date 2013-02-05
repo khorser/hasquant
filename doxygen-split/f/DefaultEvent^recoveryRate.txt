@@ -1,0 +1,4 @@
+-- |returns a value if the event lead to a settlement for the requested seniority. Specializations on the default atomics and recoveries could change the default policy.
+->Real
+::Seniority
+-- ^seniority

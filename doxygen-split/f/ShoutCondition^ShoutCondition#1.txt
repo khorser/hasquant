@@ -1,0 +1,7 @@
+->
+::const Array &
+-- ^intrinsicValues
+::Time
+-- ^resTime
+::Rate
+-- ^rate

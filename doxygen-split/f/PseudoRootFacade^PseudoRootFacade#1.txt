@@ -1,0 +1,9 @@
+->
+::const std::vector< Matrix > &
+-- ^covariancePseudoRoots
+::const std::vector< Rate > &
+-- ^rateTimes
+::const std::vector< Rate > &
+-- ^initialRates
+::const std::vector< Spread > &
+-- ^displacements

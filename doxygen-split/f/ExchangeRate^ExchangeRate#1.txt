@@ -1,0 +1,8 @@
+-- |the rate $ r $ is given with the convention that a unit of the source is worth $ r $ units of the target.
+->
+::const Currency &
+-- ^source
+::const Currency &
+-- ^target
+::Decimal
+-- ^rate

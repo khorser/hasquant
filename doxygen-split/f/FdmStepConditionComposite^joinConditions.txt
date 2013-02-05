@@ -1,0 +1,5 @@
+->boost::shared_ptr< FdmStepConditionComposite >
+::const boost::shared_ptr< FdmSnapshotCondition > &
+-- ^c1
+::const boost::shared_ptr< FdmStepConditionComposite > &
+-- ^c2

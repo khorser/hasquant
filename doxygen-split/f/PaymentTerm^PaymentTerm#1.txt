@@ -1,0 +1,9 @@
+->
+::const std::string &
+-- ^name
+::EventType
+-- ^eventType
+::Integer
+-- ^offsetDays
+::const Calendar &
+-- ^calendar

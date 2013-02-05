@@ -1,0 +1,7 @@
+->
+::const Matrix &
+-- ^originalVectors
+::Real
+-- ^multiplierCutOff
+::Real
+-- ^tolerance

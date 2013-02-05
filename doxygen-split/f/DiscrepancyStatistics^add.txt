@@ -1,0 +1,6 @@
+->void
+::const Sequence &
+-- ^sample
+::Real
+=1.0
+-- ^weight

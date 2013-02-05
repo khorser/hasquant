@@ -1,0 +1,6 @@
+-- |Actual basket losses between start and end date, taking the actual recovery rates of loss events into account.
+->Real
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate

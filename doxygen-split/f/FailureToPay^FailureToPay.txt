@@ -1,0 +1,6 @@
+->
+::const Period &
+-- ^grace
+::Real
+=1.e+6
+-- ^amount

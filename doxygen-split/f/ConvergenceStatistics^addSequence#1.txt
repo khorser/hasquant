@@ -1,0 +1,7 @@
+->void
+::DataIterator
+-- ^begin
+::DataIterator
+-- ^end
+::WeightIterator
+-- ^wbegin

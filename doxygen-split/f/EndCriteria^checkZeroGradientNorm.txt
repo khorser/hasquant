@@ -1,0 +1,6 @@
+-- |Test if the gradient norm variation is below gradientNormEpsilonTest if the gradient norm value is below gradientNormEpsilon
+->bool
+::const Real
+-- ^gNorm
+::EndCriteria::Type &
+-- ^ecType

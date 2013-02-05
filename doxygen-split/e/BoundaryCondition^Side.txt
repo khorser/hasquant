@@ -1,0 +1,4 @@
+-- |Possible enhancementsGeneralize for n-dimensional conditions
+None
+Upper
+Lower

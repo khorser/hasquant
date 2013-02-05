@@ -1,0 +1,5 @@
+->void
+::const Array &
+-- ^new_grid
+::T
+-- ^func

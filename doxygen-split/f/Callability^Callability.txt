@@ -1,0 +1,7 @@
+->
+::const Price &
+-- ^price
+::Type
+-- ^type
+::const Date &
+-- ^date

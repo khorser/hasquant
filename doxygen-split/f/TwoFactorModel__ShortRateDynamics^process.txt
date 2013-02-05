@@ -1,0 +1,2 @@
+-- |Joint process of the two variables.
+->boost::shared_ptr< StochasticProcess >

@@ -1,0 +1,2 @@
+-- |A FRA expires/settles on the valueDate
+->bool

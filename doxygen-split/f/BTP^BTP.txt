@@ -1,0 +1,11 @@
+->
+::const Date &
+-- ^maturityDate
+::Rate
+-- ^fixedRate
+::const Date &
+=Date()
+-- ^startDate
+::const Date &
+=Date()
+-- ^issueDate

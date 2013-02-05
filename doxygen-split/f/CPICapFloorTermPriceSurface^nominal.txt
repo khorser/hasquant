@@ -1,0 +1,3 @@
+-- |inspectors
+-- |you don't know if price() is a cap or a floor without checking the ZeroInflation ATM level.
+->Real

@@ -1,0 +1,4 @@
+->
+::unsigned long
+=0
+-- ^seed

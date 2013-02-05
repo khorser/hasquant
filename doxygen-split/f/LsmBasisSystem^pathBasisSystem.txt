@@ -1,0 +1,5 @@
+->std::vector< boost::function1< Real, Real > >
+::Size
+-- ^order
+::PolynomType
+-- ^polyType

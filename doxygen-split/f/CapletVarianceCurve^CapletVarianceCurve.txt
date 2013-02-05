@@ -1,0 +1,9 @@
+->
+::const Date &
+-- ^referenceDate
+::const std::vector< Date > &
+-- ^dates
+::const std::vector< Volatility > &
+-- ^capletVolCurve
+::const DayCounter &
+-- ^dayCounter

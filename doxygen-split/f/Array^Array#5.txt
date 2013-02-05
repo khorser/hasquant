@@ -1,0 +1,6 @@
+-- |creates the array from an iterable sequence
+->
+::ForwardIterator
+-- ^begin
+::ForwardIterator
+-- ^end

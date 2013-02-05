@@ -1,0 +1,6 @@
+->Rate
+::const Period &
+-- ^d
+::bool
+=true
+-- ^extrapolate

@@ -1,0 +1,8 @@
+-- |returns the expectation $ E(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $ of the process after a time interval $ \Delta t $ according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization.
+->Disposable< Array >
+::Time
+-- ^t0
+::const Array &
+-- ^x0
+::Time
+-- ^dt

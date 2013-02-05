@@ -1,0 +1,28 @@
+->
+::const Handle< Quote > &
+-- ^spread
+::const Period &
+-- ^tenor
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^calendar
+::const Period &
+-- ^fixedPeriod
+::BusinessDayConvention
+-- ^fixedConvention
+::const DayCounter &
+-- ^fixedDayCount
+::const Period &
+-- ^floatPeriod
+::BusinessDayConvention
+-- ^floatConvention
+::const DayCounter &
+-- ^floatDayCount
+::Real
+-- ^recoveryRate
+::const RelinkableHandle< YieldTermStructure > &
+-- ^yieldTS
+::const Period &
+=Period()
+-- ^integrationStepSize

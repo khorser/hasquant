@@ -1,0 +1,5 @@
+->TimeSeries< Real >
+::const TimeSeries< IntervalPrice > &
+-- ^
+::enum IntervalPrice::Type
+-- ^

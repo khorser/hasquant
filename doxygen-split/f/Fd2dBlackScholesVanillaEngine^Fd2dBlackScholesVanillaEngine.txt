@@ -1,0 +1,22 @@
+->
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^p1
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^p2
+::Real
+-- ^correlation
+::Size
+=100
+-- ^xGrid
+::Size
+=100
+-- ^yGrid
+::Size
+=50
+-- ^tGrid
+::Size
+=0
+-- ^dampingSteps
+::const FdmSchemeDesc &
+=FdmSchemeDesc::Hundsdorfer()
+-- ^schemeDesc

@@ -1,0 +1,3 @@
+->
+::const boost::shared_ptr< RendistatoCalculator > &
+-- ^r

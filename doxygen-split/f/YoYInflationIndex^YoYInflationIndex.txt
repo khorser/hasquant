@@ -1,0 +1,20 @@
+->
+::const std::string &
+-- ^familyName
+::const Region &
+-- ^region
+::bool
+-- ^revised
+::bool
+-- ^interpolated
+::bool
+-- ^ratio
+::Frequency
+-- ^frequency
+::const Period &
+-- ^availabilityLag
+::const Currency &
+-- ^currency
+::const Handle< YoYInflationTermStructure > &
+=Handle< YoYInflationTermStructure >()
+-- ^ts

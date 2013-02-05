@@ -1,0 +1,11 @@
+->
+::Real
+-- ^speed
+::Volatility
+-- ^vol
+::Real
+=0.0
+-- ^x0
+::Real
+=0.0
+-- ^level

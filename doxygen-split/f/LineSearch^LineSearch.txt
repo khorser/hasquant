@@ -1,0 +1,5 @@
+-- |Default constructor.
+->
+::Real
+=0.0
+-- ^

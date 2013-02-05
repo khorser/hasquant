@@ -1,0 +1,4 @@
+-- |Check moments (unit norm, zero mean and unit variance) of the distributions of M, Z, and Y by numerically integrating the respective density. Parameter tolerance is the maximum tolerable absolute error.
+->int
+::Real
+-- ^tolerance

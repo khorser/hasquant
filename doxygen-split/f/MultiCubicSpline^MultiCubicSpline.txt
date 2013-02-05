@@ -1,0 +1,8 @@
+->
+::const SplineGrid &
+-- ^grid
+::const data_table &
+-- ^y
+::const std::vector< bool > &
+=std::vector< bool >(20, false)
+-- ^ae

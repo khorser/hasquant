@@ -1,0 +1,9 @@
+-- |Brownian-bridge generator function.
+-- |Transforms an input sequence of random variates into a sequence of variations in a Brownian bridge path. begin The start iterator of the input sequence. end The end iterator of the input sequence. output The start iterator of the output sequence. To get the canonical Brownian bridge which starts and finishes at the same value, the first element of the input sequence must be zero. Conversely, to get a sloped bridge set the first element to a non-zero value. In this case, the final value in the bridge will be sqrt(last time point)*(first element of input sequence).
+->void
+::RandomAccessIterator1
+-- ^begin
+::RandomAccessIterator1
+-- ^end
+::RandomAccessIterator2
+-- ^output

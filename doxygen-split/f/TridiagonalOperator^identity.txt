@@ -1,0 +1,4 @@
+-- |identity instance
+->Disposable< TridiagonalOperator >
+::Size
+-- ^size

@@ -1,0 +1,4 @@
+-- |The step times are copied from the supplied vector times A vector containing the times at which the steps occur. This also defines the number of steps that will be generated. the starting time of the path is assumed to be 0 and must not be included
+->
+::const std::vector< Time > &
+-- ^times

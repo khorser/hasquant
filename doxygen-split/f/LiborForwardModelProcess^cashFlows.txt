@@ -1,0 +1,4 @@
+->Leg
+::Real
+=1.0
+-- ^amount

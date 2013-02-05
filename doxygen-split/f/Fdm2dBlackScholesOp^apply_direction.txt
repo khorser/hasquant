@@ -1,0 +1,5 @@
+->Disposable< Array >
+::Size
+-- ^direction
+::const Array &
+-- ^x

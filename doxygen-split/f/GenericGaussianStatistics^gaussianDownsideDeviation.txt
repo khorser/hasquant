@@ -1,0 +1,2 @@
+-- |returns the downside deviation, defined as the square root of the downside variance.
+->Real

@@ -1,0 +1,6 @@
+-- |instantaneous volatility at time t of the T-fixing rate: \[ f(T-t) \]
+->Real
+::Time
+-- ^t
+::Time
+-- ^T

@@ -1,0 +1,9 @@
+-- |spot volatility
+->Volatility
+::Time
+-- ^maturity
+::Real
+-- ^strike
+::bool
+=false
+-- ^extrapolate

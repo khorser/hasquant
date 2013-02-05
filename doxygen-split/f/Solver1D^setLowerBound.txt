@@ -1,0 +1,4 @@
+-- |sets the lower bound for the function domain
+->void
+::Real
+-- ^lowerBound

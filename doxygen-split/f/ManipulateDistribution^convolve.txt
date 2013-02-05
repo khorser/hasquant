@@ -1,0 +1,5 @@
+->Distribution
+::const Distribution &
+-- ^d1
+::const Distribution &
+-- ^d2

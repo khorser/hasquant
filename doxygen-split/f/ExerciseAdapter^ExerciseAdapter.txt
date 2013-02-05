@@ -1,0 +1,6 @@
+->
+::const Clone< MarketModelExerciseValue > &
+-- ^exercise
+::Size
+=1
+-- ^numberOfProducts

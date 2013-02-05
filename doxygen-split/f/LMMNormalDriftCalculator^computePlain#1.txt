@@ -1,0 +1,5 @@
+->void
+::const std::vector< Rate > &
+-- ^fwds
+::std::vector< Real > &
+-- ^drifts

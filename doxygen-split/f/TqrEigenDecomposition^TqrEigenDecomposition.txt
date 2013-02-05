@@ -1,0 +1,11 @@
+->
+::const Array &
+-- ^diag
+::const Array &
+-- ^sub
+::EigenVectorCalculation
+=WithEigenVector
+-- ^calc
+::ShiftStrategy
+=CloseEigenValue
+-- ^strategy

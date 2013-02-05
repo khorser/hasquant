@@ -1,0 +1,7 @@
+-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
+->Probability
+::Time
+-- ^t
+::bool
+=false
+-- ^extrapolate

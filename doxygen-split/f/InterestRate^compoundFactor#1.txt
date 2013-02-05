@@ -1,0 +1,13 @@
+-- |compound factor implied by the rate compounded between two dates
+-- |returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
+->Real
+::const Date &
+-- ^d1
+::const Date &
+-- ^d2
+::const Date &
+=Date()
+-- ^refStart
+::const Date &
+=Date()
+-- ^refEnd

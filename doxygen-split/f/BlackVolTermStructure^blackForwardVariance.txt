@@ -1,0 +1,11 @@
+-- |forward (at-the-money) variance
+->Real
+::const Date &
+-- ^date1
+::const Date &
+-- ^date2
+::Real
+-- ^strike
+::bool
+=false
+-- ^extrapolate

@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^process
+::const Handle< Quote > &
+-- ^currentAverage
+::Date
+-- ^startDate

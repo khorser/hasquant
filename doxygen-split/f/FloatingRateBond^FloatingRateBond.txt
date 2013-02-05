@@ -1,0 +1,56 @@
+->
+::Natural
+-- ^settlementDays
+::Real
+-- ^faceAmount
+::const Date &
+-- ^startDate
+::const Date &
+-- ^maturityDate
+::Frequency
+-- ^couponFrequency
+::const Calendar &
+-- ^calendar
+::const boost::shared_ptr< IborIndex > &
+-- ^iborIndex
+::const DayCounter &
+-- ^accrualDayCounter
+::BusinessDayConvention
+=Following
+-- ^accrualConvention
+::BusinessDayConvention
+=Following
+-- ^paymentConvention
+::Natural
+=Null< Natural >()
+-- ^fixingDays
+::const std::vector< Real > &
+=std::vector< Real >(1, 1.0)
+-- ^gearings
+::const std::vector< Spread > &
+=std::vector< Spread >(1, 0.0)
+-- ^spreads
+::const std::vector< Rate > &
+=std::vector< Rate >()
+-- ^caps
+::const std::vector< Rate > &
+=std::vector< Rate >()
+-- ^floors
+::bool
+=false
+-- ^inArrears
+::Real
+=100.0
+-- ^redemption
+::const Date &
+=Date()
+-- ^issueDate
+::const Date &
+=Date()
+-- ^stubDate
+::DateGeneration::Rule
+=DateGeneration::Backward
+-- ^rule
+::bool
+=false
+-- ^endOfMonth

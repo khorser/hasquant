@@ -1,0 +1,2 @@
+-- |update the randomizing vector and re-initialize the low discrepancy generator
+->void

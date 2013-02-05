@@ -1,0 +1,4 @@
+-- |return value indicates if the vector was linearly independent
+->bool
+::const Array &
+-- ^newVector

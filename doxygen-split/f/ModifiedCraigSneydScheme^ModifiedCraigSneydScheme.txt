@@ -1,0 +1,10 @@
+->
+::Real
+-- ^theta
+::Real
+-- ^mu
+::const boost::shared_ptr< FdmLinearOpComposite > &
+-- ^map
+::const std::vector< boost::shared_ptr< FdmDirichletBoundary > > &
+=std::vector< boost::shared_ptr< FdmDirichletBoundary > >()
+-- ^bc_set

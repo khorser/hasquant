@@ -1,0 +1,7 @@
+->
+::const FdmSolverDesc &
+-- ^solverDesc
+::const FdmSchemeDesc &
+-- ^schemeDesc
+::const boost::shared_ptr< FdmLinearOpComposite > &
+-- ^op

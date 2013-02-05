@@ -1,0 +1,6 @@
+->void
+::const Clone< MarketModelMultiProduct > &
+-- ^
+::Real
+=1.0
+-- ^multiplier

@@ -1,0 +1,9 @@
+-- |returns the volatility for a given option date and strike rate
+->Volatility
+::const Date &
+-- ^optionDate
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

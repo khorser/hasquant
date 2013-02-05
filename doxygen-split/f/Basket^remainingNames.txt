@@ -1,0 +1,6 @@
+-- |Vector of surviving issuers after defaults between start and end date.
+->std::vector< std::string >
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate

@@ -1,0 +1,17 @@
+->
+::const std::vector< std::string > &
+-- ^names
+::const std::vector< Real > &
+-- ^notionals
+::const boost::shared_ptr< Pool >
+-- ^pool
+::const std::vector< DefaultProbKey > &
+-- ^defaultKeys
+::const std::vector< boost::shared_ptr< RecoveryRateModel > > &
+-- ^rrModels
+::Real
+=0.0
+-- ^attachmentRatio
+::Real
+=1.0
+-- ^detachmentRatio

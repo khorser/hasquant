@@ -1,0 +1,2 @@
+-- |the settlementDays used for reference date calculation
+->Natural

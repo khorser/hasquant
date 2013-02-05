@@ -1,0 +1,9 @@
+->
+::const boost::shared_ptr< YoYInflationCoupon > &
+-- ^underlying
+::Rate
+=Null< Rate >()
+-- ^cap
+::Rate
+=Null< Rate >()
+-- ^floor

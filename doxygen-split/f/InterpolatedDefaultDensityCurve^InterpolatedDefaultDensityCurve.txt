@@ -1,0 +1,19 @@
+->
+::const std::vector< Date > &
+-- ^dates
+::const std::vector< Real > &
+-- ^densities
+::const DayCounter &
+-- ^dayCounter
+::const Calendar &
+=Calendar()
+-- ^calendar
+::const std::vector< Handle< Quote > > &
+=std::vector< Handle< Quote > >()
+-- ^jumps
+::const std::vector< Date > &
+=std::vector< Date >()
+-- ^jumpDates
+::const Interpolator &
+=Interpolator()
+-- ^interpolator

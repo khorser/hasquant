@@ -1,0 +1,5 @@
+->Real
+::const F &
+-- ^f
+::Real
+-- ^xAccuracy

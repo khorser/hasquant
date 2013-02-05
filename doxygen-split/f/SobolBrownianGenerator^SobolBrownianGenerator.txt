@@ -1,0 +1,13 @@
+->
+::Size
+-- ^factors
+::Size
+-- ^steps
+::Ordering
+-- ^ordering
+::unsigned long
+=0
+-- ^seed
+::SobolRsg::DirectionIntegers
+=SobolRsg::Jaeckel
+-- ^directionIntegers

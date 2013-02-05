@@ -1,0 +1,4 @@
+Spot
+Fwd
+PaSpot
+PaFwd

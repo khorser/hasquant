@@ -1,0 +1,3 @@
+->
+::boost::shared_ptr< Interpolation2D >
+-- ^decoratedInterpolation

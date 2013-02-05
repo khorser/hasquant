@@ -1,0 +1,20 @@
+->
+::bool
+-- ^payBondCoupon
+::const boost::shared_ptr< Bond > &
+-- ^bond
+::Real
+-- ^bondCleanPrice
+::const boost::shared_ptr< IborIndex > &
+-- ^iborIndex
+::Spread
+-- ^spread
+::const Schedule &
+=Schedule()
+-- ^floatSchedule
+::const DayCounter &
+=DayCounter()
+-- ^floatingDayCount
+::bool
+=true
+-- ^parAssetSwap

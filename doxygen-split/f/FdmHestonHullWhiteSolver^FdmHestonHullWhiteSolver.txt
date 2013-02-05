@@ -1,0 +1,12 @@
+->
+::const Handle< HestonProcess > &
+-- ^hestonProcess
+::const Handle< HullWhiteProcess > &
+-- ^hwProcess
+::Rate
+-- ^corrEquityShortRate
+::const FdmSolverDesc &
+-- ^solverDesc
+::const FdmSchemeDesc &
+=FdmSchemeDesc::Hundsdorfer()
+-- ^schemeDesc

@@ -1,0 +1,4 @@
+->IborLeg &
+::bool
+=true
+-- ^flag

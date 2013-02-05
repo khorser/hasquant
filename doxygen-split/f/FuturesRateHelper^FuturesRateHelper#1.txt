@@ -1,0 +1,12 @@
+->
+::const Handle< Quote > &
+-- ^price
+::const Date &
+-- ^immStartDate
+::const Date &
+-- ^endDate
+::const DayCounter &
+-- ^dayCounter
+::const Handle< Quote > &
+=Handle< Quote >()
+-- ^convexityAdjustment

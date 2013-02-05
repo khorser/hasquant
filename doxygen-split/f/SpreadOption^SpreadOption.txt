@@ -1,0 +1,5 @@
+->
+::const boost::shared_ptr< PlainVanillaPayoff > &
+-- ^payoff
+::const boost::shared_ptr< Exercise > &
+-- ^exercise

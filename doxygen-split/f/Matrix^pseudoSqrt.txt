@@ -1,0 +1,8 @@
+-- |Returns the pseudo square root of a real symmetric matrix.
+-- |Given a matrix $ M $, the result $ S $ is defined as the matrix such that $ S S^T = M. $ If the matrix is not positive semi definite, it can return an approximation of the pseudo square root using a (user selected) salvaging algorithm.For more information see: R. Rebonato and P. Jäckel, The most general methodology to create a valid correlation matrix for risk management and option pricing purposes, The Journal of Risk, 2(2), Winter 1999/2000. http://www.rebonato.com/correlationmatrix.pdfRevised and extended in "Monte Carlo Methods in Finance", by Peter Jäckel, Chapter 6.the given matrix must be symmetric. WarningHigham algorithm only works for correlation matrices.Tests the correctness of the results is tested by reproducing known good data.the correctness of the results is tested by checking returned values against numerical calculations.
+->const Disposable< Matrix >
+::const Matrix &
+-- ^
+::SalvagingAlgorithm::Type
+=SalvagingAlgorithm::None
+-- ^

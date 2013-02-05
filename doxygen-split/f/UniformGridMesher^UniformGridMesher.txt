@@ -1,0 +1,5 @@
+->
+::const boost::shared_ptr< FdmLinearOpLayout > &
+-- ^index
+::const std::vector< std::pair< Real, Real > > &
+-- ^boundaries

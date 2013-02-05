@@ -1,0 +1,19 @@
+->
+::const std::string &
+-- ^familyName
+::const Period &
+-- ^tenor
+::Natural
+-- ^settlementDays
+::Currency
+-- ^currency
+::const Calendar &
+-- ^calendar
+::const Period &
+-- ^fixedLegTenor
+::BusinessDayConvention
+-- ^fixedLegConvention
+::const DayCounter &
+-- ^fixedLegDayCounter
+::const boost::shared_ptr< IborIndex > &
+-- ^iborIndex

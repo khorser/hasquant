@@ -1,0 +1,6 @@
+-- |chain two conversion factors
+->UnitOfMeasureConversion
+::const UnitOfMeasureConversion &
+-- ^r1
+::const UnitOfMeasureConversion &
+-- ^r2

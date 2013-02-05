@@ -1,0 +1,5 @@
+->
+::const std::list< std::vector< Time > > &
+-- ^stoppingTimes
+::const Conditions &
+-- ^conditions

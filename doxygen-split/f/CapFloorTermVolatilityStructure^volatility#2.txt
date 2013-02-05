@@ -1,0 +1,9 @@
+-- |returns the volatility for a given end time and strike rate
+->Volatility
+::Time
+-- ^t
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

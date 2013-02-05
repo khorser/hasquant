@@ -1,0 +1,22 @@
+->
+::const Date &
+-- ^referenceDate
+::const Calendar &
+-- ^calendar
+::const DayCounter &
+-- ^dayCounter
+::const Period &
+-- ^lag
+::Frequency
+-- ^frequency
+::bool
+-- ^indexIsInterpolated
+::const Handle< YieldTermStructure > &
+-- ^yTS
+::const std::vector< Date > &
+-- ^dates
+::const std::vector< Rate > &
+-- ^rates
+::const Interpolator &
+=Interpolator()
+-- ^interpolator

@@ -1,0 +1,11 @@
+->
+::const boost::shared_ptr< LiborForwardModelProcess > &
+-- ^process
+::const boost::shared_ptr< OptionletVolatilityStructure > &
+-- ^capletVol
+::const Matrix &
+=Matrix()
+-- ^correlation
+::Size
+=1
+-- ^factors

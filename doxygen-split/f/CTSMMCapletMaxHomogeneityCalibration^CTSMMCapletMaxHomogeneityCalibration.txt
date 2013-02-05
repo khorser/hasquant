@@ -1,0 +1,16 @@
+->
+::const EvolutionDescription &
+-- ^evolution
+::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+-- ^corr
+::const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+-- ^displacedSwapVariances
+::const std::vector< Volatility > &
+-- ^capletVols
+::const boost::shared_ptr< CurveState > &
+-- ^cs
+::Spread
+-- ^displacement
+::Real
+=1.0
+-- ^caplet0Swaption1Priority

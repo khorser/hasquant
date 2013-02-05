@@ -1,0 +1,4 @@
+-- |returns the variance of observations below target, \[ \frac{N}{N-1} \mathrm{E}\left[ (x-t)^2 \;|\; x < t \right]. \] See Dembo and Freeman, "The Rules Of Risk", Wiley (2001).
+->Real
+::Real
+-- ^target

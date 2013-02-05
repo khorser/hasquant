@@ -1,0 +1,3 @@
+-- |earliest relevant date
+-- |The earliest date at which data are needed by the helper in order to provide a quote.
+->Date

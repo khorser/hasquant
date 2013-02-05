@@ -1,0 +1,2 @@
+-- |adjusted fixing (already divided by the base fixing)
+->Rate

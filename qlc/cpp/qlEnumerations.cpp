@@ -125,7 +125,7 @@ int *qlEnumerationValue(const char *name, int *c) {
   } else if (!strcmp(name, "Month")) {
     *c = sizeof(monthValues)/sizeof(monthValues[0]);
     return monthValues;
-  } else if (!strcmp(name, "Position")) {
+  } else if (!strcmp(name, "Side")) {
     *c = sizeof(positionValues)/sizeof(positionValues[0]);
     return positionValues;
   } else {

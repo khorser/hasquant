@@ -1,0 +1,9 @@
+->
+::const Handle< DefaultProbabilityTermStructure > &
+-- ^
+::Real
+-- ^recoveryRate
+::const Handle< YieldTermStructure > &
+-- ^termStructure
+::const Handle< Quote > &
+-- ^vol

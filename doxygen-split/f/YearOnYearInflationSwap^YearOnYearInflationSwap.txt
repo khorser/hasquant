@@ -1,0 +1,26 @@
+->
+::Type
+-- ^type
+::Real
+-- ^nominal
+::const Schedule &
+-- ^fixedSchedule
+::Rate
+-- ^fixedRate
+::const DayCounter &
+-- ^fixedDayCount
+::const Schedule &
+-- ^yoySchedule
+::const boost::shared_ptr< YoYInflationIndex > &
+-- ^yoyIndex
+::const Period &
+-- ^observationLag
+::Spread
+-- ^spread
+::const DayCounter &
+-- ^yoyDayCount
+::const Calendar &
+-- ^paymentCalendar
+::BusinessDayConvention
+=ModifiedFollowing
+-- ^paymentConvention

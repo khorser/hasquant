@@ -1,0 +1,5 @@
+-- |Generate a sequence of random default times, one for each name in the pool, and store the result in the Pool using method setTime(name). tmax denotes the maximum relevant time- default times > tmax are not computed but set to tmax + 1 instead to save coputation time.
+->void
+::Real
+=QL_MAX_REAL
+-- ^tmax

@@ -1,0 +1,9 @@
+-- |forward (at-the-money) volatility
+->Volatility
+::Time
+-- ^time1
+::Time
+-- ^time2
+::bool
+=false
+-- ^extrapolate

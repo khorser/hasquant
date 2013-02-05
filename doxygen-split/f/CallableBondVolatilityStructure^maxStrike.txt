@@ -1,0 +1,2 @@
+-- |the maximum strike for which the term structure can return vols
+->Rate

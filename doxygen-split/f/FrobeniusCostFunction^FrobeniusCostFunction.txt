@@ -1,0 +1,9 @@
+->
+::const Matrix &
+-- ^target
+::const boost::function< Disposable< Matrix >(const Array &, Size, Size)> &
+-- ^f
+::Size
+-- ^matrixSize
+::Size
+-- ^rank

@@ -1,0 +1,11 @@
+->FixedRateLeg &
+::Rate
+-- ^
+::const DayCounter &
+-- ^paymentDayCounter
+::Compounding
+=Simple
+-- ^comp
+::Frequency
+=Annual
+-- ^freq

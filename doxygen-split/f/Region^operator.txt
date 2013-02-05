@@ -1,0 +1,5 @@
+->bool
+::const Region &
+-- ^
+::const Region &
+-- ^

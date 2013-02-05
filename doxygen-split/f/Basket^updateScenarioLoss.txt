@@ -1,0 +1,5 @@
+-- |Based on the default times stored in the Pool for each name, update the vector of incremental basket losses (sorted by default time) for this basket. If zeroRecovery is set to true, losses are full notional amounts, otherwise loss give defaults.
+->void
+::bool
+=false
+-- ^zeroRecovery

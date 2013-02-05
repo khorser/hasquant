@@ -1,0 +1,19 @@
+->
+::const Date &
+-- ^referenceDate
+::const std::vector< boost::shared_ptr< typename Traits::helper > > &
+-- ^instruments
+::const DayCounter &
+-- ^dayCounter
+::const std::vector< Handle< Quote > > &
+=std::vector< Handle< Quote > >()
+-- ^jumps
+::const std::vector< Date > &
+=std::vector< Date >()
+-- ^jumpDates
+::Real
+=1.0e-12
+-- ^accuracy
+::const Interpolator &
+=Interpolator()
+-- ^i

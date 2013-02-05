@@ -1,0 +1,5 @@
+->Real
+::Real
+-- ^integralValue
+::const ConundrumIntegrand &
+-- ^integrand

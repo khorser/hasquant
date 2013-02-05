@@ -1,0 +1,6 @@
+->void
+::const std::vector< Rate > &
+-- ^swapRates
+::Size
+=0
+-- ^firstValidIndex

@@ -1,0 +1,10 @@
+-- |integral of the instantaneous covariance function between time t1 and t2 for T-fixing and S-fixing rates \[ \int_{t1}^{t2} f(T-t)f(S-t)dt \]
+->Real
+::Time
+-- ^t1
+::Time
+-- ^t2
+::Time
+-- ^T
+::Time
+-- ^S

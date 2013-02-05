@@ -1,0 +1,11 @@
+->
+::const Date &
+-- ^referenceDate
+::const std::vector< Date > &
+-- ^optionDates
+::const std::vector< Period > &
+-- ^swapTenors
+::const Matrix &
+-- ^volatilities
+::const DayCounter &
+-- ^dayCounter

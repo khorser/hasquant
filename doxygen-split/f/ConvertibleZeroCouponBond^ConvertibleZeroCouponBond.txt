@@ -1,0 +1,22 @@
+->
+::const boost::shared_ptr< Exercise > &
+-- ^exercise
+::Real
+-- ^conversionRatio
+::const DividendSchedule &
+-- ^dividends
+::const CallabilitySchedule &
+-- ^callability
+::const Handle< Quote > &
+-- ^creditSpread
+::const Date &
+-- ^issueDate
+::Natural
+-- ^settlementDays
+::const DayCounter &
+-- ^dayCounter
+::const Schedule &
+-- ^schedule
+::Real
+=100
+-- ^redemption

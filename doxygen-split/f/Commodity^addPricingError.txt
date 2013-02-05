@@ -1,0 +1,8 @@
+->void
+::PricingError::Level
+-- ^errorLevel
+::const std::string &
+-- ^error
+::const std::string &
+=""
+-- ^detail

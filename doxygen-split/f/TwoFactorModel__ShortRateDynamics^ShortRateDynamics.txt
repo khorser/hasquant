@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< StochasticProcess1D > &
+-- ^xProcess
+::const boost::shared_ptr< StochasticProcess1D > &
+-- ^yProcess
+::Real
+-- ^correlation

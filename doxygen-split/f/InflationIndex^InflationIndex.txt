@@ -1,0 +1,16 @@
+-- |An inflation index may return interpolated values. These are linearly interpolated values with act/act convention within a period. Note that stored "fixings" are always flat (constant) within a period and interpolated as needed. This is because interpolation adds an addional availability lag (because you always need the next period to give the previous period's value) and enables storage of the most recent uninterpolated value.
+->
+::const std::string &
+-- ^familyName
+::const Region &
+-- ^region
+::bool
+-- ^revised
+::bool
+-- ^interpolated
+::Frequency
+-- ^frequency
+::const Period &
+-- ^availabilitiyLag
+::const Currency &
+-- ^currency

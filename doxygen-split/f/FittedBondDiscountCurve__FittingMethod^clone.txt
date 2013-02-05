@@ -1,0 +1,2 @@
+-- |clone of the current object
+->std::auto_ptr< FittingMethod >

@@ -1,0 +1,5 @@
+->
+::const TimeGrid &
+-- ^timeGrid
+::Size
+-- ^n

@@ -1,12 +1,17 @@
+# create dirs f, v, e
+# and run with `for f in *.txt ; do perl split.pl $f ; done'
+
 @l = <>;
 $c = shift @l;
 chomp $c;
+$c =~ tr/<:>/[_]/;
+$c =~ tr/ //;
 
 $in = "";
 $inside = 0;
 $name = "";
 @def = ();
-@names = ();
+%names = ();
 
 sub w
 {
@@ -26,19 +31,19 @@ sub w
 for (@l)
 {
   chomp;
-  if (/^ -(f|v)-/)
+  if (/^ -(f|v|e)-/)
   {
-    $in = $1;
     w();
+    $in = $1;
     $inside = 0;
     next;
   }
-  elsif (/^   /)
+  elsif (/^   (.*)/)
   {
     $inside = 1;
-    push @def, $_;
+    push @def, $1;
   }
-  elsif (/^  \S+/)
+  elsif (/^  (\S.*)/)
   {
     if ($inside)
     {
@@ -48,10 +53,17 @@ for (@l)
     if (/^  (\w+)/)
     {
       $name = $1;
+      $i = 0;
+      while (exists $names{uc($name)})
+      {
+	  $i++;
+	  $name = "$1#$i";
+      }
+      $names{uc($name)} = 1;
     }
     else
     {
-      push @def, $_;
+      push @def, $1;
     }
   }
 }

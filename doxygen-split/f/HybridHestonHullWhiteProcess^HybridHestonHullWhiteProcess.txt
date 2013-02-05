@@ -1,0 +1,10 @@
+->
+::const boost::shared_ptr< HestonProcess > &
+-- ^hestonProcess
+::const boost::shared_ptr< HullWhiteForwardProcess > &
+-- ^hullWhiteProcess
+::Real
+-- ^corrEquityShortRate
+::Discretization
+=BSMHullWhite
+-- ^discretization

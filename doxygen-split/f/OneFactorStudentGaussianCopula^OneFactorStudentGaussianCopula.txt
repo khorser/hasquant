@@ -1,0 +1,11 @@
+->
+::const Handle< Quote > &
+-- ^correlation
+::int
+-- ^nm
+::Real
+=10
+-- ^maximum
+::Size
+=200
+-- ^integrationSteps

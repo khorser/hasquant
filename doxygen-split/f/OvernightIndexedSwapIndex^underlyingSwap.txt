@@ -1,0 +1,4 @@
+-- |WarningRelinking the term structure underlying the index will not have effect on the returned swap.
+->boost::shared_ptr< OvernightIndexedSwap >
+::const Date &
+-- ^fixingDate

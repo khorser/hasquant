@@ -1,0 +1,6 @@
+->
+::bool
+-- ^interpolated
+::const Handle< YoYInflationTermStructure > &
+=Handle< YoYInflationTermStructure >()
+-- ^ts

@@ -1,0 +1,21 @@
+->Time
+::const Leg &
+-- ^leg
+::Rate
+-- ^yield
+::const DayCounter &
+-- ^dayCounter
+::Compounding
+-- ^compounding
+::Frequency
+-- ^frequency
+::Duration::Type
+-- ^type
+::bool
+-- ^includeSettlementDateFlows
+::Date
+=Date()
+-- ^settlementDate
+::Date
+=Date()
+-- ^npvDate

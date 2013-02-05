@@ -1,0 +1,12 @@
+-- |Black volatility implied by the model.
+->Volatility
+::Real
+-- ^targetValue
+::Real
+-- ^accuracy
+::Size
+-- ^maxEvaluations
+::Volatility
+-- ^minVol
+::Volatility
+-- ^maxVol

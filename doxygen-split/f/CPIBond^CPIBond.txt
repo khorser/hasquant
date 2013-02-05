@@ -1,0 +1,27 @@
+->
+::Natural
+-- ^settlementDays
+::Real
+-- ^faceAmount
+::bool
+-- ^growthOnly
+::Real
+-- ^baseCPI
+::const Period &
+-- ^observationLag
+::const boost::shared_ptr< ZeroInflationIndex > &
+-- ^cpiIndex
+::CPI::InterpolationType
+-- ^observationInterpolation
+::const Schedule &
+-- ^schedule
+::const std::vector< Rate > &
+-- ^coupons
+::const DayCounter &
+-- ^accrualDayCounter
+::BusinessDayConvention
+=ModifiedFollowing
+-- ^paymentConvention
+::const Date &
+=Date()
+-- ^issueDate

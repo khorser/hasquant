@@ -1,0 +1,13 @@
+->
+::Option::Type
+-- ^optionType
+::Real
+-- ^strike
+::Real
+-- ^spot
+::DiscountFactor
+-- ^growth
+::Real
+-- ^stdDev
+::DiscountFactor
+-- ^discount

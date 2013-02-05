@@ -1,0 +1,15 @@
+->
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^
+::BusinessDayConvention
+-- ^bdc
+::const DayCounter &
+-- ^dc
+::const Period &
+-- ^observationLag
+::Frequency
+-- ^frequency
+::bool
+-- ^indexIsInterpolated

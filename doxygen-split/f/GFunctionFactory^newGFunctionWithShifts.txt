@@ -1,0 +1,5 @@
+->boost::shared_ptr< GFunction >
+::const CmsCoupon &
+-- ^coupon
+::const Handle< Quote > &
+-- ^meanReversion

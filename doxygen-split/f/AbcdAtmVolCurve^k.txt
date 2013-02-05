@@ -1,0 +1,2 @@
+-- |Returns k adjustment factors for option tenors used in interpolation.
+->std::vector< Real >

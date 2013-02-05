@@ -1,0 +1,2 @@
+-- |the latest date for which the curve can return values
+->Date

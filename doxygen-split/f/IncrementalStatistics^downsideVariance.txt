@@ -1,0 +1,2 @@
+-- |returns the downside variance, defined as \[ \frac{N}{N-1} \times \frac{ \sum_{i=1}^{N} \theta \times x_i^{2}}{ \sum_{i=1}^{N} w_i} \], where $ \theta $ = 0 if x > 0 and $ \theta $ =1 if x <0
+->Real

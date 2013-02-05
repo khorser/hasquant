@@ -1,0 +1,10 @@
+->
+::Frequency
+-- ^frequency
+::bool
+-- ^revised
+::bool
+-- ^interpolated
+::const Handle< YoYInflationTermStructure > &
+=Handle< YoYInflationTermStructure >()
+-- ^ts

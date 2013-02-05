@@ -1,0 +1,10 @@
+-- |Default constructor.
+->
+::Constraint &
+-- ^c
+::Real
+-- ^accuracy
+::Size
+-- ^maxiter
+::boost::shared_ptr< OptimizationMethod >
+-- ^om

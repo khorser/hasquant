@@ -1,0 +1,9 @@
+-- |forward (at-the-money) volatility
+->Volatility
+::const Date &
+-- ^date1
+::const Date &
+-- ^date2
+::bool
+=false
+-- ^extrapolate

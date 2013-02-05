@@ -1,0 +1,2 @@
+-- |returns the number of independent factors of the process
+->Size

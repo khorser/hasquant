@@ -1,0 +1,8 @@
+->
+::const Handle< Quote > &
+-- ^volatility
+::const Handle< YieldTermStructure > &
+-- ^termStructure
+::CalibrationErrorType
+=RelativePriceError
+-- ^calibrationErrorType

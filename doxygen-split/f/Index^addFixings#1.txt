@@ -1,0 +1,12 @@
+-- |stores historical fixings at the given dates
+-- |the dates passed as arguments must be the actual calendar dates of the fixings; no settlement days must be used.
+->void
+::DateIterator
+-- ^dBegin
+::DateIterator
+-- ^dEnd
+::ValueIterator
+-- ^vBegin
+::bool
+=false
+-- ^forceOverwrite

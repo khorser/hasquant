@@ -1,0 +1,9 @@
+-- |spot variance
+->Real
+::Time
+-- ^maturity
+::Real
+-- ^strike
+::bool
+=false
+-- ^extrapolate

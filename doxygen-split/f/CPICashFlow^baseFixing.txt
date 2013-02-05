@@ -1,0 +1,3 @@
+-- |value used on base date
+-- |This does not have to agree with index on that date.
+->Real

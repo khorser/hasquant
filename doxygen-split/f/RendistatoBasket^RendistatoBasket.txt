@@ -1,0 +1,7 @@
+->
+::const std::vector< boost::shared_ptr< BTP > > &
+-- ^btps
+::const std::vector< Real > &
+-- ^outstandings
+::const std::vector< Handle< Quote > > &
+-- ^cleanPriceQuotes

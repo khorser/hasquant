@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< BatesDetJumpModel > &
+-- ^model
+::Real
+-- ^relTolerance
+::Size
+-- ^maxEvaluations

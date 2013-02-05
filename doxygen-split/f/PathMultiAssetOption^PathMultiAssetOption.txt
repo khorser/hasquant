@@ -1,0 +1,4 @@
+->
+::const boost::shared_ptr< PricingEngine > &
+=boost::shared_ptr< PricingEngine >()
+-- ^engine

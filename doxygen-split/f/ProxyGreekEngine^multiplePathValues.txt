@@ -1,0 +1,7 @@
+->void
+::SequenceStatisticsInc &
+-- ^stats
+::std::vector< std::vector< SequenceStatisticsInc > > &
+-- ^modifiedStats
+::Size
+-- ^numberOfPaths

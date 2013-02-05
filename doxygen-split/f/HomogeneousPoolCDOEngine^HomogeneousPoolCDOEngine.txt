@@ -1,0 +1,5 @@
+->
+::const Handle< OneFactorCopula >
+-- ^copula
+::Size
+-- ^nBuckets

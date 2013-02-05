@@ -1,0 +1,13 @@
+->
+::Real
+-- ^gearing1
+::Real
+-- ^gearing2
+::Real
+-- ^spread1
+::Real
+-- ^spread2
+::Real
+-- ^initialValue
+::Real
+-- ^accrualFactor

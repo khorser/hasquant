@@ -1,0 +1,2 @@
+-- |returns next sample from the inverse cumulative distribution
+->const sample_type &

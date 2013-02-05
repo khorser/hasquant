@@ -1,0 +1,12 @@
+-- |Simple yield calculation based on underlying spot and forward values, taking into account underlying income. When $ t>0 $, call with: underlyingSpotValue=spotValue(t), forwardValue=strikePrice, to get current yield. For a repo, if $ t=0 $, impliedYield should reproduce the spot repo rate. For FRA's, this should reproduce the relevant zero rate at the FRA's maturityDate_;
+->InterestRate
+::Real
+-- ^underlyingSpotValue
+::Real
+-- ^forwardValue
+::Date
+-- ^settlementDate
+::Compounding
+-- ^compoundingConvention
+::DayCounter
+-- ^dayCounter

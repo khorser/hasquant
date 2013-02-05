@@ -1,0 +1,7 @@
+->Real
+::Real
+-- ^s
+::Real
+-- ^a
+::Real
+-- ^eps

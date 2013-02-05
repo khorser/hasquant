@@ -1,0 +1,5 @@
+->Array
+::const MultiPath &
+-- ^path
+::Size
+-- ^t

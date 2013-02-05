@@ -1,0 +1,4 @@
+-- |Returns the dsr[i]/df[j] jacobian between coterminal swap rates and forward rates
+->Disposable< Matrix >
+::const CurveState &
+-- ^cs

@@ -1,0 +1,14 @@
+->
+::const Date &
+-- ^maturityDate
+::Spread
+-- ^spread
+::const Handle< YieldTermStructure > &
+=Handle< YieldTermStructure >()
+-- ^fwdCurve
+::const Date &
+=Date()
+-- ^startDate
+::const Date &
+=Date()
+-- ^issueDate

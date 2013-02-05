@@ -1,0 +1,9 @@
+->void
+::Real
+-- ^open
+::Real
+-- ^close
+::Real
+-- ^high
+::Real
+-- ^low

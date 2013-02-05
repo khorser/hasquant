@@ -1,0 +1,6 @@
+-- |Difference in days between dates.
+->BigInteger
+::const Date &
+-- ^
+::const Date &
+-- ^

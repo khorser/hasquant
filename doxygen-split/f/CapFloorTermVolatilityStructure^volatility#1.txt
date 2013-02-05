@@ -1,0 +1,8 @@
+->Volatility
+::const Date &
+-- ^end
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

@@ -1,0 +1,10 @@
+->Real
+::Size
+-- ^i
+::Size
+-- ^j
+::Time
+-- ^u
+::const Array &
+=Null< Array >()
+-- ^x

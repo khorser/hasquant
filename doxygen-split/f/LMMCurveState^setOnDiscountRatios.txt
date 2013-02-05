@@ -1,0 +1,6 @@
+->void
+::const std::vector< DiscountFactor > &
+-- ^discRatios
+::Size
+=0
+-- ^firstValidIndex

@@ -1,0 +1,3 @@
+->DigitalIborLeg &
+::Rate
+-- ^strike

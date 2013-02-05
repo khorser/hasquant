@@ -1,0 +1,17 @@
+->
+::const Handle< Quote > &
+-- ^rate
+::Period
+-- ^periodToStart
+::Natural
+-- ^lengthInMonths
+::Natural
+-- ^fixingDays
+::const Calendar &
+-- ^calendar
+::BusinessDayConvention
+-- ^convention
+::bool
+-- ^endOfMonth
+::const DayCounter &
+-- ^dayCounter

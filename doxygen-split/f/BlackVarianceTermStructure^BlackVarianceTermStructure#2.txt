@@ -1,0 +1,13 @@
+-- |initialize with a fixed reference date
+->
+::const Date &
+-- ^referenceDate
+::const Calendar &
+=Calendar()
+-- ^cal
+::BusinessDayConvention
+=Following
+-- ^bdc
+::const DayCounter &
+=DayCounter()
+-- ^dc

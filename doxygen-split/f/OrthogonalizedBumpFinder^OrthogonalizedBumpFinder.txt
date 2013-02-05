@@ -1,0 +1,11 @@
+->
+::const VegaBumpCollection &
+-- ^bumps
+::const std::vector< VolatilityBumpInstrumentJacobian::Swaption > &
+-- ^swaptions
+::const std::vector< VolatilityBumpInstrumentJacobian::Cap > &
+-- ^caps
+::Real
+-- ^multiplierCutOff
+::Real
+-- ^tolerance

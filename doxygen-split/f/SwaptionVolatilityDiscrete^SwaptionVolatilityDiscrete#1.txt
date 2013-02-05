@@ -1,0 +1,13 @@
+->
+::const std::vector< Period > &
+-- ^optionTenors
+::const std::vector< Period > &
+-- ^swapTenors
+::const Date &
+-- ^referenceDate
+::const Calendar &
+-- ^cal
+::BusinessDayConvention
+-- ^bdc
+::const DayCounter &
+-- ^dc

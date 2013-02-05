@@ -1,0 +1,6 @@
+NoConversion
+-- ^do not perform conversions
+BaseCurrencyConversion
+-- ^convert both operands to the base currency before converting
+AutomatedConversion
+-- ^return the result in the currency of the first operand

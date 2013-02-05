@@ -1,0 +1,4 @@
+-- |utility method, calls indexFixing
+->Rate
+::const Date &
+-- ^onDate

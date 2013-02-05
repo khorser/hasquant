@@ -1,0 +1,9 @@
+-- |adds a sequence of data to the set, each with its weight
+-- |weights must be positive or null
+->void
+::DataIterator
+-- ^begin
+::DataIterator
+-- ^end
+::WeightIterator
+-- ^wbegin

@@ -1,0 +1,3 @@
+->DigitalCmsLeg &
+::Rate
+-- ^strike

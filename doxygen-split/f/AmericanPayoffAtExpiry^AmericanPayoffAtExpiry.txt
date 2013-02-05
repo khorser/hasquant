@@ -1,0 +1,11 @@
+->
+::Real
+-- ^spot
+::DiscountFactor
+-- ^discount
+::DiscountFactor
+-- ^dividendDiscount
+::Real
+-- ^variance
+::const boost::shared_ptr< StrikedTypePayoff > &
+-- ^payoff

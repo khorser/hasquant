@@ -1,0 +1,11 @@
+-- |returns the Black variance for a given option time and bondLength
+->Real
+::Time
+-- ^optionTime
+::Time
+-- ^bondLength
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

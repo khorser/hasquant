@@ -1,0 +1,5 @@
+->void
+::SequenceStatisticsInc &
+-- ^stats
+::Size
+-- ^numberOfPaths

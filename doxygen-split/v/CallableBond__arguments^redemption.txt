@@ -1,0 +1,2 @@
+-- |redemption = face amount * redemption / 100.
+::Real

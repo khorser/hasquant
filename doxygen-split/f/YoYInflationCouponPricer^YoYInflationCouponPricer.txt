@@ -1,0 +1,4 @@
+->
+::const Handle< YoYOptionletVolatilitySurface > &
+=Handle< YoYOptionletVolatilitySurface >()
+-- ^capletVol

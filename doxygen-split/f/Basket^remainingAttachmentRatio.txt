@@ -1,0 +1,6 @@
+-- |The remaining attachment amount is RAA = max (0, attachmentAmount - cumulatedLoss())The remaining attachment ratio is then RAR = RAA / remainingNotional()
+->Real
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate

@@ -1,0 +1,4 @@
+-- |This method modifies an array $ u $ so that it satisfies the given condition.
+->void
+::array_type &
+-- ^

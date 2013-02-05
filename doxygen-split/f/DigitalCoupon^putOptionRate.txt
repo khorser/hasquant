@@ -1,0 +1,2 @@
+-- |Returns the put option rate (multiplied by: nominal*accrualperiod*discount is the NPV of the option)
+->Rate

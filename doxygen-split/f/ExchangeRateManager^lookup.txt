@@ -1,0 +1,12 @@
+-- |Lookup the exchange rate between two currencies at a given date. If the given type is Direct, only direct exchange rates will be returned if available; if Derived, direct rates are still preferred but derived rates are allowed.Warningif two or more exchange-rate chains are possible which allow to specify a requested rate, it is unspecified which one is returned.
+->ExchangeRate
+::const Currency &
+-- ^source
+::const Currency &
+-- ^target
+::Date
+=Date()
+-- ^date
+::ExchangeRate::Type
+=ExchangeRate::Derived
+-- ^type

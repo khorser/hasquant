@@ -1,0 +1,2 @@
+-- |fixing dates of the rates to be averaged
+->std::vector< Date >

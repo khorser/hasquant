@@ -1,0 +1,6 @@
+->
+::Size
+-- ^dimensionality
+::BigNatural
+=0
+-- ^seed

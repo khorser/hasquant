@@ -1,0 +1,9 @@
+-- |returns the smile for a given option date and swap length
+->boost::shared_ptr< SmileSection >
+::const Date &
+-- ^optionDate
+::Time
+-- ^swapLength
+::bool
+=false
+-- ^extr

@@ -1,0 +1,11 @@
+-- |Default constructor.
+->
+::Real
+=1e-8
+-- ^eps
+::Real
+=0.05
+-- ^alpha
+::Real
+=0.65
+-- ^beta

@@ -1,0 +1,11 @@
+->
+::boost::shared_ptr< Pool >
+-- ^pool
+::const std::vector< DefaultProbKey > &
+-- ^defaultKeys
+::Handle< OneFactorCopula >
+-- ^copula
+::Real
+-- ^accuracy
+::long
+-- ^seed

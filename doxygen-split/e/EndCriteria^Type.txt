@@ -1,0 +1,7 @@
+None
+MaxIterations
+StationaryPoint
+StationaryFunctionValue
+StationaryFunctionAccuracy
+ZeroGradientNorm
+Unknown

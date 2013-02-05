@@ -1,0 +1,5 @@
+->std::vector< Real >
+::const TimeSeries< IntervalPrice > &
+-- ^
+::IntervalPrice::Type
+-- ^

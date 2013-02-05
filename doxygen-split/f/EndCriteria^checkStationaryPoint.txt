@@ -1,0 +1,10 @@
+-- |Test if the root variation is below rootEpsilon
+->bool
+::const Real
+-- ^xOld
+::const Real
+-- ^xNew
+::Size &
+-- ^statStateIterations
+::EndCriteria::Type &
+-- ^ecType

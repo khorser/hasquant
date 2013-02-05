@@ -1,0 +1,2 @@
+-- |derived from yoy swap rates
+->boost::shared_ptr< YoYInflationTermStructure >

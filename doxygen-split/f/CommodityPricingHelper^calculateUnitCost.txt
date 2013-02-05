@@ -1,0 +1,11 @@
+->Real
+::const CommodityType &
+-- ^commodityType
+::const CommodityUnitCost &
+-- ^unitCost
+::const Currency &
+-- ^baseCurrency
+::const UnitOfMeasure &
+-- ^baseUnitOfMeasure
+::const Date &
+-- ^evaluationDate

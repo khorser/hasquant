@@ -1,0 +1,2 @@
+-- |returns the initial values of the state variables
+->Disposable< Array >

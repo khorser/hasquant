@@ -1,0 +1,7 @@
+-- |returns the expected recovery rate at a future time conditional on some default event type and seniority.
+->Real
+::const Date &
+-- ^defaultDate
+::const DefaultProbKey &
+=DefaultProbKey()
+-- ^defaultKey

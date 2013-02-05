@@ -1,0 +1,5 @@
+->Rate
+::const Date &
+-- ^d
+::const Rate
+-- ^k

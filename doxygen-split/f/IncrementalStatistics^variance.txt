@@ -1,0 +1,2 @@
+-- |returns the variance, defined as \[ \frac{N}{N-1} \left\langle \left( x-\langle x \rangle \right)^2 \right\rangle. \]
+->Real

@@ -1,0 +1,31 @@
+-- |deprecated implied Z-spread.
+->Spread
+::const Leg &
+-- ^leg
+::const boost::shared_ptr< YieldTermStructure > &
+-- ^d
+::Real
+-- ^npv
+::const DayCounter &
+-- ^dayCounter
+::Compounding
+-- ^compounding
+::Frequency
+-- ^frequency
+::bool
+-- ^includeSettlementDateFlows
+::Date
+=Date()
+-- ^settlementDate
+::Date
+=Date()
+-- ^npvDate
+::Real
+=1.0e-10
+-- ^accuracy
+::Size
+=100
+-- ^maxIterations
+::Rate
+=0.0
+-- ^guess

@@ -1,0 +1,7 @@
+-- |spot at-the-money variance
+->Real
+::const Period &
+-- ^optionTenor
+::bool
+=false
+-- ^extrapolate

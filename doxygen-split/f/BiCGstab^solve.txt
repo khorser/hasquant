@@ -1,0 +1,6 @@
+->BiCGStabResult
+::const Array &
+-- ^b
+::const Array &
+=Array()
+-- ^x0

@@ -1,0 +1,4 @@
+->DigitalIborLeg &
+::const boost::shared_ptr< DigitalReplication > &
+=boost::shared_ptr< DigitalReplication >()
+-- ^replication

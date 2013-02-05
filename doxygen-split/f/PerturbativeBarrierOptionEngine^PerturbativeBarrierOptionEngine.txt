@@ -1,0 +1,9 @@
+->
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^
+::Natural
+=1
+-- ^order
+::bool
+=false
+-- ^zeroGamma

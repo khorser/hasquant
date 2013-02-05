@@ -1,0 +1,4 @@
+-- |marks the passed day as part of the weekend
+->void
+::Weekday
+-- ^

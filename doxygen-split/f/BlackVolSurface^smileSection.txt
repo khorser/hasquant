@@ -1,0 +1,6 @@
+-- |returns the smile for a given option tenor
+->boost::shared_ptr< SmileSection >
+::const Period &
+-- ^
+::bool
+-- ^extrapolate

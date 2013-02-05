@@ -1,0 +1,20 @@
+->
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^calendar
+::const DayCounter &
+-- ^dayCounter
+::Rate
+-- ^baseZeroRate
+::const Period &
+-- ^lag
+::Frequency
+-- ^frequency
+::bool
+-- ^indexIsInterpolated
+::const Handle< YieldTermStructure > &
+-- ^yTS
+::const boost::shared_ptr< Seasonality > &
+=boost::shared_ptr< Seasonality >()
+-- ^seasonality

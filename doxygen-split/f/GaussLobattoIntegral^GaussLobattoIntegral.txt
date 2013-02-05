@@ -1,0 +1,11 @@
+->
+::Size
+-- ^maxIterations
+::Real
+-- ^absAccuracy
+::Real
+=Null< Real >()
+-- ^relAccuracy
+::bool
+=true
+-- ^useConvergenceEstimate

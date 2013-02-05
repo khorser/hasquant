@@ -1,0 +1,11 @@
+->
+::Option::Type
+-- ^type
+::DiscountFactor
+-- ^discount
+::Real
+=0.0
+-- ^runningSum
+::Size
+=0
+-- ^pastFixings

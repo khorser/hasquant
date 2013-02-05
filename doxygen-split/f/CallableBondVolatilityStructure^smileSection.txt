@@ -1,0 +1,5 @@
+->boost::shared_ptr< SmileSection >
+::const Date &
+-- ^optionDate
+::const Period &
+-- ^bondTenor

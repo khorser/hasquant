@@ -1,0 +1,15 @@
+-- |Basis-point value.
+-- |Obtained by setting dy = 0.0001 in the 2nd-order Taylor series expansion.
+->Real
+::const Leg &
+-- ^leg
+::const InterestRate &
+-- ^yield
+::bool
+-- ^includeSettlementDateFlows
+::Date
+=Date()
+-- ^settlementDate
+::Date
+=Date()
+-- ^npvDate

@@ -1,0 +1,6 @@
+-- |Returns true iff the two day counters belong to the same derived class.
+->bool
+::const DayCounter &
+-- ^
+::const DayCounter &
+-- ^

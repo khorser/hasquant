@@ -1,0 +1,11 @@
+->
+::bool
+-- ^payer
+::const boost::shared_ptr< RiskyAssetSwap > &
+-- ^asw
+::const Date &
+-- ^expiry
+::Rate
+-- ^marketSpread
+::Volatility
+-- ^spreadVolatility

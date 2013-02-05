@@ -1,0 +1,4 @@
+-- |averaged shortfallness, defined as \[ \mathrm{E}\left[ t-x \;|\; x<t \right] \]
+->Real
+::Real
+-- ^target

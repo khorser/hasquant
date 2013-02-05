@@ -1,0 +1,7 @@
+->
+::const Parameter &
+-- ^fitting
+::Real
+-- ^alpha
+::Real
+-- ^sigma

@@ -1,0 +1,2 @@
+-- |accessor methods useful for doing pathwise vegas
+->const std::vector< Real > &

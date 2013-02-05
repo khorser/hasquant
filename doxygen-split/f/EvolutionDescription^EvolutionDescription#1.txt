@@ -1,0 +1,9 @@
+->
+::const std::vector< Time > &
+-- ^rateTimes
+::const std::vector< Time > &
+=std::vector< Time >()
+-- ^evolutionTimes
+::const std::vector< std::pair< Size, Size > > &
+=std::vector< range >()
+-- ^relevanceRates

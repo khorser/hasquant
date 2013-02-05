@@ -1,0 +1,7 @@
+->
+::double
+-- ^initialValue
+::double
+-- ^mue
+::double
+-- ^sigma

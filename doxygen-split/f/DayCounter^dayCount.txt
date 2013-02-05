@@ -1,0 +1,6 @@
+-- |Returns the number of days between two dates.
+->BigInteger
+::const Date &
+-- ^
+::const Date &
+-- ^

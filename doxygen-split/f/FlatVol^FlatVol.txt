@@ -1,0 +1,13 @@
+->
+::const std::vector< Volatility > &
+-- ^volatilities
+::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+-- ^corr
+::const EvolutionDescription &
+-- ^evolution
+::Size
+-- ^numberOfFactors
+::const std::vector< Rate > &
+-- ^initialRates
+::const std::vector< Spread > &
+-- ^displacements

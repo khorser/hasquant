@@ -1,0 +1,6 @@
+->
+::Real
+-- ^recovery
+::Seniority
+=NoSeniority
+-- ^sen

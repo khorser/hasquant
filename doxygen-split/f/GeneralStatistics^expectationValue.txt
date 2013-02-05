@@ -1,0 +1,6 @@
+-- |Expectation value of a function $ f $ on a given range $ \mathcal{R} $, i.e., \[ \mathrm{E}\left[f \;|\; \mathcal{R}\right] = \frac{\sum_{x_i \in \mathcal{R}} f(x_i) w_i}{ \sum_{x_i \in \mathcal{R}} w_i}. \] The range is passed as a boolean function returning true if the argument belongs to the range or false otherwise.The function returns a pair made of the result and the number of observations in the given range.
+->std::pair< Real, Size >
+::const Func &
+-- ^f
+::const Predicate &
+-- ^inRange

@@ -1,0 +1,4 @@
+-- |Sensitivity in percent to a percent change in the underlying spot price.
+->Real
+::Real
+-- ^spot

@@ -1,0 +1,9 @@
+->Rate
+::const Date &
+-- ^d
+::const Period &
+=Period(-1, Days)
+-- ^obsLag
+::bool
+=true
+-- ^extrapolate

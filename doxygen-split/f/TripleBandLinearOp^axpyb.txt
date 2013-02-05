@@ -1,0 +1,9 @@
+->void
+::const Array &
+-- ^a
+::const TripleBandLinearOp &
+-- ^x
+::const TripleBandLinearOp &
+-- ^y
+::const Array &
+-- ^b

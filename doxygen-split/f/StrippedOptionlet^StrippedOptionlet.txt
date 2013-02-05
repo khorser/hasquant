@@ -1,0 +1,17 @@
+->
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^calendar
+::BusinessDayConvention
+-- ^bdc
+::const boost::shared_ptr< IborIndex > &
+-- ^iborIndex
+::const std::vector< Date > &
+-- ^optionletDates
+::const std::vector< Rate > &
+-- ^strikes
+::const std::vector< std::vector< Handle< Quote > > > &
+-- ^
+::const DayCounter &
+-- ^dc

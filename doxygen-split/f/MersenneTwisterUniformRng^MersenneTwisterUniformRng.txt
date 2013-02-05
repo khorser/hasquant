@@ -1,0 +1,5 @@
+-- |if the given seed is 0, a random seed will be chosen based on clock()
+->
+::unsigned long
+=0
+-- ^seed

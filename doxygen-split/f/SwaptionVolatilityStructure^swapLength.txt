@@ -1,0 +1,4 @@
+-- |implements the conversion between swap tenor and swap (time) length
+->Time
+::const Period &
+-- ^swapTenor

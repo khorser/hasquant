@@ -1,0 +1,2 @@
+-- |Detachment point expressed as a fraction of the total pool notional.
+->Real

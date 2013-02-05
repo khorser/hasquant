@@ -1,0 +1,10 @@
+-- |add samples until the required absolute tolerance is reached
+->result_type
+::Real
+-- ^tolerance
+::Size
+=QL_MAX_INTEGER
+-- ^maxSamples
+::Size
+=1023
+-- ^minSamples

@@ -1,0 +1,7 @@
+->
+::const std::vector< Time > &
+-- ^rateTimes
+::const std::vector< Rate > &
+-- ^strikes
+::Real
+-- ^bumpSize_

@@ -1,0 +1,10 @@
+->
+::Real
+=1.0e-8
+-- ^epsfcn
+::Real
+=1.0e-8
+-- ^xtol
+::Real
+=1.0e-8
+-- ^gtol

@@ -1,0 +1,6 @@
+-- |remember that the strike uses the quoting convention
+->Real
+::const Date &
+-- ^d
+::Rate
+-- ^k

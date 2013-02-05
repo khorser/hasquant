@@ -1,0 +1,4 @@
+->
+::Period
+=3 *Months
+-- ^stepSize

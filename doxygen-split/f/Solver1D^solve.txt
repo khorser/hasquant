@@ -1,0 +1,10 @@
+-- |This method returns the zero of the function $ f $, determined with the given accuracy $ \epsilon $; depending on the particular solver, this might mean that the returned $ x $ is such that $ |f(x)| < \epsilon $, or that $ |x-\xi| < \epsilon $ where $ \xi $ is the real zero.This method contains a bracketing routine to which an initial guess must be supplied as well as a step used to scan the range of the possible bracketing values.
+->Real
+::const F &
+-- ^f
+::Real
+-- ^accuracy
+::Real
+-- ^guess
+::Real
+-- ^step

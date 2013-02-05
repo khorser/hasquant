@@ -1,0 +1,7 @@
+->
+::const Parameter &
+-- ^fitting
+::const boost::function< Real(Time)> &
+-- ^alpha
+::const boost::function< Real(Time)> &
+-- ^sigma

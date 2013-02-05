@@ -1,0 +1,7 @@
+->Real
+::const CommodityType &
+-- ^commodityType
+::const UnitOfMeasure &
+-- ^fromUnitOfMeasure
+::const UnitOfMeasure &
+-- ^toUnitOfMeasure

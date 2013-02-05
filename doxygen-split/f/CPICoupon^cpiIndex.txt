@@ -1,0 +1,2 @@
+-- |index used
+->boost::shared_ptr< ZeroInflationIndex >

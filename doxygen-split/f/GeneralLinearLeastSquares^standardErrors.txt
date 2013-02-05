@@ -1,0 +1,2 @@
+-- |standard parameter errors as given by Excel, R etc.
+->const Array &

@@ -1,0 +1,9 @@
+->Array
+::const boost::shared_ptr< EndCriteria > &
+-- ^endCriteria
+::const boost::shared_ptr< OptimizationMethod > &
+-- ^method
+::const Array &
+-- ^guess
+::bool
+-- ^isMeanReversionFixed

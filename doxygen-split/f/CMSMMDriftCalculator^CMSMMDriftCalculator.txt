@@ -1,0 +1,13 @@
+->
+::const Matrix &
+-- ^pseudo
+::const std::vector< Spread > &
+-- ^displacements
+::const std::vector< Time > &
+-- ^taus
+::Size
+-- ^numeraire
+::Size
+-- ^alive
+::Size
+-- ^spanningFwds

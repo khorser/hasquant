@@ -1,0 +1,3 @@
+->AverageBMALeg &
+::const std::vector< Real > &
+-- ^notionals

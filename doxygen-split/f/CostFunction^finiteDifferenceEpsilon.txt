@@ -1,0 +1,2 @@
+-- |Default epsilon for finite difference method :
+->Real

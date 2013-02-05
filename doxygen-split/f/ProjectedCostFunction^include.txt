@@ -1,0 +1,4 @@
+-- |returns whole set of parameters corresponding to the set
+->Disposable< Array >
+::const Array &
+-- ^projectedParameters

@@ -1,0 +1,6 @@
+->void
+::const value_type &
+-- ^value
+::Real
+=1.0
+-- ^weight

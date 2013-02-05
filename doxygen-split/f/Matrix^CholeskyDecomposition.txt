@@ -1,0 +1,6 @@
+->const Disposable< Matrix >
+::const Matrix &
+-- ^m
+::bool
+=false
+-- ^flexible

@@ -1,0 +1,2 @@
+-- |fixings of the underlying index to be averaged
+->std::vector< Rate >

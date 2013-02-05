@@ -1,0 +1,18 @@
+->
+::const std::vector< Time > &
+-- ^rateTimes
+::const std::vector< Real > &
+-- ^fixedAccruals
+::const std::vector< Real > &
+-- ^floatingAccruals
+::const std::vector< Real > &
+-- ^fixedStrikes
+::const std::vector< Real > &
+-- ^fixedMultipliers
+::const std::vector< Real > &
+-- ^floatingSpreads
+::const std::vector< Time > &
+-- ^paymentTimes
+::bool
+=true
+-- ^payer

@@ -1,0 +1,2 @@
+-- |output array of results of optimization problem
+->Array

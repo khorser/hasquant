@@ -1,0 +1,3 @@
+PartialTruncation
+FullTruncation
+Reflection

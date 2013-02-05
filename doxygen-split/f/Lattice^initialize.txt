@@ -1,0 +1,6 @@
+-- |initialize an asset at the given time.
+->void
+::DiscretizedAsset &
+-- ^
+::Time
+-- ^time

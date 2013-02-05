@@ -1,0 +1,8 @@
+-- |indefinite integral of the instantaneous covariance function at time t between T-fixing and S-fixing rates \[ \int f(T-t)f(S-t)dt \]
+->Real
+::Time
+-- ^t
+::Time
+-- ^T
+::Time
+-- ^S

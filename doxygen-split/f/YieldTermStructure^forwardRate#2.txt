@@ -1,0 +1,14 @@
+-- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
+->InterestRate
+::Time
+-- ^t1
+::Time
+-- ^t2
+::Compounding
+-- ^comp
+::Frequency
+=Annual
+-- ^freq
+::bool
+=false
+-- ^extrapolate

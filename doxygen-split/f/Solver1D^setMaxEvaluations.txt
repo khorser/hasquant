@@ -1,0 +1,4 @@
+-- |This method sets the maximum number of function evaluations for the bracketing routine. An error is thrown if a bracket is not found after this number of evaluations.
+->void
+::Size
+-- ^evaluations

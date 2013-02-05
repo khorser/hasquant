@@ -1,0 +1,6 @@
+-- |solve linear system with SOR approach
+->Disposable< Array >
+::const Array &
+-- ^rhs
+::Real
+-- ^tol

@@ -1,0 +1,6 @@
+-- |Binomial probability of n defaults using prob[0]
+->Real
+::int
+-- ^n
+::std::vector< Real > &
+-- ^p

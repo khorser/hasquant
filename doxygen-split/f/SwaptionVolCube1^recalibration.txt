@@ -1,0 +1,5 @@
+->void
+::Real
+-- ^beta
+::const Period &
+-- ^swapTenor

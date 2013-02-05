@@ -1,0 +1,19 @@
+-- |equivalent rate for a compounding period between two dates
+-- |The resulting rate is calculated taking the required day-counting rule into account.
+->InterestRate
+::const DayCounter &
+-- ^resultDC
+::Compounding
+-- ^comp
+::Frequency
+-- ^freq
+::Date
+-- ^d1
+::Date
+-- ^d2
+::const Date &
+=Date()
+-- ^refStart
+::const Date &
+=Date()
+-- ^refEnd

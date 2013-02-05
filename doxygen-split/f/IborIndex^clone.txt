@@ -1,0 +1,4 @@
+-- |returns a copy of itself linked to a different forwarding curve
+->boost::shared_ptr< IborIndex >
+::const Handle< YieldTermStructure > &
+-- ^forwarding

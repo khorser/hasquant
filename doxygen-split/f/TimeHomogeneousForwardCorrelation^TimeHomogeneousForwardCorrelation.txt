@@ -1,0 +1,5 @@
+->
+::const Matrix &
+-- ^fwdCorrelation
+::const std::vector< Time > &
+-- ^rateTimes

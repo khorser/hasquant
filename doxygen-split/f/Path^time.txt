@@ -1,0 +1,4 @@
+-- |time at the $ i $-th point
+->Time
+::Size
+-- ^i

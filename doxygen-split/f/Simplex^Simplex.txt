@@ -1,0 +1,4 @@
+-- |Constructor taking as input the characteristic length
+->
+::Real
+-- ^lambda

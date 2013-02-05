@@ -1,0 +1,10 @@
+-- |Default constructor.
+->
+::Constraint &
+-- ^c
+::Real
+=1e-4
+-- ^accuracy
+::Size
+=100
+-- ^maxiter

@@ -1,0 +1,5 @@
+-- |returns the difference between the new value and the old value
+->Real
+::Real
+=Null< Real >()
+-- ^value

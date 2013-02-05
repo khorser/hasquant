@@ -1,0 +1,9 @@
+->
+::Rate
+-- ^forwardValue
+::Date
+-- ^expiryDate
+::const Period &
+-- ^swapTenor
+::const boost::shared_ptr< SwaptionVolatilityStructure > &
+-- ^volatilityStructure

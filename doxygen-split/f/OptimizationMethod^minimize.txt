@@ -1,0 +1,6 @@
+-- |minimize the optimization problem P
+->EndCriteria::Type
+::Problem &
+-- ^P
+::const EndCriteria &
+-- ^endCriteria

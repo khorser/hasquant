@@ -1,0 +1,31 @@
+->
+::const Date &
+-- ^paymentDate
+::Real
+-- ^nominal
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate
+::Natural
+-- ^fixingDays
+::const boost::shared_ptr< SwapIndex > &
+-- ^index
+::Real
+=1.0
+-- ^gearing
+::Spread
+=0.0
+-- ^spread
+::const Date &
+=Date()
+-- ^refPeriodStart
+::const Date &
+=Date()
+-- ^refPeriodEnd
+::const DayCounter &
+=DayCounter()
+-- ^dayCounter
+::bool
+=false
+-- ^isInArrears

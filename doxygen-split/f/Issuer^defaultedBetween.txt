@@ -1,0 +1,11 @@
+-- |If a default event with the required seniority and.
+->boost::shared_ptr< DefaultEvent >
+::const Date &
+-- ^start
+::const Date &
+-- ^end
+::const DefaultProbKey &
+-- ^key
+::bool
+=false
+-- ^includeRefDate

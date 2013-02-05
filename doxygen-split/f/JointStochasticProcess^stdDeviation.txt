@@ -1,0 +1,7 @@
+->Disposable< Matrix >
+::Time
+-- ^t0
+::const Array &
+-- ^x0
+::Time
+-- ^dt

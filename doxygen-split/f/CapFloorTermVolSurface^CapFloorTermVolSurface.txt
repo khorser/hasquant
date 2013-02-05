@@ -1,0 +1,17 @@
+-- |floating reference date, floating market data
+->
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^calendar
+::BusinessDayConvention
+-- ^bdc
+::const std::vector< Period > &
+-- ^optionTenors
+::const std::vector< Rate > &
+-- ^strikes
+::const std::vector< std::vector< Handle< Quote > > > &
+-- ^volatilities
+::const DayCounter &
+=Actual365Fixed()
+-- ^dc

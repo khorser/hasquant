@@ -1,0 +1,15 @@
+-- |Cash-flow convexity.
+-- |The convexity of a string of cash flows is defined as \[ C = \frac{1}{P} \frac{\partial^2 P}{\partial y^2} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.
+->Real
+::const Leg &
+-- ^leg
+::const InterestRate &
+-- ^yield
+::bool
+-- ^includeSettlementDateFlows
+::Date
+=Date()
+-- ^settlementDate
+::Date
+=Date()
+-- ^npvDate

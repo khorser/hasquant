@@ -1,0 +1,2 @@
+-- |returns the error estimate $ \epsilon $, defined as the square root of the ratio of the variance to the number of samples.
+->Real

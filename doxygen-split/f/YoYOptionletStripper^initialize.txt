@@ -1,0 +1,8 @@
+-- |YoYOptionletStripper interface.
+->void
+::const boost::shared_ptr< YoYCapFloorTermPriceSurface > &
+-- ^
+::const boost::shared_ptr< YoYInflationCapFloorEngine > &
+-- ^
+::const Real
+-- ^slope

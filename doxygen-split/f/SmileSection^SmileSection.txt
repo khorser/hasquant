@@ -1,0 +1,9 @@
+->
+::const Date &
+-- ^d
+::const DayCounter &
+=DayCounter()
+-- ^dc
+::const Date &
+=Date()
+-- ^referenceDate

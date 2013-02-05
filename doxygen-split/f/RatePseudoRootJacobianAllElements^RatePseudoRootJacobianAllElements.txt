@@ -1,0 +1,11 @@
+->
+::const Matrix &
+-- ^pseudoRoot
+::Size
+-- ^aliveIndex
+::Size
+-- ^numeraire
+::const std::vector< Time > &
+-- ^taus
+::const std::vector< Spread > &
+-- ^displacements

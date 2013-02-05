@@ -1,0 +1,9 @@
+-- |returns the Black variance for a given option time and strike rate
+->Real
+::Time
+-- ^optionTime
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

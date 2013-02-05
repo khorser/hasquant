@@ -1,0 +1,5 @@
+->
+::boost::shared_ptr< Pool >
+-- ^pool
+::const std::vector< DefaultProbKey > &
+-- ^defaultKeys

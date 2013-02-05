@@ -1,0 +1,2 @@
+-- |returns whether the series contains any data
+->bool

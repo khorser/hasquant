@@ -1,0 +1,4 @@
+-- |$ y $-th percentile, defined as the value $ \bar{x} $ such that \[ y = \frac{\sum_{x_i < \bar{x}} w_i}{ \sum_i w_i} \]$ y $ must be in the range $ (0-1]. $
+->Real
+::Real
+-- ^y

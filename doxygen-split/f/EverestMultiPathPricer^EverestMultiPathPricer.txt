@@ -1,0 +1,7 @@
+->
+::Real
+-- ^notional
+::Rate
+-- ^guarantee
+::DiscountFactor
+-- ^discount

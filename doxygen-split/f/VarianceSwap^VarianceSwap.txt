@@ -1,0 +1,11 @@
+->
+::Position::Type
+-- ^position
+::Real
+-- ^strike
+::Real
+-- ^notional
+::const Date &
+-- ^startDate
+::const Date &
+-- ^maturityDate

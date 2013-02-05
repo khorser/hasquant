@@ -1,0 +1,5 @@
+->
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^process
+::Size
+-- ^timeSteps

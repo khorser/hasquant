@@ -1,0 +1,8 @@
+-- |instantaneous covariance at time t between T and S fixing rates: \[ f(T-u)f(S-u) \]
+->Real
+::Time
+-- ^u
+::Time
+-- ^T
+::Time
+-- ^S

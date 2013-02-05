@@ -1,0 +1,6 @@
+-- |returns the diffusion part of the equation, i.e. $ \sigma(t, \mathrm{x}_t) $
+->Disposable< Matrix >
+::Time
+-- ^t
+::const Array &
+-- ^x

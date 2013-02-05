@@ -1,0 +1,13 @@
+-- |Returns the volatility for a given maturity date and strike rate.
+-- |by default, inflation is observed with the lag of the term structure.Because inflation is highly linked to dates (for interpolation, periods, etc) time-based overload of the methods are not provided.
+->Volatility
+::const Date &
+-- ^maturityDate
+::Rate
+-- ^strike
+::const Period &
+=Period(-1, Days)
+-- ^obsLag
+::bool
+=false
+-- ^extrapolate

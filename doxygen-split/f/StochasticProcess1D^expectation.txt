@@ -1,0 +1,8 @@
+-- |returns the expectation $ E(x_{t_0 + \Delta t} | x_{t_0} = x_0) $ of the process after a time interval $ \Delta t $ according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization.
+->Real
+::Time
+-- ^t0
+::Real
+-- ^x0
+::Time
+-- ^dt

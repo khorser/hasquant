@@ -1,0 +1,10 @@
+->
+::const boost::shared_ptr< StrikedTypePayoff > &
+-- ^payoff
+::Real
+-- ^forward
+::Real
+-- ^stdDev
+::Real
+=1.0
+-- ^discount

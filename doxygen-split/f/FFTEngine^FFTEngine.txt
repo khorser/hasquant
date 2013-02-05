@@ -1,0 +1,5 @@
+->
+::const boost::shared_ptr< StochasticProcess1D > &
+-- ^process
+::Real
+-- ^logStrikeSpacing

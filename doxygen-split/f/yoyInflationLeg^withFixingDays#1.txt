@@ -1,0 +1,3 @@
+->yoyInflationLeg &
+::const std::vector< Natural > &
+-- ^fixingDays

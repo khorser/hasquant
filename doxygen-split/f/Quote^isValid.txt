@@ -1,0 +1,2 @@
+-- |returns true if the Quote holds a valid value
+->bool

@@ -1,0 +1,9 @@
+-- |returns the volatility for a given cap/floor length and strike rate
+->Volatility
+::const Period &
+-- ^length
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

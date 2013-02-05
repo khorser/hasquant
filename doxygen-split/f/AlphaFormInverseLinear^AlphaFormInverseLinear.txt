@@ -1,0 +1,6 @@
+->
+::const std::vector< Time > &
+-- ^times
+::Real
+=0.0
+-- ^alpha

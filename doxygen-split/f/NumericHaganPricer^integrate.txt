@@ -1,0 +1,7 @@
+->Real
+::Real
+-- ^a
+::Real
+-- ^b
+::const ConundrumIntegrand &
+-- ^Integrand

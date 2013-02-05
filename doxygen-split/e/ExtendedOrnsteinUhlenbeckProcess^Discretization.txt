@@ -1,0 +1,3 @@
+MidPoint
+Trapezodial
+GaussLobatto

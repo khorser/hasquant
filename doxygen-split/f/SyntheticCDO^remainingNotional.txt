@@ -1,0 +1,2 @@
+-- |Total outstanding tranche notional, not wiped out
+->Real

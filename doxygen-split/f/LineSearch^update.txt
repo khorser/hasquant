@@ -1,0 +1,9 @@
+->Real
+::Array &
+-- ^params
+::const Array &
+-- ^direction
+::Real
+-- ^beta
+::const Constraint &
+-- ^constraint

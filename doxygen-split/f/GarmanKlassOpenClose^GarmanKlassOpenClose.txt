@@ -1,0 +1,7 @@
+->
+::Real
+-- ^y
+::Real
+-- ^marketOpenFraction
+::Real
+-- ^a

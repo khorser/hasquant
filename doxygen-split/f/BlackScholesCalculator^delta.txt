@@ -1,0 +1,2 @@
+-- |Sensitivity to change in the underlying spot price.
+->Real

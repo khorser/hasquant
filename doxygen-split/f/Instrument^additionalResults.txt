@@ -1,0 +1,2 @@
+-- |returns all additional result returned by the pricing engine.
+->const std::map< std::string, boost::any > &

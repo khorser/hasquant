@@ -1,0 +1,2 @@
+-- |currency used for triangulated exchange when required
+->const Currency &

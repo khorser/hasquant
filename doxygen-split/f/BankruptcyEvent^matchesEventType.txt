@@ -1,0 +1,4 @@
+-- |This is a stronger than all event and will trigger all of them.
+->bool
+::const boost::shared_ptr< DefaultType > &
+-- ^

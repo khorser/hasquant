@@ -1,0 +1,10 @@
+-- |dimensionality must be <= PPMT_MAX_DIM
+->
+::Size
+-- ^dimensionality
+::unsigned long
+=0
+-- ^seed
+::DirectionIntegers
+=Jaeckel
+-- ^directionIntegers

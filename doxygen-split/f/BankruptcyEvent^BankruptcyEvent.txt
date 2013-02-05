@@ -1,0 +1,11 @@
+->
+::const Date &
+-- ^creditEventDate
+::const Currency &
+-- ^curr
+::Seniority
+-- ^bondsSen
+::const Date &
+-- ^settleDate
+::const std::map< Seniority, Real > &
+-- ^recoveryRates

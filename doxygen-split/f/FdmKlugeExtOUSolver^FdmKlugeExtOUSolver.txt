@@ -1,0 +1,10 @@
+->
+::const Handle< KlugeExtOUProcess > &
+-- ^klugeOUProcess
+::const boost::shared_ptr< YieldTermStructure > &
+-- ^rTS
+::const FdmSolverDesc &
+-- ^solverDesc
+::const FdmSchemeDesc &
+=FdmSchemeDesc::Hundsdorfer()
+-- ^schemeDesc

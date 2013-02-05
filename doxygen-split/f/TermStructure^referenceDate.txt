@@ -1,0 +1,2 @@
+-- |the date at which discount = 1.0 and/or variance = 0.0
+->const Date &

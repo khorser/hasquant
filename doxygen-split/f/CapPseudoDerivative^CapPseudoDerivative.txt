@@ -1,0 +1,11 @@
+->
+::boost::shared_ptr< MarketModel >
+-- ^inputModel
+::Real
+-- ^strike
+::Size
+-- ^startIndex
+::Size
+-- ^endIndex
+::Real
+-- ^firstDF

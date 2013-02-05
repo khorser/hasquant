@@ -1,0 +1,10 @@
+-- |the conversionFactor $ r $ is given with the convention that a unit of the source is worth $ r $ units of the target.
+->
+::const CommodityType &
+-- ^commodityType
+::const UnitOfMeasure &
+-- ^source
+::const UnitOfMeasure &
+-- ^target
+::Real
+-- ^conversionFactor

@@ -1,0 +1,9 @@
+-- |returns the smile for a given option date and swap tenor
+->boost::shared_ptr< SmileSection >
+::const Date &
+-- ^optionDate
+::const Period &
+-- ^swapTenor
+::bool
+=false
+-- ^extr

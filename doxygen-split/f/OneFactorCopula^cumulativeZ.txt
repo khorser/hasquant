@@ -1,0 +1,5 @@
+-- |Cumulative distribution of Z.
+-- |Derived classes must override this method and ensure zero mean and unit variance.
+->Real
+::Real
+-- ^z

@@ -1,0 +1,38 @@
+->
+::const std::vector< Real > &
+-- ^t
+::const std::vector< Real > &
+-- ^blackVols
+::Real
+=-0.06
+-- ^aGuess
+::Real
+=0.17
+-- ^bGuess
+::Real
+=0.54
+-- ^cGuess
+::Real
+=0.17
+-- ^dGuess
+::bool
+=false
+-- ^aIsFixed
+::bool
+=false
+-- ^bIsFixed
+::bool
+=false
+-- ^cIsFixed
+::bool
+=false
+-- ^dIsFixed
+::bool
+=false
+-- ^vegaWeighted
+::const boost::shared_ptr< EndCriteria > &
+=boost::shared_ptr< EndCriteria >()
+-- ^endCriteria
+::const boost::shared_ptr< OptimizationMethod > &
+=boost::shared_ptr< OptimizationMethod >()
+-- ^method

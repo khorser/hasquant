@@ -1,0 +1,2 @@
+-- |returns the last date for which a historical datum exists
+->Date

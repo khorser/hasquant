@@ -1,0 +1,11 @@
+->void
+::const std::vector< Rate > &
+-- ^oldRates
+::const std::vector< Real > &
+-- ^oneStepDFs
+::const std::vector< Rate > &
+-- ^newRates
+::const std::vector< Real > &
+-- ^gaussians
+::std::vector< Matrix > &
+-- ^B

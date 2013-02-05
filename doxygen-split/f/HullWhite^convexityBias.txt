@@ -1,0 +1,12 @@
+-- |Futures convexity bias (i.e., the difference between futures implied rate and forward rate) calculated as in G. Kirikos, D. Novak, "Convexity Conundrums", Risk Magazine, March 1997.t and T should be expressed in yearfraction using deposit day counter, F_quoted is futures' market price.
+->Rate
+::Real
+-- ^futurePrice
+::Time
+-- ^t
+::Time
+-- ^T
+::Real
+-- ^sigma
+::Real
+-- ^a

@@ -1,0 +1,17 @@
+->
+::const boost::shared_ptr< FdmMesher > &
+-- ^mesher
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^p1
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^p2
+::Real
+-- ^correlation
+::Time
+-- ^maturity
+::bool
+=false
+-- ^localVol
+::Real
+=-Null< Real >()
+-- ^illegalLocalVolOverwrite

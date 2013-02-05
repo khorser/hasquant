@@ -1,0 +1,5 @@
+->
+::Size
+-- ^n
+::const GaussianOrthogonalPolynomial &
+-- ^p

@@ -1,0 +1,2 @@
+-- |Attachment amount = attachmentRatio() * basketNotional()
+->Real

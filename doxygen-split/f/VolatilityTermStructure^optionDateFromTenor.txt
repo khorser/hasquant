@@ -1,0 +1,4 @@
+-- |period/date conversion
+->Date
+::const Period &
+-- ^

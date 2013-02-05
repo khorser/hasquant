@@ -1,0 +1,7 @@
+->Real
+::const Date &
+-- ^defaultDate
+::Real
+-- ^notional
+::Real
+-- ^recoveryRate

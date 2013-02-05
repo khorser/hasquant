@@ -1,0 +1,2 @@
+-- |volatility function value at time +inf: \[ f(\inf) \]
+->Real

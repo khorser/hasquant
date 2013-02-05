@@ -1,0 +1,3 @@
+->
+::boost::shared_ptr< AlphaForm >
+-- ^parametricform

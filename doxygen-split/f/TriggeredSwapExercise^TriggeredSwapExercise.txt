@@ -1,0 +1,7 @@
+->
+::const std::vector< Time > &
+-- ^rateTimes
+::const std::vector< Time > &
+-- ^exerciseTimes
+::const std::vector< Rate > &
+-- ^strikes

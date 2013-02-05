@@ -1,0 +1,6 @@
+->
+::const std::vector< boost::shared_ptr< StochasticProcess > > &
+-- ^l
+::Size
+=Null< Size >()
+-- ^factors

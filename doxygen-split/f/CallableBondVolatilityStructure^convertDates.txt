@@ -1,0 +1,6 @@
+-- |implements the conversion between dates and times
+->std::pair< Time, Time >
+::const Date &
+-- ^optionDate
+::const Period &
+-- ^bondTenor

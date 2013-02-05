@@ -1,0 +1,4 @@
+-- |informs the internal storage of a planned increase in size
+->void
+::Size
+-- ^n

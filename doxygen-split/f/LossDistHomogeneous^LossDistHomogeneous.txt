@@ -1,0 +1,8 @@
+->
+::Size
+-- ^nBuckets
+::Real
+-- ^maximum
+::Real
+=1e-6
+-- ^epsilon

@@ -1,0 +1,6 @@
+->
+::const T &
+-- ^stats
+::const U &
+=U()
+-- ^rule

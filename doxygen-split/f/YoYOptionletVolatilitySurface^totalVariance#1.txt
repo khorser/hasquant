@@ -1,0 +1,12 @@
+-- |returns the total integrated variance for a given option tenor and strike rate
+->Volatility
+::const Period &
+-- ^optionTenor
+::Rate
+-- ^strike
+::const Period &
+=Period(-1, Days)
+-- ^obsLag
+::bool
+=false
+-- ^extrapolate

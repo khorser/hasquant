@@ -1,0 +1,15 @@
+->
+::const Handle< Quote > &
+-- ^quote
+::const Period &
+-- ^swapObsLag_
+::const Date &
+-- ^maturity
+::const Calendar &
+-- ^calendar
+::BusinessDayConvention
+-- ^paymentConvention
+::const DayCounter &
+-- ^dayCounter
+::const boost::shared_ptr< YoYInflationIndex > &
+-- ^yii

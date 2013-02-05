@@ -1,0 +1,9 @@
+->Real
+::Real
+-- ^s
+::Real
+-- ^v
+::Rate
+-- ^r
+::Real
+-- ^eps

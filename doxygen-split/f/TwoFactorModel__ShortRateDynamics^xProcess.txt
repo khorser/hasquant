@@ -1,0 +1,2 @@
+-- |Risk-neutral dynamics of the first state variable x.
+->const boost::shared_ptr< StochasticProcess1D > &

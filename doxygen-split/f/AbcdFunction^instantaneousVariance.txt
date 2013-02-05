@@ -1,0 +1,6 @@
+-- |instantaneous variance at time t of T-fixing rate: \[ f(T-t)f(T-t) \]
+->Real
+::Time
+-- ^t
+::Time
+-- ^T

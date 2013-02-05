@@ -1,0 +1,10 @@
+-- |Tree build-up + numerical fitting to term-structure.
+->
+::const boost::shared_ptr< TrinomialTree > &
+-- ^tree
+::const boost::shared_ptr< ShortRateDynamics > &
+-- ^dynamics
+::const boost::shared_ptr< TermStructureFittingParameter::NumericalImpl > &
+-- ^phi
+::const TimeGrid &
+-- ^timeGrid

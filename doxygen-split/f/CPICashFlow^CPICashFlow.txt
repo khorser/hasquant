@@ -1,0 +1,22 @@
+->
+::Real
+-- ^notional
+::const boost::shared_ptr< ZeroInflationIndex > &
+-- ^index
+::const Date &
+-- ^baseDate
+::Real
+-- ^baseFixing
+::const Date &
+-- ^fixingDate
+::const Date &
+-- ^paymentDate
+::bool
+=false
+-- ^growthOnly
+::CPI::InterpolationType
+=CPI::AsIndex
+-- ^interpolation
+::const Frequency &
+=NoFrequency
+-- ^frequency

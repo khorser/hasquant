@@ -1,0 +1,8 @@
+-- |Returns the Z matrix to switch base from forward to constant maturity swap rates
+->Disposable< Matrix >
+::const CurveState &
+-- ^cs
+::const Size
+-- ^spanningForwards
+::const Spread
+-- ^displacement

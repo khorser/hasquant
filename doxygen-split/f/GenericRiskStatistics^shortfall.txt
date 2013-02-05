@@ -1,0 +1,4 @@
+-- |probability of missing the given target, defined as \[ \mathrm{E}\left[ \Theta \;|\; (-\infty,\infty) \right] \] where \[ \Theta(x) = \left\{ \begin{array}{ll} 1 & x < t \\ 0 & x \geq t \end{array} \right. \]
+->Real
+::Real
+-- ^target

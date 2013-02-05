@@ -1,0 +1,15 @@
+->
+::Real
+-- ^speed
+::Volatility
+-- ^sigma
+::Real
+-- ^x0
+::const boost::function< Real(Real)> &
+-- ^b
+::Discretization
+=MidPoint
+-- ^discretization
+::Real
+=1e-4
+-- ^intEps

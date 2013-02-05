@@ -1,0 +1,6 @@
+-- |returns the smile for a given option date
+->boost::shared_ptr< SmileSection >
+::const Date &
+-- ^
+::bool
+-- ^extrapolate

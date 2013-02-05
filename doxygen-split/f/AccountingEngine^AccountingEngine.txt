@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< MarketModelEvolver > &
+-- ^evolver
+::const Clone< MarketModelMultiProduct > &
+-- ^product
+::Real
+-- ^initialNumeraireValue

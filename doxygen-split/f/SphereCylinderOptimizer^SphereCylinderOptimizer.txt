@@ -1,0 +1,16 @@
+->
+::Real
+-- ^r
+::Real
+-- ^s
+::Real
+-- ^alpha
+::Real
+-- ^z1
+::Real
+-- ^z2
+::Real
+-- ^z3
+::Real
+=1.0
+-- ^zweight

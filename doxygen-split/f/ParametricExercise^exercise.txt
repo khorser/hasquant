@@ -1,0 +1,7 @@
+->bool
+::Size
+-- ^exerciseNumber
+::const std::vector< Real > &
+-- ^parameters
+::const std::vector< Real > &
+-- ^variables

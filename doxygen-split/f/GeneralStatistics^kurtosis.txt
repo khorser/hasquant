@@ -1,0 +1,2 @@
+-- |returns the excess kurtosis, defined as \[ \frac{N^2(N+1)}{(N-1)(N-2)(N-3)} \frac{\left\langle \left(x-\langle x \rangle \right)^4 \right\rangle}{\sigma^4} - \frac{3(N-1)^2}{(N-2)(N-3)}. \] The above evaluates to 0 for a Gaussian distribution.
+->Real

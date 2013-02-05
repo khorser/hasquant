@@ -1,0 +1,6 @@
+-- |Integral over the density $ \rho(m) $ of M and a one-dimensional function $ f $ of conditional probabilities related to the input vector of probabilities p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, f (\hat p_1, \hat p_2, \dots, \hat p_N), \qquad \hat p_i (m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]
+->Real
+::const F &
+-- ^f
+::std::vector< Real > &
+-- ^probabilities

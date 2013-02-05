@@ -1,0 +1,16 @@
+->
+::Size
+-- ^size
+::const boost::shared_ptr< StochasticProcess1D > &
+-- ^process
+::Time
+-- ^maturity
+::Size
+=10
+-- ^tAvgSteps
+::Real
+=0.0001
+-- ^epsilon
+::Real
+=Null< Real >()
+-- ^mandatoryPoint

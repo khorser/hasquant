@@ -1,0 +1,8 @@
+->
+::const VanillaOption::arguments &
+-- ^
+::const StochasticProcess &
+-- ^process
+::const TimeGrid &
+=TimeGrid()
+-- ^grid

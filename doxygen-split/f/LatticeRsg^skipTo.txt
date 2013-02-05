@@ -1,0 +1,4 @@
+-- |skip to the n-th sample in the low-discrepancy sequence
+->void
+::unsigned long
+-- ^n

@@ -1,0 +1,18 @@
+->
+::const std::string &
+-- ^name
+::const CommodityType &
+-- ^commodityType
+::const Currency &
+-- ^currency
+::const UnitOfMeasure &
+-- ^unitOfMeasure
+::const Calendar &
+-- ^calendar
+::const std::vector< Date > &
+-- ^dates
+::const std::vector< Real > &
+-- ^prices
+::const DayCounter &
+=Actual365Fixed()
+-- ^dayCounter

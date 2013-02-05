@@ -1,0 +1,4 @@
+Direct
+-- ^given directly by the user
+Derived
+-- ^derived from exchange rates between other currencies

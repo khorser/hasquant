@@ -1,0 +1,7 @@
+->Volatility
+::Size
+-- ^i
+::Time
+-- ^t
+::const Array &
+-- ^x

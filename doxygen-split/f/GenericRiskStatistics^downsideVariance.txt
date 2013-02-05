@@ -1,0 +1,2 @@
+-- |returns the variance of observations below 0.0, \[ \frac{N}{N-1} \mathrm{E}\left[ x^2 \;|\; x < 0\right]. \]
+->Real

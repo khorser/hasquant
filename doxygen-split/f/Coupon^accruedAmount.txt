@@ -1,0 +1,4 @@
+-- |accrued amount at the given date
+->Real
+::const Date &
+-- ^

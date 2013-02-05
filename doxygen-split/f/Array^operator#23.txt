@@ -1,0 +1,5 @@
+->const Disposable< Array >
+::const Array &
+-- ^
+::Real
+-- ^

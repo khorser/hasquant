@@ -1,0 +1,12 @@
+->
+::const Period &
+-- ^integrationStep
+::const Handle< DefaultProbabilityTermStructure > &
+-- ^
+::Real
+-- ^recoveryRate
+::const Handle< YieldTermStructure > &
+-- ^discountCurve
+::boost::optional< bool >
+=boost::none
+-- ^includeSettlementDateFlows

@@ -1,0 +1,15 @@
+-- |theoretical bond yield
+-- |The default bond settlement and theoretical price are used for calculation.
+->Rate
+::const DayCounter &
+-- ^dc
+::Compounding
+-- ^comp
+::Frequency
+-- ^freq
+::Real
+=1.0e-8
+-- ^accuracy
+::Size
+=100
+-- ^maxEvaluations

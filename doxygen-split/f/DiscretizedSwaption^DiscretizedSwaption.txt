@@ -1,0 +1,7 @@
+->
+::const Swaption::arguments &
+-- ^
+::const Date &
+-- ^referenceDate
+::const DayCounter &
+-- ^dayCounter

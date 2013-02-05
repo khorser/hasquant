@@ -1,0 +1,2 @@
+-- |return last function value
+->Real

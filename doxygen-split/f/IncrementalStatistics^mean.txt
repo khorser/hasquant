@@ -1,0 +1,2 @@
+-- |returns the mean, defined as \[ \langle x \rangle = \frac{\sum w_i x_i}{\sum w_i}. \]
+->Real

@@ -1,0 +1,9 @@
+->Disposable< Array >
+::const StochasticProcess &
+-- ^
+::Time
+-- ^t0
+::const Array &
+-- ^x0
+::Time
+-- ^dt

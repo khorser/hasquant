@@ -1,0 +1,5 @@
+->EndCriteria::Type
+::Problem &
+-- ^P
+::const EndCriteria &
+-- ^endCriteria

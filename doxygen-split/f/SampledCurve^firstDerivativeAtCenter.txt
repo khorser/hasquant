@@ -1,0 +1,2 @@
+-- |Possible enhancementsreplace or complement with a more general function firstDerivativeAt(spot)
+->Real

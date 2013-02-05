@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< RendistatoBasket > &
+-- ^basket
+::const boost::shared_ptr< Euribor > &
+-- ^euriborIndex
+::const Handle< YieldTermStructure > &
+-- ^discountCurve

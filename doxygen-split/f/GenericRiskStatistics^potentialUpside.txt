@@ -1,0 +1,5 @@
+-- |potential upside (the reciprocal of VAR) at a given percentile
+-- |percentile must be in range [90%-100%)
+->Real
+::Real
+-- ^percentile

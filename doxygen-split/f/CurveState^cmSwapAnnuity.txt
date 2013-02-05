@@ -1,0 +1,7 @@
+->Rate
+::Size
+-- ^numeraire
+::Size
+-- ^i
+::Size
+-- ^spanningForwards

@@ -1,0 +1,6 @@
+-- |call cost function gradient computation and increment
+->void
+::Array &
+-- ^grad_f
+::const Array &
+-- ^x

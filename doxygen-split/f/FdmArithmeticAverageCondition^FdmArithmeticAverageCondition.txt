@@ -1,0 +1,11 @@
+->
+::const std::vector< Time > &
+-- ^averageTimes
+::Real
+-- ^fixedSum
+::Size
+-- ^pastFixings
+::const boost::shared_ptr< FdmMesher > &
+-- ^mesher
+::Size
+-- ^equityDirection

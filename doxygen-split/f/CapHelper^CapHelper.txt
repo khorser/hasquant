@@ -1,0 +1,18 @@
+->
+::const Period &
+-- ^length
+::const Handle< Quote > &
+-- ^volatility
+::const boost::shared_ptr< IborIndex > &
+-- ^index
+::Frequency
+-- ^fixedLegFrequency
+::const DayCounter &
+-- ^fixedLegDayCounter
+::bool
+-- ^includeFirstSwaplet
+::const Handle< YieldTermStructure > &
+-- ^termStructure
+::CalibrationHelper::CalibrationErrorType
+=CalibrationHelper::RelativePriceError
+-- ^errorType

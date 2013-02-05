@@ -1,0 +1,5 @@
+->void
+::operator_type &
+-- ^
+::array_type &
+-- ^

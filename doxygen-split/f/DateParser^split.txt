@@ -1,0 +1,5 @@
+->std::vector< std::string >
+::const std::string &
+-- ^str
+::char
+-- ^delim

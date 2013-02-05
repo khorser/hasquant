@@ -1,0 +1,14 @@
+->
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^cal
+::const DayCounter &
+=DayCounter()
+-- ^dc
+::const std::vector< Handle< Quote > > &
+=std::vector< Handle< Quote > >()
+-- ^jumps
+::const std::vector< Date > &
+=std::vector< Date >()
+-- ^jumpDates

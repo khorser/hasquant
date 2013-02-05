@@ -1,0 +1,6 @@
+->
+::const boost::shared_ptr< VarianceGammaProcess > &
+-- ^process
+::Real
+=0.001
+-- ^logStrikeSpacing

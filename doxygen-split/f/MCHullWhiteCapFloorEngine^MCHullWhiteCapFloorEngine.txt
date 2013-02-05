@@ -1,0 +1,15 @@
+->
+::const boost::shared_ptr< HullWhite > &
+-- ^model
+::bool
+-- ^brownianBridge
+::bool
+-- ^antitheticVariate
+::Size
+-- ^requiredSamples
+::Real
+-- ^requiredTolerance
+::Size
+-- ^maxSamples
+::BigNatural
+-- ^seed

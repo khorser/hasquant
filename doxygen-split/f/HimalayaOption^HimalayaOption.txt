@@ -1,0 +1,5 @@
+->
+::const std::vector< Date > &
+-- ^fixingDates
+::Real
+-- ^strike

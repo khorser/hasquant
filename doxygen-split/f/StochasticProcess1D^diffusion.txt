@@ -1,0 +1,6 @@
+-- |returns the diffusion part of the equation, i.e. $ \sigma(t, x_t) $
+->Real
+::Time
+-- ^t
+::Real
+-- ^x

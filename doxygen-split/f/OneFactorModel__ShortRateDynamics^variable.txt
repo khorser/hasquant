@@ -1,0 +1,6 @@
+-- |Compute state variable from short rate.
+->Real
+::Time
+-- ^t
+::Rate
+-- ^r

@@ -1,0 +1,11 @@
+->
+::Size
+-- ^assetNumber
+::const boost::shared_ptr< Payoff > &
+-- ^payoff
+::Size
+=2
+-- ^polynomOrder
+::LsmBasisSystem::PolynomType
+=LsmBasisSystem::Monomial
+-- ^polynomType

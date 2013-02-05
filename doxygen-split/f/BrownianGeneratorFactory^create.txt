@@ -1,0 +1,5 @@
+->boost::shared_ptr< BrownianGenerator >
+::Size
+-- ^factors
+::Size
+-- ^steps

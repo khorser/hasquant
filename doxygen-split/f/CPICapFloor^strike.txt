@@ -1,0 +1,2 @@
+-- |$ K $ in the above formula.
+->Rate

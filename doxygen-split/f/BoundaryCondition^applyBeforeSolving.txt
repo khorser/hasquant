@@ -1,0 +1,6 @@
+-- |This method modifies an operator $ L $ before the linear system $ Lu' = u $ is solved so that $ u' $ will satisfy the given condition.
+->void
+::operator_type &
+-- ^
+::array_type &
+-- ^rhs

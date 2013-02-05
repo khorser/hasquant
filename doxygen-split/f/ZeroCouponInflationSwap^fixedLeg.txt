@@ -1,0 +1,2 @@
+-- |just one cashflow (that is not a coupon) in each leg
+->const Leg &

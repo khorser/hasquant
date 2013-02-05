@@ -1,0 +1,2 @@
+-- |during simulation put product at start of path
+->void

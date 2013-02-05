@@ -1,0 +1,12 @@
+-- |floating reference date, fixed market data
+->
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^cal
+::BusinessDayConvention
+-- ^bdc
+::Volatility
+-- ^volatility
+::const DayCounter &
+-- ^dc

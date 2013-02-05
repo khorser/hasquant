@@ -1,0 +1,4 @@
+-- |The step times are copied from the TimeGrid object timeGrid a time grid containing the times at which the steps will occur
+->
+::const TimeGrid &
+-- ^timeGrid

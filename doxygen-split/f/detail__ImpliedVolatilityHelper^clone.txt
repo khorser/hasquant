@@ -1,0 +1,6 @@
+-- |The returned process is equal to the passed one, except for the volatility which is flat and whose value is driven by the passed quote.
+->boost::shared_ptr< GeneralizedBlackScholesProcess >
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^
+::const boost::shared_ptr< SimpleQuote > &
+-- ^

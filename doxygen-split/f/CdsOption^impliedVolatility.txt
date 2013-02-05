@@ -1,0 +1,21 @@
+->Volatility
+::Real
+-- ^price
+::const Handle< YieldTermStructure > &
+-- ^termStructure
+::const Handle< DefaultProbabilityTermStructure > &
+-- ^
+::Real
+-- ^recoveryRate
+::Real
+=1.e-4
+-- ^accuracy
+::Size
+=100
+-- ^maxEvaluations
+::Volatility
+=1.0e-7
+-- ^minVol
+::Volatility
+=4.0
+-- ^maxVol

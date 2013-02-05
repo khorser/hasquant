@@ -1,0 +1,2 @@
+-- |the exchange rate (when available)
+->Decimal

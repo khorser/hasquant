@@ -1,0 +1,8 @@
+Constant
+Window
+Hourly
+Daily
+Weekly
+Monthly
+Quarterly
+Yearly

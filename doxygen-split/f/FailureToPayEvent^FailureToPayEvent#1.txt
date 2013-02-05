@@ -1,0 +1,13 @@
+->
+::const Date &
+-- ^creditEventDate
+::const Currency &
+-- ^curr
+::Seniority
+-- ^bondsSen
+::Real
+-- ^defaultedAmount
+::const Date &
+-- ^settleDate
+::Real
+-- ^recoveryRates

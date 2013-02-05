@@ -1,0 +1,14 @@
+-- |The resulting interest rate has the required daycounting rule.
+->InterestRate
+::const Date &
+-- ^d
+::const DayCounter &
+-- ^resultDayCounter
+::Compounding
+-- ^comp
+::Frequency
+=Annual
+-- ^freq
+::bool
+=false
+-- ^extrapolate

@@ -1,0 +1,6 @@
+-- |adjustment factors needed to match Black vols
+->std::vector< Real >
+::const std::vector< Real > &
+-- ^t
+::const std::vector< Real > &
+-- ^blackVols

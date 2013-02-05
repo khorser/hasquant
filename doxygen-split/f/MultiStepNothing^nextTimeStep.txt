@@ -1,0 +1,7 @@
+->bool
+::const CurveState &
+-- ^
+::std::vector< Size > &
+-- ^
+::std::vector< std::vector< CashFlow > > &
+-- ^

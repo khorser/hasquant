@@ -1,0 +1,2 @@
+-- |collected data
+->const std::vector< std::pair< Real, Real > > &

@@ -1,0 +1,6 @@
+->
+::const std::vector< Date > &
+-- ^dates
+::const std::vector< Size > &
+=std::vector< Size >()
+-- ^seconds

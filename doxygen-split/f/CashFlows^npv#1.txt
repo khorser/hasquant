@@ -1,0 +1,15 @@
+-- |NPV of the cash flows.
+-- |The IRR is the interest rate at which the NPV of the cash flows equals the dirty price.The NPV is the sum of the cash flows, each discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
+->Real
+::const Leg &
+-- ^leg
+::const InterestRate &
+-- ^yield
+::bool
+-- ^includeSettlementDateFlows
+::Date
+=Date()
+-- ^settlementDate
+::Date
+=Date()
+-- ^npvDate

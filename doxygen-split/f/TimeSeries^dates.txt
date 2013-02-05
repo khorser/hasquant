@@ -1,0 +1,2 @@
+-- |returns the dates for which historical data exist
+->std::vector< Date >

@@ -1,0 +1,7 @@
+->
+::boost::shared_ptr< MarketModel >
+-- ^inputModel
+::Size
+-- ^startIndex
+::Size
+-- ^endIndex

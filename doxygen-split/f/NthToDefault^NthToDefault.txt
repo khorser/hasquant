@@ -1,0 +1,28 @@
+->
+::Size
+-- ^n
+::const std::vector< Handle< DefaultProbabilityTermStructure > > &
+-- ^probabilities
+::Real
+-- ^recoveryRate
+::const Handle< OneFactorCopula > &
+-- ^copula
+::Protection::Side
+-- ^side
+::Real
+-- ^nominal
+::const Schedule &
+-- ^premiumSchedule
+::Rate
+-- ^premiumRate
+::const DayCounter &
+-- ^dayCounter
+::bool
+-- ^settlePremiumAccrual
+::const Handle< YieldTermStructure > &
+-- ^yieldTS
+::const Period &
+-- ^integrationStepSize
+::boost::shared_ptr< Claim >
+=boost::shared_ptr< Claim >()
+-- ^claim

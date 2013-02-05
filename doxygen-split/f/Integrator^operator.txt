@@ -1,0 +1,7 @@
+->Real
+::const boost::function< Real(Real)> &
+-- ^f
+::Real
+-- ^a
+::Real
+-- ^b

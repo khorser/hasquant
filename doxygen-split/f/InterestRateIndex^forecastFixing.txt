@@ -1,0 +1,4 @@
+-- |It can be overridden to implement particular conventions.
+->Rate
+::const Date &
+-- ^fixingDate

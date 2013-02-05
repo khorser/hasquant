@@ -1,0 +1,5 @@
+->void
+::const Handle< SwaptionVolatilityStructure > &
+-- ^volStructure
+::Real
+-- ^meanReversion

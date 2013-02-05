@@ -1,0 +1,3 @@
+->void
+::const TimeSeries< Volatility > &
+-- ^quoteSeries

@@ -1,0 +1,17 @@
+->
+::Option::Type
+-- ^optionType
+::const Handle< Quote > &
+-- ^forward
+::const Handle< Quote > &
+-- ^price
+::Real
+-- ^strike
+::Real
+-- ^guess
+::Real
+=1.0e-6
+-- ^accuracy
+::Natural
+=100
+-- ^maxIter

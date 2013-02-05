@@ -1,0 +1,2 @@
+-- |returns the number of dimensions of the stochastic process
+->Size

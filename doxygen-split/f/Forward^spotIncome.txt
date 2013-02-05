@@ -1,0 +1,4 @@
+-- |NPV of income/dividends/storage-costs etc. of underlying instrument.
+->Real
+::const Handle< YieldTermStructure > &
+-- ^incomeDiscountCurve

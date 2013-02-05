@@ -1,0 +1,2 @@
+-- |Expected tranche loss for all payment dates
+->std::vector< Real >

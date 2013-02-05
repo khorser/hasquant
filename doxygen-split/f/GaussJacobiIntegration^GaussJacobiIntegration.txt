@@ -1,0 +1,7 @@
+->
+::Size
+-- ^n
+::Real
+-- ^alpha
+::Real
+-- ^beta

@@ -1,0 +1,3 @@
+->bool
+::const FdmLinearOpIterator &
+-- ^iterator

@@ -1,0 +1,31 @@
+-- |attachment fraction of the LGD where protection starts detachment fraction of the LGD where protection ends nominals vector of basket nominal amounts basket default basket represented by a vector of default term structures that allow computing single name default probabilities depending on time copula one-factor copula protectionSeller sold protection if set to true, purchased otherwise premiumSchedule schedule for premium payments premiumRate annual premium rate, e.g. 0.05 for 5% p.a. dayCounter day count convention for the premium rate recoveryRate recovery rate as a fraction upfrontPremiumRate premium as a tranche notional fraction yieldTS yield term structure handle nBuckets number of distribution buckets integrationStep time step for integrating over one premium period; if larger than premium period length, a single step is taken
+->
+::Real
+-- ^attachment
+::Real
+-- ^detachment
+::const std::vector< Real > &
+-- ^nominals
+::const std::vector< Handle< DefaultProbabilityTermStructure > > &
+-- ^basket
+::const Handle< OneFactorCopula > &
+-- ^copula
+::bool
+-- ^protectionSeller
+::const Schedule &
+-- ^premiumSchedule
+::Rate
+-- ^premiumRate
+::const DayCounter &
+-- ^dayCounter
+::Rate
+-- ^recoveryRate
+::Rate
+-- ^upfrontPremiumRate
+::const Handle< YieldTermStructure > &
+-- ^yieldTS
+::Size
+-- ^nBuckets
+::const Period &
+=Period(10, Years)
+-- ^integrationStep

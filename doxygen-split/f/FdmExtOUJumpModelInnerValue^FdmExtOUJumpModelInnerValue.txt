@@ -1,0 +1,8 @@
+->
+::const boost::shared_ptr< Payoff > &
+-- ^payoff
+::const boost::shared_ptr< FdmMesher > &
+-- ^mesher
+::const boost::shared_ptr< Shape > &
+=boost::shared_ptr< Shape >()
+-- ^shape

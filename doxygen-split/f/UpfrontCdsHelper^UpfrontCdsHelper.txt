@@ -1,0 +1,33 @@
+-- |the upfront must be quoted in fractional units.
+->
+::const Handle< Quote > &
+-- ^upfront
+::Rate
+-- ^runningSpread
+::const Period &
+-- ^tenor
+::Integer
+-- ^settlementDays
+::const Calendar &
+-- ^calendar
+::Frequency
+-- ^frequency
+::BusinessDayConvention
+-- ^paymentConvention
+::DateGeneration::Rule
+-- ^rule
+::const DayCounter &
+-- ^dayCounter
+::Real
+-- ^recoveryRate
+::const Handle< YieldTermStructure > &
+-- ^discountCurve
+::Natural
+=0
+-- ^upfrontSettlementDays
+::bool
+=true
+-- ^settlesAccrual
+::bool
+=true
+-- ^paysAtDefaultTime

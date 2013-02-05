@@ -1,0 +1,14 @@
+-- |zero-coupon inflation rate.
+-- |Essentially the fair rate for a zero-coupon inflation swap (by definition), i.e. the zero term structure uses yearly compounding, which is assumed for ZCIIS instrument quotes.by default you get the same as lag and interpolation as the term structure. If you want to get predictions of RPI/CPI/etc then use an index.
+->Rate
+::const Date &
+-- ^d
+::const Period &
+=Period(-1, Days)
+-- ^instObsLag
+::bool
+=false
+-- ^forceLinearInterpolation
+::bool
+=false
+-- ^extrapolate

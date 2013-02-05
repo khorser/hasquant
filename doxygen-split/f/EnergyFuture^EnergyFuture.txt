@@ -1,0 +1,13 @@
+->
+::Integer
+-- ^buySell
+::const Quantity &
+-- ^quantity
+::const CommodityUnitCost &
+-- ^tradePrice
+::const boost::shared_ptr< CommodityIndex > &
+-- ^index
+::const CommodityType &
+-- ^commodityType
+::const boost::shared_ptr< SecondaryCosts > &
+-- ^secondaryCosts

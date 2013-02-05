@@ -1,0 +1,5 @@
+-- |Cumulative distribution of Y.
+-- |This is the default implementation based on tabulated data. The table needs to be filled by derived classes. If analytic calculation is feasible, this method can also be overridden.
+->Real
+::Real
+-- ^y

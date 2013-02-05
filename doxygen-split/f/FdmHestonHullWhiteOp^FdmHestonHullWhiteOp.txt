@@ -1,0 +1,9 @@
+->
+::const boost::shared_ptr< FdmMesher > &
+-- ^mesher
+::const boost::shared_ptr< HestonProcess > &
+-- ^hestonProcess
+::const boost::shared_ptr< HullWhiteProcess > &
+-- ^hwProcess
+::Real
+-- ^equityShortRateCorrelation

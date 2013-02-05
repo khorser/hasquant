@@ -1,0 +1,4 @@
+-- |Cumulative tranche loss up to end date under the current scenario.
+->Real
+::Date
+-- ^endDate

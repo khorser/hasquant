@@ -1,0 +1,7 @@
+->void
+::std::vector< Rate > &
+-- ^data
+::Rate
+-- ^level
+::Size
+-- ^i

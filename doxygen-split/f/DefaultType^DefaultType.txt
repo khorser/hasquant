@@ -1,0 +1,7 @@
+->
+::AtomicDefault::Type
+=AtomicDefault::Bankruptcy
+-- ^defType
+::Restructuring::Type
+=Restructuring::XR
+-- ^restType

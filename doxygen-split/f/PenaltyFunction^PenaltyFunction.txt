@@ -1,0 +1,9 @@
+->
+::Curve *
+-- ^curve
+::Size
+-- ^initialIndex
+::helper_iterator
+-- ^rateHelpersStart
+::helper_iterator
+-- ^rateHelpersEnd

@@ -1,0 +1,2 @@
+-- |(dirty) forward bond price
+->Real

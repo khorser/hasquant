@@ -1,0 +1,13 @@
+->
+::const std::string &
+-- ^familyName
+::const Period &
+-- ^tenor
+::Natural
+-- ^settlementDays
+::const Currency &
+-- ^currency
+::const Calendar &
+-- ^fixingCalendar
+::const DayCounter &
+-- ^dayCounter

@@ -1,0 +1,4 @@
+-- |Returns the recovery rate of a default event which has already settled.
+->Real
+::Seniority
+-- ^sen

@@ -1,0 +1,5 @@
+->
+::const xContainer &
+-- ^x
+::Real
+-- ^intercept

@@ -1,0 +1,4 @@
+-- |method to overload to compute the cost function values in x
+->Disposable< Array >
+::const Array &
+-- ^x

@@ -1,0 +1,11 @@
+->
+::const boost::shared_ptr< SequenceStatistics > &
+-- ^stats
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate
+::const Period &
+-- ^step
+::const std::vector< boost::shared_ptr< InterestRateIndex > > &
+-- ^indexes

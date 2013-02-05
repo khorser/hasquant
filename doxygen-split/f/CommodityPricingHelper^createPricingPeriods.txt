@@ -1,0 +1,15 @@
+->void
+::Date
+-- ^startDate
+::Date
+-- ^endDate
+::const Quantity &
+-- ^quantity
+::EnergyCommodity::DeliverySchedule
+-- ^deliverySchedule
+::EnergyCommodity::QuantityPeriodicity
+-- ^qtyPeriodicity
+::const PaymentTerm &
+-- ^paymentTerm
+::PricingPeriods &
+-- ^pricingPeriods

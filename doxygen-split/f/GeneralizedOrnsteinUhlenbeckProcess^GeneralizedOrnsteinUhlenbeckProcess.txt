@@ -1,0 +1,11 @@
+->
+::const boost::function< Real(Time)> &
+-- ^speed
+::const boost::function< Real(Time)> &
+-- ^vol
+::Real
+=0.0
+-- ^x0
+::Real
+=0.0
+-- ^level

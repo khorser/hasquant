@@ -1,0 +1,7 @@
+->
+::Size
+-- ^dimensionality
+::const std::vector< Real > &
+-- ^z
+::Size
+-- ^N

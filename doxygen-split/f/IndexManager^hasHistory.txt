@@ -1,0 +1,4 @@
+-- |returns whether historical fixings were stored for the index
+->bool
+::const std::string &
+-- ^name

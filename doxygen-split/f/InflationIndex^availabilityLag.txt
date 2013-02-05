@@ -1,0 +1,2 @@
+-- |The availability lag describes when the index is available, not how it is used. Specifically the fixing for, say, January, may only be available in April but the index will always return the index value applicable for January as its January fixing (independent of the lag in availability).
+->Period

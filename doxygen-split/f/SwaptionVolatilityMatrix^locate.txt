@@ -1,0 +1,6 @@
+-- |returns the lower indexes of surrounding volatility matrix corners
+->std::pair< Size, Size >
+::const Date &
+-- ^optionDate
+::const Period &
+-- ^swapTenor

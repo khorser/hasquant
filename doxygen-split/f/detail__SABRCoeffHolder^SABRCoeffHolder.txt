@@ -1,0 +1,21 @@
+->
+::Time
+-- ^t
+::const Real &
+-- ^forward
+::Real
+-- ^alpha
+::Real
+-- ^beta
+::Real
+-- ^nu
+::Real
+-- ^rho
+::bool
+-- ^alphaIsFixed
+::bool
+-- ^betaIsFixed
+::bool
+-- ^nuIsFixed
+::bool
+-- ^rhoIsFixed

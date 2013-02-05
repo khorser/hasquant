@@ -1,0 +1,11 @@
+->
+::const std::vector< Date > &
+-- ^dates
+::const std::vector< Rate > &
+-- ^yields
+::const DayCounter &
+-- ^dayCounter
+::const Calendar &
+-- ^calendar
+::const Interpolator &
+-- ^interpolator

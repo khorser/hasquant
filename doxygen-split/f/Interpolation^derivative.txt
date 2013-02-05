@@ -1,0 +1,6 @@
+->Real
+::Real
+-- ^x
+::bool
+=false
+-- ^allowExtrapolation

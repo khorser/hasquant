@@ -1,0 +1,3 @@
+->SampledCurve &
+::const SampledCurve &
+-- ^

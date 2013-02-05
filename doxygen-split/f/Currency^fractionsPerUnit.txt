@@ -1,0 +1,2 @@
+-- |number of fractionary parts in a unit, e.g, 100
+->Integer

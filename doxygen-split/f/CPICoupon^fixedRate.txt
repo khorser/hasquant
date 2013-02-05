@@ -1,0 +1,2 @@
+-- |fixed rate that will be inflated by the index ratio
+->Real

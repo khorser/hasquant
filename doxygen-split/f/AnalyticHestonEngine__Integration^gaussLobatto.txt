@@ -1,0 +1,8 @@
+->Integration
+::Real
+-- ^relTolerance
+::Real
+-- ^absTolerance
+::Size
+=1000
+-- ^maxEvaluations

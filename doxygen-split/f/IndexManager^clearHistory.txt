@@ -1,0 +1,4 @@
+-- |clears the historical fixings of the index
+->void
+::const std::string &
+-- ^name

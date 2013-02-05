@@ -1,0 +1,3 @@
+-- |Destructor.
+-- |return last x value
+->const Array &

@@ -1,0 +1,10 @@
+->
+::const Handle< GeneralizedBlackScholesProcess > &
+-- ^process
+::Real
+-- ^strike
+::const FdmSolverDesc &
+-- ^desc
+::const FdmSchemeDesc &
+=FdmSchemeDesc::Douglas()
+-- ^schemeDesc

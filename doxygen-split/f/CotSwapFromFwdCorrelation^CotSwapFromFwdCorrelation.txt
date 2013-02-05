@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+-- ^fwdCorr
+::const CurveState &
+-- ^curveState
+::Spread
+-- ^displacement

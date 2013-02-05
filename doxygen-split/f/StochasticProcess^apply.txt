@@ -1,0 +1,6 @@
+-- |applies a change to the asset value. By default, it returns $ \mathrm{x} + \Delta \mathrm{x} $.
+->Disposable< Array >
+::const Array &
+-- ^x0
+::const Array &
+-- ^dx

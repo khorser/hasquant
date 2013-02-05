@@ -1,0 +1,4 @@
+-- |Second order derivative with respect to change in the underlying spot price.
+->Real
+::Real
+-- ^spot

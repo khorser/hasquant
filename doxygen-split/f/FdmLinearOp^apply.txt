@@ -1,0 +1,3 @@
+->Disposable< array_type >
+::const array_type &
+-- ^r

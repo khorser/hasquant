@@ -1,0 +1,2 @@
+-- |return the least square residual norm
+->Real

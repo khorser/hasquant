@@ -1,0 +1,5 @@
+->Distribution
+::const std::vector< Real > &
+-- ^volumes
+::const std::vector< Real > &
+-- ^probabilities

@@ -1,0 +1,12 @@
+->
+::Option::Type
+-- ^optionType
+::Real
+-- ^strike
+::Real
+-- ^forward
+::Real
+-- ^stdDev
+::Real
+=1.0
+-- ^discount

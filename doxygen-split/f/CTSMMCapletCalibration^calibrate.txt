@@ -1,0 +1,13 @@
+->bool
+::Natural
+-- ^numberOfFactors
+::Natural
+-- ^maxIterations
+::Real
+-- ^tolerance
+::Natural
+=100
+-- ^innerMaxIterations
+::Real
+=1e-8
+-- ^innerTolerance

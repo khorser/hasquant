@@ -1,0 +1,8 @@
+-- |compute the target vector and the values of the function to fit
+->void
+::const Array &
+-- ^x
+::Array &
+-- ^target
+::Array &
+-- ^fct2fit

@@ -1,0 +1,4 @@
+-- |apply the exchange rate to a cash amount
+->Money
+::const Money &
+-- ^amount

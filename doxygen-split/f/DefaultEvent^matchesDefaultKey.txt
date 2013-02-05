@@ -1,0 +1,4 @@
+-- |Returns true if this event would trigger a contract with the arguments characteristics.
+->bool
+::const DefaultProbKey &
+-- ^contractKey

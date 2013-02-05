@@ -1,0 +1,4 @@
+-- |observer notifying of changes in the index fixings
+->boost::shared_ptr< Observable >
+::const std::string &
+-- ^name

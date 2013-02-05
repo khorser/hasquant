@@ -1,0 +1,2 @@
+-- |Correlation $ \rho $ between the two brownian motions.
+->Real

@@ -1,0 +1,4 @@
+-- |Implied discount curve.
+->DiscountFactor
+::Time
+-- ^t

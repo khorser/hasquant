@@ -1,0 +1,5 @@
+->
+::const boost::shared_ptr< BasketPayoff > &
+-- ^payoff
+::DiscountFactor
+-- ^discount

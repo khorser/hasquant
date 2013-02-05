@@ -1,0 +1,22 @@
+->
+::const Natural
+-- ^settlementDays
+::const Calendar &
+-- ^
+::const BusinessDayConvention
+-- ^bdc
+::const DayCounter &
+-- ^dc
+::const Period &
+-- ^lag
+::const boost::shared_ptr< YoYCapFloorTermPriceSurface > &
+-- ^capFloorPrices
+::const boost::shared_ptr< YoYInflationCapFloorEngine > &
+-- ^pricer
+::const boost::shared_ptr< YoYOptionletStripper > &
+-- ^yoyOptionletStripper
+::const Real
+-- ^slope
+::const Interpolator1D &
+=Interpolator1D()
+-- ^interpolator

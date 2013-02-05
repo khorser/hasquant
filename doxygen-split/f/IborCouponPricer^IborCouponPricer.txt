@@ -1,0 +1,4 @@
+->
+::const Handle< OptionletVolatilityStructure > &
+=Handle< OptionletVolatilityStructure >()
+-- ^v

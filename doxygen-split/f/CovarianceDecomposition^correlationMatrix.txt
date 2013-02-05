@@ -1,0 +1,2 @@
+-- |returns the correlation matrix
+->const Matrix &

@@ -1,0 +1,5 @@
+->
+::const CommodityType &
+-- ^commodityType
+::const boost::shared_ptr< SecondaryCosts > &
+-- ^secondaryCosts

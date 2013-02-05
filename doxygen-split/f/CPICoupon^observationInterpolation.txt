@@ -1,0 +1,2 @@
+-- |how do you observe the index? as-is, flat, linear?
+->CPI::InterpolationType

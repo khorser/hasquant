@@ -1,0 +1,14 @@
+-- |BTP yield given a (clean) price and settlement date.
+-- |The default BTP conventions are used: Actual/Actual (ISMA), Compounded, Annual. The default bond settlement is used if no date is given.
+->Rate
+::Real
+-- ^cleanPrice
+::Date
+=Date()
+-- ^settlementDate
+::Real
+=1.0e-8
+-- ^accuracy
+::Size
+=100
+-- ^maxEvaluations

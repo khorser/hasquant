@@ -1,0 +1,4 @@
+-- |call cost function computation and increment evaluation counter
+->Real
+::const Array &
+-- ^x

@@ -1,0 +1,19 @@
+->
+::const std::string &
+-- ^name
+::const CommodityType &
+-- ^commodityType
+::const Currency &
+-- ^currency
+::const UnitOfMeasure &
+-- ^unitOfMeasure
+::const Calendar &
+-- ^calendar
+::Real
+-- ^lotQuantity
+::const boost::shared_ptr< CommodityCurve > &
+-- ^forwardCurve
+::const boost::shared_ptr< ExchangeContracts > &
+-- ^exchangeContracts
+::int
+-- ^nearbyOffset

@@ -1,0 +1,11 @@
+-- |returns the volatility for a given option time and swap tenor
+->Volatility
+::Time
+-- ^optionTime
+::const Period &
+-- ^swapTenor
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

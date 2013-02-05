@@ -1,0 +1,11 @@
+->
+::const boost::shared_ptr< IborIndex > &
+-- ^index
+::const Date &
+-- ^futuresDate
+::const Handle< Quote > &
+-- ^futuresQuote
+::const Handle< Quote > &
+-- ^volatility
+::const Handle< Quote > &
+-- ^meanReversion

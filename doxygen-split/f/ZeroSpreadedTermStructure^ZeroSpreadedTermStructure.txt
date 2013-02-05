@@ -1,0 +1,14 @@
+->
+::const Handle< YieldTermStructure > &
+-- ^
+::const Handle< Quote > &
+-- ^spread
+::Compounding
+=Continuous
+-- ^comp
+::Frequency
+=NoFrequency
+-- ^freq
+::const DayCounter &
+=DayCounter()
+-- ^dc

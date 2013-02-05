@@ -1,0 +1,8 @@
+-- |Use to get vegas with respect to VegaBumps.
+->void
+::std::vector< Real > &
+-- ^means
+::std::vector< Real > &
+-- ^errors
+::Size
+-- ^numberOfPaths

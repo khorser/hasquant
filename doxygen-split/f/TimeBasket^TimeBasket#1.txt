@@ -1,0 +1,5 @@
+->
+::const std::vector< Date > &
+-- ^dates
+::const std::vector< Real > &
+-- ^values

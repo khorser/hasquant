@@ -1,0 +1,26 @@
+->
+::const Date &
+-- ^paymentDate
+::Real
+-- ^nominal
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate
+::const boost::shared_ptr< BMAIndex > &
+-- ^index
+::Real
+=1.0
+-- ^gearing
+::Spread
+=0.0
+-- ^spread
+::const Date &
+=Date()
+-- ^refPeriodStart
+::const Date &
+=Date()
+-- ^refPeriodEnd
+::const DayCounter &
+=DayCounter()
+-- ^dayCounter

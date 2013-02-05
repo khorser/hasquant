@@ -1,0 +1,2 @@
+-- |how the coupon observes the index
+->Period

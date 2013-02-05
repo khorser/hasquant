@@ -1,0 +1,7 @@
+->
+::Real
+=0.0
+-- ^average
+::Real
+=1.0
+-- ^sigma

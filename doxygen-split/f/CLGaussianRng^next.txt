@@ -1,0 +1,2 @@
+-- |returns a sample from a Gaussian distribution
+->sample_type

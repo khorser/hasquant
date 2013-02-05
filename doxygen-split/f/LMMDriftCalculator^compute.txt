@@ -1,0 +1,6 @@
+-- |Computes the drifts.
+->void
+::const LMMCurveState &
+-- ^cs
+::std::vector< Real > &
+-- ^drifts

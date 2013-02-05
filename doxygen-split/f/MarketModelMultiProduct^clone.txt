@@ -1,0 +1,2 @@
+-- |returns a newly-allocated copy of itself
+->std::auto_ptr< MarketModelMultiProduct >

@@ -1,0 +1,7 @@
+->bool
+::Real &
+-- ^y1
+::Real &
+-- ^y2
+::Real &
+-- ^y3

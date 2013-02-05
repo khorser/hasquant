@@ -1,0 +1,7 @@
+->Real
+::Array &
+-- ^p
+::const Array &
+-- ^direction
+::Real
+-- ^beta

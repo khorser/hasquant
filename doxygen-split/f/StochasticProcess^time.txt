@@ -1,0 +1,4 @@
+-- |returns the time value corresponding to the given date in the reference system of the stochastic process.As a number of processes might not need this functionality, a default implementation is given which raises an exception.
+->Time
+::const Date &
+-- ^

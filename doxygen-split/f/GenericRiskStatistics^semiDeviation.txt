@@ -1,0 +1,2 @@
+-- |returns the semi deviation, defined as the square root of the semi variance.
+->Real

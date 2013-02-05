@@ -1,0 +1,12 @@
+->
+::const Handle< Quote > &
+-- ^correlation
+::Real
+=5.0
+-- ^maximum
+::Size
+=50
+-- ^integrationSteps
+::Real
+=-5.0
+-- ^minimum

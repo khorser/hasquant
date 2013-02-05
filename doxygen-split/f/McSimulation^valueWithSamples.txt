@@ -1,0 +1,4 @@
+-- |simulate a fixed number of samples
+->result_type
+::Size
+-- ^samples

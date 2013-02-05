@@ -1,0 +1,4 @@
+-- |Integral over the density $ \rho(m) $ of M and the conditional probability related to p:\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]
+->Real
+::Real
+-- ^p

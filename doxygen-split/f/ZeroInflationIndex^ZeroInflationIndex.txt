@@ -1,0 +1,19 @@
+-- |Always use the evaluation date as the reference date.
+->
+::const std::string &
+-- ^familyName
+::const Region &
+-- ^region
+::bool
+-- ^revised
+::bool
+-- ^interpolated
+::Frequency
+-- ^frequency
+::const Period &
+-- ^availabilityLag
+::const Currency &
+-- ^currency
+::const Handle< ZeroInflationTermStructure > &
+=Handle< ZeroInflationTermStructure >()
+-- ^ts

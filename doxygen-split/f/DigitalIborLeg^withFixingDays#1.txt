@@ -1,0 +1,3 @@
+->DigitalIborLeg &
+::const std::vector< Natural > &
+-- ^fixingDays

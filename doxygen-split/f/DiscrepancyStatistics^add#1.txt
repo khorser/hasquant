@@ -1,0 +1,8 @@
+->void
+::Iterator
+-- ^begin
+::Iterator
+-- ^end
+::Real
+=1.0
+-- ^weight

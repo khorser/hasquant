@@ -1,0 +1,6 @@
+-- |solve linear system for a given right-hand side without result Array allocation. The rhs and result parameters can be the same Array, in which case rhs will be changed
+->void
+::const Array &
+-- ^rhs
+::Array &
+-- ^result

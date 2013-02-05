@@ -1,0 +1,7 @@
+->
+::const Date &
+-- ^referenceDate
+::const Handle< Quote > &
+-- ^hazardRate
+::const DayCounter &
+-- ^

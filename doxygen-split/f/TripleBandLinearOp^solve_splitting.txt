@@ -1,0 +1,8 @@
+->Disposable< Array >
+::const Array &
+-- ^r
+::Real
+-- ^a
+::Real
+=1.0
+-- ^b

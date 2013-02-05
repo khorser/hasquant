@@ -1,0 +1,30 @@
+->
+::Type
+-- ^type
+::Real
+-- ^nominal
+::const Date &
+-- ^startDate
+::const Date &
+-- ^maturity
+::const Calendar &
+-- ^fixCalendar
+::BusinessDayConvention
+-- ^fixConvention
+::const DayCounter &
+-- ^dayCounter
+::Rate
+-- ^fixedRate
+::const boost::shared_ptr< ZeroInflationIndex > &
+-- ^infIndex
+::const Period &
+-- ^observationLag
+::bool
+=false
+-- ^adjustInfObsDates
+::Calendar
+=Calendar()
+-- ^infCalendar
+::BusinessDayConvention
+=BusinessDayConvention()
+-- ^infConvention

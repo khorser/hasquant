@@ -1,0 +1,4 @@
+-- |returns the variance of observations below target \[ \frac{\sum w_i (min(0, x_i-target))^2 }{\sum w_i}. \] See Dembo, Freeman "The Rules Of Risk", Wiley (2001)
+->Real
+::Real
+-- ^target

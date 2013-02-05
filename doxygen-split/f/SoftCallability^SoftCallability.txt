@@ -1,0 +1,7 @@
+->
+::const Price &
+-- ^price
+::const Date &
+-- ^date
+::Real
+-- ^trigger

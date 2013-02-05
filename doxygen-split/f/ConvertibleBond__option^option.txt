@@ -1,0 +1,25 @@
+->
+::const ConvertibleBond *
+-- ^bond
+::const boost::shared_ptr< Exercise > &
+-- ^exercise
+::Real
+-- ^conversionRatio
+::const DividendSchedule &
+-- ^dividends
+::const CallabilitySchedule &
+-- ^callability
+::const Handle< Quote > &
+-- ^creditSpread
+::const Leg &
+-- ^cashflows
+::const DayCounter &
+-- ^dayCounter
+::const Schedule &
+-- ^schedule
+::const Date &
+-- ^issueDate
+::Natural
+-- ^settlementDays
+::Real
+-- ^redemption

@@ -1,0 +1,2 @@
+-- |returns a sample with weight 1.0 containing a random number in the (0.0, 1.0) interval
+->sample_type

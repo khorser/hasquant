@@ -1,0 +1,2 @@
+-- |The required size for the output vector.
+->std::size_t

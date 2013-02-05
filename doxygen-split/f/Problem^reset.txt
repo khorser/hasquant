@@ -1,0 +1,2 @@
+-- |Warningit does not reset the current minumum to any initial value
+->void

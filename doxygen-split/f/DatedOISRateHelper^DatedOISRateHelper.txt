@@ -1,0 +1,12 @@
+->
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate
+::const Handle< Quote > &
+-- ^fixedRate
+::const boost::shared_ptr< OvernightIndex > &
+-- ^overnightIndex
+::const Handle< YieldTermStructure > &
+=Handle< YieldTermStructure >()
+-- ^discountingCurve

@@ -1,0 +1,8 @@
+->bool
+::const Quantity &
+-- ^
+::const Quantity &
+-- ^
+::Size
+=42
+-- ^n

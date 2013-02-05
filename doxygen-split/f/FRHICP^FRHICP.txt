@@ -1,0 +1,6 @@
+->
+::bool
+-- ^interpolated
+::const Handle< ZeroInflationTermStructure > &
+=Handle< ZeroInflationTermStructure >()
+-- ^ts

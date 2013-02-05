@@ -1,0 +1,6 @@
+-- |returns the drift part of the equation, i.e. $ \mu(t, x_t) $
+->Real
+::Time
+-- ^t
+::Real
+-- ^x

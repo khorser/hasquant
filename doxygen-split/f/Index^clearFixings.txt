@@ -1,0 +1,2 @@
+-- |clears all stored historical fixings
+->void

@@ -1,0 +1,16 @@
+->
+::Type
+-- ^type
+::Real
+-- ^nominal
+::const Schedule &
+-- ^schedule
+::Rate
+-- ^fixedRate
+::const DayCounter &
+-- ^fixedDC
+::const boost::shared_ptr< OvernightIndex > &
+-- ^overnightIndex
+::Spread
+=0.0
+-- ^spread

@@ -1,0 +1,18 @@
+-- |At-the-money rate of the cash flows.
+-- |The result is the fixed rate for which a fixed rate cash flow vector, equivalent to the input vector, has the required NPV according to the given term structure. If the required NPV is not given, the input cash flow vector's NPV is used instead.
+->Rate
+::const Leg &
+-- ^leg
+::const YieldTermStructure &
+-- ^discountCurve
+::bool
+-- ^includeSettlementDateFlows
+::Date
+=Date()
+-- ^settlementDate
+::Date
+=Date()
+-- ^npvDate
+::Real
+=Null< Real >()
+-- ^npv

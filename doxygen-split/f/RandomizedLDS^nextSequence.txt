@@ -1,0 +1,2 @@
+-- |returns next sample using a given randomizing vector
+->const sample_type &

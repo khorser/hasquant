@@ -1,0 +1,6 @@
+-- |This method returns a schedule of fixing dates between start and end.
+->Schedule
+::const Date &
+-- ^start
+::const Date &
+-- ^end

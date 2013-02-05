@@ -1,0 +1,9 @@
+->
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^calendar
+::const Handle< Quote > &
+-- ^hazardRate
+::const DayCounter &
+-- ^

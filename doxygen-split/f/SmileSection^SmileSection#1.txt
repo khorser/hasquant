@@ -1,0 +1,6 @@
+->
+::Time
+-- ^exerciseTime
+::const DayCounter &
+=DayCounter()
+-- ^dc

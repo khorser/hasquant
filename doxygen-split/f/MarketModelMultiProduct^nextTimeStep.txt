@@ -1,0 +1,8 @@
+-- |return value indicates whether path is finished, TRUE means done
+->bool
+::const CurveState &
+-- ^currentState
+::std::vector< Size > &
+-- ^numberCashFlowsThisStep
+::std::vector< std::vector< CashFlow > > &
+-- ^cashFlowsGenerated

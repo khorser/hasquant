@@ -1,0 +1,2 @@
+-- |returns end criteria result
+->EndCriteria::Type

@@ -1,0 +1,11 @@
+->
+::Real
+-- ^correlation
+::const boost::shared_ptr< SmileSection > &
+-- ^smilesOnExpiry
+::const boost::shared_ptr< SmileSection > &
+-- ^smilesOnPayment
+::bool
+-- ^withSmile
+::bool
+-- ^byCallSpread

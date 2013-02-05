@@ -1,0 +1,3 @@
+->AverageBMALeg &
+::Real
+-- ^notional

@@ -1,0 +1,6 @@
+->
+::Real
+-- ^tolerance
+::Size
+=Null< Size >()
+-- ^maxFunctionEvaluations

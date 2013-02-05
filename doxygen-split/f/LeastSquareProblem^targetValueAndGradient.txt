@@ -1,0 +1,10 @@
+-- |compute the target vector, the values of the function to fit and the matrix of derivatives
+->void
+::const Array &
+-- ^x
+::Matrix &
+-- ^grad_fct2fit
+::Array &
+-- ^target
+::Array &
+-- ^fct2fit

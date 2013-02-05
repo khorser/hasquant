@@ -1,0 +1,19 @@
+->
+::const Date &
+-- ^paymentDate
+::Real
+-- ^nominal
+::Rate
+-- ^rate
+::const DayCounter &
+-- ^dayCounter
+::const Date &
+-- ^accrualStartDate
+::const Date &
+-- ^accrualEndDate
+::const Date &
+=Date()
+-- ^refPeriodStart
+::const Date &
+=Date()
+-- ^refPeriodEnd

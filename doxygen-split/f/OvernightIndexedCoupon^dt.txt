@@ -1,0 +1,2 @@
+-- |accrual (compounding) periods
+->const std::vector< Time > &

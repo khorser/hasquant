@@ -1,0 +1,4 @@
+-- |access to the sample accumulator for richer statistics
+->const stats_type &
+::void
+-- ^

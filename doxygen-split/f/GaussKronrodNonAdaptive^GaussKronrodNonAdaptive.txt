@@ -1,0 +1,7 @@
+->
+::Real
+-- ^absoluteAccuracy
+::Size
+-- ^maxEvaluations
+::Real
+-- ^relativeAccuracy

@@ -1,0 +1,6 @@
+-- |Computes the drifts.
+->void
+::const CoterminalSwapCurveState &
+-- ^cs
+::std::vector< Real > &
+-- ^drifts

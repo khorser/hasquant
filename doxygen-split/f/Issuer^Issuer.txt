@@ -1,0 +1,8 @@
+-- |The first argument represents the probability of an issuer of having any of its bonds with the given seniority, currency incurring in that particular event. The second argument represents the history of past events. Theres no check on wether the event list makes sense, events can occur several times and several of them can take place on the same date.To do: add settlement event access
+->
+::const std::vector< key_curve_pair > &
+=std::vector< key_curve_pair >()
+-- ^probabilities
+::const DefaultEventSet &
+=DefaultEventSet()
+-- ^events

@@ -1,0 +1,7 @@
+->
+::Real
+=Null< Real >()
+-- ^value
+::Seniority
+=NoSeniority
+-- ^seniority

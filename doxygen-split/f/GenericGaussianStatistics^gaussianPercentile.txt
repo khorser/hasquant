@@ -1,0 +1,4 @@
+-- |gaussian-assumption y-th percentile, defined as the value x such that \[ y = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x} \exp (-u^2/2) du \]percentile must be in range (0%-100%) extremes excluded
+->Real
+::Real
+-- ^percentile

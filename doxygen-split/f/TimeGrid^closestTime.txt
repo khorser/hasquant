@@ -1,0 +1,4 @@
+-- |returns the time on the grid closest to the given t
+->Time
+::Time
+-- ^t

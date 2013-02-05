@@ -1,0 +1,7 @@
+->
+::Time
+-- ^exerciseTime
+::const boost::shared_ptr< Payoff > &
+-- ^payoff
+::const boost::shared_ptr< HybridHestonHullWhiteProcess > &
+-- ^process

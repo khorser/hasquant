@@ -1,0 +1,18 @@
+->
+::Size
+-- ^size
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^process
+::Time
+-- ^maturity
+::const std::vector< Real > &
+-- ^strikes
+::Real
+=0.0001
+-- ^eps
+::Real
+=1.5
+-- ^scaleFactor
+::const std::pair< Real, Real > &
+=(std::pair< Real, Real >(Null< Real >(), Null< Real >()))
+-- ^cPoint

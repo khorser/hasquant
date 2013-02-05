@@ -1,0 +1,4 @@
+-- |Returns true iff the date is a holiday for the given market.
+->bool
+::const Date &
+-- ^d

@@ -1,0 +1,9 @@
+->std::vector< boost::shared_ptr< DefaultEvent > >
+::const Date &
+-- ^start
+::const Date &
+-- ^end
+::const DefaultProbKey &
+-- ^contractKey
+::bool
+-- ^includeRefDate

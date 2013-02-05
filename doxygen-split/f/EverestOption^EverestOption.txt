@@ -1,0 +1,7 @@
+->
+::Real
+-- ^notional
+::Rate
+-- ^guarantee
+::const boost::shared_ptr< Exercise > &
+-- ^

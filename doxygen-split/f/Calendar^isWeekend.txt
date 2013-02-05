@@ -1,0 +1,4 @@
+-- |Returns true iff the weekday is part of the weekend for the given market.
+->bool
+::Weekday
+-- ^w

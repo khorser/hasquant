@@ -1,0 +1,13 @@
+->
+::const Date &
+-- ^d
+::Volatility
+-- ^vol
+::const DayCounter &
+-- ^dc
+::const Date &
+=Date()
+-- ^referenceDate
+::Real
+=Null< Rate >()
+-- ^atmLevel

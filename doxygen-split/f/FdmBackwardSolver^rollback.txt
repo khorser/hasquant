@@ -1,0 +1,11 @@
+->void
+::array_type &
+-- ^a
+::Time
+-- ^from
+::Time
+-- ^to
+::Size
+-- ^steps
+::Size
+-- ^dampingSteps

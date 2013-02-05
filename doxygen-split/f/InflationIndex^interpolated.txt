@@ -1,0 +1,2 @@
+-- |Forecasting index values using an inflation term structure uses the interpolation of the inflation term structure unless interpolation is set to false. In this case the extrapolated values are constant within each period taking the mid-period extrapolated value.
+->bool

@@ -1,0 +1,11 @@
+->void
+::const Matrix &
+-- ^path
+::const std::vector< Handle< YieldTermStructure > > &
+-- ^forwardTermStructures
+::Array &
+-- ^payments
+::Array &
+-- ^exercises
+::std::vector< Array > &
+-- ^states

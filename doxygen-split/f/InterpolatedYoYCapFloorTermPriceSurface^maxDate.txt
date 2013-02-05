@@ -1,0 +1,2 @@
+-- |inflation term structure interface
+->Date

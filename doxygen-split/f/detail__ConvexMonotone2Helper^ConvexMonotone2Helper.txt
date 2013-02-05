@@ -1,0 +1,15 @@
+->
+::Real
+-- ^xPrev
+::Real
+-- ^xNext
+::Real
+-- ^gPrev
+::Real
+-- ^gNext
+::Real
+-- ^fAverage
+::Real
+-- ^eta2
+::Real
+-- ^prevPrimitive

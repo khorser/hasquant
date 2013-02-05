@@ -1,0 +1,16 @@
+-- |Use NoSeniority to settle to all seniorities with that recovery. In that case the event is assumed to have affected all seniorities.
+->
+::const Date &
+-- ^creditEventDate
+::const DefaultType &
+-- ^atomicEvType
+::const Currency &
+-- ^curr
+::Seniority
+-- ^bondsSen
+::const Date &
+=Null< Date >()
+-- ^settleDate
+::Real
+=0.4
+-- ^recoveryRate

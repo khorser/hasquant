@@ -1,0 +1,4 @@
+-- |This method should initialize the asset values to an Array of the given size and with values depending on the particular asset.
+->void
+::Size
+-- ^size

@@ -1,0 +1,5 @@
+->
+::const Handle< Quote > &
+-- ^element
+::const UnaryFunction &
+-- ^f

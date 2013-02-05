@@ -1,0 +1,16 @@
+->
+::const Date &
+-- ^valueDate
+::const Date &
+-- ^maturityDate
+::Position::Type
+-- ^type
+::Rate
+-- ^strikeForwardRate
+::Real
+-- ^notionalAmount
+::const boost::shared_ptr< IborIndex > &
+-- ^index
+::const Handle< YieldTermStructure > &
+=Handle< YieldTermStructure >()
+-- ^discountCurve

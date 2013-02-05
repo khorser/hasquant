@@ -1,0 +1,2 @@
+-- |returns the number of historical data including null ones
+->Size

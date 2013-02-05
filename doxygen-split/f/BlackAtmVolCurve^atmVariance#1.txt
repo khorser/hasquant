@@ -1,0 +1,7 @@
+-- |spot at-the-money variance
+->Real
+::const Date &
+-- ^maturity
+::bool
+=false
+-- ^extrapolate

@@ -1,0 +1,4 @@
+-- |volatility function value at time u: \[ f(u) \]
+->Real
+::Time
+-- ^u

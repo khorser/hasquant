@@ -1,0 +1,9 @@
+->
+::const Matrix &
+-- ^pseudo
+::const std::vector< Time > &
+-- ^taus
+::Size
+-- ^numeraire
+::Size
+-- ^alive

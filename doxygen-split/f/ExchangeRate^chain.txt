@@ -1,0 +1,6 @@
+-- |chain two exchange rates
+->ExchangeRate
+::const ExchangeRate &
+-- ^r1
+::const ExchangeRate &
+-- ^r2

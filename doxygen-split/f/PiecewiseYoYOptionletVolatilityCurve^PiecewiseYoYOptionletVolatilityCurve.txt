@@ -1,0 +1,29 @@
+->
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^cal
+::BusinessDayConvention
+-- ^bdc
+::const DayCounter &
+-- ^dc
+::const Period &
+-- ^lag
+::Frequency
+-- ^frequency
+::bool
+-- ^indexIsInterpolated
+::Rate
+-- ^minStrike
+::Rate
+-- ^maxStrike
+::Volatility
+-- ^baseYoYVolatility
+::const std::vector< boost::shared_ptr< typename Traits::helper > > &
+-- ^instruments
+::Real
+=1.0e-12
+-- ^accuracy
+::const Interpolator &
+=Interpolator()
+-- ^interpolator

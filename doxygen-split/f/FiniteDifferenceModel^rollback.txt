@@ -1,0 +1,10 @@
+-- |solves the problem between the given times. Warningbeing this a rollback, from must be a later time than to.
+->void
+::array_type &
+-- ^a
+::Time
+-- ^from
+::Time
+-- ^to
+::Size
+-- ^steps

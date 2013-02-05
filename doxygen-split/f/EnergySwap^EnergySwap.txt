@@ -1,0 +1,13 @@
+->
+::const Calendar &
+-- ^calendar
+::const Currency &
+-- ^payCurrency
+::const Currency &
+-- ^receiveCurrency
+::const PricingPeriods &
+-- ^pricingPeriods
+::const CommodityType &
+-- ^commodityType
+::const boost::shared_ptr< SecondaryCosts > &
+-- ^secondaryCosts

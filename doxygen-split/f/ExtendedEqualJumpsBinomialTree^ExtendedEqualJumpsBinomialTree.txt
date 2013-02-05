@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< StochasticProcess1D > &
+-- ^process
+::Time
+-- ^end
+::Size
+-- ^steps

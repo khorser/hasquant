@@ -1,0 +1,6 @@
+->Probability
+::const Date &
+-- ^d
+::bool
+=false
+-- ^extrapolate

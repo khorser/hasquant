@@ -1,0 +1,4 @@
+-- |This method modifies an operator $ L $ before it is applied to an array $ u $ so that $ v = Lu $ will satisfy the given condition.
+->void
+::operator_type &
+-- ^

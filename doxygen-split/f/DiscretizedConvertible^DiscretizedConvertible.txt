@@ -1,0 +1,8 @@
+->
+::const ConvertibleBond::option::arguments &
+-- ^
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^process
+::const TimeGrid &
+=TimeGrid()
+-- ^grid

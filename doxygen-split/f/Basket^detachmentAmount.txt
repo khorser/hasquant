@@ -1,0 +1,2 @@
+-- |Detachment amount = detachmentRatio() * basketNotional()
+->Real

@@ -1,0 +1,7 @@
+Absolute
+PerHour
+PerDay
+PerWeek
+PerMonth
+PerQuarter
+PerYear

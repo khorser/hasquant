@@ -1,0 +1,10 @@
+->
+::Size
+-- ^size
+::Real
+-- ^rho
+::Real
+-- ^beta
+::Size
+=Null< Size >()
+-- ^factors

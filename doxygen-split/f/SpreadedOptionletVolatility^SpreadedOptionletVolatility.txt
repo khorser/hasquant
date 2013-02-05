@@ -1,0 +1,5 @@
+->
+::const Handle< OptionletVolatilityStructure > &
+-- ^
+::const Handle< Quote > &
+-- ^spread

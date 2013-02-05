@@ -1,0 +1,11 @@
+->
+::const std::string &
+-- ^familyName
+::const Period &
+-- ^tenor
+::Natural
+-- ^settlementDays
+::Currency
+-- ^currency
+::const boost::shared_ptr< OvernightIndex > &
+-- ^overnightIndex

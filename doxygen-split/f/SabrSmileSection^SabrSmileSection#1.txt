@@ -1,0 +1,10 @@
+->
+::const Date &
+-- ^d
+::Rate
+-- ^forward
+::const std::vector< Real > &
+-- ^sabrParameters
+::const DayCounter &
+=Actual365Fixed()
+-- ^dc

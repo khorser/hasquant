@@ -1,0 +1,12 @@
+->
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^process
+::Real
+=5.0
+-- ^dk
+::const std::vector< Real > &
+=std::vector< Real >()
+-- ^callStrikes
+::const std::vector< Real > &
+=std::vector< Real >()
+-- ^putStrikes

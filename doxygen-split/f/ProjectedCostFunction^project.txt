@@ -1,0 +1,4 @@
+-- |returns the subset of free parameters corresponding
+->Disposable< Array >
+::const Array &
+-- ^parameters

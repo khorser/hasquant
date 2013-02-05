@@ -1,0 +1,27 @@
+->
+::const return_type &
+-- ^a
+::const return_type &
+-- ^b
+::const return_type &
+-- ^a2
+::const return_type &
+-- ^b2
+::const dimensions &
+-- ^i
+::const data &
+-- ^d
+::const data &
+-- ^d2
+::const data_table &
+-- ^y
+::data_table &
+-- ^y2
+::output_data &
+-- ^v
+::output_data &
+-- ^v1
+::output_data &
+-- ^v2
+::typename super::result_type &
+-- ^r

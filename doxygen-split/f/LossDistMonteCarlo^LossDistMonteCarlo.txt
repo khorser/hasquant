@@ -1,0 +1,13 @@
+->
+::Size
+-- ^nBuckets
+::Real
+-- ^maximum
+::Size
+-- ^simulations
+::long
+=42
+-- ^seed
+::Real
+=1e-6
+-- ^epsilon

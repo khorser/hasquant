@@ -1,0 +1,9 @@
+->
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^
+::const Handle< YieldTermStructure > &
+-- ^foreignRiskFreeRate
+::const Handle< BlackVolTermStructure > &
+-- ^exchangeRateVolatility
+::const Handle< Quote > &
+-- ^correlation

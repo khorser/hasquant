@@ -1,0 +1,22 @@
+->
+::const Date &
+-- ^referenceDate
+::Rate
+-- ^baseRate
+::const Period &
+-- ^observationLag
+::Frequency
+-- ^frequency
+::bool
+-- ^indexIsInterpolated
+::const Handle< YieldTermStructure > &
+-- ^yTS
+::const Calendar &
+=Calendar()
+-- ^calendar
+::const DayCounter &
+=DayCounter()
+-- ^dayCounter
+::const boost::shared_ptr< Seasonality > &
+=boost::shared_ptr< Seasonality >()
+-- ^seasonality

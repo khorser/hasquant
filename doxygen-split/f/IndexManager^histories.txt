@@ -1,0 +1,2 @@
+-- |returns all names of the indexes for which fixings were stored
+->std::vector< std::string >

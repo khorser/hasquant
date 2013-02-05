@@ -1,0 +1,2 @@
+-- |returns the initial value of the state variable
+->Real

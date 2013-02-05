@@ -1,0 +1,3 @@
+->std::vector< DiscountFactor >
+::const std::vector< Rate > &
+-- ^rates

@@ -1,0 +1,7 @@
+->
+::const boost::shared_ptr< T > &
+-- ^tree1
+::const boost::shared_ptr< T > &
+-- ^tree2
+::Real
+-- ^correlation

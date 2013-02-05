@@ -1,0 +1,6 @@
+-- |The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received.
+->
+::const Leg &
+-- ^firstLeg
+::const Leg &
+-- ^secondLeg

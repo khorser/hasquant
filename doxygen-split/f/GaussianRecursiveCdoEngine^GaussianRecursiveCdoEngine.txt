@@ -1,0 +1,16 @@
+-- |quote constructor.
+->
+::const Handle< Quote > &
+-- ^correlQuote
+::Size
+=1
+-- ^nbuckets
+::Size
+=12
+-- ^quadOrder
+::Real
+=5.
+-- ^maxval
+::Size
+=50
+-- ^steps

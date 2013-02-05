@@ -1,0 +1,24 @@
+->
+::const EvolutionDescription &
+-- ^evolution
+::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+-- ^corr
+::const std::vector< boost::shared_ptr< PiecewiseConstantVariance > > &
+-- ^displacedSwapVariances
+::const std::vector< Volatility > &
+-- ^capletVols
+::const boost::shared_ptr< CurveState > &
+-- ^cs
+::Spread
+-- ^displacement
+::const std::vector< Real > &
+-- ^alphaInitial
+::const std::vector< Real > &
+-- ^alphaMax
+::const std::vector< Real > &
+-- ^alphaMin
+::bool
+-- ^maximizeHomogeneity
+::boost::shared_ptr< AlphaForm >
+=boost::shared_ptr< AlphaForm >()
+-- ^parametricForm

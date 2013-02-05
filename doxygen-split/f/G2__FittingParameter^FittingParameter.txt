@@ -1,0 +1,13 @@
+->
+::const Handle< YieldTermStructure > &
+-- ^termStructure
+::Real
+-- ^a
+::Real
+-- ^sigma
+::Real
+-- ^b
+::Real
+-- ^eta
+::Real
+-- ^rho

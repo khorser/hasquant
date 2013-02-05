@@ -1,0 +1,5 @@
+->
+::Time
+-- ^paymentTime
+::const std::vector< Time > &
+-- ^rateTimes

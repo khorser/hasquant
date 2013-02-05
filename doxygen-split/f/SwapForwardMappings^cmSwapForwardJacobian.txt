@@ -1,0 +1,6 @@
+-- |Returns the dsr[i]/df[j] jacobian between constant maturity swap rates and forward rates
+->Disposable< Matrix >
+::const CurveState &
+-- ^cs
+::const Size
+-- ^spanningForwards

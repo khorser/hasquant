@@ -1,0 +1,3 @@
+->IborLeg &
+::const std::vector< Real > &
+-- ^gearings

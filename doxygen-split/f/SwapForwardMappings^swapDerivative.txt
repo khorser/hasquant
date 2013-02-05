@@ -1,0 +1,10 @@
+-- |compute derivative of swap-rate to underlying forward rate
+->Real
+::const CurveState &
+-- ^cs
+::Size
+-- ^startIndex
+::Size
+-- ^endIndex
+::Size
+-- ^forwardIndex

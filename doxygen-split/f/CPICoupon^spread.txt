@@ -1,0 +1,2 @@
+-- |spread paid over the fixing of the underlying index
+->Spread

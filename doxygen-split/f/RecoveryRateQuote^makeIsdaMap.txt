@@ -1,0 +1,4 @@
+-- |Turn a set of recoveries into a seniority-recovery map (intended to be used in an event construction)
+->const std::map< Seniority, Real >
+::const 
+-- ^Real

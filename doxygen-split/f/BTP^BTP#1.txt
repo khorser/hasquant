@@ -1,0 +1,14 @@
+-- |constructor needed for legacy non-par redemption BTPs. As of today the only remaining one is IT123456789012 that will redeem 99.999 on xx-may-2037
+->
+::const Date &
+-- ^maturityDate
+::Rate
+-- ^fixedRate
+::Real
+-- ^redemption
+::const Date &
+=Date()
+-- ^startDate
+::const Date &
+=Date()
+-- ^issueDate

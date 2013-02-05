@@ -1,0 +1,18 @@
+->
+::const Handle< Quote > &
+-- ^price
+::const Date &
+-- ^immDate
+::Natural
+-- ^lengthInMonths
+::const Calendar &
+-- ^calendar
+::BusinessDayConvention
+-- ^convention
+::bool
+-- ^endOfMonth
+::const DayCounter &
+-- ^dayCounter
+::const Handle< Quote > &
+=Handle< Quote >()
+-- ^convexityAdjustment

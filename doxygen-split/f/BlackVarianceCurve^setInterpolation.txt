@@ -1,0 +1,4 @@
+->void
+::const Interpolator &
+=Interpolator()
+-- ^i

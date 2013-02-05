@@ -1,0 +1,8 @@
+-- |This constructor initializes the history with a set of values. Such values are assigned to a corresponding number of consecutive dates starting from firstDate included.
+->
+::const Date &
+-- ^firstDate
+::ValueIterator
+-- ^begin
+::ValueIterator
+-- ^end

@@ -1,0 +1,4 @@
+-- |Vector of cumulative default probability to date d for al issuers in the basket.
+->std::vector< Real >
+::const Date &
+-- ^d

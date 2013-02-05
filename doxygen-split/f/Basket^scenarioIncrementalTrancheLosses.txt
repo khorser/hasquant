@@ -1,0 +1,8 @@
+-- |Vector of incremental tranche losses under the current scenario.
+->std::vector< Loss >
+::Date
+=Date::minDate()
+-- ^startDate
+::Date
+=Date::maxDate()
+-- ^endDate

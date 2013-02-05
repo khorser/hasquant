@@ -1,0 +1,7 @@
+->
+::const CostFunction &
+-- ^costFunction
+::const Array &
+-- ^parametersValues
+::const std::vector< bool > &
+-- ^parametersFreedoms

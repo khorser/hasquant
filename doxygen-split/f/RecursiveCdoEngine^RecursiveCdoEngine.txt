@@ -1,0 +1,10 @@
+-- |Single correlation construction.
+->
+::const Handle< Quote > &
+-- ^correl
+::Size
+=1
+-- ^nbuckets
+::Size
+=20
+-- ^quadOrder

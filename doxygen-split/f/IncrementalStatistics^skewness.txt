@@ -1,0 +1,2 @@
+-- |returns the skewness, defined as \[ \frac{N^2}{(N-1)(N-2)} \frac{\left\langle \left( x-\langle x \rangle \right)^3 \right\rangle}{\sigma^3}. \] The above evaluates to 0 for a Gaussian distribution.
+->Real

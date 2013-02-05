@@ -1,0 +1,19 @@
+->
+::Real
+-- ^heatRate
+::Real
+-- ^pMin
+::Real
+-- ^pMax
+::Size
+-- ^tMinUp
+::Size
+-- ^tMinDown
+::Real
+-- ^startUpFuel
+::Real
+-- ^startUpFixCost
+::Size
+-- ^initialState
+::const boost::shared_ptr< SwingExercise > &
+-- ^exercise

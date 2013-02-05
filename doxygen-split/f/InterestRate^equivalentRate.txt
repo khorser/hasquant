@@ -1,0 +1,9 @@
+-- |equivalent interest rate for a compounding period t.
+-- |The resulting InterestRate shares the same implicit day-counting rule of the original InterestRate instance.WarningTime must be measured using the InterestRate's own day counter.
+->InterestRate
+::Compounding
+-- ^comp
+::Frequency
+-- ^freq
+::Time
+-- ^t

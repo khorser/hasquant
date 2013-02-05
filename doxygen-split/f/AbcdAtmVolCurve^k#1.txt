@@ -1,0 +1,4 @@
+-- |Returns k adjustment factor at time t.
+->Real
+::Time
+-- ^t

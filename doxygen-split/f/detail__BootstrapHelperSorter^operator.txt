@@ -1,0 +1,5 @@
+->bool
+::const boost::shared_ptr< Helper > &
+-- ^h1
+::const boost::shared_ptr< Helper > &
+-- ^h2

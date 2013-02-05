@@ -1,0 +1,4 @@
+-- |returns a new date decremented by the given number of days
+->Date
+::BigInteger
+-- ^days

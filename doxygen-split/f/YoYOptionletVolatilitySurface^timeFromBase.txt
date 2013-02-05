@@ -1,0 +1,7 @@
+-- |base date will be in the past because of observation lag
+->Time
+::const Date &
+-- ^date
+::const Period &
+=Period(-1, Days)
+-- ^obsLag

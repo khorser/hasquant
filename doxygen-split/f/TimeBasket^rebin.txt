@@ -1,0 +1,4 @@
+-- |redistribute the entries over the given dates
+->TimeBasket
+::const std::vector< Date > &
+-- ^buckets

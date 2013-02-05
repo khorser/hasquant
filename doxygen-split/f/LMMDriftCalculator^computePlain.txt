@@ -1,0 +1,6 @@
+-- |Computes the drifts without factor reduction as in eqs. 2, 4 of ref. [1] (uses the covariance matrix directly).
+->void
+::const LMMCurveState &
+-- ^cs
+::std::vector< Real > &
+-- ^drifts

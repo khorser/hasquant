@@ -1,0 +1,2 @@
+-- |returns the seniority of the bond that triggered the event.
+->Seniority

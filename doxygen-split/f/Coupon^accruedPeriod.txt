@@ -1,0 +1,4 @@
+-- |accrued period as fraction of year at the given date
+->Time
+::const Date &
+-- ^

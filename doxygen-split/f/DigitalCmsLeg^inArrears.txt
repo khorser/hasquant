@@ -1,0 +1,4 @@
+->DigitalCmsLeg &
+::bool
+=true
+-- ^flag

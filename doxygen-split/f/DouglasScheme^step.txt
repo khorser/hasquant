@@ -1,0 +1,5 @@
+->void
+::array_type &
+-- ^a
+::Time
+-- ^t

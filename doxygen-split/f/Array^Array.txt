@@ -1,0 +1,5 @@
+-- |creates the array with the given dimension
+->
+::Size
+=0
+-- ^size

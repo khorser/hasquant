@@ -1,0 +1,6 @@
+-- |Previous coupon already paid at a given date.
+-- |Expected previous coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the last paid one.The current bond settlement is used if no date is given.
+->Rate
+::Date
+=Date()
+-- ^d

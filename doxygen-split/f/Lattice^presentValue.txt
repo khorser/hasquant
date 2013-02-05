@@ -1,0 +1,4 @@
+-- |computes the present value of an asset.
+->Real
+::DiscretizedAsset &
+-- ^

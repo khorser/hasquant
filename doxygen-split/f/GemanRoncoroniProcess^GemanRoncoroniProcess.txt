@@ -1,0 +1,35 @@
+->
+::Real
+-- ^x0
+::Real
+-- ^alpha
+::Real
+-- ^beta
+::Real
+-- ^gamma
+::Real
+-- ^delta
+::Real
+-- ^eps
+::Real
+-- ^zeta
+::Real
+-- ^d
+::Real
+-- ^k
+::Real
+-- ^tau
+::Real
+-- ^sig2
+::Real
+-- ^a
+::Real
+-- ^b
+::Real
+-- ^theta1
+::Real
+-- ^theta2
+::Real
+-- ^theta3
+::Real
+-- ^psi

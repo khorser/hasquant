@@ -1,0 +1,6 @@
+->
+::const TimeGrid &
+-- ^timeGrid
+::const Array &
+=Array()
+-- ^values

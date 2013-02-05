@@ -1,0 +1,4 @@
+-- |apply operator to a given array
+->Disposable< Array >
+::const Array &
+-- ^v

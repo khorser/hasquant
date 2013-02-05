@@ -1,0 +1,6 @@
+-- |cubic B-spline basis functions
+->Real
+::Integer
+-- ^i
+::Time
+-- ^t

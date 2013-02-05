@@ -1,0 +1,6 @@
+-- |Remaining basket notional after losses between start and end date. The full notional for defaulted names is subracted, recovery ignored.
+->Real
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate

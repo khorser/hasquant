@@ -1,0 +1,11 @@
+-- |returns the Black variance for a given option date and bond tenor
+->Real
+::const Date &
+-- ^optionDate
+::const Period &
+-- ^bondTenor
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

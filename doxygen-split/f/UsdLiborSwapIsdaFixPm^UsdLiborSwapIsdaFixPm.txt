@@ -1,0 +1,6 @@
+->
+::const Period &
+-- ^tenor
+::const Handle< YieldTermStructure > &
+=Handle< YieldTermStructure >()
+-- ^h

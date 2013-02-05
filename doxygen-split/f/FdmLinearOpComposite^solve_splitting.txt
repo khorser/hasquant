@@ -1,0 +1,7 @@
+->Disposable< Array >
+::Size
+-- ^direction
+::const Array &
+-- ^r
+::Real
+-- ^s

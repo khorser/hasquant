@@ -1,0 +1,3 @@
+->const bc_set &
+::Size
+-- ^i

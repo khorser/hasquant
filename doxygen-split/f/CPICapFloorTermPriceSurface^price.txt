@@ -1,0 +1,6 @@
+-- |Warningyou MUST remind the compiler in any descendants with the using:: mechanism because you overload the names remember that the strikes use the quoting convention
+->Real
+::const Period &
+-- ^d
+::Rate
+-- ^k

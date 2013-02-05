@@ -1,0 +1,10 @@
+-- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+->
+::const Calendar &
+-- ^cal
+::BusinessDayConvention
+=Following
+-- ^bdc
+::const DayCounter &
+=DayCounter()
+-- ^dc

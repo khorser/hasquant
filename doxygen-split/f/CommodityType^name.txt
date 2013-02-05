@@ -1,0 +1,2 @@
+-- |name, e.g, "Heating Oil"
+->const std::string &

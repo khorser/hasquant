@@ -1,0 +1,9 @@
+->boost::shared_ptr< GeneralizedBlackScholesProcess >
+::const Handle< Quote > &
+-- ^s0
+::const Handle< YieldTermStructure > &
+-- ^rTS
+::const Handle< YieldTermStructure > &
+-- ^qTS
+::Volatility
+-- ^vol

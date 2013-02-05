@@ -1,0 +1,15 @@
+->
+::const std::vector< Time > &
+-- ^rateTimes
+::Real
+=0.5
+-- ^longTermCorr
+::Real
+=0.2
+-- ^beta
+::Real
+=1.0
+-- ^gamma
+::const std::vector< Time > &
+=std::vector< Time >()
+-- ^times

@@ -1,0 +1,2 @@
+-- |returns a sample with weight 1.0 containing a random number uniformly chosen from (0.0,1.0)
+->sample_type

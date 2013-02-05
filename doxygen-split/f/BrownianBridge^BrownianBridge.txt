@@ -1,0 +1,4 @@
+-- |The constructor generates the time grid so that each step is of unit-time length. steps The number of steps in the path
+->
+::Size
+-- ^steps

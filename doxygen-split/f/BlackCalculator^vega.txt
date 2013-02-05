@@ -1,0 +1,4 @@
+-- |Sensitivity to volatility.
+->Real
+::Time
+-- ^maturity

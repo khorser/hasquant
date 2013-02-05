@@ -1,0 +1,8 @@
+-- |basic calculate method provided to inherited pricing engines
+->void
+::Real
+-- ^requiredTolerance
+::Size
+-- ^requiredSamples
+::Size
+-- ^maxSamples

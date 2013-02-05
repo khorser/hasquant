@@ -1,0 +1,4 @@
+-- |asset value at the $ i $-th point
+->Real
+::Size
+-- ^i

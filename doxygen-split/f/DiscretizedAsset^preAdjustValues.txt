@@ -1,0 +1,2 @@
+-- |This method will be invoked after rollback and before any other asset (i.e., an option on this one) has any chance to look at the values. For instance, payments happening at times already spanned by the rollback will be added here.This method is not virtual; derived classes must override the protected preAdjustValuesImpl() method instead.
+->void

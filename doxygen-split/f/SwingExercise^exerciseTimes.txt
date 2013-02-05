@@ -1,0 +1,5 @@
+->std::vector< Time >
+::const DayCounter &
+-- ^dc
+::const Date &
+-- ^refDate

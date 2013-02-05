@@ -1,0 +1,5 @@
+->Disposable< Array >
+::Time
+-- ^t
+::const Array &
+-- ^x

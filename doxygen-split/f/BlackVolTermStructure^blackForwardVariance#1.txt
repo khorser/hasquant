@@ -1,0 +1,11 @@
+-- |forward (at-the-money) variance
+->Real
+::Time
+-- ^time1
+::Time
+-- ^time2
+::Real
+-- ^strike
+::bool
+=false
+-- ^extrapolate

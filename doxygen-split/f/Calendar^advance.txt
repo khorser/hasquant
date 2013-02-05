@@ -1,0 +1,12 @@
+-- |Advances the given date as specified by the given period and returns the result. The input date is not modified.
+->Date
+::const Date &
+-- ^date
+::const Period &
+-- ^period
+::BusinessDayConvention
+=Following
+-- ^convention
+::bool
+=false
+-- ^endOfMonth

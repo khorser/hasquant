@@ -1,0 +1,17 @@
+->
+::const boost::shared_ptr< Basket >
+-- ^basket
+::Protection::Side
+-- ^side
+::const Schedule &
+-- ^schedule
+::Rate
+-- ^upfrontRate
+::Rate
+-- ^runningRate
+::const DayCounter &
+-- ^dayCounter
+::BusinessDayConvention
+-- ^paymentConvention
+::const Handle< YieldTermStructure > &
+-- ^yieldTS

@@ -1,0 +1,7 @@
+->void
+::std::vector< Real > &
+-- ^means
+::std::vector< Real > &
+-- ^errors
+::Size
+-- ^numberOfPaths

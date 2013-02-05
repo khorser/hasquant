@@ -1,0 +1,3 @@
+->
+::const Handle< Quote > &
+-- ^quote

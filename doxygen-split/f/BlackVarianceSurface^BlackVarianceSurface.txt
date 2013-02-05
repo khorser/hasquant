@@ -1,0 +1,19 @@
+->
+::const Date &
+-- ^referenceDate
+::const Calendar &
+-- ^cal
+::const std::vector< Date > &
+-- ^dates
+::const std::vector< Real > &
+-- ^strikes
+::const Matrix &
+-- ^blackVolMatrix
+::const DayCounter &
+-- ^dayCounter
+::Extrapolation
+=InterpolatorDefaultExtrapolation
+-- ^lowerExtrapolation
+::Extrapolation
+=InterpolatorDefaultExtrapolation
+-- ^upperExtrapolation

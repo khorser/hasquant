@@ -1,0 +1,3 @@
+->void
+::std::map< Date, Real > &
+-- ^prices

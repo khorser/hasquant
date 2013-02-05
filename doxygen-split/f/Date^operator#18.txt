@@ -1,0 +1,5 @@
+->bool
+::const Date &
+-- ^
+::const Date &
+-- ^

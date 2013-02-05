@@ -1,0 +1,14 @@
+->
+::Real
+-- ^notional
+::const boost::shared_ptr< Index > &
+-- ^index
+::const Date &
+-- ^baseDate
+::const Date &
+-- ^fixingDate
+::const Date &
+-- ^paymentDate
+::bool
+=false
+-- ^growthOnly

@@ -1,0 +1,13 @@
+->
+::const Date &
+-- ^referenceDate
+::const Handle< Quote > &
+-- ^forward
+::const DayCounter &
+-- ^dayCounter
+::Compounding
+=Continuous
+-- ^compounding
+::Frequency
+=Annual
+-- ^frequency

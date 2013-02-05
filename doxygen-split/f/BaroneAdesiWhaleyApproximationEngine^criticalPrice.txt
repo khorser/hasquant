@@ -1,0 +1,12 @@
+->Real
+::const boost::shared_ptr< StrikedTypePayoff > &
+-- ^payoff
+::DiscountFactor
+-- ^riskFreeDiscount
+::DiscountFactor
+-- ^dividendDiscount
+::Real
+-- ^variance
+::Real
+=1e-6
+-- ^tolerance

@@ -1,0 +1,9 @@
+-- |spot volatility
+->Volatility
+::const Date &
+-- ^maturity
+::Real
+-- ^strike
+::bool
+=false
+-- ^extrapolate

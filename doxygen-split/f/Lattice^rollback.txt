@@ -1,0 +1,6 @@
+-- |Roll back an asset until the given time, performing any needed adjustment.
+->void
+::DiscretizedAsset &
+-- ^
+::Time
+-- ^to

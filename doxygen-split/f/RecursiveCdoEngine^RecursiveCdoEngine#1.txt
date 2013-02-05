@@ -1,0 +1,12 @@
+-- |Correlation name to name single factor construction.
+->
+::const Handle< Quote > &
+-- ^correl
+::const Matrix &
+-- ^correlMtrx
+::Size
+=1
+-- ^nbuckets
+::Size
+=20
+-- ^quadOrder

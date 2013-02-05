@@ -1,0 +1,7 @@
+-- |spot at-the-money volatility
+->Volatility
+::const Period &
+-- ^optionTenor
+::bool
+=false
+-- ^extrapolate

@@ -1,0 +1,10 @@
+-- |returns the asset value after a time interval $ \Delta t $ according to the given discretization. By default, it returns \[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \] where $ E $ is the expectation and $ S $ the standard deviation.
+->Disposable< Array >
+::Time
+-- ^t0
+::const Array &
+-- ^x0
+::Time
+-- ^dt
+::const Array &
+-- ^dw

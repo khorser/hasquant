@@ -1,0 +1,2 @@
+-- |current value of the local minimum
+->const Array &

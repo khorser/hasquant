@@ -1,0 +1,27 @@
+->
+::const Handle< Quote > &
+-- ^x0
+::const Handle< YieldTermStructure > &
+-- ^dividendTS
+::const Handle< YieldTermStructure > &
+-- ^riskFreeTS
+::const Handle< BlackVolTermStructure > &
+-- ^blackVolTS
+::Time
+=0
+-- ^lowerTimeBorderForStressTest
+::Time
+=1000000
+-- ^upperTimeBorderForStressTest
+::Real
+=0
+-- ^lowerAssetBorderForStressTest
+::Real
+=1000000
+-- ^upperAssetBorderForStressTest
+::Real
+=0
+-- ^stressLevel
+::const boost::shared_ptr< discretization > &
+=boost::shared_ptr< discretization >(new EulerDiscretization)
+-- ^d

@@ -1,0 +1,2 @@
+-- |fixing dates for the rates to be compounded
+->const std::vector< Date > &

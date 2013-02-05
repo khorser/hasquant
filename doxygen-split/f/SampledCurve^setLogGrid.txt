@@ -1,0 +1,5 @@
+->void
+::Real
+-- ^min
+::Real
+-- ^max

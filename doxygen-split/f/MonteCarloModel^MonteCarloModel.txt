@@ -1,0 +1,18 @@
+->
+::const boost::shared_ptr< path_generator_type > &
+-- ^pathGenerator
+::const boost::shared_ptr< path_pricer_type > &
+-- ^pathPricer
+::const stats_type &
+-- ^sampleAccumulator
+::bool
+-- ^antitheticVariate
+::const boost::shared_ptr< path_pricer_type > &
+=boost::shared_ptr< path_pricer_type >()
+-- ^cvPathPricer
+::result_type
+=result_type()
+-- ^cvOptionValue
+::const boost::shared_ptr< path_generator_type > &
+=boost::shared_ptr< path_generator_type >()
+-- ^cvPathGenerator

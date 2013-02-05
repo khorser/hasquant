@@ -1,0 +1,5 @@
+->
+::const Leg &
+-- ^yoyLeg
+::const std::vector< Rate > &
+-- ^exerciseRates

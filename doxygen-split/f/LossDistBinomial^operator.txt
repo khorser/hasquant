@@ -1,0 +1,7 @@
+->Distribution
+::Size
+-- ^n
+::Real
+-- ^volume
+::Real
+-- ^probability

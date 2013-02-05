@@ -1,0 +1,6 @@
+->
+::const boost::shared_ptr< BatesModel > &
+-- ^model
+::Size
+=144
+-- ^integrationOrder

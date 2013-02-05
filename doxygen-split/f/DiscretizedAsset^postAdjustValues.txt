@@ -1,0 +1,2 @@
+-- |This method will be invoked after rollback and after any other asset had their chance to look at the values. For instance, payments happening at the present time (and therefore not included in an option to be exercised at this time) will be added here.This method is not virtual; derived classes must override the protected postAdjustValuesImpl() method instead.
+->void

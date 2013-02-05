@@ -1,0 +1,2 @@
+-- |resets the data to a null set
+->void

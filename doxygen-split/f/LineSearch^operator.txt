@@ -1,0 +1,10 @@
+-- |Perform line search.
+->Real
+::Problem &
+-- ^P
+::EndCriteria::Type &
+-- ^ecType
+::const EndCriteria &
+-- ^
+::const Real
+-- ^t_ini

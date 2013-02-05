@@ -1,0 +1,7 @@
+->
+::const typename PdeClass::argument_type &
+-- ^process
+::Time
+-- ^t
+::Real
+-- ^x

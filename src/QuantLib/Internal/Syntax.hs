@@ -20,7 +20,7 @@ import QuantLib.Internal.Utils
 
 -- All QLEnum instances should be imported here!
 import QuantLib.Compounding()
-import QuantLib.Position()
+import QuantLib.Side()
 import QuantLib.Time.BusinessDayConvention()
 import QuantLib.Time.Date()
 import QuantLib.Time.DateGenerationRule()

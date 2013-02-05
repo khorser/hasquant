@@ -1,0 +1,6 @@
+-- |Test if the number of iteration is below MaxIterations
+->bool
+::const Size
+-- ^iteration
+::EndCriteria::Type &
+-- ^ecType

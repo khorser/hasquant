@@ -1,0 +1,20 @@
+->
+::const std::vector< Time > &
+-- ^rateTimes
+::const std::vector< Real > &
+-- ^accruals
+::const std::vector< Time > &
+-- ^paymentTimes
+::Real
+-- ^gearingOfFloor
+::Real
+-- ^gearingOfFixing
+::Rate
+-- ^spreadOfFloor
+::Rate
+-- ^spreadOfFixing
+::Real
+-- ^initialFloor
+::bool
+=true
+-- ^payer

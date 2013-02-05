@@ -1,0 +1,8 @@
+->Real
+::const Leg &
+-- ^leg
+::bool
+-- ^includeSettlementDateFlows
+::Date
+=Date()
+-- ^settlDate

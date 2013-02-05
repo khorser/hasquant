@@ -1,0 +1,5 @@
+->
+::const std::vector< Time > &
+-- ^rateTimes
+::const std::vector< boost::shared_ptr< Payoff > > &
+-- ^

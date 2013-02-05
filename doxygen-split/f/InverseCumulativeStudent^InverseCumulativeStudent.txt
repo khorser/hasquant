@@ -1,0 +1,9 @@
+->
+::Integer
+-- ^n
+::Real
+=1e-6
+-- ^accuracy
+::Size
+=50
+-- ^maxIterations

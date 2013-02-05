@@ -1,0 +1,2 @@
+-- |returns the minimum sample value
+->Real

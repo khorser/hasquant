@@ -1,0 +1,19 @@
+->
+::const boost::shared_ptr< HybridHestonHullWhiteProcess > &
+-- ^process
+::Size
+-- ^timeSteps
+::Size
+-- ^timeStepsPerYear
+::bool
+-- ^antitheticVariate
+::bool
+-- ^controlVariate
+::Size
+-- ^requiredSamples
+::Real
+-- ^requiredTolerance
+::Size
+-- ^maxSamples
+::BigNatural
+-- ^seed

@@ -1,0 +1,10 @@
+->
+::const MatrixMult &
+-- ^A
+::Size
+-- ^maxIter
+::Real
+-- ^relTol
+::const MatrixMult &
+=MatrixMult()
+-- ^preConditioner

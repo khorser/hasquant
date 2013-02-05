@@ -1,0 +1,4 @@
+-- |Returns a map with the ISDA conventional (values by default) of the recovery rate per each ISDA seniority.
+->Real
+::Seniority
+-- ^sen

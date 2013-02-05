@@ -1,0 +1,5 @@
+->Disposable< Array >
+::const Array &
+-- ^x0
+::const Array &
+-- ^dx

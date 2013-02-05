@@ -1,0 +1,4 @@
+-- |call cost values computation and increment evaluation counter
+->Disposable< Array >
+::const Array &
+-- ^x

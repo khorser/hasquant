@@ -1,0 +1,1 @@
+->const boost::shared_ptr< MarketModel > &

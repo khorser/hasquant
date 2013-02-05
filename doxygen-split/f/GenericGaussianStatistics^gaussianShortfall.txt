@@ -1,0 +1,4 @@
+-- |gaussian-assumption Shortfall (observations below target)
+->Real
+::Real
+-- ^target

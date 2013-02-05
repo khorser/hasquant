@@ -1,0 +1,6 @@
+-- |Time $t1 <= t2$ is required.
+->void
+::Time
+-- ^t1
+::Time
+-- ^t2

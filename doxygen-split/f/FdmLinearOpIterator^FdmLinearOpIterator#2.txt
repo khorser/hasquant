@@ -1,0 +1,7 @@
+->
+::const std::vector< Size > &
+-- ^dim
+::const std::vector< Size > &
+-- ^coordinates
+::Size
+-- ^index

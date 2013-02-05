@@ -1,0 +1,16 @@
+->
+::const boost::shared_ptr< MarketModel > &
+-- ^
+::const BrownianGeneratorFactory &
+-- ^
+::const boost::shared_ptr< MarketModelVolProcess > &
+-- ^volProcess
+::Size
+-- ^firstVolatilityFactor
+::Size
+-- ^volatilityFactorStep
+::const std::vector< Size > &
+-- ^numeraires
+::Size
+=0
+-- ^initialStep

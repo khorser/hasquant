@@ -1,0 +1,11 @@
+->
+::const Handle< YieldTermStructure > &
+-- ^yieldtermStructure
+::const std::vector< Date > &
+-- ^speedstructure
+::const std::vector< Date > &
+-- ^volstructure
+::const std::vector< Real > &
+-- ^speed
+::const std::vector< Real > &
+-- ^vol

@@ -1,0 +1,27 @@
+->
+::Real
+-- ^nominal
+::Real
+-- ^baseRate
+::const Period &
+-- ^observationLag
+::const Calendar &
+-- ^cal
+::const BusinessDayConvention &
+-- ^bdc
+::const DayCounter &
+-- ^dc
+::const Handle< ZeroInflationIndex > &
+-- ^zii
+::const Handle< YieldTermStructure > &
+-- ^yts
+::const std::vector< Rate > &
+-- ^cStrikes
+::const std::vector< Rate > &
+-- ^fStrikes
+::const std::vector< Period > &
+-- ^cfMaturities
+::const Matrix &
+-- ^cPrice
+::const Matrix &
+-- ^fPrice

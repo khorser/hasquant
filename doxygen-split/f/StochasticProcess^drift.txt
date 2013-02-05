@@ -1,0 +1,6 @@
+-- |returns the drift part of the equation, i.e., $ \mu(t, \mathrm{x}_t) $
+->Disposable< Array >
+::Time
+-- ^t
+::const Array &
+-- ^x

@@ -1,0 +1,7 @@
+->
+::Real
+-- ^strike
+::Real
+-- ^secondStrike
+::Real
+-- ^cashPayoff

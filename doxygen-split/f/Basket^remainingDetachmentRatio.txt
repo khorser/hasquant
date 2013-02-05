@@ -1,0 +1,6 @@
+-- |The remaining detachment amount is RDA = max (0, detachmentAmount - cumulatedLoss())The remaining detachment ratio is then RDR = RDA / remainingNotional()
+->Real
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate

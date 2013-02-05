@@ -1,0 +1,2 @@
+-- |"payer" or "receiver" refer to the inflation-indexed leg
+->Type

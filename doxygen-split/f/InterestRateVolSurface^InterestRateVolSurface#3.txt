@@ -1,0 +1,14 @@
+-- |calculate the reference date based on the global evaluation date
+->
+::const boost::shared_ptr< InterestRateIndex > &
+-- ^
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^
+::BusinessDayConvention
+=Following
+-- ^bdc
+::const DayCounter &
+=DayCounter()
+-- ^dc

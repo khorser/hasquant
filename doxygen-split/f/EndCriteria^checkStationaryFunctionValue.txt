@@ -1,0 +1,10 @@
+-- |Test if the function variation is below functionEpsilon
+->bool
+::const Real
+-- ^fxOld
+::const Real
+-- ^fxNew
+::Size &
+-- ^statStateIterations
+::EndCriteria::Type &
+-- ^ecType

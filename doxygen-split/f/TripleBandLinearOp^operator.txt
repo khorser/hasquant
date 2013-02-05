@@ -1,0 +1,3 @@
+->TripleBandLinearOp &
+::const TripleBandLinearOp &
+-- ^m

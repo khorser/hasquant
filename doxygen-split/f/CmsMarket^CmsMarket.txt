@@ -1,0 +1,13 @@
+->
+::const std::vector< Period > &
+-- ^swapLengths
+::const std::vector< boost::shared_ptr< SwapIndex > > &
+-- ^swapIndexes
+::const boost::shared_ptr< IborIndex > &
+-- ^iborIndex
+::const std::vector< std::vector< Handle< Quote > > > &
+-- ^bidAskSpreads
+::const std::vector< boost::shared_ptr< HaganPricer > > &
+-- ^pricers
+::const Handle< YieldTermStructure > &
+-- ^discountingTS

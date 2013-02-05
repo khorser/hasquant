@@ -1,0 +1,21 @@
+->
+::std::string
+-- ^name
+::Currency
+-- ^ccy
+::Real
+-- ^recoveryRate
+::Handle< DefaultProbabilityTermStructure >
+-- ^defaultTS
+::Schedule
+-- ^schedule
+::Real
+-- ^rate
+::DayCounter
+-- ^dayCounter
+::BusinessDayConvention
+-- ^paymentConvention
+::std::vector< Real >
+-- ^notionals
+::Handle< YieldTermStructure >
+-- ^yieldTS

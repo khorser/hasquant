@@ -1,0 +1,2 @@
+-- |returns the error estimate on the NPV when available.
+->Real

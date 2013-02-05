@@ -1,0 +1,3 @@
+->RangeAccrualLeg &
+::const std::vector< Natural > &
+-- ^fixingDays

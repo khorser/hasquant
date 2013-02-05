@@ -1,0 +1,3 @@
+->Disposable< NinePointLinearOp >
+::const Array &
+-- ^u

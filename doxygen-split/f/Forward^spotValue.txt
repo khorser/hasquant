@@ -1,0 +1,2 @@
+-- |returns spot value/price of an underlying financial instrument
+->Real

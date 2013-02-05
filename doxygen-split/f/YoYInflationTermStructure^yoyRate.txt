@@ -1,0 +1,14 @@
+-- |year-on-year inflation rate.
+-- |The forceLinearInterpolation parameter is relative to the frequency of the TS.this is not the year-on-year swap (YYIIS) rate.
+->Rate
+::const Date &
+-- ^d
+::const Period &
+=Period(-1, Days)
+-- ^instObsLag
+::bool
+=false
+-- ^forceLinearInterpolation
+::bool
+=false
+-- ^extrapolate

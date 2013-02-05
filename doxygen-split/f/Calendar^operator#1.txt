@@ -1,0 +1,5 @@
+->bool
+::const Calendar &
+-- ^
+::const Calendar &
+-- ^

@@ -1,0 +1,11 @@
+-- |returns the volatility for a given option tenor and bond tenor
+->Volatility
+::const Period &
+-- ^optionTenor
+::const Period &
+-- ^bondTenor
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

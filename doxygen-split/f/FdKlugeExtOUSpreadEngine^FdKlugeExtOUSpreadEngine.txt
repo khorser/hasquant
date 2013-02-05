@@ -1,0 +1,26 @@
+->
+::const boost::shared_ptr< KlugeExtOUProcess > &
+-- ^klugeOUProcess
+::const boost::shared_ptr< YieldTermStructure > &
+-- ^rTS
+::Size
+=25
+-- ^tGrid
+::Size
+=50
+-- ^xGrid
+::Size
+=10
+-- ^yGrid
+::Size
+=25
+-- ^uGrid
+::const boost::shared_ptr< GasShape > &
+=boost::shared_ptr< GasShape >()
+-- ^gasShape
+::const boost::shared_ptr< PowerShape > &
+=boost::shared_ptr< PowerShape >()
+-- ^powerShape
+::const FdmSchemeDesc &
+=FdmSchemeDesc::Hundsdorfer()
+-- ^schemeDesc

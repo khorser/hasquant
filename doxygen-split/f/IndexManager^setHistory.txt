@@ -1,0 +1,6 @@
+-- |stores the historical fixings of the index
+->void
+::const std::string &
+-- ^name
+::const TimeSeries< Real > &
+-- ^

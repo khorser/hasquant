@@ -1,0 +1,2 @@
+-- |return a random number in the (0.0, 1.0)-interval
+->Real

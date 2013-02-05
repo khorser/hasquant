@@ -1,0 +1,15 @@
+->
+::Natural
+-- ^settlementDays
+::const Calendar &
+-- ^calendar
+::const Handle< Quote > &
+-- ^forward
+::const DayCounter &
+-- ^dayCounter
+::Compounding
+=Continuous
+-- ^compounding
+::Frequency
+=Annual
+-- ^frequency

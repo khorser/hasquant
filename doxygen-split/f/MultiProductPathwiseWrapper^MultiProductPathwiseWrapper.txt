@@ -1,0 +1,3 @@
+->
+::const MarketModelPathwiseMultiProduct &
+-- ^innerProduct_

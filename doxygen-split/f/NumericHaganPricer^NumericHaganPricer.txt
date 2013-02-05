@@ -1,0 +1,16 @@
+->
+::const Handle< SwaptionVolatilityStructure > &
+-- ^swaptionVol
+::GFunctionFactory::YieldCurveModel
+-- ^modelOfYieldCurve
+::const Handle< Quote > &
+-- ^meanReversion
+::Rate
+=0.0
+-- ^lowerLimit
+::Rate
+=1.0
+-- ^upperLimit
+::Real
+=1.0e-6
+-- ^precision

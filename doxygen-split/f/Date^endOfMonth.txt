@@ -1,0 +1,4 @@
+-- |last day of the month to which the given date belongs
+->Date
+::const Date &
+-- ^d

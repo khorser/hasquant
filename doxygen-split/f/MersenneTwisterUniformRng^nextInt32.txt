@@ -1,0 +1,2 @@
+-- |return a random integer in the [0,0xffffffff]-interval
+->unsigned long

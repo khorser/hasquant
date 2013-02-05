@@ -1,0 +1,13 @@
+->
+::Barrier::Type
+-- ^barrierType
+::Real
+-- ^barrier
+::Real
+-- ^rebate
+::Option::Type
+-- ^type
+::Real
+-- ^strike
+::const std::vector< DiscountFactor > &
+-- ^discounts

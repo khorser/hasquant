@@ -1,0 +1,15 @@
+->
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^
+::Size
+=100
+-- ^tGrid
+::Size
+=100
+-- ^xGrid
+::Size
+=50
+-- ^aGrid
+::const FdmSchemeDesc &
+=FdmSchemeDesc::Douglas()
+-- ^schemeDesc

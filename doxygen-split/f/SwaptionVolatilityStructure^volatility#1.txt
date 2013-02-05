@@ -1,0 +1,11 @@
+-- |returns the volatility for a given option date and swap tenor
+->Volatility
+::const Date &
+-- ^optionDate
+::const Period &
+-- ^swapTenor
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

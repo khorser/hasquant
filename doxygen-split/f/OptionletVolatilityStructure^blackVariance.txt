@@ -1,0 +1,9 @@
+-- |returns the Black variance for a given option tenor and strike rate
+->Real
+::const Period &
+-- ^optionTenor
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

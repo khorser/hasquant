@@ -1,0 +1,4 @@
+-- |Get and store one after another.
+->BigNatural
+::Size
+-- ^absoluteIndex

@@ -1,0 +1,10 @@
+->
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^process
+::Size
+-- ^timeSteps
+::Size
+-- ^gridPoints
+::bool
+=false
+-- ^timeDependent

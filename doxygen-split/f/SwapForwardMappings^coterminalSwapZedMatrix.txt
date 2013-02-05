@@ -1,0 +1,6 @@
+-- |Returns the Z matrix to switch base from forward to coterminal swap rates
+->Disposable< Matrix >
+::const CurveState &
+-- ^cs
+::const Spread
+-- ^displacement

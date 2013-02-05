@@ -1,0 +1,9 @@
+-- |default constructor
+->
+::CostFunction &
+-- ^costFunction
+::Constraint &
+-- ^constraint
+::const Array &
+=Array()
+-- ^initialValue

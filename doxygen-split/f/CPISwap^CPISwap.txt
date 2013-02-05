@@ -1,0 +1,39 @@
+->
+::Type
+-- ^type
+::Real
+-- ^nominal
+::bool
+-- ^subtractInflationNominal
+::Spread
+-- ^spread
+::const DayCounter &
+-- ^floatDayCount
+::const Schedule &
+-- ^floatSchedule
+::const BusinessDayConvention &
+-- ^floatRoll
+::Natural
+-- ^fixingDays
+::const boost::shared_ptr< IborIndex > &
+-- ^floatIndex
+::Rate
+-- ^fixedRate
+::Real
+-- ^baseCPI
+::const DayCounter &
+-- ^fixedDayCount
+::const Schedule &
+-- ^fixedSchedule
+::const BusinessDayConvention &
+-- ^fixedRoll
+::const Period &
+-- ^observationLag
+::const boost::shared_ptr< ZeroInflationIndex > &
+-- ^fixedIndex
+::CPI::InterpolationType
+=CPI::AsIndex
+-- ^observationInterpolation
+::Real
+=Null< Real >()
+-- ^inflationNominal

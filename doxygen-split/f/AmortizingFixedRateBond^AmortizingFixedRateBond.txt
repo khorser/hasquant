@@ -1,0 +1,17 @@
+->
+::Natural
+-- ^settlementDays
+::const std::vector< Real > &
+-- ^notionals
+::const Schedule &
+-- ^schedule
+::const std::vector< Rate > &
+-- ^coupons
+::const DayCounter &
+-- ^accrualDayCounter
+::BusinessDayConvention
+=Following
+-- ^paymentConvention
+::const Date &
+=Date()
+-- ^issueDate

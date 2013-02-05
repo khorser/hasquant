@@ -1,0 +1,8 @@
+-- |computes the implied vol of a swaption specified by two indices using the freezing coefficients methdodology. This routine is easy to use but not very efficient and if you want to do a lot of cases, then a different approach should be used.Tested in SwapForwardMappingsTest::testSwaptionImpliedVolatility() in swapforwardmappings.cpp
+->Real
+::const MarketModel &
+-- ^volStructure
+::Size
+-- ^startIndex
+::Size
+-- ^endIndex

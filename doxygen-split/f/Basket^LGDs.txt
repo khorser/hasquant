@@ -1,0 +1,2 @@
+-- |Loss Given Default for all issuers/notionals based on expected recovery rates for the respective issuers.
+->const std::vector< Real > &

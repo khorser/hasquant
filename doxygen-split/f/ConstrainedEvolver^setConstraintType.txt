@@ -1,0 +1,6 @@
+-- |call once
+->void
+::const std::vector< Size > &
+-- ^startIndexOfSwapRate
+::const std::vector< Size > &
+-- ^EndIndexOfSwapRate

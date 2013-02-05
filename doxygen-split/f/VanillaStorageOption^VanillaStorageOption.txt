@@ -1,0 +1,9 @@
+->
+::const boost::shared_ptr< BermudanExercise > &
+-- ^ex
+::Real
+-- ^capacity
+::Real
+-- ^load
+::Real
+-- ^changeRate

@@ -1,0 +1,6 @@
+->
+::const Evolver &
+-- ^evolver
+::const std::vector< Time > &
+=std::vector< Time >()
+-- ^stoppingTimes

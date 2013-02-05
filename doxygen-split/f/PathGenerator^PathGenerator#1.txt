@@ -1,0 +1,9 @@
+->
+::const boost::shared_ptr< StochasticProcess > &
+-- ^
+::const TimeGrid &
+-- ^timeGrid
+::const GSG &
+-- ^generator
+::bool
+-- ^brownianBridge

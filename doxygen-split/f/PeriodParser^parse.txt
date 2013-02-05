@@ -1,0 +1,3 @@
+->Period
+::const std::string &
+-- ^str

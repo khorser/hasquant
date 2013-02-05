@@ -1,0 +1,4 @@
+-- |gaussian-assumption Average Shortfall (averaged shortfallness)
+->Real
+::Real
+-- ^target

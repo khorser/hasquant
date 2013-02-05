@@ -1,0 +1,8 @@
+-- |Plain tree build-up from short-rate dynamics.
+->
+::const boost::shared_ptr< TrinomialTree > &
+-- ^tree
+::const boost::shared_ptr< ShortRateDynamics > &
+-- ^dynamics
+::const TimeGrid &
+-- ^timeGrid

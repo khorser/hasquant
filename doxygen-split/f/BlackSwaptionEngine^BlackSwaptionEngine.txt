@@ -1,0 +1,8 @@
+->
+::const Handle< YieldTermStructure > &
+-- ^discountCurve
+::const Handle< Quote > &
+-- ^vol
+::const DayCounter &
+=Actual365Fixed()
+-- ^dc

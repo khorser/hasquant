@@ -1,0 +1,2 @@
+-- |returns the currency of the bond this event refers to.
+->const Currency &

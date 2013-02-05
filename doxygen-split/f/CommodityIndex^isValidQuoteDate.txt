@@ -1,0 +1,4 @@
+-- |returns TRUE if the quote date is valid
+->bool
+::const Date &
+-- ^quoteDate

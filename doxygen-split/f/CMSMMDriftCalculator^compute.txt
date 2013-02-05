@@ -1,0 +1,6 @@
+-- |Computes the drifts.
+->void
+::const CMSwapCurveState &
+-- ^cs
+::std::vector< Real > &
+-- ^drifts

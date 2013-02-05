@@ -1,0 +1,12 @@
+->
+::Size
+-- ^period
+::Size
+-- ^offset
+::const std::vector< PiecewiseConstantAbcdVariance > &
+-- ^originalVariances
+::const std::vector< Time > &
+-- ^timesForSmallRates
+::Real
+=0.0
+-- ^lastCapletVol_

@@ -1,0 +1,11 @@
+->TimeSeries< IntervalPrice >
+::const std::vector< Date > &
+-- ^d
+::const std::vector< Real > &
+-- ^open
+::const std::vector< Real > &
+-- ^close
+::const std::vector< Real > &
+-- ^high
+::const std::vector< Real > &
+-- ^low

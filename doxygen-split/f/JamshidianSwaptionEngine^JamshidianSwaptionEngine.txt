@@ -1,0 +1,7 @@
+-- |the term structure is only needed when the short-rate model cannot provide one itself.
+->
+::const boost::shared_ptr< OneFactorAffineModel > &
+-- ^model
+::const Handle< YieldTermStructure > &
+=Handle< YieldTermStructure >()
+-- ^termStructure

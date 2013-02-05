@@ -1,0 +1,7 @@
+->bool
+::const CurveState &
+-- ^currentState
+::std::vector< Size > &
+-- ^numberCashFlowsThisStep
+::std::vector< std::vector< MarketModelPathwiseMultiProduct::CashFlow > > &
+-- ^cashFlowsGenerated

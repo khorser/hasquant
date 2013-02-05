@@ -1,0 +1,12 @@
+->
+::const std::vector< std::vector< boost::shared_ptr< DefaultType > > > &
+-- ^eventTypes
+::const std::vector< Currency > &
+-- ^currencies
+::const std::vector< Seniority > &
+-- ^seniorities
+::const std::vector< Handle< DefaultProbabilityTermStructure > > &
+-- ^curves
+::const DefaultEventSet &
+=DefaultEventSet()
+-- ^events

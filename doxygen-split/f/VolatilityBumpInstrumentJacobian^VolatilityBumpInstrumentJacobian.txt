@@ -1,0 +1,7 @@
+->
+::const VegaBumpCollection &
+-- ^bumps
+::const std::vector< Swaption > &
+-- ^swaptions
+::const std::vector< Cap > &
+-- ^caps

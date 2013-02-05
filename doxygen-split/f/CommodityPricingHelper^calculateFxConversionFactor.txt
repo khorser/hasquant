@@ -1,0 +1,7 @@
+->Real
+::const Currency &
+-- ^fromCurrency
+::const Currency &
+-- ^toCurrency
+::const Date &
+-- ^evaluationDate

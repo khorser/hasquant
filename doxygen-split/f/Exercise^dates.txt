@@ -1,0 +1,2 @@
+-- |Returns all exercise dates.
+->const std::vector< Date > &

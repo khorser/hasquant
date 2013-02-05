@@ -1,0 +1,9 @@
+-- |returns true if an event has already occurred before a date
+-- |If includeRefDate is true, then an event has not occurred if its date is the same as the refDate, i.e. this method returns false if the event date is the same as the refDate.
+->bool
+::const Date &
+=Date()
+-- ^refDate
+::boost::optional< bool >
+=boost::none
+-- ^includeRefDate

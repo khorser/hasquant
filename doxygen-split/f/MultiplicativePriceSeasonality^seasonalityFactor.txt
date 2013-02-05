@@ -1,0 +1,4 @@
+-- |The factor returned is NOT normalized relative to ANYTHING.
+->Rate
+::const Date &
+-- ^d

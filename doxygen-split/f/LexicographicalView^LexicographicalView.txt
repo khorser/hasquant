@@ -1,0 +1,8 @@
+-- |attaches the view with the given dimension to a sequence
+->
+::const RandomAccessIterator &
+-- ^begin
+::const RandomAccessIterator &
+-- ^end
+::Size
+-- ^xSize

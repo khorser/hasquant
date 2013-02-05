@@ -1,0 +1,4 @@
+-- |Sensitivity to discounting rate.
+->Real
+::Time
+-- ^maturity

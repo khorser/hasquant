@@ -1,0 +1,7 @@
+->
+::const Array &
+-- ^grid
+::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
+-- ^
+::Time
+-- ^residualTime

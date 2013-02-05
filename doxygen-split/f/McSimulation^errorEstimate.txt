@@ -1,0 +1,2 @@
+-- |error estimated using the samples simulated so far
+->result_type

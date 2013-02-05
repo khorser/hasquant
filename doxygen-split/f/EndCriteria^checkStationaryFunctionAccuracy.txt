@@ -1,0 +1,8 @@
+-- |Test if the function value is below functionEpsilon
+->bool
+::const Real
+-- ^f
+::const bool
+-- ^positiveOptimization
+::EndCriteria::Type &
+-- ^ecType

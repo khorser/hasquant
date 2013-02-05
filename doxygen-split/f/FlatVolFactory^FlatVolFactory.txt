@@ -1,0 +1,13 @@
+->
+::Real
+-- ^longTermCorrelation
+::Real
+-- ^beta
+::const std::vector< Time > &
+-- ^times
+::const std::vector< Volatility > &
+-- ^vols
+::const Handle< YieldTermStructure > &
+-- ^yieldCurve
+::Spread
+-- ^displacement

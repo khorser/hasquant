@@ -1,0 +1,6 @@
+->
+::Type
+-- ^type
+::bool
+=false
+-- ^payoffAtExpiry

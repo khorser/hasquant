@@ -1,0 +1,7 @@
+->Rate
+::Time
+-- ^t
+::Real
+-- ^x
+::Real
+-- ^y

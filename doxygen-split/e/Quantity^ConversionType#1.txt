@@ -1,0 +1,6 @@
+NoConversion
+-- ^do not perform conversions
+BaseUnitOfMeasureConversion
+-- ^convert both operands to the base unitOfMeasure before converting
+AutomatedConversion
+-- ^return the result in the unitOfMeasure of the first operand

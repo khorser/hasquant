@@ -1,0 +1,4 @@
+-- |Black price given a volatility.
+->Real
+::Volatility
+-- ^volatility

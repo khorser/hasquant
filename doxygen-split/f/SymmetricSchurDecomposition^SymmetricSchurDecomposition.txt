@@ -1,0 +1,4 @@
+-- |s must be symmetric
+->
+::const Matrix &
+-- ^s

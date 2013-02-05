@@ -1,0 +1,3 @@
+->boost::shared_ptr< ZeroInflationIndex >
+::const Handle< ZeroInflationTermStructure > &
+-- ^h

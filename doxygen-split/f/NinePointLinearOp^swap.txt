@@ -1,0 +1,3 @@
+->void
+::NinePointLinearOp &
+-- ^m

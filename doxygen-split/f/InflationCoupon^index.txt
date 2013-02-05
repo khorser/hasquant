@@ -1,0 +1,2 @@
+-- |yoy inflation index
+->const boost::shared_ptr< InflationIndex > &

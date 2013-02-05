@@ -1,0 +1,3 @@
+NoShift
+Overrelaxation
+CloseEigenValue

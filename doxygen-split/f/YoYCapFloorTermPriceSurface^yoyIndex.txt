@@ -1,0 +1,2 @@
+-- |index yoy is based on
+->boost::shared_ptr< YoYInflationIndex >

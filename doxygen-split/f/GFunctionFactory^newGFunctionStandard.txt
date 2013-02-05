@@ -1,0 +1,7 @@
+->boost::shared_ptr< GFunction >
+::Size
+-- ^q
+::Real
+-- ^delta
+::Size
+-- ^swapLength

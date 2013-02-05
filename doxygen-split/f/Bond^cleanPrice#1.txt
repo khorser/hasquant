@@ -1,0 +1,14 @@
+-- |clean price given a yield and settlement date
+-- |The default bond settlement is used if no date is given.
+->Real
+::Rate
+-- ^yield
+::const DayCounter &
+-- ^dc
+::Compounding
+-- ^comp
+::Frequency
+-- ^freq
+::Date
+=Date()
+-- ^settlementDate

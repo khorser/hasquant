@@ -1,0 +1,16 @@
+-- |Credit event with optional settlement information. Represents a credit event that has taken place. Realized events are of an atomic type. If the settlement information is given seniorities present are the seniorities/bonds affected by the event.
+->
+::const Date &
+-- ^creditEventDate
+::const DefaultType &
+-- ^atomicEvType
+::const Currency &
+-- ^curr
+::Seniority
+-- ^bondsSen
+::const Date &
+=Null< Date >()
+-- ^settleDate
+::const std::map< Seniority, Real > &
+=rate_map()
+-- ^recoveryRates

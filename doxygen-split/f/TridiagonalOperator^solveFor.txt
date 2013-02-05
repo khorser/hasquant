@@ -1,0 +1,4 @@
+-- |solve linear system for a given right-hand side
+->Disposable< Array >
+::const Array &
+-- ^rhs

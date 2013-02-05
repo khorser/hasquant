@@ -1,0 +1,11 @@
+-- |returns the volatility for a given option time and bondLength
+->Volatility
+::Time
+-- ^optionTime
+::Time
+-- ^bondLength
+::Rate
+-- ^strike
+::bool
+=false
+-- ^extrapolate

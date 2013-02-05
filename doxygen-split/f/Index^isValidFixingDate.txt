@@ -1,0 +1,4 @@
+-- |returns TRUE if the fixing date is a valid one
+->bool
+::const Date &
+-- ^fixingDate

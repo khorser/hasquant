@@ -1,0 +1,6 @@
+-- |adds a sequence of data to the set, with default weight
+->void
+::DataIterator
+-- ^begin
+::DataIterator
+-- ^end

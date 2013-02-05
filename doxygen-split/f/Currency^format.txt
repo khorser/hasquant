@@ -1,0 +1,3 @@
+-- |output format
+-- |The format will be fed three positional parameters, namely, value, code, and symbol, in this order.
+->std::string

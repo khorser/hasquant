@@ -1,0 +1,7 @@
+->
+::Replication::Type
+=Replication::Central
+-- ^t
+::Real
+=1e-4
+-- ^gap

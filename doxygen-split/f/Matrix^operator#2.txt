@@ -1,0 +1,4 @@
+-- |all matrices involved in an algebraic expression must have the same size.
+->const Matrix &
+::const Matrix &
+-- ^

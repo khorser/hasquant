@@ -1,0 +1,21 @@
+-- |implied rate for a given compound factor between two dates.
+-- |The resulting rate is calculated taking the required day-counting rule into account.
+->InterestRate
+::Real
+-- ^compound
+::const DayCounter &
+-- ^resultDC
+::Compounding
+-- ^comp
+::Frequency
+-- ^freq
+::const Date &
+-- ^d1
+::const Date &
+-- ^d2
+::const Date &
+=Date()
+-- ^refStart
+::const Date &
+=Date()
+-- ^refEnd

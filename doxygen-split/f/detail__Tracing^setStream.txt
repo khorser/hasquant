@@ -1,0 +1,3 @@
+->void
+::std::ostream &
+-- ^stream
