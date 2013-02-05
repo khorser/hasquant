@@ -10,6 +10,8 @@ module QuantLib.Instrument.Bond
   , zeroCouponBond
   , floatingRateBond
 
+  , maturityDate
+
   , setCouponPricer
   )
 
@@ -50,6 +52,14 @@ bond' :: Word -- ^settlementDays
   -> Leg -- ^cashflows
   -> IO Bond
 bond' = $(ffiConstruct 'bond') c_bond'
+
+foreign import ccall safe "ql.h qlBondMaturityDate"
+  c_maturityDate :: Ptr CBond -> IO CDate
+
+-- |Returns the maturity date of the bond. QuantLib: qlBondMaturityDate
+maturityDate :: Bond -> Maybe Day
+maturityDate = $(ffiCallIO 'maturityDate) c_maturityDate
+--- XXX assuming bonds are immutable, any exceptions possible?
 
 foreign import ccall safe "ql.h qlFixedRateBond"
   c_fixedRateBond :: CUInt -> CDouble -> Ptr CSchedule

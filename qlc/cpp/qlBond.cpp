@@ -31,6 +31,10 @@ QlBond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
   }
 }
 
+int qlBondMaturityDate(QlBond *bond) {
+  return qlNullableDate((*arg(bond))->maturityDate());
+}
+
 void qlFreeBond(QlBond *bond) {
   del(bond);
 }

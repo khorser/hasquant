@@ -54,6 +54,7 @@ extern "C" {
   QlBond *DLLEXPORT qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
     int maturityDate, int issueDate, Leg *cashFlows, char **e);
 #endif
+  int DLLEXPORT qlBondMaturityDate(QlBond *bond);
   QlInstrument *DLLEXPORT qlBondAsInstrument(QlBond *bond);
 
   QlFixedRateBond *DLLEXPORT qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,

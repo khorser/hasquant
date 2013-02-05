@@ -114,8 +114,16 @@ test_a365fCounter = do  c1 <- DayCounter.a365F
                         c2 <- DayCounter.actual365Fixed
                         assertEqual (show c1) (show c2)
 
-test_fixedBondWithWchedule :: IO ()
-test_fixedBondWithWchedule = do c <- Calendar.russia
+test_bondStatics :: IO ()
+test_bondStatics = do c <- Calendar.gbp
+                      l <- Leg.leg [(1000, fromGregorian 2013 1 1)] 
+                      b <- Bond.bond' 2 c 1000 m i l
+                      assertEqual m (Bond.maturityDate b)
+                   where i = Just (fromGregorian 2012 1 1)
+                         m = Just (fromGregorian 2013 1 1)
+
+test_fixedBondWithSchedule :: IO ()
+test_fixedBondWithSchedule = do c <- Calendar.russia
                                 tenor <- Period.period 1 Unit.Months
                                 s <- Schedule.schedule
                                   (Just $ fromGregorian 2012 12 20)
