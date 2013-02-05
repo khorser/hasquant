@@ -6,6 +6,7 @@ Frequency
 Natural
 Real
 Rate
+Size
 Position::Type
 Volatility
 Period

@@ -90,7 +90,8 @@ prop_quoteValue val =
   val > 0
   ==> monadicIO
         $ do q <- run $ Quote.simpleQuote val
-             assert $ Quote.value q == val
+             v <- run $ Quote.value q
+             assert $ v == val
 
 prop_scheduleDates :: [ValidDay] -> Property
 prop_scheduleDates dates = monadicIO

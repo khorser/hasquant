@@ -1,7 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.PricingEngine
   (
-  -- makers
     discountingBondEngine
   )
 where

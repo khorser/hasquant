@@ -54,8 +54,6 @@ extern "C" {
   QlBond *DLLEXPORT qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
     int maturityDate, int issueDate, Leg *cashFlows, char **e);
 #endif
-  int DLLEXPORT qlBondMaturityDate(QlBond *bond);
-  int DLLEXPORT qlBondIssueDate(QlBond *bond);
   QlInstrument *DLLEXPORT qlBondAsInstrument(QlBond *bond);
 
   QlFixedRateBond *DLLEXPORT qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
@@ -69,7 +67,6 @@ extern "C" {
   QlFixedRateBond *DLLEXPORT qlFixedRateBond2(unsigned settlDays, double face, Schedule *sched,
     unsigned cLen, InterestRate **coupons, int paymentConv, double redemption,
     int issue, Calendar *cal, char **e);
-  int DLLEXPORT qlFixedBondFrequency(QlFixedRateBond *bond);
   QlBond *DLLEXPORT qlZeroCouponBond(int settlDays, Calendar *cal, double face,
     int maturity, int payConv, double redemption, int issue, char **e);
   void DLLEXPORT qlBondSetCouponPricer(QlBond *b, QlFloatingRateCouponPricer *p, char **e);

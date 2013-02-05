@@ -1,9 +1,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Quote
   (
-  -- makers
     simpleQuote
-  -- accessors
   , value
   )
 where
@@ -24,6 +22,5 @@ simpleQuote :: Double -- ^value
 simpleQuote = $(ffiConstruct 'simpleQuote) c_simpleQuote
 
 -- |Returns the current value of the given Quote object. QuantLibXL: qlQuoteValue
-value :: Quote -> Double
-value = $(ffiCallXIO 'value) c_quoteValue
--- XXX assuming quotes are immutable
+value :: Quote -> IO Double
+value = $(ffiCallX 'value) c_quoteValue

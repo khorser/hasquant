@@ -1,7 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Index
   (
-  -- mutators
     addFixing
   )
 where

@@ -2,9 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.Instrument
   (
-  -- accessors
     npv
-  -- mutators
   , setPricingEngine
   )
 where

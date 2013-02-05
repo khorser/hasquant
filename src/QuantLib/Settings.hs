@@ -2,7 +2,6 @@
 -- |global repository for run-time library settings
 module QuantLib.Settings
   (
-  -- accessors and mutators
     evaluationDate
   , setEvaluationDate
   , enforceTodaysHistoricFixings

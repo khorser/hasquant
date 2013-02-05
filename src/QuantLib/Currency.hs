@@ -1,6 +1,5 @@
 module QuantLib.Currency
   (
-  -- makers
     currency
   , noCurrency
   , ars

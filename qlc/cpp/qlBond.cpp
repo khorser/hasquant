@@ -31,14 +31,6 @@ QlBond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
   }
 }
 
-int qlBondMaturityDate(QlBond *bond) {
-  return qlNullableDate((*arg(bond))->maturityDate());
-}
-
-int qlBondIssueDate(QlBond *bond) {
-  return qlNullableDate((*arg(bond))->issueDate());
-}
-
 void qlFreeBond(QlBond *bond) {
   del(bond);
 }
@@ -120,10 +112,6 @@ QlFixedRateBond *qlFixedRateBond2(unsigned settlDays, double face, Schedule *sch
   } catch (std::exception& er) {
     return handleException<QlFixedRateBond *>(e, er);
   }
-}
-
-int qlFixedBondFrequency(QlFixedRateBond *bond) {
-  return (*arg(bond))->frequency();
 }
 
 QlInstrument *qlBondAsInstrument(QlBond *b) {

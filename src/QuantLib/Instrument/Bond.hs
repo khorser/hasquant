@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.Instrument.Bond
   (
-  -- makers
     bond
   , bond'
   , fixedRateBond
@@ -10,11 +9,7 @@ module QuantLib.Instrument.Bond
   , fixedRateBond''
   , zeroCouponBond
   , floatingRateBond
-  -- accessors
-  , issueDate
-  , maturityDate
-  , frequency
-  -- mutators
+
   , setCouponPricer
   )
 
@@ -27,7 +22,6 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
-import QuantLib.Time.Frequency(Frequency)
 
 foreign import ccall safe "ql.h qlBond"
   c_bond :: CUInt -> Ptr CCalendar -> CDate -> Ptr CLeg -> Ptr CString
@@ -35,10 +29,6 @@ foreign import ccall safe "ql.h qlBond"
 foreign import ccall safe "ql.h qlBond1"
   c_bond' :: CUInt -> Ptr CCalendar -> CDouble -> CDate -> CDate -> Ptr CLeg
   -> Ptr CString -> IO (Ptr CBond)
-foreign import ccall safe "ql.h qlBondMaturityDate"
-  c_maturityDate :: Ptr CBond -> IO CDate
-foreign import ccall safe "ql.h qlBondIssueDate"
-  c_issueDate :: Ptr CBond -> IO CDate
 
 -- |constructor for amortizing or non-amortizing bonds.
 -- Redemptions and maturity are calculated from the coupon data, if available. Therefore, redemptions must not be included in the passed cash flows.
@@ -61,16 +51,6 @@ bond' :: Word -- ^settlementDays
   -> IO Bond
 bond' = $(ffiConstruct 'bond') c_bond'
 
--- |Returns the maturity date of the bond. QuantLib: qlBondMaturityDate
-maturityDate :: Bond -> Maybe Day
-maturityDate = $(ffiCallIO 'maturityDate) c_maturityDate
--- XXX any exceptions possible?
-
--- |Returns the issue date of the bond. QuantLib: qlBondIssueDate
-issueDate :: Bond -> Maybe Day
-issueDate = $(ffiCallIO 'issueDate) c_issueDate
--- XXX any exceptions possible?
-
 foreign import ccall safe "ql.h qlFixedRateBond"
   c_fixedRateBond :: CUInt -> CDouble -> Ptr CSchedule
     -> CUInt -> Ptr CDouble -> Ptr CDayCounter
@@ -85,8 +65,6 @@ foreign import ccall safe "ql.h qlFixedRateBond2"
   c_fixedRateBond'' :: CUInt -> CDouble -> Ptr CSchedule
     -> CUInt -> Ptr (Ptr CInterestRate) -> CInt -> CDouble -> CDate -> Ptr CCalendar
     -> Ptr CString -> IO (Ptr CFixedRateBond)
-foreign import ccall safe "ql.h qlFixedBondFrequency"
-  c_fixedBondFrequency :: Ptr CFixedRateBond -> IO CInt
 
 -- |simple annual compounding coupon rates. QuantLibXL: qlFixedRateBond
 fixedRateBond :: Word -- ^settlementDays
@@ -132,9 +110,6 @@ fixedRateBond'' :: Word -- ^settlementDays
   -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
 fixedRateBond'' = $(ffiConstruct 'fixedRateBond'') c_fixedRateBond''
-
-frequency :: FixedRateBond -> Frequency
-frequency = $(ffiCallIO 'frequency) c_fixedBondFrequency
 
 foreign import ccall safe "ql.h qlZeroCouponBond"
   c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate
