@@ -1,3 +1,0 @@
-->FdmSolverDesc
-::Real
--- ^equityScaleFactor

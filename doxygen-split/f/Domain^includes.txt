@@ -1,5 +1,0 @@
-->bool
-::Real
--- ^x
-::Real
--- ^y

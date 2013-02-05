@@ -1,2 +1,0 @@
--- |The default constructor returns a day counter with a null implementation, which is therefore unusable except as a placeholder.
-->

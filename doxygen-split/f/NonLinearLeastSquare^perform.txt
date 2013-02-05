@@ -1,5 +1,0 @@
--- |Destructor.
--- |Solve least square problem using numerix solver.
-->Array &
-::LeastSquareProblem &
--- ^lsProblem

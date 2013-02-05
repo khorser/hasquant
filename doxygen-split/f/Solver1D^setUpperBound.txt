@@ -1,4 +1,0 @@
--- |sets the upper bound for the function domain
-->void
-::Real
--- ^upperBound

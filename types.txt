@@ -11,6 +11,7 @@ Position::Type
 Volatility
 Period
 TimeUnit
+Spread
 DateGeneration::Rule
 const boost::shared_ptr< Bond,FixedRateBond,IborIndex > &
 const std::vector< Real,Rate,Date,Period > &

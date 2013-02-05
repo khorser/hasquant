@@ -1,2 +1,0 @@
--- |"payer" or "receiver" refer to the BMA leg
-->Type
