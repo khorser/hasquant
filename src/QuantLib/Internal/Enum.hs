@@ -30,16 +30,15 @@ class (Show a) => QLLitEnum a -- enum passed literally as a string to QL
 toQlEnum :: (QLEnum a) => String -> a -> CInt
 toQlEnum typename x =
   if index >= length vals
-    then signalError ("Constructor " ++ show x ++ " is not found")
+    then signalError $ "Constructor " ++ show x ++ " is not found"
     else vals !! index
   where
     index = fromEnum x
     vals = values typename
 
 fromQlEnum :: (QLEnum a) => String -> CInt -> a
-fromQlEnum typename x = result index
+fromQlEnum typename x = result (elemIndex x $ values typename)
   where 
     result Nothing  =
-      signalError ("Unknown enumeration code: " ++ show x)
+      signalError $ "Unknown enumeration code: " ++ show x
     result (Just i) = toEnum i
-    index = elemIndex x $ values typename

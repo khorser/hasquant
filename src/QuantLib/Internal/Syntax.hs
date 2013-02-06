@@ -260,8 +260,7 @@ genFfiCall io constr extra aa r = do
       [|withCString $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
     genFfiCallImpl ((EnumA n, v):as) c_call =
-      genFfiCallImpl as [|$c_call (toQlEnum $typename $v)|]
-      where typename = stringE $ show n
+      genFfiCallImpl as [|$c_call (toQlEnum $(stringE $ show n) $v)|]
 
     genFfiCallImpl ((LitEnumA, v):as) c_call =
       [|withCString (show $v) (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
@@ -302,7 +301,7 @@ unmarshalA WordR   = [|fromIntegral :: CUInt -> Word|]
 unmarshalA DayR    = [|fromQlDate|]
 unmarshalA DoubleR = [|realToFrac :: CDouble -> Double|]
 unmarshalA BoolR = [|toBool :: CInt -> Bool|]
-unmarshalA (EnumR n) = appE (varE 'fromQlEnum) (stringE $ show n)
+unmarshalA (EnumR n) = [|fromQlEnum $(stringE $ show n)|]
 unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|id|] -- works with construct only?
 unmarshalA UnitR   = [|id|]
