@@ -1,4 +1,4 @@
-{-# LANGUAGE DeriveDataTypeable #-}
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Time.Date
   (
     minDate
@@ -33,8 +33,6 @@ import Data.Time.Calendar(fromGregorian, toGregorian, isLeapYear)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
-import Data.Typeable(Typeable)
-
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Date
 import QuantLib.Internal.Utils
@@ -50,11 +48,11 @@ isLeap = isLeapYear . year
 
 data Weekday = Sunday | Monday | Tuesday | Wednesday | Thursday | Friday
   | Saturday
-  deriving (Show, Eq, Enum, Typeable)
+  deriving (Show, Eq, Enum)
 
 data Month = January | February | March | April | May | June | July | August
   | September | October | November | December
-  deriving (Show, Eq, Enum, Typeable)
+  deriving (Show, Eq, Enum)
 
 -- |earliest allowed date in QuantLib. QuantLibXL: qlDateMinDate
 minDate :: Day
@@ -65,7 +63,7 @@ maxDate :: Day
 maxDate = fromQlDate c_maxDateSerialNumber
 
 weekday :: Day -> Weekday
-weekday x = fromQlEnum $ c_weekday (toQlDate x)
+weekday x = fromQlEnum (show ''Weekday) $ c_weekday (toQlDate x)
 
 month :: Day -> Month
 month x = let (_, m, _) = toGregorian x in

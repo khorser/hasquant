@@ -47,7 +47,7 @@ data NestedArg = DayN | DoubleN | ForeignPtrN
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA
   | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA
   | ListA NestedArg | ListA2 NestedArg NestedArg
-  | EnumA | LitEnumA
+  | EnumA Name | LitEnumA
   deriving (Show, Eq)
 
 isAtomicTop :: Name -> Bool
@@ -90,7 +90,7 @@ topArgType (ConT n) | isAtomicTop n = return $ nameToTop n
 topArgType (ConT n) = do
   e <- enumType n
   case e of
-    (Just IntEnum) -> return EnumA
+    (Just IntEnum) -> return $ EnumA n
     (Just LitEnum) -> return LitEnumA
     _ -> tryForeignPtr n >>=
           either (\x -> fail $ "Error parsing top arg: " ++ x)
@@ -115,7 +115,7 @@ topArgType (AppT
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
-  | EnumR | OptDayR | ForeignPtrR | UnitR
+  | EnumR Name | OptDayR | ForeignPtrR | UnitR
   | DayListR
   deriving (Show, Eq)
 
@@ -144,7 +144,7 @@ nameToRetVal n | n == ''Bool = return BoolR
 nameToRetVal n = do
   e <- enumType n
   case e of
-    (Just IntEnum) -> return EnumR
+    (Just IntEnum) -> return $ EnumR n
     (Just LitEnum) -> fail $ "Literal enum not supported" ++ show n
     _ -> tryForeignPtr n >>=
           either (\x -> fail $ "Error parsing ret type: " ++ x)
@@ -259,8 +259,9 @@ genFfiCall io constr extra aa r = do
     genFfiCallImpl ((StringA, v):as) c_call =
       [|withCString $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
-    genFfiCallImpl ((EnumA, v):as) c_call =
-      genFfiCallImpl as [|$c_call (toQlEnum $v)|]
+    genFfiCallImpl ((EnumA n, v):as) c_call =
+      genFfiCallImpl as [|$c_call (toQlEnum $typename $v)|]
+      where typename = stringE $ show n
 
     genFfiCallImpl ((LitEnumA, v):as) c_call =
       [|withCString (show $v) (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
@@ -301,7 +302,7 @@ unmarshalA WordR   = [|fromIntegral :: CUInt -> Word|]
 unmarshalA DayR    = [|fromQlDate|]
 unmarshalA DoubleR = [|realToFrac :: CDouble -> Double|]
 unmarshalA BoolR = [|toBool :: CInt -> Bool|]
-unmarshalA EnumR   = [|fromQlEnum|]
+unmarshalA (EnumR n) = appE (varE 'fromQlEnum) (stringE $ show n)
 unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|id|] -- works with construct only?
 unmarshalA UnitR   = [|id|]

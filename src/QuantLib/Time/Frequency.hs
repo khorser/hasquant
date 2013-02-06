@@ -1,4 +1,3 @@
-{-# LANGUAGE DeriveDataTypeable #-}
 module QuantLib.Time.Frequency
   (
     Frequency(..)
@@ -6,7 +5,6 @@ module QuantLib.Time.Frequency
 
 where
 
-import Data.Typeable(Typeable)
 import QuantLib.Internal.Enum(QLEnum)
 
 instance QLEnum Frequency
@@ -25,4 +23,4 @@ data Frequency = NoFrequency -- ^null frequency
   | Daily -- ^once a day
   | Once -- ^only once, e.g., a zero-coupon
   | OtherFrequency -- ^some other unknown frequency
- deriving (Show, Eq, Enum, Typeable, Bounded)
+ deriving (Show, Eq, Enum, Bounded)

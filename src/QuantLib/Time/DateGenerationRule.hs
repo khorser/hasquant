@@ -1,11 +1,9 @@
-{-# LANGUAGE DeriveDataTypeable #-}
 module QuantLib.Time.DateGenerationRule
   (
     DateGenerationRule(..)
   )
 where
 
-import Data.Typeable(Typeable)
 import QuantLib.Internal.Enum(QLEnum)
 
 instance QLEnum DateGenerationRule
@@ -20,4 +18,4 @@ data DateGenerationRule = Backward  -- ^Backward from termination date to effect
   | TwentiethIMM -- ^All dates but the effective date are taken to be the twentieth of an IMM month (used for CDS schedules.) The termination date is also modified
   | OldCDS -- ^Same as TwentiethIMM with unrestricted date ends and log/short stub coupon period (old CDS convention)
   | CDS -- ^Credit derivatives standard rule since 'Big Bang' changes in 2009
-  deriving (Show, Eq, Enum, Typeable)
+  deriving (Show, Eq, Enum)

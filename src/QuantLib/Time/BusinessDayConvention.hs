@@ -1,4 +1,3 @@
-{-# LANGUAGE DeriveDataTypeable #-}
 module QuantLib.Time.BusinessDayConvention
   (
     BusinessDayConvention(..)
@@ -6,7 +5,6 @@ module QuantLib.Time.BusinessDayConvention
 
 where
 
-import Data.Typeable(Typeable)
 import QuantLib.Internal.Enum(QLEnum)
 
 instance QLEnum BusinessDayConvention
@@ -18,4 +16,4 @@ data BusinessDayConvention = Following -- ^Choose the first business day after t
   | Preceding -- ^Choose the first business day before the given holiday
   | ModifiedPreceding -- ^Choose the first business day before the given holiday unless it belongs to a different month, in which case choose the first business day after the holiday
   | Unadjusted -- ^Do not adjust
-  deriving (Show, Eq, Enum, Typeable)
+  deriving (Show, Eq, Enum)

@@ -1,4 +1,3 @@
-{-# LANGUAGE DeriveDataTypeable #-}
 module QuantLib.Compounding
   (
     Compounding(..)
@@ -6,7 +5,6 @@ module QuantLib.Compounding
 
 where
 
-import Data.Typeable(Typeable)
 import QuantLib.Internal.Enum(QLEnum)
 
 instance QLEnum Compounding
@@ -16,4 +14,4 @@ data Compounding = Simple -- ^$ 1+rt $
   | Compounded -- ^$ (1+r)^t $
   | Continuous -- ^$ e^{rt} $
   | SimpleThenCompounded -- ^Simple up to the first period then Compounded
-  deriving (Show, Eq, Enum, Typeable)
+  deriving (Show, Eq, Enum)

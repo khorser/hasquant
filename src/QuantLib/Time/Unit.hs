@@ -1,4 +1,3 @@
-{-# LANGUAGE DeriveDataTypeable #-}
 module QuantLib.Time.Unit
   (
     Unit(..)
@@ -6,11 +5,10 @@ module QuantLib.Time.Unit
 
 where
 
-import Data.Typeable(Typeable)
 import QuantLib.Internal.Enum(QLEnum)
 
 instance QLEnum Unit
 
 -- |Units used to describe time periods
 data Unit = Months | Days | Weeks | Years
-  deriving (Show, Eq, Enum, Typeable)
+  deriving (Show, Eq, Enum)
