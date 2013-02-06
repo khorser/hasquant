@@ -1,7 +1,9 @@
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell,DeriveDataTypeable #-}
 module QuantLib.Time.Calendar
   (
-    adjust
+    JointCalendarRule(..)
+
+  , adjust
   , advance
 
   , noCalendar
@@ -61,6 +63,8 @@ module QuantLib.Time.Calendar
   )
 where
 
+import Data.Typeable(Typeable)
+import QuantLib.Internal.Enum(QLEnum)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
@@ -68,6 +72,14 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Unit(Unit)
+
+-- |rules for joining calendars
+data JointCalendarRule = 
+  JoinHolidays -- ^A date is a holiday for the joint calendar if it is a holiday for any of the given calendars
+  | JoinBusinessDays -- ^A date is a business day for the joint calendar if it is a business day for any of the given calendars
+  deriving (Show, Eq, Enum, Typeable, Bounded)
+
+instance QLEnum JointCalendarRule
 
 foreign import ccall safe "ql.h qlCalendarAdjust"
   c_calendarAdjust :: Ptr CCalendar -> CDate -> CInt -> IO CDate

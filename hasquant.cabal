@@ -21,36 +21,46 @@ Flag buildExample
 
 Library
   Exposed-modules:     
-     QuantLib.Instrument.Bond
+     QuantLib.CashFlow.CouponPricer
+   , QuantLib.CashFlow.Leg
+   , QuantLib.Compounding
+   , QuantLib.Credit.Seniority
+   , QuantLib.Currency
+   , QuantLib.Error
+   , QuantLib.ExerciseType
+   , QuantLib.Index
+   , QuantLib.Index.Ibor
+   , QuantLib.Instrument
+   , QuantLib.Instrument.Bond
+   , QuantLib.Instrument.OptionType
+   , QuantLib.Instrument.OvernightIndexedSwapType
+   , QuantLib.Instrument.VanillaSwapType
+   , QuantLib.InterestRate
+   , QuantLib.Math.Interpolation
+   , QuantLib.PriceType
+   , QuantLib.PricingEngine
+   , QuantLib.Quote
+   , QuantLib.Risk.SensitivityAnalysis
+   , QuantLib.Settings
+   , QuantLib.SettlementType
+   , QuantLib.Side
+   , QuantLib.TermStructure.Trait   
+   , QuantLib.TermStructure.Volatility
+   , QuantLib.TermStructure.Yield    
    , QuantLib.Time.BusinessDayConvention
    , QuantLib.Time.Calendar
-   , QuantLib.Compounding
-   , QuantLib.CashFlow.CouponPricer
-   , QuantLib.Currency
    , QuantLib.Time.Date
    , QuantLib.Time.DateGenerationRule
    , QuantLib.Time.DayCounter
-   , QuantLib.Error
    , QuantLib.Time.Frequency
-   , QuantLib.Index.Ibor
-   , QuantLib.Index
-   , QuantLib.Instrument
-   , QuantLib.InterestRate
-   , QuantLib.Math.Interpolation
-   , QuantLib.CashFlow.Leg
+   , QuantLib.Time.IMMMonth
+   , QuantLib.Time.JointCalendar
    , QuantLib.Time.Period
-   , QuantLib.PricingEngine
-   , QuantLib.Side
-   , QuantLib.Quote
    , QuantLib.Time.Schedule
-   , QuantLib.Settings
-   , QuantLib.Types
    , QuantLib.Time.Unit
+   , QuantLib.Types
    , QuantLib.Utilities
-   , QuantLib.TermStructure.Trait   
-   , QuantLib.TermStructure.Volatility
-   , QuantLib.TermStructure.Yield   
-  
+
   Other-modules:       QuantLib.Internal.Utils
                         , QuantLib.Internal.Date
                         , QuantLib.Internal.Enum

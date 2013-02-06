@@ -20,11 +20,21 @@ import QuantLib.Internal.Utils
 
 -- All QLEnum instances should be imported here!
 import QuantLib.Compounding()
+import QuantLib.Credit.Seniority()
+import QuantLib.ExerciseType()
+import QuantLib.Instrument.OptionType()
+import QuantLib.Instrument.OvernightIndexedSwapType()
+import QuantLib.Instrument.VanillaSwapType()
+import QuantLib.PriceType()
+import QuantLib.Risk.SensitivityAnalysis()
+import QuantLib.SettlementType()
 import QuantLib.Side()
 import QuantLib.Time.BusinessDayConvention()
+import QuantLib.Time.JointCalendar()
 import QuantLib.Time.Date()
 import QuantLib.Time.DateGenerationRule()
 import QuantLib.Time.Frequency()
+import QuantLib.Time.IMMMonth()
 import QuantLib.Time.Unit()
 
 import QuantLib.Math.Interpolation()

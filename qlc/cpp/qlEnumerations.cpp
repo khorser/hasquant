@@ -4,6 +4,16 @@
 #include <ql/time/timeunit.hpp>
 #include <ql/compounding.hpp>
 #include <ql/position.hpp>
+#include <ql/experimental/credit/defaulttype.hpp>
+#include <ql/exercise.hpp>
+#include <ql/option.hpp>
+#include <ql/instruments/overnightindexedswap.hpp>
+#include <ql/instruments/vanillaswap.hpp>
+#include <ql/prices.hpp>
+#include <ql/experimental/risk/sensitivityanalysis.hpp>
+#include <ql/instruments/swaption.hpp>
+#include <ql/time/imm.hpp>
+#include <ql/time/calendars/jointcalendar.hpp>
 
 #include <string.h>
 
@@ -101,6 +111,91 @@ static int positionValues[] =
   , Position::Short
   };
 
+static int seniorityValues[] =
+  {
+    SecDom
+  , SnrFor
+  , SubLT2
+  , JrSubT2
+  , PrefT1
+  , NoSeniority
+  , SeniorSec
+  , SeniorUnSec
+  , SubTier1
+  , SubUpperTier2
+  , SubLoweTier2
+  };
+
+static int exerciseTypeValues[] =
+  {
+    Exercise::American
+  , Exercise::Bermudan
+  , Exercise::European
+  };
+
+static int optionTypeValues[] =
+  {
+    Option::Put
+  , Option::Call
+  };
+
+static int overnightIndexedSwapTypeValues[] =
+  {
+    OvernightIndexedSwap::Receiver
+  , OvernightIndexedSwap::Payer
+  };
+
+static int vanillaSwapTypeValues[] =
+  {
+    VanillaSwap::Receiver
+  , VanillaSwap::Payer
+  };
+
+static int priceTypeValues[] =
+  {
+    Bid
+  , Ask
+  , Last
+  , Close
+  , Mid
+  , MidEquivalent
+  , MidSafe
+  };
+
+static int sensitivityAnalysisValues[] =
+  {
+    OneSide
+  , Centered
+  };
+
+static int settlementTypeValues[] =
+  {
+    Settlement::Physical
+  , Settlement::Cash
+  };
+
+static int immMonthValues[] =
+  {
+    IMM::F
+  , IMM::G
+  , IMM::H
+  , IMM::J
+  , IMM::K
+  , IMM::M
+  , IMM::N
+  , IMM::Q
+  , IMM::U
+  , IMM::V
+  , IMM::X
+  , IMM::Z
+  };
+
+static int jointCalendarRuleValues[] =
+  {
+    JoinHolidays
+  , JoinBusinessDays
+  };
+
 int *qlEnumerationValue(const char *name, int *c) {
   if (!strcmp(name, "BusinessDayConvention")) {
     *c = sizeof(businessDayConventionValues)/sizeof(businessDayConventionValues[0]);
@@ -128,6 +223,36 @@ int *qlEnumerationValue(const char *name, int *c) {
   } else if (!strcmp(name, "Side")) {
     *c = sizeof(positionValues)/sizeof(positionValues[0]);
     return positionValues;
+  } else if (!strcmp(name, "Seniority")) {
+    *c = sizeof(seniorityValues)/sizeof(seniorityValues[0]);
+    return seniorityValues;
+  } else if (!strcmp(name, "ExerciseType")) {
+    *c = sizeof(exerciseTypeValues)/sizeof(exerciseTypeValues[0]);
+    return exerciseTypeValues;
+  } else if (!strcmp(name, "OptionType")) {
+    *c = sizeof(optionTypeValues)/sizeof(optionTypeValues[0]);
+    return optionTypeValues;
+  } else if (!strcmp(name, "OvernightIndexedSwapType")) {
+    *c = sizeof(overnightIndexedSwapTypeValues)/sizeof(overnightIndexedSwapTypeValues[0]);
+    return overnightIndexedSwapTypeValues;
+  } else if (!strcmp(name, "VanillaSwapType")) {
+    *c = sizeof(vanillaSwapTypeValues)/sizeof(vanillaSwapTypeValues[0]);
+    return vanillaSwapTypeValues;
+  } else if (!strcmp(name, "PriceType")) {
+    *c = sizeof(priceTypeValues)/sizeof(priceTypeValues[0]);
+    return priceTypeValues;
+  } else if (!strcmp(name, "SensitivityAnalysis")) {
+    *c = sizeof(sensitivityAnalysisValues)/sizeof(sensitivityAnalysisValues[0]);
+    return sensitivityAnalysisValues;
+  } else if (!strcmp(name, "SettlementType")) {
+    *c = sizeof(settlementTypeValues)/sizeof(settlementTypeValues[0]);
+    return settlementTypeValues;
+  } else if (!strcmp(name, "IMMMonth")) {
+    *c = sizeof(immMonthValues)/sizeof(immMonthValues[0]);
+    return immMonthValues;
+  } else if (!strcmp(name, "JointCalendarRule")) {
+    *c = sizeof(jointCalendarRuleValues)/sizeof(jointCalendarRuleValues[0]);
+    return jointCalendarRuleValues;
   } else {
     *c = 0;
     return 0;

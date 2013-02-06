@@ -1,3 +1,0 @@
--- |Finite differences calculation.
-OneSide
-Centered
