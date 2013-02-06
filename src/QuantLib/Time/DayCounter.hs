@@ -1,7 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Time.DayCounter
   (
-  -- makers
     dayCounter
   , noDayCounter
   , actual365Fixed

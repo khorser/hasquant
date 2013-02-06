@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.TermStructure.Volatility
   (
-  -- makers
     constantOptionletVol
   )
 where

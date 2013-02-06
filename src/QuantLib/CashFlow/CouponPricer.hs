@@ -1,7 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.CashFlow.CouponPricer
   (
-  -- makers
     blackIborCouponPricer
   )
 where
