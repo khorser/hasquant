@@ -1,0 +1,19 @@
+-- |(bucket) parameters' sensitivity analysis for a (single) SimpleQuote
+-- |returns a vector (one element for each paramet) of pair of first and second derivative values calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is of size one.
+->void
+::std::vector< Real > &
+-- ^deltaVector
+::std::vector< Real > &
+-- ^gammaVector
+::std::vector< Real > &
+-- ^referenceValues
+::Handle< SimpleQuote >
+-- ^quote
+::const std::vector< Handle< Quote > > &
+-- ^parameters
+::Real
+=0.0001
+-- ^shift
+::SensitivityAnalysis
+=Centered
+-- ^type

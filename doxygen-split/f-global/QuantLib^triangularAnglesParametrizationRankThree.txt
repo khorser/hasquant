@@ -1,0 +1,11 @@
+-- |Returns the rank reduced Triangular Angles Parametrized correlation matrix.
+-- |The matrix $ m $ is filled with values corresponding to angles corresponding to the 3D spherical spiral paramterized by $ alpha $, $ t0 $, $ epsilon $ values. See equation (32) in "Parameterizing correlations: a geometric interpretation" by Francesco Rapisarda, Damiano Brigo, Fabio MercurioTests the correctness of the results is tested by reproducing known good data.the correctness of the results is tested by checking returned values against numerical calculations.
+->Disposable< Matrix >
+::Real
+-- ^alpha
+::Real
+-- ^t0
+::Real
+-- ^epsilon
+::Size
+-- ^nbRows

@@ -1,0 +1,45 @@
+->Integer
+::const EvolutionDescription &
+-- ^evolution
+::const boost::shared_ptr< PiecewiseConstantCorrelation > &
+-- ^corr
+::VolatilityInterpolationSpecifier &
+-- ^displacedSwapVariances
+::const std::vector< Volatility > &
+-- ^capletVols
+::const boost::shared_ptr< CurveState > &
+-- ^cs
+::const Spread
+-- ^displacement
+::Real
+-- ^caplet0Swaption1Priority
+::Size
+-- ^numberOfFactors
+::Size
+-- ^period
+::Size
+-- ^max1dIterations
+::Real
+-- ^tolerance1d
+::Size
+-- ^maxUnperiodicIterations
+::Real
+-- ^toleranceUnperiodic
+::Size
+-- ^maxPeriodIterations
+::Real
+-- ^periodTolerance
+::Real &
+-- ^deformationSize
+::Real &
+-- ^totalSwaptionError
+::std::vector< Matrix > &
+-- ^swapCovariancePseudoRoots
+::std::vector< Real > &
+-- ^finalScales
+::Size &
+-- ^iterationsDone
+::Real &
+-- ^errorImprovement
+::Matrix &
+-- ^modelSwaptionVolsMatrix

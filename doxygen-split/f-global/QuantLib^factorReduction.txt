@@ -1,0 +1,7 @@
+-- |Iterative procedure to compute a correlation matrix reduction to a single factor dependence vector by minimizing the residuals.It assumes that such a reduction is possible, notice that if the dependence can not be reduced to one factor the correlation factors might be above 1.The matrix passed is destroyed.See for instance: "Modern Factor Analysis", Harry H. Harman, University Of Chicago Press, 1976. Chapter 9 is relevant to this context.
+->Disposable< std::vector< Real > >
+::Matrix
+-- ^mtrx
+::Size
+=25
+-- ^maxIters

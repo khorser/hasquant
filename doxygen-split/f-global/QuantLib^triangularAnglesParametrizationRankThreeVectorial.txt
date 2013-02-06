@@ -1,0 +1,5 @@
+->Disposable< Matrix >
+::const Array &
+-- ^paramters
+::Size
+-- ^nbRows

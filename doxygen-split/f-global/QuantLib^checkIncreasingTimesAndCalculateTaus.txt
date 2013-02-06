@@ -1,0 +1,5 @@
+->void
+::const std::vector< Time > &
+-- ^times
+::std::vector< Time > &
+-- ^taus

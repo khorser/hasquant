@@ -1,0 +1,6 @@
+-- |helper function building a sequence of fixed dividends
+->std::vector< boost::shared_ptr< Dividend > >
+::const std::vector< Date > &
+-- ^dividendDates
+::const std::vector< Real > &
+-- ^dividends

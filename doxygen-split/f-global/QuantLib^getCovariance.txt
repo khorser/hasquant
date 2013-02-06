@@ -1,0 +1,12 @@
+-- |Calculation of covariance from correlation and standard deviations.
+-- |Combines the correlation matrix and the vector of standard deviations to return the covariance matrix.Note that only the symmetric part of the correlation matrix is used. Also it is assumed that the diagonal member of the correlation matrix equals one.The correlation matrix must be symmetric with the diagonal members equal to one. Teststested on know values and cross checked with CovarianceDecomposition
+->Disposable< Matrix >
+::DataIterator
+-- ^stdDevBegin
+::DataIterator
+-- ^stdDevEnd
+::const Matrix &
+-- ^corr
+::Real
+=1.0e-12
+-- ^tolerance

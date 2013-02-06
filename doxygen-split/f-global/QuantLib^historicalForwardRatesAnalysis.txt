@@ -1,0 +1,37 @@
+->void
+::SequenceStatistics &
+-- ^statistics
+::std::vector< Date > &
+-- ^skippedDates
+::std::vector< std::string > &
+-- ^skippedDatesErrorMessage
+::std::vector< Date > &
+-- ^failedDates
+::std::vector< std::string > &
+-- ^failedDatesErrorMessage
+::std::vector< Period > &
+-- ^fixingPeriods
+::const Date &
+-- ^startDate
+::const Date &
+-- ^endDate
+::const Period &
+-- ^step
+::const boost::shared_ptr< InterestRateIndex > &
+-- ^fwdIndex
+::const Period &
+-- ^initialGap
+::const Period &
+-- ^horizon
+::const std::vector< boost::shared_ptr< IborIndex > > &
+-- ^iborIndexes
+::const std::vector< boost::shared_ptr< SwapIndex > > &
+-- ^swapIndexes
+::const DayCounter &
+-- ^yieldCurveDayCounter
+::Real
+=1.0e-12
+-- ^yieldCurveAccuracy
+::const Interpolator &
+=Interpolator()
+-- ^i

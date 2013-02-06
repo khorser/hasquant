@@ -1,0 +1,9 @@
+->const Disposable< Matrix >
+::Iterator1
+-- ^v1begin
+::Iterator1
+-- ^v1end
+::Iterator2
+-- ^v2begin
+::Iterator2
+-- ^v2end

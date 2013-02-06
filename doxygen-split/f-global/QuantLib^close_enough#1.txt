@@ -1,0 +1,7 @@
+->bool
+::Real
+-- ^x
+::Real
+-- ^y
+::Size
+-- ^n

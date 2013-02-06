@@ -1,0 +1,4 @@
+-- |Terminal measure: the last bond is used as numeraire.
+->std::vector< Size >
+::const EvolutionDescription &
+-- ^evolution

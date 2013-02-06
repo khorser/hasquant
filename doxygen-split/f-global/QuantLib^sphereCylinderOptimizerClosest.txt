@@ -1,0 +1,20 @@
+->std::vector< Real >
+::Real
+-- ^r
+::Real
+-- ^s
+::Real
+-- ^alpha
+::Real
+-- ^z1
+::Real
+-- ^z2
+::Real
+-- ^z3
+::Natural
+-- ^maxIterations
+::Real
+-- ^tolerance
+::Real
+=1.0
+-- ^finalWeight

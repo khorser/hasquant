@@ -1,0 +1,7 @@
+->binary_compose3_function< F, G, H >
+::const F &
+-- ^f
+::const G &
+-- ^g
+::const H &
+-- ^h

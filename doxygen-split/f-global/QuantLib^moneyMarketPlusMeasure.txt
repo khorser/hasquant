@@ -1,0 +1,7 @@
+-- |Offsetted discretely compounded money market account measure: for each step the offset-th unexpired bond is used as numeraire. When offset=0 the result is the usual discretely compounded money market account measure
+->std::vector< Size >
+::const EvolutionDescription &
+-- ^
+::Size
+=1
+-- ^offset

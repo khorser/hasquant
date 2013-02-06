@@ -1,0 +1,37 @@
+->Leg
+::const Schedule &
+-- ^schedule
+::const std::vector< Real > &
+-- ^nominals
+::const boost::shared_ptr< InterestRateIndexType > &
+-- ^index
+::const DayCounter &
+-- ^paymentDayCounter
+::BusinessDayConvention
+-- ^paymentAdj
+::const std::vector< Natural > &
+-- ^fixingDays
+::const std::vector< Real > &
+-- ^gearings
+::const std::vector< Spread > &
+-- ^spreads
+::bool
+-- ^isInArrears
+::const std::vector< Rate > &
+-- ^callStrikes
+::Position::Type
+-- ^callPosition
+::bool
+-- ^isCallATMIncluded
+::const std::vector< Rate > &
+-- ^callDigitalPayoffs
+::const std::vector< Rate > &
+-- ^putStrikes
+::Position::Type
+-- ^putPosition
+::bool
+-- ^isPutATMIncluded
+::const std::vector< Rate > &
+-- ^putDigitalPayoffs
+::const boost::shared_ptr< DigitalReplication > &
+-- ^replication

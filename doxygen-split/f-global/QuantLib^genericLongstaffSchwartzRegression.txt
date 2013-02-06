@@ -1,0 +1,6 @@
+-- |returns the biased estimate obtained while regressing
+->Real
+::std::vector< std::vector< NodeData > > &
+-- ^simulationData
+::std::vector< std::vector< Real > > &
+-- ^basisCoefficients

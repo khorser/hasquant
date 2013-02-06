@@ -1,0 +1,2 @@
+-- |Helper function for conventional recoveries. Returns the ISDA.
+->std::map< Seniority, Real >

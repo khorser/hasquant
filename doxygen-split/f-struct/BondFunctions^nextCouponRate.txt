@@ -1,0 +1,6 @@
+->Rate
+::const Bond &
+-- ^bond
+::Date
+=Date()
+-- ^settlementDate

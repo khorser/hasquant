@@ -1,0 +1,14 @@
+->Real
+::const Bond &
+-- ^bond
+::Rate
+-- ^yield
+::const DayCounter &
+-- ^dayCounter
+::Compounding
+-- ^compounding
+::Frequency
+-- ^frequency
+::Date
+=Date()
+-- ^settlementDate

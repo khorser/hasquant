@@ -1,0 +1,7 @@
+->Disposable< Matrix >
+::const Array &
+-- ^angles
+::Size
+-- ^matrixSize
+::Size
+-- ^rank

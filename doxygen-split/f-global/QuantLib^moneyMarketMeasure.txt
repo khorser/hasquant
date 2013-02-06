@@ -1,0 +1,4 @@
+-- |Discretely compounded money market account measure: for each step the first unexpired bond is used as numeraire.
+->std::vector< Size >
+::const EvolutionDescription &
+-- ^

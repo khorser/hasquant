@@ -1,0 +1,5 @@
+->Money
+::Decimal
+-- ^x
+::const Money &
+-- ^m

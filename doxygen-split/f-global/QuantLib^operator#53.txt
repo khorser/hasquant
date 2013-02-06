@@ -1,0 +1,5 @@
+->Disposable< TridiagonalOperator >
+::const TridiagonalOperator &
+-- ^D1
+::const TridiagonalOperator &
+-- ^D2

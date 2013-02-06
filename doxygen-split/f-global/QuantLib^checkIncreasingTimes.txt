@@ -1,0 +1,4 @@
+-- |check for strictly increasing times, first time greater than zero
+->void
+::const std::vector< Time > &
+-- ^times

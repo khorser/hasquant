@@ -1,0 +1,5 @@
+->clipped_function< F, R >
+::const F &
+-- ^f
+::const R &
+-- ^r

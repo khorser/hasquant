@@ -1,0 +1,6 @@
+-- |Check that there is one numeraire for each evolution time. Each numeraire must be an index amongst the rate times so it ranges from 0 to n. Each numeraire must not have expired before the end of the step.
+->void
+::const EvolutionDescription &
+-- ^evolution
+::const std::vector< Size > &
+-- ^numeraires

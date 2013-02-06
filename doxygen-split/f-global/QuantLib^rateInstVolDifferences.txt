@@ -1,0 +1,7 @@
+->std::vector< Spread >
+::const MarketModel &
+-- ^marketModel1
+::const MarketModel &
+-- ^marketModel2
+::Size
+-- ^index

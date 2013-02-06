@@ -1,0 +1,11 @@
+->Real
+::Real
+-- ^a
+::Real
+-- ^x
+::Real
+=1.0e-13
+-- ^accuracy
+::Integer
+=100
+-- ^maxIteration

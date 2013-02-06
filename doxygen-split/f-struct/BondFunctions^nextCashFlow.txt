@@ -1,0 +1,6 @@
+->Leg::const_iterator
+::const Bond &
+-- ^bond
+::Date
+=Date()
+-- ^refDate

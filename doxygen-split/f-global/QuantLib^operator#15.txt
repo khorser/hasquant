@@ -1,0 +1,5 @@
+->bool
+::const Quantity &
+-- ^m1
+::const Quantity &
+-- ^m2

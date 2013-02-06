@@ -1,0 +1,11 @@
+->Real
+::Time
+-- ^u
+::Real
+-- ^a
+::Real
+-- ^b
+::Real
+-- ^c
+::Real
+-- ^d

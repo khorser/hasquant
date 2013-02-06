@@ -1,0 +1,6 @@
+-- |Given an odd integer n and a real number z it returns p such that: 1 - CumulativeBinomialDistribution((n-1)/2, n, p) = CumulativeNormalDistribution(z)n must be odd
+->Real
+::Real
+-- ^z
+::BigNatural
+-- ^n

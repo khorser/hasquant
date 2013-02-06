@@ -1,0 +1,7 @@
+->void
+::const std::vector< std::vector< Time > > &
+-- ^times
+::std::vector< Time > &
+-- ^mergedTimes
+::std::vector< std::valarray< bool > > &
+-- ^isPresent

@@ -1,0 +1,17 @@
+->Time
+::const Bond &
+-- ^bond
+::Rate
+-- ^yield
+::const DayCounter &
+-- ^dayCounter
+::Compounding
+-- ^compounding
+::Frequency
+-- ^frequency
+::Duration::Type
+=Duration::Modified
+-- ^type
+::Date
+=Date()
+-- ^settlementDate

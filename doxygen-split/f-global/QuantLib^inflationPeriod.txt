@@ -1,0 +1,6 @@
+-- |utility function giving the inflation period for a given date
+->std::pair< Date, Date >
+::const Date &
+-- ^
+::Frequency
+-- ^

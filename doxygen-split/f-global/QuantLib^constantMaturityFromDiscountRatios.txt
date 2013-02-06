@@ -1,0 +1,13 @@
+->void
+::const Size
+-- ^spanningForwards
+::const Size
+-- ^firstValidIndex
+::const std::vector< DiscountFactor > &
+-- ^ds
+::const std::vector< Time > &
+-- ^taus
+::std::vector< Rate > &
+-- ^cotSwapRates
+::std::vector< Real > &
+-- ^cotSwapAnnuities

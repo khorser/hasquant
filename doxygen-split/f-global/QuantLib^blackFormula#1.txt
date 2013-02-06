@@ -1,0 +1,14 @@
+-- |Black 1976 formula Warninginstead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+->Real
+::const boost::shared_ptr< PlainVanillaPayoff > &
+-- ^payoff
+::Real
+-- ^forward
+::Real
+-- ^stdDev
+::Real
+=1.0
+-- ^discount
+::Real
+=0.0
+-- ^displacement

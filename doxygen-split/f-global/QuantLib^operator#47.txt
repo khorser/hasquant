@@ -1,0 +1,5 @@
+->const Disposable< Array >
+::const Array &
+-- ^v
+::const Matrix &
+-- ^m

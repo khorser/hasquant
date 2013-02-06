@@ -1,0 +1,7 @@
+->Disposable< Array >
+::Real
+-- ^center
+::Real
+-- ^dx
+::Size
+-- ^steps

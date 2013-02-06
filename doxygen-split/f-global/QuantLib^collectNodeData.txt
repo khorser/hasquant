@@ -1,0 +1,15 @@
+->void
+::MarketModelEvolver &
+-- ^evolver
+::MarketModelMultiProduct &
+-- ^product
+::MarketModelNodeDataProvider &
+-- ^dataProvider
+::MarketModelExerciseValue &
+-- ^rebate
+::MarketModelExerciseValue &
+-- ^control
+::Size
+-- ^numberOfPaths
+::std::vector< std::vector< NodeData > > &
+-- ^collectedData

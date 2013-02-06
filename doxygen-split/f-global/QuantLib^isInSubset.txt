@@ -1,0 +1,6 @@
+-- |Look for elements of a set in a subset. Returns a vector of booleans such that: element set[i] present/not present in subset.both vectors must be strictly increasing.
+->std::valarray< bool >
+::const std::vector< Time > &
+-- ^set
+::const std::vector< Time > &
+-- ^subset

@@ -1,0 +1,16 @@
+-- |Exponential correlation L = long term correlation beta = exponential decay of correlation between far away forward rates gamma = exponent for time to go t = time dependence
+->Disposable< Matrix >
+::const std::vector< Time > &
+-- ^rateTimes
+::Real
+=0.5
+-- ^longTermCorr
+::Real
+=0.2
+-- ^beta
+::Real
+=1.0
+-- ^gamma
+::Time
+=0.0
+-- ^t

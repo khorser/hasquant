@@ -1,0 +1,7 @@
+-- |returns whether or not the given string is an IMM code
+->bool
+::const std::string &
+-- ^in
+::bool
+=true
+-- ^mainCycle

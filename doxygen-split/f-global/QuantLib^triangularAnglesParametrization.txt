@@ -1,0 +1,9 @@
+-- |Returns the Triangular Angles Parametrized correlation matrix.
+-- |The matrix $ m $ is filled with values corresponding to angles given in the $ angles $ vector. See equation (24) in "Parameterizing correlations: a geometric interpretation" by Francesco Rapisarda, Damiano Brigo, Fabio MercurioTests the correctness of the results is tested by reproducing known good data.the correctness of the results is tested by checking returned values against numerical calculations.
+->Disposable< Matrix >
+::const Array &
+-- ^angles
+::Size
+-- ^matrixSize
+::Size
+-- ^rank

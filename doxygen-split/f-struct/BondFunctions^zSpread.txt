@@ -1,0 +1,25 @@
+->Spread
+::const Bond &
+-- ^bond
+::Real
+-- ^cleanPrice
+::const boost::shared_ptr< YieldTermStructure > &
+-- ^
+::const DayCounter &
+-- ^dayCounter
+::Compounding
+-- ^compounding
+::Frequency
+-- ^frequency
+::Date
+=Date()
+-- ^settlementDate
+::Real
+=1.0e-10
+-- ^accuracy
+::Size
+=100
+-- ^maxIterations
+::Rate
+=0.0
+-- ^guess

@@ -1,0 +1,13 @@
+-- |QR Solve.
+-- |This implementation is based on MINPACK (http://www.netlib.org/minpack, http://www.netlib.org/cephes/linalg.tgz)Given an m by n matrix A, an n by n diagonal matrix d, and an m-vector b, the problem is to determine an x which solves the systemA*x = b , d*x = 0 ,in the least squares sense.d is an input array of length n which must contain the diagonal elements of the matrix d.See lmdiff.cpp for further details.
+->Disposable< Array >
+::const Matrix &
+-- ^a
+::const Array &
+-- ^b
+::bool
+=true
+-- ^pivot
+::const Array &
+=Array()
+-- ^d

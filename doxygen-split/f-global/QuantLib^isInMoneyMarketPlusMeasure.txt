@@ -1,0 +1,8 @@
+->bool
+::const EvolutionDescription &
+-- ^evolution
+::const std::vector< Size > &
+-- ^numeraires
+::Size
+=1
+-- ^offset

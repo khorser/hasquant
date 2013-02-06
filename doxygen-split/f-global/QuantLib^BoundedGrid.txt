@@ -1,0 +1,7 @@
+->Disposable< Array >
+::Real
+-- ^xMin
+::Real
+-- ^xMax
+::Size
+-- ^steps

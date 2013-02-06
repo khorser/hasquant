@@ -1,0 +1,12 @@
+-- |utility function giving the time between two dates depending on index frequency and interpolation, and a day counter
+->Time
+::Frequency
+-- ^
+::bool
+-- ^indexIsInterpolated
+::const DayCounter &
+-- ^
+::const Date &
+-- ^
+::const Date &
+-- ^

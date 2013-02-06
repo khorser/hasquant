@@ -1,0 +1,6 @@
+-- |return the MidSafe price, i.e. the mid only if both bid and ask prices are available
+->Real
+::const Real
+-- ^bid
+::const Real
+-- ^ask
