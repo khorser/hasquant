@@ -31,3 +31,42 @@ Introduce money data type parameterized by currency
 Implement `show' via operator <<
 
 Plan: migrate business calculation first and then think of reusing math
+--
+Bond.cleanPrice
+Bond.dirtyPrice
+Bond.accruedAmount
+Bond.previousCouponRate
+Bond.nextCouponRate
+Bond.yield
+FlatForward
+FixedRateBondForward
+bondFwd.spotIncome
+bondFwd.cleanForwardPrice
+bondFwd.forwardPrice
+bondFwd.impliedYield
+repoCurve->zeroRate
+FraRateHelper
+ForwardRateAgreement
+FRA.forwardRate
+FRA.spotValue
+FRA.forwardValue
+FRA.impliedYield
+SimpleQuote.setValue?
+IMM::nextDate
+FuturesRateHelper
+VanillaSwap
+Swap.fairSpread
+Swap.fairRate
+DayCounter.yearFraction
+calendar.advance
+
+FittedBondDiscountCurve
+SimplePolynomialFitting
+ExponentialSplinesFitting
+NelsonSiegelFitting
+Time
+CubicBSplinesFitting
+SvenssonFitting
+?bond.cashflows
+BondFunctions::yield
+BondFunctions::duration
