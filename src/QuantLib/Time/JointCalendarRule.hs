@@ -1,5 +1,5 @@
-{-# LANGUAGE TemplateHaskell,DeriveDataTypeable #-}
-module QuantLib.Time.JointCalendar
+{-# LANGUAGE DeriveDataTypeable #-}
+module QuantLib.Time.JointCalendarRule
   (
     JointCalendarRule(..)
   )

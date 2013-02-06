@@ -54,7 +54,7 @@ Library
    , QuantLib.Time.DayCounter
    , QuantLib.Time.Frequency
    , QuantLib.Time.IMMMonth
-   , QuantLib.Time.JointCalendar
+   , QuantLib.Time.JointCalendarRule
    , QuantLib.Time.Period
    , QuantLib.Time.Schedule
    , QuantLib.Time.Unit
