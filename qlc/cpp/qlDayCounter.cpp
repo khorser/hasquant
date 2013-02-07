@@ -4,92 +4,62 @@
 
 using namespace QuantLib;
 
+template <class Base, class T, typename T::Convention conv>
+Base *makeDayCounter() {
+  return new T(conv);
+};
+
+EnumObjectInfo<DayCounter> dayCounterInfo[] = {
+  {"DayCounter", &makeObject<DayCounter, DayCounter>},
+  {"NoDayCounter", &makeObject<DayCounter, DayCounter>},
+  {"Actual/365 (Fixed)", &makeObject<DayCounter, Actual365Fixed>},
+  {"Act/365 (Fixed)", &makeObject<DayCounter, Actual365Fixed>},
+  {"A/365 (Fixed)", &makeObject<DayCounter, Actual365Fixed>},
+  {"A/365F", &makeObject<DayCounter, Actual365Fixed>},
+  {"1/1", &makeObject<DayCounter, OneDayCounter>},
+  {"Actual/Actual (ISDA)", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISDA>},
+  {"Actual/Actual", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISDA>},
+  {"Actual/365", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISDA>},
+  {"Act/365", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISDA>},
+  {"A/365", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISDA>},
+  {"Act/Act", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISDA>},
+  {"Actual/360", &makeObject<DayCounter, Actual360>},
+  {"Act/360", &makeObject<DayCounter, Actual360>},
+  {"A/360", &makeObject<DayCounter, Actual360>},
+  {"30/360 (Bond Basis)", &makeDayCounter<DayCounter, Thirty360, Thirty360::BondBasis>},
+  {"Bond Basis", &makeDayCounter<DayCounter, Thirty360, Thirty360::BondBasis>},
+  {"30/360", &makeDayCounter<DayCounter, Thirty360, Thirty360::BondBasis>},
+  {"360/360", &makeDayCounter<DayCounter, Thirty360, Thirty360::BondBasis>},
+  {"30/360 (European)", &makeDayCounter<DayCounter, Thirty360, Thirty360::European>},
+  {"30/360 (Eurobond Basis)", &makeDayCounter<DayCounter, Thirty360, Thirty360::EurobondBasis>},
+  {"Eurobond Basis", &makeDayCounter<DayCounter, Thirty360, Thirty360::EurobondBasis>},
+  {"30E/360", &makeDayCounter<DayCounter, Thirty360, Thirty360::EurobondBasis>},
+  {"30E/360 (Eurobond Basis)", &makeDayCounter<DayCounter, Thirty360, Thirty360::EurobondBasis>},
+  {"Actual/Actual (ISMA)", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISMA>},
+  {"Actual/Actual (Bond)", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISMA>},
+  {"Actual/Actual (AFB)", &makeDayCounter<DayCounter, ActualActual, ActualActual::AFB>},
+  {"Actual/Actual (Euro)", &makeDayCounter<DayCounter, ActualActual, ActualActual::Euro>},
+  {"30/360 (Italian)", &makeDayCounter<DayCounter, Thirty360, Thirty360::Italian>},
+  {"Simple", &makeObject<DayCounter, SimpleDayCounter>},
+  {"LIN 30/360", &makeDayCounter<DayCounter, Thirty360, Thirty360::EurobondBasis>},
+  {"LIN ACT/360", &makeObject<DayCounter, Actual360>},
+  {"LIN ACT/365", &makeObject<DayCounter, Actual365Fixed>},
+  {"LIN ACT/ACT", &makeDayCounter<DayCounter, ActualActual, ActualActual::AFB>},
+  {"LIN ACTACT ISDA", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISDA>},
+  {"LIN ACTACT ISMA", &makeDayCounter<DayCounter, ActualActual, ActualActual::ISMA>},
+  {"30/360 (USA)", &makeDayCounter<DayCounter, Thirty360, Thirty360::USA>},
+  {"Actual/Actual (Historical)", &makeDayCounter<DayCounter, ActualActual, ActualActual::Historical>},
+  {"Actual/Actual (Actual365)", &makeDayCounter<DayCounter, ActualActual, ActualActual::Actual365>}
+};
+
 DayCounter *qlDayCounter(const char *name, char **e) {
   try {
-    DayCounter *c = 0;
-    if (!strcmp(name, "DayCounter"))
-      c = new DayCounter();
-    else if (!strcmp(name, "NoDayCounter"))
-      c = new DayCounter();
-    else if (!strcmp(name, "Actual/365 (Fixed)"))
-      c = new Actual365Fixed();
-    else if (!strcmp(name, "Act/365 (Fixed)"))
-      c = new Actual365Fixed();
-    else if (!strcmp(name, "A/365 (Fixed)"))
-      c = new Actual365Fixed();
-    else if (!strcmp(name, "A/365F"))
-      c = new Actual365Fixed();
-    else if (!strcmp(name, "1/1"))
-      c = new OneDayCounter();
-    else if (!strcmp(name, "Actual/Actual (ISDA)"))
-      c = new ActualActual(ActualActual::ISDA);
-    else if (!strcmp(name, "Actual/Actual"))
-      c = new ActualActual(ActualActual::ISDA);
-    else if (!strcmp(name, "Actual/365"))
-      c = new ActualActual(ActualActual::ISDA);
-    else if (!strcmp(name, "Act/365"))
-      c = new ActualActual(ActualActual::ISDA);
-    else if (!strcmp(name, "A/365"))
-      c = new ActualActual(ActualActual::ISDA);
-    else if (!strcmp(name, "Act/Act"))
-      c = new ActualActual(ActualActual::ISDA);
-    else if (!strcmp(name, "Actual/360"))
-      c = new Actual360();
-    else if (!strcmp(name, "Act/360"))
-      c = new Actual360();
-    else if (!strcmp(name, "A/360"))
-      c = new Actual360();
-    else if (!strcmp(name, "30/360 (Bond Basis)"))
-      c = new Thirty360(Thirty360::BondBasis);
-    else if (!strcmp(name, "Bond Basis"))
-      c = new Thirty360(Thirty360::BondBasis);
-    else if (!strcmp(name, "30/360"))
-      c = new Thirty360(Thirty360::BondBasis);
-    else if (!strcmp(name, "360/360"))
-      c = new Thirty360(Thirty360::BondBasis);
-    else if (!strcmp(name, "30/360 (European)"))
-      c = new Thirty360(Thirty360::European);
-    else if (!strcmp(name, "30/360 (Eurobond Basis)"))
-      c = new Thirty360(Thirty360::EurobondBasis);
-    else if (!strcmp(name, "Eurobond Basis"))
-      c = new Thirty360(Thirty360::EurobondBasis);
-    else if (!strcmp(name, "30E/360"))
-      c = new Thirty360(Thirty360::EurobondBasis);
-    else if (!strcmp(name, "30E/360 (Eurobond Basis)"))
-      c = new Thirty360(Thirty360::EurobondBasis);
-    else if (!strcmp(name, "Actual/Actual (ISMA)"))
-      c = new ActualActual(ActualActual::ISMA);
-    else if (!strcmp(name, "Actual/Actual (Bond)"))
-      c = new ActualActual(ActualActual::ISMA);
-    else if (!strcmp(name, "Actual/Actual (AFB)"))
-      c = new ActualActual(ActualActual::AFB);
-    else if (!strcmp(name, "Actual/Actual (Euro)"))
-      c = new ActualActual(ActualActual::Euro);
-    else if (!strcmp(name, "30/360 (Italian)"))
-      c = new Thirty360(Thirty360::Italian);
-    else if (!strcmp(name, "Simple"))
-      c = new SimpleDayCounter();
-    else if (!strcmp(name, "LIN 30/360"))
-      c = new Thirty360(Thirty360::EurobondBasis);
-    else if (!strcmp(name, "LIN ACT/360"))
-      c = new Actual360();
-    else if (!strcmp(name, "LIN ACT/365"))
-      c = new Actual365Fixed();
-    else if (!strcmp(name, "LIN ACT/ACT"))
-      c = new ActualActual(ActualActual::AFB);
-    else if (!strcmp(name, "LIN ACTACT ISDA"))
-      c = new ActualActual(ActualActual::ISDA);
-    else if (!strcmp(name, "LIN ACTACT ISMA"))
-      c = new ActualActual(ActualActual::ISMA);
-    else if (!strcmp(name, "30/360 (USA)"))
-      c = new Thirty360(Thirty360::USA);
-    else if (!strcmp(name, "Actual/Actual (Historical)"))
-      c = new ActualActual(ActualActual::Historical);
-    else if (!strcmp(name, "Actual/Actual (Actual365)"))
-      c = new ActualActual(ActualActual::Actual365);
+    EnumObjectInfo<DayCounter> *last = dayCounterInfo + LENGTH(dayCounterInfo);
+    EnumObjectInfo<DayCounter> *found = std::find_if(dayCounterInfo, last, EnumObjectInfoComp<DayCounter>(name));
+    if (found != last)
+      return alloc(found->make());
     else
-      QL_FAIL("Counter not found " << name);
-    return alloc(c);
+      QL_FAIL("DayCounter not found " << name);
   } catch (std::exception& er) {
     return handleException<DayCounter *>(e, er);
   }
