@@ -201,9 +201,9 @@ struct EnumInfo {
   size_t len;
   int *data;
 
-  class Comp {
+  class Cmp {
   public:
-    Comp(const char *n) : n_(n) {};
+    Cmp(const char *n) : n_(n) {};
     bool operator() (const EnumInfo& i) const {
       return !strcmp(i.name, n_);
       }
@@ -212,7 +212,7 @@ struct EnumInfo {
   };
 };
 
-EnumInfo enumInfo[] = {
+static EnumInfo enumInfo[] = {
   {"QuantLib.Time.BusinessDayConvention.BusinessDayConvention",
     LENGTH(businessDayConventionValues),
     businessDayConventionValues},
@@ -271,7 +271,7 @@ EnumInfo enumInfo[] = {
 
 int *qlEnumerationValue(const char *name, int *c) {
   EnumInfo *last = LAST(enumInfo);
-  EnumInfo *found = std::find_if(enumInfo, last, EnumInfo::Comp(name));
+  EnumInfo *found = std::find_if(enumInfo, last, EnumInfo::Cmp(name));
   if (found != last) {
     *c = found->len;
     return found->data;

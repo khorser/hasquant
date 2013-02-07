@@ -5,8 +5,7 @@
 using namespace QuantLib;
 
 typedef EnumObjectInfo<Currency> CurrencyInfo;
-
-CurrencyInfo currencyInfo[] = {
+static CurrencyInfo currencyInfo[] = {
   {"Currency", &CurrencyInfo::makeObject<Currency>},
   {"NoCurrency", &CurrencyInfo::makeObject<Currency>},
   {"EUR", &CurrencyInfo::makeObject<EURCurrency>},
@@ -81,7 +80,7 @@ Currency *qlCurrency(const char *name, char **e) {
   // use enumerations instead?
   try {
     CurrencyInfo *last = LAST(currencyInfo);
-    CurrencyInfo *found = std::find_if(currencyInfo, last, CurrencyInfo::Comp(name));
+    CurrencyInfo *found = std::find_if(currencyInfo, last, CurrencyInfo::Cmp(name));
     if (found != last)
       return alloc(found->make());
     else

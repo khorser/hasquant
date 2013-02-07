@@ -474,9 +474,9 @@ struct EnumObjectInfo {
   const char *name;
   T *(*make)();
 
-  class Comp {
+  class Cmp {
   public:
-    Comp(const char *n) : n_(n) {}
+    Cmp(const char *n) : n_(n) {}
     bool operator()(const EnumObjectInfo<T> &i) {
       return !strcmp(i.name, n_);
     }
@@ -495,9 +495,9 @@ struct EnumObjectInfo1 {
   const char *name;
   T *(*make)(T1 x);
 
-  class Comp {
+  class Cmp {
   public:
-    Comp(const char *n) : n_(n) {}
+    Cmp(const char *n) : n_(n) {}
     bool operator()(const EnumObjectInfo1<T, T1> &i) {
       return !strcmp(i.name, n_);
     }
@@ -516,9 +516,9 @@ struct EnumObjectInfo2 {
   const char *name;
   T *(*make)(T1 x1, T2 x2);
 
-  class Comp {
+  class Cmp {
   public:
-    Comp(const char *n) : n_(n) {}
+    Cmp(const char *n) : n_(n) {}
     bool operator()(const EnumObjectInfo2<T, T1, T2> &i) {
       return !strcmp(i.name, n_);
     }

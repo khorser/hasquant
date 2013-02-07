@@ -10,8 +10,7 @@ DayCounter *makeDayCounter() {
 };
 
 typedef EnumObjectInfo<DayCounter> DayCounterInfo;
-
-DayCounterInfo dayCounterInfo[] = {
+static DayCounterInfo dayCounterInfo[] = {
   {"DayCounter", &DayCounterInfo::makeObject<DayCounter>},
   {"NoDayCounter", &DayCounterInfo::makeObject<DayCounter>},
   {"Actual/365 (Fixed)", &DayCounterInfo::makeObject<Actual365Fixed>},
@@ -57,7 +56,7 @@ DayCounterInfo dayCounterInfo[] = {
 DayCounter *qlDayCounter(const char *name, char **e) {
   try {
     DayCounterInfo *last = LAST(dayCounterInfo);
-    DayCounterInfo *found = std::find_if(dayCounterInfo, last, DayCounterInfo::Comp(name));
+    DayCounterInfo *found = std::find_if(dayCounterInfo, last, DayCounterInfo::Cmp(name));
     if (found != last)
       return alloc(found->make());
     else
