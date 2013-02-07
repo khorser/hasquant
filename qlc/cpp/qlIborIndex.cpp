@@ -53,95 +53,102 @@ QlIborIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy,
   }
 }
 
+typedef Handle<YieldTermStructure> YieldTermStructureHandle;
+
+EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> iborInfo [] = {
+  {"Euribor", &makeObject2<IborIndex, Euribor, Period&, YieldTermStructureHandle&>},
+  {"Euribor365", &makeObject2<IborIndex, Euribor365, Period&, YieldTermStructureHandle&>},
+  {"AUDLibor", &makeObject2<IborIndex, AUDLibor, Period&, YieldTermStructureHandle&>},
+  {"CADLibor", &makeObject2<IborIndex, CADLibor, Period&, YieldTermStructureHandle&>},
+  {"Cdor", &makeObject2<IborIndex, Cdor, Period&, YieldTermStructureHandle&>},
+  {"CHFLibor", &makeObject2<IborIndex, CHFLibor, Period&, YieldTermStructureHandle&>},
+  {"DKKLibor", &makeObject2<IborIndex, DKKLibor, Period&, YieldTermStructureHandle&>},
+  {"EURLibor", &makeObject2<IborIndex, EURLibor, Period&, YieldTermStructureHandle&>},
+  {"GBPLibor", &makeObject2<IborIndex, GBPLibor, Period&, YieldTermStructureHandle&>},
+  {"Jibar", &makeObject2<IborIndex, Jibar, Period&, YieldTermStructureHandle&>},
+  {"JPYLibor", &makeObject2<IborIndex, JPYLibor, Period&, YieldTermStructureHandle&>},
+  {"NZDLibor", &makeObject2<IborIndex, NZDLibor, Period&, YieldTermStructureHandle&>},
+  {"SEKLibor", &makeObject2<IborIndex, SEKLibor, Period&, YieldTermStructureHandle&>},
+  {"Tibor", &makeObject2<IborIndex, Tibor, Period&, YieldTermStructureHandle&>},
+  {"TRLibor", &makeObject2<IborIndex, TRLibor, Period&, YieldTermStructureHandle&>},
+  {"USDLibor", &makeObject2<IborIndex, USDLibor, Period&, YieldTermStructureHandle&>},
+  {"Zibor", &makeObject2<IborIndex, Zibor, Period&, YieldTermStructureHandle&>}
+};
+
 QlIborIndex *qlCreateIbor(char *name, Period *tenor,
     QlYieldTermStructure *fwd, char **e) {
   try {
-    Handle <YieldTermStructure> ts = qlNullableHandle(fwd);
-    IborIndex *i = 0;
-    if (!strcmp(name, "Euribor"))
-      i = new Euribor(*arg(tenor), ts);
-    else if (!strcmp(name, "Euribor365"))
-      i = new Euribor365(*arg(tenor), ts);
-    else if (!strcmp(name, "AUDLibor"))
-      i = new AUDLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "CADLibor"))
-      i = new CADLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "Cdor"))
-      i = new Cdor(*arg(tenor), ts);
-    else if (!strcmp(name, "CHFLibor"))
-      i = new CHFLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "DKKLibor"))
-      i = new DKKLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "EURLibor"))
-      i = new EURLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "GBPLibor"))
-      i = new GBPLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "Jibar"))
-      i = new Jibar(*arg(tenor), ts);
-    else if (!strcmp(name, "JPYLibor"))
-      i = new JPYLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "NZDLibor"))
-      i = new NZDLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "SEKLibor"))
-      i = new SEKLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "Tibor"))
-      i = new Tibor(*arg(tenor), ts);
-    else if (!strcmp(name, "TRLibor"))
-      i = new TRLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "USDLibor"))
-      i = new USDLibor(*arg(tenor), ts);
-    else if (!strcmp(name, "Zibor"))
-      i = new Zibor(*arg(tenor), ts);
+    EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> *last =
+      iborInfo + LENGTH(iborInfo);
+    EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> *found =
+      std::find_if(iborInfo, last, EnumObjectInfoComp2<IborIndex, Period&, YieldTermStructureHandle&>(name));
+    if (found != last) {
+      YieldTermStructureHandle ts = qlNullableHandle(fwd);
+      IborIndex *i = found->make(*arg(tenor), ts);
+      return ret(new QlIborIndex(alloc(i)));
+    }
     else
       QL_FAIL("Unknown Ibor " << name);
-    return ret(new QlIborIndex(alloc(i)));
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
   }
 }
 
+
+EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> onIborInfo [] = {
+  {"CADLiborON", &makeObject1<IborIndex, CADLiborON, YieldTermStructureHandle&>},
+  {"Eonia", &makeObject1<IborIndex, Eonia, YieldTermStructureHandle&>},
+  {"Sonia", &makeObject1<IborIndex, Sonia, YieldTermStructureHandle&>},
+  {"GBPLiborON", &makeObject1<IborIndex, GBPLiborON, YieldTermStructureHandle&>},
+  {"USDLiborON", &makeObject1<IborIndex, USDLiborON, YieldTermStructureHandle&>},
+  {"EURLiborON", &makeObject1<IborIndex, EURLiborON, YieldTermStructureHandle&>},
+};
+
 QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
   try {
-    Handle <YieldTermStructure> ts = qlNullableHandle(fwd);
-    IborIndex *i = 0;
-    if (!strcmp(name, "CADLiborON"))
-      i = new CADLiborON(ts);
-    else if (!strcmp(name, "Eonia"))
-      i = new Eonia(ts);
-    else if (!strcmp(name, "Sonia"))
-      i = new Sonia(ts);
-    else if (!strcmp(name, "GBPLiborON"))
-      i = new GBPLiborON(ts);
-    else if (!strcmp(name, "USDLiborON"))
-      i = new USDLiborON(ts);
-    else if (!strcmp(name, "EURLiborON"))
-      i = new EURLiborON(ts);
+    EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> *last =
+      onIborInfo + LENGTH(onIborInfo);
+    EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> *found =
+      std::find_if(onIborInfo, last, EnumObjectInfoComp1<IborIndex, YieldTermStructureHandle&>(name));
+    if (found != last) {
+      YieldTermStructureHandle ts = qlNullableHandle(fwd);
+      IborIndex *i = found->make(ts);
+      return ret(new QlIborIndex(alloc(i)));
+    }
     else
       QL_FAIL("Unknown ON Ibor " << name);
-    return ret(new QlIborIndex(alloc(i)));
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
   }
 }
+
+EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> dailyIborInfo [] = {
+  {"DailyTenorCHFLibor", &makeObject2<IborIndex, 
+    DailyTenorCHFLibor, unsigned, YieldTermStructureHandle&>},
+  {"DailyTenorEURLibor", &makeObject2<IborIndex, 
+    DailyTenorEURLibor, unsigned, YieldTermStructureHandle&>},
+  {"DailyTenorGBPLibor", &makeObject2<IborIndex, 
+    DailyTenorGBPLibor, unsigned, YieldTermStructureHandle&>},
+  {"DailyTenorJPYLibor", &makeObject2<IborIndex, 
+    DailyTenorJPYLibor, unsigned, YieldTermStructureHandle&>},
+  {"DailyTenorUSDLibor", &makeObject2<IborIndex, 
+    DailyTenorUSDLibor, unsigned, YieldTermStructureHandle&>},
+};
 
 QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
     QlYieldTermStructure *fwd, char **e) {
   try {
-    Handle <YieldTermStructure> ts = qlNullableHandle(fwd);
-    IborIndex *i = 0;
-    if (!strcmp(name, "DailyTenorCHFLibor"))
-      i = new DailyTenorCHFLibor(settlDays, ts);
-    else if (!strcmp(name, "DailyTenorEURLibor"))
-      i = new DailyTenorEURLibor(settlDays, ts);
-    else if (!strcmp(name, "DailyTenorGBPLibor"))
-      i = new DailyTenorGBPLibor(settlDays, ts);
-    else if (!strcmp(name, "DailyTenorJPYLibor"))
-      i = new DailyTenorJPYLibor(settlDays, ts);
-    else if (!strcmp(name, "DailyTenorUSDLibor"))
-      i = new DailyTenorUSDLibor(settlDays, ts);
+    EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> *last =
+      dailyIborInfo + LENGTH(dailyIborInfo);
+    EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> *found =
+      std::find_if(dailyIborInfo, last, EnumObjectInfoComp2<IborIndex, unsigned, YieldTermStructureHandle&>(name));
+    if (found != last) {
+      YieldTermStructureHandle ts = qlNullableHandle(fwd);
+      IborIndex *i = found->make(settlDays, ts);
+      return ret(new QlIborIndex(alloc(i)));
+    }
     else
       QL_FAIL("Unknown Daily Tenor Ibor " << name);
-    return ret(new QlIborIndex(alloc(i)));
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
   }
