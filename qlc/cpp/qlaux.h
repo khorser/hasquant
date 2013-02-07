@@ -483,11 +483,11 @@ struct EnumObjectInfo {
   private:
     const char *n_;
   };
-};
 
-template <class Base, class T>
-Base *makeObject() {
-  return new T();
+  template <class A>
+  static T *makeObject() {
+    return new A();
+  };
 };
 
 template <class T, class T1>
@@ -503,13 +503,12 @@ struct EnumObjectInfo1 {
     }
   private:
     const char *n_;
-};
+  };
 
-};
-
-template <class Base, class T, class T1>
-Base *makeObject1(T1 x1) {
-  return new T(x1);
+  template <class A>
+  static T *makeObject(T1 x1) {
+    return new A(x1);
+  };
 };
 
 template <class T, class T1, class T2>
@@ -523,15 +522,14 @@ struct EnumObjectInfo2 {
     bool operator()(const EnumObjectInfo2<T, T1, T2> &i) {
       return !strcmp(i.name, n_);
     }
-private:
-  const char *n_;
-};
+  private:
+    const char *n_;
+  };
 
-};
-
-template <class Base, class T, class T1, class T2>
-Base *makeObject2(T1 x1, T2 x2) {
-  return new T(x1, x2);
+  template <class A>
+  static T *makeObject(T1 x1, T2 x2) {
+    return new A(x1, x2);
+  };
 };
 
 #include "ql.h"

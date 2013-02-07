@@ -57,23 +57,23 @@ typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 typedef EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> IborInfo;
 
 IborInfo iborInfo [] = {
-  {"Euribor", &makeObject2<IborIndex, Euribor, Period&, YieldTermStructureHandle&>},
-  {"Euribor365", &makeObject2<IborIndex, Euribor365, Period&, YieldTermStructureHandle&>},
-  {"AUDLibor", &makeObject2<IborIndex, AUDLibor, Period&, YieldTermStructureHandle&>},
-  {"CADLibor", &makeObject2<IborIndex, CADLibor, Period&, YieldTermStructureHandle&>},
-  {"Cdor", &makeObject2<IborIndex, Cdor, Period&, YieldTermStructureHandle&>},
-  {"CHFLibor", &makeObject2<IborIndex, CHFLibor, Period&, YieldTermStructureHandle&>},
-  {"DKKLibor", &makeObject2<IborIndex, DKKLibor, Period&, YieldTermStructureHandle&>},
-  {"EURLibor", &makeObject2<IborIndex, EURLibor, Period&, YieldTermStructureHandle&>},
-  {"GBPLibor", &makeObject2<IborIndex, GBPLibor, Period&, YieldTermStructureHandle&>},
-  {"Jibar", &makeObject2<IborIndex, Jibar, Period&, YieldTermStructureHandle&>},
-  {"JPYLibor", &makeObject2<IborIndex, JPYLibor, Period&, YieldTermStructureHandle&>},
-  {"NZDLibor", &makeObject2<IborIndex, NZDLibor, Period&, YieldTermStructureHandle&>},
-  {"SEKLibor", &makeObject2<IborIndex, SEKLibor, Period&, YieldTermStructureHandle&>},
-  {"Tibor", &makeObject2<IborIndex, Tibor, Period&, YieldTermStructureHandle&>},
-  {"TRLibor", &makeObject2<IborIndex, TRLibor, Period&, YieldTermStructureHandle&>},
-  {"USDLibor", &makeObject2<IborIndex, USDLibor, Period&, YieldTermStructureHandle&>},
-  {"Zibor", &makeObject2<IborIndex, Zibor, Period&, YieldTermStructureHandle&>}
+  {"Euribor",	  &IborInfo::makeObject<Euribor>},
+  {"Euribor365",  &IborInfo::makeObject<Euribor365>},
+  {"AUDLibor",	  &IborInfo::makeObject<AUDLibor>},
+  {"CADLibor",	  &IborInfo::makeObject<CADLibor>},
+  {"Cdor",	  &IborInfo::makeObject<Cdor>},
+  {"CHFLibor",	  &IborInfo::makeObject<CHFLibor>},
+  {"DKKLibor",	  &IborInfo::makeObject<DKKLibor>},
+  {"EURLibor",	  &IborInfo::makeObject<EURLibor>},
+  {"GBPLibor",	  &IborInfo::makeObject<GBPLibor>},
+  {"Jibar",	  &IborInfo::makeObject<Jibar>},
+  {"JPYLibor",	  &IborInfo::makeObject<JPYLibor>},
+  {"NZDLibor",	  &IborInfo::makeObject<NZDLibor>},
+  {"SEKLibor",	  &IborInfo::makeObject<SEKLibor>},
+  {"Tibor",	  &IborInfo::makeObject<Tibor>},
+  {"TRLibor",	  &IborInfo::makeObject<TRLibor>},
+  {"USDLibor",	  &IborInfo::makeObject<USDLibor>},
+  {"Zibor",	  &IborInfo::makeObject<Zibor>}
 };
 
 QlIborIndex *qlCreateIbor(char *name, Period *tenor,
@@ -98,12 +98,12 @@ QlIborIndex *qlCreateIbor(char *name, Period *tenor,
 typedef EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> OnIborInfo;
 
 OnIborInfo onIborInfo [] = {
-  {"CADLiborON", &makeObject1<IborIndex, CADLiborON, YieldTermStructureHandle&>},
-  {"Eonia", &makeObject1<IborIndex, Eonia, YieldTermStructureHandle&>},
-  {"Sonia", &makeObject1<IborIndex, Sonia, YieldTermStructureHandle&>},
-  {"GBPLiborON", &makeObject1<IborIndex, GBPLiborON, YieldTermStructureHandle&>},
-  {"USDLiborON", &makeObject1<IborIndex, USDLiborON, YieldTermStructureHandle&>},
-  {"EURLiborON", &makeObject1<IborIndex, EURLiborON, YieldTermStructureHandle&>},
+  {"CADLiborON",  &OnIborInfo::makeObject<CADLiborON>},
+  {"Eonia",	  &OnIborInfo::makeObject<Eonia>},
+  {"Sonia",	  &OnIborInfo::makeObject<Sonia>},
+  {"GBPLiborON",  &OnIborInfo::makeObject<GBPLiborON>},
+  {"USDLiborON",  &OnIborInfo::makeObject<USDLiborON>},
+  {"EURLiborON",  &OnIborInfo::makeObject<EURLiborON>},
 };
 
 QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
@@ -125,16 +125,11 @@ QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
 
 typedef EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> DailyIborInfo;
 DailyIborInfo dailyIborInfo [] = {
-  {"DailyTenorCHFLibor", &makeObject2<IborIndex, 
-    DailyTenorCHFLibor, unsigned, YieldTermStructureHandle&>},
-  {"DailyTenorEURLibor", &makeObject2<IborIndex, 
-    DailyTenorEURLibor, unsigned, YieldTermStructureHandle&>},
-  {"DailyTenorGBPLibor", &makeObject2<IborIndex, 
-    DailyTenorGBPLibor, unsigned, YieldTermStructureHandle&>},
-  {"DailyTenorJPYLibor", &makeObject2<IborIndex, 
-    DailyTenorJPYLibor, unsigned, YieldTermStructureHandle&>},
-  {"DailyTenorUSDLibor", &makeObject2<IborIndex, 
-    DailyTenorUSDLibor, unsigned, YieldTermStructureHandle&>},
+  {"DailyTenorCHFLibor", &DailyIborInfo::makeObject<DailyTenorCHFLibor>},
+  {"DailyTenorEURLibor", &DailyIborInfo::makeObject<DailyTenorEURLibor>},
+  {"DailyTenorGBPLibor", &DailyIborInfo::makeObject<DailyTenorGBPLibor>},
+  {"DailyTenorJPYLibor", &DailyIborInfo::makeObject<DailyTenorJPYLibor>},
+  {"DailyTenorUSDLibor", &DailyIborInfo::makeObject<DailyTenorUSDLibor>},
 };
 
 QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
