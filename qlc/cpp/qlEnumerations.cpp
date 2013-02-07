@@ -196,64 +196,87 @@ static int jointCalendarRuleValues[] =
   , JoinBusinessDays
   };
 
+struct EnumInfo {
+  const char *name;
+  size_t len;
+  int *data;
+};
+
+#define LENGTH(a) sizeof(a)/sizeof(a[0])
+
+EnumInfo enumInfo[] = {
+  {"QuantLib.Time.BusinessDayConvention.BusinessDayConvention",
+    LENGTH(businessDayConventionValues),
+    businessDayConventionValues},
+  {"QuantLib.Time.DateGenerationRule.DateGenerationRule",
+    LENGTH(dateGenerationRuleValues),
+    dateGenerationRuleValues},
+  {"QuantLib.Time.Frequency.Frequency",
+    LENGTH(frequencyValues),
+    frequencyValues},
+  {"QuantLib.Time.Unit.Unit",
+    LENGTH(timeUnitValues),
+    timeUnitValues},
+  {"QuantLib.Compounding.Compounding",
+    LENGTH(compoundingValues),
+    compoundingValues},
+  {"QuantLib.Time.Date.Weekday",
+    LENGTH(weekdayValues),
+    weekdayValues},
+  {"QuantLib.Time.Date.Month",
+    LENGTH(monthValues),
+    monthValues},
+  {"QuantLib.Side.Side",
+    LENGTH(positionValues),
+    positionValues},
+  {"QuantLib.Credit.Seniority.Seniority",
+    LENGTH(seniorityValues),
+    seniorityValues},
+  {"QuantLib.ExerciseType.ExerciseType",
+    LENGTH(exerciseTypeValues),
+    exerciseTypeValues},
+  {"QuantLib.Instrument.OptionType.OptionType",
+    LENGTH(optionTypeValues),
+    optionTypeValues},
+  {"QuantLib.Instrument.OvernightIndexedSwapType.OvernightIndexedSwapType",
+    LENGTH(overnightIndexedSwapTypeValues),
+    overnightIndexedSwapTypeValues},
+  {"QuantLib.Instrument.VanillaSwapType.VanillaSwapType",
+    LENGTH(vanillaSwapTypeValues),
+    vanillaSwapTypeValues},
+  {"QuantLib.PriceType.PriceType",
+    LENGTH(priceTypeValues),
+    priceTypeValues},
+  {"QuantLib.Risk.SensitivityAnalysis.SensitivityAnalysis",
+    LENGTH(sensitivityAnalysisValues),
+    sensitivityAnalysisValues},
+  {"QuantLib.SettlementType.SettlementType",
+    LENGTH(settlementTypeValues),
+    settlementTypeValues},
+  {"QuantLib.Time.IMMMonth.IMMMonth",
+    LENGTH(immMonthValues),
+    immMonthValues},
+  {"QuantLib.Time.JointCalendarRule.JointCalendarRule",
+    LENGTH(jointCalendarRuleValues),
+    jointCalendarRuleValues},
+};
+
+class EnumNameComp {
+public:
+  EnumNameComp(const char *n) : n_(n) {};
+  bool operator() (const EnumInfo& i) const {
+    return !strcmp(i.name, n_);
+  }
+private:
+  const char *n_;
+};
+
 int *qlEnumerationValue(const char *name, int *c) {
-  if (!strcmp(name, "QuantLib.Time.BusinessDayConvention.BusinessDayConvention")) {
-    *c = sizeof(businessDayConventionValues)/sizeof(businessDayConventionValues[0]);
-    return businessDayConventionValues;
-  }
-  else if (!strcmp(name, "QuantLib.Time.DateGenerationRule.DateGenerationRule")) {
-    *c = sizeof(dateGenerationRuleValues)/sizeof(dateGenerationRuleValues[0]);
-    return dateGenerationRuleValues;
-  }
-  else if (!strcmp(name, "QuantLib.Time.Frequency.Frequency")) {
-    *c = sizeof(frequencyValues)/sizeof(frequencyValues[0]);
-    return frequencyValues;
-  } else if (!strcmp(name, "QuantLib.Time.Unit.Unit")) {
-    *c = sizeof(timeUnitValues)/sizeof(timeUnitValues[0]);
-    return timeUnitValues;
-  } else if (!strcmp(name, "QuantLib.Compounding.Compounding")) {
-    *c = sizeof(compoundingValues)/sizeof(compoundingValues[0]);
-    return compoundingValues;
-  } else if (!strcmp(name, "QuantLib.Time.Date.Weekday")) {
-    *c = sizeof(weekdayValues)/sizeof(weekdayValues[0]);
-    return weekdayValues;
-  } else if (!strcmp(name, "QuantLib.Time.Date.Month")) {
-    *c = sizeof(monthValues)/sizeof(monthValues[0]);
-    return monthValues;
-  } else if (!strcmp(name, "QuantLib.Side.Side")) {
-    *c = sizeof(positionValues)/sizeof(positionValues[0]);
-    return positionValues;
-  } else if (!strcmp(name, "QuantLib.Credit.Seniority.Seniority")) {
-    *c = sizeof(seniorityValues)/sizeof(seniorityValues[0]);
-    return seniorityValues;
-  } else if (!strcmp(name, "QuantLib.ExerciseType.ExerciseType")) {
-    *c = sizeof(exerciseTypeValues)/sizeof(exerciseTypeValues[0]);
-    return exerciseTypeValues;
-  } else if (!strcmp(name, "QuantLib.Instrument.OptionType.OptionType")) {
-    *c = sizeof(optionTypeValues)/sizeof(optionTypeValues[0]);
-    return optionTypeValues;
-  } else if (!strcmp(name,
-	"QuantLib.Instrument.OvernightIndexedSwapType.OvernightIndexedSwapType")) {
-    *c = sizeof(overnightIndexedSwapTypeValues)/sizeof(overnightIndexedSwapTypeValues[0]);
-    return overnightIndexedSwapTypeValues;
-  } else if (!strcmp(name, "QuantLib.Instrument.VanillaSwapType.VanillaSwapType")) {
-    *c = sizeof(vanillaSwapTypeValues)/sizeof(vanillaSwapTypeValues[0]);
-    return vanillaSwapTypeValues;
-  } else if (!strcmp(name, "QuantLib.PriceType.PriceType")) {
-    *c = sizeof(priceTypeValues)/sizeof(priceTypeValues[0]);
-    return priceTypeValues;
-  } else if (!strcmp(name, "QuantLib.Risk.SensitivityAnalysis.SensitivityAnalysis")) {
-    *c = sizeof(sensitivityAnalysisValues)/sizeof(sensitivityAnalysisValues[0]);
-    return sensitivityAnalysisValues;
-  } else if (!strcmp(name, "QuantLib.SettlementType.SettlementType")) {
-    *c = sizeof(settlementTypeValues)/sizeof(settlementTypeValues[0]);
-    return settlementTypeValues;
-  } else if (!strcmp(name, "QuantLib.Time.IMMMonth.IMMMonth")) {
-    *c = sizeof(immMonthValues)/sizeof(immMonthValues[0]);
-    return immMonthValues;
-  } else if (!strcmp(name, "QuantLib.Time.JointCalendarRule.JointCalendarRule")) {
-    *c = sizeof(jointCalendarRuleValues)/sizeof(jointCalendarRuleValues[0]);
-    return jointCalendarRuleValues;
+  EnumInfo *last = enumInfo + LENGTH(enumInfo);
+  EnumInfo *found = std::find_if(enumInfo, last, EnumNameComp(name));
+  if (found != last) {
+    *c = found->len;
+    return found->data;
   } else {
     *c = 0;
     return 0;
