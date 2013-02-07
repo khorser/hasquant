@@ -10,4 +10,4 @@ import QuantLib.Internal.Enum(QLEnum)
 instance QLEnum OptionType
 
 data OptionType = Put | Call
-  deriving (Show, Eq, Enum, Bounded)
+  deriving (Show, Eq, Enum)

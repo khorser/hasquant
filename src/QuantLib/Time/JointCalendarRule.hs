@@ -10,6 +10,6 @@ import QuantLib.Internal.Enum(QLEnum)
 data JointCalendarRule = 
   JoinHolidays -- ^A date is a holiday for the joint calendar if it is a holiday for any of the given calendars
   | JoinBusinessDays -- ^A date is a business day for the joint calendar if it is a business day for any of the given calendars
-  deriving (Show, Eq, Enum, Bounded)
+  deriving (Show, Eq, Enum)
 
 instance QLEnum JointCalendarRule

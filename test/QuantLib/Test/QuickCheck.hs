@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
-{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE ScopedTypeVariables,TemplateHaskell #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Test.QuickCheck(htf_thisModulesTests, today)
 
@@ -9,6 +9,7 @@ import Test.Framework
 
 import Control.Exception(catch)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay)
+import Data.DeriveTH
 import Prelude hiding(catch)
 
 import Test.QuickCheck.Monadic
@@ -20,7 +21,7 @@ import qualified QuantLib.Settings as Settings
 import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
 import qualified QuantLib.Time.Calendar as Calendar
 import QuantLib.Time.Date
-import qualified QuantLib.Time.Frequency as Frequency
+import QuantLib.Time.Frequency
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
 
@@ -99,12 +100,11 @@ prop_scheduleDates dates = monadicIO
        s <- run $ Schedule.schedule' (map validDay dates) c BusinessDayConvention.Unadjusted
        assert $ map validDay dates == Schedule.dates s
 
-instance Arbitrary Frequency.Frequency where
-  arbitrary = arbitraryBoundedEnum
+$(derive makeArbitrary ''Frequency)
 
-prop_frequencyFromPeriodFromFrequency :: Frequency.Frequency -> Property
+prop_frequencyFromPeriodFromFrequency :: Frequency -> Property
 prop_frequencyFromPeriodFromFrequency freq =
-  freq /= Frequency.OtherFrequency
+  freq /= OtherFrequency
   ==> monadicIO
     $ do p <- run $ Period.fromFrequency freq
          assert $ Period.toFrequency p == freq

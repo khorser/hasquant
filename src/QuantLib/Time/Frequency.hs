@@ -23,4 +23,4 @@ data Frequency = NoFrequency -- ^null frequency
   | Daily -- ^once a day
   | Once -- ^only once, e.g., a zero-coupon
   | OtherFrequency -- ^some other unknown frequency
- deriving (Show, Eq, Enum, Bounded)
+ deriving (Show, Eq, Enum)

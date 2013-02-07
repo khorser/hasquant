@@ -90,10 +90,10 @@ Test-Suite QL-Test
                       , QuantLib.Example.Bond
   GHC-Options:       -Wall
   Build-Depends:     base >= 4.5
-                     -- using newer QuickCheck to derive Arbitrary for enumerated types
-                     , QuickCheck >=2.5
                      , time >= 1.4
                      , HTF == 0.10.*
+                     , QuickCheck >= 2.5
+                     , derive >= 2.5
                      , hasquant
   Default-Language:  Haskell2010
   If os(windows)

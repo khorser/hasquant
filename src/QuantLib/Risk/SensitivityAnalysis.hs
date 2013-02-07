@@ -11,4 +11,4 @@ instance QLEnum SensitivityAnalysis
 
 -- |Finite differences calculation.
 data SensitivityAnalysis = OneSide | Centered
-  deriving (Show, Eq, Enum, Bounded)
+  deriving (Show, Eq, Enum)

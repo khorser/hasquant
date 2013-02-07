@@ -10,4 +10,4 @@ import QuantLib.Internal.Enum(QLEnum)
 instance QLEnum OvernightIndexedSwapType
 
 data OvernightIndexedSwapType = Receiver | Payer
-  deriving (Show, Eq, Enum, Bounded)
+  deriving (Show, Eq, Enum)

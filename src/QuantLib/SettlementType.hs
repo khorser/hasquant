@@ -10,4 +10,4 @@ import QuantLib.Internal.Enum(QLEnum)
 instance QLEnum SettlementType
 
 data SettlementType = Physical | Cash
-  deriving (Show, Eq, Enum, Bounded)
+  deriving (Show, Eq, Enum)
