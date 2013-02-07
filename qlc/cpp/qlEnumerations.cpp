@@ -200,6 +200,16 @@ struct EnumInfo {
   const char *name;
   size_t len;
   int *data;
+
+  class Comp {
+  public:
+    Comp(const char *n) : n_(n) {};
+    bool operator() (const EnumInfo& i) const {
+      return !strcmp(i.name, n_);
+      }
+  private:
+    const char *n_;
+  };
 };
 
 EnumInfo enumInfo[] = {
@@ -259,19 +269,9 @@ EnumInfo enumInfo[] = {
     jointCalendarRuleValues},
 };
 
-class EnumNameComp {
-public:
-  EnumNameComp(const char *n) : n_(n) {};
-  bool operator() (const EnumInfo& i) const {
-    return !strcmp(i.name, n_);
-  }
-private:
-  const char *n_;
-};
-
 int *qlEnumerationValue(const char *name, int *c) {
-  EnumInfo *last = enumInfo + LENGTH(enumInfo);
-  EnumInfo *found = std::find_if(enumInfo, last, EnumNameComp(name));
+  EnumInfo *last = LAST(enumInfo);
+  EnumInfo *found = std::find_if(enumInfo, last, EnumInfo::Comp(name));
   if (found != last) {
     *c = found->len;
     return found->data;
