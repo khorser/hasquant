@@ -1,2 +1,2 @@
-ghc-pkg unregister hasquant
+ghc-pkg unregister quantlib
 cabal configure && cabal build && cabal install

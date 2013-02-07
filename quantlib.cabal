@@ -1,4 +1,4 @@
-Name:                hasquant
+Name:                quantlib
 Version:             0.1.0.0
 Synopsis:            Bindings to QuantLib
 -- Description:         
@@ -37,13 +37,13 @@ Library
    , QuantLib.Instrument.VanillaSwapType
    , QuantLib.InterestRate
    , QuantLib.Math.Interpolation
+   , QuantLib.PositionType
    , QuantLib.PriceType
    , QuantLib.PricingEngine
    , QuantLib.Quote
    , QuantLib.Risk.SensitivityAnalysis
    , QuantLib.Settings
    , QuantLib.SettlementType
-   , QuantLib.Side
    , QuantLib.TermStructure.Trait   
    , QuantLib.TermStructure.Volatility
    , QuantLib.TermStructure.Yield    
@@ -94,7 +94,7 @@ Test-Suite QL-Test
                      , HTF == 0.10.*
                      , QuickCheck >= 2.5
                      , derive >= 2.5
-                     , hasquant
+                     , quantlib
   Default-Language:  Haskell2010
   If os(windows)
     LD-Options:      -static
@@ -112,7 +112,7 @@ Executable QL-Example
   GHC-Options:       -Wall
   Build-Depends:     base >= 4.5
                      , time >= 1.4
-                     , hasquant
+                     , quantlib
   Default-Language:  Haskell2010
   If os(windows)
     LD-Options:      -static

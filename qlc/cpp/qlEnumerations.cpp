@@ -234,7 +234,7 @@ static EnumInfo enumInfo[] = {
   {"QuantLib.Time.Date.Month",
     LENGTH(monthValues),
     monthValues},
-  {"QuantLib.Side.Side",
+  {"QuantLib.PositionType.PositionType",
     LENGTH(positionValues),
     positionValues},
   {"QuantLib.Credit.Seniority.Seniority",
