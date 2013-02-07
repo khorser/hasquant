@@ -97,4 +97,4 @@ int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv,
       (BusinessDayConvention) conv, eom).serialNumber();
 }
 
-/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

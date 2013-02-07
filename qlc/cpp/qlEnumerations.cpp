@@ -206,7 +206,7 @@ struct EnumInfo {
     Cmp(const char *n) : n_(n) {};
     bool operator() (const EnumInfo& i) const {
       return !strcmp(i.name, n_);
-      }
+    }
   private:
     const char *n_;
   };
@@ -281,4 +281,4 @@ int *qlEnumerationValue(const char *name, int *c) {
   }
 }
 
-/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

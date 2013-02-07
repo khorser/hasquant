@@ -305,4 +305,4 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
 	QL_FAIL("Unsupported trait" << trait);
 }
 
-/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

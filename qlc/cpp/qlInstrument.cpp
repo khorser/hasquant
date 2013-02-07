@@ -25,4 +25,4 @@ void DLLEXPORT qlFreeInstrument(QlInstrument *instr) {
   del(instr);
 }
 
-/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
