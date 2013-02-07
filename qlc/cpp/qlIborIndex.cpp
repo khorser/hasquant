@@ -54,8 +54,9 @@ QlIborIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy,
 }
 
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
+typedef EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> IborInfo;
 
-EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> iborInfo [] = {
+IborInfo iborInfo [] = {
   {"Euribor", &makeObject2<IborIndex, Euribor, Period&, YieldTermStructureHandle&>},
   {"Euribor365", &makeObject2<IborIndex, Euribor365, Period&, YieldTermStructureHandle&>},
   {"AUDLibor", &makeObject2<IborIndex, AUDLibor, Period&, YieldTermStructureHandle&>},
@@ -78,10 +79,9 @@ EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> iborInfo [] = {
 QlIborIndex *qlCreateIbor(char *name, Period *tenor,
     QlYieldTermStructure *fwd, char **e) {
   try {
-    EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> *last =
-      iborInfo + LENGTH(iborInfo);
-    EnumObjectInfo2<IborIndex, Period&, YieldTermStructureHandle&> *found =
-      std::find_if(iborInfo, last, EnumObjectInfoComp2<IborIndex, Period&, YieldTermStructureHandle&>(name));
+    IborInfo *last = LAST(iborInfo);
+    IborInfo *found =
+      std::find_if(iborInfo, last, IborInfo::Comp(name));
     if (found != last) {
       YieldTermStructureHandle ts = qlNullableHandle(fwd);
       IborIndex *i = found->make(*arg(tenor), ts);
@@ -95,7 +95,9 @@ QlIborIndex *qlCreateIbor(char *name, Period *tenor,
 }
 
 
-EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> onIborInfo [] = {
+typedef EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> OnIborInfo;
+
+OnIborInfo onIborInfo [] = {
   {"CADLiborON", &makeObject1<IborIndex, CADLiborON, YieldTermStructureHandle&>},
   {"Eonia", &makeObject1<IborIndex, Eonia, YieldTermStructureHandle&>},
   {"Sonia", &makeObject1<IborIndex, Sonia, YieldTermStructureHandle&>},
@@ -106,10 +108,9 @@ EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> onIborInfo [] = {
 
 QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
   try {
-    EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> *last =
-      onIborInfo + LENGTH(onIborInfo);
-    EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> *found =
-      std::find_if(onIborInfo, last, EnumObjectInfoComp1<IborIndex, YieldTermStructureHandle&>(name));
+    OnIborInfo *last = LAST(onIborInfo);
+    OnIborInfo *found =
+      std::find_if(onIborInfo, last, OnIborInfo::Comp(name));
     if (found != last) {
       YieldTermStructureHandle ts = qlNullableHandle(fwd);
       IborIndex *i = found->make(ts);
@@ -122,7 +123,8 @@ QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
   }
 }
 
-EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> dailyIborInfo [] = {
+typedef EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> DailyIborInfo;
+DailyIborInfo dailyIborInfo [] = {
   {"DailyTenorCHFLibor", &makeObject2<IborIndex, 
     DailyTenorCHFLibor, unsigned, YieldTermStructureHandle&>},
   {"DailyTenorEURLibor", &makeObject2<IborIndex, 
@@ -138,10 +140,9 @@ EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> dailyIborInfo []
 QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
     QlYieldTermStructure *fwd, char **e) {
   try {
-    EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> *last =
-      dailyIborInfo + LENGTH(dailyIborInfo);
-    EnumObjectInfo2<IborIndex, unsigned, YieldTermStructureHandle&> *found =
-      std::find_if(dailyIborInfo, last, EnumObjectInfoComp2<IborIndex, unsigned, YieldTermStructureHandle&>(name));
+    DailyIborInfo *last = LAST(dailyIborInfo);
+    DailyIborInfo *found =
+      std::find_if(dailyIborInfo, last, DailyIborInfo::Comp(name));
     if (found != last) {
       YieldTermStructureHandle ts = qlNullableHandle(fwd);
       IborIndex *i = found->make(settlDays, ts);

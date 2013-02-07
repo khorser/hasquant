@@ -466,12 +466,23 @@ public:
 # endif
 #endif
 
-#define LENGTH(a) sizeof(a)/sizeof(a[0])
+#define LENGTH(a) (sizeof(a)/sizeof(a[0]))
+#define LAST(a) (a + sizeof(a)/sizeof(a[0]))
 
 template <class T>
 struct EnumObjectInfo {
   const char *name;
   T *(*make)();
+
+  class Comp {
+  public:
+    Comp(const char *n) : n_(n) {}
+    bool operator()(const EnumObjectInfo<T> &i) {
+      return !strcmp(i.name, n_);
+    }
+  private:
+    const char *n_;
+  };
 };
 
 template <class Base, class T>
@@ -479,21 +490,21 @@ Base *makeObject() {
   return new T();
 };
 
-template <class T>
-class EnumObjectInfoComp {
-public:
-  EnumObjectInfoComp(const char *n) : n_(n) {}
-  bool operator()(const EnumObjectInfo<T> &i) {
-    return !strcmp(i.name, n_);
-  }
-private:
-  const char *n_;
-};
-
 template <class T, class T1>
 struct EnumObjectInfo1 {
   const char *name;
   T *(*make)(T1 x);
+
+  class Comp {
+  public:
+    Comp(const char *n) : n_(n) {}
+    bool operator()(const EnumObjectInfo1<T, T1> &i) {
+      return !strcmp(i.name, n_);
+    }
+  private:
+    const char *n_;
+};
+
 };
 
 template <class Base, class T, class T1>
@@ -501,37 +512,26 @@ Base *makeObject1(T1 x1) {
   return new T(x1);
 };
 
-template <class T, class T1>
-class EnumObjectInfoComp1 {
-public:
-  EnumObjectInfoComp1(const char *n) : n_(n) {}
-  bool operator()(const EnumObjectInfo1<T, T1> &i) {
-    return !strcmp(i.name, n_);
-  }
-private:
-  const char *n_;
-};
-
 template <class T, class T1, class T2>
 struct EnumObjectInfo2 {
   const char *name;
   T *(*make)(T1 x1, T2 x2);
+
+  class Comp {
+  public:
+    Comp(const char *n) : n_(n) {}
+    bool operator()(const EnumObjectInfo2<T, T1, T2> &i) {
+      return !strcmp(i.name, n_);
+    }
+private:
+  const char *n_;
+};
+
 };
 
 template <class Base, class T, class T1, class T2>
 Base *makeObject2(T1 x1, T2 x2) {
   return new T(x1, x2);
-};
-
-template <class T, class T1, class T2>
-class EnumObjectInfoComp2 {
-public:
-  EnumObjectInfoComp2(const char *n) : n_(n) {}
-  bool operator()(const EnumObjectInfo2<T, T1, T2> &i) {
-    return !strcmp(i.name, n_);
-  }
-private:
-  const char *n_;
 };
 
 #include "ql.h"
