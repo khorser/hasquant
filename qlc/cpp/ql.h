@@ -1,5 +1,3 @@
-#include "qlaux.h"
-
 /* dates are passed as int = serial number o the date.
  * the code assumes that Haskell bindings validate date */ 
 

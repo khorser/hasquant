@@ -1,6 +1,6 @@
 #include <ql/settings.hpp>
 
-#include "ql.h"
+#include "qlaux.h"
 
 using namespace QuantLib;
 

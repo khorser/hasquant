@@ -1,152 +1,89 @@
 #include <ql/currencies/all.hpp>
 
-#include "ql.h"
+#include "qlaux.h"
 
 using namespace QuantLib;
+
+EnumObjectInfo<Currency> currencyInfo[] = {
+  {"Currency", &makeObject<Currency, Currency>},
+  {"NoCurrency", &makeObject<Currency, Currency>},
+  {"EUR", &makeObject<Currency, EURCurrency>},
+  {"ARS", &makeObject<Currency, ARSCurrency>},
+  {"ATS", &makeObject<Currency, ATSCurrency>},
+  {"AUD", &makeObject<Currency, AUDCurrency>},
+  {"BDT", &makeObject<Currency, BDTCurrency>},
+  {"BEF", &makeObject<Currency, BEFCurrency>},
+  {"BGL", &makeObject<Currency, BGLCurrency>},
+  {"BRL", &makeObject<Currency, BRLCurrency>},
+  {"BYR", &makeObject<Currency, BYRCurrency>},
+  {"CAD", &makeObject<Currency, CADCurrency>},
+  {"CHF", &makeObject<Currency, CHFCurrency>},
+  {"CLP", &makeObject<Currency, CLPCurrency>},
+  {"CNY", &makeObject<Currency, CNYCurrency>},
+  {"COP", &makeObject<Currency, COPCurrency>},
+  {"CYP", &makeObject<Currency, CYPCurrency>},
+  {"CZK", &makeObject<Currency, CZKCurrency>},
+  {"DEM", &makeObject<Currency, DEMCurrency>},
+  {"DKK", &makeObject<Currency, DKKCurrency>},
+  {"EEK", &makeObject<Currency, EEKCurrency>},
+  {"ESP", &makeObject<Currency, ESPCurrency>},
+  {"FIM", &makeObject<Currency, FIMCurrency>},
+  {"FRF", &makeObject<Currency, FRFCurrency>},
+  {"GBP", &makeObject<Currency, GBPCurrency>},
+  {"GRD", &makeObject<Currency, GRDCurrency>},
+  {"HKD", &makeObject<Currency, HKDCurrency>},
+  {"HUF", &makeObject<Currency, HUFCurrency>},
+  {"IEP", &makeObject<Currency, IEPCurrency>},
+  {"ILS", &makeObject<Currency, ILSCurrency>},
+  {"INR", &makeObject<Currency, INRCurrency>},
+  {"IQD", &makeObject<Currency, IQDCurrency>},
+  {"IRR", &makeObject<Currency, IRRCurrency>},
+  {"ISK", &makeObject<Currency, ISKCurrency>},
+  {"ITL", &makeObject<Currency, ITLCurrency>},
+  {"JPY", &makeObject<Currency, JPYCurrency>},
+  {"KRW", &makeObject<Currency, KRWCurrency>},
+  {"KWD", &makeObject<Currency, KWDCurrency>},
+  {"LTL", &makeObject<Currency, LTLCurrency>},
+  {"LUF", &makeObject<Currency, LUFCurrency>},
+  {"LVL", &makeObject<Currency, LVLCurrency>},
+  {"MTL", &makeObject<Currency, MTLCurrency>},
+  {"MXN", &makeObject<Currency, MXNCurrency>},
+  {"NLG", &makeObject<Currency, NLGCurrency>},
+  {"NOK", &makeObject<Currency, NOKCurrency>},
+  {"NPR", &makeObject<Currency, NPRCurrency>},
+  {"NZD", &makeObject<Currency, NZDCurrency>},
+  {"PEH", &makeObject<Currency, PEHCurrency>},
+  {"PEI", &makeObject<Currency, PEICurrency>},
+  {"PEN", &makeObject<Currency, PEICurrency>},
+  {"PKR", &makeObject<Currency, PKRCurrency>},
+  {"PLN", &makeObject<Currency, PLNCurrency>},
+  {"PTE", &makeObject<Currency, PTECurrency>},
+  {"ROL", &makeObject<Currency, ROLCurrency>},
+  {"RON", &makeObject<Currency, RONCurrency>},
+  {"SAR", &makeObject<Currency, SARCurrency>},
+  {"SEK", &makeObject<Currency, SEKCurrency>},
+  {"SGD", &makeObject<Currency, SGDCurrency>},
+  {"SIT", &makeObject<Currency, SITCurrency>},
+  {"SKK", &makeObject<Currency, SKKCurrency>},
+  {"THB", &makeObject<Currency, THBCurrency>},
+  {"TRL", &makeObject<Currency, TRLCurrency>},
+  {"TRY", &makeObject<Currency, TRYCurrency>},
+  {"TTD", &makeObject<Currency, TTDCurrency>},
+  {"TWD", &makeObject<Currency, TWDCurrency>},
+  {"USD", &makeObject<Currency, USDCurrency>},
+  {"VEB", &makeObject<Currency, VEBCurrency>},
+  {"ZAR", &makeObject<Currency, ZARCurrency>}
+};
 
 Currency *qlCurrency(const char *name, char **e) {
   // use enumerations instead?
   try {
-    Currency *c = 0;
-    if (!strcmp("Currency", name))
-      c = new Currency();
-    else if (!strcmp("NoCurrency", name))
-      c = new Currency();
-    else if (!strcmp("EUR", name))
-      c = new EURCurrency();
-    else if (!strcmp("ARS", name))
-      c = new ARSCurrency();
-    else if (!strcmp("ATS", name))
-      c = new ATSCurrency();
-    else if (!strcmp("AUD", name))
-      c = new AUDCurrency();
-    else if (!strcmp("BDT", name))
-      c = new BDTCurrency();
-    else if (!strcmp("BEF", name))
-      c = new BEFCurrency();
-    else if (!strcmp("BGL", name))
-      c = new BGLCurrency();
-    else if (!strcmp("BRL", name))
-      c = new BRLCurrency();
-    else if (!strcmp("BYR", name))
-      c = new BYRCurrency();
-    else if (!strcmp("CAD", name))
-      c = new CADCurrency();
-    else if (!strcmp("CHF", name))
-      c = new CHFCurrency();
-    else if (!strcmp("CLP", name))
-      c = new CLPCurrency();
-    else if (!strcmp("CNY", name))
-      c = new CNYCurrency();
-    else if (!strcmp("COP", name))
-      c = new COPCurrency();
-    else if (!strcmp("CYP", name))
-      c = new CYPCurrency();
-    else if (!strcmp("CZK", name))
-      c = new CZKCurrency();
-    else if (!strcmp("DEM", name))
-      c = new DEMCurrency();
-    else if (!strcmp("DKK", name))
-      c = new DKKCurrency();
-    else if (!strcmp("EEK", name))
-      c = new EEKCurrency();
-    else if (!strcmp("ESP", name))
-      c = new ESPCurrency();
-    else if (!strcmp("FIM", name))
-      c = new FIMCurrency();
-    else if (!strcmp("FRF", name))
-      c = new FRFCurrency();
-    else if (!strcmp("GBP", name))
-      c = new GBPCurrency();
-    else if (!strcmp("GRD", name))
-      c = new GRDCurrency();
-    else if (!strcmp("HKD", name))
-      c = new HKDCurrency();
-    else if (!strcmp("HUF", name))
-      c = new HUFCurrency();
-    else if (!strcmp("IEP", name))
-      c = new IEPCurrency();
-    else if (!strcmp("ILS", name))
-      c = new ILSCurrency();
-    else if (!strcmp("INR", name))
-      c = new INRCurrency();
-    else if (!strcmp("IQD", name))
-      c = new IQDCurrency();
-    else if (!strcmp("IRR", name))
-      c = new IRRCurrency();
-    else if (!strcmp("ISK", name))
-      c = new ISKCurrency();
-    else if (!strcmp("ITL", name))
-      c = new ITLCurrency();
-    else if (!strcmp("JPY", name))
-      c = new JPYCurrency();
-    else if (!strcmp("KRW", name))
-      c = new KRWCurrency();
-    else if (!strcmp("KWD", name))
-      c = new KWDCurrency();
-    else if (!strcmp("LTL", name))
-      c = new LTLCurrency();
-    else if (!strcmp("LUF", name))
-      c = new LUFCurrency();
-    else if (!strcmp("LVL", name))
-      c = new LVLCurrency();
-    else if (!strcmp("MTL", name))
-      c = new MTLCurrency();
-    else if (!strcmp("MXN", name))
-      c = new MXNCurrency();
-    else if (!strcmp("NLG", name))
-      c = new NLGCurrency();
-    else if (!strcmp("NOK", name))
-      c = new NOKCurrency();
-    else if (!strcmp("NPR", name))
-      c = new NPRCurrency();
-    else if (!strcmp("NZD", name))
-      c = new NZDCurrency();
-    else if (!strcmp("PEH", name))
-      c = new PEHCurrency();
-    else if (!strcmp("PEI", name))
-      c = new PEICurrency();
-    else if (!strcmp("PEN", name))
-      c = new PEICurrency();
-    else if (!strcmp("PKR", name))
-      c = new PKRCurrency();
-    else if (!strcmp("PLN", name))
-      c = new PLNCurrency();
-    else if (!strcmp("PTE", name))
-      c = new PTECurrency();
-    else if (!strcmp("ROL", name))
-      c = new ROLCurrency();
-    else if (!strcmp("RON", name))
-      c = new RONCurrency();
-    else if (!strcmp("SAR", name))
-      c = new SARCurrency();
-    else if (!strcmp("SEK", name))
-      c = new SEKCurrency();
-    else if (!strcmp("SGD", name))
-      c = new SGDCurrency();
-    else if (!strcmp("SIT", name))
-      c = new SITCurrency();
-    else if (!strcmp("SKK", name))
-      c = new SKKCurrency();
-    else if (!strcmp("THB", name))
-      c = new THBCurrency();
-    else if (!strcmp("TRL", name))
-      c = new TRLCurrency();
-    else if (!strcmp("TRY", name))
-      c = new TRYCurrency();
-    else if (!strcmp("TTD", name))
-      c = new TTDCurrency();
-    else if (!strcmp("TWD", name))
-      c = new TWDCurrency();
-    else if (!strcmp("USD", name))
-      c = new USDCurrency();
-    else if (!strcmp("VEB", name))
-      c = new VEBCurrency();
-    else if (!strcmp("ZAR", name))
-      c = new ZARCurrency();
+    EnumObjectInfo<Currency> *last = currencyInfo + LENGTH(currencyInfo);
+    EnumObjectInfo<Currency> *found = std::find_if(currencyInfo, last, EnumObjectInfoComp<Currency>(name));
+    if (found != last)
+      return alloc(found->make());
     else
       QL_FAIL("Currency not found " << name);
-    return alloc(c);
   } catch (std::exception& er) {
     return handleException<Currency *>(e, er);
   }

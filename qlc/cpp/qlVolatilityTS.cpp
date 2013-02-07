@@ -1,7 +1,7 @@
 #include <ql/quote.hpp>
 #include <ql/termstructures/volatility/optionlet/constantoptionletvol.hpp>
 
-#include "ql.h"
+#include "qlaux.h"
 
 using namespace QuantLib;
 

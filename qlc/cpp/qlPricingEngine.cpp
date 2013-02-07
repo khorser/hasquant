@@ -1,6 +1,6 @@
 #include <ql/pricingengines/bond/discountingbondengine.hpp>
 
-#include "ql.h"
+#include "qlaux.h"
 
 using namespace QuantLib;
 

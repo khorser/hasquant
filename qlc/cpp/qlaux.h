@@ -466,4 +466,29 @@ public:
 # endif
 #endif
 
+#define LENGTH(a) sizeof(a)/sizeof(a[0])
+
+template <class T>
+struct EnumObjectInfo {
+  const char *name;
+  T *(*make)();
+};
+
+template <class Base, class T>
+Base *makeObject() {
+  return new T();
+};
+
+template <class T>
+class EnumObjectInfoComp {
+public:
+  EnumObjectInfoComp(const char *n) : n_(n) {}
+  bool operator()(const EnumObjectInfo<T> &i) {
+    return !strcmp(i.name, n_);
+  }
+private:
+  const char *n_;
+};
+
+#include "ql.h"
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

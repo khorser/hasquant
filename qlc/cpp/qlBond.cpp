@@ -1,7 +1,7 @@
 #include <ql/instruments/bonds/all.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 
-#include "ql.h"
+#include "qlaux.h"
 
 using namespace QuantLib;
 

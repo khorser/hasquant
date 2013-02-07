@@ -1,127 +1,76 @@
 #include <ql/time/calendar.hpp>
 #include <ql/time/calendars/all.hpp>
 
-#include "ql.h"
+#include "qlaux.h"
 
 using namespace QuantLib;
 
+EnumObjectInfo<Calendar> calendarInfo[] = {
+  {"NoCalendar", &makeObject<Calendar, Calendar>},
+  {"NullCalendar", &makeObject<Calendar, NullCalendar>},
+  {"TARGET", &makeObject<Calendar, TARGET>},
+  {"Argentina::Merval", &makeObject<Calendar, Argentina>},
+  {"Australia", &makeObject<Calendar, Australia>},
+  {"Brazil::Settlement", &makeObject<Calendar, Brazil>},
+  {"Brazil::Exchange", &makeObject<Calendar, Brazil>},
+  {"Canada::Settlement", &makeObject<Calendar, Canada>},
+  {"Canada::TSX", &makeObject<Calendar, Canada>},
+  {"China", &makeObject<Calendar, China>},
+  {"CzechRepublic::PSE", &makeObject<Calendar, CzechRepublic>},
+  {"Denmark", &makeObject<Calendar, Denmark>},
+  {"Finland", &makeObject<Calendar, Finland>},
+  {"Germany::Eurex", &makeObject<Calendar, Germany>},
+  {"Germany::FrankfurtStockExchange", &makeObject<Calendar, Germany>},
+  {"Germany::Settlement", &makeObject<Calendar, Germany>},
+  {"Germany::Xetra", &makeObject<Calendar, Germany>},
+  {"HongKong::HKEx", &makeObject<Calendar, HongKong>},
+  {"Hungary", &makeObject<Calendar, Hungary>},
+  {"Iceland::ICEX", &makeObject<Calendar, Iceland>},
+  {"India::NSE", &makeObject<Calendar, India>},
+  {"Indonesia::BEJ", &makeObject<Calendar, Indonesia>},
+  {"Indonesia::JSX", &makeObject<Calendar, Indonesia>},
+  {"Indonesia::IDX", &makeObject<Calendar, Indonesia>},
+  {"Italy::Exchange", &makeObject<Calendar, Italy>},
+  {"Italy::Settlement", &makeObject<Calendar, Italy>},
+  {"Japan", &makeObject<Calendar, Japan>},
+  {"Mexico::BMV", &makeObject<Calendar, Mexico>},
+  {"NewZealand", &makeObject<Calendar, NewZealand>},
+  {"Norway", &makeObject<Calendar, Norway>},
+  {"Poland", &makeObject<Calendar, Poland>},
+  {"Russia", &makeObject<Calendar, Russia>},
+  {"SaudiArabia::Tadawul", &makeObject<Calendar, SaudiArabia>},
+  {"Singapore::SGX", &makeObject<Calendar, Singapore>},
+  {"Slovakia::BSSE", &makeObject<Calendar, Slovakia>},
+  {"SouthAfrica", &makeObject<Calendar, SouthAfrica>},
+  {"SouthKorea::KRX", &makeObject<Calendar, SouthKorea>},
+  {"SouthKorea::Settlement", &makeObject<Calendar, SouthKorea>},
+  {"Sweden", &makeObject<Calendar, Sweden>},
+  {"Switzerland", &makeObject<Calendar, Switzerland>},
+  {"Taiwan::TSEC", &makeObject<Calendar, Taiwan>},
+  {"EUR", &makeObject<Calendar, TARGET>},
+  {"Turkey", &makeObject<Calendar, Turkey>},
+  {"Ukraine::USE", &makeObject<Calendar, Ukraine>},
+  {"UnitedKingdom::Exchange", &makeObject<Calendar, UnitedKingdom>},
+  {"London stock exchange", &makeObject<Calendar, UnitedKingdom>},
+  {"LONDON", &makeObject<Calendar, UnitedKingdom>},
+  {"GBP", &makeObject<Calendar, UnitedKingdom>},
+  {"UnitedKingdom::Metals", &makeObject<Calendar, UnitedKingdom>},
+  {"UnitedKingdom::Settlement", &makeObject<Calendar, UnitedKingdom>},
+  {"UnitedStates::GovernmentBond", &makeObject<Calendar, UnitedStates>},
+  {"UnitedStates::NERC", &makeObject<Calendar, UnitedStates>},
+  {"UnitedStates::NYSE", &makeObject<Calendar, UnitedStates>},
+  {"UnitedStates::Settlement", &makeObject<Calendar, UnitedStates>},
+  {"WeekendsOnly", &makeObject<Calendar, WeekendsOnly>},
+};
+
 Calendar *qlCalendar(const char *name, char **e) {
-  // use enumerations instead?
   try {
-    Calendar *c = 0;
-    if (!strcmp(name, "NoCalendar"))
-      c = new Calendar();
-    else if (!strcmp(name, "NullCalendar"))
-      c = new NullCalendar();
-    else if (!strcmp(name, "TARGET"))
-      c = new TARGET();
-    else if (!strcmp(name, "Argentina::Merval"))
-      c = new Argentina(Argentina::Merval);
-    else if (!strcmp(name, "Australia"))
-      c = new Australia();
-    else if (!strcmp(name, "Brazil::Settlement"))
-      c = new Brazil(Brazil::Settlement);
-    else if (!strcmp(name, "Brazil::Exchange"))
-      c = new Brazil(Brazil::Exchange);
-    else if (!strcmp(name, "Canada::Settlement"))
-      c = new Canada(Canada::Settlement);
-    else if (!strcmp(name, "Canada::TSX"))
-      c = new Canada(Canada::TSX);
-    else if (!strcmp(name, "China"))
-      c = new China();
-    else if (!strcmp(name, "CzechRepublic::PSE"))
-      c = new CzechRepublic(CzechRepublic::PSE);
-    else if (!strcmp(name, "Denmark"))
-      c = new Denmark();
-    else if (!strcmp(name, "Finland"))
-      c = new Finland();
-    else if (!strcmp(name, "Germany::Eurex"))
-      c = new Germany(Germany::Eurex);
-    else if (!strcmp(name, "Germany::FrankfurtStockExchange"))
-      c = new Germany(Germany::FrankfurtStockExchange);
-    else if (!strcmp(name, "Germany::Settlement"))
-      c = new Germany(Germany::Settlement);
-    else if (!strcmp(name, "Germany::Xetra"))
-      c = new Germany(Germany::Xetra);
-    else if (!strcmp(name, "HongKong::HKEx"))
-      c = new HongKong(HongKong::HKEx);
-    else if (!strcmp(name, "Hungary"))
-      c = new Hungary();
-    else if (!strcmp(name, "Iceland::ICEX"))
-      c = new Iceland(Iceland::ICEX);
-    else if (!strcmp(name, "India::NSE"))
-      c = new India(India::NSE);
-    else if (!strcmp(name, "Indonesia::BEJ"))
-      c = new Indonesia(Indonesia::BEJ);
-    else if (!strcmp(name, "Indonesia::JSX"))
-      c = new Indonesia(Indonesia::JSX);
-    else if (!strcmp(name, "Indonesia::IDX"))
-      c = new Indonesia(Indonesia::IDX);
-    else if (!strcmp(name, "Italy::Exchange"))
-      c = new Italy(Italy::Exchange);
-    else if (!strcmp(name, "Italy::Settlement"))
-      c = new Italy(Italy::Settlement);
-    else if (!strcmp(name, "Japan"))
-      c = new Japan();
-    else if (!strcmp(name, "Mexico::BMV"))
-      c = new Mexico(Mexico::BMV);
-    else if (!strcmp(name, "NewZealand"))
-      c = new NewZealand();
-    else if (!strcmp(name, "Norway"))
-      c = new Norway();
-    else if (!strcmp(name, "Poland"))
-      c = new Poland();
-    else if (!strcmp(name, "Russia"))
-      c = new Russia();
-    else if (!strcmp(name, "SaudiArabia::Tadawul"))
-      c = new SaudiArabia(SaudiArabia::Tadawul);
-    else if (!strcmp(name, "Singapore::SGX"))
-      c = new Singapore(Singapore::SGX);
-    else if (!strcmp(name, "Slovakia::BSSE"))
-      c = new Slovakia(Slovakia::BSSE);
-    else if (!strcmp(name, "SouthAfrica"))
-      c = new SouthAfrica();
-    else if (!strcmp(name, "SouthKorea::KRX"))
-      c = new SouthKorea(SouthKorea::KRX);
-    else if (!strcmp(name, "SouthKorea::Settlement"))
-      c = new SouthKorea(SouthKorea::Settlement);
-    else if (!strcmp(name, "Sweden"))
-      c = new Sweden();
-    else if (!strcmp(name, "Switzerland"))
-      c = new Switzerland();
-    else if (!strcmp(name, "Taiwan::TSEC"))
-      c = new Taiwan(Taiwan::TSEC);
-    else if (!strcmp(name, "EUR"))
-      c = new TARGET();
-    else if (!strcmp(name, "Turkey"))
-      c = new Turkey();
-    else if (!strcmp(name, "Ukraine::USE"))
-      c = new Ukraine(Ukraine::USE);
-    else if (!strcmp(name, "UnitedKingdom::Exchange"))
-      c = new UnitedKingdom(UnitedKingdom::Exchange);
-    else if (!strcmp(name, "London stock exchange"))
-      c = new UnitedKingdom(UnitedKingdom::Exchange);
-    else if (!strcmp(name, "LONDON"))
-      c = new UnitedKingdom(UnitedKingdom::Exchange);
-    else if (!strcmp(name, "GBP"))
-      c = new UnitedKingdom(UnitedKingdom::Exchange);
-    else if (!strcmp(name, "UnitedKingdom::Metals"))
-      c = new UnitedKingdom(UnitedKingdom::Metals);
-    else if (!strcmp(name, "UnitedKingdom::Settlement"))
-      c = new UnitedKingdom(UnitedKingdom::Settlement);
-    else if (!strcmp(name, "UnitedStates::GovernmentBond"))
-      c = new UnitedStates(UnitedStates::GovernmentBond);
-    else if (!strcmp(name, "UnitedStates::NERC"))
-      c = new UnitedStates(UnitedStates::NERC);
-    else if (!strcmp(name, "UnitedStates::NYSE"))
-      c = new UnitedStates(UnitedStates::NYSE);
-    else if (!strcmp(name, "UnitedStates::Settlement"))
-      c = new UnitedStates(UnitedStates::Settlement);
-    else if (!strcmp(name, "WeekendsOnly"))
-      c = new WeekendsOnly();
+    EnumObjectInfo<Calendar> *last = calendarInfo + LENGTH(calendarInfo);
+    EnumObjectInfo<Calendar> *found = std::find_if(calendarInfo, last, EnumObjectInfoComp<Calendar>(name));
+    if (found != last)
+      return alloc(found->make());
     else
       QL_FAIL("Calendar not found " << name);
-    return alloc(c);
   } catch (std::exception& er) {
     return handleException<Calendar *>(e, er);
   }

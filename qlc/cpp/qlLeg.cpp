@@ -2,7 +2,7 @@
 #include <ql/cashflows/simplecashflow.hpp>
 #include <boost/shared_ptr.hpp>
 
-#include "ql.h"
+#include "qlaux.h"
 
 using namespace QuantLib;
 using namespace boost;

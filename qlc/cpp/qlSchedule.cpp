@@ -1,6 +1,6 @@
 #include <ql/time/schedule.hpp>
 
-#include "ql.h"
+#include "qlaux.h"
 
 using namespace QuantLib;
 

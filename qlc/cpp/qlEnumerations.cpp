@@ -17,7 +17,7 @@
 
 #include <string.h>
 
-#include "ql.h"
+#include "qlaux.h"
 
 using namespace QuantLib;
 
@@ -201,8 +201,6 @@ struct EnumInfo {
   size_t len;
   int *data;
 };
-
-#define LENGTH(a) sizeof(a)/sizeof(a[0])
 
 EnumInfo enumInfo[] = {
   {"QuantLib.Time.BusinessDayConvention.BusinessDayConvention",
