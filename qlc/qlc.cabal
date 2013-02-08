@@ -1,85 +1,75 @@
-Name:                qlc
-Version:             0.1.0.0
-Synopsis:            Bindings to QuantLib, C wrappers
--- Description:         
+Name:         qlc
+Version:      0.1.0.0
+Synopsis:     C wrappers for QuantLib library
+Description:  Low-level C wrappers for QuantLib library, for use with quantlib package.
+License:      BSD3
+License-File: LICENSE
+Author:       Sergey Khorev <sergey.khorev@gmail.com>
+Maintainer:   Sergey Khorev <sergey.khorev@gmail.com>
+Copyright:    Sergey Khorev 2012-2013
 
-License:             BSD3
-License-File:        LICENSE
-Author:              Sergey Khorev
-Maintainer:          sergey.khorev@gmail.com
--- Copyright:           
-
-Category:            Finance
-Cabal-Version:       >=1.10
---tested-with:       GHC-7.4.2
---homepage:
-
-Cabal-version: >= 1.2
-Build-type:    Custom
+Category:     Finance
+Cabal-Version:>=1.2
+Tested-With:  GHC==7.4.2, GHC==7.6.2
+--Homepage:
+Build-type:   Custom
 
 Extra-source-files:
-    cpp/qlBond.cpp
-    cpp/qlCalendar.cpp
-    cpp/qlCouponPricer.cpp
-    cpp/qlCurrency.cpp
-    cpp/qlDate.cpp
-    cpp/qlDayCounter.cpp
-    cpp/qlEnumerations.cpp
-    cpp/qlIborIndex.cpp
-    cpp/qlIndex.cpp
-    cpp/qlInstrument.cpp
-    cpp/qlInterestRate.cpp
-    cpp/qlLeg.cpp
-    cpp/qlPeriod.cpp
-    cpp/qlPricingEngine.cpp
-    cpp/qlQuote.cpp
-    cpp/qlSchedule.cpp
-    cpp/qlSettings.cpp
-    cpp/qlUtilities.cpp
-    cpp/qlVolatilityTS.cpp
-    cpp/qlYieldTS.cpp
-    cpp/qlYieldTSAux.cpp
-    cpp/qlaux.h
-    cpp/qlYieldTSAux.h
+              cpp/qlBond.cpp
+              cpp/qlCalendar.cpp
+              cpp/qlCouponPricer.cpp
+              cpp/qlCurrency.cpp
+              cpp/qlDate.cpp
+              cpp/qlDayCounter.cpp
+              cpp/qlEnumerations.cpp
+              cpp/qlIborIndex.cpp
+              cpp/qlIndex.cpp
+              cpp/qlInstrument.cpp
+              cpp/qlInterestRate.cpp
+              cpp/qlLeg.cpp
+              cpp/qlPeriod.cpp
+              cpp/qlPricingEngine.cpp
+              cpp/qlQuote.cpp
+              cpp/qlSchedule.cpp
+              cpp/qlSettings.cpp
+              cpp/qlUtilities.cpp
+              cpp/qlVolatilityTS.cpp
+              cpp/qlYieldTS.cpp
+              cpp/qlYieldTSAux.cpp
+              cpp/qlaux.h
+              cpp/qlYieldTSAux.h
 
-library
+Library
+  Include-Dirs: cpp
+  Install-Includes: ql.h
+  Build-Depends: base >= 4.5 && < 5
 
-  include-dirs:
-    cpp
-  
-  install-includes:
-    ql.h
+  X-Dll-Sources:
+              cpp/qlBond.cpp
+              cpp/qlCalendar.cpp
+              cpp/qlCouponPricer.cpp
+              cpp/qlCurrency.cpp
+              cpp/qlDate.cpp
+              cpp/qlDayCounter.cpp
+              cpp/qlEnumerations.cpp
+              cpp/qlIborIndex.cpp
+              cpp/qlIndex.cpp
+              cpp/qlInstrument.cpp
+              cpp/qlInterestRate.cpp
+              cpp/qlLeg.cpp
+              cpp/qlPeriod.cpp
+              cpp/qlPricingEngine.cpp
+              cpp/qlQuote.cpp
+              cpp/qlSchedule.cpp
+              cpp/qlSettings.cpp
+              cpp/qlUtilities.cpp
+              cpp/qlVolatilityTS.cpp
+              cpp/qlYieldTS.cpp
+              cpp/qlYieldTSAux.cpp
 
-  build-depends:
-    base >= 4 && < 5
-
-  x-dll-sources:
-    cpp/qlBond.cpp
-    cpp/qlCalendar.cpp
-    cpp/qlCouponPricer.cpp
-    cpp/qlCurrency.cpp
-    cpp/qlDate.cpp
-    cpp/qlDayCounter.cpp
-    cpp/qlEnumerations.cpp
-    cpp/qlIborIndex.cpp
-    cpp/qlIndex.cpp
-    cpp/qlInstrument.cpp
-    cpp/qlInterestRate.cpp
-    cpp/qlLeg.cpp
-    cpp/qlPeriod.cpp
-    cpp/qlPricingEngine.cpp
-    cpp/qlQuote.cpp
-    cpp/qlSchedule.cpp
-    cpp/qlSettings.cpp
-    cpp/qlUtilities.cpp
-    cpp/qlVolatilityTS.cpp
-    cpp/qlYieldTS.cpp
-    cpp/qlYieldTSAux.cpp
-
-  x-dll-name: qlc
-
-  x-dll-extra-libraries: QuantLib
+  X-Dll-Name: qlc
+  X-Dll-Extra-Libraries: QuantLib
 
 -- Source-Repository head
 
--- vim: set et:
+-- vim: set et ts=8 sts=2 sw=2:

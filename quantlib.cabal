@@ -1,76 +1,77 @@
-Name:                quantlib
-Version:             0.1.0.0
-Synopsis:            Bindings to QuantLib
--- Description:         
+Name:         quantlib
+Version:      0.1.0.0
+Synopsis:     Bindings to QuantLib
+Description:  Bindings to QuantLib, a free/open-source library for quantitative finance (http://quantlib.org).
+              Requires QLC: C wrappers for QuantLib
+License:      BSD3
+License-File: LICENSE
+Author:       Sergey Khorev <sergey.khorev@gmail.com>
+Maintainer:   Sergey Khorev <sergey.khorev@gmail.com>
+Copyright:    Sergey Khorev 2012-2013
 
-License:             BSD3
-License-File:        LICENSE
-Author:              Sergey Khorev
-Maintainer:          sergey.khorev@gmail.com
--- Copyright:           
-
-Category:            Finance
-Build-Type:          Custom
-Cabal-Version:       >=1.10
-Tested-With:         GHC==7.4.2
-                     , GHC==7.6.2
---homepage:
+Category:     Finance
+Build-Type:   Custom
+Cabal-Version:>=1.10
+Tested-With:  GHC==7.4.2, GHC==7.6.2
+--Homepage:
 
 Flag buildExample
   Default: False
 
 Library
   Exposed-modules:     
-     QuantLib.CashFlow.CouponPricer
-   , QuantLib.CashFlow.Leg
-   , QuantLib.Compounding
-   , QuantLib.Credit.Seniority
-   , QuantLib.Currency
-   , QuantLib.Error
-   , QuantLib.ExerciseType
-   , QuantLib.Index
-   , QuantLib.Index.Ibor
-   , QuantLib.Instrument
-   , QuantLib.Instrument.Bond
-   , QuantLib.Instrument.OptionType
-   , QuantLib.Instrument.OvernightIndexedSwapType
-   , QuantLib.Instrument.VanillaSwapType
-   , QuantLib.InterestRate
-   , QuantLib.Math.Interpolation
-   , QuantLib.PositionType
-   , QuantLib.PriceType
-   , QuantLib.PricingEngine
-   , QuantLib.Quote
-   , QuantLib.Risk.SensitivityAnalysis
-   , QuantLib.Settings
-   , QuantLib.SettlementType
-   , QuantLib.TermStructure.Trait   
-   , QuantLib.TermStructure.Volatility
-   , QuantLib.TermStructure.Yield    
-   , QuantLib.Time.BusinessDayConvention
-   , QuantLib.Time.Calendar
-   , QuantLib.Time.Date
-   , QuantLib.Time.DateGenerationRule
-   , QuantLib.Time.DayCounter
-   , QuantLib.Time.Frequency
-   , QuantLib.Time.IMMMonth
-   , QuantLib.Time.JointCalendarRule
-   , QuantLib.Time.Period
-   , QuantLib.Time.Schedule
-   , QuantLib.Time.Unit
-   , QuantLib.Types
-   , QuantLib.Utilities
+                QuantLib.CashFlow.CouponPricer
+              , QuantLib.CashFlow.Leg
+              , QuantLib.Compounding
+              , QuantLib.Credit.Seniority
+              , QuantLib.Currency
+              , QuantLib.Error
+              , QuantLib.ExerciseType
+              , QuantLib.Index
+              , QuantLib.Index.Ibor
+              , QuantLib.Instrument
+              , QuantLib.Instrument.Bond
+              , QuantLib.Instrument.OptionType
+              , QuantLib.Instrument.OvernightIndexedSwapType
+              , QuantLib.Instrument.VanillaSwapType
+              , QuantLib.InterestRate
+              , QuantLib.Math.Interpolation
+              , QuantLib.PositionType
+              , QuantLib.PriceType
+              , QuantLib.PricingEngine
+              , QuantLib.Quote
+              , QuantLib.Risk.SensitivityAnalysis
+              , QuantLib.Settings
+              , QuantLib.SettlementType
+              , QuantLib.TermStructure.Trait   
+              , QuantLib.TermStructure.Volatility
+              , QuantLib.TermStructure.Yield    
+              , QuantLib.Time.BusinessDayConvention
+              , QuantLib.Time.Calendar
+              , QuantLib.Time.Date
+              , QuantLib.Time.DateGenerationRule
+              , QuantLib.Time.DayCounter
+              , QuantLib.Time.Frequency
+              , QuantLib.Time.IMMMonth
+              , QuantLib.Time.JointCalendarRule
+              , QuantLib.Time.Period
+              , QuantLib.Time.Schedule
+              , QuantLib.Time.Unit
+              , QuantLib.Types
+              , QuantLib.Utilities
 
-  Other-modules:       QuantLib.Internal.Utils
-                        , QuantLib.Internal.Date
-                        , QuantLib.Internal.Enum
-                        , QuantLib.Internal.Syntax
-                        , QuantLib.Internal.Types
-  Ghc-options:         -Wall
-  Build-depends:       base >= 4.5
-                        , time >= 1.4
-                        , template-haskell
-                        , qlc == 0.1.0.0
+  Other-modules:
+                QuantLib.Internal.Date
+              , QuantLib.Internal.Enum
+              , QuantLib.Internal.Syntax
+              , QuantLib.Internal.Types
+              , QuantLib.Internal.Utils
+  Ghc-options:-Wall
+  Build-depends:
+              base >= 4.5 && < 5
+            , time >= 1.4
+            , template-haskell
+            , qlc == 0.1.0.0
 
   Default-Language:  Haskell2010
   Hs-source-dirs: src
@@ -80,25 +81,27 @@ Library
 -- 1) GHCi cannot load FFI imports (__imp_CryptAcquireContextA) of hashable
 -- (can be workaround by installing hashable with -f fixed-salt
 -- 2) similar problem with regex-compat: '__imp_isupper'
--- 3) strange thing is that it does work if you build it manually without Cabal!
+-- 3) the strange thing is that it does work if you build it manually without Cabal and ghc --make!
 -- The library itself can be built and used without problems
 Test-Suite QL-Test
-  Type:              exitcode-stdio-1.0
-  Main-Is:           QuantLib/Test/Main.hs
-  Other-modules:     QuantLib.Test.HUnit
-                      , QuantLib.Test.QuickCheck
-                      , QuantLib.Example.Bond
-  GHC-Options:       -Wall
-  Build-Depends:     base >= 4.5
-                     , time >= 1.4
-                     , HTF == 0.10.*
-                     , QuickCheck >= 2.5
-                     , derive >= 2.5
-                     , quantlib
-  Default-Language:  Haskell2010
+  Type:       exitcode-stdio-1.0
+  Main-Is:    QuantLib/Test/Main.hs
+  Other-modules:
+                QuantLib.Test.HUnit
+              , QuantLib.Test.QuickCheck
+              , QuantLib.Example.Bond
+  GHC-Options:-Wall
+  Build-Depends:
+              base >= 4.5 && < 5
+            , time >= 1.4
+            , HTF == 0.10.*
+            , QuickCheck >= 2.5
+            , derive >= 2.5
+            , quantlib
+  Default-Language: Haskell2010
   If os(windows)
-    LD-Options:      -static
-  Hs-source-dirs: test
+    LD-Options:     -static
+  Hs-source-dirs:   test
 
 Executable QL-Example
 
@@ -107,15 +110,18 @@ Executable QL-Example
   Else
     Buildable: False
 
-  Main-Is:           QuantLib/Example/Main.hs
-  Other-modules:     QuantLib.Example.Bond
-  GHC-Options:       -Wall
-  Build-Depends:     base >= 4.5
-                     , time >= 1.4
-                     , quantlib
-  Default-Language:  Haskell2010
+  Main-Is:          QuantLib/Example/Main.hs
+  Other-modules:    QuantLib.Example.Bond
+  GHC-Options:      -Wall
+  Build-Depends:
+              base >= 4.5 && < 5
+            , time >= 1.4
+            , quantlib
+  Default-Language: Haskell2010
   If os(windows)
-    LD-Options:      -static
-  Hs-source-dirs: test
+    LD-Options:     -static
+  Hs-source-dirs:   test
+
+-- Source-Repository head
 
 -- vim: set et ts=8 sts=2 sw=2:
