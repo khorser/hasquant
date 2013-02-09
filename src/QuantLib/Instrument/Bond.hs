@@ -11,12 +11,15 @@ module QuantLib.Instrument.Bond
   , floatingRateBond
 
   , maturityDate
+  , yield
 
   , setCouponPricer
   )
 
 where
 
+import QuantLib.Compounding
+import QuantLib.Time.Frequency
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
@@ -170,3 +173,17 @@ floatingRateBond :: Word -- ^settlementDays
  -> Maybe Day -- ^issueDate
  -> IO Bond
 floatingRateBond = $(ffiConstruct 'floatingRateBond) c_floatingRateBond
+
+-- |theoretical bond yield
+-- The default bond settlement and theoretical price are used for calculation.
+yield :: Bond
+  -> DayCounter -- ^dc
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> IO Double
+yield = $(ffiCallX 'yield) c_bondYield
+
+foreign import ccall safe "ql.h qlBondYield"
+  c_bondYield :: Ptr CBond -> Ptr CDayCounter -> CInt -> CInt -> CDouble -> CUInt -> Ptr CString -> IO CDouble

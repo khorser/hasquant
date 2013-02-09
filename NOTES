@@ -37,7 +37,6 @@ Bond.dirtyPrice
 Bond.accruedAmount
 Bond.previousCouponRate
 Bond.nextCouponRate
-Bond.yield
 FlatForward
 FixedRateBondForward
 bondFwd.spotIncome

@@ -19,31 +19,37 @@ my @hs = ();
 my @hsffi = ();
 my @h = ();
 my @cpp = ();
-my $hname;
+my $hname = lcfirst($m);
 my $ctor = ($c eq $m); # constructor
+my $fullname;
 if ($ctor)
 {
-  $hname = lcfirst($m);
+  $fullname = $m;
 }
 else
 {
-  $hname = lcfirst($c).ucfirst($m);
+  $fullname = $c.ucfirst($m);
 }
-my $cname = "ql" . ucfirst($hname) . $num;
+my $cname = "ql" . ucfirst($fullname) . $num;
 if ($num)
 {
   $hname .= "'" x $num;
 }
+my $fname = "c_$hname";
+
 my $hret = "";
 my $fret = "";
 my $cret = "";
 
-my $args = "";
+my @args = ();
+
+# parse description
 for (@dec)
 {
   chomp;
   if (/^-- \^/) # argument name or enum member comment
   {
+    $args[-1]{name} = $_;
   }
   elsif (/^-- /) # function comment
   {
@@ -69,71 +75,158 @@ for (@dec)
   }
   elsif (/^::(.+)$/) # argument type
   {
+    my %arg = ();
+    $arg{type} = $1;
+    push @args, \%arg;
   }
   elsif (/^=(.+)$/) # default value
   {
+    $args[-1]{default} = $1;
   }
 }
 
-#    push @hs, "$hname :: ";
-#    push @hsffi, "foreign import ccall safe \"ql.h $cname\"";
-#    push @hsffi, "c_$hname :: ";
-#    push @h, "$cret $cname(";
-#    push @cpp, "$cret DLLEXPORT $cname(";
-#    if (not $ctor)
-#    {
-#      ($carg, $farg, $harg) = type($c);
-#      push @hs, harg;
-#      push @hsffi, farg;
-#      push @cargs, carg;
-#    }
+my $cargs = "";
+my $fargs = "";
+my $hargs = "";
+my @cnames = ();
+my $ocall = "";
 
-push @hs, "$hret";
-push @hsffi, "$fret";
-push @h, ");";
+if (not $ctor)
+{
+  my $cast = '';
+  ($cargs, $fargs, $hargs, $cast) = type($c);
+  $hargs .= "\n";
+  push @cnames, "o";
+  $cargs .= " $cnames[-1]";
+
+  my $pos = index($cast, '%');
+  my $argcall;
+  if ($pos > -1)
+  {
+    $ocall = substr($cast, 0, $pos).$cnames[-1].substr($cast, $pos+1);
+  }
+  else
+  {
+    $ocall = $cnames[-1];
+  }
+  $ocall .= '->';
+}
+
+# iterate over parsed arguments to form declarations and calls
+my $call = "";
+my $i = 0;
+for (@args)
+{
+  my ($carg, $farg, $harg, $cast) = type($$_{type});
+  if ($cargs)
+  {
+    $cargs .= ', ';
+    $fargs .= ' -> ';
+    $hargs .= '  -> ';
+  }
+  if ($i > 0)
+  {
+    $call  .= ', ';
+  }
+  $cargs .= $carg;
+  $fargs .= $farg;
+  $hargs .= $harg;
+  if (exists $$_{name} and $$_{name} =~ m!^-- \^(\w+)$!)
+  {
+    push @cnames, $1;
+    $hargs .= " $$_{name}";
+  }
+  else
+  {
+    push @cnames, "x".$#cnames;
+  }
+  $cargs .= " $cnames[-1]";
+  $hargs .= "\n";
+  my $pos = index($cast, '%');
+  my $argcall;
+  if ($pos > -1)
+  {
+    $argcall = substr($cast, 0, $pos).$cnames[-1].substr($cast, $pos+1);
+  }
+  else
+  {
+    $argcall = $cnames[-1];
+  }
+  $call .= "$argcall";
+  $i++;
+}
+
+push @hs, "$hname :: $hargs  -> IO $hret";
+if ($ctor)
+{
+  push @hs, "$hname = \$(ffiConstruct '$hname) $fname"
+}
+else
+{
+  push @hs, "$hname = \$(ffiCallX '$hname) $fname"
+}
+push @hsffi, "foreign import ccall safe \"ql.h $cname\"";
+push @hsffi, "$fname :: $fargs -> Ptr CString -> IO $fret";
+push @h, "$cret DLLEXPORT $cname($cargs, char **e);";
+push @cpp, "$cret $cname($cargs, char **e) {";
+push @cpp, "try {";
+shift @cnames;
+push @cpp, "    return $ocall$m($call);";
+push @cpp, "  } catch (std::exception& er) {";
+push @cpp, "    return handleException<$cret>(e, er);";
+push @cpp, "  }";
 push @cpp, "}";
 
 print join("\n", @hs);
 print "\n";
 print join("\n", @hsffi);
+print "\n";
+print join("\n", @h);
+print "\n";
+print join("\n", @cpp);
 
 sub type
 {
   my $t = shift;
+  $t =~ s/^(const\s+)?([^& ]+)(\s*&\s*)?/$2/;
   if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility'])
   {
-    return ('double', 'CDouble', 'Double');
+    return ('double', 'CDouble', 'Double', '');
   }
   elsif ($t ~~ ['Natural', 'Size'])
   {
-    return ('unsigned', 'CUInt', 'Word');
+    return ('unsigned', 'CUInt', 'Word', '');
   }
   elsif ($t ~~ ['BigInteger'])
   {
-    return ('int', 'CInt', 'Int');
+    return ('int', 'CInt', 'Int', '');
   }
   elsif ($t ~~ ['Date'])
   {
-    return ('int', 'CDate', 'Day');
+    return ('int', 'CDate', 'Day', '');
   }
   elsif ($t eq 'void')
   {
-    return ('void', '()', '()');
+    return ('void', '()', '()', '');
+  }
+  elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'Period', 'TimeUnit', 'DateGeneration::Rule'])
+  {
+    my ($carg, $farg, $harg) = ('int', 'CInt', $t);
+    $t =~ s/://g;
+    return ($carg, $farg, $harg, "($t)%");
+  }
+  elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency'])
+  {
+    return ("$t*", "Ptr C$t", "$t", '(*arg(%))');
   }
   else
   {
-    return ("Ql$t", "Ptr C$t", "$t");
+    return ("Ql$t*", "Ptr C$t", "$t", '(*arg(%))');
   }
 
 # const Date &
 # const Handle< Quote,YieldTermStructure > &
 # const DayCounter,Calendar,Currency,Leg,Schedule,Period &
-# Compounding
-# Frequency
-# Position::Type
-# Period
-# TimeUnit
-# DateGeneration::Rule
 # const boost::shared_ptr< Bond,FixedRateBond,IborIndex > &
 # const std::vector< Real,Rate,Date,Period > &
 # const std::vector< Handle< Quote > > &

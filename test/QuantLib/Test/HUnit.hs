@@ -228,10 +228,13 @@ test_truncateSchedule = do  tenor <- Period.period 1 Unit.Months
                                         (Schedule.dates truncated)
 
 test_bondEval :: IO ()
-test_bondEval = do  (fixnpv, znpv, fnpv) <- BondExample.npv
+test_bondEval = do  (BondExample.Result (fixnpv, znpv, fnpv) (fixy, zy, fy)) <- BondExample.result
                     assertBool $ abs(fixnpv-107.6682891) < 1e-7
                     assertBool $ abs(znpv-100.9221782) < 1e-7
                     assertBool $ abs(fnpv-102.3593146) < 1e-7
+                    assertBool $ abs(fixy-0.0364756) < 1e-7
+                    assertBool $ abs(zy-0.0300006) < 1e-7
+                    assertBool $ abs(fy-0.0220096) < 1e-7
 
 test_final :: IO ()
 test_final = performGC

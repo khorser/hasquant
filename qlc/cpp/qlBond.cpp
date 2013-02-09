@@ -164,4 +164,12 @@ QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
   }
 }
 
+double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
+    unsigned maxEvaluations, char **e) {
+try {
+    return (*arg(o))->yield((*arg(dc)), (Compounding)comp, (Frequency)freq, accuracy, maxEvaluations);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

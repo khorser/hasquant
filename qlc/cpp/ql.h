@@ -76,6 +76,8 @@ extern "C" {
     int inArrears, double redemption, int issue, char **e);
   QlBond *DLLEXPORT qlFixedRateBondAsBond(QlFixedRateBond *bond);
 
+  double DLLEXPORT qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
+    unsigned maxEvaluations, char **e);
   void DLLEXPORT qlFreeBond(QlBond *bond);
   void DLLEXPORT qlFreeFixedRateBond(QlFixedRateBond *bond);
 
