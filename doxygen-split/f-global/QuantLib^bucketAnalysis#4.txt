@@ -1,5 +1,5 @@
 -- |bucket sensitivity analysis for a SimpleQuote matrix
--- |returns a pair of first and second derivative metrices calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is of size one.The (bucket) SimpleQuotes are tweaked one by one separately.
+-- returns a pair of first and second derivative metrices calculated as prescribed by SensitivityAnalysis. Second derivative might not be available depending on SensitivityAnalysis value.Empty quantities vector is considered as unit vector. The same if the vector is of size one.The (bucket) SimpleQuotes are tweaked one by one separately.
 ->std::pair< std::vector< std::vector< Real > >, std::vector< std::vector< Real > > >
 ::const std::vector< std::vector< Handle< SimpleQuote > > > &
 -- ^

@@ -1,5 +1,5 @@
 -- |NPV and BPS of the cash flows.
--- |The NPV and BPS of the cash flows calculated together for performance reason
+-- The NPV and BPS of the cash flows calculated together for performance reason
 ->void
 ::const Leg &
 -- ^leg

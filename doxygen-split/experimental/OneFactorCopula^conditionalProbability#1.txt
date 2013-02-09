@@ -1,5 +1,5 @@
 -- |Vector of conditional probabilities.
--- |\[ \hat p_i(m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]
+-- \[ \hat p_i(m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]
 ->std::vector< Real >
 ::const std::vector< Real > &
 -- ^prob

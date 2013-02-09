@@ -1,5 +1,5 @@
 -- |dirty price given a yield and settlement date
--- |The default bond settlement is used if no date is given.
+-- The default bond settlement is used if no date is given.
 ->Real
 ::Rate
 -- ^yield

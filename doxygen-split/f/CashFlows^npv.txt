@@ -1,5 +1,5 @@
 -- |NPV of the cash flows.
--- |The NPV is the sum of the cash flows, each discounted according to the given term structure.
+-- The NPV is the sum of the cash flows, each discounted according to the given term structure.
 ->Real
 ::const Leg &
 -- ^leg

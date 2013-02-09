@@ -1,5 +1,5 @@
 -- |returns the fixing at the given date
--- |the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
+-- the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used.
 ->Real
 ::const Date &
 -- ^fixingDate

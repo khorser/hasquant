@@ -1,5 +1,5 @@
 -- |Unbiased auto-covariances.
--- |Results are calculated via FFT.Input data are supposed to be centered (i.e., zero mean). The size of the output sequence must be maxLag + 1
+-- Results are calculated via FFT.Input data are supposed to be centered (i.e., zero mean). The size of the output sequence must be maxLag + 1
 ->void
 ::ForwardIterator
 -- ^begin

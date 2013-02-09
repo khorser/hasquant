@@ -1,5 +1,5 @@
 -- |Functions to set and get seasonality.
--- |Calling setSeasonality with no arguments means unsetting as the default is used to choose unsetting.
+-- Calling setSeasonality with no arguments means unsetting as the default is used to choose unsetting.
 ->void
 ::const boost::shared_ptr< Seasonality > &
 =boost::shared_ptr< Seasonality >()

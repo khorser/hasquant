@@ -1,5 +1,5 @@
 -- |Unbiased auto-correlations.
--- |Results are calculated via FFT. The first element of the output is the unbiased sample variance.This overload accepts non-centered data, removes the mean and returns it as a result. The centered sequence is written back into the input sequence if the reuse parameter is true.The size of the output sequence must be maxLag + 1
+-- Results are calculated via FFT. The first element of the output is the unbiased sample variance.This overload accepts non-centered data, removes the mean and returns it as a result. The centered sequence is written back into the input sequence if the reuse parameter is true.The size of the output sequence must be maxLag + 1
 ->Real
 ::ForwardIterator
 -- ^begin

@@ -1,5 +1,5 @@
 -- |theoretical bond yield
--- |The default bond settlement and theoretical price are used for calculation.
+-- The default bond settlement and theoretical price are used for calculation.
 ->Rate
 ::const DayCounter &
 -- ^dc

@@ -1,5 +1,5 @@
 -- |Unbiased auto-correlations.
--- |Results are calculated via FFT. The first element of the output is the unbiased sample variance.Input data are supposed to be centered (i.e., zero mean). The size of the output sequence must be maxLag + 1
+-- Results are calculated via FFT. The first element of the output is the unbiased sample variance.Input data are supposed to be centered (i.e., zero mean). The size of the output sequence must be maxLag + 1
 ->void
 ::ForwardIterator
 -- ^begin

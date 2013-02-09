@@ -1,5 +1,5 @@
 -- |sets the term structure to be used for pricing
--- |WarningBeing a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to this, i.e., the term structure itself.
+-- /Warning/ Being a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to this, i.e., the term structure itself.
 ->void
 ::TS *
 -- ^

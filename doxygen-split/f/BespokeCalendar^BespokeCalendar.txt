@@ -1,4 +1,4 @@
--- |Warningdifferent bespoke calendars created with the same name (or different bespoke calendars created with no name) will compare as equal.
+-- |/Warning/ different bespoke calendars created with the same name (or different bespoke calendars created with no name) will compare as equal.
 ->
 ::const std::string &
 =""

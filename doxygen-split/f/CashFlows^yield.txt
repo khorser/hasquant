@@ -1,5 +1,5 @@
 -- |Implied internal rate of return.
--- |The function verifies the theoretical existance of an IRR and numerically establishes the IRR to the desired precision.
+-- The function verifies the theoretical existance of an IRR and numerically establishes the IRR to the desired precision.
 ->Rate
 ::const Leg &
 -- ^leg

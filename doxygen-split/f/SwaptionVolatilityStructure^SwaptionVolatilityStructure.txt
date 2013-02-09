@@ -1,4 +1,4 @@
--- |Warningterm structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
+-- |/Warning/ term structures initialized by means of this constructor must manage their own reference date by overriding the referenceDate() method.
 ->
 ::const Calendar &
 -- ^calendar

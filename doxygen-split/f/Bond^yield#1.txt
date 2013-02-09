@@ -1,5 +1,5 @@
 -- |yield given a (clean) price and settlement date
--- |The default bond settlement is used if no date is given.
+-- The default bond settlement is used if no date is given.
 ->Rate
 ::Real
 -- ^cleanPrice

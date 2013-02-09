@@ -1,5 +1,5 @@
 -- |Density function of M.
--- |Derived classes must override this method and ensure zero mean and unit variance.
+-- Derived classes must override this method and ensure zero mean and unit variance.
 ->Real
 ::Real
 -- ^m

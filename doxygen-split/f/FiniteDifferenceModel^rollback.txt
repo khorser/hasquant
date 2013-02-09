@@ -1,4 +1,4 @@
--- |solves the problem between the given times. Warningbeing this a rollback, from must be a later time than to.
+-- |solves the problem between the given times. /Warning/ being this a rollback, from must be a later time than to.
 ->void
 ::array_type &
 -- ^a

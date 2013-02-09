@@ -1,5 +1,5 @@
 -- |Time grid with mandatory time points.
--- |Mandatory points are guaranteed to belong to the grid. No additional points are added.
+-- Mandatory points are guaranteed to belong to the grid. No additional points are added.
 ->
 ::Iterator
 -- ^begin

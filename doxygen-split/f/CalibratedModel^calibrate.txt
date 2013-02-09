@@ -1,5 +1,5 @@
 -- |Calibrate to a set of market instruments (caps/swaptions)
--- |An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
+-- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 ->void
 ::const std::vector< boost::shared_ptr< CalibrationHelper > > &
 -- ^

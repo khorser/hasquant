@@ -1,5 +1,5 @@
 -- |QR decompoisition.
--- |This implementation is based on MINPACK (http://www.netlib.org/minpack, http://www.netlib.org/cephes/linalg.tgz)This subroutine uses householder transformations with column pivoting (optional) to compute a qr factorization of the m by n matrix A. That is, qrfac determines an orthogonal matrix q, a permutation matrix p, and an upper trapezoidal matrix r with diagonal elements of nonincreasing magnitude, such that A*p = q*r.Return value ipvt is an integer array of length n, which defines the permutation matrix p such that A*p = q*r. Column j of p is column ipvt(j) of the identity matrix.See lmdiff.cpp for further details.
+-- This implementation is based on MINPACK (http://www.netlib.org/minpack, http://www.netlib.org/cephes/linalg.tgz)This subroutine uses householder transformations with column pivoting (optional) to compute a qr factorization of the m by n matrix A. That is, qrfac determines an orthogonal matrix q, a permutation matrix p, and an upper trapezoidal matrix r with diagonal elements of nonincreasing magnitude, such that A*p = q*r.Return value ipvt is an integer array of length n, which defines the permutation matrix p such that A*p = q*r. Column j of p is column ipvt(j) of the identity matrix.See lmdiff.cpp for further details.
 ->Disposable< std::vector< Size > >
 ::const Matrix &
 -- ^A

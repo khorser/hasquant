@@ -1,5 +1,5 @@
 -- |Returns the total integrated variance for a given exercise date and strike rate.
--- |Total integrated variance is useful because it scales out t for the optionlet pricing formulae. Note that it is called "total" because the surface does not know whether it represents Black, Bachelier or Displaced Diffusion variance. These are virtual so alternate connections between const vol and total var are possible.Because inflation is highly linked to dates (for interpolation, periods, etc) we do NOT provide a time version
+-- Total integrated variance is useful because it scales out t for the optionlet pricing formulae. Note that it is called "total" because the surface does not know whether it represents Black, Bachelier or Displaced Diffusion variance. These are virtual so alternate connections between const vol and total var are possible.Because inflation is highly linked to dates (for interpolation, periods, etc) we do NOT provide a time version
 ->Volatility
 ::const Date &
 -- ^exerciseDate

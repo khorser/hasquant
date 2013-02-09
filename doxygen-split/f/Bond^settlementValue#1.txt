@@ -1,5 +1,5 @@
 -- |settlement value as a function of the clean price
--- |The default bond settlement date is used for calculation.
+-- The default bond settlement date is used for calculation.
 ->Real
 ::Real
 -- ^cleanPrice

@@ -1,5 +1,5 @@
 -- |Conditional probability.
--- |\[ \hat p(m) = F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]
+-- \[ \hat p(m) = F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]
 ->Real
 ::Real
 -- ^prob

@@ -1,5 +1,5 @@
 -- |Add an exchange rate.
--- |The given rate is valid between the given dates.If two rates are given between the same currencies and with overlapping date ranges, the latest one added takes precedence during lookup.
+-- The given rate is valid between the given dates.If two rates are given between the same currencies and with overlapping date ranges, the latest one added takes precedence during lookup.
 ->void
 ::const ExchangeRate &
 -- ^

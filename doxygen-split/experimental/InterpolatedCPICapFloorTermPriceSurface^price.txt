@@ -1,5 +1,5 @@
 -- |remember that the strikes use the quoting convention
--- |remember that the strike uses the quoting convention
+-- remember that the strike uses the quoting convention
 ->Real
 ::const Date &
 -- ^d

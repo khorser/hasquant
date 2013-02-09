@@ -1,5 +1,5 @@
 -- |adds a datum to the set, possibly with a weight
--- |weight must be positive or null
+-- weight must be positive or null
 ->void
 ::Real
 -- ^value

@@ -1,5 +1,5 @@
 -- |equivalent rate for a compounding period between two dates
--- |The resulting rate is calculated taking the required day-counting rule into account.
+-- The resulting rate is calculated taking the required day-counting rule into account.
 ->InterestRate
 ::const DayCounter &
 -- ^resultDC

@@ -1,5 +1,5 @@
 -- |implied rate for a given compound factor between two dates.
--- |The resulting rate is calculated taking the required day-counting rule into account.
+-- The resulting rate is calculated taking the required day-counting rule into account.
 ->InterestRate
 ::Real
 -- ^compound

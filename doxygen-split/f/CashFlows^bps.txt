@@ -1,5 +1,5 @@
 -- |Basis-point sensitivity of the cash flows.
--- |The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given term structure.
+-- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given term structure.
 ->Real
 ::const Leg &
 -- ^leg

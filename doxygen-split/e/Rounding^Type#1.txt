@@ -1,5 +1,5 @@
 -- |rounding methods
--- |The rounding methods follow the OMG specification available at ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdfWarningthe names of the Floor and Ceiling methods might be misleading. Check the provided reference.
+-- The rounding methods follow the OMG specification available at ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdf /Warning/ the names of the Floor and Ceiling methods might be misleading. Check the provided reference.
 None
 -- ^do not round: return the number unmodified
 Up

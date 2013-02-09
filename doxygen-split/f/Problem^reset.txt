@@ -1,2 +1,2 @@
--- |Warningit does not reset the current minumum to any initial value
+-- |/Warning/ it does not reset the current minumum to any initial value
 ->void

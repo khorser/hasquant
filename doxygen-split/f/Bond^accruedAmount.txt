@@ -1,5 +1,5 @@
 -- |accrued amount at a given date
--- |The default bond settlement is used if no date is given.
+-- The default bond settlement is used if no date is given.
 ->Real
 ::Date
 =Date()

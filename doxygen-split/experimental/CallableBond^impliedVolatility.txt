@@ -1,5 +1,5 @@
 -- |returns the Black implied forward yield volatility
--- |the forward yield volatility, see Hull, Fourth Edition, Chapter 20, pg 536). Relevant only to European put/call schedules
+-- the forward yield volatility, see Hull, Fourth Edition, Chapter 20, pg 536). Relevant only to European put/call schedules
 ->Volatility
 ::Real
 -- ^targetValue

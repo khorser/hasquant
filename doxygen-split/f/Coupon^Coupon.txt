@@ -1,4 +1,4 @@
--- |Warningthe coupon does not adjust the payment date which must already be a business day.
+-- |/Warning/ the coupon does not adjust the payment date which must already be a business day.
 ->
 ::const Date &
 -- ^paymentDate

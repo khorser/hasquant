@@ -1,5 +1,5 @@
 -- |Convolutions of the input sequence.
--- |Calculates x[0]*x[n]+x[1]*x[n+1]+x[2]*x[n+2]+... for n = 0,1,...,maxLag via FFT.The size of the output sequence must be maxLag + 1
+-- Calculates x[0]*x[n]+x[1]*x[n+1]+x[2]*x[n+2]+... for n = 0,1,...,maxLag via FFT.The size of the output sequence must be maxLag + 1
 ->void
 ::ForwardIterator
 -- ^begin

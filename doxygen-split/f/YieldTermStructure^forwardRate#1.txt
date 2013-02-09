@@ -1,4 +1,4 @@
--- |The resulting interest rate has the required day-counting rule. Warningdates are not adjusted for holidays
+-- |The resulting interest rate has the required day-counting rule. /Warning/ dates are not adjusted for holidays
 ->InterestRate
 ::const Date &
 -- ^d

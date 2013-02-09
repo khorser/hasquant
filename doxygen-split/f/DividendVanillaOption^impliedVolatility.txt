@@ -1,4 +1,4 @@
--- |Warningsee VanillaOption for notes on implied-volatility calculation.
+-- |/Warning/ see VanillaOption for notes on implied-volatility calculation.
 ->Volatility
 ::Real
 -- ^price

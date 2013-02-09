@@ -1,5 +1,5 @@
 -- |compound factor implied by the rate compounded at time t.
--- |returns the compound (a.k.a capitalization) factor implied by the rate compounded at time t.WarningTime must be measured using InterestRate's own day counter.
+-- returns the compound (a.k.a capitalization) factor implied by the rate compounded at time t. /Warning/ Time must be measured using InterestRate's own day counter.
 ->Real
 ::Time
 -- ^t

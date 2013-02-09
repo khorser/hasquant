@@ -1,5 +1,5 @@
 -- |Incomplete Beta function.
--- |Incomplete Beta function The implementation of the algorithm was inspired by "Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery, chapter 6
+-- Incomplete Beta function The implementation of the algorithm was inspired by "Numerical Recipes in C", 2nd edition, Press, Teukolsky, Vetterling, Flannery, chapter 6
 ->Real
 ::Real
 -- ^a

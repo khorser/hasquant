@@ -1,5 +1,5 @@
 -- |zero-coupon inflation rate.
--- |WarningSince inflation is highly linked to dates (lags, interpolation, months for seasonality, etc) this method cannot account for all effects. If you call it, You'll have to manage lag, seasonality etc. yourself.
+-- /Warning/ Since inflation is highly linked to dates (lags, interpolation, months for seasonality, etc) this method cannot account for all effects. If you call it, You'll have to manage lag, seasonality etc. yourself.
 ->Rate
 ::Time
 -- ^t

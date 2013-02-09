@@ -1,4 +1,4 @@
--- |Black 1976 formula Warninginstead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
+-- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 ->Real
 ::Option::Type
 -- ^optionType

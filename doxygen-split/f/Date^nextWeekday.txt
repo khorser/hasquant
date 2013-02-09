@@ -1,5 +1,5 @@
 -- |next given weekday following or equal to the given date
--- |E.g., the Friday following Tuesday, January 15th, 2002 was January 18th, 2002.see http://www.cpearson.com/excel/DateTimeWS.htm
+-- E.g., the Friday following Tuesday, January 15th, 2002 was January 18th, 2002.see http://www.cpearson.com/excel/DateTimeWS.htm
 ->Date
 ::const Date &
 -- ^d

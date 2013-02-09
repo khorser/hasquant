@@ -1,5 +1,5 @@
 -- |FFT transform.
--- |The output sequence must be allocated by the user
+-- The output sequence must be allocated by the user
 ->void
 ::InputIterator
 -- ^inBegin
