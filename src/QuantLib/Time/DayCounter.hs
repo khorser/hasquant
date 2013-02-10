@@ -42,10 +42,14 @@ module QuantLib.Time.DayCounter
   , thirty360USA
   , actualActualAct365
   , actualActualHistorical
+
+  , dayCount
+  , yearFraction
   )
 
 where
 
+import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
@@ -147,3 +151,22 @@ foreign import ccall safe "ql.h qlDayCounterBusiness252"
   c_business252 :: Ptr CCalendar -> Ptr CString -> IO (Ptr CDayCounter)
 business252     :: Calendar -> IO DayCounter
 business252 = $(ffiConstruct 'business252) c_business252
+
+-- |Returns the number of days between two dates.
+dayCount :: DayCounter -> Day -> Day -> IO Int
+dayCount = $(ffiCallX 'dayCount) c_dayCount
+
+foreign import ccall safe "ql.h qlDayCounterDayCount"
+  c_dayCount :: Ptr CDayCounter -> CDate -> CDate -> Ptr CString -> IO CInt
+
+-- |Returns the period between two dates as a fraction of year.
+yearFraction :: DayCounter
+  -> Day
+  -> Day
+  -> Maybe Day -- ^refPeriodStart
+  -> Maybe Day -- ^refPeriodEnd
+  -> IO YearFraction
+yearFraction = $(ffiCallX 'yearFraction) c_yearFraction
+
+foreign import ccall safe "ql.h qlDayCounterYearFraction"
+  c_yearFraction :: Ptr CDayCounter -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO CYearFraction

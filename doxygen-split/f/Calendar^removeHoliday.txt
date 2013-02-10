@@ -1,4 +1,0 @@
--- |Removes a date from the set of holidays for the given calendar.
-->void
-::const Date &
--- ^

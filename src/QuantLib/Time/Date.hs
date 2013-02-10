@@ -6,8 +6,6 @@ module QuantLib.Time.Date
 
   , isLeap
   , isValid
-  , Weekday(..)
-  , Month(..)
   , today
 
   , year
@@ -26,6 +24,12 @@ module QuantLib.Time.Date
   , october
   , november
   , december
+
+  , dayOfYear
+  , endOfMonth
+  , isEndOfMonth
+  , nextWeekday
+  , nthWeekday
   )
 where
 
@@ -33,11 +37,12 @@ import Data.Time.Calendar(fromGregorian, toGregorian, isLeapYear)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 
-import QuantLib.Internal.Enum
 import QuantLib.Internal.Date
+import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
-
-instance QLEnum Weekday
+import QuantLib.Time.Weekday
+import QuantLib.Time.Month
 
 year :: Day -> Integer
 year x = y where (y, _, _) = toGregorian x
@@ -45,14 +50,6 @@ year x = y where (y, _, _) = toGregorian x
 -- |returns TRUE if the given date's year is leap. QuantLibXL: qlDateIsLeap
 isLeap :: Day -> Bool
 isLeap = isLeapYear . year
-
-data Weekday = Sunday | Monday | Tuesday | Wednesday | Thursday | Friday
-  | Saturday
-  deriving (Show, Eq, Enum)
-
-data Month = January | February | March | April | May | June | July | August
-  | September | October | November | December
-  deriving (Show, Eq, Enum)
 
 -- |earliest allowed date in QuantLib. QuantLibXL: qlDateMinDate
 minDate :: Day
@@ -123,3 +120,52 @@ today =
   do now <- getCurrentTime
      tz <- getTimeZone now
      return $ localDay $ utcToLocalTime tz now
+
+-- |One-based (Jan 1st = 1)
+dayOfYear :: Day -> IO Int
+dayOfYear = $(ffiCallX 'dayOfYear) c_dayOfYear
+
+foreign import ccall safe "ql.h qlDateDayOfYear"
+  c_dayOfYear :: CDate -> Ptr CString -> IO CInt
+
+-- |last day of the month to which the given date belongs
+endOfMonth :: Day
+  -> Day -- ^d
+  -> IO Day
+endOfMonth = $(ffiCallX 'endOfMonth) c_endOfMonth
+
+foreign import ccall safe "ql.h qlDateEndOfMonth"
+  c_endOfMonth :: CDate -> CDate -> Ptr CString -> IO CDate
+
+-- |whether a date is the last day of its month
+isEndOfMonth :: Day
+  -> Day -- ^d
+  -> IO Bool
+isEndOfMonth = $(ffiCallX 'isEndOfMonth) c_isEndOfMonth
+
+foreign import ccall safe "ql.h qlDateIsEndOfMonth"
+  c_isEndOfMonth :: CDate -> CDate -> Ptr CString -> IO CInt
+
+-- |next given weekday following or equal to the given date
+-- E.g., the Friday following Tuesday, January 15th, 2002 was January 18th, 2002.see http://www.cpearson.com/excel/DateTimeWS.htm
+nextWeekday :: Day
+  -> Day -- ^d
+  -> Weekday -- ^w
+  -> IO Day
+nextWeekday = $(ffiCallX 'nextWeekday) c_nextWeekday
+
+foreign import ccall safe "ql.h qlDateNextWeekday"
+  c_nextWeekday :: CDate -> CDate -> CInt -> Ptr CString -> IO CDate
+
+-- |n-th given weekday in the given month and year
+-- E.g., the 4th Thursday of March, 1998 was March 26th, 1998.see http://www.cpearson.com/excel/DateTimeWS.htm
+nthWeekday :: Day
+  -> Word -- ^n
+  -> Weekday -- ^w
+  -> Month -- ^m
+  -> Int -- ^y
+  -> IO Day
+nthWeekday = $(ffiCallX 'nthWeekday) c_nthWeekday
+
+foreign import ccall safe "ql.h qlDateNthWeekday"
+  c_nthWeekday :: CDate -> CUInt -> CInt -> CInt -> CInt -> Ptr CString -> IO CDate

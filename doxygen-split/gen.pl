@@ -236,7 +236,7 @@ sub type
   {
     return ('unsigned', 'CUInt', 'Word', '', '', 0);
   }
-  elsif ($t ~~ ['BigInteger'])
+  elsif ($t ~~ ['BigInteger', 'Day', 'Year'])
   {
     return ('int', 'CInt', 'Int', '', '', 0);
   }
@@ -263,7 +263,7 @@ sub type
   {
     return ('void', '()', '()', '', '', 0);
   }
-  elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'TimeUnit', 'DateGeneration::Rule', 'BusinessDayConvention'])
+  elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'TimeUnit', 'DateGeneration::Rule', 'BusinessDayConvention', 'Weekday', 'Month'])
   {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;

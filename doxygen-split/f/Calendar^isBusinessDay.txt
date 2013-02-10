@@ -1,4 +1,0 @@
--- |Returns true iff the date is a business day for the given market.
-->bool
-::const Date &
--- ^d

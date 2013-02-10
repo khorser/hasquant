@@ -97,4 +97,77 @@ int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv,
       (BusinessDayConvention) conv, eom).serialNumber();
 }
 
+// generated code
+void qlCalendarAddHoliday(Calendar* o, int x0, char **e) {
+  try {
+    (arg(o))->addHoliday(Date(x0));
+  } catch (std::exception& er) {
+    (void)handleException<int>(e, er);
+  }
+}
+
+int qlCalendarAdvance1(Calendar* o, int date, Period* period, int convention, int endOfMonth, char **e) {
+  try {
+    return ((arg(o))->advance(Date(date), (*arg(period)), (BusinessDayConvention)convention, endOfMonth)).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, char **e) {
+  try {
+    return (arg(o))->businessDaysBetween(Date(from), Date(to), includeFirst, includeLast);
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int qlCalendarEndOfMonth(Calendar* o, int d, char **e) {
+  try {
+    return ((arg(o))->endOfMonth(Date(d))).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int qlCalendarIsBusinessDay(Calendar* o, int d, char **e) {
+  try {
+    return (arg(o))->isBusinessDay(Date(d));
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int qlCalendarIsEndOfMonth(Calendar* o, int d, char **e) {
+  try {
+    return (arg(o))->isEndOfMonth(Date(d));
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int qlCalendarIsHoliday(Calendar* o, int d, char **e) {
+  try {
+    return (arg(o))->isHoliday(Date(d));
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int qlCalendarIsWeekend(Calendar* o, int w, char **e) {
+  try {
+    return (arg(o))->isWeekend((Weekday) w);
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+void qlCalendarRemoveHoliday(Calendar* o, int x0, char **e) {
+  try {
+    (arg(o))->removeHoliday(Date(x0));
+  } catch (std::exception& er) {
+    (void)handleException<int>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

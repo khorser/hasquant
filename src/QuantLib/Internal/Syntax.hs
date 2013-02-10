@@ -32,7 +32,8 @@ import QuantLib.SettlementType()
 import QuantLib.PositionType()
 import QuantLib.Time.BusinessDayConvention()
 import QuantLib.Time.JointCalendarRule()
-import QuantLib.Time.Date()
+import QuantLib.Time.Weekday()
+import QuantLib.Time.Month()
 import QuantLib.Time.DateGenerationRule()
 import QuantLib.Time.Frequency()
 import QuantLib.Time.IMMMonth()
@@ -118,7 +119,7 @@ topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
   | EnumR Name | OptDayR | ForeignPtrR | UnitR
-  | DayListR
+  | DayListR | YearFractionR
   deriving (Show, Eq)
 
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet
@@ -143,6 +144,7 @@ nameToRetVal n | n == ''Word = return WordR
 nameToRetVal n | n == ''Day = return DayR
 nameToRetVal n | n == ''Double = return DoubleR
 nameToRetVal n | n == ''Bool = return BoolR
+nameToRetVal n | n == ''YearFraction = return YearFractionR
 nameToRetVal n = do
   e <- enumType n
   case e of
@@ -305,6 +307,7 @@ unmarshalA IntR    = [|fromIntegral :: CInt -> Int|]
 unmarshalA WordR   = [|fromIntegral :: CUInt -> Word|]
 unmarshalA DayR    = [|fromQlDate|]
 unmarshalA DoubleR = [|realToFrac :: CDouble -> Double|]
+unmarshalA YearFractionR = [|realToFrac :: CDouble -> Double|]
 unmarshalA BoolR = [|toBool :: CInt -> Bool|]
 unmarshalA (EnumR n) = [|fromQlEnum $(stringE $ show n)|]
 unmarshalA OptDayR = [|fromQlDate|]

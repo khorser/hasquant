@@ -1,4 +1,0 @@
--- |whether a date is the last day of its month
-->bool
-::const Date &
--- ^d

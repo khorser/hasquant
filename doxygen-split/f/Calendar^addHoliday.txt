@@ -1,4 +1,0 @@
--- |Adds a date to the set of holidays for the given calendar.
-->void
-::const Date &
--- ^

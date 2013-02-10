@@ -55,9 +55,11 @@ Library
               , QuantLib.Time.Frequency
               , QuantLib.Time.IMMMonth
               , QuantLib.Time.JointCalendarRule
+              , QuantLib.Time.Month
               , QuantLib.Time.Period
               , QuantLib.Time.Schedule
               , QuantLib.Time.Unit
+              , QuantLib.Time.Weekday
               , QuantLib.Types
               , QuantLib.Utilities
 

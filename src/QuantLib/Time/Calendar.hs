@@ -1,4 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.Time.Calendar
   (
     adjust
@@ -58,6 +59,16 @@ module QuantLib.Time.Calendar
   , unitedStatesNYSE
   , unitedStatesSettlement
   , weekendsOnly
+
+  , addHoliday
+  , advance'
+  , businessDaysBetween
+  , endOfMonth
+  , isBusinessDay
+  , isEndOfMonth
+  , isHoliday
+  , isWeekend
+  , removeHoliday
   )
 where
 
@@ -68,6 +79,7 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Unit(Unit)
+import QuantLib.Time.Weekday
 
 foreign import ccall safe "ql.h qlCalendarAdjust"
   c_calendarAdjust :: Ptr CCalendar -> CDate -> CInt -> IO CDate
@@ -212,3 +224,88 @@ unitedStatesNERC        = constructNamed "UnitedStates::NERC"
 unitedStatesNYSE        = constructNamed "UnitedStates::NYSE"
 unitedStatesSettlement  = constructNamed "UnitedStates::Settlement"
 weekendsOnly            = constructNamed "WeekendsOnly"
+
+-- |Adds a date to the set of holidays for the given calendar.
+addHoliday :: Calendar -> Day -> IO ()
+addHoliday = $(ffiCallX 'addHoliday) c_addHoliday
+
+foreign import ccall safe "ql.h qlCalendarAddHoliday"
+  c_addHoliday :: Ptr CCalendar -> CDate -> Ptr CString -> IO ()
+
+-- |Advances the given date as specified by the given period and returns the result. The input date is not modified.
+advance' :: Calendar
+  -> Day -- ^date
+  -> Period -- ^period
+  -> BusinessDayConvention -- ^convention
+  -> Bool -- ^endOfMonth
+  -> IO Day
+advance' = $(ffiCallX 'advance') c_advance'
+
+foreign import ccall safe "ql.h qlCalendarAdvance1"
+  c_advance' :: Ptr CCalendar -> CDate -> Ptr CPeriod -> CInt -> CInt -> Ptr CString -> IO CDate
+
+-- |Calculates the number of business days between two given dates and returns the result.
+businessDaysBetween :: Calendar
+  -> Day -- ^from
+  -> Day -- ^to
+  -> Bool -- ^includeFirst
+  -> Bool -- ^includeLast
+  -> IO Int
+businessDaysBetween = $(ffiCallX 'businessDaysBetween) c_businessDaysBetween
+
+foreign import ccall safe "ql.h qlCalendarBusinessDaysBetween"
+  c_businessDaysBetween :: Ptr CCalendar -> CDate -> CDate -> CInt -> CInt -> Ptr CString -> IO CInt
+
+-- |last business day of the month to which the given date belongs
+endOfMonth :: Calendar
+  -> Day -- ^d
+  -> IO Day
+endOfMonth = $(ffiCallX 'endOfMonth) c_endOfMonth
+
+foreign import ccall safe "ql.h qlCalendarEndOfMonth"
+  c_endOfMonth :: Ptr CCalendar -> CDate -> Ptr CString -> IO CDate
+
+-- |Returns true iff the date is a business day for the given market.
+isBusinessDay :: Calendar
+  -> Day -- ^d
+  -> IO Bool
+isBusinessDay = $(ffiCallX 'isBusinessDay) c_isBusinessDay
+
+foreign import ccall safe "ql.h qlCalendarIsBusinessDay"
+  c_isBusinessDay :: Ptr CCalendar -> CDate -> Ptr CString -> IO CInt
+
+-- |Returns true iff the date is last business day for the month in given market.
+isEndOfMonth :: Calendar
+  -> Day -- ^d
+  -> IO Bool
+isEndOfMonth = $(ffiCallX 'isEndOfMonth) c_isEndOfMonth
+
+foreign import ccall safe "ql.h qlCalendarIsEndOfMonth"
+  c_isEndOfMonth :: Ptr CCalendar -> CDate -> Ptr CString -> IO CInt
+
+-- |Returns true iff the date is a holiday for the given market.
+isHoliday :: Calendar
+  -> Day -- ^d
+  -> IO Bool
+isHoliday = $(ffiCallX 'isHoliday) c_isHoliday
+
+foreign import ccall safe "ql.h qlCalendarIsHoliday"
+  c_isHoliday :: Ptr CCalendar -> CDate -> Ptr CString -> IO CInt
+
+-- |Returns true iff the weekday is part of the weekend for the given market.
+isWeekend :: Calendar
+  -> Weekday -- ^w
+  -> IO Bool
+isWeekend = $(ffiCallX 'isWeekend) c_isWeekend
+
+foreign import ccall safe "ql.h qlCalendarIsWeekend"
+  c_isWeekend :: Ptr CCalendar -> CInt -> Ptr CString -> IO CInt
+
+-- |Removes a date from the set of holidays for the given calendar.
+removeHoliday :: Calendar
+  -> Day
+  -> IO ()
+removeHoliday = $(ffiCallX 'removeHoliday) c_removeHoliday
+
+foreign import ccall safe "ql.h qlCalendarRemoveHoliday"
+  c_removeHoliday :: Ptr CCalendar -> CDate -> Ptr CString -> IO ()

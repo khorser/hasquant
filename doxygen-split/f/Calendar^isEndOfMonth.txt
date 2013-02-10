@@ -1,4 +1,0 @@
--- |Returns true iff the date is last business day for the month in given market.
-->bool
-::const Date &
--- ^d

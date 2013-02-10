@@ -22,6 +22,11 @@ extern "C" {
   int DLLEXPORT qlMinMonth();
   int DLLEXPORT qlMinDay();
   int DLLEXPORT qlWeekday(int date);
+  int DLLEXPORT qlDateDayOfYear(int o, char **e);
+  int DLLEXPORT qlDateEndOfMonth(int o, int d, char **e);
+  int DLLEXPORT qlDateIsEndOfMonth(int o, int d, char **e);
+  int DLLEXPORT qlDateNextWeekday(int o, int d, int w, char **e);
+  int DLLEXPORT qlDateNthWeekday(int o, unsigned n, int w, int m, int y, char **e);
 
 #ifdef quantlib_cash_flow_hpp
   /* leg */
@@ -36,6 +41,15 @@ extern "C" {
   const char *DLLEXPORT qlCalendarName(Calendar *calendar);
   int DLLEXPORT qlCalendarAdjust(Calendar *c, int date, int conv);
   int DLLEXPORT qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom);
+  void DLLEXPORT qlCalendarAddHoliday(Calendar* o, int x0, char **e);
+  int DLLEXPORT qlCalendarAdvance1(Calendar* o, int date, Period* period, int convention, int endOfMonth, char **e);
+  int DLLEXPORT qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, char **e);
+  int DLLEXPORT qlCalendarEndOfMonth(Calendar* o, int d, char **e);
+  int DLLEXPORT qlCalendarIsBusinessDay(Calendar* o, int d, char **e);
+  int DLLEXPORT qlCalendarIsEndOfMonth(Calendar* o, int d, char **e);
+  int DLLEXPORT qlCalendarIsHoliday(Calendar* o, int d, char **e);
+  int DLLEXPORT qlCalendarIsWeekend(Calendar* o, int w, char **e);
+  void DLLEXPORT qlCalendarRemoveHoliday(Calendar* o, int x0, char **e);
 
   void DLLEXPORT qlFreeCalendar(Calendar *calendar);
 
@@ -105,6 +119,8 @@ extern "C" {
   DayCounter *DLLEXPORT qlDayCounter(const char *name, char **e);
   DayCounter *DLLEXPORT qlDayCounterBusiness252(Calendar *cal, char **e);
   const char *DLLEXPORT qlDayCounterName(DayCounter *counter);
+  int DLLEXPORT qlDayCounterDayCount(DayCounter* o, int x0, int x1, char **e);
+  double DLLEXPORT qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e);
 
   void DLLEXPORT qlFreeDayCounter(DayCounter *counter);
 
