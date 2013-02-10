@@ -254,7 +254,7 @@ sub type
     $t =~ s/://g;
     return ($carg, $farg, $harg, "($t)%", '');
   }
-  elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period'])
+  elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period', 'InterestRate'])
   {
     return ("$t*", "Ptr C$t", "$t", '(*arg(%))', '');
   }

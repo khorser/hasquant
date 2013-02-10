@@ -1,4 +1,5 @@
 #include <ql/instruments/bonds/all.hpp>
+#include <ql/instruments/fixedratebondforward.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 
 #include "qlaux.h"
@@ -164,7 +165,15 @@ QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
   }
 }
 
-// generated code
+void qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd) {
+  del(fwd);
+}
+
+QlForward* qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd) {
+  return ret(new QlForward(*arg(fwd)));
+}
+
+// generated code and thus not necessarilly tested
 double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
     unsigned maxEvaluations, char **e) {
 try {

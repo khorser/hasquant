@@ -17,6 +17,8 @@ module QuantLib.Types
   , Instrument
   , Bond
   , FixedRateBond
+  , Forward
+  , FixedRateBondForward
 
   -- pricingengines
   , PricingEngine
@@ -44,6 +46,7 @@ module QuantLib.Types
   , asBond
   , withInstrument
   , asInstrument
+  , asForward
   )
 where
 
@@ -74,6 +77,30 @@ type Instrument = ForeignPtr CInstrument
 type Bond = ForeignPtr CBond
 -- |fixed-rate bond
 type FixedRateBond = ForeignPtr CFixedRateBond
+-- |base forward type
+type Forward = ForeignPtr CForward
+-- |Forward contract on a fixed-rate bond
+-- 1. valueDate refers to the settlement date of the bond forward
+--   contract.  maturityDate is the delivery (or repurchase)
+--   date for the underlying bond (not the bond's maturity
+--   date).
+-- 2. Relevant formulas used in the calculations (\f$P\f$ refers
+--    to a price):
+-- 
+--    a. \f$ P_{CleanFwd}(t) = P_{DirtyFwd}(t) -
+--       AI(t=deliveryDate) \f$ where \f$ AI \f$ refers to the
+--       accrued interest on the underlying bond.
+-- 
+--    b. \f$ P_{DirtyFwd}(t) = \frac{P_{DirtySpot}(t) -
+--       SpotIncome(t)} {discountCurve->discount(t=deliveryDate)} \f$
+-- 
+--    c. \f$ SpotIncome(t) = \sum_i \left( CF_i \times
+--       incomeDiscountCurve->discount(t_i) \right) \f$ where \f$
+--       CF_i \f$ represents the ith bond cash flow (coupon
+--       payment) associated with the underlying bond falling
+--       between the settlementDate and the deliveryDate. (Note
+--       the two different discount curves used in b. and c.)
+type FixedRateBondForward = ForeignPtr CFixedRateBondForward
 
 -- both 'with' and 'as' casting styles compose poorly with functions accepting
 -- several arguments with first being a Bond
@@ -89,6 +116,9 @@ asInstrument = upcast
 
 withInstrument :: (Upcastable a CInstrument) => ForeignPtr a -> (Instrument -> IO b) -> IO b
 withInstrument x f = upcast x >>= f
+
+asForward :: (Upcastable a CForward) => ForeignPtr a -> IO Forward
+asForward = upcast
 
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine

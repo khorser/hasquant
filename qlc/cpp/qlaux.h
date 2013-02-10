@@ -26,6 +26,8 @@ namespace QuantLib {
   class Bond;
   class FixedRateBond;
   class ZeroCouponBond;
+  class Forward;
+  class FixedRateBondForward;
   class Period;
   class DayCounter;
   class Calendar;
@@ -35,6 +37,7 @@ namespace QuantLib {
   class FixedRateBondHelper;
   class DepositRateHelper;
   class YieldTermStructure;
+  class FlatForward;
   class PricingEngine;
   class DiscountingBondEngine;
   class Instrument;
@@ -50,6 +53,8 @@ using QuantLib::SimpleQuote;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
 using QuantLib::ZeroCouponBond;
+using QuantLib::Forward;
+using QuantLib::FixedRateBondForward;
 using QuantLib::Period;
 using QuantLib::DayCounter;
 using QuantLib::Calendar;
@@ -59,6 +64,7 @@ using QuantLib::InterestRate;
 using QuantLib::FixedRateBondHelper;
 using QuantLib::DepositRateHelper;
 using QuantLib::YieldTermStructure;
+using QuantLib::FlatForward;
 using QuantLib::PricingEngine;
 using QuantLib::DiscountingBondEngine;
 using QuantLib::Instrument;
@@ -84,6 +90,8 @@ typedef boost::shared_ptr<OptionletVolatilityStructure> QlOptionletVolatilityStr
 typedef boost::shared_ptr<Instrument> QlInstrument;
 typedef boost::shared_ptr<Bond> QlBond;
 typedef boost::shared_ptr<FixedRateBond> QlFixedRateBond;
+typedef boost::shared_ptr<Forward> QlForward;
+typedef boost::shared_ptr<FixedRateBondForward> QlFixedRateBondForward;
 
 // Leg and RateHelper are typedefs so we cannot use forward declaration
 // for them. Using them only when corresponding headers have been included
@@ -168,6 +176,38 @@ class objClassName<ZeroCouponBond *> {
 public:
   static const char *name() {
     return "ZeroCouponBond";
+  }
+};
+
+template <>
+class objClassName<Forward *> {
+public:
+  static const char *name() {
+    return "Forward";
+  }
+};
+
+template <>
+class objClassName<QlForward *> {
+public:
+  static const char *name() {
+    return "QlForward";
+  }
+};
+
+template <>
+class objClassName<FixedRateBondForward *> {
+public:
+  static const char *name() {
+    return "FixedRateBondForward";
+  }
+};
+
+template <>
+class objClassName<QlFixedRateBondForward *> {
+public:
+  static const char *name() {
+    return "QlFixedRateBondForward";
   }
 };
 
@@ -317,6 +357,14 @@ public:
 
 template <>
 class objClassName<YieldTermStructure *> {
+public:
+  static const char *name() {
+    return "YieldTermStructure";
+  }
+};
+
+template <>
+class objClassName<FlatForward *> {
 public:
   static const char *name() {
     return "YieldTermStructure";

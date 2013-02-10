@@ -1,4 +1,5 @@
 #include <ql/instrument.hpp>
+#include <ql/instruments/forward.hpp>
 
 #include "qlaux.h"
 
@@ -25,4 +26,11 @@ void DLLEXPORT qlFreeInstrument(QlInstrument *instr) {
   del(instr);
 }
 
+void DLLEXPORT qlFreeForward(QlForward *fwd) {
+  del(fwd);
+}
+
+QlInstrument* DLLEXPORT qlForwardAsInstrument(QlForward *fwd) {
+  return ret(new QlInstrument(*arg(fwd)));
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -95,6 +95,8 @@ extern "C" {
 
   void DLLEXPORT qlFreeBond(QlBond *bond);
   void DLLEXPORT qlFreeFixedRateBond(QlFixedRateBond *bond);
+  void DLLEXPORT qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd);
+  QlForward* DLLEXPORT qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd);
 
   /* daycounter */
   DayCounter *DLLEXPORT qlDayCounter(const char *name, char **e);
@@ -178,6 +180,8 @@ extern "C" {
     char **e);
   double DLLEXPORT qlInstrumentNPV(QlInstrument *instr, char **e);
   void DLLEXPORT qlFreeInstrument(QlInstrument *instr);
+  void DLLEXPORT qlFreeForward(QlForward *fwd);
+  QlInstrument* DLLEXPORT qlForwardAsInstrument(QlForward *fwd);
 
   /* ibor index */
   QlIborIndex *DLLEXPORT qlIborIndex(char *name, Period *period, unsigned settlDays,
