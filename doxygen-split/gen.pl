@@ -206,10 +206,12 @@ $base =~ s/\.txt$//;
 
 open O, ">$base.cpp";
 print O join("\n", @cpp);
+print O "\n";
 close O;
 
 open O, ">$base.h";
 print O join("\n", @h);
+print O "\n";
 close O;
 
 open O, ">$base.hs";

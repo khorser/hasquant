@@ -1,5 +1,0 @@
--- |discount factor implied by the rate compounded at time t.
--- /Warning/ Time must be measured using InterestRate's own day counter.
-->DiscountFactor
-::Time
--- ^t
