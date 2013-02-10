@@ -1,3 +1,0 @@
--- |theoretical settlement value
--- The default bond settlement date is used for calculation.
-->Real

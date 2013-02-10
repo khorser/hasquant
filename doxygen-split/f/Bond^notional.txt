@@ -1,4 +1,0 @@
-->Real
-::Date
-=Date()
--- ^d

@@ -42,6 +42,7 @@ my $fret = "";
 my $cret = "";
 
 my @args = ();
+my $retcast = "";
 
 # parse description
 for (@dec)
@@ -61,7 +62,8 @@ for (@dec)
     {
       if ($ctor)
       {
-	($cret, $fret, $hret) = type($c);
+	my $tmp;
+	($cret, $fret, $hret, $tmp, $retcast) = type($c, 0);
       }
       else
       {
@@ -70,7 +72,8 @@ for (@dec)
     }
     else
     {
-      ($cret, $fret, $hret) = type($1);
+      my $tmp;
+      ($cret, $fret, $hret, $tmp, $retcast) = type($1, 0);
     }
   }
   elsif (/^::(.+)$/) # argument type
@@ -94,7 +97,7 @@ my $ocall = "";
 if (not $ctor)
 {
   my $cast = '';
-  ($cargs, $fargs, $hargs, $cast) = type($c);
+  ($cargs, $fargs, $hargs, $cast) = type($c, 0);
   $hargs .= "\n";
   push @cnames, "o";
   $cargs .= " $cnames[-1]";
@@ -117,7 +120,7 @@ my $call = "";
 my $i = 0;
 for (@args)
 {
-  my ($carg, $farg, $harg, $cast) = type($$_{type});
+  my ($carg, $farg, $harg, $cast) = type($$_{type}, exists $$_{default});
   if ($cargs)
   {
     $cargs .= ', ';
@@ -166,12 +169,19 @@ else
   push @hs, "$hname = \$(ffiCallX '$hname) $fname"
 }
 push @hsffi, "foreign import ccall safe \"ql.h $cname\"";
-push @hsffi, "$fname :: $fargs -> Ptr CString -> IO $fret";
-push @h, "$cret DLLEXPORT $cname($cargs, char **e);";
+push @hsffi, "  $fname :: $fargs -> Ptr CString -> IO $fret\n";
+push @h, "  $cret DLLEXPORT $cname($cargs, char **e);";
 push @cpp, "$cret $cname($cargs, char **e) {";
 push @cpp, "try {";
 shift @cnames;
-push @cpp, "    return $ocall$m($call);";
+
+$call = "$ocall$m($call)";
+my $pos = index($retcast, '%');
+if ($pos > -1)
+{
+  $call = substr($retcast, 0, $pos).$call.substr($retcast, $pos+1);
+}
+push @cpp, "    return $call;";
 push @cpp, "  } catch (std::exception& er) {";
 push @cpp, "    return handleException<$cret>(e, er);";
 push @cpp, "  }";
@@ -185,48 +195,75 @@ print join("\n", @h);
 print "\n";
 print join("\n", @cpp);
 
+my $base = $ARGV[0];
+$base =~ s/\.txt$//;
+
+open O, ">$base.cpp";
+print O join("\n", @cpp);
+close O;
+
+open O, ">$base.h";
+print O join("\n", @h);
+close O;
+
+open O, ">$base.hs";
+print O join("\n", @hs);
+print O "\n\n";
+print O join("\n", @hsffi);
+close O;
+
 sub type
 {
   my $t = shift;
+  my $def = shift;
   $t =~ s/^(const\s+)?([^& ]+)(\s*&\s*)?/$2/;
   if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility'])
   {
-    return ('double', 'CDouble', 'Double', '');
+    return ('double', 'CDouble', 'Double', '', '');
   }
   elsif ($t ~~ ['Natural', 'Size'])
   {
-    return ('unsigned', 'CUInt', 'Word', '');
+    return ('unsigned', 'CUInt', 'Word', '', '');
   }
   elsif ($t ~~ ['BigInteger'])
   {
-    return ('int', 'CInt', 'Int', '');
+    return ('int', 'CInt', 'Int', '', '');
   }
   elsif ($t ~~ ['Date'])
   {
-    return ('int', 'CDate', 'Day', '');
+    if (not $def)
+    {
+      return ('int', 'CDate', 'Day', 'Date(%)', '(%).serialNumber()');
+    }
+    else
+    {
+      return ('int', 'CDate', 'Maybe Day', 'qlNullableDate(%)', '');
+    }
+  }
+  elsif ($t eq 'bool')
+  {
+    return ('int', 'CInt', 'Bool', '', '');
   }
   elsif ($t eq 'void')
   {
-    return ('void', '()', '()', '');
+    return ('void', '()', '()', '', '');
   }
   elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'Period', 'TimeUnit', 'DateGeneration::Rule'])
   {
     my ($carg, $farg, $harg) = ('int', 'CInt', $t);
     $t =~ s/://g;
-    return ($carg, $farg, $harg, "($t)%");
+    return ($carg, $farg, $harg, "($t)%", '');
   }
-  elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency'])
+  elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period'])
   {
-    return ("$t*", "Ptr C$t", "$t", '(*arg(%))');
+    return ("$t*", "Ptr C$t", "$t", '(*arg(%))', '');
   }
   else
   {
-    return ("Ql$t*", "Ptr C$t", "$t", '(*arg(%))');
+    return ("Ql$t*", "Ptr C$t", "$t", '(*arg(%))', '');
   }
 
-# const Date &
 # const Handle< Quote,YieldTermStructure > &
-# const DayCounter,Calendar,Currency,Leg,Schedule,Period &
 # const boost::shared_ptr< Bond,FixedRateBond,IborIndex > &
 # const std::vector< Real,Rate,Date,Period > &
 # const std::vector< Handle< Quote > > &

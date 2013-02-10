@@ -228,13 +228,47 @@ test_truncateSchedule = do  tenor <- Period.period 1 Unit.Months
                                         (Schedule.dates truncated)
 
 test_bondEval :: IO ()
-test_bondEval = do  (BondExample.Result (fixnpv, znpv, fnpv) (fixy, zy, fy)) <- BondExample.result
+test_bondEval = do  r <- BondExample.result
+                    let (fixnpv, znpv, fnpv) = BondExample.npv r
+                        (fixy, zy, fy) = BondExample.yield r
+                        (fixclean, zclean, fclean) = BondExample.cleanPrice r
+                        (fixdirty, zdirty, fdirty) = BondExample.dirtyPrice r
+                        (fixaccrual, zaccrual, faccrual) = BondExample.accruedAmount r
+                        (fixprev, fprev) = BondExample.previousCoupon r
+                        (fixnext, fnext) = BondExample.nextCoupon r
+                        (fixnextD, znextD, fnextD) = BondExample.nextCouponDate r
+                        cleanFromYield = BondExample.cleanPriceFromYield r
+                        yieldFromClean = BondExample.yieldFromCleanPrice r
+                        tradable = BondExample.tradable r
+
                     assertBool $ abs(fixnpv-107.6682891) < 1e-7
                     assertBool $ abs(znpv-100.9221782) < 1e-7
                     assertBool $ abs(fnpv-102.3593146) < 1e-7
                     assertBool $ abs(fixy-0.0364756) < 1e-7
                     assertBool $ abs(zy-0.0300006) < 1e-7
                     assertBool $ abs(fy-0.0220096) < 1e-7
+
+                    assertBool $ abs(fixclean-106.1275283) < 1e-7
+                    assertBool $ abs(zclean-100.9221782) < 1e-7
+                    assertBool $ abs(fclean-101.7972017) < 1e-7
+                    assertBool $ abs(fixdirty-107.6682891) < 1e-7
+                    assertBool $ abs(zdirty-100.9221782) < 1e-7
+                    assertBool $ abs(fdirty-102.3593146) < 1e-7
+                    assertBool $ abs(fixaccrual-1.5407609) < 1e-7
+                    assertBool $ abs(zaccrual-0.0) < 1e-7
+                    assertBool $ abs(faccrual-0.5621129) < 1e-7
+                    assertBool $ abs(fixprev-0.045) < 1e-7
+                    assertBool $ abs(fprev-0.0288625) < 1e-7
+                    assertBool $ abs(fixnext-0.045) < 1e-7
+                    assertBool $ abs(fnext-0.0342984) < 1e-7
+                    assertEqual fixnextD (fromGregorian 2008 11 17)
+                    assertEqual znextD (fromGregorian 2013 08 15)
+                    assertEqual fnextD (fromGregorian 2008 10 21)
+                    assertBool $ abs(cleanFromYield-101.7972003) < 1e-7
+                    assertBool $ abs(yieldFromClean-0.0220096) < 1e-7
+
+
+                    assertEqual tradable (True, True, False)
 
 test_final :: IO ()
 test_final = performGC

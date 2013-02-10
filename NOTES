@@ -30,13 +30,8 @@ Introduce money data type parameterized by currency
 
 Implement `show' via operator <<
 
-Plan: migrate business calculation first and then think of reusing math
+Plan: migrate business calculation first and then think of reusing underlying math
 --
-Bond.cleanPrice
-Bond.dirtyPrice
-Bond.accruedAmount
-Bond.previousCouponRate
-Bond.nextCouponRate
 FlatForward
 FixedRateBondForward
 bondFwd.spotIncome
@@ -70,3 +65,20 @@ SvenssonFitting
 ?bond.cashflows
 BondFunctions::yield
 BondFunctions::duration
+
+-- done:
+Bond^accruedAmount
+Bond^cleanPrice
+Bond^cleanPrice#1
+Bond^dirtyPrice
+Bond^dirtyPrice#1
+Bond^isTradable
+Bond^nextCashFlowDate
+Bond^nextCouponRate
+Bond^notional
+Bond^previousCashFlowDate
+Bond^previousCouponRate
+Bond^settlementValue
+Bond^settlementValue#1
+Bond^yield
+Bond^yield#1

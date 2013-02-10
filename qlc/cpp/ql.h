@@ -78,6 +78,21 @@ extern "C" {
 
   double DLLEXPORT qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
     unsigned maxEvaluations, char **e);
+  double DLLEXPORT qlBondAccruedAmount(QlBond* o, int d, char **e);
+  double DLLEXPORT qlBondCleanPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e);
+  double DLLEXPORT qlBondCleanPrice(QlBond* o, char **e);
+  double DLLEXPORT qlBondDirtyPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e);
+  double DLLEXPORT qlBondDirtyPrice(QlBond* o, char **e);
+  int DLLEXPORT qlBondNextCashFlowDate(QlBond* o, int d, char **e);
+  double DLLEXPORT qlBondNextCouponRate(QlBond* o, int d, char **e);
+  double DLLEXPORT qlBondNotional(QlBond* o, int d, char **e);
+  int DLLEXPORT qlBondPreviousCashFlowDate(QlBond* o, int d, char **e);
+  double DLLEXPORT qlBondPreviousCouponRate(QlBond* o, int d, char **e);
+  double DLLEXPORT qlBondSettlementValue1(QlBond* o, double cleanPrice, char **e);
+  double DLLEXPORT qlBondSettlementValue(QlBond* o, char **e);
+  double DLLEXPORT qlBondYield1(QlBond* o, double cleanPrice, DayCounter* dc, int comp, int freq, int settlementDate, double accuracy, unsigned maxEvaluations, char **e);
+  int DLLEXPORT qlBondIsTradable(QlBond* o, int d, char **e);
+
   void DLLEXPORT qlFreeBond(QlBond *bond);
   void DLLEXPORT qlFreeFixedRateBond(QlFixedRateBond *bond);
 

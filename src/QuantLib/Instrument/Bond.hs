@@ -12,6 +12,20 @@ module QuantLib.Instrument.Bond
 
   , maturityDate
   , yield
+  , accruedAmount
+  , cleanPrice'
+  , cleanPrice
+  , dirtyPrice'
+  , dirtyPrice
+  , nextCashFlowDate
+  , nextCouponRate
+  , notional
+  , previousCashFlowDate
+  , previousCouponRate
+  , settlementValue'
+  , settlementValue
+  , yield'
+  , isTradable
 
   , setCouponPricer
   )
@@ -187,3 +201,145 @@ yield = $(ffiCallX 'yield) c_bondYield
 
 foreign import ccall safe "ql.h qlBondYield"
   c_bondYield :: Ptr CBond -> Ptr CDayCounter -> CInt -> CInt -> CDouble -> CUInt -> Ptr CString -> IO CDouble
+
+-- |accrued amount at a given date
+-- The default bond settlement is used if no date is given.
+accruedAmount :: Bond
+  -> Maybe Day -- ^d
+  -> IO Double
+accruedAmount = $(ffiCallX 'accruedAmount) c_accruedAmount
+
+foreign import ccall safe "ql.h qlBondAccruedAmount"
+  c_accruedAmount :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
+
+-- |clean price given a yield and settlement date
+-- The default bond settlement is used if no date is given.
+cleanPrice' :: Bond
+  -> Double -- ^yield
+  -> DayCounter -- ^dc
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> Maybe Day -- ^settlementDate
+  -> IO Double
+cleanPrice' = $(ffiCallX 'cleanPrice') c_cleanPrice'
+
+foreign import ccall safe "ql.h qlBondCleanPrice1"
+  c_cleanPrice' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
+
+-- |theoretical clean price
+-- The default bond settlement is used for calculation. /Warning/ the theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
+cleanPrice :: Bond
+  -> IO Double
+cleanPrice = $(ffiCallX 'cleanPrice) c_cleanPrice
+
+foreign import ccall safe "ql.h qlBondCleanPrice"
+  c_cleanPrice :: Ptr CBond -> Ptr CString -> IO CDouble
+
+-- |dirty price given a yield and settlement date
+-- The default bond settlement is used if no date is given.
+dirtyPrice' :: Bond
+  -> Double -- ^yield
+  -> DayCounter -- ^dc
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> Maybe Day -- ^settlementDate
+  -> IO Double
+dirtyPrice' = $(ffiCallX 'dirtyPrice') c_dirtyPrice'
+
+foreign import ccall safe "ql.h qlBondDirtyPrice1"
+  c_dirtyPrice' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
+
+-- |theoretical dirty price
+-- The default bond settlement is used for calculation. /Warning/ the theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
+dirtyPrice :: Bond
+  -> IO Double
+dirtyPrice = $(ffiCallX 'dirtyPrice) c_dirtyPrice
+
+foreign import ccall safe "ql.h qlBondDirtyPrice"
+  c_dirtyPrice :: Ptr CBond -> Ptr CString -> IO CDouble
+
+nextCashFlowDate :: Bond
+  -> Maybe Day -- ^d
+  -> IO Day
+nextCashFlowDate = $(ffiCallX 'nextCashFlowDate) c_nextCashFlowDate
+
+foreign import ccall safe "ql.h qlBondNextCashFlowDate"
+  c_nextCashFlowDate :: Ptr CBond -> CDate -> Ptr CString -> IO CDate
+
+-- |Expected next coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the already-fixed not-yet-paid one.The current bond settlement is used if no date is given.
+nextCouponRate :: Bond
+  -> Maybe Day -- ^d
+  -> IO Double
+nextCouponRate = $(ffiCallX 'nextCouponRate) c_nextCouponRate
+
+foreign import ccall safe "ql.h qlBondNextCouponRate"
+  c_nextCouponRate :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
+
+notional :: Bond
+  -> Maybe Day -- ^d
+  -> IO Double
+notional = $(ffiCallX 'notional) c_notional
+
+foreign import ccall safe "ql.h qlBondNotional"
+  c_notional :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
+
+previousCashFlowDate :: Bond
+  -> Maybe Day -- ^d
+  -> IO Day
+previousCashFlowDate = $(ffiCallX 'previousCashFlowDate) c_previousCashFlowDate
+
+foreign import ccall safe "ql.h qlBondPreviousCashFlowDate"
+  c_previousCashFlowDate :: Ptr CBond -> CDate -> Ptr CString -> IO CDate
+
+-- |Previous coupon already paid at a given date.
+-- Expected previous coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the last paid one.The current bond settlement is used if no date is given.
+previousCouponRate :: Bond
+  -> Maybe Day -- ^d
+  -> IO Double
+previousCouponRate = $(ffiCallX 'previousCouponRate) c_previousCouponRate
+
+foreign import ccall safe "ql.h qlBondPreviousCouponRate"
+  c_previousCouponRate :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
+
+-- |settlement value as a function of the clean price
+-- The default bond settlement date is used for calculation.
+settlementValue' :: Bond
+  -> Double -- ^cleanPrice
+  -> IO Double
+settlementValue' = $(ffiCallX 'settlementValue') c_settlementValue'
+
+foreign import ccall safe "ql.h qlBondSettlementValue1"
+  c_settlementValue' :: Ptr CBond -> CDouble -> Ptr CString -> IO CDouble
+
+-- |theoretical settlement value
+-- The default bond settlement date is used for calculation.
+settlementValue :: Bond
+  -> IO Double
+settlementValue = $(ffiCallX 'settlementValue) c_settlementValue
+
+foreign import ccall safe "ql.h qlBondSettlementValue"
+  c_settlementValue :: Ptr CBond -> Ptr CString -> IO CDouble
+
+-- |yield given a (clean) price and settlement date
+-- The default bond settlement is used if no date is given.
+yield' :: Bond
+  -> Double -- ^cleanPrice
+  -> DayCounter -- ^dc
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> Maybe Day -- ^settlementDate
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> IO Double
+yield' = $(ffiCallX 'yield') c_yield'
+
+foreign import ccall safe "ql.h qlBondYield1"
+  c_yield' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDouble -> CUInt -> Ptr CString -> IO CDouble
+
+isTradable :: Bond
+  -> Maybe Day -- ^d
+  -> IO Bool
+isTradable = $(ffiCallX 'isTradable) c_isTradable
+
+foreign import ccall safe "ql.h qlBondIsTradable"
+  c_isTradable :: Ptr CBond -> CDate -> Ptr CString -> IO CInt
