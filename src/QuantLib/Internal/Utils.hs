@@ -3,6 +3,7 @@ module QuantLib.Internal.Utils
   (
     signalError
   , handleExceptions
+  , handleExceptions'
 
   , Finalizable(..)
   , Upcastable(..)
@@ -100,6 +101,22 @@ handleExceptions f =
                   c_freeString msg
                   signalError err
           else return r
+
+handleExceptions' :: (Ptr CString -> IO CString) -> IO String
+handleExceptions' f =
+   alloca $
+     \errptr ->
+     do poke errptr nullPtr
+        r <- f errptr
+        msg <- peek errptr
+        if msg /= nullPtr 
+          then do err <- peekCString msg
+                  c_freeString msg
+                  signalError err
+          else do res <- peekCString r
+                  c_freeString r
+                  return res
+
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())

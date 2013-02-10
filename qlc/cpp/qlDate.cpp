@@ -1,4 +1,5 @@
 #include <ql/time/date.hpp>
+#include <ql/time/imm.hpp>
 
 #include "qlaux.h"
 
@@ -37,33 +38,90 @@ int qlDateDayOfYear(int o, char **e) {
   }
 }
 
-int qlDateEndOfMonth(int o, int d, char **e) {
+int qlDateEndOfMonth(int d, char **e) {
   try {
-    return (Date(o).endOfMonth(Date(d))).serialNumber();
+    return Date::endOfMonth(Date(d)).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
 
-int qlDateIsEndOfMonth(int o, int d, char **e) {
+int qlDateIsEndOfMonth(int d, char **e) {
   try {
-    return Date(o).isEndOfMonth(Date(d));
+    return Date::isEndOfMonth(Date(d));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
 
-int qlDateNextWeekday(int o, int d, int w, char **e) {
+int qlDateNextWeekday(int d, int w, char **e) {
   try {
-    return (Date(o).nextWeekday(Date(d), (Weekday)w)).serialNumber();
+    return Date::nextWeekday(Date(d), (Weekday)w).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
 
-int qlDateNthWeekday(int o, unsigned n, int w, int m, int y, char **e) {
+int qlDateNthWeekday(unsigned n, int w, int m, int y, char **e) {
   try {
-    return (Date(o).nthWeekday(n, (Weekday)w, (Month)m, y)).serialNumber();
+    return Date::nthWeekday(n, (Weekday)w, (Month)m, y).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+char* qlIMMCode(int immDate, char **e) {
+  try {
+    return DUP((IMM::code(Date(immDate))).c_str());
+  } catch (std::exception& er) {
+    return handleException<char*>(e, er);
+  }
+}
+int qlIMMDate(char* immCode, int referenceDate, char **e) {
+  try {
+    return (IMM::date(std::string(arg(immCode)), qlNullableDate(referenceDate))).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+int qlIMMIsIMMcode(char* in, int mainCycle, char **e) {
+  try {
+    return IMM::isIMMcode(std::string(arg(in)), mainCycle);
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+int qlIMMIsIMMdate(int d, int mainCycle, char **e) {
+  try {
+    return IMM::isIMMdate(Date(d), mainCycle);
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) {
+  try {
+    return DUP(IMM::nextCode(std::string(arg(immCode)), mainCycle, qlNullableDate(referenceDate)).c_str());
+  } catch (std::exception& er) {
+    return handleException<char*>(e, er);
+  }
+}
+char* qlIMMNextCode(int d, int mainCycle, char **e) {
+  try {
+    return DUP(IMM::nextCode(qlNullableDate(d), mainCycle).c_str());
+  } catch (std::exception& er) {
+    return handleException<char*>(e, er);
+  }
+}
+int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
+  try {
+    return (IMM::nextDate(std::string(arg(immCode)), mainCycle, qlNullableDate(referenceDate))).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+int qlIMMNextDate(int d, int mainCycle, char **e) {
+  try {
+    return (IMM::nextDate(qlNullableDate(d), mainCycle)).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }

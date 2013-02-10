@@ -6,6 +6,7 @@ module QuantLib.Internal.Syntax
   , ffiConstruct
   , ffiCallX
   , ffiCallXIO
+  , ffiCallXIOStr
   )
 where
 
@@ -119,7 +120,7 @@ topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
   | EnumR Name | OptDayR | ForeignPtrR | UnitR
-  | DayListR | YearFractionR
+  | DayListR | YearFractionR | StringR
   deriving (Show, Eq)
 
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet
@@ -145,6 +146,7 @@ nameToRetVal n | n == ''Day = return DayR
 nameToRetVal n | n == ''Double = return DoubleR
 nameToRetVal n | n == ''Bool = return BoolR
 nameToRetVal n | n == ''YearFraction = return YearFractionR
+nameToRetVal n | n == ''String = return StringR
 nameToRetVal n = do
   e <- enumType n
   case e of
@@ -195,6 +197,10 @@ ffiCallX hn = ffiCallImpl False False hn [|handleExceptions|]
 
 ffiCallXIO :: Name -> ExpQ
 ffiCallXIO hn = ffiCallImpl True False hn [|handleExceptions|]
+
+-- XXX quick hack
+ffiCallXIOStr :: Name -> ExpQ
+ffiCallXIOStr hn = ffiCallImpl True False hn [|handleExceptions'|]
 
 ffiCallImpl :: Bool -> Bool -> Name -> ExpQ -> ExpQ
 ffiCallImpl io constr hFun extra = do
@@ -300,7 +306,8 @@ genFfiCall io constr extra aa r = do
 
 unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
-unmarshal (IORV r) = [|liftM $(unmarshalA r)|]
+unmarshal (IORV r)  | r == StringR = [|$(unmarshalA r)|]
+                    | otherwise = [|liftM $(unmarshalA r)|]
 
 unmarshalA :: AtomicRet -> ExpQ
 unmarshalA IntR    = [|fromIntegral :: CInt -> Int|]
@@ -314,3 +321,5 @@ unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|id|] -- works with construct only?
 unmarshalA UnitR   = [|id|]
 unmarshalA DayListR = [|map fromQlDate|]
+-- XXX quick hack
+unmarshalA StringR = [|id|]

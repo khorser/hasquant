@@ -269,6 +269,10 @@ sub type
     $t =~ s/://g;
     return ($carg, $farg, $t, $cast, '', 0);
   }
+  elsif ($t eq 'std::string')
+  {
+    return ("char*", "CString", "String", 'std::string(arg(%))', "DUP((%).c_str())", 0);
+  }
   elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period', 'InterestRate'])
   {
     return ("$t*", "Ptr C$t", $t, '(*arg(%))', "ret(new $t(%))", 1);
