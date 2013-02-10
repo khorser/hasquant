@@ -1,2 +1,0 @@
--- |term structure relevant to the contract (e.g. repo curve)
-->Handle< YieldTermStructure >

@@ -1,2 +1,0 @@
--- |term structure that discounts the underlying's income cash flows
-->Handle< YieldTermStructure >
