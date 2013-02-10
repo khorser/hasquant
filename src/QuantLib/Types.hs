@@ -34,6 +34,7 @@ module QuantLib.Types
   , DayCounter
   , Period
   , Schedule
+  , YearFraction
 
   -- common
   , InterestRate
@@ -141,6 +142,8 @@ instance Show DayCounter where
 type Period = ForeignPtr CPeriod
 -- |Payment schedule
 type Schedule = ForeignPtr CSchedule
+
+type YearFraction = Double
 
 -- common
 type InterestRate = ForeignPtr CInterestRate

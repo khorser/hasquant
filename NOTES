@@ -32,14 +32,6 @@ Implement `show' via operator <<
 
 Plan: migrate business calculation first and then think of reusing underlying math
 --
-FlatForward
-FixedRateBondForward
-bondFwd.spotIncome
-bondFwd.cleanForwardPrice
-bondFwd.forwardPrice
-bondFwd.impliedYield
-repoCurve->zeroRate
-
 FraRateHelper
 ForwardRateAgreement
 FRA.forwardRate
@@ -82,3 +74,10 @@ Bond^settlementValue
 Bond^settlementValue#1
 Bond^yield
 Bond^yield#1
+FlatForward
+FixedRateBondForward
+bondFwd.spotIncome
+bondFwd.cleanForwardPrice
+bondFwd.forwardPrice
+bondFwd.impliedYield
+repoCurve->zeroRate

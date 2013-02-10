@@ -3,6 +3,7 @@ module QuantLib.Internal.Date
   (
     Day
   , CDate
+  , CYearFraction
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
   , isValid
@@ -19,6 +20,7 @@ import Foreign.Marshal.Array(withArrayLen)
 import QuantLib.Internal.Utils
 
 type CDate = CInt
+type CYearFraction = CDouble
 
 foreign import ccall safe "ql.h qlMinDateSerialNumber"
   c_minDateSerialNumber :: CDate

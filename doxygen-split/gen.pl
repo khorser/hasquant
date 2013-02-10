@@ -226,7 +226,7 @@ sub type
   $t =~ s/^(const\s+Handle\s*<\s*)([^& ]+)(\s*>\s*&\s*)/$2/;
   $t =~ s/^(const\s+boost::shared_ptr\s*<\s*)([^& ]+)(\s*>\s*&\s*)/$2/;
   $t =~ s/^(const\s+)?([^& ]+)(\s*&\s*)?/$2/;
-  if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility'])
+  if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor'])
   {
     return ('double', 'CDouble', 'Double', '', '', 0);
   }
@@ -238,7 +238,7 @@ sub type
   {
     return ('int', 'CInt', 'Int', '', '', 0);
   }
-  elsif ($t ~~ ['Date'])
+  elsif ($t eq 'Date')
   {
     if (not $def)
     {
@@ -248,6 +248,10 @@ sub type
     {
       return ('int', 'CDate', 'Maybe Day', 'qlNullableDate(%)', '', 0);
     }
+  }
+  elsif ($t eq 'Time')
+  {
+    return ('double', 'CYearFraction', 'YearFraction', '', '', 0);
   }
   elsif ($t eq 'bool')
   {

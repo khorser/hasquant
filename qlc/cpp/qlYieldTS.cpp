@@ -156,4 +156,28 @@ InterestRate* qlYieldTermStructureForwardRate(QlYieldTermStructure* o, int d1, i
   }
 }
 
+InterestRate* qlYieldTermStructureForwardRate2(QlYieldTermStructure* o, double t1, double t2, int comp, int freq, int extrapolate, char **e) {
+  try {
+    return ret(new InterestRate((*arg(o))->forwardRate(t1, t2, (Compounding)comp, (Frequency)freq, extrapolate)));
+  } catch (std::exception& er) {
+    return handleException<InterestRate*>(e, er);
+  }
+}
+
+InterestRate* qlYieldTermStructureZeroRate1(QlYieldTermStructure* o, double t, int comp, int freq, int extrapolate, char **e) {
+  try {
+    return ret(new InterestRate((*arg(o))->zeroRate(t, (Compounding)comp, (Frequency)freq, extrapolate)));
+  } catch (std::exception& er) {
+    return handleException<InterestRate*>(e, er);
+  }
+}
+
+double qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->discount(t, extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

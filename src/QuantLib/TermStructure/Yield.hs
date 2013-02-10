@@ -11,9 +11,12 @@ module QuantLib.TermStructure.Yield
   , flatForward'
 
   , discount
+  , discount'
   , zeroRate
+  , zeroRate'
   , forwardRate
   , forwardRate'
+  , forwardRate''
   )
 where
 
@@ -186,3 +189,38 @@ forwardRate = $(ffiConstruct 'forwardRate) c_forwardRate
 
 foreign import ccall safe "ql.h qlYieldTermStructureForwardRate"
   c_forwardRate :: Ptr CYieldTermStructure -> CDate -> CDate -> Ptr CDayCounter -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
+
+-- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
+forwardRate'' :: YieldTermStructure
+  -> YearFraction -- ^t1
+  -> YearFraction -- ^t2
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> Bool -- ^extrapolate
+  -> IO InterestRate
+forwardRate'' = $(ffiConstruct 'forwardRate'') c_forwardRate''
+
+foreign import ccall safe "ql.h qlYieldTermStructureForwardRate2"
+  c_forwardRate'' :: Ptr CYieldTermStructure -> CYearFraction -> CYearFraction -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
+
+-- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed time t.
+zeroRate' :: YieldTermStructure
+  -> YearFraction -- ^t
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> Bool -- ^extrapolate
+  -> IO InterestRate
+zeroRate' = $(ffiConstruct 'zeroRate') c_zeroRate'
+
+foreign import ccall safe "ql.h qlYieldTermStructureZeroRate1"
+  c_zeroRate' :: Ptr CYieldTermStructure -> CYearFraction -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
+
+-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
+discount' :: YieldTermStructure
+  -> YearFraction -- ^t
+  -> Bool -- ^extrapolate
+  -> IO Double
+discount' = $(ffiCallX 'discount') c_discount'
+
+foreign import ccall safe "ql.h qlYieldTermStructureDiscount1"
+  c_discount' :: Ptr CYieldTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble

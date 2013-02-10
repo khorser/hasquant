@@ -177,6 +177,10 @@ extern "C" {
   InterestRate* DLLEXPORT qlYieldTermStructureZeroRate(QlYieldTermStructure* o, int d, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
   InterestRate* DLLEXPORT qlYieldTermStructureForwardRate(QlYieldTermStructure* o, int d1, int d2, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
   InterestRate* DLLEXPORT qlYieldTermStructureForwardRate1(QlYieldTermStructure* o, int d, Period* p, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
+  InterestRate* DLLEXPORT qlYieldTermStructureForwardRate2(QlYieldTermStructure* o, double t1, double t2, int comp, int freq, int extrapolate, char **e);
+  InterestRate* DLLEXPORT qlYieldTermStructureZeroRate1(QlYieldTermStructure* o, double t, int comp, int freq, int extrapolate, char **e);
+  double DLLEXPORT qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extrapolate, char **e);
+
 
   /* pricing engine */
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);

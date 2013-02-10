@@ -17,6 +17,7 @@ import System.IO.Unsafe(unsafePerformIO)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Utils
+import QuantLib.Types
 
 -- All QLEnum instances should be imported here!
 import QuantLib.Compounding()
@@ -44,14 +45,14 @@ data NestedArg = DayN | DoubleN | ForeignPtrN
   deriving (Show, Eq)
 
 -- XXX use GADTs/SYB/Uniplate?
-data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA
+data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA | YearFractionA
   | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA
   | ListA NestedArg | ListA2 NestedArg NestedArg
   | EnumA Name | LitEnumA
   deriving (Show, Eq)
 
 isAtomicTop :: Name -> Bool
-isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double, ''Bool]
+isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double, ''Bool, ''YearFraction]
 
 data EnumType = IntEnum | LitEnum
 enumType :: Name -> Q (Maybe EnumType)
@@ -75,6 +76,7 @@ nameToTop n | n == ''Day = DayA
 nameToTop n | n == ''Bool = BoolA
 nameToTop n | n == ''String = StringA
 nameToTop n | n == ''Double = DoubleA
+nameToTop n | n == ''YearFraction = YearFractionA
 nameToTop n = error $ "Not supported top type: " ++ show n
 
 nestedNameToTop :: Name -> Q NestedArg
@@ -255,6 +257,9 @@ genFfiCall io constr extra aa r = do
 
     genFfiCallImpl ((OptDayA, v):as) c_call =
       genFfiCallImpl as [|$c_call (toQlDate $v)|]
+
+    genFfiCallImpl ((YearFractionA, v):as) c_call =
+      genFfiCallImpl as [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
 
     genFfiCallImpl ((StringA, v):as) c_call =
       [|withCString $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
