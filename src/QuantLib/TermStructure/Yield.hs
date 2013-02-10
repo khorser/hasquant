@@ -7,6 +7,8 @@ module QuantLib.TermStructure.Yield
   , swapRateHelper'
   , piecewiseYieldCurve
   , piecewiseYieldCurve'
+  , flatForward
+  , flatForward'
 
   , discount
   )
