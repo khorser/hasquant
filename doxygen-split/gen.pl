@@ -44,6 +44,8 @@ my $cret = "";
 my @args = ();
 my $retcast = "";
 
+my $implCtor = 0;
+
 # parse description
 for (@dec)
 {
@@ -63,7 +65,7 @@ for (@dec)
       if ($ctor)
       {
 	my $tmp;
-	($cret, $fret, $hret, $tmp, $retcast) = type($c, 0);
+	($cret, $fret, $hret, $tmp, $retcast, $implCtor) = type($c, 0);
       }
       else
       {
@@ -73,7 +75,7 @@ for (@dec)
     else
     {
       my $tmp;
-      ($cret, $fret, $hret, $tmp, $retcast) = type($1, 0);
+      ($cret, $fret, $hret, $tmp, $retcast, $implCtor) = type($1, 0);
     }
   }
   elsif (/^::(.+)$/) # argument type
@@ -159,8 +161,12 @@ for (@args)
   $i++;
 }
 
+if (index($fret, ' ') > -1)
+{
+  $fret = "($fret)";
+}
 push @hs, "$hname :: $hargs  -> IO $hret";
-if ($ctor)
+if ($ctor or $implCtor)
 {
   push @hs, "$hname = \$(ffiConstruct '$hname) $fname"
 }
@@ -172,7 +178,7 @@ push @hsffi, "foreign import ccall safe \"ql.h $cname\"";
 push @hsffi, "  $fname :: $fargs -> Ptr CString -> IO $fret\n";
 push @h, "  $cret DLLEXPORT $cname($cargs, char **e);";
 push @cpp, "$cret $cname($cargs, char **e) {";
-push @cpp, "try {";
+push @cpp, "  try {";
 shift @cnames;
 
 $call = "$ocall$m($call)";
@@ -188,7 +194,7 @@ push @cpp, "  }";
 push @cpp, "}";
 
 print join("\n", @hs);
-print "\n";
+print "\n\n";
 print join("\n", @hsffi);
 print "\n";
 print join("\n", @h);
@@ -222,61 +228,61 @@ sub type
   $t =~ s/^(const\s+)?([^& ]+)(\s*&\s*)?/$2/;
   if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility'])
   {
-    return ('double', 'CDouble', 'Double', '', '');
+    return ('double', 'CDouble', 'Double', '', '', 0);
   }
   elsif ($t ~~ ['Natural', 'Size'])
   {
-    return ('unsigned', 'CUInt', 'Word', '', '');
+    return ('unsigned', 'CUInt', 'Word', '', '', 0);
   }
   elsif ($t ~~ ['BigInteger'])
   {
-    return ('int', 'CInt', 'Int', '', '');
+    return ('int', 'CInt', 'Int', '', '', 0);
   }
   elsif ($t ~~ ['Date'])
   {
     if (not $def)
     {
-      return ('int', 'CDate', 'Day', 'Date(%)', '(%).serialNumber()');
+      return ('int', 'CDate', 'Day', 'Date(%)', '(%).serialNumber()', 0);
     }
     else
     {
-      return ('int', 'CDate', 'Maybe Day', 'qlNullableDate(%)', '');
+      return ('int', 'CDate', 'Maybe Day', 'qlNullableDate(%)', '', 0);
     }
   }
   elsif ($t eq 'bool')
   {
-    return ('int', 'CInt', 'Bool', '', '');
+    return ('int', 'CInt', 'Bool', '', '', 0);
   }
   elsif ($t eq 'void')
   {
-    return ('void', '()', '()', '', '');
+    return ('void', '()', '()', '', '', 0);
   }
-  elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'Period', 'TimeUnit', 'DateGeneration::Rule', 'BusinessDayConvention'])
+  elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'TimeUnit', 'DateGeneration::Rule', 'BusinessDayConvention'])
   {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
-    return ($carg, $farg, $t, $cast, '');
+    return ($carg, $farg, $t, $cast, '', 0);
   }
   elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period', 'InterestRate'])
   {
-    return ("$t*", "Ptr C$t", $t, '(*arg(%))', '');
+    return ("$t*", "Ptr C$t", $t, '(*arg(%))', "ret(new $t(%))", 1);
   }
   else
   {
-    my ($carg, $farg, $ret) = ("Ql$t*", "(Ptr C$t)", "ret(new Ql$t(alloc(new %)))");
+    my ($carg, $farg, $ret) = ("Ql$t*", "Ptr C$t", "ret(new Ql$t(alloc(new %)))");
     if (not $h)
     {
-      return ($carg, $farg, $t, '(*arg(%))', $ret);
+      return ($carg, $farg, $t, '(*arg(%))', $ret, 1);
     }
     else
     {
       if (not $def)
       {
-	return ($carg, $farg, $t, "Handle<$t>(*arg(%))", $ret);
+	return ($carg, $farg, $t, "Handle<$t>(*arg(%))", $ret, 1);
       }
       else
       {
-	return ($carg, $farg, "Maybe $t", "qlNullableHandle(arg(%))", $ret);
+	return ($carg, $farg, "Maybe $t", "qlNullableHandle(arg(%))", $ret, 1);
       }
     }
   }

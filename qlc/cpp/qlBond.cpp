@@ -176,7 +176,7 @@ QlForward* qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd) {
 // generated code and thus not necessarilly tested
 double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
     unsigned maxEvaluations, char **e) {
-try {
+  try {
     return (*arg(o))->yield((*arg(dc)), (Compounding)comp, (Frequency)freq, accuracy, maxEvaluations);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -184,7 +184,7 @@ try {
 }
 
 double qlBondAccruedAmount(QlBond* o, int d, char **e) {
-try {
+  try {
     return (*arg(o))->accruedAmount(qlNullableDate(d));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -192,7 +192,7 @@ try {
 }
 
 double qlBondCleanPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e) {
-try {
+  try {
     return (*arg(o))->cleanPrice(yield, (*arg(dc)), (Compounding)comp, (Frequency)freq, qlNullableDate(settlementDate));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -200,7 +200,7 @@ try {
 }
 
 double qlBondCleanPrice(QlBond* o, char **e) {
-try {
+  try {
     return (*arg(o))->cleanPrice();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -208,7 +208,7 @@ try {
 }
 
 double qlBondDirtyPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e) {
-try {
+  try {
     return (*arg(o))->dirtyPrice(yield, (*arg(dc)), (Compounding)comp, (Frequency)freq, qlNullableDate(settlementDate));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -216,7 +216,7 @@ try {
 }
 
 double qlBondDirtyPrice(QlBond* o, char **e) {
-try {
+  try {
     return (*arg(o))->dirtyPrice();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -224,7 +224,7 @@ try {
 }
 
 int qlBondNextCashFlowDate(QlBond* o, int d, char **e) {
-try {
+  try {
     return ((*arg(o))->nextCashFlowDate(qlNullableDate(d))).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
@@ -232,7 +232,7 @@ try {
 }
 
 double qlBondNextCouponRate(QlBond* o, int d, char **e) {
-try {
+  try {
     return (*arg(o))->nextCouponRate(qlNullableDate(d));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -240,7 +240,7 @@ try {
 }
 
 double qlBondNotional(QlBond* o, int d, char **e) {
-try {
+  try {
     return (*arg(o))->notional(qlNullableDate(d));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -248,7 +248,7 @@ try {
 }
 
 int qlBondPreviousCashFlowDate(QlBond* o, int d, char **e) {
-try {
+  try {
     return ((*arg(o))->previousCashFlowDate(qlNullableDate(d))).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
@@ -256,7 +256,7 @@ try {
 }
 
 double qlBondPreviousCouponRate(QlBond* o, int d, char **e) {
-try {
+  try {
     return (*arg(o))->previousCouponRate(qlNullableDate(d));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -264,7 +264,7 @@ try {
 }
 
 double qlBondSettlementValue1(QlBond* o, double cleanPrice, char **e) {
-try {
+  try {
     return (*arg(o))->settlementValue(cleanPrice);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -272,7 +272,7 @@ try {
 }
 
 double qlBondSettlementValue(QlBond* o, char **e) {
-try {
+  try {
     return (*arg(o))->settlementValue();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -280,7 +280,7 @@ try {
 }
 
 double qlBondYield1(QlBond* o, double cleanPrice, DayCounter* dc, int comp, int freq, int settlementDate, double accuracy, unsigned maxEvaluations, char **e) {
-try {
+  try {
     return (*arg(o))->yield(cleanPrice, (*arg(dc)), (Compounding)comp, (Frequency)freq, qlNullableDate(settlementDate), accuracy, maxEvaluations);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
@@ -288,7 +288,7 @@ try {
 }
 
 int qlBondIsTradable(QlBond* o, int d, char **e) {
-try {
+  try {
     return (*arg(o))->isTradable(qlNullableDate(d));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
@@ -296,11 +296,26 @@ try {
 }
 
 QlFixedRateBondForward* qlFixedRateBondForward(int valueDate, int maturityDate, int type, double strike, unsigned settlementDays, DayCounter* dayCounter, Calendar* calendar, int businessDayConvention, QlFixedRateBond* fixedCouponBond, QlYieldTermStructure* discountCurve, QlYieldTermStructure* incomeDiscountCurve, char **e) {
-try {
+  try {
     return ret(new QlFixedRateBondForward(alloc(new FixedRateBondForward(Date(valueDate), Date(maturityDate), (Position::Type)type, strike, settlementDays, (*arg(dayCounter)), (*arg(calendar)), (BusinessDayConvention)businessDayConvention, (*arg(fixedCouponBond)), qlNullableHandle(arg(discountCurve)), qlNullableHandle(arg(incomeDiscountCurve))))));
   } catch (std::exception& er) {
     return handleException<QlFixedRateBondForward*>(e, er);
   }
 }
 
+double qlFixedRateBondForwardCleanForwardPrice(QlFixedRateBondForward* o, char **e) {
+  try {
+    return (*arg(o))->cleanForwardPrice();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
+double qlFixedRateBondForwardForwardPrice(QlFixedRateBondForward* o, char **e) {
+  try {
+    return (*arg(o))->forwardPrice();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

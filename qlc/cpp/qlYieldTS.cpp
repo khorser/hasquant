@@ -131,4 +131,29 @@ try {
   }
 }
 
+// generated functions
+InterestRate* qlYieldTermStructureZeroRate(QlYieldTermStructure* o, int d, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e) {
+try {
+    return ret(new InterestRate((*arg(o))->zeroRate(Date(d), (*arg(resultDayCounter)), (Compounding)comp, (Frequency)freq, extrapolate)));
+  } catch (std::exception& er) {
+    return handleException<InterestRate*>(e, er);
+  }
+}
+
+InterestRate* qlYieldTermStructureForwardRate1(QlYieldTermStructure* o, int d, Period* p, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e) {
+  try {
+    return ret(new InterestRate((*arg(o))->forwardRate(Date(d), (*arg(p)), (*arg(resultDayCounter)), (Compounding)comp, (Frequency)freq, extrapolate)));
+  } catch (std::exception& er) {
+    return handleException<InterestRate*>(e, er);
+  }
+}
+
+InterestRate* qlYieldTermStructureForwardRate(QlYieldTermStructure* o, int d1, int d2, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e) {
+  try {
+    return ret(new InterestRate((*arg(o))->forwardRate(Date(d1), Date(d2), (*arg(resultDayCounter)), (Compounding)comp, (Frequency)freq, extrapolate)));
+  } catch (std::exception& er) {
+    return handleException<InterestRate*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -1,3 +1,0 @@
--- |forward value/price of underlying, discounting income/dividends
--- if this is a bond forward price, is must be a dirty forward price.
-->Real

@@ -27,6 +27,8 @@ module QuantLib.Instrument.Bond
   , settlementValue
   , yield'
   , isTradable
+  , cleanForwardPrice
+  , forwardPrice
 
   , setCouponPricer
   )
@@ -363,3 +365,17 @@ fixedRateBondForward = $(ffiConstruct 'fixedRateBondForward) c_fixedRateBondForw
 
 foreign import ccall safe "ql.h qlFixedRateBondForward"
   c_fixedRateBondForward :: CDate -> CDate -> CInt -> CDouble -> CUInt -> Ptr CDayCounter -> Ptr CCalendar -> CInt -> Ptr CFixedRateBond -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CFixedRateBondForward)
+
+-- |(dirty) forward bond price minus accrued on bond at delivery
+cleanForwardPrice :: FixedRateBondForward -> IO Double
+cleanForwardPrice = $(ffiCallX 'cleanForwardPrice) c_cleanForwardPrice
+
+foreign import ccall safe "ql.h qlFixedRateBondForwardCleanForwardPrice"
+  c_cleanForwardPrice :: Ptr CFixedRateBondForward -> Ptr CString -> IO CDouble
+
+-- |(dirty) forward bond price
+forwardPrice :: FixedRateBondForward -> IO Double
+forwardPrice = $(ffiCallX 'forwardPrice) c_forwardPrice
+
+foreign import ccall safe "ql.h qlFixedRateBondForwardForwardPrice"
+  c_forwardPrice :: Ptr CFixedRateBondForward -> Ptr CString -> IO CDouble

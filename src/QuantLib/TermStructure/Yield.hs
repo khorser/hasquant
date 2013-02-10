@@ -11,6 +11,9 @@ module QuantLib.TermStructure.Yield
   , flatForward'
 
   , discount
+  , zeroRate
+  , forwardRate
+  , forwardRate'
   )
 where
 
@@ -142,3 +145,44 @@ flatForward' = $(ffiConstruct 'flatForward') c_flatForward'
 
 foreign import ccall safe "ql.h qlFlatForward1"
   c_flatForward' :: CUInt -> Ptr CCalendar -> Ptr CQuote -> Ptr CDayCounter -> CInt -> CInt -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+-- |The resulting interest rate has the required daycounting rule.
+zeroRate :: YieldTermStructure
+  -> Day -- ^d
+  -> DayCounter -- ^resultDayCounter
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> Bool -- ^extrapolate
+  -> IO InterestRate
+zeroRate = $(ffiConstruct 'zeroRate) c_zeroRate
+
+foreign import ccall safe "ql.h qlYieldTermStructureZeroRate"
+  c_zeroRate :: Ptr CYieldTermStructure -> CDate -> Ptr CDayCounter -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
+
+-- |The resulting interest rate has the required day-counting rule. /Warning/ dates are not adjusted for holidays
+forwardRate' :: YieldTermStructure
+  -> Day -- ^d
+  -> Period -- ^p
+  -> DayCounter -- ^resultDayCounter
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> Bool -- ^extrapolate
+  -> IO InterestRate
+forwardRate' = $(ffiConstruct 'forwardRate') c_forwardRate'
+
+foreign import ccall safe "ql.h qlYieldTermStructureForwardRate1"
+  c_forwardRate' :: Ptr CYieldTermStructure -> CDate -> Ptr CPeriod -> Ptr CDayCounter -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
+
+-- |The resulting interest rate has the required day-counting rule.
+forwardRate :: YieldTermStructure
+  -> Day -- ^d1
+  -> Day -- ^d2
+  -> DayCounter -- ^resultDayCounter
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> Bool -- ^extrapolate
+  -> IO InterestRate
+forwardRate = $(ffiConstruct 'forwardRate) c_forwardRate
+
+foreign import ccall safe "ql.h qlYieldTermStructureForwardRate"
+  c_forwardRate :: Ptr CYieldTermStructure -> CDate -> CDate -> Ptr CDayCounter -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
