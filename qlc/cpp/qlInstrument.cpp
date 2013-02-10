@@ -1,5 +1,6 @@
 #include <ql/instrument.hpp>
 #include <ql/instruments/forward.hpp>
+#include <ql/instruments/forwardrateagreement.hpp>
 
 #include "qlaux.h"
 
@@ -29,6 +30,16 @@ void DLLEXPORT qlFreeInstrument(QlInstrument *instr) {
 void DLLEXPORT qlFreeForward(QlForward *fwd) {
   del(fwd);
 }
+
+void DLLEXPORT qlFreeForwardRateAgreement(QlForwardRateAgreement *fwd) {
+  del(fwd);
+}
+
+QlForward* DLLEXPORT qlForwardRateAgreementAsForward(QlForwardRateAgreement *fwd) {
+  return ret(new QlForward(*arg(fwd)));
+}
+
+// generated code
 
 QlInstrument* DLLEXPORT qlForwardAsInstrument(QlForward *fwd) {
   return ret(new QlInstrument(*arg(fwd)));
@@ -68,6 +79,14 @@ double qlForwardSpotValue(QlForward* o, char **e) {
     return (*arg(o))->spotValue();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
+  }
+}
+
+QlForwardRateAgreement* qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e) {
+  try {
+    return ret(new QlForwardRateAgreement(alloc(new ForwardRateAgreement(Date(valueDate), Date(maturityDate), (Position::Type)type, strikeForwardRate, notionalAmount, (*arg(index)), qlNullableHandle(arg(discountCurve))))));
+  } catch (std::exception& er) {
+    return handleException<QlForwardRateAgreement*>(e, er);
   }
 }
 

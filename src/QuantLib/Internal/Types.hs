@@ -18,6 +18,7 @@ module QuantLib.Internal.Types
   , CFixedRateBond
   , CForward
   , CFixedRateBondForward
+  , CForwardRateAgreement
 
   -- pricingengines
   , CPricingEngine
@@ -97,6 +98,7 @@ data CBond
 data CFixedRateBond
 data CForward
 data CFixedRateBondForward
+data CForwardRateAgreement
 
 instance Finalizable CBond where
   finalize = p_freeBond
@@ -108,6 +110,8 @@ instance Finalizable CForward where
   finalize = p_freeForward
 instance Finalizable CFixedRateBondForward where
   finalize = p_freeFixedRateBondForward
+instance Finalizable CForwardRateAgreement where
+  finalize = p_freeForwardRateAgreement
 foreign import ccall safe "ql.h &qlFreeBond"
   p_freeBond :: FunPtr (Ptr CBond -> IO ())
 foreign import ccall safe "ql.h &qlFreeFixedRateBond"
@@ -118,6 +122,8 @@ foreign import ccall safe "ql.h &qlFreeForward"
   p_freeForward :: FunPtr (Ptr CForward -> IO ())
 foreign import ccall safe "ql.h &qlFreeFixedRateBondForward"
   p_freeFixedRateBondForward :: FunPtr (Ptr CFixedRateBondForward -> IO ())
+foreign import ccall safe "ql.h &qlFreeForwardRateAgreement"
+  p_freeForwardRateAgreement :: FunPtr (Ptr CForwardRateAgreement -> IO ())
 
 instance Upcastable CFixedRateBond CBond where
   c_upcast = c_fixedRateBondAsBond
@@ -125,6 +131,8 @@ instance Upcastable CBond CInstrument where
   c_upcast = c_bondAsInstrument
 instance Upcastable CFixedRateBondForward CForward where
   c_upcast = c_fixedRateBondForwardAsForward
+instance Upcastable CForwardRateAgreement CForward where
+  c_upcast = c_forwardRateAgreementAsForward
 instance Upcastable CForward CInstrument where
   c_upcast = c_forwardAsInstrument
 foreign import ccall safe "ql.h qlFixedRateBondAsBond"
@@ -135,6 +143,8 @@ foreign import ccall safe "ql.h qlFixedRateBondForwardAsForward"
   c_fixedRateBondForwardAsForward :: Ptr CFixedRateBondForward -> IO (Ptr CForward)
 foreign import ccall safe "ql.h qlForwardAsInstrument"
   c_forwardAsInstrument :: Ptr CForward -> IO (Ptr CInstrument)
+foreign import ccall safe "ql.h qlForwardRateAgreementAsForward"
+  c_forwardRateAgreementAsForward :: Ptr CForwardRateAgreement -> IO (Ptr CForward)
 
 -- pricingengines
 data CPricingEngine

@@ -28,6 +28,7 @@ namespace QuantLib {
   class ZeroCouponBond;
   class Forward;
   class FixedRateBondForward;
+  class ForwardRateAgreement;
   class Period;
   class DayCounter;
   class Calendar;
@@ -55,6 +56,7 @@ using QuantLib::FixedRateBond;
 using QuantLib::ZeroCouponBond;
 using QuantLib::Forward;
 using QuantLib::FixedRateBondForward;
+using QuantLib::ForwardRateAgreement;
 using QuantLib::Period;
 using QuantLib::DayCounter;
 using QuantLib::Calendar;
@@ -92,6 +94,7 @@ typedef boost::shared_ptr<Bond> QlBond;
 typedef boost::shared_ptr<FixedRateBond> QlFixedRateBond;
 typedef boost::shared_ptr<Forward> QlForward;
 typedef boost::shared_ptr<FixedRateBondForward> QlFixedRateBondForward;
+typedef boost::shared_ptr<ForwardRateAgreement> QlForwardRateAgreement;
 
 // Leg and RateHelper are typedefs so we cannot use forward declaration
 // for them. Using them only when corresponding headers have been included
@@ -208,6 +211,22 @@ class objClassName<QlFixedRateBondForward *> {
 public:
   static const char *name() {
     return "QlFixedRateBondForward";
+  }
+};
+
+template <>
+class objClassName<ForwardRateAgreement *> {
+public:
+  static const char *name() {
+    return "ForwardRateAgreement";
+  }
+};
+
+template <>
+class objClassName<QlForwardRateAgreement *> {
+public:
+  static const char *name() {
+    return "QlForwardRateAgreement";
   }
 };
 

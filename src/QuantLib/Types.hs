@@ -19,6 +19,7 @@ module QuantLib.Types
   , FixedRateBond
   , Forward
   , FixedRateBondForward
+  , ForwardRateAgreement
 
   -- pricingengines
   , PricingEngine
@@ -102,6 +103,31 @@ type Forward = ForeignPtr CForward
 --       between the settlementDate and the deliveryDate. (Note
 --       the two different discount curves used in b. and c.)
 type FixedRateBondForward = ForeignPtr CFixedRateBondForward
+
+-- |1. Unlike the forward contract conventions on carryable
+--    financial assets (stocks, bonds, commodities), the
+--    valueDate for a FRA is taken to be the day when the forward
+--    loan or deposit begins and when full settlement takes place
+--    (based on the NPV of the contract on that date).
+--    maturityDate is the date when the forward loan or deposit
+--    ends. In fact, the FRA settles and expires on the
+--    valueDate, not on the (later) maturityDate. It follows that
+--    (maturityDate - valueDate) is the tenor/term of the
+--    underlying loan or deposit
+-- 
+-- 2. Choose position type = Long for an "FRA purchase" (future
+--    long loan, short deposit [borrower])
+-- 
+-- 3. Choose position type = Short for an "FRA sale" (future short
+--    loan, long deposit [lender])
+-- 
+-- 4. If strike is given in the constructor, can calculate the NPV
+--    of the contract via NPV().
+-- 
+-- 5. If forward rate is desired/unknown, it can be obtained via
+--    forwardRate(). In this case, the strike variable in the
+--    constructor is irrelevant and will be ignored.
+type ForwardRateAgreement = ForeignPtr CForwardRateAgreement
 
 -- both 'with' and 'as' casting styles compose poorly with functions accepting
 -- several arguments with first being a Bond

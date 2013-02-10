@@ -33,7 +33,6 @@ Implement `show' via operator <<
 Plan: migrate business calculation first and then think of reusing underlying math
 --
 FraRateHelper
-ForwardRateAgreement
 FRA.forwardRate
 FRA.spotValue
 FRA.forwardValue
@@ -81,3 +80,4 @@ bondFwd.cleanForwardPrice
 bondFwd.forwardPrice
 bondFwd.impliedYield
 repoCurve->zeroRate
+ForwardRateAgreement

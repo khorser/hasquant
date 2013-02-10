@@ -199,6 +199,9 @@ extern "C" {
   int DLLEXPORT qlForwardSettlementDate(QlForward* o, char **e);
   double DLLEXPORT qlForwardSpotIncome(QlForward* o, QlYieldTermStructure* incomeDiscountCurve, char **e);
   double DLLEXPORT qlForwardSpotValue(QlForward* o, char **e);
+  void DLLEXPORT qlFreeForwardRateAgreement(QlForwardRateAgreement *fwd);
+  QlForward* DLLEXPORT qlForwardRateAgreementAsForward(QlForwardRateAgreement *fwd);
+  QlForwardRateAgreement* DLLEXPORT qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e);
 
   /* ibor index */
   QlIborIndex *DLLEXPORT qlIborIndex(char *name, Period *period, unsigned settlDays,
