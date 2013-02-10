@@ -97,6 +97,7 @@ extern "C" {
   void DLLEXPORT qlFreeFixedRateBond(QlFixedRateBond *bond);
   void DLLEXPORT qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd);
   QlForward* DLLEXPORT qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd);
+  QlFixedRateBondForward* DLLEXPORT qlFixedRateBondForward(int valueDate, int maturityDate, int type, double strike, unsigned settlementDays, DayCounter* dayCounter, Calendar* calendar, int businessDayConvention, QlFixedRateBond* fixedCouponBond, QlYieldTermStructure* discountCurve, QlYieldTermStructure* incomeDiscountCurve, char **e);
 
   /* daycounter */
   DayCounter *DLLEXPORT qlDayCounter(const char *name, char **e);
@@ -169,6 +170,8 @@ extern "C" {
   void DLLEXPORT qlFreeYieldTermStructure(QlYieldTermStructure *ts);
   double DLLEXPORT qlYieldTSDiscount(QlYieldTermStructure *ts, int date,
     int extrapolate, char **e);
+  QlYieldTermStructure* DLLEXPORT qlFlatForward(int referenceDate, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e);
+  QlYieldTermStructure* DLLEXPORT qlFlatForward1(unsigned settlementDays, Calendar* calendar, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e);
 
   /* pricing engine */
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);

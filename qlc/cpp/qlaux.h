@@ -367,7 +367,7 @@ template <>
 class objClassName<FlatForward *> {
 public:
   static const char *name() {
-    return "YieldTermStructure";
+    return "FlatForward";
   }
 };
 

@@ -216,6 +216,9 @@ sub type
 {
   my $t = shift;
   my $def = shift;
+  my $h = ($t =~ m!Handle!);
+  $t =~ s/^(const\s+Handle\s*<\s*)([^& ]+)(\s*>\s*&\s*)/$2/;
+  $t =~ s/^(const\s+boost::shared_ptr\s*<\s*)([^& ]+)(\s*>\s*&\s*)/$2/;
   $t =~ s/^(const\s+)?([^& ]+)(\s*&\s*)?/$2/;
   if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility'])
   {
@@ -248,25 +251,39 @@ sub type
   {
     return ('void', '()', '()', '', '');
   }
-  elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'Period', 'TimeUnit', 'DateGeneration::Rule'])
+  elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'Period', 'TimeUnit', 'DateGeneration::Rule', 'BusinessDayConvention'])
   {
-    my ($carg, $farg, $harg) = ('int', 'CInt', $t);
+    my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
-    return ($carg, $farg, $harg, "($t)%", '');
+    return ($carg, $farg, $t, $cast, '');
   }
   elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period', 'InterestRate'])
   {
-    return ("$t*", "Ptr C$t", "$t", '(*arg(%))', '');
+    return ("$t*", "Ptr C$t", $t, '(*arg(%))', '');
   }
   else
   {
-    return ("Ql$t*", "Ptr C$t", "$t", '(*arg(%))', '');
+    my ($carg, $farg, $ret) = ("Ql$t*", "(Ptr C$t)", "ret(new Ql$t(alloc(new %)))");
+    if (not $h)
+    {
+      return ($carg, $farg, $t, '(*arg(%))', $ret);
+    }
+    else
+    {
+      if (not $def)
+      {
+	return ($carg, $farg, $t, "Handle<$t>(*arg(%))", $ret);
+      }
+      else
+      {
+	return ($carg, $farg, "Maybe $t", "qlNullableHandle(arg(%))", $ret);
+      }
+    }
   }
+}
 
-# const Handle< Quote,YieldTermStructure > &
-# const boost::shared_ptr< Bond,FixedRateBond,IborIndex > &
 # const std::vector< Real,Rate,Date,Period > &
 # const std::vector< Handle< Quote > > &
 # ? const std::vector<boost::shared_ptr<typename Traits::helper> >&
-}
+
 # vim: set ft=perl sw=2 ts=8 st=2:

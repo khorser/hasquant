@@ -9,6 +9,7 @@ module QuantLib.Instrument.Bond
   , fixedRateBond''
   , zeroCouponBond
   , floatingRateBond
+  , fixedRateBondForward
 
   , maturityDate
   , yield
@@ -38,6 +39,7 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.PositionType
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
@@ -343,3 +345,21 @@ isTradable = $(ffiCallX 'isTradable) c_isTradable
 
 foreign import ccall safe "ql.h qlBondIsTradable"
   c_isTradable :: Ptr CBond -> CDate -> Ptr CString -> IO CInt
+
+-- |If strike is given in the constructor, can calculate the NPV of the contract via NPV().If strike/forward price is desired, it can be obtained via forwardPrice(). In this case, the strike variable in the constructor is irrelevant and will be ignored.
+fixedRateBondForward :: Day -- ^valueDate
+  -> Day -- ^maturityDate
+  -> PositionType -- ^type
+  -> Double -- ^strike
+  -> Word -- ^settlementDays
+  -> DayCounter -- ^dayCounter
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^businessDayConvention
+  -> FixedRateBond -- ^fixedCouponBond
+  -> Maybe YieldTermStructure -- ^discountCurve
+  -> Maybe YieldTermStructure -- ^incomeDiscountCurve
+  -> IO FixedRateBondForward
+fixedRateBondForward = $(ffiConstruct 'fixedRateBondForward) c_fixedRateBondForward
+
+foreign import ccall safe "ql.h qlFixedRateBondForward"
+  c_fixedRateBondForward :: CDate -> CDate -> CInt -> CDouble -> CUInt -> Ptr CDayCounter -> Ptr CCalendar -> CInt -> Ptr CFixedRateBond -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CFixedRateBondForward)

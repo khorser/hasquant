@@ -12,6 +12,7 @@ module QuantLib.TermStructure.Yield
   )
 where
 
+import QuantLib.Compounding
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
@@ -116,3 +117,26 @@ swapRateHelper' :: Quote -- ^rate
   -> Maybe YieldTermStructure -- ^discountingCurve
   -> IO RateHelper
 swapRateHelper' = $(ffiConstruct 'swapRateHelper') c_swapRateHelper'
+
+flatForward :: Day -- ^referenceDate
+  -> Quote -- ^forward
+  -> DayCounter -- ^dayCounter
+  -> Compounding -- ^compounding
+  -> Frequency -- ^frequency
+  -> IO YieldTermStructure
+flatForward = $(ffiConstruct 'flatForward) c_flatForward
+
+foreign import ccall safe "ql.h qlFlatForward"
+  c_flatForward :: CDate -> Ptr CQuote -> Ptr CDayCounter -> CInt -> CInt -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+flatForward' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> Quote -- ^forward
+  -> DayCounter -- ^dayCounter
+  -> Compounding -- ^compounding
+  -> Frequency -- ^frequency
+  -> IO YieldTermStructure
+flatForward' = $(ffiConstruct 'flatForward') c_flatForward'
+
+foreign import ccall safe "ql.h qlFlatForward1"
+  c_flatForward' :: CUInt -> Ptr CCalendar -> Ptr CQuote -> Ptr CDayCounter -> CInt -> CInt -> Ptr CString -> IO (Ptr CYieldTermStructure)

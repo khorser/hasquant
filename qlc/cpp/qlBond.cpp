@@ -294,4 +294,13 @@ try {
     return handleException<int>(e, er);
   }
 }
+
+QlFixedRateBondForward* qlFixedRateBondForward(int valueDate, int maturityDate, int type, double strike, unsigned settlementDays, DayCounter* dayCounter, Calendar* calendar, int businessDayConvention, QlFixedRateBond* fixedCouponBond, QlYieldTermStructure* discountCurve, QlYieldTermStructure* incomeDiscountCurve, char **e) {
+try {
+    return ret(new QlFixedRateBondForward(alloc(new FixedRateBondForward(Date(valueDate), Date(maturityDate), (Position::Type)type, strike, settlementDays, (*arg(dayCounter)), (*arg(calendar)), (BusinessDayConvention)businessDayConvention, (*arg(fixedCouponBond)), qlNullableHandle(arg(discountCurve)), qlNullableHandle(arg(incomeDiscountCurve))))));
+  } catch (std::exception& er) {
+    return handleException<QlFixedRateBondForward*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

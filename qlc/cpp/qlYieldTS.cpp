@@ -114,4 +114,21 @@ QlRateHelper *qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
   }
 }
 
+// generated methods
+QlYieldTermStructure* qlFlatForward(int referenceDate, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e) {
+try {
+    return ret(new QlYieldTermStructure(alloc(new FlatForward(Date(referenceDate), Handle<Quote>(*arg(forward)), (*arg(dayCounter)), (Compounding)compounding, (Frequency)frequency))));
+  } catch (std::exception& er) {
+    return handleException<QlYieldTermStructure*>(e, er);
+  }
+}
+
+QlYieldTermStructure* qlFlatForward1(unsigned settlementDays, Calendar* calendar, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e) {
+try {
+    return ret(new QlYieldTermStructure(alloc(new FlatForward(settlementDays, (*arg(calendar)), Handle<Quote>(*arg(forward)), (*arg(dayCounter)), (Compounding)compounding, (Frequency)frequency))));
+  } catch (std::exception& er) {
+    return handleException<QlYieldTermStructure*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
