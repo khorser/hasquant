@@ -88,6 +88,7 @@ month x = let (_, m, _) = toGregorian x in
                 12 -> December
                 _  -> signalError "Invalid month number in the date"
 
+-- |helper function that is convenient for use as an infix operator
 january :: Int -> Int -> Day
 january d y = fromGregorian (fromIntegral y) 1 d
 

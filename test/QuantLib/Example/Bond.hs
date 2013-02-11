@@ -168,11 +168,8 @@ result = do
                                   actActBond
                                   BusinessDayConvention.ModifiedFollowing
                                   100.0
-                                  (Just (15 `may` 2007))
-                                  nocal
-  fbi <- Types.asBond fixedBond >>= Types.asInstrument
-  Instrument.setPricingEngine fbi pricing
-  fixnpv <- Instrument.npv fbi
+                                  (Just $ 15 `may` 2007)
+                                  nocal >>= Types.asBond
   zcBond <- Bond.zeroCouponBond settlementDays
                                usGovBondCal
                                faceAmount
@@ -180,9 +177,6 @@ result = do
                                BusinessDayConvention.Following
                                116.92
                                (Just $ 15 `august` 2003)
-  Types.withInstrument zcBond $ flip Instrument.setPricingEngine pricing
-  znpv <- Types.withInstrument zcBond Instrument.npv
-  
   depoLiborHelpers <-
     mapM (\(q, (n, u)) ->
       do
@@ -241,7 +235,6 @@ result = do
                                    True
                                    100.0
                                    (Just $ fromGregorian 2005 10 21)
-  Types.withInstrument floater $ flip Instrument.setPricingEngine pricing
   volval <- Quote.simpleQuote 0 >>= Types.asQuote
   vol <- Vol.constantOptionletVol settlementDays
                                   targetCal
@@ -251,11 +244,13 @@ result = do
   couponPricer <- CouponPricer.blackIborCouponPricer vol
   Bond.setCouponPricer floater couponPricer
   
-  fnpv <- Types.withInstrument floater Instrument.npv
+  let allBonds = [fixedBond, zcBond, floater]
+      twoBonds = [fixedBond, floater]
 
-  fb <- Types.asBond fixedBond
-  let allBonds = [fb, zcBond, floater]
-      twoBonds = [fb, floater]
+  [fixnpv, znpv, fnpv] <-
+    mapM (Types.asInstrument >=>
+      (\y -> Instrument.setPricingEngine y pricing >> Instrument.npv y))
+    allBonds
 
   bCleanPrice <- mapM Bond.cleanPrice allBonds
   bDirtyPrice <- mapM Bond.dirtyPrice allBonds
