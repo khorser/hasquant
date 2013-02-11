@@ -1,6 +1,0 @@
-->bool
-::const Bond &
--- ^bond
-::Date
-=Date()
--- ^settlementDate

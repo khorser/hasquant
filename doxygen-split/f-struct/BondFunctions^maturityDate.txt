@@ -1,3 +1,0 @@
-->Date
-::const Bond &
--- ^bond
