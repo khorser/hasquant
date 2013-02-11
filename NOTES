@@ -42,7 +42,6 @@ FuturesRateHelper
 VanillaSwap
 Swap.fairSpread
 Swap.fairRate
-DayCounter.yearFraction
 
 FittedBondDiscountCurve
 SimplePolynomialFitting
@@ -79,6 +78,7 @@ bondFwd.forwardPrice
 bondFwd.impliedYield
 repoCurve->zeroRate
 ForwardRateAgreement
-calendar.advance
 IMM::
 Date::
+DayCounter::
+Calendar::

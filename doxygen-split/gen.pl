@@ -301,5 +301,5 @@ sub type
 # const std::vector< Real,Rate,Date,Period > &
 # const std::vector< Handle< Quote > > &
 # ? const std::vector<boost::shared_ptr<typename Traits::helper> >&
-
+# boost::optional< BusinessDayConvention >
 # vim: set ft=perl sw=2 ts=8 st=2:
