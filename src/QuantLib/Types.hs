@@ -11,7 +11,9 @@ module QuantLib.Types
 
   -- indexes
   , Index
+  , InterestRateIndex
   , IborIndex
+  , SwapIndex
 
   -- instruments
   , Instrument
@@ -20,6 +22,8 @@ module QuantLib.Types
   , Forward
   , FixedRateBondForward
   , ForwardRateAgreement
+  , Swap
+  , VanillaSwap
 
   -- pricingengines
   , PricingEngine
@@ -43,12 +47,14 @@ module QuantLib.Types
 
   -- casts
   , upcast
-  , asIndex
   , withBond
   , asBond
   , withInstrument
   , asInstrument
   , asForward
+  , asSwap
+  , asIndex
+  , asInterestRateIndex
   )
 where
 
@@ -66,11 +72,18 @@ instance Show Currency where
 
 -- indexes
 type Index = ForeignPtr CIndex
+type InterestRateIndex = ForeignPtr CInterestRateIndex
+
 -- |Inter-Bank-Offered-Rate indexes (e.g. Libor, etc.)
 type IborIndex = ForeignPtr CIborIndex
 
+asInterestRateIndex :: (Upcastable a CInterestRateIndex) => ForeignPtr a -> IO InterestRateIndex
+asInterestRateIndex = upcast
+
 asIndex :: (Upcastable a CIndex) => ForeignPtr a -> IO Index
 asIndex = upcast
+
+type SwapIndex = ForeignPtr CSwapIndex
 
 -- instruments
 type Instrument = ForeignPtr CInstrument
@@ -146,6 +159,12 @@ withInstrument x f = upcast x >>= f
 
 asForward :: (Upcastable a CForward) => ForeignPtr a -> IO Forward
 asForward = upcast
+
+type Swap = ForeignPtr CSwap
+type VanillaSwap = ForeignPtr CVanillaSwap
+
+asSwap :: (Upcastable a CSwap) => ForeignPtr a -> IO Swap
+asSwap = upcast
 
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine

@@ -213,7 +213,7 @@ result = do
                 Interpolation.LogLinear
   
   usd3m <- Ibor.usdLibor p3m (Just fwdCurve)
-  Types.asIndex usd3m >>= (\i -> Index.addFixing i (fromGregorian 2008 07 17) 0.0278625 False)
+  Types.asInterestRateIndex usd3m >>= Types.asIndex >>= (\i -> Index.addFixing i (fromGregorian 2008 07 17) 0.0278625 False)
   
   floatSchedule <- Schedule.schedule (Just $ fromGregorian 2005 10 21)
                                      (fromGregorian 2010 10 21)

@@ -149,8 +149,6 @@ QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
   }
 }
 
-QlIndex *qlIborAsIndex(QlIborIndex *i) {
-  return ret(new QlIndex(*(arg(i))));
-}
+QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o) { return ret(new QlInterestRateIndex(*arg(o))); }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

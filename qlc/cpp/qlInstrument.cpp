@@ -23,25 +23,25 @@ void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
   }
 }
 
-void DLLEXPORT qlFreeInstrument(QlInstrument *instr) {
+void qlFreeInstrument(QlInstrument *instr) {
   del(instr);
 }
 
-void DLLEXPORT qlFreeForward(QlForward *fwd) {
+void qlFreeForward(QlForward *fwd) {
   del(fwd);
 }
 
-void DLLEXPORT qlFreeForwardRateAgreement(QlForwardRateAgreement *fwd) {
+void qlFreeForwardRateAgreement(QlForwardRateAgreement *fwd) {
   del(fwd);
 }
 
-QlForward* DLLEXPORT qlForwardRateAgreementAsForward(QlForwardRateAgreement *fwd) {
+QlForward* qlForwardRateAgreementAsForward(QlForwardRateAgreement *fwd) {
   return ret(new QlForward(*arg(fwd)));
 }
 
 // generated code
 
-QlInstrument* DLLEXPORT qlForwardAsInstrument(QlForward *fwd) {
+QlInstrument* qlForwardAsInstrument(QlForward *fwd) {
   return ret(new QlInstrument(*arg(fwd)));
 }
 

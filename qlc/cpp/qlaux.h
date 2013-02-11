@@ -599,5 +599,29 @@ struct EnumObjectInfo2 {
   };
 };
 
+namespace QuantLib {class Swap;}
+using QuantLib::Swap;
+typedef boost::shared_ptr<Swap> QlSwap;
+template <> class objClassName<Swap *> { public: static const char *name() { return "Swap"; } };
+template <> class objClassName<QlSwap *> { public: static const char *name() { return "QlSwap"; } };
+
+namespace QuantLib {class VanillaSwap;}
+using QuantLib::VanillaSwap;
+typedef boost::shared_ptr<VanillaSwap> QlVanillaSwap;
+template <> class objClassName<VanillaSwap *> { public: static const char *name() { return "VanillaSwap"; } };
+template <> class objClassName<QlVanillaSwap *> { public: static const char *name() { return "QlVanillaSwap"; } };
+
+namespace QuantLib {class InterestRateIndex;}
+using QuantLib::InterestRateIndex;
+typedef boost::shared_ptr<InterestRateIndex> QlInterestRateIndex;
+template <> class objClassName<InterestRateIndex *> { public: static const char *name() { return "InterestRateIndex"; } };
+template <> class objClassName<QlInterestRateIndex *> { public: static const char *name() { return "QlInterestRateIndex"; } };
+
+namespace QuantLib {class SwapIndex;}
+using QuantLib::SwapIndex;
+typedef boost::shared_ptr<SwapIndex> QlSwapIndex;
+template <> class objClassName<SwapIndex *> { public: static const char *name() { return "SwapIndex"; } };
+template <> class objClassName<QlSwapIndex *> { public: static const char *name() { return "QlSwapIndex"; } };
+
 #include "ql.h"
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

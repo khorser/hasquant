@@ -10,7 +10,9 @@ module QuantLib.Internal.Types
 
   -- indexes
   , CIndex
+  , CInterestRateIndex
   , CIborIndex
+  , CSwapIndex
 
   -- instruments
   , CInstrument
@@ -19,6 +21,8 @@ module QuantLib.Internal.Types
   , CForward
   , CFixedRateBondForward
   , CForwardRateAgreement
+  , CSwap
+  , CVanillaSwap
 
   -- pricingengines
   , CPricingEngine
@@ -76,7 +80,9 @@ foreign import ccall safe "ql.h qlCurrencyName"
 
 -- indexes
 data CIndex
+data CInterestRateIndex
 data CIborIndex
+data CSwapIndex
 
 instance Finalizable CIborIndex where
   finalize = p_freeIborIndex
@@ -87,10 +93,19 @@ foreign import ccall safe "ql.h &qlFreeIborIndex"
 foreign import ccall safe "ql.h &qlFreeIndex"
   p_freeIndex :: FunPtr (Ptr CIndex -> IO ())
 
-instance Upcastable CIborIndex CIndex where
-  c_upcast = c_iborAsIndex
-foreign import ccall safe "ql.h qlIborAsIndex"
-  c_iborAsIndex :: Ptr CIborIndex -> IO (Ptr CIndex)
+instance Upcastable CIborIndex CInterestRateIndex where
+  c_upcast = c_IborIndexAsInterestRateIndex
+foreign import ccall safe "ql.h qlIborIndexAsInterestRateIndex"
+  c_IborIndexAsInterestRateIndex :: Ptr CIborIndex -> IO (Ptr CInterestRateIndex)
+
+instance Finalizable CInterestRateIndex where
+  finalize = p_freeInterestRateIndex
+foreign import ccall safe "ql.h &qlFreeInterestRateIndex"
+  p_freeInterestRateIndex :: FunPtr (Ptr CInterestRateIndex -> IO ())
+instance Upcastable CInterestRateIndex CIndex where
+  c_upcast = c_InterestRateIndexAsIndex
+foreign import ccall safe "ql.h qlInterestRateIndexAsIndex"
+  c_InterestRateIndexAsIndex :: Ptr CInterestRateIndex -> IO (Ptr CIndex)
 
 -- instruments
 data CInstrument
@@ -145,6 +160,25 @@ foreign import ccall safe "ql.h qlForwardAsInstrument"
   c_forwardAsInstrument :: Ptr CForward -> IO (Ptr CInstrument)
 foreign import ccall safe "ql.h qlForwardRateAgreementAsForward"
   c_forwardRateAgreementAsForward :: Ptr CForwardRateAgreement -> IO (Ptr CForward)
+
+data CVanillaSwap
+instance Finalizable CVanillaSwap where
+  finalize = p_freeVanillaSwap
+foreign import ccall safe "ql.h &qlFreeVanillaSwap"
+  p_freeVanillaSwap :: FunPtr (Ptr CVanillaSwap -> IO ())
+instance Upcastable CVanillaSwap CSwap where
+  c_upcast = c_VanillaSwapAsSwap
+foreign import ccall safe "ql.h qlVanillaSwapAsSwap"
+  c_VanillaSwapAsSwap :: Ptr CVanillaSwap -> IO (Ptr CSwap)
+data CSwap
+instance Finalizable CSwap where
+  finalize = p_freeSwap
+foreign import ccall safe "ql.h &qlFreeSwap"
+  p_freeSwap :: FunPtr (Ptr CSwap -> IO ())
+instance Upcastable CSwap CInstrument where
+  c_upcast = c_SwapAsInstrument
+foreign import ccall safe "ql.h qlSwapAsInstrument"
+  c_SwapAsInstrument :: Ptr CSwap -> IO (Ptr CInstrument)
 
 -- pricingengines
 data CPricingEngine

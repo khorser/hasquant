@@ -15,6 +15,7 @@ OBJS=cpp/qlBond.o \
 	cpp/qlQuote.o \
 	cpp/qlSchedule.o \
 	cpp/qlSettings.o \
+	cpp/qlSwap.o \
 	cpp/qlUtilities.o \
 	cpp/qlVolatilityTS.o \
 	cpp/qlYieldTS.o \
@@ -82,6 +83,9 @@ cpp/qlSchedule.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlSchedule.cpp
 
 cpp/qlSettings.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlSettings.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlSettings.o $(QLCSRC)/qlSettings.cpp
+
+cpp/qlSwap.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlSwap.cpp
+	g++ -c -Wall $(EXTRA) -o cpp/qlSwap.o $(QLCSRC)/qlSwap.cpp
 
 cpp/qlUtilities.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlUtilities.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlUtilities.o $(QLCSRC)/qlUtilities.cpp

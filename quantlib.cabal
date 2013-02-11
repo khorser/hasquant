@@ -27,7 +27,7 @@ Library
               , QuantLib.Currency
               , QuantLib.Error
               , QuantLib.ExerciseType
-              , QuantLib.Index
+              , QuantLib.InterestRateIndex
               , QuantLib.Index.Ibor
               , QuantLib.Instrument
               , QuantLib.Instrument.Bond

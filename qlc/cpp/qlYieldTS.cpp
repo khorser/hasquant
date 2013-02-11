@@ -68,7 +68,7 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
   }
 }
 
-QlYieldTermStructure *DLLEXPORT qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
+QlYieldTermStructure *qlPiecewiseYieldCurve1(unsigned settl, Calendar *cal,
   unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, int *dates, double accuracy, char *trait,
   char *interpolator, char **e) {

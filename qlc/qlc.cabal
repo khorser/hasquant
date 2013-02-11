@@ -32,6 +32,7 @@ Extra-source-files:
               cpp/qlQuote.cpp
               cpp/qlSchedule.cpp
               cpp/qlSettings.cpp
+              cpp/qlSwap.cpp
               cpp/qlUtilities.cpp
               cpp/qlVolatilityTS.cpp
               cpp/qlYieldTS.cpp
@@ -62,6 +63,7 @@ Library
               cpp/qlQuote.cpp
               cpp/qlSchedule.cpp
               cpp/qlSettings.cpp
+              cpp/qlSwap.cpp
               cpp/qlUtilities.cpp
               cpp/qlVolatilityTS.cpp
               cpp/qlYieldTS.cpp

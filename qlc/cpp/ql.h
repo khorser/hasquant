@@ -257,11 +257,16 @@ extern "C" {
     QlYieldTermStructure *fwd, char **e);
 
   void DLLEXPORT qlFreeIborIndex(QlIborIndex *i);
-  QlIndex *DLLEXPORT qlIborAsIndex(QlIborIndex *i);
+  QlInterestRateIndex* DLLEXPORT qlIborIndexAsInterestRateIndex(QlIborIndex *o);
 
   /* index */
   void DLLEXPORT qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e);
   void DLLEXPORT qlFreeIndex(QlIndex *i);
+  void DLLEXPORT qlFreeInterestRateIndex(QlInterestRateIndex *o);
+  QlIndex* DLLEXPORT qlInterestRateIndexAsIndex(QlInterestRateIndex *o);
+  void DLLEXPORT qlFreeSwapIndex(QlSwapIndex *o);
+  QlInterestRateIndex* DLLEXPORT qlSwapIndexAsInterestRateIndex(QlSwapIndex *o);
+
 
   /* coupon pricer */
   QlFloatingRateCouponPricer *DLLEXPORT qlBlackIborCouponPricer(
@@ -272,6 +277,12 @@ extern "C" {
   QlOptionletVolatilityStructure *DLLEXPORT qlConstantOptionletVol(
     unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e);
   void DLLEXPORT qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p);
+
+  /* swap */
+  void DLLEXPORT qlFreeSwap(QlSwap *o);
+  QlInstrument* DLLEXPORT qlSwapAsInstrument(QlSwap *o);
+  void DLLEXPORT qlFreeVanillaSwap(QlVanillaSwap *o);
+  QlSwap* DLLEXPORT qlVanillaSwapAsSwap(QlVanillaSwap *o);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

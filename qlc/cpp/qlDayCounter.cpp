@@ -66,7 +66,7 @@ DayCounter *qlDayCounter(const char *name, char **e) {
   }
 }
 
-DayCounter *DLLEXPORT qlDayCounterBusiness252(Calendar *cal, char **e) {
+DayCounter *qlDayCounterBusiness252(Calendar *cal, char **e) {
   try {
     return alloc(new Business252(*arg(cal)));
   } catch (std::exception& er) {
