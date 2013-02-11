@@ -5,6 +5,8 @@ module QuantLib.Example.Bond
   )
 where
 
+import Control.Monad((>=>))
+
 import Data.List(zip4)
 import Data.Time.Calendar(Day, fromGregorian)
 
@@ -95,7 +97,7 @@ result = do
         True
         actual365Fixed)
     $ zip zcQuotes zcTenors
-  quotes <- mapM (\x -> Quote.simpleQuote x >>= Types.asQuote) marketQuotes
+  quotes <- mapM (Quote.simpleQuote >=> Types.asQuote) marketQuotes
   discBondHelpers <- mapM
     (\(q, c, i, m) -> do
       s <- Schedule.schedule
