@@ -143,7 +143,7 @@ dailyTenorLibor = $(ffiConstruct 'dailyTenorLibor) c_dailyTenorLibor
 foreign import ccall safe "ql.h qlOvernightIndex"
   c_overnightIndex :: CString -> CUInt -> Ptr CCurrency -> Ptr CCalendar
     -> Ptr CDayCounter -> Ptr CYieldTermStructure -> Ptr CString
-    -> IO (Ptr CIborIndex)
+    -> IO (Ptr COvernightIndex)
 
 -- |QuantLibXL: qlOvernightIndex
 overnightIndex :: String -- ^familyName
@@ -152,7 +152,7 @@ overnightIndex :: String -- ^familyName
   -> Calendar -- ^fixingCalendar
   -> DayCounter -- ^dayCounter
   -> Maybe YieldTermStructure
-  -> IO IborIndex
+  -> IO OvernightIndex
 overnightIndex = $(ffiConstruct 'overnightIndex) c_overnightIndex
 
 foreign import ccall safe "ql.h qlCreateIbor"
@@ -219,9 +219,20 @@ dailyTenorCHFLibor = createDailyTenorLibor "DailyTenorCHFLibor"
 dkkLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
 dkkLibor = createIbor "DKKLibor"
 
+foreign import ccall safe "ql.h qlCreateONIndex"
+  c_createONIndex :: CString -> Ptr CYieldTermStructure -> Ptr CString
+    -> IO (Ptr COvernightIndex)
+
+createONIndex :: String -> Maybe YieldTermStructure -> IO OvernightIndex
+createONIndex = $(ffiConstruct 'createONIndex) c_createONIndex
+
 -- |Eonia (Euro Overnight Index Average) rate fixed by the ECB. QuantLibXL: qlEonia
-eonia :: Maybe YieldTermStructure -> IO IborIndex
-eonia = createIborON "Eonia"
+eonia :: Maybe YieldTermStructure -> IO OvernightIndex
+eonia = createONIndex "Eonia"
+
+-- |Sonia (Sterling Overnight Index Average) rate. QuantLibXL: qlSonia
+sonia :: Maybe YieldTermStructure -> IO OvernightIndex
+sonia = createONIndex "Sonia"
 
 -- |all BBA EUR LIBOR indexes but the O\/N
 -- Euro LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>. /Warning/ This is the rate fixed in London by BBA. Use Euribor if you're interested in the fixing by the ECB.
@@ -270,10 +281,6 @@ nzdLibor = createIbor "NZDLibor"
 -- Sweden Krone LIBOR fixed by BBA. See <http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&a=1414>.
 sekLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
 sekLibor = createIbor "SEKLibor"
-
--- |Sonia (Sterling Overnight Index Average) rate. QuantLibXL: qlSonia
-sonia :: Maybe YieldTermStructure -> IO IborIndex
-sonia = createIborON "Sonia"
 
 -- |JPY TIBOR index
 -- Tokyo Interbank Offered Rate.WarningThis is the rate fixed in Tokio by JBA. Use JPYLibor if you're interested in the London fixing by BBA.Possible enhancementscheck settlement days and end-of-month adjustment.

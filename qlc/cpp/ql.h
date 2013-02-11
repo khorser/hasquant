@@ -250,17 +250,19 @@ extern "C" {
   QlIborIndex *DLLEXPORT qlDailyTenorLibor(char *name, unsigned settlDays,
     Currency *ccy, Calendar *cal, DayCounter *dayCount,
     QlYieldTermStructure *fwd, char **e);
-  QlIborIndex *DLLEXPORT qlOvernightIndex(char *name, unsigned settlDays, Currency *cur,
+  QlOvernightIndex *DLLEXPORT qlOvernightIndex(char *name, unsigned settlDays, Currency *cur,
     Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e);
   QlIborIndex *DLLEXPORT qlCreateIbor(char *name, Period *tenor,
     QlYieldTermStructure *fwd, char **e);
-  QlIborIndex *DLLEXPORT qlCreateIborON(char *name,
-    QlYieldTermStructure *fwd, char **e);
+  QlIborIndex *DLLEXPORT qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e);
+  QlOvernightIndex *DLLEXPORT qlCreateONIndex(char *name, QlYieldTermStructure *fwd, char **e);
   QlIborIndex *DLLEXPORT qlCreateDailyTenorIbor(char *name, unsigned settlDays,
     QlYieldTermStructure *fwd, char **e);
 
   void DLLEXPORT qlFreeIborIndex(QlIborIndex *i);
   QlInterestRateIndex* DLLEXPORT qlIborIndexAsInterestRateIndex(QlIborIndex *o);
+  void DLLEXPORT qlFreeOvernightIndex(QlOvernightIndex *o);
+  QlIborIndex* DLLEXPORT qlOvernightIndexAsIborIndex(QlOvernightIndex *o);
 
   /* index */
   void DLLEXPORT qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e);

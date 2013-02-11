@@ -43,13 +43,13 @@ QlIborIndex *qlDailyTenorLibor(char *name, unsigned settlDays,
   }
 }
 
-QlIborIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy,
+QlOvernightIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy,
     Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e) {
   try {
-    return ret(new QlIborIndex(alloc(new OvernightIndex(name, settlDays,
+    return ret(new QlOvernightIndex(alloc(new OvernightIndex(name, settlDays,
 	      *arg(ccy), *arg(cal), *arg(dayCount), qlNullableHandle(fwd)))));
   } catch (std::exception& er) {
-    return handleException<QlIborIndex *>(e, er);
+    return handleException<QlOvernightIndex *>(e, er);
   }
 }
 
@@ -95,11 +95,32 @@ QlIborIndex *qlCreateIbor(char *name, Period *tenor,
 }
 
 
+typedef EnumObjectInfo1<OvernightIndex, YieldTermStructureHandle&> OnIndexInfo;
+static OnIndexInfo onIndexInfo [] = {
+  {"Eonia",	  &OnIndexInfo::makeObject<Eonia>},
+  {"Sonia",	  &OnIndexInfo::makeObject<Sonia>},
+};
+
+QlOvernightIndex *qlCreateONIndex(char *name, QlYieldTermStructure *fwd, char **e) {
+  try {
+    OnIndexInfo *last = LAST(onIndexInfo);
+    OnIndexInfo *found =
+      std::find_if(onIndexInfo, last, OnIndexInfo::Cmp(name));
+    if (found != last) {
+      YieldTermStructureHandle ts = qlNullableHandle(fwd);
+      OvernightIndex *i = found->make(ts);
+      return ret(new QlOvernightIndex(alloc(i)));
+    }
+    else
+      QL_FAIL("Unknown ON Index " << name);
+  } catch (std::exception& er) {
+    return handleException<QlOvernightIndex *>(e, er);
+  }
+}
+
 typedef EnumObjectInfo1<IborIndex, YieldTermStructureHandle&> OnIborInfo;
 static OnIborInfo onIborInfo [] = {
   {"CADLiborON",  &OnIborInfo::makeObject<CADLiborON>},
-  {"Eonia",	  &OnIborInfo::makeObject<Eonia>},
-  {"Sonia",	  &OnIborInfo::makeObject<Sonia>},
   {"GBPLiborON",  &OnIborInfo::makeObject<GBPLiborON>},
   {"USDLiborON",  &OnIborInfo::makeObject<USDLiborON>},
   {"EURLiborON",  &OnIborInfo::makeObject<EURLiborON>},
@@ -151,4 +172,6 @@ QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
 
 QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o) { return ret(new QlInterestRateIndex(*arg(o))); }
 
+void qlFreeOvernightIndex(QlOvernightIndex *o) { del(o); }
+QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o) { return ret(new QlIborIndex(*arg(o))); }
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -589,35 +589,35 @@ struct EnumObjectInfo2 {
   };
 };
 
-namespace QuantLib {class Swap;}
-using QuantLib::Swap;
+namespace QuantLib {class Swap;} using QuantLib::Swap;
 typedef boost::shared_ptr<Swap> QlSwap;
 template <> class objClassName<Swap *> { public: static const char *name() { return "Swap"; } };
 template <> class objClassName<QlSwap *> { public: static const char *name() { return "QlSwap"; } };
 
-namespace QuantLib {class VanillaSwap;}
-using QuantLib::VanillaSwap;
+namespace QuantLib {class VanillaSwap;} using QuantLib::VanillaSwap;
 typedef boost::shared_ptr<VanillaSwap> QlVanillaSwap;
 template <> class objClassName<VanillaSwap *> { public: static const char *name() { return "VanillaSwap"; } };
 template <> class objClassName<QlVanillaSwap *> { public: static const char *name() { return "QlVanillaSwap"; } };
 
-namespace QuantLib {class InterestRateIndex;}
-using QuantLib::InterestRateIndex;
+namespace QuantLib {class InterestRateIndex;} using QuantLib::InterestRateIndex;
 typedef boost::shared_ptr<InterestRateIndex> QlInterestRateIndex;
 template <> class objClassName<InterestRateIndex *> { public: static const char *name() { return "InterestRateIndex"; } };
 template <> class objClassName<QlInterestRateIndex *> { public: static const char *name() { return "QlInterestRateIndex"; } };
 
-namespace QuantLib {class SwapIndex;}
-using QuantLib::SwapIndex;
+namespace QuantLib {class SwapIndex;} using QuantLib::SwapIndex;
 typedef boost::shared_ptr<SwapIndex> QlSwapIndex;
 template <> class objClassName<SwapIndex *> { public: static const char *name() { return "SwapIndex"; } };
 template <> class objClassName<QlSwapIndex *> { public: static const char *name() { return "QlSwapIndex"; } };
 
-namespace QuantLib {class SimpleQuote;}
-using QuantLib::SimpleQuote;
+namespace QuantLib {class SimpleQuote;} using QuantLib::SimpleQuote;
 typedef boost::shared_ptr<SimpleQuote> QlSimpleQuote;
 template <> class objClassName<SimpleQuote *> { public: static const char *name() { return "SimpleQuote"; } };
 template <> class objClassName<QlSimpleQuote *> { public: static const char *name() { return "QlSimpleQuote"; } };
+
+namespace QuantLib {class OvernightIndex;} using QuantLib::OvernightIndex;
+typedef boost::shared_ptr<OvernightIndex> QlOvernightIndex;
+template <> class objClassName<OvernightIndex *> { public: static const char *name() { return "OvernightIndex"; } };
+template <> class objClassName<QlOvernightIndex *> { public: static const char *name() { return "QlOvernightIndex"; } };
 
 #include "ql.h"
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

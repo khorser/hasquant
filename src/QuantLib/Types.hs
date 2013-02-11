@@ -14,6 +14,7 @@ module QuantLib.Types
   , InterestRateIndex
   , IborIndex
   , SwapIndex
+  , OvernightIndex
 
   -- instruments
   , Instrument
@@ -56,6 +57,7 @@ module QuantLib.Types
   , asSwap
   , asIndex
   , asInterestRateIndex
+  , asIborIndex
   , asQuote
   )
 where
@@ -86,6 +88,10 @@ asIndex :: (Upcastable a CIndex) => ForeignPtr a -> IO Index
 asIndex = upcast
 
 type SwapIndex = ForeignPtr CSwapIndex
+type OvernightIndex = ForeignPtr COvernightIndex
+
+asIborIndex :: (Upcastable a CIborIndex) => ForeignPtr a -> IO IborIndex
+asIborIndex = upcast
 
 -- instruments
 type Instrument = ForeignPtr CInstrument

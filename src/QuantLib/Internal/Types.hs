@@ -13,6 +13,7 @@ module QuantLib.Internal.Types
   , CInterestRateIndex
   , CIborIndex
   , CSwapIndex
+  , COvernightIndex
 
   -- instruments
   , CInstrument
@@ -116,6 +117,16 @@ instance Upcastable CSwapIndex CInterestRateIndex where
   c_upcast = c_SwapIndexAsInterestRateIndex
 foreign import ccall safe "ql.h qlSwapIndexAsInterestRateIndex"
   c_SwapIndexAsInterestRateIndex :: Ptr CSwapIndex -> IO (Ptr CInterestRateIndex)
+
+data COvernightIndex
+instance Finalizable COvernightIndex where
+  finalize = p_freeOvernightIndex
+foreign import ccall safe "ql.h &qlFreeOvernightIndex"
+  p_freeOvernightIndex :: FunPtr (Ptr COvernightIndex -> IO ())
+instance Upcastable COvernightIndex CIborIndex where
+  c_upcast = c_OvernightIndexAsIborIndex
+foreign import ccall safe "ql.h qlOvernightIndexAsIborIndex"
+  c_OvernightIndexAsIborIndex :: Ptr COvernightIndex -> IO (Ptr CIborIndex)
 
 -- instruments
 data CInstrument
