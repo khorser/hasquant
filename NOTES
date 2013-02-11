@@ -38,13 +38,11 @@ FRA.spotValue
 FRA.forwardValue
 FRA.impliedYield
 SimpleQuote.setValue?
-IMM::nextDate
 FuturesRateHelper
 VanillaSwap
 Swap.fairSpread
 Swap.fairRate
 DayCounter.yearFraction
-calendar.advance
 
 FittedBondDiscountCurve
 SimplePolynomialFitting
@@ -81,3 +79,6 @@ bondFwd.forwardPrice
 bondFwd.impliedYield
 repoCurve->zeroRate
 ForwardRateAgreement
+calendar.advance
+IMM::
+Date::

@@ -6,7 +6,6 @@ module QuantLib.Internal.Syntax
   , ffiConstruct
   , ffiCallX
   , ffiCallXIO
-  , ffiCallXIOStr
   )
 where
 
@@ -198,10 +197,6 @@ ffiCallX hn = ffiCallImpl False False hn [|handleExceptions|]
 ffiCallXIO :: Name -> ExpQ
 ffiCallXIO hn = ffiCallImpl True False hn [|handleExceptions|]
 
--- XXX quick hack
-ffiCallXIOStr :: Name -> ExpQ
-ffiCallXIOStr hn = ffiCallImpl True False hn [|handleExceptions'|]
-
 ffiCallImpl :: Bool -> Bool -> Name -> ExpQ -> ExpQ
 ffiCallImpl io constr hFun extra = do
   r <- reify hFun
@@ -285,7 +280,7 @@ genFfiCall io constr extra aa r = do
       [|maybeWithObject $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
     genFfiCallImpl ((ListA DoubleN, v):as) c_call =
-      [|withAmounts $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
+      [|withDoubles $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA ForeignPtrN, v):as) c_call =
       [|withObjects $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
@@ -294,7 +289,7 @@ genFfiCall io constr extra aa r = do
       [|withDays $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA2 DoubleN DayN, v):as) c_call =
-      [|withAmounts (map fst $v) (\n ams -> withDays (map snd $v)
+      [|withDoubles (map fst $v) (\n ams -> withDays (map snd $v)
         (\_ ds -> $(genFfiCallImpl as [|$c_call n ams ds|])))|]
 
     genFfiCallImpl ((ListA2 ForeignPtrN DayN, v):as) c_call =
@@ -306,8 +301,8 @@ genFfiCall io constr extra aa r = do
 
 unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
-unmarshal (IORV r)  | r == StringR = [|$(unmarshalA r)|]
-                    | otherwise = [|liftM $(unmarshalA r)|]
+unmarshal (IORV StringR) = [|getString|]
+unmarshal (IORV r) = [|liftM $(unmarshalA r)|]
 
 unmarshalA :: AtomicRet -> ExpQ
 unmarshalA IntR    = [|fromIntegral :: CInt -> Int|]
@@ -321,5 +316,4 @@ unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|id|] -- works with construct only?
 unmarshalA UnitR   = [|id|]
 unmarshalA DayListR = [|map fromQlDate|]
--- XXX quick hack
-unmarshalA StringR = [|id|]
+unmarshalA StringR = error "String unmarshalling needs IO"

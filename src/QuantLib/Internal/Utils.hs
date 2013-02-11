@@ -3,7 +3,6 @@ module QuantLib.Internal.Utils
   (
     signalError
   , handleExceptions
-  , handleExceptions'
 
   , Finalizable(..)
   , Upcastable(..)
@@ -14,10 +13,11 @@ module QuantLib.Internal.Utils
   , name
   , withObject
   , maybeWithObject
-  , withAmounts
+  , withDoubles
   , withObjects
   , getDynIntArray
   , getStaticIntArray
+  , getString
 
   -- re-exporting some popular stuff
   , Word
@@ -67,8 +67,8 @@ withObjects objs fn = go objs []
         go (o:os) ps = withForeignPtr o
                         (\p -> go os (ps ++ [p]))
 
-withAmounts :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
-withAmounts amounts f = withArrayLen
+withDoubles :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
+withDoubles amounts f = withArrayLen
                         (map realToFrac amounts)
                         (\n a -> f (fromIntegral n) a)
 
@@ -77,6 +77,13 @@ getDynIntArray = getIntArray c_freeInts
 
 getStaticIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
 getStaticIntArray = getIntArray (const $ return ())
+
+getString :: IO CString -> IO String
+getString x = do
+  s <- x
+  str <- peekCString s
+  c_freeString s
+  return str
 
 -- get a function that returns an array of ints, the number of items
 -- is returned via the first argument
@@ -101,22 +108,6 @@ handleExceptions f =
                   c_freeString msg
                   signalError err
           else return r
-
-handleExceptions' :: (Ptr CString -> IO CString) -> IO String
-handleExceptions' f =
-   alloca $
-     \errptr ->
-     do poke errptr nullPtr
-        r <- f errptr
-        msg <- peek errptr
-        if msg /= nullPtr 
-          then do err <- peekCString msg
-                  c_freeString msg
-                  signalError err
-          else do res <- peekCString r
-                  c_freeString r
-                  return res
-
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
