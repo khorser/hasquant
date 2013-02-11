@@ -22,6 +22,7 @@ Extra-source-files:
               cpp/qlDate.cpp
               cpp/qlDayCounter.cpp
               cpp/qlEnumerations.cpp
+              cpp/qlForward.cpp
               cpp/qlIborIndex.cpp
               cpp/qlIndex.cpp
               cpp/qlInstrument.cpp
@@ -53,6 +54,7 @@ Library
               cpp/qlDate.cpp
               cpp/qlDayCounter.cpp
               cpp/qlEnumerations.cpp
+              cpp/qlForward.cpp
               cpp/qlIborIndex.cpp
               cpp/qlIndex.cpp
               cpp/qlInstrument.cpp

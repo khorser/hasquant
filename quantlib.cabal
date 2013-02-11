@@ -31,7 +31,7 @@ Library
               , QuantLib.Index.Ibor
               , QuantLib.Instrument
               , QuantLib.Instrument.Bond
-              , QuantLib.Instrument.ForwardRateAgreement
+              , QuantLib.Instrument.Forward
               , QuantLib.Instrument.OptionType
               , QuantLib.Instrument.OvernightIndexedSwapType
               , QuantLib.Instrument.VanillaSwapType

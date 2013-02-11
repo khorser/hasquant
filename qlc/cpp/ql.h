@@ -118,11 +118,6 @@ extern "C" {
 
   void DLLEXPORT qlFreeBond(QlBond *bond);
   void DLLEXPORT qlFreeFixedRateBond(QlFixedRateBond *bond);
-  void DLLEXPORT qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd);
-  QlForward* DLLEXPORT qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd);
-  QlFixedRateBondForward* DLLEXPORT qlFixedRateBondForward(int valueDate, int maturityDate, int type, double strike, unsigned settlementDays, DayCounter* dayCounter, Calendar* calendar, int businessDayConvention, QlFixedRateBond* fixedCouponBond, QlYieldTermStructure* discountCurve, QlYieldTermStructure* incomeDiscountCurve, char **e);
-  double DLLEXPORT qlFixedRateBondForwardCleanForwardPrice(QlFixedRateBondForward* o, char **e);
-  double DLLEXPORT qlFixedRateBondForwardForwardPrice(QlFixedRateBondForward* o, char **e);
 
   /* daycounter */
   DayCounter *DLLEXPORT qlDayCounter(const char *name, char **e);
@@ -229,16 +224,6 @@ extern "C" {
     char **e);
   double DLLEXPORT qlInstrumentNPV(QlInstrument *instr, char **e);
   void DLLEXPORT qlFreeInstrument(QlInstrument *instr);
-  void DLLEXPORT qlFreeForward(QlForward *fwd);
-  QlInstrument* DLLEXPORT qlForwardAsInstrument(QlForward *fwd);
-  double DLLEXPORT qlForwardForwardValue(QlForward* o, char **e);
-  InterestRate* DLLEXPORT qlForwardImpliedYield(QlForward* o, double underlyingSpotValue, double forwardValue, int settlementDate, int compoundingConvention, DayCounter* dayCounter, char **e);
-  int DLLEXPORT qlForwardSettlementDate(QlForward* o, char **e);
-  double DLLEXPORT qlForwardSpotIncome(QlForward* o, QlYieldTermStructure* incomeDiscountCurve, char **e);
-  double DLLEXPORT qlForwardSpotValue(QlForward* o, char **e);
-  void DLLEXPORT qlFreeForwardRateAgreement(QlForwardRateAgreement *fwd);
-  QlForward* DLLEXPORT qlForwardRateAgreementAsForward(QlForwardRateAgreement *fwd);
-  QlForwardRateAgreement* DLLEXPORT qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e);
 
   /* ibor index */
   QlIborIndex *DLLEXPORT qlIborIndex(char *name, Period *period, unsigned settlDays,
@@ -272,6 +257,22 @@ extern "C" {
   void DLLEXPORT qlFreeSwapIndex(QlSwapIndex *o);
   QlInterestRateIndex* DLLEXPORT qlSwapIndexAsInterestRateIndex(QlSwapIndex *o);
 
+  /* forward */
+  void DLLEXPORT qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd);
+  QlForward* DLLEXPORT qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd);
+  QlFixedRateBondForward* DLLEXPORT qlFixedRateBondForward(int valueDate, int maturityDate, int type, double strike, unsigned settlementDays, DayCounter* dayCounter, Calendar* calendar, int businessDayConvention, QlFixedRateBond* fixedCouponBond, QlYieldTermStructure* discountCurve, QlYieldTermStructure* incomeDiscountCurve, char **e);
+  double DLLEXPORT qlFixedRateBondForwardCleanForwardPrice(QlFixedRateBondForward* o, char **e);
+  double DLLEXPORT qlFixedRateBondForwardForwardPrice(QlFixedRateBondForward* o, char **e);
+  void DLLEXPORT qlFreeForward(QlForward *fwd);
+  QlInstrument* DLLEXPORT qlForwardAsInstrument(QlForward *fwd);
+  double DLLEXPORT qlForwardForwardValue(QlForward* o, char **e);
+  InterestRate* DLLEXPORT qlForwardImpliedYield(QlForward* o, double underlyingSpotValue, double forwardValue, int settlementDate, int compoundingConvention, DayCounter* dayCounter, char **e);
+  int DLLEXPORT qlForwardSettlementDate(QlForward* o, char **e);
+  double DLLEXPORT qlForwardSpotIncome(QlForward* o, QlYieldTermStructure* incomeDiscountCurve, char **e);
+  double DLLEXPORT qlForwardSpotValue(QlForward* o, char **e);
+  void DLLEXPORT qlFreeForwardRateAgreement(QlForwardRateAgreement *fwd);
+  QlForward* DLLEXPORT qlForwardRateAgreementAsForward(QlForwardRateAgreement *fwd);
+  QlForwardRateAgreement* DLLEXPORT qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e);
 
   /* coupon pricer */
   QlFloatingRateCouponPricer *DLLEXPORT qlBlackIborCouponPricer(

@@ -1,5 +1,4 @@
 #include <ql/instruments/bonds/all.hpp>
-#include <ql/instruments/fixedratebondforward.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 
 #include "qlaux.h"
@@ -165,14 +164,6 @@ QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
   }
 }
 
-void qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd) {
-  del(fwd);
-}
-
-QlForward* qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd) {
-  return ret(new QlForward(*arg(fwd)));
-}
-
 // generated code and thus not necessarilly tested
 double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
     unsigned maxEvaluations, char **e) {
@@ -295,27 +286,4 @@ int qlBondIsTradable(QlBond* o, int d, char **e) {
   }
 }
 
-QlFixedRateBondForward* qlFixedRateBondForward(int valueDate, int maturityDate, int type, double strike, unsigned settlementDays, DayCounter* dayCounter, Calendar* calendar, int businessDayConvention, QlFixedRateBond* fixedCouponBond, QlYieldTermStructure* discountCurve, QlYieldTermStructure* incomeDiscountCurve, char **e) {
-  try {
-    return ret(new QlFixedRateBondForward(alloc(new FixedRateBondForward(Date(valueDate), Date(maturityDate), (Position::Type)type, strike, settlementDays, (*arg(dayCounter)), (*arg(calendar)), (BusinessDayConvention)businessDayConvention, (*arg(fixedCouponBond)), qlNullableHandle(arg(discountCurve)), qlNullableHandle(arg(incomeDiscountCurve))))));
-  } catch (std::exception& er) {
-    return handleException<QlFixedRateBondForward*>(e, er);
-  }
-}
-
-double qlFixedRateBondForwardCleanForwardPrice(QlFixedRateBondForward* o, char **e) {
-  try {
-    return (*arg(o))->cleanForwardPrice();
-  } catch (std::exception& er) {
-    return handleException<double>(e, er);
-  }
-}
-
-double qlFixedRateBondForwardForwardPrice(QlFixedRateBondForward* o, char **e) {
-  try {
-    return (*arg(o))->forwardPrice();
-  } catch (std::exception& er) {
-    return handleException<double>(e, er);
-  }
-}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

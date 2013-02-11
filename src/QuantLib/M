@@ -5,6 +5,7 @@ OBJS=cpp/qlBond.o \
 	cpp/qlDate.o \
 	cpp/qlDayCounter.o \
 	cpp/qlEnumerations.o \
+	cpp/qlForward.o \
 	cpp/qlIborIndex.o \
 	cpp/qlIndex.o \
 	cpp/qlInstrument.o \
@@ -56,6 +57,9 @@ cpp/qlDayCounter.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlDayCounter.cpp
 
 cpp/qlEnumerations.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlEnumerations.cpp
 	g++ -c -Wunused-parameter $(CFLAGS) $(EXTRA) -o cpp/qlEnumerations.o $(QLCSRC)/qlEnumerations.cpp
+
+cpp/qlForward.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlForward.cpp
+	g++ -c -Wunused-parameter $(CFLAGS) $(EXTRA) -o cpp/qlForward.o $(QLCSRC)/qlForward.cpp
 
 cpp/qlIborIndex.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlIborIndex.cpp
 	g++ -c -Wunused-parameter $(CFLAGS) $(EXTRA) -o cpp/qlIborIndex.o $(QLCSRC)/qlIborIndex.cpp

@@ -49,9 +49,7 @@ module QuantLib.Types
 
   -- casts
   , upcast
-  , withBond
   , asBond
-  , withInstrument
   , asInstrument
   , asForward
   , asSwap
@@ -150,20 +148,14 @@ type FixedRateBondForward = ForeignPtr CFixedRateBondForward
 --    constructor is irrelevant and will be ignored.
 type ForwardRateAgreement = ForeignPtr CForwardRateAgreement
 
--- both 'with' and 'as' casting styles compose poorly with functions accepting
+-- 'as' casting style composes poorly with functions accepting
 -- several arguments with first being a Bond
 -- XXX use applicative style?
-withBond :: (Upcastable a CBond) => ForeignPtr a -> (Bond -> IO b) -> IO b
-withBond x f = upcast x >>= f
-
 asBond :: (Upcastable a CBond) => ForeignPtr a -> IO Bond
 asBond = upcast
 
 asInstrument :: (Upcastable a CInstrument) => ForeignPtr a -> IO Instrument
 asInstrument = upcast
-
-withInstrument :: (Upcastable a CInstrument) => ForeignPtr a -> (Instrument -> IO b) -> IO b
-withInstrument x f = upcast x >>= f
 
 asForward :: (Upcastable a CForward) => ForeignPtr a -> IO Forward
 asForward = upcast
