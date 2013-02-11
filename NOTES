@@ -37,7 +37,6 @@ FRA.forwardRate
 FRA.spotValue
 FRA.forwardValue
 FRA.impliedYield
-SimpleQuote.setValue?
 FuturesRateHelper
 VanillaSwap
 Swap.fairSpread
@@ -82,3 +81,4 @@ IMM::
 Date::
 DayCounter::
 Calendar::
+SimpleQuote.setValue

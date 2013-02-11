@@ -24,6 +24,7 @@ import QuantLib.Time.Date
 import QuantLib.Time.Frequency
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
+import qualified QuantLib.Types as Types
 
 newtype ValidDay = ValidDay{validDay::Day} deriving (Show, Eq)
 newtype InvalidDay = InvalidDay Day deriving (Show, Eq)
@@ -90,7 +91,7 @@ prop_quoteValue :: Double -> Property
 prop_quoteValue val =
   val > 0
   ==> monadicIO
-        $ do q <- run $ Quote.simpleQuote val
+        $ do q <- run $ Quote.simpleQuote val >>= Types.asQuote
              v <- run $ Quote.value q
              assert $ v == val
 

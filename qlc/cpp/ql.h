@@ -147,10 +147,13 @@ extern "C" {
   void DLLEXPORT qlFreePeriod(Period *period);
 
   /* quote */
-  QlQuote *DLLEXPORT qlSimpleQuote(double value, char **e);
+  QlSimpleQuote *DLLEXPORT qlSimpleQuote(double value, char **e);
   double DLLEXPORT qlQuoteValue(QlQuote *quote, char **e);
 
   void DLLEXPORT qlFreeQuote(QlQuote *quote);
+  void DLLEXPORT qlFreeSimpleQuote(QlSimpleQuote *o);
+  QlQuote* DLLEXPORT qlSimpleQuoteAsQuote(QlSimpleQuote *o);
+  double DLLEXPORT qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, char **e);
 
   /* schedule */
   Schedule *DLLEXPORT qlSchedule(int eff, int term, Period *tenor, Calendar *cal,

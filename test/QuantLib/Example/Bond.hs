@@ -85,7 +85,7 @@ result = do
   discDepoHelpers <- mapM
     (\(q, p) -> do
       tenor <- Period.period p Unit.Months
-      rate <- Quote.simpleQuote q
+      rate <- Quote.simpleQuote q >>= Types.asQuote
       Yield.depositRateHelper
         rate
         tenor
@@ -95,7 +95,7 @@ result = do
         True
         actual365Fixed)
     $ zip zcQuotes zcTenors
-  quotes <- mapM Quote.simpleQuote marketQuotes
+  quotes <- mapM (\x -> Quote.simpleQuote x >>= Types.asQuote) marketQuotes
   discBondHelpers <- mapM
     (\(q, c, i, m) -> do
       s <- Schedule.schedule
@@ -184,7 +184,7 @@ result = do
   depoLiborHelpers <-
     mapM (\(q, (n, u)) ->
       do
-        quote <- Quote.simpleQuote q
+        quote <- Quote.simpleQuote q >>= Types.asQuote
         p <- Period.period n u
         Yield.depositRateHelper quote p fixingDays targetCal
                                        BusinessDayConvention.ModifiedFollowing
@@ -192,12 +192,12 @@ result = do
           zip liborDepoQuotes liborDepoTerms
   
   eur6M <- Ibor.euribor6M Nothing
-  spread <- Quote.simpleQuote 0
+  spread <- Quote.simpleQuote 0 >>= Types.asQuote
   
   swapLiborHelpers <-
     mapM (\(q, n) ->
       do
-        quote <- Quote.simpleQuote q
+        quote <- Quote.simpleQuote q >>= Types.asQuote
         p <- Period.period n Unit.Years
         Yield.swapRateHelper' quote p targetCal Frequency.Annual BusinessDayConvention.Unadjusted
                               thirty360European eur6M spread p1d Nothing) $
@@ -240,7 +240,7 @@ result = do
                                    100.0
                                    (Just $ fromGregorian 2005 10 21)
   Types.withInstrument floater $ flip Instrument.setPricingEngine pricing
-  volval <- Quote.simpleQuote 0
+  volval <- Quote.simpleQuote 0 >>= Types.asQuote
   vol <- Vol.constantOptionletVol settlementDays
                                   targetCal
                                   BusinessDayConvention.ModifiedFollowing

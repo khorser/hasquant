@@ -44,6 +44,7 @@ module QuantLib.Types
   -- common
   , InterestRate
   , Quote
+  , SimpleQuote
 
   -- casts
   , upcast
@@ -55,6 +56,7 @@ module QuantLib.Types
   , asSwap
   , asIndex
   , asInterestRateIndex
+  , asQuote
   )
 where
 
@@ -194,3 +196,7 @@ type YearFraction = Double
 type InterestRate = ForeignPtr CInterestRate
 -- |Market observable
 type Quote = ForeignPtr CQuote
+type SimpleQuote = ForeignPtr CSimpleQuote
+
+asQuote :: (Upcastable a CQuote) => ForeignPtr a -> IO Quote
+asQuote = upcast

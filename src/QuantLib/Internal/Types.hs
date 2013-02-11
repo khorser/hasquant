@@ -42,6 +42,7 @@ module QuantLib.Internal.Types
   -- common
   , CInterestRate
   , CQuote
+  , CSimpleQuote
   )
 where
 
@@ -273,3 +274,13 @@ instance Finalizable CQuote where
   finalize = p_freeQuote
 foreign import ccall safe "ql.h &qlFreeQuote"
   p_freeQuote :: FunPtr (Ptr CQuote -> IO ())
+
+data CSimpleQuote
+instance Finalizable CSimpleQuote where
+  finalize = p_freeSimpleQuote
+foreign import ccall safe "ql.h &qlFreeSimpleQuote"
+  p_freeSimpleQuote :: FunPtr (Ptr CSimpleQuote -> IO ())
+instance Upcastable CSimpleQuote CQuote where
+  c_upcast = c_SimpleQuoteAsQuote
+foreign import ccall safe "ql.h qlSimpleQuoteAsQuote"
+  c_SimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)

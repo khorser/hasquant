@@ -22,7 +22,6 @@ namespace QuantLib {
   template <class T>
   class Handle;
   class Quote;
-  class SimpleQuote;
   class Bond;
   class FixedRateBond;
   class ZeroCouponBond;
@@ -50,7 +49,6 @@ namespace QuantLib {
 
 using QuantLib::Handle;
 using QuantLib::Quote;
-using QuantLib::SimpleQuote;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
 using QuantLib::ZeroCouponBond;
@@ -267,14 +265,6 @@ class objClassName<Calendar *> {
 public:
   static const char *name() {
     return "Calendar";
-  }
-};
-
-template <>
-class objClassName<SimpleQuote *> {
-public:
-  static const char *name() {
-    return "SimpleQuote";
   }
 };
 
@@ -622,6 +612,12 @@ using QuantLib::SwapIndex;
 typedef boost::shared_ptr<SwapIndex> QlSwapIndex;
 template <> class objClassName<SwapIndex *> { public: static const char *name() { return "SwapIndex"; } };
 template <> class objClassName<QlSwapIndex *> { public: static const char *name() { return "QlSwapIndex"; } };
+
+namespace QuantLib {class SimpleQuote;}
+using QuantLib::SimpleQuote;
+typedef boost::shared_ptr<SimpleQuote> QlSimpleQuote;
+template <> class objClassName<SimpleQuote *> { public: static const char *name() { return "SimpleQuote"; } };
+template <> class objClassName<QlSimpleQuote *> { public: static const char *name() { return "QlSimpleQuote"; } };
 
 #include "ql.h"
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
