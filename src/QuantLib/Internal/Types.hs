@@ -107,6 +107,15 @@ instance Upcastable CInterestRateIndex CIndex where
 foreign import ccall safe "ql.h qlInterestRateIndexAsIndex"
   c_InterestRateIndexAsIndex :: Ptr CInterestRateIndex -> IO (Ptr CIndex)
 
+instance Finalizable CSwapIndex where
+  finalize = p_freeSwapIndex
+foreign import ccall safe "ql.h &qlFreeSwapIndex"
+  p_freeSwapIndex :: FunPtr (Ptr CSwapIndex -> IO ())
+instance Upcastable CSwapIndex CInterestRateIndex where
+  c_upcast = c_SwapIndexAsInterestRateIndex
+foreign import ccall safe "ql.h qlSwapIndexAsInterestRateIndex"
+  c_SwapIndexAsInterestRateIndex :: Ptr CSwapIndex -> IO (Ptr CInterestRateIndex)
+
 -- instruments
 data CInstrument
 data CBond
