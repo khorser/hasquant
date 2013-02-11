@@ -544,7 +544,7 @@ struct EnumObjectInfo {
   template <class A>
   static T *makeObject() {
     return new A();
-  };
+  }
 };
 
 template <class T, class T1>
@@ -565,7 +565,7 @@ struct EnumObjectInfo1 {
   template <class A>
   static T *makeObject(T1 x1) {
     return new A(x1);
-  };
+  }
 };
 
 template <class T, class T1, class T2>
@@ -586,7 +586,7 @@ struct EnumObjectInfo2 {
   template <class A>
   static T *makeObject(T1 x1, T2 x2) {
     return new A(x1, x2);
-  };
+  }
 };
 
 namespace QuantLib {class Swap;} using QuantLib::Swap;

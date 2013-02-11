@@ -7,7 +7,7 @@ using namespace QuantLib;
 template <class T, typename T::Convention conv>
 DayCounter *makeDayCounter() {
   return new T(conv);
-};
+}
 
 typedef EnumObjectInfo<DayCounter> DayCounterInfo;
 static DayCounterInfo dayCounterInfo[] = {
