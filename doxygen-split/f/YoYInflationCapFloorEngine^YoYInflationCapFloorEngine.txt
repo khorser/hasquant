@@ -1,5 +1,0 @@
-->
-::const boost::shared_ptr< YoYInflationIndex > &
--- ^
-::const Handle< YoYOptionletVolatilitySurface > &
--- ^vol
