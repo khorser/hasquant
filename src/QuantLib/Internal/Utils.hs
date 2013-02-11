@@ -90,24 +90,27 @@ getString x = do
 getIntArray :: (Ptr CInt -> IO ()) -> (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
 getIntArray fin f =
   alloca
-  (\pcnt -> do array <- f pcnt
-               count <- peek pcnt
-               ints <- peekArray (fromIntegral count) array
-               fin array
-               return ints)
+  (\pcnt -> do
+    array <- f pcnt
+    count <- peek pcnt
+    ints <- peekArray (fromIntegral count) array
+    fin array
+    return ints)
 
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
    alloca $
      \errptr ->
-     do poke errptr nullPtr
-        r <- f errptr
-        msg <- peek errptr
-        if msg /= nullPtr 
-          then do err <- peekCString msg
-                  c_freeString msg
-                  signalError err
-          else return r
+     do
+       poke errptr nullPtr
+       r <- f errptr
+       msg <- peek errptr
+       if msg /= nullPtr 
+         then do
+           err <- peekCString msg
+           c_freeString msg
+           signalError err
+         else return r
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
@@ -126,12 +129,13 @@ constructNamed :: NamedSingleton a => String -> IO (ForeignPtr a)
 constructNamed n = withCString n $ construct . c_construct
 
 name :: NamedSingleton a => ForeignPtr a -> String
-name c = unsafePerformIO
-          $ withForeignPtr c
-              (\cc -> do n <- c_name cc
-                         str <- peekCString n
-                         c_freeString n
-                         return str)
+name c = unsafePerformIO $
+          withForeignPtr c
+            (\cc -> do
+              n <- c_name cc
+              str <- peekCString n
+              c_freeString n
+              return str)
 
 class (Finalizable a, Finalizable b) => Upcastable a b where
   c_upcast :: Ptr a -> IO (Ptr b)

@@ -125,10 +125,10 @@ december :: Int -> Int -> Day
 december d y = fromGregorian (fromIntegral y) 12 d
 
 today :: IO Day
-today =
-  do now <- getCurrentTime
-     tz <- getTimeZone now
-     return $ localDay $ utcToLocalTime tz now
+today = do
+  now <- getCurrentTime
+  tz <- getTimeZone now
+  return $ localDay $ utcToLocalTime tz now
 
 -- |One-based (Jan 1st = 1)
 dayOfYear :: Day -> Int

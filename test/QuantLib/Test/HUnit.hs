@@ -29,27 +29,31 @@ import qualified QuantLib.Example.Bond as BondExample
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_evalDate :: IO ()
-test_evalDate = do  t1 <- Settings.evaluationDate
-                    t2 <- today
-                    assertEqual t1 t2
+test_evalDate = do
+  t1 <- Settings.evaluationDate
+  t2 <- today
+  assertEqual t1 t2
 
 test_nullEvalDate :: IO ()
-test_nullEvalDate = do  Settings.setEvaluationDate $ Just (december 29 2012)
-                        t0 <- Settings.evaluationDate
-                        assertEqual t0 (fromGregorian 2012 12 29)
-                        t2 <- today
-                        Settings.setEvaluationDate Nothing
-                        t1 <- Settings.evaluationDate
-                        assertEqual t1 t2
+test_nullEvalDate = do
+  Settings.setEvaluationDate $ Just (december 29 2012)
+  t0 <- Settings.evaluationDate
+  assertEqual t0 (fromGregorian 2012 12 29)
+  t2 <- today
+  Settings.setEvaluationDate Nothing
+  t1 <- Settings.evaluationDate
+  assertEqual t1 t2
 
 test_defaultTodaysHistFixings :: IO ()
-test_defaultTodaysHistFixings = do  e1 <- Settings.enforceTodaysHistoricFixings
-                                    assertEqual e1 False
+test_defaultTodaysHistFixings = do
+  e1 <- Settings.enforceTodaysHistoricFixings
+  assertEqual e1 False
 
 test_setTodaysHistFixings :: IO ()
-test_setTodaysHistFixings = do  Settings.setEnforceTodaysHistoricFixings True
-                                e1 <- Settings.enforceTodaysHistoricFixings
-                                assertEqual e1 True
+test_setTodaysHistFixings = do
+  Settings.setEnforceTodaysHistoricFixings True
+  e1 <- Settings.enforceTodaysHistoricFixings
+  assertEqual e1 True
 
 test_minDate :: IO ()
 test_minDate = assertEqual minDate (fromGregorian 1901 01 01)
@@ -63,212 +67,228 @@ test_leapYears = assertEqual
                   (map isLeap [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5])
 
 test_emptyLegStart :: IO ()
-test_emptyLegStart = do l <- Leg.leg []
-                        assertThrows (Leg.startDate l) (not . null . Error.message)
+test_emptyLegStart = do
+  l <- Leg.leg []
+  assertThrows (Leg.startDate l) (not . null . Error.message)
 
 test_singleLegToday :: IO ()
-test_singleLegToday = do  t <- today
-                          l <- Leg.leg [(100, t)]
-                          assertEqual t (Leg.startDate l)
+test_singleLegToday = do
+  t <- today
+  l <- Leg.leg [(100, t)]
+  assertEqual t (Leg.startDate l)
 
 test_twoLegsUnsorted :: IO ()
-test_twoLegsUnsorted = do t <- today
-                          l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
-                          assertEqual (addDays (-10) t) (Leg.startDate l)
+test_twoLegsUnsorted = do
+  t <- today
+  l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
+  assertEqual (addDays (-10) t) (Leg.startDate l)
 
 test_threeLegsSorted :: IO ()
-test_threeLegsSorted = do t <- today
-                          l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
-                          assertEqual (addDays (-10) t) (Leg.startDate l)
+test_threeLegsSorted = do
+  t <- today
+  l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
+  assertEqual (addDays (-10) t) (Leg.startDate l)
 
 test_GBPCalendar :: IO ()
-test_GBPCalendar = do c1 <- Calendar.londonStockExchange
-                      c2 <- Calendar.gbp
-                      assertEqual (show c1) (show c2)
+test_GBPCalendar = do
+  c1 <- Calendar.londonStockExchange
+  c2 <- Calendar.gbp
+  assertEqual (show c1) (show c2)
 
 test_calAdjust :: IO ()
-test_calAdjust = do c <- Calendar.russia 
-                    a <- Calendar.adjust
-                            c
-                            (fromGregorian 2012 12 22)
-                            BusinessDayConvention.Preceding
-                    assertEqual (fromGregorian 2012 12 21) a
+test_calAdjust = do
+  c <- Calendar.russia 
+  a <- Calendar.adjust
+          c
+          (fromGregorian 2012 12 22)
+          BusinessDayConvention.Preceding
+  assertEqual (fromGregorian 2012 12 21) a
 
 test_calAdvance :: IO ()
-test_calAdvance = do  c <- Calendar.russia 
-                      a <- Calendar.advance
-                            c
-                            (fromGregorian 2012 12 20)
-                            1
-                            Unit.Months
-                            BusinessDayConvention.Preceding
-                            False
-                      assertEqual (fromGregorian 2013 01 18) a
+test_calAdvance = do
+  c <- Calendar.russia 
+  a <- Calendar.advance
+        c
+        (fromGregorian 2012 12 20)
+        1
+        Unit.Months
+        BusinessDayConvention.Preceding
+        False
+  assertEqual (fromGregorian 2013 01 18) a
                               
 test_currency :: IO ()
-test_currency = do  c <- Currency.gbp
-                    assertEqual "British pound sterling" (show c)
+test_currency = do
+  c <- Currency.gbp
+  assertEqual "British pound sterling" (show c)
 
 test_a365fCounter :: IO ()
-test_a365fCounter = do  c1 <- DayCounter.a365F
-                        c2 <- DayCounter.actual365Fixed
-                        assertEqual (show c1) (show c2)
+test_a365fCounter = do
+  c1 <- DayCounter.a365F
+  c2 <- DayCounter.actual365Fixed
+  assertEqual (show c1) (show c2)
 
 test_bondStatics :: IO ()
-test_bondStatics = do c <- Calendar.gbp
-                      l <- Leg.leg [(1000, fromGregorian 2013 1 1)] 
-                      b <- Bond.bond' 2 c 1000 m i l
-                      assertEqual m (Bond.maturityDate b)
-                   where i = Just (fromGregorian 2012 1 1)
-                         m = Just (fromGregorian 2013 1 1)
+test_bondStatics = do
+  c <- Calendar.gbp
+  l <- Leg.leg [(1000, fromGregorian 2013 1 1)] 
+  b <- Bond.bond' 2 c 1000 m i l
+  assertEqual m (Bond.maturityDate b)
+  where i = Just (fromGregorian 2012 1 1)
+        m = Just (fromGregorian 2013 1 1)
 
 test_fixedBondWithSchedule :: IO ()
-test_fixedBondWithSchedule = do c <- Calendar.russia
-                                tenor <- Period.period 1 Unit.Months
-                                s <- Schedule.schedule
-                                  (Just $ fromGregorian 2012 12 20)
-                                  (fromGregorian 2013 12 21)
-                                  tenor
-                                  c
-                                  BusinessDayConvention.Following
-                                  BusinessDayConvention.Unadjusted
-                                  DateGenerationRule.Forward
-                                  False
-                                  (Just $ fromGregorian 2012 12 21)
-                                  (Just $ fromGregorian 2013 12 21)
-                                cnt <- DayCounter.actual365Fixed
-                                _ <- Bond.fixedRateBond
-                                      1
-                                      100
-                                      s
-                                      [3]
-                                      cnt
-                                      BusinessDayConvention.Following
-                                      100
-                                      (Just $ fromGregorian 2012 10 11)
-                                      c
-                                assertEqual True True
+test_fixedBondWithSchedule = do
+  c <- Calendar.russia
+  tenor <- Period.period 1 Unit.Months
+  s <- Schedule.schedule
+    (Just $ fromGregorian 2012 12 20)
+    (fromGregorian 2013 12 21)
+    tenor
+    c
+    BusinessDayConvention.Following
+    BusinessDayConvention.Unadjusted
+    DateGenerationRule.Forward
+    False
+    (Just $ fromGregorian 2012 12 21)
+    (Just $ fromGregorian 2013 12 21)
+  cnt <- DayCounter.actual365Fixed
+  _ <- Bond.fixedRateBond
+        1
+        100
+        s
+        [3]
+        cnt
+        BusinessDayConvention.Following
+        100
+        (Just $ fromGregorian 2012 10 11)
+        c
+  assertEqual True True
 
 test_fixedBondWithCalendars :: IO ()
-test_fixedBondWithCalendars = do  c <- Calendar.russia
-                                  tenor <- Period.period 1 Unit.Months
-                                  cnt <- DayCounter.actual365Fixed
-                                  _ <- Bond.fixedRateBond'
-                                    1
-                                    c
-                                    100
-                                    (fromGregorian 2012 12 20)
-                                    (fromGregorian 2013 12 21)
-                                    tenor
-                                    [0.12]
-                                    cnt
-                                    BusinessDayConvention.Following
-                                    BusinessDayConvention.Unadjusted
-                                    100
-                                    (Just $ fromGregorian 2012 10 01)
-                                    Nothing
-                                    DateGenerationRule.Forward
-                                    False
-                                    c
-                                  assertEqual True True
+test_fixedBondWithCalendars = do
+  c <- Calendar.russia
+  tenor <- Period.period 1 Unit.Months
+  cnt <- DayCounter.actual365Fixed
+  _ <- Bond.fixedRateBond'
+    1
+    c
+    100
+    (fromGregorian 2012 12 20)
+    (fromGregorian 2013 12 21)
+    tenor
+    [0.12]
+    cnt
+    BusinessDayConvention.Following
+    BusinessDayConvention.Unadjusted
+    100
+    (Just $ fromGregorian 2012 10 01)
+    Nothing
+    DateGenerationRule.Forward
+    False
+    c
+  assertEqual True True
 
 test_fixedBond :: IO ()
-test_fixedBond = do dc <- DayCounter.actual365Fixed
-                    r1 <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
-                    r2 <- InterestRate.interestRate 0.125 dc Compounding.Simple Frequency.Monthly
-                    cal <- Calendar.russia
-                    tenor <- Period.period 6 Unit.Months
-                    s <- Schedule.schedule
-                      (Just (fromGregorian 2012 12 20))
-                      (fromGregorian 2013 12 21)
-                      tenor
-                      cal
-                      BusinessDayConvention.Following
-                      BusinessDayConvention.Unadjusted
-                      DateGenerationRule.Forward
-                      False
-                      (Just (fromGregorian 2012 12 21))
-                      (Just (fromGregorian 2013 12 21))
-                    _ <- Bond.fixedRateBond''
-                            3
-                            100
-                            s
-                            [r1, r2]
-                            BusinessDayConvention.Preceding
-                            100
-                            (Just (fromGregorian 2012 12 21))
-                            cal
-                    assertEqual True True
+test_fixedBond = do
+  dc <- DayCounter.actual365Fixed
+  r1 <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
+  r2 <- InterestRate.interestRate 0.125 dc Compounding.Simple Frequency.Monthly
+  cal <- Calendar.russia
+  tenor <- Period.period 6 Unit.Months
+  s <- Schedule.schedule
+    (Just (fromGregorian 2012 12 20))
+    (fromGregorian 2013 12 21)
+    tenor
+    cal
+    BusinessDayConvention.Following
+    BusinessDayConvention.Unadjusted
+    DateGenerationRule.Forward
+    False
+    (Just (fromGregorian 2012 12 21))
+    (Just (fromGregorian 2013 12 21))
+  _ <- Bond.fixedRateBond''
+          3
+          100
+          s
+          [r1, r2]
+          BusinessDayConvention.Preceding
+          100
+          (Just (fromGregorian 2012 12 21))
+          cal
+  assertEqual True True
 
 test_frequency :: IO ()
-test_frequency = do p <- Period.period 1 Unit.Months
-                    assertEqual Frequency.Monthly (Period.toFrequency p)
+test_frequency = do
+  p <- Period.period 1 Unit.Months
+  assertEqual Frequency.Monthly (Period.toFrequency p)
 
 test_truncateSchedule :: IO ()
-test_truncateSchedule = do  tenor <- Period.period 1 Unit.Months
-                            cal <- Calendar.russia
-                            s <- Schedule.schedule
-                              (Just $ 20 `december` 2012)
-                              (21 `december` 2013)
-                              tenor
-                              cal
-                              BusinessDayConvention.Following
-                              BusinessDayConvention.Unadjusted
-                              DateGenerationRule.Forward
-                              False
-                              (Just $ 21 `december` 2012)
-                              (Just $ 21 `december` 2013)
-                            truncated <- Schedule.until s (15 `april` 2013)
-                            assertEqual [fromGregorian 2012 12 20,
-                                         fromGregorian 2012 12 21,
-                                         fromGregorian 2013 01 21,
-                                         fromGregorian 2013 02 21,
-                                         fromGregorian 2013 03 21,
-                                         fromGregorian 2013 04 15]
-                                        (Schedule.dates truncated)
+test_truncateSchedule = do
+  tenor <- Period.period 1 Unit.Months
+  cal <- Calendar.russia
+  s <- Schedule.schedule
+    (Just $ 20 `december` 2012)
+    (21 `december` 2013)
+    tenor
+    cal
+    BusinessDayConvention.Following
+    BusinessDayConvention.Unadjusted
+    DateGenerationRule.Forward
+    False
+    (Just $ 21 `december` 2012)
+    (Just $ 21 `december` 2013)
+  truncated <- Schedule.until s (15 `april` 2013)
+  assertEqual [fromGregorian 2012 12 20,
+               fromGregorian 2012 12 21,
+               fromGregorian 2013 01 21,
+               fromGregorian 2013 02 21,
+               fromGregorian 2013 03 21,
+               fromGregorian 2013 04 15]
+              (Schedule.dates truncated)
 
 test_bondEval :: IO ()
-test_bondEval = do  r <- BondExample.result
-                    let (fixnpv, znpv, fnpv) = BondExample.npv r
-                        (fixy, zy, fy) = BondExample.yield r
-                        (fixclean, zclean, fclean) = BondExample.cleanPrice r
-                        (fixdirty, zdirty, fdirty) = BondExample.dirtyPrice r
-                        (fixaccrual, zaccrual, faccrual) = BondExample.accruedAmount r
-                        (fixprev, fprev) = BondExample.previousCoupon r
-                        (fixnext, fnext) = BondExample.nextCoupon r
-                        (fixnextD, znextD, fnextD) = BondExample.nextCouponDate r
-                        cleanFromYield = BondExample.cleanPriceFromYield r
-                        yieldFromClean = BondExample.yieldFromCleanPrice r
-                        tradable = BondExample.tradable r
+test_bondEval = do
+  r <- BondExample.result
+  let (fixnpv, znpv, fnpv) = BondExample.npv r
+      (fixy, zy, fy) = BondExample.yield r
+      (fixclean, zclean, fclean) = BondExample.cleanPrice r
+      (fixdirty, zdirty, fdirty) = BondExample.dirtyPrice r
+      (fixaccrual, zaccrual, faccrual) = BondExample.accruedAmount r
+      (fixprev, fprev) = BondExample.previousCoupon r
+      (fixnext, fnext) = BondExample.nextCoupon r
+      (fixnextD, znextD, fnextD) = BondExample.nextCouponDate r
+      cleanFromYield = BondExample.cleanPriceFromYield r
+      yieldFromClean = BondExample.yieldFromCleanPrice r
+      tradable = BondExample.tradable r
 
-                    assertBool $ abs(fixnpv-107.6682891) < 1e-7
-                    assertBool $ abs(znpv-100.9221782) < 1e-7
-                    assertBool $ abs(fnpv-102.3593146) < 1e-7
-                    assertBool $ abs(fixy-0.0364756) < 1e-7
-                    assertBool $ abs(zy-0.0300006) < 1e-7
-                    assertBool $ abs(fy-0.0220096) < 1e-7
+  assertBool $ abs(fixnpv-107.6682891) < 1e-7
+  assertBool $ abs(znpv-100.9221782) < 1e-7
+  assertBool $ abs(fnpv-102.3593146) < 1e-7
+  assertBool $ abs(fixy-0.0364756) < 1e-7
+  assertBool $ abs(zy-0.0300006) < 1e-7
+  assertBool $ abs(fy-0.0220096) < 1e-7
 
-                    assertBool $ abs(fixclean-106.1275283) < 1e-7
-                    assertBool $ abs(zclean-100.9221782) < 1e-7
-                    assertBool $ abs(fclean-101.7972017) < 1e-7
-                    assertBool $ abs(fixdirty-107.6682891) < 1e-7
-                    assertBool $ abs(zdirty-100.9221782) < 1e-7
-                    assertBool $ abs(fdirty-102.3593146) < 1e-7
-                    assertBool $ abs(fixaccrual-1.5407609) < 1e-7
-                    assertBool $ abs(zaccrual-0.0) < 1e-7
-                    assertBool $ abs(faccrual-0.5621129) < 1e-7
-                    assertBool $ abs(fixprev-0.045) < 1e-7
-                    assertBool $ abs(fprev-0.0288625) < 1e-7
-                    assertBool $ abs(fixnext-0.045) < 1e-7
-                    assertBool $ abs(fnext-0.0342984) < 1e-7
-                    assertEqual fixnextD (fromGregorian 2008 11 17)
-                    assertEqual znextD (fromGregorian 2013 08 15)
-                    assertEqual fnextD (fromGregorian 2008 10 21)
-                    assertBool $ abs(cleanFromYield-101.79720) < 1e-5 -- because of difference in QL versions?
-                    assertBool $ abs(yieldFromClean-0.0220096) < 1e-7
+  assertBool $ abs(fixclean-106.1275283) < 1e-7
+  assertBool $ abs(zclean-100.9221782) < 1e-7
+  assertBool $ abs(fclean-101.7972017) < 1e-7
+  assertBool $ abs(fixdirty-107.6682891) < 1e-7
+  assertBool $ abs(zdirty-100.9221782) < 1e-7
+  assertBool $ abs(fdirty-102.3593146) < 1e-7
+  assertBool $ abs(fixaccrual-1.5407609) < 1e-7
+  assertBool $ abs(zaccrual-0.0) < 1e-7
+  assertBool $ abs(faccrual-0.5621129) < 1e-7
+  assertBool $ abs(fixprev-0.045) < 1e-7
+  assertBool $ abs(fprev-0.0288625) < 1e-7
+  assertBool $ abs(fixnext-0.045) < 1e-7
+  assertBool $ abs(fnext-0.0342984) < 1e-7
+  assertEqual fixnextD (fromGregorian 2008 11 17)
+  assertEqual znextD (fromGregorian 2013 08 15)
+  assertEqual fnextD (fromGregorian 2008 10 21)
+  assertBool $ abs(cleanFromYield-101.79720) < 1e-5 -- because of difference in QL versions?
+  assertBool $ abs(yieldFromClean-0.0220096) < 1e-7
 
 
-                    assertEqual tradable (True, True, False)
+  assertEqual tradable (True, True, False)
 
 test_final :: IO ()
 test_final = performGC

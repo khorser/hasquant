@@ -83,40 +83,42 @@ result = do
                                   False
   Settings.setEvaluationDate (Just todaysDate)
   discDepoHelpers <- mapM
-    (\(q, p) -> do tenor <- Period.period p Unit.Months
-                   rate <- Quote.simpleQuote q
-                   Yield.depositRateHelper
-                     rate
-                     tenor
-                     fixingDays
-                     targetCal
-                     BusinessDayConvention.ModifiedFollowing
-                     True
-                     actual365Fixed)
+    (\(q, p) -> do
+      tenor <- Period.period p Unit.Months
+      rate <- Quote.simpleQuote q
+      Yield.depositRateHelper
+        rate
+        tenor
+        fixingDays
+        targetCal
+        BusinessDayConvention.ModifiedFollowing
+        True
+        actual365Fixed)
     $ zip zcQuotes zcTenors
   quotes <- mapM Quote.simpleQuote marketQuotes
   discBondHelpers <- mapM
-    (\(q, c, i, m) -> do s <- Schedule.schedule
-                                i
-                                m
-                                p6m
-                                usGovBondCal
-                                BusinessDayConvention.Unadjusted
-                                BusinessDayConvention.Unadjusted
-                                DateGenerationRule.Backward
-                                False
-                                Nothing
-                                Nothing
-                         Yield.fixedRateBondHelper
-                           q
-                           settlementDays
-                           100.0
-                           s
-                           [c]
-                           actActBond
-                           BusinessDayConvention.Unadjusted
-                           redemption
-                           i)
+    (\(q, c, i, m) -> do
+      s <- Schedule.schedule
+             i
+             m
+             p6m
+             usGovBondCal
+             BusinessDayConvention.Unadjusted
+             BusinessDayConvention.Unadjusted
+             DateGenerationRule.Backward
+             False
+             Nothing
+             Nothing
+      Yield.fixedRateBondHelper
+        q
+        settlementDays
+        100.0
+        s
+        [c]
+        actActBond
+        BusinessDayConvention.Unadjusted
+        redemption
+        i)
     $ zip4 quotes couponRates issueDates maturities
   ts <- Yield.piecewiseYieldCurve
           settlementDate
@@ -181,23 +183,25 @@ result = do
   
   depoLiborHelpers <-
     mapM (\(q, (n, u)) ->
-      do quote <- Quote.simpleQuote q
-         p <- Period.period n u
-         Yield.depositRateHelper quote p fixingDays targetCal
-                                        BusinessDayConvention.ModifiedFollowing
-                                        True actual360)
-         $ zip liborDepoQuotes liborDepoTerms
+      do
+        quote <- Quote.simpleQuote q
+        p <- Period.period n u
+        Yield.depositRateHelper quote p fixingDays targetCal
+                                       BusinessDayConvention.ModifiedFollowing
+                                       True actual360) $
+          zip liborDepoQuotes liborDepoTerms
   
   eur6M <- Ibor.euribor6M Nothing
   spread <- Quote.simpleQuote 0
   
   swapLiborHelpers <-
     mapM (\(q, n) ->
-      do quote <- Quote.simpleQuote q
-         p <- Period.period n Unit.Years
-         Yield.swapRateHelper' quote p targetCal Frequency.Annual BusinessDayConvention.Unadjusted
-                               thirty360European eur6M spread p1d Nothing)
-          $ zip liborSwapQuotes liborSwapTerms
+      do
+        quote <- Quote.simpleQuote q
+        p <- Period.period n Unit.Years
+        Yield.swapRateHelper' quote p targetCal Frequency.Annual BusinessDayConvention.Unadjusted
+                              thirty360European eur6M spread p1d Nothing) $
+          zip liborSwapQuotes liborSwapTerms
   
   fwdCurve <- Yield.piecewiseYieldCurve
                 settlementDate
