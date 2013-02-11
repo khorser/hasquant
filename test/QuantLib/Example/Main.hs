@@ -14,11 +14,11 @@ main = do
 
   r <- BondExample.result
   
-  putStrLn $ "NPV: " ++ show (BondExample.npv r)
-  putStrLn $ "Yield: " ++ show (BondExample.yield r)
-  putStrLn $ "Clean price: " ++ show (BondExample.cleanPrice r)
-  putStrLn $ "Dirty price: " ++ show (BondExample.dirtyPrice r)
-  putStrLn $ "Accrued amount: " ++ show (BondExample.accruedAmount r)
+  putStrLn $ "NPV: " ++ show (BondExample.npvR r)
+  putStrLn $ "Yield: " ++ show (BondExample.yieldR r)
+  putStrLn $ "Clean price: " ++ show (BondExample.cleanPriceR r)
+  putStrLn $ "Dirty price: " ++ show (BondExample.dirtyPriceR r)
+  putStrLn $ "Accrued amount: " ++ show (BondExample.accruedAmountR r)
   putStrLn $ "Previous coupon: " ++ show (BondExample.previousCoupon r)
   putStrLn $ "Next coupon: " ++ show (BondExample.nextCoupon r)
   putStrLn $ "Next coupon date: " ++ show (BondExample.nextCouponDate r)

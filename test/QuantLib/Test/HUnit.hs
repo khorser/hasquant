@@ -249,11 +249,11 @@ test_truncateSchedule = do
 test_bondEval :: IO ()
 test_bondEval = do
   r <- BondExample.result
-  let (fixnpv, znpv, fnpv) = BondExample.npv r
-      (fixy, zy, fy) = BondExample.yield r
-      (fixclean, zclean, fclean) = BondExample.cleanPrice r
-      (fixdirty, zdirty, fdirty) = BondExample.dirtyPrice r
-      (fixaccrual, zaccrual, faccrual) = BondExample.accruedAmount r
+  let (fixnpv, znpv, fnpv) = BondExample.npvR r
+      (fixy, zy, fy) = BondExample.yieldR r
+      (fixclean, zclean, fclean) = BondExample.cleanPriceR r
+      (fixdirty, zdirty, fdirty) = BondExample.dirtyPriceR r
+      (fixaccrual, zaccrual, faccrual) = BondExample.accruedAmountR r
       (fixprev, fprev) = BondExample.previousCoupon r
       (fixnext, fnext) = BondExample.nextCoupon r
       (fixnextD, znextD, fnextD) = BondExample.nextCouponDate r
