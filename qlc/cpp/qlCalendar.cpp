@@ -170,4 +170,15 @@ void qlCalendarRemoveHoliday(Calendar* o, int x0, char **e) {
   }
 }
 
+Calendar* qlBespokeCalendar(char* name, unsigned len, int *weekends, char **e) {
+  try {
+    BespokeCalendar *cal = new BespokeCalendar(std::string(arg(name)));
+    for (unsigned i = 0; i < len; i++)
+      cal->addWeekend((Weekday)weekends[i]);
+    return ret(cal);
+  } catch (std::exception& er) {
+    return handleException<Calendar*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -309,3 +309,12 @@ removeHoliday = $(ffiCallX 'removeHoliday) c_removeHoliday
 
 foreign import ccall safe "ql.h qlCalendarRemoveHoliday"
   c_removeHoliday :: Ptr CCalendar -> CDate -> Ptr CString -> IO ()
+
+-- |/Warning/ different bespoke calendars created with the same name (or different bespoke calendars created with no name) will compare as equal.
+bespokeCalendar :: String -- ^name
+  -> [Weekday] -- ^weekends
+  -> IO Calendar
+bespokeCalendar = $(ffiConstruct 'bespokeCalendar) c_bespokeCalendar
+
+foreign import ccall safe "ql.h qlBespokeCalendar"
+  c_bespokeCalendar :: CString -> CInt -> Ptr CInt -> Ptr CString -> IO (Ptr CCalendar)

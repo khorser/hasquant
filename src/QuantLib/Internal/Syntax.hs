@@ -11,6 +11,7 @@ where
 
 import Control.Monad(liftM, liftM2, unless)
 import Foreign.Marshal.Utils(fromBool, toBool)
+import Foreign.Marshal.Array(withArrayLen)
 import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -43,7 +44,7 @@ import QuantLib.Time.Weekday()
 import QuantLib.Math.Interpolation()
 import QuantLib.TermStructure.Trait()
 
-data NestedArg = DayN | DoubleN | ForeignPtrN
+data NestedArg = DayN | DoubleN | ForeignPtrN | EnumN Name
   deriving (Show, Eq)
 
 -- XXX use GADTs/SYB/Uniplate?
@@ -84,10 +85,13 @@ nameToTop n = error $ "Not supported top type: " ++ show n
 nestedNameToTop :: Name -> Q NestedArg
 nestedNameToTop n | n == ''Day = return DayN
 nestedNameToTop n | n == ''Double = return DoubleN
-nestedNameToTop n =
-  tryForeignPtr n >>=
-    either (\x -> fail $ "Error parsing nested arg: " ++ show x)
-      (\_ -> return ForeignPtrN)
+nestedNameToTop n = do
+  e <- enumType n
+  case e of
+    (Just IntEnum) -> return $ EnumN n
+    _ -> tryForeignPtr n >>=
+          either (\x -> fail $ "Error parsing nested arg: " ++ show x)
+            (\_ -> return ForeignPtrN)
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = return $ nameToTop n
@@ -288,6 +292,10 @@ genFfiCall io constr extra aa r = do
 
     genFfiCallImpl ((ListA DayN, v):as) c_call =
       [|withDays $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
+
+    genFfiCallImpl ((ListA (EnumN n), v):as) c_call =
+      [|withArrayLen (map (toQlEnum $(stringE $ show n)) $v)
+        (\y1 y2 -> $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CInt) y1) y2|]))|]
 
     genFfiCallImpl ((ListA2 DoubleN DayN, v):as) c_call =
       [|withDoubles (map fst $v) (\n ams -> withDays (map snd $v)

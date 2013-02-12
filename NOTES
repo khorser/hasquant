@@ -55,7 +55,6 @@ Calendar::
 Period::
 BondHelper
 Bond::
-BespokeCalendar
 JointCalendar
 
 CashFlows:: and BondFunctions::
@@ -103,3 +102,4 @@ Date::
 DayCounter::
 Calendar::
 SimpleQuote.setValue
+BespokeCalendar
