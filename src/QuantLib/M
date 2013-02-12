@@ -28,7 +28,7 @@ dll: libql.dll
 
 so: libql.so
 
-CFLAGS=-Wall -Wunused -Wuninitialized -pedantic -Wunused-parameter
+CFLAGS=-Wall -Wextra -pedantic
 
 libql.dll: $(OBJS)
 	g++ --shared -o libql.dll cpp/*.o -static-libstdc++ -static-libgcc -Wl,--output-def,cpp/libql.def,--out-implib,cpp/libql.a -lQuantLib $(EXTRA)

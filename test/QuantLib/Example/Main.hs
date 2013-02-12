@@ -40,4 +40,5 @@ main = do
   putStrLn $ "Repo dirty forward price: " ++ show (RepoExample.forwardPriceR rr)
   putStrLn $ "Repo implied yield: " ++ show (RepoExample.impliedYieldR rr)
   putStrLn $ "Market repo rate:   " ++ show (RepoExample.zeroRateR rr)
-  putStrLn $ "DONE"
+
+  putStrLn "DONE"
