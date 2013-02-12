@@ -63,8 +63,8 @@ result = do
   -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
   i <- asInstrument b
   discountingBondEngine bondCurve Nothing >>= setPricingEngine i
-  --_ <- yield' b bondCleanPrice bondDayCountConvention Compounded bondCouponFrequency
-  --  Nothing 1e-8 100 >>= setValue bondSimpleQuote
+  _ <- yield' b bondCleanPrice bondDayCountConvention Compounded bondCouponFrequency
+    Nothing 1e-8 100 >>= setValue bondSimpleQuote
   repoQuote <- simpleQuote repoRate >>= asQuote
   repoCurve <- flatForward repoSettlementDate repoQuote repoDayCountConvention
     repoCompounding repoCompoundFreq
