@@ -5,6 +5,8 @@ module QuantLib.Example.Repo
   )
 where
 
+--import Control.Monad(liftM2)
+
 import QuantLib.Compounding
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond
@@ -58,12 +60,11 @@ result = do
     bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate)
     noCal
   b <- asBond fixedBond
+  -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
   i <- asInstrument b
-  engine <- discountingBondEngine bondCurve Nothing
-  setPricingEngine i engine
-  y <- yield' b bondCleanPrice bondDayCountConvention Compounded bondCouponFrequency
-    Nothing 1e-8 100
-  _ <- setValue bondSimpleQuote y
+  discountingBondEngine bondCurve Nothing >>= setPricingEngine i
+  --_ <- yield' b bondCleanPrice bondDayCountConvention Compounded bondCouponFrequency
+  --  Nothing 1e-8 100 >>= setValue bondSimpleQuote
   repoQuote <- simpleQuote repoRate >>= asQuote
   repoCurve <- flatForward repoSettlementDate repoQuote repoDayCountConvention
     repoCompounding repoCompoundFreq
