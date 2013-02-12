@@ -58,6 +58,7 @@ BespokeCalendar
 JointCalendar
 
 CashFlows:: and BondFunctions::
+Leg accessor
 
 
 FittedBondDiscountCurve
