@@ -45,8 +45,17 @@ SwapRateHelper
 
 OvernightIndexedSwapIndex
 OvernightIndexedSwap
+OISRateHelper
 
 DiscountingSwapEngine
+
+Currency::
+Calendar::
+Period::
+BondHelper
+Bond::
+BespokeCalendar
+JointCalendar
 
 --
 gen.pl:

@@ -1,2 +1,0 @@
--- |the day counter used for date/time conversion
-->DayCounter
