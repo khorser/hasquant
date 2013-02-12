@@ -48,6 +48,7 @@ OvernightIndexedSwap
 OISRateHelper
 
 DiscountingSwapEngine
+DatedOISRateHelper
 
 Currency::
 Calendar::
