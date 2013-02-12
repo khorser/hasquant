@@ -21,6 +21,7 @@ Flag buildExample
 Library
   Exposed-modules:     
                 QuantLib.CashFlow.CouponPricer
+              , QuantLib.CashFlow.DurationType
               , QuantLib.CashFlow.Leg
               , QuantLib.Compounding
               , QuantLib.Credit.Seniority

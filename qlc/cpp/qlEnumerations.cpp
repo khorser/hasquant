@@ -14,6 +14,7 @@
 #include <ql/instruments/swaption.hpp>
 #include <ql/time/imm.hpp>
 #include <ql/time/calendars/jointcalendar.hpp>
+#include <ql/cashflows/duration.hpp>
 
 #include <string.h>
 
@@ -196,6 +197,13 @@ static int jointCalendarRuleValues[] =
   , JoinBusinessDays
   };
 
+static int durationValues[] =
+  {
+    Duration::Simple
+  , Duration::Macaulay
+  , Duration::Modified
+  };
+
 struct EnumInfo {
   const char *name;
   size_t len;
@@ -267,6 +275,9 @@ static EnumInfo enumInfo[] = {
   {"QuantLib.Time.JointCalendarRule.JointCalendarRule",
     LENGTH(jointCalendarRuleValues),
     jointCalendarRuleValues},
+  {"QuantLib.CashFlow.DurationType",
+    LENGTH(durationValues),
+    durationValues},
 };
 
 int *qlEnumerationValue(const char *name, int *c) {
