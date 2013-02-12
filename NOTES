@@ -41,6 +41,18 @@ FuturesRateHelper
 VanillaSwap
 Swap.fairSpread
 Swap.fairRate
+SwapRateHelper
+
+OvernightIndexedSwapIndex
+OvernightIndexedSwap
+
+DiscountingSwapEngine
+
+--
+gen.pl:
+    add type to return from constructor
+    add support for static methods and bind to CashFlows:: and BondFunctions::
+--
 
 FittedBondDiscountCurve
 SimplePolynomialFitting
