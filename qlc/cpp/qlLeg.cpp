@@ -32,4 +32,12 @@ void qlFreeLeg(Leg *leg) {
   del(leg);
 }
 
+double qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
+  try {
+    return CashFlows::duration((*arg(leg)), (*arg(yield)), (Duration::Type)type, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

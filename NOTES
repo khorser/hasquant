@@ -60,7 +60,7 @@ JointCalendar
 --
 gen.pl:
     add type to return from constructor
-    add support for static methods and bind to CashFlows:: and BondFunctions::
+    CashFlows:: and BondFunctions::
 --
 
 FittedBondDiscountCurve

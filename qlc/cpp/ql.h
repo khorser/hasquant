@@ -43,6 +43,7 @@ extern "C" {
   int DLLEXPORT qlLegStartDate(Leg *leg, char **e);
 
   void DLLEXPORT qlFreeLeg(Leg *leg);
+  double DLLEXPORT qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
 #endif
 
   /* calendar */

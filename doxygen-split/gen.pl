@@ -1,6 +1,18 @@
 use strict;
 use warnings;
 
+use Getopt::Std;
+
+my $static = 0;
+my %opts;
+getopts("s", \%opts);
+if (exists($opts{s}))
+{
+# I forgot about static modifier during preprocessing of Doxygen
+# so now have to invent a flag
+  $static = 1;
+}
+
 my $f = $ARGV[0];
 
 my ($c, $m, $rest) = split /\^|\./, $f;
@@ -44,7 +56,7 @@ my $cret = "";
 my @args = ();
 my $retcast = "";
 
-my $implCtor = 0;
+my $implCtor = 0; # "implicit constructor" i.e. how to return an object
 
 # parse description
 for (@dec)
@@ -96,7 +108,11 @@ my $hargs = "";
 my @cnames = ();
 my $ocall = "";
 
-if (not $ctor)
+if ($static)
+{
+  $ocall .= "${c}::";
+}
+elsif (not $ctor)
 {
   my $cast = '';
   ($cargs, $fargs, $hargs, $cast) = type($c, 0);
