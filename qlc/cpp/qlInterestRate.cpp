@@ -85,12 +85,8 @@ InterestRate* qlInterestRateImpliedRate(InterestRate* o, double compound, DayCou
   }
 }
 
-double qlInterestRateRate(InterestRate* o, char **e) {
-  try {
-    return (arg(o))->rate();
-  } catch (std::exception& er) {
-    return handleException<double>(e, er);
-  }
+double qlInterestRateRate(InterestRate* o) {
+  return arg(o)->rate();
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

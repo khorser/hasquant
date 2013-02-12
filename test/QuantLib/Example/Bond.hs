@@ -21,8 +21,8 @@ import QuantLib.PricingEngine
 import QuantLib.Quote
 import QuantLib.Settings
 import QuantLib.TermStructure.Trait
-import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Volatility
+import QuantLib.TermStructure.Yield
 import QuantLib.Time.BusinessDayConvention
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date

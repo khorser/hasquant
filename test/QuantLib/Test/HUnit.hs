@@ -25,6 +25,7 @@ import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
 
 import qualified QuantLib.Example.Bond as BondExample
+import qualified QuantLib.Example.Repo as RepoExample
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
@@ -287,12 +288,28 @@ test_bondEval = do
   assertBool $ abs(cleanFromYield-101.79720) < 1e-5 -- because of difference in QL versions?
   assertBool $ abs(yieldFromClean-0.0220096) < 1e-7
 
-
   assertEqual tradable (True, True, False)
 
-test_final :: IO ()
-test_final = performGC
-          -- if we don't do GC we have a chance of getting 
-          -- "could not notify one or more observers: year 2200 out of bounds"
-          -- from one of the outstanding rate helpers
-          -- when QuickCheck sets evaluation date to some border value like 27Nov2199
+  performGC
+
+test_repoEval :: IO ()
+test_repoEval = do
+  r <- RepoExample.result
+
+  assertBool $ abs(RepoExample.cleanPriceR r-89.9769362) < 1e-7
+  assertBool $ abs(RepoExample.dirtyPriceR r-93.2880473) < 1e-7
+  assertBool $ abs(RepoExample.accruedAmountSettlement r-3.3111111) < 1e-7
+  assertBool $ abs(RepoExample.accruedAmountDelivery r-3.3333333) < 1e-7
+  assertBool $ abs(RepoExample.spotIncomeR r-3.9834025) < 1e-7
+  assertBool $ abs(RepoExample.fwdIncomeR r-4.0846473) < 1e-7
+  assertBool $ abs(RepoExample.npvR r+0.00002806598) < 1e-11
+  assertBool $ abs(RepoExample.cleanForwardPriceR r-88.2411379) < 1e-7
+  assertBool $ abs(RepoExample.forwardPriceR r-91.5744712) < 1e-7
+  assertBool $ abs(RepoExample.impliedYieldR r-0.050000633) < 1e-9
+  assertBool $ abs(RepoExample.zeroRateR r-0.05) < 1e-7
+
+  performGC
+
+-- if we don't do GC we have a chance of getting
+-- "could not notify one or more observers: year 2200 out of bounds"
+-- from one of the outstanding rate helpers when QuickCheck sets evaluation date to some border value like 27Nov2199

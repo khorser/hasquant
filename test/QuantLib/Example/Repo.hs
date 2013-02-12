@@ -5,22 +5,40 @@ module QuantLib.Example.Repo
   )
 where
 
-import QuantLib.Settings
-import QuantLib.Time.Date
-import QuantLib.Time.DayCounter
 import QuantLib.Compounding
-import QuantLib.Time.Frequency
-import QuantLib.Time.Calendar
-import QuantLib.Time.BusinessDayConvention
-import QuantLib.TermStructure.Yield
+import QuantLib.Instrument
+import QuantLib.Instrument.Bond
+import QuantLib.Instrument.Forward
+import QuantLib.InterestRate
+import QuantLib.PositionType
+import QuantLib.PricingEngine
 import QuantLib.Quote
-import QuantLib.Types
+import QuantLib.Settings
+import QuantLib.TermStructure.Yield
+import QuantLib.Time.BusinessDayConvention
+import QuantLib.Time.Calendar
+import QuantLib.Time.Date
+import QuantLib.Time.DateGenerationRule
+import QuantLib.Time.DayCounter
+import QuantLib.Time.Frequency
 import QuantLib.Time.Period
 import QuantLib.Time.Schedule
-import QuantLib.Time.DateGenerationRule
-import QuantLib.Instrument.Bond
+import QuantLib.Types
 
 data Result = Result
+  { cleanPriceR :: Double
+  , dirtyPriceR :: Double
+  , accruedAmountSettlement :: Double
+  , accruedAmountDelivery :: Double
+  , spotIncomeR :: Double
+  , fwdIncomeR :: Double
+  , strike :: Double
+  , npvR :: Double
+  , cleanForwardPriceR :: Double
+  , forwardPriceR :: Double
+  , impliedYieldR :: Double
+  , zeroRateR :: Double
+  } deriving Show
 
 result :: IO Result
 result = do
@@ -31,9 +49,63 @@ result = do
   bondSimpleQuote <- simpleQuote 0.01
   bondQuote <- asQuote bondSimpleQuote
   bondCurve <- flatForward repoSettlementDate bondQuote bondDayCountConvention Compounded bondCouponFrequency
-  period <- fromFrequency bondCouponFrequency
-  bondSchedule <- schedule bondDatedDate (Just bondMaturityDate) period bondCalendar bondBusinessDayConvention Backward False
-  return Result
+  p <- fromFrequency bondCouponFrequency
+  bondSchedule <- schedule (Just bondDatedDate) bondMaturityDate
+    p bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
+    Nothing Nothing
+  noCal <- noCalendar
+  fixedBond <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
+    bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate)
+    noCal
+  b <- asBond fixedBond
+  i <- asInstrument b
+  engine <- discountingBondEngine bondCurve Nothing
+  setPricingEngine i engine
+  y <- yield' b bondCleanPrice bondDayCountConvention Compounded bondCouponFrequency
+    Nothing 1e-8 100
+  _ <- setValue bondSimpleQuote y
+  repoQuote <- simpleQuote repoRate >>= asQuote
+  repoCurve <- flatForward repoSettlementDate repoQuote repoDayCountConvention
+    repoCompounding repoCompoundFreq
+  bondFwd <- fixedRateBondForward repoSettlementDate repoDeliveryDate fwdType dummyStrike
+    repoSettlementDays
+    repoDayCountConvention bondCalendar bondBusinessDayConvention fixedBond
+    (Just repoCurve) (Just repoCurve)
+
+  clP <- cleanPrice b
+  dp <- dirtyPrice b
+  accr1 <- accruedAmount b $ Just repoSettlementDate
+  accr2 <- accruedAmount b $ Just repoDeliveryDate
+
+  fwd <- asForward bondFwd
+  spotInc <- spotIncome fwd repoCurve
+  disc <- discount repoCurve repoDeliveryDate False
+  ii <- asInstrument fwd
+  np <- npv ii
+
+  clF <- cleanForwardPrice bondFwd
+  fP <- forwardPrice bondFwd
+
+  impR <- impliedYield fwd dp dummyStrike repoSettlementDate
+    repoCompounding repoDayCountConvention
+
+  z <- zeroRate repoCurve repoDeliveryDate repoDayCountConvention
+    repoCompounding repoCompoundFreq False
+
+  return Result {
+      cleanPriceR = clP
+    , dirtyPriceR = dp
+    , accruedAmountSettlement = accr1
+    , accruedAmountDelivery = accr2
+    , spotIncomeR = spotInc
+    , fwdIncomeR = spotInc / disc
+    , strike = dummyStrike
+    , npvR = np
+    , cleanForwardPriceR = clF
+    , forwardPriceR = fP
+    , impliedYieldR = rate impR
+    , zeroRateR = rate z
+    }
   where repoSettlementDate = 14 `february` 2000
         repoDeliveryDate = 15 `august` 2000
         repoRate = 0.05
@@ -50,3 +122,5 @@ result = do
         bondCleanPrice = 89.97693786
         bondRedemption = 100.0
         faceAmount = 100.0
+        dummyStrike = 91.5745
+        fwdType = Long

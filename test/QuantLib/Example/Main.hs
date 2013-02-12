@@ -4,6 +4,7 @@ import QuantLib.Utilities
 import QuantLib.Time.Date
 
 import qualified QuantLib.Example.Bond as BondExample
+import qualified QuantLib.Example.Repo as RepoExample
 
 main :: IO ()
 main = do
@@ -25,3 +26,18 @@ main = do
   putStrLn $ "Floater's clean price from yield: " ++ show (BondExample.cleanPriceFromYield r)
   putStrLn $ "Floater's yield from clean price: " ++ show (BondExample.yieldFromCleanPrice r)
   putStrLn $ "Tradable: " ++ show (BondExample.tradable r)
+
+  rr <- RepoExample.result
+  putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)
+  putStrLn $ "Underlying bond dirty price: " ++ show (RepoExample.dirtyPriceR rr)
+  putStrLn $ "Underlying bond accrued at settlement: " ++ show (RepoExample.accruedAmountSettlement rr)
+  putStrLn $ "Underlying bond accrued at delivery:   " ++ show (RepoExample.accruedAmountDelivery rr)
+  putStrLn $ "Underlying bond spot income: " ++ show (RepoExample.spotIncomeR rr)
+  putStrLn $ "Underlying bond fwd income:  " ++ show (RepoExample.fwdIncomeR rr)
+  putStrLn $ "Repo strike: " ++ show (RepoExample.strike rr)
+  putStrLn $ "Repo NPV:    " ++ show (RepoExample.npvR rr)
+  putStrLn $ "Repo clean forward price: " ++ show (RepoExample.cleanForwardPriceR rr)
+  putStrLn $ "Repo dirty forward price: " ++ show (RepoExample.forwardPriceR rr)
+  putStrLn $ "Repo implied yield: " ++ show (RepoExample.impliedYieldR rr)
+  putStrLn $ "Market repo rate:   " ++ show (RepoExample.zeroRateR rr)
+  putStrLn $ "DONE"

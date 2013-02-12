@@ -139,9 +139,10 @@ impliedRate = $(ffiConstruct 'impliedRate) c_impliedRate
 
 foreign import ccall safe "ql.h qlInterestRateImpliedRate"
   c_impliedRate :: Ptr CInterestRate -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CYearFraction -> Ptr CString -> IO (Ptr CInterestRate)
-rate :: InterestRate
-  -> IO Double
-rate = $(ffiCallX 'rate) c_rate
+
+rate :: InterestRate -> Double
+rate = $(ffiCallIO 'rate) c_rate
+-- XXX assuming rates are immutable
 
 foreign import ccall safe "ql.h qlInterestRateRate"
-  c_rate :: Ptr CInterestRate -> Ptr CString -> IO CDouble
+  c_rate :: Ptr CInterestRate -> IO CDouble

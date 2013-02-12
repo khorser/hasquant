@@ -172,7 +172,7 @@ extern "C" {
   InterestRate* DLLEXPORT qlInterestRateEquivalentRate(InterestRate* o, int comp, int freq, double t, char **e);
   InterestRate* DLLEXPORT qlInterestRateImpliedRate1(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, char **e);
   InterestRate* DLLEXPORT qlInterestRateImpliedRate(InterestRate* o, double compound, DayCounter* resultDC, int comp, int freq, double t, char **e);
-  double DLLEXPORT qlInterestRateRate(InterestRate* o, char **e);
+  double DLLEXPORT qlInterestRateRate(InterestRate* o);
 
   void DLLEXPORT qlFreeInterestRate(InterestRate *rate);
 

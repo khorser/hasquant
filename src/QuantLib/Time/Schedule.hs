@@ -53,7 +53,7 @@ schedule' :: [Day]
 schedule' = $(ffiConstruct 'schedule') c_schedule'
 
 -- |truncated schedule. QuantLibXL: qlScheduleTruncated
--- DO NOT call this on schedules created with 'schedule'
+-- DO NOT call this on schedules created with 'schedule''
 -- because result.isRegular_.pop_back() in QuantLib's Schedule::until
 -- is called on empty isRegular_ causing unspecified behaviour including
 -- segfaults.
