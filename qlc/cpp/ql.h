@@ -201,6 +201,7 @@ extern "C" {
     QlYieldTermStructure *ts, char **e);
 
   void DLLEXPORT qlFreeRateHelper(QlRateHelper *helper);
+  QlRateHelper* DLLEXPORT qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned monthsToEnd, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e);
 #endif
   void DLLEXPORT qlFreeYieldTermStructure(QlYieldTermStructure *ts);
   double DLLEXPORT qlYieldTSDiscount(QlYieldTermStructure *ts, int date,
@@ -213,7 +214,6 @@ extern "C" {
   InterestRate* DLLEXPORT qlYieldTermStructureForwardRate2(QlYieldTermStructure* o, double t1, double t2, int comp, int freq, int extrapolate, char **e);
   InterestRate* DLLEXPORT qlYieldTermStructureZeroRate1(QlYieldTermStructure* o, double t, int comp, int freq, int extrapolate, char **e);
   double DLLEXPORT qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extrapolate, char **e);
-
 
   /* pricing engine */
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);

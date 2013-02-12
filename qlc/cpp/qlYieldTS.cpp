@@ -180,4 +180,12 @@ double qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extr
   }
 }
 
+QlRateHelper* qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned monthsToEnd, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e) {
+  try {
+    return ret(new QlRateHelper(alloc(new FraRateHelper(Handle<Quote>(*arg(rate)), monthsToStart, monthsToEnd, fixingDays, (*arg(calendar)), (BusinessDayConvention)convention, endOfMonth, (*arg(dayCounter))))));
+  } catch (std::exception& er) {
+    return handleException<QlRateHelper*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

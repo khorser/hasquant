@@ -5,6 +5,7 @@ module QuantLib.TermStructure.Yield
     depositRateHelper
   , fixedRateBondHelper
   , swapRateHelper'
+  , fraRateHelper
   , piecewiseYieldCurve
   , piecewiseYieldCurve'
   , flatForward
@@ -224,3 +225,17 @@ discount' = $(ffiCallX 'discount') c_discount'
 
 foreign import ccall safe "ql.h qlYieldTermStructureDiscount1"
   c_discount' :: Ptr CYieldTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
+
+fraRateHelper :: Quote -- ^rate
+  -> Word -- ^monthsToStart
+  -> Word -- ^monthsToEnd
+  -> Word -- ^fixingDays
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^convention
+  -> Bool -- ^endOfMonth
+  -> DayCounter -- ^dayCounter
+  -> IO RateHelper
+fraRateHelper = $(ffiConstruct 'fraRateHelper) c_fraRateHelper
+
+foreign import ccall safe "ql.h qlFraRateHelper"
+  c_fraRateHelper :: Ptr CQuote -> CUInt -> CUInt -> CUInt -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)

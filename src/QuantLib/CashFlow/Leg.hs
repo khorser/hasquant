@@ -1,4 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.CashFlow.Leg
   (
     leg

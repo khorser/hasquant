@@ -5,7 +5,8 @@ use Getopt::Std;
 
 my $static = 0;
 my %opts;
-getopts("s", \%opts);
+getopts("sc:", \%opts);
+# -s -- generate wrappers for static methods
 if (exists($opts{s}))
 {
 # I forgot about static modifier during preprocessing of Doxygen
@@ -21,6 +22,13 @@ if ($m =~ /(\w+)#(\d+)/)
 {
   $m = $1;
   $num = $2;
+}
+
+# -c <ReturnType> -- override return type of the constructor wrapper
+my $retctor = $c;
+if (exists($opts{c}))
+{
+  $retctor = $opts{c};
 }
 
 open F, "<$f";
@@ -77,7 +85,7 @@ for (@dec)
       if ($ctor)
       {
 	my $tmp;
-	($cret, $fret, $hret, $tmp, $retcast, $implCtor) = type($c, 0);
+	($cret, $fret, $hret, $tmp, $retcast, $implCtor) = type($retctor, 0);
       }
       else
       {
@@ -318,8 +326,9 @@ sub type
   }
 }
 
+# std::vector<Date> as return value
 # const std::vector< Real,Rate,Date,Period > &
 # const std::vector< Handle< Quote > > &
 # ? const std::vector<boost::shared_ptr<typename Traits::helper> >&
-# boost::optional< BusinessDayConvention >
+# boost::optional< bool >, otherwise ignore
 # vim: set ft=perl sw=2 ts=8 st=2:

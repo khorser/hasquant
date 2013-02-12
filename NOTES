@@ -57,11 +57,8 @@ Bond::
 BespokeCalendar
 JointCalendar
 
---
-gen.pl:
-    add type to return from constructor
-    CashFlows:: and BondFunctions::
---
+CashFlows:: and BondFunctions::
+
 
 FittedBondDiscountCurve
 SimplePolynomialFitting
