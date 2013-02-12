@@ -69,6 +69,7 @@ module QuantLib.Time.Calendar
   , isHoliday
   , isWeekend
   , removeHoliday
+  , bespokeCalendar
   )
 where
 
@@ -317,4 +318,4 @@ bespokeCalendar :: String -- ^name
 bespokeCalendar = $(ffiConstruct 'bespokeCalendar) c_bespokeCalendar
 
 foreign import ccall safe "ql.h qlBespokeCalendar"
-  c_bespokeCalendar :: CString -> CInt -> Ptr CInt -> Ptr CString -> IO (Ptr CCalendar)
+  c_bespokeCalendar :: CString -> CUInt -> Ptr CInt -> Ptr CString -> IO (Ptr CCalendar)

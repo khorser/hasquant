@@ -295,7 +295,7 @@ genFfiCall io constr extra aa r = do
 
     genFfiCallImpl ((ListA (EnumN n), v):as) c_call =
       [|withArrayLen (map (toQlEnum $(stringE $ show n)) $v)
-        (\y1 y2 -> $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CInt) y1) y2|]))|]
+        (\y1 y2 -> $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CUInt) y1) y2|]))|]
 
     genFfiCallImpl ((ListA2 DoubleN DayN, v):as) c_call =
       [|withDoubles (map fst $v) (\n ams -> withDays (map snd $v)
