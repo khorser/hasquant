@@ -1,9 +1,0 @@
--- |the last cashflow paying before or at the given date
-->Leg::const_reverse_iterator
-::const Leg &
--- ^leg
-::bool
--- ^includeSettlementDateFlows
-::Date
-=Date()
--- ^settlementDate

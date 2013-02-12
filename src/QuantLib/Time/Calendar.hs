@@ -69,7 +69,11 @@ module QuantLib.Time.Calendar
   , isHoliday
   , isWeekend
   , removeHoliday
+
   , bespokeCalendar
+  , jointCalendar2
+  , jointCalendar3
+  , jointCalendar4
   )
 where
 
@@ -79,6 +83,7 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
+import QuantLib.Time.JointCalendarRule
 import QuantLib.Time.Unit(Unit)
 import QuantLib.Time.Weekday
 
@@ -319,3 +324,23 @@ bespokeCalendar = $(ffiConstruct 'bespokeCalendar) c_bespokeCalendar
 
 foreign import ccall safe "ql.h qlBespokeCalendar"
   c_bespokeCalendar :: CString -> CUInt -> Ptr CInt -> Ptr CString -> IO (Ptr CCalendar)
+
+jointCalendar3 :: Calendar -> Calendar -> Calendar -> JointCalendarRule
+  -> IO Calendar
+jointCalendar3 = $(ffiConstruct 'jointCalendar3) c_jointCalendar3
+
+foreign import ccall safe "ql.h qlJointCalendar3"
+  c_jointCalendar3 :: Ptr CCalendar -> Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)
+
+jointCalendar4 :: Calendar -> Calendar -> Calendar
+  -> Calendar -> JointCalendarRule -> IO Calendar
+jointCalendar4 = $(ffiConstruct 'jointCalendar4) c_jointCalendar4
+
+foreign import ccall safe "ql.h qlJointCalendar4"
+  c_jointCalendar4 :: Ptr CCalendar -> Ptr CCalendar -> Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)
+
+jointCalendar2 :: Calendar -> Calendar -> JointCalendarRule -> IO Calendar
+jointCalendar2 = $(ffiConstruct 'jointCalendar2) c_jointCalendar2
+
+foreign import ccall safe "ql.h qlJointCalendar2"
+  c_jointCalendar2 :: Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)

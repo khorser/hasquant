@@ -1,9 +1,0 @@
--- |the first cashflow paying after the given date
-->Leg::const_iterator
-::const Leg &
--- ^leg
-::bool
--- ^includeSettlementDateFlows
-::Date
-=Date()
--- ^settlementDate

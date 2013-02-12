@@ -61,6 +61,9 @@ extern "C" {
   int DLLEXPORT qlCalendarIsWeekend(Calendar* o, int w, char **e);
   void DLLEXPORT qlCalendarRemoveHoliday(Calendar* o, int x0, char **e);
   Calendar* DLLEXPORT qlBespokeCalendar(char* name, unsigned len, int *weekends, char **e);
+  Calendar* DLLEXPORT qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, char **e);
+  Calendar* DLLEXPORT qlJointCalendar3(Calendar* x_1, Calendar* x0, Calendar* x1, int x2, char **e);
+  Calendar* DLLEXPORT qlJointCalendar4(Calendar* x_1, Calendar* x0, Calendar* x1, Calendar* x2, int x3, char **e);
 
   void DLLEXPORT qlFreeCalendar(Calendar *calendar);
 

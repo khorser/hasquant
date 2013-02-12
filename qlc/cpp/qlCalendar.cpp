@@ -182,4 +182,28 @@ Calendar* qlBespokeCalendar(char* name, unsigned len, int *weekends, char **e) {
   }
 }
 
+Calendar* qlJointCalendar4(Calendar* x_1, Calendar* x0, Calendar* x1, Calendar* x2, int x3, char **e) {
+  try {
+    return alloc(new JointCalendar((*arg(x_1)), (*arg(x0)), (*arg(x1)), (*arg(x2)), (JointCalendarRule)x3));
+  } catch (std::exception& er) {
+    return handleException<Calendar*>(e, er);
+  }
+}
+
+Calendar* qlJointCalendar3(Calendar* x_1, Calendar* x0, Calendar* x1, int x2, char **e) {
+  try {
+    return alloc(new JointCalendar((*arg(x_1)), (*arg(x0)), (*arg(x1)), (JointCalendarRule)x2));
+  } catch (std::exception& er) {
+    return handleException<Calendar*>(e, er);
+  }
+}
+
+Calendar* qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, char **e) {
+  try {
+    return alloc(new JointCalendar((*arg(x_1)), (*arg(x0)), (JointCalendarRule)x1));
+  } catch (std::exception& er) {
+    return handleException<Calendar*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
