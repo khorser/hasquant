@@ -275,7 +275,7 @@ static EnumInfo enumInfo[] = {
   {"QuantLib.Time.JointCalendarRule.JointCalendarRule",
     LENGTH(jointCalendarRuleValues),
     jointCalendarRuleValues},
-  {"QuantLib.CashFlow.DurationType",
+  {"QuantLib.CashFlow.DurationType.DurationType",
     LENGTH(durationValues),
     durationValues},
 };
