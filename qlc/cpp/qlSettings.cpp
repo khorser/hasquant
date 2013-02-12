@@ -21,12 +21,16 @@ void qlSettingsSetEvaluationDate(int x, char **e) {
   }
 }
 
-void qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e) {
-  try {
-    Settings::instance().enforcesTodaysHistoricFixings() = x;
-  } catch (std::exception& er) {
-    handleException<void *>(e, er);
-  }
+void qlSettingsSetEnforceTodaysHistoricFixings(int x) {
+  Settings::instance().enforcesTodaysHistoricFixings() = x;
+}
+
+int qlSettingsIncludeTodaysCashFlows() {
+  return qlOptBool(Settings::instance().includeTodaysCashFlows());
+}
+
+void qlSettingsSetIncludeTodaysCashFlows(int x) {
+  Settings::instance().includeTodaysCashFlows() = qlOptBool(x);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

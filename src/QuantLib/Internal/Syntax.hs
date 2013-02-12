@@ -169,7 +169,7 @@ compToRetVal (AppT (ConT n1) t2) | n1 == ''IO =
   liftM IORV $ compArgToRetVal t2
 compToRetVal t = liftM AtomicRV $ compArgToRetVal t
 
--- use WriterT?
+-- use WriterT to clean up this mess?
 parseSignature :: Type -> Q ([TopArg], RetVal)
 parseSignature (AppT (AppT ArrowT t1) t2) = do
   top <- topArgType t1

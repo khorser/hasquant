@@ -1,2 +1,0 @@
--- |If set, this flag specifies whether or not CashFlows occurring on today's date should enter the NPV. When the NPV date (i.e., the date at which the cash flows are discounted) equals today's date, this flag overrides the behavior chosen for includeReferenceDate. It cannot be overridden locally when calling the CashFlow::hasOccurred method.
-->boost::optional< bool > &

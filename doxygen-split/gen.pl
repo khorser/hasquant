@@ -252,6 +252,10 @@ sub type
   $t =~ s/^(const\s+Handle\s*<\s*)([^& ]+)(\s*>\s*&\s*)/$2/;
   $t =~ s/^(const\s+boost::shared_ptr\s*<\s*)([^& ]+)(\s*>\s*&\s*)/$2/;
   $t =~ s/^(const\s+)?([^& ]+)(\s*&\s*)?/$2/;
+
+  my $opt = ($t =~ m!boost::optional!);
+  $t =~ s/^(boost::optional<\s*)([^> ]+)(\s*>\s*)$/$2/;
+
   if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor'])
   {
     return ('double', 'CDouble', 'Double', '', '', 0);
@@ -281,7 +285,14 @@ sub type
   }
   elsif ($t eq 'bool')
   {
-    return ('int', 'CInt', 'Bool', '', '', 0);
+    if ($opt)
+    {
+      return ('int', 'CInt', 'Maybe Bool', 'qlOptBool(%)', 'qlOptBool(%)', 0);
+    }
+    else
+    {
+      return ('int', 'CInt', 'Bool', '', '', 0);
+    }
   }
   elsif ($t eq 'void')
   {
@@ -330,5 +341,4 @@ sub type
 # const std::vector< Real,Rate,Date,Period > &
 # const std::vector< Handle< Quote > > &
 # ? const std::vector<boost::shared_ptr<typename Traits::helper> >&
-# boost::optional< bool >, otherwise ignore
 # vim: set ft=perl sw=2 ts=8 st=2:

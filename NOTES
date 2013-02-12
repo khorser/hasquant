@@ -59,6 +59,7 @@ BespokeCalendar
 JointCalendar
 
 CashFlows:: and BondFunctions::
+Settings::
 Leg accessor
 
 

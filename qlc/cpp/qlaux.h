@@ -1,6 +1,7 @@
 #include <ql/time/date.hpp>
 #include <ql/errors.hpp>
 #include <string.h>
+#include <boost/optional.hpp>
 
 int * qlAllocateInts(int size);
 
@@ -471,6 +472,9 @@ T ret(T p) {
 
 const Date qlNullableDate(int serialNumber);
 int qlNullableDate(const Date &date);
+
+boost::optional<bool> qlOptBool(int b);
+int qlOptBool(boost::optional<bool> b);
 
 template <class T>
 Handle<T> qlNullableHandle(boost::shared_ptr<T> *p) {

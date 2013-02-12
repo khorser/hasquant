@@ -67,7 +67,9 @@ extern "C" {
   int DLLEXPORT qlSettingsEvaluationDate();
   int DLLEXPORT qlSettingsEnforceTodaysHistoricFixings();
   void DLLEXPORT qlSettingsSetEvaluationDate(int x, char **e);
-  void DLLEXPORT qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e);
+  void DLLEXPORT qlSettingsSetEnforceTodaysHistoricFixings(int x);
+  int DLLEXPORT qlSettingsIncludeTodaysCashFlows();
+  void DLLEXPORT qlSettingsSetIncludeTodaysCashFlows(int x);
 
   /* bond */
 #ifdef quantlib_cash_flow_hpp
@@ -217,6 +219,7 @@ extern "C" {
 
   /* pricing engine */
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
+  QlPricingEngine* DLLEXPORT qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
 
   void DLLEXPORT qlFreePricingEngine(QlPricingEngine *engine);
 

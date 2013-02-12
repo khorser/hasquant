@@ -45,6 +45,20 @@ int qlNullableDate(const QuantLib::Date &date) {
     return date.serialNumber();
 }
 
+boost::optional<bool> qlOptBool(int b) {
+  if (b == -1)
+    return boost::none;
+  else
+    return b;
+}
+
+int qlOptBool(boost::optional<bool> b) {
+  if (b)
+    return *b;
+  else
+    return -1;
+}
+
 char *tracedup(const char *p) {
   TP2("Duplicating string", (void *)p);
   char *dup = strdup(p);
