@@ -605,6 +605,27 @@ struct EnumObjectInfo2 {
   }
 };
 
+template <class T, class T1, class T2, class T3>
+struct EnumObjectInfo3 {
+  const char *name;
+  T *(*make)(T1 x1, T2 x2, T3 x3);
+
+  class Cmp {
+  public:
+    Cmp(const char *n) : n_(n) {}
+    bool operator()(const EnumObjectInfo3<T, T1, T2, T3> &i) {
+      return !strcmp(i.name, n_);
+    }
+  private:
+    const char *n_;
+  };
+
+  template <class A>
+  static T *makeObject(T1 x1, T2 x2, T3 x3) {
+    return new A(x1, x2, x3);
+  }
+};
+
 namespace QuantLib {class Swap;} using QuantLib::Swap;
 typedef boost::shared_ptr<Swap> QlSwap;
 template <> class objClassName<Swap *> { public: static const char *name() { return "Swap"; } };

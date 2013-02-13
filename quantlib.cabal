@@ -30,6 +30,7 @@ Library
               , QuantLib.ExerciseType
               , QuantLib.Index
               , QuantLib.Index.Ibor
+              , QuantLib.Index.Swap
               , QuantLib.Instrument
               , QuantLib.Instrument.BMASwapType
               , QuantLib.Instrument.Bond

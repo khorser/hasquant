@@ -273,6 +273,8 @@ extern "C" {
   void DLLEXPORT qlFreeOvernightIndexedSwapIndex(QlOvernightIndexedSwapIndex *o);
   QlSwapIndex* DLLEXPORT qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o);
 
+  QlSwapIndex* DLLEXPORT qlCreateLiborSwapIndex(char *name, Period* tenor, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e);
+
   /* forward */
   void DLLEXPORT qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd);
   QlForward* DLLEXPORT qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd);

@@ -43,7 +43,7 @@ Swap.fairSpread
 Swap.fairRate
 SwapRateHelper
 
-OvernightIndexedSwapIndex+all swap indices
+OvernightIndexedSwapIndex
 OvernightIndexedSwap
 OISRateHelper
 DatedOISRateHelper
@@ -102,3 +102,4 @@ SimpleQuote.setValue
 BespokeCalendar
 JointCalendar
 DiscountingSwapEngine
+swap indices

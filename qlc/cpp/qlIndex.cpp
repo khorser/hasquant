@@ -1,6 +1,7 @@
 #include <ql/index.hpp>
 #include <ql/indexes/swapindex.hpp>
 #include <ql/indexes/bmaindex.hpp>
+#include <ql/indexes/swap/all.hpp>
 
 #include "qlaux.h"
 
@@ -16,6 +17,38 @@ void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e)
 
 void qlFreeIndex(QlIndex *i) {
   del(i);
+}
+
+typedef Handle<YieldTermStructure> YieldTermStructureHandle;
+
+typedef EnumObjectInfo3<SwapIndex, Period&, YieldTermStructureHandle&, YieldTermStructureHandle&> SwapIndexInfo;
+static SwapIndexInfo swapIndexInfo [] = {
+  {"ChfLiborSwapIsdaFix", &SwapIndexInfo::makeObject<ChfLiborSwapIsdaFix>},
+  {"EurLiborSwapIfrFix", &SwapIndexInfo::makeObject<EurLiborSwapIfrFix>},
+  {"EurLiborSwapIsdaFixA", &SwapIndexInfo::makeObject<EurLiborSwapIsdaFixA>},
+  {"EurLiborSwapIsdaFixB", &SwapIndexInfo::makeObject<EurLiborSwapIsdaFixB>},
+  {"GbpLiborSwapIsdaFix", &SwapIndexInfo::makeObject<GbpLiborSwapIsdaFix>},
+  {"JpyLiborSwapIsdaFixAm", &SwapIndexInfo::makeObject<JpyLiborSwapIsdaFixAm>},
+  {"JpyLiborSwapIsdaFixPm", &SwapIndexInfo::makeObject<JpyLiborSwapIsdaFixPm>},
+  {"UsdLiborSwapIsdaFixAm", &SwapIndexInfo::makeObject<UsdLiborSwapIsdaFixAm>},
+  {"UsdLiborSwapIsdaFixPm", &SwapIndexInfo::makeObject<UsdLiborSwapIsdaFixPm>}
+};
+
+QlSwapIndex* qlCreateLiborSwapIndex(char *name, Period* tenor, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e) {
+  try {
+    SwapIndexInfo *last = LAST(swapIndexInfo);
+    SwapIndexInfo *found =
+      std::find_if(swapIndexInfo, last, SwapIndexInfo::Cmp(name));
+    if (found != last) {
+      YieldTermStructureHandle ts1 = qlNullableHandle(h1);
+      YieldTermStructureHandle ts2 = qlNullableHandle(h2);
+      return ret(new QlSwapIndex(alloc(found->make(*arg(tenor), ts1, ts2))));
+    }
+    else
+      QL_FAIL("Unknown Swap Index " << name);
+  } catch (std::exception& er) {
+    return handleException<QlSwapIndex*>(e, er);
+  }
 }
 
 void qlFreeInterestRateIndex(QlInterestRateIndex *o) { del(o); }
