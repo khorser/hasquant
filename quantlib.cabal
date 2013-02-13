@@ -36,6 +36,7 @@ Library
               , QuantLib.Instrument.Forward
               , QuantLib.Instrument.OptionType
               , QuantLib.Instrument.OvernightIndexedSwapType
+              , QuantLib.Instrument.Swap
               , QuantLib.Instrument.VanillaSwapType
               , QuantLib.InterestRate
               , QuantLib.Math.Interpolation

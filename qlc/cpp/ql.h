@@ -309,6 +309,9 @@ extern "C" {
   QlSwap* DLLEXPORT qlBMASwapAsSwap(QlBMASwap *o);
   void DLLEXPORT qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o);
   QlSwap* DLLEXPORT qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o);
+#ifdef quantlib_cash_flow_hpp
+  QlSwap* DLLEXPORT qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int * payer, char **e);
+#endif
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

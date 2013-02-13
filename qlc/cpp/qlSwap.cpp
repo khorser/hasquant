@@ -19,4 +19,12 @@ QlSwap* qlBMASwapAsSwap(QlBMASwap *o) { return ret(new QlSwap(*arg(o))); }
 void qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o) { del(o); }
 QlSwap* qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o) { return ret(new QlSwap(*arg(o))); }
 
+QlSwap* qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int * payer, char **e) {
+  try {
+    return ret(new QlSwap(alloc(new Swap(qlBuildVector(legs, legsLen), std::vector<bool>(payer, payer+payerLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlSwap*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

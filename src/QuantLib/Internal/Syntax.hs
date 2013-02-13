@@ -45,7 +45,7 @@ import QuantLib.Time.Weekday()
 import QuantLib.Math.Interpolation()
 import QuantLib.TermStructure.Trait()
 
-data NestedArg = DayN | DoubleN | ForeignPtrN | EnumN Name
+data NestedArg = DayN | DoubleN | ForeignPtrN | EnumN Name | BoolN
   deriving (Show, Eq)
 
 -- XXX use GADTs/SYB/Uniplate?
@@ -86,6 +86,7 @@ nameToTop n = error $ "Not supported top type: " ++ show n
 nestedNameToTop :: Name -> Q NestedArg
 nestedNameToTop n | n == ''Day = return DayN
 nestedNameToTop n | n == ''Double = return DoubleN
+nestedNameToTop n | n == ''Bool = return BoolN
 nestedNameToTop n = do
   e <- enumType n
   case e of
@@ -293,6 +294,10 @@ genFfiCall io constr extra aa r = do
 
     genFfiCallImpl ((ListA DayN, v):as) c_call =
       [|withDays $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
+
+    genFfiCallImpl ((ListA BoolN, v):as) c_call =
+      [|withArrayLen (map fromBool $v) (\y1 y2 ->
+          $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CUInt)y1) y2|]))|]
 
     genFfiCallImpl ((ListA (EnumN n), v):as) c_call =
       [|withArrayLen (map (toQlEnum $(stringE $ show n)) $v)

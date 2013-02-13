@@ -116,6 +116,24 @@ my $hargs = "";
 my @cnames = ();
 my $ocall = "";
 
+sub substPercent
+{
+  my $where = shift;
+  my $what = shift;
+
+  my $last = -1;
+  my $res = '';
+  my $pos = index($where, '%');
+  while ($pos > -1)
+  {
+    $res .= substr($where, $last+1, $pos - $last - 1).$what;
+    $last = $pos;
+    $pos = index($where, '%', $pos+1);
+  }
+  $res = $res.substr($where, $last+1);
+  return $res;
+}
+
 if ($static)
 {
   $ocall .= "${c}::";
@@ -128,17 +146,7 @@ elsif (not $ctor)
   push @cnames, "o";
   $cargs .= " $cnames[-1]";
 
-  my $pos = index($cast, '%');
-  my $argcall;
-  if ($pos > -1)
-  {
-    $ocall = substr($cast, 0, $pos).$cnames[-1].substr($cast, $pos+1);
-  }
-  else
-  {
-    $ocall = $cnames[-1];
-  }
-  $ocall .= '->';
+  $ocall = substPercent($cast, $cnames[-1]).'->';
 }
 
 # iterate over parsed arguments to form declarations and calls
@@ -146,7 +154,7 @@ my $call = "";
 my $i = 0;
 for (@args)
 {
-  my ($carg, $farg, $harg, $cast) = type($$_{type}, exists $$_{default});
+  my ($carg, $farg, $harg, $cast, $r_, $c_, $extra) = type($$_{type}, exists $$_{default});
   if ($cargs)
   {
     $cargs .= ', ';
@@ -157,7 +165,6 @@ for (@args)
   {
     $call  .= ', ';
   }
-  $cargs .= $carg;
   $fargs .= $farg;
   $hargs .= $harg;
   if (exists $$_{name} and $$_{name} =~ m!^-- \^(\w+)$!)
@@ -169,19 +176,16 @@ for (@args)
   {
     push @cnames, "x".($#cnames+1);
   }
+
+  if ($extra)
+  { 
+    $cargs .= substPercent($extra, $cnames[-1]);
+    $cargs .= ', ';
+  }
+  $cargs .= $carg;
   $cargs .= " $cnames[-1]";
   $hargs .= "\n";
-  my $pos = index($cast, '%');
-  my $argcall;
-  if ($pos > -1)
-  {
-    $argcall = substr($cast, 0, $pos).$cnames[-1].substr($cast, $pos+1);
-  }
-  else
-  {
-    $argcall = $cnames[-1];
-  }
-  $call .= "$argcall";
+  $call .= substPercent($cast, $cnames[-1]);
   $i++;
 }
 
@@ -206,11 +210,7 @@ push @cpp, "  try {";
 shift @cnames;
 
 $call = "$ocall$m($call)";
-my $pos = index($retcast, '%');
-if ($pos > -1)
-{
-  $call = substr($retcast, 0, $pos).$call.substr($retcast, $pos+1);
-}
+$call = substPercent($retcast, $call);
 push @cpp, "    return $call;";
 push @cpp, "  } catch (std::exception& er) {";
 push @cpp, "    return handleException<$cret>(e, er);";
@@ -257,48 +257,57 @@ sub type
 
   my $opt = ($t =~ m!boost::optional!);
   $t =~ s/^(boost::optional<\s*)([^> ]+)(\s*>\s*)$/$2/;
+  my $vect = ($t =~ m!std::vector!);
+  $t =~ s/^((const\s+)?std::vector<\s*)([^> ]+)(\s*>\s*&?\s*)$/$3/;
 
   if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor'])
   {
-    return ('double', 'CDouble', 'Double', '', '', 0);
+    return ('double', 'CDouble', 'Double', '%', '%', 0, '');
   }
   elsif ($t ~~ ['Natural', 'Size'])
   {
-    return ('unsigned', 'CUInt', 'Word', '', '', 0);
+    return ('unsigned', 'CUInt', 'Word', '%', '%', 0, '');
   }
   elsif ($t ~~ ['BigInteger', 'Day', 'Year'])
   {
-    return ('int', 'CInt', 'Int', '', '', 0);
+    return ('int', 'CInt', 'Int', '%', '%', 0, '');
   }
   elsif ($t eq 'Date')
   {
     if (not $def)
     {
-      return ('int', 'CDate', 'Day', 'Date(%)', '(%).serialNumber()', 0);
+      return ('int', 'CDate', 'Day', 'Date(%)', '(%).serialNumber()', 0, '');
     }
     else
     {
-      return ('int', 'CDate', 'Maybe Day', 'qlNullableDate(%)', '', 0);
+        return ('int', 'CDate', 'Maybe Day', 'qlNullableDate(%)', '', 0, '');
     }
   }
   elsif ($t eq 'Time')
   {
-    return ('double', 'CYearFraction', 'YearFraction', '', '', 0);
+    return ('double', 'CYearFraction', 'YearFraction', '%', '%', 0, '');
   }
   elsif ($t eq 'bool')
   {
     if ($opt)
     {
-      return ('int', 'CInt', 'Maybe Bool', 'qlOptBool(%)', 'qlOptBool(%)', 0);
+      return ('int', 'CInt', 'Maybe Bool', 'qlOptBool(%)', 'qlOptBool(%)', 0, '');
     }
     else
     {
-      return ('int', 'CInt', 'Bool', '', '', 0);
+      if ($vect)
+      {
+	return ('int *', 'CUInt -> Ptr CInt', '[Bool]', 'std::vector<bool>(%, %+%Len)', '', 0, 'unsigned %Len');
+      }
+      else
+      {
+	return ('int', 'CInt', 'Bool', '%', '%', 0, '');
+      }
     }
   }
   elsif ($t eq 'void')
   {
-    return ('void', '()', '()', '', '', 0);
+    return ('void', '()', '()', '', '', 0, '');
   }
   elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'TimeUnit',
       'DateGeneration::Rule', 'BusinessDayConvention', 'Weekday', 'Month',
@@ -308,15 +317,22 @@ sub type
   {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
-    return ($carg, $farg, $t, $cast, '', 0);
+    return ($carg, $farg, $t, $cast, '%', 0, '');
   }
   elsif ($t eq 'std::string')
   {
-    return ("char*", "CString", "String", 'std::string(arg(%))', "DUP((%).c_str())", 0);
+    return ("char*", "CString", "String", 'std::string(arg(%))', "DUP((%).c_str())", 0, '');
   }
   elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period', 'InterestRate'])
   {
-    return ("$t*", "Ptr C$t", $t, '(*arg(%))', "ret(new $t(%))", 1);
+    if (not $vect)
+    {
+      return ("$t*", "Ptr C$t", $t, '(*arg(%))', "ret(new $t(%))", 1, '');
+    }
+    else
+    {
+      return ("$t**", "CUInt -> Ptr (Ptr C$t)", "[$t]", 'qlBuildVector(%, %Len)', '???', 1, 'unsigned %Len');
+    }
   }
   else
   {
@@ -329,11 +345,11 @@ sub type
     {
       if (not $def)
       {
-	return ($carg, $farg, $t, "Handle<$t>(*arg(%))", $ret, 1);
+	return ($carg, $farg, $t, "Handle<$t>(*arg(%))", $ret, 1, '');
       }
       else
       {
-	return ($carg, $farg, "Maybe $t", "qlNullableHandle(arg(%))", $ret, 1);
+	return ($carg, $farg, "Maybe $t", "qlNullableHandle(arg(%))", $ret, 1, '');
       }
     }
   }

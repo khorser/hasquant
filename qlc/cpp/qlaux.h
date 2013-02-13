@@ -1,6 +1,7 @@
 #include <ql/time/date.hpp>
 #include <ql/errors.hpp>
 #include <string.h>
+#include <vector>
 #include <boost/optional.hpp>
 
 int * qlAllocateInts(size_t size);
@@ -482,6 +483,16 @@ Handle<T> qlNullableHandle(boost::shared_ptr<T> *p) {
   return p
     ? Handle<T>(*(arg(p)))
     : Handle<T>();
+}
+
+// XXX suboptimal
+template <class T>
+std::vector<T> qlBuildVector(T **vals, size_t len) {
+  std::vector<T> r;
+  for (size_t i = 0; i < len; ++i) {
+    r.push_back(*vals[i]);
+  }
+  return r;
 }
 
 /* some useful helpers ... well ... I hope they are... */
