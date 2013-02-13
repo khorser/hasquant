@@ -350,7 +350,7 @@ foreign import ccall safe "ql.h qlBondIsTradable"
 notionals :: Bond -> IO [Double]
 notionals b =
   liftM (map realToFrac)
-  (withObject b $ getDynDoubleArrayX . c_notionals)
+  (withObject b $ getArrayX . c_notionals)
 
 foreign import ccall safe "ql.h qlBondNotionals"
   c_notionals :: Ptr CBond -> Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)

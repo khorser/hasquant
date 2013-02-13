@@ -237,7 +237,7 @@ genFfiCall io constr extra aa r = do
     finalCCall c_call =
       case r of
         -- last argument is pointer to the length of the returned array
-        (AtomicRV DayListR) -> [|getDynIntArray $(appE extra c_call)|]
+        (AtomicRV DayListR) -> [|getArray $(appE extra c_call)|]
         _ -> appE extra c_call
 
     nakedCall :: [Name] -> Name -> ExpQ

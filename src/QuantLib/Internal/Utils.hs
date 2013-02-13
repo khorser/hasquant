@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving #-}
 module QuantLib.Internal.Utils
   (
     signalError
@@ -15,11 +15,10 @@ module QuantLib.Internal.Utils
   , maybeWithObject
   , withDoubles
   , withObjects
-  , getDynIntArray
-  , getDynIntArrayX
-  , getDynDoubleArrayX
-  , getStaticIntArray
+  , getArray
+  , getArrayX
   , getString
+  , CStaticInt(..)
 
   -- re-exporting some popular stuff
   , Word
@@ -41,7 +40,7 @@ import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr)
-import Foreign.Storable(peek, poke)
+import Foreign.Storable(Storable(..), peek, poke)
 
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -76,12 +75,6 @@ withDoubles amounts f = withArrayLen
                         (map realToFrac amounts)
                         (\n a -> f (fromIntegral n) a)
 
-getDynIntArray :: (Ptr CUInt -> IO (Ptr CInt)) -> IO [CInt]
-getDynIntArray = getIntArray c_freeInts
-
-getStaticIntArray :: (Ptr CUInt -> IO (Ptr CInt)) -> IO [CInt]
-getStaticIntArray = getIntArray (const $ return ())
-
 getString :: IO CString -> IO String
 getString x = do
   s <- x
@@ -89,17 +82,42 @@ getString x = do
   c_freeString s
   return str
 
--- get a function that returns an array of ints, the number of items
--- is returned via the first argument
-getIntArray :: (Ptr CInt -> IO ()) -> (Ptr CUInt -> IO (Ptr CInt)) -> IO [CInt]
-getIntArray fin f =
+class (Storable a) => CArray a where
+  freeArray :: Ptr a -> IO ()
+
+instance CArray CInt where
+  freeArray = c_freeInts
+
+instance CArray CDouble where
+  freeArray = c_freeDoubles
+
+newtype CStaticInt = CStaticInt{getStaticInt::CInt} deriving (Eq, Show, Storable)
+
+instance CArray CStaticInt where
+  freeArray = const $ return ()
+
+-- get a function that returns an array of a
+-- with the number of items returned via the first argument
+getArray :: (CArray a) => (Ptr CUInt -> IO (Ptr a)) -> IO [a]
+getArray f =
   alloca $
     \pcnt -> do
     array <- f pcnt
     count <- peek pcnt
     ints <- peekArray (fromIntegral count) array
-    fin array
+    freeArray array
     return ints
+
+-- XXX generalize getArray and getArrayX
+getArrayX :: (CArray a) => (Ptr CUInt -> Ptr CString -> IO (Ptr a)) -> IO [a]
+getArrayX f =
+  alloca $
+  \pcnt -> do
+    array <- handleExceptions (f pcnt)
+    count <- peek pcnt
+    ds <- peekArray (fromIntegral count) array
+    freeArray array
+    return ds
 
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
@@ -114,26 +132,6 @@ handleExceptions f =
          c_freeString msg
          signalError err
        else return r
-
-getDynIntArrayX :: (Ptr CUInt -> Ptr CString -> IO (Ptr CInt)) -> IO [CInt]
-getDynIntArrayX f =
-  alloca $
-  \pcnt -> do
-    array <- handleExceptions (f pcnt)
-    count <- peek pcnt
-    ints <- peekArray (fromIntegral count) array
-    c_freeInts array
-    return ints
-
-getDynDoubleArrayX :: (Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)) -> IO [CDouble]
-getDynDoubleArrayX f =
-  alloca $
-  \pcnt -> do
-    array <- handleExceptions (f pcnt)
-    count <- peek pcnt
-    ds <- peekArray (fromIntegral count) array
-    c_freeDoubles array
-    return ds
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
