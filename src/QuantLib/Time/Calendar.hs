@@ -59,6 +59,7 @@ module QuantLib.Time.Calendar
   , unitedStatesNYSE
   , unitedStatesSettlement
   , weekendsOnly
+  , unitedKingdomExchange
 
   , addHoliday
   , advance'
