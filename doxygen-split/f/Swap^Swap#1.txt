@@ -1,6 +1,0 @@
--- |Multi leg constructor.
-->
-::const std::vector< Leg > &
--- ^legs
-::const std::vector< bool > &
--- ^payer

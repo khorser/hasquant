@@ -13,10 +13,9 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 
 -- |Multi leg constructor.
-swap' :: [Leg] -- ^legs
-  -> [Bool] -- ^payer
+swap' :: [(Leg, Bool)] -- ^(legs, payer)
   -> IO Swap
 swap' = $(ffiConstruct 'swap') c_swap'
 
 foreign import ccall safe "ql.h qlSwap1"
-  c_swap' :: CUInt -> Ptr (Ptr CLeg) -> CUInt -> Ptr CInt -> Ptr CString -> IO (Ptr CSwap)
+  c_swap' :: CUInt -> Ptr (Ptr CLeg) -> Ptr CInt -> Ptr CString -> IO (Ptr CSwap)

@@ -308,8 +308,12 @@ genFfiCall io constr extra aa r = do
         (\_ ds -> $(genFfiCallImpl as [|$c_call n ams ds|])))|]
 
     genFfiCallImpl ((ListA2 ForeignPtrN DayN, v):as) c_call =
-      [|withObjects (map fst $v) (\n ams -> withDays (map snd $v)
-        (\_ ds -> $(genFfiCallImpl as [|$c_call n ams ds|])))|]
+      [|withObjects (map fst $v) (\n os -> withDays (map snd $v)
+        (\_ ds -> $(genFfiCallImpl as [|$c_call n os ds|])))|]
+
+    genFfiCallImpl ((ListA2 ForeignPtrN BoolN, v):as) c_call =
+      [|withObjects (map fst $v) (\n os -> withArrayLen (map (fromBool . snd) $v)
+        (\_ bs -> $(genFfiCallImpl as [|$c_call n os bs|])))|]
 
     genFfiCallImpl ((t@(ListA2 _ _), _v):_as) _c_call =
       error $ show t ++ "Not supported yet"

@@ -310,7 +310,7 @@ extern "C" {
   void DLLEXPORT qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o);
   QlSwap* DLLEXPORT qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o);
 #ifdef quantlib_cash_flow_hpp
-  QlSwap* DLLEXPORT qlSwap1(unsigned legsLen, Leg** legs, unsigned payerLen, int * payer, char **e);
+  QlSwap* DLLEXPORT qlSwap1(unsigned legsLen, Leg** legs, int *payer, char **e);
 #endif
 }
 
