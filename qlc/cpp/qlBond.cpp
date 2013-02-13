@@ -164,6 +164,18 @@ QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
   }
 }
 
+double* qlBondNotionals(QlBond* o, unsigned *len, char **e) {
+  try {
+    const std::vector<double> notionals = (*arg(o))->notionals();
+    *len = notionals.size();
+    double *ns = qlAllocateDoubles(*len);
+    std::copy(notionals.begin(), notionals.end(), ns);
+    return ns;
+  } catch (std::exception& er) {
+    return handleException<double*>(e, er);
+  }
+}
+
 // generated code and thus not necessarilly tested
 double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
     unsigned maxEvaluations, char **e) {

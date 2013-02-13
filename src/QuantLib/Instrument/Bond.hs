@@ -26,11 +26,14 @@ module QuantLib.Instrument.Bond
   , settlementValue
   , yield'
   , isTradable
+  , notionals
 
   , setCouponPricer
   )
 
 where
+
+import Control.Monad(liftM)
 
 import QuantLib.Compounding
 import QuantLib.Time.Frequency
@@ -343,3 +346,11 @@ isTradable = $(ffiCallX 'isTradable) c_isTradable
 
 foreign import ccall safe "ql.h qlBondIsTradable"
   c_isTradable :: Ptr CBond -> CDate -> Ptr CString -> IO CInt
+
+notionals :: Bond -> IO [Double]
+notionals b =
+  liftM (map realToFrac)
+  (withObject b $ getDynDoubleArrayX . c_notionals)
+
+foreign import ccall safe "ql.h qlBondNotionals"
+  c_notionals :: Ptr CBond -> Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)

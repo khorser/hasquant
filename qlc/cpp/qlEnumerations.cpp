@@ -280,7 +280,7 @@ static EnumInfo enumInfo[] = {
     durationValues},
 };
 
-int *qlEnumerationValue(const char *name, int *c) {
+int *qlEnumerationValue(const char *name, unsigned *c) {
   EnumInfo *last = LAST(enumInfo);
   EnumInfo *found = std::find_if(enumInfo, last, EnumInfo::Cmp(name));
   if (found != last) {

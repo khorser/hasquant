@@ -13,7 +13,7 @@ import System.IO.Unsafe(unsafePerformIO)
 import QuantLib.Internal.Utils
 
 foreign import ccall safe "ql.h qlEnumerationValue"
-  c_values :: CString -> Ptr CInt -> IO (Ptr CInt)
+  c_values :: CString -> Ptr CUInt -> IO (Ptr CInt)
 
 values :: String -> [CInt]
 values ename = if null vals

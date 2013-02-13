@@ -23,11 +23,19 @@ void qlFreeString(char *p) {
   TP2("Freed string", (void *)p);
 }
 
-int *qlAllocateInts(int size) {
+int *qlAllocateInts(size_t size) {
   return new int[size];
 }
 
 void qlFreeInts(int *p) {
+  delete[] p;
+}
+
+double *qlAllocateDoubles(size_t size) {
+  return new double[size];
+}
+
+void qlFreeDoubles(double *p) {
   delete[] p;
 }
 

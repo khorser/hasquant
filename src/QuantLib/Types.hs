@@ -1,5 +1,5 @@
 {-# LANGUAGE FlexibleInstances,OverlappingInstances,FlexibleContexts #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-} -- for Show instances
+{-# OPTIONS_GHC -fno-warn-orphans #-} -- for Show and Eq instances of named singletons
 module QuantLib.Types
   (
   -- cashflows
@@ -71,6 +71,8 @@ type FloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer
 type Currency = ForeignPtr CCurrency
 instance Show Currency where
   show = name
+instance Eq Currency where
+  (==) x y = name x == name y
 
 -- indexes
 type Index = ForeignPtr CIndex
@@ -180,9 +182,15 @@ type OptionletVolStructure = ForeignPtr COptionletVolStructure
 type Calendar = ForeignPtr CCalendar
 instance Show Calendar where
   show = name
+instance Eq Calendar where
+  (==) x y = name x == name y
+
 type DayCounter = ForeignPtr CDayCounter
 instance Show DayCounter where
   show = name
+instance Eq DayCounter where
+  (==) x y = name x == name y
+
 -- |A Period (length + TimeUnit) implementing a limited algebra
 type Period = ForeignPtr CPeriod
 -- |Payment schedule

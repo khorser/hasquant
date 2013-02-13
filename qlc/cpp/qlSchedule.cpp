@@ -43,7 +43,7 @@ Schedule *qlScheduleUntil(Schedule *sched, int date, char **e) {
   }
 }
 
-int *qlScheduleDates(Schedule *sched, int *count) {
+int *qlScheduleDates(Schedule *sched, unsigned *count) {
   const std::vector<Date> &dates = arg(sched)->dates();
   *count = dates.size();
   int *days = qlAllocateInts(*count);

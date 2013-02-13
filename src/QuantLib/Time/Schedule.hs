@@ -29,7 +29,7 @@ foreign import ccall safe "ql.h qlSchedule1"
 foreign import ccall safe "ql.h qlScheduleUntil"
   c_until :: Ptr CSchedule -> CDate -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlScheduleDates"
-  c_scheduleDates :: Ptr CSchedule -> Ptr CInt -> IO (Ptr CDate)
+  c_scheduleDates :: Ptr CSchedule -> Ptr CUInt -> IO (Ptr CDate)
 
 -- | QuantLibXL: qlSchedule
 schedule :: Maybe Day -- ^effectiveDate

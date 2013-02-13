@@ -43,7 +43,7 @@ Swap.fairSpread
 Swap.fairRate
 SwapRateHelper
 
-OvernightIndexedSwapIndex
+OvernightIndexedSwapIndex+all swap indices
 OvernightIndexedSwap
 OISRateHelper
 
@@ -59,6 +59,8 @@ Bond::
 CashFlows:: and BondFunctions::
 Settings::
 Leg accessor
+BMA*
+replace CashFlows::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
 
 
 FittedBondDiscountCurve
@@ -69,8 +71,6 @@ Time
 CubicBSplinesFitting
 SvenssonFitting
 ?bond.cashflows
-BondFunctions::yield
-BondFunctions::duration
 
 -- done:
 Bond^accruedAmount

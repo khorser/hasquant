@@ -16,6 +16,8 @@ module QuantLib.Internal.Utils
   , withDoubles
   , withObjects
   , getDynIntArray
+  , getDynIntArrayX
+  , getDynDoubleArrayX
   , getStaticIntArray
   , getString
 
@@ -49,6 +51,8 @@ foreign import ccall safe "ql.h qlFreeString"
   c_freeString :: CString -> IO ()
 foreign import ccall safe "ql.h qlFreeInts"
   c_freeInts :: Ptr CInt -> IO ()
+foreign import ccall safe "ql.h qlFreeDoubles"
+  c_freeDoubles :: Ptr CDouble -> IO ()
 
 signalError :: String -> a
 signalError = throw . Error
@@ -72,10 +76,10 @@ withDoubles amounts f = withArrayLen
                         (map realToFrac amounts)
                         (\n a -> f (fromIntegral n) a)
 
-getDynIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
+getDynIntArray :: (Ptr CUInt -> IO (Ptr CInt)) -> IO [CInt]
 getDynIntArray = getIntArray c_freeInts
 
-getStaticIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
+getStaticIntArray :: (Ptr CUInt -> IO (Ptr CInt)) -> IO [CInt]
 getStaticIntArray = getIntArray (const $ return ())
 
 getString :: IO CString -> IO String
@@ -87,30 +91,49 @@ getString x = do
 
 -- get a function that returns an array of ints, the number of items
 -- is returned via the first argument
-getIntArray :: (Ptr CInt -> IO ()) -> (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
+getIntArray :: (Ptr CInt -> IO ()) -> (Ptr CUInt -> IO (Ptr CInt)) -> IO [CInt]
 getIntArray fin f =
-  alloca
-  (\pcnt -> do
+  alloca $
+    \pcnt -> do
     array <- f pcnt
     count <- peek pcnt
     ints <- peekArray (fromIntegral count) array
     fin array
-    return ints)
+    return ints
 
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
    alloca $
-     \errptr ->
-     do
-       poke errptr nullPtr
-       r <- f errptr
-       msg <- peek errptr
-       if msg /= nullPtr 
-         then do
-           err <- peekCString msg
-           c_freeString msg
-           signalError err
-         else return r
+     \errptr -> do
+     poke errptr nullPtr
+     r <- f errptr
+     msg <- peek errptr
+     if msg /= nullPtr 
+       then do
+         err <- peekCString msg
+         c_freeString msg
+         signalError err
+       else return r
+
+getDynIntArrayX :: (Ptr CUInt -> Ptr CString -> IO (Ptr CInt)) -> IO [CInt]
+getDynIntArrayX f =
+  alloca $
+  \pcnt -> do
+    array <- handleExceptions (f pcnt)
+    count <- peek pcnt
+    ints <- peekArray (fromIntegral count) array
+    c_freeInts array
+    return ints
+
+getDynDoubleArrayX :: (Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)) -> IO [CDouble]
+getDynDoubleArrayX f =
+  alloca $
+  \pcnt -> do
+    array <- handleExceptions (f pcnt)
+    count <- peek pcnt
+    ds <- peekArray (fromIntegral count) array
+    c_freeDoubles array
+    return ds
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())

@@ -14,6 +14,7 @@ extern "C" {
 
   void DLLEXPORT qlFreeString(char *p);
   void DLLEXPORT qlFreeInts(int *p);
+  void DLLEXPORT qlFreeDoubles(double *p);
 
   /* date */
   int DLLEXPORT qlMinDateSerialNumber();
@@ -65,6 +66,7 @@ extern "C" {
   Calendar* DLLEXPORT qlJointCalendar3(Calendar* x_1, Calendar* x0, Calendar* x1, int x2, char **e);
   Calendar* DLLEXPORT qlJointCalendar4(Calendar* x_1, Calendar* x0, Calendar* x1, Calendar* x2, int x3, char **e);
 
+  int* DLLEXPORT qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, char **e);
   void DLLEXPORT qlFreeCalendar(Calendar *calendar);
 
   /* settings */
@@ -122,6 +124,7 @@ extern "C" {
   double DLLEXPORT qlBondSettlementValue(QlBond* o, char **e);
   double DLLEXPORT qlBondYield1(QlBond* o, double cleanPrice, DayCounter* dc, int comp, int freq, int settlementDate, double accuracy, unsigned maxEvaluations, char **e);
   int DLLEXPORT qlBondIsTradable(QlBond* o, int d, char **e);
+  double* DLLEXPORT qlBondNotionals(QlBond* o, unsigned *len, char **e);
 
   void DLLEXPORT qlFreeBond(QlBond *bond);
   void DLLEXPORT qlFreeFixedRateBond(QlFixedRateBond *bond);
@@ -164,7 +167,7 @@ extern "C" {
   Schedule *DLLEXPORT qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv,
     char **e);
   Schedule *DLLEXPORT qlScheduleUntil(Schedule *sched, int date, char **e);
-  int *DLLEXPORT qlScheduleDates(Schedule *sched, int *count);
+  int *DLLEXPORT qlScheduleDates(Schedule *sched, unsigned *count);
 
   void DLLEXPORT qlFreeSchedule(Schedule *s);
 
@@ -184,7 +187,7 @@ extern "C" {
   void DLLEXPORT qlFreeInterestRate(InterestRate *rate);
 
   /* enumerations */
-  int *DLLEXPORT qlEnumerationValue(const char *name, int *c);
+  int *DLLEXPORT qlEnumerationValue(const char *name, unsigned *c);
 
 #ifdef quantlib_ratehelpers_hpp
   /* yield term structure */

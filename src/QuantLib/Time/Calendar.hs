@@ -74,8 +74,12 @@ module QuantLib.Time.Calendar
   , jointCalendar2
   , jointCalendar3
   , jointCalendar4
+  , holidays
   )
 where
+
+import Control.Monad(liftM)
+import Foreign.Marshal.Utils(fromBool)
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
@@ -344,3 +348,17 @@ jointCalendar2 = $(ffiConstruct 'jointCalendar2) c_jointCalendar2
 
 foreign import ccall safe "ql.h qlJointCalendar2"
   c_jointCalendar2 :: Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)
+
+-- |Returns the holidays between two dates.
+holidays :: Calendar -- ^calendar
+  -> Day -- ^from
+  -> Day -- ^to
+  -> Bool -- ^includeWeekEnds
+  -> IO [Day]
+holidays c from to w =
+  liftM (map fromQlDate) $
+  withObject c
+  (\cc -> getDynIntArrayX $ c_holidayList cc (toQlDate from) (toQlDate to) (fromBool w))
+
+foreign import ccall safe "ql.h qlCalendarHolidayList"
+  c_holidayList :: Ptr CCalendar -> CDate -> CDate -> CInt -> Ptr CUInt -> Ptr CString -> IO (Ptr CDate)

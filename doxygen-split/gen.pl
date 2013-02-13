@@ -167,7 +167,7 @@ for (@args)
   }
   else
   {
-    push @cnames, "x".$#cnames;
+    push @cnames, "x".($#cnames+1);
   }
   $cargs .= " $cnames[-1]";
   $hargs .= "\n";
@@ -239,9 +239,11 @@ print O "\n";
 close O;
 
 open O, ">$base.hs";
+print O "  , $hname\n\n";
 print O join("\n", @hs);
 print O "\n\n";
 print O join("\n", @hsffi);
+print O "\n";
 close O;
 
 sub type
