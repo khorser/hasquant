@@ -46,8 +46,6 @@ SwapRateHelper
 OvernightIndexedSwapIndex+all swap indices
 OvernightIndexedSwap
 OISRateHelper
-
-DiscountingSwapEngine
 DatedOISRateHelper
 
 Currency::
@@ -58,8 +56,9 @@ Bond::
 
 CashFlows:: and BondFunctions::
 Settings::
-Leg accessor
+Leg accessor (bond, swap?)
 BMA*
+ForwardRateStructure
 replace CashFlows::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
 
 
@@ -67,10 +66,8 @@ FittedBondDiscountCurve
 SimplePolynomialFitting
 ExponentialSplinesFitting
 NelsonSiegelFitting
-Time
 CubicBSplinesFitting
 SvenssonFitting
-?bond.cashflows
 
 -- done:
 Bond^accruedAmount
@@ -103,3 +100,4 @@ Calendar::
 SimpleQuote.setValue
 BespokeCalendar
 JointCalendar
+DiscountingSwapEngine
