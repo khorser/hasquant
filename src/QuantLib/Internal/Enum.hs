@@ -15,10 +15,10 @@ import QuantLib.Internal.Utils
 foreign import ccall safe "ql.h qlEnumerationValue"
   c_values :: CString -> Ptr CUInt -> IO (Ptr CStaticInt)
 
-values :: String -> [CStaticInt]
+values :: String -> [CInt]
 values ename = if null vals
                  then signalError ("Enumeration " ++ ename ++ " is not known")
-                 else vals
+                 else map getStaticInt vals
   where vals = unsafePerformIO $
                 withCString ename (getArray . c_values)
 
@@ -31,14 +31,13 @@ toQlEnum :: (QLEnum a) => String -> a -> CInt
 toQlEnum typename x =
   if index >= length vals
     then signalError $ "Constructor " ++ show x ++ " is not found"
-    else getStaticInt (vals !! index)
+    else vals !! index
   where
     index = fromEnum x
     vals = values typename
 
 fromQlEnum :: (QLEnum a) => String -> CInt -> a
-fromQlEnum typename x = result (elemIndex (CStaticInt x) (values typename))
-  where 
-    result Nothing  =
-      signalError $ "Unknown enumeration code: " ++ show x
-    result (Just i) = toEnum i
+fromQlEnum typename x =
+  maybe (signalError $ "Unknown enumeration code: " ++ show x)
+  toEnum
+  (elemIndex x $ values typename)
