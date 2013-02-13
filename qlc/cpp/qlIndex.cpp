@@ -1,5 +1,6 @@
 #include <ql/index.hpp>
 #include <ql/indexes/swapindex.hpp>
+#include <ql/indexes/bmaindex.hpp>
 
 #include "qlaux.h"
 
@@ -22,5 +23,11 @@ QlIndex* qlInterestRateIndexAsIndex(QlInterestRateIndex *o) { return ret(new QlI
 
 void qlFreeSwapIndex(QlSwapIndex *o) { del(o); }
 QlInterestRateIndex* qlSwapIndexAsInterestRateIndex(QlSwapIndex *o) { return ret(new QlInterestRateIndex(*arg(o))); }
+
+void qlFreeBMAIndex(QlBMAIndex *o) { del(o); }
+QlInterestRateIndex* qlBMAIndexAsInterestRateIndex(QlBMAIndex *o) { return ret(new QlInterestRateIndex(*arg(o))); }
+
+void qlFreeOvernightIndexedSwapIndex(QlOvernightIndexedSwapIndex *o) { del(o); }
+QlSwapIndex* qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o) { return ret(new QlSwapIndex(*arg(o))); }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

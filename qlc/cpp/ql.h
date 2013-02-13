@@ -268,6 +268,11 @@ extern "C" {
   void DLLEXPORT qlFreeSwapIndex(QlSwapIndex *o);
   QlInterestRateIndex* DLLEXPORT qlSwapIndexAsInterestRateIndex(QlSwapIndex *o);
 
+  void DLLEXPORT qlFreeBMAIndex(QlBMAIndex *o);
+  QlInterestRateIndex* DLLEXPORT qlBMAIndexAsInterestRateIndex(QlBMAIndex *o);
+  void DLLEXPORT qlFreeOvernightIndexedSwapIndex(QlOvernightIndexedSwapIndex *o);
+  QlSwapIndex* DLLEXPORT qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o);
+
   /* forward */
   void DLLEXPORT qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd);
   QlForward* DLLEXPORT qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd);
@@ -300,6 +305,10 @@ extern "C" {
   QlInstrument* DLLEXPORT qlSwapAsInstrument(QlSwap *o);
   void DLLEXPORT qlFreeVanillaSwap(QlVanillaSwap *o);
   QlSwap* DLLEXPORT qlVanillaSwapAsSwap(QlVanillaSwap *o);
+  void DLLEXPORT qlFreeBMASwap(QlBMASwap *o);
+  QlSwap* DLLEXPORT qlBMASwapAsSwap(QlBMASwap *o);
+  void DLLEXPORT qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o);
+  QlSwap* DLLEXPORT qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

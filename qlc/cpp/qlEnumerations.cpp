@@ -8,6 +8,7 @@
 #include <ql/exercise.hpp>
 #include <ql/option.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
+#include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/vanillaswap.hpp>
 #include <ql/prices.hpp>
 #include <ql/experimental/risk/sensitivityanalysis.hpp>
@@ -152,6 +153,12 @@ static int vanillaSwapTypeValues[] =
   , VanillaSwap::Payer
   };
 
+static int bmaSwapTypeValues[] =
+  {
+    BMASwap::Receiver
+  , BMASwap::Payer
+  };
+
 static int priceTypeValues[] =
   {
     Bid
@@ -260,6 +267,9 @@ static EnumInfo enumInfo[] = {
   {"QuantLib.Instrument.VanillaSwapType.VanillaSwapType",
     LENGTH(vanillaSwapTypeValues),
     vanillaSwapTypeValues},
+  {"QuantLib.Instrument.BMASwapType.BMASwapType",
+    LENGTH(bmaSwapTypeValues),
+    bmaSwapTypeValues},
   {"QuantLib.PriceType.PriceType",
     LENGTH(priceTypeValues),
     priceTypeValues},

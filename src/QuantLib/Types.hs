@@ -6,15 +6,17 @@ module QuantLib.Types
     Leg
   , FloatingRateCouponPricer
 
-  -- curencies
+  -- currency
   , Currency
 
-  -- indexes
+  -- indices
   , Index
   , InterestRateIndex
   , IborIndex
   , SwapIndex
   , OvernightIndex
+  , OvernightIndexedSwapIndex
+  , BMAIndex
 
   -- instruments
   , Instrument
@@ -25,6 +27,8 @@ module QuantLib.Types
   , ForwardRateAgreement
   , Swap
   , VanillaSwap
+  , OvernightIndexedSwap
+  , BMASwap
 
   -- pricingengines
   , PricingEngine
@@ -48,15 +52,17 @@ module QuantLib.Types
   , SimpleQuote
 
   -- casts
-  , upcast
-  , asBond
   , asInstrument
+  , asBond
   , asForward
   , asSwap
+
+  , asQuote
+
   , asIndex
   , asInterestRateIndex
   , asIborIndex
-  , asQuote
+  , asSwapIndex
   )
 where
 
@@ -89,9 +95,14 @@ asIndex = upcast
 
 type SwapIndex = ForeignPtr CSwapIndex
 type OvernightIndex = ForeignPtr COvernightIndex
+type OvernightIndexedSwapIndex = ForeignPtr COvernightIndexedSwapIndex
+type BMAIndex = ForeignPtr CBMAIndex
 
 asIborIndex :: (Upcastable a CIborIndex) => ForeignPtr a -> IO IborIndex
 asIborIndex = upcast
+
+asSwapIndex :: (Upcastable a CSwapIndex) => ForeignPtr a -> IO SwapIndex
+asSwapIndex = upcast
 
 -- instruments
 type Instrument = ForeignPtr CInstrument
@@ -164,6 +175,8 @@ asForward = upcast
 
 type Swap = ForeignPtr CSwap
 type VanillaSwap = ForeignPtr CVanillaSwap
+type BMASwap = ForeignPtr CBMASwap
+type OvernightIndexedSwap = ForeignPtr COvernightIndexedSwap
 
 asSwap :: (Upcastable a CSwap) => ForeignPtr a -> IO Swap
 asSwap = upcast

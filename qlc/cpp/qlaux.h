@@ -624,5 +624,25 @@ typedef boost::shared_ptr<OvernightIndex> QlOvernightIndex;
 template <> class objClassName<OvernightIndex *> { public: static const char *name() { return "OvernightIndex"; } };
 template <> class objClassName<QlOvernightIndex *> { public: static const char *name() { return "QlOvernightIndex"; } };
 
+namespace QuantLib {class OvernightIndexedSwapIndex;} using QuantLib::OvernightIndexedSwapIndex;
+typedef boost::shared_ptr<OvernightIndexedSwapIndex> QlOvernightIndexedSwapIndex;
+template <> class objClassName<OvernightIndexedSwapIndex *> { public: static const char *name() { return "OvernightIndexedSwapIndex"; } };
+template <> class objClassName<QlOvernightIndexedSwapIndex *> { public: static const char *name() { return "QlOvernightIndexedSwapIndex"; } };
+
+namespace QuantLib {class BMAIndex;} using QuantLib::BMAIndex;
+typedef boost::shared_ptr<BMAIndex> QlBMAIndex;
+template <> class objClassName<BMAIndex *> { public: static const char *name() { return "BMAIndex"; } };
+template <> class objClassName<QlBMAIndex *> { public: static const char *name() { return "QlBMAIndex"; } };
+
+namespace QuantLib {class BMASwap;} using QuantLib::BMASwap;
+typedef boost::shared_ptr<BMASwap> QlBMASwap;
+template <> class objClassName<BMASwap *> { public: static const char *name() { return "BMASwap"; } };
+template <> class objClassName<QlBMASwap *> { public: static const char *name() { return "QlBMASwap"; } };
+
+namespace QuantLib {class OvernightIndexedSwap;} using QuantLib::OvernightIndexedSwap;
+typedef boost::shared_ptr<OvernightIndexedSwap> QlOvernightIndexedSwap;
+template <> class objClassName<OvernightIndexedSwap *> { public: static const char *name() { return "OvernightIndexedSwap"; } };
+template <> class objClassName<QlOvernightIndexedSwap *> { public: static const char *name() { return "QlOvernightIndexedSwap"; } };
+
 #include "ql.h"
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

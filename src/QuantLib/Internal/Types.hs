@@ -1,19 +1,21 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Internal.Types
   (
-  -- cashflows
+  -- cashflow
     CLeg
   , CFloatingRateCouponPricer
 
-  -- curencies
+  -- currency
   , CCurrency
 
-  -- indexes
+  -- indices
   , CIndex
   , CInterestRateIndex
   , CIborIndex
   , CSwapIndex
   , COvernightIndex
+  , COvernightIndexedSwapIndex
+  , CBMAIndex
 
   -- instruments
   , CInstrument
@@ -24,6 +26,8 @@ module QuantLib.Internal.Types
   , CForwardRateAgreement
   , CSwap
   , CVanillaSwap
+  , COvernightIndexedSwap
+  , CBMASwap
 
   -- pricingengines
   , CPricingEngine
@@ -128,6 +132,26 @@ instance Upcastable COvernightIndex CIborIndex where
 foreign import ccall safe "ql.h qlOvernightIndexAsIborIndex"
   c_OvernightIndexAsIborIndex :: Ptr COvernightIndex -> IO (Ptr CIborIndex)
 
+data COvernightIndexedSwapIndex
+instance Finalizable COvernightIndexedSwapIndex where
+  finalize = p_freeOvernightIndexedSwapIndex
+foreign import ccall safe "ql.h &qlFreeOvernightIndexedSwapIndex"
+  p_freeOvernightIndexedSwapIndex :: FunPtr (Ptr COvernightIndexedSwapIndex -> IO ())
+instance Upcastable COvernightIndexedSwapIndex CSwapIndex where
+  c_upcast = c_OvernightIndexedSwapIndexAsSwapIndex
+foreign import ccall safe "ql.h qlOvernightIndexedSwapIndexAsSwapIndex"
+  c_OvernightIndexedSwapIndexAsSwapIndex :: Ptr COvernightIndexedSwapIndex -> IO (Ptr CSwapIndex)
+
+data CBMAIndex
+instance Finalizable CBMAIndex where
+  finalize = p_freeBMAIndex
+foreign import ccall safe "ql.h &qlFreeBMAIndex"
+  p_freeBMAIndex :: FunPtr (Ptr CBMAIndex -> IO ())
+instance Upcastable CBMAIndex CInterestRateIndex where
+  c_upcast = c_BMAIndexAsInterestRateIndex
+foreign import ccall safe "ql.h qlBMAIndexAsInterestRateIndex"
+  c_BMAIndexAsInterestRateIndex :: Ptr CBMAIndex -> IO (Ptr CInterestRateIndex)
+
 -- instruments
 data CInstrument
 data CBond
@@ -200,6 +224,26 @@ instance Upcastable CSwap CInstrument where
   c_upcast = c_SwapAsInstrument
 foreign import ccall safe "ql.h qlSwapAsInstrument"
   c_SwapAsInstrument :: Ptr CSwap -> IO (Ptr CInstrument)
+
+data COvernightIndexedSwap
+instance Finalizable COvernightIndexedSwap where
+  finalize = p_freeOvernightIndexedSwap
+foreign import ccall safe "ql.h &qlFreeOvernightIndexedSwap"
+  p_freeOvernightIndexedSwap :: FunPtr (Ptr COvernightIndexedSwap -> IO ())
+instance Upcastable COvernightIndexedSwap CSwap where
+  c_upcast = c_OvernightIndexedSwapAsSwap
+foreign import ccall safe "ql.h qlOvernightIndexedSwapAsSwap"
+  c_OvernightIndexedSwapAsSwap :: Ptr COvernightIndexedSwap -> IO (Ptr CSwap)
+
+data CBMASwap
+instance Finalizable CBMASwap where
+  finalize = p_freeBMASwap
+foreign import ccall safe "ql.h &qlFreeBMASwap"
+  p_freeBMASwap :: FunPtr (Ptr CBMASwap -> IO ())
+instance Upcastable CBMASwap CSwap where
+  c_upcast = c_BMASwapAsSwap
+foreign import ccall safe "ql.h qlBMASwapAsSwap"
+  c_BMASwapAsSwap :: Ptr CBMASwap -> IO (Ptr CSwap)
 
 -- pricingengines
 data CPricingEngine
