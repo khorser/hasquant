@@ -1,3 +1,0 @@
-->Array
-::const Array &
--- ^x

@@ -1,7 +1,0 @@
-->
-::const Curve *
--- ^curve
-::const boost::shared_ptr< typename Traits::helper > &
--- ^instrument
-::Size
--- ^segment

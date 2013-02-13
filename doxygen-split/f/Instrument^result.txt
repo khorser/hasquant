@@ -1,4 +1,0 @@
--- |returns any additional result returned by the pricing engine.
-->T
-::const std::string &
--- ^tag

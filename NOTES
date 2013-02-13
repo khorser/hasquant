@@ -60,6 +60,7 @@ Leg accessor (bond, swap?)
 BMA*
 ForwardRateStructure
 replace CashFlows::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
+quotes
 
 
 FittedBondDiscountCurve
