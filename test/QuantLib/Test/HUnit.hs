@@ -4,6 +4,8 @@ where
 
 import Test.Framework
 
+import Control.Exception(catch)
+import Prelude hiding(catch)
 import Data.Time.Calendar(fromGregorian, addDays)
 import System.Mem(performGC)
 
@@ -70,25 +72,29 @@ test_leapYears = assertEqual
 test_emptyLegStart :: IO ()
 test_emptyLegStart = do
   l <- Leg.leg []
-  assertThrows (Leg.startDate l) (not . null . Error.message)
+  catch (Leg.startDate l >> assertBool False)
+        (\e -> assertBool $ (not . null . Error.message) e)
 
 test_singleLegToday :: IO ()
 test_singleLegToday = do
   t <- today
   l <- Leg.leg [(100, t)]
-  assertEqual t (Leg.startDate l)
+  sd <- Leg.startDate l
+  assertEqual sd t
 
 test_twoLegsUnsorted :: IO ()
 test_twoLegsUnsorted = do
   t <- today
   l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
-  assertEqual (addDays (-10) t) (Leg.startDate l)
+  sd <- Leg.startDate l
+  assertEqual sd (addDays (-10) t)
 
 test_threeLegsSorted :: IO ()
 test_threeLegsSorted = do
   t <- today
   l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
-  assertEqual (addDays (-10) t) (Leg.startDate l)
+  sd <- Leg.startDate l
+  assertEqual sd (addDays (-10) t)
 
 test_GBPCalendar :: IO ()
 test_GBPCalendar = do
@@ -221,7 +227,8 @@ test_fixedBond = do
 test_frequency :: IO ()
 test_frequency = do
   p <- Period.period 1 Unit.Months
-  assertEqual Frequency.Monthly (Period.toFrequency p)
+  f <- Period.toFrequency p
+  assertEqual Frequency.Monthly f
 
 test_truncateSchedule :: IO ()
 test_truncateSchedule = do

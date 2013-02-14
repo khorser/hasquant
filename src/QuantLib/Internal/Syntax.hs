@@ -5,7 +5,6 @@ module QuantLib.Internal.Syntax
   , ffiCallIO
   , ffiConstruct
   , ffiCallX
-  , ffiCallXIO
   )
 where
 
@@ -200,9 +199,6 @@ ffiConstruct hn = ffiCallImpl False True hn [|construct|]
 
 ffiCallX :: Name -> ExpQ
 ffiCallX hn = ffiCallImpl False False hn [|handleExceptions|]
-
-ffiCallXIO :: Name -> ExpQ
-ffiCallXIO hn = ffiCallImpl True False hn [|handleExceptions|]
 
 ffiCallImpl :: Bool -> Bool -> Name -> ExpQ -> ExpQ
 ffiCallImpl io constr hFun extra = do

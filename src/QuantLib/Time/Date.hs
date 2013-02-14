@@ -132,24 +132,24 @@ today = do
   return $ localDay $ utcToLocalTime tz now
 
 -- |One-based (Jan 1st = 1)
-dayOfYear :: Day -> Int
-dayOfYear = $(ffiCallXIO 'dayOfYear) c_dayOfYear
+dayOfYear :: Day -> IO Int
+dayOfYear = $(ffiCallX 'dayOfYear) c_dayOfYear
 
 foreign import ccall safe "ql.h qlDateDayOfYear"
   c_dayOfYear :: CDate -> Ptr CString -> IO CInt
 
 -- |last day of the month to which the given date belongs
 endOfMonth :: Day -- ^d
-  -> Day
-endOfMonth = $(ffiCallXIO 'endOfMonth) c_endOfMonth
+  -> IO Day
+endOfMonth = $(ffiCallX 'endOfMonth) c_endOfMonth
 
 foreign import ccall safe "ql.h qlDateEndOfMonth"
   c_endOfMonth :: CDate -> Ptr CString -> IO CDate
 
 -- |whether a date is the last day of its month
 isEndOfMonth :: Day -- ^d
-  -> Bool
-isEndOfMonth = $(ffiCallXIO 'isEndOfMonth) c_isEndOfMonth
+  -> IO Bool
+isEndOfMonth = $(ffiCallX 'isEndOfMonth) c_isEndOfMonth
 
 foreign import ccall safe "ql.h qlDateIsEndOfMonth"
   c_isEndOfMonth :: CDate -> Ptr CString -> IO CInt
@@ -158,8 +158,8 @@ foreign import ccall safe "ql.h qlDateIsEndOfMonth"
 -- E.g., the Friday following Tuesday, January 15th, 2002 was January 18th, 2002.see http://www.cpearson.com/excel/DateTimeWS.htm
 nextWeekday :: Day -- ^d
   -> Weekday -- ^w
-  -> Day
-nextWeekday = $(ffiCallXIO 'nextWeekday) c_nextWeekday
+  -> IO Day
+nextWeekday = $(ffiCallX 'nextWeekday) c_nextWeekday
 
 foreign import ccall safe "ql.h qlDateNextWeekday"
   c_nextWeekday :: CDate -> CInt -> Ptr CString -> IO CDate
@@ -170,16 +170,16 @@ nthWeekday :: Word -- ^n
   -> Weekday -- ^w
   -> Month -- ^m
   -> Int -- ^y
-  -> Day
-nthWeekday = $(ffiCallXIO 'nthWeekday) c_nthWeekday
+  -> IO Day
+nthWeekday = $(ffiCallX 'nthWeekday) c_nthWeekday
 
 foreign import ccall safe "ql.h qlDateNthWeekday"
   c_nthWeekday :: CUInt -> CInt -> CInt -> CInt -> Ptr CString -> IO CDate
 
 -- |returns the IMM code for the given date (e.g. H3 for March 20th, 2013). /Warning/ It raises an exception if the input date is not an IMM date
 immCode :: Day -- ^immDate
-  -> String
-immCode = $(ffiCallXIO 'immCode) c_code
+  -> IO String
+immCode = $(ffiCallX 'immCode) c_code
 
 foreign import ccall safe "ql.h qlIMMCode"
   c_code :: CDate -> Ptr CString -> IO CString
@@ -187,8 +187,8 @@ foreign import ccall safe "ql.h qlIMMCode"
 -- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
 immDate :: String -- ^immCode
   -> Maybe Day -- ^referenceDate
-  -> Day
-immDate = $(ffiCallXIO 'immDate) c_date
+  -> IO Day
+immDate = $(ffiCallX 'immDate) c_date
 
 foreign import ccall safe "ql.h qlIMMDate"
   c_date :: CString -> CDate -> Ptr CString -> IO CDate
@@ -196,8 +196,8 @@ foreign import ccall safe "ql.h qlIMMDate"
 -- |returns whether or not the given string is an IMM code
 isIMMcode ::String -- ^in
   -> Bool -- ^mainCycle
-  -> Bool
-isIMMcode = $(ffiCallXIO 'isIMMcode) c_isIMMcode
+  -> IO Bool
+isIMMcode = $(ffiCallX 'isIMMcode) c_isIMMcode
 
 foreign import ccall safe "ql.h qlIMMIsIMMcode"
   c_isIMMcode :: CString -> CInt -> Ptr CString -> IO CInt
@@ -205,8 +205,8 @@ foreign import ccall safe "ql.h qlIMMIsIMMcode"
 -- |returns whether or not the given date is an IMM date
 isIMMdate :: Day -- ^d
   -> Bool -- ^mainCycle
-  -> Bool
-isIMMdate = $(ffiCallXIO 'isIMMdate) c_isIMMdate
+  -> IO Bool
+isIMMdate = $(ffiCallX 'isIMMdate) c_isIMMdate
 
 foreign import ccall safe "ql.h qlIMMIsIMMdate"
   c_isIMMdate :: CDate -> CInt -> Ptr CString -> IO CInt
@@ -216,8 +216,8 @@ foreign import ccall safe "ql.h qlIMMIsIMMdate"
 nextIMMCode' :: String -- ^immCode
   -> Bool -- ^mainCycle
   -> Maybe Day -- ^referenceDate
-  -> String
-nextIMMCode' = $(ffiCallXIO 'nextIMMCode') c_nextCode'
+  -> IO String
+nextIMMCode' = $(ffiCallX 'nextIMMCode') c_nextCode'
 
 foreign import ccall safe "ql.h qlIMMNextCode1"
   c_nextCode' :: CString -> CInt -> CDate -> Ptr CString -> IO CString
@@ -226,8 +226,8 @@ foreign import ccall safe "ql.h qlIMMNextCode1"
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 nextIMMCode :: Maybe Day -- ^d
   -> Bool -- ^mainCycle
-  -> String
-nextIMMCode = $(ffiCallXIO 'nextIMMCode) c_nextCode
+  -> IO String
+nextIMMCode = $(ffiCallX 'nextIMMCode) c_nextCode
 
 foreign import ccall safe "ql.h qlIMMNextCode"
   c_nextCode :: CDate -> CInt -> Ptr CString -> IO CString
@@ -237,8 +237,8 @@ foreign import ccall safe "ql.h qlIMMNextCode"
 nextIMMDate' :: String -- ^immCode
   -> Bool -- ^mainCycle
   -> Maybe Day -- ^referenceDate
-  -> Day
-nextIMMDate' = $(ffiCallXIO 'nextIMMDate') c_nextDate'
+  -> IO Day
+nextIMMDate' = $(ffiCallX 'nextIMMDate') c_nextDate'
 
 foreign import ccall safe "ql.h qlIMMNextDate1"
   c_nextDate' :: CString -> CInt -> CDate -> Ptr CString -> IO CDate
@@ -247,8 +247,8 @@ foreign import ccall safe "ql.h qlIMMNextDate1"
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 nextIMMDate :: Maybe Day -- ^d
   -> Bool -- ^mainCycle
-  -> Day
-nextIMMDate = $(ffiCallXIO 'nextIMMDate) c_nextDate
+  -> IO Day
+nextIMMDate = $(ffiCallX 'nextIMMDate) c_nextDate
 
 foreign import ccall safe "ql.h qlIMMNextDate"
   c_nextDate :: CDate -> CInt -> Ptr CString -> IO CDate
