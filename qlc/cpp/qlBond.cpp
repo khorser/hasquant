@@ -1,5 +1,6 @@
 #include <ql/instruments/bonds/all.hpp>
 #include <ql/cashflows/couponpricer.hpp>
+#include <ql/pricingengines/bond/bondfunctions.hpp>
 
 #include "qlaux.h"
 
@@ -324,6 +325,196 @@ int qlBondStartDate(QlBond* o, char **e) {
     return ((*arg(o))->startDate()).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
+  }
+}
+
+int qlBondFunctionsAccrualDays(QlBond* bond, int settlementDate, char **e) {
+  try {
+    return BondFunctions::accrualDays(**arg(bond), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+int qlBondFunctionsAccrualEndDate(QlBond* bond, int settlementDate, char **e) {
+  try {
+    return (BondFunctions::accrualEndDate(**arg(bond), qlNullableDate(settlementDate))).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+double qlBondFunctionsAccrualPeriod(QlBond* bond, int settlementDate, char **e) {
+  try {
+    return BondFunctions::accrualPeriod(**arg(bond), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+int qlBondFunctionsAccrualStartDate(QlBond* bond, int settlementDate, char **e) {
+  try {
+    return (BondFunctions::accrualStartDate(**arg(bond), qlNullableDate(settlementDate))).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+int qlBondFunctionsAccruedDays(QlBond* bond, int settlementDate, char **e) {
+  try {
+    return BondFunctions::accruedDays(**arg(bond), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+double qlBondFunctionsAccruedPeriod(QlBond* bond, int settlementDate, char **e) {
+  try {
+    return BondFunctions::accruedPeriod(**arg(bond), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsAtmRate(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, double cleanPrice, char **e) {
+  try {
+    return BondFunctions::atmRate(**arg(bond), **arg(discountCurve), qlNullableDate(settlementDate), cleanPrice);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsBasisPointValue1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
+  try {
+    return BondFunctions::basisPointValue(**arg(bond), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsBasisPointValue(QlBond* bond, InterestRate* yield, int settlementDate, char **e) {
+  try {
+    return BondFunctions::basisPointValue(**arg(bond), *arg(yield), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsBps1(QlBond* bond, InterestRate* yield, int settlementDate, char **e) {
+  try {
+    return BondFunctions::bps(**arg(bond), *arg(yield), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsBps2(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
+  try {
+    return BondFunctions::bps(**arg(bond), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsBps(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, char **e) {
+  try {
+    return BondFunctions::bps(**arg(bond), **arg(discountCurve), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsCleanPrice2(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, char **e) {
+  try {
+    return BondFunctions::cleanPrice(**arg(bond), **arg(discountCurve), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsCleanPrice3(QlBond* bond, QlYieldTermStructure* discount, double zSpread, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
+  try {
+    return BondFunctions::cleanPrice(**arg(bond), *arg(discount), zSpread, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsCleanPrice4(QlBond* bond, InterestRate* yield, int settlementDate, char **e) {
+  try {
+    return BondFunctions::cleanPrice(**arg(bond), *arg(yield), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsConvexity1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
+  try {
+    return BondFunctions::convexity(**arg(bond), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsConvexity(QlBond* bond, InterestRate* yield, int settlementDate, char **e) {
+  try {
+    return BondFunctions::convexity(**arg(bond), *arg(yield), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsDuration1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int type, int settlementDate, char **e) {
+  try {
+    return BondFunctions::duration(**arg(bond), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, (Duration::Type)type, qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsDuration(QlBond* bond, InterestRate* yield, int type, int settlementDate, char **e) {
+  try {
+    return BondFunctions::duration(**arg(bond), *arg(yield), (Duration::Type)type, qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsNextCashFlowAmount(QlBond* bond, int refDate, char **e) {
+  try {
+    return BondFunctions::nextCashFlowAmount(**arg(bond), qlNullableDate(refDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsPreviousCashFlowAmount(QlBond* bond, int refDate, char **e) {
+  try {
+    return BondFunctions::previousCashFlowAmount(**arg(bond), qlNullableDate(refDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+int qlBondFunctionsReferencePeriodEnd(QlBond* bond, int settlementDate, char **e) {
+  try {
+    return (BondFunctions::referencePeriodEnd(**arg(bond), qlNullableDate(settlementDate))).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+int qlBondFunctionsReferencePeriodStart(QlBond* bond, int settlementDate, char **e) {
+  try {
+    return (BondFunctions::referencePeriodStart(**arg(bond), qlNullableDate(settlementDate))).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+double qlBondFunctionsYield2(QlBond* bond, double cleanPrice, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e) {
+  try {
+    return BondFunctions::yield(**arg(bond), cleanPrice, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, qlNullableDate(settlementDate), accuracy, maxIterations, guess);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsYieldValueBasisPoint1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e) {
+  try {
+    return BondFunctions::yieldValueBasisPoint(**arg(bond), yield, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsYieldValueBasisPoint(QlBond* bond, InterestRate* yield, int settlementDate, char **e) {
+  try {
+    return BondFunctions::yieldValueBasisPoint(**arg(bond), *arg(yield), qlNullableDate(settlementDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBondFunctionsZSpread(QlBond* bond, double cleanPrice, QlYieldTermStructure* x2, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e) {
+  try {
+    return BondFunctions::zSpread(**arg(bond), cleanPrice, *arg(x2), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, qlNullableDate(settlementDate), accuracy, maxIterations, guess);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
   }
 }
 

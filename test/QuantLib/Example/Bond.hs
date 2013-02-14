@@ -49,6 +49,7 @@ data Result = Result
   , tradable :: (Bool, Bool, Bool)
   , cfnpvR :: Double
   , cfnpvbpsR :: (Double, Double)
+  , bpsR :: Double
   }
   
 listToTuple :: [a] -> (a, a)
@@ -250,8 +251,9 @@ result = do
 
   -- some cash flows smoke check
   cfs <- cashflows fixedBond
-  cfnpv <- Leg.npv cfs ts True (Just $ 1 `may` 2012) (Just $ 10 `may` 2012)
-  cfnpvbps <- Leg.npvbps cfs ts True (1 `may` 2012) (10 `may` 2012)
+  cfnpv <- Leg.npv cfs ts True (Just $ 1 `may` 2012) (Just $ 3 `may` 2012)
+  cfnpvbps <- Leg.npvbps cfs ts True (1 `may` 2012) (3 `may` 2012)
+  bbps <- bps fixedBond ts (Just $ 3 `may` 2012)
 
   [fixnpv, znpv, fnpv] <-
     mapM (asInstrument >=>
@@ -289,6 +291,7 @@ result = do
     , tradable = listToTriple bTradable
     , cfnpvR = cfnpv
     , cfnpvbpsR = cfnpvbps
+    , bpsR = bbps
     }
 
  where zcQuotes = [0.0096, 0.0145, 0.0194]

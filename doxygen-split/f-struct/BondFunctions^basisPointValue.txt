@@ -1,8 +1,0 @@
-->Real
-::const Bond &
--- ^bond
-::const InterestRate &
--- ^yield
-::Date
-=Date()
--- ^settlementDate

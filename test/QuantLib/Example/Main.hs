@@ -28,6 +28,7 @@ main = do
   putStrLn $ "Tradable: " ++ show (BondExample.tradable r)
 
   putStrLn $ "CashFlows: NPV: " ++ show (BondExample.cfnpvR r) ++ ", NPV_BPS: " ++ show (BondExample.cfnpvbpsR r)
+  putStrLn $ "BPS: " ++ show (BondExample.bpsR r)
 
   rr <- RepoExample.result
   putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)

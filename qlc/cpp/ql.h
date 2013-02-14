@@ -168,6 +168,34 @@ extern "C" {
   int DLLEXPORT qlBondIsTradable(QlBond* o, int d, char **e);
   double* DLLEXPORT qlBondNotionals(QlBond* o, unsigned *len, char **e);
 
+  int DLLEXPORT qlBondFunctionsAccrualDays(QlBond* bond, int settlementDate, char **e);
+  int DLLEXPORT qlBondFunctionsAccrualEndDate(QlBond* bond, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsAccrualPeriod(QlBond* bond, int settlementDate, char **e);
+  int DLLEXPORT qlBondFunctionsAccrualStartDate(QlBond* bond, int settlementDate, char **e);
+  int DLLEXPORT qlBondFunctionsAccruedDays(QlBond* bond, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsAccruedPeriod(QlBond* bond, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsAtmRate(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, double cleanPrice, char **e);
+  double DLLEXPORT qlBondFunctionsBasisPointValue1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsBasisPointValue(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsBps1(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsBps2(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsBps(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsCleanPrice2(QlBond* bond, QlYieldTermStructure* discountCurve, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsCleanPrice3(QlBond* bond, QlYieldTermStructure* discount, double zSpread, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsCleanPrice4(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsConvexity1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsConvexity(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsDuration1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int type, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsDuration(QlBond* bond, InterestRate* yield, int type, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsNextCashFlowAmount(QlBond* bond, int refDate, char **e);
+  double DLLEXPORT qlBondFunctionsPreviousCashFlowAmount(QlBond* bond, int refDate, char **e);
+  int DLLEXPORT qlBondFunctionsReferencePeriodEnd(QlBond* bond, int settlementDate, char **e);
+  int DLLEXPORT qlBondFunctionsReferencePeriodStart(QlBond* bond, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsYield2(QlBond* bond, double cleanPrice, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e);
+  double DLLEXPORT qlBondFunctionsYieldValueBasisPoint1(QlBond* bond, double yield, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsYieldValueBasisPoint(QlBond* bond, InterestRate* yield, int settlementDate, char **e);
+  double DLLEXPORT qlBondFunctionsZSpread(QlBond* bond, double cleanPrice, QlYieldTermStructure* x2, DayCounter* dayCounter, int compounding, int frequency, int settlementDate, double accuracy, unsigned maxIterations, double guess, char **e);
+
   void DLLEXPORT qlFreeBond(QlBond *bond);
   void DLLEXPORT qlFreeFixedRateBond(QlFixedRateBond *bond);
 

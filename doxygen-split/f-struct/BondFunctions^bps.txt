@@ -1,8 +1,0 @@
-->Real
-::const Bond &
--- ^bond
-::const YieldTermStructure &
--- ^discountCurve
-::Date
-=Date()
--- ^settlementDate

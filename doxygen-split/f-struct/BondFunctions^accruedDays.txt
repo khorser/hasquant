@@ -1,6 +1,0 @@
-->BigInteger
-::const Bond &
--- ^bond
-::Date
-=Date()
--- ^settlementDate

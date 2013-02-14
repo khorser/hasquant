@@ -53,7 +53,6 @@ Calendar::
 Period::
 BondHelper
 
-BondFunctions::
 Settings::
 Leg accessor (bond, swap?)
 BMA*
@@ -70,27 +69,10 @@ CubicBSplinesFitting
 SvenssonFitting
 
 -- done:
-Bond^accruedAmount
-Bond^cleanPrice
-Bond^cleanPrice#1
-Bond^dirtyPrice
-Bond^dirtyPrice#1
-Bond^isTradable
-Bond^nextCashFlowDate
-Bond^nextCouponRate
-Bond^notional
-Bond^previousCashFlowDate
-Bond^previousCouponRate
-Bond^settlementValue
-Bond^settlementValue#1
-Bond^yield
-Bond^yield#1
+Bond::
+BondFunctions::
 FlatForward
 FixedRateBondForward
-bondFwd.spotIncome
-bondFwd.cleanForwardPrice
-bondFwd.forwardPrice
-bondFwd.impliedYield
 repoCurve->zeroRate
 ForwardRateAgreement
 IMM::
