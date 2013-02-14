@@ -52,14 +52,13 @@ Currency::
 Calendar::
 Period::
 BondHelper
-Bond::
 
-CashFlows:: and BondFunctions::
+BondFunctions::
 Settings::
 Leg accessor (bond, swap?)
 BMA*
 ForwardRateStructure
-replace CashFlows::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
+replace CashFlows/BondFunctions::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
 quotes
 
 
@@ -103,3 +102,4 @@ BespokeCalendar
 JointCalendar
 DiscountingSwapEngine
 swap indices
+Bond::

@@ -27,6 +27,8 @@ main = do
   putStrLn $ "Floater's yield from clean price: " ++ show (BondExample.yieldFromCleanPrice r)
   putStrLn $ "Tradable: " ++ show (BondExample.tradable r)
 
+  putStrLn $ "CashFlows: NPV: " ++ show (BondExample.cfnpvR r) ++ ", NPV_BPS: " ++ show (BondExample.cfnpvbpsR r)
+
   rr <- RepoExample.result
   putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)
   putStrLn $ "Underlying bond dirty price: " ++ show (RepoExample.dirtyPriceR rr)

@@ -1,6 +1,0 @@
-->Leg::const_reverse_iterator
-::const Bond &
--- ^bond
-::Date
-=Date()
--- ^refDate

@@ -11,6 +11,7 @@ import Data.List(zip4)
 import Data.Time.Calendar(Day, fromGregorian)
 
 import QuantLib.CashFlow.CouponPricer
+import qualified QuantLib.CashFlow.Leg as Leg
 import QuantLib.Compounding
 import QuantLib.Index
 import QuantLib.Index.Ibor
@@ -46,6 +47,8 @@ data Result = Result
   , yieldFromCleanPrice :: Double
   , nextCouponDate :: (Day, Day, Day)
   , tradable :: (Bool, Bool, Bool)
+  , cfnpvR :: Double
+  , cfnpvbpsR :: (Double, Double)
   }
   
 listToTuple :: [a] -> (a, a)
@@ -74,15 +77,13 @@ result = do
   usGovBondCal <- unitedStatesGovernmentBond
   nocal <- noCalendar
   
-  settlementDate <- adjust targetCal
-                                    (18 `september` 2008)
-                                    Following
-  todaysDate <- advance  targetCal
-                                  settlementDate
-                                  (-(fromIntegral fixingDays))
-                                  Days
-                                  Following
-                                  False
+  settlDate <- adjust targetCal (18 `september` 2008) Following
+  todaysDate <- advance targetCal
+                        settlDate
+                        (-(fromIntegral fixingDays))
+                        Days
+                        Following
+                        False
   setEvaluationDate (Just todaysDate)
   discDepoHelpers <- mapM
     (\(q, p) -> do
@@ -123,7 +124,7 @@ result = do
         i)
     $ zip4 quotes couponRates issueDates maturities
   ts <- piecewiseYieldCurve
-          settlementDate
+          settlDate
           (discDepoHelpers ++ discBondHelpers)
           actActISDA
           []
@@ -200,7 +201,7 @@ result = do
           zip liborSwapQuotes liborSwapTerms
   
   fwdCurve <- piecewiseYieldCurve
-                settlementDate
+                settlDate
                 (depoLiborHelpers ++ swapLiborHelpers)
                 actActISDA
                 []
@@ -247,6 +248,11 @@ result = do
   let allBonds = [fixedBond, zcBond, floater]
       twoBonds = [fixedBond, floater]
 
+  -- some cash flows smoke check
+  cfs <- cashflows fixedBond
+  cfnpv <- Leg.npv cfs ts True (Just $ 1 `may` 2012) (Just $ 10 `may` 2012)
+  cfnpvbps <- Leg.npvbps cfs ts True (1 `may` 2012) (10 `may` 2012)
+
   [fixnpv, znpv, fnpv] <-
     mapM (asInstrument >=>
       (\y -> setPricingEngine y pricing >> npv y))
@@ -262,8 +268,8 @@ result = do
     (\b -> yield b actual360dc Compounded Annual 1e-8 100)
     allBonds
 
-  fCleanFromYield <- cleanPrice' floater (bYield!!2) actual360dc Compounded Annual (Just settlementDate)
-  fYieldFromClean <- yield' floater (bCleanPrice!!2) actual360dc Compounded Annual (Just settlementDate) 1e-8 100
+  fCleanFromYield <- cleanPrice' floater (bYield!!2) actual360dc Compounded Annual (Just settlDate)
+  fYieldFromClean <- yield' floater (bCleanPrice!!2) actual360dc Compounded Annual (Just settlDate) 1e-8 100
 
   bNextCouponDate <- mapM (`nextCashFlowDate` Nothing) allBonds
   
@@ -281,6 +287,8 @@ result = do
     , cleanPriceFromYield = fCleanFromYield
     , yieldFromCleanPrice = fYieldFromClean
     , tradable = listToTriple bTradable
+    , cfnpvR = cfnpv
+    , cfnpvbpsR = cfnpvbps
     }
 
  where zcQuotes = [0.0096, 0.0145, 0.0194]

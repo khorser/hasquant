@@ -1,2 +1,0 @@
--- |returns just the redemption flows (not interest payments)
-->const Leg &

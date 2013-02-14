@@ -298,4 +298,33 @@ int qlBondIsTradable(QlBond* o, int d, char **e) {
   }
 }
 
+Leg* qlBondCashflows(QlBond* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->cashflows()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+Leg* qlBondRedemptions(QlBond* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->redemptions()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+int qlBondSettlementDate(QlBond* o, int d, char **e) {
+  try {
+    return ((*arg(o))->settlementDate(qlNullableDate(d))).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+int qlBondStartDate(QlBond* o, char **e) {
+  try {
+    return ((*arg(o))->startDate()).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
