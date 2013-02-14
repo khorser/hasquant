@@ -57,8 +57,16 @@ Settings::
 Leg accessor (bond, swap?)
 BMA*
 ForwardRateStructure
+
+InterpolatedDiscountCurve
+InterpolatedForwardCurve
+InterpolatedZeroCurve
+
 replace CashFlows/BondFunctions::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
 quotes
+ZeroSpreadCurve
+SensitivityAnalysis
+historicalForwardRatesAnalysis
 
 
 FittedBondDiscountCurve
