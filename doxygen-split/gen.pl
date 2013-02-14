@@ -346,7 +346,14 @@ sub type
     my ($carg, $farg, $ret) = ("Ql$t*", "Ptr C$t", "ret(new Ql$t(alloc(new %)))");
     if (not $h)
     {
-      return ($carg, $farg, $t, '(*arg(%))', $ret, 1);
+      if (not $vect)
+      {
+	return ($carg, $farg, $t, '(*arg(%))', $ret, 1);
+      }
+      else
+      {
+	return ("$carg*", "CUInt -> Ptr ($farg)", "[$t]", 'qlBuildVector(%, %Len)', '???', 1, 'unsigned %Len');
+      }
     }
     else
     {

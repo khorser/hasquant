@@ -39,6 +39,7 @@ module QuantLib.Internal.Types
   , COptionletVolStructure
   , CBondHelper
   , CFittedBondDiscountCurveFittingMethod
+  , CFittedBondDiscountCurve
 
   -- time
   , CCalendar
@@ -291,6 +292,16 @@ instance Finalizable CFittedBondDiscountCurveFittingMethod where
   finalize = p_freeFittedBondDiscountCurveFittingMethod
 foreign import ccall safe "ql.h &qlFreeFittedBondDiscountCurveFittingMethod"
   p_freeFittedBondDiscountCurveFittingMethod :: FunPtr (Ptr CFittedBondDiscountCurveFittingMethod -> IO ())
+
+data CFittedBondDiscountCurve
+instance Finalizable CFittedBondDiscountCurve where
+  finalize = p_freeFittedBondDiscountCurve
+foreign import ccall safe "ql.h &qlFreeFittedBondDiscountCurve"
+  p_freeFittedBondDiscountCurve :: FunPtr (Ptr CFittedBondDiscountCurve -> IO ())
+instance Upcastable CFittedBondDiscountCurve CYieldTermStructure where
+  c_upcast = c_FittedBondDiscountCurveAsYieldTermStructure
+foreign import ccall safe "ql.h qlFittedBondDiscountCurveAsYieldTermStructure"
+  c_FittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve -> IO (Ptr CYieldTermStructure)
 
 -- time
 data CCalendar

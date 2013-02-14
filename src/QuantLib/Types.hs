@@ -40,6 +40,7 @@ module QuantLib.Types
   , OptionletVolStructure
   , BondHelper
   , FittedBondDiscountCurveFittingMethod
+  , FittedBondDiscountCurve
 
   -- time
   , Calendar
@@ -67,6 +68,8 @@ module QuantLib.Types
   , asSwapIndex
 
   , asRateHelper
+
+  , asYieldTermStructure
   )
 where
 
@@ -200,6 +203,11 @@ asRateHelper :: (Upcastable a CRateHelper) => ForeignPtr a -> IO RateHelper
 asRateHelper = upcast
 
 type FittedBondDiscountCurveFittingMethod = ForeignPtr CFittedBondDiscountCurveFittingMethod
+
+type FittedBondDiscountCurve = ForeignPtr CFittedBondDiscountCurve
+
+asYieldTermStructure :: (Upcastable a CYieldTermStructure) => ForeignPtr a -> IO YieldTermStructure
+asYieldTermStructure = upcast
 
 -- time
 -- |Calendars provide the means for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days

@@ -288,4 +288,23 @@ QuantLib::FittedBondDiscountCurve::FittingMethod* qlSvenssonFitting(char **e) {
   }
 }
 
+QlFittedBondDiscountCurve* qlFittedBondDiscountCurve(unsigned settlementDays, Calendar* calendar, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, char **e) {
+  try {
+    return ret(new QlFittedBondDiscountCurve(alloc(new FittedBondDiscountCurve(settlementDays, (*arg(calendar)), qlBuildVector(bonds, bondsLen), (*arg(dayCounter)), (*arg(fittingMethod)), accuracy, maxEvaluations))));
+  } catch (std::exception& er) {
+    return handleException<QlFittedBondDiscountCurve*>(e, er);
+  }
+}
+
+QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, char **e) {
+  try {
+    return ret(new QlFittedBondDiscountCurve(alloc(new FittedBondDiscountCurve(Date(referenceDate), qlBuildVector(bonds, bondsLen), (*arg(dayCounter)), (*arg(fittingMethod)), accuracy, maxEvaluations))));
+  } catch (std::exception& er) {
+    return handleException<QlFittedBondDiscountCurve*>(e, er);
+  }
+}
+
+void qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o) { del(o); }
+QlYieldTermStructure* qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o) { return ret(new QlYieldTermStructure(*arg(o))); }
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

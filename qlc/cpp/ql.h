@@ -313,6 +313,11 @@ extern "C" {
   QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlNelsonSiegelFitting(char **e);
   QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e);
   QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlSvenssonFitting(char **e);
+  QlFittedBondDiscountCurve* DLLEXPORT qlFittedBondDiscountCurve(unsigned settlementDays, Calendar* calendar, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, char **e);
+  QlFittedBondDiscountCurve* DLLEXPORT qlFittedBondDiscountCurve1(int referenceDate, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, char **e);
+  
+  void DLLEXPORT qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o);
+  QlYieldTermStructure* DLLEXPORT qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o);
 #endif
 
   /* pricing engine */

@@ -14,6 +14,9 @@ module QuantLib.TermStructure.Yield
   , interpolatedForwardCurve
   , interpolatedZeroCurve
 
+  , fittedBondDiscountCurve
+  , fittedBondDiscountCurve'
+
   , discount
   , discount'
   , zeroRate
@@ -316,3 +319,31 @@ svenssonFitting = $(ffiConstruct 'svenssonFitting) c_svenssonFitting
 
 foreign import ccall safe "ql.h qlSvenssonFitting"
   c_svenssonFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+-- |reference date based on current evaluation date
+-- unlike C++ library we do not provide guess and simplexLambda arguments (yet)
+fittedBondDiscountCurve :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [BondHelper] -- ^bonds
+  -> DayCounter -- ^dayCounter
+  -> FittedBondDiscountCurveFittingMethod -- ^fittingMethod
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> IO FittedBondDiscountCurve
+fittedBondDiscountCurve = $(ffiConstruct 'fittedBondDiscountCurve) c_fittedBondDiscountCurve
+
+foreign import ccall safe "ql.h qlFittedBondDiscountCurve"
+  c_fittedBondDiscountCurve :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
+
+-- |curve reference date fixed for life of curve
+fittedBondDiscountCurve' :: Day -- ^referenceDate
+  -> [BondHelper] -- ^bonds
+  -> DayCounter -- ^dayCounter
+  -> FittedBondDiscountCurveFittingMethod -- ^fittingMethod
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> IO FittedBondDiscountCurve
+fittedBondDiscountCurve' = $(ffiConstruct 'fittedBondDiscountCurve') c_fittedBondDiscountCurve'
+
+foreign import ccall safe "ql.h qlFittedBondDiscountCurve1"
+  c_fittedBondDiscountCurve' :: CDate -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
