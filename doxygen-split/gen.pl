@@ -285,7 +285,14 @@ sub type
   }
   elsif ($t eq 'Time')
   {
-    return ('double', 'CYearFraction', 'YearFraction', '%', '%', 0, '');
+    if (not $vect)
+    {
+      return ('double', 'CYearFraction', 'YearFraction', '%', '%', 0, '');
+    }
+    else
+    {
+      return ('double *', 'CUInt -> Ptr CYearFraction', '[YearFraction]', 'qlBuildVector(%, %+%Len)', 'qlBuildVector(%, %+%Len)', 0, '');
+    }
   }
   elsif ($t eq 'bool')
   {
