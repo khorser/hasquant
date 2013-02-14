@@ -682,4 +682,5 @@ template <> class objClassName<BondHelper *> { public: static const char *name()
 template <> class objClassName<QlBondHelper *> { public: static const char *name() { return "QlBondHelper"; } };
 
 #include "ql.h"
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

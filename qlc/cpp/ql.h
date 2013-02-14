@@ -306,6 +306,14 @@ extern "C" {
   QlYieldTermStructure *DLLEXPORT qlInterpolatedZeroCurve(unsigned yieldLen,
     double *yields, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
     QlQuote **quotes, int *dates, char *interpolator, char **e);
+#ifdef quantlib_fitted_bond_discount_curve_hpp
+  void DLLEXPORT qlFreeFittedBondDiscountCurveFittingMethod(QuantLib::FittedBondDiscountCurve::FittingMethod *o);
+  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlCubicBSplinesFitting(unsigned knotVectorLen, double * knotVector, int constrainAtZero, char **e);
+  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlExponentialSplinesFitting(int constrainAtZero, char **e);
+  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlNelsonSiegelFitting(char **e);
+  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e);
+  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlSvenssonFitting(char **e);
+#endif
 
   /* pricing engine */
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);

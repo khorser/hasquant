@@ -1,6 +1,0 @@
-->
-::Natural
--- ^degree
-::bool
-=true
--- ^constrainAtZero

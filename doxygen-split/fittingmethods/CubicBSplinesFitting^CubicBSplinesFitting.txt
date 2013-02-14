@@ -1,6 +1,0 @@
-->
-::const std::vector< Time > &
--- ^knotVector
-::bool
-=true
--- ^constrainAtZero

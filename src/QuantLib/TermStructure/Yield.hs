@@ -21,6 +21,12 @@ module QuantLib.TermStructure.Yield
   , forwardRate
   , forwardRate'
   , forwardRate''
+
+  , cubicBSplinesFitting
+  , exponentialSplinesFitting
+  , nelsonSiegelFitting
+  , simplePolynomialFitting
+  , svenssonFitting
   )
 where
 
@@ -275,3 +281,38 @@ interpolatedZeroCurve = $(ffiConstruct 'interpolatedZeroCurve) c_interpolatedZer
 
 foreign import ccall safe "ql.h qlInterpolatedZeroCurve"
   c_interpolatedZeroCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+cubicBSplinesFitting :: [YearFraction] -- ^knotVector
+  -> Bool -- ^constrainAtZero
+  -> IO FittedBondDiscountCurveFittingMethod
+cubicBSplinesFitting = $(ffiConstruct 'cubicBSplinesFitting) c_cubicBSplinesFitting
+
+foreign import ccall safe "ql.h qlCubicBSplinesFitting"
+  c_cubicBSplinesFitting :: CUInt -> Ptr CYearFraction -> CInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+exponentialSplinesFitting :: Bool -- ^constrainAtZero
+  -> IO FittedBondDiscountCurveFittingMethod
+exponentialSplinesFitting = $(ffiConstruct 'exponentialSplinesFitting) c_exponentialSplinesFitting
+
+foreign import ccall safe "ql.h qlExponentialSplinesFitting"
+  c_exponentialSplinesFitting :: CInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+nelsonSiegelFitting :: IO FittedBondDiscountCurveFittingMethod
+nelsonSiegelFitting = $(ffiConstruct 'nelsonSiegelFitting) c_nelsonSiegelFitting
+
+foreign import ccall safe "ql.h qlNelsonSiegelFitting"
+  c_nelsonSiegelFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+simplePolynomialFitting :: Word -- ^degree
+  -> Bool -- ^constrainAtZero
+  -> IO FittedBondDiscountCurveFittingMethod
+simplePolynomialFitting = $(ffiConstruct 'simplePolynomialFitting) c_simplePolynomialFitting
+
+foreign import ccall safe "ql.h qlSimplePolynomialFitting"
+  c_simplePolynomialFitting :: CUInt -> CInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
+
+svenssonFitting :: IO FittedBondDiscountCurveFittingMethod
+svenssonFitting = $(ffiConstruct 'svenssonFitting) c_svenssonFitting
+
+foreign import ccall safe "ql.h qlSvenssonFitting"
+  c_svenssonFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)

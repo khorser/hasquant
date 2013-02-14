@@ -291,7 +291,7 @@ sub type
     }
     else
     {
-      return ('double *', 'CUInt -> Ptr CYearFraction', '[YearFraction]', 'qlBuildVector(%, %+%Len)', 'qlBuildVector(%, %+%Len)', 0, '');
+      return ('double *', 'CUInt -> Ptr CYearFraction', '[YearFraction]', 'std::vector<double>(%, %+%Len)', '', 0, 'unsigned %Len');
     }
   }
   elsif ($t eq 'bool')

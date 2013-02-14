@@ -6,6 +6,8 @@
 
 using namespace QuantLib;
 
+template <> class objClassName<FittedBondDiscountCurve::FittingMethod *> { public: static const char *name() { return "FittedBondDiscountCurve::FittingMethod"; } };
+
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDays,
   Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {
@@ -184,6 +186,8 @@ try {
   }
 }
 
+void qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurve::FittingMethod *o) { del(o); }
+
 // generated functions
 InterestRate* qlYieldTermStructureZeroRate(QlYieldTermStructure* o, int d, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e) {
 try {
@@ -244,4 +248,44 @@ QlRateHelper* qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned mo
 void qlFreeBondHelper(QlBondHelper *o) { del(o); }
 QlRateHelper* qlBondHelperAsRateHelper(QlBondHelper *o) { return ret(new QlRateHelper(*arg(o))); }
 	
+FittedBondDiscountCurve::FittingMethod* qlCubicBSplinesFitting(unsigned knotVectorLen, double *knotVector, int constrainAtZero, char **e) {
+  try {
+    return alloc(new CubicBSplinesFitting(std::vector<double>(knotVector, knotVector+knotVectorLen), constrainAtZero));
+  } catch (std::exception& er) {
+    return handleException<FittedBondDiscountCurve::FittingMethod*>(e, er);
+  }
+}
+
+QuantLib::FittedBondDiscountCurve::FittingMethod* qlExponentialSplinesFitting(int constrainAtZero, char **e) {
+  try {
+    return alloc(new ExponentialSplinesFitting(constrainAtZero));
+  } catch (std::exception& er) {
+    return handleException<QuantLib::FittedBondDiscountCurve::FittingMethod*>(e, er);
+  }
+}
+
+QuantLib::FittedBondDiscountCurve::FittingMethod* qlNelsonSiegelFitting(char **e) {
+  try {
+    return alloc(new NelsonSiegelFitting());
+  } catch (std::exception& er) {
+    return handleException<QuantLib::FittedBondDiscountCurve::FittingMethod*>(e, er);
+  }
+}
+
+QuantLib::FittedBondDiscountCurve::FittingMethod* qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e) {
+  try {
+    return alloc(new SimplePolynomialFitting(degree, constrainAtZero));
+  } catch (std::exception& er) {
+    return handleException<QuantLib::FittedBondDiscountCurve::FittingMethod*>(e, er);
+  }
+}
+
+QuantLib::FittedBondDiscountCurve::FittingMethod* qlSvenssonFitting(char **e) {
+  try {
+    return alloc(new SvenssonFitting());
+  } catch (std::exception& er) {
+    return handleException<QuantLib::FittedBondDiscountCurve::FittingMethod*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
