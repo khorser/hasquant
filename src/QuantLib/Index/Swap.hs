@@ -11,6 +11,9 @@ module QuantLib.Index.Swap
   , jpyLiborSwapIsdaFixPm
   , usdLiborSwapIsdaFixAm
   , usdLiborSwapIsdaFixPm
+  , euriborSwapIfrFix
+  , euriborSwapIsdaFixA
+  , euriborSwapIsdaFixB
   )
 where
 
@@ -72,6 +75,16 @@ usdLiborSwapIsdaFixPm :: Period -- ^tenor
   -> Maybe YieldTermStructure -- ^discounting
   -> IO SwapIndex
 usdLiborSwapIsdaFixPm = createLiborSwapIndex "UsdLiborSwapIsdaFixPm"
+
+
+euriborSwapIfrFix :: Period -> Maybe YieldTermStructure -> Maybe YieldTermStructure -> IO SwapIndex
+euriborSwapIfrFix = createLiborSwapIndex "EuriborSwapIfrFix"
+
+euriborSwapIsdaFixA :: Period -> Maybe YieldTermStructure -> Maybe YieldTermStructure -> IO SwapIndex
+euriborSwapIsdaFixA = createLiborSwapIndex "EuriborSwapIsdaFixA"
+
+euriborSwapIsdaFixB :: Period -> Maybe YieldTermStructure -> Maybe YieldTermStructure -> IO SwapIndex
+euriborSwapIsdaFixB = createLiborSwapIndex "EuriborSwapIsdaFixB"
 
 createLiborSwapIndex :: String
   -> Period -- ^tenor
