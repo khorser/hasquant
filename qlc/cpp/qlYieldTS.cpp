@@ -22,12 +22,12 @@ QlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDa
   }
 }
 
-QlFixedRateBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face,
+QlBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face,
   Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv,
   double redemption, int issue, char **e) {
   try {
     std::vector<Rate> cpns(coupons, coupons+cLen);
-    return ret(new QlFixedRateBondHelper(new FixedRateBondHelper(
+    return ret(new QlBondHelper(new FixedRateBondHelper(
 	    Handle<Quote>(*arg(quote)),
 	    settlDays,
 	    face,
@@ -38,7 +38,7 @@ QlFixedRateBondHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays,
 	    redemption,
 	    qlNullableDate(issue))));
   } catch (std::exception& er) {
-    return handleException<QlFixedRateBondHelper *>(e, er);
+    return handleException<QlBondHelper *>(e, er);
   }
 }
 
@@ -240,9 +240,6 @@ QlRateHelper* qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned mo
     return handleException<QlRateHelper*>(e, er);
   }
 }
-
-void qlFreeFixedRateBondHelper(QlFixedRateBondHelper *o) { del(o); }
-QlBondHelper* qlFixedRateBondHelperAsBondHelper(QlFixedRateBondHelper *o) { return ret(new QlBondHelper(*arg(o))); }
 
 void qlFreeBondHelper(QlBondHelper *o) { del(o); }
 QlRateHelper* qlBondHelperAsRateHelper(QlBondHelper *o) { return ret(new QlRateHelper(*arg(o))); }

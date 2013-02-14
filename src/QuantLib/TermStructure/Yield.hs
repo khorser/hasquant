@@ -41,7 +41,7 @@ foreign import ccall safe "ql.h qlDepositRateHelper"
 foreign import ccall safe "ql.h qlFixedRateBondHelper"
   c_fixedRateBondHelper :: Ptr CQuote -> CUInt -> CDouble -> Ptr CSchedule
     -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CDouble -> CInt
-    -> Ptr CString -> IO (Ptr CFixedRateBondHelper)
+    -> Ptr CString -> IO (Ptr CBondHelper)
 foreign import ccall safe "ql.h qlPiecewiseYieldCurve"
   c_piecewiseYieldCurve :: CDate -> CUInt -> Ptr (Ptr CRateHelper)
     -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble
@@ -68,7 +68,7 @@ fixedRateBondHelper :: Quote -- ^cleanPrice
   -> BusinessDayConvention -- ^paymentConv
   -> Double -- ^redemption
   -> Maybe Day -- ^issueDate
-  -> IO FixedRateBondHelper
+  -> IO BondHelper
 fixedRateBondHelper = $(ffiConstruct 'fixedRateBondHelper) c_fixedRateBondHelper
 
 foreign import ccall safe "ql.h qlYieldTSDiscount"

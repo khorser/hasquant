@@ -38,9 +38,7 @@ module QuantLib.Types
   , YieldTermStructure
   , VolTermStructure
   , OptionletVolStructure
-  , FixedRateBondHelper
   , BondHelper
-
 
   -- time
   , Calendar
@@ -67,7 +65,6 @@ module QuantLib.Types
   , asIborIndex
   , asSwapIndex
 
-  , asBondHelper
   , asRateHelper
   )
 where
@@ -196,11 +193,7 @@ type YieldTermStructure = ForeignPtr CYieldTermStructure
 type VolTermStructure = ForeignPtr CVolTermStructure
 type OptionletVolStructure = ForeignPtr COptionletVolStructure
 
-type FixedRateBondHelper = ForeignPtr CFixedRateBondHelper
 type BondHelper = ForeignPtr CBondHelper
-
-asBondHelper :: (Upcastable a CBondHelper) => ForeignPtr a -> IO BondHelper
-asBondHelper = upcast
 
 asRateHelper :: (Upcastable a CRateHelper) => ForeignPtr a -> IO RateHelper
 asRateHelper = upcast

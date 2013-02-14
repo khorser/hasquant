@@ -105,7 +105,7 @@ result = do
       s <- schedule i m p6m usGovBondCal Unadjusted
              Unadjusted Backward False Nothing Nothing
       fixedRateBondHelper q settlementDays 100.0 s [c]
-            actActBond Unadjusted redemption i >>= asBondHelper >>= asRateHelper)
+            actActBond Unadjusted redemption i >>= asRateHelper)
     $ zip4 quotes couponRates issueDates maturities
   ts <- piecewiseYieldCurve
           settlDate
