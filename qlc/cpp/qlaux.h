@@ -676,5 +676,14 @@ typedef boost::shared_ptr<OvernightIndexedSwap> QlOvernightIndexedSwap;
 template <> class objClassName<OvernightIndexedSwap *> { public: static const char *name() { return "OvernightIndexedSwap"; } };
 template <> class objClassName<QlOvernightIndexedSwap *> { public: static const char *name() { return "QlOvernightIndexedSwap"; } };
 
+namespace QuantLib {class BondHelper;} using QuantLib::BondHelper;
+typedef boost::shared_ptr<BondHelper> QlBondHelper;
+template <> class objClassName<BondHelper *> { public: static const char *name() { return "BondHelper"; } };
+template <> class objClassName<QlBondHelper *> { public: static const char *name() { return "QlBondHelper"; } };
+
+namespace QuantLib {class FixedRateBondHelper;} using QuantLib::FixedRateBondHelper;
+typedef boost::shared_ptr<FixedRateBondHelper> QlFixedRateBondHelper;
+template <> class objClassName<QlFixedRateBondHelper *> { public: static const char *name() { return "QlFixedRateBondHelper"; } };
+
 #include "ql.h"
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -37,6 +37,8 @@ module QuantLib.Internal.Types
   , CYieldTermStructure
   , CVolTermStructure
   , COptionletVolStructure
+  , CBondHelper
+  , CFixedRateBondHelper
 
   -- time
   , CCalendar
@@ -273,6 +275,26 @@ instance Finalizable COptionletVolStructure where
   finalize = p_freeOptionletVolStructure
 foreign import ccall safe "ql.h &qlFreeOptionletVolatilityStructure"
   p_freeOptionletVolStructure :: FunPtr (Ptr COptionletVolStructure -> IO ())
+
+data CBondHelper
+instance Finalizable CBondHelper where
+  finalize = p_freeBondHelper
+foreign import ccall safe "ql.h &qlFreeBondHelper"
+  p_freeBondHelper :: FunPtr (Ptr CBondHelper -> IO ())
+instance Upcastable CBondHelper CRateHelper where
+  c_upcast = c_BondHelperAsRateHelper
+foreign import ccall safe "ql.h qlBondHelperAsRateHelper"
+  c_BondHelperAsRateHelper :: Ptr CBondHelper -> IO (Ptr CRateHelper)
+
+data CFixedRateBondHelper
+instance Finalizable CFixedRateBondHelper where
+  finalize = p_freeFixedRateBondHelper
+foreign import ccall safe "ql.h &qlFreeFixedRateBondHelper"
+  p_freeFixedRateBondHelper :: FunPtr (Ptr CFixedRateBondHelper -> IO ())
+instance Upcastable CFixedRateBondHelper CBondHelper where
+  c_upcast = c_FixedRateBondHelperAsBondHelper
+foreign import ccall safe "ql.h qlFixedRateBondHelperAsBondHelper"
+  c_FixedRateBondHelperAsBondHelper :: Ptr CFixedRateBondHelper -> IO (Ptr CBondHelper)
 
 -- time
 data CCalendar

@@ -102,27 +102,10 @@ result = do
   quotes <- mapM (simpleQuote >=> asQuote) marketQuotes
   discBondHelpers <- mapM
     (\(q, c, i, m) -> do
-      s <- schedule
-             i
-             m
-             p6m
-             usGovBondCal
-             Unadjusted
-             Unadjusted
-             Backward
-             False
-             Nothing
-             Nothing
-      fixedRateBondHelper
-        q
-        settlementDays
-        100.0
-        s
-        [c]
-        actActBond
-        Unadjusted
-        redemption
-        i)
+      s <- schedule i m p6m usGovBondCal Unadjusted
+             Unadjusted Backward False Nothing Nothing
+      fixedRateBondHelper q settlementDays 100.0 s [c]
+            actActBond Unadjusted redemption i >>= asBondHelper >>= asRateHelper)
     $ zip4 quotes couponRates issueDates maturities
   ts <- piecewiseYieldCurve
           settlDate

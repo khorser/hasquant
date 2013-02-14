@@ -264,7 +264,7 @@ extern "C" {
   QlRateHelper *DLLEXPORT qlDepositRateHelper(QlQuote *quote, Period *period,
     unsigned fixDays, Calendar *calendar, int conv, int eom,
     DayCounter *dayCount, char **e);
-  QlRateHelper *DLLEXPORT qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays,
+  QlFixedRateBondHelper *DLLEXPORT qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays,
     double face, Schedule *sched, unsigned cLen, double *coupons,
     DayCounter *dayCount, int conv, double redemption, int issue, char **e);
   QlYieldTermStructure *DLLEXPORT qlPiecewiseYieldCurve(int date, unsigned rateLen,
@@ -278,6 +278,12 @@ extern "C" {
   QlRateHelper *DLLEXPORT qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
     int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, Period *fwdStart,
     QlYieldTermStructure *ts, char **e);
+
+  void DLLEXPORT qlFreeFixedRateBondHelper(QlFixedRateBondHelper *o);
+  QlBondHelper* DLLEXPORT qlFixedRateBondHelperAsBondHelper(QlFixedRateBondHelper *o);
+
+  void DLLEXPORT qlFreeBondHelper(QlBondHelper *o);
+  QlRateHelper* DLLEXPORT qlBondHelperAsRateHelper(QlBondHelper *o);
 
   void DLLEXPORT qlFreeRateHelper(QlRateHelper *helper);
   QlRateHelper* DLLEXPORT qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned monthsToEnd, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e);
