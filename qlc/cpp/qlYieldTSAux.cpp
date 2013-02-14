@@ -305,4 +305,172 @@ YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &ca
 	QL_FAIL("Unsupported trait" << trait);
 }
 
+QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
+  const std::vector<QuantLib::Date> &dfDates,
+  const std::vector<double>& dfs,
+  const QuantLib::DayCounter& dayCount,
+  const QuantLib::Calendar& cal,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+  const std::vector<QuantLib::Date> jumpDates,
+  const char *interpolator) {
+  if (!strcmp(interpolator, "BackwardFlat"))
+    return new InterpolatedDiscountCurve<BackwardFlat>(dfDates, dfs, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "ForwardFlat"))
+    return new InterpolatedDiscountCurve<ForwardFlat>(dfDates, dfs, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "Linear"))
+    return new InterpolatedDiscountCurve<Linear>(dfDates, dfs, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "LogLinear"))
+    return new InterpolatedDiscountCurve<LogLinear>(dfDates, dfs, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+    return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+    return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+    return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+    return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "Cubic Kruger"))
+    return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Kruger));
+  else if (!strcmp(interpolator, "LogCubic Kruger"))
+    return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Kruger));
+  else if (!strcmp(interpolator, "Cubic FritschButland"))
+    return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::FritschButland));
+  else if (!strcmp(interpolator, "LogCubic FritschButland"))
+    return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::FritschButland));
+  else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+    return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Parabolic, false));
+  else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+    return new InterpolatedDiscountCurve<Cubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Parabolic, true));
+  else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+    return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Parabolic, false));
+  else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+    return new InterpolatedDiscountCurve<LogCubic>(dfDates, dfs, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Parabolic, true));
+  else
+    QL_FAIL("Unsupported interpolation " << interpolator);
+}
+
+QuantLib::YieldTermStructure *qlInterpolatedForwardCurveAux(
+  const std::vector<QuantLib::Date> &fwdDates,
+  const std::vector<double>& fwds,
+  const QuantLib::DayCounter& dayCount,
+  const QuantLib::Calendar& cal,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+  const std::vector<QuantLib::Date> jumpDates,
+  const char *interpolator) {
+  if (!strcmp(interpolator, "BackwardFlat"))
+    return new InterpolatedForwardCurve<BackwardFlat>(fwdDates, fwds, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "ForwardFlat"))
+    return new InterpolatedForwardCurve<ForwardFlat>(fwdDates, fwds, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "Linear"))
+    return new InterpolatedForwardCurve<Linear>(fwdDates, fwds, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "LogLinear"))
+    return new InterpolatedForwardCurve<LogLinear>(fwdDates, fwds, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+    return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+    return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+    return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+    return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "Cubic Kruger"))
+    return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Kruger));
+  else if (!strcmp(interpolator, "LogCubic Kruger"))
+    return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Kruger));
+  else if (!strcmp(interpolator, "Cubic FritschButland"))
+    return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::FritschButland));
+  else if (!strcmp(interpolator, "LogCubic FritschButland"))
+    return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::FritschButland));
+  else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+    return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Parabolic, false));
+  else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+    return new InterpolatedForwardCurve<Cubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Parabolic, true));
+  else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+    return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Parabolic, false));
+  else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+    return new InterpolatedForwardCurve<LogCubic>(fwdDates, fwds, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Parabolic, true));
+  else
+    QL_FAIL("Unsupported interpolation " << interpolator);
+}
+
+QuantLib::YieldTermStructure *qlInterpolatedZeroCurveAux(
+  const std::vector<QuantLib::Date> &yDates,
+  const std::vector<double>& yields,
+  const QuantLib::DayCounter& dayCount,
+  const QuantLib::Calendar& cal,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+  const std::vector<QuantLib::Date> jumpDates,
+  const char *interpolator) {
+  if (!strcmp(interpolator, "BackwardFlat"))
+    return new InterpolatedZeroCurve<BackwardFlat>(yDates, yields, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "ForwardFlat"))
+    return new InterpolatedZeroCurve<ForwardFlat>(yDates, yields, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "Linear"))
+    return new InterpolatedZeroCurve<Linear>(yDates, yields, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "LogLinear"))
+    return new InterpolatedZeroCurve<LogLinear>(yDates, yields, dayCount, cal, jumps, jumpDates);
+  else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+    return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+    return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+    return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+    return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "Cubic Kruger"))
+    return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Kruger));
+  else if (!strcmp(interpolator, "LogCubic Kruger"))
+    return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Kruger));
+  else if (!strcmp(interpolator, "Cubic FritschButland"))
+    return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::FritschButland));
+  else if (!strcmp(interpolator, "LogCubic FritschButland"))
+    return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::FritschButland));
+  else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+    return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Parabolic, false));
+  else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+    return new InterpolatedZeroCurve<Cubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        Cubic(CubicInterpolation::Parabolic, true));
+  else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+    return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Parabolic, false));
+  else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+    return new InterpolatedZeroCurve<LogCubic>(yDates, yields, dayCount, cal, jumps, jumpDates,
+        LogCubic(CubicInterpolation::Parabolic, true));
+  else
+    QL_FAIL("Unsupported interpolation " << interpolator);
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

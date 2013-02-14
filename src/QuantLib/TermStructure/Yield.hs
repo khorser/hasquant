@@ -10,6 +10,9 @@ module QuantLib.TermStructure.Yield
   , piecewiseYieldCurve'
   , flatForward
   , flatForward'
+  , interpolatedDiscountCurve
+  , interpolatedForwardCurve
+  , interpolatedZeroCurve
 
   , discount
   , discount'
@@ -239,3 +242,36 @@ fraRateHelper = $(ffiConstruct 'fraRateHelper) c_fraRateHelper
 
 foreign import ccall safe "ql.h qlFraRateHelper"
   c_fraRateHelper :: Ptr CQuote -> CUInt -> CUInt -> CUInt -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)
+
+interpolatedDiscountCurve :: [(Double, Day)] -- ^dates, dfs
+  -> DayCounter -- ^dayCounter
+  -> Calendar -- ^cal
+  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+interpolatedDiscountCurve = $(ffiConstruct 'interpolatedDiscountCurve) c_interpolatedDiscountCurve
+
+foreign import ccall safe "ql.h qlInterpolatedDiscountCurve"
+  c_interpolatedDiscountCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+interpolatedForwardCurve :: [(Double, Day)] -- ^dates, forwards
+  -> DayCounter -- ^dayCounter
+  -> Calendar -- ^cal
+  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+interpolatedForwardCurve = $(ffiConstruct 'interpolatedForwardCurve) c_interpolatedForwardCurve
+
+foreign import ccall safe "ql.h qlInterpolatedForwardCurve"
+  c_interpolatedForwardCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+interpolatedZeroCurve :: [(Double, Day)] -- ^dates, yields
+  -> DayCounter -- ^dayCounter
+  -> Calendar -- ^cal
+  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> Interpolation -- ^interpolator
+  -> IO YieldTermStructure
+interpolatedZeroCurve = $(ffiConstruct 'interpolatedZeroCurve) c_interpolatedZeroCurve
+
+foreign import ccall safe "ql.h qlInterpolatedZeroCurve"
+  c_interpolatedZeroCurve :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)

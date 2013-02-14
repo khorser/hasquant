@@ -294,6 +294,16 @@ extern "C" {
   InterestRate* DLLEXPORT qlYieldTermStructureZeroRate1(QlYieldTermStructure* o, double t, int comp, int freq, int extrapolate, char **e);
   double DLLEXPORT qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extrapolate, char **e);
 
+  QlYieldTermStructure *DLLEXPORT qlInterpolatedDiscountCurve(unsigned dfsLen,
+    double *dfs, int *dfsDates, DayCounter *dayCount, Calendar *cal,
+    unsigned quoteLen, QlQuote **quotes, int *dates, char *interpolator, char **e);
+  QlYieldTermStructure *DLLEXPORT qlInterpolatedForwardCurve(unsigned fwdLen,
+    double *fwds, int *fwdDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
+    QlQuote **quotes, int *dates, char *interpolator, char **e);
+  QlYieldTermStructure *DLLEXPORT qlInterpolatedZeroCurve(unsigned yieldLen,
+    double *yields, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
+    QlQuote **quotes, int *dates, char *interpolator, char **e);
+
   /* pricing engine */
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
   QlPricingEngine* DLLEXPORT qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);

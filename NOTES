@@ -58,10 +58,6 @@ Leg accessor (bond, swap?)
 BMA*
 ForwardRateStructure
 
-InterpolatedDiscountCurve
-InterpolatedForwardCurve
-InterpolatedZeroCurve
-
 replace CashFlows/BondFunctions::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
 quotes
 ZeroSpreadCurve
@@ -93,3 +89,6 @@ JointCalendar
 DiscountingSwapEngine
 swap indices
 Bond::
+InterpolatedDiscountCurve
+InterpolatedForwardCurve
+InterpolatedZeroCurve

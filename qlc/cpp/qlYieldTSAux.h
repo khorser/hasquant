@@ -18,4 +18,31 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   const std::vector<QuantLib::Date> jumpDates,
   double accuracy, const char *trait, const char *interpolator);
 
+QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
+  const std::vector<QuantLib::Date>& dates,
+  const std::vector<double>& dfs,
+  const QuantLib::DayCounter& dayCount,
+  const QuantLib::Calendar& cal,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+  const std::vector<QuantLib::Date> jumpDates,
+  const char *interpolator);
+
+QuantLib::YieldTermStructure *qlInterpolatedForwardCurveAux(
+  const std::vector<QuantLib::Date>& dates,
+  const std::vector<double>& fwds,
+  const QuantLib::DayCounter& dayCount,
+  const QuantLib::Calendar& cal,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+  const std::vector<QuantLib::Date> jumpDates,
+  const char *interpolator);
+
+QuantLib::YieldTermStructure *qlInterpolatedZeroCurveAux(
+  const std::vector<QuantLib::Date>& dates,
+  const std::vector<double>& yields,
+  const QuantLib::DayCounter& dayCount,
+  const QuantLib::Calendar& cal,
+  const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
+  const std::vector<QuantLib::Date> jumpDates,
+  const char *interpolator);
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
