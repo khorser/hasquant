@@ -1,5 +1,6 @@
 #include <ql/termstructures/yield/all.hpp>
 #include <ql/math/interpolations/all.hpp>
+#include <ql/version.hpp>
 
 #include "qlaux.h"
 #include "qlYieldTSAux.h"
