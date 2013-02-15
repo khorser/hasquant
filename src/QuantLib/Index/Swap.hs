@@ -14,6 +14,9 @@ module QuantLib.Index.Swap
   , euriborSwapIfrFix
   , euriborSwapIsdaFixA
   , euriborSwapIsdaFixB
+  , overnightIndexedSwapIndex
+  , swapIndex
+  , swapIndex'
   )
 where
 
@@ -21,6 +24,7 @@ import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
+import QuantLib.Time.BusinessDayConvention
 
 chfLiborSwapIsdaFix :: Period -- ^tenor
   -> Maybe YieldTermStructure -- ^forwarding
@@ -95,3 +99,45 @@ createLiborSwapIndex = $(ffiConstruct 'createLiborSwapIndex) c_liborSwapIndex
 
 foreign import ccall safe "ql.h qlCreateLiborSwapIndex"
   c_liborSwapIndex :: CString -> Ptr CPeriod -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapIndex)
+
+overnightIndexedSwapIndex :: String -- ^familyName
+  -> Period -- ^tenor
+  -> Word -- ^settlementDays
+  -> Currency -- ^currency
+  -> OvernightIndex -- ^overnightIndex
+  -> IO OvernightIndexedSwapIndex
+overnightIndexedSwapIndex = $(ffiConstruct 'overnightIndexedSwapIndex) c_overnightIndexedSwapIndex
+
+foreign import ccall safe "ql.h qlOvernightIndexedSwapIndex"
+  c_overnightIndexedSwapIndex :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency -> Ptr COvernightIndex -> Ptr CString -> IO (Ptr COvernightIndexedSwapIndex)
+
+swapIndex :: String -- ^familyName
+  -> Period -- ^tenor
+  -> Word -- ^settlementDays
+  -> Currency -- ^currency
+  -> Calendar -- ^calendar
+  -> Period -- ^fixedLegTenor
+  -> BusinessDayConvention -- ^fixedLegConvention
+  -> DayCounter -- ^fixedLegDayCounter
+  -> IborIndex -- ^iborIndex
+  -> IO SwapIndex
+swapIndex = $(ffiConstruct 'swapIndex) c_swapIndex
+
+foreign import ccall safe "ql.h qlSwapIndex"
+  c_swapIndex :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency -> Ptr CCalendar -> Ptr CPeriod -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CSwapIndex)
+
+swapIndex' :: String -- ^familyName
+  -> Period -- ^tenor
+  -> Word -- ^settlementDays
+  -> Currency -- ^currency
+  -> Calendar -- ^calendar
+  -> Period -- ^fixedLegTenor
+  -> BusinessDayConvention -- ^fixedLegConvention
+  -> DayCounter -- ^fixedLegDayCounter
+  -> IborIndex -- ^iborIndex
+  -> YieldTermStructure -- ^discountingTermStructure
+  -> IO SwapIndex
+swapIndex' = $(ffiConstruct 'swapIndex') c_swapIndex'
+
+foreign import ccall safe "ql.h qlSwapIndex1"
+  c_swapIndex' :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency -> Ptr CCalendar -> Ptr CPeriod -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapIndex)

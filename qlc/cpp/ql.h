@@ -396,6 +396,9 @@ extern "C" {
   QlBMAIndex* DLLEXPORT qlBMAIndex(QlYieldTermStructure* h, char **e);
 
   QlSwapIndex* DLLEXPORT qlCreateLiborSwapIndex(char *name, Period* tenor, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e);
+  QlOvernightIndexedSwapIndex* DLLEXPORT qlOvernightIndexedSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e);
+  QlSwapIndex* DLLEXPORT qlSwapIndex1(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e);
+  QlSwapIndex* DLLEXPORT qlSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e);
 
   /* forward */
   void DLLEXPORT qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd);
@@ -452,7 +455,35 @@ extern "C" {
   Leg* DLLEXPORT qlSwapLeg(QlSwap* o, unsigned j, char **e);
   Leg* DLLEXPORT qlVanillaSwapFixedLeg(QlVanillaSwap* o, char **e);
   Leg* DLLEXPORT qlVanillaSwapFloatingLeg(QlVanillaSwap* o, char **e);
+  Leg* DLLEXPORT qlAssetSwapBondLeg(QlAssetSwap* o, char **e);
+  Leg* DLLEXPORT qlAssetSwapFloatingLeg(QlAssetSwap* o, char **e);
+  Leg* DLLEXPORT qlBMASwapBmaLeg(QlBMASwap* o, char **e);
+  Leg* DLLEXPORT qlBMASwapLiborLeg(QlBMASwap* o, char **e);
+  Leg* DLLEXPORT qlOvernightIndexedSwapFixedLeg(QlOvernightIndexedSwap* o, char **e);
+  Leg* DLLEXPORT qlOvernightIndexedSwapOvernightLeg(QlOvernightIndexedSwap* o, char **e);
 #endif
+  double DLLEXPORT qlAssetSwapCleanPrice(QlAssetSwap* o, char **e);
+  double DLLEXPORT qlAssetSwapFairCleanPrice(QlAssetSwap* o, char **e);
+  double DLLEXPORT qlAssetSwapFairNonParRepayment(QlAssetSwap* o, char **e);
+  double DLLEXPORT qlAssetSwapFairSpread(QlAssetSwap* o, char **e);
+  double DLLEXPORT qlAssetSwapFloatingLegBPS(QlAssetSwap* o, char **e);
+  double DLLEXPORT qlAssetSwapFloatingLegNPV(QlAssetSwap* o, char **e);
+  double DLLEXPORT qlAssetSwapNonParRepayment(QlAssetSwap* o, char **e);
+  int DLLEXPORT qlAssetSwapParSwap(QlAssetSwap* o, char **e);
+  int DLLEXPORT qlAssetSwapPayBondCoupon(QlAssetSwap* o, char **e);
+  double DLLEXPORT qlBMASwapBmaLegBPS(QlBMASwap* o, char **e);
+  double DLLEXPORT qlBMASwapBmaLegNPV(QlBMASwap* o, char **e);
+  double DLLEXPORT qlBMASwapFairLiborFraction(QlBMASwap* o, char **e);
+  double DLLEXPORT qlBMASwapFairLiborSpread(QlBMASwap* o, char **e);
+  double DLLEXPORT qlBMASwapLiborFraction(QlBMASwap* o, char **e);
+  double DLLEXPORT qlBMASwapLiborLegBPS(QlBMASwap* o, char **e);
+  double DLLEXPORT qlBMASwapLiborLegNPV(QlBMASwap* o, char **e);
+  double DLLEXPORT qlOvernightIndexedSwapFairRate(QlOvernightIndexedSwap* o, char **e);
+  double DLLEXPORT qlOvernightIndexedSwapFairSpread(QlOvernightIndexedSwap* o, char **e);
+  double DLLEXPORT qlOvernightIndexedSwapFixedLegBPS(QlOvernightIndexedSwap* o, char **e);
+  double DLLEXPORT qlOvernightIndexedSwapFixedLegNPV(QlOvernightIndexedSwap* o, char **e);
+  double DLLEXPORT qlOvernightIndexedSwapOvernightLegBPS(QlOvernightIndexedSwap* o, char **e);
+  double DLLEXPORT qlOvernightIndexedSwapOvernightLegNPV(QlOvernightIndexedSwap* o, char **e);
   double DLLEXPORT qlSwapEndDiscounts(QlSwap* o, unsigned j, char **e);
   double DLLEXPORT qlSwapLegBPS(QlSwap* o, unsigned j, char **e);
   double DLLEXPORT qlSwapLegNPV(QlSwap* o, unsigned j, char **e);

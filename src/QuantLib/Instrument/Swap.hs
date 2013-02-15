@@ -23,6 +23,16 @@ module QuantLib.Instrument.Swap
   , floatingLeg
   , floatingLegBPS
   , floatingLegNPV
+
+  , bmaLeg
+  , bmaLegBPS
+  , bmaLegNPV
+  , fairLiborFraction
+  , fairLiborSpread
+  , liborFraction
+  , liborLeg
+  , liborLegBPS
+  , liborLegNPV
   )
 
 where
@@ -190,3 +200,57 @@ floatingLegNPV = $(ffiCallX 'floatingLegNPV) c_floatingLegNPV
 
 foreign import ccall safe "ql.h qlVanillaSwapFloatingLegNPV"
   c_floatingLegNPV :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+
+bmaLeg :: BMASwap -> IO Leg
+bmaLeg = $(ffiConstruct 'bmaLeg) c_bmaLeg
+
+foreign import ccall safe "ql.h qlBMASwapBmaLeg"
+  c_bmaLeg :: Ptr CBMASwap -> Ptr CString -> IO (Ptr CLeg)
+
+bmaLegBPS :: BMASwap -> IO Double
+bmaLegBPS = $(ffiCallX 'bmaLegBPS) c_bmaLegBPS
+
+foreign import ccall safe "ql.h qlBMASwapBmaLegBPS"
+  c_bmaLegBPS :: Ptr CBMASwap -> Ptr CString -> IO CDouble
+
+bmaLegNPV :: BMASwap -> IO Double
+bmaLegNPV = $(ffiCallX 'bmaLegNPV) c_bmaLegNPV
+
+foreign import ccall safe "ql.h qlBMASwapBmaLegNPV"
+  c_bmaLegNPV :: Ptr CBMASwap -> Ptr CString -> IO CDouble
+
+fairLiborFraction :: BMASwap -> IO Double
+fairLiborFraction = $(ffiCallX 'fairLiborFraction) c_fairLiborFraction
+
+foreign import ccall safe "ql.h qlBMASwapFairLiborFraction"
+  c_fairLiborFraction :: Ptr CBMASwap -> Ptr CString -> IO CDouble
+
+fairLiborSpread :: BMASwap -> IO Double
+fairLiborSpread = $(ffiCallX 'fairLiborSpread) c_fairLiborSpread
+
+foreign import ccall safe "ql.h qlBMASwapFairLiborSpread"
+  c_fairLiborSpread :: Ptr CBMASwap -> Ptr CString -> IO CDouble
+
+liborFraction :: BMASwap -> IO Double
+liborFraction = $(ffiCallX 'liborFraction) c_liborFraction
+
+foreign import ccall safe "ql.h qlBMASwapLiborFraction"
+  c_liborFraction :: Ptr CBMASwap -> Ptr CString -> IO CDouble
+
+liborLeg :: BMASwap -> IO Leg
+liborLeg = $(ffiConstruct 'liborLeg) c_liborLeg
+
+foreign import ccall safe "ql.h qlBMASwapLiborLeg"
+  c_liborLeg :: Ptr CBMASwap -> Ptr CString -> IO (Ptr CLeg)
+
+liborLegBPS :: BMASwap -> IO Double
+liborLegBPS = $(ffiCallX 'liborLegBPS) c_liborLegBPS
+
+foreign import ccall safe "ql.h qlBMASwapLiborLegBPS"
+  c_liborLegBPS :: Ptr CBMASwap -> Ptr CString -> IO CDouble
+
+liborLegNPV :: BMASwap -> IO Double
+liborLegNPV = $(ffiCallX 'liborLegNPV) c_liborLegNPV
+
+foreign import ccall safe "ql.h qlBMASwapLiborLegNPV"
+  c_liborLegNPV :: Ptr CBMASwap -> Ptr CString -> IO CDouble

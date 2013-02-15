@@ -196,4 +196,201 @@ QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, 
     return handleException<QlOvernightIndexedSwap*>(e, er);
   }
 }
+Leg* qlAssetSwapBondLeg(QlAssetSwap* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->bondLeg()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+double qlAssetSwapCleanPrice(QlAssetSwap* o, char **e) {
+  try {
+    return (*arg(o))->cleanPrice();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlAssetSwapFairCleanPrice(QlAssetSwap* o, char **e) {
+  try {
+    return (*arg(o))->fairCleanPrice();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlAssetSwapFairNonParRepayment(QlAssetSwap* o, char **e) {
+  try {
+    return (*arg(o))->fairNonParRepayment();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlAssetSwapFairSpread(QlAssetSwap* o, char **e) {
+  try {
+    return (*arg(o))->fairSpread();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+Leg* qlAssetSwapFloatingLeg(QlAssetSwap* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->floatingLeg()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+double qlAssetSwapFloatingLegBPS(QlAssetSwap* o, char **e) {
+  try {
+    return (*arg(o))->floatingLegBPS();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlAssetSwapFloatingLegNPV(QlAssetSwap* o, char **e) {
+  try {
+    return (*arg(o))->floatingLegNPV();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlAssetSwapNonParRepayment(QlAssetSwap* o, char **e) {
+  try {
+    return (*arg(o))->nonParRepayment();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+int qlAssetSwapParSwap(QlAssetSwap* o, char **e) {
+  try {
+    return (*arg(o))->parSwap();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+int qlAssetSwapPayBondCoupon(QlAssetSwap* o, char **e) {
+  try {
+    return (*arg(o))->payBondCoupon();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+Leg* qlBMASwapBmaLeg(QlBMASwap* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->bmaLeg()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+double qlBMASwapBmaLegBPS(QlBMASwap* o, char **e) {
+  try {
+    return (*arg(o))->bmaLegBPS();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBMASwapBmaLegNPV(QlBMASwap* o, char **e) {
+  try {
+    return (*arg(o))->bmaLegNPV();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBMASwapFairLiborFraction(QlBMASwap* o, char **e) {
+  try {
+    return (*arg(o))->fairLiborFraction();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBMASwapFairLiborSpread(QlBMASwap* o, char **e) {
+  try {
+    return (*arg(o))->fairLiborSpread();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBMASwapLiborFraction(QlBMASwap* o, char **e) {
+  try {
+    return (*arg(o))->liborFraction();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+Leg* qlBMASwapLiborLeg(QlBMASwap* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->liborLeg()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+double qlBMASwapLiborLegBPS(QlBMASwap* o, char **e) {
+  try {
+    return (*arg(o))->liborLegBPS();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlBMASwapLiborLegNPV(QlBMASwap* o, char **e) {
+  try {
+    return (*arg(o))->liborLegNPV();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlOvernightIndexedSwapFairRate(QlOvernightIndexedSwap* o, char **e) {
+  try {
+    return (*arg(o))->fairRate();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlOvernightIndexedSwapFairSpread(QlOvernightIndexedSwap* o, char **e) {
+  try {
+    return (*arg(o))->fairSpread();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+Leg* qlOvernightIndexedSwapFixedLeg(QlOvernightIndexedSwap* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->fixedLeg()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+double qlOvernightIndexedSwapFixedLegBPS(QlOvernightIndexedSwap* o, char **e) {
+  try {
+    return (*arg(o))->fixedLegBPS();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlOvernightIndexedSwapFixedLegNPV(QlOvernightIndexedSwap* o, char **e) {
+  try {
+    return (*arg(o))->fixedLegNPV();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+Leg* qlOvernightIndexedSwapOvernightLeg(QlOvernightIndexedSwap* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->overnightLeg()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+double qlOvernightIndexedSwapOvernightLegBPS(QlOvernightIndexedSwap* o, char **e) {
+  try {
+    return (*arg(o))->overnightLegBPS();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlOvernightIndexedSwapOvernightLegNPV(QlOvernightIndexedSwap* o, char **e) {
+  try {
+    return (*arg(o))->overnightLegNPV();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
