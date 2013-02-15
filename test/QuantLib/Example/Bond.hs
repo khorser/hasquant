@@ -273,6 +273,29 @@ result = do
   
   bTradable <- mapM (`isTradable` (Just $ 10 `february` 2013)) allBonds
 
+  {-
+  _ <- floatingRateBond' settlementDays
+                                   faceAmount
+                                   (21 `october` 2005)
+                                   (21 `october` 2010)
+                                   Quarterly
+                                   nyseCal
+                                   usd3m
+                                   actual360dc
+                                   ModifiedFollowing
+                                   ModifiedFollowing
+                                   2
+                                   [1.0]
+                                   [0.001]
+                                   []
+                                   []
+                                   True
+                                   100.0
+                                   (Just $ fromGregorian 2005 10 21)
+                                   Nothing
+                                   Backward
+                                   True
+  -}
   return Result {
       npvR = (fixnpv, znpv, fnpv)
     , cleanPriceR = listToTriple bCleanPrice

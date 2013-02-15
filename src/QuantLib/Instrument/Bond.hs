@@ -9,6 +9,7 @@ module QuantLib.Instrument.Bond
   , fixedRateBond''
   , zeroCouponBond
   , floatingRateBond
+  , floatingRateBond'
 
   , maturityDate
   , yield
@@ -683,3 +684,30 @@ zSpread = $(ffiCallX 'zSpread) c_zSpread
 
 foreign import ccall safe "ql.h qlBondFunctionsZSpread"
   c_zSpread :: Ptr CBond -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
+
+floatingRateBond' :: Word -- ^settlementDays
+  -> Double -- ^faceAmount
+  -> Day -- ^startDate
+  -> Day -- ^maturityDate
+  -> Frequency -- ^couponFrequency
+  -> Calendar -- ^calendar
+  -> IborIndex -- ^iborIndex
+  -> DayCounter -- ^accrualDayCounter
+  -> BusinessDayConvention -- ^accrualConvention
+  -> BusinessDayConvention -- ^paymentConvention
+  -> Word -- ^fixingDays
+  -> [Double] -- ^gearings
+  -> [Double] -- ^spreads
+  -> [Double] -- ^caps
+  -> [Double] -- ^floors
+  -> Bool -- ^inArrears
+  -> Double -- ^redemption
+  -> Maybe Day -- ^issueDate
+  -> Maybe Day -- ^stubDate
+  -> DateGenerationRule -- ^rule
+  -> Bool -- ^endOfMonth
+  -> IO Bond
+floatingRateBond' = $(ffiConstruct 'floatingRateBond') c_floatingRateBond'
+
+foreign import ccall safe "ql.h qlFloatingRateBond1"
+  c_floatingRateBond' :: CUInt -> CDouble -> CDate -> CDate -> CInt -> Ptr CCalendar -> Ptr CIborIndex -> Ptr CDayCounter -> CInt -> CInt -> CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CInt -> CDouble -> CDate -> CDate -> CInt -> CInt -> Ptr CString -> IO (Ptr CBond)

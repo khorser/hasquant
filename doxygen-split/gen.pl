@@ -239,11 +239,14 @@ print O "\n";
 close O;
 
 open O, ">$base.hs";
-print O "  , $hname\n\n";
 print O join("\n", @hs);
 print O "\n\n";
 print O join("\n", @hsffi);
 print O "\n";
+close O;
+
+open O, ">$base.hs_exp";
+print O "  , $hname\n";
 close O;
 
 sub type
@@ -262,7 +265,14 @@ sub type
 
   if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor'])
   {
-    return ('double', 'CDouble', 'Double', '%', '%', 0, '');
+    if (not $vect)
+    {
+      return ('double', 'CDouble', 'Double', '%', '%', 0, '');
+    }
+    else
+    {
+      return ('double*', 'CUInt -> Ptr CDouble', '[Double]', 'std::vector<double>(%, %+%Len)', '???', 0, 'unsigned %Len');
+    }
   }
   elsif ($t ~~ ['Natural', 'Size'])
   {
@@ -291,7 +301,7 @@ sub type
     }
     else
     {
-      return ('double *', 'CUInt -> Ptr CYearFraction', '[YearFraction]', 'std::vector<double>(%, %+%Len)', '', 0, 'unsigned %Len');
+      return ('double *', 'CUInt -> Ptr CYearFraction', '[YearFraction]', 'std::vector<double>(%, %+%Len)', '???', 0, 'unsigned %Len');
     }
   }
   elsif ($t eq 'bool')

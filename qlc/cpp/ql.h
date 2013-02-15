@@ -148,6 +148,8 @@ extern "C" {
     unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
     unsigned nCaps, double *caps, unsigned nFloors, double *floors,
     int inArrears, double redemption, int issue, char **e);
+  QlBond* DLLEXPORT qlFloatingRateBond1(unsigned settlementDays, double faceAmount, int startDate, int maturityDate, int couponFrequency, Calendar* calendar, QlIborIndex* iborIndex, DayCounter* accrualDayCounter, int accrualConvention, int paymentConvention, unsigned fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, double redemption, int issueDate, int stubDate, int rule, int endOfMonth, char **e);
+
   QlBond *DLLEXPORT qlFixedRateBondAsBond(QlFixedRateBond *bond);
 
   double DLLEXPORT qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
