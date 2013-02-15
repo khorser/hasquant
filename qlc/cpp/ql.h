@@ -277,9 +277,11 @@ extern "C" {
     unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
     QlQuote **quotes, int *dates, double accuracy, char *trait,
     char *interpolator, char **e);
-  QlRateHelper *DLLEXPORT qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
+  QlSwapRateHelper *DLLEXPORT qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
     int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, Period *fwdStart,
     QlYieldTermStructure *ts, char **e);
+  void DLLEXPORT qlFreeSwapRateHelper(QlSwapRateHelper *o);
+  QlRateHelper* DLLEXPORT qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o);
 
   void DLLEXPORT qlFreeBondHelper(QlBondHelper *o);
   QlRateHelper* DLLEXPORT qlBondHelperAsRateHelper(QlBondHelper *o);

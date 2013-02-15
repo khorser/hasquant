@@ -156,16 +156,16 @@ double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, ch
   }
 }
 
-QlRateHelper *qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
+QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
   int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, Period *fwdStart,
   QlYieldTermStructure *ts, char **e) {
   try {
-    return ret(new QlRateHelper(new SwapRateHelper(Handle<Quote>(*arg(q)),
+    return ret(new QlSwapRateHelper(new SwapRateHelper(Handle<Quote>(*arg(q)),
 	    *arg(t), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv,
 	    *arg(dc), *arg(i), Handle<Quote>(*arg(s)), *arg(fwdStart),
 	    ts ? Handle<YieldTermStructure>(*arg(ts)) : Handle<YieldTermStructure>())));
   } catch (std::exception& er) {
-    return handleException<QlRateHelper *>(e, er);
+    return handleException<QlSwapRateHelper *>(e, er);
   }
 }
 
@@ -322,5 +322,8 @@ int qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscoun
     return handleException<int>(e, er);
   }
 }
+
+void qlFreeSwapRateHelper(QlSwapRateHelper *o) { del(o); }
+QlRateHelper* qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o) { return ret(new QlRateHelper(*arg(o))); }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

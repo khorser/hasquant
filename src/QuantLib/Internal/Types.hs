@@ -34,6 +34,7 @@ module QuantLib.Internal.Types
 
   -- termstructures
   , CRateHelper
+  , CSwapRateHelper
   , CYieldTermStructure
   , CVolTermStructure
   , COptionletVolStructure
@@ -266,6 +267,16 @@ instance Finalizable CRateHelper where
   finalize = p_freeRateHelper
 foreign import ccall safe "ql.h &qlFreeRateHelper"
   p_freeRateHelper :: FunPtr (Ptr CRateHelper -> IO ())
+
+data CSwapRateHelper
+instance Finalizable CSwapRateHelper where
+  finalize = p_freeSwapRateHelper
+foreign import ccall safe "ql.h &qlFreeSwapRateHelper"
+  p_freeSwapRateHelper :: FunPtr (Ptr CSwapRateHelper -> IO ())
+instance Upcastable CSwapRateHelper CRateHelper where
+  c_upcast = c_SwapRateHelperAsRateHelper
+foreign import ccall safe "ql.h qlSwapRateHelperAsRateHelper"
+  c_SwapRateHelperAsRateHelper :: Ptr CSwapRateHelper -> IO (Ptr CRateHelper)
 
 instance Finalizable CYieldTermStructure
   where finalize = p_freeYieldTermStructure

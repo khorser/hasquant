@@ -73,7 +73,7 @@ test_emptyLegStart :: IO ()
 test_emptyLegStart = do
   l <- Leg.leg []
   catch (Leg.startDate l >> assertBool False)
-        (\e -> assertBool $ (not . null . Error.message) e)
+        (assertBool . not . null . Error.message)
 
 test_singleLegToday :: IO ()
 test_singleLegToday = do

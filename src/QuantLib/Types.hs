@@ -35,6 +35,7 @@ module QuantLib.Types
 
   -- termstructures
   , RateHelper
+  , SwapRateHelper
   , YieldTermStructure
   , VolTermStructure
   , OptionletVolStructure
@@ -198,6 +199,7 @@ type VolTermStructure = ForeignPtr CVolTermStructure
 type OptionletVolStructure = ForeignPtr COptionletVolStructure
 
 type BondHelper = ForeignPtr CBondHelper
+type SwapRateHelper = ForeignPtr CSwapRateHelper
 
 asRateHelper :: (Upcastable a CRateHelper) => ForeignPtr a -> IO RateHelper
 asRateHelper = upcast

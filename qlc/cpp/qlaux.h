@@ -686,6 +686,11 @@ typedef boost::shared_ptr<FittedBondDiscountCurve> QlFittedBondDiscountCurve;
 template <> class objClassName<FittedBondDiscountCurve *> { public: static const char *name() { return "FittedBondDiscountCurve"; } };
 template <> class objClassName<QlFittedBondDiscountCurve *> { public: static const char *name() { return "QlFittedBondDiscountCurve"; } };
 
+namespace QuantLib {class SwapRateHelper;} using QuantLib::SwapRateHelper;
+typedef boost::shared_ptr<SwapRateHelper> QlSwapRateHelper;
+template <> class objClassName<SwapRateHelper *> { public: static const char *name() { return "SwapRateHelper"; } };
+template <> class objClassName<QlSwapRateHelper *> { public: static const char *name() { return "QlSwapRateHelper"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -125,7 +125,7 @@ discount = $(ffiCallX 'discount) c_yieldTSDiscount
 foreign import ccall safe "ql.h qlSwapRateHelper1"
   c_swapRateHelper' :: Ptr CQuote -> Ptr CPeriod -> Ptr CCalendar -> CInt
     -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CQuote -> Ptr CPeriod
-    -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CRateHelper)
+    -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapRateHelper)
 
 -- |QuantLibXL: qlSwapRateHelper2
 swapRateHelper' :: Quote -- ^rate
@@ -138,7 +138,7 @@ swapRateHelper' :: Quote -- ^rate
   -> Quote -- ^spread
   -> Period -- ^fwdStart
   -> Maybe YieldTermStructure -- ^discountingCurve
-  -> IO RateHelper
+  -> IO SwapRateHelper
 swapRateHelper' = $(ffiConstruct 'swapRateHelper') c_swapRateHelper'
 
 flatForward :: Day -- ^referenceDate
