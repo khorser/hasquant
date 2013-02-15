@@ -394,6 +394,16 @@ typedef boost::shared_ptr<SwapRateHelper> QlSwapRateHelper;
 template <> class objClassName<SwapRateHelper *> { public: static const char *name() { return "SwapRateHelper"; } };
 template <> class objClassName<QlSwapRateHelper *> { public: static const char *name() { return "QlSwapRateHelper"; } };
 
+namespace QuantLib {class AssetSwap;} using QuantLib::AssetSwap;
+typedef boost::shared_ptr<AssetSwap> QlAssetSwap;
+template <> class objClassName<AssetSwap *> { public: static const char *name() { return "AssetSwap"; } };
+template <> class objClassName<QlAssetSwap *> { public: static const char *name() { return "QlAssetSwap"; } };
+
+namespace QuantLib {class OISRateHelper;} using QuantLib::OISRateHelper;
+typedef boost::shared_ptr<OISRateHelper> QlOISRateHelper;
+template <> class objClassName<OISRateHelper *> { public: static const char *name() { return "OISRateHelper"; } };
+template <> class objClassName<QlOISRateHelper *> { public: static const char *name() { return "QlOISRateHelper"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -2,6 +2,7 @@
 #include <ql/instruments/vanillaswap.hpp>
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
+#include <ql/instruments/assetswap.hpp>
 
 #include "qlaux.h"
 
@@ -26,5 +27,8 @@ QlSwap* qlSwap1(unsigned legsLen, Leg** legs, int *payer, char **e) {
     return handleException<QlSwap*>(e, er);
   }
 }
+
+void qlFreeAssetSwap(QlAssetSwap *o) { del(o); }
+QlSwap* qlAssetSwapAsSwap(QlAssetSwap *o) { return ret(new QlSwap(*arg(o))); }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

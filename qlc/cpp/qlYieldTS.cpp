@@ -326,4 +326,7 @@ int qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscoun
 void qlFreeSwapRateHelper(QlSwapRateHelper *o) { del(o); }
 QlRateHelper* qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o) { return ret(new QlRateHelper(*arg(o))); }
 
+void qlFreeOISRateHelper(QlOISRateHelper *o) { del(o); }
+QlRateHelper* qlOISRateHelperAsRateHelper(QlOISRateHelper *o) { return ret(new QlRateHelper(*arg(o))); }
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

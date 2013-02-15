@@ -29,6 +29,7 @@ module QuantLib.Types
   , VanillaSwap
   , OvernightIndexedSwap
   , BMASwap
+  , AssetSwap
 
   -- pricingengines
   , PricingEngine
@@ -42,6 +43,7 @@ module QuantLib.Types
   , BondHelper
   , FittedBondDiscountCurveFittingMethod
   , FittedBondDiscountCurve
+  , OISRateHelper
 
   -- time
   , Calendar
@@ -185,6 +187,7 @@ type Swap = ForeignPtr CSwap
 type VanillaSwap = ForeignPtr CVanillaSwap
 type BMASwap = ForeignPtr CBMASwap
 type OvernightIndexedSwap = ForeignPtr COvernightIndexedSwap
+type AssetSwap = ForeignPtr CAssetSwap
 
 asSwap :: (Upcastable a CSwap) => ForeignPtr a -> IO Swap
 asSwap = upcast
@@ -200,6 +203,7 @@ type OptionletVolStructure = ForeignPtr COptionletVolStructure
 
 type BondHelper = ForeignPtr CBondHelper
 type SwapRateHelper = ForeignPtr CSwapRateHelper
+type OISRateHelper = ForeignPtr COISRateHelper
 
 asRateHelper :: (Upcastable a CRateHelper) => ForeignPtr a -> IO RateHelper
 asRateHelper = upcast

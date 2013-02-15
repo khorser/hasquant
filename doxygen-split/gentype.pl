@@ -10,8 +10,7 @@ my $c = $ARGV[0];
 my $b = $ARGV[1];
 
 print "***qlaux.h\n";
-print "namespace QuantLib {class $c;}\n";
-print "using QuantLib::$c;\n";
+print "namespace QuantLib {class $c;} using QuantLib::$c;\n";
 print "typedef boost::shared_ptr<$c> Ql$c;\n";
 print "template <> class objClassName<$c *> { public: static const char *name() { return \"$c\"; } };\n";
 print "template <> class objClassName<Ql$c *> { public: static const char *name() { return \"Ql$c\"; } };\n";

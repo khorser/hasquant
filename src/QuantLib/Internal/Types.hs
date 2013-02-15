@@ -28,6 +28,7 @@ module QuantLib.Internal.Types
   , CVanillaSwap
   , COvernightIndexedSwap
   , CBMASwap
+  , CAssetSwap
 
   -- pricingengines
   , CPricingEngine
@@ -35,6 +36,7 @@ module QuantLib.Internal.Types
   -- termstructures
   , CRateHelper
   , CSwapRateHelper
+  , COISRateHelper
   , CYieldTermStructure
   , CVolTermStructure
   , COptionletVolStructure
@@ -219,6 +221,7 @@ instance Upcastable CVanillaSwap CSwap where
   c_upcast = c_VanillaSwapAsSwap
 foreign import ccall safe "ql.h qlVanillaSwapAsSwap"
   c_VanillaSwapAsSwap :: Ptr CVanillaSwap -> IO (Ptr CSwap)
+
 data CSwap
 instance Finalizable CSwap where
   finalize = p_freeSwap
@@ -228,6 +231,16 @@ instance Upcastable CSwap CInstrument where
   c_upcast = c_SwapAsInstrument
 foreign import ccall safe "ql.h qlSwapAsInstrument"
   c_SwapAsInstrument :: Ptr CSwap -> IO (Ptr CInstrument)
+
+data CAssetSwap
+instance Finalizable CAssetSwap where
+  finalize = p_freeAssetSwap
+foreign import ccall safe "ql.h &qlFreeAssetSwap"
+  p_freeAssetSwap :: FunPtr (Ptr CAssetSwap -> IO ())
+instance Upcastable CAssetSwap CSwap where
+  c_upcast = c_AssetSwapAsSwap
+foreign import ccall safe "ql.h qlAssetSwapAsSwap"
+  c_AssetSwapAsSwap :: Ptr CAssetSwap -> IO (Ptr CSwap)
 
 data COvernightIndexedSwap
 instance Finalizable COvernightIndexedSwap where
@@ -297,6 +310,16 @@ instance Upcastable CBondHelper CRateHelper where
   c_upcast = c_BondHelperAsRateHelper
 foreign import ccall safe "ql.h qlBondHelperAsRateHelper"
   c_BondHelperAsRateHelper :: Ptr CBondHelper -> IO (Ptr CRateHelper)
+
+data COISRateHelper
+instance Finalizable COISRateHelper where
+  finalize = p_freeOISRateHelper
+foreign import ccall safe "ql.h &qlFreeOISRateHelper"
+  p_freeOISRateHelper :: FunPtr (Ptr COISRateHelper -> IO ())
+instance Upcastable COISRateHelper CRateHelper where
+  c_upcast = c_OISRateHelperAsRateHelper
+foreign import ccall safe "ql.h qlOISRateHelperAsRateHelper"
+  c_OISRateHelperAsRateHelper :: Ptr COISRateHelper -> IO (Ptr CRateHelper)
 
 data CFittedBondDiscountCurveFittingMethod
 instance Finalizable CFittedBondDiscountCurveFittingMethod where

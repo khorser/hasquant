@@ -288,6 +288,9 @@ extern "C" {
 
   void DLLEXPORT qlFreeRateHelper(QlRateHelper *helper);
   QlRateHelper* DLLEXPORT qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned monthsToEnd, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e);
+  
+  void DLLEXPORT qlFreeOISRateHelper(QlOISRateHelper *o);
+  QlRateHelper* DLLEXPORT qlOISRateHelperAsRateHelper(QlOISRateHelper *o);
 #endif
   void DLLEXPORT qlFreeYieldTermStructure(QlYieldTermStructure *ts);
   double DLLEXPORT qlYieldTSDiscount(QlYieldTermStructure *ts, int date,
@@ -414,6 +417,8 @@ extern "C" {
   QlSwap* DLLEXPORT qlBMASwapAsSwap(QlBMASwap *o);
   void DLLEXPORT qlFreeOvernightIndexedSwap(QlOvernightIndexedSwap *o);
   QlSwap* DLLEXPORT qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o);
+  void DLLEXPORT qlFreeAssetSwap(QlAssetSwap *o);
+  QlSwap* DLLEXPORT qlAssetSwapAsSwap(QlAssetSwap *o);
 #ifdef quantlib_cash_flow_hpp
   QlSwap* DLLEXPORT qlSwap1(unsigned legsLen, Leg** legs, int *payer, char **e);
 #endif
