@@ -11,7 +11,6 @@
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/vanillaswap.hpp>
 #include <ql/prices.hpp>
-#include <ql/experimental/risk/sensitivityanalysis.hpp>
 #include <ql/instruments/swaption.hpp>
 #include <ql/time/imm.hpp>
 #include <ql/time/calendars/jointcalendar.hpp>
@@ -170,12 +169,6 @@ static int priceTypeValues[] =
   , MidSafe
   };
 
-static int sensitivityAnalysisValues[] =
-  {
-    OneSide
-  , Centered
-  };
-
 static int settlementTypeValues[] =
   {
     Settlement::Physical
@@ -273,9 +266,6 @@ static EnumInfo enumInfo[] = {
   {"QuantLib.PriceType.PriceType",
     LENGTH(priceTypeValues),
     priceTypeValues},
-  {"QuantLib.Risk.SensitivityAnalysis.SensitivityAnalysis",
-    LENGTH(sensitivityAnalysisValues),
-    sensitivityAnalysisValues},
   {"QuantLib.SettlementType.SettlementType",
     LENGTH(settlementTypeValues),
     settlementTypeValues},

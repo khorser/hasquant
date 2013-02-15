@@ -47,7 +47,6 @@ Library
               , QuantLib.PriceType
               , QuantLib.PricingEngine
               , QuantLib.Quote
-              , QuantLib.Risk.SensitivityAnalysis
               , QuantLib.Settings
               , QuantLib.SettlementType
               , QuantLib.TermStructure.Trait   
