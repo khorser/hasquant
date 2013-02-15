@@ -1,5 +1,5 @@
 /* dates are passed as int = serial number o the date.
- * the code assumes that Haskell bindings validate date */ 
+ * the code assumes that Haskell bindings validate date */
 
 #ifdef _WIN32
 # define DLLEXPORT __declspec(dllexport)
@@ -315,9 +315,12 @@ extern "C" {
   QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlSvenssonFitting(char **e);
   QlFittedBondDiscountCurve* DLLEXPORT qlFittedBondDiscountCurve(unsigned settlementDays, Calendar* calendar, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, char **e);
   QlFittedBondDiscountCurve* DLLEXPORT qlFittedBondDiscountCurve1(int referenceDate, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, char **e);
-  
+
   void DLLEXPORT qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o);
   QlYieldTermStructure* DLLEXPORT qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o);
+
+  double DLLEXPORT qlFittedBondDiscountCurveFittingMethodMinimumCostValue(QlFittedBondDiscountCurve* o, char **e);
+  int DLLEXPORT qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscountCurve* o, char **e);
 #endif
 
   /* pricing engine */

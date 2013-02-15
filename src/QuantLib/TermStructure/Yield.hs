@@ -16,6 +16,8 @@ module QuantLib.TermStructure.Yield
 
   , fittedBondDiscountCurve
   , fittedBondDiscountCurve'
+  , minimumCostValue
+  , numberOfIterations
 
   , discount
   , discount'
@@ -321,7 +323,7 @@ foreign import ccall safe "ql.h qlSvenssonFitting"
   c_svenssonFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
 
 -- |reference date based on current evaluation date
--- unlike C++ library we do not provide guess and simplexLambda arguments (yet)
+-- unlike C++ library we do not expose /guess/ and /simplexLambda/ arguments (yet)
 fittedBondDiscountCurve :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [BondHelper] -- ^bonds
@@ -347,3 +349,17 @@ fittedBondDiscountCurve' = $(ffiConstruct 'fittedBondDiscountCurve') c_fittedBon
 
 foreign import ccall safe "ql.h qlFittedBondDiscountCurve1"
   c_fittedBondDiscountCurve' :: CDate -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
+
+-- |final value of cost function after optimization
+minimumCostValue :: FittedBondDiscountCurve -> IO Double
+minimumCostValue = $(ffiCallX 'minimumCostValue) c_minimumCostValue
+
+foreign import ccall safe "ql.h qlFittedBondDiscountCurveFittingMethodMinimumCostValue"
+  c_minimumCostValue :: Ptr CFittedBondDiscountCurve -> Ptr CString -> IO CDouble
+
+-- |final number of iterations used in the optimization problem
+numberOfIterations :: FittedBondDiscountCurve -> IO Int
+numberOfIterations = $(ffiCallX 'numberOfIterations) c_numberOfIterations
+
+foreign import ccall safe "ql.h qlFittedBondDiscountCurveFittingMethodNumberOfIterations"
+  c_numberOfIterations :: Ptr CFittedBondDiscountCurve -> Ptr CString -> IO CInt

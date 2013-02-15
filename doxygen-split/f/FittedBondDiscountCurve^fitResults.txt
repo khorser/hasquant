@@ -1,2 +1,0 @@
--- |class holding the results of the fit
-->const FittingMethod &

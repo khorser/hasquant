@@ -307,4 +307,20 @@ QlFittedBondDiscountCurve* qlFittedBondDiscountCurve1(int referenceDate, unsigne
 void qlFreeFittedBondDiscountCurve(QlFittedBondDiscountCurve *o) { del(o); }
 QlYieldTermStructure* qlFittedBondDiscountCurveAsYieldTermStructure(QlFittedBondDiscountCurve *o) { return ret(new QlYieldTermStructure(*arg(o))); }
 
+double qlFittedBondDiscountCurveFittingMethodMinimumCostValue(QlFittedBondDiscountCurve *o, char **e) {
+  try {
+    return (*arg(o))->fitResults().minimumCostValue();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
+int qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscountCurve *o, char **e) {
+  try {
+    return (*arg(o))->fitResults().numberOfIterations();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

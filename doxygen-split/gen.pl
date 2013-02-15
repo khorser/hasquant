@@ -268,7 +268,7 @@ sub type
   {
     return ('unsigned', 'CUInt', 'Word', '%', '%', 0, '');
   }
-  elsif ($t ~~ ['BigInteger', 'Day', 'Year'])
+  elsif ($t ~~ ['Integer', 'BigInteger', 'Day', 'Year'])
   {
     return ('int', 'CInt', 'Int', '%', '%', 0, '');
   }
@@ -330,7 +330,7 @@ sub type
   {
     return ("char*", "CString", "String", 'std::string(arg(%))', "DUP((%).c_str())", 0, '');
   }
-  elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period', 'InterestRate'])
+  elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period', 'InterestRate', 'FittedBondDiscountCurveFittingMethod'])
   {
     if (not $vect)
     {

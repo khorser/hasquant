@@ -49,28 +49,19 @@ OISRateHelper
 DatedOISRateHelper
 
 Currency::
-Calendar::
 Period::
 BondHelper
 
 Settings::
-Leg accessor (bond, swap?)
 BMA*
 ForwardRateStructure
 
 replace CashFlows/BondFunctions::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
 quotes
 ZeroSpreadCurve
+
 SensitivityAnalysis
 historicalForwardRatesAnalysis
-
-
-FittedBondDiscountCurve
-SimplePolynomialFitting
-ExponentialSplinesFitting
-NelsonSiegelFitting
-CubicBSplinesFitting
-SvenssonFitting
 
 Event:
 
@@ -94,3 +85,10 @@ Bond::
 InterpolatedDiscountCurve
 InterpolatedForwardCurve
 InterpolatedZeroCurve
+
+FittedBondDiscountCurve
+SimplePolynomialFitting
+ExponentialSplinesFitting
+NelsonSiegelFitting
+CubicBSplinesFitting
+SvenssonFitting

@@ -131,6 +131,19 @@ result = do
           tolerance
           Discount
           LogLinear
+
+  discBondHelpers1 <- mapM
+    (\(q, c, i, m) -> do
+      s <- schedule i m p6m usGovBondCal Unadjusted
+             Unadjusted Backward False Nothing Nothing
+      fixedRateBondHelper q settlementDays 100.0 s [c]
+            actActBond Unadjusted redemption i)
+    $ zip4 quotes couponRates issueDates maturities
+  nsf <- nelsonSiegelFitting
+  fbdc <- fittedBondDiscountCurve' settlDate discBondHelpers1
+        actActISDA nsf 1e-10 10000
+  res <- numberOfIterations fbdc
+  putStrLn $ "***" ++ show res
   -}
 
   --df <- discount ts (fromGregorian 2011 08 03) True
