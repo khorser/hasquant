@@ -1,5 +1,0 @@
-->
-::const Handle< YieldTermStructure > &
--- ^
-::const Handle< Quote > &
--- ^spread

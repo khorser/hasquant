@@ -1,7 +1,0 @@
-->
-::const Handle< Quote > &
--- ^rate
-::Natural
--- ^monthsToStart
-::const boost::shared_ptr< IborIndex > &
--- ^iborIndex

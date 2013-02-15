@@ -66,4 +66,12 @@ QlInterestRateIndex* qlBMAIndexAsInterestRateIndex(QlBMAIndex *o) { return ret(n
 void qlFreeOvernightIndexedSwapIndex(QlOvernightIndexedSwapIndex *o) { del(o); }
 QlSwapIndex* qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o) { return ret(new QlSwapIndex(*arg(o))); }
 
+QlBMAIndex* qlBMAIndex(QlYieldTermStructure* h, char **e) {
+  try {
+    return ret(new QlBMAIndex(alloc(new BMAIndex(qlNullableHandle(arg(h))))));
+  } catch (std::exception& er) {
+    return handleException<QlBMAIndex*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

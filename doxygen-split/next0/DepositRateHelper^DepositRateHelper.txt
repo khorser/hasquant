@@ -1,5 +1,0 @@
-->
-::const Handle< Quote > &
--- ^rate
-::const boost::shared_ptr< IborIndex > &
--- ^iborIndex

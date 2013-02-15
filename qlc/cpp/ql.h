@@ -291,6 +291,19 @@ extern "C" {
   
   void DLLEXPORT qlFreeOISRateHelper(QlOISRateHelper *o);
   QlRateHelper* DLLEXPORT qlOISRateHelperAsRateHelper(QlOISRateHelper *o);
+  QlBondHelper* DLLEXPORT qlBondHelper(QlQuote* cleanPrice, QlBond* bond, char **e);
+  QlOISRateHelper* DLLEXPORT qlOISRateHelper(unsigned settlementDays, Period* tenor, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e);
+  QlSwapRateHelper* DLLEXPORT qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, Period* fwdStart, QlYieldTermStructure* discountingCurve, char **e);
+  QlRateHelper* DLLEXPORT qlBMASwapRateHelper(QlQuote* liborFraction, Period* tenor, unsigned settlementDays, Calendar* calendar, Period* bmaPeriod, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e);
+  QlRateHelper* DLLEXPORT qlDatedOISRateHelper(int startDate, int endDate, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e);
+  QlRateHelper* DLLEXPORT qlDepositRateHelper1(QlQuote* rate, QlIborIndex* iborIndex, char **e);
+  QlRateHelper* DLLEXPORT qlFraRateHelper1(QlQuote* rate, unsigned monthsToStart, QlIborIndex* iborIndex, char **e);
+  QlRateHelper* DLLEXPORT qlFraRateHelper2(QlQuote* rate, Period* periodToStart, unsigned lengthInMonths, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e);
+  QlRateHelper* DLLEXPORT qlFraRateHelper3(QlQuote* rate, Period* periodToStart, QlIborIndex* iborIndex, char **e);
+  QlRateHelper* DLLEXPORT qlFuturesRateHelper1(QlQuote* price, int immStartDate, int endDate, DayCounter* dayCounter, QlQuote* convexityAdjustment, char **e);
+  QlRateHelper* DLLEXPORT qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, char **e);
+  QlRateHelper* DLLEXPORT qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, char **e);
+  double DLLEXPORT qlRateHelperImpliedQuote(QlRateHelper* o, char **e);
 #endif
   void DLLEXPORT qlFreeYieldTermStructure(QlYieldTermStructure *ts);
   double DLLEXPORT qlYieldTSDiscount(QlYieldTermStructure *ts, int date,
@@ -329,6 +342,8 @@ extern "C" {
   double DLLEXPORT qlFittedBondDiscountCurveFittingMethodMinimumCostValue(QlFittedBondDiscountCurve* o, char **e);
   int DLLEXPORT qlFittedBondDiscountCurveFittingMethodNumberOfIterations(QlFittedBondDiscountCurve* o, char **e);
 #endif
+  QlYieldTermStructure* DLLEXPORT qlForwardSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, char **e);
+  QlYieldTermStructure* DLLEXPORT qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, DayCounter* dc, char **e);
 
   /* pricing engine */
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
@@ -378,6 +393,7 @@ extern "C" {
   QlInterestRateIndex* DLLEXPORT qlBMAIndexAsInterestRateIndex(QlBMAIndex *o);
   void DLLEXPORT qlFreeOvernightIndexedSwapIndex(QlOvernightIndexedSwapIndex *o);
   QlSwapIndex* DLLEXPORT qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o);
+  QlBMAIndex* DLLEXPORT qlBMAIndex(QlYieldTermStructure* h, char **e);
 
   QlSwapIndex* DLLEXPORT qlCreateLiborSwapIndex(char *name, Period* tenor, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e);
 
@@ -421,6 +437,13 @@ extern "C" {
   QlSwap* DLLEXPORT qlAssetSwapAsSwap(QlAssetSwap *o);
 #ifdef quantlib_cash_flow_hpp
   QlSwap* DLLEXPORT qlSwap1(unsigned legsLen, Leg** legs, int *payer, char **e);
+#endif
+  QlAssetSwap* DLLEXPORT qlAssetSwap1(int parAssetSwap, QlBond* bond, double bondCleanPrice, double nonParRepayment, double gearing, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int dealMaturity, int payBondCoupon, char **e);
+  QlAssetSwap* DLLEXPORT qlAssetSwap(int payBondCoupon, QlBond* bond, double bondCleanPrice, QlIborIndex* iborIndex, double spread, Schedule* floatSchedule, DayCounter* floatingDayCount, int parAssetSwap, char **e);
+  QlBMASwap* DLLEXPORT qlBMASwap(int type, double nominal, Schedule* liborSchedule, double liborFraction, double liborSpread, QlIborIndex* liborIndex, DayCounter* liborDayCount, Schedule* bmaSchedule, QlBMAIndex* bmaIndex, DayCounter* bmaDayCount, char **e);
+  QlVanillaSwap* DLLEXPORT qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* floatSchedule, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int paymentConvention, char **e);
+#ifdef quantlib_cash_flow_hpp
+  QlSwap* DLLEXPORT qlSwap(Leg* firstLeg, Leg* secondLeg, char **e);
 #endif
 }
 
