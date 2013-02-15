@@ -127,329 +127,53 @@ public:
   }
 };
 
-template <>
-class objClassName<Instrument *> {
-public:
-  static const char *name() {
-    return "Instrument";
-  }
-};
-
-template <>
-class objClassName<QlInstrument *> {
-public:
-  static const char *name() {
-    return "QlInstrument";
-  }
-};
-
-template <>
-class objClassName<Bond *> {
-public:
-  static const char *name() {
-    return "Bond";
-  }
-};
-
-template <>
-class objClassName<QlBond *> {
-public:
-  static const char *name() {
-    return "QlBond";
-  }
-};
-
-template <>
-class objClassName<FixedRateBond *> {
-public:
-  static const char *name() {
-    return "FixedRateBond";
-  }
-};
-
-template <>
-class objClassName<QlFixedRateBond *> {
-public:
-  static const char *name() {
-    return "QlFixedRateBond";
-  }
-};
-
-template <>
-class objClassName<ZeroCouponBond *> {
-public:
-  static const char *name() {
-    return "ZeroCouponBond";
-  }
-};
-
-template <>
-class objClassName<Forward *> {
-public:
-  static const char *name() {
-    return "Forward";
-  }
-};
-
-template <>
-class objClassName<QlForward *> {
-public:
-  static const char *name() {
-    return "QlForward";
-  }
-};
-
-template <>
-class objClassName<FixedRateBondForward *> {
-public:
-  static const char *name() {
-    return "FixedRateBondForward";
-  }
-};
-
-template <>
-class objClassName<QlFixedRateBondForward *> {
-public:
-  static const char *name() {
-    return "QlFixedRateBondForward";
-  }
-};
-
-template <>
-class objClassName<ForwardRateAgreement *> {
-public:
-  static const char *name() {
-    return "ForwardRateAgreement";
-  }
-};
-
-template <>
-class objClassName<QlForwardRateAgreement *> {
-public:
-  static const char *name() {
-    return "QlForwardRateAgreement";
-  }
-};
-
-template <>
-class objClassName<FloatingRateCouponPricer *> {
-public:
-  static const char *name() {
-    return "FloatingRateCouponPricer";
-  }
-};
-
-template <>
-class objClassName<QlFloatingRateCouponPricer *> {
-public:
-  static const char *name() {
-    return "QlFloatingRateCouponPricer";
-  }
-};
-
-template <>
-class objClassName<DayCounter *> {
-public:
-  static const char *name() {
-    return "DayCounter";
-  }
-};
-
-template <>
-class objClassName<InterestRate *> {
-public:
-  static const char *name() {
-    return "InterestRate";
-  }
-};
-
-template <>
-class objClassName<Calendar *> {
-public:
-  static const char *name() {
-    return "Calendar";
-  }
-};
-
-template <>
-class objClassName<Quote *> {
-public:
-  static const char *name() {
-    return "Quote";
-  }
-};
-
-template <>
-class objClassName<QlQuote *> {
-public:
-  static const char *name() {
-    return "QlQuote";
-  }
-};
-
-template <>
-class objClassName<QlIborIndex *> {
-public:
-  static const char *name() {
-    return "QlIborIndex";
-  }
-};
-
-template <>
-class objClassName<IborIndex *> {
-public:
-  static const char *name() {
-    return "IborIndex";
-  }
-};
-
-template <>
-class objClassName<QlIndex *> {
-public:
-  static const char *name() {
-    return "QlIndex";
-  }
-};
-
-template <>
-class objClassName<Index *> {
-public:
-  static const char *name() {
-    return "Index";
-  }
-};
-
-template <>
-class objClassName<Period *> {
-public:
-  static const char *name() {
-    return "Period";
-  }
-};
-
-template <>
-class objClassName<PricingEngine *> {
-public:
-  static const char *name() {
-    return "PricingEngine";
-  }
-};
-
-template <>
-class objClassName<DiscountingBondEngine *> {
-public:
-  static const char *name() {
-    return "DiscountingBondEngine";
-  }
-};
-
-template <>
-class objClassName<QlPricingEngine *> {
-public:
-  static const char *name() {
-    return "QlPricingEngine";
-  }
-};
-
-template <>
-class objClassName<Schedule *> {
-public:
-  static const char *name() {
-    return "Schedule";
-  }
-};
-
-template <>
-class objClassName<Currency *> {
-public:
-  static const char *name() {
-    return "Currency";
-  }
-};
-
-template <>
-class objClassName<YieldTermStructure *> {
-public:
-  static const char *name() {
-    return "YieldTermStructure";
-  }
-};
-
-template <>
-class objClassName<FlatForward *> {
-public:
-  static const char *name() {
-    return "FlatForward";
-  }
-};
-
-template <>
-class objClassName<QlYieldTermStructure *> {
-public:
-  static const char *name() {
-    return "QlYieldTermStructure";
-  }
-};
+template <> class objClassName<Instrument *> { public: static const char *name() { return "Instrument"; } };
+template <> class objClassName<QlInstrument *> { public: static const char *name() { return "QlInstrument"; } };
+template <> class objClassName<Bond *> { public: static const char *name() { return "Bond"; } };
+template <> class objClassName<QlBond *> { public: static const char *name() { return "QlBond"; } };
+template <> class objClassName<FixedRateBond *> { public: static const char *name() { return "FixedRateBond"; } };
+template <> class objClassName<QlFixedRateBond *> { public: static const char *name() { return "QlFixedRateBond"; } };
+template <> class objClassName<ZeroCouponBond *> { public: static const char *name() { return "ZeroCouponBond"; } };
+template <> class objClassName<Forward *> { public: static const char *name() { return "Forward"; } };
+template <> class objClassName<QlForward *> { public: static const char *name() { return "QlForward"; } };
+template <> class objClassName<FixedRateBondForward *> { public: static const char *name() { return "FixedRateBondForward"; } };
+template <> class objClassName<QlFixedRateBondForward *> { public: static const char *name() { return "QlFixedRateBondForward"; } };
+template <> class objClassName<ForwardRateAgreement *> { public: static const char *name() { return "ForwardRateAgreement"; } };
+template <> class objClassName<QlForwardRateAgreement *> { public: static const char *name() { return "QlForwardRateAgreement"; } };
+template <> class objClassName<FloatingRateCouponPricer *> { public: static const char *name() { return "FloatingRateCouponPricer"; } };
+template <> class objClassName<QlFloatingRateCouponPricer *> { public: static const char *name() { return "QlFloatingRateCouponPricer"; } };
+template <> class objClassName<DayCounter *> { public: static const char *name() { return "DayCounter"; } };
+template <> class objClassName<InterestRate *> { public: static const char *name() { return "InterestRate"; } };
+template <> class objClassName<Calendar *> { public: static const char *name() { return "Calendar"; } };
+template <> class objClassName<Quote *> { public: static const char *name() { return "Quote"; } };
+template <> class objClassName<QlQuote *> { public: static const char *name() { return "QlQuote"; } };
+template <> class objClassName<QlIborIndex *> { public: static const char *name() { return "QlIborIndex"; } };
+template <> class objClassName<IborIndex *> { public: static const char *name() { return "IborIndex"; } };
+template <> class objClassName<QlIndex *> { public: static const char *name() { return "QlIndex"; } };
+template <> class objClassName<Index *> { public: static const char *name() { return "Index"; } };
+template <> class objClassName<Period *> { public: static const char *name() { return "Period"; } };
+template <> class objClassName<PricingEngine *> { public: static const char *name() { return "PricingEngine"; } };
+template <> class objClassName<DiscountingBondEngine *> { public: static const char *name() { return "DiscountingBondEngine"; } };
+template <> class objClassName<QlPricingEngine *> { public: static const char *name() { return "QlPricingEngine"; } };
+template <> class objClassName<Schedule *> { public: static const char *name() { return "Schedule"; } };
+template <> class objClassName<Currency *> { public: static const char *name() { return "Currency"; } };
+template <> class objClassName<YieldTermStructure *> { public: static const char *name() { return "YieldTermStructure"; } };
+template <> class objClassName<FlatForward *> { public: static const char *name() { return "FlatForward"; } };
+template <> class objClassName<QlYieldTermStructure *> { public: static const char *name() { return "QlYieldTermStructure"; } };
 
 #ifdef quantlib_cash_flow_hpp
-template <>
-class objClassName<Leg *> {
-public:
-  static const char *name() {
-    return "Leg";
-  }
-};
+template <> class objClassName<Leg *> { public: static const char *name() { return "Leg"; } };
 #endif
 
 #ifdef quantlib_ratehelpers_hpp
-template <>
-class objClassName<RateHelper *> {
-public:
-  static const char *name() {
-    return "RateHelper";
-  }
-};
-
-template <>
-class objClassName<QlRateHelper *> {
-public:
-  static const char *name() {
-    return "QlRateHelper";
-  }
-};
+template <> class objClassName<RateHelper *> { public: static const char *name() { return "RateHelper"; } };
+template <> class objClassName<QlRateHelper *> { public: static const char *name() { return "QlRateHelper"; } };
 #endif
 
-template <>
-class objClassName<DepositRateHelper *> {
-public:
-  static const char *name() {
-    return "DepositRateHelper";
-  }
-};
-
-template <>
-class objClassName<FixedRateBondHelper *> {
-public:
-  static const char *name() {
-    return "FixedRateBondHelper";
-  }
-};
-
-template <>
-class objClassName<OptionletVolatilityStructure *> {
-public:
-  static const char *name() {
-    return "OptionletVolatilityStructure";
-  }
-};
-
-template <>
-class objClassName<QlOptionletVolatilityStructure *> {
-public:
-  static const char *name() {
-    return "QlOptionletVolatilityStructure";
-  }
-};
+template <> class objClassName<DepositRateHelper *> { public: static const char *name() { return "DepositRateHelper"; } };
+template <> class objClassName<FixedRateBondHelper *> { public: static const char *name() { return "FixedRateBondHelper"; } };
+template <> class objClassName<OptionletVolatilityStructure *> { public: static const char *name() { return "OptionletVolatilityStructure"; } };
+template <> class objClassName<QlOptionletVolatilityStructure *> { public: static const char *name() { return "QlOptionletVolatilityStructure"; } };
 
 template <class T>
 T arg(T p) {
@@ -516,27 +240,6 @@ T traceval(const char *text, T val) {
   std::cout << std::endl << text << objClassName<T>::name() << ": " << val << std::endl;
   return val;
 }
-
-class QuoteWrapper;
-template <>
-class objClassName<QuoteWrapper *> {
-public:
-  static const char *name() {
-    return "QuoteWrapper";
-  }
-};
-
-# ifdef quantlib_ratehelpers_hpp
-class RateHelperWrapper;
-
-template <>
-class objClassName<RateHelperWrapper *> {
-public:
-  static const char *name() {
-    return "RateHelperWrapper";
-  }
-};
-# endif
 #endif
 
 #define LENGTH(a) (sizeof(a)/sizeof(a[0]))
