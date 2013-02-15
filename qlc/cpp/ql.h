@@ -438,6 +438,8 @@ extern "C" {
   QlSwap* DLLEXPORT qlOvernightIndexedSwapAsSwap(QlOvernightIndexedSwap *o);
   void DLLEXPORT qlFreeAssetSwap(QlAssetSwap *o);
   QlSwap* DLLEXPORT qlAssetSwapAsSwap(QlAssetSwap *o);
+  QlOvernightIndexedSwap* DLLEXPORT qlOvernightIndexedSwap(int type, double nominal, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, char **e);
+  QlOvernightIndexedSwap* DLLEXPORT qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, char **e);
 #ifdef quantlib_cash_flow_hpp
   QlSwap* DLLEXPORT qlSwap1(unsigned legsLen, Leg** legs, int *payer, char **e);
 #endif

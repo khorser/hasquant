@@ -181,4 +181,19 @@ double qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e) {
   }
 }
 
+QlOvernightIndexedSwap* qlOvernightIndexedSwap(int type, double nominal, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, char **e) {
+  try {
+    return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, nominal, (*arg(schedule)), fixedRate, (*arg(fixedDC)), (*arg(overnightIndex)), spread))));
+  } catch (std::exception& er) {
+    return handleException<QlOvernightIndexedSwap*>(e, er);
+  }
+}
+
+QlOvernightIndexedSwap* qlOvernightIndexedSwap1(int type, unsigned nominalsLen, double* nominals, Schedule* schedule, double fixedRate, DayCounter* fixedDC, QlOvernightIndex* overnightIndex, double spread, char **e) {
+  try {
+    return ret(new QlOvernightIndexedSwap(alloc(new OvernightIndexedSwap((OvernightIndexedSwap::Type)type, std::vector<double>(nominals, nominals+nominalsLen), (*arg(schedule)), fixedRate, (*arg(fixedDC)), (*arg(overnightIndex)), spread))));
+  } catch (std::exception& er) {
+    return handleException<QlOvernightIndexedSwap*>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
