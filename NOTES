@@ -37,15 +37,16 @@ Plan: migrate business calculation first and then think of reusing underlying ma
 Currency::
 Period::
 
-replace CashFlows/BondFunctions::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
+replace CashFlows/BondFunctions::next/prevCashFlow with
+-- |not occurred
+nextCashFlows :: Maybe Day -> Bool includeSettlementDateFlows -> [(Double, Date)]
+
+-- |occurred
+previousCashFlows :: Maybe Day -> Bool includeSettlementDateFlows -> [(Double, Date)]
+
 quotes
 
 instead of CompositeQuote/DerivedQuote implement a quote calling Haskell callbacks if needed
-
-SensitivityAnalysis
-historicalForwardRatesAnalysis
-
-Event:
 
 -- done:
 Bond::
