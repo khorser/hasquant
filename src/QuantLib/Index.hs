@@ -2,6 +2,7 @@
 module QuantLib.Index
   (
     addFixing
+  , bmaIndex
   )
 where
 
