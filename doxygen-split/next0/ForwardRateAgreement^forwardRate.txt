@@ -1,2 +1,0 @@
--- |Returns the relevant forward rate associated with the FRA term.
-->InterestRate

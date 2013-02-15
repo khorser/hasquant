@@ -67,4 +67,118 @@ QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e) {
     return handleException<QlSwap*>(e, er);
   }
 }
+
+double qlSwapEndDiscounts(QlSwap* o, unsigned j, char **e) {
+  try {
+    return (*arg(o))->endDiscounts(j);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+Leg* qlSwapLeg(QlSwap* o, unsigned j, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->leg(j)));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+double qlSwapLegBPS(QlSwap* o, unsigned j, char **e) {
+  try {
+    return (*arg(o))->legBPS(j);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlSwapLegNPV(QlSwap* o, unsigned j, char **e) {
+  try {
+    return (*arg(o))->legNPV(j);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+int qlSwapMaturityDate(QlSwap* o, char **e) {
+  try {
+    return ((*arg(o))->maturityDate()).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+double qlSwapNpvDateDiscount(QlSwap* o, char **e) {
+  try {
+    return (*arg(o))->npvDateDiscount();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+int qlSwapStartDate(QlSwap* o, char **e) {
+  try {
+    return ((*arg(o))->startDate()).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+double qlSwapStartDiscounts(QlSwap* o, unsigned j, char **e) {
+  try {
+    return (*arg(o))->startDiscounts(j);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlVanillaSwapFairRate(QlVanillaSwap* o, char **e) {
+  try {
+    return (*arg(o))->fairRate();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlVanillaSwapFairSpread(QlVanillaSwap* o, char **e) {
+  try {
+    return (*arg(o))->fairSpread();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+Leg* qlVanillaSwapFixedLeg(QlVanillaSwap* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->fixedLeg()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+double qlVanillaSwapFixedLegBPS(QlVanillaSwap* o, char **e) {
+  try {
+    return (*arg(o))->fixedLegBPS();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlVanillaSwapFixedLegNPV(QlVanillaSwap* o, char **e) {
+  try {
+    return (*arg(o))->fixedLegNPV();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+Leg* qlVanillaSwapFloatingLeg(QlVanillaSwap* o, char **e) {
+  try {
+    return ret(new Leg((*arg(o))->floatingLeg()));
+  } catch (std::exception& er) {
+    return handleException<Leg*>(e, er);
+  }
+}
+double qlVanillaSwapFloatingLegBPS(QlVanillaSwap* o, char **e) {
+  try {
+    return (*arg(o))->floatingLegBPS();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e) {
+  try {
+    return (*arg(o))->floatingLegNPV();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

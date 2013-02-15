@@ -34,33 +34,15 @@ sessions?
 
 Plan: migrate business calculation first and then think of reusing underlying math
 --
-FraRateHelper
-FRA.forwardRate
-FRA.spotValue
-FRA.forwardValue
-FRA.impliedYield
-FuturesRateHelper
-VanillaSwap
-Swap.fairSpread
-Swap.fairRate
-SwapRateHelper
-
 OvernightIndexedSwapIndex
-OvernightIndexedSwap
-OISRateHelper
-DatedOISRateHelper
 
 Currency::
 Period::
-BondHelper
 
 Settings::
-BMA*
-ForwardRateStructure
 
 replace CashFlows/BondFunctions::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
 quotes
-ZeroSpreadCurve
 
 instead of CompositeQuote/DerivedQuote implement a quote calling Haskell callbacks if needed
 
@@ -96,3 +78,21 @@ ExponentialSplinesFitting
 NelsonSiegelFitting
 CubicBSplinesFitting
 SvenssonFitting
+
+BMA*
+BondHelper
+OvernightIndexedSwap
+OISRateHelper
+DatedOISRateHelper
+FraRateHelper
+FRA.forwardRate
+FRA.spotValue
+FRA.forwardValue
+FRA.impliedYield
+FuturesRateHelper
+VanillaSwap
+Swap.fairSpread
+Swap.fairRate
+SwapRateHelper
+ForwardRateStructure
+ZeroSpreadCurve

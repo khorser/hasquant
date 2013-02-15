@@ -414,6 +414,9 @@ extern "C" {
   QlForward* DLLEXPORT qlForwardRateAgreementAsForward(QlForwardRateAgreement *fwd);
   QlForwardRateAgreement* DLLEXPORT qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e);
 
+  InterestRate* DLLEXPORT qlForwardRateAgreementForwardRate(QlForwardRateAgreement* o, char **e);
+  int DLLEXPORT qlForwardRateAgreementIsExpired(QlForwardRateAgreement* o, char **e);
+
   /* coupon pricer */
   QlFloatingRateCouponPricer *DLLEXPORT qlBlackIborCouponPricer(
     QlOptionletVolatilityStructure *vol, char **e);
@@ -444,7 +447,23 @@ extern "C" {
   QlVanillaSwap* DLLEXPORT qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, double fixedRate, DayCounter* fixedDayCount, Schedule* floatSchedule, QlIborIndex* iborIndex, double spread, DayCounter* floatingDayCount, int paymentConvention, char **e);
 #ifdef quantlib_cash_flow_hpp
   QlSwap* DLLEXPORT qlSwap(Leg* firstLeg, Leg* secondLeg, char **e);
+  Leg* DLLEXPORT qlSwapLeg(QlSwap* o, unsigned j, char **e);
+  Leg* DLLEXPORT qlVanillaSwapFixedLeg(QlVanillaSwap* o, char **e);
+  Leg* DLLEXPORT qlVanillaSwapFloatingLeg(QlVanillaSwap* o, char **e);
 #endif
+  double DLLEXPORT qlSwapEndDiscounts(QlSwap* o, unsigned j, char **e);
+  double DLLEXPORT qlSwapLegBPS(QlSwap* o, unsigned j, char **e);
+  double DLLEXPORT qlSwapLegNPV(QlSwap* o, unsigned j, char **e);
+  int DLLEXPORT qlSwapMaturityDate(QlSwap* o, char **e);
+  double DLLEXPORT qlSwapNpvDateDiscount(QlSwap* o, char **e);
+  int DLLEXPORT qlSwapStartDate(QlSwap* o, char **e);
+  double DLLEXPORT qlSwapStartDiscounts(QlSwap* o, unsigned j, char **e);
+  double DLLEXPORT qlVanillaSwapFairRate(QlVanillaSwap* o, char **e);
+  double DLLEXPORT qlVanillaSwapFairSpread(QlVanillaSwap* o, char **e);
+  double DLLEXPORT qlVanillaSwapFixedLegBPS(QlVanillaSwap* o, char **e);
+  double DLLEXPORT qlVanillaSwapFixedLegNPV(QlVanillaSwap* o, char **e);
+  double DLLEXPORT qlVanillaSwapFloatingLegBPS(QlVanillaSwap* o, char **e);
+  double DLLEXPORT qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

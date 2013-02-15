@@ -8,6 +8,23 @@ module QuantLib.Instrument.Swap
   , assetSwap
   , bmaSwap
   , vanillaSwap
+
+  , endDiscounts
+  , leg
+  , legBPS
+  , legNPV
+  , maturityDate
+  , npvDateDiscount
+  , startDate
+  , startDiscounts
+  , fairRate
+  , fairSpread
+  , fixedLeg
+  , fixedLegBPS
+  , fixedLegNPV
+  , floatingLeg
+  , floatingLegBPS
+  , floatingLegNPV
   )
 
 where
@@ -99,3 +116,109 @@ swap = $(ffiConstruct 'swap) c_swap
 
 foreign import ccall safe "ql.h qlSwap"
   c_swap :: Ptr CLeg -> Ptr CLeg -> Ptr CString -> IO (Ptr CSwap)
+
+endDiscounts :: Swap
+  -> Word -- ^j
+  -> IO Double
+endDiscounts = $(ffiCallX 'endDiscounts) c_endDiscounts
+
+foreign import ccall safe "ql.h qlSwapEndDiscounts"
+  c_endDiscounts :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
+
+leg :: Swap
+  -> Word -- ^j
+  -> IO Leg
+leg = $(ffiConstruct 'leg) c_leg
+
+foreign import ccall safe "ql.h qlSwapLeg"
+  c_leg :: Ptr CSwap -> CUInt -> Ptr CString -> IO (Ptr CLeg)
+
+legBPS :: Swap
+  -> Word -- ^j
+  -> IO Double
+legBPS = $(ffiCallX 'legBPS) c_legBPS
+
+foreign import ccall safe "ql.h qlSwapLegBPS"
+  c_legBPS :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
+
+legNPV :: Swap
+  -> Word -- ^j
+  -> IO Double
+legNPV = $(ffiCallX 'legNPV) c_legNPV
+
+foreign import ccall safe "ql.h qlSwapLegNPV"
+  c_legNPV :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
+
+maturityDate :: Swap -> IO Day
+maturityDate = $(ffiCallX 'maturityDate) c_maturityDate
+
+foreign import ccall safe "ql.h qlSwapMaturityDate"
+  c_maturityDate :: Ptr CSwap -> Ptr CString -> IO CDate
+
+npvDateDiscount :: Swap -> IO Double
+npvDateDiscount = $(ffiCallX 'npvDateDiscount) c_npvDateDiscount
+
+foreign import ccall safe "ql.h qlSwapNpvDateDiscount"
+  c_npvDateDiscount :: Ptr CSwap -> Ptr CString -> IO CDouble
+
+startDate :: Swap -> IO Day
+startDate = $(ffiCallX 'startDate) c_startDate
+
+foreign import ccall safe "ql.h qlSwapStartDate"
+  c_startDate :: Ptr CSwap -> Ptr CString -> IO CDate
+
+startDiscounts :: Swap
+  -> Word -- ^j
+  -> IO Double
+startDiscounts = $(ffiCallX 'startDiscounts) c_startDiscounts
+
+foreign import ccall safe "ql.h qlSwapStartDiscounts"
+  c_startDiscounts :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
+
+fairRate :: VanillaSwap -> IO Double
+fairRate = $(ffiCallX 'fairRate) c_fairRate
+
+foreign import ccall safe "ql.h qlVanillaSwapFairRate"
+  c_fairRate :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+
+fairSpread :: VanillaSwap -> IO Double
+fairSpread = $(ffiCallX 'fairSpread) c_fairSpread
+
+foreign import ccall safe "ql.h qlVanillaSwapFairSpread"
+  c_fairSpread :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+
+fixedLeg :: VanillaSwap -> IO Leg
+fixedLeg = $(ffiConstruct 'fixedLeg) c_fixedLeg
+
+foreign import ccall safe "ql.h qlVanillaSwapFixedLeg"
+  c_fixedLeg :: Ptr CVanillaSwap -> Ptr CString -> IO (Ptr CLeg)
+
+fixedLegBPS :: VanillaSwap -> IO Double
+fixedLegBPS = $(ffiCallX 'fixedLegBPS) c_fixedLegBPS
+
+foreign import ccall safe "ql.h qlVanillaSwapFixedLegBPS"
+  c_fixedLegBPS :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+
+fixedLegNPV :: VanillaSwap -> IO Double
+fixedLegNPV = $(ffiCallX 'fixedLegNPV) c_fixedLegNPV
+
+foreign import ccall safe "ql.h qlVanillaSwapFixedLegNPV"
+  c_fixedLegNPV :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+
+floatingLeg :: VanillaSwap -> IO Leg
+floatingLeg = $(ffiConstruct 'floatingLeg) c_floatingLeg
+
+foreign import ccall safe "ql.h qlVanillaSwapFloatingLeg"
+  c_floatingLeg :: Ptr CVanillaSwap -> Ptr CString -> IO (Ptr CLeg)
+
+floatingLegBPS :: VanillaSwap -> IO Double
+floatingLegBPS = $(ffiCallX 'floatingLegBPS) c_floatingLegBPS
+
+foreign import ccall safe "ql.h qlVanillaSwapFloatingLegBPS"
+  c_floatingLegBPS :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+
+floatingLegNPV :: VanillaSwap -> IO Double
+floatingLegNPV = $(ffiCallX 'floatingLegNPV) c_floatingLegNPV
+
+foreign import ccall safe "ql.h qlVanillaSwapFloatingLegNPV"
+  c_floatingLegNPV :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble

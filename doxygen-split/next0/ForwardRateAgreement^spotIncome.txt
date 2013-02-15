@@ -1,4 +1,0 @@
--- |Income is zero for a FRA
-->Real
-::const Handle< YieldTermStructure > &
--- ^incomeDiscountCurve

@@ -100,4 +100,19 @@ double qlFixedRateBondForwardForwardPrice(QlFixedRateBondForward* o, char **e) {
   }
 }
 
+InterestRate* qlForwardRateAgreementForwardRate(QlForwardRateAgreement* o, char **e) {
+  try {
+    return ret(new InterestRate((*arg(o))->forwardRate()));
+  } catch (std::exception& er) {
+    return handleException<InterestRate*>(e, er);
+  }
+}
+int qlForwardRateAgreementIsExpired(QlForwardRateAgreement* o, char **e) {
+  try {
+    return (*arg(o))->isExpired();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

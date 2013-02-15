@@ -12,6 +12,9 @@ module QuantLib.Instrument.Forward
   , settlementDate
   , spotIncome
   , spotValue
+
+  , forwardRate
+  , isExpired
   )
 
 where
@@ -112,3 +115,19 @@ spotValue = $(ffiCallX 'spotValue) c_spotValue
 
 foreign import ccall safe "ql.h qlForwardSpotValue"
   c_spotValue :: Ptr CForward -> Ptr CString -> IO CDouble
+
+-- |Returns the relevant forward rate associated with the FRA term.
+forwardRate :: ForwardRateAgreement
+  -> IO InterestRate
+forwardRate = $(ffiConstruct 'forwardRate) c_forwardRate
+
+foreign import ccall safe "ql.h qlForwardRateAgreementForwardRate"
+  c_forwardRate :: Ptr CForwardRateAgreement -> Ptr CString -> IO (Ptr CInterestRate)
+
+-- |A FRA expires/settles on the valueDate
+isExpired :: ForwardRateAgreement
+  -> IO Bool
+isExpired = $(ffiCallX 'isExpired) c_isExpired
+
+foreign import ccall safe "ql.h qlForwardRateAgreementIsExpired"
+  c_isExpired :: Ptr CForwardRateAgreement -> Ptr CString -> IO CInt

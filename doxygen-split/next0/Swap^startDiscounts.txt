@@ -1,3 +1,0 @@
-->DiscountFactor
-::Size
--- ^j
