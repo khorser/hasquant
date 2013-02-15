@@ -114,6 +114,12 @@ extern "C" {
   void DLLEXPORT qlSettingsSetEnforceTodaysHistoricFixings(int x);
   int DLLEXPORT qlSettingsIncludeTodaysCashFlows();
   void DLLEXPORT qlSettingsSetIncludeTodaysCashFlows(int x);
+  void DLLEXPORT qlSettingsAnchorEvaluationDate();
+  int DLLEXPORT qlSettingsIncludeReferenceDateCashFlows();
+  int DLLEXPORT qlSettingsIncludeReferenceDateEvents();
+  void DLLEXPORT qlSettingsResetEvaluationDate(char **e);
+  void DLLEXPORT qlSettingsSetIncludeReferenceDateCashFlows(int x0);
+  void DLLEXPORT qlSettingsSetIncludeReferenceDateEvents(int x0);
 
   /* bond */
 #ifdef quantlib_cash_flow_hpp

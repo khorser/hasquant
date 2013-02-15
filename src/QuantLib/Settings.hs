@@ -8,6 +8,12 @@ module QuantLib.Settings
   , setEnforceTodaysHistoricFixings
   , includeTodaysCashFlows
   , setIncludeTodaysCashFlows
+  , anchorEvaluationDate
+  , includeReferenceDateCashFlows
+  , includeReferenceDateEvents
+  , resetEvaluationDate
+  , setIncludeReferenceDateCashFlows
+  , setIncludeReferenceDateEvents
   )
 where
 
@@ -63,3 +69,42 @@ setIncludeTodaysCashFlows = $(ffiCall 'setIncludeTodaysCashFlows) c_setIncludeTo
 
 foreign import ccall safe "ql.h qlSettingsSetIncludeTodaysCashFlows"
   c_setIncludeTodaysCashFlows :: CInt -> IO ()
+
+-- |Call this to prevent the evaluation date to change at midnight (and, incidentally, to gain quite a bit of performance.) If no evaluation date was previously set, it is equivalent to setting the evaluation date to Date::todaysDate(); if an evaluation date other than Date() was already set, it has no effect.
+anchorEvaluationDate :: IO ()
+anchorEvaluationDate = $(ffiCall 'anchorEvaluationDate) c_anchorEvaluationDate
+
+foreign import ccall safe "ql.h qlSettingsAnchorEvaluationDate"
+  c_anchorEvaluationDate :: IO ()
+
+includeReferenceDateCashFlows :: IO Bool
+includeReferenceDateCashFlows = $(ffiCall 'includeReferenceDateCashFlows) c_includeReferenceDateCashFlows
+
+foreign import ccall safe "ql.h qlSettingsIncludeReferenceDateCashFlows"
+  c_includeReferenceDateCashFlows :: IO CInt
+
+-- |This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the Event::hasOccurred method.
+includeReferenceDateEvents :: IO Bool
+includeReferenceDateEvents = $(ffiCall 'includeReferenceDateEvents) c_includeReferenceDateEvents
+
+foreign import ccall safe "ql.h qlSettingsIncludeReferenceDateEvents"
+  c_includeReferenceDateEvents :: IO CInt
+
+-- |Call this to reset the evaluation date to Date::todaysDate() and allow it to change at midnight. It is equivalent to setting the evaluation date to Date(). This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
+resetEvaluationDate :: IO ()
+resetEvaluationDate = $(ffiCallX 'resetEvaluationDate) c_resetEvaluationDate
+
+foreign import ccall safe "ql.h qlSettingsResetEvaluationDate"
+  c_resetEvaluationDate :: Ptr CString -> IO ()
+
+setIncludeReferenceDateCashFlows :: Bool -> IO ()
+setIncludeReferenceDateCashFlows = $(ffiCall 'setIncludeReferenceDateCashFlows) c_setIncludeReferenceDateCashFlows
+
+foreign import ccall safe "ql.h qlSettingsSetIncludeReferenceDateCashFlows"
+  c_setIncludeReferenceDateCashFlows :: CInt -> IO ()
+
+setIncludeReferenceDateEvents :: Bool -> IO ()
+setIncludeReferenceDateEvents = $(ffiCall 'setIncludeReferenceDateEvents) c_setIncludeReferenceDateEvents
+
+foreign import ccall safe "ql.h qlSettingsSetIncludeReferenceDateEvents"
+  c_setIncludeReferenceDateEvents :: CInt -> IO ()

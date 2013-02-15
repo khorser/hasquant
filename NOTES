@@ -34,12 +34,8 @@ sessions?
 
 Plan: migrate business calculation first and then think of reusing underlying math
 --
-OvernightIndexedSwapIndex
-
 Currency::
 Period::
-
-Settings::
 
 replace CashFlows/BondFunctions::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
 quotes
@@ -96,3 +92,5 @@ Swap.fairRate
 SwapRateHelper
 ForwardRateStructure
 ZeroSpreadCurve
+Settings::
+OvernightIndexedSwapIndex
