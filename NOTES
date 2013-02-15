@@ -30,6 +30,8 @@ Introduce money data type parameterized by currency
 
 Implement `show' via operator <<
 
+sessions?
+
 Plan: migrate business calculation first and then think of reusing underlying math
 --
 FraRateHelper
@@ -59,6 +61,8 @@ ForwardRateStructure
 replace CashFlows/BondFunctions::next/prevCashFlow with 'between :: Maybe Day -> Maybe Day -> [(Double, Day)]'
 quotes
 ZeroSpreadCurve
+
+instead of CompositeQuote/DerivedQuote implement a quote calling Haskell callbacks if needed
 
 SensitivityAnalysis
 historicalForwardRatesAnalysis
