@@ -81,7 +81,6 @@ extern "C" {
   double DLLEXPORT qlCashFlowsYield(Leg* leg, double npv, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e);
   double DLLEXPORT qlCashFlowsYieldValueBasisPoint1(Leg* leg, double yield, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   double DLLEXPORT qlCashFlowsYieldValueBasisPoint(Leg* leg, InterestRate* yield, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
-  double DLLEXPORT qlCashFlowsZSpread1(Leg* leg, QlYieldTermStructure* d, double npv, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e);
   double DLLEXPORT qlCashFlowsZSpread(Leg* leg, double npv, QlYieldTermStructure* x2, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e);
 #endif
 
@@ -115,10 +114,8 @@ extern "C" {
   int DLLEXPORT qlSettingsIncludeTodaysCashFlows();
   void DLLEXPORT qlSettingsSetIncludeTodaysCashFlows(int x);
   void DLLEXPORT qlSettingsAnchorEvaluationDate();
-  int DLLEXPORT qlSettingsIncludeReferenceDateCashFlows();
   int DLLEXPORT qlSettingsIncludeReferenceDateEvents();
   void DLLEXPORT qlSettingsResetEvaluationDate(char **e);
-  void DLLEXPORT qlSettingsSetIncludeReferenceDateCashFlows(int x0);
   void DLLEXPORT qlSettingsSetIncludeReferenceDateEvents(int x0);
 
   /* bond */

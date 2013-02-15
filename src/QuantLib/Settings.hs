@@ -9,10 +9,8 @@ module QuantLib.Settings
   , includeTodaysCashFlows
   , setIncludeTodaysCashFlows
   , anchorEvaluationDate
-  , includeReferenceDateCashFlows
   , includeReferenceDateEvents
   , resetEvaluationDate
-  , setIncludeReferenceDateCashFlows
   , setIncludeReferenceDateEvents
   )
 where
@@ -77,12 +75,6 @@ anchorEvaluationDate = $(ffiCall 'anchorEvaluationDate) c_anchorEvaluationDate
 foreign import ccall safe "ql.h qlSettingsAnchorEvaluationDate"
   c_anchorEvaluationDate :: IO ()
 
-includeReferenceDateCashFlows :: IO Bool
-includeReferenceDateCashFlows = $(ffiCall 'includeReferenceDateCashFlows) c_includeReferenceDateCashFlows
-
-foreign import ccall safe "ql.h qlSettingsIncludeReferenceDateCashFlows"
-  c_includeReferenceDateCashFlows :: IO CInt
-
 -- |This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the Event::hasOccurred method.
 includeReferenceDateEvents :: IO Bool
 includeReferenceDateEvents = $(ffiCall 'includeReferenceDateEvents) c_includeReferenceDateEvents
@@ -96,12 +88,6 @@ resetEvaluationDate = $(ffiCallX 'resetEvaluationDate) c_resetEvaluationDate
 
 foreign import ccall safe "ql.h qlSettingsResetEvaluationDate"
   c_resetEvaluationDate :: Ptr CString -> IO ()
-
-setIncludeReferenceDateCashFlows :: Bool -> IO ()
-setIncludeReferenceDateCashFlows = $(ffiCall 'setIncludeReferenceDateCashFlows) c_setIncludeReferenceDateCashFlows
-
-foreign import ccall safe "ql.h qlSettingsSetIncludeReferenceDateCashFlows"
-  c_setIncludeReferenceDateCashFlows :: CInt -> IO ()
 
 setIncludeReferenceDateEvents :: Bool -> IO ()
 setIncludeReferenceDateEvents = $(ffiCall 'setIncludeReferenceDateEvents) c_setIncludeReferenceDateEvents

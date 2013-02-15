@@ -287,13 +287,6 @@ double qlCashFlowsYieldValueBasisPoint(Leg* leg, InterestRate* yield, int includ
     return handleException<double>(e, er);
   }
 }
-double qlCashFlowsZSpread1(Leg* leg, QlYieldTermStructure* d, double npv, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e) {
-  try {
-    return CashFlows::zSpread(*arg(leg), *arg(d), npv, *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate), accuracy, maxIterations, guess);
-  } catch (std::exception& er) {
-    return handleException<double>(e, er);
-  }
-}
 double qlCashFlowsZSpread(Leg* leg, double npv, QlYieldTermStructure* x2, DayCounter* dayCounter, int compounding, int frequency, int includeSettlementDateFlows, int settlementDate, int npvDate, double accuracy, unsigned maxIterations, double guess, char **e) {
   try {
     return CashFlows::zSpread(*arg(leg), npv, *arg(x2), *arg(dayCounter), (Compounding)compounding, (Frequency)frequency, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate), accuracy, maxIterations, guess);

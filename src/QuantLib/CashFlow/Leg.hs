@@ -41,7 +41,6 @@ module QuantLib.CashFlow.Leg
   , yield
   , yieldValueBasisPoint'
   , yieldValueBasisPoint
-  , zSpread'
   , zSpread
   )
 where
@@ -499,25 +498,6 @@ yieldValueBasisPoint = $(ffiCallX 'yieldValueBasisPoint) c_yieldValueBasisPoint
 
 foreign import ccall safe "ql.h qlCashFlowsYieldValueBasisPoint"
   c_yieldValueBasisPoint :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
-
--- |deprecated implied Z-spread.
-zSpread' :: Leg -- ^leg
-  -> YieldTermStructure -- ^d
-  -> Double -- ^npv
-  -> DayCounter -- ^dayCounter
-  -> Compounding -- ^compounding
-  -> Frequency -- ^frequency
-  -> Bool -- ^includeSettlementDateFlows
-  -> Maybe Day -- ^settlementDate
-  -> Maybe Day -- ^npvDate
-  -> Double -- ^accuracy
-  -> Word -- ^maxIterations
-  -> Double -- ^guess
-  -> IO Double
-zSpread' = $(ffiCallX 'zSpread') c_zSpread'
-
-foreign import ccall safe "ql.h qlCashFlowsZSpread1"
-  c_zSpread' :: Ptr CLeg -> Ptr CYieldTermStructure -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
 
 -- |implied Z-spread.
 zSpread :: Leg -- ^leg

@@ -36,9 +36,6 @@ void qlSettingsSetIncludeTodaysCashFlows(int x) {
 void qlSettingsAnchorEvaluationDate() {
   Settings::instance().anchorEvaluationDate();
 }
-int qlSettingsIncludeReferenceDateCashFlows() {
-  return Settings::instance().includeReferenceDateCashFlows();
-}
 int qlSettingsIncludeReferenceDateEvents() {
   return Settings::instance().includeReferenceDateEvents();
 }
@@ -48,9 +45,6 @@ void qlSettingsResetEvaluationDate(char **e) {
   } catch (std::exception& er) {
     (void)handleException<void*>(e, er);
   }
-}
-void qlSettingsSetIncludeReferenceDateCashFlows(int x0) {
-  Settings::instance().includeReferenceDateCashFlows() = x0;
 }
 void qlSettingsSetIncludeReferenceDateEvents(int x0) {
   Settings::instance().includeReferenceDateEvents() = x0;
