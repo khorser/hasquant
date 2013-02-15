@@ -32,9 +32,46 @@ void qlFreeLeg(Leg *leg) {
   del(leg);
 }
 
+Leg *qlNextCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e) {
+  try {
+    const Leg &l = *arg(leg);
+    Leg::const_iterator i = CashFlows::nextCashFlow(l,
+        includeSettlementDateFlows, qlNullableDate(settlementDate));
+    return new Leg(i, l.end());
+  } catch (std::exception& er) {
+    return handleException<Leg *>(e, er);
+  }
+}
+
+Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e) {
+  try {
+    const Leg &l = *arg(leg);
+    Leg::const_reverse_iterator i = CashFlows::previousCashFlow(l,
+        includeSettlementDateFlows, qlNullableDate(settlementDate));
+    return new Leg(i, l.rend());
+  } catch (std::exception& er) {
+    return handleException<Leg *>(e, er);
+  }
+}
+
+int qlLegCashFlow(Leg *leg, unsigned i, int includeSettlementDateFlows, int settlementDate,
+    double *amount, int *date, char **e) {
+  try {
+    const Leg& l = *arg(leg);
+    if (i >= l.size())
+      QL_FAIL("Cash flow index out of range: " << i);
+    Leg::const_reference v = l[i];
+    *amount = v->amount();
+    *date = v->date().serialNumber();
+    return v->hasOccurred(qlNullableDate(settlementDate), includeSettlementDateFlows);
+  } catch (std::exception& er) {
+    return handleException<bool>(e, er);
+  }
+}
+
 double qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {
-    return CashFlows::duration((*arg(leg)), (*arg(yield)), (Duration::Type)type, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
+    return CashFlows::duration(*arg(leg), *arg(yield), (Duration::Type)type, includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }

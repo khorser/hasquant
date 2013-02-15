@@ -33,16 +33,10 @@ Implement `show' via operator <<
 sessions?
 
 Plan: migrate business calculation first and then think of reusing underlying math
+
 --
 Currency::
 Period::
-
-replace CashFlows/BondFunctions::next/prevCashFlow with
--- |not occurred
-nextCashFlows :: Maybe Day -> Bool includeSettlementDateFlows -> [(Double, Date)]
-
--- |occurred
-previousCashFlows :: Maybe Day -> Bool includeSettlementDateFlows -> [(Double, Date)]
 
 quotes
 
