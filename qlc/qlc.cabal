@@ -1,5 +1,5 @@
 Name:         qlc
-Version:      0.1.0.0
+Version:      0.1.0
 Synopsis:     C wrappers for QuantLib library
 Description:  Low-level C wrappers for QuantLib library, for use with quantlib package.
 License:      BSD3

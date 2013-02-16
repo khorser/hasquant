@@ -5,6 +5,9 @@ import QuantLib.Time.Date
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.Repo as RepoExample
+import qualified QuantLib.Example.FRA as FRAExample
+import qualified QuantLib.Example.Swap as SwapExample
+import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
 
 main :: IO ()
 main = do
@@ -13,24 +16,24 @@ main = do
   t <- today
   putStrLn $ "Today is " ++ show (weekday t)
 
-  r <- BondExample.result
+  br <- BondExample.run
   
-  putStrLn $ "NPV: " ++ show (BondExample.npvR r)
-  putStrLn $ "Yield: " ++ show (BondExample.yieldR r)
-  putStrLn $ "Clean price: " ++ show (BondExample.cleanPriceR r)
-  putStrLn $ "Dirty price: " ++ show (BondExample.dirtyPriceR r)
-  putStrLn $ "Accrued amount: " ++ show (BondExample.accruedAmountR r)
-  putStrLn $ "Previous coupon: " ++ show (BondExample.previousCoupon r)
-  putStrLn $ "Next coupon: " ++ show (BondExample.nextCoupon r)
-  putStrLn $ "Next coupon date: " ++ show (BondExample.nextCouponDate r)
-  putStrLn $ "Floater's clean price from yield: " ++ show (BondExample.cleanPriceFromYield r)
-  putStrLn $ "Floater's yield from clean price: " ++ show (BondExample.yieldFromCleanPrice r)
-  putStrLn $ "Tradable: " ++ show (BondExample.tradable r)
+  putStrLn $ "NPV: " ++ show (BondExample.npvR br)
+  putStrLn $ "Yield: " ++ show (BondExample.yieldR br)
+  putStrLn $ "Clean price: " ++ show (BondExample.cleanPriceR br)
+  putStrLn $ "Dirty price: " ++ show (BondExample.dirtyPriceR br)
+  putStrLn $ "Accrued amount: " ++ show (BondExample.accruedAmountR br)
+  putStrLn $ "Previous coupon: " ++ show (BondExample.previousCoupon br)
+  putStrLn $ "Next coupon: " ++ show (BondExample.nextCoupon br)
+  putStrLn $ "Next coupon date: " ++ show (BondExample.nextCouponDate br)
+  putStrLn $ "Floater's clean price from yield: " ++ show (BondExample.cleanPriceFromYield br)
+  putStrLn $ "Floater's yield from clean price: " ++ show (BondExample.yieldFromCleanPrice br)
+  putStrLn $ "Tradable: " ++ show (BondExample.tradable br)
 
-  putStrLn $ "CashFlows: NPV: " ++ show (BondExample.cfnpvR r) ++ ", NPV_BPS: " ++ show (BondExample.cfnpvbpsR r)
-  putStrLn $ "BPS: " ++ show (BondExample.bpsR r)
+  putStrLn $ "CashFlows: NPV: " ++ show (BondExample.cfnpvR br) ++ ", NPV_BPS: " ++ show (BondExample.cfnpvbpsR br)
+  putStrLn $ "BPS: " ++ show (BondExample.bpsR br)
 
-  rr <- RepoExample.result
+  rr <- RepoExample.run
   putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)
   putStrLn $ "Underlying bond dirty price: " ++ show (RepoExample.dirtyPriceR rr)
   putStrLn $ "Underlying bond accrued at settlement: " ++ show (RepoExample.accruedAmountSettlement rr)
@@ -43,5 +46,11 @@ main = do
   putStrLn $ "Repo dirty forward price: " ++ show (RepoExample.forwardPriceR rr)
   putStrLn $ "Repo implied yield: " ++ show (RepoExample.impliedYieldR rr)
   putStrLn $ "Market repo rate:   " ++ show (RepoExample.zeroRateR rr)
+
+  _ <- FRAExample.run
+
+  _ <- SwapExample.run
+
+  _ <- BondCurveExample.run
 
   putStrLn "DONE"

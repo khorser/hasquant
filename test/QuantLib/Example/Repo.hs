@@ -1,7 +1,7 @@
 module QuantLib.Example.Repo
   (
     Result(..)
-  , result
+  , run
   )
 where
 
@@ -42,8 +42,8 @@ data Result = Result
   , zeroRateR :: Double
   } deriving Show
 
-result :: IO Result
-result = do
+run :: IO Result
+run = do
   repoDayCountConvention <- actual360
   bondCalendar <- nullCalendar
   bondDayCountConvention <- thirty360BondBasis

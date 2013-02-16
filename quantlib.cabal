@@ -1,5 +1,5 @@
 Name:         quantlib
-Version:      0.1.0.0
+Version:      0.1.0
 Synopsis:     Bindings to QuantLib
 Description:  Bindings to QuantLib, a free/open-source library for quantitative finance (http://quantlib.org).
               Requires QLC: C wrappers for QuantLib
@@ -79,7 +79,7 @@ Library
               base >= 4.5 && < 5
             , time >= 1.4
             , template-haskell
-            , qlc == 0.1.0.0
+            , qlc == 0.1.0
 
   Default-Language:  Haskell2010
   Hs-source-dirs: src
@@ -99,6 +99,9 @@ Test-Suite QL-Test
               , QuantLib.Test.QuickCheck
               , QuantLib.Example.Bond
               , QuantLib.Example.Repo
+              , QuantLib.Example.FRA
+              , QuantLib.Example.Swap
+              , QuantLib.Example.FittedBondCurve
   GHC-Options:-Wall
   Build-Depends:
               base >= 4.5 && < 5
@@ -119,9 +122,13 @@ Executable QL-Example
   Else
     Buildable: False
 
-  Main-Is:          QuantLib/Example/Main.hs
-  Other-modules:    QuantLib.Example.Bond
-                  , QuantLib.Example.Repo
+  Main-Is:    QuantLib/Example/Main.hs
+  Other-modules:
+              QuantLib.Example.Bond
+            , QuantLib.Example.Repo
+            , QuantLib.Example.FRA
+            , QuantLib.Example.Swap
+            , QuantLib.Example.FittedBondCurve
   GHC-Options:      -Wall
   Build-Depends:
               base >= 4.5 && < 5

@@ -1,7 +1,7 @@
 module QuantLib.Example.Bond
   (
     Result(..)
-  , result
+  , run
   )
 where
 
@@ -60,8 +60,8 @@ listToTriple :: [a] -> (a, a, a)
 listToTriple [x, y, z] = (x, y, z)
 listToTriple _ = error "Invalid list"
 
-result :: IO Result
-result = do
+run :: IO Result
+run = do
   actual365Fixeddc <- actual365Fixed
   actActBond <- actualActualBond
   actActISDA <- actualActualISDA

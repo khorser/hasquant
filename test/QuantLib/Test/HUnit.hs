@@ -31,6 +31,9 @@ import qualified QuantLib.Time.Unit as Unit
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.Repo as RepoExample
+import qualified QuantLib.Example.FRA as FRAExample
+import qualified QuantLib.Example.Swap as SwapExample
+import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
@@ -259,7 +262,7 @@ test_truncateSchedule = do
 
 test_bondEval :: IO ()
 test_bondEval = do
-  r <- BondExample.result
+  r <- BondExample.run
   let (fixnpv, znpv, fnpv) = BondExample.npvR r
       (fixy, zy, fy) = BondExample.yieldR r
       (fixclean, zclean, fclean) = BondExample.cleanPriceR r
@@ -304,7 +307,7 @@ test_bondEval = do
 
 test_repoEval :: IO ()
 test_repoEval = do
-  r <- RepoExample.result
+  r <- RepoExample.run
 
   assertBool $ abs(RepoExample.cleanPriceR r-89.9769362) < 1e-7
   assertBool $ abs(RepoExample.dirtyPriceR r-93.2880473) < 1e-7
@@ -318,6 +321,21 @@ test_repoEval = do
   assertBool $ abs(RepoExample.impliedYieldR r-0.050000633) < 1e-9
   assertBool $ abs(RepoExample.zeroRateR r-0.05) < 1e-7
 
+  performGC
+
+test_fraEval :: IO ()
+test_fraEval = do
+  _ <- FRAExample.run
+  performGC
+
+test_swapEval :: IO ()
+test_swapEval = do
+  _ <- SwapExample.run
+  performGC
+
+test_bondCurveEval :: IO ()
+test_bondCurveEval = do
+  _ <- BondCurveExample.run
   performGC
 
 -- if we don't do GC we have a chance of getting
