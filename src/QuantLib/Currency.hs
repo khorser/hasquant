@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Currency
   (
     currency
@@ -68,9 +69,19 @@ module QuantLib.Currency
   , usd
   , veb
   , zar
+
+  , code
+  , format
+  , fractionsPerUnit
+  , fractionSymbol
+  , numericCode
+  , symbol
+  , triangulationCurrency
   )
 where
 
+import QuantLib.Internal.Syntax
+import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
@@ -213,3 +224,53 @@ twd = constructNamed "TWD"
 usd = constructNamed "USD"
 veb = constructNamed "VEB"
 zar = constructNamed "ZAR"
+
+-- |ISO 4217 three-letter code, e.g, "USD".
+code :: Currency -> IO String
+code = $(ffiCallX 'code) c_code
+
+foreign import ccall safe "ql.h qlCurrencyCode"
+  c_code :: Ptr CCurrency -> Ptr CString -> IO CString
+
+-- |output format
+-- The format will be fed three positional parameters, namely, value, code, and symbol, in this order.
+format :: Currency -> IO String
+format = $(ffiCallX 'format) c_format
+
+foreign import ccall safe "ql.h qlCurrencyFormat"
+  c_format :: Ptr CCurrency -> Ptr CString -> IO CString
+
+-- |number of fractionary parts in a unit, e.g, 100
+fractionsPerUnit :: Currency -> IO Int
+fractionsPerUnit = $(ffiCallX 'fractionsPerUnit) c_fractionsPerUnit
+
+foreign import ccall safe "ql.h qlCurrencyFractionsPerUnit"
+  c_fractionsPerUnit :: Ptr CCurrency -> Ptr CString -> IO CInt
+
+-- |fraction symbol, e.g, "¢"
+fractionSymbol :: Currency -> IO String
+fractionSymbol = $(ffiCallX 'fractionSymbol) c_fractionSymbol
+
+foreign import ccall safe "ql.h qlCurrencyFractionSymbol"
+  c_fractionSymbol :: Ptr CCurrency -> Ptr CString -> IO CString
+
+-- |ISO 4217 numeric code, e.g, "840".
+numericCode :: Currency -> IO Int
+numericCode = $(ffiCallX 'numericCode) c_numericCode
+
+foreign import ccall safe "ql.h qlCurrencyNumericCode"
+  c_numericCode :: Ptr CCurrency -> Ptr CString -> IO CInt
+
+-- |symbol, e.g, "$"
+symbol :: Currency -> IO String
+symbol = $(ffiCallX 'symbol) c_symbol
+
+foreign import ccall safe "ql.h qlCurrencySymbol"
+  c_symbol :: Ptr CCurrency -> Ptr CString -> IO CString
+
+-- |currency used for triangulated exchange when required
+triangulationCurrency :: Currency -> IO Currency
+triangulationCurrency = $(ffiConstruct 'triangulationCurrency) c_triangulationCurrency
+
+foreign import ccall safe "ql.h qlCurrencyTriangulationCurrency"
+  c_triangulationCurrency :: Ptr CCurrency -> Ptr CString -> IO (Ptr CCurrency)

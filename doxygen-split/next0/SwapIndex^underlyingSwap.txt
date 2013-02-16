@@ -1,4 +1,0 @@
--- |/Warning/ Relinking the term structure underlying the index will not have effect on the returned swap.
-->boost::shared_ptr< VanillaSwap >
-::const Date &
--- ^fixingDate

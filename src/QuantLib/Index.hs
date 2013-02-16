@@ -3,6 +3,8 @@ module QuantLib.Index
   (
     addFixing
   , bmaIndex
+  , fixingSchedule
+  , forecastFixing
   )
 where
 
@@ -32,3 +34,22 @@ bmaIndex = $(ffiConstruct 'bmaIndex) c_bmaIndex
 
 foreign import ccall safe "ql.h qlBMAIndex"
   c_bmaIndex :: Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CBMAIndex)
+
+-- |This method returns a schedule of fixing dates between start and end.
+fixingSchedule :: BMAIndex
+  -> Day -- ^start
+  -> Day -- ^end
+  -> IO Schedule
+fixingSchedule = $(ffiConstruct 'fixingSchedule) c_fixingSchedule
+
+foreign import ccall safe "ql.h qlBMAIndexFixingSchedule"
+  c_fixingSchedule :: Ptr CBMAIndex -> CDate -> CDate -> Ptr CString -> IO (Ptr CSchedule)
+
+-- |It can be overridden to implement particular conventions.
+forecastFixing :: InterestRateIndex
+  -> Day -- ^fixingDate
+  -> IO Double
+forecastFixing = $(ffiCallX 'forecastFixing) c_forecastFixing
+
+foreign import ccall safe "ql.h qlInterestRateIndexForecastFixing"
+  c_forecastFixing :: Ptr CInterestRateIndex -> CDate -> Ptr CString -> IO CDouble

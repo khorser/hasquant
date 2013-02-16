@@ -1,2 +1,0 @@
--- |ISO 4217 three-letter code, e.g, "USD".
-->const std::string &

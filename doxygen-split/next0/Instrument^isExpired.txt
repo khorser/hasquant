@@ -1,2 +1,0 @@
--- |returns whether the instrument might have value greater than zero.
-->bool

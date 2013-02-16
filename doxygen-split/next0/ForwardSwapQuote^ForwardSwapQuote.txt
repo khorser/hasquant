@@ -1,7 +1,0 @@
-->
-::const boost::shared_ptr< SwapIndex > &
--- ^swapIndex
-::const Handle< Quote > &
--- ^spread
-::const Period &
--- ^fwdStart

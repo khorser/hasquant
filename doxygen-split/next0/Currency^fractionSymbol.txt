@@ -1,2 +1,0 @@
--- |fraction symbol, e.g, "¢"
-->const std::string &

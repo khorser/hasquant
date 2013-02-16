@@ -4,10 +4,14 @@ module QuantLib.Instrument
   (
     npv
   , setPricingEngine
+  , errorEstimate
+  , isExpired
+  , valuationDate
   )
 where
 
 import QuantLib.Internal.Syntax
+import QuantLib.Internal.Date
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
@@ -27,3 +31,24 @@ npv = $(ffiCallX 'npv) c_npv
 -- Sets a new pricing engine to the given Instrument. QuantLibXL: qlInstrumentSetPricingEngine
 setPricingEngine :: Instrument -> PricingEngine -> IO ()
 setPricingEngine = $(ffiCallX 'setPricingEngine) c_setPricingEngine
+
+-- |returns the error estimate on the NPV when available.
+errorEstimate :: Instrument -> IO Double
+errorEstimate = $(ffiCallX 'errorEstimate) c_errorEstimate
+
+foreign import ccall safe "ql.h qlInstrumentErrorEstimate"
+  c_errorEstimate :: Ptr CInstrument -> Ptr CString -> IO CDouble
+
+-- |returns whether the instrument might have value greater than zero.
+isExpired :: Instrument -> IO Bool
+isExpired = $(ffiCallX 'isExpired) c_isExpired
+
+foreign import ccall safe "ql.h qlInstrumentIsExpired"
+  c_isExpired :: Ptr CInstrument -> Ptr CString -> IO CInt
+
+-- |returns the date the net present value refers to.
+valuationDate :: Instrument -> IO Day
+valuationDate = $(ffiCallX 'valuationDate) c_valuationDate
+
+foreign import ccall safe "ql.h qlInstrumentValuationDate"
+  c_valuationDate :: Ptr CInstrument -> Ptr CString -> IO CDate

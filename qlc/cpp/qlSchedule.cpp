@@ -47,10 +47,8 @@ int *qlScheduleDates(Schedule *sched, unsigned *count) {
   const std::vector<Date> &dates = arg(sched)->dates();
   *count = dates.size();
   int *days = qlAllocateInts(*count);
-  // if we wanted more C++
-  // we could use std::transform, mem_fun/lambda, and std::copy here
-  for (size_t i = 0; i < dates.size(); ++i)
-    days[i] = dates[i].serialNumber();
+  std::transform(dates.begin(), dates.end(), days,
+      std::mem_fun_ref(&Date::serialNumber));
   return days;
 }
 

@@ -25,4 +25,26 @@ void qlFreeInstrument(QlInstrument *instr) {
   del(instr);
 }
 
+double qlInstrumentErrorEstimate(QlInstrument* o, char **e) {
+  try {
+    return (*arg(o))->errorEstimate();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+int qlInstrumentIsExpired(QlInstrument* o, char **e) {
+  try {
+    return (*arg(o))->isExpired();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+int qlInstrumentValuationDate(QlInstrument* o, char **e) {
+  try {
+    return ((*arg(o))->valuationDate()).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

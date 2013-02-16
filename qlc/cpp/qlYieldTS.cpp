@@ -449,4 +449,25 @@ double qlRateHelperImpliedQuote(QlRateHelper* o, char **e) {
   }
 }
 
+QlBond* qlBondHelperBond(QlBondHelper* o, char **e) {
+  try {
+    return ret(new QlBond((*arg(o))->bond()));
+  } catch (std::exception& er) {
+    return handleException<QlBond*>(e, er);
+  }
+}
+QlOvernightIndexedSwap* qlOISRateHelperSwap(QlOISRateHelper* o, char **e) {
+  try {
+    return ret(new QlOvernightIndexedSwap((*arg(o))->swap()));
+  } catch (std::exception& er) {
+    return handleException<QlOvernightIndexedSwap*>(e, er);
+  }
+}
+QlVanillaSwap* qlSwapRateHelperSwap(QlSwapRateHelper* o, char **e) {
+  try {
+    return ret(new QlVanillaSwap((*arg(o))->swap()));
+  } catch (std::exception& er) {
+    return handleException<QlVanillaSwap*>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

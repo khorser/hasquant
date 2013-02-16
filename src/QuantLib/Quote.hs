@@ -1,13 +1,25 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.Quote
   (
     simpleQuote
   , value
+  , isValid
+
   , setValue
+  , eurodollarFuturesImpliedStdDevQuote
+  , forwardSwapQuote
+  , forwardValueQuote
+  , futuresConvAdjustmentQuote'
+  , futuresConvAdjustmentQuote
+  , impliedStdDevQuote
+  , lastFixingQuote
   )
 where
 
+import QuantLib.Instrument.OptionType
 import QuantLib.Internal.Syntax
+import QuantLib.Internal.Date(Day, CDate)
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
@@ -35,3 +47,83 @@ setValue = $(ffiCallX 'setValue) c_setValue
 
 foreign import ccall safe "ql.h qlSimpleQuoteSetValue"
   c_setValue :: Ptr CSimpleQuote -> CDouble -> Ptr CString -> IO CDouble
+
+eurodollarFuturesImpliedStdDevQuote :: Quote -- ^forward
+  -> Quote -- ^callPrice
+  -> Quote -- ^putPrice
+  -> Double -- ^strike
+  -> Double -- ^guess
+  -> Double -- ^accuracy
+  -> Word -- ^maxIter
+  -> IO Quote
+eurodollarFuturesImpliedStdDevQuote = $(ffiConstruct 'eurodollarFuturesImpliedStdDevQuote) c_eurodollarFuturesImpliedStdDevQuote
+
+foreign import ccall safe "ql.h qlEurodollarFuturesImpliedStdDevQuote"
+  c_eurodollarFuturesImpliedStdDevQuote :: Ptr CQuote -> Ptr CQuote -> Ptr CQuote -> CDouble -> CDouble -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CQuote)
+
+forwardSwapQuote :: SwapIndex -- ^swapIndex
+  -> Quote -- ^spread
+  -> Period -- ^fwdStart
+  -> IO Quote
+forwardSwapQuote = $(ffiConstruct 'forwardSwapQuote) c_forwardSwapQuote
+
+foreign import ccall safe "ql.h qlForwardSwapQuote"
+  c_forwardSwapQuote :: Ptr CSwapIndex -> Ptr CQuote -> Ptr CPeriod -> Ptr CString -> IO (Ptr CQuote)
+
+forwardValueQuote :: Index -- ^index
+  -> Day -- ^fixingDate
+  -> IO Quote
+forwardValueQuote = $(ffiConstruct 'forwardValueQuote) c_forwardValueQuote
+
+foreign import ccall safe "ql.h qlForwardValueQuote"
+  c_forwardValueQuote :: Ptr CIndex -> CDate -> Ptr CString -> IO (Ptr CQuote)
+
+futuresConvAdjustmentQuote' :: IborIndex -- ^index
+  -> String -- ^immCode
+  -> Quote -- ^futuresQuote
+  -> Quote -- ^volatility
+  -> Quote -- ^meanReversion
+  -> IO Quote
+futuresConvAdjustmentQuote' = $(ffiConstruct 'futuresConvAdjustmentQuote') c_futuresConvAdjustmentQuote'
+
+foreign import ccall safe "ql.h qlFuturesConvAdjustmentQuote1"
+  c_futuresConvAdjustmentQuote' :: Ptr CIborIndex -> CString -> Ptr CQuote -> Ptr CQuote -> Ptr CQuote -> Ptr CString -> IO (Ptr CQuote)
+
+futuresConvAdjustmentQuote :: IborIndex -- ^index
+  -> Day -- ^futuresDate
+  -> Quote -- ^futuresQuote
+  -> Quote -- ^volatility
+  -> Quote -- ^meanReversion
+  -> IO Quote
+futuresConvAdjustmentQuote = $(ffiConstruct 'futuresConvAdjustmentQuote) c_futuresConvAdjustmentQuote
+
+foreign import ccall safe "ql.h qlFuturesConvAdjustmentQuote"
+  c_futuresConvAdjustmentQuote :: Ptr CIborIndex -> CDate -> Ptr CQuote -> Ptr CQuote -> Ptr CQuote -> Ptr CString -> IO (Ptr CQuote)
+
+impliedStdDevQuote :: OptionType -- ^optionType
+  -> Quote -- ^forward
+  -> Quote -- ^price
+  -> Double -- ^strike
+  -> Double -- ^guess
+  -> Double -- ^accuracy
+  -> Word -- ^maxIter
+  -> IO Quote
+impliedStdDevQuote = $(ffiConstruct 'impliedStdDevQuote) c_impliedStdDevQuote
+
+foreign import ccall safe "ql.h qlImpliedStdDevQuote"
+  c_impliedStdDevQuote :: CInt -> Ptr CQuote -> Ptr CQuote -> CDouble -> CDouble -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CQuote)
+
+lastFixingQuote :: Index -- ^index
+  -> IO Quote
+lastFixingQuote = $(ffiConstruct 'lastFixingQuote) c_lastFixingQuote
+
+foreign import ccall safe "ql.h qlLastFixingQuote"
+  c_lastFixingQuote :: Ptr CIndex -> Ptr CString -> IO (Ptr CQuote)
+
+-- |returns true if the Quote holds a valid value
+isValid :: Quote
+  -> IO Bool
+isValid = $(ffiCallX 'isValid) c_isValid
+
+foreign import ccall safe "ql.h qlQuoteIsValid"
+  c_isValid :: Ptr CQuote -> Ptr CString -> IO CInt

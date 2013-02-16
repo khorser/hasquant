@@ -49,6 +49,10 @@ module QuantLib.TermStructure.Yield
   , nelsonSiegelFitting
   , simplePolynomialFitting
   , svenssonFitting
+
+  , bond
+  , overnightIndexedSwap
+  , vanillaSwap
   )
 where
 
@@ -537,3 +541,21 @@ impliedQuote = $(ffiCallX 'impliedQuote) c_impliedQuote
 
 foreign import ccall safe "ql.h qlRateHelperImpliedQuote"
   c_impliedQuote :: Ptr CRateHelper -> Ptr CString -> IO CDouble
+
+bond :: BondHelper -> IO Bond
+bond = $(ffiConstruct 'bond) c_bond
+
+foreign import ccall safe "ql.h qlBondHelperBond"
+  c_bond :: Ptr CBondHelper -> Ptr CString -> IO (Ptr CBond)
+
+overnightIndexedSwap :: OISRateHelper -> IO OvernightIndexedSwap
+overnightIndexedSwap = $(ffiConstruct 'overnightIndexedSwap) c_oiSwap
+
+foreign import ccall safe "ql.h qlOISRateHelperSwap"
+  c_oiSwap :: Ptr COISRateHelper -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
+
+vanillaSwap :: SwapRateHelper -> IO VanillaSwap
+vanillaSwap = $(ffiConstruct 'vanillaSwap) c_vanillaSwap
+
+foreign import ccall safe "ql.h qlSwapRateHelperSwap"
+  c_vanillaSwap :: Ptr CSwapRateHelper -> Ptr CString -> IO (Ptr CVanillaSwap)

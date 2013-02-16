@@ -222,6 +222,13 @@ extern "C" {
   const char *DLLEXPORT qlCurrencyName(Currency *currency);
 
   void DLLEXPORT qlFreeCurrency(Currency *currency);
+  char* DLLEXPORT qlCurrencyCode(Currency* o, char **e);
+  char* DLLEXPORT qlCurrencyFormat(Currency* o, char **e);
+  int DLLEXPORT qlCurrencyFractionsPerUnit(Currency* o, char **e);
+  char* DLLEXPORT qlCurrencyFractionSymbol(Currency* o, char **e);
+  int DLLEXPORT qlCurrencyNumericCode(Currency* o, char **e);
+  char* DLLEXPORT qlCurrencySymbol(Currency* o, char **e);
+  Currency* DLLEXPORT qlCurrencyTriangulationCurrency(Currency* o, char **e);
 
   /* period */
   Period *DLLEXPORT qlPeriod(int n, int u, char **e);
@@ -229,6 +236,14 @@ extern "C" {
   int DLLEXPORT qlPeriodToFrequency(Period *period, char **e);
 
   void DLLEXPORT qlFreePeriod(Period *period);
+  double DLLEXPORT qlPeriodDays(Period* x1, char **e);
+  int DLLEXPORT qlPeriodLength(Period* o, char **e);
+  double DLLEXPORT qlPeriodMonths(Period* x1, char **e);
+  Period* DLLEXPORT qlPeriodNormalize(Period* o, char **e);
+  int DLLEXPORT qlPeriodUnits(Period* o, char **e);
+  double DLLEXPORT qlPeriodWeeks(Period* x1, char **e);
+  double DLLEXPORT qlPeriodYears(Period* x1, char **e);
+  Period* DLLEXPORT qlPeriodParserParse(char* str, char **e);
 
   /* quote */
   QlSimpleQuote *DLLEXPORT qlSimpleQuote(double value, char **e);
@@ -238,6 +253,14 @@ extern "C" {
   void DLLEXPORT qlFreeSimpleQuote(QlSimpleQuote *o);
   QlQuote* DLLEXPORT qlSimpleQuoteAsQuote(QlSimpleQuote *o);
   double DLLEXPORT qlSimpleQuoteSetValue(QlSimpleQuote* o, double value, char **e);
+  QlQuote* DLLEXPORT qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPrice, QlQuote* putPrice, double strike, double guess, double accuracy, unsigned maxIter, char **e);
+  QlQuote* DLLEXPORT qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, Period* fwdStart, char **e);
+  QlQuote* DLLEXPORT qlForwardValueQuote(QlIndex* index, int fixingDate, char **e);
+  QlQuote* DLLEXPORT qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
+  QlQuote* DLLEXPORT qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e);
+  QlQuote* DLLEXPORT qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, char **e);
+  QlQuote* DLLEXPORT qlLastFixingQuote(QlIndex* index, char **e);
+  int DLLEXPORT qlQuoteIsValid(QlQuote* o, char **e);
 
   /* schedule */
   Schedule *DLLEXPORT qlSchedule(int eff, int term, Period *tenor, Calendar *cal,
@@ -311,6 +334,9 @@ extern "C" {
   QlRateHelper* DLLEXPORT qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, char **e);
   QlRateHelper* DLLEXPORT qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, char **e);
   double DLLEXPORT qlRateHelperImpliedQuote(QlRateHelper* o, char **e);
+  QlBond* DLLEXPORT qlBondHelperBond(QlBondHelper* o, char **e);
+  QlOvernightIndexedSwap* DLLEXPORT qlOISRateHelperSwap(QlOISRateHelper* o, char **e);
+  QlVanillaSwap* DLLEXPORT qlSwapRateHelperSwap(QlSwapRateHelper* o, char **e);
 #endif
   void DLLEXPORT qlFreeYieldTermStructure(QlYieldTermStructure *ts);
   double DLLEXPORT qlYieldTSDiscount(QlYieldTermStructure *ts, int date,
@@ -363,6 +389,9 @@ extern "C" {
     char **e);
   double DLLEXPORT qlInstrumentNPV(QlInstrument *instr, char **e);
   void DLLEXPORT qlFreeInstrument(QlInstrument *instr);
+  double DLLEXPORT qlInstrumentErrorEstimate(QlInstrument* o, char **e);
+  int DLLEXPORT qlInstrumentIsExpired(QlInstrument* o, char **e);
+  int DLLEXPORT qlInstrumentValuationDate(QlInstrument* o, char **e);
 
   /* ibor index */
   QlIborIndex *DLLEXPORT qlIborIndex(char *name, Period *period, unsigned settlDays,
@@ -406,6 +435,11 @@ extern "C" {
   QlOvernightIndexedSwapIndex* DLLEXPORT qlOvernightIndexedSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e);
   QlSwapIndex* DLLEXPORT qlSwapIndex1(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e);
   QlSwapIndex* DLLEXPORT qlSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e);
+
+  Schedule* DLLEXPORT qlBMAIndexFixingSchedule(QlBMAIndex* o, int start, int end, char **e);
+  QlOvernightIndexedSwap* DLLEXPORT qlOvernightIndexedSwapIndexUnderlyingSwap(QlOvernightIndexedSwapIndex* o, int fixingDate, char **e);
+  QlVanillaSwap* DLLEXPORT qlSwapIndexUnderlyingSwap(QlSwapIndex* o, int fixingDate, char **e);
+  double DLLEXPORT qlInterestRateIndexForecastFixing(QlInterestRateIndex* o, int fixingDate, char **e);
 
   /* forward */
   void DLLEXPORT qlFreeFixedRateBondForward(QlFixedRateBondForward *fwd);

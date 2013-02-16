@@ -1,2 +1,0 @@
--- |ISO 4217 numeric code, e.g, "840".
-->Integer

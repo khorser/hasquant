@@ -96,4 +96,34 @@ QlSwapIndex* qlSwapIndex(char* familyName, Period* tenor, unsigned settlementDay
   }
 }
 
+Schedule* qlBMAIndexFixingSchedule(QlBMAIndex* o, int start, int end, char **e) {
+  try {
+    return ret(new Schedule((*arg(o))->fixingSchedule(Date(start), Date(end))));
+  } catch (std::exception& er) {
+    return handleException<Schedule*>(e, er);
+  }
+}
+QlOvernightIndexedSwap* qlOvernightIndexedSwapIndexUnderlyingSwap(QlOvernightIndexedSwapIndex* o, int fixingDate, char **e) {
+  try {
+    return ret(new QlOvernightIndexedSwap((*arg(o))->underlyingSwap(Date(fixingDate))));
+  } catch (std::exception& er) {
+    return handleException<QlOvernightIndexedSwap*>(e, er);
+  }
+}
+QlVanillaSwap* qlSwapIndexUnderlyingSwap(QlSwapIndex* o, int fixingDate, char **e) {
+  try {
+    return ret(new QlVanillaSwap((*arg(o))->underlyingSwap(Date(fixingDate))));
+  } catch (std::exception& er) {
+    return handleException<QlVanillaSwap*>(e, er);
+  }
+}
+
+double qlInterestRateIndexForecastFixing(QlInterestRateIndex* o, int fixingDate, char **e) {
+  try {
+    return (*arg(o))->forecastFixing(Date(fixingDate));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -255,7 +255,7 @@ sub type
   my $def = shift;
   my $h = ($t =~ m!Handle!);
   $t =~ s/^(const\s+Handle\s*<\s*)([^& ]+)(\s*>\s*&\s*)/$2/;
-  $t =~ s/^(const\s+boost::shared_ptr\s*<\s*)([^& ]+)(\s*>\s*&\s*)/$2/;
+  $t =~ s/^((const\s+)?boost::shared_ptr\s*<\s*)([^& ]+)(\s*>\s*&?\s*)/$3/;
   $t =~ s/^(const\s+)?([^& ]+)(\s*&\s*)?/$2/;
 
   my $opt = ($t =~ m!boost::optional!);
