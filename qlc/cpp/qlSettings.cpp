@@ -50,4 +50,12 @@ void qlSettingsSetIncludeReferenceDateEvents(int x0) {
   Settings::instance().includeReferenceDateEvents() = x0;
 }
 
+void *qlSavedSettings() {
+  return new SavedSettings();
+}
+
+void qlFreeSavedSettings(void *settings) {
+  delete (SavedSettings *)settings;
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

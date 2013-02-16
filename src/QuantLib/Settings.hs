@@ -12,8 +12,12 @@ module QuantLib.Settings
   , includeReferenceDateEvents
   , resetEvaluationDate
   , setIncludeReferenceDateEvents
+
+  , keepingSettings
   )
 where
+
+import Control.Exception(bracket)
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
@@ -94,3 +98,15 @@ setIncludeReferenceDateEvents = $(ffiCall 'setIncludeReferenceDateEvents) c_setI
 
 foreign import ccall safe "ql.h qlSettingsSetIncludeReferenceDateEvents"
   c_setIncludeReferenceDateEvents :: CInt -> IO ()
+
+-- |brackets to restore settings once action has completed or raised an exception
+keepingSettings :: IO b -> IO b
+keepingSettings f = bracket c_savedSettings c_freeSavedSettings (\_ -> f)
+
+data CSavedSettings
+
+foreign import ccall safe "ql.h qlSavedSettings"
+  c_savedSettings :: IO (Ptr CSavedSettings)
+
+foreign import ccall safe "ql.h qlFreeSavedSettings"
+  c_freeSavedSettings :: Ptr CSavedSettings -> IO ()
