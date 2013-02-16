@@ -129,7 +129,7 @@ handleExceptions f =
      poke errptr nullPtr
      r <- f errptr
      msg <- peek errptr
-     if msg /= nullPtr 
+     if msg /= nullPtr
        then do
          err <- peekCString msg
          c_freeString msg

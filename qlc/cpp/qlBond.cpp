@@ -197,7 +197,7 @@ double qlBondAccruedAmount(QlBond* o, int d, char **e) {
 
 double qlBondCleanPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e) {
   try {
-    return (*arg(o))->cleanPrice(yield, (*arg(dc)), (Compounding)comp, (Frequency)freq, qlNullableDate(settlementDate));
+    return (*arg(o))->cleanPrice(yield, *arg(dc), (Compounding)comp, (Frequency)freq, qlNullableDate(settlementDate));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
@@ -213,7 +213,7 @@ double qlBondCleanPrice(QlBond* o, char **e) {
 
 double qlBondDirtyPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e) {
   try {
-    return (*arg(o))->dirtyPrice(yield, (*arg(dc)), (Compounding)comp, (Frequency)freq, qlNullableDate(settlementDate));
+    return (*arg(o))->dirtyPrice(yield, *arg(dc), (Compounding)comp, (Frequency)freq, qlNullableDate(settlementDate));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
@@ -285,7 +285,7 @@ double qlBondSettlementValue(QlBond* o, char **e) {
 
 double qlBondYield1(QlBond* o, double cleanPrice, DayCounter* dc, int comp, int freq, int settlementDate, double accuracy, unsigned maxEvaluations, char **e) {
   try {
-    return (*arg(o))->yield(cleanPrice, (*arg(dc)), (Compounding)comp, (Frequency)freq, qlNullableDate(settlementDate), accuracy, maxEvaluations);
+    return (*arg(o))->yield(cleanPrice, *arg(dc), (Compounding)comp, (Frequency)freq, qlNullableDate(settlementDate), accuracy, maxEvaluations);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
@@ -520,7 +520,7 @@ double qlBondFunctionsZSpread(QlBond* bond, double cleanPrice, QlYieldTermStruct
 
 QlBond* qlFloatingRateBond1(unsigned settlementDays, double faceAmount, int startDate, int maturityDate, int couponFrequency, Calendar* calendar, QlIborIndex* iborIndex, DayCounter* accrualDayCounter, int accrualConvention, int paymentConvention, unsigned fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned capsLen, double* caps, unsigned floorsLen, double* floors, int inArrears, double redemption, int issueDate, int stubDate, int rule, int endOfMonth, char **e) {
   try {
-    return ret(new QlBond(alloc(new FloatingRateBond(settlementDays, faceAmount, Date(startDate), Date(maturityDate), (Frequency)couponFrequency, (*arg(calendar)), (*arg(iborIndex)), (*arg(accrualDayCounter)), (BusinessDayConvention)accrualConvention, (BusinessDayConvention)paymentConvention, fixingDays, std::vector<double>(gearings, gearings+gearingsLen), std::vector<double>(spreads, spreads+spreadsLen), std::vector<double>(caps, caps+capsLen), std::vector<double>(floors, floors+floorsLen), inArrears, redemption, qlNullableDate(issueDate), qlNullableDate(stubDate), (DateGeneration::Rule)rule, endOfMonth))));
+    return ret(new QlBond(alloc(new FloatingRateBond(settlementDays, faceAmount, Date(startDate), Date(maturityDate), (Frequency)couponFrequency, *arg(calendar), *arg(iborIndex), *arg(accrualDayCounter), (BusinessDayConvention)accrualConvention, (BusinessDayConvention)paymentConvention, fixingDays, std::vector<double>(gearings, gearings+gearingsLen), std::vector<double>(spreads, spreads+spreadsLen), std::vector<double>(caps, caps+capsLen), std::vector<double>(floors, floors+floorsLen), inArrears, redemption, qlNullableDate(issueDate), qlNullableDate(stubDate), (DateGeneration::Rule)rule, endOfMonth))));
   } catch (std::exception& er) {
     return handleException<QlBond*>(e, er);
   }

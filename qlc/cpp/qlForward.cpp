@@ -33,7 +33,7 @@ double qlForwardForwardValue(QlForward* o, char **e) {
 
 InterestRate* qlForwardImpliedYield(QlForward* o, double underlyingSpotValue, double forwardValue, int settlementDate, int compoundingConvention, DayCounter* dayCounter, char **e) {
   try {
-    return ret(new InterestRate((*arg(o))->impliedYield(underlyingSpotValue, forwardValue, Date(settlementDate), (Compounding)compoundingConvention, (*arg(dayCounter)))));
+    return ret(new InterestRate((*arg(o))->impliedYield(underlyingSpotValue, forwardValue, Date(settlementDate), (Compounding)compoundingConvention, *arg(dayCounter))));
   } catch (std::exception& er) {
     return handleException<InterestRate*>(e, er);
   }
@@ -62,7 +62,7 @@ double qlForwardSpotValue(QlForward* o, char **e) {
 
 QlForwardRateAgreement* qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e) {
   try {
-    return ret(new QlForwardRateAgreement(alloc(new ForwardRateAgreement(Date(valueDate), Date(maturityDate), (Position::Type)type, strikeForwardRate, notionalAmount, (*arg(index)), qlNullableHandle(arg(discountCurve))))));
+    return ret(new QlForwardRateAgreement(alloc(new ForwardRateAgreement(Date(valueDate), Date(maturityDate), (Position::Type)type, strikeForwardRate, notionalAmount, *arg(index), qlNullableHandle(arg(discountCurve))))));
   } catch (std::exception& er) {
     return handleException<QlForwardRateAgreement*>(e, er);
   }
@@ -78,7 +78,7 @@ QlForward* qlFixedRateBondForwardAsForward(QlFixedRateBondForward *fwd) {
 
 QlFixedRateBondForward* qlFixedRateBondForward(int valueDate, int maturityDate, int type, double strike, unsigned settlementDays, DayCounter* dayCounter, Calendar* calendar, int businessDayConvention, QlFixedRateBond* fixedCouponBond, QlYieldTermStructure* discountCurve, QlYieldTermStructure* incomeDiscountCurve, char **e) {
   try {
-    return ret(new QlFixedRateBondForward(alloc(new FixedRateBondForward(Date(valueDate), Date(maturityDate), (Position::Type)type, strike, settlementDays, (*arg(dayCounter)), (*arg(calendar)), (BusinessDayConvention)businessDayConvention, (*arg(fixedCouponBond)), qlNullableHandle(arg(discountCurve)), qlNullableHandle(arg(incomeDiscountCurve))))));
+    return ret(new QlFixedRateBondForward(alloc(new FixedRateBondForward(Date(valueDate), Date(maturityDate), (Position::Type)type, strike, settlementDays, *arg(dayCounter), *arg(calendar), (BusinessDayConvention)businessDayConvention, *arg(fixedCouponBond), qlNullableHandle(arg(discountCurve)), qlNullableHandle(arg(incomeDiscountCurve))))));
   } catch (std::exception& er) {
     return handleException<QlFixedRateBondForward*>(e, er);
   }

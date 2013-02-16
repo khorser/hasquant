@@ -108,7 +108,7 @@ void qlCalendarAddHoliday(Calendar* o, int x0, char **e) {
 
 int qlCalendarAdvance1(Calendar* o, int date, Period* period, int convention, int endOfMonth, char **e) {
   try {
-    return ((arg(o))->advance(Date(date), (*arg(period)), (BusinessDayConvention)convention, endOfMonth)).serialNumber();
+    return (arg(o)->advance(Date(date), *arg(period), (BusinessDayConvention)convention, endOfMonth)).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -124,7 +124,7 @@ int qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirs
 
 int qlCalendarEndOfMonth(Calendar* o, int d, char **e) {
   try {
-    return ((arg(o))->endOfMonth(Date(d))).serialNumber();
+    return (arg(o)->endOfMonth(Date(d))).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -184,7 +184,7 @@ Calendar* qlBespokeCalendar(char* name, unsigned len, int *weekends, char **e) {
 
 Calendar* qlJointCalendar4(Calendar* x_1, Calendar* x0, Calendar* x1, Calendar* x2, int x3, char **e) {
   try {
-    return alloc(new JointCalendar((*arg(x_1)), (*arg(x0)), (*arg(x1)), (*arg(x2)), (JointCalendarRule)x3));
+    return alloc(new JointCalendar((*arg(x_1)), *arg(x0), *arg(x1), *arg(x2), (JointCalendarRule)x3));
   } catch (std::exception& er) {
     return handleException<Calendar*>(e, er);
   }
@@ -192,7 +192,7 @@ Calendar* qlJointCalendar4(Calendar* x_1, Calendar* x0, Calendar* x1, Calendar* 
 
 Calendar* qlJointCalendar3(Calendar* x_1, Calendar* x0, Calendar* x1, int x2, char **e) {
   try {
-    return alloc(new JointCalendar((*arg(x_1)), (*arg(x0)), (*arg(x1)), (JointCalendarRule)x2));
+    return alloc(new JointCalendar((*arg(x_1)), *arg(x0), *arg(x1), (JointCalendarRule)x2));
   } catch (std::exception& er) {
     return handleException<Calendar*>(e, er);
   }
@@ -200,7 +200,7 @@ Calendar* qlJointCalendar3(Calendar* x_1, Calendar* x0, Calendar* x1, int x2, ch
 
 Calendar* qlJointCalendar2(Calendar* x_1, Calendar* x0, int x1, char **e) {
   try {
-    return alloc(new JointCalendar((*arg(x_1)), (*arg(x0)), (JointCalendarRule)x1));
+    return alloc(new JointCalendar((*arg(x_1)), *arg(x0), (JointCalendarRule)x1));
   } catch (std::exception& er) {
     return handleException<Calendar*>(e, er);
   }

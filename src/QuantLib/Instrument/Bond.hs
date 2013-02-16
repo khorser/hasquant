@@ -162,7 +162,7 @@ fixedRateBond' :: Word -- ^settlementDays
   -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
 fixedRateBond' = $(ffiConstruct 'fixedRateBond') c_fixedRateBond'
-                                         
+
 -- |generic compounding and frequency InterestRate coupons. QuantLibXL: qlFixedRateBond2
 fixedRateBond'' :: Word -- ^settlementDays
   -> Double -- ^faceAmount

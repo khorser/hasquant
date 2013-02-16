@@ -218,7 +218,7 @@ genFfiCall io constr extra aa r = do
       _ -> return ()
 
   lamE (map varP (cFunName : varNames))
-       (if io 
+       (if io
          then [|unsafePerformIO $(nakedCall varNames cFunName)|]
          else nakedCall varNames cFunName)
   where

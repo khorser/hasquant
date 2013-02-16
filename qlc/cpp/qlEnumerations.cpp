@@ -25,7 +25,7 @@ using namespace QuantLib;
 // The order of enumeration values should be the same
 // as in corresponding Haskell code!
 
-static int businessDayConventionValues[] = 
+static int businessDayConventionValues[] =
   {
     Following
   , ModifiedFollowing
@@ -34,7 +34,7 @@ static int businessDayConventionValues[] =
   , Unadjusted
   };
 
-static int dateGenerationRuleValues[] = 
+static int dateGenerationRuleValues[] =
   {
     DateGeneration::Backward
   , DateGeneration::Forward
@@ -46,7 +46,7 @@ static int dateGenerationRuleValues[] =
   , DateGeneration::CDS
   };
 
-static int frequencyValues[] = 
+static int frequencyValues[] =
   {
     NoFrequency
   , Annual
@@ -63,7 +63,7 @@ static int frequencyValues[] =
   , OtherFrequency
   };
 
-static int timeUnitValues[] = 
+static int timeUnitValues[] =
   {
     Months
   , Days

@@ -76,21 +76,21 @@ QlBMAIndex* qlBMAIndex(QlYieldTermStructure* h, char **e) {
 
 QlOvernightIndexedSwapIndex* qlOvernightIndexedSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e) {
   try {
-    return ret(new QlOvernightIndexedSwapIndex(alloc(new OvernightIndexedSwapIndex(std::string(arg(familyName)), (*arg(tenor)), settlementDays, (*arg(currency)), (*arg(overnightIndex))))));
+    return ret(new QlOvernightIndexedSwapIndex(alloc(new OvernightIndexedSwapIndex(std::string(arg(familyName)), *arg(tenor), settlementDays, *arg(currency), *arg(overnightIndex)))));
   } catch (std::exception& er) {
     return handleException<QlOvernightIndexedSwapIndex*>(e, er);
   }
 }
 QlSwapIndex* qlSwapIndex1(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e) {
   try {
-    return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), (*arg(tenor)), settlementDays, (*arg(currency)), (*arg(calendar)), (*arg(fixedLegTenor)), (BusinessDayConvention)fixedLegConvention, (*arg(fixedLegDayCounter)), (*arg(iborIndex)), Handle<YieldTermStructure>(*arg(discountingTermStructure))))));
+    return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), *arg(tenor), settlementDays, *arg(currency), *arg(calendar), *arg(fixedLegTenor), (BusinessDayConvention)fixedLegConvention, *arg(fixedLegDayCounter), *arg(iborIndex), Handle<YieldTermStructure>(*arg(discountingTermStructure))))));
   } catch (std::exception& er) {
     return handleException<QlSwapIndex*>(e, er);
   }
 }
 QlSwapIndex* qlSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e) {
   try {
-    return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), (*arg(tenor)), settlementDays, (*arg(currency)), (*arg(calendar)), (*arg(fixedLegTenor)), (BusinessDayConvention)fixedLegConvention, (*arg(fixedLegDayCounter)), (*arg(iborIndex))))));
+    return ret(new QlSwapIndex(alloc(new SwapIndex(std::string(arg(familyName)), *arg(tenor), settlementDays, *arg(currency), *arg(calendar), *arg(fixedLegTenor), (BusinessDayConvention)fixedLegConvention, *arg(fixedLegDayCounter), *arg(iborIndex)))));
   } catch (std::exception& er) {
     return handleException<QlSwapIndex*>(e, er);
   }
