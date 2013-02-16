@@ -1,8 +1,8 @@
 Name:         quantlib
 Version:      0.1.0
 Synopsis:     Bindings to QuantLib
-Description:  Bindings to QuantLib, a free/open-source library for quantitative finance (http://quantlib.org).
-              Requires QLC: C wrappers for QuantLib
+Description:  Bindings to QuantLib, a free open-source library for quantitative finance (http://quantlib.org).
+              Requires qlc: C wrappers for QuantLib
 License:      BSD3
 License-File: LICENSE
 Author:       Sergey Khorev <sergey.khorev@gmail.com>

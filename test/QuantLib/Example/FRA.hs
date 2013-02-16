@@ -5,6 +5,27 @@ module QuantLib.Example.FRA
   )
 where
 
+import Control.Monad(forM, forM_)
+
+import QuantLib.Compounding
+import QuantLib.Index.Ibor
+import QuantLib.Instrument
+import QuantLib.Instrument.Forward
+import QuantLib.InterestRate
+import QuantLib.Math.Interpolation
+import QuantLib.PositionType
+import QuantLib.Quote
+import QuantLib.Settings
+import QuantLib.TermStructure.Trait
+import qualified QuantLib.TermStructure.Yield as TS
+import QuantLib.Time.BusinessDayConvention
+import QuantLib.Time.Calendar
+import QuantLib.Time.Date
+import QuantLib.Time.DayCounter
+import QuantLib.Time.Frequency
+import QuantLib.Time.Unit
+import QuantLib.Types
+
 
 data Result = Result
   { cleanPriceR :: Double
@@ -12,4 +33,79 @@ data Result = Result
 
 run :: IO Result
 run = do
+  setEvaluationDate $ Just todaysDate 
+  -- I didn't expose most inspector methods so can't retrieve Euribor3M properties here
+  fraCalendar <- target
+  settleDate <- advance fraCalendar todaysDate fixingDays Days Following False
+
+  simpleFraQuotes <- mapM simpleQuote quotes
+  fraQuotes <- mapM asQuote simpleFraQuotes
+
+  fraDayCounter <- actual360
+  fraInstruments <- mapM
+    (\(q, t, p) -> TS.fraRateHelper q t p (fromIntegral fixingDays) fraCalendar convention eom fraDayCounter) $
+    zip3 fraQuotes starts periods
+
+  tsdc <- actualActualISDA
+  fraTS <- TS.piecewiseYieldCurve settleDate fraInstruments tsdc [] tolerance Discount LogLinear
+
+  eu3m <- euribor3M $ Just fraTS
+
+  dates <- forM starts $ \months -> do
+    v <- advance fraCalendar settleDate (fromIntegral months) Months convention False
+    m <- advance fraCalendar v fraTermMonths Months convention False
+    return (v, m)
+
+  mapM_ (\((v, m), q) -> do
+    fra <- forwardRateAgreement v m Long q notional eu3m (Just fraTS)
+    fwd <- asForward fra
+
+    fwdRate <- forwardRate fra
+    spot <- spotValue fwd
+    fwdValue <- forwardValue fwd
+    implYield <- impliedYield fwd spot fwdValue settleDate Simple fraDayCounter
+    zRate <- TS.zeroRate fraTS m fraDayCounter Simple Annual False
+    fraNPV <- asInstrument fwd >>= npv
+    putStrLn $ "Forward rate: " ++ show (rate fwdRate)
+    putStrLn $ "Spot value: " ++ show spot
+    putStrLn $ "Forward value: " ++ show fwdValue
+    putStrLn $ "Implied yield: " ++ show (rate implYield)
+    putStrLn $ "Market zero rate: " ++ show (rate zRate)
+    putStrLn $ "NPV: " ++ show fraNPV) $
+     zip dates quotes
+
+  putStrLn "After 1bp shift:"
+
+  forM_ simpleFraQuotes $ \sq -> asQuote sq >>= value >>= \v -> setValue sq (v + bpsShift)
+  
+  mapM_ (\((v, m), q) -> do
+    fra <- forwardRateAgreement v m Long q notional eu3m (Just fraTS)
+    fwd <- asForward fra
+
+    fwdRate <- forwardRate fra
+    spot <- spotValue fwd
+    fwdValue <- forwardValue fwd
+    implYield <- impliedYield fwd spot fwdValue settleDate Simple fraDayCounter
+    zRate <- TS.zeroRate fraTS m fraDayCounter Simple Annual False
+    fraNPV <- asInstrument fwd >>= npv
+    putStrLn $ "Forward rate: " ++ show (rate fwdRate)
+    putStrLn $ "Spot value: " ++ show spot
+    putStrLn $ "Forward value: " ++ show fwdValue
+    putStrLn $ "Implied yield: " ++ show (rate implYield)
+    putStrLn $ "Market zero rate: " ++ show (rate zRate)
+    putStrLn $ "NPV: " ++ show fraNPV) $
+     zip dates quotes
+
   return $ Result 5.6
+  where
+    todaysDate = 23 `may` 2006
+    fixingDays = 2
+    starts = [1, 2, 3, 6, 9]
+    periods = [4, 5, 6, 9, 12]
+    quotes = [0.030, 0.031, 0.032, 0.033, 0.034]
+    convention = ModifiedFollowing
+    eom = True
+    tolerance = 1e-15
+    notional = 100.0
+    fraTermMonths = 3
+    bpsShift = 0.01

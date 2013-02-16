@@ -11,5 +11,5 @@ data Result = Result
   } deriving Show
 
 run :: IO Result
-run = do
+run =
   return $ Result 5.6
