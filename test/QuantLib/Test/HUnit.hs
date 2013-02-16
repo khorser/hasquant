@@ -1,11 +1,14 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
+{-# LANGUAGE CPP #-}
 module QuantLib.Test.HUnit (htf_thisModulesTests)
 where
 
 import Test.Framework
 
 import Control.Exception(catch)
+#if __GLASGOW_HASKELL__ < 706
 import Prelude hiding(catch)
+#endif
 import Data.Time.Calendar(fromGregorian, addDays)
 import System.Mem(performGC)
 

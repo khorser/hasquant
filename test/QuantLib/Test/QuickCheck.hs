@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
-{-# LANGUAGE ScopedTypeVariables,TemplateHaskell #-}
+{-# LANGUAGE ScopedTypeVariables,TemplateHaskell,CPP #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Test.QuickCheck(htf_thisModulesTests, today)
 
@@ -8,7 +8,9 @@ where
 import Test.Framework
 
 import Control.Exception(catch)
+#if __GLASGOW_HASKELL__ < 706
 import Prelude hiding(catch)
+#endif
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay)
 import Data.DeriveTH
 

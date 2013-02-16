@@ -80,6 +80,7 @@ startDate = $(ffiCallX 'startDate) c_legStartDate
 foreign import ccall safe "ql.h qlNextCashFlows"
   c_nextCashFlows :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO (Ptr CLeg)
 
+-- |return cashflows that will occur after /settlementDate/
 nextCashFlows :: Leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
@@ -89,6 +90,7 @@ nextCashFlows = $(ffiConstruct 'nextCashFlows) c_nextCashFlows
 foreign import ccall safe "ql.h qlPreviousCashFlows"
   c_previousCashFlows :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO (Ptr CLeg)
 
+-- |return cashflows that occurred before /settlementDate/
 previousCashFlows :: Leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
@@ -99,6 +101,7 @@ foreign import ccall safe "ql.h qlLegCashFlows"
   c_legCashFlows :: Ptr CLeg -> CInt -> CDate -> Ptr (Ptr CDouble)
     -> Ptr (Ptr CDate) -> Ptr (Ptr CInt) -> Ptr CString -> IO CUInt
 
+-- |return cash flows together with an indicator whether they occurred as of /settlementDate/
 cashFlows :: Leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
@@ -109,11 +112,11 @@ cashFlows l inc d =
     \pam -> alloca $
       \pdt -> alloca $
         \pocc -> do
-        num <- handleExceptions $ c_legCashFlows ll (fromBool inc) (toQlDate d) pam pdt pocc
-        am <- peek pam >>= buildArray num
-        dt <- peek pdt >>= buildArray num
-        occ <- peek pocc >>= buildArray num
-        return $ zip3 (map realToFrac am) (map fromQlDate dt) (map toBool occ)
+          num <- handleExceptions $ c_legCashFlows ll (fromBool inc) (toQlDate d) pam pdt pocc
+          am <- peek pam >>= buildArray num
+          dt <- peek pdt >>= buildArray num
+          occ <- peek pocc >>= buildArray num
+          return $ zip3 (map realToFrac am) (map fromQlDate dt) (map toBool occ)
 
 -- |Cash-flow duration.
 -- The simple duration of a string of cash flows is defined as \[ D_{\mathrm{simple}} = \frac{\sum t_i c_i B(t_i)}{\sum c_i B(t_i)} \] where $ c_i $ is the amount of the $ i $-th cash flow, $ t_i $ is its payment time, and $ B(t_i) $ is the corresponding discount according to the passed yield.The modified duration is defined as \[ D_{\mathrm{modified}} = -\frac{1}{P} \frac{\partial P}{\partial y} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.The Macaulay duration is defined for a compounded IRR as \[ D_{\mathrm{Macaulay}} = \left( 1 + \frac{y}{N} \right) D_{\mathrm{modified}} \] where $ y $ is the IRR and $ N $ is the number of cash flows per year.
@@ -434,18 +437,15 @@ npvbps :: Leg -- ^leg
   -> Day -- ^npvDate
   -> IO (Double, Double) -- ^(npv, bps)
 npvbps l y i s n =
-  withObject l
-  (\ll ->
-    withObject y
-    (\yy ->
-      alloca
-        (\pnpv ->
-          alloca
-            (\pbps -> do
-              handleExceptions $ c_npvbps ll yy (fromBool i) (toQlDate s) (toQlDate n) pnpv pbps
-              npv <- peek pnpv
-              bps <- peek pbps
-              return (realToFrac npv, realToFrac bps)))))
+  withObject l $
+  \ll -> withObject y $
+    \yy -> alloca $
+      \pnpv -> alloca $
+        \pbps -> do
+          handleExceptions $ c_npvbps ll yy (fromBool i) (toQlDate s) (toQlDate n) pnpv pbps
+          npv <- peek pnpv
+          bps <- peek pbps
+          return (realToFrac npv, realToFrac bps)
 
 foreign import ccall safe "ql.h qlCashFlowsNpvbps"
   c_npvbps :: Ptr CLeg -> Ptr CYieldTermStructure -> CInt -> CDate -> CDate -> Ptr CDouble -> Ptr CDouble -> Ptr CString -> IO ()
