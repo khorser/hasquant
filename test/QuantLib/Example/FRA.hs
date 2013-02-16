@@ -49,16 +49,10 @@ run = do
   tsdc <- actualActualISDA
   fraTS <- TS.piecewiseYieldCurve settleDate fraInstruments tsdc [] tolerance Discount LogLinear
 
-  dates <- forM starts $ \months -> do
-    v <- advance fraCalendar settleDate (fromIntegral months) Months convention False
-    m <- advance fraCalendar v fraTermMonths Months convention False
-    return (v, m)
-
-  eu3m <- euribor3M $ Just fraTS
-  iteration settleDate dates eu3m fraDayCounter fraTS
+  valuateFRA settleDate fraTS
   putStrLn "*** After 100bp shift ***"
   forM_ simpleFraQuotes $ \sq -> asQuote sq >>= value >>= \v -> setValue sq (v + bpsShift)
-  iteration settleDate dates eu3m fraDayCounter fraTS
+  valuateFRA settleDate fraTS
 
   return $ Result 5.6
   where
@@ -74,9 +68,17 @@ run = do
     fraTermMonths = 3
     bpsShift = 0.01
 
-    iteration settle ds index dc ts =
+    valuateFRA settle ts = do
+      dc <- actual360
+      eu3m <- euribor3M $ Just ts
+      fraCalendar <- target
+      dates <- forM starts $ \months -> do
+        v <- advance fraCalendar settle (fromIntegral months) Months convention False
+        m <- advance fraCalendar v fraTermMonths Months convention False
+        return (v, m)
+
       mapM_ (\((v, m), q) -> do
-        fra <- forwardRateAgreement v m Long q notional index (Just ts)
+        fra <- forwardRateAgreement v m Long q notional eu3m (Just ts)
         fwd <- asForward fra
 
         fwdRate <- forwardRate fra
@@ -91,4 +93,4 @@ run = do
         putStrLn $ "Implied yield: " ++ show (rate implYield)
         putStrLn $ "Market zero rate: " ++ show (rate zRate)
         putStrLn $ "NPV: " ++ show fraNPV) $
-         zip ds quotes
+         zip dates quotes
