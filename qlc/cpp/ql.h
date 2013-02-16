@@ -46,8 +46,8 @@ extern "C" {
   void DLLEXPORT qlFreeLeg(Leg *leg);
   Leg *DLLEXPORT qlNextCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e);
   Leg *DLLEXPORT qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate, char **e);
-  int DLLEXPORT qlLegCashFlow(Leg *leg, unsigned i, int includeSettlementDateFlows, int settlementDate,
-    double *amount, int *date, char **e);
+  unsigned DLLEXPORT qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
+    double **amount, int **date, int **hasOccurred, char **e);
 
   double DLLEXPORT qlCashFlowsDuration(Leg* leg, InterestRate* yield, int type, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   int DLLEXPORT qlCashFlowsAccrualDays(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e);

@@ -48,24 +48,32 @@ Leg *qlPreviousCashFlows(Leg *leg, int includeSettlementDateFlows, int settlemen
     const Leg &l = *arg(leg);
     Leg::const_reverse_iterator i = CashFlows::previousCashFlow(l,
         includeSettlementDateFlows, qlNullableDate(settlementDate));
-    return new Leg(i, l.rend());
+    return new Leg(l.begin(), i.base());
   } catch (std::exception& er) {
     return handleException<Leg *>(e, er);
   }
 }
 
-int qlLegCashFlow(Leg *leg, unsigned i, int includeSettlementDateFlows, int settlementDate,
-    double *amount, int *date, char **e) {
+unsigned qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlementDate,
+    double **amount, int **date, int **hasOccurred, char **e) {
+  *amount = 0; *date = 0; *hasOccurred = 0;
   try {
     const Leg& l = *arg(leg);
-    if (i >= l.size())
-      QL_FAIL("Cash flow index out of range: " << i);
-    Leg::const_reference v = l[i];
-    *amount = v->amount();
-    *date = v->date().serialNumber();
-    return v->hasOccurred(qlNullableDate(settlementDate), includeSettlementDateFlows);
+    *amount = qlAllocateDoubles(l.size());
+    *date = qlAllocateInts(l.size());
+    *hasOccurred = qlAllocateInts(l.size());
+    for (unsigned i = 0; i < l.size(); ++i) {
+      (*amount)[i] = l[i]->amount();
+      (*date)[i] = l[i]->date().serialNumber();
+      (*hasOccurred)[i] = l[i]->hasOccurred(qlNullableDate(settlementDate), includeSettlementDateFlows);
+    }
+    return l.size();
   } catch (std::exception& er) {
-    return handleException<bool>(e, er);
+    qlFreeDoubles(*amount);
+    qlFreeInts(*date);
+    qlFreeInts(*hasOccurred);
+    *e = DUP(er.what());
+    return 0;
   }
 }
 

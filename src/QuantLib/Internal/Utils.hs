@@ -16,6 +16,7 @@ module QuantLib.Internal.Utils
   , withDoubles
   , withObjects
   , getArray
+  , buildArray
   , getArrayX
   , getString
   , CStaticInt(..)
@@ -104,9 +105,7 @@ getArray f =
     \pcnt -> do
     array <- f pcnt
     count <- peek pcnt
-    ints <- peekArray (fromIntegral count) array
-    freeArray array
-    return ints
+    buildArray count array
 
 -- XXX generalize getArray and getArrayX
 getArrayX :: (CArray a) => (Ptr CUInt -> Ptr CString -> IO (Ptr a)) -> IO [a]
@@ -115,9 +114,13 @@ getArrayX f =
   \pcnt -> do
     array <- handleExceptions (f pcnt)
     count <- peek pcnt
-    ds <- peekArray (fromIntegral count) array
-    freeArray array
-    return ds
+    buildArray count array
+
+buildArray :: (CArray a) => CUInt -> Ptr a -> IO [a]
+buildArray n p = do
+  x <- peekArray (fromIntegral n) p
+  freeArray p
+  return x
 
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
