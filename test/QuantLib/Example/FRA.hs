@@ -49,52 +49,16 @@ run = do
   tsdc <- actualActualISDA
   fraTS <- TS.piecewiseYieldCurve settleDate fraInstruments tsdc [] tolerance Discount LogLinear
 
-  eu3m <- euribor3M $ Just fraTS
-
   dates <- forM starts $ \months -> do
     v <- advance fraCalendar settleDate (fromIntegral months) Months convention False
     m <- advance fraCalendar v fraTermMonths Months convention False
     return (v, m)
 
-  mapM_ (\((v, m), q) -> do
-    fra <- forwardRateAgreement v m Long q notional eu3m (Just fraTS)
-    fwd <- asForward fra
-
-    fwdRate <- forwardRate fra
-    spot <- spotValue fwd
-    fwdValue <- forwardValue fwd
-    implYield <- impliedYield fwd spot fwdValue settleDate Simple fraDayCounter
-    zRate <- TS.zeroRate fraTS m fraDayCounter Simple Annual False
-    fraNPV <- asInstrument fwd >>= npv
-    putStrLn $ "Forward rate: " ++ show (rate fwdRate)
-    putStrLn $ "Spot value: " ++ show spot
-    putStrLn $ "Forward value: " ++ show fwdValue
-    putStrLn $ "Implied yield: " ++ show (rate implYield)
-    putStrLn $ "Market zero rate: " ++ show (rate zRate)
-    putStrLn $ "NPV: " ++ show fraNPV) $
-     zip dates quotes
-
-  putStrLn "After 1bp shift:"
-
+  eu3m <- euribor3M $ Just fraTS
+  iteration settleDate dates eu3m fraDayCounter fraTS
+  putStrLn "*** After 100bp shift ***"
   forM_ simpleFraQuotes $ \sq -> asQuote sq >>= value >>= \v -> setValue sq (v + bpsShift)
-  
-  mapM_ (\((v, m), q) -> do
-    fra <- forwardRateAgreement v m Long q notional eu3m (Just fraTS)
-    fwd <- asForward fra
-
-    fwdRate <- forwardRate fra
-    spot <- spotValue fwd
-    fwdValue <- forwardValue fwd
-    implYield <- impliedYield fwd spot fwdValue settleDate Simple fraDayCounter
-    zRate <- TS.zeroRate fraTS m fraDayCounter Simple Annual False
-    fraNPV <- asInstrument fwd >>= npv
-    putStrLn $ "Forward rate: " ++ show (rate fwdRate)
-    putStrLn $ "Spot value: " ++ show spot
-    putStrLn $ "Forward value: " ++ show fwdValue
-    putStrLn $ "Implied yield: " ++ show (rate implYield)
-    putStrLn $ "Market zero rate: " ++ show (rate zRate)
-    putStrLn $ "NPV: " ++ show fraNPV) $
-     zip dates quotes
+  iteration settleDate dates eu3m fraDayCounter fraTS
 
   return $ Result 5.6
   where
@@ -109,3 +73,22 @@ run = do
     notional = 100.0
     fraTermMonths = 3
     bpsShift = 0.01
+
+    iteration settle ds index dc ts =
+      mapM_ (\((v, m), q) -> do
+        fra <- forwardRateAgreement v m Long q notional index (Just ts)
+        fwd <- asForward fra
+
+        fwdRate <- forwardRate fra
+        spot <- spotValue fwd
+        fwdValue <- forwardValue fwd
+        implYield <- impliedYield fwd spot fwdValue settle Simple dc
+        zRate <- TS.zeroRate ts m dc Simple Annual False
+        fraNPV <- asInstrument fwd >>= npv
+        putStrLn $ "Forward rate: " ++ show (rate fwdRate)
+        putStrLn $ "Spot value: " ++ show spot
+        putStrLn $ "Forward value: " ++ show fwdValue
+        putStrLn $ "Implied yield: " ++ show (rate implYield)
+        putStrLn $ "Market zero rate: " ++ show (rate zRate)
+        putStrLn $ "NPV: " ++ show fraNPV) $
+         zip ds quotes

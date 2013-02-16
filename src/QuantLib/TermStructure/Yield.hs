@@ -157,7 +157,7 @@ swapRateHelper' :: Quote -- ^rate
   -> DayCounter -- ^fixedDayCount
   -> IborIndex -- ^iborIndex
   -> Quote -- ^spread
-  -> Period -- ^fwdStart
+  -> Maybe Period -- ^fwdStart
   -> Maybe YieldTermStructure -- ^discountingCurve
   -> IO SwapRateHelper
 swapRateHelper' = $(ffiConstruct 'swapRateHelper') c_swapRateHelper'
