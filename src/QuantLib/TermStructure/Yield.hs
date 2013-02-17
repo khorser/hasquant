@@ -53,6 +53,7 @@ module QuantLib.TermStructure.Yield
   , bond
   , overnightIndexedSwap
   , vanillaSwap
+  , referenceDate
   )
 where
 
@@ -559,3 +560,10 @@ vanillaSwap = $(ffiConstruct 'vanillaSwap) c_vanillaSwap
 
 foreign import ccall safe "ql.h qlSwapRateHelperSwap"
   c_vanillaSwap :: Ptr CSwapRateHelper -> Ptr CString -> IO (Ptr CVanillaSwap)
+
+-- |the date at which discount = 1.0 and/or variance = 0.0
+referenceDate :: YieldTermStructure -> IO Day
+referenceDate = $(ffiCallX 'referenceDate) c_referenceDate
+
+foreign import ccall safe "ql.h qlTermStructureReferenceDate"
+  c_referenceDate :: Ptr CYieldTermStructure -> Ptr CString -> IO CDate

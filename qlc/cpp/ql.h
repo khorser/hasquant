@@ -375,6 +375,7 @@ extern "C" {
 #endif
   QlYieldTermStructure* DLLEXPORT qlForwardSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, char **e);
   QlYieldTermStructure* DLLEXPORT qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, DayCounter* dc, char **e);
+  int DLLEXPORT qlTermStructureReferenceDate(QlYieldTermStructure* o, char **e);
 
   /* pricing engine */
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
