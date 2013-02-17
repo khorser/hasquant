@@ -34,6 +34,9 @@ Implement `show' via operator <<
 
 sessions?
 
+review use of IO in functions and remove it from those not raising exceptions and not depending
+on the state
+
 Plan: migrate business calculation first and then think of reusing underlying math
 
 --

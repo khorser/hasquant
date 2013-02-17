@@ -10,8 +10,10 @@ import Data.Time.Calendar
 
 import QuantLib.Math.Interpolation
 import QuantLib.Index.Ibor
+import QuantLib.Instrument
 import QuantLib.Instrument.Swap
 import QuantLib.Instrument.VanillaSwapType
+import QuantLib.PricingEngine
 import QuantLib.Quote
 import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.TermStructure.Trait
@@ -71,10 +73,20 @@ run = do
   tsDC <- actualActualISDA
 
   depoSwapTS <- TS.piecewiseYieldCurve settleDate (depoHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
-  depoFutTS <- TS.piecewiseYieldCurve settleDate (futHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
-  depoFRASwapTS <- TS.piecewiseYieldCurve settleDate (depoHelpers++fraHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
+  depoFutSwapTS <- TS.piecewiseYieldCurve settleDate ((take 2 depoHelpers)++futHelpers++(drop 1 swapHelpers)) tsDC [] tolerance Discount LogLinear
+  depoFraSwapTS <- TS.piecewiseYieldCurve settleDate ((take 3 depoHelpers)++fraHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
 
-  valuateSwap settleDate depoSwapTS depoFutTS
+  valuateSwap settleDate depoSwapTS depoSwapTS
+  valuateSwap settleDate depoFutSwapTS depoFutSwapTS
+  valuateSwap settleDate depoFraSwapTS depoFraSwapTS
+
+  putStrLn "***Updating market data***"
+  let market5YQuote = swapSimpleQuotes !! 2
+  _ <- setValue market5YQuote 0.0460
+
+  valuateSwap settleDate depoSwapTS depoSwapTS
+  valuateSwap settleDate depoFutSwapTS depoFutSwapTS
+  valuateSwap settleDate depoFraSwapTS depoFraSwapTS
 
   return $ Result 5.6
   where
@@ -107,6 +119,32 @@ run = do
         cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
       spot5Y <- vanillaSwap Payer 1000000 fixSched 0.04 fixDC
         floatSched eu6m 0.0 floatDC ModifiedFollowing
-      return ()
-        
 
+      fwdStart <- advance cal settle 1 Years Following False
+      let fwdMat = addGregorianYearsClip 5 fwdStart
+      fwdFixS <- schedule (Just fwdStart) fwdMat fixP
+        cal Unadjusted Unadjusted Forward False Nothing Nothing
+      fwdFloatS <- schedule (Just fwdStart) fwdMat floatP
+        cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+      fwd1Y5Y <- vanillaSwap Payer 1000000 fwdFixS 0.04 fixDC
+        fwdFloatS eu6m 0.0 floatDC ModifiedFollowing
+      pricer <- discountingSwapEngine (Just d) Nothing Nothing Nothing
+
+      spotInstr <- asSwap spot5Y >>= asInstrument
+      fwdInstr <- asSwap fwd1Y5Y >>= asInstrument
+      setPricingEngine spotInstr pricer
+      setPricingEngine fwdInstr pricer
+
+      spotNPV <- npv spotInstr
+      spotFairSpread <- fairSpread spot5Y
+      spotFairRate <- fairRate spot5Y
+      putStrLn $ "Spot NPV: " ++ show spotNPV
+      putStrLn $ "Spot fair spread: " ++ show spotFairSpread
+      putStrLn $ "Spot fair rate: " ++ show spotFairRate
+
+      fwdNPV <- npv fwdInstr
+      fwdFairSpread <- fairSpread fwd1Y5Y
+      fwdFairRate <- fairRate fwd1Y5Y
+      putStrLn $ "Fwd NPV: " ++ show fwdNPV
+      putStrLn $ "Fwd fair spread: " ++ show fwdFairSpread
+      putStrLn $ "Fwd fair rate: " ++ show fwdFairRate
