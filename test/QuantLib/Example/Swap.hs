@@ -5,7 +5,7 @@ module QuantLib.Example.Swap
   )
 where
 
-import Control.Monad(forM, (>=>))
+import Control.Monad(forM_, forM, (>=>))
 import Data.Time.Calendar
 
 import QuantLib.Math.Interpolation
@@ -73,20 +73,16 @@ run = do
   tsDC <- actualActualISDA
 
   depoSwapTS <- TS.piecewiseYieldCurve settleDate (depoHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
-  depoFutSwapTS <- TS.piecewiseYieldCurve settleDate ((take 2 depoHelpers)++futHelpers++(drop 1 swapHelpers)) tsDC [] tolerance Discount LogLinear
-  depoFraSwapTS <- TS.piecewiseYieldCurve settleDate ((take 3 depoHelpers)++fraHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
+  depoFutSwapTS <- TS.piecewiseYieldCurve settleDate (take 2 depoHelpers++futHelpers++drop 1 swapHelpers) tsDC [] tolerance Discount LogLinear
+  depoFraSwapTS <- TS.piecewiseYieldCurve settleDate (take 3 depoHelpers++fraHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
 
-  valuateSwap settleDate depoSwapTS depoSwapTS
-  valuateSwap settleDate depoFutSwapTS depoFutSwapTS
-  valuateSwap settleDate depoFraSwapTS depoFraSwapTS
+  forM_ [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 
   putStrLn "***Updating market data***"
   let market5YQuote = swapSimpleQuotes !! 2
   _ <- setValue market5YQuote 0.0460
 
-  valuateSwap settleDate depoSwapTS depoSwapTS
-  valuateSwap settleDate depoFutSwapTS depoFutSwapTS
-  valuateSwap settleDate depoFraSwapTS depoFraSwapTS
+  forM_ [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 
   return $ Result 5.6
   where
