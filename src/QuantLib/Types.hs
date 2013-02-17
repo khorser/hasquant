@@ -8,6 +8,7 @@ module QuantLib.Types
 
   -- currency
   , Currency
+  , Rounding
 
   -- indices
   , Index
@@ -90,6 +91,7 @@ instance Show Currency where
 instance Eq Currency where
   (==) x y = name x == name y
 
+type Rounding = ForeignPtr CRounding
 -- indexes
 type Index = ForeignPtr CIndex
 type InterestRateIndex = ForeignPtr CInterestRateIndex

@@ -1,3 +1,0 @@
--- |default constructor
--- Instances built through this constructor don't perform any rounding.
-->

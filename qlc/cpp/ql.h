@@ -230,7 +230,10 @@ extern "C" {
   char* DLLEXPORT qlCurrencyFractionSymbol(Currency* o, char **e);
   int DLLEXPORT qlCurrencyNumericCode(Currency* o, char **e);
   char* DLLEXPORT qlCurrencySymbol(Currency* o, char **e);
-  Currency* DLLEXPORT qlCurrencyTriangulationCurrency(Currency* o, char **e);
+  void DLLEXPORT qlFreeRounding(Rounding *o);
+  Rounding* DLLEXPORT qlRounding(char **e);
+  Rounding* DLLEXPORT qlRounding1(int precision, int type, int digit, char **e);
+  Currency* DLLEXPORT qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e);
 
   /* period */
   Period *DLLEXPORT qlPeriod(int n, int u, char **e);

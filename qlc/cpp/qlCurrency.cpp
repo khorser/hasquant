@@ -6,8 +6,6 @@ using namespace QuantLib;
 
 typedef EnumObjectInfo<Currency> CurrencyInfo;
 static CurrencyInfo currencyInfo[] = {
-  {"Currency", &CurrencyInfo::makeObject<Currency>},
-  {"NoCurrency", &CurrencyInfo::makeObject<Currency>},
   {"EUR", &CurrencyInfo::makeObject<EURCurrency>},
   {"ARS", &CurrencyInfo::makeObject<ARSCurrency>},
   {"ATS", &CurrencyInfo::makeObject<ATSCurrency>},
@@ -141,9 +139,46 @@ char* qlCurrencySymbol(Currency* o, char **e) {
     return handleException<char*>(e, er);
   }
 }
-Currency* qlCurrencyTriangulationCurrency(Currency* o, char **e) {
+
+void qlFreeRounding(Rounding *o) { del(o); }
+
+Rounding* qlRounding(char **e) {
   try {
-    return ret(new Currency(arg(o)->triangulationCurrency()));
+    return alloc(new Rounding());
+  } catch (std::exception& er) {
+    return handleException<Rounding*>(e, er);
+  }
+}
+
+Rounding* qlRounding1(int precision, int type, int digit, char **e) {
+  try {
+    return alloc(new Rounding(precision, (Rounding::Type)type, digit));
+  } catch (std::exception& er) {
+    return handleException<Rounding*>(e, er);
+  }
+}
+
+class CustomCurrency : public Currency {
+public:
+  CustomCurrency(const char* name, const char* code, int numericCode,
+      const char* symbol, const char* fractionSymbol, int fractionsPerUnit,
+      Rounding* rounding, const char* formatString,
+      Currency* triangulationCurrency) {
+    boost::shared_ptr<Data> data(new Data(name, code, numericCode,
+          symbol, fractionSymbol, fractionsPerUnit,
+          rounding ? *rounding : Rounding(),
+          formatString,
+          triangulationCurrency ? *triangulationCurrency : Currency()));
+    data_ = data;
+  }
+};
+
+
+Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e) {
+  try {
+    return alloc(new CustomCurrency(arg(name), arg(code), numericCode,
+          arg(symbol), arg(fractionSymbol), fractionsPerUnit,
+          rounding, arg(formatString), triangulationCurrency));
   } catch (std::exception& er) {
     return handleException<Currency*>(e, er);
   }

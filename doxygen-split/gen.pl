@@ -340,7 +340,8 @@ sub type
   {
     return ("char*", "CString", "String", 'std::string(arg(%))', "DUP((%).c_str())", 0, '');
   }
-  elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period', 'InterestRate', 'FittedBondDiscountCurveFittingMethod'])
+  elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period',
+      'InterestRate', 'FittedBondDiscountCurveFittingMethod', 'Rounding'])
   {
     if (not $vect)
     {

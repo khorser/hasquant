@@ -1,20 +1,21 @@
+#include <ql/cashflows/duration.hpp>
+#include <ql/compounding.hpp>
+#include <ql/exercise.hpp>
+#include <ql/experimental/credit/defaulttype.hpp>
+#include <ql/instruments/bmaswap.hpp>
+#include <ql/instruments/overnightindexedswap.hpp>
+#include <ql/instruments/swaption.hpp>
+#include <ql/instruments/vanillaswap.hpp>
+#include <ql/math/rounding.hpp>
+#include <ql/option.hpp>
+#include <ql/position.hpp>
+#include <ql/prices.hpp>
 #include <ql/time/businessdayconvention.hpp>
+#include <ql/time/calendars/jointcalendar.hpp>
 #include <ql/time/dategenerationrule.hpp>
 #include <ql/time/frequency.hpp>
-#include <ql/time/timeunit.hpp>
-#include <ql/compounding.hpp>
-#include <ql/position.hpp>
-#include <ql/experimental/credit/defaulttype.hpp>
-#include <ql/exercise.hpp>
-#include <ql/option.hpp>
-#include <ql/instruments/overnightindexedswap.hpp>
-#include <ql/instruments/bmaswap.hpp>
-#include <ql/instruments/vanillaswap.hpp>
-#include <ql/prices.hpp>
-#include <ql/instruments/swaption.hpp>
 #include <ql/time/imm.hpp>
-#include <ql/time/calendars/jointcalendar.hpp>
-#include <ql/cashflows/duration.hpp>
+#include <ql/time/timeunit.hpp>
 
 #include <string.h>
 
@@ -204,6 +205,16 @@ static int durationValues[] =
   , Duration::Modified
   };
 
+static int roundingValues[] =
+  {
+    Rounding::None,
+    Rounding::Up,
+    Rounding::Down,
+    Rounding::Closest,
+    Rounding::Floor,
+    Rounding::Ceiling
+  };
+
 struct EnumInfo {
   const char *name;
   size_t len;
@@ -222,62 +233,45 @@ struct EnumInfo {
 
 static EnumInfo enumInfo[] = {
   {"QuantLib.Time.BusinessDayConvention.BusinessDayConvention",
-    LENGTH(businessDayConventionValues),
-    businessDayConventionValues},
+    LENGTH(businessDayConventionValues), businessDayConventionValues},
   {"QuantLib.Time.DateGenerationRule.DateGenerationRule",
-    LENGTH(dateGenerationRuleValues),
-    dateGenerationRuleValues},
+    LENGTH(dateGenerationRuleValues), dateGenerationRuleValues},
   {"QuantLib.Time.Frequency.Frequency",
-    LENGTH(frequencyValues),
-    frequencyValues},
+    LENGTH(frequencyValues), frequencyValues},
   {"QuantLib.Time.Unit.Unit",
-    LENGTH(timeUnitValues),
-    timeUnitValues},
+    LENGTH(timeUnitValues), timeUnitValues},
   {"QuantLib.Compounding.Compounding",
-    LENGTH(compoundingValues),
-    compoundingValues},
+    LENGTH(compoundingValues), compoundingValues},
   {"QuantLib.Time.Weekday.Weekday",
-    LENGTH(weekdayValues),
-    weekdayValues},
+    LENGTH(weekdayValues), weekdayValues},
   {"QuantLib.Time.Month.Month",
-    LENGTH(monthValues),
-    monthValues},
+    LENGTH(monthValues), monthValues},
   {"QuantLib.PositionType.PositionType",
-    LENGTH(positionValues),
-    positionValues},
+    LENGTH(positionValues), positionValues},
   {"QuantLib.Credit.Seniority.Seniority",
-    LENGTH(seniorityValues),
-    seniorityValues},
+    LENGTH(seniorityValues), seniorityValues},
   {"QuantLib.ExerciseType.ExerciseType",
-    LENGTH(exerciseTypeValues),
-    exerciseTypeValues},
+    LENGTH(exerciseTypeValues), exerciseTypeValues},
   {"QuantLib.Instrument.OptionType.OptionType",
-    LENGTH(optionTypeValues),
-    optionTypeValues},
+    LENGTH(optionTypeValues), optionTypeValues},
   {"QuantLib.Instrument.OvernightIndexedSwapType.OvernightIndexedSwapType",
-    LENGTH(overnightIndexedSwapTypeValues),
-    overnightIndexedSwapTypeValues},
+    LENGTH(overnightIndexedSwapTypeValues), overnightIndexedSwapTypeValues},
   {"QuantLib.Instrument.VanillaSwapType.VanillaSwapType",
-    LENGTH(vanillaSwapTypeValues),
-    vanillaSwapTypeValues},
+    LENGTH(vanillaSwapTypeValues), vanillaSwapTypeValues},
   {"QuantLib.Instrument.BMASwapType.BMASwapType",
-    LENGTH(bmaSwapTypeValues),
-    bmaSwapTypeValues},
+    LENGTH(bmaSwapTypeValues), bmaSwapTypeValues},
   {"QuantLib.PriceType.PriceType",
-    LENGTH(priceTypeValues),
-    priceTypeValues},
+    LENGTH(priceTypeValues), priceTypeValues},
   {"QuantLib.SettlementType.SettlementType",
-    LENGTH(settlementTypeValues),
-    settlementTypeValues},
+    LENGTH(settlementTypeValues), settlementTypeValues},
   {"QuantLib.Time.IMMMonth.IMMMonth",
-    LENGTH(immMonthValues),
-    immMonthValues},
+    LENGTH(immMonthValues), immMonthValues},
   {"QuantLib.Time.JointCalendarRule.JointCalendarRule",
-    LENGTH(jointCalendarRuleValues),
-    jointCalendarRuleValues},
+    LENGTH(jointCalendarRuleValues), jointCalendarRuleValues},
   {"QuantLib.CashFlow.DurationType.DurationType",
-    LENGTH(durationValues),
-    durationValues},
+    LENGTH(durationValues), durationValues},
+  {"QuantLib.Math.RoundingType.RoundingType",
+    LENGTH(roundingValues), roundingValues},
 };
 
 int *qlEnumerationValue(const char *name, unsigned *c) {

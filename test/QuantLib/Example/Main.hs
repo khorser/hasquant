@@ -1,7 +1,8 @@
 module Main where
 
-import QuantLib.Utilities
+import QuantLib.Settings
 import QuantLib.Time.Date
+import QuantLib.Utilities
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.Repo as RepoExample
@@ -16,7 +17,7 @@ main = do
   t <- today
   putStrLn $ "Today is " ++ show (weekday t)
 
-  br <- BondExample.run
+  br <- keepingSettings' BondExample.run
   
   putStrLn $ "NPV: " ++ show (BondExample.npvR br)
   putStrLn $ "Yield: " ++ show (BondExample.yieldR br)
@@ -33,7 +34,7 @@ main = do
   putStrLn $ "CashFlows: NPV: " ++ show (BondExample.cfnpvR br) ++ ", NPV_BPS: " ++ show (BondExample.cfnpvbpsR br)
   putStrLn $ "BPS: " ++ show (BondExample.bpsR br)
 
-  rr <- RepoExample.run
+  rr <- keepingSettings' RepoExample.run
   putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)
   putStrLn $ "Underlying bond dirty price: " ++ show (RepoExample.dirtyPriceR rr)
   putStrLn $ "Underlying bond accrued at settlement: " ++ show (RepoExample.accruedAmountSettlement rr)
@@ -47,10 +48,10 @@ main = do
   putStrLn $ "Repo implied yield: " ++ show (RepoExample.impliedYieldR rr)
   putStrLn $ "Market repo rate:   " ++ show (RepoExample.zeroRateR rr)
 
-  _ <- FRAExample.run
+  _ <- keepingSettings' FRAExample.run
 
-  _ <- SwapExample.run
+  _ <- keepingSettings' SwapExample.run
 
-  _ <- BondCurveExample.run
+  _ <- keepingSettings' BondCurveExample.run
 
   putStrLn "DONE"

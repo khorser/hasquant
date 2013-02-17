@@ -14,16 +14,18 @@ module QuantLib.Settings
   , setIncludeReferenceDateEvents
 
   , keepingSettings
+  , keepingSettings'
   )
 where
 
 import Control.Exception(bracket)
+import Foreign.Marshal.Utils(toBool)
+import System.Mem(performGC)
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 
-import Foreign.Marshal.Utils(toBool)
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
   c_evaluationDate :: IO CDate
@@ -102,7 +104,12 @@ foreign import ccall safe "ql.h qlSettingsSetIncludeReferenceDateEvents"
 -- |brackets to restore settings once action has completed or raised an exception
 keepingSettings :: IO b -> IO b
 keepingSettings = bracket c_savedSettings c_freeSavedSettings . const
--- XXX add a variant doing GC?
+-- SavedSettings destructor suppresses all exceptions
+
+-- |brackets to restore settings once action has completed or raised an exception. Before restoring settings
+-- garbage collection is run to avoid problems with market data objects watching evaluation date
+keepingSettings' :: IO b -> IO b
+keepingSettings' = bracket c_savedSettings (\s -> performGC >> c_freeSavedSettings s) . const
 
 data CSavedSettings
 

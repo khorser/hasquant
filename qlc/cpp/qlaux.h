@@ -404,6 +404,9 @@ typedef boost::shared_ptr<OISRateHelper> QlOISRateHelper;
 template <> class objClassName<OISRateHelper *> { public: static const char *name() { return "OISRateHelper"; } };
 template <> class objClassName<QlOISRateHelper *> { public: static const char *name() { return "QlOISRateHelper"; } };
 
+namespace QuantLib {class Rounding;} using QuantLib::Rounding;
+template <> class objClassName<Rounding *> { public: static const char *name() { return "Rounding"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

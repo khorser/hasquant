@@ -1,9 +1,0 @@
-->
-::Integer
--- ^precision
-::Type
-=Closest
--- ^type
-::Integer
-=5
--- ^digit

@@ -1,9 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.Currency
   (
-    currency
-  , noCurrency
-  , ars
+    ars
   , ats
   , aud
   , bdt
@@ -70,13 +69,13 @@ module QuantLib.Currency
   , veb
   , zar
 
+  , currency
   , code
   , format
   , fractionsPerUnit
   , fractionSymbol
   , numericCode
   , symbol
-  , triangulationCurrency
   )
 where
 
@@ -85,10 +84,6 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
--- TODO add data Currency = ...
-
-currency :: IO Currency
-noCurrency :: IO Currency
 ars :: IO Currency -- ^Argentinian peso
 ats :: IO Currency -- ^Austrian shilling
 aud :: IO Currency -- ^Australian dollar
@@ -156,8 +151,6 @@ usd :: IO Currency -- ^U.S. dollar
 veb :: IO Currency -- ^Venezuelan bolivar
 zar :: IO Currency -- ^South-African rand
 
-currency  = constructNamed "Currency"
-noCurrency= constructNamed "NoCurrency"
 ars = constructNamed "ARS"
 ats = constructNamed "ATS"
 aud = constructNamed "AUD"
@@ -268,9 +261,18 @@ symbol = $(ffiCallX 'symbol) c_symbol
 foreign import ccall safe "ql.h qlCurrencySymbol"
   c_symbol :: Ptr CCurrency -> Ptr CString -> IO CString
 
--- |currency used for triangulated exchange when required
-triangulationCurrency :: Currency -> IO Currency
-triangulationCurrency = $(ffiConstruct 'triangulationCurrency) c_triangulationCurrency
+-- |create custom currency
+currency :: String -- ^name
+  -> String -- ^code
+  -> Int -- ^numericCode
+  -> String -- ^symbol
+  -> String -- ^fractionSymbol
+  -> Int -- ^fractionsPerUnit
+  -> Maybe Rounding -- ^rounding
+  -> String -- ^formatString
+  -> Maybe Currency -- ^triangulationCurrency
+  -> IO Currency
+currency = $(ffiConstruct 'currency) c_currency
 
-foreign import ccall safe "ql.h qlCurrencyTriangulationCurrency"
-  c_triangulationCurrency :: Ptr CCurrency -> Ptr CString -> IO (Ptr CCurrency)
+foreign import ccall safe "ql.h qlCreateCurrency"
+  c_currency :: CString -> CString -> CInt -> CString -> CString -> CInt -> Ptr CRounding -> CString -> Ptr CCurrency -> Ptr CString -> IO (Ptr CCurrency)

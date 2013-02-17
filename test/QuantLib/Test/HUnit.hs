@@ -10,7 +10,6 @@ import Control.Exception(catch)
 import Prelude hiding(catch)
 #endif
 import Data.Time.Calendar(fromGregorian, addDays)
-import System.Mem(performGC)
 
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
@@ -39,7 +38,7 @@ import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
 
 test_bondEval :: IO ()
 test_bondEval = do
-  r <- Settings.keepingSettings BondExample.run
+  r <- Settings.keepingSettings' BondExample.run
   let (fixnpv, znpv, fnpv) = BondExample.npvR r
       (fixy, zy, fy) = BondExample.yieldR r
       (fixclean, zclean, fclean) = BondExample.cleanPriceR r
@@ -80,11 +79,9 @@ test_bondEval = do
 
   assertEqual tradable (True, True, False)
 
-  performGC
-
 test_repoEval :: IO ()
 test_repoEval = do
-  r <- Settings.keepingSettings RepoExample.run
+  r <- Settings.keepingSettings' RepoExample.run
 
   assertBool $ abs(RepoExample.cleanPriceR r-89.9769362) < 1e-7
   assertBool $ abs(RepoExample.dirtyPriceR r-93.2880473) < 1e-7
@@ -98,26 +95,21 @@ test_repoEval = do
   assertBool $ abs(RepoExample.impliedYieldR r-0.050000633) < 1e-9
   assertBool $ abs(RepoExample.zeroRateR r-0.05) < 1e-7
 
-  performGC
-
 test_fraEval :: IO ()
 test_fraEval = do
-  _ <- Settings.keepingSettings FRAExample.run
-  performGC
+  _ <- Settings.keepingSettings' FRAExample.run
+  return ()
 
 test_swapEval :: IO ()
 test_swapEval = do
-  _ <- Settings.keepingSettings SwapExample.run
-  performGC
+  _ <- Settings.keepingSettings' SwapExample.run
+  return ()
 
 test_bondCurveEval :: IO ()
 test_bondCurveEval = do
-  _ <- Settings.keepingSettings BondCurveExample.run
-  performGC
+  _ <- Settings.keepingSettings' BondCurveExample.run
+  return ()
 
--- if we don't do GC we have a chance of getting
--- "could not notify one or more observers: year 2200 out of bounds"
--- from one of the outstanding rate helpers when QuickCheck sets evaluation date to some border value like 27Nov2199
 test_evalDate :: IO ()
 test_evalDate = do
   t1 <- Settings.evaluationDate

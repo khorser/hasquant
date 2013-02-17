@@ -19,7 +19,7 @@ import QuantLib.Internal.Enum
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
--- All QLEnum instances should be imported here!
+-- All QLEnum instances must be imported here!
 import QuantLib.CashFlow.DurationType()
 import QuantLib.Compounding()
 import QuantLib.Credit.Seniority()
@@ -28,6 +28,7 @@ import QuantLib.Instrument.BMASwapType()
 import QuantLib.Instrument.OptionType()
 import QuantLib.Instrument.OvernightIndexedSwapType()
 import QuantLib.Instrument.VanillaSwapType()
+import QuantLib.Math.RoundingType()
 import QuantLib.PositionType()
 import QuantLib.PriceType()
 import QuantLib.SettlementType()

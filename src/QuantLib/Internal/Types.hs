@@ -7,6 +7,7 @@ module QuantLib.Internal.Types
 
   -- currency
   , CCurrency
+  , CRounding
 
   -- indices
   , CIndex
@@ -89,6 +90,12 @@ foreign import ccall safe "ql.h qlCurrency"
   c_currency :: CString -> Ptr CString -> IO (Ptr CCurrency)
 foreign import ccall safe "ql.h qlCurrencyName"
   c_currencyName :: Ptr CCurrency -> IO CString
+
+data CRounding
+instance Finalizable CRounding where
+  finalize = p_freeRounding
+foreign import ccall safe "ql.h &qlFreeRounding"
+  p_freeRounding :: FunPtr (Ptr CRounding -> IO ())
 
 -- indexes
 data CIndex
