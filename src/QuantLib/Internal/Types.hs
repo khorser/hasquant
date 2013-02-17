@@ -44,6 +44,7 @@ module QuantLib.Internal.Types
   , CBondHelper
   , CFittedBondDiscountCurveFittingMethod
   , CFittedBondDiscountCurve
+  , CTermStructure
 
   -- time
   , CCalendar
@@ -343,6 +344,16 @@ instance Upcastable CFittedBondDiscountCurve CYieldTermStructure where
   c_upcast = c_FittedBondDiscountCurveAsYieldTermStructure
 foreign import ccall safe "ql.h qlFittedBondDiscountCurveAsYieldTermStructure"
   c_FittedBondDiscountCurveAsYieldTermStructure :: Ptr CFittedBondDiscountCurve -> IO (Ptr CYieldTermStructure)
+
+data CTermStructure
+instance Finalizable CTermStructure where
+  finalize = p_freeTermStructure
+foreign import ccall safe "ql.h &qlFreeTermStructure"
+  p_freeTermStructure :: FunPtr (Ptr CTermStructure -> IO ())
+instance Upcastable CYieldTermStructure CTermStructure where
+  c_upcast = c_YieldTermStructureAsTermStructure
+foreign import ccall safe "ql.h qlYieldTermStructureAsTermStructure"
+  c_YieldTermStructureAsTermStructure :: Ptr CYieldTermStructure -> IO (Ptr CTermStructure)
 
 -- time
 data CCalendar

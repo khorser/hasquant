@@ -470,11 +470,15 @@ QlVanillaSwap* qlSwapRateHelperSwap(QlSwapRateHelper* o, char **e) {
     return handleException<QlVanillaSwap*>(e, er);
   }
 }
-int qlTermStructureReferenceDate(QlYieldTermStructure* o, char **e) {
+int qlTermStructureReferenceDate(QlTermStructure* o, char **e) {
   try {
     return (*arg(o))->referenceDate().serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
+
+void qlFreeTermStructure(QlTermStructure *o) { del(o); }
+QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) { return ret(new QlTermStructure(*arg(o))); }
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

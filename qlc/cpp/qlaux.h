@@ -407,6 +407,11 @@ template <> class objClassName<QlOISRateHelper *> { public: static const char *n
 namespace QuantLib {class Rounding;} using QuantLib::Rounding;
 template <> class objClassName<Rounding *> { public: static const char *name() { return "Rounding"; } };
 
+namespace QuantLib {class TermStructure;} using QuantLib::TermStructure;
+typedef boost::shared_ptr<TermStructure> QlTermStructure;
+template <> class objClassName<TermStructure *> { public: static const char *name() { return "TermStructure"; } };
+template <> class objClassName<QlTermStructure *> { public: static const char *name() { return "QlTermStructure"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

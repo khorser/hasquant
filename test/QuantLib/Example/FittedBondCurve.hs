@@ -73,6 +73,6 @@ run = do
 
     printOutput ts = do
       putStr "Reference date: "
-      asYieldTermStructure ts >>= referenceDate >>= print
+      asYieldTermStructure ts >>= asTermStructure >>= referenceDate >>= print
       putStr "Number of iterations: "
       numberOfIterations ts >>= print

@@ -562,8 +562,8 @@ foreign import ccall safe "ql.h qlSwapRateHelperSwap"
   c_vanillaSwap :: Ptr CSwapRateHelper -> Ptr CString -> IO (Ptr CVanillaSwap)
 
 -- |the date at which discount = 1.0 and/or variance = 0.0
-referenceDate :: YieldTermStructure -> IO Day
+referenceDate :: TermStructure -> IO Day
 referenceDate = $(ffiCallX 'referenceDate) c_referenceDate
 
 foreign import ccall safe "ql.h qlTermStructureReferenceDate"
-  c_referenceDate :: Ptr CYieldTermStructure -> Ptr CString -> IO CDate
+  c_referenceDate :: Ptr CTermStructure -> Ptr CString -> IO CDate
