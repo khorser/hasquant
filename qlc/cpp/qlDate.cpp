@@ -105,12 +105,8 @@ char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) 
     return handleException<char*>(e, er);
   }
 }
-char* qlIMMNextCode(int d, int mainCycle, char **e) {
-  try {
-    return DUP(IMM::nextCode(qlNullableDate(d), mainCycle).c_str());
-  } catch (std::exception& er) {
-    return handleException<char*>(e, er);
-  }
+char* qlIMMNextCode(int d, int mainCycle) {
+  return DUP(IMM::nextCode(qlNullableDate(d), mainCycle).c_str());
 }
 int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
   try {
@@ -119,12 +115,8 @@ int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
     return handleException<int>(e, er);
   }
 }
-int qlIMMNextDate(int d, int mainCycle, char **e) {
-  try {
-    return (IMM::nextDate(qlNullableDate(d), mainCycle)).serialNumber();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
+int qlIMMNextDate(int d, int mainCycle) {
+  return IMM::nextDate(qlNullableDate(d), mainCycle).serialNumber();
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

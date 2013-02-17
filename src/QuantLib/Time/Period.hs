@@ -5,13 +5,6 @@ module QuantLib.Time.Period
   , fromFrequency
 
   , toFrequency
-  , days
-  , length
-  , months
-  , normalize
-  , units
-  , weeks
-  , years
   , parse
   )
 where
@@ -44,48 +37,6 @@ fromFrequency = $(ffiConstruct 'fromFrequency) c_periodFromFreq
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M). QuantLib: qlFrequencyFromPeriod
 toFrequency :: Period -> IO F.Frequency
 toFrequency = $(ffiCallX 'toFrequency) c_periodToFreq
-
-days :: Period -> IO Double
-days = $(ffiCallX 'days) c_days
-
-foreign import ccall safe "ql.h qlPeriodDays"
-  c_days :: Ptr CPeriod -> Ptr CString -> IO CDouble
-
-length :: Period -> IO Int
-length = $(ffiCallX 'length) c_length
-
-foreign import ccall safe "ql.h qlPeriodLength"
-  c_length :: Ptr CPeriod -> Ptr CString -> IO CInt
-
-months :: Period -> IO Double
-months = $(ffiCallX 'months) c_months
-
-foreign import ccall safe "ql.h qlPeriodMonths"
-  c_months :: Ptr CPeriod -> Ptr CString -> IO CDouble
-
-normalize :: Period -> IO Period
-normalize = $(ffiConstruct 'normalize) c_normalize
-
-foreign import ccall safe "ql.h qlPeriodNormalize"
-  c_normalize :: Ptr CPeriod -> Ptr CString -> IO (Ptr CPeriod)
-
-units :: Period -> IO Unit
-units = $(ffiCallX 'units) c_units
-
-foreign import ccall safe "ql.h qlPeriodUnits"
-  c_units :: Ptr CPeriod -> Ptr CString -> IO CInt
-
-weeks :: Period -> IO Double
-weeks = $(ffiCallX 'weeks) c_weeks
-
-foreign import ccall safe "ql.h qlPeriodWeeks"
-  c_weeks :: Ptr CPeriod -> Ptr CString -> IO CDouble
-
-years :: Period -> IO Double
-years = $(ffiCallX 'years) c_years
-
-foreign import ccall safe "ql.h qlPeriodYears"
-  c_years :: Ptr CPeriod -> Ptr CString -> IO CDouble
 
 parse :: String -> IO Period
 parse = $(ffiConstruct 'parse) c_parse

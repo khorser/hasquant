@@ -34,9 +34,9 @@ extern "C" {
   int DLLEXPORT qlIMMIsIMMcode(char* in, int mainCycle, char **e);
   int DLLEXPORT qlIMMIsIMMdate(int d, int mainCycle, char **e);
   char* DLLEXPORT qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e);
-  char* DLLEXPORT qlIMMNextCode(int d, int mainCycle, char **e);
+  char* DLLEXPORT qlIMMNextCode(int d, int mainCycle);
   int DLLEXPORT qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e);
-  int DLLEXPORT qlIMMNextDate(int d, int mainCycle, char **e);
+  int DLLEXPORT qlIMMNextDate(int d, int mainCycle);
 
 #ifdef quantlib_cash_flow_hpp
   /* leg */
@@ -238,13 +238,6 @@ extern "C" {
   int DLLEXPORT qlPeriodToFrequency(Period *period, char **e);
 
   void DLLEXPORT qlFreePeriod(Period *period);
-  double DLLEXPORT qlPeriodDays(Period* x1, char **e);
-  int DLLEXPORT qlPeriodLength(Period* o, char **e);
-  double DLLEXPORT qlPeriodMonths(Period* x1, char **e);
-  Period* DLLEXPORT qlPeriodNormalize(Period* o, char **e);
-  int DLLEXPORT qlPeriodUnits(Period* o, char **e);
-  double DLLEXPORT qlPeriodWeeks(Period* x1, char **e);
-  double DLLEXPORT qlPeriodYears(Period* x1, char **e);
   Period* DLLEXPORT qlPeriodParserParse(char* str, char **e);
 
   /* quote */

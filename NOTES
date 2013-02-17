@@ -24,6 +24,8 @@ try and make objects as much immutable as possible by not exposing mutators
 to introduce adjustments)
 as result that Handle/RelinkableHandle machinery isn't going to be much of help
 
+DSL for periods: create, arithmetic, arithmetic of periods and dates
+
 If needed, we could use FRP to model the propagation of changes in market data
 
 Introduce money data type parameterized by currency
@@ -47,7 +49,6 @@ Bond::
 BondFunctions::
 FlatForward
 FixedRateBondForward
-repoCurve->zeroRate
 ForwardRateAgreement
 IMM::
 Date::
@@ -76,14 +77,9 @@ OvernightIndexedSwap
 OISRateHelper
 DatedOISRateHelper
 FraRateHelper
-FRA.forwardRate
-FRA.spotValue
-FRA.forwardValue
-FRA.impliedYield
 FuturesRateHelper
 VanillaSwap
-Swap.fairSpread
-Swap.fairRate
+Swap
 SwapRateHelper
 ForwardRateStructure
 ZeroSpreadCurve

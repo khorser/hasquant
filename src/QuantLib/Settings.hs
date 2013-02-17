@@ -102,6 +102,7 @@ foreign import ccall safe "ql.h qlSettingsSetIncludeReferenceDateEvents"
 -- |brackets to restore settings once action has completed or raised an exception
 keepingSettings :: IO b -> IO b
 keepingSettings = bracket c_savedSettings c_freeSavedSettings . const
+-- XXX add a variant doing GC?
 
 data CSavedSettings
 

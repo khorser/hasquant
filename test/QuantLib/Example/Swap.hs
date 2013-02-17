@@ -5,20 +5,24 @@ module QuantLib.Example.Swap
   )
 where
 
-import Control.Monad(forM, (>=>), foldM)
+import Control.Monad(forM, (>=>))
 import Data.Time.Calendar
 
 import QuantLib.Math.Interpolation
 import QuantLib.Index.Ibor
+import QuantLib.Instrument.Swap
+import QuantLib.Instrument.VanillaSwapType
 import QuantLib.Quote
-import QuantLib.TermStructure.Yield
+import qualified QuantLib.TermStructure.Yield as TS
 import QuantLib.TermStructure.Trait
 import QuantLib.Time.BusinessDayConvention
 import QuantLib.Time.Calendar
+import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Date
 import QuantLib.Time.Frequency
-import QuantLib.Time.Period(period)
+import QuantLib.Time.Period
+import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Types
 import QuantLib.Settings
@@ -43,16 +47,17 @@ run = do
 
   depoHelpers <- mapM (\(q, (n, u)) -> do
     p <- period n u
-    depositRateHelper q p (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
+    TS.depositRateHelper q p (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
       zip depoQuotes depoTerms
   fraHelpers <- mapM (\(q, (m1, m2)) ->
-    fraRateHelper q m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
+    TS.fraRateHelper q m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
       zip fraQuotes fraTerms
 
-  imm1 <- nextIMMDate (Just settleDate) True
-  imms <- foldM nextIMM [imm1] (replicate (length futPrices-1) 1)
+  let imm1 = nextIMMDate (Just settleDate) True
+  let imms = foldl nextIMM [imm1] (replicate (length futPrices-1) 1)
+
   futHelpers <- mapM (\(q, imm) ->
-    futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing) $
+    TS.futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing) $
       zip futQuotes imms
 
   swFixedDC <- thirty360European
@@ -60,14 +65,16 @@ run = do
   spread <- simpleQuote 0.0 >>= asQuote
   swapHelpers <- mapM (\(q, y) -> do
     p <- period y Years
-    swapRateHelper' q p cal Annual Unadjusted swFixedDC eu6m spread Nothing Nothing >>= asRateHelper) $
+    TS.swapRateHelper' q p cal Annual Unadjusted swFixedDC eu6m spread Nothing Nothing >>= asRateHelper) $
       zip swapQuotes swapYears
 
   tsDC <- actualActualISDA
 
-  depoSwapTS <- piecewiseYieldCurve settleDate (depoHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
-  depoFutTS <- piecewiseYieldCurve settleDate (futHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
-  depoFRASwapTS <- piecewiseYieldCurve settleDate (depoHelpers++fraHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
+  depoSwapTS <- TS.piecewiseYieldCurve settleDate (depoHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
+  depoFutTS <- TS.piecewiseYieldCurve settleDate (futHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
+  depoFRASwapTS <- TS.piecewiseYieldCurve settleDate (depoHelpers++fraHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
+
+  valuateSwap settleDate depoSwapTS depoFutTS
 
   return $ Result 5.6
   where
@@ -83,7 +90,23 @@ run = do
     fraTerms = [(3, 6), (6, 9), (6, 12)]
     swapYears = [2, 3, 5, 10, 15]
 
-    nextIMM :: [Day] -> Integer -> IO [Day]
-    nextIMM l inc = do
-      d <- nextIMMDate (Just $ addDays inc (head l)) True
-      return $ l ++ [d]
+    nextIMM :: [Day] -> Integer -> [Day]
+    nextIMM l inc = l ++ [nextIMMDate (Just $ addDays inc (last l)) True]
+
+    valuateSwap settle d f = do
+      fixDC <- thirty360European
+      floatDC <- actual360
+      eu6m <- euribor6M $ Just f
+      fixP <- fromFrequency Annual
+      floatP <- fromFrequency Semiannual
+      cal <- target
+      let maturity = addGregorianYearsClip 5 settle
+      fixSched <- schedule (Just settle) maturity fixP
+        cal Unadjusted Unadjusted Forward False Nothing Nothing
+      floatSched <- schedule (Just settle) maturity floatP
+        cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
+      spot5Y <- vanillaSwap Payer 1000000 fixSched 0.04 fixDC
+        floatSched eu6m 0.0 floatDC ModifiedFollowing
+      return ()
+        
+

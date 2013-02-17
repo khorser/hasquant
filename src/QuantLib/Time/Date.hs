@@ -226,11 +226,11 @@ foreign import ccall safe "ql.h qlIMMNextCode1"
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 nextIMMCode :: Maybe Day -- ^d
   -> Bool -- ^mainCycle
-  -> IO String
-nextIMMCode = $(ffiCallX 'nextIMMCode) c_nextCode
+  -> String
+nextIMMCode = $(ffiCallIO 'nextIMMCode) c_nextCode
 
 foreign import ccall safe "ql.h qlIMMNextCode"
-  c_nextCode :: CDate -> CInt -> Ptr CString -> IO CString
+  c_nextCode :: CDate -> CInt -> IO CString
 
 -- |next IMM date following the given IMM code
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
@@ -247,8 +247,8 @@ foreign import ccall safe "ql.h qlIMMNextDate1"
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 nextIMMDate :: Maybe Day -- ^d
   -> Bool -- ^mainCycle
-  -> IO Day
-nextIMMDate = $(ffiCallX 'nextIMMDate) c_nextDate
+  -> Day
+nextIMMDate = $(ffiCall 'nextIMMDate) c_nextDate
 
 foreign import ccall safe "ql.h qlIMMNextDate"
-  c_nextDate :: CDate -> CInt -> Ptr CString -> IO CDate
+  c_nextDate :: CDate -> CInt -> CDate
