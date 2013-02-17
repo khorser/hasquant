@@ -11,8 +11,6 @@ DayCounter *makeDayCounter() {
 
 typedef EnumObjectInfo<DayCounter> DayCounterInfo;
 static DayCounterInfo dayCounterInfo[] = {
-  {"DayCounter", &DayCounterInfo::makeObject<DayCounter>},
-  {"NoDayCounter", &DayCounterInfo::makeObject<DayCounter>},
   {"Actual/365 (Fixed)", &DayCounterInfo::makeObject<Actual365Fixed>},
   {"Act/365 (Fixed)", &DayCounterInfo::makeObject<Actual365Fixed>},
   {"A/365 (Fixed)", &DayCounterInfo::makeObject<Actual365Fixed>},

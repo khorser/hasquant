@@ -1,9 +1,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Time.DayCounter
   (
-    dayCounter
-  , noDayCounter
-  , actual365Fixed
+    actual365Fixed
   , act365Fixed
   , a365Fixed
   , a365F
@@ -55,8 +53,6 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
-dayCounter      :: IO DayCounter
-noDayCounter    :: IO DayCounter
 -- |Actual\/365 (Fixed) day count convention, also know as Act\/365 (Fixed), A\/365 (Fixed), or A\/365F. /Warning/ According to ISDA, Actual\/365 (without Fixed) is an alias for Actual\/Actual (ISDA) (see ActualActual.) If Actual\/365 is not explicitly specified as fixed in an instrument specification, you might want to double-check its meaning.
 actual365Fixed  :: IO DayCounter
 act365Fixed     :: IO DayCounter
@@ -105,8 +101,6 @@ linACTACTISDA   :: IO DayCounter
 linACTACTISMA   :: IO DayCounter
 thirty360European:: IO DayCounter
 
-dayCounter         = constructNamed "DayCounter"
-noDayCounter       = constructNamed "NoDayCounter"
 actual365Fixed     = constructNamed "Actual/365 (Fixed)"
 act365Fixed        = constructNamed "Act/365 (Fixed)"
 a365Fixed          = constructNamed "A/365 (Fixed)"

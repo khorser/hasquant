@@ -219,47 +219,47 @@ veb = constructNamed "VEB"
 zar = constructNamed "ZAR"
 
 -- |ISO 4217 three-letter code, e.g, "USD".
-code :: Currency -> IO String
-code = $(ffiCallX 'code) c_code
+code :: Currency -> String
+code = $(ffiCallIO 'code) c_code
 
 foreign import ccall safe "ql.h qlCurrencyCode"
-  c_code :: Ptr CCurrency -> Ptr CString -> IO CString
+  c_code :: Ptr CCurrency -> IO CString
 
 -- |output format
 -- The format will be fed three positional parameters, namely, value, code, and symbol, in this order.
-format :: Currency -> IO String
-format = $(ffiCallX 'format) c_format
+format :: Currency -> String
+format = $(ffiCallIO 'format) c_format
 
 foreign import ccall safe "ql.h qlCurrencyFormat"
-  c_format :: Ptr CCurrency -> Ptr CString -> IO CString
+  c_format :: Ptr CCurrency -> IO CString
 
 -- |number of fractionary parts in a unit, e.g, 100
-fractionsPerUnit :: Currency -> IO Int
-fractionsPerUnit = $(ffiCallX 'fractionsPerUnit) c_fractionsPerUnit
+fractionsPerUnit :: Currency -> Int
+fractionsPerUnit = $(ffiCallIO 'fractionsPerUnit) c_fractionsPerUnit
 
 foreign import ccall safe "ql.h qlCurrencyFractionsPerUnit"
-  c_fractionsPerUnit :: Ptr CCurrency -> Ptr CString -> IO CInt
+  c_fractionsPerUnit :: Ptr CCurrency -> IO CInt
 
 -- |fraction symbol, e.g, "¢"
-fractionSymbol :: Currency -> IO String
-fractionSymbol = $(ffiCallX 'fractionSymbol) c_fractionSymbol
+fractionSymbol :: Currency -> String
+fractionSymbol = $(ffiCallIO 'fractionSymbol) c_fractionSymbol
 
 foreign import ccall safe "ql.h qlCurrencyFractionSymbol"
-  c_fractionSymbol :: Ptr CCurrency -> Ptr CString -> IO CString
+  c_fractionSymbol :: Ptr CCurrency -> IO CString
 
 -- |ISO 4217 numeric code, e.g, "840".
-numericCode :: Currency -> IO Int
-numericCode = $(ffiCallX 'numericCode) c_numericCode
+numericCode :: Currency -> Int
+numericCode = $(ffiCallIO 'numericCode) c_numericCode
 
 foreign import ccall safe "ql.h qlCurrencyNumericCode"
-  c_numericCode :: Ptr CCurrency -> Ptr CString -> IO CInt
+  c_numericCode :: Ptr CCurrency -> IO CInt
 
 -- |symbol, e.g, "$"
-symbol :: Currency -> IO String
-symbol = $(ffiCallX 'symbol) c_symbol
+symbol :: Currency -> String
+symbol = $(ffiCallIO 'symbol) c_symbol
 
 foreign import ccall safe "ql.h qlCurrencySymbol"
-  c_symbol :: Ptr CCurrency -> Ptr CString -> IO CString
+  c_symbol :: Ptr CCurrency -> IO CString
 
 -- |create custom currency
 currency :: String -- ^name

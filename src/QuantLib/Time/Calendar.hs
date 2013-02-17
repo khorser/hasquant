@@ -5,7 +5,6 @@ module QuantLib.Time.Calendar
     adjust
   , advance
 
-  , noCalendar
   , nullCalendar
   , target
   , argentinaMerval
@@ -120,7 +119,6 @@ advance = $(ffiCall 'advance) c_calendarAdvance
 -- for actual implementation
 -- Or we could use BespokeCalendar
 
-noCalendar              :: IO Calendar
 -- |Calendar for reproducing theoretical calculations.
 -- This calendar has no holidays. It ensures that dates at whole-month distances have the same day of month.
 nullCalendar            :: IO Calendar
@@ -180,7 +178,6 @@ unitedStatesSettlement  :: IO Calendar -- ^United States calendar: generic settl
 -- This calendar has no bank holidays except for weekends (Saturdays and Sundays) as required by ISDA for calculating conventional CDS spreads.
 weekendsOnly            :: IO Calendar
 
-noCalendar              = constructNamed "NoCalendar"
 nullCalendar            = constructNamed "NullCalendar"
 target                  = constructNamed "TARGET"
 argentinaMerval         = constructNamed "Argentina::Merval"

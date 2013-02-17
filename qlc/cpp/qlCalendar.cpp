@@ -7,7 +7,6 @@ using namespace QuantLib;
 
 typedef EnumObjectInfo<Calendar> CalendarInfo;
 static CalendarInfo calendarInfo[] = {
-  {"NoCalendar", &CalendarInfo::makeObject<Calendar>},
   {"NullCalendar", &CalendarInfo::makeObject<NullCalendar>},
   {"TARGET", &CalendarInfo::makeObject<TARGET>},
   {"Argentina::Merval", &CalendarInfo::makeObject<Argentina>},

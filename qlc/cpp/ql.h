@@ -224,12 +224,12 @@ extern "C" {
   const char *DLLEXPORT qlCurrencyName(Currency *currency);
 
   void DLLEXPORT qlFreeCurrency(Currency *currency);
-  char* DLLEXPORT qlCurrencyCode(Currency* o, char **e);
-  char* DLLEXPORT qlCurrencyFormat(Currency* o, char **e);
-  int DLLEXPORT qlCurrencyFractionsPerUnit(Currency* o, char **e);
-  char* DLLEXPORT qlCurrencyFractionSymbol(Currency* o, char **e);
-  int DLLEXPORT qlCurrencyNumericCode(Currency* o, char **e);
-  char* DLLEXPORT qlCurrencySymbol(Currency* o, char **e);
+  char* DLLEXPORT qlCurrencyCode(Currency* o);
+  char* DLLEXPORT qlCurrencyFormat(Currency* o);
+  int DLLEXPORT qlCurrencyFractionsPerUnit(Currency* o);
+  char* DLLEXPORT qlCurrencyFractionSymbol(Currency* o);
+  int DLLEXPORT qlCurrencyNumericCode(Currency* o);
+  char* DLLEXPORT qlCurrencySymbol(Currency* o);
   void DLLEXPORT qlFreeRounding(Rounding *o);
   Rounding* DLLEXPORT qlRounding(char **e);
   Rounding* DLLEXPORT qlRounding1(int precision, int type, int digit, char **e);

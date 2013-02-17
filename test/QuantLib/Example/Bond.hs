@@ -76,7 +76,6 @@ run = do
   targetCal <- target
   nyseCal <- unitedStatesNYSE
   usGovBondCal <- unitedStatesGovernmentBond
-  nocal <- noCalendar
   
   settlDate <- adjust targetCal (18 `september` 2008) Following
   todaysDate <- advance targetCal
@@ -167,7 +166,7 @@ run = do
                                   ModifiedFollowing
                                   100.0
                                   (Just $ 15 `may` 2007)
-                                  nocal >>= asBond
+                                  usGovBondCal >>= asBond
   zcBond <- zeroCouponBond settlementDays
                                usGovBondCal
                                faceAmount

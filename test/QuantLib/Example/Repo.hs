@@ -55,10 +55,9 @@ run = do
   bondSchedule <- schedule (Just bondDatedDate) bondMaturityDate
     p bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
     Nothing Nothing
-  noCal <- noCalendar
   fixedBond <- fixedRateBond bondSettlementDays faceAmount bondSchedule [bondCoupon]
     bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate)
-    noCal
+    bondCalendar
   b <- asBond fixedBond
   -- liftM2 setPricingEngine (asInstrument b) (discountingBondEngine bondCurve Nothing)]
   i <- asInstrument b

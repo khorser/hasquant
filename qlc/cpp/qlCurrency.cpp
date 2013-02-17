@@ -97,48 +97,12 @@ const char *qlCurrencyName(Currency *currency) {
   return DUP(name.c_str());
 }
 
-char* qlCurrencyCode(Currency* o, char **e) {
-  try {
-    return DUP(((arg(o))->code()).c_str());
-  } catch (std::exception& er) {
-    return handleException<char*>(e, er);
-  }
-}
-char* qlCurrencyFormat(Currency* o, char **e) {
-  try {
-    return DUP(arg(o)->format().c_str());
-  } catch (std::exception& er) {
-    return handleException<char*>(e, er);
-  }
-}
-int qlCurrencyFractionsPerUnit(Currency* o, char **e) {
-  try {
-    return arg(o)->fractionsPerUnit();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
-}
-char* qlCurrencyFractionSymbol(Currency* o, char **e) {
-  try {
-    return DUP((arg(o)->fractionSymbol()).c_str());
-  } catch (std::exception& er) {
-    return handleException<char*>(e, er);
-  }
-}
-int qlCurrencyNumericCode(Currency* o, char **e) {
-  try {
-    return arg(o)->numericCode();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
-}
-char* qlCurrencySymbol(Currency* o, char **e) {
-  try {
-    return DUP(arg(o)->symbol().c_str());
-  } catch (std::exception& er) {
-    return handleException<char*>(e, er);
-  }
-}
+char* qlCurrencyCode(Currency* o) { return DUP(((arg(o))->code()).c_str()); }
+char* qlCurrencyFormat(Currency* o) { return DUP(arg(o)->format().c_str()); }
+int qlCurrencyFractionsPerUnit(Currency* o) { return arg(o)->fractionsPerUnit(); }
+char* qlCurrencyFractionSymbol(Currency* o) { return DUP((arg(o)->fractionSymbol()).c_str()); }
+int qlCurrencyNumericCode(Currency* o) { return arg(o)->numericCode(); }
+char* qlCurrencySymbol(Currency* o) { return DUP(arg(o)->symbol().c_str()); }
 
 void qlFreeRounding(Rounding *o) { del(o); }
 
