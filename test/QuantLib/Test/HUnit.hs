@@ -37,6 +37,87 @@ import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
+test_bondEval :: IO ()
+test_bondEval = do
+  r <- Settings.keepingSettings BondExample.run
+  let (fixnpv, znpv, fnpv) = BondExample.npvR r
+      (fixy, zy, fy) = BondExample.yieldR r
+      (fixclean, zclean, fclean) = BondExample.cleanPriceR r
+      (fixdirty, zdirty, fdirty) = BondExample.dirtyPriceR r
+      (fixaccrual, zaccrual, faccrual) = BondExample.accruedAmountR r
+      (fixprev, fprev) = BondExample.previousCoupon r
+      (fixnext, fnext) = BondExample.nextCoupon r
+      (fixnextD, znextD, fnextD) = BondExample.nextCouponDate r
+      cleanFromYield = BondExample.cleanPriceFromYield r
+      yieldFromClean = BondExample.yieldFromCleanPrice r
+      tradable = BondExample.tradable r
+
+  assertBool $ abs(fixnpv-107.6682891) < 1e-7
+  assertBool $ abs(znpv-100.9221782) < 1e-7
+  assertBool $ abs(fnpv-102.3593146) < 1e-7
+  assertBool $ abs(fixy-0.0364756) < 1e-7
+  assertBool $ abs(zy-0.0300006) < 1e-7
+  assertBool $ abs(fy-0.0220096) < 1e-7
+
+  assertBool $ abs(fixclean-106.1275283) < 1e-7
+  assertBool $ abs(zclean-100.9221782) < 1e-7
+  assertBool $ abs(fclean-101.7972017) < 1e-7
+  assertBool $ abs(fixdirty-107.6682891) < 1e-7
+  assertBool $ abs(zdirty-100.9221782) < 1e-7
+  assertBool $ abs(fdirty-102.3593146) < 1e-7
+  assertBool $ abs(fixaccrual-1.5407609) < 1e-7
+  assertBool $ abs(zaccrual-0.0) < 1e-7
+  assertBool $ abs(faccrual-0.5621129) < 1e-7
+  assertBool $ abs(fixprev-0.045) < 1e-7
+  assertBool $ abs(fprev-0.0288625) < 1e-7
+  assertBool $ abs(fixnext-0.045) < 1e-7
+  assertBool $ abs(fnext-0.0342984) < 1e-7
+  assertEqual fixnextD (fromGregorian 2008 11 17)
+  assertEqual znextD (fromGregorian 2013 08 15)
+  assertEqual fnextD (fromGregorian 2008 10 21)
+  assertBool $ abs(cleanFromYield-101.79720) < 1e-5 -- because of difference in QL versions?
+  assertBool $ abs(yieldFromClean-0.0220096) < 1e-7
+
+  assertEqual tradable (True, True, False)
+
+  performGC
+
+test_repoEval :: IO ()
+test_repoEval = do
+  r <- Settings.keepingSettings RepoExample.run
+
+  assertBool $ abs(RepoExample.cleanPriceR r-89.9769362) < 1e-7
+  assertBool $ abs(RepoExample.dirtyPriceR r-93.2880473) < 1e-7
+  assertBool $ abs(RepoExample.accruedAmountSettlement r-3.3111111) < 1e-7
+  assertBool $ abs(RepoExample.accruedAmountDelivery r-3.3333333) < 1e-7
+  assertBool $ abs(RepoExample.spotIncomeR r-3.9834025) < 1e-7
+  assertBool $ abs(RepoExample.fwdIncomeR r-4.0846473) < 1e-7
+  assertBool $ abs(RepoExample.npvR r+0.00002806598) < 1e-11
+  assertBool $ abs(RepoExample.cleanForwardPriceR r-88.2411379) < 1e-7
+  assertBool $ abs(RepoExample.forwardPriceR r-91.5744712) < 1e-7
+  assertBool $ abs(RepoExample.impliedYieldR r-0.050000633) < 1e-9
+  assertBool $ abs(RepoExample.zeroRateR r-0.05) < 1e-7
+
+  performGC
+
+test_fraEval :: IO ()
+test_fraEval = do
+  _ <- Settings.keepingSettings FRAExample.run
+  performGC
+
+test_swapEval :: IO ()
+test_swapEval = do
+  _ <- Settings.keepingSettings SwapExample.run
+  performGC
+
+test_bondCurveEval :: IO ()
+test_bondCurveEval = do
+  _ <- Settings.keepingSettings BondCurveExample.run
+  performGC
+
+-- if we don't do GC we have a chance of getting
+-- "could not notify one or more observers: year 2200 out of bounds"
+-- from one of the outstanding rate helpers when QuickCheck sets evaluation date to some border value like 27Nov2199
 test_evalDate :: IO ()
 test_evalDate = do
   t1 <- Settings.evaluationDate
@@ -259,85 +340,3 @@ test_truncateSchedule = do
                fromGregorian 2013 03 21,
                fromGregorian 2013 04 15]
               (Schedule.dates truncated)
-
-test_bondEval :: IO ()
-test_bondEval = do
-  r <- BondExample.run
-  let (fixnpv, znpv, fnpv) = BondExample.npvR r
-      (fixy, zy, fy) = BondExample.yieldR r
-      (fixclean, zclean, fclean) = BondExample.cleanPriceR r
-      (fixdirty, zdirty, fdirty) = BondExample.dirtyPriceR r
-      (fixaccrual, zaccrual, faccrual) = BondExample.accruedAmountR r
-      (fixprev, fprev) = BondExample.previousCoupon r
-      (fixnext, fnext) = BondExample.nextCoupon r
-      (fixnextD, znextD, fnextD) = BondExample.nextCouponDate r
-      cleanFromYield = BondExample.cleanPriceFromYield r
-      yieldFromClean = BondExample.yieldFromCleanPrice r
-      tradable = BondExample.tradable r
-
-  assertBool $ abs(fixnpv-107.6682891) < 1e-7
-  assertBool $ abs(znpv-100.9221782) < 1e-7
-  assertBool $ abs(fnpv-102.3593146) < 1e-7
-  assertBool $ abs(fixy-0.0364756) < 1e-7
-  assertBool $ abs(zy-0.0300006) < 1e-7
-  assertBool $ abs(fy-0.0220096) < 1e-7
-
-  assertBool $ abs(fixclean-106.1275283) < 1e-7
-  assertBool $ abs(zclean-100.9221782) < 1e-7
-  assertBool $ abs(fclean-101.7972017) < 1e-7
-  assertBool $ abs(fixdirty-107.6682891) < 1e-7
-  assertBool $ abs(zdirty-100.9221782) < 1e-7
-  assertBool $ abs(fdirty-102.3593146) < 1e-7
-  assertBool $ abs(fixaccrual-1.5407609) < 1e-7
-  assertBool $ abs(zaccrual-0.0) < 1e-7
-  assertBool $ abs(faccrual-0.5621129) < 1e-7
-  assertBool $ abs(fixprev-0.045) < 1e-7
-  assertBool $ abs(fprev-0.0288625) < 1e-7
-  assertBool $ abs(fixnext-0.045) < 1e-7
-  assertBool $ abs(fnext-0.0342984) < 1e-7
-  assertEqual fixnextD (fromGregorian 2008 11 17)
-  assertEqual znextD (fromGregorian 2013 08 15)
-  assertEqual fnextD (fromGregorian 2008 10 21)
-  assertBool $ abs(cleanFromYield-101.79720) < 1e-5 -- because of difference in QL versions?
-  assertBool $ abs(yieldFromClean-0.0220096) < 1e-7
-
-  assertEqual tradable (True, True, False)
-
-  performGC
-
-test_repoEval :: IO ()
-test_repoEval = do
-  r <- RepoExample.run
-
-  assertBool $ abs(RepoExample.cleanPriceR r-89.9769362) < 1e-7
-  assertBool $ abs(RepoExample.dirtyPriceR r-93.2880473) < 1e-7
-  assertBool $ abs(RepoExample.accruedAmountSettlement r-3.3111111) < 1e-7
-  assertBool $ abs(RepoExample.accruedAmountDelivery r-3.3333333) < 1e-7
-  assertBool $ abs(RepoExample.spotIncomeR r-3.9834025) < 1e-7
-  assertBool $ abs(RepoExample.fwdIncomeR r-4.0846473) < 1e-7
-  assertBool $ abs(RepoExample.npvR r+0.00002806598) < 1e-11
-  assertBool $ abs(RepoExample.cleanForwardPriceR r-88.2411379) < 1e-7
-  assertBool $ abs(RepoExample.forwardPriceR r-91.5744712) < 1e-7
-  assertBool $ abs(RepoExample.impliedYieldR r-0.050000633) < 1e-9
-  assertBool $ abs(RepoExample.zeroRateR r-0.05) < 1e-7
-
-  performGC
-
-test_fraEval :: IO ()
-test_fraEval = do
-  _ <- FRAExample.run
-  performGC
-
-test_swapEval :: IO ()
-test_swapEval = do
-  _ <- SwapExample.run
-  performGC
-
-test_bondCurveEval :: IO ()
-test_bondCurveEval = do
-  _ <- BondCurveExample.run
-  performGC
-
--- if we don't do GC we have a chance of getting
--- "could not notify one or more observers: year 2200 out of bounds"
--- from one of the outstanding rate helpers when QuickCheck sets evaluation date to some border value like 27Nov2199
