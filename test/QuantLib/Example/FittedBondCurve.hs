@@ -28,22 +28,24 @@ data Result = Result
 
 run :: IO Result
 run = do
-  nullCal <- nullCalendar
+  cal <- nullCalendar
   tod1 <- today
-  tod <- adjust nullCal tod1 Following
+  tod <- adjust cal tod1 Following
   setEvaluationDate (Just tod)
   dc <- simple
   
   p <- period bondSettleDays Days
-  bondSettle <- advance' nullCal tod p Following False
+  bondSettle <- advance' cal tod p Following False
+  print $ "Bond settlement date" ++ show bondSettle
   cleanQuotes <- mapM simpleQuote cleanPrices
   bondPeriod <- fromFrequency Annual
 
   helpers <- mapM (\(q, l, c) -> do
     pm <- period l Years
-    mat <- advance' nullCal bondSettle pm Following False
-    s <- schedule (Just bondSettle) mat bondPeriod nullCal
+    mat <- advance' cal bondSettle pm Following False
+    s <- schedule (Just bondSettle) mat bondPeriod cal
       ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+
     qq <- asQuote q
     hA <- fixedRateBondHelper qq (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing
     hB <- fixedRateBondHelper qq (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing >>= asRateHelper
@@ -52,10 +54,10 @@ run = do
 
   let (instrA, instrB) = unzip helpers
 
-  ts0 <- piecewiseYieldCurve' curveSettleDays nullCal instrB dc [] 1e-12 Discount LogLinear
+  ts0 <- piecewiseYieldCurve' curveSettleDays cal instrB dc [] 1e-12 Discount LogLinear
 
   expSplines <- exponentialSplinesFitting True
-  ts1 <- fittedBondDiscountCurve curveSettleDays nullCal instrA dc expSplines tolerance maxEvals
+  ts1 <- fittedBondDiscountCurve curveSettleDays cal instrA dc expSplines tolerance maxEvals
   printOutput ts1
 
   return $ Result 5.6
