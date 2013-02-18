@@ -39,6 +39,8 @@ on the state
 
 Plan: migrate business calculation first and then think of reusing underlying math
 
+No empty objects like ccy, calendar, day counter!
+
 --
 Currency::
 Period::

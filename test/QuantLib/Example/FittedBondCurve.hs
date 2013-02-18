@@ -5,6 +5,8 @@ module QuantLib.Example.FittedBondCurve
   )
 where
 
+import Control.Monad(forM_)
+
 import QuantLib.Settings
 import QuantLib.Time.Calendar
 import QuantLib.Time.Frequency
@@ -36,7 +38,7 @@ run = do
   
   p <- period bondSettleDays Days
   bondSettle <- advance' cal tod p Following False
-  print $ "Bond settlement date" ++ show bondSettle
+  putStrLn $ "Bond settlement date" ++ show bondSettle
   cleanQuotes <- mapM simpleQuote cleanPrices
   bondPeriod <- fromFrequency Annual
 
@@ -56,9 +58,19 @@ run = do
 
   ts0 <- piecewiseYieldCurve' curveSettleDays cal instrB dc [] 1e-12 Discount LogLinear
 
-  expSplines <- exponentialSplinesFitting True
-  ts1 <- fittedBondDiscountCurve curveSettleDays cal instrA dc expSplines tolerance maxEvals
-  printOutput ts1
+  -- results do not quite match with thos of FittedBondCurve QuantLib example
+  -- GHC messing up with floating point?
+
+  fittings <- sequence [exponentialSplinesFitting True,
+                simplePolynomialFitting 3 True,
+                nelsonSiegelFitting,
+                cubicBSplinesFitting [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True,
+                svenssonFitting]
+
+  firstIter <- mapM
+      (\f -> fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals)
+      fittings
+  forM_ firstIter printOutput
 
   return $ Result 5.6
   where

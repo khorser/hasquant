@@ -32,7 +32,6 @@ import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.FRA as FRAExample
 import qualified QuantLib.Example.Swap as SwapExample
-import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
@@ -103,11 +102,6 @@ test_fraEval = do
 test_swapEval :: IO ()
 test_swapEval = do
   _ <- Settings.keepingSettings' SwapExample.run
-  return ()
-
-test_bondCurveEval :: IO ()
-test_bondCurveEval = do
-  _ <- Settings.keepingSettings' BondCurveExample.run
   return ()
 
 test_evalDate :: IO ()
