@@ -272,7 +272,7 @@ currency :: String -- ^name
   -> String -- ^formatString
   -> Maybe Currency -- ^triangulationCurrency
   -> IO Currency
-currency = $(ffiConstruct 'currency) c_currency
+currency = $(ffiCall 'currency) c_currency
 
 foreign import ccall safe "ql.h qlCreateCurrency"
   c_currency :: CString -> CString -> CInt -> CString -> CString -> CInt -> Ptr CRounding -> CString -> Ptr CCurrency -> Ptr CString -> IO (Ptr CCurrency)

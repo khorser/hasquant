@@ -37,7 +37,7 @@ assetSwap' :: Bool -- ^parAssetSwap
   -> Maybe Day -- ^dealMaturity
   -> Bool -- ^payBondCoupon
   -> IO AssetSwap
-assetSwap' = $(ffiConstruct 'assetSwap') c_assetSwap'
+assetSwap' = $(ffiCall 'assetSwap') c_assetSwap'
 
 foreign import ccall safe "ql.h qlAssetSwap1"
   c_assetSwap' :: CInt -> Ptr CBond -> CDouble -> CDouble -> CDouble -> Ptr CIborIndex -> CDouble -> Ptr CDayCounter -> CDate -> CInt -> Ptr CString -> IO (Ptr CAssetSwap)
@@ -51,13 +51,13 @@ assetSwap :: Bool -- ^payBondCoupon
   -> DayCounter -- ^floatingDayCount
   -> Bool -- ^parAssetSwap
   -> IO AssetSwap
-assetSwap = $(ffiConstruct 'assetSwap) c_assetSwap
+assetSwap = $(ffiCall 'assetSwap) c_assetSwap
 
 foreign import ccall safe "ql.h qlAssetSwap"
   c_assetSwap :: CInt -> Ptr CBond -> CDouble -> Ptr CIborIndex -> CDouble -> Ptr CSchedule -> Ptr CDayCounter -> CInt -> Ptr CString -> IO (Ptr CAssetSwap)
 
 bondLeg :: AssetSwap -> IO Leg
-bondLeg = $(ffiConstruct 'bondLeg) c_bondLeg
+bondLeg = $(ffiCall 'bondLeg) c_bondLeg
 
 foreign import ccall safe "ql.h qlAssetSwapBondLeg"
   c_bondLeg :: Ptr CAssetSwap -> Ptr CString -> IO (Ptr CLeg)
@@ -87,7 +87,7 @@ foreign import ccall safe "ql.h qlAssetSwapFairSpread"
   c_fairSpread :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 
 floatingLeg :: AssetSwap -> IO Leg
-floatingLeg = $(ffiConstruct 'floatingLeg) c_floatingLeg
+floatingLeg = $(ffiCall 'floatingLeg) c_floatingLeg
 
 foreign import ccall safe "ql.h qlAssetSwapFloatingLeg"
   c_floatingLeg :: Ptr CAssetSwap -> Ptr CString -> IO (Ptr CLeg)

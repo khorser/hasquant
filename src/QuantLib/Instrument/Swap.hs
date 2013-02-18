@@ -49,7 +49,7 @@ import qualified QuantLib.Instrument.VanillaSwapType as VanillaSwapType
 -- |Multi leg constructor.
 swap' :: [(Leg, Bool)] -- ^(legs, payer)
   -> IO Swap
-swap' = $(ffiConstruct 'swap') c_swap'
+swap' = $(ffiCall 'swap') c_swap'
 
 foreign import ccall safe "ql.h qlSwap1"
   c_swap' :: CUInt -> Ptr (Ptr CLeg) -> Ptr CInt -> Ptr CString -> IO (Ptr CSwap)
@@ -65,7 +65,7 @@ bmaSwap :: BMASwapType.BMASwapType -- ^type
   -> BMAIndex -- ^bmaIndex
   -> DayCounter -- ^bmaDayCount
   -> IO BMASwap
-bmaSwap = $(ffiConstruct 'bmaSwap) c_bmaSwap
+bmaSwap = $(ffiCall 'bmaSwap) c_bmaSwap
 
 foreign import ccall safe "ql.h qlBMASwap"
   c_bmaSwap :: CInt -> CDouble -> Ptr CSchedule -> CDouble -> CDouble -> Ptr CIborIndex -> Ptr CDayCounter -> Ptr CSchedule -> Ptr CBMAIndex -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CBMASwap)
@@ -81,7 +81,7 @@ vanillaSwap :: VanillaSwapType.VanillaSwapType -- ^type
   -> DayCounter -- ^floatingDayCount
   -> BusinessDayConvention -- ^paymentConvention
   -> IO VanillaSwap
-vanillaSwap = $(ffiConstruct 'vanillaSwap) c_vanillaSwap
+vanillaSwap = $(ffiCall 'vanillaSwap) c_vanillaSwap
 
 foreign import ccall safe "ql.h qlVanillaSwap"
   c_vanillaSwap :: CInt -> CDouble -> Ptr CSchedule -> CDouble -> Ptr CDayCounter -> Ptr CSchedule -> Ptr CIborIndex -> CDouble -> Ptr CDayCounter -> CInt -> Ptr CString -> IO (Ptr CVanillaSwap)
@@ -90,7 +90,7 @@ foreign import ccall safe "ql.h qlVanillaSwap"
 swap :: Leg -- ^firstLeg
   -> Leg -- ^secondLeg
   -> IO Swap
-swap = $(ffiConstruct 'swap) c_swap
+swap = $(ffiCall 'swap) c_swap
 
 foreign import ccall safe "ql.h qlSwap"
   c_swap :: Ptr CLeg -> Ptr CLeg -> Ptr CString -> IO (Ptr CSwap)
@@ -106,7 +106,7 @@ foreign import ccall safe "ql.h qlSwapEndDiscounts"
 leg :: Swap
   -> Word -- ^j
   -> IO Leg
-leg = $(ffiConstruct 'leg) c_leg
+leg = $(ffiCall 'leg) c_leg
 
 foreign import ccall safe "ql.h qlSwapLeg"
   c_leg :: Ptr CSwap -> CUInt -> Ptr CString -> IO (Ptr CLeg)
@@ -166,7 +166,7 @@ foreign import ccall safe "ql.h qlVanillaSwapFairSpread"
   c_fairSpread :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
 
 fixedLeg :: VanillaSwap -> IO Leg
-fixedLeg = $(ffiConstruct 'fixedLeg) c_fixedLeg
+fixedLeg = $(ffiCall 'fixedLeg) c_fixedLeg
 
 foreign import ccall safe "ql.h qlVanillaSwapFixedLeg"
   c_fixedLeg :: Ptr CVanillaSwap -> Ptr CString -> IO (Ptr CLeg)
@@ -184,7 +184,7 @@ foreign import ccall safe "ql.h qlVanillaSwapFixedLegNPV"
   c_fixedLegNPV :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
 
 floatingLeg :: VanillaSwap -> IO Leg
-floatingLeg = $(ffiConstruct 'floatingLeg) c_floatingLeg
+floatingLeg = $(ffiCall 'floatingLeg) c_floatingLeg
 
 foreign import ccall safe "ql.h qlVanillaSwapFloatingLeg"
   c_floatingLeg :: Ptr CVanillaSwap -> Ptr CString -> IO (Ptr CLeg)
@@ -202,7 +202,7 @@ foreign import ccall safe "ql.h qlVanillaSwapFloatingLegNPV"
   c_floatingLegNPV :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
 
 bmaLeg :: BMASwap -> IO Leg
-bmaLeg = $(ffiConstruct 'bmaLeg) c_bmaLeg
+bmaLeg = $(ffiCall 'bmaLeg) c_bmaLeg
 
 foreign import ccall safe "ql.h qlBMASwapBmaLeg"
   c_bmaLeg :: Ptr CBMASwap -> Ptr CString -> IO (Ptr CLeg)
@@ -238,7 +238,7 @@ foreign import ccall safe "ql.h qlBMASwapLiborFraction"
   c_liborFraction :: Ptr CBMASwap -> Ptr CString -> IO CDouble
 
 liborLeg :: BMASwap -> IO Leg
-liborLeg = $(ffiConstruct 'liborLeg) c_liborLeg
+liborLeg = $(ffiCall 'liborLeg) c_liborLeg
 
 foreign import ccall safe "ql.h qlBMASwapLiborLeg"
   c_liborLeg :: Ptr CBMASwap -> Ptr CString -> IO (Ptr CLeg)

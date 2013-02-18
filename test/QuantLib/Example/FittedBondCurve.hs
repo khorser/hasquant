@@ -42,7 +42,7 @@ run = do
   helpers <- mapM (\(q, l, c) -> do
     pm <- period l Years
     mat <- advance' nullCal bondSettle pm Following False
-    s <- schedule (Just $ bondSettle) mat bondPeriod nullCal
+    s <- schedule (Just bondSettle) mat bondPeriod nullCal
       ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
     qq <- asQuote q
     hA <- fixedRateBondHelper qq (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing

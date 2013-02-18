@@ -196,7 +196,7 @@ if (index($fret, ' ') > -1)
 push @hs, "$hname :: $hargs  -> IO $hret";
 if ($ctor or $implCtor)
 {
-  push @hs, "$hname = \$(ffiConstruct '$hname) $fname"
+  push @hs, "$hname = \$(ffiCall '$hname) $fname"
 }
 else
 {

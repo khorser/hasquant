@@ -34,7 +34,7 @@ interestRate :: Double -- ^r
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> IO InterestRate
-interestRate = $(ffiConstruct 'interestRate) c_interestRate
+interestRate = $(ffiCall 'interestRate) c_interestRate
 
 -- |compound factor implied by the rate compounded between two dates
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded between two dates.
@@ -92,7 +92,7 @@ equivalentRate' :: InterestRate
   -> Maybe Day -- ^refStart
   -> Maybe Day -- ^refEnd
   -> IO InterestRate
-equivalentRate' = $(ffiConstruct 'equivalentRate') c_equivalentRate'
+equivalentRate' = $(ffiCall 'equivalentRate') c_equivalentRate'
 
 foreign import ccall safe "ql.h qlInterestRateEquivalentRate1"
   c_equivalentRate' :: Ptr CInterestRate -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO (Ptr CInterestRate)
@@ -104,7 +104,7 @@ equivalentRate :: InterestRate
   -> Frequency -- ^freq
   -> YearFraction -- ^t
   -> IO InterestRate
-equivalentRate = $(ffiConstruct 'equivalentRate) c_equivalentRate
+equivalentRate = $(ffiCall 'equivalentRate) c_equivalentRate
 
 foreign import ccall safe "ql.h qlInterestRateEquivalentRate"
   c_equivalentRate :: Ptr CInterestRate -> CInt -> CInt -> CYearFraction -> Ptr CString -> IO (Ptr CInterestRate)
@@ -121,7 +121,7 @@ impliedRate' :: InterestRate
   -> Maybe Day -- ^refStart
   -> Maybe Day -- ^refEnd
   -> IO InterestRate
-impliedRate' = $(ffiConstruct 'impliedRate') c_impliedRate'
+impliedRate' = $(ffiCall 'impliedRate') c_impliedRate'
 
 foreign import ccall safe "ql.h qlInterestRateImpliedRate1"
   c_impliedRate' :: Ptr CInterestRate -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO (Ptr CInterestRate)
@@ -135,7 +135,7 @@ impliedRate :: InterestRate
   -> Frequency -- ^freq
   -> YearFraction -- ^t
   -> IO InterestRate
-impliedRate = $(ffiConstruct 'impliedRate) c_impliedRate
+impliedRate = $(ffiCall 'impliedRate) c_impliedRate
 
 foreign import ccall safe "ql.h qlInterestRateImpliedRate"
   c_impliedRate :: Ptr CInterestRate -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CYearFraction -> Ptr CString -> IO (Ptr CInterestRate)

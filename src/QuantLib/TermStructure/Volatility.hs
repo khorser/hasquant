@@ -24,4 +24,4 @@ constantOptionletVol :: Word -- ^settlementDays
  -> Quote -- ^volatility
  -> DayCounter -- ^dc
  -> IO OptionletVolStructure
-constantOptionletVol = $(ffiConstruct 'constantOptionletVol) c_constantOptionletVol
+constantOptionletVol = $(ffiCall 'constantOptionletVol) c_constantOptionletVol

@@ -106,7 +106,7 @@ iborIndex :: String -- ^familyName
   -> DayCounter -- ^dayCounter
   -> Maybe YieldTermStructure
   -> IO IborIndex
-iborIndex = $(ffiConstruct 'iborIndex) c_iborIndex
+iborIndex = $(ffiCall 'iborIndex) c_iborIndex
 
 foreign import ccall safe "ql.h qlLibor"
   c_libor :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency
@@ -123,7 +123,7 @@ libor :: String -- ^familyName
   -> Calendar -- ^financialCenterCalendar
   -> DayCounter -- ^dayCounter
   -> Maybe YieldTermStructure -> IO IborIndex
-libor = $(ffiConstruct 'libor) c_libor
+libor = $(ffiCall 'libor) c_libor
 
 foreign import ccall safe "ql.h qlDailyTenorLibor"
   c_dailyTenorLibor :: CString -> CUInt -> Ptr CCurrency -> Ptr CCalendar
@@ -138,7 +138,7 @@ dailyTenorLibor :: String -- ^ familyName
   -> Calendar -- ^financialCenterCalendar
   -> DayCounter -- ^dayCounter
   -> Maybe YieldTermStructure -> IO IborIndex
-dailyTenorLibor = $(ffiConstruct 'dailyTenorLibor) c_dailyTenorLibor
+dailyTenorLibor = $(ffiCall 'dailyTenorLibor) c_dailyTenorLibor
 
 foreign import ccall safe "ql.h qlOvernightIndex"
   c_overnightIndex :: CString -> CUInt -> Ptr CCurrency -> Ptr CCalendar
@@ -153,7 +153,7 @@ overnightIndex :: String -- ^familyName
   -> DayCounter -- ^dayCounter
   -> Maybe YieldTermStructure
   -> IO OvernightIndex
-overnightIndex = $(ffiConstruct 'overnightIndex) c_overnightIndex
+overnightIndex = $(ffiCall 'overnightIndex) c_overnightIndex
 
 foreign import ccall safe "ql.h qlCreateIbor"
   c_createIbor :: CString -> Ptr CPeriod -> Ptr CYieldTermStructure
@@ -166,14 +166,14 @@ foreign import ccall safe "ql.h qlCreateDailyTenorIbor"
     -> Ptr CString -> IO (Ptr CIborIndex)
 
 createIbor :: String -> Period -> Maybe YieldTermStructure -> IO IborIndex
-createIbor = $(ffiConstruct 'createIbor) c_createIbor
+createIbor = $(ffiCall 'createIbor) c_createIbor
 
 createIborON :: String -> Maybe YieldTermStructure -> IO IborIndex
-createIborON = $(ffiConstruct 'createIborON) c_createIborON
+createIborON = $(ffiCall 'createIborON) c_createIborON
 
 createDailyTenorLibor :: String -> Word -> Maybe YieldTermStructure
   -> IO IborIndex
-createDailyTenorLibor = $(ffiConstruct 'createDailyTenorLibor) c_createDailyTenorLibor
+createDailyTenorLibor = $(ffiCall 'createDailyTenorLibor) c_createDailyTenorLibor
 
 -- |Euribor index
 -- Euribor rate fixed by the ECB./Warning/ This is the rate fixed by the ECB. Use EurLibor if you're interested in the London fixing by BBA. QuantLibXL: qlEuribor
@@ -224,7 +224,7 @@ foreign import ccall safe "ql.h qlCreateONIndex"
     -> IO (Ptr COvernightIndex)
 
 createONIndex :: String -> Maybe YieldTermStructure -> IO OvernightIndex
-createONIndex = $(ffiConstruct 'createONIndex) c_createONIndex
+createONIndex = $(ffiCall 'createONIndex) c_createONIndex
 
 -- |Eonia (Euro Overnight Index Average) rate fixed by the ECB. QuantLibXL: qlEonia
 eonia :: Maybe YieldTermStructure -> IO OvernightIndex

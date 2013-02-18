@@ -3,7 +3,6 @@ module QuantLib.Internal.Syntax
   (
     ffiCall
   , ffiCallIO
-  , ffiConstruct
   , ffiCallX
   )
 where
@@ -190,34 +189,25 @@ parseSignature t@(AppT _ _) = do
 parseSignature t = fail $ "Unsupported type: " ++ show t
 
 ffiCall :: Name -> ExpQ
-ffiCall hn = ffiCallImpl False False hn [|id|]
+ffiCall hn = ffiCallImpl False hn [|id|]
 
 ffiCallIO :: Name -> ExpQ
-ffiCallIO hn = ffiCallImpl True False hn [|id|]
-
-ffiConstruct :: Name -> ExpQ
-ffiConstruct hn = ffiCallImpl False True hn [|construct|]
+ffiCallIO hn = ffiCallImpl True hn [|id|]
 
 ffiCallX :: Name -> ExpQ
-ffiCallX hn = ffiCallImpl False False hn [|handleExceptions|]
+ffiCallX hn = ffiCallImpl False hn [|handleExceptions|]
 
-ffiCallImpl :: Bool -> Bool -> Name -> ExpQ -> ExpQ
-ffiCallImpl io constr hFun extra = do
+ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
+ffiCallImpl io hFun extra = do
   r <- reify hFun
   case r of
-    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall io constr extra)
+    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall io extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Bool -> Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
-genFfiCall io constr extra aa r = do
+genFfiCall :: Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
+genFfiCall io extra aa r = do
   varNames <- mapM (\_ -> newName "x") aa
   cFunName <- newName "fun"
-  unless constr $
-    case r of
-      AtomicRV ForeignPtrR -> fail "ForeignPtr can be returned from constructors only"
-      IORV ForeignPtrR -> fail "ForeignPtr can be returned from constructors only"
-      _ -> return ()
-
   lamE (map varP (cFunName : varNames))
        (if io
          then [|unsafePerformIO $(nakedCall varNames cFunName)|]
@@ -229,11 +219,13 @@ genFfiCall io constr extra aa r = do
         (AtomicRV _, False) -> r
         (AtomicRV a, True) -> IORV a
         (IORV _, False) -> r
-        (IORV _, True) -> error "Nested IO not supported"
+        (IORV _, True) -> error "Nested IO is not supported"
 
     finalCCall :: ExpQ -> ExpQ
     finalCCall c_call =
       case r of
+        (AtomicRV ForeignPtrR) -> error "IO is required to return ForeignPtr"
+        (IORV ForeignPtrR) -> [|construct $(appE extra c_call)|]
         -- last argument is pointer to the length of the returned array
         (AtomicRV DayListR) -> [|getArray $(appE extra c_call)|]
         _ -> appE extra c_call
@@ -332,7 +324,7 @@ unmarshalA YearFractionR = [|realToFrac :: CDouble -> Double|]
 unmarshalA BoolR = [|toBool :: CInt -> Bool|]
 unmarshalA (EnumR n) = [|fromQlEnum $(stringE $ show n)|]
 unmarshalA OptDayR = [|fromQlDate|]
-unmarshalA ForeignPtrR = [|id|] -- works with construct only?
+unmarshalA ForeignPtrR = [|id|] -- this case is handled separately in finalCCall
 unmarshalA UnitR   = [|id|]
 unmarshalA DayListR = [|map fromQlDate|]
 unmarshalA StringR = error "String unmarshalling needs IO"

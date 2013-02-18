@@ -94,7 +94,7 @@ bond :: Word -- ^settlementDays
   -> Maybe Day -- ^issueDate
   -> Leg -- ^coupons
   -> IO Bond
-bond = $(ffiConstruct 'bond) c_bond
+bond = $(ffiCall 'bond) c_bond
 
 -- |old constructor for non amortizing bonds.
 -- /Warning/ The last passed cash flow must be the bond redemption. No other cash flow can have a date later than the redemption date.
@@ -105,7 +105,7 @@ bond' :: Word -- ^settlementDays
   -> Maybe Day -- ^issueDate
   -> Leg -- ^cashflows
   -> IO Bond
-bond' = $(ffiConstruct 'bond') c_bond'
+bond' = $(ffiCall 'bond') c_bond'
 
 foreign import ccall safe "ql.h qlBondMaturityDate"
   c_maturityDate :: Ptr CBond -> IO CDate
@@ -141,7 +141,7 @@ fixedRateBond :: Word -- ^settlementDays
   -> Maybe Day -- ^issueDate
   -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
-fixedRateBond = $(ffiConstruct 'fixedRateBond) c_fixedRateBond
+fixedRateBond = $(ffiCall 'fixedRateBond) c_fixedRateBond
 
 -- |simple annual compounding coupon rates with internal schedule calculation
 fixedRateBond' :: Word -- ^settlementDays
@@ -161,7 +161,7 @@ fixedRateBond' :: Word -- ^settlementDays
   -> Bool -- ^endOfMonth
   -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
-fixedRateBond' = $(ffiConstruct 'fixedRateBond') c_fixedRateBond'
+fixedRateBond' = $(ffiCall 'fixedRateBond') c_fixedRateBond'
 
 -- |generic compounding and frequency InterestRate coupons. QuantLibXL: qlFixedRateBond2
 fixedRateBond'' :: Word -- ^settlementDays
@@ -173,7 +173,7 @@ fixedRateBond'' :: Word -- ^settlementDays
   -> Maybe Day -- ^issueDate
   -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
-fixedRateBond'' = $(ffiConstruct 'fixedRateBond'') c_fixedRateBond''
+fixedRateBond'' = $(ffiCall 'fixedRateBond'') c_fixedRateBond''
 
 foreign import ccall safe "ql.h qlZeroCouponBond"
   c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate
@@ -188,7 +188,7 @@ zeroCouponBond :: Word -- ^settlementDays
   -> Double -- ^redemption
   -> Maybe Day -- ^issueDate
   -> IO Bond
-zeroCouponBond = $(ffiConstruct 'zeroCouponBond) c_zeroCouponBond
+zeroCouponBond = $(ffiCall 'zeroCouponBond) c_zeroCouponBond
 
 foreign import ccall safe "ql.h qlBondSetCouponPricer"
   c_bondSetCouponPricer :: Ptr CBond -> Ptr CFloatingRateCouponPricer
@@ -223,7 +223,7 @@ floatingRateBond :: Word -- ^settlementDays
  -> Double -- ^redemption
  -> Maybe Day -- ^issueDate
  -> IO Bond
-floatingRateBond = $(ffiConstruct 'floatingRateBond) c_floatingRateBond
+floatingRateBond = $(ffiCall 'floatingRateBond) c_floatingRateBond
 
 -- |theoretical bond yield
 -- The default bond settlement and theoretical price are used for calculation.
@@ -391,14 +391,14 @@ foreign import ccall safe "ql.h qlBondNotionals"
 
 -- |returns all the cashflows, including the redemptions.
 cashflows :: Bond -> IO Leg
-cashflows = $(ffiConstruct 'cashflows) c_cashflows
+cashflows = $(ffiCall 'cashflows) c_cashflows
 
 foreign import ccall safe "ql.h qlBondCashflows"
   c_cashflows :: Ptr CBond -> Ptr CString -> IO (Ptr CLeg)
 
 -- |returns just the redemption flows (not interest payments)
 redemptions :: Bond -> IO Leg
-redemptions = $(ffiConstruct 'redemptions) c_redemptions
+redemptions = $(ffiCall 'redemptions) c_redemptions
 
 foreign import ccall safe "ql.h qlBondRedemptions"
   c_redemptions :: Ptr CBond -> Ptr CString -> IO (Ptr CLeg)
@@ -707,7 +707,7 @@ floatingRateBond' :: Word -- ^settlementDays
   -> DateGenerationRule -- ^rule
   -> Bool -- ^endOfMonth
   -> IO Bond
-floatingRateBond' = $(ffiConstruct 'floatingRateBond') c_floatingRateBond'
+floatingRateBond' = $(ffiCall 'floatingRateBond') c_floatingRateBond'
 
 foreign import ccall safe "ql.h qlFloatingRateBond1"
   c_floatingRateBond' :: CUInt -> CDouble -> CDate -> CDate -> CInt -> Ptr CCalendar -> Ptr CIborIndex -> Ptr CDayCounter -> CInt -> CInt -> CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CInt -> CDouble -> CDate -> CDate -> CInt -> CInt -> Ptr CString -> IO (Ptr CBond)

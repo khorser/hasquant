@@ -31,7 +31,7 @@ overnightIndexedSwap :: OvernightIndexedSwapType -- ^type
   -> OvernightIndex -- ^overnightIndex
   -> Double -- ^spread
   -> IO OvernightIndexedSwap
-overnightIndexedSwap = $(ffiConstruct 'overnightIndexedSwap) c_overnightIndexedSwap
+overnightIndexedSwap = $(ffiCall 'overnightIndexedSwap) c_overnightIndexedSwap
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwap"
   c_overnightIndexedSwap :: CInt -> CDouble -> Ptr CSchedule -> CDouble -> Ptr CDayCounter -> Ptr COvernightIndex -> CDouble -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
@@ -44,7 +44,7 @@ overnightIndexedSwap' :: OvernightIndexedSwapType -- ^type
   -> OvernightIndex -- ^overnightIndex
   -> Double -- ^spread
   -> IO OvernightIndexedSwap
-overnightIndexedSwap' = $(ffiConstruct 'overnightIndexedSwap') c_overnightIndexedSwap'
+overnightIndexedSwap' = $(ffiCall 'overnightIndexedSwap') c_overnightIndexedSwap'
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwap1"
   c_overnightIndexedSwap' :: CInt -> CUInt -> Ptr CDouble -> Ptr CSchedule -> CDouble -> Ptr CDayCounter -> Ptr COvernightIndex -> CDouble -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
@@ -62,7 +62,7 @@ foreign import ccall safe "ql.h qlOvernightIndexedSwapFairSpread"
   c_fairSpread :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
 
 fixedLeg :: OvernightIndexedSwap -> IO Leg
-fixedLeg = $(ffiConstruct 'fixedLeg) c_fixedLeg
+fixedLeg = $(ffiCall 'fixedLeg) c_fixedLeg
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwapFixedLeg"
   c_fixedLeg :: Ptr COvernightIndexedSwap -> Ptr CString -> IO (Ptr CLeg)
@@ -80,7 +80,7 @@ foreign import ccall safe "ql.h qlOvernightIndexedSwapFixedLegNPV"
   c_fixedLegNPV :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
 
 overnightLeg :: OvernightIndexedSwap -> IO Leg
-overnightLeg = $(ffiConstruct 'overnightLeg) c_overnightLeg
+overnightLeg = $(ffiCall 'overnightLeg) c_overnightLeg
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwapOvernightLeg"
   c_overnightLeg :: Ptr COvernightIndexedSwap -> Ptr CString -> IO (Ptr CLeg)

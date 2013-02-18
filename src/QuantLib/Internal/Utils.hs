@@ -142,7 +142,11 @@ class Finalizable a where
 -- |Run a C function returning a new object that needs a finalizer.
 -- The function might signal an error
 construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
-construct f = handleExceptions f >>= newForeignPtr finalize
+construct f = do
+  o <- handleExceptions f
+  if o == nullPtr
+    then signalError "Foreign code did not signal an error but returned null pointer"
+    else newForeignPtr finalize o
 
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)

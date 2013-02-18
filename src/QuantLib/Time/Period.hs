@@ -28,18 +28,18 @@ foreign import ccall safe "ql.h qlPeriodToFrequency"
 period :: Int -- ^n
   -> Unit -- ^units
   -> IO Period
-period = $(ffiConstruct 'period) c_period
+period = $(ffiCall 'period) c_period
 
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual). QuantLib: qlPeriodFromFrequency
 fromFrequency :: F.Frequency -> IO Period
-fromFrequency = $(ffiConstruct 'fromFrequency) c_periodFromFreq
+fromFrequency = $(ffiCall 'fromFrequency) c_periodFromFreq
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M). QuantLib: qlFrequencyFromPeriod
 toFrequency :: Period -> IO F.Frequency
 toFrequency = $(ffiCallX 'toFrequency) c_periodToFreq
 
 parse :: String -> IO Period
-parse = $(ffiConstruct 'parse) c_parse
+parse = $(ffiCall 'parse) c_parse
 
 foreign import ccall safe "ql.h qlPeriodParserParse"
   c_parse :: CString -> Ptr CString -> IO (Ptr CPeriod)

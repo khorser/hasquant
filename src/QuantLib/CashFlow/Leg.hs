@@ -71,7 +71,7 @@ foreign import ccall safe "ql.h qlLegStartDate"
 -- | QuantLibXL: qlLeg
 leg :: [(Double, Day)] -- ^amounts and dates
   -> IO Leg
-leg = $(ffiConstruct 'leg) c_leg
+leg = $(ffiCall 'leg) c_leg
 
 -- |Returns the start (i.e. first accrual) date for the given Leg. QuantLibXL: qlLegStartDate
 startDate :: Leg -> IO Day
@@ -85,7 +85,7 @@ nextCashFlows :: Leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
   -> IO Leg
-nextCashFlows = $(ffiConstruct 'nextCashFlows) c_nextCashFlows
+nextCashFlows = $(ffiCall 'nextCashFlows) c_nextCashFlows
 
 foreign import ccall safe "ql.h qlPreviousCashFlows"
   c_previousCashFlows :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO (Ptr CLeg)
@@ -95,7 +95,7 @@ previousCashFlows :: Leg
   -> Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
   -> IO Leg
-previousCashFlows = $(ffiConstruct 'previousCashFlows) c_previousCashFlows
+previousCashFlows = $(ffiCall 'previousCashFlows) c_previousCashFlows
 
 foreign import ccall safe "ql.h qlLegCashFlows"
   c_legCashFlows :: Ptr CLeg -> CInt -> CDate -> Ptr (Ptr CDouble)

@@ -144,7 +144,7 @@ thirty360European  = constructNamed "30/360 (European)"
 foreign import ccall safe "ql.h qlDayCounterBusiness252"
   c_business252 :: Ptr CCalendar -> Ptr CString -> IO (Ptr CDayCounter)
 business252     :: Calendar -> IO DayCounter
-business252 = $(ffiConstruct 'business252) c_business252
+business252 = $(ffiCall 'business252) c_business252
 
 -- |Returns the number of days between two dates.
 dayCount :: DayCounter -> Day -> Day -> IO Int

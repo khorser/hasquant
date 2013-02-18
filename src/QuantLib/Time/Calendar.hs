@@ -322,27 +322,27 @@ foreign import ccall safe "ql.h qlCalendarRemoveHoliday"
 bespokeCalendar :: String -- ^name
   -> [Weekday] -- ^weekends
   -> IO Calendar
-bespokeCalendar = $(ffiConstruct 'bespokeCalendar) c_bespokeCalendar
+bespokeCalendar = $(ffiCall 'bespokeCalendar) c_bespokeCalendar
 
 foreign import ccall safe "ql.h qlBespokeCalendar"
   c_bespokeCalendar :: CString -> CUInt -> Ptr CInt -> Ptr CString -> IO (Ptr CCalendar)
 
 jointCalendar3 :: Calendar -> Calendar -> Calendar -> JointCalendarRule
   -> IO Calendar
-jointCalendar3 = $(ffiConstruct 'jointCalendar3) c_jointCalendar3
+jointCalendar3 = $(ffiCall 'jointCalendar3) c_jointCalendar3
 
 foreign import ccall safe "ql.h qlJointCalendar3"
   c_jointCalendar3 :: Ptr CCalendar -> Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)
 
 jointCalendar4 :: Calendar -> Calendar -> Calendar
   -> Calendar -> JointCalendarRule -> IO Calendar
-jointCalendar4 = $(ffiConstruct 'jointCalendar4) c_jointCalendar4
+jointCalendar4 = $(ffiCall 'jointCalendar4) c_jointCalendar4
 
 foreign import ccall safe "ql.h qlJointCalendar4"
   c_jointCalendar4 :: Ptr CCalendar -> Ptr CCalendar -> Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)
 
 jointCalendar2 :: Calendar -> Calendar -> JointCalendarRule -> IO Calendar
-jointCalendar2 = $(ffiConstruct 'jointCalendar2) c_jointCalendar2
+jointCalendar2 = $(ffiCall 'jointCalendar2) c_jointCalendar2
 
 foreign import ccall safe "ql.h qlJointCalendar2"
   c_jointCalendar2 :: Ptr CCalendar -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CCalendar)

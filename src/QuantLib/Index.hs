@@ -30,7 +30,7 @@ addFixing = $(ffiCallX 'addFixing) c_indexAddFixing
 
 bmaIndex :: Maybe YieldTermStructure -- ^h
   -> IO BMAIndex
-bmaIndex = $(ffiConstruct 'bmaIndex) c_bmaIndex
+bmaIndex = $(ffiCall 'bmaIndex) c_bmaIndex
 
 foreign import ccall safe "ql.h qlBMAIndex"
   c_bmaIndex :: Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CBMAIndex)
@@ -40,7 +40,7 @@ fixingSchedule :: BMAIndex
   -> Day -- ^start
   -> Day -- ^end
   -> IO Schedule
-fixingSchedule = $(ffiConstruct 'fixingSchedule) c_fixingSchedule
+fixingSchedule = $(ffiCall 'fixingSchedule) c_fixingSchedule
 
 foreign import ccall safe "ql.h qlBMAIndexFixingSchedule"
   c_fixingSchedule :: Ptr CBMAIndex -> CDate -> CDate -> Ptr CString -> IO (Ptr CSchedule)

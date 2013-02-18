@@ -98,7 +98,7 @@ createLiborSwapIndex :: String
   -> Maybe YieldTermStructure -- ^forwarding
   -> Maybe YieldTermStructure -- ^discounting
   -> IO SwapIndex
-createLiborSwapIndex = $(ffiConstruct 'createLiborSwapIndex) c_liborSwapIndex
+createLiborSwapIndex = $(ffiCall 'createLiborSwapIndex) c_liborSwapIndex
 
 foreign import ccall safe "ql.h qlCreateLiborSwapIndex"
   c_liborSwapIndex :: CString -> Ptr CPeriod -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapIndex)
@@ -109,7 +109,7 @@ overnightIndexedSwapIndex :: String -- ^familyName
   -> Currency -- ^currency
   -> OvernightIndex -- ^overnightIndex
   -> IO OvernightIndexedSwapIndex
-overnightIndexedSwapIndex = $(ffiConstruct 'overnightIndexedSwapIndex) c_overnightIndexedSwapIndex
+overnightIndexedSwapIndex = $(ffiCall 'overnightIndexedSwapIndex) c_overnightIndexedSwapIndex
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwapIndex"
   c_overnightIndexedSwapIndex :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency -> Ptr COvernightIndex -> Ptr CString -> IO (Ptr COvernightIndexedSwapIndex)
@@ -124,7 +124,7 @@ swapIndex :: String -- ^familyName
   -> DayCounter -- ^fixedLegDayCounter
   -> IborIndex -- ^iborIndex
   -> IO SwapIndex
-swapIndex = $(ffiConstruct 'swapIndex) c_swapIndex
+swapIndex = $(ffiCall 'swapIndex) c_swapIndex
 
 foreign import ccall safe "ql.h qlSwapIndex"
   c_swapIndex :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency -> Ptr CCalendar -> Ptr CPeriod -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CSwapIndex)
@@ -140,7 +140,7 @@ swapIndex' :: String -- ^familyName
   -> IborIndex -- ^iborIndex
   -> YieldTermStructure -- ^discountingTermStructure
   -> IO SwapIndex
-swapIndex' = $(ffiConstruct 'swapIndex') c_swapIndex'
+swapIndex' = $(ffiCall 'swapIndex') c_swapIndex'
 
 foreign import ccall safe "ql.h qlSwapIndex1"
   c_swapIndex' :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency -> Ptr CCalendar -> Ptr CPeriod -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapIndex)
@@ -149,7 +149,7 @@ foreign import ccall safe "ql.h qlSwapIndex1"
 overnightIndexedSwap :: OvernightIndexedSwapIndex
   -> Day -- ^fixingDate
   -> IO OvernightIndexedSwap
-overnightIndexedSwap = $(ffiConstruct 'overnightIndexedSwap) c_underlyingOISwap
+overnightIndexedSwap = $(ffiCall 'overnightIndexedSwap) c_underlyingOISwap
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwapIndexUnderlyingSwap"
   c_underlyingOISwap :: Ptr COvernightIndexedSwapIndex -> CDate -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
@@ -158,7 +158,7 @@ foreign import ccall safe "ql.h qlOvernightIndexedSwapIndexUnderlyingSwap"
 vanillaSwap :: SwapIndex
   -> Day -- ^fixingDate
   -> IO VanillaSwap
-vanillaSwap = $(ffiConstruct 'vanillaSwap) c_underlyingVanillaSwap
+vanillaSwap = $(ffiCall 'vanillaSwap) c_underlyingVanillaSwap
 
 foreign import ccall safe "ql.h qlSwapIndexUnderlyingSwap"
   c_underlyingVanillaSwap :: Ptr CSwapIndex -> CDate -> Ptr CString -> IO (Ptr CVanillaSwap)

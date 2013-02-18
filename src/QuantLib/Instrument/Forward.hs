@@ -36,7 +36,7 @@ forwardRateAgreement :: Day -- ^valueDate
   -> IborIndex -- ^index
   -> Maybe YieldTermStructure -- ^discountCurve
   -> IO ForwardRateAgreement
-forwardRateAgreement = $(ffiConstruct 'forwardRateAgreement) c_forwardRateAgreement
+forwardRateAgreement = $(ffiCall 'forwardRateAgreement) c_forwardRateAgreement
 
 foreign import ccall safe "ql.h qlForwardRateAgreement"
   c_forwardRateAgreement :: CDate -> CDate -> CInt -> CDouble -> CDouble -> Ptr CIborIndex -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CForwardRateAgreement)
@@ -54,7 +54,7 @@ fixedRateBondForward :: Day -- ^valueDate
   -> Maybe YieldTermStructure -- ^discountCurve
   -> Maybe YieldTermStructure -- ^incomeDiscountCurve
   -> IO FixedRateBondForward
-fixedRateBondForward = $(ffiConstruct 'fixedRateBondForward) c_fixedRateBondForward
+fixedRateBondForward = $(ffiCall 'fixedRateBondForward) c_fixedRateBondForward
 
 foreign import ccall safe "ql.h qlFixedRateBondForward"
   c_fixedRateBondForward :: CDate -> CDate -> CInt -> CDouble -> CUInt -> Ptr CDayCounter -> Ptr CCalendar -> CInt -> Ptr CFixedRateBond -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CFixedRateBondForward)
@@ -89,7 +89,7 @@ impliedYield :: Forward
   -> Compounding -- ^compoundingConvention
   -> DayCounter -- ^dayCounter
   -> IO InterestRate
-impliedYield = $(ffiConstruct 'impliedYield) c_impliedYield
+impliedYield = $(ffiCall 'impliedYield) c_impliedYield
 
 foreign import ccall safe "ql.h qlForwardImpliedYield"
   c_impliedYield :: Ptr CForward -> CDouble -> CDouble -> CDate -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CInterestRate)
@@ -119,7 +119,7 @@ foreign import ccall safe "ql.h qlForwardSpotValue"
 -- |Returns the relevant forward rate associated with the FRA term.
 forwardRate :: ForwardRateAgreement
   -> IO InterestRate
-forwardRate = $(ffiConstruct 'forwardRate) c_forwardRate
+forwardRate = $(ffiCall 'forwardRate) c_forwardRate
 
 foreign import ccall safe "ql.h qlForwardRateAgreementForwardRate"
   c_forwardRate :: Ptr CForwardRateAgreement -> Ptr CString -> IO (Ptr CInterestRate)

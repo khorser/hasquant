@@ -20,14 +20,14 @@ foreign import ccall safe "ql.h qlDiscountingBondEngine"
 discountingBondEngine :: YieldTermStructure -- ^discountCurve
   -> Maybe Bool -- ^includeSettlementDateFlows
   -> IO PricingEngine
-discountingBondEngine = $(ffiConstruct 'discountingBondEngine) c_discountingBondEngine
+discountingBondEngine = $(ffiCall 'discountingBondEngine) c_discountingBondEngine
 
 discountingSwapEngine :: Maybe YieldTermStructure -- ^discountCurve
   -> Maybe Bool -- ^includeSettlementDateFlows
   -> Maybe Day -- ^settlementDate
   -> Maybe Day -- ^npvDate
   -> IO PricingEngine
-discountingSwapEngine = $(ffiConstruct 'discountingSwapEngine) c_discountingSwapEngine
+discountingSwapEngine = $(ffiCall 'discountingSwapEngine) c_discountingSwapEngine
 
 foreign import ccall safe "ql.h qlDiscountingSwapEngine"
   c_discountingSwapEngine :: Ptr CYieldTermStructure -> CInt -> CDate -> CDate -> Ptr CString -> IO (Ptr CPricingEngine)

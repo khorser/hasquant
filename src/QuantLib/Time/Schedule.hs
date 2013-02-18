@@ -43,14 +43,14 @@ schedule :: Maybe Day -- ^effectiveDate
   -> Maybe Day -- ^firstDate
   -> Maybe Day -- ^nextToLastDate
   -> IO Schedule
-schedule = $(ffiConstruct 'schedule) c_schedule
+schedule = $(ffiCall 'schedule) c_schedule
 
 -- | QuantLibXL: qlScheduleFromDateVector
 schedule' :: [Day]
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^convention
   -> IO Schedule
-schedule' = $(ffiConstruct 'schedule') c_schedule'
+schedule' = $(ffiCall 'schedule') c_schedule'
 
 -- |truncated schedule. QuantLibXL: qlScheduleTruncated
 -- DO NOT call this on schedules created with 'schedule''
@@ -62,7 +62,7 @@ schedule' = $(ffiConstruct 'schedule') c_schedule'
 until :: Schedule
   -> Day -- ^truncationDate
   -> IO Schedule
-until = $(ffiConstruct 'until) c_until
+until = $(ffiCall 'until) c_until
 
 -- |returns the dates for the given Schedule object. QuantLibXL: qlScheduleDates
 dates :: Schedule -> [Day]
