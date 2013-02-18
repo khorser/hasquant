@@ -7,7 +7,7 @@ module QuantLib.Internal.Syntax
   )
 where
 
-import Control.Monad(liftM, liftM2, unless)
+import Control.Monad(liftM, liftM2)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Foreign.Marshal.Array(withArrayLen)
 import Language.Haskell.TH
