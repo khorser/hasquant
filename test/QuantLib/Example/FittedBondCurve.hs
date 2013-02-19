@@ -7,6 +7,7 @@ where
 
 import Control.Monad(forM_)
 import Data.Time.Calendar
+import Text.Printf
 
 import QuantLib.CashFlow.Leg
 import QuantLib.Instrument.Bond
@@ -41,7 +42,7 @@ run = do
   
   p <- period bondSettleDays Days
   bondSettle <- advance' cal tod p Following False
-  putStrLn $ "Bond settlement date" ++ show bondSettle
+  putStrLn $ "Bond settlement date: " ++ show bondSettle
   cleanQuotes <- mapM simpleQuote cleanPrices
   bondPeriod <- fromFrequency Annual
 
@@ -72,35 +73,44 @@ run = do
   firstIterCurves <- mapM
       (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals)
       fittings
+
+  refDate <- asTermStructure ts0 >>= TS.referenceDate
+  _ <- printf "Reference date: %s, iterations: " $ show refDate
   forM_ firstIterCurves printOutput
+  putStrLn ""
+
   forM_ instrA $
     \h -> do
       cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just bondSettle)
       let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-      putStr "Tenor: "
-      yearFraction dc tod (last ds) Nothing Nothing >>= print
+      _ <- yearFraction dc tod (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
       parRate ts0 (bondSettle:ds) dc
       forM_ firstIterCurves $
         \c -> do
           ts <- asYieldTermStructure c
           parRate ts (bondSettle:ds) dc
+      putStrLn ""
 
   newtoday <- advance cal tod 23 Months ModifiedFollowing False
   setEvaluationDate (Just newtoday)
   newBondSettle <- advance cal newtoday bondSettleDays Days Following False
 
+  newRefDate <- asTermStructure ts0 >>= TS.referenceDate
+  _ <- printf "Reference date: %s, number of iterations: " $ show newRefDate
   forM_ firstIterCurves printOutput
+  putStrLn ""
+
   forM_ instrA $
     \h -> do
       cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just newBondSettle)
       let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-      putStr "Tenor: "
-      yearFraction dc newtoday (last ds) Nothing Nothing >>= print
+      _ <- yearFraction dc newtoday (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
       parRate ts0 (newBondSettle:ds) dc
       forM_ firstIterCurves $
         \c -> do
           ts <- asYieldTermStructure c
           parRate ts (newBondSettle:ds) dc
+      putStrLn ""
 
   return $ Result 5.6
   where
@@ -116,12 +126,7 @@ run = do
     maxEvals = 5000
 
     printOutput :: FittedBondDiscountCurve -> IO ()
-    printOutput ts = do
-      putStr "Reference date: "
-      yts <- asYieldTermStructure ts
-      asTermStructure yts >>= TS.referenceDate >>= print
-      putStr "Number of iterations: "
-      TS.numberOfIterations ts >>= print
+    printOutput ts = TS.numberOfIterations ts >>= printf "%d "
 
     parRate :: YieldTermStructure -> [Day] -> DayCounter -> IO ()
     parRate ts ds dc = do
@@ -132,7 +137,7 @@ run = do
                 zip (init ds) (drop 1 ds)
       df1 <- TS.discount ts (head ds) False
       df2 <- TS.discount ts (last ds) False
-      putStrLn $ "Par rate: " ++ show (100.0 * (df1 - df2) / sum dfs)
+      printf "%.3f " $ 100.0 * (df1 - df2) / sum dfs
 
 {- QuantLib example output:
 
