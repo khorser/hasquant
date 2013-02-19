@@ -711,3 +711,5 @@ floatingRateBond' = $(ffiCall 'floatingRateBond') c_floatingRateBond'
 
 foreign import ccall safe "ql.h qlFloatingRateBond1"
   c_floatingRateBond' :: CUInt -> CDouble -> CDate -> CDate -> CInt -> Ptr CCalendar -> Ptr CIborIndex -> Ptr CDayCounter -> CInt -> CInt -> CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CInt -> CDouble -> CDate -> CDate -> CInt -> CInt -> Ptr CString -> IO (Ptr CBond)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

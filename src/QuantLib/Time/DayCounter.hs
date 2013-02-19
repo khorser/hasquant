@@ -164,3 +164,5 @@ yearFraction = $(ffiCallX 'yearFraction) c_yearFraction
 
 foreign import ccall safe "ql.h qlDayCounterYearFraction"
   c_yearFraction :: Ptr CDayCounter -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO CYearFraction
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

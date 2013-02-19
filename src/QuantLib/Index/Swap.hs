@@ -162,3 +162,5 @@ vanillaSwap = $(ffiCall 'vanillaSwap) c_underlyingVanillaSwap
 
 foreign import ccall safe "ql.h qlSwapIndexUnderlyingSwap"
   c_underlyingVanillaSwap :: Ptr CSwapIndex -> CDate -> Ptr CString -> IO (Ptr CVanillaSwap)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

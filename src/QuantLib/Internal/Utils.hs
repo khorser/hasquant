@@ -170,3 +170,5 @@ class (Finalizable a, Finalizable b) => Upcastable a b where
 
 upcast :: (Upcastable a b) => ForeignPtr a -> IO (ForeignPtr b)
 upcast x = withObject x c_upcast >>= newForeignPtr finalize
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

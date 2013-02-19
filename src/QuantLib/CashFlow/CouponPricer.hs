@@ -17,3 +17,5 @@ foreign import ccall safe "ql.h qlBlackIborCouponPricer"
 -- |Black-formula pricer for capped/floored Ibor coupons
 blackIborCouponPricer :: OptionletVolStructure -> IO FloatingRateCouponPricer
 blackIborCouponPricer = $(ffiCall 'blackIborCouponPricer) c_blackIborCouponPricer
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

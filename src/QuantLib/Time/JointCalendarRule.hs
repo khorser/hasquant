@@ -13,3 +13,5 @@ data JointCalendarRule =
   deriving (Show, Eq, Enum)
 
 instance QLEnum JointCalendarRule
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -328,3 +328,5 @@ unmarshalA ForeignPtrR = [|id|] -- this case is handled separately in finalCCall
 unmarshalA UnitR   = [|id|]
 unmarshalA DayListR = [|map fromQlDate|]
 unmarshalA StringR = error "String unmarshalling needs IO"
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

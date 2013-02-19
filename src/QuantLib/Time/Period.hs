@@ -43,3 +43,5 @@ parse = $(ffiCall 'parse) c_parse
 
 foreign import ccall safe "ql.h qlPeriodParserParse"
   c_parse :: CString -> Ptr CString -> IO (Ptr CPeriod)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

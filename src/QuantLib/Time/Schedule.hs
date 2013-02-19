@@ -67,3 +67,5 @@ until = $(ffiCall 'until) c_until
 -- |returns the dates for the given Schedule object. QuantLibXL: qlScheduleDates
 dates :: Schedule -> [Day]
 dates = $(ffiCallIO 'dates) c_scheduleDates
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

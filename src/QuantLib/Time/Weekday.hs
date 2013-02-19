@@ -11,3 +11,5 @@ instance QLEnum Weekday
 data Weekday = Sunday | Monday | Tuesday | Wednesday | Thursday | Friday
   | Saturday
   deriving (Show, Eq, Enum)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

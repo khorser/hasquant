@@ -118,3 +118,5 @@ foreign import ccall safe "ql.h qlSavedSettings"
 
 foreign import ccall safe "ql.h qlFreeSavedSettings"
   c_freeSavedSettings :: Ptr CSavedSettings -> IO ()
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

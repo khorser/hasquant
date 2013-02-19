@@ -420,3 +420,5 @@ instance Upcastable CSimpleQuote CQuote where
   c_upcast = c_SimpleQuoteAsQuote
 foreign import ccall safe "ql.h qlSimpleQuoteAsQuote"
   c_SimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

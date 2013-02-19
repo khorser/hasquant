@@ -53,3 +53,5 @@ forecastFixing = $(ffiCallX 'forecastFixing) c_forecastFixing
 
 foreign import ccall safe "ql.h qlInterestRateIndexForecastFixing"
   c_forecastFixing :: Ptr CInterestRateIndex -> CDate -> Ptr CString -> IO CDouble
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

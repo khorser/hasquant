@@ -52,3 +52,5 @@ valuationDate = $(ffiCallX 'valuationDate) c_valuationDate
 
 foreign import ccall safe "ql.h qlInstrumentValuationDate"
   c_valuationDate :: Ptr CInstrument -> Ptr CString -> IO CDate
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -70,3 +70,5 @@ instance QLDate (Maybe Day) where
   toQlDate = maybe 0 toQlDate
   fromQlDate 0 = Nothing
   fromQlDate x = Just $ fromQlDate x
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

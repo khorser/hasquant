@@ -276,3 +276,5 @@ currency = $(ffiCall 'currency) c_currency
 
 foreign import ccall safe "ql.h qlCreateCurrency"
   c_currency :: CString -> CString -> CInt -> CString -> CString -> CInt -> Ptr CRounding -> CString -> Ptr CCurrency -> Ptr CString -> IO (Ptr CCurrency)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

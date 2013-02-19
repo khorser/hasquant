@@ -559,3 +559,5 @@ zSpread = $(ffiCallX 'zSpread) c_zSpread
 
 foreign import ccall safe "ql.h qlCashFlowsZSpread"
   c_zSpread :: Ptr CLeg -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

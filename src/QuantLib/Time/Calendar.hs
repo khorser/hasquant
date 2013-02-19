@@ -360,3 +360,5 @@ holidays c from to w =
 
 foreign import ccall safe "ql.h qlCalendarHolidayList"
   c_holidayList :: Ptr CCalendar -> CDate -> CDate -> CInt -> Ptr CUInt -> Ptr CString -> IO (Ptr CDate)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

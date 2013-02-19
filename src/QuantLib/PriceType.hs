@@ -18,3 +18,5 @@ data PriceType = Bid -- ^Bid price.
   | MidEquivalent -- ^Mid equivalent price, calculated as a) the arithmetic average of bid and ask prices when both are available; b) either the bid or the ask price if any of them is available; c) the last price; or d) the close price.
   | MidSafe -- ^Safe Mid price, returns the mid price only if both bid and ask are available.
   deriving (Show, Eq, Enum)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

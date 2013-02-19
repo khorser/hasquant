@@ -252,3 +252,5 @@ type SimpleQuote = ForeignPtr CSimpleQuote
 
 asQuote :: (Upcastable a CQuote) => ForeignPtr a -> IO Quote
 asQuote = upcast
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

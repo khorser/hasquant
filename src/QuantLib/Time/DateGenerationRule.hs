@@ -19,3 +19,5 @@ data DateGenerationRule = Backward  -- ^Backward from termination date to effect
   | OldCDS -- ^Same as TwentiethIMM with unrestricted date ends and log/short stub coupon period (old CDS convention)
   | CDS -- ^Credit derivatives standard rule since 'Big Bang' changes in 2009
   deriving (Show, Eq, Enum)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
