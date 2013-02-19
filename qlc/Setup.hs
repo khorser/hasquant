@@ -26,6 +26,8 @@ main = defaultMainWithHooks simpleUserHooks { buildHook = myBuildHook, instHook 
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
+-- TODO use quantlib-config output on Unix
+
 -- | Extend the standard build hook to build a shared library for qlc - this will statically link
 -- any libraries which are unavailable as shared variants. This is mainly a work-around for the
 -- fact that GHCi needs to load shared libraries at run-time, and that the Windows MinGW environment

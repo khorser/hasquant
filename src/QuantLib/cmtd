@@ -1,3 +1,3 @@
 #!/bin/sh
 mkdir cpp
-make -f M EXTRA="-fPIC -DQLTRACK_ALLOCATIONS -g -O0" so $*
+make -f M EXTRA="-fPIC -DQLTRACK_ALLOCATIONS -g -O0 $*" so
