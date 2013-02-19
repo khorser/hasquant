@@ -46,8 +46,7 @@ run = do
   bondPeriod <- fromFrequency Annual
 
   helpers <- mapM (\(q, l, c) -> do
-    pm <- period l Years
-    mat <- advance' cal bondSettle pm Following False
+    mat <- advance cal bondSettle l Years Following False
     s <- schedule (Just bondSettle) mat bondPeriod cal
       ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
@@ -74,13 +73,34 @@ run = do
       (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals)
       fittings
   forM_ firstIterCurves printOutput
-  let ci = [(c, i) | c<-firstIterCurves, i<-instrA]
-  forM_ ci $
-    \(fbts, h) -> do
+  forM_ instrA $
+    \h -> do
       cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just bondSettle)
       let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-      ts <- asYieldTermStructure fbts
-      parRate tod ts (bondSettle:ds) dc
+      putStr "Tenor: "
+      yearFraction dc tod (last ds) Nothing Nothing >>= print
+      parRate ts0 (bondSettle:ds) dc
+      forM_ firstIterCurves $
+        \c -> do
+          ts <- asYieldTermStructure c
+          parRate ts (bondSettle:ds) dc
+
+  newtoday <- advance cal tod 23 Months ModifiedFollowing False
+  setEvaluationDate (Just newtoday)
+  newBondSettle <- advance cal newtoday bondSettleDays Days Following False
+
+  forM_ firstIterCurves printOutput
+  forM_ instrA $
+    \h -> do
+      cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just newBondSettle)
+      let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
+      putStr "Tenor: "
+      yearFraction dc newtoday (last ds) Nothing Nothing >>= print
+      parRate ts0 (newBondSettle:ds) dc
+      forM_ firstIterCurves $
+        \c -> do
+          ts <- asYieldTermStructure c
+          parRate ts (newBondSettle:ds) dc
 
   return $ Result 5.6
   where
@@ -103,17 +123,15 @@ run = do
       putStr "Number of iterations: "
       TS.numberOfIterations ts >>= print
 
-    parRate :: Day -> YieldTermStructure -> [Day] -> DayCounter -> IO ()
-    parRate tod ts ds dc = do
+    parRate :: YieldTermStructure -> [Day] -> DayCounter -> IO ()
+    parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
               dt <- yearFraction dc d1 d2 Nothing Nothing
               df <- TS.discount ts d2 False
               return $ df * dt) $
-                zip (drop 1 ds) (init ds)
+                zip (init ds) (drop 1 ds)
       df1 <- TS.discount ts (head ds) False
       df2 <- TS.discount ts (last ds) False
-      putStr "Tenor: "
-      yearFraction dc tod (last ds) Nothing Nothing >>= print
       putStrLn $ "Par rate: " ++ show (100.0 * (df1 - df2) / sum dfs)
 
 {- QuantLib example output:
