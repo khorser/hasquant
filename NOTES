@@ -11,6 +11,8 @@ data PricingEngine = Engine1 ... | Engine2 ...
 data Result = Result{npv :: Double, ...}
 calculate :: Instrument -> PricingEngine -> IO Result
 
+Abstract data types for Currency, Calendar...
+
 While building components for pricing, we will construct contents.
 Actual instantiation of QuantLib object will happen only on pricing.
 This allows for easy building of mutators as simply returning a new copy with
@@ -39,15 +41,13 @@ on the state
 
 Plan: migrate business calculation first and then think of reusing underlying math
 
-No empty objects like ccy, calendar, day counter!
+No empty objects for ccy, calendar, day counter!
+Custom DayCounters calling back to Haskell, many foreign imports would become unsafe then?
 
---
-Currency::
-Period::
+Expose minimal possible (a) mutators and (b) elementary inspectors (that just return values passed in constructors)
 
-quotes
-
-instead of CompositeQuote/DerivedQuote implement a quote calling Haskell callbacks if needed
+instead of CompositeQuote/DerivedQuote implement a quote calling Haskell callbacks if needed.
+Probably it would need to register for notifications from other quotes and evaluation date?
 
 -- done:
 Bond::
@@ -90,3 +90,6 @@ ForwardRateStructure
 ZeroSpreadCurve
 Settings::
 OvernightIndexedSwapIndex
+Currency::
+Period::
+Quotes

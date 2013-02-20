@@ -1,5 +1,12 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
+-- |/NB/ Calendars in QuantLib are sort of singletons: if you add a holiday to
+-- QuantLib::Russia, it will be added to all instances of the calendar.
+-- QuantLib considers calendars equal if their names match.
+-- The name of a joint calendar is the concatenation of its
+-- components so they will be considered equal even if their holidays are
+-- different.
+-- BespokeCalendar provide the most generic solution.
 module QuantLib.Time.Calendar
   (
     adjust
@@ -105,19 +112,6 @@ advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention
   -> Bool -- ^endOfMonth
   -> IO Day
 advance = $(ffiCall 'advance) c_calendarAdvance
-
--- TODO add data Calendar = ...
-
--- NB Calendars in QuantLib are sort of singletons: if you add
--- a holiday to QuantLib::Russia, it will be added to all instances
--- of the calendar
--- Luckily this doesn't apply to joint calendars
--- but there is another drawback: the name of a joint calendar is
--- the concatenation of its components so == will return TRUE
--- even while holidays might be different
--- Later it might be worthwhile to create a calendar that will call back Haskell
--- for actual implementation
--- Or we could use BespokeCalendar
 
 -- |Calendar for reproducing theoretical calculations.
 -- This calendar has no holidays. It ensures that dates at whole-month distances have the same day of month.
