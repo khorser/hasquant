@@ -1,2 +1,0 @@
--- |/Warning/ This method is used for output and comparison between payoffs. It is not meant to be used for writing switch-on-type code.
-->std::string
