@@ -44,73 +44,14 @@ run = do
   bondSettle <- advance' cal tod p Following False
   putStrLn $ "Bond settlement date: " ++ show bondSettle
   cleanQuotes <- mapM simpleQuote cleanPrices
-  bondPeriod <- fromFrequency Annual
 
-  helpers <- mapM (\(q, l, c) -> do
-    mat <- advance cal bondSettle l Years Following False
-    s <- schedule (Just bondSettle) mat bondPeriod cal
-      ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+  (iA, iB) <- step1 tod dc cal bondSettle cleanQuotes
+                >>= \(ts0, instrA, instrB, firstIterCurves) ->
+                  step2 tod dc cal ts0 instrA instrB firstIterCurves >> return (drop 1 instrA, drop 1 instrB)
 
-    qq <- asQuote q
-    hA <- TS.fixedRateBondHelper qq (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing
-    hB <- TS.fixedRateBondHelper qq (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing
-            >>= asRateHelper
-    return (hA, hB)) $
-      zip3 cleanQuotes lengths coupons
-
-  let (instrA, instrB) = unzip helpers
-
-  ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal instrB dc [] 1e-12 Discount LogLinear
-
-  -- results do not quite match with FittedBondCurve QuantLib example
-  -- if QLC is built with optimization level different from QuantLib
-  fittings <- sequence [TS.exponentialSplinesFitting True,
-                TS.simplePolynomialFitting 3 True,
-                TS.nelsonSiegelFitting,
-                TS.cubicBSplinesFitting [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True,
-                TS.svenssonFitting]
-
-  firstIterCurves <- mapM
-      (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals)
-      fittings
-
-  refDate <- asTermStructure ts0 >>= TS.referenceDate
-  _ <- printf "Reference date: %s, iterations: " $ show refDate
-  forM_ firstIterCurves printOutput
-  putStrLn ""
-
-  forM_ instrA $
-    \h -> do
-      cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just bondSettle)
-      let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-      _ <- yearFraction dc tod (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
-      parRate ts0 (bondSettle:ds) dc
-      forM_ firstIterCurves $
-        \c -> do
-          ts <- asYieldTermStructure c
-          parRate ts (bondSettle:ds) dc
-      putStrLn ""
-
-  newtoday <- advance cal tod 23 Months ModifiedFollowing False
-  setEvaluationDate (Just newtoday)
-  newBondSettle <- advance cal newtoday bondSettleDays Days Following False
-
-  newRefDate <- asTermStructure ts0 >>= TS.referenceDate
-  _ <- printf "Reference date: %s, number of iterations: " $ show newRefDate
-  forM_ firstIterCurves printOutput
-  putStrLn ""
-
-  forM_ instrA $
-    \h -> do
-      cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just newBondSettle)
-      let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-      _ <- yearFraction dc newtoday (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
-      parRate ts0 (newBondSettle:ds) dc
-      forM_ firstIterCurves $
-        \c -> do
-          ts <- asYieldTermStructure c
-          parRate ts (newBondSettle:ds) dc
-      putStrLn ""
+  newtod <- advance cal tod 24 Months ModifiedFollowing False
+  setEvaluationDate (Just newtod)
+  newBondSettle <- advance cal newtod bondSettleDays Days Following False
 
   return $ Result 5.6
   where
@@ -138,6 +79,77 @@ run = do
       df1 <- TS.discount ts (head ds) False
       df2 <- TS.discount ts (last ds) False
       printf "%.3f " $ 100.0 * (df1 - df2) / sum dfs
+
+    step1 tod dc cal bondSettle cleanQuotes = do
+      helpers <- mapM (\(q, l, c) -> do
+        mat <- advance cal bondSettle l Years Following False
+        bondPeriod <- fromFrequency Annual
+        s <- schedule (Just bondSettle) mat bondPeriod cal
+          ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+
+        qq <- asQuote q
+        hA <- TS.fixedRateBondHelper qq (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing
+        hB <- TS.fixedRateBondHelper qq (fromIntegral bondSettleDays) 100.0 s [c] dc ModifiedFollowing 100.0 Nothing
+                >>= asRateHelper
+        return (hA, hB)) $
+          zip3 cleanQuotes lengths coupons
+
+      let (instrA, instrB) = unzip helpers
+
+      ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal instrB dc [] 1e-12 Discount LogLinear
+
+      -- results do not quite match with FittedBondCurve QuantLib example
+      -- if QLC is built with optimization level different from QuantLib
+      fittings <- sequence [TS.exponentialSplinesFitting True,
+                    TS.simplePolynomialFitting 3 True,
+                    TS.nelsonSiegelFitting,
+                    TS.cubicBSplinesFitting [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True,
+                    TS.svenssonFitting]
+
+      firstIterCurves <- mapM
+          (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals)
+          fittings
+
+      refDate <- asTermStructure ts0 >>= TS.referenceDate
+      _ <- printf "Reference date: %s, iterations: " $ show refDate
+      forM_ firstIterCurves printOutput
+      putStrLn ""
+
+      forM_ instrA $
+        \h -> do
+          cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just bondSettle)
+          let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
+          _ <- yearFraction dc tod (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
+          parRate ts0 (bondSettle:ds) dc
+          forM_ firstIterCurves $
+            \c -> do
+              ts <- asYieldTermStructure c
+              parRate ts (bondSettle:ds) dc
+          putStrLn ""
+      return (ts0, instrA, instrB, firstIterCurves)
+
+    step2 tod dc cal ts0 instrA instrB firstIterCurves = do
+      newtoday <- advance cal tod 23 Months ModifiedFollowing False
+      setEvaluationDate (Just newtoday)
+      newBondSettle <- advance cal newtoday bondSettleDays Days Following False
+
+      newRefDate <- asTermStructure ts0 >>= TS.referenceDate
+      _ <- printf "Reference date: %s, number of iterations: " $ show newRefDate
+      forM_ firstIterCurves printOutput
+      putStrLn ""
+
+      forM_ instrA $
+        \h -> do
+          cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just newBondSettle)
+          let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
+          _ <- yearFraction dc newtoday (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
+          parRate ts0 (newBondSettle:ds) dc
+          forM_ firstIterCurves $
+            \c -> do
+              ts <- asYieldTermStructure c
+              parRate ts (newBondSettle:ds) dc
+          putStrLn ""
+      return (instrA, instrB)
 
 {- QuantLib example output:
 
