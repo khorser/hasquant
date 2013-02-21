@@ -1,5 +1,7 @@
 module Main where
 
+import Control.Monad(forM_)
+
 import QuantLib.Settings
 import QuantLib.Time.Date
 import QuantLib.Utilities
@@ -17,6 +19,7 @@ main = do
   t <- today
   putStrLn $ "Today is " ++ show (weekday t)
 
+  putStrLn "*** Bond Example ***"
   br <- keepingSettings' BondExample.run
   
   putStrLn $ "NPV: " ++ show (BondExample.npvR br)
@@ -34,6 +37,7 @@ main = do
   putStrLn $ "CashFlows: NPV: " ++ show (BondExample.cfnpvR br) ++ ", NPV_BPS: " ++ show (BondExample.cfnpvbpsR br)
   putStrLn $ "BPS: " ++ show (BondExample.bpsR br)
 
+  putStrLn "*** Repo Example ***"
   rr <- keepingSettings' RepoExample.run
   putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)
   putStrLn $ "Underlying bond dirty price: " ++ show (RepoExample.dirtyPriceR rr)
@@ -48,12 +52,42 @@ main = do
   putStrLn $ "Repo implied yield: " ++ show (RepoExample.impliedYieldR rr)
   putStrLn $ "Market repo rate:   " ++ show (RepoExample.zeroRateR rr)
 
-  _ <- keepingSettings' FRAExample.run
+  putStrLn "*** FRA Example ***"
+  (FRAExample.Result i1 i2) <- keepingSettings' FRAExample.run
+  printFraIterationResult i1
+  putStrLn "* After 100bp shift *"
+  printFraIterationResult i2
 
-  _ <- keepingSettings' SwapExample.run
+  putStrLn "*** Swap Example ***"
+  (SwapExample.Result si1 si2) <- keepingSettings' SwapExample.run
+  printSwapIterationResult si1
+  putStrLn "***Updating market data***"
+  printSwapIterationResult si2
 
+  putStrLn "*** FittedBondCurve Example ***"
   _ <- keepingSettings' BondCurveExample.run
 
   putStrLn "DONE"
+
+  where
+    printFraIterationResult :: [FRAExample.IterationResult] -> IO ()
+    printFraIterationResult rs = forM_ rs $ \r -> do
+        putStrLn $ "Forward rate: " ++ show (FRAExample.fwdRateR r)
+        putStrLn $ "Spot value: " ++ show (FRAExample.spotR r)
+        putStrLn $ "Forward value: " ++ show (FRAExample.fwdValueR r)
+        putStrLn $ "Implied yield: " ++ show (FRAExample.implYieldR r)
+        putStrLn $ "Market zero rate: " ++ show (FRAExample.zRateR r)
+        putStrLn $ "NPV: " ++ show (FRAExample.npvR r)
+
+    printSwapIterationResult :: [SwapExample.IterationResult] -> IO ()
+    printSwapIterationResult rs = forM_ rs $ \r -> do
+        printSwapResult "Spot" $ SwapExample.spotSwap r
+        printSwapResult "Fwd" $ SwapExample.forwardSwap r
+
+    printSwapResult :: String -> SwapExample.SwapResult -> IO ()
+    printSwapResult t r = do
+        putStrLn $ t ++ " NPV: " ++ show (SwapExample.spotNpvR $ r)
+        putStrLn $ t ++ " fair spread: " ++ show (SwapExample.spotFairSpreadR r)
+        putStrLn $ t ++ " fair rate: " ++ show (SwapExample.spotFairRateR r)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

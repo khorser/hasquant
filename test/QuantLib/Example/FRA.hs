@@ -1,10 +1,12 @@
 module QuantLib.Example.FRA
   (
     Result(..)
+  , IterationResult(..)
   , run
   )
 where
 
+import Data.Time.Calendar(Day)
 import Control.Monad(forM, forM_)
 
 import QuantLib.Compounding
@@ -27,9 +29,15 @@ import QuantLib.Time.Unit
 import QuantLib.Types
 
 
-data Result = Result
-  { cleanPriceR :: Double
-  } deriving Show
+data IterationResult = IterationResult { fwdRateR :: Double
+                        , spotR :: Double
+                        , fwdValueR :: Double
+                        , implYieldR :: Double
+                        , zRateR :: Double
+                        , npvR :: Double
+                        } deriving Show
+
+data Result = Result [IterationResult] [IterationResult] deriving Show
 
 run :: IO Result
 run = do
@@ -49,12 +57,12 @@ run = do
   tsdc <- actualActualISDA
   fraTS <- TS.piecewiseYieldCurve settleDate fraInstruments tsdc [] tolerance Discount LogLinear
 
-  valuateFRA settleDate fraTS
-  putStrLn "*** After 100bp shift ***"
+  it1 <- valuateFRA settleDate fraTS
   forM_ simpleFraQuotes $ \sq -> asQuote sq >>= value >>= \v -> setValue sq (v + bpsShift)
-  valuateFRA settleDate fraTS
+  it2 <- valuateFRA settleDate fraTS
 
-  return $ Result 5.6
+  return $ Result it1 it2
+
   where
     todaysDate = 23 `may` 2006
     fixingDays = 2
@@ -68,16 +76,18 @@ run = do
     fraTermMonths = 3
     bpsShift = 0.01
 
+    valuateFRA :: Day -> YieldTermStructure -> IO [IterationResult]
     valuateFRA settle ts = do
       dc <- actual360
       eu3m <- euribor3M $ Just ts
       fraCalendar <- target
-      dates <- forM starts $ \months -> do
-        v <- advance fraCalendar settle (fromIntegral months) Months convention False
-        m <- advance fraCalendar v fraTermMonths Months convention False
-        return (v, m)
+      dates <- forM starts $
+        \months -> do
+          v <- advance fraCalendar settle (fromIntegral months) Months convention False
+          m <- advance fraCalendar v fraTermMonths Months convention False
+          return (v, m)
 
-      mapM_ (\((v, m), q) -> do
+      mapM (\((v, m), q) -> do
         fra <- forwardRateAgreement v m Long q notional eu3m (Just ts)
         fwd <- asForward fra
 
@@ -87,12 +97,8 @@ run = do
         implYield <- impliedYield fwd spot fwdValue settle Simple dc
         zRate <- TS.zeroRate ts m dc Simple Annual False
         fraNPV <- asInstrument fwd >>= npv
-        putStrLn $ "Forward rate: " ++ show (rate fwdRate)
-        putStrLn $ "Spot value: " ++ show spot
-        putStrLn $ "Forward value: " ++ show fwdValue
-        putStrLn $ "Implied yield: " ++ show (rate implYield)
-        putStrLn $ "Market zero rate: " ++ show (rate zRate)
-        putStrLn $ "NPV: " ++ show fraNPV) $
+        return $ IterationResult (rate fwdRate) spot fwdValue (rate implYield) (rate zRate) fraNPV) $
          zip dates quotes
+
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

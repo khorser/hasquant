@@ -1,11 +1,13 @@
 module QuantLib.Example.Swap
   (
     Result(..)
+  , SwapResult(..)
+  , IterationResult(..)
   , run
   )
 where
 
-import Control.Monad(foldM, forM_, forM, (>=>))
+import Control.Monad(foldM, forM, (>=>))
 import Data.Time.Calendar
 
 import QuantLib.Math.Interpolation
@@ -29,9 +31,14 @@ import QuantLib.Time.Unit
 import QuantLib.Types
 import QuantLib.Settings
 
-data Result = Result
-  { cleanPriceR :: Double
-  } deriving Show
+data SwapResult = SwapResult { spotNpvR :: Double
+                              , spotFairSpreadR :: Double
+                              , spotFairRateR :: Double
+                              } deriving Show
+
+data IterationResult = IterationResult {spotSwap :: SwapResult, forwardSwap :: SwapResult} deriving Show
+
+data Result = Result [IterationResult] [IterationResult] deriving Show
 
 run :: IO Result
 run = do
@@ -76,15 +83,15 @@ run = do
   depoFutSwapTS <- TS.piecewiseYieldCurve settleDate (take 2 depoHelpers++futHelpers++drop 1 swapHelpers) tsDC [] tolerance Discount LogLinear
   depoFraSwapTS <- TS.piecewiseYieldCurve settleDate (take 3 depoHelpers++fraHelpers++swapHelpers) tsDC [] tolerance Discount LogLinear
 
-  forM_ [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
+  i1 <- forM [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 
-  putStrLn "***Updating market data***"
   let market5YQuote = swapSimpleQuotes !! 2
   _ <- setValue market5YQuote 0.0460
 
-  forM_ [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
+  i2 <- forM [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 
-  return $ Result 5.6
+  return $ Result i1 i2
+
   where
     settleDate1 = 22 `september` 2004
     fixingDays = 2
@@ -103,6 +110,7 @@ run = do
       nextImm <- nextIMMDate (Just $ addDays inc (last l)) True
       return $ l ++ [nextImm]
 
+    valuateSwap :: Day -> YieldTermStructure -> YieldTermStructure -> IO IterationResult
     valuateSwap settle d f = do
       fixDC <- thirty360European
       floatDC <- actual360
@@ -136,15 +144,12 @@ run = do
       spotNPV <- npv spotInstr
       spotFairSpread <- fairSpread spot5Y
       spotFairRate <- fairRate spot5Y
-      putStrLn $ "Spot NPV: " ++ show spotNPV
-      putStrLn $ "Spot fair spread: " ++ show spotFairSpread
-      putStrLn $ "Spot fair rate: " ++ show spotFairRate
+      let sr = SwapResult spotNPV spotFairSpread spotFairRate
 
       fwdNPV <- npv fwdInstr
       fwdFairSpread <- fairSpread fwd1Y5Y
       fwdFairRate <- fairRate fwd1Y5Y
-      putStrLn $ "Fwd NPV: " ++ show fwdNPV
-      putStrLn $ "Fwd fair spread: " ++ show fwdFairSpread
-      putStrLn $ "Fwd fair rate: " ++ show fwdFairRate
+      let fr = SwapResult fwdNPV fwdFairSpread fwdFairRate
+      return $ IterationResult sr fr
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
