@@ -124,3 +124,5 @@ run = do
         faceAmount = 100.0
         dummyStrike = 91.5745
         fwdType = Long
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

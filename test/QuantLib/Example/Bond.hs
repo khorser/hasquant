@@ -339,3 +339,5 @@ run = do
                          (6, Months), (9, Months), (1, Years)]
        liborSwapQuotes = [0.0295, 0.0323, 0.0359, 0.0412, 0.0433]
        liborSwapTerms = [2, 3, 5, 10, 15]
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

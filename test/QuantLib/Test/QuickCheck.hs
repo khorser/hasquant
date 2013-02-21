@@ -114,3 +114,5 @@ prop_frequencyFromPeriodFromFrequency freq =
     p <- run $ Period.fromFrequency freq
     f <- run $ Period.toFrequency p
     assert $ f == freq
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

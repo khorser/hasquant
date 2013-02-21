@@ -94,3 +94,5 @@ run = do
         putStrLn $ "Market zero rate: " ++ show (rate zRate)
         putStrLn $ "NPV: " ++ show fraNPV) $
          zip dates quotes
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

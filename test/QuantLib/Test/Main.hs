@@ -15,3 +15,5 @@ main = do putStrLn $ "QuantLib version " ++ version
           putStrLn $ "Today is " ++ show (weekday t)
   
           htfMain htf_importedTests
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

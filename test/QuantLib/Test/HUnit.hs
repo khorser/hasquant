@@ -326,3 +326,5 @@ test_truncateSchedule = do
                fromGregorian 2013 03 21,
                fromGregorian 2013 04 15]
               (Schedule.dates truncated)
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

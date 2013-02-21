@@ -162,7 +162,7 @@ run = do
       printRates ts00 dc bondSettle tod curves iA
       return (ts00, curves)
 
-{- QuantLib example output:
+{- QuantLib FittedBond example output for version 1.2.1 built with -O3
 
 Today's date: February 19th, 2013
 Bonds' settlement date: February 19th, 2013
@@ -324,3 +324,5 @@ par rates should be recalculated automatically.
  
 Run completed in 11 s
 -}
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

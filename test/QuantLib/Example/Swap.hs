@@ -146,3 +146,5 @@ run = do
       putStrLn $ "Fwd NPV: " ++ show fwdNPV
       putStrLn $ "Fwd fair spread: " ++ show fwdFairSpread
       putStrLn $ "Fwd fair rate: " ++ show fwdFairRate
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
