@@ -1,7 +1,0 @@
-->
-::boost::shared_ptr< SectionHelper > &
--- ^quadraticHelper
-::boost::shared_ptr< SectionHelper > &
--- ^convMonoHelper
-::Real
--- ^quadraticity

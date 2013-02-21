@@ -41,6 +41,10 @@ on the state
 
 Plan: migrate business calculation first and then think of reusing underlying math
 
+
+Coupons; Monte Carlo; Trees, Latices, Discretized
+name conflicts, error handling
+
 No empty objects for ccy, calendar, day counter!
 Custom DayCounters calling back to Haskell, many foreign imports would become unsafe then?
 
@@ -48,6 +52,8 @@ Expose minimal possible (a) mutators and (b) elementary inspectors (that just re
 
 instead of CompositeQuote/DerivedQuote implement a quote calling Haskell callbacks if needed.
 Probably it would need to register for notifications from other quotes and evaluation date?
+
+(Maybe Day) in too many functions?
 
 -- done:
 Bond::

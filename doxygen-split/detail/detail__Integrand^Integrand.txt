@@ -1,5 +1,0 @@
-->
-::const Path &
--- ^path
-::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
--- ^process

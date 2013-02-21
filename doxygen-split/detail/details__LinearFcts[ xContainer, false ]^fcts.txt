@@ -1,1 +1,0 @@
-->const std::vector< boost::function1< Real, ArgumentType > > &

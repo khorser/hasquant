@@ -9,7 +9,9 @@ import Control.Monad(forM_)
 import Data.Time.Calendar
 import Text.Printf
 
-import QuantLib.CashFlow.Leg
+import qualified QuantLib.CashFlow.Leg as CF
+import QuantLib.CashFlow.DurationType
+import QuantLib.Compounding
 import QuantLib.Instrument.Bond
 import QuantLib.Math.Interpolation
 import QuantLib.Quote
@@ -46,12 +48,23 @@ run = do
   cleanQuotes <- mapM simpleQuote cleanPrices
 
   (iA, iB) <- step1 tod dc cal bondSettle cleanQuotes
-                >>= \(ts0, instrA, instrB, firstIterCurves) ->
-                  step2 tod dc cal ts0 instrA instrB firstIterCurves >> return (drop 1 instrA, drop 1 instrB)
+                >>= \(ts0, instrA, instrB, curves) ->
+                  step2 tod dc cal ts0 instrA instrB curves >> return (drop 1 instrA, drop 1 instrB)
 
   newtod <- advance cal tod 24 Months ModifiedFollowing False
   setEvaluationDate (Just newtod)
   newBondSettle <- advance cal newtod bondSettleDays Days Following False
+
+  (ts00, curves) <- step3 newtod dc cal newBondSettle iA iB
+  mapM_ (\(q1, q2, i) -> do
+      b <- TS.bond i
+      qv1 <- asQuote q1 >>= value
+      ytm <- yield'' b qv1 dc Compounded Annual (Just newtod) 1e-10 100 0.05
+      dur <- duration' b ytm dc Compounded Annual Modified (Just newtod)
+      let delta = -dur * qv1 * 5 / 10000
+      setValue q2 (qv1 + delta)) $
+        zip3 (init (drop 1 cleanQuotes)) (drop 2 cleanQuotes) (init iA)
+  printRates ts00 dc newBondSettle newtod curves iA
 
   return $ Result 5.6
   where
@@ -80,6 +93,24 @@ run = do
       df2 <- TS.discount ts (last ds) False
       printf "%.3f " $ 100.0 * (df1 - df2) / sum dfs
 
+    printRates ts0 dc bondSettle tod curves instrA = do
+      refDate <- asTermStructure ts0 >>= TS.referenceDate
+      _ <- printf "Reference date: %s, iterations: " $ show refDate
+      forM_ curves printOutput
+      putStrLn ""
+
+      forM_ instrA $
+        \h -> do
+          cfs <- TS.bond h >>= cashflows >>= \l -> CF.cashFlows l False (Just bondSettle)
+          let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
+          _ <- yearFraction dc tod (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
+          parRate ts0 (bondSettle:ds) dc
+          forM_ curves $
+            \c -> do
+              ts <- asYieldTermStructure c
+              parRate ts (bondSettle:ds) dc
+          putStrLn ""
+
     step1 tod dc cal bondSettle cleanQuotes = do
       helpers <- mapM (\(q, l, c) -> do
         mat <- advance cal bondSettle l Years Following False
@@ -98,58 +129,42 @@ run = do
 
       ts0 <- TS.piecewiseYieldCurve' curveSettleDays cal instrB dc [] 1e-12 Discount LogLinear
 
-      -- results do not quite match with FittedBondCurve QuantLib example
-      -- if QLC is built with optimization level different from QuantLib
+      -- results depend on optimization options used to build QLC
       fittings <- sequence [TS.exponentialSplinesFitting True,
                     TS.simplePolynomialFitting 3 True,
                     TS.nelsonSiegelFitting,
                     TS.cubicBSplinesFitting [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True,
                     TS.svenssonFitting]
 
-      firstIterCurves <- mapM
+      curves <- mapM
           (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals)
           fittings
+      printRates ts0 dc bondSettle tod curves instrA
+      return (ts0, instrA, instrB, curves)
 
-      refDate <- asTermStructure ts0 >>= TS.referenceDate
-      _ <- printf "Reference date: %s, iterations: " $ show refDate
-      forM_ firstIterCurves printOutput
-      putStrLn ""
-
-      forM_ instrA $
-        \h -> do
-          cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just bondSettle)
-          let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-          _ <- yearFraction dc tod (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
-          parRate ts0 (bondSettle:ds) dc
-          forM_ firstIterCurves $
-            \c -> do
-              ts <- asYieldTermStructure c
-              parRate ts (bondSettle:ds) dc
-          putStrLn ""
-      return (ts0, instrA, instrB, firstIterCurves)
-
-    step2 tod dc cal ts0 instrA instrB firstIterCurves = do
+    step2 tod dc cal ts0 instrA _ curves = do
       newtoday <- advance cal tod 23 Months ModifiedFollowing False
       setEvaluationDate (Just newtoday)
-      newBondSettle <- advance cal newtoday bondSettleDays Days Following False
+      bondSettle <- advance cal newtoday bondSettleDays Days Following False
 
-      newRefDate <- asTermStructure ts0 >>= TS.referenceDate
-      _ <- printf "Reference date: %s, number of iterations: " $ show newRefDate
-      forM_ firstIterCurves printOutput
-      putStrLn ""
+      printRates ts0 dc bondSettle newtoday curves instrA
 
-      forM_ instrA $
-        \h -> do
-          cfs <- TS.bond h >>= cashflows >>= \l -> cashFlows l False (Just newBondSettle)
-          let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-          _ <- yearFraction dc newtoday (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
-          parRate ts0 (newBondSettle:ds) dc
-          forM_ firstIterCurves $
-            \c -> do
-              ts <- asYieldTermStructure c
-              parRate ts (newBondSettle:ds) dc
-          putStrLn ""
-      return (instrA, instrB)
+
+    step3 tod dc cal bondSettle iA iB = do
+      ts00 <- TS.piecewiseYieldCurve' curveSettleDays cal iB dc [] 1e-12 Discount LogLinear
+
+      -- results depend on optimization options used to build QLC
+      fittings <- sequence [TS.exponentialSplinesFitting True,
+                    TS.simplePolynomialFitting 3 True,
+                    TS.nelsonSiegelFitting,
+                    TS.cubicBSplinesFitting [-30.0, -20.0,  0.0,  5.0, 10.0, 15.0, 20.0,  25.0, 30.0, 40.0, 50.0] True,
+                    TS.svenssonFitting]
+
+      curves <- mapM
+          (\f -> TS.fittedBondDiscountCurve curveSettleDays cal iA dc f tolerance maxEvals)
+          fittings
+      printRates ts00 dc bondSettle tod curves iA
+      return (ts00, curves)
 
 {- QuantLib example output:
 

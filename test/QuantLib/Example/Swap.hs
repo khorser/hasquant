@@ -5,7 +5,7 @@ module QuantLib.Example.Swap
   )
 where
 
-import Control.Monad(forM_, forM, (>=>))
+import Control.Monad(foldM, forM_, forM, (>=>))
 import Data.Time.Calendar
 
 import QuantLib.Math.Interpolation
@@ -55,8 +55,8 @@ run = do
     TS.fraRateHelper q m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
       zip fraQuotes fraTerms
 
-  let imm1 = nextIMMDate (Just settleDate) True
-  let imms = foldl nextIMM [imm1] (replicate (length futPrices-1) 1)
+  imm1 <- nextIMMDate (Just settleDate) True
+  imms <- foldM nextIMM [imm1] (replicate (length futPrices-1) 1)
 
   futHelpers <- mapM (\(q, imm) ->
     TS.futuresRateHelper q imm 3 cal ModifiedFollowing True depoDC Nothing) $
@@ -98,8 +98,10 @@ run = do
     fraTerms = [(3, 6), (6, 9), (6, 12)]
     swapYears = [2, 3, 5, 10, 15]
 
-    nextIMM :: [Day] -> Integer -> [Day]
-    nextIMM l inc = l ++ [nextIMMDate (Just $ addDays inc (last l)) True]
+    nextIMM :: [Day] -> Integer -> IO [Day]
+    nextIMM l inc = do
+      nextImm <- nextIMMDate (Just $ addDays inc (last l)) True
+      return $ l ++ [nextImm]
 
     valuateSwap settle d f = do
       fixDC <- thirty360European

@@ -34,9 +34,9 @@ extern "C" {
   int DLLEXPORT qlIMMIsIMMcode(char* in, int mainCycle, char **e);
   int DLLEXPORT qlIMMIsIMMdate(int d, int mainCycle, char **e);
   char* DLLEXPORT qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e);
-  char* DLLEXPORT qlIMMNextCode(int d, int mainCycle);
+  char* DLLEXPORT qlIMMNextCode(int d, int mainCycle, char **e);
   int DLLEXPORT qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e);
-  int DLLEXPORT qlIMMNextDate(int d, int mainCycle);
+  int DLLEXPORT qlIMMNextDate(int d, int mainCycle, char **e);
 
 #ifdef quantlib_cash_flow_hpp
   /* leg */

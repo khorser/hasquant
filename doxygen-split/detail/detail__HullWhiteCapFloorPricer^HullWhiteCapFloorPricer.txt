@@ -1,7 +1,0 @@
-->
-::const CapFloor::arguments &
--- ^
-::const boost::shared_ptr< HullWhite > &
--- ^
-::Time
--- ^forwardMeasureTime
