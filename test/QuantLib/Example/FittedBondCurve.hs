@@ -5,7 +5,7 @@ module QuantLib.Example.FittedBondCurve
   )
 where
 
-import Control.Monad(forM_)
+import Control.Monad(forM_, (>=>))
 import Data.Time.Calendar
 import Text.Printf
 
@@ -56,14 +56,13 @@ run = do
   newBondSettle <- advance cal newtod bondSettleDays Days Following False
 
   (ts00, curves) <- step3 newtod dc cal newBondSettle iA iB
-  mapM_ (\(q1, q2, i) -> do
+  mapM_ (\(price, q, i) -> do
       b <- TS.bond i
-      qv1 <- asQuote q1 >>= value
-      ytm <- yield'' b qv1 dc Compounded Annual (Just newtod) 1e-10 100 0.05
+      ytm <- yield'' b price dc Compounded Annual (Just newtod) 1e-10 100 0.05
       dur <- duration' b ytm dc Compounded Annual Modified (Just newtod)
-      let delta = -dur * qv1 * 5 / 10000
-      setValue q2 (qv1 + delta)) $
-        zip3 (init (drop 1 cleanQuotes)) (drop 2 cleanQuotes) (init iA)
+      let delta = -dur * price * 5 / 10000
+      setValue q (price + delta)) $
+        zip3 (drop 1 cleanPrices) (drop 1 cleanQuotes) iA
   printRates ts00 dc newBondSettle newtod curves iA
 
   return $ Result 5.6
@@ -79,9 +78,6 @@ run = do
     tolerance = 1e-10
     maxEvals = 5000
 
-    printOutput :: FittedBondDiscountCurve -> IO ()
-    printOutput ts = TS.numberOfIterations ts >>= printf "%d "
-
     parRate :: YieldTermStructure -> [Day] -> DayCounter -> IO ()
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
@@ -96,7 +92,7 @@ run = do
     printRates ts0 dc bondSettle tod curves instrA = do
       refDate <- asTermStructure ts0 >>= TS.referenceDate
       _ <- printf "Reference date: %s, iterations: " $ show refDate
-      forM_ curves printOutput
+      forM_ curves (TS.numberOfIterations >=> printf "%d ")
       putStrLn ""
 
       forM_ instrA $
