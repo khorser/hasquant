@@ -74,4 +74,11 @@ char *tracedup(const char *p) {
   return dup;
 }
 
+std::vector<Date> qlDateVector(unsigned len, int *dates) {
+  std::vector<Date> d;
+  for (unsigned i = 0; i < len; ++i)
+    d.push_back(Date(dates[i]));
+  return d;
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

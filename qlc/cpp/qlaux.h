@@ -198,6 +198,7 @@ T ret(T p) {
 
 const Date qlNullableDate(int serialNumber);
 int qlNullableDate(const Date &date);
+std::vector<Date> qlDateVector(unsigned len, int *dates);
 
 boost::optional<bool> qlOptBool(int b);
 int qlOptBool(boost::optional<bool> b);

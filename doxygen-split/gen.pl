@@ -286,7 +286,14 @@ sub type
   {
     if (not $def)
     {
-      return ('int', 'CDate', 'Day', 'Date(%)', '(%).serialNumber()', 0, '');
+      if (not $vect)
+      {
+	return ('int', 'CDate', 'Day', 'Date(%)', '(%).serialNumber()', 0, '');
+      }
+      else
+      {
+	return ('int*', 'CUInt -> Ptr CDate', '[Day]', 'qlDateVector(%, %Len)', '???', 0, 'unsigned %Len');
+      }
     }
     else
     {

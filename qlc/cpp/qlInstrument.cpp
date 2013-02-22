@@ -226,10 +226,7 @@ QlAmericanExercise* qlAmericanExercise(int earliestDate, int latestDate, int pay
 }
 QlBermudanExercise* qlBermudanExercise(unsigned datesLen, int *dates, int payoffAtExpiry, char **e) {
   try {
-    std::vector<Date> d;
-    for (unsigned i = 0; i < datesLen; ++i)
-      d.push_back(Date(dates[i]));
-    return ret(new QlBermudanExercise(alloc(new BermudanExercise(d, payoffAtExpiry))));
+    return ret(new QlBermudanExercise(alloc(new BermudanExercise(qlDateVector(datesLen, dates), payoffAtExpiry))));
   } catch (std::exception& er) {
     return handleException<QlBermudanExercise*>(e, er);
   }
