@@ -1,5 +1,0 @@
-->
-::Real
--- ^strike
-::Real
--- ^secondStrike

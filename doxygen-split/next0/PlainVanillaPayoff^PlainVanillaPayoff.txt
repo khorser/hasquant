@@ -1,5 +1,0 @@
-->
-::Option::Type
--- ^type
-::Real
--- ^strike

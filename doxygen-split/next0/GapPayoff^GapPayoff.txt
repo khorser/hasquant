@@ -1,7 +1,0 @@
-->
-::Option::Type
--- ^type
-::Real
--- ^strike
-::Real
--- ^secondStrike

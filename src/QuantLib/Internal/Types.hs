@@ -30,6 +30,16 @@ module QuantLib.Internal.Types
   , COvernightIndexedSwap
   , CBMASwap
   , CAssetSwap
+  , CPayoff
+  , CTypePayoff
+  , CStrikedTypePayoff
+  , CBasketPayoff
+  , CPercentageStrikePayoff
+  , CPlainVanillaPayoff
+  , CExercise
+  , CAmericanExercise
+  , CBermudanExercise
+  , CEuropeanExercise
 
   -- pricingengines
   , CPricingEngine
@@ -269,6 +279,98 @@ instance Upcastable CBMASwap CSwap where
   c_upcast = c_BMASwapAsSwap
 foreign import ccall safe "ql.h qlBMASwapAsSwap"
   c_BMASwapAsSwap :: Ptr CBMASwap -> IO (Ptr CSwap)
+
+data CPayoff
+instance Finalizable CPayoff where
+  finalize = p_freePayoff
+foreign import ccall safe "ql.h &qlFreePayoff"
+  p_freePayoff :: FunPtr (Ptr CPayoff -> IO ())
+
+data CBasketPayoff
+instance Finalizable CBasketPayoff where
+  finalize = p_freeBasketPayoff
+foreign import ccall safe "ql.h &qlFreeBasketPayoff"
+  p_freeBasketPayoff :: FunPtr (Ptr CBasketPayoff -> IO ())
+instance Upcastable CBasketPayoff CPayoff where
+  c_upcast = c_BasketPayoffAsPayoff
+foreign import ccall safe "ql.h qlBasketPayoffAsPayoff"
+  c_BasketPayoffAsPayoff :: Ptr CBasketPayoff -> IO (Ptr CPayoff)
+
+data CStrikedTypePayoff
+instance Finalizable CStrikedTypePayoff where
+  finalize = p_freeStrikedTypePayoff
+foreign import ccall safe "ql.h &qlFreeStrikedTypePayoff"
+  p_freeStrikedTypePayoff :: FunPtr (Ptr CStrikedTypePayoff -> IO ())
+instance Upcastable CStrikedTypePayoff CTypePayoff where
+  c_upcast = c_StrikedTypePayoffAsTypePayoff
+foreign import ccall safe "ql.h qlStrikedTypePayoffAsTypePayoff"
+  c_StrikedTypePayoffAsTypePayoff :: Ptr CStrikedTypePayoff -> IO (Ptr CTypePayoff)
+
+data CTypePayoff
+instance Finalizable CTypePayoff where
+  finalize = p_freeTypePayoff
+foreign import ccall safe "ql.h &qlFreeTypePayoff"
+  p_freeTypePayoff :: FunPtr (Ptr CTypePayoff -> IO ())
+instance Upcastable CTypePayoff CPayoff where
+  c_upcast = c_TypePayoffAsPayoff
+foreign import ccall safe "ql.h qlTypePayoffAsPayoff"
+  c_TypePayoffAsPayoff :: Ptr CTypePayoff -> IO (Ptr CPayoff)
+
+data CPercentageStrikePayoff
+instance Finalizable CPercentageStrikePayoff where
+  finalize = p_freePercentageStrikePayoff
+foreign import ccall safe "ql.h &qlFreePercentageStrikePayoff"
+  p_freePercentageStrikePayoff :: FunPtr (Ptr CPercentageStrikePayoff -> IO ())
+instance Upcastable CPercentageStrikePayoff CStrikedTypePayoff where
+  c_upcast = c_PercentageStrikePayoffAsStrikedTypePayoff
+foreign import ccall safe "ql.h qlPercentageStrikePayoffAsStrikedTypePayoff"
+  c_PercentageStrikePayoffAsStrikedTypePayoff :: Ptr CPercentageStrikePayoff -> IO (Ptr CStrikedTypePayoff)
+
+data CPlainVanillaPayoff
+instance Finalizable CPlainVanillaPayoff where
+  finalize = p_freePlainVanillaPayoff
+foreign import ccall safe "ql.h &qlFreePlainVanillaPayoff"
+  p_freePlainVanillaPayoff :: FunPtr (Ptr CPlainVanillaPayoff -> IO ())
+instance Upcastable CPlainVanillaPayoff CStrikedTypePayoff where
+  c_upcast = c_PlainVanillaPayoffAsStrikedTypePayoff
+foreign import ccall safe "ql.h qlPlainVanillaPayoffAsStrikedTypePayoff"
+  c_PlainVanillaPayoffAsStrikedTypePayoff :: Ptr CPlainVanillaPayoff -> IO (Ptr CStrikedTypePayoff)
+
+data CAmericanExercise
+instance Finalizable CAmericanExercise where
+  finalize = p_freeAmericanExercise
+foreign import ccall safe "ql.h &qlFreeAmericanExercise"
+  p_freeAmericanExercise :: FunPtr (Ptr CAmericanExercise -> IO ())
+instance Upcastable CAmericanExercise CExercise where
+  c_upcast = c_AmericanExerciseAsExercise
+foreign import ccall safe "ql.h qlAmericanExerciseAsExercise"
+  c_AmericanExerciseAsExercise :: Ptr CAmericanExercise -> IO (Ptr CExercise)
+
+data CBermudanExercise
+instance Finalizable CBermudanExercise where
+  finalize = p_freeBermudanExercise
+foreign import ccall safe "ql.h &qlFreeBermudanExercise"
+  p_freeBermudanExercise :: FunPtr (Ptr CBermudanExercise -> IO ())
+instance Upcastable CBermudanExercise CExercise where
+  c_upcast = c_BermudanExerciseAsExercise
+foreign import ccall safe "ql.h qlBermudanExerciseAsExercise"
+  c_BermudanExerciseAsExercise :: Ptr CBermudanExercise -> IO (Ptr CExercise)
+
+data CEuropeanExercise
+instance Finalizable CEuropeanExercise where
+  finalize = p_freeEuropeanExercise
+foreign import ccall safe "ql.h &qlFreeEuropeanExercise"
+  p_freeEuropeanExercise :: FunPtr (Ptr CEuropeanExercise -> IO ())
+instance Upcastable CEuropeanExercise CExercise where
+  c_upcast = c_EuropeanExerciseAsExercise
+foreign import ccall safe "ql.h qlEuropeanExerciseAsExercise"
+  c_EuropeanExerciseAsExercise :: Ptr CEuropeanExercise -> IO (Ptr CExercise)
+
+data CExercise
+instance Finalizable CExercise where
+  finalize = p_freeExercise
+foreign import ccall safe "ql.h &qlFreeExercise"
+  p_freeExercise :: FunPtr (Ptr CExercise -> IO ())
 
 -- pricingengines
 data CPricingEngine

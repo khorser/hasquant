@@ -31,6 +31,16 @@ module QuantLib.Types
   , OvernightIndexedSwap
   , BMASwap
   , AssetSwap
+  , Payoff
+  , BasketPayoff
+  , StrikedTypePayoff
+  , TypePayoff
+  , PercentageStrikePayoff
+  , PlainVanillaPayoff
+  , AmericanExercise
+  , BermudanExercise
+  , EuropeanExercise
+  , Exercise
 
   -- pricingengines
   , PricingEngine
@@ -64,6 +74,11 @@ module QuantLib.Types
   , asBond
   , asForward
   , asSwap
+
+  , asPayoff
+  , asTypePayoff
+  , asStrikedTypePayoff
+  , asExercise
 
   , asQuote
 
@@ -195,6 +210,30 @@ type AssetSwap = ForeignPtr CAssetSwap
 
 asSwap :: (Upcastable a CSwap) => ForeignPtr a -> IO Swap
 asSwap = upcast
+
+type Payoff = ForeignPtr CPayoff
+type BasketPayoff = ForeignPtr CBasketPayoff
+type StrikedTypePayoff = ForeignPtr CStrikedTypePayoff
+type TypePayoff = ForeignPtr CTypePayoff
+type PercentageStrikePayoff = ForeignPtr CPercentageStrikePayoff
+type PlainVanillaPayoff = ForeignPtr CPlainVanillaPayoff
+
+asPayoff :: (Upcastable a CPayoff) => ForeignPtr a -> IO Payoff
+asPayoff = upcast
+
+asTypePayoff :: (Upcastable a CTypePayoff) => ForeignPtr a -> IO TypePayoff
+asTypePayoff = upcast
+
+asStrikedTypePayoff :: (Upcastable a CStrikedTypePayoff) => ForeignPtr a -> IO StrikedTypePayoff
+asStrikedTypePayoff = upcast
+
+type AmericanExercise = ForeignPtr CAmericanExercise
+type BermudanExercise = ForeignPtr CBermudanExercise
+type EuropeanExercise = ForeignPtr CEuropeanExercise
+type Exercise = ForeignPtr CExercise
+
+asExercise :: (Upcastable a CExercise) => ForeignPtr a -> IO Exercise
+asExercise = upcast
 
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine

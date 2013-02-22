@@ -1,4 +1,9 @@
 #include <ql/instrument.hpp>
+#include <ql/exercise.hpp>
+#include <ql/payoff.hpp>
+#include <ql/instruments/basketoption.hpp>
+#include <ql/instruments/stickyratchet.hpp>
+#include <ql/instruments/forward.hpp>
 
 #include "qlaux.h"
 
@@ -44,6 +49,211 @@ int qlInstrumentValuationDate(QlInstrument* o, char **e) {
     return ((*arg(o))->valuationDate()).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
+  }
+}
+
+void qlFreePayoff(QlPayoff *o) { del(o); }
+
+void qlFreeBasketPayoff(QlBasketPayoff *o) { del(o); }
+QlPayoff* qlBasketPayoffAsPayoff(QlBasketPayoff *o) { return ret(new QlPayoff(*arg(o))); }
+
+void qlFreeTypePayoff(QlTypePayoff *o) { del(o); }
+QlPayoff* qlTypePayoffAsPayoff(QlTypePayoff *o) { return ret(new QlPayoff(*arg(o))); }
+
+void qlFreeStrikedTypePayoff(QlStrikedTypePayoff *o) { del(o); }
+QlTypePayoff* qlStrikedTypePayoffAsTypePayoff(QlStrikedTypePayoff *o) { return ret(new QlTypePayoff(*arg(o))); }
+
+void qlFreePercentageStrikePayoff(QlPercentageStrikePayoff *o) { del(o); }
+QlStrikedTypePayoff* qlPercentageStrikePayoffAsStrikedTypePayoff(QlPercentageStrikePayoff *o) { return ret(new QlStrikedTypePayoff(*arg(o))); }
+
+void qlFreePlainVanillaPayoff(QlPlainVanillaPayoff *o) { del(o); }
+QlStrikedTypePayoff* qlPlainVanillaPayoffAsStrikedTypePayoff(QlPlainVanillaPayoff *o) { return ret(new QlStrikedTypePayoff(*arg(o))); }
+
+QlStrikedTypePayoff* qlAssetOrNothingPayoff(int type, double strike, char **e) {
+  try {
+    return ret(new QlStrikedTypePayoff(alloc(new AssetOrNothingPayoff((Option::Type)type, strike))));
+  } catch (std::exception& er) {
+    return handleException<QlStrikedTypePayoff*>(e, er);
+  }
+}
+QlBasketPayoff* qlAverageBasketPayoff(QlPayoff* p, unsigned n, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new AverageBasketPayoff(*arg(p), n))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
+QlStrikedTypePayoff* qlCashOrNothingPayoff(int type, double strike, double cashPayoff, char **e) {
+  try {
+    return ret(new QlStrikedTypePayoff(alloc(new CashOrNothingPayoff((Option::Type)type, strike, cashPayoff))));
+  } catch (std::exception& er) {
+    return handleException<QlStrikedTypePayoff*>(e, er);
+  }
+}
+QlPayoff* qlDoubleStickyRatchetPayoff(double type1, double type2, double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e) {
+  try {
+    return ret(new QlPayoff(alloc(new DoubleStickyRatchetPayoff(type1, type2, gearing1, gearing2, gearing3, spread1, spread2, spread3, initialValue1, initialValue2, accrualFactor))));
+  } catch (std::exception& er) {
+    return handleException<QlPayoff*>(e, er);
+  }
+}
+QlTypePayoff* qlFloatingTypePayoff(int type, char **e) {
+  try {
+    return ret(new QlTypePayoff(alloc(new FloatingTypePayoff((Option::Type)type))));
+  } catch (std::exception& er) {
+    return handleException<QlTypePayoff*>(e, er);
+  }
+}
+QlPayoff* qlForwardTypePayoff(int type, double strike, char **e) {
+  try {
+    return ret(new QlPayoff(alloc(new ForwardTypePayoff((Position::Type)type, strike))));
+  } catch (std::exception& er) {
+    return handleException<QlPayoff*>(e, er);
+  }
+}
+QlStrikedTypePayoff* qlGapPayoff(int type, double strike, double secondStrike, char **e) {
+  try {
+    return ret(new QlStrikedTypePayoff(alloc(new GapPayoff((Option::Type)type, strike, secondStrike))));
+  } catch (std::exception& er) {
+    return handleException<QlStrikedTypePayoff*>(e, er);
+  }
+}
+QlBasketPayoff* qlMaxBasketPayoff(QlPayoff* p, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new MaxBasketPayoff(*arg(p)))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
+QlBasketPayoff* qlMinBasketPayoff(QlPayoff* p, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new MinBasketPayoff(*arg(p)))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
+QlPercentageStrikePayoff* qlPercentageStrikePayoff(int type, double moneyness, char **e) {
+  try {
+    return ret(new QlPercentageStrikePayoff(alloc(new PercentageStrikePayoff((Option::Type)type, moneyness))));
+  } catch (std::exception& er) {
+    return handleException<QlPercentageStrikePayoff*>(e, er);
+  }
+}
+QlPlainVanillaPayoff* qlPlainVanillaPayoff(int type, double strike, char **e) {
+  try {
+    return ret(new QlPlainVanillaPayoff(alloc(new PlainVanillaPayoff((Option::Type)type, strike))));
+  } catch (std::exception& er) {
+    return handleException<QlPlainVanillaPayoff*>(e, er);
+  }
+}
+QlPayoff* qlRatchetMaxPayoff(double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e) {
+  try {
+    return ret(new QlPayoff(alloc(new RatchetMaxPayoff(gearing1, gearing2, gearing3, spread1, spread2, spread3, initialValue1, initialValue2, accrualFactor))));
+  } catch (std::exception& er) {
+    return handleException<QlPayoff*>(e, er);
+  }
+}
+QlPayoff* qlRatchetMinPayoff(double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e) {
+  try {
+    return ret(new QlPayoff(alloc(new RatchetMinPayoff(gearing1, gearing2, gearing3, spread1, spread2, spread3, initialValue1, initialValue2, accrualFactor))));
+  } catch (std::exception& er) {
+    return handleException<QlPayoff*>(e, er);
+  }
+}
+QlPayoff* qlRatchetPayoff(double gearing1, double gearing2, double spread1, double spread2, double initialValue, double accrualFactor, char **e) {
+  try {
+    return ret(new QlPayoff(alloc(new RatchetPayoff(gearing1, gearing2, spread1, spread2, initialValue, accrualFactor))));
+  } catch (std::exception& er) {
+    return handleException<QlPayoff*>(e, er);
+  }
+}
+QlBasketPayoff* qlSpreadBasketPayoff(QlPayoff* p, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new SpreadBasketPayoff((*arg(p))))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
+QlPayoff* qlStickyMaxPayoff(double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e) {
+  try {
+    return ret(new QlPayoff(alloc(new StickyMaxPayoff(gearing1, gearing2, gearing3, spread1, spread2, spread3, initialValue1, initialValue2, accrualFactor))));
+  } catch (std::exception& er) {
+    return handleException<QlPayoff*>(e, er);
+  }
+}
+QlPayoff* qlStickyMinPayoff(double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e) {
+  try {
+    return ret(new QlPayoff(alloc(new StickyMinPayoff(gearing1, gearing2, gearing3, spread1, spread2, spread3, initialValue1, initialValue2, accrualFactor))));
+  } catch (std::exception& er) {
+    return handleException<QlPayoff*>(e, er);
+  }
+}
+QlPayoff* qlStickyPayoff(double gearing1, double gearing2, double spread1, double spread2, double initialValue, double accrualFactor, char **e) {
+  try {
+    return ret(new QlPayoff(alloc(new StickyPayoff(gearing1, gearing2, spread1, spread2, initialValue, accrualFactor))));
+  } catch (std::exception& er) {
+    return handleException<QlPayoff*>(e, er);
+  }
+}
+QlStrikedTypePayoff* qlSuperFundPayoff(double strike, double secondStrike, char **e) {
+  try {
+    return ret(new QlStrikedTypePayoff(alloc(new SuperFundPayoff(strike, secondStrike))));
+  } catch (std::exception& er) {
+    return handleException<QlStrikedTypePayoff*>(e, er);
+  }
+}
+QlStrikedTypePayoff* qlSuperSharePayoff(double strike, double secondStrike, double cashPayoff, char **e) {
+  try {
+    return ret(new QlStrikedTypePayoff(alloc(new SuperSharePayoff(strike, secondStrike, cashPayoff))));
+  } catch (std::exception& er) {
+    return handleException<QlStrikedTypePayoff*>(e, er);
+  }
+}
+void qlFreeAmericanExercise(QlAmericanExercise *o) { del(o); }
+QlExercise* qlAmericanExerciseAsExercise(QlAmericanExercise *o) { return ret(new QlExercise(*arg(o))); }
+void qlFreeBermudanExercise(QlBermudanExercise *o) { del(o); }
+QlExercise* qlBermudanExerciseAsExercise(QlBermudanExercise *o) { return ret(new QlExercise(*arg(o))); }
+void qlFreeEuropeanExercise(QlEuropeanExercise *o) { del(o); }
+QlExercise* qlEuropeanExerciseAsExercise(QlEuropeanExercise *o) { return ret(new QlExercise(*arg(o))); }
+void qlFreeExercise(QlExercise *o) { del(o); }
+
+QlAmericanExercise* qlAmericanExercise(int earliestDate, int latestDate, int payoffAtExpiry, char **e) {
+  try {
+    return ret(new QlAmericanExercise(alloc(new AmericanExercise(Date(earliestDate), Date(latestDate), payoffAtExpiry))));
+  } catch (std::exception& er) {
+    return handleException<QlAmericanExercise*>(e, er);
+  }
+}
+QlBermudanExercise* qlBermudanExercise(unsigned datesLen, int *dates, int payoffAtExpiry, char **e) {
+  try {
+    std::vector<Date> d;
+    for (unsigned i = 0; i < datesLen; ++i)
+      d.push_back(Date(dates[i]));
+    return ret(new QlBermudanExercise(alloc(new BermudanExercise(d, payoffAtExpiry))));
+  } catch (std::exception& er) {
+    return handleException<QlBermudanExercise*>(e, er);
+  }
+}
+QlExercise* qlEarlyExercise(int type, int payoffAtExpiry, char **e) {
+  try {
+    return ret(new QlExercise(alloc(new EarlyExercise((Exercise::Type)type, payoffAtExpiry))));
+  } catch (std::exception& er) {
+    return handleException<QlExercise*>(e, er);
+  }
+}
+QlExercise* qlExercise(int type, char **e) {
+  try {
+    return ret(new QlExercise(alloc(new Exercise((Exercise::Type)type))));
+  } catch (std::exception& er) {
+    return handleException<QlExercise*>(e, er);
+  }
+}
+
+QlEuropeanExercise* qlEuropeanExercise(int date, char **e) {
+  try {
+    return ret(new QlEuropeanExercise(alloc(new EuropeanExercise(Date(date)))));
+  } catch (std::exception& er) {
+    return handleException<QlEuropeanExercise*>(e, er);
   }
 }
 

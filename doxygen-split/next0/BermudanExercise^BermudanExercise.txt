@@ -1,6 +1,0 @@
-->
-::const std::vector< Date > &
--- ^dates
-::bool
-=false
--- ^payoffAtExpiry

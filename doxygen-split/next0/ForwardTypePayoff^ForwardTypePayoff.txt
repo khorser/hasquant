@@ -1,5 +1,0 @@
-->
-::Position::Type
--- ^type
-::Real
--- ^strike

@@ -412,6 +412,56 @@ typedef boost::shared_ptr<TermStructure> QlTermStructure;
 template <> class objClassName<TermStructure *> { public: static const char *name() { return "TermStructure"; } };
 template <> class objClassName<QlTermStructure *> { public: static const char *name() { return "QlTermStructure"; } };
 
+namespace QuantLib {class BasketPayoff;} using QuantLib::BasketPayoff;
+typedef boost::shared_ptr<BasketPayoff> QlBasketPayoff;
+template <> class objClassName<BasketPayoff *> { public: static const char *name() { return "BasketPayoff"; } };
+template <> class objClassName<QlBasketPayoff *> { public: static const char *name() { return "QlBasketPayoff"; } };
+
+namespace QuantLib {class Payoff;} using QuantLib::Payoff;
+typedef boost::shared_ptr<Payoff> QlPayoff;
+template <> class objClassName<Payoff *> { public: static const char *name() { return "Payoff"; } };
+template <> class objClassName<QlPayoff *> { public: static const char *name() { return "QlPayoff"; } };
+
+namespace QuantLib {class StrikedTypePayoff;} using QuantLib::StrikedTypePayoff;
+typedef boost::shared_ptr<StrikedTypePayoff> QlStrikedTypePayoff;
+template <> class objClassName<StrikedTypePayoff *> { public: static const char *name() { return "StrikedTypePayoff"; } };
+template <> class objClassName<QlStrikedTypePayoff *> { public: static const char *name() { return "QlStrikedTypePayoff"; } };
+
+namespace QuantLib {class TypePayoff;} using QuantLib::TypePayoff;
+typedef boost::shared_ptr<TypePayoff> QlTypePayoff;
+template <> class objClassName<TypePayoff *> { public: static const char *name() { return "TypePayoff"; } };
+template <> class objClassName<QlTypePayoff *> { public: static const char *name() { return "QlTypePayoff"; } };
+
+namespace QuantLib {class PercentageStrikePayoff;} using QuantLib::PercentageStrikePayoff;
+typedef boost::shared_ptr<PercentageStrikePayoff> QlPercentageStrikePayoff;
+template <> class objClassName<PercentageStrikePayoff *> { public: static const char *name() { return "PercentageStrikePayoff"; } };
+template <> class objClassName<QlPercentageStrikePayoff *> { public: static const char *name() { return "QlPercentageStrikePayoff"; } };
+
+namespace QuantLib {class PlainVanillaPayoff;} using QuantLib::PlainVanillaPayoff;
+typedef boost::shared_ptr<PlainVanillaPayoff> QlPlainVanillaPayoff;
+template <> class objClassName<PlainVanillaPayoff *> { public: static const char *name() { return "PlainVanillaPayoff"; } };
+template <> class objClassName<QlPlainVanillaPayoff *> { public: static const char *name() { return "QlPlainVanillaPayoff"; } };
+
+namespace QuantLib {class AmericanExercise;} using QuantLib::AmericanExercise;
+typedef boost::shared_ptr<AmericanExercise> QlAmericanExercise;
+template <> class objClassName<AmericanExercise *> { public: static const char *name() { return "AmericanExercise"; } };
+template <> class objClassName<QlAmericanExercise *> { public: static const char *name() { return "QlAmericanExercise"; } };
+
+namespace QuantLib {class BermudanExercise;} using QuantLib::BermudanExercise;
+typedef boost::shared_ptr<BermudanExercise> QlBermudanExercise;
+template <> class objClassName<BermudanExercise *> { public: static const char *name() { return "BermudanExercise"; } };
+template <> class objClassName<QlBermudanExercise *> { public: static const char *name() { return "QlBermudanExercise"; } };
+
+namespace QuantLib {class EuropeanExercise;} using QuantLib::EuropeanExercise;
+typedef boost::shared_ptr<EuropeanExercise> QlEuropeanExercise;
+template <> class objClassName<EuropeanExercise *> { public: static const char *name() { return "EuropeanExercise"; } };
+template <> class objClassName<QlEuropeanExercise *> { public: static const char *name() { return "QlEuropeanExercise"; } };
+
+namespace QuantLib {class Exercise;} using QuantLib::Exercise;
+typedef boost::shared_ptr<Exercise> QlExercise;
+template <> class objClassName<Exercise *> { public: static const char *name() { return "Exercise"; } };
+template <> class objClassName<QlExercise *> { public: static const char *name() { return "QlExercise"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
