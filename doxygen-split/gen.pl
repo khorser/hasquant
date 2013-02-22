@@ -276,7 +276,13 @@ sub type
   }
   elsif ($t ~~ ['Natural', 'Size'])
   {
-    return ('unsigned', 'CUInt', 'Word', '%', '%', 0, '');
+    if (not $vect)
+    {
+      return ('unsigned', 'CUInt', 'Word', '%', '%', 0, '');
+    else
+    {
+      return ('unsigned*', 'CUInt -> Ptr CUInt', '[Word]', 'std::vector<unsigned>(%, %+%Len)', '???', 0, 'unsigned %Len');
+    }
   }
   elsif ($t ~~ ['Integer', 'BigInteger', 'Day', 'Year'])
   {
