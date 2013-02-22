@@ -1,5 +1,0 @@
-->
-::const boost::shared_ptr< Payoff > &
--- ^p
-::const Array &
--- ^a

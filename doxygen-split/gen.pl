@@ -274,11 +274,16 @@ sub type
       return ('double*', 'CUInt -> Ptr CDouble', '[Double]', 'std::vector<double>(%, %+%Len)', '???', 0, 'unsigned %Len');
     }
   }
+  elsif ($t eq 'Array')
+  {
+    return ('double*', 'CUInt -> Ptr CDouble', '[Double]', 'Array(%, %+%Len)', '???', 0, 'unsigned %Len');
+  }
   elsif ($t ~~ ['Natural', 'Size'])
   {
     if (not $vect)
     {
       return ('unsigned', 'CUInt', 'Word', '%', '%', 0, '');
+    }
     else
     {
       return ('unsigned*', 'CUInt -> Ptr CUInt', '[Word]', 'std::vector<unsigned>(%, %+%Len)', '???', 0, 'unsigned %Len');

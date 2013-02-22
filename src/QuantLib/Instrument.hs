@@ -10,6 +10,7 @@ module QuantLib.Instrument
 
   , assetOrNothingPayoff
   , averageBasketPayoff
+  , averageBasketPayoff'
   , cashOrNothingPayoff
   , doubleStickyRatchetPayoff
   , floatingTypePayoff
@@ -325,5 +326,13 @@ europeanExercise = $(ffiCall 'europeanExercise) c_europeanExercise
 
 foreign import ccall safe "ql.h qlEuropeanExercise"
   c_europeanExercise :: CDate -> Ptr CString -> IO (Ptr CEuropeanExercise)
+
+averageBasketPayoff' :: Payoff -- ^p
+  -> [Double] -- ^a
+  -> IO BasketPayoff
+averageBasketPayoff' = $(ffiCall 'averageBasketPayoff') c_averageBasketPayoff'
+
+foreign import ccall safe "ql.h qlAverageBasketPayoff1"
+  c_averageBasketPayoff' :: Ptr CPayoff -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CBasketPayoff)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

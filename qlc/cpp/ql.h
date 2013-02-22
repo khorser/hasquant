@@ -407,6 +407,7 @@ extern "C" {
 
   QlStrikedTypePayoff* DLLEXPORT qlAssetOrNothingPayoff(int type, double strike, char **e);
   QlBasketPayoff* DLLEXPORT qlAverageBasketPayoff(QlPayoff* p, unsigned n, char **e);
+  QlBasketPayoff* DLLEXPORT qlAverageBasketPayoff1(QlPayoff* p, unsigned aLen, double* a, char **e);
   QlStrikedTypePayoff* DLLEXPORT qlCashOrNothingPayoff(int type, double strike, double cashPayoff, char **e);
   QlPayoff* DLLEXPORT qlDoubleStickyRatchetPayoff(double type1, double type2, double gearing1, double gearing2, double gearing3, double spread1, double spread2, double spread3, double initialValue1, double initialValue2, double accrualFactor, char **e);
   QlTypePayoff* DLLEXPORT qlFloatingTypePayoff(int type, char **e);

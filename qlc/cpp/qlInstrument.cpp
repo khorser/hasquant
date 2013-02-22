@@ -83,6 +83,13 @@ QlBasketPayoff* qlAverageBasketPayoff(QlPayoff* p, unsigned n, char **e) {
     return handleException<QlBasketPayoff*>(e, er);
   }
 }
+QlBasketPayoff* qlAverageBasketPayoff1(QlPayoff* p, unsigned aLen, double* a, char **e) {
+  try {
+    return ret(new QlBasketPayoff(alloc(new AverageBasketPayoff((*arg(p)), Array(a, a+aLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlBasketPayoff*>(e, er);
+  }
+}
 QlStrikedTypePayoff* qlCashOrNothingPayoff(int type, double strike, double cashPayoff, char **e) {
   try {
     return ret(new QlStrikedTypePayoff(alloc(new CashOrNothingPayoff((Option::Type)type, strike, cashPayoff))));
