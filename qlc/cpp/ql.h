@@ -517,6 +517,10 @@ extern "C" {
   QlOptionletVolatilityStructure *DLLEXPORT qlConstantOptionletVol(
     unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e);
   void DLLEXPORT qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p);
+  void DLLEXPORT qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o);
+  QlTermStructure* DLLEXPORT qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o);
+  void DLLEXPORT qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);
+  QlVolatilityTermStructure* DLLEXPORT qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o);
 
   /* swap */
   void DLLEXPORT qlFreeSwap(QlSwap *o);
@@ -585,6 +589,15 @@ extern "C" {
   double DLLEXPORT qlVanillaSwapFixedLegNPV(QlVanillaSwap* o, char **e);
   double DLLEXPORT qlVanillaSwapFloatingLegBPS(QlVanillaSwap* o, char **e);
   double DLLEXPORT qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e);
+
+  /* process */
+  void DLLEXPORT qlFreeBlackProcess(QlBlackProcess *o);
+  QlGeneralizedBlackScholesProcess* DLLEXPORT qlBlackProcessAsGeneralizedBlackScholesProcess(QlBlackProcess *o);
+  void DLLEXPORT qlFreeGeneralizedBlackScholesProcess(QlGeneralizedBlackScholesProcess *o);
+  QlStochasticProcess1D* DLLEXPORT qlGeneralizedBlackScholesProcessAsStochasticProcess1D(QlGeneralizedBlackScholesProcess *o);
+  void DLLEXPORT qlFreeStochasticProcess(QlStochasticProcess *o);
+  void DLLEXPORT qlFreeStochasticProcess1D(QlStochasticProcess1D *o);
+  QlStochasticProcess* DLLEXPORT qlStochasticProcess1DAsStochasticProcess(QlStochasticProcess1D *o);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -44,6 +44,12 @@ module QuantLib.Internal.Types
   -- pricingengines
   , CPricingEngine
 
+  -- processes
+  , CBlackProcess
+  , CGeneralizedBlackScholesProcess
+  , CStochasticProcess
+  , CStochasticProcess1D
+
   -- termstructures
   , CRateHelper
   , CSwapRateHelper
@@ -55,6 +61,8 @@ module QuantLib.Internal.Types
   , CFittedBondDiscountCurveFittingMethod
   , CFittedBondDiscountCurve
   , CTermStructure
+  , CBlackVolTermStructure
+  , CVolatilityTermStructure
 
   -- time
   , CCalendar
@@ -380,6 +388,43 @@ instance Finalizable CPricingEngine where
 foreign import ccall safe "ql.h &qlFreePricingEngine"
   p_freePricingEngine :: FunPtr (Ptr CPricingEngine -> IO ())
 
+-- processes
+data CStochasticProcess1D
+instance Finalizable CStochasticProcess1D where
+  finalize = p_freeStochasticProcess1D
+foreign import ccall safe "ql.h &qlFreeStochasticProcess1D"
+  p_freeStochasticProcess1D :: FunPtr (Ptr CStochasticProcess1D -> IO ())
+instance Upcastable CStochasticProcess1D CStochasticProcess where
+  c_upcast = c_StochasticProcess1DAsStochasticProcess
+foreign import ccall safe "ql.h qlStochasticProcess1DAsStochasticProcess"
+  c_StochasticProcess1DAsStochasticProcess :: Ptr CStochasticProcess1D -> IO (Ptr CStochasticProcess)
+
+data CBlackProcess
+instance Finalizable CBlackProcess where
+  finalize = p_freeBlackProcess
+foreign import ccall safe "ql.h &qlFreeBlackProcess"
+  p_freeBlackProcess :: FunPtr (Ptr CBlackProcess -> IO ())
+instance Upcastable CBlackProcess CGeneralizedBlackScholesProcess where
+  c_upcast = c_BlackProcessAsGeneralizedBlackScholesProcess
+foreign import ccall safe "ql.h qlBlackProcessAsGeneralizedBlackScholesProcess"
+  c_BlackProcessAsGeneralizedBlackScholesProcess :: Ptr CBlackProcess -> IO (Ptr CGeneralizedBlackScholesProcess)
+
+data CGeneralizedBlackScholesProcess
+instance Finalizable CGeneralizedBlackScholesProcess where
+  finalize = p_freeGeneralizedBlackScholesProcess
+foreign import ccall safe "ql.h &qlFreeGeneralizedBlackScholesProcess"
+  p_freeGeneralizedBlackScholesProcess :: FunPtr (Ptr CGeneralizedBlackScholesProcess -> IO ())
+instance Upcastable CGeneralizedBlackScholesProcess CStochasticProcess1D where
+  c_upcast = c_GeneralizedBlackScholesProcessAsStochasticProcess1D
+foreign import ccall safe "ql.h qlGeneralizedBlackScholesProcessAsStochasticProcess1D"
+  c_GeneralizedBlackScholesProcessAsStochasticProcess1D :: Ptr CGeneralizedBlackScholesProcess -> IO (Ptr CStochasticProcess1D)
+
+data CStochasticProcess
+instance Finalizable CStochasticProcess where
+  finalize = p_freeStochasticProcess
+foreign import ccall safe "ql.h &qlFreeStochasticProcess"
+  p_freeStochasticProcess :: FunPtr (Ptr CStochasticProcess -> IO ())
+
 -- termstructures
 data CRateHelper
 data CYieldTermStructure
@@ -456,6 +501,26 @@ instance Upcastable CYieldTermStructure CTermStructure where
   c_upcast = c_YieldTermStructureAsTermStructure
 foreign import ccall safe "ql.h qlYieldTermStructureAsTermStructure"
   c_YieldTermStructureAsTermStructure :: Ptr CYieldTermStructure -> IO (Ptr CTermStructure)
+
+data CBlackVolTermStructure
+instance Finalizable CBlackVolTermStructure where
+  finalize = p_freeBlackVolTermStructure
+foreign import ccall safe "ql.h &qlFreeBlackVolTermStructure"
+  p_freeBlackVolTermStructure :: FunPtr (Ptr CBlackVolTermStructure -> IO ())
+instance Upcastable CBlackVolTermStructure CVolatilityTermStructure where
+  c_upcast = c_BlackVolTermStructureAsVolatilityTermStructure
+foreign import ccall safe "ql.h qlBlackVolTermStructureAsVolatilityTermStructure"
+  c_BlackVolTermStructureAsVolatilityTermStructure :: Ptr CBlackVolTermStructure -> IO (Ptr CVolatilityTermStructure)
+
+data CVolatilityTermStructure
+instance Finalizable CVolatilityTermStructure where
+  finalize = p_freeVolatilityTermStructure
+foreign import ccall safe "ql.h &qlFreeVolatilityTermStructure"
+  p_freeVolatilityTermStructure :: FunPtr (Ptr CVolatilityTermStructure -> IO ())
+instance Upcastable CVolatilityTermStructure CTermStructure where
+  c_upcast = c_VolatilityTermStructureAsTermStructure
+foreign import ccall safe "ql.h qlVolatilityTermStructureAsTermStructure"
+  c_VolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure -> IO (Ptr CTermStructure)
 
 -- time
 data CCalendar

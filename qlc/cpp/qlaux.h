@@ -463,6 +463,36 @@ typedef boost::shared_ptr<Exercise> QlExercise;
 template <> class objClassName<Exercise *> { public: static const char *name() { return "Exercise"; } };
 template <> class objClassName<QlExercise *> { public: static const char *name() { return "QlExercise"; } };
 
+namespace QuantLib {class BlackProcess;} using QuantLib::BlackProcess;
+typedef boost::shared_ptr<BlackProcess> QlBlackProcess;
+template <> class objClassName<BlackProcess *> { public: static const char *name() { return "BlackProcess"; } };
+template <> class objClassName<QlBlackProcess *> { public: static const char *name() { return "QlBlackProcess"; } };
+
+namespace QuantLib {class GeneralizedBlackScholesProcess;} using QuantLib::GeneralizedBlackScholesProcess;
+typedef boost::shared_ptr<GeneralizedBlackScholesProcess> QlGeneralizedBlackScholesProcess;
+template <> class objClassName<GeneralizedBlackScholesProcess *> { public: static const char *name() { return "GeneralizedBlackScholesProcess"; } };
+template <> class objClassName<QlGeneralizedBlackScholesProcess *> { public: static const char *name() { return "QlGeneralizedBlackScholesProcess"; } };
+
+namespace QuantLib {class StochasticProcess;} using QuantLib::StochasticProcess;
+typedef boost::shared_ptr<StochasticProcess> QlStochasticProcess;
+template <> class objClassName<StochasticProcess *> { public: static const char *name() { return "StochasticProcess"; } };
+template <> class objClassName<QlStochasticProcess *> { public: static const char *name() { return "QlStochasticProcess"; } };
+
+namespace QuantLib {class StochasticProcess1D;} using QuantLib::StochasticProcess1D;
+typedef boost::shared_ptr<StochasticProcess1D> QlStochasticProcess1D;
+template <> class objClassName<StochasticProcess1D *> { public: static const char *name() { return "StochasticProcess1D"; } };
+template <> class objClassName<QlStochasticProcess1D *> { public: static const char *name() { return "QlStochasticProcess1D"; } };
+
+namespace QuantLib {class BlackVolTermStructure;} using QuantLib::BlackVolTermStructure;
+typedef boost::shared_ptr<BlackVolTermStructure> QlBlackVolTermStructure;
+template <> class objClassName<BlackVolTermStructure *> { public: static const char *name() { return "BlackVolTermStructure"; } };
+template <> class objClassName<QlBlackVolTermStructure *> { public: static const char *name() { return "QlBlackVolTermStructure"; } };
+
+namespace QuantLib {class VolatilityTermStructure;} using QuantLib::VolatilityTermStructure;
+typedef boost::shared_ptr<VolatilityTermStructure> QlVolatilityTermStructure;
+template <> class objClassName<VolatilityTermStructure *> { public: static const char *name() { return "VolatilityTermStructure"; } };
+template <> class objClassName<QlVolatilityTermStructure *> { public: static const char *name() { return "QlVolatilityTermStructure"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

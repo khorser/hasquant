@@ -1,5 +1,6 @@
 #include <ql/quote.hpp>
 #include <ql/termstructures/volatility/optionlet/constantoptionletvol.hpp>
+#include <ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp>
 
 #include "qlaux.h"
 
@@ -19,5 +20,11 @@ QlOptionletVolatilityStructure *qlConstantOptionletVol(
 void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {
   del(p);
 }
+
+void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o) { del(o); }
+QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
+
+void qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o) { del(o); }
+QlTermStructure* qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o) { return ret(new QlTermStructure(*arg(o))); }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

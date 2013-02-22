@@ -13,6 +13,7 @@ OBJS=cpp/qlBond.o \
 	cpp/qlLeg.o \
 	cpp/qlPeriod.o \
 	cpp/qlPricingEngine.o \
+	cpp/qlProcess.o \
 	cpp/qlQuote.o \
 	cpp/qlSchedule.o \
 	cpp/qlSettings.o \
@@ -80,6 +81,9 @@ cpp/qlPeriod.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlPeriod.cpp
 
 cpp/qlPricingEngine.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlPricingEngine.cpp
 	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlPricingEngine.o $(QLCSRC)/qlPricingEngine.cpp
+
+cpp/qlProcess.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlProcess.cpp
+	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlProcess.o $(QLCSRC)/qlProcess.cpp
 
 cpp/qlQuote.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlQuote.cpp
 	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlQuote.o $(QLCSRC)/qlQuote.cpp

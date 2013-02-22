@@ -45,6 +45,12 @@ module QuantLib.Types
   -- pricingengines
   , PricingEngine
 
+  -- processes
+  , GeneralizedBlackScholesProcess
+  , StochasticProcess1D
+  , StochasticProcess
+  , BlackProcess
+
   -- termstructures
   , RateHelper
   , SwapRateHelper
@@ -56,6 +62,8 @@ module QuantLib.Types
   , FittedBondDiscountCurve
   , OISRateHelper
   , TermStructure
+  , BlackVolTermStructure
+  , VolatilityTermStructure
 
   -- time
   , Calendar
@@ -91,6 +99,11 @@ module QuantLib.Types
 
   , asYieldTermStructure
   , asTermStructure
+  , asVolatilityTermStructure
+
+  , asStochasticProcess
+  , asStochasticProcess1D
+  , asGeneralizedBlackScholesProcess
   )
 where
 
@@ -238,6 +251,21 @@ asExercise = upcast
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine
 
+-- processes
+type StochasticProcess1D = ForeignPtr CStochasticProcess1D
+type BlackProcess = ForeignPtr CBlackProcess
+type GeneralizedBlackScholesProcess = ForeignPtr CGeneralizedBlackScholesProcess
+type StochasticProcess = ForeignPtr CStochasticProcess
+
+asStochasticProcess :: (Upcastable a CStochasticProcess) => ForeignPtr a -> IO StochasticProcess
+asStochasticProcess = upcast
+
+asStochasticProcess1D :: (Upcastable a CStochasticProcess1D) => ForeignPtr a -> IO StochasticProcess1D
+asStochasticProcess1D = upcast
+
+asGeneralizedBlackScholesProcess :: (Upcastable a CGeneralizedBlackScholesProcess) => ForeignPtr a -> IO GeneralizedBlackScholesProcess
+asGeneralizedBlackScholesProcess = upcast
+
 -- termstructures
 type RateHelper = ForeignPtr CRateHelper
 type YieldTermStructure = ForeignPtr CYieldTermStructure
@@ -259,8 +287,15 @@ asYieldTermStructure :: (Upcastable a CYieldTermStructure) => ForeignPtr a -> IO
 asYieldTermStructure = upcast
 
 type TermStructure = ForeignPtr CTermStructure
+
 asTermStructure :: (Upcastable a CTermStructure) => ForeignPtr a -> IO TermStructure
 asTermStructure = upcast
+
+type BlackVolTermStructure = ForeignPtr CBlackVolTermStructure
+type VolatilityTermStructure = ForeignPtr CVolatilityTermStructure
+
+asVolatilityTermStructure :: (Upcastable a CVolatilityTermStructure) => ForeignPtr a -> IO VolatilityTermStructure
+asVolatilityTermStructure = upcast
 
 -- time
 -- |Calendars provide the means for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days

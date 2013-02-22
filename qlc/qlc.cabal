@@ -30,6 +30,7 @@ Extra-source-files:
               cpp/qlLeg.cpp
               cpp/qlPeriod.cpp
               cpp/qlPricingEngine.cpp
+              cpp/qlProcess.cpp
               cpp/qlQuote.cpp
               cpp/qlSchedule.cpp
               cpp/qlSettings.cpp
@@ -62,6 +63,7 @@ Library
               cpp/qlLeg.cpp
               cpp/qlPeriod.cpp
               cpp/qlPricingEngine.cpp
+              cpp/qlProcess.cpp
               cpp/qlQuote.cpp
               cpp/qlSchedule.cpp
               cpp/qlSettings.cpp

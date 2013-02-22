@@ -48,6 +48,7 @@ Library
               , QuantLib.PositionType
               , QuantLib.PriceType
               , QuantLib.PricingEngine
+              , QuantLib.Process
               , QuantLib.Quote
               , QuantLib.Settings
               , QuantLib.SettlementType
