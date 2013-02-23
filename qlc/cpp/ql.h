@@ -382,6 +382,20 @@ extern "C" {
   /* pricing engine */
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
   QlPricingEngine* DLLEXPORT qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticCliquetEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticContinuousFixedLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticContinuousFloatingLookbackEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticContinuousGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticDigitalAmericanEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticDiscreteGeometricAveragePriceAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticDiscreteGeometricAverageStrikeAsianEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticDividendEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticPerformanceEngine(QlGeneralizedBlackScholesProcess* process, char **e);
+  QlPricingEngine* DLLEXPORT qlBinomialVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e);
+  QlPricingEngine* DLLEXPORT qlBlackCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, char **e);
+  QlPricingEngine* DLLEXPORT qlBlackCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, char **e);
 
   void DLLEXPORT qlFreePricingEngine(QlPricingEngine *engine);
 
