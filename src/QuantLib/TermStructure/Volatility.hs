@@ -2,7 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.TermStructure.Volatility
   (
-    constantOptionletVol
+    constantOptionletVolatility'
   )
 where
 
@@ -12,18 +12,18 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 
-foreign import ccall safe "ql.h qlConstantOptionletVol"
-  c_constantOptionletVol :: CUInt -> Ptr CCalendar -> CInt -> Ptr CQuote
+foreign import ccall safe "ql.h qlConstantOptionletVol1"
+  c_constantOptionletVol' :: CUInt -> Ptr CCalendar -> CInt -> Ptr CQuote
     -> Ptr CDayCounter -> Ptr CString -> IO (Ptr COptionletVolatilityStructure)
 
 -- |Constant caplet volatility, no time-strike dependence. QuantLibXL: qlConstantOptionletVolatility
 -- floating reference date, floating market data
-constantOptionletVol :: Word -- ^settlementDays
+constantOptionletVolatility' :: Word -- ^settlementDays
  -> Calendar -- ^cal
  -> BusinessDayConvention -- ^bdc
  -> Quote -- ^volatility
  -> DayCounter -- ^dc
  -> IO OptionletVolatilityStructure
-constantOptionletVol = $(ffiCall 'constantOptionletVol) c_constantOptionletVol
+constantOptionletVolatility' = $(ffiCall 'constantOptionletVolatility') c_constantOptionletVol'
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

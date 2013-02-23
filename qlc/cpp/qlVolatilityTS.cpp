@@ -7,7 +7,7 @@
 
 using namespace QuantLib;
 
-QlOptionletVolatilityStructure *qlConstantOptionletVol(
+QlOptionletVolatilityStructure *qlConstantOptionletVol1(
     unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e) {
   try {
     return ret(new QlOptionletVolatilityStructure(new ConstantOptionletVolatility(

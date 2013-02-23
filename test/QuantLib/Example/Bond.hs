@@ -233,11 +233,8 @@ run = do
                                    100.0
                                    (Just $ fromGregorian 2005 10 21)
   volval <- simpleQuote 0 >>= asQuote
-  vol <- constantOptionletVol settlementDays
-                                  targetCal
-                                  ModifiedFollowing
-                                  volval
-                                  actual365Fixeddc
+  vol <- constantOptionletVolatility'
+          settlementDays targetCal ModifiedFollowing volval actual365Fixeddc
   couponPricer <- blackIborCouponPricer vol
   setCouponPricer floater couponPricer
   

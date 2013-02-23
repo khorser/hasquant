@@ -532,8 +532,7 @@ extern "C" {
   void DLLEXPORT qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
 
   /* volatility */
-  QlOptionletVolatilityStructure *DLLEXPORT qlConstantOptionletVol(
-    unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e);
+  QlOptionletVolatilityStructure *DLLEXPORT qlConstantOptionletVol1(unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e);
   void DLLEXPORT qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p);
   QlVolatilityTermStructure* DLLEXPORT qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o);
   void DLLEXPORT qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o);
