@@ -1,8 +1,0 @@
-->
-::const boost::shared_ptr< VanillaSwap > &
--- ^swap
-::const boost::shared_ptr< Exercise > &
--- ^exercise
-::Settlement::Type
-=Settlement::Physical
--- ^delivery

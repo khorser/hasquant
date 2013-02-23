@@ -1,6 +1,0 @@
-->
-::const Date &
--- ^latestDate
-::bool
-=false
--- ^payoffAtExpiry

@@ -440,6 +440,8 @@ extern "C" {
   QlExercise* DLLEXPORT qlExercise(int type, char **e);
   QlEuropeanExercise* DLLEXPORT qlEuropeanExercise(int date, char **e);
 
+  QlAmericanExercise* DLLEXPORT qlAmericanExercise1(int latestDate, int payoffAtExpiry, char **e);
+
   /* ibor index */
   QlIborIndex *DLLEXPORT qlIborIndex(char *name, Period *period, unsigned settlDays,
     Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount,
@@ -636,6 +638,12 @@ extern "C" {
   QlOneAssetOption* DLLEXPORT qlVanillaOptionAsOneAssetOption(QlVanillaOption *o);
   QlSwingExercise* DLLEXPORT qlSwingExercise(unsigned datesLen, int* dates, unsigned* seconds, char **e);
   QlSwingExercise* DLLEXPORT qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char **e);
+  double DLLEXPORT qlCdsOptionAtmRate(QlCdsOption* o, char **e);
+  QlCdsOption* DLLEXPORT qlCdsOption(QlCreditDefaultSwap* swap, QlExercise* exercise, int knocksOut, char **e);
+  double DLLEXPORT qlCdsOptionImpliedVolatility(QlCdsOption* o, double price, QlYieldTermStructure* termStructure, QlDefaultProbabilityTermStructure* x3, double recoveryRate, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
+  double DLLEXPORT qlCdsOptionRiskyAnnuity(QlCdsOption* o, char **e);
+  double DLLEXPORT qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
+  QlSwaption* DLLEXPORT qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, char **e);
 
   /* credit */
   void DLLEXPORT qlFreeCreditDefaultSwap(QlCreditDefaultSwap *o);

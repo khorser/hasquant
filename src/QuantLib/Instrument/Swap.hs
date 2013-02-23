@@ -33,6 +33,9 @@ module QuantLib.Instrument.Swap
   , liborLeg
   , liborLegBPS
   , liborLegNPV
+
+  , impliedVolatility
+  , swaption
   )
 
 where
@@ -41,6 +44,7 @@ import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Internal.Date
+import QuantLib.SettlementType
 import QuantLib.Time.BusinessDayConvention
 import QuantLib.Types
 import qualified QuantLib.Instrument.BMASwapType as BMASwapType
@@ -254,5 +258,29 @@ liborLegNPV = $(ffiCallX 'liborLegNPV) c_liborLegNPV
 
 foreign import ccall safe "ql.h qlBMASwapLiborLegNPV"
   c_liborLegNPV :: Ptr CBMASwap -> Ptr CString -> IO CDouble
+
+-- |implied volatility
+impliedVolatility :: Swaption
+  -> Double -- ^price
+  -> YieldTermStructure -- ^discountCurve
+  -> Double -- ^guess
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> Double -- ^minVol
+  -> Double -- ^maxVol
+  -> IO Double
+impliedVolatility = $(ffiCallX 'impliedVolatility) c_impliedVolatility
+
+foreign import ccall safe "ql.h qlSwaptionImpliedVolatility"
+  c_impliedVolatility :: Ptr CSwaption -> CDouble -> Ptr CYieldTermStructure -> CDouble -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+
+swaption :: VanillaSwap -- ^swap
+  -> Exercise -- ^exercise
+  -> SettlementType -- ^delivery
+  -> IO Swaption
+swaption = $(ffiCall 'swaption) c_swaption
+
+foreign import ccall safe "ql.h qlSwaption"
+  c_swaption :: Ptr CVanillaSwap -> Ptr CExercise -> CInt -> Ptr CString -> IO (Ptr CSwaption)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

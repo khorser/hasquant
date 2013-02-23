@@ -297,7 +297,7 @@ sub type {
   elsif ($t ~~ ['Compounding', 'Frequency', 'Position::Type', 'TimeUnit',
       'DateGeneration::Rule', 'BusinessDayConvention', 'Weekday', 'Month',
       'Seniority', 'Exercise::Type', 'Option::Type', 'OvernightIndexedSwap::Type',
-      'VanillaSwap::Type', 'PriceType', 'SettlementType',
+      'VanillaSwap::Type', 'PriceType', 'Settlement::Type',
       'JointCalendarRule', 'Duration::Type', 'Discretization', 'Protection::Side']) {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
@@ -323,7 +323,6 @@ sub type {
   }
   else {
     $t =~ s/^(\w)/\u$1/;
-    print "\n!!!$t $h $vect \n\n";
     my ($carg, $farg, $ret) = ("Ql$t*", "Ptr C$t", "ret(new Ql$t(alloc(new %)))");
     if (not $h) {
       if (not $vect) {

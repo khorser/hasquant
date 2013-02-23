@@ -8,6 +8,7 @@
 #include <ql/experimental/exoticoptions/margrabeoption.hpp>
 #include <ql/experimental/exoticoptions/himalayaoption.hpp>
 #include <ql/experimental/exoticoptions/pagodaoption.hpp>
+#include <ql/experimental/credit/cdsoption.hpp>
 
 #include "qlaux.h"
 
@@ -45,5 +46,48 @@ QlOneAssetOption* qlVanillaOptionAsOneAssetOption(QlVanillaOption *o) { return r
 
 void qlFreeSwingExercise(QlSwingExercise *o) { del(o); }
 QlBermudanExercise* qlSwingExerciseAsBermudanExercise(QlSwingExercise *o) { return ret(new QlBermudanExercise(*arg(o))); }
+
+double qlCdsOptionAtmRate(QlCdsOption* o, char **e) {
+  try {
+    return (*arg(o))->atmRate();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+QlCdsOption* qlCdsOption(QlCreditDefaultSwap* swap, QlExercise* exercise, int knocksOut, char **e) {
+  try {
+    return ret(new QlCdsOption(alloc(new CdsOption((*arg(swap)), (*arg(exercise)), knocksOut))));
+  } catch (std::exception& er) {
+    return handleException<QlCdsOption*>(e, er);
+  }
+}
+double qlCdsOptionImpliedVolatility(QlCdsOption* o, double price, QlYieldTermStructure* termStructure, QlDefaultProbabilityTermStructure* x3, double recoveryRate, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+  try {
+    return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(termStructure)), Handle<DefaultProbabilityTermStructure>(*arg(x3)), recoveryRate, accuracy, maxEvaluations, minVol, maxVol);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlCdsOptionRiskyAnnuity(QlCdsOption* o, char **e) {
+  try {
+    return (*arg(o))->riskyAnnuity();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlSwaptionImpliedVolatility(QlSwaption* o, double price, QlYieldTermStructure* discountCurve, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+  try {
+    return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(discountCurve)), guess, accuracy, maxEvaluations, minVol, maxVol);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+QlSwaption* qlSwaption(QlVanillaSwap* swap, QlExercise* exercise, int delivery, char **e) {
+  try {
+    return ret(new QlSwaption(alloc(new Swaption(*arg(swap), *arg(exercise), (Settlement::Type) delivery))));
+  } catch (std::exception& er) {
+    return handleException<QlSwaption*>(e, er);
+  }
+}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

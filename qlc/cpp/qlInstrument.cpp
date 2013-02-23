@@ -278,4 +278,11 @@ QlSwingExercise* qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char 
   }
 }
 
+QlAmericanExercise* qlAmericanExercise1(int latestDate, int payoffAtExpiry, char **e) {
+  try {
+    return ret(new QlAmericanExercise(alloc(new AmericanExercise(Date(latestDate), payoffAtExpiry))));
+  } catch (std::exception& er) {
+    return handleException<QlAmericanExercise*>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

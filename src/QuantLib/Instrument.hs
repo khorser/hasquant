@@ -31,6 +31,7 @@ module QuantLib.Instrument
   , superSharePayoff
 
   , americanExercise
+  , americanExercise'
   , bermudanExercise
   , earlyExercise
   , exercise
@@ -298,6 +299,14 @@ americanExercise = $(ffiCall 'americanExercise) c_americanExercise
 
 foreign import ccall safe "ql.h qlAmericanExercise"
   c_americanExercise :: CDate -> CDate -> CInt -> Ptr CString -> IO (Ptr CAmericanExercise)
+
+americanExercise' :: Day -- ^latestDate
+  -> Bool -- ^payoffAtExpiry
+  -> IO AmericanExercise
+americanExercise' = $(ffiCall 'americanExercise') c_americanExercise'
+
+foreign import ccall safe "ql.h qlAmericanExercise1"
+  c_americanExercise' :: CDate -> CInt -> Ptr CString -> IO (Ptr CAmericanExercise)
 
 bermudanExercise :: [Day] -- ^dates
   -> Bool -- ^payoffAtExpiry

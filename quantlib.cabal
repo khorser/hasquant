@@ -36,7 +36,7 @@ Library
               , QuantLib.Instrument.AssetSwap
               , QuantLib.Instrument.BMASwapType
               , QuantLib.Instrument.Bond
-              , QuantLib.Instrument.CreditDefaultSwap
+              , QuantLib.Instrument.Credit
               , QuantLib.Instrument.Forward
               , QuantLib.Instrument.OptionType
               , QuantLib.Instrument.OvernightIndexedSwap

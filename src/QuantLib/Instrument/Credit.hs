@@ -1,11 +1,16 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
-module QuantLib.Instrument.CreditDefaultSwap
+module QuantLib.Instrument.Credit
   (
     faceValueClaim
   , faceValueAccrualClaim
   , creditDefaultSwap
   , creditDefaultSwap'
+
+  , atmRate
+  , cdsOption
+  , impliedVolatility
+  , riskyAnnuity
   )
 
 where
@@ -71,5 +76,41 @@ creditDefaultSwap' = $(ffiCall 'creditDefaultSwap') c_creditDefaultSwap'
 
 foreign import ccall safe "ql.h qlCreditDefaultSwap1"
   c_creditDefaultSwap' :: CInt -> CDouble -> CDouble -> CDouble -> Ptr CSchedule -> CInt -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDate -> Ptr CClaim -> Ptr CString -> IO (Ptr CCreditDefaultSwap)
+
+atmRate :: CdsOption -> IO Double
+atmRate = $(ffiCallX 'atmRate) c_atmRate
+
+foreign import ccall safe "ql.h qlCdsOptionAtmRate"
+  c_atmRate :: Ptr CCdsOption -> Ptr CString -> IO CDouble
+
+cdsOption :: CreditDefaultSwap -- ^swap
+  -> Exercise -- ^exercise
+  -> Bool -- ^knocksOut
+  -> IO CdsOption
+cdsOption = $(ffiCall 'cdsOption) c_cdsOption
+
+foreign import ccall safe "ql.h qlCdsOption"
+  c_cdsOption :: Ptr CCreditDefaultSwap -> Ptr CExercise -> CInt -> Ptr CString -> IO (Ptr CCdsOption)
+
+impliedVolatility :: CdsOption
+  -> Double -- ^price
+  -> YieldTermStructure -- ^termStructure
+  -> DefaultProbabilityTermStructure
+  -> Double -- ^recoveryRate
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> Double -- ^minVol
+  -> Double -- ^maxVol
+  -> IO Double
+impliedVolatility = $(ffiCallX 'impliedVolatility) c_impliedVolatility
+
+foreign import ccall safe "ql.h qlCdsOptionImpliedVolatility"
+  c_impliedVolatility :: Ptr CCdsOption -> CDouble -> Ptr CYieldTermStructure -> Ptr CDefaultProbabilityTermStructure -> CDouble -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+
+riskyAnnuity :: CdsOption -> IO Double
+riskyAnnuity = $(ffiCallX 'riskyAnnuity) c_riskyAnnuity
+
+foreign import ccall safe "ql.h qlCdsOptionRiskyAnnuity"
+  c_riskyAnnuity :: Ptr CCdsOption -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

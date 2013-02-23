@@ -1,8 +1,0 @@
-->
-::const boost::shared_ptr< CreditDefaultSwap > &
--- ^swap
-::const boost::shared_ptr< Exercise > &
--- ^exercise
-::bool
-=true
--- ^knocksOut
