@@ -396,6 +396,8 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlBinomialVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e);
   QlPricingEngine* DLLEXPORT qlBlackCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, char **e);
   QlPricingEngine* DLLEXPORT qlBlackCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, char **e);
+  QlPricingEngine* DLLEXPORT qlBlackSwaptionEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, char **e);
+  QlPricingEngine* DLLEXPORT qlBlackSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, char **e);
 
   void DLLEXPORT qlFreePricingEngine(QlPricingEngine *engine);
 
@@ -538,6 +540,8 @@ extern "C" {
   QlTermStructure* DLLEXPORT qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o);
   void DLLEXPORT qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);
   QlVolatilityTermStructure* DLLEXPORT qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o);
+  void DLLEXPORT qlFreeSwaptionVolatilityStructure(QlSwaptionVolatilityStructure *o);
+  QlVolatilityTermStructure* DLLEXPORT qlSwaptionVolatilityStructureAsVolatilityTermStructure(QlSwaptionVolatilityStructure *o);
 
   /* swap */
   void DLLEXPORT qlFreeSwap(QlSwap *o);

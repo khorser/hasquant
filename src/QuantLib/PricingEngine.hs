@@ -18,6 +18,8 @@ module QuantLib.PricingEngine
   , analyticPerformanceEngine
   , blackCapFloorEngine'
   , blackCapFloorEngine
+  , blackSwaptionEngine
+  , blackSwaptionEngine'
   )
 where
 
@@ -140,5 +142,22 @@ blackCapFloorEngine = $(ffiCall 'blackCapFloorEngine) c_blackCapFloorEngine
 
 foreign import ccall safe "ql.h qlBlackCapFloorEngine"
   c_blackCapFloorEngine :: Ptr CYieldTermStructure -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CPricingEngine)
+
+blackSwaptionEngine :: YieldTermStructure -- ^discountCurve
+  -> Quote -- ^vol
+  -> DayCounter -- ^dc
+  -> IO PricingEngine
+blackSwaptionEngine = $(ffiCall 'blackSwaptionEngine) c_blackSwaptionEngine
+
+foreign import ccall safe "ql.h qlBlackSwaptionEngine"
+  c_blackSwaptionEngine :: Ptr CYieldTermStructure -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CPricingEngine)
+
+blackSwaptionEngine' :: YieldTermStructure -- ^discountCurve
+  -> SwaptionVolatilityStructure -- ^vol
+  -> IO PricingEngine
+blackSwaptionEngine' = $(ffiCall 'blackSwaptionEngine') c_blackSwaptionEngine'
+
+foreign import ccall safe "ql.h qlBlackSwaptionEngine1"
+  c_blackSwaptionEngine' :: Ptr CYieldTermStructure -> Ptr CSwaptionVolatilityStructure -> Ptr CString -> IO (Ptr CPricingEngine)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

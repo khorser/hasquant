@@ -577,6 +577,11 @@ typedef boost::shared_ptr<DefaultProbabilityTermStructure> QlDefaultProbabilityT
 template <> class objClassName<DefaultProbabilityTermStructure *> { public: static const char *name() { return "DefaultProbabilityTermStructure"; } };
 template <> class objClassName<QlDefaultProbabilityTermStructure *> { public: static const char *name() { return "QlDefaultProbabilityTermStructure"; } };
 
+namespace QuantLib {class SwaptionVolatilityStructure;} using QuantLib::SwaptionVolatilityStructure;
+typedef boost::shared_ptr<SwaptionVolatilityStructure> QlSwaptionVolatilityStructure;
+template <> class objClassName<SwaptionVolatilityStructure *> { public: static const char *name() { return "SwaptionVolatilityStructure"; } };
+template <> class objClassName<QlSwaptionVolatilityStructure *> { public: static const char *name() { return "QlSwaptionVolatilityStructure"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

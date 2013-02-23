@@ -1,5 +1,0 @@
-->
-::const Handle< YieldTermStructure > &
--- ^discountCurve
-::const Handle< SwaptionVolatilityStructure > &
--- ^vol

@@ -8,6 +8,7 @@
 #include <ql/pricingengines/vanilla/analyticeuropeanengine.hpp>
 #include <ql/pricingengines/asian/all.hpp>
 #include <ql/pricingengines/capfloor/blackcapfloorengine.hpp>
+#include <ql/pricingengines/swaption/blackswaptionengine.hpp>
 
 #include "qlaux.h"
 
@@ -123,6 +124,20 @@ QlPricingEngine* qlBlackCapFloorEngine1(QlYieldTermStructure* discountCurve, QlO
 QlPricingEngine* qlBlackCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, char **e) {
   try {
     return ret(new QlPricingEngine(alloc(new BlackCapFloorEngine(Handle<YieldTermStructure>(*arg(discountCurve)), Handle<Quote>(*arg(vol)), (*arg(dc))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBlackSwaptionEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(Handle<YieldTermStructure>(*arg(discountCurve)), Handle<Quote>(*arg(vol)), (*arg(dc))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBlackSwaptionEngine1(QlYieldTermStructure* discountCurve, QlSwaptionVolatilityStructure* vol, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BlackSwaptionEngine(Handle<YieldTermStructure>(*arg(discountCurve)), Handle<SwaptionVolatilityStructure>(*arg(vol))))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
