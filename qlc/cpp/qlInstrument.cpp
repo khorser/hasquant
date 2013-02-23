@@ -264,7 +264,9 @@ QlEuropeanExercise* qlEuropeanExercise(int date, char **e) {
 
 QlSwingExercise* qlSwingExercise(unsigned datesLen, int* dates, unsigned* seconds, char **e) {
   try {
-    return ret(new QlSwingExercise(alloc(new SwingExercise(qlDateVector(datesLen, dates), std::vector<unsigned>(seconds, seconds+datesLen)))));
+    std::vector<Size> secs; // on x86-64 sizeof(size_t) might be greater than sizeof(unsigned)
+    std::copy(seconds, seconds+datesLen, secs.begin());
+    return ret(new QlSwingExercise(alloc(new SwingExercise(qlDateVector(datesLen, dates), secs))));
   } catch (std::exception& er) {
     return handleException<QlSwingExercise*>(e, er);
   }
