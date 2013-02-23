@@ -21,6 +21,8 @@ void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p) {
   del(p);
 }
 
+QlVolatilityTermStructure* qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
+
 void qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o) { del(o); }
 QlVolatilityTermStructure* qlBlackVolTermStructureAsVolatilityTermStructure(QlBlackVolTermStructure *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
 

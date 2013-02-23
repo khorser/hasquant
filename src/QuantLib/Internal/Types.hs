@@ -40,6 +40,19 @@ module QuantLib.Internal.Types
   , CAmericanExercise
   , CBermudanExercise
   , CEuropeanExercise
+  , CBarrierOption
+  , CCdsOption
+  , CCreditDefaultSwap
+  , CDividendVanillaOption
+  , CForwardVanillaOption
+  , CMargrabeOption
+  , CMultiAssetOption
+  , COneAssetOption
+  , COption
+  , CQuantoVanillaOption
+  , CSwaption
+  , CSwingExercise
+  , CVanillaOption
 
   -- pricingengines
   , CPricingEngine
@@ -56,7 +69,7 @@ module QuantLib.Internal.Types
   , COISRateHelper
   , CYieldTermStructure
   , CVolTermStructure
-  , COptionletVolStructure
+  , COptionletVolatilityStructure
   , CBondHelper
   , CFittedBondDiscountCurveFittingMethod
   , CFittedBondDiscountCurve
@@ -380,6 +393,136 @@ instance Finalizable CExercise where
 foreign import ccall safe "ql.h &qlFreeExercise"
   p_freeExercise :: FunPtr (Ptr CExercise -> IO ())
 
+data CBarrierOption
+instance Finalizable CBarrierOption where
+  finalize = p_freeBarrierOption
+foreign import ccall safe "ql.h &qlFreeBarrierOption"
+  p_freeBarrierOption :: FunPtr (Ptr CBarrierOption -> IO ())
+instance Upcastable CBarrierOption COneAssetOption where
+  c_upcast = c_BarrierOptionAsOneAssetOption
+foreign import ccall safe "ql.h qlBarrierOptionAsOneAssetOption"
+  c_BarrierOptionAsOneAssetOption :: Ptr CBarrierOption -> IO (Ptr COneAssetOption)
+
+data CCdsOption
+instance Finalizable CCdsOption where
+  finalize = p_freeCdsOption
+foreign import ccall safe "ql.h &qlFreeCdsOption"
+  p_freeCdsOption :: FunPtr (Ptr CCdsOption -> IO ())
+instance Upcastable CCdsOption COption where
+  c_upcast = c_CdsOptionAsOption
+foreign import ccall safe "ql.h qlCdsOptionAsOption"
+  c_CdsOptionAsOption :: Ptr CCdsOption -> IO (Ptr COption)
+
+data CCreditDefaultSwap
+instance Finalizable CCreditDefaultSwap where
+  finalize = p_freeCreditDefaultSwap
+foreign import ccall safe "ql.h &qlFreeCreditDefaultSwap"
+  p_freeCreditDefaultSwap :: FunPtr (Ptr CCreditDefaultSwap -> IO ())
+instance Upcastable CCreditDefaultSwap CInstrument where
+  c_upcast = c_CreditDefaultSwapAsInstrument
+foreign import ccall safe "ql.h qlCreditDefaultSwapAsInstrument"
+  c_CreditDefaultSwapAsInstrument :: Ptr CCreditDefaultSwap -> IO (Ptr CInstrument)
+
+data CDividendVanillaOption
+instance Finalizable CDividendVanillaOption where
+  finalize = p_freeDividendVanillaOption
+foreign import ccall safe "ql.h &qlFreeDividendVanillaOption"
+  p_freeDividendVanillaOption :: FunPtr (Ptr CDividendVanillaOption -> IO ())
+instance Upcastable CDividendVanillaOption COneAssetOption where
+  c_upcast = c_DividendVanillaOptionAsOneAssetOption
+foreign import ccall safe "ql.h qlDividendVanillaOptionAsOneAssetOption"
+  c_DividendVanillaOptionAsOneAssetOption :: Ptr CDividendVanillaOption -> IO (Ptr COneAssetOption)
+
+data CMargrabeOption
+instance Finalizable CMargrabeOption where
+  finalize = p_freeMargrabeOption
+foreign import ccall safe "ql.h &qlFreeMargrabeOption"
+  p_freeMargrabeOption :: FunPtr (Ptr CMargrabeOption -> IO ())
+instance Upcastable CMargrabeOption CMultiAssetOption where
+  c_upcast = c_MargrabeOptionAsMultiAssetOption
+foreign import ccall safe "ql.h qlMargrabeOptionAsMultiAssetOption"
+  c_MargrabeOptionAsMultiAssetOption :: Ptr CMargrabeOption -> IO (Ptr CMultiAssetOption)
+
+data CMultiAssetOption
+instance Finalizable CMultiAssetOption where
+  finalize = p_freeMultiAssetOption
+foreign import ccall safe "ql.h &qlFreeMultiAssetOption"
+  p_freeMultiAssetOption :: FunPtr (Ptr CMultiAssetOption -> IO ())
+instance Upcastable CMultiAssetOption COption where
+  c_upcast = c_MultiAssetOptionAsOption
+foreign import ccall safe "ql.h qlMultiAssetOptionAsOption"
+  c_MultiAssetOptionAsOption :: Ptr CMultiAssetOption -> IO (Ptr COption)
+
+data COneAssetOption
+instance Finalizable COneAssetOption where
+  finalize = p_freeOneAssetOption
+foreign import ccall safe "ql.h &qlFreeOneAssetOption"
+  p_freeOneAssetOption :: FunPtr (Ptr COneAssetOption -> IO ())
+instance Upcastable COneAssetOption COption where
+  c_upcast = c_OneAssetOptionAsOption
+foreign import ccall safe "ql.h qlOneAssetOptionAsOption"
+  c_OneAssetOptionAsOption :: Ptr COneAssetOption -> IO (Ptr COption)
+
+data COption
+instance Finalizable COption where
+  finalize = p_freeOption
+foreign import ccall safe "ql.h &qlFreeOption"
+  p_freeOption :: FunPtr (Ptr COption -> IO ())
+instance Upcastable COption CInstrument where
+  c_upcast = c_OptionAsInstrument
+foreign import ccall safe "ql.h qlOptionAsInstrument"
+  c_OptionAsInstrument :: Ptr COption -> IO (Ptr CInstrument)
+
+data CQuantoVanillaOption
+instance Finalizable CQuantoVanillaOption where
+  finalize = p_freeQuantoVanillaOption
+foreign import ccall safe "ql.h &qlFreeQuantoVanillaOption"
+  p_freeQuantoVanillaOption :: FunPtr (Ptr CQuantoVanillaOption -> IO ())
+instance Upcastable CQuantoVanillaOption COneAssetOption where
+  c_upcast = c_QuantoVanillaOptionAsOneAssetOption
+foreign import ccall safe "ql.h qlQuantoVanillaOptionAsOneAssetOption"
+  c_QuantoVanillaOptionAsOneAssetOption :: Ptr CQuantoVanillaOption -> IO (Ptr COneAssetOption)
+
+data CSwaption
+instance Finalizable CSwaption where
+  finalize = p_freeSwaption
+foreign import ccall safe "ql.h &qlFreeSwaption"
+  p_freeSwaption :: FunPtr (Ptr CSwaption -> IO ())
+instance Upcastable CSwaption COption where
+  c_upcast = c_SwaptionAsOption
+foreign import ccall safe "ql.h qlSwaptionAsOption"
+  c_SwaptionAsOption :: Ptr CSwaption -> IO (Ptr COption)
+
+data CSwingExercise
+instance Finalizable CSwingExercise where
+  finalize = p_freeSwingExercise
+foreign import ccall safe "ql.h &qlFreeSwingExercise"
+  p_freeSwingExercise :: FunPtr (Ptr CSwingExercise -> IO ())
+instance Upcastable CSwingExercise CBermudanExercise where
+  c_upcast = c_SwingExerciseAsBermudanExercise
+foreign import ccall safe "ql.h qlSwingExerciseAsBermudanExercise"
+  c_SwingExerciseAsBermudanExercise :: Ptr CSwingExercise -> IO (Ptr CBermudanExercise)
+
+data CVanillaOption
+instance Finalizable CVanillaOption where
+  finalize = p_freeVanillaOption
+foreign import ccall safe "ql.h &qlFreeVanillaOption"
+  p_freeVanillaOption :: FunPtr (Ptr CVanillaOption -> IO ())
+instance Upcastable CVanillaOption COneAssetOption where
+  c_upcast = c_VanillaOptionAsOneAssetOption
+foreign import ccall safe "ql.h qlVanillaOptionAsOneAssetOption"
+  c_VanillaOptionAsOneAssetOption :: Ptr CVanillaOption -> IO (Ptr COneAssetOption)
+
+data CForwardVanillaOption
+instance Finalizable CForwardVanillaOption where
+  finalize = p_freeForwardVanillaOption
+foreign import ccall safe "ql.h &qlFreeForwardVanillaOption"
+  p_freeForwardVanillaOption :: FunPtr (Ptr CForwardVanillaOption -> IO ())
+instance Upcastable CForwardVanillaOption COneAssetOption where
+  c_upcast = c_ForwardVanillaOptionAsOneAssetOption
+foreign import ccall safe "ql.h qlForwardVanillaOptionAsOneAssetOption"
+  c_ForwardVanillaOptionAsOneAssetOption :: Ptr CForwardVanillaOption -> IO (Ptr COneAssetOption)
+
 -- pricingengines
 data CPricingEngine
 
@@ -429,7 +572,6 @@ foreign import ccall safe "ql.h &qlFreeStochasticProcess"
 data CRateHelper
 data CYieldTermStructure
 data CVolTermStructure
-data COptionletVolStructure
 
 instance Finalizable CRateHelper where
   finalize = p_freeRateHelper
@@ -451,10 +593,15 @@ instance Finalizable CYieldTermStructure
 foreign import ccall safe "ql.h &qlFreeYieldTermStructure"
   p_freeYieldTermStructure :: FunPtr (Ptr CYieldTermStructure -> IO ())
 
-instance Finalizable COptionletVolStructure where
-  finalize = p_freeOptionletVolStructure
+data COptionletVolatilityStructure
+instance Finalizable COptionletVolatilityStructure where
+  finalize = p_freeOptionletVolatilityStructure
 foreign import ccall safe "ql.h &qlFreeOptionletVolatilityStructure"
-  p_freeOptionletVolStructure :: FunPtr (Ptr COptionletVolStructure -> IO ())
+  p_freeOptionletVolatilityStructure :: FunPtr (Ptr COptionletVolatilityStructure -> IO ())
+instance Upcastable COptionletVolatilityStructure CVolatilityTermStructure where
+  c_upcast = c_OptionletVolatilityStructureAsVolatilityTermStructure
+foreign import ccall safe "ql.h qlOptionletVolatilityStructureAsVolatilityTermStructure"
+  c_OptionletVolatilityStructureAsVolatilityTermStructure :: Ptr COptionletVolatilityStructure -> IO (Ptr CVolatilityTermStructure)
 
 data CBondHelper
 instance Finalizable CBondHelper where

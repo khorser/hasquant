@@ -41,6 +41,19 @@ module QuantLib.Types
   , BermudanExercise
   , EuropeanExercise
   , Exercise
+  , SwingExercise
+  , BarrierOption
+  , CdsOption
+  , CreditDefaultSwap
+  , DividendVanillaOption
+  , ForwardVanillaOption
+  , MargrabeOption
+  , MultiAssetOption
+  , OneAssetOption
+  , Option
+  , QuantoVanillaOption
+  , Swaption
+  , VanillaOption
 
   -- pricingengines
   , PricingEngine
@@ -56,7 +69,7 @@ module QuantLib.Types
   , SwapRateHelper
   , YieldTermStructure
   , VolTermStructure
-  , OptionletVolStructure
+  , OptionletVolatilityStructure
   , BondHelper
   , FittedBondDiscountCurveFittingMethod
   , FittedBondDiscountCurve
@@ -82,11 +95,18 @@ module QuantLib.Types
   , asBond
   , asForward
   , asSwap
+  , asOption
+  , asMultiAssetOption
+  , asOneAssetOption
+  , asBarrierOption
+  , asForwardVanillaOption
+  , asVanillaOption
 
   , asPayoff
   , asTypePayoff
   , asStrikedTypePayoff
   , asExercise
+  , asBermudanExercise
 
   , asQuote
 
@@ -248,6 +268,41 @@ type Exercise = ForeignPtr CExercise
 asExercise :: (Upcastable a CExercise) => ForeignPtr a -> IO Exercise
 asExercise = upcast
 
+asBermudanExercise :: (Upcastable a CBermudanExercise) => ForeignPtr a -> IO BermudanExercise
+asBermudanExercise = upcast
+
+type BarrierOption = ForeignPtr CBarrierOption
+type CdsOption = ForeignPtr CCdsOption
+type CreditDefaultSwap = ForeignPtr CCreditDefaultSwap
+type DividendVanillaOption = ForeignPtr CDividendVanillaOption
+type ForwardVanillaOption = ForeignPtr CForwardVanillaOption
+type MargrabeOption = ForeignPtr CMargrabeOption
+type MultiAssetOption = ForeignPtr CMultiAssetOption
+type OneAssetOption = ForeignPtr COneAssetOption
+type Option = ForeignPtr COption
+type QuantoVanillaOption = ForeignPtr CQuantoVanillaOption
+type Swaption = ForeignPtr CSwaption
+type SwingExercise = ForeignPtr CSwingExercise
+type VanillaOption = ForeignPtr CVanillaOption
+
+asOption :: (Upcastable a COption) => ForeignPtr a -> IO Option
+asOption = upcast
+
+asMultiAssetOption :: (Upcastable a CMultiAssetOption) => ForeignPtr a -> IO MultiAssetOption
+asMultiAssetOption = upcast
+
+asOneAssetOption :: (Upcastable a COneAssetOption) => ForeignPtr a -> IO OneAssetOption
+asOneAssetOption = upcast
+
+asBarrierOption :: (Upcastable a CBarrierOption) => ForeignPtr a -> IO BarrierOption
+asBarrierOption = upcast
+
+asForwardVanillaOption :: (Upcastable a CForwardVanillaOption) => ForeignPtr a -> IO ForwardVanillaOption
+asForwardVanillaOption = upcast
+
+asVanillaOption :: (Upcastable a CVanillaOption) => ForeignPtr a -> IO VanillaOption
+asVanillaOption = upcast
+
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine
 
@@ -270,7 +325,7 @@ asGeneralizedBlackScholesProcess = upcast
 type RateHelper = ForeignPtr CRateHelper
 type YieldTermStructure = ForeignPtr CYieldTermStructure
 type VolTermStructure = ForeignPtr CVolTermStructure
-type OptionletVolStructure = ForeignPtr COptionletVolStructure
+type OptionletVolatilityStructure = ForeignPtr COptionletVolatilityStructure
 
 type BondHelper = ForeignPtr CBondHelper
 type SwapRateHelper = ForeignPtr CSwapRateHelper

@@ -517,6 +517,7 @@ extern "C" {
   QlOptionletVolatilityStructure *DLLEXPORT qlConstantOptionletVol(
     unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e);
   void DLLEXPORT qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p);
+  QlVolatilityTermStructure* DLLEXPORT qlOptionletVolatilityStructureAsVolatilityTermStructure(QlOptionletVolatilityStructure *o);
   void DLLEXPORT qlFreeVolatilityTermStructure(QlVolatilityTermStructure *o);
   QlTermStructure* DLLEXPORT qlVolatilityTermStructureAsTermStructure(QlVolatilityTermStructure *o);
   void DLLEXPORT qlFreeBlackVolTermStructure(QlBlackVolTermStructure *o);
@@ -607,6 +608,34 @@ extern "C" {
   QlGeneralizedBlackScholesProcess* DLLEXPORT qlGeneralizedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, char*  d, char **e);
   QlStochasticProcess1D* DLLEXPORT qlSquareRootProcess(double b, double a, double sigma, double x0, char*  d, char **e);
   QlGeneralizedBlackScholesProcess* DLLEXPORT qlVegaStressedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, double lowerTimeBorderForStressTest, double upperTimeBorderForStressTest, double lowerAssetBorderForStressTest, double upperAssetBorderForStressTest, double stressLevel, char*  d, char **e);
+
+  /* option */
+  void DLLEXPORT qlFreeBarrierOption(QlBarrierOption *o);
+  QlOneAssetOption* DLLEXPORT qlBarrierOptionAsOneAssetOption(QlBarrierOption *o);
+  void DLLEXPORT qlFreeCdsOption(QlCdsOption *o);
+  QlOption* DLLEXPORT qlCdsOptionAsOption(QlCdsOption *o);
+  void DLLEXPORT qlFreeCreditDefaultSwap(QlCreditDefaultSwap *o);
+  QlInstrument* DLLEXPORT qlCreditDefaultSwapAsInstrument(QlCreditDefaultSwap *o);
+  void DLLEXPORT qlFreeDividendVanillaOption(QlDividendVanillaOption *o);
+  QlOneAssetOption* DLLEXPORT qlDividendVanillaOptionAsOneAssetOption(QlDividendVanillaOption *o);
+  void DLLEXPORT qlFreeForwardVanillaOption(QlForwardVanillaOption *o);
+  QlOneAssetOption* DLLEXPORT qlForwardVanillaOptionAsOneAssetOption(QlForwardVanillaOption *o);
+  void DLLEXPORT qlFreeMargrabeOption(QlMargrabeOption *o);
+  QlMultiAssetOption* DLLEXPORT qlMargrabeOptionAsMultiAssetOption(QlMargrabeOption *o);
+  void DLLEXPORT qlFreeMultiAssetOption(QlMultiAssetOption *o);
+  QlOption* DLLEXPORT qlMultiAssetOptionAsOption(QlMultiAssetOption *o);
+  void DLLEXPORT qlFreeOneAssetOption(QlOneAssetOption *o);
+  QlOption* DLLEXPORT qlOneAssetOptionAsOption(QlOneAssetOption *o);
+  void DLLEXPORT qlFreeOption(QlOption *o);
+  QlInstrument* DLLEXPORT qlOptionAsInstrument(QlOption *o);
+  void DLLEXPORT qlFreeQuantoVanillaOption(QlQuantoVanillaOption *o);
+  QlOneAssetOption* DLLEXPORT qlQuantoVanillaOptionAsOneAssetOption(QlQuantoVanillaOption *o);
+  void DLLEXPORT qlFreeSwaption(QlSwaption *o);
+  QlOption* DLLEXPORT qlSwaptionAsOption(QlSwaption *o);
+  void DLLEXPORT qlFreeSwingExercise(QlSwingExercise *o);
+  QlBermudanExercise* DLLEXPORT qlSwingExerciseAsBermudanExercise(QlSwingExercise *o);
+  void DLLEXPORT qlFreeVanillaOption(QlVanillaOption *o);
+  QlOneAssetOption* DLLEXPORT qlVanillaOptionAsOneAssetOption(QlVanillaOption *o);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

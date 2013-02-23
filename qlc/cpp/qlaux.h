@@ -493,6 +493,71 @@ typedef boost::shared_ptr<VolatilityTermStructure> QlVolatilityTermStructure;
 template <> class objClassName<VolatilityTermStructure *> { public: static const char *name() { return "VolatilityTermStructure"; } };
 template <> class objClassName<QlVolatilityTermStructure *> { public: static const char *name() { return "QlVolatilityTermStructure"; } };
 
+namespace QuantLib {class BarrierOption;} using QuantLib::BarrierOption;
+typedef boost::shared_ptr<BarrierOption> QlBarrierOption;
+template <> class objClassName<BarrierOption *> { public: static const char *name() { return "BarrierOption"; } };
+template <> class objClassName<QlBarrierOption *> { public: static const char *name() { return "QlBarrierOption"; } };
+
+namespace QuantLib {class CdsOption;} using QuantLib::CdsOption;
+typedef boost::shared_ptr<CdsOption> QlCdsOption;
+template <> class objClassName<CdsOption *> { public: static const char *name() { return "CdsOption"; } };
+template <> class objClassName<QlCdsOption *> { public: static const char *name() { return "QlCdsOption"; } };
+
+namespace QuantLib {class CreditDefaultSwap;} using QuantLib::CreditDefaultSwap;
+typedef boost::shared_ptr<CreditDefaultSwap> QlCreditDefaultSwap;
+template <> class objClassName<CreditDefaultSwap *> { public: static const char *name() { return "CreditDefaultSwap"; } };
+template <> class objClassName<QlCreditDefaultSwap *> { public: static const char *name() { return "QlCreditDefaultSwap"; } };
+
+namespace QuantLib {class DividendVanillaOption;} using QuantLib::DividendVanillaOption;
+typedef boost::shared_ptr<DividendVanillaOption> QlDividendVanillaOption;
+template <> class objClassName<DividendVanillaOption *> { public: static const char *name() { return "DividendVanillaOption"; } };
+template <> class objClassName<QlDividendVanillaOption *> { public: static const char *name() { return "QlDividendVanillaOption"; } };
+
+namespace QuantLib {class ForwardVanillaOption;} using QuantLib::ForwardVanillaOption;
+typedef boost::shared_ptr<ForwardVanillaOption> QlForwardVanillaOption;
+template <> class objClassName<ForwardVanillaOption *> { public: static const char *name() { return "ForwardVanillaOption"; } };
+template <> class objClassName<QlForwardVanillaOption *> { public: static const char *name() { return "QlForwardVanillaOption"; } };
+
+namespace QuantLib {class MargrabeOption;} using QuantLib::MargrabeOption;
+typedef boost::shared_ptr<MargrabeOption> QlMargrabeOption;
+template <> class objClassName<MargrabeOption *> { public: static const char *name() { return "MargrabeOption"; } };
+template <> class objClassName<QlMargrabeOption *> { public: static const char *name() { return "QlMargrabeOption"; } };
+
+namespace QuantLib {class MultiAssetOption;} using QuantLib::MultiAssetOption;
+typedef boost::shared_ptr<MultiAssetOption> QlMultiAssetOption;
+template <> class objClassName<MultiAssetOption *> { public: static const char *name() { return "MultiAssetOption"; } };
+template <> class objClassName<QlMultiAssetOption *> { public: static const char *name() { return "QlMultiAssetOption"; } };
+
+namespace QuantLib {class OneAssetOption;} using QuantLib::OneAssetOption;
+typedef boost::shared_ptr<OneAssetOption> QlOneAssetOption;
+template <> class objClassName<OneAssetOption *> { public: static const char *name() { return "OneAssetOption"; } };
+template <> class objClassName<QlOneAssetOption *> { public: static const char *name() { return "QlOneAssetOption"; } };
+
+namespace QuantLib {class Option;} using QuantLib::Option;
+typedef boost::shared_ptr<Option> QlOption;
+template <> class objClassName<Option *> { public: static const char *name() { return "Option"; } };
+template <> class objClassName<QlOption *> { public: static const char *name() { return "QlOption"; } };
+
+namespace QuantLib {class QuantoVanillaOption;} using QuantLib::QuantoVanillaOption;
+typedef boost::shared_ptr<QuantoVanillaOption> QlQuantoVanillaOption;
+template <> class objClassName<QuantoVanillaOption *> { public: static const char *name() { return "QuantoVanillaOption"; } };
+template <> class objClassName<QlQuantoVanillaOption *> { public: static const char *name() { return "QlQuantoVanillaOption"; } };
+
+namespace QuantLib {class Swaption;} using QuantLib::Swaption;
+typedef boost::shared_ptr<Swaption> QlSwaption;
+template <> class objClassName<Swaption *> { public: static const char *name() { return "Swaption"; } };
+template <> class objClassName<QlSwaption *> { public: static const char *name() { return "QlSwaption"; } };
+
+namespace QuantLib {class SwingExercise;} using QuantLib::SwingExercise;
+typedef boost::shared_ptr<SwingExercise> QlSwingExercise;
+template <> class objClassName<SwingExercise *> { public: static const char *name() { return "SwingExercise"; } };
+template <> class objClassName<QlSwingExercise *> { public: static const char *name() { return "QlSwingExercise"; } };
+
+namespace QuantLib {class VanillaOption;} using QuantLib::VanillaOption;
+typedef boost::shared_ptr<VanillaOption> QlVanillaOption;
+template <> class objClassName<VanillaOption *> { public: static const char *name() { return "VanillaOption"; } };
+template <> class objClassName<QlVanillaOption *> { public: static const char *name() { return "QlVanillaOption"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

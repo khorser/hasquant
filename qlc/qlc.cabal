@@ -18,6 +18,7 @@ Extra-source-files:
               cpp/qlBond.cpp
               cpp/qlCalendar.cpp
               cpp/qlCouponPricer.cpp
+              cpp/qlCredit.cpp
               cpp/qlCurrency.cpp
               cpp/qlDate.cpp
               cpp/qlDayCounter.cpp
@@ -28,6 +29,7 @@ Extra-source-files:
               cpp/qlInstrument.cpp
               cpp/qlInterestRate.cpp
               cpp/qlLeg.cpp
+              cpp/qlOption.cpp
               cpp/qlPeriod.cpp
               cpp/qlPricingEngine.cpp
               cpp/qlProcess.cpp
@@ -50,6 +52,7 @@ Library
   X-Dll-Sources:
               cpp/qlBond.cpp
               cpp/qlCalendar.cpp
+              cpp/qlCredit.cpp
               cpp/qlCouponPricer.cpp
               cpp/qlCurrency.cpp
               cpp/qlDate.cpp
@@ -61,6 +64,7 @@ Library
               cpp/qlInstrument.cpp
               cpp/qlInterestRate.cpp
               cpp/qlLeg.cpp
+              cpp/qlOption.cpp
               cpp/qlPeriod.cpp
               cpp/qlPricingEngine.cpp
               cpp/qlProcess.cpp

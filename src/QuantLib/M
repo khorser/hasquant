@@ -2,6 +2,7 @@ OBJS=cpp/qlBond.o \
 	cpp/qlCalendar.o \
 	cpp/qlCouponPricer.o \
 	cpp/qlCurrency.o \
+	cpp/qlCredit.o \
 	cpp/qlDate.o \
 	cpp/qlDayCounter.o \
 	cpp/qlEnumerations.o \
@@ -11,6 +12,7 @@ OBJS=cpp/qlBond.o \
 	cpp/qlInstrument.o \
 	cpp/qlInterestRate.o \
 	cpp/qlLeg.o \
+	cpp/qlOption.o \
 	cpp/qlPeriod.o \
 	cpp/qlPricingEngine.o \
 	cpp/qlProcess.o \
@@ -49,6 +51,9 @@ cpp/qlCouponPricer.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlCouponPricer.
 cpp/qlCurrency.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlCurrency.cpp
 	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlCurrency.o $(QLCSRC)/qlCurrency.cpp
 
+cpp/qlCredit.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlCredit.cpp
+	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlCredit.o $(QLCSRC)/qlCredit.cpp
+
 cpp/qlDate.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlDate.cpp
 	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlDate.o $(QLCSRC)/qlDate.cpp
 
@@ -75,6 +80,9 @@ cpp/qlInstrument.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlInstrument.cpp
 
 cpp/qlLeg.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlLeg.cpp
 	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlLeg.o $(QLCSRC)/qlLeg.cpp
+
+cpp/qlOption.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlOption.cpp
+	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlOption.o $(QLCSRC)/qlOption.cpp
 
 cpp/qlPeriod.o: $(QLCSRC)/qlaux.h $(QLCSRC)/ql.h $(QLCSRC)/qlPeriod.cpp
 	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlPeriod.o $(QLCSRC)/qlPeriod.cpp
