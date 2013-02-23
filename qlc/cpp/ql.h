@@ -614,8 +614,6 @@ extern "C" {
   QlOneAssetOption* DLLEXPORT qlBarrierOptionAsOneAssetOption(QlBarrierOption *o);
   void DLLEXPORT qlFreeCdsOption(QlCdsOption *o);
   QlOption* DLLEXPORT qlCdsOptionAsOption(QlCdsOption *o);
-  void DLLEXPORT qlFreeCreditDefaultSwap(QlCreditDefaultSwap *o);
-  QlInstrument* DLLEXPORT qlCreditDefaultSwapAsInstrument(QlCreditDefaultSwap *o);
   void DLLEXPORT qlFreeDividendVanillaOption(QlDividendVanillaOption *o);
   QlOneAssetOption* DLLEXPORT qlDividendVanillaOptionAsOneAssetOption(QlDividendVanillaOption *o);
   void DLLEXPORT qlFreeForwardVanillaOption(QlForwardVanillaOption *o);
@@ -636,6 +634,28 @@ extern "C" {
   QlBermudanExercise* DLLEXPORT qlSwingExerciseAsBermudanExercise(QlSwingExercise *o);
   void DLLEXPORT qlFreeVanillaOption(QlVanillaOption *o);
   QlOneAssetOption* DLLEXPORT qlVanillaOptionAsOneAssetOption(QlVanillaOption *o);
+  QlSwingExercise* DLLEXPORT qlSwingExercise(unsigned datesLen, int* dates, unsigned* seconds, char **e);
+  QlSwingExercise* DLLEXPORT qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char **e);
+
+  /* credit */
+  void DLLEXPORT qlFreeCreditDefaultSwap(QlCreditDefaultSwap *o);
+  QlInstrument* DLLEXPORT qlCreditDefaultSwapAsInstrument(QlCreditDefaultSwap *o);
+  void DLLEXPORT qlFreeClaim(QlClaim *o);
+  QlClaim* DLLEXPORT qlFaceValueAccrualClaim(QlBond* referenceSecurity, char **e);
+  QlClaim* DLLEXPORT qlFaceValueClaim(char **e);
+  QlCreditDefaultSwap* DLLEXPORT qlCreditDefaultSwap(int side, double notional, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, QlClaim* x9, char **e);
+  QlCreditDefaultSwap* DLLEXPORT qlCreditDefaultSwap1(int side, double notional, double upfront, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, int upfrontDate, QlClaim* x11, char **e);
+
+  /* default TS */
+  void DLLEXPORT qlFreeDefaultProbabilityTermStructure(QlDefaultProbabilityTermStructure *o);
+  QlTermStructure* DLLEXPORT qlDefaultProbabilityTermStructureAsTermStructure(QlDefaultProbabilityTermStructure *o);
+  QlDefaultProbabilityTermStructure* DLLEXPORT qlFactorSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, char **e);
+  QlDefaultProbabilityTermStructure* DLLEXPORT qlFlatHazardRate1(unsigned settlementDays, Calendar* calendar, QlQuote* hazardRate, DayCounter* x3, char **e);
+  QlDefaultProbabilityTermStructure* DLLEXPORT qlFlatHazardRate(int referenceDate, QlQuote* hazardRate, DayCounter* x2, char **e);
+  QlDefaultProbabilityTermStructure* DLLEXPORT qlSpreadedHazardRateCurve(QlDefaultProbabilityTermStructure* originalCurve, QlQuote* spread, char **e);
+  QlDefaultProbabilityTermStructure* DLLEXPORT qlInterpolatedDefaultDensityCurve(unsigned datesLen, int* dates, unsigned densitiesLen, double* densities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, char*  interpolator, char **e);
+  QlDefaultProbabilityTermStructure* DLLEXPORT qlInterpolatedHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, char*  interpolator, char **e);
+  QlDefaultProbabilityTermStructure* DLLEXPORT qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, char*  interpolator, char **e);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

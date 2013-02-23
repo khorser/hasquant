@@ -54,6 +54,7 @@ module QuantLib.Types
   , QuantoVanillaOption
   , Swaption
   , VanillaOption
+  , Claim
 
   -- pricingengines
   , PricingEngine
@@ -77,6 +78,7 @@ module QuantLib.Types
   , TermStructure
   , BlackVolTermStructure
   , VolatilityTermStructure
+  , DefaultProbabilityTermStructure
 
   -- time
   , Calendar
@@ -284,6 +286,7 @@ type QuantoVanillaOption = ForeignPtr CQuantoVanillaOption
 type Swaption = ForeignPtr CSwaption
 type SwingExercise = ForeignPtr CSwingExercise
 type VanillaOption = ForeignPtr CVanillaOption
+type Claim = ForeignPtr CClaim
 
 asOption :: (Upcastable a COption) => ForeignPtr a -> IO Option
 asOption = upcast
@@ -351,6 +354,8 @@ type VolatilityTermStructure = ForeignPtr CVolatilityTermStructure
 
 asVolatilityTermStructure :: (Upcastable a CVolatilityTermStructure) => ForeignPtr a -> IO VolatilityTermStructure
 asVolatilityTermStructure = upcast
+
+type DefaultProbabilityTermStructure = ForeignPtr CDefaultProbabilityTermStructure
 
 -- time
 -- |Calendars provide the means for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days

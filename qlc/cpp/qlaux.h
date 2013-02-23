@@ -220,6 +220,15 @@ std::vector<T> qlBuildVector(T **vals, size_t len) {
   return r;
 }
 
+template <class T>
+std::vector<Handle<T> > qlBuildHandleVector(boost::shared_ptr<T> **vals, size_t len) {
+  std::vector<Handle<T> > r;
+  for (size_t i = 0; i < len; ++i) {
+    r.push_back(Handle<T>(*vals[i]));
+  }
+  return r;
+}
+
 /* some useful helpers ... well ... I hope they are... */
 template <class T>
 T *handleException(char **msg, std::exception &e, T *t) {
@@ -557,6 +566,16 @@ namespace QuantLib {class VanillaOption;} using QuantLib::VanillaOption;
 typedef boost::shared_ptr<VanillaOption> QlVanillaOption;
 template <> class objClassName<VanillaOption *> { public: static const char *name() { return "VanillaOption"; } };
 template <> class objClassName<QlVanillaOption *> { public: static const char *name() { return "QlVanillaOption"; } };
+
+namespace QuantLib {class Claim;} using QuantLib::Claim;
+typedef boost::shared_ptr<Claim> QlClaim;
+template <> class objClassName<Claim *> { public: static const char *name() { return "Claim"; } };
+template <> class objClassName<QlClaim *> { public: static const char *name() { return "QlClaim"; } };
+
+namespace QuantLib {class DefaultProbabilityTermStructure;} using QuantLib::DefaultProbabilityTermStructure;
+typedef boost::shared_ptr<DefaultProbabilityTermStructure> QlDefaultProbabilityTermStructure;
+template <> class objClassName<DefaultProbabilityTermStructure *> { public: static const char *name() { return "DefaultProbabilityTermStructure"; } };
+template <> class objClassName<QlDefaultProbabilityTermStructure *> { public: static const char *name() { return "QlDefaultProbabilityTermStructure"; } };
 
 #include "ql.h"
 

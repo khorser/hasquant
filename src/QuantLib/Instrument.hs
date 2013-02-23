@@ -35,6 +35,8 @@ module QuantLib.Instrument
   , earlyExercise
   , exercise
   , europeanExercise
+  , swingExercise
+  , swingExercise'
   )
 where
 
@@ -334,5 +336,21 @@ averageBasketPayoff' = $(ffiCall 'averageBasketPayoff') c_averageBasketPayoff'
 
 foreign import ccall safe "ql.h qlAverageBasketPayoff1"
   c_averageBasketPayoff' :: Ptr CPayoff -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CBasketPayoff)
+
+swingExercise :: [(Day, Word)] -- ^(dates, seconds)
+  -> IO SwingExercise
+swingExercise = $(ffiCall 'swingExercise) c_swingExercise
+
+foreign import ccall safe "ql.h qlSwingExercise"
+  c_swingExercise :: CUInt -> Ptr CDate -> Ptr CUInt -> Ptr CString -> IO (Ptr CSwingExercise)
+
+swingExercise' :: Day -- ^from
+  -> Day -- ^to
+  -> Word -- ^stepSizeSecs
+  -> IO SwingExercise
+swingExercise' = $(ffiCall 'swingExercise') c_swingExercise'
+
+foreign import ccall safe "ql.h qlSwingExercise1"
+  c_swingExercise' :: CDate -> CDate -> CUInt -> Ptr CString -> IO (Ptr CSwingExercise)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -4,6 +4,7 @@
 #include <ql/instruments/basketoption.hpp>
 #include <ql/instruments/stickyratchet.hpp>
 #include <ql/instruments/forward.hpp>
+#include <ql/instruments/vanillaswingoption.hpp>
 
 #include "qlaux.h"
 
@@ -258,6 +259,22 @@ QlEuropeanExercise* qlEuropeanExercise(int date, char **e) {
     return ret(new QlEuropeanExercise(alloc(new EuropeanExercise(Date(date)))));
   } catch (std::exception& er) {
     return handleException<QlEuropeanExercise*>(e, er);
+  }
+}
+
+QlSwingExercise* qlSwingExercise(unsigned datesLen, int* dates, unsigned* seconds, char **e) {
+  try {
+    return ret(new QlSwingExercise(alloc(new SwingExercise(qlDateVector(datesLen, dates), std::vector<unsigned>(seconds, seconds+datesLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlSwingExercise*>(e, er);
+  }
+}
+
+QlSwingExercise* qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char **e) {
+  try {
+    return ret(new QlSwingExercise(alloc(new SwingExercise(Date(from), Date(to), stepSizeSecs))));
+  } catch (std::exception& er) {
+    return handleException<QlSwingExercise*>(e, er);
   }
 }
 

@@ -21,6 +21,7 @@ import QuantLib.Types
 -- All QLEnum instances must be imported here!
 import QuantLib.CashFlow.DurationType()
 import QuantLib.Compounding()
+import QuantLib.Credit.ProtectionSide()
 import QuantLib.Credit.Seniority()
 import QuantLib.ExerciseType()
 import QuantLib.Instrument.BMASwapType()
@@ -45,7 +46,7 @@ import QuantLib.Math.Interpolation()
 import QuantLib.ProcessDiscretization()
 import QuantLib.TermStructure.Trait()
 
-data NestedArg = DayN | DoubleN | ForeignPtrN | EnumN Name | BoolN | YearFractionN
+data NestedArg = DayN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | YearFractionN
   deriving (Show, Eq)
 
 -- XXX use GADTs/SYB/Uniplate?
@@ -88,6 +89,7 @@ nestedNameToTop n | n == ''Day = return DayN
 nestedNameToTop n | n == ''Double = return DoubleN
 nestedNameToTop n | n == ''Bool = return BoolN
 nestedNameToTop n | n == ''YearFraction = return YearFractionN
+nestedNameToTop n | n == ''Word = return WordN
 nestedNameToTop n = do
   e <- enumType n
   case e of
@@ -288,7 +290,11 @@ genFfiCall io extra aa r = do
 
     genFfiCallImpl ((ListA BoolN, v):as) c_call =
       [|withArrayLen (map fromBool $v) (\y1 y2 ->
-          $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CUInt)y1) y2|]))|]
+          $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CUInt) y1) y2|]))|]
+
+    genFfiCallImpl ((ListA WordN, v):as) c_call =
+      [|withArrayLen (map (fromIntegral :: Word -> CUInt) $v) (\y1 y2 ->
+          $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CUInt) y1) y2|]))|]
 
     genFfiCallImpl ((ListA YearFractionN, v):as) c_call =
       [|withDoubles $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
@@ -308,6 +314,10 @@ genFfiCall io extra aa r = do
     genFfiCallImpl ((ListA2 ForeignPtrN BoolN, v):as) c_call =
       [|withObjects (map fst $v) (\n os -> withArrayLen (map (fromBool . snd) $v)
         (\_ bs -> $(genFfiCallImpl as [|$c_call n os bs|])))|]
+
+    genFfiCallImpl ((ListA2 DayN WordN, v):as) c_call =
+      [|withDays (map fst $v) (\n ds -> withArrayLen (map ((fromIntegral :: Word -> CUInt) . snd) $v)
+        (\_ ws -> $(genFfiCallImpl as [|$c_call n ds ws|])))|]
 
     genFfiCallImpl ((t@(ListA2 _ _), _v):_as) _c_call =
       error $ show t ++ "Not supported yet"

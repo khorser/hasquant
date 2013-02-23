@@ -1,5 +1,6 @@
 #include <ql/cashflows/duration.hpp>
 #include <ql/compounding.hpp>
+#include <ql/default.hpp>
 #include <ql/exercise.hpp>
 #include <ql/experimental/credit/defaulttype.hpp>
 #include <ql/experimental/processes/extendedblackscholesprocess.hpp>
@@ -202,6 +203,11 @@ static int extDiscretizationValues[] = {
   , ExtendedBlackScholesMertonProcess::PredictorCorrector
   };
 
+static int protectionSideValues[] = {
+    Protection::Buyer
+  , Protection::Seller
+};
+
 struct EnumInfo {
   const char *name;
   size_t len;
@@ -237,6 +243,8 @@ static EnumInfo enumInfo[] = {
     LENGTH(positionValues), positionValues},
   {"QuantLib.Credit.Seniority.Seniority",
     LENGTH(seniorityValues), seniorityValues},
+  {"QuantLib.Credit.ProtectionSide.ProtectionSide",
+    LENGTH(protectionSideValues), protectionSideValues},
   {"QuantLib.ExerciseType.ExerciseType",
     LENGTH(exerciseTypeValues), exerciseTypeValues},
   {"QuantLib.Instrument.OptionType.OptionType",

@@ -1,5 +1,0 @@
-->
-::const Handle< DefaultProbabilityTermStructure > &
--- ^originalCurve
-::const Handle< Quote > &
--- ^spread

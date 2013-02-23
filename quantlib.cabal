@@ -25,6 +25,7 @@ Library
               , QuantLib.CashFlow.Leg
               , QuantLib.Compounding
               , QuantLib.Credit.Seniority
+              , QuantLib.Credit.ProtectionSide
               , QuantLib.Currency
               , QuantLib.Error
               , QuantLib.ExerciseType
@@ -35,6 +36,7 @@ Library
               , QuantLib.Instrument.AssetSwap
               , QuantLib.Instrument.BMASwapType
               , QuantLib.Instrument.Bond
+              , QuantLib.Instrument.CreditDefaultSwap
               , QuantLib.Instrument.Forward
               , QuantLib.Instrument.OptionType
               , QuantLib.Instrument.OvernightIndexedSwap
@@ -53,9 +55,10 @@ Library
               , QuantLib.Quote
               , QuantLib.Settings
               , QuantLib.SettlementType
+              , QuantLib.TermStructure.Credit
               , QuantLib.TermStructure.Trait   
               , QuantLib.TermStructure.Volatility
-              , QuantLib.TermStructure.Yield    
+              , QuantLib.TermStructure.Yield
               , QuantLib.Time.BusinessDayConvention
               , QuantLib.Time.Calendar
               , QuantLib.Time.Date

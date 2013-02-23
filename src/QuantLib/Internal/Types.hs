@@ -53,6 +53,7 @@ module QuantLib.Internal.Types
   , CSwaption
   , CSwingExercise
   , CVanillaOption
+  , CClaim
 
   -- pricingengines
   , CPricingEngine
@@ -76,6 +77,7 @@ module QuantLib.Internal.Types
   , CTermStructure
   , CBlackVolTermStructure
   , CVolatilityTermStructure
+  , CDefaultProbabilityTermStructure
 
   -- time
   , CCalendar
@@ -523,6 +525,12 @@ instance Upcastable CForwardVanillaOption COneAssetOption where
 foreign import ccall safe "ql.h qlForwardVanillaOptionAsOneAssetOption"
   c_ForwardVanillaOptionAsOneAssetOption :: Ptr CForwardVanillaOption -> IO (Ptr COneAssetOption)
 
+data CClaim
+instance Finalizable CClaim where
+  finalize = p_freeClaim
+foreign import ccall safe "ql.h &qlFreeClaim"
+  p_freeClaim :: FunPtr (Ptr CClaim -> IO ())
+
 -- pricingengines
 data CPricingEngine
 
@@ -668,6 +676,16 @@ instance Upcastable CVolatilityTermStructure CTermStructure where
   c_upcast = c_VolatilityTermStructureAsTermStructure
 foreign import ccall safe "ql.h qlVolatilityTermStructureAsTermStructure"
   c_VolatilityTermStructureAsTermStructure :: Ptr CVolatilityTermStructure -> IO (Ptr CTermStructure)
+
+data CDefaultProbabilityTermStructure
+instance Finalizable CDefaultProbabilityTermStructure where
+  finalize = p_freeDefaultProbabilityTermStructure
+foreign import ccall safe "ql.h &qlFreeDefaultProbabilityTermStructure"
+  p_freeDefaultProbabilityTermStructure :: FunPtr (Ptr CDefaultProbabilityTermStructure -> IO ())
+instance Upcastable CDefaultProbabilityTermStructure CTermStructure where
+  c_upcast = c_DefaultProbabilityTermStructureAsTermStructure
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureAsTermStructure"
+  c_DefaultProbabilityTermStructureAsTermStructure :: Ptr CDefaultProbabilityTermStructure -> IO (Ptr CTermStructure)
 
 -- time
 data CCalendar

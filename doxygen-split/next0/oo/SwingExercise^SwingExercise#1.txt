@@ -1,7 +1,0 @@
-->
-::const Date &
--- ^from
-::const Date &
--- ^to
-::Size
--- ^stepSizeSecs

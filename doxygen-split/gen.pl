@@ -233,8 +233,11 @@ sub type {
   $t =~ s/^(boost::optional<\s*)([^> ]+)(\s*>\s*)$/$2/;
   my $vect = ($t =~ m!std::vector!);
   $t =~ s/^((const\s+)?std::vector<\s*)([^> ]+)(\s*>\s*&?\s*)$/$3/;
+  if ($h and $vect) {
+    $t =~ s/^std::vector< Handle< (.*) > > &$/$1/;
+  }
 
-  if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor']) {
+  if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor', 'Probability']) {
     if (not $vect) {
       return ('double', 'CDouble', 'Double', '%', '%', 0, '');
     }
@@ -257,13 +260,11 @@ sub type {
     return ('int', 'CInt', 'Int', '%', '%', 0, '');
   }
   elsif ($t eq 'Date') {
-    if (not $def) {
-      if (not $vect) {
-	return ('int', 'CDate', 'Day', 'Date(%)', '(%).serialNumber()', 0, '');
-      }
-      else {
-	return ('int*', 'CUInt -> Ptr CDate', '[Day]', 'qlDateVector(%, %Len)', '???', 0, 'unsigned %Len');
-      }
+    if ($vect) {
+	return ('int*', 'CUInt -> Ptr CDate', '[Day]', 'qlDateVector(%Len, %)', '???', 0, 'unsigned %Len');
+    }
+    elsif (not $def) {
+      return ('int', 'CDate', 'Day', 'Date(%)', '(%).serialNumber()', 0, '');
     }
     else {
         return ('int', 'CDate', 'Maybe Day', 'qlNullableDate(%)', '', 0, '');
@@ -297,7 +298,7 @@ sub type {
       'DateGeneration::Rule', 'BusinessDayConvention', 'Weekday', 'Month',
       'Seniority', 'Exercise::Type', 'Option::Type', 'OvernightIndexedSwap::Type',
       'VanillaSwap::Type', 'PriceType', 'SettlementType',
-      'JointCalendarRule', 'Duration::Type', 'Discretization']) {
+      'JointCalendarRule', 'Duration::Type', 'Discretization', 'Protection::Side']) {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
     return ($carg, $farg, $t, $cast, '%', 0, '');
@@ -307,6 +308,9 @@ sub type {
   }
   elsif ($t eq 'discretization') {
     return ("char* ", "CString", "ProcessDiscretization", 'createDiscretization(arg(%))', "???", 0, '');
+  }
+  elsif ($t eq 'Interpolator') {
+    return ("char* ", "CString", "Interpolation", '%', "???", 0, '');
   }
   elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period',
       'InterestRate', 'FittedBondDiscountCurveFittingMethod', 'Rounding']) {
@@ -319,6 +323,7 @@ sub type {
   }
   else {
     $t =~ s/^(\w)/\u$1/;
+    print "\n!!!$t $h $vect \n\n";
     my ($carg, $farg, $ret) = ("Ql$t*", "Ptr C$t", "ret(new Ql$t(alloc(new %)))");
     if (not $h) {
       if (not $vect) {
@@ -329,7 +334,10 @@ sub type {
       }
     }
     else {
-      if (not $def) {
+      if ($vect) {
+	return ("$carg*", "CUInt -> Ptr ($farg)", "[$t]", 'qlBuildHandleVector(%, %Len)', '???', 1, 'unsigned %Len');
+      }
+      elsif (not $def) {
 	return ($carg, $farg, $t, "Handle<$t>(*arg(%))", $ret, 1, '');
       }
       else {
