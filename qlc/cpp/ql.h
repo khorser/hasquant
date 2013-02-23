@@ -598,6 +598,15 @@ extern "C" {
   void DLLEXPORT qlFreeStochasticProcess(QlStochasticProcess *o);
   void DLLEXPORT qlFreeStochasticProcess1D(QlStochasticProcess1D *o);
   QlStochasticProcess* DLLEXPORT qlStochasticProcess1DAsStochasticProcess(QlStochasticProcess1D *o);
+
+  QlBlackProcess* DLLEXPORT qlBlackProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, char*  d, char **e);
+  QlGeneralizedBlackScholesProcess* DLLEXPORT qlBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, char*  d, char **e);
+  QlGeneralizedBlackScholesProcess* DLLEXPORT qlBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, char*  d, char **e);
+  QlGeneralizedBlackScholesProcess* DLLEXPORT qlExtendedBlackScholesMertonProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, char*  d, int evolDisc, char **e);
+  QlGeneralizedBlackScholesProcess* DLLEXPORT qlGarmanKohlagenProcess(QlQuote* x0, QlYieldTermStructure* foreignRiskFreeTS, QlYieldTermStructure* domesticRiskFreeTS, QlBlackVolTermStructure* blackVolTS, char*  d, char **e);
+  QlGeneralizedBlackScholesProcess* DLLEXPORT qlGeneralizedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, char*  d, char **e);
+  QlStochasticProcess1D* DLLEXPORT qlSquareRootProcess(double b, double a, double sigma, double x0, char*  d, char **e);
+  QlGeneralizedBlackScholesProcess* DLLEXPORT qlVegaStressedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, double lowerTimeBorderForStressTest, double upperTimeBorderForStressTest, double lowerAssetBorderForStressTest, double upperAssetBorderForStressTest, double stressLevel, char*  d, char **e);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

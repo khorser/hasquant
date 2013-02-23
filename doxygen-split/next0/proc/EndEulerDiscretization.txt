@@ -1,2 +1,0 @@
-EndEulerDiscretization
- -- |Euler end-point discretization for stochastic processes.

@@ -2,6 +2,7 @@
 #include <ql/compounding.hpp>
 #include <ql/exercise.hpp>
 #include <ql/experimental/credit/defaulttype.hpp>
+#include <ql/experimental/processes/extendedblackscholesprocess.hpp>
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
 #include <ql/instruments/swaption.hpp>
@@ -26,8 +27,7 @@ using namespace QuantLib;
 // The order of enumeration values should be the same
 // as in corresponding Haskell code!
 
-static int businessDayConventionValues[] =
-  {
+static int businessDayConventionValues[] = {
     Following
   , ModifiedFollowing
   , Preceding
@@ -35,8 +35,7 @@ static int businessDayConventionValues[] =
   , Unadjusted
   };
 
-static int dateGenerationRuleValues[] =
-  {
+static int dateGenerationRuleValues[] = {
     DateGeneration::Backward
   , DateGeneration::Forward
   , DateGeneration::Zero
@@ -47,8 +46,7 @@ static int dateGenerationRuleValues[] =
   , DateGeneration::CDS
   };
 
-static int frequencyValues[] =
-  {
+static int frequencyValues[] = {
     NoFrequency
   , Annual
   , Semiannual
@@ -64,24 +62,21 @@ static int frequencyValues[] =
   , OtherFrequency
   };
 
-static int timeUnitValues[] =
-  {
+static int timeUnitValues[] = {
     Months
   , Days
   , Weeks
   , Years
   };
 
-static int compoundingValues[] =
-  {
+static int compoundingValues[] = {
     Simple
   , Compounded
   , Continuous
   , SimpleThenCompounded
   };
 
-static int weekdayValues[] =
-  {
+static int weekdayValues[] = {
     Sunday
   , Monday
   , Tuesday
@@ -91,8 +86,7 @@ static int weekdayValues[] =
   , Saturday
   };
 
-static int monthValues[] =
-  {
+static int monthValues[] = {
     January
   , February
   , March
@@ -107,14 +101,12 @@ static int monthValues[] =
   , December
   };
 
-static int positionValues[] =
-  {
+static int positionValues[] = {
     Position::Long
   , Position::Short
   };
 
-static int seniorityValues[] =
-  {
+static int seniorityValues[] = {
     SecDom
   , SnrFor
   , SubLT2
@@ -128,39 +120,33 @@ static int seniorityValues[] =
   , SubLoweTier2
   };
 
-static int exerciseTypeValues[] =
-  {
+static int exerciseTypeValues[] = {
     Exercise::American
   , Exercise::Bermudan
   , Exercise::European
   };
 
-static int optionTypeValues[] =
-  {
+static int optionTypeValues[] = {
     Option::Put
   , Option::Call
   };
 
-static int overnightIndexedSwapTypeValues[] =
-  {
+static int overnightIndexedSwapTypeValues[] = {
     OvernightIndexedSwap::Receiver
   , OvernightIndexedSwap::Payer
   };
 
-static int vanillaSwapTypeValues[] =
-  {
+static int vanillaSwapTypeValues[] = {
     VanillaSwap::Receiver
   , VanillaSwap::Payer
   };
 
-static int bmaSwapTypeValues[] =
-  {
+static int bmaSwapTypeValues[] = {
     BMASwap::Receiver
   , BMASwap::Payer
   };
 
-static int priceTypeValues[] =
-  {
+static int priceTypeValues[] = {
     Bid
   , Ask
   , Last
@@ -170,14 +156,12 @@ static int priceTypeValues[] =
   , MidSafe
   };
 
-static int settlementTypeValues[] =
-  {
+static int settlementTypeValues[] = {
     Settlement::Physical
   , Settlement::Cash
   };
 
-static int immMonthValues[] =
-  {
+static int immMonthValues[] = {
     IMM::F
   , IMM::G
   , IMM::H
@@ -192,27 +176,30 @@ static int immMonthValues[] =
   , IMM::Z
   };
 
-static int jointCalendarRuleValues[] =
-  {
+static int jointCalendarRuleValues[] = {
     JoinHolidays
   , JoinBusinessDays
   };
 
-static int durationValues[] =
-  {
+static int durationValues[] = {
     Duration::Simple
   , Duration::Macaulay
   , Duration::Modified
   };
 
-static int roundingValues[] =
-  {
+static int roundingValues[] = {
     Rounding::None,
     Rounding::Up,
     Rounding::Down,
     Rounding::Closest,
     Rounding::Floor,
     Rounding::Ceiling
+  };
+
+static int extDiscretizationValues[] = {
+    ExtendedBlackScholesMertonProcess::Euler
+  , ExtendedBlackScholesMertonProcess::Milstein
+  , ExtendedBlackScholesMertonProcess::PredictorCorrector
   };
 
 struct EnumInfo {
@@ -272,6 +259,8 @@ static EnumInfo enumInfo[] = {
     LENGTH(durationValues), durationValues},
   {"QuantLib.Math.RoundingType.RoundingType",
     LENGTH(roundingValues), roundingValues},
+  {"QuantLib.ProcessDiscretization.ExtendedDiscretization",
+    LENGTH(extDiscretizationValues), extDiscretizationValues},
 };
 
 int *qlEnumerationValue(const char *name, unsigned *c) {

@@ -40,7 +40,9 @@ import QuantLib.Time.Month()
 import QuantLib.Time.Unit()
 import QuantLib.Time.Weekday()
 
+-- QLLitEnum instances
 import QuantLib.Math.Interpolation()
+import QuantLib.ProcessDiscretization()
 import QuantLib.TermStructure.Trait()
 
 data NestedArg = DayN | DoubleN | ForeignPtrN | EnumN Name | BoolN | YearFractionN
