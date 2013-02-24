@@ -1,4 +1,0 @@
--- |Sensitivity to time to maturity.
-->Real
-::Time
--- ^maturity

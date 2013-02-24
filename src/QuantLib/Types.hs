@@ -60,6 +60,8 @@ module QuantLib.Types
 
   -- pricingengines
   , PricingEngine
+  , BlackCalculator
+  , BlackScholesCalculator
 
   -- processes
   , GeneralizedBlackScholesProcess
@@ -130,6 +132,8 @@ module QuantLib.Types
   , asStochasticProcess
   , asStochasticProcess1D
   , asGeneralizedBlackScholesProcess
+
+  , asBlackCalculator
   )
 where
 
@@ -315,6 +319,11 @@ type QuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption
 
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine
+type BlackCalculator = ForeignPtr CBlackCalculator
+type BlackScholesCalculator = ForeignPtr CBlackScholesCalculator
+
+asBlackCalculator :: (Upcastable a CBlackCalculator) => ForeignPtr a -> IO BlackCalculator
+asBlackCalculator = upcast
 
 -- processes
 type StochasticProcess1D = ForeignPtr CStochasticProcess1D

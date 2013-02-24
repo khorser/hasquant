@@ -1,4 +1,0 @@
--- |Sensitivity to dividend/growth rate.
-->Real
-::Time
--- ^maturity

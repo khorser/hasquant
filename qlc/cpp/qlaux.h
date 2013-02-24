@@ -597,6 +597,16 @@ typedef boost::shared_ptr<QuantoForwardVanillaOption> QlQuantoForwardVanillaOpti
 template <> class objClassName<QuantoForwardVanillaOption *> { public: static const char *name() { return "QuantoForwardVanillaOption"; } };
 template <> class objClassName<QlQuantoForwardVanillaOption *> { public: static const char *name() { return "QlQuantoForwardVanillaOption"; } };
 
+namespace QuantLib {class BlackCalculator;} using QuantLib::BlackCalculator;
+typedef boost::shared_ptr<BlackCalculator> QlBlackCalculator;
+template <> class objClassName<BlackCalculator *> { public: static const char *name() { return "BlackCalculator"; } };
+template <> class objClassName<QlBlackCalculator *> { public: static const char *name() { return "QlBlackCalculator"; } };
+
+namespace QuantLib {class BlackScholesCalculator;} using QuantLib::BlackScholesCalculator;
+typedef boost::shared_ptr<BlackScholesCalculator> QlBlackScholesCalculator;
+template <> class objClassName<BlackScholesCalculator *> { public: static const char *name() { return "BlackScholesCalculator"; } };
+template <> class objClassName<QlBlackScholesCalculator *> { public: static const char *name() { return "QlBlackScholesCalculator"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

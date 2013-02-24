@@ -59,6 +59,8 @@ module QuantLib.Internal.Types
 
   -- pricingengines
   , CPricingEngine
+  , CBlackCalculator
+  , CBlackScholesCalculator
 
   -- processes
   , CBlackProcess
@@ -562,6 +564,22 @@ instance Finalizable CPricingEngine where
   finalize = p_freePricingEngine
 foreign import ccall safe "ql.h &qlFreePricingEngine"
   p_freePricingEngine :: FunPtr (Ptr CPricingEngine -> IO ())
+
+data CBlackCalculator
+instance Finalizable CBlackCalculator where
+  finalize = p_freeBlackCalculator
+foreign import ccall safe "ql.h &qlFreeBlackCalculator"
+  p_freeBlackCalculator :: FunPtr (Ptr CBlackCalculator -> IO ())
+
+data CBlackScholesCalculator
+instance Finalizable CBlackScholesCalculator where
+  finalize = p_freeBlackScholesCalculator
+foreign import ccall safe "ql.h &qlFreeBlackScholesCalculator"
+  p_freeBlackScholesCalculator :: FunPtr (Ptr CBlackScholesCalculator -> IO ())
+instance Upcastable CBlackScholesCalculator CBlackCalculator where
+  c_upcast = c_BlackScholesCalculatorAsBlackCalculator
+foreign import ccall safe "ql.h qlBlackScholesCalculatorAsBlackCalculator"
+  c_BlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator -> IO (Ptr CBlackCalculator)
 
 -- processes
 data CStochasticProcess1D

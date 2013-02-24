@@ -1,6 +1,0 @@
--- |Sensitivity to time to maturity.
-->Real
-::Real
--- ^spot
-::Time
--- ^maturity
