@@ -1,4 +1,0 @@
--- |default theta-per-day calculation
-->Real
-::Real
--- ^theta

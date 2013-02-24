@@ -60,8 +60,6 @@ module QuantLib.Instrument.Bond
   , yieldValueBasisPoint'
   , yieldValueBasisPoint
   , zSpread
-
-  , setCouponPricer
   )
 
 where
@@ -189,17 +187,6 @@ zeroCouponBond :: Word -- ^settlementDays
   -> Maybe Day -- ^issueDate
   -> IO Bond
 zeroCouponBond = $(ffiCall 'zeroCouponBond) c_zeroCouponBond
-
-foreign import ccall safe "ql.h qlBondSetCouponPricer"
-  c_bondSetCouponPricer :: Ptr CBond -> Ptr CFloatingRateCouponPricer
-    -> Ptr CString -> IO ()
-
--- |Set the coupon pricer at the given Bond object
--- following QuantLibXL qlBondSetCouponPricer here.
--- In C++ it is a function working on
--- cashflows (see the implementation in qlBondSetCouponPricer)
-setCouponPricer :: Bond -> FloatingRateCouponPricer -> IO ()
-setCouponPricer = $(ffiCallX 'setCouponPricer) c_bondSetCouponPricer
 
 foreign import ccall safe "ql.h qlFloatingRateBond"
   c_floatingRateBond :: CUInt -> CDouble -> Ptr CSchedule -> Ptr CIborIndex

@@ -1,5 +1,0 @@
-->composed_function< F, G >
-::const F &
--- ^f
-::const G &
--- ^g

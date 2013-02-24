@@ -1,7 +1,10 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# OPTIONS_GHC -fno-warn-name-shadowing #-}
 module QuantLib.CashFlow.CouponPricer
   (
     blackIborCouponPricer
+  , setCouponPricer
+  , setCouponPricers
   )
 where
 
@@ -17,5 +20,21 @@ foreign import ccall safe "ql.h qlBlackIborCouponPricer"
 -- |Black-formula pricer for capped/floored Ibor coupons
 blackIborCouponPricer :: OptionletVolatilityStructure -> IO FloatingRateCouponPricer
 blackIborCouponPricer = $(ffiCall 'blackIborCouponPricer) c_blackIborCouponPricer
+
+setCouponPricer :: Leg -- ^leg
+  -> FloatingRateCouponPricer
+  -> IO ()
+setCouponPricer = $(ffiCallX 'setCouponPricer) c_setCouponPricer
+
+foreign import ccall safe "ql.h qlQuantLibSetCouponPricer"
+  c_setCouponPricer :: Ptr CLeg -> Ptr CFloatingRateCouponPricer -> Ptr CString -> IO ()
+
+setCouponPricers :: Leg -- ^leg
+  -> [FloatingRateCouponPricer]
+  -> IO ()
+setCouponPricers = $(ffiCallX 'setCouponPricers) c_setCouponPricers
+
+foreign import ccall safe "ql.h qlQuantLibSetCouponPricers"
+  c_setCouponPricers :: Ptr CLeg -> CUInt -> Ptr (Ptr CFloatingRateCouponPricer) -> Ptr CString -> IO ()
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

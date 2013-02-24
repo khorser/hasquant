@@ -1,5 +1,6 @@
 #include <ql/cashflows/cashflows.hpp>
 #include <ql/cashflows/simplecashflow.hpp>
+#include <ql/cashflows/couponpricer.hpp>
 #include <boost/shared_ptr.hpp>
 
 #include "qlaux.h"
@@ -339,5 +340,18 @@ double qlCashFlowsZSpread(Leg* leg, double npv, QlYieldTermStructure* x2, DayCou
     return handleException<double>(e, er);
   }
 }
-
+void qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **e) {
+  try {
+    return setCouponPricer(*arg(leg), *arg(x1));
+  } catch (std::exception& er) {
+    (void)handleException<int>(e, er);
+  }
+}
+void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e) {
+  try {
+    return setCouponPricers(*arg(leg), qlBuildVector(x1, x1Len));
+  } catch (std::exception& er) {
+    (void)handleException<int>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

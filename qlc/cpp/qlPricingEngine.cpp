@@ -416,5 +416,26 @@ double qlQuantLibBlackScholesTheta(QlGeneralizedBlackScholesProcess* x0, double 
     return handleException<double>(e, er);
   }
 }
+double qlQuantLibBachelierBlackFormula1(QlPlainVanillaPayoff* payoff, double forward, double stdDev, double discount, char **e) {
+  try {
+    return QuantLib::bachelierBlackFormula((*arg(payoff)), forward, stdDev, discount);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlQuantLibBachelierBlackFormula(int optionType, double strike, double forward, double stdDev, double discount, char **e) {
+  try {
+    return QuantLib::bachelierBlackFormula((Option::Type)optionType, strike, forward, stdDev, discount);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlQuantLibDefaultThetaPerDay(double theta, char **e) {
+  try {
+    return QuantLib::defaultThetaPerDay(theta);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

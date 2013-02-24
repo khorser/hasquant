@@ -86,7 +86,7 @@ main = do
 
     printSwapResult :: String -> SwapExample.SwapResult -> IO ()
     printSwapResult t r = do
-        putStrLn $ t ++ " NPV: " ++ show (SwapExample.spotNpvR $ r)
+        putStrLn $ t ++ " NPV: " ++ show (SwapExample.spotNpvR r)
         putStrLn $ t ++ " fair spread: " ++ show (SwapExample.spotFairSpreadR r)
         putStrLn $ t ++ " fair rate: " ++ show (SwapExample.spotFairRateR r)
 

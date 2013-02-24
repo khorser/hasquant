@@ -5,6 +5,7 @@ module QuantLib.Example.Bond
   )
 where
 
+--import Control.Applicative
 import Control.Monad((>=>))
 
 import Data.List(zip4)
@@ -120,31 +121,6 @@ run = do
           --(Cubic FritschButland)
           --Abcd
 
-  {-
-  ts1 <- piecewiseYieldCurve'
-          3
-          targetCal
-          (discDepoHelpers ++ discBondHelpers)
-          actActISDA
-          []
-          tolerance
-          Discount
-          LogLinear
-
-  discBondHelpers1 <- mapM
-    (\(q, c, i, m) -> do
-      s <- schedule i m p6m usGovBondCal Unadjusted
-             Unadjusted Backward False Nothing Nothing
-      fixedRateBondHelper q settlementDays 100.0 s [c]
-            actActBond Unadjusted redemption i)
-    $ zip4 quotes couponRates issueDates maturities
-  nsf <- nelsonSiegelFitting
-  fbdc <- fittedBondDiscountCurve' settlDate discBondHelpers1
-        actActISDA nsf 1e-10 10000
-  res <- numberOfIterations fbdc
-  putStrLn $ "***" ++ show res
-  -}
-
   --df <- discount ts (fromGregorian 2011 08 03) True
   pricing <- discountingBondEngine ts Nothing
   -- Fixed 4.5% US Treasury Note
@@ -235,8 +211,9 @@ run = do
   volval <- simpleQuote 0 >>= asQuote
   vol <- constantOptionletVolatility'
           settlementDays targetCal ModifiedFollowing volval actual365Fixeddc
-  couponPricer <- blackIborCouponPricer vol
-  setCouponPricer floater couponPricer
+  fcfs <- cashflows floater
+  blackIborCouponPricer vol >>= setCouponPricer fcfs
+  --setCouponPricer <$> cashflows floater <*> blackIborCouponPricer vol
   
   let allBonds = [fixedBond, zcBond, floater]
       twoBonds = [fixedBond, floater]
@@ -269,29 +246,6 @@ run = do
   
   bTradable <- mapM (`isTradable` (Just $ 10 `february` 2013)) allBonds
 
-  {-
-  _ <- floatingRateBond' settlementDays
-                                   faceAmount
-                                   (21 `october` 2005)
-                                   (21 `october` 2010)
-                                   Quarterly
-                                   nyseCal
-                                   usd3m
-                                   actual360dc
-                                   ModifiedFollowing
-                                   ModifiedFollowing
-                                   2
-                                   [1.0]
-                                   [0.001]
-                                   []
-                                   []
-                                   True
-                                   100.0
-                                   (Just $ fromGregorian 2005 10 21)
-                                   Nothing
-                                   Backward
-                                   True
-  -}
   return Result {
       npvR = (fixnpv, znpv, fnpv)
     , cleanPriceR = listToTriple bCleanPrice

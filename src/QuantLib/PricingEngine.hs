@@ -59,6 +59,9 @@ module QuantLib.PricingEngine
   , blackFormulaStdDevDerivative
   , blackFormulaVolDerivative
   , blackScholesTheta
+  , bachelierBlackFormula'
+  , bachelierBlackFormula
+  , defaultThetaPerDay
   )
 where
 
@@ -569,5 +572,36 @@ blackScholesTheta = $(ffiCallX 'blackScholesTheta) c_blackScholesTheta
 
 foreign import ccall safe "ql.h qlQuantLibBlackScholesTheta"
   c_blackScholesTheta :: Ptr CGeneralizedBlackScholesProcess -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+
+-- |Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier. /Warning/ Bachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
+bachelierBlackFormula' :: PlainVanillaPayoff -- ^payoff
+  -> Double -- ^forward
+  -> Double -- ^stdDev
+  -> Double -- ^discount
+  -> IO Double
+bachelierBlackFormula' = $(ffiCallX 'bachelierBlackFormula') c_bachelierBlackFormula'
+
+foreign import ccall safe "ql.h qlQuantLibBachelierBlackFormula1"
+  c_bachelierBlackFormula' :: Ptr CPlainVanillaPayoff -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+
+-- |Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier. /Warning/ Bachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
+bachelierBlackFormula :: OptionType -- ^optionType
+  -> Double -- ^strike
+  -> Double -- ^forward
+  -> Double -- ^stdDev
+  -> Double -- ^discount
+  -> IO Double
+bachelierBlackFormula = $(ffiCallX 'bachelierBlackFormula) c_bachelierBlackFormula
+
+foreign import ccall safe "ql.h qlQuantLibBachelierBlackFormula"
+  c_bachelierBlackFormula :: CInt -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+
+-- |default theta-per-day calculation
+defaultThetaPerDay :: Double -- ^theta
+  -> IO Double
+defaultThetaPerDay = $(ffiCallX 'defaultThetaPerDay) c_defaultThetaPerDay
+
+foreign import ccall safe "ql.h qlQuantLibDefaultThetaPerDay"
+  c_defaultThetaPerDay :: CDouble -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

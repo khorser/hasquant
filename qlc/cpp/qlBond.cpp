@@ -139,14 +139,6 @@ QlBond *qlZeroCouponBond(int settlDays, Calendar *cal, double face,
   }
 }
 
-void qlBondSetCouponPricer(QlBond *b, QlFloatingRateCouponPricer *p, char **e) {
-  try {
-    return setCouponPricer((*arg(b))->cashflows(), *p);
-  } catch (std::exception& er) {
-    (void)handleException<void *>(e, er);
-  }
-}
-
 QlBond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
   QlIborIndex *index, DayCounter *dc, int payConv, unsigned fixDays,
   unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,

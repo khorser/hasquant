@@ -1,5 +1,0 @@
-->void
-::const Leg &
--- ^leg
-::const boost::shared_ptr< FloatingRateCouponPricer > &
--- ^

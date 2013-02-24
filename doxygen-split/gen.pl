@@ -236,6 +236,9 @@ sub type {
   if ($h and $vect) {
     $t =~ s/^std::vector< Handle< (.*) > > &$/$1/;
   }
+  elsif ($vect) {
+    $t =~ s/^std::vector< boost::shared_ptr< (.*) > > &$/$1/;
+  }
 
   if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor', 'Probability']) {
     if (not $vect) {

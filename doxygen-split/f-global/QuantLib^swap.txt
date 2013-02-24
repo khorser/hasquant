@@ -1,5 +1,0 @@
-->void
-::Array &
--- ^v
-::Array &
--- ^w
