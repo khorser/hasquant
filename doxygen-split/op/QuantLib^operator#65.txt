@@ -1,5 +1,0 @@
-->Money
-::Decimal
--- ^value
-::const Currency &
--- ^c

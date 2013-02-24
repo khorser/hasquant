@@ -1,5 +1,0 @@
-->bool
-::const CommodityCurve &
--- ^c1
-::const CommodityCurve &
--- ^c2

@@ -1,7 +1,0 @@
-->Real
-::Real
--- ^strike
-::Option::Type
--- ^optionType
-::Real
--- ^deflator

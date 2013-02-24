@@ -1,5 +1,0 @@
-->bool
-::const Money &
--- ^
-::const Money &
--- ^

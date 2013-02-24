@@ -1,5 +1,0 @@
-->bool
-::const Calendar &
--- ^c1
-::const Calendar &
--- ^c2

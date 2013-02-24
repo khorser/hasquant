@@ -1,6 +1,0 @@
--- |Equality is the criteria for indexing the curves. This depends only on the atomic types and not on idiosincracies of derived type as mentioned in the functional documentation (specific event characteristics are relevant to credit event matching but not to the probability meaning). operator== is also used to remove duplicates in some containers. This ensures we do not have two equal events (despite having different characteristics) in those containers. This makes sense, theres no logic in having two FailureToPay in a contract even if they have different characteristics.
-->bool
-::const DefaultType &
--- ^lhs
-::const DefaultType &
--- ^rhs

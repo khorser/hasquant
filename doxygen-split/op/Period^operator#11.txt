@@ -1,5 +1,0 @@
-->bool
-::const Period &
--- ^
-::const Period &
--- ^

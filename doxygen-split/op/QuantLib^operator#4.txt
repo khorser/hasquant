@@ -1,5 +1,0 @@
-->bool
-::const CommodityType &
--- ^c1
-::const CommodityType &
--- ^c2

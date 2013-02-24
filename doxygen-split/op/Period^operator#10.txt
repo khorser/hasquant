@@ -1,5 +1,0 @@
-->Period
-::const Period &
--- ^
-::const Period &
--- ^

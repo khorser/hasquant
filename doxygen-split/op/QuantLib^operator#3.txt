@@ -1,5 +1,0 @@
-->bool
-::const CommodityIndex &
--- ^i1
-::const CommodityIndex &
--- ^i2

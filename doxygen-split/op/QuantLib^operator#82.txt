@@ -1,5 +1,0 @@
-->Period
-::const Period &
--- ^p
-::Integer
--- ^n

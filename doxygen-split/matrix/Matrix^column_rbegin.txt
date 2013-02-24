@@ -1,3 +1,0 @@
-->const_reverse_column_iterator
-::Size
--- ^i

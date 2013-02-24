@@ -1,8 +1,0 @@
--- |creates the matrix and fills it with value
-->
-::Size
--- ^rows
-::Size
--- ^columns
-::Real
--- ^value

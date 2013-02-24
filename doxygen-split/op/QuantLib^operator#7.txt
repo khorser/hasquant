@@ -1,5 +1,0 @@
-->bool
-::const PaymentTerm &
--- ^c1
-::const PaymentTerm &
--- ^c2

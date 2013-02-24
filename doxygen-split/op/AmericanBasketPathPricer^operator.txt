@@ -1,5 +1,0 @@
-->Real
-::const MultiPath &
--- ^path
-::Size
--- ^t

@@ -1,8 +1,0 @@
--- |creates the array and fills it according to $ a_{0} = value, a_{i}=a_{i-1}+increment $
-->
-::Size
--- ^size
-::Real
--- ^value
-::Real
--- ^increment

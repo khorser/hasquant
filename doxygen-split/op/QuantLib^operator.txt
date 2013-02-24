@@ -1,5 +1,0 @@
-->bool
-::const Currency &
--- ^c1
-::const Currency &
--- ^c2

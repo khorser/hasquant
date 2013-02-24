@@ -1,5 +1,0 @@
-->const Disposable< Array >
-::Real
--- ^a
-::const Array &
--- ^v2

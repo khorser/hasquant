@@ -1,3 +1,0 @@
-->Disposable< Array >
-::void
--- ^

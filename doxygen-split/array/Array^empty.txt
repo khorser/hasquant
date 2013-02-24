@@ -1,2 +1,0 @@
--- |whether the array is empty
-->bool

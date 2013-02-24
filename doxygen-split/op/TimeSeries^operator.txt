@@ -1,4 +1,0 @@
--- |returns the (possibly null) datum corresponding to the given date
-->T
-::const Date &
--- ^d

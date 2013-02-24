@@ -1,3 +1,0 @@
-->Real
-::const MultiPath &
--- ^path

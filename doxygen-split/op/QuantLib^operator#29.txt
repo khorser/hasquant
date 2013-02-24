@@ -1,3 +1,0 @@
-->const Disposable< Array >
-::const Array &
--- ^v

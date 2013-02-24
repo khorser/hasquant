@@ -1,5 +1,0 @@
-->bool
-::const UnitOfMeasure &
--- ^c1
-::const UnitOfMeasure &
--- ^c2

@@ -1,4 +1,0 @@
--- |increments date by the given period
-->Date &
-::const Period &
--- ^

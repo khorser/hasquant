@@ -1,3 +1,0 @@
-->ValueType
-::const PathType &
--- ^path

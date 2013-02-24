@@ -1,5 +1,0 @@
-->bool
-::const DayCounter &
--- ^d1
-::const DayCounter &
--- ^d2

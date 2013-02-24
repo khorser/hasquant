@@ -1,3 +1,0 @@
-->Money &
-::const Money &
--- ^

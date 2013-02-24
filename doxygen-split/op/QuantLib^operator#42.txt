@@ -1,5 +1,0 @@
-->const Disposable< Matrix >
-::const Matrix &
--- ^m1
-::const Matrix &
--- ^m2

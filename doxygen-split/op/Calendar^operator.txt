@@ -1,6 +1,0 @@
--- |Returns true iff the two calendars belong to the same derived class.
-->bool
-::const Calendar &
--- ^
-::const Calendar &
--- ^

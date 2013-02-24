@@ -1,5 +1,0 @@
-->Money
-::const Money &
--- ^m1
-::const Money &
--- ^m2

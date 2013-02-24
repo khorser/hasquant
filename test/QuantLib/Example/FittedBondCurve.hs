@@ -133,7 +133,7 @@ run = do
                     TS.svenssonFitting]
 
       curves <- mapM
-          (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals)
+          (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals [] 1.0)
           fittings
       printRates ts0 dc bondSettle tod curves instrA
       return (ts0, instrA, instrB, curves)
@@ -157,7 +157,7 @@ run = do
                     TS.svenssonFitting]
 
       curves <- mapM
-          (\f -> TS.fittedBondDiscountCurve curveSettleDays cal iA dc f tolerance maxEvals)
+          (\f -> TS.fittedBondDiscountCurve curveSettleDays cal iA dc f tolerance maxEvals [] 1.0)
           fittings
       printRates ts00 dc bondSettle tod curves iA
       return (ts00, curves)

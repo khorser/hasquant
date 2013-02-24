@@ -1,3 +1,0 @@
-->NinePointLinearOp &
-::const NinePointLinearOp &
--- ^m

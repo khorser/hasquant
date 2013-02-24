@@ -1,4 +1,0 @@
--- |1-day post-increment
-->Date
-::int
--- ^

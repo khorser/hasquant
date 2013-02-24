@@ -1,8 +1,0 @@
-->Real
-::Real
--- ^x
-::Real
--- ^y
-::bool
-=false
--- ^allowExtrapolation

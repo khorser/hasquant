@@ -1,6 +1,0 @@
--- |creates a matrix with the given dimensions
-->
-::Size
--- ^rows
-::Size
--- ^columns

@@ -1,5 +1,0 @@
-->Period
-::TimeUnit
--- ^units
-::T
--- ^n

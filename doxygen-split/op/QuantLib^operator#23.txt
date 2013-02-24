@@ -1,5 +1,0 @@
-->bool
-::const Loss &
--- ^l1
-::const Loss &
--- ^l2

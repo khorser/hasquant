@@ -1,5 +1,0 @@
-->const Disposable< Matrix >
-::const Matrix &
--- ^
-::Real
--- ^

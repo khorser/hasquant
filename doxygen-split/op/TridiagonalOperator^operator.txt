@@ -1,3 +1,0 @@
-->TridiagonalOperator &
-::const Disposable< TridiagonalOperator > &
--- ^

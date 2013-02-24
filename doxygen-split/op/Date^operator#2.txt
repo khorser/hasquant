@@ -1,4 +1,0 @@
--- |decrement date by the given number of days
-->Date &
-::BigInteger
--- ^days

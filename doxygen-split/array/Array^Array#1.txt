@@ -1,6 +1,0 @@
--- |creates the array and fills it with value
-->
-::Size
--- ^size
-::Real
--- ^value

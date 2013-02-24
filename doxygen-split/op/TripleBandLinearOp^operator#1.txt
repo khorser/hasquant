@@ -1,3 +1,0 @@
-->TripleBandLinearOp &
-::const Disposable< TripleBandLinearOp > &
--- ^m

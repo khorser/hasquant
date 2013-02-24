@@ -1,5 +1,0 @@
-->Disposable< TridiagonalOperator >
-::Real
--- ^a
-::const TridiagonalOperator &
--- ^D

@@ -345,7 +345,6 @@ foreign import ccall safe "ql.h qlSvenssonFitting"
   c_svenssonFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
 
 -- |reference date based on current evaluation date
--- unlike C++ library we do not expose /guess/ and /simplexLambda/ arguments (yet)
 fittedBondDiscountCurve :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [BondHelper] -- ^bonds
@@ -353,11 +352,13 @@ fittedBondDiscountCurve :: Word -- ^settlementDays
   -> FittedBondDiscountCurveFittingMethod -- ^fittingMethod
   -> Double -- ^accuracy
   -> Word -- ^maxEvaluations
+  -> [Double] -- ^guess
+  -> Double -- ^simplexLambda
   -> IO FittedBondDiscountCurve
 fittedBondDiscountCurve = $(ffiCall 'fittedBondDiscountCurve) c_fittedBondDiscountCurve
 
 foreign import ccall safe "ql.h qlFittedBondDiscountCurve"
-  c_fittedBondDiscountCurve :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
+  c_fittedBondDiscountCurve :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> CUInt -> Ptr CDouble -> CDouble -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
 
 -- |curve reference date fixed for life of curve
 fittedBondDiscountCurve' :: Day -- ^referenceDate
@@ -366,11 +367,13 @@ fittedBondDiscountCurve' :: Day -- ^referenceDate
   -> FittedBondDiscountCurveFittingMethod -- ^fittingMethod
   -> Double -- ^accuracy
   -> Word -- ^maxEvaluations
+  -> [Double] -- ^guess
+  -> Double -- ^simplexLambda
   -> IO FittedBondDiscountCurve
 fittedBondDiscountCurve' = $(ffiCall 'fittedBondDiscountCurve') c_fittedBondDiscountCurve'
 
 foreign import ccall safe "ql.h qlFittedBondDiscountCurve1"
-  c_fittedBondDiscountCurve' :: CDate -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
+  c_fittedBondDiscountCurve' :: CDate -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> CUInt -> Ptr CDouble -> CDouble -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
 
 -- |final value of cost function after optimization
 minimumCostValue :: FittedBondDiscountCurve -> IO Double

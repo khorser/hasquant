@@ -1,5 +1,0 @@
-->Quantity
-::Real
--- ^x
-::const Quantity &
--- ^m

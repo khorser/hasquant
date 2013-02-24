@@ -1,3 +1,0 @@
-->NinePointLinearOp &
-::const Disposable< NinePointLinearOp > &
--- ^m

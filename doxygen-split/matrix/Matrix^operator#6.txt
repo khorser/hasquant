@@ -1,3 +1,0 @@
-->const_row_iterator
-::Size
--- ^
