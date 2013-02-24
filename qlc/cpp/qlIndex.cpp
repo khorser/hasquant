@@ -22,7 +22,7 @@ void qlFreeIndex(QlIndex *i) {
 typedef Handle<YieldTermStructure> YieldTermStructureHandle;
 
 typedef EnumObjectInfo3<SwapIndex, Period&, YieldTermStructureHandle&, YieldTermStructureHandle&> SwapIndexInfo;
-static SwapIndexInfo swapIndexInfo [] = {
+static const SwapIndexInfo swapIndexInfo [] = {
   {"ChfLiborSwapIsdaFix", &SwapIndexInfo::makeObject<ChfLiborSwapIsdaFix>},
   {"EurLiborSwapIfrFix", &SwapIndexInfo::makeObject<EurLiborSwapIfrFix>},
   {"EurLiborSwapIsdaFixA", &SwapIndexInfo::makeObject<EurLiborSwapIsdaFixA>},
@@ -39,8 +39,8 @@ static SwapIndexInfo swapIndexInfo [] = {
 
 QlSwapIndex* qlCreateLiborSwapIndex(char *name, Period* tenor, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e) {
   try {
-    SwapIndexInfo *last = LAST(swapIndexInfo);
-    SwapIndexInfo *found =
+    const SwapIndexInfo *last = LAST(swapIndexInfo);
+    const SwapIndexInfo *found =
       std::find_if(swapIndexInfo, last, SwapIndexInfo::Cmp(name));
     if (found != last) {
       YieldTermStructureHandle ts1 = qlNullableHandle(h1);

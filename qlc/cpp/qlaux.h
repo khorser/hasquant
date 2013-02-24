@@ -257,8 +257,8 @@ T traceval(const char *text, T val) {
 
 template <class T>
 struct EnumObjectInfo {
-  const char *name;
-  T *(*make)();
+  const char *const name;
+  T *(* const make)();
 
   class Cmp {
   public:

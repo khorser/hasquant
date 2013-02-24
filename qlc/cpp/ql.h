@@ -289,7 +289,7 @@ extern "C" {
   void DLLEXPORT qlFreeInterestRate(InterestRate *rate);
 
   /* enumerations */
-  int *DLLEXPORT qlEnumerationValue(const char *name, unsigned *c);
+  const int *DLLEXPORT qlEnumerationValue(const char *name, unsigned *c);
 
 #ifdef quantlib_ratehelpers_hpp
   /* yield term structure */

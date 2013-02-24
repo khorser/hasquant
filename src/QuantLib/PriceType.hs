@@ -19,4 +19,10 @@ data PriceType = Bid -- ^Bid price.
   | MidSafe -- ^Safe Mid price, returns the mid price only if both bid and ask are available.
   deriving (Show, Eq, Enum)
 
+data IntervalPriceType = IntervalOpen | IntervalClose | IntervalHigh
+  | IntervalLow
+  deriving (Show, Eq, Enum)
+
+instance QLEnum IntervalPriceType
+
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

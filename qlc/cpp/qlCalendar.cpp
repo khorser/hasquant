@@ -6,7 +6,7 @@
 using namespace QuantLib;
 
 typedef EnumObjectInfo<Calendar> CalendarInfo;
-static CalendarInfo calendarInfo[] = {
+static const CalendarInfo calendarInfo[] = {
   {"NullCalendar", &CalendarInfo::makeObject<NullCalendar>},
   {"TARGET", &CalendarInfo::makeObject<TARGET>},
   {"Argentina::Merval", &CalendarInfo::makeObject<Argentina>},
@@ -65,8 +65,8 @@ static CalendarInfo calendarInfo[] = {
 
 Calendar *qlCalendar(const char *name, char **e) {
   try {
-    CalendarInfo *last = LAST(calendarInfo);
-    CalendarInfo *found = std::find_if(calendarInfo, last, CalendarInfo::Cmp(name));
+    const CalendarInfo *last = LAST(calendarInfo);
+    const CalendarInfo *found = std::find_if(calendarInfo, last, CalendarInfo::Cmp(name));
     if (found != last)
       return alloc(found->make());
     else

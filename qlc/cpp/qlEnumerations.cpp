@@ -7,6 +7,7 @@
 #include <ql/instruments/averagetype.hpp>
 #include <ql/instruments/barriertype.hpp>
 #include <ql/instruments/bmaswap.hpp>
+#include <ql/instruments/capfloor.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
 #include <ql/instruments/swaption.hpp>
 #include <ql/instruments/vanillaswap.hpp>
@@ -20,6 +21,9 @@
 #include <ql/time/frequency.hpp>
 #include <ql/time/imm.hpp>
 #include <ql/time/timeunit.hpp>
+#include <ql/processes/hestonprocess.hpp>
+#include <ql/processes/gjrgarchprocess.hpp>
+#include <ql/processes/hybridhestonhullwhiteprocess.hpp>
 
 #include <string.h>
 
@@ -30,7 +34,7 @@ using namespace QuantLib;
 // The order of enumeration values should be the same
 // as in corresponding Haskell code!
 
-static int businessDayConventionValues[] = {
+static const int businessDayConventionValues[] = {
     Following
   , ModifiedFollowing
   , Preceding
@@ -38,7 +42,7 @@ static int businessDayConventionValues[] = {
   , Unadjusted
 };
 
-static int dateGenerationRuleValues[] = {
+static const int dateGenerationRuleValues[] = {
     DateGeneration::Backward
   , DateGeneration::Forward
   , DateGeneration::Zero
@@ -49,7 +53,7 @@ static int dateGenerationRuleValues[] = {
   , DateGeneration::CDS
 };
 
-static int frequencyValues[] = {
+static const int frequencyValues[] = {
     NoFrequency
   , Annual
   , Semiannual
@@ -65,21 +69,21 @@ static int frequencyValues[] = {
   , OtherFrequency
 };
 
-static int timeUnitValues[] = {
+static const int timeUnitValues[] = {
     Months
   , Days
   , Weeks
   , Years
 };
 
-static int compoundingValues[] = {
+static const int compoundingValues[] = {
     Simple
   , Compounded
   , Continuous
   , SimpleThenCompounded
 };
 
-static int weekdayValues[] = {
+static const int weekdayValues[] = {
     Sunday
   , Monday
   , Tuesday
@@ -89,7 +93,7 @@ static int weekdayValues[] = {
   , Saturday
 };
 
-static int monthValues[] = {
+static const int monthValues[] = {
     January
   , February
   , March
@@ -104,12 +108,12 @@ static int monthValues[] = {
   , December
 };
 
-static int positionValues[] = {
+static const int positionValues[] = {
     Position::Long
   , Position::Short
 };
 
-static int seniorityValues[] = {
+static const int seniorityValues[] = {
     SecDom
   , SnrFor
   , SubLT2
@@ -123,33 +127,33 @@ static int seniorityValues[] = {
   , SubLoweTier2
 };
 
-static int exerciseTypeValues[] = {
+static const int exerciseTypeValues[] = {
     Exercise::American
   , Exercise::Bermudan
   , Exercise::European
 };
 
-static int optionTypeValues[] = {
+static const int optionTypeValues[] = {
     Option::Put
   , Option::Call
 };
 
-static int overnightIndexedSwapTypeValues[] = {
+static const int overnightIndexedSwapTypeValues[] = {
     OvernightIndexedSwap::Receiver
   , OvernightIndexedSwap::Payer
 };
 
-static int vanillaSwapTypeValues[] = {
+static const int vanillaSwapTypeValues[] = {
     VanillaSwap::Receiver
   , VanillaSwap::Payer
 };
 
-static int bmaSwapTypeValues[] = {
+static const int bmaSwapTypeValues[] = {
     BMASwap::Receiver
   , BMASwap::Payer
 };
 
-static int priceTypeValues[] = {
+static const int priceTypeValues[] = {
     Bid
   , Ask
   , Last
@@ -159,12 +163,12 @@ static int priceTypeValues[] = {
   , MidSafe
 };
 
-static int settlementTypeValues[] = {
+static const int settlementTypeValues[] = {
     Settlement::Physical
   , Settlement::Cash
 };
 
-static int immMonthValues[] = {
+static const int immMonthValues[] = {
     IMM::F
   , IMM::G
   , IMM::H
@@ -179,18 +183,18 @@ static int immMonthValues[] = {
   , IMM::Z
 };
 
-static int jointCalendarRuleValues[] = {
+static const int jointCalendarRuleValues[] = {
     JoinHolidays
   , JoinBusinessDays
 };
 
-static int durationValues[] = {
+static const int durationValues[] = {
     Duration::Simple
   , Duration::Macaulay
   , Duration::Modified
 };
 
-static int roundingValues[] = {
+static const int roundingValues[] = {
     Rounding::None,
     Rounding::Up,
     Rounding::Down,
@@ -199,33 +203,66 @@ static int roundingValues[] = {
     Rounding::Ceiling
 };
 
-static int extDiscretizationValues[] = {
+static const int extDiscretizationValues[] = {
     ExtendedBlackScholesMertonProcess::Euler
   , ExtendedBlackScholesMertonProcess::Milstein
   , ExtendedBlackScholesMertonProcess::PredictorCorrector
 };
 
-static int protectionSideValues[] = {
+static const int protectionSideValues[] = {
     Protection::Buyer
   , Protection::Seller
 };
 
-static int averageTypeValues[] = {
+static const int averageTypeValues[] = {
     Average::Arithmetic
   , Average::Geometric
 };
 
-static int barrierTypeValues[] = {
+static const int barrierTypeValues[] = {
     Barrier::DownIn
   , Barrier::UpIn
   , Barrier::DownOut
   , Barrier::UpOut
 };
 
+static const int capFloorTypeValues[] = {
+    CapFloor::Cap
+  , CapFloor::Floor
+  , CapFloor::Collar
+};
+
+static const int hestonProcessDiscretizationValues[] = {
+    HestonProcess::PartialTruncation
+  , HestonProcess::FullTruncation
+  , HestonProcess::Reflection
+  , HestonProcess::NonCentralChiSquareVariance
+  , HestonProcess::QuadraticExponential
+  , HestonProcess::QuadraticExponentialMartingale
+};
+
+static const int gjrgarchProcessDiscretizationValues[] = {
+    GJRGARCHProcess::PartialTruncation
+  , GJRGARCHProcess::FullTruncation
+  , GJRGARCHProcess::Reflection
+};
+
+static const int hybridHestonHullWhiteProcessDiscretizationValues[] = {
+    HybridHestonHullWhiteProcess::Euler
+  , HybridHestonHullWhiteProcess::BSMHullWhite
+};
+
+static const int intervalPriceType[] = {
+    IntervalPrice::Open
+  , IntervalPrice::Close
+  , IntervalPrice::High
+  , IntervalPrice::Low
+};
+
 struct EnumInfo {
-  const char *name;
+  const char *const name;
   size_t len;
-  int *data;
+  const int *const data;
 
   class Cmp {
   public:
@@ -238,7 +275,7 @@ struct EnumInfo {
   };
 };
 
-static EnumInfo enumInfo[] = {
+static const EnumInfo enumInfo[] = {
   {"QuantLib.Time.BusinessDayConvention.BusinessDayConvention",
     LENGTH(businessDayConventionValues), businessDayConventionValues},
   {"QuantLib.Time.DateGenerationRule.DateGenerationRule",
@@ -287,11 +324,21 @@ static EnumInfo enumInfo[] = {
     LENGTH(barrierTypeValues), barrierTypeValues},
   {"QuantLib.Instrument.AverageType.AverageType",
     LENGTH(averageTypeValues), averageTypeValues},
+  {"QuantLib.Instrument.CapFloorType.CapFloorType",
+    LENGTH(capFloorTypeValues), capFloorTypeValues},
+  {"QuantLib.ProcessDiscretization.HestonProcessDiscretization",
+    LENGTH(hestonProcessDiscretizationValues), hestonProcessDiscretizationValues},
+  {"QuantLib.ProcessDiscretization.GJRGARCHProcessDiscretization",
+    LENGTH(gjrgarchProcessDiscretizationValues), gjrgarchProcessDiscretizationValues},
+  {"QuantLib.ProcessDiscretization.HybridHestonHullWhiteProcessDiscretization",
+    LENGTH(hybridHestonHullWhiteProcessDiscretizationValues), hybridHestonHullWhiteProcessDiscretizationValues},
+  {"QuantLib.PriceType.IntervalPriceType",
+    LENGTH(intervalPriceType), intervalPriceType},
 };
 
-int *qlEnumerationValue(const char *name, unsigned *c) {
-  EnumInfo *last = LAST(enumInfo);
-  EnumInfo *found = std::find_if(enumInfo, last, EnumInfo::Cmp(name));
+const int *qlEnumerationValue(const char *name, unsigned *c) {
+  const EnumInfo *last = LAST(enumInfo);
+  const EnumInfo *found = std::find_if(enumInfo, last, EnumInfo::Cmp(name));
   if (found != last) {
     *c = found->len;
     return found->data;

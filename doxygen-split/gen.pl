@@ -302,7 +302,12 @@ sub type {
       'Seniority', 'Exercise::Type', 'Option::Type', 'OvernightIndexedSwap::Type',
       'VanillaSwap::Type', 'PriceType', 'Settlement::Type',
       'JointCalendarRule', 'Duration::Type', 'Discretization', 'Protection::Side',
-      'Barrier::Type', 'Average::Type']) {
+      'Barrier::Type', 'Average::Type',
+      'CapFloor::Type',
+      'HestonProcess::Discretization',
+      'GJRGARCHProcess::Discretization', 
+      'HybridHestonHullWhiteProcess::Discretization',
+      'IntervalPrice::Type']) {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
     return ($carg, $farg, $t, $cast, '%', 0, '');
