@@ -1,9 +1,0 @@
--- |returns the smile for a given option tenor and swap tenor
-->boost::shared_ptr< SmileSection >
-::const Period &
--- ^optionTenor
-::const Period &
--- ^swapTenor
-::bool
-=false
--- ^extr

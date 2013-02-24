@@ -1,9 +1,0 @@
--- |returns the smile for a given option time and swap length
-->boost::shared_ptr< SmileSection >
-::Time
--- ^optionTime
-::Time
--- ^swapLength
-::bool
-=false
--- ^extr

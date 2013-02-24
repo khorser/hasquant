@@ -582,6 +582,11 @@ typedef boost::shared_ptr<SwaptionVolatilityStructure> QlSwaptionVolatilityStruc
 template <> class objClassName<SwaptionVolatilityStructure *> { public: static const char *name() { return "SwaptionVolatilityStructure"; } };
 template <> class objClassName<QlSwaptionVolatilityStructure *> { public: static const char *name() { return "QlSwaptionVolatilityStructure"; } };
 
+namespace QuantLib {class SmileSection;} using QuantLib::SmileSection;
+typedef boost::shared_ptr<SmileSection> QlSmileSection;
+template <> class objClassName<SmileSection *> { public: static const char *name() { return "SmileSection"; } };
+template <> class objClassName<QlSmileSection *> { public: static const char *name() { return "QlSmileSection"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

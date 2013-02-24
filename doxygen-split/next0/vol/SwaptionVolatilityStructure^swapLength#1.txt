@@ -1,6 +1,0 @@
--- |implements the conversion between swap dates and swap (time) length
-->Time
-::const Date &
--- ^start
-::const Date &
--- ^end

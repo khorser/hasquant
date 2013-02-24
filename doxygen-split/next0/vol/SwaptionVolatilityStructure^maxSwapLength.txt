@@ -1,2 +1,0 @@
--- |the largest swapLength for which the term structure can return vols
-->Time

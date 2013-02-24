@@ -80,6 +80,7 @@ module QuantLib.Types
   , VolatilityTermStructure
   , DefaultProbabilityTermStructure
   , SwaptionVolatilityStructure
+  , SmileSection
 
   -- time
   , Calendar
@@ -358,6 +359,7 @@ asVolatilityTermStructure = upcast
 
 type DefaultProbabilityTermStructure = ForeignPtr CDefaultProbabilityTermStructure
 type SwaptionVolatilityStructure = ForeignPtr CSwaptionVolatilityStructure
+type SmileSection = ForeignPtr CSmileSection
 
 -- time
 -- |Calendars provide the means for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days

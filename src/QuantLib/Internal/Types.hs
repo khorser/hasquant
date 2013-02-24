@@ -79,6 +79,7 @@ module QuantLib.Internal.Types
   , CVolatilityTermStructure
   , CDefaultProbabilityTermStructure
   , CSwaptionVolatilityStructure
+  , CSmileSection
 
   -- time
   , CCalendar
@@ -697,6 +698,12 @@ instance Upcastable CSwaptionVolatilityStructure CVolatilityTermStructure where
   c_upcast = c_SwaptionVolatilityStructureAsVolatilityTermStructure
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureAsVolatilityTermStructure"
   c_SwaptionVolatilityStructureAsVolatilityTermStructure :: Ptr CSwaptionVolatilityStructure -> IO (Ptr CVolatilityTermStructure)
+
+data CSmileSection
+instance Finalizable CSmileSection where
+  finalize = p_freeSmileSection
+foreign import ccall safe "ql.h &qlFreeSmileSection"
+  p_freeSmileSection :: FunPtr (Ptr CSmileSection -> IO ())
 
 -- time
 data CCalendar
