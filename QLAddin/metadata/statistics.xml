@@ -1,16 +1,4 @@
 <Category name='statistics'>
-  <description>functions to construct and use Statistics objects.</description>
-  <displayName>Statistics</displayName>
-  <xlFunctionWizardCategory>QuantLib - Math</xlFunctionWizardCategory>
-  <addinIncludes>
-    <include>qlo/statistics.hpp</include>
-    <include>ql/math/statistics/statistics.hpp</include>
-    <include>ql/math/statistics/incrementalstatistics.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2006, 2007, 2008 Ferdinando Ametrano
-    Copyright (C) 2006 Cristina Duminuco
-  </copyright>
 
   <Functions>
 

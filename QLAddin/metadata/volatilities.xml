@@ -1,29 +1,4 @@
 <Category name='volatilities'>
-  <description>functions to construct and use volatility objects.</description>
-  <displayName>Volatilities</displayName>
-  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
-  <serializationIncludes>
-    <include>qlo/indexes/interestrateindex.hpp</include>
-    <include>qlo/volatilities.hpp</include>
-    <include>ql/math/interpolations/sabrinterpolation.hpp</include>
-    <include>ql/termstructures/volatility/equityfx/blackconstantvol.hpp</include>
-    <include>ql/termstructures/volatility/equityfx/blackvariancesurface.hpp</include>
-    <include>ql/experimental/volatility/abcdatmvolcurve.hpp</include>
-    <include>ql/experimental/volatility/sabrvolsurface.hpp</include>
-  </serializationIncludes>
-  <addinIncludes>
-    <include>qlo/indexes/interestrateindex.hpp</include>
-    <include>qlo/volatilities.hpp</include>
-    <include>ql/math/interpolations/sabrinterpolation.hpp</include>
-    <include>ql/termstructures/volatility/equityfx/blackconstantvol.hpp</include>
-    <include>ql/termstructures/volatility/equityfx/blackvariancesurface.hpp</include>
-    <include>ql/experimental/volatility/abcdatmvolcurve.hpp</include>
-    <include>ql/experimental/volatility/sabrvolsurface.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2007, 2010 Ferdinando Ametrano
-    Copyright (C) 2005, 2006 Eric Ehlers
-  </copyright>
   <Functions>
 
     <Procedure name='qlSabrVolatility'>
@@ -78,22 +53,6 @@
         <tensorRank>scalar</tensorRank>
       </ReturnValue>
     </Procedure>
-
-    <!-- VolatilityTermStructure interface -->
-    <Member name='qlVolatilityTermStructureBusinessDayConvention' type='QuantLib::VolatilityTermStructure' superType='libraryClass'>
-      <description>Returns the business day convention used in tenor to date conversion.</description>
-      <libraryFunction>businessDayConvention</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters/>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::BusinessDayConvention</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Member>
 
     <Member name='qlVolatilityTermStructureOptionDateFromTenor' type='QuantLib::VolatilityTermStructure' superType='libraryClass'>
       <description>Returns the option date corrisponding to a given option tenor.</description>
@@ -609,21 +568,6 @@
       </ReturnValue>
     </Member>
 
-    <!--<Member name='qlAbcdAtmVolCurveEndCriteria' type='QuantLib::AbcdAtmVolCurve' superType='libraryClass'>
-      <description>Returns the end criteria.</description>
-      <libraryFunction>d</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel' calcInWizard='false' />
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters/>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::EndCriteria::Type</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Member>-->
-
     <Member name='qlAbcdAtmVolCurveA' type='QuantLib::AbcdAtmVolCurve' superType='libraryClass'>
       <description>Returns the a coefficient in the abcd vol parametrization.</description>
       <libraryFunction>a</libraryFunction>
@@ -766,7 +710,6 @@
         </Parameters>
       </ParameterList>
     </Constructor>
-
 
     <!-- SabrVolSurface interface and constructor -->
     <Constructor name='qlSabrVolSurface'>

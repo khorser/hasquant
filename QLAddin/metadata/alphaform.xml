@@ -1,15 +1,4 @@
 <Category name='alphaform'>
-  <description>functions to construct and use AlphaForm objects.</description>
-  <displayName>AlphaForm</displayName>
-  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
-  <addinIncludes>
-    <include>ql/models/marketmodels/models/alphaform.hpp</include>
-    <include>ql/models/marketmodels/models/alphaformconcrete.hpp</include>
-    <include>qlo/alphaform.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2007 Marco Bianchetti
-  </copyright>
   <Functions>
 
     <!-- AlphaForm base class interfaces -->

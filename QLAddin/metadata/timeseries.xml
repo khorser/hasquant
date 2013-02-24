@@ -1,19 +1,4 @@
 <Category name='timeseries'>
-  <description>functions to construct and use TimeSeries objects.</description>
-  <displayName>TimeSeries</displayName>
-  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
-  <serializationIncludes>
-    <include>qlo/timeseries.hpp</include>
-    <include>qlo/index.hpp</include>
-  </serializationIncludes>
-  <addinIncludes>
-    <include>qlo/timeseries.hpp</include>
-    <include>qlo/index.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2007, 2008 Ferdinando Ametrano
-    Copyright (C) 2007 Eric Ehlers
-  </copyright>
   <Functions>
 
     <Member name='qlTimeSeriesFirstDate' type='QuantLib::TimeSeriesDef' superType='libraryClass'>

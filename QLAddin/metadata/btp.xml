@@ -1,25 +1,4 @@
 <Category name='btp'>
-  <description>functions to construct and use BTP objects.</description>
-  <displayName>BTP</displayName>
-  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
-  <serializationIncludes>
-    <include>qlo/btp.hpp</include>
-    <include>qlo/indexes/ibor/euribor.hpp</include>
-    <include>qlo/termstructures.hpp</include>
-
-    <include>ql/instruments/bonds/btp.hpp</include>
-  </serializationIncludes>
-  <addinIncludes>
-    <include>qlo/btp.hpp</include>
-    <include>qlo/indexes/ibor/euribor.hpp</include>
-    <include>qlo/termstructures.hpp</include>
-
-    <include>ql/instruments/bonds/btp.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2010, 2011 Ferdinando Ametrano
-  </copyright>
-
   <Functions>
 
     <Constructor name='qlCCTEU'>

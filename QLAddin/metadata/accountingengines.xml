@@ -1,28 +1,4 @@
 <Category name='accountingengines'>
-  <description>functions to construct and use Accounting Engines objects.</description>
-  <displayName>Accounting Engines</displayName>
-  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
-  <serializationIncludes>
-    <include>qlo/accountingengines.hpp</include>
-    <include>qlo/marketmodelevolvers.hpp</include>
-    <include>qlo/products.hpp</include>
-    <include>qlo/sequencestatistics.hpp</include>
-    <include>ql/models/marketmodels/accountingengine.hpp</include>
-  </serializationIncludes>
-  <addinIncludes>
-    <include>qlo/accountingengines.hpp</include>
-    <include>qlo/marketmodelevolvers.hpp</include>
-    <include>qlo/products.hpp</include>
-    <include>qlo/sequencestatistics.hpp</include>
-    <include>ql/models/marketmodels/accountingengine.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2006, 2007 Ferdinando Ametrano
-    Copyright (C) 2007 Chiara Fornarola
-    Copyright (C) 2006, 2007 Marco Bianchetti
-    Copyright (C) 2006, 2007 Cristina Duminuco
-    Copyright (C) 2006, 2007 Giorgio Facchinetti
-  </copyright>
   <Functions>
 
     <!-- AccountingEngine class constructor -->

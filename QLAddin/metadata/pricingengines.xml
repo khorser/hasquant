@@ -1,36 +1,4 @@
 <Category name='pricingengines'>
-  <description>functions to construct and use PricingEngine objects.</description>
-  <displayName>Pricing Engines</displayName>
-  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
-  <serializationIncludes>
-    <include>qlo/pricingengines.hpp</include>
-    <include>qlo/termstructures.hpp</include>
-    <include>qlo/shortratemodels.hpp</include>
-    <include>qlo/payoffs.hpp</include>
-    <include>qlo/marketmodels.hpp</include>
-    <include>qlo/processes.hpp</include>
-    <include>ql/pricingengines/blackformula.hpp</include>
-    <include>ql/pricingengines/blackscholescalculator.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp</include>
-    <include>ql/termstructures/volatility/swaption/swaptionvolstructure.hpp</include>
-  </serializationIncludes>
-  <addinIncludes>
-    <include>qlo/pricingengines.hpp</include>
-    <include>qlo/termstructures.hpp</include>
-    <include>qlo/shortratemodels.hpp</include>
-    <include>qlo/payoffs.hpp</include>
-    <include>qlo/marketmodels.hpp</include>
-    <include>qlo/processes.hpp</include>
-    <include>ql/pricingengines/blackformula.hpp</include>
-    <include>ql/pricingengines/blackscholescalculator.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp</include>
-    <include>ql/termstructures/volatility/swaption/swaptionvolstructure.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2006, 2007, 2008 Ferdinando Ametrano
-    Copyright (C) 2007 Eric Ehlers
-  </copyright>
-  <Functions>
 
     <Procedure name='qlBlackFormula'>
       <description>Black 1976 formula for option pricing, using displacement.</description>
@@ -1179,66 +1147,6 @@
     </Constructor>
 
     <!-- Pricing Engines -->
-    <Constructor name='qlPricingEngine'>
-      <libraryFunction>PricingEngine</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='C'/>
-        <SupportedPlatform name='Calc'/>
-        <SupportedPlatform name='Guile'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='EngineID'>
-            <type>string</type>
-            <tensorRank>scalar</tensorRank>
-            <description>engine type.</description>
-          </Parameter>
-          <Parameter name='ProcessID' >
-            <type>QuantLib::GeneralizedBlackScholesProcess</type>
-            <superType>libraryClass</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>GeneralizedBlackScholesProcess object ID.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
-
-    <Constructor name='qlDiscountingSwapEngine'>
-      <libraryFunction>DiscountingSwapEngine</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Calc'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='YieldCurve'>
-            <type>QuantLib::YieldTermStructure</type>
-            <superType>libToHandle</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>discounting yield term structure object ID.</description>
-          </Parameter>
-          <Parameter name='IncludeSettlDate' const='False' default='true'>
-            <type>bool</type>
-            <tensorRank>scalar</tensorRank>
-            <description>TRUE if cashflows paid at the settlement date must be taken into account.</description>
-          </Parameter>
-          <Parameter name='SettlementDate' const='False' default='QuantLib::Date()'>
-            <type>QuantLib::Date</type>
-            <tensorRank>scalar</tensorRank>
-            <description>cashflows before this date are not taken into account. If missing it is assumed equal to the discounting yield term structure's reference date.</description>
-          </Parameter>
-          <Parameter name='NpvDate' const='False' default='QuantLib::Date()'>
-            <type>QuantLib::Date</type>
-            <tensorRank>scalar</tensorRank>
-            <description>all cashflows are discounted to this date. If missing it is assumed equal to the discounting yield term structure's reference date.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
 
     <Constructor name='qlBinomialPricingEngine'>
       <libraryFunction>PricingEngine</libraryFunction>
@@ -1265,63 +1173,6 @@
             <type>long</type>
             <tensorRank>scalar</tensorRank>
             <description>#/time steps.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
-
-    <Constructor name='qlBlackSwaptionEngine'>
-      <libraryFunction>BlackSwaptionEngine</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-	<SupportedPlatform name='Calc'/>
-	<SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='YieldCurve' >
-            <type>QuantLib::YieldTermStructure</type>
-            <superType>libToHandle</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>discounting yield term structure object ID.</description>
-          </Parameter>
-          <Parameter name='VolTS'>
-            <type>QuantLib::SwaptionVolatilityStructure</type>
-            <superType>libToHandle</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>SwaptionVolatilityStructure object ID.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
-
-    <Constructor name='qlBlackSwaptionEngine2'>
-      <libraryFunction>BlackSwaptionEngine</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-	<SupportedPlatform name='Calc'/>
-	<SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='YieldCurve' >
-            <type>QuantLib::YieldTermStructure</type>
-            <superType>libToHandle</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>discounting yield term structure object ID.</description>
-          </Parameter>
-          <Parameter name='Vol'>
-            <type>QuantLib::Quote</type>
-            <superType>libToHandle</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>cap/floor term volatility.</description>
-          </Parameter>
-          <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
-            <type>QuantLib::DayCounter</type>
-            <tensorRank>scalar</tensorRank>
-            <description>DayCounter ID.</description>
           </Parameter>
         </Parameters>
       </ParameterList>

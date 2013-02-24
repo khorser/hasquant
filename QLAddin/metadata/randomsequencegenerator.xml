@@ -1,11 +1,4 @@
 <Category name='randomsequencegenerator'>
-  <description>functions to construct and use random sequences generators.</description>
-  <displayName>Random Sequence Generator</displayName>
-  <xlFunctionWizardCategory>QuantLib - Math</xlFunctionWizardCategory>
-  <copyright>
-    Copyright (C) 2006 Ferdinando Ametrano
-    Copyright (C) 2006 Aurelien Chanudet
-  </copyright>
 
   <Functions>
 

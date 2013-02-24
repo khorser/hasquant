@@ -1,16 +1,4 @@
 <Category name='sequencestatistics'>
-  <description>QuantLib statistics analysis of N-dimensional (sequence) data.</description>
-  <displayName>SequenceStatistics</displayName>
-  <xlFunctionWizardCategory>QuantLib - Math</xlFunctionWizardCategory>
-  <addinIncludes>
-    <include>qlo/sequencestatistics.hpp</include>
-    <include>ql/math/statistics/sequencestatistics.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2007, 2008 Ferdinando Ametrano
-    Copyright (C) 2006, 2007 Cristina Duminuco
-  </copyright>
-
   <Functions>
 
     <!-- SequenceStatistics methods:  1-D inspectors lifted from underlying statistics class -->

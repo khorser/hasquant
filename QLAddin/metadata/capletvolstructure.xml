@@ -1,37 +1,4 @@
 <Category name='capletvolstructure'>
-  <description>functions to construct and use OptionletVolatilityStructure objects.</description>
-  <displayName>Caplet Volatility Term Structures</displayName>
-  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
-  <serializationIncludes>
-    <include>qlo/capletvolstructure.hpp</include>
-    <include>qlo/indexes/iborindex.hpp</include>
-    <include>qlo/quote.hpp</include>
-    <include>qlo/termstructures.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/constantoptionletvol.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/optionletstripper1.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/optionletstripper2.hpp</include>
-    <include>ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp</include>
-    <include>ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp</include>
-    <include>ql/indexes/iborindex.hpp</include>
-  </serializationIncludes>
-  <addinIncludes>
-    <include>qlo/indexes/iborindex.hpp</include>
-    <include>qlo/capletvolstructure.hpp</include>
-    <include>qlo/quote.hpp</include>
-    <include>qlo/termstructures.hpp</include>
-    <include>qlo/handleimpl.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/constantoptionletvol.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/optionletstripper1.hpp</include>
-    <include>ql/termstructures/volatility/optionlet/optionletstripper2.hpp</include>
-    <include>ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp</include>
-    <include>ql/termstructures/volatility/capfloor/capfloortermvolsurface.hpp</include>
-    <include>ql/indexes/iborindex.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2006, 2007, 2008 Ferdinando Ametrano
-  </copyright>
   <Functions>
 
     <!-- OptionletVolatilityStructure interface-->
@@ -166,27 +133,6 @@
         <tensorRank>vector</tensorRank>
       </ReturnValue>
     </Member>
-
-    <!-- RelinkableHandle<OptionletVolatilityStructure> -->
-    <Constructor name='qlRelinkableHandleOptionletVolatilityStructure'>
-      <libraryFunction>RelinkableHandleImpl&lt;QuantLibAddin::OptionletVolatilityStructure, QuantLib::OptionletVolatilityStructure&gt;</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Calc'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <processorName>RelinkableHandleProcessor</processorName>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='CurrentLink' default='""'>
-            <type>string</type>
-            <superType>handlePredecessor</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>OptionletVolatilityStructure object ID. If omitted, nothing is linked by the RelinkableHandle.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
 
     <Constructor name='qlSpreadedOptionletVolatility'>
       <libraryFunction>SpreadedOptionletVolatility</libraryFunction>

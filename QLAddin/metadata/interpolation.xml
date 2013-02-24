@@ -1,25 +1,4 @@
 <Category name='interpolation'>
-  <description>functions to construct and use Interpolation and Interpolation2D objects.</description>
-  <displayName>Interpolation</displayName>
-  <xlFunctionWizardCategory>QuantLib - Math</xlFunctionWizardCategory>
-  <serializationIncludes>
-    <include>qlo/interpolation.hpp</include>
-    <include>qlo/interpolation2D.hpp</include>
-    <include>qlo/optimization.hpp</include>
-  </serializationIncludes>
-  <addinIncludes>
-    <include>qlo/interpolation.hpp</include>
-    <include>qlo/interpolation2D.hpp</include>
-    <include>qlo/optimization.hpp</include>
-    
-    <include>ql/math/interpolations/sabrinterpolation.hpp</include>
-    <include>ql/math/interpolations/abcdinterpolation.hpp</include>
-    <include>ql/math/interpolations/interpolation2d.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2006, 2007, 2008, 2010 Ferdinando Ametrano
-    Copyright (C) 2007 Eric Ehlers
-  </copyright>
   <Functions>
 
     <!-- Extrapolator interface -->

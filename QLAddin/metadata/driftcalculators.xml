@@ -1,22 +1,4 @@
 <Category name='driftcalculators'>
-  <description>functions to construct and use Driftcalculators objects.</description>
-  <displayName>Driftcalculators</displayName>
-  <xlFunctionWizardCategory>QuantLib - Financial</xlFunctionWizardCategory>
-  <addinIncludes>
-    <include>qlo/driftcalculators.hpp</include>
-    <include>qlo/curvestate.hpp</include>
-    <include>ql/models/marketmodels/curvestates/cmswapcurvestate.hpp</include>
-    <include>ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp</include>
-    <include>ql/models/marketmodels/curvestates/lmmcurvestate.hpp</include>
-  </addinIncludes>
-
-  <copyright>
-    Copyright (C) 2006, 2007 Ferdinando Ametrano
-    Copyright (C) 2007 Chiara Fornarola
-    Copyright (C) 2006, 2007 Marco Bianchetti
-    Copyright (C) 2006, 2007 Cristina Duminuco
-    Copyright (C) 2006, 2007 Giorgio Facchinetti
-  </copyright>
   <Functions>
 
     <!-- LMMDriftCalculator derived class constructor -->

@@ -1,16 +1,4 @@
 <Category name='optimization'>
-  <description>functions to construct and use Optimization objects.</description>
-  <displayName>Optimization</displayName>
-  <xlFunctionWizardCategory>QuantLib - Math</xlFunctionWizardCategory>
-  <addinIncludes>
-    <include>qlo/optimization.hpp</include>
-    <include>ql/math/optimization/spherecylinder.hpp</include>
-    <include>ql/math/optimization/endcriteria.hpp</include>
-  </addinIncludes>
-  <copyright>
-    Copyright (C) 2006, 2007 Ferdinando Ametrano
-  </copyright>
-
   <Functions>
 
     <Procedure name='qlSphereCylinderOptimizerClosest' >

@@ -1,100 +1,6 @@
 <root>
 
-  <enumeratedTypeCopyright>
-    Copyright (C) 2006, 2007, 2008 Ferdinando Ametrano
-    Copyright (C) 2007 Marco Bianchetti
-    Copyright (C) 2005, 2006, 2007 Eric Ehlers
-    Copyright (C) 2006 Giorgio Facchinetti
-    Copyright (C) 2006 Chiara Fornarola
-    Copyright (C) 2006 Katiuscia Manzoni
-    Copyright (C) 2005 Plamen Neykov
-  </enumeratedTypeCopyright>
-
   <EnumeratedTypeGroups>
-
-    <EnumeratedTypeGroup type='QuantLib::SensitivityAnalysis'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>OneSide</string>
-          <value>QuantLib::OneSide</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Centered</string>
-          <value>QuantLib::Centered</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
-    <EnumeratedTypeGroup type='QuantLib::Duration::Type'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Simple</string>
-          <value>QuantLib::Duration::Simple</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Macaulay</string>
-          <value>QuantLib::Duration::Macaulay</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Modified</string>
-          <value>QuantLib::Duration::Modified</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
-    <EnumeratedTypeGroup type='QuantLib::PriceType'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Bid</string>
-          <value>QuantLib::Bid</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Ask</string>
-          <value>QuantLib::Ask</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Last</string>
-          <value>QuantLib::Last</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Close</string>
-          <value>QuantLib::Close</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Mid</string>
-          <value>QuantLib::Mid</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Mid Equivalent</string>
-          <value>QuantLib::MidEquivalent</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Mid Safe</string>
-          <value>QuantLib::MidSafe</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
-    <EnumeratedTypeGroup type='QuantLib::Position::Type'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Long</string>
-          <value>QuantLib::Position::Long</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Short</string>
-          <value>QuantLib::Position::Short</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
 
     <EnumeratedTypeGroup type='QuantLib::Replication::Type'>
       <includeFile>oh/enumerations/typefactory.hpp</includeFile>
@@ -153,52 +59,6 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
-    <EnumeratedTypeGroup type='QuantLib::VanillaSwap::Type'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Payer</string>
-          <value>QuantLib::VanillaSwap::Payer</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Receiver</string>
-          <value>QuantLib::VanillaSwap::Receiver</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
-    <!--RL ADD 2010-07-15-->
-    <EnumeratedTypeGroup type='QuantLib::Protection::Side'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Buyer</string>
-          <value>QuantLib::Protection::Buyer</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Seller</string>
-          <value>QuantLib::Protection::Seller</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
-    <EnumeratedTypeGroup type='QuantLib::OvernightIndexedSwap::Type'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Payer</string>
-          <value>QuantLib::OvernightIndexedSwap::Payer</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Receiver</string>
-          <value>QuantLib::OvernightIndexedSwap::Receiver</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
     <EnumeratedTypeGroup type='QuantLib::Option::Type'>
       <includeFile>oh/enumerations/typefactory.hpp</includeFile>
       <constructor>true</constructor>
@@ -229,21 +89,6 @@
         <EnumeratedType>
           <string>Collar</string>
           <value>QuantLib::CapFloor::Collar</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
-    <EnumeratedTypeGroup type='QuantLib::Settlement::Type'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Physical</string>
-          <value>QuantLib::Settlement::Physical</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Cash</string>
-          <value>QuantLib::Settlement::Cash</value>
         </EnumeratedType>
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
@@ -309,37 +154,6 @@
         <EnumeratedType>
           <string>DeposBeforeFirstFuturesExpiryDate</string>
           <value>QuantLibAddin::RateHelper::DeposBeforeFirstFuturesExpiryDate</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
-    <EnumeratedTypeGroup type='QuantLibAddin::SwapIndex::FixingType'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Isda</string>
-          <value>QuantLibAddin::SwapIndex::Isda</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>IsdaFixA</string>
-          <value>QuantLibAddin::SwapIndex::IsdaFixA</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>IsdaFixB</string>
-          <value>QuantLibAddin::SwapIndex::IsdaFixB</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>IfrFix</string>
-          <value>QuantLibAddin::SwapIndex::IfrFix</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>IsdaFixAm</string>
-          <value>QuantLibAddin::SwapIndex::IsdaFixAm</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>IsdaFixPm</string>
-          <value>QuantLibAddin::SwapIndex::IsdaFixPm</value>
         </EnumeratedType>
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
