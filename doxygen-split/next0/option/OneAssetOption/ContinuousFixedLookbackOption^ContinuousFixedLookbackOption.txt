@@ -1,7 +1,0 @@
-->
-::Real
--- ^currentMinmax
-::const boost::shared_ptr< StrikedTypePayoff > &
--- ^payoff
-::const boost::shared_ptr< Exercise > &
--- ^exercise

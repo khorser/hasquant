@@ -1,5 +1,0 @@
-->
-::const boost::shared_ptr< Payoff > &
--- ^
-::const boost::shared_ptr< Exercise > &
--- ^

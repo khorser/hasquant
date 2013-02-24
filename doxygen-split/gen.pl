@@ -298,7 +298,8 @@ sub type {
       'DateGeneration::Rule', 'BusinessDayConvention', 'Weekday', 'Month',
       'Seniority', 'Exercise::Type', 'Option::Type', 'OvernightIndexedSwap::Type',
       'VanillaSwap::Type', 'PriceType', 'Settlement::Type',
-      'JointCalendarRule', 'Duration::Type', 'Discretization', 'Protection::Side']) {
+      'JointCalendarRule', 'Duration::Type', 'Discretization', 'Protection::Side',
+      'Barrier::Type', 'Average::Type']) {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
     return ($carg, $farg, $t, $cast, '%', 0, '');

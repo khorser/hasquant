@@ -54,6 +54,8 @@ module QuantLib.Internal.Types
   , CSwingExercise
   , CVanillaOption
   , CClaim
+  , CQuantoBarrierOption
+  , CQuantoForwardVanillaOption
 
   -- pricingengines
   , CPricingEngine
@@ -532,6 +534,26 @@ instance Finalizable CClaim where
   finalize = p_freeClaim
 foreign import ccall safe "ql.h &qlFreeClaim"
   p_freeClaim :: FunPtr (Ptr CClaim -> IO ())
+
+data CQuantoBarrierOption
+instance Finalizable CQuantoBarrierOption where
+  finalize = p_freeQuantoBarrierOption
+foreign import ccall safe "ql.h &qlFreeQuantoBarrierOption"
+  p_freeQuantoBarrierOption :: FunPtr (Ptr CQuantoBarrierOption -> IO ())
+instance Upcastable CQuantoBarrierOption CBarrierOption where
+  c_upcast = c_QuantoBarrierOptionAsBarrierOption
+foreign import ccall safe "ql.h qlQuantoBarrierOptionAsBarrierOption"
+  c_QuantoBarrierOptionAsBarrierOption :: Ptr CQuantoBarrierOption -> IO (Ptr CBarrierOption)
+
+data CQuantoForwardVanillaOption
+instance Finalizable CQuantoForwardVanillaOption where
+  finalize = p_freeQuantoForwardVanillaOption
+foreign import ccall safe "ql.h &qlFreeQuantoForwardVanillaOption"
+  p_freeQuantoForwardVanillaOption :: FunPtr (Ptr CQuantoForwardVanillaOption -> IO ())
+instance Upcastable CQuantoForwardVanillaOption CForwardVanillaOption where
+  c_upcast = c_QuantoForwardVanillaOptionAsForwardVanillaOption
+foreign import ccall safe "ql.h qlQuantoForwardVanillaOptionAsForwardVanillaOption"
+  c_QuantoForwardVanillaOptionAsForwardVanillaOption :: Ptr CQuantoForwardVanillaOption -> IO (Ptr CForwardVanillaOption)
 
 -- pricingengines
 data CPricingEngine

@@ -1,7 +1,0 @@
-->
-::const std::vector< Date > &
--- ^fixingDates
-::Real
--- ^roof
-::Real
--- ^fraction

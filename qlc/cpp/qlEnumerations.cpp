@@ -4,6 +4,8 @@
 #include <ql/exercise.hpp>
 #include <ql/experimental/credit/defaulttype.hpp>
 #include <ql/experimental/processes/extendedblackscholesprocess.hpp>
+#include <ql/instruments/averagetype.hpp>
+#include <ql/instruments/barriertype.hpp>
 #include <ql/instruments/bmaswap.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
 #include <ql/instruments/swaption.hpp>
@@ -34,7 +36,7 @@ static int businessDayConventionValues[] = {
   , Preceding
   , ModifiedPreceding
   , Unadjusted
-  };
+};
 
 static int dateGenerationRuleValues[] = {
     DateGeneration::Backward
@@ -45,7 +47,7 @@ static int dateGenerationRuleValues[] = {
   , DateGeneration::TwentiethIMM
   , DateGeneration::OldCDS
   , DateGeneration::CDS
-  };
+};
 
 static int frequencyValues[] = {
     NoFrequency
@@ -61,21 +63,21 @@ static int frequencyValues[] = {
   , Daily
   , Once
   , OtherFrequency
-  };
+};
 
 static int timeUnitValues[] = {
     Months
   , Days
   , Weeks
   , Years
-  };
+};
 
 static int compoundingValues[] = {
     Simple
   , Compounded
   , Continuous
   , SimpleThenCompounded
-  };
+};
 
 static int weekdayValues[] = {
     Sunday
@@ -85,7 +87,7 @@ static int weekdayValues[] = {
   , Thursday
   , Friday
   , Saturday
-  };
+};
 
 static int monthValues[] = {
     January
@@ -100,12 +102,12 @@ static int monthValues[] = {
   , October
   , November
   , December
-  };
+};
 
 static int positionValues[] = {
     Position::Long
   , Position::Short
-  };
+};
 
 static int seniorityValues[] = {
     SecDom
@@ -119,33 +121,33 @@ static int seniorityValues[] = {
   , SubTier1
   , SubUpperTier2
   , SubLoweTier2
-  };
+};
 
 static int exerciseTypeValues[] = {
     Exercise::American
   , Exercise::Bermudan
   , Exercise::European
-  };
+};
 
 static int optionTypeValues[] = {
     Option::Put
   , Option::Call
-  };
+};
 
 static int overnightIndexedSwapTypeValues[] = {
     OvernightIndexedSwap::Receiver
   , OvernightIndexedSwap::Payer
-  };
+};
 
 static int vanillaSwapTypeValues[] = {
     VanillaSwap::Receiver
   , VanillaSwap::Payer
-  };
+};
 
 static int bmaSwapTypeValues[] = {
     BMASwap::Receiver
   , BMASwap::Payer
-  };
+};
 
 static int priceTypeValues[] = {
     Bid
@@ -155,12 +157,12 @@ static int priceTypeValues[] = {
   , Mid
   , MidEquivalent
   , MidSafe
-  };
+};
 
 static int settlementTypeValues[] = {
     Settlement::Physical
   , Settlement::Cash
-  };
+};
 
 static int immMonthValues[] = {
     IMM::F
@@ -175,18 +177,18 @@ static int immMonthValues[] = {
   , IMM::V
   , IMM::X
   , IMM::Z
-  };
+};
 
 static int jointCalendarRuleValues[] = {
     JoinHolidays
   , JoinBusinessDays
-  };
+};
 
 static int durationValues[] = {
     Duration::Simple
   , Duration::Macaulay
   , Duration::Modified
-  };
+};
 
 static int roundingValues[] = {
     Rounding::None,
@@ -195,17 +197,29 @@ static int roundingValues[] = {
     Rounding::Closest,
     Rounding::Floor,
     Rounding::Ceiling
-  };
+};
 
 static int extDiscretizationValues[] = {
     ExtendedBlackScholesMertonProcess::Euler
   , ExtendedBlackScholesMertonProcess::Milstein
   , ExtendedBlackScholesMertonProcess::PredictorCorrector
-  };
+};
 
 static int protectionSideValues[] = {
     Protection::Buyer
   , Protection::Seller
+};
+
+static int averageTypeValues[] = {
+    Average::Arithmetic
+  , Average::Geometric
+};
+
+static int barrierTypeValues[] = {
+    Barrier::DownIn
+  , Barrier::UpIn
+  , Barrier::DownOut
+  , Barrier::UpOut
 };
 
 struct EnumInfo {
@@ -269,6 +283,10 @@ static EnumInfo enumInfo[] = {
     LENGTH(roundingValues), roundingValues},
   {"QuantLib.ProcessDiscretization.ExtendedDiscretization",
     LENGTH(extDiscretizationValues), extDiscretizationValues},
+  {"QuantLib.Instrument.BarrierType.BarrierType",
+    LENGTH(barrierTypeValues), barrierTypeValues},
+  {"QuantLib.Instrument.AverageType.AverageType",
+    LENGTH(averageTypeValues), averageTypeValues},
 };
 
 int *qlEnumerationValue(const char *name, unsigned *c) {

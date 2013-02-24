@@ -55,6 +55,8 @@ module QuantLib.Types
   , Swaption
   , VanillaOption
   , Claim
+  , QuantoBarrierOption
+  , QuantoForwardVanillaOption
 
   -- pricingengines
   , PricingEngine
@@ -307,6 +309,9 @@ asForwardVanillaOption = upcast
 
 asVanillaOption :: (Upcastable a CVanillaOption) => ForeignPtr a -> IO VanillaOption
 asVanillaOption = upcast
+
+type QuantoBarrierOption = ForeignPtr CQuantoBarrierOption
+type QuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption
 
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine

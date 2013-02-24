@@ -34,10 +34,13 @@ Library
               , QuantLib.Index.Swap
               , QuantLib.Instrument
               , QuantLib.Instrument.AssetSwap
+              , QuantLib.Instrument.AverageType
               , QuantLib.Instrument.BMASwapType
+              , QuantLib.Instrument.BarrierType
               , QuantLib.Instrument.Bond
               , QuantLib.Instrument.Credit
               , QuantLib.Instrument.Forward
+              , QuantLib.Instrument.Option
               , QuantLib.Instrument.OptionType
               , QuantLib.Instrument.OvernightIndexedSwap
               , QuantLib.Instrument.OvernightIndexedSwapType

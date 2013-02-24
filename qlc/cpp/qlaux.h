@@ -587,6 +587,16 @@ typedef boost::shared_ptr<SmileSection> QlSmileSection;
 template <> class objClassName<SmileSection *> { public: static const char *name() { return "SmileSection"; } };
 template <> class objClassName<QlSmileSection *> { public: static const char *name() { return "QlSmileSection"; } };
 
+namespace QuantLib {class QuantoBarrierOption;} using QuantLib::QuantoBarrierOption;
+typedef boost::shared_ptr<QuantoBarrierOption> QlQuantoBarrierOption;
+template <> class objClassName<QuantoBarrierOption *> { public: static const char *name() { return "QuantoBarrierOption"; } };
+template <> class objClassName<QlQuantoBarrierOption *> { public: static const char *name() { return "QlQuantoBarrierOption"; } };
+
+namespace QuantLib {class QuantoForwardVanillaOption;} using QuantLib::QuantoForwardVanillaOption;
+typedef boost::shared_ptr<QuantoForwardVanillaOption> QlQuantoForwardVanillaOption;
+template <> class objClassName<QuantoForwardVanillaOption *> { public: static const char *name() { return "QuantoForwardVanillaOption"; } };
+template <> class objClassName<QlQuantoForwardVanillaOption *> { public: static const char *name() { return "QlQuantoForwardVanillaOption"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
