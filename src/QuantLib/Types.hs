@@ -160,6 +160,7 @@ module QuantLib.Types
 
   , asAffineModel
   , asOneFactorAffineModel
+  , asShortRateModel
 
   , asBlackCalculator
   )
@@ -361,6 +362,9 @@ asAffineModel = upcast
 
 asOneFactorAffineModel :: (Upcastable a COneFactorAffineModel) => ForeignPtr a -> IO OneFactorAffineModel
 asOneFactorAffineModel = upcast
+
+asShortRateModel :: (Upcastable a CShortRateModel) => ForeignPtr a -> IO ShortRateModel
+asShortRateModel = upcast
 
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine
