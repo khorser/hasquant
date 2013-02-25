@@ -1,12 +1,6 @@
 /* dates are passed as int = serial number o the date.
  * the code assumes that Haskell bindings validate date */
 
-#ifdef _WIN32
-# define DLLEXPORT __declspec(dllexport)
-#else
-# define DLLEXPORT
-#endif
-
 #include "qlBond.h"
 #include "qlCalendar.h"
 #include "qlCouponPricer.h"

@@ -1,5 +1,11 @@
 #ifdef _WIN32
-# define DLLEXPORT __declspec(dllexport)
+# if defined(DLLSOURCE)
+#  define DLLEXPORT __declspec(dllexport)
+# elif defined(DLLUSE)
+#  define DLLEXPORT __declspec(dllimport)
+# else
+#  define DLLEXPORT
+# endif
 #else
 # define DLLEXPORT
 #endif
@@ -43,3 +49,5 @@ extern "C" {
   double DLLEXPORT qlSwaptionVolatilityStructureVolatility5(QlSwaptionVolatilityStructure* o, double optionTime, double swapLength, double strike, int extrapolate, char **e);
   double DLLEXPORT qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o, Period* optionTenor, Period* swapTenor, double strike, int extrapolate, char **e);
 }
+
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -42,85 +42,85 @@ libql.so: $(OBJS)
 	g++ --shared -o libql.so cpp/*.o -lQuantLib $(EXTRA)
 
 cpp/qlBond.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlBond.h $(QLCSRC)/qlBond.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlBond.o $(QLCSRC)/qlBond.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlBond.o $(QLCSRC)/qlBond.cpp
 
 cpp/qlCalendar.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlCalendar.h $(QLCSRC)/qlCalendar.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlCalendar.o $(QLCSRC)/qlCalendar.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlCalendar.o $(QLCSRC)/qlCalendar.cpp
 
 cpp/qlCouponPricer.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlCouponPricer.h $(QLCSRC)/qlCouponPricer.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlCouponPricer.o $(QLCSRC)/qlCouponPricer.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlCouponPricer.o $(QLCSRC)/qlCouponPricer.cpp
 
 cpp/qlCurrency.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlCurrency.h $(QLCSRC)/qlCurrency.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlCurrency.o $(QLCSRC)/qlCurrency.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlCurrency.o $(QLCSRC)/qlCurrency.cpp
 
 cpp/qlCredit.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlCredit.h $(QLCSRC)/qlCredit.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlCredit.o $(QLCSRC)/qlCredit.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlCredit.o $(QLCSRC)/qlCredit.cpp
 
 cpp/qlDate.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlDate.h $(QLCSRC)/qlDate.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlDate.o $(QLCSRC)/qlDate.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlDate.o $(QLCSRC)/qlDate.cpp
 
 cpp/qlDayCounter.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlDayCounter.h $(QLCSRC)/qlDayCounter.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlDayCounter.o $(QLCSRC)/qlDayCounter.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlDayCounter.o $(QLCSRC)/qlDayCounter.cpp
 
 cpp/qlDefaultTS.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlDefaultTS.h $(QLCSRC)/qlDefaultTS.cpp $(QLCSRC)/qlYieldTSAux.h
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlDefaultTS.o $(QLCSRC)/qlDefaultTS.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlDefaultTS.o $(QLCSRC)/qlDefaultTS.cpp
 
 cpp/qlEnumerations.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlEnumerations.h $(QLCSRC)/qlEnumerations.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlEnumerations.o $(QLCSRC)/qlEnumerations.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlEnumerations.o $(QLCSRC)/qlEnumerations.cpp
 
 cpp/qlForward.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlForward.h $(QLCSRC)/qlForward.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlForward.o $(QLCSRC)/qlForward.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlForward.o $(QLCSRC)/qlForward.cpp
 
 cpp/qlIborIndex.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlIborIndex.h $(QLCSRC)/qlIborIndex.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlIborIndex.o $(QLCSRC)/qlIborIndex.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlIborIndex.o $(QLCSRC)/qlIborIndex.cpp
 
 cpp/qlIndex.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlIndex.h $(QLCSRC)/qlIndex.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlIndex.o $(QLCSRC)/qlIndex.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlIndex.o $(QLCSRC)/qlIndex.cpp
 
 cpp/qlInterestRate.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlInterestRate.h $(QLCSRC)/qlInterestRate.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlInterestRate.o $(QLCSRC)/qlInterestRate.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlInterestRate.o $(QLCSRC)/qlInterestRate.cpp
 
 cpp/qlInstrument.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlInstrument.h $(QLCSRC)/qlInstrument.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlInstrument.o $(QLCSRC)/qlInstrument.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlInstrument.o $(QLCSRC)/qlInstrument.cpp
 
 cpp/qlLeg.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlLeg.h $(QLCSRC)/qlLeg.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlLeg.o $(QLCSRC)/qlLeg.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlLeg.o $(QLCSRC)/qlLeg.cpp
 
 cpp/qlModel.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlModel.h $(QLCSRC)/qlModel.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlModel.o $(QLCSRC)/qlModel.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlModel.o $(QLCSRC)/qlModel.cpp
 
 cpp/qlOption.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlOption.h $(QLCSRC)/qlOption.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlOption.o $(QLCSRC)/qlOption.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlOption.o $(QLCSRC)/qlOption.cpp
 
 cpp/qlPeriod.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlPeriod.h $(QLCSRC)/qlPeriod.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlPeriod.o $(QLCSRC)/qlPeriod.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlPeriod.o $(QLCSRC)/qlPeriod.cpp
 
 cpp/qlPricingEngine.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlPricingEngine.h $(QLCSRC)/qlPricingEngine.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlPricingEngine.o $(QLCSRC)/qlPricingEngine.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlPricingEngine.o $(QLCSRC)/qlPricingEngine.cpp
 
 cpp/qlProcess.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlProcess.h $(QLCSRC)/qlProcess.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlProcess.o $(QLCSRC)/qlProcess.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlProcess.o $(QLCSRC)/qlProcess.cpp
 
 cpp/qlQuote.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlQuote.h $(QLCSRC)/qlQuote.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlQuote.o $(QLCSRC)/qlQuote.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlQuote.o $(QLCSRC)/qlQuote.cpp
 
 cpp/qlSchedule.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlSchedule.h $(QLCSRC)/qlSchedule.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlSchedule.o $(QLCSRC)/qlSchedule.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlSchedule.o $(QLCSRC)/qlSchedule.cpp
 
 cpp/qlSettings.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlSettings.h $(QLCSRC)/qlSettings.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlSettings.o $(QLCSRC)/qlSettings.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlSettings.o $(QLCSRC)/qlSettings.cpp
 
 cpp/qlSwap.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlSwap.h $(QLCSRC)/qlSwap.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlSwap.o $(QLCSRC)/qlSwap.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlSwap.o $(QLCSRC)/qlSwap.cpp
 
 cpp/qlUtilities.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlUtilities.h $(QLCSRC)/qlUtilities.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlUtilities.o $(QLCSRC)/qlUtilities.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlUtilities.o $(QLCSRC)/qlUtilities.cpp
 
 cpp/qlVolatilityTS.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlVolatilityTS.h $(QLCSRC)/qlVolatilityTS.cpp
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlVolatilityTS.o $(QLCSRC)/qlVolatilityTS.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlVolatilityTS.o $(QLCSRC)/qlVolatilityTS.cpp
 
 cpp/qlYieldTS.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlYieldTS.h $(QLCSRC)/qlYieldTS.cpp $(QLCSRC)/qlYieldTSAux.h
-	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlYieldTS.o $(QLCSRC)/qlYieldTS.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlYieldTS.o $(QLCSRC)/qlYieldTS.cpp
 
 cpp/qlYieldTSAux.o: $(QLCSRC)/qlYieldTSAux.cpp $(QLCSRC)/qlYieldTSAux.h
 	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlYieldTSAux.o $(QLCSRC)/qlYieldTSAux.cpp

@@ -1,5 +1,11 @@
 #ifdef _WIN32
-# define DLLEXPORT __declspec(dllexport)
+# if defined(DLLSOURCE)
+#  define DLLEXPORT __declspec(dllexport)
+# elif defined(DLLUSE)
+#  define DLLEXPORT __declspec(dllimport)
+# else
+#  define DLLEXPORT
+# endif
 #else
 # define DLLEXPORT
 #endif
@@ -20,3 +26,5 @@ extern "C" {
   Rounding* DLLEXPORT qlRounding1(int precision, int type, int digit, char **e);
   Currency* DLLEXPORT qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e);
 }
+
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

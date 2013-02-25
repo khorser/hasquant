@@ -1,5 +1,11 @@
 #ifdef _WIN32
-# define DLLEXPORT __declspec(dllexport)
+# if defined(DLLSOURCE)
+#  define DLLEXPORT __declspec(dllexport)
+# elif defined(DLLUSE)
+#  define DLLEXPORT __declspec(dllimport)
+# else
+#  define DLLEXPORT
+# endif
 #else
 # define DLLEXPORT
 #endif
@@ -55,3 +61,5 @@ extern "C" {
   void DLLEXPORT qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **e);
   void DLLEXPORT qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e);
 }
+
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

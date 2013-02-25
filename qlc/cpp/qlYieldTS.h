@@ -1,5 +1,11 @@
 #ifdef _WIN32
-# define DLLEXPORT __declspec(dllexport)
+# if defined(DLLSOURCE)
+#  define DLLEXPORT __declspec(dllexport)
+# elif defined(DLLUSE)
+#  define DLLEXPORT __declspec(dllimport)
+# else
+#  define DLLEXPORT
+# endif
 #else
 # define DLLEXPORT
 #endif
@@ -90,3 +96,5 @@ extern "C" {
   void DLLEXPORT qlFreeTermStructure(QlTermStructure *o);
   QlTermStructure* DLLEXPORT qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o);
 }
+
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
