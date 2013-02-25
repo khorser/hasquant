@@ -1,0 +1,49 @@
+separate process objects needed:
+    ExtOUWithJumpsProcess: StochasticProcess
+    ExtendedOrnsteinUhlenbeckProcess
+    GJRGARCHProcess : StochasticProcess
+    HestonProcess : StochasticProcess
+    BatesProcess : HestonProcess
+    HybridHestonHullWhiteProcess : StochasticProcess
+    KlugeExtOUProcess : StochasticProcess
+    LiborForwardModelProcess : StochasticProcess
+    StochasticProcessArray : StochasticProcess
+    VarianceGammaProcess : StochasticProcess1D
+    Merton76Process : StochasticProcess1D
+    HullWhiteProcess: StochasticProcess1D
+    HullWhiteForwardProcess: ForwardMeasureProcess1D
+    ExtendedOrnsteinUhlenbeckProcess : StochasticProcess1D
+
+models:
+    GJRGARCHModel : (CalibratedModel)
+    HestonModel : (CalibratedModel)
+    BatesModel : HestonModel
+    PiecewiseTimeDependentHestonModel : (CalibratedModel)
+    ShortRateModel : (CalibratedModel)
+    AffineModel
+    OneFactorAffineModel : (OneFactorModel), AffineModel
+    LiborForwardModel : CalibratedModel, AffineModel
+    HullWhite : Vasicek, TermStructureConsistentModel
+
+
+not needed separately:
+    ForwardMeasureProcess : StochasticProcess
+    ForwardMeasureProcess1D : StochasticProcess1D
+    G2ForwardProcess : ForwardMeasureProcess
+    G2Process : StochasticProcess
+    SquareRootProcess : StochasticProcess1D
+    OrnsteinUhlenbeckProcess : StochasticProcess1D
+    GeometricBrownianMotionProcess : StochasticProcess1D
+    GeneralizedOrnsteinUhlenbeckProcess : StochasticProcess1D
+    GemanRoncoroniProcess : StochasticProcess1D
+
+models:
+    OneFactorModel : ShortRateModel
+    TwoFactorModel : ShortRateModel
+    G2 : TwoFactorModel, AffineModel, TermStructureConsistentModel
+    VarianceGammaModel : CalibratedModel
+    BlackKarasinski : OneFactorModel, TermStructureConsistentModel
+    GeneralizedHullWhite : OneFactorModel, TermStructureConsistentModel
+    Vasicek : OneFactorAffineModel
+    CoxIngersollRoss : OneFactorAffineModel
+    ExtendedCoxIngersollRoss : CoxIngersollRoss, TermStructureConsistentModel
