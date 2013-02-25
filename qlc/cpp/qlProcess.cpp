@@ -1,8 +1,7 @@
-#include <ql/processes/blackscholesprocess.hpp>
-#include <ql/processes/endeulerdiscretization.hpp>
-#include <ql/processes/squarerootprocess.hpp>
-#include <ql/experimental/processes/vegastressedblackscholesprocess.hpp>
-#include <ql/experimental/processes/extendedblackscholesprocess.hpp>
+#include <ql/processes/all.hpp>
+#include <ql/experimental/processes/all.hpp>
+#include <ql/experimental/variancegamma/all.hpp>
+#include <ql/legacy/libormarketmodels/lfmprocess.hpp>
 
 #include "qlaux.h"
 
@@ -90,5 +89,32 @@ QlGeneralizedBlackScholesProcess* qlVegaStressedBlackScholesProcess(QlQuote* x0,
     return handleException<QlGeneralizedBlackScholesProcess*>(e, er);
   }
 }
+
+void qlFreeExtOUWithJumpsProcess(QlExtOUWithJumpsProcess *o) { del(o); }
+QlStochasticProcess* qlExtOUWithJumpsProcessAsStochasticProcess(QlExtOUWithJumpsProcess *o) { return ret(new QlStochasticProcess(*arg(o))); }
+void qlFreeExtendedOrnsteinUhlenbeckProcess(QlExtendedOrnsteinUhlenbeckProcess *o) { del(o); }
+QlStochasticProcess1D* qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D(QlExtendedOrnsteinUhlenbeckProcess *o) { return ret(new QlStochasticProcess1D(*arg(o))); }
+void qlFreeGJRGARCHProcess(QlGJRGARCHProcess *o) { del(o); }
+QlStochasticProcess* qlGJRGARCHProcessAsStochasticProcess(QlGJRGARCHProcess *o) { return ret(new QlStochasticProcess(*arg(o))); }
+void qlFreeHestonProcess(QlHestonProcess *o) { del(o); }
+QlStochasticProcess* qlHestonProcessAsStochasticProcess(QlHestonProcess *o) { return ret(new QlStochasticProcess(*arg(o))); }
+void qlFreeBatesProcess(QlBatesProcess *o) { del(o); }
+QlHestonProcess* qlBatesProcessAsHestonProcess(QlBatesProcess *o) { return ret(new QlHestonProcess(*arg(o))); }
+void qlFreeHybridHestonHullWhiteProcess(QlHybridHestonHullWhiteProcess *o) { del(o); }
+QlStochasticProcess* qlHybridHestonHullWhiteProcessAsStochasticProcess(QlHybridHestonHullWhiteProcess *o) { return ret(new QlStochasticProcess(*arg(o))); }
+void qlFreeKlugeExtOUProcess(QlKlugeExtOUProcess *o) { del(o); }
+QlStochasticProcess* qlKlugeExtOUProcessAsStochasticProcess(QlKlugeExtOUProcess *o) { return ret(new QlStochasticProcess(*arg(o))); }
+void qlFreeLiborForwardModelProcess(QlLiborForwardModelProcess *o) { del(o); }
+QlStochasticProcess* qlLiborForwardModelProcessAsStochasticProcess(QlLiborForwardModelProcess *o) { return ret(new QlStochasticProcess(*arg(o))); }
+void qlFreeStochasticProcessArray(QlStochasticProcessArray *o) { del(o); }
+QlStochasticProcess* qlStochasticProcessArrayAsStochasticProcess(QlStochasticProcessArray *o) { return ret(new QlStochasticProcess(*arg(o))); }
+void qlFreeVarianceGammaProcess(QlVarianceGammaProcess *o) { del(o); }
+QlStochasticProcess1D* qlVarianceGammaProcessAsStochasticProcess1D(QlVarianceGammaProcess *o) { return ret(new QlStochasticProcess1D(*arg(o))); }
+void qlFreeMerton76Process(QlMerton76Process *o) { del(o); }
+QlStochasticProcess1D* qlMerton76ProcessAsStochasticProcess1D(QlMerton76Process *o) { return ret(new QlStochasticProcess1D(*arg(o))); }
+void qlFreeHullWhiteProcess(QlHullWhiteProcess *o) { del(o); }
+QlStochasticProcess1D* qlHullWhiteProcessAsStochasticProcess1D(QlHullWhiteProcess *o) { return ret(new QlStochasticProcess1D(*arg(o))); }
+void qlFreeHullWhiteForwardProcess(QlHullWhiteForwardProcess *o) { del(o); }
+QlStochasticProcess1D* qlHullWhiteForwardProcessAsStochasticProcess1D(QlHullWhiteForwardProcess *o) { return ret(new QlStochasticProcess1D(*arg(o))); }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -703,6 +703,33 @@ extern "C" {
   QlStochasticProcess1D* DLLEXPORT qlSquareRootProcess(double b, double a, double sigma, double x0, char*  d, char **e);
   QlGeneralizedBlackScholesProcess* DLLEXPORT qlVegaStressedBlackScholesProcess(QlQuote* x0, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, double lowerTimeBorderForStressTest, double upperTimeBorderForStressTest, double lowerAssetBorderForStressTest, double upperAssetBorderForStressTest, double stressLevel, char*  d, char **e);
 
+  void DLLEXPORT qlFreeExtOUWithJumpsProcess(QlExtOUWithJumpsProcess *o);
+  QlStochasticProcess* DLLEXPORT qlExtOUWithJumpsProcessAsStochasticProcess(QlExtOUWithJumpsProcess *o);
+  void DLLEXPORT qlFreeExtendedOrnsteinUhlenbeckProcess(QlExtendedOrnsteinUhlenbeckProcess *o);
+  QlStochasticProcess1D* DLLEXPORT qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D(QlExtendedOrnsteinUhlenbeckProcess *o);
+  void DLLEXPORT qlFreeGJRGARCHProcess(QlGJRGARCHProcess *o);
+  QlStochasticProcess* DLLEXPORT qlGJRGARCHProcessAsStochasticProcess(QlGJRGARCHProcess *o);
+  void DLLEXPORT qlFreeHestonProcess(QlHestonProcess *o);
+  QlStochasticProcess* DLLEXPORT qlHestonProcessAsStochasticProcess(QlHestonProcess *o);
+  void DLLEXPORT qlFreeBatesProcess(QlBatesProcess *o);
+  QlHestonProcess* DLLEXPORT qlBatesProcessAsHestonProcess(QlBatesProcess *o);
+  void DLLEXPORT qlFreeHybridHestonHullWhiteProcess(QlHybridHestonHullWhiteProcess *o);
+  QlStochasticProcess* DLLEXPORT qlHybridHestonHullWhiteProcessAsStochasticProcess(QlHybridHestonHullWhiteProcess *o);
+  void DLLEXPORT qlFreeKlugeExtOUProcess(QlKlugeExtOUProcess *o);
+  QlStochasticProcess* DLLEXPORT qlKlugeExtOUProcessAsStochasticProcess(QlKlugeExtOUProcess *o);
+  void DLLEXPORT qlFreeLiborForwardModelProcess(QlLiborForwardModelProcess *o);
+  QlStochasticProcess* DLLEXPORT qlLiborForwardModelProcessAsStochasticProcess(QlLiborForwardModelProcess *o);
+  void DLLEXPORT qlFreeStochasticProcessArray(QlStochasticProcessArray *o);
+  QlStochasticProcess* DLLEXPORT qlStochasticProcessArrayAsStochasticProcess(QlStochasticProcessArray *o);
+  void DLLEXPORT qlFreeVarianceGammaProcess(QlVarianceGammaProcess *o);
+  QlStochasticProcess1D* DLLEXPORT qlVarianceGammaProcessAsStochasticProcess1D(QlVarianceGammaProcess *o);
+  void DLLEXPORT qlFreeMerton76Process(QlMerton76Process *o);
+  QlStochasticProcess1D* DLLEXPORT qlMerton76ProcessAsStochasticProcess1D(QlMerton76Process *o);
+  void DLLEXPORT qlFreeHullWhiteProcess(QlHullWhiteProcess *o);
+  QlStochasticProcess1D* DLLEXPORT qlHullWhiteProcessAsStochasticProcess1D(QlHullWhiteProcess *o);
+  void DLLEXPORT qlFreeHullWhiteForwardProcess(QlHullWhiteForwardProcess *o);
+  QlStochasticProcess1D* DLLEXPORT qlHullWhiteForwardProcessAsStochasticProcess1D(QlHullWhiteForwardProcess *o);
+
   /* option */
   void DLLEXPORT qlFreeBarrierOption(QlBarrierOption *o);
   QlOneAssetOption* DLLEXPORT qlBarrierOptionAsOneAssetOption(QlBarrierOption *o);
@@ -817,6 +844,20 @@ extern "C" {
   QlDefaultProbabilityTermStructure* DLLEXPORT qlInterpolatedDefaultDensityCurve(unsigned datesLen, int* dates, unsigned densitiesLen, double* densities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, char*  interpolator, char **e);
   QlDefaultProbabilityTermStructure* DLLEXPORT qlInterpolatedHazardRateCurve(unsigned datesLen, int* dates, unsigned hazardRatesLen, double* hazardRates, DayCounter* dayCounter, Calendar* cal, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, char*  interpolator, char **e);
   QlDefaultProbabilityTermStructure* DLLEXPORT qlInterpolatedSurvivalProbabilityCurve(unsigned datesLen, int* dates, unsigned probabilitiesLen, double* probabilities, DayCounter* dayCounter, Calendar* calendar, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, char*  interpolator, char **e);
+
+  /* model */
+  void DLLEXPORT qlFreeGJRGARCHModel(QlGJRGARCHModel *o);
+  void DLLEXPORT qlFreeHestonModel(QlHestonModel *o);
+  void DLLEXPORT qlFreeBatesModel(QlBatesModel *o);
+  void DLLEXPORT qlFreePiecewiseTimeDependentHestonModel(QlPiecewiseTimeDependentHestonModel *o);
+  void DLLEXPORT qlFreeShortRateModel(QlShortRateModel *o);
+  void DLLEXPORT qlFreeAffineModel(QlAffineModel *o);
+  void DLLEXPORT qlFreeOneFactorAffineModel(QlOneFactorAffineModel *o);
+  QlAffineModel* DLLEXPORT qlOneFactorAffineModelAsAffineModel(QlOneFactorAffineModel *o);
+  void DLLEXPORT qlFreeLiborForwardModel(QlLiborForwardModel *o);
+  QlAffineModel* DLLEXPORT qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o);
+  void DLLEXPORT qlFreeHullWhite(QlHullWhite *o);
+  QlOneFactorAffineModel* DLLEXPORT qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -30,6 +30,7 @@ Extra-source-files:
               cpp/qlInstrument.cpp
               cpp/qlInterestRate.cpp
               cpp/qlLeg.cpp
+              cpp/qlModel.cpp
               cpp/qlOption.cpp
               cpp/qlPeriod.cpp
               cpp/qlPricingEngine.cpp
@@ -66,6 +67,7 @@ Library
               cpp/qlInstrument.cpp
               cpp/qlInterestRate.cpp
               cpp/qlLeg.cpp
+              cpp/qlModel.cpp
               cpp/qlOption.cpp
               cpp/qlPeriod.cpp
               cpp/qlPricingEngine.cpp

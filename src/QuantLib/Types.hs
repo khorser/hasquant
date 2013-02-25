@@ -58,6 +58,17 @@ module QuantLib.Types
   , QuantoBarrierOption
   , QuantoForwardVanillaOption
 
+  -- models
+  , GJRGARCHModel
+  , HestonModel
+  , BatesModel
+  , PiecewiseTimeDependentHestonModel
+  , ShortRateModel
+  , AffineModel
+  , OneFactorAffineModel
+  , LiborForwardModel
+  , HullWhite
+
   -- pricingengines
   , PricingEngine
   , BlackCalculator
@@ -68,6 +79,19 @@ module QuantLib.Types
   , StochasticProcess1D
   , StochasticProcess
   , BlackProcess
+  , ExtOUWithJumpsProcess
+  , ExtendedOrnsteinUhlenbeckProcess
+  , GJRGARCHProcess
+  , HestonProcess
+  , BatesProcess
+  , HybridHestonHullWhiteProcess
+  , KlugeExtOUProcess
+  , LiborForwardModelProcess
+  , StochasticProcessArray
+  , VarianceGammaProcess
+  , Merton76Process
+  , HullWhiteProcess
+  , HullWhiteForwardProcess
 
   -- termstructures
   , RateHelper
@@ -132,6 +156,10 @@ module QuantLib.Types
   , asStochasticProcess
   , asStochasticProcess1D
   , asGeneralizedBlackScholesProcess
+  , asHestonProcess
+
+  , asAffineModel
+  , asOneFactorAffineModel
 
   , asBlackCalculator
   )
@@ -317,6 +345,23 @@ asVanillaOption = upcast
 type QuantoBarrierOption = ForeignPtr CQuantoBarrierOption
 type QuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption
 
+-- models
+type GJRGARCHModel = ForeignPtr CGJRGARCHModel
+type HestonModel = ForeignPtr CHestonModel
+type BatesModel = ForeignPtr CBatesModel
+type PiecewiseTimeDependentHestonModel = ForeignPtr CPiecewiseTimeDependentHestonModel
+type ShortRateModel = ForeignPtr CShortRateModel
+type AffineModel = ForeignPtr CAffineModel
+type OneFactorAffineModel = ForeignPtr COneFactorAffineModel
+type LiborForwardModel = ForeignPtr CLiborForwardModel
+type HullWhite = ForeignPtr CHullWhite
+
+asAffineModel :: (Upcastable a CAffineModel) => ForeignPtr a -> IO AffineModel
+asAffineModel = upcast
+
+asOneFactorAffineModel :: (Upcastable a COneFactorAffineModel) => ForeignPtr a -> IO OneFactorAffineModel
+asOneFactorAffineModel = upcast
+
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine
 type BlackCalculator = ForeignPtr CBlackCalculator
@@ -339,6 +384,23 @@ asStochasticProcess1D = upcast
 
 asGeneralizedBlackScholesProcess :: (Upcastable a CGeneralizedBlackScholesProcess) => ForeignPtr a -> IO GeneralizedBlackScholesProcess
 asGeneralizedBlackScholesProcess = upcast
+
+asHestonProcess :: (Upcastable a CHestonProcess) => ForeignPtr a -> IO HestonProcess
+asHestonProcess = upcast
+
+type ExtOUWithJumpsProcess = ForeignPtr CExtOUWithJumpsProcess
+type ExtendedOrnsteinUhlenbeckProcess = ForeignPtr CExtendedOrnsteinUhlenbeckProcess
+type GJRGARCHProcess = ForeignPtr CGJRGARCHProcess
+type HestonProcess = ForeignPtr CHestonProcess
+type BatesProcess = ForeignPtr CBatesProcess
+type HybridHestonHullWhiteProcess = ForeignPtr CHybridHestonHullWhiteProcess
+type KlugeExtOUProcess = ForeignPtr CKlugeExtOUProcess
+type LiborForwardModelProcess = ForeignPtr CLiborForwardModelProcess
+type StochasticProcessArray = ForeignPtr CStochasticProcessArray
+type VarianceGammaProcess = ForeignPtr CVarianceGammaProcess
+type Merton76Process = ForeignPtr CMerton76Process
+type HullWhiteProcess = ForeignPtr CHullWhiteProcess
+type HullWhiteForwardProcess = ForeignPtr CHullWhiteForwardProcess
 
 -- termstructures
 type RateHelper = ForeignPtr CRateHelper

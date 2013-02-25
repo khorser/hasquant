@@ -1,6 +1,6 @@
 separate process objects needed:
     ExtOUWithJumpsProcess: StochasticProcess
-    ExtendedOrnsteinUhlenbeckProcess
+    ExtendedOrnsteinUhlenbeckProcess: StochasticProcess1D
     GJRGARCHProcess : StochasticProcess
     HestonProcess : StochasticProcess
     BatesProcess : HestonProcess
@@ -15,15 +15,15 @@ separate process objects needed:
     ExtendedOrnsteinUhlenbeckProcess : StochasticProcess1D
 
 models:
-    GJRGARCHModel : (CalibratedModel)
-    HestonModel : (CalibratedModel)
-    BatesModel : HestonModel
-    PiecewiseTimeDependentHestonModel : (CalibratedModel)
-    ShortRateModel : (CalibratedModel)
+    GJRGARCHModel
+    HestonModel
+    BatesModel
+    PiecewiseTimeDependentHestonModel
+    ShortRateModel
     AffineModel
-    OneFactorAffineModel : (OneFactorModel), AffineModel
-    LiborForwardModel : CalibratedModel, AffineModel
-    HullWhite : Vasicek, TermStructureConsistentModel
+    OneFactorAffineModel : AffineModel
+    LiborForwardModel : AffineModel
+    HullWhite : OneFactorAffineModel
 
 
 not needed separately:

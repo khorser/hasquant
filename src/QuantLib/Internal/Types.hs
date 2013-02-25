@@ -57,6 +57,17 @@ module QuantLib.Internal.Types
   , CQuantoBarrierOption
   , CQuantoForwardVanillaOption
 
+  -- models
+  , CGJRGARCHModel
+  , CHestonModel
+  , CBatesModel
+  , CPiecewiseTimeDependentHestonModel
+  , CShortRateModel
+  , CAffineModel
+  , COneFactorAffineModel
+  , CLiborForwardModel
+  , CHullWhite
+
   -- pricingengines
   , CPricingEngine
   , CBlackCalculator
@@ -67,6 +78,19 @@ module QuantLib.Internal.Types
   , CGeneralizedBlackScholesProcess
   , CStochasticProcess
   , CStochasticProcess1D
+  , CExtOUWithJumpsProcess
+  , CExtendedOrnsteinUhlenbeckProcess
+  , CGJRGARCHProcess
+  , CHestonProcess
+  , CBatesProcess
+  , CHybridHestonHullWhiteProcess
+  , CKlugeExtOUProcess
+  , CLiborForwardModelProcess
+  , CStochasticProcessArray
+  , CVarianceGammaProcess
+  , CMerton76Process
+  , CHullWhiteProcess
+  , CHullWhiteForwardProcess
 
   -- termstructures
   , CRateHelper
@@ -581,6 +605,75 @@ instance Upcastable CBlackScholesCalculator CBlackCalculator where
 foreign import ccall safe "ql.h qlBlackScholesCalculatorAsBlackCalculator"
   c_BlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator -> IO (Ptr CBlackCalculator)
 
+-- models
+data CGJRGARCHModel
+instance Finalizable CGJRGARCHModel where
+  finalize = p_freeGJRGARCHModel
+foreign import ccall safe "ql.h &qlFreeGJRGARCHModel"
+  p_freeGJRGARCHModel :: FunPtr (Ptr CGJRGARCHModel -> IO ())
+
+data CHestonModel
+instance Finalizable CHestonModel where
+  finalize = p_freeHestonModel
+foreign import ccall safe "ql.h &qlFreeHestonModel"
+  p_freeHestonModel :: FunPtr (Ptr CHestonModel -> IO ())
+
+data CBatesModel
+instance Finalizable CBatesModel where
+  finalize = p_freeBatesModel
+foreign import ccall safe "ql.h &qlFreeBatesModel"
+  p_freeBatesModel :: FunPtr (Ptr CBatesModel -> IO ())
+
+data CPiecewiseTimeDependentHestonModel
+instance Finalizable CPiecewiseTimeDependentHestonModel where
+  finalize = p_freePiecewiseTimeDependentHestonModel
+foreign import ccall safe "ql.h &qlFreePiecewiseTimeDependentHestonModel"
+  p_freePiecewiseTimeDependentHestonModel :: FunPtr (Ptr CPiecewiseTimeDependentHestonModel -> IO ())
+
+data CShortRateModel
+instance Finalizable CShortRateModel where
+  finalize = p_freeShortRateModel
+foreign import ccall safe "ql.h &qlFreeShortRateModel"
+  p_freeShortRateModel :: FunPtr (Ptr CShortRateModel -> IO ())
+
+data CAffineModel
+instance Finalizable CAffineModel where
+  finalize = p_freeAffineModel
+foreign import ccall safe "ql.h &qlFreeAffineModel"
+  p_freeAffineModel :: FunPtr (Ptr CAffineModel -> IO ())
+
+data COneFactorAffineModel
+instance Finalizable COneFactorAffineModel where
+  finalize = p_freeOneFactorAffineModel
+foreign import ccall safe "ql.h &qlFreeOneFactorAffineModel"
+  p_freeOneFactorAffineModel :: FunPtr (Ptr COneFactorAffineModel -> IO ())
+instance Upcastable COneFactorAffineModel CAffineModel where
+  c_upcast = c_OneFactorAffineModelAsAffineModel
+foreign import ccall safe "ql.h qlOneFactorAffineModelAsAffineModel"
+  c_OneFactorAffineModelAsAffineModel :: Ptr COneFactorAffineModel -> IO (Ptr CAffineModel)
+
+data CLiborForwardModel
+instance Finalizable CLiborForwardModel where
+  finalize = p_freeLiborForwardModel
+foreign import ccall safe "ql.h &qlFreeLiborForwardModel"
+  p_freeLiborForwardModel :: FunPtr (Ptr CLiborForwardModel -> IO ())
+instance Upcastable CLiborForwardModel CAffineModel where
+  c_upcast = c_LiborForwardModelAsAffineModel
+foreign import ccall safe "ql.h qlLiborForwardModelAsAffineModel"
+  c_LiborForwardModelAsAffineModel :: Ptr CLiborForwardModel -> IO (Ptr CAffineModel)
+
+data CHullWhite
+instance Finalizable CHullWhite where
+  finalize = p_freeHullWhite
+foreign import ccall safe "ql.h &qlFreeHullWhite"
+  p_freeHullWhite :: FunPtr (Ptr CHullWhite -> IO ())
+instance Upcastable CHullWhite COneFactorAffineModel where
+  c_upcast = c_HullWhiteAsOneFactorAffineModel
+foreign import ccall safe "ql.h qlHullWhiteAsOneFactorAffineModel"
+  c_HullWhiteAsOneFactorAffineModel :: Ptr CHullWhite -> IO (Ptr COneFactorAffineModel)
+
+
+
 -- processes
 data CStochasticProcess1D
 instance Finalizable CStochasticProcess1D where
@@ -617,6 +710,136 @@ instance Finalizable CStochasticProcess where
   finalize = p_freeStochasticProcess
 foreign import ccall safe "ql.h &qlFreeStochasticProcess"
   p_freeStochasticProcess :: FunPtr (Ptr CStochasticProcess -> IO ())
+
+data CExtOUWithJumpsProcess
+instance Finalizable CExtOUWithJumpsProcess where
+  finalize = p_freeExtOUWithJumpsProcess
+foreign import ccall safe "ql.h &qlFreeExtOUWithJumpsProcess"
+  p_freeExtOUWithJumpsProcess :: FunPtr (Ptr CExtOUWithJumpsProcess -> IO ())
+instance Upcastable CExtOUWithJumpsProcess CStochasticProcess where
+  c_upcast = c_ExtOUWithJumpsProcessAsStochasticProcess
+foreign import ccall safe "ql.h qlExtOUWithJumpsProcessAsStochasticProcess"
+  c_ExtOUWithJumpsProcessAsStochasticProcess :: Ptr CExtOUWithJumpsProcess -> IO (Ptr CStochasticProcess)
+
+data CExtendedOrnsteinUhlenbeckProcess
+instance Finalizable CExtendedOrnsteinUhlenbeckProcess where
+  finalize = p_freeExtendedOrnsteinUhlenbeckProcess
+foreign import ccall safe "ql.h &qlFreeExtendedOrnsteinUhlenbeckProcess"
+  p_freeExtendedOrnsteinUhlenbeckProcess :: FunPtr (Ptr CExtendedOrnsteinUhlenbeckProcess -> IO ())
+instance Upcastable CExtendedOrnsteinUhlenbeckProcess CStochasticProcess1D where
+  c_upcast = c_ExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D
+foreign import ccall safe "ql.h qlExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D"
+  c_ExtendedOrnsteinUhlenbeckProcessAsStochasticProcess1D :: Ptr CExtendedOrnsteinUhlenbeckProcess -> IO (Ptr CStochasticProcess1D)
+
+data CGJRGARCHProcess
+instance Finalizable CGJRGARCHProcess where
+  finalize = p_freeGJRGARCHProcess
+foreign import ccall safe "ql.h &qlFreeGJRGARCHProcess"
+  p_freeGJRGARCHProcess :: FunPtr (Ptr CGJRGARCHProcess -> IO ())
+instance Upcastable CGJRGARCHProcess CStochasticProcess where
+  c_upcast = c_GJRGARCHProcessAsStochasticProcess
+foreign import ccall safe "ql.h qlGJRGARCHProcessAsStochasticProcess"
+  c_GJRGARCHProcessAsStochasticProcess :: Ptr CGJRGARCHProcess -> IO (Ptr CStochasticProcess)
+
+data CHestonProcess
+instance Finalizable CHestonProcess where
+  finalize = p_freeHestonProcess
+foreign import ccall safe "ql.h &qlFreeHestonProcess"
+  p_freeHestonProcess :: FunPtr (Ptr CHestonProcess -> IO ())
+instance Upcastable CHestonProcess CStochasticProcess where
+  c_upcast = c_HestonProcessAsStochasticProcess
+foreign import ccall safe "ql.h qlHestonProcessAsStochasticProcess"
+  c_HestonProcessAsStochasticProcess :: Ptr CHestonProcess -> IO (Ptr CStochasticProcess)
+
+data CBatesProcess
+instance Finalizable CBatesProcess where
+  finalize = p_freeBatesProcess
+foreign import ccall safe "ql.h &qlFreeBatesProcess"
+  p_freeBatesProcess :: FunPtr (Ptr CBatesProcess -> IO ())
+instance Upcastable CBatesProcess CHestonProcess where
+  c_upcast = c_BatesProcessAsHestonProcess
+foreign import ccall safe "ql.h qlBatesProcessAsHestonProcess"
+  c_BatesProcessAsHestonProcess :: Ptr CBatesProcess -> IO (Ptr CHestonProcess)
+
+data CHybridHestonHullWhiteProcess
+instance Finalizable CHybridHestonHullWhiteProcess where
+  finalize = p_freeHybridHestonHullWhiteProcess
+foreign import ccall safe "ql.h &qlFreeHybridHestonHullWhiteProcess"
+  p_freeHybridHestonHullWhiteProcess :: FunPtr (Ptr CHybridHestonHullWhiteProcess -> IO ())
+instance Upcastable CHybridHestonHullWhiteProcess CStochasticProcess where
+  c_upcast = c_HybridHestonHullWhiteProcessAsStochasticProcess
+foreign import ccall safe "ql.h qlHybridHestonHullWhiteProcessAsStochasticProcess"
+  c_HybridHestonHullWhiteProcessAsStochasticProcess :: Ptr CHybridHestonHullWhiteProcess -> IO (Ptr CStochasticProcess)
+
+data CKlugeExtOUProcess
+instance Finalizable CKlugeExtOUProcess where
+  finalize = p_freeKlugeExtOUProcess
+foreign import ccall safe "ql.h &qlFreeKlugeExtOUProcess"
+  p_freeKlugeExtOUProcess :: FunPtr (Ptr CKlugeExtOUProcess -> IO ())
+instance Upcastable CKlugeExtOUProcess CStochasticProcess where
+  c_upcast = c_KlugeExtOUProcessAsStochasticProcess
+foreign import ccall safe "ql.h qlKlugeExtOUProcessAsStochasticProcess"
+  c_KlugeExtOUProcessAsStochasticProcess :: Ptr CKlugeExtOUProcess -> IO (Ptr CStochasticProcess)
+
+data CLiborForwardModelProcess
+instance Finalizable CLiborForwardModelProcess where
+  finalize = p_freeLiborForwardModelProcess
+foreign import ccall safe "ql.h &qlFreeLiborForwardModelProcess"
+  p_freeLiborForwardModelProcess :: FunPtr (Ptr CLiborForwardModelProcess -> IO ())
+instance Upcastable CLiborForwardModelProcess CStochasticProcess where
+  c_upcast = c_LiborForwardModelProcessAsStochasticProcess
+foreign import ccall safe "ql.h qlLiborForwardModelProcessAsStochasticProcess"
+  c_LiborForwardModelProcessAsStochasticProcess :: Ptr CLiborForwardModelProcess -> IO (Ptr CStochasticProcess)
+
+data CStochasticProcessArray
+instance Finalizable CStochasticProcessArray where
+  finalize = p_freeStochasticProcessArray
+foreign import ccall safe "ql.h &qlFreeStochasticProcessArray"
+  p_freeStochasticProcessArray :: FunPtr (Ptr CStochasticProcessArray -> IO ())
+instance Upcastable CStochasticProcessArray CStochasticProcess where
+  c_upcast = c_StochasticProcessArrayAsStochasticProcess
+foreign import ccall safe "ql.h qlStochasticProcessArrayAsStochasticProcess"
+  c_StochasticProcessArrayAsStochasticProcess :: Ptr CStochasticProcessArray -> IO (Ptr CStochasticProcess)
+
+data CVarianceGammaProcess
+instance Finalizable CVarianceGammaProcess where
+  finalize = p_freeVarianceGammaProcess
+foreign import ccall safe "ql.h &qlFreeVarianceGammaProcess"
+  p_freeVarianceGammaProcess :: FunPtr (Ptr CVarianceGammaProcess -> IO ())
+instance Upcastable CVarianceGammaProcess CStochasticProcess1D where
+  c_upcast = c_VarianceGammaProcessAsStochasticProcess1D
+foreign import ccall safe "ql.h qlVarianceGammaProcessAsStochasticProcess1D"
+  c_VarianceGammaProcessAsStochasticProcess1D :: Ptr CVarianceGammaProcess -> IO (Ptr CStochasticProcess1D)
+
+data CMerton76Process
+instance Finalizable CMerton76Process where
+  finalize = p_freeMerton76Process
+foreign import ccall safe "ql.h &qlFreeMerton76Process"
+  p_freeMerton76Process :: FunPtr (Ptr CMerton76Process -> IO ())
+instance Upcastable CMerton76Process CStochasticProcess1D where
+  c_upcast = c_Merton76ProcessAsStochasticProcess1D
+foreign import ccall safe "ql.h qlMerton76ProcessAsStochasticProcess1D"
+  c_Merton76ProcessAsStochasticProcess1D :: Ptr CMerton76Process -> IO (Ptr CStochasticProcess1D)
+
+data CHullWhiteProcess
+instance Finalizable CHullWhiteProcess where
+  finalize = p_freeHullWhiteProcess
+foreign import ccall safe "ql.h &qlFreeHullWhiteProcess"
+  p_freeHullWhiteProcess :: FunPtr (Ptr CHullWhiteProcess -> IO ())
+instance Upcastable CHullWhiteProcess CStochasticProcess1D where
+  c_upcast = c_HullWhiteProcessAsStochasticProcess1D
+foreign import ccall safe "ql.h qlHullWhiteProcessAsStochasticProcess1D"
+  c_HullWhiteProcessAsStochasticProcess1D :: Ptr CHullWhiteProcess -> IO (Ptr CStochasticProcess1D)
+
+data CHullWhiteForwardProcess
+instance Finalizable CHullWhiteForwardProcess where
+  finalize = p_freeHullWhiteForwardProcess
+foreign import ccall safe "ql.h &qlFreeHullWhiteForwardProcess"
+  p_freeHullWhiteForwardProcess :: FunPtr (Ptr CHullWhiteForwardProcess -> IO ())
+instance Upcastable CHullWhiteForwardProcess CStochasticProcess1D where
+  c_upcast = c_HullWhiteForwardProcessAsStochasticProcess1D
+foreign import ccall safe "ql.h qlHullWhiteForwardProcessAsStochasticProcess1D"
+  c_HullWhiteForwardProcessAsStochasticProcess1D :: Ptr CHullWhiteForwardProcess -> IO (Ptr CStochasticProcess1D)
 
 -- termstructures
 data CRateHelper
