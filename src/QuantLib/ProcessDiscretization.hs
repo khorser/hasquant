@@ -2,6 +2,9 @@ module QuantLib.ProcessDiscretization
   (
     ProcessDiscretization(..)
   , ExtendedDiscretization(..)
+  , HestonProcessDiscretization(..)
+  , GJRGARCHProcessDiscretization(..)
+  , HybridHestonHullWhiteProcessDiscretization(..)
   )
 where
 

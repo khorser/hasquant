@@ -1,5 +1,0 @@
-->Real
-::Real
--- ^c_inf
-::const boost::function1< Real, Real > &
--- ^f

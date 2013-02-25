@@ -24,6 +24,7 @@
 #include <ql/processes/hestonprocess.hpp>
 #include <ql/processes/gjrgarchprocess.hpp>
 #include <ql/processes/hybridhestonhullwhiteprocess.hpp>
+#include <ql/pricingengines/vanilla/analytichestonengine.hpp>
 
 #include <string.h>
 
@@ -252,11 +253,16 @@ static const int hybridHestonHullWhiteProcessDiscretizationValues[] = {
   , HybridHestonHullWhiteProcess::BSMHullWhite
 };
 
-static const int intervalPriceType[] = {
+static const int intervalPriceTypeValues[] = {
     IntervalPrice::Open
   , IntervalPrice::Close
   , IntervalPrice::High
   , IntervalPrice::Low
+};
+
+static const int analyticHestonEngineComplexLogFormulaValues[] = {
+    AnalyticHestonEngine::Gatheral
+  , AnalyticHestonEngine::BranchCorrection
 };
 
 struct EnumInfo {
@@ -333,7 +339,9 @@ static const EnumInfo enumInfo[] = {
   {"QuantLib.ProcessDiscretization.HybridHestonHullWhiteProcessDiscretization",
     LENGTH(hybridHestonHullWhiteProcessDiscretizationValues), hybridHestonHullWhiteProcessDiscretizationValues},
   {"QuantLib.PriceType.IntervalPriceType",
-    LENGTH(intervalPriceType), intervalPriceType},
+    LENGTH(intervalPriceTypeValues), intervalPriceTypeValues},
+  {"QuantLib.PricingEngine.Parameter.ComplexLogFormula",
+    LENGTH(analyticHestonEngineComplexLogFormulaValues), analyticHestonEngineComplexLogFormulaValues},
 };
 
 const int *qlEnumerationValue(const char *name, unsigned *c) {
