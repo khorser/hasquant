@@ -53,7 +53,7 @@ Library
               , QuantLib.Math.RoundingType
               , QuantLib.PositionType
               , QuantLib.PriceType
-              , QuantLib.PricicingEngine.Parameter
+              , QuantLib.PricingEngine.Parameter
               , QuantLib.PricingEngine
               , QuantLib.Process
               , QuantLib.ProcessDiscretization
@@ -120,6 +120,7 @@ Test-Suite QL-Test
             , time >= 1.4
             , HTF == 0.10.*
             , derive >= 2.5
+            , QuickCheck >= 2.5
             , quantlib
   Default-Language: Haskell2010
   If os(windows)
