@@ -318,7 +318,7 @@ extern "C" {
 
   void DLLEXPORT qlFreeRateHelper(QlRateHelper *helper);
   QlRateHelper* DLLEXPORT qlFraRateHelper(QlQuote* rate, unsigned monthsToStart, unsigned monthsToEnd, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e);
-  
+
   void DLLEXPORT qlFreeOISRateHelper(QlOISRateHelper *o);
   QlRateHelper* DLLEXPORT qlOISRateHelperAsRateHelper(QlOISRateHelper *o);
   QlBondHelper* DLLEXPORT qlBondHelper(QlQuote* cleanPrice, QlBond* bond, char **e);

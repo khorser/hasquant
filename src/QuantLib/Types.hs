@@ -192,14 +192,14 @@ type Forward = ForeignPtr CForward
 --   date).
 -- 2. Relevant formulas used in the calculations (\f$P\f$ refers
 --    to a price):
--- 
+--
 --    a. \f$ P_{CleanFwd}(t) = P_{DirtyFwd}(t) -
 --       AI(t=deliveryDate) \f$ where \f$ AI \f$ refers to the
 --       accrued interest on the underlying bond.
--- 
+--
 --    b. \f$ P_{DirtyFwd}(t) = \frac{P_{DirtySpot}(t) -
 --       SpotIncome(t)} {discountCurve->discount(t=deliveryDate)} \f$
--- 
+--
 --    c. \f$ SpotIncome(t) = \sum_i \left( CF_i \times
 --       incomeDiscountCurve->discount(t_i) \right) \f$ where \f$
 --       CF_i \f$ represents the ith bond cash flow (coupon
@@ -218,16 +218,16 @@ type FixedRateBondForward = ForeignPtr CFixedRateBondForward
 --    valueDate, not on the (later) maturityDate. It follows that
 --    (maturityDate - valueDate) is the tenor/term of the
 --    underlying loan or deposit
--- 
+--
 -- 2. Choose position type = Long for an "FRA purchase" (future
 --    long loan, short deposit [borrower])
--- 
+--
 -- 3. Choose position type = Short for an "FRA sale" (future short
 --    loan, long deposit [lender])
--- 
+--
 -- 4. If strike is given in the constructor, can calculate the NPV
 --    of the contract via NPV().
--- 
+--
 -- 5. If forward rate is desired/unknown, it can be obtained via
 --    forwardRate(). In this case, the strike variable in the
 --    constructor is irrelevant and will be ignored.
