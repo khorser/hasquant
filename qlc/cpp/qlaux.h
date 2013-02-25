@@ -696,6 +696,11 @@ typedef boost::shared_ptr<HullWhite> QlHullWhite;
 template <> class objClassName<HullWhite *> { public: static const char *name() { return "HullWhite"; } };
 template <> class objClassName<QlHullWhite *> { public: static const char *name() { return "QlHullWhite"; } };
 
+namespace QuantLib {class CalibratedModel;} using QuantLib::CalibratedModel;
+typedef boost::shared_ptr<CalibratedModel> QlCalibratedModel;
+template <> class objClassName<CalibratedModel *> { public: static const char *name() { return "CalibratedModel"; } };
+template <> class objClassName<QlCalibratedModel *> { public: static const char *name() { return "QlCalibratedModel"; } };
+
 #include "ql.h"
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

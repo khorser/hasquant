@@ -18,4 +18,6 @@ QlAffineModel* qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o) { return
 void qlFreeHullWhite(QlHullWhite *o) { del(o); }
 QlOneFactorAffineModel* qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o) { return ret(new QlOneFactorAffineModel(*arg(o))); }
 
+void qlFreeCalibratedModel(QlCalibratedModel *o) { del(o); }
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

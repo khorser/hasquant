@@ -858,6 +858,7 @@ extern "C" {
   QlAffineModel* DLLEXPORT qlLiborForwardModelAsAffineModel(QlLiborForwardModel *o);
   void DLLEXPORT qlFreeHullWhite(QlHullWhite *o);
   QlOneFactorAffineModel* DLLEXPORT qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o);
+  void DLLEXPORT qlFreeCalibratedModel(QlCalibratedModel *o);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

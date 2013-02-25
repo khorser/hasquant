@@ -67,6 +67,7 @@ module QuantLib.Internal.Types
   , COneFactorAffineModel
   , CLiborForwardModel
   , CHullWhite
+  , CCalibratedModel
 
   -- pricingengines
   , CPricingEngine
@@ -672,7 +673,11 @@ instance Upcastable CHullWhite COneFactorAffineModel where
 foreign import ccall safe "ql.h qlHullWhiteAsOneFactorAffineModel"
   c_HullWhiteAsOneFactorAffineModel :: Ptr CHullWhite -> IO (Ptr COneFactorAffineModel)
 
-
+data CCalibratedModel
+instance Finalizable CCalibratedModel where
+  finalize = p_freeCalibratedModel
+foreign import ccall safe "ql.h &qlFreeCalibratedModel"
+  p_freeCalibratedModel :: FunPtr (Ptr CCalibratedModel -> IO ())
 
 -- processes
 data CStochasticProcess1D
