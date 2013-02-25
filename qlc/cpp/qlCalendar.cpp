@@ -2,6 +2,7 @@
 #include <ql/time/calendars/all.hpp>
 
 #include "qlaux.h"
+#include "qlCalendar.h"
 
 using namespace QuantLib;
 

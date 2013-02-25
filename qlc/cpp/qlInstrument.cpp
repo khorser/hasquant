@@ -7,6 +7,7 @@
 #include <ql/instruments/vanillaswingoption.hpp>
 
 #include "qlaux.h"
+#include "qlInstrument.h"
 
 using namespace QuantLib;
 

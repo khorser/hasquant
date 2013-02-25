@@ -1,6 +1,7 @@
 #include <ql/interestrate.hpp>
 
 #include "qlaux.h"
+#include "qlInterestRate.h"
 
 using namespace QuantLib;
 

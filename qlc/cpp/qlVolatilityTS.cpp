@@ -6,6 +6,7 @@
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
 
 #include "qlaux.h"
+#include "qlVolatilityTS.h"
 
 using namespace QuantLib;
 

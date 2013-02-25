@@ -30,6 +30,7 @@
 #include <string.h>
 
 #include "qlaux.h"
+#include "qlEnumerations.h"
 
 using namespace QuantLib;
 

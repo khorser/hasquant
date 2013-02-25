@@ -49,6 +49,34 @@ Extra-source-files:
 Library
   Include-Dirs: cpp
   Install-Includes: ql.h
+                    qlBond.h
+                    qlCalendar.h
+                    qlCouponPricer.h
+                    qlCredit.h
+                    qlCurrency.h
+                    qlDate.h
+                    qlDayCounter.h
+                    qlDefaultTS.h
+                    qlEnumerations.h
+                    qlForward.h
+                    qlIborIndex.h
+                    qlIndex.h
+                    qlInstrument.h
+                    qlInterestRate.h
+                    qlLeg.h
+                    qlModel.h
+                    qlOption.h
+                    qlPeriod.h
+                    qlPricingEngine.h
+                    qlProcess.h
+                    qlQuote.h
+                    qlSchedule.h
+                    qlSettings.h
+                    qlSwap.h
+                    qlUtilities.h
+                    qlVolatilityTS.h
+                    qlYieldTS.h
+                    qlYieldTSAux.h
   Build-Depends: base >= 4.5 && < 5
 
   X-Dll-Sources:

@@ -4,6 +4,7 @@
 #include <ql/indexes/swap/all.hpp>
 
 #include "qlaux.h"
+#include "qlIndex.h"
 
 using namespace QuantLib;
 

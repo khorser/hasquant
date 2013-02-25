@@ -4,6 +4,7 @@
 #include <ql/legacy/libormarketmodels/lfmprocess.hpp>
 
 #include "qlaux.h"
+#include "qlProcess.h"
 
 using namespace QuantLib;
 

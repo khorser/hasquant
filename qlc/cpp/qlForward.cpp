@@ -2,6 +2,7 @@
 #include <ql/instruments/forwardrateagreement.hpp>
 
 #include "qlaux.h"
+#include "qlForward.h"
 
 using namespace QuantLib;
 

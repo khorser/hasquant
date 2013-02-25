@@ -706,6 +706,4 @@ typedef boost::shared_ptr<G2> QlG2;
 template <> class objClassName<G2 *> { public: static const char *name() { return "G2"; } };
 template <> class objClassName<QlG2 *> { public: static const char *name() { return "QlG2"; } };
 
-#include "ql.h"
-
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

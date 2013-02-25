@@ -3,6 +3,7 @@
 #include <ql/pricingengines/bond/bondfunctions.hpp>
 
 #include "qlaux.h"
+#include "qlBond.h"
 
 using namespace QuantLib;
 

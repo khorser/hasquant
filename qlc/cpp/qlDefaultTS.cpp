@@ -3,6 +3,7 @@
 #include <ql/experimental/credit/factorspreadedhazardratecurve.hpp>
 
 #include "qlaux.h"
+#include "qlDefaultTS.h"
 #include "qlYieldTSAux.h"
 
 using namespace QuantLib;

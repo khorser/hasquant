@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "qlaux.h"
+#include "qlUtilities.h"
 
 using namespace QuantLib;
 

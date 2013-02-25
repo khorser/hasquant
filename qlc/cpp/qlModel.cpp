@@ -4,6 +4,7 @@
 #include <ql/experimental/variancegamma/variancegammamodel.hpp>
 
 #include "qlaux.h"
+#include "qlModel.h"
 
 using namespace QuantLib;
 

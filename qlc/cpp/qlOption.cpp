@@ -20,6 +20,7 @@
 #include <ql/experimental/credit/cdsoption.hpp>
 
 #include "qlaux.h"
+#include "qlOption.h"
 
 using namespace QuantLib;
 

@@ -4,6 +4,8 @@
 #include <boost/shared_ptr.hpp>
 
 #include "qlaux.h"
+#include "qlLeg.h"
+#include "qlUtilities.h"
 
 using namespace QuantLib;
 using namespace boost;

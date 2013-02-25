@@ -1,6 +1,7 @@
 #include <ql/time/daycounters/all.hpp>
 
 #include "qlaux.h"
+#include "qlDayCounter.h"
 
 using namespace QuantLib;
 

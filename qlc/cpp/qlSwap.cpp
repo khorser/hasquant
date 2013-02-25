@@ -5,6 +5,7 @@
 #include <ql/instruments/assetswap.hpp>
 
 #include "qlaux.h"
+#include "qlSwap.h"
 
 using namespace QuantLib;
 

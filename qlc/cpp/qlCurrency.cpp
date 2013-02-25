@@ -1,6 +1,7 @@
 #include <ql/currencies/all.hpp>
 
 #include "qlaux.h"
+#include "qlCurrency.h"
 
 using namespace QuantLib;
 

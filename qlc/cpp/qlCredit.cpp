@@ -2,6 +2,7 @@
 #include <ql/instruments/claim.hpp>
 
 #include "qlaux.h"
+#include "qlCredit.h"
 
 using namespace QuantLib;
 

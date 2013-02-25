@@ -2,6 +2,7 @@
 #include <ql/indexes/ibor/all.hpp>
 
 #include "qlaux.h"
+#include "qlIborIndex.h"
 
 using namespace QuantLib;
 

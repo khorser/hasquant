@@ -2,6 +2,7 @@
 #include <ql/time/imm.hpp>
 
 #include "qlaux.h"
+#include "qlDate.h"
 
 using namespace QuantLib;
 

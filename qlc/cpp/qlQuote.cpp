@@ -1,6 +1,7 @@
 #include <ql/quotes/all.hpp>
 
 #include "qlaux.h"
+#include "qlQuote.h"
 
 using namespace QuantLib;
 

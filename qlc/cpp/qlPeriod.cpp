@@ -2,6 +2,7 @@
 #include <ql/utilities/dataparsers.hpp>
 
 #include "qlaux.h"
+#include "qlPeriod.h"
 
 using namespace QuantLib;
 

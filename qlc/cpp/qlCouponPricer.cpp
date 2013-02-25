@@ -1,6 +1,7 @@
 #include <ql/cashflows/couponpricer.hpp>
 
 #include "qlaux.h"
+#include "qlCouponPricer.h"
 
 using namespace QuantLib;
 

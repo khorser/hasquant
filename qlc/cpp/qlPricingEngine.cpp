@@ -2,6 +2,7 @@
 #include <ql/experimental/variancegamma/all.hpp>
 
 #include "qlaux.h"
+#include "qlPricingEngine.h"
 
 using namespace QuantLib;
 

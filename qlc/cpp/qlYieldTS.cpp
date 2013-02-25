@@ -4,6 +4,7 @@
 
 #include "qlaux.h"
 #include "qlYieldTSAux.h"
+#include "qlYieldTS.h"
 
 using namespace QuantLib;
 
