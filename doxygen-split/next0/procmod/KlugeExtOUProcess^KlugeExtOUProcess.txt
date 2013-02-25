@@ -1,7 +1,0 @@
-->
-::Real
--- ^rho
-::const boost::shared_ptr< ExtOUWithJumpsProcess > &
--- ^kluge
-::const boost::shared_ptr< ExtendedOrnsteinUhlenbeckProcess > &
--- ^extOU

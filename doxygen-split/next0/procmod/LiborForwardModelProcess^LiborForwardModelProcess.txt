@@ -1,5 +1,0 @@
-->
-::Size
--- ^size
-::const boost::shared_ptr< IborIndex > &
--- ^index

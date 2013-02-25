@@ -1,7 +1,0 @@
-->
-::const Handle< YieldTermStructure > &
--- ^yieldtermStructure
-::const std::vector< Date > &
--- ^speedstructure
-::const std::vector< Date > &
--- ^volstructure

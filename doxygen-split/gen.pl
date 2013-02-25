@@ -240,7 +240,7 @@ sub type {
     $t =~ s/^std::vector< boost::shared_ptr< (.*) > > &$/$1/;
   }
 
-  if ($t ~~ ['Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor', 'Probability']) {
+  if ($t ~~ ['double', 'Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor', 'Probability']) {
     if (not $vect) {
       return ('double', 'CDouble', 'Double', '%', '%', 0, '');
     }

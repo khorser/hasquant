@@ -730,6 +730,23 @@ extern "C" {
   void DLLEXPORT qlFreeHullWhiteForwardProcess(QlHullWhiteForwardProcess *o);
   QlStochasticProcess1D* DLLEXPORT qlHullWhiteForwardProcessAsStochasticProcess1D(QlHullWhiteForwardProcess *o);
 
+  QlBatesProcess* DLLEXPORT qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, double lambda, double nu, double delta, int d, char **e);
+  QlExtOUWithJumpsProcess* DLLEXPORT qlExtOUWithJumpsProcess(QlExtendedOrnsteinUhlenbeckProcess* process, double Y0, double beta, double jumpIntensity, double eta, char **e);
+  QlStochasticProcess* DLLEXPORT qlG2ForwardProcess(double a, double sigma, double b, double eta, double rho, char **e);
+  QlStochasticProcess* DLLEXPORT qlG2Process(double a, double sigma, double b, double eta, double rho, char **e);
+  QlStochasticProcess1D* DLLEXPORT qlGemanRoncoroniProcess(double x0, double alpha, double beta, double gamma, double delta, double eps, double zeta, double d, double k, double tau, double sig2, double a, double b, double theta1, double theta2, double theta3, double psi, char **e);
+  QlStochasticProcess1D* DLLEXPORT qlGeometricBrownianMotionProcess(double initialValue, double mue, double sigma, char **e);
+  QlGJRGARCHProcess* DLLEXPORT qlGJRGARCHProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double omega, double alpha, double beta, double gamma, double lambda, double daysPerYear, int d, char **e);
+  QlHestonProcess* DLLEXPORT qlHestonProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, QlQuote* s0, double v0, double kappa, double theta, double sigma, double rho, int d, char **e);
+  QlHullWhiteForwardProcess* DLLEXPORT qlHullWhiteForwardProcess(QlYieldTermStructure* h, double a, double sigma, char **e);
+  QlHullWhiteProcess* DLLEXPORT qlHullWhiteProcess(QlYieldTermStructure* h, double a, double sigma, char **e);
+  QlHybridHestonHullWhiteProcess* DLLEXPORT qlHybridHestonHullWhiteProcess(QlHestonProcess* hestonProcess, QlHullWhiteForwardProcess* hullWhiteProcess, double corrEquityShortRate, int discretization, char **e);
+  QlKlugeExtOUProcess* DLLEXPORT qlKlugeExtOUProcess(double rho, QlExtOUWithJumpsProcess* kluge, QlExtendedOrnsteinUhlenbeckProcess* extOU, char **e);
+  QlLiborForwardModelProcess* DLLEXPORT qlLiborForwardModelProcess(unsigned size, QlIborIndex* index, char **e);
+  QlMerton76Process* DLLEXPORT qlMerton76Process(QlQuote* stateVariable, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, QlQuote* jumpInt, QlQuote* logJMean, QlQuote* logJVol, char*  d, char **e);
+  QlStochasticProcess1D* DLLEXPORT qlOrnsteinUhlenbeckProcess(double speed, double vol, double x0, double level, char **e);
+  QlVarianceGammaProcess* DLLEXPORT qlVarianceGammaProcess(QlQuote* s0, QlYieldTermStructure* dividendYield, QlYieldTermStructure* riskFreeRate, double sigma, double nu, double theta, char **e);
+
   /* option */
   void DLLEXPORT qlFreeBarrierOption(QlBarrierOption *o);
   QlOneAssetOption* DLLEXPORT qlBarrierOptionAsOneAssetOption(QlBarrierOption *o);
@@ -859,6 +876,18 @@ extern "C" {
   void DLLEXPORT qlFreeHullWhite(QlHullWhite *o);
   QlOneFactorAffineModel* DLLEXPORT qlHullWhiteAsOneFactorAffineModel(QlHullWhite *o);
   void DLLEXPORT qlFreeCalibratedModel(QlCalibratedModel *o);
+  QlBatesModel* DLLEXPORT qlBatesModel(QlBatesProcess* process, char **e);
+  QlShortRateModel* DLLEXPORT qlBlackKarasinski(QlYieldTermStructure* termStructure, double a, double sigma, char **e);
+  QlOneFactorAffineModel* DLLEXPORT qlCoxIngersollRoss(double r0, double theta, double k, double sigma, char **e);
+  QlOneFactorAffineModel* DLLEXPORT qlExtendedCoxIngersollRoss(QlYieldTermStructure* termStructure, double theta, double k, double sigma, double x0, char **e);
+  QlAffineModel* DLLEXPORT qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b, double eta, double rho, char **e);
+  QlShortRateModel* DLLEXPORT qlGeneralizedHullWhite1(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, char **e);
+  QlShortRateModel* DLLEXPORT qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, char **e);
+  QlGJRGARCHModel* DLLEXPORT qlGJRGARCHModel(QlGJRGARCHProcess* process, char **e);
+  QlHestonModel* DLLEXPORT qlHestonModel(QlHestonProcess* process, char **e);
+  QlHullWhite* DLLEXPORT qlHullWhite(QlYieldTermStructure* termStructure, double a, double sigma, char **e);
+  QlCalibratedModel* DLLEXPORT qlVarianceGammaModel(QlVarianceGammaProcess* process, char **e);
+  QlOneFactorAffineModel* DLLEXPORT qlVasicek(double r0, double a, double b, double sigma, double lambda, char **e);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

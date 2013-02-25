@@ -1,3 +1,0 @@
-->
-::const boost::shared_ptr< BatesProcess > &
--- ^process

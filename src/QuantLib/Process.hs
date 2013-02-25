@@ -10,6 +10,23 @@ module QuantLib.Process
   , generalizedBlackScholesProcess
   , squareRootProcess
   , vegaStressedBlackScholesProcess
+
+  , batesProcess
+  , extOUWithJumpsProcess
+  , g2ForwardProcess
+  , g2Process
+  , gemanRoncoroniProcess
+  , geometricBrownianMotionProcess
+  , gjrGARCHProcess
+  , hestonProcess
+  , hullWhiteForwardProcess
+  , hullWhiteProcess
+  , hybridHestonHullWhiteProcess
+  , klugeExtOUProcess
+  , liborForwardModelProcess
+  , merton76Process
+  , ornsteinUhlenbeckProcess
+  , varianceGammaProcess
   )
 where
 
@@ -111,5 +128,201 @@ vegaStressedBlackScholesProcess = $(ffiCall 'vegaStressedBlackScholesProcess) c_
 
 foreign import ccall safe "ql.h qlVegaStressedBlackScholesProcess"
   c_vegaStressedBlackScholesProcess :: Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CBlackVolTermStructure -> CYearFraction -> CYearFraction -> CDouble -> CDouble -> CDouble -> CString -> Ptr CString -> IO (Ptr CGeneralizedBlackScholesProcess)
+
+batesProcess :: YieldTermStructure -- ^riskFreeRate
+  -> YieldTermStructure -- ^dividendYield
+  -> Quote -- ^s0
+  -> Double -- ^v0
+  -> Double -- ^kappa
+  -> Double -- ^theta
+  -> Double -- ^sigma
+  -> Double -- ^rho
+  -> Double -- ^lambda
+  -> Double -- ^nu
+  -> Double -- ^delta
+  -> HestonProcessDiscretization -- ^d
+  -> IO BatesProcess
+batesProcess = $(ffiCall 'batesProcess) c_batesProcess
+
+foreign import ccall safe "ql.h qlBatesProcess"
+  c_batesProcess :: Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CQuote -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CInt -> Ptr CString -> IO (Ptr CBatesProcess)
+
+extOUWithJumpsProcess :: ExtendedOrnsteinUhlenbeckProcess -- ^process
+  -> Double -- ^Y0
+  -> Double -- ^beta
+  -> Double -- ^jumpIntensity
+  -> Double -- ^eta
+  -> IO ExtOUWithJumpsProcess
+extOUWithJumpsProcess = $(ffiCall 'extOUWithJumpsProcess) c_extOUWithJumpsProcess
+
+foreign import ccall safe "ql.h qlExtOUWithJumpsProcess"
+  c_extOUWithJumpsProcess :: Ptr CExtendedOrnsteinUhlenbeckProcess -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CExtOUWithJumpsProcess)
+
+g2ForwardProcess :: Double -- ^a
+  -> Double -- ^sigma
+  -> Double -- ^b
+  -> Double -- ^eta
+  -> Double -- ^rho
+  -> IO StochasticProcess
+g2ForwardProcess = $(ffiCall 'g2ForwardProcess) c_g2ForwardProcess
+
+foreign import ccall safe "ql.h qlG2ForwardProcess"
+  c_g2ForwardProcess :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CStochasticProcess)
+
+g2Process :: Double -- ^a
+  -> Double -- ^sigma
+  -> Double -- ^b
+  -> Double -- ^eta
+  -> Double -- ^rho
+  -> IO StochasticProcess
+g2Process = $(ffiCall 'g2Process) c_g2Process
+
+foreign import ccall safe "ql.h qlG2Process"
+  c_g2Process :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CStochasticProcess)
+
+gemanRoncoroniProcess :: Double -- ^x0
+  -> Double -- ^alpha
+  -> Double -- ^beta
+  -> Double -- ^gamma
+  -> Double -- ^delta
+  -> Double -- ^eps
+  -> Double -- ^zeta
+  -> Double -- ^d
+  -> Double -- ^k
+  -> Double -- ^tau
+  -> Double -- ^sig2
+  -> Double -- ^a
+  -> Double -- ^b
+  -> Double -- ^theta1
+  -> Double -- ^theta2
+  -> Double -- ^theta3
+  -> Double -- ^psi
+  -> IO StochasticProcess1D
+gemanRoncoroniProcess = $(ffiCall 'gemanRoncoroniProcess) c_gemanRoncoroniProcess
+
+foreign import ccall safe "ql.h qlGemanRoncoroniProcess"
+  c_gemanRoncoroniProcess :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CStochasticProcess1D)
+
+geometricBrownianMotionProcess :: Double -- ^initialValue
+  -> Double -- ^mue
+  -> Double -- ^sigma
+  -> IO StochasticProcess1D
+geometricBrownianMotionProcess = $(ffiCall 'geometricBrownianMotionProcess) c_geometricBrownianMotionProcess
+
+foreign import ccall safe "ql.h qlGeometricBrownianMotionProcess"
+  c_geometricBrownianMotionProcess :: CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CStochasticProcess1D)
+
+gjrGARCHProcess :: YieldTermStructure -- ^riskFreeRate
+  -> YieldTermStructure -- ^dividendYield
+  -> Quote -- ^s0
+  -> Double -- ^v0
+  -> Double -- ^omega
+  -> Double -- ^alpha
+  -> Double -- ^beta
+  -> Double -- ^gamma
+  -> Double -- ^lambda
+  -> Double -- ^daysPerYear
+  -> GJRGARCHProcessDiscretization -- ^d
+  -> IO GJRGARCHProcess
+gjrGARCHProcess = $(ffiCall 'gjrGARCHProcess) c_gjrGARCHProcess
+
+foreign import ccall safe "ql.h qlGJRGARCHProcess"
+  c_gjrGARCHProcess :: Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CQuote -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CInt -> Ptr CString -> IO (Ptr CGJRGARCHProcess)
+
+hestonProcess :: YieldTermStructure -- ^riskFreeRate
+  -> YieldTermStructure -- ^dividendYield
+  -> Quote -- ^s0
+  -> Double -- ^v0
+  -> Double -- ^kappa
+  -> Double -- ^theta
+  -> Double -- ^sigma
+  -> Double -- ^rho
+  -> HestonProcessDiscretization -- ^d
+  -> IO HestonProcess
+hestonProcess = $(ffiCall 'hestonProcess) c_hestonProcess
+
+foreign import ccall safe "ql.h qlHestonProcess"
+  c_hestonProcess :: Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CQuote -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CInt -> Ptr CString -> IO (Ptr CHestonProcess)
+
+hullWhiteForwardProcess :: YieldTermStructure -- ^h
+  -> Double -- ^a
+  -> Double -- ^sigma
+  -> IO HullWhiteForwardProcess
+hullWhiteForwardProcess = $(ffiCall 'hullWhiteForwardProcess) c_hullWhiteForwardProcess
+
+foreign import ccall safe "ql.h qlHullWhiteForwardProcess"
+  c_hullWhiteForwardProcess :: Ptr CYieldTermStructure -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CHullWhiteForwardProcess)
+
+hullWhiteProcess :: YieldTermStructure -- ^h
+  -> Double -- ^a
+  -> Double -- ^sigma
+  -> IO HullWhiteProcess
+hullWhiteProcess = $(ffiCall 'hullWhiteProcess) c_hullWhiteProcess
+
+foreign import ccall safe "ql.h qlHullWhiteProcess"
+  c_hullWhiteProcess :: Ptr CYieldTermStructure -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CHullWhiteProcess)
+
+hybridHestonHullWhiteProcess :: HestonProcess -- ^hestonProcess
+  -> HullWhiteForwardProcess -- ^hullWhiteProcess
+  -> Double -- ^corrEquityShortRate
+  -> HybridHestonHullWhiteProcessDiscretization -- ^discretization
+  -> IO HybridHestonHullWhiteProcess
+hybridHestonHullWhiteProcess = $(ffiCall 'hybridHestonHullWhiteProcess) c_hybridHestonHullWhiteProcess
+
+foreign import ccall safe "ql.h qlHybridHestonHullWhiteProcess"
+  c_hybridHestonHullWhiteProcess :: Ptr CHestonProcess -> Ptr CHullWhiteForwardProcess -> CDouble -> CInt -> Ptr CString -> IO (Ptr CHybridHestonHullWhiteProcess)
+
+klugeExtOUProcess :: Double -- ^rho
+  -> ExtOUWithJumpsProcess -- ^kluge
+  -> ExtendedOrnsteinUhlenbeckProcess -- ^extOU
+  -> IO KlugeExtOUProcess
+klugeExtOUProcess = $(ffiCall 'klugeExtOUProcess) c_klugeExtOUProcess
+
+foreign import ccall safe "ql.h qlKlugeExtOUProcess"
+  c_klugeExtOUProcess :: CDouble -> Ptr CExtOUWithJumpsProcess -> Ptr CExtendedOrnsteinUhlenbeckProcess -> Ptr CString -> IO (Ptr CKlugeExtOUProcess)
+
+liborForwardModelProcess :: Word -- ^size
+  -> IborIndex -- ^index
+  -> IO LiborForwardModelProcess
+liborForwardModelProcess = $(ffiCall 'liborForwardModelProcess) c_liborForwardModelProcess
+
+foreign import ccall safe "ql.h qlLiborForwardModelProcess"
+  c_liborForwardModelProcess :: CUInt -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CLiborForwardModelProcess)
+
+merton76Process :: Quote -- ^stateVariable
+  -> YieldTermStructure -- ^dividendTS
+  -> YieldTermStructure -- ^riskFreeTS
+  -> BlackVolTermStructure -- ^blackVolTS
+  -> Quote -- ^jumpInt
+  -> Quote -- ^logJMean
+  -> Quote -- ^logJVol
+  -> ProcessDiscretization -- ^d
+  -> IO Merton76Process
+merton76Process = $(ffiCall 'merton76Process) c_merton76Process
+
+foreign import ccall safe "ql.h qlMerton76Process"
+  c_merton76Process :: Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CBlackVolTermStructure -> Ptr CQuote -> Ptr CQuote -> Ptr CQuote -> CString -> Ptr CString -> IO (Ptr CMerton76Process)
+
+ornsteinUhlenbeckProcess :: Double -- ^speed
+  -> Double -- ^vol
+  -> Double -- ^x0
+  -> Double -- ^level
+  -> IO StochasticProcess1D
+ornsteinUhlenbeckProcess = $(ffiCall 'ornsteinUhlenbeckProcess) c_ornsteinUhlenbeckProcess
+
+foreign import ccall safe "ql.h qlOrnsteinUhlenbeckProcess"
+  c_ornsteinUhlenbeckProcess :: CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CStochasticProcess1D)
+
+varianceGammaProcess :: Quote -- ^s0
+  -> YieldTermStructure -- ^dividendYield
+  -> YieldTermStructure -- ^riskFreeRate
+  -> Double -- ^sigma
+  -> Double -- ^nu
+  -> Double -- ^theta
+  -> IO VarianceGammaProcess
+varianceGammaProcess = $(ffiCall 'varianceGammaProcess) c_varianceGammaProcess
+
+foreign import ccall safe "ql.h qlVarianceGammaProcess"
+  c_varianceGammaProcess :: Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CVarianceGammaProcess)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
