@@ -51,6 +51,7 @@ Library
               , QuantLib.Math.Interpolation
               , QuantLib.Math.Rounding
               , QuantLib.Math.RoundingType
+              , QuantLib.Method.LsmBasisSystemPolynomType
               , QuantLib.Model
               , QuantLib.PositionType
               , QuantLib.PriceType

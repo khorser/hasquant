@@ -68,6 +68,7 @@ module QuantLib.Internal.Types
   , CLiborForwardModel
   , CHullWhite
   , CCalibratedModel
+  , CG2
 
   -- pricingengines
   , CPricingEngine
@@ -678,6 +679,16 @@ instance Finalizable CCalibratedModel where
   finalize = p_freeCalibratedModel
 foreign import ccall safe "ql.h &qlFreeCalibratedModel"
   p_freeCalibratedModel :: FunPtr (Ptr CCalibratedModel -> IO ())
+
+data CG2
+instance Finalizable CG2 where
+  finalize = p_freeG2
+foreign import ccall safe "ql.h &qlFreeG2"
+  p_freeG2 :: FunPtr (Ptr CG2 -> IO ())
+instance Upcastable CG2 CAffineModel where
+  c_upcast = c_G2AsAffineModel
+foreign import ccall safe "ql.h qlG2AsAffineModel"
+  c_G2AsAffineModel :: Ptr CG2 -> IO (Ptr CAffineModel)
 
 -- processes
 data CStochasticProcess1D

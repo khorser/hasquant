@@ -66,11 +66,11 @@ g2 :: YieldTermStructure -- ^termStructure
   -> Double -- ^b
   -> Double -- ^eta
   -> Double -- ^rho
-  -> IO AffineModel
+  -> IO G2
 g2 = $(ffiCall 'g2) c_g2
 
 foreign import ccall safe "ql.h qlG2"
-  c_g2 :: Ptr CYieldTermStructure -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CAffineModel)
+  c_g2 :: Ptr CYieldTermStructure -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CG2)
 
 generalizedHullWhite' :: YieldTermStructure -- ^yieldtermStructure
   -> [Day] -- ^speedstructure

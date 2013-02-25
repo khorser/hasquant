@@ -1,8 +1,0 @@
-->
-::const boost::shared_ptr< ShortRateModel > &
--- ^
-::Size
--- ^timeSteps
-::const Handle< YieldTermStructure > &
-=Handle< YieldTermStructure >()
--- ^termStructure

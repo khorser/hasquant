@@ -1,7 +1,0 @@
-->
-::const boost::shared_ptr< HestonModel > &
--- ^model
-::Real
--- ^relTolerance
-::Size
--- ^maxEvaluations

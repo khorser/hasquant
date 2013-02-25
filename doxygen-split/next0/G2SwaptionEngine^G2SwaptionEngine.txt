@@ -1,7 +1,0 @@
-->
-::const boost::shared_ptr< G2 > &
--- ^model
-::Real
--- ^range
-::Size
--- ^intervals

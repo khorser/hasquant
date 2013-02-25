@@ -448,6 +448,20 @@ extern "C" {
   double DLLEXPORT qlQuantLibBachelierBlackFormula(int optionType, double strike, double forward, double stdDev, double discount, char **e);
   double DLLEXPORT qlQuantLibDefaultThetaPerDay(double theta, char **e);
 
+  QlPricingEngine* DLLEXPORT qlAnalyticBSMHullWhiteEngine(double equityShortRateCorrelation, QlGeneralizedBlackScholesProcess* x1, QlHullWhite* x2, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticCapFloorEngine(QlAffineModel* model, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticGJRGARCHEngine(QlGJRGARCHModel* model, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticHestonEngine(QlHestonModel* model, double relTolerance, unsigned maxEvaluations, char **e);
+  QlPricingEngine* DLLEXPORT qlAnalyticHestonHullWhiteEngine(QlHestonModel* hestonModel, QlHullWhite* hullWhiteModel, unsigned integrationOrder, char **e);
+  QlPricingEngine* DLLEXPORT qlBatesEngine(QlBatesModel* model, unsigned integrationOrder, char **e);
+  QlPricingEngine* DLLEXPORT qlFFTVanillaEngine(QlGeneralizedBlackScholesProcess* process, double logStrikeSpacing, char **e);
+  QlPricingEngine* DLLEXPORT qlG2SwaptionEngine(QlG2* model, double range, unsigned intervals, char **e);
+  QlPricingEngine* DLLEXPORT qlJumpDiffusionEngine(QlMerton76Process* x0, double relativeAccuracy_, unsigned maxIterations, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeCapFloorEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeSwaptionEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeVanillaSwapEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlVarianceGammaEngine(QlVarianceGammaProcess* x0, char **e);
+
   /* instrument */
   void DLLEXPORT qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
     char **e);
@@ -880,7 +894,7 @@ extern "C" {
   QlShortRateModel* DLLEXPORT qlBlackKarasinski(QlYieldTermStructure* termStructure, double a, double sigma, char **e);
   QlOneFactorAffineModel* DLLEXPORT qlCoxIngersollRoss(double r0, double theta, double k, double sigma, char **e);
   QlOneFactorAffineModel* DLLEXPORT qlExtendedCoxIngersollRoss(QlYieldTermStructure* termStructure, double theta, double k, double sigma, double x0, char **e);
-  QlAffineModel* DLLEXPORT qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b, double eta, double rho, char **e);
+  QlG2* DLLEXPORT qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b, double eta, double rho, char **e);
   QlShortRateModel* DLLEXPORT qlGeneralizedHullWhite1(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, char **e);
   QlShortRateModel* DLLEXPORT qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, char **e);
   QlGJRGARCHModel* DLLEXPORT qlGJRGARCHModel(QlGJRGARCHProcess* process, char **e);
@@ -888,6 +902,8 @@ extern "C" {
   QlHullWhite* DLLEXPORT qlHullWhite(QlYieldTermStructure* termStructure, double a, double sigma, char **e);
   QlCalibratedModel* DLLEXPORT qlVarianceGammaModel(QlVarianceGammaProcess* process, char **e);
   QlOneFactorAffineModel* DLLEXPORT qlVasicek(double r0, double a, double b, double sigma, double lambda, char **e);
+  void DLLEXPORT qlFreeG2(QlG2 *o);
+  QlAffineModel* DLLEXPORT qlG2AsAffineModel(QlG2 *o);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

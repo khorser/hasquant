@@ -251,7 +251,7 @@ sub type {
   elsif ($t eq 'Array') {
     return ('double*', 'CUInt -> Ptr CDouble', '[Double]', 'Array(%, %+%Len)', '???', 0, 'unsigned %Len');
   }
-  elsif ($t ~~ ['Natural', 'Size']) {
+  elsif ($t ~~ ['BigNatural', 'Natural', 'Size']) {
     if (not $vect) {
       return ('unsigned', 'CUInt', 'Word', '%', '%', 0, '');
     }
@@ -303,7 +303,7 @@ sub type {
       'VanillaSwap::Type', 'PriceType', 'Settlement::Type',
       'JointCalendarRule', 'Duration::Type', 'Discretization', 'Protection::Side',
       'Barrier::Type', 'Average::Type',
-      'CapFloor::Type',
+      'CapFloor::Type', 'LsmBasisSystem::PolynomType',
       'HestonProcess::Discretization',
       'GJRGARCHProcess::Discretization', 
       'HybridHestonHullWhiteProcess::Discretization',

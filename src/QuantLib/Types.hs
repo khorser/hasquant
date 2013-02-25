@@ -69,6 +69,7 @@ module QuantLib.Types
   , LiborForwardModel
   , HullWhite
   , CalibratedModel
+  , G2
 
   -- pricingengines
   , PricingEngine
@@ -359,6 +360,8 @@ type LiborForwardModel = ForeignPtr CLiborForwardModel
 type HullWhite = ForeignPtr CHullWhite
 
 type CalibratedModel = ForeignPtr CCalibratedModel
+
+type G2 = ForeignPtr CG2
 
 asAffineModel :: (Upcastable a CAffineModel) => ForeignPtr a -> IO AffineModel
 asAffineModel = upcast

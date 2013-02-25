@@ -50,11 +50,11 @@ QlOneFactorAffineModel* qlExtendedCoxIngersollRoss(QlYieldTermStructure* termStr
     return handleException<QlOneFactorAffineModel*>(e, er);
   }
 }
-QlAffineModel* qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b, double eta, double rho, char **e) {
+QlG2* qlG2(QlYieldTermStructure* termStructure, double a, double sigma, double b, double eta, double rho, char **e) {
   try {
-    return ret(new QlAffineModel(alloc(new G2(Handle<YieldTermStructure>(*arg(termStructure)), a, sigma, b, eta, rho))));
+    return ret(new QlG2(alloc(new G2(Handle<YieldTermStructure>(*arg(termStructure)), a, sigma, b, eta, rho))));
   } catch (std::exception& er) {
-    return handleException<QlAffineModel*>(e, er);
+    return handleException<QlG2*>(e, er);
   }
 }
 QlShortRateModel* qlGeneralizedHullWhite1(QlYieldTermStructure* yieldtermStructure, unsigned speedstructureLen, int* speedstructure, unsigned volstructureLen, int* volstructure, unsigned speedLen, double* speed, unsigned volLen, double* vol, char **e) {
@@ -106,5 +106,8 @@ QlOneFactorAffineModel* qlVasicek(double r0, double a, double b, double sigma, d
     return handleException<QlOneFactorAffineModel*>(e, er);
   }
 }
+
+void qlFreeG2(QlG2 *o) { del(o); }
+QlAffineModel* qlG2AsAffineModel(QlG2 *o) { return ret(new QlAffineModel(*arg(o))); }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

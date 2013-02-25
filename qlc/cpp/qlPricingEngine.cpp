@@ -1,17 +1,5 @@
-#include <ql/pricingengines/bond/discountingbondengine.hpp>
-#include <ql/pricingengines/swap/discountingswapengine.hpp>
-#include <ql/pricingengines/barrier/analyticbarrierengine.hpp>
-#include <ql/pricingengines/cliquet/all.hpp>
-#include <ql/pricingengines/lookback/all.hpp>
-#include <ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp>
-#include <ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp>
-#include <ql/pricingengines/vanilla/analyticeuropeanengine.hpp>
-#include <ql/pricingengines/asian/all.hpp>
-#include <ql/pricingengines/capfloor/blackcapfloorengine.hpp>
-#include <ql/pricingengines/swaption/blackswaptionengine.hpp>
-#include <ql/pricingengines/blackscholescalculator.hpp>
-#include <ql/pricingengines/blackformula.hpp>
-#include <ql/pricingengines/greeks.hpp>
+#include <ql/pricingengines/all.hpp>
+#include <ql/experimental/variancegamma/all.hpp>
 
 #include "qlaux.h"
 
@@ -435,6 +423,98 @@ double qlQuantLibDefaultThetaPerDay(double theta, char **e) {
     return QuantLib::defaultThetaPerDay(theta);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
+  }
+}
+
+QlPricingEngine* qlAnalyticBSMHullWhiteEngine(double equityShortRateCorrelation, QlGeneralizedBlackScholesProcess* x1, QlHullWhite* x2, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new AnalyticBSMHullWhiteEngine(equityShortRateCorrelation, (*arg(x1)), (*arg(x2))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlAnalyticCapFloorEngine(QlAffineModel* model, QlYieldTermStructure* termStructure, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new AnalyticCapFloorEngine((*arg(model)), qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlAnalyticGJRGARCHEngine(QlGJRGARCHModel* model, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new AnalyticGJRGARCHEngine((*arg(model))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlAnalyticHestonEngine(QlHestonModel* model, double relTolerance, unsigned maxEvaluations, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new AnalyticHestonEngine((*arg(model)), relTolerance, maxEvaluations))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlAnalyticHestonHullWhiteEngine(QlHestonModel* hestonModel, QlHullWhite* hullWhiteModel, unsigned integrationOrder, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new AnalyticHestonHullWhiteEngine((*arg(hestonModel)), (*arg(hullWhiteModel)), integrationOrder))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBatesEngine(QlBatesModel* model, unsigned integrationOrder, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BatesEngine((*arg(model)), integrationOrder))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlFFTVanillaEngine(QlGeneralizedBlackScholesProcess* process, double logStrikeSpacing, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new FFTVanillaEngine((*arg(process)), logStrikeSpacing))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlG2SwaptionEngine(QlG2* model, double range, unsigned intervals, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new G2SwaptionEngine((*arg(model)), range, intervals))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlJumpDiffusionEngine(QlMerton76Process* x0, double relativeAccuracy_, unsigned maxIterations, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new JumpDiffusionEngine((*arg(x0)), relativeAccuracy_, maxIterations))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlTreeCapFloorEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new TreeCapFloorEngine((*arg(model)), timeSteps, qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlTreeSwaptionEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new TreeSwaptionEngine((*arg(x0)), timeSteps, qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlTreeVanillaSwapEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new TreeVanillaSwapEngine((*arg(x0)), timeSteps, qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlVarianceGammaEngine(QlVarianceGammaProcess* x0, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new VarianceGammaEngine((*arg(x0))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
   }
 }
 

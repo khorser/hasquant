@@ -1,7 +1,0 @@
-Monomial
-Laguerre
-Hermite
-Hyperbolic
-Legendre
-Chebyshev
-Chebyshev2nd

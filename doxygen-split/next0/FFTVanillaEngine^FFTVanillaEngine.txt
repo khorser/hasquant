@@ -1,6 +1,0 @@
-->
-::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
--- ^process
-::Real
-=0.001
--- ^logStrikeSpacing

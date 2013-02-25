@@ -20,6 +20,19 @@ module QuantLib.PricingEngine
   , blackCapFloorEngine
   , blackSwaptionEngine
   , blackSwaptionEngine'
+  , analyticBSMHullWhiteEngine
+  , analyticCapFloorEngine
+  , analyticGJRGARCHEngine
+  , analyticHestonEngine
+  , analyticHestonHullWhiteEngine
+  , batesEngine
+  , fFTVanillaEngine
+  , g2SwaptionEngine
+  , jumpDiffusionEngine
+  , treeCapFloorEngine
+  , treeSwaptionEngine
+  , treeVanillaSwapEngine
+  , varianceGammaEngine
 
   , alpha
   , beta
@@ -603,5 +616,115 @@ defaultThetaPerDay = $(ffiCallX 'defaultThetaPerDay) c_defaultThetaPerDay
 
 foreign import ccall safe "ql.h qlQuantLibDefaultThetaPerDay"
   c_defaultThetaPerDay :: CDouble -> Ptr CString -> IO CDouble
+
+analyticBSMHullWhiteEngine :: Double -- ^equityShortRateCorrelation
+  -> GeneralizedBlackScholesProcess
+  -> HullWhite
+  -> IO PricingEngine
+analyticBSMHullWhiteEngine = $(ffiCall 'analyticBSMHullWhiteEngine) c_analyticBSMHullWhiteEngine
+
+foreign import ccall safe "ql.h qlAnalyticBSMHullWhiteEngine"
+  c_analyticBSMHullWhiteEngine :: CDouble -> Ptr CGeneralizedBlackScholesProcess -> Ptr CHullWhite -> Ptr CString -> IO (Ptr CPricingEngine)
+
+-- |the term structure is only needed when the short-rate model cannot provide one itself.
+analyticCapFloorEngine :: AffineModel -- ^model
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+analyticCapFloorEngine = $(ffiCall 'analyticCapFloorEngine) c_analyticCapFloorEngine
+
+foreign import ccall safe "ql.h qlAnalyticCapFloorEngine"
+  c_analyticCapFloorEngine :: Ptr CAffineModel -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+analyticGJRGARCHEngine :: GJRGARCHModel -- ^model
+  -> IO PricingEngine
+analyticGJRGARCHEngine = $(ffiCall 'analyticGJRGARCHEngine) c_analyticGJRGARCHEngine
+
+foreign import ccall safe "ql.h qlAnalyticGJRGARCHEngine"
+  c_analyticGJRGARCHEngine :: Ptr CGJRGARCHModel -> Ptr CString -> IO (Ptr CPricingEngine)
+
+analyticHestonEngine :: HestonModel -- ^model
+  -> Double -- ^relTolerance
+  -> Word -- ^maxEvaluations
+  -> IO PricingEngine
+analyticHestonEngine = $(ffiCall 'analyticHestonEngine) c_analyticHestonEngine
+
+foreign import ccall safe "ql.h qlAnalyticHestonEngine"
+  c_analyticHestonEngine :: Ptr CHestonModel -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+analyticHestonHullWhiteEngine :: HestonModel -- ^hestonModel
+  -> HullWhite -- ^hullWhiteModel
+  -> Word -- ^integrationOrder
+  -> IO PricingEngine
+analyticHestonHullWhiteEngine = $(ffiCall 'analyticHestonHullWhiteEngine) c_analyticHestonHullWhiteEngine
+
+foreign import ccall safe "ql.h qlAnalyticHestonHullWhiteEngine"
+  c_analyticHestonHullWhiteEngine :: Ptr CHestonModel -> Ptr CHullWhite -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+batesEngine :: BatesModel -- ^model
+  -> Word -- ^integrationOrder
+  -> IO PricingEngine
+batesEngine = $(ffiCall 'batesEngine) c_batesEngine
+
+foreign import ccall safe "ql.h qlBatesEngine"
+  c_batesEngine :: Ptr CBatesModel -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+fFTVanillaEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Double -- ^logStrikeSpacing
+  -> IO PricingEngine
+fFTVanillaEngine = $(ffiCall 'fFTVanillaEngine) c_fFTVanillaEngine
+
+foreign import ccall safe "ql.h qlFFTVanillaEngine"
+  c_fFTVanillaEngine :: Ptr CGeneralizedBlackScholesProcess -> CDouble -> Ptr CString -> IO (Ptr CPricingEngine)
+
+g2SwaptionEngine :: G2 -- ^model
+  -> Double -- ^range
+  -> Word -- ^intervals
+  -> IO PricingEngine
+g2SwaptionEngine = $(ffiCall 'g2SwaptionEngine) c_g2SwaptionEngine
+
+foreign import ccall safe "ql.h qlG2SwaptionEngine"
+  c_g2SwaptionEngine :: Ptr CG2 -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+jumpDiffusionEngine :: Merton76Process
+  -> Double -- ^relativeAccuracy_
+  -> Word -- ^maxIterations
+  -> IO PricingEngine
+jumpDiffusionEngine = $(ffiCall 'jumpDiffusionEngine) c_jumpDiffusionEngine
+
+foreign import ccall safe "ql.h qlJumpDiffusionEngine"
+  c_jumpDiffusionEngine :: Ptr CMerton76Process -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeCapFloorEngine :: ShortRateModel -- ^model
+  -> Word -- ^timeSteps
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeCapFloorEngine = $(ffiCall 'treeCapFloorEngine) c_treeCapFloorEngine
+
+foreign import ccall safe "ql.h qlTreeCapFloorEngine"
+  c_treeCapFloorEngine :: Ptr CShortRateModel -> CUInt -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeSwaptionEngine :: ShortRateModel
+  -> Word -- ^timeSteps
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeSwaptionEngine = $(ffiCall 'treeSwaptionEngine) c_treeSwaptionEngine
+
+foreign import ccall safe "ql.h qlTreeSwaptionEngine"
+  c_treeSwaptionEngine :: Ptr CShortRateModel -> CUInt -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeVanillaSwapEngine :: ShortRateModel
+  -> Word -- ^timeSteps
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeVanillaSwapEngine = $(ffiCall 'treeVanillaSwapEngine) c_treeVanillaSwapEngine
+
+foreign import ccall safe "ql.h qlTreeVanillaSwapEngine"
+  c_treeVanillaSwapEngine :: Ptr CShortRateModel -> CUInt -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+varianceGammaEngine :: VarianceGammaProcess -> IO PricingEngine
+varianceGammaEngine = $(ffiCall 'varianceGammaEngine) c_varianceGammaEngine
+
+foreign import ccall safe "ql.h qlVarianceGammaEngine"
+  c_varianceGammaEngine :: Ptr CVarianceGammaProcess -> Ptr CString -> IO (Ptr CPricingEngine)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

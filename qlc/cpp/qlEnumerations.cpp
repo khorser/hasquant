@@ -25,6 +25,7 @@
 #include <ql/processes/gjrgarchprocess.hpp>
 #include <ql/processes/hybridhestonhullwhiteprocess.hpp>
 #include <ql/pricingengines/vanilla/analytichestonengine.hpp>
+#include <ql/methods/montecarlo/lsmbasissystem.hpp>
 
 #include <string.h>
 
@@ -265,6 +266,16 @@ static const int analyticHestonEngineComplexLogFormulaValues[] = {
   , AnalyticHestonEngine::BranchCorrection
 };
 
+static const int lsmBasisSystemPolynomTypeValues[] = {
+    LsmBasisSystem::Monomial
+  , LsmBasisSystem::Laguerre
+  , LsmBasisSystem::Hermite
+  , LsmBasisSystem::Hyperbolic
+  , LsmBasisSystem::Legendre
+  , LsmBasisSystem::Chebyshev
+  , LsmBasisSystem::Chebyshev2nd
+};
+
 struct EnumInfo {
   const char *const name;
   size_t len;
@@ -342,6 +353,8 @@ static const EnumInfo enumInfo[] = {
     LENGTH(intervalPriceTypeValues), intervalPriceTypeValues},
   {"QuantLib.PricingEngine.Parameter.ComplexLogFormula",
     LENGTH(analyticHestonEngineComplexLogFormulaValues), analyticHestonEngineComplexLogFormulaValues},
+  {"QuantLib.Method.LsmBasisSystemPolynomType.LsmBasisSystemPolynomType",
+    LENGTH(lsmBasisSystemPolynomTypeValues), lsmBasisSystemPolynomTypeValues},
 };
 
 const int *qlEnumerationValue(const char *name, unsigned *c) {
