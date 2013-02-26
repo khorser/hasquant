@@ -40,6 +40,7 @@ extern "C" {
   QlOneFactorAffineModel* DLLEXPORT qlVasicek(double r0, double a, double b, double sigma, double lambda, char **e);
   void DLLEXPORT qlFreeG2(QlG2 *o);
   QlAffineModel* DLLEXPORT qlG2AsAffineModel(QlG2 *o);
+  QlShortRateModel* DLLEXPORT qlG2AsShortRateModel(QlG2 *o);
   void DLLEXPORT qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o);
   QlBatesModel* DLLEXPORT qlBatesDetJumpModelAsBatesModel(QlBatesDetJumpModel *o);
   void DLLEXPORT qlFreeBatesDoubleExpDetJumpModel(QlBatesDoubleExpDetJumpModel *o);

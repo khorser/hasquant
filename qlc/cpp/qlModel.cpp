@@ -110,6 +110,7 @@ QlOneFactorAffineModel* qlVasicek(double r0, double a, double b, double sigma, d
 
 void qlFreeG2(QlG2 *o) { del(o); }
 QlAffineModel* qlG2AsAffineModel(QlG2 *o) { return ret(new QlAffineModel(*arg(o))); }
+QlShortRateModel* qlG2AsShortRateModel(QlG2 *o) { return ret(new QlShortRateModel(*arg(o))); }
 
 void qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o) { del(o); }
 QlBatesModel* qlBatesDetJumpModelAsBatesModel(QlBatesDetJumpModel *o) { return ret(new QlBatesModel(*arg(o))); }

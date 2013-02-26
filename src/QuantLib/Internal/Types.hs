@@ -694,6 +694,10 @@ instance Upcastable CG2 CAffineModel where
   c_upcast = c_G2AsAffineModel
 foreign import ccall safe "ql.h qlG2AsAffineModel"
   c_G2AsAffineModel :: Ptr CG2 -> IO (Ptr CAffineModel)
+instance Upcastable CG2 CShortRateModel where
+  c_upcast = c_G2AsShortRateModel
+foreign import ccall safe "ql.h qlG2AsShortRateModel"
+  c_G2AsShortRateModel :: Ptr CG2 -> IO (Ptr CShortRateModel)
 
 data CBatesDetJumpModel
 instance Finalizable CBatesDetJumpModel where
