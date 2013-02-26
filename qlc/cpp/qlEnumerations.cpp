@@ -1,4 +1,5 @@
 #include <ql/cashflows/duration.hpp>
+#include <ql/cashflows/conundrumpricer.hpp>
 #include <ql/compounding.hpp>
 #include <ql/default.hpp>
 #include <ql/exercise.hpp>
@@ -277,6 +278,13 @@ static const int lsmBasisSystemPolynomTypeValues[] = {
   , LsmBasisSystem::Chebyshev2nd
 };
 
+static const int yieldCurveModelValues[] = {
+    GFunctionFactory::Standard
+  , GFunctionFactory::ExactYield
+  , GFunctionFactory::ParallelShifts
+  , GFunctionFactory::NonParallelShifts
+};
+
 struct EnumInfo {
   const char *const name;
   size_t len;
@@ -356,6 +364,8 @@ static const EnumInfo enumInfo[] = {
     LENGTH(analyticHestonEngineComplexLogFormulaValues), analyticHestonEngineComplexLogFormulaValues},
   {"QuantLib.Method.LsmBasisSystemPolynomType.LsmBasisSystemPolynomType",
     LENGTH(lsmBasisSystemPolynomTypeValues), lsmBasisSystemPolynomTypeValues},
+  {"QuantLib.TermStructure.Trait.YieldCurveModel",
+    LENGTH(yieldCurveModelValues), yieldCurveModelValues},
 };
 
 const int *qlEnumerationValue(const char *name, unsigned *c) {

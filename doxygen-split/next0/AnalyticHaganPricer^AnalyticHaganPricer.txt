@@ -1,7 +1,0 @@
-->
-::const Handle< SwaptionVolatilityStructure > &
--- ^swaptionVol
-::GFunctionFactory::YieldCurveModel
--- ^modelOfYieldCurve
-::const Handle< Quote > &
--- ^meanReversion

@@ -16,6 +16,8 @@ extern "C" {
   QlFloatingRateCouponPricer *DLLEXPORT qlBlackIborCouponPricer(
     QlOptionletVolatilityStructure *vol, char **e);
   void DLLEXPORT qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
+  QlFloatingRateCouponPricer* DLLEXPORT qlAnalyticHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, char **e);
+  QlFloatingRateCouponPricer* DLLEXPORT qlNumericHaganPricer(QlSwaptionVolatilityStructure* swaptionVol, int modelOfYieldCurve, QlQuote* meanReversion, double lowerLimit, double upperLimit, double precision, char **e);
 #ifdef __cplusplus
 }
 #endif

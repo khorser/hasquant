@@ -1,2 +1,0 @@
--- |bond full/dirty/cash prices
-::std::vector< Real >

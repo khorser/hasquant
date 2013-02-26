@@ -1,4 +1,0 @@
-Standard
-ExactYield
-ParallelShifts
-NonParallelShifts

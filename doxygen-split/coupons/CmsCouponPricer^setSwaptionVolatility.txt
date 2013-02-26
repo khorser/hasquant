@@ -1,4 +1,0 @@
-->void
-::const Handle< SwaptionVolatilityStructure > &
-=Handle< SwaptionVolatilityStructure >()
--- ^v
