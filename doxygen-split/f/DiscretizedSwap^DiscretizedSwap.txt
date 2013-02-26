@@ -1,7 +1,0 @@
-->
-::const VanillaSwap::arguments &
--- ^
-::const Date &
--- ^referenceDate
-::const DayCounter &
--- ^dayCounter

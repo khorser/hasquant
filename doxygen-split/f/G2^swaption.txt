@@ -1,9 +1,0 @@
-->Real
-::const Swaption::arguments &
--- ^arguments
-::Rate
--- ^fixedRate
-::Real
--- ^range
-::Size
--- ^intervals
