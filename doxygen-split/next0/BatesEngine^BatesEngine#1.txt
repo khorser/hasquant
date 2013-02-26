@@ -1,7 +1,0 @@
-->
-::const boost::shared_ptr< BatesModel > &
--- ^model
-::Real
--- ^relTolerance
-::Size
--- ^maxEvaluations

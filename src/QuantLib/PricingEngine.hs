@@ -33,6 +33,21 @@ module QuantLib.PricingEngine
   , treeSwaptionEngine
   , treeVanillaSwapEngine
   , varianceGammaEngine
+  , analyticHestonEngine'
+  , analyticHestonHullWhiteEngine'
+  , batesEngine'
+  , mcHestonHullWhiteEngine
+  , mcAmericanEngine
+  , mcBarrierEngine
+  , mcDigitalEngine
+  , mcDiscreteArithmeticAPEngine
+  , mcDiscreteArithmeticASEngine
+  , mcDiscreteGeometricAPEngine
+  , mcEuropeanEngine
+  , mcEuropeanGJRGARCHEngine
+  , mcEuropeanHestonEngine
+  , mcHullWhiteCapFloorEngine
+  , mcPerformanceEngine
 
   , alpha
   , beta
@@ -83,6 +98,7 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Internal.Syntax
+import QuantLib.Method.LsmBasisSystemPolynomType
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlDiscountingBondEngine"
@@ -726,5 +742,207 @@ varianceGammaEngine = $(ffiCall 'varianceGammaEngine) c_varianceGammaEngine
 
 foreign import ccall safe "ql.h qlVarianceGammaEngine"
   c_varianceGammaEngine :: Ptr CVarianceGammaProcess -> Ptr CString -> IO (Ptr CPricingEngine)
+
+analyticHestonEngine' :: HestonModel -- ^model
+  -> Word -- ^integrationOrder
+  -> IO PricingEngine
+analyticHestonEngine' = $(ffiCall 'analyticHestonEngine') c_analyticHestonEngine'
+
+foreign import ccall safe "ql.h qlAnalyticHestonEngine1"
+  c_analyticHestonEngine' :: Ptr CHestonModel -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+analyticHestonHullWhiteEngine' :: HestonModel -- ^model
+  -> HullWhite -- ^hullWhiteModel
+  -> Double -- ^relTolerance
+  -> Word -- ^maxEvaluations
+  -> IO PricingEngine
+analyticHestonHullWhiteEngine' = $(ffiCall 'analyticHestonHullWhiteEngine') c_analyticHestonHullWhiteEngine'
+
+foreign import ccall safe "ql.h qlAnalyticHestonHullWhiteEngine1"
+  c_analyticHestonHullWhiteEngine' :: Ptr CHestonModel -> Ptr CHullWhite -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+batesEngine' :: BatesModel -- ^model
+  -> Double -- ^relTolerance
+  -> Word -- ^maxEvaluations
+  -> IO PricingEngine
+batesEngine' = $(ffiCall 'batesEngine') c_batesEngine'
+
+foreign import ccall safe "ql.h qlBatesEngine1"
+  c_batesEngine' :: Ptr CBatesModel -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+-- |/NB/ Monte Carlo engines are additionally parameterised via template arguments
+-- with RNG and Statistics classes in C++. For now we are using default values
+mcHestonHullWhiteEngine :: HybridHestonHullWhiteProcess -- ^process
+  -> Word -- ^timeSteps
+  -> Word -- ^timeStepsPerYear
+  -> Bool -- ^antitheticVariate
+  -> Bool -- ^controlVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcHestonHullWhiteEngine = $(ffiCall 'mcHestonHullWhiteEngine) c_mcHestonHullWhiteEngine
+
+foreign import ccall safe "ql.h qlMCHestonHullWhiteEngine"
+  c_mcHestonHullWhiteEngine :: Ptr CHybridHestonHullWhiteProcess -> CUInt -> CUInt -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcAmericanEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Word -- ^timeSteps
+  -> Word -- ^timeStepsPerYear
+  -> Bool -- ^antitheticVariate
+  -> Bool -- ^controlVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> Word -- ^polynomOrder
+  -> LsmBasisSystemPolynomType -- ^polynomType
+  -> Word -- ^nCalibrationSamples
+  -> IO PricingEngine
+mcAmericanEngine = $(ffiCall 'mcAmericanEngine) c_mcAmericanEngine
+
+foreign import ccall safe "ql.h qlMCAmericanEngine"
+  c_mcAmericanEngine :: Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> CUInt -> CInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcBarrierEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Word -- ^timeSteps
+  -> Word -- ^timeStepsPerYear
+  -> Bool -- ^brownianBridge
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Bool -- ^isBiased
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcBarrierEngine = $(ffiCall 'mcBarrierEngine) c_mcBarrierEngine
+
+foreign import ccall safe "ql.h qlMCBarrierEngine"
+  c_mcBarrierEngine :: Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcDigitalEngine :: GeneralizedBlackScholesProcess
+  -> Word -- ^timeSteps
+  -> Word -- ^timeStepsPerYear
+  -> Bool -- ^brownianBridge
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcDigitalEngine = $(ffiCall 'mcDigitalEngine) c_mcDigitalEngine
+
+foreign import ccall safe "ql.h qlMCDigitalEngine"
+  c_mcDigitalEngine :: Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcDiscreteArithmeticAPEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Bool -- ^brownianBridge
+  -> Bool -- ^antitheticVariate
+  -> Bool -- ^controlVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcDiscreteArithmeticAPEngine = $(ffiCall 'mcDiscreteArithmeticAPEngine) c_mcDiscreteArithmeticAPEngine
+
+foreign import ccall safe "ql.h qlMCDiscreteArithmeticAPEngine"
+  c_mcDiscreteArithmeticAPEngine :: Ptr CGeneralizedBlackScholesProcess -> CInt -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcDiscreteArithmeticASEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Bool -- ^brownianBridge
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcDiscreteArithmeticASEngine = $(ffiCall 'mcDiscreteArithmeticASEngine) c_mcDiscreteArithmeticASEngine
+
+foreign import ccall safe "ql.h qlMCDiscreteArithmeticASEngine"
+  c_mcDiscreteArithmeticASEngine :: Ptr CGeneralizedBlackScholesProcess -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcDiscreteGeometricAPEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Bool -- ^brownianBridge
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcDiscreteGeometricAPEngine = $(ffiCall 'mcDiscreteGeometricAPEngine) c_mcDiscreteGeometricAPEngine
+
+foreign import ccall safe "ql.h qlMCDiscreteGeometricAPEngine"
+  c_mcDiscreteGeometricAPEngine :: Ptr CGeneralizedBlackScholesProcess -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcEuropeanEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Word -- ^timeSteps
+  -> Word -- ^timeStepsPerYear
+  -> Bool -- ^brownianBridge
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcEuropeanEngine = $(ffiCall 'mcEuropeanEngine) c_mcEuropeanEngine
+
+foreign import ccall safe "ql.h qlMCEuropeanEngine"
+  c_mcEuropeanEngine :: Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcEuropeanGJRGARCHEngine :: GJRGARCHProcess
+  -> Word -- ^timeSteps
+  -> Word -- ^timeStepsPerYear
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcEuropeanGJRGARCHEngine = $(ffiCall 'mcEuropeanGJRGARCHEngine) c_mcEuropeanGJRGARCHEngine
+
+foreign import ccall safe "ql.h qlMCEuropeanGJRGARCHEngine"
+  c_mcEuropeanGJRGARCHEngine :: Ptr CGJRGARCHProcess -> CUInt -> CUInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcEuropeanHestonEngine :: HestonProcess
+  -> Word -- ^timeSteps
+  -> Word -- ^timeStepsPerYear
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcEuropeanHestonEngine = $(ffiCall 'mcEuropeanHestonEngine) c_mcEuropeanHestonEngine
+
+foreign import ccall safe "ql.h qlMCEuropeanHestonEngine"
+  c_mcEuropeanHestonEngine :: Ptr CHestonProcess -> CUInt -> CUInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcHullWhiteCapFloorEngine :: HullWhite -- ^model
+  -> Bool -- ^brownianBridge
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcHullWhiteCapFloorEngine = $(ffiCall 'mcHullWhiteCapFloorEngine) c_mcHullWhiteCapFloorEngine
+
+foreign import ccall safe "ql.h qlMCHullWhiteCapFloorEngine"
+  c_mcHullWhiteCapFloorEngine :: Ptr CHullWhite -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcPerformanceEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Bool -- ^brownianBridge
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcPerformanceEngine = $(ffiCall 'mcPerformanceEngine) c_mcPerformanceEngine
+
+foreign import ccall safe "ql.h qlMCPerformanceEngine"
+  c_mcPerformanceEngine :: Ptr CGeneralizedBlackScholesProcess -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
