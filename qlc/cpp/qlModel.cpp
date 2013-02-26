@@ -170,4 +170,12 @@ QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, Ql
     return handleException<QlLiborForwardModel*>(e, er);
   }
 }
+QlCalibratedModel* qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
+QlCalibratedModel* qlHestonModelAsCalibratedModel(QlHestonModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
+QlHestonModel* qlBatesModelAsHestonModel(QlBatesModel *o) { return ret(new QlHestonModel(*arg(o))); }
+QlCalibratedModel* qlLiborForwardModelAsCalibratedModel(QlLiborForwardModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
+QlCalibratedModel* qlPiecewiseTimeDependentHestonModelAsCalibratedModel(QlPiecewiseTimeDependentHestonModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
+QlCalibratedModel* qlShortRateModelAsCalibratedModel(QlShortRateModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
+QlShortRateModel* qlOneFactorAffineModelAsShortRateModel(QlOneFactorAffineModel *o) { return ret(new QlShortRateModel(*arg(o))); }
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

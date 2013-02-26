@@ -741,6 +741,41 @@ instance Finalizable CLmVolatilityModel where
 foreign import ccall safe "ql.h &qlFreeLmVolatilityModel"
   p_freeLmVolatilityModel :: FunPtr (Ptr CLmVolatilityModel -> IO ())
 
+instance Upcastable CGJRGARCHModel CCalibratedModel where
+  c_upcast = c_GJRGARCHModelAsCalibratedModel
+foreign import ccall safe "ql.h qlGJRGARCHModelAsCalibratedModel"
+  c_GJRGARCHModelAsCalibratedModel :: Ptr CGJRGARCHModel -> IO (Ptr CCalibratedModel)
+
+instance Upcastable CHestonModel CCalibratedModel where
+  c_upcast = c_HestonModelAsCalibratedModel
+foreign import ccall safe "ql.h qlHestonModelAsCalibratedModel"
+  c_HestonModelAsCalibratedModel :: Ptr CHestonModel -> IO (Ptr CCalibratedModel)
+
+instance Upcastable CBatesModel CHestonModel where
+  c_upcast = c_BatesModelAsHestonModel
+foreign import ccall safe "ql.h qlBatesModelAsHestonModel"
+  c_BatesModelAsHestonModel :: Ptr CBatesModel -> IO (Ptr CHestonModel)
+
+instance Upcastable CLiborForwardModel CCalibratedModel where
+  c_upcast = c_LiborForwardModelAsCalibratedModel
+foreign import ccall safe "ql.h qlLiborForwardModelAsCalibratedModel"
+  c_LiborForwardModelAsCalibratedModel :: Ptr CLiborForwardModel -> IO (Ptr CCalibratedModel)
+
+instance Upcastable CPiecewiseTimeDependentHestonModel CCalibratedModel where
+  c_upcast = c_PiecewiseTimeDependentHestonModelAsCalibratedModel
+foreign import ccall safe "ql.h qlPiecewiseTimeDependentHestonModelAsCalibratedModel"
+  c_PiecewiseTimeDependentHestonModelAsCalibratedModel :: Ptr CPiecewiseTimeDependentHestonModel -> IO (Ptr CCalibratedModel)
+
+instance Upcastable CShortRateModel CCalibratedModel where
+  c_upcast = c_ShortRateModelAsCalibratedModel
+foreign import ccall safe "ql.h qlShortRateModelAsCalibratedModel"
+  c_ShortRateModelAsCalibratedModel :: Ptr CShortRateModel -> IO (Ptr CCalibratedModel)
+
+instance Upcastable COneFactorAffineModel CShortRateModel where
+  c_upcast = c_OneFactorAffineModelAsShortRateModel
+foreign import ccall safe "ql.h qlOneFactorAffineModelAsShortRateModel"
+  c_OneFactorAffineModelAsShortRateModel :: Ptr COneFactorAffineModel -> IO (Ptr CShortRateModel)
+
 -- processes
 data CStochasticProcess1D
 instance Finalizable CStochasticProcess1D where

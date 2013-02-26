@@ -168,6 +168,7 @@ module QuantLib.Types
   , asAffineModel
   , asOneFactorAffineModel
   , asShortRateModel
+  , asCalibratedModel
   , asBatesModel
   , asHestonModel
   , asBatesDoubleExpModel
@@ -379,6 +380,9 @@ asOneFactorAffineModel = upcast
 
 asShortRateModel :: (Upcastable a CShortRateModel) => ForeignPtr a -> IO ShortRateModel
 asShortRateModel = upcast
+
+asCalibratedModel :: (Upcastable a CCalibratedModel) => ForeignPtr a -> IO CalibratedModel
+asCalibratedModel = upcast
 
 type BatesDetJumpModel = ForeignPtr CBatesDetJumpModel
 type BatesDoubleExpDetJumpModel = ForeignPtr CBatesDoubleExpDetJumpModel

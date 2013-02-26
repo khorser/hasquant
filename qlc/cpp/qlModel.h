@@ -57,6 +57,14 @@ extern "C" {
   QlLmCorrelationModel* DLLEXPORT qlLmLinearExponentialCorrelationModel(unsigned size, double rho, double beta, unsigned factors, char **e);
   QlLmVolatilityModel* DLLEXPORT qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLen, double * fixingTimes, double a, double b, double c, double d, char **e);
   QlLiborForwardModel* DLLEXPORT qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e);
+
+  QlCalibratedModel* DLLEXPORT qlGJRGARCHModelAsCalibratedModel(QlGJRGARCHModel *o);
+  QlCalibratedModel* DLLEXPORT qlHestonModelAsCalibratedModel(QlHestonModel *o);
+  QlHestonModel* DLLEXPORT qlBatesModelAsHestonModel(QlBatesModel *o);
+  QlCalibratedModel* DLLEXPORT qlLiborForwardModelAsCalibratedModel(QlLiborForwardModel *o);
+  QlCalibratedModel* DLLEXPORT qlPiecewiseTimeDependentHestonModelAsCalibratedModel(QlPiecewiseTimeDependentHestonModel *o);
+  QlCalibratedModel* DLLEXPORT qlShortRateModelAsCalibratedModel(QlShortRateModel *o);
+  QlShortRateModel* DLLEXPORT qlOneFactorAffineModelAsShortRateModel(QlOneFactorAffineModel *o);
 #ifdef __cplusplus
 }
 #endif
