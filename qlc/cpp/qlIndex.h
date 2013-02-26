@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   void DLLEXPORT qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e);
   void DLLEXPORT qlFreeIndex(QlIndex *i);
   void DLLEXPORT qlFreeInterestRateIndex(QlInterestRateIndex *o);
@@ -33,6 +35,8 @@ extern "C" {
   QlOvernightIndexedSwap* DLLEXPORT qlOvernightIndexedSwapIndexUnderlyingSwap(QlOvernightIndexedSwapIndex* o, int fixingDate, char **e);
   QlVanillaSwap* DLLEXPORT qlSwapIndexUnderlyingSwap(QlSwapIndex* o, int fixingDate, char **e);
   double DLLEXPORT qlInterestRateIndexForecastFixing(QlInterestRateIndex* o, int fixingDate, char **e);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

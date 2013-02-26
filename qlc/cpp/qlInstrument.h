@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   void DLLEXPORT qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
     char **e);
   double DLLEXPORT qlInstrumentNPV(QlInstrument *instr, char **e);
@@ -68,6 +70,8 @@ extern "C" {
   QlAmericanExercise* DLLEXPORT qlAmericanExercise1(int latestDate, int payoffAtExpiry, char **e);
   QlSwingExercise* DLLEXPORT qlSwingExercise(unsigned datesLen, int* dates, unsigned* seconds, char **e);
   QlSwingExercise* DLLEXPORT qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char **e);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

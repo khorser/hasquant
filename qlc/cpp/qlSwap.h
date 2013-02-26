@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   void DLLEXPORT qlFreeSwap(QlSwap *o);
   QlInstrument* DLLEXPORT qlSwapAsInstrument(QlSwap *o);
   void DLLEXPORT qlFreeVanillaSwap(QlVanillaSwap *o);
@@ -73,6 +75,8 @@ extern "C" {
   double DLLEXPORT qlVanillaSwapFixedLegNPV(QlVanillaSwap* o, char **e);
   double DLLEXPORT qlVanillaSwapFloatingLegBPS(QlVanillaSwap* o, char **e);
   double DLLEXPORT qlVanillaSwapFloatingLegNPV(QlVanillaSwap* o, char **e);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

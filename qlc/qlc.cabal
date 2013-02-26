@@ -42,9 +42,9 @@ Extra-source-files:
               cpp/qlUtilities.cpp
               cpp/qlVolatilityTS.cpp
               cpp/qlYieldTS.cpp
-              cpp/qlYieldTSAux.cpp
+              cpp/qlTSAux.cpp
               cpp/qlaux.h
-              cpp/qlYieldTSAux.h
+              cpp/qlTSAux.h
 
 Library
   Include-Dirs: cpp
@@ -76,7 +76,6 @@ Library
                     qlUtilities.h
                     qlVolatilityTS.h
                     qlYieldTS.h
-                    qlYieldTSAux.h
   Build-Depends: base >= 4.5 && < 5
 
   X-Dll-Sources:
@@ -107,7 +106,7 @@ Library
               cpp/qlUtilities.cpp
               cpp/qlVolatilityTS.cpp
               cpp/qlYieldTS.cpp
-              cpp/qlYieldTSAux.cpp
+              cpp/qlTSAux.cpp
 
   X-Dll-Name: qlc
   X-Dll-Extra-Libraries: QuantLib

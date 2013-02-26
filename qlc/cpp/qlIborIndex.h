@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   QlIborIndex *DLLEXPORT qlIborIndex(char *name, Period *period, unsigned settlDays,
     Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount,
     QlYieldTermStructure *fwd, char **e);
@@ -33,6 +35,8 @@ extern "C" {
   QlInterestRateIndex* DLLEXPORT qlIborIndexAsInterestRateIndex(QlIborIndex *o);
   void DLLEXPORT qlFreeOvernightIndex(QlOvernightIndex *o);
   QlIborIndex* DLLEXPORT qlOvernightIndexAsIborIndex(QlOvernightIndex *o);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

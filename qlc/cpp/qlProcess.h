@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   void DLLEXPORT qlFreeBlackProcess(QlBlackProcess *o);
   QlGeneralizedBlackScholesProcess* DLLEXPORT qlBlackProcessAsGeneralizedBlackScholesProcess(QlBlackProcess *o);
   void DLLEXPORT qlFreeGeneralizedBlackScholesProcess(QlGeneralizedBlackScholesProcess *o);
@@ -71,6 +73,8 @@ extern "C" {
   QlMerton76Process* DLLEXPORT qlMerton76Process(QlQuote* stateVariable, QlYieldTermStructure* dividendTS, QlYieldTermStructure* riskFreeTS, QlBlackVolTermStructure* blackVolTS, QlQuote* jumpInt, QlQuote* logJMean, QlQuote* logJVol, char*  d, char **e);
   QlStochasticProcess1D* DLLEXPORT qlOrnsteinUhlenbeckProcess(double speed, double vol, double x0, double level, char **e);
   QlVarianceGammaProcess* DLLEXPORT qlVarianceGammaProcess(QlQuote* s0, QlYieldTermStructure* dividendYield, QlYieldTermStructure* riskFreeRate, double sigma, double nu, double theta, char **e);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

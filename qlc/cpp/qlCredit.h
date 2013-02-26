@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   void DLLEXPORT qlFreeCreditDefaultSwap(QlCreditDefaultSwap *o);
   QlInstrument* DLLEXPORT qlCreditDefaultSwapAsInstrument(QlCreditDefaultSwap *o);
   void DLLEXPORT qlFreeClaim(QlClaim *o);
@@ -20,6 +22,8 @@ extern "C" {
   QlCreditDefaultSwap* DLLEXPORT qlCreditDefaultSwap1(int side, double notional, double upfront, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, int upfrontDate, QlClaim* x11, char **e);
   QlOption* DLLEXPORT qlCdsOptionAsOption(QlCdsOption *o);
   void DLLEXPORT qlFreeCdsOption(QlCdsOption *o);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

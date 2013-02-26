@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   InterestRate *DLLEXPORT qlInterestRate(double r, DayCounter *dc, int comp, int freq,
     char **e);
   double DLLEXPORT qlInterestRateCompoundFactor1(InterestRate* o, int d1, int d2, int refStart, int refEnd, char **e);
@@ -24,6 +26,8 @@ extern "C" {
   double DLLEXPORT qlInterestRateRate(InterestRate* o);
 
   void DLLEXPORT qlFreeInterestRate(InterestRate *rate);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

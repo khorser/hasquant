@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   Currency *DLLEXPORT qlCurrency(const char *name, char **e);
   const char *DLLEXPORT qlCurrencyName(Currency *currency);
 
@@ -25,6 +27,8 @@ extern "C" {
   Rounding* DLLEXPORT qlRounding(char **e);
   Rounding* DLLEXPORT qlRounding1(int precision, int type, int digit, char **e);
   Currency* DLLEXPORT qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

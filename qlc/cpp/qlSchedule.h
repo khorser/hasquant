@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   Schedule *DLLEXPORT qlSchedule(int eff, int term, Period *tenor, Calendar *cal,
         int conv, int termConv, int rule, int eom, int first, int nextToLast,
 	char **e);
@@ -20,6 +22,8 @@ extern "C" {
   int *DLLEXPORT qlScheduleDates(Schedule *sched, unsigned *count);
 
   void DLLEXPORT qlFreeSchedule(Schedule *s);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   void DLLEXPORT qlFreeBarrierOption(QlBarrierOption *o);
   QlOneAssetOption* DLLEXPORT qlBarrierOptionAsOneAssetOption(QlBarrierOption *o);
   void DLLEXPORT qlFreeDividendVanillaOption(QlDividendVanillaOption *o);
@@ -100,6 +102,8 @@ extern "C" {
   QlOneAssetOption* DLLEXPORT qlVanillaStorageOption(QlBermudanExercise* ex, double capacity, double load, double changeRate, char **e);
   QlOneAssetOption* DLLEXPORT qlVanillaSwingOption(QlStrikedTypePayoff* payoff, QlSwingExercise* ex, unsigned minExerciseRights, unsigned maxExerciseRights, char **e);
   QlVanillaOption* DLLEXPORT qlEuropeanOption(QlStrikedTypePayoff* x0, QlExercise* x1, char **e);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

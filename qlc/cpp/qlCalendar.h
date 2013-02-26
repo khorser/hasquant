@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   Calendar *DLLEXPORT qlCalendar(const char *name, char **e);
   const char *DLLEXPORT qlCalendarName(Calendar *calendar);
   int DLLEXPORT qlCalendarAdjust(Calendar *c, int date, int conv);
@@ -31,6 +33,8 @@ extern "C" {
 
   int* DLLEXPORT qlCalendarHolidayList(Calendar* calendar, int from, int to, int includeWeekEnds, unsigned *len, char **e);
   void DLLEXPORT qlFreeCalendar(Calendar *calendar);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

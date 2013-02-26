@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   void DLLEXPORT qlFreeGJRGARCHModel(QlGJRGARCHModel *o);
   void DLLEXPORT qlFreeHestonModel(QlHestonModel *o);
   void DLLEXPORT qlFreeBatesModel(QlBatesModel *o);
@@ -38,6 +40,8 @@ extern "C" {
   QlOneFactorAffineModel* DLLEXPORT qlVasicek(double r0, double a, double b, double sigma, double lambda, char **e);
   void DLLEXPORT qlFreeG2(QlG2 *o);
   QlAffineModel* DLLEXPORT qlG2AsAffineModel(QlG2 *o);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

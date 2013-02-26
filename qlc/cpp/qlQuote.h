@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   QlSimpleQuote *DLLEXPORT qlSimpleQuote(double value, char **e);
   double DLLEXPORT qlQuoteValue(QlQuote *quote, char **e);
 
@@ -26,6 +28,8 @@ extern "C" {
   QlQuote* DLLEXPORT qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, double strike, double guess, double accuracy, unsigned maxIter, char **e);
   QlQuote* DLLEXPORT qlLastFixingQuote(QlIndex* index, char **e);
   int DLLEXPORT qlQuoteIsValid(QlQuote* o, char **e);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

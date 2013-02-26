@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   QlRateHelper *DLLEXPORT qlDepositRateHelper(QlQuote *quote, Period *period,
     unsigned fixDays, Calendar *calendar, int conv, int eom,
     DayCounter *dayCount, char **e);
@@ -76,12 +78,12 @@ extern "C" {
   QlYieldTermStructure *DLLEXPORT qlInterpolatedZeroCurve(unsigned yieldLen,
     double *yields, int *yieldDates, DayCounter *dayCount, Calendar *cal, unsigned quoteLen,
     QlQuote **quotes, int *dates, char *interpolator, char **e);
-  void DLLEXPORT qlFreeFittedBondDiscountCurveFittingMethod(QuantLib::FittedBondDiscountCurve::FittingMethod *o);
-  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlCubicBSplinesFitting(unsigned knotVectorLen, double * knotVector, int constrainAtZero, char **e);
-  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlExponentialSplinesFitting(int constrainAtZero, char **e);
-  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlNelsonSiegelFitting(char **e);
-  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e);
-  QuantLib::FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlSvenssonFitting(char **e);
+  void DLLEXPORT qlFreeFittedBondDiscountCurveFittingMethod(FittedBondDiscountCurve::FittingMethod *o);
+  FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlCubicBSplinesFitting(unsigned knotVectorLen, double * knotVector, int constrainAtZero, char **e);
+  FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlExponentialSplinesFitting(int constrainAtZero, char **e);
+  FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlNelsonSiegelFitting(char **e);
+  FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlSimplePolynomialFitting(unsigned degree, int constrainAtZero, char **e);
+  FittedBondDiscountCurve::FittingMethod* DLLEXPORT qlSvenssonFitting(char **e);
   QlFittedBondDiscountCurve* DLLEXPORT qlFittedBondDiscountCurve(unsigned settlementDays, Calendar* calendar, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e);
   QlFittedBondDiscountCurve* DLLEXPORT qlFittedBondDiscountCurve1(int referenceDate, unsigned bondsLen, QlBondHelper** bonds, DayCounter* dayCounter, FittedBondDiscountCurve::FittingMethod* fittingMethod, double accuracy, unsigned maxEvaluations, unsigned guessLen, double *guess, double simplexLambda, char **e);
 
@@ -95,6 +97,8 @@ extern "C" {
   int DLLEXPORT qlTermStructureReferenceDate(QlTermStructure* o, char **e);
   void DLLEXPORT qlFreeTermStructure(QlTermStructure *o);
   QlTermStructure* DLLEXPORT qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

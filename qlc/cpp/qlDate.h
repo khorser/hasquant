@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   int DLLEXPORT qlMinDateSerialNumber();
   int DLLEXPORT qlMaxDateSerialNumber();
   int DLLEXPORT qlMinYear();
@@ -31,6 +33,8 @@ extern "C" {
   char* DLLEXPORT qlIMMNextCode(int d, int mainCycle, char **e);
   int DLLEXPORT qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e);
   int DLLEXPORT qlIMMNextDate(int d, int mainCycle, char **e);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -10,10 +10,14 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   QlFloatingRateCouponPricer *DLLEXPORT qlBlackIborCouponPricer(
     QlOptionletVolatilityStructure *vol, char **e);
   void DLLEXPORT qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

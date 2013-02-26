@@ -1,4 +1,4 @@
-#include "qlYieldTSAux.h"
+#include "qlTSAux.h"
 
 using namespace QuantLib;
 

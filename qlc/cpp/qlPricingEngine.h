@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   QlPricingEngine *DLLEXPORT qlDiscountingBondEngine(QlYieldTermStructure *ts, int f, char **e);
   QlPricingEngine* DLLEXPORT qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e);
   QlPricingEngine* DLLEXPORT qlAnalyticBarrierEngine(QlGeneralizedBlackScholesProcess* process, char **e);
@@ -90,6 +92,8 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlTreeSwaptionEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
   QlPricingEngine* DLLEXPORT qlTreeVanillaSwapEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
   QlPricingEngine* DLLEXPORT qlVarianceGammaEngine(QlVarianceGammaProcess* x0, char **e);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

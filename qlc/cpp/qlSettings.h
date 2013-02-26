@@ -10,7 +10,9 @@
 # define DLLEXPORT
 #endif
 
+#ifdef __cplusplus
 extern "C" {
+#endif
   int DLLEXPORT qlSettingsEvaluationDate();
   int DLLEXPORT qlSettingsEnforceTodaysHistoricFixings();
   void DLLEXPORT qlSettingsSetEvaluationDate(int x, char **e);
@@ -23,6 +25,8 @@ extern "C" {
   void DLLEXPORT qlSettingsSetIncludeReferenceDateEvents(int x0);
   void *DLLEXPORT qlSavedSettings();
   void DLLEXPORT qlFreeSavedSettings(void *settings);
+#ifdef __cplusplus
 }
+#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
