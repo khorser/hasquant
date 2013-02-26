@@ -70,6 +70,11 @@ module QuantLib.Types
   , HullWhite
   , CalibratedModel
   , G2
+  , BatesDetJumpModel
+  , BatesDoubleExpDetJumpModel
+  , BatesDoubleExpModel
+  , LmCorrelationModel
+  , LmVolatilityModel
 
   -- pricingengines
   , PricingEngine
@@ -163,6 +168,9 @@ module QuantLib.Types
   , asAffineModel
   , asOneFactorAffineModel
   , asShortRateModel
+  , asBatesModel
+  , asHestonModel
+  , asBatesDoubleExpModel
 
   , asBlackCalculator
   )
@@ -371,6 +379,22 @@ asOneFactorAffineModel = upcast
 
 asShortRateModel :: (Upcastable a CShortRateModel) => ForeignPtr a -> IO ShortRateModel
 asShortRateModel = upcast
+
+type BatesDetJumpModel = ForeignPtr CBatesDetJumpModel
+type BatesDoubleExpDetJumpModel = ForeignPtr CBatesDoubleExpDetJumpModel
+type BatesDoubleExpModel = ForeignPtr CBatesDoubleExpModel
+
+asBatesDoubleExpModel :: (Upcastable a CBatesDoubleExpModel) => ForeignPtr a -> IO BatesDoubleExpModel
+asBatesDoubleExpModel = upcast
+
+asBatesModel :: (Upcastable a CBatesModel) => ForeignPtr a -> IO BatesModel
+asBatesModel = upcast
+
+asHestonModel :: (Upcastable a CHestonModel) => ForeignPtr a -> IO HestonModel
+asHestonModel = upcast
+
+type LmCorrelationModel = ForeignPtr CLmCorrelationModel
+type LmVolatilityModel = ForeignPtr CLmVolatilityModel
 
 -- pricingengines
 type PricingEngine = ForeignPtr CPricingEngine

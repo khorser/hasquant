@@ -48,6 +48,24 @@ module QuantLib.PricingEngine
   , mcEuropeanHestonEngine
   , mcHullWhiteCapFloorEngine
   , mcPerformanceEngine
+  , baroneAdesiWhaleyApproximationEngine
+  , batesDetJumpEngine'
+  , batesDetJumpEngine
+  , batesDoubleExpDetJumpEngine'
+  , batesDoubleExpDetJumpEngine
+  , batesDoubleExpEngine'
+  , batesDoubleExpEngine
+  , bjerksundStenslandApproximationEngine
+  , integralCdsEngine
+  , integralEngine
+  , jamshidianSwaptionEngine
+  , juQuadraticApproximationEngine
+  , kirkEngine
+  , mcVarianceSwapEngine
+  , midPointCdsEngine
+  , replicatingVarianceSwapEngine
+  , stulzEngine
+  , lfmSwaptionEngine
 
   , alpha
   , beta
@@ -944,5 +962,174 @@ mcPerformanceEngine = $(ffiCall 'mcPerformanceEngine) c_mcPerformanceEngine
 
 foreign import ccall safe "ql.h qlMCPerformanceEngine"
   c_mcPerformanceEngine :: Ptr CGeneralizedBlackScholesProcess -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+baroneAdesiWhaleyApproximationEngine :: GeneralizedBlackScholesProcess
+  -> IO PricingEngine
+baroneAdesiWhaleyApproximationEngine = $(ffiCall 'baroneAdesiWhaleyApproximationEngine) c_baroneAdesiWhaleyApproximationEngine
+
+foreign import ccall safe "ql.h qlBaroneAdesiWhaleyApproximationEngine"
+  c_baroneAdesiWhaleyApproximationEngine :: Ptr CGeneralizedBlackScholesProcess -> Ptr CString -> IO (Ptr CPricingEngine)
+
+batesDetJumpEngine' :: BatesDetJumpModel -- ^model
+  -> Double -- ^relTolerance
+  -> Word -- ^maxEvaluations
+  -> IO PricingEngine
+batesDetJumpEngine' = $(ffiCall 'batesDetJumpEngine') c_batesDetJumpEngine'
+
+foreign import ccall safe "ql.h qlBatesDetJumpEngine1"
+  c_batesDetJumpEngine' :: Ptr CBatesDetJumpModel -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+batesDetJumpEngine :: BatesDetJumpModel -- ^model
+  -> Word -- ^integrationOrder
+  -> IO PricingEngine
+batesDetJumpEngine = $(ffiCall 'batesDetJumpEngine) c_batesDetJumpEngine
+
+foreign import ccall safe "ql.h qlBatesDetJumpEngine"
+  c_batesDetJumpEngine :: Ptr CBatesDetJumpModel -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+batesDoubleExpDetJumpEngine' :: BatesDoubleExpDetJumpModel -- ^model
+  -> Double -- ^relTolerance
+  -> Word -- ^maxEvaluations
+  -> IO PricingEngine
+batesDoubleExpDetJumpEngine' = $(ffiCall 'batesDoubleExpDetJumpEngine') c_batesDoubleExpDetJumpEngine'
+
+foreign import ccall safe "ql.h qlBatesDoubleExpDetJumpEngine1"
+  c_batesDoubleExpDetJumpEngine' :: Ptr CBatesDoubleExpDetJumpModel -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+batesDoubleExpDetJumpEngine :: BatesDoubleExpDetJumpModel -- ^model
+  -> Word -- ^integrationOrder
+  -> IO PricingEngine
+batesDoubleExpDetJumpEngine = $(ffiCall 'batesDoubleExpDetJumpEngine) c_batesDoubleExpDetJumpEngine
+
+foreign import ccall safe "ql.h qlBatesDoubleExpDetJumpEngine"
+  c_batesDoubleExpDetJumpEngine :: Ptr CBatesDoubleExpDetJumpModel -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+batesDoubleExpEngine' :: BatesDoubleExpModel -- ^model
+  -> Double -- ^relTolerance
+  -> Word -- ^maxEvaluations
+  -> IO PricingEngine
+batesDoubleExpEngine' = $(ffiCall 'batesDoubleExpEngine') c_batesDoubleExpEngine'
+
+foreign import ccall safe "ql.h qlBatesDoubleExpEngine1"
+  c_batesDoubleExpEngine' :: Ptr CBatesDoubleExpModel -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+batesDoubleExpEngine :: BatesDoubleExpModel -- ^model
+  -> Word -- ^integrationOrder
+  -> IO PricingEngine
+batesDoubleExpEngine = $(ffiCall 'batesDoubleExpEngine) c_batesDoubleExpEngine
+
+foreign import ccall safe "ql.h qlBatesDoubleExpEngine"
+  c_batesDoubleExpEngine :: Ptr CBatesDoubleExpModel -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+bjerksundStenslandApproximationEngine :: GeneralizedBlackScholesProcess
+  -> IO PricingEngine
+bjerksundStenslandApproximationEngine = $(ffiCall 'bjerksundStenslandApproximationEngine) c_bjerksundStenslandApproximationEngine
+
+foreign import ccall safe "ql.h qlBjerksundStenslandApproximationEngine"
+  c_bjerksundStenslandApproximationEngine :: Ptr CGeneralizedBlackScholesProcess -> Ptr CString -> IO (Ptr CPricingEngine)
+
+integralCdsEngine :: Period -- ^integrationStep
+  -> DefaultProbabilityTermStructure
+  -> Double -- ^recoveryRate
+  -> YieldTermStructure -- ^discountCurve
+  -> Maybe Bool -- ^includeSettlementDateFlows
+  -> IO PricingEngine
+integralCdsEngine = $(ffiCall 'integralCdsEngine) c_integralCdsEngine
+
+foreign import ccall safe "ql.h qlIntegralCdsEngine"
+  c_integralCdsEngine :: Ptr CPeriod -> Ptr CDefaultProbabilityTermStructure -> CDouble -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+integralEngine :: GeneralizedBlackScholesProcess
+  -> IO PricingEngine
+integralEngine = $(ffiCall 'integralEngine) c_integralEngine
+
+foreign import ccall safe "ql.h qlIntegralEngine"
+  c_integralEngine :: Ptr CGeneralizedBlackScholesProcess -> Ptr CString -> IO (Ptr CPricingEngine)
+
+-- |the term structure is only needed when the short-rate model cannot provide one itself.
+jamshidianSwaptionEngine :: OneFactorAffineModel -- ^model
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+jamshidianSwaptionEngine = $(ffiCall 'jamshidianSwaptionEngine) c_jamshidianSwaptionEngine
+
+foreign import ccall safe "ql.h qlJamshidianSwaptionEngine"
+  c_jamshidianSwaptionEngine :: Ptr COneFactorAffineModel -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+juQuadraticApproximationEngine :: GeneralizedBlackScholesProcess
+  -> IO PricingEngine
+juQuadraticApproximationEngine = $(ffiCall 'juQuadraticApproximationEngine) c_juQuadraticApproximationEngine
+
+foreign import ccall safe "ql.h qlJuQuadraticApproximationEngine"
+  c_juQuadraticApproximationEngine :: Ptr CGeneralizedBlackScholesProcess -> Ptr CString -> IO (Ptr CPricingEngine)
+
+kirkEngine :: BlackProcess -- ^process1
+  -> BlackProcess -- ^process2
+  -> Double -- ^correlation
+  -> IO PricingEngine
+kirkEngine = $(ffiCall 'kirkEngine) c_kirkEngine
+
+foreign import ccall safe "ql.h qlKirkEngine"
+  c_kirkEngine :: Ptr CBlackProcess -> Ptr CBlackProcess -> CDouble -> Ptr CString -> IO (Ptr CPricingEngine)
+
+mcVarianceSwapEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Word -- ^timeSteps
+  -> Word -- ^timeStepsPerYear
+  -> Bool -- ^brownianBridge
+  -> Bool -- ^antitheticVariate
+  -> Word -- ^requiredSamples
+  -> Double -- ^requiredTolerance
+  -> Word -- ^maxSamples
+  -> Word -- ^seed
+  -> IO PricingEngine
+mcVarianceSwapEngine = $(ffiCall 'mcVarianceSwapEngine) c_mcVarianceSwapEngine
+
+foreign import ccall safe "ql.h qlMCVarianceSwapEngine"
+  c_mcVarianceSwapEngine :: Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+midPointCdsEngine :: DefaultProbabilityTermStructure
+  -> Double -- ^recoveryRate
+  -> YieldTermStructure -- ^discountCurve
+  -> Maybe Bool -- ^includeSettlementDateFlows
+  -> IO PricingEngine
+midPointCdsEngine = $(ffiCall 'midPointCdsEngine) c_midPointCdsEngine
+
+foreign import ccall safe "ql.h qlMidPointCdsEngine"
+  c_midPointCdsEngine :: Ptr CDefaultProbabilityTermStructure -> CDouble -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+replicatingVarianceSwapEngine :: GeneralizedBlackScholesProcess -- ^process
+  -> Double -- ^dk
+  -> [Double] -- ^callStrikes
+  -> [Double] -- ^putStrikes
+  -> IO PricingEngine
+replicatingVarianceSwapEngine = $(ffiCall 'replicatingVarianceSwapEngine) c_replicatingVarianceSwapEngine
+
+foreign import ccall safe "ql.h qlReplicatingVarianceSwapEngine"
+  c_replicatingVarianceSwapEngine :: Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CPricingEngine)
+
+stulzEngine :: GeneralizedBlackScholesProcess -- ^process1
+  -> GeneralizedBlackScholesProcess -- ^process2
+  -> Double -- ^correlation
+  -> IO PricingEngine
+stulzEngine = $(ffiCall 'stulzEngine) c_stulzEngine
+
+foreign import ccall safe "ql.h qlStulzEngine"
+  c_stulzEngine :: Ptr CGeneralizedBlackScholesProcess -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> Ptr CString -> IO (Ptr CPricingEngine)
+
+lfmSwaptionEngine :: LiborForwardModel -- ^model
+  -> YieldTermStructure -- ^discountCurve
+  -> IO PricingEngine
+lfmSwaptionEngine = $(ffiCall 'lfmSwaptionEngine) c_lfmSwaptionEngine
+
+foreign import ccall safe "ql.h qlLfmSwaptionEngine"
+  c_lfmSwaptionEngine :: Ptr CLiborForwardModel -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+liborForwardModel :: LiborForwardModelProcess -- ^process
+  -> LmVolatilityModel -- ^volaModel
+  -> LmCorrelationModel -- ^corrModel
+  -> IO LiborForwardModel
+liborForwardModel = $(ffiCall 'liborForwardModel) c_liborForwardModel
+
+foreign import ccall safe "ql.h qlLiborForwardModel"
+  c_liborForwardModel :: Ptr CLiborForwardModelProcess -> Ptr CLmVolatilityModel -> Ptr CLmCorrelationModel -> Ptr CString -> IO (Ptr CLiborForwardModel)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

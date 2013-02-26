@@ -706,4 +706,26 @@ typedef boost::shared_ptr<G2> QlG2;
 template <> class objClassName<G2 *> { public: static const char *name() { return "G2"; } };
 template <> class objClassName<QlG2 *> { public: static const char *name() { return "QlG2"; } };
 
+namespace QuantLib {class BatesDetJumpModel;} using QuantLib::BatesDetJumpModel;
+typedef boost::shared_ptr<BatesDetJumpModel> QlBatesDetJumpModel;
+template <> class objClassName<BatesDetJumpModel *> { public: static const char *name() { return "BatesDetJumpModel"; } };
+template <> class objClassName<QlBatesDetJumpModel *> { public: static const char *name() { return "QlBatesDetJumpModel"; } };
+namespace QuantLib {class BatesDoubleExpDetJumpModel;} using QuantLib::BatesDoubleExpDetJumpModel;
+typedef boost::shared_ptr<BatesDoubleExpDetJumpModel> QlBatesDoubleExpDetJumpModel;
+template <> class objClassName<BatesDoubleExpDetJumpModel *> { public: static const char *name() { return "BatesDoubleExpDetJumpModel"; } };
+template <> class objClassName<QlBatesDoubleExpDetJumpModel *> { public: static const char *name() { return "QlBatesDoubleExpDetJumpModel"; } };
+namespace QuantLib {class BatesDoubleExpModel;} using QuantLib::BatesDoubleExpModel;
+typedef boost::shared_ptr<BatesDoubleExpModel> QlBatesDoubleExpModel;
+template <> class objClassName<BatesDoubleExpModel *> { public: static const char *name() { return "BatesDoubleExpModel"; } };
+template <> class objClassName<QlBatesDoubleExpModel *> { public: static const char *name() { return "QlBatesDoubleExpModel"; } };
+
+namespace QuantLib {class LmCorrelationModel;} using QuantLib::LmCorrelationModel;
+typedef boost::shared_ptr<LmCorrelationModel> QlLmCorrelationModel;
+template <> class objClassName<LmCorrelationModel *> { public: static const char *name() { return "LmCorrelationModel"; } };
+template <> class objClassName<QlLmCorrelationModel *> { public: static const char *name() { return "QlLmCorrelationModel"; } };
+namespace QuantLib {class LmVolatilityModel;} using QuantLib::LmVolatilityModel;
+typedef boost::shared_ptr<LmVolatilityModel> QlLmVolatilityModel;
+template <> class objClassName<LmVolatilityModel *> { public: static const char *name() { return "LmVolatilityModel"; } };
+template <> class objClassName<QlLmVolatilityModel *> { public: static const char *name() { return "QlLmVolatilityModel"; } };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

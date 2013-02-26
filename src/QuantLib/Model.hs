@@ -14,6 +14,13 @@ module QuantLib.Model
   , hullWhite
   , varianceGammaModel
   , vasicek
+  , lmConstWrapperCorrelationModel
+  , lmConstWrapperVolatilityModel
+  , lmExponentialCorrelationModel
+  , lmFixedVolatilityModel
+  , lmLinearExponentialCorrelationModel
+  , lmLinearExponentialVolatilityModel
+  , liborForwardModel
   )
 where
 
@@ -132,5 +139,65 @@ vasicek = $(ffiCall 'vasicek) c_vasicek
 
 foreign import ccall safe "ql.h qlVasicek"
   c_vasicek :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr COneFactorAffineModel)
+
+lmConstWrapperCorrelationModel :: LmCorrelationModel -- ^corrModel
+  -> IO LmCorrelationModel
+lmConstWrapperCorrelationModel = $(ffiCall 'lmConstWrapperCorrelationModel) c_lmConstWrapperCorrelationModel
+
+foreign import ccall safe "ql.h qlLmConstWrapperCorrelationModel"
+  c_lmConstWrapperCorrelationModel :: Ptr CLmCorrelationModel -> Ptr CString -> IO (Ptr CLmCorrelationModel)
+
+lmConstWrapperVolatilityModel :: LmVolatilityModel -- ^volaModel
+  -> IO LmVolatilityModel
+lmConstWrapperVolatilityModel = $(ffiCall 'lmConstWrapperVolatilityModel) c_lmConstWrapperVolatilityModel
+
+foreign import ccall safe "ql.h qlLmConstWrapperVolatilityModel"
+  c_lmConstWrapperVolatilityModel :: Ptr CLmVolatilityModel -> Ptr CString -> IO (Ptr CLmVolatilityModel)
+
+lmExponentialCorrelationModel :: Word -- ^size
+  -> Double -- ^rho
+  -> IO LmCorrelationModel
+lmExponentialCorrelationModel = $(ffiCall 'lmExponentialCorrelationModel) c_lmExponentialCorrelationModel
+
+foreign import ccall safe "ql.h qlLmExponentialCorrelationModel"
+  c_lmExponentialCorrelationModel :: CUInt -> CDouble -> Ptr CString -> IO (Ptr CLmCorrelationModel)
+
+lmFixedVolatilityModel :: [Double] -- ^volatilities
+  -> [YearFraction] -- ^startTimes
+  -> IO LmVolatilityModel
+lmFixedVolatilityModel = $(ffiCall 'lmFixedVolatilityModel) c_lmFixedVolatilityModel
+
+foreign import ccall safe "ql.h qlLmFixedVolatilityModel"
+  c_lmFixedVolatilityModel :: CUInt -> Ptr CDouble -> CUInt -> Ptr CYearFraction -> Ptr CString -> IO (Ptr CLmVolatilityModel)
+
+lmLinearExponentialCorrelationModel :: Word -- ^size
+  -> Double -- ^rho
+  -> Double -- ^beta
+  -> Word -- ^factors
+  -> IO LmCorrelationModel
+lmLinearExponentialCorrelationModel = $(ffiCall 'lmLinearExponentialCorrelationModel) c_lmLinearExponentialCorrelationModel
+
+foreign import ccall safe "ql.h qlLmLinearExponentialCorrelationModel"
+  c_lmLinearExponentialCorrelationModel :: CUInt -> CDouble -> CDouble -> CUInt -> Ptr CString -> IO (Ptr CLmCorrelationModel)
+
+lmLinearExponentialVolatilityModel :: [YearFraction] -- ^fixingTimes
+  -> Double -- ^a
+  -> Double -- ^b
+  -> Double -- ^c
+  -> Double -- ^d
+  -> IO LmVolatilityModel
+lmLinearExponentialVolatilityModel = $(ffiCall 'lmLinearExponentialVolatilityModel) c_lmLinearExponentialVolatilityModel
+
+foreign import ccall safe "ql.h qlLmLinearExponentialVolatilityModel"
+  c_lmLinearExponentialVolatilityModel :: CUInt -> Ptr CYearFraction -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CLmVolatilityModel)
+
+liborForwardModel :: LiborForwardModelProcess -- ^process
+  -> LmVolatilityModel -- ^volaModel
+  -> LmCorrelationModel -- ^corrModel
+  -> IO LiborForwardModel
+liborForwardModel = $(ffiCall 'liborForwardModel) c_liborForwardModel
+
+foreign import ccall safe "ql.h qlLiborForwardModel"
+  c_liborForwardModel :: Ptr CLiborForwardModelProcess -> Ptr CLmVolatilityModel -> Ptr CLmCorrelationModel -> Ptr CString -> IO (Ptr CLiborForwardModel)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

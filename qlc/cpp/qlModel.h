@@ -40,6 +40,22 @@ extern "C" {
   QlOneFactorAffineModel* DLLEXPORT qlVasicek(double r0, double a, double b, double sigma, double lambda, char **e);
   void DLLEXPORT qlFreeG2(QlG2 *o);
   QlAffineModel* DLLEXPORT qlG2AsAffineModel(QlG2 *o);
+  void DLLEXPORT qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o);
+  QlBatesModel* DLLEXPORT qlBatesDetJumpModelAsBatesModel(QlBatesDetJumpModel *o);
+  void DLLEXPORT qlFreeBatesDoubleExpDetJumpModel(QlBatesDoubleExpDetJumpModel *o);
+  QlBatesDoubleExpModel* DLLEXPORT qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel(QlBatesDoubleExpDetJumpModel *o);
+  void DLLEXPORT qlFreeBatesDoubleExpModel(QlBatesDoubleExpModel *o);
+  QlHestonModel* DLLEXPORT qlBatesDoubleExpModelAsHestonModel(QlBatesDoubleExpModel *o);
+
+  void DLLEXPORT qlFreeLmCorrelationModel(QlLmCorrelationModel *o);
+  void DLLEXPORT qlFreeLmVolatilityModel(QlLmVolatilityModel *o);
+  QlLmCorrelationModel* DLLEXPORT qlLmConstWrapperCorrelationModel(QlLmCorrelationModel* corrModel, char **e);
+  QlLmVolatilityModel* DLLEXPORT qlLmConstWrapperVolatilityModel(QlLmVolatilityModel* volaModel, char **e);
+  QlLmCorrelationModel* DLLEXPORT qlLmExponentialCorrelationModel(unsigned size, double rho, char **e);
+  QlLmVolatilityModel* DLLEXPORT qlLmFixedVolatilityModel(unsigned volatilitiesLen, double* volatilities, unsigned startTimesLen, double * startTimes, char **e);
+  QlLmCorrelationModel* DLLEXPORT qlLmLinearExponentialCorrelationModel(unsigned size, double rho, double beta, unsigned factors, char **e);
+  QlLmVolatilityModel* DLLEXPORT qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLen, double * fixingTimes, double a, double b, double c, double d, char **e);
+  QlLiborForwardModel* DLLEXPORT qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e);
 #ifdef __cplusplus
 }
 #endif

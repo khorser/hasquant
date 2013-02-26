@@ -1,8 +1,0 @@
-->
-::const Handle< ShortRateModel > &
--- ^
-::Size
--- ^timeSteps
-::const Handle< YieldTermStructure > &
-=Handle< YieldTermStructure >()
--- ^termStructure

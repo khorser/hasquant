@@ -1,7 +1,0 @@
-->
-::const boost::shared_ptr< BatesDoubleExpModel > &
--- ^model
-::Real
--- ^relTolerance
-::Size
--- ^maxEvaluations

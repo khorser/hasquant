@@ -1,6 +1,0 @@
-->
-::const boost::shared_ptr< BatesDoubleExpDetJumpModel > &
--- ^model
-::Size
-=144
--- ^integrationOrder

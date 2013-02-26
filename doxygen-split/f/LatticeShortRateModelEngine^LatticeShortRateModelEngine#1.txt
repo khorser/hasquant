@@ -1,5 +1,0 @@
-->
-::const Handle< ShortRateModel > &
--- ^model
-::Size
--- ^timeSteps

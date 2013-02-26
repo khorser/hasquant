@@ -1,5 +1,6 @@
 #include <ql/pricingengines/all.hpp>
 #include <ql/experimental/variancegamma/all.hpp>
+#include <ql/legacy/libormarketmodels/lfmswaptionengine.hpp>
 
 #include "qlaux.h"
 #include "qlPricingEngine.h"
@@ -625,4 +626,130 @@ QlPricingEngine* qlMCPerformanceEngine(QlGeneralizedBlackScholesProcess* process
   }
 }
 
+QlPricingEngine* qlBaroneAdesiWhaleyApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BaroneAdesiWhaleyApproximationEngine((*arg(x0))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBatesDetJumpEngine1(QlBatesDetJumpModel* model, double relTolerance, unsigned maxEvaluations, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BatesDetJumpEngine((*arg(model)), relTolerance, maxEvaluations))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBatesDetJumpEngine(QlBatesDetJumpModel* model, unsigned integrationOrder, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BatesDetJumpEngine((*arg(model)), integrationOrder))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBatesDoubleExpDetJumpEngine1(QlBatesDoubleExpDetJumpModel* model, double relTolerance, unsigned maxEvaluations, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BatesDoubleExpDetJumpEngine((*arg(model)), relTolerance, maxEvaluations))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBatesDoubleExpDetJumpEngine(QlBatesDoubleExpDetJumpModel* model, unsigned integrationOrder, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BatesDoubleExpDetJumpEngine((*arg(model)), integrationOrder))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBatesDoubleExpEngine1(QlBatesDoubleExpModel* model, double relTolerance, unsigned maxEvaluations, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BatesDoubleExpEngine((*arg(model)), relTolerance, maxEvaluations))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBatesDoubleExpEngine(QlBatesDoubleExpModel* model, unsigned integrationOrder, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BatesDoubleExpEngine((*arg(model)), integrationOrder))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBjerksundStenslandApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BjerksundStenslandApproximationEngine((*arg(x0))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlIntegralCdsEngine(Period* integrationStep, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new IntegralCdsEngine((*arg(integrationStep)), Handle<DefaultProbabilityTermStructure>(*arg(x1)), recoveryRate, Handle<YieldTermStructure>(*arg(discountCurve)), qlOptBool(includeSettlementDateFlows)))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlIntegralEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new IntegralEngine((*arg(x0))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlJamshidianSwaptionEngine(QlOneFactorAffineModel* model, QlYieldTermStructure* termStructure, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new JamshidianSwaptionEngine((*arg(model)), qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlJuQuadraticApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new JuQuadraticApproximationEngine((*arg(x0))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlKirkEngine(QlBlackProcess* process1, QlBlackProcess* process2, double correlation, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new KirkEngine((*arg(process1)), (*arg(process2)), correlation))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlMCVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new MCVarianceSwapEngine<>((*arg(process)), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlMidPointCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new MidPointCdsEngine(Handle<DefaultProbabilityTermStructure>(*arg(x0)), recoveryRate, Handle<YieldTermStructure>(*arg(discountCurve)), qlOptBool(includeSettlementDateFlows)))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new ReplicatingVarianceSwapEngine((*arg(process)), dk, std::vector<double>(callStrikes, callStrikes+callStrikesLen), std::vector<double>(putStrikes, putStrikes+putStrikesLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new StulzEngine((*arg(process1)), (*arg(process2)), correlation))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlLfmSwaptionEngine(QlLiborForwardModel* model, QlYieldTermStructure* discountCurve, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new LfmSwaptionEngine((*arg(model)), Handle<YieldTermStructure>(*arg(discountCurve))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

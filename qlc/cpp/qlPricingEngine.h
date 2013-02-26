@@ -109,6 +109,24 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlMCHullWhiteCapFloorEngine(QlHullWhite* model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
   QlPricingEngine* DLLEXPORT qlMCPerformanceEngine(QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
 
+  QlPricingEngine* DLLEXPORT qlBaroneAdesiWhaleyApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
+  QlPricingEngine* DLLEXPORT qlBatesDetJumpEngine1(QlBatesDetJumpModel* model, double relTolerance, unsigned maxEvaluations, char **e);
+  QlPricingEngine* DLLEXPORT qlBatesDetJumpEngine(QlBatesDetJumpModel* model, unsigned integrationOrder, char **e);
+  QlPricingEngine* DLLEXPORT qlBatesDoubleExpDetJumpEngine1(QlBatesDoubleExpDetJumpModel* model, double relTolerance, unsigned maxEvaluations, char **e);
+  QlPricingEngine* DLLEXPORT qlBatesDoubleExpDetJumpEngine(QlBatesDoubleExpDetJumpModel* model, unsigned integrationOrder, char **e);
+  QlPricingEngine* DLLEXPORT qlBatesDoubleExpEngine1(QlBatesDoubleExpModel* model, double relTolerance, unsigned maxEvaluations, char **e);
+  QlPricingEngine* DLLEXPORT qlBatesDoubleExpEngine(QlBatesDoubleExpModel* model, unsigned integrationOrder, char **e);
+  QlPricingEngine* DLLEXPORT qlBjerksundStenslandApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
+  QlPricingEngine* DLLEXPORT qlIntegralCdsEngine(Period* integrationStep, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e);
+  QlPricingEngine* DLLEXPORT qlIntegralEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
+  QlPricingEngine* DLLEXPORT qlJamshidianSwaptionEngine(QlOneFactorAffineModel* model, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlJuQuadraticApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
+  QlPricingEngine* DLLEXPORT qlKirkEngine(QlBlackProcess* process1, QlBlackProcess* process2, double correlation, char **e);
+  QlPricingEngine* DLLEXPORT qlMCVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMidPointCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e);
+  QlPricingEngine* DLLEXPORT qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, char **e);
+  QlPricingEngine* DLLEXPORT qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e);
+  QlPricingEngine* DLLEXPORT qlLfmSwaptionEngine(QlLiborForwardModel* model, QlYieldTermStructure* discountCurve, char **e);
 #ifdef __cplusplus
 }
 #endif

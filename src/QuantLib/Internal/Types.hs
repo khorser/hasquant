@@ -69,6 +69,11 @@ module QuantLib.Internal.Types
   , CHullWhite
   , CCalibratedModel
   , CG2
+  , CBatesDetJumpModel
+  , CBatesDoubleExpDetJumpModel
+  , CBatesDoubleExpModel
+  , CLmCorrelationModel
+  , CLmVolatilityModel
 
   -- pricingengines
   , CPricingEngine
@@ -689,6 +694,48 @@ instance Upcastable CG2 CAffineModel where
   c_upcast = c_G2AsAffineModel
 foreign import ccall safe "ql.h qlG2AsAffineModel"
   c_G2AsAffineModel :: Ptr CG2 -> IO (Ptr CAffineModel)
+
+data CBatesDetJumpModel
+instance Finalizable CBatesDetJumpModel where
+  finalize = p_freeBatesDetJumpModel
+foreign import ccall safe "ql.h &qlFreeBatesDetJumpModel"
+  p_freeBatesDetJumpModel :: FunPtr (Ptr CBatesDetJumpModel -> IO ())
+instance Upcastable CBatesDetJumpModel CBatesModel where
+  c_upcast = c_BatesDetJumpModelAsBatesModel
+foreign import ccall safe "ql.h qlBatesDetJumpModelAsBatesModel"
+  c_BatesDetJumpModelAsBatesModel :: Ptr CBatesDetJumpModel -> IO (Ptr CBatesModel)
+
+data CBatesDoubleExpDetJumpModel
+instance Finalizable CBatesDoubleExpDetJumpModel where
+  finalize = p_freeBatesDoubleExpDetJumpModel
+foreign import ccall safe "ql.h &qlFreeBatesDoubleExpDetJumpModel"
+  p_freeBatesDoubleExpDetJumpModel :: FunPtr (Ptr CBatesDoubleExpDetJumpModel -> IO ())
+instance Upcastable CBatesDoubleExpDetJumpModel CBatesDoubleExpModel where
+  c_upcast = c_BatesDoubleExpDetJumpModelAsBatesDoubleExpModel
+foreign import ccall safe "ql.h qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel"
+  c_BatesDoubleExpDetJumpModelAsBatesDoubleExpModel :: Ptr CBatesDoubleExpDetJumpModel -> IO (Ptr CBatesDoubleExpModel)
+
+data CBatesDoubleExpModel
+instance Finalizable CBatesDoubleExpModel where
+  finalize = p_freeBatesDoubleExpModel
+foreign import ccall safe "ql.h &qlFreeBatesDoubleExpModel"
+  p_freeBatesDoubleExpModel :: FunPtr (Ptr CBatesDoubleExpModel -> IO ())
+instance Upcastable CBatesDoubleExpModel CHestonModel where
+  c_upcast = c_BatesDoubleExpModelAsHestonModel
+foreign import ccall safe "ql.h qlBatesDoubleExpModelAsHestonModel"
+  c_BatesDoubleExpModelAsHestonModel :: Ptr CBatesDoubleExpModel -> IO (Ptr CHestonModel)
+
+data CLmCorrelationModel
+instance Finalizable CLmCorrelationModel where
+  finalize = p_freeLmCorrelationModel
+foreign import ccall safe "ql.h &qlFreeLmCorrelationModel"
+  p_freeLmCorrelationModel :: FunPtr (Ptr CLmCorrelationModel -> IO ())
+
+data CLmVolatilityModel
+instance Finalizable CLmVolatilityModel where
+  finalize = p_freeLmVolatilityModel
+foreign import ccall safe "ql.h &qlFreeLmVolatilityModel"
+  p_freeLmVolatilityModel :: FunPtr (Ptr CLmVolatilityModel -> IO ())
 
 -- processes
 data CStochasticProcess1D

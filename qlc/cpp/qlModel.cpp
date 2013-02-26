@@ -1,5 +1,5 @@
 #include <ql/models/all.hpp>
-#include <ql/legacy/libormarketmodels/liborforwardmodel.hpp>
+#include <ql/legacy/libormarketmodels/all.hpp>
 #include <ql/experimental/shortrate/generalizedhullwhite.hpp>
 #include <ql/experimental/variancegamma/variancegammamodel.hpp>
 
@@ -111,4 +111,62 @@ QlOneFactorAffineModel* qlVasicek(double r0, double a, double b, double sigma, d
 void qlFreeG2(QlG2 *o) { del(o); }
 QlAffineModel* qlG2AsAffineModel(QlG2 *o) { return ret(new QlAffineModel(*arg(o))); }
 
+void qlFreeBatesDetJumpModel(QlBatesDetJumpModel *o) { del(o); }
+QlBatesModel* qlBatesDetJumpModelAsBatesModel(QlBatesDetJumpModel *o) { return ret(new QlBatesModel(*arg(o))); }
+void qlFreeBatesDoubleExpDetJumpModel(QlBatesDoubleExpDetJumpModel *o) { del(o); }
+QlBatesDoubleExpModel* qlBatesDoubleExpDetJumpModelAsBatesDoubleExpModel(QlBatesDoubleExpDetJumpModel *o) { return ret(new QlBatesDoubleExpModel(*arg(o))); }
+void qlFreeBatesDoubleExpModel(QlBatesDoubleExpModel *o) { del(o); }
+QlHestonModel* qlBatesDoubleExpModelAsHestonModel(QlBatesDoubleExpModel *o) { return ret(new QlHestonModel(*arg(o))); }
+
+void qlFreeLmCorrelationModel(QlLmCorrelationModel *o) { del(o); }
+void qlFreeLmVolatilityModel(QlLmVolatilityModel *o) { del(o); }
+QlLmCorrelationModel* qlLmConstWrapperCorrelationModel(QlLmCorrelationModel* corrModel, char **e) {
+  try {
+    return ret(new QlLmCorrelationModel(alloc(new LmConstWrapperCorrelationModel((*arg(corrModel))))));
+  } catch (std::exception& er) {
+    return handleException<QlLmCorrelationModel*>(e, er);
+  }
+}
+QlLmVolatilityModel* qlLmConstWrapperVolatilityModel(QlLmVolatilityModel* volaModel, char **e) {
+  try {
+    return ret(new QlLmVolatilityModel(alloc(new LmConstWrapperVolatilityModel((*arg(volaModel))))));
+  } catch (std::exception& er) {
+    return handleException<QlLmVolatilityModel*>(e, er);
+  }
+}
+QlLmCorrelationModel* qlLmExponentialCorrelationModel(unsigned size, double rho, char **e) {
+  try {
+    return ret(new QlLmCorrelationModel(alloc(new LmExponentialCorrelationModel(size, rho))));
+  } catch (std::exception& er) {
+    return handleException<QlLmCorrelationModel*>(e, er);
+  }
+}
+QlLmVolatilityModel* qlLmFixedVolatilityModel(unsigned volatilitiesLen, double* volatilities, unsigned startTimesLen, double * startTimes, char **e) {
+  try {
+    return ret(new QlLmVolatilityModel(alloc(new LmFixedVolatilityModel(Array(volatilities, volatilities+volatilitiesLen), std::vector<double>(startTimes, startTimes+startTimesLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlLmVolatilityModel*>(e, er);
+  }
+}
+QlLmCorrelationModel* qlLmLinearExponentialCorrelationModel(unsigned size, double rho, double beta, unsigned factors, char **e) {
+  try {
+    return ret(new QlLmCorrelationModel(alloc(new LmLinearExponentialCorrelationModel(size, rho, beta, factors))));
+  } catch (std::exception& er) {
+    return handleException<QlLmCorrelationModel*>(e, er);
+  }
+}
+QlLmVolatilityModel* qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLen, double * fixingTimes, double a, double b, double c, double d, char **e) {
+  try {
+    return ret(new QlLmVolatilityModel(alloc(new LmLinearExponentialVolatilityModel(std::vector<double>(fixingTimes, fixingTimes+fixingTimesLen), a, b, c, d))));
+  } catch (std::exception& er) {
+    return handleException<QlLmVolatilityModel*>(e, er);
+  }
+}
+QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e) {
+  try {
+    return ret(new QlLiborForwardModel(alloc(new LiborForwardModel((*arg(process)), (*arg(volaModel)), (*arg(corrModel))))));
+  } catch (std::exception& er) {
+    return handleException<QlLiborForwardModel*>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

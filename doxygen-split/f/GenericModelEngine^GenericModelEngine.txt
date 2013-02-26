@@ -1,4 +1,0 @@
-->
-::const Handle< ModelType > &
-=Handle< ModelType >()
--- ^model

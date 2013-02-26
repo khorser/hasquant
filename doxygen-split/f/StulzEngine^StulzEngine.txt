@@ -1,7 +1,0 @@
-->
-::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
--- ^process1
-::const boost::shared_ptr< GeneralizedBlackScholesProcess > &
--- ^process2
-::Real
--- ^correlation

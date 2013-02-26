@@ -1,5 +1,0 @@
-->
-::const boost::shared_ptr< LiborForwardModel > &
--- ^model
-::const Handle< YieldTermStructure > &
--- ^discountCurve
