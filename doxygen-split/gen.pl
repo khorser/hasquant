@@ -28,7 +28,7 @@ if (exists($opts{c})) {
   $retctor = $opts{c};
 }
 
-open F, "<$f";
+open F, "<$f" or die "Cannot open input file";
 my @dec = <F>;
 close F;
 

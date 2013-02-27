@@ -3,7 +3,7 @@ use warnings;
 
 if ($#ARGV<1)
 {
-    die "Usage: $0 derivedClass baseClass";
+  die "Usage: $0 derivedClass baseClass";
 }
 
 my $c = $ARGV[0];
@@ -49,3 +49,5 @@ close IT;
 close ITE;
 close T;
 close TE;
+
+# vim: set ft=perl sw=2 ts=8 st=2:
