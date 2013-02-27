@@ -4,7 +4,9 @@
 #include <ql/default.hpp>
 #include <ql/exercise.hpp>
 #include <ql/experimental/credit/defaulttype.hpp>
+#include <ql/experimental/fx/deltavolquote.hpp>
 #include <ql/experimental/processes/extendedblackscholesprocess.hpp>
+#include <ql/experimental/volatility/extendedblackvariancesurface.hpp>
 #include <ql/instruments/averagetype.hpp>
 #include <ql/instruments/barriertype.hpp>
 #include <ql/instruments/bmaswap.hpp>
@@ -27,6 +29,11 @@
 #include <ql/processes/hybridhestonhullwhiteprocess.hpp>
 #include <ql/pricingengines/vanilla/analytichestonengine.hpp>
 #include <ql/methods/montecarlo/lsmbasissystem.hpp>
+#include <ql/termstructures/volatility/equityfx/blackvariancesurface.hpp>
+#include <ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp>
+#include <ql/math/statistics/histogram.hpp>
+#include <ql/methods/finitedifferences/boundarycondition.hpp>
+#include <ql/money.hpp>
 
 #include <string.h>
 
@@ -285,6 +292,74 @@ static const int yieldCurveModelValues[] = {
   , GFunctionFactory::NonParallelShifts
 };
 
+static const int blackVarSurfaceExtrapolationValues[] = {
+    BlackVarianceSurface::ConstantExtrapolation
+  , BlackVarianceSurface::InterpolatorDefaultExtrapolation
+};
+
+static const int extBlackVarSurfaceExtrapolationValues[] = {
+    ExtendedBlackVarianceSurface::ConstantExtrapolation
+  , ExtendedBlackVarianceSurface::InterpolatorDefaultExtrapolation
+};
+
+static const int boundaryConditionSideValues[] = {
+    BoundaryCondition<TridiagonalOperator>::None
+  , BoundaryCondition<TridiagonalOperator>::Upper
+  , BoundaryCondition<TridiagonalOperator>::Lower
+};
+
+static const int calibrationErrorTypeValues[] = {
+    CalibrationHelper::RelativePriceError
+  , CalibrationHelper::PriceError
+  , CalibrationHelper::ImpliedVolError
+};
+
+static const int cmsMarketCalibrationTypeValues[] = {
+    CmsMarketCalibration::OnSpread
+  , CmsMarketCalibration::OnPrice
+  , CmsMarketCalibration::OnForwardCmsPrice
+};
+
+static const int endCriteriaTypeValues[] = {
+    EndCriteria::None
+  , EndCriteria::MaxIterations
+  , EndCriteria::StationaryPoint
+  , EndCriteria::StationaryFunctionValue
+  , EndCriteria::StationaryFunctionAccuracy
+  , EndCriteria::ZeroGradientNorm
+  , EndCriteria::Unknown
+};
+
+static const int moneyConversionTypeValues[] = {
+    Money::NoConversion
+  , Money::BaseCurrencyConversion
+  , Money::AutomatedConversion
+};
+
+static const int histogramAlgorithmValues[] = {
+    Histogram::None
+  , Histogram::Sturges
+  , Histogram::FD
+  , Histogram::Scott
+};
+
+static const int atmTypeValues[] = {
+    DeltaVolQuote::AtmNull
+  , DeltaVolQuote::AtmSpot
+  , DeltaVolQuote::AtmFwd
+  , DeltaVolQuote::AtmDeltaNeutral
+  , DeltaVolQuote::AtmVegaMax
+  , DeltaVolQuote::AtmGammaMax
+  , DeltaVolQuote::AtmPutCall50
+};
+
+static const int deltaTypeValues[] = {
+    DeltaVolQuote::Spot
+  , DeltaVolQuote::Fwd
+  , DeltaVolQuote::PaSpot
+  , DeltaVolQuote::PaFwd
+};
+
 struct EnumInfo {
   const char *const name;
   size_t len;
@@ -366,6 +441,26 @@ static const EnumInfo enumInfo[] = {
     LENGTH(lsmBasisSystemPolynomTypeValues), lsmBasisSystemPolynomTypeValues},
   {"QuantLib.TermStructure.Trait.YieldCurveModel",
     LENGTH(yieldCurveModelValues), yieldCurveModelValues},
+  {"QuantLib.TermStructure.Trait.BlackVarSurfaceExtrapolation",
+    LENGTH(blackVarSurfaceExtrapolationValues), blackVarSurfaceExtrapolationValues},
+  {"QuantLib.TermStructure.Trait.ExtBlackVarSurfaceExtrapolation",
+    LENGTH(extBlackVarSurfaceExtrapolationValues), extBlackVarSurfaceExtrapolationValues},
+  {"QuantLib.Method.BoundaryCondition.BoundaryConditionSide",
+    LENGTH(boundaryConditionSideValues), boundaryConditionSideValues},
+  {"QuantLib.Model.CalibrationErrorType.CalibrationErrorType",
+    LENGTH(calibrationErrorTypeValues), calibrationErrorTypeValues},
+  {"QuantLib.TermStructure.Trait.CmsMarketCalibrationType",
+    LENGTH(cmsMarketCalibrationTypeValues), cmsMarketCalibrationTypeValues},
+  {"QuantLib.Math.EndCriteriaType.EndCriteriaType",
+    LENGTH(endCriteriaTypeValues), endCriteriaTypeValues},
+  {"QuantLib.MoneyConversionType.MoneyConversionType",
+    LENGTH(moneyConversionTypeValues), moneyConversionTypeValues},
+  {"QuantLib.Math.HistogramAlgorithm.HistogramAlgorithm",
+    LENGTH(histogramAlgorithmValues), histogramAlgorithmValues},
+  {"QuantLib.FX.DeltaVolQuote.AtmType",
+    LENGTH(atmTypeValues), atmTypeValues},
+  {"QuantLib.FX.DeltaVolQuote.DeltaType",
+    LENGTH(deltaTypeValues), deltaTypeValues},
 };
 
 const int *qlEnumerationValue(const char *name, unsigned *c) {

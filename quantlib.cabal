@@ -24,11 +24,12 @@ Library
               , QuantLib.CashFlow.DurationType
               , QuantLib.CashFlow.Leg
               , QuantLib.Compounding
-              , QuantLib.Credit.Seniority
               , QuantLib.Credit.ProtectionSide
+              , QuantLib.Credit.Seniority
               , QuantLib.Currency
               , QuantLib.Error
               , QuantLib.ExerciseType
+              , QuantLib.FX.DeltaVolQuote
               , QuantLib.Index
               , QuantLib.Index.Ibor
               , QuantLib.Index.Swap
@@ -48,15 +49,21 @@ Library
               , QuantLib.Instrument.Swap
               , QuantLib.Instrument.VanillaSwapType
               , QuantLib.InterestRate
+              , QuantLib.Math.Constraint
+              , QuantLib.Math.EndCriteriaType
+              , QuantLib.Math.HistogramAlgorithm
               , QuantLib.Math.Interpolation
               , QuantLib.Math.Rounding
               , QuantLib.Math.RoundingType
+              , QuantLib.Method.BoundaryCondition
               , QuantLib.Method.LsmBasisSystemPolynomType
               , QuantLib.Model
+              , QuantLib.Model.CalibrationErrorType
+              , QuantLib.MoneyConversionType
               , QuantLib.PositionType
               , QuantLib.PriceType
-              , QuantLib.PricingEngine.Parameter
               , QuantLib.PricingEngine
+              , QuantLib.PricingEngine.Parameter
               , QuantLib.Process
               , QuantLib.ProcessDiscretization
               , QuantLib.Quote

@@ -1,2 +1,0 @@
--- |This method returns the times at which the numerical method should stop while rolling back the asset. Typical examples include payment times, exercise times and such.The returned values are not guaranteed to be sorted.
-->std::vector< Time >

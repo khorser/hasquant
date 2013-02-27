@@ -321,7 +321,7 @@ sub type {
     return ("char* ", "CString", "Interpolation", '%', "???", 0, '');
   }
   elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period',
-      'InterestRate', 'FittedBondDiscountCurveFittingMethod', 'Rounding']) {
+      'InterestRate', 'FittedBondDiscountCurveFittingMethod', 'Rounding', 'Constraint']) {
     if (not $vect) {
       return ("$t*", "Ptr C$t", $t, '(*arg(%))', "ret(new $t(%))", 1, '');
     }

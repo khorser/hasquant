@@ -1,3 +1,0 @@
-OnSpread
-OnPrice
-OnForwardCmsPrice

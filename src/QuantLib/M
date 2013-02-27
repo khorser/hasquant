@@ -13,6 +13,7 @@ OBJS=cpp/qlBond.o \
 	cpp/qlInstrument.o \
 	cpp/qlInterestRate.o \
 	cpp/qlLeg.o \
+	cpp/qlMath.o \
 	cpp/qlModel.o \
 	cpp/qlOption.o \
 	cpp/qlPeriod.o \
@@ -85,6 +86,9 @@ cpp/qlInstrument.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlInstrument.h $(QLCSRC)/qlInstr
 
 cpp/qlLeg.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlLeg.h $(QLCSRC)/qlLeg.cpp
 	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlLeg.o $(QLCSRC)/qlLeg.cpp
+
+cpp/qlMath.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlMath.h $(QLCSRC)/qlMath.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlMath.o $(QLCSRC)/qlMath.cpp
 
 cpp/qlModel.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlModel.h $(QLCSRC)/qlModel.cpp
 	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlModel.o $(QLCSRC)/qlModel.cpp

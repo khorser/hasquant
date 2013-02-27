@@ -2,6 +2,7 @@
 #include <ql/exercise.hpp>
 #include <ql/payoff.hpp>
 #include <ql/instruments/basketoption.hpp>
+#include <ql/instruments/compositeinstrument.hpp>
 #include <ql/instruments/stickyratchet.hpp>
 #include <ql/instruments/forward.hpp>
 #include <ql/instruments/vanillaswingoption.hpp>
@@ -30,6 +31,19 @@ void qlInstrumentSetPricingEngine(QlInstrument *instr, QlPricingEngine *eng,
 
 void qlFreeInstrument(QlInstrument *instr) {
   del(instr);
+}
+
+QlInstrument* DLLEXPORT qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, double *coeff, char **e) {
+  CompositeInstrument *ci = 0;
+  try {
+    ci = new CompositeInstrument();
+    for (unsigned i = 0; i < instrLen; ++i)
+        ci->add(*(instrs[i]), coeff[i]);
+    return ret(new QlInstrument(alloc(ci)));
+  } catch (std::exception& er) {
+    delete ci;
+    return handleException<QlInstrument*>(e, er);
+  }
 }
 
 double qlInstrumentErrorEstimate(QlInstrument* o, char **e) {

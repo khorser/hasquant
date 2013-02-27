@@ -58,6 +58,9 @@ module QuantLib.Types
   , QuantoBarrierOption
   , QuantoForwardVanillaOption
 
+  -- math
+  , Constraint  
+
   -- models
   , GJRGARCHModel
   , HestonModel
@@ -356,6 +359,9 @@ asVanillaOption = upcast
 
 type QuantoBarrierOption = ForeignPtr CQuantoBarrierOption
 type QuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption
+
+-- math
+type Constraint = ForeignPtr CConstraint
 
 -- models
 type GJRGARCHModel = ForeignPtr CGJRGARCHModel

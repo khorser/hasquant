@@ -45,11 +45,17 @@ import QuantLib.Time.JointCalendarRule()
 import QuantLib.Time.Month()
 import QuantLib.Time.Unit()
 import QuantLib.Time.Weekday()
+import QuantLib.FX.DeltaVolQuote()
+import QuantLib.Math.EndCriteriaType()
+import QuantLib.Math.HistogramAlgorithm()
+import QuantLib.Method.BoundaryCondition()
+import QuantLib.Model.CalibrationErrorType()
+import QuantLib.MoneyConversionType()
 
 -- QLLitEnum instances
 import QuantLib.Math.Interpolation()
 import QuantLib.ProcessDiscretization()
-import QuantLib.TermStructure.Trait()
+import QuantLib.TermStructure.Trait() -- QLLitEnum and QLEnum
 
 data NestedArg = DayN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | YearFractionN
   deriving (Show, Eq)
@@ -324,8 +330,12 @@ genFfiCall io extra aa r = do
       [|withDays (map fst $v) (\n ds -> withArrayLen (map ((fromIntegral :: Word -> CUInt) . snd) $v)
         (\_ ws -> $(genFfiCallImpl as [|$c_call n ds ws|])))|]
 
+    genFfiCallImpl ((ListA2 ForeignPtrN DoubleN, v):as) c_call =
+      [|withObjects (map fst $v) (\n os -> withDoubles (map snd $v)
+        (\_ ds -> $(genFfiCallImpl as [|$c_call n os ds|])))|]
+
     genFfiCallImpl ((t@(ListA2 _ _), _v):_as) _c_call =
-      error $ show t ++ "Not supported yet"
+      error $ show t ++ " Not supported yet"
 
 unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]

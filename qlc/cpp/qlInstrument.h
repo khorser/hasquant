@@ -17,6 +17,7 @@ extern "C" {
     char **e);
   double DLLEXPORT qlInstrumentNPV(QlInstrument *instr, char **e);
   void DLLEXPORT qlFreeInstrument(QlInstrument *instr);
+  QlInstrument* DLLEXPORT qlCompositeInstrument(unsigned instrLen, QlInstrument **instrs, double *coeff, char **e);
   double DLLEXPORT qlInstrumentErrorEstimate(QlInstrument* o, char **e);
   int DLLEXPORT qlInstrumentIsExpired(QlInstrument* o, char **e);
   int DLLEXPORT qlInstrumentValuationDate(QlInstrument* o, char **e);

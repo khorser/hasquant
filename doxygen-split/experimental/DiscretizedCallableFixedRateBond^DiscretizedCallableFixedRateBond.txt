@@ -1,7 +1,0 @@
-->
-::const CallableBond::arguments &
--- ^
-::const Date &
--- ^referenceDate
-::const DayCounter &
--- ^dayCounter

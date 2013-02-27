@@ -7,6 +7,7 @@ module QuantLib.Instrument
   , errorEstimate
   , isExpired
   , valuationDate
+  , composite
 
   , assetOrNothingPayoff
   , averageBasketPayoff
@@ -86,6 +87,12 @@ valuationDate = $(ffiCallX 'valuationDate) c_valuationDate
 
 foreign import ccall safe "ql.h qlInstrumentValuationDate"
   c_valuationDate :: Ptr CInstrument -> Ptr CString -> IO CDate
+
+composite :: [(Instrument, Double)] -> IO Instrument
+composite = $(ffiCall 'composite) c_composite
+
+foreign import ccall safe "ql.h qlCompositeInstrument"
+  c_composite :: CUInt -> Ptr(Ptr CInstrument) -> Ptr CDouble -> Ptr CString -> IO (Ptr CInstrument)
 
 assetOrNothingPayoff :: OptionType -- ^type
   -> Double -- ^strike

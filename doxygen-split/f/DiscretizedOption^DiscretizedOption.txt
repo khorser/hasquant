@@ -1,7 +1,0 @@
-->
-::const boost::shared_ptr< DiscretizedAsset > &
--- ^underlying
-::Exercise::Type
--- ^exerciseType
-::const std::vector< Time > &
--- ^exerciseTimes

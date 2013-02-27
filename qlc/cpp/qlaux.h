@@ -754,4 +754,7 @@ typedef boost::shared_ptr<HullWhite> QlHullWhite;
 template <> class objClassName<HullWhite *> { public: static const char *name() { return "HullWhite"; } };
 template <> class objClassName<QlHullWhite *> { public: static const char *name() { return "QlHullWhite"; } };
 
+namespace QuantLib {class Constraint;} using QuantLib::Constraint;
+template <> class objClassName<Constraint *> { public: static const char *name() { return "Constraint"; } };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

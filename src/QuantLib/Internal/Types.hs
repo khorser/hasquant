@@ -57,6 +57,9 @@ module QuantLib.Internal.Types
   , CQuantoBarrierOption
   , CQuantoForwardVanillaOption
 
+  -- math
+  , CConstraint
+
   -- models
   , CGJRGARCHModel
   , CHestonModel
@@ -587,6 +590,13 @@ instance Upcastable CQuantoForwardVanillaOption CForwardVanillaOption where
   c_upcast = c_QuantoForwardVanillaOptionAsForwardVanillaOption
 foreign import ccall safe "ql.h qlQuantoForwardVanillaOptionAsForwardVanillaOption"
   c_QuantoForwardVanillaOptionAsForwardVanillaOption :: Ptr CQuantoForwardVanillaOption -> IO (Ptr CForwardVanillaOption)
+
+-- math
+data CConstraint
+instance Finalizable CConstraint where
+  finalize = p_freeConstraint
+foreign import ccall safe "ql.h &qlFreeConstraint"
+  p_freeConstraint :: FunPtr (Ptr CConstraint -> IO ())
 
 -- pricingengines
 data CPricingEngine
