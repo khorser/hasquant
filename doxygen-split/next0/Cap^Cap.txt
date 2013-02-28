@@ -1,5 +1,0 @@
-->
-::const Leg &
--- ^floatingLeg
-::const std::vector< Rate > &
--- ^exerciseRates

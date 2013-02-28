@@ -39,7 +39,7 @@ Library
               , QuantLib.Instrument.BMASwapType
               , QuantLib.Instrument.BarrierType
               , QuantLib.Instrument.Bond
-              , QuantLib.Instrument.CapFloorType 
+              , QuantLib.Instrument.CapFloor
               , QuantLib.Instrument.Credit
               , QuantLib.Instrument.Forward
               , QuantLib.Instrument.Option

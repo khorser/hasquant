@@ -97,6 +97,7 @@ extern "C" {
   int DLLEXPORT qlTermStructureReferenceDate(QlTermStructure* o, char **e);
   void DLLEXPORT qlFreeTermStructure(QlTermStructure *o);
   QlTermStructure* DLLEXPORT qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o);
+  QlYieldTermStructure* DLLEXPORT qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e);
 #ifdef __cplusplus
 }
 #endif

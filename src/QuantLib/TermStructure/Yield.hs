@@ -54,6 +54,7 @@ module QuantLib.TermStructure.Yield
   , overnightIndexedSwap
   , vanillaSwap
   , referenceDate
+  , impliedTermStructure
   )
 where
 
@@ -570,5 +571,13 @@ referenceDate = $(ffiCallX 'referenceDate) c_referenceDate
 
 foreign import ccall safe "ql.h qlTermStructureReferenceDate"
   c_referenceDate :: Ptr CTermStructure -> Ptr CString -> IO CDate
+
+impliedTermStructure :: YieldTermStructure
+  -> Day -- ^referenceDate
+  -> IO YieldTermStructure
+impliedTermStructure = $(ffiCall 'impliedTermStructure) c_impliedTermStructure
+
+foreign import ccall safe "ql.h qlImpliedTermStructure"
+  c_impliedTermStructure :: Ptr CYieldTermStructure -> CDate -> Ptr CString -> IO (Ptr CYieldTermStructure)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

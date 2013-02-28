@@ -482,4 +482,12 @@ int qlTermStructureReferenceDate(QlTermStructure* o, char **e) {
 void qlFreeTermStructure(QlTermStructure *o) { del(o); }
 QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) { return ret(new QlTermStructure(*arg(o))); }
 
+QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e) {
+  try {
+    return ret(new QlYieldTermStructure(alloc(new ImpliedTermStructure(Handle<YieldTermStructure>(*arg(x0)), Date(referenceDate)))));
+  } catch (std::exception& er) {
+    return handleException<QlYieldTermStructure*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

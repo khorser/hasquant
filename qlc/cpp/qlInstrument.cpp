@@ -6,6 +6,7 @@
 #include <ql/instruments/stickyratchet.hpp>
 #include <ql/instruments/forward.hpp>
 #include <ql/instruments/vanillaswingoption.hpp>
+#include <ql/instruments/capfloor.hpp>
 
 #include "qlaux.h"
 #include "qlInstrument.h"
@@ -302,4 +303,51 @@ QlAmericanExercise* qlAmericanExercise1(int latestDate, int payoffAtExpiry, char
     return handleException<QlAmericanExercise*>(e, er);
   }
 }
+
+void qlFreeCapFloor(QlCapFloor *o) { del(o); }
+QlInstrument* qlCapFloorAsInstrument(QlCapFloor *o) { return ret(new QlInstrument(*arg(o))); }
+
+QlCapFloor* qlCap(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e) {
+  try {
+    return ret(new QlCapFloor(alloc(new Cap(*arg(floatingLeg), std::vector<double>(exerciseRates, exerciseRates+exerciseRatesLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlCapFloor*>(e, er);
+  }
+}
+QlCapFloor* qlCollar(Leg* floatingLeg, unsigned capRatesLen, double* capRates, unsigned floorRatesLen, double* floorRates, char **e) {
+  try {
+    return ret(new QlCapFloor(alloc(new Collar(*arg(floatingLeg), std::vector<double>(capRates, capRates+capRatesLen), std::vector<double>(floorRates, floorRates+floorRatesLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlCapFloor*>(e, er);
+  }
+}
+QlCapFloor* qlFloor(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e) {
+  try {
+    return ret(new QlCapFloor(alloc(new Floor(*arg(floatingLeg), std::vector<double>(exerciseRates, exerciseRates+exerciseRatesLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlCapFloor*>(e, er);
+  }
+}
+double qlCapFloorAtmRate(QlCapFloor* o, QlYieldTermStructure* discountCurve, char **e) {
+  try {
+    return (*arg(o))->atmRate(**arg(discountCurve));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+  try {
+    return (*arg(o))->impliedVolatility(price, Handle<YieldTermStructure>(*arg(disc)), guess, accuracy, maxEvaluations, minVol, maxVol);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e) {
+  try {
+    return ret(new QlCapFloor(alloc((*arg(o))->optionlet(n))));
+  } catch (std::exception& er) {
+    return handleException<QlCapFloor*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

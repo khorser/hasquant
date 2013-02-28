@@ -1,9 +1,12 @@
-#include <ql/quote.hpp>
 #include <ql/termstructures/volatility/optionlet/constantoptionletvol.hpp>
-#include <ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp>
+#include <ql/termstructures/volatility/equityfx/all.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
 #include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
 #include <ql/termstructures/volatility/swaption/swaptionconstantvol.hpp>
+#include <ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp>
+#include <ql/instruments/capfloor.hpp>
+#include <ql/termstructures/volatility/capfloor/all.hpp>
+#include <ql/math/interpolations/all.hpp>
 
 #include "qlaux.h"
 #include "qlVolatilityTS.h"
@@ -227,6 +230,137 @@ double qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o,
     return (*arg(o))->volatility((*arg(optionTenor)), (*arg(swapTenor)), strike, extrapolate);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
+  }
+}
+QlVolatilityTermStructure* qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
+  try {
+    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, qlBuildVector(optionTenors, optionTenorsLen), qlBuildHandleVector(vols, volsLen), *arg(dc)))));
+  } catch (std::exception& er) {
+    return handleException<QlVolatilityTermStructure*>(e, er);
+  }
+}
+QlVolatilityTermStructure* qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e) {
+  try {
+    return ret(new QlVolatilityTermStructure(alloc(new CapFloorTermVolCurve(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, qlBuildVector(optionTenors, optionTenorsLen), qlBuildHandleVector(vols, volsLen), *arg(dc)))));
+  } catch (std::exception& er) {
+    return handleException<QlVolatilityTermStructure*>(e, er);
+  }
+}
+QlVolatilityTermStructure* qlConstantCapFloorTermVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e) {
+  try {
+    return ret(new QlVolatilityTermStructure(alloc(new ConstantCapFloorTermVolatility(Date(referenceDate), *arg(cal), (BusinessDayConvention)bdc, Handle<Quote>(*arg(volatility)), *arg(dc)))));
+  } catch (std::exception& er) {
+    return handleException<QlVolatilityTermStructure*>(e, er);
+  }
+}
+QlVolatilityTermStructure* qlConstantCapFloorTermVolatility(unsigned settlementDays, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e) {
+  try {
+    return ret(new QlVolatilityTermStructure(alloc(new ConstantCapFloorTermVolatility(settlementDays, *arg(cal), (BusinessDayConvention)bdc, Handle<Quote>(*arg(volatility)), *arg(dc)))));
+  } catch (std::exception& er) {
+    return handleException<QlVolatilityTermStructure*>(e, er);
+  }
+}
+QlSwaptionVolatilityStructure* qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e) {
+  try {
+    return ret(new QlSwaptionVolatilityStructure(alloc(new SpreadedSwaptionVolatility(Handle<SwaptionVolatilityStructure>(*arg(x0)), Handle<Quote>(*arg(spread))))));
+  } catch (std::exception& er) {
+    return handleException<QlSwaptionVolatilityStructure*>(e, er);
+  }
+}
+
+void qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o) { del(o); }
+QlVolatilityTermStructure* qlCapFloorTermVolSurfaceAsVolatilityTermStructure(QlCapFloorTermVolSurface *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
+void qlFreeLocalVolTermStructure(QlLocalVolTermStructure *o) { del(o); }
+QlVolatilityTermStructure* qlLocalVolTermStructureAsVolatilityTermStructure(QlLocalVolTermStructure *o) { return ret(new QlVolatilityTermStructure(*arg(o))); }
+
+void qlFreeBlackVarianceCurve(QlBlackVarianceCurve *o) { del(o); }
+QlBlackVolTermStructure* qlBlackVarianceCurveAsBlackVolTermStructure(QlBlackVarianceCurve *o) { return ret(new QlBlackVolTermStructure(*arg(o))); }
+
+QlLocalVolTermStructure* qlLocalConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
+  try {
+    return ret(new QlLocalVolTermStructure(alloc(new LocalConstantVol(settlementDays, *arg(x1), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  } catch (std::exception& er) {
+    return handleException<QlLocalVolTermStructure*>(e, er);
+  }
+}
+QlLocalVolTermStructure* qlLocalConstantVol(int referenceDate, QlQuote* volatility, DayCounter* dayCounter, char **e) {
+  try {
+    return ret(new QlLocalVolTermStructure(alloc(new LocalConstantVol(Date(referenceDate), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  } catch (std::exception& er) {
+    return handleException<QlLocalVolTermStructure*>(e, er);
+  }
+}
+QlLocalVolTermStructure* qlLocalVolCurve(QlBlackVarianceCurve* curve, char **e) {
+  try {
+    return ret(new QlLocalVolTermStructure(alloc(new LocalVolCurve(Handle<BlackVarianceCurve>(*arg(curve))))));
+  } catch (std::exception& er) {
+    return handleException<QlLocalVolTermStructure*>(e, er);
+  }
+}
+QlLocalVolTermStructure* qlLocalVolSurface(QlBlackVolTermStructure* blackTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlQuote* underlying, char **e) {
+  try {
+    return ret(new QlLocalVolTermStructure(alloc(new LocalVolSurface(Handle<BlackVolTermStructure>(*arg(blackTS)), Handle<YieldTermStructure>(*arg(riskFreeTS)), Handle<YieldTermStructure>(*arg(dividendTS)), Handle<Quote>(*arg(underlying))))));
+    return 0;
+  } catch (std::exception& er) {
+    return handleException<QlLocalVolTermStructure*>(e, er);
+  }
+}
+QlBlackVolTermStructure* qlImpliedVolTermStructure(QlBlackVolTermStructure* origTS, int referenceDate, char **e) {
+  try {
+    return ret(new QlBlackVolTermStructure(alloc(new ImpliedVolTermStructure(Handle<BlackVolTermStructure>(*arg(origTS)), Date(referenceDate)))));
+  } catch (std::exception& er) {
+    return handleException<QlBlackVolTermStructure*>(e, er);
+  }
+}
+
+// move into qlTSAux?
+template <class T>
+void setInterpolation(T* o, const char *interpolator) {
+  if (!strcmp(interpolator, "BackwardFlat"))
+    o->setInterpolation(BackwardFlat());
+  else if (!strcmp(interpolator, "ForwardFlat"))
+    o->setInterpolation(ForwardFlat());
+  else if (!strcmp(interpolator, "Linear"))
+    o->setInterpolation(Linear());
+  else if (!strcmp(interpolator, "LogLinear"))
+    o->setInterpolation(LogLinear());
+  else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+    o->setInterpolation(Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+    o->setInterpolation(Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+    o->setInterpolation(LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+    o->setInterpolation(LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+  else if (!strcmp(interpolator, "Cubic Kruger"))
+    o->setInterpolation(Cubic(CubicInterpolation::Kruger));
+  else if (!strcmp(interpolator, "LogCubic Kruger"))
+    o->setInterpolation(LogCubic(CubicInterpolation::Kruger));
+  else if (!strcmp(interpolator, "Cubic FritschButland"))
+    o->setInterpolation(Cubic(CubicInterpolation::FritschButland));
+  else if (!strcmp(interpolator, "LogCubic FritschButland"))
+    o->setInterpolation(LogCubic(CubicInterpolation::FritschButland));
+  else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+    o->setInterpolation(Cubic(CubicInterpolation::Parabolic, false));
+  else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+    o->setInterpolation(Cubic(CubicInterpolation::Parabolic, true));
+  else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+    o->setInterpolation(LogCubic(CubicInterpolation::Parabolic, false));
+  else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+    o->setInterpolation(LogCubic(CubicInterpolation::Parabolic, true));
+  else
+    QL_FAIL("Unsupported interpolation " << interpolator);
+}
+
+QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, char *interpolation, char **e) {
+  BlackVarianceCurve *c = 0;
+  try {
+    c = new BlackVarianceCurve(Date(referenceDate), qlDateVector(datesLen, dates), std::vector<double>(blackVolCurve, blackVolCurve+blackVolCurveLen), *arg(dayCounter), forceMonotoneVariance);
+    setInterpolation(c, interpolation);
+    return ret(new QlBlackVarianceCurve(alloc(c)));
+  } catch (std::exception& er) {
+    delete c;
+    return handleException<QlBlackVarianceCurve*>(e, er);
   }
 }
 

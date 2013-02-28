@@ -1,5 +1,0 @@
-->
-::const Handle< SwaptionVolatilityStructure > &
--- ^
-::const Handle< Quote > &
--- ^spread

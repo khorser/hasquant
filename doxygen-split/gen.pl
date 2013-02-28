@@ -307,10 +307,16 @@ sub type {
       'HestonProcess::Discretization', 'GJRGARCHProcess::Discretization', 
       'HybridHestonHullWhiteProcess::Discretization',
       'IntervalPrice::Type', 'CalibrationHelper::CalibrationErrorType',
-      'EndCriteria::Type']) {
+      'EndCriteria::Type', 'Extrapolation']) {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
-    return ($carg, $farg, $t, $cast, '%', 0, '');
+    my $ht = $t;
+    print "!!!$t\n";
+    if ($c eq 'BlackVarianceSurface' and $t eq 'Extrapolation') {
+      $cast = '(BlackVarianceSurface::Extrapolation)';
+      $ht = 'BlackVarSurfaceExtrapolation';
+    }
+    return ($carg, $farg, $ht, $cast, '%', 0, '');
   }
   elsif ($t eq 'std::string') {
     return ("char*", "CString", "String", 'std::string(arg(%))', "DUP((%).c_str())", 0, '');

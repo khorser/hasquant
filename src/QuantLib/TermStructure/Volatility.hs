@@ -32,6 +32,19 @@ module QuantLib.TermStructure.Volatility
   , volatility''''
   , volatility'''''
   , volatility
+
+  , capFloorTermVolCurve'
+  , capFloorTermVolCurve
+  , constantCapFloorTermVolatility'
+  , constantCapFloorTermVolatility
+  , spreadedSwaptionVolatility
+
+  , localConstantVol'
+  , localConstantVol
+  , localVolCurve
+  , localVolSurface
+  , impliedVolTermStructure
+  , blackVarianceCurve
   )
 where
 
@@ -39,6 +52,7 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.Math.Interpolation(Interpolation)
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 
@@ -358,5 +372,119 @@ volatility = $(ffiCallX 'volatility) c_volatility
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility"
   c_volatility :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
+
+-- |fixed reference date, floating market data
+capFloorTermVolCurve' :: Day -- ^settlementDate
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^bdc
+  -> [Period] -- ^optionTenors
+  -> [Quote] -- ^vols
+  -> DayCounter -- ^dc
+  -> IO VolatilityTermStructure
+capFloorTermVolCurve' = $(ffiCall 'capFloorTermVolCurve') c_capFloorTermVolCurve'
+
+foreign import ccall safe "ql.h qlCapFloorTermVolCurve1"
+  c_capFloorTermVolCurve' :: CDate -> Ptr CCalendar -> CInt -> CUInt -> Ptr (Ptr CPeriod) -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CVolatilityTermStructure)
+
+-- |floating reference date, floating market data
+capFloorTermVolCurve :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^bdc
+  -> [Period] -- ^optionTenors
+  -> [Quote] -- ^vols
+  -> DayCounter -- ^dc
+  -> IO VolatilityTermStructure
+capFloorTermVolCurve = $(ffiCall 'capFloorTermVolCurve) c_capFloorTermVolCurve
+
+foreign import ccall safe "ql.h qlCapFloorTermVolCurve"
+  c_capFloorTermVolCurve :: CUInt -> Ptr CCalendar -> CInt -> CUInt -> Ptr (Ptr CPeriod) -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CVolatilityTermStructure)
+
+-- |fixed reference date, floating market data
+constantCapFloorTermVolatility' :: Day -- ^referenceDate
+  -> Calendar -- ^cal
+  -> BusinessDayConvention -- ^bdc
+  -> Quote -- ^volatility
+  -> DayCounter -- ^dc
+  -> IO VolatilityTermStructure
+constantCapFloorTermVolatility' = $(ffiCall 'constantCapFloorTermVolatility') c_constantCapFloorTermVolatility'
+
+foreign import ccall safe "ql.h qlConstantCapFloorTermVolatility1"
+  c_constantCapFloorTermVolatility' :: CDate -> Ptr CCalendar -> CInt -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CVolatilityTermStructure)
+
+-- |floating reference date, floating market data
+constantCapFloorTermVolatility :: Word -- ^settlementDays
+  -> Calendar -- ^cal
+  -> BusinessDayConvention -- ^bdc
+  -> Quote -- ^volatility
+  -> DayCounter -- ^dc
+  -> IO VolatilityTermStructure
+constantCapFloorTermVolatility = $(ffiCall 'constantCapFloorTermVolatility) c_constantCapFloorTermVolatility
+
+foreign import ccall safe "ql.h qlConstantCapFloorTermVolatility"
+  c_constantCapFloorTermVolatility :: CUInt -> Ptr CCalendar -> CInt -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CVolatilityTermStructure)
+
+spreadedSwaptionVolatility :: SwaptionVolatilityStructure
+  -> Quote -- ^spread
+  -> IO SwaptionVolatilityStructure
+spreadedSwaptionVolatility = $(ffiCall 'spreadedSwaptionVolatility) c_spreadedSwaptionVolatility
+
+foreign import ccall safe "ql.h qlSpreadedSwaptionVolatility"
+  c_spreadedSwaptionVolatility :: Ptr CSwaptionVolatilityStructure -> Ptr CQuote -> Ptr CString -> IO (Ptr CSwaptionVolatilityStructure)
+
+localConstantVol' :: Word -- ^settlementDays
+  -> Calendar
+  -> Quote -- ^volatility
+  -> DayCounter -- ^dayCounter
+  -> IO LocalVolTermStructure
+localConstantVol' = $(ffiCall 'localConstantVol') c_localConstantVol'
+
+foreign import ccall safe "ql.h qlLocalConstantVol1"
+  c_localConstantVol' :: CUInt -> Ptr CCalendar -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CLocalVolTermStructure)
+
+localConstantVol :: Day -- ^referenceDate
+  -> Quote -- ^volatility
+  -> DayCounter -- ^dayCounter
+  -> IO LocalVolTermStructure
+localConstantVol = $(ffiCall 'localConstantVol) c_localConstantVol
+
+foreign import ccall safe "ql.h qlLocalConstantVol"
+  c_localConstantVol :: CDate -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CLocalVolTermStructure)
+
+localVolCurve :: BlackVarianceCurve -- ^curve
+  -> IO LocalVolTermStructure
+localVolCurve = $(ffiCall 'localVolCurve) c_localVolCurve
+
+foreign import ccall safe "ql.h qlLocalVolCurve"
+  c_localVolCurve :: Ptr CBlackVarianceCurve -> Ptr CString -> IO (Ptr CLocalVolTermStructure)
+
+localVolSurface :: BlackVolTermStructure -- ^blackTS
+  -> YieldTermStructure -- ^riskFreeTS
+  -> YieldTermStructure -- ^dividendTS
+  -> Quote -- ^underlying
+  -> IO LocalVolTermStructure
+localVolSurface = $(ffiCall 'localVolSurface) c_localVolSurface
+
+foreign import ccall safe "ql.h qlLocalVolSurface"
+  c_localVolSurface :: Ptr CBlackVolTermStructure -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CQuote -> Ptr CString -> IO (Ptr CLocalVolTermStructure)
+
+impliedVolTermStructure :: BlackVolTermStructure -- ^origTS
+  -> Day -- ^referenceDate
+  -> IO BlackVolTermStructure
+impliedVolTermStructure = $(ffiCall 'impliedVolTermStructure) c_impliedVolTermStructure
+
+foreign import ccall safe "ql.h qlImpliedVolTermStructure"
+  c_impliedVolTermStructure :: Ptr CBlackVolTermStructure -> CDate -> Ptr CString -> IO (Ptr CBlackVolTermStructure)
+
+blackVarianceCurve :: Day -- ^referenceDate
+  -> [Day] -- ^dates
+  -> [Double] -- ^blackVolCurve
+  -> DayCounter -- ^dayCounter
+  -> Bool -- ^forceMonotoneVariance
+  -> Interpolation
+  -> IO BlackVarianceCurve
+blackVarianceCurve = $(ffiCall 'blackVarianceCurve) c_blackVarianceCurve
+
+foreign import ccall safe "ql.h qlBlackVarianceCurve"
+  c_blackVarianceCurve :: CDate -> CUInt -> Ptr CDate -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CString -> Ptr CString -> IO (Ptr CBlackVarianceCurve)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

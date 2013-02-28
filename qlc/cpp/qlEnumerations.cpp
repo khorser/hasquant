@@ -10,7 +10,6 @@
 #include <ql/instruments/averagetype.hpp>
 #include <ql/instruments/barriertype.hpp>
 #include <ql/instruments/bmaswap.hpp>
-#include <ql/instruments/capfloor.hpp>
 #include <ql/instruments/overnightindexedswap.hpp>
 #include <ql/instruments/swaption.hpp>
 #include <ql/instruments/vanillaswap.hpp>
@@ -237,12 +236,6 @@ static const int barrierTypeValues[] = {
   , Barrier::UpOut
 };
 
-static const int capFloorTypeValues[] = {
-    CapFloor::Cap
-  , CapFloor::Floor
-  , CapFloor::Collar
-};
-
 static const int hestonProcessDiscretizationValues[] = {
     HestonProcess::PartialTruncation
   , HestonProcess::FullTruncation
@@ -425,8 +418,6 @@ static const EnumInfo enumInfo[] = {
     LENGTH(barrierTypeValues), barrierTypeValues},
   {"QuantLib.Instrument.AverageType.AverageType",
     LENGTH(averageTypeValues), averageTypeValues},
-  {"QuantLib.Instrument.CapFloorType.CapFloorType",
-    LENGTH(capFloorTypeValues), capFloorTypeValues},
   {"QuantLib.ProcessDiscretization.HestonProcessDiscretization",
     LENGTH(hestonProcessDiscretizationValues), hestonProcessDiscretizationValues},
   {"QuantLib.ProcessDiscretization.GJRGARCHProcessDiscretization",

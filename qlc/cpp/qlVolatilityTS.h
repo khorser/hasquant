@@ -50,6 +50,24 @@ extern "C" {
   double DLLEXPORT qlSwaptionVolatilityStructureVolatility4(QlSwaptionVolatilityStructure* o, int optionDate, double swapLength, double strike, int extrapolate, char **e);
   double DLLEXPORT qlSwaptionVolatilityStructureVolatility5(QlSwaptionVolatilityStructure* o, double optionTime, double swapLength, double strike, int extrapolate, char **e);
   double DLLEXPORT qlSwaptionVolatilityStructureVolatility(QlSwaptionVolatilityStructure* o, Period* optionTenor, Period* swapTenor, double strike, int extrapolate, char **e);
+  QlVolatilityTermStructure* DLLEXPORT qlCapFloorTermVolCurve1(int settlementDate, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e);
+  QlVolatilityTermStructure* DLLEXPORT qlCapFloorTermVolCurve(unsigned settlementDays, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned volsLen, QlQuote** vols, DayCounter* dc, char **e);
+  QlVolatilityTermStructure* DLLEXPORT qlConstantCapFloorTermVolatility1(int referenceDate, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e);
+  QlVolatilityTermStructure* DLLEXPORT qlConstantCapFloorTermVolatility(unsigned settlementDays, Calendar* cal, int bdc, QlQuote* volatility, DayCounter* dc, char **e);
+  QlSwaptionVolatilityStructure* DLLEXPORT qlSpreadedSwaptionVolatility(QlSwaptionVolatilityStructure* x0, QlQuote* spread, char **e);
+
+  void DLLEXPORT qlFreeCapFloorTermVolSurface(QlCapFloorTermVolSurface *o);
+  QlVolatilityTermStructure* DLLEXPORT qlCapFloorTermVolSurfaceAsVolatilityTermStructure(QlCapFloorTermVolSurface *o);
+  void DLLEXPORT qlFreeLocalVolTermStructure(QlLocalVolTermStructure *o);
+  QlVolatilityTermStructure* DLLEXPORT qlLocalVolTermStructureAsVolatilityTermStructure(QlLocalVolTermStructure *o);
+  QlLocalVolTermStructure* DLLEXPORT qlLocalConstantVol1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e);
+  QlLocalVolTermStructure* DLLEXPORT qlLocalConstantVol(int referenceDate, QlQuote* volatility, DayCounter* dayCounter, char **e);
+  QlLocalVolTermStructure* DLLEXPORT qlLocalVolCurve(QlBlackVarianceCurve* curve, char **e);
+  QlLocalVolTermStructure* DLLEXPORT qlLocalVolSurface(QlBlackVolTermStructure* blackTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlQuote* underlying, char **e);
+  void DLLEXPORT qlFreeBlackVarianceCurve(QlBlackVarianceCurve *o);
+  QlBlackVolTermStructure* DLLEXPORT qlBlackVarianceCurveAsBlackVolTermStructure(QlBlackVarianceCurve *o);
+  QlBlackVolTermStructure* DLLEXPORT qlImpliedVolTermStructure(QlBlackVolTermStructure* origTS, int referenceDate, char **e);
+  QlBlackVarianceCurve* DLLEXPORT qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, char *interpolation, char **e);
 #ifdef __cplusplus
 }
 #endif

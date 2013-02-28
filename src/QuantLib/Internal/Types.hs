@@ -56,6 +56,7 @@ module QuantLib.Internal.Types
   , CClaim
   , CQuantoBarrierOption
   , CQuantoForwardVanillaOption
+  , CCapFloor
 
   -- math
   , CConstraint
@@ -121,6 +122,9 @@ module QuantLib.Internal.Types
   , CDefaultProbabilityTermStructure
   , CSwaptionVolatilityStructure
   , CSmileSection
+  , CCapFloorTermVolSurface
+  , CLocalVolTermStructure
+  , CBlackVarianceCurve
 
   -- time
   , CCalendar
@@ -593,6 +597,17 @@ instance Upcastable CQuantoForwardVanillaOption CForwardVanillaOption where
   c_upcast = c_QuantoForwardVanillaOptionAsForwardVanillaOption
 foreign import ccall safe "ql.h qlQuantoForwardVanillaOptionAsForwardVanillaOption"
   c_QuantoForwardVanillaOptionAsForwardVanillaOption :: Ptr CQuantoForwardVanillaOption -> IO (Ptr CForwardVanillaOption)
+
+data CCapFloor
+instance Finalizable CCapFloor where
+  finalize = p_freeCapFloor
+foreign import ccall safe "ql.h &qlFreeCapFloor"
+  p_freeCapFloor :: FunPtr (Ptr CCapFloor -> IO ())
+instance Upcastable CCapFloor CInstrument where
+  c_upcast = c_CapFloorAsInstrument
+foreign import ccall safe "ql.h qlCapFloorAsInstrument"
+  c_CapFloorAsInstrument :: Ptr CCapFloor -> IO (Ptr CInstrument)
+
 
 -- math
 data CConstraint
@@ -1100,6 +1115,36 @@ instance Finalizable CSmileSection where
   finalize = p_freeSmileSection
 foreign import ccall safe "ql.h &qlFreeSmileSection"
   p_freeSmileSection :: FunPtr (Ptr CSmileSection -> IO ())
+
+data CCapFloorTermVolSurface
+instance Finalizable CCapFloorTermVolSurface where
+  finalize = p_freeCapFloorTermVolSurface
+foreign import ccall safe "ql.h &qlFreeCapFloorTermVolSurface"
+  p_freeCapFloorTermVolSurface :: FunPtr (Ptr CCapFloorTermVolSurface -> IO ())
+instance Upcastable CCapFloorTermVolSurface CVolatilityTermStructure where
+  c_upcast = c_CapFloorTermVolSurfaceAsVolatilityTermStructure
+foreign import ccall safe "ql.h qlCapFloorTermVolSurfaceAsVolatilityTermStructure"
+  c_CapFloorTermVolSurfaceAsVolatilityTermStructure :: Ptr CCapFloorTermVolSurface -> IO (Ptr CVolatilityTermStructure)
+
+data CLocalVolTermStructure
+instance Finalizable CLocalVolTermStructure where
+  finalize = p_freeLocalVolTermStructure
+foreign import ccall safe "ql.h &qlFreeLocalVolTermStructure"
+  p_freeLocalVolTermStructure :: FunPtr (Ptr CLocalVolTermStructure -> IO ())
+instance Upcastable CLocalVolTermStructure CVolatilityTermStructure where
+  c_upcast = c_LocalVolTermStructureAsVolatilityTermStructure
+foreign import ccall safe "ql.h qlLocalVolTermStructureAsVolatilityTermStructure"
+  c_LocalVolTermStructureAsVolatilityTermStructure :: Ptr CLocalVolTermStructure -> IO (Ptr CVolatilityTermStructure)
+
+data CBlackVarianceCurve
+instance Finalizable CBlackVarianceCurve where
+  finalize = p_freeBlackVarianceCurve
+foreign import ccall safe "ql.h &qlFreeBlackVarianceCurve"
+  p_freeBlackVarianceCurve :: FunPtr (Ptr CBlackVarianceCurve -> IO ())
+instance Upcastable CBlackVarianceCurve CBlackVolTermStructure where
+  c_upcast = c_BlackVarianceCurveAsBlackVolTermStructure
+foreign import ccall safe "ql.h qlBlackVarianceCurveAsBlackVolTermStructure"
+  c_BlackVarianceCurveAsBlackVolTermStructure :: Ptr CBlackVarianceCurve -> IO (Ptr CBlackVolTermStructure)
 
 -- time
 data CCalendar

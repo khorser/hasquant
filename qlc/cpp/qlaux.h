@@ -768,4 +768,24 @@ template <> class objClassName<QlCalibrationHelper *> { public: static const cha
 namespace QuantLib {class EndCriteria;} using QuantLib::EndCriteria;
 template <> class objClassName<EndCriteria *> { public: static const char *name() { return "EndCriteria"; } };
 
+namespace QuantLib {class CapFloor;} using QuantLib::CapFloor;
+typedef boost::shared_ptr<CapFloor> QlCapFloor;
+template <> class objClassName<CapFloor *> { public: static const char *name() { return "CapFloor"; } };
+template <> class objClassName<QlCapFloor *> { public: static const char *name() { return "QlCapFloor"; } };
+
+namespace QuantLib {class CapFloorTermVolSurface;} using QuantLib::CapFloorTermVolSurface;
+typedef boost::shared_ptr<CapFloorTermVolSurface> QlCapFloorTermVolSurface;
+template <> class objClassName<CapFloorTermVolSurface *> { public: static const char *name() { return "CapFloorTermVolSurface"; } };
+template <> class objClassName<QlCapFloorTermVolSurface *> { public: static const char *name() { return "QlCapFloorTermVolSurface"; } };
+
+namespace QuantLib {class LocalVolTermStructure;} using QuantLib::LocalVolTermStructure;
+typedef boost::shared_ptr<LocalVolTermStructure> QlLocalVolTermStructure;
+template <> class objClassName<LocalVolTermStructure *> { public: static const char *name() { return "LocalVolTermStructure"; } };
+template <> class objClassName<QlLocalVolTermStructure *> { public: static const char *name() { return "QlLocalVolTermStructure"; } };
+
+namespace QuantLib {class BlackVarianceCurve;} using QuantLib::BlackVarianceCurve;
+typedef boost::shared_ptr<BlackVarianceCurve> QlBlackVarianceCurve;
+template <> class objClassName<BlackVarianceCurve *> { public: static const char *name() { return "BlackVarianceCurve"; } };
+template <> class objClassName<QlBlackVarianceCurve *> { public: static const char *name() { return "QlBlackVarianceCurve"; } };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

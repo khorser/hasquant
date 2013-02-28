@@ -71,6 +71,14 @@ extern "C" {
   QlAmericanExercise* DLLEXPORT qlAmericanExercise1(int latestDate, int payoffAtExpiry, char **e);
   QlSwingExercise* DLLEXPORT qlSwingExercise(unsigned datesLen, int* dates, unsigned* seconds, char **e);
   QlSwingExercise* DLLEXPORT qlSwingExercise1(int from, int to, unsigned stepSizeSecs, char **e);
+  void DLLEXPORT qlFreeCapFloor(QlCapFloor *o);
+  QlInstrument* DLLEXPORT qlCapFloorAsInstrument(QlCapFloor *o);
+  QlCapFloor* DLLEXPORT qlCap(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e);
+  QlCapFloor* DLLEXPORT qlCollar(Leg* floatingLeg, unsigned capRatesLen, double* capRates, unsigned floorRatesLen, double* floorRates, char **e);
+  QlCapFloor* DLLEXPORT qlFloor(Leg* floatingLeg, unsigned exerciseRatesLen, double* exerciseRates, char **e);
+  double DLLEXPORT qlCapFloorAtmRate(QlCapFloor* o, QlYieldTermStructure* discountCurve, char **e);
+  double DLLEXPORT qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
+  QlCapFloor* DLLEXPORT qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e);
 #ifdef __cplusplus
 }
 #endif

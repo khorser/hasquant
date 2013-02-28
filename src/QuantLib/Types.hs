@@ -57,6 +57,7 @@ module QuantLib.Types
   , Claim
   , QuantoBarrierOption
   , QuantoForwardVanillaOption
+  , CapFloor
 
   -- math
   , Constraint  
@@ -122,6 +123,9 @@ module QuantLib.Types
   , DefaultProbabilityTermStructure
   , SwaptionVolatilityStructure
   , SmileSection
+  , CapFloorTermVolSurface
+  , LocalVolTermStructure
+  , BlackVarianceCurve
 
   -- time
   , Calendar
@@ -165,6 +169,7 @@ module QuantLib.Types
   , asYieldTermStructure
   , asTermStructure
   , asVolatilityTermStructure
+  , asBlackVolTermStructure
 
   , asStochasticProcess
   , asStochasticProcess1D
@@ -363,6 +368,8 @@ asVanillaOption = upcast
 type QuantoBarrierOption = ForeignPtr CQuantoBarrierOption
 type QuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption
 
+type CapFloor = ForeignPtr CCapFloor
+
 -- math
 type Constraint = ForeignPtr CConstraint
 type OptimizationMethod = ForeignPtr COptimizationMethod
@@ -487,6 +494,14 @@ asVolatilityTermStructure = upcast
 type DefaultProbabilityTermStructure = ForeignPtr CDefaultProbabilityTermStructure
 type SwaptionVolatilityStructure = ForeignPtr CSwaptionVolatilityStructure
 type SmileSection = ForeignPtr CSmileSection
+
+type CapFloorTermVolSurface = ForeignPtr CCapFloorTermVolSurface
+type LocalVolTermStructure = ForeignPtr CLocalVolTermStructure
+
+type BlackVarianceCurve = ForeignPtr CBlackVarianceCurve
+
+asBlackVolTermStructure :: (Upcastable a CBlackVolTermStructure) => ForeignPtr a -> IO BlackVolTermStructure
+asBlackVolTermStructure = upcast
 
 -- time
 -- |Calendars provide the means for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days
