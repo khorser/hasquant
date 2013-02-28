@@ -28,6 +28,7 @@ module QuantLib.Internal.Utils
   , CString
   , Ptr, FunPtr
   , ForeignPtr
+  , nullPtr
   )
 
 where

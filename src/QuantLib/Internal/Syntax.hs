@@ -63,7 +63,7 @@ data NestedArg = DayN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | Yea
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA | YearFractionA
   | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA
   | ListA NestedArg | ListA2 NestedArg NestedArg
-  | EnumA Name | LitEnumA
+  | EnumA Name | LitEnumA | OptLitEnumA
   deriving (Show, Eq)
 
 isAtomicTop :: Name -> Bool
@@ -124,10 +124,13 @@ topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe =
     else
       if n == ''Bool
         then return OptBoolA
-        else
-          tryForeignPtr n >>=
-            either (\x -> fail $ "Error parsing optional top arg: " ++ x)
-              (\_ -> return OptForeignPtrA)
+        else do
+          en <- enumType n
+          case en of
+            (Just LitEnum) -> return OptLitEnumA
+            _ -> tryForeignPtr n >>=
+                  either (\x -> fail $ "Error parsing optional top arg: " ++ x)
+                    (\_ -> return OptForeignPtrA)
 topArgType (AppT ListT (ConT n)) = liftM ListA (nestedNameToTop n)
 topArgType (AppT
           ListT
@@ -281,7 +284,10 @@ genFfiCall io extra aa r = do
       genFfiCallImpl as [|$c_call (toQlEnum $(stringE $ show n) $v)|]
 
     genFfiCallImpl ((LitEnumA, v):as) c_call =
-      [|withCString (show $v) (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
+      [|withLitEnum $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
+
+    genFfiCallImpl ((OptLitEnumA, v):as) c_call =
+      [|withOptLitEnum $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
     genFfiCallImpl ((ForeignPtrA, v):as) c_call =
       [|withObject $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]

@@ -480,7 +480,7 @@ blackVarianceCurve :: Day -- ^referenceDate
   -> [Double] -- ^blackVolCurve
   -> DayCounter -- ^dayCounter
   -> Bool -- ^forceMonotoneVariance
-  -> Interpolation
+  -> Maybe Interpolation
   -> IO BlackVarianceCurve
 blackVarianceCurve = $(ffiCall 'blackVarianceCurve) c_blackVarianceCurve
 

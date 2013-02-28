@@ -356,7 +356,8 @@ QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen,
   BlackVarianceCurve *c = 0;
   try {
     c = new BlackVarianceCurve(Date(referenceDate), qlDateVector(datesLen, dates), std::vector<double>(blackVolCurve, blackVolCurve+blackVolCurveLen), *arg(dayCounter), forceMonotoneVariance);
-    setInterpolation(c, interpolation);
+    if (interpolation)
+      setInterpolation(c, interpolation);
     return ret(new QlBlackVarianceCurve(alloc(c)));
   } catch (std::exception& er) {
     delete c;

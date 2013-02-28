@@ -4,6 +4,8 @@ module QuantLib.Internal.Enum
   , toQlEnum
   , fromQlEnum
   , QLLitEnum
+  , withLitEnum
+  , withOptLitEnum
   )
 where
 
@@ -41,5 +43,14 @@ fromQlEnum typename x =
   maybe (signalError $ "Unknown enumeration code: " ++ show x)
   toEnum
   (elemIndex x $ values typename)
+
+withLitEnum :: (QLLitEnum a) => a -> (CString -> IO b) -> IO b
+withLitEnum = withCString . show
+
+withOptLitEnum :: (QLLitEnum a) => Maybe a -> (CString -> IO b) -> IO b
+withOptLitEnum x f =
+  case x of
+    (Just e) -> withCString (show e) f
+    _ -> f nullPtr
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
