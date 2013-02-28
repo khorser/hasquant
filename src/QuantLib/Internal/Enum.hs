@@ -48,9 +48,6 @@ withLitEnum :: (QLLitEnum a) => a -> (CString -> IO b) -> IO b
 withLitEnum = withCString . show
 
 withOptLitEnum :: (QLLitEnum a) => Maybe a -> (CString -> IO b) -> IO b
-withOptLitEnum x f =
-  case x of
-    (Just e) -> withCString (show e) f
-    _ -> f nullPtr
+withOptLitEnum x f = maybe (f nullPtr) (`withLitEnum` f) x
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
