@@ -65,6 +65,13 @@ extern "C" {
   QlCalibratedModel* DLLEXPORT qlPiecewiseTimeDependentHestonModelAsCalibratedModel(QlPiecewiseTimeDependentHestonModel *o);
   QlCalibratedModel* DLLEXPORT qlShortRateModelAsCalibratedModel(QlShortRateModel *o);
   QlShortRateModel* DLLEXPORT qlOneFactorAffineModelAsShortRateModel(QlOneFactorAffineModel *o);
+
+  void DLLEXPORT qlFreeCalibrationHelper(QlCalibrationHelper *o);
+  void DLLEXPORT qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e);
+  void DLLEXPORT qlCalibrationHelperSetPricingEngine(QlCalibrationHelper* o, QlPricingEngine* engine, char **e);
+  QlCalibrationHelper* DLLEXPORT qlCapHelper(Period* length, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e);
+  QlCalibrationHelper* DLLEXPORT qlHestonModelHelper(Period* maturity, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e);
+  QlCalibrationHelper* DLLEXPORT qlSwaptionHelper(Period* maturity, Period* length, QlQuote* volatility, QlIborIndex* index, Period* fixedLegTenor, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e);
 #ifdef __cplusplus
 }
 #endif

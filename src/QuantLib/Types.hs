@@ -60,6 +60,8 @@ module QuantLib.Types
 
   -- math
   , Constraint  
+  , OptimizationMethod
+  , EndCriteria
 
   -- models
   , GJRGARCHModel
@@ -78,6 +80,7 @@ module QuantLib.Types
   , BatesDoubleExpModel
   , LmCorrelationModel
   , LmVolatilityModel
+  , CalibrationHelper
 
   -- pricingengines
   , PricingEngine
@@ -362,6 +365,9 @@ type QuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption
 
 -- math
 type Constraint = ForeignPtr CConstraint
+type OptimizationMethod = ForeignPtr COptimizationMethod
+type EndCriteria = ForeignPtr CEndCriteria
+
 
 -- models
 type GJRGARCHModel = ForeignPtr CGJRGARCHModel
@@ -373,6 +379,7 @@ type AffineModel = ForeignPtr CAffineModel
 type OneFactorAffineModel = ForeignPtr COneFactorAffineModel
 type LiborForwardModel = ForeignPtr CLiborForwardModel
 type HullWhite = ForeignPtr CHullWhite
+type CalibrationHelper = ForeignPtr CCalibrationHelper
 
 type CalibratedModel = ForeignPtr CCalibratedModel
 

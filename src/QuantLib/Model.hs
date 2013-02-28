@@ -21,6 +21,12 @@ module QuantLib.Model
   , lmLinearExponentialCorrelationModel
   , lmLinearExponentialVolatilityModel
   , liborForwardModel
+
+  , calibrate
+  , setPricingEngine
+  , capHelper
+  , hestonModelHelper
+  , swaptionHelper
   )
 where
 
@@ -28,6 +34,8 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.Model.CalibrationErrorType
+import QuantLib.Time.Frequency
 import QuantLib.Types
 
 batesModel :: BatesProcess -- ^process
@@ -199,5 +207,69 @@ liborForwardModel = $(ffiCall 'liborForwardModel) c_liborForwardModel
 
 foreign import ccall safe "ql.h qlLiborForwardModel"
   c_liborForwardModel :: Ptr CLiborForwardModelProcess -> Ptr CLmVolatilityModel -> Ptr CLmCorrelationModel -> Ptr CString -> IO (Ptr CLiborForwardModel)
+
+-- |Calibrate to a set of market instruments (caps/swaptions)
+-- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
+calibrate :: CalibratedModel
+  -> [(CalibrationHelper, Double)] -- ^(instruments, wieights)
+  -> OptimizationMethod -- ^method
+  -> EndCriteria -- ^endCriteria
+  -> Constraint -- ^constraint
+  -> IO ()
+calibrate = $(ffiCallX 'calibrate) c_calibrate
+
+foreign import ccall safe "ql.h qlCalibratedModelCalibrate"
+  c_calibrate :: Ptr CCalibratedModel -> CUInt -> Ptr (Ptr CCalibrationHelper) -> Ptr CDouble -> Ptr COptimizationMethod -> Ptr CEndCriteria -> Ptr CConstraint -> Ptr CString -> IO ()
+
+setPricingEngine :: CalibrationHelper
+  -> PricingEngine -- ^engine
+  -> IO ()
+setPricingEngine = $(ffiCallX 'setPricingEngine) c_setPricingEngine
+
+foreign import ccall safe "ql.h qlCalibrationHelperSetPricingEngine"
+  c_setPricingEngine :: Ptr CCalibrationHelper -> Ptr CPricingEngine -> Ptr CString -> IO ()
+
+capHelper :: Period -- ^length
+  -> Quote -- ^volatility
+  -> IborIndex -- ^index
+  -> Frequency -- ^fixedLegFrequency
+  -> DayCounter -- ^fixedLegDayCounter
+  -> Bool -- ^includeFirstSwaplet
+  -> YieldTermStructure -- ^termStructure
+  -> CalibrationErrorType -- ^errorType
+  -> IO CalibrationHelper
+capHelper = $(ffiCall 'capHelper) c_capHelper
+
+foreign import ccall safe "ql.h qlCapHelper"
+  c_capHelper :: Ptr CPeriod -> Ptr CQuote -> Ptr CIborIndex -> CInt -> Ptr CDayCounter -> CInt -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
+
+hestonModelHelper :: Period -- ^maturity
+  -> Calendar -- ^calendar
+  -> Double -- ^s0
+  -> Double -- ^strikePrice
+  -> Quote -- ^volatility
+  -> YieldTermStructure -- ^riskFreeRate
+  -> YieldTermStructure -- ^dividendYield
+  -> CalibrationErrorType -- ^errorType
+  -> IO CalibrationHelper
+hestonModelHelper = $(ffiCall 'hestonModelHelper) c_hestonModelHelper
+
+foreign import ccall safe "ql.h qlHestonModelHelper"
+  c_hestonModelHelper :: Ptr CPeriod -> Ptr CCalendar -> CDouble -> CDouble -> Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
+
+swaptionHelper :: Period -- ^maturity
+  -> Period -- ^length
+  -> Quote -- ^volatility
+  -> IborIndex -- ^index
+  -> Period -- ^fixedLegTenor
+  -> DayCounter -- ^fixedLegDayCounter
+  -> DayCounter -- ^floatingLegDayCounter
+  -> YieldTermStructure -- ^termStructure
+  -> CalibrationErrorType -- ^errorType
+  -> IO CalibrationHelper
+swaptionHelper = $(ffiCall 'swaptionHelper) c_swaptionHelper
+
+foreign import ccall safe "ql.h qlSwaptionHelper"
+  c_swaptionHelper :: Ptr CPeriod -> Ptr CPeriod -> Ptr CQuote -> Ptr CIborIndex -> Ptr CPeriod -> Ptr CDayCounter -> Ptr CDayCounter -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

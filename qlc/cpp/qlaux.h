@@ -757,4 +757,15 @@ template <> class objClassName<QlHullWhite *> { public: static const char *name(
 namespace QuantLib {class Constraint;} using QuantLib::Constraint;
 template <> class objClassName<Constraint *> { public: static const char *name() { return "Constraint"; } };
 
+namespace QuantLib {class OptimizationMethod;} using QuantLib::OptimizationMethod;
+template <> class objClassName<OptimizationMethod *> { public: static const char *name() { return "OptimizationMethod"; } };
+
+namespace QuantLib {class CalibrationHelper;} using QuantLib::CalibrationHelper;
+typedef boost::shared_ptr<CalibrationHelper> QlCalibrationHelper;
+template <> class objClassName<CalibrationHelper *> { public: static const char *name() { return "CalibrationHelper"; } };
+template <> class objClassName<QlCalibrationHelper *> { public: static const char *name() { return "QlCalibrationHelper"; } };
+
+namespace QuantLib {class EndCriteria;} using QuantLib::EndCriteria;
+template <> class objClassName<EndCriteria *> { public: static const char *name() { return "EndCriteria"; } };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

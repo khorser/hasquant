@@ -1,7 +1,4 @@
-#include <ql/models/all.hpp>
-#include <ql/legacy/libormarketmodels/all.hpp>
-#include <ql/experimental/shortrate/generalizedhullwhite.hpp>
-#include <ql/experimental/variancegamma/variancegammamodel.hpp>
+#include <ql/math/optimization/all.hpp>
 
 #include "qlaux.h"
 #include "qlMath.h"
@@ -36,6 +33,31 @@ Constraint* qlPositiveConstraint(char **e) {
     return alloc(new PositiveConstraint());
   } catch (std::exception& er) {
     return handleException<Constraint*>(e, er);
+  }
+}
+void qlFreeOptimizationMethod(OptimizationMethod *o) { del(o); }
+
+OptimizationMethod* qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, char **e) {
+  try {
+    return alloc(new LevenbergMarquardt(epsfcn, xtol, gtol));
+  } catch (std::exception& er) {
+    return handleException<OptimizationMethod*>(e, er);
+  }
+}
+OptimizationMethod* qlSimplex(double lambda, char **e) {
+  try {
+    return alloc(new Simplex(lambda));
+  } catch (std::exception& er) {
+    return handleException<OptimizationMethod*>(e, er);
+  }
+}
+
+void qlFreeEndCriteria(EndCriteria *o) { del(o); }
+EndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e) {
+  try {
+    return alloc(new EndCriteria(maxIterations, maxStationaryStateIterations, rootEpsilon, functionEpsilon, gradientNormEpsilon));
+  } catch (std::exception& er) {
+    return handleException<EndCriteria*>(e, er);
   }
 }
 

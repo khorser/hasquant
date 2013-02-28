@@ -49,10 +49,10 @@ Library
               , QuantLib.Instrument.Swap
               , QuantLib.Instrument.VanillaSwapType
               , QuantLib.InterestRate
-              , QuantLib.Math.Constraint
               , QuantLib.Math.EndCriteriaType
               , QuantLib.Math.HistogramAlgorithm
               , QuantLib.Math.Interpolation
+              , QuantLib.Math.Optimization
               , QuantLib.Math.Rounding
               , QuantLib.Math.RoundingType
               , QuantLib.Method.BoundaryCondition

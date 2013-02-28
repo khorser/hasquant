@@ -1,11 +1,16 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -fno-warn-name-shadowing #-}
-module QuantLib.Math.Constraint
+module QuantLib.Math.Optimization
   (
     boundaryConstraint
   , compositeConstraint
   , noConstraint
   , positiveConstraint
+
+  , levenbergMarquardt
+  , simplex
+
+  , endCriteria
   )
 where
 
@@ -41,5 +46,34 @@ positiveConstraint = $(ffiCall 'positiveConstraint) c_positiveConstraint
 
 foreign import ccall safe "ql.h qlPositiveConstraint"
   c_positiveConstraint :: Ptr CString -> IO (Ptr CConstraint)
+
+levenbergMarquardt :: Double -- ^epsfcn
+  -> Double -- ^xtol
+  -> Double -- ^gtol
+  -> IO OptimizationMethod
+levenbergMarquardt = $(ffiCall 'levenbergMarquardt) c_levenbergMarquardt
+
+foreign import ccall safe "ql.h qlLevenbergMarquardt"
+  c_levenbergMarquardt :: CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr COptimizationMethod)
+
+-- |Constructor taking as input the characteristic length
+simplex :: Double -- ^lambda
+  -> IO OptimizationMethod
+simplex = $(ffiCall 'simplex) c_simplex
+
+foreign import ccall safe "ql.h qlSimplex"
+  c_simplex :: CDouble -> Ptr CString -> IO (Ptr COptimizationMethod)
+
+-- |Initialization constructor.
+endCriteria :: Word -- ^maxIterations
+  -> Word -- ^maxStationaryStateIterations
+  -> Double -- ^rootEpsilon
+  -> Double -- ^functionEpsilon
+  -> Double -- ^gradientNormEpsilon
+  -> IO EndCriteria
+endCriteria = $(ffiCall 'endCriteria) c_endCriteria
+
+foreign import ccall safe "ql.h qlEndCriteria"
+  c_endCriteria :: CUInt -> CUInt -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CEndCriteria)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

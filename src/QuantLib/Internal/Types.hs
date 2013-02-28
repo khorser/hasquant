@@ -59,6 +59,8 @@ module QuantLib.Internal.Types
 
   -- math
   , CConstraint
+  , COptimizationMethod
+  , CEndCriteria
 
   -- models
   , CGJRGARCHModel
@@ -77,6 +79,7 @@ module QuantLib.Internal.Types
   , CBatesDoubleExpModel
   , CLmCorrelationModel
   , CLmVolatilityModel
+  , CCalibrationHelper
 
   -- pricingengines
   , CPricingEngine
@@ -598,6 +601,18 @@ instance Finalizable CConstraint where
 foreign import ccall safe "ql.h &qlFreeConstraint"
   p_freeConstraint :: FunPtr (Ptr CConstraint -> IO ())
 
+data COptimizationMethod
+instance Finalizable COptimizationMethod where
+  finalize = p_freeOptimizationMethod
+foreign import ccall safe "ql.h &qlFreeOptimizationMethod"
+  p_freeOptimizationMethod :: FunPtr (Ptr COptimizationMethod -> IO ())
+
+data CEndCriteria
+instance Finalizable CEndCriteria where
+  finalize = p_freeEndCriteria
+foreign import ccall safe "ql.h &qlFreeEndCriteria"
+  p_freeEndCriteria :: FunPtr (Ptr CEndCriteria -> IO ())
+
 -- pricingengines
 data CPricingEngine
 
@@ -785,6 +800,12 @@ instance Upcastable COneFactorAffineModel CShortRateModel where
   c_upcast = c_OneFactorAffineModelAsShortRateModel
 foreign import ccall safe "ql.h qlOneFactorAffineModelAsShortRateModel"
   c_OneFactorAffineModelAsShortRateModel :: Ptr COneFactorAffineModel -> IO (Ptr CShortRateModel)
+
+data CCalibrationHelper
+instance Finalizable CCalibrationHelper where
+  finalize = p_freeCalibrationHelper
+foreign import ccall safe "ql.h &qlFreeCalibrationHelper"
+  p_freeCalibrationHelper :: FunPtr (Ptr CCalibrationHelper -> IO ())
 
 -- processes
 data CStochasticProcess1D

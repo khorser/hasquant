@@ -1,3 +1,0 @@
-->void
-::const boost::shared_ptr< PricingEngine > &
--- ^engine

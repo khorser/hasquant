@@ -306,7 +306,8 @@ sub type {
       'CapFloor::Type', 'LsmBasisSystem::PolynomType',
       'HestonProcess::Discretization', 'GJRGARCHProcess::Discretization', 
       'HybridHestonHullWhiteProcess::Discretization',
-      'IntervalPrice::Type']) {
+      'IntervalPrice::Type', 'CalibrationHelper::CalibrationErrorType',
+      'EndCriteria::Type']) {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
     return ($carg, $farg, $t, $cast, '%', 0, '');
@@ -321,9 +322,10 @@ sub type {
     return ("char* ", "CString", "Interpolation", '%', "???", 0, '');
   }
   elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period',
-      'InterestRate', 'FittedBondDiscountCurveFittingMethod', 'Rounding', 'Constraint']) {
+      'InterestRate', 'FittedBondDiscountCurveFittingMethod', 'Rounding', 'Constraint', 'OptimizationMethod',
+      'EndCriteria']) {
     if (not $vect) {
-      return ("$t*", "Ptr C$t", $t, '(*arg(%))', "ret(new $t(%))", 1, '');
+      return ("$t*", "Ptr C$t", $t, '*arg(%)', "alloc(new %)", 1, '');
     }
     else {
       return ("$t**", "CUInt -> Ptr (Ptr C$t)", "[$t]", 'qlBuildVector(%, %Len)', '???', 1, 'unsigned %Len');

@@ -18,6 +18,12 @@ extern "C" {
   Constraint* DLLEXPORT qlCompositeConstraint(Constraint* c1, Constraint* c2, char **e);
   Constraint* DLLEXPORT qlNoConstraint(char **e);
   Constraint* DLLEXPORT qlPositiveConstraint(char **e);
+
+  void DLLEXPORT qlFreeOptimizationMethod(OptimizationMethod *o);
+  OptimizationMethod* DLLEXPORT qlSimplex(double lambda, char **e);
+  OptimizationMethod* DLLEXPORT qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, char **e);
+  void DLLEXPORT qlFreeEndCriteria(EndCriteria *o);
+  EndCriteria* DLLEXPORT qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e);
 #ifdef __cplusplus
 }
 #endif

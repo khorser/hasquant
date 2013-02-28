@@ -177,5 +177,42 @@ QlCalibratedModel* qlLiborForwardModelAsCalibratedModel(QlLiborForwardModel *o) 
 QlCalibratedModel* qlPiecewiseTimeDependentHestonModelAsCalibratedModel(QlPiecewiseTimeDependentHestonModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
 QlCalibratedModel* qlShortRateModelAsCalibratedModel(QlShortRateModel *o) { return ret(new QlCalibratedModel(*arg(o))); }
 QlShortRateModel* qlOneFactorAffineModelAsShortRateModel(QlOneFactorAffineModel *o) { return ret(new QlShortRateModel(*arg(o))); }
+void qlFreeCalibrationHelper(QlCalibrationHelper *o) { del(o); }
+
+void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e) {
+  try {
+    (*arg(o))->calibrate(qlBuildVector(x1, x1Len), *arg(method), *arg(endCriteria), *arg(constraint), std::vector<double>(weights, weights+x1Len));
+  } catch (std::exception& er) {
+    (void)handleException<int>(e, er);
+  }
+}
+void qlCalibrationHelperSetPricingEngine(QlCalibrationHelper* o, QlPricingEngine* engine, char **e) {
+  try {
+    (*arg(o))->setPricingEngine(*arg(engine));
+  } catch (std::exception& er) {
+    (void)handleException<int>(e, er);
+  }
+}
+QlCalibrationHelper* qlCapHelper(Period* length, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e) {
+  try {
+    return ret(new QlCalibrationHelper(alloc(new CapHelper(*arg(length), Handle<Quote>(*arg(volatility)), (*arg(index)), (Frequency)fixedLegFrequency, *arg(fixedLegDayCounter), includeFirstSwaplet, Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
+  } catch (std::exception& er) {
+    return handleException<QlCalibrationHelper*>(e, er);
+  }
+}
+QlCalibrationHelper* qlHestonModelHelper(Period* maturity, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e) {
+  try {
+    return ret(new QlCalibrationHelper(alloc(new HestonModelHelper(*arg(maturity), *arg(calendar), s0, strikePrice, Handle<Quote>(*arg(volatility)), Handle<YieldTermStructure>(*arg(riskFreeRate)), Handle<YieldTermStructure>(*arg(dividendYield)), (CalibrationHelper::CalibrationErrorType)errorType))));
+  } catch (std::exception& er) {
+    return handleException<QlCalibrationHelper*>(e, er);
+  }
+}
+QlCalibrationHelper* qlSwaptionHelper(Period* maturity, Period* length, QlQuote* volatility, QlIborIndex* index, Period* fixedLegTenor, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e) {
+  try {
+    return ret(new QlCalibrationHelper(alloc(new SwaptionHelper(*arg(maturity), *arg(length), Handle<Quote>(*arg(volatility)), (*arg(index)), *arg(fixedLegTenor), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
+  } catch (std::exception& er) {
+    return handleException<QlCalibrationHelper*>(e, er);
+  }
+}
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
