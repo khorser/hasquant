@@ -1,4 +1,0 @@
-->
-::const boost::shared_ptr< Impl > &
-=boost::shared_ptr< Impl >()
--- ^impl

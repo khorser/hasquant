@@ -1,9 +1,0 @@
-->Real
-::const StochasticProcess1D &
--- ^
-::Time
--- ^t0
-::Real
--- ^x0
-::Time
--- ^dt
