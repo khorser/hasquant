@@ -28,7 +28,7 @@ OBJS=cpp/qlBond.o \
 	cpp/qlYieldTS.o \
 	cpp/qlTSAux.o
 
-QLCSRC=../../qlc/cpp
+QLCSRC=../../../qlc/cpp
 
 dll: libql.dll
 

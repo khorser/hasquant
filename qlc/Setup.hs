@@ -122,7 +122,7 @@ compileCxx gcc opts incls out_path cxx_src =
         out_path' = normalisePath out_path
         cxx_src' = normalisePath cxx_src
         out_file = out_path' </> dropFileName cxx_src </> replaceExtension (takeFileName cxx_src) ".o"
-        out = ["-c", cxx_src', "-o", out_file]
+        out = ["-c", cxx_src', "-o", out_file, "-DDLLSOURCE"]
         opts' = opts ++ osCompileOpts
     do_it <- needsCompiling cxx_src out_file
     when do_it $ createDirectoryIfMissing True (dropFileName out_file) >>
