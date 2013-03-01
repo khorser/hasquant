@@ -28,7 +28,6 @@ module QuantLib.Internal.Utils
   , CString
   , Ptr, FunPtr
   , ForeignPtr
-  , nullPtr
   )
 
 where
@@ -41,8 +40,9 @@ import Foreign.C.Types
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
+import Foreign.Marshal.Utils(with, maybeWith, withMany)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr)
-import Foreign.Storable(Storable(..), peek, poke)
+import Foreign.Storable(Storable(..), peek)
 
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -62,20 +62,16 @@ withObject :: ForeignPtr a -> (Ptr a -> IO b) -> IO b
 withObject = withForeignPtr
 
 maybeWithObject :: Maybe (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
-maybeWithObject (Just o) f = withObject o f
-maybeWithObject Nothing f  = f nullPtr
+maybeWithObject = maybeWith withObject
 
 withObjects :: [ForeignPtr a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
--- XXX rewrite using folds?
-withObjects objs fn = go objs []
-  where go [] ps     = withArrayLen ps (\n p -> fn (fromIntegral n) p)
-        go (o:os) ps = withForeignPtr o
-                        (\p -> go os (ps ++ [p]))
+withObjects xs f = withMany withObject xs
+  (`withArrayLen` (f . fromIntegral))
 
 withDoubles :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
 withDoubles amounts f = withArrayLen
                         (map realToFrac amounts)
-                        (\n a -> f (fromIntegral n) a)
+                        (f . fromIntegral)
 
 getString :: IO CString -> IO String
 getString x = do
@@ -125,9 +121,8 @@ buildArray n p = do
 
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
-   alloca $
+   with nullPtr $
      \errptr -> do
-     poke errptr nullPtr
      r <- f errptr
      msg <- peek errptr
      if msg /= nullPtr

@@ -11,6 +11,7 @@ where
 
 import Data.List(elemIndex)
 import System.IO.Unsafe(unsafePerformIO)
+import Foreign.Marshal.Utils(maybeWith)
 
 import QuantLib.Internal.Utils
 
@@ -48,6 +49,6 @@ withLitEnum :: (QLLitEnum a) => a -> (CString -> IO b) -> IO b
 withLitEnum = withCString . show
 
 withOptLitEnum :: (QLLitEnum a) => Maybe a -> (CString -> IO b) -> IO b
-withOptLitEnum = maybe ($ nullPtr) withLitEnum
+withOptLitEnum = maybeWith withLitEnum
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
