@@ -47,7 +47,7 @@ toQlDateUnsafe :: Day -> CDate
 toQlDateUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
 
 withDays :: [Day] -> (CUInt -> Ptr CDate -> IO b) -> IO b
-withDays days = withArrayULen (map toQlDate days)
+withDays = withArrayULenT toQlDate
 
 class QLDate a where
   isValid :: a -> Bool

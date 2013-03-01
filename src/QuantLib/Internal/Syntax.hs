@@ -304,18 +304,17 @@ genFfiCall io extra aa r = do
       [|withDays $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA BoolN, v):as) c_call =
-      [|withArrayULen (map fromBool $v) (\y1 y2 ->
-          $(genFfiCallImpl as [|$c_call y1 y2|]))|]
+      [|withArrayULenT fromBool $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA WordN, v):as) c_call =
-      [|withArrayULen (map (fromIntegral :: Word -> CUInt) $v) (\y1 y2 ->
+      [|withArrayULenT (fromIntegral :: Word -> CUInt) $v (\y1 y2 ->
           $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA YearFractionN, v):as) c_call =
       [|withDoubles $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA (EnumN n), v):as) c_call =
-      [|withArrayULen (map (toQlEnum $(stringE $ show n)) $v)
+      [|withArrayULenT (toQlEnum $(stringE $ show n)) $v
         (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA2 DoubleN DayN, v):as) c_call =
@@ -327,11 +326,11 @@ genFfiCall io extra aa r = do
         (\_ ds -> $(genFfiCallImpl as [|$c_call n os ds|])))|]
 
     genFfiCallImpl ((ListA2 ForeignPtrN BoolN, v):as) c_call =
-      [|withObjects (map fst $v) (\n os -> withArrayULen (map (fromBool . snd) $v)
+      [|withObjects (map fst $v) (\n os -> withArrayULenT (fromBool . snd) $v
         (\_ bs -> $(genFfiCallImpl as [|$c_call n os bs|])))|]
 
     genFfiCallImpl ((ListA2 DayN WordN, v):as) c_call =
-      [|withDays (map fst $v) (\n ds -> withArrayULen (map ((fromIntegral :: Word -> CUInt) . snd) $v)
+      [|withDays (map fst $v) (\n ds -> withArrayULenT ((fromIntegral :: Word -> CUInt) . snd) $v
         (\_ ws -> $(genFfiCallImpl as [|$c_call n ds ws|])))|]
 
     genFfiCallImpl ((ListA2 ForeignPtrN DoubleN, v):as) c_call =

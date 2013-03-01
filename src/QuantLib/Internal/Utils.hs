@@ -21,6 +21,7 @@ module QuantLib.Internal.Utils
   , getString
   , CStaticInt(..)
   , withArrayULen
+  , withArrayULenT
 
   -- re-exporting some popular stuff
   , Word
@@ -62,6 +63,9 @@ signalError = throw . Error
 withArrayULen :: Storable a => [a] -> (CUInt -> Ptr a -> IO b) -> IO b
 withArrayULen x f = withArrayLen x (f . fromIntegral)
 
+withArrayULenT :: Storable b => (a -> b) -> [a] -> (CUInt -> Ptr b -> IO c) -> IO c
+withArrayULenT t x = withArrayULen (map t x)
+
 withObject :: ForeignPtr a -> (Ptr a -> IO b) -> IO b
 withObject = withForeignPtr
 
@@ -72,7 +76,7 @@ withObjects :: [ForeignPtr a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
 withObjects xs f = withMany withObject xs (`withArrayULen` f)
 
 withDoubles :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
-withDoubles amounts = withArrayULen (map realToFrac amounts)
+withDoubles = withArrayULenT realToFrac
 
 getString :: IO CString -> IO String
 getString x = do
