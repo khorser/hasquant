@@ -20,6 +20,7 @@ module QuantLib.Internal.Utils
   , getArrayX
   , getString
   , CStaticInt(..)
+  , withArrayULen
 
   -- re-exporting some popular stuff
   , Word
@@ -58,6 +59,9 @@ foreign import ccall safe "ql.h qlFreeDoubles"
 signalError :: String -> a
 signalError = throw . Error
 
+withArrayULen :: Storable a => [a] -> (CUInt -> Ptr a -> IO b) -> IO b
+withArrayULen x f = withArrayLen x (f . fromIntegral)
+
 withObject :: ForeignPtr a -> (Ptr a -> IO b) -> IO b
 withObject = withForeignPtr
 
@@ -65,13 +69,10 @@ maybeWithObject :: Maybe (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 maybeWithObject = maybeWith withObject
 
 withObjects :: [ForeignPtr a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
-withObjects xs f = withMany withObject xs
-  (`withArrayLen` (f . fromIntegral))
+withObjects xs f = withMany withObject xs (`withArrayULen` f)
 
 withDoubles :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
-withDoubles amounts f = withArrayLen
-                        (map realToFrac amounts)
-                        (f . fromIntegral)
+withDoubles amounts = withArrayULen (map realToFrac amounts)
 
 getString :: IO CString -> IO String
 getString x = do

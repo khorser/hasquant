@@ -9,7 +9,6 @@ where
 
 import Control.Monad(liftM, liftM2)
 import Foreign.Marshal.Utils(fromBool, toBool)
-import Foreign.Marshal.Array(withArrayLen)
 import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -305,19 +304,19 @@ genFfiCall io extra aa r = do
       [|withDays $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA BoolN, v):as) c_call =
-      [|withArrayLen (map fromBool $v) (\y1 y2 ->
-          $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CUInt) y1) y2|]))|]
+      [|withArrayULen (map fromBool $v) (\y1 y2 ->
+          $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA WordN, v):as) c_call =
-      [|withArrayLen (map (fromIntegral :: Word -> CUInt) $v) (\y1 y2 ->
-          $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CUInt) y1) y2|]))|]
+      [|withArrayULen (map (fromIntegral :: Word -> CUInt) $v) (\y1 y2 ->
+          $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA YearFractionN, v):as) c_call =
       [|withDoubles $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA (EnumN n), v):as) c_call =
-      [|withArrayLen (map (toQlEnum $(stringE $ show n)) $v)
-        (\y1 y2 -> $(genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CUInt) y1) y2|]))|]
+      [|withArrayULen (map (toQlEnum $(stringE $ show n)) $v)
+        (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
     genFfiCallImpl ((ListA2 DoubleN DayN, v):as) c_call =
       [|withDoubles (map fst $v) (\n ams -> withDays (map snd $v)
@@ -328,11 +327,11 @@ genFfiCall io extra aa r = do
         (\_ ds -> $(genFfiCallImpl as [|$c_call n os ds|])))|]
 
     genFfiCallImpl ((ListA2 ForeignPtrN BoolN, v):as) c_call =
-      [|withObjects (map fst $v) (\n os -> withArrayLen (map (fromBool . snd) $v)
+      [|withObjects (map fst $v) (\n os -> withArrayULen (map (fromBool . snd) $v)
         (\_ bs -> $(genFfiCallImpl as [|$c_call n os bs|])))|]
 
     genFfiCallImpl ((ListA2 DayN WordN, v):as) c_call =
-      [|withDays (map fst $v) (\n ds -> withArrayLen (map ((fromIntegral :: Word -> CUInt) . snd) $v)
+      [|withDays (map fst $v) (\n ds -> withArrayULen (map ((fromIntegral :: Word -> CUInt) . snd) $v)
         (\_ ws -> $(genFfiCallImpl as [|$c_call n ds ws|])))|]
 
     genFfiCallImpl ((ListA2 ForeignPtrN DoubleN, v):as) c_call =

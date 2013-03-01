@@ -15,7 +15,6 @@ module QuantLib.Internal.Date
 where
 
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
-import Foreign.Marshal.Array(withArrayLen)
 
 import QuantLib.Internal.Utils
 
@@ -48,9 +47,7 @@ toQlDateUnsafe :: Day -> CDate
 toQlDateUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
 
 withDays :: [Day] -> (CUInt -> Ptr CDate -> IO b) -> IO b
-withDays days f = withArrayLen
-                      (map toQlDate days)
-                      (\n d -> f (fromIntegral n) d)
+withDays days = withArrayULen (map toQlDate days)
 
 class QLDate a where
   isValid :: a -> Bool
