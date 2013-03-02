@@ -1,8 +1,10 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Internal.Types
   (
+    Matrix(..)
+
   -- cashflow
-    CLeg
+  , CLeg
   , CFloatingRateCouponPricer
 
   -- currency
@@ -1211,5 +1213,8 @@ instance Upcastable CSimpleQuote CQuote where
   c_upcast = c_SimpleQuoteAsQuote
 foreign import ccall safe "ql.h qlSimpleQuoteAsQuote"
   c_SimpleQuoteAsQuote :: Ptr CSimpleQuote -> IO (Ptr CQuote)
+
+data Matrix a = Matrix{matrixRows::Word, matrixColumns::Word, matrixData::[a]}
+  deriving (Eq, Show)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

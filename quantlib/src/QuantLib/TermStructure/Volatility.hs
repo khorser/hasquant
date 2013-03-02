@@ -45,6 +45,7 @@ module QuantLib.TermStructure.Volatility
   , localVolSurface
   , impliedVolTermStructure
   , blackVarianceCurve
+  , blackVarianceSurface
   )
 where
 
@@ -55,6 +56,7 @@ import QuantLib.Internal.Utils
 import QuantLib.Math.Interpolation(Interpolation)
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
+import QuantLib.TermStructure.Trait
 
 foreign import ccall safe "ql.h qlConstantOptionletVol1"
   c_constantOptionletVol' :: CUInt -> Ptr CCalendar -> CInt -> Ptr CQuote
@@ -486,5 +488,19 @@ blackVarianceCurve = $(ffiCall 'blackVarianceCurve) c_blackVarianceCurve
 
 foreign import ccall safe "ql.h qlBlackVarianceCurve"
   c_blackVarianceCurve :: CDate -> CUInt -> Ptr CDate -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CString -> Ptr CString -> IO (Ptr CBlackVarianceCurve)
+
+blackVarianceSurface :: Day -- ^referenceDate
+  -> Calendar -- ^cal
+  -> [Day] -- ^dates
+  -> [Double] -- ^strikes
+  -> Matrix Double -- ^blackVolMatrix
+  -> DayCounter -- ^dayCounter
+  -> BlackVarSurfaceExtrapolation -- ^lowerExtrapolation
+  -> BlackVarSurfaceExtrapolation -- ^upperExtrapolation
+  -> IO BlackVolTermStructure
+blackVarianceSurface = $(ffiCall 'blackVarianceSurface) c_blackVarianceSurface
+
+foreign import ccall safe "ql.h qlBlackVarianceSurface"
+  c_blackVarianceSurface :: CDate -> Ptr CCalendar -> CUInt -> Ptr CDate -> CUInt -> Ptr CDouble -> CUInt -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CInt -> Ptr CString -> IO (Ptr CBlackVolTermStructure)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -14,6 +14,7 @@ import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
+import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
@@ -62,7 +63,7 @@ data NestedArg = DayN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | Yea
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA | YearFractionA
   | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA
   | ListA NestedArg | ListA2 NestedArg NestedArg
-  | EnumA Name | LitEnumA | OptLitEnumA
+  | EnumA Name | LitEnumA | OptLitEnumA | MatrixDoubleA
   deriving (Show, Eq)
 
 isAtomicTop :: Name -> Bool
@@ -137,6 +138,7 @@ topArgType (AppT
             (AppT (TupleT 2) (ConT n1))
             (ConT n2))) =
               liftM2 ListA2 (nestedNameToTop n1) (nestedNameToTop n2)
+topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix && n == ''Double = return MatrixDoubleA
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
@@ -293,6 +295,10 @@ genFfiCall io extra aa r = do
 
     genFfiCallImpl ((OptForeignPtrA, v):as) c_call =
       [|maybeWithObject $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
+
+    genFfiCallImpl ((MatrixDoubleA, v):as) c_call =
+      [|withDoubles (matrixData $v) (\_ y -> $(genFfiCallImpl as
+        [|$c_call ((fromIntegral::Word->CUInt) $ matrixRows $v) ((fromIntegral::Word->CUInt) $ matrixColumns $v) y |]))|]
 
     genFfiCallImpl ((ListA DoubleN, v):as) c_call =
       [|withDoubles $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]

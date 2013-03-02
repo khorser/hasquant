@@ -251,6 +251,9 @@ sub type {
   elsif ($t eq 'Array') {
     return ('double*', 'CUInt -> Ptr CDouble', '[Double]', 'Array(%, %+%Len)', '???', 0, 'unsigned %Len');
   }
+  elsif ($t eq 'Matrix') {
+    return ('double*', 'CUInt -> CUInt -> Ptr CDouble', 'Matrix Double', 'qlBuildMatrix(%, %Rows, %Cols)', '???', 0, 'unsigned %Rows, unsigned %Cols');
+  }
   elsif ($t ~~ ['BigNatural', 'Natural', 'Size']) {
     if (not $vect) {
       return ('unsigned', 'CUInt', 'Word', '%', '%', 0, '');
@@ -311,9 +314,8 @@ sub type {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
     my $ht = $t;
-    print "!!!$t\n";
     if ($c eq 'BlackVarianceSurface' and $t eq 'Extrapolation') {
-      $cast = '(BlackVarianceSurface::Extrapolation)';
+      $cast = '(BlackVarianceSurface::Extrapolation)%';
       $ht = 'BlackVarSurfaceExtrapolation';
     }
     return ($carg, $farg, $ht, $cast, '%', 0, '');

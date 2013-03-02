@@ -68,6 +68,7 @@ extern "C" {
   QlBlackVolTermStructure* DLLEXPORT qlBlackVarianceCurveAsBlackVolTermStructure(QlBlackVarianceCurve *o);
   QlBlackVolTermStructure* DLLEXPORT qlImpliedVolTermStructure(QlBlackVolTermStructure* origTS, int referenceDate, char **e);
   QlBlackVarianceCurve* DLLEXPORT qlBlackVarianceCurve(int referenceDate, unsigned datesLen, int* dates, unsigned blackVolCurveLen, double* blackVolCurve, DayCounter* dayCounter, int forceMonotoneVariance, char *interpolation, char **e);
+  QlBlackVolTermStructure* DLLEXPORT qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation/*, char *interpolation*/, char **e);
 #ifdef __cplusplus
 }
 #endif

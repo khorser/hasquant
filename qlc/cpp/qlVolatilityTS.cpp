@@ -365,4 +365,19 @@ QlBlackVarianceCurve* qlBlackVarianceCurve(int referenceDate, unsigned datesLen,
   }
 }
 
+QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation/*, char *interpolation*/, char **e) {
+  BlackVarianceSurface *s = 0;
+  try {
+    s = new BlackVarianceSurface(Date(referenceDate), *arg(cal), qlDateVector(datesLen, dates), std::vector<double>(strikes, strikes+strikesLen), qlBuildMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols), *arg(dayCounter), (BlackVarianceSurface::Extrapolation)lowerExtrapolation, (BlackVarianceSurface::Extrapolation)upperExtrapolation);
+    /* TODO enable when 2-D Interpolation is added
+    if (interpolation)
+      setInterpolation(s, interpolation);
+    */
+    return ret(new QlBlackVolTermStructure(alloc(s)));
+  } catch (std::exception& er) {
+    delete s;
+    return handleException<QlBlackVolTermStructure*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <vector>
 #include <boost/optional.hpp>
+#include <ql/math/matrix.hpp>
 
 int * qlAllocateInts(size_t size);
 double * qlAllocateDoubles(size_t size);
@@ -209,6 +210,8 @@ Handle<T> qlNullableHandle(boost::shared_ptr<T> *p) {
     ? Handle<T>(*(arg(p)))
     : Handle<T>();
 }
+
+QuantLib::Disposable<QuantLib::Matrix> qlBuildMatrix(double *a, unsigned r, unsigned c);
 
 // XXX suboptimal
 template <class T>

@@ -55,6 +55,10 @@ Probably it would need to register for notifications from other quotes and evalu
 
 (Maybe Day) in too many functions?
 
+add Interpolation2D
+
+introduce typeclasses for some frequent operations like getting underlying or computing blackVariance
+
 -- done:
 Bond::
 BondFunctions::

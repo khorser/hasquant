@@ -2,8 +2,12 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-} -- for Show and Eq instances of named singletons
 module QuantLib.Types
   (
+    Matrix
+  , realMatrix
+  , objectMatrix
+
   -- cashflows
-    Leg
+  , Leg
   , FloatingRateCouponPricer
 
   -- currency
@@ -190,6 +194,19 @@ where
 
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+
+-- do something more interesting using type system
+realMatrix :: Word -> Word -> [Double] -> Matrix Double
+realMatrix rows cols d =
+  if rows * cols /= fromIntegral (length d)
+    then signalError "Dimensions do not match with data passed"
+    else Matrix rows cols d
+
+objectMatrix :: (Finalizable a) => Word -> Word -> [ForeignPtr a] -> Matrix (ForeignPtr a)
+objectMatrix rows cols d =
+  if rows * cols /= fromIntegral (length d)
+    then signalError "Dimensions do not match with data passed"
+    else Matrix rows cols d
 
 -- cashflows
 type Leg = ForeignPtr CLeg

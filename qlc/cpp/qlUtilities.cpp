@@ -82,4 +82,10 @@ std::vector<Date> qlDateVector(unsigned len, int *dates) {
   return d;
 }
 
+Disposable<Matrix> qlBuildMatrix(double *a, unsigned r, unsigned c) {
+  Matrix m (r, c);
+  std::copy(a, a + r*c, m.begin());
+  return m;
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
