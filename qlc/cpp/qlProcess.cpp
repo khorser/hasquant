@@ -231,4 +231,12 @@ QlVarianceGammaProcess* qlVarianceGammaProcess(QlQuote* s0, QlYieldTermStructure
   }
 }
 
+QlStochasticProcessArray* qlStochasticProcessArray(unsigned x0Len, QlStochasticProcess1D** x0, unsigned correlationRows, unsigned correlationCols, double* correlation, char **e) {
+  try {
+    return ret(new QlStochasticProcessArray(alloc(new StochasticProcessArray(qlBuildVector(x0, x0Len), qlBuildMatrix(correlation, correlationRows, correlationCols)))));
+  } catch (std::exception& er) {
+    return handleException<QlStochasticProcessArray*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

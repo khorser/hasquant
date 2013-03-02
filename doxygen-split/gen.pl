@@ -232,14 +232,19 @@ sub type {
   my $opt = ($t =~ m!boost::optional!);
   $t =~ s/^(boost::optional<\s*)([^> ]+)(\s*>\s*)$/$2/;
   my $vect = ($t =~ m!std::vector!);
-  $t =~ s/^((const\s+)?std::vector<\s*)([^> ]+)(\s*>\s*&?\s*)$/$3/;
+  $t =~ s/^((const\s+)?std::vector<\s*)(.+)(\s*>\s*&?\s*)$/$3/;
+  my $vect2 = ($t =~ m!std::vector!);
+  if ($vect2) {
+    $t =~ s/^((const\s+)?std::vector<\s*)(.+)(\s*>\s*&?\s*)$/$3/;
+  }
   if ($h and $vect) {
-    $t =~ s/^std::vector< Handle< (.*) > > &$/$1/;
+    $t =~ s/^Handle< (.*) >\s*$/$1/;
   }
   elsif ($vect) {
     $t =~ s/^std::vector< boost::shared_ptr< (.*) > > &$/$1/;
   }
 
+  $t =~ s/\s+$//;
   if ($t ~~ ['double', 'Rate', 'Real', 'Double', 'Spread', 'Volatility', 'DiscountFactor', 'Probability']) {
     if (not $vect) {
       return ('double', 'CDouble', 'Double', '%', '%', 0, '');
@@ -351,7 +356,10 @@ sub type {
       }
     }
     else {
-      if ($vect) {
+      if ($vect2) {
+	return ("$carg*", "CUInt -> CUInt -> Ptr ($farg)", "Matrix $t", 'qlBuildHandleMatrix(%, %Rows, %Cols)', '???', 1, 'unsigned %Rows, unsigned %Cols');
+      }
+      elsif ($vect) {
 	return ("$carg*", "CUInt -> Ptr ($farg)", "[$t]", 'qlBuildHandleVector(%, %Len)', '???', 1, 'unsigned %Len');
       }
       elsif (not $def) {

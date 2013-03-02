@@ -369,7 +369,7 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
   BlackVarianceSurface *s = 0;
   try {
     s = new BlackVarianceSurface(Date(referenceDate), *arg(cal), qlDateVector(datesLen, dates), std::vector<double>(strikes, strikes+strikesLen), qlBuildMatrix(blackVolMatrix, blackVolMatrixRows, blackVolMatrixCols), *arg(dayCounter), (BlackVarianceSurface::Extrapolation)lowerExtrapolation, (BlackVarianceSurface::Extrapolation)upperExtrapolation);
-    /* TODO enable when 2-D Interpolation is added
+    /* TODO uncomment when 2-D Interpolation is added
     if (interpolation)
       setInterpolation(s, interpolation);
     */
@@ -377,6 +377,22 @@ QlBlackVolTermStructure* qlBlackVarianceSurface(int referenceDate, Calendar* cal
   } catch (std::exception& er) {
     delete s;
     return handleException<QlBlackVolTermStructure*>(e, er);
+  }
+}
+
+QlCapFloorTermVolSurface* qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
+  try {
+    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(settlementDays, *arg(calendar), (BusinessDayConvention)bdc, qlBuildVector(optionTenors, optionTenorsLen), std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
+  } catch (std::exception& er) {
+    return handleException<QlCapFloorTermVolSurface*>(e, er);
+  }
+}
+
+QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e) {
+  try {
+    return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, qlBuildVector(optionTenors, optionTenorsLen), std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
+  } catch (std::exception& er) {
+    return handleException<QlCapFloorTermVolSurface*>(e, er);
   }
 }
 

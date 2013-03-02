@@ -27,6 +27,7 @@ module QuantLib.Process
   , merton76Process
   , ornsteinUhlenbeckProcess
   , varianceGammaProcess
+  , stochasticProcessArray
   )
 where
 
@@ -324,5 +325,13 @@ varianceGammaProcess = $(ffiCall 'varianceGammaProcess) c_varianceGammaProcess
 
 foreign import ccall safe "ql.h qlVarianceGammaProcess"
   c_varianceGammaProcess :: Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CVarianceGammaProcess)
+
+stochasticProcessArray :: [StochasticProcess1D]
+  -> Matrix Double -- ^correlation
+  -> IO StochasticProcessArray
+stochasticProcessArray = $(ffiCall 'stochasticProcessArray) c_stochasticProcessArray
+
+foreign import ccall safe "ql.h qlStochasticProcessArray"
+  c_stochasticProcessArray :: CUInt -> Ptr (Ptr CStochasticProcess1D) -> CUInt -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CStochasticProcessArray)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

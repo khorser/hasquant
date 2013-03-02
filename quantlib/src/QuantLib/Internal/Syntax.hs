@@ -63,7 +63,7 @@ data NestedArg = DayN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | Yea
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA | YearFractionA
   | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA
   | ListA NestedArg | ListA2 NestedArg NestedArg
-  | EnumA Name | LitEnumA | OptLitEnumA | MatrixDoubleA
+  | EnumA Name | LitEnumA | OptLitEnumA | MatrixDoubleA | MatrixForeignPtrA
   deriving (Show, Eq)
 
 isAtomicTop :: Name -> Bool
@@ -138,7 +138,12 @@ topArgType (AppT
             (AppT (TupleT 2) (ConT n1))
             (ConT n2))) =
               liftM2 ListA2 (nestedNameToTop n1) (nestedNameToTop n2)
-topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix && n == ''Double = return MatrixDoubleA
+topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix =
+  if n == ''Double 
+    then return MatrixDoubleA
+    else tryForeignPtr n >>=
+          (\x -> fail $ "Error parsing optional top arg: " ++ x)
+            `either` (\_ -> return MatrixForeignPtrA)
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
@@ -298,6 +303,10 @@ genFfiCall io extra aa r = do
 
     genFfiCallImpl ((MatrixDoubleA, v):as) c_call =
       [|withDoubles (matrixData $v) (\_ y -> $(genFfiCallImpl as
+        [|$c_call ((fromIntegral::Word->CUInt) $ matrixRows $v) ((fromIntegral::Word->CUInt) $ matrixColumns $v) y |]))|]
+
+    genFfiCallImpl ((MatrixForeignPtrA, v):as) c_call =
+      [|withObjects (matrixData $v) (\_ y -> $(genFfiCallImpl as
         [|$c_call ((fromIntegral::Word->CUInt) $ matrixRows $v) ((fromIntegral::Word->CUInt) $ matrixColumns $v) y |]))|]
 
     genFfiCallImpl ((ListA DoubleN, v):as) c_call =

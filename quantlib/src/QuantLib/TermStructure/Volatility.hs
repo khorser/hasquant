@@ -46,6 +46,9 @@ module QuantLib.TermStructure.Volatility
   , impliedVolTermStructure
   , blackVarianceCurve
   , blackVarianceSurface
+
+  , capFloorTermVolSurface
+  , capFloorTermVolSurface'  
   )
 where
 
@@ -502,5 +505,33 @@ blackVarianceSurface = $(ffiCall 'blackVarianceSurface) c_blackVarianceSurface
 
 foreign import ccall safe "ql.h qlBlackVarianceSurface"
   c_blackVarianceSurface :: CDate -> Ptr CCalendar -> CUInt -> Ptr CDate -> CUInt -> Ptr CDouble -> CUInt -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CInt -> Ptr CString -> IO (Ptr CBlackVolTermStructure)
+
+-- |floating reference date, floating market data
+capFloorTermVolSurface :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^bdc
+  -> [Period] -- ^optionTenors
+  -> [Double] -- ^strikes
+  -> Matrix Quote -- ^volatilities
+  -> DayCounter -- ^dc
+  -> IO CapFloorTermVolSurface
+capFloorTermVolSurface = $(ffiCall 'capFloorTermVolSurface) c_capFloorTermVolSurface
+
+foreign import ccall safe "ql.h qlCapFloorTermVolSurface"
+  c_capFloorTermVolSurface :: CUInt -> Ptr CCalendar -> CInt -> CUInt -> Ptr (Ptr CPeriod) -> CUInt -> Ptr CDouble -> CUInt -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CCapFloorTermVolSurface)
+
+-- |fixed reference date, floating market data
+capFloorTermVolSurface' :: Day -- ^settlementDate
+  -> Calendar -- ^calendar
+  -> BusinessDayConvention -- ^bdc
+  -> [Period] -- ^optionTenors
+  -> [Double] -- ^strikes
+  -> Matrix Quote -- ^volatilities
+  -> DayCounter -- ^dc
+  -> IO CapFloorTermVolSurface
+capFloorTermVolSurface' = $(ffiCall 'capFloorTermVolSurface') c_capFloorTermVolSurface'
+
+foreign import ccall safe "ql.h qlCapFloorTermVolSurface1"
+  c_capFloorTermVolSurface' :: CDate -> Ptr CCalendar -> CInt -> CUInt -> Ptr (Ptr CPeriod) -> CUInt -> Ptr CDouble -> CUInt -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CCapFloorTermVolSurface)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
