@@ -34,58 +34,55 @@ main = defaultMainWithHooks simpleUserHooks { buildHook = myBuildHook, instHook 
 -- is shipped with only a static version of libstdc++.
 -- TODO: Does not currently create the build output directory.
 myBuildHook :: PackageDescription -> LocalBuildInfo -> UserHooks -> BuildFlags -> IO ()
-myBuildHook pkg_descr local_bld_info _user_hooks _bld_flags =
-    do
-    -- Extract the custom fields customFieldsPD where field name is x-cpp-dll-sources
-    let lib = fromJust (library pkg_descr)
-        lib_bi = libBuildInfo lib
-        custom_bi = customFieldsBI lib_bi
-        dll_name = fromJust (lookup "x-dll-name" custom_bi)
-        dll_srcs = (lines . fromJust) (lookup "x-dll-sources" custom_bi)
-        dll_libs = (lines . fromJust) (lookup "x-dll-extra-libraries" custom_bi)
-        cc_opts = ccOptions lib_bi
-        ld_opts = ldOptions lib_bi
-        inc_dirs = includeDirs lib_bi
-        lib_dirs = extraLibDirs lib_bi
-        libs = extraLibs lib_bi
-        bld_dir = buildDir local_bld_info
-        progs = withPrograms local_bld_info
-        gcc = fromJust (lookupProgram (simpleProgram "gcc") progs)
-        ver = (pkgVersion . package) pkg_descr
-        inst_lib_dir = libdir $ absoluteInstallDirs pkg_descr local_bld_info NoCopyDest
-    -- Compile C/C++ sources - output directory is dist/build/src/cpp
-    putStrLn "Building qlc"
-    objs <- mapM (compileCxx gcc cc_opts inc_dirs bld_dir) dll_srcs
-    -- Link C/C++ sources as a DLL - output directory is dist/build
-    putStrLn "Linking qlc"
-    linkSharedLib gcc ld_opts lib_dirs (libs ++ dll_libs) objs ver bld_dir dll_name inst_lib_dir
+myBuildHook pkgDescr localBldInfo _userHooks _bldFlags = do
+  -- Extract the custom fields customFieldsPD where field name is x-cpp-dll-sources
+  let
+    lib = fromJust (library pkgDescr)
+    libBi = libBuildInfo lib
+    customBi = customFieldsBI libBi
+    dllName = fromJust (lookup "x-dll-name" customBi)
+    dllSrcs = (lines . fromJust) (lookup "x-dll-sources" customBi)
+    dllLibs = (lines . fromJust) (lookup "x-dll-extra-libraries" customBi)
+    ccOpts = ccOptions libBi
+    ldOpts = ldOptions libBi
+    incDirs = includeDirs libBi
+    libDirs = extraLibDirs libBi
+    libs = extraLibs libBi
+    bldDir = buildDir localBldInfo
+    progs = withPrograms localBldInfo
+    gcc = fromJust (lookupProgram (simpleProgram "gcc") progs)
+    ver = (pkgVersion . package) pkgDescr
+    instLibDir = libdir $ absoluteInstallDirs pkgDescr localBldInfo NoCopyDest
+  -- Compile C/C++ sources - output directory is dist/build/src/cpp
+  putStrLn "Building qlc"
+  objs <- mapM (compileCxx gcc ccOpts incDirs bldDir) dllSrcs
+  -- Link C/C++ sources as a DLL - output directory is dist/build
+  putStrLn "Linking qlc"
+  linkSharedLib gcc ldOpts libDirs (libs ++ dllLibs) objs ver bldDir dllName instLibDir
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- | Return any compiler options required to support shared library creation
 osCompileOpts :: [String] -- ^ Platform-specific compile options
-osCompileOpts =
-    case buildOS of
-      Windows -> []
-      OSX -> ["-fPIC"]
-      _ -> ["-fPIC"]
+osCompileOpts = case buildOS of
+  Windows -> []
+  OSX -> ["-fPIC"]
+  _ -> ["-fPIC"]
 
 sharedLibName :: Version -- ^ Version information to be used for Unix shared libraries
               -> String -- ^ Name of the shared library
               -> String
-sharedLibName ver basename =
-    case buildOS of
-      Windows -> addExtension basename ".dll"
-      OSX -> "lib" ++ addExtension basename ".dylib"
-      _ -> "lib" ++ basename ++ ".so." ++ full_ver
-        where
-          full_ver = (intercalate "." . map show . versionBranch) ver
+sharedLibName ver basename = case buildOS of
+  Windows -> addExtension basename ".dll"
+  OSX -> "lib" ++ addExtension basename ".dylib"
+  _ -> "lib" ++ basename ++ ".so." ++ fullVer
+    where
+      fullVer = (intercalate "." . map show . versionBranch) ver
 
 staticLibName :: String -> String
-staticLibName basename =
-    case buildOS of
-      Windows -> "lib" ++ addExtension basename ".a"
-      _ -> error "No static libs required on this platform"
+staticLibName basename = case buildOS of
+  Windows -> "lib" ++ addExtension basename ".a"
+  _ -> error "No static libs required on this platform"
 
 -- | Return any linker options required to support shared library creation
 linkCxxOpts :: Version -- ^ Version information to be used for Unix shared libraries
@@ -93,19 +90,18 @@ linkCxxOpts :: Version -- ^ Version information to be used for Unix shared libra
             -> String -- ^ Name of the shared library
             -> String -- ^ Absolute path of the shared library
             -> [String] -- ^ List of options which can be applied to 'runProgram'
-linkCxxOpts ver out_dir basename basepath =
-    case buildOS of
-      Windows -> ["-shared", 
-                  "-o", out_dir </> sharedLibName ver basename,
-                  "-Wl,--out-implib," ++ out_dir </> "lib" ++ addExtension basename ".a",
-                  "-Wl,--enable-auto-import"]
-      OSX -> ["-dynamiclib",
-                  "-o", out_dir </> sharedLibName ver basename,
-                  "-install_name", basepath </> sharedLibName ver basename,
-                  "-Wl,-undefined,dynamic_lookup"]
-      _ -> ["-shared",
-                  "-Wl,-soname,lib" ++ basename ++ ".so",
-                  "-o", out_dir </> sharedLibName ver basename]
+linkCxxOpts ver outDir basename basepath = case buildOS of
+  Windows -> ["-shared",
+              "-o", outDir </> sharedLibName ver basename,
+              "-Wl,--out-implib," ++ outDir </> "lib" ++ addExtension basename ".a",
+              "-Wl,--enable-auto-import"]
+  OSX -> ["-dynamiclib",
+              "-o", outDir </> sharedLibName ver basename,
+              "-install_name", basepath </> sharedLibName ver basename,
+              "-Wl,-undefined,dynamic_lookup"]
+  _ -> ["-shared",
+              "-Wl,-soname,lib" ++ basename ++ ".so",
+              "-o", outDir </> sharedLibName ver basename]
 
 -- | Compile a single source file using the configured gcc, if the object file does not yet
 -- exist, or is older than the source file.
@@ -116,34 +112,32 @@ compileCxx :: ConfiguredProgram -- ^ Program used to perform C/C++ compilation (
            -> FilePath -- ^ Base output directory
            -> FilePath -- ^ Path to source file
            -> IO FilePath -- ^ Path to generated object code
-compileCxx gcc opts incls out_path cxx_src =
-    do
-    let includes' = map ("-I" ++) incls
-        out_path' = normalisePath out_path
-        cxx_src' = normalisePath cxx_src
-        out_file = out_path' </> dropFileName cxx_src </> replaceExtension (takeFileName cxx_src) ".o"
-        out = ["-c", cxx_src', "-o", out_file, "-DDLLSOURCE"]
-        opts' = opts ++ osCompileOpts
-    do_it <- needsCompiling cxx_src out_file
-    when do_it $ createDirectoryIfMissing True (dropFileName out_file) >>
-                 runProgram verbose gcc (includes' ++ opts' ++ out)
-    return out_file
+compileCxx gcc opts incls outPath cxxSrc = do
+  let includes' = map ("-I" ++) incls
+      outPath' = normalisePath outPath
+      cxxSrc' = normalisePath cxxSrc
+      outFile = outPath' </> dropFileName cxxSrc </> replaceExtension (takeFileName cxxSrc) ".o"
+      out = ["-c", cxxSrc', "-o", outFile, "-DDLLSOURCE"]
+      opts' = opts ++ osCompileOpts
+  doIt <- needsCompiling cxxSrc outFile
+  when doIt $ createDirectoryIfMissing True (dropFileName outFile) >>
+               runProgram verbose gcc (includes' ++ opts' ++ out)
+  return outFile
 
 -- | Return True if obj does not exist or is older than src.
 -- Real dependency checking would be nice here...
 needsCompiling :: FilePath -- ^ Path to source file
                -> FilePath -- ^ Path to object file
                -> IO Bool -- ^ True if compilation required
-needsCompiling src obj =
-    do
-    has_obj <- doesFileExist obj
-    if has_obj
-        then do
-          mtime_src <- getModificationTime src
-          mtime_obj <- getModificationTime obj
-          return (mtime_obj < mtime_src)
-        else
-          return True
+needsCompiling src obj = do
+  hasObj <- doesFileExist obj
+  if hasObj
+    then do
+      mtimeSrc <- getModificationTime src
+      mtimeObj <- getModificationTime obj
+      return (mtimeObj < mtimeSrc)
+    else
+      return True
 
 -- | Create a dynamically linked library using the configured ld.
 linkSharedLib :: ConfiguredProgram -- ^ Program used to perform linking
@@ -156,18 +150,18 @@ linkSharedLib :: ConfiguredProgram -- ^ Program used to perform linking
               -> String -- ^ Name of the shared library
               -> String -- ^ Absolute path of the shared library
               -> IO ()
-linkSharedLib gcc opts lib_dirs libs objs ver out_dir dll_name dll_path =
-    do
-    let lib_dirs' = map (\d -> "-L" ++ normalisePath d) lib_dirs
-        out_dir' = normalisePath out_dir
-        opts' = opts ++ linkCxxOpts ver out_dir' dll_name dll_path
-        objs' = map normalisePath objs
-        libs' =  map ("-l" ++) libs
-          ++ (if buildOS == Windows
-                then ["-static-libstdc++", "-static-libgcc"]
-                else ["-lstdc++"])
-    runProgram verbose gcc (opts' ++ objs' ++ lib_dirs' ++ libs')
-    return ()
+linkSharedLib gcc opts libDirs libs objs ver outDir dllName dllPath = do
+  let
+    libDirs' = map (\d -> "-L" ++ normalisePath d) libDirs
+    outDir' = normalisePath outDir
+    opts' = opts ++ linkCxxOpts ver outDir' dllName dllPath
+    objs' = map normalisePath objs
+    libs' =  map ("-l" ++) libs ++ (
+      if buildOS == Windows
+        then ["-static-libstdc++", "-static-libgcc"]
+        else ["-lstdc++"])
+  runProgram verbose gcc (opts' ++ objs' ++ libDirs' ++ libs')
+  return ()
 
 -- | The 'normalise' implementation in System.FilePath does not meet the requirements of
 -- calling and/or running external programs on Windows particularly well as it does not
@@ -176,8 +170,8 @@ linkSharedLib gcc opts lib_dirs libs objs ver out_dir dll_name dll_path =
 -- we require a stricter normalisation.
 normalisePath :: FilePath -> FilePath
 normalisePath = case buildOS of
-                  Windows -> dosifyFilePath
-                  _ -> unixifyFilePath
+  Windows -> dosifyFilePath
+  _ -> unixifyFilePath
 
 -- | Replace a character in a String with some other character
 replace :: Char -- ^ Character to replace
@@ -185,8 +179,7 @@ replace :: Char -- ^ Character to replace
         -> String -- ^ String in which to replace
         -> String -- ^ Transformed string
 replace old new = map replace'
-    where
-      replace' el = if el == old then new else el
+  where replace' el = if el == old then new else el
 
 unixifyFilePath :: FilePath -> FilePath
 unixifyFilePath = replace '\\' '/'
@@ -198,38 +191,37 @@ dosifyFilePath = replace '/' '\\'
 -- | Run ldconfig in `path` and return a list of all the links which were created
 ldconfig :: FilePath -> IO ()
 ldconfig path = case buildOS of
-    Windows -> return ()
-    OSX -> return ()
-    _ -> do
-            ld_exit_code <- system ("/sbin/ldconfig -n " ++ path) 
-            case ld_exit_code of
-                ExitSuccess -> return ()
-                _ -> error "Couldn't execute ldconfig, ensure it is on your path"
+  Windows -> return ()
+  OSX -> return ()
+  _ -> do
+    ldExitCode <- system ("/sbin/ldconfig -n " ++ path)
+    case ldExitCode of
+        ExitSuccess -> return ()
+        _ -> error "Couldn't execute ldconfig, ensure it is on your path"
 
 myInstHook :: PackageDescription -> LocalBuildInfo -> UserHooks -> InstallFlags -> IO ()
-myInstHook pkg_descr local_bld_info user_hooks inst_flags = 
-    do
-    -- Perform simpleUserHooks instHook (to copy installIncludes)
-    instHook simpleUserHooks pkg_descr local_bld_info user_hooks inst_flags
+myInstHook pkgDescr localBldInfo userHooks instFlags = do
+  -- Perform simpleUserHooks instHook (to copy installIncludes)
+  instHook simpleUserHooks pkgDescr localBldInfo userHooks instFlags
 
-    -- Copy shared library
-    let bld_dir = buildDir local_bld_info
+  -- Copy shared library
+  let bldDir = buildDir localBldInfo
 
-        ver = (pkgVersion . package) pkg_descr
-        lib = fromJust (library pkg_descr)
-        lib_bi = libBuildInfo lib
-        custom_bi = customFieldsBI lib_bi
-        dll_name = fromJust (lookup "x-dll-name" custom_bi)
-        lib_name = sharedLibName ver dll_name
+      ver = (pkgVersion . package) pkgDescr
+      lib = fromJust (library pkgDescr)
+      libBi = libBuildInfo lib
+      customBi = customFieldsBI libBi
+      dllName = fromJust (lookup "x-dll-name" customBi)
+      libName = sharedLibName ver dllName
 
-        inst_lib_dir = libdir $ absoluteInstallDirs pkg_descr local_bld_info NoCopyDest
+      instLibDir = libdir $ absoluteInstallDirs pkgDescr localBldInfo NoCopyDest
 
-    installOrdinaryFile (fromFlag (installVerbosity inst_flags)) (bld_dir </> lib_name) (inst_lib_dir </> lib_name)
-    when (buildOS == Windows)
-      $ installOrdinaryFile (fromFlag (installVerbosity inst_flags))
-                            (bld_dir </> staticLibName dll_name)
-                            (inst_lib_dir </> staticLibName dll_name)
-    ldconfig inst_lib_dir
+  installOrdinaryFile (fromFlag (installVerbosity instFlags)) (bldDir </> libName) (instLibDir </> libName)
+  when (buildOS == Windows)
+    $ installOrdinaryFile (fromFlag (installVerbosity instFlags))
+                          (bldDir </> staticLibName dllName)
+                          (instLibDir </> staticLibName dllName)
+  ldconfig instLibDir
 
 myConfHook :: (GenericPackageDescription, HookedBuildInfo) -> ConfigFlags -> IO LocalBuildInfo
 myConfHook (pkg0, pbi) flags = do
@@ -243,21 +235,20 @@ myConfHook (pkg0, pbi) flags = do
     else return lbi
 
   where
-    buildInfoMod lbi =
-      let
-        instLibDir = libdir $ absoluteInstallDirs (packageDescription pkg0) lbi NoCopyDest
-        lpd       = localPkgDescr lbi
-        lib       = fromJust (library lpd)
-        libbi     = libBuildInfo lib
+    buildInfoMod lbi = let
+      instLibDir = libdir $ absoluteInstallDirs (packageDescription pkg0) lbi NoCopyDest
+      lpd       = localPkgDescr lbi
+      lib       = fromJust (library lpd)
+      libbi     = libBuildInfo lib
 
-        libbi' = libbi
-          { extraLibDirs = extraLibDirs libbi ++ [instLibDir]
-          , extraLibs    = extraLibs    libbi ++ ["qlc"]
-          , ldOptions    = ldOptions    libbi ++ ["-Wl,-rpath," ++ instLibDir]
-          }
+      libbi' = libbi
+        { extraLibDirs = extraLibDirs libbi ++ [instLibDir]
+        , extraLibs    = extraLibs    libbi ++ ["qlc"]
+        , ldOptions    = ldOptions    libbi ++ ["-Wl,-rpath," ++ instLibDir]
+        }
 
-        lib' = lib { libBuildInfo = libbi' }
-        lpd' = lpd { library = Just lib' }
+      lib' = lib { libBuildInfo = libbi' }
+      lpd' = lpd { library = Just lib' }
       in lbi { localPkgDescr = lpd' }
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
