@@ -5,12 +5,12 @@
 import Control.Monad (when)
 import Data.List (intercalate)
 import Data.Maybe (fromJust)
-import Distribution.PackageDescription (package, PackageDescription, library, libBuildInfo, customFieldsBI, ccOptions, ldOptions, includeDirs, extraLibs, extraLibDirs)
-import Distribution.Simple (defaultMainWithHooks, simpleUserHooks, pkgVersion, versionBranch, Version, UserHooks, instHook, buildHook)
+import Distribution.PackageDescription
+import Distribution.Simple (defaultMainWithHooks, simpleUserHooks, pkgVersion, versionBranch, Version, UserHooks, instHook, buildHook, confHook)
 import Distribution.Simple.InstallDirs (InstallDirs(..))
-import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, withPrograms, buildDir, absoluteInstallDirs)
+import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, withPrograms, buildDir, absoluteInstallDirs, localPkgDescr)
 import Distribution.Simple.Program (ConfiguredProgram (..), lookupProgram, runProgram, simpleProgram)
-import Distribution.Simple.Setup (BuildFlags, InstallFlags, CopyDest(..), fromFlag, installVerbosity)
+import Distribution.Simple.Setup (BuildFlags, InstallFlags, CopyDest(..), fromFlag, installVerbosity, ConfigFlags, configConfigurationsFlags)
 import Distribution.Simple.Utils (installOrdinaryFile)
 import Distribution.System (OS (..), buildOS)
 import Distribution.Verbosity (verbose)
@@ -22,7 +22,7 @@ import System.FilePath.Posix ((</>), replaceExtension, takeFileName, dropFileNam
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 main :: IO ()
-main = defaultMainWithHooks simpleUserHooks { buildHook = myBuildHook, instHook = myInstHook }
+main = defaultMainWithHooks simpleUserHooks { buildHook = myBuildHook, instHook = myInstHook, confHook = myConfHook }
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -230,3 +230,34 @@ myInstHook pkg_descr local_bld_info user_hooks inst_flags =
                             (bld_dir </> staticLibName dll_name)
                             (inst_lib_dir </> staticLibName dll_name)
     ldconfig inst_lib_dir
+
+myConfHook :: (GenericPackageDescription, HookedBuildInfo) -> ConfigFlags -> IO LocalBuildInfo
+myConfHook (pkg0, pbi) flags = do
+  lbi <- confHook simpleUserHooks (pkg0, pbi) flags
+  let
+    configFlags = configConfigurationsFlags flags
+    (Just selfDep) = lookup (FlagName "addselfdep") configFlags
+
+  if selfDep
+    then return $ buildInfoMod lbi
+    else return lbi
+
+  where
+    buildInfoMod lbi =
+      let
+        instLibDir = libdir $ absoluteInstallDirs (packageDescription pkg0) lbi NoCopyDest
+        lpd       = localPkgDescr lbi
+        lib       = fromJust (library lpd)
+        libbi     = libBuildInfo lib
+
+        libbi' = libbi
+          { extraLibDirs = extraLibDirs libbi ++ [instLibDir]
+          , extraLibs    = extraLibs    libbi ++ ["qlc"]
+          , ldOptions    = ldOptions    libbi ++ ["-Wl,-rpath," ++ instLibDir]
+          }
+
+        lib' = lib { libBuildInfo = libbi' }
+        lpd' = lpd { library = Just lib' }
+      in lbi { localPkgDescr = lpd' }
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

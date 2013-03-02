@@ -47,6 +47,13 @@ Extra-source-files:
               cpp/qlaux.h
               cpp/qlTSAux.h
 
+-- a hack to allow use of quantlib with `cabal-dev ghci'
+-- since I can't be bothered whose shortcoming it is: cabal-install or cabal-dev
+-- first install qlc as usual and then reinstall it with `-f addSelfDep'
+-- this will add a dependency on itself and you should be able to use quantlib from cabal-deb ghci
+Flag addSelfDep
+  Default: False
+
 Library
   Include-Dirs: cpp
   Install-Includes: ql.h
