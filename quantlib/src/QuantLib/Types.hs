@@ -6,6 +6,7 @@ module QuantLib.Types
   , realMatrix
   , objectMatrix
   , HasUnderlying(underlying)
+  , HasUnderlying2(underlying2)
 
   -- cashflows
   , Leg
@@ -193,6 +194,7 @@ module QuantLib.Types
   )
 where
 
+import QuantLib.Internal.Date
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 
@@ -552,7 +554,9 @@ asQuote :: (Upcastable a CQuote) => ForeignPtr a -> IO Quote
 asQuote = upcast
 
 -- classes
-
+-- we could use MultiParamTypeClass+FunctionalDependencies to ensure uniqueness here
+-- I hope to use more TypeFamilies features to make HasUnderlying (and maybe even upcast)
+-- operate on ForeignPtr level rather than C-types
 class HasUnderlying a where
   type Underlying a :: *
   underlying :: (Finalizable a, Finalizable (Underlying a)) => ForeignPtr a -> IO (ForeignPtr (Underlying a))
@@ -576,5 +580,23 @@ instance HasUnderlying CSwapRateHelper where
   c_underlying = c_swapHelperSwap
 foreign import ccall safe "ql.h qlSwapRateHelperSwap"
   c_swapHelperSwap :: Ptr CSwapRateHelper -> Ptr CString -> IO (Ptr CVanillaSwap)
+
+class HasUnderlying2 a where
+  type Underlying2 a :: *
+  underlying2 :: (Finalizable a, Finalizable (Underlying2 a)) => ForeignPtr a -> Day -> IO (ForeignPtr (Underlying2 a))
+  underlying2 o d = withObject o $ \oo -> construct $ c_underlying2 oo (toQlDate d)
+  c_underlying2 :: (Finalizable a, Finalizable (Underlying2 a)) => Ptr a -> CDate -> Ptr CString -> IO (Ptr (Underlying2 a))
+
+instance HasUnderlying2 CSwapIndex where
+  type Underlying2 CSwapIndex = CVanillaSwap
+  c_underlying2 = c_swapIndexVanillaSwap
+foreign import ccall safe "ql.h qlSwapIndexUnderlyingSwap"
+  c_swapIndexVanillaSwap :: Ptr CSwapIndex -> CDate -> Ptr CString -> IO (Ptr CVanillaSwap)
+
+instance HasUnderlying2 COvernightIndexedSwapIndex where
+  type Underlying2 COvernightIndexedSwapIndex = COvernightIndexedSwap
+  c_underlying2 = c_oisIndexSwap
+foreign import ccall safe "ql.h qlOvernightIndexedSwapIndexUnderlyingSwap"
+  c_oisIndexSwap :: Ptr COvernightIndexedSwapIndex -> CDate -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -17,12 +17,9 @@ module QuantLib.Index.Swap
   , overnightIndexedSwapIndex
   , swapIndex
   , swapIndex'
-  , overnightIndexedSwap
-  , vanillaSwap
   )
 where
 
-import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
@@ -144,23 +141,5 @@ swapIndex' = $(ffiCall 'swapIndex') c_swapIndex'
 
 foreign import ccall safe "ql.h qlSwapIndex1"
   c_swapIndex' :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency -> Ptr CCalendar -> Ptr CPeriod -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapIndex)
-
--- |/Warning/ Relinking the term structure underlying the index will not have effect on the returned swap.
-overnightIndexedSwap :: OvernightIndexedSwapIndex
-  -> Day -- ^fixingDate
-  -> IO OvernightIndexedSwap
-overnightIndexedSwap = $(ffiCall 'overnightIndexedSwap) c_underlyingOISwap
-
-foreign import ccall safe "ql.h qlOvernightIndexedSwapIndexUnderlyingSwap"
-  c_underlyingOISwap :: Ptr COvernightIndexedSwapIndex -> CDate -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
-
--- |/Warning/ Relinking the term structure underlying the index will not have effect on the returned swap.
-vanillaSwap :: SwapIndex
-  -> Day -- ^fixingDate
-  -> IO VanillaSwap
-vanillaSwap = $(ffiCall 'vanillaSwap) c_underlyingVanillaSwap
-
-foreign import ccall safe "ql.h qlSwapIndexUnderlyingSwap"
-  c_underlyingVanillaSwap :: Ptr CSwapIndex -> CDate -> Ptr CString -> IO (Ptr CVanillaSwap)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
