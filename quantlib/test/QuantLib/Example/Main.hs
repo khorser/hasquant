@@ -72,7 +72,7 @@ main = do
 
   where
     printFraIterationResult :: [FRAExample.IterationResult] -> IO ()
-    printFraIterationResult rs = forM_ rs $ \r -> do
+    printFraIterationResult rs = forM_ rs $ \r ->
       printf "Fwd rate: %.5f Spt val: %.5f Fwd val: %.5f Impl yld: %.5f Mkt zrate: %.5f NPV: %.5f\n"
         (FRAExample.fwdRateR r)
         (FRAExample.spotR r)
@@ -87,7 +87,7 @@ main = do
       printSwapResult "Fwd" $ SwapExample.forwardSwap r
 
     printSwapResult :: String -> SwapExample.SwapResult -> IO ()
-    printSwapResult t r = do
+    printSwapResult t r =
       printf "%sNPV: %.5f %sFar spread: %.5f %sFair rate: %.5f\n"
         t (SwapExample.spotNpvR r)
         t (SwapExample.spotFairSpreadR r)
