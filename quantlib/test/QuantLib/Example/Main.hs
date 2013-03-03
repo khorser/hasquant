@@ -1,6 +1,7 @@
 module Main where
 
 import Control.Monad(forM_)
+import Text.Printf
 
 import QuantLib.Settings
 import QuantLib.Time.Date
@@ -72,22 +73,24 @@ main = do
   where
     printFraIterationResult :: [FRAExample.IterationResult] -> IO ()
     printFraIterationResult rs = forM_ rs $ \r -> do
-        putStrLn $ "Forward rate: " ++ show (FRAExample.fwdRateR r)
-        putStrLn $ "Spot value: " ++ show (FRAExample.spotR r)
-        putStrLn $ "Forward value: " ++ show (FRAExample.fwdValueR r)
-        putStrLn $ "Implied yield: " ++ show (FRAExample.implYieldR r)
-        putStrLn $ "Market zero rate: " ++ show (FRAExample.zRateR r)
-        putStrLn $ "NPV: " ++ show (FRAExample.npvR r)
+      printf "Fwd rate: %.5f Spt val: %.5f Fwd val: %.5f Impl yld: %.5f Mkt zrate: %.5f NPV: %.5f\n"
+        (FRAExample.fwdRateR r)
+        (FRAExample.spotR r)
+        (FRAExample.fwdValueR r)
+        (FRAExample.implYieldR r)
+        (FRAExample.zRateR r)
+        (FRAExample.npvR r)
 
     printSwapIterationResult :: [SwapExample.IterationResult] -> IO ()
     printSwapIterationResult rs = forM_ rs $ \r -> do
-        printSwapResult "Spot" $ SwapExample.spotSwap r
-        printSwapResult "Fwd" $ SwapExample.forwardSwap r
+      printSwapResult "Spt" $ SwapExample.spotSwap r
+      printSwapResult "Fwd" $ SwapExample.forwardSwap r
 
     printSwapResult :: String -> SwapExample.SwapResult -> IO ()
     printSwapResult t r = do
-        putStrLn $ t ++ " NPV: " ++ show (SwapExample.spotNpvR r)
-        putStrLn $ t ++ " fair spread: " ++ show (SwapExample.spotFairSpreadR r)
-        putStrLn $ t ++ " fair rate: " ++ show (SwapExample.spotFairRateR r)
+      printf "%sNPV: %.5f %sFar spread: %.5f %sFair rate: %.5f\n"
+        t (SwapExample.spotNpvR r)
+        t (SwapExample.spotFairSpreadR r)
+        t (SwapExample.spotFairRateR r)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

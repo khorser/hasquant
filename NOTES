@@ -59,6 +59,8 @@ add Interpolation2D
 
 introduce typeclasses for some frequent operations like getting underlying or computing blackVariance
 
+TH-based test for all qlEnumeration values
+
 -- done:
 Bond::
 BondFunctions::

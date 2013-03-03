@@ -96,13 +96,62 @@ test_repoEval = do
 
 test_fraEval :: IO ()
 test_fraEval = do
-  _ <- Settings.keepingSettings' FRAExample.run
-  return ()
+  (FRAExample.Result it1 it2) <- Settings.keepingSettings' FRAExample.run
+  let
+    fwdRates1   = [3.0e-2, 3.1e-2, 3.2e-2, 3.3e-2, 3.4e-2]
+    spots1      = [99.73470, 99.49489, 99.23917, 98.41684, 97.60271]
+    fwdValues1  = [100.76667, 100.79222, 100.83556, 100.84333, 100.85944]
+    implYields1 = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2]
+    zRates1     = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2] 
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.fwdRateR y) < 1.0e-5) (zip fwdRates1 it1)
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.spotR y) < 1.0e-5) (zip spots1 it1)
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.fwdValueR y) < 1.0e-5) (zip fwdValues1 it1)
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.implYieldR y) < 1.0e-5) (zip implYields1 it1)
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.zRateR y) < 1.0e-5) (zip zRates1 it1)
+  assertBool $ all (\x -> abs(FRAExample.npvR x) < 1.0e-5) it1
+  let
+    fwdRates2   = [4.0e-2, 4.1e-2, 4.2e-2, 4.3e-2, 4.4e-2]
+    spots2      = [99.64687, 99.32793, 98.98812, 97.91433, 96.86156]
+    fwdValues2  = [101.02222, 101.04778, 101.09667, 101.09889, 101.11222]
+    implYields2 = [4.00710e-2, 4.07408e-2, 4.12277e-2, 4.21173e-2, 4.29299e-2]
+    zRates2     = [4.00710e-2, 4.07408e-2, 4.12277e-2, 4.21174e-2, 4.29299e-2]
+    npvs2       = [0.25208, 0.25121, 0.25567, 0.24751, 0.24215]
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.fwdRateR y) < 1.0e-5) (zip fwdRates2 it2)
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.spotR y) < 1.0e-5) (zip spots2 it2)
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.fwdValueR y) < 1.0e-5) (zip fwdValues2 it2)
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.implYieldR y) < 1.0e-5) (zip implYields2 it2)
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.zRateR y) < 1.0e-5) (zip zRates2 it2)
+  assertBool $ all (\(x, y) -> abs(x - FRAExample.npvR y) < 1.0e-5) (zip npvs2 it2)
 
 test_swapEval :: IO ()
 test_swapEval = do
-  _ <- Settings.keepingSettings' SwapExample.run
-  return ()
+  (SwapExample.Result it1 it2) <- Settings.keepingSettings' SwapExample.run
+  let
+    spotNpvs1         = [19065.88091, 19076.13635, 19056.02274]
+    spotFairSpreads1  = [-4.19298e-3, -4.19258e-3, -4.19271e-3]
+    spotFairRates1    = [4.43e-2, 4.43e-2, 4.43e-2]
+    fwdNpvs1          = [40049.45742, 40092.78967, 37238.92028]
+    fwdFairSpreads1   = [-9.23115e-3, -9.23433e-3, -8.58372e-3]
+    fwdFairRates1     = [4.94794e-2, 4.94846e-2, 4.88132e-2]
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotNpvR (SwapExample.spotSwap y))) < 1.0e-5) (zip spotNpvs1 it1)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotFairSpreadR (SwapExample.spotSwap y))) < 1.0e-5) (zip spotFairSpreads1 it1)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotFairRateR (SwapExample.spotSwap y))) < 1.0e-5) (zip spotFairRates1 it1)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotNpvR (SwapExample.forwardSwap y))) < 1.0e-5) (zip fwdNpvs1 it1)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotFairSpreadR (SwapExample.forwardSwap y))) < 1.0e-5) (zip fwdFairSpreads1 it1)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotFairRateR (SwapExample.forwardSwap y))) < 1.0e-5) (zip fwdFairRates1 it1)
+  let
+    spotNpvs2         = [26539.06205, 26553.33709, 26525.34]
+    spotFairSpreads2  = [-5.84826e-3, -5.84770e-3, -5.84788e-3]
+    spotFairRates2    = [4.6e-2, 4.6e-2, 4.6e-2]
+    fwdNpvs2          = [45736.03965, 45782.39565, 42922.59585]
+    fwdFairSpreads2   = [-1.05779e-2, -1.05808e-2, -9.92761e-3]
+    fwdFairRates2     = [5.08660e-2, 5.08713e-2, 5.01964e-2]
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotNpvR (SwapExample.spotSwap y))) < 1.0e-5) (zip spotNpvs2 it2)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotFairSpreadR (SwapExample.spotSwap y))) < 1.0e-5) (zip spotFairSpreads2 it2)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotFairRateR (SwapExample.spotSwap y))) < 1.0e-5) (zip spotFairRates2 it2)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotNpvR (SwapExample.forwardSwap y))) < 1.0e-5) (zip fwdNpvs2 it2)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotFairSpreadR (SwapExample.forwardSwap y))) < 1.0e-5) (zip fwdFairSpreads2 it2)
+  assertBool $ all (\(x, y) -> abs(x - (SwapExample.spotFairRateR (SwapExample.forwardSwap y))) < 1.0e-5) (zip fwdFairRates2 it2)
 
 test_evalDate :: IO ()
 test_evalDate = do
