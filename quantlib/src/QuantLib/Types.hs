@@ -1,10 +1,11 @@
-{-# LANGUAGE FlexibleInstances,OverlappingInstances,FlexibleContexts #-}
+{-# LANGUAGE FlexibleInstances,OverlappingInstances,FlexibleContexts,TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-} -- for Show and Eq instances of named singletons
 module QuantLib.Types
   (
     Matrix
   , realMatrix
   , objectMatrix
+  , HasUnderlying(..)
 
   -- cashflows
   , Leg
@@ -549,5 +550,31 @@ type SimpleQuote = ForeignPtr CSimpleQuote
 
 asQuote :: (Upcastable a CQuote) => ForeignPtr a -> IO Quote
 asQuote = upcast
+
+-- classes
+class HasUnderlying a where
+  type Underlying a :: *
+  underlying :: ForeignPtr a -> Underlying a
+
+instance HasUnderlying CBondHelper where
+  type Underlying CBondHelper = IO Bond
+  underlying o = withObject o (construct . c_bondHelperBond)
+
+foreign import ccall safe "ql.h qlBondHelperBond"
+  c_bondHelperBond :: Ptr CBondHelper -> Ptr CString -> IO (Ptr CBond)
+
+instance HasUnderlying COISRateHelper where
+  type Underlying COISRateHelper = IO OvernightIndexedSwap
+  underlying o = withObject o (construct . c_oiSwapHelperSwap)
+
+foreign import ccall safe "ql.h qlOISRateHelperSwap"
+  c_oiSwapHelperSwap :: Ptr COISRateHelper -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
+
+instance HasUnderlying CSwapRateHelper where
+  type Underlying CSwapRateHelper = IO VanillaSwap
+  underlying o = withObject o (construct . c_swapHelperSwap)
+
+foreign import ccall safe "ql.h qlSwapRateHelperSwap"
+  c_swapHelperSwap :: Ptr CSwapRateHelper -> Ptr CString -> IO (Ptr CVanillaSwap)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
