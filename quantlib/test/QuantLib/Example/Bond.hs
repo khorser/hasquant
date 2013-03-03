@@ -5,8 +5,8 @@ module QuantLib.Example.Bond
   )
 where
 
---import Control.Applicative
-import Control.Monad((>=>))
+import Control.Applicative
+import Control.Monad(join, (>=>))
 
 import Data.List(zip4)
 import Data.Time.Calendar(Day, fromGregorian)
@@ -211,9 +211,7 @@ run = do
   volval <- simpleQuote 0 >>= asQuote
   vol <- constantOptionletVolatility'
           settlementDays targetCal ModifiedFollowing volval actual365Fixeddc
-  fcfs <- cashflows floater
-  blackIborCouponPricer vol >>= setCouponPricer fcfs
-  --setCouponPricer <$> cashflows floater <*> blackIborCouponPricer vol
+  join $ setCouponPricer <$> cashflows floater <*> blackIborCouponPricer vol
   
   let allBonds = [fixedBond, zcBond, floater]
       twoBonds = [fixedBond, floater]
