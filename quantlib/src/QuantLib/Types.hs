@@ -5,7 +5,7 @@ module QuantLib.Types
     Matrix
   , realMatrix
   , objectMatrix
-  , HasUnderlying(..)
+  , HasUnderlying(underlying)
 
   -- cashflows
   , Leg
@@ -553,32 +553,27 @@ asQuote = upcast
 
 -- classes
 
-getUnderlying :: (Finalizable a, Finalizable b) =>
-  (Ptr a -> Ptr CString -> IO (Ptr b)) -> ForeignPtr a -> IO (ForeignPtr b)
-getUnderlying f o = withObject o (construct . f)
-
 class HasUnderlying a where
   type Underlying a :: *
-  underlying :: ForeignPtr a -> Underlying a
+  underlying :: (Finalizable a, Finalizable (Underlying a)) => ForeignPtr a -> IO (ForeignPtr (Underlying a))
+  underlying o = withObject o (construct . c_underlying)
+  c_underlying :: (Finalizable a, Finalizable (Underlying a)) => Ptr a -> Ptr CString -> IO (Ptr (Underlying a))
 
 instance HasUnderlying CBondHelper where
-  type Underlying CBondHelper = IO Bond
-  underlying = getUnderlying c_bondHelperBond
-
+  type Underlying CBondHelper = CBond
+  c_underlying = c_bondHelperBond
 foreign import ccall safe "ql.h qlBondHelperBond"
   c_bondHelperBond :: Ptr CBondHelper -> Ptr CString -> IO (Ptr CBond)
 
 instance HasUnderlying COISRateHelper where
-  type Underlying COISRateHelper = IO OvernightIndexedSwap
-  underlying = getUnderlying c_oiSwapHelperSwap
-
+  type Underlying COISRateHelper = COvernightIndexedSwap
+  c_underlying = c_oiSwapHelperSwap
 foreign import ccall safe "ql.h qlOISRateHelperSwap"
   c_oiSwapHelperSwap :: Ptr COISRateHelper -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
 
 instance HasUnderlying CSwapRateHelper where
-  type Underlying CSwapRateHelper = IO VanillaSwap
-  underlying = getUnderlying c_swapHelperSwap
-
+  type Underlying CSwapRateHelper = CVanillaSwap
+  c_underlying = c_swapHelperSwap
 foreign import ccall safe "ql.h qlSwapRateHelperSwap"
   c_swapHelperSwap :: Ptr CSwapRateHelper -> Ptr CString -> IO (Ptr CVanillaSwap)
 
