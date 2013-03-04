@@ -374,4 +374,5 @@ sub type {
 
 # std::vector<Date, Real...> as return value
 # ? const std::vector<boost::shared_ptr<typename Traits::helper> >&
+# return a hash rather than an array from `sub type'
 # vim: set ft=perl sw=2 ts=8 st=2:

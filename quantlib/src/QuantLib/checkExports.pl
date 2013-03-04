@@ -1,6 +1,8 @@
 use strict;
 use warnings;
 
+my %all = ();
+
 for my $f (glob('*.hs */*.hs'))
 {
   open I, "<$f";
@@ -9,9 +11,10 @@ for my $f (glob('*.hs */*.hs'))
   my %d = ();
   while (<I>)
   {
-    if (/^  [, ] ([a-zA-Z0-9']+)$/)
+    if (/^  [, ] ([a-zA-Z0-9']+)\s*$/)
     {
       $e{$1} = 1;
+      push @{$all{$1}}, $f;
     }
     elsif (/^([a-zA-Z0-9']+).*=/ and not ($1 eq "data"))
     {
@@ -27,6 +30,12 @@ for my $f (glob('*.hs */*.hs'))
       print "  $_\n";
     }
   }
-  # print join ",", keys(%e);
+}
+
+print "\n*** Duplicate names:\n";
+for (keys %all) {
+  if (scalar(@{$all{$_}}) > 1) {
+    print "$_\n";
+  }
 }
 # vim: set ft=perl ts=8 sts=2 sw=2:

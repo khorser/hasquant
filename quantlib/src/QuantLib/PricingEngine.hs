@@ -66,6 +66,7 @@ module QuantLib.PricingEngine
   , replicatingVarianceSwapEngine
   , stulzEngine
   , lfmSwaptionEngine
+  , liborForwardModel
 
   , alpha
   , beta
