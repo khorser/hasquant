@@ -33,9 +33,9 @@ for my $f (glob('*.hs */*.hs'))
 }
 
 print "\n*** Duplicate names:\n";
-for (keys %all) {
+for (sort keys %all) {
   if (scalar(@{$all{$_}}) > 1) {
-    print "$_\n";
+    print "$_: ".join(', ', @{$all{$_}})."\n";
   }
 }
 # vim: set ft=perl ts=8 sts=2 sw=2:
