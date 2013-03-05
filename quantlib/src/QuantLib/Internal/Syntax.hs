@@ -119,18 +119,16 @@ topArgType (ConT n) = do
           either (\x -> fail $ "Error parsing top arg: " ++ x)
           (\_ -> return ForeignPtrA)
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe =
-  if n == ''Day
-    then return OptDayA
-    else
-      if n == ''Bool
-        then return OptBoolA
-        else do
-          en <- enumType n
-          case en of
-            (Just LitEnum) -> return OptLitEnumA
-            _ -> tryForeignPtr n >>=
-                  either (\x -> fail $ "Error parsing optional top arg: " ++ x)
-                    (\_ -> return OptForeignPtrA)
+  case () of
+    _ | n == ''Day -> return OptDayA
+    _ | n == ''Bool -> return OptBoolA
+    _ -> do
+      en <- enumType n
+      case en of
+        (Just LitEnum) -> return OptLitEnumA
+        _ -> tryForeignPtr n >>=
+              either (\x -> fail $ "Error parsing optional top arg: " ++ x)
+                (\_ -> return OptForeignPtrA)
 topArgType (AppT ListT (ConT n)) = liftM ListA (nestedNameToTop n)
 topArgType (AppT
           ListT
