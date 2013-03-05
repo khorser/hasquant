@@ -48,7 +48,7 @@ module QuantLib.TermStructure.Volatility
   , blackVarianceSurface
 
   , capFloorTermVolSurface
-  , capFloorTermVolSurface'  
+  , capFloorTermVolSurface'
   )
 where
 

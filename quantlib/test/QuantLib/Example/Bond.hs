@@ -52,7 +52,7 @@ data Result = Result
   , cfnpvbpsR :: (Double, Double)
   , bpsR :: Double
   }
-  
+
 listToTuple :: [a] -> (a, a)
 listToTuple [x, y] = (x, y)
 listToTuple _ = error "Invalid list"
@@ -73,7 +73,7 @@ run = do
   actActISDA <- actualActualISDA
   actual360dc <- actual360
   thirty360Europeandc <- thirty360European
-  
+
   p1d <- period 1 Days
   p3m <- period 3 Months
   pq <- fromFrequency Quarterly
@@ -82,7 +82,7 @@ run = do
   targetCal <- target
   nyseCal <- unitedStatesNYSE
   usGovBondCal <- unitedStatesGovernmentBond
-  
+
   settlDate <- adjust targetCal (18 `september` 2008) Following
   todaysDate <- advance targetCal
                         settlDate
@@ -164,10 +164,10 @@ run = do
                                        ModifiedFollowing
                                        True actual360dc) $
           zip liborDepoQuotes liborDepoTerms
-  
+
   eur6M <- euribor6M Nothing
   spread <- simpleQuote 0 >>= asQuote
-  
+
   swapLiborHelpers <-
     mapM (\(q, n) ->
       do
@@ -176,7 +176,7 @@ run = do
         swapRateHelper' quote p targetCal Annual Unadjusted
                               thirty360Europeandc eur6M spread (Just p1d) Nothing >>= asRateHelper) $
           zip liborSwapQuotes liborSwapTerms
-  
+
   fwdCurve <- piecewiseYieldCurve
                 settlDate
                 (depoLiborHelpers ++ swapLiborHelpers)
@@ -185,10 +185,10 @@ run = do
                 tolerance
                 Discount
                 LogLinear
-  
+
   usd3m <- usdLibor p3m (Just fwdCurve)
   asInterestRateIndex usd3m >>= asIndex >>= (\i -> addFixing i (fromGregorian 2008 07 17) 0.0278625 False)
-  
+
   floatSchedule <- schedule (Just $ fromGregorian 2005 10 21)
                                      (fromGregorian 2010 10 21)
                                      pq
@@ -217,7 +217,7 @@ run = do
   vol <- constantOptionletVolatility'
           settlementDays targetCal ModifiedFollowing volval actual365Fixeddc
   setCouponPricer <$> cashflows floater <-*> blackIborCouponPricer vol
-  
+
   let allBonds = [fixedBond, zcBond, floater]
       twoBonds = [fixedBond, floater]
 
@@ -246,7 +246,7 @@ run = do
   fYieldFromClean <- yield' floater (bCleanPrice!!2) actual360dc Compounded Annual (Just settlDate) 1e-8 100
 
   bNextCouponDate <- mapM (`nextCashFlowDate` Nothing) allBonds
-  
+
   bTradable <- mapM (`isTradable` (Just $ 10 `february` 2013)) allBonds
 
   return Result {

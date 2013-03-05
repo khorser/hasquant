@@ -22,7 +22,7 @@ main = do
 
   putStrLn "*** Bond Example ***"
   br <- keepingSettings' BondExample.run
-  
+
   putStrLn $ "NPV: " ++ show (BondExample.npvR br)
   putStrLn $ "Yield: " ++ show (BondExample.yieldR br)
   putStrLn $ "Clean price: " ++ show (BondExample.cleanPriceR br)

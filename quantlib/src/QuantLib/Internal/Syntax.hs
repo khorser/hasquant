@@ -131,7 +131,7 @@ topArgType (AppT
             (ConT n2))) =
               liftM2 ListA2 (nestedNameToTop n1) (nestedNameToTop n2)
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix =
-  if n == ''Double 
+  if n == ''Double
     then return MatrixDoubleA
     else tryForeignPtr n >>=
           (\x -> fail $ "Error parsing optional top arg: " ++ x)

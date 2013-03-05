@@ -114,7 +114,7 @@ test_fraEval = do
     spots1      = [99.73470, 99.49489, 99.23917, 98.41684, 97.60271]
     fwdValues1  = [100.76667, 100.79222, 100.83556, 100.84333, 100.85944]
     implYields1 = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2]
-    zRates1     = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2] 
+    zRates1     = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2]
   subAssert $ assertListsAreClose FRAExample.fwdRateR it1 fwdRates1 1.0e-5
   subAssert $ assertListsAreClose FRAExample.spotR it1 spots1 1.0e-5
   subAssert $ assertListsAreClose FRAExample.fwdValueR it1 fwdValues1 1.0e-5
@@ -240,7 +240,7 @@ test_GBPCalendar = do
 
 test_calAdjust :: IO ()
 test_calAdjust = do
-  c <- Calendar.russia 
+  c <- Calendar.russia
   a <- Calendar.adjust
           c
           (fromGregorian 2012 12 22)
@@ -249,7 +249,7 @@ test_calAdjust = do
 
 test_calAdvance :: IO ()
 test_calAdvance = do
-  c <- Calendar.russia 
+  c <- Calendar.russia
   a <- Calendar.advance
         c
         (fromGregorian 2012 12 20)
@@ -258,7 +258,7 @@ test_calAdvance = do
         BusinessDayConvention.Preceding
         False
   assertEqual (fromGregorian 2013 01 18) a
-                              
+
 test_currency :: IO ()
 test_currency = do
   c <- Currency.gbp
@@ -273,7 +273,7 @@ test_a365fCounter = do
 test_bondStatics :: IO ()
 test_bondStatics = do
   c <- Calendar.gbp
-  l <- Leg.leg [(1000, fromGregorian 2013 1 1)] 
+  l <- Leg.leg [(1000, fromGregorian 2013 1 1)]
   b <- Bond.bond' 2 c 1000 m i l
   assertEqual m (Bond.maturityDate b)
   where i = Just (fromGregorian 2012 1 1)

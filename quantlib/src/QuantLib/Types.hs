@@ -68,7 +68,7 @@ module QuantLib.Types
   , CapFloor
 
   -- math
-  , Constraint  
+  , Constraint
   , OptimizationMethod
   , EndCriteria
 

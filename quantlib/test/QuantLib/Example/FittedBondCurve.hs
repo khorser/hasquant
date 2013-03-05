@@ -41,7 +41,7 @@ run = do
   tod <- adjust cal tod1 Following
   setEvaluationDate (Just tod)
   dc <- simple
-  
+
   p <- period bondSettleDays Days
   bondSettle <- advance' cal tod p Following False
   putStrLn $ "Bond settlement date: " ++ show bondSettle
@@ -188,7 +188,7 @@ number of iterations : 649
 reference date : February 19th, 2013
 number of iterations : 4225
 
-Output par rates for each curve. In this case, 
+Output par rates for each curve. In this case,
 par rates should equal coupons for these par bonds.
 
  tenor | coupon | bstrap |    (a) |    (b) |    (c) |    (d) |    (e)
@@ -210,11 +210,11 @@ par rates should equal coupons for these par bonds.
 
 
 
-Now add 23 months to today. Par rates should be 
-automatically recalculated because today's date 
-changes.  Par rates will NOT equal coupons (YTM 
-will, with the correct compounding), but the 
-piecewise yield curve par rates can be used as 
+Now add 23 months to today. Par rates should be
+automatically recalculated because today's date
+changes.  Par rates will NOT equal coupons (YTM
+will, with the correct compounding), but the
+piecewise yield curve par rates can be used as
 a benchmark for correct par rates.
 
 (a) exponential splines
@@ -258,9 +258,9 @@ number of iterations : 3061
 
 
 
-Now add one more month, for a total of two years 
-from the original date. The first instrument is 
-now expired and par rates should again equal 
+Now add one more month, for a total of two years
+from the original date. The first instrument is
+now expired and par rates should again equal
 coupon values, since clean prices did not change.
 
 (a) exponential splines
@@ -303,7 +303,7 @@ number of iterations : 3624
 
 Now decrease prices by a small amount, corresponding
 to a theoretical five basis point parallel + shift of
-the yield curve. Because bond quotes change, the new 
+the yield curve. Because bond quotes change, the new
 par rates should be recalculated automatically.
 
  tenor | coupon | bstrap |    (a) |    (b) |    (c) |    (d) |    (e)
@@ -321,7 +321,7 @@ par rates should be recalculated automatically.
 24.000 |  5.000 |  5.046 |  5.049 |  5.057 |  5.072 |  5.053 |  5.063
 26.000 |  5.250 |  5.296 |  5.298 |  5.300 |  5.291 |  5.312 |  5.304
 28.000 |  5.500 |  5.545 |  5.542 |  5.532 |  5.486 |  5.537 |  5.523
- 
+
 Run completed in 11 s
 -}
 
