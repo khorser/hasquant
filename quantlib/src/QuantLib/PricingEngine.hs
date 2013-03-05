@@ -66,7 +66,6 @@ module QuantLib.PricingEngine
   , replicatingVarianceSwapEngine
   , stulzEngine
   , lfmSwaptionEngine
-  , liborForwardModel
 
   , alpha
   , beta
@@ -1123,14 +1122,5 @@ lfmSwaptionEngine = $(ffiCall 'lfmSwaptionEngine) c_lfmSwaptionEngine
 
 foreign import ccall safe "ql.h qlLfmSwaptionEngine"
   c_lfmSwaptionEngine :: Ptr CLiborForwardModel -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
-
-liborForwardModel :: LiborForwardModelProcess -- ^process
-  -> LmVolatilityModel -- ^volaModel
-  -> LmCorrelationModel -- ^corrModel
-  -> IO LiborForwardModel
-liborForwardModel = $(ffiCall 'liborForwardModel) c_liborForwardModel
-
-foreign import ccall safe "ql.h qlLiborForwardModel"
-  c_liborForwardModel :: Ptr CLiborForwardModelProcess -> Ptr CLmVolatilityModel -> Ptr CLmCorrelationModel -> Ptr CString -> IO (Ptr CLiborForwardModel)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

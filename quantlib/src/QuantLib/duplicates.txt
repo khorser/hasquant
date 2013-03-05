@@ -54,7 +54,6 @@ isEndOfMonth: Time/Calendar.hs, Time/Date.hs
 isValid: Quote.hs, Internal/Date.hs, Time/Date.hs
 itmCashProbability: PricingEngine.hs, Instrument/Option.hs
 leg: CashFlow/Leg.hs, Instrument/Swap.hs
-liborForwardModel: Model.hs, PricingEngine.hs
 maturityDate: CashFlow/Leg.hs, Instrument/Bond.hs, Instrument/Swap.hs
 npv: Instrument.hs, CashFlow/Leg.hs
 
