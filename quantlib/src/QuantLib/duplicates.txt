@@ -51,7 +51,6 @@ forwardRate: Instrument/Forward.hs, TermStructure/Yield.hs
 gbp: Currency.hs, Time/Calendar.hs
 impliedVolatility: Instrument/CapFloor.hs, Instrument/Credit.hs, Instrument/Option.hs, Instrument/Swap.hs
 isEndOfMonth: Time/Calendar.hs, Time/Date.hs
-isExpired: Instrument.hs, CashFlow/Leg.hs, Instrument/Forward.hs
 isValid: Quote.hs, Internal/Date.hs, Time/Date.hs
 itmCashProbability: PricingEngine.hs, Instrument/Option.hs
 leg: CashFlow/Leg.hs, Instrument/Swap.hs

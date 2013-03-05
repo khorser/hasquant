@@ -100,7 +100,7 @@ int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv,
 // generated code
 void qlCalendarAddHoliday(Calendar* o, int x0, char **e) {
   try {
-    (arg(o))->addHoliday(Date(x0));
+    arg(o)->addHoliday(Date(x0));
   } catch (std::exception& er) {
     (void)handleException<int>(e, er);
   }
@@ -116,7 +116,7 @@ int qlCalendarAdvance1(Calendar* o, int date, Period* period, int convention, in
 
 int qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, char **e) {
   try {
-    return (arg(o))->businessDaysBetween(Date(from), Date(to), includeFirst, includeLast);
+    return arg(o)->businessDaysBetween(Date(from), Date(to), includeFirst, includeLast);
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -132,7 +132,7 @@ int qlCalendarEndOfMonth(Calendar* o, int d, char **e) {
 
 int qlCalendarIsBusinessDay(Calendar* o, int d, char **e) {
   try {
-    return (arg(o))->isBusinessDay(Date(d));
+    return arg(o)->isBusinessDay(Date(d));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -140,7 +140,7 @@ int qlCalendarIsBusinessDay(Calendar* o, int d, char **e) {
 
 int qlCalendarIsEndOfMonth(Calendar* o, int d, char **e) {
   try {
-    return (arg(o))->isEndOfMonth(Date(d));
+    return arg(o)->isEndOfMonth(Date(d));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -148,7 +148,7 @@ int qlCalendarIsEndOfMonth(Calendar* o, int d, char **e) {
 
 int qlCalendarIsHoliday(Calendar* o, int d, char **e) {
   try {
-    return (arg(o))->isHoliday(Date(d));
+    return arg(o)->isHoliday(Date(d));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -156,7 +156,7 @@ int qlCalendarIsHoliday(Calendar* o, int d, char **e) {
 
 int qlCalendarIsWeekend(Calendar* o, int w, char **e) {
   try {
-    return (arg(o))->isWeekend((Weekday) w);
+    return arg(o)->isWeekend((Weekday) w);
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -164,7 +164,7 @@ int qlCalendarIsWeekend(Calendar* o, int w, char **e) {
 
 void qlCalendarRemoveHoliday(Calendar* o, int x0, char **e) {
   try {
-    (arg(o))->removeHoliday(Date(x0));
+    arg(o)->removeHoliday(Date(x0));
   } catch (std::exception& er) {
     (void)handleException<int>(e, er);
   }

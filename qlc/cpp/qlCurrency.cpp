@@ -96,10 +96,10 @@ const char *qlCurrencyName(Currency *currency) {
   return DUP(name.c_str());
 }
 
-char* qlCurrencyCode(Currency* o) { return DUP(((arg(o))->code()).c_str()); }
+char* qlCurrencyCode(Currency* o) { return DUP(arg(o)->code().c_str()); }
 char* qlCurrencyFormat(Currency* o) { return DUP(arg(o)->format().c_str()); }
 int qlCurrencyFractionsPerUnit(Currency* o) { return arg(o)->fractionsPerUnit(); }
-char* qlCurrencyFractionSymbol(Currency* o) { return DUP((arg(o)->fractionSymbol()).c_str()); }
+char* qlCurrencyFractionSymbol(Currency* o) { return DUP(arg(o)->fractionSymbol().c_str()); }
 int qlCurrencyNumericCode(Currency* o) { return arg(o)->numericCode(); }
 char* qlCurrencySymbol(Currency* o) { return DUP(arg(o)->symbol().c_str()); }
 
@@ -135,7 +135,6 @@ public:
     data_ = data;
   }
 };
-
 
 Currency* qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e) {
   try {

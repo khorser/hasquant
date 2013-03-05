@@ -30,7 +30,6 @@ extern "C" {
   QlForwardRateAgreement* DLLEXPORT qlForwardRateAgreement(int valueDate, int maturityDate, int type, double strikeForwardRate, double notionalAmount, QlIborIndex* index, QlYieldTermStructure* discountCurve, char **e);
 
   InterestRate* DLLEXPORT qlForwardRateAgreementForwardRate(QlForwardRateAgreement* o, char **e);
-  int DLLEXPORT qlForwardRateAgreementIsExpired(QlForwardRateAgreement* o, char **e);
 #ifdef __cplusplus
 }
 #endif

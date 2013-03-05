@@ -14,7 +14,6 @@ module QuantLib.Instrument.Forward
   , spotValue
 
   , forwardRate
-  , isExpired
   )
 
 where
@@ -123,13 +122,5 @@ forwardRate = $(ffiCall 'forwardRate) c_forwardRate
 
 foreign import ccall safe "ql.h qlForwardRateAgreementForwardRate"
   c_forwardRate :: Ptr CForwardRateAgreement -> Ptr CString -> IO (Ptr CInterestRate)
-
--- |A FRA expires/settles on the valueDate
-isExpired :: ForwardRateAgreement
-  -> IO Bool
-isExpired = $(ffiCallX 'isExpired) c_isExpired
-
-foreign import ccall safe "ql.h qlForwardRateAgreementIsExpired"
-  c_isExpired :: Ptr CForwardRateAgreement -> Ptr CString -> IO CInt
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

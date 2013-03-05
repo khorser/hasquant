@@ -141,7 +141,7 @@ double qlCashFlowsAccruedPeriod(Leg* leg, int includeSettlementDateFlows, int se
 }
 double qlCashFlowsAtmRate(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, double npv, char **e) {
   try {
-    return CashFlows::atmRate(*arg(leg), *(*arg(discountCurve)), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate), npv);
+    return CashFlows::atmRate(*arg(leg), **arg(discountCurve), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate), npv);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
@@ -267,7 +267,7 @@ double qlCashFlowsNpv3(Leg* leg, QlYieldTermStructure* discount, double zSpread,
 }
 double qlCashFlowsNpv(Leg* leg, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {
-    return CashFlows::npv(*arg(leg), *(*arg(discountCurve)), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
+    return CashFlows::npv(*arg(leg), **arg(discountCurve), includeSettlementDateFlows, qlNullableDate(settlementDate), qlNullableDate(npvDate));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }

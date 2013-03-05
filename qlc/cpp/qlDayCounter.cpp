@@ -85,14 +85,14 @@ const char *qlDayCounterName(DayCounter *counter) {
 // generated code
 int qlDayCounterDayCount(DayCounter* o, int x0, int x1, char **e) {
   try {
-    return (arg(o))->dayCount(Date(x0), Date(x1));
+    return arg(o)->dayCount(Date(x0), Date(x1));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
 double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e) {
   try {
-    return (arg(o))->yearFraction(Date(x0), Date(x1), qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd));
+    return arg(o)->yearFraction(Date(x0), Date(x1), qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
