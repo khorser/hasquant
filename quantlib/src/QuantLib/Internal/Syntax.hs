@@ -136,6 +136,7 @@ topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix =
     else tryForeignPtr n >>=
           (\x -> fail $ "Error parsing optional top arg: " ++ x)
             `either` (\_ -> return MatrixForeignPtrA)
+topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
@@ -152,6 +153,11 @@ tryForeignPtr n = reify n >>= \r -> return $
     TyConI (TySynD _ [] (AppT (ConT p) (ConT target)))
       -> if p == ''ForeignPtr
            then Right target
+           else Left $ "Unsupported synonym type: " ++ show n
+              ++ " reified as " ++ show r
+    TyConI (DataD [] p _ _ _)
+      -> if p == ''ForeignPtr
+           then Right $ mkName "QQQ" -- HACK
            else Left $ "Unsupported synonym type: " ++ show n
               ++ " reified as " ++ show r
     _ -> Left $ "Unsupported type: " ++ show n ++ " reified as "
@@ -177,9 +183,10 @@ compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | m == ''Maybe && d == ''Day =
   return OptDayR
 compArgToRetVal (AppT ListT (ConT n)) | n == ''Day = return DayListR
+compArgToRetVal (AppT (ConT n) _) | n == ''ForeignPtr = return ForeignPtrR
 compArgToRetVal (ConT n) = nameToRetVal n
 compArgToRetVal (TupleT 0) = return UnitR
-compArgToRetVal t = fail $ "Unsupported compound type arg: " ++ show t
+compArgToRetVal t = fail $ "Unsupported compound type ret value: " ++ show t
 
 compToRetVal :: Type -> Q RetVal
 compToRetVal (AppT (ConT n1) t2) | n1 == ''IO = liftM IORV $ compArgToRetVal t2
@@ -187,6 +194,8 @@ compToRetVal t = liftM AtomicRV $ compArgToRetVal t
 
 -- use WriterT to clean up this mess?
 parseSignature :: Type -> Q ([TopArg], RetVal)
+-- strip forall
+parseSignature (ForallT _ _ app@(AppT _ _)) = parseSignature app
 parseSignature (AppT (AppT ArrowT t1) t2) = do
   top <- topArgType t1
   (rest, ret) <- parseSignature t2
@@ -197,7 +206,7 @@ parseSignature (ConT n) = do
 parseSignature t@(AppT _ _) = do
     r <- compToRetVal t
     return ([], r)
-parseSignature t = fail $ "Unsupported type: " ++ show t
+parseSignature t = fail $ "Unsupported signature: " ++ show t
 
 ffiCall :: Name -> ExpQ
 ffiCall hn = ffiCallImpl False hn [|id|]

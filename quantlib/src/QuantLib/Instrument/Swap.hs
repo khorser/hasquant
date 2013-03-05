@@ -15,11 +15,7 @@ module QuantLib.Instrument.Swap
   , npvDateDiscount
   , startDate
   , startDiscounts
-  , fairRate
   , fairSpread
-  , fixedLeg
-  , fixedLegBPS
-  , fixedLegNPV
   , floatingLeg
   , floatingLegBPS
   , floatingLegNPV
@@ -157,35 +153,11 @@ startDiscounts = $(ffiCallX 'startDiscounts) c_startDiscounts
 foreign import ccall safe "ql.h qlSwapStartDiscounts"
   c_startDiscounts :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
 
-fairRate :: VanillaSwap -> IO Double
-fairRate = $(ffiCallX 'fairRate) c_fairRate
-
-foreign import ccall safe "ql.h qlVanillaSwapFairRate"
-  c_fairRate :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
-
 fairSpread :: VanillaSwap -> IO Double
 fairSpread = $(ffiCallX 'fairSpread) c_fairSpread
 
 foreign import ccall safe "ql.h qlVanillaSwapFairSpread"
   c_fairSpread :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
-
-fixedLeg :: VanillaSwap -> IO Leg
-fixedLeg = $(ffiCall 'fixedLeg) c_fixedLeg
-
-foreign import ccall safe "ql.h qlVanillaSwapFixedLeg"
-  c_fixedLeg :: Ptr CVanillaSwap -> Ptr CString -> IO (Ptr CLeg)
-
-fixedLegBPS :: VanillaSwap -> IO Double
-fixedLegBPS = $(ffiCallX 'fixedLegBPS) c_fixedLegBPS
-
-foreign import ccall safe "ql.h qlVanillaSwapFixedLegBPS"
-  c_fixedLegBPS :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
-
-fixedLegNPV :: VanillaSwap -> IO Double
-fixedLegNPV = $(ffiCallX 'fixedLegNPV) c_fixedLegNPV
-
-foreign import ccall safe "ql.h qlVanillaSwapFixedLegNPV"
-  c_fixedLegNPV :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
 
 floatingLeg :: VanillaSwap -> IO Leg
 floatingLeg = $(ffiCall 'floatingLeg) c_floatingLeg

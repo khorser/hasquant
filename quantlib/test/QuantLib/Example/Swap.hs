@@ -28,6 +28,7 @@ import QuantLib.Time.Frequency
 import QuantLib.Time.Period
 import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
+import QuantLib.Instances
 import QuantLib.Types
 import QuantLib.Settings
 
