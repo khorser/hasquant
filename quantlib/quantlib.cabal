@@ -35,7 +35,6 @@ Library
               , QuantLib.Index.Swap
               , QuantLib.Instances
               , QuantLib.Instrument
-              , QuantLib.Instrument.AssetSwap
               , QuantLib.Instrument.AverageType
               , QuantLib.Instrument.BMASwapType
               , QuantLib.Instrument.BarrierType
@@ -45,7 +44,6 @@ Library
               , QuantLib.Instrument.Forward
               , QuantLib.Instrument.Option
               , QuantLib.Instrument.OptionType
-              , QuantLib.Instrument.OvernightIndexedSwap
               , QuantLib.Instrument.OvernightIndexedSwapType
               , QuantLib.Instrument.Swap
               , QuantLib.Instrument.VanillaSwapType

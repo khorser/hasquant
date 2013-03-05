@@ -10,6 +10,10 @@ module QuantLib.Instances
   , fairRate
 
   , fairSpread
+
+  , floatingLeg
+  , floatingLegNPV
+  , floatingLegBPS
   )
 where
 
@@ -108,13 +112,10 @@ instance SwapWithFixedLeg COvernightIndexedSwap where
 
 foreign import ccall safe "ql.h qlOvernightIndexedSwapFairRate"
   c_oisFairRate :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
-
 foreign import ccall safe "ql.h qlOvernightIndexedSwapFixedLeg"
   c_oisFixedLeg :: Ptr COvernightIndexedSwap -> Ptr CString -> IO (Ptr CLeg)
-
 foreign import ccall safe "ql.h qlOvernightIndexedSwapFixedLegBPS"
   c_oisFixedLegBPS :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
-
 foreign import ccall safe "ql.h qlOvernightIndexedSwapFixedLegNPV"
   c_oisFixedLegNPV :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
 
@@ -138,5 +139,43 @@ instance SwapWithSpread CAssetSwap where
   c_fairSpread = c_assetSwapFairSpread
 foreign import ccall safe "ql.h qlAssetSwapFairSpread"
   c_assetSwapFairSpread :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
+
+class (Finalizable a) => SwapWithFloatingLeg a where
+  c_floatingLeg :: Ptr a -> Ptr CString -> IO (Ptr CLeg)
+  c_floatingLegBPS :: Ptr a -> Ptr CString -> IO CDouble
+  c_floatingLegNPV :: Ptr a -> Ptr CString -> IO CDouble
+
+floatingLeg :: (SwapWithFloatingLeg a) => ForeignPtr a -> IO Leg
+floatingLeg = $(ffiCall 'floatingLeg) c_floatingLeg
+
+floatingLegBPS :: (SwapWithFloatingLeg a) => ForeignPtr a -> IO Double
+floatingLegBPS = $(ffiCallX 'floatingLegBPS) c_floatingLegBPS
+
+floatingLegNPV :: (SwapWithFloatingLeg a) => ForeignPtr a -> IO Double
+floatingLegNPV = $(ffiCallX 'floatingLegNPV) c_floatingLegNPV
+
+instance SwapWithFloatingLeg CVanillaSwap where
+  c_floatingLeg = c_vanillaSwapFloatingLeg
+  c_floatingLegBPS = c_vanillaSwapFloatingLegBPS
+  c_floatingLegNPV = c_vanillaSwapFloatingLegNPV
+
+foreign import ccall safe "ql.h qlVanillaSwapFloatingLeg"
+  c_vanillaSwapFloatingLeg :: Ptr CVanillaSwap -> Ptr CString -> IO (Ptr CLeg)
+foreign import ccall safe "ql.h qlVanillaSwapFloatingLegBPS"
+  c_vanillaSwapFloatingLegBPS :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlVanillaSwapFloatingLegNPV"
+  c_vanillaSwapFloatingLegNPV :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+
+instance SwapWithFloatingLeg CAssetSwap where
+  c_floatingLeg = c_assetSwapFloatingLeg
+  c_floatingLegBPS = c_assetSwapFloatingLegBPS
+  c_floatingLegNPV = c_assetSwapFloatingLegNPV
+
+foreign import ccall safe "ql.h qlAssetSwapFloatingLeg"
+  c_assetSwapFloatingLeg :: Ptr CAssetSwap -> Ptr CString -> IO (Ptr CLeg)
+foreign import ccall safe "ql.h qlAssetSwapFloatingLegBPS"
+  c_assetSwapFloatingLegBPS :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlAssetSwapFloatingLegNPV"
+  c_assetSwapFloatingLegNPV :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
