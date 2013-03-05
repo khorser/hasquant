@@ -71,16 +71,13 @@ isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double, ''Bool, ''Ye
 
 data EnumType = IntEnum | LitEnum
 enumType :: Name -> Q (Maybe EnumType)
-enumType n = do
-  ClassI _ instances <- reify ''QLEnum
+enumType n = reify ''QLEnum >>= \(ClassI _ instances) ->
   if n `elem` map getEnumTypeName instances
     then return (Just IntEnum)
-    else do
-      ClassI _ litinstances <- reify ''QLLitEnum
-      return $
-        if n `elem` map getEnumTypeName litinstances
-          then Just LitEnum
-          else Nothing
+    else reify ''QLLitEnum >>= \(ClassI _ litInstances) -> return $
+      if n `elem` map getEnumTypeName litInstances
+        then Just LitEnum
+        else Nothing
   where getEnumTypeName (InstanceD [] (AppT _ (ConT x)) []) = x
         getEnumTypeName x = error $ "Unsupported pattern in instance declaration: " ++ show x
 
@@ -100,8 +97,7 @@ nestedNameToTop n | n == ''Double = return DoubleN
 nestedNameToTop n | n == ''Bool = return BoolN
 nestedNameToTop n | n == ''YearFraction = return YearFractionN
 nestedNameToTop n | n == ''Word = return WordN
-nestedNameToTop n = do
-  e <- enumType n
+nestedNameToTop n = enumType n >>= \e ->
   case e of
     (Just IntEnum) -> return $ EnumN n
     _ -> tryForeignPtr n >>=
@@ -110,8 +106,7 @@ nestedNameToTop n = do
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = return $ nameToTop n
-topArgType (ConT n) = do
-  e <- enumType n
+topArgType (ConT n) = enumType n >>= \e ->
   case e of
     (Just IntEnum) -> return $ EnumA n
     (Just LitEnum) -> return LitEnumA
@@ -122,13 +117,12 @@ topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe =
   case () of
     _ | n == ''Day -> return OptDayA
     _ | n == ''Bool -> return OptBoolA
-    _ -> do
-      en <- enumType n
-      case en of
-        (Just LitEnum) -> return OptLitEnumA
-        _ -> tryForeignPtr n >>=
-              either (\x -> fail $ "Error parsing optional top arg: " ++ x)
-                (\_ -> return OptForeignPtrA)
+    _ -> enumType n >>= \en ->
+        case en of
+          (Just LitEnum) -> return OptLitEnumA
+          _ -> tryForeignPtr n >>=
+                either (\x -> fail $ "Error parsing optional top arg: " ++ x)
+                  (\_ -> return OptForeignPtrA)
 topArgType (AppT ListT (ConT n)) = liftM ListA (nestedNameToTop n)
 topArgType (AppT
           ListT
@@ -153,17 +147,15 @@ data RetVal = AtomicRV AtomicRet | IORV AtomicRet
   deriving (Show, Eq)
 
 tryForeignPtr :: Name -> Q (Either String Name)
-tryForeignPtr n = do
-  r <- reify n
-  return $
-    case r of
-      TyConI (TySynD _ [] (AppT (ConT p) (ConT target)))
-        -> if p == ''ForeignPtr
-             then Right target
-             else Left $ "Unsupported synonym type: " ++ show n
-                ++ " reified as " ++ show r
-      _ -> Left $ "Unsupported type: " ++ show n ++ " reified as "
-              ++ show r
+tryForeignPtr n = reify n >>= \r -> return $
+  case r of
+    TyConI (TySynD _ [] (AppT (ConT p) (ConT target)))
+      -> if p == ''ForeignPtr
+           then Right target
+           else Left $ "Unsupported synonym type: " ++ show n
+              ++ " reified as " ++ show r
+    _ -> Left $ "Unsupported type: " ++ show n ++ " reified as "
+            ++ show r
 
 nameToRetVal :: Name -> Q AtomicRet
 nameToRetVal n | n == ''Int = return IntR
@@ -173,8 +165,7 @@ nameToRetVal n | n == ''Double = return DoubleR
 nameToRetVal n | n == ''Bool = return BoolR
 nameToRetVal n | n == ''YearFraction = return YearFractionR
 nameToRetVal n | n == ''String = return StringR
-nameToRetVal n = do
-  e <- enumType n
+nameToRetVal n = enumType n >>= \e ->
   case e of
     (Just IntEnum) -> return $ EnumR n
     (Just LitEnum) -> fail $ "Literal enum not supported" ++ show n
@@ -191,8 +182,7 @@ compArgToRetVal (TupleT 0) = return UnitR
 compArgToRetVal t = fail $ "Unsupported compound type arg: " ++ show t
 
 compToRetVal :: Type -> Q RetVal
-compToRetVal (AppT (ConT n1) t2) | n1 == ''IO =
-  liftM IORV $ compArgToRetVal t2
+compToRetVal (AppT (ConT n1) t2) | n1 == ''IO = liftM IORV $ compArgToRetVal t2
 compToRetVal t = liftM AtomicRV $ compArgToRetVal t
 
 -- use WriterT to clean up this mess?
@@ -219,8 +209,7 @@ ffiCallX :: Name -> ExpQ
 ffiCallX hn = ffiCallImpl False hn [|handleExceptions|]
 
 ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
-ffiCallImpl io hFun extra = do
-  r <- reify hFun
+ffiCallImpl io hFun extra = reify hFun >>= \r ->
   case r of
     VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall io extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
