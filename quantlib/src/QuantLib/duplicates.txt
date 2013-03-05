@@ -35,8 +35,6 @@ cleanPrice: Instrument/AssetSwap.hs, Instrument/Bond.hs
 
 endOfMonth: Time/Calendar.hs, Time/Date.hs
 
-fairSpread    : Instrument/AssetSwap.hs, Instrument/OvernightIndexedSwap.hs, Instrument/Swap.hs
-
 floatingLeg   : Instrument/AssetSwap.hs, Instrument/Swap.hs
 floatingLegBPS: Instrument/AssetSwap.hs, Instrument/Swap.hs
 floatingLegNPV: Instrument/AssetSwap.hs, Instrument/Swap.hs

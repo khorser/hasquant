@@ -8,6 +8,8 @@ module QuantLib.Instances
   , fixedLegNPV
   , fixedLegBPS
   , fairRate
+
+  , fairSpread
   )
 where
 
@@ -97,5 +99,44 @@ foreign import ccall safe "ql.h qlVanillaSwapFixedLegBPS"
   c_vanillaSwapFixedLegBPS :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
 foreign import ccall safe "ql.h qlVanillaSwapFixedLegNPV"
   c_vanillaSwapFixedLegNPV :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+
+instance SwapWithFixedLeg COvernightIndexedSwap where
+  c_fairRate = c_oisFairRate
+  c_fixedLeg = c_oisFixedLeg
+  c_fixedLegBPS = c_oisFixedLegBPS
+  c_fixedLegNPV = c_oisFixedLegNPV
+
+foreign import ccall safe "ql.h qlOvernightIndexedSwapFairRate"
+  c_oisFairRate :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
+
+foreign import ccall safe "ql.h qlOvernightIndexedSwapFixedLeg"
+  c_oisFixedLeg :: Ptr COvernightIndexedSwap -> Ptr CString -> IO (Ptr CLeg)
+
+foreign import ccall safe "ql.h qlOvernightIndexedSwapFixedLegBPS"
+  c_oisFixedLegBPS :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
+
+foreign import ccall safe "ql.h qlOvernightIndexedSwapFixedLegNPV"
+  c_oisFixedLegNPV :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
+
+class (Finalizable a) => SwapWithSpread a where
+  c_fairSpread :: Ptr a -> Ptr CString -> IO CDouble
+
+fairSpread :: (SwapWithSpread a) => ForeignPtr a -> IO Double
+fairSpread = $(ffiCallX 'fairSpread) c_fairSpread
+
+instance SwapWithSpread CVanillaSwap where
+  c_fairSpread = c_vanillaSwapFairSpread
+foreign import ccall safe "ql.h qlVanillaSwapFairSpread"
+  c_vanillaSwapFairSpread :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
+
+instance SwapWithSpread COvernightIndexedSwap where
+  c_fairSpread = c_oisFairSpread
+foreign import ccall safe "ql.h qlOvernightIndexedSwapFairSpread"
+  c_oisFairSpread :: Ptr COvernightIndexedSwap -> Ptr CString -> IO CDouble
+
+instance SwapWithSpread CAssetSwap where
+  c_fairSpread = c_assetSwapFairSpread
+foreign import ccall safe "ql.h qlAssetSwapFairSpread"
+  c_assetSwapFairSpread :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

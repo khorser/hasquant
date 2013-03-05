@@ -9,7 +9,6 @@ module QuantLib.Instrument.AssetSwap
   , cleanPrice
   , fairCleanPrice
   , fairNonParRepayment
-  , fairSpread
   , floatingLeg
   , floatingLegBPS
   , floatingLegNPV
@@ -79,12 +78,6 @@ fairNonParRepayment = $(ffiCallX 'fairNonParRepayment) c_fairNonParRepayment
 
 foreign import ccall safe "ql.h qlAssetSwapFairNonParRepayment"
   c_fairNonParRepayment :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
-
-fairSpread :: AssetSwap -> IO Double
-fairSpread = $(ffiCallX 'fairSpread) c_fairSpread
-
-foreign import ccall safe "ql.h qlAssetSwapFairSpread"
-  c_fairSpread :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 
 floatingLeg :: AssetSwap -> IO Leg
 floatingLeg = $(ffiCall 'floatingLeg) c_floatingLeg

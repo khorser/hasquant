@@ -15,7 +15,6 @@ module QuantLib.Instrument.Swap
   , npvDateDiscount
   , startDate
   , startDiscounts
-  , fairSpread
   , floatingLeg
   , floatingLegBPS
   , floatingLegNPV
@@ -152,12 +151,6 @@ startDiscounts = $(ffiCallX 'startDiscounts) c_startDiscounts
 
 foreign import ccall safe "ql.h qlSwapStartDiscounts"
   c_startDiscounts :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
-
-fairSpread :: VanillaSwap -> IO Double
-fairSpread = $(ffiCallX 'fairSpread) c_fairSpread
-
-foreign import ccall safe "ql.h qlVanillaSwapFairSpread"
-  c_fairSpread :: Ptr CVanillaSwap -> Ptr CString -> IO CDouble
 
 floatingLeg :: VanillaSwap -> IO Leg
 floatingLeg = $(ffiCall 'floatingLeg) c_floatingLeg
