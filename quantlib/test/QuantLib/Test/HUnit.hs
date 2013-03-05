@@ -11,6 +11,7 @@ import Control.Exception(catch)
 import Prelude hiding(catch)
 #endif
 import Data.Time.Calendar(fromGregorian, addDays)
+import Control.Arrow((&&&))
 
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
@@ -144,7 +145,7 @@ test_swapEval = do
     fwdNpvs1          = [40049.45742, 40092.78967, 37238.92028]
     fwdFairSpreads1   = [-9.23115e-3, -9.23433e-3, -8.58372e-3]
     fwdFairRates1     = [4.94794e-2, 4.94846e-2, 4.88132e-2]
-    (spots1, fwds1)   = unzip $ map (\x -> (SwapExample.spotSwap x, SwapExample.forwardSwap x)) it1
+    (spots1, fwds1)   = unzip $ map (SwapExample.spotSwap &&& SwapExample.forwardSwap) it1
   subAssert $ assertListsAreClose SwapExample.spotNpvR spots1 spotNpvs1 1.0e-5
   subAssert $ assertListsAreClose SwapExample.spotFairSpreadR spots1 spotFairSpreads1 1.0e-5
   subAssert $ assertListsAreClose SwapExample.spotFairRateR spots1 spotFairRates1 1.0e-5
@@ -158,7 +159,7 @@ test_swapEval = do
     fwdNpvs2          = [45736.03965, 45782.39565, 42922.59585]
     fwdFairSpreads2   = [-1.05779e-2, -1.05808e-2, -9.92761e-3]
     fwdFairRates2     = [5.08660e-2, 5.08713e-2, 5.01964e-2]
-    (spots2, fwds2)   = unzip $ map (\x -> (SwapExample.spotSwap x, SwapExample.forwardSwap x)) it2
+    (spots2, fwds2)   = unzip $ map (SwapExample.spotSwap &&& SwapExample.forwardSwap) it2
   subAssert $ assertListsAreClose SwapExample.spotNpvR spots2 spotNpvs2 1.0e-5
   subAssert $ assertListsAreClose SwapExample.spotFairSpreadR spots2 spotFairSpreads2 1.0e-5
   subAssert $ assertListsAreClose SwapExample.spotFairRateR spots2 spotFairRates2 1.0e-5
