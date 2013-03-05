@@ -61,6 +61,11 @@ listToTriple :: [a] -> (a, a, a)
 listToTriple [x, y, z] = (x, y, z)
 listToTriple _ = error "Invalid list"
 
+(<-*>) :: (Applicative m, Monad m) => m (a -> m b) -> m a -> m b
+(<-*>) f x = join $ f <*> x
+
+infixl 4 <-*>
+
 run :: IO Result
 run = do
   actual365Fixeddc <- actual365Fixed
@@ -211,7 +216,7 @@ run = do
   volval <- simpleQuote 0 >>= asQuote
   vol <- constantOptionletVolatility'
           settlementDays targetCal ModifiedFollowing volval actual365Fixeddc
-  join $ setCouponPricer <$> cashflows floater <*> blackIborCouponPricer vol
+  setCouponPricer <$> cashflows floater <-*> blackIborCouponPricer vol
   
   let allBonds = [fixedBond, zcBond, floater]
       twoBonds = [fixedBond, floater]

@@ -88,9 +88,7 @@ main = do
 
     printSwapResult :: String -> SwapExample.SwapResult -> IO ()
     printSwapResult t r =
-      printf "%sNPV: %.5f %sFar spread: %.5f %sFair rate: %.5f\n"
-        t (SwapExample.spotNpvR r)
-        t (SwapExample.spotFairSpreadR r)
-        t (SwapExample.spotFairRateR r)
+      printf "%s Swap: NPV: %.5f Far spread: %.5f Fair rate: %.5f\n"
+        t (SwapExample.spotNpvR r) (SwapExample.spotFairSpreadR r) (SwapExample.spotFairRateR r)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

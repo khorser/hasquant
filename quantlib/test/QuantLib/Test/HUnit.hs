@@ -4,6 +4,7 @@ module QuantLib.Test.HUnit (htf_thisModulesTests)
 where
 
 import Test.Framework
+import Test.HUnit.Lang
 
 import Control.Exception(catch)
 #if __GLASGOW_HASKELL__ < 706
@@ -35,6 +36,15 @@ import qualified QuantLib.Example.Swap as SwapExample
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
+assertListsAreClose :: (a -> Double) -> [a] -> [Double] -> Double -> Assertion
+assertListsAreClose f x1 x2 e = assertBool $ all (\(x, y) -> abs(f x - y) < e) (zip x1 x2)
+
+assertClose :: Double -> Double -> Double -> Assertion
+assertClose x1 x2 e = assertBool $ abs(x1 - x2) < e
+
+assertRecordMemberClose :: (a -> Double) -> a -> Double -> Double -> Assertion
+assertRecordMemberClose f x1 x2 e = assertBool $ abs(f x1 - x2) < e
+
 test_bondEval :: IO ()
 test_bondEval = do
   r <- Settings.keepingSettings' BondExample.run
@@ -50,31 +60,32 @@ test_bondEval = do
       yieldFromClean = BondExample.yieldFromCleanPrice r
       tradable = BondExample.tradable r
 
-  assertBool $ abs(fixnpv-107.6682891) < 1e-7
-  assertBool $ abs(znpv-100.9221782) < 1e-7
-  assertBool $ abs(fnpv-102.3593146) < 1e-7
-  assertBool $ abs(fixy-0.0364756) < 1e-7
-  assertBool $ abs(zy-0.0300006) < 1e-7
-  assertBool $ abs(fy-0.0220096) < 1e-7
+  subAssert $ assertClose fixnpv 107.6682891 1e-7
+  subAssert $ assertClose znpv 100.9221782 1e-7
+  subAssert $ assertClose fnpv 102.3593146 1e-7
+  subAssert $ assertClose fixy 0.0364756 1e-7
+  subAssert $ assertClose zy 0.0300006 1e-7
+  subAssert $ assertClose fy 0.0220096 1e-7
 
-  assertBool $ abs(fixclean-106.1275283) < 1e-7
-  assertBool $ abs(zclean-100.9221782) < 1e-7
-  assertBool $ abs(fclean-101.7972017) < 1e-7
-  assertBool $ abs(fixdirty-107.6682891) < 1e-7
-  assertBool $ abs(zdirty-100.9221782) < 1e-7
-  assertBool $ abs(fdirty-102.3593146) < 1e-7
-  assertBool $ abs(fixaccrual-1.5407609) < 1e-7
-  assertBool $ abs(zaccrual-0.0) < 1e-7
-  assertBool $ abs(faccrual-0.5621129) < 1e-7
-  assertBool $ abs(fixprev-0.045) < 1e-7
-  assertBool $ abs(fprev-0.0288625) < 1e-7
-  assertBool $ abs(fixnext-0.045) < 1e-7
-  assertBool $ abs(fnext-0.0342984) < 1e-7
+  subAssert $ assertClose fixclean 106.1275283 1e-7
+  subAssert $ assertClose zclean 100.9221782 1e-7
+  subAssert $ assertClose fclean 101.7972017 1e-7
+  subAssert $ assertClose fixdirty 107.6682891 1e-7
+  subAssert $ assertClose zdirty 100.9221782 1e-7
+  subAssert $ assertClose fdirty 102.3593146 1e-7
+  subAssert $ assertClose fixaccrual 1.5407609 1e-7
+  subAssert $ assertClose zaccrual 0.0 1e-7
+  subAssert $ assertClose faccrual 0.5621129 1e-7
+  subAssert $ assertClose fixprev 0.045 1e-7
+  subAssert $ assertClose fprev 0.0288625 1e-7
+  subAssert $ assertClose fixnext 0.045 1e-7
+  subAssert $ assertClose fnext 0.0342984 1e-7
+
   assertEqual fixnextD (fromGregorian 2008 11 17)
   assertEqual znextD (fromGregorian 2013 08 15)
   assertEqual fnextD (fromGregorian 2008 10 21)
-  assertBool $ abs(cleanFromYield-101.79720) < 1e-5 -- because of difference in QL versions?
-  assertBool $ abs(yieldFromClean-0.0220096) < 1e-7
+  subAssert $ assertClose cleanFromYield 101.79720 1e-5 -- because of difference in QL versions?
+  subAssert $ assertClose yieldFromClean 0.0220096 1e-7
 
   assertEqual tradable (True, True, False)
 
@@ -82,17 +93,17 @@ test_repoEval :: IO ()
 test_repoEval = do
   r <- Settings.keepingSettings' RepoExample.run
 
-  assertBool $ abs(RepoExample.cleanPriceR r-89.9769362) < 1e-7
-  assertBool $ abs(RepoExample.dirtyPriceR r-93.2880473) < 1e-7
-  assertBool $ abs(RepoExample.accruedAmountSettlement r-3.3111111) < 1e-7
-  assertBool $ abs(RepoExample.accruedAmountDelivery r-3.3333333) < 1e-7
-  assertBool $ abs(RepoExample.spotIncomeR r-3.9834025) < 1e-7
-  assertBool $ abs(RepoExample.fwdIncomeR r-4.0846473) < 1e-7
-  assertBool $ abs(RepoExample.npvR r+0.00002806598) < 1e-11
-  assertBool $ abs(RepoExample.cleanForwardPriceR r-88.2411379) < 1e-7
-  assertBool $ abs(RepoExample.forwardPriceR r-91.5744712) < 1e-7
-  assertBool $ abs(RepoExample.impliedYieldR r-0.050000633) < 1e-9
-  assertBool $ abs(RepoExample.zeroRateR r-0.05) < 1e-7
+  subAssert $ assertRecordMemberClose RepoExample.cleanPriceR r 89.9769362 1e-7
+  subAssert $ assertRecordMemberClose RepoExample.dirtyPriceR r 93.2880473 1e-7
+  subAssert $ assertRecordMemberClose RepoExample.accruedAmountSettlement r 3.3111111 1e-7
+  subAssert $ assertRecordMemberClose RepoExample.accruedAmountDelivery r 3.3333333 1e-7
+  subAssert $ assertRecordMemberClose RepoExample.spotIncomeR r 3.9834025 1e-7
+  subAssert $ assertRecordMemberClose RepoExample.fwdIncomeR r 4.0846473 1e-7
+  subAssert $ assertRecordMemberClose RepoExample.npvR r (-0.00002806598) 1e-11
+  subAssert $ assertRecordMemberClose RepoExample.cleanForwardPriceR r 88.2411379 1e-7
+  subAssert $ assertRecordMemberClose RepoExample.forwardPriceR r 91.5744712 1e-7
+  subAssert $ assertRecordMemberClose RepoExample.impliedYieldR r 0.050000633 1e-9
+  subAssert $ assertRecordMemberClose RepoExample.zeroRateR r 0.05 1e-7
 
 test_fraEval :: IO ()
 test_fraEval = do
@@ -103,12 +114,12 @@ test_fraEval = do
     fwdValues1  = [100.76667, 100.79222, 100.83556, 100.84333, 100.85944]
     implYields1 = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2]
     zRates1     = [3.00399e-2, 3.06805e-2, 3.11347e-2, 3.19277e-2, 3.26419e-2] 
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.fwdRateR y) < 1.0e-5) (zip fwdRates1 it1)
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.spotR y) < 1.0e-5) (zip spots1 it1)
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.fwdValueR y) < 1.0e-5) (zip fwdValues1 it1)
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.implYieldR y) < 1.0e-5) (zip implYields1 it1)
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.zRateR y) < 1.0e-5) (zip zRates1 it1)
-  assertBool $ all (\x -> abs(FRAExample.npvR x) < 1.0e-5) it1
+  subAssert $ assertListsAreClose FRAExample.fwdRateR it1 fwdRates1 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.spotR it1 spots1 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.fwdValueR it1 fwdValues1 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.implYieldR it1 implYields1 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.zRateR it1 zRates1 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.npvR it1 (repeat 0.0) 1.0e-5
   let
     fwdRates2   = [4.0e-2, 4.1e-2, 4.2e-2, 4.3e-2, 4.4e-2]
     spots2      = [99.64687, 99.32793, 98.98812, 97.91433, 96.86156]
@@ -116,12 +127,12 @@ test_fraEval = do
     implYields2 = [4.00710e-2, 4.07408e-2, 4.12277e-2, 4.21173e-2, 4.29299e-2]
     zRates2     = [4.00710e-2, 4.07408e-2, 4.12277e-2, 4.21174e-2, 4.29299e-2]
     npvs2       = [0.25208, 0.25121, 0.25567, 0.24751, 0.24215]
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.fwdRateR y) < 1.0e-5) (zip fwdRates2 it2)
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.spotR y) < 1.0e-5) (zip spots2 it2)
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.fwdValueR y) < 1.0e-5) (zip fwdValues2 it2)
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.implYieldR y) < 1.0e-5) (zip implYields2 it2)
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.zRateR y) < 1.0e-5) (zip zRates2 it2)
-  assertBool $ all (\(x, y) -> abs(x - FRAExample.npvR y) < 1.0e-5) (zip npvs2 it2)
+  subAssert $ assertListsAreClose FRAExample.fwdRateR it2 fwdRates2 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.spotR it2 spots2 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.fwdValueR it2 fwdValues2 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.implYieldR it2 implYields2 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.zRateR it2 zRates2 1.0e-5
+  subAssert $ assertListsAreClose FRAExample.npvR it2 npvs2 1.0e-5
 
 test_swapEval :: IO ()
 test_swapEval = do
@@ -133,12 +144,13 @@ test_swapEval = do
     fwdNpvs1          = [40049.45742, 40092.78967, 37238.92028]
     fwdFairSpreads1   = [-9.23115e-3, -9.23433e-3, -8.58372e-3]
     fwdFairRates1     = [4.94794e-2, 4.94846e-2, 4.88132e-2]
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotNpvR (SwapExample.spotSwap y)) < 1.0e-5) (zip spotNpvs1 it1)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotFairSpreadR (SwapExample.spotSwap y)) < 1.0e-5) (zip spotFairSpreads1 it1)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotFairRateR (SwapExample.spotSwap y)) < 1.0e-5) (zip spotFairRates1 it1)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotNpvR (SwapExample.forwardSwap y)) < 1.0e-5) (zip fwdNpvs1 it1)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotFairSpreadR (SwapExample.forwardSwap y)) < 1.0e-5) (zip fwdFairSpreads1 it1)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotFairRateR (SwapExample.forwardSwap y)) < 1.0e-5) (zip fwdFairRates1 it1)
+    (spots1, fwds1)   = unzip $ map (\x -> (SwapExample.spotSwap x, SwapExample.forwardSwap x)) it1
+  subAssert $ assertListsAreClose SwapExample.spotNpvR spots1 spotNpvs1 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotFairSpreadR spots1 spotFairSpreads1 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotFairRateR spots1 spotFairRates1 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotNpvR fwds1 fwdNpvs1 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotFairSpreadR fwds1 fwdFairSpreads1 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotFairRateR fwds1 fwdFairRates1 1.0e-5
   let
     spotNpvs2         = [26539.06205, 26553.33709, 26525.34]
     spotFairSpreads2  = [-5.84826e-3, -5.84770e-3, -5.84788e-3]
@@ -146,12 +158,13 @@ test_swapEval = do
     fwdNpvs2          = [45736.03965, 45782.39565, 42922.59585]
     fwdFairSpreads2   = [-1.05779e-2, -1.05808e-2, -9.92761e-3]
     fwdFairRates2     = [5.08660e-2, 5.08713e-2, 5.01964e-2]
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotNpvR (SwapExample.spotSwap y)) < 1.0e-5) (zip spotNpvs2 it2)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotFairSpreadR (SwapExample.spotSwap y)) < 1.0e-5) (zip spotFairSpreads2 it2)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotFairRateR (SwapExample.spotSwap y)) < 1.0e-5) (zip spotFairRates2 it2)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotNpvR (SwapExample.forwardSwap y)) < 1.0e-5) (zip fwdNpvs2 it2)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotFairSpreadR (SwapExample.forwardSwap y)) < 1.0e-5) (zip fwdFairSpreads2 it2)
-  assertBool $ all (\(x, y) -> abs(x - SwapExample.spotFairRateR (SwapExample.forwardSwap y)) < 1.0e-5) (zip fwdFairRates2 it2)
+    (spots2, fwds2)   = unzip $ map (\x -> (SwapExample.spotSwap x, SwapExample.forwardSwap x)) it2
+  subAssert $ assertListsAreClose SwapExample.spotNpvR spots2 spotNpvs2 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotFairSpreadR spots2 spotFairSpreads2 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotFairRateR spots2 spotFairRates2 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotNpvR fwds2 fwdNpvs2 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotFairSpreadR fwds2 fwdFairSpreads2 1.0e-5
+  subAssert $ assertListsAreClose SwapExample.spotFairRateR fwds2 fwdFairRates2 1.0e-5
 
 test_evalDate :: IO ()
 test_evalDate = do

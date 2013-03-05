@@ -1,6 +1,4 @@
-# you might want to do `export CABAL_CONFIG=$HOME/.cabal/config_linux'
-# and `cabal-dev update' before doing this:
-cabal-dev ghc-pkg unregister quantlib
-cabal-dev install --with-cabal-install=/usr/bin/cabal --with-gcc=g++ qlc/
-cabal-dev install --with-cabal-install=/usr/bin/cabal --with-gcc=g++ -f addSelfDep qlc/
-cabal-dev install --with-cabal-install=/usr/bin/cabal --enable-tests quantlib/
+cabaldev ghc-pkg unregister quantlib
+cabaldev install --with-gcc=g++ qlc/
+cabaldev install --with-gcc=g++ -f addSelfDep qlc/
+cabaldev install --enable-tests quantlib/
