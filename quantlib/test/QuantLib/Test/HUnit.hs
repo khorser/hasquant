@@ -232,12 +232,6 @@ test_threeLegsSorted = do
   sd <- Leg.startDate l
   assertEqual sd (addDays (-10) t)
 
-test_GBPCalendar :: IO ()
-test_GBPCalendar = do
-  c1 <- Calendar.londonStockExchange
-  c2 <- Calendar.gbp
-  assertEqual (show c1) (show c2)
-
 test_calAdjust :: IO ()
 test_calAdjust = do
   c <- Calendar.russia
@@ -272,7 +266,7 @@ test_a365fCounter = do
 
 test_bondStatics :: IO ()
 test_bondStatics = do
-  c <- Calendar.gbp
+  c <- Calendar.unitedKingdomSettlement
   l <- Leg.leg [(1000, fromGregorian 2013 1 1)]
   b <- Bond.bond' 2 c 1000 m i l
   assertEqual m (Bond.maturityDate b)

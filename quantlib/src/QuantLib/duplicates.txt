@@ -34,7 +34,6 @@ atmRate: CashFlow/Leg.hs, Instrument/Bond.hs, Instrument/CapFloor.hs, Instrument
 cleanPrice: Instrument/AssetSwap.hs, Instrument/Bond.hs
 
 endOfMonth: Time/Calendar.hs, Time/Date.hs
-eur: Currency.hs, Time/Calendar.hs
 
 fairRate      : Instrument/OvernightIndexedSwap.hs, Instrument/Swap.hs
 fixedLeg      : Instrument/OvernightIndexedSwap.hs, Instrument/Swap.hs
@@ -48,7 +47,6 @@ floatingLegBPS: Instrument/AssetSwap.hs, Instrument/Swap.hs
 floatingLegNPV: Instrument/AssetSwap.hs, Instrument/Swap.hs
 
 forwardRate: Instrument/Forward.hs, TermStructure/Yield.hs
-gbp: Currency.hs, Time/Calendar.hs
 impliedVolatility: Instrument/CapFloor.hs, Instrument/Credit.hs, Instrument/Option.hs, Instrument/Swap.hs
 isEndOfMonth: Time/Calendar.hs, Time/Date.hs
 isValid: Quote.hs, Internal/Date.hs, Time/Date.hs

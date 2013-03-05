@@ -52,12 +52,10 @@ module QuantLib.Time.Calendar
   , sweden
   , switzerland
   , taiwanTSEC
-  , eur
   , turkey
   , ukraineUSE
   , londonStockExchange
   , london
-  , gbp
   , unitedKingdomMetals
   , unitedKingdomSettlement
   , unitedStatesGovernmentBond
@@ -155,7 +153,6 @@ southKoreaSettlement    :: IO Calendar -- ^South Korean calendar: public holiday
 sweden                  :: IO Calendar -- ^Swedish calendar
 switzerland             :: IO Calendar -- ^Swiss calendar
 taiwanTSEC              :: IO Calendar -- ^Taiwanese calendar: Taiwan stock exchange
-eur                     :: IO Calendar -- ^TARGET
 turkey                  :: IO Calendar -- ^Turkish calendar
 ukraineUSE              :: IO Calendar -- ^Ukrainian calendar: Ukrainian stock exchange
 unitedKingdomExchange   :: IO Calendar -- ^United Kingdom calendar: London stock-exchange
@@ -163,7 +160,6 @@ londonStockExchange     :: IO Calendar -- ^United Kingdom calendar: London stock
 london                  :: IO Calendar -- ^United Kingdom calendar: London stock exchange
 unitedKingdomMetals     :: IO Calendar -- ^United Kingdom calendar: London metal exchange
 unitedKingdomSettlement :: IO Calendar -- ^United Kingdom calendar: generic settlement
-gbp                     :: IO Calendar -- ^London Stock Exchange
 unitedStatesGovernmentBond:: IO Calendar -- ^United States calendar: government-bond
 unitedStatesNERC        :: IO Calendar -- ^United States calendar: off-peak days for NERC
 unitedStatesNYSE        :: IO Calendar -- ^United States calendar: New York stock exchange
@@ -212,13 +208,11 @@ southKoreaSettlement    = constructNamed "SouthKorea::Settlement"
 sweden                  = constructNamed "Sweden"
 switzerland             = constructNamed "Switzerland"
 taiwanTSEC              = constructNamed "Taiwan::TSEC"
-eur                     = constructNamed "EUR"
 turkey                  = constructNamed "Turkey"
 ukraineUSE              = constructNamed "Ukraine::USE"
 unitedKingdomExchange   = constructNamed "UnitedKingdom::Exchange"
 londonStockExchange     = constructNamed "London stock exchange"
 london                  = constructNamed "LONDON"
-gbp                     = constructNamed "GBP"
 unitedKingdomMetals     = constructNamed "UnitedKingdom::Metals"
 unitedKingdomSettlement = constructNamed "UnitedKingdom::Settlement"
 unitedStatesGovernmentBond = constructNamed "UnitedStates::GovernmentBond"

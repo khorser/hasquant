@@ -33,6 +33,7 @@ Library
               , QuantLib.Index
               , QuantLib.Index.Ibor
               , QuantLib.Index.Swap
+              , QuantLib.Instances
               , QuantLib.Instrument
               , QuantLib.Instrument.AssetSwap
               , QuantLib.Instrument.AverageType
