@@ -6,6 +6,7 @@ module QuantLib.Internal.Enum
   , QLLitEnum
   , withLitEnum
   , withOptLitEnum
+  , values
   )
 where
 
@@ -20,7 +21,7 @@ foreign import ccall safe "ql.h qlEnumerationValue"
 
 values :: String -> [CInt]
 values ename = if null vals
-                 then signalError ("Enumeration " ++ ename ++ " is not known")
+                 then signalError ("Unknown enumeration: " ++ ename)
                  else map getStaticInt vals
   where vals = unsafePerformIO $
                 withCString ename (getArray . c_values)

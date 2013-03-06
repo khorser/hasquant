@@ -4,6 +4,8 @@ module QuantLib.Internal.Syntax
     ffiCall
   , ffiCallIO
   , ffiCallX
+
+  , qlEnumsInfo
   )
 where
 
@@ -69,17 +71,35 @@ data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA | YearFractionA
 isAtomicTop :: Name -> Bool
 isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double, ''Bool, ''YearFraction]
 
+qlEnums :: Name -> Q [Name]
+qlEnums en = reify en >>= \(ClassI _ instances) ->
+  return $ map getEnumTypeName instances
+  where
+    getEnumTypeName :: Dec -> Name
+    getEnumTypeName (InstanceD [] (AppT _ (ConT x)) []) = x
+    getEnumTypeName x = error $ "Unsupported pattern in instance declaration: " ++ show x
+
 data EnumType = IntEnum | LitEnum
 enumType :: Name -> Q (Maybe EnumType)
-enumType n = reify ''QLEnum >>= \(ClassI _ instances) ->
-  if n `elem` map getEnumTypeName instances
+enumType n = do
+  qlEnumInst <- qlEnums ''QLEnum
+  if n `elem` qlEnumInst
     then return (Just IntEnum)
-    else reify ''QLLitEnum >>= \(ClassI _ litInstances) -> return $
-      if n `elem` map getEnumTypeName litInstances
-        then Just LitEnum
-        else Nothing
-  where getEnumTypeName (InstanceD [] (AppT _ (ConT x)) []) = x
-        getEnumTypeName x = error $ "Unsupported pattern in instance declaration: " ++ show x
+    else do
+      qlLitEnumInst <- qlEnums ''QLLitEnum
+      return $
+        if n `elem` qlLitEnumInst
+          then Just LitEnum
+          else Nothing
+
+-- return expression [(String, Int)] - [(enum name, enum lenght)]
+qlEnumsInfo :: ExpQ
+qlEnumsInfo = qlEnums ''QLEnum >>= \en ->
+  listE $ map (\x -> tupE[stringE $ show x, enumSizeE x]) en
+  where
+    enumSizeE :: Name -> ExpQ
+    enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
+      litE $ integerL (fromIntegral $ length cs)
 
 nameToTop :: Name -> TopArg
 nameToTop n | n == ''Int = IntA
@@ -156,10 +176,12 @@ tryForeignPtr n = reify n >>= \r -> return $
            else Left $ "Unsupported synonym type: " ++ show n
               ++ " reified as " ++ show r
     TyConI (DataD [] p _ _ _)
-      -> if p == ''ForeignPtr
-           then Right $ mkName "QQQ" -- HACK
-           else Left $ "Unsupported synonym type: " ++ show n
-              ++ " reified as " ++ show r
+       -> if p == ''ForeignPtr
+            -- the Right value is not used (yet) so populating it with
+            -- some nonsense for now
+            then Right ''ForeignPtr
+            else Left $ "Unsupported synonym type: " ++ show n
+               ++ " reified as " ++ show r
     _ -> Left $ "Unsupported type: " ++ show n ++ " reified as "
             ++ show r
 

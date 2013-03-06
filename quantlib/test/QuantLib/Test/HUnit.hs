@@ -29,6 +29,7 @@ import qualified QuantLib.Time.Frequency as Frequency
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
+import QuantLib.Utilities
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.Repo as RepoExample
@@ -383,5 +384,10 @@ test_truncateSchedule = do
                fromGregorian 2013 03 21,
                fromGregorian 2013 04 15]
               (Schedule.dates truncated)
+
+test_enums :: IO ()
+test_enums = mapM_
+  (\(n, l) -> assertBoolVerbose ("Error checking " ++ n ++ " length") l)
+  checkEnums
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
