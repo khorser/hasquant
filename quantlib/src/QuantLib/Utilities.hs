@@ -33,6 +33,6 @@ checkEnums :: [(String, Bool)]
 checkEnums = map checkEnum $(qlEnumsInfo)
   where
     checkEnum :: (String, Integer) -> (String, Bool)
-    checkEnum (n, l) = (n, (length $ values n) == fromIntegral l)
+    checkEnum (n, l) = (n, length (values n) == fromIntegral l)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
