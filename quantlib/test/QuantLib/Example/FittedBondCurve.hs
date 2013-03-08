@@ -96,7 +96,7 @@ run = do
 
       forM_ instrA $
         \h -> do
-          cfs <- underlying h >>= cashflows >>= \l -> CF.cashFlows l False (Just bondSettle)
+          cfs <- underlying h >>= cashFlows >>= \l -> CF.cashFlows l False (Just bondSettle)
           let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
           _ <- yearFraction dc tod (last ds) Nothing Nothing >>= printf "Tenor %5.2fY: "
           parRate ts0 (bondSettle:ds) dc

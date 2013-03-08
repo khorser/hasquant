@@ -216,13 +216,13 @@ run = do
   volval <- simpleQuote 0 >>= asQuote
   vol <- constantOptionletVolatility'
           settlementDays targetCal ModifiedFollowing volval actual365Fixeddc
-  setCouponPricer <$> cashflows floater <-*> blackIborCouponPricer vol
+  setCouponPricer <$> cashFlows floater <-*> blackIborCouponPricer vol
 
   let allBonds = [fixedBond, zcBond, floater]
       twoBonds = [fixedBond, floater]
 
   -- some cash flows smoke check
-  cfs <- cashflows fixedBond
+  cfs <- cashFlows fixedBond
   cfnpv <- Leg.npv cfs ts True (Just $ 1 `may` 2012) (Just $ 3 `may` 2012)
   cfnpvbps <- Leg.npvbps cfs ts True (1 `may` 2012) (3 `may` 2012)
   bbps <- bps fixedBond ts (Just $ 3 `may` 2012)

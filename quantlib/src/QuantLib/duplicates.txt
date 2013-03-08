@@ -10,6 +10,7 @@ basisPointValue'      : CashFlow/Leg.hs, Instrument/Bond.hs
 bps                   : CashFlow/Leg.hs, Instrument/Bond.hs
 bps'                  : CashFlow/Leg.hs, Instrument/Bond.hs
 bps''                 : CashFlow/Leg.hs, Instrument/Bond.hs
+cashFlows	      : CashFlow/Leg.hs, Instrument/Bond.hs
 convexity             : CashFlow/Leg.hs, Instrument/Bond.hs
 convexity'            : CashFlow/Leg.hs, Instrument/Bond.hs
 duration              : CashFlow/Leg.hs, Instrument/Bond.hs
@@ -47,17 +48,19 @@ setPricingEngine: Instrument.hs, Model.hs
 settlementDate: Instrument/Bond.hs, Instrument/Forward.hs
 startDate: CashFlow/Leg.hs, Instrument/Bond.hs, Instrument/Swap.hs
 
-gamma       : PricingEngine.hs, Instrument/Option.hs
-gamma'      : PricingEngine.hs, Instrument/Option.hs
-theta       : PricingEngine.hs, Instrument/Option.hs
-theta'      : PricingEngine.hs, Instrument/Option.hs
-thetaPerDay : PricingEngine.hs, Instrument/Option.hs
-vega        : PricingEngine.hs, Instrument/Option.hs
-strikeSensitivity: PricingEngine.hs, Instrument/Option.hs
-delta       : PricingEngine.hs, Instrument/Option.hs
-delta'      : PricingEngine.hs, Instrument/Option.hs
-deltaForward: PricingEngine.hs, Instrument/Option.hs
-dividendRho : PricingEngine.hs, Instrument/Option.hs
-elasticity  : PricingEngine.hs, Instrument/Option.hs
+delta	    : Instrument/Option.hs, PricingEngine/Calculator.hs
+delta'	    : Instrument/Option.hs, PricingEngine/Calculator.hs
+deltaForward: Instrument/Option.hs, PricingEngine/Calculator.hs
+dividendRho : Instrument/Option.hs, PricingEngine/Calculator.hs
+elasticity  : Instrument/Option.hs, PricingEngine/Calculator.hs
+gamma	    : Instrument/Option.hs, PricingEngine/Calculator.hs
+gamma'	    : Instrument/Option.hs, PricingEngine/Calculator.hs
+itmCashProbability: Instrument/Option.hs, PricingEngine/Calculator.hs
+rho	    : Instrument/Option.hs, PricingEngine/Calculator.hs
+strikeSensitivity: Instrument/Option.hs, PricingEngine/Calculator.hs
+theta	    : Instrument/Option.hs, PricingEngine/Calculator.hs
+theta'	    : Instrument/Option.hs, PricingEngine/Calculator.hs
+thetaPerDay : Instrument/Option.hs, PricingEngine/Calculator.hs
+vega	    : Instrument/Option.hs, PricingEngine/Calculator.hs
 
 value: PricingEngine.hs, Quote.hs

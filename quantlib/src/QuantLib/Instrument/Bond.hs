@@ -28,7 +28,7 @@ module QuantLib.Instrument.Bond
   , yield'
   , isTradable
   , notionals
-  , cashflows
+  , cashFlows
   , redemptions
   , settlementDate
   , startDate
@@ -377,11 +377,11 @@ foreign import ccall safe "ql.h qlBondNotionals"
   c_notionals :: Ptr CBond -> Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)
 
 -- |returns all the cashflows, including the redemptions.
-cashflows :: Bond -> IO Leg
-cashflows = $(ffiCall 'cashflows) c_cashflows
+cashFlows :: Bond -> IO Leg
+cashFlows = $(ffiCall 'cashFlows) c_cashFlows
 
 foreign import ccall safe "ql.h qlBondCashflows"
-  c_cashflows :: Ptr CBond -> Ptr CString -> IO (Ptr CLeg)
+  c_cashFlows :: Ptr CBond -> Ptr CString -> IO (Ptr CLeg)
 
 -- |returns just the redemption flows (not interest payments)
 redemptions :: Bond -> IO Leg

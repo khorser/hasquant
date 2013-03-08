@@ -62,6 +62,7 @@ Library
               , QuantLib.PositionType
               , QuantLib.PriceType
               , QuantLib.PricingEngine
+              , QuantLib.PricingEngine.Calculator
               , QuantLib.PricingEngine.Parameter
               , QuantLib.Process
               , QuantLib.ProcessDiscretization
