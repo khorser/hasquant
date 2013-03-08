@@ -59,8 +59,8 @@ run = do
       b <- underlying i
       ytm <- yield'' b price dc Compounded Annual (Just newtod) 1e-10 100 0.05
       dur <- duration' b ytm dc Compounded Annual Modified (Just newtod)
-      let delta = -dur * price * 5 / 10000
-      setValue q (price + delta)) $
+      let dp = -dur * price * 5 / 10000
+      setValue q (price + dp)) $
         zip3 (drop 1 cleanPrices) (drop 1 cleanQuotes) iA
   printRates ts00 dc newBondSettle newtod curves iA
 

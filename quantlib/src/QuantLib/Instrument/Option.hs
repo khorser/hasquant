@@ -12,25 +12,14 @@ module QuantLib.Instrument.Option
   , gamma1
   , gamma2
   , margrabeOption
-  , delta
-  , dividendRho
-  , gamma
+
   , multiAssetOption
-  , rho
-  , theta
-  , vega
-  , delta'
   , deltaForward
-  , dividendRho'
   , elasticity
-  , gamma'
   , itmCashProbability
   , oneAssetOption
-  , rho'
   , strikeSensitivity
-  , theta'
   , thetaPerDay
-  , vega'
   , qlambda
   , qrho
   , quantoBarrierOption
@@ -161,53 +150,11 @@ margrabeOption = $(ffiCall 'margrabeOption) c_margrabeOption
 foreign import ccall safe "ql.h qlMargrabeOption"
   c_margrabeOption :: CInt -> CInt -> Ptr CExercise -> Ptr CString -> IO (Ptr CMargrabeOption)
 
-delta :: MultiAssetOption -> IO Double
-delta = $(ffiCallX 'delta) c_delta
-
-foreign import ccall safe "ql.h qlMultiAssetOptionDelta"
-  c_delta :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
-
-dividendRho :: MultiAssetOption -> IO Double
-dividendRho = $(ffiCallX 'dividendRho) c_dividendRho
-
-foreign import ccall safe "ql.h qlMultiAssetOptionDividendRho"
-  c_dividendRho :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
-
-gamma :: MultiAssetOption -> IO Double
-gamma = $(ffiCallX 'gamma) c_gamma
-
-foreign import ccall safe "ql.h qlMultiAssetOptionGamma"
-  c_gamma :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
-
 multiAssetOption :: Payoff -> Exercise -> IO MultiAssetOption
 multiAssetOption = $(ffiCall 'multiAssetOption) c_multiAssetOption
 
 foreign import ccall safe "ql.h qlMultiAssetOption"
   c_multiAssetOption :: Ptr CPayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr CMultiAssetOption)
-
-rho :: MultiAssetOption -> IO Double
-rho = $(ffiCallX 'rho) c_rho
-
-foreign import ccall safe "ql.h qlMultiAssetOptionRho"
-  c_rho :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
-
-theta' :: MultiAssetOption -> IO Double
-theta' = $(ffiCallX 'theta') c_theta'
-
-foreign import ccall safe "ql.h qlMultiAssetOptionTheta"
-  c_theta' :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
-
-vega :: MultiAssetOption -> IO Double
-vega = $(ffiCallX 'vega) c_vega
-
-foreign import ccall safe "ql.h qlMultiAssetOptionVega"
-  c_vega :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
-
-delta' :: OneAssetOption -> IO Double
-delta' = $(ffiCallX 'delta') c_delta'
-
-foreign import ccall safe "ql.h qlOneAssetOptionDelta"
-  c_delta' :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
 deltaForward :: OneAssetOption -> IO Double
 deltaForward = $(ffiCallX 'deltaForward) c_deltaForward
@@ -215,23 +162,11 @@ deltaForward = $(ffiCallX 'deltaForward) c_deltaForward
 foreign import ccall safe "ql.h qlOneAssetOptionDeltaForward"
   c_deltaForward :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
-dividendRho' :: OneAssetOption -> IO Double
-dividendRho' = $(ffiCallX 'dividendRho') c_dividendRho'
-
-foreign import ccall safe "ql.h qlOneAssetOptionDividendRho"
-  c_dividendRho' :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
-
 elasticity :: OneAssetOption -> IO Double
 elasticity = $(ffiCallX 'elasticity) c_elasticity
 
 foreign import ccall safe "ql.h qlOneAssetOptionElasticity"
   c_elasticity :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
-
-gamma' :: OneAssetOption -> IO Double
-gamma' = $(ffiCallX 'gamma') c_gamma'
-
-foreign import ccall safe "ql.h qlOneAssetOptionGamma"
-  c_gamma' :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
 itmCashProbability :: OneAssetOption
   -> IO Double
@@ -246,35 +181,17 @@ oneAssetOption = $(ffiCall 'oneAssetOption) c_oneAssetOption
 foreign import ccall safe "ql.h qlOneAssetOption"
   c_oneAssetOption :: Ptr CPayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr COneAssetOption)
 
-rho' :: OneAssetOption -> IO Double
-rho' = $(ffiCallX 'rho') c_rho'
-
-foreign import ccall safe "ql.h qlOneAssetOptionRho"
-  c_rho' :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
-
 strikeSensitivity :: OneAssetOption -> IO Double
 strikeSensitivity = $(ffiCallX 'strikeSensitivity) c_strikeSensitivity
 
 foreign import ccall safe "ql.h qlOneAssetOptionStrikeSensitivity"
   c_strikeSensitivity :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
-theta :: OneAssetOption -> IO Double
-theta = $(ffiCallX 'theta) c_theta
-
-foreign import ccall safe "ql.h qlOneAssetOptionTheta"
-  c_theta :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
-
 thetaPerDay :: OneAssetOption -> IO Double
 thetaPerDay = $(ffiCallX 'thetaPerDay) c_thetaPerDay
 
 foreign import ccall safe "ql.h qlOneAssetOptionThetaPerDay"
   c_thetaPerDay :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
-
-vega' :: OneAssetOption -> IO Double
-vega' = $(ffiCallX 'vega') c_vega'
-
-foreign import ccall safe "ql.h qlOneAssetOptionVega"
-  c_vega' :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
 qlambda :: QuantoBarrierOption -> IO Double
 qlambda = $(ffiCallX 'qlambda) c_qlambda

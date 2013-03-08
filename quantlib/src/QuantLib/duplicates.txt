@@ -43,16 +43,13 @@ leg: CashFlow/Leg.hs, Instrument/Swap.hs
 maturityDate: CashFlow/Leg.hs, Instrument/Bond.hs, Instrument/Swap.hs
 npv: Instrument.hs, CashFlow/Leg.hs
 
-rho: PricingEngine.hs, Instrument/Option.hs
+rho: PricingEngine.hs, Instances.hs
 setPricingEngine: Instrument.hs, Model.hs
 settlementDate: Instrument/Bond.hs, Instrument/Forward.hs
 startDate: CashFlow/Leg.hs, Instrument/Bond.hs, Instrument/Swap.hs
 
 deltaForward: Instrument/Option.hs, PricingEngine/Calculator.hs
-dividendRho : Instrument/Option.hs, PricingEngine/Calculator.hs
-rho	    : Instrument/Option.hs, PricingEngine/Calculator.hs
 strikeSensitivity: Instrument/Option.hs, PricingEngine/Calculator.hs
-vega	    : Instrument/Option.hs, PricingEngine/Calculator.hs
 blackScholesTheta: Process.hs, PricingEngine/Calculator.hs
 
 value: PricingEngine.hs, Quote.hs

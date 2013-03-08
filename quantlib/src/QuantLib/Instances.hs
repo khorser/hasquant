@@ -14,6 +14,13 @@ module QuantLib.Instances
   , floatingLeg
   , floatingLegNPV
   , floatingLegBPS
+
+  , delta
+  , gamma
+  , rho
+  , theta
+  , vega
+  , dividendRho
   )
 where
 
@@ -177,5 +184,73 @@ foreign import ccall safe "ql.h qlAssetSwapFloatingLegBPS"
   c_assetSwapFloatingLegBPS :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 foreign import ccall safe "ql.h qlAssetSwapFloatingLegNPV"
   c_assetSwapFloatingLegNPV :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
+
+class (Finalizable a) => OptionWithGreeks a where
+  c_delta :: Ptr a -> Ptr CString -> IO CDouble
+  c_gamma :: Ptr a -> Ptr CString -> IO CDouble
+  c_rho :: Ptr a -> Ptr CString -> IO CDouble
+  c_theta :: Ptr a -> Ptr CString -> IO CDouble
+  c_vega :: Ptr a -> Ptr CString -> IO CDouble
+  c_dividendRho :: Ptr a -> Ptr CString -> IO CDouble
+
+delta :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+delta = $(ffiCallX 'delta) c_delta
+
+gamma :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+gamma = $(ffiCallX 'gamma) c_gamma
+
+rho :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+rho = $(ffiCallX 'rho) c_rho
+
+theta :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+theta = $(ffiCallX 'theta) c_theta
+
+vega :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+vega = $(ffiCallX 'vega) c_vega
+
+dividendRho :: (OptionWithGreeks a) => ForeignPtr a -> IO Double
+dividendRho = $(ffiCallX 'dividendRho) c_dividendRho
+
+instance OptionWithGreeks CMultiAssetOption where
+  c_delta = c_multiAssetOptionDelta
+  c_gamma = c_multiAssetOptionGamma
+  c_rho = c_multiAssetOptionRho
+  c_theta = c_multiAssetOptionTheta
+  c_vega = c_multiAssetOptionVega
+  c_dividendRho = c_multiAssetOptionDividendRho
+
+instance OptionWithGreeks COneAssetOption where
+  c_delta = c_oneAssetOptionDelta
+  c_gamma = c_oneAssetOptionGamma
+  c_rho = c_oneAssetOptionRho
+  c_theta = c_oneAssetOptionTheta
+  c_vega = c_oneAssetOptionVega
+  c_dividendRho = c_oneAssetOptionDividendRho
+
+foreign import ccall safe "ql.h qlMultiAssetOptionDelta"
+  c_multiAssetOptionDelta :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlMultiAssetOptionDividendRho"
+  c_multiAssetOptionDividendRho :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlMultiAssetOptionGamma"
+  c_multiAssetOptionGamma :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlMultiAssetOptionRho"
+  c_multiAssetOptionRho :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlMultiAssetOptionTheta"
+  c_multiAssetOptionTheta :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlMultiAssetOptionVega"
+  c_multiAssetOptionVega :: Ptr CMultiAssetOption -> Ptr CString -> IO CDouble
+
+foreign import ccall safe "ql.h qlOneAssetOptionDelta"
+  c_oneAssetOptionDelta :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlOneAssetOptionDividendRho"
+  c_oneAssetOptionDividendRho :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlOneAssetOptionGamma"
+  c_oneAssetOptionGamma :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlOneAssetOptionRho"
+  c_oneAssetOptionRho :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlOneAssetOptionTheta"
+  c_oneAssetOptionTheta :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlOneAssetOptionVega"
+  c_oneAssetOptionVega :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
