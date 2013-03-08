@@ -6,40 +6,39 @@ module QuantLib.PricingEngine.Calculator
   , beta
   , blackCalculator'
   , blackCalculator
-  , delta
+  , blackDelta
   , deltaForward
   , dividendRho
-  , elasticity
+  , blackElasticity
   , elasticityForward
-  , gamma
+  , blackGamma
   , gammaForward
   , itmAssetProbability
   , itmCashProbability
   , rho
   , strikeSensitivity
-  , theta
-  , thetaPerDay
+  , blackTheta
+  , blackThetaPerDay
   , value
   , vega
   , blackScholesCalculator'
   , blackScholesCalculator
-  , delta'
-  , elasticity'
-  , gamma'
-  , theta'
-  , thetaPerDay'
+  , blackScholesDelta
+  , blackScholesElasticity
+  , blackScholesGamma
+  , blackScholesTheta
+  , blackScholesThetaPerDay
   , blackFormula'
   , blackFormula
-  , blackFormulaCashItmProbability'
-  , blackFormulaCashItmProbability
-  , blackFormulaImpliedStdDev'
-  , blackFormulaImpliedStdDev
-  , blackFormulaImpliedStdDevApproximation'
-  , blackFormulaImpliedStdDevApproximation
-  , blackFormulaStdDevDerivative'
-  , blackFormulaStdDevDerivative
-  , blackFormulaVolDerivative
-  , blackScholesTheta
+  , blackCashItmProbability'
+  , blackCashItmProbability
+  , blackImpliedStdDev'
+  , blackImpliedStdDev
+  , blackImpliedStdDevApproximation'
+  , blackImpliedStdDevApproximation
+  , blackStdDevDerivative'
+  , blackStdDevDerivative
+  , blackVolDerivative
   , bachelierBlackFormula'
   , bachelierBlackFormula
   , defaultThetaPerDay
@@ -87,13 +86,13 @@ foreign import ccall safe "ql.h qlBlackCalculator"
   c_blackCalculator :: Ptr CStrikedTypePayoff -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CBlackCalculator)
 
 -- |Sensitivity to change in the underlying spot price.
-delta :: BlackCalculator
+blackDelta :: BlackCalculator
   -> Double -- ^spot
   -> IO Double
-delta = $(ffiCallX 'delta) c_delta
+blackDelta = $(ffiCallX 'blackDelta) c_blackDelta
 
 foreign import ccall safe "ql.h qlBlackCalculatorDelta"
-  c_delta :: Ptr CBlackCalculator -> CDouble -> Ptr CString -> IO CDouble
+  c_blackDelta :: Ptr CBlackCalculator -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Sensitivity to change in the underlying forward price.
 deltaForward :: BlackCalculator -> IO Double
@@ -112,13 +111,13 @@ foreign import ccall safe "ql.h qlBlackCalculatorDividendRho"
   c_dividendRho :: Ptr CBlackCalculator -> CYearFraction -> Ptr CString -> IO CDouble
 
 -- |Sensitivity in percent to a percent change in the underlying spot price.
-elasticity :: BlackCalculator
+blackElasticity :: BlackCalculator
   -> Double -- ^spot
   -> IO Double
-elasticity = $(ffiCallX 'elasticity) c_elasticity
+blackElasticity = $(ffiCallX 'blackElasticity) c_blackElasticity
 
 foreign import ccall safe "ql.h qlBlackCalculatorElasticity"
-  c_elasticity :: Ptr CBlackCalculator -> CDouble -> Ptr CString -> IO CDouble
+  c_blackElasticity :: Ptr CBlackCalculator -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Sensitivity in percent to a percent change in the underlying forward price.
 elasticityForward :: BlackCalculator -> IO Double
@@ -128,13 +127,13 @@ foreign import ccall safe "ql.h qlBlackCalculatorElasticityForward"
   c_elasticityForward :: Ptr CBlackCalculator -> Ptr CString -> IO CDouble
 
 -- |Second order derivative with respect to change in the underlying spot price.
-gamma :: BlackCalculator
+blackGamma :: BlackCalculator
   -> Double -- ^spot
   -> IO Double
-gamma = $(ffiCallX 'gamma) c_gamma
+blackGamma = $(ffiCallX 'blackGamma) c_blackGamma
 
 foreign import ccall safe "ql.h qlBlackCalculatorGamma"
-  c_gamma :: Ptr CBlackCalculator -> CDouble -> Ptr CString -> IO CDouble
+  c_blackGamma :: Ptr CBlackCalculator -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Second order derivative with respect to change in the underlying forward price.
 gammaForward :: BlackCalculator -> IO Double
@@ -175,24 +174,24 @@ foreign import ccall safe "ql.h qlBlackCalculatorStrikeSensitivity"
   c_strikeSensitivity :: Ptr CBlackCalculator -> Ptr CString -> IO CDouble
 
 -- |Sensitivity to time to maturity.
-theta :: BlackCalculator
+blackTheta :: BlackCalculator
   -> Double -- ^spot
   -> YearFraction -- ^maturity
   -> IO Double
-theta = $(ffiCallX 'theta) c_theta
+blackTheta = $(ffiCallX 'blackTheta) c_blackTheta
 
 foreign import ccall safe "ql.h qlBlackCalculatorTheta"
-  c_theta :: Ptr CBlackCalculator -> CDouble -> CYearFraction -> Ptr CString -> IO CDouble
+  c_blackTheta :: Ptr CBlackCalculator -> CDouble -> CYearFraction -> Ptr CString -> IO CDouble
 
 -- |Sensitivity to time to maturity per day, assuming 365 day per year.
-thetaPerDay :: BlackCalculator
+blackThetaPerDay :: BlackCalculator
   -> Double -- ^spot
   -> YearFraction -- ^maturity
   -> IO Double
-thetaPerDay = $(ffiCallX 'thetaPerDay) c_thetaPerDay
+blackThetaPerDay = $(ffiCallX 'blackThetaPerDay) c_blackThetaPerDay
 
 foreign import ccall safe "ql.h qlBlackCalculatorThetaPerDay"
-  c_thetaPerDay :: Ptr CBlackCalculator -> CDouble -> CYearFraction -> Ptr CString -> IO CDouble
+  c_blackThetaPerDay :: Ptr CBlackCalculator -> CDouble -> CYearFraction -> Ptr CString -> IO CDouble
 
 value :: BlackCalculator -> IO Double
 value = $(ffiCallX 'value) c_value
@@ -233,43 +232,43 @@ foreign import ccall safe "ql.h qlBlackScholesCalculator"
   c_blackScholesCalculator :: Ptr CStrikedTypePayoff -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CBlackScholesCalculator)
 
 -- |Sensitivity to change in the underlying spot price.
-delta' :: BlackScholesCalculator -> IO Double
-delta' = $(ffiCallX 'delta') c_delta'
+blackScholesDelta :: BlackScholesCalculator -> IO Double
+blackScholesDelta = $(ffiCallX 'blackScholesDelta) c_blackScholesDelta
 
 foreign import ccall safe "ql.h qlBlackScholesCalculatorDelta"
-  c_delta' :: Ptr CBlackScholesCalculator -> Ptr CString -> IO CDouble
+  c_blackScholesDelta :: Ptr CBlackScholesCalculator -> Ptr CString -> IO CDouble
 
 -- |Sensitivity in percent to a percent change in the underlying spot price.
-elasticity' :: BlackScholesCalculator -> IO Double
-elasticity' = $(ffiCallX 'elasticity') c_elasticity'
+blackScholesElasticity :: BlackScholesCalculator -> IO Double
+blackScholesElasticity = $(ffiCallX 'blackScholesElasticity) c_blackScholesElasticity
 
 foreign import ccall safe "ql.h qlBlackScholesCalculatorElasticity"
-  c_elasticity' :: Ptr CBlackScholesCalculator -> Ptr CString -> IO CDouble
+  c_blackScholesElasticity :: Ptr CBlackScholesCalculator -> Ptr CString -> IO CDouble
 
 -- |Second order derivative with respect to change in the underlying spot price.
-gamma' :: BlackScholesCalculator -> IO Double
-gamma' = $(ffiCallX 'gamma') c_gamma'
+blackScholesGamma :: BlackScholesCalculator -> IO Double
+blackScholesGamma = $(ffiCallX 'blackScholesGamma) c_blackScholesGamma
 
 foreign import ccall safe "ql.h qlBlackScholesCalculatorGamma"
-  c_gamma' :: Ptr CBlackScholesCalculator -> Ptr CString -> IO CDouble
+  c_blackScholesGamma :: Ptr CBlackScholesCalculator -> Ptr CString -> IO CDouble
 
 -- |Sensitivity to time to maturity.
-theta' :: BlackScholesCalculator
+blackScholesTheta :: BlackScholesCalculator
   -> YearFraction -- ^maturity
   -> IO Double
-theta' = $(ffiCallX 'theta') c_theta'
+blackScholesTheta = $(ffiCallX 'blackScholesTheta) c_blackScholesTheta
 
 foreign import ccall safe "ql.h qlBlackScholesCalculatorTheta"
-  c_theta' :: Ptr CBlackScholesCalculator -> CYearFraction -> Ptr CString -> IO CDouble
+  c_blackScholesTheta :: Ptr CBlackScholesCalculator -> CYearFraction -> Ptr CString -> IO CDouble
 
 -- |Sensitivity to time to maturity per day (assuming 365 day in a year).
-thetaPerDay' :: BlackScholesCalculator
+blackScholesThetaPerDay :: BlackScholesCalculator
   -> YearFraction -- ^maturity
   -> IO Double
-thetaPerDay' = $(ffiCallX 'thetaPerDay') c_thetaPerDay'
+blackScholesThetaPerDay = $(ffiCallX 'blackScholesThetaPerDay) c_blackScholesThetaPerDay
 
 foreign import ccall safe "ql.h qlBlackScholesCalculatorThetaPerDay"
-  c_thetaPerDay' :: Ptr CBlackScholesCalculator -> CYearFraction -> Ptr CString -> IO CDouble
+  c_blackScholesThetaPerDay :: Ptr CBlackScholesCalculator -> CYearFraction -> Ptr CString -> IO CDouble
 
 -- |Black 1976 formula /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
 blackFormula' :: PlainVanillaPayoff -- ^payoff
@@ -297,30 +296,30 @@ foreign import ccall safe "ql.h qlQuantLibBlackFormula"
   c_blackFormula :: CInt -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-blackFormulaCashItmProbability' :: PlainVanillaPayoff -- ^payoff
+blackCashItmProbability' :: PlainVanillaPayoff -- ^payoff
   -> Double -- ^forward
   -> Double -- ^stdDev
   -> Double -- ^displacement
   -> IO Double
-blackFormulaCashItmProbability' = $(ffiCallX 'blackFormulaCashItmProbability') c_blackFormulaCashItmProbability'
+blackCashItmProbability' = $(ffiCallX 'blackCashItmProbability') c_blackCashItmProbability'
 
 foreign import ccall safe "ql.h qlQuantLibBlackFormulaCashItmProbability1"
-  c_blackFormulaCashItmProbability' :: Ptr CPlainVanillaPayoff -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+  c_blackCashItmProbability' :: Ptr CPlainVanillaPayoff -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Black 1976 probability of being in the money (in the bond martingale measure), i.e. N(d2). It is a risk-neutral probability, not the real world one. /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity)
-blackFormulaCashItmProbability :: OptionType -- ^optionType
+blackCashItmProbability :: OptionType -- ^optionType
   -> Double -- ^strike
   -> Double -- ^forward
   -> Double -- ^stdDev
   -> Double -- ^displacement
   -> IO Double
-blackFormulaCashItmProbability = $(ffiCallX 'blackFormulaCashItmProbability) c_blackFormulaCashItmProbability
+blackCashItmProbability = $(ffiCallX 'blackCashItmProbability) c_blackCashItmProbability
 
 foreign import ccall safe "ql.h qlQuantLibBlackFormulaCashItmProbability"
-  c_blackFormulaCashItmProbability :: CInt -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+  c_blackCashItmProbability :: CInt -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
-blackFormulaImpliedStdDev' :: PlainVanillaPayoff -- ^payoff
+blackImpliedStdDev' :: PlainVanillaPayoff -- ^payoff
   -> Double -- ^forward
   -> Double -- ^blackPrice
   -> Double -- ^discount
@@ -329,13 +328,13 @@ blackFormulaImpliedStdDev' :: PlainVanillaPayoff -- ^payoff
   -> Double -- ^accuracy
   -> Word -- ^maxIterations
   -> IO Double
-blackFormulaImpliedStdDev' = $(ffiCallX 'blackFormulaImpliedStdDev') c_blackFormulaImpliedStdDev'
+blackImpliedStdDev' = $(ffiCallX 'blackImpliedStdDev') c_blackImpliedStdDev'
 
 foreign import ccall safe "ql.h qlQuantLibBlackFormulaImpliedStdDev1"
-  c_blackFormulaImpliedStdDev' :: Ptr CPlainVanillaPayoff -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CUInt -> Ptr CString -> IO CDouble
+  c_blackImpliedStdDev' :: Ptr CPlainVanillaPayoff -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CUInt -> Ptr CString -> IO CDouble
 
 -- |Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity)
-blackFormulaImpliedStdDev :: OptionType -- ^optionType
+blackImpliedStdDev :: OptionType -- ^optionType
   -> Double -- ^strike
   -> Double -- ^forward
   -> Double -- ^blackPrice
@@ -345,83 +344,72 @@ blackFormulaImpliedStdDev :: OptionType -- ^optionType
   -> Double -- ^accuracy
   -> Word -- ^maxIterations
   -> IO Double
-blackFormulaImpliedStdDev = $(ffiCallX 'blackFormulaImpliedStdDev) c_blackFormulaImpliedStdDev
+blackImpliedStdDev = $(ffiCallX 'blackImpliedStdDev) c_blackImpliedStdDev
 
 foreign import ccall safe "ql.h qlQuantLibBlackFormulaImpliedStdDev"
-  c_blackFormulaImpliedStdDev :: CInt -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CUInt -> Ptr CString -> IO CDouble
+  c_blackImpliedStdDev :: CInt -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CUInt -> Ptr CString -> IO CDouble
 
 -- |Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
-blackFormulaImpliedStdDevApproximation' :: PlainVanillaPayoff -- ^payoff
+blackImpliedStdDevApproximation' :: PlainVanillaPayoff -- ^payoff
   -> Double -- ^forward
   -> Double -- ^blackPrice
   -> Double -- ^discount
   -> Double -- ^displacement
   -> IO Double
-blackFormulaImpliedStdDevApproximation' = $(ffiCallX 'blackFormulaImpliedStdDevApproximation') c_blackFormulaImpliedStdDevApproximation'
+blackImpliedStdDevApproximation' = $(ffiCallX 'blackImpliedStdDevApproximation') c_blackImpliedStdDevApproximation'
 
 foreign import ccall safe "ql.h qlQuantLibBlackFormulaImpliedStdDevApproximation1"
-  c_blackFormulaImpliedStdDevApproximation' :: Ptr CPlainVanillaPayoff -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+  c_blackImpliedStdDevApproximation' :: Ptr CPlainVanillaPayoff -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Approximated Black 1976 implied standard deviation, i.e. volatility*sqrt(timeToMaturity).It is calculated using Brenner and Subrahmanyan (1988) and Feinstein (1988) approximation for at-the-money forward option, with the extended moneyness approximation by Corrado and Miller (1996)
-blackFormulaImpliedStdDevApproximation :: OptionType -- ^optionType
+blackImpliedStdDevApproximation :: OptionType -- ^optionType
   -> Double -- ^strike
   -> Double -- ^forward
   -> Double -- ^blackPrice
   -> Double -- ^discount
   -> Double -- ^displacement
   -> IO Double
-blackFormulaImpliedStdDevApproximation = $(ffiCallX 'blackFormulaImpliedStdDevApproximation) c_blackFormulaImpliedStdDevApproximation
+blackImpliedStdDevApproximation = $(ffiCallX 'blackImpliedStdDevApproximation) c_blackImpliedStdDevApproximation
 
 foreign import ccall safe "ql.h qlQuantLibBlackFormulaImpliedStdDevApproximation"
-  c_blackFormulaImpliedStdDevApproximation :: CInt -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+  c_blackImpliedStdDevApproximation :: CInt -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Black 1976 formula for standard deviation derivative /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity), and it returns the derivative with respect to the standard deviation. If T is the time to maturity Black vega would be blackStdDevDerivative(strike, forward, stdDev)*sqrt(T)
-blackFormulaStdDevDerivative' :: PlainVanillaPayoff -- ^payoff
+blackStdDevDerivative' :: PlainVanillaPayoff -- ^payoff
   -> Double -- ^forward
   -> Double -- ^stdDev
   -> Double -- ^discount
   -> Double -- ^displacement
   -> IO Double
-blackFormulaStdDevDerivative' = $(ffiCallX 'blackFormulaStdDevDerivative') c_blackFormulaStdDevDerivative'
+blackStdDevDerivative' = $(ffiCallX 'blackStdDevDerivative') c_blackStdDevDerivative'
 
 foreign import ccall safe "ql.h qlQuantLibBlackFormulaStdDevDerivative1"
-  c_blackFormulaStdDevDerivative' :: Ptr CPlainVanillaPayoff -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+  c_blackStdDevDerivative' :: Ptr CPlainVanillaPayoff -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Black 1976 formula for standard deviation derivative /Warning/ instead of volatility it uses standard deviation, i.e. volatility*sqrt(timeToMaturity), and it returns the derivative with respect to the standard deviation. If T is the time to maturity Black vega would be blackStdDevDerivative(strike, forward, stdDev)*sqrt(T)
-blackFormulaStdDevDerivative :: Double -- ^strike
+blackStdDevDerivative :: Double -- ^strike
   -> Double -- ^forward
   -> Double -- ^stdDev
   -> Double -- ^discount
   -> Double -- ^displacement
   -> IO Double
-blackFormulaStdDevDerivative = $(ffiCallX 'blackFormulaStdDevDerivative) c_blackFormulaStdDevDerivative
+blackStdDevDerivative = $(ffiCallX 'blackStdDevDerivative) c_blackStdDevDerivative
 
 foreign import ccall safe "ql.h qlQuantLibBlackFormulaStdDevDerivative"
-  c_blackFormulaStdDevDerivative :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+  c_blackStdDevDerivative :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Black 1976 formula for derivative with respect to implied vol, this is basically the vega, but if you want 1% change multiply by 1%
-blackFormulaVolDerivative :: Double -- ^strike
+blackVolDerivative :: Double -- ^strike
   -> Double -- ^forward
   -> Double -- ^stdDev
   -> Double -- ^expiry
   -> Double -- ^discount
   -> Double -- ^displacement
   -> IO Double
-blackFormulaVolDerivative = $(ffiCallX 'blackFormulaVolDerivative) c_blackFormulaVolDerivative
+blackVolDerivative = $(ffiCallX 'blackVolDerivative) c_blackVolDerivative
 
 foreign import ccall safe "ql.h qlQuantLibBlackFormulaVolDerivative"
-  c_blackFormulaVolDerivative :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
-
--- |default theta calculation for Black-Scholes options
-blackScholesTheta :: GeneralizedBlackScholesProcess
-  -> Double -- ^value
-  -> Double -- ^delta
-  -> Double -- ^gamma
-  -> IO Double
-blackScholesTheta = $(ffiCallX 'blackScholesTheta) c_blackScholesTheta
-
-foreign import ccall safe "ql.h qlQuantLibBlackScholesTheta"
-  c_blackScholesTheta :: Ptr CGeneralizedBlackScholesProcess -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+  c_blackVolDerivative :: CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- |Black style formula when forward is normal rather than log-normal. This is essentially the model of Bachelier. /Warning/ Bachelier model needs absolute volatility, not percentage volatility. Standard deviation is absoluteVolatility*sqrt(timeToMaturity)
 bachelierBlackFormula' :: PlainVanillaPayoff -- ^payoff

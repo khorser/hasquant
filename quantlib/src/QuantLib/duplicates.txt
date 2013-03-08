@@ -48,19 +48,11 @@ setPricingEngine: Instrument.hs, Model.hs
 settlementDate: Instrument/Bond.hs, Instrument/Forward.hs
 startDate: CashFlow/Leg.hs, Instrument/Bond.hs, Instrument/Swap.hs
 
-delta	    : Instrument/Option.hs, PricingEngine/Calculator.hs
-delta'	    : Instrument/Option.hs, PricingEngine/Calculator.hs
 deltaForward: Instrument/Option.hs, PricingEngine/Calculator.hs
 dividendRho : Instrument/Option.hs, PricingEngine/Calculator.hs
-elasticity  : Instrument/Option.hs, PricingEngine/Calculator.hs
-gamma	    : Instrument/Option.hs, PricingEngine/Calculator.hs
-gamma'	    : Instrument/Option.hs, PricingEngine/Calculator.hs
-itmCashProbability: Instrument/Option.hs, PricingEngine/Calculator.hs
 rho	    : Instrument/Option.hs, PricingEngine/Calculator.hs
 strikeSensitivity: Instrument/Option.hs, PricingEngine/Calculator.hs
-theta	    : Instrument/Option.hs, PricingEngine/Calculator.hs
-theta'	    : Instrument/Option.hs, PricingEngine/Calculator.hs
-thetaPerDay : Instrument/Option.hs, PricingEngine/Calculator.hs
 vega	    : Instrument/Option.hs, PricingEngine/Calculator.hs
+blackScholesTheta: Process.hs, PricingEngine/Calculator.hs
 
 value: PricingEngine.hs, Quote.hs

@@ -28,6 +28,8 @@ module QuantLib.Process
   , ornsteinUhlenbeckProcess
   , varianceGammaProcess
   , stochasticProcessArray
+
+  , blackScholesTheta
   )
 where
 
@@ -333,5 +335,16 @@ stochasticProcessArray = $(ffiCall 'stochasticProcessArray) c_stochasticProcessA
 
 foreign import ccall safe "ql.h qlStochasticProcessArray"
   c_stochasticProcessArray :: CUInt -> Ptr (Ptr CStochasticProcess1D) -> CUInt -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CStochasticProcessArray)
+
+-- |default theta calculation for Black-Scholes options
+blackScholesTheta :: GeneralizedBlackScholesProcess
+  -> Double -- ^value
+  -> Double -- ^delta
+  -> Double -- ^gamma
+  -> IO Double
+blackScholesTheta = $(ffiCallX 'blackScholesTheta) c_blackScholesTheta
+
+foreign import ccall safe "ql.h qlQuantLibBlackScholesTheta"
+  c_blackScholesTheta :: Ptr CGeneralizedBlackScholesProcess -> CDouble -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
