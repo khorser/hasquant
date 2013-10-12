@@ -18,9 +18,6 @@ Actual instantiation of QuantLib object will happen only on pricing.
 This allows for easy building of mutators as simply returning a new copy with
 updated data
 
-?keep objects together to avoid gc-ing of objects for which we still have references
-or will Handles help us?
-
 try and make objects as much immutable as possible by not exposing mutators
 (except maybe Calendars that should keep the ability to be changed if the user wants
 to introduce adjustments)
@@ -39,16 +36,17 @@ sessions?
 review use of IO in functions and remove it from those not raising exceptions and not depending
 on the state
 
-Plan: migrate business calculation first and then think of reusing underlying math
-
+Plan: migrate business calculation first and then think of reusing the underlying math
 
 Coupons; Monte Carlo; Trees, Latices, Discretized
-name conflicts, error handling
+
+name conflicts between methods of unrelated classes
 
 No empty objects for ccy, calendar, day counter!
+
 Custom DayCounters calling back to Haskell, many foreign imports would become unsafe then?
 
-Expose minimal possible (a) mutators and (b) elementary inspectors (that just return values passed in constructors)
+Expose as less mutators as possible
 
 instead of CompositeQuote/DerivedQuote implement a quote calling Haskell callbacks if needed.
 Probably it would need to register for notifications from other quotes and evaluation date?
@@ -56,48 +54,3 @@ Probably it would need to register for notifications from other quotes and evalu
 (Maybe Day) in too many functions?
 
 add Interpolation2D
-
--- done:
-Bond::
-BondFunctions::
-FlatForward
-FixedRateBondForward
-ForwardRateAgreement
-IMM::
-Date::
-DayCounter::
-Calendar::
-SimpleQuote.setValue
-BespokeCalendar
-JointCalendar
-DiscountingSwapEngine
-swap indices
-Bond::
-InterpolatedDiscountCurve
-InterpolatedForwardCurve
-InterpolatedZeroCurve
-
-FittedBondDiscountCurve
-SimplePolynomialFitting
-ExponentialSplinesFitting
-NelsonSiegelFitting
-CubicBSplinesFitting
-SvenssonFitting
-
-BMA*
-BondHelper
-OvernightIndexedSwap
-OISRateHelper
-DatedOISRateHelper
-FraRateHelper
-FuturesRateHelper
-VanillaSwap
-Swap
-SwapRateHelper
-ForwardRateStructure
-ZeroSpreadCurve
-Settings::
-OvernightIndexedSwapIndex
-Currency::
-Period::
-Quotes

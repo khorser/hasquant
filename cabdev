@@ -1,4 +1,0 @@
-cabaldev ghc-pkg unregister quantlib
-cabaldev install --with-gcc=g++ qlc/
-cabaldev install --with-gcc=g++ -f addSelfDep qlc/
-cabaldev install --enable-tests quantlib/
