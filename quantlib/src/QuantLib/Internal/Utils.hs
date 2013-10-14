@@ -1,8 +1,9 @@
-{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,ScopedTypeVariables #-}
 module QuantLib.Internal.Utils
   (
     signalError
   , handleExceptions
+  , handleExceptions'
 
   , Finalizable(..)
   , Upcastable(..)
@@ -34,7 +35,8 @@ module QuantLib.Internal.Utils
 
 where
 
-import Control.Exception(throw)
+import Control.Exception(throw, catch)
+import Control.Monad(liftM)
 import Data.Word(Word)
 
 import Foreign.C.String
@@ -48,7 +50,7 @@ import Foreign.Storable(Storable(..), peek)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Error(Error(Error))
+import QuantLib.Error(Error(Error), message)
 
 foreign import ccall safe "ql.h qlFreeString"
   c_freeString :: CString -> IO ()
@@ -136,6 +138,12 @@ handleExceptions f =
          c_freeString msg
          signalError err
        else return r
+
+handleExceptions' :: (Ptr CString -> IO a) -> Either String a
+handleExceptions' f = unsafePerformIO $
+  catch (liftM Right (handleExceptions f))
+        (\(e :: Error) -> return $ Left (message e))
+
 
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
