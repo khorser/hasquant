@@ -51,6 +51,6 @@ Expose as less mutators as possible
 instead of CompositeQuote/DerivedQuote implement a quote calling Haskell callbacks if needed.
 Probably it would need to register for notifications from other quotes and evaluation date?
 
-(Maybe Day) in too many functions?
+(Maybe ...) in too many functions, look for Maybe Day (qlNullableDate) and qlNullableHandle?
 
 add Interpolation2D

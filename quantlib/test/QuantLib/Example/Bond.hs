@@ -9,6 +9,7 @@ import Control.Applicative
 import Control.Monad(join, (>=>))
 
 import Data.List(zip4)
+import Data.Maybe(fromJust)
 import Data.Time.Calendar(Day, fromGregorian)
 
 import QuantLib.CashFlow.CouponPricer
@@ -225,7 +226,7 @@ run = do
   cfs <- cashFlows fixedBond
   cfnpv <- Leg.npv cfs ts True (1 `may` 2012) (3 `may` 2012)
   cfnpvbps <- Leg.npvbps cfs ts True (1 `may` 2012) (3 `may` 2012)
-  bbps <- bps fixedBond ts (Just $ 3 `may` 2012)
+  bbps <- bps fixedBond ts (3 `may` 2012)
 
   [fixnpv, znpv, fnpv] <-
     mapM (asInstrument >=>
@@ -234,20 +235,20 @@ run = do
 
   bCleanPrice <- mapM cleanPrice allBonds
   bDirtyPrice <- mapM dirtyPrice allBonds
-  bAccruedAmount <- mapM (`accruedAmount` Nothing) allBonds
-  bPreviousCoupon <- mapM (`previousCouponRate` Nothing) twoBonds
-  bNextCoupon <- mapM (`nextCouponRate` Nothing) twoBonds
+  bAccruedAmount <- mapM (`accruedAmount` settlDate) allBonds
+  bPreviousCoupon <- mapM (`previousCouponRate` todaysDate) twoBonds
+  bNextCoupon <- mapM (`nextCouponRate` todaysDate) twoBonds
 
   bYield <- mapM
     (\b -> yield b actual360dc Compounded Annual 1e-8 100)
     allBonds
 
-  fCleanFromYield <- cleanPrice' floater (bYield!!2) actual360dc Compounded Annual (Just settlDate)
-  fYieldFromClean <- yield' floater (bCleanPrice!!2) actual360dc Compounded Annual (Just settlDate) 1e-8 100
+  fCleanFromYield <- cleanPrice' floater (bYield!!2) actual360dc Compounded Annual settlDate
+  fYieldFromClean <- yield' floater (bCleanPrice!!2) actual360dc Compounded Annual settlDate 1e-8 100
 
-  bNextCouponDate <- mapM (`nextCashFlowDate` Nothing) allBonds
+  bNextCouponDate <- mapM (`nextCashFlowDate` todaysDate) allBonds
 
-  bTradable <- mapM (`isTradable` (Just $ 10 `february` 2013)) allBonds
+  bTradable <- mapM (`isTradable` (10 `february` 2013)) allBonds
 
   return Result {
       npvR = (fixnpv, znpv, fnpv)
@@ -257,7 +258,7 @@ run = do
     , previousCoupon = listToTuple bPreviousCoupon
     , nextCoupon = listToTuple bNextCoupon
     , yieldR = listToTriple bYield
-    , nextCouponDate = listToTriple bNextCouponDate
+    , nextCouponDate = listToTriple (map fromJust bNextCouponDate)
     , cleanPriceFromYield = fCleanFromYield
     , yieldFromCleanPrice = fYieldFromClean
     , tradable = listToTriple bTradable

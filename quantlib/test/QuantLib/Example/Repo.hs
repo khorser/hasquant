@@ -63,7 +63,7 @@ run = do
   i <- asInstrument b
   discountingBondEngine bondCurve Nothing >>= setPricingEngine i
   _ <- yield' b bondCleanPrice bondDayCountConvention Compounded bondCouponFrequency
-    Nothing 1e-8 100 >>= setValue bondSimpleQuote
+    repoSettlementDate 1e-8 100 >>= setValue bondSimpleQuote
   repoQuote <- simpleQuote repoRate >>= asQuote
   repoCurve <- flatForward repoSettlementDate repoQuote repoDayCountConvention
     repoCompounding repoCompoundFreq
@@ -74,8 +74,8 @@ run = do
 
   clP <- cleanPrice b
   dp <- dirtyPrice b
-  accr1 <- accruedAmount b $ Just repoSettlementDate
-  accr2 <- accruedAmount b $ Just repoDeliveryDate
+  accr1 <- accruedAmount b repoSettlementDate
+  accr2 <- accruedAmount b repoDeliveryDate
 
   fwd <- asForward bondFwd
   spotInc <- spotIncome fwd repoCurve
