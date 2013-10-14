@@ -41,8 +41,8 @@ interestRate = $(ffiCall 'interestRate) c_interestRate
 compoundFactor' :: InterestRate
   -> Day -- ^d1
   -> Day -- ^d2
-  -> Maybe Day -- ^refStart
-  -> Maybe Day -- ^refEnd
+  -> Day -- ^refStart
+  -> Day -- ^refEnd
   -> IO Double
 compoundFactor' = $(ffiCallX 'compoundFactor') c_compoundFactor'
 
@@ -63,8 +63,8 @@ foreign import ccall safe "ql.h qlInterestRateCompoundFactor"
 discountFactor' :: InterestRate
   -> Day -- ^d1
   -> Day -- ^d2
-  -> Maybe Day -- ^refStart
-  -> Maybe Day -- ^refEnd
+  -> Day -- ^refStart
+  -> Day -- ^refEnd
   -> IO Double
 discountFactor' = $(ffiCallX 'discountFactor') c_discountFactor'
 
@@ -89,8 +89,8 @@ equivalentRate' :: InterestRate
   -> Frequency -- ^freq
   -> Day -- ^d1
   -> Day -- ^d2
-  -> Maybe Day -- ^refStart
-  -> Maybe Day -- ^refEnd
+  -> Day -- ^refStart
+  -> Day -- ^refEnd
   -> IO InterestRate
 equivalentRate' = $(ffiCall 'equivalentRate') c_equivalentRate'
 
@@ -118,8 +118,8 @@ impliedRate' :: InterestRate
   -> Frequency -- ^freq
   -> Day -- ^d1
   -> Day -- ^d2
-  -> Maybe Day -- ^refStart
-  -> Maybe Day -- ^refEnd
+  -> Day -- ^refStart
+  -> Day -- ^refEnd
   -> IO InterestRate
 impliedRate' = $(ffiCall 'impliedRate') c_impliedRate'
 

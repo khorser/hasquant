@@ -24,7 +24,7 @@ void qlFreePricingEngine(QlPricingEngine *engine) {
 
 QlPricingEngine* qlDiscountingSwapEngine(QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, int settlementDate, int npvDate, char **e) {
   try {
-    return ret(new QlPricingEngine(alloc(new DiscountingSwapEngine(qlNullableHandle(arg(discountCurve)), qlOptBool(includeSettlementDateFlows), qlNullableDate(settlementDate), qlNullableDate(npvDate)))));
+    return ret(new QlPricingEngine(alloc(new DiscountingSwapEngine(Handle<YieldTermStructure>(*(arg(discountCurve))), qlOptBool(includeSettlementDateFlows), Date(settlementDate), Date(npvDate)))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }

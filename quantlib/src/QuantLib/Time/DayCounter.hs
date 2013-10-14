@@ -157,8 +157,8 @@ foreign import ccall safe "ql.h qlDayCounterDayCount"
 yearFraction :: DayCounter
   -> Day
   -> Day
-  -> Maybe Day -- ^refPeriodStart
-  -> Maybe Day -- ^refPeriodEnd
+  -> Day -- ^refPeriodStart
+  -> Day -- ^refPeriodEnd
   -> IO YearFraction
 yearFraction = $(ffiCallX 'yearFraction) c_yearFraction
 

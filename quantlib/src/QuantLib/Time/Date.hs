@@ -186,7 +186,7 @@ foreign import ccall safe "ql.h qlIMMCode"
 
 -- |returns the IMM date for the given IMM code (e.g. March 20th, 2013 for H3). /Warning/ It raises an exception if the input string is not an IMM code
 immDate :: String -- ^immCode
-  -> Maybe Day -- ^referenceDate
+  -> Day -- ^referenceDate
   -> IO Day
 immDate = $(ffiCallX 'immDate) c_date
 
@@ -215,7 +215,7 @@ foreign import ccall safe "ql.h qlIMMIsIMMdate"
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 nextIMMCode' :: String -- ^immCode
   -> Bool -- ^mainCycle
-  -> Maybe Day -- ^referenceDate
+  -> Day -- ^referenceDate
   -> IO String
 nextIMMCode' = $(ffiCallX 'nextIMMCode') c_nextCode'
 
@@ -224,7 +224,7 @@ foreign import ccall safe "ql.h qlIMMNextCode1"
 
 -- |next IMM code following the given date
 -- returns the IMM code for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-nextIMMCode :: Maybe Day -- ^d
+nextIMMCode :: Day -- ^d
   -> Bool -- ^mainCycle
   -> IO String
 nextIMMCode = $(ffiCallX 'nextIMMCode) c_nextCode
@@ -236,7 +236,7 @@ foreign import ccall safe "ql.h qlIMMNextCode"
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
 nextIMMDate' :: String -- ^immCode
   -> Bool -- ^mainCycle
-  -> Maybe Day -- ^referenceDate
+  -> Day -- ^referenceDate
   -> IO Day
 nextIMMDate' = $(ffiCallX 'nextIMMDate') c_nextDate'
 
@@ -245,7 +245,7 @@ foreign import ccall safe "ql.h qlIMMNextDate1"
 
 -- |next IMM date following the given date
 -- returns the 1st delivery date for next contract listed in the International Money Market section of the Chicago Mercantile Exchange.
-nextIMMDate :: Maybe Day -- ^d
+nextIMMDate :: Day -- ^d
   -> Bool -- ^mainCycle
   -> IO Day
 nextIMMDate = $(ffiCallX 'nextIMMDate) c_nextDate

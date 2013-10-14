@@ -80,7 +80,7 @@ char* qlIMMCode(int immDate, char **e) {
 }
 int qlIMMDate(char* immCode, int referenceDate, char **e) {
   try {
-    return (IMM::date(std::string(arg(immCode)), qlNullableDate(referenceDate))).serialNumber();
+    return (IMM::date(std::string(arg(immCode)), Date(referenceDate))).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -101,28 +101,28 @@ int qlIMMIsIMMdate(int d, int mainCycle, char **e) {
 }
 char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) {
   try {
-    return DUP(IMM::nextCode(std::string(arg(immCode)), mainCycle, qlNullableDate(referenceDate)).c_str());
+    return DUP(IMM::nextCode(std::string(arg(immCode)), mainCycle, Date(referenceDate)).c_str());
   } catch (std::exception& er) {
     return handleException<char*>(e, er);
   }
 }
 char* qlIMMNextCode(int d, int mainCycle, char **e) {
   try {
-    return DUP(IMM::nextCode(qlNullableDate(d), mainCycle).c_str());
+    return DUP(IMM::nextCode(Date(d), mainCycle).c_str());
   } catch (std::exception& er) {
     return handleException<char *>(e, er);
   }
 }
 int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
   try {
-    return (IMM::nextDate(std::string(arg(immCode)), mainCycle, qlNullableDate(referenceDate))).serialNumber();
+    return (IMM::nextDate(std::string(arg(immCode)), mainCycle, Date(referenceDate))).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
 int qlIMMNextDate(int d, int mainCycle, char **e) {
   try {
-    return IMM::nextDate(qlNullableDate(d), mainCycle).serialNumber();
+    return IMM::nextDate(Date(d), mainCycle).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }

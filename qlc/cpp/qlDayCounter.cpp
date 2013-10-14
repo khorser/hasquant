@@ -92,7 +92,7 @@ int qlDayCounterDayCount(DayCounter* o, int x0, int x1, char **e) {
 }
 double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e) {
   try {
-    return arg(o)->yearFraction(Date(x0), Date(x1), qlNullableDate(refPeriodStart), qlNullableDate(refPeriodEnd));
+    return arg(o)->yearFraction(Date(x0), Date(x1), Date(refPeriodStart), Date(refPeriodEnd));
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }

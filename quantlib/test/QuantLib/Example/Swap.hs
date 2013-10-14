@@ -63,7 +63,7 @@ run = do
     TS.fraRateHelper q m1 m2 (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
       zip fraQuotes fraTerms
 
-  imm1 <- nextIMMDate (Just settleDate) True
+  imm1 <- nextIMMDate settleDate True
   imms <- foldM nextIMM [imm1] (replicate (length futPrices-1) 1)
 
   futHelpers <- mapM (\(q, imm) ->
@@ -108,7 +108,7 @@ run = do
 
     nextIMM :: [Day] -> Integer -> IO [Day]
     nextIMM l inc = do
-      nextImm <- nextIMMDate (Just $ addDays inc (last l)) True
+      nextImm <- nextIMMDate (addDays inc $ last l) True
       return $ l ++ [nextImm]
 
     valuateSwap :: Day -> YieldTermStructure -> YieldTermStructure -> IO IterationResult
@@ -135,7 +135,8 @@ run = do
         cal ModifiedFollowing ModifiedFollowing Forward False Nothing Nothing
       fwd1Y5Y <- vanillaSwap Payer 1000000 fwdFixS 0.04 fixDC
         fwdFloatS eu6m 0.0 floatDC ModifiedFollowing
-      pricer <- discountingSwapEngine (Just d) Nothing Nothing Nothing
+      refDate <- asTermStructure d >>= TS.referenceDate
+      pricer <- discountingSwapEngine d False refDate refDate
 
       spotInstr <- asSwap spot5Y >>= asInstrument
       fwdInstr <- asSwap fwd1Y5Y >>= asInstrument
