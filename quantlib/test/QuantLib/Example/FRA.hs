@@ -41,7 +41,7 @@ data Result = Result [IterationResult] [IterationResult] deriving Show
 
 run :: IO Result
 run = do
-  setEvaluationDate $ Just todaysDate
+  setEvaluationDate todaysDate
   -- I didn't expose most inspector methods so can't retrieve Euribor3M properties here
   fraCalendar <- target
   settleDate <- advance fraCalendar todaysDate fixingDays Days Following False

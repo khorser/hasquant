@@ -176,11 +176,11 @@ test_evalDate = do
 
 test_nullEvalDate :: IO ()
 test_nullEvalDate = do
-  Settings.setEvaluationDate $ Just (december 29 2012)
+  Settings.setEvaluationDate (december 29 2012)
   t0 <- Settings.evaluationDate
   assertEqual t0 (fromGregorian 2012 12 29)
   t2 <- today
-  Settings.setEvaluationDate Nothing
+  Settings.resetEvaluationDate
   t1 <- Settings.evaluationDate
   assertEqual t1 t2
 

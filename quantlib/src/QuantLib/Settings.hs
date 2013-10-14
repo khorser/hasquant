@@ -42,7 +42,7 @@ evaluationDate :: IO Day
 evaluationDate = $(ffiCall 'evaluationDate) c_evaluationDate
 
 -- |sets the value of the Evaluation Date. QuantLibXL: qlSettingsSetEvaluationDate
-setEvaluationDate :: Maybe Day -> IO ()
+setEvaluationDate :: Day -> IO ()
 setEvaluationDate = $(ffiCallX 'setEvaluationDate) c_setEvaluationDate
 
 -- |returns the current value of the boolean which enforce the usage of historic
@@ -88,7 +88,7 @@ includeReferenceDateEvents = $(ffiCall 'includeReferenceDateEvents) c_includeRef
 foreign import ccall safe "ql.h qlSettingsIncludeReferenceDateEvents"
   c_includeReferenceDateEvents :: IO CInt
 
--- |Call this to reset the evaluation date to Date::todaysDate() and allow it to change at midnight. It is equivalent to setting the evaluation date to Date(). This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
+-- |Call this to reset the evaluation date to Date::todaysDate() and allow it to change at midnight. This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read.
 resetEvaluationDate :: IO ()
 resetEvaluationDate = $(ffiCallX 'resetEvaluationDate) c_resetEvaluationDate
 

@@ -91,7 +91,7 @@ run = do
                         Days
                         Following
                         False
-  setEvaluationDate (Just todaysDate)
+  setEvaluationDate todaysDate
   discDepoHelpers <- mapM
     (\(q, p) -> do
       tenor <- period p Months
