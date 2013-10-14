@@ -4,6 +4,7 @@ module QuantLib.Internal.Syntax
     ffiCall
   , ffiCallIO
   , ffiCallX
+  , ffiCallE
 
   , qlEnumsInfo
   )
@@ -164,7 +165,7 @@ data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
   | DayListR | YearFractionR | StringR
   deriving (Show, Eq)
 
-data RetVal = AtomicRV AtomicRet | IORV AtomicRet
+data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
   deriving (Show, Eq)
 
 tryForeignPtr :: Name -> Q (Either String Name)
@@ -212,6 +213,7 @@ compArgToRetVal t = fail $ "Unsupported compound type ret value: " ++ show t
 
 compToRetVal :: Type -> Q RetVal
 compToRetVal (AppT (ConT n1) t2) | n1 == ''IO = liftM IORV $ compArgToRetVal t2
+compToRetVal (AppT (AppT (ConT n1) (ConT n2)) t2) | n1 == ''Either && n2 == ''String = liftM IORV $ compArgToRetVal t2
 compToRetVal t = liftM AtomicRV $ compArgToRetVal t
 
 -- use WriterT to clean up this mess?
@@ -231,36 +233,42 @@ parseSignature t@(AppT _ _) = do
 parseSignature t = fail $ "Unsupported signature: " ++ show t
 
 ffiCall :: Name -> ExpQ
-ffiCall hn = ffiCallImpl False hn [|id|]
+ffiCall hn = ffiCallImpl False False hn [|id|]
 
 ffiCallIO :: Name -> ExpQ
-ffiCallIO hn = ffiCallImpl True hn [|id|]
+ffiCallIO hn = ffiCallImpl True False hn [|id|]
 
 ffiCallX :: Name -> ExpQ
-ffiCallX hn = ffiCallImpl False hn [|unmarshalExceptions|]
+ffiCallX hn = ffiCallImpl False False hn [|unmarshalExceptions|]
 
-ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
-ffiCallImpl io hFun extra = reify hFun >>= \r ->
+ffiCallE :: Name -> ExpQ
+ffiCallE hn = ffiCallImpl False True hn [|unmarshalExceptions|]
+
+ffiCallImpl :: Bool -> Bool -> Name -> ExpQ -> ExpQ
+ffiCallImpl stripIO purify hFun extra = reify hFun >>= \r ->
   case r of
-    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall io extra)
+    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall stripIO purify extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
-genFfiCall io extra aa r = do
+genFfiCall :: Bool -> Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
+genFfiCall stripIO purify extra aa r = do
   varNames <- mapM (\_ -> newName "x") aa
   cFunName <- newName "fun"
+  let p = if purify then [|purifyExceptions|] else [|id|]
   lamE (map varP (cFunName : varNames))
-       (if io
+       (if stripIO
          then [|unsafePerformIO $(nakedCall varNames cFunName)|]
-         else nakedCall varNames cFunName)
+         else [|$(p) $(nakedCall varNames cFunName)|])
   where
     ret :: RetVal
     ret =
-      case (r, io) of
+      case (r, stripIO) of
         (AtomicRV _, False) -> r
         (AtomicRV a, True) -> IORV a
         (IORV _, False) -> r
         (IORV _, True) -> error "Nested IO is not supported"
+        (EitherRV _, False) -> r
+        (EitherRV _, True) -> error "Either inside IO is not supported"
 
     finalCCall :: ExpQ -> ExpQ
     finalCCall c_call =
@@ -377,6 +385,7 @@ unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
 unmarshal (IORV StringR) = [|getString|]
 unmarshal (IORV r) = [|liftM $(unmarshalA r)|]
+unmarshal (EitherRV r) = [|liftM $(unmarshalA r)|]
 
 unmarshalA :: AtomicRet -> ExpQ
 unmarshalA IntR    = [|fromIntegral :: CInt -> Int|]

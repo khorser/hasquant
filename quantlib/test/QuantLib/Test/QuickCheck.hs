@@ -77,7 +77,7 @@ prop_invalidEvaluationDate (InvalidDay d) = monadicIO $ do
 prop_singleLegStartDate :: (Double, ValidDay) -> Property
 prop_singleLegStartDate (a, ValidDay d) = monadicIO $ do
   l <- run $ Leg.leg [(a, d)]
-  sd <- run$ Leg.startDate l
+  let (Right sd) = Leg.startDate l
   assert $ d == sd
 
 prop_legStartDate :: [(Double, ValidDay)] -> Property
@@ -85,7 +85,7 @@ prop_legStartDate flows =
   not (null flows)
   ==> monadicIO $ do
     l <- run $ Leg.leg f
-    sd <- run$ Leg.startDate l
+    let (Right sd) = Leg.startDate l
     assert $ minimum ds == sd
     where (a, d) = unzip flows
           ds = map validDay d

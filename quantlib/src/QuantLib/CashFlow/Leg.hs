@@ -74,8 +74,8 @@ leg :: [(Double, Day)] -- ^amounts and dates
 leg = $(ffiCall 'leg) c_leg
 
 -- |Returns the start (i.e. first accrual) date for the given Leg. QuantLibXL: qlLegStartDate
-startDate :: Leg -> IO Day
-startDate = $(ffiCallX 'startDate) c_legStartDate
+startDate :: Leg -> Either String Day
+startDate = $(ffiCallE 'startDate) c_legStartDate
 
 foreign import ccall safe "ql.h qlNextCashFlows"
   c_nextCashFlows :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO (Ptr CLeg)

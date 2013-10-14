@@ -139,9 +139,9 @@ unmarshalExceptions f =
          signalError err
        else return r
 
-purifyExceptions :: (Ptr CString -> IO a) -> Either String a
+purifyExceptions :: IO a -> Either String a
 purifyExceptions f = unsafePerformIO $
-  catch (liftM Right (unmarshalExceptions f))
+  catch (liftM Right f)
         (\(e :: Error) -> return $ Left (message e))
 
 

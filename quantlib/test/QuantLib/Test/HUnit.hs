@@ -6,7 +6,6 @@ where
 import Test.Framework
 import Test.HUnit.Lang
 
-import Control.Exception(catch)
 #if __GLASGOW_HASKELL__ < 706
 import Prelude hiding(catch)
 #endif
@@ -16,7 +15,6 @@ import Control.Arrow((&&&))
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
-import qualified QuantLib.Error as Error
 import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.InterestRate as InterestRate
 import qualified QuantLib.Settings as Settings
@@ -209,28 +207,28 @@ test_leapYears = assertEqual
 test_emptyLegStart :: IO ()
 test_emptyLegStart = do
   l <- Leg.leg []
-  catch (Leg.startDate l >> assertBool False)
-        (assertBool . not . null . Error.message)
+  let (Left m) = Leg.startDate l
+  assertBool (not $ null m)
 
 test_singleLegToday :: IO ()
 test_singleLegToday = do
   t <- today
   l <- Leg.leg [(100, t)]
-  sd <- Leg.startDate l
+  let (Right sd) = Leg.startDate l
   assertEqual sd t
 
 test_twoLegsUnsorted :: IO ()
 test_twoLegsUnsorted = do
   t <- today
   l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
-  sd <- Leg.startDate l
+  let (Right sd) = Leg.startDate l
   assertEqual sd (addDays (-10) t)
 
 test_threeLegsSorted :: IO ()
 test_threeLegsSorted = do
   t <- today
   l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
-  sd <- Leg.startDate l
+  let (Right sd) = Leg.startDate l
   assertEqual sd (addDays (-10) t)
 
 test_calAdjust :: IO ()
