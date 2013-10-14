@@ -145,7 +145,7 @@ foreign import ccall safe "ql.h qlCashFlowsAccrualDays"
 accrualEndDate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Day
+  -> IO (Maybe Day)
 accrualEndDate = $(ffiCallX 'accrualEndDate) c_accrualEndDate
 
 foreign import ccall safe "ql.h qlCashFlowsAccrualEndDate"
@@ -163,7 +163,7 @@ foreign import ccall safe "ql.h qlCashFlowsAccrualPeriod"
 accrualStartDate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlDate
-  -> IO Day
+  -> IO (Maybe Day)
 accrualStartDate = $(ffiCallX 'accrualStartDate) c_accrualStartDate
 
 foreign import ccall safe "ql.h qlCashFlowsAccrualStartDate"
@@ -347,7 +347,7 @@ foreign import ccall safe "ql.h qlCashFlowsNextCashFlowAmount"
 nextCashFlowDate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Day
+  -> IO (Maybe Day)
 nextCashFlowDate = $(ffiCallX 'nextCashFlowDate) c_nextCashFlowDate
 
 foreign import ccall safe "ql.h qlCashFlowsNextCashFlowDate"
@@ -462,7 +462,7 @@ foreign import ccall safe "ql.h qlCashFlowsPreviousCashFlowAmount"
 previousCashFlowDate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Day
+  -> IO (Maybe Day)
 previousCashFlowDate = $(ffiCallX 'previousCashFlowDate) c_previousCashFlowDate
 
 foreign import ccall safe "ql.h qlCashFlowsPreviousCashFlowDate"
@@ -480,7 +480,7 @@ foreign import ccall safe "ql.h qlCashFlowsPreviousCouponRate"
 referencePeriodEnd :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlDate
-  -> IO Day
+  -> IO (Maybe Day)
 referencePeriodEnd = $(ffiCallX 'referencePeriodEnd) c_referencePeriodEnd
 
 foreign import ccall safe "ql.h qlCashFlowsReferencePeriodEnd"
@@ -489,7 +489,7 @@ foreign import ccall safe "ql.h qlCashFlowsReferencePeriodEnd"
 referencePeriodStart :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlDate
-  -> IO Day
+  -> IO (Maybe Day)
 referencePeriodStart = $(ffiCallX 'referencePeriodStart) c_referencePeriodStart
 
 foreign import ccall safe "ql.h qlCashFlowsReferencePeriodStart"

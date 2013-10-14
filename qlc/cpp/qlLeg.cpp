@@ -99,7 +99,7 @@ int qlCashFlowsAccrualDays(Leg* leg, int includeSettlementDateFlows, int settlem
 }
 int qlCashFlowsAccrualEndDate(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e) {
   try {
-    return (CashFlows::accrualEndDate(*arg(leg), includeSettlementDateFlows, Date(settlementDate))).serialNumber();
+    return qlNullableDate(CashFlows::accrualEndDate(*arg(leg), includeSettlementDateFlows, Date(settlementDate)));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -113,7 +113,7 @@ double qlCashFlowsAccrualPeriod(Leg* leg, int includeSettlementDateFlows, int se
 }
 int qlCashFlowsAccrualStartDate(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e) {
   try {
-    return (CashFlows::accrualStartDate(*arg(leg), includeSettlementDateFlows, Date(settlDate))).serialNumber();
+    return qlNullableDate(CashFlows::accrualStartDate(*arg(leg), includeSettlementDateFlows, Date(settlDate)));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -225,7 +225,7 @@ double qlCashFlowsNextCashFlowAmount(Leg* leg, int includeSettlementDateFlows, i
 }
 int qlCashFlowsNextCashFlowDate(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e) {
   try {
-    return (CashFlows::nextCashFlowDate(*arg(leg), includeSettlementDateFlows, Date(settlementDate))).serialNumber();
+    return qlNullableDate(CashFlows::nextCashFlowDate(*arg(leg), includeSettlementDateFlows, Date(settlementDate)));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -288,7 +288,7 @@ double qlCashFlowsPreviousCashFlowAmount(Leg* leg, int includeSettlementDateFlow
 }
 int qlCashFlowsPreviousCashFlowDate(Leg* leg, int includeSettlementDateFlows, int settlementDate, char **e) {
   try {
-    return (CashFlows::previousCashFlowDate(*arg(leg), includeSettlementDateFlows, Date(settlementDate))).serialNumber();
+    return qlNullableDate(CashFlows::previousCashFlowDate(*arg(leg), includeSettlementDateFlows, Date(settlementDate)));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -302,14 +302,14 @@ double qlCashFlowsPreviousCouponRate(Leg* leg, int includeSettlementDateFlows, i
 }
 int qlCashFlowsReferencePeriodEnd(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e) {
   try {
-    return (CashFlows::referencePeriodEnd(*arg(leg), includeSettlementDateFlows, Date(settlDate))).serialNumber();
+    return qlNullableDate(CashFlows::referencePeriodEnd(*arg(leg), includeSettlementDateFlows, Date(settlDate)));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
 int qlCashFlowsReferencePeriodStart(Leg* leg, int includeSettlementDateFlows, int settlDate, char **e) {
   try {
-    return (CashFlows::referencePeriodStart(*arg(leg), includeSettlementDateFlows, Date(settlDate))).serialNumber();
+    return qlNullableDate(CashFlows::referencePeriodStart(*arg(leg), includeSettlementDateFlows, Date(settlDate)));
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
