@@ -2,8 +2,8 @@
 module QuantLib.Internal.Utils
   (
     signalError
-  , handleExceptions
-  , handleExceptions'
+  , unmarshalExceptions
+  , purifyExceptions
 
   , Finalizable(..)
   , Upcastable(..)
@@ -116,7 +116,7 @@ getArrayX :: (CArray a) => (Ptr CUInt -> Ptr CString -> IO (Ptr a)) -> IO [a]
 getArrayX f =
   alloca $
   \pcnt -> do
-    array <- handleExceptions (f pcnt)
+    array <- unmarshalExceptions (f pcnt)
     count <- peek pcnt
     buildArray count array
 
@@ -126,8 +126,8 @@ buildArray n p = do
   freeArray p
   return x
 
-handleExceptions :: (Ptr CString -> IO a) -> IO a
-handleExceptions f =
+unmarshalExceptions :: (Ptr CString -> IO a) -> IO a
+unmarshalExceptions f =
    with nullPtr $
      \errptr -> do
      r <- f errptr
@@ -139,9 +139,9 @@ handleExceptions f =
          signalError err
        else return r
 
-handleExceptions' :: (Ptr CString -> IO a) -> Either String a
-handleExceptions' f = unsafePerformIO $
-  catch (liftM Right (handleExceptions f))
+purifyExceptions :: (Ptr CString -> IO a) -> Either String a
+purifyExceptions f = unsafePerformIO $
+  catch (liftM Right (unmarshalExceptions f))
         (\(e :: Error) -> return $ Left (message e))
 
 
@@ -152,7 +152,7 @@ class Finalizable a where
 -- The function might signal an error
 construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
 construct f = do
-  o <- handleExceptions f
+  o <- unmarshalExceptions f
   if o == nullPtr
     then signalError "Foreign code did not signal an error but returned null pointer"
     else newForeignPtr finalize o

@@ -237,7 +237,7 @@ ffiCallIO :: Name -> ExpQ
 ffiCallIO hn = ffiCallImpl True hn [|id|]
 
 ffiCallX :: Name -> ExpQ
-ffiCallX hn = ffiCallImpl False hn [|handleExceptions|]
+ffiCallX hn = ffiCallImpl False hn [|unmarshalExceptions|]
 
 ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
 ffiCallImpl io hFun extra = reify hFun >>= \r ->
