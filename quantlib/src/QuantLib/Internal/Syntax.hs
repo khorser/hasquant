@@ -212,8 +212,10 @@ compArgToRetVal (TupleT 0) = return UnitR
 compArgToRetVal t = fail $ "Unsupported compound type ret value: " ++ show t
 
 compToRetVal :: Type -> Q RetVal
-compToRetVal (AppT (ConT n1) t2) | n1 == ''IO = liftM IORV $ compArgToRetVal t2
-compToRetVal (AppT (AppT (ConT n1) (ConT n2)) t2) | n1 == ''Either && n2 == ''String = liftM IORV $ compArgToRetVal t2
+compToRetVal (AppT (ConT n1) t2)
+  | n1 == ''IO = liftM IORV $ compArgToRetVal t2
+compToRetVal (AppT (AppT (ConT n1) (ConT n2)) t2)
+  | n1 == ''Either && n2 == ''String = liftM EitherRV $ compArgToRetVal t2
 compToRetVal t = liftM AtomicRV $ compArgToRetVal t
 
 -- use WriterT to clean up this mess?
@@ -233,44 +235,45 @@ parseSignature t@(AppT _ _) = do
 parseSignature t = fail $ "Unsupported signature: " ++ show t
 
 data IOAction = Straight | Pure | Unmarshal | Purify
+  deriving (Show, Eq)
 
 ffiCall :: Name -> ExpQ
-ffiCall hn = ffiCallImpl False False hn Straight
+ffiCall hn = ffiCallImpl hn Straight
 
 ffiCallPure :: Name -> ExpQ
-ffiCallPure hn = ffiCallImpl True False hn Pure
+ffiCallPure hn = ffiCallImpl hn Pure
 
 ffiCallX :: Name -> ExpQ
-ffiCallX hn = ffiCallImpl False False hn Unmarshal
+ffiCallX hn = ffiCallImpl hn Unmarshal
 
 ffiCallPureX :: Name -> ExpQ
-ffiCallPureX hn = ffiCallImpl False True hn Purify
+ffiCallPureX hn = ffiCallImpl hn Purify
 
-ffiCallImpl :: Bool -> Bool -> Name -> IOAction -> ExpQ
-ffiCallImpl stripIO purify hFun extra = reify hFun >>= \r ->
+ffiCallImpl :: Name -> IOAction -> ExpQ
+ffiCallImpl hFun extra = reify hFun >>= \r ->
   case r of
-    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall stripIO purify extra)
+    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Bool -> Bool -> IOAction -> [TopArg] -> RetVal -> ExpQ
-genFfiCall stripIO purify extra aa r = do
+genFfiCall :: IOAction -> [TopArg] -> RetVal -> ExpQ
+genFfiCall extra aa r = do
   varNames <- mapM (\_ -> newName "x") aa
   cFunName <- newName "fun"
-  let p = if purify then [|purifyExceptions|] else [|id|]
+  let p = if extra == Purify then [|purifyExceptions|] else [|id|]
   lamE (map varP (cFunName : varNames))
-       (if stripIO
+       (if extra == Pure
          then [|unsafePerformIO $(nakedCall varNames cFunName)|]
          else [|$(p) $(nakedCall varNames cFunName)|])
   where
     ret :: RetVal
     ret =
-      case (r, stripIO) of
-        (AtomicRV _, False) -> r
-        (AtomicRV a, True) -> IORV a
-        (IORV _, False) -> r
-        (IORV _, True) -> error "Nested IO is not supported"
-        (EitherRV _, False) -> r
-        (EitherRV _, True) -> error "Either inside IO is not supported"
+      case (r, extra) of
+        (AtomicRV _, Straight) -> r
+        (AtomicRV a, Pure) -> IORV a
+        (IORV _, Straight) -> r
+        (IORV _, Unmarshal) -> r
+        (EitherRV _, Purify) -> r
+        _ -> error $ "Return type " ++ show r ++ " incompatible with call type " ++ show extra
 
     finalCCall :: ExpQ -> ExpQ
     finalCCall c_call =
