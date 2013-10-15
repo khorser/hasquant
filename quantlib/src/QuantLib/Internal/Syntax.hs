@@ -10,6 +10,7 @@ module QuantLib.Internal.Syntax
   )
 where
 
+import Data.Functor((<$>))
 import Control.Monad(liftM, liftM2)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
@@ -144,7 +145,7 @@ topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe =
           _ -> tryForeignPtr n >>=
                 either (\x -> fail $ "Error parsing optional top arg: " ++ x)
                   (\_ -> return OptForeignPtrA)
-topArgType (AppT ListT (ConT n)) = liftM ListA (nestedNameToTop n)
+topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
           (AppT
@@ -213,10 +214,10 @@ compArgToRetVal t = fail $ "Unsupported compound type ret value: " ++ show t
 
 compToRetVal :: Type -> Q RetVal
 compToRetVal (AppT (ConT n1) t2)
-  | n1 == ''IO = liftM IORV $ compArgToRetVal t2
+  | n1 == ''IO = IORV <$> compArgToRetVal t2
 compToRetVal (AppT (AppT (ConT n1) (ConT n2)) t2)
-  | n1 == ''Either && n2 == ''String = liftM EitherRV $ compArgToRetVal t2
-compToRetVal t = liftM AtomicRV $ compArgToRetVal t
+  | n1 == ''Either && n2 == ''String = EitherRV <$> compArgToRetVal t2
+compToRetVal t = AtomicRV <$> compArgToRetVal t
 
 -- use WriterT to clean up this mess?
 parseSignature :: Type -> Q ([TopArg], RetVal)

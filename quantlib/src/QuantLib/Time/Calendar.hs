@@ -83,7 +83,7 @@ module QuantLib.Time.Calendar
   )
 where
 
-import Control.Monad(liftM)
+import Data.Functor((<$>))
 import Foreign.Marshal.Utils(fromBool)
 
 import QuantLib.Internal.Date
@@ -342,9 +342,9 @@ holidays :: Calendar -- ^calendar
   -> Bool -- ^includeWeekEnds
   -> IO [Day]
 holidays c from to w =
-  liftM (map fromQlDate) $
-  withObject c $
-  \cc -> getArrayX $ c_holidayList cc (toQlDate from) (toQlDate to) (fromBool w)
+  map fromQlDate <$>
+    withObject c
+      (\cc -> getArrayX $ c_holidayList cc (toQlDate from) (toQlDate to) (fromBool w))
 
 foreign import ccall safe "ql.h qlCalendarHolidayList"
   c_holidayList :: Ptr CCalendar -> CDate -> CDate -> CInt -> Ptr CUInt -> Ptr CString -> IO (Ptr CDate)

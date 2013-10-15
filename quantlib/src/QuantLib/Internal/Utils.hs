@@ -36,7 +36,7 @@ module QuantLib.Internal.Utils
 where
 
 import Control.Exception(throw, catch)
-import Control.Monad(liftM)
+import Data.Functor((<$>))
 import Data.Word(Word)
 
 import Foreign.C.String
@@ -141,7 +141,7 @@ unmarshalExceptions f =
 
 purifyExceptions :: IO a -> Either String a
 purifyExceptions f = unsafePerformIO $
-  catch (liftM Right f)
+  catch (Right <$> f)
         (\(e :: Error) -> return $ Left (message e))
 
 

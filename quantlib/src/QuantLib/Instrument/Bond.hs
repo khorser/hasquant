@@ -64,7 +64,7 @@ module QuantLib.Instrument.Bond
 
 where
 
-import Control.Monad(liftM)
+import Data.Functor((<$>))
 
 import QuantLib.Compounding
 import QuantLib.Time.Frequency
@@ -364,8 +364,7 @@ foreign import ccall safe "ql.h qlBondIsTradable"
 
 notionals :: Bond -> IO [Double]
 notionals b =
-  liftM (map realToFrac)
-  (withObject b $ getArrayX . c_notionals)
+  map realToFrac <$> withObject b (getArrayX . c_notionals)
 
 foreign import ccall safe "ql.h qlBondNotionals"
   c_notionals :: Ptr CBond -> Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)
