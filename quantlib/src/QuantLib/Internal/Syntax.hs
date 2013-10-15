@@ -232,25 +232,27 @@ parseSignature t@(AppT _ _) = do
     return ([], r)
 parseSignature t = fail $ "Unsupported signature: " ++ show t
 
+data IOAction = Straight | Pure | Unmarshal | Purify
+
 ffiCall :: Name -> ExpQ
-ffiCall hn = ffiCallImpl False False hn [|id|]
+ffiCall hn = ffiCallImpl False False hn Straight
 
 ffiCallPure :: Name -> ExpQ
-ffiCallPure hn = ffiCallImpl True False hn [|id|]
+ffiCallPure hn = ffiCallImpl True False hn Pure
 
 ffiCallX :: Name -> ExpQ
-ffiCallX hn = ffiCallImpl False False hn [|unmarshalExceptions|]
+ffiCallX hn = ffiCallImpl False False hn Unmarshal
 
 ffiCallPureX :: Name -> ExpQ
-ffiCallPureX hn = ffiCallImpl False True hn [|unmarshalExceptions|]
+ffiCallPureX hn = ffiCallImpl False True hn Purify
 
-ffiCallImpl :: Bool -> Bool -> Name -> ExpQ -> ExpQ
+ffiCallImpl :: Bool -> Bool -> Name -> IOAction -> ExpQ
 ffiCallImpl stripIO purify hFun extra = reify hFun >>= \r ->
   case r of
     VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall stripIO purify extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Bool -> Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
+genFfiCall :: Bool -> Bool -> IOAction -> [TopArg] -> RetVal -> ExpQ
 genFfiCall stripIO purify extra aa r = do
   varNames <- mapM (\_ -> newName "x") aa
   cFunName <- newName "fun"
@@ -274,10 +276,15 @@ genFfiCall stripIO purify extra aa r = do
     finalCCall c_call =
       case r of
         (AtomicRV ForeignPtrR) -> error "IO is required to return ForeignPtr"
-        (IORV ForeignPtrR) -> [|construct $(appE extra c_call)|]
-        -- last argument is pointer to the length of the returned array
-        (AtomicRV DayListR) -> [|getArray $(appE extra c_call)|]
-        _ -> appE extra c_call
+        (IORV ForeignPtrR) -> [|construct $(appE extra' c_call)|]
+        -- last argument is a pointer to the length of the returned array
+        (AtomicRV DayListR) -> [|getArray $(appE extra' c_call)|]
+        _ -> appE extra' c_call
+        where extra' = postCall extra
+              postCall Straight = [|id|]
+              postCall Pure = [|id|]
+              postCall Unmarshal = [|unmarshalExceptions|]
+              postCall Purify = [|unmarshalExceptions|]
 
     nakedCall :: [Name] -> Name -> ExpQ
     nakedCall varNames cFunName = genFfiCallImpl (zip aa (map varE varNames)) (varE cFunName)
