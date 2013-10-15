@@ -220,7 +220,7 @@ zar = constructNamed "ZAR"
 
 -- |ISO 4217 three-letter code, e.g, "USD".
 code :: Currency -> String
-code = $(ffiCallIO 'code) c_code
+code = $(ffiCallPure 'code) c_code
 
 foreign import ccall safe "ql.h qlCurrencyCode"
   c_code :: Ptr CCurrency -> IO CString
@@ -228,35 +228,35 @@ foreign import ccall safe "ql.h qlCurrencyCode"
 -- |output format
 -- The format will be fed three positional parameters, namely, value, code, and symbol, in this order.
 format :: Currency -> String
-format = $(ffiCallIO 'format) c_format
+format = $(ffiCallPure 'format) c_format
 
 foreign import ccall safe "ql.h qlCurrencyFormat"
   c_format :: Ptr CCurrency -> IO CString
 
 -- |number of fractionary parts in a unit, e.g, 100
 fractionsPerUnit :: Currency -> Int
-fractionsPerUnit = $(ffiCallIO 'fractionsPerUnit) c_fractionsPerUnit
+fractionsPerUnit = $(ffiCallPure 'fractionsPerUnit) c_fractionsPerUnit
 
 foreign import ccall safe "ql.h qlCurrencyFractionsPerUnit"
   c_fractionsPerUnit :: Ptr CCurrency -> IO CInt
 
 -- |fraction symbol, e.g, "¢"
 fractionSymbol :: Currency -> String
-fractionSymbol = $(ffiCallIO 'fractionSymbol) c_fractionSymbol
+fractionSymbol = $(ffiCallPure 'fractionSymbol) c_fractionSymbol
 
 foreign import ccall safe "ql.h qlCurrencyFractionSymbol"
   c_fractionSymbol :: Ptr CCurrency -> IO CString
 
 -- |ISO 4217 numeric code, e.g, "840".
 numericCode :: Currency -> Int
-numericCode = $(ffiCallIO 'numericCode) c_numericCode
+numericCode = $(ffiCallPure 'numericCode) c_numericCode
 
 foreign import ccall safe "ql.h qlCurrencyNumericCode"
   c_numericCode :: Ptr CCurrency -> IO CInt
 
 -- |symbol, e.g, "$"
 symbol :: Currency -> String
-symbol = $(ffiCallIO 'symbol) c_symbol
+symbol = $(ffiCallPure 'symbol) c_symbol
 
 foreign import ccall safe "ql.h qlCurrencySymbol"
   c_symbol :: Ptr CCurrency -> IO CString

@@ -2,9 +2,9 @@
 module QuantLib.Internal.Syntax
   (
     ffiCall
-  , ffiCallIO
+  , ffiCallPure
   , ffiCallX
-  , ffiCallE
+  , ffiCallPureX
 
   , qlEnumsInfo
   )
@@ -235,14 +235,14 @@ parseSignature t = fail $ "Unsupported signature: " ++ show t
 ffiCall :: Name -> ExpQ
 ffiCall hn = ffiCallImpl False False hn [|id|]
 
-ffiCallIO :: Name -> ExpQ
-ffiCallIO hn = ffiCallImpl True False hn [|id|]
+ffiCallPure :: Name -> ExpQ
+ffiCallPure hn = ffiCallImpl True False hn [|id|]
 
 ffiCallX :: Name -> ExpQ
 ffiCallX hn = ffiCallImpl False False hn [|unmarshalExceptions|]
 
-ffiCallE :: Name -> ExpQ
-ffiCallE hn = ffiCallImpl False True hn [|unmarshalExceptions|]
+ffiCallPureX :: Name -> ExpQ
+ffiCallPureX hn = ffiCallImpl False True hn [|unmarshalExceptions|]
 
 ffiCallImpl :: Bool -> Bool -> Name -> ExpQ -> ExpQ
 ffiCallImpl stripIO purify hFun extra = reify hFun >>= \r ->

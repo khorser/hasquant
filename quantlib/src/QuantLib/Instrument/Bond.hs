@@ -110,7 +110,7 @@ foreign import ccall safe "ql.h qlBondMaturityDate"
 
 -- |Returns the maturity date of the bond. QuantLib: qlBondMaturityDate
 maturityDate :: Bond -> Maybe Day
-maturityDate = $(ffiCallIO 'maturityDate) c_maturityDate
+maturityDate = $(ffiCallPure 'maturityDate) c_maturityDate
 --- XXX assuming bonds are immutable, any exceptions possible?
 
 foreign import ccall safe "ql.h qlFixedRateBond"
