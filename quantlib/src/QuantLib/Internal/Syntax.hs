@@ -260,12 +260,12 @@ genFfiCall :: IOAction -> [TopArg] -> RetVal -> ExpQ
 genFfiCall extra aa r = do
   varNames <- mapM (\_ -> newName "x") aa
   cFunName <- newName "fun"
-  let p = if extra == Purify then [|purifyExceptions|] else [|id|]
-  lamE (map varP (cFunName : varNames))
-       (if extra == Pure
-         then [|unsafePerformIO $(nakedCall varNames cFunName)|]
-         else [|$(p) $(nakedCall varNames cFunName)|])
+  lamE (map varP (cFunName : varNames)) [|$(call varNames cFunName extra)|]
   where
+    call varNames cFunName Pure   = [|unsafePerformIO $(nakedCall varNames cFunName)|]
+    call varNames cFunName Purify = [|purifyExceptions $(nakedCall varNames cFunName)|]
+    call varNames cFunName _      = [|$(nakedCall varNames cFunName)|]
+
     ret :: RetVal
     ret =
       case (r, extra) of
