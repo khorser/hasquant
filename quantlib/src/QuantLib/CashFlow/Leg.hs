@@ -105,8 +105,8 @@ foreign import ccall safe "ql.h qlLegCashFlows"
 cashFlows :: Leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO [(Double, Day, Bool)] -- ^amount, date, hasOccurred
-cashFlows l inc d =
+  -> Either String [(Double, Day, Bool)] -- ^amount, date, hasOccurred
+cashFlows l inc d = purifyExceptions $
   withObject l $
   \ll -> alloca $
     \pam -> alloca $
@@ -126,8 +126,8 @@ duration :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO YearFraction
-duration = $(ffiCallX 'duration) c_duration
+  -> Either String YearFraction
+duration = $(ffiCallPureX 'duration) c_duration
 
 foreign import ccall safe "ql.h qlCashFlowsDuration"
   c_duration :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CYearFraction
@@ -135,18 +135,17 @@ foreign import ccall safe "ql.h qlCashFlowsDuration"
 accrualDays :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Int
-accrualDays = $(ffiCallX 'accrualDays) c_accrualDays
+  -> Either String Int
+accrualDays = $(ffiCallPureX 'accrualDays) c_accrualDays
 
 foreign import ccall safe "ql.h qlCashFlowsAccrualDays"
   c_accrualDays :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CInt
 
-
 accrualEndDate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO (Maybe Day)
-accrualEndDate = $(ffiCallX 'accrualEndDate) c_accrualEndDate
+  -> Either String (Maybe Day)
+accrualEndDate = $(ffiCallPureX 'accrualEndDate) c_accrualEndDate
 
 foreign import ccall safe "ql.h qlCashFlowsAccrualEndDate"
   c_accrualEndDate :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDate
@@ -154,8 +153,8 @@ foreign import ccall safe "ql.h qlCashFlowsAccrualEndDate"
 accrualPeriod :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO YearFraction
-accrualPeriod = $(ffiCallX 'accrualPeriod) c_accrualPeriod
+  -> Either String YearFraction
+accrualPeriod = $(ffiCallPureX 'accrualPeriod) c_accrualPeriod
 
 foreign import ccall safe "ql.h qlCashFlowsAccrualPeriod"
   c_accrualPeriod :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CYearFraction
@@ -163,8 +162,8 @@ foreign import ccall safe "ql.h qlCashFlowsAccrualPeriod"
 accrualStartDate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlDate
-  -> IO (Maybe Day)
-accrualStartDate = $(ffiCallX 'accrualStartDate) c_accrualStartDate
+  -> Either String (Maybe Day)
+accrualStartDate = $(ffiCallPureX 'accrualStartDate) c_accrualStartDate
 
 foreign import ccall safe "ql.h qlCashFlowsAccrualStartDate"
   c_accrualStartDate :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDate
@@ -172,8 +171,8 @@ foreign import ccall safe "ql.h qlCashFlowsAccrualStartDate"
 accruedAmount :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Double
-accruedAmount = $(ffiCallX 'accruedAmount) c_accruedAmount
+  -> Either String Double
+accruedAmount = $(ffiCallPureX 'accruedAmount) c_accruedAmount
 
 foreign import ccall safe "ql.h qlCashFlowsAccruedAmount"
   c_accruedAmount :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -181,8 +180,8 @@ foreign import ccall safe "ql.h qlCashFlowsAccruedAmount"
 accruedDays :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Int
-accruedDays = $(ffiCallX 'accruedDays) c_accruedDays
+  -> Either String Int
+accruedDays = $(ffiCallPureX 'accruedDays) c_accruedDays
 
 foreign import ccall safe "ql.h qlCashFlowsAccruedDays"
   c_accruedDays :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CInt
@@ -190,8 +189,8 @@ foreign import ccall safe "ql.h qlCashFlowsAccruedDays"
 accruedPeriod :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO YearFraction
-accruedPeriod = $(ffiCallX 'accruedPeriod) c_accruedPeriod
+  -> Either String YearFraction
+accruedPeriod = $(ffiCallPureX 'accruedPeriod) c_accruedPeriod
 
 foreign import ccall safe "ql.h qlCashFlowsAccruedPeriod"
   c_accruedPeriod :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CYearFraction
@@ -204,8 +203,8 @@ atmRate :: Leg -- ^leg
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> Double -- ^npv
-  -> IO Double
-atmRate = $(ffiCallX 'atmRate) c_atmRate
+  -> Either String Double
+atmRate = $(ffiCallPureX 'atmRate) c_atmRate
 
 foreign import ccall safe "ql.h qlCashFlowsAtmRate"
   c_atmRate :: Ptr CLeg -> Ptr CYieldTermStructure -> CInt -> CDate -> CDate -> CDouble -> Ptr CString -> IO CDouble
@@ -218,8 +217,8 @@ basisPointValue' :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-basisPointValue' = $(ffiCallX 'basisPointValue') c_basisPointValue'
+  -> Either String Double
+basisPointValue' = $(ffiCallPureX 'basisPointValue') c_basisPointValue'
 
 foreign import ccall safe "ql.h qlCashFlowsBasisPointValue1"
   c_basisPointValue' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -231,8 +230,8 @@ basisPointValue :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-basisPointValue = $(ffiCallX 'basisPointValue) c_basisPointValue
+  -> Either String Double
+basisPointValue = $(ffiCallPureX 'basisPointValue) c_basisPointValue
 
 foreign import ccall safe "ql.h qlCashFlowsBasisPointValue"
   c_basisPointValue :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -244,8 +243,8 @@ bps' :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-bps' = $(ffiCallX 'bps') c_bps'
+  -> Either String Double
+bps' = $(ffiCallPureX 'bps') c_bps'
 
 foreign import ccall safe "ql.h qlCashFlowsBps1"
   c_bps' :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -258,8 +257,8 @@ bps'' :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-bps'' = $(ffiCallX 'bps'') c_bps''
+  -> Either String Double
+bps'' = $(ffiCallPureX 'bps'') c_bps''
 
 foreign import ccall safe "ql.h qlCashFlowsBps2"
   c_bps'' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -285,8 +284,8 @@ convexity' :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-convexity' = $(ffiCallX 'convexity') c_convexity'
+  -> Either String Double
+convexity' = $(ffiCallPureX 'convexity') c_convexity'
 
 foreign import ccall safe "ql.h qlCashFlowsConvexity1"
   c_convexity' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -298,8 +297,8 @@ convexity :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-convexity = $(ffiCallX 'convexity) c_convexity
+  -> Either String Double
+convexity = $(ffiCallPureX 'convexity) c_convexity
 
 foreign import ccall safe "ql.h qlCashFlowsConvexity"
   c_convexity :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -313,8 +312,8 @@ duration' :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO YearFraction
-duration' = $(ffiCallX 'duration') c_duration'
+  -> Either String YearFraction
+duration' = $(ffiCallPureX 'duration') c_duration'
 
 foreign import ccall safe "ql.h qlCashFlowsDuration1"
   c_duration' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CYearFraction
@@ -322,15 +321,15 @@ foreign import ccall safe "ql.h qlCashFlowsDuration1"
 isExpired :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Bool
-isExpired = $(ffiCallX 'isExpired) c_isExpired
+  -> Either String Bool
+isExpired = $(ffiCallPureX 'isExpired) c_isExpired
 
 foreign import ccall safe "ql.h qlCashFlowsIsExpired"
   c_isExpired :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CInt
 
 maturityDate :: Leg -- ^leg
-  -> IO Day
-maturityDate = $(ffiCallX 'maturityDate) c_maturityDate
+  -> Either String Day
+maturityDate = $(ffiCallPureX 'maturityDate) c_maturityDate
 
 foreign import ccall safe "ql.h qlCashFlowsMaturityDate"
   c_maturityDate :: Ptr CLeg -> Ptr CString -> IO CDate
@@ -338,8 +337,8 @@ foreign import ccall safe "ql.h qlCashFlowsMaturityDate"
 nextCashFlowAmount :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Double
-nextCashFlowAmount = $(ffiCallX 'nextCashFlowAmount) c_nextCashFlowAmount
+  -> Either String Double
+nextCashFlowAmount = $(ffiCallPureX 'nextCashFlowAmount) c_nextCashFlowAmount
 
 foreign import ccall safe "ql.h qlCashFlowsNextCashFlowAmount"
   c_nextCashFlowAmount :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -347,8 +346,8 @@ foreign import ccall safe "ql.h qlCashFlowsNextCashFlowAmount"
 nextCashFlowDate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO (Maybe Day)
-nextCashFlowDate = $(ffiCallX 'nextCashFlowDate) c_nextCashFlowDate
+  -> Either String (Maybe Day)
+nextCashFlowDate = $(ffiCallPureX 'nextCashFlowDate) c_nextCashFlowDate
 
 foreign import ccall safe "ql.h qlCashFlowsNextCashFlowDate"
   c_nextCashFlowDate :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDate
@@ -356,8 +355,8 @@ foreign import ccall safe "ql.h qlCashFlowsNextCashFlowDate"
 nextCouponRate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Double
-nextCouponRate = $(ffiCallX 'nextCouponRate) c_nextCouponRate
+  -> Either String Double
+nextCouponRate = $(ffiCallPureX 'nextCouponRate) c_nextCouponRate
 
 foreign import ccall safe "ql.h qlCashFlowsNextCouponRate"
   c_nextCouponRate :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -365,8 +364,8 @@ foreign import ccall safe "ql.h qlCashFlowsNextCouponRate"
 nominal :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlDate
-  -> IO Double
-nominal = $(ffiCallX 'nominal) c_nominal
+  -> Either String Double
+nominal = $(ffiCallPureX 'nominal) c_nominal
 
 foreign import ccall safe "ql.h qlCashFlowsNominal"
   c_nominal :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -378,8 +377,8 @@ npv' :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-npv' = $(ffiCallX 'npv') c_npv'
+  -> Either String Double
+npv' = $(ffiCallPureX 'npv') c_npv'
 
 foreign import ccall safe "ql.h qlCashFlowsNpv1"
   c_npv' :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -392,8 +391,8 @@ npv'' :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-npv'' = $(ffiCallX 'npv'') c_npv''
+  -> Either String Double
+npv'' = $(ffiCallPureX 'npv'') c_npv''
 
 foreign import ccall safe "ql.h qlCashFlowsNpv2"
   c_npv'' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -453,8 +452,8 @@ foreign import ccall safe "ql.h qlCashFlowsNpvbps"
 previousCashFlowAmount :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Double
-previousCashFlowAmount = $(ffiCallX 'previousCashFlowAmount) c_previousCashFlowAmount
+  -> Either String Double
+previousCashFlowAmount = $(ffiCallPureX 'previousCashFlowAmount) c_previousCashFlowAmount
 
 foreign import ccall safe "ql.h qlCashFlowsPreviousCashFlowAmount"
   c_previousCashFlowAmount :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -462,8 +461,8 @@ foreign import ccall safe "ql.h qlCashFlowsPreviousCashFlowAmount"
 previousCashFlowDate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO (Maybe Day)
-previousCashFlowDate = $(ffiCallX 'previousCashFlowDate) c_previousCashFlowDate
+  -> Either String (Maybe Day)
+previousCashFlowDate = $(ffiCallPureX 'previousCashFlowDate) c_previousCashFlowDate
 
 foreign import ccall safe "ql.h qlCashFlowsPreviousCashFlowDate"
   c_previousCashFlowDate :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDate
@@ -471,8 +470,8 @@ foreign import ccall safe "ql.h qlCashFlowsPreviousCashFlowDate"
 previousCouponRate :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
-  -> IO Double
-previousCouponRate = $(ffiCallX 'previousCouponRate) c_previousCouponRate
+  -> Either String Double
+previousCouponRate = $(ffiCallPureX 'previousCouponRate) c_previousCouponRate
 
 foreign import ccall safe "ql.h qlCashFlowsPreviousCouponRate"
   c_previousCouponRate :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -480,8 +479,8 @@ foreign import ccall safe "ql.h qlCashFlowsPreviousCouponRate"
 referencePeriodEnd :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlDate
-  -> IO (Maybe Day)
-referencePeriodEnd = $(ffiCallX 'referencePeriodEnd) c_referencePeriodEnd
+  -> Either String (Maybe Day)
+referencePeriodEnd = $(ffiCallPureX 'referencePeriodEnd) c_referencePeriodEnd
 
 foreign import ccall safe "ql.h qlCashFlowsReferencePeriodEnd"
   c_referencePeriodEnd :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDate
@@ -489,8 +488,8 @@ foreign import ccall safe "ql.h qlCashFlowsReferencePeriodEnd"
 referencePeriodStart :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlDate
-  -> IO (Maybe Day)
-referencePeriodStart = $(ffiCallX 'referencePeriodStart) c_referencePeriodStart
+  -> Either String (Maybe Day)
+referencePeriodStart = $(ffiCallPureX 'referencePeriodStart) c_referencePeriodStart
 
 foreign import ccall safe "ql.h qlCashFlowsReferencePeriodStart"
   c_referencePeriodStart :: Ptr CLeg -> CInt -> CDate -> Ptr CString -> IO CDate
@@ -508,8 +507,8 @@ yield :: Leg -- ^leg
   -> Double -- ^accuracy
   -> Word -- ^maxIterations
   -> Double -- ^guess
-  -> IO Double
-yield = $(ffiCallX 'yield) c_yield
+  -> Either String Double
+yield = $(ffiCallPureX 'yield) c_yield
 
 foreign import ccall safe "ql.h qlCashFlowsYield"
   c_yield :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
@@ -522,8 +521,8 @@ yieldValueBasisPoint' :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-yieldValueBasisPoint' = $(ffiCallX 'yieldValueBasisPoint') c_yieldValueBasisPoint'
+  -> Either String Double
+yieldValueBasisPoint' = $(ffiCallPureX 'yieldValueBasisPoint') c_yieldValueBasisPoint'
 
 foreign import ccall safe "ql.h qlCashFlowsYieldValueBasisPoint1"
   c_yieldValueBasisPoint' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -535,8 +534,8 @@ yieldValueBasisPoint :: Leg -- ^leg
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
-  -> IO Double
-yieldValueBasisPoint = $(ffiCallX 'yieldValueBasisPoint) c_yieldValueBasisPoint
+  -> Either String Double
+yieldValueBasisPoint = $(ffiCallPureX 'yieldValueBasisPoint) c_yieldValueBasisPoint
 
 foreign import ccall safe "ql.h qlCashFlowsYieldValueBasisPoint"
   c_yieldValueBasisPoint :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble

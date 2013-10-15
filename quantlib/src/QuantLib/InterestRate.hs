@@ -142,7 +142,6 @@ foreign import ccall safe "ql.h qlInterestRateImpliedRate"
 
 rate :: InterestRate -> Double
 rate = $(ffiCallPure 'rate) c_rate
--- XXX assuming rates are immutable
 
 foreign import ccall safe "ql.h qlInterestRateRate"
   c_rate :: Ptr CInterestRate -> IO CDouble
