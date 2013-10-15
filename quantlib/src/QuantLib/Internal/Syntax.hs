@@ -280,15 +280,15 @@ genFfiCall extra aa r = do
     finalCCall c_call =
       case r of
         (AtomicRV ForeignPtrR) -> error "IO is required to return ForeignPtr"
-        (IORV ForeignPtrR) -> [|construct $(appE extra' c_call)|]
+        (IORV ForeignPtrR) -> [|construct $(appE (postCall extra) c_call)|]
         -- last argument is a pointer to the length of the returned array
-        (AtomicRV DayListR) -> [|getArray $(appE extra' c_call)|]
-        _ -> appE extra' c_call
-        where extra' = postCall extra
-              postCall Straight = [|id|]
-              postCall Pure = [|id|]
-              postCall Unmarshal = [|unmarshalExceptions|]
-              postCall Purify = [|unmarshalExceptions|]
+        (AtomicRV DayListR) -> [|getArray $(appE (postCall extra) c_call)|]
+        _ -> appE (postCall extra) c_call
+
+    postCall Straight = [|id|]
+    postCall Pure = [|id|]
+    postCall Unmarshal = [|unmarshalExceptions|]
+    postCall Purify = [|unmarshalExceptions|]
 
     nakedCall :: [Name] -> Name -> ExpQ
     nakedCall varNames cFunName = genFfiCallImpl (zip aa (map varE varNames)) (varE cFunName)
