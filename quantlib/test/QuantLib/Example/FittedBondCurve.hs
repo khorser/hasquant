@@ -57,9 +57,9 @@ run = do
   (ts00, curves) <- step3 newtod dc cal newBondSettle iA iB
   mapM_ (\(price, q, i) -> do
       b <- underlying i
-      ytm <- yield'' b price dc Compounded Annual newtod 1e-10 100 0.05
-      dur <- duration' b ytm dc Compounded Annual Modified newtod
-      let dp = -dur * price * 5 / 10000
+      let (Right ytm) = yield'' b price dc Compounded Annual newtod 1e-10 100 0.05
+          (Right dur) = duration' b ytm dc Compounded Annual Modified newtod
+          dp = -dur * price * 5 / 10000
       setValue q (price + dp)) $
         zip3 (drop 1 cleanPrices) (drop 1 cleanQuotes) iA
   printRates ts00 dc newBondSettle newtod curves iA
@@ -98,7 +98,7 @@ run = do
         \h -> do
           bcfs <- underlying h >>= cashFlows
           let (Right cfs) = CF.cashFlows bcfs False bondSettle
-          let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
+              ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
           _ <- yearFraction dc tod (last ds) tod (last ds) >>= printf "Tenor %5.2fY: "
           parRate ts0 (bondSettle:ds) dc
           forM_ curves $

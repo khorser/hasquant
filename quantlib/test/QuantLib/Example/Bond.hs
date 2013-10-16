@@ -8,6 +8,7 @@ where
 import Control.Applicative
 import Control.Monad(join, (>=>))
 
+import Data.Either(rights)
 import Data.List(zip4)
 import Data.Maybe(fromJust)
 import Data.Time.Calendar(Day, fromGregorian)
@@ -54,13 +55,13 @@ data Result = Result
   , bpsR :: Double
   }
 
-listToTuple :: [a] -> (a, a)
+listToTuple :: Show a => [a] -> (a, a)
 listToTuple [x, y] = (x, y)
-listToTuple _ = error "Invalid list"
+listToTuple l = error $ "Not a 2 element list: " ++ show l
 
-listToTriple :: [a] -> (a, a, a)
+listToTriple :: Show a => [a] -> (a, a, a)
 listToTriple [x, y, z] = (x, y, z)
-listToTriple _ = error "Invalid list"
+listToTriple l = error $ "Not a 3 element list: " ++ show l
 
 (<-*>) :: (Applicative m, Monad m) => m (a -> m b) -> m a -> m b
 (<-*>) f x = join $ f <*> x
@@ -235,20 +236,25 @@ run = do
 
   bCleanPrice <- mapM cleanPrice allBonds
   bDirtyPrice <- mapM dirtyPrice allBonds
-  bAccruedAmount <- mapM (`accruedAmount` settlDate) allBonds
-  bPreviousCoupon <- mapM (`previousCouponRate` todaysDate) twoBonds
-  bNextCoupon <- mapM (`nextCouponRate` todaysDate) twoBonds
 
-  bYield <- mapM
-    (\b -> yield b actual360dc Compounded Annual 1e-8 100)
-    allBonds
 
-  fCleanFromYield <- cleanPrice' floater (bYield!!2) actual360dc Compounded Annual settlDate
-  fYieldFromClean <- yield' floater (bCleanPrice!!2) actual360dc Compounded Annual settlDate 1e-8 100
+  let bAccruedAmount = rights $ map (`accruedAmount` settlDate) allBonds
+      bPreviousCoupon = rights $ map (`previousCouponRate` todaysDate) twoBonds
+      bNextCoupon = rights $ map (`nextCouponRate` todaysDate) twoBonds
+      bYield = rights $ map (\b -> yield b actual360dc Compounded Annual 1e-8 100) allBonds
+      (Right fCleanFromYield) = cleanPrice' floater (bYield!!2) actual360dc Compounded Annual settlDate
+      (Right fYieldFromClean) = yield' floater (bCleanPrice!!2) actual360dc Compounded Annual settlDate 1e-8 100
+      bNextCouponDate = rights $ map (`nextCashFlowDate` todaysDate) allBonds
+      bTradable = rights $ map (`isTradable` (10 `february` 2013)) allBonds
 
-  bNextCouponDate <- mapM (`nextCashFlowDate` todaysDate) allBonds
-
-  bTradable <- mapM (`isTradable` (10 `february` 2013)) allBonds
+  print bAccruedAmount
+  print bPreviousCoupon
+  print bNextCoupon
+  print bYield
+  print fCleanFromYield
+  print fYieldFromClean
+  print bNextCouponDate
+  print bTradable
 
   return Result {
       npvR = (fixnpv, znpv, fnpv)

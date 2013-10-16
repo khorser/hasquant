@@ -302,7 +302,7 @@ type FixedRateBondForward = ForeignPtr CFixedRateBondForward
 type ForwardRateAgreement = ForeignPtr CForwardRateAgreement
 
 -- 'as' casting style composes poorly with functions accepting
--- several arguments with first being a Bond
+-- several arguments with the first being a Bond
 -- XXX use applicative style?
 asBond :: (Upcastable a CBond) => ForeignPtr a -> IO Bond
 asBond = upcast
