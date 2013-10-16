@@ -247,14 +247,16 @@ run = do
       bNextCouponDate = rights $ map (`nextCashFlowDate` todaysDate) allBonds
       bTradable = rights $ map (`isTradable` (10 `february` 2013)) allBonds
 
+  -- tests fail without this, laziness?
   print bAccruedAmount
-  print bPreviousCoupon
   print bNextCoupon
   print bYield
   print fCleanFromYield
   print fYieldFromClean
-  print bNextCouponDate
-  print bTradable
+
+  --print bPreviousCoupon
+  --print bNextCouponDate
+  --print bTradable
 
   return Result {
       npvR = (fixnpv, znpv, fnpv)
