@@ -31,44 +31,24 @@ int qlWeekday(int date) {
 }
 
 // generated code
-int qlDateDayOfYear(int o, char **e) {
-  try {
+int qlDateDayOfYear(int o) {
     return Date(o).dayOfYear();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
 }
 
-int qlDateEndOfMonth(int d, char **e) {
-  try {
+int qlDateEndOfMonth(int d) {
     return Date::endOfMonth(Date(d)).serialNumber();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
 }
 
-int qlDateIsEndOfMonth(int d, char **e) {
-  try {
+int qlDateIsEndOfMonth(int d) {
     return Date::isEndOfMonth(Date(d));
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
 }
 
-int qlDateNextWeekday(int d, int w, char **e) {
-  try {
+int qlDateNextWeekday(int d, int w) {
     return Date::nextWeekday(Date(d), (Weekday)w).serialNumber();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
 }
 
-int qlDateNthWeekday(unsigned n, int w, int m, int y, char **e) {
-  try {
+int qlDateNthWeekday(unsigned n, int w, int m, int y) {
     return Date::nthWeekday(n, (Weekday)w, (Month)m, y).serialNumber();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
 }
 
 char* qlIMMCode(int immDate, char **e) {
@@ -85,19 +65,11 @@ int qlIMMDate(char* immCode, int referenceDate, char **e) {
     return handleException<int>(e, er);
   }
 }
-int qlIMMIsIMMcode(char* in, int mainCycle, char **e) {
-  try {
+int qlIMMIsIMMcode(char* in, int mainCycle) {
     return IMM::isIMMcode(std::string(arg(in)), mainCycle);
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
 }
-int qlIMMIsIMMdate(int d, int mainCycle, char **e) {
-  try {
+int qlIMMIsIMMdate(int d, int mainCycle) {
     return IMM::isIMMdate(Date(d), mainCycle);
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
 }
 char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) {
   try {
@@ -106,12 +78,8 @@ char* qlIMMNextCode1(char* immCode, int mainCycle, int referenceDate, char **e) 
     return handleException<char*>(e, er);
   }
 }
-char* qlIMMNextCode(int d, int mainCycle, char **e) {
-  try {
+char* qlIMMNextCode(int d, int mainCycle) {
     return DUP(IMM::nextCode(Date(d), mainCycle).c_str());
-  } catch (std::exception& er) {
-    return handleException<char *>(e, er);
-  }
 }
 int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
   try {
@@ -120,12 +88,8 @@ int qlIMMNextDate1(char* immCode, int mainCycle, int referenceDate, char **e) {
     return handleException<int>(e, er);
   }
 }
-int qlIMMNextDate(int d, int mainCycle, char **e) {
-  try {
+int qlIMMNextDate(int d, int mainCycle) {
     return IMM::nextDate(Date(d), mainCycle).serialNumber();
-  } catch (std::exception& er) {
-    return handleException<int>(e, er);
-  }
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

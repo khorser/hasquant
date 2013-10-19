@@ -35,8 +35,8 @@ fromFrequency :: F.Frequency -> IO Period
 fromFrequency = $(ffiCall 'fromFrequency) c_periodFromFreq
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M). QuantLib: qlFrequencyFromPeriod
-toFrequency :: Period -> IO F.Frequency
-toFrequency = $(ffiCallX 'toFrequency) c_periodToFreq
+toFrequency :: Period -> Either String F.Frequency
+toFrequency = $(ffiCallPureX 'toFrequency) c_periodToFreq
 
 parse :: String -> IO Period
 parse = $(ffiCall 'parse) c_parse

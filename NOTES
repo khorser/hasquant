@@ -60,3 +60,5 @@ functions live in IO
 
 many bond functions have IO simply because floating bonds use YieldTermStructure
 (and consequently floating coupons)
+
+use type magic to ensure Day is always valid QuantLib date

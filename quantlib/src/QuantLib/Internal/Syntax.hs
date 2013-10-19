@@ -396,6 +396,7 @@ unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
 unmarshal (IORV StringR) = [|getString|]
 unmarshal (IORV r) = [|liftM $(unmarshalA r)|]
+unmarshal (EitherRV StringR) = [|getString|]
 unmarshal (EitherRV r) = [|liftM $(unmarshalA r)|]
 
 unmarshalA :: AtomicRet -> ExpQ

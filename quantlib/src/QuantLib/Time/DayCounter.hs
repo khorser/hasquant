@@ -147,11 +147,11 @@ business252     :: Calendar -> IO DayCounter
 business252 = $(ffiCall 'business252) c_business252
 
 -- |Returns the number of days between two dates.
-dayCount :: DayCounter -> Day -> Day -> IO Int
-dayCount = $(ffiCallX 'dayCount) c_dayCount
+dayCount :: DayCounter -> Day -> Day -> Int
+dayCount = $(ffiCallPure 'dayCount) c_dayCount
 
 foreign import ccall safe "ql.h qlDayCounterDayCount"
-  c_dayCount :: Ptr CDayCounter -> CDate -> CDate -> Ptr CString -> IO CInt
+  c_dayCount :: Ptr CDayCounter -> CDate -> CDate -> IO CInt
 
 -- |Returns the period between two dates as a fraction of year.
 yearFraction :: DayCounter
@@ -159,10 +159,10 @@ yearFraction :: DayCounter
   -> Day
   -> Day -- ^refPeriodStart
   -> Day -- ^refPeriodEnd
-  -> IO YearFraction
-yearFraction = $(ffiCallX 'yearFraction) c_yearFraction
+  -> YearFraction
+yearFraction = $(ffiCallPure 'yearFraction) c_yearFraction
 
 foreign import ccall safe "ql.h qlDayCounterYearFraction"
-  c_yearFraction :: Ptr CDayCounter -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO CYearFraction
+  c_yearFraction :: Ptr CDayCounter -> CDate -> CDate -> CDate -> CDate -> IO CYearFraction
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
