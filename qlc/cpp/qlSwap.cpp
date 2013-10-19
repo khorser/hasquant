@@ -99,7 +99,7 @@ double qlSwapLegNPV(QlSwap* o, unsigned j, char **e) {
 }
 int qlSwapMaturityDate(QlSwap* o, char **e) {
   try {
-    return ((*arg(o))->maturityDate()).serialNumber();
+    return qlNullableDate((*arg(o))->maturityDate());
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
@@ -113,7 +113,7 @@ double qlSwapNpvDateDiscount(QlSwap* o, char **e) {
 }
 int qlSwapStartDate(QlSwap* o, char **e) {
   try {
-    return ((*arg(o))->startDate()).serialNumber();
+    return qlNullableDate((*arg(o))->startDate());
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }

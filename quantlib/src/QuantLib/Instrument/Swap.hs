@@ -144,8 +144,8 @@ legNPV = $(ffiCallX 'legNPV) c_legNPV
 foreign import ccall safe "ql.h qlSwapLegNPV"
   c_legNPV :: Ptr CSwap -> CUInt -> Ptr CString -> IO CDouble
 
-maturityDate :: Swap -> IO Day
-maturityDate = $(ffiCallX 'maturityDate) c_maturityDate
+maturityDate :: Swap -> Either String (Maybe Day)
+maturityDate = $(ffiCallPureX 'maturityDate) c_maturityDate
 
 foreign import ccall safe "ql.h qlSwapMaturityDate"
   c_maturityDate :: Ptr CSwap -> Ptr CString -> IO CDate
@@ -156,8 +156,8 @@ npvDateDiscount = $(ffiCallX 'npvDateDiscount) c_npvDateDiscount
 foreign import ccall safe "ql.h qlSwapNpvDateDiscount"
   c_npvDateDiscount :: Ptr CSwap -> Ptr CString -> IO CDouble
 
-startDate :: Swap -> IO Day
-startDate = $(ffiCallX 'startDate) c_startDate
+startDate :: Swap -> Either String (Maybe Day)
+startDate = $(ffiCallPureX 'startDate) c_startDate
 
 foreign import ccall safe "ql.h qlSwapStartDate"
   c_startDate :: Ptr CSwap -> Ptr CString -> IO CDate
