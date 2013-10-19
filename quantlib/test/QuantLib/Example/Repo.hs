@@ -71,9 +71,9 @@ run = do
     repoDayCountConvention bondCalendar bondBusinessDayConvention fixedBond
     (Just repoCurve) (Just repoCurve)
 
-  clP <- cleanPrice b
-  dp <- dirtyPrice b
+  clP <- cleanPrice b bondCurve repoSettlementDate
   accr1 <- accruedAmount b repoSettlementDate
+  let dp = clP + accr1
   accr2 <- accruedAmount b repoDeliveryDate
 
   fwd <- asForward bondFwd

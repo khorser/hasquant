@@ -56,7 +56,7 @@ test_bondEval = do
       (fixprev, fprev) = BondExample.previousCoupon r
       (fixnext, fnext) = BondExample.nextCoupon r
       (fixnextD, znextD, fnextD) = BondExample.nextCouponDate r
-      cleanFromYield = BondExample.cleanPriceFromYield r
+      cleanFromYield = BondExample.cleanPriceFromYieldR r
       yieldFromClean = BondExample.yieldFromCleanPrice r
       tradable = BondExample.tradable r
 

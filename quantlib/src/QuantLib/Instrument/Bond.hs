@@ -14,10 +14,8 @@ module QuantLib.Instrument.Bond
   , maturityDate
   , yield
   , accruedAmount
-  , cleanPrice'
-  , cleanPrice
-  , dirtyPrice'
-  , dirtyPrice
+  , cleanPriceFromYield
+  , dirtyPriceFromYield
   , nextCashFlowDate
   , nextCouponRate
   , notional
@@ -45,9 +43,9 @@ module QuantLib.Instrument.Bond
   , bps'
   , bps''
   , bps
-  , cleanPrice''
-  , cleanPrice'''
-  , cleanPrice''''
+  , cleanPrice
+  , cleanPriceZSpread
+  , cleanPriceFromRate
   , convexity'
   , convexity
   , duration'
@@ -234,47 +232,30 @@ foreign import ccall safe "ql.h qlBondAccruedAmount"
   c_accruedAmount :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
 
 -- |clean price given a yield and settlement date
-cleanPrice' :: Bond
+cleanPriceFromYield :: Bond
   -> Double -- ^yield
   -> DayCounter -- ^dc
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> Day -- ^settlementDate
   -> IO Double
-cleanPrice' = $(ffiCallX 'cleanPrice') c_cleanPrice'
+cleanPriceFromYield = $(ffiCallX 'cleanPriceFromYield) c_cleanPrice'
 
 foreign import ccall safe "ql.h qlBondCleanPrice1"
   c_cleanPrice' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
 
--- |theoretical clean price
-cleanPrice :: Bond
-  -> IO Double
-cleanPrice = $(ffiCallX 'cleanPrice) c_cleanPrice
-
-foreign import ccall safe "ql.h qlBondCleanPrice"
-  c_cleanPrice :: Ptr CBond -> Ptr CString -> IO CDouble
-
 -- |dirty price given a yield and settlement date
-dirtyPrice' :: Bond
+dirtyPriceFromYield :: Bond
   -> Double -- ^yield
   -> DayCounter -- ^dc
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> Day -- ^settlementDate
   -> IO Double
-dirtyPrice' = $(ffiCallX 'dirtyPrice') c_dirtyPrice'
+dirtyPriceFromYield = $(ffiCallX 'dirtyPriceFromYield) c_dirtyPrice'
 
 foreign import ccall safe "ql.h qlBondDirtyPrice1"
   c_dirtyPrice' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
-
--- |theoretical dirty price
--- The default bond settlement is used for calculation. /Warning/ the theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
-dirtyPrice :: Bond
-  -> IO Double
-dirtyPrice = $(ffiCallX 'dirtyPrice) c_dirtyPrice
-
-foreign import ccall safe "ql.h qlBondDirtyPrice"
-  c_dirtyPrice :: Ptr CBond -> Ptr CString -> IO CDouble
 
 nextCashFlowDate :: Bond
   -> Day -- ^d
@@ -505,16 +486,16 @@ bps = $(ffiCallX 'bps) c_bps
 foreign import ccall safe "ql.h qlBondFunctionsBps"
   c_bps :: Ptr CBond -> Ptr CYieldTermStructure -> CDate -> Ptr CString -> IO CDouble
 
-cleanPrice'' :: Bond -- ^bond
+cleanPrice :: Bond -- ^bond
   -> YieldTermStructure -- ^discountCurve
   -> Day -- ^settlementDate
   -> IO Double
-cleanPrice'' = $(ffiCallX 'cleanPrice'') c_cleanPrice''
+cleanPrice = $(ffiCallX 'cleanPrice) c_cleanPrice
 
 foreign import ccall safe "ql.h qlBondFunctionsCleanPrice2"
-  c_cleanPrice'' :: Ptr CBond -> Ptr CYieldTermStructure -> CDate -> Ptr CString -> IO CDouble
+  c_cleanPrice :: Ptr CBond -> Ptr CYieldTermStructure -> CDate -> Ptr CString -> IO CDouble
 
-cleanPrice''' :: Bond -- ^bond
+cleanPriceZSpread :: Bond -- ^bond
   -> YieldTermStructure -- ^discount
   -> Double -- ^zSpread
   -> DayCounter -- ^dayCounter
@@ -522,16 +503,16 @@ cleanPrice''' :: Bond -- ^bond
   -> Frequency -- ^frequency
   -> Day -- ^settlementDate
   -> IO Double
-cleanPrice''' = $(ffiCallX 'cleanPrice''') c_cleanPrice'''
+cleanPriceZSpread = $(ffiCallX 'cleanPriceZSpread) c_cleanPrice'''
 
 foreign import ccall safe "ql.h qlBondFunctionsCleanPrice3"
   c_cleanPrice''' :: Ptr CBond -> Ptr CYieldTermStructure -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
 
-cleanPrice'''' :: Bond -- ^bond
+cleanPriceFromRate :: Bond -- ^bond
   -> InterestRate -- ^yield
   -> Day -- ^settlementDate
   -> IO Double
-cleanPrice'''' = $(ffiCallX 'cleanPrice'''') c_cleanPrice''''
+cleanPriceFromRate = $(ffiCallX 'cleanPriceFromRate) c_cleanPrice''''
 
 foreign import ccall safe "ql.h qlBondFunctionsCleanPrice4"
   c_cleanPrice'''' :: Ptr CBond -> Ptr CInterestRate -> CDate -> Ptr CString -> IO CDouble

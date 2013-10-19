@@ -50,9 +50,7 @@ extern "C" {
     unsigned maxEvaluations, char **e);
   double DLLEXPORT qlBondAccruedAmount(QlBond* o, int d, char **e);
   double DLLEXPORT qlBondCleanPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e);
-  double DLLEXPORT qlBondCleanPrice(QlBond* o, char **e);
   double DLLEXPORT qlBondDirtyPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e);
-  double DLLEXPORT qlBondDirtyPrice(QlBond* o, char **e);
   int DLLEXPORT qlBondNextCashFlowDate(QlBond* o, int d, char **e);
   double DLLEXPORT qlBondNextCouponRate(QlBond* o, int d, char **e);
   double DLLEXPORT qlBondNotional(QlBond* o, int d, char **e);

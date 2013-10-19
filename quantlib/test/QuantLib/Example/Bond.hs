@@ -46,7 +46,7 @@ data Result = Result
   , previousCoupon :: (Double, Double)
   , nextCoupon :: (Double, Double)
   , yieldR :: (Double, Double, Double)
-  , cleanPriceFromYield :: Double
+  , cleanPriceFromYieldR :: Double
   , yieldFromCleanPrice :: Double
   , nextCouponDate :: (Day, Day, Day)
   , tradable :: (Bool, Bool, Bool)
@@ -234,14 +234,15 @@ run = do
       (\y -> setPricingEngine y pricing >> npv y))
     allBonds
 
-  bCleanPrice <- mapM cleanPrice allBonds
-  bDirtyPrice <- mapM dirtyPrice allBonds
+  bCleanPrice <- mapM (\b -> cleanPrice b ts settlDate) allBonds
   bYield <- mapM (\b -> yield b actual360dc Compounded Annual 1e-8 100) allBonds
   bAccruedAmount <- mapM (`accruedAmount` settlDate) allBonds
   bPreviousCoupon <- mapM (`previousCouponRate` todaysDate) twoBonds
   bNextCoupon <- mapM (`nextCouponRate` todaysDate) twoBonds
-  fCleanFromYield <- cleanPrice' floater (bYield!!2) actual360dc Compounded Annual settlDate
+  fCleanFromYield <- cleanPriceFromYield floater (bYield!!2) actual360dc Compounded Annual settlDate
   fYieldFromClean <- yield' floater (bCleanPrice!!2) actual360dc Compounded Annual settlDate 1e-8 100
+
+  let bDirtyPrice = zipWith (+) bCleanPrice bAccruedAmount
 
 
   let bNextCouponDate = rights $ map (`nextCashFlowDate` todaysDate) allBonds
@@ -256,7 +257,7 @@ run = do
     , nextCoupon = listToTuple bNextCoupon "bNextCoupon"
     , yieldR = listToTriple bYield "bYield"
     , nextCouponDate = listToTriple (map fromJust bNextCouponDate) "bNextCouponDate)"
-    , cleanPriceFromYield = fCleanFromYield
+    , cleanPriceFromYieldR = fCleanFromYield
     , yieldFromCleanPrice = fYieldFromClean
     , tradable = listToTriple bTradable "bTradable"
     , cfnpvR = cfnpv

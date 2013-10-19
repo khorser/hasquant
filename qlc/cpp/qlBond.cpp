@@ -196,25 +196,9 @@ double qlBondCleanPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int 
   }
 }
 
-double qlBondCleanPrice(QlBond* o, char **e) {
-  try {
-    return (*arg(o))->cleanPrice();
-  } catch (std::exception& er) {
-    return handleException<double>(e, er);
-  }
-}
-
 double qlBondDirtyPrice1(QlBond* o, double yield, DayCounter* dc, int comp, int freq, int settlementDate, char **e) {
   try {
     return (*arg(o))->dirtyPrice(yield, *arg(dc), (Compounding)comp, (Frequency)freq, Date(settlementDate));
-  } catch (std::exception& er) {
-    return handleException<double>(e, er);
-  }
-}
-
-double qlBondDirtyPrice(QlBond* o, char **e) {
-  try {
-    return (*arg(o))->dirtyPrice();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
