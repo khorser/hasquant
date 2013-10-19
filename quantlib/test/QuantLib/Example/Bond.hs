@@ -55,13 +55,13 @@ data Result = Result
   , bpsR :: Double
   }
 
-listToTuple :: Show a => [a] -> (a, a)
-listToTuple [x, y] = (x, y)
-listToTuple l = error $ "Not a 2 element list: " ++ show l
+listToTuple :: Show a => [a] -> String -> (a, a)
+listToTuple [x, y] _ = (x, y)
+listToTuple l w = error $ "Not a 2 element list: " ++ show l ++ " (" ++ w ++ ")"
 
-listToTriple :: Show a => [a] -> (a, a, a)
-listToTriple [x, y, z] = (x, y, z)
-listToTriple l = error $ "Not a 3 element list: " ++ show l
+listToTriple :: Show a => [a] -> String -> (a, a, a)
+listToTriple [x, y, z] _ = (x, y, z)
+listToTriple l w = error $ "Not a 3 element list: " ++ show l ++ " (" ++ w ++ ")"
 
 (<-*>) :: (Applicative m, Monad m) => m (a -> m b) -> m a -> m b
 (<-*>) f x = join $ f <*> x
@@ -236,40 +236,29 @@ run = do
 
   bCleanPrice <- mapM cleanPrice allBonds
   bDirtyPrice <- mapM dirtyPrice allBonds
+  bYield <- mapM (\b -> yield b actual360dc Compounded Annual 1e-8 100) allBonds
+  bAccruedAmount <- mapM (`accruedAmount` settlDate) allBonds
+  bPreviousCoupon <- mapM (`previousCouponRate` todaysDate) twoBonds
+  bNextCoupon <- mapM (`nextCouponRate` todaysDate) twoBonds
+  fCleanFromYield <- cleanPrice' floater (bYield!!2) actual360dc Compounded Annual settlDate
+  fYieldFromClean <- yield' floater (bCleanPrice!!2) actual360dc Compounded Annual settlDate 1e-8 100
 
 
-  let bAccruedAmount = rights $ map (`accruedAmount` settlDate) allBonds
-      bPreviousCoupon = rights $ map (`previousCouponRate` todaysDate) twoBonds
-      bNextCoupon = rights $ map (`nextCouponRate` todaysDate) twoBonds
-      bYield = rights $ map (\b -> yield b actual360dc Compounded Annual 1e-8 100) allBonds
-      (Right fCleanFromYield) = cleanPrice' floater (bYield!!2) actual360dc Compounded Annual settlDate
-      (Right fYieldFromClean) = yield' floater (bCleanPrice!!2) actual360dc Compounded Annual settlDate 1e-8 100
-      bNextCouponDate = rights $ map (`nextCashFlowDate` todaysDate) allBonds
+  let bNextCouponDate = rights $ map (`nextCashFlowDate` todaysDate) allBonds
       bTradable = rights $ map (`isTradable` (10 `february` 2013)) allBonds
-
-  -- tests fail without this, laziness?
-  print bAccruedAmount
-  print bNextCoupon
-  print bYield
-  print fCleanFromYield
-  print fYieldFromClean
-
-  --print bPreviousCoupon
-  --print bNextCouponDate
-  --print bTradable
 
   return Result {
       npvR = (fixnpv, znpv, fnpv)
-    , cleanPriceR = listToTriple bCleanPrice
-    , dirtyPriceR = listToTriple bDirtyPrice
-    , accruedAmountR = listToTriple bAccruedAmount
-    , previousCoupon = listToTuple bPreviousCoupon
-    , nextCoupon = listToTuple bNextCoupon
-    , yieldR = listToTriple bYield
-    , nextCouponDate = listToTriple (map fromJust bNextCouponDate)
+    , cleanPriceR = listToTriple bCleanPrice "bCleanPrice"
+    , dirtyPriceR = listToTriple bDirtyPrice "bDirtyPrice"
+    , accruedAmountR = listToTriple bAccruedAmount "bAccruedAmount"
+    , previousCoupon = listToTuple bPreviousCoupon "bPreviousCoupon"
+    , nextCoupon = listToTuple bNextCoupon "bNextCoupon"
+    , yieldR = listToTriple bYield "bYield"
+    , nextCouponDate = listToTriple (map fromJust bNextCouponDate) "bNextCouponDate)"
     , cleanPriceFromYield = fCleanFromYield
     , yieldFromCleanPrice = fYieldFromClean
-    , tradable = listToTriple bTradable
+    , tradable = listToTriple bTradable "bTradable"
     , cfnpvR = cfnpv
     , cfnpvbpsR = cfnpvbps
     , bpsR = bbps

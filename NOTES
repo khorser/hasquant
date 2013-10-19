@@ -57,3 +57,6 @@ add Interpolation2D
 
 String allocations/deallocations and catching of exceptions can happen only in IO so most C FFI
 functions live in IO
+
+many bond functions have IO simply because floating bonds use YieldTermStructure
+(and consequently floating coupons)

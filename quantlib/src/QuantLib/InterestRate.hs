@@ -65,8 +65,8 @@ discountFactor' :: InterestRate
   -> Day -- ^d2
   -> Day -- ^refStart
   -> Day -- ^refEnd
-  -> IO Double
-discountFactor' = $(ffiCallX 'discountFactor') c_discountFactor'
+  -> Either String Double
+discountFactor' = $(ffiCallPureX 'discountFactor') c_discountFactor'
 
 foreign import ccall safe "ql.h qlInterestRateDiscountFactor1"
   c_discountFactor' :: Ptr CInterestRate -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -75,8 +75,8 @@ foreign import ccall safe "ql.h qlInterestRateDiscountFactor1"
 -- /Warning/ Time must be measured using InterestRate's own day counter.
 discountFactor :: InterestRate
   -> YearFraction -- ^t
-  -> IO Double
-discountFactor = $(ffiCallX 'discountFactor) c_discountFactor
+  -> Either String Double
+discountFactor = $(ffiCallPureX 'discountFactor) c_discountFactor
 
 foreign import ccall safe "ql.h qlInterestRateDiscountFactor"
   c_discountFactor :: Ptr CInterestRate -> CYearFraction -> Ptr CString -> IO CDouble

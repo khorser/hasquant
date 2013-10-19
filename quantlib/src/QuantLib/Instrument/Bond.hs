@@ -218,8 +218,8 @@ yield :: Bond
   -> Frequency -- ^freq
   -> Double -- ^accuracy
   -> Word -- ^maxEvaluations
-  -> Either String Double
-yield = $(ffiCallPureX 'yield) c_bondYield
+  -> IO Double
+yield = $(ffiCallX 'yield) c_bondYield
 
 foreign import ccall safe "ql.h qlBondYield"
   c_bondYield :: Ptr CBond -> Ptr CDayCounter -> CInt -> CInt -> CDouble -> CUInt -> Ptr CString -> IO CDouble
@@ -227,8 +227,8 @@ foreign import ccall safe "ql.h qlBondYield"
 -- |accrued amount at a given date
 accruedAmount :: Bond
   -> Day -- ^d
-  -> Either String Double
-accruedAmount = $(ffiCallPureX 'accruedAmount) c_accruedAmount
+  -> IO Double
+accruedAmount = $(ffiCallX 'accruedAmount) c_accruedAmount
 
 foreign import ccall safe "ql.h qlBondAccruedAmount"
   c_accruedAmount :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
@@ -240,8 +240,8 @@ cleanPrice' :: Bond
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> Day -- ^settlementDate
-  -> Either String Double
-cleanPrice' = $(ffiCallPureX 'cleanPrice') c_cleanPrice'
+  -> IO Double
+cleanPrice' = $(ffiCallX 'cleanPrice') c_cleanPrice'
 
 foreign import ccall safe "ql.h qlBondCleanPrice1"
   c_cleanPrice' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -261,8 +261,8 @@ dirtyPrice' :: Bond
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> Day -- ^settlementDate
-  -> Either String Double
-dirtyPrice' = $(ffiCallPureX 'dirtyPrice') c_dirtyPrice'
+  -> IO Double
+dirtyPrice' = $(ffiCallX 'dirtyPrice') c_dirtyPrice'
 
 foreign import ccall safe "ql.h qlBondDirtyPrice1"
   c_dirtyPrice' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -287,8 +287,8 @@ foreign import ccall safe "ql.h qlBondNextCashFlowDate"
 -- |Expected next coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the already-fixed not-yet-paid one.The current bond settlement is used if no date is given.
 nextCouponRate :: Bond
   -> Day -- ^d
-  -> Either String Double
-nextCouponRate = $(ffiCallPureX 'nextCouponRate) c_nextCouponRate
+  -> IO Double
+nextCouponRate = $(ffiCallX 'nextCouponRate) c_nextCouponRate
 
 foreign import ccall safe "ql.h qlBondNextCouponRate"
   c_nextCouponRate :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
@@ -313,8 +313,8 @@ foreign import ccall safe "ql.h qlBondPreviousCashFlowDate"
 -- Expected previous coupon: depending on (the bond and) the given date the coupon can be historic, deterministic or expected in a stochastic sense. When the bond settlement date is used the coupon is the last paid one.The current bond settlement is used if no date is given.
 previousCouponRate :: Bond
   -> Day -- ^d
-  -> Either String Double
-previousCouponRate = $(ffiCallPureX 'previousCouponRate) c_previousCouponRate
+  -> IO Double
+previousCouponRate = $(ffiCallX 'previousCouponRate) c_previousCouponRate
 
 foreign import ccall safe "ql.h qlBondPreviousCouponRate"
   c_previousCouponRate :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
@@ -347,8 +347,8 @@ yield' :: Bond
   -> Day -- ^settlementDate
   -> Double -- ^accuracy
   -> Word -- ^maxEvaluations
-  -> Either String Double
-yield' = $(ffiCallPureX 'yield') c_yield'
+  -> IO Double
+yield' = $(ffiCallX 'yield') c_yield'
 
 foreign import ccall safe "ql.h qlBondYield1"
   c_yield' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDouble -> CUInt -> Ptr CString -> IO CDouble
@@ -460,8 +460,8 @@ basisPointValue' :: Bond -- ^bond
   -> Compounding -- ^compounding
   -> Frequency -- ^frequency
   -> Day -- ^settlementDate
-  -> Either String Double
-basisPointValue' = $(ffiCallPureX 'basisPointValue') c_basisPointValue'
+  -> IO Double
+basisPointValue' = $(ffiCallX 'basisPointValue') c_basisPointValue'
 
 foreign import ccall safe "ql.h qlBondFunctionsBasisPointValue1"
   c_basisPointValue' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -469,8 +469,8 @@ foreign import ccall safe "ql.h qlBondFunctionsBasisPointValue1"
 basisPointValue :: Bond -- ^bond
   -> InterestRate -- ^yield
   -> Day -- ^settlementDate
-  -> Either String Double
-basisPointValue = $(ffiCallPureX 'basisPointValue) c_basisPointValue
+  -> IO Double
+basisPointValue = $(ffiCallX 'basisPointValue) c_basisPointValue
 
 foreign import ccall safe "ql.h qlBondFunctionsBasisPointValue"
   c_basisPointValue :: Ptr CBond -> Ptr CInterestRate -> CDate -> Ptr CString -> IO CDouble
@@ -478,8 +478,8 @@ foreign import ccall safe "ql.h qlBondFunctionsBasisPointValue"
 bps' :: Bond -- ^bond
   -> InterestRate -- ^yield
   -> Day -- ^settlementDate
-  -> Either String Double
-bps' = $(ffiCallPureX 'bps') c_bps'
+  -> IO Double
+bps' = $(ffiCallX 'bps') c_bps'
 
 foreign import ccall safe "ql.h qlBondFunctionsBps1"
   c_bps' :: Ptr CBond -> Ptr CInterestRate -> CDate -> Ptr CString -> IO CDouble
@@ -490,8 +490,8 @@ bps'' :: Bond -- ^bond
   -> Compounding -- ^compounding
   -> Frequency -- ^frequency
   -> Day -- ^settlementDate
-  -> Either String Double
-bps'' = $(ffiCallPureX 'bps'') c_bps''
+  -> IO Double
+bps'' = $(ffiCallX 'bps'') c_bps''
 
 foreign import ccall safe "ql.h qlBondFunctionsBps2"
   c_bps'' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -530,8 +530,8 @@ foreign import ccall safe "ql.h qlBondFunctionsCleanPrice3"
 cleanPrice'''' :: Bond -- ^bond
   -> InterestRate -- ^yield
   -> Day -- ^settlementDate
-  -> Either String Double
-cleanPrice'''' = $(ffiCallPureX 'cleanPrice'''') c_cleanPrice''''
+  -> IO Double
+cleanPrice'''' = $(ffiCallX 'cleanPrice'''') c_cleanPrice''''
 
 foreign import ccall safe "ql.h qlBondFunctionsCleanPrice4"
   c_cleanPrice'''' :: Ptr CBond -> Ptr CInterestRate -> CDate -> Ptr CString -> IO CDouble
@@ -542,8 +542,8 @@ convexity' :: Bond -- ^bond
   -> Compounding -- ^compounding
   -> Frequency -- ^frequency
   -> Day -- ^settlementDate
-  -> Either String Double
-convexity' = $(ffiCallPureX 'convexity') c_convexity'
+  -> IO Double
+convexity' = $(ffiCallX 'convexity') c_convexity'
 
 foreign import ccall safe "ql.h qlBondFunctionsConvexity1"
   c_convexity' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -551,8 +551,8 @@ foreign import ccall safe "ql.h qlBondFunctionsConvexity1"
 convexity :: Bond -- ^bond
   -> InterestRate -- ^yield
   -> Day -- ^settlementDate
-  -> Either String Double
-convexity = $(ffiCallPureX 'convexity) c_convexity
+  -> IO Double
+convexity = $(ffiCallX 'convexity) c_convexity
 
 foreign import ccall safe "ql.h qlBondFunctionsConvexity"
   c_convexity :: Ptr CBond -> Ptr CInterestRate -> CDate -> Ptr CString -> IO CDouble
@@ -564,8 +564,8 @@ duration' :: Bond -- ^bond
   -> Frequency -- ^frequency
   -> DurationType -- ^type
   -> Day -- ^settlementDate
-  -> Either String YearFraction
-duration' = $(ffiCallPureX 'duration') c_duration'
+  -> IO YearFraction
+duration' = $(ffiCallX 'duration') c_duration'
 
 foreign import ccall safe "ql.h qlBondFunctionsDuration1"
   c_duration' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> Ptr CString -> IO CYearFraction
@@ -574,24 +574,24 @@ duration :: Bond -- ^bond
   -> InterestRate -- ^yield
   -> DurationType -- ^type
   -> Day -- ^settlementDate
-  -> Either String YearFraction
-duration = $(ffiCallPureX 'duration) c_duration
+  -> IO YearFraction
+duration = $(ffiCallX 'duration) c_duration
 
 foreign import ccall safe "ql.h qlBondFunctionsDuration"
   c_duration :: Ptr CBond -> Ptr CInterestRate -> CInt -> CDate -> Ptr CString -> IO CYearFraction
 
 nextCashFlowAmount :: Bond -- ^bond
   -> Day -- ^refDate
-  -> Either String Double
-nextCashFlowAmount = $(ffiCallPureX 'nextCashFlowAmount) c_nextCashFlowAmount
+  -> IO Double
+nextCashFlowAmount = $(ffiCallX 'nextCashFlowAmount) c_nextCashFlowAmount
 
 foreign import ccall safe "ql.h qlBondFunctionsNextCashFlowAmount"
   c_nextCashFlowAmount :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
 
 previousCashFlowAmount :: Bond -- ^bond
   -> Day -- ^refDate
-  -> Either String Double
-previousCashFlowAmount = $(ffiCallPureX 'previousCashFlowAmount) c_previousCashFlowAmount
+  -> IO Double
+previousCashFlowAmount = $(ffiCallX 'previousCashFlowAmount) c_previousCashFlowAmount
 
 foreign import ccall safe "ql.h qlBondFunctionsPreviousCashFlowAmount"
   c_previousCashFlowAmount :: Ptr CBond -> CDate -> Ptr CString -> IO CDouble
@@ -621,8 +621,8 @@ yield'' :: Bond -- ^bond
   -> Double -- ^accuracy
   -> Word -- ^maxIterations
   -> Double -- ^guess
-  -> Either String Double
-yield'' = $(ffiCallPureX 'yield'') c_yield''
+  -> IO Double
+yield'' = $(ffiCallX 'yield'') c_yield''
 
 foreign import ccall safe "ql.h qlBondFunctionsYield2"
   c_yield'' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
@@ -633,8 +633,8 @@ yieldValueBasisPoint' :: Bond -- ^bond
   -> Compounding -- ^compounding
   -> Frequency -- ^frequency
   -> Day -- ^settlementDate
-  -> Either String Double
-yieldValueBasisPoint' = $(ffiCallPureX 'yieldValueBasisPoint') c_yieldValueBasisPoint'
+  -> IO Double
+yieldValueBasisPoint' = $(ffiCallX 'yieldValueBasisPoint') c_yieldValueBasisPoint'
 
 foreign import ccall safe "ql.h qlBondFunctionsYieldValueBasisPoint1"
   c_yieldValueBasisPoint' :: Ptr CBond -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CDate -> Ptr CString -> IO CDouble
@@ -642,8 +642,8 @@ foreign import ccall safe "ql.h qlBondFunctionsYieldValueBasisPoint1"
 yieldValueBasisPoint :: Bond -- ^bond
   -> InterestRate -- ^yield
   -> Day -- ^settlementDate
-  -> Either String Double
-yieldValueBasisPoint = $(ffiCallPureX 'yieldValueBasisPoint) c_yieldValueBasisPoint
+  -> IO Double
+yieldValueBasisPoint = $(ffiCallX 'yieldValueBasisPoint) c_yieldValueBasisPoint
 
 foreign import ccall safe "ql.h qlBondFunctionsYieldValueBasisPoint"
   c_yieldValueBasisPoint :: Ptr CBond -> Ptr CInterestRate -> CDate -> Ptr CString -> IO CDouble
@@ -658,8 +658,8 @@ zSpread :: Bond -- ^bond
   -> Double -- ^accuracy
   -> Word -- ^maxIterations
   -> Double -- ^guess
-  -> Either String Double
-zSpread = $(ffiCallPureX 'zSpread) c_zSpread
+  -> IO Double
+zSpread = $(ffiCallX 'zSpread) c_zSpread
 
 foreign import ccall safe "ql.h qlBondFunctionsZSpread"
   c_zSpread :: Ptr CBond -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> CInt -> CInt -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
