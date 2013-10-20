@@ -13,8 +13,8 @@ module QuantLib.TermStructure.Yield
   , datedOISRateHelper
   , depositRateHelper'
   , fraRateHelper'
-  , fraRateHelper''
-  , fraRateHelper'''
+  , fraIborRateHelper'
+  , fraIborRateHelper
   , futuresRateHelper'
   , futuresRateHelper''
   , futuresRateHelper
@@ -471,16 +471,16 @@ depositRateHelper' = $(ffiCall 'depositRateHelper') c_depositRateHelper'
 foreign import ccall safe "ql.h qlDepositRateHelper1"
   c_depositRateHelper' :: Ptr CQuote -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CRateHelper)
 
-fraRateHelper' :: Quote -- ^rate
+fraIborRateHelper' :: Quote -- ^rate
   -> Word -- ^monthsToStart
   -> IborIndex -- ^iborIndex
   -> IO RateHelper
-fraRateHelper' = $(ffiCall 'fraRateHelper') c_fraRateHelper'
+fraIborRateHelper' = $(ffiCall 'fraIborRateHelper') c_fraRateHelper'
 
 foreign import ccall safe "ql.h qlFraRateHelper1"
   c_fraRateHelper' :: Ptr CQuote -> CUInt -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CRateHelper)
 
-fraRateHelper'' :: Quote -- ^rate
+fraRateHelper' :: Quote -- ^rate
   -> Period -- ^periodToStart
   -> Word -- ^lengthInMonths
   -> Word -- ^fixingDays
@@ -489,16 +489,16 @@ fraRateHelper'' :: Quote -- ^rate
   -> Bool -- ^endOfMonth
   -> DayCounter -- ^dayCounter
   -> IO RateHelper
-fraRateHelper'' = $(ffiCall 'fraRateHelper'') c_fraRateHelper''
+fraRateHelper' = $(ffiCall 'fraRateHelper') c_fraRateHelper''
 
 foreign import ccall safe "ql.h qlFraRateHelper2"
   c_fraRateHelper'' :: Ptr CQuote -> Ptr CPeriod -> CUInt -> CUInt -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)
 
-fraRateHelper''' :: Quote -- ^rate
+fraIborRateHelper :: Quote -- ^rate
   -> Period -- ^periodToStart
   -> IborIndex -- ^iborIndex
   -> IO RateHelper
-fraRateHelper''' = $(ffiCall 'fraRateHelper''') c_fraRateHelper'''
+fraIborRateHelper = $(ffiCall 'fraIborRateHelper) c_fraRateHelper'''
 
 foreign import ccall safe "ql.h qlFraRateHelper3"
   c_fraRateHelper''' :: Ptr CQuote -> Ptr CPeriod -> Ptr CIborIndex -> Ptr CString -> IO (Ptr CRateHelper)
