@@ -57,7 +57,7 @@ test_bondEval = do
       (fixnext, fnext) = BondExample.nextCoupon r
       (fixnextD, znextD, fnextD) = BondExample.nextCouponDate r
       cleanFromYield = BondExample.cleanPriceFromYieldR r
-      yieldFromClean = BondExample.yieldFromCleanPrice r
+      yieldFromClean = BondExample.yieldFromCleanPriceR r
       tradable = BondExample.tradable r
 
   subAssert $ assertClose fixnpv 107.6682891 1e-7

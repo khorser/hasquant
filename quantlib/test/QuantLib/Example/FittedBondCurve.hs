@@ -57,8 +57,8 @@ run = do
   (ts00, curves) <- step3 newtod dc cal newBondSettle iA iB
   mapM_ (\(price, q, i) -> do
       b <- underlying i
-      ytm <- yield'' b price dc Compounded Annual newtod 1e-10 100 0.05
-      dur <- duration' b ytm dc Compounded Annual Modified newtod
+      ytm <- yieldFromCleanPrice' b price dc Compounded Annual newtod 1e-10 100 0.05
+      dur <- duration b ytm dc Compounded Annual Modified newtod
       let dp = -dur * price * 5 / 10000
       setValue q (price + dp)) $
         zip3 (drop 1 cleanPrices) (drop 1 cleanQuotes) iA

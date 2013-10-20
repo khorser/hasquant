@@ -47,7 +47,7 @@ data Result = Result
   , nextCoupon :: (Double, Double)
   , yieldR :: (Double, Double, Double)
   , cleanPriceFromYieldR :: Double
-  , yieldFromCleanPrice :: Double
+  , yieldFromCleanPriceR :: Double
   , nextCouponDate :: (Day, Day, Day)
   , tradable :: (Bool, Bool, Bool)
   , cfnpvR :: Double
@@ -240,7 +240,7 @@ run = do
   bPreviousCoupon <- mapM (`previousCouponRate` todaysDate) twoBonds
   bNextCoupon <- mapM (`nextCouponRate` todaysDate) twoBonds
   fCleanFromYield <- cleanPriceFromYield floater (bYield!!2) actual360dc Compounded Annual settlDate
-  fYieldFromClean <- yield' floater (bCleanPrice!!2) actual360dc Compounded Annual settlDate 1e-8 100
+  fYieldFromClean <- yieldFromCleanPrice floater (bCleanPrice!!2) actual360dc Compounded Annual settlDate 1e-8 100
 
   let bDirtyPrice = zipWith (+) bCleanPrice bAccruedAmount
 
@@ -258,7 +258,7 @@ run = do
     , yieldR = listToTriple bYield "bYield"
     , nextCouponDate = listToTriple (map fromJust bNextCouponDate) "bNextCouponDate)"
     , cleanPriceFromYieldR = fCleanFromYield
-    , yieldFromCleanPrice = fYieldFromClean
+    , yieldFromCleanPriceR = fYieldFromClean
     , tradable = listToTriple bTradable "bTradable"
     , cfnpvR = cfnpv
     , cfnpvbpsR = cfnpvbps
