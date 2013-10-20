@@ -95,10 +95,10 @@ createLiborSwapIndex :: String
   -> Maybe YieldTermStructure -- ^forwarding
   -> Maybe YieldTermStructure -- ^discounting
   -> IO SwapIndex
-createLiborSwapIndex = $(ffiCall 'createLiborSwapIndex) c_liborSwapIndex
+createLiborSwapIndex = $(ffiCall 'createLiborSwapIndex) c_createLiborSwapIndex
 
 foreign import ccall safe "ql.h qlCreateLiborSwapIndex"
-  c_liborSwapIndex :: CString -> Ptr CPeriod -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapIndex)
+  c_createLiborSwapIndex :: CString -> Ptr CPeriod -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CSwapIndex)
 
 overnightIndexedSwapIndex :: String -- ^familyName
   -> Period -- ^tenor

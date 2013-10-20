@@ -15,7 +15,7 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlIndexAddFixing"
-  c_indexAddFixing :: Ptr CIndex -> CDate -> CDouble -> CInt -> Ptr CString
+  c_addFixing :: Ptr CIndex -> CDate -> CDouble -> CInt -> Ptr CString
     -> IO ()
 
 -- |stores the historical fixing at the given date
@@ -26,7 +26,7 @@ addFixing :: Index
   -> Double -- ^fixing
   -> Bool -- ^forceOverwrite
   -> IO ()
-addFixing = $(ffiCallX 'addFixing) c_indexAddFixing
+addFixing = $(ffiCallX 'addFixing) c_addFixing
 
 bmaIndex :: Maybe YieldTermStructure -- ^h
   -> IO BMAIndex

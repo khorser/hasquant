@@ -61,22 +61,22 @@ foreign import ccall safe "ql.h qlSwapRateHelperSwap"
 
 class (Finalizable a, Finalizable (DateDependentUnderlying a)) => HasDateDependentUnderlying a where
   type DateDependentUnderlying a :: *
-  c_dateDependentUnderlying :: Ptr a -> CDate -> Ptr CString -> IO (Ptr (DateDependentUnderlying a))
+  c_dateDepUnderlying :: Ptr a -> CDate -> Ptr CString -> IO (Ptr (DateDependentUnderlying a))
 
 instance HasDateDependentUnderlying CSwapIndex where
   type DateDependentUnderlying CSwapIndex = CVanillaSwap
-  c_dateDependentUnderlying = c_swapIndexVanillaSwap
+  c_dateDepUnderlying = c_swapIndexVanillaSwap
 foreign import ccall safe "ql.h qlSwapIndexUnderlyingSwap"
   c_swapIndexVanillaSwap :: Ptr CSwapIndex -> CDate -> Ptr CString -> IO (Ptr CVanillaSwap)
 
 instance HasDateDependentUnderlying COvernightIndexedSwapIndex where
   type DateDependentUnderlying COvernightIndexedSwapIndex = COvernightIndexedSwap
-  c_dateDependentUnderlying = c_oisIndexSwap
+  c_dateDepUnderlying = c_oisIndexSwap
 foreign import ccall safe "ql.h qlOvernightIndexedSwapIndexUnderlyingSwap"
   c_oisIndexSwap :: Ptr COvernightIndexedSwapIndex -> CDate -> Ptr CString -> IO (Ptr COvernightIndexedSwap)
 
 dateDepUnderlying :: (HasDateDependentUnderlying a) => ForeignPtr a -> Day -> IO (ForeignPtr (DateDependentUnderlying a))
-dateDepUnderlying = $(ffiCall 'dateDepUnderlying) c_dateDependentUnderlying
+dateDepUnderlying = $(ffiCall 'dateDepUnderlying) c_dateDepUnderlying
 
 class (Finalizable a) => SwapWithFixedLeg a where
   c_fairRate :: Ptr a -> Ptr CString -> IO CDouble

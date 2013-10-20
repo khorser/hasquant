@@ -97,16 +97,16 @@ import QuantLib.Time.Unit(Unit)
 import QuantLib.Time.Weekday
 
 foreign import ccall safe "ql.h qlCalendarAdjust"
-  c_calendarAdjust :: Ptr CCalendar -> CDate -> CInt -> IO CDate
+  c_adjust :: Ptr CCalendar -> CDate -> CInt -> IO CDate
 foreign import ccall safe "ql.h qlCalendarAdvance"
-  c_calendarAdvance :: Ptr CCalendar -> CDate -> CInt -> CInt -> CInt -> CInt -> IO CDate
+  c_advance :: Ptr CCalendar -> CDate -> CInt -> CInt -> CInt -> CInt -> IO CDate
 
 -- |Adjusts a non-business day to the appropriate near business day with respect to the given convention. QuantLibXL: qlCalendarAdjust
 adjust :: Calendar
   -> Day
   -> BusinessDayConvention
   -> IO Day
-adjust = $(ffiCall 'adjust) c_calendarAdjust
+adjust = $(ffiCall 'adjust) c_adjust
 
 -- |Advances the given date of the given number of business days and returns the result. QuantLibXL: qlCalendarAdvance
 advance :: Calendar
@@ -116,7 +116,7 @@ advance :: Calendar
   -> BusinessDayConvention
   -> Bool -- ^endOfMonth
   -> IO Day
-advance = $(ffiCall 'advance) c_calendarAdvance
+advance = $(ffiCall 'advance) c_advance
 
 -- |Calendar for reproducing theoretical calculations.
 -- This calendar has no holidays. It ensures that dates at whole-month distances have the same day of month.

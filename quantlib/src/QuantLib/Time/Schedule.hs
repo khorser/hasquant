@@ -29,7 +29,7 @@ foreign import ccall safe "ql.h qlSchedule1"
 foreign import ccall safe "ql.h qlScheduleUntil"
   c_until :: Ptr CSchedule -> CDate -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlScheduleDates"
-  c_scheduleDates :: Ptr CSchedule -> Ptr CUInt -> IO (Ptr CDate)
+  c_dates :: Ptr CSchedule -> Ptr CUInt -> IO (Ptr CDate)
 
 -- | QuantLibXL: qlSchedule
 schedule :: Maybe Day -- ^effectiveDate
@@ -66,6 +66,6 @@ until = $(ffiCall 'until) c_until
 
 -- |returns the dates for the given Schedule object. QuantLibXL: qlScheduleDates
 dates :: Schedule -> [Day]
-dates = $(ffiCallPure 'dates) c_scheduleDates
+dates = $(ffiCallPure 'dates) c_dates
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

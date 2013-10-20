@@ -21,9 +21,9 @@ import QuantLib.Time.Unit(Unit)
 foreign import ccall safe "ql.h qlPeriod"
   c_period :: CInt -> CInt -> Ptr CString -> IO (Ptr CPeriod)
 foreign import ccall safe "ql.h qlPeriodFromFrequency"
-  c_periodFromFreq :: CInt -> Ptr CString -> IO (Ptr CPeriod)
+  c_fromFrequency :: CInt -> Ptr CString -> IO (Ptr CPeriod)
 foreign import ccall safe "ql.h qlPeriodToFrequency"
-  c_periodToFreq :: Ptr CPeriod -> Ptr CString -> IO CInt
+  c_toFrequency :: Ptr CPeriod -> Ptr CString -> IO CInt
 
 period :: Int -- ^n
   -> Unit -- ^units
@@ -32,11 +32,11 @@ period = $(ffiCall 'period) c_period
 
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual). QuantLib: qlPeriodFromFrequency
 fromFrequency :: F.Frequency -> IO Period
-fromFrequency = $(ffiCall 'fromFrequency) c_periodFromFreq
+fromFrequency = $(ffiCall 'fromFrequency) c_fromFrequency
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M). QuantLib: qlFrequencyFromPeriod
 toFrequency :: Period -> Either String F.Frequency
-toFrequency = $(ffiCallPureX 'toFrequency) c_periodToFreq
+toFrequency = $(ffiCallPureX 'toFrequency) c_toFrequency
 
 parse :: String -> IO Period
 parse = $(ffiCall 'parse) c_parse
