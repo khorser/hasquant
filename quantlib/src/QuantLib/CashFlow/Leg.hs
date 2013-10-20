@@ -20,8 +20,8 @@ module QuantLib.CashFlow.Leg
   , atmRate
   , basisPointValue'
   , basisPointValue
-  , bps'
-  , bps''
+  , bpsFromYield
+  , bpsFromYield'
   , bps
   , convexity'
   , convexity
@@ -33,8 +33,8 @@ module QuantLib.CashFlow.Leg
   , nextCouponRate
   , nominal
   , npv'
-  , npv''
-  , npv'''
+  , npvFromYield
+  , npvFromYield'
   , npv
   , npvbps
   , previousCashFlowAmount
@@ -120,14 +120,14 @@ cashFlows l inc d =
 
 -- |Cash-flow duration.
 -- The simple duration of a string of cash flows is defined as \[ D_{\mathrm{simple}} = \frac{\sum t_i c_i B(t_i)}{\sum c_i B(t_i)} \] where $ c_i $ is the amount of the $ i $-th cash flow, $ t_i $ is its payment time, and $ B(t_i) $ is the corresponding discount according to the passed yield.The modified duration is defined as \[ D_{\mathrm{modified}} = -\frac{1}{P} \frac{\partial P}{\partial y} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.The Macaulay duration is defined for a compounded IRR as \[ D_{\mathrm{Macaulay}} = \left( 1 + \frac{y}{N} \right) D_{\mathrm{modified}} \] where $ y $ is the IRR and $ N $ is the number of cash flows per year.
-duration :: Leg -- ^leg
+duration' :: Leg -- ^leg
   -> InterestRate -- ^yield
   -> DurationType -- ^type
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO YearFraction
-duration = $(ffiCallX 'duration) c_duration
+duration' = $(ffiCallX 'duration') c_duration
 
 foreign import ccall safe "ql.h qlCashFlowsDuration"
   c_duration :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CYearFraction
@@ -209,7 +209,7 @@ atmRate = $(ffiCallX 'atmRate) c_atmRate
 foreign import ccall safe "ql.h qlCashFlowsAtmRate"
   c_atmRate :: Ptr CLeg -> Ptr CYieldTermStructure -> CInt -> CDate -> CDate -> CDouble -> Ptr CString -> IO CDouble
 
-basisPointValue' :: Leg -- ^leg
+basisPointValue :: Leg -- ^leg
   -> Double -- ^yield
   -> DayCounter -- ^dayCounter
   -> Compounding -- ^compounding
@@ -218,38 +218,38 @@ basisPointValue' :: Leg -- ^leg
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-basisPointValue' = $(ffiCallX 'basisPointValue') c_basisPointValue'
+basisPointValue = $(ffiCallX 'basisPointValue) c_basisPointValue'
 
 foreign import ccall safe "ql.h qlCashFlowsBasisPointValue1"
   c_basisPointValue' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
 
 -- |Basis-point value.
 -- Obtained by setting dy = 0.0001 in the 2nd-order Taylor series expansion.
-basisPointValue :: Leg -- ^leg
+basisPointValue' :: Leg -- ^leg
   -> InterestRate -- ^yield
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-basisPointValue = $(ffiCallX 'basisPointValue) c_basisPointValue
+basisPointValue' = $(ffiCallX 'basisPointValue') c_basisPointValue
 
 foreign import ccall safe "ql.h qlCashFlowsBasisPointValue"
   c_basisPointValue :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
 
 -- |Basis-point sensitivity of the cash flows.
 -- The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
-bps' :: Leg -- ^leg
+bpsFromYield' :: Leg -- ^leg
   -> InterestRate -- ^yield
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-bps' = $(ffiCallX 'bps') c_bps'
+bpsFromYield' = $(ffiCallX 'bpsFromYield') c_bps'
 
 foreign import ccall safe "ql.h qlCashFlowsBps1"
   c_bps' :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
 
-bps'' :: Leg -- ^leg
+bpsFromYield :: Leg -- ^leg
   -> Double -- ^yield
   -> DayCounter -- ^dayCounter
   -> Compounding -- ^compounding
@@ -258,7 +258,7 @@ bps'' :: Leg -- ^leg
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-bps'' = $(ffiCallX 'bps'') c_bps''
+bpsFromYield = $(ffiCallX 'bpsFromYield) c_bps''
 
 foreign import ccall safe "ql.h qlCashFlowsBps2"
   c_bps'' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -276,7 +276,7 @@ bps = $(ffiCallX 'bps) c_bps
 foreign import ccall safe "ql.h qlCashFlowsBps"
   c_bps :: Ptr CLeg -> Ptr CYieldTermStructure -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
 
-convexity' :: Leg -- ^leg
+convexity :: Leg -- ^leg
   -> Double -- ^yield
   -> DayCounter -- ^dayCounter
   -> Compounding -- ^compounding
@@ -285,25 +285,25 @@ convexity' :: Leg -- ^leg
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-convexity' = $(ffiCallX 'convexity') c_convexity'
+convexity = $(ffiCallX 'convexity) c_convexity'
 
 foreign import ccall safe "ql.h qlCashFlowsConvexity1"
   c_convexity' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
 
 -- |Cash-flow convexity.
 -- The convexity of a string of cash flows is defined as \[ C = \frac{1}{P} \frac{\partial^2 P}{\partial y^2} \] where $ P $ is the present value of the cash flows according to the given IRR $ y $.
-convexity :: Leg -- ^leg
+convexity' :: Leg -- ^leg
   -> InterestRate -- ^yield
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-convexity = $(ffiCallX 'convexity) c_convexity
+convexity' = $(ffiCallX 'convexity') c_convexity
 
 foreign import ccall safe "ql.h qlCashFlowsConvexity"
   c_convexity :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
 
-duration' :: Leg -- ^leg
+duration :: Leg -- ^leg
   -> Double -- ^yield
   -> DayCounter -- ^dayCounter
   -> Compounding -- ^compounding
@@ -313,7 +313,7 @@ duration' :: Leg -- ^leg
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO YearFraction
-duration' = $(ffiCallX 'duration') c_duration'
+duration = $(ffiCallX 'duration) c_duration'
 
 foreign import ccall safe "ql.h qlCashFlowsDuration1"
   c_duration' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CYearFraction
@@ -372,18 +372,18 @@ foreign import ccall safe "ql.h qlCashFlowsNominal"
 
 -- |NPV of the cash flows.
 -- The IRR is the interest rate at which the NPV of the cash flows equals the dirty price.The NPV is the sum of the cash flows, each discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter.
-npv' :: Leg -- ^leg
+npvFromYield' :: Leg -- ^leg
   -> InterestRate -- ^yield
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-npv' = $(ffiCallX 'npv') c_npv'
+npvFromYield' = $(ffiCallX 'npvFromYield') c_npv'
 
 foreign import ccall safe "ql.h qlCashFlowsNpv1"
   c_npv' :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
 
-npv'' :: Leg -- ^leg
+npvFromYield :: Leg -- ^leg
   -> Double -- ^yield
   -> DayCounter -- ^dayCounter
   -> Compounding -- ^compounding
@@ -392,14 +392,14 @@ npv'' :: Leg -- ^leg
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-npv'' = $(ffiCallX 'npv'') c_npv''
+npvFromYield = $(ffiCallX 'npvFromYield) c_npv''
 
 foreign import ccall safe "ql.h qlCashFlowsNpv2"
   c_npv'' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
 
 -- |NPV of the cash flows.
 -- For details on z-spread refer to: "Credit Spreads Explained", Lehman Brothers European Fixed Income Research - March 2004, D. O'KaneThe NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter.
-npv''' :: Leg -- ^leg
+npv' :: Leg -- ^leg
   -> YieldTermStructure -- ^discount
   -> Double -- ^zSpread
   -> DayCounter -- ^dayCounter
@@ -409,7 +409,7 @@ npv''' :: Leg -- ^leg
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-npv''' = $(ffiCallX 'npv''') c_npv'''
+npv' = $(ffiCallX 'npv') c_npv'''
 
 foreign import ccall safe "ql.h qlCashFlowsNpv3"
   c_npv''' :: Ptr CLeg -> Ptr CYieldTermStructure -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -513,7 +513,7 @@ yield = $(ffiCallX 'yield) c_yield
 foreign import ccall safe "ql.h qlCashFlowsYield"
   c_yield :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
 
-yieldValueBasisPoint' :: Leg -- ^leg
+yieldValueBasisPoint :: Leg -- ^leg
   -> Double -- ^yield
   -> DayCounter -- ^dayCounter
   -> Compounding -- ^compounding
@@ -522,20 +522,20 @@ yieldValueBasisPoint' :: Leg -- ^leg
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-yieldValueBasisPoint' = $(ffiCallX 'yieldValueBasisPoint') c_yieldValueBasisPoint'
+yieldValueBasisPoint = $(ffiCallX 'yieldValueBasisPoint) c_yieldValueBasisPoint'
 
 foreign import ccall safe "ql.h qlCashFlowsYieldValueBasisPoint1"
   c_yieldValueBasisPoint' :: Ptr CLeg -> CDouble -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
 
 -- |Yield value of a basis point.
 -- The yield value of a one basis point change in price is the derivative of the yield with respect to the price multiplied by 0.01
-yieldValueBasisPoint :: Leg -- ^leg
+yieldValueBasisPoint' :: Leg -- ^leg
   -> InterestRate -- ^yield
   -> Bool -- ^includeSettlementDateFlows
   -> Day -- ^settlementDate
   -> Day -- ^npvDate
   -> IO Double
-yieldValueBasisPoint = $(ffiCallX 'yieldValueBasisPoint) c_yieldValueBasisPoint
+yieldValueBasisPoint' = $(ffiCallX 'yieldValueBasisPoint') c_yieldValueBasisPoint
 
 foreign import ccall safe "ql.h qlCashFlowsYieldValueBasisPoint"
   c_yieldValueBasisPoint :: Ptr CLeg -> Ptr CInterestRate -> CInt -> CDate -> CDate -> Ptr CString -> IO CDouble
