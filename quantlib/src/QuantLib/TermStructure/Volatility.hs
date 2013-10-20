@@ -8,12 +8,12 @@ module QuantLib.TermStructure.Volatility
   , constantOptionletVolatility
   , constantSwaptionVolatility'
   , constantSwaptionVolatility
-  , blackVariance'
-  , blackVariance''
-  , blackVariance'''
-  , blackVariance''''
-  , blackVariance'''''
+  , blackVarianceForPeriod'
+  , blackVarianceForPeriod
   , blackVariance
+  , blackVariance'
+  , blackVarianceForPeriods
+  , blackVarianceForTenor
   , maxSwapLength
   , maxSwapTenor
   , smileSection'
@@ -26,12 +26,12 @@ module QuantLib.TermStructure.Volatility
   , smileSection
   , swapLength'
   , swapLength
-  , volatility'
-  , volatility''
-  , volatility'''
-  , volatility''''
-  , volatility'''''
+  , volatilityForPeriod
+  , volatilityForPeriod'
+  , volatilityForTenor
+  , volatilityForTenor'
   , volatility
+  , volatilityForPeriods
 
   , capFloorTermVolCurve'
   , capFloorTermVolCurve
@@ -132,73 +132,73 @@ foreign import ccall safe "ql.h qlConstantSwaptionVolatility"
   c_constantSwaptionVolatility :: CUInt -> Ptr CCalendar -> CInt -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CSwaptionVolatilityStructure)
 
 -- |returns the Black variance for a given option date and swap tenor
-blackVariance' :: SwaptionVolatilityStructure
+blackVarianceForPeriod' :: SwaptionVolatilityStructure
   -> Day -- ^optionDate
   -> Period -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-blackVariance' = $(ffiCallX 'blackVariance') c_blackVariance'
+blackVarianceForPeriod' = $(ffiCallX 'blackVarianceForPeriod') c_blackVariance'
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance1"
   c_blackVariance' :: Ptr CSwaptionVolatilityStructure -> CDate -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the Black variance for a given option time and swap tenor
-blackVariance'' :: SwaptionVolatilityStructure
+blackVarianceForPeriod :: SwaptionVolatilityStructure
   -> YearFraction -- ^optionTime
   -> Period -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-blackVariance'' = $(ffiCallX 'blackVariance'') c_blackVariance''
+blackVarianceForPeriod = $(ffiCallX 'blackVarianceForPeriod) c_blackVariance''
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance2"
   c_blackVariance'' :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the Black variance for a given option tenor and swap length
-blackVariance''' :: SwaptionVolatilityStructure
+blackVarianceForTenor :: SwaptionVolatilityStructure
   -> Period -- ^optionTenor
   -> YearFraction -- ^swapLength
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-blackVariance''' = $(ffiCallX 'blackVariance''') c_blackVariance'''
+blackVarianceForTenor = $(ffiCallX 'blackVarianceForTenor) c_blackVariance'''
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance3"
   c_blackVariance''' :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the Black variance for a given option date and swap length
-blackVariance'''' :: SwaptionVolatilityStructure
+blackVariance' :: SwaptionVolatilityStructure
   -> Day -- ^optionDate
   -> YearFraction -- ^swapLength
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-blackVariance'''' = $(ffiCallX 'blackVariance'''') c_blackVariance''''
+blackVariance' = $(ffiCallX 'blackVariance') c_blackVariance''''
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance4"
   c_blackVariance'''' :: Ptr CSwaptionVolatilityStructure -> CDate -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the Black variance for a given option time and swap length
-blackVariance''''' :: SwaptionVolatilityStructure
+blackVariance :: SwaptionVolatilityStructure
   -> YearFraction -- ^optionTime
   -> YearFraction -- ^swapLength
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-blackVariance''''' = $(ffiCallX 'blackVariance''''') c_blackVariance'''''
+blackVariance = $(ffiCallX 'blackVariance) c_blackVariance'''''
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance5"
   c_blackVariance''''' :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the Black variance for a given option tenor and swap tenor
-blackVariance :: SwaptionVolatilityStructure
+blackVarianceForPeriods :: SwaptionVolatilityStructure
   -> Period -- ^optionTenor
   -> Period -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-blackVariance = $(ffiCallX 'blackVariance) c_blackVariance
+blackVarianceForPeriods = $(ffiCallX 'blackVarianceForPeriods) c_blackVariance
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureBlackVariance"
   c_blackVariance :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
@@ -307,73 +307,73 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSwapLength"
   c_swapLength :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CString -> IO CYearFraction
 
 -- |returns the volatility for a given option date and swap tenor
-volatility' :: SwaptionVolatilityStructure
+volatilityForPeriod' :: SwaptionVolatilityStructure
   -> Day -- ^optionDate
   -> Period -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-volatility' = $(ffiCallX 'volatility') c_volatility'
+volatilityForPeriod' = $(ffiCallX 'volatilityForPeriod') c_volatility'
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility1"
   c_volatility' :: Ptr CSwaptionVolatilityStructure -> CDate -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the volatility for a given option time and swap tenor
-volatility'' :: SwaptionVolatilityStructure
+volatilityForPeriod :: SwaptionVolatilityStructure
   -> YearFraction -- ^optionTime
   -> Period -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-volatility'' = $(ffiCallX 'volatility'') c_volatility''
+volatilityForPeriod = $(ffiCallX 'volatilityForPeriod) c_volatility''
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility2"
   c_volatility'' :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the volatility for a given option tenor and swap length
-volatility''' :: SwaptionVolatilityStructure
+volatilityForTenor :: SwaptionVolatilityStructure
   -> Period -- ^optionTenor
   -> YearFraction -- ^swapLength
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-volatility''' = $(ffiCallX 'volatility''') c_volatility'''
+volatilityForTenor = $(ffiCallX 'volatilityForTenor) c_volatility'''
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility3"
   c_volatility''' :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the volatility for a given option date and swap length
-volatility'''' :: SwaptionVolatilityStructure
+volatilityForTenor' :: SwaptionVolatilityStructure
   -> Day -- ^optionDate
   -> YearFraction -- ^swapLength
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-volatility'''' = $(ffiCallX 'volatility'''') c_volatility''''
+volatilityForTenor' = $(ffiCallX 'volatilityForTenor') c_volatility''''
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility4"
   c_volatility'''' :: Ptr CSwaptionVolatilityStructure -> CDate -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the volatility for a given option time and swap length
-volatility''''' :: SwaptionVolatilityStructure
+volatility :: SwaptionVolatilityStructure
   -> YearFraction -- ^optionTime
   -> YearFraction -- ^swapLength
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-volatility''''' = $(ffiCallX 'volatility''''') c_volatility'''''
+volatility = $(ffiCallX 'volatility) c_volatility'''''
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility5"
   c_volatility''''' :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> CYearFraction -> CDouble -> CInt -> Ptr CString -> IO CDouble
 
 -- |returns the volatility for a given option tenor and swap tenor
-volatility :: SwaptionVolatilityStructure
+volatilityForPeriods :: SwaptionVolatilityStructure
   -> Period -- ^optionTenor
   -> Period -- ^swapTenor
   -> Double -- ^strike
   -> Bool -- ^extrapolate
   -> IO Double
-volatility = $(ffiCallX 'volatility) c_volatility
+volatilityForPeriods = $(ffiCallX 'volatilityForPeriods) c_volatility
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureVolatility"
   c_volatility :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CPeriod -> CDouble -> CInt -> Ptr CString -> IO CDouble
