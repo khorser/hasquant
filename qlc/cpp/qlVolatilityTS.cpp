@@ -134,34 +134,43 @@ Period* qlSwaptionVolatilityStructureMaxSwapTenor(QlSwaptionVolatilityStructure*
 }
 QlSmileSection* qlSwaptionVolatilityStructureSmileSection1(QlSwaptionVolatilityStructure* o, int optionDate, Period* swapTenor, int extr, char **e) {
   try {
-    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Date(optionDate), (*arg(swapTenor)), extr))));
+    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Date(optionDate), *arg(swapTenor), extr))));
   } catch (std::exception& er) {
     return handleException<QlSmileSection*>(e, er);
   }
 }
-/* The following methods are not implemented in Swaption TS
 QlSmileSection* qlSwaptionVolatilityStructureSmileSection2(QlSwaptionVolatilityStructure* o, double optionTime, Period* swapTenor, int extr, char **e) {
   try {
-    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(optionTime, (*arg(swapTenor)), extr))));
+    // declared but not implemented in Swaption TS for some reason:
+    //return ret(new QlSmileSection(alloc((*arg(o))->smileSection(optionTime, (*arg(swapTenor)), extr))));
+    Time length = (*arg(o))->swapLength(*arg(swapTenor));
+    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(optionTime, length, extr))));
   } catch (std::exception& er) {
     return handleException<QlSmileSection*>(e, er);
   }
 }
 QlSmileSection* qlSwaptionVolatilityStructureSmileSection3(QlSwaptionVolatilityStructure* o, Period* optionTenor, double swapLength, int extr, char **e) {
   try {
-    return ret(new QlSmileSection(alloc((*arg(o))->smileSection((*arg(optionTenor)), swapLength, extr))));
+    // declared but not implemented in Swaption TS for some reason:
+    //return ret(new QlSmileSection(alloc((*arg(o))->smileSection((*arg(optionTenor)), swapLength, extr))));
+    Date optionDate = (*arg(o))->optionDateFromTenor(*arg(optionTenor));
+    Time optionTime = (*arg(o))->timeFromReference(optionDate);
+    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(optionTime, swapLength, extr))));
   } catch (std::exception& er) {
     return handleException<QlSmileSection*>(e, er);
   }
 }
 QlSmileSection* qlSwaptionVolatilityStructureSmileSection4(QlSwaptionVolatilityStructure* o, int optionDate, double swapLength, int extr, char **e) {
   try {
-    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Date(optionDate), swapLength, extr))));
+    // declared but not implemented in Swaption TS for some reason:
+    //return ret(new QlSmileSection(alloc((*arg(o))->smileSection(Date(optionDate), swapLength, extr))));
+    Time optionTime = (*arg(o))->timeFromReference(Date(optionDate));
+    return ret(new QlSmileSection(alloc((*arg(o))->smileSection(optionTime, swapLength, extr))));
   } catch (std::exception& er) {
     return handleException<QlSmileSection*>(e, er);
   }
 }
-*/
+
 QlSmileSection* qlSwaptionVolatilityStructureSmileSection5(QlSwaptionVolatilityStructure* o, double optionTime, double swapLength, int extr, char **e) {
   try {
     return ret(new QlSmileSection(alloc((*arg(o))->smileSection(optionTime, swapLength, extr))));

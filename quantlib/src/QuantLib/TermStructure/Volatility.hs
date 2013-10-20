@@ -17,11 +17,9 @@ module QuantLib.TermStructure.Volatility
   , maxSwapLength
   , maxSwapTenor
   , smileSectionForPeriod'
-{-
   , smileSectionForPeriod
   , smileSectionForTenor
   , smileSection'
--}
   , smileSection
   , smileSectionForPeriods
   , swapLength'
@@ -230,7 +228,6 @@ smileSectionForPeriod' = $(ffiCall 'smileSectionForPeriod') c_smileSectionForPer
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection1"
   c_smileSectionForPeriod' :: Ptr CSwaptionVolatilityStructure -> CDate -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
 
-{- The following methods are not implemented in QuantLib for some reason
 -- |returns the smile for a given option time and swap tenor
 smileSectionForPeriod :: SwaptionVolatilityStructure
   -> YearFraction -- ^optionTime
@@ -263,7 +260,6 @@ smileSection' = $(ffiCall 'smileSection') c_smileSection'
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection4"
   c_smileSection' :: Ptr CSwaptionVolatilityStructure -> CDate -> CYearFraction -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
--}
 
 -- |returns the smile for a given option time and swap length
 smileSection :: SwaptionVolatilityStructure
