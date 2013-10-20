@@ -503,4 +503,20 @@ QlBond* qlFloatingRateBond1(unsigned settlementDays, double faceAmount, int star
   }
 }
 
+double qlBondCleanPrice(QlBond* o, char **e) {
+  try {
+    return (*arg(o))->cleanPrice();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
+double qlBondDirtyPrice(QlBond* o, char **e) {
+  try {
+    return (*arg(o))->dirtyPrice();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
