@@ -21,6 +21,12 @@ module QuantLib.Instances
   , theta
   , vega
   , dividendRho
+
+  , qrho
+  , qvega
+  , qlambda
+
+  , impliedVolatility
   )
 where
 
@@ -252,5 +258,85 @@ foreign import ccall safe "ql.h qlOneAssetOptionTheta"
   c_oneAssetOptionTheta :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 foreign import ccall safe "ql.h qlOneAssetOptionVega"
   c_oneAssetOptionVega :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
+
+class (Finalizable a) => QuantoOption a where
+  c_qrho :: Ptr a -> Ptr CString -> IO CDouble
+  c_qvega :: Ptr a -> Ptr CString -> IO CDouble
+  c_qlambda :: Ptr a -> Ptr CString -> IO CDouble
+
+qrho :: (QuantoOption a) => ForeignPtr a -> IO Double
+qrho = $(ffiCallX 'qrho) c_qrho
+
+qvega :: (QuantoOption a) => ForeignPtr a -> IO Double
+qvega = $(ffiCallX 'qvega) c_qvega
+
+qlambda :: (QuantoOption a) => ForeignPtr a -> IO Double
+qlambda = $(ffiCallX 'qlambda) c_qlambda
+
+instance QuantoOption CQuantoBarrierOption where
+  c_qrho = c_quantoBarrierOptionQrho
+  c_qvega = c_quantoBarrierOptionQvega
+  c_qlambda = c_quantoBarrierOptionQlambda
+
+instance QuantoOption CQuantoForwardVanillaOption where
+  c_qrho = c_quantoForwardVanillaOptionQrho
+  c_qvega = c_quantoForwardVanillaOptionQvega
+  c_qlambda = c_quantoForwardVanillaOptionQlambda
+
+instance QuantoOption CQuantoVanillaOption where
+  c_qrho = c_quantoVanillaOptionQrho
+  c_qvega = c_quantoVanillaOptionQvega
+  c_qlambda = c_quantoVanillaOptionQlambda
+
+foreign import ccall safe "ql.h qlQuantoBarrierOptionQrho"
+  c_quantoBarrierOptionQrho :: Ptr CQuantoBarrierOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlQuantoBarrierOptionQvega"
+  c_quantoBarrierOptionQvega :: Ptr CQuantoBarrierOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlQuantoBarrierOptionQlambda"
+  c_quantoBarrierOptionQlambda :: Ptr CQuantoBarrierOption -> Ptr CString -> IO CDouble
+
+foreign import ccall safe "ql.h qlQuantoForwardVanillaOptionQrho"
+  c_quantoForwardVanillaOptionQrho :: Ptr CQuantoForwardVanillaOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlQuantoForwardVanillaOptionQvega"
+  c_quantoForwardVanillaOptionQvega :: Ptr CQuantoForwardVanillaOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlQuantoForwardVanillaOptionQlambda"
+  c_quantoForwardVanillaOptionQlambda :: Ptr CQuantoForwardVanillaOption -> Ptr CString -> IO CDouble
+
+foreign import ccall safe "ql.h qlQuantoVanillaOptionQrho"
+  c_quantoVanillaOptionQrho :: Ptr CQuantoVanillaOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlQuantoVanillaOptionQvega"
+  c_quantoVanillaOptionQvega :: Ptr CQuantoVanillaOption -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlQuantoVanillaOptionQlambda"
+  c_quantoVanillaOptionQlambda :: Ptr CQuantoVanillaOption -> Ptr CString -> IO CDouble
+
+class (Finalizable a) => VolatileOption a where
+  c_impliedVolatility :: Ptr a -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+
+-- |/Warning/ currently, this method returns the Black-Scholes implied volatility using analytic formulas for European options and a finite-difference method for American and Bermudan options. It will give unconsistent results if the pricing was performed with any other methods (such as jump-diffusion models.)Warningoptions with a gamma that changes sign (e.g., binary options) have values that are not monotonic in the volatility. In these cases, the calculation can fail and the result (if any) is almost meaningless. Another possible source of failure is to have a target value that is not attainable with any volatility, e.g., a target value lower than the intrinsic value in the case of American options.
+impliedVolatility :: (VolatileOption a) => ForeignPtr a
+  -> Double -- ^price
+  -> GeneralizedBlackScholesProcess -- ^process
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> Double -- ^minVol
+  -> Double -- ^maxVol
+  -> IO Double
+impliedVolatility = $(ffiCallX 'impliedVolatility) c_impliedVolatility
+
+instance VolatileOption CDividendVanillaOption where
+  c_impliedVolatility = c_dividendVanillaOptionImpliedVolatility
+
+instance VolatileOption CVanillaOption where
+  c_impliedVolatility = c_VanillaOptionImpliedVolatility
+
+instance VolatileOption CBarrierOption where
+  c_impliedVolatility = c_barrierOptionImpliedVolatility
+
+foreign import ccall safe "ql.h qlDividendVanillaOptionImpliedVolatility"
+  c_dividendVanillaOptionImpliedVolatility :: Ptr CDividendVanillaOption -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlVanillaOptionImpliedVolatility"
+  c_VanillaOptionImpliedVolatility :: Ptr CVanillaOption -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+foreign import ccall safe "ql.h qlBarrierOptionImpliedVolatility"
+  c_barrierOptionImpliedVolatility :: Ptr CBarrierOption -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

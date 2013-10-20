@@ -9,7 +9,6 @@ basisPointValue       : CashFlow/Leg.hs, Instrument/Bond.hs
 basisPointValue'      : CashFlow/Leg.hs, Instrument/Bond.hs
 bps                   : CashFlow/Leg.hs, Instrument/Bond.hs
 bps'                  : CashFlow/Leg.hs, Instrument/Bond.hs
-bps''                 : CashFlow/Leg.hs, Instrument/Bond.hs
 cashFlows	      : CashFlow/Leg.hs, Instrument/Bond.hs
 convexity             : CashFlow/Leg.hs, Instrument/Bond.hs
 convexity'            : CashFlow/Leg.hs, Instrument/Bond.hs

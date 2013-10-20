@@ -3,9 +3,7 @@
 module QuantLib.Instrument.Option
   (
     barrierOption
-  , impliedVolatility
   , dividendVanillaOption
-  , impliedVolatility'
   , forwardVanillaOption
   , delta1
   , delta2
@@ -20,19 +18,9 @@ module QuantLib.Instrument.Option
   , oneAssetOption
   , strikeSensitivity
   , thetaPerDay
-  , qlambda
-  , qrho
   , quantoBarrierOption
-  , qvega
-  , qlambda'
-  , qrho'
   , quantoForwardVanillaOption
-  , qvega'
-  , qlambda''
-  , qrho''
   , quantoVanillaOption
-  , qvega''
-  , impliedVolatility''
   , vanillaOption
   , dividendBarrierOption
   , basketOption
@@ -69,20 +57,6 @@ barrierOption = $(ffiCall 'barrierOption) c_barrierOption
 foreign import ccall safe "ql.h qlBarrierOption"
   c_barrierOption :: CInt -> CDouble -> CDouble -> Ptr CStrikedTypePayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr CBarrierOption)
 
--- |/Warning/ see VanillaOption for notes on implied-volatility calculation.
-impliedVolatility :: BarrierOption
-  -> Double -- ^price
-  -> GeneralizedBlackScholesProcess -- ^process
-  -> Double -- ^accuracy
-  -> Word -- ^maxEvaluations
-  -> Double -- ^minVol
-  -> Double -- ^maxVol
-  -> IO Double
-impliedVolatility = $(ffiCallX 'impliedVolatility) c_impliedVolatility
-
-foreign import ccall safe "ql.h qlBarrierOptionImpliedVolatility"
-  c_impliedVolatility :: Ptr CBarrierOption -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
-
 dividendVanillaOption :: StrikedTypePayoff -- ^payoff
   -> Exercise -- ^exercise
   -> [Day] -- ^dividendDates
@@ -92,20 +66,6 @@ dividendVanillaOption = $(ffiCall 'dividendVanillaOption) c_dividendVanillaOptio
 
 foreign import ccall safe "ql.h qlDividendVanillaOption"
   c_dividendVanillaOption :: Ptr CStrikedTypePayoff -> Ptr CExercise -> CUInt -> Ptr CDate -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CDividendVanillaOption)
-
--- |/Warning/ see VanillaOption for notes on implied-volatility calculation.
-impliedVolatility' :: DividendVanillaOption
-  -> Double -- ^price
-  -> GeneralizedBlackScholesProcess -- ^process
-  -> Double -- ^accuracy
-  -> Word -- ^maxEvaluations
-  -> Double -- ^minVol
-  -> Double -- ^maxVol
-  -> IO Double
-impliedVolatility' = $(ffiCallX 'impliedVolatility') c_impliedVolatility'
-
-foreign import ccall safe "ql.h qlDividendVanillaOptionImpliedVolatility"
-  c_impliedVolatility' :: Ptr CDividendVanillaOption -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 forwardVanillaOption :: Double -- ^moneyness
   -> Day -- ^resetDate
@@ -193,18 +153,6 @@ thetaPerDay = $(ffiCallX 'thetaPerDay) c_thetaPerDay
 foreign import ccall safe "ql.h qlOneAssetOptionThetaPerDay"
   c_thetaPerDay :: Ptr COneAssetOption -> Ptr CString -> IO CDouble
 
-qlambda :: QuantoBarrierOption -> IO Double
-qlambda = $(ffiCallX 'qlambda) c_qlambda
-
-foreign import ccall safe "ql.h qlQuantoBarrierOptionQlambda"
-  c_qlambda :: Ptr CQuantoBarrierOption -> Ptr CString -> IO CDouble
-
-qrho :: QuantoBarrierOption -> IO Double
-qrho = $(ffiCallX 'qrho) c_qrho
-
-foreign import ccall safe "ql.h qlQuantoBarrierOptionQrho"
-  c_qrho :: Ptr CQuantoBarrierOption -> Ptr CString -> IO CDouble
-
 quantoBarrierOption :: BarrierType -- ^barrierType
   -> Double -- ^barrier
   -> Double -- ^rebate
@@ -216,24 +164,6 @@ quantoBarrierOption = $(ffiCall 'quantoBarrierOption) c_quantoBarrierOption
 foreign import ccall safe "ql.h qlQuantoBarrierOption"
   c_quantoBarrierOption :: CInt -> CDouble -> CDouble -> Ptr CStrikedTypePayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr CQuantoBarrierOption)
 
-qvega :: QuantoBarrierOption -> IO Double
-qvega = $(ffiCallX 'qvega) c_qvega
-
-foreign import ccall safe "ql.h qlQuantoBarrierOptionQvega"
-  c_qvega :: Ptr CQuantoBarrierOption -> Ptr CString -> IO CDouble
-
-qlambda' :: QuantoForwardVanillaOption -> IO Double
-qlambda' = $(ffiCallX 'qlambda') c_qlambda'
-
-foreign import ccall safe "ql.h qlQuantoForwardVanillaOptionQlambda"
-  c_qlambda' :: Ptr CQuantoForwardVanillaOption -> Ptr CString -> IO CDouble
-
-qrho' :: QuantoForwardVanillaOption -> IO Double
-qrho' = $(ffiCallX 'qrho') c_qrho'
-
-foreign import ccall safe "ql.h qlQuantoForwardVanillaOptionQrho"
-  c_qrho' :: Ptr CQuantoForwardVanillaOption -> Ptr CString -> IO CDouble
-
 quantoForwardVanillaOption :: Double -- ^moneyness
   -> Day -- ^resetDate
   -> StrikedTypePayoff
@@ -244,49 +174,11 @@ quantoForwardVanillaOption = $(ffiCall 'quantoForwardVanillaOption) c_quantoForw
 foreign import ccall safe "ql.h qlQuantoForwardVanillaOption"
   c_quantoForwardVanillaOption :: CDouble -> CDate -> Ptr CStrikedTypePayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr CQuantoForwardVanillaOption)
 
-qvega' :: QuantoForwardVanillaOption -> IO Double
-qvega' = $(ffiCallX 'qvega') c_qvega'
-
-foreign import ccall safe "ql.h qlQuantoForwardVanillaOptionQvega"
-  c_qvega' :: Ptr CQuantoForwardVanillaOption -> Ptr CString -> IO CDouble
-
-qlambda'' :: QuantoVanillaOption -> IO Double
-qlambda'' = $(ffiCallX 'qlambda'') c_qlambda''
-
-foreign import ccall safe "ql.h qlQuantoVanillaOptionQlambda"
-  c_qlambda'' :: Ptr CQuantoVanillaOption -> Ptr CString -> IO CDouble
-
-qrho'' :: QuantoVanillaOption -> IO Double
-qrho'' = $(ffiCallX 'qrho'') c_qrho''
-
-foreign import ccall safe "ql.h qlQuantoVanillaOptionQrho"
-  c_qrho'' :: Ptr CQuantoVanillaOption -> Ptr CString -> IO CDouble
-
 quantoVanillaOption :: StrikedTypePayoff -> Exercise -> IO QuantoVanillaOption
 quantoVanillaOption = $(ffiCall 'quantoVanillaOption) c_quantoVanillaOption
 
 foreign import ccall safe "ql.h qlQuantoVanillaOption"
   c_quantoVanillaOption :: Ptr CStrikedTypePayoff -> Ptr CExercise -> Ptr CString -> IO (Ptr CQuantoVanillaOption)
-
-qvega'' :: QuantoVanillaOption -> IO Double
-qvega'' = $(ffiCallX 'qvega'') c_qvega''
-
-foreign import ccall safe "ql.h qlQuantoVanillaOptionQvega"
-  c_qvega'' :: Ptr CQuantoVanillaOption -> Ptr CString -> IO CDouble
-
--- |/Warning/ currently, this method returns the Black-Scholes implied volatility using analytic formulas for European options and a finite-difference method for American and Bermudan options. It will give unconsistent results if the pricing was performed with any other methods (such as jump-diffusion models.)Warningoptions with a gamma that changes sign (e.g., binary options) have values that are not monotonic in the volatility. In these cases, the calculation can fail and the result (if any) is almost meaningless. Another possible source of failure is to have a target value that is not attainable with any volatility, e.g., a target value lower than the intrinsic value in the case of American options.
-impliedVolatility'' :: VanillaOption
-  -> Double -- ^price
-  -> GeneralizedBlackScholesProcess -- ^process
-  -> Double -- ^accuracy
-  -> Word -- ^maxEvaluations
-  -> Double -- ^minVol
-  -> Double -- ^maxVol
-  -> IO Double
-impliedVolatility'' = $(ffiCallX 'impliedVolatility'') c_impliedVolatility''
-
-foreign import ccall safe "ql.h qlVanillaOptionImpliedVolatility"
-  c_impliedVolatility'' :: Ptr CVanillaOption -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 
 vanillaOption :: StrikedTypePayoff -> Exercise -> IO VanillaOption
 vanillaOption = $(ffiCall 'vanillaOption) c_vanillaOption
