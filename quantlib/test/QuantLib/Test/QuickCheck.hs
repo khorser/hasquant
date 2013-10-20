@@ -102,7 +102,7 @@ prop_quoteValue val =
 prop_scheduleDates :: [ValidDay] -> Property
 prop_scheduleDates dates = monadicIO $ do
   c <- run Calendar.russia
-  s <- run $ Schedule.schedule' (map validDay dates) c BusinessDayConvention.Unadjusted
+  s <- run $ Schedule.scheduleFromDays (map validDay dates) c BusinessDayConvention.Unadjusted
   assert $ map validDay dates == Schedule.dates s
 
 $(derive makeArbitrary ''Frequency)

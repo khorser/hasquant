@@ -288,7 +288,7 @@ test_fixedBondWithSchedule = do
     (Just $ fromGregorian 2012 12 21)
     (Just $ fromGregorian 2013 12 21)
   cnt <- DayCounter.actual365Fixed
-  _ <- Bond.fixedRateBond
+  _ <- Bond.fixedRateBondFromSchedule
         1
         100
         s
@@ -305,7 +305,7 @@ test_fixedBondWithCalendars = do
   c <- Calendar.russia
   tenor <- Period.period 1 Unit.Months
   cnt <- DayCounter.actual365Fixed
-  _ <- Bond.fixedRateBond'
+  _ <- Bond.fixedRateBond
     1
     c
     100
@@ -342,7 +342,7 @@ test_fixedBond = do
     False
     (Just (fromGregorian 2012 12 21))
     (Just (fromGregorian 2013 12 21))
-  _ <- Bond.fixedRateBond''
+  _ <- Bond.fixedRateBondFromSchedule'
           3
           100
           s

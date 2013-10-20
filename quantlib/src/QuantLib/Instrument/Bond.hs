@@ -4,9 +4,9 @@ module QuantLib.Instrument.Bond
   (
     bond
   , bond'
+  , fixedRateBondFromSchedule
   , fixedRateBond
-  , fixedRateBond'
-  , fixedRateBond''
+  , fixedRateBondFromSchedule'
   , zeroCouponBond
   , floatingRateBond
   , floatingRateBond'
@@ -114,22 +114,22 @@ maturityDate :: Bond -> Maybe Day
 maturityDate = $(ffiCallPure 'maturityDate) c_maturityDate
 
 foreign import ccall safe "ql.h qlFixedRateBond"
-  c_fixedRateBond :: CUInt -> CDouble -> Ptr CSchedule
+  c_fixedRateBondFromSchedule :: CUInt -> CDouble -> Ptr CSchedule
     -> CUInt -> Ptr CDouble -> Ptr CDayCounter
     -> CInt -> CDouble -> CDate -> Ptr CCalendar -> Ptr CString
     -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedRateBond1"
-  c_fixedRateBond' :: CUInt -> Ptr CCalendar -> CDouble -> CDate -> CDate
+  c_fixedRateBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate -> CDate
     -> Ptr CPeriod -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CInt
     -> CDouble -> CDate -> CDate -> CInt -> CInt -> Ptr CCalendar
     -> Ptr CString -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedRateBond2"
-  c_fixedRateBond'' :: CUInt -> CDouble -> Ptr CSchedule
+  c_fixedRateBondFromSchedule' :: CUInt -> CDouble -> Ptr CSchedule
     -> CUInt -> Ptr (Ptr CInterestRate) -> CInt -> CDouble -> CDate -> Ptr CCalendar
     -> Ptr CString -> IO (Ptr CFixedRateBond)
 
 -- |simple annual compounding coupon rates. QuantLibXL: qlFixedRateBond
-fixedRateBond :: Word -- ^settlementDays
+fixedRateBondFromSchedule :: Word -- ^settlementDays
   -> Double -- ^faceAmount
   -> Schedule -- ^schedule
   -> [Double] -- ^coupons
@@ -139,10 +139,10 @@ fixedRateBond :: Word -- ^settlementDays
   -> Maybe Day -- ^issueDate
   -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
-fixedRateBond = $(ffiCall 'fixedRateBond) c_fixedRateBond
+fixedRateBondFromSchedule = $(ffiCall 'fixedRateBondFromSchedule) c_fixedRateBondFromSchedule
 
 -- |simple annual compounding coupon rates with internal schedule calculation
-fixedRateBond' :: Word -- ^settlementDays
+fixedRateBond :: Word -- ^settlementDays
   -> Calendar -- ^couponCalendar
   -> Double -- ^faceAmount
   -> Day -- ^startDate
@@ -159,10 +159,10 @@ fixedRateBond' :: Word -- ^settlementDays
   -> Bool -- ^endOfMonth
   -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
-fixedRateBond' = $(ffiCall 'fixedRateBond') c_fixedRateBond'
+fixedRateBond = $(ffiCall 'fixedRateBond) c_fixedRateBond
 
 -- |generic compounding and frequency InterestRate coupons. QuantLibXL: qlFixedRateBond2
-fixedRateBond'' :: Word -- ^settlementDays
+fixedRateBondFromSchedule' :: Word -- ^settlementDays
   -> Double -- ^faceAmount
   -> Schedule -- ^schedule
   -> [InterestRate] -- ^coupons
@@ -171,7 +171,7 @@ fixedRateBond'' :: Word -- ^settlementDays
   -> Maybe Day -- ^issueDate
   -> Calendar -- ^paymentCalendar
   -> IO FixedRateBond
-fixedRateBond'' = $(ffiCall 'fixedRateBond'') c_fixedRateBond''
+fixedRateBondFromSchedule' = $(ffiCall 'fixedRateBondFromSchedule') c_fixedRateBondFromSchedule'
 
 foreign import ccall safe "ql.h qlZeroCouponBond"
   c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate

@@ -16,14 +16,14 @@ module QuantLib.TermStructure.Volatility
   , blackVarianceForTenor
   , maxSwapLength
   , maxSwapTenor
-  , smileSection'
+  , smileSectionForPeriod'
 {-
-  , smileSection''
-  , smileSection'''
-  , smileSection''''
+  , smileSectionForPeriod
+  , smileSectionForTenor
+  , smileSection'
 -}
-  , smileSection'''''
   , smileSection
+  , smileSectionForPeriods
   , swapLength'
   , swapLength
   , volatilityForPeriod
@@ -220,72 +220,72 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureMaxSwapTenor"
   c_maxSwapTenor :: Ptr CSwaptionVolatilityStructure -> Ptr CString -> IO (Ptr CPeriod)
 
 -- |returns the smile for a given option date and swap tenor
-smileSection' :: SwaptionVolatilityStructure
+smileSectionForPeriod' :: SwaptionVolatilityStructure
   -> Day -- ^optionDate
   -> Period -- ^swapTenor
+  -> Bool -- ^extr
+  -> IO SmileSection
+smileSectionForPeriod' = $(ffiCall 'smileSectionForPeriod') c_smileSectionForPeriod'
+
+foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection1"
+  c_smileSectionForPeriod' :: Ptr CSwaptionVolatilityStructure -> CDate -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+
+{- The following methods are not implemented in QuantLib for some reason
+-- |returns the smile for a given option time and swap tenor
+smileSectionForPeriod :: SwaptionVolatilityStructure
+  -> YearFraction -- ^optionTime
+  -> Period -- ^swapTenor
+  -> Bool -- ^extr
+  -> IO SmileSection
+smileSectionForPeriod = $(ffiCall 'smileSectionForPeriod) c_smileSectionForPeriod
+
+foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection2"
+  c_smileSectionForPeriod :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+
+-- |returns the smile for a given option tenor and swap length
+smileSectionForTenor :: SwaptionVolatilityStructure
+  -> Period -- ^optionTenor
+  -> YearFraction -- ^swapLength
+  -> Bool -- ^extr
+  -> IO SmileSection
+smileSectionForTenor = $(ffiCall 'smileSectionForTenor) c_smileSectionForTenor
+
+foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection3"
+  c_smileSectionForTenor :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> CYearFraction -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+
+-- |returns the smile for a given option date and swap length
+smileSection' :: SwaptionVolatilityStructure
+  -> Day -- ^optionDate
+  -> YearFraction -- ^swapLength
   -> Bool -- ^extr
   -> IO SmileSection
 smileSection' = $(ffiCall 'smileSection') c_smileSection'
 
-foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection1"
-  c_smileSection' :: Ptr CSwaptionVolatilityStructure -> CDate -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
-
-{- The following methods are not implemented in QuantLib for some reason
--- |returns the smile for a given option time and swap tenor
-smileSection'' :: SwaptionVolatilityStructure
-  -> YearFraction -- ^optionTime
-  -> Period -- ^swapTenor
-  -> Bool -- ^extr
-  -> IO SmileSection
-smileSection'' = $(ffiCall 'smileSection'') c_smileSection''
-
-foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection2"
-  c_smileSection'' :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
-
--- |returns the smile for a given option tenor and swap length
-smileSection''' :: SwaptionVolatilityStructure
-  -> Period -- ^optionTenor
-  -> YearFraction -- ^swapLength
-  -> Bool -- ^extr
-  -> IO SmileSection
-smileSection''' = $(ffiCall 'smileSection''') c_smileSection'''
-
-foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection3"
-  c_smileSection''' :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> CYearFraction -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
-
--- |returns the smile for a given option date and swap length
-smileSection'''' :: SwaptionVolatilityStructure
-  -> Day -- ^optionDate
-  -> YearFraction -- ^swapLength
-  -> Bool -- ^extr
-  -> IO SmileSection
-smileSection'''' = $(ffiCall 'smileSection'''') c_smileSection''''
-
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection4"
-  c_smileSection'''' :: Ptr CSwaptionVolatilityStructure -> CDate -> CYearFraction -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+  c_smileSection' :: Ptr CSwaptionVolatilityStructure -> CDate -> CYearFraction -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
 -}
 
 -- |returns the smile for a given option time and swap length
-smileSection''''' :: SwaptionVolatilityStructure
+smileSection :: SwaptionVolatilityStructure
   -> YearFraction -- ^optionTime
   -> YearFraction -- ^swapLength
-  -> Bool -- ^extr
-  -> IO SmileSection
-smileSection''''' = $(ffiCall 'smileSection''''') c_smileSection'''''
-
-foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection5"
-  c_smileSection''''' :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> CYearFraction -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
-
--- |returns the smile for a given option tenor and swap tenor
-smileSection :: SwaptionVolatilityStructure
-  -> Period -- ^optionTenor
-  -> Period -- ^swapTenor
   -> Bool -- ^extr
   -> IO SmileSection
 smileSection = $(ffiCall 'smileSection) c_smileSection
 
+foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection5"
+  c_smileSection :: Ptr CSwaptionVolatilityStructure -> CYearFraction -> CYearFraction -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+
+-- |returns the smile for a given option tenor and swap tenor
+smileSectionForPeriods :: SwaptionVolatilityStructure
+  -> Period -- ^optionTenor
+  -> Period -- ^swapTenor
+  -> Bool -- ^extr
+  -> IO SmileSection
+smileSectionForPeriods = $(ffiCall 'smileSectionForPeriods) c_smileSectionForPeriods
+
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureSmileSection"
-  c_smileSection :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
+  c_smileSectionForPeriods :: Ptr CSwaptionVolatilityStructure -> Ptr CPeriod -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CSmileSection)
 
 -- |implements the conversion between swap dates and swap (time) length
 swapLength' :: SwaptionVolatilityStructure

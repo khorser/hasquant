@@ -3,7 +3,7 @@
 module QuantLib.Time.Schedule
   (
     schedule
-  , schedule'
+  , scheduleFromDays
   , until
 
   , dates
@@ -25,7 +25,7 @@ foreign import ccall safe "ql.h qlSchedule"
     -> CInt -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString
     -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlSchedule1"
-  c_schedule' :: CUInt -> Ptr CDate -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CSchedule)
+  c_scheduleFromDays :: CUInt -> Ptr CDate -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlScheduleUntil"
   c_until :: Ptr CSchedule -> CDate -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlScheduleDates"
@@ -46,14 +46,14 @@ schedule :: Maybe Day -- ^effectiveDate
 schedule = $(ffiCall 'schedule) c_schedule
 
 -- | QuantLibXL: qlScheduleFromDateVector
-schedule' :: [Day]
+scheduleFromDays :: [Day]
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^convention
   -> IO Schedule
-schedule' = $(ffiCall 'schedule') c_schedule'
+scheduleFromDays = $(ffiCall 'scheduleFromDays) c_scheduleFromDays
 
 -- |truncated schedule. QuantLibXL: qlScheduleTruncated
--- DO NOT call this on schedules created with 'schedule''
+-- DO NOT call this on schedules created with 'scheduleFromDays'
 -- because result.isRegular_.pop_back() in QuantLib's Schedule::until
 -- is called on empty isRegular_ causing unspecified behaviour including
 -- segfaults.
