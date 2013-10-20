@@ -81,11 +81,11 @@ run = do
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
               let dt = yearFraction dc d1 d2 d1 d2
-              df <- TS.discount ts d2 False
+              df <- TS.discount' ts d2 False
               return $ df * dt) $
                 zip (init ds) (drop 1 ds)
-      df1 <- TS.discount ts (head ds) False
-      df2 <- TS.discount ts (last ds) False
+      df1 <- TS.discount' ts (head ds) False
+      df2 <- TS.discount' ts (last ds) False
       printf "%.3f " $ 100.0 * (df1 - df2) / sum dfs
 
     printRates ts0 dc bondSettle tod curves instrA = do
@@ -133,7 +133,7 @@ run = do
                     TS.svenssonFitting]
 
       curves <- mapM
-          (\f -> TS.fittedBondDiscountCurve curveSettleDays cal instrA dc f tolerance maxEvals [] 1.0)
+          (\f -> TS.fittedBondDiscountCurve' curveSettleDays cal instrA dc f tolerance maxEvals [] 1.0)
           fittings
       printRates ts0 dc bondSettle tod curves instrA
       return (ts0, instrA, instrB, curves)
@@ -157,7 +157,7 @@ run = do
                     TS.svenssonFitting]
 
       curves <- mapM
-          (\f -> TS.fittedBondDiscountCurve curveSettleDays cal iA dc f tolerance maxEvals [] 1.0)
+          (\f -> TS.fittedBondDiscountCurve' curveSettleDays cal iA dc f tolerance maxEvals [] 1.0)
           fittings
       printRates ts00 dc bondSettle tod curves iA
       return (ts00, curves)

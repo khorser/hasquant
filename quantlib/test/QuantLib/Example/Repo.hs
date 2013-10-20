@@ -78,7 +78,7 @@ run = do
 
   fwd <- asForward bondFwd
   spotInc <- spotIncome fwd repoCurve
-  disc <- discount repoCurve repoDeliveryDate False
+  disc <- discount' repoCurve repoDeliveryDate False
   ii <- asInstrument fwd
   np <- npv ii
 
@@ -88,7 +88,7 @@ run = do
   impR <- impliedYield fwd dp dummyStrike repoSettlementDate
     repoCompounding repoDayCountConvention
 
-  z <- zeroRate repoCurve repoDeliveryDate repoDayCountConvention
+  z <- zeroRate' repoCurve repoDeliveryDate repoDayCountConvention
     repoCompounding repoCompoundFreq False
 
   return Result {

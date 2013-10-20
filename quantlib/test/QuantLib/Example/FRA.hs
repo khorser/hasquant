@@ -95,7 +95,7 @@ run = do
         spot <- spotValue fwd
         fwdValue <- forwardValue fwd
         implYield <- impliedYield fwd spot fwdValue settle Simple dc
-        zRate <- TS.zeroRate ts m dc Simple Annual False
+        zRate <- TS.zeroRate' ts m dc Simple Annual False
         fraNPV <- asInstrument fwd >>= npv
         return $ IterationResult (rate fwdRate) spot fwdValue (rate implYield) (rate zRate) fraNPV) $
          zip dates quotes

@@ -16,7 +16,7 @@ module QuantLib.TermStructure.Yield
   , fraIborRateHelper'
   , fraIborRateHelper
   , futuresRateHelper'
-  , futuresRateHelper''
+  , futuresIborRateHelper
   , futuresRateHelper
 
   , piecewiseYieldCurve
@@ -40,7 +40,7 @@ module QuantLib.TermStructure.Yield
   , zeroRate'
   , forwardRate
   , forwardRate'
-  , forwardRate''
+  , forwardRateForPeriod
 
   , impliedQuote
 
@@ -114,8 +114,7 @@ piecewiseYieldCurve :: Day -- ^referenceDate
   -> Trait -- ^bootstrap trait
   -> Interpolation -- ^interpolator
   -> IO YieldTermStructure
-piecewiseYieldCurve =
-  $(ffiCall 'piecewiseYieldCurve) c_piecewiseYieldCurve
+piecewiseYieldCurve = $(ffiCall 'piecewiseYieldCurve) c_piecewiseYieldCurve
 
 foreign import ccall safe "ql.h qlPiecewiseYieldCurve1"
   c_piecewiseYieldCurve' :: CUInt -> Ptr CCalendar -> CUInt
@@ -136,11 +135,11 @@ piecewiseYieldCurve' :: Word -- ^settlementDays
 piecewiseYieldCurve' = $(ffiCall 'piecewiseYieldCurve') c_piecewiseYieldCurve'
 
 -- |Returns a discount factor from the given YieldTermStructure object. QuantLibXL: qlYieldTSDiscount
-discount :: YieldTermStructure
+discount' :: YieldTermStructure
   -> Day -- ^d
   -> Bool -- ^extrapolate
   -> IO Double
-discount = $(ffiCallX 'discount) c_yieldTSDiscount
+discount' = $(ffiCallX 'discount') c_yieldTSDiscount
 
 foreign import ccall safe "ql.h qlSwapRateHelper1"
   c_swapRateHelper' :: Ptr CQuote -> Ptr CPeriod -> Ptr CCalendar -> CInt
@@ -185,20 +184,20 @@ foreign import ccall safe "ql.h qlFlatForward1"
   c_flatForward' :: CUInt -> Ptr CCalendar -> Ptr CQuote -> Ptr CDayCounter -> CInt -> CInt -> Ptr CString -> IO (Ptr CYieldTermStructure)
 
 -- |The resulting interest rate has the required daycounting rule.
-zeroRate :: YieldTermStructure
+zeroRate' :: YieldTermStructure
   -> Day -- ^d
   -> DayCounter -- ^resultDayCounter
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> Bool -- ^extrapolate
   -> IO InterestRate
-zeroRate = $(ffiCall 'zeroRate) c_zeroRate
+zeroRate' = $(ffiCall 'zeroRate') c_zeroRate
 
 foreign import ccall safe "ql.h qlYieldTermStructureZeroRate"
   c_zeroRate :: Ptr CYieldTermStructure -> CDate -> Ptr CDayCounter -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
 
 -- |The resulting interest rate has the required day-counting rule. /Warning/ dates are not adjusted for holidays
-forwardRate' :: YieldTermStructure
+forwardRateForPeriod :: YieldTermStructure
   -> Day -- ^d
   -> Period -- ^p
   -> DayCounter -- ^resultDayCounter
@@ -206,13 +205,13 @@ forwardRate' :: YieldTermStructure
   -> Frequency -- ^freq
   -> Bool -- ^extrapolate
   -> IO InterestRate
-forwardRate' = $(ffiCall 'forwardRate') c_forwardRate'
+forwardRateForPeriod = $(ffiCall 'forwardRateForPeriod) c_forwardRate'
 
 foreign import ccall safe "ql.h qlYieldTermStructureForwardRate1"
   c_forwardRate' :: Ptr CYieldTermStructure -> CDate -> Ptr CPeriod -> Ptr CDayCounter -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
 
 -- |The resulting interest rate has the required day-counting rule.
-forwardRate :: YieldTermStructure
+forwardRate' :: YieldTermStructure
   -> Day -- ^d1
   -> Day -- ^d2
   -> DayCounter -- ^resultDayCounter
@@ -220,42 +219,42 @@ forwardRate :: YieldTermStructure
   -> Frequency -- ^freq
   -> Bool -- ^extrapolate
   -> IO InterestRate
-forwardRate = $(ffiCall 'forwardRate) c_forwardRate
+forwardRate' = $(ffiCall 'forwardRate') c_forwardRate
 
 foreign import ccall safe "ql.h qlYieldTermStructureForwardRate"
   c_forwardRate :: Ptr CYieldTermStructure -> CDate -> CDate -> Ptr CDayCounter -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
 
 -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2.
-forwardRate'' :: YieldTermStructure
+forwardRate :: YieldTermStructure
   -> YearFraction -- ^t1
   -> YearFraction -- ^t2
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> Bool -- ^extrapolate
   -> IO InterestRate
-forwardRate'' = $(ffiCall 'forwardRate'') c_forwardRate''
+forwardRate = $(ffiCall 'forwardRate) c_forwardRate''
 
 foreign import ccall safe "ql.h qlYieldTermStructureForwardRate2"
   c_forwardRate'' :: Ptr CYieldTermStructure -> CYearFraction -> CYearFraction -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
 
 -- |The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed time t.
-zeroRate' :: YieldTermStructure
+zeroRate :: YieldTermStructure
   -> YearFraction -- ^t
   -> Compounding -- ^comp
   -> Frequency -- ^freq
   -> Bool -- ^extrapolate
   -> IO InterestRate
-zeroRate' = $(ffiCall 'zeroRate') c_zeroRate'
+zeroRate = $(ffiCall 'zeroRate) c_zeroRate'
 
 foreign import ccall safe "ql.h qlYieldTermStructureZeroRate1"
   c_zeroRate' :: Ptr CYieldTermStructure -> CYearFraction -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CInterestRate)
 
 -- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
-discount' :: YieldTermStructure
+discount :: YieldTermStructure
   -> YearFraction -- ^t
   -> Bool -- ^extrapolate
   -> IO Double
-discount' = $(ffiCallX 'discount') c_discount'
+discount = $(ffiCallX 'discount) c_discount'
 
 foreign import ccall safe "ql.h qlYieldTermStructureDiscount1"
   c_discount' :: Ptr CYieldTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
@@ -343,7 +342,7 @@ foreign import ccall safe "ql.h qlSvenssonFitting"
   c_svenssonFitting :: Ptr CString -> IO (Ptr CFittedBondDiscountCurveFittingMethod)
 
 -- |reference date based on current evaluation date
-fittedBondDiscountCurve :: Word -- ^settlementDays
+fittedBondDiscountCurve' :: Word -- ^settlementDays
   -> Calendar -- ^calendar
   -> [BondHelper] -- ^bonds
   -> DayCounter -- ^dayCounter
@@ -353,13 +352,13 @@ fittedBondDiscountCurve :: Word -- ^settlementDays
   -> [Double] -- ^guess
   -> Double -- ^simplexLambda
   -> IO FittedBondDiscountCurve
-fittedBondDiscountCurve = $(ffiCall 'fittedBondDiscountCurve) c_fittedBondDiscountCurve
+fittedBondDiscountCurve' = $(ffiCall 'fittedBondDiscountCurve') c_fittedBondDiscountCurve
 
 foreign import ccall safe "ql.h qlFittedBondDiscountCurve"
   c_fittedBondDiscountCurve :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> CUInt -> Ptr CDouble -> CDouble -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
 
 -- |curve reference date fixed for life of curve
-fittedBondDiscountCurve' :: Day -- ^referenceDate
+fittedBondDiscountCurve :: Day -- ^referenceDate
   -> [BondHelper] -- ^bonds
   -> DayCounter -- ^dayCounter
   -> FittedBondDiscountCurveFittingMethod -- ^fittingMethod
@@ -368,7 +367,7 @@ fittedBondDiscountCurve' :: Day -- ^referenceDate
   -> [Double] -- ^guess
   -> Double -- ^simplexLambda
   -> IO FittedBondDiscountCurve
-fittedBondDiscountCurve' = $(ffiCall 'fittedBondDiscountCurve') c_fittedBondDiscountCurve'
+fittedBondDiscountCurve = $(ffiCall 'fittedBondDiscountCurve) c_fittedBondDiscountCurve'
 
 foreign import ccall safe "ql.h qlFittedBondDiscountCurve1"
   c_fittedBondDiscountCurve' :: CDate -> CUInt -> Ptr (Ptr CBondHelper) -> Ptr CDayCounter -> Ptr CFittedBondDiscountCurveFittingMethod -> CDouble -> CUInt -> CUInt -> Ptr CDouble -> CDouble -> Ptr CString -> IO (Ptr CFittedBondDiscountCurve)
@@ -514,12 +513,12 @@ futuresRateHelper' = $(ffiCall 'futuresRateHelper') c_futuresRateHelper'
 foreign import ccall safe "ql.h qlFuturesRateHelper1"
   c_futuresRateHelper' :: Ptr CQuote -> CDate -> CDate -> Ptr CDayCounter -> Ptr CQuote -> Ptr CString -> IO (Ptr CRateHelper)
 
-futuresRateHelper'' :: Quote -- ^price
+futuresIborRateHelper :: Quote -- ^price
   -> Day -- ^immDate
   -> IborIndex -- ^iborIndex
   -> Maybe Quote -- ^convexityAdjustment
   -> IO RateHelper
-futuresRateHelper'' = $(ffiCall 'futuresRateHelper'') c_futuresRateHelper''
+futuresIborRateHelper = $(ffiCall 'futuresIborRateHelper) c_futuresRateHelper''
 
 foreign import ccall safe "ql.h qlFuturesRateHelper2"
   c_futuresRateHelper'' :: Ptr CQuote -> CDate -> Ptr CIborIndex -> Ptr CQuote -> Ptr CString -> IO (Ptr CRateHelper)
