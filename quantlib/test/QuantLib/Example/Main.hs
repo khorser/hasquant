@@ -31,8 +31,8 @@ main = do
   putStrLn $ "Previous coupon: " ++ show (BondExample.previousCoupon br)
   putStrLn $ "Next coupon: " ++ show (BondExample.nextCoupon br)
   putStrLn $ "Next coupon date: " ++ show (BondExample.nextCouponDate br)
-  putStrLn $ "Floater's clean price from yield: " ++ show (BondExample.cleanPriceFromYield br)
-  putStrLn $ "Floater's yield from clean price: " ++ show (BondExample.yieldFromCleanPrice br)
+  putStrLn $ "Floater's clean price from yield: " ++ show (BondExample.cleanPriceFromYieldR br)
+  putStrLn $ "Floater's yield from clean price: " ++ show (BondExample.yieldFromCleanPriceR br)
   putStrLn $ "Tradable: " ++ show (BondExample.tradable br)
 
   putStrLn $ "CashFlows: NPV: " ++ show (BondExample.cfnpvR br) ++ ", NPV_BPS: " ++ show (BondExample.cfnpvbpsR br)
