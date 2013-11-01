@@ -174,7 +174,7 @@ double* qlBondNotionals(QlBond* o, unsigned *len, char **e) {
 double qlBondYield(QlBond* o, DayCounter* dc, int comp, int freq, double accuracy,
     unsigned maxEvaluations, char **e) {
   try {
-    return (*arg(o))->yield((*arg(dc)), (Compounding)comp, (Frequency)freq, accuracy, maxEvaluations);
+    return (*arg(o))->yield(*arg(dc), (Compounding)comp, (Frequency)freq, accuracy, maxEvaluations);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }

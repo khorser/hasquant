@@ -56,7 +56,7 @@ double qlInterestRateDiscountFactor(InterestRate* o, double t, char **e) {
 
 InterestRate* qlInterestRateEquivalentRate1(InterestRate* o, DayCounter* resultDC, int comp, int freq, int d1, int d2, int refStart, int refEnd, char **e) {
   try {
-    return ret(new InterestRate(arg(o)->equivalentRate((*arg(resultDC)), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), Date(refStart), Date(refEnd))));
+    return ret(new InterestRate(arg(o)->equivalentRate(*arg(resultDC), (Compounding)comp, (Frequency)freq, Date(d1), Date(d2), Date(refStart), Date(refEnd))));
   } catch (std::exception& er) {
     return handleException<InterestRate*>(e, er);
   }

@@ -127,7 +127,7 @@ QlBatesProcess* qlBatesProcess(QlYieldTermStructure* riskFreeRate, QlYieldTermSt
 }
 QlExtOUWithJumpsProcess* qlExtOUWithJumpsProcess(QlExtendedOrnsteinUhlenbeckProcess* process, double Y0, double beta, double jumpIntensity, double eta, char **e) {
   try {
-    return ret(new QlExtOUWithJumpsProcess(alloc(new ExtOUWithJumpsProcess((*arg(process)), Y0, beta, jumpIntensity, eta))));
+    return ret(new QlExtOUWithJumpsProcess(alloc(new ExtOUWithJumpsProcess(*arg(process), Y0, beta, jumpIntensity, eta))));
   } catch (std::exception& er) {
     return handleException<QlExtOUWithJumpsProcess*>(e, er);
   }
@@ -190,14 +190,14 @@ QlHullWhiteProcess* qlHullWhiteProcess(QlYieldTermStructure* h, double a, double
 }
 QlHybridHestonHullWhiteProcess* qlHybridHestonHullWhiteProcess(QlHestonProcess* hestonProcess, QlHullWhiteForwardProcess* hullWhiteProcess, double corrEquityShortRate, int discretization, char **e) {
   try {
-    return ret(new QlHybridHestonHullWhiteProcess(alloc(new HybridHestonHullWhiteProcess((*arg(hestonProcess)), (*arg(hullWhiteProcess)), corrEquityShortRate, (HybridHestonHullWhiteProcess::Discretization)discretization))));
+    return ret(new QlHybridHestonHullWhiteProcess(alloc(new HybridHestonHullWhiteProcess(*arg(hestonProcess), *arg(hullWhiteProcess), corrEquityShortRate, (HybridHestonHullWhiteProcess::Discretization)discretization))));
   } catch (std::exception& er) {
     return handleException<QlHybridHestonHullWhiteProcess*>(e, er);
   }
 }
 QlKlugeExtOUProcess* qlKlugeExtOUProcess(double rho, QlExtOUWithJumpsProcess* kluge, QlExtendedOrnsteinUhlenbeckProcess* extOU, char **e) {
   try {
-    return ret(new QlKlugeExtOUProcess(alloc(new KlugeExtOUProcess(rho, (*arg(kluge)), (*arg(extOU))))));
+    return ret(new QlKlugeExtOUProcess(alloc(new KlugeExtOUProcess(rho, *arg(kluge), (*arg(extOU))))));
   } catch (std::exception& er) {
     return handleException<QlKlugeExtOUProcess*>(e, er);
   }

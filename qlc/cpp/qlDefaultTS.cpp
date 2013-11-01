@@ -20,7 +20,7 @@ QlDefaultProbabilityTermStructure* qlFactorSpreadedHazardRateCurve(QlDefaultProb
 }
 QlDefaultProbabilityTermStructure* qlFlatHazardRate1(unsigned settlementDays, Calendar* calendar, QlQuote* hazardRate, DayCounter* x3, char **e) {
   try {
-    return ret(new QlDefaultProbabilityTermStructure(alloc(new FlatHazardRate(settlementDays, (*arg(calendar)), Handle<Quote>(*arg(hazardRate)), (*arg(x3))))));
+    return ret(new QlDefaultProbabilityTermStructure(alloc(new FlatHazardRate(settlementDays, *arg(calendar), Handle<Quote>(*arg(hazardRate)), (*arg(x3))))));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
   }

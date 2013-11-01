@@ -25,7 +25,7 @@ void qlFreeCalibratedModel(QlCalibratedModel *o) { del(o); }
 
 QlBatesModel* qlBatesModel(QlBatesProcess* process, char **e) {
   try {
-    return ret(new QlBatesModel(alloc(new BatesModel((*arg(process))))));
+    return ret(new QlBatesModel(alloc(new BatesModel(*arg(process)))));
   } catch (std::exception& er) {
     return handleException<QlBatesModel*>(e, er);
   }
@@ -74,14 +74,14 @@ QlShortRateModel* qlGeneralizedHullWhite(QlYieldTermStructure* yieldtermStructur
 }
 QlGJRGARCHModel* qlGJRGARCHModel(QlGJRGARCHProcess* process, char **e) {
   try {
-    return ret(new QlGJRGARCHModel(alloc(new GJRGARCHModel((*arg(process))))));
+    return ret(new QlGJRGARCHModel(alloc(new GJRGARCHModel(*arg(process)))));
   } catch (std::exception& er) {
     return handleException<QlGJRGARCHModel*>(e, er);
   }
 }
 QlHestonModel* qlHestonModel(QlHestonProcess* process, char **e) {
   try {
-    return ret(new QlHestonModel(alloc(new HestonModel((*arg(process))))));
+    return ret(new QlHestonModel(alloc(new HestonModel(*arg(process)))));
   } catch (std::exception& er) {
     return handleException<QlHestonModel*>(e, er);
   }
@@ -95,7 +95,7 @@ QlHullWhite* qlHullWhite(QlYieldTermStructure* termStructure, double a, double s
 }
 QlCalibratedModel* qlVarianceGammaModel(QlVarianceGammaProcess* process, char **e) {
   try {
-    return ret(new QlCalibratedModel(alloc(new VarianceGammaModel((*arg(process))))));
+    return ret(new QlCalibratedModel(alloc(new VarianceGammaModel(*arg(process)))));
   } catch (std::exception& er) {
     return handleException<QlCalibratedModel*>(e, er);
   }
@@ -123,14 +123,14 @@ void qlFreeLmCorrelationModel(QlLmCorrelationModel *o) { del(o); }
 void qlFreeLmVolatilityModel(QlLmVolatilityModel *o) { del(o); }
 QlLmCorrelationModel* qlLmConstWrapperCorrelationModel(QlLmCorrelationModel* corrModel, char **e) {
   try {
-    return ret(new QlLmCorrelationModel(alloc(new LmConstWrapperCorrelationModel((*arg(corrModel))))));
+    return ret(new QlLmCorrelationModel(alloc(new LmConstWrapperCorrelationModel(*arg(corrModel)))));
   } catch (std::exception& er) {
     return handleException<QlLmCorrelationModel*>(e, er);
   }
 }
 QlLmVolatilityModel* qlLmConstWrapperVolatilityModel(QlLmVolatilityModel* volaModel, char **e) {
   try {
-    return ret(new QlLmVolatilityModel(alloc(new LmConstWrapperVolatilityModel((*arg(volaModel))))));
+    return ret(new QlLmVolatilityModel(alloc(new LmConstWrapperVolatilityModel(*arg(volaModel)))));
   } catch (std::exception& er) {
     return handleException<QlLmVolatilityModel*>(e, er);
   }
@@ -165,7 +165,7 @@ QlLmVolatilityModel* qlLmLinearExponentialVolatilityModel(unsigned fixingTimesLe
 }
 QlLiborForwardModel* qlLiborForwardModel(QlLiborForwardModelProcess* process, QlLmVolatilityModel* volaModel, QlLmCorrelationModel* corrModel, char **e) {
   try {
-    return ret(new QlLiborForwardModel(alloc(new LiborForwardModel((*arg(process)), (*arg(volaModel)), (*arg(corrModel))))));
+    return ret(new QlLiborForwardModel(alloc(new LiborForwardModel(*arg(process), *arg(volaModel), *arg(corrModel)))));
   } catch (std::exception& er) {
     return handleException<QlLiborForwardModel*>(e, er);
   }
@@ -195,7 +195,7 @@ void qlCalibrationHelperSetPricingEngine(QlCalibrationHelper* o, QlPricingEngine
 }
 QlCalibrationHelper* qlCapHelper(Period* length, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e) {
   try {
-    return ret(new QlCalibrationHelper(alloc(new CapHelper(*arg(length), Handle<Quote>(*arg(volatility)), (*arg(index)), (Frequency)fixedLegFrequency, *arg(fixedLegDayCounter), includeFirstSwaplet, Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
+    return ret(new QlCalibrationHelper(alloc(new CapHelper(*arg(length), Handle<Quote>(*arg(volatility)), *arg(index), (Frequency)fixedLegFrequency, *arg(fixedLegDayCounter), includeFirstSwaplet, Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
   } catch (std::exception& er) {
     return handleException<QlCalibrationHelper*>(e, er);
   }
@@ -209,7 +209,7 @@ QlCalibrationHelper* qlHestonModelHelper(Period* maturity, Calendar* calendar, d
 }
 QlCalibrationHelper* qlSwaptionHelper(Period* maturity, Period* length, QlQuote* volatility, QlIborIndex* index, Period* fixedLegTenor, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e) {
   try {
-    return ret(new QlCalibrationHelper(alloc(new SwaptionHelper(*arg(maturity), *arg(length), Handle<Quote>(*arg(volatility)), (*arg(index)), *arg(fixedLegTenor), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
+    return ret(new QlCalibrationHelper(alloc(new SwaptionHelper(*arg(maturity), *arg(length), Handle<Quote>(*arg(volatility)), *arg(index), *arg(fixedLegTenor), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
   } catch (std::exception& er) {
     return handleException<QlCalibrationHelper*>(e, er);
   }

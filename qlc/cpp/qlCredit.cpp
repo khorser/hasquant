@@ -32,7 +32,7 @@ QlClaim* qlFaceValueClaim(char **e) {
 
 QlCreditDefaultSwap* qlCreditDefaultSwap1(int side, double notional, double upfront, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, int upfrontDate, QlClaim* x11, char **e) {
   try {
-    return ret(new QlCreditDefaultSwap(alloc(new CreditDefaultSwap((Protection::Side)side, notional, upfront, spread, (*arg(schedule)), (BusinessDayConvention)paymentConvention, (*arg(dayCounter)), settlesAccrual, paysAtDefaultTime, qlNullableDate(protectionStart), qlNullableDate(upfrontDate), (*arg(x11))))));
+    return ret(new QlCreditDefaultSwap(alloc(new CreditDefaultSwap((Protection::Side)side, notional, upfront, spread, *arg(schedule), (BusinessDayConvention)paymentConvention, *arg(dayCounter), settlesAccrual, paysAtDefaultTime, qlNullableDate(protectionStart), qlNullableDate(upfrontDate), (*arg(x11))))));
   } catch (std::exception& er) {
     return handleException<QlCreditDefaultSwap*>(e, er);
   }
@@ -40,7 +40,7 @@ QlCreditDefaultSwap* qlCreditDefaultSwap1(int side, double notional, double upfr
 
 QlCreditDefaultSwap* qlCreditDefaultSwap(int side, double notional, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, QlClaim* x9, char **e) {
   try {
-    return ret(new QlCreditDefaultSwap(alloc(new CreditDefaultSwap((Protection::Side)side, notional, spread, (*arg(schedule)), (BusinessDayConvention)paymentConvention, (*arg(dayCounter)), settlesAccrual, paysAtDefaultTime, qlNullableDate(protectionStart), (*arg(x9))))));
+    return ret(new QlCreditDefaultSwap(alloc(new CreditDefaultSwap((Protection::Side)side, notional, spread, *arg(schedule), (BusinessDayConvention)paymentConvention, *arg(dayCounter), settlesAccrual, paysAtDefaultTime, qlNullableDate(protectionStart), (*arg(x9))))));
   } catch (std::exception& er) {
     return handleException<QlCreditDefaultSwap*>(e, er);
   }

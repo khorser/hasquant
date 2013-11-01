@@ -45,28 +45,28 @@ QlQuote* qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPr
 }
 QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, Period* fwdStart, char **e) {
   try {
-    return ret(new QlQuote(alloc(new ForwardSwapQuote((*arg(swapIndex)), Handle<Quote>(*arg(spread)), (*arg(fwdStart))))));
+    return ret(new QlQuote(alloc(new ForwardSwapQuote(*arg(swapIndex), Handle<Quote>(*arg(spread)), (*arg(fwdStart))))));
   } catch (std::exception& er) {
     return handleException<QlQuote*>(e, er);
   }
 }
 QlQuote* qlForwardValueQuote(QlIndex* index, int fixingDate, char **e) {
   try {
-    return ret(new QlQuote(alloc(new ForwardValueQuote((*arg(index)), Date(fixingDate)))));
+    return ret(new QlQuote(alloc(new ForwardValueQuote(*arg(index), Date(fixingDate)))));
   } catch (std::exception& er) {
     return handleException<QlQuote*>(e, er);
   }
 }
 QlQuote* qlFuturesConvAdjustmentQuote1(QlIborIndex* index, char* immCode, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
   try {
-    return ret(new QlQuote(alloc(new FuturesConvAdjustmentQuote((*arg(index)), std::string(arg(immCode)), Handle<Quote>(*arg(futuresQuote)), Handle<Quote>(*arg(volatility)), Handle<Quote>(*arg(meanReversion))))));
+    return ret(new QlQuote(alloc(new FuturesConvAdjustmentQuote(*arg(index), std::string(arg(immCode)), Handle<Quote>(*arg(futuresQuote)), Handle<Quote>(*arg(volatility)), Handle<Quote>(*arg(meanReversion))))));
   } catch (std::exception& er) {
     return handleException<QlQuote*>(e, er);
   }
 }
 QlQuote* qlFuturesConvAdjustmentQuote(QlIborIndex* index, int futuresDate, QlQuote* futuresQuote, QlQuote* volatility, QlQuote* meanReversion, char **e) {
   try {
-    return ret(new QlQuote(alloc(new FuturesConvAdjustmentQuote((*arg(index)), Date(futuresDate), Handle<Quote>(*arg(futuresQuote)), Handle<Quote>(*arg(volatility)), Handle<Quote>(*arg(meanReversion))))));
+    return ret(new QlQuote(alloc(new FuturesConvAdjustmentQuote(*arg(index), Date(futuresDate), Handle<Quote>(*arg(futuresQuote)), Handle<Quote>(*arg(volatility)), Handle<Quote>(*arg(meanReversion))))));
   } catch (std::exception& er) {
     return handleException<QlQuote*>(e, er);
   }
@@ -80,7 +80,7 @@ QlQuote* qlImpliedStdDevQuote(int optionType, QlQuote* forward, QlQuote* price, 
 }
 QlQuote* qlLastFixingQuote(QlIndex* index, char **e) {
   try {
-    return ret(new QlQuote(alloc(new LastFixingQuote((*arg(index))))));
+    return ret(new QlQuote(alloc(new LastFixingQuote(*arg(index)))));
   } catch (std::exception& er) {
     return handleException<QlQuote*>(e, er);
   }

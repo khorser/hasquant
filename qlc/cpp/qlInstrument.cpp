@@ -102,7 +102,7 @@ QlBasketPayoff* qlAverageBasketPayoff(QlPayoff* p, unsigned n, char **e) {
 }
 QlBasketPayoff* qlAverageBasketPayoff1(QlPayoff* p, unsigned aLen, double* a, char **e) {
   try {
-    return ret(new QlBasketPayoff(alloc(new AverageBasketPayoff((*arg(p)), Array(a, a+aLen)))));
+    return ret(new QlBasketPayoff(alloc(new AverageBasketPayoff(*arg(p), Array(a, a+aLen)))));
   } catch (std::exception& er) {
     return handleException<QlBasketPayoff*>(e, er);
   }
@@ -193,7 +193,7 @@ QlPayoff* qlRatchetPayoff(double gearing1, double gearing2, double spread1, doub
 }
 QlBasketPayoff* qlSpreadBasketPayoff(QlPayoff* p, char **e) {
   try {
-    return ret(new QlBasketPayoff(alloc(new SpreadBasketPayoff((*arg(p))))));
+    return ret(new QlBasketPayoff(alloc(new SpreadBasketPayoff(*arg(p)))));
   } catch (std::exception& er) {
     return handleException<QlBasketPayoff*>(e, er);
   }

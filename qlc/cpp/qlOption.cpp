@@ -66,7 +66,7 @@ double qlCdsOptionAtmRate(QlCdsOption* o, char **e) {
 }
 QlCdsOption* qlCdsOption(QlCreditDefaultSwap* swap, QlExercise* exercise, int knocksOut, char **e) {
   try {
-    return ret(new QlCdsOption(alloc(new CdsOption((*arg(swap)), (*arg(exercise)), knocksOut))));
+    return ret(new QlCdsOption(alloc(new CdsOption(*arg(swap), *arg(exercise), knocksOut))));
   } catch (std::exception& er) {
     return handleException<QlCdsOption*>(e, er);
   }
@@ -108,35 +108,35 @@ QlForwardVanillaOption* qlQuantoForwardVanillaOptionAsForwardVanillaOption(QlQua
 
 QlBarrierOption* qlBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {
-    return ret(new QlBarrierOption(alloc(new BarrierOption((Barrier::Type)barrierType, barrier, rebate, (*arg(payoff)), (*arg(exercise))))));
+    return ret(new QlBarrierOption(alloc(new BarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {
     return handleException<QlBarrierOption*>(e, er);
   }
 }
 double qlBarrierOptionImpliedVolatility(QlBarrierOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
   try {
-    return (*arg(o))->impliedVolatility(price, (*arg(process)), accuracy, maxEvaluations, minVol, maxVol);
+    return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
 QlDividendVanillaOption* qlDividendVanillaOption(QlStrikedTypePayoff* payoff, QlExercise* exercise, unsigned dividendDatesLen, int* dividendDates, unsigned dividendsLen, double* dividends, char **e) {
   try {
-    return ret(new QlDividendVanillaOption(alloc(new DividendVanillaOption((*arg(payoff)), (*arg(exercise)), qlDateVector(dividendDatesLen, dividendDates), std::vector<double>(dividends, dividends+dividendsLen)))));
+    return ret(new QlDividendVanillaOption(alloc(new DividendVanillaOption(*arg(payoff), *arg(exercise), qlDateVector(dividendDatesLen, dividendDates), std::vector<double>(dividends, dividends+dividendsLen)))));
   } catch (std::exception& er) {
     return handleException<QlDividendVanillaOption*>(e, er);
   }
 }
 double qlDividendVanillaOptionImpliedVolatility(QlDividendVanillaOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
   try {
-    return (*arg(o))->impliedVolatility(price, (*arg(process)), accuracy, maxEvaluations, minVol, maxVol);
+    return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
 QlForwardVanillaOption* qlForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {
-    return ret(new QlForwardVanillaOption(alloc(new ForwardVanillaOption(moneyness, Date(resetDate), (*arg(payoff)), (*arg(exercise))))));
+    return ret(new QlForwardVanillaOption(alloc(new ForwardVanillaOption(moneyness, Date(resetDate), *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {
     return handleException<QlForwardVanillaOption*>(e, er);
   }
@@ -199,7 +199,7 @@ double qlMultiAssetOptionGamma(QlMultiAssetOption* o, char **e) {
 }
 QlMultiAssetOption* qlMultiAssetOption(QlPayoff* x0, QlExercise* x1, char **e) {
   try {
-    return ret(new QlMultiAssetOption(alloc(new MultiAssetOption((*arg(x0)), (*arg(x1))))));
+    return ret(new QlMultiAssetOption(alloc(new MultiAssetOption(*arg(x0), (*arg(x1))))));
   } catch (std::exception& er) {
     return handleException<QlMultiAssetOption*>(e, er);
   }
@@ -269,7 +269,7 @@ double qlOneAssetOptionItmCashProbability(QlOneAssetOption* o, char **e) {
 }
 QlOneAssetOption* qlOneAssetOption(QlPayoff* x0, QlExercise* x1, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new OneAssetOption((*arg(x0)), (*arg(x1))))));
+    return ret(new QlOneAssetOption(alloc(new OneAssetOption(*arg(x0), (*arg(x1))))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
@@ -325,7 +325,7 @@ double qlQuantoBarrierOptionQrho(QlQuantoBarrierOption* o, char **e) {
 }
 QlQuantoBarrierOption* qlQuantoBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {
-    return ret(new QlQuantoBarrierOption(alloc(new QuantoBarrierOption((Barrier::Type)barrierType, barrier, rebate, (*arg(payoff)), (*arg(exercise))))));
+    return ret(new QlQuantoBarrierOption(alloc(new QuantoBarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {
     return handleException<QlQuantoBarrierOption*>(e, er);
   }
@@ -353,7 +353,7 @@ double qlQuantoForwardVanillaOptionQrho(QlQuantoForwardVanillaOption* o, char **
 }
 QlQuantoForwardVanillaOption* qlQuantoForwardVanillaOption(double moneyness, int resetDate, QlStrikedTypePayoff* x2, QlExercise* x3, char **e) {
   try {
-    return ret(new QlQuantoForwardVanillaOption(alloc(new QuantoForwardVanillaOption(moneyness, Date(resetDate), (*arg(x2)), (*arg(x3))))));
+    return ret(new QlQuantoForwardVanillaOption(alloc(new QuantoForwardVanillaOption(moneyness, Date(resetDate), *arg(x2), *arg(x3)))));
   } catch (std::exception& er) {
     return handleException<QlQuantoForwardVanillaOption*>(e, er);
   }
@@ -381,7 +381,7 @@ double qlQuantoVanillaOptionQrho(QlQuantoVanillaOption* o, char **e) {
 }
 QlQuantoVanillaOption* qlQuantoVanillaOption(QlStrikedTypePayoff* x0, QlExercise* x1, char **e) {
   try {
-    return ret(new QlQuantoVanillaOption(alloc(new QuantoVanillaOption((*arg(x0)), (*arg(x1))))));
+    return ret(new QlQuantoVanillaOption(alloc(new QuantoVanillaOption(*arg(x0), (*arg(x1))))));
   } catch (std::exception& er) {
     return handleException<QlQuantoVanillaOption*>(e, er);
   }
@@ -395,28 +395,28 @@ double qlQuantoVanillaOptionQvega(QlQuantoVanillaOption* o, char **e) {
 }
 double qlVanillaOptionImpliedVolatility(QlVanillaOption* o, double price, QlGeneralizedBlackScholesProcess* process, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
   try {
-    return (*arg(o))->impliedVolatility(price, (*arg(process)), accuracy, maxEvaluations, minVol, maxVol);
+    return (*arg(o))->impliedVolatility(price, *arg(process), accuracy, maxEvaluations, minVol, maxVol);
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
 QlVanillaOption* qlVanillaOption(QlStrikedTypePayoff* x0, QlExercise* x1, char **e) {
   try {
-    return ret(new QlVanillaOption(alloc(new VanillaOption((*arg(x0)), (*arg(x1))))));
+    return ret(new QlVanillaOption(alloc(new VanillaOption(*arg(x0), (*arg(x1))))));
   } catch (std::exception& er) {
     return handleException<QlVanillaOption*>(e, er);
   }
 }
 QlBarrierOption* qlDividendBarrierOption(int barrierType, double barrier, double rebate, QlStrikedTypePayoff* payoff, QlExercise* exercise, unsigned dividendDatesLen, int* dividendDates, unsigned dividendsLen, double* dividends, char **e) {
   try {
-    return ret(new QlBarrierOption(alloc(new DividendBarrierOption((Barrier::Type)barrierType, barrier, rebate, (*arg(payoff)), (*arg(exercise)), qlDateVector(dividendDatesLen, dividendDates), std::vector<double>(dividends, dividends+dividendsLen)))));
+    return ret(new QlBarrierOption(alloc(new DividendBarrierOption((Barrier::Type)barrierType, barrier, rebate, *arg(payoff), *arg(exercise), qlDateVector(dividendDatesLen, dividendDates), std::vector<double>(dividends, dividends+dividendsLen)))));
   } catch (std::exception& er) {
     return handleException<QlBarrierOption*>(e, er);
   }
 }
 QlMultiAssetOption* qlBasketOption(QlBasketPayoff* x0, QlExercise* x1, char **e) {
   try {
-    return ret(new QlMultiAssetOption(alloc(new BasketOption((*arg(x0)), (*arg(x1))))));
+    return ret(new QlMultiAssetOption(alloc(new BasketOption(*arg(x0), (*arg(x1))))));
   } catch (std::exception& er) {
     return handleException<QlMultiAssetOption*>(e, er);
   }
@@ -437,63 +437,63 @@ QlMultiAssetOption* qlPagodaOption(unsigned fixingDatesLen, int* fixingDates, do
 }
 QlMultiAssetOption* qlSpreadOption(QlPlainVanillaPayoff* payoff, QlExercise* exercise, char **e) {
   try {
-    return ret(new QlMultiAssetOption(alloc(new SpreadOption((*arg(payoff)), (*arg(exercise))))));
+    return ret(new QlMultiAssetOption(alloc(new SpreadOption(*arg(payoff), (*arg(exercise))))));
   } catch (std::exception& er) {
     return handleException<QlMultiAssetOption*>(e, er);
   }
 }
 QlOneAssetOption* qlCliquetOption(QlPercentageStrikePayoff* x0, QlEuropeanExercise* maturity, unsigned resetDatesLen, int* resetDates, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new CliquetOption((*arg(x0)), (*arg(maturity)), qlDateVector(resetDatesLen, resetDates)))));
+    return ret(new QlOneAssetOption(alloc(new CliquetOption(*arg(x0), *arg(maturity), qlDateVector(resetDatesLen, resetDates)))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
 }
 QlOneAssetOption* qlContinuousAveragingAsianOption(int averageType, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new ContinuousAveragingAsianOption((Average::Type)averageType, (*arg(payoff)), (*arg(exercise))))));
+    return ret(new QlOneAssetOption(alloc(new ContinuousAveragingAsianOption((Average::Type)averageType, *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
 }
 QlOneAssetOption* qlContinuousFixedLookbackOption(double currentMinmax, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new ContinuousFixedLookbackOption(currentMinmax, (*arg(payoff)), (*arg(exercise))))));
+    return ret(new QlOneAssetOption(alloc(new ContinuousFixedLookbackOption(currentMinmax, *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
 }
 QlOneAssetOption* qlContinuousFloatingLookbackOption(double currentMinmax, QlTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new ContinuousFloatingLookbackOption(currentMinmax, (*arg(payoff)), (*arg(exercise))))));
+    return ret(new QlOneAssetOption(alloc(new ContinuousFloatingLookbackOption(currentMinmax, *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
 }
 QlOneAssetOption* qlDiscreteAveragingAsianOption(int averageType, double runningAccumulator, unsigned pastFixings, unsigned fixingDatesLen, int* fixingDates, QlStrikedTypePayoff* payoff, QlExercise* exercise, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new DiscreteAveragingAsianOption((Average::Type)averageType, runningAccumulator, pastFixings, qlDateVector(fixingDatesLen, fixingDates), (*arg(payoff)), (*arg(exercise))))));
+    return ret(new QlOneAssetOption(alloc(new DiscreteAveragingAsianOption((Average::Type)averageType, runningAccumulator, pastFixings, qlDateVector(fixingDatesLen, fixingDates), *arg(payoff), *arg(exercise)))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
 }
 QlOneAssetOption* qlVanillaStorageOption(QlBermudanExercise* ex, double capacity, double load, double changeRate, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new VanillaStorageOption((*arg(ex)), capacity, load, changeRate))));
+    return ret(new QlOneAssetOption(alloc(new VanillaStorageOption(*arg(ex), capacity, load, changeRate))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
 }
 QlOneAssetOption* qlVanillaSwingOption(QlStrikedTypePayoff* payoff, QlSwingExercise* ex, unsigned minExerciseRights, unsigned maxExerciseRights, char **e) {
   try {
-    return ret(new QlOneAssetOption(alloc(new VanillaSwingOption((*arg(payoff)), (*arg(ex)), minExerciseRights, maxExerciseRights))));
+    return ret(new QlOneAssetOption(alloc(new VanillaSwingOption(*arg(payoff), *arg(ex), minExerciseRights, maxExerciseRights))));
   } catch (std::exception& er) {
     return handleException<QlOneAssetOption*>(e, er);
   }
 }
 QlVanillaOption* qlEuropeanOption(QlStrikedTypePayoff* x0, QlExercise* x1, char **e) {
   try {
-    return ret(new QlVanillaOption(alloc(new EuropeanOption((*arg(x0)), (*arg(x1))))));
+    return ret(new QlVanillaOption(alloc(new EuropeanOption(*arg(x0), (*arg(x1))))));
   } catch (std::exception& er) {
     return handleException<QlVanillaOption*>(e, er);
   }

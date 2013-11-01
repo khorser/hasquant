@@ -92,7 +92,7 @@ composite :: [(Instrument, Double)] -> IO Instrument
 composite = $(ffiCall 'composite) c_composite
 
 foreign import ccall safe "ql.h qlCompositeInstrument"
-  c_composite :: CUInt -> Ptr(Ptr CInstrument) -> Ptr CDouble -> Ptr CString -> IO (Ptr CInstrument)
+  c_composite :: CUInt -> Ptr (Ptr CInstrument) -> Ptr CDouble -> Ptr CString -> IO (Ptr CInstrument)
 
 assetOrNothingPayoff :: OptionType -- ^type
   -> Double -- ^strike

@@ -63,7 +63,7 @@ QlVanillaSwap* qlVanillaSwap(int type, double nominal, Schedule* fixedSchedule, 
 
 QlSwap* qlSwap(Leg* firstLeg, Leg* secondLeg, char **e) {
   try {
-    return ret(new QlSwap(alloc(new Swap((*arg(firstLeg)), *arg(secondLeg)))));
+    return ret(new QlSwap(alloc(new Swap(*arg(firstLeg), *arg(secondLeg)))));
   } catch (std::exception& er) {
     return handleException<QlSwap*>(e, er);
   }
