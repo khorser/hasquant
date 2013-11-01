@@ -462,7 +462,7 @@ static const EnumInfo enumInfo[] = {
     LENGTH(atmTypeValues), atmTypeValues},
   {"QuantLib.FX.DeltaVolQuote.DeltaType",
     LENGTH(deltaTypeValues), deltaTypeValues},
-  {"QuantLib.Method.FdmSchemeDesc.FdmSchemeType",
+  {"QuantLib.Method.FdmSchemeType.FdmSchemeType",
     LENGTH(fdmSchemeTypeValues), fdmSchemeTypeValues},
 };
 

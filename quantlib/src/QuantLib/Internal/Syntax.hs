@@ -52,6 +52,7 @@ import QuantLib.FX.DeltaVolQuote()
 import QuantLib.Math.EndCriteriaType()
 import QuantLib.Math.HistogramAlgorithm()
 import QuantLib.Method.BoundaryCondition()
+import QuantLib.Method.FdmSchemeType()
 import QuantLib.Model.CalibrationErrorType()
 import QuantLib.MoneyConversionType()
 
