@@ -32,6 +32,7 @@
 #include <ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp>
 #include <ql/math/statistics/histogram.hpp>
 #include <ql/methods/finitedifferences/boundarycondition.hpp>
+#include <ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp>
 #include <ql/money.hpp>
 
 #include <string.h>
@@ -353,6 +354,15 @@ static const int deltaTypeValues[] = {
   , DeltaVolQuote::PaFwd
 };
 
+static const int fdmSchemeTypeValues[] = {
+    FdmSchemeDesc::HundsdorferType
+  , FdmSchemeDesc::DouglasType
+  , FdmSchemeDesc::CraigSneydType
+  , FdmSchemeDesc::ModifiedCraigSneydType
+  , FdmSchemeDesc::ImplicitEulerType
+  , FdmSchemeDesc::ExplicitEulerType
+};
+
 struct EnumInfo {
   const char *const name;
   size_t len;
@@ -452,6 +462,8 @@ static const EnumInfo enumInfo[] = {
     LENGTH(atmTypeValues), atmTypeValues},
   {"QuantLib.FX.DeltaVolQuote.DeltaType",
     LENGTH(deltaTypeValues), deltaTypeValues},
+  {"QuantLib.Method.FdmSchemeDesc.FdmSchemeType",
+    LENGTH(fdmSchemeTypeValues), fdmSchemeTypeValues},
 };
 
 const int *qlEnumerationValue(const char *name, unsigned *c) {

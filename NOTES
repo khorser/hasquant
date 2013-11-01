@@ -62,3 +62,9 @@ many bond functions have IO simply because floating bonds use YieldTermStructure
 (and consequently floating coupons)
 
 use type magic to ensure Day is always valid QuantLib date
+
+-- workflow for code generation:
+generate doxygen docs (you can find the copy in `doxygen` dir)
+convert to txt (see `doxygen-txt`)
+split txt (see `doxygen-split`)
+error handling is minimal, read comments in the scripts before running

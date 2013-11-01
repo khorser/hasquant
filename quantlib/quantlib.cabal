@@ -56,6 +56,7 @@ Library
               , QuantLib.Math.RoundingType
               , QuantLib.Method.BoundaryCondition
               , QuantLib.Method.LsmBasisSystemPolynomType
+              , QuantLib.Method.FdmSchemeDesc
               , QuantLib.Model
               , QuantLib.Model.CalibrationErrorType
               , QuantLib.MoneyConversionType

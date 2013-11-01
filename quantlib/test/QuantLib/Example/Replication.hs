@@ -24,3 +24,5 @@ run =
   , npvIn = [0]
   , errorIn = [0]
   }
+
+-- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
