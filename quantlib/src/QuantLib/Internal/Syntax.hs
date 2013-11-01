@@ -97,9 +97,9 @@ enumType n = do
 
 -- return expression [(String, Int)] - [(enum name, enum lenght)]
 qlEnumsInfo :: ExpQ
-qlEnumsInfo = qlEnums ''QLEnum >>= \en ->
-  listE $ map (\x -> tupE[stringE $ show x, enumSizeE x]) en
+qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
   where
+    f = map (\x -> tupE[stringE $ show x, enumSizeE x])
     enumSizeE :: Name -> ExpQ
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
@@ -120,32 +120,26 @@ nestedNameToTop n | n == ''Double = return DoubleN
 nestedNameToTop n | n == ''Bool = return BoolN
 nestedNameToTop n | n == ''YearFraction = return YearFractionN
 nestedNameToTop n | n == ''Word = return WordN
-nestedNameToTop n = enumType n >>= \e ->
-  case e of
-    (Just IntEnum) -> return $ EnumN n
-    _ -> tryForeignPtr n >>=
-          either (\x -> fail $ "Error parsing nested arg: " ++ show x)
-            (\_ -> return ForeignPtrN)
+nestedNameToTop n = enumType n >>= f
+  where
+    f (Just IntEnum) = return $ EnumN n
+    f _ = tryForeignPtr n ForeignPtrN "nested arg"
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = return $ nameToTop n
-topArgType (ConT n) = enumType n >>= \e ->
-  case e of
-    (Just IntEnum) -> return $ EnumA n
-    (Just LitEnum) -> return LitEnumA
-    _ -> tryForeignPtr n >>=
-          either (\x -> fail $ "Error parsing top arg: " ++ x)
-          (\_ -> return ForeignPtrA)
-topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe =
-  case () of
-    _ | n == ''Day -> return OptDayA
-    _ | n == ''Bool -> return OptBoolA
-    _ -> enumType n >>= \en ->
-        case en of
-          (Just LitEnum) -> return OptLitEnumA
-          _ -> tryForeignPtr n >>=
-                either (\x -> fail $ "Error parsing optional top arg: " ++ x)
-                  (\_ -> return OptForeignPtrA)
+topArgType (ConT n) = enumType n >>= f
+  where
+    f (Just IntEnum) = return $ EnumA n
+    f (Just LitEnum) = return LitEnumA
+    f _ = tryForeignPtr n ForeignPtrA "top arg"
+topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
+  where
+    maybeType t | t == ''Day = return OptDayA
+    maybeType t | t == ''Bool = return OptBoolA
+    maybeType t = enumType t >>= f
+      where
+        f (Just LitEnum) = return OptLitEnumA
+        f _ = tryForeignPtr t OptForeignPtrA "optional top arg"
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
@@ -156,9 +150,7 @@ topArgType (AppT
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix =
   if n == ''Double
     then return MatrixDoubleA
-    else tryForeignPtr n >>=
-          (\x -> fail $ "Error parsing optional top arg: " ++ x)
-            `either` (\_ -> return MatrixForeignPtrA)
+    else tryForeignPtr n  MatrixForeignPtrA "matrix top arg"
 topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
@@ -170,23 +162,21 @@ data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
   deriving (Show, Eq)
 
-tryForeignPtr :: Name -> Q (Either String Name)
-tryForeignPtr n = reify n >>= \r -> return $
-  case r of
-    TyConI (TySynD _ [] (AppT (ConT p) (ConT target)))
-      -> if p == ''ForeignPtr
-           then Right target
-           else Left $ "Unsupported synonym type: " ++ show n
-              ++ " reified as " ++ show r
-    TyConI (DataD [] p _ _ _)
-       -> if p == ''ForeignPtr
-            -- the Right value is not used (yet) so populating it with
-            -- some nonsense for now
-            then Right ''ForeignPtr
-            else Left $ "Unsupported synonym type: " ++ show n
-               ++ " reified as " ++ show r
-    _ -> Left $ "Unsupported type: " ++ show n ++ " reified as "
-            ++ show r
+tryForeignPtr :: Name -> a -> String -> Q a
+tryForeignPtr n x m = reify n >>= \r -> f r
+  where
+    f r@(TyConI (TySynD _ [] (AppT (ConT p) (ConT _target))))
+      = if p == ''ForeignPtr
+           then return x
+           else fail $ "Unsupported synonym type: " ++ show n
+              ++ " reified as " ++ show r ++ " during parsing of " ++ m
+    f r@(TyConI (DataD [] p _ _ _))
+       = if p == ''ForeignPtr
+            then return x
+            else fail $ "Unsupported synonym type: " ++ show n
+               ++ " reified as " ++ show r ++ " during parsing of " ++ m
+    f r = fail $ "Unsupported type: " ++ show n ++ " reified as "
+            ++ show r ++ " during parsing of " ++ m
 
 nameToRetVal :: Name -> Q AtomicRet
 nameToRetVal n | n == ''Int = return IntR
@@ -196,16 +186,14 @@ nameToRetVal n | n == ''Double = return DoubleR
 nameToRetVal n | n == ''Bool = return BoolR
 nameToRetVal n | n == ''YearFraction = return YearFractionR
 nameToRetVal n | n == ''String = return StringR
-nameToRetVal n = enumType n >>= \e ->
-  case e of
-    (Just IntEnum) -> return $ EnumR n
-    (Just LitEnum) -> fail $ "Literal enum not supported" ++ show n
-    _ -> tryForeignPtr n >>=
-          either (\x -> fail $ "Error parsing ret type: " ++ x)
-            (\_ -> return ForeignPtrR)
+nameToRetVal n = enumType n >>= f
+  where
+    f (Just IntEnum) = return $ EnumR n
+    f (Just LitEnum) = fail $ "Literal enum not supported" ++ show n
+    f _ = tryForeignPtr n ForeignPtrR "ret type"
 
 compArgToRetVal :: Type -> Q AtomicRet
-compArgToRetVal (AppT (ConT m) (ConT d)) | m == ''Maybe && d == ''Day =
+compArgToRetVal (AppT (ConT m) (ConT d)) | (m, d) == (''Maybe, ''Day) =
   return OptDayR
 compArgToRetVal (AppT ListT (ConT n)) | n == ''Day = return DayListR
 compArgToRetVal (AppT (ConT n) _) | n == ''ForeignPtr = return ForeignPtrR
@@ -217,7 +205,7 @@ compToRetVal :: Type -> Q RetVal
 compToRetVal (AppT (ConT n1) t2)
   | n1 == ''IO = IORV <$> compArgToRetVal t2
 compToRetVal (AppT (AppT (ConT n1) (ConT n2)) t2)
-  | n1 == ''Either && n2 == ''String = EitherRV <$> compArgToRetVal t2
+  | (n1, n2) == (''Either, ''String) = EitherRV <$> compArgToRetVal t2
 compToRetVal t = AtomicRV <$> compArgToRetVal t
 
 -- use WriterT to clean up this mess?
@@ -252,10 +240,10 @@ ffiCallPureX :: Name -> ExpQ
 ffiCallPureX hn = ffiCallImpl hn Purify
 
 ffiCallImpl :: Name -> IOAction -> ExpQ
-ffiCallImpl hFun extra = reify hFun >>= \r ->
-  case r of
-    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall extra)
-    _ -> fail $ "Cannot reify the type of " ++ show hFun
+ffiCallImpl hFun extra = reify hFun >>= f
+  where
+    f (VarI _ ft _ _) = parseSignature ft >>= uncurry (genFfiCall extra)
+    f _ = fail $ "Cannot reify the type of " ++ show hFun
 
 genFfiCall :: IOAction -> [TopArg] -> RetVal -> ExpQ
 genFfiCall extra aa r = do
