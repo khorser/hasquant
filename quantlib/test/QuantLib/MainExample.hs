@@ -12,6 +12,7 @@ import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.FRA as FRAExample
 import qualified QuantLib.Example.Swap as SwapExample
 import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
+import qualified QuantLib.Example.Replication as ReplicationExample
 
 main :: IO ()
 main = do

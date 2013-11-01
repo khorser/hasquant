@@ -1,8 +1,5 @@
 Not implemented examples:
 
-Replication
-BermudanSwaption
-
 EquityOption
 DiscreteHedging
 

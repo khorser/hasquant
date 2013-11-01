@@ -114,7 +114,7 @@ Library
 -- The library itself can be built and used without problems
 Test-Suite QL-Test
   Type:       exitcode-stdio-1.0
-  Main-Is:    QuantLib/Test/Main.hs
+  Main-Is:    QuantLib/MainTest.hs
   Other-modules:
                 QuantLib.Test.HUnit
               , QuantLib.Test.QuickCheck
@@ -123,6 +123,8 @@ Test-Suite QL-Test
               , QuantLib.Example.FRA
               , QuantLib.Example.Swap
               , QuantLib.Example.FittedBondCurve
+              , QuantLib.Example.Replication
+              , QuantLib.Example.BermudanSwaption
   GHC-Options:-Wall
   Build-Depends:
               base >= 4.5 && < 5
@@ -144,13 +146,15 @@ Executable QL-Example
   Else
     Buildable: False
 
-  Main-Is:    QuantLib/Example/Main.hs
+  Main-Is:    QuantLib/MainExample.hs
   Other-modules:
               QuantLib.Example.Bond
             , QuantLib.Example.Repo
             , QuantLib.Example.FRA
             , QuantLib.Example.Swap
             , QuantLib.Example.FittedBondCurve
+            , QuantLib.Example.Replication
+            , QuantLib.Example.BermudanSwaption
   GHC-Options:      -Wall
   Build-Depends:
               base >= 4.5 && < 5
