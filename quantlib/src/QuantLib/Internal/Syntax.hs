@@ -83,19 +83,6 @@ qlEnums en = reify en >>= \(ClassI _ instances) ->
     getEnumTypeName (InstanceD [] (AppT _ (ConT x)) []) = x
     getEnumTypeName x = error $ "Unsupported pattern in instance declaration: " ++ show x
 
-data EnumType = IntEnum | LitEnum
-enumType :: Name -> Q (Maybe EnumType)
-enumType n = do
-  qlEnumInst <- qlEnums ''QLEnum
-  if n `elem` qlEnumInst
-    then return (Just IntEnum)
-    else do
-      qlLitEnumInst <- qlEnums ''QLLitEnum
-      return $
-        if n `elem` qlLitEnumInst
-          then Just LitEnum
-          else Nothing
-
 -- return expression [(String, Int)] - [(enum name, enum lenght)]
 qlEnumsInfo :: ExpQ
 qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
@@ -104,6 +91,19 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE :: Name -> ExpQ
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
+
+reifyEnumOrForeignPtr :: (Show a) => Name -> Maybe a -> Maybe a -> a -> Q a
+reifyEnumOrForeignPtr n e1 e2 p = do
+  isEnum <- elem n <$> qlEnums ''QLEnum
+  isLitEnum <- elem n <$> qlEnums ''QLLitEnum
+  case e1 of
+    Just e | isEnum -> return e
+    Nothing | isEnum -> fail $ "Unexpected enum: " ++ show n
+    _ ->
+      case e2 of
+        Just e | isLitEnum -> return e
+        Nothing | isLitEnum -> fail $ "Unexpected literal enum: " ++ show n
+        _ -> reifyForeignPtr n p
 
 nameToTop :: Name -> TopArg
 nameToTop n | n == ''Int = IntA
@@ -121,26 +121,16 @@ nestedNameToTop n | n == ''Double = return DoubleN
 nestedNameToTop n | n == ''Bool = return BoolN
 nestedNameToTop n | n == ''YearFraction = return YearFractionN
 nestedNameToTop n | n == ''Word = return WordN
-nestedNameToTop n = enumType n >>= f
-  where
-    f (Just IntEnum) = return $ EnumN n
-    f _ = reifyForeignPtr n ForeignPtrN "nested arg"
+nestedNameToTop n = reifyEnumOrForeignPtr n (Just $ EnumN n) Nothing ForeignPtrN
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = return $ nameToTop n
-topArgType (ConT n) = enumType n >>= f
-  where
-    f (Just IntEnum) = return $ EnumA n
-    f (Just LitEnum) = return LitEnumA
-    f _ = reifyForeignPtr n ForeignPtrA "top arg"
+topArgType (ConT n) = reifyEnumOrForeignPtr n (Just $ EnumA n) (Just LitEnumA) ForeignPtrA
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
   where
     maybeType t | t == ''Day = return OptDayA
     maybeType t | t == ''Bool = return OptBoolA
-    maybeType t = enumType t >>= f
-      where
-        f (Just LitEnum) = return OptLitEnumA
-        f _ = reifyForeignPtr t OptForeignPtrA "optional top arg"
+    maybeType t = reifyEnumOrForeignPtr t Nothing (Just OptLitEnumA) OptForeignPtrA
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
@@ -151,7 +141,7 @@ topArgType (AppT
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix =
   if n == ''Double
     then return MatrixDoubleA
-    else reifyForeignPtr n  MatrixForeignPtrA "matrix top arg"
+    else reifyForeignPtr n  MatrixForeignPtrA
 topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
@@ -163,13 +153,13 @@ data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
   deriving (Show, Eq)
 
-reifyForeignPtr :: Name -> a -> String -> Q a
-reifyForeignPtr n x m = f <$> reify n
+reifyForeignPtr :: (Show a) => Name -> a -> Q a
+reifyForeignPtr n x = f <$> reify n
   where
     f (TyConI (TySynD _ [] (AppT (ConT p) (ConT _target)))) | p == ''ForeignPtr = x
     f (TyConI (DataD [] p _ _ _)) | p == ''ForeignPtr = x
     f e = error $ "Unsupported type: " ++ show n ++ " reified as "
-            ++ show e ++ " during parsing of " ++ m
+            ++ show e ++ " when trying to apply " ++ show x
 
 nameToRetVal :: Name -> Q AtomicRet
 nameToRetVal n | n == ''Int = return IntR
@@ -179,11 +169,7 @@ nameToRetVal n | n == ''Double = return DoubleR
 nameToRetVal n | n == ''Bool = return BoolR
 nameToRetVal n | n == ''YearFraction = return YearFractionR
 nameToRetVal n | n == ''String = return StringR
-nameToRetVal n = enumType n >>= f
-  where
-    f (Just IntEnum) = return $ EnumR n
-    f (Just LitEnum) = fail $ "Literal enum not supported" ++ show n
-    f _ = reifyForeignPtr n ForeignPtrR "ret type"
+nameToRetVal n = reifyEnumOrForeignPtr n (Just $ EnumR n) Nothing ForeignPtrR
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | (m, d) == (''Maybe, ''Day) =
