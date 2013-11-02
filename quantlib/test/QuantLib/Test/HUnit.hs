@@ -40,6 +40,9 @@ import qualified QuantLib.Example.Swap as SwapExample
 assertListsAreClose :: (a -> Double) -> [a] -> [Double] -> Double -> Assertion
 assertListsAreClose f x1 x2 e = assertBool $ all (\(x, y) -> abs(f x - y) < e) (zip x1 x2)
 
+assertListsAreClose' :: [Double] -> [Double] -> Double -> Assertion
+assertListsAreClose' x1 x2 e = assertBool $ all (\(x, y) -> abs(x - y) < e) (zip x1 x2)
+
 assertClose :: Double -> Double -> Double -> Assertion
 assertClose x1 x2 e = assertBool $ abs(x1 - x2) < e
 
@@ -169,8 +172,10 @@ test_swapEval = do
 
 test_replicationEval :: IO ()
 test_replicationEval = do
-  _ <- Settings.keepingSettings' ReplicationExample.run
-  assertBool True
+  (ReplicationExample.Result npvInit npvOut npvIn) <- Settings.keepingSettings' ReplicationExample.run
+  subAssert $ assertListsAreClose' npvInit [4.260726, 4.322358, 4.295464, 4.280909] 1.0e-6
+  subAssert $ assertListsAreClose' npvOut [2.513058, 2.539365, 2.528362, 2.522105] 1.0e-6
+  subAssert $ assertListsAreClose' npvIn [5.739125, 5.851239, 5.799867, 5.773678] 1.0e-6
 
 test_evalDate :: IO ()
 test_evalDate = do

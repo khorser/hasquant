@@ -70,7 +70,10 @@ main = do
   _ <- keepingSettings' BondCurveExample.run
 
   putStrLn "*** Replication Example ***"
-  _ <- keepingSettings' ReplicationExample.run
+  (ReplicationExample.Result npvInit npvOut npvIn) <- keepingSettings' ReplicationExample.run
+  putStrLn $ "Initial PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvInit
+  putStrLn $ "Out of the money PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvOut
+  putStrLn $ "In the money PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvIn
 
   putStrLn "DONE"
 
