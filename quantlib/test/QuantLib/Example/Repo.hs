@@ -5,8 +5,6 @@ module QuantLib.Example.Repo
   )
 where
 
---import Control.Monad(liftM2)
-
 import QuantLib.Compounding
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond

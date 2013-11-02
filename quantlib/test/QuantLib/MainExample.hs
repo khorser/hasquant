@@ -69,6 +69,9 @@ main = do
   putStrLn "*** FittedBondCurve Example ***"
   _ <- keepingSettings' BondCurveExample.run
 
+  putStrLn "*** Replication Example ***"
+  _ <- keepingSettings' ReplicationExample.run
+
   putStrLn "DONE"
 
   where

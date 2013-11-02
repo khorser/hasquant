@@ -32,6 +32,7 @@ import QuantLib.Utilities
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.FRA as FRAExample
+import qualified QuantLib.Example.Replication as ReplicationExample
 import qualified QuantLib.Example.Swap as SwapExample
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
@@ -165,6 +166,11 @@ test_swapEval = do
   subAssert $ assertListsAreClose SwapExample.spotNpvR fwds2 fwdNpvs2 1.0e-5
   subAssert $ assertListsAreClose SwapExample.spotFairSpreadR fwds2 fwdFairSpreads2 1.0e-5
   subAssert $ assertListsAreClose SwapExample.spotFairRateR fwds2 fwdFairRates2 1.0e-5
+
+test_replicationEval :: IO ()
+test_replicationEval = do
+  _ <- Settings.keepingSettings' ReplicationExample.run
+  assertBool True
 
 test_evalDate :: IO ()
 test_evalDate = do
