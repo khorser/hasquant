@@ -35,6 +35,11 @@ extern "C" {
   QlOvernightIndexedSwap* DLLEXPORT qlOvernightIndexedSwapIndexUnderlyingSwap(QlOvernightIndexedSwapIndex* o, int fixingDate, char **e);
   QlVanillaSwap* DLLEXPORT qlSwapIndexUnderlyingSwap(QlSwapIndex* o, int fixingDate, char **e);
   double DLLEXPORT qlInterestRateIndexForecastFixing(QlInterestRateIndex* o, int fixingDate, char **e);
+  Calendar* DLLEXPORT qlIndexFixingCalendar(QlIndex* o, char **e);
+  Currency* DLLEXPORT qlInterestRateIndexCurrency(QlInterestRateIndex* o, char **e);
+  DayCounter* DLLEXPORT qlInterestRateIndexDayCounter(QlInterestRateIndex* o, char **e);
+  unsigned DLLEXPORT qlInterestRateIndexFixingDays(QlInterestRateIndex* o, char **e);
+  Period* DLLEXPORT qlInterestRateIndexTenor(QlInterestRateIndex* o, char **e);
 #ifdef __cplusplus
 }
 #endif

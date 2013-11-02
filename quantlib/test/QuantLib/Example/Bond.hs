@@ -88,19 +88,19 @@ run = do
   settlDate <- adjust targetCal (18 `september` 2008) Following
   todaysDate <- advance targetCal
                         settlDate
-                        (-(fromIntegral fixingDays))
+                        (-(fromIntegral fixDays))
                         Days
                         Following
                         False
   setEvaluationDate todaysDate
   discDepoHelpers <- mapM
     (\(q, p) -> do
-      tenor <- period p Months
+      ten <- period p Months
       rate <- simpleQuote q >>= asQuote
       depositRateHelper
         rate
-        tenor
-        fixingDays
+        ten
+        fixDays
         targetCal
         ModifiedFollowing
         True
@@ -162,7 +162,7 @@ run = do
       do
         quote <- simpleQuote q >>= asQuote
         p <- period n u
-        depositRateHelper quote p fixingDays targetCal
+        depositRateHelper quote p fixDays targetCal
                                        ModifiedFollowing
                                        True actual360dc) $
           zip liborDepoQuotes liborDepoTerms
@@ -267,7 +267,7 @@ run = do
 
  where zcQuotes = [0.0096, 0.0145, 0.0194]
        zcTenors = [3, 6, 12]
-       fixingDays = 3
+       fixDays = 3
        settlementDays = 3
        redemption = 100.0
        faceAmount = 100.0

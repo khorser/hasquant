@@ -35,6 +35,8 @@ extern "C" {
   QlInterestRateIndex* DLLEXPORT qlIborIndexAsInterestRateIndex(QlIborIndex *o);
   void DLLEXPORT qlFreeOvernightIndex(QlOvernightIndex *o);
   QlIborIndex* DLLEXPORT qlOvernightIndexAsIborIndex(QlOvernightIndex *o);
+  int DLLEXPORT qlIborIndexBusinessDayConvention(QlIborIndex* o, char **e);
+  int DLLEXPORT qlIborIndexEndOfMonth(QlIborIndex* o, char **e);
 #ifdef __cplusplus
 }
 #endif

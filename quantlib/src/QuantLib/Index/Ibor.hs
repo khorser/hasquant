@@ -79,6 +79,9 @@ module QuantLib.Index.Ibor
   , eurLibor10M
   , eurLibor11M
   , eurLibor1Y
+
+  , businessDayConvention
+  , endOfMonth
   )
 where
 
@@ -491,5 +494,19 @@ eurLibor11M = makeIbor eurLibor 11 Months
 -- |1-year EUR Libor index
 eurLibor1Y :: Maybe YieldTermStructure -> IO IborIndex
 eurLibor1Y = makeIbor eurLibor 1 Years
+
+businessDayConvention :: IborIndex
+  -> IO BusinessDayConvention
+businessDayConvention = $(ffiCallX 'businessDayConvention) c_businessDayConvention
+
+foreign import ccall safe "ql.h qlIborIndexBusinessDayConvention"
+  c_businessDayConvention :: Ptr CIborIndex -> Ptr CString -> IO CInt
+
+endOfMonth :: IborIndex
+  -> IO Bool
+endOfMonth = $(ffiCallX 'endOfMonth) c_endOfMonth
+
+foreign import ccall safe "ql.h qlIborIndexEndOfMonth"
+  c_endOfMonth :: Ptr CIborIndex -> Ptr CString -> IO CInt
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

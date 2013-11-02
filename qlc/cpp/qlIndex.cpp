@@ -127,4 +127,39 @@ double qlInterestRateIndexForecastFixing(QlInterestRateIndex* o, int fixingDate,
   }
 }
 
+Calendar* qlIndexFixingCalendar(QlIndex* o, char **e) {
+  try {
+    return alloc(new Calendar((*arg(o))->fixingCalendar()));
+  } catch (std::exception& er) {
+    return handleException<Calendar*>(e, er);
+  }
+}
+Currency* qlInterestRateIndexCurrency(QlInterestRateIndex* o, char **e) {
+  try {
+    return alloc(new Currency((*arg(o))->currency()));
+  } catch (std::exception& er) {
+    return handleException<Currency*>(e, er);
+  }
+}
+DayCounter* qlInterestRateIndexDayCounter(QlInterestRateIndex* o, char **e) {
+  try {
+    return alloc(new DayCounter((*arg(o))->dayCounter()));
+  } catch (std::exception& er) {
+    return handleException<DayCounter*>(e, er);
+  }
+}
+unsigned qlInterestRateIndexFixingDays(QlInterestRateIndex* o, char **e) {
+  try {
+    return (*arg(o))->fixingDays();
+  } catch (std::exception& er) {
+    return handleException<unsigned>(e, er);
+  }
+}
+Period* qlInterestRateIndexTenor(QlInterestRateIndex* o, char **e) {
+  try {
+    return alloc(new Period((*arg(o))->tenor()));
+  } catch (std::exception& er) {
+    return handleException<Period*>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

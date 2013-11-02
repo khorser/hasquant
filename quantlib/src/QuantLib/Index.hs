@@ -5,6 +5,12 @@ module QuantLib.Index
   , bmaIndex
   , fixingSchedule
   , forecastFixing
+
+  , fixingCalendar
+  , currency
+  , dayCounter
+  , fixingDays
+  , tenor
   )
 where
 
@@ -53,5 +59,41 @@ forecastFixing = $(ffiCallX 'forecastFixing) c_forecastFixing
 
 foreign import ccall safe "ql.h qlInterestRateIndexForecastFixing"
   c_forecastFixing :: Ptr CInterestRateIndex -> CDate -> Ptr CString -> IO CDouble
+
+-- |returns the calendar defining valid fixing dates
+fixingCalendar :: Index
+  -> IO Calendar
+fixingCalendar = $(ffiCall 'fixingCalendar) c_fixingCalendar
+
+foreign import ccall safe "ql.h qlIndexFixingCalendar"
+  c_fixingCalendar :: Ptr CIndex -> Ptr CString -> IO (Ptr CCalendar)
+
+currency :: InterestRateIndex
+  -> IO Currency
+currency = $(ffiCall 'currency) c_currency
+
+foreign import ccall safe "ql.h qlInterestRateIndexCurrency"
+  c_currency :: Ptr CInterestRateIndex -> Ptr CString -> IO (Ptr CCurrency)
+
+dayCounter :: InterestRateIndex
+  -> IO DayCounter
+dayCounter = $(ffiCall 'dayCounter) c_dayCounter
+
+foreign import ccall safe "ql.h qlInterestRateIndexDayCounter"
+  c_dayCounter :: Ptr CInterestRateIndex -> Ptr CString -> IO (Ptr CDayCounter)
+
+fixingDays :: InterestRateIndex
+  -> IO Word
+fixingDays = $(ffiCallX 'fixingDays) c_fixingDays
+
+foreign import ccall safe "ql.h qlInterestRateIndexFixingDays"
+  c_fixingDays :: Ptr CInterestRateIndex -> Ptr CString -> IO CUInt
+
+tenor :: InterestRateIndex
+  -> IO Period
+tenor = $(ffiCall 'tenor) c_tenor
+
+foreign import ccall safe "ql.h qlInterestRateIndexTenor"
+  c_tenor :: Ptr CInterestRateIndex -> Ptr CString -> IO (Ptr CPeriod)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

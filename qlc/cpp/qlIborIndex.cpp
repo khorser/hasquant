@@ -175,4 +175,21 @@ QlInterestRateIndex* qlIborIndexAsInterestRateIndex(QlIborIndex *o) { return ret
 
 void qlFreeOvernightIndex(QlOvernightIndex *o) { del(o); }
 QlIborIndex* qlOvernightIndexAsIborIndex(QlOvernightIndex *o) { return ret(new QlIborIndex(*arg(o))); }
+
+int qlIborIndexBusinessDayConvention(QlIborIndex* o, char **e) {
+  try {
+    return (*arg(o))->businessDayConvention();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int qlIborIndexEndOfMonth(QlIborIndex* o, char **e) {
+  try {
+    return (*arg(o))->endOfMonth();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

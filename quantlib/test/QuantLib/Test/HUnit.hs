@@ -30,6 +30,7 @@ import qualified QuantLib.Time.Unit as Unit
 import QuantLib.Utilities
 
 import qualified QuantLib.Example.Bond as BondExample
+import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
 import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.FRA as FRAExample
 import qualified QuantLib.Example.Replication as ReplicationExample
@@ -39,9 +40,6 @@ import qualified QuantLib.Example.Swap as SwapExample
 
 assertListsAreClose :: (a -> Double) -> [a] -> [Double] -> Double -> Assertion
 assertListsAreClose f x1 x2 e = assertBool $ all (\(x, y) -> abs(f x - y) < e) (zip x1 x2)
-
-assertListsAreClose' :: [Double] -> [Double] -> Double -> Assertion
-assertListsAreClose' x1 x2 e = assertBool $ all (\(x, y) -> abs(x - y) < e) (zip x1 x2)
 
 assertClose :: Double -> Double -> Double -> Assertion
 assertClose x1 x2 e = assertBool $ abs(x1 - x2) < e
@@ -170,12 +168,17 @@ test_swapEval = do
   subAssert $ assertListsAreClose SwapExample.spotFairSpreadR fwds2 fwdFairSpreads2 1.0e-5
   subAssert $ assertListsAreClose SwapExample.spotFairRateR fwds2 fwdFairRates2 1.0e-5
 
-test_replicationEval :: IO ()
-test_replicationEval = do
+test_replication :: IO ()
+test_replication = do
   (ReplicationExample.Result npvInit npvOut npvIn) <- Settings.keepingSettings' ReplicationExample.run
-  subAssert $ assertListsAreClose' npvInit [4.260726, 4.322358, 4.295464, 4.280909] 1.0e-6
-  subAssert $ assertListsAreClose' npvOut [2.513058, 2.539365, 2.528362, 2.522105] 1.0e-6
-  subAssert $ assertListsAreClose' npvIn [5.739125, 5.851239, 5.799867, 5.773678] 1.0e-6
+  subAssert $ assertListsAreClose id npvInit [4.260726, 4.322358, 4.295464, 4.280909] 1.0e-6
+  subAssert $ assertListsAreClose id npvOut [2.513058, 2.539365, 2.528362, 2.522105] 1.0e-6
+  subAssert $ assertListsAreClose id npvIn [5.739125, 5.851239, 5.799867, 5.773678] 1.0e-6
+
+test_bermudanSwaption :: IO ()
+test_bermudanSwaption = do
+  _ <- Settings.keepingSettings' BermudanSwaptionExample.run
+  assertBool True
 
 test_evalDate :: IO ()
 test_evalDate = do

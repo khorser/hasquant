@@ -6,11 +6,11 @@ module QuantLib.Example.FRA
   )
 where
 
-import Data.Time.Calendar(Day)
 import Control.Monad(forM, forM_)
 
 import QuantLib.Compounding
-import QuantLib.Index.Ibor
+import QuantLib.Index
+import qualified QuantLib.Index.Ibor as Ibor
 import QuantLib.Instrument
 import QuantLib.Instrument.Forward
 import QuantLib.InterestRate
@@ -42,45 +42,45 @@ data Result = Result [IterationResult] [IterationResult] deriving Show
 run :: IO Result
 run = do
   setEvaluationDate todaysDate
-  -- I didn't expose most inspector methods so can't retrieve Euribor3M properties here
-  fraCalendar <- target
-  settleDate <- advance fraCalendar todaysDate fixingDays Days Following False
+  eu3m <- Ibor.euribor3M Nothing
+  eu3mRI <- asInterestRateIndex eu3m
+  fraCalendar <- asIndex eu3mRI >>= fixingCalendar
+  fixDays <- fixingDays eu3mRI
+  settleDate <- advance fraCalendar todaysDate (fromIntegral fixDays) Days Following False
 
   simpleFraQuotes <- mapM simpleQuote quotes
   fraQuotes <- mapM asQuote simpleFraQuotes
 
-  fraDayCounter <- actual360
+  fraDayCounter <- dayCounter eu3mRI
+  convention <- Ibor.businessDayConvention eu3m
+  eom <- Ibor.endOfMonth eu3m
+
   fraInstruments <- mapM
-    (\(q, t, p) -> TS.fraRateHelper q t p (fromIntegral fixingDays) fraCalendar convention eom fraDayCounter) $
+    (\(q, t, p) -> TS.fraRateHelper q t p (fromIntegral fixDays) fraCalendar convention eom fraDayCounter) $
     zip3 fraQuotes starts periods
 
   tsdc <- actualActualISDA
   fraTS <- TS.piecewiseYieldCurve settleDate fraInstruments tsdc [] tolerance Discount LogLinear
 
-  it1 <- valuateFRA settleDate fraTS
+  it1 <- valuateFRA convention fraDayCounter settleDate fraTS
   forM_ simpleFraQuotes $ \sq -> asQuote sq >>= value >>= \v -> setValue sq (v + bpsShift)
-  it2 <- valuateFRA settleDate fraTS
+  it2 <- valuateFRA convention fraDayCounter settleDate fraTS
 
   return $ Result it1 it2
 
   where
     todaysDate = 23 `may` 2006
-    fixingDays = 2
     starts = [1, 2, 3, 6, 9]
     periods = [4, 5, 6, 9, 12]
     quotes = [0.030, 0.031, 0.032, 0.033, 0.034]
-    convention = ModifiedFollowing
-    eom = True
     tolerance = 1e-15
     notional = 100.0
     fraTermMonths = 3
     bpsShift = 0.01
 
-    valuateFRA :: Day -> YieldTermStructure -> IO [IterationResult]
-    valuateFRA settle ts = do
-      dc <- actual360
-      eu3m <- euribor3M $ Just ts
-      fraCalendar <- target
+    valuateFRA convention dc settle ts = do
+      eu3m <- Ibor.euribor3M $ Just ts
+      fraCalendar <- asInterestRateIndex eu3m >>= asIndex >>= fixingCalendar
       dates <- forM starts $
         \months -> do
           v <- advance fraCalendar settle (fromIntegral months) Months convention False
