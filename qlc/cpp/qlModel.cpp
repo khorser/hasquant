@@ -215,4 +215,16 @@ QlCalibrationHelper* qlSwaptionHelper(Period* maturity, Period* length, QlQuote*
   }
 }
 
+double* DLLEXPORT qlCalibrationHelperTimes(QlCalibrationHelper* o, unsigned *len, char **e) {
+  try {
+    std::list<double> times;
+    (*arg(o))->addTimesTo(times);
+    *len = times.size();
+    double *ts = qlAllocateDoubles(*len);
+    std::copy(times.begin(), times.end(), ts);
+    return ts;
+  } catch (std::exception& er) {
+    return handleException<double*>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

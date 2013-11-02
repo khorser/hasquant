@@ -133,7 +133,7 @@ run = do
       fwd1Y5Y <- vanillaSwap Payer 1000000 fwdFixS 0.04 fixDC
         fwdFloatS eu6m 0.0 floatDC ModifiedFollowing
       refDate <- asTermStructure d >>= TS.referenceDate
-      pricer <- discountingSwapEngine d False refDate refDate
+      pricer <- discountingSwapEngine d (Just False) (Just refDate) (Just refDate)
 
       spotInstr <- asSwap spot5Y >>= asInstrument
       fwdInstr <- asSwap fwd1Y5Y >>= asInstrument

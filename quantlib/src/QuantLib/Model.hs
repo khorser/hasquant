@@ -27,8 +27,11 @@ module QuantLib.Model
   , capHelper
   , hestonModelHelper
   , swaptionHelper
+  , times
   )
 where
+
+import Data.Functor((<$>))
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
@@ -257,6 +260,7 @@ hestonModelHelper = $(ffiCall 'hestonModelHelper) c_hestonModelHelper
 foreign import ccall safe "ql.h qlHestonModelHelper"
   c_hestonModelHelper :: Ptr CPeriod -> Ptr CCalendar -> CDouble -> CDouble -> Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
 
+-- TODO QuantLib 1.3. features more SwaptionHelper constructors
 swaptionHelper :: Period -- ^maturity
   -> Period -- ^length
   -> Quote -- ^volatility
@@ -271,5 +275,12 @@ swaptionHelper = $(ffiCall 'swaptionHelper) c_swaptionHelper
 
 foreign import ccall safe "ql.h qlSwaptionHelper"
   c_swaptionHelper :: Ptr CPeriod -> Ptr CPeriod -> Ptr CQuote -> Ptr CIborIndex -> Ptr CPeriod -> Ptr CDayCounter -> Ptr CDayCounter -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
+
+times :: CalibrationHelper -> IO [Double]
+times x =
+  map realToFrac <$> withObject x (getArrayX . c_times)
+
+foreign import ccall safe "ql.h qlCalibrationHelperTimes"
+  c_times :: Ptr CCalibrationHelper -> Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

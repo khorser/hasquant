@@ -87,9 +87,9 @@ discountingBondEngine :: YieldTermStructure -- ^discountCurve
 discountingBondEngine = $(ffiCall 'discountingBondEngine) c_discountingBondEngine
 
 discountingSwapEngine :: YieldTermStructure -- ^discountCurve
-  -> Bool -- ^includeSettlementDateFlows
-  -> Day -- ^settlementDate
-  -> Day -- ^npvDate
+  -> Maybe Bool -- ^includeSettlementDateFlows
+  -> Maybe Day -- ^settlementDate
+  -> Maybe Day -- ^npvDate
   -> IO PricingEngine
 discountingSwapEngine = $(ffiCall 'discountingSwapEngine) c_discountingSwapEngine
 

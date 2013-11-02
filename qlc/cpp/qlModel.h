@@ -72,6 +72,7 @@ extern "C" {
   QlCalibrationHelper* DLLEXPORT qlCapHelper(Period* length, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e);
   QlCalibrationHelper* DLLEXPORT qlHestonModelHelper(Period* maturity, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e);
   QlCalibrationHelper* DLLEXPORT qlSwaptionHelper(Period* maturity, Period* length, QlQuote* volatility, QlIborIndex* index, Period* fixedLegTenor, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e);
+  double* DLLEXPORT qlCalibrationHelperTimes(QlCalibrationHelper* o, unsigned *len, char **e);
 #ifdef __cplusplus
 }
 #endif
