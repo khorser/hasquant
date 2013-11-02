@@ -1,7 +1,0 @@
-->
-::FdmSchemeType
--- ^type
-::Real
--- ^theta
-::Real
--- ^mu

@@ -804,4 +804,7 @@ typedef boost::shared_ptr<BlackVarianceCurve> QlBlackVarianceCurve;
 template <> class objClassName<BlackVarianceCurve *> { public: static const char *name() { return "BlackVarianceCurve"; } };
 template <> class objClassName<QlBlackVarianceCurve *> { public: static const char *name() { return "QlBlackVarianceCurve"; } };
 
+namespace QuantLib {class FdmSchemeDesc;} using QuantLib::FdmSchemeDesc;
+template <> class objClassName<FdmSchemeDesc *> { public: static const char *name() { return "FdmSchemeDesc"; } };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

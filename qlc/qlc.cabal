@@ -31,6 +31,7 @@ Extra-source-files:
               cpp/qlInterestRate.cpp
               cpp/qlLeg.cpp
               cpp/qlMath.cpp
+              cpp/qlMethod.cpp
               cpp/qlModel.cpp
               cpp/qlOption.cpp
               cpp/qlPeriod.cpp
@@ -73,6 +74,7 @@ Library
                     qlInterestRate.h
                     qlLeg.h
                     qlMath.h
+                    qlMethod.h
                     qlModel.h
                     qlOption.h
                     qlPeriod.h
@@ -104,6 +106,7 @@ Library
               cpp/qlInterestRate.cpp
               cpp/qlLeg.cpp
               cpp/qlMath.cpp
+              cpp/qlMethod.cpp
               cpp/qlModel.cpp
               cpp/qlOption.cpp
               cpp/qlPeriod.cpp

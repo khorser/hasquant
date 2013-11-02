@@ -315,7 +315,7 @@ sub type {
       'HestonProcess::Discretization', 'GJRGARCHProcess::Discretization', 
       'HybridHestonHullWhiteProcess::Discretization',
       'IntervalPrice::Type', 'CalibrationHelper::CalibrationErrorType',
-      'EndCriteria::Type', 'Extrapolation']) {
+      'EndCriteria::Type', 'Extrapolation', 'FdmSchemeType']) {
     my ($carg, $farg, $cast) = ('int', 'CInt', "($t)%");
     $t =~ s/://g;
     my $ht = $t;
@@ -336,7 +336,7 @@ sub type {
   }
   elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period',
       'InterestRate', 'FittedBondDiscountCurveFittingMethod', 'Rounding', 'Constraint', 'OptimizationMethod',
-      'EndCriteria']) {
+      'EndCriteria', 'FdmSchemeDesc']) {
     if (not $vect) {
       return ("$t*", "Ptr C$t", $t, '*arg(%)', "alloc(new %)", 1, '');
     }

@@ -65,6 +65,9 @@ module QuantLib.Internal.Types
   , COptimizationMethod
   , CEndCriteria
 
+  -- methods
+  , CFdmSchemeDesc
+
   -- models
   , CGJRGARCHModel
   , CHestonModel
@@ -653,6 +656,13 @@ instance Upcastable CBlackScholesCalculator CBlackCalculator where
   c_upcast = c_BlackScholesCalculatorAsBlackCalculator
 foreign import ccall safe "ql.h qlBlackScholesCalculatorAsBlackCalculator"
   c_BlackScholesCalculatorAsBlackCalculator :: Ptr CBlackScholesCalculator -> IO (Ptr CBlackCalculator)
+
+-- methods
+data CFdmSchemeDesc
+instance Finalizable CFdmSchemeDesc where
+  finalize = p_freeFdmSchemeDesc
+foreign import ccall safe "ql.h &qlFreeFdmSchemeDesc"
+  p_freeFdmSchemeDesc :: FunPtr (Ptr CFdmSchemeDesc -> IO ())
 
 -- models
 data CGJRGARCHModel

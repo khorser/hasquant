@@ -68,6 +68,9 @@ module QuantLib.Types
   , OptimizationMethod
   , EndCriteria
 
+  -- method
+  , FdmSchemeDesc
+
   -- models
   , GJRGARCHModel
   , HestonModel
@@ -392,6 +395,8 @@ type Constraint = ForeignPtr CConstraint
 type OptimizationMethod = ForeignPtr COptimizationMethod
 type EndCriteria = ForeignPtr CEndCriteria
 
+-- method
+type FdmSchemeDesc = ForeignPtr CFdmSchemeDesc
 
 -- models
 type GJRGARCHModel = ForeignPtr CGJRGARCHModel
