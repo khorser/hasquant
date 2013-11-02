@@ -10,8 +10,9 @@ module QuantLib.Internal.Syntax
   )
 where
 
+import Control.Applicative((<*>))
+import Control.Monad(liftM)
 import Data.Functor((<$>))
-import Control.Monad(liftM, liftM2)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
@@ -123,7 +124,7 @@ nestedNameToTop n | n == ''Word = return WordN
 nestedNameToTop n = enumType n >>= f
   where
     f (Just IntEnum) = return $ EnumN n
-    f _ = tryForeignPtr n ForeignPtrN "nested arg"
+    f _ = reifyForeignPtr n ForeignPtrN "nested arg"
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = return $ nameToTop n
@@ -131,7 +132,7 @@ topArgType (ConT n) = enumType n >>= f
   where
     f (Just IntEnum) = return $ EnumA n
     f (Just LitEnum) = return LitEnumA
-    f _ = tryForeignPtr n ForeignPtrA "top arg"
+    f _ = reifyForeignPtr n ForeignPtrA "top arg"
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
   where
     maybeType t | t == ''Day = return OptDayA
@@ -139,18 +140,18 @@ topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
     maybeType t = enumType t >>= f
       where
         f (Just LitEnum) = return OptLitEnumA
-        f _ = tryForeignPtr t OptForeignPtrA "optional top arg"
+        f _ = reifyForeignPtr t OptForeignPtrA "optional top arg"
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
           (AppT
             (AppT (TupleT 2) (ConT n1))
             (ConT n2))) =
-              liftM2 ListA2 (nestedNameToTop n1) (nestedNameToTop n2)
+              ListA2 <$> nestedNameToTop n1 <*> nestedNameToTop n2
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix =
   if n == ''Double
     then return MatrixDoubleA
-    else tryForeignPtr n  MatrixForeignPtrA "matrix top arg"
+    else reifyForeignPtr n  MatrixForeignPtrA "matrix top arg"
 topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
@@ -162,21 +163,13 @@ data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
   deriving (Show, Eq)
 
-tryForeignPtr :: Name -> a -> String -> Q a
-tryForeignPtr n x m = reify n >>= \r -> f r
+reifyForeignPtr :: Name -> a -> String -> Q a
+reifyForeignPtr n x m = f <$> reify n
   where
-    f r@(TyConI (TySynD _ [] (AppT (ConT p) (ConT _target))))
-      = if p == ''ForeignPtr
-           then return x
-           else fail $ "Unsupported synonym type: " ++ show n
-              ++ " reified as " ++ show r ++ " during parsing of " ++ m
-    f r@(TyConI (DataD [] p _ _ _))
-       = if p == ''ForeignPtr
-            then return x
-            else fail $ "Unsupported synonym type: " ++ show n
-               ++ " reified as " ++ show r ++ " during parsing of " ++ m
-    f r = fail $ "Unsupported type: " ++ show n ++ " reified as "
-            ++ show r ++ " during parsing of " ++ m
+    f (TyConI (TySynD _ [] (AppT (ConT p) (ConT _target)))) | p == ''ForeignPtr = x
+    f (TyConI (DataD [] p _ _ _)) | p == ''ForeignPtr = x
+    f e = error $ "Unsupported type: " ++ show n ++ " reified as "
+            ++ show e ++ " during parsing of " ++ m
 
 nameToRetVal :: Name -> Q AtomicRet
 nameToRetVal n | n == ''Int = return IntR
@@ -190,7 +183,7 @@ nameToRetVal n = enumType n >>= f
   where
     f (Just IntEnum) = return $ EnumR n
     f (Just LitEnum) = fail $ "Literal enum not supported" ++ show n
-    f _ = tryForeignPtr n ForeignPtrR "ret type"
+    f _ = reifyForeignPtr n ForeignPtrR "ret type"
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | (m, d) == (''Maybe, ''Day) =
