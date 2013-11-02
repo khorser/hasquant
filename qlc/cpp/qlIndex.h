@@ -38,7 +38,7 @@ extern "C" {
   Calendar* DLLEXPORT qlIndexFixingCalendar(QlIndex* o, char **e);
   Currency* DLLEXPORT qlInterestRateIndexCurrency(QlInterestRateIndex* o, char **e);
   DayCounter* DLLEXPORT qlInterestRateIndexDayCounter(QlInterestRateIndex* o, char **e);
-  unsigned DLLEXPORT qlInterestRateIndexFixingDays(QlInterestRateIndex* o, char **e);
+  unsigned DLLEXPORT qlInterestRateIndexFixingDays(QlInterestRateIndex* o);
   Period* DLLEXPORT qlInterestRateIndexTenor(QlInterestRateIndex* o, char **e);
 #ifdef __cplusplus
 }

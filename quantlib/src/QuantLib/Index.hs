@@ -83,11 +83,11 @@ foreign import ccall safe "ql.h qlInterestRateIndexDayCounter"
   c_dayCounter :: Ptr CInterestRateIndex -> Ptr CString -> IO (Ptr CDayCounter)
 
 fixingDays :: InterestRateIndex
-  -> IO Word
-fixingDays = $(ffiCallX 'fixingDays) c_fixingDays
+  -> Word
+fixingDays = $(ffiCallPure 'fixingDays) c_fixingDays
 
 foreign import ccall safe "ql.h qlInterestRateIndexFixingDays"
-  c_fixingDays :: Ptr CInterestRateIndex -> Ptr CString -> IO CUInt
+  c_fixingDays :: Ptr CInterestRateIndex -> IO CUInt
 
 tenor :: InterestRateIndex
   -> IO Period

@@ -496,17 +496,17 @@ eurLibor1Y :: Maybe YieldTermStructure -> IO IborIndex
 eurLibor1Y = makeIbor eurLibor 1 Years
 
 businessDayConvention :: IborIndex
-  -> IO BusinessDayConvention
-businessDayConvention = $(ffiCallX 'businessDayConvention) c_businessDayConvention
+  -> BusinessDayConvention
+businessDayConvention = $(ffiCallPure 'businessDayConvention) c_businessDayConvention
 
 foreign import ccall safe "ql.h qlIborIndexBusinessDayConvention"
-  c_businessDayConvention :: Ptr CIborIndex -> Ptr CString -> IO CInt
+  c_businessDayConvention :: Ptr CIborIndex -> IO CInt
 
 endOfMonth :: IborIndex
-  -> IO Bool
-endOfMonth = $(ffiCallX 'endOfMonth) c_endOfMonth
+  -> Bool
+endOfMonth = $(ffiCallPure 'endOfMonth) c_endOfMonth
 
 foreign import ccall safe "ql.h qlIborIndexEndOfMonth"
-  c_endOfMonth :: Ptr CIborIndex -> Ptr CString -> IO CInt
+  c_endOfMonth :: Ptr CIborIndex -> IO CInt
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

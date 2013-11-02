@@ -45,15 +45,15 @@ run = do
   eu3m <- Ibor.euribor3M Nothing
   eu3mRI <- asInterestRateIndex eu3m
   fraCalendar <- asIndex eu3mRI >>= fixingCalendar
-  fixDays <- fixingDays eu3mRI
+  let fixDays = fixingDays eu3mRI
+      convention = Ibor.businessDayConvention eu3m
+      eom = Ibor.endOfMonth eu3m
   settleDate <- advance fraCalendar todaysDate (fromIntegral fixDays) Days Following False
 
   simpleFraQuotes <- mapM simpleQuote quotes
   fraQuotes <- mapM asQuote simpleFraQuotes
 
   fraDayCounter <- dayCounter eu3mRI
-  convention <- Ibor.businessDayConvention eu3m
-  eom <- Ibor.endOfMonth eu3m
 
   fraInstruments <- mapM
     (\(q, t, p) -> TS.fraRateHelper q t p (fromIntegral fixDays) fraCalendar convention eom fraDayCounter) $

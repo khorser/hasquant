@@ -148,12 +148,8 @@ DayCounter* qlInterestRateIndexDayCounter(QlInterestRateIndex* o, char **e) {
     return handleException<DayCounter*>(e, er);
   }
 }
-unsigned qlInterestRateIndexFixingDays(QlInterestRateIndex* o, char **e) {
-  try {
-    return (*arg(o))->fixingDays();
-  } catch (std::exception& er) {
-    return handleException<unsigned>(e, er);
-  }
+unsigned qlInterestRateIndexFixingDays(QlInterestRateIndex* o) {
+  return (*arg(o))->fixingDays();
 }
 Period* qlInterestRateIndexTenor(QlInterestRateIndex* o, char **e) {
   try {
