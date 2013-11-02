@@ -10,9 +10,8 @@ module QuantLib.Internal.Syntax
   )
 where
 
-import Control.Applicative((<*>))
+import Control.Applicative((<$>), (<*>))
 import Control.Monad(liftM)
-import Data.Functor((<$>))
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
