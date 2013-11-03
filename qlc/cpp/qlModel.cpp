@@ -181,7 +181,8 @@ void qlFreeCalibrationHelper(QlCalibrationHelper *o) { del(o); }
 
 void qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e) {
   try {
-    (*arg(o))->calibrate(qlBuildVector(x1, x1Len), *arg(method), *arg(endCriteria), *arg(constraint), std::vector<double>(weights, weights+x1Len));
+    Constraint c(constraint ? *arg(constraint) : Constraint());
+    (*arg(o))->calibrate(qlBuildVector(x1, x1Len), *arg(method), *arg(endCriteria), c, std::vector<double>(weights, weights+x1Len));
   } catch (std::exception& er) {
     (void)handleException<int>(e, er);
   }

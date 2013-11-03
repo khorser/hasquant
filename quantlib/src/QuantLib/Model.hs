@@ -224,10 +224,10 @@ foreign import ccall safe "ql.h qlLiborForwardModel"
 -- |Calibrate to a set of market instruments (caps/swaptions)
 -- An additional constraint can be passed which must be satisfied in addition to the constraints of the model.
 calibrate :: CalibratedModel
-  -> [(CalibrationHelper, Double)] -- ^(instruments, wieights)
+  -> [(CalibrationHelper, Double)] -- ^(instruments, weights)
   -> OptimizationMethod -- ^method
   -> EndCriteria -- ^endCriteria
-  -> Constraint -- ^constraint
+  -> Maybe Constraint -- ^constraint
   -> IO ()
 calibrate = $(ffiCallX 'calibrate) c_calibrate
 
