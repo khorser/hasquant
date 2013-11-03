@@ -127,6 +127,9 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, char **e);
   QlPricingEngine* DLLEXPORT qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e);
   QlPricingEngine* DLLEXPORT qlLfmSwaptionEngine(QlLiborForwardModel* model, QlYieldTermStructure* discountCurve, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeCapFloorEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeSwaptionEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeVanillaSwapEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e);
 #ifdef __cplusplus
 }
 #endif

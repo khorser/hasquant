@@ -227,4 +227,52 @@ double* DLLEXPORT qlCalibrationHelperTimes(QlCalibrationHelper* o, unsigned *len
     return handleException<double*>(e, er);
   }
 }
+
+double* qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, char **e) {
+  try {
+    Disposable<Array> params = (*arg(o))->params();
+    *len = params.size();
+    double *ps = qlAllocateDoubles(*len);
+    std::copy(params.begin(), params.end(), ps);
+    return ps;
+  } catch (std::exception& er) {
+    return handleException<double*>(e, er);
+  }
+}
+double qlCalibrationHelperBlackPrice(QlCalibrationHelper* o, double volatility, char **e) {
+  try {
+    return (*arg(o))->blackPrice(volatility);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlCalibrationHelperCalibrationError(QlCalibrationHelper* o, char **e) {
+  try {
+    return (*arg(o))->calibrationError();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlCalibrationHelperImpliedVolatility(QlCalibrationHelper* o, double targetValue, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e) {
+  try {
+    return (*arg(o))->impliedVolatility(targetValue, accuracy, maxEvaluations, minVol, maxVol);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlCalibrationHelperMarketValue(QlCalibrationHelper* o, char **e) {
+  try {
+    return (*arg(o))->marketValue();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlCalibrationHelperModelValue(QlCalibrationHelper* o, char **e) {
+  try {
+    return (*arg(o))->modelValue();
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

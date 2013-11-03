@@ -6,6 +6,7 @@ module QuantLib.Example.BermudanSwaption
 where
 
 import Control.Applicative((<$>))
+import Control.Monad(forM_, forM)
 
 import QuantLib.Compounding
 import QuantLib.Index
@@ -14,6 +15,7 @@ import QuantLib.Instances
 import QuantLib.Instrument
 import QuantLib.Instrument.Swap
 import QuantLib.Instrument.VanillaSwapType
+import QuantLib.Math.Optimization
 import QuantLib.Model.CalibrationErrorType
 import QuantLib.PricingEngine
 import QuantLib.Quote
@@ -71,6 +73,13 @@ run = do
   (swaptions, tms) <- unzip <$> mapM (createHelpers index6m ts) rows
   grid <- Model.timeGridFromList $ concat tms
 
+  modelG2 <- Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75)
+  modelHW <- Model.hullWhite ts 0.1 0.01
+  modelHW2 <- Model.hullWhite ts 0.1 0.01
+  modelBK <- Model.blackKarasinski ts 0.1 0.1
+
+  forM_ swaptions (\s -> g2SwaptionEngine modelG2 6.0 16 >>= Model.setPricingEngine s)
+
   return Result {
     g2npv = (0, 0)
   , hwnpv = (0, 0)
@@ -106,5 +115,15 @@ run = do
           h <- Model.swaptionHelper maturity len vol index6m tenr dc dc ts RelativePriceError
           tms <- Model.times h
           return (h, tms)
+
+        calibrateModel m hs = do
+          c <- endCriteria 400 100 1.0e-8 1.0e-8 1.0e-8
+          --forM rows
+          return 1
+
+        --calibrate i h = do
+        --  let j = numCols - i - 1
+        --      k = i * numCols + j
+
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

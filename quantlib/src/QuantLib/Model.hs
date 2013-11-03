@@ -32,6 +32,13 @@ module QuantLib.Model
   , timeGrid
   , timeGridFromList
   , timeGridFromList'
+
+  , params
+  , blackPrice
+  , calibrationError
+  , impliedVolatility
+  , marketValue
+  , modelValue
   )
 where
 
@@ -314,5 +321,59 @@ timeGridFromList' = $(ffiCall 'timeGridFromList') c_timeGridFromList'
 
 foreign import ccall safe "ql.h qlTimeGrid3"
   c_timeGridFromList' :: CUInt -> Ptr CDouble -> CUInt -> Ptr CString -> IO (Ptr CTimeGrid)
+
+-- |Returns array of arguments on which calibration is done.
+params :: CalibratedModel
+  -> IO [Double]
+params x = map realToFrac <$> withObject x (getArrayX . c_params)
+
+foreign import ccall safe "ql.h qlCalibratedModelParams"
+  c_params :: Ptr CCalibratedModel -> Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)
+
+-- |Black price given a volatility.
+blackPrice :: CalibrationHelper
+  -> Double -- ^volatility
+  -> IO Double
+blackPrice = $(ffiCallX 'blackPrice) c_blackPrice
+
+foreign import ccall safe "ql.h qlCalibrationHelperBlackPrice"
+  c_blackPrice :: Ptr CCalibrationHelper -> CDouble -> Ptr CString -> IO CDouble
+
+-- |returns the error resulting from the model valuation
+calibrationError :: CalibrationHelper
+  -> IO Double
+calibrationError = $(ffiCallX 'calibrationError) c_calibrationError
+
+foreign import ccall safe "ql.h qlCalibrationHelperCalibrationError"
+  c_calibrationError :: Ptr CCalibrationHelper -> Ptr CString -> IO CDouble
+
+-- |Black volatility implied by the model.
+impliedVolatility :: CalibrationHelper
+  -> Double -- ^targetValue
+  -> Double -- ^accuracy
+  -> Word -- ^maxEvaluations
+  -> Double -- ^minVol
+  -> Double -- ^maxVol
+  -> IO Double
+impliedVolatility = $(ffiCallX 'impliedVolatility) c_impliedVolatility
+
+foreign import ccall safe "ql.h qlCalibrationHelperImpliedVolatility"
+  c_impliedVolatility :: Ptr CCalibrationHelper -> CDouble -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+
+-- |returns the actual price of the instrument (from volatility)
+marketValue :: CalibrationHelper
+  -> IO Double
+marketValue = $(ffiCallX 'marketValue) c_marketValue
+
+foreign import ccall safe "ql.h qlCalibrationHelperMarketValue"
+  c_marketValue :: Ptr CCalibrationHelper -> Ptr CString -> IO CDouble
+
+-- |returns the price of the instrument according to the model
+modelValue :: CalibrationHelper
+  -> IO Double
+modelValue = $(ffiCallX 'modelValue) c_modelValue
+
+foreign import ccall safe "ql.h qlCalibrationHelperModelValue"
+  c_modelValue :: Ptr CCalibrationHelper -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -66,6 +66,9 @@ module QuantLib.PricingEngine
   , replicatingVarianceSwapEngine
   , stulzEngine
   , lfmSwaptionEngine
+  , treeCapFloorEngine'
+  , treeSwaptionEngine'
+  , treeVanillaSwapEngine'
   )
 where
 
@@ -678,5 +681,32 @@ lfmSwaptionEngine = $(ffiCall 'lfmSwaptionEngine) c_lfmSwaptionEngine
 
 foreign import ccall safe "ql.h qlLfmSwaptionEngine"
   c_lfmSwaptionEngine :: Ptr CLiborForwardModel -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeCapFloorEngine' :: ShortRateModel -- ^model
+  -> TimeGrid -- ^timeGrid
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeCapFloorEngine' = $(ffiCall 'treeCapFloorEngine') c_treeCapFloorEngine'
+
+foreign import ccall safe "ql.h qlTreeCapFloorEngine1"
+  c_treeCapFloorEngine' :: Ptr CShortRateModel -> Ptr CTimeGrid -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeSwaptionEngine' :: ShortRateModel
+  -> TimeGrid -- ^timeGrid
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeSwaptionEngine' = $(ffiCall 'treeSwaptionEngine') c_treeSwaptionEngine'
+
+foreign import ccall safe "ql.h qlTreeSwaptionEngine1"
+  c_treeSwaptionEngine' :: Ptr CShortRateModel -> Ptr CTimeGrid -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeVanillaSwapEngine' :: ShortRateModel
+  -> TimeGrid -- ^timeGrid
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeVanillaSwapEngine' = $(ffiCall 'treeVanillaSwapEngine') c_treeVanillaSwapEngine'
+
+foreign import ccall safe "ql.h qlTreeVanillaSwapEngine1"
+  c_treeVanillaSwapEngine' :: Ptr CShortRateModel -> Ptr CTimeGrid -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -73,6 +73,13 @@ extern "C" {
   QlCalibrationHelper* DLLEXPORT qlHestonModelHelper(Period* maturity, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e);
   QlCalibrationHelper* DLLEXPORT qlSwaptionHelper(Period* maturity, Period* length, QlQuote* volatility, QlIborIndex* index, Period* fixedLegTenor, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e);
   double* DLLEXPORT qlCalibrationHelperTimes(QlCalibrationHelper* o, unsigned *len, char **e);
+
+  double* DLLEXPORT qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, char **e);
+  double DLLEXPORT qlCalibrationHelperBlackPrice(QlCalibrationHelper* o, double volatility, char **e);
+  double DLLEXPORT qlCalibrationHelperCalibrationError(QlCalibrationHelper* o, char **e);
+  double DLLEXPORT qlCalibrationHelperImpliedVolatility(QlCalibrationHelper* o, double targetValue, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
+  double DLLEXPORT qlCalibrationHelperMarketValue(QlCalibrationHelper* o, char **e);
+  double DLLEXPORT qlCalibrationHelperModelValue(QlCalibrationHelper* o, char **e);
 #ifdef __cplusplus
 }
 #endif

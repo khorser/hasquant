@@ -1,2 +1,0 @@
--- |returns the price of the instrument according to the model
-->Real
