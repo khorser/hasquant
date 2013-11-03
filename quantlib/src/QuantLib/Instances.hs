@@ -27,6 +27,8 @@ module QuantLib.Instances
   , qlambda
 
   , impliedVolatility
+
+  , setPricingEngine
   )
 where
 
@@ -338,5 +340,24 @@ foreign import ccall safe "ql.h qlVanillaOptionImpliedVolatility"
   c_VanillaOptionImpliedVolatility :: Ptr CVanillaOption -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
 foreign import ccall safe "ql.h qlBarrierOptionImpliedVolatility"
   c_barrierOptionImpliedVolatility :: Ptr CBarrierOption -> CDouble -> Ptr CGeneralizedBlackScholesProcess -> CDouble -> CUInt -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+
+class (Finalizable a) => Priceable a where
+  c_setPricingEngine :: Ptr a -> Ptr CPricingEngine -> Ptr CString -> IO ()
+
+-- |set the pricing engine to be used.
+-- Sets a new pricing engine to the given Instrument. QuantLibXL: qlInstrumentSetPricingEngine
+setPricingEngine :: (Priceable a) => ForeignPtr a -> PricingEngine -> IO ()
+setPricingEngine = $(ffiCallX 'setPricingEngine) c_setPricingEngine
+
+instance Priceable CInstrument where
+  c_setPricingEngine = c_instrumentSetPricingEngine
+
+instance Priceable CCalibrationHelper where
+  c_setPricingEngine = c_calibrationHelperSetPricingEngine
+
+foreign import ccall safe "ql.h qlInstrumentSetPricingEngine"
+  c_instrumentSetPricingEngine :: Ptr CInstrument -> Ptr CPricingEngine -> Ptr CString -> IO ()
+foreign import ccall safe "ql.h qlCalibrationHelperSetPricingEngine"
+  c_calibrationHelperSetPricingEngine :: Ptr CCalibrationHelper -> Ptr CPricingEngine -> Ptr CString -> IO ()
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

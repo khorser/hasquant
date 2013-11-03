@@ -78,7 +78,7 @@ run = do
   modelHW2 <- Model.hullWhite ts 0.1 0.01
   modelBK <- Model.blackKarasinski ts 0.1 0.1
 
-  forM_ swaptions (\s -> g2SwaptionEngine modelG2 6.0 16 >>= Model.setPricingEngine s)
+  forM_ swaptions (\s -> g2SwaptionEngine modelG2 6.0 16 >>= setPricingEngine s)
 
   return Result {
     g2npv = (0, 0)

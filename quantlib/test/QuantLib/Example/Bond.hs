@@ -18,6 +18,7 @@ import qualified QuantLib.CashFlow.Leg as Leg
 import QuantLib.Compounding
 import QuantLib.Index
 import QuantLib.Index.Ibor
+import QuantLib.Instances
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond
 import QuantLib.Math.Interpolation

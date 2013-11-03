@@ -43,7 +43,6 @@ maturityDate: CashFlow/Leg.hs, Instrument/Bond.hs, Instrument/Swap.hs
 npv: Instrument.hs, CashFlow/Leg.hs
 
 rho: PricingEngine.hs, Instances.hs
-setPricingEngine: Instrument.hs, Model.hs
 settlementDate: Instrument/Bond.hs, Instrument/Forward.hs
 startDate: CashFlow/Leg.hs, Instrument/Bond.hs, Instrument/Swap.hs
 

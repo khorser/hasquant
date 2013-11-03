@@ -9,6 +9,7 @@ import Control.Monad(foldM)
 import Data.Time.Calendar
 
 import QuantLib.Compounding
+import QuantLib.Instances
 import QuantLib.Instrument
 import QuantLib.Instrument.BarrierType
 import QuantLib.Instrument.Option

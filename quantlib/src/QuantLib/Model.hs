@@ -23,7 +23,6 @@ module QuantLib.Model
   , liborForwardModel
 
   , calibrate
-  , setPricingEngine
   , capHelper
   , hestonModelHelper
   , swaptionHelper
@@ -234,14 +233,6 @@ calibrate = $(ffiCallX 'calibrate) c_calibrate
 
 foreign import ccall safe "ql.h qlCalibratedModelCalibrate"
   c_calibrate :: Ptr CCalibratedModel -> CUInt -> Ptr (Ptr CCalibrationHelper) -> Ptr CDouble -> Ptr COptimizationMethod -> Ptr CEndCriteria -> Ptr CConstraint -> Ptr CString -> IO ()
-
-setPricingEngine :: CalibrationHelper
-  -> PricingEngine -- ^engine
-  -> IO ()
-setPricingEngine = $(ffiCallX 'setPricingEngine) c_setPricingEngine
-
-foreign import ccall safe "ql.h qlCalibrationHelperSetPricingEngine"
-  c_setPricingEngine :: Ptr CCalibrationHelper -> Ptr CPricingEngine -> Ptr CString -> IO ()
 
 capHelper :: Period -- ^length
   -> Quote -- ^volatility

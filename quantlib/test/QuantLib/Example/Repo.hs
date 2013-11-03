@@ -6,6 +6,7 @@ module QuantLib.Example.Repo
 where
 
 import QuantLib.Compounding
+import QuantLib.Instances
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond
 import QuantLib.Instrument.Forward
