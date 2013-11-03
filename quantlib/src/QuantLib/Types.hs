@@ -9,6 +9,7 @@ module QuantLib.Types
   -- cashflows
   , Leg
   , FloatingRateCouponPricer
+  , Coupon
 
   -- currency
   , Currency
@@ -215,6 +216,7 @@ objectMatrix rows cols d =
 -- cashflows
 type Leg = ForeignPtr CLeg
 type FloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer
+type Coupon = ForeignPtr CCoupon
 
 -- currencies
 type Currency = ForeignPtr CCurrency

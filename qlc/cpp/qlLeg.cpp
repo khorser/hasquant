@@ -1,4 +1,5 @@
 #include <ql/cashflows/cashflows.hpp>
+#include <ql/cashflows/coupon.hpp>
 #include <ql/cashflows/simplecashflow.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 #include <boost/shared_ptr.hpp>
@@ -356,4 +357,31 @@ void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPr
     (void)handleException<int>(e, er);
   }
 }
+
+void qlFreeCoupon(QlCoupon *o) { del(o); }
+
+QlCoupon **qlAllocateCoupons(size_t size) {
+  return new QlCoupon*[size];
+}
+
+void qlFreeCoupons(QlCoupon **p) {
+  delete[] p;
+}
+
+unsigned qlLegCoupons(Leg *leg, QlCoupon ***coupons, char **e) {
+  *coupons = 0;
+  try {
+    QlCoupon **p = qlAllocateCoupons(leg->size());
+    for (unsigned i = 0; i < leg->size(); ++i) {
+      QlCoupon c = boost::dynamic_pointer_cast<Coupon>((*leg)[i]);
+      p[i] = new QlCoupon(c);
+    }
+    *coupons = p;
+    return leg->size();
+  } catch (std::exception& er) {
+    qlFreeCoupons(*coupons);
+    return handleException<unsigned>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

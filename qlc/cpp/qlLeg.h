@@ -62,6 +62,11 @@ extern "C" {
 
   void DLLEXPORT qlQuantLibSetCouponPricer(Leg* leg, QlFloatingRateCouponPricer* x1, char **e);
   void DLLEXPORT qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPricer** x1, char **e);
+
+  void DLLEXPORT qlFreeCoupon(QlCoupon *o);
+  QlCoupon **qlAllocateCoupons(size_t size);
+  void DLLEXPORT qlFreeCoupons(QlCoupon **p);
+  unsigned DLLEXPORT qlLegCoupons(Leg *leg, QlCoupon ***coupons, char **e);
 #ifdef __cplusplus
 }
 #endif

@@ -6,6 +6,7 @@ module QuantLib.Internal.Types
   -- cashflow
   , CLeg
   , CFloatingRateCouponPricer
+  , CCoupon
 
   -- currency
   , CCurrency
@@ -162,6 +163,12 @@ instance Finalizable CFloatingRateCouponPricer where
   finalize = p_freeFloatingCouponPricer
 foreign import ccall safe "ql.h &qlFreeFloatingCouponPricer"
   p_freeFloatingCouponPricer :: FunPtr (Ptr CFloatingRateCouponPricer -> IO ())
+
+data CCoupon
+instance Finalizable CCoupon where
+  finalize = p_freeCoupon
+foreign import ccall safe "ql.h &qlFreeCoupon"
+  p_freeCoupon :: FunPtr (Ptr CCoupon -> IO ())
 
 -- currencies
 data CCurrency

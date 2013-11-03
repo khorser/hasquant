@@ -5,8 +5,8 @@
 #include <boost/optional.hpp>
 #include <ql/math/matrix.hpp>
 
-int * qlAllocateInts(size_t size);
-double * qlAllocateDoubles(size_t size);
+int *qlAllocateInts(size_t size);
+double *qlAllocateDoubles(size_t size);
 
 char *tracedup(const char *p);
 #define DUP(p) tracedup((p))
@@ -809,4 +809,10 @@ template <> class objClassName<FdmSchemeDesc *> { public: static const char *nam
 
 namespace QuantLib {class TimeGrid;} using QuantLib::TimeGrid;
 template <> class objClassName<TimeGrid *> { public: static const char *name() { return "TimeGrid"; } };
+
+namespace QuantLib {class Coupon;} using QuantLib::Coupon;
+typedef boost::shared_ptr<Coupon> QlCoupon;
+template <> class objClassName<Coupon *> { public: static const char *name() { return "Coupon"; } };
+template <> class objClassName<QlCoupon *> { public: static const char *name() { return "QlCoupon"; } };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -1,3 +1,4 @@
+#!/usr/bin/perl
 for $f (glob("*.xml"))
 {
     open I, "<$f";

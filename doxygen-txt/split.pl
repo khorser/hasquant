@@ -1,4 +1,5 @@
-# create dirs f, v, e
+#!/usr/bin/perl
+# how to use: create dirs f, v, e
 # and run with `for f in *.txt ; do perl split.pl $f ; done'
 
 @l = <>;

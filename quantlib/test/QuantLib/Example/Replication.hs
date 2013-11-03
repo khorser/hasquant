@@ -36,8 +36,8 @@ data Result = Result
 run :: IO Result
 run = do
   setEvaluationDate tod
-  underlying <- simpleQuote (head underlyingValues)
-  underlyingQuote <- asQuote underlying
+  under <- simpleQuote (head underlyingValues)
+  underlyingQuote <- asQuote under
   riskFreeRate <- simpleQuote 0.04 >>= asQuote
   vol <- simpleQuote 0.20 >>= asQuote
   dc <- actual365Fixed
@@ -59,17 +59,17 @@ run = do
   put2 <- plainVanillaPayoff Put barrier >>= asStrikedTypePayoff >>= (`europeanOption` ex) >>= asOneAssetOption >>= asOption >>= asInstrument
   setPricingEngine put2 europeanEngine
   let p = [(put1, 1), (digitalPut, barrier-strike), (put2, -1)]
-  portfolio1 <- foldM (addInstrument europeanEngine underlying) p
+  portfolio1 <- foldM (addInstrument europeanEngine under) p
     (zip maturities1 killDates1) >>= composite
-  portfolio2 <- foldM (addInstrument europeanEngine underlying) p
+  portfolio2 <- foldM (addInstrument europeanEngine under) p
     (zip maturities2 killDates2) >>= composite
-  portfolio3 <- foldM (addInstrument europeanEngine underlying) p
+  portfolio3 <- foldM (addInstrument europeanEngine under) p
     (zip maturities3 killDates3) >>= composite
 
   setEvaluationDate tod
 
   [npv1, npv2, npv3] <- mapM
-    (\v -> setValue underlying v
+    (\v -> setValue under v
       >> mapM npv [refInstrument, portfolio1, portfolio2, portfolio3])
     underlyingValues
 
