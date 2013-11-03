@@ -73,16 +73,14 @@ TimeGrid* qlTimeGrid1(double end, unsigned steps, char **e) {
 }
 TimeGrid* qlTimeGrid2(unsigned x0Len, double* x0, char **e) {
   try {
-    std::vector<double> grid(x0, x0+x0Len);
-    return alloc(new TimeGrid(grid.begin(), grid.end()));
+    return alloc(new TimeGrid(x0, x0+x0Len));
   } catch (std::exception& er) {
     return handleException<TimeGrid*>(e, er);
   }
 }
 TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e) {
   try {
-    std::vector<double> grid(x0, x0+x0Len);
-    return alloc(new TimeGrid(grid.begin(), grid.end(), steps));
+    return alloc(new TimeGrid(x0, x0+x0Len, steps));
   } catch (std::exception& er) {
     return handleException<TimeGrid*>(e, er);
   }
