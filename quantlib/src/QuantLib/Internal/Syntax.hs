@@ -64,7 +64,7 @@ import QuantLib.TermStructure.Trait() -- QLLitEnum and QLEnum
 data NestedArg = DayN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | YearFractionN
   deriving (Show, Eq)
 
--- XXX use GADTs/SYB/Uniplate to traverse?
+-- XXX use GADTs/SYB/Uniplate to traverse with comfort?
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA | YearFractionA
   | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA
   | ListA NestedArg | ListA2 NestedArg NestedArg

@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,ScopedTypeVariables #-}
+{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,ScopedTypeVariables,FlexibleContexts #-}
 module QuantLib.Internal.Utils
   (
     signalError
@@ -19,10 +19,13 @@ module QuantLib.Internal.Utils
   , getArray
   , buildArray
   , getArrayX
+  , getObjectArrayX
   , getString
   , CStaticInt(..)
   , withArrayULen
   , withArrayULenT
+
+  , CArrayable(..)
 
   -- re-exporting some popular stuff
   , Word
@@ -52,13 +55,6 @@ import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Error(Error(Error), message)
 
-foreign import ccall safe "ql.h qlFreeString"
-  c_freeString :: CString -> IO ()
-foreign import ccall safe "ql.h qlFreeInts"
-  c_freeInts :: Ptr CInt -> IO ()
-foreign import ccall safe "ql.h qlFreeDoubles"
-  c_freeDoubles :: Ptr CDouble -> IO ()
-
 signalError :: String -> a
 signalError = throw . Error
 
@@ -87,23 +83,28 @@ getString x = do
   c_freeString s
   return str
 
-class (Storable a) => CArray a where
-  freeArray :: Ptr a -> IO ()
-
-instance CArray CInt where
-  freeArray = c_freeInts
-
-instance CArray CDouble where
-  freeArray = c_freeDoubles
-
 newtype CStaticInt = CStaticInt{getStaticInt::CInt} deriving (Eq, Show, Storable)
 
-instance CArray CStaticInt where
+class (Storable a) => CArrayable a where
+  freeArray :: Ptr a -> IO ()
+
+instance CArrayable CInt where
+  freeArray = c_freeInts
+instance CArrayable CDouble where
+  freeArray = c_freeDoubles
+instance CArrayable CStaticInt where
   freeArray = const $ return ()
+
+foreign import ccall safe "ql.h qlFreeString"
+  c_freeString :: CString -> IO ()
+foreign import ccall safe "ql.h qlFreeInts"
+  c_freeInts :: Ptr CInt -> IO ()
+foreign import ccall safe "ql.h qlFreeDoubles"
+  c_freeDoubles :: Ptr CDouble -> IO ()
 
 -- get a function that returns an array of a
 -- with the number of items returned via the first argument
-getArray :: (CArray a) => (Ptr CUInt -> IO (Ptr a)) -> IO [a]
+getArray :: (CArrayable a) => (Ptr CUInt -> IO (Ptr a)) -> IO [a]
 getArray f =
   alloca $
     \pcnt -> do
@@ -114,7 +115,7 @@ getArray f =
 -- getArray with error handling
 -- TODO generalize getArray and getArrayX
 -- TODO add Vectors
-getArrayX :: (CArray a) => (Ptr CUInt -> Ptr CString -> IO (Ptr a)) -> IO [a]
+getArrayX :: (CArrayable a) => (Ptr CUInt -> Ptr CString -> IO (Ptr a)) -> IO [a]
 getArrayX f =
   alloca $
   \pcnt -> do
@@ -122,11 +123,17 @@ getArrayX f =
     count <- peek pcnt
     buildArray count array
 
-buildArray :: (CArray a) => CUInt -> Ptr a -> IO [a]
+buildArray :: (CArrayable a) => CUInt -> Ptr a -> IO [a]
 buildArray n p = do
   x <- peekArray (fromIntegral n) p
   freeArray p
   return x
+
+-- invoke object method returning a list of objects
+getObjectArrayX :: (CArrayable (Ptr a), Finalizable a) => ForeignPtr b
+  -> (Ptr b -> Ptr CUInt -> Ptr CString -> IO (Ptr (Ptr a)))
+  -> IO [ForeignPtr a]
+getObjectArrayX o f = withObject o (getArrayX . f) >>= mapM (newForeignPtr finalize)
 
 unmarshalExceptions :: (Ptr CString -> IO a) -> IO a
 unmarshalExceptions f =

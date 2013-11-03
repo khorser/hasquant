@@ -46,6 +46,9 @@ module QuantLib.CashFlow.Leg
   , yieldValueBasisPoint'
   , yieldValueBasisPoint
   , zSpread
+
+  , coupons
+  , accrualStartDate'
   )
 where
 
@@ -558,5 +561,19 @@ zSpread = $(ffiCallX 'zSpread) c_zSpread
 
 foreign import ccall safe "ql.h qlCashFlowsZSpread"
   c_zSpread :: Ptr CLeg -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> CInt -> CInt -> CInt -> CDate -> CDate -> CDouble -> CUInt -> CDouble -> Ptr CString -> IO CDouble
+
+coupons :: Leg -> IO [Coupon]
+coupons l = getObjectArrayX l c_coupons
+
+foreign import ccall safe "ql.h qlLegCoupons"
+  c_coupons :: Ptr CLeg -> Ptr CUInt -> Ptr CString -> IO (Ptr (Ptr CCoupon))
+
+-- |start of the accrual period
+accrualStartDate' :: Coupon
+  -> IO Day
+accrualStartDate' = $(ffiCallX 'accrualStartDate') c_accrualStartDate'
+
+foreign import ccall safe "ql.h qlCouponAccrualStartDate"
+  c_accrualStartDate' :: Ptr CCoupon -> Ptr CString -> IO CDate
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

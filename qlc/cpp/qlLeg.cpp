@@ -368,19 +368,27 @@ void qlFreeCoupons(QlCoupon **p) {
   delete[] p;
 }
 
-unsigned qlLegCoupons(Leg *leg, QlCoupon ***coupons, char **e) {
-  *coupons = 0;
+QlCoupon **qlLegCoupons(Leg *leg, unsigned *len, char **e) {
+  *len = leg->size();
+  QlCoupon **coupons = 0;
   try {
-    QlCoupon **p = qlAllocateCoupons(leg->size());
+    coupons = qlAllocateCoupons(*len);
     for (unsigned i = 0; i < leg->size(); ++i) {
       QlCoupon c = boost::dynamic_pointer_cast<Coupon>((*leg)[i]);
-      p[i] = new QlCoupon(c);
+      coupons[i] = new QlCoupon(c);
     }
-    *coupons = p;
-    return leg->size();
+    return coupons;
   } catch (std::exception& er) {
-    qlFreeCoupons(*coupons);
-    return handleException<unsigned>(e, er);
+    qlFreeCoupons(coupons);
+    return handleException<QlCoupon **>(e, er);
+  }
+}
+
+int qlCouponAccrualStartDate(QlCoupon* o, char **e) {
+  try {
+    return ((*arg(o))->accrualStartDate()).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
   }
 }
 

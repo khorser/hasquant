@@ -8,17 +8,21 @@ where
 import Control.Applicative((<$>))
 import Control.Monad(forM_)
 
+import qualified QuantLib.CashFlow.Leg as Leg
 import QuantLib.Compounding
 import QuantLib.Index
 import QuantLib.Index.Ibor
 import QuantLib.Instances
+import QuantLib.Instrument
 import QuantLib.Instrument.Swap
 import QuantLib.Instrument.VanillaSwapType
 import QuantLib.Math.Optimization
+import QuantLib.Method.FdmSchemeDesc
 import QuantLib.Model.CalibrationErrorType
 import QuantLib.PricingEngine
 import QuantLib.Quote
 import QuantLib.Settings
+import QuantLib.SettlementType
 import QuantLib.Time.BusinessDayConvention
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
@@ -73,15 +77,18 @@ run = do
   g2v <- calibrateModel modelG2' swaptions
   g2p <- Model.params modelG2'
 
-  modelHW <- Model.hullWhite ts 0.1 0.01 >>= asOneFactorAffineModel
-  forM_ swaptions (\s -> jamshidianSwaptionEngine modelHW Nothing >>= setPricingEngine s)
-  modelHW' <- asShortRateModel modelHW >>= asCalibratedModel
+  modelHW <- Model.hullWhite ts 0.1 0.01
+  modelHWo <- asOneFactorAffineModel modelHW
+  forM_ swaptions (\s -> jamshidianSwaptionEngine modelHWo Nothing >>= setPricingEngine s)
+  modelHW' <- asShortRateModel modelHWo >>= asCalibratedModel
   hwv <- calibrateModel modelHW' swaptions
   hwp <- Model.params modelHW'
 
-  modelHW2 <- Model.hullWhite ts 0.1 0.01 >>= asOneFactorAffineModel >>= asShortRateModel
-  forM_ swaptions (\s -> treeSwaptionEngine' modelHW2 grid Nothing>>= setPricingEngine s)
-  modelHW2' <- asCalibratedModel modelHW2
+  modelHW2 <- Model.hullWhite ts 0.1 0.01
+  modelHW2o <- asOneFactorAffineModel modelHW2
+  modelHW2s <- asShortRateModel modelHW2o
+  forM_ swaptions (\s -> treeSwaptionEngine' modelHW2s grid Nothing>>= setPricingEngine s)
+  modelHW2' <- asCalibratedModel modelHW2s
   hw2v <- calibrateModel modelHW2' swaptions
   hw2p <- Model.params modelHW2'
 
@@ -91,13 +98,35 @@ run = do
   bkv <- calibrateModel modelBK' swaptions
   bkp <- Model.params modelBK'
 
-  --hwVols <- asShortRateModel modelHW >>= asCalibratedModel >>= (`calibrateModel` swaptions)
-  --hw2Vols <- asCalibratedModel modelHW2 >>= (`calibrateModel` swaptions)
-  --bkVols <- asCalibratedModel modelBK >>= (`calibrateModel` swaptions)
+  atmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedATMRate fixedDC floatSchedule index6m 0.0
+    floatDC floatConv
+
+  bermudanDates <- fixedLeg swp >>= Leg.coupons >>= mapM Leg.accrualStartDate'
+  ex <- bermudanExercise bermudanDates False >>= asExercise
+  swption <- swaption atmSwap ex Physical >>= asOption >>= asInstrument
+
+  modelG2s <- asShortRateModel modelG2
+  treeSwaptionEngine modelG2s 50 Nothing >>= setPricingEngine swption
+  npv swption >>= print
+  hundsdorfer >>= fdG2SwaptionEngine modelG2 100 50 50 0 1.0e-5 >>= setPricingEngine swption
+  npv swption >>= print
+
+  modelHWs <- asShortRateModel modelHWo
+  treeSwaptionEngine modelHWs 50 Nothing >>= setPricingEngine swption
+  npv swption >>= print
+  douglas >>= fdHullWhiteSwaptionEngine modelHW 100 100 0 1.0e-5 >>= setPricingEngine swption
+  npv swption >>= print
+
+  treeSwaptionEngine modelHW2s 50 Nothing >>= setPricingEngine swption
+  npv swption >>= print
+  douglas >>= fdHullWhiteSwaptionEngine modelHW2 100 100 0 1.0e-5 >>= setPricingEngine swption
+  npv swption >>= print
+
+  treeSwaptionEngine modelBK 50 Nothing >>= setPricingEngine swption
+  npv swption >>= print
+
   --let fixedOTMRate = fixedATMRate * 1.2
   --    fixedITMRate = fixedATMRate * 0.8
-  --atmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedATMRate fixedDC floatSchedule index6m 0.0
-  --  floatDC floatConv
   --otmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedOTMRate fixedDC floatSchedule index6m 0.0
   --  floatDC floatConv
   --itmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedITMRate fixedDC floatSchedule index6m 0.0
@@ -150,8 +179,8 @@ run = do
           mapM calibrate hs
 
         calibrate h = do
-          npv <- Model.modelValue h
-          vol <- Model.impliedVolatility h npv 1.0e-4 1000 0.05 0.50
+          nPV <- Model.modelValue h
+          vol <- Model.impliedVolatility h nPV 1.0e-4 1000 0.05 0.50
           return $ 100.0 * vol
 
 

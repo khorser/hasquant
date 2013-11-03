@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE MultiParamTypeClasses,FlexibleInstances #-}
 module QuantLib.Internal.Types
   (
     Matrix(..)
@@ -165,10 +165,16 @@ foreign import ccall safe "ql.h &qlFreeFloatingCouponPricer"
   p_freeFloatingCouponPricer :: FunPtr (Ptr CFloatingRateCouponPricer -> IO ())
 
 data CCoupon
+
 instance Finalizable CCoupon where
   finalize = p_freeCoupon
 foreign import ccall safe "ql.h &qlFreeCoupon"
   p_freeCoupon :: FunPtr (Ptr CCoupon -> IO ())
+
+instance CArrayable (Ptr CCoupon) where
+  freeArray = c_freeCoupons
+foreign import ccall safe "ql.h qlFreeCoupons"
+  c_freeCoupons :: Ptr (Ptr CCoupon) -> IO ()
 
 -- currencies
 data CCurrency

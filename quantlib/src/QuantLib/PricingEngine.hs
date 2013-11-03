@@ -69,6 +69,9 @@ module QuantLib.PricingEngine
   , treeCapFloorEngine'
   , treeSwaptionEngine'
   , treeVanillaSwapEngine'
+
+  , fdG2SwaptionEngine
+  , fdHullWhiteSwaptionEngine
   )
 where
 
@@ -708,5 +711,30 @@ treeVanillaSwapEngine' = $(ffiCall 'treeVanillaSwapEngine') c_treeVanillaSwapEng
 
 foreign import ccall safe "ql.h qlTreeVanillaSwapEngine1"
   c_treeVanillaSwapEngine' :: Ptr CShortRateModel -> Ptr CTimeGrid -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+fdG2SwaptionEngine :: G2
+  -> Word -- tGrid
+  -> Word -- xGrid
+  -> Word -- yGrid
+  -> Word -- dampingSpecs
+  -> Double -- invEps
+  -> FdmSchemeDesc
+  -> IO PricingEngine
+fdG2SwaptionEngine = $(ffiCall 'fdG2SwaptionEngine) c_fdG2SwaptionEngine
+
+foreign import ccall safe "ql.h qlFdG2SwaptionEngine"
+  c_fdG2SwaptionEngine :: Ptr CG2 -> CUInt -> CUInt -> CUInt -> CUInt -> CDouble -> Ptr CFdmSchemeDesc -> Ptr CString -> IO (Ptr CPricingEngine)
+
+fdHullWhiteSwaptionEngine :: HullWhite
+  -> Word -- tGrid
+  -> Word -- xGrid
+  -> Word -- dampingSpecs
+  -> Double -- invEps
+  -> FdmSchemeDesc
+  -> IO PricingEngine
+fdHullWhiteSwaptionEngine = $(ffiCall 'fdHullWhiteSwaptionEngine) c_fdHullWhiteSwaptionEngine
+
+foreign import ccall safe "ql.h qlFdHullWhiteSwaptionEngine"
+  c_fdHullWhiteSwaptionEngine :: Ptr CHullWhite -> CUInt -> CUInt -> CUInt -> CDouble -> Ptr CFdmSchemeDesc -> Ptr CString -> IO (Ptr CPricingEngine)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
