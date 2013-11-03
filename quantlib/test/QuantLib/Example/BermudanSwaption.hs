@@ -12,7 +12,6 @@ import QuantLib.Compounding
 import QuantLib.Index
 import QuantLib.Index.Ibor
 import QuantLib.Instances
-import QuantLib.Instrument
 import QuantLib.Instrument.Swap
 import QuantLib.Instrument.VanillaSwapType
 import QuantLib.Math.Optimization
@@ -54,33 +53,41 @@ run = do
   fixedPeriod <- fromFrequency fixedFreq
   floatPeriod <- fromFrequency floatFreq
   fixedSchedule <- schedule (Just start) maturity fixedPeriod cal fixedConv fixedConv Forward False Nothing Nothing
-  floatSchedule <- schedule (Just start) maturity fixedPeriod cal floatConv floatConv Forward False Nothing Nothing
+  floatSchedule <- schedule (Just start) maturity floatPeriod cal floatConv floatConv Forward False Nothing Nothing
   floatDC <- asInterestRateIndex index6m >>= dayCounter
-  swap <- vanillaSwap swapType 1000.0 fixedSchedule dummyFixRate fixedDC floatSchedule index6m 0.0
+  swp <- vanillaSwap swapType 1000.0 fixedSchedule dummyFixRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
   engine <- discountingSwapEngine ts Nothing Nothing Nothing
-  asSwap swap >>= asInstrument >>= (`setPricingEngine` engine)
-  fixedATMRate <- fairRate swap
-  let fixedOTMRate = fixedATMRate * 1.2
-      fixedITMRate = fixedATMRate * 0.8
-  atmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedATMRate fixedDC floatSchedule index6m 0.0
-    floatDC floatConv
-  otmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedOTMRate fixedDC floatSchedule index6m 0.0
-    floatDC floatConv
-  itmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedITMRate fixedDC floatSchedule index6m 0.0
-    floatDC floatConv
-
+  asSwap swp >>= asInstrument >>= (`setPricingEngine` engine)
+  fixedATMRate <- fairRate swp
   (swaptions, tms) <- unzip <$> mapM (createHelpers index6m ts) rows
-  grid <- Model.timeGridFromList $ concat tms
 
   modelG2 <- Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75)
-  modelHW <- Model.hullWhite ts 0.1 0.01
-  modelHW2 <- Model.hullWhite ts 0.1 0.01
-  modelBK <- Model.blackKarasinski ts 0.1 0.1
-
   forM_ swaptions (\s -> g2SwaptionEngine modelG2 6.0 16 >>= setPricingEngine s)
   modelG2' <- asShortRateModel modelG2 >>= asCalibratedModel
-  calibrateModel modelG2' swaptions
+  calibrateModel modelG2' swaptions >>= print
+
+  modelHW <- Model.hullWhite ts 0.1 0.01 >>= asOneFactorAffineModel
+  forM_ swaptions (\s -> jamshidianSwaptionEngine modelHW Nothing >>= setPricingEngine s)
+  modelHW' <- asShortRateModel modelHW >>= asCalibratedModel
+  calibrateModel modelHW' swaptions >>= print
+
+  grid <- Model.timeGridFromList' (concat tms) 30
+  modelHW2 <- Model.hullWhite ts 0.1 0.01 >>= asOneFactorAffineModel >>= asShortRateModel
+  forM_ swaptions (\s -> treeSwaptionEngine' modelHW2 grid Nothing>>= setPricingEngine s)
+  modelHW2' <- asCalibratedModel modelHW2
+  calibrateModel modelHW2' swaptions >>= print
+
+  --modelBK <- Model.blackKarasinski ts 0.1 0.1
+
+  --let fixedOTMRate = fixedATMRate * 1.2
+  --    fixedITMRate = fixedATMRate * 0.8
+  --atmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedATMRate fixedDC floatSchedule index6m 0.0
+  --  floatDC floatConv
+  --otmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedOTMRate fixedDC floatSchedule index6m 0.0
+  --  floatDC floatConv
+  --itmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedITMRate fixedDC floatSchedule index6m 0.0
+  --  floatDC floatConv
 
   return Result {
     g2npv = (0, 0)
@@ -120,17 +127,14 @@ run = do
 
         calibrateModel m hs = do
           cr <- endCriteria 400 100 1.0e-8 1.0e-8 1.0e-8
-          lm <- levenbergMarquardt 1.0e-8 1.0e-8 1.0e-8
-          m <- Model.calibrate m (zip hs [1.0 ..]) lm cr Nothing
-          vols <- mapM calibrate $ zip hs rows
-          print vols
+          om <- levenbergMarquardt 1.0e-8 1.0e-8 1.0e-8
+          Model.calibrate m (zip hs $ repeat 1.0) om cr Nothing
+          mapM calibrate hs
 
-        calibrate (h, i) = do
-          let j = numCols - i - 1
-              k = i * numCols + j
+        calibrate h = do
           npv <- Model.modelValue h
           vol <- Model.impliedVolatility h npv 1.0e-4 1000 0.05 0.50
-          return (vol * 100, 100 * swaptionVols!!k)
+          return $ 100.0 * vol
 
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
