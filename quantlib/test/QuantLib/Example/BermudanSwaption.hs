@@ -33,10 +33,14 @@ import QuantLib.TermStructure.Yield
 import qualified QuantLib.Model as Model
 
 data Result = Result
-  { g2npv :: (Double, Double)
-  , hwnpv :: (Double, Double)
-  , hw2npv :: (Double, Double)
-  , bknpv :: (Double, Double)
+  { g2Vols :: [Double]
+  , g2Params :: [Double]
+  , hwVols :: [Double]
+  , hwParams :: [Double]
+  , hw2Vols :: [Double]
+  , hw2Params :: [Double]
+  , bkVols :: [Double]
+  , bkParams :: [Double]
   }
 
 run :: IO Result
@@ -61,25 +65,35 @@ run = do
   asSwap swp >>= asInstrument >>= (`setPricingEngine` engine)
   fixedATMRate <- fairRate swp
   (swaptions, tms) <- unzip <$> mapM (createHelpers index6m ts) rows
+  grid <- Model.timeGridFromList' (concat tms) 30
 
   modelG2 <- Model.g2 ts 0.1 0.01 0.1 0.01 (-0.75)
   forM_ swaptions (\s -> g2SwaptionEngine modelG2 6.0 16 >>= setPricingEngine s)
   modelG2' <- asShortRateModel modelG2 >>= asCalibratedModel
-  calibrateModel modelG2' swaptions >>= print
+  g2v <- calibrateModel modelG2' swaptions
+  g2p <- Model.params modelG2'
 
   modelHW <- Model.hullWhite ts 0.1 0.01 >>= asOneFactorAffineModel
   forM_ swaptions (\s -> jamshidianSwaptionEngine modelHW Nothing >>= setPricingEngine s)
   modelHW' <- asShortRateModel modelHW >>= asCalibratedModel
-  calibrateModel modelHW' swaptions >>= print
+  hwv <- calibrateModel modelHW' swaptions
+  hwp <- Model.params modelHW'
 
-  grid <- Model.timeGridFromList' (concat tms) 30
   modelHW2 <- Model.hullWhite ts 0.1 0.01 >>= asOneFactorAffineModel >>= asShortRateModel
   forM_ swaptions (\s -> treeSwaptionEngine' modelHW2 grid Nothing>>= setPricingEngine s)
   modelHW2' <- asCalibratedModel modelHW2
-  calibrateModel modelHW2' swaptions >>= print
+  hw2v <- calibrateModel modelHW2' swaptions
+  hw2p <- Model.params modelHW2'
 
-  --modelBK <- Model.blackKarasinski ts 0.1 0.1
+  modelBK <- Model.blackKarasinski ts 0.1 0.1
+  forM_ swaptions (\s -> treeSwaptionEngine' modelBK grid Nothing>>= setPricingEngine s)
+  modelBK' <- asCalibratedModel modelBK
+  bkv <- calibrateModel modelBK' swaptions
+  bkp <- Model.params modelBK'
 
+  --hwVols <- asShortRateModel modelHW >>= asCalibratedModel >>= (`calibrateModel` swaptions)
+  --hw2Vols <- asCalibratedModel modelHW2 >>= (`calibrateModel` swaptions)
+  --bkVols <- asCalibratedModel modelBK >>= (`calibrateModel` swaptions)
   --let fixedOTMRate = fixedATMRate * 1.2
   --    fixedITMRate = fixedATMRate * 0.8
   --atmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedATMRate fixedDC floatSchedule index6m 0.0
@@ -90,10 +104,14 @@ run = do
   --  floatDC floatConv
 
   return Result {
-    g2npv = (0, 0)
-  , hwnpv = (0, 0)
-  , hw2npv = (0, 0)
-  , bknpv = (0, 0)
+    g2Vols = g2v
+  , g2Params = g2p
+  , hwVols = hwv
+  , hwParams = hwp
+  , hw2Vols = hw2v
+  , hw2Params = hw2p
+  , bkVols = bkv
+  , bkParams = bkp
   }
   where tod = 15 `february` 2002
         settl = 19 `february` 2002

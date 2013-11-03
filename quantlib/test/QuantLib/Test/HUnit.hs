@@ -177,8 +177,15 @@ test_replication = do
 
 test_bermudanSwaption :: IO ()
 test_bermudanSwaption = do
-  _ <- Settings.keepingSettings' BermudanSwaptionExample.run
-  assertBool True
+  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp) <- Settings.keepingSettings' BermudanSwaptionExample.run
+  subAssert $ assertListsAreClose id g2v [10.04549, 10.51234, 10.70500, 10.83817, 10.94387] 1.0e-5
+  subAssert $ assertListsAreClose id hwv [10.62037, 10.62959, 10.63414, 10.64428, 10.66132] 1.0e-5
+  subAssert $ assertListsAreClose id hw2v [10.31185, 10.54619, 10.66914, 10.74020, 10.79725] 1.0e-5
+  subAssert $ assertListsAreClose id bkv [10.32593, 10.56575, 10.67858, 10.73678, 10.77792] 1.0e-5
+  subAssert $ assertListsAreClose id g2p [0.050056, 0.0094424, 0.050053, 0.0094424, -0.763] 1.0e-5
+  subAssert $ assertListsAreClose id hwp [0.046414, 0.0058693] 1.0e-5
+  subAssert $ assertListsAreClose id hw2p [0.055229, 0.0061063] 1.0e-5
+  subAssert $ assertListsAreClose id bkp [0.043389, 0.12075] 1.0e-5
 
 test_evalDate :: IO ()
 test_evalDate = do
