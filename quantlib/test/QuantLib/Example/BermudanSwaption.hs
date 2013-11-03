@@ -5,6 +5,8 @@ module QuantLib.Example.BermudanSwaption
   )
 where
 
+import Control.Applicative((<$>))
+
 import QuantLib.Compounding
 import QuantLib.Index
 import QuantLib.Index.Ibor
@@ -66,8 +68,8 @@ run = do
   itmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedITMRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
 
-  swpations <- mapM (createHelpers index6m ts) rows
-
+  (swaptions, tms) <- unzip <$> mapM (createHelpers index6m ts) rows
+  grid <- Model.timeGridFromList $ concat tms
 
   return Result {
     g2npv = (0, 0)
@@ -100,8 +102,8 @@ run = do
           len <- period (swapLengths!!j) Years
           index6mRI <- asInterestRateIndex index6m
           dc <- dayCounter index6mRI
-          tenor <- tenor index6mRI
-          h <- Model.swaptionHelper maturity len vol index6m tenor dc dc ts RelativePriceError
+          tenr <- tenor index6mRI
+          h <- Model.swaptionHelper maturity len vol index6m tenr dc dc ts RelativePriceError
           tms <- Model.times h
           return (h, tms)
 

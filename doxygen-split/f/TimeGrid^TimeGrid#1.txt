@@ -1,6 +1,0 @@
--- |Regularly spaced time-grid.
-->
-::Time
--- ^end
-::Size
--- ^steps

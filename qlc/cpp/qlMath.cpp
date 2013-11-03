@@ -1,4 +1,5 @@
 #include <ql/math/optimization/all.hpp>
+#include <ql/timegrid.hpp>
 
 #include "qlaux.h"
 #include "qlMath.h"
@@ -58,6 +59,32 @@ EndCriteria* qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIt
     return alloc(new EndCriteria(maxIterations, maxStationaryStateIterations, rootEpsilon, functionEpsilon, gradientNormEpsilon));
   } catch (std::exception& er) {
     return handleException<EndCriteria*>(e, er);
+  }
+}
+
+void qlFreeTimeGrid(TimeGrid *o) { del(o); }
+
+TimeGrid* qlTimeGrid1(double end, unsigned steps, char **e) {
+  try {
+    return alloc(new TimeGrid(end, steps));
+  } catch (std::exception& er) {
+    return handleException<TimeGrid*>(e, er);
+  }
+}
+TimeGrid* qlTimeGrid2(unsigned x0Len, double* x0, char **e) {
+  try {
+    std::vector<double> grid(x0, x0+x0Len);
+    return alloc(new TimeGrid(grid.begin(), grid.end()));
+  } catch (std::exception& er) {
+    return handleException<TimeGrid*>(e, er);
+  }
+}
+TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e) {
+  try {
+    std::vector<double> grid(x0, x0+x0Len);
+    return alloc(new TimeGrid(grid.begin(), grid.end(), steps));
+  } catch (std::exception& er) {
+    return handleException<TimeGrid*>(e, er);
   }
 }
 

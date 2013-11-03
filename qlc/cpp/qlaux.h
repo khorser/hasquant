@@ -807,4 +807,6 @@ template <> class objClassName<QlBlackVarianceCurve *> { public: static const ch
 namespace QuantLib {class FdmSchemeDesc;} using QuantLib::FdmSchemeDesc;
 template <> class objClassName<FdmSchemeDesc *> { public: static const char *name() { return "FdmSchemeDesc"; } };
 
+namespace QuantLib {class TimeGrid;} using QuantLib::TimeGrid;
+template <> class objClassName<TimeGrid *> { public: static const char *name() { return "TimeGrid"; } };
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

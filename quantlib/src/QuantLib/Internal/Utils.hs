@@ -111,7 +111,9 @@ getArray f =
     count <- peek pcnt
     buildArray count array
 
--- XXX generalize getArray and getArrayX
+-- getArray with error handling
+-- TODO generalize getArray and getArrayX
+-- TODO add Vectors
 getArrayX :: (CArray a) => (Ptr CUInt -> Ptr CString -> IO (Ptr a)) -> IO [a]
 getArrayX f =
   alloca $

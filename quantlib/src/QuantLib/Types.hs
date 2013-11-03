@@ -145,6 +145,7 @@ module QuantLib.Types
   , InterestRate
   , Quote
   , SimpleQuote
+  , TimeGrid
 
   -- casts
   , asInstrument
@@ -554,5 +555,7 @@ type SimpleQuote = ForeignPtr CSimpleQuote
 
 asQuote :: (Upcastable a CQuote) => ForeignPtr a -> IO Quote
 asQuote = upcast
+
+type TimeGrid = ForeignPtr CTimeGrid
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -141,6 +141,8 @@ module QuantLib.Internal.Types
   , CInterestRate
   , CQuote
   , CSimpleQuote
+
+  , CTimeGrid
   )
 where
 
@@ -1226,5 +1228,11 @@ foreign import ccall safe "ql.h qlSimpleQuoteAsQuote"
 
 data Matrix a = Matrix{matrixRows::Word, matrixColumns::Word, matrixData::[a]}
   deriving (Eq, Show)
+
+data CTimeGrid
+instance Finalizable CTimeGrid where
+  finalize = p_freeTimeGrid
+foreign import ccall safe "ql.h &qlFreeTimeGrid"
+  p_freeTimeGrid :: FunPtr (Ptr CTimeGrid -> IO ())
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

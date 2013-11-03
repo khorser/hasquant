@@ -28,6 +28,10 @@ module QuantLib.Model
   , hestonModelHelper
   , swaptionHelper
   , times
+
+  , timeGrid
+  , timeGridFromList
+  , timeGridFromList'
   )
 where
 
@@ -282,5 +286,33 @@ times x =
 
 foreign import ccall safe "ql.h qlCalibrationHelperTimes"
   c_times :: Ptr CCalibrationHelper -> Ptr CUInt -> Ptr CString -> IO (Ptr CDouble)
+
+-- |Regularly spaced time-grid.
+timeGrid :: YearFraction -- ^end
+  -> Word -- ^steps
+  -> IO TimeGrid
+timeGrid = $(ffiCall 'timeGrid) c_timeGrid
+
+foreign import ccall safe "ql.h qlTimeGrid1"
+  c_timeGrid :: CYearFraction -> CUInt -> Ptr CString -> IO (Ptr CTimeGrid)
+
+-- |Time grid with mandatory time points.
+-- Mandatory points are guaranteed to belong to the grid. No additional points are added.
+timeGridFromList :: [Double]
+  -> IO TimeGrid
+timeGridFromList = $(ffiCall 'timeGridFromList) c_timeGridFromList
+
+foreign import ccall safe "ql.h qlTimeGrid2"
+  c_timeGridFromList :: CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CTimeGrid)
+
+-- |Time grid with mandatory time points.
+-- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
+timeGridFromList' :: [Double]
+  -> Word -- ^steps
+  -> IO TimeGrid
+timeGridFromList' = $(ffiCall 'timeGridFromList') c_timeGridFromList'
+
+foreign import ccall safe "ql.h qlTimeGrid3"
+  c_timeGridFromList' :: CUInt -> Ptr CDouble -> CUInt -> Ptr CString -> IO (Ptr CTimeGrid)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -1,9 +1,0 @@
--- |Time grid with mandatory time points.
--- Mandatory points are guaranteed to belong to the grid. Additional points are then added with regular spacing between pairs of mandatory times in order to reach the desired number of steps.
-->
-::Iterator
--- ^begin
-::Iterator
--- ^end
-::Size
--- ^steps

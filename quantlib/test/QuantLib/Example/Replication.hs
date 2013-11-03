@@ -91,7 +91,7 @@ run = do
         i2 = [52, 50 .. 2]
         maturities2 = map (\i -> addDays (i*7) tod) i2
         killDates2 = map (\i -> addDays ((i-2)*7) tod) i2
-        i3 = [52, 51 .. 1] 
+        i3 = [52, 51 .. 1]
         maturities3 = map (\i -> addDays (i*7) tod) i3
         killDates3 = map (\i -> addDays ((i-1)*7) tod) i3
 

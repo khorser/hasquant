@@ -24,6 +24,10 @@ extern "C" {
   OptimizationMethod* DLLEXPORT qlLevenbergMarquardt(double epsfcn, double xtol, double gtol, char **e);
   void DLLEXPORT qlFreeEndCriteria(EndCriteria *o);
   EndCriteria* DLLEXPORT qlEndCriteria(unsigned maxIterations, unsigned maxStationaryStateIterations, double rootEpsilon, double functionEpsilon, double gradientNormEpsilon, char **e);
+  void DLLEXPORT qlFreeTimeGrid(TimeGrid *o);
+  TimeGrid* DLLEXPORT qlTimeGrid1(double end, unsigned steps, char **e);
+  TimeGrid* DLLEXPORT qlTimeGrid2(unsigned x0Len, double* x0, char **e);
+  TimeGrid* DLLEXPORT qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e);
 #ifdef __cplusplus
 }
 #endif
