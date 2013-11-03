@@ -264,7 +264,7 @@ hestonModelHelper = $(ffiCall 'hestonModelHelper) c_hestonModelHelper
 foreign import ccall safe "ql.h qlHestonModelHelper"
   c_hestonModelHelper :: Ptr CPeriod -> Ptr CCalendar -> CDouble -> CDouble -> Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CCalibrationHelper)
 
--- TODO QuantLib 1.3. features more SwaptionHelper constructors
+-- TODO git versin of QuantLib features more parameters and two mode SwaptionHelper constructors
 swaptionHelper :: Period -- ^maturity
   -> Period -- ^length
   -> Quote -- ^volatility
