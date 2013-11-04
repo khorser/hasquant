@@ -340,12 +340,7 @@ QlBondHelper* qlBondHelper(QlQuote* cleanPrice, QlBond* bond, char **e) {
 }
 QlOISRateHelper* qlOISRateHelper(unsigned settlementDays, Period* tenor, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e) {
   try {
-    return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, *arg(tenor), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex)
-#if QL_HEX_VERSION >= 0x010201f0
-// version 1.2.1 or newer
-              , qlNullableHandle(arg(discountingCurve))
-#endif
-              ))));
+    return ret(new QlOISRateHelper(alloc(new OISRateHelper(settlementDays, *arg(tenor), Handle<Quote>(*arg(fixedRate)), *arg(overnightIndex), qlNullableHandle(arg(discountingCurve))))));
   } catch (std::exception& er) {
     return handleException<QlOISRateHelper*>(e, er);
   }
