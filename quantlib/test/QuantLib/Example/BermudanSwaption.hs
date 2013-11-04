@@ -6,7 +6,7 @@ module QuantLib.Example.BermudanSwaption
 where
 
 import Control.Applicative((<$>))
-import Control.Monad(forM_, when)
+import Control.Monad(forM_)
 
 import qualified QuantLib.CashFlow.Leg as Leg
 import QuantLib.Compounding

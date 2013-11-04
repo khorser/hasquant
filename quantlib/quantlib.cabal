@@ -54,6 +54,8 @@ Library
               , QuantLib.Math.Optimization
               , QuantLib.Math.Rounding
               , QuantLib.Math.RoundingType
+              , QuantLib.Math.RNGTrait
+              , QuantLib.Method.BinomialTree
               , QuantLib.Method.BoundaryCondition
               , QuantLib.Method.LsmBasisSystemPolynomType
               , QuantLib.Method.FdmSchemeDesc
