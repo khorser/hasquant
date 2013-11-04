@@ -373,9 +373,18 @@ QlCoupon **qlLegCoupons(Leg *leg, unsigned *len, char **e) {
   QlCoupon **coupons = 0;
   try {
     coupons = qlAllocateCoupons(*len);
-    for (unsigned i = 0; i < leg->size(); ++i) {
+    unsigned i;
+    for (i = 0; i < leg->size(); ++i) {
       QlCoupon c = boost::dynamic_pointer_cast<Coupon>((*leg)[i]);
-      coupons[i] = new QlCoupon(c);
+      if (c)
+        coupons[i] = new QlCoupon(c);
+      else
+        break;
+    }
+    if (i < leg->size()) {
+      for (unsigned j = 0; j <= i; ++j)
+        delete coupons[j];
+      throw std::runtime_error("Not all cash flows are coupons");
     }
     return coupons;
   } catch (std::exception& er) {
