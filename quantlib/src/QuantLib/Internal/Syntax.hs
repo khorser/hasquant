@@ -69,7 +69,7 @@ data NestedArg = DayN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | Yea
 -- XXX use SYB/Uniplate to traverse with comfort?
 -- XXX use GADTs to make the structure conform to the handled cases
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA | YearFractionA
-  | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA
+  | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA | OptIntA | OptWordA | OptDoubleA
   | ListA NestedArg | ListA2 NestedArg NestedArg
   | EnumA Name | LitEnumA | OptLitEnumA | MatrixDoubleA | MatrixForeignPtrA
   deriving (Show, Eq)
@@ -132,6 +132,9 @@ topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
   where
     maybeType t | t == ''Day = return OptDayA
     maybeType t | t == ''Bool = return OptBoolA
+    maybeType t | t == ''Int = return OptIntA
+    maybeType t | t == ''Double = return OptDoubleA
+    maybeType t | t == ''Word = return OptWordA
     maybeType t = reifyEnumOrForeignPtr t Nothing (Just OptLitEnumA) OptForeignPtrA
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
@@ -269,6 +272,9 @@ genFfiCall extra aa r = do
     genFfiCallImpl ((IntA, v):as) c_call =
       genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
 
+    genFfiCallImpl ((OptIntA, v):as) c_call =
+      genFfiCallImpl as [|$c_call (maybe nullInteger (fromIntegral :: Int -> CInt) $v)|]
+
     genFfiCallImpl ((BoolA, v):as) c_call =
       genFfiCallImpl as [|$c_call ((fromBool :: Bool -> CInt) $v)|]
 
@@ -278,8 +284,14 @@ genFfiCall extra aa r = do
     genFfiCallImpl ((DoubleA, v):as) c_call =
       genFfiCallImpl as [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
 
+    genFfiCallImpl ((OptDoubleA, v):as) c_call =
+      genFfiCallImpl as [|$c_call (maybe nullReal (realToFrac :: Double -> CDouble) $v)|]
+
     genFfiCallImpl ((WordA, v):as) c_call =
       genFfiCallImpl as [|$c_call ((fromIntegral :: Word -> CUInt) $v)|]
+
+    genFfiCallImpl ((OptWordA, v):as) c_call =
+      genFfiCallImpl as [|$c_call (maybe (fromIntegral nullInteger) (fromIntegral :: Word -> CUInt) $v)|]
 
     genFfiCallImpl ((DayA, v):as) c_call =
       genFfiCallImpl as [|$c_call (toQlDate $v)|]

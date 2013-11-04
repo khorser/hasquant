@@ -194,6 +194,9 @@ module QuantLib.Types
   , asBatesDoubleExpModel
 
   , asBlackCalculator
+
+  , nullInteger
+  , nullReal
   )
 where
 
@@ -559,5 +562,10 @@ asQuote :: (Upcastable a CQuote) => ForeignPtr a -> IO Quote
 asQuote = upcast
 
 type TimeGrid = ForeignPtr CTimeGrid
+
+foreign import ccall safe "ql.h qlNullInteger"
+  nullInteger :: CInt
+foreign import ccall safe "ql.h qlNullReal"
+  nullReal :: CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -29,7 +29,6 @@ import QuantLib.Time.Frequency
 import QuantLib.TermStructure.Volatility
 import QuantLib.TermStructure.Yield
 import QuantLib.Types
-import QuantLib.Utilities
 
 data Result = Result
   { npvR :: Double
@@ -103,15 +102,15 @@ run = do
   _ <- mapM (binomialPrice bsmProc [europeanInst, bermudanInst, americanInst])
     [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
 
-  mceEng <- mcEuropeanEngine' PseudoRandom bsmProc 1 (fromIntegral nullInteger) False False (fromIntegral nullInteger) 0.02 (fromIntegral nullInteger) 42
+  mceEng <- mcEuropeanEngine' PseudoRandom bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
   setPricingEngine europeanInst mceEng
   npv europeanInst >>= print
   
-  mceEng2 <- mcEuropeanEngine' LowDiscrepancy bsmProc 1 (fromIntegral nullInteger) False False 32768 nullReal (fromIntegral nullInteger) (fromIntegral nullInteger)
+  mceEng2 <- mcEuropeanEngine' LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
   setPricingEngine europeanInst mceEng2
   npv europeanInst >>= print
 
-  mcaEng <- mcAmericanEngine' PseudoRandom bsmProc 100 (fromIntegral nullInteger) True False (fromIntegral nullInteger) 0.02 (fromIntegral nullInteger) 42 2 Monomial 4096
+  mcaEng <- mcAmericanEngine' PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096)
   setPricingEngine americanInst mcaEng
   npv americanInst >>= print
 
