@@ -17,7 +17,7 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
-import QuantLib.Method.FdmSchemeType
+import QuantLib.Method.FdmScheme
 
 fdmSchemeDesc :: FdmSchemeType -- ^type
   -> Double -- ^theta

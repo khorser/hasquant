@@ -1,10 +1,15 @@
-module QuantLib.Method.FdmSchemeType
+module QuantLib.Method.FdmScheme
   (
-    FdmSchemeType(..)
+    FdmScheme(..)
+  , FdmSchemeType(..)
   )
 where
 
 import QuantLib.Internal.Enum
+
+data FdmScheme = FDCrankNicolson | FDExplicitEuler | FDImplicitEuler 
+  deriving (Show, Eq)
+instance QLLitEnum FdmScheme
 
 data FdmSchemeType = Hundsdorfer | Douglas | CraigSneyd | ModifiedCraigSneyd
   | ImplicitEuler | ExplicitEuler

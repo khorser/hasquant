@@ -59,7 +59,7 @@ Library
               , QuantLib.Method.BoundaryCondition
               , QuantLib.Method.LsmBasisSystemPolynomType
               , QuantLib.Method.FdmSchemeDesc
-              , QuantLib.Method.FdmSchemeType
+              , QuantLib.Method.FdmScheme
               , QuantLib.Model
               , QuantLib.Model.CalibrationErrorType
               , QuantLib.MoneyConversionType

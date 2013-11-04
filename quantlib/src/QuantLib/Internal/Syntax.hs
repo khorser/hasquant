@@ -54,7 +54,7 @@ import QuantLib.Math.HistogramAlgorithm()
 import QuantLib.Math.RNGTrait()
 import QuantLib.Method.BinomialTree()
 import QuantLib.Method.BoundaryCondition()
-import QuantLib.Method.FdmSchemeType()
+import QuantLib.Method.FdmScheme()
 import QuantLib.Model.CalibrationErrorType()
 import QuantLib.MoneyConversionType()
 

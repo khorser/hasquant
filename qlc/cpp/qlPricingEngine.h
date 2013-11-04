@@ -147,6 +147,9 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlMCPerformanceEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
 
   QlPricingEngine* DLLEXPORT qlBinomialVanillaEngine(const char *tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e);
+  QlPricingEngine* DLLEXPORT qlFDAmericanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e);
+  QlPricingEngine* DLLEXPORT qlFDBermudanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e);
+  QlPricingEngine* DLLEXPORT qlFDEuropeanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e);
 #ifdef __cplusplus
 }
 #endif

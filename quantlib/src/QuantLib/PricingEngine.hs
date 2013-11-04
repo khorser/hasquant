@@ -86,6 +86,9 @@ module QuantLib.PricingEngine
   , fdG2SwaptionEngine
   , fdHullWhiteSwaptionEngine
   , binomialVanillaEngine
+  , fdAmericanEngine
+  , fdBermudanEngine
+  , fdEuropeanEngine
   )
 where
 
@@ -95,6 +98,7 @@ import QuantLib.Internal.Utils
 import QuantLib.Internal.Syntax
 import QuantLib.Math.RNGTrait
 import QuantLib.Method.BinomialTree
+import QuantLib.Method.FdmScheme
 import QuantLib.Method.LsmBasisSystemPolynomType
 import QuantLib.Types
 
@@ -964,5 +968,38 @@ binomialVanillaEngine = $(ffiCall 'binomialVanillaEngine) c_binomialVanillaEngin
 
 foreign import ccall safe "ql.h qlBinomialVanillaEngine"
   c_binomialVanillaEngine :: CString -> Ptr CGeneralizedBlackScholesProcess -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+fdAmericanEngine :: FdmScheme
+  -> GeneralizedBlackScholesProcess -- ^process
+  -> Word -- ^timeSteps
+  -> Word -- ^gridPoints
+  -> Bool -- ^timeDependent
+  -> IO PricingEngine
+fdAmericanEngine = $(ffiCall 'fdAmericanEngine) c_fdAmericanEngine
+
+foreign import ccall safe "ql.h qlFDAmericanEngine"
+  c_fdAmericanEngine :: CString -> Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+fdBermudanEngine :: FdmScheme
+  -> GeneralizedBlackScholesProcess -- ^process
+  -> Word -- ^timeSteps
+  -> Word -- ^gridPoints
+  -> Bool -- ^timeDependent
+  -> IO PricingEngine
+fdBermudanEngine = $(ffiCall 'fdBermudanEngine) c_fdBermudanEngine
+
+foreign import ccall safe "ql.h qlFDBermudanEngine"
+  c_fdBermudanEngine :: CString -> Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+fdEuropeanEngine :: FdmScheme
+  -> GeneralizedBlackScholesProcess -- ^process
+  -> Word -- ^timeSteps
+  -> Word -- ^gridPoints
+  -> Bool -- ^timeDependent
+  -> IO PricingEngine
+fdEuropeanEngine = $(ffiCall 'fdEuropeanEngine) c_fdEuropeanEngine
+
+foreign import ccall safe "ql.h qlFDEuropeanEngine"
+  c_fdEuropeanEngine :: CString -> Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> Ptr CString -> IO (Ptr CPricingEngine)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

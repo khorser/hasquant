@@ -14,6 +14,7 @@ import QuantLib.Instrument.Option
 import QuantLib.Instrument.OptionType
 import QuantLib.Math.RNGTrait
 import QuantLib.Method.BinomialTree
+import QuantLib.Method.FdmScheme
 import QuantLib.Method.LsmBasisSystemPolynomType
 import QuantLib.Model
 import QuantLib.PricingEngine
@@ -86,18 +87,18 @@ run = do
   setPricingEngine europeanInst iEng
   npv europeanInst >>= print
 
-  print "FD not implemented yet"
-  {-
-        method = "Finite differences";
-        europeanOption.setPricingEngine(boost::shared_ptr<PricingEngine>(
-                 new FDEuropeanEngine<CrankNicolson>(bsmProcess,
-                                                     timeSteps,timeSteps-1)));
-        bermudanOption.setPricingEngine(boost::shared_ptr<PricingEngine>(
-                 new FDBermudanEngine<CrankNicolson>(bsmProcess,
-                                                     timeSteps,timeSteps-1)));
-        americanOption.setPricingEngine(boost::shared_ptr<PricingEngine>(
-                 new FDAmericanEngine<CrankNicolson>(bsmProcess,
-  -}
+  print "FD"
+  fdeEng <- fdEuropeanEngine FDCrankNicolson bsmProc 801 800 False
+  setPricingEngine europeanInst fdeEng
+  npv europeanInst >>= print
+
+  fdbEng <- fdBermudanEngine FDCrankNicolson bsmProc 801 800 False
+  setPricingEngine bermudanInst fdbEng
+  npv bermudanInst >>= print
+
+  fdaEng <- fdAmericanEngine FDCrankNicolson bsmProc 801 800 False
+  setPricingEngine americanInst fdaEng
+  npv americanInst >>= print
 
   _ <- mapM (binomialPrice bsmProc [europeanInst, bermudanInst, americanInst])
     [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]

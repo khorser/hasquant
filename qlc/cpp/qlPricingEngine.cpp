@@ -3,6 +3,8 @@
 #include <ql/legacy/libormarketmodels/lfmswaptionengine.hpp>
 #include <ql/experimental/math/zigguratrng.hpp>
 #include <ql/experimental/lattices/extendedbinomialtree.hpp>
+#include <ql/methods/finitedifferences/expliciteuler.hpp>
+#include <ql/methods/finitedifferences/impliciteuler.hpp>
 
 #include "qlaux.h"
 #include "qlPricingEngine.h"
@@ -1029,6 +1031,49 @@ QlPricingEngine* qlBinomialVanillaEngine(const char *tree, QlGeneralizedBlackSch
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedJoshi4>(*arg(process), timeSteps))));
     else
       throw std::runtime_error("Unknown Binomial Tree");
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+
+QlPricingEngine* qlFDAmericanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e) {
+  try {
+    if (!strcmp(fdscheme, "FDCrankNicolson"))
+      return ret(new QlPricingEngine(alloc(new FDAmericanEngine<CrankNicolson>(*arg(process), timeSteps, gridPoints, timeDependent))));
+    else if (!strcmp(fdscheme, "FDExplicitEuler"))
+      return ret(new QlPricingEngine(alloc(new FDAmericanEngine<ExplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
+    else if (!strcmp(fdscheme, "FDImplicitEuler"))
+      return ret(new QlPricingEngine(alloc(new FDAmericanEngine<ImplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
+    else
+      throw std::runtime_error("Unknown FD Scheme");
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlFDBermudanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e) {
+  try {
+    if (!strcmp(fdscheme, "FDCrankNicolson"))
+      return ret(new QlPricingEngine(alloc(new FDBermudanEngine<CrankNicolson>(*arg(process), timeSteps, gridPoints, timeDependent))));
+    else if (!strcmp(fdscheme, "FDExplicitEuler"))
+      return ret(new QlPricingEngine(alloc(new FDBermudanEngine<ExplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
+    else if (!strcmp(fdscheme, "FDImplicitEuler"))
+      return ret(new QlPricingEngine(alloc(new FDBermudanEngine<ImplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
+    else
+      throw std::runtime_error("Unknown FD Scheme");
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlFDEuropeanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e) {
+  try {
+    if (!strcmp(fdscheme, "FDCrankNicolson"))
+      return ret(new QlPricingEngine(alloc(new FDEuropeanEngine<CrankNicolson>(*arg(process), timeSteps, gridPoints, timeDependent))));
+    else if (!strcmp(fdscheme, "FDExplicitEuler"))
+      return ret(new QlPricingEngine(alloc(new FDEuropeanEngine<ExplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
+    else if (!strcmp(fdscheme, "FDImplicitEuler"))
+      return ret(new QlPricingEngine(alloc(new FDEuropeanEngine<ImplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
+    else
+      throw std::runtime_error("Unknown FD Scheme");
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
