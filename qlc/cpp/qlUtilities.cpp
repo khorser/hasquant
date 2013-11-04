@@ -96,4 +96,12 @@ void qlFreePointerArray(void **p) {
   delete[] p;
 }
 
+int qlNullInteger() {
+  return QL_NULL_INTEGER;
+}
+
+double qlNullReal() {
+  return QL_NULL_REAL;
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -4,6 +4,8 @@ module QuantLib.Utilities
     version
   , boostVersion
   , checkEnums
+  , nullInteger
+  , nullReal
   )
 where
 
@@ -34,5 +36,16 @@ checkEnums = map checkEnum $(qlEnumsInfo)
   where
     checkEnum :: (String, Integer) -> (String, Bool)
     checkEnum (n, l) = (n, length (values n) == fromIntegral l)
+
+nullInteger :: Int
+nullInteger = fromIntegral c_nullInteger
+
+nullReal :: Double
+nullReal = realToFrac c_nullReal
+
+foreign import ccall safe "ql.h qlNullInteger"
+  c_nullInteger :: CInt
+foreign import ccall safe "ql.h qlNullReal"
+  c_nullReal :: CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

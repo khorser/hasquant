@@ -999,31 +999,31 @@ QlPricingEngine* qlMCPerformanceEngine1(const char *rngtrait, QlGeneralizedBlack
 
 QlPricingEngine* qlBinomialVanillaEngine(const char *tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
   try {
-    if (!strcmp(tree, "JarrowRudd "))
+    if (!strcmp(tree, "JarrowRudd"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<JarrowRudd >(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "CoxRossRubinstein "))
+    else if (!strcmp(tree, "CoxRossRubinstein"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<CoxRossRubinstein >(*arg(process), timeSteps))));
     else if (!strcmp(tree, "AdditiveEQPBinomialTree"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<AdditiveEQPBinomialTree>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "Trigeorgis "))
+    else if (!strcmp(tree, "Trigeorgis"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<Trigeorgis >(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "Tian "))
+    else if (!strcmp(tree, "Tian"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<Tian >(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "LeisenReimer "))
+    else if (!strcmp(tree, "LeisenReimer"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<LeisenReimer >(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "Joshi4 "))
+    else if (!strcmp(tree, "Joshi4"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<Joshi4 >(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedJarrowRudd "))
+    else if (!strcmp(tree, "ExtendedJarrowRudd"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedJarrowRudd >(*arg(process), timeSteps))));
     else if (!strcmp(tree, "ExtendedCoxRossRubinstein"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedCoxRossRubinstein>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedAdditiveEQPBinomialTree "))
+    else if (!strcmp(tree, "ExtendedAdditiveEQPBinomialTree"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedAdditiveEQPBinomialTree >(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedTrigeorgis "))
+    else if (!strcmp(tree, "ExtendedTrigeorgis"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedTrigeorgis >(*arg(process), timeSteps))));
     else if (!strcmp(tree, "ExtendedTian"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedTian>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedLeisenReimer "))
+    else if (!strcmp(tree, "ExtendedLeisenReimer"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedLeisenReimer >(*arg(process), timeSteps))));
     else if (!strcmp(tree, "ExtendedJoshi4"))
       return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedJoshi4>(*arg(process), timeSteps))));

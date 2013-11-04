@@ -20,6 +20,8 @@ extern "C" {
   void DLLEXPORT qlFreeInts(int *p);
   void DLLEXPORT qlFreeDoubles(double *p);
   void DLLEXPORT qlFreePointerArray(void **p);
+  int DLLEXPORT qlNullInteger();
+  double DLLEXPORT qlNullReal();
 #ifdef __cplusplus
 }
 #endif
