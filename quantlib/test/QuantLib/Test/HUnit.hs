@@ -35,6 +35,7 @@ import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.FRA as FRAExample
 import qualified QuantLib.Example.Replication as ReplicationExample
 import qualified QuantLib.Example.Swap as SwapExample
+import qualified QuantLib.Example.EquityOption as EquityOptionExample
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
@@ -189,6 +190,11 @@ test_bermudanSwaption = do
   subAssert $ assertListsAreClose id npvA [14.11, 14.113, 12.904, 12.91, 13.158, 13.157, 13.002] 1.0e-3
   --subAssert $ assertListsAreClose id npvO [3.194, 3.1808, 2.4921, 2.4596, 2.615, 2.5829, 3.2751] 1.0e-3
   subAssert $ assertListsAreClose id npvI [42.609, 42.705, 42.253, 42.215, 42.364, 42.311, 41.825] 1.0e-3
+
+test_equityOption :: IO ()
+test_equityOption = do
+  _ <- Settings.keepingSettings' EquityOptionExample.run
+  assertBool True
 
 test_evalDate :: IO ()
 test_evalDate = do

@@ -1,6 +1,5 @@
 Not implemented examples:
 
-EquityOption
 DiscreteHedging
 
 CallableBonds
