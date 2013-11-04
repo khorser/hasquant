@@ -85,6 +85,7 @@ module QuantLib.PricingEngine
 
   , fdG2SwaptionEngine
   , fdHullWhiteSwaptionEngine
+  , binomialVanillaEngine
   )
 where
 
@@ -93,6 +94,7 @@ import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Internal.Syntax
 import QuantLib.Math.RNGTrait
+import QuantLib.Method.BinomialTree
 import QuantLib.Method.LsmBasisSystemPolynomType
 import QuantLib.Types
 
@@ -953,5 +955,14 @@ mcVarianceSwapEngine' = $(ffiCall 'mcVarianceSwapEngine') c_mcVarianceSwapEngine
 
 foreign import ccall safe "ql.h qlMCVarianceSwapEngine1"
   c_mcVarianceSwapEngine' :: CString -> Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> CInt -> CUInt -> CDouble -> CUInt -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+binomialVanillaEngine :: BinomialTree
+  -> GeneralizedBlackScholesProcess -- ^process
+  -> Word -- ^timeSteps
+  -> IO PricingEngine
+binomialVanillaEngine = $(ffiCall 'binomialVanillaEngine) c_binomialVanillaEngine
+
+foreign import ccall safe "ql.h qlBinomialVanillaEngine"
+  c_binomialVanillaEngine :: CString -> Ptr CGeneralizedBlackScholesProcess -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

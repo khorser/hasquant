@@ -6,7 +6,7 @@ where
 
 import QuantLib.Internal.Enum
 
-data RNGTrait = PseudoRandom | PoissonPseudoRandom | LowDiscrepancy
+data RNGTrait = PseudoRandom | PoissonPseudoRandom | LowDiscrepancy | Ziggurat
   deriving (Show, Eq)
 instance QLLitEnum RNGTrait
 

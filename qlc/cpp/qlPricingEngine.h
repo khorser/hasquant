@@ -26,7 +26,6 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlAnalyticDividendEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* DLLEXPORT qlAnalyticEuropeanEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* DLLEXPORT qlAnalyticPerformanceEngine(QlGeneralizedBlackScholesProcess* process, char **e);
-  QlPricingEngine* DLLEXPORT qlBinomialVanillaEngine(QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e);
   QlPricingEngine* DLLEXPORT qlBlackCapFloorEngine1(QlYieldTermStructure* discountCurve, QlOptionletVolatilityStructure* vol, char **e);
   QlPricingEngine* DLLEXPORT qlBlackCapFloorEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, char **e);
   QlPricingEngine* DLLEXPORT qlBlackSwaptionEngine(QlYieldTermStructure* discountCurve, QlQuote* vol, DayCounter* dc, char **e);
@@ -95,8 +94,8 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlAnalyticHestonEngine1(QlHestonModel* model, unsigned integrationOrder, char **e);
   QlPricingEngine* DLLEXPORT qlAnalyticHestonHullWhiteEngine1(QlHestonModel* model, QlHullWhite* hullWhiteModel, double relTolerance, unsigned maxEvaluations, char **e);
   QlPricingEngine* DLLEXPORT qlBatesEngine1(QlBatesModel* model, double relTolerance, unsigned maxEvaluations, char **e);
-  QlPricingEngine* DLLEXPORT qlMCHestonHullWhiteEngine(QlHybridHestonHullWhiteProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
 
+  QlPricingEngine* DLLEXPORT qlMCHestonHullWhiteEngine(QlHybridHestonHullWhiteProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
   QlPricingEngine* DLLEXPORT qlMCAmericanEngine(QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, int polynomType, unsigned nCalibrationSamples, char **e);
   QlPricingEngine* DLLEXPORT qlMCBarrierEngine(QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, int isBiased, unsigned seed, char **e);
   QlPricingEngine* DLLEXPORT qlMCDigitalEngine(QlGeneralizedBlackScholesProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
@@ -108,6 +107,7 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlMCEuropeanHestonEngine(QlHestonProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
   QlPricingEngine* DLLEXPORT qlMCHullWhiteCapFloorEngine(QlHullWhite* model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
   QlPricingEngine* DLLEXPORT qlMCPerformanceEngine(QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
 
   QlPricingEngine* DLLEXPORT qlBaroneAdesiWhaleyApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* DLLEXPORT qlBatesDetJumpEngine1(QlBatesDetJumpModel* model, double relTolerance, unsigned maxEvaluations, char **e);
@@ -122,7 +122,6 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlJamshidianSwaptionEngine(QlOneFactorAffineModel* model, QlYieldTermStructure* termStructure, char **e);
   QlPricingEngine* DLLEXPORT qlJuQuadraticApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* DLLEXPORT qlKirkEngine(QlBlackProcess* process1, QlBlackProcess* process2, double correlation, char **e);
-  QlPricingEngine* DLLEXPORT qlMCVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
   QlPricingEngine* DLLEXPORT qlMidPointCdsEngine(QlDefaultProbabilityTermStructure* x0, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e);
   QlPricingEngine* DLLEXPORT qlReplicatingVarianceSwapEngine(QlGeneralizedBlackScholesProcess* process, double dk, unsigned callStrikesLen, double* callStrikes, unsigned putStrikesLen, double* putStrikes, char **e);
   QlPricingEngine* DLLEXPORT qlStulzEngine(QlGeneralizedBlackScholesProcess* process1, QlGeneralizedBlackScholesProcess* process2, double correlation, char **e);
@@ -133,19 +132,21 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlFdG2SwaptionEngine(QlG2* model, unsigned tGrid, unsigned xGrid, unsigned yGrid, unsigned dampingSteps, double invEps, FdmSchemeDesc *schemeDesc, char **e);
   QlPricingEngine* DLLEXPORT qlFdHullWhiteSwaptionEngine(QlHullWhite* model, unsigned tGrid, unsigned xGrid, unsigned dampingSteps, double invEps, FdmSchemeDesc *schemeDesc, char **e);
 
-  QlPricingEngine* qlMCVarianceSwapEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCHestonHullWhiteEngine1(const char *rngtrait, QlHybridHestonHullWhiteProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCAmericanEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, int polynomType, unsigned nCalibrationSamples, char **e);
-  QlPricingEngine* qlMCBarrierEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, int isBiased, unsigned seed, char **e);
-  QlPricingEngine* qlMCDigitalEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCDiscreteArithmeticAPEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCDiscreteArithmeticASEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCDiscreteGeometricAPEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCEuropeanEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCEuropeanGJRGARCHEngine1(const char *rngtrait, QlGJRGARCHProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCEuropeanHestonEngine1(const char *rngtrait, QlHestonProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCHullWhiteCapFloorEngine1(const char *rngtrait, QlHullWhite* model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
-  QlPricingEngine* qlMCPerformanceEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCVarianceSwapEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCHestonHullWhiteEngine1(const char *rngtrait, QlHybridHestonHullWhiteProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCAmericanEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, int polynomType, unsigned nCalibrationSamples, char **e);
+  QlPricingEngine* DLLEXPORT qlMCBarrierEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, int isBiased, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCDigitalEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCDiscreteArithmeticAPEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCDiscreteArithmeticASEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCDiscreteGeometricAPEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCEuropeanEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCEuropeanGJRGARCHEngine1(const char *rngtrait, QlGJRGARCHProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCEuropeanHestonEngine1(const char *rngtrait, QlHestonProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCHullWhiteCapFloorEngine1(const char *rngtrait, QlHullWhite* model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+  QlPricingEngine* DLLEXPORT qlMCPerformanceEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
+
+  QlPricingEngine* DLLEXPORT qlBinomialVanillaEngine(const char *tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e);
 #ifdef __cplusplus
 }
 #endif

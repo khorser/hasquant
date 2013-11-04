@@ -8,6 +8,9 @@ import QuantLib.Internal.Enum
 
 data BinomialTree = JarrowRudd | CoxRossRubinstein | AdditiveEQPBinomialTree
   | Trigeorgis | Tian | LeisenReimer | Joshi4 
+  | ExtendedJarrowRudd | ExtendedCoxRossRubinstein
+  | ExtendedAdditiveEQPBinomialTree | ExtendedTrigeorgis | ExtendedTian
+  | ExtendedLeisenReimer | ExtendedJoshi4
   deriving (Show, Eq)
 instance QLLitEnum BinomialTree
 
