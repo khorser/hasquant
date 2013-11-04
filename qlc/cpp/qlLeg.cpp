@@ -360,19 +360,11 @@ void qlQuantLibSetCouponPricers(Leg* leg, unsigned x1Len, QlFloatingRateCouponPr
 
 void qlFreeCoupon(QlCoupon *o) { del(o); }
 
-QlCoupon **qlAllocateCoupons(size_t size) {
-  return new QlCoupon*[size];
-}
-
-void qlFreeCoupons(QlCoupon **p) {
-  delete[] p;
-}
-
 QlCoupon **qlLegCoupons(Leg *leg, unsigned *len, char **e) {
   *len = leg->size();
   QlCoupon **coupons = 0;
   try {
-    coupons = qlAllocateCoupons(*len);
+    coupons = reinterpret_cast<QlCoupon **>(qlAllocatePointerArray(*len));
     unsigned i;
     for (i = 0; i < leg->size(); ++i) {
       QlCoupon c = boost::dynamic_pointer_cast<Coupon>((*leg)[i]);
@@ -388,7 +380,7 @@ QlCoupon **qlLegCoupons(Leg *leg, unsigned *len, char **e) {
     }
     return coupons;
   } catch (std::exception& er) {
-    qlFreeCoupons(coupons);
+    qlFreePointerArray(reinterpret_cast<void **>(coupons));
     return handleException<QlCoupon **>(e, er);
   }
 }

@@ -88,4 +88,12 @@ Disposable<Matrix> qlBuildMatrix(double *a, unsigned r, unsigned c) {
   return m;
 }
 
+void **qlAllocatePointerArray(size_t size) {
+  return new void*[size];
+}
+
+void qlFreePointerArray(void **p) {
+  delete[] p;
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

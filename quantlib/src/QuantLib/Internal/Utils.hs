@@ -48,7 +48,7 @@ import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
 import Foreign.Marshal.Utils(with, maybeWith, withMany)
-import Foreign.Ptr(nullPtr, Ptr, FunPtr)
+import Foreign.Ptr(nullPtr, Ptr, FunPtr, castPtr)
 import Foreign.Storable(Storable(..), peek)
 
 import System.IO.Unsafe(unsafePerformIO)
@@ -94,6 +94,8 @@ instance CArrayable CDouble where
   freeArray = c_freeDoubles
 instance CArrayable CStaticInt where
   freeArray = const $ return ()
+instance CArrayable (Ptr a) where
+  freeArray = c_freePointerArray . castPtr
 
 foreign import ccall safe "ql.h qlFreeString"
   c_freeString :: CString -> IO ()
@@ -101,6 +103,8 @@ foreign import ccall safe "ql.h qlFreeInts"
   c_freeInts :: Ptr CInt -> IO ()
 foreign import ccall safe "ql.h qlFreeDoubles"
   c_freeDoubles :: Ptr CDouble -> IO ()
+foreign import ccall safe "ql.h qlFreePointerArray"
+  c_freePointerArray :: Ptr (Ptr ()) -> IO ()
 
 -- get a function that returns an array of a
 -- with the number of items returned via the first argument

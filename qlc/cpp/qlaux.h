@@ -7,6 +7,7 @@
 
 int *qlAllocateInts(size_t size);
 double *qlAllocateDoubles(size_t size);
+void **qlAllocatePointerArray(size_t size);
 
 char *tracedup(const char *p);
 #define DUP(p) tracedup((p))
