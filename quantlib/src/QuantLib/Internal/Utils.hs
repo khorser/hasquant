@@ -25,8 +25,6 @@ module QuantLib.Internal.Utils
   , withArrayULen
   , withArrayULenT
 
-  , CArrayable(..)
-
   -- re-exporting some popular stuff
   , Word
   , withCString
