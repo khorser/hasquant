@@ -14,6 +14,7 @@ import QuantLib.Instrument.Option
 import QuantLib.Instrument.OptionType
 import QuantLib.Math.RNGTrait
 import QuantLib.Method.BinomialTree
+import QuantLib.Method.LsmBasisSystemPolynomType
 import QuantLib.Model
 import QuantLib.PricingEngine
 import QuantLib.Process
@@ -105,9 +106,13 @@ run = do
   setPricingEngine europeanInst mceEng
   npv europeanInst >>= print
   
-  mceEng2 <- mcEuropeanEngine' LowDiscrepancy bsmProc 1 (fromIntegral nullInteger) False False (fromIntegral nullInteger) nullReal 32768 (fromIntegral nullInteger)
+  mceEng2 <- mcEuropeanEngine' LowDiscrepancy bsmProc 1 (fromIntegral nullInteger) False False 32768 nullReal (fromIntegral nullInteger) (fromIntegral nullInteger)
   setPricingEngine europeanInst mceEng2
   npv europeanInst >>= print
+
+  mcaEng <- mcAmericanEngine' PseudoRandom bsmProc 100 (fromIntegral nullInteger) True False (fromIntegral nullInteger) 0.02 (fromIntegral nullInteger) 42 2 Monomial 4096
+  setPricingEngine americanInst mcaEng
+  npv americanInst >>= print
 
   return Result {
     npvR = 0
