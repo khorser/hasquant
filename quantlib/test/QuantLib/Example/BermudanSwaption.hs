@@ -6,7 +6,7 @@ module QuantLib.Example.BermudanSwaption
 where
 
 import Control.Applicative((<$>))
-import Control.Monad(forM_)
+import Control.Monad(forM_, when)
 
 import qualified QuantLib.CashFlow.Leg as Leg
 import QuantLib.Compounding
@@ -45,10 +45,13 @@ data Result = Result
   , hw2Params :: [Double]
   , bkVols :: [Double]
   , bkParams :: [Double]
+  , npvAtm :: [Double]
+  , npvOtm :: [Double]
+  , npvItm :: [Double]
   }
 
-run :: IO Result
-run = do
+run :: Bool -> IO Result
+run otm = do
   cal <- target
   setEvaluationDate tod
   flatRate <- simpleQuote 0.04875825 >>= asQuote
@@ -85,8 +88,7 @@ run = do
   hwp <- Model.params modelHW'
 
   modelHW2 <- Model.hullWhite ts 0.1 0.01
-  modelHW2o <- asOneFactorAffineModel modelHW2
-  modelHW2s <- asShortRateModel modelHW2o
+  modelHW2s <- asOneFactorAffineModel modelHW2 >>= asShortRateModel
   forM_ swaptions (\s -> treeSwaptionEngine' modelHW2s grid Nothing>>= setPricingEngine s)
   modelHW2' <- asCalibratedModel modelHW2s
   hw2v <- calibrateModel modelHW2' swaptions
@@ -103,34 +105,23 @@ run = do
 
   bermudanDates <- fixedLeg swp >>= Leg.coupons >>= mapM Leg.accrualStartDate'
   ex <- bermudanExercise bermudanDates False >>= asExercise
-  swption <- swaption atmSwap ex Physical >>= asOption >>= asInstrument
+  atmSwaption <- swaption atmSwap ex Physical >>= asOption >>= asInstrument
 
-  modelG2s <- asShortRateModel modelG2
-  treeSwaptionEngine modelG2s 50 Nothing >>= setPricingEngine swption
-  npv swption >>= print
-  hundsdorfer >>= fdG2SwaptionEngine modelG2 100 50 50 0 1.0e-5 >>= setPricingEngine swption
-  npv swption >>= print
+  npvA <- priceSwaption atmSwaption modelG2 50 modelHW modelHW2 modelBK
 
-  modelHWs <- asShortRateModel modelHWo
-  treeSwaptionEngine modelHWs 50 Nothing >>= setPricingEngine swption
-  npv swption >>= print
-  douglas >>= fdHullWhiteSwaptionEngine modelHW 100 100 0 1.0e-5 >>= setPricingEngine swption
-  npv swption >>= print
-
-  treeSwaptionEngine modelHW2s 50 Nothing >>= setPricingEngine swption
-  npv swption >>= print
-  douglas >>= fdHullWhiteSwaptionEngine modelHW2 100 100 0 1.0e-5 >>= setPricingEngine swption
-  npv swption >>= print
-
-  treeSwaptionEngine modelBK 50 Nothing >>= setPricingEngine swption
-  npv swption >>= print
-
-  --let fixedOTMRate = fixedATMRate * 1.2
-  --    fixedITMRate = fixedATMRate * 0.8
-  --otmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedOTMRate fixedDC floatSchedule index6m 0.0
-  --  floatDC floatConv
-  --itmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedITMRate fixedDC floatSchedule index6m 0.0
-  --  floatDC floatConv
+  let fixedOTMRate = fixedATMRate * 1.2
+      fixedITMRate = fixedATMRate * 0.8
+  otmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedOTMRate fixedDC floatSchedule index6m 0.0
+    floatDC floatConv
+  otmSwaption <- swaption otmSwap ex Physical >>= asOption >>= asInstrument
+  npvO <-
+    if otm
+      then priceSwaption otmSwaption modelG2 300 modelHW modelHW2 modelBK
+      else return $ replicate 5 0
+  itmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedITMRate fixedDC floatSchedule index6m 0.0
+    floatDC floatConv
+  itmSwaption <- swaption itmSwap ex Physical >>= asOption >>= asInstrument
+  npvI <- priceSwaption itmSwaption modelG2 50 modelHW modelHW2 modelBK
 
   return Result {
     g2Vols = g2v
@@ -141,6 +132,9 @@ run = do
   , hw2Params = hw2p
   , bkVols = bkv
   , bkParams = bkp
+  , npvAtm = npvA
+  , npvOtm = npvO
+  , npvItm = npvI
   }
   where tod = 15 `february` 2002
         settl = 19 `february` 2002
@@ -182,6 +176,29 @@ run = do
           nPV <- Model.modelValue h
           vol <- Model.impliedVolatility h nPV 1.0e-4 1000 0.05 0.50
           return $ 100.0 * vol
+
+        priceSwaption swption modelG2 g2n modelHW modelHW2 modelBK = do
+          modelG2s <- asShortRateModel modelG2
+          treeSwaptionEngine modelG2s g2n Nothing >>= setPricingEngine swption
+          npvG2tree <- npv swption
+          hundsdorfer >>= fdG2SwaptionEngine modelG2 100 50 50 0 1.0e-5 >>= setPricingEngine swption
+          npvG2fd <- npv swption
+
+          modelHWs <- asOneFactorAffineModel modelHW >>= asShortRateModel
+          treeSwaptionEngine modelHWs 50 Nothing >>= setPricingEngine swption
+          npvHWtree <- npv swption
+          douglas >>= fdHullWhiteSwaptionEngine modelHW 100 100 0 1.0e-5 >>= setPricingEngine swption
+          npvHWfd <- npv swption
+
+          modelHW2s <- asOneFactorAffineModel modelHW2 >>= asShortRateModel
+          treeSwaptionEngine modelHW2s 50 Nothing >>= setPricingEngine swption
+          npvHW2numtree <- npv swption
+          douglas >>= fdHullWhiteSwaptionEngine modelHW2 100 100 0 1.0e-5 >>= setPricingEngine swption
+          npvHW2numfd <- npv swption
+
+          treeSwaptionEngine modelBK 50 Nothing >>= setPricingEngine swption
+          npvBK <- npv swption
+          return [npvG2tree, npvG2fd, npvHWtree, npvHWfd, npvHW2numtree, npvHW2numfd, npvBK]
 
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

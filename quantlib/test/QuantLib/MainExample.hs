@@ -13,6 +13,7 @@ import qualified QuantLib.Example.FRA as FRAExample
 import qualified QuantLib.Example.Swap as SwapExample
 import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
 import qualified QuantLib.Example.Replication as ReplicationExample
+import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
 
 main :: IO ()
 main = do
@@ -74,6 +75,20 @@ main = do
   putStrLn $ "Initial PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvInit
   putStrLn $ "Out of the money PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvOut
   putStrLn $ "In the money PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvIn
+
+  putStrLn "*** BermudanSwaption Example ***"
+  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' $ BermudanSwaptionExample.run True 
+  putStrLn $ "G2 calibrated vols: " ++ show g2v
+  putStrLn $ "Hull-White calibrated vols: " ++ show hwv
+  putStrLn $ "Numerical Hull-White calibrated vols: " ++ show hw2v
+  putStrLn $ "Black-Karasinski calibrated vols: " ++ show bkv
+  putStrLn $ "G2 params: " ++ show g2p
+  putStrLn $ "HW params: " ++ show hwp
+  putStrLn $ "Num HW params: " ++ show hw2p
+  putStrLn $ "BK params: " ++ show bkp
+  putStrLn $ "ATM Swaption NPV: " ++ show npvA
+  putStrLn $ "OTM Swaption NPV: " ++ show npvO
+  putStrLn $ "ITM Swaption NPV: " ++ show npvI
 
   putStrLn "DONE"
 
