@@ -10,6 +10,9 @@ module QuantLib.TermStructure.Credit
   , interpolatedDefaultDensityCurve
   , interpolatedHazardRateCurve
   , interpolatedSurvivalProbabilityCurve
+
+  , spreadCdsHelper
+  , upfrontCdsHelper
   )
 where
 
@@ -17,6 +20,9 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.Time.BusinessDayConvention
+import QuantLib.Time.DateGenerationRule
+import QuantLib.Time.Frequency
 import QuantLib.Types
 import QuantLib.Math.Interpolation(Interpolation)
 
@@ -90,5 +96,44 @@ interpolatedSurvivalProbabilityCurve = $(ffiCall 'interpolatedSurvivalProbabilit
 
 foreign import ccall safe "ql.h qlInterpolatedSurvivalProbabilityCurve"
   c_interpolatedSurvivalProbabilityCurve :: CUInt -> Ptr CDate -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> Ptr CCalendar -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CString -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
+
+spreadCdsHelper :: Quote -- ^runningSpread
+  -> Period -- ^tenor
+  -> Int -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> Frequency -- ^frequency
+  -> BusinessDayConvention -- ^paymentConvention
+  -> DateGenerationRule -- ^rule
+  -> DayCounter -- ^dayCounter
+  -> Double -- ^recoveryRate
+  -> YieldTermStructure -- ^discountCurve
+  -> Bool -- ^settlesAccrual
+  -> Bool -- ^paysAtDefaultTime
+  -> IO DefaultProbabilityHelper
+spreadCdsHelper = $(ffiCall 'spreadCdsHelper) c_spreadCdsHelper
+
+foreign import ccall safe "ql.h qlSpreadCdsHelper"
+  c_spreadCdsHelper :: Ptr CQuote -> Ptr CPeriod -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> CDouble -> Ptr CYieldTermStructure -> CInt -> CInt -> Ptr CString -> IO (Ptr CDefaultProbabilityHelper)
+
+-- |the upfront must be quoted in fractional units.
+upfrontCdsHelper :: Quote -- ^upfront
+  -> Double -- ^runningSpread
+  -> Period -- ^tenor
+  -> Int -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> Frequency -- ^frequency
+  -> BusinessDayConvention -- ^paymentConvention
+  -> DateGenerationRule -- ^rule
+  -> DayCounter -- ^dayCounter
+  -> Double -- ^recoveryRate
+  -> YieldTermStructure -- ^discountCurve
+  -> Word -- ^upfrontSettlementDays
+  -> Bool -- ^settlesAccrual
+  -> Bool -- ^paysAtDefaultTime
+  -> IO DefaultProbabilityHelper
+upfrontCdsHelper = $(ffiCall 'upfrontCdsHelper) c_upfrontCdsHelper
+
+foreign import ccall safe "ql.h qlUpfrontCdsHelper"
+  c_upfrontCdsHelper :: Ptr CQuote -> CDouble -> Ptr CPeriod -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> CDouble -> Ptr CYieldTermStructure -> CUInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CDefaultProbabilityHelper)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

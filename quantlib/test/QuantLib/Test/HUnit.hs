@@ -31,11 +31,12 @@ import QuantLib.Utilities
 
 import qualified QuantLib.Example.Bond as BondExample
 import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
-import qualified QuantLib.Example.Repo as RepoExample
+import qualified QuantLib.Example.CDS as CDSExample
+import qualified QuantLib.Example.EquityOption as EquityOptionExample
 import qualified QuantLib.Example.FRA as FRAExample
+import qualified QuantLib.Example.Repo as RepoExample
 import qualified QuantLib.Example.Replication as ReplicationExample
 import qualified QuantLib.Example.Swap as SwapExample
-import qualified QuantLib.Example.EquityOption as EquityOptionExample
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
@@ -194,6 +195,11 @@ test_bermudanSwaption = do
 test_equityOption :: IO ()
 test_equityOption = do
   _ <- Settings.keepingSettings' EquityOptionExample.run
+  assertBool True
+
+test_cds :: IO ()
+test_cds = do
+  _ <- Settings.keepingSettings' CDSExample.run
   assertBool True
 
 test_evalDate :: IO ()

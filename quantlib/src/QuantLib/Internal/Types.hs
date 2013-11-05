@@ -131,6 +131,7 @@ module QuantLib.Internal.Types
   , CCapFloorTermVolSurface
   , CLocalVolTermStructure
   , CBlackVarianceCurve
+  , CDefaultProbabilityHelper
 
   -- time
   , CCalendar
@@ -1167,6 +1168,12 @@ instance Upcastable CBlackVarianceCurve CBlackVolTermStructure where
   c_upcast = c_BlackVarianceCurveAsBlackVolTermStructure
 foreign import ccall safe "ql.h qlBlackVarianceCurveAsBlackVolTermStructure"
   c_BlackVarianceCurveAsBlackVolTermStructure :: Ptr CBlackVarianceCurve -> IO (Ptr CBlackVolTermStructure)
+
+data CDefaultProbabilityHelper
+instance Finalizable CDefaultProbabilityHelper where
+  finalize = p_freeDefaultProbabilityHelper
+foreign import ccall safe "ql.h &qlFreeDefaultProbabilityHelper"
+  p_freeDefaultProbabilityHelper :: FunPtr (Ptr CDefaultProbabilityHelper -> IO ())
 
 -- time
 data CCalendar

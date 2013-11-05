@@ -1,6 +1,7 @@
 #include <ql/termstructures/credit/flathazardrate.hpp>
 #include <ql/experimental/credit/spreadedhazardratecurve.hpp>
 #include <ql/experimental/credit/factorspreadedhazardratecurve.hpp>
+#include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
 
 #include "qlaux.h"
 #include "qlDefaultTS.h"
@@ -58,6 +59,23 @@ QlDefaultProbabilityTermStructure* qlInterpolatedSurvivalProbabilityCurve(unsign
     return ret(new QlDefaultProbabilityTermStructure(alloc(qlInterpolatedSurvivalProbabilityCurveAux(qlDateVector(datesLen, dates), std::vector<double>(probabilities, probabilities+probabilitiesLen), *arg(dayCounter), *arg(calendar), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jumpsLen, jumpDates), interpolator))));
   } catch (std::exception& er) {
     return handleException<QlDefaultProbabilityTermStructure*>(e, er);
+  }
+}
+
+void qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o) { del(o); }
+
+QlDefaultProbabilityHelper* qlSpreadCdsHelper(QlQuote* runningSpread, Period* tenor, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, char **e) {
+  try {
+    return ret(new QlDefaultProbabilityHelper(alloc(new SpreadCdsHelper(Handle<Quote>(*arg(runningSpread)), *arg(tenor), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, Handle<YieldTermStructure>(*arg(discountCurve)), settlesAccrual, paysAtDefaultTime))));
+  } catch (std::exception& er) {
+    return handleException<QlDefaultProbabilityHelper*>(e, er);
+  }
+}
+QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, Period* tenor, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, char **e) {
+  try {
+    return ret(new QlDefaultProbabilityHelper(alloc(new UpfrontCdsHelper(Handle<Quote>(*arg(upfront)), runningSpread, *arg(tenor), settlementDays, *arg(calendar), (Frequency)frequency, (BusinessDayConvention)paymentConvention, (DateGeneration::Rule)rule, *arg(dayCounter), recoveryRate, Handle<YieldTermStructure>(*arg(discountCurve)), upfrontSettlementDays, settlesAccrual, paysAtDefaultTime))));
+  } catch (std::exception& er) {
+    return handleException<QlDefaultProbabilityHelper*>(e, er);
   }
 }
 

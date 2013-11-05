@@ -39,6 +39,9 @@ module QuantLib.Time.Date
   , nextIMMCode'
   , nextIMMDate
   , nextIMMDate'
+
+  , addPeriod
+  , subtractPeriod
   )
 where
 
@@ -49,9 +52,11 @@ import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
+import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Time.Weekday
 import QuantLib.Time.Month
+import QuantLib.Types
 
 year :: Day -> Integer
 year x = y where (y, _, _) = toGregorian x
@@ -250,5 +255,17 @@ nextIMMDate = $(ffiCall 'nextIMMDate) c_nextIMMDate
 
 foreign import ccall safe "ql.h qlIMMNextDate"
   c_nextIMMDate :: CDate -> CInt -> CDate
+
+addPeriod :: Day -> Period -> Either String Day
+addPeriod = $(ffiCallPureX 'addPeriod) c_addPeriod
+
+foreign import ccall safe "ql.h qlAddPeriod"
+  c_addPeriod :: CDate -> Ptr CPeriod -> Ptr CString -> IO CDate
+
+subtractPeriod :: Day -> Period -> Either String Day
+subtractPeriod = $(ffiCallPureX 'subtractPeriod) c_subtractPeriod
+
+foreign import ccall safe "ql.h qlSubtractPeriod"
+  c_subtractPeriod :: CDate -> Ptr CPeriod -> Ptr CString -> IO CDate
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

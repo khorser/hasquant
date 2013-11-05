@@ -816,4 +816,12 @@ typedef boost::shared_ptr<Coupon> QlCoupon;
 template <> class objClassName<Coupon *> { public: static const char *name() { return "Coupon"; } };
 template <> class objClassName<QlCoupon *> { public: static const char *name() { return "QlCoupon"; } };
 
+// DefaultProbabilityHelper is a typedef so we cannot use forward declaration
+#ifdef quantlib_default_probability_helpers_hpp
+using QuantLib::DefaultProbabilityHelper;
+typedef boost::shared_ptr<DefaultProbabilityHelper> QlDefaultProbabilityHelper;
+template <> class objClassName<DefaultProbabilityHelper *> { public: static const char *name() { return "DefaultProbabilityHelper"; } };
+template <> class objClassName<QlDefaultProbabilityHelper *> { public: static const char *name() { return "QlDefaultProbabilityHelper"; } };
+#endif
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -134,6 +134,7 @@ module QuantLib.Types
   , CapFloorTermVolSurface
   , LocalVolTermStructure
   , BlackVarianceCurve
+  , DefaultProbabilityHelper
 
   -- time
   , Calendar
@@ -530,6 +531,8 @@ type BlackVarianceCurve = ForeignPtr CBlackVarianceCurve
 
 asBlackVolTermStructure :: (Upcastable a CBlackVolTermStructure) => ForeignPtr a -> IO BlackVolTermStructure
 asBlackVolTermStructure = upcast
+
+type DefaultProbabilityHelper = ForeignPtr CDefaultProbabilityHelper
 
 -- time
 -- |Calendars provide the means for determining whether a date is a business day or a holiday for a given market, and for incrementing/decrementing a date of a given number of business days
