@@ -64,8 +64,6 @@ run = do
   pQ <- fromFrequency Quarterly
   sched <- forM maturities
     $ \m -> schedule (Just tod) m pQ cal Following Unadjusted TwentiethIMM False Nothing Nothing
-  let d = map dates sched
-  print d
   cds <- forM sched
     $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing claim
 

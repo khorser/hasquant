@@ -123,13 +123,16 @@ Test-Suite QL-Test
                 QuantLib.Test.HUnit
               , QuantLib.Test.QuickCheck
               , QuantLib.Example.Bond
-              , QuantLib.Example.Repo
-              , QuantLib.Example.FRA
-              , QuantLib.Example.Swap
-              , QuantLib.Example.FittedBondCurve
-              , QuantLib.Example.Replication
               , QuantLib.Example.BermudanSwaption
+              , QuantLib.Example.CallableBond
+              , QuantLib.Example.CDS
+              , QuantLib.Example.ConvertibleBond
               , QuantLib.Example.EquityOption
+              , QuantLib.Example.FittedBondCurve
+              , QuantLib.Example.FRA
+              , QuantLib.Example.Replication
+              , QuantLib.Example.Repo
+              , QuantLib.Example.Swap
   GHC-Options:-Wall
   Build-Depends:
               base >= 4.5 && < 5
@@ -154,13 +157,16 @@ Executable QL-Example
   Main-Is:    QuantLib/MainExample.hs
   Other-modules:
               QuantLib.Example.Bond
-            , QuantLib.Example.Repo
-            , QuantLib.Example.FRA
-            , QuantLib.Example.Swap
-            , QuantLib.Example.FittedBondCurve
-            , QuantLib.Example.Replication
             , QuantLib.Example.BermudanSwaption
+            , QuantLib.Example.CallableBond
+            , QuantLib.Example.CDS
+            , QuantLib.Example.ConvertibleBond
             , QuantLib.Example.EquityOption
+            , QuantLib.Example.FittedBondCurve
+            , QuantLib.Example.FRA
+            , QuantLib.Example.Replication
+            , QuantLib.Example.Repo
+            , QuantLib.Example.Swap
   GHC-Options:      -Wall
   Build-Depends:
               base >= 4.5 && < 5
