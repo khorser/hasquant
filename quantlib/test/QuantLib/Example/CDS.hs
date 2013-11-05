@@ -5,6 +5,7 @@ module QuantLib.Example.CDS
   )
 where
 
+import Control.Monad(forM)
 import Data.Either(rights)
 import Data.Time.Calendar
 
@@ -48,10 +49,9 @@ run = do
   maturities <- mapM (\d -> adjust cal d Following) mat
 
   instruments <- mapM
-    (\(t,s) -> do
-      q <- simpleQuote s >>= asQuote
-      spreadCdsHelper q t 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True) 
-    (zip tenors quotedSpreads)
+    (\t -> do
+      q <- simpleQuote quotedSpread >>= asQuote
+      spreadCdsHelper q t 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True) tenors
 
   hts <- piecewiseDefaultCurve tod instruments dc [] 1.0e-12 HazardRate BackwardFlat
 
@@ -62,20 +62,28 @@ run = do
   claim <- faceValueClaim
 
   pQ <- fromFrequency Quarterly
-  cdss <- schedule (Just tod) (head maturities) pQ cal Unadjusted Unadjusted TwentiethIMM False Nothing Nothing
-  cds3m <- creditDefaultSwap Seller nominal (head quotedSpreads) cdss Following dc True True Nothing claim
-  asInstrument cds3m >>= (`setPricingEngine` eng)
-  fairSpread cds3m >>= print
-  asInstrument cds3m >>= npv >>= print
-  defaultLegNPV cds3m >>= print
-  couponLegNPV cds3m >>= print
+  sched <- forM maturities
+    $ \m -> schedule (Just tod) m pQ cal Unadjusted Unadjusted TwentiethIMM False Nothing Nothing
+  cds <- forM sched
+    $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing claim
+
+  _ <- mapM
+    (\c -> do
+      i <- asInstrument c
+      setPricingEngine i eng
+      fairSpread c >>= print
+      npv i >>= print
+      defaultLegNPV c >>= print
+      couponLegNPV c >>= print
+      print "--")
+    cds
 
   return Result {
     r = 0
   }
 
   where recoveryRate = 0.5
-        quotedSpreads = [0.0150, 0.0150, 0.0150, 0.0150]
         nominal = 1000000.0
+        quotedSpread = 0.0150
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
