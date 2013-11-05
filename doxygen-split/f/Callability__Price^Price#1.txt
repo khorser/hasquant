@@ -1,5 +1,0 @@
-->
-::Real
--- ^amount
-::Type
--- ^type

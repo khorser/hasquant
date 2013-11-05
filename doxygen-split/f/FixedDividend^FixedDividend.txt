@@ -1,5 +1,0 @@
-->
-::Real
--- ^amount
-::const Date &
--- ^date

@@ -7,6 +7,7 @@
 #include <ql/instruments/forward.hpp>
 #include <ql/instruments/vanillaswingoption.hpp>
 #include <ql/instruments/capfloor.hpp>
+#include <ql/instruments/callabilityschedule.hpp>
 
 #include "qlaux.h"
 #include "qlInstrument.h"
@@ -347,6 +348,25 @@ QlCapFloor* qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e) {
     return ret(new QlCapFloor(alloc((*arg(o))->optionlet(n))));
   } catch (std::exception& er) {
     return handleException<QlCapFloor*>(e, er);
+  }
+}
+
+void qlFreeCallability(Callability *o) { del(o); }
+void qlFreeCallabilityPrice(QlCallabilityPrice *o) { del(o); }
+
+QlCallabilityPrice* qlCallabilityPrice(double amount, int type, char **e) {
+  try {
+    return ret(new Callability::Price(amount, (Callability::Price::Type)type));
+  } catch (std::exception& er) {
+    return handleException<QlCallabilityPrice*>(e, er);
+  }
+}
+
+Callability* qlCallability(QlCallabilityPrice* price, int type, int date, char **e) {
+  try {
+    return ret(new Callability((*arg(price)), (Callability::Type)type, Date(date)));
+  } catch (std::exception& er) {
+    return handleException<Callability*>(e, er);
   }
 }
 

@@ -40,6 +40,7 @@ Library
               , QuantLib.Instrument.BarrierType
               , QuantLib.Instrument.Bond
               , QuantLib.Instrument.CapFloor
+              , QuantLib.Instrument.CallabilityType
               , QuantLib.Instrument.Credit
               , QuantLib.Instrument.Forward
               , QuantLib.Instrument.Option

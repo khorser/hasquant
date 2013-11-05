@@ -10,6 +10,7 @@ module QuantLib.Types
   , Leg
   , FloatingRateCouponPricer
   , Coupon
+  , Dividend
 
   -- currency
   , Currency
@@ -63,6 +64,8 @@ module QuantLib.Types
   , QuantoBarrierOption
   , QuantoForwardVanillaOption
   , CapFloor
+  , Callability
+  , CallabilityPrice
 
   -- math
   , Constraint
@@ -221,6 +224,7 @@ objectMatrix rows cols d =
 type Leg = ForeignPtr CLeg
 type FloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer
 type Coupon = ForeignPtr CCoupon
+type Dividend = ForeignPtr CDividend
 
 -- currencies
 type Currency = ForeignPtr CCurrency
@@ -396,6 +400,9 @@ type QuantoBarrierOption = ForeignPtr CQuantoBarrierOption
 type QuantoForwardVanillaOption = ForeignPtr CQuantoForwardVanillaOption
 
 type CapFloor = ForeignPtr CCapFloor
+
+type Callability = ForeignPtr CCallability
+type CallabilityPrice = ForeignPtr CCallabilityPrice
 
 -- math
 type Constraint = ForeignPtr CConstraint

@@ -34,6 +34,7 @@
 #include <ql/methods/finitedifferences/boundarycondition.hpp>
 #include <ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp>
 #include <ql/money.hpp>
+#include <ql/instruments/callabilityschedule.hpp>
 
 #include <string.h>
 
@@ -363,6 +364,17 @@ static const int fdmSchemeTypeValues[] = {
   , FdmSchemeDesc::ExplicitEulerType
 };
 
+static const int callabilityTypeValues[] = {
+    Callability::Call
+  , Callability::Put
+};
+
+static const int callabilityPriceTypeValues[] = {
+    Callability::Price::Dirty
+  , Callability::Price::Clean
+};
+
+
 struct EnumInfo {
   const char *const name;
   size_t len;
@@ -464,6 +476,10 @@ static const EnumInfo enumInfo[] = {
     LENGTH(deltaTypeValues), deltaTypeValues},
   {"QuantLib.Method.FdmScheme.FdmSchemeType",
     LENGTH(fdmSchemeTypeValues), fdmSchemeTypeValues},
+  {"QuantLib.Instrument.CallabilityType.CallabilityType",
+    LENGTH(callabilityTypeValues), callabilityTypeValues},
+  {"QuantLib.Instrument.CallabilityType.CallabilityPriceType",
+    LENGTH(callabilityPriceTypeValues), callabilityPriceTypeValues},
 };
 
 const int *qlEnumerationValue(const char *name, unsigned *c) {

@@ -38,10 +38,14 @@ module QuantLib.Instrument
   , europeanExercise
   , swingExercise
   , swingExercise'
+
+  , callabilityPrice
+  , callability
   )
 where
 
 import QuantLib.ExerciseType
+import QuantLib.Instrument.CallabilityType
 import QuantLib.Instrument.OptionType
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Date
@@ -358,5 +362,22 @@ swingExercise' = $(ffiCall 'swingExercise') c_swingExercise'
 
 foreign import ccall safe "ql.h qlSwingExercise1"
   c_swingExercise' :: CDate -> CDate -> CUInt -> Ptr CString -> IO (Ptr CSwingExercise)
+
+callabilityPrice :: Double -- ^amount
+  -> CallabilityPriceType -- ^type
+  -> IO CallabilityPrice
+callabilityPrice = $(ffiCall 'callabilityPrice) c_callabilityPrice
+
+foreign import ccall safe "ql.h qlCallabilityPrice"
+  c_callabilityPrice :: CDouble -> CInt -> Ptr CString -> IO (Ptr CCallabilityPrice)
+
+callability :: CallabilityPrice -- ^price
+  -> CallabilityType -- ^type
+  -> Day -- ^date
+  -> IO Callability
+callability = $(ffiCall 'callability) c_callability
+
+foreign import ccall safe "ql.h qlCallability"
+  c_callability :: Ptr CCallabilityPrice -> CInt -> CDate -> Ptr CString -> IO (Ptr CCallability)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

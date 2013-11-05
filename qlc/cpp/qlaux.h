@@ -824,4 +824,14 @@ template <> class objClassName<DefaultProbabilityHelper *> { public: static cons
 template <> class objClassName<QlDefaultProbabilityHelper *> { public: static const char *name() { return "QlDefaultProbabilityHelper"; } };
 #endif
 
+namespace QuantLib {class Dividend;} using QuantLib::Dividend;
+template <> class objClassName<Dividend *> { public: static const char *name() { return "Dividend"; } };
+
+namespace QuantLib {class Callability;} using QuantLib::Callability;
+template <> class objClassName<Callability *> { public: static const char *name() { return "Callability"; } };
+#ifdef quantlib_callability_schedule_hpp
+typedef Callability::Price QlCallabilityPrice;
+template <> class objClassName<Callability::Price *> { public: static const char *name() { return "CallabilityPrice"; } };
+#endif
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

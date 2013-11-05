@@ -2,6 +2,7 @@
 #include <ql/cashflows/coupon.hpp>
 #include <ql/cashflows/simplecashflow.hpp>
 #include <ql/cashflows/couponpricer.hpp>
+#include <ql/cashflows/dividend.hpp>
 #include <boost/shared_ptr.hpp>
 
 #include "qlaux.h"
@@ -393,4 +394,27 @@ int qlCouponAccrualStartDate(QlCoupon* o, char **e) {
   }
 }
 
+void qlFreeDividend(Dividend *o) { del(o); }
+
+Dividend* qlFixedDividend(double amount, int date, char **e) {
+  try {
+    return alloc(new FixedDividend(amount, Date(date)));
+  } catch (std::exception& er) {
+    return handleException<Dividend*>(e, er);
+  }
+}
+Dividend* qlFractionalDividend1(double rate, double nominal, int date, char **e) {
+  try {
+    return alloc(new FractionalDividend(rate, nominal, Date(date)));
+  } catch (std::exception& er) {
+    return handleException<Dividend*>(e, er);
+  }
+}
+Dividend* qlFractionalDividend(double rate, int date, char **e) {
+  try {
+    return alloc(new FractionalDividend(rate, Date(date)));
+  } catch (std::exception& er) {
+    return handleException<Dividend*>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -79,6 +79,11 @@ extern "C" {
   double DLLEXPORT qlCapFloorAtmRate(QlCapFloor* o, QlYieldTermStructure* discountCurve, char **e);
   double DLLEXPORT qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   QlCapFloor* DLLEXPORT qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e);
+
+  void DLLEXPORT qlFreeCallability(Callability *o);
+  void DLLEXPORT qlFreeCallabilityPrice(QlCallabilityPrice *o);
+  QlCallabilityPrice* DLLEXPORT qlCallabilityPrice(double amount, int type, char **e);
+  Callability* DLLEXPORT qlCallability(QlCallabilityPrice* price, int type, int date, char **e);
 #ifdef __cplusplus
 }
 #endif

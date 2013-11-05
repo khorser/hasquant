@@ -49,6 +49,10 @@ module QuantLib.CashFlow.Leg
 
   , coupons
   , accrualStartDate'
+
+  , fixedDividend
+  , fractionalDividend'
+  , fractionalDividend
   )
 where
 
@@ -575,5 +579,30 @@ accrualStartDate' = $(ffiCallX 'accrualStartDate') c_accrualStartDate'
 
 foreign import ccall safe "ql.h qlCouponAccrualStartDate"
   c_accrualStartDate' :: Ptr CCoupon -> Ptr CString -> IO CDate
+
+fixedDividend :: Double -- ^amount
+  -> Day -- ^date
+  -> IO Dividend
+fixedDividend = $(ffiCall 'fixedDividend) c_fixedDividend
+
+foreign import ccall safe "ql.h qlFixedDividend"
+  c_fixedDividend :: CDouble -> CDate -> Ptr CString -> IO (Ptr CDividend)
+
+fractionalDividend' :: Double -- ^rate
+  -> Double -- ^nominal
+  -> Day -- ^date
+  -> IO Dividend
+fractionalDividend' = $(ffiCall 'fractionalDividend') c_fractionalDividend'
+
+foreign import ccall safe "ql.h qlFractionalDividend1"
+  c_fractionalDividend' :: CDouble -> CDouble -> CDate -> Ptr CString -> IO (Ptr CDividend)
+
+fractionalDividend :: Double -- ^rate
+  -> Day -- ^date
+  -> IO Dividend
+fractionalDividend = $(ffiCall 'fractionalDividend) c_fractionalDividend
+
+foreign import ccall safe "ql.h qlFractionalDividend"
+  c_fractionalDividend :: CDouble -> CDate -> Ptr CString -> IO (Ptr CDividend)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

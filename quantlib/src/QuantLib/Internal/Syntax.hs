@@ -57,6 +57,7 @@ import QuantLib.Method.BoundaryCondition()
 import QuantLib.Method.FdmScheme()
 import QuantLib.Model.CalibrationErrorType()
 import QuantLib.MoneyConversionType()
+import QuantLib.Instrument.CallabilityType()
 
 -- QLLitEnum instances
 import QuantLib.Math.Interpolation()

@@ -7,6 +7,7 @@ module QuantLib.Internal.Types
   , CLeg
   , CFloatingRateCouponPricer
   , CCoupon
+  , CDividend
 
   -- currency
   , CCurrency
@@ -60,6 +61,8 @@ module QuantLib.Internal.Types
   , CQuantoBarrierOption
   , CQuantoForwardVanillaOption
   , CCapFloor
+  , CCallabilityPrice
+  , CCallability
 
   -- math
   , CConstraint
@@ -171,6 +174,12 @@ instance Finalizable CCoupon where
   finalize = p_freeCoupon
 foreign import ccall safe "ql.h &qlFreeCoupon"
   p_freeCoupon :: FunPtr (Ptr CCoupon -> IO ())
+
+data CDividend
+instance Finalizable CDividend where
+  finalize = p_freeDividend
+foreign import ccall safe "ql.h &qlFreeDividend"
+  p_freeDividend :: FunPtr (Ptr CDividend -> IO ())
 
 -- currencies
 data CCurrency
@@ -624,6 +633,17 @@ instance Upcastable CCapFloor CInstrument where
 foreign import ccall safe "ql.h qlCapFloorAsInstrument"
   c_CapFloorAsInstrument :: Ptr CCapFloor -> IO (Ptr CInstrument)
 
+data CCallability
+instance Finalizable CCallability where
+  finalize = p_freeCallability
+foreign import ccall safe "ql.h &qlFreeCallability"
+  p_freeCallability :: FunPtr (Ptr CCallability -> IO ())
+
+data CCallabilityPrice
+instance Finalizable CCallabilityPrice where
+  finalize = p_freeCallabilityPrice
+foreign import ccall safe "ql.h &qlFreeCallabilityPrice"
+  p_freeCallabilityPrice :: FunPtr (Ptr CCallabilityPrice -> IO ())
 
 -- math
 data CConstraint
