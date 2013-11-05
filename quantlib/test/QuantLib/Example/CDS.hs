@@ -6,10 +6,13 @@ module QuantLib.Example.CDS
 where
 
 import Data.Either(rights)
+import Data.Time.Calendar
 
 import QuantLib.Compounding
+import QuantLib.Credit.ProtectionSide
 import QuantLib.Instances
 import QuantLib.Instrument
+import QuantLib.Instrument.Credit
 import QuantLib.Math.Interpolation
 import QuantLib.Quote
 import QuantLib.PricingEngine
@@ -24,6 +27,7 @@ import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Frequency
 import QuantLib.Time.Period
+import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Types
 
@@ -49,7 +53,22 @@ run = do
       spreadCdsHelper q t 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True) 
     (zip tenors quotedSpreads)
 
-  hs <- piecewiseDefaultCurve tod instruments dc [] 1.0e-12 HazardRate BackwardFlat
+  hts <- piecewiseDefaultCurve tod instruments dc [] 1.0e-12 HazardRate BackwardFlat
+
+  survivalProbability hts (addGregorianYearsClip 1 tod) False >>= print
+  survivalProbability hts (addGregorianYearsClip 2 tod) False >>= print
+
+  eng <- midPointCdsEngine hts recoveryRate ts Nothing
+  claim <- faceValueClaim
+
+  pQ <- fromFrequency Quarterly
+  cdss <- schedule (Just tod) (head maturities) pQ cal Unadjusted Unadjusted TwentiethIMM False Nothing Nothing
+  cds3m <- creditDefaultSwap Seller nominal (head quotedSpreads) cdss Following dc True True Nothing claim
+  asInstrument cds3m >>= (`setPricingEngine` eng)
+  fairSpread cds3m >>= print
+  asInstrument cds3m >>= npv >>= print
+  defaultLegNPV cds3m >>= print
+  couponLegNPV cds3m >>= print
 
   return Result {
     r = 0

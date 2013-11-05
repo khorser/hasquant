@@ -1,2 +1,0 @@
--- |Returns the variation of the fixed-leg value given a one-basis-point change in the running spread.
-->Real

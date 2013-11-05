@@ -1,6 +1,0 @@
-->Real
-::Time
--- ^t
-::bool
-=false
--- ^extrapolate

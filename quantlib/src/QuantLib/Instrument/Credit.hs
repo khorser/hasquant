@@ -11,6 +11,16 @@ module QuantLib.Instrument.Credit
   , cdsOption
   , impliedVolatility
   , riskyAnnuity
+
+  , conventionalSpread
+  , couponLegBPS
+  , couponLegNPV
+  , coupons
+  , defaultLegNPV
+  , fairUpfront
+  , impliedHazardRate
+  , upfrontBPS
+  , upfrontNPV
   )
 
 where
@@ -112,5 +122,82 @@ riskyAnnuity = $(ffiCallX 'riskyAnnuity) c_riskyAnnuity
 
 foreign import ccall safe "ql.h qlCdsOptionRiskyAnnuity"
   c_riskyAnnuity :: Ptr CCdsOption -> Ptr CString -> IO CDouble
+
+-- |Conventional/standard upfront-to-spread conversion.
+-- Under a standard ISDA model and a set of standardised instrument characteristics, it is the running only quoted spread that will make a CDS contract have an NPV of 0 when quoted for that running only spread. Refer to: "ISDA Standard CDS converter specification." May 2009.The conventional recovery rate to apply in the calculation is as specified by ISDA, not necessarily equal to the market-quoted one. It is typically 0.4 for SeniorSec and 0.2 for subordinate.The conversion employs a flat hazard rate. As a result, you will not recover the market quotes.This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably: The calendar should have no bank holidays, just weekends.The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.Convention should be Following for yield curve and contract cashflows.The CDS should pay accrued and mature on standard IMM dates, settle on trade date +1 and upfront settle on trade date +3.
+conventionalSpread :: CreditDefaultSwap
+  -> Double -- ^conventionalRecovery
+  -> YieldTermStructure -- ^discountCurve
+  -> DayCounter -- ^dayCounter
+  -> IO Double
+conventionalSpread = $(ffiCallX 'conventionalSpread) c_conventionalSpread
+
+foreign import ccall safe "ql.h qlCreditDefaultSwapConventionalSpread"
+  c_conventionalSpread :: Ptr CCreditDefaultSwap -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> Ptr CString -> IO CDouble
+
+-- |Returns the variation of the fixed-leg value given a one-basis-point change in the running spread.
+couponLegBPS :: CreditDefaultSwap
+  -> IO Double
+couponLegBPS = $(ffiCallX 'couponLegBPS) c_couponLegBPS
+
+foreign import ccall safe "ql.h qlCreditDefaultSwapCouponLegBPS"
+  c_couponLegBPS :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
+
+couponLegNPV :: CreditDefaultSwap
+  -> IO Double
+couponLegNPV = $(ffiCallX 'couponLegNPV) c_couponLegNPV
+
+foreign import ccall safe "ql.h qlCreditDefaultSwapCouponLegNPV"
+  c_couponLegNPV :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
+
+coupons :: CreditDefaultSwap
+  -> IO Leg
+coupons = $(ffiCall 'coupons) c_coupons
+
+foreign import ccall safe "ql.h qlCreditDefaultSwapCoupons"
+  c_coupons :: Ptr CCreditDefaultSwap -> Ptr CString -> IO (Ptr CLeg)
+
+defaultLegNPV :: CreditDefaultSwap
+  -> IO Double
+defaultLegNPV = $(ffiCallX 'defaultLegNPV) c_defaultLegNPV
+
+foreign import ccall safe "ql.h qlCreditDefaultSwapDefaultLegNPV"
+  c_defaultLegNPV :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
+
+-- |Returns the upfront spread that, given the running spread and the quoted recovery rate, will make the instrument have an NPV of 0.
+fairUpfront :: CreditDefaultSwap
+  -> IO Double
+fairUpfront = $(ffiCallX 'fairUpfront) c_fairUpfront
+
+foreign import ccall safe "ql.h qlCreditDefaultSwapFairUpfront"
+  c_fairUpfront :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
+
+-- |Implied hazard rate calculation.
+-- This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably: The calendar should have no bank holidays, just weekends.The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.Convention should be Following for yield curve and contract cashflows.The CDS should pay accrued and mature on standard IMM dates, settle on trade date +1 and upfront settle on trade date +3.
+impliedHazardRate :: CreditDefaultSwap
+  -> Double -- ^targetNPV
+  -> YieldTermStructure -- ^discountCurve
+  -> DayCounter -- ^dayCounter
+  -> Double -- ^recoveryRate
+  -> Double -- ^accuracy
+  -> IO Double
+impliedHazardRate = $(ffiCallX 'impliedHazardRate) c_impliedHazardRate
+
+foreign import ccall safe "ql.h qlCreditDefaultSwapImpliedHazardRate"
+  c_impliedHazardRate :: Ptr CCreditDefaultSwap -> CDouble -> Ptr CYieldTermStructure -> Ptr CDayCounter -> CDouble -> CDouble -> Ptr CString -> IO CDouble
+
+upfrontBPS :: CreditDefaultSwap
+  -> IO Double
+upfrontBPS = $(ffiCallX 'upfrontBPS) c_upfrontBPS
+
+foreign import ccall safe "ql.h qlCreditDefaultSwapUpfrontBPS"
+  c_upfrontBPS :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
+
+upfrontNPV :: CreditDefaultSwap
+  -> IO Double
+upfrontNPV = $(ffiCallX 'upfrontNPV) c_upfrontNPV
+
+foreign import ccall safe "ql.h qlCreditDefaultSwapUpfrontNPV"
+  c_upfrontNPV :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

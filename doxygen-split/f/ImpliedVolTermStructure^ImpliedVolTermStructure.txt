@@ -1,5 +1,0 @@
-->
-::const Handle< BlackVolTermStructure > &
--- ^origTS
-::const Date &
--- ^referenceDate

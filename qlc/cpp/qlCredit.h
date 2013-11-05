@@ -22,6 +22,16 @@ extern "C" {
   QlCreditDefaultSwap* DLLEXPORT qlCreditDefaultSwap1(int side, double notional, double upfront, double spread, Schedule* schedule, int paymentConvention, DayCounter* dayCounter, int settlesAccrual, int paysAtDefaultTime, int protectionStart, int upfrontDate, QlClaim* x11, char **e);
   QlOption* DLLEXPORT qlCdsOptionAsOption(QlCdsOption *o);
   void DLLEXPORT qlFreeCdsOption(QlCdsOption *o);
+  double DLLEXPORT qlCreditDefaultSwapFairSpread(QlCreditDefaultSwap* o, char **e);
+  double DLLEXPORT qlCreditDefaultSwapConventionalSpread(QlCreditDefaultSwap* o, double conventionalRecovery, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, char **e);
+  double DLLEXPORT qlCreditDefaultSwapCouponLegBPS(QlCreditDefaultSwap* o, char **e);
+  double DLLEXPORT qlCreditDefaultSwapCouponLegNPV(QlCreditDefaultSwap* o, char **e);
+  Leg* DLLEXPORT qlCreditDefaultSwapCoupons(QlCreditDefaultSwap* o, char **e);
+  double DLLEXPORT qlCreditDefaultSwapDefaultLegNPV(QlCreditDefaultSwap* o, char **e);
+  double DLLEXPORT qlCreditDefaultSwapFairUpfront(QlCreditDefaultSwap* o, char **e);
+  double DLLEXPORT qlCreditDefaultSwapImpliedHazardRate(QlCreditDefaultSwap* o, double targetNPV, QlYieldTermStructure* discountCurve, DayCounter* dayCounter, double recoveryRate, double accuracy, char **e);
+  double DLLEXPORT qlCreditDefaultSwapUpfrontBPS(QlCreditDefaultSwap* o, char **e);
+  double DLLEXPORT qlCreditDefaultSwapUpfrontNPV(QlCreditDefaultSwap* o, char **e);
 #ifdef __cplusplus
 }
 #endif

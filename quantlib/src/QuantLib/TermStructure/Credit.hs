@@ -15,6 +15,17 @@ module QuantLib.TermStructure.Credit
   , upfrontCdsHelper
   , piecewiseDefaultCurve
   , piecewiseDefaultCurve'
+
+  , defaultDensity'
+  , defaultDensity
+  , defaultProbability
+  , defaultProbability'
+  , defaultProbabilityBetween'
+  , defaultProbabilityBetween
+  , hazardRate'
+  , hazardRate
+  , survivalProbability'
+  , survivalProbability
   )
 where
 
@@ -165,5 +176,101 @@ piecewiseDefaultCurve' = $(ffiCall 'piecewiseDefaultCurve') c_piecewiseDefaultCu
 
 foreign import ccall safe "ql.h qlPiecewiseDefaultCurve1"
   c_piecewiseDefaultCurve' :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CDefaultProbabilityHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
+
+defaultDensity' :: DefaultProbabilityTermStructure
+  -> YearFraction -- ^t
+  -> Bool -- ^extrapolate
+  -> IO Double
+defaultDensity' = $(ffiCallX 'defaultDensity') c_defaultDensity'
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultDensity1"
+  c_defaultDensity' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
+
+defaultDensity :: DefaultProbabilityTermStructure
+  -> Day -- ^d
+  -> Bool -- ^extrapolate
+  -> IO Double
+defaultDensity = $(ffiCallX 'defaultDensity) c_defaultDensity
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultDensity"
+  c_defaultDensity :: Ptr CDefaultProbabilityTermStructure -> CDate -> CInt -> Ptr CString -> IO CDouble
+
+-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
+defaultProbability' :: DefaultProbabilityTermStructure
+  -> YearFraction -- ^t
+  -> Bool -- ^extrapolate
+  -> IO Double
+defaultProbability' = $(ffiCallX 'defaultProbability') c_defaultProbability'
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability1"
+  c_defaultProbability' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
+
+-- |probability of default between two given dates
+defaultProbabilityBetween :: DefaultProbabilityTermStructure
+  -> Day
+  -> Day
+  -> Bool -- ^extrapolate
+  -> IO Double
+defaultProbabilityBetween = $(ffiCallX 'defaultProbabilityBetween) c_defaultProbabilityBetween
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability2"
+  c_defaultProbabilityBetween :: Ptr CDefaultProbabilityTermStructure -> CDate -> CDate -> CInt -> Ptr CString -> IO CDouble
+
+-- |probability of default between two given times
+defaultProbabilityBetween' :: DefaultProbabilityTermStructure
+  -> YearFraction
+  -> YearFraction
+  -> Bool -- ^extrapo
+  -> IO Double
+defaultProbabilityBetween' = $(ffiCallX 'defaultProbabilityBetween') c_defaultProbabilityBetween'
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability3"
+  c_defaultProbabilityBetween' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
+
+defaultProbability :: DefaultProbabilityTermStructure
+  -> Day -- ^d
+  -> Bool -- ^extrapolate
+  -> IO Double
+defaultProbability = $(ffiCallX 'defaultProbability) c_defaultProbability
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureDefaultProbability"
+  c_defaultProbability :: Ptr CDefaultProbabilityTermStructure -> CDate -> CInt -> Ptr CString -> IO CDouble
+
+hazardRate' :: DefaultProbabilityTermStructure
+  -> YearFraction -- ^t
+  -> Bool -- ^extrapolate
+  -> IO Double
+hazardRate' = $(ffiCallX 'hazardRate') c_hazardRate'
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureHazardRate1"
+  c_hazardRate' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
+
+hazardRate :: DefaultProbabilityTermStructure
+  -> Day -- ^d
+  -> Bool -- ^extrapolate
+  -> IO Double
+hazardRate = $(ffiCallX 'hazardRate) c_hazardRate
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureHazardRate"
+  c_hazardRate :: Ptr CDefaultProbabilityTermStructure -> CDate -> CInt -> Ptr CString -> IO CDouble
+
+-- |The same day-counting rule used by the term structure should be used for calculating the passed time t.
+survivalProbability' :: DefaultProbabilityTermStructure
+  -> YearFraction -- ^t
+  -> Bool -- ^extrapolate
+  -> IO Double
+survivalProbability' = $(ffiCallX 'survivalProbability') c_survivalProbability'
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureSurvivalProbability1"
+  c_survivalProbability' :: Ptr CDefaultProbabilityTermStructure -> CYearFraction -> CInt -> Ptr CString -> IO CDouble
+
+survivalProbability :: DefaultProbabilityTermStructure
+  -> Day -- ^d
+  -> Bool -- ^extrapolate
+  -> IO Double
+survivalProbability = $(ffiCallX 'survivalProbability) c_survivalProbability
+
+foreign import ccall safe "ql.h qlDefaultProbabilityTermStructureSurvivalProbability"
+  c_survivalProbability :: Ptr CDefaultProbabilityTermStructure -> CDate -> CInt -> Ptr CString -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

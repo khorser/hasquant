@@ -1,9 +1,0 @@
--- |probability of default between two given dates
-->Probability
-::const Date &
--- ^
-::const Date &
--- ^
-::bool
-=false
--- ^extrapolate

@@ -97,4 +97,75 @@ QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementD
   }
 }
 
+double qlDefaultProbabilityTermStructureDefaultDensity1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->defaultDensity(t, extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlDefaultProbabilityTermStructureDefaultDensity(QlDefaultProbabilityTermStructure* o, int d, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->defaultDensity(Date(d), extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlDefaultProbabilityTermStructureDefaultProbability1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->defaultProbability(t, (bool)extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlDefaultProbabilityTermStructureDefaultProbability2(QlDefaultProbabilityTermStructure* o, int x1, int x2, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->defaultProbability(Date(x1), Date(x2), extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlDefaultProbabilityTermStructureDefaultProbability3(QlDefaultProbabilityTermStructure* o, double x1, double x2, int extrapo, char **e) {
+  try {
+    return (*arg(o))->defaultProbability(x1, x2, extrapo);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlDefaultProbabilityTermStructureDefaultProbability(QlDefaultProbabilityTermStructure* o, int d, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->defaultProbability(Date(d), extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlDefaultProbabilityTermStructureHazardRate1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->hazardRate(t, extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlDefaultProbabilityTermStructureHazardRate(QlDefaultProbabilityTermStructure* o, int d, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->hazardRate(Date(d), extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlDefaultProbabilityTermStructureSurvivalProbability1(QlDefaultProbabilityTermStructure* o, double t, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->survivalProbability(t, extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+double qlDefaultProbabilityTermStructureSurvivalProbability(QlDefaultProbabilityTermStructure* o, int d, int extrapolate, char **e) {
+  try {
+    return (*arg(o))->survivalProbability(Date(d), extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

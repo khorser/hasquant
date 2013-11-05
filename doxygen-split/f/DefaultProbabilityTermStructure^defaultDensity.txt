@@ -1,6 +1,0 @@
-->Real
-::const Date &
--- ^d
-::bool
-=false
--- ^extrapolate

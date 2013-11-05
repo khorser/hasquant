@@ -155,6 +155,12 @@ instance SwapWithSpread CAssetSwap where
 foreign import ccall safe "ql.h qlAssetSwapFairSpread"
   c_assetSwapFairSpread :: Ptr CAssetSwap -> Ptr CString -> IO CDouble
 
+instance SwapWithSpread CCreditDefaultSwap where
+  c_fairSpread = c_cdsFairSpread
+-- |Returns the running spread that, given the quoted recovery rate, will make the running-only CDS have an NPV of 0.This calculation does not take any upfront into account, even if one was given.
+foreign import ccall safe "ql.h qlCreditDefaultSwapFairSpread"
+  c_cdsFairSpread :: Ptr CCreditDefaultSwap -> Ptr CString -> IO CDouble
+
 class (Finalizable a) => SwapWithFloatingLeg a where
   c_floatingLeg :: Ptr a -> Ptr CString -> IO (Ptr CLeg)
   c_floatingLegBPS :: Ptr a -> Ptr CString -> IO CDouble

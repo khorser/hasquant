@@ -1,6 +1,0 @@
-->Rate
-::Time
--- ^t
-::bool
-=false
--- ^extrapolate
