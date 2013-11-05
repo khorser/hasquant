@@ -5,6 +5,7 @@ module QuantLib.TermStructure.Trait
   , BlackVarSurfaceExtrapolation(..)
   , ExtBlackVarSurfaceExtrapolation(..)
   , CmsMarketCalibrationType(..)
+  , ProbabiltyTrait(..)
   )
 where
 
@@ -32,5 +33,9 @@ data CmsMarketCalibrationType =
     CmsMarketOnSpread | CmsMarketOnPrice | CmsMarketOnForwardCmsPrice
   deriving (Show, Eq, Enum)
 instance QLEnum CmsMarketCalibrationType
+
+data ProbabiltyTrait = SurvivalProbability | HazardRate | DefaultDensity
+  deriving (Show, Eq)
+instance QLLitEnum ProbabiltyTrait
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

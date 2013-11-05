@@ -79,4 +79,22 @@ QlDefaultProbabilityHelper* qlUpfrontCdsHelper(QlQuote* upfront, double runningS
   }
 }
 
+QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, double accuracy, char *trait, char* interpolator, char **e) {
+  try {
+    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux(Date(referenceDate), qlBuildVector(instruments, instrumentsLen), *arg(dayCounter), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jumpsLen, jumpDates), accuracy, trait, interpolator);
+    return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
+  } catch (std::exception& er) {
+    return handleException<QlDefaultProbabilityTermStructure*>(e, er);
+  }
+}
+
+QlDefaultProbabilityTermStructure* qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, double accuracy, char *trait, char* interpolator, char **e) {
+  try {
+    DefaultProbabilityTermStructure *ts = qlPiecewiseDefaultCurveAux1(settlementDays, *arg(calendar), qlBuildVector(instruments, instrumentsLen), *arg(dayCounter), qlBuildHandleVector(jumps, jumpsLen), qlDateVector(jumpsLen, jumpDates), accuracy, trait, interpolator);
+    return ret(new QlDefaultProbabilityTermStructure(alloc(ts)));
+  } catch (std::exception& er) {
+    return handleException<QlDefaultProbabilityTermStructure*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

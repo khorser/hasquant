@@ -25,6 +25,8 @@ extern "C" {
   void DLLEXPORT qlFreeDefaultProbabilityHelper(QlDefaultProbabilityHelper *o);
   QlDefaultProbabilityHelper* DLLEXPORT qlSpreadCdsHelper(QlQuote* runningSpread, Period* tenor, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, int settlesAccrual, int paysAtDefaultTime, char **e);
   QlDefaultProbabilityHelper* DLLEXPORT qlUpfrontCdsHelper(QlQuote* upfront, double runningSpread, Period* tenor, int settlementDays, Calendar* calendar, int frequency, int paymentConvention, int rule, DayCounter* dayCounter, double recoveryRate, QlYieldTermStructure* discountCurve, unsigned upfrontSettlementDays, int settlesAccrual, int paysAtDefaultTime, char **e);
+  QlDefaultProbabilityTermStructure* DLLEXPORT qlPiecewiseDefaultCurve(int referenceDate, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, double accuracy, char *trait, char* interpolator, char **e);
+  QlDefaultProbabilityTermStructure* DLLEXPORT qlPiecewiseDefaultCurve1(unsigned settlementDays, Calendar *calendar, unsigned instrumentsLen, QlDefaultProbabilityHelper** instruments, DayCounter* dayCounter, unsigned jumpsLen, QlQuote** jumps, int* jumpDates, double accuracy, char *trait, char* interpolator, char **e);
 #ifdef __cplusplus
 }
 #endif

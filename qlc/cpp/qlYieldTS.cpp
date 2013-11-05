@@ -66,6 +66,7 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
     }
     YieldTermStructure *ts = qlPiecewiseYieldCurveAux(Date(date),
       instr, *arg(dayCount), jumps, jumpDates, accuracy, trait, interpolator);
+    // TODO free ts if allocation below fails
     return ret(new QlYieldTermStructure(alloc(ts)));
   } catch (std::exception& er) {
     return handleException<QlYieldTermStructure *>(e, er);
@@ -78,7 +79,7 @@ typedef YieldTermStructure *(*curveBuilder)(
   const DayCounter& dayCount,
   const Calendar& cal,
   const std::vector<Handle<Quote> >& jumps,
-  const std::vector<Date> jumpDates,
+  const std::vector<Date>& jumpDates,
   const char *interpolator);
 
 QlYieldTermStructure *qlInterpolatedCurve(curveBuilder builder,

@@ -10,10 +10,12 @@ import Data.Either(rights)
 import QuantLib.Compounding
 import QuantLib.Instances
 import QuantLib.Instrument
+import QuantLib.Math.Interpolation
 import QuantLib.Quote
 import QuantLib.PricingEngine
 import QuantLib.Settings
 import QuantLib.TermStructure.Credit
+import QuantLib.TermStructure.Trait
 import QuantLib.TermStructure.Yield
 import QuantLib.Time.BusinessDayConvention
 import QuantLib.Time.Calendar
@@ -46,6 +48,8 @@ run = do
       q <- simpleQuote s >>= asQuote
       spreadCdsHelper q t 0 cal Quarterly Following TwentiethIMM dc recoveryRate ts True True) 
     (zip tenors quotedSpreads)
+
+  hs <- piecewiseDefaultCurve tod instruments dc [] 1.0e-12 HazardRate BackwardFlat
 
   return Result {
     r = 0

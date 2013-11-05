@@ -376,7 +376,7 @@ QlCoupon **qlLegCoupons(Leg *leg, unsigned *len, char **e) {
     if (i < leg->size()) {
       for (unsigned j = 0; j < i; ++j)
         delete coupons[j];
-      throw std::runtime_error("Not all cash flows are coupons");
+      QL_FAIL("Not all cash flows are coupons");
     }
     return coupons;
   } catch (std::exception& er) {

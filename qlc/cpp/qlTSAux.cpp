@@ -2,11 +2,13 @@
 
 using namespace QuantLib;
 
+// TODO use third termplate argument (Bootstrap)
+
 // extracted some template-heavy stuff into a separate file to speed up the compilation
 YieldTermStructure *qlPiecewiseYieldCurveAux(const Date &date,
   const std::vector<boost::shared_ptr<RateHelper> >& instr,
   const DayCounter& dayCount,
-  const std::vector<Handle<Quote> >& jumps, const std::vector<Date> jumpDates,
+  const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
   double accuracy, const char *trait, const char *interpolator) {
     if (!strcmp(trait, "Discount")) {
       if (!strcmp(interpolator, "BackwardFlat"))
@@ -157,7 +159,7 @@ YieldTermStructure *qlPiecewiseYieldCurveAux(const Date &date,
 YieldTermStructure *qlPiecewiseYieldCurveAux1(unsigned settl, const Calendar &cal,
   const std::vector<boost::shared_ptr<RateHelper> >& instr,
   const DayCounter& dayCount,
-  const std::vector<Handle<Quote> >& jumps, const std::vector<Date> jumpDates,
+  const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
   double accuracy, const char *trait, const char *interpolator) {
     if (!strcmp(trait, "Discount")) {
       if (!strcmp(interpolator, "BackwardFlat"))
@@ -311,7 +313,7 @@ YieldTermStructure *qlInterpolatedDiscountCurveAux(
   const DayCounter& dayCount,
   const Calendar& cal,
   const std::vector<Handle<Quote> >& jumps,
-  const std::vector<Date> jumpDates,
+  const std::vector<Date>& jumpDates,
   const char *interpolator) {
   if (!strcmp(interpolator, "BackwardFlat"))
     return new InterpolatedDiscountCurve<BackwardFlat>(dfDates, dfs, dayCount, cal, jumps, jumpDates);
@@ -367,7 +369,7 @@ YieldTermStructure *qlInterpolatedForwardCurveAux(
   const DayCounter& dayCount,
   const Calendar& cal,
   const std::vector<Handle<Quote> >& jumps,
-  const std::vector<Date> jumpDates,
+  const std::vector<Date>& jumpDates,
   const char *interpolator) {
   if (!strcmp(interpolator, "BackwardFlat"))
     return new InterpolatedForwardCurve<BackwardFlat>(fwdDates, fwds, dayCount, cal, jumps, jumpDates);
@@ -423,7 +425,7 @@ YieldTermStructure *qlInterpolatedZeroCurveAux(
   const DayCounter& dayCount,
   const Calendar& cal,
   const std::vector<Handle<Quote> >& jumps,
-  const std::vector<Date> jumpDates,
+  const std::vector<Date>& jumpDates,
   const char *interpolator) {
   if (!strcmp(interpolator, "BackwardFlat"))
     return new InterpolatedZeroCurve<BackwardFlat>(yDates, yields, dayCount, cal, jumps, jumpDates);
@@ -603,6 +605,247 @@ DefaultProbabilityTermStructure *qlInterpolatedSurvivalProbabilityCurveAux(
     return new InterpolatedSurvivalProbabilityCurve<LogCubic>(dates, probabilities, dayCounter, calendar, jumps, jumpDates, LogCubic(CubicInterpolation::Parabolic, true));
   else
     QL_FAIL("Unsupported interpolation " << interpolator);
+}
+
+DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const Date &referenceDate,
+    const std::vector<boost::shared_ptr<DefaultProbabilityHelper> >& instruments,
+    DayCounter& dayCounter,
+    const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
+    double accuracy, const char* trait, const char *interpolator) {
+  if (!strcmp(trait, "HazardRate"))
+  {
+    if (!strcmp(interpolator, "BackwardFlat"))
+      return new PiecewiseDefaultCurve<HazardRate, BackwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "ForwardFlat"))
+      return new PiecewiseDefaultCurve<HazardRate, ForwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Linear"))
+      return new PiecewiseDefaultCurve<HazardRate, Linear>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "LogLinear"))
+      return new PiecewiseDefaultCurve<HazardRate, LogLinear>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic Kruger"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "LogCubic Kruger"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "Cubic FritschButland"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "LogCubic FritschButland"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, true));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, true));
+    else
+      QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+  else if (!strcmp(trait, "SurvivalProbability"))
+  {
+    if (!strcmp(interpolator, "BackwardFlat"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, BackwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "ForwardFlat"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, ForwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Linear"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Linear>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "LogLinear"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogLinear>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic Kruger"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "LogCubic Kruger"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "Cubic FritschButland"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "LogCubic FritschButland"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, true));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, true));
+    else
+      QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+  else if (!strcmp(trait, "DefaultDensity"))
+  {
+    if (!strcmp(interpolator, "BackwardFlat"))
+      return new PiecewiseDefaultCurve<DefaultDensity, BackwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "ForwardFlat"))
+      return new PiecewiseDefaultCurve<DefaultDensity, ForwardFlat>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Linear"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Linear>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "LogLinear"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogLinear>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic Kruger"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "LogCubic Kruger"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "Cubic FritschButland"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "LogCubic FritschButland"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, true));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(referenceDate, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, true));
+    else
+      QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+  else
+    QL_FAIL("Unsupported trait " << trait);
+}
+
+QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
+    const QuantLib::Calendar& calendar,
+    const std::vector<boost::shared_ptr<DefaultProbabilityHelper> >& instruments,
+    DayCounter& dayCounter,
+    const std::vector<Handle<Quote> >& jumps, const std::vector<Date>& jumpDates,
+    double accuracy, const char* trait, const char *interpolator) {
+  if (!strcmp(trait, "HazardRate"))
+  {
+    if (!strcmp(interpolator, "BackwardFlat"))
+      return new PiecewiseDefaultCurve<HazardRate, BackwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "ForwardFlat"))
+      return new PiecewiseDefaultCurve<HazardRate, ForwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Linear"))
+      return new PiecewiseDefaultCurve<HazardRate, Linear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "LogLinear"))
+      return new PiecewiseDefaultCurve<HazardRate, LogLinear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic Kruger"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "LogCubic Kruger"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "Cubic FritschButland"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "LogCubic FritschButland"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<HazardRate, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, true));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<HazardRate, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, true));
+    else
+      QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+  else if (!strcmp(trait, "SurvivalProbability"))
+  {
+    if (!strcmp(interpolator, "BackwardFlat"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, BackwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "ForwardFlat"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, ForwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Linear"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Linear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "LogLinear"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogLinear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic Kruger"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "LogCubic Kruger"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "Cubic FritschButland"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "LogCubic FritschButland"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, true));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<SurvivalProbability, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, true));
+    else
+      QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+  else if (!strcmp(trait, "DefaultDensity"))
+  {
+    if (!strcmp(interpolator, "BackwardFlat"))
+      return new PiecewiseDefaultCurve<DefaultDensity, BackwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "ForwardFlat"))
+      return new PiecewiseDefaultCurve<DefaultDensity, ForwardFlat>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Linear"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Linear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "LogLinear"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogLinear>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy);
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
+    else if (!strcmp(interpolator, "Cubic Kruger"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "LogCubic Kruger"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Kruger));
+    else if (!strcmp(interpolator, "Cubic FritschButland"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "LogCubic FritschButland"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::FritschButland));
+    else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, Cubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, Cubic(CubicInterpolation::Parabolic, true));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, false));
+    else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
+      return new PiecewiseDefaultCurve<DefaultDensity, LogCubic>(settlementDays, calendar, instruments, dayCounter, jumps, jumpDates, accuracy, LogCubic(CubicInterpolation::Parabolic, true));
+    else
+      QL_FAIL("Unsupported interpolation " << interpolator);
+  }
+  else
+    QL_FAIL("Unsupported trait " << trait);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

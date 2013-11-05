@@ -13,6 +13,8 @@ module QuantLib.TermStructure.Credit
 
   , spreadCdsHelper
   , upfrontCdsHelper
+  , piecewiseDefaultCurve
+  , piecewiseDefaultCurve'
   )
 where
 
@@ -20,6 +22,7 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.TermStructure.Trait
 import QuantLib.Time.BusinessDayConvention
 import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.Frequency
@@ -135,5 +138,32 @@ upfrontCdsHelper = $(ffiCall 'upfrontCdsHelper) c_upfrontCdsHelper
 
 foreign import ccall safe "ql.h qlUpfrontCdsHelper"
   c_upfrontCdsHelper :: Ptr CQuote -> CDouble -> Ptr CPeriod -> CInt -> Ptr CCalendar -> CInt -> CInt -> CInt -> Ptr CDayCounter -> CDouble -> Ptr CYieldTermStructure -> CUInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CDefaultProbabilityHelper)
+
+piecewiseDefaultCurve :: Day -- ^referenceDate
+  -> [DefaultProbabilityHelper] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Quote, Day)] -- ^jumps, jumpDates
+  -> Double -- ^accuracy
+  -> ProbabiltyTrait
+  -> Interpolation -- ^i
+  -> IO DefaultProbabilityTermStructure
+piecewiseDefaultCurve = $(ffiCall 'piecewiseDefaultCurve) c_piecewiseDefaultCurve
+
+foreign import ccall safe "ql.h qlPiecewiseDefaultCurve"
+  c_piecewiseDefaultCurve :: CDate -> CUInt -> Ptr (Ptr CDefaultProbabilityHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
+
+piecewiseDefaultCurve' :: Word -- ^settlementDays
+  -> Calendar -- ^calendar
+  -> [DefaultProbabilityHelper] -- ^instruments
+  -> DayCounter -- ^dayCounter
+  -> [(Quote, Day)] -- ^jumps, ^jumpDates
+  -> Double -- ^accuracy
+  -> ProbabiltyTrait
+  -> Interpolation -- ^i
+  -> IO DefaultProbabilityTermStructure
+piecewiseDefaultCurve' = $(ffiCall 'piecewiseDefaultCurve') c_piecewiseDefaultCurve'
+
+foreign import ccall safe "ql.h qlPiecewiseDefaultCurve1"
+  c_piecewiseDefaultCurve' :: CUInt -> Ptr CCalendar -> CUInt -> Ptr (Ptr CDefaultProbabilityHelper) -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble -> CString -> CString -> Ptr CString -> IO (Ptr CDefaultProbabilityTermStructure)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

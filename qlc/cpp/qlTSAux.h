@@ -4,13 +4,15 @@
 #include <ql/termstructures/credit/interpolateddefaultdensitycurve.hpp>
 #include <ql/termstructures/credit/interpolatedhazardratecurve.hpp>
 #include <ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp>
+#include <ql/termstructures/credit/piecewisedefaultcurve.hpp>
+#include <ql/termstructures/credit/defaultprobabilityhelpers.hpp>
 
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux(
   const QuantLib::Date &date,
   const std::vector<boost::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
-  const std::vector<QuantLib::Date> jumpDates,
+  const std::vector<QuantLib::Date>& jumpDates,
   double accuracy, const char *trait, const char *interpolator);
 
 QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
@@ -18,7 +20,7 @@ QuantLib::YieldTermStructure *qlPiecewiseYieldCurveAux1(
   const std::vector<boost::shared_ptr<QuantLib::RateHelper> >& instr,
   const QuantLib::DayCounter& dayCount,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
-  const std::vector<QuantLib::Date> jumpDates,
+  const std::vector<QuantLib::Date>& jumpDates,
   double accuracy, const char *trait, const char *interpolator);
 
 QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
@@ -27,7 +29,7 @@ QuantLib::YieldTermStructure *qlInterpolatedDiscountCurveAux(
   const QuantLib::DayCounter& dayCount,
   const QuantLib::Calendar& cal,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
-  const std::vector<QuantLib::Date> jumpDates,
+  const std::vector<QuantLib::Date>& jumpDates,
   const char *interpolator);
 
 QuantLib::YieldTermStructure *qlInterpolatedForwardCurveAux(
@@ -36,7 +38,7 @@ QuantLib::YieldTermStructure *qlInterpolatedForwardCurveAux(
   const QuantLib::DayCounter& dayCount,
   const QuantLib::Calendar& cal,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
-  const std::vector<QuantLib::Date> jumpDates,
+  const std::vector<QuantLib::Date>& jumpDates,
   const char *interpolator);
 
 QuantLib::YieldTermStructure *qlInterpolatedZeroCurveAux(
@@ -45,7 +47,7 @@ QuantLib::YieldTermStructure *qlInterpolatedZeroCurveAux(
   const QuantLib::DayCounter& dayCount,
   const QuantLib::Calendar& cal,
   const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
-  const std::vector<QuantLib::Date> jumpDates,
+  const std::vector<QuantLib::Date>& jumpDates,
   const char *interpolator);
 
 // some credit stuff
@@ -75,5 +77,18 @@ QuantLib::DefaultProbabilityTermStructure *qlInterpolatedSurvivalProbabilityCurv
             const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps,
             const std::vector<QuantLib::Date>& jumpDates,
             const char *interpolator);
+
+QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux(const QuantLib::Date &referenceDate,
+    const std::vector<boost::shared_ptr<QuantLib::DefaultProbabilityHelper> >& instruments,
+    QuantLib::DayCounter& dayCounter,
+    const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps, const std::vector<QuantLib::Date>& jumpDates,
+    double accuracy, const char* trait, const char *interpolator);
+
+QuantLib::DefaultProbabilityTermStructure* qlPiecewiseDefaultCurveAux1(unsigned settlementDays,
+    const QuantLib::Calendar& calendar,
+    const std::vector<boost::shared_ptr<QuantLib::DefaultProbabilityHelper> >& instruments,
+    QuantLib::DayCounter& dayCounter,
+    const std::vector<QuantLib::Handle<QuantLib::Quote> >& jumps, const std::vector<QuantLib::Date>& jumpDates,
+    double accuracy, const char* trait, const char *interpolator);
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
