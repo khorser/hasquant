@@ -94,6 +94,7 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
+-- enums and a foreign ptr in the same place look rather messy
 reifyEnumOrForeignPtr :: (Show a) => Name -> Maybe a -> Maybe a -> a -> Q a
 reifyEnumOrForeignPtr n e1 e2 p = do
   isEnum <- elem n <$> qlEnums ''QLEnum

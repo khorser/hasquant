@@ -65,6 +65,9 @@ use type magic to ensure Day is always valid QuantLib date
 
 scary error messages when some header is not included
 
+idea: custom name handling to check types of C functions with their FFI desc
+generate information about casting hierarchy
+
 -- workflow for code generation:
 generate doxygen docs (you can find the copy in `doxygen` dir)
 convert to txt (see `doxygen-txt`)

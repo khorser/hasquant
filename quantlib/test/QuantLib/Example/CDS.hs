@@ -5,7 +5,7 @@ module QuantLib.Example.CDS
   )
 where
 
-import Control.Monad(forM)
+import Control.Monad(forM, (>=>))
 import Data.Either(rights)
 import Data.Time.Calendar
 
@@ -63,20 +63,15 @@ run = do
 
   pQ <- fromFrequency Quarterly
   sched <- forM maturities
-    $ \m -> schedule (Just tod) m pQ cal Unadjusted Unadjusted TwentiethIMM False Nothing Nothing
+    $ \m -> schedule (Just tod) m pQ cal Following Unadjusted TwentiethIMM False Nothing Nothing
+  let d = map dates sched
+  print d
   cds <- forM sched
     $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing claim
 
-  _ <- mapM
-    (\c -> do
-      i <- asInstrument c
-      setPricingEngine i eng
-      fairSpread c >>= print
-      npv i >>= print
-      defaultLegNPV c >>= print
-      couponLegNPV c >>= print
-      print "--")
-    cds
+  mapM
+    (\c -> (asInstrument c >>= (`setPricingEngine` eng)) >> mapM ($ c) [fairSpread, asInstrument >=> npv, defaultLegNPV, couponLegNPV])
+    cds >>= print
 
   return Result {
     r = 0
