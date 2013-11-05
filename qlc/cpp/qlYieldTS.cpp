@@ -486,4 +486,26 @@ QlYieldTermStructure* qlImpliedTermStructure(QlYieldTermStructure* x0, int refer
   }
 }
 
+QlYieldTermStructure* qlDriftTermStructure(QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlBlackVolTermStructure* blackVolTS, char **e) {
+  try {
+    return ret(new QlYieldTermStructure(alloc(new DriftTermStructure(Handle<YieldTermStructure>(*arg(riskFreeTS)), Handle<YieldTermStructure>(*arg(dividendTS)), Handle<BlackVolTermStructure>(*arg(blackVolTS))))));
+  } catch (std::exception& er) {
+    return handleException<QlYieldTermStructure*>(e, er);
+  }
+}
+QlYieldTermStructure* qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, int* dates, int comp, int freq, DayCounter* dc, char **e) {
+  try {
+    return ret(new QlYieldTermStructure(alloc(new PiecewiseZeroSpreadedTermStructure(Handle<YieldTermStructure>(*arg(x0)), qlBuildHandleVector(spreads, spreadsLen), qlDateVector(datesLen, dates), (Compounding)comp, (Frequency)freq, *arg(dc)))));
+  } catch (std::exception& er) {
+    return handleException<QlYieldTermStructure*>(e, er);
+  }
+}
+QlYieldTermStructure* qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e) {
+  try {
+    return ret(new QlYieldTermStructure(alloc(new QuantoTermStructure(Handle<YieldTermStructure>(*arg(underlyingDividendTS)), Handle<YieldTermStructure>(*arg(riskFreeTS)), Handle<YieldTermStructure>(*arg(foreignRiskFreeTS)), Handle<BlackVolTermStructure>(*arg(underlyingBlackVolTS)), strike, Handle<BlackVolTermStructure>(*arg(exchRateBlackVolTS)), exchRateATMlevel, underlyingExchRateCorrelation))));
+  } catch (std::exception& er) {
+    return handleException<QlYieldTermStructure*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

@@ -98,6 +98,9 @@ extern "C" {
   void DLLEXPORT qlFreeTermStructure(QlTermStructure *o);
   QlTermStructure* DLLEXPORT qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o);
   QlYieldTermStructure* DLLEXPORT qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e);
+  QlYieldTermStructure* DLLEXPORT qlDriftTermStructure(QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* dividendTS, QlBlackVolTermStructure* blackVolTS, char **e);
+  QlYieldTermStructure* DLLEXPORT qlPiecewiseZeroSpreadedTermStructure(QlYieldTermStructure* x0, unsigned spreadsLen, QlQuote** spreads, int* dates, int comp, int freq, DayCounter* dc, char **e);
+  QlYieldTermStructure* DLLEXPORT qlQuantoTermStructure(QlYieldTermStructure* underlyingDividendTS, QlYieldTermStructure* riskFreeTS, QlYieldTermStructure* foreignRiskFreeTS, QlBlackVolTermStructure* underlyingBlackVolTS, double strike, QlBlackVolTermStructure* exchRateBlackVolTS, double exchRateATMlevel, double underlyingExchRateCorrelation, char **e);
 #ifdef __cplusplus
 }
 #endif

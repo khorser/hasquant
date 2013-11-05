@@ -52,6 +52,10 @@ module QuantLib.TermStructure.Yield
 
   , referenceDate
   , impliedTermStructure
+
+  , driftTermStructure
+  , piecewiseZeroSpreadedTermStructure
+  , quantoTermStructure
   )
 where
 
@@ -557,5 +561,39 @@ impliedTermStructure = $(ffiCall 'impliedTermStructure) c_impliedTermStructure
 
 foreign import ccall safe "ql.h qlImpliedTermStructure"
   c_impliedTermStructure :: Ptr CYieldTermStructure -> CDate -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+driftTermStructure :: YieldTermStructure -- ^riskFreeTS
+  -> YieldTermStructure -- ^dividendTS
+  -> BlackVolTermStructure -- ^blackVolTS
+  -> IO YieldTermStructure
+driftTermStructure = $(ffiCall 'driftTermStructure) c_driftTermStructure
+
+foreign import ccall safe "ql.h qlDriftTermStructure"
+  c_driftTermStructure :: Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CBlackVolTermStructure -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+piecewiseZeroSpreadedTermStructure :: YieldTermStructure
+  -> [(Quote, Day)] -- ^spreads, ^dates
+  -> Compounding -- ^comp
+  -> Frequency -- ^freq
+  -> DayCounter -- ^dc
+  -> IO YieldTermStructure
+piecewiseZeroSpreadedTermStructure = $(ffiCall 'piecewiseZeroSpreadedTermStructure) c_piecewiseZeroSpreadedTermStructure
+
+foreign import ccall safe "ql.h qlPiecewiseZeroSpreadedTermStructure"
+  c_piecewiseZeroSpreadedTermStructure :: Ptr CYieldTermStructure -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CYieldTermStructure)
+
+quantoTermStructure :: YieldTermStructure -- ^underlyingDividendTS
+  -> YieldTermStructure -- ^riskFreeTS
+  -> YieldTermStructure -- ^foreignRiskFreeTS
+  -> BlackVolTermStructure -- ^underlyingBlackVolTS
+  -> Double -- ^strike
+  -> BlackVolTermStructure -- ^exchRateBlackVolTS
+  -> Double -- ^exchRateATMlevel
+  -> Double -- ^underlyingExchRateCorrelation
+  -> IO YieldTermStructure
+quantoTermStructure = $(ffiCall 'quantoTermStructure) c_quantoTermStructure
+
+foreign import ccall safe "ql.h qlQuantoTermStructure"
+  c_quantoTermStructure :: Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CYieldTermStructure -> Ptr CBlackVolTermStructure -> CDouble -> Ptr CBlackVolTermStructure -> CDouble -> CDouble -> Ptr CString -> IO (Ptr CYieldTermStructure)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

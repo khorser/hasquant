@@ -1,7 +1,0 @@
-->
-::const Handle< YieldTermStructure > &
--- ^riskFreeTS
-::const Handle< YieldTermStructure > &
--- ^dividendTS
-::const Handle< BlackVolTermStructure > &
--- ^blackVolTS
