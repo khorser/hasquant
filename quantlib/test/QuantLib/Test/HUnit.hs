@@ -209,8 +209,8 @@ test_convertibleBond = do
   _ <- Settings.keepingSettings' ConvertibleBondExample.run
   assertBool True
 
-test_CallableBond :: IO ()
-test_CallableBond = do
+test_callableBond :: IO ()
+test_callableBond = do
   _ <- Settings.keepingSettings' CallableBondExample.run
   assertBool True
 

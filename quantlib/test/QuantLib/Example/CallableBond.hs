@@ -12,8 +12,8 @@ import Data.Time.Calendar
 import QuantLib.Compounding
 import QuantLib.Instances
 import QuantLib.Instrument
+import QuantLib.Instrument.Bond
 import QuantLib.Instrument.CallabilityType
-import QuantLib.InterestRate
 import QuantLib.Model
 import QuantLib.Quote
 import QuantLib.PricingEngine
@@ -51,7 +51,9 @@ run = do
   cal <- unitedStatesGovernmentBond
   sch <- schedule (Just $ 16 `september` 2004) (15 `september` 2012) pQ cal Unadjusted Unadjusted Backward False Nothing Nothing
 
-  hw0 <- hullWhite flatRate 0.03 qlEpsilon
+  b <- callableFixedRateBond 3 100.0 sch [0.0465] bbdc Unadjusted 100.0 (Just $ 16 `september` 2004) callSchedule >>= asBond
+
+  _ <- mapM (priceBond flatRate bbdc b) [qlEpsilon, 0.01, 0.03, 0.06, 0.12]
 
   return Result {
     r = 0
@@ -65,5 +67,11 @@ run = do
           return (n : a)
         buildSchedule [] _ = error "Impossible happened"
 
+        priceBond ts dc b sigma = do
+          hw <- hullWhite ts 0.03 sigma >>= asOneFactorAffineModel >>= asShortRateModel
+          engine <- treeCallableFixedRateBondEngine hw 40 Nothing
+          asInstrument b >>= (`setPricingEngine` engine)
+          cleanPriceNow b >>= print
+          yield b dc Compounded Quarterly 1.0e-8 1000 >>= print
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

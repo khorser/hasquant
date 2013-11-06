@@ -526,4 +526,40 @@ QlBond* qlCallableBondAsBond(QlCallableBond *o) { return ret(new QlBond(*arg(o))
 void qlFreeConvertibleBond(QlConvertibleBond *o) { del(o); }
 QlBond* qlConvertibleBondAsBond(QlConvertibleBond *o) { return ret(new QlBond(*arg(o))); }
 
+QlCallableBond* qlCallableFixedRateBond(unsigned settlementDays, double faceAmount, Schedule* schedule, unsigned couponsLen, double* coupons, DayCounter* accrualDayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e) {
+  try {
+    return ret(new QlCallableBond(alloc(new CallableFixedRateBond(settlementDays, faceAmount, *arg(schedule), std::vector<double>(coupons, coupons+couponsLen), *arg(accrualDayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlBuildVector(putCallSchedule, putCallScheduleLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlCallableBond*>(e, er);
+  }
+}
+QlCallableBond* qlCallableZeroCouponBond(unsigned settlementDays, double faceAmount, Calendar* calendar, int maturityDate, DayCounter* dayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e) {
+  try {
+    return ret(new QlCallableBond(alloc(new CallableZeroCouponBond(settlementDays, faceAmount, *arg(calendar), Date(maturityDate), *arg(dayCounter), (BusinessDayConvention)paymentConvention, redemption, qlNullableDate(issueDate), qlBuildVector(putCallSchedule, putCallScheduleLen)))));
+  } catch (std::exception& er) {
+    return handleException<QlCallableBond*>(e, er);
+  }
+}
+QlConvertibleBond* qlConvertibleFixedCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, unsigned couponsLen, double* coupons, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
+  try {
+    return ret(new QlConvertibleBond(alloc(new ConvertibleFixedCouponBond(*arg(exercise), conversionRatio, qlBuildVector(dividends, dividendsLen), qlBuildVector(callability, callabilityLen), Handle<Quote>(*arg(creditSpread)), Date(issueDate), settlementDays, std::vector<double>(coupons, coupons+couponsLen), *arg(dayCounter), *arg(schedule), redemption))));
+  } catch (std::exception& er) {
+    return handleException<QlConvertibleBond*>(e, er);
+  }
+}
+QlConvertibleBond* qlConvertibleFloatingRateBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, QlIborIndex* index, unsigned fixingDays, unsigned spreadsLen, double* spreads, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
+  try {
+    return ret(new QlConvertibleBond(alloc(new ConvertibleFloatingRateBond(*arg(exercise), conversionRatio, qlBuildVector(dividends, dividendsLen), qlBuildVector(callability, callabilityLen), Handle<Quote>(*arg(creditSpread)), Date(issueDate), settlementDays, (*arg(index)), fixingDays, std::vector<double>(spreads, spreads+spreadsLen), *arg(dayCounter), *arg(schedule), redemption))));
+  } catch (std::exception& er) {
+    return handleException<QlConvertibleBond*>(e, er);
+  }
+}
+QlConvertibleBond* qlConvertibleZeroCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e) {
+  try {
+    return ret(new QlConvertibleBond(alloc(new ConvertibleZeroCouponBond(*arg(exercise), conversionRatio, qlBuildVector(dividends, dividendsLen), qlBuildVector(callability, callabilityLen), Handle<Quote>(*arg(creditSpread)), Date(issueDate), settlementDays, *arg(dayCounter), *arg(schedule), redemption))));
+  } catch (std::exception& er) {
+    return handleException<QlConvertibleBond*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
