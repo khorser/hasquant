@@ -12,6 +12,7 @@ where
 
 import Control.Applicative((<$>), (<*>))
 import Control.Monad(liftM)
+import Data.Maybe(fromMaybe)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
@@ -95,19 +96,17 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
--- enums and a foreign ptr in the same place look rather messy
+-- handling of enums and a foreign ptr in the same place looks rather messy
 reifyEnumOrForeignPtr :: (Show a) => Name -> Maybe a -> Maybe a -> a -> Q a
 reifyEnumOrForeignPtr n e1 e2 p = do
   isEnum <- elem n <$> qlEnums ''QLEnum
   isLitEnum <- elem n <$> qlEnums ''QLLitEnum
-  case e1 of
-    Just e | isEnum -> return e
-    Nothing | isEnum -> fail $ "Unexpected enum: " ++ show n
-    _ ->
-      case e2 of
-        Just e | isLitEnum -> return e
-        Nothing | isLitEnum -> fail $ "Unexpected literal enum: " ++ show n
-        _ -> reifyForeignPtr n p
+  if isEnum
+    then return $ fromMaybe (error "Enum not expected here") e1
+    else
+      if isLitEnum
+        then return $ fromMaybe (error "Literal enum not expected here") e2
+        else reifyForeignPtr n p
 
 nameToTop :: Name -> TopArg
 nameToTop n | n == ''Int = IntA
@@ -117,7 +116,7 @@ nameToTop n | n == ''Bool = BoolA
 nameToTop n | n == ''String = StringA
 nameToTop n | n == ''Double = DoubleA
 nameToTop n | n == ''YearFraction = YearFractionA
-nameToTop n = error $ "Not supported top type: " ++ show n
+nameToTop n = error $ "Unsupported top type: " ++ show n
 
 nestedNameToTop :: Name -> Q NestedArg
 nestedNameToTop n | n == ''Day = return DayN
