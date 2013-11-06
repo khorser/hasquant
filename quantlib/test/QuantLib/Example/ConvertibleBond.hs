@@ -74,17 +74,13 @@ run = do
   vts <- blackConstantVol settl cal volQ dc
 
   bsmProc <- blackScholesMertonProcess underQ dts ts vts EulerDiscretization
-  eng1 <- binomialConvertibleEngine JarrowRudd bsmProc timeSteps 
-  eng2 <- binomialConvertibleEngine JarrowRudd bsmProc timeSteps 
 
   euBond <- convertibleFixedCouponBond euEx conversionRatio dividends callabilities creditSpreadQ
     issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
-  setPricingEngine euBond eng1
-
   amBond <- convertibleFixedCouponBond amEx conversionRatio dividends callabilities creditSpreadQ
     issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
-  setPricingEngine amBond eng2
-  mapM npv [euBond, amBond] >>= print
+
+  _ <- mapM (priceBonds euBond amBond bsmProc) [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
 
   return Result {
     r = 0
@@ -100,10 +96,17 @@ run = do
         redemption = 100.0
         conversionRatio = redemption/under -- at the money
         timeSteps = 801
-        coupons = [1, 0.05]
+        coupons = [0.05]
         callLength = [2, 4] -- Call dates, years 2, 4.
         putLength = [3] -- Put dates year 3
         callPricesV = [101.5, 100.85]
         putPricesV = [105.0]
+
+        priceBonds eu am p b = do
+          eng1 <- binomialConvertibleEngine b p timeSteps 
+          eng2 <- binomialConvertibleEngine b p timeSteps 
+          setPricingEngine eu eng1
+          setPricingEngine am eng2
+          mapM npv [eu, am] >>= print
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
