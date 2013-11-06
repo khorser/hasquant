@@ -60,21 +60,20 @@ run = do
   dividends <- mapM (Leg.fixedDividend 1.0) divDates
   dc <- actual365Fixed
 
-  euEx <- europeanExercise exec >>= asExercise
-  amEx <- americanExercise settl exec False >>= asExercise
-
   underQ <- simpleQuote under >>= asQuote
   riskFreeQ <- simpleQuote riskFreeRate >>= asQuote
   divQ <- simpleQuote dividendYield >>= asQuote
   volQ <- simpleQuote vol >>= asQuote
   creditSpreadQ <- simpleQuote spreadRate >>= asQuote
 
-  ts <- flatForward settl riskFreeQ dc Compounded Annual
-  dts <- flatForward settl divQ dc Compounded Annual
+  ts <- flatForward settl riskFreeQ dc Continuous Annual
+  dts <- flatForward settl divQ dc Continuous Annual
   vts <- blackConstantVol settl cal volQ dc
 
   bsmProc <- blackScholesMertonProcess underQ dts ts vts EulerDiscretization
 
+  euEx <- europeanExercise exec >>= asExercise
+  amEx <- americanExercise settl exec False >>= asExercise
   euBond <- convertibleFixedCouponBond euEx conversionRatio dividends callabilities creditSpreadQ
     issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
   amBond <- convertibleFixedCouponBond amEx conversionRatio dividends callabilities creditSpreadQ
