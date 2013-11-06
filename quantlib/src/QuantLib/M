@@ -19,6 +19,7 @@ OBJS=cpp/qlBond.o \
 	cpp/qlOption.o \
 	cpp/qlPeriod.o \
 	cpp/qlPricingEngine.o \
+	cpp/qlPricingEngineAux.o \
 	cpp/qlProcess.o \
 	cpp/qlQuote.o \
 	cpp/qlSchedule.o \
@@ -103,8 +104,11 @@ cpp/qlOption.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlOption.h $(QLCSRC)/qlOption.cpp
 cpp/qlPeriod.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlPeriod.h $(QLCSRC)/qlPeriod.cpp
 	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlPeriod.o $(QLCSRC)/qlPeriod.cpp
 
-cpp/qlPricingEngine.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlPricingEngine.h $(QLCSRC)/qlPricingEngine.cpp
+cpp/qlPricingEngine.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlPricingEngine.h $(QLCSRC)/qlPricingEngine.cpp $(QLCSRC)/qlPricingEngineAux.h
 	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlPricingEngine.o $(QLCSRC)/qlPricingEngine.cpp
+
+cpp/qlPricingEngineAux.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlPricingEngineAux.h $(QLCSRC)/qlPricingEngineAux.cpp
+	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlPricingEngineAux.o $(QLCSRC)/qlPricingEngineAux.cpp
 
 cpp/qlProcess.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlProcess.h $(QLCSRC)/qlProcess.cpp
 	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlProcess.o $(QLCSRC)/qlProcess.cpp

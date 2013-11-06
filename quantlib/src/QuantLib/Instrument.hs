@@ -52,7 +52,6 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.PositionType
-import QuantLib.Time.BusinessDayConvention
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlInstrumentNPV"

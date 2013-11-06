@@ -36,6 +36,7 @@ Extra-source-files:
               cpp/qlOption.cpp
               cpp/qlPeriod.cpp
               cpp/qlPricingEngine.cpp
+              cpp/qlPricingEngineAux.cpp
               cpp/qlProcess.cpp
               cpp/qlQuote.cpp
               cpp/qlSchedule.cpp
@@ -47,6 +48,7 @@ Extra-source-files:
               cpp/qlTSAux.cpp
               cpp/qlaux.h
               cpp/qlTSAux.h
+              cpp/qlPricingEngineAux.h
 
 -- a hack to allow use of quantlib with `cabal-dev ghci'
 -- since I can't be bothered whose shortcoming it is: cabal-install or cabal-dev
@@ -111,6 +113,7 @@ Library
               cpp/qlOption.cpp
               cpp/qlPeriod.cpp
               cpp/qlPricingEngine.cpp
+              cpp/qlPricingEngineAux.cpp
               cpp/qlProcess.cpp
               cpp/qlQuote.cpp
               cpp/qlSchedule.cpp

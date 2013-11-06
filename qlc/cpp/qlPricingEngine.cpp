@@ -2,15 +2,14 @@
 #include <ql/experimental/variancegamma/all.hpp>
 #include <ql/legacy/libormarketmodels/lfmswaptionengine.hpp>
 #include <ql/experimental/math/zigguratrng.hpp>
-#include <ql/experimental/lattices/extendedbinomialtree.hpp>
 #include <ql/methods/finitedifferences/expliciteuler.hpp>
 #include <ql/methods/finitedifferences/impliciteuler.hpp>
 #include <ql/experimental/callablebonds/blackcallablebondengine.hpp>
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
-#include <ql/experimental/convertiblebonds/binomialconvertibleengine.hpp>
 
 #include "qlaux.h"
 #include "qlPricingEngine.h"
+#include "qlPricingEngineAux.h"
 
 using namespace QuantLib;
 
@@ -1005,36 +1004,7 @@ QlPricingEngine* qlMCPerformanceEngine1(const char *rngtrait, QlGeneralizedBlack
 
 QlPricingEngine* qlBinomialVanillaEngine(const char *tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
   try {
-    if (!strcmp(tree, "JarrowRudd"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<JarrowRudd>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "CoxRossRubinstein"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<CoxRossRubinstein>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "AdditiveEQPBinomialTree"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<AdditiveEQPBinomialTree>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "Trigeorgis"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<Trigeorgis>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "Tian"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<Tian>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "LeisenReimer"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<LeisenReimer>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "Joshi4"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<Joshi4>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedJarrowRudd"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedJarrowRudd>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedCoxRossRubinstein"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedCoxRossRubinstein>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedAdditiveEQPBinomialTree"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedAdditiveEQPBinomialTree>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedTrigeorgis"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedTrigeorgis>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedTian"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedTian>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedLeisenReimer"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedLeisenReimer>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedJoshi4"))
-      return ret(new QlPricingEngine(alloc(new BinomialVanillaEngine<ExtendedJoshi4>(*arg(process), timeSteps))));
-    else
-      QL_FAIL("Unknown Binomial Tree "<< tree);
+    return ret(new QlPricingEngine(alloc(qlBinomialVanillaEngineAux(tree, *arg(process), timeSteps))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
@@ -1085,36 +1055,7 @@ QlPricingEngine* qlFDEuropeanEngine(const char *fdscheme, QlGeneralizedBlackScho
 
 QlPricingEngine* qlBinomialConvertibleEngine(const char *tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
   try {
-    if (!strcmp(tree, "JarrowRudd"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<JarrowRudd>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "CoxRossRubinstein"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<CoxRossRubinstein>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "AdditiveEQPBinomialTree"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<AdditiveEQPBinomialTree>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "Trigeorgis"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<Trigeorgis>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "Tian"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<Tian>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "LeisenReimer"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<LeisenReimer>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "Joshi4"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<Joshi4>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedJarrowRudd"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedJarrowRudd>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedCoxRossRubinstein"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedCoxRossRubinstein>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedAdditiveEQPBinomialTree"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedAdditiveEQPBinomialTree>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedTrigeorgis"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedTrigeorgis>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedTian"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedTian>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedLeisenReimer"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedLeisenReimer>(*arg(process), timeSteps))));
-    else if (!strcmp(tree, "ExtendedJoshi4"))
-      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedJoshi4>(*arg(process), timeSteps))));
-    else
-      QL_FAIL("Unknown Binomial Tree "<< tree);
+    return ret(new QlPricingEngine(alloc(qlBinomialConvertibleEngineAux(tree, *arg(process), timeSteps))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
