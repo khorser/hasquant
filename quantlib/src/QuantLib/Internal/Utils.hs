@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,ScopedTypeVariables,FlexibleContexts #-}
+{-# LANGUAGE MultiParamTypeClasses,GeneralizedNewtypeDeriving,ScopedTypeVariables,FlexibleContexts,CPP #-}
 module QuantLib.Internal.Utils
   (
     signalError
@@ -35,6 +35,10 @@ module QuantLib.Internal.Utils
   )
 
 where
+
+#if __GLASGOW_HASKELL__ < 706
+import Prelude hiding(catch)
+#endif
 
 import Control.Exception(throw, catch)
 import Data.Functor((<$>))
