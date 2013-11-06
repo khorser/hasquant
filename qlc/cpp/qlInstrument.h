@@ -80,10 +80,16 @@ extern "C" {
   double DLLEXPORT qlCapFloorImpliedVolatility(QlCapFloor* o, double price, QlYieldTermStructure* disc, double guess, double accuracy, unsigned maxEvaluations, double minVol, double maxVol, char **e);
   QlCapFloor* DLLEXPORT qlCapFloorOptionlet(QlCapFloor* o, unsigned n, char **e);
 
-  void DLLEXPORT qlFreeCallability(Callability *o);
+  void DLLEXPORT qlFreeCallability(QlCallability *o);
   void DLLEXPORT qlFreeCallabilityPrice(QlCallabilityPrice *o);
   QlCallabilityPrice* DLLEXPORT qlCallabilityPrice(double amount, int type, char **e);
-  Callability* DLLEXPORT qlCallability(QlCallabilityPrice* price, int type, int date, char **e);
+  QlCallability* DLLEXPORT qlCallability(QlCallabilityPrice* price, int type, int date, char **e);
+
+  QlCallableBond* DLLEXPORT qlCallableFixedRateBond(unsigned settlementDays, double faceAmount, Schedule* schedule, unsigned couponsLen, double* coupons, DayCounter* accrualDayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e);
+  QlCallableBond* DLLEXPORT qlCallableZeroCouponBond(unsigned settlementDays, double faceAmount, Calendar* calendar, int maturityDate, DayCounter* dayCounter, int paymentConvention, double redemption, int issueDate, unsigned putCallScheduleLen, QlCallability** putCallSchedule, char **e);
+  QlConvertibleBond* DLLEXPORT qlConvertibleFixedCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, unsigned couponsLen, double* coupons, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
+  QlConvertibleBond* DLLEXPORT qlConvertibleFloatingRateBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, QlIborIndex* index, unsigned fixingDays, unsigned spreadsLen, double* spreads, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
+  QlConvertibleBond* DLLEXPORT qlConvertibleZeroCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
 #ifdef __cplusplus
 }
 #endif

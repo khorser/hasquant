@@ -337,7 +337,7 @@ sub type {
   }
   elsif ($t ~~ ['Calendar', 'DayCounter', 'Currency', 'Leg', 'Schedule', 'Period',
       'InterestRate', 'FittedBondDiscountCurveFittingMethod', 'Rounding', 'Constraint', 'OptimizationMethod',
-      'EndCriteria', 'FdmSchemeDesc', 'TimeGrid', 'Dividend']) {
+      'EndCriteria', 'FdmSchemeDesc', 'TimeGrid']) {
     if (not $vect) {
       return ("$t*", "Ptr C$t", $t, '*arg(%)', "alloc(new %)", 1, '');
     }

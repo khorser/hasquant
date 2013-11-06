@@ -394,27 +394,28 @@ int qlCouponAccrualStartDate(QlCoupon* o, char **e) {
   }
 }
 
-void qlFreeDividend(Dividend *o) { del(o); }
+void qlFreeDividend(QlDividend *o) { del(o); }
 
-Dividend* qlFixedDividend(double amount, int date, char **e) {
+QlDividend* qlFixedDividend(double amount, int date, char **e) {
   try {
-    return alloc(new FixedDividend(amount, Date(date)));
+    return ret(new QlDividend(alloc(new FixedDividend(amount, Date(date)))));
   } catch (std::exception& er) {
-    return handleException<Dividend*>(e, er);
+    return handleException<QlDividend*>(e, er);
   }
 }
-Dividend* qlFractionalDividend1(double rate, double nominal, int date, char **e) {
+QlDividend* qlFractionalDividend1(double rate, double nominal, int date, char **e) {
   try {
-    return alloc(new FractionalDividend(rate, nominal, Date(date)));
+    return ret(new QlDividend(alloc(new FractionalDividend(rate, nominal, Date(date)))));
   } catch (std::exception& er) {
-    return handleException<Dividend*>(e, er);
+    return handleException<QlDividend*>(e, er);
   }
 }
-Dividend* qlFractionalDividend(double rate, int date, char **e) {
+QlDividend* qlFractionalDividend(double rate, int date, char **e) {
   try {
-    return alloc(new FractionalDividend(rate, Date(date)));
+    return ret(new QlDividend(alloc(new FractionalDividend(rate, Date(date)))));
   } catch (std::exception& er) {
-    return handleException<Dividend*>(e, er);
+    return handleException<QlDividend*>(e, er);
   }
 }
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

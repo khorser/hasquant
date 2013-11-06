@@ -41,6 +41,11 @@ module QuantLib.Instrument
 
   , callabilityPrice
   , callability
+  , callableFixedRateBond
+  , callableZeroCouponBond
+  , convertibleFixedCouponBond
+  , convertibleFloatingRateBond
+  , convertibleZeroCouponBond
   )
 where
 
@@ -52,6 +57,7 @@ import QuantLib.Internal.Date
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.PositionType
+import QuantLib.Time.BusinessDayConvention
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlInstrumentNPV"
@@ -379,5 +385,87 @@ callability = $(ffiCall 'callability) c_callability
 
 foreign import ccall safe "ql.h qlCallability"
   c_callability :: Ptr CCallabilityPrice -> CInt -> CDate -> Ptr CString -> IO (Ptr CCallability)
+
+callableFixedRateBond :: Word -- ^settlementDays
+  -> Double -- ^faceAmount
+  -> Schedule -- ^schedule
+  -> [Double] -- ^coupons
+  -> DayCounter -- ^accrualDayCounter
+  -> BusinessDayConvention -- ^paymentConvention
+  -> Double -- ^redemption
+  -> Maybe Day -- ^issueDate
+  -> [Callability] -- ^putCallSchedule
+  -> IO CallableBond
+callableFixedRateBond = $(ffiCall 'callableFixedRateBond) c_callableFixedRateBond
+
+foreign import ccall safe "ql.h qlCallableFixedRateBond"
+  c_callableFixedRateBond :: CUInt -> CDouble -> Ptr CSchedule -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CDouble -> CDate -> CUInt -> Ptr (Ptr CCallability) -> Ptr CString -> IO (Ptr CCallableBond)
+
+callableZeroCouponBond :: Word -- ^settlementDays
+  -> Double -- ^faceAmount
+  -> Calendar -- ^calendar
+  -> Day -- ^maturityDate
+  -> DayCounter -- ^dayCounter
+  -> BusinessDayConvention -- ^paymentConvention
+  -> Double -- ^redemption
+  -> Maybe Day -- ^issueDate
+  -> [Callability] -- ^putCallSchedule
+  -> IO CallableBond
+callableZeroCouponBond = $(ffiCall 'callableZeroCouponBond) c_callableZeroCouponBond
+
+foreign import ccall safe "ql.h qlCallableZeroCouponBond"
+  c_callableZeroCouponBond :: CUInt -> CDouble -> Ptr CCalendar -> CDate -> Ptr CDayCounter -> CInt -> CDouble -> CDate -> CUInt -> Ptr (Ptr CCallability) -> Ptr CString -> IO (Ptr CCallableBond)
+
+convertibleFixedCouponBond :: Exercise -- ^exercise
+  -> Double -- ^conversionRatio
+  -> [Dividend] -- ^dividends
+  -> [Callability] -- ^callability
+  -> Quote -- ^creditSpread
+  -> Day -- ^issueDate
+  -> Word -- ^settlementDays
+  -> [Double] -- ^coupons
+  -> DayCounter -- ^dayCounter
+  -> Schedule -- ^schedule
+  -> Double -- ^redemption
+  -> IO ConvertibleBond
+convertibleFixedCouponBond = $(ffiCall 'convertibleFixedCouponBond) c_convertibleFixedCouponBond
+
+foreign import ccall safe "ql.h qlConvertibleFixedCouponBond"
+  c_convertibleFixedCouponBond :: Ptr CExercise -> CDouble -> CUInt -> Ptr (Ptr CDividend) -> CUInt -> Ptr (Ptr CCallability) -> Ptr CQuote -> CDate -> CUInt -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> Ptr CSchedule -> CDouble -> Ptr CString -> IO (Ptr CConvertibleBond)
+
+convertibleFloatingRateBond :: Exercise -- ^exercise
+  -> Double -- ^conversionRatio
+  -> [Dividend] -- ^dividends
+  -> [Callability] -- ^callability
+  -> Quote -- ^creditSpread
+  -> Day -- ^issueDate
+  -> Word -- ^settlementDays
+  -> IborIndex -- ^index
+  -> Word -- ^fixingDays
+  -> [Double] -- ^spreads
+  -> DayCounter -- ^dayCounter
+  -> Schedule -- ^schedule
+  -> Double -- ^redemption
+  -> IO ConvertibleBond
+convertibleFloatingRateBond = $(ffiCall 'convertibleFloatingRateBond) c_convertibleFloatingRateBond
+
+foreign import ccall safe "ql.h qlConvertibleFloatingRateBond"
+  c_convertibleFloatingRateBond :: Ptr CExercise -> CDouble -> CUInt -> Ptr (Ptr CDividend) -> CUInt -> Ptr (Ptr CCallability) -> Ptr CQuote -> CDate -> CUInt -> Ptr CIborIndex -> CUInt -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> Ptr CSchedule -> CDouble -> Ptr CString -> IO (Ptr CConvertibleBond)
+
+convertibleZeroCouponBond :: Exercise -- ^exercise
+  -> Double -- ^conversionRatio
+  -> [Dividend] -- ^dividends
+  -> [Callability] -- ^callability
+  -> Quote -- ^creditSpread
+  -> Day -- ^issueDate
+  -> Word -- ^settlementDays
+  -> DayCounter -- ^dayCounter
+  -> Schedule -- ^schedule
+  -> Double -- ^redemption
+  -> IO ConvertibleBond
+convertibleZeroCouponBond = $(ffiCall 'convertibleZeroCouponBond) c_convertibleZeroCouponBond
+
+foreign import ccall safe "ql.h qlConvertibleZeroCouponBond"
+  c_convertibleZeroCouponBond :: Ptr CExercise -> CDouble -> CUInt -> Ptr (Ptr CDividend) -> CUInt -> Ptr (Ptr CCallability) -> Ptr CQuote -> CDate -> CUInt -> Ptr CDayCounter -> Ptr CSchedule -> CDouble -> Ptr CString -> IO (Ptr CConvertibleBond)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

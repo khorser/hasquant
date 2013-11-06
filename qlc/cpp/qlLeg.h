@@ -66,10 +66,11 @@ extern "C" {
   void DLLEXPORT qlFreeCoupon(QlCoupon *o);
   QlCoupon **DLLEXPORT qlLegCoupons(Leg *leg, unsigned *len, char **e);
   int DLLEXPORT qlCouponAccrualStartDate(QlCoupon* o, char **e);
-  void DLLEXPORT qlFreeDividend(Dividend *o);
-  Dividend* DLLEXPORT qlFixedDividend(double amount, int date, char **e);
-  Dividend* DLLEXPORT qlFractionalDividend1(double rate, double nominal, int date, char **e);
-  Dividend* DLLEXPORT qlFractionalDividend(double rate, int date, char **e);
+
+  void DLLEXPORT qlFreeDividend(QlDividend *o);
+  QlDividend* DLLEXPORT qlFixedDividend(double amount, int date, char **e);
+  QlDividend* DLLEXPORT qlFractionalDividend1(double rate, double nominal, int date, char **e);
+  QlDividend* DLLEXPORT qlFractionalDividend(double rate, int date, char **e);
 #ifdef __cplusplus
 }
 #endif

@@ -825,10 +825,15 @@ template <> class objClassName<QlDefaultProbabilityHelper *> { public: static co
 #endif
 
 namespace QuantLib {class Dividend;} using QuantLib::Dividend;
+typedef boost::shared_ptr<Dividend> QlDividend;
 template <> class objClassName<Dividend *> { public: static const char *name() { return "Dividend"; } };
+template <> class objClassName<QlDividend *> { public: static const char *name() { return "QlDividend"; } };
 
 namespace QuantLib {class Callability;} using QuantLib::Callability;
+typedef boost::shared_ptr<Callability> QlCallability;
 template <> class objClassName<Callability *> { public: static const char *name() { return "Callability"; } };
+template <> class objClassName<QlCallability *> { public: static const char *name() { return "QlCallability"; } };
+
 #ifdef quantlib_callability_schedule_hpp
 typedef Callability::Price QlCallabilityPrice;
 template <> class objClassName<Callability::Price *> { public: static const char *name() { return "CallabilityPrice"; } };
