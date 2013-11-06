@@ -86,8 +86,12 @@ const char *qlDayCounterName(DayCounter *counter) {
 int qlDayCounterDayCount(DayCounter* o, int x0, int x1) {
     return arg(o)->dayCount(Date(x0), Date(x1));
 }
-double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd) {
+double qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e) {
+  try {
     return arg(o)->yearFraction(Date(x0), Date(x1), Date(refPeriodStart), Date(refPeriodEnd));
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

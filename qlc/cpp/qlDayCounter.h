@@ -17,7 +17,7 @@ extern "C" {
   DayCounter *DLLEXPORT qlDayCounterBusiness252(Calendar *cal, char **e);
   const char *DLLEXPORT qlDayCounterName(DayCounter *counter);
   int DLLEXPORT qlDayCounterDayCount(DayCounter* o, int x0, int x1);
-  double DLLEXPORT qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd);
+  double DLLEXPORT qlDayCounterYearFraction(DayCounter* o, int x0, int x1, int refPeriodStart, int refPeriodEnd, char **e);
 
   void DLLEXPORT qlFreeDayCounter(DayCounter *counter);
 #ifdef __cplusplus

@@ -68,6 +68,10 @@ scary error messages when some header is not included
 idea: custom name handling to check types of C functions with their FFI desc
 generate information about casting hierarchy
 
+qlaux.h contains common infrastructure (allocation/deallocation, typedefs, memory tracking etc) 
+*Aux.cpp files contain some template-heavy code. They do not depend on qlaux.h so they are not
+getting rebuilt when qlaux.h changes
+
 -- workflow for code generation:
 generate doxygen docs (you can find the copy in `doxygen` dir)
 convert to txt (see `doxygen-txt`)

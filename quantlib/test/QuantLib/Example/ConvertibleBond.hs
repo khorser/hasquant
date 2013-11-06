@@ -7,16 +7,20 @@ where
 
 import Data.Time.Calendar
 
+import qualified QuantLib.CashFlow.Leg as Leg
 import QuantLib.Compounding
 import QuantLib.Instances
 import QuantLib.Instrument
 import QuantLib.Instrument.Bond
 import QuantLib.Instrument.CallabilityType
-import QuantLib.Model
+import QuantLib.Method.BinomialTree
 import QuantLib.Quote
 import QuantLib.PricingEngine
+import QuantLib.Process
+import QuantLib.ProcessDiscretization
 import QuantLib.Settings
 import QuantLib.TermStructure.Yield
+import QuantLib.TermStructure.Volatility
 import QuantLib.Time.BusinessDayConvention
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
@@ -34,9 +38,72 @@ data Result = Result
 
 run :: IO Result
 run = do
+  cal <- target
+  t <- today
+  tod <- adjust cal t Following
+  setEvaluationDate tod
+  settl <- advance cal tod (fromIntegral settlementDays) Days Following False
+  exec <- advance cal settl len Years Following False
+  issue <- advance cal exec (-len) Years Following False
+
+  p <- fromFrequency Annual
+  sched <- schedule (Just issue) exec p cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+  bdc <- thirty360
+
+  callPrices <- mapM (`callabilityPrice` Clean) callPricesV
+  putPrices <- mapM (`callabilityPrice` Clean) putPricesV
+  callability1 <- mapM (\(pp, y) -> softCallability pp (dates sched!!y) 1.20) (zip callPrices callLength)
+  callability2 <- mapM (\(pp, y) -> callability pp Put (dates sched!!y)) (zip putPrices putLength)
+  let callabilities = callability1 ++ callability2
+
+  let divDates = [d | m <- [6, 12 .. 1000], let d = addGregorianMonthsClip m tod, d < exec]
+  dividends <- mapM (Leg.fixedDividend 1.0) divDates
+  dc <- actual365Fixed
+
+  euEx <- europeanExercise exec >>= asExercise
+  amEx <- americanExercise settl exec False >>= asExercise
+
+  underQ <- simpleQuote under >>= asQuote
+  riskFreeQ <- simpleQuote riskFreeRate >>= asQuote
+  divQ <- simpleQuote dividendYield >>= asQuote
+  volQ <- simpleQuote vol >>= asQuote
+  creditSpreadQ <- simpleQuote spreadRate >>= asQuote
+
+  ts <- flatForward settl riskFreeQ dc Compounded Annual
+  dts <- flatForward settl divQ dc Compounded Annual
+  vts <- blackConstantVol settl cal volQ dc
+
+  bsmProc <- blackScholesMertonProcess underQ dts ts vts EulerDiscretization
+  eng1 <- binomialConvertibleEngine JarrowRudd bsmProc timeSteps 
+  eng2 <- binomialConvertibleEngine JarrowRudd bsmProc timeSteps 
+
+  euBond <- convertibleFixedCouponBond euEx conversionRatio dividends callabilities creditSpreadQ
+    issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
+  setPricingEngine euBond eng1
+
+  amBond <- convertibleFixedCouponBond amEx conversionRatio dividends callabilities creditSpreadQ
+    issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
+  setPricingEngine amBond eng2
+  mapM npv [euBond, amBond] >>= print
 
   return Result {
     r = 0
   }
+
+  where under = 36.0
+        spreadRate = 0.005
+        dividendYield = 0.02
+        riskFreeRate = 0.06
+        vol = 0.20
+        settlementDays = 3
+        len = 5
+        redemption = 100.0
+        conversionRatio = redemption/under -- at the money
+        timeSteps = 801
+        coupons = [1, 0.05]
+        callLength = [2, 4] -- Call dates, years 2, 4.
+        putLength = [3] -- Put dates year 3
+        callPricesV = [101.5, 100.85]
+        putPricesV = [105.0]
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
