@@ -22,6 +22,7 @@ extern "C" {
   void DLLEXPORT qlFreePointerArray(void **p);
   int DLLEXPORT qlNullInteger();
   double DLLEXPORT qlNullReal();
+  double DLLEXPORT qlEpsilon();
 #ifdef __cplusplus
 }
 #endif

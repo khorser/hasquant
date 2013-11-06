@@ -66,6 +66,8 @@ module QuantLib.Types
   , CapFloor
   , Callability
   , CallabilityPrice
+  , CallableBond
+  , ConvertibleBond
 
   -- math
   , Constraint
@@ -201,6 +203,7 @@ module QuantLib.Types
 
   , nullInteger
   , nullReal
+  , qlEpsilon
   )
 where
 
@@ -404,6 +407,9 @@ type CapFloor = ForeignPtr CCapFloor
 type Callability = ForeignPtr CCallability
 type CallabilityPrice = ForeignPtr CCallabilityPrice
 
+type CallableBond = ForeignPtr CCallableBond
+type ConvertibleBond = ForeignPtr CConvertibleBond
+
 -- math
 type Constraint = ForeignPtr CConstraint
 type OptimizationMethod = ForeignPtr COptimizationMethod
@@ -577,5 +583,11 @@ foreign import ccall safe "ql.h qlNullInteger"
   nullInteger :: CInt
 foreign import ccall safe "ql.h qlNullReal"
   nullReal :: CDouble
+
+qlEpsilon :: Double
+qlEpsilon = realToFrac c_qlEpsilon
+
+foreign import ccall safe "ql.h qlEpsilon"
+  c_qlEpsilon :: CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

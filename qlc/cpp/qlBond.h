@@ -94,6 +94,11 @@ extern "C" {
 
   void DLLEXPORT qlFreeBond(QlBond *bond);
   void DLLEXPORT qlFreeFixedRateBond(QlFixedRateBond *bond);
+  void DLLEXPORT qlFreeCallableBond(QlCallableBond *o);
+  QlBond* DLLEXPORT qlCallableBondAsBond(QlCallableBond *o);
+  void DLLEXPORT qlFreeConvertibleBond(QlConvertibleBond *o);
+  QlBond* DLLEXPORT qlConvertibleBondAsBond(QlConvertibleBond *o);
+
 #ifdef __cplusplus
 }
 #endif

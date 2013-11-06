@@ -1,6 +1,8 @@
 #include <ql/instruments/bonds/all.hpp>
 #include <ql/cashflows/couponpricer.hpp>
 #include <ql/pricingengines/bond/bondfunctions.hpp>
+#include <ql/experimental/callablebonds/callablebond.hpp>
+#include <ql/experimental/convertiblebonds/convertiblebond.hpp>
 
 #include "qlaux.h"
 #include "qlBond.h"
@@ -518,5 +520,10 @@ double qlBondDirtyPrice(QlBond* o, char **e) {
     return handleException<double>(e, er);
   }
 }
+
+void qlFreeCallableBond(QlCallableBond *o) { del(o); }
+QlBond* qlCallableBondAsBond(QlCallableBond *o) { return ret(new QlBond(*arg(o))); }
+void qlFreeConvertibleBond(QlConvertibleBond *o) { del(o); }
+QlBond* qlConvertibleBondAsBond(QlConvertibleBond *o) { return ret(new QlBond(*arg(o))); }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

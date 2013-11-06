@@ -104,4 +104,8 @@ double qlNullReal() {
   return QL_NULL_REAL;
 }
 
+double qlEpsilon() {
+  return QL_EPSILON;
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

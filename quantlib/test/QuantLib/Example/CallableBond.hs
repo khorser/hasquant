@@ -14,6 +14,7 @@ import QuantLib.Instances
 import QuantLib.Instrument
 import QuantLib.Instrument.CallabilityType
 import QuantLib.InterestRate
+import QuantLib.Model
 import QuantLib.Quote
 import QuantLib.PricingEngine
 import QuantLib.Settings
@@ -40,11 +41,17 @@ run = do
   q <- simpleQuote 0.055 >>= asQuote
   flatRate <- flatForward tod q bbdc Compounded Semiannual
 
-  callDates <- reverse <$> foldM buildSchedule [15 `september` 2006] [1 .. 24]
+  callDates <- reverse <$> foldM buildSchedule [15 `september` 2006] [1 .. 23]
   callSchedule <- mapM (\d -> do
     p <- callabilityPrice 100.0 Clean
     callability p Call d)
     callDates
+
+  pQ <- fromFrequency Quarterly
+  cal <- unitedStatesGovernmentBond
+  sch <- schedule (Just $ 16 `september` 2004) (15 `september` 2012) pQ cal Unadjusted Unadjusted Backward False Nothing Nothing
+
+  hw0 <- hullWhite flatRate 0.03 qlEpsilon
 
   return Result {
     r = 0
@@ -55,7 +62,8 @@ run = do
         buildSchedule a@(d:_) _i = do
           cal <- nullCalendar
           n <- advance cal d 3 Months Following False
-          return $ (n : a)
+          return (n : a)
+        buildSchedule [] _ = error "Impossible happened"
 
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

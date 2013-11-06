@@ -834,4 +834,14 @@ typedef Callability::Price QlCallabilityPrice;
 template <> class objClassName<Callability::Price *> { public: static const char *name() { return "CallabilityPrice"; } };
 #endif
 
+namespace QuantLib {class CallableBond;} using QuantLib::CallableBond;
+typedef boost::shared_ptr<CallableBond> QlCallableBond;
+template <> class objClassName<CallableBond *> { public: static const char *name() { return "CallableBond"; } };
+template <> class objClassName<QlCallableBond *> { public: static const char *name() { return "QlCallableBond"; } };
+
+namespace QuantLib {class ConvertibleBond;} using QuantLib::ConvertibleBond;
+typedef boost::shared_ptr<ConvertibleBond> QlConvertibleBond;
+template <> class objClassName<ConvertibleBond *> { public: static const char *name() { return "ConvertibleBond"; } };
+template <> class objClassName<QlConvertibleBond *> { public: static const char *name() { return "QlConvertibleBond"; } };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

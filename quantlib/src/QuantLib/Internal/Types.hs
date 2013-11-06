@@ -63,6 +63,8 @@ module QuantLib.Internal.Types
   , CCapFloor
   , CCallabilityPrice
   , CCallability
+  , CCallableBond
+  , CConvertibleBond
 
   -- math
   , CConstraint
@@ -644,6 +646,26 @@ instance Finalizable CCallabilityPrice where
   finalize = p_freeCallabilityPrice
 foreign import ccall safe "ql.h &qlFreeCallabilityPrice"
   p_freeCallabilityPrice :: FunPtr (Ptr CCallabilityPrice -> IO ())
+
+data CCallableBond
+instance Finalizable CCallableBond where
+  finalize = p_freeCallableBond
+foreign import ccall safe "ql.h &qlFreeCallableBond"
+  p_freeCallableBond :: FunPtr (Ptr CCallableBond -> IO ())
+instance Upcastable CCallableBond CBond where
+  c_upcast = c_CallableBondAsBond
+foreign import ccall safe "ql.h qlCallableBondAsBond"
+  c_CallableBondAsBond :: Ptr CCallableBond -> IO (Ptr CBond)
+
+data CConvertibleBond
+instance Finalizable CConvertibleBond where
+  finalize = p_freeConvertibleBond
+foreign import ccall safe "ql.h &qlFreeConvertibleBond"
+  p_freeConvertibleBond :: FunPtr (Ptr CConvertibleBond -> IO ())
+instance Upcastable CConvertibleBond CBond where
+  c_upcast = c_ConvertibleBondAsBond
+foreign import ccall safe "ql.h qlConvertibleBondAsBond"
+  c_ConvertibleBondAsBond :: Ptr CConvertibleBond -> IO (Ptr CBond)
 
 -- math
 data CConstraint
