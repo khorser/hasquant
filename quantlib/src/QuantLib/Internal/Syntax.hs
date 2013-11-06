@@ -12,7 +12,6 @@ where
 
 import Control.Applicative((<$>), (<*>))
 import Control.Monad(liftM)
-import Data.Maybe(fromMaybe)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
 import System.IO.Unsafe(unsafePerformIO)
@@ -96,17 +95,26 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
--- handling of enums and a foreign ptr in the same place looks rather messy
-reifyEnumOrForeignPtr :: (Show a) => Name -> Maybe a -> Maybe a -> a -> Q a
-reifyEnumOrForeignPtr n e1 e2 p = do
-  isEnum <- elem n <$> qlEnums ''QLEnum
-  isLitEnum <- elem n <$> qlEnums ''QLLitEnum
-  if isEnum
-    then return $ fromMaybe (error "Enum not expected here") e1
-    else
-      if isLitEnum
-        then return $ fromMaybe (error "Literal enum not expected here") e2
-        else reifyForeignPtr n p
+-- For different types we have different sets of acceptable cases.
+-- This combinator streamlines the work accepting a list of pairs (predicate, value to return)
+-- Introduce an infix ||-like operator?
+seqParse :: (Monad m, Show a) => Name -> [(Name -> m Bool, a)] -> m a
+seqParse n as = seqParse' as
+  where seqParse' [] = error $ "No matching alternative found while parsing " ++ show n ++ ", options considered: " ++ show (map snd as)
+        seqParse' ((p, r):xs) = p n >>= \m -> if m then return r else seqParse' xs
+
+isEnum :: Name -> Q Bool
+isEnum n = elem n <$> qlEnums ''QLEnum
+
+isLitEnum :: Name -> Q Bool
+isLitEnum n = elem n <$> qlEnums ''QLLitEnum
+
+isForeignPtr :: Name -> Q Bool
+isForeignPtr n = f <$> reify n
+  where
+    f (TyConI (TySynD _ [] (AppT (ConT p) (ConT _target)))) | p == ''ForeignPtr = True
+    f (TyConI (DataD [] p _ _ _)) | p == ''ForeignPtr = True
+    f _ = False
 
 nameToTop :: Name -> TopArg
 nameToTop n | n == ''Int = IntA
@@ -124,11 +132,11 @@ nestedNameToTop n | n == ''Double = return DoubleN
 nestedNameToTop n | n == ''Bool = return BoolN
 nestedNameToTop n | n == ''YearFraction = return YearFractionN
 nestedNameToTop n | n == ''Word = return WordN
-nestedNameToTop n = reifyEnumOrForeignPtr n (Just $ EnumN n) Nothing ForeignPtrN
+nestedNameToTop n = seqParse n [(isEnum, EnumN n), (isForeignPtr, ForeignPtrN)]
 
 topArgType :: Type -> Q TopArg
 topArgType (ConT n) | isAtomicTop n = return $ nameToTop n
-topArgType (ConT n) = reifyEnumOrForeignPtr n (Just $ EnumA n) (Just LitEnumA) ForeignPtrA
+topArgType (ConT n) = seqParse n [(isEnum, EnumA n), (isLitEnum, LitEnumA), (isForeignPtr, ForeignPtrA)]
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
   where
     maybeType t | t == ''Day = return OptDayA
@@ -136,7 +144,7 @@ topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
     maybeType t | t == ''Int = return OptIntA
     maybeType t | t == ''Double = return OptDoubleA
     maybeType t | t == ''Word = return OptWordA
-    maybeType t = reifyEnumOrForeignPtr t Nothing (Just OptLitEnumA) OptForeignPtrA
+    maybeType t = seqParse t [(isLitEnum, OptLitEnumA), (isForeignPtr, OptForeignPtrA)]
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
@@ -147,7 +155,7 @@ topArgType (AppT
 topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix =
   if n == ''Double
     then return MatrixDoubleA
-    else reifyForeignPtr n  MatrixForeignPtrA
+    else seqParse n  [(isForeignPtr, MatrixForeignPtrA)]
 topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
@@ -159,14 +167,6 @@ data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
   deriving (Show, Eq)
 
-reifyForeignPtr :: (Show a) => Name -> a -> Q a
-reifyForeignPtr n x = f <$> reify n
-  where
-    f (TyConI (TySynD _ [] (AppT (ConT p) (ConT _target)))) | p == ''ForeignPtr = x
-    f (TyConI (DataD [] p _ _ _)) | p == ''ForeignPtr = x
-    f e = error $ "Unsupported type: " ++ show n ++ " reified as "
-            ++ show e ++ " when trying to apply " ++ show x
-
 nameToRetVal :: Name -> Q AtomicRet
 nameToRetVal n | n == ''Int = return IntR
 nameToRetVal n | n == ''Word = return WordR
@@ -175,7 +175,7 @@ nameToRetVal n | n == ''Double = return DoubleR
 nameToRetVal n | n == ''Bool = return BoolR
 nameToRetVal n | n == ''YearFraction = return YearFractionR
 nameToRetVal n | n == ''String = return StringR
-nameToRetVal n = reifyEnumOrForeignPtr n (Just $ EnumR n) Nothing ForeignPtrR
+nameToRetVal n = seqParse n [(isEnum, EnumR n), (isForeignPtr, ForeignPtrR)]
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | (m, d) == (''Maybe, ''Day) =
@@ -248,7 +248,7 @@ genFfiCall extra aa r = do
         (IORV _, Straight) -> r
         (IORV _, Unmarshal) -> r
         (EitherRV _, Purify) -> r
-        _ -> error $ "Return type " ++ show r ++ " incompatible with call type " ++ show extra
+        _ -> error $ "Return type " ++ show r ++ " is incompatible with call type " ++ show extra
 
     finalCCall :: ExpQ -> ExpQ
     finalCCall c_call =
