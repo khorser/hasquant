@@ -33,7 +33,13 @@ import QuantLib.Time.Unit
 import QuantLib.Types
 
 data Result = Result
-  { r :: Double
+  { jarrowRuddR :: [Double]
+  , coxRossRubinsteinR :: [Double]
+  , additiveEQPBinomialTreeR :: [Double]
+  , trigeorgisR :: [Double]
+  , tianR :: [Double]
+  , leisenReimerR :: [Double]
+  , joshiR :: [Double]
   }
 
 run :: IO Result
@@ -79,10 +85,18 @@ run = do
   amBond <- convertibleFixedCouponBond amEx conversionRatio dividends callabilities creditSpreadQ
     issue settlementDays coupons bdc sched redemption >>= asBond >>= asInstrument
 
-  _ <- mapM (priceBonds euBond amBond bsmProc) [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
+  [jr, crr, ad, tr, ti, lr, j] <- mapM
+    (priceBonds euBond amBond bsmProc)
+    [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
 
   return Result {
-    r = 0
+      jarrowRuddR = jr
+    , coxRossRubinsteinR = crr
+    , additiveEQPBinomialTreeR = ad
+    , trigeorgisR = tr
+    , tianR = ti
+    , leisenReimerR = lr
+    , joshiR = j
   }
 
   where under = 36.0
@@ -106,6 +120,6 @@ run = do
           eng2 <- binomialConvertibleEngine b p timeSteps 
           setPricingEngine eu eng1
           setPricingEngine am eng2
-          mapM npv [eu, am] >>= print
+          mapM npv [eu, am]
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

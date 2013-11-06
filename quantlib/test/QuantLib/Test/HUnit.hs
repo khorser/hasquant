@@ -196,23 +196,48 @@ test_bermudanSwaption = do
 
 test_equityOption :: IO ()
 test_equityOption = do
-  _ <- Settings.keepingSettings' EquityOptionExample.run
-  assertBool True
+  (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd mc) <- Settings.keepingSettings' EquityOptionExample.run
+  subAssert $ assertListsAreClose id analyticEuro   [3.844308] 1.0e-6
+  subAssert $ assertListsAreClose id analyticHeston [3.844306] 1.0e-6
+  subAssert $ assertListsAreClose id bates          [3.844306] 1.0e-6
+  subAssert $ assertListsAreClose id baw            [4.459628] 1.0e-6
+  subAssert $ assertListsAreClose id bjs            [4.453064] 1.0e-6
+  subAssert $ assertListsAreClose id int            [3.844309] 1.0e-6
+  subAssert $ assertListsAreClose id fd [3.844342, 4.360807, 4.486118] 1.0e-6
+  subAssert $ assertListsAreClose id mc [3.834522, 3.844613, 4.481675] 1.0e-6
+  subAssert $ assertListsAreClose id (head bin) [3.844132, 4.361174, 4.486552] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!1)   [3.843504, 4.360861, 4.486415] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!2)   [3.836911, 4.354455, 4.480097] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!3)   [3.843557, 4.360909, 4.486461] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!4)   [3.844171, 4.361176, 4.486413] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!5)   [3.844308, 4.360713, 4.486076] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!6)   [3.844308, 4.360713, 4.486076] 1.0e-6
 
 test_cds :: IO ()
 test_cds = do
-  _ <- Settings.keepingSettings' CDSExample.run
-  assertBool True
+  (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- Settings.keepingSettings' CDSExample.run
+  subAssert $ assertListsAreClose id probs [97.040061, 94.175780] 1.0e-6
+  subAssert $ assertListsAreClose id fairSpread [1.500000, 1.500000, 1.500000, 1.500000] 1.0e-6
+  subAssert $ assertListsAreClose id npv [-7.18501e-11, -1.52795e-10, -2.05728e-09, -6.25732e-10] 1.0e-10
+  subAssert $ assertListsAreClose id defNpv [-5218.16, -8882.83, -16142.9, -30195.6] 1.0e-1
+  subAssert $ assertListsAreClose id cpnNpv [5218.16, 8882.83, 16142.9, 30195.6] 1.0e-1
 
 test_convertibleBond :: IO ()
 test_convertibleBond = do
-  _ <- Settings.keepingSettings' ConvertibleBondExample.run
-  assertBool True
+  (ConvertibleBondExample.Result jr crr ad tr ti lr j) <- Settings.keepingSettings' ConvertibleBondExample.run
+  subAssert $ assertListsAreClose id jr [105.690844, 108.141608] 1.0e-6
+  subAssert $ assertListsAreClose id crr [105.698533, 108.166210] 1.0e-6
+  subAssert $ assertListsAreClose id ad [105.626388, 108.085800] 1.0e-6
+  subAssert $ assertListsAreClose id tr [105.699036, 108.166649] 1.0e-6
+  subAssert $ assertListsAreClose id ti [105.712848, 108.174293] 1.0e-6
+  subAssert $ assertListsAreClose id lr [105.668326, 108.155630] 1.0e-6
+  subAssert $ assertListsAreClose id j [105.668327, 108.155630] 1.0e-6
 
 test_callableBond :: IO ()
 test_callableBond = do
-  _ <- Settings.keepingSettings' CallableBondExample.run
-  assertBool True
+  (CallableBondExample.Result ps ys) <- Settings.keepingSettings' CallableBondExample.run
+  subAssert $ assertListsAreClose id ps [96.47, 95.64, 92.31, 87.08, 77.34] 1.0e-2
+  subAssert $ assertListsAreClose id ys [5.48, 5.67, 6.49, 7.85, 10.64] 1.0e-2
 
 test_evalDate :: IO ()
 test_evalDate = do

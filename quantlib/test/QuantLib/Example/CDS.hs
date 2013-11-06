@@ -33,7 +33,11 @@ import QuantLib.Time.Unit
 import QuantLib.Types
 
 data Result = Result
-  { r :: Double
+  { probsR :: [Double]
+  , fairSpreadR :: [Double]
+  , npvR :: [Double]
+  , defNpvR :: [Double]
+  , cpnNpvR :: [Double]
   }
 
 run :: IO Result
@@ -55,8 +59,7 @@ run = do
 
   hts <- piecewiseDefaultCurve tod instruments dc [] 1.0e-12 HazardRate BackwardFlat
 
-  survivalProbability hts (addGregorianYearsClip 1 tod) False >>= print
-  survivalProbability hts (addGregorianYearsClip 2 tod) False >>= print
+  probs <- mapM (\y -> survivalProbability hts (addGregorianYearsClip y tod) False) [1, 2]
 
   eng <- midPointCdsEngine hts recoveryRate ts Nothing
   claim <- faceValueClaim
@@ -67,12 +70,16 @@ run = do
   cds <- forM sched
     $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing claim
 
-  mapM
-    (\c -> (asInstrument c >>= (`setPricingEngine` eng)) >> mapM ($ c) [fairSpread, asInstrument >=> npv, defaultLegNPV, couponLegNPV])
-    cds >>= print
+  [fairSpreads, npvs, defnpvs, cpnnpvs] <- mapM
+    (\f -> mapM (\c -> asInstrument c >>= (`setPricingEngine` eng) >> f c) cds)
+    [fairSpread, asInstrument >=> npv, defaultLegNPV, couponLegNPV]
 
   return Result {
-    r = 0
+      probsR = map (100*) probs
+    , fairSpreadR = map (100*) fairSpreads
+    , npvR = npvs
+    , defNpvR = defnpvs
+    , cpnNpvR = cpnnpvs
   }
 
   where recoveryRate = 0.5

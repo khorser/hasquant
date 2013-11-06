@@ -31,7 +31,8 @@ import QuantLib.Time.Unit
 import QuantLib.Types
 
 data Result = Result
-  { r :: Double
+  { pricesR :: [Double]
+  , yieldsR :: [Double]
   }
 
 run :: IO Result
@@ -53,10 +54,11 @@ run = do
 
   b <- callableFixedRateBond 3 100.0 sch [0.0465] bbdc Unadjusted 100.0 (Just $ 16 `september` 2004) callSchedule >>= asBond
 
-  _ <- mapM (priceBond flatRate bbdc b) [qlEpsilon, 0.01, 0.03, 0.06, 0.12]
+  (ps, ys) <- unzip <$> mapM (priceBond flatRate bbdc b) [qlEpsilon, 0.01, 0.03, 0.06, 0.12]
 
   return Result {
-    r = 0
+    pricesR = ps
+  , yieldsR = ys
   }
   where tod = 16 `october` 2007
         
@@ -71,7 +73,8 @@ run = do
           hw <- hullWhite ts 0.03 sigma >>= asOneFactorAffineModel >>= asShortRateModel
           engine <- treeCallableFixedRateBondEngine hw 40 Nothing
           asInstrument b >>= (`setPricingEngine` engine)
-          cleanPriceNow b >>= print
-          yield b dc Compounded Quarterly 1.0e-8 1000 >>= print
+          cp <- cleanPriceNow b
+          y <- yield b dc Compounded Quarterly 1.0e-8 1000
+          return (cp, 100 * y)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
