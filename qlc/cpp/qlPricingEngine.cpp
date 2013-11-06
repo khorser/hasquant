@@ -1,11 +1,48 @@
-#include <ql/pricingengines/all.hpp>
-#include <ql/experimental/variancegamma/all.hpp>
-#include <ql/legacy/libormarketmodels/lfmswaptionengine.hpp>
-#include <ql/experimental/math/zigguratrng.hpp>
-#include <ql/methods/finitedifferences/expliciteuler.hpp>
-#include <ql/methods/finitedifferences/impliciteuler.hpp>
 #include <ql/experimental/callablebonds/blackcallablebondengine.hpp>
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
+#include <ql/experimental/math/zigguratrng.hpp>
+#include <ql/experimental/variancegamma/all.hpp>
+#include <ql/legacy/libormarketmodels/lfmswaptionengine.hpp>
+#include <ql/methods/montecarlo/lsmbasissystem.hpp>
+#include <ql/pricingengines/asian/analytic_cont_geom_av_price.hpp>
+#include <ql/pricingengines/asian/analytic_discr_geom_av_strike.hpp>
+#include <ql/pricingengines/asian/mc_discr_arith_av_price.hpp>
+#include <ql/pricingengines/barrier/analyticbarrierengine.hpp>
+#include <ql/pricingengines/basket/kirkengine.hpp>
+#include <ql/pricingengines/basket/stulzengine.hpp>
+#include <ql/pricingengines/blackformula.hpp>
+#include <ql/pricingengines/blackscholescalculator.hpp>
+#include <ql/pricingengines/bond/discountingbondengine.hpp>
+#include <ql/pricingengines/capfloor/analyticcapfloorengine.hpp>
+#include <ql/pricingengines/capfloor/blackcapfloorengine.hpp>
+#include <ql/pricingengines/capfloor/treecapfloorengine.hpp>
+#include <ql/pricingengines/cliquet/analyticcliquetengine.hpp>
+#include <ql/pricingengines/cliquet/analyticperformanceengine.hpp>
+#include <ql/pricingengines/credit/integralcdsengine.hpp>
+#include <ql/pricingengines/credit/midpointcdsengine.hpp>
+#include <ql/pricingengines/forward/replicatingvarianceswapengine.hpp>
+#include <ql/pricingengines/greeks.hpp>
+#include <ql/pricingengines/lookback/analyticcontinuousfixedlookback.hpp>
+#include <ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp>
+#include <ql/pricingengines/swap/treeswapengine.hpp>
+#include <ql/pricingengines/swaption/blackswaptionengine.hpp>
+#include <ql/pricingengines/swaption/fdg2swaptionengine.hpp>
+#include <ql/pricingengines/swaption/fdg2swaptionengine.hpp>
+#include <ql/pricingengines/swaption/fdhullwhiteswaptionengine.hpp>
+#include <ql/pricingengines/swaption/g2swaptionengine.hpp>
+#include <ql/pricingengines/swaption/jamshidianswaptionengine.hpp>
+#include <ql/pricingengines/swaption/treeswaptionengine.hpp>
+#include <ql/pricingengines/vanilla/analyticbsmhullwhiteengine.hpp>
+#include <ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp>
+#include <ql/pricingengines/vanilla/analyticdividendeuropeanengine.hpp>
+#include <ql/pricingengines/vanilla/analyticgjrgarchengine.hpp>
+#include <ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp>
+#include <ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp>
+#include <ql/pricingengines/vanilla/batesengine.hpp>
+#include <ql/pricingengines/vanilla/bjerksundstenslandengine.hpp>
+#include <ql/pricingengines/vanilla/integralengine.hpp>
+#include <ql/pricingengines/vanilla/jumpdiffusionengine.hpp>
+#include <ql/pricingengines/vanilla/juquadraticengine.hpp>
 
 #include "qlaux.h"
 #include "qlPricingEngine.h"
@@ -802,42 +839,21 @@ QlPricingEngine* qlBinomialVanillaEngine(const char *tree, QlGeneralizedBlackSch
 
 QlPricingEngine* qlFDAmericanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e) {
   try {
-    if (!strcmp(fdscheme, "FDCrankNicolson"))
-      return ret(new QlPricingEngine(alloc(new FDAmericanEngine<CrankNicolson>(*arg(process), timeSteps, gridPoints, timeDependent))));
-    else if (!strcmp(fdscheme, "FDExplicitEuler"))
-      return ret(new QlPricingEngine(alloc(new FDAmericanEngine<ExplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
-    else if (!strcmp(fdscheme, "FDImplicitEuler"))
-      return ret(new QlPricingEngine(alloc(new FDAmericanEngine<ImplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
-    else
-      QL_FAIL("Unknown FD Scheme "<< fdscheme);
+    return ret(new QlPricingEngine(alloc(qlFDAmericanEngineAux(fdscheme, *arg(process), timeSteps, gridPoints, timeDependent))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlFDBermudanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e) {
   try {
-    if (!strcmp(fdscheme, "FDCrankNicolson"))
-      return ret(new QlPricingEngine(alloc(new FDBermudanEngine<CrankNicolson>(*arg(process), timeSteps, gridPoints, timeDependent))));
-    else if (!strcmp(fdscheme, "FDExplicitEuler"))
-      return ret(new QlPricingEngine(alloc(new FDBermudanEngine<ExplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
-    else if (!strcmp(fdscheme, "FDImplicitEuler"))
-      return ret(new QlPricingEngine(alloc(new FDBermudanEngine<ImplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
-    else
-      QL_FAIL("Unknown FD Scheme "<< fdscheme);
+    return ret(new QlPricingEngine(alloc(qlFDBermudanEngineAux(fdscheme, *arg(process), timeSteps, gridPoints, timeDependent))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlFDEuropeanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e) {
   try {
-    if (!strcmp(fdscheme, "FDCrankNicolson"))
-      return ret(new QlPricingEngine(alloc(new FDEuropeanEngine<CrankNicolson>(*arg(process), timeSteps, gridPoints, timeDependent))));
-    else if (!strcmp(fdscheme, "FDExplicitEuler"))
-      return ret(new QlPricingEngine(alloc(new FDEuropeanEngine<ExplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
-    else if (!strcmp(fdscheme, "FDImplicitEuler"))
-      return ret(new QlPricingEngine(alloc(new FDEuropeanEngine<ImplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
-    else
-      QL_FAIL("Unknown FD Scheme "<< fdscheme);
+    return ret(new QlPricingEngine(alloc(qlFDEuropeanEngineAux(fdscheme, *arg(process), timeSteps, gridPoints, timeDependent))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
@@ -894,14 +910,14 @@ QlPricingEngine* qlTreeCallableFixedRateBondEngine(QlShortRateModel* x0, unsigne
 }
 QlPricingEngine* qlTreeCallableZeroCouponBondEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e) {
   try {
-    return ret(new QlPricingEngine(alloc(new TreeCallableZeroCouponBondEngine((*arg(model)), *arg(timeGrid), qlNullableHandle(arg(termStructure))))));
+    return ret(new QlPricingEngine(alloc(new TreeCallableZeroCouponBondEngine(*arg(model), *arg(timeGrid), qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
   try {
-    return ret(new QlPricingEngine(alloc(new TreeCallableZeroCouponBondEngine((*arg(model)), timeSteps, qlNullableHandle(arg(termStructure))))));
+    return ret(new QlPricingEngine(alloc(new TreeCallableZeroCouponBondEngine(*arg(model), timeSteps, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }

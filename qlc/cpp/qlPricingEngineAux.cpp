@@ -1,10 +1,12 @@
 #include <ql/pricingengines/all.hpp>
-#include <ql/experimental/math/zigguratrng.hpp>
+#include <ql/pricingengines/vanilla/binomialengine.hpp>
 #include <ql/experimental/callablebonds/blackcallablebondengine.hpp>
 #include <ql/experimental/callablebonds/treecallablebondengine.hpp>
-#include <ql/pricingengines/vanilla/binomialengine.hpp>
-#include <ql/experimental/lattices/extendedbinomialtree.hpp>
 #include <ql/experimental/convertiblebonds/binomialconvertibleengine.hpp>
+#include <ql/experimental/lattices/extendedbinomialtree.hpp>
+#include <ql/experimental/math/zigguratrng.hpp>
+#include <ql/methods/finitedifferences/expliciteuler.hpp>
+#include <ql/methods/finitedifferences/impliciteuler.hpp>
 
 #include "qlPricingEngineAux.h"
 
@@ -101,15 +103,15 @@ PricingEngine* qlMCHestonHullWhiteEngine1Aux(const char *rngtrait, const boost::
   else
     QL_FAIL("Unknown RNG "<< rngtrait);
 }
-PricingEngine* qlMCAmericanEngine1Aux(const char *rngtrait, const boost::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, int polynomType, unsigned nCalibrationSamples) {
+PricingEngine* qlMCAmericanEngine1Aux(const char *rngtrait, const boost::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, LsmBasisSystem::PolynomType polynomType, unsigned nCalibrationSamples) {
   if (!strcmp(rngtrait, "PseudoRandom"))
-    return new MCAmericanEngine<PseudoRandom>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples);
+    return new MCAmericanEngine<PseudoRandom>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, polynomType, nCalibrationSamples);
   else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-    return new MCAmericanEngine<PoissonPseudoRandom>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples);
+    return new MCAmericanEngine<PoissonPseudoRandom>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, polynomType, nCalibrationSamples);
   else if (!strcmp(rngtrait, "LowDiscrepancy"))
-    return new MCAmericanEngine<LowDiscrepancy>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples);
+    return new MCAmericanEngine<LowDiscrepancy>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, polynomType, nCalibrationSamples);
   else if (!strcmp(rngtrait, "Ziggurat"))
-    return new MCAmericanEngine<Ziggurat>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples);
+    return new MCAmericanEngine<Ziggurat>(process, timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, polynomType, nCalibrationSamples);
   else
     QL_FAIL("Unknown RNG "<< rngtrait);
 }
@@ -232,6 +234,37 @@ PricingEngine* qlMCPerformanceEngine1Aux(const char *rngtrait, const boost::shar
     return new MCPerformanceEngine<Ziggurat>(process, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed);
   else
     QL_FAIL("Unknown RNG "<< rngtrait);
+}
+
+PricingEngine* qlFDAmericanEngineAux(const char *fdscheme, const boost::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent) {
+    if (!strcmp(fdscheme, "FDCrankNicolson"))
+      return new FDAmericanEngine<CrankNicolson>(process, timeSteps, gridPoints, timeDependent);
+    else if (!strcmp(fdscheme, "FDExplicitEuler"))
+      return new FDAmericanEngine<ExplicitEuler>(process, timeSteps, gridPoints, timeDependent);
+    else if (!strcmp(fdscheme, "FDImplicitEuler"))
+      return new FDAmericanEngine<ImplicitEuler>(process, timeSteps, gridPoints, timeDependent);
+    else
+      QL_FAIL("Unknown FD Scheme "<< fdscheme);
+}
+PricingEngine* qlFDBermudanEngineAux(const char *fdscheme, const boost::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent) {
+    if (!strcmp(fdscheme, "FDCrankNicolson"))
+      return new FDBermudanEngine<CrankNicolson>(process, timeSteps, gridPoints, timeDependent);
+    else if (!strcmp(fdscheme, "FDExplicitEuler"))
+      return new FDBermudanEngine<ExplicitEuler>(process, timeSteps, gridPoints, timeDependent);
+    else if (!strcmp(fdscheme, "FDImplicitEuler"))
+      return new FDBermudanEngine<ImplicitEuler>(process, timeSteps, gridPoints, timeDependent);
+    else
+      QL_FAIL("Unknown FD Scheme "<< fdscheme);
+}
+PricingEngine* qlFDEuropeanEngineAux(const char *fdscheme, const boost::shared_ptr<GeneralizedBlackScholesProcess> process, unsigned timeSteps, unsigned gridPoints, int timeDependent) {
+    if (!strcmp(fdscheme, "FDCrankNicolson"))
+      return new FDEuropeanEngine<CrankNicolson>(process, timeSteps, gridPoints, timeDependent);
+    else if (!strcmp(fdscheme, "FDExplicitEuler"))
+      return new FDEuropeanEngine<ExplicitEuler>(process, timeSteps, gridPoints, timeDependent);
+    else if (!strcmp(fdscheme, "FDImplicitEuler"))
+      return new FDEuropeanEngine<ImplicitEuler>(process, timeSteps, gridPoints, timeDependent);
+    else
+      QL_FAIL("Unknown FD Scheme "<< fdscheme);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
