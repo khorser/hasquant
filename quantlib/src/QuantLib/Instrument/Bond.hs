@@ -67,6 +67,7 @@ module QuantLib.Instrument.Bond
   , convertibleFixedCouponBond
   , convertibleFloatingRateBond
   , convertibleZeroCouponBond
+  , softCallability
   )
 where
 
@@ -776,5 +777,15 @@ convertibleZeroCouponBond = $(ffiCall 'convertibleZeroCouponBond) c_convertibleZ
 
 foreign import ccall safe "ql.h qlConvertibleZeroCouponBond"
   c_convertibleZeroCouponBond :: Ptr CExercise -> CDouble -> CUInt -> Ptr (Ptr CDividend) -> CUInt -> Ptr (Ptr CCallability) -> Ptr CQuote -> CDate -> CUInt -> Ptr CDayCounter -> Ptr CSchedule -> CDouble -> Ptr CString -> IO (Ptr CConvertibleBond)
+
+-- |callability leaving to the holder the possibility to convert
+softCallability :: CallabilityPrice
+  -> Day
+  -> Double -- ^trigger
+  -> IO Callability
+softCallability = $(ffiCall 'softCallability) c_softCallability
+
+foreign import ccall safe "ql.h qlSoftCallability"
+  c_softCallability :: Ptr CCallabilityPrice -> CInt -> CDouble -> Ptr CString -> IO (Ptr CCallability)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

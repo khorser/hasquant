@@ -104,6 +104,7 @@ extern "C" {
   QlConvertibleBond* DLLEXPORT qlConvertibleFixedCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, unsigned couponsLen, double* coupons, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
   QlConvertibleBond* DLLEXPORT qlConvertibleFloatingRateBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, QlIborIndex* index, unsigned fixingDays, unsigned spreadsLen, double* spreads, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
   QlConvertibleBond* DLLEXPORT qlConvertibleZeroCouponBond(QlExercise* exercise, double conversionRatio, unsigned dividendsLen, QlDividend** dividends, unsigned callabilityLen, QlCallability** callability, QlQuote* creditSpread, int issueDate, unsigned settlementDays, DayCounter* dayCounter, Schedule* schedule, double redemption, char **e);
+  QlCallability* DLLEXPORT qlSoftCallability(QlCallabilityPrice* price, int date, double trigger, char **e);
 #ifdef __cplusplus
 }
 #endif

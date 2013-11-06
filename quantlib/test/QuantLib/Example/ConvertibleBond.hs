@@ -10,6 +10,9 @@ import Data.Time.Calendar
 import QuantLib.Compounding
 import QuantLib.Instances
 import QuantLib.Instrument
+import QuantLib.Instrument.Bond
+import QuantLib.Instrument.CallabilityType
+import QuantLib.Model
 import QuantLib.Quote
 import QuantLib.PricingEngine
 import QuantLib.Settings

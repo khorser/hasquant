@@ -562,4 +562,12 @@ QlConvertibleBond* qlConvertibleZeroCouponBond(QlExercise* exercise, double conv
   }
 }
 
+QlCallability* DLLEXPORT qlSoftCallability(QlCallabilityPrice* price, int date, double trigger, char **e) {
+  try {
+    return ret(new QlCallability(alloc(new SoftCallability(*arg(price), Date(date), trigger))));
+  } catch (std::exception& er) {
+    return handleException<QlCallability*>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */
