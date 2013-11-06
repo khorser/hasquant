@@ -137,6 +137,7 @@ module QuantLib.Internal.Types
   , CLocalVolTermStructure
   , CBlackVarianceCurve
   , CDefaultProbabilityHelper
+  , CCallableBondVolatilityStructure
 
   -- time
   , CCalendar
@@ -1216,6 +1217,16 @@ instance Finalizable CDefaultProbabilityHelper where
   finalize = p_freeDefaultProbabilityHelper
 foreign import ccall safe "ql.h &qlFreeDefaultProbabilityHelper"
   p_freeDefaultProbabilityHelper :: FunPtr (Ptr CDefaultProbabilityHelper -> IO ())
+
+data CCallableBondVolatilityStructure
+instance Finalizable CCallableBondVolatilityStructure where
+  finalize = p_freeCallableBondVolatilityStructure
+foreign import ccall safe "ql.h &qlFreeCallableBondVolatilityStructure"
+  p_freeCallableBondVolatilityStructure :: FunPtr (Ptr CCallableBondVolatilityStructure -> IO ())
+instance Upcastable CCallableBondVolatilityStructure CTermStructure where
+  c_upcast = c_CallableBondVolatilityStructureAsTermStructure
+foreign import ccall safe "ql.h qlCallableBondVolatilityStructureAsTermStructure"
+  c_CallableBondVolatilityStructureAsTermStructure :: Ptr CCallableBondVolatilityStructure -> IO (Ptr CTermStructure)
 
 -- time
 data CCalendar

@@ -89,6 +89,16 @@ module QuantLib.PricingEngine
   , fdAmericanEngine
   , fdBermudanEngine
   , fdEuropeanEngine
+
+  , binomialConvertibleEngine
+  , blackCallableFixedRateBondEngine'
+  , blackCallableFixedRateBondEngine
+  , blackCallableZeroCouponBondEngine'
+  , blackCallableZeroCouponBondEngine
+  , treeCallableFixedRateBondEngine'
+  , treeCallableFixedRateBondEngine
+  , treeCallableZeroCouponBondEngine'
+  , treeCallableZeroCouponBondEngine
   )
 where
 
@@ -1001,5 +1011,86 @@ fdEuropeanEngine = $(ffiCall 'fdEuropeanEngine) c_fdEuropeanEngine
 
 foreign import ccall safe "ql.h qlFDEuropeanEngine"
   c_fdEuropeanEngine :: CString -> Ptr CGeneralizedBlackScholesProcess -> CUInt -> CUInt -> CInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+binomialConvertibleEngine :: BinomialTree
+  -> GeneralizedBlackScholesProcess -- ^process
+  -> Word -- ^timeSteps
+  -> IO PricingEngine
+binomialConvertibleEngine = $(ffiCall 'binomialConvertibleEngine) c_binomialConvertibleEngine
+
+foreign import ccall safe "ql.h qlBinomialConvertibleEngine"
+  c_binomialConvertibleEngine :: CString -> Ptr CGeneralizedBlackScholesProcess -> CUInt -> Ptr CString -> IO (Ptr CPricingEngine)
+
+-- |volatility is the quoted fwd yield volatility, not price vol
+blackCallableFixedRateBondEngine' :: CallableBondVolatilityStructure -- ^yieldVolStructure
+  -> YieldTermStructure -- ^discountCurve
+  -> IO PricingEngine
+blackCallableFixedRateBondEngine' = $(ffiCall 'blackCallableFixedRateBondEngine') c_blackCallableFixedRateBondEngine'
+
+foreign import ccall safe "ql.h qlBlackCallableFixedRateBondEngine1"
+  c_blackCallableFixedRateBondEngine' :: Ptr CCallableBondVolatilityStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+-- |volatility is the quoted fwd yield volatility, not price vol
+blackCallableFixedRateBondEngine :: Quote -- ^fwdYieldVol
+  -> YieldTermStructure -- ^discountCurve
+  -> IO PricingEngine
+blackCallableFixedRateBondEngine = $(ffiCall 'blackCallableFixedRateBondEngine) c_blackCallableFixedRateBondEngine
+
+foreign import ccall safe "ql.h qlBlackCallableFixedRateBondEngine"
+  c_blackCallableFixedRateBondEngine :: Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+-- |volatility is the quoted fwd yield volatility, not price vol
+blackCallableZeroCouponBondEngine' :: CallableBondVolatilityStructure -- ^yieldVolStructure
+  -> YieldTermStructure -- ^discountCurve
+  -> IO PricingEngine
+blackCallableZeroCouponBondEngine' = $(ffiCall 'blackCallableZeroCouponBondEngine') c_blackCallableZeroCouponBondEngine'
+
+foreign import ccall safe "ql.h qlBlackCallableZeroCouponBondEngine1"
+  c_blackCallableZeroCouponBondEngine' :: Ptr CCallableBondVolatilityStructure -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+-- |volatility is the quoted fwd yield volatility, not price vol
+blackCallableZeroCouponBondEngine :: Quote -- ^fwdYieldVol
+  -> YieldTermStructure -- ^discountCurve
+  -> IO PricingEngine
+blackCallableZeroCouponBondEngine = $(ffiCall 'blackCallableZeroCouponBondEngine) c_blackCallableZeroCouponBondEngine
+
+foreign import ccall safe "ql.h qlBlackCallableZeroCouponBondEngine"
+  c_blackCallableZeroCouponBondEngine :: Ptr CQuote -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeCallableFixedRateBondEngine' :: ShortRateModel
+  -> TimeGrid -- ^timeGrid
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeCallableFixedRateBondEngine' = $(ffiCall 'treeCallableFixedRateBondEngine') c_treeCallableFixedRateBondEngine'
+
+foreign import ccall safe "ql.h qlTreeCallableFixedRateBondEngine1"
+  c_treeCallableFixedRateBondEngine' :: Ptr CShortRateModel -> Ptr CTimeGrid -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeCallableFixedRateBondEngine :: ShortRateModel
+  -> Word -- ^timeSteps
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeCallableFixedRateBondEngine = $(ffiCall 'treeCallableFixedRateBondEngine) c_treeCallableFixedRateBondEngine
+
+foreign import ccall safe "ql.h qlTreeCallableFixedRateBondEngine"
+  c_treeCallableFixedRateBondEngine :: Ptr CShortRateModel -> CUInt -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeCallableZeroCouponBondEngine' :: ShortRateModel -- ^model
+  -> TimeGrid -- ^timeGrid
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeCallableZeroCouponBondEngine' = $(ffiCall 'treeCallableZeroCouponBondEngine') c_treeCallableZeroCouponBondEngine'
+
+foreign import ccall safe "ql.h qlTreeCallableZeroCouponBondEngine1"
+  c_treeCallableZeroCouponBondEngine' :: Ptr CShortRateModel -> Ptr CTimeGrid -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
+
+treeCallableZeroCouponBondEngine :: ShortRateModel -- ^model
+  -> Word -- ^timeSteps
+  -> Maybe YieldTermStructure -- ^termStructure
+  -> IO PricingEngine
+treeCallableZeroCouponBondEngine = $(ffiCall 'treeCallableZeroCouponBondEngine) c_treeCallableZeroCouponBondEngine
+
+foreign import ccall safe "ql.h qlTreeCallableZeroCouponBondEngine"
+  c_treeCallableZeroCouponBondEngine :: Ptr CShortRateModel -> CUInt -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CPricingEngine)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

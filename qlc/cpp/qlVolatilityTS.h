@@ -71,6 +71,11 @@ extern "C" {
   QlBlackVolTermStructure* DLLEXPORT qlBlackVarianceSurface(int referenceDate, Calendar* cal, unsigned datesLen, int* dates, unsigned strikesLen, double* strikes, unsigned blackVolMatrixRows, unsigned blackVolMatrixCols, double* blackVolMatrix, DayCounter* dayCounter, int lowerExtrapolation, int upperExtrapolation/*, char *interpolation*/, char **e);
   QlCapFloorTermVolSurface* DLLEXPORT qlCapFloorTermVolSurface(unsigned settlementDays, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e);
   QlCapFloorTermVolSurface* DLLEXPORT qlCapFloorTermVolSurface1(int settlementDate, Calendar* calendar, int bdc, unsigned optionTenorsLen, Period** optionTenors, unsigned strikesLen, double* strikes, unsigned volatilitiesRows, unsigned volatilitiesCols, QlQuote** volatilities, DayCounter* dc, char **e);
+
+  void DLLEXPORT qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o);
+  QlTermStructure* DLLEXPORT qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o);
+  QlCallableBondVolatilityStructure* DLLEXPORT qlCallableBondConstantVolatility1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e);
+  QlCallableBondVolatilityStructure* DLLEXPORT qlCallableBondConstantVolatility(int referenceDate, QlQuote* volatility, DayCounter* dayCounter, char **e);
 #ifdef __cplusplus
 }
 #endif

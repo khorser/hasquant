@@ -5,6 +5,9 @@
 #include <ql/experimental/lattices/extendedbinomialtree.hpp>
 #include <ql/methods/finitedifferences/expliciteuler.hpp>
 #include <ql/methods/finitedifferences/impliciteuler.hpp>
+#include <ql/experimental/callablebonds/blackcallablebondengine.hpp>
+#include <ql/experimental/callablebonds/treecallablebondengine.hpp>
+#include <ql/experimental/convertiblebonds/binomialconvertibleengine.hpp>
 
 #include "qlaux.h"
 #include "qlPricingEngine.h"
@@ -1075,6 +1078,99 @@ QlPricingEngine* qlFDEuropeanEngine(const char *fdscheme, QlGeneralizedBlackScho
       return ret(new QlPricingEngine(alloc(new FDEuropeanEngine<ImplicitEuler>(*arg(process), timeSteps, gridPoints, timeDependent))));
     else
       QL_FAIL("Unknown FD Scheme "<< fdscheme);
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+
+QlPricingEngine* qlBinomialConvertibleEngine(const char *tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e) {
+  try {
+    if (!strcmp(tree, "JarrowRudd"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<JarrowRudd>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "CoxRossRubinstein"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<CoxRossRubinstein>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "AdditiveEQPBinomialTree"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<AdditiveEQPBinomialTree>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "Trigeorgis"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<Trigeorgis>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "Tian"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<Tian>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "LeisenReimer"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<LeisenReimer>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "Joshi4"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<Joshi4>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "ExtendedJarrowRudd"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedJarrowRudd>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "ExtendedCoxRossRubinstein"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedCoxRossRubinstein>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "ExtendedAdditiveEQPBinomialTree"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedAdditiveEQPBinomialTree>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "ExtendedTrigeorgis"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedTrigeorgis>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "ExtendedTian"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedTian>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "ExtendedLeisenReimer"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedLeisenReimer>(*arg(process), timeSteps))));
+    else if (!strcmp(tree, "ExtendedJoshi4"))
+      return ret(new QlPricingEngine(alloc(new BinomialConvertibleEngine<ExtendedJoshi4>(*arg(process), timeSteps))));
+    else
+      QL_FAIL("Unknown Binomial Tree "<< tree);
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBlackCallableFixedRateBondEngine1(QlCallableBondVolatilityStructure* yieldVolStructure, QlYieldTermStructure* discountCurve, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BlackCallableFixedRateBondEngine(Handle<CallableBondVolatilityStructure>(*arg(yieldVolStructure)), Handle<YieldTermStructure>(*arg(discountCurve))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBlackCallableFixedRateBondEngine(QlQuote* fwdYieldVol, QlYieldTermStructure* discountCurve, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BlackCallableFixedRateBondEngine(Handle<Quote>(*arg(fwdYieldVol)), Handle<YieldTermStructure>(*arg(discountCurve))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBlackCallableZeroCouponBondEngine1(QlCallableBondVolatilityStructure* yieldVolStructure, QlYieldTermStructure* discountCurve, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BlackCallableZeroCouponBondEngine(Handle<CallableBondVolatilityStructure>(*arg(yieldVolStructure)), Handle<YieldTermStructure>(*arg(discountCurve))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlBlackCallableZeroCouponBondEngine(QlQuote* fwdYieldVol, QlYieldTermStructure* discountCurve, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new BlackCallableZeroCouponBondEngine(Handle<Quote>(*arg(fwdYieldVol)), Handle<YieldTermStructure>(*arg(discountCurve))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlTreeCallableFixedRateBondEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new TreeCallableFixedRateBondEngine(*arg(x0), *arg(timeGrid), qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlTreeCallableFixedRateBondEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new TreeCallableFixedRateBondEngine(*arg(x0), timeSteps, qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlTreeCallableZeroCouponBondEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new TreeCallableZeroCouponBondEngine((*arg(model)), *arg(timeGrid), qlNullableHandle(arg(termStructure))))));
+  } catch (std::exception& er) {
+    return handleException<QlPricingEngine*>(e, er);
+  }
+}
+QlPricingEngine* qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e) {
+  try {
+    return ret(new QlPricingEngine(alloc(new TreeCallableZeroCouponBondEngine((*arg(model)), timeSteps, qlNullableHandle(arg(termStructure))))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }

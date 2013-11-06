@@ -849,4 +849,9 @@ typedef boost::shared_ptr<ConvertibleBond> QlConvertibleBond;
 template <> class objClassName<ConvertibleBond *> { public: static const char *name() { return "ConvertibleBond"; } };
 template <> class objClassName<QlConvertibleBond *> { public: static const char *name() { return "QlConvertibleBond"; } };
 
+namespace QuantLib {class CallableBondVolatilityStructure;} using QuantLib::CallableBondVolatilityStructure;
+typedef boost::shared_ptr<CallableBondVolatilityStructure> QlCallableBondVolatilityStructure;
+template <> class objClassName<CallableBondVolatilityStructure *> { public: static const char *name() { return "CallableBondVolatilityStructure"; } };
+template <> class objClassName<QlCallableBondVolatilityStructure *> { public: static const char *name() { return "QlCallableBondVolatilityStructure"; } };
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

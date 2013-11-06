@@ -1,6 +1,0 @@
--- |volatility is the quoted fwd yield volatility, not price vol
-->
-::const Handle< CallableBondVolatilityStructure > &
--- ^yieldVolStructure
-::const Handle< YieldTermStructure > &
--- ^discountCurve

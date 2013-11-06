@@ -7,6 +7,8 @@
 #include <ql/instruments/capfloor.hpp>
 #include <ql/termstructures/volatility/capfloor/all.hpp>
 #include <ql/math/interpolations/all.hpp>
+#include <ql/experimental/callablebonds/callablebondvolstructure.hpp>
+#include <ql/experimental/callablebonds/callablebondconstantvol.hpp>
 
 #include "qlaux.h"
 #include "qlVolatilityTS.h"
@@ -405,6 +407,24 @@ QlCapFloorTermVolSurface* qlCapFloorTermVolSurface1(int settlementDate, Calendar
     return ret(new QlCapFloorTermVolSurface(alloc(new CapFloorTermVolSurface(Date(settlementDate), *arg(calendar), (BusinessDayConvention)bdc, qlBuildVector(optionTenors, optionTenorsLen), std::vector<double>(strikes, strikes+strikesLen), qlBuildHandleMatrix(volatilities, volatilitiesRows, volatilitiesCols), *arg(dc)))));
   } catch (std::exception& er) {
     return handleException<QlCapFloorTermVolSurface*>(e, er);
+  }
+}
+
+void qlFreeCallableBondVolatilityStructure(QlCallableBondVolatilityStructure *o) { del(o); }
+QlTermStructure* qlCallableBondVolatilityStructureAsTermStructure(QlCallableBondVolatilityStructure *o) { return ret(new QlTermStructure(*arg(o))); }
+
+QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility1(unsigned settlementDays, Calendar* x1, QlQuote* volatility, DayCounter* dayCounter, char **e) {
+  try {
+    return ret(new QlCallableBondVolatilityStructure(alloc(new CallableBondConstantVolatility(settlementDays, *arg(x1), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  } catch (std::exception& er) {
+    return handleException<QlCallableBondVolatilityStructure*>(e, er);
+  }
+}
+QlCallableBondVolatilityStructure* qlCallableBondConstantVolatility(int referenceDate, QlQuote* volatility, DayCounter* dayCounter, char **e) {
+  try {
+    return ret(new QlCallableBondVolatilityStructure(alloc(new CallableBondConstantVolatility(Date(referenceDate), Handle<Quote>(*arg(volatility)), *arg(dayCounter)))));
+  } catch (std::exception& er) {
+    return handleException<QlCallableBondVolatilityStructure*>(e, er);
   }
 }
 

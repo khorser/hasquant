@@ -47,6 +47,9 @@ module QuantLib.TermStructure.Volatility
 
   , capFloorTermVolSurface
   , capFloorTermVolSurface'
+
+  , callableBondConstantVolatility'
+  , callableBondConstantVolatility
   )
 where
 
@@ -529,5 +532,24 @@ capFloorTermVolSurface' = $(ffiCall 'capFloorTermVolSurface') c_capFloorTermVolS
 
 foreign import ccall safe "ql.h qlCapFloorTermVolSurface1"
   c_capFloorTermVolSurface' :: CDate -> Ptr CCalendar -> CInt -> CUInt -> Ptr (Ptr CPeriod) -> CUInt -> Ptr CDouble -> CUInt -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CCapFloorTermVolSurface)
+
+callableBondConstantVolatility' :: Word -- ^settlementDays
+  -> Calendar
+  -> Quote -- ^volatility
+  -> DayCounter -- ^dayCounter
+  -> IO CallableBondVolatilityStructure
+callableBondConstantVolatility' = $(ffiCall 'callableBondConstantVolatility') c_callableBondConstantVolatility'
+
+foreign import ccall safe "ql.h qlCallableBondConstantVolatility1"
+  c_callableBondConstantVolatility' :: CUInt -> Ptr CCalendar -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CCallableBondVolatilityStructure)
+
+callableBondConstantVolatility :: Day -- ^referenceDate
+  -> Quote -- ^volatility
+  -> DayCounter -- ^dayCounter
+  -> IO CallableBondVolatilityStructure
+callableBondConstantVolatility = $(ffiCall 'callableBondConstantVolatility) c_callableBondConstantVolatility
+
+foreign import ccall safe "ql.h qlCallableBondConstantVolatility"
+  c_callableBondConstantVolatility :: CDate -> Ptr CQuote -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CCallableBondVolatilityStructure)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

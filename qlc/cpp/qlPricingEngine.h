@@ -146,10 +146,20 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlMCHullWhiteCapFloorEngine1(const char *rngtrait, QlHullWhite* model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
   QlPricingEngine* DLLEXPORT qlMCPerformanceEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e);
 
-  QlPricingEngine* DLLEXPORT qlBinomialVanillaEngine(const char *tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e);
   QlPricingEngine* DLLEXPORT qlFDAmericanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e);
   QlPricingEngine* DLLEXPORT qlFDBermudanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e);
   QlPricingEngine* DLLEXPORT qlFDEuropeanEngine(const char *fdscheme, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned gridPoints, int timeDependent, char **e);
+
+  QlPricingEngine* DLLEXPORT qlBinomialVanillaEngine(const char *tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e);
+  QlPricingEngine* DLLEXPORT qlBinomialConvertibleEngine(const char *tree, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, char **e);
+  QlPricingEngine* DLLEXPORT qlBlackCallableFixedRateBondEngine1(QlCallableBondVolatilityStructure* yieldVolStructure, QlYieldTermStructure* discountCurve, char **e);
+  QlPricingEngine* DLLEXPORT qlBlackCallableFixedRateBondEngine(QlQuote* fwdYieldVol, QlYieldTermStructure* discountCurve, char **e);
+  QlPricingEngine* DLLEXPORT qlBlackCallableZeroCouponBondEngine1(QlCallableBondVolatilityStructure* yieldVolStructure, QlYieldTermStructure* discountCurve, char **e);
+  QlPricingEngine* DLLEXPORT qlBlackCallableZeroCouponBondEngine(QlQuote* fwdYieldVol, QlYieldTermStructure* discountCurve, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeCallableFixedRateBondEngine1(QlShortRateModel* x0, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeCallableFixedRateBondEngine(QlShortRateModel* x0, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeCallableZeroCouponBondEngine1(QlShortRateModel* model, TimeGrid* timeGrid, QlYieldTermStructure* termStructure, char **e);
+  QlPricingEngine* DLLEXPORT qlTreeCallableZeroCouponBondEngine(QlShortRateModel* model, unsigned timeSteps, QlYieldTermStructure* termStructure, char **e);
 #ifdef __cplusplus
 }
 #endif
