@@ -700,211 +700,93 @@ QlPricingEngine* qlFdHullWhiteSwaptionEngine(QlHullWhite* model, unsigned tGrid,
   }
 }
 
-// TODO use second template argument (Statistics)
 QlPricingEngine* qlMCVarianceSwapEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCVarianceSwapEngine<PseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCVarianceSwapEngine<PoissonPseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCVarianceSwapEngine<LowDiscrepancy>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCVarianceSwapEngine<Ziggurat>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCVarianceSwapEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCHestonHullWhiteEngine1(const char *rngtrait, QlHybridHestonHullWhiteProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCHestonHullWhiteEngine<PseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCHestonHullWhiteEngine<PoissonPseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCHestonHullWhiteEngine<LowDiscrepancy>(*arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCHestonHullWhiteEngine<Ziggurat>(*arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCHestonHullWhiteEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCAmericanEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, unsigned polynomOrder, int polynomType, unsigned nCalibrationSamples, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCAmericanEngine<PseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCAmericanEngine<PoissonPseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCAmericanEngine<LowDiscrepancy>(*arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCAmericanEngine<Ziggurat>(*arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCAmericanEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed, polynomOrder, (LsmBasisSystem::PolynomType)polynomType, nCalibrationSamples))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCBarrierEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, int isBiased, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCBarrierEngine<PseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, isBiased, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCBarrierEngine<PoissonPseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, isBiased, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCBarrierEngine<LowDiscrepancy>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, isBiased, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCBarrierEngine<Ziggurat>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, isBiased, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCBarrierEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, isBiased, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCDigitalEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCDigitalEngine<PseudoRandom>(*arg(x0), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCDigitalEngine<PoissonPseudoRandom>(*arg(x0), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCDigitalEngine<LowDiscrepancy>(*arg(x0), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCDigitalEngine<Ziggurat>(*arg(x0), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCDigitalEngine1Aux(rngtrait, *arg(x0), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCDiscreteArithmeticAPEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, int controlVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteArithmeticAPEngine<PseudoRandom>(*arg(process), brownianBridge, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteArithmeticAPEngine<PoissonPseudoRandom>(*arg(process), brownianBridge, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteArithmeticAPEngine<LowDiscrepancy>(*arg(process), brownianBridge, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteArithmeticAPEngine<Ziggurat>(*arg(process), brownianBridge, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCDiscreteArithmeticAPEngine1Aux(rngtrait, *arg(process), brownianBridge, antitheticVariate, controlVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCDiscreteArithmeticASEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteArithmeticASEngine<PseudoRandom>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteArithmeticASEngine<PoissonPseudoRandom>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteArithmeticASEngine<LowDiscrepancy>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteArithmeticASEngine<Ziggurat>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCDiscreteArithmeticASEngine1Aux(rngtrait, *arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCDiscreteGeometricAPEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteGeometricAPEngine<PseudoRandom>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteGeometricAPEngine<PoissonPseudoRandom>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteGeometricAPEngine<LowDiscrepancy>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCDiscreteGeometricAPEngine<Ziggurat>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCDiscreteGeometricAPEngine1Aux(rngtrait, *arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCEuropeanEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, unsigned timeSteps, unsigned timeStepsPerYear, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanEngine<PseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanEngine<PoissonPseudoRandom>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanEngine<LowDiscrepancy>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanEngine<Ziggurat>(*arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCEuropeanEngine1Aux(rngtrait, *arg(process), timeSteps, timeStepsPerYear, brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCEuropeanGJRGARCHEngine1(const char *rngtrait, QlGJRGARCHProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanGJRGARCHEngine<PseudoRandom>(*arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanGJRGARCHEngine<PoissonPseudoRandom>(*arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanGJRGARCHEngine<LowDiscrepancy>(*arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanGJRGARCHEngine<Ziggurat>(*arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCEuropeanGJRGARCHEngine1Aux(rngtrait, *arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCEuropeanHestonEngine1(const char *rngtrait, QlHestonProcess* x0, unsigned timeSteps, unsigned timeStepsPerYear, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanHestonEngine<PseudoRandom>(*arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanHestonEngine<PoissonPseudoRandom>(*arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanHestonEngine<LowDiscrepancy>(*arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCEuropeanHestonEngine<Ziggurat>(*arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCEuropeanHestonEngine1Aux(rngtrait, *arg(x0), timeSteps, timeStepsPerYear, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCHullWhiteCapFloorEngine1(const char *rngtrait, QlHullWhite* model, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCHullWhiteCapFloorEngine<PseudoRandom>(*arg(model), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCHullWhiteCapFloorEngine<PoissonPseudoRandom>(*arg(model), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCHullWhiteCapFloorEngine<LowDiscrepancy>(*arg(model), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCHullWhiteCapFloorEngine<Ziggurat>(*arg(model), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCHullWhiteCapFloorEngine1Aux(rngtrait, *arg(model), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
 }
 QlPricingEngine* qlMCPerformanceEngine1(const char *rngtrait, QlGeneralizedBlackScholesProcess* process, int brownianBridge, int antitheticVariate, unsigned requiredSamples, double requiredTolerance, unsigned maxSamples, unsigned seed, char **e) {
   try {
-    if (!strcmp(rngtrait, "PseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCPerformanceEngine<PseudoRandom>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "PoissonPseudoRandom"))
-      return ret(new QlPricingEngine(alloc(new MCPerformanceEngine<PoissonPseudoRandom>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "LowDiscrepancy"))
-      return ret(new QlPricingEngine(alloc(new MCPerformanceEngine<LowDiscrepancy>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else if (!strcmp(rngtrait, "Ziggurat"))
-      return ret(new QlPricingEngine(alloc(new MCPerformanceEngine<Ziggurat>(*arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
-    else
-      QL_FAIL("Unknown RNG "<< rngtrait);
+    return ret(new QlPricingEngine(alloc(qlMCPerformanceEngine1Aux(rngtrait, *arg(process), brownianBridge, antitheticVariate, requiredSamples, requiredTolerance, maxSamples, seed))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }
