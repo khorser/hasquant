@@ -102,15 +102,15 @@ run = do
   _ <- mapM (binomialPrice bsmProc [europeanInst, bermudanInst, americanInst])
     [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
 
-  mceEng <- mcEuropeanEngine' PseudoRandom bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
+  mceEng <- mcEuropeanEngine PseudoRandom bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
   setPricingEngine europeanInst mceEng
   npv europeanInst >>= print
   
-  mceEng2 <- mcEuropeanEngine' LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
+  mceEng2 <- mcEuropeanEngine LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
   setPricingEngine europeanInst mceEng2
   npv europeanInst >>= print
 
-  mcaEng <- mcAmericanEngine' PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096)
+  mcaEng <- mcAmericanEngine PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096)
   setPricingEngine americanInst mcaEng
   npv americanInst >>= print
 
