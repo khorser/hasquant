@@ -8,12 +8,16 @@ import QuantLib.Time.Date
 import QuantLib.Utilities
 
 import qualified QuantLib.Example.Bond as BondExample
-import qualified QuantLib.Example.Repo as RepoExample
-import qualified QuantLib.Example.FRA as FRAExample
-import qualified QuantLib.Example.Swap as SwapExample
-import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
-import qualified QuantLib.Example.Replication as ReplicationExample
 import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
+import qualified QuantLib.Example.CallableBond as CallableBondExample
+import qualified QuantLib.Example.CDS as CDSExample
+import qualified QuantLib.Example.ConvertibleBond as ConvertibleBondExample
+import qualified QuantLib.Example.EquityOption as EquityOptionExample
+import qualified QuantLib.Example.FittedBondCurve as BondCurveExample
+import qualified QuantLib.Example.FRA as FRAExample
+import qualified QuantLib.Example.Replication as ReplicationExample
+import qualified QuantLib.Example.Repo as RepoExample
+import qualified QuantLib.Example.Swap as SwapExample
 
 main :: IO ()
 main = do
@@ -89,6 +93,41 @@ main = do
   putStrLn $ "ATM Swaption NPV: " ++ show npvA
   putStrLn $ "OTM Swaption NPV: " ++ show npvO
   putStrLn $ "ITM Swaption NPV: " ++ show npvI
+
+  putStrLn "*** Equity Option Example ***"
+  (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd mc) <- EquityOptionExample.run
+  putStrLn $ "Analytic Euro engine: " ++ show analyticEuro
+  putStrLn $ "Analytic Heston model: " ++ show analyticHeston
+  putStrLn $ "Bates: " ++ show bates
+  putStrLn $ "Barone-Adesi-Whaley: " ++ show baw
+  putStrLn $ "Bjerksund-Stensland: " ++ show bjs
+  putStrLn $ "Binomial: " ++ show bin
+  putStrLn $ "Integral: " ++ show int
+  putStrLn $ "Finite differences: " ++ show fd
+  putStrLn $ "Monte Carlo: " ++ show mc
+
+  putStrLn "*** CDS Example ***"
+  (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- keepingSettings' CDSExample.run
+  putStrLn $ "Probabilities: " ++ show probs
+  putStrLn $ "Fair spreads: " ++ show fairSpread
+  putStrLn $ "NPVs: " ++ show npv
+  putStrLn $ "Default leg NPVs: " ++ show defNpv
+  putStrLn $ "Coupon leg NPVs: " ++ show cpnNpv
+
+  putStrLn "*** Callable Bond Example ***"
+  (CallableBondExample.Result ps ys) <- keepingSettings' CallableBondExample.run
+  putStrLn $ "Prices: " ++ show ps
+  putStrLn $ "Yields: " ++ show ys
+
+  putStrLn "*** Convertible Bond Example ***"
+  (ConvertibleBondExample.Result jr crr ad tr ti lr j) <- keepingSettings' ConvertibleBondExample.run
+  putStrLn $ "Jarrow-Rudd: " ++ show jr
+  putStrLn $ "Cox-Ross-Rubinstein: " ++ show crr
+  putStrLn $ "Additive EQP Binomial Tree: " ++ show ad
+  putStrLn $ "Trigeorgis: " ++ show tr
+  putStrLn $ "Tian: " ++ show ti
+  putStrLn $ "Leisen-Reimer: " ++ show lr
+  putStrLn $ "Joshi: " ++ show j
 
   putStrLn "DONE"
 

@@ -80,7 +80,7 @@ run = do
     parRate :: YieldTermStructure -> [Day] -> DayCounter -> IO ()
     parRate ts ds dc = do
       dfs <- mapM (\(d1, d2) -> do
-              let (Right dt) = yearFraction dc d1 d2 d1 d2
+              let (Right dt) = yearFraction dc d1 d2 (Just d1) (Just d2)
               df <- TS.discount' ts d2 False
               return $ df * dt) $
                 zip (init ds) (drop 1 ds)
@@ -99,7 +99,7 @@ run = do
           bcfs <- underlying h >>= cashFlows
           cfs <- CF.cashFlows bcfs False bondSettle
           let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
-          let (Right m) = yearFraction dc tod (last ds) tod (last ds)
+          let (Right m) = yearFraction dc tod (last ds) (Just tod) (Just $ last ds)
           _ <- printf "Tenor %5.2fY: " m
           parRate ts0 (bondSettle:ds) dc
           forM_ curves $
