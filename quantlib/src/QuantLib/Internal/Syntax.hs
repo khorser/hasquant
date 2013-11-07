@@ -95,10 +95,9 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
--- For different types we have different sets of acceptable cases.
--- This combinator streamlines the work accepting a list of pairs (predicate, value to return)
+-- A generalization of if/case/...
 -- Introduce an infix ||-like operator?
-seqParse :: (Monad m, Show a) => Name -> [(Name -> m Bool, a)] -> m a
+seqParse :: (Monad m, Show a, Show b) => a -> [(a -> m Bool, b)] -> m b
 seqParse n as = seqParse' as
   where seqParse' [] = error $ "No matching alternative found while parsing " ++ show n ++ ", options considered: " ++ show (map snd as)
         seqParse' ((p, r):xs) = p n >>= \m -> if m then return r else seqParse' xs

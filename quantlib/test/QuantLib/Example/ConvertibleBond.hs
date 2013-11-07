@@ -45,8 +45,7 @@ data Result = Result
 run :: IO Result
 run = do
   cal <- target
-  t <- today
-  tod <- adjust cal t Following
+  tod <- adjust cal (6 `november` 2013) Following
   setEvaluationDate tod
   settl <- advance cal tod (fromIntegral settlementDays) Days Following False
   exec <- advance cal settl len Years Following False

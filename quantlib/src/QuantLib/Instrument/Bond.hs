@@ -59,8 +59,8 @@ module QuantLib.Instrument.Bond
   , yieldValueBasisPoint
   , zSpread
 
-  , cleanPriceNow
-  , dirtyPriceNow
+  , currentCleanPrice
+  , currentDirtyPrice
 
   , callableFixedRateBond
   , callableZeroCouponBond
@@ -682,19 +682,19 @@ foreign import ccall safe "ql.h qlFloatingRateBond1"
   c_floatingRateBond' :: CUInt -> CDouble -> CDate -> CDate -> CInt -> Ptr CCalendar -> Ptr CIborIndex -> Ptr CDayCounter -> CInt -> CInt -> CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CInt -> CDouble -> CDate -> CDate -> CInt -> CInt -> Ptr CString -> IO (Ptr CBond)
 
 -- |theoretical clean price for the current evaluation date and term structure
-cleanPriceNow :: Bond -> IO Double
-cleanPriceNow = $(ffiCallX 'cleanPriceNow) c_cleanPriceNow
+currentCleanPrice :: Bond -> IO Double
+currentCleanPrice = $(ffiCallX 'currentCleanPrice) c_currentCleanPrice
 
 foreign import ccall safe "ql.h qlBondCleanPrice"
-  c_cleanPriceNow :: Ptr CBond -> Ptr CString -> IO CDouble
+  c_currentCleanPrice:: Ptr CBond -> Ptr CString -> IO CDouble
 
 -- |theoretical dirty price
 -- The default bond settlement is used for calculation. /Warning/ the theoretical price calculated from a flat term structure might differ slightly from the price calculated from the corresponding yield by means of the other overload of this function. If the price from a constant yield is desired, it is advisable to use such other overload.
-dirtyPriceNow :: Bond -> IO Double
-dirtyPriceNow = $(ffiCallX 'dirtyPriceNow) c_dirtyPriceNow
+currentDirtyPrice :: Bond -> IO Double
+currentDirtyPrice= $(ffiCallX 'currentDirtyPrice) c_currentDirtyPrice
 
 foreign import ccall safe "ql.h qlBondDirtyPrice"
-  c_dirtyPriceNow :: Ptr CBond -> Ptr CString -> IO CDouble
+  c_currentDirtyPrice :: Ptr CBond -> Ptr CString -> IO CDouble
 
 callableFixedRateBond :: Word -- ^settlementDays
   -> Double -- ^faceAmount
