@@ -218,7 +218,7 @@ test_cds = do
   (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- Settings.keepingSettings' CDSExample.run
   subAssert $ assertListsAreClose id probs [97.040061, 94.175780] 1.0e-6
   subAssert $ assertListsAreClose id fairSpread [1.500000, 1.500000, 1.500000, 1.500000] 1.0e-6
-  subAssert $ assertListsAreClose id npv [-7.18501e-11, -1.52795e-10, -2.05728e-09, -6.25732e-10] 1.0e-10
+  subAssert $ assertListsAreClose id npv [-7.18501e-11, -1.52795e-10, -2.05728e-09, -6.25732e-10] 1.0e-9
   subAssert $ assertListsAreClose id defNpv [-5218.16, -8882.83, -16142.9, -30195.6] 1.0e-1
   subAssert $ assertListsAreClose id cpnNpv [5218.16, 8882.83, 16142.9, 30195.6] 1.0e-1
 
