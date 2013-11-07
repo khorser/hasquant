@@ -95,12 +95,17 @@ qlEnumsInfo = qlEnums ''QLEnum >>= listE . f
     enumSizeE n = reify n >>= \(TyConI (DataD _ _ _ cs _)) ->
       litE $ integerL (fromIntegral $ length cs)
 
+data Cond m a b = a :== b | (a -> Bool) :-> b | (a -> m Bool) :=> b | (a -> m Bool) :~> (a -> b)
+
 -- A generalization of if/case/...
--- Introduce an infix ||-like operator?
-seqParse :: (Monad m, Show a, Show b) => a -> [(a -> m Bool, b)] -> m b
-seqParse n as = seqParse' as
-  where seqParse' [] = error $ "No matching alternative found while parsing " ++ show n ++ ", options considered: " ++ show (map snd as)
-        seqParse' ((p, r):xs) = p n >>= \m -> if m then return r else seqParse' xs
+-- Introduce (applicative?) infix ||-like operators?
+cond :: (Monad m, Eq a, Show a, Show b) => [Cond m a b] -> a -> m b
+cond as n = cond' as []
+  where cond' [] tried = error $ "Exhausted all alternatives while parsing " ++ show n ++ ": " ++ show (reverse tried)
+        cond' ((p :== r) : xs) tried = if p == n then return r else cond' xs (r:tried)
+        cond' ((p :-> r) : xs) tried = if p n then return r else cond' xs (r:tried)
+        cond' ((p :=> r) : xs) tried = p n >>= \m -> if m then return r else cond' xs (r:tried)
+        cond' ((p :~> r) : xs) tried = p n >>= \m -> if m then return (r n) else cond' xs (r n:tried)
 
 isEnum :: Name -> Q Bool
 isEnum n = elem n <$> qlEnums ''QLEnum
@@ -115,35 +120,29 @@ isForeignPtr n = f <$> reify n
     f (TyConI (DataD [] p _ _ _)) | p == ''ForeignPtr = True
     f _ = False
 
-nameToTop :: Name -> TopArg
-nameToTop n | n == ''Int = IntA
-nameToTop n | n == ''Word = WordA
-nameToTop n | n == ''Day = DayA
-nameToTop n | n == ''Bool = BoolA
-nameToTop n | n == ''String = StringA
-nameToTop n | n == ''Double = DoubleA
-nameToTop n | n == ''YearFraction = YearFractionA
-nameToTop n = error $ "Unsupported top type: " ++ show n
+nameToTop :: Name -> Q TopArg
+nameToTop = cond
+  [''Int :== IntA, ''Word :== WordA, ''Day :== DayA, ''Bool :== BoolA,
+    ''String :== StringA, ''Double :== DoubleA,
+    ''YearFraction :== YearFractionA]
 
 nestedNameToTop :: Name -> Q NestedArg
-nestedNameToTop n | n == ''Day = return DayN
-nestedNameToTop n | n == ''Double = return DoubleN
-nestedNameToTop n | n == ''Bool = return BoolN
-nestedNameToTop n | n == ''YearFraction = return YearFractionN
-nestedNameToTop n | n == ''Word = return WordN
-nestedNameToTop n = seqParse n [(isEnum, EnumN n), (isForeignPtr, ForeignPtrN)]
+nestedNameToTop = cond
+  [''Day :== DayN, ''Double :== DoubleN, ''Bool :== BoolN,
+    ''YearFraction :== YearFractionN, ''Word :== WordN,
+    isEnum :~> EnumN, isForeignPtr :=> ForeignPtrN]
 
 topArgType :: Type -> Q TopArg
-topArgType (ConT n) | isAtomicTop n = return $ nameToTop n
-topArgType (ConT n) = seqParse n [(isEnum, EnumA n), (isLitEnum, LitEnumA), (isForeignPtr, ForeignPtrA)]
+topArgType (ConT n) | isAtomicTop n = nameToTop n
+topArgType (ConT n) = cond [isEnum :~> EnumA, isLitEnum :=> LitEnumA, isForeignPtr :=> ForeignPtrA] n
 topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe = maybeType n
   where
-    maybeType t | t == ''Day = return OptDayA
-    maybeType t | t == ''Bool = return OptBoolA
-    maybeType t | t == ''Int = return OptIntA
-    maybeType t | t == ''Double = return OptDoubleA
-    maybeType t | t == ''Word = return OptWordA
-    maybeType t = seqParse t [(isLitEnum, OptLitEnumA), (isForeignPtr, OptForeignPtrA)]
+    maybeType :: Name -> Q TopArg
+    maybeType = cond
+      [''Day :== OptDayA, ''Bool :== OptBoolA,
+        ''Int :== OptIntA, ''Double :== OptDoubleA,
+        ''Word :== OptWordA,
+        isLitEnum :=> OptLitEnumA, isForeignPtr :=> OptForeignPtrA]
 topArgType (AppT ListT (ConT n)) = ListA <$> nestedNameToTop n
 topArgType (AppT
           ListT
@@ -151,10 +150,8 @@ topArgType (AppT
             (AppT (TupleT 2) (ConT n1))
             (ConT n2))) =
               ListA2 <$> nestedNameToTop n1 <*> nestedNameToTop n2
-topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix =
-  if n == ''Double
-    then return MatrixDoubleA
-    else seqParse n  [(isForeignPtr, MatrixForeignPtrA)]
+topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = cond
+  [''Double :== MatrixDoubleA, isForeignPtr :=> MatrixForeignPtrA] n
 topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
@@ -167,14 +164,10 @@ data RetVal = AtomicRV AtomicRet | IORV AtomicRet | EitherRV AtomicRet
   deriving (Show, Eq)
 
 nameToRetVal :: Name -> Q AtomicRet
-nameToRetVal n | n == ''Int = return IntR
-nameToRetVal n | n == ''Word = return WordR
-nameToRetVal n | n == ''Day = return DayR
-nameToRetVal n | n == ''Double = return DoubleR
-nameToRetVal n | n == ''Bool = return BoolR
-nameToRetVal n | n == ''YearFraction = return YearFractionR
-nameToRetVal n | n == ''String = return StringR
-nameToRetVal n = seqParse n [(isEnum, EnumR n), (isForeignPtr, ForeignPtrR)]
+nameToRetVal = cond
+  [''Int :== IntR, ''Word :== WordR, ''Day :== DayR, ''Double :== DoubleR,
+    ''Bool :== BoolR, ''YearFraction :== YearFractionR, ''String :== StringR,
+    isEnum :~> EnumR, isForeignPtr :=> ForeignPtrR]
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | (m, d) == (''Maybe, ''Day) =
