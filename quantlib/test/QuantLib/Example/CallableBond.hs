@@ -37,7 +37,7 @@ data Result = Result
 
 run :: IO Result
 run = do
-  setEvaluationDate tod
+  setEvaluationDate $ Just tod
   bbdc <- actualActualBond
   q <- simpleQuote 0.055 >>= asQuote
   flatRate <- flatForward tod q bbdc Compounded Semiannual

@@ -45,7 +45,7 @@ run :: IO Result
 run = do
   cal <- target
   settleDate <- adjust cal settleDate1 Following
-  advance cal settleDate (-fixingDays) Days Following False >>= setEvaluationDate
+  advance cal settleDate (-fixingDays) Days Following False >>= setEvaluationDate . Just
 
   depoQuotes <- forM depoRates $ simpleQuote >=> asQuote
   fraQuotes <- forM fraRates $ simpleQuote >=> asQuote

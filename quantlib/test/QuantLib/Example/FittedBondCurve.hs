@@ -38,7 +38,7 @@ run = do
   cal <- nullCalendar
   tod1 <- today
   tod <- adjust cal tod1 Following
-  setEvaluationDate tod
+  setEvaluationDate $ Just tod
   dc <- simple
 
   p <- period bondSettleDays Days
@@ -51,7 +51,7 @@ run = do
                   step2 tod dc cal ts0 instrA instrB curves >> return (drop 1 instrA, drop 1 instrB)
 
   newtod <- advance cal tod 24 Months ModifiedFollowing False
-  setEvaluationDate newtod
+  setEvaluationDate $ Just newtod
   newBondSettle <- advance cal newtod bondSettleDays Days Following False
 
   (ts00, curves) <- step3 newtod dc cal newBondSettle iA iB
@@ -141,7 +141,7 @@ run = do
 
     step2 tod dc cal ts0 instrA _ curves = do
       newtoday <- advance cal tod 23 Months ModifiedFollowing False
-      setEvaluationDate newtoday
+      setEvaluationDate $ Just newtoday
       bondSettle <- advance cal newtoday bondSettleDays Days Following False
 
       printRates ts0 dc bondSettle newtoday curves instrA

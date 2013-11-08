@@ -41,7 +41,7 @@ data Result = Result [IterationResult] [IterationResult] deriving Show
 
 run :: IO Result
 run = do
-  setEvaluationDate todaysDate
+  setEvaluationDate $ Just todaysDate
   eu3m <- Ibor.euribor3M Nothing
   eu3mRI <- asInterestRateIndex eu3m
   fraCalendar <- asIndex eu3mRI >>= fixingCalendar

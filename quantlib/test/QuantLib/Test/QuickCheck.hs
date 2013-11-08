@@ -45,12 +45,12 @@ instance Arbitrary InvalidDay where
 
 setAndGetEvaluationDate :: Day -> IO Day
 setAndGetEvaluationDate d = do
-  Settings.setEvaluationDate d
+  Settings.setEvaluationDate (Just d)
   Settings.evaluationDate
 
 setAndGetEvaluationDateWithExceptions :: Day -> IO Day
 setAndGetEvaluationDateWithExceptions d = do
-  catch (Settings.setEvaluationDate d)
+  catch (Settings.setEvaluationDate (Just d))
     (\(_ :: Error.Error) -> return ())
   Settings.evaluationDate
 
@@ -69,7 +69,7 @@ prop_validEvaluationDate = monadicIO $ do
 prop_invalidEvaluationDate :: InvalidDay -> Property
 prop_invalidEvaluationDate (InvalidDay d) = monadicIO $ do
   t <- run today
-  _ <- run $ Settings.setEvaluationDate t
+  _ <- run $ Settings.setEvaluationDate (Just t)
   -- TODO use assertThrowsIO
   d2 <- run $ setAndGetEvaluationDateWithExceptions d
   assert $ t == d2

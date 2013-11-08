@@ -51,9 +51,9 @@ data Result = Result
   }
 
 run :: Bool -> IO Result
-run otm = do
+run otmItm = do
   cal <- target
-  setEvaluationDate tod
+  setEvaluationDate $ Just tod
   flatRate <- simpleQuote 0.04875825 >>= asQuote
   dc365 <- actual365Fixed
   ts <- flatForward settl flatRate dc365 Continuous Annual
@@ -114,14 +114,19 @@ run otm = do
   otmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedOTMRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
   otmSwaption <- swaption otmSwap ex Physical >>= asOption >>= asInstrument
-  npvO <-
-    if otm
-      then priceSwaption otmSwaption modelG2 300 modelHW modelHW2 modelBK
-      else return $ replicate 5 0
+
   itmSwap <- vanillaSwap swapType 1000.0 fixedSchedule fixedITMRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
   itmSwaption <- swaption itmSwap ex Physical >>= asOption >>= asInstrument
-  npvI <- priceSwaption itmSwaption modelG2 50 modelHW modelHW2 modelBK
+
+  npvO <-
+    if otmItm
+      then priceSwaption otmSwaption modelG2 300 modelHW modelHW2 modelBK
+      else return $ replicate 5 0
+  npvI <- 
+    if otmItm
+      then priceSwaption itmSwaption modelG2 50 modelHW modelHW2 modelBK
+      else return $ replicate 5 0
 
   return Result {
     g2Vols = g2v

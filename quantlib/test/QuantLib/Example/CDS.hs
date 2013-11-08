@@ -44,7 +44,7 @@ run :: IO Result
 run = do
   cal <- target
   tod <- adjust cal (15 `may` 2007) Following
-  setEvaluationDate tod
+  setEvaluationDate $ Just tod
   flatRate <- simpleQuote 0.01 >>= asQuote
   dc <- actual365Fixed
   ts <- flatForward tod flatRate dc Continuous Annual

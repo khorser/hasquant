@@ -35,7 +35,7 @@ data Result = Result
 
 run :: IO Result
 run = do
-  setEvaluationDate tod
+  setEvaluationDate $ Just tod
   under <- simpleQuote (head underlyingValues)
   underlyingQuote <- asQuote under
   riskFreeRate <- simpleQuote 0.04 >>= asQuote
@@ -66,7 +66,7 @@ run = do
   portfolio3 <- foldM (addInstrument europeanEngine under) p
     (zip maturities3 killDates3) >>= composite
 
-  setEvaluationDate tod
+  setEvaluationDate $ Just tod
 
   [npv1, npv2, npv3] <- mapM
     (\v -> setValue under v
@@ -106,7 +106,7 @@ run = do
           innerPayoff <- plainVanillaPayoff Put barrier >>= asStrikedTypePayoff
           putn <- europeanOption innerPayoff innerExercise >>= asOneAssetOption >>= asOption >>= asInstrument
           setPricingEngine putn engine
-          setEvaluationDate killDate
+          setEvaluationDate $ Just killDate
           _ <- setValue under barrier
           portfolioValue <- composite p >>= npv
           putValue <- npv putn

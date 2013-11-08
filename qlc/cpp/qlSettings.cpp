@@ -16,7 +16,7 @@ int qlSettingsEnforceTodaysHistoricFixings() {
 
 void qlSettingsSetEvaluationDate(int x, char **e) {
   try {
-    Settings::instance().evaluationDate() = Date(x);
+    Settings::instance().evaluationDate() = qlNullableDate(x);
   } catch (std::exception& er) {
     handleException<void *>(e, er);
   }
@@ -39,13 +39,6 @@ void qlSettingsAnchorEvaluationDate() {
 }
 int qlSettingsIncludeReferenceDateEvents() {
   return Settings::instance().includeReferenceDateEvents();
-}
-void qlSettingsResetEvaluationDate(char **e) {
-  try {
-    return Settings::instance().resetEvaluationDate();
-  } catch (std::exception& er) {
-    (void)handleException<void*>(e, er);
-  }
 }
 void qlSettingsSetIncludeReferenceDateEvents(int x0) {
   Settings::instance().includeReferenceDateEvents() = x0;

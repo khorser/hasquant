@@ -46,7 +46,7 @@ run = do
   repoDayCountConvention <- actual360
   bondCalendar <- nullCalendar
   bondDayCountConvention <- thirty360BondBasis
-  setEvaluationDate repoSettlementDate
+  setEvaluationDate $ Just repoSettlementDate
   bondSimpleQuote <- simpleQuote 0.01
   bondQuote <- asQuote bondSimpleQuote
   bondCurve <- flatForward repoSettlementDate bondQuote bondDayCountConvention Compounded bondCouponFrequency
