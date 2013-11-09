@@ -51,8 +51,8 @@ assertClose x1 x2 e = assertBool $ abs(x1 - x2) < e
 assertRecordMemberClose :: (a -> Double) -> a -> Double -> Double -> Assertion
 assertRecordMemberClose f x1 x2 e = assertBool $ abs(f x1 - x2) < e
 
-test_bondEval :: IO ()
-test_bondEval = do
+test_BondEval :: IO ()
+test_BondEval = do
   r <- Settings.keepingSettings' BondExample.run
   let (fixnpv, znpv, fnpv) = BondExample.npvR r
       (fixy, zy, fy) = BondExample.yieldR r
@@ -95,8 +95,8 @@ test_bondEval = do
 
   assertEqual tradable (True, True, False)
 
-test_repoEval :: IO ()
-test_repoEval = do
+test_RepoEval :: IO ()
+test_RepoEval = do
   r <- Settings.keepingSettings' RepoExample.run
 
   subAssert $ assertRecordMemberClose RepoExample.cleanPriceR r 89.9769362 1e-7
@@ -111,8 +111,8 @@ test_repoEval = do
   subAssert $ assertRecordMemberClose RepoExample.impliedYieldR r 0.050000633 1e-9
   subAssert $ assertRecordMemberClose RepoExample.zeroRateR r 0.05 1e-7
 
-test_fraEval :: IO ()
-test_fraEval = do
+test_FraEval :: IO ()
+test_FraEval = do
   (FRAExample.Result it1 it2) <- Settings.keepingSettings' FRAExample.run
   let
     fwdRates1   = [3.0e-2, 3.1e-2, 3.2e-2, 3.3e-2, 3.4e-2]
@@ -140,8 +140,8 @@ test_fraEval = do
   subAssert $ assertListsAreClose FRAExample.zRateR it2 zRates2 1.0e-5
   subAssert $ assertListsAreClose FRAExample.npvR it2 npvs2 1.0e-5
 
-test_swapEval :: IO ()
-test_swapEval = do
+test_SwapEval :: IO ()
+test_SwapEval = do
   (SwapExample.Result it1 it2) <- Settings.keepingSettings' SwapExample.run
   let
     spotNpvs1         = [19065.88091, 19076.13635, 19056.02274]
@@ -172,15 +172,15 @@ test_swapEval = do
   subAssert $ assertListsAreClose SwapExample.spotFairSpreadR fwds2 fwdFairSpreads2 1.0e-5
   subAssert $ assertListsAreClose SwapExample.spotFairRateR fwds2 fwdFairRates2 1.0e-5
 
-test_replication :: IO ()
-test_replication = do
+test_Replication :: IO ()
+test_Replication = do
   (ReplicationExample.Result npvInit npvOut npvIn) <- Settings.keepingSettings' ReplicationExample.run
   subAssert $ assertListsAreClose id npvInit [4.260726, 4.322358, 4.295464, 4.280909] 1.0e-6
   subAssert $ assertListsAreClose id npvOut [2.513058, 2.539365, 2.528362, 2.522105] 1.0e-6
   subAssert $ assertListsAreClose id npvIn [5.739125, 5.851239, 5.799867, 5.773678] 1.0e-6
 
-test_bermudanSwaptionLongRunning :: IO ()
-test_bermudanSwaptionLongRunning = do
+test_BermudanSwaptionLongRunning :: IO ()
+test_BermudanSwaptionLongRunning = do
   (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Settings.keepingSettings' BermudanSwaptionExample.run
   subAssert $ assertListsAreClose id g2v [10.04549, 10.51234, 10.70500, 10.83817, 10.94387] 1.0e-5
   subAssert $ assertListsAreClose id hwv [10.62037, 10.62959, 10.63414, 10.64428, 10.66132] 1.0e-5
@@ -194,8 +194,8 @@ test_bermudanSwaptionLongRunning = do
   subAssert $ assertListsAreClose id npvO [3.194, 3.1808, 2.4921, 2.4596, 2.615, 2.5829, 3.2751] 1.0e-3
   subAssert $ assertListsAreClose id npvI [42.609, 42.705, 42.253, 42.215, 42.364, 42.311, 41.825] 1.0e-3
 
-test_equityOptionLongRunning :: IO ()
-test_equityOptionLongRunning = do
+test_EquityOptionLongRunning :: IO ()
+test_EquityOptionLongRunning = do
   (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd mc) <- Settings.keepingSettings' EquityOptionExample.run
   subAssert $ assertListsAreClose id analyticEuro   [3.844308] 1.0e-6
   subAssert $ assertListsAreClose id analyticHeston [3.844306] 1.0e-6
@@ -213,8 +213,8 @@ test_equityOptionLongRunning = do
   subAssert $ assertListsAreClose id (bin!!5)   [3.844308, 4.360713, 4.486076] 1.0e-6
   subAssert $ assertListsAreClose id (bin!!6)   [3.844308, 4.360713, 4.486076] 1.0e-6
 
-test_cds :: IO ()
-test_cds = do
+test_Cds :: IO ()
+test_Cds = do
   (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- Settings.keepingSettings' CDSExample.run
   subAssert $ assertListsAreClose id probs [97.040061, 94.175780] 1.0e-6
   subAssert $ assertListsAreClose id fairSpread [1.500000, 1.500000, 1.500000, 1.500000] 1.0e-6
@@ -222,8 +222,8 @@ test_cds = do
   subAssert $ assertListsAreClose id defNpv [-5218.16, -8882.83, -16142.9, -30195.6] 1.0e-1
   subAssert $ assertListsAreClose id cpnNpv [5218.16, 8882.83, 16142.9, 30195.6] 1.0e-1
 
-test_convertibleBond :: IO ()
-test_convertibleBond = do
+test_ConvertibleBond :: IO ()
+test_ConvertibleBond = do
   (ConvertibleBondExample.Result jr crr ad tr ti lr j) <- Settings.keepingSettings' ConvertibleBondExample.run
   subAssert $ assertListsAreClose id jr [105.690844, 108.141608] 1.0e-6
   subAssert $ assertListsAreClose id crr [105.698533, 108.166210] 1.0e-6
@@ -233,20 +233,20 @@ test_convertibleBond = do
   subAssert $ assertListsAreClose id lr [105.668326, 108.155630] 1.0e-6
   subAssert $ assertListsAreClose id j [105.668327, 108.155630] 1.0e-6
 
-test_callableBond :: IO ()
-test_callableBond = do
+test_CallableBond :: IO ()
+test_CallableBond = do
   (CallableBondExample.Result ps ys) <- Settings.keepingSettings' CallableBondExample.run
   subAssert $ assertListsAreClose id ps [96.47, 95.64, 92.31, 87.08, 77.34] 1.0e-2
   subAssert $ assertListsAreClose id ys [5.48, 5.67, 6.49, 7.85, 10.64] 1.0e-2
 
-test_evalDate :: IO ()
-test_evalDate = do
+test_EvalDate :: IO ()
+test_EvalDate = do
   t1 <- Settings.evaluationDate
   t2 <- today
   assertEqual t1 t2
 
-test_nullEvalDate :: IO ()
-test_nullEvalDate = do
+test_NullEvalDate :: IO ()
+test_NullEvalDate = do
   Settings.setEvaluationDate (Just $ december 29 2012)
   t0 <- Settings.evaluationDate
   assertEqual t0 (fromGregorian 2012 12 29)
@@ -255,59 +255,59 @@ test_nullEvalDate = do
   t1 <- Settings.evaluationDate
   assertEqual t1 t2
 
-test_defaultTodaysHistFixings :: IO ()
-test_defaultTodaysHistFixings = do
+test_DefaultTodaysHistFixings :: IO ()
+test_DefaultTodaysHistFixings = do
   e1 <- Settings.enforceTodaysHistoricFixings
   assertEqual e1 False
 
-test_setTodaysHistFixings :: IO ()
-test_setTodaysHistFixings = do
+test_SetTodaysHistFixings :: IO ()
+test_SetTodaysHistFixings = do
   e0 <- Settings.enforceTodaysHistoricFixings
   Settings.setEnforceTodaysHistoricFixings True
   e1 <- Settings.enforceTodaysHistoricFixings
   Settings.setEnforceTodaysHistoricFixings e0
   assertEqual e1 True
 
-test_minDate :: IO ()
-test_minDate = assertEqual minDate (fromGregorian 1901 01 01)
+test_MinDate :: IO ()
+test_MinDate = assertEqual minDate (fromGregorian 1901 01 01)
 
-test_maxDate :: IO ()
-test_maxDate = assertEqual maxDate (fromGregorian 2199 12 31)
+test_MaxDate :: IO ()
+test_MaxDate = assertEqual maxDate (fromGregorian 2199 12 31)
 
-test_leapYears :: IO ()
-test_leapYears = assertEqual
+test_LeapYears :: IO ()
+test_LeapYears = assertEqual
                   [False, True, False]
                   (map isLeap [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5])
 
-test_emptyLegStart :: IO ()
-test_emptyLegStart = do
+test_EmptyLegStart :: IO ()
+test_EmptyLegStart = do
   l <- Leg.leg []
   let (Left m) = Leg.startDate l
   assertBool (not $ null m)
 
-test_singleLegToday :: IO ()
-test_singleLegToday = do
+test_SingleLegToday :: IO ()
+test_SingleLegToday = do
   t <- today
   l <- Leg.leg [(100, t)]
   let (Right sd) = Leg.startDate l
   assertEqual sd t
 
-test_twoLegsUnsorted :: IO ()
-test_twoLegsUnsorted = do
+test_TwoLegsUnsorted :: IO ()
+test_TwoLegsUnsorted = do
   t <- today
   l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
   let (Right sd) = Leg.startDate l
   assertEqual sd (addDays (-10) t)
 
-test_threeLegsSorted :: IO ()
-test_threeLegsSorted = do
+test_ThreeLegsSorted :: IO ()
+test_ThreeLegsSorted = do
   t <- today
   l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
   let (Right sd) = Leg.startDate l
   assertEqual sd (addDays (-10) t)
 
-test_calAdjust :: IO ()
-test_calAdjust = do
+test_CalAdjust :: IO ()
+test_CalAdjust = do
   c <- Calendar.russia
   a <- Calendar.adjust
           c
@@ -315,8 +315,8 @@ test_calAdjust = do
           BusinessDayConvention.Preceding
   assertEqual (fromGregorian 2012 12 21) a
 
-test_calAdvance :: IO ()
-test_calAdvance = do
+test_CalAdvance :: IO ()
+test_CalAdvance = do
   c <- Calendar.russia
   a <- Calendar.advance
         c
@@ -327,19 +327,19 @@ test_calAdvance = do
         False
   assertEqual (fromGregorian 2013 01 18) a
 
-test_currency :: IO ()
-test_currency = do
+test_Currency :: IO ()
+test_Currency = do
   c <- Currency.gbp
   assertEqual "British pound sterling" (show c)
 
-test_a365fCounter :: IO ()
-test_a365fCounter = do
+test_A365fCounter :: IO ()
+test_A365fCounter = do
   c1 <- DayCounter.a365F
   c2 <- DayCounter.actual365Fixed
   assertEqual (show c1) (show c2)
 
-test_bondStatics :: IO ()
-test_bondStatics = do
+test_BondStatics :: IO ()
+test_BondStatics = do
   c <- Calendar.unitedKingdomSettlement
   l <- Leg.leg [(1000, fromGregorian 2013 1 1)]
   b <- Bond.bond' 2 c 1000 m i l
@@ -347,8 +347,8 @@ test_bondStatics = do
   where i = Just (fromGregorian 2012 1 1)
         m = Just (fromGregorian 2013 1 1)
 
-test_fixedBondWithSchedule :: IO ()
-test_fixedBondWithSchedule = do
+test_FixedBondWithSchedule :: IO ()
+test_FixedBondWithSchedule = do
   c <- Calendar.russia
   tenor <- Period.period 1 Unit.Months
   s <- Schedule.schedule
@@ -375,8 +375,8 @@ test_fixedBondWithSchedule = do
         c
   assertEqual True True
 
-test_fixedBondWithCalendars :: IO ()
-test_fixedBondWithCalendars = do
+test_FixedBondWithCalendars :: IO ()
+test_FixedBondWithCalendars = do
   c <- Calendar.russia
   tenor <- Period.period 1 Unit.Months
   cnt <- DayCounter.actual365Fixed
@@ -399,8 +399,8 @@ test_fixedBondWithCalendars = do
     c
   assertEqual True True
 
-test_fixedBond :: IO ()
-test_fixedBond = do
+test_FixedBond :: IO ()
+test_FixedBond = do
   dc <- DayCounter.actual365Fixed
   r1 <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
   r2 <- InterestRate.interestRate 0.125 dc Compounding.Simple Frequency.Monthly
@@ -428,13 +428,13 @@ test_fixedBond = do
           cal
   assertEqual True True
 
-test_frequency :: IO ()
-test_frequency = do
+test_Frequency :: IO ()
+test_Frequency = do
   p <- Period.period 1 Unit.Months
   assertEqual (Right Frequency.Monthly) (Period.toFrequency p)
 
-test_truncateSchedule :: IO ()
-test_truncateSchedule = do
+test_TruncateSchedule :: IO ()
+test_TruncateSchedule = do
   tenor <- Period.period 1 Unit.Months
   cal <- Calendar.russia
   s <- Schedule.schedule
@@ -457,8 +457,8 @@ test_truncateSchedule = do
                fromGregorian 2013 04 15]
               (Schedule.dates truncated)
 
-test_enums :: IO ()
-test_enums = mapM_
+test_Enums :: IO ()
+test_Enums = mapM_
   (\(n, l) -> assertBoolVerbose ("Error checking " ++ n ++ " length") l)
   checkEnums
 

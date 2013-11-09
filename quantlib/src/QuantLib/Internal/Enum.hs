@@ -26,9 +26,8 @@ values ename = if null vals
   where vals = unsafePerformIO $
                 withCString ename (getArray . c_values)
 
--- when declaring new QLEnum instances, add them into Internal.Enum too!
+-- when declaring new QLEnum/QLLitEnum instances, add them into Internal.Enum too!
 class (Enum a, Show a) => QLEnum a
-
 class (Show a) => QLLitEnum a -- enum passed literally as a string to QL
 
 toQlEnum :: (QLEnum a) => String -> a -> CInt
@@ -43,8 +42,8 @@ toQlEnum typename x =
 fromQlEnum :: (QLEnum a) => String -> CInt -> a
 fromQlEnum typename x =
   maybe (signalError $ "Unknown enumeration code: " ++ show x)
-  toEnum
-  (elemIndex x $ values typename)
+    toEnum
+    (elemIndex x $ values typename)
 
 withLitEnum :: (QLLitEnum a) => a -> (CString -> IO b) -> IO b
 withLitEnum = withCString . show

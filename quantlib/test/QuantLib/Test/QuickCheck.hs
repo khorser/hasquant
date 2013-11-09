@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
-{-# LANGUAGE ScopedTypeVariables,TemplateHaskell,CPP #-}
+{-# LANGUAGE ScopedTypeVariables,CPP #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Test.QuickCheck(htf_thisModulesTests, today)
 
@@ -12,7 +12,6 @@ import Control.Exception(catch)
 import Prelude hiding(catch)
 #endif
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay)
-import Data.DeriveTH
 
 import Test.QuickCheck.Monadic
 
@@ -54,34 +53,34 @@ setAndGetEvaluationDateWithExceptions d = do
     (\(_ :: Error.Error) -> return ())
   Settings.evaluationDate
 
-prop_validDate :: ValidDay -> Bool
-prop_validDate (ValidDay d) = isValid d
+prop_ValidDate :: ValidDay -> Bool
+prop_ValidDate (ValidDay d) = isValid d
 
-prop_invalidDate :: InvalidDay -> Bool
-prop_invalidDate (InvalidDay d) = not $ isValid d
+prop_InvalidDate :: InvalidDay -> Bool
+prop_InvalidDate (InvalidDay d) = not $ isValid d
 
-prop_validEvaluationDate :: Property
-prop_validEvaluationDate = monadicIO $ do
+prop_ValidEvaluationDate :: Property
+prop_ValidEvaluationDate = monadicIO $ do
   d1 <- pick arbitrary
   d2 <- run $ setAndGetEvaluationDate (validDay d1)
   assert $ validDay d1 == d2
 
-prop_invalidEvaluationDate :: InvalidDay -> Property
-prop_invalidEvaluationDate (InvalidDay d) = monadicIO $ do
+prop_InvalidEvaluationDate :: InvalidDay -> Property
+prop_InvalidEvaluationDate (InvalidDay d) = monadicIO $ do
   t <- run today
   _ <- run $ Settings.setEvaluationDate (Just t)
   -- TODO use assertThrowsIO
   d2 <- run $ setAndGetEvaluationDateWithExceptions d
   assert $ t == d2
 
-prop_singleLegStartDate :: (Double, ValidDay) -> Property
-prop_singleLegStartDate (a, ValidDay d) = monadicIO $ do
+prop_SingleLegStartDate :: (Double, ValidDay) -> Property
+prop_SingleLegStartDate (a, ValidDay d) = monadicIO $ do
   l <- run $ Leg.leg [(a, d)]
   let (Right sd) = Leg.startDate l
   assert $ d == sd
 
-prop_legStartDate :: [(Double, ValidDay)] -> Property
-prop_legStartDate flows =
+prop_LegStartDate :: [(Double, ValidDay)] -> Property
+prop_LegStartDate flows =
   not (null flows)
   ==> monadicIO $ do
     l <- run $ Leg.leg f
@@ -91,24 +90,25 @@ prop_legStartDate flows =
           ds = map validDay d
           f = zip a ds
 
-prop_quoteValue :: Double -> Property
-prop_quoteValue val =
+prop_QuoteValue :: Double -> Property
+prop_QuoteValue val =
   val > 0
   ==> monadicIO $ do
     q <- run $ Quote.simpleQuote val >>= Types.asQuote
     v <- run $ Quote.value q
     assert $ v == val
 
-prop_scheduleDates :: [ValidDay] -> Property
-prop_scheduleDates dates = monadicIO $ do
+prop_ScheduleDates :: [ValidDay] -> Property
+prop_ScheduleDates dates = monadicIO $ do
   c <- run Calendar.russia
   s <- run $ Schedule.scheduleFromDays (map validDay dates) c BusinessDayConvention.Unadjusted
   assert $ map validDay dates == Schedule.dates s
 
-$(derive makeArbitrary ''Frequency)
+instance Arbitrary Frequency where
+  arbitrary = arbitraryBoundedEnum
 
-prop_frequencyFromPeriodFromFrequency :: Frequency -> Property
-prop_frequencyFromPeriodFromFrequency freq =
+prop_FrequencyFromPeriodFromFrequency :: Frequency -> Property
+prop_FrequencyFromPeriodFromFrequency freq =
   freq /= OtherFrequency
   ==> monadicIO $ do
     p <- run $ Period.fromFrequency freq

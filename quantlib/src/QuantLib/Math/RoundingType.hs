@@ -17,6 +17,6 @@ data RoundingType = None -- ^do not round: return the number unmodified
   | Closest -- ^the first decimal place past the precision will be rounded up if greater than or equal to the rounding digit; this corresponds to the OMG round-up rule. When the rounding digit is 5, the result will be the one closest to the original number, hence the name.
   | Floor -- ^positive numbers will be rounded up and negative numbers will be rounded down using the OMG round up and round down rules
   | Ceiling -- ^positive numbers will be rounded down and negative numbers will be rounded up using the OMG round up and round down rules
-  deriving (Show, Eq, Enum)
+  deriving (Show, Eq, Enum, Bounded)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

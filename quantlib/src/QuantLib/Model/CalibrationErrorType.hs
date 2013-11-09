@@ -8,7 +8,7 @@ import QuantLib.Internal.Enum
 
 data CalibrationErrorType =
     RelativePriceError | PriceError | ImpliedVolError
-  deriving (Show, Eq, Enum)
+  deriving (Show, Eq, Enum, Bounded)
 instance QLEnum CalibrationErrorType
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

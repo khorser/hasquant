@@ -23,6 +23,6 @@ data Frequency = NoFrequency -- ^null frequency
   | Daily -- ^once a day
   | Once -- ^only once, e.g., a zero-coupon
   | OtherFrequency -- ^some other unknown frequency
- deriving (Show, Eq, Enum)
+ deriving (Show, Eq, Enum, Bounded)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

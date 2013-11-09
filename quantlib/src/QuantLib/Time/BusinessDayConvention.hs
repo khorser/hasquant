@@ -16,6 +16,6 @@ data BusinessDayConvention = Following -- ^Choose the first business day after t
   | Preceding -- ^Choose the first business day before the given holiday
   | ModifiedPreceding -- ^Choose the first business day before the given holiday unless it belongs to a different month, in which case choose the first business day after the holiday
   | Unadjusted -- ^Do not adjust
-  deriving (Show, Eq, Enum)
+  deriving (Show, Eq, Enum, Bounded)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

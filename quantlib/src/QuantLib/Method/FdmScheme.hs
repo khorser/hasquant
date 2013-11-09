@@ -13,7 +13,7 @@ instance QLLitEnum FdmScheme
 
 data FdmSchemeType = Hundsdorfer | Douglas | CraigSneyd | ModifiedCraigSneyd
   | ImplicitEuler | ExplicitEuler
-  deriving (Show, Eq, Enum)
+  deriving (Show, Eq, Enum, Bounded)
 instance QLEnum FdmSchemeType
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -9,11 +9,11 @@ import QuantLib.Internal.Enum
 
 data AtmType = AtmNull | AtmSpot | AtmFwd | AtmDeltaNeutral
   | AtmVegaMax | AtmGammaMax | AtmPutCall50
-  deriving (Show, Eq, Enum)
+  deriving (Show, Eq, Enum, Bounded)
 instance QLEnum AtmType
 
 data DeltaType = QuoteSpot | QuoteFwd | QuotePaSpot | QuotePaFwd
-  deriving (Show, Eq, Enum)
+  deriving (Show, Eq, Enum, Bounded)
 instance QLEnum DeltaType
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

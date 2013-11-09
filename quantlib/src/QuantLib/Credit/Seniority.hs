@@ -13,6 +13,6 @@ instance QLEnum Seniority
 -- They are also ISDA tier/seniorities used for CDS conventional spreads.
 data Seniority = SecDom | SnrFor | SubLT2 | JrSubT2 | PrefT1 | NoSeniority
   | SeniorSec | SeniorUnSec | SubTier1 | SubUpperTier2 | SubLoweTier2
-  deriving (Show, Eq, Enum)
+  deriving (Show, Eq, Enum, Bounded)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
