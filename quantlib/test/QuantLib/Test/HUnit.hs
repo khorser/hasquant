@@ -262,8 +262,10 @@ test_defaultTodaysHistFixings = do
 
 test_setTodaysHistFixings :: IO ()
 test_setTodaysHistFixings = do
+  e0 <- Settings.enforceTodaysHistoricFixings
   Settings.setEnforceTodaysHistoricFixings True
   e1 <- Settings.enforceTodaysHistoricFixings
+  Settings.setEnforceTodaysHistoricFixings e0
   assertEqual e1 True
 
 test_minDate :: IO ()

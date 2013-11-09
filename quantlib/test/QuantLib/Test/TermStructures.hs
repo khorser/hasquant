@@ -5,12 +5,14 @@ where
 import Test.Framework
 import Test.HUnit.Lang
 
+import Control.Applicative((<$>))
 import Data.Time.Calendar
 import Data.Word
 
 import QuantLib.Compounding
 import QuantLib.Currency
 import QuantLib.Index.Ibor
+import QuantLib.InterestRate
 import QuantLib.Math.Interpolation
 import QuantLib.Settings
 import QuantLib.Quote
@@ -41,11 +43,12 @@ close x1 x2 =
 
 test_ReferenceChange :: IO ()
 test_ReferenceChange = keepingSettings' $ do
-  (_calendar, dc, settlementDays, _ts) <- setup
+  (_calendar, settlementDays, _ts) <- setup
   flatRate <- simpleQuote 0.03
   calendar <- nullCalendar
   flatQuote <- asQuote flatRate
-  ts <- flatForward' settlementDays calendar flatQuote dc Continuous Annual
+  actual360dc <- actual360
+  ts <- flatForward' settlementDays calendar flatQuote actual360dc Continuous Annual
   tod <- evaluationDate
 
   expected <- mapM (\d -> discount' ts (addDays d tod) False) days
@@ -53,56 +56,80 @@ test_ReferenceChange = keepingSettings' $ do
   calculated <- mapM (\d -> discount' ts (addDays (30+d) tod) False) days
 
   mapM_ (\(x1, x2) -> subAssert $ assertClose x1 x2) (zip expected calculated)
-  where
-    days = [10, 30, 60, 120, 360, 720]
+  where days = [10, 30, 60, 120, 360, 720]
 
 test_Implied :: IO ()
 test_Implied = keepingSettings' $ do
-  (calendar, _dc, settlementDays, ts) <- setup
+  (calendar, settlementDays, ts) <- setup
   tod <- evaluationDate
   let newToday = addGregorianYearsClip 3 tod
   newSettlement <- advance calendar newToday (fromIntegral settlementDays) Days Following False
   let testDate = addGregorianYearsClip 5 newSettlement
   implied <- impliedTermStructure ts newSettlement
-  print "!!!"
-  asTermStructure ts >>= maxDate >>= print
-  print newSettlement
-  --baseDiscount <- discount' ts newSettlement False
-  --dsc <- discount' implied testDate False
-  --impliedDiscount <- discount' implied testDate False
+  baseDiscount <- discount' ts newSettlement False
+  dsc <- discount' ts testDate False
+  impliedDiscount <- discount' implied testDate False
 
-  --assertBool $ dsc - baseDiscount * impliedDiscount <= tolerance
-  return ()
-  where
-    tolerance = 1.0e-10
+  assertBool $ dsc - baseDiscount * impliedDiscount <= tolerance
+  where tolerance = 1.0e-10
 
-setup :: IO (Calendar, DayCounter, Word, YieldTermStructure)
+test_FSpreaded :: IO ()
+test_FSpreaded = keepingSettings' $ do
+  (_calendar, _settlementDays, ts) <- setup
+  me <- simpleQuote 0.01 >>= asQuote
+  val <- value me
+  spreaded <- forwardSpreadedTermStructure ts me
+  refDate <- asTermStructure ts >>= referenceDate
+  let testDate = addGregorianYearsClip 5 refDate
+  actual360dc <- actual360
+  forward <- rate <$> forwardRate' ts testDate testDate actual360dc Continuous NoFrequency False
+  spreadedForward <- rate <$> forwardRate' spreaded testDate testDate actual360dc Continuous NoFrequency False
+
+  assertBool $ forward - (spreadedForward - val) <= tolerance
+  where tolerance = 1.0e-10
+
+test_ZSpreaded :: IO ()
+test_ZSpreaded = keepingSettings' $ do
+  (_calendar, _settlementDays, ts) <- setup
+  me <- simpleQuote 0.01 >>= asQuote
+  val <- value me
+  actual360dc <- actual360
+  spreaded <- zeroSpreadedTermStructure ts me Continuous NoFrequency actual360dc
+  refDate <- asTermStructure ts >>= referenceDate
+  let testDate = addGregorianYearsClip 5 refDate
+  zero <- rate <$> zeroRate' ts testDate actual360dc Continuous NoFrequency False
+  spreadedZero <- rate <$> zeroRate' spreaded testDate actual360dc Continuous NoFrequency False
+
+  assertBool $ zero - (spreadedZero - val) <= tolerance
+  where tolerance = 1.0e-10
+
+setup :: IO (Calendar, Word, YieldTermStructure)
 setup = do
   calendar <- target
   d <- today
   today' <- adjust calendar d Following
   setEvaluationDate (Just today')
   settlement <- advance calendar today' (fromIntegral settlementDays) Days Following False
-  dc <- actual360
+  actual360dc <- actual360
   deposits <- mapM
     (\(n, u, r) -> do
       q <- simpleQuote (r/100) >>= asQuote
       p <- period n u
-      depositRateHelper q p settlementDays calendar ModifiedFollowing True dc)
+      depositRateHelper q p settlementDays calendar ModifiedFollowing True actual360dc)
     depositData
   p6m <- period 6 Months
   ccy <- eur
-  index <- iborIndex "dummy" p6m settlementDays ccy calendar ModifiedFollowing False dc Nothing
-  t360 <- thirty360
+  thirty360dc <- thirty360
+  index <- iborIndex "dummy" p6m settlementDays ccy calendar ModifiedFollowing False actual360dc Nothing
   swaps <- mapM
     (\(n, u, r) -> do
       q <- simpleQuote (r/100) >>= asQuote
       p <- period n u
-      swapRateHelper' q p calendar Annual Unadjusted t360 index Nothing Nothing Nothing >>= asRateHelper)
+      swapRateHelper' q p calendar Annual Unadjusted thirty360dc index Nothing Nothing Nothing >>= asRateHelper)
     swapData
 
-  ts <- piecewiseYieldCurve settlement (deposits ++ swaps) dc [] 1.0e-12 Discount LogLinear
-  return (calendar, dc, settlementDays, ts)
+  ts <- piecewiseYieldCurve settlement (deposits ++ swaps) actual360dc [] 1.0e-12 Discount LogLinear
+  return (calendar, settlementDays, ts)
 
   where
     settlementDays = 2
