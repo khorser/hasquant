@@ -4,6 +4,7 @@ module Main where
 import Test.Framework
 import {-@ HTF_TESTS @-} QuantLib.Test.HUnit
 import {-@ HTF_TESTS @-} QuantLib.Test.QuickCheck
+import {-@ HTF_TESTS @-} QuantLib.Test.TermStructures
 
 import QuantLib.Utilities
 import QuantLib.Time.Date
@@ -13,8 +14,7 @@ main = do putStrLn $ "QuantLib version " ++ version
              ++ ", Boost " ++ boostVersion
           t <- today
           putStrLn $ "Today is " ++ show (weekday t)
-          putStrLn "Use --not=LongRunning to disable long running tests"
-          putStrLn ""
+          putStrLn "\nUse --not=LongRunning to disable long running tests\n"
 
           htfMain htf_importedTests
 
