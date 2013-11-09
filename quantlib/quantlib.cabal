@@ -123,6 +123,7 @@ Test-Suite QL-Test
   Other-modules:
                 QuantLib.Test.HUnit
               , QuantLib.Test.QuickCheck
+              , QuantLib.Test.TermStructures
               , QuantLib.Example.Bond
               , QuantLib.Example.BermudanSwaption
               , QuantLib.Example.CallableBond

@@ -165,7 +165,9 @@ QlSwapRateHelper *qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int fr
   try {
     return ret(new QlSwapRateHelper(new SwapRateHelper(Handle<Quote>(*arg(q)),
 	    *arg(t), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv,
-	    *arg(dc), *arg(i), Handle<Quote>(*arg(s)), fwdStart ? *arg(fwdStart) : 0 * Days,
+	    *arg(dc), *arg(i),
+            s ? Handle<Quote>(*arg(s)) : Handle<Quote>(),
+            fwdStart ? *arg(fwdStart) : 0 * Days,
 	    ts ? Handle<YieldTermStructure>(*arg(ts)) : Handle<YieldTermStructure>())));
   } catch (std::exception& er) {
     return handleException<QlSwapRateHelper *>(e, er);

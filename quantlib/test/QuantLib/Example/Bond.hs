@@ -169,7 +169,6 @@ run = do
           zip liborDepoQuotes liborDepoTerms
 
   eur6M <- euribor6M Nothing
-  spread <- simpleQuote 0 >>= asQuote
 
   swapLiborHelpers <-
     mapM (\(q, n) ->
@@ -177,7 +176,7 @@ run = do
         quote <- simpleQuote q >>= asQuote
         p <- period n Years
         swapRateHelper' quote p targetCal Annual Unadjusted
-                              thirty360Europeandc eur6M spread (Just p1d) Nothing >>= asRateHelper) $
+                              thirty360Europeandc eur6M Nothing (Just p1d) Nothing >>= asRateHelper) $
           zip liborSwapQuotes liborSwapTerms
 
   fwdCurve <- piecewiseYieldCurve

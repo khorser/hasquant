@@ -74,10 +74,9 @@ run = do
 
   swFixedDC <- thirty360European
   eu6m <- euribor6M Nothing
-  spread <- simpleQuote 0.0 >>= asQuote
   swapHelpers <- mapM (\(q, y) -> do
     p <- period y Years
-    TS.swapRateHelper' q p cal Annual Unadjusted swFixedDC eu6m spread Nothing Nothing >>= asRateHelper) $
+    TS.swapRateHelper' q p cal Annual Unadjusted swFixedDC eu6m Nothing Nothing Nothing >>= asRateHelper) $
       zip swapQuotes swapYears
 
   tsDC <- actualActualISDA

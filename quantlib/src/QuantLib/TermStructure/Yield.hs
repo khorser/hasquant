@@ -158,7 +158,7 @@ swapRateHelper' :: Quote -- ^rate
   -> BusinessDayConvention -- ^fixedConvention
   -> DayCounter -- ^fixedDayCount
   -> IborIndex -- ^iborIndex
-  -> Quote -- ^spread
+  -> Maybe Quote -- ^spread
   -> Maybe Period -- ^fwdStart
   -> Maybe YieldTermStructure -- ^discountingCurve
   -> IO SwapRateHelper
