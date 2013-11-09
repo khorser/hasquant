@@ -80,7 +80,6 @@ usdLiborSwapIsdaFixPm :: Period -- ^tenor
   -> IO SwapIndex
 usdLiborSwapIsdaFixPm = createLiborSwapIndex "UsdLiborSwapIsdaFixPm"
 
-
 euriborSwapIfrFix :: Period -> Maybe YieldTermStructure -> Maybe YieldTermStructure -> IO SwapIndex
 euriborSwapIfrFix = createLiborSwapIndex "EuriborSwapIfrFix"
 

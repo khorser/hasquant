@@ -18,7 +18,7 @@ import QuantLib.TermStructure.Yield
 import QuantLib.TermStructure.Trait
 import QuantLib.Time.BusinessDayConvention
 import QuantLib.Time.Calendar
-import QuantLib.Time.Date
+import QuantLib.Time.Date(today)
 import QuantLib.Time.Frequency
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Period
@@ -64,7 +64,10 @@ test_Implied = keepingSettings' $ do
   newSettlement <- advance calendar newToday (fromIntegral settlementDays) Days Following False
   let testDate = addGregorianYearsClip 5 newSettlement
   implied <- impliedTermStructure ts newSettlement
-  baseDiscount <- discount' ts newSettlement True
+  print "!!!"
+  asTermStructure ts >>= maxDate >>= print
+  print newSettlement
+  --baseDiscount <- discount' ts newSettlement False
   --dsc <- discount' implied testDate False
   --impliedDiscount <- discount' implied testDate False
 
@@ -90,11 +93,12 @@ setup = do
   p6m <- period 6 Months
   ccy <- eur
   index <- iborIndex "dummy" p6m settlementDays ccy calendar ModifiedFollowing False dc Nothing
+  t360 <- thirty360
   swaps <- mapM
     (\(n, u, r) -> do
       q <- simpleQuote (r/100) >>= asQuote
       p <- period n u
-      swapRateHelper' q p calendar Annual Unadjusted dc index Nothing Nothing Nothing >>= asRateHelper)
+      swapRateHelper' q p calendar Annual Unadjusted t360 index Nothing Nothing Nothing >>= asRateHelper)
     swapData
 
   ts <- piecewiseYieldCurve settlement (deposits ++ swaps) dc [] 1.0e-12 Discount LogLinear

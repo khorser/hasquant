@@ -95,6 +95,7 @@ extern "C" {
   QlYieldTermStructure* DLLEXPORT qlForwardSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, char **e);
   QlYieldTermStructure* DLLEXPORT qlZeroSpreadedTermStructure(QlYieldTermStructure* x0, QlQuote* spread, int comp, int freq, DayCounter* dc, char **e);
   int DLLEXPORT qlTermStructureReferenceDate(QlTermStructure* o, char **e);
+  int DLLEXPORT qlTermStructureMaxDate(QlTermStructure* o, char **e);
   void DLLEXPORT qlFreeTermStructure(QlTermStructure *o);
   QlTermStructure* DLLEXPORT qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o);
   QlYieldTermStructure* DLLEXPORT qlImpliedTermStructure(QlYieldTermStructure* x0, int referenceDate, char **e);

@@ -51,6 +51,7 @@ module QuantLib.TermStructure.Yield
   , svenssonFitting
 
   , referenceDate
+  , maxDate
   , impliedTermStructure
 
   , driftTermStructure
@@ -553,6 +554,12 @@ referenceDate = $(ffiCallX 'referenceDate) c_referenceDate
 
 foreign import ccall safe "ql.h qlTermStructureReferenceDate"
   c_referenceDate :: Ptr CTermStructure -> Ptr CString -> IO CDate
+
+maxDate :: TermStructure -> IO Day
+maxDate = $(ffiCallX 'maxDate) c_maxDate
+
+foreign import ccall safe "ql.h qlTermStructureMaxDate"
+  c_maxDate :: Ptr CTermStructure -> Ptr CString -> IO CDate
 
 impliedTermStructure :: YieldTermStructure
   -> Day -- ^referenceDate

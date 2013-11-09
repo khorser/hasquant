@@ -476,6 +476,14 @@ int qlTermStructureReferenceDate(QlTermStructure* o, char **e) {
     return handleException<int>(e, er);
   }
 }
+int qlTermStructureMaxDate(QlTermStructure* o, char **e) {
+  try {
+    return (*arg(o))->maxDate().serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 
 void qlFreeTermStructure(QlTermStructure *o) { del(o); }
 QlTermStructure* qlYieldTermStructureAsTermStructure(QlYieldTermStructure *o) { return ret(new QlTermStructure(*arg(o))); }
