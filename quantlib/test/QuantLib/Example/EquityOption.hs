@@ -42,8 +42,8 @@ data Result = Result
   , mcR :: [Double]
   }
 
-run :: Bool -> IO Result
-run mcBin = do
+run :: IO Result
+run = do
   setEvaluationDate $ Just tod
   cal <- target
   dc <- actual365Fixed
@@ -100,11 +100,8 @@ run mcBin = do
     npv i)
     (zip [fdEuropeanEngine, fdBermudanEngine, fdAmericanEngine] [europeanInst, bermudanInst, americanInst])
 
-  bin <-
-    if mcBin
-      then mapM (binomialPrice bsmProc [europeanInst, bermudanInst, americanInst])
+  bin <- mapM (binomialPrice bsmProc [europeanInst, bermudanInst, americanInst])
             [JarrowRudd, CoxRossRubinstein, AdditiveEQPBinomialTree, Trigeorgis, Tian, LeisenReimer, Joshi4]
-      else return [[0]]
 
   mceEng <- mcEuropeanEngine PseudoRandom bsmProc (Just 1) Nothing False False Nothing (Just 0.02) Nothing 42
   setPricingEngine europeanInst mceEng
@@ -112,17 +109,11 @@ run mcBin = do
   
   mceEng2 <- mcEuropeanEngine LowDiscrepancy bsmProc (Just 1) Nothing False False (Just 32768) Nothing Nothing 0
   setPricingEngine europeanInst mceEng2
-  mcE2 <-
-    if mcBin
-      then npv europeanInst
-      else return 0.0
+  mcE2 <- npv europeanInst
 
   mcaEng <- mcAmericanEngine PseudoRandom bsmProc (Just 100) Nothing True False Nothing (Just 0.02) Nothing 42 2 Monomial (Just 4096)
   setPricingEngine americanInst mcaEng
-  mcA <-
-    if mcBin
-      then npv americanInst
-      else return 0.0
+  mcA <- npv americanInst
 
   return Result {
     analyticEuroR = [analyticEuro]

@@ -30,7 +30,7 @@ import qualified QuantLib.Time.Unit as Unit
 import QuantLib.Utilities
 
 import qualified QuantLib.Example.Bond as BondExample
---import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
+import qualified QuantLib.Example.BermudanSwaption as BermudanSwaptionExample
 import qualified QuantLib.Example.CallableBond as CallableBondExample
 import qualified QuantLib.Example.CDS as CDSExample
 import qualified QuantLib.Example.ConvertibleBond as ConvertibleBondExample
@@ -179,10 +179,9 @@ test_replication = do
   subAssert $ assertListsAreClose id npvOut [2.513058, 2.539365, 2.528362, 2.522105] 1.0e-6
   subAssert $ assertListsAreClose id npvIn [5.739125, 5.851239, 5.799867, 5.773678] 1.0e-6
 
-{-
-test_bermudanSwaption :: IO ()
-test_bermudanSwaption = do
-  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Settings.keepingSettings' $ BermudanSwaptionExample.run False
+test_bermudanSwaptionLongRunning :: IO ()
+test_bermudanSwaptionLongRunning = do
+  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- Settings.keepingSettings' BermudanSwaptionExample.run
   subAssert $ assertListsAreClose id g2v [10.04549, 10.51234, 10.70500, 10.83817, 10.94387] 1.0e-5
   subAssert $ assertListsAreClose id hwv [10.62037, 10.62959, 10.63414, 10.64428, 10.66132] 1.0e-5
   subAssert $ assertListsAreClose id hw2v [10.31185, 10.54619, 10.66914, 10.74020, 10.79725] 1.0e-5
@@ -194,11 +193,10 @@ test_bermudanSwaption = do
   subAssert $ assertListsAreClose id npvA [14.11, 14.113, 12.904, 12.91, 13.158, 13.157, 13.002] 1.0e-3
   subAssert $ assertListsAreClose id npvO [3.194, 3.1808, 2.4921, 2.4596, 2.615, 2.5829, 3.2751] 1.0e-3
   subAssert $ assertListsAreClose id npvI [42.609, 42.705, 42.253, 42.215, 42.364, 42.311, 41.825] 1.0e-3
--}
 
-test_equityOption :: IO ()
-test_equityOption = do
-  (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs _bin int fd _mc) <- Settings.keepingSettings' $ EquityOptionExample.run False
+test_equityOptionLongRunning :: IO ()
+test_equityOptionLongRunning = do
+  (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd mc) <- Settings.keepingSettings' EquityOptionExample.run
   subAssert $ assertListsAreClose id analyticEuro   [3.844308] 1.0e-6
   subAssert $ assertListsAreClose id analyticHeston [3.844306] 1.0e-6
   subAssert $ assertListsAreClose id bates          [3.844306] 1.0e-6
@@ -206,14 +204,14 @@ test_equityOption = do
   subAssert $ assertListsAreClose id bjs            [4.453064] 1.0e-6
   subAssert $ assertListsAreClose id int            [3.844309] 1.0e-6
   subAssert $ assertListsAreClose id fd [3.844342, 4.360807, 4.486118] 1.0e-6
-  --subAssert $ assertListsAreClose id mc [3.834522, 3.844613, 4.481675] 1.0e-6
-  --subAssert $ assertListsAreClose id (head bin) [3.844132, 4.361174, 4.486552] 1.0e-6
-  --subAssert $ assertListsAreClose id (bin!!1)   [3.843504, 4.360861, 4.486415] 1.0e-6
-  --subAssert $ assertListsAreClose id (bin!!2)   [3.836911, 4.354455, 4.480097] 1.0e-6
-  --subAssert $ assertListsAreClose id (bin!!3)   [3.843557, 4.360909, 4.486461] 1.0e-6
-  --subAssert $ assertListsAreClose id (bin!!4)   [3.844171, 4.361176, 4.486413] 1.0e-6
-  --subAssert $ assertListsAreClose id (bin!!5)   [3.844308, 4.360713, 4.486076] 1.0e-6
-  --subAssert $ assertListsAreClose id (bin!!6)   [3.844308, 4.360713, 4.486076] 1.0e-6
+  subAssert $ assertListsAreClose id mc [3.834522, 3.844613, 4.481675] 1.0e-6
+  subAssert $ assertListsAreClose id (head bin) [3.844132, 4.361174, 4.486552] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!1)   [3.843504, 4.360861, 4.486415] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!2)   [3.836911, 4.354455, 4.480097] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!3)   [3.843557, 4.360909, 4.486461] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!4)   [3.844171, 4.361176, 4.486413] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!5)   [3.844308, 4.360713, 4.486076] 1.0e-6
+  subAssert $ assertListsAreClose id (bin!!6)   [3.844308, 4.360713, 4.486076] 1.0e-6
 
 test_cds :: IO ()
 test_cds = do

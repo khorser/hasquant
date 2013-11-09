@@ -13,6 +13,7 @@ main = do putStrLn $ "QuantLib version " ++ version
              ++ ", Boost " ++ boostVersion
           t <- today
           putStrLn $ "Today is " ++ show (weekday t)
+          putStrLn $ "Use --not=LongRunning to disable long running tests"
 
           htfMain htf_importedTests
 

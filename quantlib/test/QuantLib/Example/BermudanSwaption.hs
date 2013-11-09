@@ -50,8 +50,8 @@ data Result = Result
   , npvItm :: [Double]
   }
 
-run :: Bool -> IO Result
-run otmItm = do
+run :: IO Result
+run = do
   cal <- target
   setEvaluationDate $ Just tod
   flatRate <- simpleQuote 0.04875825 >>= asQuote
@@ -119,14 +119,8 @@ run otmItm = do
     floatDC floatConv
   itmSwaption <- swaption itmSwap ex Physical >>= asOption >>= asInstrument
 
-  npvO <-
-    if otmItm
-      then priceSwaption otmSwaption modelG2 300 modelHW modelHW2 modelBK
-      else return $ replicate 5 0
-  npvI <- 
-    if otmItm
-      then priceSwaption itmSwaption modelG2 50 modelHW modelHW2 modelBK
-      else return $ replicate 5 0
+  npvO <- priceSwaption otmSwaption modelG2 300 modelHW modelHW2 modelBK
+  npvI <- priceSwaption itmSwaption modelG2 50 modelHW modelHW2 modelBK
 
   return Result {
     g2Vols = g2v
