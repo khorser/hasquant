@@ -1,5 +1,6 @@
 #include <ql/math/optimization/all.hpp>
 #include <ql/timegrid.hpp>
+#include <ql/math/rounding.hpp>
 
 #include "qlaux.h"
 #include "qlMath.h"
@@ -84,6 +85,28 @@ TimeGrid* qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e) {
   } catch (std::exception& er) {
     return handleException<TimeGrid*>(e, er);
   }
+}
+
+void qlFreeRounding(Rounding *o) { del(o); }
+
+Rounding* qlRounding(char **e) {
+  try {
+    return alloc(new Rounding());
+  } catch (std::exception& er) {
+    return handleException<Rounding*>(e, er);
+  }
+}
+
+Rounding* qlRounding1(int precision, int type, int digit, char **e) {
+  try {
+    return alloc(new Rounding(precision, (Rounding::Type)type, digit));
+  } catch (std::exception& er) {
+    return handleException<Rounding*>(e, er);
+  }
+}
+
+double qlRound(Rounding *r, double val) {
+  return (*r)(val);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

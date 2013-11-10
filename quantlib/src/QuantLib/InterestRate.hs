@@ -43,8 +43,8 @@ compoundFactor' :: InterestRate
   -> Day -- ^d2
   -> Day -- ^refStart
   -> Day -- ^refEnd
-  -> IO Double
-compoundFactor' = $(ffiCallX 'compoundFactor') c_compoundFactor'
+  -> Either String Double
+compoundFactor' = $(ffiCallPureX 'compoundFactor') c_compoundFactor'
 
 foreign import ccall safe "ql.h qlInterestRateCompoundFactor1"
   c_compoundFactor' :: Ptr CInterestRate -> CDate -> CDate -> CDate -> CDate -> Ptr CString -> IO CDouble
@@ -53,8 +53,8 @@ foreign import ccall safe "ql.h qlInterestRateCompoundFactor1"
 -- returns the compound (a.k.a capitalization) factor implied by the rate compounded at time t. /Warning/ Time must be measured using InterestRate's own day counter.
 compoundFactor :: InterestRate
   -> YearFraction -- ^t
-  -> IO Double
-compoundFactor = $(ffiCallX 'compoundFactor) c_compoundFactor
+  -> Either String Double
+compoundFactor = $(ffiCallPureX 'compoundFactor) c_compoundFactor
 
 foreign import ccall safe "ql.h qlInterestRateCompoundFactor"
   c_compoundFactor :: Ptr CInterestRate -> CYearFraction -> Ptr CString -> IO CDouble

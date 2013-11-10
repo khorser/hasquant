@@ -49,7 +49,7 @@ test_ActualActual = keepingSettings' $
           (actualActualAFB, 30 `january` 2000, 30 `june` 2000, Nothing, Nothing, 0.41530054644)]
 
 checkCounter :: DayCounter -> [Day] -> [(Int, Unit)] -> [Double] -> IO ()
-checkCounter dc days periods expected = keepingSettings' $ do
+checkCounter dc days periods expected = keepingSettings' $
   mapM_ (\d -> do
     calculated <- mapM (\p -> do
       pp <- uncurry period p

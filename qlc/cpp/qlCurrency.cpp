@@ -103,24 +103,6 @@ char* qlCurrencyFractionSymbol(Currency* o) { return DUP(arg(o)->fractionSymbol(
 int qlCurrencyNumericCode(Currency* o) { return arg(o)->numericCode(); }
 char* qlCurrencySymbol(Currency* o) { return DUP(arg(o)->symbol().c_str()); }
 
-void qlFreeRounding(Rounding *o) { del(o); }
-
-Rounding* qlRounding(char **e) {
-  try {
-    return alloc(new Rounding());
-  } catch (std::exception& er) {
-    return handleException<Rounding*>(e, er);
-  }
-}
-
-Rounding* qlRounding1(int precision, int type, int digit, char **e) {
-  try {
-    return alloc(new Rounding(precision, (Rounding::Type)type, digit));
-  } catch (std::exception& er) {
-    return handleException<Rounding*>(e, er);
-  }
-}
-
 class CustomCurrency : public Currency {
 public:
   CustomCurrency(const char* name, const char* code, int numericCode,

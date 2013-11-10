@@ -23,9 +23,6 @@ extern "C" {
   char* DLLEXPORT qlCurrencyFractionSymbol(Currency* o);
   int DLLEXPORT qlCurrencyNumericCode(Currency* o);
   char* DLLEXPORT qlCurrencySymbol(Currency* o);
-  void DLLEXPORT qlFreeRounding(Rounding *o);
-  Rounding* DLLEXPORT qlRounding(char **e);
-  Rounding* DLLEXPORT qlRounding1(int precision, int type, int digit, char **e);
   Currency* DLLEXPORT qlCreateCurrency(char* name, char* code, int numericCode, char* symbol, char* fractionSymbol, int fractionsPerUnit, Rounding* rounding, char* formatString, Currency* triangulationCurrency, char **e);
 #ifdef __cplusplus
 }

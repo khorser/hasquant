@@ -28,6 +28,11 @@ extern "C" {
   TimeGrid* DLLEXPORT qlTimeGrid1(double end, unsigned steps, char **e);
   TimeGrid* DLLEXPORT qlTimeGrid2(unsigned x0Len, double* x0, char **e);
   TimeGrid* DLLEXPORT qlTimeGrid3(unsigned x0Len, double* x0, unsigned steps, char **e);
+
+  void DLLEXPORT qlFreeRounding(Rounding *o);
+  Rounding* DLLEXPORT qlRounding(char **e);
+  Rounding* DLLEXPORT qlRounding1(int precision, int type, int digit, char **e);
+  double DLLEXPORT qlRound(Rounding *r, double val);
 #ifdef __cplusplus
 }
 #endif

@@ -3,6 +3,7 @@ module QuantLib.Math.Rounding
   (
     rounding
   , rounding'
+  , applyRounding
   )
 where
 
@@ -28,5 +29,11 @@ rounding' = $(ffiCall 'rounding') c_rounding'
 
 foreign import ccall safe "ql.h qlRounding1"
   c_rounding' :: CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CRounding)
+
+applyRounding :: Rounding -> Double -> Double
+applyRounding = $(ffiCallPure 'applyRounding) c_applyRounding
+
+foreign import ccall safe "ql.h qlRound"
+  c_applyRounding :: Ptr CRounding -> CDouble -> IO CDouble
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
