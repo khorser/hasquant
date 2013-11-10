@@ -9,6 +9,7 @@ import {-@ HTF_TESTS @-} QuantLib.Test.Dates
 import {-@ HTF_TESTS @-} QuantLib.Test.DayCounters
 import {-@ HTF_TESTS @-} QuantLib.Test.InterestRates
 import {-@ HTF_TESTS @-} QuantLib.Test.Period
+import {-@ HTF_TESTS @-} QuantLib.Test.Rounding
 import {-@ HTF_TESTS @-} QuantLib.Test.TermStructures
 import {-@ HTF_TESTS @-} QuantLib.Test.Schedule
 
