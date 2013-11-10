@@ -19,6 +19,16 @@ extern "C" {
 
   void DLLEXPORT qlFreePeriod(Period *period);
   Period* DLLEXPORT qlPeriodParserParse(char* str, char **e);
+
+  int DLLEXPORT qlPeriodUnits(Period *p);
+  int DLLEXPORT qlPeriodLength(Period *p);
+
+  Period* DLLEXPORT qlPeriodAdd(Period *p1, Period *p2, char **e);
+  Period* DLLEXPORT qlPeriodSubtract(Period *p1, Period *p2, char **e);
+  Period* DLLEXPORT qlPeriodDivide(Period *p1, int n, char **e);
+  int DLLEXPORT qlPeriodsEQ(Period *p1, Period *p2, char **e);
+  int DLLEXPORT qlPeriodsLT(Period *p1, Period *p2, char **e);
+  Period* DLLEXPORT qlPeriodNormalize(Period *p1, char **e);
 #ifdef __cplusplus
 }
 #endif

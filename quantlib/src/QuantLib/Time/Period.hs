@@ -6,10 +6,18 @@ module QuantLib.Time.Period
 
   , toFrequency
   , parse
+
+  , units
+  , periodLength
+  , addPeriods
+  , subtractPeriods
+  , dividePeriod
+
+  , periodsEQ
+  , periodsLT
+  , normalize
   )
 where
-
-import Prelude hiding(length)
 
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
@@ -43,5 +51,53 @@ parse = $(ffiCall 'parse) c_parse
 
 foreign import ccall safe "ql.h qlPeriodParserParse"
   c_parse :: CString -> Ptr CString -> IO (Ptr CPeriod)
+
+units :: Period -> Unit
+units = $(ffiCallPure 'units) c_units
+
+foreign import ccall safe "ql.h qlPeriodUnits"
+  c_units :: Ptr CPeriod -> IO CInt
+
+periodLength :: Period -> Int
+periodLength = $(ffiCallPure 'periodLength) c_periodLength
+
+foreign import ccall safe "ql.h qlPeriodLength"
+  c_periodLength :: Ptr CPeriod -> IO CInt
+
+addPeriods :: Period -> Period -> IO Period
+addPeriods = $(ffiCall 'addPeriods) c_addPeriods
+
+foreign import ccall safe "ql.h qlPeriodAdd"
+  c_addPeriods :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO (Ptr CPeriod)
+
+subtractPeriods :: Period -> Period -> IO Period
+subtractPeriods = $(ffiCall 'subtractPeriods) c_subtractPeriods
+
+foreign import ccall safe "ql.h qlPeriodSubtract"
+  c_subtractPeriods :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO (Ptr CPeriod)
+
+dividePeriod :: Period -> Int -> IO Period
+dividePeriod = $(ffiCall 'dividePeriod) c_dividePeriod
+
+foreign import ccall safe "ql.h qlPeriodDivide"
+  c_dividePeriod :: Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CPeriod)
+
+periodsEQ :: Period -> Period -> Either String Bool
+periodsEQ = $(ffiCallPureX 'periodsEQ) c_periodsEQ
+
+foreign import ccall safe "ql.h qlPeriodsEQ"
+  c_periodsEQ :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO CInt
+
+periodsLT :: Period -> Period -> Either String Bool
+periodsLT = $(ffiCallPureX 'periodsLT) c_periodsLT
+
+foreign import ccall safe "ql.h qlPeriodsLT"
+  c_periodsLT :: Ptr CPeriod -> Ptr CPeriod -> Ptr CString -> IO CInt
+
+normalize :: Period -> IO Period
+normalize = $(ffiCall 'normalize) c_normalize
+
+foreign import ccall safe "ql.h qlPeriodNormalize"
+  c_normalize :: Ptr CPeriod -> Ptr CString -> IO (Ptr CPeriod)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

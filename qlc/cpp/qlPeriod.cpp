@@ -41,4 +41,64 @@ Period* qlPeriodParserParse(char* str, char **e) {
     return handleException<Period*>(e, er);
   }
 }
+
+int qlPeriodUnits(Period *p) {
+  return p->units();
+}
+
+int qlPeriodLength(Period *p) {
+  return p->length();
+}
+
+Period* qlPeriodAdd(Period *p1, Period *p2, char **e) {
+  try {
+    return ret(new Period(*p1 + *p2));
+  } catch (std::exception& er) {
+    return handleException<Period*>(e, er);
+  }
+}
+
+Period* qlPeriodSubtract(Period *p1, Period *p2, char **e) {
+  try {
+    return ret(new Period(*p1 - *p2));
+  } catch (std::exception& er) {
+    return handleException<Period*>(e, er);
+  }
+}
+
+Period* qlPeriodDivide(Period *p1, int n, char **e) {
+  try {
+    return ret(new Period(*p1/n));
+  } catch (std::exception& er) {
+    return handleException<Period*>(e, er);
+  }
+}
+
+Period* qlPeriodNormalize(Period *p1, char **e) {
+  Period *p = 0;
+  try {
+    p = new Period(*p1);
+    p->normalize();
+    return ret(p);
+  } catch (std::exception& er) {
+    return handleException(e, er, p);
+  }
+}
+
+int DLLEXPORT qlPeriodsEQ(Period *p1, Period *p2, char **e) {
+  try {
+    return *p1 == *p2;
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int DLLEXPORT qlPeriodsLT(Period *p1, Period *p2, char **e) {
+  try {
+    return *p1 < *p2;
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

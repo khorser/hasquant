@@ -126,6 +126,7 @@ Test-Suite QL-Test
               , QuantLib.Test.Dates
               , QuantLib.Test.DayCounters
               , QuantLib.Test.InterestRates
+              , QuantLib.Test.Period
               , QuantLib.Test.TermStructures
               , QuantLib.Test.Schedule
               , QuantLib.Example.Bond
