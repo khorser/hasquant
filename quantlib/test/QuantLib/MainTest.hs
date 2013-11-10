@@ -4,6 +4,8 @@ module Main where
 import Test.Framework
 import {-@ HTF_TESTS @-} QuantLib.Test.HUnit
 import {-@ HTF_TESTS @-} QuantLib.Test.QuickCheck
+
+import {-@ HTF_TESTS @-} QuantLib.Test.Dates
 import {-@ HTF_TESTS @-} QuantLib.Test.TermStructures
 import {-@ HTF_TESTS @-} QuantLib.Test.Schedule
 

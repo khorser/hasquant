@@ -1,6 +1,7 @@
 #include <ql/time/date.hpp>
 #include <ql/time/imm.hpp>
 #include <ql/time/ecb.hpp>
+#include <ql/utilities/dataparsers.hpp>
 
 #include "qlaux.h"
 #include "qlDate.h"
@@ -222,4 +223,13 @@ void qlECBRemoveDate(int d, char **e) {
     (void)handleException<int>(e, er);
   }
 }
+
+int qlParseISO(char *date, char **e) {
+  try {
+    return (DateParser::parseISO(date)).serialNumber();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2 et: */

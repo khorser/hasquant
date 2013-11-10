@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
 module QuantLib.Test.Schedule (htf_thisModulesTests)
--- Schedule.cpp
+-- schedule.cpp
 where
 
 import Test.Framework

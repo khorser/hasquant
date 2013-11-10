@@ -123,6 +123,7 @@ Test-Suite QL-Test
   Other-modules:
                 QuantLib.Test.HUnit
               , QuantLib.Test.QuickCheck
+              , QuantLib.Test.Dates
               , QuantLib.Test.TermStructures
               , QuantLib.Test.Schedule
               , QuantLib.Example.Bond
