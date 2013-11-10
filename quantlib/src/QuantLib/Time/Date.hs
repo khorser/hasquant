@@ -42,8 +42,25 @@ module QuantLib.Time.Date
 
   , addPeriod
   , subtractPeriod
+
+  , addECBDate
+  , ecbCode
+  , ecbDate'
+  , ecbDate
+  , isECBCode
+  , isECBDate
+  , knownECBDates
+  , nextECBCode'
+  , nextECBCode
+  , nextECBDate'
+  , nextECBDate
+  , nextECBDates'
+  , nextECBDates
+  , removeECBDate
   )
 where
+
+import Control.Applicative ((<$>))
 
 import Data.Time.Calendar(fromGregorian, toGregorian, isLeapYear)
 import Data.Time.Clock(getCurrentTime)
@@ -267,5 +284,118 @@ subtractPeriod = $(ffiCallPureX 'subtractPeriod) c_subtractPeriod
 
 foreign import ccall safe "ql.h qlSubtractPeriod"
   c_subtractPeriod :: CDate -> Ptr CPeriod -> Ptr CString -> IO CDate
+
+addECBDate :: Day -- ^d
+  -> IO ()
+addECBDate = $(ffiCallX 'addECBDate) c_addECBDate
+
+foreign import ccall safe "ql.h qlECBAddDate"
+  c_addECBDate :: CDate -> Ptr CString -> IO ()
+
+-- |returns the ECB code for the given date (e.g. MAR10 for March xxth, 2010).WarningIt raises an exception if the input date is not an ECB date
+ecbCode :: Day -- ^ecbDate
+  -> IO String
+ecbCode = $(ffiCallX 'ecbCode) c_ecbCode
+
+foreign import ccall safe "ql.h qlECBCode"
+  c_ecbCode :: CDate -> Ptr CString -> IO CString
+
+-- |returns the ECB date for the given ECB code (e.g. March xxth, 2013 for MAR10).WarningIt raises an exception if the input string is not an ECB code
+ecbDate' :: String -- ^ecbCode
+  -> Maybe Day -- ^referenceDate
+  -> IO Day
+ecbDate' = $(ffiCallX 'ecbDate') c_ecbDate'
+
+foreign import ccall safe "ql.h qlECBDate1"
+  c_ecbDate' :: CString -> CDate -> Ptr CString -> IO CDate
+
+-- |maintenance period start date in the given month/year
+ecbDate :: Month -- ^m
+  -> Int -- ^y
+  -> IO Day
+ecbDate = $(ffiCallX 'ecbDate) c_ecbDate
+
+foreign import ccall safe "ql.h qlECBDate"
+  c_ecbDate :: CInt -> CInt -> Ptr CString -> IO CDate
+
+-- |returns whether or not the given string is an ECB code
+isECBCode :: String -- ^in
+  -> IO Bool
+isECBCode = $(ffiCallX 'isECBCode) c_isECBCode
+
+foreign import ccall safe "ql.h qlECBIsECBcode"
+  c_isECBCode :: CString -> Ptr CString -> IO CInt
+
+-- |returns whether or not the given date is a maintenance period start date
+isECBDate :: Day -- ^d
+  -> IO Bool
+isECBDate = $(ffiCallX 'isECBDate) c_isECBDate
+
+foreign import ccall safe "ql.h qlECBIsECBdate"
+  c_isECBDate :: CDate -> Ptr CString -> IO CInt
+
+knownECBDates :: IO [Day]
+knownECBDates = map fromQlDate <$> getArrayX c_knownECBDates
+
+foreign import ccall safe "ql.h qlECBKnownDates"
+  c_knownECBDates :: Ptr CUInt -> Ptr CString -> IO (Ptr CDate)
+
+-- |next ECB code following the given code
+nextECBCode' :: String -- ^ecbCode
+  -> IO String
+nextECBCode' = $(ffiCallX 'nextECBCode') c_nextECBCode'
+
+foreign import ccall safe "ql.h qlECBNextCode1"
+  c_nextECBCode' :: CString -> Ptr CString -> IO CString
+
+-- |next ECB code following the given date
+nextECBCode :: Maybe Day -- ^d
+  -> IO String
+nextECBCode = $(ffiCallX 'nextECBCode) c_nextECBCode
+
+foreign import ccall safe "ql.h qlECBNextCode"
+  c_nextECBCode :: CDate -> Ptr CString -> IO CString
+
+-- |next maintenance period start date following the given ECB code
+nextECBDate' :: String -- ^ecbCode
+  -> Maybe Day -- ^referenceDate
+  -> IO Day
+nextECBDate' = $(ffiCallX 'nextECBDate') c_nextECBDate'
+
+foreign import ccall safe "ql.h qlECBNextDate1"
+  c_nextECBDate' :: CString -> CDate -> Ptr CString -> IO CDate
+
+-- |next maintenance period start date following the given date
+nextECBDate :: Maybe Day -- ^d
+  -> IO Day
+nextECBDate = $(ffiCallX 'nextECBDate) c_nextECBDate
+
+foreign import ccall safe "ql.h qlECBNextDate"
+  c_nextECBDate :: CDate -> Ptr CString -> IO CDate
+
+-- |next maintenance period start dates following the given code
+nextECBDates' :: String -- ^ecbCode
+  -> Maybe Day -- ^referenceDate
+  -> IO [Day]
+nextECBDates' c d = map fromQlDate <$>
+  withCString c (\s -> getArrayX $ c_nextECBDates' s (toQlDate d))
+
+foreign import ccall safe "ql.h qlECBNextDates1"
+  c_nextECBDates' :: CString -> CDate -> Ptr CUInt -> Ptr CString -> IO (Ptr CDate)
+
+-- |next maintenance period start dates following the given date
+nextECBDates :: Maybe Day -- ^d
+  -> IO [Day]
+nextECBDates d = map fromQlDate <$> getArrayX (c_nextECBDates (toQlDate d))
+
+foreign import ccall safe "ql.h qlECBNextDates"
+  c_nextECBDates :: CDate -> Ptr CUInt -> Ptr CString -> IO(Ptr CDate)
+
+removeECBDate :: Day -- ^d
+  -> IO ()
+removeECBDate = $(ffiCallX 'removeECBDate) c_removeECBDate
+
+foreign import ccall safe "ql.h qlECBRemoveDate"
+  c_removeECBDate :: CDate -> Ptr CString -> IO ()
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

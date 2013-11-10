@@ -92,10 +92,10 @@ test_FSpreaded = keepingSettings' $ do
 test_ZSpreaded :: IO ()
 test_ZSpreaded = keepingSettings' $ do
   (_calendar, _settlementDays, ts) <- setup
-  me <- simpleQuote 0.01 >>= asQuote
-  val <- value me
+  q <- simpleQuote 0.01 >>= asQuote
+  val <- value q
   actual360dc <- actual360
-  spreaded <- zeroSpreadedTermStructure ts me Continuous NoFrequency actual360dc
+  spreaded <- zeroSpreadedTermStructure ts q Continuous NoFrequency actual360dc
   refDate <- asTermStructure ts >>= referenceDate
   let testDate = addGregorianYearsClip 5 refDate
   zero <- rate <$> zeroRate' ts testDate actual360dc Continuous NoFrequency False

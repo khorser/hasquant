@@ -36,6 +36,21 @@ extern "C" {
 
   int DLLEXPORT qlAddPeriod(int d, Period *p, char **e);
   int DLLEXPORT qlSubtractPeriod(int d, Period *p, char **e);
+
+  void DLLEXPORT qlECBAddDate(int d, char **e);
+  char* DLLEXPORT qlECBCode(int ecbDate, char **e);
+  int DLLEXPORT qlECBDate1(char* ecbCode, int referenceDate, char **e);
+  int DLLEXPORT qlECBDate(int m, int y, char **e);
+  int DLLEXPORT qlECBIsECBcode(char* in, char **e);
+  int DLLEXPORT qlECBIsECBdate(int d, char **e);
+  int* DLLEXPORT qlECBKnownDates(unsigned *count, char **e);
+  char* DLLEXPORT qlECBNextCode1(char* ecbCode, char **e);
+  char* DLLEXPORT qlECBNextCode(int d, char **e);
+  int DLLEXPORT qlECBNextDate1(char* ecbCode, int referenceDate, char **e);
+  int DLLEXPORT qlECBNextDate(int d, char **e);
+  int* DLLEXPORT qlECBNextDates(int d, unsigned *count, char **e);
+  int* DLLEXPORT qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, char **e);
+  void DLLEXPORT qlECBRemoveDate(int d, char **e);
 #ifdef __cplusplus
 }
 #endif
