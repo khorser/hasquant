@@ -51,8 +51,6 @@ extern "C" {
   int* DLLEXPORT qlECBNextDates(int d, unsigned *count, char **e);
   int* DLLEXPORT qlECBNextDates1(char* ecbCode, int referenceDate, unsigned *count, char **e);
   void DLLEXPORT qlECBRemoveDate(int d, char **e);
-
-  int DLLEXPORT qlParseISO(char *date, char **e);
 #ifdef __cplusplus
 }
 #endif

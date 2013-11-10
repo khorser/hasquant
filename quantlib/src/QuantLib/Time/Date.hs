@@ -57,8 +57,6 @@ module QuantLib.Time.Date
   , nextECBDates'
   , nextECBDates
   , removeECBDate
-
-  , parseISO
   )
 where
 
@@ -399,11 +397,5 @@ removeECBDate = $(ffiCallX 'removeECBDate) c_removeECBDate
 
 foreign import ccall safe "ql.h qlECBRemoveDate"
   c_removeECBDate :: CDate -> Ptr CString -> IO ()
-
-parseISO :: String -> Either String Day
-parseISO = $(ffiCallPureX 'parseISO) c_parseISO
-
-foreign import ccall safe "ql.h qlParseISO"
-  c_parseISO :: CString -> Ptr CString -> IO CDate
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

@@ -6,6 +6,7 @@ where
 import Test.Framework
 
 import Data.Time.Calendar
+import Data.Time.Format()
 
 import QuantLib.Settings
 import QuantLib.Time.Date
@@ -68,7 +69,6 @@ test_IMMDatesLongRunning = keepingSettings' $ do
 
 test_IsoDates :: IO ()
 test_IsoDates = keepingSettings' $ do
-  let (Right d) = parseISO "2006-01-15" 
-  assertEqual d (15 `january` 2006)
+  assertEqual (read "2006-01-15") (15 `january` 2006)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

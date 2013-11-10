@@ -72,6 +72,9 @@ qlaux.h contains common infrastructure (allocation/deallocation, typedefs, memor
 *Aux.cpp files contain some template-heavy code. They do not depend on qlaux.h so they are not
 getting rebuilt when qlaux.h changes
 
+Allocate named objects without attaching finalizers to them. This way we can live without IO
+for Calendar/DayCounter/Currency. And then we can define Read instance for them
+
 -- workflow for code generation:
 generate doxygen docs (you can find the copy in `doxygen` dir)
 convert to txt (see `doxygen-txt`)
