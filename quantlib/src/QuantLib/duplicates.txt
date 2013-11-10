@@ -51,3 +51,5 @@ strikeSensitivity: Instrument/Option.hs, PricingEngine/Calculator.hs
 blackScholesTheta: Process.hs, PricingEngine/Calculator.hs
 
 value: PricingEngine.hs, Quote.hs
+
+maxDate: Time/Date.hs, TermStructure/Yield.hs

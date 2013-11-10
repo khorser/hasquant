@@ -124,6 +124,7 @@ Test-Suite QL-Test
                 QuantLib.Test.HUnit
               , QuantLib.Test.QuickCheck
               , QuantLib.Test.TermStructures
+              , QuantLib.Test.Schedule
               , QuantLib.Example.Bond
               , QuantLib.Example.BermudanSwaption
               , QuantLib.Example.CallableBond

@@ -1,5 +1,6 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
 module QuantLib.Test.TermStructures (htf_thisModulesTests)
+-- termstructures.cpp
 where
 
 import Test.Framework
