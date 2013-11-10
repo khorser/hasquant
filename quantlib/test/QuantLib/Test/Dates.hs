@@ -68,7 +68,7 @@ test_IMMDatesLongRunning = keepingSettings' $ do
           "F9", "G9", "H9", "J9", "K9", "M9", "N9", "Q9", "U9", "V9", "X9", "Z9"]
 
 test_IsoDates :: IO ()
-test_IsoDates = keepingSettings' $ do
+test_IsoDates = keepingSettings' $
   assertEqual (read "2006-01-15") (15 `january` 2006)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

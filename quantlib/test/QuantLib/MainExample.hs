@@ -81,7 +81,7 @@ main = do
   putStrLn $ "In the money PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvIn
 
   putStrLn "*** BermudanSwaption Example ***"
-  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' $ BermudanSwaptionExample.run True 
+  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' $ BermudanSwaptionExample.run
   putStrLn $ "G2 calibrated vols: " ++ show g2v
   putStrLn $ "Hull-White calibrated vols: " ++ show hwv
   putStrLn $ "Numerical Hull-White calibrated vols: " ++ show hw2v
