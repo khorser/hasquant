@@ -1,4 +1,0 @@
-->DigitalIborLeg &
-::bool
-=true
--- ^flag

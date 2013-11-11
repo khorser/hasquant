@@ -1,9 +1,0 @@
-->
-::const Schedule &
--- ^schedule
-::const boost::shared_ptr< ZeroInflationIndex > &
--- ^index
-::const Real
--- ^baseCPI
-::const Period &
--- ^observationLag

@@ -1,3 +1,0 @@
-->yoyInflationLeg &
-::const std::vector< Rate > &
--- ^floors

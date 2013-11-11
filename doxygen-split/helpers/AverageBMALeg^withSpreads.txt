@@ -1,3 +1,0 @@
-->AverageBMALeg &
-::Spread
--- ^spread

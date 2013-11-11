@@ -1,3 +1,0 @@
-->IborLeg &
-::const std::vector< Real > &
--- ^notionals

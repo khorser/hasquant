@@ -1,3 +1,0 @@
-->CmsLeg &
-::const std::vector< Real > &
--- ^gearings

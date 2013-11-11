@@ -1,9 +1,0 @@
-->
-::const Schedule &
--- ^schedule
-::const Calendar &
--- ^cal
-::const boost::shared_ptr< YoYInflationIndex > &
--- ^index
-::const Period &
--- ^observationLag

@@ -1,3 +1,0 @@
-->FixedRateLeg &
-::const std::vector< Real > &
--- ^

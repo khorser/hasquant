@@ -1,3 +1,0 @@
-->CPILeg &
-::const std::vector< Real > &
--- ^notionals

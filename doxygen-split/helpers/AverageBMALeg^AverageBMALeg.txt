@@ -1,5 +1,0 @@
-->
-::const Schedule &
--- ^schedule
-::const boost::shared_ptr< BMAIndex > &
--- ^index

@@ -1,2 +1,0 @@
--- |the latest time for which the curve can return values
-->Time

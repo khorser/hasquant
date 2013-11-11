@@ -1,3 +1,0 @@
-->AverageBMALeg &
-::const std::vector< Spread > &
--- ^spreads

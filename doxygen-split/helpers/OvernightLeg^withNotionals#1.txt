@@ -1,3 +1,0 @@
-->OvernightLeg &
-::const std::vector< Real > &
--- ^notionals
