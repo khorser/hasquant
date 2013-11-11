@@ -25,27 +25,27 @@ close x1 x2 =
         tolerance = qlEpsilon
 
 test_Closest :: IO ()
-test_Closest = do
+test_Closest =
   mapM_ (\(x, p, x1, _x2, _x3, _x4, _x5) -> testRounding Closest x p x1)
     testData
 
 test_Up :: IO ()
-test_Up = do
+test_Up =
   mapM_ (\(x, p, _x1, x2, _x3, _x4, _x5) -> testRounding Up x p x2)
     testData
 
 test_Down:: IO ()
-test_Down = do
+test_Down =
   mapM_ (\(x, p, _x1, _x2, x3, _x4, _x5) -> testRounding Down x p x3)
     testData
 
 test_Floor:: IO ()
-test_Floor = do
+test_Floor =
   mapM_ (\(x, p, _x1, _x2, _x3, x4, _x5) -> testRounding Floor x p x4)
     testData
 
 test_Ceiling:: IO ()
-test_Ceiling = do
+test_Ceiling =
   mapM_ (\(x, p, _x1, _x2, _x3, _x4, x5) -> testRounding Ceiling x p x5)
     testData
 

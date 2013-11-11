@@ -5,6 +5,7 @@ import Test.Framework
 import {-@ HTF_TESTS @-} QuantLib.Test.HUnit
 import {-@ HTF_TESTS @-} QuantLib.Test.QuickCheck
 
+import {-@ HTF_TESTS @-} QuantLib.Test.CashFlows
 import {-@ HTF_TESTS @-} QuantLib.Test.Dates
 import {-@ HTF_TESTS @-} QuantLib.Test.DayCounters
 import {-@ HTF_TESTS @-} QuantLib.Test.InterestRates

@@ -70,7 +70,7 @@ unsigned qlLegCashFlows(Leg *leg, int includeSettlementDateFlows, int settlement
     for (unsigned i = 0; i < l.size(); ++i) {
       (*amount)[i] = l[i]->amount();
       (*date)[i] = l[i]->date().serialNumber();
-      (*hasOccurred)[i] = l[i]->hasOccurred(Date(settlementDate), includeSettlementDateFlows);
+      (*hasOccurred)[i] = l[i]->hasOccurred(Date(settlementDate), qlOptBool(includeSettlementDateFlows));
     }
     return l.size();
   } catch (std::exception& er) {

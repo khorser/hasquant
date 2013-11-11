@@ -97,7 +97,7 @@ run = do
       forM_ instrA $
         \h -> do
           bcfs <- underlying h >>= cashFlows
-          cfs <- CF.cashFlows bcfs False bondSettle
+          cfs <- CF.cashFlows bcfs (Just False) bondSettle
           let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
           let (Right m) = yearFraction dc tod (last ds) Nothing Nothing
           _ <- printf "Tenor %5.2fY: " m
