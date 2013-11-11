@@ -53,6 +53,12 @@ module QuantLib.CashFlow.Leg
   , fixedDividend
   , fractionalDividend'
   , fractionalDividend
+
+  , averageBMALeg
+  , fixedRateLeg
+  , iborLeg
+  , overnightLeg
+  , rangeAccrualLeg
   )
 where
 
@@ -61,6 +67,7 @@ import Foreign.Marshal.Utils(fromBool, toBool)
 import Foreign.Storable(peek)
 
 
+import QuantLib.Time.BusinessDayConvention
 import QuantLib.CashFlow.DurationType
 import QuantLib.Compounding
 import QuantLib.Internal.Date
@@ -604,5 +611,79 @@ fractionalDividend = $(ffiCall 'fractionalDividend) c_fractionalDividend
 
 foreign import ccall safe "ql.h qlFractionalDividend"
   c_fractionalDividend :: CDouble -> CDate -> Ptr CString -> IO (Ptr CDividend)
+
+averageBMALeg :: Schedule -- ^schedule
+  -> BMAIndex -- ^index
+  -> [Double] -- ^notionals
+  -> DayCounter -- ^paymentDayCounter
+  -> BusinessDayConvention -- ^paymentAdjustment
+  -> [Double] -- ^gearings
+  -> [Double] -- ^spreads
+  -> IO Leg
+averageBMALeg = $(ffiCall 'averageBMALeg) c_averageBMALeg
+
+foreign import ccall safe "ql.h qlAverageBMALeg"
+  c_averageBMALeg :: Ptr CSchedule -> Ptr CBMAIndex -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CLeg)
+
+fixedRateLeg :: Schedule -- ^schedule
+  -> [Double] -- ^Notionals
+  -> [InterestRate] -- ^couponRates
+  -> BusinessDayConvention -- ^paymentAdjustment
+  -> DayCounter -- ^firstPeriodDayCounter
+  -> Calendar -- ^paymentCalendar
+  -> IO Leg
+fixedRateLeg = $(ffiCall 'fixedRateLeg) c_fixedRateLeg
+
+foreign import ccall safe "ql.h qlFixedRateLeg"
+  c_fixedRateLeg :: Ptr CSchedule -> CUInt -> Ptr CDouble -> CUInt -> Ptr (Ptr CInterestRate) -> CInt -> Ptr CDayCounter -> Ptr CCalendar -> Ptr CString -> IO (Ptr CLeg)
+
+iborLeg :: Schedule -- ^schedule
+  -> IborIndex -- ^index
+  -> [Double] -- ^notionals
+  -> DayCounter -- ^paymentDayCounter
+  -> BusinessDayConvention -- ^paymentAdjustment
+  -> [Word] -- ^fixingDays
+  -> [Double] -- ^gearings
+  -> [Double] -- ^spreads
+  -> [Double] -- ^caps
+  -> [Double] -- ^floors
+  -> Bool -- ^inArrears
+  -> Bool -- ^zeroPayments
+  -> IO Leg
+iborLeg = $(ffiCall 'iborLeg) c_iborLeg
+
+foreign import ccall safe "ql.h qlIborLeg"
+  c_iborLeg :: Ptr CSchedule -> Ptr CIborIndex -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CUInt -> Ptr CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CInt -> CInt -> Ptr CString -> IO (Ptr CLeg)
+
+overnightLeg :: Schedule -- ^schedule
+  -> OvernightIndex -- ^overnightIndex
+  -> [Double] -- ^notionals
+  -> DayCounter -- ^paymentDayCounter
+  -> BusinessDayConvention -- ^paymentAdjustment
+  -> [Double] -- ^gearings
+  -> [Double] -- ^spreads
+  -> IO Leg
+overnightLeg = $(ffiCall 'overnightLeg) c_overnightLeg
+
+foreign import ccall safe "ql.h qlOvernightLeg"
+  c_overnightLeg :: Ptr CSchedule -> Ptr COvernightIndex -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> Ptr CString -> IO (Ptr CLeg)
+
+rangeAccrualLeg :: Schedule -- ^schedule
+  -> IborIndex -- ^index
+  -> [Double] -- ^notionals
+  -> DayCounter -- ^paymentDayCounter
+  -> BusinessDayConvention -- ^paymentAdjustment
+  -> [Word] -- ^fixingDays
+  -> [Double] -- ^gearings
+  -> [Double] -- ^spreads
+  -> [Double] -- ^lowerTriggers
+  -> [Double] -- ^upperTriggers
+  -> Period -- ^observationTenor
+  -> BusinessDayConvention -- ^observationConvention
+  -> IO Leg
+rangeAccrualLeg = $(ffiCall 'rangeAccrualLeg) c_rangeAccrualLeg
+
+foreign import ccall safe "ql.h qlRangeAccrualLeg"
+  c_rangeAccrualLeg :: Ptr CSchedule -> Ptr CIborIndex -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CUInt -> Ptr CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CLeg)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
