@@ -3,39 +3,39 @@
 -- ^schedule
 ::const boost::shared_ptr< IborIndex > &
 -- ^index
-::bool
-=true
--- ^inArrears
-::bool
-=true
--- ^callATM
-::const std::vector< Rate > &
--- ^payoffs
-::const std::vector< Rate > &
--- ^strikes
+::const std::vector< Real > &
+-- ^notionals
+::const DayCounter &
+-- ^paymentDayCounter
+::BusinessDayConvention
+-- ^paymentAdjustment
 ::const std::vector< Natural > &
 -- ^fixingDays
 ::const std::vector< Real > &
 -- ^gearings
+::const std::vector< Spread > &
+-- ^spreads
+::bool
+=true
+-- ^inArrears
+::const std::vector< Rate > &
+-- ^callStrikes
 ::Position::Type
 -- ^longCallOption
+::bool
+=true
+-- ^callATM
+::const std::vector< Rate > &
+-- ^callPayoffs
+::const std::vector< Rate > &
+-- ^putStrikes
 ::Position::Type
 -- ^longPutOption
-::const std::vector< Real > &
--- ^notionals
-::BusinessDayConvention
--- ^paymentAdjustment
-::const DayCounter &
--- ^paymentDayCounter
 ::bool
 =true
 -- ^putATM
 ::const std::vector< Rate > &
--- ^payoffs
-::const std::vector< Rate > &
--- ^strikes
+-- ^putPayoffs
 ::const boost::shared_ptr< DigitalReplication > &
 =boost::shared_ptr< DigitalReplication >()
 -- ^replication
-::const std::vector< Spread > &
--- ^spreads

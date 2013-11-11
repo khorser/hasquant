@@ -3,23 +3,23 @@
 -- ^schedule
 ::const boost::shared_ptr< IborIndex > &
 -- ^index
+::const std::vector< Real > &
+-- ^notionals
+::const DayCounter &
+-- ^paymentDayCounter
+::BusinessDayConvention
+-- ^paymentAdjustment
 ::const std::vector< Natural > &
 -- ^fixingDays
 ::const std::vector< Real > &
 -- ^gearings
-::const std::vector< Rate > &
--- ^triggers
-::const std::vector< Real > &
--- ^notionals
-::BusinessDayConvention
--- ^observationConvention
-::const Period &
--- ^observationTenor
-::BusinessDayConvention
--- ^paymentAdjustment
-::const DayCounter &
--- ^paymentDayCounter
 ::const std::vector< Spread > &
 -- ^spreads
 ::const std::vector< Rate > &
+-- ^lowerTriggers
+::const std::vector< Rate > &
 -- ^upperTriggers
+::const Period &
+-- ^observationTenor
+::BusinessDayConvention
+-- ^observationConvention

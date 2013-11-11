@@ -7,23 +7,23 @@
 -- ^baseCPI
 ::const Period &
 -- ^observationLag
-::const std::vector< Rate > &
--- ^caps
-::const std::vector< Real > &
--- ^fixedRates
-::const std::vector< Natural > &
--- ^fixingDays
-::const std::vector< Rate > &
--- ^floors
 ::const std::vector< Real > &
 -- ^notionals
-::CPI::InterpolationType
--- ^observationInterpolation
-::BusinessDayConvention
--- ^paymentAdjustment
+::const std::vector< Real > &
+-- ^fixedRates
 ::const DayCounter &
 -- ^paymentDayCounter
-::const std::vector< Spread > &
--- ^spreads
+::BusinessDayConvention
+-- ^paymentAdjustment
+::const std::vector< Natural > &
+-- ^fixingDays
+::CPI::InterpolationType
+-- ^observationInterpolation
 ::bool
 -- ^subtractInflationNominal
+::const std::vector< Spread > &
+-- ^spreads
+::const std::vector< Rate > &
+-- ^caps
+::const std::vector< Rate > &
+-- ^floors

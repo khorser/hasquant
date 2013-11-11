@@ -1,13 +1,13 @@
 ->
 ::const Schedule &
--- ^couponRates
-::const std::vector< InterestRate > &
--- ^couponRates
-::const DayCounter &
--- ^firstPeriodDayCounter
+-- ^schedule
 ::const std::vector< Real > &
 -- ^Notionals
+::const std::vector< InterestRate > &
+-- ^couponRates
 ::BusinessDayConvention
 -- ^paymentAdjustment
+::const DayCounter &
+-- ^firstPeriodDayCounter
 ::const Calendar &
 -- ^paymentCalendar
