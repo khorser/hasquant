@@ -3,3 +3,13 @@
 -- ^schedule
 ::const boost::shared_ptr< OvernightIndex > &
 -- ^overnightIndex
+::const std::vector< Real > &
+-- ^gearings
+::const std::vector< Real > &
+-- ^notionals
+::BusinessDayConvention
+-- ^paymentAdjustment
+::const DayCounter &
+-- ^paymentDayCounter
+::const std::vector< Spread > &
+-- ^spreads
