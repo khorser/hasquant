@@ -54,8 +54,6 @@ module QuantLib.Time.Calendar
   , taiwanTSEC
   , turkey
   , ukraineUSE
-  , londonStockExchange
-  , london
   , unitedKingdomMetals
   , unitedKingdomSettlement
   , unitedStatesGovernmentBond
@@ -163,8 +161,6 @@ taiwanTSEC              :: IO Calendar -- ^Taiwanese calendar: Taiwan stock exch
 turkey                  :: IO Calendar -- ^Turkish calendar
 ukraineUSE              :: IO Calendar -- ^Ukrainian calendar: Ukrainian stock exchange
 unitedKingdomExchange   :: IO Calendar -- ^United Kingdom calendar: London stock-exchange
-londonStockExchange     :: IO Calendar -- ^United Kingdom calendar: London stock exchange
-london                  :: IO Calendar -- ^United Kingdom calendar: London stock exchange
 unitedKingdomMetals     :: IO Calendar -- ^United Kingdom calendar: London metal exchange
 unitedKingdomSettlement :: IO Calendar -- ^United Kingdom calendar: generic settlement
 unitedStatesGovernmentBond:: IO Calendar -- ^United States calendar: government-bond
@@ -218,8 +214,6 @@ taiwanTSEC              = constructNamed "Taiwan::TSEC"
 turkey                  = constructNamed "Turkey"
 ukraineUSE              = constructNamed "Ukraine::USE"
 unitedKingdomExchange   = constructNamed "UnitedKingdom::Exchange"
-londonStockExchange     = constructNamed "London stock exchange"
-london                  = constructNamed "LONDON"
 unitedKingdomMetals     = constructNamed "UnitedKingdom::Metals"
 unitedKingdomSettlement = constructNamed "UnitedKingdom::Settlement"
 unitedStatesGovernmentBond = constructNamed "UnitedStates::GovernmentBond"

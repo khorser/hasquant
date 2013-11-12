@@ -80,8 +80,6 @@ static const CalendarInfo calendarInfo[] = {
   {"Turkey",                      &CalendarInfo::makeDefaultObject<Turkey>, 0},
   {"Ukraine::USE",                &CalendarInfo::makeObject<Ukraine>, Ukraine::USE},
   {"UnitedKingdom::Exchange",     &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Exchange},
-  {"London stock exchange",       &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Exchange},
-  {"LONDON",                      &CalendarInfo::makeDefaultObject<UnitedKingdom>, 0},
   {"UnitedKingdom::Metals",       &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Metals},
   {"UnitedKingdom::Settlement",   &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Settlement},
   {"UnitedStates::GovernmentBond",&CalendarInfo::makeObject<UnitedStates>, UnitedStates::GovernmentBond},
