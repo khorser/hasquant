@@ -7,16 +7,9 @@ import Test.Framework
 
 import Data.Time.Calendar
 
-import QuantLib.Time.BusinessDayConvention
 import QuantLib.Time.Calendar
-import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.Date
-import QuantLib.Time.DayCounter
-import QuantLib.Time.Frequency
 import QuantLib.Time.JointCalendarRule
-import QuantLib.Time.Period
-import QuantLib.Time.Unit
-import QuantLib.Types
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
@@ -96,8 +89,6 @@ test_USSettlement = do
   cal <- unitedStatesSettlement
   h <- holidays cal (1 `january` 2004) (31 `december` 2005) False
   assertEqual expectedHol h
-
-  return ()
   where
     expectedHol = [
       1 `january` 2004,
@@ -121,5 +112,571 @@ test_USSettlement = do
       24 `november` 2005,
       26 `december` 2005]
 
+test_USGovernmentBondMarket :: IO ()
+test_USGovernmentBondMarket = do
+  cal <- unitedStatesGovernmentBond
+  h <- holidays cal (1 `january` 2004) (31 `december` 2004) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2004,
+      19 `january` 2004,
+      16 `february` 2004,
+      9 `april` 2004,
+      31 `may` 2004,
+      5 `july` 2004,
+      6 `september` 2004,
+      11 `october` 2004,
+      11 `november` 2004,
+      25 `november` 2004,
+      24 `december` 2004]
+
+test_USNewYorkStockExchange :: IO ()
+test_USNewYorkStockExchange = do
+  cal <- unitedStatesNYSE
+  h <- holidays cal (1 `january` 2004) (31 `december` 2006) False
+  assertEqual expectedHol h
+  mapM_ (\d -> do
+    b <- isHoliday cal d
+    assertBool b) histClose
+  where
+    expectedHol = [
+      1 `january` 2004,
+      19 `january` 2004,
+      16 `february` 2004,
+      9 `april` 2004,
+      31 `may` 2004,
+      11 `june` 2004,
+      5 `july` 2004,
+      6 `september` 2004,
+      25 `november` 2004,
+      24 `december` 2004,
+
+      17 `january` 2005,
+      21 `february` 2005,
+      25 `march` 2005,
+      30 `may` 2005,
+      4 `july` 2005,
+      5 `september` 2005,
+      24 `november` 2005,
+      26 `december` 2005,
+
+      2 `january` 2006,
+      16 `january` 2006,
+      20 `february` 2006,
+      14 `april` 2006,
+      29 `may` 2006,
+      4 `july` 2006,
+      4 `september` 2006,
+      23 `november` 2006,
+      25 `december` 2006]
+    histClose = [
+      11 `june` 2004,
+      14 `september` 2001,
+      13 `september` 2001,
+      12 `september` 2001,
+      11 `september` 2001,
+      14 `july` 1977,
+      25 `january` 1973,
+      28 `december` 1972,
+      21 `july` 1969,
+      31 `march` 1969,
+      10 `february` 1969,
+      5 `july` 1968,
+      12 `june` 1968,
+      19 `june` 1968,
+      26 `june` 1968,
+      3 `july` 1968 ,
+      10 `july` 1968,
+      17 `july` 1968,
+      20 `november` 1968,
+      27 `november` 1968,
+      4 `december` 1968 ,
+      11 `december` 1968,
+      18 `december` 1968,
+      4 `november` 1980,
+      2 `november` 1976,
+      7 `november` 1972,
+      5 `november` 1968,
+      3 `november` 1964]
+
+test_TARGET :: IO ()
+test_TARGET = do
+  cal <- target
+  h <- holidays cal (1 `january` 1999) (31 `december` 2006) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 1999,
+      31 `december` 1999,
+
+      21 `april` 2000,
+      24 `april` 2000,
+      1 `may` 2000,
+      25 `december` 2000,
+      26 `december` 2000,
+
+      1 `january` 2001,
+      13 `april` 2001,
+      16 `april` 2001,
+      1 `may` 2001,
+      25 `december` 2001,
+      26 `december` 2001,
+      31 `december` 2001,
+
+      1 `january` 2002,
+      29 `march` 2002,
+      1 `april` 2002,
+      1 `may` 2002,
+      25 `december` 2002,
+      26 `december` 2002,
+
+      1 `january` 2003,
+      18 `april` 2003,
+      21 `april` 2003,
+      1 `may` 2003,
+      25 `december` 2003,
+      26 `december` 2003,
+
+      1 `january` 2004,
+      9 `april` 2004,
+      12 `april` 2004,
+
+      25 `march` 2005,
+      28 `march` 2005,
+      26 `december` 2005,
+
+      14 `april` 2006,
+      17 `april` 2006,
+      1 `may` 2006,
+      25 `december` 2006,
+      26 `december` 2006]
+
+test_GermanyFrankfurt :: IO ()
+test_GermanyFrankfurt = do
+  cal <- germanyFrankfurtStockExchange
+  h <- holidays cal (1 `january` 2003) (31 `december` 2004) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2003,
+      18 `april` 2003,
+      21 `april` 2003,
+      1 `may` 2003,
+      24 `december` 2003,
+      25 `december` 2003,
+      26 `december` 2003,
+      31 `december` 2003,
+
+      1 `january` 2004,
+      9 `april` 2004,
+      12 `april` 2004,
+      24 `december` 2004,
+      31 `december` 2004]
+
+test_GermanyEurex :: IO ()
+test_GermanyEurex = do
+  cal <- germanyEurex
+  h <- holidays cal (1 `january` 2003) (31 `december` 2004) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2003,
+      18 `april` 2003,
+      21 `april` 2003,
+      1 `may` 2003,
+      24 `december` 2003,
+      25 `december` 2003,
+      26 `december` 2003,
+      31 `december` 2003,
+
+      1 `january` 2004,
+      9 `april` 2004,
+      12 `april` 2004,
+      24 `december` 2004,
+      31 `december` 2004]
+
+test_GermanyXetra :: IO ()
+test_GermanyXetra = do
+  cal <- germanyXetra
+  h <- holidays cal (1 `january` 2003) (31 `december` 2004) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2003,
+      18 `april` 2003,
+      21 `april` 2003,
+      1 `may` 2003,
+      24 `december` 2003,
+      25 `december` 2003,
+      26 `december` 2003,
+      31 `december` 2003,
+
+      1 `january` 2004,
+      9 `april` 2004,
+      12 `april` 2004,
+      24 `december` 2004,
+      31 `december` 2004]
+
+
+test_UKSettlement :: IO ()
+test_UKSettlement = do
+  cal <- unitedKingdomSettlement
+  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2004,
+      9 `april` 2004,
+      12 `april` 2004,
+      3 `may` 2004,
+      31 `may` 2004,
+      30 `august` 2004,
+      27 `december` 2004,
+      28 `december` 2004,
+
+      3 `january` 2005,
+      25 `march` 2005,
+      28 `march` 2005,
+      2 `may` 2005,
+      30 `may` 2005,
+      29 `august` 2005,
+      26 `december` 2005,
+      27 `december` 2005,
+
+      2 `january` 2006,
+      14 `april` 2006,
+      17 `april` 2006,
+      1 `may` 2006,
+      29 `may` 2006,
+      28 `august` 2006,
+      25 `december` 2006,
+      26 `december` 2006,
+
+      1 `january` 2007,
+      6 `april` 2007,
+      9 `april` 2007,
+      7 `may` 2007,
+      28 `may` 2007,
+      27 `august` 2007,
+      25 `december` 2007,
+      26 `december` 2007]
+
+
+test_UKExchange :: IO ()
+test_UKExchange = do
+  cal <- unitedKingdomExchange
+  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2004,
+      9 `april` 2004,
+      12 `april` 2004,
+      3 `may` 2004,
+      31 `may` 2004,
+      30 `august` 2004,
+      27 `december` 2004,
+      28 `december` 2004,
+
+      3 `january` 2005,
+      25 `march` 2005,
+      28 `march` 2005,
+      2 `may` 2005,
+      30 `may` 2005,
+      29 `august` 2005,
+      26 `december` 2005,
+      27 `december` 2005,
+
+      2 `january` 2006,
+      14 `april` 2006,
+      17 `april` 2006,
+      1 `may` 2006,
+      29 `may` 2006,
+      28 `august` 2006,
+      25 `december` 2006,
+      26 `december` 2006,
+
+      1 `january` 2007,
+      6 `april` 2007,
+      9 `april` 2007,
+      7 `may` 2007,
+      28 `may` 2007,
+      27 `august` 2007,
+      25 `december` 2007,
+      26 `december` 2007]
+
+
+test_UKMetals :: IO ()
+test_UKMetals = do
+  cal <- unitedKingdomMetals
+  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2004,
+      9 `april` 2004,
+      12 `april` 2004,
+      3 `may` 2004,
+      31 `may` 2004,
+      30 `august` 2004,
+      27 `december` 2004,
+      28 `december` 2004,
+
+      3 `january` 2005,
+      25 `march` 2005,
+      28 `march` 2005,
+      2 `may` 2005,
+      30 `may` 2005,
+      29 `august` 2005,
+      26 `december` 2005,
+      27 `december` 2005,
+
+      2 `january` 2006,
+      14 `april` 2006,
+      17 `april` 2006,
+      1 `may` 2006,
+      29 `may` 2006,
+      28 `august` 2006,
+      25 `december` 2006,
+      26 `december` 2006,
+
+      1 `january` 2007,
+      6 `april` 2007,
+      9 `april` 2007,
+      7 `may` 2007,
+      28 `may` 2007,
+      27 `august` 2007,
+      25 `december` 2007,
+      26 `december` 2007]
+
+
+test_ItalyExchange :: IO ()
+test_ItalyExchange = do
+  cal <- italyExchange
+  h <- holidays cal (1 `january` 2002) (31 `december` 2004) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2002,
+      29 `march` 2002,
+      1 `april` 2002,
+      1 `may` 2002,
+      15 `august` 2002,
+      24 `december` 2002,
+      25 `december` 2002,
+      26 `december` 2002,
+      31 `december` 2002,
+
+      1 `january` 2003,
+      18 `april` 2003,
+      21 `april` 2003,
+      1 `may` 2003,
+      15 `august` 2003,
+      24 `december` 2003,
+      25 `december` 2003,
+      26 `december` 2003,
+      31 `december` 2003,
+
+      1 `january` 2004,
+      9 `april` 2004,
+      12 `april` 2004,
+      24 `december` 2004,
+      31 `december` 2004]
+
+test_Brazil :: IO ()
+test_Brazil = do
+  cal <- brazilSettlement
+  h <- holidays cal (1 `january` 2005) (31 `december` 2006) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      7 `february` 2005,
+      8 `february` 2005,
+      25 `march` 2005,
+      21 `april` 2005,
+      26 `may` 2005,
+      7 `september` 2005,
+      12 `october` 2005,
+      2 `november` 2005,
+      15 `november` 2005,
+
+      27 `february` 2006,
+      28 `february` 2006,
+      14 `april` 2006,
+      21 `april` 2006,
+      1 `may` 2006,
+      15 `june` 2006,
+      7 `september` 2006,
+      12 `october` 2006,
+      2 `november` 2006,
+      15 `november` 2006,
+      25 `december` 2006]
+
+test_SouthKoreanSettlement :: IO ()
+test_SouthKoreanSettlement = do
+  cal <- southKoreaSettlement
+  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2004,
+      21 `january` 2004,
+      22 `january` 2004,
+      23 `january` 2004,
+      1 `march` 2004,
+      5 `april` 2004,
+      15 `april` 2004,
+      5 `may` 2004,
+      26 `may` 2004,
+      27 `september` 2004,
+      28 `september` 2004,
+      29 `september` 2004,
+
+      8 `february` 2005,
+      9 `february` 2005,
+      10 `february` 2005,
+      1 `march` 2005,
+      5 `april` 2005,
+      5 `may` 2005,
+      6 `june` 2005,
+      15 `august` 2005,
+      19 `september` 2005,
+      3 `october` 2005,
+
+      30 `january` 2006,
+      1 `march` 2006,
+      1 `may` 2006,
+      5 `may` 2006,
+      31 `may` 2006,
+      6 `june` 2006,
+      17 `july` 2006,
+      15 `august` 2006,
+      3 `october` 2006,
+      5 `october` 2006,
+      6 `october` 2006,
+      25 `december` 2006,
+
+      1 `january` 2007,
+      19 `february` 2007,
+      1 `march` 2007,
+      1 `may` 2007,
+      24 `may` 2007,
+      6 `june` 2007,
+      17 `july` 2007,
+      15 `august` 2007,
+      24 `september` 2007,
+      25 `september` 2007,
+      26 `september` 2007,
+      3 `october` 2007,
+      19 `december` 2007,
+      25 `december` 2007]
+
+
+test_KoreaStockExchange :: IO ()
+test_KoreaStockExchange = do
+  cal <- southKoreaKRX
+  h <- holidays cal (1 `january` 2004) (31 `december` 2007) False
+  assertEqual expectedHol h
+  where
+    expectedHol = [
+      1 `january` 2004,
+      21 `january` 2004,
+      22 `january` 2004,
+      23 `january` 2004,
+      1 `march` 2004,
+      5 `april` 2004,
+      15 `april` 2004,
+      5 `may` 2004,
+      26 `may` 2004,
+      27 `september` 2004,
+      28 `september` 2004,
+      29 `september` 2004,
+      31 `december` 2004,
+
+      8 `february` 2005,
+      9 `february` 2005,
+      10 `february` 2005,
+      1 `march` 2005,
+      5 `april` 2005,
+      5 `may` 2005,
+      6 `june` 2005,
+      15 `august` 2005,
+      19 `september` 2005,
+      3 `october` 2005,
+      30 `december` 2005,
+
+      30 `january` 2006,
+      1 `march` 2006,
+      1 `may` 2006,
+      5 `may` 2006,
+      31 `may` 2006,
+      6 `june` 2006,
+      17 `july` 2006,
+      15 `august` 2006,
+      3 `october` 2006,
+      5 `october` 2006,
+      6 `october` 2006,
+      25 `december` 2006,
+      29 `december` 2006,
+
+      1 `january` 2007,
+      19 `february` 2007,
+      1 `march` 2007,
+      1 `may` 2007,
+      24 `may` 2007,
+      6 `june` 2007,
+      17 `july` 2007,
+      15 `august` 2007,
+      24 `september` 2007,
+      25 `september` 2007,
+      26 `september` 2007,
+      3 `october` 2007,
+      19 `december` 2007,
+      25 `december` 2007,
+      31 `december` 2007]
+
+test_EndOfMonth :: IO ()
+test_EndOfMonth = do
+  cal <- target
+  mapM_ (\d -> do
+    eom <- QuantLib.Time.Calendar.endOfMonth cal d
+    b <- QuantLib.Time.Calendar.isEndOfMonth cal eom
+    assertBool b)
+    [minDate .. addGregorianMonthsClip (-2) maxDate]
+
+test_BusinessDaysBetween :: IO ()
+test_BusinessDaysBetween = do
+  cal <- brazilSettlement
+  mapM_ (\(d1, d2, e) -> do
+    b <- businessDaysBetween cal d1 d2 True False
+    assertEqual b e)
+    (zip3 testDates (tail testDates) expected)
+  where
+    testDates = [
+      1 `february` 2002,
+      4 `february` 2002,
+      16 `may` 2003,
+      17 `december` 2003,
+      17 `december` 2004,
+      19 `december` 2005,
+      2 `january` 2006,
+      13 `march` 2006,
+      15 `may` 2006,
+      17 `march` 2006,
+      15 `may` 2006,
+      26 `july` 2006]
+    expected = [
+        1,
+        321,
+        152,
+        251,
+        252,
+        10,
+        48,
+        42,
+        -38,
+        38,
+        51]
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
