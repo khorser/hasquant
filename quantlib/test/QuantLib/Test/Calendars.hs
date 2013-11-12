@@ -10,6 +10,7 @@ import Data.Time.Calendar
 import QuantLib.Time.Calendar
 import QuantLib.Time.Date
 import QuantLib.Time.JointCalendarRule
+import QuantLib.Time.Weekday
 
 {-# ANN module "HLint: ignore Use camelCase" #-}
 
@@ -678,5 +679,40 @@ test_BusinessDaysBetween = do
         -38,
         38,
         51]
+
+test_BespokeCalendars :: IO ()
+test_BespokeCalendars = do
+  let testDate1 = 4 `october` 2008
+      testDate2 = 5 `october` 2008
+      testDate3 = 6 `october` 2008
+      testDate4 = 7 `october` 2008
+  a1 <- bespokeCalendar "a1" []
+  a11 <- isBusinessDay a1 testDate1
+  a12 <- isBusinessDay a1 testDate2
+  a13 <- isBusinessDay a1 testDate3
+  a14 <- isBusinessDay a1 testDate4
+  assertBool $ a11 && a12 && a13 && a14
+
+  a2 <- bespokeCalendar "a2" [Sunday]
+  a21 <- isBusinessDay a2 testDate1
+  a22 <- isBusinessDay a2 testDate2
+  a23 <- isBusinessDay a2 testDate3
+  a24 <- isBusinessDay a2 testDate4
+  assertBool $ a21 && a23 && a24
+  assertBool (not a22)
+
+  a11' <- isBusinessDay a1 testDate1
+  a12' <- isBusinessDay a1 testDate2
+  a13' <- isBusinessDay a1 testDate3
+  a14' <- isBusinessDay a1 testDate4
+  assertBool $ a11' && a12' && a13' && a14'
+
+  addHoliday a2 testDate3
+  a21' <- isBusinessDay a2 testDate1
+  a22' <- isBusinessDay a2 testDate2
+  a23' <- isBusinessDay a2 testDate3
+  a24' <- isBusinessDay a2 testDate4
+  assertBool $ a21' && a24'
+  assertBool $ not a22' && not a23'
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
