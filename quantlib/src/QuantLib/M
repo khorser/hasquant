@@ -108,7 +108,7 @@ cpp/qlPricingEngine.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlPricingEngine.h $(QLCSRC)/q
 	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlPricingEngine.o $(QLCSRC)/qlPricingEngine.cpp
 
 cpp/qlPricingEngineAux.o: $(QLCSRC)/qlPricingEngineAux.h $(QLCSRC)/qlPricingEngineAux.cpp
-	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlPricingEngineAux.o $(QLCSRC)/qlPricingEngineAux.cpp
+	g++ -c $(CFLAGS) $(EXTRA) -o cpp/qlPricingEngineAux.o $(QLCSRC)/qlPricingEngineAux.cpp
 
 cpp/qlProcess.o: $(QLCSRC)/qlaux.h $(QLCSRC)/qlProcess.h $(QLCSRC)/qlProcess.cpp
 	g++ -c -DDLLSOURCE $(CFLAGS) $(EXTRA) -o cpp/qlProcess.o $(QLCSRC)/qlProcess.cpp
