@@ -8,6 +8,7 @@ using namespace QuantLib;
 
 // extended version of EnumObjectInfo1
 // I could have stored a closure instead of int (lambda or an extra object) but this seems overkill here
+// for an alternative solution see qlDayCounter.cpp
 struct CalendarObjectInfo {
   const char *name;
   Calendar *(*make)(int x);

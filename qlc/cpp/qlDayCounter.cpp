@@ -5,6 +5,7 @@
 
 using namespace QuantLib;
 
+// for an alternative approach see qlCalendar.cpp
 template <class T, typename T::Convention conv>
 DayCounter *makeDayCounter() {
   return new T(conv);
