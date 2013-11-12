@@ -14,43 +14,26 @@ DayCounter *makeDayCounter() {
 typedef EnumObjectInfo<DayCounter> DayCounterInfo;
 static const DayCounterInfo dayCounterInfo[] = {
   {"Actual/365 (Fixed)", &DayCounterInfo::makeObject<Actual365Fixed>},
-  {"Act/365 (Fixed)", &DayCounterInfo::makeObject<Actual365Fixed>},
-  {"A/365 (Fixed)", &DayCounterInfo::makeObject<Actual365Fixed>},
-  {"A/365F", &DayCounterInfo::makeObject<Actual365Fixed>},
+
   {"1/1", &DayCounterInfo::makeObject<OneDayCounter>},
-  {"Actual/Actual (ISDA)", &makeDayCounter<ActualActual, ActualActual::ISDA>},
-  {"Actual/Actual", &makeDayCounter<ActualActual, ActualActual::ISDA>},
-  {"Actual/365", &makeDayCounter<ActualActual, ActualActual::ISDA>},
-  {"Act/365", &makeDayCounter<ActualActual, ActualActual::ISDA>},
-  {"A/365", &makeDayCounter<ActualActual, ActualActual::ISDA>},
-  {"Act/Act", &makeDayCounter<ActualActual, ActualActual::ISDA>},
-  {"Actual/360", &DayCounterInfo::makeObject<Actual360>},
-  {"Act/360", &DayCounterInfo::makeObject<Actual360>},
-  {"A/360", &DayCounterInfo::makeObject<Actual360>},
-  {"30/360 (Bond Basis)", &makeDayCounter<Thirty360, Thirty360::BondBasis>},
-  {"Bond Basis", &makeDayCounter<Thirty360, Thirty360::BondBasis>},
-  {"30/360", &makeDayCounter<Thirty360, Thirty360::BondBasis>},
-  {"360/360", &makeDayCounter<Thirty360, Thirty360::BondBasis>},
-  {"30/360 (European)", &makeDayCounter<Thirty360, Thirty360::European>},
-  {"30/360 (Eurobond Basis)", &makeDayCounter<Thirty360, Thirty360::EurobondBasis>},
-  {"Eurobond Basis", &makeDayCounter<Thirty360, Thirty360::EurobondBasis>},
-  {"30E/360", &makeDayCounter<Thirty360, Thirty360::EurobondBasis>},
-  {"30E/360 (Eurobond Basis)", &makeDayCounter<Thirty360, Thirty360::EurobondBasis>},
+
   {"Actual/Actual (ISMA)", &makeDayCounter<ActualActual, ActualActual::ISMA>},
-  {"Actual/Actual (Bond)", &makeDayCounter<ActualActual, ActualActual::ISMA>},
+  {"Actual/Actual (Bond)", &makeDayCounter<ActualActual, ActualActual::Bond>},
+  {"Actual/Actual (ISDA)", &makeDayCounter<ActualActual, ActualActual::ISDA>},
+  {"Actual/Actual (Historical)", &makeDayCounter<ActualActual, ActualActual::Historical>},
+  {"Actual/Actual (Actual365)", &makeDayCounter<ActualActual, ActualActual::Actual365>},
   {"Actual/Actual (AFB)", &makeDayCounter<ActualActual, ActualActual::AFB>},
   {"Actual/Actual (Euro)", &makeDayCounter<ActualActual, ActualActual::Euro>},
-  {"30/360 (Italian)", &makeDayCounter<Thirty360, Thirty360::Italian>},
-  {"Simple", &DayCounterInfo::makeObject<SimpleDayCounter>},
-  {"LIN 30/360", &makeDayCounter<Thirty360, Thirty360::EurobondBasis>},
-  {"LIN ACT/360", &DayCounterInfo::makeObject<Actual360>},
-  {"LIN ACT/365", &DayCounterInfo::makeObject<Actual365Fixed>},
-  {"LIN ACT/ACT", &makeDayCounter<ActualActual, ActualActual::AFB>},
-  {"LIN ACTACT ISDA", &makeDayCounter<ActualActual, ActualActual::ISDA>},
-  {"LIN ACTACT ISMA", &makeDayCounter<ActualActual, ActualActual::ISMA>},
+
+  {"Actual/360", &DayCounterInfo::makeObject<Actual360>},
+
   {"30/360 (USA)", &makeDayCounter<Thirty360, Thirty360::USA>},
-  {"Actual/Actual (Historical)", &makeDayCounter<ActualActual, ActualActual::Historical>},
-  {"Actual/Actual (Actual365)", &makeDayCounter<ActualActual, ActualActual::Actual365>}
+  {"30/360 (Bond Basis)", &makeDayCounter<Thirty360, Thirty360::BondBasis>},
+  {"30/360 (European)", &makeDayCounter<Thirty360, Thirty360::European>},
+  {"30/360 (Eurobond Basis)", &makeDayCounter<Thirty360, Thirty360::EurobondBasis>},
+  {"30/360 (Italian)", &makeDayCounter<Thirty360, Thirty360::Italian>},
+
+  {"Simple", &DayCounterInfo::makeObject<SimpleDayCounter>},
 };
 
 DayCounter *qlDayCounter(const char *name, char **e) {

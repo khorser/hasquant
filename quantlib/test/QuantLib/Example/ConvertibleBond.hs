@@ -53,7 +53,7 @@ run = do
 
   p <- fromFrequency Annual
   sched <- schedule (Just issue) exec p cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
-  bdc <- thirty360
+  bdc <- thirty360BondBasis
 
   callPrices <- mapM (`callabilityPrice` Clean) callPricesV
   putPrices <- mapM (`callabilityPrice` Clean) putPricesV

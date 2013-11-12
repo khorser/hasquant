@@ -120,7 +120,7 @@ setup = do
     depositData
   p6m <- period 6 Months
   ccy <- eur
-  thirty360dc <- thirty360
+  thirty360dc <- thirty360BondBasis
   index <- iborIndex "dummy" p6m settlementDays ccy calendar ModifiedFollowing False actual360dc Nothing
   swaps <- mapM
     (\(n, u, r) -> do

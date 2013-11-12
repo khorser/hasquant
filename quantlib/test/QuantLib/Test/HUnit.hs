@@ -332,12 +332,6 @@ test_Currency = do
   c <- Currency.gbp
   assertEqual "British pound sterling" (show c)
 
-test_A365fCounter :: IO ()
-test_A365fCounter = do
-  c1 <- DayCounter.a365F
-  c2 <- DayCounter.actual365Fixed
-  assertEqual (show c1) (show c2)
-
 test_BondStatics :: IO ()
 test_BondStatics = do
   c <- Calendar.unitedKingdomSettlement
