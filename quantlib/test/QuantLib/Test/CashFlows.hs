@@ -113,7 +113,7 @@ test_AccessViolation = keepingSettings' $ do
   sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
   cpns <- iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
   setCouponPricer cpns pricer
-  amt <- nextCashFlowAmount cpns True Nothing
+  _ <- nextCashFlowAmount cpns True Nothing
   assertBool True
 
 test_DefaultSettlementDate :: IO ()

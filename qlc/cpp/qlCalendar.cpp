@@ -6,60 +6,88 @@
 
 using namespace QuantLib;
 
-typedef EnumObjectInfo<Calendar> CalendarInfo;
+// extended version of EnumObjectInfo1
+// I could have stored a closure instead of int (lambda or an extra object) but this seems overkill here
+struct CalendarObjectInfo {
+  const char *name;
+  Calendar *(*make)(int x);
+  int market;
+
+  class Cmp {
+  public:
+    Cmp(const char *n) : n_(n) {}
+    bool operator()(const CalendarObjectInfo &i) {
+      return !strcmp(i.name, n_);
+    }
+  private:
+    const char *n_;
+  };
+
+  template <class A>
+  static Calendar *makeObject(int x1) {
+    return new A((typename A::Market) x1);
+  }
+
+  template <class A>
+  static Calendar *makeDefaultObject(int) { //ignoring the argument
+    return new A();
+  }
+};
+
+typedef CalendarObjectInfo CalendarInfo;
 static const CalendarInfo calendarInfo[] = {
-  {"NullCalendar", &CalendarInfo::makeObject<NullCalendar>},
-  {"TARGET", &CalendarInfo::makeObject<TARGET>},
-  {"Argentina::Merval", &CalendarInfo::makeObject<Argentina>},
-  {"Australia", &CalendarInfo::makeObject<Australia>},
-  {"Brazil::Settlement", &CalendarInfo::makeObject<Brazil>},
-  {"Brazil::Exchange", &CalendarInfo::makeObject<Brazil>},
-  {"Canada::Settlement", &CalendarInfo::makeObject<Canada>},
-  {"Canada::TSX", &CalendarInfo::makeObject<Canada>},
-  {"China", &CalendarInfo::makeObject<China>},
-  {"CzechRepublic::PSE", &CalendarInfo::makeObject<CzechRepublic>},
-  {"Denmark", &CalendarInfo::makeObject<Denmark>},
-  {"Finland", &CalendarInfo::makeObject<Finland>},
-  {"Germany::Eurex", &CalendarInfo::makeObject<Germany>},
-  {"Germany::FrankfurtStockExchange", &CalendarInfo::makeObject<Germany>},
-  {"Germany::Settlement", &CalendarInfo::makeObject<Germany>},
-  {"Germany::Xetra", &CalendarInfo::makeObject<Germany>},
-  {"HongKong::HKEx", &CalendarInfo::makeObject<HongKong>},
-  {"Hungary", &CalendarInfo::makeObject<Hungary>},
-  {"Iceland::ICEX", &CalendarInfo::makeObject<Iceland>},
-  {"India::NSE", &CalendarInfo::makeObject<India>},
-  {"Indonesia::BEJ", &CalendarInfo::makeObject<Indonesia>},
-  {"Indonesia::JSX", &CalendarInfo::makeObject<Indonesia>},
-  {"Indonesia::IDX", &CalendarInfo::makeObject<Indonesia>},
-  {"Italy::Exchange", &CalendarInfo::makeObject<Italy>},
-  {"Italy::Settlement", &CalendarInfo::makeObject<Italy>},
-  {"Japan", &CalendarInfo::makeObject<Japan>},
-  {"Mexico::BMV", &CalendarInfo::makeObject<Mexico>},
-  {"NewZealand", &CalendarInfo::makeObject<NewZealand>},
-  {"Norway", &CalendarInfo::makeObject<Norway>},
-  {"Poland", &CalendarInfo::makeObject<Poland>},
-  {"Russia", &CalendarInfo::makeObject<Russia>},
-  {"SaudiArabia::Tadawul", &CalendarInfo::makeObject<SaudiArabia>},
-  {"Singapore::SGX", &CalendarInfo::makeObject<Singapore>},
-  {"Slovakia::BSSE", &CalendarInfo::makeObject<Slovakia>},
-  {"SouthAfrica", &CalendarInfo::makeObject<SouthAfrica>},
-  {"SouthKorea::KRX", &CalendarInfo::makeObject<SouthKorea>},
-  {"SouthKorea::Settlement", &CalendarInfo::makeObject<SouthKorea>},
-  {"Sweden", &CalendarInfo::makeObject<Sweden>},
-  {"Switzerland", &CalendarInfo::makeObject<Switzerland>},
-  {"Taiwan::TSEC", &CalendarInfo::makeObject<Taiwan>},
-  {"Turkey", &CalendarInfo::makeObject<Turkey>},
-  {"Ukraine::USE", &CalendarInfo::makeObject<Ukraine>},
-  {"UnitedKingdom::Exchange", &CalendarInfo::makeObject<UnitedKingdom>},
-  {"London stock exchange", &CalendarInfo::makeObject<UnitedKingdom>},
-  {"LONDON", &CalendarInfo::makeObject<UnitedKingdom>},
-  {"UnitedKingdom::Metals", &CalendarInfo::makeObject<UnitedKingdom>},
-  {"UnitedKingdom::Settlement", &CalendarInfo::makeObject<UnitedKingdom>},
-  {"UnitedStates::GovernmentBond", &CalendarInfo::makeObject<UnitedStates>},
-  {"UnitedStates::NERC", &CalendarInfo::makeObject<UnitedStates>},
-  {"UnitedStates::NYSE", &CalendarInfo::makeObject<UnitedStates>},
-  {"UnitedStates::Settlement", &CalendarInfo::makeObject<UnitedStates>},
-  {"WeekendsOnly", &CalendarInfo::makeObject<WeekendsOnly>},
+  {"NullCalendar",                &CalendarInfo::makeDefaultObject<NullCalendar>, 0},
+  {"TARGET",                      &CalendarInfo::makeDefaultObject<TARGET>, 0},
+  {"Argentina::Merval",           &CalendarInfo::makeObject<Argentina>, Argentina::Merval},
+  {"Australia",                   &CalendarInfo::makeDefaultObject<Australia>, 0},
+  {"Brazil::Settlement",          &CalendarInfo::makeObject<Brazil>, Brazil::Settlement},
+  {"Brazil::Exchange",            &CalendarInfo::makeObject<Brazil>, Brazil::Exchange},
+  {"Canada::Settlement",          &CalendarInfo::makeObject<Canada>, Canada::Settlement},
+  {"Canada::TSX",                 &CalendarInfo::makeObject<Canada>, Canada::TSX},
+  {"China",                       &CalendarInfo::makeDefaultObject<China>, 0},
+  {"CzechRepublic::PSE",          &CalendarInfo::makeObject<CzechRepublic>, CzechRepublic::PSE},
+  {"Denmark",                     &CalendarInfo::makeDefaultObject<Denmark>, 0},
+  {"Finland",                     &CalendarInfo::makeDefaultObject<Finland>, 0},
+  {"Germany::Eurex",              &CalendarInfo::makeObject<Germany>, Germany::Eurex},
+  {"Germany::FrankfurtStockExchange", &CalendarInfo::makeObject<Germany>, Germany::FrankfurtStockExchange},
+  {"Germany::Settlement",         &CalendarInfo::makeObject<Germany>, Germany::Settlement},
+  {"Germany::Xetra",              &CalendarInfo::makeObject<Germany>, Germany::Xetra},
+  {"HongKong::HKEx",              &CalendarInfo::makeObject<HongKong>, HongKong::HKEx},
+  {"Hungary",                     &CalendarInfo::makeDefaultObject<Hungary>, 0},
+  {"Iceland::ICEX",               &CalendarInfo::makeObject<Iceland>, Iceland::ICEX},
+  {"India::NSE",                  &CalendarInfo::makeObject<India>, India::NSE},
+  {"Indonesia::BEJ",              &CalendarInfo::makeObject<Indonesia>, Indonesia::BEJ},
+  {"Indonesia::JSX",              &CalendarInfo::makeObject<Indonesia>, Indonesia::JSX},
+  {"Indonesia::IDX",              &CalendarInfo::makeObject<Indonesia>, Indonesia::IDX},
+  {"Italy::Exchange",             &CalendarInfo::makeObject<Italy>, Italy::Exchange},
+  {"Italy::Settlement",           &CalendarInfo::makeObject<Italy>, Italy::Settlement},
+  {"Japan",                       &CalendarInfo::makeDefaultObject<Japan>, 0},
+  {"Mexico::BMV",                 &CalendarInfo::makeObject<Mexico>, Mexico::BMV},
+  {"NewZealand",                  &CalendarInfo::makeDefaultObject<NewZealand>, 0},
+  {"Norway",                      &CalendarInfo::makeDefaultObject<Norway>, 0},
+  {"Poland",                      &CalendarInfo::makeDefaultObject<Poland>, 0},
+  {"Russia",                      &CalendarInfo::makeDefaultObject<Russia>, 0},
+  {"SaudiArabia::Tadawul",        &CalendarInfo::makeObject<SaudiArabia>, SaudiArabia::Tadawul},
+  {"Singapore::SGX",              &CalendarInfo::makeObject<Singapore>, Singapore::SGX},
+  {"Slovakia::BSSE",              &CalendarInfo::makeObject<Slovakia>, Slovakia::BSSE},
+  {"SouthAfrica",                 &CalendarInfo::makeDefaultObject<SouthAfrica>, 0},
+  {"SouthKorea::KRX",             &CalendarInfo::makeObject<SouthKorea>, SouthKorea::KRX},
+  {"SouthKorea::Settlement",      &CalendarInfo::makeObject<SouthKorea>, SouthKorea::Settlement},
+  {"Sweden",                      &CalendarInfo::makeDefaultObject<Sweden>, 0},
+  {"Switzerland",                 &CalendarInfo::makeDefaultObject<Switzerland>, 0},
+  {"Taiwan::TSEC",                &CalendarInfo::makeObject<Taiwan>, Taiwan::TSEC},
+  {"Turkey",                      &CalendarInfo::makeDefaultObject<Turkey>, 0},
+  {"Ukraine::USE",                &CalendarInfo::makeObject<Ukraine>, Ukraine::USE},
+  {"UnitedKingdom::Exchange",     &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Exchange},
+  {"London stock exchange",       &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Exchange},
+  {"LONDON",                      &CalendarInfo::makeDefaultObject<UnitedKingdom>, 0},
+  {"UnitedKingdom::Metals",       &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Metals},
+  {"UnitedKingdom::Settlement",   &CalendarInfo::makeObject<UnitedKingdom>, UnitedKingdom::Settlement},
+  {"UnitedStates::GovernmentBond",&CalendarInfo::makeObject<UnitedStates>, UnitedStates::GovernmentBond},
+  {"UnitedStates::NERC",          &CalendarInfo::makeObject<UnitedStates>, UnitedStates::NERC},
+  {"UnitedStates::NYSE",          &CalendarInfo::makeObject<UnitedStates>, UnitedStates::NYSE},
+  {"UnitedStates::Settlement",    &CalendarInfo::makeObject<UnitedStates>, UnitedStates::Settlement},
+  {"WeekendsOnly",                &CalendarInfo::makeDefaultObject<WeekendsOnly>, 0},
 };
 
 Calendar *qlCalendar(const char *name, char **e) {
@@ -67,7 +95,7 @@ Calendar *qlCalendar(const char *name, char **e) {
     const CalendarInfo *last = LAST(calendarInfo);
     const CalendarInfo *found = std::find_if(calendarInfo, last, CalendarInfo::Cmp(name));
     if (found != last)
-      return alloc(found->make());
+      return alloc(found->make(found->market));
     else
       QL_FAIL("Calendar not found " << name);
   } catch (std::exception& er) {
