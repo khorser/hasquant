@@ -225,7 +225,7 @@ run = do
 
   -- some cash flows smoke check
   cfs <- cashFlows fixedBond
-  cfnpv <- Leg.npv cfs ts True (1 `may` 2012) (3 `may` 2012)
+  cfnpv <- Leg.npv cfs ts True (Just $ 1 `may` 2012) (Just $ 3 `may` 2012)
   cfnpvbps <- Leg.npvbps cfs ts True (1 `may` 2012) (3 `may` 2012)
   bbps <- bps fixedBond ts (3 `may` 2012)
 
