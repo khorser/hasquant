@@ -81,3 +81,95 @@ convert to txt (see `doxygen-txt`)
 split txt (see `doxygen-split`)
 error handling is minimal, read comments in the scripts before running
 
+
+-- replace TH with applicative style for FFI argument marshalling? See
+
+A handy little consequence of the Cont monad 
+Cale Gibbard	Fri, 01 Feb 2008 00:08:57 +0000 (UTC)
+Hello,
+
+Today on #haskell, resiak was asking about a clean way to write the
+function which allocates an array of CStrings using withCString and
+withArray0 to produce a new with* style function. I came up with the
+following:
+
+nest :: [(r -> a) -> a] -> ([r] -> a) -> a
+nest xs = runCont (sequence (map Cont xs))
+
+withCStringArray0 :: [String] -> (Ptr CString -> IO a) -> IO a
+withCStringArray0 strings act = nest (map withCString strings)
+                                     (\rs -> withArray0 nullPtr rs act)
+
+Originally, I'd written nest without using the Cont monad, which was a
+bit of a mess by comparison, then noticed that its type was quite
+suggestive.
+
+Clearly, it would be more generally useful whenever you have a bunch
+of with-style functions for managing the allocation of resources, and
+would like to turn them into a single with-style function providing a
+list of the acquired resources.
+
+ - Cale
+
+Henning Thielemann	Fri, 01 Feb 2008 05:11:43 +0000 (UTC)
+
+Nice idea. Could serve as an explanation what the Cont monad is good for.
+What about uploading it to the Wiki Category:Idioms ?
+
+ChrisK	Fri, 01 Feb 2008 09:17:29 +0000 (UTC)
+The "bit of a mess" that comes from avoiding monads is (my version):
+
+> import Foreign.Marshal.Array(withArray0)
+> import Foreign.Ptr(nullPtr,Ptr)
+> import Foreign.C.String(withCString,CString)
+
+This uses withCString in order of the supplied strings, and a difference list 
+([CString]->[CString]) initialized by "id" to assemble the [CString].  This is 
+the laziest way to proceed.
+
+> acquireInOrder :: [String] -> (Ptr CString -> IO a) -> IO a
+> acquireInOrder strings act > foldr (\s cs'io'a ->
+>         (\cs ->
+>           withCString s (\c -> cs'io'a (cs . (c:))
+>                         )
+>         )
+>       )
+>       (\cs ->
+>          withArray0 nullPtr (cs []) act
+>       )
+>       strings
+>       id
+
+This uses in withCString in reversed order of the supplied strings, and normal 
+list ([CString]) initialized by "[]" to assemble the [CString].  This is not as 
+lazy since it needs to go to the end of the supplied list for the first IO action.
+
+> acquireInRerverseOrder :: [String] -> (Ptr CString -> IO a) -> IO a
+> acquireInRerverseOrder strings act >   foldl (\cs'io'a s ->
+>           (\cs ->
+>             withCString s (\c -> cs'io'a (c:cs)
+>                           )
+>           )
+>         )
+>         (\cs ->
+>            withArray0 nullPtr cs act
+>         )
+>         strings
+>         []
+
+Derek Elkins	Fri, 01 Feb 2008 16:26:26 +0000 (UTC)
+On Fri, 2008-02-01 at 00:09 -0500, Cale Gibbard wrote:
+> Hello,
+> 
+> Today on #haskell, resiak was asking about a clean way to write the
+> function which allocates an array of CStrings using withCString and
+> withArray0 to produce a new with* style function. I came up with the
+> following:
+> 
+> nest :: [(r -> a) -> a] -> ([r] -> a) -> a
+> nest xs = runCont (sequence (map Cont xs))
+
+This is what you write after all that time on #haskell?
+
+nest = runCont . sequence . map Cont
+
