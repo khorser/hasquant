@@ -1,5 +1,6 @@
 module Main where
 
+import Data.List
 import Control.Monad(forM_)
 import Text.Printf
 
@@ -26,7 +27,7 @@ main = do
   t <- today
   putStrLn $ "Today is " ++ show (weekday t)
 
-  putStrLn "*** Bond Example ***"
+  putStrLn "\n*** Bond Example ***"
   br <- keepingSettings' BondExample.run
 
   putStrLn $ "NPV: " ++ show (BondExample.npvR br)
@@ -44,7 +45,7 @@ main = do
   putStrLn $ "CashFlows: NPV: " ++ show (BondExample.cfnpvR br) ++ ", NPV_BPS: " ++ show (BondExample.cfnpvbpsR br)
   putStrLn $ "BPS: " ++ show (BondExample.bpsR br)
 
-  putStrLn "*** Repo Example ***"
+  putStrLn "\n*** Repo Example ***"
   rr <- keepingSettings' RepoExample.run
   putStrLn $ "Underlying bond clean price: " ++ show (RepoExample.cleanPriceR rr)
   putStrLn $ "Underlying bond dirty price: " ++ show (RepoExample.dirtyPriceR rr)
@@ -59,42 +60,46 @@ main = do
   putStrLn $ "Repo implied yield: " ++ show (RepoExample.impliedYieldR rr)
   putStrLn $ "Market repo rate:   " ++ show (RepoExample.zeroRateR rr)
 
-  putStrLn "*** FRA Example ***"
+  putStrLn "\n*** FRA Example ***"
   (FRAExample.Result i1 i2) <- keepingSettings' FRAExample.run
   printFraIterationResult i1
   putStrLn "* After 100bp shift *"
   printFraIterationResult i2
 
-  putStrLn "*** Swap Example ***"
+  putStrLn "\n*** Swap Example ***"
   (SwapExample.Result si1 si2) <- keepingSettings' SwapExample.run
   printSwapIterationResult si1
   putStrLn "***Updating market data***"
   printSwapIterationResult si2
 
-  putStrLn "*** FittedBondCurve Example ***"
+  putStrLn "\n*** FittedBondCurve Example ***"
   _ <- keepingSettings' BondCurveExample.run
 
-  putStrLn "*** Replication Example ***"
+  putStrLn "\n*** Replication Example ***"
   (ReplicationExample.Result npvInit npvOut npvIn) <- keepingSettings' ReplicationExample.run
   putStrLn $ "Initial PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvInit
   putStrLn $ "Out of the money PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvOut
   putStrLn $ "In the money PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvIn
 
-  putStrLn "*** BermudanSwaption Example ***"
+  putStrLn "\n*** BermudanSwaption Example ***"
   (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' $ BermudanSwaptionExample.run
-  putStrLn $ "G2 calibrated vols: " ++ show g2v
-  putStrLn $ "Hull-White calibrated vols: " ++ show hwv
-  putStrLn $ "Numerical Hull-White calibrated vols: " ++ show hw2v
-  putStrLn $ "Black-Karasinski calibrated vols: " ++ show bkv
-  putStrLn $ "G2 params: " ++ show g2p
-  putStrLn $ "HW params: " ++ show hwp
-  putStrLn $ "Num HW params: " ++ show hw2p
-  putStrLn $ "BK params: " ++ show bkp
-  putStrLn $ "ATM Swaption NPV: " ++ show npvA
-  putStrLn $ "OTM Swaption NPV: " ++ show npvO
-  putStrLn $ "ITM Swaption NPV: " ++ show npvI
+  _ <- printf "%25s   %8s %8s %8s %8s %8s\n" "Calibrated vols for" "1x5" "2x4" "3x2" "4x2" "5x1"
+  printBermudanVols "G2" g2v
+  printBermudanVols "Hull-White" hwv
+  printBermudanVols "Numerical" hw2v
+  printBermudanVols "Black-Karasinski" bkv
+  putStrLn ""
+  printDoubles "G2 params (a, sigma, b, beta, eta, rho)" g2p
+  printDoubles "HW params (a, sigma)" hwp
+  printDoubles "Num HW params (a, sigma)" hw2p
+  printDoubles "BK params (a, sigma)" bkp
+  putStrLn ""
+  _ <- printf "%15s   %13s %13s %13s %13s %13s %13s %13s\n" "NPV of" "G2(tree)" "G2(fdm)" "HW(tree)" "HW(fdm)" "HW(num, tree)" "HW(num, fdm)" "BK"
+  printBermudanNPVs "ATM Swaption" npvA
+  printBermudanNPVs "OTM Swaption" npvO
+  printBermudanNPVs "ITM Swaption" npvI
 
-  putStrLn "*** Equity Option Example ***"
+  putStrLn "\n*** Equity Option Example ***"
   (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd mc) <- EquityOptionExample.run
   putStrLn $ "Analytic Euro engine: " ++ show analyticEuro
   putStrLn $ "Analytic Heston model: " ++ show analyticHeston
@@ -106,7 +111,7 @@ main = do
   putStrLn $ "Finite differences: " ++ show fd
   putStrLn $ "Monte Carlo: " ++ show mc
 
-  putStrLn "*** CDS Example ***"
+  putStrLn "\n*** CDS Example ***"
   (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- keepingSettings' CDSExample.run
   putStrLn $ "Probabilities: " ++ show probs
   putStrLn $ "Fair spreads: " ++ show fairSpread
@@ -114,12 +119,12 @@ main = do
   putStrLn $ "Default leg NPVs: " ++ show defNpv
   putStrLn $ "Coupon leg NPVs: " ++ show cpnNpv
 
-  putStrLn "*** Callable Bond Example ***"
+  putStrLn "\n*** Callable Bond Example ***"
   (CallableBondExample.Result ps ys) <- keepingSettings' CallableBondExample.run
   putStrLn $ "Prices: " ++ show ps
-  putStrLn $ "Yields: " ++ show ys
+  _ <- putStrLn $ "Yields: " ++ show ys
 
-  putStrLn "*** Convertible Bond Example ***"
+  putStrLn "\n*** Convertible Bond Example ***"
   (ConvertibleBondExample.Result jr crr ad tr ti lr j) <- keepingSettings' ConvertibleBondExample.run
   putStrLn $ "Jarrow-Rudd: " ++ show jr
   putStrLn $ "Cox-Ross-Rubinstein: " ++ show crr
@@ -129,7 +134,7 @@ main = do
   putStrLn $ "Leisen-Reimer: " ++ show lr
   putStrLn $ "Joshi: " ++ show j
 
-  putStrLn "DONE"
+  putStrLn "\nDONE"
 
   where
     printFraIterationResult :: [FRAExample.IterationResult] -> IO ()
@@ -151,5 +156,20 @@ main = do
     printSwapResult t r =
       printf "%s Swap: NPV: %.5f Far spread: %.5f Fair rate: %.5f\n"
         t (SwapExample.spotNpvR r) (SwapExample.spotFairSpreadR r) (SwapExample.spotFairRateR r)
+
+    printBermudanVols :: String -> [Double] -> IO ()
+    printBermudanVols m  v= do
+      _ <- printf "%25s: " m
+      mapM_ (printf " %8.5f") v
+      putStrLn ""
+
+    printBermudanNPVs :: String -> [Double] -> IO ()
+    printBermudanNPVs m  v= do
+      _ <- printf "%15s: " m
+      mapM_ (printf " %13.4f") v
+      putStrLn ""
+
+    printDoubles :: String -> [Double] -> IO ()
+    printDoubles m l = printf "%s: %s\n" m (intercalate ", " $ map (printf "%8.6f") l)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:
