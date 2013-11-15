@@ -12,8 +12,16 @@ command -nargs=1 QCgrep vimgrep <args> /build/quantlib/QuantLib/ql/**/*.cpp
 command -nargs=1 Qtag :new<bar>:lcd /build/quantlib/QuantLib/ql<bar>tjump <args>
 
 NeoComplCacheEnable
-compiler ghc
-set makeprg=h
-" TODO add something for CPP files
+
+function g:NecoghcExtraBrowseOptions(mod)
+  if a:mod =~ '^QuantLib'
+    return ['-g', expand('-L$PROJECT_ROOT/hasquant/quantlib/src/QuantLib'), '-g', '-lql', '-L']
+  else
+    return []
+  endif
+endfunction
+
+command H compiler ghc<bar>set makeprg=./h<bar>make
+command C compiler gcc<bar>set makeprg=./cm<bar>make
 
 " vim: set ft=vim ts=8 sts=2 sw=2 et:
