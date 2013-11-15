@@ -77,12 +77,13 @@ main = do
 
   putStrLn "\n*** Replication Example ***"
   (ReplicationExample.Result npvInit npvOut npvIn) <- keepingSettings' ReplicationExample.run
-  putStrLn $ "Initial PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvInit
-  putStrLn $ "Out of the money PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvOut
-  putStrLn $ "In the money PVs (analytic, replicating with 12 dates, 26, 52): " ++ show npvIn
+  _ <- printf "%20s   %19s %19s %19s %19s\n" "NPV of" "Analytic" "12-day replication" "26-day replication" "52-day replication"
+  printReplicationNPVs "Initial" npvInit
+  printReplicationNPVs "Out of the money" npvOut
+  printReplicationNPVs "In the money" npvIn
 
   putStrLn "\n*** BermudanSwaption Example ***"
-  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' $ BermudanSwaptionExample.run
+  (BermudanSwaptionExample.Result g2v g2p hwv hwp hw2v hw2p bkv bkp npvA npvO npvI) <- keepingSettings' BermudanSwaptionExample.run
   _ <- printf "%25s   %8s %8s %8s %8s %8s\n" "Calibrated vols for" "1x5" "2x4" "3x2" "4x2" "5x1"
   printBermudanVols "G2" g2v
   printBermudanVols "Hull-White" hwv
@@ -101,15 +102,27 @@ main = do
 
   putStrLn "\n*** Equity Option Example ***"
   (EquityOptionExample.Result analyticEuro analyticHeston bates baw bjs bin int fd mc) <- EquityOptionExample.run
-  putStrLn $ "Analytic Euro engine: " ++ show analyticEuro
-  putStrLn $ "Analytic Heston model: " ++ show analyticHeston
-  putStrLn $ "Bates: " ++ show bates
-  putStrLn $ "Barone-Adesi-Whaley: " ++ show baw
-  putStrLn $ "Bjerksund-Stensland: " ++ show bjs
-  putStrLn $ "Binomial: " ++ show bin
-  putStrLn $ "Integral: " ++ show int
-  putStrLn $ "Finite differences: " ++ show fd
-  putStrLn $ "Monte Carlo: " ++ show mc
+  _ <- printf "%30s   %9s %9s %9s\n" "NPV of" "European" "Bermudan" "American"
+  printEquityOptNPVs "Black-Sholes" (analyticEuro ++ [0, 0])
+  printEquityOptNPVs "Heston semi-analytic" (analyticHeston ++ [0, 0])
+  printEquityOptNPVs "Bates semi-analytic" (bates ++ [0, 0])
+  printEquityOptNPVs "Barone-Adesi/Whaley" ([0, 0] ++ baw)
+  printEquityOptNPVs "Bjerksund/Stensland" ([0, 0] ++ bjs)
+  printEquityOptNPVs "Integral" (int ++ [0, 0])
+  printEquityOptNPVs "Finite differences" fd
+  mapM_ (uncurry printEquityOptNPVs)
+    (zip
+      ["Binomial Jarrow-Rudd",
+        "Binomial Cox-Ross-Rubinstein",
+        "Additive equiprobabilities",
+        "Binomial Trigeorgis",
+        "Binomial Tian",
+        "Binomial Leisen-Reimer",
+        "Binomial Joshi"]
+      bin)
+  printEquityOptNPVs "MC (crude)" (head mc : [0, 0])
+  printEquityOptNPVs "QMC (Sobol)" ((mc!!1): [0, 0])
+  printEquityOptNPVs "MC (longstaff Schwartz)" ([0, 0] ++ [last mc])
 
   putStrLn "\n*** CDS Example ***"
   (CDSExample.Result probs fairSpread npv defNpv cpnNpv) <- keepingSettings' CDSExample.run
@@ -157,14 +170,28 @@ main = do
       printf "%s Swap: NPV: %.5f Far spread: %.5f Fair rate: %.5f\n"
         t (SwapExample.spotNpvR r) (SwapExample.spotFairSpreadR r) (SwapExample.spotFairRateR r)
 
+    printReplicationNPVs :: String -> [Double] -> IO ()
+    printReplicationNPVs m v = do
+      _ <- printf "%20s: " m
+      mapM_ (printf " %19.6f") v
+      putStrLn ""
+
+    printEquityOptNPVs :: String -> [Double] -> IO ()
+    printEquityOptNPVs m v = do
+      _ <- printf "%30s: " m
+      mapM_ (\vv -> if vv == 0.0
+                      then printf " %9s" "N/A"
+                      else printf " %9.6f" vv) v
+      putStrLn ""
+
     printBermudanVols :: String -> [Double] -> IO ()
-    printBermudanVols m  v= do
+    printBermudanVols m v = do
       _ <- printf "%25s: " m
       mapM_ (printf " %8.5f") v
       putStrLn ""
 
     printBermudanNPVs :: String -> [Double] -> IO ()
-    printBermudanNPVs m  v= do
+    printBermudanNPVs m v = do
       _ <- printf "%15s: " m
       mapM_ (printf " %13.4f") v
       putStrLn ""
