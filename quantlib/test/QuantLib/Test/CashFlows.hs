@@ -5,6 +5,7 @@ where
 
 import Test.Framework
 
+import Control.Monad(void)
 import Data.Time.Calendar
 
 import QuantLib.CashFlow.Leg
@@ -113,7 +114,7 @@ test_AccessViolation = keepingSettings' $ do
   sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
   cpns <- iborLeg sch index3m [100] dc Following [2] [] [0.000115] [] [] False False
   setCouponPricer cpns pricer
-  _ <- nextCashFlowAmount cpns True Nothing
+  void $ nextCashFlowAmount cpns True Nothing
   assertBool True
 
 test_DefaultSettlementDate :: IO ()
