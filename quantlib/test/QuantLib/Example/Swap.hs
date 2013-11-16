@@ -7,7 +7,7 @@ module QuantLib.Example.Swap
   )
 where
 
-import Control.Monad(forM, (>=>))
+import Control.Monad(void, forM, (>=>))
 import Data.Time.Calendar
 
 import QuantLib.Math.Interpolation
@@ -88,7 +88,7 @@ run = do
   i1 <- forM [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 
   let market5YQuote = swapSimpleQuotes !! 2
-  _ <- setValue market5YQuote 0.0460
+  void $ setValue market5YQuote 0.0460
 
   i2 <- forM [depoSwapTS, depoFutSwapTS, depoFraSwapTS] (\ts -> valuateSwap settleDate ts ts)
 

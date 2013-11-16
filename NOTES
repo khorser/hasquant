@@ -31,7 +31,7 @@ Introduce money data type parameterized by currency
 
 Implement `show' via operator <<
 
-sessions?
+sessions (use ST for them?)?
 
 review use of IO in functions and remove it from those not raising exceptions and not depending
 on the state

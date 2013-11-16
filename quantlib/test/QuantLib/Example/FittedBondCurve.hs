@@ -5,7 +5,7 @@ module QuantLib.Example.FittedBondCurve
   )
 where
 
-import Control.Monad(forM_, (>=>))
+import Control.Monad(void, forM_, (>=>))
 import Data.Time.Calendar
 import Text.Printf
 
@@ -90,7 +90,7 @@ run = do
 
     printRates ts0 dc bondSettle tod curves instrA = do
       refDate <- asTermStructure ts0 >>= TS.referenceDate
-      _ <- printf "Reference date: %s, iterations: " $ show refDate
+      void $ printf "Reference date: %s, iterations: " $ show refDate
       forM_ curves (TS.numberOfIterations >=> printf "%d ")
       putStrLn ""
 
@@ -100,7 +100,7 @@ run = do
           cfs <- CF.cashFlows bcfs (Just False) (Just bondSettle)
           let ds = map (\(_, d, _) -> d) $ filter (\(_, _, oc) -> not oc) cfs
           let (Right m) = yearFraction dc tod (last ds) Nothing Nothing
-          _ <- printf "Tenor %5.2fY: " m
+          void $ printf "Tenor %5.2fY: " m
           parRate ts0 (bondSettle:ds) dc
           forM_ curves $
             \c -> do

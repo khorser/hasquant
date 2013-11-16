@@ -11,6 +11,7 @@ import Prelude hiding(catch)
 #endif
 import Data.Time.Calendar(fromGregorian, addDays)
 import Control.Arrow((&&&))
+import Control.Monad(void)
 
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
@@ -357,7 +358,7 @@ test_FixedBondWithSchedule = do
     (Just $ fromGregorian 2012 12 21)
     (Just $ fromGregorian 2013 12 21)
   cnt <- DayCounter.actual365Fixed
-  _ <- Bond.fixedRateBondFromSchedule
+  void $ Bond.fixedRateBondFromSchedule
         1
         100
         s
