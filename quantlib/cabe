@@ -1,1 +1,1 @@
-cabal configure -f buildExample && cabal build
+cabal configure -f buildExample && cabal build --haddock-html --haddock-hoogle

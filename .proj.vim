@@ -7,9 +7,9 @@ command -nargs=1 Cgrep vimgrep <args> ../../../qlc/cpp/*.cpp ../../../qlc/cpp/*.
 command -nargs=1 Hgrep vimgrep <args> **/*.hs
 command -nargs=1 Tgrep vimgrep <args> ../../test/**/*.hs
 
-command -nargs=1 Qgrep vimgrep <args> /build/quantlib/QuantLib/ql/**/*.hpp
-command -nargs=1 QCgrep vimgrep <args> /build/quantlib/QuantLib/ql/**/*.cpp
-command -nargs=1 Qtag :new<bar>:lcd /build/quantlib/QuantLib/ql<bar>tjump <args>
+command -nargs=1 Qlgrep vimgrep <args> /build/quantlib/QuantLib/ql/**/*.hpp
+command -nargs=1 Qlcgrep vimgrep <args> /build/quantlib/QuantLib/ql/**/*.cpp
+command -nargs=1 Qltag :new<bar>:lcd /build/quantlib/QuantLib/ql<bar>tjump <args>
 
 NeoComplCacheEnable
 
@@ -23,5 +23,7 @@ endfunction
 
 command H compiler ghc<bar>set makeprg=./h<bar>make
 command C compiler gcc<bar>set makeprg=./cm<bar>make
+
+so ~/.vim/plugin_lazy/haskellFold.vim
 
 " vim: set ft=vim ts=8 sts=2 sw=2 et:

@@ -1,2 +1,2 @@
 ghc-pkg unregister quantlib
-cabal configure && cabal build && cabal install
+cabal configure && cabal build && cabal install --haddock-html --haddock-hoogle

@@ -1,1 +1,1 @@
-cabal configure --enable-tests && cabal build && cabal test && cabal install
+cabal configure --enable-tests && cabal build && cabal test && cabal install --haddock-html --haddock-hoogle
