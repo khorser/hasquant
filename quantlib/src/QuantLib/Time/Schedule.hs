@@ -19,9 +19,10 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
+import QuantLib.Time.Unit
 
 foreign import ccall safe "ql.h qlSchedule"
-  c_schedule :: CDate -> CDate -> Ptr CPeriod -> Ptr CCalendar
+  c_schedule :: CDate -> CDate -> CInt -> CInt -> Ptr CCalendar
     -> CInt -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString
     -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlSchedule1"
@@ -34,7 +35,7 @@ foreign import ccall safe "ql.h qlScheduleDates"
 -- | QuantLibXL: qlSchedule
 schedule :: Maybe Day -- ^effectiveDate
   -> Day -- ^terminationDate
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> Calendar -- ^calendar
   -> BusinessDayConvention -- ^convention
   -> BusinessDayConvention -- ^terminationDateConvention

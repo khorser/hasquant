@@ -64,9 +64,8 @@ run = do
   eng <- midPointCdsEngine hts recoveryRate ts Nothing
   claim <- faceValueClaim
 
-  pQ <- fromFrequency Quarterly
   sched <- forM maturities
-    $ \m -> schedule (Just tod) m pQ cal Following Unadjusted TwentiethIMM False Nothing Nothing
+    $ \m -> schedule (Just tod) m (3, Months) cal Following Unadjusted TwentiethIMM False Nothing Nothing
   cds <- forM sched
     $ \sh -> creditDefaultSwap Seller nominal quotedSpread sh Following dc True True Nothing claim
 

@@ -13,7 +13,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  QlRateHelper *DLLEXPORT qlDepositRateHelper(QlQuote *quote, Period *period,
+  QlRateHelper *DLLEXPORT qlDepositRateHelper(QlQuote *quote, int, int,
     unsigned fixDays, Calendar *calendar, int conv, int eom,
     DayCounter *dayCount, char **e);
   QlBondHelper *DLLEXPORT qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays,
@@ -27,8 +27,8 @@ extern "C" {
     unsigned rateLen, QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
     QlQuote **quotes, int *dates, double accuracy, char *trait,
     char *interpolator, char **e);
-  QlSwapRateHelper *DLLEXPORT qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
-    int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, Period *fwdStart,
+  QlSwapRateHelper *DLLEXPORT qlSwapRateHelper1(QlQuote *q, int, int, Calendar *cal, int freq,
+    int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, int, int,
     QlYieldTermStructure *ts, char **e);
   void DLLEXPORT qlFreeSwapRateHelper(QlSwapRateHelper *o);
   QlRateHelper* DLLEXPORT qlSwapRateHelperAsRateHelper(QlSwapRateHelper *o);
@@ -42,14 +42,14 @@ extern "C" {
   void DLLEXPORT qlFreeOISRateHelper(QlOISRateHelper *o);
   QlRateHelper* DLLEXPORT qlOISRateHelperAsRateHelper(QlOISRateHelper *o);
   QlBondHelper* DLLEXPORT qlBondHelper(QlQuote* cleanPrice, QlBond* bond, char **e);
-  QlOISRateHelper* DLLEXPORT qlOISRateHelper(unsigned settlementDays, Period* tenor, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e);
-  QlSwapRateHelper* DLLEXPORT qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, Period* fwdStart, QlYieldTermStructure* discountingCurve, char **e);
-  QlRateHelper* DLLEXPORT qlBMASwapRateHelper(QlQuote* liborFraction, Period* tenor, unsigned settlementDays, Calendar* calendar, Period* bmaPeriod, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e);
+  QlOISRateHelper* DLLEXPORT qlOISRateHelper(unsigned settlementDays, int, int, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e);
+  QlSwapRateHelper* DLLEXPORT qlSwapRateHelper(QlQuote* rate, QlSwapIndex* swapIndex, QlQuote* spread, int, int, QlYieldTermStructure* discountingCurve, char **e);
+  QlRateHelper* DLLEXPORT qlBMASwapRateHelper(QlQuote* liborFraction, int, int, unsigned settlementDays, Calendar* calendar, int, int, int bmaConvention, DayCounter* bmaDayCount, QlBMAIndex* bmaIndex, QlIborIndex* index, char **e);
   QlRateHelper* DLLEXPORT qlDatedOISRateHelper(int startDate, int endDate, QlQuote* fixedRate, QlOvernightIndex* overnightIndex, QlYieldTermStructure* discountingCurve, char **e);
   QlRateHelper* DLLEXPORT qlDepositRateHelper1(QlQuote* rate, QlIborIndex* iborIndex, char **e);
   QlRateHelper* DLLEXPORT qlFraRateHelper1(QlQuote* rate, unsigned monthsToStart, QlIborIndex* iborIndex, char **e);
-  QlRateHelper* DLLEXPORT qlFraRateHelper2(QlQuote* rate, Period* periodToStart, unsigned lengthInMonths, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e);
-  QlRateHelper* DLLEXPORT qlFraRateHelper3(QlQuote* rate, Period* periodToStart, QlIborIndex* iborIndex, char **e);
+  QlRateHelper* DLLEXPORT qlFraRateHelper2(QlQuote* rate, int, int, unsigned lengthInMonths, unsigned fixingDays, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, char **e);
+  QlRateHelper* DLLEXPORT qlFraRateHelper3(QlQuote* rate, int, int, QlIborIndex* iborIndex, char **e);
   QlRateHelper* DLLEXPORT qlFuturesRateHelper1(QlQuote* price, int immStartDate, int endDate, DayCounter* dayCounter, QlQuote* convexityAdjustment, char **e);
   QlRateHelper* DLLEXPORT qlFuturesRateHelper2(QlQuote* price, int immDate, QlIborIndex* iborIndex, QlQuote* convexityAdjustment, char **e);
   QlRateHelper* DLLEXPORT qlFuturesRateHelper(QlQuote* price, int immDate, unsigned lengthInMonths, Calendar* calendar, int convention, int endOfMonth, DayCounter* dayCounter, QlQuote* convexityAdjustment, char **e);
@@ -64,7 +64,7 @@ extern "C" {
   QlYieldTermStructure* DLLEXPORT qlFlatForward1(unsigned settlementDays, Calendar* calendar, QlQuote* forward, DayCounter* dayCounter, int compounding, int frequency, char **e);
   InterestRate* DLLEXPORT qlYieldTermStructureZeroRate(QlYieldTermStructure* o, int d, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
   InterestRate* DLLEXPORT qlYieldTermStructureForwardRate(QlYieldTermStructure* o, int d1, int d2, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
-  InterestRate* DLLEXPORT qlYieldTermStructureForwardRate1(QlYieldTermStructure* o, int d, Period* p, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
+  InterestRate* DLLEXPORT qlYieldTermStructureForwardRate1(QlYieldTermStructure* o, int d, int, int, DayCounter* resultDayCounter, int comp, int freq, int extrapolate, char **e);
   InterestRate* DLLEXPORT qlYieldTermStructureForwardRate2(QlYieldTermStructure* o, double t1, double t2, int comp, int freq, int extrapolate, char **e);
   InterestRate* DLLEXPORT qlYieldTermStructureZeroRate1(QlYieldTermStructure* o, double t, int comp, int freq, int extrapolate, char **e);
   double DLLEXPORT qlYieldTermStructureDiscount1(QlYieldTermStructure* o, double t, int extrapolate, char **e);

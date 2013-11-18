@@ -61,10 +61,8 @@ run = do
   index6m <- euribor6M $ Just ts
   start <- advance cal settl 1 Years floatConv False
   maturity <- advance cal start 5 Years floatConv False
-  fixedPeriod <- fromFrequency fixedFreq
-  floatPeriod <- fromFrequency floatFreq
-  fixedSchedule <- schedule (Just start) maturity fixedPeriod cal fixedConv fixedConv Forward False Nothing Nothing
-  floatSchedule <- schedule (Just start) maturity floatPeriod cal floatConv floatConv Forward False Nothing Nothing
+  fixedSchedule <- schedule (Just start) maturity (1, Years) cal fixedConv fixedConv Forward False Nothing Nothing
+  floatSchedule <- schedule (Just start) maturity (6, Months) cal floatConv floatConv Forward False Nothing Nothing
   floatDC <- asInterestRateIndex index6m >>= dayCounter
   swp <- vanillaSwap swapType 1000.0 fixedSchedule dummyFixRate fixedDC floatSchedule index6m 0.0
     floatDC floatConv
@@ -145,10 +143,8 @@ run = do
           0.1149, 0.1112, 0.1070, 0.1010, 0.0957,
           0.1047, 0.1021, 0.0980, 0.0951, 0.1270,
           0.1000, 0.0950, 0.0900, 0.1230, 0.1160]
-        fixedFreq = Annual
         fixedConv = Unadjusted
         floatConv = ModifiedFollowing
-        floatFreq = Semiannual
         dummyFixRate = 0.03
         swapType = Payer
 

@@ -24,7 +24,6 @@ import QuantLib.Time.Calendar
 import QuantLib.Time.Date(today)
 import QuantLib.Time.Frequency
 import QuantLib.Time.DayCounter
-import QuantLib.Time.Period
 import QuantLib.Time.Unit
 import QuantLib.Types
 
@@ -115,18 +114,15 @@ setup = do
   deposits <- mapM
     (\(n, u, r) -> do
       q <- simpleQuote (r/100) >>= asQuote
-      p <- period n u
-      depositRateHelper q p settlementDays calendar ModifiedFollowing True actual360dc)
+      depositRateHelper q (n, u) settlementDays calendar ModifiedFollowing True actual360dc)
     depositData
-  p6m <- period 6 Months
   ccy <- eur
   thirty360dc <- thirty360BondBasis
-  index <- iborIndex "dummy" p6m settlementDays ccy calendar ModifiedFollowing False actual360dc Nothing
+  index <- iborIndex "dummy" (6, Months) settlementDays ccy calendar ModifiedFollowing False actual360dc Nothing
   swaps <- mapM
     (\(n, u, r) -> do
       q <- simpleQuote (r/100) >>= asQuote
-      p <- period n u
-      swapRateHelper' q p calendar Annual Unadjusted thirty360dc index Nothing Nothing Nothing >>= asRateHelper)
+      swapRateHelper' q (n, u) calendar Annual Unadjusted thirty360dc index Nothing (0, Days) Nothing >>= asRateHelper)
     swapData
 
   ts <- piecewiseYieldCurve settlement (deposits ++ swaps) actual360dc [] 1.0e-12 Discount LogLinear

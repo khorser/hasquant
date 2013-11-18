@@ -51,8 +51,7 @@ run = do
   exec <- advance cal settl len Years Following False
   issue <- advance cal exec (-len) Years Following False
 
-  p <- fromFrequency Annual
-  sched <- schedule (Just issue) exec p cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
+  sched <- schedule (Just issue) exec (1, Years) cal ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
   bdc <- thirty360BondBasis
 
   callPrices <- mapM (`callabilityPrice` Clean) callPricesV

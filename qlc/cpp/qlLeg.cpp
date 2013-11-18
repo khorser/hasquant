@@ -457,13 +457,13 @@ Leg* qlOvernightLeg(Schedule* schedule, QlOvernightIndex* overnightIndex, unsign
     return handleException<Leg*>(e, er);
   }
 }
-Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned lowerTriggersLen, double* lowerTriggers, unsigned upperTriggersLen, double* upperTriggers, Period* observationTenor, int observationConvention, char **e) {
+Leg* qlRangeAccrualLeg(Schedule* schedule, QlIborIndex* index, unsigned notionalsLen, double* notionals, DayCounter* paymentDayCounter, int paymentAdjustment, unsigned fixingDaysLen, unsigned* fixingDays, unsigned gearingsLen, double* gearings, unsigned spreadsLen, double* spreads, unsigned lowerTriggersLen, double* lowerTriggers, unsigned upperTriggersLen, double* upperTriggers, int l, int u, int observationConvention, char **e) {
   try {
     return alloc(new Leg(RangeAccrualLeg(*arg(schedule), *arg(index)).withNotionals(std::vector<double>(notionals, notionals+notionalsLen)).withPaymentDayCounter(*arg(paymentDayCounter))
             .withPaymentAdjustment((BusinessDayConvention)paymentAdjustment).withFixingDays(std::vector<unsigned>(fixingDays, fixingDays+fixingDaysLen))
             .withGearings(std::vector<double>(gearings, gearings+gearingsLen)).withSpreads(std::vector<double>(spreads, spreads+spreadsLen)).
             withLowerTriggers(std::vector<double>(lowerTriggers, lowerTriggers+lowerTriggersLen)).withUpperTriggers(std::vector<double>(upperTriggers, upperTriggers+upperTriggersLen))
-            .withObservationTenor(*arg(observationTenor)).withObservationConvention((BusinessDayConvention)observationConvention)));
+            .withObservationTenor(Period(l, (TimeUnit)u)).withObservationConvention((BusinessDayConvention)observationConvention)));
   } catch (std::exception& er) {
     return handleException<Leg*>(e, er);
   }

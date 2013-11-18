@@ -26,6 +26,7 @@ import QuantLib.Time.DayCounter
 import QuantLib.Time.Frequency
 import QuantLib.Time.Period
 import QuantLib.Time.Schedule
+import QuantLib.Time.Unit
 import QuantLib.Types
 
 data Result = Result
@@ -52,9 +53,8 @@ run = do
   bondSimpleQuote <- simpleQuote 0.01
   bondQuote <- asQuote bondSimpleQuote
   bondCurve <- flatForward repoSettlementDate bondQuote bondDayCountConvention Compounded bondCouponFrequency
-  p <- fromFrequency bondCouponFrequency
   bondSchedule <- schedule (Just bondDatedDate) bondMaturityDate
-    p bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
+    (6, Months) bondCalendar bondBusinessDayConvention bondBusinessDayConvention Backward False
     Nothing Nothing
   fixedBond <- fixedRateBondFromSchedule bondSettlementDays faceAmount bondSchedule [bondCoupon]
     bondDayCountConvention bondBusinessDayConvention bondRedemption (Just bondIssueDate)

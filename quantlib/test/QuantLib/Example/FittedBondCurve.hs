@@ -111,8 +111,7 @@ run = do
     step1 tod dc cal bondSettle cleanQuotes = do
       helpers <- mapM (\(q, l, c) -> do
         mat <- advance cal bondSettle l Years Following False
-        bondPeriod <- fromFrequency Annual
-        s <- schedule (Just bondSettle) mat bondPeriod cal
+        s <- schedule (Just bondSettle) mat (1, Years) cal
           ModifiedFollowing ModifiedFollowing Backward False Nothing Nothing
 
         qq <- asQuote q

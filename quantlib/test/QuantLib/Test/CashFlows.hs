@@ -108,7 +108,7 @@ test_AccessViolation = keepingSettings' $ do
   ts <- flatForward (9 `april` 2010) q dc Continuous Annual
   v <- simpleQuote 0.10 >>= asQuote
   vol <- constantOptionletVolatility' 2 cal ModifiedFollowing v dc
-  p <- period 3 Months
+  let p = (3, Months)
   index3m <- usdLibor p (Just ts)
   pricer <- blackIborCouponPricer vol
   sch <- schedule (Just $ 20 `september` 2013) (20 `december` 2013) p cal Following Following Backward False Nothing Nothing
@@ -121,8 +121,7 @@ test_DefaultSettlementDate :: IO ()
 test_DefaultSettlementDate = do
   tod <- evaluationDate
   cal <- target
-  p <- fromFrequency Semiannual
-  sch <- schedule (Just $ addGregorianMonthsClip (-2) tod) (addGregorianMonthsClip 4 tod) p cal Unadjusted Unadjusted Backward False Nothing Nothing
+  sch <- schedule (Just $ addGregorianMonthsClip (-2) tod) (addGregorianMonthsClip 4 tod) (6, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
   dc <- actual360
   cpn <- interestRate 0.03 dc Simple Annual
   l <- fixedRateLeg sch [100.0] [cpn] Following dc cal

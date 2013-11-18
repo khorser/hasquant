@@ -64,14 +64,17 @@ import QuantLib.Math.Interpolation()
 import QuantLib.ProcessDiscretization()
 import QuantLib.TermStructure.Trait() -- QLLitEnum and QLEnum
 
-data NestedArg = DayN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | YearFractionN
+data NestedArg = DayN | IntN | DoubleN | WordN | ForeignPtrN | EnumN Name | BoolN | YearFractionN
   deriving (Show, Eq)
 
 -- XXX use SYB/Uniplate to traverse with comfort?
 -- XXX use GADTs to make the structure conform to the handled cases
+-- also I don't the logic duplicated for IntA/IntN etc
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA | YearFractionA
   | OptDayA | ForeignPtrA | OptForeignPtrA | OptBoolA | OptIntA | OptWordA | OptDoubleA
-  | ListA NestedArg | ListA2 NestedArg NestedArg
+  | ListA NestedArg
+  | ListA2 NestedArg NestedArg -- a list of tuples
+  | PairA NestedArg NestedArg
   | EnumA Name | LitEnumA | OptLitEnumA | MatrixDoubleA | MatrixForeignPtrA
   deriving (Show, Eq)
 
@@ -138,6 +141,7 @@ nestedNameToTop = cond [
   , ''Bool    :== BoolN
   , ''YearFraction :== YearFractionN
   , ''Word    :== WordN
+  , ''Int     :== IntN
   , isEnum    :~> EnumN
   , isForeignPtr :=> ForeignPtrN]
 
@@ -169,6 +173,8 @@ topArgType (AppT (ConT m) (ConT n)) | m == ''Matrix = cond [
     ''Double    :== MatrixDoubleA
   , isForeignPtr:=> MatrixForeignPtrA] n
 topArgType (AppT c@(ConT m) (VarT _)) | m == ''ForeignPtr = topArgType c
+topArgType (AppT (AppT (TupleT 2) (ConT n1)) (ConT n2)) =
+  PairA <$> nestedNameToTop n1 <*> nestedNameToTop n2
 topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
@@ -359,6 +365,10 @@ genFfiCall extra aa r = do
       [|withArrayULenT (fromIntegral :: Word -> CUInt) $v (\y1 y2 ->
           $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
+    genFfiCallImpl ((ListA IntN, v):as) c_call =
+      [|withArrayULenT (fromIntegral :: Int  -> CUInt) $v (\y1 y2 ->
+          $(genFfiCallImpl as [|$c_call y1 y2|]))|]
+
     genFfiCallImpl ((ListA YearFractionN, v):as) c_call =
       [|withDoubles $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
@@ -387,6 +397,12 @@ genFfiCall extra aa r = do
         (\_ ds -> $(genFfiCallImpl as [|$c_call n os ds|])))|]
 
     genFfiCallImpl ((t@(ListA2 _ _), _v):_as) _c_call =
+      error $ show t ++ " Not supported yet"
+
+    genFfiCallImpl ((PairA IntN (EnumN n), v):as) c_call =
+      genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CInt) (fst $v)) (toQlEnum $(stringE $ show n) (snd $v))|]
+
+    genFfiCallImpl ((t@(PairA _ _), _v):_as) _c_call =
       error $ show t ++ " Not supported yet"
 
 unmarshal :: RetVal -> ExpQ

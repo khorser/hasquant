@@ -13,7 +13,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  Schedule *DLLEXPORT qlSchedule(int eff, int term, Period *tenor, Calendar *cal,
+  Schedule *DLLEXPORT qlSchedule(int eff, int term, int, int, Calendar *cal,
         int conv, int termConv, int rule, int eom, int first, int nextToLast,
 	char **e);
   Schedule *DLLEXPORT qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv,

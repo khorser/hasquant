@@ -75,6 +75,7 @@ import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
 import QuantLib.Time.Frequency
+import QuantLib.Time.Unit
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlLeg"
@@ -678,12 +679,12 @@ rangeAccrualLeg :: Schedule -- ^schedule
   -> [Double] -- ^spreads
   -> [Double] -- ^lowerTriggers
   -> [Double] -- ^upperTriggers
-  -> Period -- ^observationTenor
+  -> (Int, Unit) -- ^observationTenor
   -> BusinessDayConvention -- ^observationConvention
   -> IO Leg
 rangeAccrualLeg = $(ffiCall 'rangeAccrualLeg) c_rangeAccrualLeg
 
 foreign import ccall safe "ql.h qlRangeAccrualLeg"
-  c_rangeAccrualLeg :: Ptr CSchedule -> Ptr CIborIndex -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CUInt -> Ptr CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> Ptr CPeriod -> CInt -> Ptr CString -> IO (Ptr CLeg)
+  c_rangeAccrualLeg :: Ptr CSchedule -> Ptr CIborIndex -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CUInt -> Ptr CUInt -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CInt -> CInt -> CInt -> Ptr CString -> IO (Ptr CLeg)
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

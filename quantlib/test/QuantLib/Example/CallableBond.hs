@@ -48,9 +48,8 @@ run = do
     callability p Call d)
     callDates
 
-  pQ <- fromFrequency Quarterly
   cal <- unitedStatesGovernmentBond
-  sch <- schedule (Just $ 16 `september` 2004) (15 `september` 2012) pQ cal Unadjusted Unadjusted Backward False Nothing Nothing
+  sch <- schedule (Just $ 16 `september` 2004) (15 `september` 2012) (3, Months) cal Unadjusted Unadjusted Backward False Nothing Nothing
 
   b <- callableFixedRateBond 3 100.0 sch [0.0465] bbdc Unadjusted 100.0 (Just $ 16 `september` 2004) callSchedule >>= asBond
 
