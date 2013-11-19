@@ -18,7 +18,7 @@ extern "C" {
   int DLLEXPORT qlCalendarAdjust(Calendar *c, int date, int conv);
   int DLLEXPORT qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom);
   void DLLEXPORT qlCalendarAddHoliday(Calendar* o, int x0, char **e);
-  int DLLEXPORT qlCalendarAdvance1(Calendar* o, int date, Period* period, int convention, int endOfMonth, char **e);
+  int DLLEXPORT qlCalendarAdvance1(Calendar* o, int date, int, int, int convention, int endOfMonth, char **e);
   int DLLEXPORT qlCalendarBusinessDaysBetween(Calendar* o, int from, int to, int includeFirst, int includeLast, char **e);
   int DLLEXPORT qlCalendarEndOfMonth(Calendar* o, int d, char **e);
   int DLLEXPORT qlCalendarIsBusinessDay(Calendar* o, int d, char **e);

@@ -127,11 +127,13 @@ double qlSwaptionVolatilityStructureMaxSwapLength(QlSwaptionVolatilityStructure*
     return handleException<double>(e, er);
   }
 }
-Period* qlSwaptionVolatilityStructureMaxSwapTenor(QlSwaptionVolatilityStructure* o, char **e) {
+int qlSwaptionVolatilityStructureMaxSwapTenor(QlSwaptionVolatilityStructure* o, int *u, char **e) {
   try {
-    return ret(new Period((*arg(o))->maxSwapTenor()));
+    const Period &p = (*arg(o))->maxSwapTenor();
+    *u = p.units();
+    return p.length();
   } catch (std::exception& er) {
-    return handleException<Period*>(e, er);
+    return handleException<int>(e, er);
   }
 }
 QlSmileSection* qlSwaptionVolatilityStructureSmileSection1(QlSwaptionVolatilityStructure* o, int optionDate, int n, int u, int extr, char **e) {

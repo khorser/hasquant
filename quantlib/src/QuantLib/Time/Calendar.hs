@@ -232,14 +232,14 @@ foreign import ccall safe "ql.h qlCalendarAddHoliday"
 -- |Advances the given date as specified by the given period and returns the result. The input date is not modified.
 advance' :: Calendar
   -> Day -- ^date
-  -> Period -- ^period
+  -> (Int, Unit) -- ^period
   -> BusinessDayConvention -- ^convention
   -> Bool -- ^endOfMonth
   -> IO Day
 advance' = $(ffiCallX 'advance') c_advance'
 
 foreign import ccall safe "ql.h qlCalendarAdvance1"
-  c_advance' :: Ptr CCalendar -> CDate -> Ptr CPeriod -> CInt -> CInt -> Ptr CString -> IO CDate
+  c_advance' :: Ptr CCalendar -> CDate -> CInt -> CInt -> CInt -> CInt -> Ptr CString -> IO CDate
 
 -- |Calculates the number of business days between two given dates and returns the result.
 businessDaysBetween :: Calendar

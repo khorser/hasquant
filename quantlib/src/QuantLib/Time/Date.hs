@@ -41,7 +41,6 @@ module QuantLib.Time.Date
   , nextIMMDate'
 
   , addPeriod
-  , subtractPeriod
 
   , addECBDate
   , ecbCode
@@ -69,11 +68,10 @@ import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
-import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
-import QuantLib.Time.Weekday
 import QuantLib.Time.Month
-import QuantLib.Types
+import QuantLib.Time.Unit(Unit)
+import QuantLib.Time.Weekday(Weekday)
 
 year :: Day -> Integer
 year x = y where (y, _, _) = toGregorian x
@@ -273,17 +271,11 @@ nextIMMDate = $(ffiCall 'nextIMMDate) c_nextIMMDate
 foreign import ccall safe "ql.h qlIMMNextDate"
   c_nextIMMDate :: CDate -> CInt -> CDate
 
-addPeriod :: Day -> Period -> Either String Day
+addPeriod :: Day -> (Int, Unit) -> Either String Day
 addPeriod = $(ffiCallPureX 'addPeriod) c_addPeriod
 
 foreign import ccall safe "ql.h qlAddPeriod"
-  c_addPeriod :: CDate -> Ptr CPeriod -> Ptr CString -> IO CDate
-
-subtractPeriod :: Day -> Period -> Either String Day
-subtractPeriod = $(ffiCallPureX 'subtractPeriod) c_subtractPeriod
-
-foreign import ccall safe "ql.h qlSubtractPeriod"
-  c_subtractPeriod :: CDate -> Ptr CPeriod -> Ptr CString -> IO CDate
+  c_addPeriod :: CDate -> CInt -> CInt -> Ptr CString -> IO CDate
 
 addECBDate :: Day -- ^d
   -> IO ()

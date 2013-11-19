@@ -35,7 +35,7 @@ extern "C" {
   double DLLEXPORT qlSwaptionVolatilityStructureBlackVariance5(QlSwaptionVolatilityStructure* o, double optionTime, double swapLength, double strike, int extrapolate, char **e);
   double DLLEXPORT qlSwaptionVolatilityStructureBlackVariance(QlSwaptionVolatilityStructure* o, int, int, int, int, double strike, int extrapolate, char **e);
   double DLLEXPORT qlSwaptionVolatilityStructureMaxSwapLength(QlSwaptionVolatilityStructure* o, char **e);
-  Period* DLLEXPORT qlSwaptionVolatilityStructureMaxSwapTenor(QlSwaptionVolatilityStructure* o, char **e);
+  int DLLEXPORT qlSwaptionVolatilityStructureMaxSwapTenor(QlSwaptionVolatilityStructure* o, int *, char **e);
   QlSmileSection* DLLEXPORT qlSwaptionVolatilityStructureSmileSection1(QlSwaptionVolatilityStructure* o, int optionDate, int, int, int extr, char **e);
   QlSmileSection* DLLEXPORT qlSwaptionVolatilityStructureSmileSection2(QlSwaptionVolatilityStructure* o, double optionTime, int, int, int extr, char **e);
   QlSmileSection* DLLEXPORT qlSwaptionVolatilityStructureSmileSection3(QlSwaptionVolatilityStructure* o, int, int, double swapLength, int extr, char **e);

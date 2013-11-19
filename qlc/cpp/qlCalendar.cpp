@@ -131,9 +131,9 @@ void qlCalendarAddHoliday(Calendar* o, int x0, char **e) {
   }
 }
 
-int qlCalendarAdvance1(Calendar* o, int date, Period* period, int convention, int endOfMonth, char **e) {
+int qlCalendarAdvance1(Calendar* o, int date, int n, int u, int convention, int endOfMonth, char **e) {
   try {
-    return (arg(o)->advance(Date(date), *arg(period), (BusinessDayConvention)convention, endOfMonth)).serialNumber();
+    return (arg(o)->advance(Date(date), Period(n, (TimeUnit)u), (BusinessDayConvention)convention, endOfMonth)).serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }

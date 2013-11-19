@@ -27,7 +27,6 @@ import QuantLib.Time.Date
 import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Frequency
-import QuantLib.Time.Period
 import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Types
@@ -48,8 +47,7 @@ run = do
   flatRate <- simpleQuote 0.01 >>= asQuote
   dc <- actual365Fixed
   ts <- flatForward tod flatRate dc Continuous Annual
-  tenors <- mapM (`period` Months) [3, 6, 12, 24]
-  let mat = rights $ map (addPeriod tod) tenors
+  let mat = rights $ map (addPeriod tod) (zip [3, 6, 12, 24] (repeat Months))
   maturities <- mapM (\d -> adjust cal d Following) mat
 
   instruments <- mapM

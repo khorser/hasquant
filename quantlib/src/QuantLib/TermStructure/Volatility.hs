@@ -54,6 +54,7 @@ module QuantLib.TermStructure.Volatility
 where
 
 import QuantLib.Internal.Date
+import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
@@ -214,12 +215,12 @@ foreign import ccall safe "ql.h qlSwaptionVolatilityStructureMaxSwapLength"
   c_maxSwapLength :: Ptr CSwaptionVolatilityStructure -> Ptr CString -> IO CYearFraction
 
 -- |the largest length for which the term structure can return vols
-maxSwapTenor :: SwaptionVolatilityStructure
-  -> IO Period
-maxSwapTenor = $(ffiCall 'maxSwapTenor) c_maxSwapTenor
+maxSwapTenor :: SwaptionVolatilityStructure -> Either String (Int, Unit)
+maxSwapTenor o = purifyExceptions (withObject o (getIntPair . c_maxSwapTenor))
+  >>= \(n, u) -> return (n, fromQlEnum (show ''Unit) u)
 
 foreign import ccall safe "ql.h qlSwaptionVolatilityStructureMaxSwapTenor"
-  c_maxSwapTenor :: Ptr CSwaptionVolatilityStructure -> Ptr CString -> IO (Ptr CPeriod)
+  c_maxSwapTenor :: Ptr CSwaptionVolatilityStructure -> Ptr CInt -> Ptr CString -> IO CInt
 
 -- |returns the smile for a given option date and swap tenor
 smileSectionForPeriod' :: SwaptionVolatilityStructure
