@@ -73,7 +73,7 @@ QlFixedRateBond *qlFixedRateBond(unsigned settlDays, double face, Schedule *sche
 }
 
 QlFixedRateBond *qlFixedRateBond1(unsigned settlDays, Calendar *cpnCal, double face,
-  int start, int maturity, Period *tenor, unsigned cLen, double *coupons,
+  int start, int maturity, int l, int u, unsigned cLen, double *coupons,
   DayCounter *dayCounter, int accrConv, int paymentConv, double redemption,
   int issue, int stub, int rule, int eom, Calendar *payCal, char **e) {
   try {
@@ -84,7 +84,7 @@ QlFixedRateBond *qlFixedRateBond1(unsigned settlDays, Calendar *cpnCal, double f
 		  face,
 		  Date(start),
 		  Date(maturity),
-		  *arg(tenor),
+		  Period(l, (TimeUnit)u),
 		  cpns,
 		  *arg(dayCounter),
 		  (BusinessDayConvention) accrConv,

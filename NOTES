@@ -75,6 +75,9 @@ getting rebuilt when qlaux.h changes
 Allocate named objects without attaching finalizers to them. This way we can live without IO
 for Calendar/DayCounter/Currency. And then we can define Read instance for them
 
+
+Separate data types for amount, vol, rate, period length etc
+
 -- workflow for code generation:
 generate doxygen docs (you can find the copy in `doxygen` dir)
 convert to txt (see `doxygen-txt`)

@@ -151,13 +151,11 @@ run = do
         createHelpers index6m ts i = do
           let j = numCols - i - 1
               k = i * numCols + j
-          maturity <- period (i+1) Years
           vol <- simpleQuote (swaptionVols!!k) >>= asQuote
-          len <- period (swapLengths!!j) Years
           index6mRI <- asInterestRateIndex index6m
           dc <- dayCounter index6mRI
           tenr <- tenor index6mRI
-          h <- Model.swaptionHelper maturity len vol index6m tenr dc dc ts RelativePriceError
+          h <- Model.swaptionHelper (i+1, Years) (swapLengths!!j, Years) vol index6m (periodLength tenr, units tenr) dc dc ts RelativePriceError
           tms <- Model.times h
           return (h, tms)
 

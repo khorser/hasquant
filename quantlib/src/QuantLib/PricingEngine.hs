@@ -97,6 +97,7 @@ import QuantLib.Math.RNGTrait
 import QuantLib.Method.BinomialTree
 import QuantLib.Method.FdmScheme
 import QuantLib.Method.LsmBasisSystemPolynomType
+import QuantLib.Time.Unit
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlDiscountingBondEngine"
@@ -432,7 +433,7 @@ bjerksundStenslandApproximationEngine = $(ffiCall 'bjerksundStenslandApproximati
 foreign import ccall safe "ql.h qlBjerksundStenslandApproximationEngine"
   c_bjerksundStenslandApproximationEngine :: Ptr CGeneralizedBlackScholesProcess -> Ptr CString -> IO (Ptr CPricingEngine)
 
-integralCdsEngine :: Period -- ^integrationStep
+integralCdsEngine :: (Int, Unit) -- ^integrationStep
   -> DefaultProbabilityTermStructure
   -> Double -- ^recoveryRate
   -> YieldTermStructure -- ^discountCurve
@@ -441,7 +442,7 @@ integralCdsEngine :: Period -- ^integrationStep
 integralCdsEngine = $(ffiCall 'integralCdsEngine) c_integralCdsEngine
 
 foreign import ccall safe "ql.h qlIntegralCdsEngine"
-  c_integralCdsEngine :: Ptr CPeriod -> Ptr CDefaultProbabilityTermStructure -> CDouble -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CPricingEngine)
+  c_integralCdsEngine :: CInt -> CInt -> Ptr CDefaultProbabilityTermStructure -> CDouble -> Ptr CYieldTermStructure -> CInt -> Ptr CString -> IO (Ptr CPricingEngine)
 
 integralEngine :: GeneralizedBlackScholesProcess
   -> IO PricingEngine

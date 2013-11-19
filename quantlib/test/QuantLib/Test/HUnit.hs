@@ -372,7 +372,6 @@ test_FixedBondWithSchedule = do
 test_FixedBondWithCalendars :: IO ()
 test_FixedBondWithCalendars = do
   c <- Calendar.russia
-  tenor <- Period.period 1 Unit.Months
   cnt <- DayCounter.actual365Fixed
   _ <- Bond.fixedRateBond
     1
@@ -380,7 +379,7 @@ test_FixedBondWithCalendars = do
     100
     (fromGregorian 2012 12 20)
     (fromGregorian 2013 12 21)
-    tenor
+    (1, Unit.Months)
     [0.12]
     cnt
     BusinessDayConvention.Following

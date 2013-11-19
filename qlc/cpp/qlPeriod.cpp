@@ -22,6 +22,24 @@ Period *qlPeriodFromFrequency(int freq, char **e) {
   }
 }
 
+int qlPeriodFromFrequency1(int freq, int *u, char **e) {
+  try {
+    Period p((Frequency) freq);
+    *u = p.units();
+    return p.length();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
+int qlPeriodToFrequency1(int l, int u, char **e) {
+  try {
+    return Period(l, (TimeUnit)u).frequency();
+  } catch (std::exception& er) {
+    return handleException<int>(e, er);
+  }
+}
+
 int qlPeriodToFrequency(Period *period, char **e) {
   try {
     return arg(period)->frequency();

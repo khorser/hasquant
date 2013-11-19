@@ -23,7 +23,6 @@ import QuantLib.Time.DateGenerationRule
 import QuantLib.Time.Date
 import QuantLib.Time.DayCounter
 import QuantLib.Time.Frequency
-import QuantLib.Time.Period
 import QuantLib.Time.Schedule
 import QuantLib.Time.Unit
 import QuantLib.Types

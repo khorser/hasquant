@@ -110,8 +110,6 @@ instance Arbitrary Frequency where
 prop_FrequencyFromPeriodFromFrequency :: Frequency -> Property
 prop_FrequencyFromPeriodFromFrequency freq =
   freq /= OtherFrequency
-  ==> monadicIO $ do
-    p <- run $ Period.fromFrequency freq
-    assert $ Period.toFrequency p == Right freq
+  ==> either (const False) (==freq) (Period.fromFrequency' freq >>= Period.toFrequency')
 
 -- vim: set ft=haskell ff=unix ts=8 sts=2 sw=2 et:

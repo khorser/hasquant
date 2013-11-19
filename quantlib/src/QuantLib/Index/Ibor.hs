@@ -316,7 +316,7 @@ zibor :: (Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex
 zibor = createIbor "Zibor"
 
 makeIbor :: ((Int, Unit) -> Maybe YieldTermStructure -> IO IborIndex) -> Int -> Unit -> Maybe YieldTermStructure -> IO IborIndex
-makeIbor f i u ts = f (i, u) ts
+makeIbor f i u = f (i, u)
 
 -- |1-week Euribor index
 euriborSW :: Maybe YieldTermStructure -> IO IborIndex

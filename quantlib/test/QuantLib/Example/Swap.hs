@@ -55,7 +55,7 @@ run = do
 
   depoDC <- actual360
 
-  depoHelpers <- mapM (\(q, p) -> do
+  depoHelpers <- mapM (\(q, p) ->
     TS.depositRateHelper q p (fromIntegral fixingDays) cal ModifiedFollowing True depoDC) $
       zip depoQuotes depoTerms
   fraHelpers <- mapM (\(q, (m1, m2)) ->
@@ -73,7 +73,7 @@ run = do
 
   swFixedDC <- thirty360European
   eu6m <- euribor6M Nothing
-  swapHelpers <- mapM (\(q, y) -> do
+  swapHelpers <- mapM (\(q, y) ->
     TS.swapRateHelper' q (y, Years) cal Annual Unadjusted swFixedDC eu6m Nothing (0, Days) Nothing >>= asRateHelper) $
       zip swapQuotes swapYears
 
@@ -110,8 +110,8 @@ run = do
       fixDC <- thirty360European
       floatDC <- actual360
       eu6m <- euribor6M $ Just f
-      let fixP = (1, Years)
-          floatP = (6, Months)
+      let (Right fixP) = fromFrequency' Annual
+          (Right floatP) = fromFrequency' Semiannual
       cal <- target
       let maturity = addGregorianYearsClip 5 settle
       fixSched <- schedule (Just settle) maturity fixP

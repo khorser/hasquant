@@ -15,7 +15,9 @@ extern "C" {
 #endif
   Period *DLLEXPORT qlPeriod(int n, int u, char **e);
   Period *DLLEXPORT qlPeriodFromFrequency(int freq, char **e);
+  int DLLEXPORT qlPeriodFromFrequency1(int freq, int *, char **e);
   int DLLEXPORT qlPeriodToFrequency(Period *period, char **e);
+  int DLLEXPORT qlPeriodToFrequency1(int l, int u, char **e);
 
   void DLLEXPORT qlFreePeriod(Period *period);
   Period* DLLEXPORT qlPeriodParserParse(char* str, char **e);

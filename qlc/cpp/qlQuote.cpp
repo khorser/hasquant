@@ -43,9 +43,9 @@ QlQuote* qlEurodollarFuturesImpliedStdDevQuote(QlQuote* forward, QlQuote* callPr
     return handleException<QlQuote*>(e, er);
   }
 }
-QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, Period* fwdStart, char **e) {
+QlQuote* qlForwardSwapQuote(QlSwapIndex* swapIndex, QlQuote* spread, int l, int u, char **e) {
   try {
-    return ret(new QlQuote(alloc(new ForwardSwapQuote(*arg(swapIndex), Handle<Quote>(*arg(spread)), (*arg(fwdStart))))));
+    return ret(new QlQuote(alloc(new ForwardSwapQuote(*arg(swapIndex), Handle<Quote>(*arg(spread)), Period(l, (TimeUnit)u)))));
   } catch (std::exception& er) {
     return handleException<QlQuote*>(e, er);
   }

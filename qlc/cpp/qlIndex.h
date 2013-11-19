@@ -26,10 +26,10 @@ extern "C" {
   QlSwapIndex* DLLEXPORT qlOvernightIndexedSwapIndexAsSwapIndex(QlOvernightIndexedSwapIndex *o);
   QlBMAIndex* DLLEXPORT qlBMAIndex(QlYieldTermStructure* h, char **e);
 
-  QlSwapIndex* DLLEXPORT qlCreateLiborSwapIndex(char *name, Period* tenor, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e);
-  QlOvernightIndexedSwapIndex* DLLEXPORT qlOvernightIndexedSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e);
-  QlSwapIndex* DLLEXPORT qlSwapIndex1(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e);
-  QlSwapIndex* DLLEXPORT qlSwapIndex(char* familyName, Period* tenor, unsigned settlementDays, Currency* currency, Calendar* calendar, Period* fixedLegTenor, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e);
+  QlSwapIndex* DLLEXPORT qlCreateLiborSwapIndex(char *name, int, int, QlYieldTermStructure* h1, QlYieldTermStructure* h2, char **e);
+  QlOvernightIndexedSwapIndex* DLLEXPORT qlOvernightIndexedSwapIndex(char* familyName, int, int, unsigned settlementDays, Currency* currency, QlOvernightIndex* overnightIndex, char **e);
+  QlSwapIndex* DLLEXPORT qlSwapIndex1(char* familyName, int, int, unsigned settlementDays, Currency* currency, Calendar* calendar, int, int, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, QlYieldTermStructure* discountingTermStructure, char **e);
+  QlSwapIndex* DLLEXPORT qlSwapIndex(char* familyName, int, int, unsigned settlementDays, Currency* currency, Calendar* calendar, int, int, int fixedLegConvention, DayCounter* fixedLegDayCounter, QlIborIndex* iborIndex, char **e);
 
   Schedule* DLLEXPORT qlBMAIndexFixingSchedule(QlBMAIndex* o, int start, int end, char **e);
   QlOvernightIndexedSwap* DLLEXPORT qlOvernightIndexedSwapIndexUnderlyingSwap(QlOvernightIndexedSwapIndex* o, int fixingDate, char **e);

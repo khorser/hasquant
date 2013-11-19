@@ -194,23 +194,23 @@ void qlCalibrationHelperSetPricingEngine(QlCalibrationHelper* o, QlPricingEngine
     (void)handleException<int>(e, er);
   }
 }
-QlCalibrationHelper* qlCapHelper(Period* length, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e) {
+QlCalibrationHelper* qlCapHelper(int l, int u, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e) {
   try {
-    return ret(new QlCalibrationHelper(alloc(new CapHelper(*arg(length), Handle<Quote>(*arg(volatility)), *arg(index), (Frequency)fixedLegFrequency, *arg(fixedLegDayCounter), includeFirstSwaplet, Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
+    return ret(new QlCalibrationHelper(alloc(new CapHelper(Period(l, (TimeUnit)u), Handle<Quote>(*arg(volatility)), *arg(index), (Frequency)fixedLegFrequency, *arg(fixedLegDayCounter), includeFirstSwaplet, Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
   } catch (std::exception& er) {
     return handleException<QlCalibrationHelper*>(e, er);
   }
 }
-QlCalibrationHelper* qlHestonModelHelper(Period* maturity, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e) {
+QlCalibrationHelper* qlHestonModelHelper(int l, int u, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e) {
   try {
-    return ret(new QlCalibrationHelper(alloc(new HestonModelHelper(*arg(maturity), *arg(calendar), s0, strikePrice, Handle<Quote>(*arg(volatility)), Handle<YieldTermStructure>(*arg(riskFreeRate)), Handle<YieldTermStructure>(*arg(dividendYield)), (CalibrationHelper::CalibrationErrorType)errorType))));
+    return ret(new QlCalibrationHelper(alloc(new HestonModelHelper(Period(l, (TimeUnit)u), *arg(calendar), s0, strikePrice, Handle<Quote>(*arg(volatility)), Handle<YieldTermStructure>(*arg(riskFreeRate)), Handle<YieldTermStructure>(*arg(dividendYield)), (CalibrationHelper::CalibrationErrorType)errorType))));
   } catch (std::exception& er) {
     return handleException<QlCalibrationHelper*>(e, er);
   }
 }
-QlCalibrationHelper* qlSwaptionHelper(Period* maturity, Period* length, QlQuote* volatility, QlIborIndex* index, Period* fixedLegTenor, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e) {
+QlCalibrationHelper* qlSwaptionHelper(int l, int u, int ll, int lu, QlQuote* volatility, QlIborIndex* index, int fl, int fu, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e) {
   try {
-    return ret(new QlCalibrationHelper(alloc(new SwaptionHelper(*arg(maturity), *arg(length), Handle<Quote>(*arg(volatility)), *arg(index), *arg(fixedLegTenor), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
+    return ret(new QlCalibrationHelper(alloc(new SwaptionHelper(Period(l, (TimeUnit)u), Period(ll, (TimeUnit)lu), Handle<Quote>(*arg(volatility)), *arg(index), Period(fl, (TimeUnit)fu), *arg(fixedLegDayCounter), *arg(floatingLegDayCounter), Handle<YieldTermStructure>(*arg(termStructure)), (CalibrationHelper::CalibrationErrorType)errorType))));
   } catch (std::exception& er) {
     return handleException<QlCalibrationHelper*>(e, er);
   }

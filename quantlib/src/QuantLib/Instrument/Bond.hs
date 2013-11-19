@@ -82,6 +82,7 @@ import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
+import QuantLib.Time.Unit
 import QuantLib.CashFlow.DurationType
 
 foreign import ccall safe "ql.h qlBond"
@@ -126,7 +127,7 @@ foreign import ccall safe "ql.h qlFixedRateBond"
     -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedRateBond1"
   c_fixedRateBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate -> CDate
-    -> Ptr CPeriod -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CInt
+    -> CInt -> CInt -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CInt
     -> CDouble -> CDate -> CDate -> CInt -> CInt -> Ptr CCalendar
     -> Ptr CString -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedRateBond2"
@@ -153,7 +154,7 @@ fixedRateBond :: Word -- ^settlementDays
   -> Double -- ^faceAmount
   -> Day -- ^startDate
   -> Day -- ^maturityDate
-  -> Period -- ^tenor
+  -> (Int, Unit) -- ^tenor
   -> [Double] -- ^coupons
   -> DayCounter -- ^accrualDayCounter
   -> BusinessDayConvention -- ^accrualConvention

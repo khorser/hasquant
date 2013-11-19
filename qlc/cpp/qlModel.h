@@ -69,9 +69,9 @@ extern "C" {
   void DLLEXPORT qlFreeCalibrationHelper(QlCalibrationHelper *o);
   void DLLEXPORT qlCalibratedModelCalibrate(QlCalibratedModel* o, unsigned x1Len, QlCalibrationHelper** x1, double *weights, OptimizationMethod* method, EndCriteria* endCriteria, Constraint* constraint, char **e);
   void DLLEXPORT qlCalibrationHelperSetPricingEngine(QlCalibrationHelper* o, QlPricingEngine* engine, char **e);
-  QlCalibrationHelper* DLLEXPORT qlCapHelper(Period* length, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e);
-  QlCalibrationHelper* DLLEXPORT qlHestonModelHelper(Period* maturity, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e);
-  QlCalibrationHelper* DLLEXPORT qlSwaptionHelper(Period* maturity, Period* length, QlQuote* volatility, QlIborIndex* index, Period* fixedLegTenor, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e);
+  QlCalibrationHelper* DLLEXPORT qlCapHelper(int, int, QlQuote* volatility, QlIborIndex* index, int fixedLegFrequency, DayCounter* fixedLegDayCounter, int includeFirstSwaplet, QlYieldTermStructure* termStructure, int errorType, char **e);
+  QlCalibrationHelper* DLLEXPORT qlHestonModelHelper(int, int, Calendar* calendar, double s0, double strikePrice, QlQuote* volatility, QlYieldTermStructure* riskFreeRate, QlYieldTermStructure* dividendYield, int errorType, char **e);
+  QlCalibrationHelper* DLLEXPORT qlSwaptionHelper(int, int, int, int, QlQuote* volatility, QlIborIndex* index, int, int, DayCounter* fixedLegDayCounter, DayCounter* floatingLegDayCounter, QlYieldTermStructure* termStructure, int errorType, char **e);
   double* DLLEXPORT qlCalibrationHelperTimes(QlCalibrationHelper* o, unsigned *len, char **e);
 
   double* DLLEXPORT qlCalibratedModelParams(QlCalibratedModel* o, unsigned *len, char **e);

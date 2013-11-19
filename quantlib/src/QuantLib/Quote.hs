@@ -22,6 +22,7 @@ import QuantLib.Internal.Syntax
 import QuantLib.Internal.Date(Day, CDate)
 import QuantLib.Internal.Types
 import QuantLib.Internal.Utils
+import QuantLib.Time.Unit
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlSimpleQuote"
@@ -63,12 +64,12 @@ foreign import ccall safe "ql.h qlEurodollarFuturesImpliedStdDevQuote"
 
 forwardSwapQuote :: SwapIndex -- ^swapIndex
   -> Quote -- ^spread
-  -> Period -- ^fwdStart
+  -> (Int, Unit) -- ^fwdStart
   -> IO Quote
 forwardSwapQuote = $(ffiCall 'forwardSwapQuote) c_forwardSwapQuote
 
 foreign import ccall safe "ql.h qlForwardSwapQuote"
-  c_forwardSwapQuote :: Ptr CSwapIndex -> Ptr CQuote -> Ptr CPeriod -> Ptr CString -> IO (Ptr CQuote)
+  c_forwardSwapQuote :: Ptr CSwapIndex -> Ptr CQuote -> CInt -> CInt -> Ptr CString -> IO (Ptr CQuote)
 
 forwardValueQuote :: Index -- ^index
   -> Day -- ^fixingDate

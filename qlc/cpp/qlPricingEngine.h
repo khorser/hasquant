@@ -103,7 +103,7 @@ extern "C" {
   QlPricingEngine* DLLEXPORT qlBatesDoubleExpEngine1(QlBatesDoubleExpModel* model, double relTolerance, unsigned maxEvaluations, char **e);
   QlPricingEngine* DLLEXPORT qlBatesDoubleExpEngine(QlBatesDoubleExpModel* model, unsigned integrationOrder, char **e);
   QlPricingEngine* DLLEXPORT qlBjerksundStenslandApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
-  QlPricingEngine* DLLEXPORT qlIntegralCdsEngine(Period* integrationStep, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e);
+  QlPricingEngine* DLLEXPORT qlIntegralCdsEngine(int, int, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e);
   QlPricingEngine* DLLEXPORT qlIntegralEngine(QlGeneralizedBlackScholesProcess* x0, char **e);
   QlPricingEngine* DLLEXPORT qlJamshidianSwaptionEngine(QlOneFactorAffineModel* model, QlYieldTermStructure* termStructure, char **e);
   QlPricingEngine* DLLEXPORT qlJuQuadraticApproximationEngine(QlGeneralizedBlackScholesProcess* x0, char **e);

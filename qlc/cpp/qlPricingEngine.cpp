@@ -638,9 +638,9 @@ QlPricingEngine* qlBjerksundStenslandApproximationEngine(QlGeneralizedBlackSchol
     return handleException<QlPricingEngine*>(e, er);
   }
 }
-QlPricingEngine* qlIntegralCdsEngine(Period* integrationStep, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e) {
+QlPricingEngine* qlIntegralCdsEngine(int l, int u, QlDefaultProbabilityTermStructure* x1, double recoveryRate, QlYieldTermStructure* discountCurve, int includeSettlementDateFlows, char **e) {
   try {
-    return ret(new QlPricingEngine(alloc(new IntegralCdsEngine(*arg(integrationStep), Handle<DefaultProbabilityTermStructure>(*arg(x1)), recoveryRate, Handle<YieldTermStructure>(*arg(discountCurve)), qlOptBool(includeSettlementDateFlows)))));
+    return ret(new QlPricingEngine(alloc(new IntegralCdsEngine(Period(l, (TimeUnit)u), Handle<DefaultProbabilityTermStructure>(*arg(x1)), recoveryRate, Handle<YieldTermStructure>(*arg(discountCurve)), qlOptBool(includeSettlementDateFlows)))));
   } catch (std::exception& er) {
     return handleException<QlPricingEngine*>(e, er);
   }

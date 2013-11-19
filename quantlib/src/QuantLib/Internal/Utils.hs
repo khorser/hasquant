@@ -20,6 +20,7 @@ module QuantLib.Internal.Utils
   , buildArray
   , getArrayX
   , getObjectArrayX
+  , getIntPair
   , getString
   , CStaticInt(..)
   , withArrayULen
@@ -140,6 +141,17 @@ getObjectArrayX :: (CArrayable (Ptr a), Finalizable a) => ForeignPtr b
   -> (Ptr b -> Ptr CUInt -> Ptr CString -> IO (Ptr (Ptr a)))
   -> IO [ForeignPtr a]
 getObjectArrayX o f = withObject o (getArrayX . f) >>= mapM (newForeignPtr finalize)
+
+-- invoke a function producing an integral pair,
+-- first one returning, the second returning by pointer
+getIntPair :: (Integral a1, Integral a2, Storable a2, Integral b1, Integral b2)
+  => (Ptr a2 -> Ptr CString -> IO a1) -> IO (b1, b2)
+getIntPair f =
+  alloca $
+  \second -> do
+    first <- unmarshalExceptions (f second)
+    second' <- peek second
+    return (fromIntegral first, fromIntegral second')
 
 unmarshalExceptions :: (Ptr CString -> IO a) -> IO a
 unmarshalExceptions f =
